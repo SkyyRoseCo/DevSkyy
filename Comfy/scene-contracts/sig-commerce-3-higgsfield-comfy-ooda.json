@@ -138,28 +138,28 @@
     },
     {
       "role": "departure_terrace_environment",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-commerce-3-departure-terrace-plate-v1.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-commerce-3-departure-terrace-plate-v1.png",
       "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97",
       "send_to_higgsfield": true,
       "preserve": "Golden Gate environment and ground plane"
     },
     {
       "role": "protected_bay_bridge_look",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-005-bay-bridge-look-protected-v1.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-005-bay-bridge-look-protected-v1.png",
       "sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0",
       "send_to_higgsfield": true,
       "preserve": "customer identity and SG-005/SG-001 look, subject to exact SG-001 correction"
     },
     {
       "role": "protected_stay_golden_look",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-002-sg-003-stay-golden-look-protected-v1.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-002-sg-003-stay-golden-look-protected-v1.png",
       "sha256": "786fbb95ed5d823574d66b5d3121f44d1b6f2a9b7f054a6bcdc678da9768b575",
       "send_to_higgsfield": true,
       "preserve": "customer identity and SG-002/SG-003 look, subject to exact SG-003 correction"
     },
     {
       "role": "protected_windbreaker_look",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-015-windbreaker-look-protected-v1.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-015-windbreaker-look-protected-v1.png",
       "sha256": "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09",
       "send_to_higgsfield": true,
       "preserve": "customer identity and complete jacket-plus-pants set"
@@ -203,18 +203,18 @@
   "authority_dependencies": [
     {
       "role": "verified_sg001_corrected_protected_look",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg-005-sg-001-exact-blue-rose-protected-v2.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg-005-sg-001-exact-blue-rose-protected-v2.png",
       "expected_sha256": "cc40b0828e327bffe382dc11e1d3e24d3a0f6dfb2a40f61c7bc2edafed445ad0",
       "authority": "CANDIDATE_ONLY_PIXEL_AND_SEMANTIC_PASS"
     },
     {
       "role": "sg001_mask_bound_generation_receipt",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
       "expected_sha256": "0ceacf9d801f5649c511701d1cc47861bfc5ff513935ff957c7e0d19e8566043"
     },
     {
       "role": "sg001_mask_bound_verification_receipt",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-verify-receipt-v1.json",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-verify-receipt-v1.json",
       "expected_sha256": "3e743f254ff78d46974fcd3aab8b24a818b4bfbfe2a8fedda1982a1effa51cab",
       "outside_mask_changed_pixels": 0,
       "promotion_state": "FOUNDER_REVIEW_REQUIRED"

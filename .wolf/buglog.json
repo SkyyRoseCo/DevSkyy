@@ -5568,22 +5568,24 @@
     "error_message": "Comfy/tests/test_scene_ooda.py: test_paid_execution_needs_receipts_even_if_text_blockers_are_removed (configuration_ready False) and test_collection_world_prompt_adherence_is_hash_bound_and_fail_closed (verify_file MISSING); plus ImportError TRYON_MAX_CREDITS from skyyrose.integrations.fashn_client in Comfy/tests/test_vto_ooda.py + test_model_plate_ooda.py",
     "file": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
     "root_cause": "Scene contracts bound source files by ABSOLUTE machine paths inside ~/.codex/worktrees/final-scenes-e2e and ~/DevSkyy-product-card-approved, both removed in the 2026-09-10 disk consolidation. Separately, Comfy scripts from commit e76d64ff1 were staged without their companion fashn_client.py change (TRYON_MAX_*/MODEL_CREATE_* constants).",
-    "fix": "Repointed BR-2/LH-2 bindings to repo-relative paths; restored 3 binaries by SHA-256 match (dual-cast target from codex/final-scenes-e2e-20260830, statue PNG from codex/v2-shop-the-look-20260910, BLACK_Rose_Long_Hoodie.png from ~/Downloads, git add -f under ignored renders/scroll-world/); refreshed contract_sha256 in scene-ooda-ledger.json; checked out fashn_client.py + test_fashn_client.py from e76d64ff1 (file unchanged on this branch since merge-base). Added .wolf/cerebrum.md + buglog.json to .prettierignore.",
+    "fix": "Repointed BR-2/LH-2 bindings to repo-relative paths; restored 3 binaries by SHA-256 match (dual-cast target from codex/final-scenes-e2e-20260830, statue PNG from codex/v2-shop-the-look-20260910, BLACK_Rose_Long_Hoodie.png from ~/Downloads, git add -f under ignored renders/scroll-world/); refreshed contract_sha256 in scene-ooda-ledger.json; checked out fashn_client.py + test_fashn_client.py from e76d64ff1 (file unchanged on this branch since merge-base). Added .wolf/cerebrum.md + buglog.json to .prettierignore. 2026-09-16 SIG follow-up: scripts/bug322_sig_commerce_audit.py --deep (sha256 of every blob via git cat-file --batch-all-objects, 77,058 blobs) resolved 15/21 stale SIG-COMMERCE bindings byte-exactly: 7 from codex/final-scenes-e2e-20260830 (SIG-3, same relative paths) + 8 from codex/v2-approved-product-cards (all SIG-2 + 3 SIG-1, stored under wordpress-theme/skyyrose-flagship-2/assets/... with different filenames). Materialized to renders/scroll-world/SIG-COMMERCE-{1,2,3}/ (13 files, re-hashed), repointed path strings in the 5 sig-commerce contracts + 2 scene-ooda-ledger evidence refs, refreshed the 3 contract_sha256 values in the ledger. Not staged yet (core.bare=true on the checkout blocks git add; founder fixing).",
     "tags": [
-      "comfy",
-      "scene-contracts",
       "absolute-paths",
-      "worktree-cleanup",
+      "comfy",
+      "deep-object-store-scan",
       "fashn",
       "missing-companion-file",
-      "sha256-restore"
+      "partial-resolution",
+      "scene-contracts",
+      "sha256-restore",
+      "worktree-cleanup"
     ],
     "related_bugs": [
       "bug-252",
       "bug-257"
     ],
     "occurrences": 1,
-    "last_seen": "2026-09-12",
-    "open_followup": "sig-commerce-1/2/3 contracts + scene-ooda-ledger still reference ~20 files under the removed final-scenes-e2e worktree (no test asserts them yet); recover from codex/final-scenes-e2e-20260830 where tracked."
+    "last_seen": "2026-09-16",
+    "open_followup": "6/21 SIG-COMMERCE bindings still point at the removed final-scenes-e2e worktree and their bytes exist nowhere in this repo's object store (all refs, reflogs, unreachable): LOAD-BEARING (2): sig-commerce-1 source_bindings.4 signature-skyyrose-font-sculpture-clean-transparent-v2.png (4db76780…), sig-commerce-3 source_bindings.0 sig-commerce-3-five-sku-ensemble-target-2026-08-31.webp (11e9fe54…). NON-BLOCKING forbidden_inputs (4): sig-commerce-1 forbidden_inputs.0-3 (cf39a576…, 60463f03…, e1fb0669…, 7035f14f…) — hash pins still forbid reuse without the bytes. Recovery must come from outside git (~/Downloads hf_2026090*.png, ~/.codex/generated_images, Time Machine of ~/DevSkyy-product-card-approved). Then git add -f the 13 materialized renders/scroll-world/SIG-COMMERCE-* files once core.bare is fixed."
   }
 ]

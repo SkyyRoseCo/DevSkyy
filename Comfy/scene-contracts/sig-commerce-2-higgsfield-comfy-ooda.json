@@ -123,7 +123,7 @@
   "source_bindings": [
     {
       "role": "protected_male_mint_set",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-013-sg-014-mint-set-look-protected-v2.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-013-sg-014-mint-set-look-protected-v2.png",
       "sha256": "eb8cfbd99c4a963223cf094551dcc62bb022573f46b17f9c819561b1a4794a16",
       "send_to_higgsfield": true,
       "preserve": "male identity, SG-013 crewneck, SG-014 sweatpants"
@@ -151,14 +151,14 @@
     },
     {
       "role": "environment_authority_not_composition_target",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-2/scene-authority/sig-3-graphic-monument-environment-plate-v3.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-2/scene-authority/sig-3-graphic-monument-environment-plate-v3.png",
       "sha256": "ce1232d5b470a25a160fdde4f559b87652782d9f19b69fe635313944cfedc5fb",
       "send_to_higgsfield": true,
       "preserve": "material and architectural language only; output must be wide"
     },
     {
       "role": "exact_sr_rose_monument",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-2/protected-hero-element/signature-sr-rose-graphic-founder-supplied-v1.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-2/protected-hero-element/signature-sr-rose-graphic-founder-supplied-v1.png",
       "sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc",
       "send_to_higgsfield": true,
       "preserve": "exact silhouette, palette, letterform, flourish, leaves, and internal rose"
@@ -167,7 +167,7 @@
   "authority_dependencies": [],
   "forbidden_inputs": [
     {
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-006-hoodie-look-protected-v1.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-006-hoodie-look-protected-v1.png",
       "sha256": "7e6a0c73f442859891f7b612de2e872dcaa4ec1b8f14ece290541f839a549740",
       "decision": "FOUNDER_REJECTED_DO_NOT_USE"
     }

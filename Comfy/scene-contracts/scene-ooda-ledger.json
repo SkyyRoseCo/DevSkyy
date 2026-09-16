@@ -110,7 +110,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-1-higgsfield-comfy-ooda.json",
-      "contract_sha256": "3dcc5dc7789cee252fe111c5a660112807535d2977f57dd2a18a67f4e4f47995",
+      "contract_sha256": "a867f58124e32b1a592659d24dd35e63d3515fa262e9ced7f8b58d4ca2bdbb85",
       "evidence": [
         "Comfy/LOG.md",
         "Comfy/receipts/sig-commerce-1-higgsfield-enhance-20260902T193504736502Z.json",
@@ -139,7 +139,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "c08cc076abfc4a76ac553631e14a2b8c25d60041e6f9f4556d00c6ae309acc29",
+      "contract_sha256": "d6dbf44e1b195417126d833f51c284322f12a569a5fc7225bc9150bb135d24f9",
       "evidence": ["Comfy/receipts/protected-alpha-audit-20260902.json"],
       "outputs": [
         "allowed male/products/environment/monument hashes PASS",
@@ -162,10 +162,10 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-3-higgsfield-comfy-ooda.json",
-      "contract_sha256": "13b785af512bdbc48599642e843411fb2d4f152d00f84112c9a34145544d993b",
+      "contract_sha256": "da215cf4ce9c2a988f202a5c299d9dfd15a04f014a49ef5afd11aa76f3cfc38e",
       "evidence": [
-        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
-        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-verify-receipt-v1.json"
+        "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
+        "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-verify-receipt-v1.json"
       ],
       "outputs": [
         "founder composition, three protected looks, and five physical product hashes PASS",

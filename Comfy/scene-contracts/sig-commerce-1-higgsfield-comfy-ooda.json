@@ -106,7 +106,7 @@
   "source_bindings": [
     {
       "role": "protected_customer_product_look",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/protected-input/sg-009-sg-007-sherpa-beanie-look-protected-v2.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-1/protected-input/sg-009-sg-007-sherpa-beanie-look-protected-v2.png",
       "sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a",
       "send_to_higgsfield": true,
       "preserve": "identity, pose, SG-009 jacket, SG-007 beanie"
@@ -127,7 +127,7 @@
     },
     {
       "role": "environment_authority_not_composition_target",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/scene-authority/sig-1-font-statue-environment-plate-v3.png",
+      "path": "renders/scroll-world/SIG-COMMERCE-1/scene-authority/sig-1-font-statue-environment-plate-v3.png",
       "sha256": "331666b86748477816bbc65cc130494d2dadc009adb8905eae5302d70e88c600",
       "send_to_higgsfield": true,
       "preserve": "material and architectural language only; output must be wide"
