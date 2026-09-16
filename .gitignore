@@ -508,3 +508,11 @@ tasks/wp-commercial-theme/shots/
 
 # Runtime coordination for the editable product registry.
 wordpress-theme/skyyrose-flagship/data/logo-registry.json.lock
+
+# --- Regenerable local tooling / build output (2026-09-16 repo-size cleanup) ---
+# None of these were ever git-tracked; they were just missing from .gitignore,
+# which is how ~5GB of orphaned/regenerable content accumulated unnoticed.
+.mypy_cache/
+.venv-test/
+ci_mirror/
+dist/
