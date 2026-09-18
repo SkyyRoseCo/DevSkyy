@@ -5873,5 +5873,28 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-18T12:43:19.203152+00:00"
+  },
+  {
+    "id": "bug-337",
+    "timestamp": "2026-09-18T13:26:52.710931+00:00",
+    "error_message": "Committed and pushed skyyrose/core/product.py on feat/single-product-entry-point and feat/product-sot-entry-point, reporting '78/78 passed', but the branch is broken on a clean checkout: `import skyyrose.core.product` -> ModuleNotFoundError: No module named 'skyyrose.core.product_registry'. Caught before opening the PR or dispatching the merge agent.",
+    "file": "skyyrose/core/product.py",
+    "root_cause": "Every test run this session executed against the DIRTY WORKING TREE, which carries the unified product registry as uncommitted state: skyyrose/core/product_registry.py and scripts/sync_product_registry.py are UNTRACKED; catalog_loader.py, dossier_loader.py, sot_images.py and elite_studio/logo_registry.py are modified-but-uncommitted; logo-registry.json has 33 products in the tree and 0 at the branch tip. product.py imports PRODUCT_REGISTRY/load_registry from that untracked module. I verified the code, never the commit -- 'tests pass' was a claim about the working tree, reported as if it were about the branch. Same shape as bug-287 (repo state vs committed state) and the CLAUDE.md evidence-scope rule 'tool output -> filesystem truth needs its own probe'. The foundation DOES exist committed elsewhere: 73004b550 'feat(catalog): consolidate product facts into unified registry' on codex/unified-product-registry (checked out in another worktree, and on origin). My branch was cut from codex/v2-open-seo-security-audit instead, whose 44 commits (340 files, 58k lines: comfy, fidelity, build, wolf) contain none of it.",
+    "fix": "NOT YET FIXED -- awaiting founder decision; no PR opened, no merge agent dispatched, nothing merged. Two broken refs are pushed (feat/single-product-entry-point also carries a foreign 3D commit 9953f3135 from another session that committed onto it after the shared worktree switched branch; feat/product-sot-entry-point is my clean 4 commits) -- both harmless, unmerged, deletable. Correct structure: rebuild the 4 commits in an ISOLATED worktree on top of codex/unified-product-registry, verify on a CLEAN checkout (git archive <tip> into scratch + run the suite there), then open the foundation PR first and this one stacked on it. RULE: before reporting a branch green, run its tests against `git archive <sha>` in a scratch dir, never only the working tree -- in a shared worktree the tree carries other sessions' uncommitted work that the commit does not.",
+    "tags": [
+      "evidence-scope",
+      "working-tree-vs-commit",
+      "shared-worktree",
+      "broken-branch",
+      "self-correction",
+      "bug-287-pattern"
+    ],
+    "related_bugs": [
+      "bug-287",
+      "bug-331",
+      "bug-334"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-18T13:26:52.710931+00:00"
   }
 ]
