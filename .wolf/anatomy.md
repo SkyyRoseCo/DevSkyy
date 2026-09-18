@@ -9237,3 +9237,4 @@ CLOSED on every path.
 - `glb_optimize.py` — gltfpack `-cc -tc` wrapper + web gate (≤3MB, meshopt in extensionsRequired AND on a real bufferView, basisu, sheen VALUES valid, KTX2-only images). (~1790 tok)
 - `webgl_qc.py` — renders a web GLB in the PRODUCTION three.js viewer (Playwright + loopback server over a temp serve root) and pixel-diffs variants; VIEWER_PARITY is parity-gated against product-3d-viewer.js; VOID (maxΔ=0) is distinct from "no visible difference". (~3900 tok)
 - `templates/webgl_qc_harness.html` — the deterministic render page; PARITY/ANGLES are injected at serve time, un-injected it refuses to render. (~1700 tok)
+- `tests/scripts/test_glb_qc_render.py` — CLI exit-code contract for scripts/glb_qc_render.py (0 ok / 1 failed / 2 VOID), --diff label validation, --overwrite plumbing. (~1100 tok)

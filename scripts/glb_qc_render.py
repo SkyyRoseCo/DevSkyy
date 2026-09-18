@@ -13,7 +13,8 @@ the harness, a link to the vendored three tree, and a link per GLB.
 
 Exit codes:
     0  every render succeeded, and every requested diff showed a real pixel difference
-    1  a render or diff failed
+    1  a render or diff failed — including a console/page error, a blank frame, or an
+       --out-dir that already holds PNGs without --overwrite
     2  VOID — at least one diff was byte-identical. That is NOT "no visible difference":
        the change under test produced no pixels, so any look-based verdict drawn from
        those two images would be a verdict on a null result. Callers must branch on it.
@@ -35,6 +36,8 @@ from pathlib import Path
 
 from skyyrose.elite_studio.pipeline3d.webgl_qc import (
     ANGLES,
+    PixelDiff,
+    RenderReport,
     RenderTarget,
     WebGlQcError,
     diff_report,
@@ -94,13 +97,44 @@ def _build_parser() -> argparse.ArgumentParser:
         default=None,
         help="override the vendored three tree (default: the theme's, resolved fail-closed)",
     )
+    parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="replace PNGs already in --out-dir (default: refuse, so stale and fresh renders never mix)",
+    )
     parser.add_argument("--report", type=Path, default=None, help="write the full JSON report")
     return parser
+
+
+def _print_summary(report: RenderReport, diffs: list[PixelDiff]) -> None:
+    for img in report.images:
+        anisotropy = {m.get("anisotropy") for m in img.materials}
+        print(f"  {img.label:<24} {img.angle:<14} {img.path.name}  anisotropy={anisotropy}")
+    for d in diffs:
+        flag = "  VOID" if d.is_void else ""
+        print(
+            f"  {d.baseline_label} -> {d.target_label} @ {d.angle}: "
+            f"maxΔ={d.max_abs_delta}/255 changed={d.changed_pixel_pct:.2f}%{flag}"
+        )
+    if report.console_warnings:
+        # Software rendering always emits a few. Console ERRORS never reach here:
+        # they fail the render.
+        print(f"  console warnings: {len(report.console_warnings)} (software renderer)")
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
     angles = tuple(dict.fromkeys(args.angle)) if args.angle else tuple(ANGLES)
+
+    # A typo in --diff should cost nothing, not a full render followed by a traceback.
+    labels = {t.label for t in args.targets}
+    unknown = sorted({name for pair in args.diff for name in pair if name not in labels})
+    if unknown:
+        print(
+            f"glb-qc: --diff names unknown label(s) {unknown}; given: {sorted(labels)}",
+            file=sys.stderr,
+        )
+        return EXIT_FAILED
 
     try:
         report = render(
@@ -109,6 +143,7 @@ def main(argv: list[str] | None = None) -> int:
             angles=angles,
             size=args.size,
             three_lib=args.three_lib,
+            overwrite=args.overwrite,
         )
         diffs = diff_report(report, args.diff, args.out_dir, angles=angles) if args.diff else []
     except WebGlQcError as exc:
@@ -120,29 +155,7 @@ def main(argv: list[str] | None = None) -> int:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
-    for img in report.images:
-        anisotropy = {m.get("anisotropy") for m in img.materials}
-        print(f"  {img.label:<24} {img.angle:<14} {img.path.name}  anisotropy={anisotropy}")
-    for d in diffs:
-        flag = "  VOID" if d.is_void else ""
-        print(
-            f"  {d.baseline_label} -> {d.target_label} @ {d.angle}: "
-            f"maxΔ={d.max_abs_delta}/255 changed={d.changed_pixel_pct:.2f}%{flag}"
-        )
-    if report.console_errors or report.page_errors:
-        print(
-            f"  console errors: {len(report.console_errors)}  "
-            f"page errors: {len(report.page_errors)}",
-            file=sys.stderr,
-        )
-        for msg in list(report.console_errors) + list(report.page_errors):
-            print(
-                f"    {msg.get('label')}/{msg.get('angle')}: {msg.get('text') or msg.get('error')}",
-                file=sys.stderr,
-            )
-    elif report.console_warnings:
-        # Software rendering always emits a few; reported as a count, never as an error.
-        print(f"  console warnings: {len(report.console_warnings)} (software renderer)")
+    _print_summary(report, diffs)
 
     void = [d for d in diffs if d.is_void]
     if void:
