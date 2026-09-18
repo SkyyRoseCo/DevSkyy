@@ -45,8 +45,8 @@ x-app-env: &app-env
   LOG_LEVEL: ${LOG_LEVEL:-INFO}
   # +asyncpg: database/db.py uses SQLAlchemy create_async_engine, which needs an
   # async driver in the URL. Bare postgresql:// maps to psycopg2 (not installed).
-  DATABASE_URL: postgresql+asyncpg://devskyy:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env.docker}@postgres:5432/devskyy  # ggignore
-  REDIS_URL: redis://:${REDIS_PASSWORD:?set REDIS_PASSWORD in .env.docker}@redis:6379/0  # ggignore
+  DATABASE_URL: postgresql+asyncpg://devskyy:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env.docker}@postgres:5432/devskyy # ggignore
+  REDIS_URL: redis://:${REDIS_PASSWORD:?set REDIS_PASSWORD in .env.docker}@redis:6379/0 # ggignore
   # Cryptographic keys — MUST be set or compose fails (prevent booting with unstable placeholder material)
   JWT_SECRET_KEY: ${JWT_SECRET_KEY:?set JWT_SECRET_KEY in .env.docker}
   JWT_REFRESH_SECRET_KEY: ${JWT_REFRESH_SECRET_KEY:?set JWT_REFRESH_SECRET_KEY in .env.docker}
@@ -62,7 +62,7 @@ services:
     environment:
       POSTGRES_DB: devskyy
       POSTGRES_USER: devskyy
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env.docker}  # ggignore
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env.docker} # ggignore
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -85,13 +85,13 @@ services:
   redis:
     image: redis:7-alpine
     container_name: devskyy-redis
-    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:?set REDIS_PASSWORD in .env.docker}  # ggignore
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:?set REDIS_PASSWORD in .env.docker} # ggignore
     volumes:
       - redis_data:/data
     networks: [devskyy-network]
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "redis-cli -a \"$$REDIS_PASSWORD\" ping | grep -q PONG"]
+      test: ["CMD-SHELL", 'redis-cli -a "$$REDIS_PASSWORD" ping | grep -q PONG']
       interval: 10s
       timeout: 3s
       retries: 5
@@ -110,7 +110,15 @@ services:
     image: devskyy:local
     container_name: devskyy-app
     env_file: [.env.docker]
-    environment: *app-env
+    environment:
+      <<: *app-env
+      # /api/v1/render-jobs validates source keys against the SAME artifact store the
+      # blender-worker publishes to (shared volume for the local backend; S3 vars otherwise).
+      RENDER_ARTIFACT_STORE: ${RENDER_ARTIFACT_STORE:-local}
+      RENDER_ARTIFACT_DIR: /var/data/render-artifacts
+      RENDER_S3_BUCKET: ${RENDER_S3_BUCKET:-}
+      RENDER_S3_PREFIX: ${RENDER_S3_PREFIX:-}
+      RENDER_S3_ENDPOINT_URL: ${RENDER_S3_ENDPOINT_URL:-}
     ports:
       - "${APP_PORT:-8000}:8000"
     depends_on:
@@ -121,6 +129,7 @@ services:
     volumes:
       - app_logs:/app/logs
       - app_data:/app/data
+      - render_artifacts:/var/data/render-artifacts
     networks: [devskyy-network]
     restart: unless-stopped
     healthcheck:
@@ -153,7 +162,7 @@ services:
     networks: [devskyy-network]
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "python -c \"import os,redis; redis.from_url(os.environ['REDIS_URL']).ping()\""]
+      test: ["CMD-SHELL", 'python -c "import os,redis; redis.from_url(os.environ[''REDIS_URL'']).ping()"']
       interval: 30s
       timeout: 10s
       retries: 3
@@ -185,12 +194,51 @@ services:
     networks: [devskyy-network]
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "python -c \"import os,redis; redis.from_url(os.environ['REDIS_URL']).ping()\""]
+      test: ["CMD-SHELL", 'python -c "import os,redis; redis.from_url(os.environ[''REDIS_URL'']).ping()"']
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 30s
     deploy: *svc-resources
+    logging: *logging
+
+  # ---------------------------------------------------------------------------
+  # Blender render worker — headless Cycles turntable stills + gltfpack web GLBs
+  # (linux/amd64 only: Blender ships no Linux ARM64 build; emulated on Apple Silicon).
+  # Consumes the `blender_render` Redis stream fed by /api/v1/render-jobs.
+  # ---------------------------------------------------------------------------
+  blender-worker:
+    build:
+      context: .
+      dockerfile: deploy/blender_render/Dockerfile
+    image: devskyy/blender-render-worker:5.2.0
+    platform: linux/amd64
+    container_name: devskyy-blender-worker
+    env_file: [.env.docker]
+    environment:
+      REDIS_URL: redis://:${REDIS_PASSWORD:?set REDIS_PASSWORD in .env.docker}@redis:6379/0 # ggignore
+      RENDER_ARTIFACT_STORE: ${RENDER_ARTIFACT_STORE:-local}
+      RENDER_ARTIFACT_DIR: /var/data/render-artifacts
+      RENDER_S3_BUCKET: ${RENDER_S3_BUCKET:-}
+      RENDER_S3_PREFIX: ${RENDER_S3_PREFIX:-}
+      RENDER_S3_ENDPOINT_URL: ${RENDER_S3_ENDPOINT_URL:-}
+      RENDER_OUTPUT_PREFIX: ${RENDER_OUTPUT_PREFIX:-render-jobs}
+      RENDER_JOB_TIMEOUT_SECONDS: ${RENDER_JOB_TIMEOUT_SECONDS:-1800}
+      BLENDER_BIN: /opt/blender/blender
+      GLTFPACK_BIN: /usr/local/bin/gltfpack
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - render_artifacts:/var/data/render-artifacts
+    networks: [devskyy-network]
+    restart: unless-stopped
+    # SIGTERM → worker kills the Blender child, marks the job FAILED ("worker shutdown"),
+    # ACKs, exits. Give it time to do so before Docker escalates to SIGKILL.
+    stop_grace_period: 45s
+    deploy:
+      resources:
+        limits: { cpus: "4", memory: 8G }
     logging: *logging
 
   # ---------------------------------------------------------------------------
@@ -252,7 +300,7 @@ services:
       # loopback-only by default; front with a TLS proxy to expose externally.
       - "127.0.0.1:3000:3000"
     environment:
-      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?set GRAFANA_ADMIN_PASSWORD in .env.docker}  # ggignore
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?set GRAFANA_ADMIN_PASSWORD in .env.docker} # ggignore
       GF_USERS_ALLOW_SIGN_UP: "false"
     volumes:
       - grafana_data:/var/lib/grafana
@@ -270,6 +318,7 @@ volumes:
   nginx_logs:
   prometheus_data:
   grafana_data:
+  render_artifacts:
 
 networks:
   devskyy-network:

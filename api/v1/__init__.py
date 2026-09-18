@@ -41,6 +41,7 @@ from api.v1.media import router as media_router
 from api.v1.ml import router as ml_router
 from api.v1.monitoring import router as monitoring_router
 from api.v1.orchestration import router as orchestration_router
+from api.v1.render_jobs import router as render_jobs_router
 from api.v1.social_media import router as social_media_router
 from api.v1.sync import sync_router
 from api.v1.training_status import training_router
@@ -66,6 +67,7 @@ __all__ = [
     "autonomous_router",
     "monitoring_router",
     "orchestration_router",
+    "render_jobs_router",
     "social_media_router",
     "wordpress_agent_router",
     "wordpress_theme_router",

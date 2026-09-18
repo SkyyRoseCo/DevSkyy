@@ -390,6 +390,16 @@ open-claude-code/
 .wolf/_scan-state.json
 .wolf/anatomy-index.json
 
+# MCP server coordination state — machine-local locks/counters, not portable
+# across the dual-machine setup. Data SOT (.wolf/buglog.json, cerebrum.md)
+# stays tracked; these are pure mutex/sequence files (mcp_servers/_shared.py).
+.wolf/wolf.lock.db
+.wolf/wolf.lock.db-wal
+.wolf/wolf.lock.db-shm
+.wolf/fleet.db
+.wolf/fleet.db-wal
+.wolf/fleet.db-shm
+
 # --- claude-mem per-folder context injection ---
 # → CLAUDE.local.md (FOLDER_USE_LOCAL_MD=true). Claude Code still loads it as
 # local context; git ignores it so sync gathers info without churning
@@ -516,3 +526,6 @@ wordpress-theme/skyyrose-flagship/data/logo-registry.json.lock
 .venv-test/
 ci_mirror/
 dist/
+
+# Local pinned tool binaries (scripts/install_gltfpack.sh)
+.tools/

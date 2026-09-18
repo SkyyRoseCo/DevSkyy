@@ -353,20 +353,35 @@ add_filter( 'woocommerce_pagination_args', 'skyyrose_woocommerce_pagination_args
 /**
  * Display 3D model viewer button on single product pages.
  *
+ * Printed by woocommerce/single-product.php inside the gallery column (that
+ * template does not run woocommerce_single_product_summary); the hook below
+ * covers any product view that still does (WooCommerce core's
+ * content-single-product.php, [product_page] shortcode). The viewer script is
+ * enqueued here, right before printing, so it follows the button wherever it
+ * renders — a button without its script is dead UI. Prints at most once per
+ * request. URL policy + enqueue live in inc/product-3d-model.php.
+ *
  * @since 1.0.0
  * @return void
  */
 function skyyrose_woocommerce_3d_model_button() {
+	static $printed = false;
 
-	$model_file = get_post_meta( get_the_ID(), '_product_3d_model', true );
-
-	if ( empty( $model_file ) ) {
+	if ( $printed ) {
 		return;
 	}
 
+	$model_file = skyyrose_get_product_3d_model_url( get_the_ID() );
+
+	if ( '' === $model_file || ! skyyrose_enqueue_product_3d_viewer() ) {
+		return;
+	}
+
+	$printed = true;
 	printf(
-		'<div class="product-3d-viewer"><button type="button" class="button view-3d-model" data-model="%s">%s</button></div>',
+		'<div class="product-3d-viewer"><button type="button" class="button view-3d-model" data-model="%s" data-product-name="%s">%s</button></div>',
 		esc_url( $model_file ),
+		esc_attr( get_the_title() ),
 		esc_html__( 'View in 3D', 'skyyrose' )
 	);
 }
@@ -408,16 +423,18 @@ function skyyrose_product_3d_model_callback( $post ) {
 		<label for="skyyrose_product_3d_model">
 			<?php esc_html_e( '3D Model File URL (GLB/GLTF)', 'skyyrose' ); ?>
 		</label>
+		<?php // type="text", not "url": browser constraint validation rejects the site-relative form this field documents. Server-side validation is skyyrose_sanitize_3d_model_url(). ?>
 		<input
-			type="url"
+			type="text"
 			id="skyyrose_product_3d_model"
 			name="skyyrose_product_3d_model"
 			value="<?php echo esc_url( $value ); ?>"
 			style="width: 100%;"
+			spellcheck="false"
 		/>
 	</p>
 	<p class="description">
-		<?php esc_html_e( 'Enter the URL of the 3D model file (GLB or GLTF format).', 'skyyrose' ); ?>
+		<?php esc_html_e( 'Same-site path (/wp-content/…/model.glb) or https URL ending in .glb or .gltf. Anything else is discarded on save.', 'skyyrose' ); ?>
 	</p>
 	<?php
 }
@@ -452,8 +469,12 @@ function skyyrose_save_product_3d_model( $post_id ) {
 	}
 
 	if ( isset( $_POST['skyyrose_product_3d_model'] ) ) {
-		$url = esc_url_raw( wp_unslash( $_POST['skyyrose_product_3d_model'] ), array( 'https', 'http' ) );
-		update_post_meta( $post_id, '_product_3d_model', $url );
+		$url = skyyrose_sanitize_3d_model_url( sanitize_text_field( wp_unslash( $_POST['skyyrose_product_3d_model'] ) ) );
+		if ( '' === $url ) {
+			delete_post_meta( $post_id, '_product_3d_model' );
+		} else {
+			update_post_meta( $post_id, '_product_3d_model', $url );
+		}
 	}
 }
 add_action( 'save_post_product', 'skyyrose_save_product_3d_model' );

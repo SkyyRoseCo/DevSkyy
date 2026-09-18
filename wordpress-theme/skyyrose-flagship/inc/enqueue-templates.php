@@ -655,6 +655,19 @@ function skyyrose_enqueue_template_scripts() {
 
 	}
 
+	/*
+	 * PDP 3D viewer (WS3): early-in-head path for the theme's own product
+	 * template. skyyrose_woocommerce_3d_model_button() enqueues the same
+	 * script (idempotently) right before it prints, which also covers product
+	 * views this slug check never sees — [product_page] shortcodes and any
+	 * woocommerce_single_product_summary render. Policy + enqueue live in
+	 * inc/product-3d-model.php; nothing 3D is fetched before the first click.
+	 */
+	if ( 'single-product' === $slug && is_singular( 'product' )
+		&& '' !== skyyrose_get_product_3d_model_url( get_queried_object_id() ) ) {
+		skyyrose_enqueue_product_3d_viewer();
+	}
+
 	// Embedded experience layer (WS3): collection pages ship gsap +
 	// ScrollTrigger + immersive-core + feature-scroll + immersive engine +
 	// WC bridge via collection-motion-loader.js (Wave 7b) — injected in order
