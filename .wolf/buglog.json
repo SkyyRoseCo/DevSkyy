@@ -5828,5 +5828,50 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-18T12:24:55.806247+00:00"
+  },
+  {
+    "id": "bug-335",
+    "timestamp": "2026-09-18T12:36:51.126122+00:00",
+    "error_message": "Stop-gate blocked: tests/test_round_table.py::test_round_table_with_tools - Failed: Timeout (>10.0s) from pytest-timeout, stack ending in an SSL socket read inside httpcore/_sync/http11.py. Captured setup log shows huggingface_hub 'You are sending unauthenticated requests to the HF Hub'.",
+    "file": "tests/test_round_table.py",
+    "root_cause": "MEASURED: the test downloads an embedding model from Hugging Face Hub during fixture setup. Counter wrapping httpx.Client.send and httpx.AsyncClient.send over this single test: 33 sends, ALL 33 external, 4.45s of network time, every URL under huggingface.co for sentence-transformers/all-MiniLM-L6-v2 (modules.json, config_sentence_transformers.json, api/resolve-cache/...). In isolation the test PASSES in 8.80s -- under the 10s cap but with half of that being raw network round-trips, so a cold HF cache or a slow link pushes it over. Same defect class as bug-333/bug-334 (real network I/O inside a unit test) in a different subsystem: there the extractor made one HTTPS GET per asset, here a fixture pulls a model from the Hub.",
+    "fix": "NOT YET FIXED -- delegated to the subagent that closed the brand-assets instance, with no prescribed approach (my prescription was wrong on bug-333; its measurement was right). Do NOT fix by raising or removing the timeout. Requested a census first: run the request counter over the whole module and any other test importing an embedding/ML model, so the class is closed in one pass rather than one instance at a time. If the test genuinely requires a real embedding model to assert what it asserts, that is a legitimate finding to surface rather than fake. Attribution: pre-existing, unrelated to the session's product-SOT work -- the test imports only llm.round_table, and both the test and llm/ are clean in git.",
+    "tags": [
+      "test-timeout",
+      "network-in-tests",
+      "huggingface",
+      "embeddings",
+      "stop-gate",
+      "pre-existing",
+      "flake"
+    ],
+    "related_bugs": [
+      "bug-333",
+      "bug-334"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-18T12:36:51.126122+00:00"
+  },
+  {
+    "id": "bug-336",
+    "timestamp": "2026-09-18T12:43:19.203152+00:00",
+    "error_message": "ResponseScorer.initialize() fails open: any ML model load failure is caught, logged as a warning, and silently downgrades scoring to non-ML (llm/round_table.py:495-505). Found while reviewing the bug-335 fix.",
+    "file": "llm/round_table.py",
+    "root_cause": "llm/round_table.py:501-505 wraps `await self.advanced_metrics.initialize()` in `except Exception` and sets `self.enable_ml_scoring = False` on any failure. AdvancedMetrics.initialize() constructs SentenceTransformer('all-MiniLM-L6-v2') (llm/evaluation_metrics.py:73), which needs the HF cache or the network. On a machine with neither -- a clean CI box, or an offline run -- scoring silently degrades to the non-ML path and every caller, including the test suite, reports success. bug-230 pattern: a gate that passes when its input is absent. Concretely: before the bug-335 fix, tests/test_round_table.py's four scoring tests would have passed on the fallback path on any box without an HF cache, asserting nothing about the ML scoring they appear to cover. The bug-335 fix now proves the ML path is live (enable_ml_scoring=True, model=_OfflineSentenceTransformer, coherence=37.80, deterministic across runs), so the tests can no longer pass on the fallback -- but the production fail-open is unchanged.",
+    "fix": "NOT FIXED -- production behavior change, outside the test-only scope of the bug-335 work, and a founder call. Options: (1) fail closed when ML scoring was explicitly requested, so an absent model raises instead of silently degrading; (2) keep the degrade but surface it in the returned score object so callers can see which path produced the number, rather than only a log line. Related second finding, also unfixed: every ResponseScorer/LLMRoundTable instance constructs its own AdvancedMetrics and huggingface_hub re-validates the cached model online -- measured at 33 HTTPS requests and several seconds per instance -- so a process-level cached loader in llm/evaluation_metrics.py would cut that from production as well as tests.",
+    "tags": [
+      "fail-open",
+      "bug-230-pattern",
+      "ml-scoring",
+      "round-table",
+      "huggingface",
+      "production"
+    ],
+    "related_bugs": [
+      "bug-335",
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-18T12:43:19.203152+00:00"
   }
 ]

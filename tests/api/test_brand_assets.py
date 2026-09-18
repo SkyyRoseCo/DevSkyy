@@ -96,6 +96,14 @@ def _pin_pipeline(
     brand defaults on any error — so unpatched tests cannot distinguish a
     working pipeline from a broken one. Pinning both lets tests assert the
     persisted BrandAsset carries the pipeline's actual outputs.
+
+    Every test that POSTs to /ingest/bulk must pin (or patch both steps
+    itself). Unpinned, BulkIngestionRequest.extract_features defaults to True
+    and the BackgroundTask runs inline under ASGITransport, so the POST does
+    not return until extract_visual_features has made one real HTTPS GET per
+    asset — the suite's duration becomes the network's (bug-333/334: 100
+    assets blew the pytest timeout; the per-asset commits cost ~0.06s total).
+    No test in this file should leave the process.
     """
 
     async def fake_upload(
@@ -127,8 +135,13 @@ class TestBulkIngestion:
     """Tests for bulk ingestion endpoints."""
 
     @pytest.mark.asyncio
-    async def test_bulk_ingest_single_asset(self, client: AsyncClient) -> None:
+    async def test_bulk_ingest_single_asset(
+        self, client: AsyncClient, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
         """Should start bulk ingestion with single asset."""
+        # Pinned for determinism/speed only — unpinned, the inline background
+        # task makes a real HTTPS GET per asset (see test_bulk_ingest_max_100_assets).
+        _pin_pipeline(monkeypatch)
         response = await client.post(
             "/brand-assets/ingest/bulk",
             json={
@@ -151,8 +164,13 @@ class TestBulkIngestion:
         assert data["id"] is not None
 
     @pytest.mark.asyncio
-    async def test_bulk_ingest_multiple_assets(self, client: AsyncClient) -> None:
+    async def test_bulk_ingest_multiple_assets(
+        self, client: AsyncClient, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
         """Should handle multiple assets."""
+        # Pinned for determinism/speed only — unpinned, the inline background
+        # task makes a real HTTPS GET per asset (see test_bulk_ingest_max_100_assets).
+        _pin_pipeline(monkeypatch)
         response = await client.post(
             "/brand-assets/ingest/bulk",
             json={
@@ -170,9 +188,15 @@ class TestBulkIngestion:
         assert data["total"] == 3
 
     @pytest.mark.asyncio
-    @pytest.mark.timeout(30)  # 100-asset ingest sits at ~10s; flakes at the global 10s cap
-    async def test_bulk_ingest_max_100_assets(self, client: AsyncClient) -> None:
-        """Should accept up to 100 assets."""
+    async def test_bulk_ingest_max_100_assets(
+        self, client: AsyncClient, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """Should accept up to 100 assets and process every one of them."""
+        # Pinned so the inline background task never leaves the process. Unpinned,
+        # extract_visual_features issues one real HTTPS GET per asset (example.com
+        # 404 -> fallback), and 100 network round-trips at 0.1-0.4s each is what
+        # blew the pytest timeout (bug-333) — the per-asset commits cost ~0.06s total.
+        _pin_pipeline(monkeypatch)
         assets = [
             {"url": f"https://example.com/img{i}.jpg", "category": "product"} for i in range(100)
         ]
@@ -183,7 +207,15 @@ class TestBulkIngestion:
         )
 
         assert response.status_code == 200
-        assert response.json()["total"] == 100
+        data = response.json()
+        assert data["total"] == 100
+
+        job = (await client.get(f"/brand-assets/ingest/{data['id']}")).json()
+        assert job["status"] == "completed"
+        assert job["processed"] == 100
+        assert job["succeeded"] == 100
+        assert job["failed"] == 0
+        assert len(job["results"]) == 100
 
     @pytest.mark.asyncio
     async def test_bulk_ingest_over_limit(self, client: AsyncClient) -> None:
@@ -416,8 +448,12 @@ class TestBulkIngestion:
         assert extract_calls == []
 
     @pytest.mark.asyncio
-    async def test_get_ingestion_job(self, client: AsyncClient) -> None:
+    async def test_get_ingestion_job(
+        self, client: AsyncClient, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
         """Should retrieve ingestion job status."""
+        # Pinned for determinism/speed only — see _pin_pipeline.
+        _pin_pipeline(monkeypatch)
         # Create job
         create_response = await client.post(
             "/brand-assets/ingest/bulk",
@@ -746,8 +782,12 @@ class TestPersistence:
             assert row.url == asset.url
 
     @pytest.mark.asyncio
-    async def test_ingestion_job_survives_new_session(self, client: AsyncClient) -> None:
+    async def test_ingestion_job_survives_new_session(
+        self, client: AsyncClient, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
         """A job written in one session must be readable from a new one."""
+        # Pinned for determinism/speed only — see _pin_pipeline.
+        _pin_pipeline(monkeypatch)
         response = await client.post(
             "/brand-assets/ingest/bulk",
             json={

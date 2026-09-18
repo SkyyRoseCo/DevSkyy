@@ -9,8 +9,13 @@ This test suite covers:
 
 from __future__ import annotations
 
+import re
+import zlib
+
+import numpy as np
 import pytest
 
+import llm.evaluation_metrics as evaluation_metrics
 from llm.round_table import (
     LLMProvider,
     LLMResponse,
@@ -22,6 +27,45 @@ from llm.round_table import (
 # =============================================================================
 # Fixtures
 # =============================================================================
+
+
+class _OfflineSentenceTransformer:
+    """Deterministic, in-process stand-in for sentence_transformers.SentenceTransformer.
+
+    Same contract AdvancedMetrics relies on — ``encode(list[str]) -> ndarray[n, d]``
+    — but the vectors are hashed bag-of-words counts, so cosine similarity is a
+    stable function of lexical overlap and every scoring path (coherence,
+    factuality, hallucination) still runs on real arrays. Nothing here touches
+    the network or the HF cache.
+    """
+
+    DIM = 64
+
+    def __init__(self, model_name: str, *args: object, **kwargs: object) -> None:
+        self.model_name = model_name
+
+    def encode(self, sentences: list[str], **kwargs: object) -> np.ndarray:
+        vectors = np.zeros((len(sentences), self.DIM), dtype=np.float32)
+        for row, sentence in enumerate(sentences):
+            for token in re.findall(r"\w+", sentence.lower()):
+                vectors[row, zlib.crc32(token.encode()) % self.DIM] += 1.0
+        return vectors
+
+
+@pytest.fixture(autouse=True)
+def offline_embedder(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Keep every test in this module offline and deterministic.
+
+    ResponseScorer (llm/round_table.py) builds an AdvancedMetrics whose
+    initialize() constructs SentenceTransformer("all-MiniLM-L6-v2")
+    (llm/evaluation_metrics.py:73). Even with the model cached, huggingface_hub
+    re-validates it online on every construction — measured at 33 HTTPS requests
+    and 5-9s per test, right at the 10s cap, for all four tests that use the
+    round_table/scorer fixtures. None of them assert on embedding quality, so
+    the module-level name AdvancedMetrics resolves at call time is swapped for
+    the stand-in above.
+    """
+    monkeypatch.setattr(evaluation_metrics, "SentenceTransformer", _OfflineSentenceTransformer)
 
 
 @pytest.fixture
