@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Shared, validated readers for the per-collection SOT pipeline.
 
-Single place that loads the masters (identity.json, visual-manifest.json,
-logo-registry.json) and resolves asset paths. Both build-collection-sot.py and
+Single place that loads the masters (visual-manifest.json and logo-registry.json,
+whose ``collections`` section holds each collection's identity) and resolves
+asset paths. Both build-collection-sot.py and
 verify-collection-sot.py import from here so resolution + validation never drift.
 """
 
@@ -26,7 +27,7 @@ IMG_EXTS = (".webp", ".avif", ".png", ".jpg", ".jpeg", ".svg", ".mp4", ".webm")
 
 
 class IdentityError(Exception):
-    """identity.json failed schema validation or could not be read."""
+    """A collection identity failed schema validation or could not be read."""
 
 
 def slug_to_key(slug: str) -> str:
@@ -54,27 +55,31 @@ def load_logo_registry():
 
 
 def load_identity() -> dict[str, Any]:
-    """Return {slug: identity dict} for every collection folder, schema-validated."""
+    """Return {slug: identity dict} from the registry's ``collections``, schema-validated.
+
+    Collection identity (story, palette, fonts, lockup, hero imagery) lives in the
+    product registry beside the products it frames; identity.schema.json still
+    validates every entry in full.
+    """
     import jsonschema
 
     schema = _load_json(SCHEMA)
+    collections = load_logo_registry().get("collections")
+    if not isinstance(collections, dict) or not collections:
+        raise IdentityError(f"no collections section in {LOGO_REG}")
     out = {}
-    for d in sorted(p for p in COLLECTIONS_DIR.iterdir() if p.is_dir()):
-        fp = d / "identity.json"
-        if not fp.is_file():
-            continue
-        ident = _load_json(fp)
+    for slug in sorted(collections):
+        where = f"{LOGO_REG} collections.{slug}"
+        ident = collections[slug]
         try:
             jsonschema.validate(ident, schema)
         except jsonschema.ValidationError as e:
-            raise IdentityError(f"{fp}: {e.message}") from e
-        if ident["slug"] != d.name:
-            raise IdentityError(f"{fp}: slug '{ident['slug']}' != folder '{d.name}'")
-        if ident["key"] != slug_to_key(ident["slug"]):
-            raise IdentityError(f"{fp}: key must be slug_to_key('{ident['slug']}')")
-        out[d.name] = ident
-    if not out:
-        raise IdentityError(f"no identity.json found under {COLLECTIONS_DIR}")
+            raise IdentityError(f"{where}: {e.message}") from e
+        if ident["slug"] != slug:
+            raise IdentityError(f"{where}: slug '{ident['slug']}' != key '{slug}'")
+        if ident["key"] != slug_to_key(slug):
+            raise IdentityError(f"{where}: key must be slug_to_key('{slug}')")
+        out[slug] = ident
     return out
 
 

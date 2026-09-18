@@ -1,7 +1,7 @@
 {
   "$schema": "SkyyRose single editable product registry. products owns complete product specifications and asset bindings; sku_logos and logos own graphic identities, placements and decoration sizing. Root logo-registry.json is a symlink to this same file. CSV, dossier Markdown and collection manifests are generated compatibility projections; edit this registry first and run scripts/sync_product_registry.py. Founder/maker corrections govern.",
-  "version": 13,
-  "updated": "2026-09-13",
+  "version": 14,
+  "updated": "2026-09-18",
   "brand_primary": "sr-monogram-rose-gold",
   "logos": {
     "sr-monogram-rose-gold": {
@@ -1340,6 +1340,16 @@
   ],
   "changelog": [
     {
+      "version": 14,
+      "date": "2026-09-18",
+      "changes": [
+        "Schema v2: folded render-corrections.json into products[sku].corrections (20 SKUs, 41 lines, wording verbatim). Each line names its provenance: 32 are the founder's review-board comments (FOUNDER_VERBATIM, 2026-06-09); 9 two-rose/chest-scale lines added 2026-06-12 per a Fable vision test are AGENT_ADDED.",
+        "Folded render-keepers.json into products[sku].render_policy.keepers (br-006, sg-009) and both files' _meta into authority_contract.",
+        "Folded the four data/collections/<slug>/identity.json files into the top-level collections section; identity.schema.json still validates each entry.",
+        "Not folded: skyyrose/assets/data/product-content.json and alt-text.json (Gemini copy from skyyrose/build/gemini-content.js's own hard-coded 20-SKU table; 11 of 19 names differ from this registry, 5 describe a different garment, alt-text keys name images this registry never bound). get_product stopped serving them (bug-338); copy now lives only in products[sku].content, written field by field with its author. Which records return is the founder's decision."
+      ]
+    },
+    {
       "version": 13,
       "date": "2026-09-13",
       "changes": [
@@ -1489,6 +1499,203 @@
     "founder_quote": "the actual patch on all jerseys is width 3inches length 4 inches",
     "instruction_timestamp": "2026-08-21T03:39:46.314Z"
   },
+  "collections": {
+    "black-rose": {
+      "slug": "black-rose",
+      "key": "black_rose",
+      "name": "Black Rose",
+      "status": "verified",
+      "story": {
+        "seed": "Defining beauty through the color black.",
+        "doc_ref": "docs/brand/collection-stories.md#black-rose"
+      },
+      "palette": {
+        "black": "#0A0A0A",
+        "white": "#FFFFFF",
+        "silver": "#C0C0C0",
+        "accent": "#C0C0C0",
+        "accent_dark": "#999999",
+        "secondary": "#FFFFFF",
+        "bg": "#0A0A0A",
+        "text": "#F5F5F5"
+      },
+      "fonts": {
+        "script": {
+          "family": "SkyyRose Black Rose Script",
+          "woff2": "assets/fonts/skyyrose-black-rose-script-latin.woff2",
+          "source": "SkyyRose custom (built from AI glyph sheets)"
+        },
+        "caps": {
+          "family": "Cinzel",
+          "woff2": "assets/fonts/cinzel-latin.woff2",
+          "source": "OFL (already hosted)"
+        },
+        "body": {
+          "family": "Hanken Grotesk",
+          "woff2": "assets/fonts/hanken-grotesk-latin.woff2",
+          "source": "OFL (already hosted)"
+        }
+      },
+      "lockup": {
+        "ref": "images/lockups/black-rose-lockup.webp"
+      },
+      "imagery": {
+        "hero": {
+          "path": "branding/hero/forbidden-midnight",
+          "kind": "cinematic-backdrop",
+          "status": "interim-pending-mj",
+          "notes": "Interim wide master. Dedicated Black Rose MJ hero (docs/brand/immersive-hero-prompts.md) replaces this once generated."
+        }
+      },
+      "known_orphans": []
+    },
+    "kids-capsule": {
+      "slug": "kids-capsule",
+      "key": "kids_capsule",
+      "name": "Kids Capsule",
+      "status": "verified",
+      "story": {
+        "seed": "The Heir to the throne.",
+        "doc_ref": "docs/brand/collection-stories.md#kids-capsule"
+      },
+      "palette": {
+        "gold": "#D4AF37",
+        "rose_gold": "#B76E79",
+        "accent": "#B76E79",
+        "accent_dark": "#B8960C",
+        "secondary": "#B76E79",
+        "bg": "#0A0A0A",
+        "text": "#F5E6D3"
+      },
+      "fonts": {
+        "script": {
+          "family": "Grand Hotel",
+          "woff2": "assets/fonts/grand-hotel-latin.woff2",
+          "source": "OFL / Google Fonts"
+        },
+        "caps": {
+          "family": "Cinzel",
+          "woff2": "assets/fonts/cinzel-latin.woff2",
+          "source": "OFL (already hosted)"
+        },
+        "body": {
+          "family": "Hanken Grotesk",
+          "woff2": "assets/fonts/hanken-grotesk-latin.woff2",
+          "source": "OFL (already hosted)"
+        }
+      },
+      "lockup": {
+        "ref": "images/logos/sr-monogram-rose-gold"
+      },
+      "imagery": {
+        "hero": {
+          "path": "branding/hero/luxury-nighttime",
+          "kind": "cinematic-backdrop",
+          "status": "interim-pending-mj",
+          "notes": "Placeholder wide master. Dedicated Kids Capsule MJ hero (docs/brand/immersive-hero-prompts.md) replaces this once generated."
+        }
+      },
+      "known_orphans": []
+    },
+    "love-hurts": {
+      "slug": "love-hurts",
+      "key": "love_hurts",
+      "name": "Love Hurts",
+      "status": "verified",
+      "story": {
+        "seed": "Beauty and the Beast told from the Beast's perspective, through luxury attire.",
+        "doc_ref": "docs/brand/collection-stories.md#love-hurts"
+      },
+      "palette": {
+        "red": "#DC143C",
+        "red_dark": "#9B0F2E",
+        "white": "#FFFFFF",
+        "black": "#0A0A0A",
+        "accent": "#DC143C",
+        "accent_dark": "#9B0F2E",
+        "secondary": "#FFFFFF",
+        "bg": "#0A0A0A",
+        "text": "#F5F5F5"
+      },
+      "fonts": {
+        "script": {
+          "family": "SkyyRose Love Hurts Graffiti",
+          "woff2": "assets/fonts/skyyrose-love-hurts-graffiti-latin.woff2",
+          "source": "SkyyRose custom (graffiti face from lockup)"
+        },
+        "caps": {
+          "family": "Cinzel",
+          "woff2": "assets/fonts/cinzel-latin.woff2",
+          "source": "OFL (already hosted)"
+        },
+        "body": {
+          "family": "Hanken Grotesk",
+          "woff2": "assets/fonts/hanken-grotesk-latin.woff2",
+          "source": "OFL (already hosted)"
+        }
+      },
+      "lockup": {
+        "ref": "images/lockups/love-hurts-lockup.webp"
+      },
+      "imagery": {
+        "hero": {
+          "path": "branding/hero/beauty-and-beast",
+          "kind": "cinematic-backdrop",
+          "status": "interim-pending-mj",
+          "notes": "Interim wide master. Dedicated Love Hurts MJ hero (docs/brand/immersive-hero-prompts.md) replaces this once generated."
+        }
+      },
+      "known_orphans": []
+    },
+    "signature": {
+      "slug": "signature",
+      "key": "signature",
+      "name": "Signature",
+      "status": "verified",
+      "story": {
+        "seed": "The beginning of it all — where it started from.",
+        "doc_ref": "docs/brand/collection-stories.md#signature"
+      },
+      "palette": {
+        "gold": "#D4AF37",
+        "rose_gold": "#B76E79",
+        "accent": "#D4AF37",
+        "accent_dark": "#B8960C",
+        "secondary": "#B76E79",
+        "bg": "#0A0A0A",
+        "text": "#F5E6D3"
+      },
+      "fonts": {
+        "script": {
+          "family": "Pinyon Script",
+          "woff2": "assets/fonts/pinyon-script-latin.woff2",
+          "source": "OFL / Google Fonts"
+        },
+        "caps": {
+          "family": "Cinzel",
+          "woff2": "assets/fonts/cinzel-latin.woff2",
+          "source": "OFL (already hosted)"
+        },
+        "body": {
+          "family": "Hanken Grotesk",
+          "woff2": "assets/fonts/hanken-grotesk-latin.woff2",
+          "source": "OFL (already hosted)"
+        }
+      },
+      "lockup": {
+        "ref": "images/lockups/signature-lockup.webp"
+      },
+      "imagery": {
+        "hero": {
+          "path": "branding/hero/luxury-nighttime",
+          "kind": "cinematic-backdrop",
+          "status": "interim-pending-mj",
+          "notes": "Interim wide master. Dedicated Signature MJ hero (docs/brand/immersive-hero-prompts.md) replaces this once generated."
+        }
+      },
+      "known_orphans": []
+    }
+  },
   "products": {
     "br-001": {
       "catalog": {
@@ -1563,6 +1770,18 @@
           "resolved": "images/products/black-rose-crewneck-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE separate roses — one dominant upright rose plus a smaller rose or bud offset to the side, on a single cumulus cloud at the base. It is NOT a single large bloom and NOT a peony. Keep the roses as distinct flowers; do not merge them into one.",
+          "authority": "AGENT_ADDED",
+          "captured": "2026-06-12"
+        },
+        {
+          "text": "[ghost] Render the rose logo at the size and position shown in the real product photo and tech flat — do NOT enlarge it to fill or dominate the chest.",
+          "authority": "AGENT_ADDED",
+          "captured": "2026-06-12"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-crewneck-front.jpeg",
@@ -1647,6 +1866,18 @@
           "resolved": "images/products/black-rose-joggers-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost-back] no logo on back",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE separate roses — one dominant upright rose plus a smaller rose or bud offset to the side, on a single cumulus cloud at the base. It is NOT a single large bloom and NOT a peony. Keep the roses as distinct flowers; do not merge them into one.",
+          "authority": "AGENT_ADDED",
+          "captured": "2026-06-12"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-joggers-front.jpeg",
@@ -1815,6 +2046,18 @@
           "resolved": "images/products/black-rose-hoodie-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE separate roses — one dominant upright rose plus a smaller rose or bud offset to the side, on a single cumulus cloud at the base. It is NOT a single large bloom and NOT a peony. Keep the roses as distinct flowers; do not merge them into one.",
+          "authority": "AGENT_ADDED",
+          "captured": "2026-06-12"
+        },
+        {
+          "text": "[ghost] Render the rose logo at the size and position shown in the real product photo and tech flat — do NOT enlarge it to fill or dominate the chest.",
+          "authority": "AGENT_ADDED",
+          "captured": "2026-06-12"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-source.jpg",
@@ -1899,6 +2142,18 @@
           "resolved": "images/products/black-rose-hoodie-signature-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[on-model] the logo is on the sleeve and its supposed to be on the side or the hoodie",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE separate roses — one dominant upright rose plus a smaller rose or bud offset to the side, on a single cumulus cloud at the base. It is NOT a single large bloom and NOT a peony. Keep the roses as distinct flowers; do not merge them into one.",
+          "authority": "AGENT_ADDED",
+          "captured": "2026-06-12"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-signature-edition-hoodie-ltd-source.jpg",
@@ -1982,6 +2237,28 @@
           "path": "assets/images/products/black-rose-sherpa-jacket-back.jpg",
           "resolved": "images/products/black-rose-sherpa-jacket-back.jpg"
         }
+      },
+      "corrections": [
+        {
+          "text": "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE separate roses — one dominant upright rose plus a smaller rose or bud offset to the side, on a single cumulus cloud at the base. It is NOT a single large bloom and NOT a peony. Keep the roses as distinct flowers; do not merge them into one.",
+          "authority": "AGENT_ADDED",
+          "captured": "2026-06-12"
+        },
+        {
+          "text": "[ghost] Render the rose logo at the size and position shown in the real product photo and tech flat — do NOT enlarge it to fill or dominate the chest.",
+          "authority": "AGENT_ADDED",
+          "captured": "2026-06-12"
+        }
+      ],
+      "render_policy": {
+        "keepers": [
+          {
+            "style": "on-model",
+            "view": "front",
+            "asset": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-sherpa-jacket-front-model.webp",
+            "founder_note": "real product — approved 2026-06-10"
+          }
+        ]
       },
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
@@ -2067,6 +2344,23 @@
           "resolved": "images/products/hub/br-007-back.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost-back] Love Hurts is only on the side not across the back",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] oakland needs to be centered and slightly bigger",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE separate roses — one dominant upright rose plus a smaller rose or bud offset to the side, on a single cumulus cloud at the base. It is NOT a single large bloom and NOT a peony. Keep the roses as distinct flowers; do not merge them into one.",
+          "authority": "AGENT_ADDED",
+          "captured": "2026-06-12"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/references/br-007-shorts-real-front.jpeg",
@@ -2147,6 +2441,23 @@
           "resolved": "images/products/br-008-onmodel.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost-back] rose logo only goes in the 0 in back",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] rose only goes in the 8 in front",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[on-model] fix logo inside numbers",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-jersey-football-sf-front.jpeg",
@@ -2223,6 +2534,23 @@
           "resolved": "images/products/br-009-onmodel.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost-back] rose logo only goes in the 2 in back",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] rose logo only goes in the 3 infront",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[on-model] fix rose logo only goes in the 3",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-jersey-football-oakland-front.jpeg",
@@ -2383,6 +2711,18 @@
           "resolved": "images/products/br-011-the-rose-hockey-back.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost-back] adjust hood",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] adjust hood",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-jersey-hockey-front.jpeg",
@@ -2719,6 +3059,18 @@
           "resolved": "images/products/lh-004-bomber-back.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost-back] doesn't look satin",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] doesn't look satin",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/love-hurts/lh-bomber-front.jpeg",
@@ -2794,6 +3146,18 @@
           "resolved": "images/products/the-fannie-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost] logo is supposed the be the dot of the I",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[on-model] logo is supposed the be the dot of the I",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/the-fannie-pack-photo.jpg",
@@ -2962,6 +3326,18 @@
           "resolved": "images/products/bridge-bay-bridge-shorts-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost-back] looks more like a tech flat",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] missing logo and not rendered looks more like a tech flat",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
@@ -3056,6 +3432,13 @@
           "resolved": "images/products/stay-golden-tee-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost] needs to be slightly bigger and look embroidered for the logo",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg",
@@ -3150,6 +3533,18 @@
           "resolved": "images/products/bridge-stay-golden-shorts-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost-back] looks more like a tech flat",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] missing logo and not rendered looks more like a tech flat",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png",
@@ -3243,6 +3638,13 @@
           "resolved": "images/products/bridge-bay-bridge-shirt-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost] doesn't look like my logo and logo needs to be centered with the bay bridge imagery embroidered into the rose",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg",
@@ -3416,6 +3818,18 @@
           "resolved": "images/products/signature-beanie-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost] logo Is a patch not directly on beanie",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[on-model] logo Is a patch not directly on beanie",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/signature/sg-beanie-purple.jpeg",
@@ -3499,6 +3913,28 @@
           "path": "assets/images/products/signature-sherpa-jacket-back-model.webp",
           "resolved": "images/products/signature-sherpa-jacket-back-model.webp"
         }
+      },
+      "corrections": [
+        {
+          "text": "[ghost] sherpa lining doesn't show on bottom",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[on-model] sherpa lining doesn't show on bottom",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
+      "render_policy": {
+        "keepers": [
+          {
+            "style": "on-model",
+            "view": "front",
+            "asset": "wordpress-theme/skyyrose-flagship/assets/images/products/signature-sherpa-jacket-front-model.webp",
+            "founder_note": "good render, save it — approved 2026-06-10 (same image briefly named front-closed in a1f84aa2e)"
+          }
+        ]
       },
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
@@ -3668,6 +4104,18 @@
           "resolved": "images/products/original-label-tee-orchid-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost] ADDED A LOGO",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[on-model] ADDED A LOGO",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-012-original-label-tee-orchid.webp",
@@ -3986,6 +4434,18 @@
           "resolved": "images/products/kids-red-set-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost-back] not rendered to look 3d extra logos were added",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] not rendered to look 3d extra logos were added",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/kids-capsule/kids-red-hoodie-front.jpeg",
@@ -4066,6 +4526,18 @@
           "resolved": "images/products/kids-purple-set/kids-purple-set-back-model.webp"
         }
       },
+      "corrections": [
+        {
+          "text": "[ghost-back] not rendered to look 3d extra logos were added",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        },
+        {
+          "text": "[ghost] not rendered to look 3d extra logos were added",
+          "authority": "FOUNDER_VERBATIM",
+          "captured": "2026-06-09"
+        }
+      ],
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/kids-capsule/kids-purple-hoodie-front.jpeg",
@@ -4264,7 +4736,7 @@
     "features",
     "sizing_references"
   ],
-  "product_registry_schema_version": 1,
+  "product_registry_schema_version": 2,
   "authority_contract": {
     "editable_source": "data/logo-registry.json",
     "scope": "Complete product records: catalog, color, sizing references, fit, materials, features, full dossier, logo identity/placements/decoration dimensions and effective image bindings.",
@@ -4280,7 +4752,21 @@
     "field_rule": "catalog is commerce data; garment holds explicit garment facts; dossier is the complete design specification. Apply founder corrections coherently within this one record.",
     "csv_field_rule": "CSV color, sizes, fit, materials, features and sizing_references are projected from garment; image columns are projected from images. Edit those authoritative fields in this registry, then regenerate exports.",
     "render_reference_rule": "render_sources.reference preserves the previously selected supplemental source path. It is not a new media approval or proof that an image is a real photograph. All renderer sources must be explicitly bound here; filenames cannot introduce authority.",
-    "garment_artwork_rule": "A garment_artwork render_reference is a hash-bound complete product source, not a reusable generic logo. Its path must match the SKU front source; its declared view limits supported artwork evidence."
+    "garment_artwork_rule": "A garment_artwork render_reference is a hash-bound complete product source, not a reusable generic logo. Its path must match the SKU front source; its declared view limits supported artwork evidence.",
+    "render_corrections_source": {
+      "source": "founder review board annotations, 2026-06-09 (renders/oai/_review/review-state.json)",
+      "authorship": "32 lines are the founder's verbatim review-board comments (authority FOUNDER_VERBATIM, captured 2026-06-09; [view] prefix added mechanically). 9 lines were added 2026-06-12 per a Fable vision test (authority AGENT_ADDED): the two-rose cluster line on br-001/002/004/005/006/007 and the chest-scale line on br-001/004/006. Each line names its author in products[sku].corrections.",
+      "consumed_by": "scripts/oai_render/prompt.py — injected as FOUNDER CORRECTIONS block",
+      "excluded_skus_note": "sg-006/sg-014 corrections intentionally omitted: their 2026-06-09 flags were wholesale wrong-product (bug-119 dossier contamination), not zone-level fixes. Dossiers re-authored 2026-06-10 from the real mint garments; both SKUs render again.",
+      "notes": [
+        "2026-06-12: added two-rose/anti-peony cluster constraint (+chest-scale on br-001/004/006) per Fable vision test — gpt-image-2 was drifting the cluster to a single peony and oversizing it."
+      ]
+    },
+    "render_keepers_source": {
+      "source": "tasks/mockup-render-inventory.md — founder keep/re-render pass",
+      "rule": "each entry skips one (sku, style, view) plan in --all batches; explicit --sku still renders it (founder override)",
+      "updated": "2026-06-10"
+    }
   },
   "render_source_aliases": {
     "sg-004": {

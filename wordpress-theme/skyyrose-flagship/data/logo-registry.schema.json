@@ -21,7 +21,10 @@
       "type": "string",
       "description": "Prose statement of what this file governs. Kept for readers who open the raw JSON."
     },
-    "version": { "type": ["integer", "string"], "description": "Registry revision. Currently an integer; strings accepted for forward compatibility." },
+    "version": {
+      "type": ["integer", "string"],
+      "description": "Registry revision. Currently an integer; strings accepted for forward compatibility."
+    },
     "updated": { "type": "string", "format": "date" },
     "product_registry_schema_version": { "type": "integer", "minimum": 1 },
     "authority_contract": {
@@ -41,29 +44,11 @@
     },
     "collections": {
       "type": "object",
-      "description": "Schema v2: per-collection identity absorbed from data/collections/<slug>/identity.json.",
+      "description": "Schema v2: per-collection identity (story, palette, fonts, lockup, hero imagery), folded in from the retired data/collections/<slug>/identity.json files. Each entry is validated in full against data/collections/identity.schema.json by sot_common.load_identity(); this schema only pins the keys that identify it.",
       "propertyNames": { "$ref": "#/$defs/collectionSlug" },
       "additionalProperties": {
         "type": "object",
-        "required": ["name", "status"],
-        "properties": {
-          "key": { "type": "string" },
-          "name": { "type": "string" },
-          "status": { "type": "string" },
-          "story": { "type": "object" },
-          "palette": { "type": "object" },
-          "fonts": {
-            "type": "object",
-            "properties": {
-              "script": { "type": "string" },
-              "caps": { "type": "string" },
-              "body": { "type": "string" }
-            }
-          },
-          "lockup": { "type": "object" },
-          "imagery": { "type": "object" },
-          "known_orphans": { "type": "array" }
-        }
+        "required": ["slug", "key", "name", "status"]
       }
     },
 
@@ -115,6 +100,18 @@
       "properties": {
         "specification": { "type": ["string", "null"] },
         "source": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "copyField": {
+      "type": "object",
+      "description": "One field of product copy and its writer.",
+      "required": ["value", "authority", "source", "updated"],
+      "properties": {
+        "value": { "type": "string", "minLength": 1 },
+        "authority": { "enum": ["FOUNDER_AUTHORED", "AGENT_GENERATED"] },
+        "source": { "type": "string", "minLength": 1 },
+        "updated": { "type": "string", "format": "date" }
       },
       "additionalProperties": false
     },
@@ -176,37 +173,55 @@
 
         "content": {
           "type": "object",
-          "description": "Schema v2: marketing copy absorbed from product-content.json and alt-text.json. Absent fields are null, never empty strings.",
+          "description": "Schema v2: product copy beyond catalog.description. Written through product_registry.update_product_content, one field at a time; each field records who wrote it, so agent copy is never mistaken for the founder's words. An absent field is absent, never an empty string. alt_text maps a registry-bound image's file stem to its alt text and writer.",
           "properties": {
-            "description": { "type": ["string", "null"] },
-            "short_description": { "type": ["string", "null"] },
-            "seo_meta": { "type": ["string", "null"] },
-            "instagram": { "type": ["string", "null"] },
-            "tiktok": { "type": ["string", "null"] },
-            "alt_text": { "type": "object" },
-            "authority": { "type": ["string", "null"] }
+            "description": { "$ref": "#/$defs/copyField" },
+            "short_description": { "$ref": "#/$defs/copyField" },
+            "seo_meta": { "$ref": "#/$defs/copyField" },
+            "instagram": { "$ref": "#/$defs/copyField" },
+            "tiktok": { "$ref": "#/$defs/copyField" },
+            "alt_text": {
+              "type": "object",
+              "description": "Alt text keyed by the file stem of a registry-bound image of this product. Written via product_registry.update_product_alt_text, which refuses unbound images.",
+              "additionalProperties": { "$ref": "#/$defs/copyField" }
+            }
           },
           "additionalProperties": false
         },
         "corrections": {
           "type": "array",
-          "description": "Schema v2: founder-verbatim render corrections from render-corrections.json. Wording is preserved exactly.",
+          "description": "Schema v2: render corrections injected into every render prompt for this SKU, folded in from render-corrections.json. Wording is preserved exactly, including the mechanical [view] prefix. authority names who wrote the line: FOUNDER_VERBATIM for the founder's review-board comments, AGENT_ADDED for lines an agent added (see authority_contract.render_corrections_source).",
           "items": {
             "type": "object",
-            "required": ["text", "authority"],
+            "required": ["text", "authority", "captured"],
             "properties": {
-              "text": { "type": "string" },
-              "view": { "type": ["string", "null"] },
-              "captured": { "type": ["string", "null"] },
-              "authority": { "type": "string", "const": "FOUNDER_VERBATIM" }
+              "text": { "type": "string", "minLength": 1 },
+              "authority": { "enum": ["FOUNDER_VERBATIM", "AGENT_ADDED"] },
+              "captured": { "type": "string", "format": "date" }
             },
             "additionalProperties": false
           }
         },
         "render_policy": {
           "type": "object",
-          "description": "Schema v2: keep/re-render decisions absorbed from render-keepers.json.",
-          "properties": { "keepers": { "type": "array" } },
+          "description": "Schema v2: founder keep decisions, folded in from render-keepers.json. A keeper skips one (style, view) render plan in batch runs while its asset still exists; an explicit --sku run still renders it.",
+          "required": ["keepers"],
+          "properties": {
+            "keepers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["style", "view", "asset", "founder_note"],
+                "properties": {
+                  "style": { "type": "string", "minLength": 1 },
+                  "view": { "type": "string", "minLength": 1 },
+                  "asset": { "type": "string", "minLength": 1 },
+                  "founder_note": { "type": "string", "minLength": 1 }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
           "additionalProperties": false
         },
 

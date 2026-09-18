@@ -30,19 +30,23 @@ from catalog import (
 
 
 def _format_product(p: Product) -> str:
-    """Render one product as a compact, model-readable line."""
-    stock = "in stock" if p.in_stock else "SOLD OUT"
+    """Render one product as a compact, model-readable line.
+
+    Availability is the registry's own status (pre-order / available / unpublished);
+    the registry holds no stock counts, so none are ever shown.
+    """
     sizes = ", ".join(p.sizes)
     return (
-        f"{p.sku} — {p.name} ({p.collection}) | ${p.price_usd:.2f} | {stock} | "
+        f"{p.sku} — {p.name} ({p.collection}) | ${p.price_usd:.2f} | {p.availability} | "
         f"sizes: {sizes}\n    {p.description}"
     )
 
 
 @tool(
     "lookup_product",
-    "Look up SkyyRose products by SKU (e.g. 'br-001') or by name keyword (e.g. 'rose hoodie'). "
-    "Returns matching products with price, stock status, sizes, and description.",
+    "Look up SkyyRose products by SKU (e.g. 'br-001') or by name keyword (e.g. 'rose crewneck'). "
+    "Returns matching products with price, availability (pre-order / available / unpublished), "
+    "sizes, and description, straight from the product registry.",
     {"query": str},
     annotations=ToolAnnotations(readOnlyHint=True),  # read-only -> safe to batch in parallel
 )
@@ -100,13 +104,14 @@ async def list_collection(args: dict[str, Any]) -> dict[str, Any]:
     name, meta = resolved
     products = products_in_collection(name)
     body = "\n".join(_format_product(p) for p in products) or "    (no products listed yet)"
-    header = f"{name} (accent {meta.accent}) — {meta.ethos}\n{len(products)} product(s):"
+    header = f"{name} (accent {meta.accent}) — {meta.story}\n{len(products)} product(s):"
     return {"content": [{"type": "text", "text": f"{header}\n{body}"}]}
 
 
 @tool(
     "collection_canon",
-    "Get the brand canon for a single collection — its ethos, accent color, and lineage — "
+    "Get the brand canon for a single collection — its story line, accent color, and the "
+    "founder story it comes from — "
     "WITHOUT listing products. Use this when the user asks what a collection is about, its "
     "story, or its vibe. Valid: Signature, Black Rose, Love Hurts, Kids Capsule.",
     {"collection": str},
@@ -127,7 +132,7 @@ async def collection_canon(args: dict[str, Any]) -> dict[str, Any]:
         }
 
     name, meta = resolved
-    text = f"{name}\n  accent : {meta.accent}\n  ethos  : {meta.ethos}\n  lineage: {meta.lineage}"
+    text = f"{name}\n  accent : {meta.accent}\n  story  : {meta.story}\n  source : {meta.story_ref}"
     return {"content": [{"type": "text", "text": text}]}
 
 

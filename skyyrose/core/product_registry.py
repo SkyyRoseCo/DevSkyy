@@ -17,6 +17,18 @@ PRODUCT_REGISTRY = (
     / "wordpress-theme/skyyrose-flagship/data/logo-registry.json"
 )
 
+# Vercel builds the dashboard from frontend/, so its serverless functions cannot
+# read the monorepo parent; they read this byte-for-byte copy of the catalog
+# projection instead. It is generated here like every other projection, so a
+# registry edit refreshes it and ``--check`` fails the moment it drifts.
+FRONTEND_CATALOG_REPLICA = (
+    Path(__file__).resolve().parents[2] / "frontend/data/skyyrose-catalog.csv"
+)
+# The real registry file, fixed at import. The replica belongs to it alone: a
+# caller (or test) that points PRODUCT_REGISTRY at a copy must never rewrite the
+# tracked dashboard replica from that copy.
+_CANONICAL_REGISTRY = PRODUCT_REGISTRY.resolve()
+
 # Dossier files the founder chose to keep that no product projects to. Each is
 # exempt from the orphan check by exact filename only, with the reason; any
 # other unowned dossier still fails it. tests/test_unified_product_registry.py
@@ -92,8 +104,10 @@ def _atomic_write(path: Path, content: str) -> None:
             os.unlink(temporary)
 
 
-def update_catalog_fields(sku: str, changes: dict[str, str], path: Path | None = None) -> None:
+def update_catalog_fields(sku: str, changes: dict[str, str], path: Path | None = None) -> list[str]:
     """Atomically update one product, preserving unrelated concurrent fields.
+
+    Returns the catalog keys whose value actually changed, read under the lock.
 
     Image-column changes update the corresponding effective image binding in
     the same transaction. Compatibility projections are written before the
@@ -116,6 +130,7 @@ def update_catalog_fields(sku: str, changes: dict[str, str], path: Path | None =
             raise ValueError("Unknown or identity-changing catalog fields")
         if any(not isinstance(value, str) for value in changes.values()):
             raise ValueError("Catalog field values must remain strings")
+        changed = sorted(k for k, v in changes.items() if product["catalog"].get(k) != v)
         for key, value in changes.items():
             product["catalog"][key] = value
             if key.lower() == "color":
@@ -147,6 +162,118 @@ def update_catalog_fields(sku: str, changes: dict[str, str], path: Path | None =
                 else:
                     _atomic_write(destination, previous[destination])
             raise
+    return changed
+
+
+CONTENT_FIELDS = ("description", "short_description", "seo_meta", "instagram", "tiktok")
+CONTENT_AUTHORITIES = frozenset({"FOUNDER_AUTHORED", "AGENT_GENERATED"})
+
+
+def _copy_record(value: str, authority: str, source: str, updated: str) -> dict[str, str]:
+    """One piece of copy plus who wrote it. Rejects anything unlabelled or blank."""
+    if authority not in CONTENT_AUTHORITIES:
+        raise ValueError(f"Unknown content authority {authority!r}")
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("Content must be a non-empty string")
+    return {"value": value, "authority": authority, "source": source, "updated": updated}
+
+
+def _write_content(sku: str, path: Path | None, apply: Any) -> str | None:
+    """Apply ``apply(product, content)`` to ``products[sku].content`` under the lock.
+
+    Content is not part of any compatibility projection, so only the registry is
+    rewritten, under the same lock as catalog edits. Returns the replaced value.
+    """
+    target = _registry_target(path)
+    with target.with_suffix(".json.lock").open("a") as lock:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+        raw = load_registry(target)
+        if sku not in raw["products"]:
+            raise KeyError(f"SKU {sku!r} is not in the product registry")
+        product = raw["products"][sku]
+        content = copy.deepcopy(product.get("content", {}))
+        previous = apply(product, content)
+        raw["products"][sku] = _with_section_before(product, "authority", "content", content)
+        _atomic_write(target, json.dumps(raw, ensure_ascii=False, indent=2) + "\n")
+    return previous["value"] if isinstance(previous, dict) else None
+
+
+def update_product_content(
+    sku: str,
+    field: str,
+    value: str,
+    *,
+    authority: str,
+    source: str,
+    updated: str,
+    path: Path | None = None,
+) -> str | None:
+    """Write one copy field into ``products[sku].content`` and return the old value.
+
+    Copy lives in the registry like every other product fact. Each field records
+    who wrote it, so agent copy can never be mistaken for the founder's words.
+    """
+    if field not in CONTENT_FIELDS:
+        raise ValueError(f"Unknown content field {field!r}; expected one of {CONTENT_FIELDS}")
+    record = _copy_record(value, authority, source, updated)
+
+    def apply(_product: dict[str, Any], content: dict[str, Any]) -> Any:
+        previous = content.get(field)
+        content[field] = record
+        return previous
+
+    return _write_content(sku, path, apply)
+
+
+def update_product_alt_text(
+    sku: str,
+    image_stem: str,
+    value: str,
+    *,
+    authority: str,
+    source: str,
+    updated: str,
+    path: Path | None = None,
+) -> str | None:
+    """Write alt text for one of the product's registry-bound images.
+
+    ``image_stem`` is the file stem of an ``images[*].path`` bound to this SKU.
+    Alt text for an image the registry does not bind is refused: it would
+    describe a picture no product page can show.
+    """
+    record = _copy_record(value, authority, source, updated)
+
+    def apply(product: dict[str, Any], content: dict[str, Any]) -> Any:
+        bound = {
+            Path(binding["path"]).stem
+            for binding in product.get("images", {}).values()
+            if isinstance(binding, dict) and binding.get("path")
+        }
+        if image_stem not in bound:
+            raise ValueError(
+                f"{image_stem!r} is not an image bound to {sku}; bound: {sorted(bound)}"
+            )
+        alt_text = content.setdefault("alt_text", {})
+        previous = alt_text.get(image_stem)
+        alt_text[image_stem] = record
+        return previous
+
+    return _write_content(sku, path, apply)
+
+
+def _with_section_before(
+    product: dict[str, Any], anchor: str, key: str, value: Any
+) -> dict[str, Any]:
+    """``product`` with ``key`` set, placed before ``anchor`` when it is new."""
+    if key in product:
+        return {**product, key: value}
+    out: dict[str, Any] = {}
+    for existing, section in product.items():
+        if existing == anchor:
+            out[key] = value
+        out[existing] = section
+    out.setdefault(key, value)
+    return out
 
 
 def _compatibility_outputs(raw: dict[str, Any], target: Path) -> dict[Path, str]:
@@ -161,6 +288,8 @@ def _compatibility_outputs(raw: dict[str, Any], target: Path) -> dict[Path, str]
         _catalog_projection(p, raw["catalog_columns"]) for p in raw["products"].values()
     )
     outputs = {target.parent / "skyyrose-catalog.csv": stream.getvalue()}
+    if target == _CANONICAL_REGISTRY:
+        outputs[FRONTEND_CATALOG_REPLICA] = stream.getvalue()
     for product in raw["products"].values():
         dossier = product["dossier"]
         slug = dossier["slug"]
@@ -213,3 +342,45 @@ def export_compatibility(path: Path | None = None, *, check: bool = False) -> li
                     _atomic_write(destination, content)
         drift.extend(str(orphan) for orphan in _orphan_dossiers(raw, target))
         return drift
+
+
+def _main(argv: list[str] | None = None) -> int:
+    """``update <sku> [--registry PATH]``: apply a JSON ``{field: value}`` patch from stdin.
+
+    The one write entry point for non-Python callers (the dashboard's admin
+    catalog editor). It calls ``update_catalog_fields`` so the registry changes
+    and the CSV/dossier projections regenerate in the same transaction. Prints
+    one JSON object on stdout; a rejected patch, unknown SKU, malformed input or
+    unreadable registry exits 1 with ``{"ok": false, "error": ...}``.
+    """
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(
+        prog="python -m skyyrose.core.product_registry",
+        description="Write product catalog fields through the single registry.",
+    )
+    commands = parser.add_subparsers(dest="command", required=True)
+    update = commands.add_parser("update", help="patch one SKU from a JSON object on stdin")
+    update.add_argument("sku")
+    update.add_argument("--registry", type=Path, default=None, help="registry JSON path")
+    args = parser.parse_args(argv)
+
+    try:
+        changes = json.load(sys.stdin)
+        if not isinstance(changes, dict) or not changes:
+            raise ValueError("Patch must be a non-empty JSON object of {field: value}")
+        target = _registry_target(args.registry)
+        changed = update_catalog_fields(args.sku, changes, target)
+    except KeyError as exc:
+        print(json.dumps({"ok": False, "error": f"SKU not found: {exc.args[0]}"}))
+        return 1
+    except (ValueError, OSError) as exc:
+        print(json.dumps({"ok": False, "error": str(exc)}))
+        return 1
+    print(json.dumps({"ok": True, "sku": args.sku, "changed": changed, "registry": str(target)}))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(_main())

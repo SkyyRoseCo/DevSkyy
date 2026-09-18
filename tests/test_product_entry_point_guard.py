@@ -6,17 +6,19 @@ drifting independently. ``skyyrose.core.product.get_product`` is the one read
 path; this test makes a NEW direct reader fail CI instead of quietly becoming
 the twelfth source of truth.
 
-It is deliberately an allowlist, not a clean-slate assertion. Two modules read
-an authored side-store directly today. They are enumerated below with a reason
-and a disposition, so the remaining migration debt is visible in code rather
-than implied. Removing an entry from the allowlist is how that debt gets paid;
-adding one requires justifying why the entry point cannot serve the need.
+It is deliberately an allowlist, not a clean-slate assertion. The render
+corrections, keep decisions, and collection identity are folded into the
+registry (schema v2); the remaining readers of a retired store are legacy
+scripts awaiting deletion, each enumerated below with its disposition so the
+debt is visible in code rather than implied. Removing an entry from the
+allowlist is how that debt gets paid; adding one requires justifying why the
+entry point cannot serve the need.
 
 Companion guard: ``tests/test_sot_no_adhoc_imagery.py`` does the same job for
 hardcoded image paths.
 
-**Boundary — what this does NOT catch.** It matches the four authored
-side-stores by filename. A module that bypasses the entry point a different
+**Boundary — what this does NOT catch.** It matches the retired stores by
+filename. A module that bypasses the entry point a different
 way still passes: calling ``load_registry()["products"][sku]`` directly, or
 reading a generated projection such as ``sot-images.json`` or the catalog CSV,
 is invisible here. Those narrow readers stay public on purpose (single-field
@@ -33,40 +35,64 @@ import pytest
 
 from skyyrose.core.paths import REPO_ROOT
 
-# The authored stores that hold product facts. Reading one of these directly
-# means bypassing the layering, provenance, and gap reporting get_product adds.
+# Stores that hold, or held, product facts outside the registry. Reading one
+# directly means bypassing the registry and the gap reporting get_product adds.
+# garment-analysis.json is Gemini vision output: never a product fact (bug-096).
 GUARDED_STORES = (
     "product-content.json",
     "alt-text.json",
     "render-corrections.json",
     "render-keepers.json",
+    "identity.json",
+    "garment-analysis.json",
 )
 
 # Source trees that can reach product data. Tests, docs, and task artifacts are
 # out of scope -- this guards shipping code.
-SCANNED_DIRS = ("skyyrose", "api", "scripts", "agents", "database")
+SCANNED_DIRS = (
+    "skyyrose",
+    "api",
+    "scripts",
+    "agents",
+    "database",
+    "mcp_tools",
+    "devskyy-sdk-app",
+    "frontend/app",
+    "frontend/lib",
+    "wordpress-theme/skyyrose-flagship/data",
+    "wordpress-theme/skyyrose-flagship/inc",
+)
+SCANNED_SUFFIXES = (".py", ".js", ".mjs", ".cjs", ".ts", ".tsx", ".php")
+_SKIPPED_PARTS = {"__pycache__", "node_modules", "vendor", "tests", "__tests__", ".next"}
 
 # path -> why it is allowed to read a store directly.
 #
-# "authoring tool" is permanent: something has to write the file.
-# "MIGRATE" is debt -- the module should move to get_product(sku).
+# "RETIRE" is debt with a known end: the file is in the deletion manifest the
+# founder approves, and leaves this list in the same change that deletes it.
+_LEGACY_NODE_TOOLCHAIN = (
+    "RETIRE: legacy Feb-2026 Node toolchain under skyyrose/build (no package.json, "
+    "no callers). It reads or writes the retired product-content.json / alt-text.json "
+    "copy that its own hard-coded 20-SKU table produced. In the deletion manifest."
+)
+_RETIRED_RENDER_ENGINE = (
+    "RETIRE: pre-OAI render engine (new renders are gpt-image-2 via scripts/oai_render). "
+    "Injects garment-analysis.json vision output into render prompts as a spec, the "
+    "bug-096 contamination path. In the deletion manifest."
+)
 ALLOWED: dict[str, str] = {
-    "skyyrose/core/product.py": "the entry point itself -- it is what assembles the record",
-    "skyyrose/skyyrose_content_agent.py": (
-        "authoring tool: it WRITES product-content.json, so it owns the file. "
-        "A writer legitimately touches its own store."
-    ),
-    "scripts/oai_render/config.py": (
-        "MIGRATE: declares CORRECTIONS_JSON / KEEPERS_JSON for the render pipeline "
-        "(pipeline.py consumes them through this module, so migrating here moves both). "
-        "Should read get_product(sku)['corrections'] and ['render_policy'] instead."
-    ),
+    "skyyrose/build/gemini-content.js": _LEGACY_NODE_TOOLCHAIN,
+    "skyyrose/build/tool-calling.js": _LEGACY_NODE_TOOLCHAIN,
+    "skyyrose/build/generate-embeddings.js": _LEGACY_NODE_TOOLCHAIN,
+    "skyyrose/build/verify.js": _LEGACY_NODE_TOOLCHAIN,
+    "skyyrose/build/generate-skyy-poses.js": _RETIRED_RENDER_ENGINE,
+    "scripts/nano-banana-vton.py": _RETIRED_RENDER_ENGINE,
 }
 
 # A prose mention in a docstring or prompt string is not a read. Only flag a
 # path that appears with something that looks like file access.
 _ACCESS = re.compile(
-    r"(open\(|read_text|json\.load|Path\(|join\(|/\s*[\"']|_JSON\s*=|_PATH\s*=)",
+    r"(open\(|read_text|json\.load|Path\(|join\(|/\s*[\"']|_JSON\s*=|_PATH\s*=|"
+    r"read[A-Z]\w*\(|resolve\(|require\(|file_get_contents|_OUT\s*=)",
 )
 
 
@@ -74,9 +100,14 @@ def _source_files() -> list[Path]:
     files: list[Path] = []
     for directory in SCANNED_DIRS:
         root = REPO_ROOT / directory
-        if not root.is_dir():
-            continue
-        files.extend(p for p in root.rglob("*.py") if "__pycache__" not in p.parts)
+        assert root.is_dir(), f"scanned directory {directory} is missing -- update SCANNED_DIRS"
+        files.extend(
+            p
+            for p in root.rglob("*")
+            if p.suffix in SCANNED_SUFFIXES
+            and not p.name.endswith(".min.js")
+            and not _SKIPPED_PARTS.intersection(p.relative_to(REPO_ROOT).parts)
+        )
     return files
 
 

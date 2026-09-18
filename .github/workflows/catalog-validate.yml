@@ -19,9 +19,8 @@ on:
       - "scripts/organize_product_registry.py"
       - "tests/test_registry_organization.py"
       - "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json"
+      - "frontend/data/skyyrose-catalog.csv"
       - "tests/test_product_entry_point.py"
-      - "skyyrose/assets/data/product-content.json"
-      - "skyyrose/assets/data/alt-text.json"
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
@@ -55,9 +54,8 @@ on:
       - "scripts/organize_product_registry.py"
       - "tests/test_registry_organization.py"
       - "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json"
+      - "frontend/data/skyyrose-catalog.csv"
       - "tests/test_product_entry_point.py"
-      - "skyyrose/assets/data/product-content.json"
-      - "skyyrose/assets/data/alt-text.json"
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
@@ -96,7 +94,7 @@ jobs:
           python -m pip install --upgrade pip
           # The validator step is near-stdlib: the only third-party import is jsonschema,
           # reached when collection_sot_current regenerates the per-collection SOT
-          # (build-collection-sot.py validates identity.json against its schema). The pytest
+          # (build-collection-sot.py validates each registry collection against identity.schema.json). The pytest
           # step collects test_catalog_consistency.py + the (lazy-import) shared conftest,
           # which need only pytest + pytest-asyncio (asyncio_mode is declared in pyproject;
           # without pytest-asyncio pytest errors "Unknown config option").

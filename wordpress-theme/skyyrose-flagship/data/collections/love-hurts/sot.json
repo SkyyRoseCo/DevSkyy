@@ -1,6 +1,6 @@
 {
-  "_generated_by": "data/build-collection-sot.py \u2014 DO NOT EDIT. Fix identity.json / the masters, then regenerate.",
-  "_authority": "Single Source of Truth view for Love Hurts. Canon = identity.json.",
+  "_generated_by": "data/build-collection-sot.py \u2014 DO NOT EDIT. Fix logo-registry.json collections / the masters, then regenerate.",
+  "_authority": "Single Source of Truth view for Love Hurts. Canon = logo-registry.json collections.love-hurts.",
   "collection": "love-hurts",
   "name": "Love Hurts",
   "updated": "GENERATED",
@@ -37,8 +37,8 @@
     }
   },
   "masters": {
-    "identity": "data/collections/love-hurts/identity.json",
-    "products": "data/skyyrose-catalog.csv",
+    "identity": "data/logo-registry.json#collections.love-hurts",
+    "products": "data/logo-registry.json#products",
     "imagery": "data/visual-manifest.json",
     "logos": "data/logo-registry.json"
   },

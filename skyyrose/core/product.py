@@ -15,11 +15,10 @@ Non-Python callers get the identical record over the CLI::
     python -m skyyrose.core.product --all           # every SKU
     python -m skyyrose.core.product --gaps          # only the gap report
 
-This module assembles the record from the authored product registry
-(``logo-registry.json``) plus the authored side-stores that have not been folded
-into it yet. The section names match the registry's own, so when those stores
-merge in, the assembly collapses to a single registry read and **no caller
-changes**. The API is the contract; the file layout is an implementation detail.
+Every section is read from one file, the authored product registry
+(``logo-registry.json``). The render corrections, keep decisions, and collection
+identity that used to live in side files are folded into it (schema v2), so there
+is no second place a product fact can be edited.
 
 Fail-closed, always (bug-230). A fact is either present or named in ``gaps`` —
 never silently blank:
@@ -34,10 +33,10 @@ never silently blank:
 * copy with no source at all   -> ``None`` + a ``gaps`` entry
 
 Every SKU has a description; all 33 carry one in the registry, and that is the
-copy the live storefront serves. What varies is the layer: 19 SKUs also have
-enriched editorial copy, SEO meta, and social captions. A caller is always told
-which layer it received, so an editorial task can tell finished copy from the
-one-line base description.
+copy the live storefront serves. Editorial copy (long description, SEO meta,
+social captions) lives in ``products[sku].content``, one field at a time, each
+naming who wrote it. A caller is always told which layer it received, so an
+editorial task can tell finished copy from the one-line base description.
 
 An agent handed ``description: ""`` invents copy. An agent handed the base line
 tagged ``enriched: False`` knows exactly what it is holding. That difference is
@@ -57,7 +56,8 @@ from typing import Any
 
 from skyyrose.core.dossier_loader import get_product_with_dossier
 from skyyrose.core.paths import REPO_ROOT
-from skyyrose.core.product_registry import PRODUCT_REGISTRY, load_registry
+from skyyrose.core import product_registry
+from skyyrose.core.product_registry import CONTENT_FIELDS, load_registry
 from skyyrose.core.sot_images import _ROLE_KEYS, Role
 
 __all__ = [
@@ -71,28 +71,15 @@ __all__ = [
 
 IMAGE_ROLES: tuple[Role, ...] = ("front", "back", "packshot", "back_packshot")
 
-# Authored side-stores not yet folded into the registry. Each is tracked; an
-# absent file is a broken checkout, not "this SKU has no copy" -- so reads raise
-# rather than report 33 phantom gaps.
-_CONTENT_JSON = REPO_ROOT / "skyyrose" / "assets" / "data" / "product-content.json"
-_ALT_TEXT_JSON = REPO_ROOT / "skyyrose" / "assets" / "data" / "alt-text.json"
-_CORRECTIONS_JSON = (
-    REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "render-corrections.json"
-)
-
-_CONTENT_FIELDS = ("description", "short_description", "seo_meta", "instagram", "tiktok")
+_CONTENT_FIELDS = CONTENT_FIELDS
 
 # Fields the registry's own catalog.description can legitimately stand in for.
 # Social captions and SEO meta are their own craft -- a product description is
 # not a TikTok caption, so those stay absent rather than borrow.
 _BASE_BACKED_FIELDS = frozenset({"description", "short_description"})
 
-_CONTENT_SOURCE = "product-content.json"
+_CONTENT_SOURCE = "registry.content"
 _REGISTRY_SOURCE = "registry.catalog.description"
-
-
-class ProductSourceMissingError(FileNotFoundError):
-    """An authored product source file is absent from the checkout."""
 
 
 @lru_cache(maxsize=16)
@@ -107,43 +94,25 @@ def _stamp(path: str, mtime_ns: int, size: int) -> dict[str, Any]:
 
 
 def provenance() -> dict[str, Any]:
-    """Which files this record was assembled from, and their current state.
+    """The file this record was assembled from, and its current state.
 
     Every record carries this, so a caller can prove the facts it is holding
     match what is on disk right now rather than a stale cache. ``generated`` is
-    when the record was assembled; each source's ``sha256`` and ``modified``
+    when the record was assembled; the registry's ``sha256`` and ``modified``
     change the moment the founder edits it.
     """
-    sources: dict[str, Any] = {}
-    for label, path in (
-        ("registry", PRODUCT_REGISTRY),
-        ("content", _CONTENT_JSON),
-        ("alt_text", _ALT_TEXT_JSON),
-        ("corrections", _CORRECTIONS_JSON),
-    ):
-        if not path.exists():
-            raise ProductSourceMissingError(f"authored product source missing: {path}")
-        info = path.stat()
-        sources[label] = {
-            "path": str(path.relative_to(REPO_ROOT)),
-            **_stamp(str(path), info.st_mtime_ns, info.st_size),
-        }
+    path = product_registry.PRODUCT_REGISTRY.resolve()
+    info = path.stat()
     return {
         "generated": datetime.now(tz=UTC).isoformat(),
         "entry_point": "skyyrose.core.product.get_product",
-        "sources": sources,
+        "sources": {
+            "registry": {
+                "path": _relative(path),
+                **_stamp(str(path), info.st_mtime_ns, info.st_size),
+            }
+        },
     }
-
-
-def _load_json(path: Path) -> dict[str, Any]:
-    """Read an authored source, or fail loudly. Never degrade to an empty dict."""
-    if not path.exists():
-        raise ProductSourceMissingError(
-            f"authored product source missing: {path}. "
-            "Restore it before reading product facts -- an empty read would "
-            "report every SKU as having no content."
-        )
-    return json.loads(path.read_text())
 
 
 def all_skus() -> list[str]:
@@ -217,14 +186,15 @@ def _relative(path: Path | None) -> str | None:
 
 
 def _content_for(
-    sku: str, catalog: dict[str, Any]
+    product: dict[str, Any], catalog: dict[str, Any]
 ) -> tuple[dict[str, Any], dict[str, str], list[str]]:
     """Marketing copy resolved through its layers, with the source named.
 
     Copy exists in two layers and a caller needs to know which one it got:
 
-    1. ``product-content.json`` -- the enriched editorial layer: long-form
-       description, a distinct short description, SEO meta, and social captions.
+    1. ``products[sku].content`` -- the editorial layer: long-form description,
+       a distinct short description, SEO meta, and social captions. Each field
+       carries the ``authority`` of whoever wrote it.
     2. the registry's own ``catalog.description`` -- the base line every SKU
        has, and the copy the live storefront currently serves.
 
@@ -233,16 +203,22 @@ def _content_for(
     gaps as ``content.<field>.enriched``, so an editorial or SEO task can tell
     "this is the one-line base description" from "this is finished copy".
     """
-    entry = _load_json(_CONTENT_JSON).get(sku) or {}
-    alt = _load_json(_ALT_TEXT_JSON).get(sku) or {}
+    entry = product.get("content") or {}
+    alt = dict(entry.get("alt_text") or {})
     base = (catalog.get("description") or "").strip() or None
 
     content: dict[str, Any] = {}
     gaps: list[str] = []
     for field in _CONTENT_FIELDS:
-        value = (entry.get(field) or "").strip() or None
+        written = entry.get(field) or {}
+        value = (written.get("value") or "").strip() or None
         if value:
-            content[field] = {"value": value, "source": _CONTENT_SOURCE, "enriched": True}
+            content[field] = {
+                "value": value,
+                "source": _CONTENT_SOURCE,
+                "enriched": True,
+                "authority": written.get("authority"),
+            }
             continue
         if base and field in _BASE_BACKED_FIELDS:
             content[field] = {"value": base, "source": _REGISTRY_SOURCE, "enriched": False}
@@ -256,10 +232,9 @@ def _content_for(
     return content, alt, gaps
 
 
-def _corrections_for(sku: str) -> list[dict[str, str]]:
-    """Founder-verbatim render corrections. Wording is preserved exactly."""
-    raw = _load_json(_CORRECTIONS_JSON).get("corrections", {}).get(sku) or []
-    return [{"text": line, "authority": "FOUNDER_VERBATIM"} for line in raw]
+def _corrections_for(product: dict[str, Any]) -> list[dict[str, str]]:
+    """Render corrections, wording preserved exactly, each naming who wrote it."""
+    return [dict(line) for line in product.get("corrections") or []]
 
 
 def get_product(sku: str) -> dict[str, Any]:
@@ -269,13 +244,14 @@ def get_product(sku: str) -> dict[str, Any]:
     features, sizing references), ``dossier`` (the founder's design
     specification), ``images`` (every role, resolved), ``render_sources``,
     ``logos`` (graphics, placements, decoration dimensions), ``content``
-    (marketing copy and SEO), ``alt_text``, ``corrections`` (founder-verbatim),
+    (marketing copy and SEO), ``alt_text``, ``corrections`` (render corrections,
+    each naming its author), ``render_policy`` (founder keep decisions),
     ``authority``, and ``gaps``.
 
     Raises:
         KeyError: ``sku`` is not in the product registry.
         DossierMissingError: the SKU has no design specification bound.
-        ProductSourceMissingError: an authored source file is absent.
+        FileNotFoundError: the product registry itself is absent.
     """
     products = load_registry()["products"]
     if sku not in products:
@@ -286,7 +262,7 @@ def get_product(sku: str) -> dict[str, Any]:
     merged = get_product_with_dossier(sku)
     catalog = product.get("catalog", {})
     images, image_gaps = _images_for(product, sku)
-    content, alt_text, content_gaps = _content_for(sku, catalog)
+    content, alt_text, content_gaps = _content_for(product, catalog)
 
     return {
         "sku": sku,
@@ -300,7 +276,10 @@ def get_product(sku: str) -> dict[str, Any]:
         "logos": _logos_for(sku),
         "content": content,
         "alt_text": alt_text,
-        "corrections": _corrections_for(sku),
+        "corrections": _corrections_for(product),
+        "render_policy": {
+            "keepers": [dict(k) for k in (product.get("render_policy") or {}).get("keepers", [])]
+        },
         "authority": product.get("authority"),
         "gaps": image_gaps + content_gaps,
         "provenance": provenance(),

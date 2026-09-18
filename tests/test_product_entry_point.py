@@ -20,7 +20,6 @@ import pytest
 from skyyrose.core.paths import REPO_ROOT
 from skyyrose.core.product import (
     IMAGE_ROLES,
-    ProductSourceMissingError,
     all_skus,
     gap_report,
     get_all_products,
@@ -41,6 +40,7 @@ REQUIRED_SECTIONS = (
     "content",
     "alt_text",
     "corrections",
+    "render_policy",
     "authority",
     "gaps",
     "provenance",
@@ -48,28 +48,22 @@ REQUIRED_SECTIONS = (
 
 CONTENT_FIELDS = ("description", "short_description", "seo_meta", "instagram", "tiktok")
 
-# The 14 SKUs whose copy is still the registry base line rather than enriched
-# editorial copy, as of 2026-09-17. Every SKU HAS a description -- this set is
-# about which layer serves it. Pinned so that enriching one (good) or silently
-# demoting one (a regression) both fail here and force a deliberate update.
-KNOWN_UNENRICHED_SKUS = frozenset(
-    {
-        "br-009",
-        "br-010",
-        "br-011",
-        "br-012",
-        "br-014",
-        "br-015",
-        "kids-001",
-        "kids-002",
-        "lh-005",
-        "sg-011",
-        "sg-012",
-        "sg-013",
-        "sg-014",
-        "sg-015",
-    }
-)
+# SKUs whose description is served from the registry's editorial layer
+# (products[sku].content) rather than the catalog base line. Every SKU HAS a
+# description -- this set is about which layer serves it. Pinned so that
+# enriching one (good) or silently demoting one (a regression) both fail here
+# and force a deliberate update.
+#
+# Empty since 2026-09-18: the 19 records in skyyrose/assets/data/product-content.json
+# are no longer served. They were written by skyyrose/build/gemini-content.js from
+# its own hard-coded 20-SKU table; 11 of 19 carry a different product name than
+# the registry and 5 describe a different garment (lh-006 "The Fannie" on the
+# white joggers). Copy returns through the registry once the founder approves it.
+KNOWN_ENRICHED_SKUS: frozenset[str] = frozenset()
+
+# The only two places product copy may come from: the registry's editorial layer
+# and its catalog base line. Anything else is a side store leaking back in.
+REGISTRY_COPY_SOURCES = frozenset({"registry.content", "registry.catalog.description"})
 
 
 @pytest.fixture(scope="module")
@@ -150,16 +144,32 @@ def test_dossier_is_present_for_every_sku(records: dict[str, dict]) -> None:
         assert dossier.get("garment_type_lock"), f"{sku} dossier has no garment_type_lock"
 
 
-def test_unenriched_skus_match_the_pinned_set(records: dict[str, dict]) -> None:
-    """Which SKUs still need editorial copy is founder-facing; changes are deliberate."""
+def test_enriched_skus_match_the_pinned_set(records: dict[str, dict]) -> None:
+    """Which SKUs have editorial copy is founder-facing; changes are deliberate."""
     actual = {
-        sku for sku, record in records.items() if "content.description.enriched" in record["gaps"]
+        sku
+        for sku, record in records.items()
+        if "content.description.enriched" not in record["gaps"]
     }
-    assert actual == KNOWN_UNENRICHED_SKUS, (
-        f"unenriched set changed.\n  newly enriched: {sorted(KNOWN_UNENRICHED_SKUS - actual)}\n"
-        f"  newly demoted:  {sorted(actual - KNOWN_UNENRICHED_SKUS)}\n"
-        "Update KNOWN_UNENRICHED_SKUS when the founder adds editorial copy."
+    assert actual == KNOWN_ENRICHED_SKUS, (
+        f"enriched set changed.\n  newly enriched: {sorted(actual - KNOWN_ENRICHED_SKUS)}\n"
+        f"  newly demoted:  {sorted(KNOWN_ENRICHED_SKUS - actual)}\n"
+        "Update KNOWN_ENRICHED_SKUS when the founder adds editorial copy."
     )
+
+
+def test_copy_written_for_another_product_is_never_served(records: dict[str, dict]) -> None:
+    """The retired side-store copy (lh-006 described as a fanny pack) cannot resurface."""
+    lh006 = records["lh-006"]
+    assert lh006["name"] == "Love Hurts Joggers (White)"
+    served = " ".join(entry["value"] for entry in lh006["content"].values() if entry is not None)
+    assert "Fannie" not in served and "fanny" not in served.lower()
+    for sku, record in records.items():
+        for field, entry in record["content"].items():
+            if entry is not None:
+                assert (
+                    entry["source"] in REGISTRY_COPY_SOURCES
+                ), f"{sku}: content.{field} came from {entry['source']}, outside the registry"
 
 
 def test_gap_report_matches_per_record_gaps(records: dict[str, dict]) -> None:
@@ -175,19 +185,19 @@ def test_unknown_sku_raises_and_names_the_known_set() -> None:
     assert "br-001" in str(excinfo.value), "the error should list the known SKUs"
 
 
-def test_absent_source_fails_closed(monkeypatch: pytest.MonkeyPatch, tmp_path) -> None:
-    """A missing authored source raises -- it never degrades to 'no content'."""
+def test_absent_registry_fails_closed(monkeypatch: pytest.MonkeyPatch, tmp_path) -> None:
+    """A missing registry raises -- it never degrades to 'no product facts'."""
     monkeypatch.setattr(
-        "skyyrose.core.product._CONTENT_JSON", tmp_path / "absent-product-content.json"
+        "skyyrose.core.product_registry.PRODUCT_REGISTRY", tmp_path / "absent-registry.json"
     )
-    with pytest.raises(ProductSourceMissingError):
+    with pytest.raises(FileNotFoundError):
         get_product("br-001")
 
 
-def test_provenance_names_every_source_with_a_digest() -> None:
+def test_provenance_names_the_registry_as_the_only_source() -> None:
     prov = provenance()
     assert prov["entry_point"] == "skyyrose.core.product.get_product"
-    assert set(prov["sources"]) == {"registry", "content", "alt_text", "corrections"}
+    assert set(prov["sources"]) == {"registry"}
     for label, source in prov["sources"].items():
         assert (REPO_ROOT / source["path"]).exists(), f"{label} path does not exist"
         assert len(source["sha256"]) == 16, f"{label} has no digest"

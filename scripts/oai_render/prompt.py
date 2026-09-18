@@ -8,16 +8,13 @@ used ("the pipeline reads this file verbatim into the prompt").
 
 from __future__ import annotations
 
-import functools
-import json
 import logging
 import re
 from pathlib import Path
 
 from skyyrose.core.dossier_loader import DOSSIERS_DIR, load_dossier
+from skyyrose.core.product_registry import load_registry
 from skyyrose.elite_studio.logo_registry import LogoRegistry
-
-from . import config
 
 log = logging.getLogger(__name__)
 
@@ -301,50 +298,56 @@ def extract_view_branding(dossier_text: str | None, view: str) -> str:
     return section.strip()
 
 
-@functools.lru_cache(maxsize=1)
-def _load_corrections_file(path_str: str) -> dict[str, list[str]]:
-    """Load the founder corrections JSON (sku → verbatim correction lines)."""
-    path = Path(path_str)
-    if not path.exists():
-        return {}
-    try:
-        doc = json.loads(path.read_text(encoding="utf-8"))
-        raw = doc.get("corrections", {})
-        return {
-            sku: [str(line) for line in lines]
-            for sku, lines in raw.items()
-            if isinstance(lines, list)
-        }
-    except (json.JSONDecodeError, OSError) as exc:
-        log.warning("Could not load corrections file %s: %s", path, exc)
-        return {}
+def corrections_for(sku: str) -> list[dict[str, str]]:
+    """Render corrections for a SKU, from the product registry (empty when none).
 
-
-def corrections_for(sku: str) -> list[str]:
-    """Founder's verbatim review corrections for a SKU (empty when none).
-
-    Lines are prefixed ``[view]`` mechanically; the words after the prefix are
-    the founder's own, written while rejecting a prior render of this product.
+    Read fresh from ``products[sku].corrections`` so a founder edit reaches the
+    next prompt without a restart. Each entry is ``{"text", "authority"}``:
+    FOUNDER_VERBATIM for the founder's review-board comments, AGENT_ADDED for
+    lines an agent added. A missing or unreadable registry raises -- rendering
+    without the product's corrections would repeat a render the founder
+    already rejected.
     """
-    return _load_corrections_file(str(config.CORRECTIONS_JSON)).get(sku, [])
+    product = load_registry()["products"].get(sku) or {}
+    return [
+        {"text": entry["text"], "authority": entry["authority"]}
+        for entry in product.get("corrections") or []
+    ]
+
+
+_FOUNDER_HEADER = (
+    "FOUNDER CORRECTIONS — the founder rejected a previous render of THIS exact product "
+    "and wrote these notes. They are authoritative and OVERRIDE any conflicting line in "
+    "the spec above ([ghost]/[ghost-back]/[on-model] marks which render the note "
+    "addresses — [ghost-back] notes govern the BACK of the garment, others the front):"
+)
+_AGENT_HEADER = (
+    "AGENT-ADDED RENDER CONSTRAINTS — added by a render-QC review, not written by the "
+    "founder. Apply them, but where one conflicts with the founder's spec or corrections "
+    "above, the founder's words win ([view] marks which render the line addresses):"
+)
 
 
 def _corrections_block(sku: str) -> list[str]:
-    """Prompt lines for the founder-corrections section (empty list when none)."""
-    lines = [
-        sanitize_injected_text(line, source=f"corrections:{sku}") for line in corrections_for(sku)
-    ]
-    lines = [ln for ln in lines if ln]
-    if not lines:
-        return []
-    block = [
-        "FOUNDER CORRECTIONS — the founder rejected a previous render of THIS exact product "
-        "and wrote these notes. They are authoritative and OVERRIDE any conflicting line in "
-        "the spec above ([ghost]/[ghost-back]/[on-model] marks which render the note "
-        "addresses — [ghost-back] notes govern the BACK of the garment, others the front):"
-    ]
-    block.extend(f"  - {ln}" for ln in lines)
-    block.append("")
+    """Prompt lines for the correction sections (empty list when none).
+
+    The founder's own comments and agent-added lines go under separate headers,
+    so the model is never told the founder wrote something he did not.
+    """
+    sections = {"FOUNDER_VERBATIM": [], "AGENT_ADDED": []}
+    for entry in corrections_for(sku):
+        line = sanitize_injected_text(entry["text"], source=f"corrections:{sku}")
+        if line:
+            sections[entry["authority"]].append(line)
+    block: list[str] = []
+    for authority, header in (
+        ("FOUNDER_VERBATIM", _FOUNDER_HEADER),
+        ("AGENT_ADDED", _AGENT_HEADER),
+    ):
+        if sections[authority]:
+            block.append(header)
+            block.extend(f"  - {ln}" for ln in sections[authority])
+            block.append("")
     return block
 
 

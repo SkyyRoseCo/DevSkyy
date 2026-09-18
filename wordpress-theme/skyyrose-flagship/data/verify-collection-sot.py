@@ -104,7 +104,7 @@ def main() -> int:
         # Hero slot check: must exist and resolve to a real file.
         hero = (sot.get("imagery") or {}).get("hero")
         if not hero or not hero.get("path"):
-            hard.append(f"{slug}: imagery.hero slot missing — add to identity.json")
+            hard.append(f"{slug}: imagery.hero slot missing — add to logo-registry.json collections.{slug}")
         else:
             h_resolved = hero.get("resolved")
             if not h_resolved or not (sot_common.ASSETS / h_resolved).is_file():

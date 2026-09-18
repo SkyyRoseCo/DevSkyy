@@ -3,15 +3,15 @@
 # scripts/freshness-guard.sh — keep derived files in sync with their sources.
 #
 # Stops the recurring "stale file" failure mode: someone edits a MASTER
-# (catalog CSV, collection identity.json, theme CSS/JS, version) and forgets
+# (product registry, catalog CSV, theme CSS/JS, version) and forgets
 # to regenerate the file that derives from it, so the site / build / docs ship
 # stale. This guard makes that un-committable.
 #
 # Checks (each independent; a check only runs when its trigger file is staged,
 # unless --all/--fix forces all):
 #   1. SOT drift     — data/collections/<slug>/{sot.json,index.html} + design-tokens.css
-#                      must match the masters (identity.json, catalog.csv,
-#                      visual-manifest.json, logo-registry.json).
+#                      must match the masters (logo-registry.json incl. its collections,
+#                      catalog.csv, visual-manifest.json).
 #   2. Lookbook SOT drift — lookbook-manifest.json drives scripts/build-lookbook-sot.py,
 #                      then from-sot to docs/campaigns/sot-lookbook.html.
 #   3. .min staleness — every assets/css|js source has an up-to-date *.min.*
@@ -185,7 +185,7 @@ if forced || staged_match "$VER_TRIGGER"; then
 fi
 
 # ── CHECK 5: retired-master references ──────────────────────────────────────
-RETIRED='product-masters/(catalog\.yaml|manifest\.json)|data/product-catalog\.csv|/products\.json|data/collections/(black-rose|love-hurts|signature|kids-capsule)\.json'
+RETIRED='product-masters/(catalog\.yaml|manifest\.json)|data/product-catalog\.csv|/products\.json|data/collections/(black-rose|love-hurts|signature|kids-capsule)\.json|data/collections/[a-z-]+/identity\.json|render-(corrections|keepers)\.json'
 hdr "5. Retired-master references"
 if forced; then
   HITS="$(git -C "$ROOT" grep -nIE "$RETIRED" -- '*.py' '*.php' '*.js' ':!*test*' ':!*/tests/*' ':!*/docs/*' ':!*.min.*' 2>/dev/null || true)"

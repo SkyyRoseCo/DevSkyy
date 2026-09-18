@@ -1,7 +1,7 @@
 {
   "_meta": {
     "source": "founder review board annotations, 2026-06-09 (renders/oai/_review/review-state.json)",
-    "authorship": "every correction line is the founder's verbatim comment; [view] prefix added mechanically",
+    "authorship": "32 lines are the founder's verbatim review-board comments (authority FOUNDER_VERBATIM, captured 2026-06-09; [view] prefix added mechanically). 9 lines were added 2026-06-12 per a Fable vision test (authority AGENT_ADDED): the two-rose cluster line on br-001/002/004/005/006/007 and the chest-scale line on br-001/004/006. Each line names its author in products[sku].corrections.",
     "consumed_by": "scripts/oai_render/prompt.py — injected as FOUNDER CORRECTIONS block",
     "excluded_skus_note": "sg-006/sg-014 corrections intentionally omitted: their 2026-06-09 flags were wholesale wrong-product (bug-119 dossier contamination), not zone-level fixes. Dossiers re-authored 2026-06-10 from the real mint garments; both SKUs render again.",
     "notes": [
