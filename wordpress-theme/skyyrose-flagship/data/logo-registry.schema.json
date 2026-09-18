@@ -1,0 +1,330 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skyyrose.co/schemas/product-registry-2.json",
+  "title": "SkyyRose product registry",
+  "description": "The single editable product SOT. products[sku] owns commerce fields, garment facts, the founder's design specification, and image/source bindings; logos and sku_logos own graphic identities, placements, and decoration dimensions. The CSV, dossier Markdown, sot-images.json, and every collection manifest are generated projections of this file. Founder/maker corrections govern and land here first. Validated by scripts/organize_product_registry.py; edit this registry, then run scripts/sync_product_registry.py.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "version",
+    "updated",
+    "product_registry_schema_version",
+    "authority_contract",
+    "brand_primary",
+    "products",
+    "catalog_columns",
+    "logos",
+    "sku_logos"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Prose statement of what this file governs. Kept for readers who open the raw JSON."
+    },
+    "version": { "type": ["integer", "string"], "description": "Registry revision. Currently an integer; strings accepted for forward compatibility." },
+    "updated": { "type": "string", "format": "date" },
+    "product_registry_schema_version": { "type": "integer", "minimum": 1 },
+    "authority_contract": {
+      "type": "object",
+      "description": "The founder-authority rule this file is governed by."
+    },
+    "brand_primary": { "type": "string" },
+
+    "brand": {
+      "type": "object",
+      "description": "Schema v2: brand identity absorbed from the canon docs.",
+      "properties": {
+        "tagline": { "type": "string" },
+        "tokens": { "type": "object" },
+        "typography_ref": { "type": "string" }
+      }
+    },
+    "collections": {
+      "type": "object",
+      "description": "Schema v2: per-collection identity absorbed from data/collections/<slug>/identity.json.",
+      "propertyNames": { "$ref": "#/$defs/collectionSlug" },
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "status"],
+        "properties": {
+          "key": { "type": "string" },
+          "name": { "type": "string" },
+          "status": { "type": "string" },
+          "story": { "type": "object" },
+          "palette": { "type": "object" },
+          "fonts": {
+            "type": "object",
+            "properties": {
+              "script": { "type": "string" },
+              "caps": { "type": "string" },
+              "body": { "type": "string" }
+            }
+          },
+          "lockup": { "type": "object" },
+          "imagery": { "type": "object" },
+          "known_orphans": { "type": "array" }
+        }
+      }
+    },
+
+    "products": {
+      "type": "object",
+      "description": "Every product, keyed by canonical SKU.",
+      "propertyNames": { "$ref": "#/$defs/sku" },
+      "additionalProperties": { "$ref": "#/$defs/product" }
+    },
+
+    "catalog_columns": {
+      "type": "array",
+      "description": "Column order of the generated CSV projection. Order is the contract.",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+
+    "logos": { "type": "object" },
+    "sku_logos": { "type": "object" },
+    "sku_folders": { "type": "object" },
+    "render_components": { "type": "object" },
+    "render_source_aliases": { "type": "object" },
+    "three_rose_cluster_colorways": { "type": "object" },
+    "jersey_patch_standard": { "type": "object" },
+    "gaps": { "type": ["object", "array"] },
+    "changelog": { "type": ["object", "array"] }
+  },
+  "additionalProperties": false,
+
+  "$defs": {
+    "sku": {
+      "type": "string",
+      "pattern": "^(br|lh|sg|kids)-[0-9]{3}$",
+      "description": "Canonical SKU. Kids products are kids-00N, never kc-00N."
+    },
+    "collectionSlug": {
+      "type": "string",
+      "enum": ["black-rose", "kids-capsule", "love-hurts", "signature"]
+    },
+    "boolString": {
+      "type": "string",
+      "enum": ["0", "1"],
+      "description": "CSV-projected boolean. String, not bool -- the CSV is the consumer."
+    },
+    "sourcedSpec": {
+      "type": "object",
+      "description": "A founder-authored garment fact plus the source it came from.",
+      "required": ["specification", "source"],
+      "properties": {
+        "specification": { "type": ["string", "null"] },
+        "source": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "imageBinding": {
+      "type": "object",
+      "required": ["path"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^assets/" },
+        "resolved": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+
+    "product": {
+      "type": "object",
+      "description": "One product. Section order is catalog, garment, dossier, images, render_sources, then the v2 sections, then authority.",
+      "required": [
+        "catalog",
+        "garment",
+        "dossier",
+        "images",
+        "render_sources",
+        "authority"
+      ],
+      "properties": {
+        "catalog": { "$ref": "#/$defs/catalog" },
+        "garment": { "$ref": "#/$defs/garment" },
+        "dossier": {
+          "type": "object",
+          "required": ["slug", "content"],
+          "properties": {
+            "slug": { "type": "string", "minLength": 1 },
+            "content": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        "images": {
+          "type": "object",
+          "description": "Image bindings. image and front_model_image are required; back roles are declared absent rather than substituted.",
+          "required": ["image", "front_model_image"],
+          "properties": {
+            "image": { "$ref": "#/$defs/imageBinding" },
+            "front_model_image": { "$ref": "#/$defs/imageBinding" },
+            "back_image": { "$ref": "#/$defs/imageBinding" },
+            "back_model_image": { "$ref": "#/$defs/imageBinding" }
+          },
+          "additionalProperties": false
+        },
+        "render_sources": {
+          "type": "object",
+          "required": ["reference"],
+          "properties": {
+            "reference": { "type": "string" },
+            "front": { "type": ["string", "null"] },
+            "back": { "type": ["string", "null"] }
+          },
+          "additionalProperties": false
+        },
+
+        "content": {
+          "type": "object",
+          "description": "Schema v2: marketing copy absorbed from product-content.json and alt-text.json. Absent fields are null, never empty strings.",
+          "properties": {
+            "description": { "type": ["string", "null"] },
+            "short_description": { "type": ["string", "null"] },
+            "seo_meta": { "type": ["string", "null"] },
+            "instagram": { "type": ["string", "null"] },
+            "tiktok": { "type": ["string", "null"] },
+            "alt_text": { "type": "object" },
+            "authority": { "type": ["string", "null"] }
+          },
+          "additionalProperties": false
+        },
+        "corrections": {
+          "type": "array",
+          "description": "Schema v2: founder-verbatim render corrections from render-corrections.json. Wording is preserved exactly.",
+          "items": {
+            "type": "object",
+            "required": ["text", "authority"],
+            "properties": {
+              "text": { "type": "string" },
+              "view": { "type": ["string", "null"] },
+              "captured": { "type": ["string", "null"] },
+              "authority": { "type": "string", "const": "FOUNDER_VERBATIM" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "render_policy": {
+          "type": "object",
+          "description": "Schema v2: keep/re-render decisions absorbed from render-keepers.json.",
+          "properties": { "keepers": { "type": "array" } },
+          "additionalProperties": false
+        },
+
+        "authority": {
+          "description": "v1: one blanket string. v2: per-section provenance so FOUNDER_CONFIRMED stays distinguishable from agent-written copy.",
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            {
+              "type": "object",
+              "properties": {
+                "garment": { "type": "string" },
+                "dossier": { "type": "string" },
+                "images": { "type": "string" },
+                "content": { "type": "string" },
+                "corrections": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+
+        "asset_reconciliation": {
+          "type": "object",
+          "description": "Legacy migration record. Not authored; retire once the asset tree is settled."
+        },
+        "render_source_migration": {
+          "type": "object",
+          "description": "Legacy migration record. Not authored; retire once the asset tree is settled."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "catalog": {
+      "type": "object",
+      "description": "Commerce fields. These 24 key names are load-bearing: they are the CSV columns and the PHP array keys the storefront reads. Never rename one.",
+      "required": [
+        "sku",
+        "name",
+        "price",
+        "collection",
+        "description",
+        "badge",
+        "image",
+        "front_model_image",
+        "back_image",
+        "back_model_image",
+        "sizes",
+        "color",
+        "edition_size",
+        "published",
+        "is_preorder",
+        "branding_spec",
+        "render_output_slug",
+        "render_source_override",
+        "render_back_source_override",
+        "render_is_tech_flat",
+        "render_is_accessory",
+        "garment_type_lock",
+        "dossier_slug",
+        "engine_override"
+      ],
+      "properties": {
+        "sku": { "$ref": "#/$defs/sku" },
+        "name": { "type": "string", "minLength": 1 },
+        "price": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]{1,2})?$" },
+        "collection": { "$ref": "#/$defs/collectionSlug" },
+        "description": { "type": "string", "minLength": 1 },
+        "badge": { "type": "string" },
+        "image": { "type": "string" },
+        "front_model_image": { "type": "string" },
+        "back_image": { "type": "string" },
+        "back_model_image": { "type": "string" },
+        "sizes": { "type": "string" },
+        "color": { "type": "string" },
+        "edition_size": { "type": "string" },
+        "published": { "$ref": "#/$defs/boolString" },
+        "is_preorder": { "$ref": "#/$defs/boolString" },
+        "branding_spec": { "type": "string" },
+        "render_output_slug": { "type": "string" },
+        "render_source_override": { "type": "string" },
+        "render_back_source_override": { "type": "string" },
+        "render_is_tech_flat": { "$ref": "#/$defs/boolString" },
+        "render_is_accessory": { "$ref": "#/$defs/boolString" },
+        "garment_type_lock": { "type": "string" },
+        "dossier_slug": { "type": "string", "minLength": 1 },
+        "engine_override": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+
+    "garment": {
+      "type": "object",
+      "required": [
+        "color",
+        "available_sizes",
+        "fit",
+        "materials",
+        "features",
+        "sizing_references"
+      ],
+      "properties": {
+        "color": { "type": "string" },
+        "available_sizes": { "type": "array", "items": { "type": "string" } },
+        "fit": { "$ref": "#/$defs/sourcedSpec" },
+        "materials": { "$ref": "#/$defs/sourcedSpec" },
+        "features": { "$ref": "#/$defs/sourcedSpec" },
+        "sizing_references": {
+          "type": "object",
+          "properties": {
+            "decoration_sizing_pointer": { "type": ["string", "null"] },
+            "garment_size_chart": { "type": ["string", "null"] },
+            "source_rule": { "type": ["string", "null"] }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
