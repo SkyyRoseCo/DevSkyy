@@ -8,11 +8,7 @@ reference_image: assets/products/references/sg-013-techflat-front.jpeg
 
 # Mint & Lavender Crewneck
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Crew-neck pullover sweatshirt — solid **mint green / seafoam-green** body fabric throughout (front, back, sleeves) with **NO hood, NO zipper, NO color-blocking, NO chevron stripes, NO contrast panels**. Mid-weight cotton-fleece fabric.
-Features: Crew-neck pullover sweatshirt — solid **mint green / seafoam-green** body fabric throughout (front, back, sleeves) with **NO hood, NO zipper, NO color-blocking, NO chevron stripes, NO contrast panels**. Long sleeves, ribbed crew-neck, ribbed cuffs at wrists, ribbed waistband at hem (all in matching mint). Mid-weight cotton-fleece fabric. NOT a hoodie (no hood — this is the no-hood sibling of the Mint & Lavender Hoodie sg-006). NOT a zip-up (pullover construction, no zipper). NOT a chevron-rainbow garment (the sg-006 hoodie has rainbow chevron stripes; this crewneck does NOT — it is a clean solid-mint body with embroidered rose decoration only). NOT a tee (this is a heavier sweatshirt with ribbed cuffs/waistband). The matching mint sweatpants visible in the techflat are sold as a separate companion piece — this dossier covers ONLY the crewneck top.
-Color: Mint/Lavender
-Available sizes: S | M | L | XL | 2XL | 3XL
+**Garment type lock:** Crew-neck pullover sweatshirt — solid **mint green / seafoam-green** body fabric throughout (front, back, sleeves) with **NO hood, NO zipper, NO color-blocking, NO chevron stripes, NO contrast panels**. Long sleeves, ribbed crew-neck, ribbed cuffs at wrists, ribbed waistband at hem (all in matching mint). Mid-weight cotton-fleece fabric. NOT a hoodie (no hood — this is the no-hood sibling of the Mint & Lavender Hoodie sg-006). NOT a zip-up (pullover construction, no zipper). NOT a chevron-rainbow garment (the sg-006 hoodie has rainbow chevron stripes; this crewneck does NOT — it is a clean solid-mint body with embroidered rose decoration only). NOT a tee (this is a heavier sweatshirt with ribbed cuffs/waistband). The matching mint sweatpants visible in the techflat are sold as a separate companion piece — this dossier covers ONLY the crewneck top.
 
 ## Branding — exactly what IS on this product
 

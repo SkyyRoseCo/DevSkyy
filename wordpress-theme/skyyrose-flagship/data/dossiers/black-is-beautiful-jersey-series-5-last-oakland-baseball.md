@@ -13,11 +13,7 @@ reference_image: assets/products/references/br-012-techflat.jpeg
 
 # BLACK is Beautiful Jersey Series — 5. Baseball Classic (Last Oakland)
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Solid **dark forest green** base fabric. Mid-weight knit jersey.
-Features: Authentic-style baseball jersey — V-neck collar opening with gold/yellow piping, button-front placket with gold/yellow piping, short sleeves with gold/yellow cuff piping, straight even hem (no drop-tail). Solid **dark forest green** base fabric. Mid-weight knit jersey. NOT a t-shirt, NOT a hoodie, NOT a basketball tank, NOT a football jersey. **PRE-ORDER product**.
-Color: Green/Gold
-Available sizes: S | M | L | XL | 2XL | 3XL
+**Garment type lock:** Authentic-style baseball jersey — V-neck collar opening with gold/yellow piping, button-front placket with gold/yellow piping, short sleeves with gold/yellow cuff piping, straight even hem (no drop-tail). Solid **dark forest green** base fabric. Mid-weight knit jersey. NOT a t-shirt, NOT a hoodie, NOT a basketball tank, NOT a football jersey. **PRE-ORDER product**.
 
 This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giants br-014 / White br-015). Green base + gold/yellow piping is the Oakland palette throughout.
 

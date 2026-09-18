@@ -164,3 +164,56 @@ def test_csv_preserves_structured_garment_facts_without_competing_values(registr
     assert json.loads(row["sizing_references"]) == product["garment"]["sizing_references"]
     with pytest.raises(ValueError):
         update_catalog_fields("br-test", {"materials": "Competing value"}, registry)
+
+
+def test_symlinked_registry_stays_a_symlink_and_writes_through(registry, tmp_path):
+    """The repo-root SOT link must survive writes; projections land beside the real file."""
+    link_dir = tmp_path / "root"
+    link_dir.mkdir()
+    link = link_dir / "logo-registry.json"
+    link.symlink_to(registry)
+
+    update_catalog_fields("br-test", {"name": "Renamed"}, link)
+
+    assert link.is_symlink()
+    assert json.loads(registry.read_text())["products"]["br-test"]["catalog"]["name"] == "Renamed"
+    assert (registry.parent / "skyyrose-catalog.csv").is_file()
+    assert not (link_dir / "skyyrose-catalog.csv").exists()
+    assert not (link_dir / "dossiers").exists()
+    assert export_compatibility(link, check=True) == []
+    assert link.is_symlink()
+
+
+def test_check_reports_orphan_dossiers_without_deleting_them(registry):
+    """A dossier no product projects to is drift: product facts authored outside the SOT."""
+    from skyyrose.core.product_registry import orphan_dossiers
+
+    export_compatibility(registry)
+    dossiers = registry.parent / "dossiers"
+    (dossiers / "_template.md").write_text("template\n")
+    rogue = dossiers / "hand-authored.md"
+    rogue.write_text("---\nsku: zz-999\n---\nAuthored outside the registry\n")
+
+    assert export_compatibility(registry, check=True) == [str(rogue)]
+    assert orphan_dossiers(registry) == [rogue]
+    # A real sync must surface it too and must never remove founder-authored data.
+    assert str(rogue) in export_compatibility(registry)
+    assert rogue.is_file()
+
+
+def test_sync_check_cli_fails_on_orphan_dossier(registry, monkeypatch, capsys):
+    """`sync_product_registry.py --check` exits non-zero and names the orphan."""
+    import importlib
+
+    from skyyrose.core import product_registry
+
+    cli = importlib.import_module("scripts.sync_product_registry")
+    export_compatibility(registry)
+    rogue = registry.parent / "dossiers" / "hand-authored.md"
+    rogue.write_text("Authored outside the registry\n")
+    monkeypatch.setattr(product_registry, "PRODUCT_REGISTRY", registry)
+    monkeypatch.setattr("sys.argv", ["sync_product_registry.py", "--check"])
+
+    assert cli.main() == 1
+    assert f"ORPHAN {rogue}" in capsys.readouterr().out
+    assert rogue.is_file()

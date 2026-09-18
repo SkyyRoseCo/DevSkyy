@@ -17,11 +17,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from skyyrose.core.dossier_loader import DossierMissingError
+from skyyrose.core.product_registry import load_registry
+from skyyrose.elite_studio.logo_registry import LogoRegistry, RegistryContractError
+
 from . import config, cost, references
 from .cost import CostManifest, ManifestEntry
-from skyyrose.elite_studio.logo_registry import LogoRegistry, RegistryContractError
-from skyyrose.core.product_registry import load_registry
-
 from .prompt import SceneError, build_pair_prompt, build_prompt, read_dossier
 from .references import MissingReferenceError, Pair, ReferenceImage
 from .scene_schema import build_scene
@@ -361,7 +362,9 @@ def plan_sku(
             scene=scene,
             style_reference=use_style_ref,
         )
-    except (MissingReferenceError, SceneError, RegistryContractError, FileNotFoundError) as exc:
+    # A missing dossier is a per-SKU skip. A missing registry is not caught: it
+    # must abort the batch instead of marking every SKU "skipped" at $0 (bug-230).
+    except (MissingReferenceError, SceneError, RegistryContractError, DossierMissingError) as exc:
         return SkuPlan(
             sku=sku,
             name=name,
@@ -433,7 +436,7 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
         prompt = build_pair_prompt(
             pair_label=pair.label, collection=pair.collection, garments=garments
         )
-    except (MissingReferenceError, SceneError, RegistryContractError, FileNotFoundError) as exc:
+    except (MissingReferenceError, SceneError, RegistryContractError, DossierMissingError) as exc:
         return SkuPlan(
             sku=pair.skus[0],
             name=pair.label,

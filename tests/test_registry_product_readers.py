@@ -72,37 +72,30 @@ def test_dossier_observes_founder_correction_without_cache_clear(registry_file: 
     assert dossier_loader.load_dossier("founder-product").garment_type_lock == "Corrected satin"
 
 
-def test_structured_founder_fields_update_effective_dossier_and_raw(registry_file: Path) -> None:
+def test_structured_garment_fields_never_rewrite_the_founders_prose(registry_file: Path) -> None:
+    """Structured garment fields live beside the dossier, never inside its prose.
+
+    They are extracted from the founder's prose, so letting them replace the
+    Garment type lock would put derived text -- and sizes -- into render prompts
+    in place of what the founder wrote.
+    """
     payload = json.loads(registry_file.read_text())
-    payload["products"]["test-001"]["garment"] = {
-        "materials": {"specification": "Founder-confirmed nylon"},
-        "fit": {"specification": "Relaxed"},
-        "features": {"specification": "Front zip"},
+    garment = {
+        "materials": {"specification": "Nylon", "source": "derived_from_dossier"},
+        "fit": {"specification": "Relaxed", "source": "derived_from_dossier"},
         "color": "Black",
         "available_sizes": ["S", "M"],
     }
+    payload["products"]["test-001"]["garment"] = garment
     registry_file.write_text(json.dumps(payload))
+
     dossier = dossier_loader.load_dossier("founder-product")
-    assert "Materials: Founder-confirmed nylon" in dossier.garment_type_lock
-    assert "Fit: Relaxed" in dossier.garment_type_lock
-    assert "Available sizes: S | M" in dossier.garment_type_lock
-    assert "**Garment type lock:** Satin" not in dossier.raw
-    assert "Front embroidery." in dossier.raw
-    assert "No invented marks." in dossier.raw
-    assert dossier_loader.parse_dossier_markdown(dossier.raw).garment_type_lock == (
-        dossier.garment_type_lock
-    )
 
-
-def test_structured_projection_deduplicates_identical_specs(registry_file: Path) -> None:
-    product = json.loads(registry_file.read_text())["products"]["test-001"]
-    product["garment"] = {
-        "materials": {"specification": "Same founder statement"},
-        "features": {"specification": "Same founder statement"},
-    }
-    result = dossier_loader.project_registry_dossier(product)
-    assert result.garment_type_lock.count("Same founder statement") == 1
-    assert "Materials / Features:" in result.garment_type_lock
+    assert dossier.garment_type_lock == "Satin"
+    assert dossier.raw == _markdown("Satin")
+    for injected in ("Nylon", "Relaxed", "Available sizes", "take precedence"):
+        assert injected not in dossier.garment_type_lock
+    assert json.loads(registry_file.read_text())["products"]["test-001"]["garment"] == garment
 
 
 @pytest.mark.parametrize("content", [None, "", "   "])

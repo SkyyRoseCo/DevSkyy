@@ -10,11 +10,7 @@ extra_references:
 
 # Kids Colorblock Hoodie Set — Purple/Black
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Mid-weight cotton-fleece fabric.
-Features: Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** (lavender/light-pink hood + diagonal lavender-and-medium-purple upper-body panels + deep purple lower body), and (2) matching sweatpants in solid deep purple with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction as the Red/Black colorway (kids-001) but in a purple-monochrome palette.
-Color: Lavender/Purple
-Available sizes: 2T | 3T | 4T | 5 | 6 | 7
+**Garment type lock:** Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** (lavender/light-pink hood + diagonal lavender-and-medium-purple upper-body panels + deep purple lower body), and (2) matching sweatpants in solid deep purple with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction as the Red/Black colorway (kids-001) but in a purple-monochrome palette.
 
 > **Note on catalog name:** The catalog lists this SKU as "Purple/Black," but the techflat + real-product photo confirm the **pants are deep purple, NOT black**. Render purple pants to match the actual product. The "Black" in the SKU name appears to refer to the dark-purple tones reading visually as a near-black neutral, NOT to a literal black pant.
 

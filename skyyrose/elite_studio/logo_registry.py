@@ -43,8 +43,8 @@ from pathlib import Path
 from typing import Any
 
 from skyyrose.core.catalog_loader import CATALOG_CSV, PROJECT_ROOT
-from skyyrose.core.paths import THEME_ROOT, WP_LOGOS_DIR, WP_PRODUCTS_DIR
 from skyyrose.core.hashing import sha256_of_file
+from skyyrose.core.paths import THEME_ROOT, WP_LOGOS_DIR, WP_PRODUCTS_DIR
 
 REGISTRY_JSON: Path = CATALOG_CSV.parent / "logo-registry.json"
 
@@ -192,7 +192,7 @@ class LogoRegistry:
         if binding.get("kind") == "garment_artwork":
             return self._garment_artwork_path(sku, binding)
         if binding.get("path"):
-            return PROJECT_ROOT / binding["path"]
+            return self._repo_path(sku, binding["path"], "render reference")
         if not placements:
             return None
         return self.image_path(sku=sku, logo_id=placements[0]["logo_id"])
@@ -204,22 +204,26 @@ class LogoRegistry:
         binding = self._sku_entry(sku).get("render_reference") or {}
         return "garment" if binding.get("kind") == "garment_artwork" else "logo"
 
+    @staticmethod
+    def _repo_path(sku: str, path_text: object, what: str) -> Path:
+        """Resolve a registry-relative path; bytes at the result get uploaded, so it must stay in-repo."""
+        if not isinstance(path_text, str) or not path_text:
+            raise RegistryContractError(f"{sku}: {what} path is missing")
+        relative = Path(path_text)
+        if relative.is_absolute() or ".." in relative.parts:
+            raise RegistryContractError(f"{sku}: {what} path must stay within the repository")
+        path = (PROJECT_ROOT / relative).resolve()
+        if not path.is_relative_to(PROJECT_ROOT.resolve()):
+            raise RegistryContractError(f"{sku}: {what} path escapes the repository")
+        return path
+
     def _garment_artwork_path(self, sku: str, binding: dict[str, Any]) -> Path:
         """Check execution against the exact founder-bound source; never alter its art."""
         path_text = binding.get("path")
         digest = binding.get("sha256")
         if binding.get("status") != "BOUND" or binding.get("view") != "front":
             raise RegistryContractError(f"{sku}: garment artwork must be BOUND to the front view")
-        if not isinstance(path_text, str) or not path_text:
-            raise RegistryContractError(f"{sku}: garment artwork path is missing")
-        relative = Path(path_text)
-        if relative.is_absolute() or ".." in relative.parts:
-            raise RegistryContractError(
-                f"{sku}: garment artwork path must stay within the repository"
-            )
-        path = (PROJECT_ROOT / relative).resolve()
-        if not path.is_relative_to(PROJECT_ROOT.resolve()):
-            raise RegistryContractError(f"{sku}: garment artwork path escapes the repository")
+        path = self._repo_path(sku, path_text, "garment artwork")
         expected_front = (
             self._raw.get("products", {}).get(sku, {}).get("render_sources", {}).get("front")
         )

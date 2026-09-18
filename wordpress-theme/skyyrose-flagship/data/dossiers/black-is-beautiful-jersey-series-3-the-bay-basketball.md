@@ -12,16 +12,7 @@ reference_image: assets/products/references/br-010-design-front.jpeg
 
 # BLACK is Beautiful Jersey Series — 3. The Bay (Basketball)
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: **White base body fabric with a sublimated all-over
-rose-cluster pattern fading from clean white at the upper-chest into greyscale
-silhouettes at the lower hem** — the bottom third of the jersey is a layered
-grey-on-white rose-cluster pattern that wraps front and back continuously. Mid-weight tank fabric.
-Fit: **White base body fabric with a sublimated all-over
-rose-cluster pattern fading from clean white at the upper-chest into greyscale
-silhouettes at the lower hem** — the bottom third of the jersey is a layered
-grey-on-white rose-cluster pattern that wraps front and back continuously.
-Features: Authentic-style basketball tank — sleeveless, round
+**Garment type lock:** Authentic-style basketball tank — sleeveless, round
 neck with thin contrast binding, deep armhole openings (basketball-cut),
 straight even hem. **White base body fabric with a sublimated all-over
 rose-cluster pattern fading from clean white at the upper-chest into greyscale
@@ -30,8 +21,6 @@ grey-on-white rose-cluster pattern that wraps front and back continuously.
 Mid-weight tank fabric. NO sleeves. NO numbers anywhere. NOT a t-shirt. NOT
 a football jersey. NOT a baseball jersey. **PRE-ORDER product** — design
 renderings only.
-Color: White/Gold
-Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 

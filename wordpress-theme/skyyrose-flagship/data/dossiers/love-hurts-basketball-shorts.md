@@ -10,22 +10,13 @@ reference_image: assets/products/source-photos/love-hurts/lh-003-shorts-front.jp
 
 # Love Hurts Basketball Shorts
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Knee-length athletic basketball shorts — **white mesh
-body fabric** with **all-over sublimated red-roses-cluster pattern** repeating
-across the entire body, **black ribbed elasticated waistband** with **white flat
-drawstring**, **exactly four zippered pockets** (**two side hand pockets + two
-rear pockets**), **black ribbed-binding hem with red contrast piping** along the
-leg openings.
-Features: Knee-length athletic basketball shorts — **white mesh
+**Garment type lock:** Knee-length athletic basketball shorts — **white mesh
 body fabric** with **all-over sublimated red-roses-cluster pattern** repeating
 across the entire body, **black ribbed elasticated waistband** with **white flat
 drawstring**, **exactly four zippered pockets** (**two side hand pockets + two
 rear pockets**), **black ribbed-binding hem with red contrast piping** along the
 leg openings. Every pocket has a zipper closure. Knee-length cut. NOT pants. NOT
 joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
-Color: White
-Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 

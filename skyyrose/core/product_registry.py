@@ -18,9 +18,19 @@ PRODUCT_REGISTRY = (
 )
 
 
+def _registry_target(path: Path | None) -> Path:
+    """The real file behind the registry path.
+
+    The repo-root ``logo-registry.json`` is a symlink to the theme copy. Writing
+    through the unresolved link would replace it with a regular file and drop the
+    projections next to it — forking the SOT.
+    """
+    return (path or PRODUCT_REGISTRY).resolve()
+
+
 def load_registry(path: Path | None = None) -> dict[str, Any]:
     """Read current authoritative bytes, never fall back to a stale export."""
-    target = path or PRODUCT_REGISTRY
+    target = _registry_target(path)
     raw = json.loads(target.read_text(encoding="utf-8"))
     products = raw.get("products")
     if not isinstance(products, dict) or not products:
@@ -78,7 +88,7 @@ def update_catalog_fields(sku: str, changes: dict[str, str], path: Path | None =
     the same transaction. Compatibility projections are written before the
     registry commit, under the same lock, and restored if the commit fails.
     """
-    target = path or PRODUCT_REGISTRY
+    target = _registry_target(path)
     with target.with_suffix(".json.lock").open("a") as lock:
         fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
         raw = load_registry(target)
@@ -149,12 +159,39 @@ def _compatibility_outputs(raw: dict[str, Any], target: Path) -> dict[Path, str]
     return outputs
 
 
+def _orphan_dossiers(raw: dict[str, Any], target: Path) -> list[Path]:
+    """Dossier files no product projects to: product facts authored outside the registry.
+
+    Only the projections the registry expects are otherwise compared, so a
+    hand-authored or unbound dossier would never be examined. It is reported as
+    drift and never deleted — it may be founder data awaiting a registry binding.
+    """
+    expected = {f"{product['dossier']['slug']}.md" for product in raw["products"].values()}
+    dossiers_dir = target.parent / "dossiers"
+    return sorted(
+        candidate
+        for candidate in dossiers_dir.glob("*.md")
+        if candidate.name not in expected and candidate.name != "_template.md"
+    )
+
+
+def orphan_dossiers(path: Path | None = None) -> list[Path]:
+    """Dossier files present on disk that no registry product owns."""
+    target = _registry_target(path)
+    return _orphan_dossiers(load_registry(target), target)
+
+
 def export_compatibility(path: Path | None = None, *, check: bool = False) -> list[str]:
-    """Serialize export reads/writes with product updates to prevent stale exports."""
-    target = path or PRODUCT_REGISTRY
+    """Serialize export reads/writes with product updates to prevent stale exports.
+
+    Returns every drifted path: stale or missing projections (rewritten unless
+    ``check``) and orphan dossiers (reported, never touched).
+    """
+    target = _registry_target(path)
     with target.with_suffix(".json.lock").open("a") as lock:
         fcntl.flock(lock.fileno(), fcntl.LOCK_SH if check else fcntl.LOCK_EX)
-        outputs = _compatibility_outputs(load_registry(target), target)
+        raw = load_registry(target)
+        outputs = _compatibility_outputs(raw, target)
         drift = []
         for destination, content in outputs.items():
             existing = destination.read_text() if destination.exists() else None
@@ -163,4 +200,5 @@ def export_compatibility(path: Path | None = None, *, check: bool = False) -> li
                 if not check:
                     destination.parent.mkdir(parents=True, exist_ok=True)
                     _atomic_write(destination, content)
+        drift.extend(str(orphan) for orphan in _orphan_dossiers(raw, target))
         return drift

@@ -243,9 +243,9 @@ def test_render_reference_uses_registry_patch_and_blank_exterior(registry):
 
 
 def test_unbound_bridge_reference_does_not_fall_back_to_generic_cluster(registry):
-    from skyyrose.elite_studio.logo_registry import RegistryContractError
-
     from copy import deepcopy
+
+    from skyyrose.elite_studio.logo_registry import RegistryContractError
 
     raw = deepcopy(registry._raw)
     raw["sku_logos"]["sg-002"]["render_reference"] = {
@@ -256,15 +256,24 @@ def test_unbound_bridge_reference_does_not_fall_back_to_generic_cluster(registry
         LogoRegistry(raw).primary_reference_for("sg-002")
 
 
-def test_actual_render_plan_observes_registry_material_change(monkeypatch, tmp_path):
+def test_actual_render_plan_observes_registry_dossier_change(monkeypatch, tmp_path):
+    """A founder correction to the registry's dossier reaches the render prompt live.
+
+    The dossier's Garment type lock is the founder's garment specification and
+    the text prompts consume; the structured garment fields are derived from it
+    and never override it (see tests/test_dossier_founder_prose.py).
+    """
     import json
 
     from scripts.oai_render import pipeline, references
     from skyyrose.core import product_registry
 
     raw = product_registry.load_registry()
-    raw["products"]["sg-006"]["garment"]["materials"]["specification"] = (
-        "Isolated test material: founder-specified brushed cotton."
+    dossier = raw["products"]["sg-006"]["dossier"]
+    lock = "**Garment type lock:** "
+    assert dossier["content"].count(lock) == 1
+    dossier["content"] = dossier["content"].replace(
+        lock, lock + "Isolated test material: founder-specified brushed cotton. ", 1
     )
     target = tmp_path / "registry.json"
     target.write_text(json.dumps(raw))
