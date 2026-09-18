@@ -26,7 +26,7 @@
  * Usage: node scripts/verify-formatter-ignores.mjs [--quiet]
  */
 
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import { dirname, join, resolve } from 'node:path';
@@ -141,6 +141,18 @@ let failures = 0;
 
 for (const [rel, why] of PROTECTED) {
   const abs = join(ROOT, rel);
+  // getFileInfo() never touches the disk: it answers `ignored: true` for a path
+  // that does not exist, as long as a rule matches the string. So a renamed or
+  // re-versioned file (three-0.170.0 -> three-0.171.0) would leave this entry
+  // passing while verifying nothing. A representative that is gone is a failure.
+  if (!existsSync(abs)) {
+    failures += fail(
+      `${rel} does not exist — ${why}.\n` +
+        `      The gate cannot vouch for a file it cannot see. If it moved, update PROTECTED\n` +
+        `      (and check the new path is still covered by .prettierignore).`
+    );
+    continue;
+  }
   let info;
   try {
     info = await prettier.getFileInfo(abs, { ignorePath });
@@ -166,12 +178,14 @@ for (const [pkgRel, scriptNames, expectedFlag] of SUBDIR_SCRIPTS) {
     continue;
   }
   for (const name of scriptNames) {
-    const body = pkg.scripts?.[name];
-    if (typeof body !== 'string') {
+    if (typeof pkg.scripts?.[name] !== 'string') {
       failures += fail(`${pkgRel} script "${name}" is missing — the ignore gate cannot verify it.`);
-      continue;
     }
-    if (body.includes('prettier') && !body.includes(`--ignore-path ${expectedFlag}`)) {
+  }
+  // Every script that runs prettier, not only the ones named above: a later
+  // "format:all" would otherwise reformat the vendored tree with this gate still green.
+  for (const [name, body] of Object.entries(pkg.scripts ?? {})) {
+    if (typeof body === 'string' && /\bprettier\b/.test(body) && !body.includes(`--ignore-path ${expectedFlag}`)) {
       failures += fail(
         `${pkgRel} script "${name}" runs prettier without --ignore-path ${expectedFlag}.\n` +
           `      From that directory prettier does not see the repo-root .prettierignore,\n` +
