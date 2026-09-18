@@ -45,22 +45,24 @@ class SDKCatalogManagerAgent(SDKSubAgent):
     def _sdk_default_prompt(self) -> str:
         return (
             "You are the DevSkyy Catalog Manager for SkyyRose.\n\n"
-            "Product data sources (READ THESE — never invent SKUs):\n"
-            "- wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv "
-            "→ canonical product catalog (single source of truth)\n"
-            "- skyyrose/assets/data/garment-analysis.json → colors\n\n"
-            "Collections (counts reflect canonical CSV as of 2026-04-25):\n"
-            "- Black Rose: br-001 through br-015 (15 products, including "
-            "br-003 colorway variants: br-014, br-015; Oakland series: br-012)\n"
-            "- Love Hurts: lh-002 through lh-005 (4 products, lh-001 DELETED)\n"
-            "- Signature: sg-001 through sg-015 (12 products, sg-004, sg-008 and sg-010 DELETED)\n"
-            "- Kids Capsule: kids-001, kids-002 (2 products)\n\n"
+            "Product data source (READ THIS — never invent SKUs):\n"
+            "- skyyrose.core.product.get_product(sku) — the ONE product lookup (CLI: python -m skyyrose.core.product <sku> | --all | --skus). "
+            "One record per SKU: catalog (name, price, collection, description, "
+            "published, is_preorder), garment (color, available_sizes, fit, "
+            "materials, features), dossier, images, content, and a gaps list "
+            "naming anything absent. Garment color is "
+            "get_product(sku)['garment']['color'].\n"
+            "- The registry behind it is "
+            "wordpress-theme/skyyrose-flagship/data/logo-registry.json; "
+            "skyyrose-catalog.csv is a generated projection of it.\n\n"
+            "Collections: black-rose, love-hurts, signature, kids-capsule. "
+            "List the SKUs in each with python -m skyyrose.core.product --skus "
+            "or get_all_products() — never from memory.\n\n"
             "Rules:\n"
             "- NEVER fabricate SKU IDs or product names\n"
             "- NEVER guess prices — read from source\n"
-            "- Always cross-reference catalog before reporting\n"
-            "- Pre-order status is authoritative from the catalog\n"
-            "- 33 total products across 4 collections"
+            "- Always cross-reference get_product(sku) before reporting\n"
+            "- Pre-order status is authoritative from catalog.is_preorder"
         )
 
 
@@ -94,13 +96,14 @@ class SDKPriceOptimizerAgent(SDKSubAgent):
             "- Signature: $25-$195\n"
             "- Kids Capsule: $40\n\n"
             "You can:\n"
-            "- Read current pricing from scripts/nano-banana-vton.py\n"
+            "- Read current pricing from skyyrose.core.product.get_product(sku) — the ONE product lookup (CLI: python -m skyyrose.core.product <sku> | --all | --skus): "
+            "price = get_product(sku)['catalog']['price']\n"
             "- Research competitor pricing via web search\n"
             "- Calculate margins and optimize price points\n"
             "- Recommend bundle pricing strategies\n"
             "- Analyze price elasticity based on market data\n\n"
-            "Always read current prices from the catalog first. "
-            "Never guess — verify from the source file."
+            "Always read current prices from the product registry first. "
+            "Never guess — verify from get_product(sku)."
         )
 
     def _build_task_prompt(self, task: str, **kwargs: Any) -> str:
@@ -110,8 +113,9 @@ class SDKPriceOptimizerAgent(SDKSubAgent):
         if collection:
             base += (
                 f"\n\nFocus on: {collection} collection\n"
-                "Read scripts/nano-banana-vton.py to get current "
-                "prices for all products in this collection."
+                "Read get_product(sku)['catalog']['price'] (python -m "
+                "skyyrose.core.product --all) for every SKU whose "
+                "collection matches — current prices for this collection."
             )
         return base
 

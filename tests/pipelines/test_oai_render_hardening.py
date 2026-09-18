@@ -732,12 +732,23 @@ def test_render_sku_needs_review_quarantines_without_retry(_tmp_output):
     assert not (config.OUTPUT_DIR / "black-rose-crewneck" / "ghost.png").exists()
 
 
-# ── Founder review corrections (2026-06-09 review board) ────────────────────
+# ── Founder review corrections (registry products[sku].corrections) ─────────
 def _write_corrections(tmp_path: Path, monkeypatch, corrections: dict) -> None:
-    path = tmp_path / "render-corrections.json"
-    path.write_text(json.dumps({"corrections": corrections}))
-    monkeypatch.setattr(config, "CORRECTIONS_JSON", path)
-    prompt_mod._load_corrections_file.cache_clear()
+    registry = {
+        "products": {
+            sku: {
+                "catalog": {"sku": sku},
+                "corrections": [
+                    {"text": line, "authority": "FOUNDER_VERBATIM", "captured": "2026-06-09"}
+                    for line in lines
+                ],
+            }
+            for sku, lines in corrections.items()
+        }
+    }
+    path = tmp_path / "logo-registry.json"
+    path.write_text(json.dumps(registry))
+    monkeypatch.setattr("skyyrose.core.product_registry.PRODUCT_REGISTRY", path)
 
 
 def test_founder_corrections_injected_verbatim(tmp_path: Path, monkeypatch):
@@ -756,7 +767,6 @@ def test_founder_corrections_injected_verbatim(tmp_path: Path, monkeypatch):
     )
     assert "FOUNDER CORRECTIONS" in p
     assert "logo Is a patch not directly on beanie" in p
-    prompt_mod._load_corrections_file.cache_clear()
 
 
 def test_no_corrections_block_when_sku_has_none(tmp_path: Path, monkeypatch):
@@ -772,14 +782,89 @@ def test_no_corrections_block_when_sku_has_none(tmp_path: Path, monkeypatch):
         view="front",
     )
     assert "FOUNDER CORRECTIONS" not in p
-    prompt_mod._load_corrections_file.cache_clear()
 
 
-def test_corrections_missing_file_is_silent(tmp_path: Path, monkeypatch):
-    monkeypatch.setattr(config, "CORRECTIONS_JSON", tmp_path / "absent.json")
-    prompt_mod._load_corrections_file.cache_clear()
-    assert prompt_mod.corrections_for("sg-007") == []
-    prompt_mod._load_corrections_file.cache_clear()
+def test_agent_added_corrections_never_appear_as_founder_words(tmp_path: Path, monkeypatch):
+    # Only the founder's own review comments may sit under the FOUNDER CORRECTIONS
+    # header, which tells the model the founder wrote them and that they override
+    # the spec. Agent-added lines go in their own section, subordinate to the spec.
+    registry = {
+        "products": {
+            "br-004": {
+                "catalog": {"sku": "br-004"},
+                "corrections": [
+                    {
+                        "text": "[ghost] founder line",
+                        "authority": "FOUNDER_VERBATIM",
+                        "captured": "2026-06-09",
+                    },
+                    {
+                        "text": "[ghost] agent line",
+                        "authority": "AGENT_ADDED",
+                        "captured": "2026-06-12",
+                    },
+                ],
+            }
+        }
+    }
+    path = tmp_path / "logo-registry.json"
+    path.write_text(json.dumps(registry))
+    monkeypatch.setattr("skyyrose.core.product_registry.PRODUCT_REGISTRY", path)
+    p = build_prompt(
+        name="BLACK Rose Hoodie",
+        sku="br-004",
+        collection="black-rose",
+        reference_labels=[],
+        dossier_text=None,
+        is_patch=False,
+        style="ghost",
+        view="front",
+    )
+    founder_at = p.index("FOUNDER CORRECTIONS")
+    agent_at = p.index("AGENT-ADDED RENDER CONSTRAINTS")
+    founder_block = p[founder_at:agent_at] if founder_at < agent_at else p[founder_at:]
+    agent_block = p[agent_at:founder_at] if agent_at < founder_at else p[agent_at:]
+    assert "founder line" in founder_block and "agent line" not in founder_block
+    assert "agent line" in agent_block and "founder line" not in agent_block
+
+
+def test_live_br004_agent_lines_are_not_labelled_founder():
+    p = build_prompt(
+        name="BLACK Rose Hoodie",
+        sku="br-004",
+        collection="black-rose",
+        reference_labels=[],
+        dossier_text=None,
+        is_patch=False,
+        style="ghost",
+        view="front",
+    )
+    # br-004's only two corrections were added by an agent on 2026-06-12.
+    assert "FOUNDER CORRECTIONS" not in p
+    assert "AGENT-ADDED RENDER CONSTRAINTS" in p
+    assert "rose-cluster logo is a cluster of MULTIPLE" in p
+
+
+def test_corrections_missing_registry_fails_closed(tmp_path: Path, monkeypatch):
+    # Rendering without the product's corrections would repeat a render the
+    # founder already rejected, so an absent registry must stop the prompt build.
+    monkeypatch.setattr("skyyrose.core.product_registry.PRODUCT_REGISTRY", tmp_path / "absent.json")
+    with pytest.raises(FileNotFoundError):
+        prompt_mod.corrections_for("sg-007")
+
+
+def test_live_registry_corrections_reach_the_prompt():
+    # br-004's two lines live only in the registry now; they must still arrive
+    # verbatim, in order, exactly as the retired render-corrections.json held them.
+    lines = prompt_mod.corrections_for("br-004")
+    assert [line["authority"] for line in lines] == ["AGENT_ADDED", "AGENT_ADDED"]
+    assert lines[0]["text"].startswith(
+        "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE"
+    )
+    assert lines[1]["text"].startswith(
+        "[ghost] Render the rose logo at the size and position shown"
+    )
+    assert prompt_mod.corrections_for("br-003") == []
 
 
 def test_base_procedure_carries_material_and_photorealism_directives():
@@ -884,7 +969,6 @@ def test_qc_judge_rejects_obvious_trim_and_construction_mismatches():
 def test_founder_keeper_assets_skip_their_plan(tmp_path, monkeypatch):
     # tasks/mockup-render-inventory.md keep pass: a checked keeper drops its
     # exact (sku, style, view) plan from the batch — direct cost savings.
-    import json
 
     from scripts.oai_render import pipeline, references
 
@@ -893,29 +977,40 @@ def test_founder_keeper_assets_skip_their_plan(tmp_path, monkeypatch):
     keeper_asset = tmp_path / "sg-009-keeper.webp"
     keeper_asset.write_bytes(b"fake-image")
     monkeypatch.setattr(config, "PROJECT_ROOT", tmp_path)
-    kj = tmp_path / "render-keepers.json"
-    kj.write_text(
-        json.dumps(
+    monkeypatch.setattr(
+        pipeline,
+        "_registry_keepers",
+        lambda: [
             {
-                "keepers": [
-                    {
-                        "sku": "sg-009",
-                        "style": "on-model",
-                        "view": "front",
-                        "asset": "sg-009-keeper.webp",
-                        "founder_note": "good render, save it",
-                    }
-                ]
+                "sku": "sg-009",
+                "style": "on-model",
+                "view": "front",
+                "asset": "sg-009-keeper.webp",
+                "founder_note": "good render, save it",
             }
-        )
+        ],
     )
-    monkeypatch.setattr(config, "KEEPERS_JSON", kj)
     catalog = references.load_catalog()
     dossiers = references.build_dossier_index()
     result = pipeline.run(["sg-009"], catalog, dossiers, styles=["ghost", "on-model"], dry_run=True)
     combos = {(p.sku, p.style, p.view) for p in result["plans"]}
     assert ("sg-009", "on-model", "front") not in combos
     assert ("sg-009", "ghost", "front") in combos  # only the keeper plan drops
+
+
+def test_live_registry_keepers_are_the_founder_decisions():
+    # The two keep decisions moved from render-keepers.json into the registry's
+    # render_policy sections, with their founder notes intact.
+    from scripts.oai_render import pipeline
+
+    keepers = {(k["sku"], k["style"], k["view"]): k for k in pipeline._registry_keepers()}
+    assert set(keepers) == {("br-006", "on-model", "front"), ("sg-009", "on-model", "front")}
+    assert keepers[("br-006", "on-model", "front")]["founder_note"] == (
+        "real product \u2014 approved 2026-06-10"
+    )
+    assert keepers[("sg-009", "on-model", "front")]["asset"].endswith(
+        "signature-sherpa-jacket-front-model.webp"
+    )
 
 
 def test_pair_with_excluded_member_falls_back_to_solo(monkeypatch):

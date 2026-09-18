@@ -6534,7 +6534,7 @@
   },
   "collection_tokens": {
     "black-rose": {
-      "identity_ref": "repo://wordpress-theme/skyyrose-flagship/data/collections/black-rose/identity.json",
+      "identity_ref": "repo://wordpress-theme/skyyrose-flagship/data/logo-registry.json#collections.black-rose",
       "accent_token": "--skyyrose-accent",
       "accent_dark_token": "--skyyrose-accent-dark",
       "accent_hex": "#C0C0C0",
@@ -6545,7 +6545,7 @@
       "shippable_media": false
     },
     "love-hurts": {
-      "identity_ref": "repo://wordpress-theme/skyyrose-flagship/data/collections/love-hurts/identity.json",
+      "identity_ref": "repo://wordpress-theme/skyyrose-flagship/data/logo-registry.json#collections.love-hurts",
       "accent_token": "--skyyrose-accent",
       "accent_dark_token": "--skyyrose-accent-dark",
       "accent_hex": "#DC143C",
@@ -6556,7 +6556,7 @@
       "shippable_media": false
     },
     "signature": {
-      "identity_ref": "repo://wordpress-theme/skyyrose-flagship/data/collections/signature/identity.json",
+      "identity_ref": "repo://wordpress-theme/skyyrose-flagship/data/logo-registry.json#collections.signature",
       "accent_token": "--skyyrose-accent",
       "accent_dark_token": "--skyyrose-accent-dark",
       "accent_hex": "#D4AF37",
@@ -6567,7 +6567,7 @@
       "shippable_media": false
     },
     "kids-capsule": {
-      "identity_ref": "repo://wordpress-theme/skyyrose-flagship/data/collections/kids-capsule/identity.json",
+      "identity_ref": "repo://wordpress-theme/skyyrose-flagship/data/logo-registry.json#collections.kids-capsule",
       "accent_token": "--skyyrose-accent",
       "accent_dark_token": "--skyyrose-accent-dark",
       "accent_hex": "#B76E79",

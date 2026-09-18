@@ -12,7 +12,7 @@
 // server components — importing from a client component will fail the build.
 import fs from 'node:fs';
 import path from 'node:path';
-import { splitCsvRow } from './catalog-csv';
+import { parseCsvRecords } from './catalog-csv';
 
 export interface CatalogProduct {
   sku: string;
@@ -76,14 +76,14 @@ export function resolveCsvPath(): string {
 }
 
 function parseCsv(text: string): CatalogProduct[] {
-  const lines = text.split(/\r?\n/).filter((l) => l.length > 0);
-  if (lines.length < 2) return [];
+  const records = parseCsvRecords(text);
+  if (records.length < 2) return [];
 
-  const headers = splitCsvRow(lines[0]);
+  const headers = records[0];
   const out: CatalogProduct[] = [];
 
-  for (let i = 1; i < lines.length; i += 1) {
-    const cells = splitCsvRow(lines[i]);
+  for (let i = 1; i < records.length; i += 1) {
+    const cells = records[i];
     if (cells.every((c) => c.trim() === '')) continue;
     const row: Record<string, string> = {};
     headers.forEach((h, idx) => {

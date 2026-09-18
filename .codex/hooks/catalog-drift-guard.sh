@@ -57,11 +57,6 @@ if [[ "$MATCHED" == "0" && "$REL_FILE" == "$DOSSIER_GLOB_PREFIX"*.md ]]; then
   MATCHED=1
 fi
 
-# Per-collection identity.json is the canon SOT master (added 2026-06-14).
-if [[ "$MATCHED" == "0" && "$REL_FILE" == wordpress-theme/skyyrose-flagship/data/collections/*/identity.json ]]; then
-  MATCHED=1
-fi
-
 if [[ "$MATCHED" == "0" ]]; then
   exit 0
 fi
@@ -88,7 +83,7 @@ fi
 # wrong-file pick-ups. Regenerate + verify in-session so the view never lags.
 # Placed BEFORE the optional catalog-validator gate so a repo without that
 # validator still keeps the SOT current.
-# SOT masters = the three legacy masters PLUS per-collection identity.json (canon).
+# SOT masters. Collection identity (canon) lives in logo-registry.json's collections section.
 SOT_MASTERS=(
   "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
   "wordpress-theme/skyyrose-flagship/data/visual-manifest.json"
@@ -102,10 +97,7 @@ for master in "${SOT_MASTERS[@]}"; do
     break
   fi
 done
-if [[ "$REL_FILE" == wordpress-theme/skyyrose-flagship/data/collections/*/identity.json ]]; then
-  SOT_TRIGGER=1
-fi
-# Full SOT pipeline: design-tokens (from identity) → per-folder sot.json → designer
+# Full SOT pipeline: design-tokens (from the registry's collections) → per-folder sot.json → designer
 # hubs → verify. Editing any master without regenerating leaves the generated view
 # stale — the exact drift that caused repeated wrong-file pick-ups.
 if [[ "$SOT_TRIGGER" == "1" && -f "${SOT_DATA_DIR}/build-collection-sot.py" ]]; then

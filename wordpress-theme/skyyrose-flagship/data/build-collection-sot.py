@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate per-collection SOT: data/collections/<slug>/sot.json + a global _orphans.json.
 
-Canon source = data/collections/<slug>/identity.json (via sot_common, schema-validated).
+Canon source = logo-registry.json collections.<slug> (via sot_common, schema-validated).
 The masters (catalog CSV, visual-manifest.json, logo-registry.json) remain authoritative
 for their domain; sot.json is a GENERATED VIEW — DO NOT hand-edit it.
 
@@ -217,7 +217,7 @@ def build_collection(
     }
     lockup_keys = {"lockup_display", "lockup_svg_master", "lockup_source_art", "lockup_alt"}
     imagery = {k: v for k, v in full.items() if k not in lockup_keys}
-    # Resolve imagery.hero from identity.json (collection-specific canonical hub slot).
+    # Resolve imagery.hero from the collection identity (collection-specific canonical hub slot).
     ident_hero_raw = (ident.get("imagery") or {}).get("hero")
     if ident_hero_raw:
         h_path = ident_hero_raw.get("path", "")
@@ -231,8 +231,8 @@ def build_collection(
     else:
         imagery["hero"] = None
     return {
-        "_generated_by": "data/build-collection-sot.py — DO NOT EDIT. Fix identity.json / the masters, then regenerate.",
-        "_authority": f"Single Source of Truth view for {ident['name']}. Canon = identity.json.",
+        "_generated_by": "data/build-collection-sot.py — DO NOT EDIT. Fix logo-registry.json collections / the masters, then regenerate.",
+        "_authority": f"Single Source of Truth view for {ident['name']}. Canon = logo-registry.json collections.{slug}.",
         "collection": slug,
         "name": ident["name"],
         "updated": updated,
@@ -240,8 +240,8 @@ def build_collection(
         "palette": ident["palette"],
         "fonts": ident["fonts"],
         "masters": {
-            "identity": f"data/collections/{slug}/identity.json",
-            "products": "data/skyyrose-catalog.csv",
+            "identity": f"data/logo-registry.json#collections.{slug}",
+            "products": "data/logo-registry.json#products",
             "imagery": "data/visual-manifest.json",
             "logos": "data/logo-registry.json",
         },
@@ -321,7 +321,7 @@ def build_orphans(*, masters: _Masters | None = None) -> dict:
     orphans = sorted(tree - reg - known)
     return {
         "_note": "Image files in the asset tree registered to NO manifest entry, product, or logo. "
-        "Audit before use; add legit non-role files to a collection identity.json known_orphans[].",
+        "Audit before use; add legit non-role files to logo-registry.json collections.<slug>.known_orphans[].",
         "count": len(orphans),
         "orphans": orphans,
     }

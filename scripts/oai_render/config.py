@@ -138,12 +138,6 @@ from skyyrose.core import paths as _ap  # noqa: E402
 THEME_ROOT = _ap.THEME_ROOT
 CATALOG_CSV = _ap.CATALOG_CSV
 DOSSIER_DIR = _ap.DOSSIERS_DIR
-# Founder's verbatim render-review corrections, injected into prompts per SKU
-# (generated from the 2026-06-09 review board; see the file's _meta block).
-CORRECTIONS_JSON = THEME_ROOT / "data" / "render-corrections.json"
-# Founder-approved surviving assets (tasks/mockup-render-inventory.md keep pass):
-# each entry skips one (sku, style, view) plan in batches; explicit --sku overrides.
-KEEPERS_JSON = THEME_ROOT / "data" / "render-keepers.json"
 PRODUCT_REFERENCES_DIR = _ap.PRODUCT_REFERENCES
 PRODUCT_SOURCE_PHOTOS_DIR = _ap.PRODUCT_SOURCE_PHOTOS
 PRODUCTS_DIR = _ap.WP_PRODUCTS_DIR

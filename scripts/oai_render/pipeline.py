@@ -258,8 +258,17 @@ def resolve_targets(
     return []
 
 
+def _registry_keepers() -> list[dict[str, str]]:
+    """Every founder keep decision in the product registry, tagged with its SKU."""
+    return [
+        {"sku": sku, **keeper}
+        for sku, product in load_registry()["products"].items()
+        for keeper in (product.get("render_policy") or {}).get("keepers", [])
+    ]
+
+
 def _keeper_skips() -> dict[tuple[str, str, str], str]:
-    """(sku, style, view) -> founder note, from render-keepers.json. Empty when absent.
+    """(sku, style, view) -> founder note, from the registry's render_policy.keepers.
 
     A keeper only suppresses its render plan if the surviving asset it names
     still exists on disk. If the file was renamed or deleted, the keeper is
@@ -267,15 +276,9 @@ def _keeper_skips() -> dict[tuple[str, str, str], str]:
     keeper would silently block the re-render of a product whose "kept" image
     is gone.
     """
-    import json
-
-    try:
-        data = json.loads(config.KEEPERS_JSON.read_text(encoding="utf-8"))
-    except (OSError, ValueError):
-        return {}
     repo_root = config.PROJECT_ROOT
     out: dict[tuple[str, str, str], str] = {}
-    for k in data.get("keepers", []):
+    for k in _registry_keepers():
         sku, style = k.get("sku"), k.get("style")
         if not (sku and style):
             continue

@@ -135,8 +135,8 @@ class TestCollectionSotCurrentGuard:
     def test_guard_fails_on_orphaned_slug(self, tmp_path, monkeypatch):
         """A committed sot.json whose collection the generator no longer produces must fail.
 
-        Removing a collection's identity.json drops its slug from build_documents(); the
-        leftover committed sot.json would otherwise pass unseen.
+        Removing a collection from the registry's collections section drops its slug from
+        build_documents(); the leftover committed sot.json would otherwise pass unseen.
         """
         self._seed(tmp_path)
         retired = tmp_path / "retired-collection"

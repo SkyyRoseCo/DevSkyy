@@ -181,7 +181,7 @@ YOUR INSPECTION AREAS:
 2. CSS Validation — no broken var() references, no sub-10px fonts
 3. Link Checking — internal links, asset references
 4. Template Integrity — PHP templates don't have syntax errors
-5. Data Consistency — product-content.json matches template expectations
+5. Data Consistency — product facts in templates match the product registry (python -m skyyrose.core.product <sku>)
 6. Regression — check known fixed issues haven't returned
 
 KNOWN FIXED ISSUES (verify these stay fixed):

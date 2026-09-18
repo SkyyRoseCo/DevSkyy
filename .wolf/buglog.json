@@ -3715,7 +3715,7 @@
     "error_message": "PATTERN: test isolation / shared-state pollution — tests failing only in full-suite or parallel runs (os.getenv default shadowing, design-tokens fixture race, snapshot drift, shared /tmp rmtree race)",
     "file": "tests/ (cross-file)",
     "root_cause": "Tests share mutable state: hardcoded /tmp paths (racy across concurrent pytest processes), module-level env reads, session-scoped snapshots. Recurred 4x Jun-18→Jul-12. Concurrent suites (parallel Claude sessions + Stop-hook runs) make shared /tmp a live race, not theoretical.",
-    "fix": "Rule: per-test tmp_path (never hardcoded /tmp), monkeypatch.setenv/delenv (never bare os.environ), no cross-test file reuse. 2026-07-12 sweep converted all 4 real /tmp writers (test_tripo_agent, test_p0_ssrf_replicate, test_skyyrose_agents x2) to tmp_path; remaining /tmp literals are mock-string args that never touch disk. 2026-07-16 (recurrence #5): tests/collections/test_gen_collection_hub.py ran wordpress-theme/skyyrose-flagship/data/gen-collection-hub.py in-place against the tracked collections tree, rewriting collections/*/index.html on every pytest run. Fixed: gen-collection-hub.py gained an argparse --out-dir flag (default None -> the tracked collections/ dir, so `python gen-collection-hub.py` with no args stays byte-identical); inputs (sot.json, copy.md) still read from the canonical tree read-only, only the generated index.html output is redirectable. Test now passes tmp_path via --out-dir and asserts against tmp_path output — zero drift verified alone, repeated, and full-suite.",
+    "fix": "Rule: per-test tmp_path (never hardcoded /tmp), monkeypatch.setenv/delenv (never bare os.environ), no cross-test file reuse. 2026-07-12 sweep converted all 4 real /tmp writers (test_tripo_agent, test_p0_ssrf_replicate, test_skyyrose_agents x2) to tmp_path; remaining /tmp literals are mock-string args that never touch disk. 2026-07-16 (recurrence #5): tests/collections/test_gen_collection_hub.py ran wordpress-theme/skyyrose-flagship/data/gen-collection-hub.py in-place against the tracked collections tree, rewriting collections/*/index.html on every pytest run. Fixed: gen-collection-hub.py gained an argparse --out-dir flag (default None -> the tracked collections/ dir, so `python gen-collection-hub.py` with no args stays byte-identical); inputs (sot.json, copy.md) still read from the canonical tree read-only, only the generated index.html output is redirectable. Test now passes tmp_path via --out-dir and asserts against tmp_path output — zero drift verified alone, repeated, and full-suite. 2026-09-18 (recurrence #6): skyyrose/core/product_registry.py decided the dashboard replica belonged to 'the canonical registry' by comparing against the monkeypatchable PRODUCT_REGISTRY, so a test that pointed it at a tmp copy rewrote the tracked frontend/data/skyyrose-catalog.csv (caught by sync --check). Fixed: _CANONICAL_REGISTRY pinned at import; test_a_registry_copy_never_rewrites_the_tracked_replica.",
     "tags": [
       "pattern",
       "tests",
@@ -3729,8 +3729,8 @@
       "bug-167",
       "bug-229"
     ],
-    "occurrences": 5,
-    "last_seen": "2026-07-16"
+    "occurrences": 6,
+    "last_seen": "2026-09-18T20:52:40.227309+00:00"
   },
   {
     "id": "bug-232",
@@ -5896,5 +5896,49 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-18T13:26:52.710931+00:00"
+  },
+  {
+    "id": "bug-338",
+    "timestamp": "2026-09-18T20:35:52.103583+00:00",
+    "error_message": "get_product(sku) served agent-generated copy written for a different product as enriched content: lh-006 (Love Hurts Joggers (White)) returned 'The Fannie' fanny-pack copy; 11 of 19 product-content.json records carry a different product name than the registry, 5 describe a different garment (lh-006, sg-001, sg-002, sg-003, sg-005). alt-text.json keys name images absent from the repo. Render corrections for a missing registry/file silently returned [] (fail-open).",
+    "file": "skyyrose/core/product.py",
+    "root_cause": "skyyrose/build/gemini-content.js generated product-content.json/alt-text.json from its own hard-coded 20-SKU PRODUCTS table (lh-001 'The Fannie', br-008 hooded dress, sg-010...), later partially re-keyed; get_product read that side store as the enriched layer with no identity check. Separately, oai_render/prompt.py and pipeline.py read render-corrections.json / render-keepers.json and returned empty on a missing/malformed file.",
+    "fix": "Schema v2 fold (branch feat/registry-fold-side-stores): render corrections (per-line authority: 32 FOUNDER_VERBATIM, 9 AGENT_ADDED from 31d4e40e4), keepers, and the 4 collection identity.json files folded into logo-registry.json; get_product, oai_render, and sot_common read only the registry and fail closed when it is missing. Copy lives in products[sku].content written via product_registry.update_product_content with per-field authority; the Gemini copy is no longer served (founder decides whether any is folded). Tests: test_registry_side_store_fold.py, test_copy_written_for_another_product_is_never_served (RED on HEAD with the Fannie text).",
+    "tags": [
+      "product-sot",
+      "registry",
+      "fail-open",
+      "wrong-garment",
+      "side-store",
+      "bug-096-class"
+    ],
+    "related_bugs": [
+      "bug-096",
+      "bug-230",
+      "bug-329"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-18T20:35:52.103583+00:00"
+  },
+  {
+    "id": "bug-339",
+    "timestamp": "2026-09-18T15:54:05-07:00",
+    "last_seen": "2026-09-18T15:54:05-07:00",
+    "occurrences": 1,
+    "error_message": "Reference census for the 20-file deletion (PR #949) missed live references: first pass (git grep piped through grep -v filters in Bash) omitted data/collections/README.md, agents/elite_web_builder/knowledge/photo_generation.md, 6 skyyrose-suite skill files, v2-page-plan.json identity_ref, typography.json notes.",
+    "file": "wordpress-theme/skyyrose-flagship/data/collections/README.md",
+    "root_cause": "The census relied on one Bash git-grep pipeline whose output was silently incomplete (cause unconfirmed; the rtk command proxy is known to truncate git output and rewrote a nested git call in the same session). A single search method cannot fail visibly, so its gaps looked like a clean result.",
+    "fix": "Final census walks `git ls-files` in Python and reads each file directly (no shell proxy); every non-historical hit was repointed to logo-registry.json / get_product or left with a stated reason (historical plans, founder dossier text, CSS comments).",
+    "tags": [
+      "census",
+      "deletion",
+      "rtk",
+      "verification",
+      "fail-open"
+    ],
+    "related_bugs": [
+      "bug-230",
+      "bug-338"
+    ]
   }
 ]

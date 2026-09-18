@@ -1,6 +1,6 @@
 # devskyy-sdk-app
 
-A **SkyyRose commerce agent** built on the [Claude Agent SDK](https://code.claude.com/docs/en/agent-sdk/python) for Python. It answers product questions by calling **custom in-process MCP tools** that search a product catalog — the same pattern you'd use to wire an agent to your real WooCommerce store or database.
+A **SkyyRose commerce agent** built on the [Claude Agent SDK](https://code.claude.com/docs/en/agent-sdk/python) for Python. It answers product questions by calling **custom in-process MCP tools** that search the SkyyRose product registry — the one product source of truth — so every SKU, name, price, size, and availability it quotes is a real registry fact.
 
 Built with `claude-agent-sdk` (≥ 0.2.110) and managed with [`uv`](https://docs.astral.sh/uv/).
 
@@ -10,7 +10,7 @@ Built with `claude-agent-sdk` (≥ 0.2.110) and managed with [`uv`](https://docs
 |------|---------|
 | `main.py` | Entry point. Builds `ClaudeAgentOptions`, runs `query()`, streams the response. |
 | `tools.py` | Three custom tools (`lookup_product`, `list_collection`, `collection_canon`) wrapped in an in-process MCP server via `@tool` + `create_sdk_mcp_server`. |
-| `catalog.py` | Sample product data, per-collection canon (ethos/accent/lineage), and search functions. **Demo data — not the canonical store.** |
+| `catalog.py` | Product data read from the product registry (`wordpress-theme/skyyrose-flagship/data/logo-registry.json` — the ONE SkyyRose product source of truth, the same record `python -m skyyrose.core.product <sku>` prints), per-collection canon (ethos/accent/lineage), and search functions. Fails closed if the registry is missing; nothing is demo data. |
 | `test_tools.py` | Offline checks for the tools and wiring. **No API calls, no cost.** |
 | `.env.example` | Template for your `ANTHROPIC_API_KEY`. |
 
@@ -33,7 +33,7 @@ cp .env.example .env
 
 ```bash
 # One-shot question
-uv run python main.py "Is br-001 in stock, and what does it cost?"
+uv run python main.py "Is br-001 available, and what does it cost?"
 
 # No argument -> three independent demo queries (each query() call is stateless)
 uv run python main.py
@@ -69,7 +69,7 @@ Key design choices, and why:
 
 ## Make it yours
 
-- **Real catalog:** replace the literals in `catalog.py` with a loader that reads your CSV / hits the WooCommerce REST API. The tool handlers don't change.
+- **Catalog source:** `catalog.py` reads the product registry JSON directly because this app cannot import the `skyyrose` package. It maps only real registry fields (`catalog.name/price/description`, `garment.available_sizes`, `collections[slug].name`) and derives availability from `catalog.is_preorder` / `catalog.published` — the registry has no stock counts, so the agent never claims any. Product facts are edited in the registry (via `skyyrose.core.product_registry`), never here.
 - **New tools:** write another `@tool`-decorated async function, add it to the `tools=[...]` list in `create_sdk_mcp_server`, and add its `mcp__catalog__<name>` to `allowed_tools`.
 - **Change the model:** the agent pins `model="claude-sonnet-4-6"` in `build_options()` for reproducibility. Swap it for another current model, or drop the line to float with the bundled CLI default.
 - **Tighten the persona:** edit `SYSTEM_PROMPT` in `main.py`.

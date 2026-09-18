@@ -1,5 +1,32 @@
 # Current Tasks
 
+## ACTIVE — Registry = the only product source: fold side stores, repoint every lookup (2026-09-18)
+
+Founder: "fold in remaining side stores" + "every workflow, pipeline, product
+rendering, agent look up points to this 1 source ... everything outside of it
+needs to be removed". SOT = `wordpress-theme/skyyrose-flagship/data/logo-registry.json`,
+read via `skyyrose.core.product.get_product`. Branch `feat/registry-fold-side-stores`.
+
+### Three buckets (census 2026-09-18, [repo])
+
+| Bucket | Stores | Action |
+| --- | --- | --- |
+| Authored outside the registry | `render-corrections.json` (20 SKUs/41 lines), `render-keepers.json` (2), 4x `collections/<slug>/identity.json` | FOLD into registry, repoint readers, delete after founder `y` |
+| Agent copy, not foldable | `skyyrose/assets/data/product-content.json` (19), `alt-text.json` (19) | Written by `skyyrose/build/gemini-content.js` from its OWN hard-coded 20-SKU table; 11/19 names differ from the registry, 5 describe a different garment; alt keys name images that are not in the repo. Gate in `get_product`, founder decides the copy |
+| Generated projections | CSV, `data/dossiers/*.md`, `sot-images.json`, `v7-cards.json`, `lookbook-sot.json`, collection `sot.json`, asset manifest | KEEP — regenerated from the registry, `--check` fails closed on drift. Production PHP can only read deployed projections |
+| Consumers | everything that reads the above | REPOINT to `get_product` / registry sections |
+
+### Plan
+- [x] Fold: `products[sku].corrections` (per-line authority from the file's own `_meta`: 9 lines added 2026-06-12 per Fable vision test = `AGENT_ADDED`, 32 = `FOUNDER_VERBATIM`), `products[sku].render_policy.keepers`, top-level `collections`, folded `_meta` kept verbatim; schema version 1 -> 2; `logo-registry.schema.json` extended
+- [x] `get_product`: corrections + render_policy from the registry; content exact-name gate (`content.sku_mismatch`); alt text served only when its key names a registry-bound image
+- [x] Repoint `scripts/oai_render` (corrections, keepers), `sot_common.load_identity`, collection generators/verifiers, drift hooks, agent prompts naming `garment-analysis.json` / side stores
+- [x] Tests: value-equal round trip for every folded store; gates; readers hit the registry; guard covers JS + folded stores
+- [x] `sync_product_registry.py`, asset manifest, `organize --check`, full suite, clean-checkout run, review
+- [ ] Phase 4 STOP-AND-SHOW: exact deletion manifest (folded stores + legacy product stores + dead readers/writers) -> founder `y`
+- [ ] Founder decision list: the 19 agent-copy records (names side by side)
+- [x] Also repointed (census follow-ups): dashboard admin editor writes through the registry (CLI `python -m skyyrose.core.product_registry update`); `frontend/data/skyyrose-catalog.csv` generated as a projection (had drifted: 15 image cells + 6 branding specs); dashboard CSV parser handles multi-line cells (was minting 70 fake products); content agent, SDK commerce agent (invented products under real SKUs), and domain-agent prompts read the registry
+- [x] Review REQUEST CHANGES fixed: agent-added corrections rendered under their own prompt header; authorship note corrected; alt-text writer bound to registry images; SDK canon from registry; replica pinned to the canonical registry (bug-231 recurrence #6)
+
 ## ACTIVE — Refactor scripts/deploy-theme.sh (2026-08-01)
 
 Scope narrowed after advisor review (production deploy script, bug-107 history

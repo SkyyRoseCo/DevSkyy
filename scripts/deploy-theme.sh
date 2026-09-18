@@ -535,9 +535,8 @@ SKYY_EXCLUDE_COMMON_PATTERNS=(
     'data/dossiers' 'data/brand' 'data/brand-logos' 'data/product-references'
     'data/*.py' 'data/*.bak*' 'data/*.schema.json' 'data/product-embeddings.json'
     'data/product-similarities.json' 'data/logo-registry.json'
-    'data/render-corrections.json' 'data/render-keepers.json'
     'data/visual-manifest.json' 'data/collections/*/copy.md'
-    'data/collections/*/identity.json' 'data/collections/*/index.html'
+    'data/collections/*/index.html'
 )
 # Historically present in RSYNC_EXCLUDES only -- these currently DO ship via
 # the live tar path (see divergence note above).

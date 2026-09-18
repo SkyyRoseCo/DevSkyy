@@ -1,6 +1,6 @@
 {
-  "_generated_by": "data/build-collection-sot.py \u2014 DO NOT EDIT. Fix identity.json / the masters, then regenerate.",
-  "_authority": "Single Source of Truth view for Black Rose. Canon = identity.json.",
+  "_generated_by": "data/build-collection-sot.py \u2014 DO NOT EDIT. Fix logo-registry.json collections / the masters, then regenerate.",
+  "_authority": "Single Source of Truth view for Black Rose. Canon = logo-registry.json collections.black-rose.",
   "collection": "black-rose",
   "name": "Black Rose",
   "updated": "GENERATED",
@@ -36,8 +36,8 @@
     }
   },
   "masters": {
-    "identity": "data/collections/black-rose/identity.json",
-    "products": "data/skyyrose-catalog.csv",
+    "identity": "data/logo-registry.json#collections.black-rose",
+    "products": "data/logo-registry.json#products",
     "imagery": "data/visual-manifest.json",
     "logos": "data/logo-registry.json"
   },

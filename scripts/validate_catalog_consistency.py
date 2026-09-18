@@ -933,7 +933,8 @@ def check_collection_sot_current() -> CheckResult:
     the tracked asset tree — never the broad image scan — so it is deterministic in a clean
     CI checkout. The sibling ``_orphans.json`` is intentionally NOT guarded here: it depends
     on the full image tree and is covered by ``freshness-guard.sh``. The generator validates
-    identity.json with ``jsonschema``, so the catalog-validate CI job installs it.
+    the registry's collection identities with ``jsonschema``, so the catalog-validate CI job
+    installs it.
     """
     name = "collection_sot_current"
     if not _BUILD_COLLECTION_SOT.exists():
@@ -969,7 +970,7 @@ def check_collection_sot_current() -> CheckResult:
         if fp.read_text(encoding="utf-8") != gen_mod.serialize(doc):
             stale.append(f"  {slug}/sot.json drifted from generator output")
     # Symmetric guard: a committed sot.json whose collection the generator no longer
-    # produces (e.g. its identity.json was removed) would otherwise pass unseen.
+    # produces (e.g. its registry collection was removed) would otherwise pass unseen.
     committed = {p.parent.name for p in _COLLECTIONS_DIR.glob("*/sot.json")}
     for orphaned in sorted(committed - set(documents)):
         stale.append(f"  {orphaned}/sot.json committed but slug no longer in generator output")
