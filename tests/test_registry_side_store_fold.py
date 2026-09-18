@@ -5,11 +5,11 @@ identity.json files were authored outside logo-registry.json. Their contents
 moved into it (products[sku].corrections, products[sku].render_policy, the
 top-level collections section, and authority_contract for their provenance).
 
-The round-trip tests rebuild each retired file from the registry and compare it,
-value for value, with the committed original. They fail if anything was dropped
-or altered in the move, and they fail if someone edits a retired file instead of
-the registry while both still exist. They are deleted in the same change that
-deletes the retired files -- never skipped, since a skipped proof is no proof.
+Round-trip tests rebuilt each retired file from the registry and matched it value
+for value against the committed original (PR #949, 74c2e14bf). With that proven,
+the retired files were deleted with founder approval on 2026-09-18, and the
+round-trips gave way to a test that the files stay gone: a second copy is a
+second source.
 """
 
 from __future__ import annotations
@@ -27,9 +27,12 @@ from skyyrose.core.product import get_product
 from skyyrose.core.product_registry import load_registry, update_product_content
 
 DATA = product_registry.PRODUCT_REGISTRY.resolve().parent
-CORRECTIONS = DATA / "render-corrections.json"
-KEEPERS = DATA / "render-keepers.json"
 COLLECTION_SLUGS = ("black-rose", "kids-capsule", "love-hurts", "signature")
+RETIRED_SIDE_STORES = (
+    DATA / "render-corrections.json",
+    DATA / "render-keepers.json",
+    *(DATA / "collections" / slug / "identity.json" for slug in COLLECTION_SLUGS),
+)
 
 # The nine lines added 2026-06-12 in 31d4e40e4 ("anti-peony/two-rose render
 # corrections"; the file's _meta.notes: "per Fable vision test"). Every other
@@ -51,38 +54,12 @@ def test_schema_version_is_two(registry: dict) -> None:
     assert registry["product_registry_schema_version"] == 2
 
 
-def test_render_corrections_round_trip(registry: dict) -> None:
-    original = json.loads(CORRECTIONS.read_text(encoding="utf-8"))
-    rebuilt = {
-        "_meta": registry["authority_contract"]["render_corrections_source"],
-        "corrections": {
-            sku: [line["text"] for line in product["corrections"]]
-            for sku, product in registry["products"].items()
-            if product.get("corrections")
-        },
-    }
-    assert rebuilt == original
-
-
-def test_render_keepers_round_trip(registry: dict) -> None:
-    original = json.loads(KEEPERS.read_text(encoding="utf-8"))
-    rebuilt = {
-        "_meta": registry["authority_contract"]["render_keepers_source"],
-        "keepers": [
-            {"sku": sku, **keeper}
-            for sku, product in registry["products"].items()
-            for keeper in (product.get("render_policy") or {}).get("keepers", [])
-        ],
-    }
-    assert rebuilt == original
-
-
-@pytest.mark.parametrize("slug", COLLECTION_SLUGS)
-def test_collection_identity_round_trip(registry: dict, slug: str) -> None:
-    identity = DATA / "collections" / slug / "identity.json"
-    original = json.loads(identity.read_text(encoding="utf-8"))
-    rebuilt = {"$schema": original["$schema"], **registry["collections"][slug]}
-    assert rebuilt == original
+@pytest.mark.parametrize("path", RETIRED_SIDE_STORES, ids=lambda p: str(p.relative_to(DATA)))
+def test_retired_side_stores_stay_deleted(path: Path) -> None:
+    assert not path.exists(), (
+        f"{path.relative_to(DATA)} was folded into logo-registry.json and retired. "
+        "Edit the registry instead."
+    )
 
 
 def test_every_collection_is_in_the_registry(registry: dict) -> None:

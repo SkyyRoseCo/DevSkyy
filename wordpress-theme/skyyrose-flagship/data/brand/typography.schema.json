@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "./typography.schema.json",
   "title": "SkyyRose Typography SOT",
-  "description": "Canonical font definitions for the SkyyRose brand. Universal roles drive :root CSS vars; collection scripts live in per-collection identity.json.",
+  "description": "Canonical font definitions for the SkyyRose brand. Universal roles drive :root CSS vars; collection scripts live in the registry's per-collection collections.<slug>.fonts.",
   "type": "object",
   "required": ["universal", "caps", "system", "collection_scripts"],
   "additionalProperties": false,
@@ -22,7 +22,7 @@
     },
     "caps": {
       "type": "object",
-      "description": "Caps/eyebrow font; also each collection's caps override in identity.json",
+      "description": "Caps/eyebrow font; also each collection's caps override in the registry's collections.<slug>.fonts",
       "required": ["family", "woff2"],
       "additionalProperties": false,
       "properties": {
@@ -44,7 +44,7 @@
     },
     "collection_scripts": {
       "type": "object",
-      "description": "Per-collection script fonts — authoritative names only; full specs live in identity.json",
+      "description": "Per-collection script fonts — authoritative names only; full specs live in the registry's collections.<slug>.fonts",
       "required": ["black-rose", "signature", "kids-capsule", "love-hurts"],
       "properties": {
         "note":          { "type": "string" },

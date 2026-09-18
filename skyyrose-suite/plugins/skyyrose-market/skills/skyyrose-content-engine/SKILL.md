@@ -80,7 +80,7 @@ through the canonical sources in order:**
 
 1. **Catalog CSV:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — 33 SKUs,
    columns: `sku, name, price, collection, description, sizes, color, edition_size, ...`
-2. **Per-SKU dossier:** `skyyrose/assets/data/product-content.json` + per-SKU dossier files
+2. **Per-SKU dossier:** `get_product(sku)` (the product registry) + per-SKU dossier projections
    (linked via `dossier_slug` column in the CSV).
 3. **Live agent:** `SocialMediaAgent.get_collection_context(collection)` for collection-level facts.
 

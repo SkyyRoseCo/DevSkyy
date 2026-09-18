@@ -71,7 +71,7 @@ the collection name itself. The lockup IS the name.
 
 Product facts (name, collection, price, description) resolve through the canonical catalog
 (`wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`) + the live agent
-`SocialMediaAgent`, which loads `skyyrose/assets/data/product-content.json`. **Never invent a
+`SocialMediaAgent`, which reads the product registry through `get_product(sku)`. **Never invent a
 product, colorway, or detail.** If a skill needs product data, call the agent or read the catalog —
 do not hallucinate. (This rule traces to the lh-005 fanny-pack hallucination incident.)
 

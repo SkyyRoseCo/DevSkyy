@@ -26,7 +26,7 @@
   "caps": {
     "family": "Cinzel",
     "woff2": "assets/fonts/cinzel-latin.woff2",
-    "note": "caps/eyebrow; also each collection's caps in identity.json"
+    "note": "caps/eyebrow; also each collection's caps in logo-registry.json collections.<slug>.fonts"
   },
   "system": {
     "family": "Inter",
@@ -34,7 +34,7 @@
     "note": "system/utility; --ff-system + body fallback"
   },
   "collection_scripts": {
-    "note": "per-collection script fonts live in data/collections/<slug>/identity.json",
+    "note": "per-collection script fonts live in data/logo-registry.json collections.<slug>.fonts",
     "black-rose": "SkyyRose Black Rose Script",
     "signature": "Pinyon Script",
     "kids-capsule": "Grand Hotel",

@@ -71,10 +71,10 @@ Logo-independent recognition uses five devices: concrete/asphalt hairlines, Arch
 
 | Collection | Accent | Dark accent | Lockup source | Media status |
 |---|---|---|---|---|
-| Black Rose | #C0C0C0 | #999999 | data/collections/black-rose/identity.json | interim-pending-mj, non-shippable |
-| Love Hurts | #DC143C | #9B0F2E | data/collections/love-hurts/identity.json | interim-pending-mj, non-shippable |
-| Signature | #D4AF37 | #B8960C | data/collections/signature/identity.json | interim-pending-mj, non-shippable |
-| Kids Capsule | #B76E79 | #B8960C | data/collections/kids-capsule/identity.json | interim-pending-mj, non-shippable |
+| Black Rose | #C0C0C0 | #999999 | data/logo-registry.json → collections.black-rose | interim-pending-mj, non-shippable |
+| Love Hurts | #DC143C | #9B0F2E | data/logo-registry.json → collections.love-hurts | interim-pending-mj, non-shippable |
+| Signature | #D4AF37 | #B8960C | data/logo-registry.json → collections.signature | interim-pending-mj, non-shippable |
+| Kids Capsule | #B76E79 | #B8960C | data/logo-registry.json → collections.kids-capsule | interim-pending-mj, non-shippable |
 
 Canonical type roles are Archivo display, Hanken Grotesk body, and Anton utility. Cinzel is limited to approved caps contexts; European-maison serif direction, cut display fonts, and type-rendered collection scripts are prohibited. Components consume semantic token aliases and never introduce page-local raw values.
 

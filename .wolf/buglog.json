@@ -5919,5 +5919,26 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-18T20:35:52.103583+00:00"
+  },
+  {
+    "id": "bug-339",
+    "timestamp": "2026-09-18T15:54:05-07:00",
+    "last_seen": "2026-09-18T15:54:05-07:00",
+    "occurrences": 1,
+    "error_message": "Reference census for the 20-file deletion (PR #949) missed live references: first pass (git grep piped through grep -v filters in Bash) omitted data/collections/README.md, agents/elite_web_builder/knowledge/photo_generation.md, 6 skyyrose-suite skill files, v2-page-plan.json identity_ref, typography.json notes.",
+    "file": "wordpress-theme/skyyrose-flagship/data/collections/README.md",
+    "root_cause": "The census relied on one Bash git-grep pipeline whose output was silently incomplete (cause unconfirmed; the rtk command proxy is known to truncate git output and rewrote a nested git call in the same session). A single search method cannot fail visibly, so its gaps looked like a clean result.",
+    "fix": "Final census walks `git ls-files` in Python and reads each file directly (no shell proxy); every non-historical hit was repointed to logo-registry.json / get_product or left with a stated reason (historical plans, founder dossier text, CSS comments).",
+    "tags": [
+      "census",
+      "deletion",
+      "rtk",
+      "verification",
+      "fail-open"
+    ],
+    "related_bugs": [
+      "bug-230",
+      "bug-338"
+    ]
   }
 ]

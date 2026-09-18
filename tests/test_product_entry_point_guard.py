@@ -6,13 +6,11 @@ drifting independently. ``skyyrose.core.product.get_product`` is the one read
 path; this test makes a NEW direct reader fail CI instead of quietly becoming
 the twelfth source of truth.
 
-It is deliberately an allowlist, not a clean-slate assertion. The render
-corrections, keep decisions, and collection identity are folded into the
-registry (schema v2); the remaining readers of a retired store are legacy
-scripts awaiting deletion, each enumerated below with its disposition so the
-debt is visible in code rather than implied. Removing an entry from the
-allowlist is how that debt gets paid; adding one requires justifying why the
-entry point cannot serve the need.
+The render corrections, keep decisions, and collection identity are folded into
+the registry (schema v2), and the legacy scripts that read a retired store were
+deleted with the stores on 2026-09-18, so the allowlist is empty. Adding an
+entry requires justifying why the entry point cannot serve the need, and
+``RETIRED_FILES`` keeps the deleted stores from coming back.
 
 Companion guard: ``tests/test_sot_no_adhoc_imagery.py`` does the same job for
 hardcoded image paths.
@@ -65,28 +63,30 @@ SCANNED_DIRS = (
 SCANNED_SUFFIXES = (".py", ".js", ".mjs", ".cjs", ".ts", ".tsx", ".php")
 _SKIPPED_PARTS = {"__pycache__", "node_modules", "vendor", "tests", "__tests__", ".next"}
 
-# path -> why it is allowed to read a store directly.
-#
-# "RETIRE" is debt with a known end: the file is in the deletion manifest the
-# founder approves, and leaves this list in the same change that deletes it.
-_LEGACY_NODE_TOOLCHAIN = (
-    "RETIRE: legacy Feb-2026 Node toolchain under skyyrose/build (no package.json, "
-    "no callers). It reads or writes the retired product-content.json / alt-text.json "
-    "copy that its own hard-coded 20-SKU table produced. In the deletion manifest."
+# path -> why it is allowed to read a store directly. Empty: every reader goes
+# through the registry. An entry needs a reason the entry point cannot serve.
+ALLOWED: dict[str, str] = {}
+
+# Deleted 2026-09-18 with founder approval: Gemini-generated copy and the data
+# derived from it, and the legacy scripts that carried their own product lists
+# or read those stores. Product facts live only in the registry now; bringing
+# one of these back would restore a second source.
+RETIRED_FILES = (
+    "skyyrose/assets/data/product-content.json",
+    "skyyrose/assets/data/alt-text.json",
+    "skyyrose/assets/data/products.txt",
+    "skyyrose/assets/data/product-embeddings.json",
+    "skyyrose/assets/data/garment-analysis.json",
+    "skyyrose/assets/data/products-catalog.html",
+    "skyyrose/assets/data/woocommerce-import.csv",
+    "skyyrose/build/gemini-content.js",
+    "skyyrose/build/generate-woocommerce-csv.js",
+    "skyyrose/build/generate-skyy-poses.js",
+    "skyyrose/build/tool-calling.js",
+    "skyyrose/build/generate-embeddings.js",
+    "skyyrose/build/verify.js",
+    "scripts/nano-banana-vton.py",
 )
-_RETIRED_RENDER_ENGINE = (
-    "RETIRE: pre-OAI render engine (new renders are gpt-image-2 via scripts/oai_render). "
-    "Injects garment-analysis.json vision output into render prompts as a spec, the "
-    "bug-096 contamination path. In the deletion manifest."
-)
-ALLOWED: dict[str, str] = {
-    "skyyrose/build/gemini-content.js": _LEGACY_NODE_TOOLCHAIN,
-    "skyyrose/build/tool-calling.js": _LEGACY_NODE_TOOLCHAIN,
-    "skyyrose/build/generate-embeddings.js": _LEGACY_NODE_TOOLCHAIN,
-    "skyyrose/build/verify.js": _LEGACY_NODE_TOOLCHAIN,
-    "skyyrose/build/generate-skyy-poses.js": _RETIRED_RENDER_ENGINE,
-    "scripts/nano-banana-vton.py": _RETIRED_RENDER_ENGINE,
-}
 
 # A prose mention in a docstring or prompt string is not a read. Only flag a
 # path that appears with something that looks like file access.
@@ -157,13 +157,21 @@ def test_no_new_direct_readers(direct_readers: dict[str, list[str]]) -> None:
 def test_allowlist_has_no_dead_entries(direct_readers: dict[str, list[str]]) -> None:
     """An allowlisted module that no longer reads a store should leave the list.
 
-    This is what turns the MIGRATE entries into progress: once a module is moved
-    onto get_product, this test fails until its exemption is deleted.
+    Once a module moves onto get_product, this test fails until its exemption
+    is deleted, so the allowlist can only shrink back to empty.
     """
     dead = sorted(set(ALLOWED) - set(direct_readers))
     assert not dead, (
         "These paths are allowlisted but no longer read an authored store directly. "
         "Remove them from ALLOWED:\n" + "\n".join(f"  {path}" for path in dead)
+    )
+
+
+@pytest.mark.parametrize("relative_path", RETIRED_FILES)
+def test_retired_product_stores_stay_deleted(relative_path: str) -> None:
+    assert not (REPO_ROOT / relative_path).exists(), (
+        f"{relative_path} was retired; product facts live in the registry. "
+        "Read them through skyyrose.core.product.get_product instead."
     )
 
 
