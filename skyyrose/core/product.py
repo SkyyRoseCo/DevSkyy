@@ -54,9 +54,9 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
+from skyyrose.core import product_registry
 from skyyrose.core.dossier_loader import get_product_with_dossier
 from skyyrose.core.paths import REPO_ROOT
-from skyyrose.core import product_registry
 from skyyrose.core.product_registry import CONTENT_FIELDS, load_registry
 from skyyrose.core.sot_images import _ROLE_KEYS, Role
 
