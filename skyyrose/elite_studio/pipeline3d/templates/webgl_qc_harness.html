@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>GLB QC harness</title>
+    <link rel="icon" href="data:," />
     <style>
       html,
       body {
@@ -84,7 +85,10 @@
         renderer.setPixelRatio(1);
         renderer.setSize(size, size, false);
         renderer.setClearColor(PARITY.clearColor, 1);
-        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.outputColorSpace = THREE[PARITY.outputColorSpace];
+        if (renderer.outputColorSpace === undefined) {
+          throw new Error('three has no colour space named ' + PARITY.outputColorSpace);
+        }
         renderer.toneMapping = THREE[PARITY.toneMapping];
         if (renderer.toneMapping === undefined) {
           throw new Error('three has no tone mapping named ' + PARITY.toneMapping);

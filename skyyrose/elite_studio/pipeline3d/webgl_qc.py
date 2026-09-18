@@ -26,6 +26,7 @@ from __future__ import annotations
 import base64
 import http.server
 import json
+import re
 import shutil
 import socketserver
 import tempfile
@@ -63,6 +64,7 @@ _REQUIRED_LIB_FILES = (
 #: an IIFE and cannot export these, so the test greps both sources and fails on drift.
 VIEWER_PARITY: Mapping[str, Any] = {
     "fov": 35,
+    "outputColorSpace": "SRGBColorSpace",
     "toneMapping": "NeutralToneMapping",
     "toneMappingExposure": 1,
     "environmentSigma": 0.04,
@@ -96,6 +98,7 @@ _CHROMIUM_ARGS = (
 )
 _DIFF_AMPLIFY = 16
 _PNG_PREFIX = "data:image/png;base64,"
+_LABEL_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,63}")
 
 
 class WebGlQcError(RuntimeError):
@@ -118,8 +121,12 @@ class RenderTarget:
     glb: Path
 
     def __post_init__(self) -> None:
-        if not self.label or "/" in self.label or self.label != self.label.strip():
-            raise WebGlQcError(f"invalid render label: {self.label!r}")
+        # The label lands in a filename AND a URL query, so it is held to characters
+        # that mean nothing in either: no separators, no URL metacharacters.
+        if not _LABEL_RE.fullmatch(self.label):
+            raise WebGlQcError(
+                f"invalid render label: {self.label!r} (allowed: letters, digits, '.', '_', '-')"
+            )
 
 
 @dataclass(frozen=True)
@@ -150,24 +157,19 @@ class RenderedImage:
 
 @dataclass(frozen=True)
 class RenderReport:
-    """Everything one ``render`` call produced."""
+    """Everything one successful ``render`` call produced.
+
+    There is no error field on purpose: a console error, page error, blank frame or
+    ``ok: false`` raises ``RenderFailedError`` instead of being recorded, so a report
+    in hand means every frame in it rendered cleanly.
+    """
 
     images: Sequence[RenderedImage]
     console_messages: Sequence[Mapping[str, Any]] = field(default_factory=tuple)
-    page_errors: Sequence[Mapping[str, Any]] = field(default_factory=tuple)
-
-    @property
-    def console_errors(self) -> tuple[Mapping[str, Any], ...]:
-        """Console output that is actually an error.
-
-        Kept separate from warnings on purpose: software rendering always emits a
-        few ("GPU stall due to ReadPixels", "KHR_parallel_shader_compile extension
-        not supported"), and a count that mixes them in is a number nobody reads.
-        """
-        return tuple(m for m in self.console_messages if m.get("type") == "error")
 
     @property
     def console_warnings(self) -> tuple[Mapping[str, Any], ...]:
+        """Software rendering always emits a few ("GPU stall due to ReadPixels")."""
         return tuple(m for m in self.console_messages if m.get("type") == "warning")
 
     def image(self, label: str, angle: str) -> RenderedImage:
@@ -180,9 +182,7 @@ class RenderReport:
         return {
             "parity": dict(VIEWER_PARITY),
             "images": [i.as_dict() for i in self.images],
-            "console_errors": [dict(e) for e in self.console_errors],
             "console_warnings": [dict(e) for e in self.console_warnings],
-            "page_errors": [dict(e) for e in self.page_errors],
         }
 
 
@@ -259,8 +259,9 @@ def build_serve_root(
     (serve_root / "harness.html").write_text(html, encoding="utf-8")
 
     link = serve_root / THREE_LIB_DIR_NAME
-    if not link.exists():
-        link.symlink_to(three_lib, target_is_directory=True)
+    if link.is_symlink() or link.exists():
+        link.unlink()
+    link.symlink_to(three_lib, target_is_directory=True)
 
     for target in targets:
         glb = target.glb.resolve()
@@ -302,29 +303,107 @@ def _capture(page: Any, url: str, timeout_ms: int) -> dict[str, Any]:
     )
 
 
-def render(
-    targets: Sequence[RenderTarget],
-    out_dir: Path,
-    *,
-    angles: Sequence[str] = tuple(ANGLES),
-    size: int = 1024,
-    three_lib: Path | None = None,
-    timeout_ms: int = 120_000,
-) -> RenderReport:
-    """Render every ``(target, angle)`` deterministically and write one PNG each.
+def prepare_out_dir(out_dir: Path, *, overwrite: bool) -> None:
+    """Refuse to mix this run's images with a previous run's.
 
-    Raises rather than returning a partial report: a QC tool that quietly drops a
-    failed render invites a verdict drawn from the frames that happened to work.
+    A folder holding last run's PNGs next to this run's is how someone ends up judging
+    a material change from pixels rendered before the change. Without ``overwrite`` an
+    ``out_dir`` that already holds PNGs is an error; with it, exactly those PNGs are
+    removed first — nothing else in the directory is touched.
     """
+    out_dir.mkdir(parents=True, exist_ok=True)
+    stale = sorted(out_dir.glob("*.png"))
+    if not stale:
+        return
+    if not overwrite:
+        raise WebGlQcError(
+            f"{out_dir} already holds {len(stale)} PNG(s) from an earlier run; pass "
+            "overwrite (CLI: --overwrite) to replace them, or use a fresh directory"
+        )
+    for png in stale:
+        png.unlink()
+
+
+def _assert_not_blank(png_bytes: bytes, where: str) -> None:
+    """A frame of one uniform colour means the mesh drew nothing.
+
+    The harness only rejects an EMPTY bounding box. Geometry that is present but
+    invisible — a material that broke to fully transparent, a shader that failed to
+    link — still reports ok, and would otherwise be written out as a successful render.
+    """
+    try:
+        import io
+
+        from PIL import Image
+    except ImportError as exc:  # pragma: no cover - environment failure
+        raise WebGlQcError("Pillow is required to validate rendered frames") from exc
+    with Image.open(io.BytesIO(png_bytes)) as img:
+        lo_hi = img.convert("RGB").getextrema()
+    if all(lo == hi for lo, hi in lo_hi):
+        raise RenderFailedError(
+            f"{where}: rendered a blank frame (every pixel is {tuple(lo for lo, _ in lo_hi)}) — "
+            "the geometry loaded but nothing was drawn"
+        )
+
+
+def _render_one(
+    context: Any, port: int, target: RenderTarget, angle: str, size: int, timeout_ms: int
+) -> tuple[dict[str, Any], bytes, list[dict[str, Any]]]:
+    """Render one ``(target, angle)``; raise on ANY error signal from the page.
+
+    three.js reports shader compile/link failures through console.error without
+    throwing and simply skips the mesh, so a console error is a failed render here,
+    not a footnote. Warnings are returned for the report.
+    """
+    where = f"{target.label} @ {angle}"
+    messages: list[dict[str, Any]] = []
+    page_errors: list[str] = []
+    page = context.new_page()
+    page.on(
+        "console",
+        lambda msg: (
+            messages.append(
+                {"label": target.label, "angle": angle, "type": msg.type, "text": msg.text}
+            )
+            if msg.type in ("error", "warning")
+            else None
+        ),
+    )
+    page.on("pageerror", lambda err: page_errors.append(str(err)))
+    url = (
+        f"http://127.0.0.1:{port}/harness.html" f"?glb={target.label}.glb&angle={angle}&size={size}"
+    )
+    try:
+        captured = _capture(page, url, timeout_ms)
+    except Exception as exc:  # playwright TimeoutError / Error: name the target, fail closed
+        raise RenderFailedError(f"{where}: browser did not produce a result: {exc}") from exc
+    finally:
+        page.close()
+
+    result = captured["result"]
+    if not result.get("ok") or not captured["dataUrl"]:
+        raise RenderFailedError(f"{where}: {result.get('error')}")
+    errors = [m["text"] for m in messages if m["type"] == "error"]
+    errors += page_errors + [str(e) for e in captured["errors"]]
+    if errors:
+        raise RenderFailedError(f"{where}: page reported error(s): {errors}")
+    png_bytes = base64.b64decode(captured["dataUrl"][len(_PNG_PREFIX) :])
+    _assert_not_blank(png_bytes, where)
+    return result, png_bytes, messages
+
+
+def _check_inputs(targets: Sequence[RenderTarget], angles: Sequence[str]) -> tuple[str, ...]:
     if not targets:
         raise WebGlQcError("no render targets given")
-    unknown = [a for a in angles if a not in ANGLES]
+    unique = tuple(dict.fromkeys(angles))
+    if not unique:
+        raise WebGlQcError("no angles given")
+    unknown = [a for a in unique if a not in ANGLES]
     if unknown:
         raise WebGlQcError(f"unknown angle(s): {unknown}; known: {sorted(ANGLES)}")
     labels = [t.label for t in targets]
     if len(set(labels)) != len(labels):
         raise WebGlQcError(f"duplicate render labels: {labels}")
-
     # Parse every container before spending a browser launch on it: a truncated or
     # non-glTF file should say so in milliseconds, not as a loader error 30s later.
     for target in targets:
@@ -334,14 +413,20 @@ def render(
             read_glb(target.glb.read_bytes())
         except GlbFormatError as exc:
             raise WebGlQcError(f"{target.label!r} is not a valid GLB: {exc}") from exc
+    return unique
 
-    lib = resolve_three_lib(three_lib)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    # The serve root is scaffolding, not output: a temp dir keeps symlink clutter out
-    # of the directory the founder opens to look at renders.
-    serve_root = Path(tempfile.mkdtemp(prefix="glb-qc-serve-"))
-    build_serve_root(targets, serve_root, three_lib=lib, size=size)
 
+_Frame = tuple[RenderTarget, str, dict[str, Any], bytes]
+
+
+def _render_frames(
+    targets: Sequence[RenderTarget],
+    angles: Sequence[str],
+    serve_root: Path,
+    size: int,
+    timeout_ms: int,
+) -> tuple[list[_Frame], list[dict[str, Any]]]:
+    """Drive the browser over every ``(target, angle)``; nothing is written to disk."""
     try:
         from playwright.sync_api import sync_playwright
     except ImportError as exc:  # pragma: no cover - environment failure
@@ -350,83 +435,82 @@ def render(
             "&& playwright install chromium)"
         ) from exc
 
-    images: list[RenderedImage] = []
+    frames: list[_Frame] = []
     console_messages: list[dict[str, Any]] = []
-    page_errors: list[dict[str, Any]] = []
     server, port = _serve(serve_root)
     try:
         with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True, args=list(_CHROMIUM_ARGS))
-            context = browser.new_context(
-                viewport={"width": size, "height": size}, device_scale_factor=1
-            )
             try:
+                browser = pw.chromium.launch(headless=True, args=list(_CHROMIUM_ARGS))
+            except Exception as exc:
+                raise WebGlQcError(
+                    f"could not launch Chromium (playwright install chromium?): {exc}"
+                ) from exc
+            try:
+                context = browser.new_context(
+                    viewport={"width": size, "height": size}, device_scale_factor=1
+                )
                 for target in targets:
                     for angle in angles:
-                        page = context.new_page()
-                        page.on(
-                            "console",
-                            lambda msg, t=target, a=angle: (
-                                console_messages.append(
-                                    {
-                                        "label": t.label,
-                                        "angle": a,
-                                        "type": msg.type,
-                                        "text": msg.text,
-                                    }
-                                )
-                                if msg.type in ("error", "warning")
-                                else None
-                            ),
+                        result, png_bytes, messages = _render_one(
+                            context, port, target, angle, size, timeout_ms
                         )
-                        page.on(
-                            "pageerror",
-                            lambda err, t=target, a=angle: page_errors.append(
-                                {"label": t.label, "angle": a, "error": str(err)}
-                            ),
-                        )
-                        url = (
-                            f"http://127.0.0.1:{port}/harness.html"
-                            f"?glb={target.label}.glb&angle={angle}&size={size}"
-                        )
-                        captured = _capture(page, url, timeout_ms)
-                        page.close()
-
-                        result = captured["result"]
-                        for err in captured["errors"]:
-                            page_errors.append(
-                                {"label": target.label, "angle": angle, "error": str(err)}
-                            )
-                        if not result.get("ok") or not captured["dataUrl"]:
-                            raise RenderFailedError(
-                                f"{target.label} @ {angle}: {result.get('error')}"
-                            )
-                        png = out_dir / f"{target.label}-{angle}.png"
-                        png.write_bytes(base64.b64decode(captured["dataUrl"][len(_PNG_PREFIX) :]))
-                        images.append(
-                            RenderedImage(
-                                label=target.label,
-                                angle=angle,
-                                path=png,
-                                camera=result["camera"],
-                                bbox=result["bbox"],
-                                materials=result["materials"],
-                                geometry_attributes=result["geometryAttributes"],
-                                webgl=result["webgl"],
-                            )
-                        )
+                        frames.append((target, angle, result, png_bytes))
+                        console_messages.extend(messages)
             finally:
                 browser.close()
     finally:
         server.shutdown()
         server.server_close()
+    return frames, console_messages
+
+
+def render(
+    targets: Sequence[RenderTarget],
+    out_dir: Path,
+    *,
+    angles: Sequence[str] = tuple(ANGLES),
+    size: int = 1024,
+    three_lib: Path | None = None,
+    timeout_ms: int = 120_000,
+    overwrite: bool = False,
+) -> RenderReport:
+    """Render every ``(target, angle)`` deterministically and write one PNG each.
+
+    Raises rather than returning a partial report: a QC tool that quietly drops a
+    failed render invites a verdict drawn from the frames that happened to work. PNGs
+    are written only after EVERY render succeeded, for the same reason.
+    """
+    angles = _check_inputs(targets, angles)
+    lib = resolve_three_lib(three_lib)
+    prepare_out_dir(out_dir, overwrite=overwrite)
+
+    # The serve root is scaffolding, not output: a temp dir keeps symlink clutter out
+    # of the directory the founder opens to look at renders.
+    serve_root = Path(tempfile.mkdtemp(prefix="glb-qc-serve-"))
+    try:
+        build_serve_root(targets, serve_root, three_lib=lib, size=size)
+        frames, console_messages = _render_frames(targets, angles, serve_root, size, timeout_ms)
+    finally:
         shutil.rmtree(serve_root, ignore_errors=True)
 
-    return RenderReport(
-        images=tuple(images),
-        console_messages=tuple(console_messages),
-        page_errors=tuple(page_errors),
-    )
+    images: list[RenderedImage] = []
+    for target, angle, result, png_bytes in frames:
+        png = out_dir / f"{target.label}-{angle}.png"
+        png.write_bytes(png_bytes)
+        images.append(
+            RenderedImage(
+                label=target.label,
+                angle=angle,
+                path=png,
+                camera=result["camera"],
+                bbox=result["bbox"],
+                materials=result["materials"],
+                geometry_attributes=result["geometryAttributes"],
+                webgl=result["webgl"],
+            )
+        )
+    return RenderReport(images=tuple(images), console_messages=tuple(console_messages))
 
 
 def _load_rgb(path: Path) -> Any:
@@ -439,18 +523,45 @@ def _load_rgb(path: Path) -> Any:
         return np.asarray(img.convert("RGB"), dtype=np.int16)
 
 
+def _measure(a: Any, b: Any) -> tuple[int, float, Any]:
+    import numpy as np
+
+    if a.shape != b.shape:
+        raise WebGlQcError(f"cannot diff different shapes: {a.shape} vs {b.shape}")
+    delta = np.abs(a - b)
+    return int(delta.max()), float((delta > 1).any(axis=2).mean() * 100.0), delta
+
+
 def diff_images(baseline: Path, target: Path, diff_map: Path) -> tuple[int, float]:
     """Max absolute per-channel delta and the share of pixels differing by >1/255."""
     import numpy as np
     from PIL import Image
 
-    a, b = _load_rgb(baseline), _load_rgb(target)
-    if a.shape != b.shape:
-        raise WebGlQcError(f"cannot diff different shapes: {a.shape} vs {b.shape}")
-    delta = np.abs(a - b)
+    max_abs, pct, delta = _measure(_load_rgb(baseline), _load_rgb(target))
     diff_map.parent.mkdir(parents=True, exist_ok=True)
     Image.fromarray(np.clip(delta * _DIFF_AMPLIFY, 0, 255).astype(np.uint8), "RGB").save(diff_map)
-    return int(delta.max()), float((delta > 1).any(axis=2).mean() * 100.0)
+    return max_abs, pct
+
+
+def _self_check(probe: Path) -> None:
+    """Prove the measurement can return both answers before trusting either.
+
+    An image against itself must be 0, and against a copy with ONE channel of ONE pixel
+    moved by 2 it must not be. A measurement that says 0 for everything would otherwise
+    surface as VOID on every pair — blaming the GLB pipeline for a broken diff.
+    """
+    a = _load_rgb(probe)
+    same, _, _ = _measure(a, a)
+    if same != 0:
+        raise WebGlQcError("diff self-check failed: an image does not compare equal to itself")
+    nudged = a.copy()
+    nudged[0, 0, 0] = nudged[0, 0, 0] + 2 if nudged[0, 0, 0] < 128 else nudged[0, 0, 0] - 2
+    moved, _, _ = _measure(a, nudged)
+    if moved != 2:
+        raise WebGlQcError(
+            f"diff self-check failed: a known 2-level change measured as {moved} — "
+            "the comparison cannot discriminate"
+        )
 
 
 def diff_report(
@@ -462,34 +573,33 @@ def diff_report(
 ) -> list[PixelDiff]:
     """Diff each ``(baseline_label, target_label)`` pair at every rendered angle.
 
-    Before comparing anything, proves the diff itself can distinguish images: a render
-    against ITSELF must be 0 and two different labels must not be. If that self-check
-    cannot run (fewer than two distinct labels) it raises — an unexercised sanity check
-    is not a passed one.
+    Runs ``_self_check`` first, and turns every unknown label or missing angle into a
+    ``WebGlQcError`` — never a silent skip and never a bare ``KeyError``.
     """
-    wanted = tuple(angles) if angles else tuple(dict.fromkeys(i.angle for i in report.images))
     pair_list = list(pairs)
     if not pair_list:
         raise WebGlQcError("no diff pairs given")
-
-    probe = report.images[0]
-    identical, _ = diff_images(probe.path, probe.path, out_dir / "_selfcheck.png")
-    if identical != 0:
-        raise WebGlQcError("diff self-check failed: an image does not compare equal to itself")
-    labels = {i.label for i in report.images}
-    if len(labels) < 2:
-        raise WebGlQcError(
-            "diff requires at least two labels so the comparison can be shown to discriminate"
-        )
-    (out_dir / "_selfcheck.png").unlink(missing_ok=True)
-
-    diffs: list[PixelDiff] = []
+    if not report.images:
+        raise WebGlQcError("cannot diff an empty render report")
+    wanted = tuple(angles) if angles else tuple(dict.fromkeys(i.angle for i in report.images))
+    known = {i.label for i in report.images}
     for baseline_label, target_label in pair_list:
         if baseline_label == target_label:
             raise WebGlQcError(f"cannot diff {baseline_label!r} against itself")
+        missing = [name for name in (baseline_label, target_label) if name not in known]
+        if missing:
+            raise WebGlQcError(f"diff names unknown label(s) {missing}; rendered: {sorted(known)}")
+
+    _self_check(report.images[0].path)
+
+    diffs: list[PixelDiff] = []
+    for baseline_label, target_label in pair_list:
         for angle in wanted:
-            base_img = report.image(baseline_label, angle)
-            target_img = report.image(target_label, angle)
+            try:
+                base_img = report.image(baseline_label, angle)
+                target_img = report.image(target_label, angle)
+            except KeyError as exc:
+                raise WebGlQcError(f"cannot diff at {angle!r}: {exc.args[0]}") from exc
             diff_map = out_dir / f"{baseline_label}--{target_label}-{angle}-diff.png"
             max_abs, pct = diff_images(base_img.path, target_img.path, diff_map)
             diffs.append(

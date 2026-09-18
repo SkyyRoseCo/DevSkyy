@@ -23,26 +23,50 @@ from skyyrose.elite_studio.pipeline3d.webgl_qc import (
     VIEWER_PARITY,
     PixelDiff,
     RenderedImage,
+    RenderFailedError,
     RenderReport,
     RenderTarget,
     ThreeLibNotFoundError,
     WebGlQcError,
+    _assert_not_blank,
+    _render_one,
+    _serve,
     build_serve_root,
     diff_images,
     diff_report,
+    prepare_out_dir,
+    render,
     resolve_three_lib,
 )
+from tests.elite_studio.pipeline3d.glb_fixture import build_triangle_glb, pack_glb
 
 PRODUCTION_VIEWER = REPO_ROOT / "wordpress-theme/skyyrose-flagship/assets/js/product-3d-viewer.js"
 
 # Each entry: parity key -> pattern whose first group is the production value.
 _PARITY_PATTERNS = {
     "fov": r"new THREE\.PerspectiveCamera\(\s*(\d+)",
+    "outputColorSpace": r"renderer\.outputColorSpace\s*=\s*THREE\.(\w+)",
     "toneMapping": r"renderer\.toneMapping\s*=\s*THREE\.(\w+)",
     "toneMappingExposure": r"renderer\.toneMappingExposure\s*=\s*([\d.]+)",
     "environmentSigma": r"pmrem\.fromScene\(\s*room\s*,\s*([\d.]+)\s*\)",
-    "fitMargin": r"framing\.width\s*/\s*half\s*/\s*camera\.aspect\)\s*\*\s*([\d.]+)",
+    # Anchored on the whole two-axis formula, so a switch to height-only fitting fails
+    # this gate even if the margin itself is unchanged.
+    "fitMargin": (
+        r"Math\.max\(\s*framing\.height\s*/\s*half\s*,\s*"
+        r"framing\.width\s*/\s*half\s*/\s*camera\.aspect\s*\)\s*\*\s*([\d.]+)"
+    ),
 }
+
+
+def _viewer_code() -> str:
+    """The production viewer with comments removed.
+
+    A stale ``// was: renderer.toneMapping = THREE.Neutral…`` left above the real line
+    would otherwise satisfy the gate while production had drifted.
+    """
+    source = PRODUCTION_VIEWER.read_text(encoding="utf-8")
+    source = re.sub(r"/\*.*?\*/", "", source, flags=re.DOTALL)
+    return re.sub(r"(?m)^\s*//.*$", "", source)
 
 
 def _fake_three_lib(root: Path) -> Path:
@@ -95,16 +119,20 @@ class TestProductionParity:
 
     @pytest.mark.parametrize("key", sorted(_PARITY_PATTERNS))
     def test_parity_matches_production_viewer(self, key: str) -> None:
-        source = PRODUCTION_VIEWER.read_text(encoding="utf-8")
-        match = re.search(_PARITY_PATTERNS[key], source)
+        matches = re.findall(_PARITY_PATTERNS[key], _viewer_code())
+        assert len(matches) <= 1, (
+            f"{key} appears {len(matches)} times in {PRODUCTION_VIEWER.name}; the gate cannot "
+            "tell which one ships. Tighten the pattern."
+        )
+        match = matches[0] if matches else None
         assert match, (
             f"could not find {key} in {PRODUCTION_VIEWER.name} using "
             f"{_PARITY_PATTERNS[key]!r}. The viewer changed shape — re-read it and update "
             "both the pattern and VIEWER_PARITY; do not delete this check."
         )
-        found = match.group(1)
         expected = VIEWER_PARITY[key]
-        actual = type(expected)(found) if not isinstance(expected, str) else found
+        actual = match if isinstance(expected, str) else float(match)
+        expected = expected if isinstance(expected, str) else float(expected)
         assert actual == expected, (
             f"QC renderer parity drift: production viewer has {key}={actual!r}, "
             f"VIEWER_PARITY says {expected!r}. Every render this tool has produced since "
@@ -118,7 +146,7 @@ class TestProductionParity:
     def test_pdp_initial_angle_matches_the_viewers_opening_shot(self) -> None:
         # applyFit(initial) — what a shopper sees the instant the dialog opens. It is
         # deliberately off the fit sphere, so "front" does not stand in for it.
-        source = PRODUCTION_VIEWER.read_text(encoding="utf-8")
+        source = _viewer_code()
         match = re.search(
             r"camera\.position\.set\(\s*0,\s*framing\.height\s*\*\s*([\d.]+),\s*distance\s*\)",
             source,
@@ -154,6 +182,15 @@ class TestHarnessTemplate:
         assert json.dumps({k: dict(v) for k, v in ANGLES.items()}) in html
         assert (serve / THREE_LIB_DIR_NAME).is_symlink()
         assert (serve / "base.glb").resolve() == glb.resolve()
+
+    def test_reused_serve_root_repoints_the_three_link(self, tmp_path: Path) -> None:
+        glb = tmp_path / "src.glb"
+        glb.write_bytes(b"glTF-stub")
+        first, second = _fake_three_lib(tmp_path / "one"), _fake_three_lib(tmp_path / "two")
+        serve = tmp_path / "serve"
+        build_serve_root([RenderTarget("base", glb)], serve, three_lib=first)
+        build_serve_root([RenderTarget("base", glb)], serve, three_lib=second)
+        assert (serve / THREE_LIB_DIR_NAME).resolve() == second.resolve()
 
     def test_build_serve_root_fails_closed_on_missing_glb(self, tmp_path: Path) -> None:
         lib = _fake_three_lib(tmp_path / "lib")
@@ -194,7 +231,10 @@ class TestThreeLibResolution:
 
 
 class TestRenderTarget:
-    @pytest.mark.parametrize("label", ["", "has/slash", " padded "])
+    @pytest.mark.parametrize(
+        "label",
+        ["", "has/slash", " padded ", "a&x", "a#x", "a%2Fx", "a?x", "a b", "..", "-lead", "x" * 65],
+    )
     def test_rejects_labels_that_would_break_paths_or_urls(self, label: str) -> None:
         with pytest.raises(WebGlQcError, match="invalid render label"):
             RenderTarget(label, Path("x.glb"))
@@ -243,12 +283,43 @@ class TestDiffReport:
         diffs = diff_report(report, [("base", "candidate")], tmp_path)
         assert diffs[0].is_void
 
-    def test_refuses_when_the_comparison_cannot_be_shown_to_discriminate(
-        self, tmp_path: Path
+    def test_self_check_rejects_a_measurement_that_cannot_see_a_change(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     ) -> None:
-        report = _report(tmp_path, ("only",))
-        with pytest.raises(WebGlQcError, match="discriminate"):
-            diff_report(report, [("only", "only")], tmp_path)
+        # A diff that answers 0 for everything would surface as VOID on every pair.
+        import numpy as np
+
+        report = _report(tmp_path, ("base", "candidate"))
+        monkeypatch.setattr(
+            "skyyrose.elite_studio.pipeline3d.webgl_qc._measure",
+            lambda a, b: (0, 0.0, np.zeros_like(a)),
+        )
+        with pytest.raises(WebGlQcError, match="cannot discriminate"):
+            diff_report(report, [("base", "candidate")], tmp_path)
+
+    def test_self_check_rejects_an_image_unequal_to_itself(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        import numpy as np
+
+        report = _report(tmp_path, ("base", "candidate"))
+        monkeypatch.setattr(
+            "skyyrose.elite_studio.pipeline3d.webgl_qc._measure",
+            lambda a, b: (1, 0.0, np.zeros_like(a)),
+        )
+        with pytest.raises(WebGlQcError, match="does not compare equal to itself"):
+            diff_report(report, [("base", "candidate")], tmp_path)
+
+    def test_self_check_leaves_no_file_behind(self, tmp_path: Path) -> None:
+        report = _report(tmp_path, ("base", "candidate"))
+        before = {p.name for p in tmp_path.iterdir()}
+        diff_report(report, [("base", "candidate")], tmp_path)
+        assert {p.name for p in tmp_path.iterdir()} - before == {"base--candidate-front-diff.png"}
+
+    def test_unknown_label_is_a_qc_error_not_a_keyerror(self, tmp_path: Path) -> None:
+        report = _report(tmp_path, ("base", "candidate"))
+        with pytest.raises(WebGlQcError, match="unknown label"):
+            diff_report(report, [("base", "candidat")], tmp_path)
 
     def test_refuses_to_diff_a_label_against_itself(self, tmp_path: Path) -> None:
         report = _report(tmp_path, ("base", "candidate"))
@@ -262,5 +333,233 @@ class TestDiffReport:
 
     def test_missing_angle_is_an_error_not_a_silent_skip(self, tmp_path: Path) -> None:
         report = _report(tmp_path, ("base", "candidate"))
-        with pytest.raises(KeyError):
+        with pytest.raises(WebGlQcError, match="cannot diff at 'raking'"):
             diff_report(report, [("base", "candidate")], tmp_path, angles=["raking"])
+
+
+class TestLoopbackServer:
+    def test_binds_loopback_and_cannot_reach_outside_the_serve_root(self, tmp_path: Path) -> None:
+        import socket
+
+        serve = tmp_path / "serve"
+        serve.mkdir()
+        (serve / "harness.html").write_text("harness", encoding="utf-8")
+        (tmp_path / "secret.env").write_text("TOKEN=do-not-serve", encoding="utf-8")
+
+        server, port = _serve(serve)
+        try:
+            assert server.server_address[0] == "127.0.0.1"
+
+            def get(path: str) -> bytes:
+                # Raw socket: an HTTP client would normalise "/../" away before sending.
+                with socket.create_connection(("127.0.0.1", port), timeout=5) as sock:
+                    sock.sendall(f"GET {path} HTTP/1.0\r\n\r\n".encode())
+                    chunks = []
+                    while chunk := sock.recv(4096):
+                        chunks.append(chunk)
+                return b"".join(chunks)
+
+            assert b"200 OK" in get("/harness.html")
+            attacks = (
+                "/../secret.env",
+                "/%2e%2e/secret.env",
+                "//" + str(tmp_path / "secret.env"),
+            )
+            for attack in attacks:
+                response = get(attack)
+                assert b"do-not-serve" not in response, attack
+                assert b"200 OK" not in response.split(b"\r\n", 1)[0], attack
+        finally:
+            server.shutdown()
+            server.server_close()
+
+
+class TestRenderPreconditions:
+    """Every one of these must fail BEFORE a browser is launched."""
+
+    @pytest.fixture(autouse=True)
+    def _no_browser(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        def boom(*_a: object, **_kw: object) -> None:
+            raise AssertionError("a browser was launched for an input that should fail first")
+
+        monkeypatch.setattr("playwright.sync_api.sync_playwright", boom)
+
+    @pytest.fixture
+    def glb(self, tmp_path: Path) -> Path:
+        path = tmp_path / "tri.glb"
+        path.write_bytes(build_triangle_glb())
+        return path
+
+    def test_no_targets(self, tmp_path: Path) -> None:
+        with pytest.raises(WebGlQcError, match="no render targets"):
+            render([], tmp_path / "out")
+
+    def test_empty_angles_is_not_a_successful_empty_report(self, tmp_path: Path, glb: Path) -> None:
+        with pytest.raises(WebGlQcError, match="no angles"):
+            render([RenderTarget("a", glb)], tmp_path / "out", angles=[])
+
+    def test_unknown_angle(self, tmp_path: Path, glb: Path) -> None:
+        with pytest.raises(WebGlQcError, match="unknown angle"):
+            render([RenderTarget("a", glb)], tmp_path / "out", angles=["nope"])
+
+    def test_duplicate_labels(self, tmp_path: Path, glb: Path) -> None:
+        with pytest.raises(WebGlQcError, match="duplicate render labels"):
+            render([RenderTarget("a", glb), RenderTarget("a", glb)], tmp_path / "out")
+
+    def test_missing_glb(self, tmp_path: Path) -> None:
+        with pytest.raises(WebGlQcError, match="GLB not found"):
+            render([RenderTarget("a", tmp_path / "absent.glb")], tmp_path / "out")
+
+    def test_truncated_glb_is_rejected_by_the_container_parser(
+        self, tmp_path: Path, glb: Path
+    ) -> None:
+        bad = tmp_path / "bad.glb"
+        bad.write_bytes(glb.read_bytes()[:-8])
+        with pytest.raises(WebGlQcError, match="not a valid GLB"):
+            render([RenderTarget("a", bad)], tmp_path / "out")
+
+    def test_stale_pngs_in_out_dir_are_refused(self, tmp_path: Path, glb: Path) -> None:
+        out = tmp_path / "out"
+        out.mkdir()
+        _png(out / "a-front.png", (1, 2, 3))
+        with pytest.raises(WebGlQcError, match="already holds 1 PNG"):
+            render([RenderTarget("a", glb)], out)
+
+
+class TestPrepareOutDir:
+    def test_overwrite_removes_only_pngs(self, tmp_path: Path) -> None:
+        _png(tmp_path / "old.png", (1, 2, 3))
+        (tmp_path / "notes.txt").write_text("keep me", encoding="utf-8")
+        prepare_out_dir(tmp_path, overwrite=True)
+        assert sorted(p.name for p in tmp_path.iterdir()) == ["notes.txt"]
+
+
+def _frame_bytes(tmp_path: Path, *, two_tone: bool) -> bytes:
+    from PIL import Image
+
+    img = Image.new("RGB", (8, 8), (128, 128, 128))
+    if two_tone:
+        img.putpixel((3, 3), (10, 10, 10))
+    path = tmp_path / "frame.png"
+    img.save(path)
+    return path.read_bytes()
+
+
+class TestBlankFrameGuard:
+    def test_uniform_frame_is_a_failed_render(self, tmp_path: Path) -> None:
+        with pytest.raises(RenderFailedError, match="blank frame"):
+            _assert_not_blank(_frame_bytes(tmp_path, two_tone=False), "a @ front")
+
+    def test_a_frame_with_any_content_passes(self, tmp_path: Path) -> None:
+        _assert_not_blank(_frame_bytes(tmp_path, two_tone=True), "a @ front")
+
+
+class _FakePage:
+    def __init__(self, captured: dict, console: list[tuple[str, str]]) -> None:
+        self._captured = captured
+        self._console = console
+        self._handlers: dict = {}
+
+    def on(self, event: str, handler: object) -> None:
+        self._handlers[event] = handler
+
+    def goto(self, *_a: object, **_kw: object) -> None:
+        for kind, text in self._console:
+            self._handlers["console"](type("Msg", (), {"type": kind, "text": text})())
+
+    def wait_for_function(self, *_a: object, **_kw: object) -> None:
+        if self._captured.get("timeout"):
+            raise TimeoutError("Timeout 1ms exceeded")
+
+    def evaluate(self, *_a: object) -> dict:
+        return self._captured
+
+    def close(self) -> None:
+        pass
+
+
+class TestRenderOne:
+    """The per-frame fail-closed rules, without a browser."""
+
+    def _run(self, tmp_path: Path, captured: dict, console: list | None = None) -> tuple:
+        page = _FakePage(captured, console or [])
+        context = type("Ctx", (), {"new_page": lambda self: page})()
+        return _render_one(context, 1, RenderTarget("a", tmp_path / "a.glb"), "front", 64, 1)
+
+    def _good(self, tmp_path: Path) -> dict:
+        import base64
+
+        png = _frame_bytes(tmp_path, two_tone=True)
+        return {
+            "result": {"ok": True},
+            "dataUrl": "data:image/png;base64," + base64.b64encode(png).decode(),
+            "errors": [],
+        }
+
+    def test_clean_frame_is_returned_with_its_warnings(self, tmp_path: Path) -> None:
+        result, png, messages = self._run(
+            tmp_path, self._good(tmp_path), [("warning", "GPU stall")]
+        )
+        assert result["ok"] and png.startswith(b"\x89PNG")
+        assert [m["type"] for m in messages] == ["warning"]
+
+    def test_ok_false_raises(self, tmp_path: Path) -> None:
+        bad = {
+            "result": {"ok": False, "error": "no renderable geometry"},
+            "dataUrl": None,
+            "errors": [],
+        }
+        with pytest.raises(RenderFailedError, match="no renderable geometry"):
+            self._run(tmp_path, bad)
+
+    def test_console_error_fails_the_render_even_when_ok_is_true(self, tmp_path: Path) -> None:
+        # three reports shader link failures via console.error and keeps going.
+        with pytest.raises(RenderFailedError, match="VALIDATE_STATUS"):
+            self._run(
+                tmp_path,
+                self._good(tmp_path),
+                [("error", "THREE.WebGLProgram: Shader Error VALIDATE_STATUS false")],
+            )
+
+    def test_window_error_fails_the_render(self, tmp_path: Path) -> None:
+        with pytest.raises(RenderFailedError, match="boom"):
+            self._run(tmp_path, {**self._good(tmp_path), "errors": ["boom"]})
+
+    def test_blank_frame_fails_the_render(self, tmp_path: Path) -> None:
+        import base64
+
+        blank = base64.b64encode(_frame_bytes(tmp_path, two_tone=False)).decode()
+        captured = {**self._good(tmp_path), "dataUrl": "data:image/png;base64," + blank}
+        with pytest.raises(RenderFailedError, match="blank frame"):
+            self._run(tmp_path, captured)
+
+    def test_timeout_names_the_target(self, tmp_path: Path) -> None:
+        with pytest.raises(RenderFailedError, match="a @ front: browser did not produce"):
+            self._run(tmp_path, {"timeout": True})
+
+
+@pytest.mark.integration
+@pytest.mark.timeout(180)
+class TestRealBrowser:
+    """Executes the harness JS. Deselected by the default addopts; when selected, a
+    missing Chromium is a FAILURE, never a skip (bug-230)."""
+
+    def test_same_glb_renders_byte_identical_and_empty_scene_fails(self, tmp_path: Path) -> None:
+        glb = tmp_path / "tri.glb"
+        glb.write_bytes(build_triangle_glb())
+        report = render(
+            [RenderTarget("a", glb), RenderTarget("b", glb)],
+            tmp_path / "out",
+            angles=["front"],
+            size=64,
+        )
+        a, b = report.image("a", "front").path, report.image("b", "front").path
+        assert a.read_bytes() == b.read_bytes(), "two renders of one GLB must be byte-identical"
+        assert report.image("a", "front").camera["fov"] == VIEWER_PARITY["fov"]
+
+        empty = tmp_path / "empty.glb"
+        empty.write_bytes(
+            pack_glb({"asset": {"version": "2.0"}, "scene": 0, "scenes": [{"nodes": []}]}, None)
+        )
+        with pytest.raises(RenderFailedError, match="no renderable geometry"):
+            render([RenderTarget("e", empty)], tmp_path / "out2", angles=["front"], size=64)
