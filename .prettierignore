@@ -12,3 +12,13 @@ tasks/source-photo-shoot-list.md
 # causes merge conflicts between sessions (bug-322 session, 2026-09-12).
 .wolf/cerebrum.md
 .wolf/buglog.json
+# Derived assets: the theme serves .min in production and build-{css,js}.js own these
+# byte-for-byte (build --check compares them to source). Prettier expanded
+# product-3d-viewer.min.js 5,737 -> 11,505 bytes and single-product.min.css
+# 14,492 -> 17,225 on 2026-09-17, shipping a bigger payload than the source it minifies.
+**/*.min.js
+**/*.min.css
+# Vendored third-party libraries, pinned by sha256 in VENDOR.md and reproduced
+# byte-identically by scripts/vendor-three.sh. Reformatting them breaks that pin
+# (three.module.min.js went 691,648 -> 952,111 bytes).
+wordpress-theme/skyyrose-flagship/assets/js/lib/**
