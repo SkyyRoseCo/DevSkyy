@@ -22,7 +22,6 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
-import os
 import uuid
 from collections import OrderedDict
 from dataclasses import dataclass, field
@@ -457,12 +456,11 @@ class SocialMediaAgent:
         correlation_id: str | None = None,
     ) -> None:
         self._correlation_id = correlation_id
-        self._product_data_path = product_data_path or os.path.join(
-            os.path.dirname(__file__), "..", "skyyrose", "assets", "data", "product-content.json"
-        )
-
-        # Product data from external JSON (supplemental to PRODUCT_CATALOG)
-        self._external_products: dict[str, Any] = {}
+        if product_data_path is not None:
+            logger.warning(
+                "product_data_path is ignored: product facts now resolve through "
+                "skyyrose.core.product.get_product, the single product entry point."
+            )
 
         # Post queue with bounded size (LRU eviction to prevent memory exhaustion)
         self._post_queue: OrderedDict[str, SocialPost] = OrderedDict()
@@ -480,50 +478,55 @@ class SocialMediaAgent:
         # LLM client (lazy-loaded)
         self._llm_client: Any = None
 
-        self._load_external_products()
-
     # =========================================================================
     # Product Data
     # =========================================================================
 
-    def _load_external_products(self) -> None:
-        """Load supplemental product data from JSON file."""
-        try:
-            if os.path.exists(self._product_data_path):
-                with open(self._product_data_path) as f:
-                    self._external_products = json.load(f)
-                logger.info(
-                    "Loaded %d external products for social media agent",
-                    len(self._external_products),
-                )
-            else:
-                logger.debug(
-                    "No external product data at %s, using built-in catalog",
-                    self._product_data_path,
-                )
-        except (json.JSONDecodeError, OSError) as exc:
-            logger.error("Failed to load external product data: %s", exc)
-
     def _get_product(self, sku: str) -> dict[str, Any] | None:
-        """Get product by SKU from catalog or external data."""
-        # Check built-in catalog first
-        if sku in PRODUCT_CATALOG:
-            product = dict(PRODUCT_CATALOG[sku])
-            # Merge external data if available
-            if sku in self._external_products:
-                external = self._external_products[sku]
-                product.update(
-                    {
-                        k: v
-                        for k, v in external.items()
-                        if k not in ("name", "collection")  # Don't override core fields
-                    }
-                )
-            return product
-        # Fall back to external data
-        if sku in self._external_products:
-            return dict(self._external_products[sku])
-        return None
+        """Product facts for `sku`, read through the single entry point.
+
+        Returns the fields caption generation needs, flattened from the record
+        that ``skyyrose.core.product.get_product`` assembles. That call is the
+        one read path for product facts -- this agent no longer keeps its own
+        merge of a CSV projection and a side-store, so it cannot drift from the
+        registry or invent its own precedence between them.
+
+        ``caption_is_authored`` tells the caller whether a platform caption was
+        actually written for this SKU. 14 of 33 products have no social copy
+        yet; the record names that in its ``gaps`` rather than returning an
+        empty string, so a generated caption is never mistaken for an authored
+        one.
+
+        Returns None when the SKU is not in the registry -- never a fabricated
+        record.
+        """
+        from skyyrose.core.product import get_product
+
+        try:
+            record = get_product(sku)
+        except KeyError:
+            logger.warning("SKU %s is not in the product registry", sku)
+            return None
+
+        content = record["content"]
+
+        def _value(field: str) -> str | None:
+            entry = content.get(field)
+            return entry["value"] if entry else None
+
+        return {
+            "sku": sku,
+            "name": record["name"],
+            "collection": record["collection"],
+            "short_description": _value("short_description") or "",
+            "instagram": _value("instagram"),
+            "tiktok": _value("tiktok"),
+            "caption_is_authored": {
+                Platform.INSTAGRAM: _value("instagram") is not None,
+                Platform.TIKTOK: _value("tiktok") is not None,
+            },
+            "gaps": record["gaps"],
+        }
 
     # =========================================================================
     # Caption Generation
