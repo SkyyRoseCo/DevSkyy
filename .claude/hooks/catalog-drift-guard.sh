@@ -39,6 +39,12 @@ CATALOG_PATTERNS=(
   "skyyrose/elite_studio/sku_resolver.py"
   "skyyrose/elite_studio/logo_registry.py"
   "skyyrose/elite_studio/commerce.py"
+  # Authored product side-stores read by skyyrose.core.product.get_product —
+  # editing one changes what every agent sees, so it triggers the same gate.
+  "skyyrose/assets/data/product-content.json"
+  "skyyrose/assets/data/alt-text.json"
+  "wordpress-theme/skyyrose-flagship/data/render-corrections.json"
+  "wordpress-theme/skyyrose-flagship/data/render-keepers.json"
 )
 
 # Per feedback_canonical_sources_only.md (locked 2026-05-27): dossier .md
@@ -130,6 +136,90 @@ if [[ "$SOT_TRIGGER" == "1" && -f "${SOT_DATA_DIR}/build-collection-sot.py" ]]; 
   fi
 fi
 
+# ── Regenerate registry projections + verify the single entry point ───────
+# The registry is the authored SOT; the CSV, the dossier .md files and every
+# generated manifest are projections of it. Editing the registry without
+# re-running the sync leaves those projections stale until CI notices — so the
+# sync runs here, in-session, on every edit.
+#
+# Then the entry point every agent calls (skyyrose.core.product.get_product) is
+# exercised across all SKUs. It fails closed, so a registry edit that breaks a
+# record surfaces immediately rather than at the next render or ad build.
+ORGANIZER="${REPO_ROOT}/scripts/organize_product_registry.py"
+if [[ -f "$ORGANIZER" ]]; then
+  ORG_OUT="$("$PYTHON" "$ORGANIZER" --check --quiet 2>&1)" || true
+  case "$ORG_OUT" in
+    *"registry organized"*)
+      echo "[catalog-drift-guard] ${ORG_OUT}"
+      ;;
+    *"order"*)
+      # Ordering alone is cosmetic and fixed by --apply; never block on it.
+      echo "[catalog-drift-guard] registry schema-valid; ${ORG_OUT}"
+      ;;
+    *)
+      echo ""
+      echo "[catalog-drift-guard] WARNING: registry schema/consistency check FAILED."
+      echo "  ${ORG_OUT}"
+      echo "  Run: python scripts/organize_product_registry.py --check   (to see details)"
+      echo ""
+      ;;
+  esac
+fi
+
+SYNC="${REPO_ROOT}/scripts/sync_product_registry.py"
+if [[ -f "$SYNC" ]]; then
+  if "$PYTHON" "$SYNC" >/dev/null 2>&1; then
+    echo "[catalog-drift-guard] registry projections regenerated after ${REL_FILE} edit."
+  else
+    echo ""
+    echo "[catalog-drift-guard] WARNING: projection sync FAILED after editing ${REL_FILE}."
+    echo "  Run: python scripts/sync_product_registry.py   (to see details)"
+    echo ""
+  fi
+fi
+
+ENTRY_CHECK="$(
+  "$PYTHON" - <<'PYEOF' 2>&1
+import sys
+
+try:
+    from skyyrose.core.product import gap_report, get_all_products
+except Exception as exc:  # import-time failure is itself the finding
+    print(f"IMPORT_FAILED {exc}")
+    sys.exit(1)
+
+try:
+    records = get_all_products()
+except Exception as exc:
+    print(f"RESOLVE_FAILED {exc}")
+    sys.exit(1)
+
+undeclared = [
+    f"{sku}.{field}"
+    for sku, rec in records.items()
+    for field, value in rec["content"].items()
+    if value is None and f"content.{field}" not in rec["gaps"]
+]
+if undeclared:
+    print(f"UNDECLARED_BLANKS {', '.join(undeclared[:5])}")
+    sys.exit(1)
+print(f"OK {len(records)} SKUs, {len(gap_report())} with declared gaps")
+PYEOF
+)" || true
+
+case "$ENTRY_CHECK" in
+  OK*)
+    echo "[catalog-drift-guard] product entry point verified: ${ENTRY_CHECK#OK }"
+    ;;
+  *)
+    echo ""
+    echo "[catalog-drift-guard] WARNING: product entry point check FAILED after editing ${REL_FILE}."
+    echo "  ${ENTRY_CHECK}"
+    echo "  Run: python -m skyyrose.core.product --gaps   (to see details)"
+    echo ""
+    ;;
+esac
+
 VALIDATOR="${REPO_ROOT}/scripts/validate_catalog_consistency.py"
 if [[ ! -f "$VALIDATOR" ]]; then
   exit 0
@@ -149,8 +239,9 @@ fi
 # any subsequent product claim. Memory may be stale; canonical files won.
 echo ""
 echo "[catalog-drift-guard] CANONICAL PRODUCT DATA TOUCHED: ${REL_FILE}"
-echo "  Re-read this file (or call skyyrose.core.catalog_loader /"
-echo "  skyyrose.core.dossier_loader) before claiming any product fact."
+echo "  Before claiming any product fact, read it through the single entry point:"
+echo "    from skyyrose.core.product import get_product   (or: python -m skyyrose.core.product <sku>)"
+echo "  Never the CSV, a dossier file, or a hardcoded assets/images/products/ path."
 echo ""
 
 exit 0
