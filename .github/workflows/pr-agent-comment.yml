@@ -1,0 +1,55 @@
+# Comments request a rerun of an existing pull_request review.
+# This privileged event never checks out or executes PR code.
+name: PR Review Comment Requests
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-review-comment-${{ github.event.issue.number }}-${{ github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  comment-review:
+    name: Request existing PR review
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # Comments can request another review, but never check out or execute PR
+    # code in the privileged issue_comment context.
+    if: |
+      github.event_name == 'issue_comment' && github.event.issue.pull_request &&
+      !endsWith(github.actor, '[bot]') && github.event.issue.user.type != 'Bot' &&
+      github.event.comment.user.type != 'Bot' &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)
+    permissions:
+      actions: write
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Request review of the current trusted PR commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          pr_metadata=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER")
+          default_branch=$(gh api "repos/$GITHUB_REPOSITORY" --jq .default_branch)
+          eligible=$(jq --arg repo "$GITHUB_REPOSITORY" --arg default "$default_branch" '[.head.repo.full_name == $repo, .user.type != "Bot", .draft == false, .state == "open", .head.ref != $default] | all' <<< "$pr_metadata")
+          if [ "$eligible" != "true" ]; then
+            echo "This PR is not eligible for an automatic write-capable review."
+            exit 0
+          fi
+          head_sha=$(jq -r .head.sha <<< "$pr_metadata")
+          runs=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/pr-agent.yml/runs?event=pull_request&head_sha=$head_sha&per_page=100")
+          latest=$(jq --arg repo "$GITHUB_REPOSITORY" --argjson number "$PR_NUMBER" '[.workflow_runs[] | select(.head_repository.full_name == $repo and any(.pull_requests[]; .number == $number))] | sort_by(.id) | last' <<< "$runs")
+          if [ "$latest" = "null" ]; then
+            echo "No pull_request review exists for this commit; the next PR update will start one."
+          elif [ "$(jq -r .status <<< "$latest")" != "completed" ]; then
+            echo "The current PR review is already queued or running."
+          else
+            run_id=$(jq -r .id <<< "$latest")
+            gh api --method POST "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/rerun"
+          fi

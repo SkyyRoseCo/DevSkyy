@@ -127,6 +127,12 @@ candidate-bound approval. The current Black Rose route recovers exact individual
 foreground authorities, creates only an empty Runway environment, and integrates
 the protected layers locally.
 
+Environment-plate approvals bind the complete merge-gate state. After the gate
+changes to `SATISFIED`, rerun the read-only `environment_plate_ooda.py preflight`
+with an empty blocker list and a null approval receipt, then obtain a fresh
+founder approval for that fingerprint. A pre-merge receipt cannot authorize the
+post-merge request. Preflight never submits a paid generation.
+
 If assertion rules change after a human/product-authority review, re-evaluate
 the immutable enhancement receipt without another provider request:
 

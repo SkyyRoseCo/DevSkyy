@@ -6,8 +6,8 @@ All CLIP model calls are mocked so tests run without transformers installed.
 
 from __future__ import annotations
 
-import importlib
 from dataclasses import FrozenInstanceError
+from math import exp, log
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -18,34 +18,6 @@ from skyyrose.elite_studio.quality.ml_classifier import (
     ClassifierResult,
     QualityClassifier,
 )
-
-
-def _has_clip_runtime() -> bool:
-    """True only when every import _run_clip performs before CLIP loading succeeds."""
-    try:
-        importlib.import_module("torch")
-        importlib.import_module("PIL")
-    except ImportError:
-        return False
-    return True
-
-
-_HAS_CLIP_RUNTIME = _has_clip_runtime()
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-
-
-def _make_mock_outputs(probs: list[float]):
-    """Build a mock transformers model output with given label probabilities."""
-    import torch
-
-    mock_outputs = MagicMock()
-    prob_tensor = torch.tensor([probs])  # shape (1, n_labels)
-    mock_outputs.logits_per_image = prob_tensor
-    return mock_outputs, prob_tensor
-
 
 # ---------------------------------------------------------------------------
 # ClassifierResult dataclass
@@ -98,17 +70,13 @@ class TestClassifierFallback:
         assert result.error == ""
 
     def test_returns_error_result_on_generic_exception(self, tmp_path):
-        # _run_clip imports torch and PIL before _load_clip_model is reached; without
-        # the ml extra the ImportError fallback fires first and this path is unreachable.
-        if not _HAS_CLIP_RUNTIME:
-            pytest.skip("classifier exception path requires the ml extra")
         img = tmp_path / "test.jpg"
         img.write_bytes(b"FAKEJPEG")
 
         classifier = QualityClassifier()
 
         with patch(
-            "skyyrose.elite_studio.quality.ml_classifier._load_clip_model",
+            "skyyrose.elite_studio.quality.ml_classifier.QualityClassifier._run_clip",
             side_effect=RuntimeError("GPU exploded"),
         ):
             result = classifier.predict(str(img))
@@ -123,12 +91,9 @@ class TestClassifierFallback:
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.skipif(not _HAS_CLIP_RUNTIME, reason="mocked CLIP inference requires the ml extra")
 class TestClassifierWithMockCLIP:
-    def _mock_clip_call(self, probs: list[float], image_path: str) -> ClassifierResult:
-        """Run classifier with mocked CLIP outputs."""
-        import torch
-
+    def _mock_clip_call(self, logits: list[float], image_path: str) -> ClassifierResult:
+        """Exercise classifier scoring without loading optional ML libraries."""
         mock_model = MagicMock()
         mock_processor = MagicMock()
 
@@ -136,15 +101,21 @@ class TestClassifierWithMockCLIP:
         mock_inputs = MagicMock()
         mock_processor.return_value = mock_inputs
 
-        # Build output with softmax-like probs
-        prob_tensor = torch.tensor([probs])
+        # Only the external tensor operations are mocked. The real classifier
+        # still selects the label, calculates confidence, and weights the score.
+        weights = [exp(value - max(logits)) for value in logits]
+        probabilities = [value / sum(weights) for value in weights]
+        prob_tensor = MagicMock()
+        prob_tensor.tolist.return_value = probabilities
+        prob_tensor.argmax.return_value.item.return_value = probabilities.index(max(probabilities))
         mock_output = MagicMock()
-        mock_output.logits_per_image = prob_tensor
+        mock_output.logits_per_image.softmax.return_value.squeeze.return_value = prob_tensor
         mock_model.return_value = mock_output
 
         classifier = QualityClassifier()
 
         with (
+            patch.dict("sys.modules", {"torch": MagicMock()}),
             patch(
                 "skyyrose.elite_studio.quality.ml_classifier._load_clip_model",
                 return_value=(mock_model, mock_processor),
@@ -152,13 +123,6 @@ class TestClassifierWithMockCLIP:
             patch(
                 "PIL.Image.open",
                 return_value=MagicMock(convert=MagicMock(return_value=MagicMock())),
-            ),
-            patch(
-                "torch.no_grad",
-                return_value=MagicMock(
-                    __enter__=MagicMock(return_value=None),
-                    __exit__=MagicMock(return_value=False),
-                ),
             ),
         ):
             return classifier.predict(image_path)
@@ -213,30 +177,18 @@ class TestClassifierWithMockCLIP:
 
     def test_weighted_score_matches_formula(self, tmp_path):
         """Verify the weighted score formula using _run_clip directly with known post-softmax probs."""
-        from unittest.mock import patch
-
         img = tmp_path / "weight.jpg"
         img.write_bytes(b"FAKE")
 
-        # We want to assert that the score formula is correct.
-        # Patch _run_clip to return a known result and verify the score field.
-        # The formula: score = sum(prob * label_score for each label)
         known_probs = [0.6, 0.3, 0.1]  # desired post-softmax values
         expected = (
             0.6 * _LABEL_SCORES["high quality fashion photo"]
             + 0.3 * _LABEL_SCORES["low quality blurry photo"]
             + 0.1 * _LABEL_SCORES["inappropriate content"]
         )
-        # Feed these as logits through a softmax that already produces those values.
-        # We patch _run_clip directly so we control the exact probs used.
-        expected_result = ClassifierResult(
-            success=True,
-            score=round(expected, 4),
-            confidence=0.6,
-            label=_CANDIDATE_LABELS[0],
-        )
-        classifier = QualityClassifier()
-        with patch.object(classifier, "_run_clip", return_value=expected_result):
-            result = classifier.predict(str(img))
+        # Log-probabilities recover the known distribution through softmax.
+        # Keep _run_clip real so this fails if its weighted formula regresses.
+        result = self._mock_clip_call([log(prob) for prob in known_probs], str(img))
 
+        assert result.success is True
         assert result.score == pytest.approx(expected, abs=0.001)

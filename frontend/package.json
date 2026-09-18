@@ -95,7 +95,7 @@
     "react-resizable-panels": "^4.6.5",
     "recharts": "^3.7.0",
     "server-only": "^0.0.1",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.4",
     "stripe": "^20.3.1",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
@@ -105,6 +105,7 @@
     "zustand": "^5.0.11"
   },
   "overrides": {
+    "sharp": "$sharp",
     "lodash": "^4.17.23",
     "lodash-es": "^4.17.23",
     "undici": ">=5.29.0",

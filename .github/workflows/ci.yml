@@ -18,19 +18,22 @@ on:
     branches: [main, develop]
   schedule:
     # Weekly security scan on Sundays at 2 AM UTC
-    - cron: '0 2 * * 0'
+    - cron: "0 2 * * 0"
   workflow_dispatch:
     inputs:
       skip_e2e:
-        description: 'Skip Playwright e2e tests'
+        description: "Skip Playwright e2e tests"
         required: false
         default: false
         type: boolean
       force_deploy:
-        description: 'Force deployment (skip some checks)'
+        description: "Force deployment (skip some checks)"
         required: false
         default: false
         type: boolean
+
+permissions:
+  contents: read
 
 env:
   # Black validates AST equivalence against pyproject.toml's py313 target.
@@ -56,13 +59,13 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'pip'
+          cache: "pip"
 
       - name: Get pip cache dir
         id: pip-cache
@@ -71,7 +74,7 @@ jobs:
           echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
 
       - name: Cache pip dependencies
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9  # v6.1.0
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt', '**/pyproject.toml') }}
@@ -93,7 +96,7 @@ jobs:
         run: isort --check-only --diff .
 
       - name: Cache mypy
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9  # v6.1.0
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .mypy_cache
           key: ${{ runner.os }}-mypy-${{ hashFiles('**/*.py') }}
@@ -108,10 +111,9 @@ jobs:
   # ===========================================================================
   python-tests:
     name: 🐍 Python Tests
-    # Routed to the Docker-containerized self-hosted runner (genuine Linux, not
-    # macOS) so services: (Docker container orchestration) works natively.
-    # See project_self_hosted_runner_2026_07_26.md for the macOS-runner history.
-    runs-on: [self-hosted, docker-arm64]
+    # Hosted Linux provides Docker for Redis without depending on an absent
+    # docker-arm64 runner. Preserve the complete suite and service container.
+    runs-on: ubuntu-latest
     timeout-minutes: 20
 
     services:
@@ -127,13 +129,13 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'pip'
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -175,7 +177,7 @@ jobs:
             -F python || true
 
       - name: Upload test results
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: python-test-results
@@ -194,13 +196,13 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'pip'
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -287,7 +289,7 @@ jobs:
           fi
 
       - name: Upload security reports
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: security-reports
@@ -349,13 +351,13 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020  # v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
@@ -367,36 +369,39 @@ jobs:
       - name: Run TypeScript type check
         run: npm run type-check
 
+      - name: Run frontend unit tests
+        run: npm test
+
       - name: Build application
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: frontend-build
           path: frontend/.next/
           retention-days: 1
-          include-hidden-files: true  # .next/ is a hidden dir; upload-artifact v6 skips it without this
+          include-hidden-files: true # .next/ is a hidden dir; upload-artifact v6 skips it without this
 
   # ===========================================================================
   # Stage 2: Three.js Collection Tests (Parallel)
   # ===========================================================================
   threejs-tests:
-    name: 🎮 Three.js Tests
+    name: 🎮 Root TypeScript Tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020  # v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
 
       # The committed root lockfile provides deterministic test and audit inputs.
       - name: Install dependencies
@@ -405,13 +410,11 @@ jobs:
       - name: Audit production dependencies
         run: npm run security:audit:production
 
-      - name: Run Three.js collection tests
-        # The root collection target can legitimately be empty while collection
-        # tests live in the frontend package; preserve failures from real tests.
-        run: npm run test:collections -- --passWithNoTests
+      - name: Run root unit tests
+        run: npm test
 
       - name: Upload test results
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: threejs-test-results
@@ -428,10 +431,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020  # v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -482,30 +485,28 @@ jobs:
     name: 🎭 Playwright E2E Tests
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    # Non-gating: E2E suite is nascent / not yet CI-stable. Still runs for visibility,
-    # but does not block merges until the suite is hardened (see settings-page.spec follow-up).
-    continue-on-error: true
+    # Browser regressions must fail CI now that the suite covers current behavior.
     needs: [python-tests, frontend-tests]
     if: ${{ !inputs.skip_e2e }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
       - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020  # v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: frontend/package-lock.json
 
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'pip'
+          cache: "pip"
 
       - name: Install Python dependencies
         run: |
@@ -532,7 +533,7 @@ jobs:
           ./node_modules/.bin/playwright install --with-deps chromium webkit
 
       - name: Download frontend build
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           name: frontend-build
           path: frontend/.next/
@@ -548,17 +549,19 @@ jobs:
 
       - name: Start frontend server
         run: |
+          # Ephemeral authentication key for this isolated localhost test run.
+          # Production-mode NextAuth refuses to render without a signing key.
+          export NEXTAUTH_SECRET="$(openssl rand -hex 32)"
           npm run start &
           echo "Waiting for frontend to start..."
           for i in $(seq 1 30); do curl -sf http://localhost:3000 && break || sleep 2; done
         working-directory: frontend
         env:
           NEXT_TELEMETRY_DISABLED: 1
+          NEXTAUTH_URL: http://localhost:3000
 
       - name: Run Playwright tests
-        # Step-level cap: a slow/failing E2E suite fails HERE (step failure, absorbed by this
-        # job's continue-on-error) instead of running to the 30-min JOB timeout, which fires as
-        # a cancellation that continue-on-error cannot absorb — that gated the pipeline.
+        # Keep slow or failing browser runs bounded and retain their failure status.
         timeout-minutes: 15
         # `--reporter=list,html`: the `list` reporter streams per-test results to the
         # CI log (a bare `--reporter=html` overrode the config's list reporter, so the
@@ -573,7 +576,7 @@ jobs:
           API_BASE_URL: http://localhost:8000
 
       - name: Upload Playwright report
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
@@ -581,7 +584,7 @@ jobs:
           retention-days: 30
 
       - name: Upload Playwright traces
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: failure()
         with:
           name: playwright-traces
@@ -611,13 +614,13 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'pip'
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -634,7 +637,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}
 
       - name: Upload API test results
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: api-test-results
@@ -661,7 +664,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # Path filter (2026-07-07): the GHCR image this job pushes has NO deploy
       # consumer (deploys are gated manual runs; see tasks/mcp-golive-manifest.md
@@ -686,11 +689,11 @@ jobs:
 
       - name: Set up Docker Buildx
         if: steps.changes.outputs.build == 'true'
-        uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c  # v4.2.0
+        uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4.3.0
 
       - name: Log in to GitHub Container Registry
         if: steps.changes.outputs.build == 'true' && github.ref == 'refs/heads/main'
-        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0  # v3
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -699,7 +702,7 @@ jobs:
       - name: Extract metadata
         id: meta
         if: steps.changes.outputs.build == 'true'
-        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302  # v6.2.0
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
@@ -709,7 +712,7 @@ jobs:
 
       - name: Build backend image
         if: steps.changes.outputs.build == 'true'
-        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a  # v7.3.0
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
         with:
           context: .
           file: ./Dockerfile
@@ -722,7 +725,7 @@ jobs:
             BUILDKIT_INLINE_CACHE=1
 
       - name: Build frontend image
-        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a  # v7.3.0
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
         with:
           context: ./frontend
           file: ./frontend/Dockerfile
@@ -750,7 +753,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Check whether pyproject.toml changed in this PR
         id: touched
@@ -769,7 +772,7 @@ jobs:
 
       - name: Set up Python
         if: steps.touched.outputs.changed == 'true'
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -803,7 +806,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Deploy frontend to Vercel
         if: ${{ vars.ENABLE_VERCEL_DEPLOY == 'true' }}
@@ -853,7 +856,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Security gate check
         run: |

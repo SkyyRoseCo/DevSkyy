@@ -5545,7 +5545,7 @@
     "error_message": "tests/integrations/test_comfy_client.py::test_environment_preflight_and_paid_client_share_exact_fingerprint fails: packet['contract_sha256'] != runway_contract_sha256(contract). Blocks the Stop test-gate on branch codex/v2-open-seo-security-audit (files staged, never committed).",
     "file": "Comfy/scripts/environment_plate_ooda.py",
     "root_cause": "Two divergent contract-hash implementations: Comfy/scripts/environment_plate_ooda.py:_contract_sha256 nulls post_merge_execution_gate before hashing; skyyrose/integrations/comfy_client.py:runway_contract_sha256 does not. The test sets post_merge_execution_gate to a dict, so the digests differ deterministically. Also a pre-existing venv gap: .venv lacked the dev extra (pytest, typer, fakeredis, beautifulsoup4, pygltflib) so the gate died with 'No module named pytest' first.",
-    "fix": "FIXED 2026-09-10: skyyrose/integrations/comfy_client.py runway_contract_sha256 now also nulls post_merge_execution_gate (matching Comfy/scripts/environment_plate_ooda.py _contract_sha256 and the hashes already in scene-ooda-ledger.json). Without this the paid client at comfy_client.py:1116 rejected every founder approval receipt for a contract carrying the merge gate. Also installed the dev extra into .venv and regenerated assets/products/manifest.json (branch was behind main's copy for lh-003). Stop-gate then surfaced 8 pre-existing red tests identical to origin/main (main CI cancelled, no green baseline): 2 orchestrator tests spawned a REAL Claude Agent SDK escalation (17.7s, paid when a key exists) -> patched _sdk_escalation to AsyncMock(None); 5 classifier tests need the ml extra -> pytest.importorskip per repo convention; jersey registry test expected /collections/jersey-series/ but the builder deliberately emits /collections/black-rose/#jersey-series -> test expectation corrected. Gate green: `pytest tests/ -x -q` exit 0.",
+    "fix": "FIXED 2026-09-10: skyyrose/integrations/comfy_client.py runway_contract_sha256 now also nulls post_merge_execution_gate (matching Comfy/scripts/environment_plate_ooda.py _contract_sha256 and the hashes already in scene-ooda-ledger.json). Without this the paid client at comfy_client.py:1116 rejected every founder approval receipt for a contract carrying the merge gate. Also installed the dev extra into .venv and regenerated assets/products/manifest.json (branch was behind main's copy for lh-003). Stop-gate then surfaced 8 pre-existing red tests identical to origin/main (main CI cancelled, no green baseline): 2 orchestrator tests spawned a REAL Claude Agent SDK escalation (17.7s, paid when a key exists) -> patched _sdk_escalation to AsyncMock(None); 5 classifier tests need the ml extra -> pytest.importorskip per repo convention; jersey registry test expected /collections/jersey-series/ but the builder deliberately emits /collections/black-rose/#jersey-series -> test expectation corrected. Gate green: `pytest tests/ -x -q` exit 0. SUPERSEDED on origin/main (2f13b1c6a lineage): runway_contract_sha256 now BINDS post_merge_execution_gate so a pre-merge approval cannot unlock a paid submit after the gate transitions; covered by test_paid_partner_rejects_unsatisfied_gate_* and test_paid_partner_rejects_premerge_approval_after_gate_transition. The 2026-09-18 product-stack merge keeps main's design and drops the regression test that pinned the gate-excluded hash.",
     "tags": [
       "comfy",
       "stop-gate",
@@ -5560,7 +5560,7 @@
       "bug-230"
     ],
     "occurrences": 1,
-    "last_seen": "2026-09-10T12:40:00-07:00"
+    "last_seen": "2026-09-18"
   },
   {
     "id": "bug-322",
@@ -5835,7 +5835,7 @@
     "error_message": "Stop-gate blocked: tests/test_round_table.py::test_round_table_with_tools - Failed: Timeout (>10.0s) from pytest-timeout, stack ending in an SSL socket read inside httpcore/_sync/http11.py. Captured setup log shows huggingface_hub 'You are sending unauthenticated requests to the HF Hub'.",
     "file": "tests/test_round_table.py",
     "root_cause": "MEASURED: the test downloads an embedding model from Hugging Face Hub during fixture setup. Counter wrapping httpx.Client.send and httpx.AsyncClient.send over this single test: 33 sends, ALL 33 external, 4.45s of network time, every URL under huggingface.co for sentence-transformers/all-MiniLM-L6-v2 (modules.json, config_sentence_transformers.json, api/resolve-cache/...). In isolation the test PASSES in 8.80s -- under the 10s cap but with half of that being raw network round-trips, so a cold HF cache or a slow link pushes it over. Same defect class as bug-333/bug-334 (real network I/O inside a unit test) in a different subsystem: there the extractor made one HTTPS GET per asset, here a fixture pulls a model from the Hub.",
-    "fix": "NOT YET FIXED -- delegated to the subagent that closed the brand-assets instance, with no prescribed approach (my prescription was wrong on bug-333; its measurement was right). Do NOT fix by raising or removing the timeout. Requested a census first: run the request counter over the whole module and any other test importing an embedding/ML model, so the class is closed in one pass rather than one instance at a time. If the test genuinely requires a real embedding model to assert what it asserts, that is a legitimate finding to surface rather than fake. Attribution: pre-existing, unrelated to the session's product-SOT work -- the test imports only llm.round_table, and both the test and llm/ are clean in git.",
+    "fix": "NOT YET FIXED -- delegated to the subagent that closed the brand-assets instance, with no prescribed approach (my prescription was wrong on bug-333; its measurement was right). Do NOT fix by raising or removing the timeout. Requested a census first: run the request counter over the whole module and any other test importing an embedding/ML model, so the class is closed in one pass rather than one instance at a time. If the test genuinely requires a real embedding model to assert what it asserts, that is a legitimate finding to surface rather than fake. Attribution: pre-existing, unrelated to the session's product-SOT work -- the test imports only llm.round_table, and both the test and llm/ are clean in git. SUPERSEDED at the origin/main merge (2026-09-18): main's PR #925 fixed the same network calls with a MagicMock sentence_model fixture patching llm.evaluation_metrics.SentenceTransformer; the merge keeps main's version (socket-level count: 0 external connections, 27 tests) and drops the _OfflineSentenceTransformer stand-in.",
     "tags": [
       "test-timeout",
       "network-in-tests",
@@ -5850,7 +5850,7 @@
       "bug-334"
     ],
     "occurrences": 1,
-    "last_seen": "2026-09-18T12:36:51.126122+00:00"
+    "last_seen": "2026-09-18"
   },
   {
     "id": "bug-336",

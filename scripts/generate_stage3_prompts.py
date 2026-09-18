@@ -312,7 +312,7 @@ def build_output(dossier_slug: str, name: str, sku: str, entries: list[dict]) ->
     lines: list[str] = [
         f"# Stage 3 Decoration Prompts — {name}",
         f"# SKU: {sku} | View: front+back",
-        "# Generated: 2026-04-26",
+        "# Generated offline by scripts/generate_stage3_prompts.py; not render approval",
         "",
     ]
 

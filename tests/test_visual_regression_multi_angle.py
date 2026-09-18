@@ -119,9 +119,6 @@ class TestCompareWithAngle:
         assert result.ssim_score >= 0.99
 
     def test_different_images_fail_threshold(self, isolated_tester, tmp_path):
-        # Without scikit-image the tester skips SSIM and returns a neutral pass, so
-        # the failure report this asserts on is unreachable.
-        pytest.importorskip("skimage", reason="SSIM failure path requires scikit-image")
         # Solid red vs solid blue → SSIM < 0.85 typically (channel mismatch)
         ref = tmp_path / "ref.jpg"
         gen = tmp_path / "gen.jpg"

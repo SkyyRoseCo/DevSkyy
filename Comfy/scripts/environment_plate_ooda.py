@@ -64,12 +64,10 @@ def _sha256_json(value: Any) -> str:
 
 
 def _contract_sha256(contract: Mapping[str, Any]) -> str:
-    """Hash immutable execution inputs, excluding approval and merge-gate state."""
+    """Hash execution inputs and gate state, excluding the approval binding."""
     normalized = json.loads(json.dumps(contract))
     normalized.setdefault("credit_control", {})["approval_receipt"] = None
-    # This gate intentionally changes only after the approved branch lands on
-    # main. It is a workflow-state transition, not a provider request input.
-    normalized["post_merge_execution_gate"] = None
+    # A gate transition requires a refreshed approval for the new authority state.
     return _sha256_json(normalized)
 
 
@@ -92,7 +90,11 @@ def load_contract(path: Path) -> dict[str, Any]:
 
 
 def validate_contract(
-    contract: Mapping[str, Any], *, contract_path: Path, execution_ready: bool = False
+    contract: Mapping[str, Any],
+    *,
+    contract_path: Path,
+    execution_ready: bool = False,
+    approval_packet: bool = False,
 ) -> list[str]:
     """Return every blocking policy failure without weakening later checks."""
     failures: list[str] = []
@@ -250,9 +252,14 @@ def validate_contract(
                 failures.append(f"output.{field} must be false")
 
     restart = contract.get("post_merge_execution_gate")
+    # Read-only packets may request a fresh approval after the merge gate changes.
+    # Submission still requires execution_ready and a bound receipt independently.
+    post_merge_packet = (
+        approval_packet and isinstance(restart, Mapping) and restart.get("required") is False
+    )
     expected_restart = (
         {"required": False, "action": "SATISFIED"}
-        if execution_ready
+        if execution_ready or post_merge_packet
         else {"required": True, "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN"}
     )
     if not isinstance(restart, Mapping) or any(
@@ -264,7 +271,7 @@ def validate_contract(
         isinstance(blocker, str) and blocker.strip() for blocker in execution_blockers
     ):
         failures.append("execution_blockers must be a list of non-empty strings")
-    elif execution_ready and execution_blockers:
+    elif (execution_ready or post_merge_packet) and execution_blockers:
         failures.append("execution-ready contract must have no declared blockers")
     return failures
 
@@ -378,7 +385,7 @@ def build_founder_approval_packet(
     live_object_info: Mapping[str, Any],
 ) -> dict[str, Any]:
     """Create the exact read-only packet shown before any paid submission."""
-    failures = validate_contract(contract, contract_path=contract_path)
+    failures = validate_contract(contract, contract_path=contract_path, approval_packet=True)
     declared_blockers = (
         list(contract.get("execution_blockers", []))
         if isinstance(contract.get("execution_blockers"), list)

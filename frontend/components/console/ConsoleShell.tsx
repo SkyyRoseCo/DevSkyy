@@ -64,7 +64,7 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
   return (
     <div className="dsh min-h-screen" style={{ background: 'var(--void)' }}>
       <GrainOverlay />
-      <aside className="fixed top-0 left-0 bottom-0 w-[240px] flex flex-col p-[26px_18px] z-50 border-r border-white/[0.06]" style={{ background: '#0A0A0A' }}>
+      <aside className="relative w-full flex flex-col p-[26px_18px] z-50 border-b border-white/[0.06] lg:fixed lg:top-0 lg:left-0 lg:bottom-0 lg:w-[240px] lg:border-b-0 lg:border-r" style={{ background: '#0A0A0A' }}>
         <div className="flex items-center gap-3 px-2 pb-[26px] border-b border-white/[0.06]">
           <div
             aria-hidden
@@ -85,7 +85,7 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
           </div>
         </div>
 
-        <nav className="flex flex-col gap-[3px] mt-[22px] flex-1">
+        <nav aria-label="Operator console" className="flex flex-wrap gap-[3px] mt-[22px] mb-4 lg:mb-0 lg:flex-col lg:flex-nowrap lg:flex-1">
           {CONSOLE_NAV_ITEMS.map((item) => {
             const active = pathname === item.href;
             const badge = badgeFor(item.id);
@@ -93,7 +93,8 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
               <Link
                 key={item.id}
                 href={item.href}
-                className="dsh-nav-item flex items-center gap-[11px] px-3 py-[11px] rounded-md text-[13px] tracking-[0.02em] no-underline transition-all"
+                aria-current={active ? 'page' : undefined}
+                className="dsh-nav-item flex items-center gap-[11px] px-3 py-[11px] rounded-md text-[13px] tracking-[0.02em] no-underline transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 style={active ? { background: 'rgba(183,110,121,.12)', color: '#fff' } : { color: '#9A9AA2' }}
               >
                 <span className="w-1.5 h-1.5 rounded-full flex-none" style={{ background: active ? 'var(--acc)' : '#3A3A42' }} />
@@ -122,7 +123,7 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
         </div>
       </aside>
 
-      <main className="ml-[240px] min-h-screen pb-16">{children}</main>
+      <main className="min-w-0 min-h-screen pb-16 lg:ml-[240px]">{children}</main>
     </div>
   );
 }

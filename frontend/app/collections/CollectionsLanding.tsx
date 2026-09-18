@@ -71,6 +71,7 @@ export default function CollectionsLanding({ collections }: { collections: Colle
                 <div className="relative aspect-[21/9] md:aspect-[3/1] overflow-hidden">
                   <CollectionCardImage
                     heroImage={collection.heroImage}
+                    heroImageAvailable={collection.heroImageAvailable}
                     name={collection.name}
                     accentColor={collection.accentColor}
                     bgColor={collection.bgColor}
@@ -192,18 +193,20 @@ export default function CollectionsLanding({ collections }: { collections: Colle
 
 function CollectionCardImage({
   heroImage,
+  heroImageAvailable,
   name,
   accentColor,
   bgColor,
 }: {
   heroImage: string;
+  heroImageAvailable?: boolean;
   name: string;
   accentColor: string;
   bgColor: string;
 }) {
   const [imageError, setImageError] = useState(false);
 
-  if (imageError) {
+  if (heroImageAvailable === false || imageError) {
     return (
       <div
         className="absolute inset-0 flex items-center justify-center"

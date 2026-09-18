@@ -49,8 +49,8 @@ def test_jersey_membership_and_routes_have_one_registry_authority() -> None:
         record = registry["products"][sku]
         assert record["collection"] == "black-rose"
         assert record["presentation"] == "jersey-series"
-        # Founder correction (docs/design/v2-remodel/reports/handoff-reconciliation-2026-08-15.md):
-        # Jersey Series is a Black Rose release chapter, not a fifth collection route.
+        # Founder correction: Jersey Series is a Black Rose release chapter.
+        # See docs/design/v2-remodel/reports/handoff-reconciliation-2026-08-15.md.
         assert record["route"] == "/collections/black-rose/#jersey-series"
         assert "jersey_chapter" in record
         assert "film_start" in record

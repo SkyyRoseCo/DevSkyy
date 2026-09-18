@@ -11,7 +11,6 @@ from PIL import Image
 
 from Comfy.scripts.environment_plate_ooda import (
     FORBIDDEN_ENVIRONMENT_SUBJECTS,
-    _contract_sha256,
     build_founder_approval_packet,
 )
 from skyyrose.integrations import comfy_client
@@ -799,6 +798,72 @@ async def test_paid_sink_rejects_hash_bound_product_generation_prompt(tmp_path: 
 
 
 @pytest.mark.asyncio
+async def test_paid_partner_rejects_unsatisfied_gate_with_matching_fingerprint(
+    tmp_path: Path,
+) -> None:
+    object_info = _runway_object_info()
+    transport = FakeTransport([_response(object_info), _response(object_info)])
+    marker = tmp_path / "attempt.json"
+    async with ComfyClient(transport=transport) as client:
+        sealed = await client.validate_workflow(_runway_workflow())
+        contract_path, approval = _write_runway_governance(tmp_path, sealed=sealed, marker=marker)
+        contract = json.loads(contract_path.read_text(encoding="utf-8"))
+        contract["post_merge_execution_gate"]["required"] = True
+        receipt = json.loads(approval.read_text(encoding="utf-8"))
+        receipt["contract_sha256"] = runway_contract_sha256(contract)
+        receipt["execution_fingerprint"] = runway_execution_fingerprint(contract, workflow=sealed)
+        approval.write_text(json.dumps(receipt), encoding="utf-8")
+        contract["credit_control"]["approval_receipt"]["sha256"] = hashlib.sha256(
+            approval.read_bytes()
+        ).hexdigest()
+        contract_path.write_text(json.dumps(contract), encoding="utf-8")
+        with pytest.raises(
+            ComfyRuntimeError, match="paid execution merge/restart state is invalid"
+        ):
+            await client.submit_prompt(
+                sealed,
+                paid_contract_path=contract_path,
+                paid_approval_receipt=approval,
+                paid_attempt_marker=marker,
+            )
+    assert not marker.exists()
+    assert all(request.url.path != "/prompt" for request in transport.requests)
+
+
+@pytest.mark.asyncio
+async def test_paid_partner_rejects_premerge_approval_after_gate_transition(tmp_path: Path) -> None:
+    object_info = _runway_object_info()
+    transport = FakeTransport([_response(object_info), _response(object_info)])
+    marker = tmp_path / "attempt.json"
+    async with ComfyClient(transport=transport) as client:
+        sealed = await client.validate_workflow(_runway_workflow())
+        contract_path, approval = _write_runway_governance(tmp_path, sealed=sealed, marker=marker)
+        contract = json.loads(contract_path.read_text(encoding="utf-8"))
+        contract["post_merge_execution_gate"] = {
+            "required": True,
+            "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN",
+        }
+        receipt = json.loads(approval.read_text(encoding="utf-8"))
+        receipt["contract_sha256"] = runway_contract_sha256(contract)
+        receipt["execution_fingerprint"] = runway_execution_fingerprint(contract, workflow=sealed)
+        approval.write_text(json.dumps(receipt), encoding="utf-8")
+        contract["credit_control"]["approval_receipt"]["sha256"] = hashlib.sha256(
+            approval.read_bytes()
+        ).hexdigest()
+        contract["post_merge_execution_gate"] = {"required": False, "action": "SATISFIED"}
+        contract_path.write_text(json.dumps(contract), encoding="utf-8")
+        with pytest.raises(ComfyRuntimeError, match="file-backed approval"):
+            await client.submit_prompt(
+                sealed,
+                paid_contract_path=contract_path,
+                paid_approval_receipt=approval,
+                paid_attempt_marker=marker,
+            )
+    assert not marker.exists()
+    assert all(request.url.path != "/prompt" for request in transport.requests)
+
+
+@pytest.mark.asyncio
 async def test_environment_preflight_and_paid_client_share_exact_fingerprint(
     tmp_path: Path,
 ) -> None:
@@ -827,34 +892,6 @@ async def test_environment_preflight_and_paid_client_share_exact_fingerprint(
     assert packet["execution_fingerprint"] == runway_execution_fingerprint(
         contract, workflow=sealed
     )
-
-
-def test_contract_hash_ignores_merge_gate_and_receipt_on_both_sides() -> None:
-    # bug-321 regression: the founder packet is built before merge with the
-    # gate required and the receipt carries that hash. Flipping the gate or
-    # attaching the receipt must not change either side's hash, and the two
-    # sides must stay byte-identical; any other intent change must.
-    base = {
-        "scene_id": "scene-a",
-        "candidate_id": "cand-1",
-        "request": {"prompt": "runway environment plate"},
-        "credit_control": {"approval_receipt": None, "max_usd": 1.5},
-        "post_merge_execution_gate": {
-            "required": True,
-            "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN",
-        },
-    }
-    flipped = json.loads(json.dumps(base))
-    flipped["post_merge_execution_gate"] = {"required": False, "action": "SATISFIED"}
-    flipped["credit_control"]["approval_receipt"] = {"sha256": "a" * 64}
-    changed = json.loads(json.dumps(base))
-    changed["request"]["prompt"] = "a different plate"
-
-    assert runway_contract_sha256(base) == runway_contract_sha256(flipped)
-    assert _contract_sha256(base) == _contract_sha256(flipped)
-    assert runway_contract_sha256(base) == _contract_sha256(base)
-    assert runway_contract_sha256(changed) != runway_contract_sha256(base)
-    assert _contract_sha256(changed) != _contract_sha256(base)
 
 
 @pytest.mark.asyncio

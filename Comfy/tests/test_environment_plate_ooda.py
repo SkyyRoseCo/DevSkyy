@@ -281,8 +281,9 @@ def test_fingerprint_changes_with_prompt_or_live_schema(tmp_path: Path) -> None:
     assert first["execution_fingerprint"] != third["execution_fingerprint"]
 
 
-def test_merge_gate_transition_does_not_stale_founder_fingerprint(tmp_path: Path) -> None:
+def test_merge_gate_transition_requires_refreshed_founder_fingerprint(tmp_path: Path) -> None:
     contract, path = _portable_contract(CONTRACTS[0], tmp_path)
+    contract["execution_blockers"] = []
     first = build_founder_approval_packet(
         contract=contract,
         contract_path=path,
@@ -295,4 +296,28 @@ def test_merge_gate_transition_does_not_stale_founder_fingerprint(tmp_path: Path
         live_object_info=_live_object_info(),
     )
 
-    assert first["execution_fingerprint"] == second["execution_fingerprint"]
+    assert first["execution_fingerprint"] != second["execution_fingerprint"]
+    assert first["contract_sha256"] != second["contract_sha256"]
+
+    assert first["failures"] == second["failures"] == []
+    assert second["next_action"] == "STOP_FOR_EXPLICIT_FOUNDER_APPROVAL"
+    assert second["paid_submission_performed"] is False
+
+
+def test_postmerge_approval_packet_keeps_execution_blockers(tmp_path: Path) -> None:
+    contract, path = _portable_contract(CONTRACTS[0], tmp_path)
+    contract["post_merge_execution_gate"] = {"required": False, "action": "SATISFIED"}
+    contract["execution_blockers"] = ["independent review pending"]
+    packet = build_founder_approval_packet(
+        contract=contract, contract_path=path, live_object_info=_live_object_info()
+    )
+    assert "execution-ready contract must have no declared blockers" in packet["failures"]
+    assert packet["next_action"] == "REMEDIATE_BLOCKERS_WITHOUT_SUBMISSION"
+
+
+def test_postmerge_packet_does_not_relax_submission_receipt(tmp_path: Path) -> None:
+    contract, path = _portable_contract(CONTRACTS[0], tmp_path)
+    contract["post_merge_execution_gate"] = {"required": False, "action": "SATISFIED"}
+    contract["execution_blockers"] = []
+    failures = validate_contract(contract, contract_path=path, execution_ready=True)
+    assert "execution-ready contract requires a bound approval receipt" in failures

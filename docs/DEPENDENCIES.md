@@ -182,7 +182,7 @@ Includes: torch, torchvision, torchaudio, huggingface-hub, pandas, scikit-learn,
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `sharp` | ^0.34.5 | Image processing |
+| `sharp` | ^0.35.4 | Image processing |
 | `pica` | ^9.0.1 | Image resizing |
 | `@vercel/og` | ^0.8.6 | OG image generation |
 

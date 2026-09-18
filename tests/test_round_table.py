@@ -9,13 +9,11 @@ This test suite covers:
 
 from __future__ import annotations
 
-import re
-import zlib
+from unittest.mock import MagicMock
 
 import numpy as np
 import pytest
 
-import llm.evaluation_metrics as evaluation_metrics
 from llm.round_table import (
     LLMProvider,
     LLMResponse,
@@ -29,47 +27,20 @@ from llm.round_table import (
 # =============================================================================
 
 
-class _OfflineSentenceTransformer:
-    """Deterministic, in-process stand-in for sentence_transformers.SentenceTransformer.
-
-    Same contract AdvancedMetrics relies on — ``encode(list[str]) -> ndarray[n, d]``
-    — but the vectors are hashed bag-of-words counts, so cosine similarity is a
-    stable function of lexical overlap and every scoring path (coherence,
-    factuality, hallucination) still runs on real arrays. Nothing here touches
-    the network or the HF cache.
-    """
-
-    DIM = 64
-
-    def __init__(self, model_name: str, *args: object, **kwargs: object) -> None:
-        self.model_name = model_name
-
-    def encode(self, sentences: list[str], **kwargs: object) -> np.ndarray:
-        vectors = np.zeros((len(sentences), self.DIM), dtype=np.float32)
-        for row, sentence in enumerate(sentences):
-            for token in re.findall(r"\w+", sentence.lower()):
-                vectors[row, zlib.crc32(token.encode()) % self.DIM] += 1.0
-        return vectors
-
-
-@pytest.fixture(autouse=True)
-def offline_embedder(monkeypatch: pytest.MonkeyPatch) -> None:
-    """Keep every test in this module offline and deterministic.
-
-    ResponseScorer (llm/round_table.py) builds an AdvancedMetrics whose
-    initialize() constructs SentenceTransformer("all-MiniLM-L6-v2")
-    (llm/evaluation_metrics.py:73). Even with the model cached, huggingface_hub
-    re-validates it online on every construction — measured at 33 HTTPS requests
-    and 5-9s per test, right at the 10s cap, for all four tests that use the
-    round_table/scorer fixtures. None of them assert on embedding quality, so
-    the module-level name AdvancedMetrics resolves at call time is swapped for
-    the stand-in above.
-    """
-    monkeypatch.setattr(evaluation_metrics, "SentenceTransformer", _OfflineSentenceTransformer)
+@pytest.fixture
+def sentence_model(monkeypatch):
+    """Keep model loading offline while exercising real metric calculations."""
+    model = MagicMock()
+    model.encode.side_effect = lambda sentences: np.array(
+        [[0.0, 1.0] if sentence == "Second sentence" else [1.0, 0.0] for sentence in sentences]
+    )
+    factory = MagicMock(return_value=model)
+    monkeypatch.setattr("llm.evaluation_metrics.SentenceTransformer", factory)
+    return factory
 
 
 @pytest.fixture
-async def round_table():
+async def round_table(sentence_model):
     """Create test Round Table instance with in-memory database."""
     rt = LLMRoundTable(db_url="sqlite+aiosqlite:///:memory:")
     await rt.initialize()
@@ -100,7 +71,7 @@ async def round_table():
 
 
 @pytest.fixture
-def scorer():
+def scorer(sentence_model):
     """Create ResponseScorer instance."""
     return ResponseScorer()
 
@@ -166,6 +137,27 @@ async def test_round_table_scoring_without_tools(scorer):
     assert isinstance(scores, ResponseScores)
     assert scores.tool_usage_quality == 100.0  # Neutral when no tools
     assert scores.total > 0
+
+
+@pytest.mark.asyncio
+async def test_ml_scoring_uses_embeddings_and_initializes_once(scorer, sentence_model):
+    """Orthogonal embeddings yield zero coherence; shared embeddings yield 100."""
+    await scorer.initialize()
+    await scorer.initialize()
+    sentence_model.assert_called_once_with("all-MiniLM-L6-v2")
+    response = LLMResponse(
+        content="First sentence. Second sentence.",
+        provider=LLMProvider.CLAUDE,
+        latency_ms=1000,
+        cost_usd=0.001,
+    )
+    scores = await scorer.score_response(response, "Compare sentences")
+    sentence_model.return_value.encode.assert_called_with(["First sentence", "Second sentence"])
+    assert scores.coherence == pytest.approx(0.0)
+    response.content = "First sentence. First sentence."
+    scores = await scorer.score_response(response, "Compare sentences")
+    assert scores.coherence == pytest.approx(100.0)
+    assert scorer.enable_ml_scoring is True
 
 
 # =============================================================================

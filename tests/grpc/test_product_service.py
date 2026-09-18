@@ -14,7 +14,8 @@ This approach:
 
 import json
 import sys
-from unittest.mock import AsyncMock, MagicMock, patch
+from types import SimpleNamespace
+from unittest.mock import AsyncMock, MagicMock, patch, sentinel
 
 import pytest
 
@@ -88,10 +89,6 @@ class TestProductServicerGetProduct:
         assert result["price"] == 79.99
         assert "images" in result
 
-    @pytest.mark.xfail(
-        reason="grpc.StatusCode flakes in full-suite runs (passes in isolation); some upstream test pollutes sys.modules state for grpc — needs targeted isolation fixture, deferred",
-        strict=False,
-    )
     async def test_get_missing_product_sets_not_found(self):
         """
         GetProduct sets NOT_FOUND on context when product doesn't exist.
@@ -99,7 +96,12 @@ class TestProductServicerGetProduct:
         ctx = _make_context()
         servicer = ProductServicer()
 
-        with patch("grpc_server.product_service.DatabaseManager") as mock_db_cls:
+        # Isolate the optional transport module from other tests' import stubs.
+        grpc_module = SimpleNamespace(StatusCode=SimpleNamespace(NOT_FOUND=sentinel.not_found))
+        with (
+            patch.dict(sys.modules, {"grpc": grpc_module}),
+            patch("grpc_server.product_service.DatabaseManager") as mock_db_cls,
+        ):
             mock_session = AsyncMock()
             mock_session.__aenter__ = AsyncMock(return_value=mock_session)
             mock_session.__aexit__ = AsyncMock(return_value=False)
@@ -117,8 +119,8 @@ class TestProductServicerGetProduct:
 
         assert result == {}
         # NOT_FOUND status should be set on context
-        ctx.set_code.assert_called_once()
-        ctx.set_details.assert_called_once()
+        ctx.set_code.assert_called_once_with(sentinel.not_found)
+        ctx.set_details.assert_called_once_with("Product 'nonexistent-sku' not found")
 
 
 @pytest.mark.unit

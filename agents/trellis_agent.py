@@ -114,16 +114,16 @@ class TrellisAgent:
         if self._availability_checked:
             return self._available
         self._availability_checked = True
-        python_path = self._resolve_conda_python(self.conda_env)
-        if not python_path:
-            logger.info("trellis_agent: conda env %r not found", self.conda_env)
-            self._available = False
-            return False
         if not self.trellis_repo_path.is_dir():
             logger.info(
                 "trellis_agent: repo path %s missing",
                 self.trellis_repo_path,
             )
+            self._available = False
+            return False
+        python_path = self._resolve_conda_python(self.conda_env)
+        if not python_path:
+            logger.info("trellis_agent: conda env %r not found", self.conda_env)
             self._available = False
             return False
         self._python_path = python_path

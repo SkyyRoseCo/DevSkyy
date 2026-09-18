@@ -6,18 +6,6 @@ Do not author separate product facts in CSVs, dossier files, prompts, local maps
 
 When operating in another checkout, verify it has the unified `products` schema and current founder corrections before execution. Never substitute an old checkout's CSV/dossiers when its registry is stale. Pass the registry location and this authority rule to every delegated agent and workflow.
 
-## SkyyRose founder and maker authority — required for all agents
-
-Corey is the founder and maker of the SkyyRose items. His product specifications, founder-authored dossiers, supplied artwork identifications, and direct corrections are authoritative for those products.
-
-- Accept his statements about his own designs, dimensions, materials, graphics, placements, and collection identities. Record direct confirmation as `FOUNDER_CONFIRMED`.
-- When an older registry, dossier, generated record, or agent assumption conflicts with his latest explicit correction, update the conflicting record within the task scope. Do not require him to prove the correction again or favor stale documentation over his statement.
-- Do not impose additional manufacturer, third-party, photographic, or independent verification requirements on product facts he has supplied. Do not downgrade his specifications to `NOT_MANUFACTURING_VERIFIED` or similar statuses.
-- Preserve his exact dimensions, ranges, artwork, and wording. A documented range or approximate notation is part of his specification, not a reason to question his authority.
-- Verify that agent output and saved records match his instructions. Do not confuse checking our execution with re-verifying the maker's knowledge of his own products.
-- Ask only for a genuinely missing detail needed to carry out the work; do not ask for reconfirmation of a fact he already supplied. Never invent an unstated measurement or alter unrelated product details.
-- Include this instruction in delegated briefs and handoffs for SkyyRose product, catalog, design, rendering, and review work.
-
 # DevSkyy Agent Guidelines
 
 ## Scope and working method
@@ -31,7 +19,8 @@ system and developer constraints; historical notes do not grant authorization.
 - Check `.wolf/memory.md` for current notes. If absent, check the main checkout
   identified by `git worktree list`; treat its notes as context, not this
   worktree's verified state. If unavailable, report the gap and continue with
-  repository evidence. Do not create or update memory unless requested.
+  repository evidence. Follow `.wolf/OPENWOLF.md` for repository session-log
+  entries; do not update persistent cross-session agent memory unless requested.
 - Inspect the existing implementation and source of truth before changing it.
   Make the smallest coherent change that completes the task. Diagnose failures
   from evidence, fix their cause, and verify the result.
@@ -238,6 +227,11 @@ configuration as the authority; do not assume a root command checks all apps.
 - For UI changes, exercise affected flows on desktop and mobile and capture
   visual evidence. A fixture preview or HTTP 200 alone does not verify live
   commerce, accessibility, performance, or deployment.
+- For generated garment, character, or lettering assets, compare the full-size
+  output side by side with its authoritative visual source, detail for detail.
+  Without that comparison, do not mark the asset verified or advance it to
+  assembly, upscaling, or release. This checks our output, not the maker's
+  facts.
 - Report failed, skipped, or unavailable checks explicitly. Never claim a
   command passed merely because it exists or was started.
 
@@ -256,7 +250,8 @@ configuration as the authority; do not assume a root command checks all apps.
 ## Delivery and authorization
 
 - Use scoped Conventional Commit subjects, such as `fix(theme): ...` or
-  `docs: ...`. Stage only intended files; never reset or discard others' work.
+  `docs(agents): ...`. Stage only intended files; never reset or discard others'
+  work.
 - PRs describe the problem, final implementation, validation, related issue when
   one exists, and screenshots or recordings for UI changes. Include applicable
   migration, security, environment, and deployment implications.
@@ -268,14 +263,14 @@ configuration as the authority; do not assume a root command checks all apps.
 
 ## Skill quality
 
-When creating, revising, auditing, or adopting skills, read
-`/Users/theceo/.codex/skill-standards/verified-examples.md`. Require
-task-specific, identifiable evidence for at least one correct example and an
-incorrect example with its correction and reason. Label illustrative negatives;
-distinguish source verification, recorded observations, reproduced tests, and
-authenticated live execution. Record redacted account/environment/scope evidence
-for authenticated workflows; mark authentication not applicable for offline
-work.
+When creating, revising, auditing, or adopting skills, read the repository's
+[verified-examples standard](.github/skill-standards/verified-examples.md).
+Require task-specific, identifiable evidence for at least one correct example
+and an incorrect example with its correction and reason. Label illustrative
+negatives; distinguish source verification, recorded observations, reproduced
+tests, and authenticated live execution. Record redacted
+account/environment/scope evidence for authenticated workflows; mark
+authentication not applicable for offline work.
 
 Keep substantial examples in linked references and maintained canonical sources
 or overlays, never disposable plugin caches. Report missing evidence as a

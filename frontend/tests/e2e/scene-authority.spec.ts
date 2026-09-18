@@ -57,7 +57,7 @@ test.describe('Scene Authority operator flow', () => {
     await expect(loveHurts.getByText('Deployment').locator('..')).toContainText('NOT AUTHORIZED');
     await expect(loveHurts.getByText('Promotion requirement').locator('..')).toContainText('FOUNDER APPROVED VISUAL');
     await expect(loveHurts).toContainText('full candidate REJECT');
-    await expect(loveHurts).toContainText('approved exact-LH-003 on-model product target still does not');
+    await expect(loveHurts).toContainText('front-facing exact-LH-003 VTO candidate has not passed independent and founder review');
 
     await expect(page.getByText('Mapped scenes').locator('..').getByText('5')).toBeVisible();
     expect(consoleErrors).toEqual([]);

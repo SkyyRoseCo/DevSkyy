@@ -153,6 +153,9 @@ dev = [
     "pytest-asyncio>=0.23",
     "pytest-cov>=4.1",
     "pytest-mock>=3.12",
+    # Full-suite character and provider tests import these optional runtimes.
+    "gradio-client==2.5.0",
+    "matplotlib==3.11.1",
     "pytest-timeout>=2.4",
     "pytest-xdist>=3.6",
     "rich>=13.9",
@@ -214,7 +217,7 @@ mcp = [
     "pyjwt==2.13.0",
     "sqlalchemy==2.0.51",
     "aiosqlite==0.22.1",
-    "redis==8.0.1",
+    "redis==8.1.0",
     "pyyaml==6.0.3",
     "toml==0.10.2",
     "typing-extensions==4.16.0",
@@ -229,7 +232,7 @@ mcp = [
     "langgraph-checkpoint-postgres>=2.0.0",
     "psycopg[binary,pool]>=3.2",
     "chromadb>=0.6.0",
-    "faiss-cpu==1.14.3",
+    "faiss-cpu==1.15.0",
     "beautifulsoup4>=4.13.5",  # Fixed: raganything>=1.2.10 requires >=4.13.5 via mineru
     "requests==2.34.2",
     "pypdf>=6.6.2",
@@ -284,11 +287,11 @@ ml = [
     "tensorboard==2.21.0",
     "matplotlib==3.11.1",
     "seaborn==0.13.2",
-    "plotly==6.9.0",
+    "plotly==7.0.0",
     "feature-engine==1.9.4",
-    "category-encoders==2.9.0",
+    "category-encoders==2.10.0",
     "optuna==4.9.0",
-    "hyperopt==0.2.7",
+    "hyperopt==0.3.0",
     # Removed 2026-06-22 — all force source builds that break a clean py3.12
     # install, and all are unused EXCEPT prophet:
     #   librosa, shap → numba → llvmlite 0.36 (no py3.12 support)
@@ -298,18 +301,18 @@ ml = [
     #     prophet's cmdstan build never succeeded in the py3.12 image anyway).
     #   gymnasium, stable-baselines3, soundfile, lime → dead RL/audio/explainability
     # This unbreaks `uv pip install .[all]` on Python 3.12.
-    "polars==1.42.1",
-    "pyarrow==25.0.0",
-    "hydra-core==1.3.4",
+    "polars==1.44.1",
+    "pyarrow==25.0.1",
+    "hydra-core==1.3.6",
     "omegaconf==2.3.1",
-    "tqdm==4.68.3",
-    "joblib==1.5.3",
+    "tqdm==4.70.0",
+    "joblib==1.6.0",
     "dill==0.4.1",
     "fastapi>=0.119.0",
     "uvicorn>=0.32.1",
     "pydantic>=2.10.3",
     "sqlalchemy==2.0.51",
-    "pymongo==4.17.0",
+    "pymongo==4.18.0",
     # Compatibility constraints for dependency resolution
     "protobuf>=6.33.5",  # CVE-2026-0994 fix: JSON recursion depth bypass vulnerability
     "fsspec>=2025.7.0",  # Required by bentoml>=1.4.34
