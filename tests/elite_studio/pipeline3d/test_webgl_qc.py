@@ -491,7 +491,7 @@ class TestRenderOne:
 
         png = _frame_bytes(tmp_path, two_tone=True)
         return {
-            "result": {"ok": True},
+            "result": {"ok": True, "glb": "a.glb"},
             "dataUrl": "data:image/png;base64," + base64.b64encode(png).decode(),
             "errors": [],
         }
@@ -563,3 +563,60 @@ class TestRealBrowser:
         )
         with pytest.raises(RenderFailedError, match="no renderable geometry"):
             render([RenderTarget("e", empty)], tmp_path / "out2", angles=["front"], size=64)
+
+
+class TestAttackRegressions:
+    """Each of these was OBSERVED by a live adversarial run against the first version."""
+
+    @pytest.mark.parametrize("size", [0, 15, 4097, 99999, True, 64.0])
+    def test_out_of_range_size_fails_before_a_browser_launches(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, size: object
+    ) -> None:
+        # size=99999 crashed chrome-headless-shell and the process then hung for 7+ minutes.
+        def boom(*_a: object, **_kw: object) -> None:
+            raise AssertionError("browser launched for an out-of-range size")
+
+        monkeypatch.setattr("playwright.sync_api.sync_playwright", boom)
+        glb = tmp_path / "tri.glb"
+        glb.write_bytes(build_triangle_glb())
+        with pytest.raises(WebGlQcError, match="size must be an integer"):
+            render([RenderTarget("a", glb)], tmp_path / "out", size=size)  # type: ignore[arg-type]
+
+    def test_a_frame_that_loaded_a_different_glb_is_rejected(self, tmp_path: Path) -> None:
+        # 'a%41' percent-decoded to 'aA' in the URL, so one label silently rendered
+        # another's GLB and the tool reported a confident, wrong VOID.
+        captured = {**TestRenderOne()._good(tmp_path)}
+        captured["result"] = {"ok": True, "glb": "other.glb"}
+        with pytest.raises(RenderFailedError, match="not the requested 'a.glb'"):
+            TestRenderOne()._run(tmp_path, captured)
+
+    def test_webgl_context_pointer_is_normalised_out_of_warnings(self, tmp_path: Path) -> None:
+        runner = TestRenderOne()
+        _, _, messages = runner._run(
+            tmp_path,
+            runner._good(tmp_path),
+            [("warning", "[.WebGL-0x10c0043a800]GL Driver Message: GPU stall")],
+        )
+        assert messages[0]["text"] == "[.WebGL]GL Driver Message: GPU stall"
+
+    def test_server_refuses_directory_listings(self, tmp_path: Path) -> None:
+        import urllib.error
+        import urllib.request
+
+        (tmp_path / "harness.html").write_text("x", encoding="utf-8")
+        (tmp_path / "sub").mkdir()
+        server, port = _serve(tmp_path)
+        try:
+            for path in ("/", "/sub/"):
+                with pytest.raises(urllib.error.HTTPError) as exc:
+                    urllib.request.urlopen(
+                        f"http://127.0.0.1:{port}{path}", timeout=5
+                    )  # noqa: S310
+                assert exc.value.code == 404
+            with urllib.request.urlopen(  # noqa: S310
+                f"http://127.0.0.1:{port}/harness.html", timeout=5
+            ) as ok:
+                assert ok.status == 200
+        finally:
+            server.shutdown()
+            server.server_close()

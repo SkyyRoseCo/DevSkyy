@@ -107,6 +107,7 @@
         const loader = new GLTFLoader().setKTX2Loader(ktx2).setMeshoptDecoder(MeshoptDecoder);
         const gltf = await loader.loadAsync(glbUrl);
 
+        if (!gltf.scene) throw new Error('GLB has no scene — nothing to render');
         const model = gltf.scene;
         const box = new THREE.Box3().setFromObject(model);
         if (box.isEmpty()) throw new Error('GLB contains no renderable geometry');
