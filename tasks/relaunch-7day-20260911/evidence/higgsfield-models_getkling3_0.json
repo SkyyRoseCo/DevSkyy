@@ -1,0 +1,89 @@
+{
+  "id": "kling3_0",
+  "name": "Kling v3.0",
+  "provider_name": "Kling",
+  "description": "Multi-shot, audio sync, motion transfer",
+  "output_type": "video",
+  "parameters": [
+    {
+      "name": "duration",
+      "required": "optional",
+      "type": "number",
+      "description": "Duration in seconds (3-15).",
+      "min": 3,
+      "max": 15,
+      "default": 5
+    },
+    {
+      "name": "mode",
+      "required": "optional",
+      "type": "string",
+      "description": "Generation mode: 'std' (standard), 'pro' (higher quality), or '4k' (4K resolution).",
+      "options": [
+        "std",
+        "pro",
+        "4k"
+      ],
+      "default": "std"
+    },
+    {
+      "name": "sound",
+      "required": "optional",
+      "type": "string",
+      "description": "Generate audio. Use 'off' for silent video and lower credits.",
+      "options": [
+        "on",
+        "off"
+      ],
+      "default": "on"
+    }
+  ],
+  "medias": [
+    {
+      "name": "medias",
+      "type": "image",
+      "roles": [
+        "start_image",
+        "end_image"
+      ]
+    }
+  ],
+  "aspect_ratios": [
+    "16:9",
+    "9:16",
+    "1:1"
+  ],
+  "tags": [
+    "multi-shot",
+    "audio",
+    "motion-transfer",
+    "cinematic",
+    "advanced",
+    "unlim"
+  ],
+  "supports_unlim": true,
+  "free_gens": [
+    {
+      "job_set_types": [
+        "hf_mult_motion_control",
+        "hf_mult_replace_object"
+      ],
+      "remaining": 1,
+      "parameters": {
+        "resolution": [
+          "480p",
+          "720p"
+        ]
+      },
+      "max_duration": 30
+    },
+    {
+      "job_set_types": [
+        "viral_hub_video"
+      ],
+      "remaining": 1,
+      "parameters": {},
+      "max_duration": null
+    }
+  ]
+}

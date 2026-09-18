@@ -1,0 +1,849 @@
+{
+  "schema": "skyyrose.campaign-plan.v1",
+  "task_id": "RELAUNCH-7DAY-20260911",
+  "status": "SUPERSEDED_CREATIVE_REJECTED",
+  "baseline": "4da200886c73252c5271f5bf89de61c5c32ba062",
+  "title": "The Town. A new chapter.",
+  "date_basis": "T = approved production relaunch date/time; proposed D1=T-3 through D7=T+3. Calendar date UNKNOWN.",
+  "days": [
+    {
+      "id": "D1",
+      "offset": -3,
+      "title": "A new chapter in The Town.",
+      "chapter": "THE HOUSE",
+      "color": "#B76E79",
+      "asset": "bridge",
+      "assets": [
+        "bridge"
+      ],
+      "format": "9:16 Story + 4:5 feed still",
+      "audience": "Returning followers and consented brand engagers",
+      "copy": "SKYYROSE. A new chapter in The Town. The website relaunch is coming.",
+      "cta": "Follow the reveal",
+      "landing": "Brand profile; verified existing homepage only if its teaser message matches.",
+      "visual": "Split composition: brand and headline on the left; the retained bridge/star-rose scene on the right. Frame the waterfront as a place, not a generic skyline. No new garment or logo.",
+      "sequence": "Static teaser. Story panel 1: SKYYROSE + bridge; panel 2: four collection names; panel 3: Follow the reveal. No countdown date until the date is approved.",
+      "metric": "Qualified profile visits and landing-page views; video completion only if cut V1 is used.",
+      "weight": 5,
+      "distribution": "Organic IG Story/feed first; optional Meta warm awareness after profile/landing QA.",
+      "test": "Two hooks: “A new chapter in The Town.” versus “Four worlds. One name.” Keep image and delivery constant.",
+      "gate": "Bridge reference is wired locally, not ad-approved. Date and prelaunch destination remain unverified.",
+      "lanes": {
+        "cold_percent": 0,
+        "warm_percent": 100
+      }
+    },
+    {
+      "id": "D2",
+      "offset": -2,
+      "title": "Choose what speaks to you.",
+      "chapter": "SIGNATURE / BLACK ROSE",
+      "color": "#D4AF37",
+      "asset": "sg",
+      "assets": [
+        "sg",
+        "br"
+      ],
+      "format": "4:5 two-card carousel + 9:16 Story pair",
+      "audience": "Adult streetwear discovery; warm collection browsers",
+      "copy": "Signature. Black Rose. Two expressions of the same name. Meet the pieces before the new house opens.",
+      "cta": "Explore your collection",
+      "landing": "Existing collection destinations only after live route and message verification. Otherwise organic profile carousel.",
+      "visual": "Two collection-owned frames: gold Signature with exact sg-009 front; silver Black Rose with exact br-004 front. Existing portraits remain whole. No wardrobe change, emblem recolor or generative fill.",
+      "sequence": "Carousel card A: Signature / sg-009. Card B: Black Rose / br-004. Each card carries its own collection name and destination. Product is visible immediately.",
+      "metric": "Collection visits per landing-page view; card-level clicks where available.",
+      "weight": 5,
+      "distribution": "IG/FB carousel. Organic Story poll may ask “Which world speaks to you?”; it is an engagement prompt, not purchase evidence.",
+      "test": "Product-first portrait versus frame-first composition; preserve exact product, CTA and audience.",
+      "gate": "sg-009 hub approval is product-card scope only; br-004 includes historical ad-creative scope. Current campaign and rights clearance still required.",
+      "lanes": {
+        "cold_percent": 0,
+        "warm_percent": 100
+      }
+    },
+    {
+      "id": "D3",
+      "offset": -1,
+      "title": "A name with a bloodline.",
+      "chapter": "LOVE HURTS / FOUNDER",
+      "color": "#DC143C",
+      "asset": "lh",
+      "assets": [
+        "lh"
+      ],
+      "format": "4:5 editorial still + 9:16 three-panel Story",
+      "audience": "Warm viewers; adult customers responding to founder-led stories",
+      "copy": "Hurts is the bloodline that raised me. Love Hurts carries that story into the next chapter of SkyyRose.",
+      "cta": "Meet Love Hurts",
+      "landing": "Verified Love Hurts collection page; if unavailable, profile Story without a link.",
+      "visual": "Crimson collection framing around the unchanged lh-004 front portrait. Use the supplied template’s editorial hierarchy. No fake founder portrait, voice clone or testimonial.",
+      "sequence": "Panel 1: Love Hurts garment and collection name. Panel 2: sourced bloodline line, treated as brand narrative. Panel 3: Meet Love Hurts. No “tomorrow” until launch time is signed off.",
+      "metric": "Story completion and qualified Love Hurts visits; evaluate checkout intent after launch.",
+      "weight": 5,
+      "distribution": "IG/FB Stories and feed. Email teaser to consented subscribers: subject “A new chapter. The same roots.”",
+      "test": "Story-led headline versus garment-led “Meet Love Hurts.” No fabricated founder attribution to newly written copy.",
+      "gate": "Front-only. Omit satin, material composition, hood lining and back claims because fiber composition is not certified and back-image pending state remains open; the stale satin-appearance prohibition is corrected.",
+      "lanes": {
+        "cold_percent": 0,
+        "warm_percent": 100
+      }
+    },
+    {
+      "id": "D4",
+      "offset": 0,
+      "title": "The house is open.",
+      "chapter": "RELAUNCH",
+      "color": "#B76E79",
+      "asset": "bridge",
+      "assets": [
+        "bridge",
+        "sg",
+        "br",
+        "lh",
+        "kids"
+      ],
+      "format": "12-second warm film V1 + four-card carousel + 16:9 email header",
+      "audience": "Consented returning customers and engagers first; adult discovery after launch QA",
+      "copy": "The new SkyyRose website is live. Four worlds. One name. Enter a world. Claim your story.",
+      "cta": "Choose your world",
+      "landing": "/collections/ after production V2, child routes, mobile product links and checkout are confirmed.",
+      "visual": "Template split bridge hero → four collection frames → real approved website capture → house end card. Never generate a fake screenshot of the store.",
+      "sequence": "V1: 0–2s SKYYROSE/bridge; 2–5s approved bridge motion; 5–9s four exact-source collection cards, one second each; 9–10s real released-site capture; 10–12s CTA. CTA starts at 5s and remains through the end.",
+      "metric": "Collection-to-product rate, add-to-cart, checkout starts, verified purchases and checkout errors.",
+      "weight": 30,
+      "distribution": "Meta warm release first. Owned launch email only after gate. Optional organic TikTok version; paid TikTok stays off until its account/tracking scope is approved.",
+      "test": "Warm hero hook “The house is open.” vs “Four worlds. One name.” Hold landing and offer fixed.",
+      "gate": "If production relaunch is not approved or any critical route fails, keep this day on HOLD; use D1 wording organically, with no “live” claim.",
+      "lanes": {
+        "cold_percent": 60,
+        "warm_percent": 40
+      }
+    },
+    {
+      "id": "D5",
+      "offset": 1,
+      "title": "Luxury runs in the family.",
+      "chapter": "KIDS CAPSULE",
+      "color": "#B76E79",
+      "asset": "kids",
+      "assets": [
+        "kids"
+      ],
+      "format": "4:5 still + 9:16 Story; optional locally edited 10-second slideshow",
+      "audience": "Adult parent/guardian purchasers and consented warm Kids visitors; never direct paid targeting to children",
+      "copy": "Named after a daughter. Built by a father. Meet the Kids Capsule in the new SkyyRose house.",
+      "cta": "Explore Kids Capsule",
+      "landing": "/collections/kids-capsule/ → exact kids-001 product and currently published size guidance.",
+      "visual": "Retain the existing full-color kids-001 portrait and rose-gold collection frame. Preserve the red/black/white block, chest and thigh emblems and sleeve patch. No mascot replacement or monochrome statue child.",
+      "sequence": "0–3s existing portrait; 3–6s unchanged full-garment frame with CTA appearing; 6–8s collection label; 8–10s CTA hold. Local transitions only, no generated child movement.",
+      "metric": "Size-guide engagement where consented instrumentation exists; product visits, add-to-cart and questions about fit.",
+      "weight": 15,
+      "distribution": "Meta adult prospecting (80%) plus warm Kids visitors (20%) in existing test structure; organic Stories. No new list upload or new tracking deployment.",
+      "test": "Family headline versus “Meet the Kids Capsule.” Avoid gendered sales framing.",
+      "gate": "Product-card approval is historical. Ad-scope, child-image rights and final integration must be cleared; no matching-family-fit, durability or age-fit claims without evidence.",
+      "lanes": {
+        "cold_percent": 80,
+        "warm_percent": 20
+      }
+    },
+    {
+      "id": "D6",
+      "offset": 2,
+      "title": "The Town Line.",
+      "chapter": "JERSEY SERIES",
+      "color": "#C0C0C0",
+      "asset": "train",
+      "assets": [
+        "train"
+      ],
+      "format": "12-second train teaser V3 + 4:5 still",
+      "audience": "Adult local-culture and sportswear discovery; existing Jersey Series interest",
+      "copy": "Jersey Series. A closer look is coming. Rooted in The Town.",
+      "cta": "Explore the Jersey Series",
+      "landing": "Verified Jersey Series section within /collections/black-rose/; use the collection root if no stable section anchor exists. Hide CTA if section is absent.",
+      "visual": "Existing Town Line train reference establishes the template’s BART reveal grammar. No jersey pixels, invented patch, league mark, BART logo or endorsement. It is a fictional brand scene, not a real service announcement.",
+      "sequence": "V3: 0–2s train nose/series name; 2–5s train motion; 5–8s editorial title “Jersey Series”; 8–10s verified collection capture showing only cleared media; 10–12s CTA. If capture is unavailable, hold approved type card through 10s.",
+      "metric": "Jersey-section visits and qualified product views; do not count this teaser as product-fidelity certification.",
+      "weight": 10,
+      "distribution": "IG/FB Reel and Stories; organic TikTok train edit if approved. No preseason/sports partnership claim.",
+      "test": "Train reveal vs static train poster with identical copy; assess qualified visits, not just views.",
+      "gate": "br-009 garment images excluded: hub front is pending for a missing patch; digit-fill/technique conflict remains unresolved. If a product/price enters later, create a new SKU-bound approval and Pre-order CTA.",
+      "lanes": {
+        "cold_percent": 70,
+        "warm_percent": 30
+      }
+    },
+    {
+      "id": "D7",
+      "offset": 3,
+      "title": "Make it yours.",
+      "chapter": "PRODUCT / CONTINUITY",
+      "color": "#C0C0C0",
+      "asset": "br",
+      "assets": [
+        "br",
+        "brflat"
+      ],
+      "format": "10-second product film V2 + 4:5 structured product still",
+      "audience": "Consented adult product viewers and cart visitors; exclude purchasers where supported and permitted",
+      "copy": "Black Rose. See the details. Find your size. Make it yours.",
+      "cta": "Shop Black Rose",
+      "landing": "/collections/black-rose/ → exact br-004 product. Change to Explore if current orderability is unverified; Pre-order if server state changes.",
+      "visual": "Structured PDP-inspired composition: exact front image left, product name and truthful CTA right, source detail panel below. No invented price, stock count, shipping badge or interactive size selector in an ad.",
+      "sequence": "V2: 0–3s exact br-004 portrait; 3–5s source detail shown in separate frame; 5–8s same exact garment with approved atmosphere clip only behind the panel; 8–10s CTA. CTA starts at 3s. All garment pixels remain static.",
+      "metric": "Verified purchases, cost per purchase and contribution after variable costs; monitor error rate and returns signals beyond the week.",
+      "weight": 30,
+      "distribution": "Meta conversion retargeting only (100% warm) where consent and verified events permit. One follow-up email to engaged non-purchasers, respecting frequency/unsubscribe settings.",
+      "test": "“See the details.” vs “Find your size.” Preserve product and price state. If audience is too small, retain organic follow-up and do not force spend.",
+      "gate": "No automatic budget scale or deadline claim. Snapshot price/stock/preorder/fulfillment and test destination immediately before activation.",
+      "lanes": {
+        "cold_percent": 0,
+        "warm_percent": 100
+      }
+    }
+  ],
+  "storyboards": [
+    {
+      "id": "V1",
+      "name": "The house opens / warm film",
+      "duration": 12,
+      "clip": "G1",
+      "beats": [
+        [
+          0,
+          2,
+          "bridge",
+          "SKYYROSE · The house is open."
+        ],
+        [
+          2,
+          5,
+          "bridge",
+          "Gentle waterfront motion; logo remains an exact overlay."
+        ],
+        [
+          5,
+          9,
+          "sg",
+          "Four source portraits, 1 second each: sg → br → lh → kids. CTA begins."
+        ],
+        [
+          9,
+          10,
+          "bridge",
+          "Real approved website capture replaces this reference frame."
+        ],
+        [
+          10,
+          12,
+          "bridge",
+          "Choose your world. Exact destination overlay."
+        ]
+      ]
+    },
+    {
+      "id": "V2",
+      "name": "Black Rose / product-first retargeting film",
+      "duration": 10,
+      "clip": "G2",
+      "beats": [
+        [
+          0,
+          3,
+          "br",
+          "Exact br-004 portrait. Black Rose."
+        ],
+        [
+          3,
+          5,
+          "brflat",
+          "Separate unchanged reference detail. CTA appears by 3s."
+        ],
+        [
+          5,
+          8,
+          "br",
+          "Static product panel; atmosphere motion behind it only."
+        ],
+        [
+          8,
+          10,
+          "br",
+          "Shop Black Rose, only when current state supports Shop."
+        ]
+      ]
+    },
+    {
+      "id": "V3",
+      "name": "The Town Line / series teaser",
+      "duration": 12,
+      "clip": "G3",
+      "beats": [
+        [
+          0,
+          2,
+          "train",
+          "The Town Line."
+        ],
+        [
+          2,
+          5,
+          "train",
+          "Slow approach, no morphing marks."
+        ],
+        [
+          5,
+          8,
+          "train",
+          "Jersey Series. A closer look is coming."
+        ],
+        [
+          8,
+          10,
+          "train",
+          "Approved real collection capture, or a type-card hold."
+        ],
+        [
+          10,
+          12,
+          "train",
+          "Explore the Jersey Series."
+        ]
+      ]
+    }
+  ],
+  "plates": [
+    {
+      "id": "I1",
+      "name": "Bridge atmosphere",
+      "reference": "bridge",
+      "uses": [
+        "D1",
+        "D4",
+        "V1"
+      ],
+      "prompt": "Environment-only vertical composition for SkyyRose. Use the approved bridge reference for waterfront perspective, wet black stone, moonlit silver and restrained rose-gold atmosphere. Preserve recognizable bridge geometry. Reserve the upper central region for exact brand overlays in post. No person, garment, invented star-rose, new logotype, letters, signs, neon, blue color grade or branding. The canonical monument and wordmark are separate unchanged source layers only after approval. A calm, photographic Oakland night; restrained fog and physically coherent reflections."
+    },
+    {
+      "id": "I2",
+      "name": "Black Rose atmosphere",
+      "reference": "bridge",
+      "uses": [
+        "D2",
+        "D7",
+        "V2"
+      ],
+      "prompt": "Environment-only vertical black-stone and industrial waterfront court. Monochrome silver edge light, deep black, wet concrete, restrained fog, correct perspective. Use the approved Black Rose scene as environmental reference only. Keep central product-panel region visually quiet. No garments, people, mannequin, embroidery, logos, signage, words or new monument. No blue grade. Product will appear in a separate unchanged photographic panel; do not synthesize it."
+    },
+    {
+      "id": "I3",
+      "name": "Town Line atmosphere",
+      "reference": "train",
+      "uses": [
+        "D6",
+        "V3"
+      ],
+      "prompt": "Vertical cinematic fictional Town Line station atmosphere informed by the approved SkyyRose train reference. Keep source train silhouette and camera direction; reserve vehicle badge and destination areas for exact source overlays in post. Black metal, warm metallic accents, wet platform, controlled highlights. No garment, jersey, sports mark, transit agency logo, endorsement, invented writing or service timetable. No blue grade, no morphing geometry. Any failed exact train fidelity is quarantined; use approved existing still in local edit instead."
+    }
+  ],
+  "source_manifest": "source-manifest.json",
+  "generation": {
+    "provider": "Higgsfield",
+    "state": "COMPLETED",
+    "image_model": "gpt_image_2",
+    "image_params": {
+      "aspect_ratio": "9:16",
+      "resolution": "2k",
+      "quality": "high",
+      "count": 1
+    },
+    "video_model": "kling3_0",
+    "video_params": {
+      "aspect_ratio": "9:16",
+      "duration": 5,
+      "mode": "pro",
+      "sound": "off",
+      "count": 1
+    },
+    "plate_count": 3,
+    "clip_count": 3,
+    "creative_concepts": 7,
+    "still_deliverables": 23,
+    "video_deliverables": 3,
+    "optional_local_video_deliverables": 1,
+    "final_cut_durations": [
+      12,
+      10,
+      12
+    ],
+    "costs": {
+      "exact_image": 6.5,
+      "exact_video": 8.75,
+      "three_hero_plates": 19.5,
+      "three_clips": 26.25,
+      "base_total": 45.75,
+      "optional_three_low_previews": 1.5,
+      "total_with_optional_previews": 47.25,
+      "automatic_retries": 0
+    },
+    "scope": "Environment plates only. Existing product/brand source panels remain unchanged in local assembly. No generative garment, face or embroidery edits.",
+    "approval": "Founder explicitly approved paid rendering in current task. Publication remains separate.",
+    "execution_ledger": "rendered/render-ledger.json",
+    "final_export_manifest": "rendered/export-manifest.json",
+    "final_variant": "PRELAUNCH_REVIEW"
+  },
+  "media_budget": {
+    "total": "UNKNOWN",
+    "unit": "B = founder-approved seven-day media budget, separate from generation credits",
+    "weights": [
+      {
+        "id": "D1",
+        "percent": 5
+      },
+      {
+        "id": "D2",
+        "percent": 5
+      },
+      {
+        "id": "D3",
+        "percent": 5
+      },
+      {
+        "id": "D4",
+        "percent": 30
+      },
+      {
+        "id": "D5",
+        "percent": 15
+      },
+      {
+        "id": "D6",
+        "percent": 10
+      },
+      {
+        "id": "D7",
+        "percent": 30
+      }
+    ],
+    "channels": "Meta primary proposed; TikTok organic adaptation. Paid TikTok and other channels require a separate allocation decision.",
+    "postlaunch_lanes": "Proposed Daily lane exceptions: D1–D3 0% cold/100% warm; D4 60/40; D5 80/20; D6 70/30; D7 0/100. Percentages are within that day’s cap, conditional on qualified audiences. Do not force budget into undersized retargeting."
+  },
+  "publication": "NOT_AUTHORIZED",
+  "deliverables": [
+    {
+      "id": "D1-E01",
+      "day": "D1",
+      "label": "Feed teaser",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "bridge"
+      ],
+      "generation_dependencies": [
+        "I1"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D1-E02",
+      "day": "D1",
+      "label": "Story panel 1",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "bridge"
+      ],
+      "generation_dependencies": [
+        "I1"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D1-E03",
+      "day": "D1",
+      "label": "Story panel 2",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "bridge"
+      ],
+      "generation_dependencies": [
+        "I1"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D1-E04",
+      "day": "D1",
+      "label": "Story panel 3",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "bridge"
+      ],
+      "generation_dependencies": [
+        "I1"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D2-E01",
+      "day": "D2",
+      "label": "Carousel Signature",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "sg"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D2-E02",
+      "day": "D2",
+      "label": "Story Signature",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "sg"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D2-E03",
+      "day": "D2",
+      "label": "Carousel Black Rose",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "br"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D2-E04",
+      "day": "D2",
+      "label": "Story Black Rose",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "br"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D3-E01",
+      "day": "D3",
+      "label": "Editorial feed",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "lh"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D3-E02",
+      "day": "D3",
+      "label": "Story panel 1",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "lh"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D3-E03",
+      "day": "D3",
+      "label": "Story panel 2",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "lh"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D3-E04",
+      "day": "D3",
+      "label": "Story panel 3",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "lh"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E01",
+      "day": "D4",
+      "label": "V1 launch film",
+      "ratio": "9:16",
+      "kind": "video",
+      "assets": [
+        "bridge",
+        "sg",
+        "br",
+        "lh",
+        "kids"
+      ],
+      "generation_dependencies": [
+        "I1",
+        "G1"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E02",
+      "day": "D4",
+      "label": "Collection carousel sg",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "sg"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E03",
+      "day": "D4",
+      "label": "Collection carousel br",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "br"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E04",
+      "day": "D4",
+      "label": "Collection carousel lh",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "lh"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E05",
+      "day": "D4",
+      "label": "Collection carousel kids",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "kids"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E06",
+      "day": "D4",
+      "label": "Launch email header",
+      "ratio": "16:9",
+      "kind": "still",
+      "assets": [
+        "bridge"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D5-E01",
+      "day": "D5",
+      "label": "Kids feed",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "kids"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D5-E02",
+      "day": "D5",
+      "label": "Kids Story panel 1",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "kids"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D5-E03",
+      "day": "D5",
+      "label": "Kids Story panel 2",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "kids"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D5-E04",
+      "day": "D5",
+      "label": "Kids Story panel 3",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "kids"
+      ],
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D6-E01",
+      "day": "D6",
+      "label": "V3 series film",
+      "ratio": "9:16",
+      "kind": "video",
+      "assets": [
+        "train"
+      ],
+      "generation_dependencies": [
+        "I3",
+        "G3"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D6-E02",
+      "day": "D6",
+      "label": "Train feed",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "train"
+      ],
+      "generation_dependencies": [
+        "I3"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D7-E01",
+      "day": "D7",
+      "label": "V2 retargeting film",
+      "ratio": "9:16",
+      "kind": "video",
+      "assets": [
+        "br",
+        "brflat"
+      ],
+      "generation_dependencies": [
+        "I2",
+        "G2"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D7-E02",
+      "day": "D7",
+      "label": "PDP-style feed",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "br",
+        "brflat"
+      ],
+      "generation_dependencies": [
+        "I2"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    }
+  ],
+  "optional_deliverables": [
+    {
+      "id": "D5-OPTIONAL-V",
+      "kind": "video",
+      "duration": 10,
+      "method": "Local slideshow only",
+      "generation_dependencies": [
+
+      ],
+      "approval": "PENDING"
+    }
+  ],
+  "state": "SUPERSEDED_CREATIVE_REJECTED",
+  "production_report": "rendered/PRODUCTION-REPORT.md",
+  "replacement": "collection-films/series-contract.json",
+  "current_direction": "30-second wordless collection train commercial with matching mascot/product-model pairs and collection hero details"
+}

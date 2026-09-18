@@ -17,9 +17,13 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from skyyrose.core.dossier_loader import DossierMissingError
+from skyyrose.core.product_registry import load_registry
+from skyyrose.elite_studio.logo_registry import LogoRegistry, RegistryContractError
+
 from . import config, cost, references
 from .cost import CostManifest, ManifestEntry
-from .prompt import SceneError, build_pair_prompt, build_prompt, extract_view_branding, read_dossier
+from .prompt import SceneError, build_pair_prompt, build_prompt, read_dossier
 from .references import MissingReferenceError, Pair, ReferenceImage
 from .scene_schema import build_scene
 
@@ -358,7 +362,9 @@ def plan_sku(
             scene=scene,
             style_reference=use_style_ref,
         )
-    except (MissingReferenceError, SceneError) as exc:
+    # A missing dossier is a per-SKU skip. A missing registry is not caught: it
+    # must abort the batch instead of marking every SKU "skipped" at $0 (bug-230).
+    except (MissingReferenceError, SceneError, RegistryContractError, DossierMissingError) as exc:
         return SkuPlan(
             sku=sku,
             name=name,
@@ -379,7 +385,7 @@ def plan_sku(
         references=refs,
         prompt=prompt,
         is_patch=is_patch,
-        branding_spec=extract_view_branding(dossier_text, view),
+        branding_spec=LogoRegistry.load().prompt_instructions(sku, require_sizing=is_patch),
         dossier_spec=dossier_text[:6000],
     )
 
@@ -391,29 +397,46 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
     garments: list[dict] = []
     combined: list[ReferenceImage] = []
     try:
+        components = load_registry().get("render_components", {})
         for member in pair.skus:
             mname = catalog.get(member, {}).get("name", member)
+            component = components.get(member)
+            if component:
+                parent_name = catalog[component["parent_sku"]]["name"]
+                mname = f"{parent_name} — {component['component']} component only"
             refs = references.build_references(member, pair.collection, include_back=False)
             refs = refs[:per_garment_cap]
             combined.extend(refs)
+            dossier_text = read_dossier(dossier_index.get(member))
+            if component and dossier_text:
+                dossier_text += (
+                    f"\nCOMPONENT SCOPE: render only the {component['component']} from "
+                    f"parent set {component['parent_sku']} for this member. The parent "
+                    "dossier describes the complete set; use only the component's "
+                    "registered placements and source images for this member."
+                )
             garments.append(
                 {
                     "name": mname,
                     "sku": member,
                     "reference_labels": [r.label for r in refs],
-                    "dossier_text": read_dossier(dossier_index.get(member)),
+                    "dossier_text": dossier_text,
                     "is_patch": references.requires_patch(member),
                 }
             )
         pair_branding = "\n".join(
             f"{g['name']} ({g['sku']}) FRONT:\n{spec}"
             for g in garments
-            if (spec := extract_view_branding(g["dossier_text"], "front"))
+            if (
+                spec := LogoRegistry.load().prompt_instructions(
+                    g["sku"], require_sizing=g["is_patch"]
+                )
+            )
         )
         prompt = build_pair_prompt(
             pair_label=pair.label, collection=pair.collection, garments=garments
         )
-    except (MissingReferenceError, SceneError) as exc:
+    except (MissingReferenceError, SceneError, RegistryContractError, DossierMissingError) as exc:
         return SkuPlan(
             sku=pair.skus[0],
             name=pair.label,

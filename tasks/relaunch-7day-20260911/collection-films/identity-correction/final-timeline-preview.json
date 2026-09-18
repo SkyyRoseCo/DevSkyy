@@ -1,0 +1,215 @@
+{
+  "canvas": [
+    720,
+    1280
+  ],
+  "films": [
+    {
+      "duration": 20.02,
+      "frames": 480,
+      "id": "signature",
+      "segments": [
+        {
+          "clip": "SGA",
+          "end": 240,
+          "start": 0
+        },
+        {
+          "clip": "SGB",
+          "end": 240,
+          "start": 0
+        }
+      ],
+      "title": "The First Light"
+    },
+    {
+      "duration": 20.02,
+      "frames": 480,
+      "id": "black-rose",
+      "segments": [
+        {
+          "clip": "SOURCE",
+          "end": 48,
+          "start": 0
+        },
+        {
+          "clip": "BRA",
+          "end": 72,
+          "start": 0
+        },
+        {
+          "clip": "SOURCE",
+          "end": 72,
+          "start": 48
+        },
+        {
+          "clip": "SOURCE",
+          "end": 120,
+          "start": 72
+        },
+        {
+          "clip": "BRA",
+          "end": 168,
+          "start": 72
+        },
+        {
+          "clip": "SOURCE",
+          "end": 192,
+          "start": 120
+        },
+        {
+          "clip": "BRB",
+          "end": 120,
+          "start": 0
+        }
+      ],
+      "title": "The Night Car"
+    },
+    {
+      "duration": 20.02,
+      "frames": 480,
+      "id": "love-hurts",
+      "segments": [
+        {
+          "clip": "LHA",
+          "end": 240,
+          "start": 0
+        },
+        {
+          "clip": "LHB",
+          "end": 240,
+          "start": 0
+        }
+      ],
+      "title": "The Seat Beside You"
+    },
+    {
+      "duration": 20.02,
+      "frames": 480,
+      "id": "kids-capsule",
+      "segments": [
+        {
+          "clip": "DOOR",
+          "end": 12,
+          "start": 0
+        },
+        {
+          "clip": "KR",
+          "end": 144,
+          "start": 0
+        },
+        {
+          "clip": "KP",
+          "end": 228,
+          "start": 0
+        },
+        {
+          "clip": "KR",
+          "end": 240,
+          "start": 144
+        }
+      ],
+      "title": "Your Turn"
+    },
+    {
+      "duration": 40.04,
+      "frames": 960,
+      "id": "town-line-main",
+      "segments": [
+        {
+          "clip": "TRAIN",
+          "end": 48,
+          "start": 0
+        },
+        {
+          "clip": "SGA",
+          "end": 192,
+          "start": 144
+        },
+        {
+          "clip": "SGB",
+          "end": 240,
+          "start": 144
+        },
+        {
+          "clip": "SOURCE",
+          "end": 24,
+          "start": 0
+        },
+        {
+          "clip": "BRA",
+          "end": 72,
+          "start": 24
+        },
+        {
+          "clip": "SOURCE",
+          "end": 48,
+          "start": 24
+        },
+        {
+          "clip": "SOURCE",
+          "end": 120,
+          "start": 72
+        },
+        {
+          "clip": "SOURCE",
+          "end": 168,
+          "start": 120
+        },
+        {
+          "clip": "BRB",
+          "end": 120,
+          "start": 24
+        },
+        {
+          "clip": "LHA",
+          "end": 240,
+          "start": 144
+        },
+        {
+          "clip": "LHB",
+          "end": 240,
+          "start": 144
+        },
+        {
+          "clip": "DOOR",
+          "end": 12,
+          "start": 0
+        },
+        {
+          "clip": "KR",
+          "end": 120,
+          "start": 0
+        },
+        {
+          "clip": "KP",
+          "end": 120,
+          "start": 24
+        },
+        {
+          "clip": "KR",
+          "end": 240,
+          "start": 180
+        }
+      ],
+      "title": "The Town Line"
+    }
+  ],
+  "fps": "24000/1001",
+  "requested_motion_jobs": 8,
+  "requested_motion_seconds": 75,
+  "source_original_intervals": [
+    [
+      695,
+      767
+    ],
+    [
+      983,
+      1031
+    ],
+    [
+      1391,
+      1463
+    ]
+  ]
+}

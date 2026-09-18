@@ -208,7 +208,65 @@ Wrote "~490 tokens" and "36.9%" into commit `b394a5528`'s message before running
 - **Re-check before re-searching:** a path, file content, or command output already in this session's context is authoritative. Re-deriving it is the same waste as a redundant read.
 
 
+## 2026-09-15 — Stopped at two stale tools instead of escalating to a live web search
+**Founder correction:** "Yeah do better research that was lazy and pathetic you couldn't find it."
+
+**What happened:** Asked to pin `config.MODEL` to `gpt-image-2.5` (announced 2026-09-08, one week before this session; my training cutoff is January 2026). I ran a live `GET /v1/models` check (empty) and one Context7 query against the OpenAI API reference (no `gpt-image-2.5` in the `model` enum) and reported back "this model doesn't exist" via a clarifying question — instead of running a WebSearch first. The founder had to explicitly say "look up OpenAI documentation" before I found the real, correct answer (gpt-image-2.5-flare / -sunburst, real models, this account just lacks API access yet).
+
+**Root cause:** Context7's indexed mirror of developers.openai.com had not been re-crawled since the release — a stale-index gap, not a nonexistent-model gap. A live account probe and a doc index can both be individually correct (no access / not yet crawled) while the underlying fact ("this model exists") is still true.
+
+**Rule:** When a live check and a doc source both come up empty for something the founder states exists — especially anything released within the last ~6-12 months, i.e. plausibly past training cutoff — escalate immediately to WebSearch before concluding "it doesn't exist." Two empty tool results is not proof of nonexistence; it's a prompt to widen the search, not to hand the uncertainty back to the founder.
+
+
 ## 2026-07-27 — Multi-agent Campaign Orchestration
 - **Pattern:** Using specialized agents (MarketingAgent, Whimsy-Injector, code-reviewer) in parallel to drive a multi-dimensional campaign.
 - **Rule:** When creating high-fidelity marketing content, ensure the **MarketingAgent** handles strategy and copy, **Whimsy-Injector** adds "moments of delight," and the **Senior theme developer (implied)** handles the technical implementation in the WordPress theme.
 - **Verification:** Always verify campaign copy against the authoritative `docs/brand/collection-stories.md` and `docs/brand/visual-references.md` to ensure no "European-luxury-house" tropes leak in and the collection-specific voice is preserved.
+
+## 2026-09-17 — "absent" claimed from one file, not every source
+
+**What happened:** Reported "14 SKUs have no copy at all" after checking only
+`product-content.json` and `alt-text.json`. All 33 SKUs in fact carry a
+`catalog.description` in the registry — the same copy the live store serves.
+The founder caught it: "EVERY sku has a copy ... search EVERY file you need".
+
+**Why it was wrong:** an absence claim's evidence scope is *every* source that
+could hold the fact. Reading two files licenses "not in these two files", never
+"does not exist". This is the evidence-scope rule (bug-287) applied to negative
+claims, which is where it is easiest to skip.
+
+**Rule:** before asserting a fact is missing, enumerate the candidate sources
+first and say which ones you searched. For product facts that means the
+registry record itself, the live store (or its snapshot), and every per-SKU data
+file — then name the ones you checked that came back empty. A one-file read
+supports "not here", not "nowhere".
+
+**Mechanism:** `skyyrose.core.product.get_product` now resolves copy through its
+layers and tags the source (`enriched: false` + a `content.<field>.enriched`
+gap for the base line), so the layer question can never be mistaken for an
+absence question again. Gate: `tests/test_product_entry_point.py`.
+
+## 2026-09-18 — attributed a loop's cost to the one leg I measured
+
+**What happened:** Diagnosed a test timeout as per-asset SQLite commits after
+timing `upload_to_r2` (0.00s) and attributing the remaining ~0.14s/asset to
+fsyncs by elimination. I never timed the loop's other awaited call. A subagent
+dispatched to implement my fix refuted it with measurements: `extract_features`
+defaults to `True`, so `extract_visual_features` made a real HTTPS GET per
+asset — 18.68s of 18.79s at N=100, with all 105 commits costing 0.06s.
+
+**Why it was wrong:** my number *fit* (0.14 × 100 = 13.6s ≈ observed), and a
+fitting number felt like confirmation. It ruled nothing out. I also never
+checked the fixture: it is `sqlite+aiosqlite:///:memory:` on StaticPool, where
+there is no fsync at all — which alone falsifies a per-commit-fsync theory.
+
+**Rule:** before attributing a loop's cost to one step, enumerate every awaited
+call in the loop body and time each one. One accumulator per call turns
+elimination into measurement. And check what the fixture actually is before
+reasoning about I/O cost — an in-memory DB cannot be slow at durability.
+
+**Corollary that paid off:** when a subagent contradicts the brief with a
+specific falsifiable claim, reproduce the claim before judging the work. I
+re-measured, it was right, and the wrong production change never shipped.
+Related: [[bug-334]], and the same incomplete-enumeration shape as the copy
+claim in the 2026-09-17 entry.

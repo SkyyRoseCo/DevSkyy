@@ -1,0 +1,80 @@
+{
+  "verified_date": "2026-09-12",
+  "higgsfield": {
+    "workspace": {
+      "id": "b9928f7d-3821-49a1-a40e-04c97f1bf6b8",
+      "name": null,
+      "type": "private",
+      "user_role": "owner",
+      "is_selected": true,
+      "plan_type": "plus",
+      "credits": 794.75
+    },
+    "ending_credits": 794.75,
+    "prompt_tests": {
+      "count": 2,
+      "generation_jobs_submitted": 0,
+      "uploaded_reference_images": 0,
+      "credits_balance_delta": 0
+    },
+    "elements": [
+      {
+        "id": "098cd508-30c9-4d24-ba74-dd7fa2641614",
+        "name": "Skyy Founder Master Sep11",
+        "status": "completed"
+      },
+      {
+        "id": "2148e501-ec1d-4291-ac1c-228c6ebdf72b",
+        "name": "garment-kids002-purple-flat",
+        "status": "completed"
+      },
+      {
+        "id": "c0cdb532-9110-4d8c-9087-17d4146daa6e",
+        "name": "garment-br006-bomber-flat",
+        "status": "completed"
+      },
+      {
+        "id": "077539a4-4e22-4cb8-bb13-39bd54d16c8a",
+        "name": "garment-kids001-set-flat",
+        "status": "completed"
+      },
+      {
+        "id": "528d8f2a-85ec-4b5d-9125-50a0c93b58da",
+        "name": "garment-sg009-sherpa-flat",
+        "status": "completed"
+      },
+      {
+        "id": "2d708bf2-7369-477f-908c-bd19fcc17f9e",
+        "name": "garment-lh004-bomber-canon",
+        "status": "completed"
+      }
+    ],
+    "elements_limit": "Metadata inspection only. No current remote-byte equality or visual audit; not proof of per-shot reference injection."
+  },
+  "runway": {
+    "authenticated": true,
+    "workspace_id": 38838237,
+    "available_video_models": [
+      "seedance-2",
+      "seedance-2.5",
+      "seedance-2-fast",
+      "seedance-2-mini",
+      "kling-o3-pro",
+      "kling-3-pro",
+      "gen-4.5",
+      "veo-3.1",
+      "grok-imagine-1.5",
+      "gemini-omni-flash",
+      "hailuo-3",
+      "wan3",
+      "wan3-prime",
+      "gen-4-turbo"
+    ],
+    "scope": "whoami read only; no generation or comparison benchmark"
+  },
+  "descript": {
+    "list_projects_success": true,
+    "scope": "Filtered read-only project list returned empty. This proves an accepted read request, not identified target project or tested edits/export."
+  },
+  "cine_status": "CLI model get cinematic_studio_3_0 succeeded; MCP cinema search returned no hits; generation not tested"
+}

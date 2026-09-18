@@ -1,0 +1,188 @@
+{
+  "created_at": "2026-09-11T13:34:08.867Z",
+  "root": "/Users/theceo/.codex/worktrees/dae3/DevSkyy",
+  "sources": [
+    {
+      "id": "bridge",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+      "sha256": "e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "train",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/jersey-series-town-line-train-v1.webp",
+      "sha256": "7c444e77815a11ff9eca87c0539359b1817562c0af2acc787e838d3d1d711148",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "sg",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-onmodel.webp",
+      "sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "br",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-004-onmodel.webp",
+      "sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "lh",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-onmodel.webp",
+      "sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "kids",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-onmodel-v2.webp",
+      "sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "sgflat",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg",
+      "sha256": "cb13b25aa3854190b2fbaa3e701a96ef2c813969c8bba7118ac6e68af46711fb",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "brflat",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-004-black-rose-hoodie.jpeg",
+      "sha256": "64e1c21b1fc042417fc17767d02f854fea6b0637ef0901b06f672c0876a95487",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "lhflat",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-bomber.png",
+      "sha256": "fb8dee3a83c5df81fe8372acc9c6dba2374b2d6f1c51b4b1bf4bcbb3dc6e79af",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "kidsflat",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-red-set.jpeg",
+      "sha256": "fb6ee3489c11a9223bc11598443be1b55f3c10f851cf063ff377a44670e92f9c",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "frameSG",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/product-card-portals/signature-portal-statue-970w.webp",
+      "sha256": "b17d06ee4d84c5480784cb83773bd0a4e12cec7031a2fe3f6f03ddb17fc2d7e6",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "frameBR",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/product-card-portals/black-rose-portal-statue-970w.webp",
+      "sha256": "3b89e640e9da59b6db346d4426253e4e07b07dd0b825ea8fb3ad02a5bea97be4",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "frameLH",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/product-card-portals/love-hurts-portal-statue-970w.webp",
+      "sha256": "d37c01de59442e40b951e362bea296b216766681e93a30b5d44df697c477dda3",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "frameKC",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/product-card-portals/kids-capsule-portal-statue-970w.webp",
+      "sha256": "88c2bd78b09df33b679613068b223cd1f51d7fc46a722d569054c3fd866852e8",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "template",
+      "path": "/Users/theceo/.codex/skills/artifact-template-skyyrose-house-of-roses-commerce/assets/reference.png",
+      "sha256": "72b2cf598ed2055bc6499b0a8d8807e0862cb9e5ce16c8f81c3a0caf1861b585",
+      "evidence_class": "REPRODUCED_LOCAL_PIXEL_INSPECTION",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "catalog",
+      "path": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+      "sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "sot",
+      "path": "data/sot-images.json",
+      "sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "hub",
+      "path": "assets/hub/manifest.json",
+      "sha256": "e4e9d8ebf52f8eda23a01780e13b8851014dc21659f31e07ab23e0df9747baa4",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "typography",
+      "path": "wordpress-theme/skyyrose-flagship/data/brand/typography.json",
+      "sha256": "5510975f1019784ebed7d04368fea804a816dc152a232c458293a8a686b734f6",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "authority",
+      "path": "SOT.md",
+      "sha256": "0d7e2f80ec84fef38c13afeb445a223fedce53ad788879ea9cabbf5abfd4c245",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "stories",
+      "path": "docs/brand/collection-stories.md",
+      "sha256": "93c5f0536dba2174965883f8eed787458ac853e04dbd95464b15e8c67304a70e",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "founder",
+      "path": "knowledge-base/seed/from-interview.md",
+      "sha256": "66572e3b71f6c0b1154b0329ad68e8fcdddd56213b1a79de192f9acd740e2a3f",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "bomber",
+      "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-bomber-jacket.md",
+      "sha256": "40b069725d588f1395c860b231545073d6ecea7e648b787288891c804f7cca24",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "jersey",
+      "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-2-last-oakland-football.md",
+      "sha256": "041d33df7e629fd45bb9df9ce0657543d3f01cd20cfb9c3b913fdb9799f20bf3",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "review",
+      "path": "renders/oai/_review/review-state.json",
+      "sha256": "79533b0c1505db2d5d96b9f4088a2cef8d21cfb0a1250b3368667c3fe0a9b258",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    },
+    {
+      "id": "corrections",
+      "path": "wordpress-theme/skyyrose-flagship/data/render-corrections.json",
+      "sha256": "9b63514da5e7b79376cbd59caba1bf60e1d4a3a9ba156eedbf93fab3fd2dd172",
+      "evidence_class": "SOURCE_VERIFIED",
+      "approval": "REFERENCE_ONLY_CURRENT_CAMPAIGN_APPROVAL_PENDING"
+    }
+  ]
+}

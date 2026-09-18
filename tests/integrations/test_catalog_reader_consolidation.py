@@ -88,7 +88,9 @@ def test_read_only_catalog_adapters_use_canonical_reader(relative_path: str) -> 
     """Read-only adapters must project catalog rows instead of parsing CSV themselves."""
     source = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
     assert "csv.DictReader" not in source, f"{relative_path} parses the catalog directly"
-    assert "from skyyrose.core.catalog_loader import read_catalog_rows" in source
+    assert re.search(
+        r"from skyyrose\.core\.catalog_loader import [^\n]*\bread_catalog_rows\b", source
+    ), f"{relative_path} must import the canonical reader"
     assert re.search(
         r"\bread_catalog_rows\s*\(", source
     ), f"{relative_path} imports but does not call the canonical reader"

@@ -33,7 +33,7 @@ inherits_from: black-is-beautiful-jersey-series-0-baseball-classic
   appliquéd onto the black jersey body in a baseball-script style, arched across
   the upper-front-chest. **Technique:** tackle-twill. **Color:** bright orange
   twill (NO contrast satin-stitch edge — clean orange-on-black).
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in): The Black Rose
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall): The Black Rose
   Authentic Collection patch (full multi-color: yellow field, navy text,
   white banner, red diamond divider, etc. — see patch reference). Sewn onto
   the lower-left hip. **Technique:** embroidered-patch.

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Product SOT audit + identity.json schema proposal — 2026-09-17</title>
+<style>
+:root{--ink:#0A0A0A;--paper:#fff;--rose:#B76E79;--rule:#e3e3e3;--muted:#5a5a5a;--warn:#DC143C;--gold:#D4AF37}
+body{font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-size:1.6rem;border-bottom:3px solid var(--rose);padding-bottom:.4rem}
+h2{font-size:1.15rem;margin-top:2.2rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1rem;margin-top:1.4rem;color:var(--muted)}
+code{font:13px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;background:#f5f5f5;padding:.1em .35em;border-radius:3px}
+table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:13.5px}
+th,td{border:1px solid var(--rule);padding:.42rem .55rem;text-align:left;vertical-align:top}
+th{background:#fafafa;font-weight:600}
+.fold{color:#0a7a3d;font-weight:600}.regen{color:#7a5a00;font-weight:600}.del{color:var(--warn);font-weight:600}.leave{color:var(--muted);font-weight:600}
+.tag{font:11px ui-monospace,monospace;background:#eee;border-radius:3px;padding:.1em .3em;color:#333}
+blockquote{border-left:3px solid var(--gold);margin:1rem 0;padding:.5rem 0 .5rem 1rem;background:#fffdf5}
+.k{color:var(--warn);font-weight:600}
+ol li,ul li{margin:.25rem 0}
+pre{background:#f7f7f7;border:1px solid var(--rule);border-radius:4px;padding:.8rem;overflow-x:auto;font:12.5px/1.5 ui-monospace,monospace}
+.small{font-size:12.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<h1>Product SOT audit + <code>identity.json</code> schema proposal</h1>
+<p class="small">2026-09-17 · DevSkyy · every figure below came from reading the files this session <span class="tag">[repo]</span>. Nothing has been moved, renamed, or deleted.</p>
+
+<h2 id="decision">The decision this document supports</h2>
+<p>You chose <strong>one file for everything</strong>: brand identity, all four collections, and every product record in a single authored file, with the four per-collection <code>identity.json</code> files folding in. Before any data moves, this is the complete inventory of every place a product fact currently lives, what is authored versus derived, and what the merged schema looks like.</p>
+
+<blockquote><strong>Correction applied 2026-09-17 — "product facts should be in <code>logo-registry.json</code> too."</strong><br>
+The merged file <strong>is</strong> <code>logo-registry.json</code>. It stays exactly where it is — <code>wordpress-theme/skyyrose-flagship/data/logo-registry.json</code> — and product facts never leave it. No rename, no move, no second copy. <code>data/identity.json</code> becomes a <em>symlink</em> to that same file, so the name you asked for resolves to one inode: one SOT, two names. Two files both holding product facts would be a forked SOT, which your own rule forbids.<br>
+<span class="small">Verified: nothing globs <code>data/*.json</code> at repo root, and <code>deploy-theme.sh</code> only walks <code>$THEME_DIR</code> — so the extra symlink costs nothing and breaks nothing. <span class="tag">[repo]</span></span></blockquote>
+
+<h2 id="spine">1. What the registry already is</h2>
+<p><code>wordpress-theme/skyyrose-flagship/data/logo-registry.json</code> — 436,226 bytes, 33 SKUs, schema version 1.</p>
+<table>
+<tr><th>Section</th><th>Size (chars)</th><th>What it owns</th></tr>
+<tr><td><code>products</code></td><td>345,857</td><td>Per-SKU: <code>catalog</code> (24 commerce fields), <code>garment</code> (color, sizes, fit, materials, features, sizing refs), <code>dossier</code> (slug + full body), <code>images</code>, <code>render_sources</code>, <code>authority</code></td></tr>
+<tr><td><code>sku_logos</code></td><td>36,327</td><td>Per-SKU graphics and decoration dimensions</td></tr>
+<tr><td><code>logos</code></td><td>7,770</td><td>Logo asset definitions</td></tr>
+<tr><td><code>changelog</code></td><td>6,271</td><td>Correction history</td></tr>
+<tr><td><code>gaps</code></td><td>1,865</td><td>Known open items</td></tr>
+<tr><td><code>authority_contract</code></td><td>1,562</td><td>Founder-authority rule text</td></tr>
+<tr><td>+ 9 smaller</td><td>~3,400</td><td><code>catalog_columns</code>, <code>render_source_aliases</code>, <code>render_components</code>, <code>three_rose_cluster_colorways</code>, <code>jersey_patch_standard</code>, <code>sku_folders</code>, <code>brand_primary</code>, <code>$schema</code>, versions</td></tr>
+</table>
+<p>The 33 dossier bodies inside <code>products[sku].dossier.content</code> total <strong>200,881 chars</strong> — 46% of the file. All 33 SKUs have one. <code>dossier_loader.get_product_with_dossier</code> already reads them from there, so they stay inline.</p>
+
+<h2 id="matrix">2. Gap matrix — every store that holds a product fact</h2>
+<p>Verdicts: <span class="fold">FOLD IN</span> = authored facts that must move into the new file · <span class="regen">REGENERATE</span> = a projection the new file emits · <span class="del">DELETE</span> = duplicate with no authored content · <span class="leave">LEAVE</span> = not a product fact.</p>
+<table>
+<tr><th>Store</th><th>SKUs</th><th>Authored?</th><th>Fields it holds</th><th>Verdict</th></tr>
+
+<tr><td><code>data/logo-registry.json</code></td><td>33</td><td>Authored</td><td>The spine — see §1</td><td class="fold">STAYS — everything folds INTO it, in place</td></tr>
+
+<tr><td><code>data/render-corrections.json</code></td><td>18</td><td><strong>Founder verbatim</strong></td><td>Per-SKU correction lines, <code>[on-model]</code>/<code>[ghost]</code> prefixed. Its own <code>_meta</code> says "every correction line is the founder's verbatim comment"</td><td class="fold">FOLD IN — highest authority tier, currently outside the SOT</td></tr>
+
+<tr><td><code>data/render-keepers.json</code></td><td>2</td><td>Founder keep/re-render pass</td><td>(sku, style, view) tuples that skip <code>--all</code> batches</td><td class="fold">FOLD IN</td></tr>
+
+<tr><td><code>skyyrose/assets/data/product-content.json</code></td><td><span class="k">19 of 33</span></td><td>Authored copy</td><td><code>name</code>, <code>collection</code>, <code>description</code>, <code>short_description</code>, <code>seo_meta</code>, <code>instagram</code>, <code>tiktok</code></td><td class="fold">FOLD IN — and close the 14-SKU gap (§3)</td></tr>
+
+<tr><td><code>skyyrose/assets/data/alt-text.json</code></td><td><span class="k">19 of 33</span></td><td>Authored copy</td><td>Per-image alt text, keyed <code>&lt;sku&gt;-product</code></td><td class="fold">FOLD IN — same 14 SKUs missing</td></tr>
+
+<tr><td><code>data/collections/&lt;slug&gt;/identity.json</code> ×4</td><td>0</td><td>Authored canon</td><td><code>slug</code>, <code>key</code>, <code>name</code>, <code>status</code>, <code>story.seed</code>, <code>palette</code>, <code>fonts{script,caps,body}</code>, <code>lockup.ref</code>, <code>imagery.hero</code>, <code>known_orphans</code> — no product records</td><td class="fold">FOLD IN as the <code>collections</code> section</td></tr>
+
+<tr><td><code>skyyrose-catalog.csv</code></td><td>33</td><td>Projection</td><td>28 columns = <code>catalog_columns</code> exactly, in order (the last 4 — <code>fit</code>, <code>materials</code>, <code>features</code>, <code>sizing_references</code> — flatten from <code>garment.*</code>)</td><td class="regen">REGENERATE</td></tr>
+
+<tr><td><code>data/dossiers/*.md</code></td><td>35 files</td><td>Projection</td><td>Sections: Branding (34), Negative (35), Front (33), Back (31), Scene direction (35)</td><td class="regen">REGENERATE from <code>dossier.content</code></td></tr>
+
+<tr><td><code>data/sot-images.json</code></td><td>33</td><td>Projection</td><td><code>front</code> 33, <code>packshot</code> 33, <code>back</code> 30, <code>back_packshot</code> 17</td><td class="regen">REGENERATE</td></tr>
+
+<tr><td><code>data/v7-cards.json</code></td><td>26</td><td>Projection</td><td><code>_generated_by: scripts/build_v7_cards.py — DO NOT EDIT</code></td><td class="regen">REGENERATE</td></tr>
+
+<tr><td><code>data/collections/&lt;slug&gt;/sot.json</code> ×4</td><td>5–14</td><td>Projection</td><td><code>_generated_by: build-collection-sot.py — DO NOT EDIT</code>; also emits <code>design-tokens.css</code>, <code>index.html</code></td><td class="regen">REGENERATE — repoint the generator</td></tr>
+
+<tr><td><code>assets/products/manifest.json</code></td><td>33</td><td>Projection</td><td>Carries <code>catalog_sha</code> + <code>registry_sha</code>; per-SKU <code>assets</code>, <code>garment_type</code></td><td class="regen">REGENERATE</td></tr>
+
+<tr><td><code>assets/products/source-photos/manifest.json</code></td><td>33</td><td>Projection</td><td><code>photo_paths</code>, <code>present_angles</code>, <code>missing_angles</code>, <code>has_minimum_for_compositor</code></td><td class="regen">REGENERATE</td></tr>
+
+<tr><td><code>data/lookbook-sot.json</code></td><td>31</td><td>Projection</td><td><code>domain</code>, <code>component</code>, <code>collections</code></td><td class="regen">REGENERATE</td></tr>
+
+<tr><td><code>assets/hub/manifest.json</code></td><td>67 of 94 assets carry a <code>sku</code></td><td>Review state</td><td><code>path</code>, <code>scope</code>, <code>usage</code>, <code>engine</code>, <code>verdict</code>, <code>verified_by</code>, <code>source</code>, <code>provenance</code>, <code>sku</code>, <code>face</code></td><td class="regen">REGENERATE bindings; keep <code>verdict</code>/<code>verified_by</code> as the QC ledger</td></tr>
+
+<tr><td><code>skyyrose/assets/data/garment-analysis.json</code></td><td>58 refs</td><td><span class="k">Gemini 2.5 Flash vision</span></td><td><code>garmentAnalysis</code>, <code>refs</code>, <code>setting</code></td><td class="del">DO NOT ABSORB as product fact — see §5</td></tr>
+
+<tr><td><code>data/product-embeddings.json</code> (514 KB) + <code>skyyrose/assets/data/product-embeddings.json</code> (1.3 MB)</td><td>31 / 19</td><td>Derived</td><td>Vectors</td><td class="del">DELETE the duplicate; regenerate one</td></tr>
+
+<tr><td><code>data/product-similarities.json</code></td><td>474 refs</td><td>Derived</td><td>Similarity graph</td><td class="regen">REGENERATE</td></tr>
+
+<tr><td><code>data/audits/openai-feed/wc-products-2026-07-08.json</code></td><td>59 refs</td><td>Snapshot</td><td>Live WC state, dated</td><td class="leave">LEAVE — an audit artifact</td></tr>
+
+<tr><td><code>data/candidates/*.json</code> ×2</td><td>1 each</td><td>Source-authority picks</td><td>lh-003, br-007 four-view source authority</td><td class="fold">FOLD IN to <code>render_sources</code></td></tr>
+
+<tr><td><code>inc/product-catalog.php</code></td><td>33</td><td>Consumer</td><td>Reads <code>['catalog']</code>, <code>['garment']</code>, <code>['images']</code> arrays at line 50</td><td class="leave">CONSUMER — repoint path only</td></tr>
+
+<tr><td>WooCommerce (live)</td><td>30/33 clean</td><td>Consumer</td><td><code>name</code>, <code>slug</code>, <code>description</code>, <code>short_description</code>, <code>sku</code>, <code>price</code>, <code>regular_price</code>, <code>categories</code>, <code>tags</code>, <code>images</code>, <code>attributes</code></td><td class="leave">CONSUMER — store conforms to SOT</td></tr>
+</table>
+
+<h2 id="copygap">3. Copy: every SKU has it — 14 are still on the base layer</h2>
+<blockquote><strong>Corrected 2026-09-17.</strong> An earlier pass of this document said 14 SKUs had "no copy." That was wrong — it measured only the enriched store and ignored the registry's own <code>catalog.description</code>. Searched every source since: <strong>all 33 SKUs carry a description</strong>, and it is the copy the live storefront currently serves.</blockquote>
+<p>What was actually verified, source by source <span class="tag">[repo]</span>:</p>
+<table>
+<tr><th>Copy layer</th><th>Coverage</th><th>Where it lives</th></tr>
+<tr><td><code>description</code> (base)</td><td><strong>33 / 33</strong></td><td><code>products[sku].catalog.description</code> — 62–120 chars, one to two sentences</td></tr>
+<tr><td>Live storefront copy</td><td><strong>33 / 33</strong></td><td>WooCommerce <code>description</code> + <code>short_description</code>, byte-identical to the registry base line (verified against the 2026-07-08 WC snapshot)</td></tr>
+<tr><td>Enriched editorial <code>description</code></td><td>19 / 33</td><td><code>product-content.json</code> — long-form, distinct from the base line</td></tr>
+<tr><td><code>short_description</code> (distinct)</td><td>19 / 33</td><td>same</td></tr>
+<tr><td><code>seo_meta</code></td><td>19 / 33</td><td>same. <strong>0 / 33 on the live store</strong> — no SEO-plugin meta keys exist on any product</td></tr>
+<tr><td><code>instagram</code> / <code>tiktok</code> captions</td><td>19 / 33</td><td>same</td></tr>
+<tr><td><code>alt_text</code></td><td>19 / 33</td><td><code>alt-text.json</code></td></tr>
+</table>
+<p>Sources checked and found to hold <em>no</em> per-SKU copy: <code>v7-cards.json</code> (badge/price/shots only), <code>lookbook-sot.json</code>, the four collection <code>sot.json</code> files, <code>garment-analysis.json</code>, <code>web-copy-asset-catalog.html</code>, and the <code>tasks/wp-commercial-theme/*</code> screenshot manifests.</p>
+<p>The 14 SKUs on the base layer: <code>br-009 br-010 br-011 br-012 br-014 br-015 sg-011 sg-012 sg-013 sg-014 sg-015 lh-005 kids-001 kids-002</code>.</p>
+<p><strong>The entry point tells a caller which layer it received</strong> — <code>content.description.source</code> names the file and <code>enriched: false</code> plus a <code>content.description.enriched</code> gap marks the base line. So an ad or SEO task can tell finished editorial copy from the one-line base description instead of guessing, and no agent ever sees an empty string.</p>
+
+<h3>Population gaps inside the registry itself</h3>
+<table>
+<tr><th>Field</th><th>Empty</th><th>Reading</th></tr>
+<tr><td><code>garment.sizing_references.garment_size_chart</code></td><td>33 / 33</td><td>No SKU has a size chart bound</td></tr>
+<tr><td><code>garment.fit.specification</code></td><td>25 / 33</td><td>Only 8 SKUs carry fit text</td></tr>
+<tr><td><code>garment.sizing_references.decoration_sizing_pointer</code></td><td>25 / 33</td><td></td></tr>
+<tr><td><code>images.back_image.path</code></td><td>16 / 33</td><td>17 have a back image</td></tr>
+<tr><td><code>render_sources.back</code></td><td>14 / 32</td><td></td></tr>
+<tr><td><code>authority</code></td><td>—</td><td>One blanket string on all 33 — see §5</td></tr>
+</table>
+
+<h2 id="schema">4. Proposed schema — additive, nothing renamed, nothing moved</h2>
+<p>This is not a greenfield schema. It is <code>logo-registry.json</code> <strong>edited in place</strong>: new sibling sections added, <code>product_registry_schema_version</code> bumped 1 → 2. <strong>Every existing key name is preserved byte-for-byte</strong>, because <code>products[sku].catalog.*</code> key names are load-bearing across <strong>116 consumer files</strong>, the <code>catalog_columns</code> ordering, and PHP array reads such as <code>['garment']['sizing_references']</code>. Renaming would turn a mechanical migration into 116 edits.</p>
+
+<pre>wordpress-theme/skyyrose-flagship/data/logo-registry.json
+  ↖ logo-registry.json      (existing root symlink — unchanged)
+  ↖ data/identity.json      (NEW symlink — same inode, no second copy)
+├─ $schema, version, updated
+├─ schema_version: 2                       ← was product_registry_schema_version: 1
+│
+├─ brand/                                   NEW — absorbs brand_primary + canon
+│   ├─ tagline, collections_order
+│   ├─ tokens{rose_gold,dark,silver,crimson,gold}
+│   └─ typography_ref: "data/brand/typography.json"   (stays its own SOT)
+│
+├─ collections/                              NEW — absorbs the 4 identity.json files
+│   └─ &lt;slug&gt;/ { key, name, status, story.seed, palette, fonts{script,caps,body},
+│                lockup.ref, imagery.hero, known_orphans }
+│
+├─ products/                                 UNCHANGED shape, 3 sections added
+│   └─ &lt;sku&gt;/
+│       ├─ catalog/          ← 24 fields, names unchanged (PHP + CSV depend on them)
+│       ├─ garment/          ← color, available_sizes, fit, materials, features,
+│       │                      sizing_references   (each keeps its .source)
+│       ├─ dossier/          ← slug + content (inline, 200,881 chars total)
+│       ├─ images/           ← image, front_model_image, back_model_image, back_image
+│       ├─ render_sources/   ← front, back, reference  (+ data/candidates picks)
+│       ├─ content/                           NEW ← product-content.json
+│       │   { description, short_description, seo_meta, instagram, tiktok,
+│       │     alt_text{&lt;image_key&gt;: str}, authority: "FOUNDER_AUTHORED"|null }
+│       ├─ corrections/                       NEW ← render-corrections.json
+│       │   [ { view, text, captured, authority: "FOUNDER_VERBATIM" } ]
+│       ├─ render_policy/                     NEW ← render-keepers.json
+│       │   { keepers: [ {style, view, reason} ] }
+│       └─ authority/                         CHANGED — per-section, not one string
+│           { garment, dossier, images, content, corrections }
+│
+├─ logos/, sku_logos/, sku_folders/          UNCHANGED
+├─ render_components/, render_source_aliases/, three_rose_cluster_colorways/,
+│  jersey_patch_standard/                     UNCHANGED
+├─ catalog_columns/                           UNCHANGED (CSV projection contract)
+├─ authority_contract/, changelog/, gaps/     UNCHANGED
+└─ derived/                                   NEW — fenced, never read by a render prompt
+    └─ vision_analysis_ref: "skyyrose/assets/data/garment-analysis.json"</pre>
+
+<h3>Organization — enforced, not aspirational</h3>
+<p>A SOT that 116 files read has to stay predictable, so the organization is now machine-checked rather than described. Three properties, all live today <span class="tag">[test]</span>:</p>
+<table>
+<tr><th>Property</th><th>Enforced by</th><th>Current state</th></tr>
+<tr><td><strong>Schema-valid</strong> — required fields, SKU pattern <code>^(br|lh|sg|kids)-[0-9]{3}$</code>, collection slug from a 4-value enum, booleans as <code>"0"</code>/<code>"1"</code> strings, image paths under <code>assets/</code>, and <code>additionalProperties: false</code> so a typo'd key is an error rather than a silent new field</td><td><code>data/logo-registry.schema.json</code> (JSON Schema 2020-12)</td><td><strong>0 violations</strong> across all 33 SKUs</td></tr>
+<tr><td><strong>Internally consistent</strong> — <code>catalog.sku</code> matches its key, <code>catalog_columns</code> is satisfied by every record, and every declared image exists on disk</td><td><code>scripts/organize_product_registry.py --check</code></td><td><strong>0 violations</strong>; no record points at a missing image</td></tr>
+<tr><td><strong>Canonically ordered</strong> — fixed top-level section order, fixed per-product section order, <code>catalog</code> keys in <code>catalog_columns</code> order, SKUs sorted by collection (SIG → BR → LH → Kids) then number</td><td>same script, <code>--apply</code></td><td><strong>35 order findings</strong> — cosmetic, see below</td></tr>
+</table>
+<p>The reading order tells the story: what the file is → who governs it → the brand → the products → the graphics → the projection contracts → history. Per product: commerce → the physical garment → the founder's specification → what represents it → what it's rendered from → copy → corrections → who vouches for it.</p>
+<p><strong>Ordering is the only open finding, and it is purely cosmetic.</strong> Proved losslessly: the reordered registry compares <em>deep-equal</em> to the current one (<code>tests/test_registry_organization.py::test_reordering_is_lossless</code>) — Python dict equality ignores key order, so an equal compare after reordering proves no value moved, dropped, or was coerced. Its benefit is diffs: today a founder edit can surface as a reshuffle in a 436 KB JSON; after the rewrite it is one changed line, which is what makes review and <code>git blame</code> usable on this file.</p>
+<p>It is left unapplied on purpose — a whole-file rewrite would collide with the uncommitted <code>codex/unified-product-registry</code> work. Run it once that lands: <code>python scripts/organize_product_registry.py --apply</code>. The script refuses to reorder while any schema or consistency finding is open, so it can never paper over a real defect.</p>
+
+<h2 id="authority">5. Two rules that must ship with the schema</h2>
+
+<h3>Per-section authority, not one blanket string</h3>
+<p>Today <code>authority</code> is the single string <code>"FOUNDER_PRODUCT_SPECIFICATIONS"</code> on all 33 SKUs. After the merge, the same record would hold founder-verbatim corrections, agent-written marketing copy, and — if absorbed — machine vision output, all under that one string. That collapse is the defect the merge would introduce. The file already sets the precedent: <code>garment.fit.source: "founder product dossier"</code>. Extend it per section so <code>FOUNDER_CONFIRMED</code> stays distinguishable from everything else.</p>
+
+<h3>Vision analysis stays out of the product record</h3>
+<blockquote><code>garment-analysis.json</code> is Gemini 2.5 Flash vision output on 58 SKU references. Folding it in as product fact re-creates the contamination vector behind <strong>bug-096</strong> — 30 SKUs of hallucinated brand canon across 120 renders — and the dossier-contamination findings from the render review. Dossiers are founder-authored, never ML-drafted. It is referenced from a fenced <code>derived/</code> section that no render prompt reads, or left where it is.</blockquote>
+
+<h2 id="constraints">6. Constraints already decided by the evidence</h2>
+
+<h3>The SOT is private; the storefront gets a generated projection</h3>
+<p>Three verified facts force this:</p>
+<ol>
+<li><code>inc/product-catalog.php:50</code> reads <code>data/logo-registry.json</code> <span class="tag">[repo]</span></li>
+<li><code>scripts/deploy-theme.sh</code> excludes <code>data/logo-registry.json</code> from the deploy rsync <span class="tag">[repo]</span></li>
+<li>The file carries 200,881 chars of design specification — shipping it publicly publishes every product's build sheet</li>
+</ol>
+<p>So the PHP catalog is currently reading a file that never reaches production. <strong>This is a live deploy blocker independent of this migration</strong>, and the fix is the same either way: the theme consumes a generated public runtime projection (commerce + image bindings only, no dossier bodies, no render sources), and the authored file stays out of the deploy. Your "one file for everything" choice is about <em>authoring</em>; this is the implementation it implies, not a contradiction of it.</p>
+
+<h3>Name collision with the four collection files — resolved by the correction</h3>
+<p>Four files are already named <code>identity.json</code> at <code>data/collections/&lt;slug&gt;/identity.json</code>. They are the canon seed for a generator chain — <code>build-collection-sot.py</code> → <code>sot.json</code>, <code>gen-design-tokens.py</code> → <code>design-tokens.css</code>, <code>gen-collection-hub.py</code> → <code>index.html</code>, all loaded through <code>sot_common.load_identity()</code>. Code consumers found: those four generators plus <code>verify-collection-sot.py</code>, <code>tests/test_collection_sot_guard.py</code>, <code>tests/collections/test_sot_common.py</code>, <code>tests/collections/test_gen_collection_hub.py</code>, and <code>.claude/hooks/catalog-drift-guard.sh</code>. Absorbing them means repointing <code>sot_common.load_identity()</code> — one function — and <code>docs/CLAUDE.md:11</code>, which still documents them as the per-collection SOT.</p>
+<p><strong>Keeping the product facts in <code>logo-registry.json</code> removes the whole collision problem.</strong> Nothing renames, so no reader of the product spine changes; the only path edit in the entire migration is that one <code>load_identity()</code> function, and the four collection files get deleted once their content is folded in — after which <code>identity.json</code> means exactly one thing.</p>
+
+<h2 id="plan">7. Four-phase plan</h2>
+<table>
+<tr><th>Phase</th><th>What happens</th><th>Gate to the next phase</th></tr>
+<tr><td><strong>1. Build</strong></td><td>Edit <code>logo-registry.json</code> in place to schema v2: add <code>brand</code>, <code>collections</code>, and the three new per-product sections, migrate the 5 authored stores in, set per-section authority. Add the <code>data/identity.json</code> symlink. <strong>Zero consumer changes</strong> — additive keys only.</td><td>Round-trip test: every one of the 33 SKUs' existing fields byte-identical to before; full pytest green with no reader edits; 14 copy gaps present as explicit <code>null</code></td></tr>
+<tr><td><strong>2. Project</strong></td><td>Extend <code>sync_product_registry.py</code> to emit every projection: CSV, dossiers, <code>sot-images.json</code>, v7 cards, collection <code>sot.json</code> + tokens + hub, asset manifests, lookbook, <strong>and the new public runtime projection for the theme</strong>.</td><td><code>--check</code> green: every projection regenerates byte-identical to what is committed today</td></tr>
+<tr><td><strong>3. Repoint</strong></td><td>Two path edits only: <code>sot_common.load_identity()</code> → the <code>collections</code> section, and <code>product-catalog.php</code> → the public projection (which closes bug-329). Plus the deploy allowlist and the drift-guard hook. Every other reader already points at <code>logo-registry.json</code> and stays untouched.</td><td>Full pytest green + <code>curl</code> proof the storefront catalog is populated on production</td></tr>
+<tr><td><strong>4. Sweep</strong></td><td>Delete the 5 absorbed authored stores, the 4 collection <code>identity.json</code> files, and the duplicate embeddings file. Repoint every ad, render, and campaign reference at the registry. CI fails on drift. <strong><code>logo-registry.json</code> and both its symlinks stay.</strong></td><td>Census-clean: no surviving import, no dangling reference</td></tr>
+</table>
+
+<h2 id="input">8. What I need from you</h2>
+<ol>
+<li><strong>Approve or amend the schema in §4</strong> — nothing moves until you have.</li>
+<li><strong>The 14 base-layer SKUs (§3)</strong> — they have descriptions, but no enriched editorial copy, SEO meta, social captions, or alt text. Do you want to write those, or should the entry point keep serving the base line (tagged <code>enriched: false</code>) and a gate hold those SKUs out of SEO and social surfaces until filled?</li>
+<li><strong>SEO meta is absent on the live store for all 33</strong> — no SEO-plugin meta keys exist on any product. Whether that ships from the registry as generated <code>&lt;title&gt;</code>/meta-description or via a plugin is a decision, not a gap I should pick.</li>
+<li><strong>Size charts</strong> — <code>garment_size_chart</code> is empty on all 33. One chart per garment type, or per SKU?</li>
+<li><strong>Fit text</strong> — 25 of 33 have none. Same question: fill now, or gate?</li>
+</ol>
+<p class="small">Open from earlier today and unaffected by this plan: the Black Rose display font decision, the Kids Capsule logo you are creating from the mascot-in-red-shirt photo, and the theme <code>fonts.css</code> still shipping retired Pacifico/Kaushan <code>@font-face</code>.</p>
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+{
+  "still_exports": 23,
+  "video_exports": 3,
+  "total_required": 26,
+  "optional_video": 1,
+  "exports": [
+    {
+      "id": "D1-E01",
+      "day": "D1",
+      "label": "Feed teaser",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "bridge"
+      ],
+      "generation_dependencies": [
+        "I1"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D1-E02",
+      "day": "D1",
+      "label": "Story panel 1",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "bridge"
+      ],
+      "generation_dependencies": [
+        "I1"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D1-E03",
+      "day": "D1",
+      "label": "Story panel 2",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "bridge"
+      ],
+      "generation_dependencies": [
+        "I1"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D1-E04",
+      "day": "D1",
+      "label": "Story panel 3",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "bridge"
+      ],
+      "generation_dependencies": [
+        "I1"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D2-E01",
+      "day": "D2",
+      "label": "Carousel Signature",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "sg"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D2-E02",
+      "day": "D2",
+      "label": "Story Signature",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "sg"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D2-E03",
+      "day": "D2",
+      "label": "Carousel Black Rose",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "br"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D2-E04",
+      "day": "D2",
+      "label": "Story Black Rose",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "br"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D3-E01",
+      "day": "D3",
+      "label": "Editorial feed",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "lh"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D3-E02",
+      "day": "D3",
+      "label": "Story panel 1",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "lh"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D3-E03",
+      "day": "D3",
+      "label": "Story panel 2",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "lh"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D3-E04",
+      "day": "D3",
+      "label": "Story panel 3",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "lh"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E01",
+      "day": "D4",
+      "label": "V1 launch film",
+      "ratio": "9:16",
+      "kind": "video",
+      "assets": [
+        "bridge",
+        "sg",
+        "br",
+        "lh",
+        "kids"
+      ],
+      "generation_dependencies": [
+        "I1",
+        "G1"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E02",
+      "day": "D4",
+      "label": "Collection carousel sg",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "sg"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E03",
+      "day": "D4",
+      "label": "Collection carousel br",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "br"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E04",
+      "day": "D4",
+      "label": "Collection carousel lh",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "lh"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E05",
+      "day": "D4",
+      "label": "Collection carousel kids",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "kids"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D4-E06",
+      "day": "D4",
+      "label": "Launch email header",
+      "ratio": "16:9",
+      "kind": "still",
+      "assets": [
+        "bridge"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D5-E01",
+      "day": "D5",
+      "label": "Kids feed",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "kids"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D5-E02",
+      "day": "D5",
+      "label": "Kids Story panel 1",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "kids"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D5-E03",
+      "day": "D5",
+      "label": "Kids Story panel 2",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "kids"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D5-E04",
+      "day": "D5",
+      "label": "Kids Story panel 3",
+      "ratio": "9:16",
+      "kind": "still",
+      "assets": [
+        "kids"
+      ],
+      "generation_dependencies": [],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D6-E01",
+      "day": "D6",
+      "label": "V3 series film",
+      "ratio": "9:16",
+      "kind": "video",
+      "assets": [
+        "train"
+      ],
+      "generation_dependencies": [
+        "I3",
+        "G3"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D6-E02",
+      "day": "D6",
+      "label": "Train feed",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "train"
+      ],
+      "generation_dependencies": [
+        "I3"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D7-E01",
+      "day": "D7",
+      "label": "V2 retargeting film",
+      "ratio": "9:16",
+      "kind": "video",
+      "assets": [
+        "br",
+        "brflat"
+      ],
+      "generation_dependencies": [
+        "I2",
+        "G2"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    },
+    {
+      "id": "D7-E02",
+      "day": "D7",
+      "label": "PDP-style feed",
+      "ratio": "4:5",
+      "kind": "still",
+      "assets": [
+        "br",
+        "brflat"
+      ],
+      "generation_dependencies": [
+        "I2"
+      ],
+      "approval": "PENDING",
+      "method": "Local assembly; source garments/marks unchanged"
+    }
+  ],
+  "optional": [
+    {
+      "id": "D5-OPTIONAL-V",
+      "kind": "video",
+      "duration": 10,
+      "method": "Local slideshow only",
+      "generation_dependencies": [],
+      "approval": "PENDING"
+    }
+  ]
+}

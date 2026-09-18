@@ -110,6 +110,9 @@ describe('merge-aware lint-staged selection', () => {
         'Comfy/receipts/receipt.json',
         'plugins/fashion-theme-team/SKILL.md',
         'skyyrose/elite_studio/assets/golden/lh-004/placement.md',
+        'logo-registry.json',
+        'wordpress-theme/skyyrose-flagship/data/logo-registry.json',
+        'wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-crewneck.md',
         'art.png',
       ])
     ))

@@ -929,3 +929,18 @@ def test_pair_with_excluded_member_falls_back_to_solo(monkeypatch):
     assert len(plans) == 1
     assert plans[0].style == "on-model"
     assert not plans[0].output_slug.startswith("pair__")
+
+
+def test_br009_founder_specified_garment_is_batch_plannable():
+    # br-009's technique, colour, digit placement and 3in x 4in patch are all
+    # founder-specified in the registry dossier, so nothing holds it out of batch
+    # planning. (A "generation hold" written into the dossier by an agent was
+    # removed as an imposed verification requirement.) Paid generation stays
+    # gated separately: `generate` needs --yes and a founder y.
+    from scripts.oai_render import pipeline, references
+
+    assert "br-009" not in config.EXCLUDED_SKUS
+    catalog = references.load_catalog()
+    assert "br-009" in pipeline.resolve_targets(catalog, collection="black-rose")
+    assert "br-009" in pipeline.resolve_targets(catalog, all_skus=True)
+    assert pipeline.resolve_targets(catalog, sku="br-009") == ["br-009"]

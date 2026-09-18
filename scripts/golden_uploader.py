@@ -91,26 +91,15 @@ def _load_catalog() -> list[dict[str, str]]:
     Uses csv module to handle quoted name fields with embedded commas.
     Returns rows in catalog order so the UI mirrors the source file.
     """
-    import csv
+    from skyyrose.core.catalog_loader import read_catalog_rows
 
-    if not CATALOG_CSV.is_file():
-        return []
-    out: list[dict[str, str]] = []
-    with CATALOG_CSV.open("r", encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
-            sku = (row.get("sku") or "").strip()
-            if not sku:
-                continue
-            out.append(
-                {
-                    "sku": sku,
-                    "name": (row.get("name") or "").strip(),
-                    "collection": (row.get("collection") or "").strip(),
-                    "dossier_slug": (row.get("dossier_slug") or "").strip(),
-                    "is_preorder": (row.get("is_preorder") or "0").strip(),
-                }
-            )
-    return out
+    return [
+        {
+            key: row.get(key, "").strip()
+            for key in ("sku", "name", "collection", "dossier_slug", "is_preorder")
+        }
+        for row in read_catalog_rows(CATALOG_CSV)
+    ]
 
 
 def _set_preorder(sku: str, value: bool) -> None:
@@ -120,6 +109,15 @@ def _set_preorder(sku: str, value: bool) -> None:
     only the target SKU's ``is_preorder`` cell changes. The catalog-drift
     guard hook fires on this write and announces the canonical touch.
     """
+    from skyyrose.core.catalog_loader import CATALOG_CSV as canonical_csv
+    from skyyrose.core.product_registry import update_catalog_fields
+
+    if CATALOG_CSV.resolve() == canonical_csv.resolve():
+        update_catalog_fields(
+            sku, {"is_preorder": "1" if value else "0", "badge": "Pre-Order" if value else ""}
+        )
+        return
+
     import csv
 
     if not CATALOG_CSV.is_file():

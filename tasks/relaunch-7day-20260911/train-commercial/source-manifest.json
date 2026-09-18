@@ -1,0 +1,202 @@
+{
+  "schema": "skyyrose.train-commercial.sources.v1",
+  "assets": [
+    {
+      "id": "SG-mascot",
+      "sku": "sg-009",
+      "role": "mascot",
+      "source": "/Users/theceo/Downloads/archive/hf_20260719_195028_5166abdf-5397-48bd-88f2-4fd8b74cd295.png",
+      "review_copy": "references/SG-mascot.png",
+      "sha256": "f29f550390913763cb02751274d93f8d7e8d948b63f4b6e9bd892d12b2a141cd",
+      "bytes": 1635781,
+      "authority": "ARCHIVED_LOOK_CORRECTION_REQUIRED"
+    },
+    {
+      "id": "SG-model",
+      "sku": "sg-009",
+      "role": "model",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-onmodel.webp",
+      "review_copy": "references/SG-model.webp",
+      "sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
+      "bytes": 222756,
+      "authority": "CANONICAL_PRODUCT_REFERENCE"
+    },
+    {
+      "id": "SG-product",
+      "sku": "sg-009",
+      "role": "product",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg",
+      "review_copy": "references/SG-product.jpeg",
+      "sha256": "cb13b25aa3854190b2fbaa3e701a96ef2c813969c8bba7118ac6e68af46711fb",
+      "bytes": 79766,
+      "authority": "CANONICAL_PRODUCT_REFERENCE"
+    },
+    {
+      "id": "BR-mascot",
+      "sku": "br-004",
+      "role": "mascot",
+      "source": "/Users/theceo/Downloads/archive/hf_20260719_195800_935b3a1a-772b-4e3b-ae86-54950e4732fe.png",
+      "review_copy": "references/BR-mascot.png",
+      "sha256": "1591484a3f6d6396db58af88249a59a374ed96ca4af6dce64c34ec662dc824dd",
+      "bytes": 1460103,
+      "authority": "ARCHIVED_LOOK_CORRECTION_REQUIRED"
+    },
+    {
+      "id": "BR-model",
+      "sku": "br-004",
+      "role": "model",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/br-004-onmodel.webp",
+      "review_copy": "references/BR-model.webp",
+      "sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+      "bytes": 225496,
+      "authority": "CANONICAL_PRODUCT_REFERENCE"
+    },
+    {
+      "id": "BR-product",
+      "sku": "br-004",
+      "role": "product",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/br-004-black-rose-hoodie.jpeg",
+      "review_copy": "references/BR-product.jpeg",
+      "sha256": "64e1c21b1fc042417fc17767d02f854fea6b0637ef0901b06f672c0876a95487",
+      "bytes": 22297,
+      "authority": "CANONICAL_PRODUCT_REFERENCE"
+    },
+    {
+      "id": "LH-mascot",
+      "sku": "lh-004",
+      "role": "mascot",
+      "source": "/Users/theceo/Downloads/archive/hf_20260719_195814_52f948f1-2aac-478a-93a8-8e2599bb2720.png",
+      "review_copy": "references/LH-mascot.png",
+      "sha256": "0bf1bb48474b546336b4a23b770f6d1b51ba886f5cdb9e7fc11111aed4fa486d",
+      "bytes": 1427748,
+      "authority": "ARCHIVED_LOOK_CORRECTION_REQUIRED"
+    },
+    {
+      "id": "LH-model",
+      "sku": "lh-004",
+      "role": "model",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-onmodel.webp",
+      "review_copy": "references/LH-model.webp",
+      "sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
+      "bytes": 297770,
+      "authority": "CANONICAL_PRODUCT_REFERENCE"
+    },
+    {
+      "id": "LH-product",
+      "sku": "lh-004",
+      "role": "product",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-bomber.png",
+      "review_copy": "references/LH-product.png",
+      "sha256": "fb8dee3a83c5df81fe8372acc9c6dba2374b2d6f1c51b4b1bf4bcbb3dc6e79af",
+      "bytes": 730306,
+      "authority": "CANONICAL_PRODUCT_REFERENCE"
+    },
+    {
+      "id": "KR-mascot",
+      "sku": "kids-001",
+      "role": "mascot",
+      "source": "/Users/theceo/Downloads/archive/hf_20260719_195821_08103114-b886-4cb9-920d-f3c9f1a60497.png",
+      "review_copy": "references/KR-mascot.png",
+      "sha256": "824d10a677dd13117c6736e142dd393ae806df0838b1b325d4f5989be95cfb3d",
+      "bytes": 1522182,
+      "authority": "ARCHIVED_LOOK_CORRECTION_REQUIRED"
+    },
+    {
+      "id": "KR-model",
+      "sku": "kids-001",
+      "role": "model",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-onmodel-v2.webp",
+      "review_copy": "references/KR-model.webp",
+      "sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
+      "bytes": 193008,
+      "authority": "CANONICAL_PRODUCT_REFERENCE"
+    },
+    {
+      "id": "KR-product",
+      "sku": "kids-001",
+      "role": "product",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-red-set.jpeg",
+      "review_copy": "references/KR-product.jpeg",
+      "sha256": "fb6ee3489c11a9223bc11598443be1b55f3c10f851cf063ff377a44670e92f9c",
+      "bytes": 26375,
+      "authority": "CANONICAL_PRODUCT_REFERENCE"
+    },
+    {
+      "id": "KP-mascot",
+      "sku": "kids-002",
+      "role": "mascot",
+      "source": "/Users/theceo/Downloads/archive/hf_20260719_195824_9b711bc8-28a1-4320-9cab-a08cb4f9be18.png",
+      "review_copy": "references/KP-mascot.png",
+      "sha256": "f36e69a1c68c6f64eca69a5c24a8e68e865a463c09a09d1fa51932eb77db2307",
+      "bytes": 1597529,
+      "authority": "ARCHIVED_LOOK_CORRECTION_REQUIRED"
+    },
+    {
+      "id": "KP-model",
+      "sku": "kids-002",
+      "role": "model",
+      "source": "/Users/theceo/DevSkyy/skyyrose/assets/images/products/kids-002/kids-002-model-front-gemini-upscaled-corrected.jpg",
+      "review_copy": "references/KP-model.jpg",
+      "sha256": "e5ec918b9c485f2bd4cc01428d08d1ad8775c221f77518d6d644596bb334bf50",
+      "bytes": 219232,
+      "authority": "HUB_VERIFIED_PRODUCT_CARD_ALT"
+    },
+    {
+      "id": "KP-product",
+      "sku": "kids-002",
+      "role": "product",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/kids-002-purple-set.jpeg",
+      "review_copy": "references/KP-product.jpeg",
+      "sha256": "e6ea845f1c877003b3489332feb7e872ccfb82fe3d0240921e7fc2f1f32728f4",
+      "bytes": 92749,
+      "authority": "CANONICAL_PRODUCT_REFERENCE"
+    },
+    {
+      "id": "H-SG",
+      "role": "hero_environment_only",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+      "review_copy": "references/H-SG.webp",
+      "sha256": "f8bb7d2a1572f575e4f9e4e45edebf6115b4339708e64f95c3bb251813fc0fd8",
+      "bytes": 149386,
+      "authority": "SOURCE_REFERENCE_ADAPTATION_PROPOSED"
+    },
+    {
+      "id": "H-BR",
+      "role": "hero_environment_only",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+      "review_copy": "references/H-BR.webp",
+      "sha256": "e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9",
+      "bytes": 141154,
+      "authority": "SOURCE_REFERENCE_ADAPTATION_PROPOSED"
+    },
+    {
+      "id": "H-LH",
+      "role": "hero_environment_only",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp",
+      "review_copy": "references/H-LH.webp",
+      "sha256": "000ec8308a8d72daa691ca8712ef751d7d8e9b9805a4b08060ebc9a59a2bc3a3",
+      "bytes": 242636,
+      "authority": "SOURCE_REFERENCE_ADAPTATION_PROPOSED"
+    },
+    {
+      "id": "H-KC",
+      "role": "hero_environment_only",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+      "review_copy": "references/H-KC.webp",
+      "sha256": "fda7df7f2f0391e10c8e93121b0757242010d4c49e69d79beb8827a32d0b7936",
+      "bytes": 142022,
+      "authority": "SOURCE_REFERENCE_ADAPTATION_PROPOSED"
+    },
+    {
+      "id": "TRAIN",
+      "role": "exterior",
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/jersey-series-town-line-train-v1.webp",
+      "review_copy": "references/train.webp",
+      "sha256": "7c444e77815a11ff9eca87c0539359b1817562c0af2acc787e838d3d1d711148",
+      "bytes": 138992
+    }
+  ],
+  "archive_provenance": "tasks/video-finish-distribute-plan.md:106-114",
+  "kids_purple_alt_proof": "assets/hub/manifest.json:1107-1126",
+  "authentication": "Local source inspection: not applicable. Higgsfield uploaded-media inventory read through connected account; no generation or upload this round."
+}

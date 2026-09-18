@@ -1,0 +1,186 @@
+{
+  "schema": "skyyrose.kids-boards.sources.v1",
+  "date": "2026-09-12",
+  "status": "LOCAL_SOURCE_REVIEW_COMPLETE_WITH_DOCUMENTED_LIMITATIONS",
+  "authentication": "NOT_APPLICABLE_LOCAL_OFFLINE_REVIEW",
+  "media_actions": {
+    "edited": false,
+    "generated": false,
+    "uploaded": false,
+    "copied": false
+  },
+  "assets": [
+    {
+      "id": "skyy-master",
+      "path": "/Users/theceo/Downloads/image.png",
+      "role": "sole_mascot_identity_master",
+      "sku": null,
+      "sha256": "a8a32b8097f6885300f537e50c942c445c09012269807b072b6854c7019b9973",
+      "bytes": 481951,
+      "visual_review": "EYES_ON_2026-09-12",
+      "authority": "USER_SUPPLIED_IDENTITY_REFERENCE",
+      "limitations": [
+        "Illustrated character, not a photographic human identity",
+        "Love Hurts outfit in this identity master is not Kids wardrobe authority"
+      ]
+    },
+    {
+      "id": "kids-red-model",
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-onmodel-v2.webp",
+      "role": "model_identity_and_garment",
+      "sku": "kids-001",
+      "sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
+      "bytes": 193008,
+      "historical_sha256_matches": true,
+      "visual_review": "EYES_ON_2026-09-12",
+      "historical_authority": "CANONICAL_PRODUCT_REFERENCE",
+      "evidence_manifest": "tasks/relaunch-7day-20260911/train-commercial/source-manifest.json",
+      "digital_source_type": "trainedAlgorithmicMedia",
+      "ai_system_used": "oai-image-2",
+      "hub_verdict": "verified",
+      "recorded_verifier": "eyes-on + founder y 2026-07-07",
+      "current_source_binding": "data/sot-images.json products kids-001 front; catalog front_model_image",
+      "limitations": [
+        "Preserve this exact product-card identity; do not claim authenticated photograph of a real child",
+        "Card visible emblem is pale/silver despite catalog black-logo wording",
+        "Card includes footwear; source does not make footwear part of offered set"
+      ]
+    },
+    {
+      "id": "kids-purple-model",
+      "path": "/Users/theceo/DevSkyy/skyyrose/assets/images/products/kids-002/kids-002-model-front-gemini-upscaled-corrected.jpg",
+      "role": "model_identity_and_garment",
+      "sku": "kids-002",
+      "sha256": "e5ec918b9c485f2bd4cc01428d08d1ad8775c221f77518d6d644596bb334bf50",
+      "bytes": 219232,
+      "historical_sha256_matches": true,
+      "visual_review": "EYES_ON_2026-09-12",
+      "historical_authority": "HUB_VERIFIED_PRODUCT_CARD_ALT",
+      "evidence_manifest": "tasks/relaunch-7day-20260911/train-commercial/source-manifest.json",
+      "digital_source_type": "trainedAlgorithmicMedia",
+      "ai_system_used": "gemini",
+      "hub_verdict": "verified",
+      "recorded_verifier": "founder verdict 2026-06-25",
+      "current_source_binding": "assets/hub/manifest.json product_card_alt source",
+      "limitations": [
+        "Explicit alternate: current generated SOT front and opening media still reference a ghost image",
+        "Preserve this exact hood-up card identity; do not claim authenticated photograph of a real child",
+        "Full shoes and feet are not visible in this square source",
+        "Lavender/purple pixels override legacy Purple/Black name for color reference"
+      ]
+    },
+    {
+      "id": "kids-red-product",
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-red-set.jpeg",
+      "role": "garment_packshot",
+      "sku": "kids-001",
+      "sha256": "fb6ee3489c11a9223bc11598443be1b55f3c10f851cf063ff377a44670e92f9c",
+      "bytes": 26375,
+      "historical_sha256_matches": true,
+      "visual_review": "EYES_ON_2026-09-12",
+      "historical_authority": "CANONICAL_PRODUCT_REFERENCE",
+      "evidence_manifest": "tasks/relaunch-7day-20260911/train-commercial/source-manifest.json",
+      "limitations": [
+        "360x360 small source; not sufficient alone for fine embroidery text",
+        "No visible white hoodie drawstrings in this low-resolution packshot versus on-model front; record source discrepancy, do not silently resolve"
+      ]
+    },
+    {
+      "id": "kids-purple-product",
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/kids-002-purple-set.jpeg",
+      "role": "garment_packshot",
+      "sku": "kids-002",
+      "sha256": "e6ea845f1c877003b3489332feb7e872ccfb82fe3d0240921e7fc2f1f32728f4",
+      "bytes": 92749,
+      "historical_sha256_matches": true,
+      "visual_review": "EYES_ON_2026-09-12",
+      "historical_authority": "CANONICAL_PRODUCT_REFERENCE",
+      "evidence_manifest": "tasks/relaunch-7day-20260911/train-commercial/source-manifest.json",
+      "limitations": [
+        "Use lavender/purple panel construction; black rose is background artwork",
+        "Garment only; no casting evidence"
+      ]
+    },
+    {
+      "id": "kids-red-archive",
+      "path": "/Users/theceo/Downloads/archive/hf_20260719_195821_08103114-b886-4cb9-920d-f3c9f1a60497.png",
+      "role": "archived_wardrobe_only",
+      "sku": "kids-001",
+      "sha256": "824d10a677dd13117c6736e142dd393ae806df0838b1b325d4f5989be95cfb3d",
+      "bytes": 1522182,
+      "historical_sha256_matches": true,
+      "visual_review": "EYES_ON_2026-09-12",
+      "historical_authority": "ARCHIVED_LOOK_CORRECTION_REQUIRED",
+      "evidence_manifest": "tasks/relaunch-7day-20260911/train-commercial/source-manifest.json",
+      "limitations": [
+        "Wardrobe/look reference only; image.png controls character identity",
+        "Hoodie white drawstrings omitted versus product-card source",
+        "Embroidery motif shape/detail differs from card reference; normalize against product evidence",
+        "Archive backgrounds do not define new train scene",
+        "No normalized Kids mascot image has been accepted in this source review"
+      ]
+    },
+    {
+      "id": "kids-purple-archive",
+      "path": "/Users/theceo/Downloads/archive/hf_20260719_195824_9b711bc8-28a1-4320-9cab-a08cb4f9be18.png",
+      "role": "archived_wardrobe_only",
+      "sku": "kids-002",
+      "sha256": "f36e69a1c68c6f64eca69a5c24a8e68e865a463c09a09d1fa51932eb77db2307",
+      "bytes": 1597529,
+      "historical_sha256_matches": true,
+      "visual_review": "EYES_ON_2026-09-12",
+      "historical_authority": "ARCHIVED_LOOK_CORRECTION_REQUIRED",
+      "evidence_manifest": "tasks/relaunch-7day-20260911/train-commercial/source-manifest.json",
+      "limitations": [
+        "Wardrobe/look reference only; image.png controls character identity",
+        "Hoodie white drawstrings omitted versus product-card source",
+        "Embroidery motif shape/detail differs from card reference; normalize against product evidence",
+        "Archive backgrounds do not define new train scene",
+        "No normalized Kids mascot image has been accepted in this source review"
+      ]
+    },
+    {
+      "id": "kids-hero",
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+      "role": "environment_only",
+      "sku": "kids-capsule",
+      "sha256": "fda7df7f2f0391e10c8e93121b0757242010d4c49e69d79beb8827a32d0b7936",
+      "bytes": 142022,
+      "historical_sha256_matches": true,
+      "visual_review": "EYES_ON_2026-09-12",
+      "historical_authority": "SOURCE_REFERENCE_ADAPTATION_PROPOSED",
+      "evidence_manifest": "tasks/relaunch-7day-20260911/train-commercial/source-manifest.json",
+      "current_source_binding": "wordpress-theme/skyyrose-flagship-2/template-immersive-kids-capsule.php:22,30 and inc/performance.php:264",
+      "limitations": [
+        "Source contains Love Hurts-clothed Skyy and The Heir/Next Up lettering: neither is Kids casting/wardrobe or wordless-film authority",
+        "Black upholstered throne, gilded outline/sculpted arms and stepped/fluted forms may inform a proposed set adaptation",
+        "Current local wiring verified, not live/staging/founder visual approval"
+      ]
+    },
+    {
+      "id": "train",
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/jersey-series-town-line-train-v1.webp",
+      "role": "exterior_design_only",
+      "sku": null,
+      "sha256": "7c444e77815a11ff9eca87c0539359b1817562c0af2acc787e838d3d1d711148",
+      "bytes": 138992,
+      "historical_sha256_matches": true,
+      "visual_review": "EYES_ON_2026-09-12",
+      "historical_authority": "EXTERIOR_SOURCE_REFERENCE",
+      "evidence_manifest": "tasks/relaunch-7day-20260911/train-commercial/source-manifest.json",
+      "limitations": [
+        "Exterior only; no canonical interior, floor plan or observation carriage layout is established by this image",
+        "Source has The Town Line and SkyyRose wording; keep text out of proposed wordless film compositions",
+        "Reference image unedited; any future set adaptation remains a candidate"
+      ]
+    }
+  ],
+  "provenance_files": [
+    "data/sot-images.json",
+    "assets/hub/manifest.json",
+    "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+    "wordpress-theme/skyyrose-flagship-2/data/opening-product-media.json",
+    "wordpress-theme/skyyrose-flagship-2/template-immersive-kids-capsule.php",
+    "tasks/relaunch-7day-20260911/train-commercial/source-manifest.json"
+  ]
+}

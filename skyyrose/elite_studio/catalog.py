@@ -495,24 +495,10 @@ class Catalog:
         return out
 
     def jersey_patch_for(self, sku: str) -> str | None:
-        """Return patch sport for a jersey SKU.
+        """Return the sport bound to this SKU's registered patch artwork."""
+        from skyyrose.elite_studio.logo_registry import LogoRegistry
 
-        Prefers the explicit ``catalog_rules.jerseys.sku_to_patch`` map when
-        populated (YAML catalogs).  Falls back to a product-name heuristic for
-        CSV-loaded catalogs that lack the rules block.
-        """
-        sku_to_patch: dict[str, str] = (self.catalog_rules.get("jerseys") or {}).get(
-            "sku_to_patch"
-        ) or {}
-        if sku in sku_to_patch:
-            return sku_to_patch[sku]
-        # Name-heuristic fallback (CSV path) — iterate canonical sport set so
-        # YAML and CSV catalogs share the same validity list (incl. soccer).
-        name = self.products_by_sku[sku].name.lower() if sku in self.products_by_sku else ""
-        for sport in Catalog._VALID_PATCH_SPORTS:
-            if sport in name:
-                return sport
-        return None
+        return LogoRegistry.load().patch_sport_for(sku)
 
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────

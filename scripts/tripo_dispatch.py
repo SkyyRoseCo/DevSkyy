@@ -25,7 +25,6 @@ from __future__ import annotations
 
 import argparse
 import asyncio
-import csv
 import os
 import sys
 from pathlib import Path
@@ -65,8 +64,9 @@ CREDITS_PER_SKU = 10  # flux.1_kontext_pro + generate_multiview_image template
 
 
 def load_catalog() -> list[dict[str, str]]:
-    with CATALOG_CSV.open(newline="", encoding="utf-8") as fh:
-        return list(csv.DictReader(fh))
+    from skyyrose.core.catalog_loader import read_catalog_rows
+
+    return read_catalog_rows(CATALOG_CSV)
 
 
 def resolve_source_image(row: dict[str, str]) -> Path:

@@ -1,0 +1,73 @@
+{
+  "master": {
+    "source_path": "/Users/theceo/Downloads/image.png",
+    "copy": "sources/skyy-master.png",
+    "sha256": "a8a32b8097f6885300f537e50c942c445c09012269807b072b6854c7019b9973",
+    "bytes": 481951,
+    "width": 1024,
+    "height": 1024,
+    "higgsfield_media_id": "169b7e97-5250-46bc-9df5-d53bf6617699",
+    "higgsfield_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/169b7e97-5250-46bc-9df5-d53bf6617699.png",
+    "higgsfield_element_id": "098cd508-30c9-4d24-ba74-dd7fa2641614",
+    "higgsfield_element_status": "completed",
+    "runway_asset_url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+    "remote_hash_verified": true,
+    "authority": "Founder supplied and selected identity master; exact same Skyy across all collection scenes. Clothing and scene references do not redefine identity."
+  },
+  "request": {
+    "model": "gpt-image-2",
+    "count": 1,
+    "ratio": "9:16",
+    "rationale": "Correct the existing Signature reveal keyframe so Skyy matches the exact founder-selected reference before Kling O3 animation.",
+    "referenceImages": [
+      {
+        "tag": "scene",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260912_011131_001516cd-7a07-4634-b140-c6b0bb2de2f7.png"
+      },
+      {
+        "tag": "skyy",
+        "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA"
+      },
+      {
+        "tag": "jacket",
+        "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg"
+      }
+    ],
+    "promptText": "Edit @scene, one portrait film frame. Replace ONLY the stylized girl on the right with EXACTLY Skyy from @skyy. @skyy is the sole identity source: match her face shape, full cheek volumes, wide dark-brown eyes and spacing, dark eyebrows, tiny rounded nose, broad smile, warm brown skin, dense shoulder-length ringlets, hairline and youthful stylized proportions. It must immediately read as the very same character from that image, dressed for this scene. Preserve the existing photographic man's face, body, clothing and pose exactly. Preserve the train, monumental gold rose, window, bridge, lighting, camera and positions. Skyy keeps the existing scene stance and wears ONLY the black jacket and white sherpa lining from @jacket; match its construction and small rose chest embroidery, with the existing cream pants and shoes. The white Love Hurts jacket, lettering, rose pants and rose shoes in @skyy are NOT wardrobe sources for this scene. The old girl's face in @scene is NOT an identity reference. Preserve Skyy's head-to-body proportions from @skyy at believable child scale beside the man; preserve her naturally voluminous curls, never shorten or tighten the hair silhouette. Neutral light on her face lets skin color match the master; add only physically plausible lighting and contact shadows. The adult stays photographic; Skyy stays the exact stylized 3D character. Front of jacket remains readable, hands low, no added text, no other changes."
+  },
+  "submission": {
+    "kind": "task_pending",
+    "taskId": "41409ced-d252-4659-9840-b80f13e319ae",
+    "taskType": "gpt_image_2",
+    "outputKind": "image",
+    "prompt": "Edit @scene, one portrait film frame. Replace ONLY the stylized girl on the right with EXACTLY Skyy from @skyy. @skyy is the sole identity source: match her face shape, full cheek volumes, wide dark-brown eyes and spacing, dark eyebrows, tiny rounded nose, broad smile, warm brown skin, dense shoulder-length ringlets, hairline and youthful stylized proportions. It must immediately read as the very same character from that image, dressed for this scene. Preserve the existing photographic man's face, body, clothing and pose exactly. Preserve the train, monumental gold rose, window, bridge, lighting, camera and positions. Skyy keeps the existing scene stance and wears ONLY the black jacket and white sherpa lining from @jacket; match its construction and small rose chest embroidery, with the existing cream pants and shoes. The white Love Hurts jacket, lettering, rose pants and rose shoes in @skyy are NOT wardrobe sources for this scene. The old girl's face in @scene is NOT an identity reference. Preserve Skyy's head-to-body proportions from @skyy at believable child scale beside the man; preserve her naturally voluminous curls, never shorten or tighten the hair silhouette. Neutral light on her face lets skin color match the master; add only physically plausible lighting and contact shadows. The adult stays photographic; Skyy stays the exact stylized 3D character. Front of jacket remains readable, hands low, no added text, no other changes.",
+    "meta": {
+      "aspectRatio": "9:16"
+    },
+    "_regenerate": {
+      "tool": "generate_image",
+      "arguments": {
+        "model": "gpt-image-2",
+        "promptText": "Edit @scene, one portrait film frame. Replace ONLY the stylized girl on the right with EXACTLY Skyy from @skyy. @skyy is the sole identity source: match her face shape, full cheek volumes, wide dark-brown eyes and spacing, dark eyebrows, tiny rounded nose, broad smile, warm brown skin, dense shoulder-length ringlets, hairline and youthful stylized proportions. It must immediately read as the very same character from that image, dressed for this scene. Preserve the existing photographic man's face, body, clothing and pose exactly. Preserve the train, monumental gold rose, window, bridge, lighting, camera and positions. Skyy keeps the existing scene stance and wears ONLY the black jacket and white sherpa lining from @jacket; match its construction and small rose chest embroidery, with the existing cream pants and shoes. The white Love Hurts jacket, lettering, rose pants and rose shoes in @skyy are NOT wardrobe sources for this scene. The old girl's face in @scene is NOT an identity reference. Preserve Skyy's head-to-body proportions from @skyy at believable child scale beside the man; preserve her naturally voluminous curls, never shorten or tighten the hair silhouette. Neutral light on her face lets skin color match the master; add only physically plausible lighting and contact shadows. The adult stays photographic; Skyy stays the exact stylized 3D character. Front of jacket remains readable, hands low, no added text, no other changes.",
+        "ratio": "9:16",
+        "count": 1,
+        "referenceImages": [
+          {
+            "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260912_011131_001516cd-7a07-4634-b140-c6b0bb2de2f7.png",
+            "tag": "scene"
+          },
+          {
+            "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+            "tag": "skyy"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg",
+            "tag": "jacket"
+          }
+        ],
+        "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+      }
+    },
+    "creditsRemaining": 1850
+  }
+}

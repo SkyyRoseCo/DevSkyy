@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-11T13:34:32.041Z",
+  "candidate_sha256": "93d18e8a0c8326faf4caa0a867abc341f01e52ea60c26d1c78e7274460fc0304",
+  "source_hashes": 26,
+  "days": 7,
+  "day_budget_percent": 100,
+  "required_exports": 26,
+  "still_exports": 23,
+  "video_exports": 3,
+  "optional_local_slideshow": 1,
+  "durations": [
+    12,
+    10,
+    12
+  ],
+  "base_cost": 45.75,
+  "with_optional_previews": 47.25,
+  "excluded_br009": true,
+  "status": "PASS_LOCAL_INVARIANTS"
+}

@@ -9208,3 +9208,8 @@
   - fn `_get_hf_token` L36-63 (~240 tok)
   - fn `show_upload_stopandshow` L64-100 (~305 tok)
   - fn `upload_zip` L101-183 (~614 tok)
+
+## ./docs/research/
+
+- `2026-09-12-brand-story-storyboard-line-introduction-workflows.md` — deep-research report: brand-story frameworks/tests, storyboard + AI pipeline, collection-launch/drop model, AI disclosure law, SkyyRose applied section; 130 cited sources (~17770 tok)
+- `2026-09-12-brand-story-ledgers/` — three exa agent reports with full URL ledgers backing the report above; provenance evidence, not prose to read (~34497 tok)

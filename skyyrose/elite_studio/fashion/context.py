@@ -23,16 +23,13 @@ from skyyrose.core.catalog_loader import read_catalog_rows
 
 _DEFAULT_SEASON = "FW26"
 
-# Cache loaded catalog to avoid repeated CSV reads
+# Compatibility handle for callers; each read follows current registry facts.
 _catalog_cache: dict[str, dict[str, str]] | None = None
 
 
 def _load_catalog() -> dict[str, dict[str, str]]:
-    """Load product catalog CSV into a dict keyed by SKU."""
+    """Load current registry product facts into a dict keyed by SKU."""
     global _catalog_cache
-    if _catalog_cache is not None:
-        return _catalog_cache
-
     catalog: dict[str, dict[str, str]] = {}
     try:
         for row in read_catalog_rows(_CATALOG_PATH):

@@ -125,8 +125,8 @@ def _garment_paths(sku: str, collection: str) -> list[Path]:
     return [r.path for r in _garment_refs(sku, collection)]
 
 
-def _resolve(sku: str, collection: str | None) -> tuple[str, str, str]:
-    """Return (name, collection, scene_desc) from the canonical catalog row.
+def _resolve(sku: str, collection: str | None) -> tuple[str, str, str, str]:
+    """Return (name, collection, scene_desc, placement) from the canonical catalog row.
 
     ``get_product_with_dossier`` hard-fails (KeyError for an unknown SKU,
     DossierMissingError for an un-authored dossier) — convert both to
@@ -139,65 +139,12 @@ def _resolve(sku: str, collection: str | None) -> tuple[str, str, str]:
     name = (row.get("name") or sku).strip()
     coll = (collection or row.get("collection") or "").strip()
     scene_desc = COLLECTION_SCENE.get(coll, DEFAULT_SCENE)
-    placement = _placement_spec(row)
-    return name, coll, scene_desc, placement
+    from skyyrose.elite_studio.logo_registry import LogoRegistry
 
-
-def _placement_spec(row: dict) -> str:
-    """One-line brand-mark placement directive built from the dossier.
-
-    The on-model prompt must state WHERE each mark sits or gpt-image-2 invents
-    placement (founder-reported: the br-005 hip logo rendered on the arm). Pulls
-    the dossier's Branding + Negative blocks, strips markdown, and collapses them
-    into an imperative the edit call can follow — generalises to every SKU rather
-    than special-casing br-005.
-    """
-
-    # Keep only the placement-bearing lines: drop the reference/file-path block
-    # ("> Logo art canonical reference: data/...") and markdown chrome, so the
-    # edit prompt gets WHERE-each-mark-sits, not file paths it cannot use.
-    _noise = re.compile(
-        r"(data/|assets/|\.md\b|\.jpe?g\b|\.png\b|\.webp\b"
-        r"|canonical reference|reference photo|logo art)",
-        re.I,
+    placement = LogoRegistry.load().prompt_instructions(
+        sku, require_sizing=references.requires_patch(sku)
     )
-
-    def _lines(text: str) -> str:
-        kept: list[str] = []
-        for ln in (text or "").splitlines():
-            ln = ln.strip()
-            if not ln or ln.startswith(">") or _noise.search(ln):
-                continue
-            ln = re.sub(r"[*_`]+", "", ln)
-            ln = re.sub(r"^#{1,6}\s*", "", ln)
-            ln = re.sub(r"^[-•]\s*", "", ln).strip()
-            if ln:
-                kept.append(ln)
-        return "; ".join(kept)
-
-    # get_product_with_dossier nests the parsed Dossier under "_dossier" (the
-    # branding/negative blocks are NOT promoted to the top-level row).
-    dossier = row.get("_dossier")
-    if dossier is not None:
-        branding_raw = getattr(dossier, "branding_block", "") or ""
-        negative_raw = getattr(dossier, "negative_block", "") or ""
-    else:
-        d = row.get("dossier") if isinstance(row.get("dossier"), dict) else {}
-        branding_raw = d.get("branding_block", "")
-        negative_raw = d.get("negative_block", "")
-    branding = _lines(branding_raw)[:1800]
-    negative = _lines(negative_raw)[:900]
-    parts: list[str] = []
-    if branding:
-        parts.append(
-            "Render each described brand mark EXACTLY ONCE, only in its single "
-            "stated location — do NOT mirror, repeat, or duplicate any mark onto "
-            "the opposite side of the body, onto a sleeve or arm, or anywhere the "
-            f"spec does not name. Placement spec: {branding}"
-        )
-    if negative:
-        parts.append(f"These must NOT appear anywhere on the garment: {negative}")
-    return " ".join(parts)
+    return name, coll, scene_desc, placement
 
 
 def build_prompt(name: str, scene_desc: str, has_logo: bool = False, placement: str = "") -> str:

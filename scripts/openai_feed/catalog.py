@@ -19,7 +19,7 @@ DEFAULT_CATALOG_PATH = (
 
 def load_catalog(path: Path = DEFAULT_CATALOG_PATH) -> dict[str, dict[str, Any]]:
     """Return {sku: row_dict} for every row in the catalog CSV."""
-    if not path.exists():
+    if path.resolve() != DEFAULT_CATALOG_PATH.resolve() and not path.exists():
         raise FileNotFoundError(f"Canonical catalog CSV not found at {path} (see SOT.md)")
     return {
         sku: dict(row) for row in read_catalog_rows(path) if (sku := row.get("sku", "").strip())

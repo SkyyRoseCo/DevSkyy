@@ -1,0 +1,42 @@
+{
+  "checked_utc": "2026-09-13T03:43:00.772833+00:00",
+  "scope": "Four-document snapshot review; selected primary-source checks, not exhaustive source verification",
+  "source_comparisons": [
+    {
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/docs/research/2026-09-12-brand-story-storyboard-line-introduction-workflows.md",
+      "expected_sha256": "442eb0a34081349bd26f580884f842b4ce222d3ac6459591310848299a06b79e",
+      "current_sha256": "442eb0a34081349bd26f580884f842b4ce222d3ac6459591310848299a06b79e",
+      "unchanged": true
+    },
+    {
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/docs/research/2026-09-12-brand-story-ledgers/research-brand-story.md",
+      "expected_sha256": "83ecd682c949a9c1dd46a119628469e2cf771f0878239239bc6f545f96c7d7ba",
+      "current_sha256": "83ecd682c949a9c1dd46a119628469e2cf771f0878239239bc6f545f96c7d7ba",
+      "unchanged": true
+    },
+    {
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/docs/research/2026-09-12-brand-story-ledgers/research-launch.md",
+      "expected_sha256": "03686f5ea656a47e9006e9de69acf6caee26f0c16dceb201cfcbded0ce09e460",
+      "current_sha256": "03686f5ea656a47e9006e9de69acf6caee26f0c16dceb201cfcbded0ce09e460",
+      "unchanged": true
+    },
+    {
+      "source": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/docs/research/2026-09-12-brand-story-ledgers/research-storyboard.md",
+      "expected_sha256": "b5d2d42e2bddc551c33a46d1d3a9c4aa03231dab805ad8d3b154ecb8d49ef49e",
+      "current_sha256": "b5d2d42e2bddc551c33a46d1d3a9c4aa03231dab805ad8d3b154ecb8d49ef49e",
+      "unchanged": true
+    }
+  ],
+  "newer_research_documents": [],
+  "audit_files": {
+    "storyboard-audit.md": 11965,
+    "launch-audit.md": 8879,
+    "brand-audit.md": 11920
+  },
+  "claude_source_edits": false,
+  "claude_terminal_input": false,
+  "authenticated_account_actions": false,
+  "media_generation": false,
+  "campaign_actions": false,
+  "authentication": "Not applicable: local document review and public-source research"
+}

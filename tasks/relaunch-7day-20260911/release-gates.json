@@ -1,0 +1,36 @@
+{
+  "task_id": "RELAUNCH-7DAY-20260911",
+  "state": "RENDERED_FOR_FOUNDER_REVIEW",
+  "generation_allowed": true,
+  "publication_allowed": false,
+  "missing": [
+    "approved launch date and time",
+    "paid-media budget and activation authority",
+    "current live route/product-state/checkout/tracking evidence"
+  ],
+  "excluded_assets": [
+    {
+      "sku": "br-009",
+      "reason": "No approved correct-patch garment image; technique/color unresolved; train-only concept remains separate"
+    },
+    {
+      "sku": "lh-004",
+      "view": "back",
+      "reason": "Hub pending; excluded"
+    }
+  ],
+  "resolved_source_facts": [
+    "br-009 front rose in3/back rose in2; later founder review supersedes stale both-fill dossier",
+    "lh-004 intended satin appearance; no fiber composition inference"
+  ],
+  "note": "Execution disposition only; no runner or ad account is changed by this local file.",
+  "authorization": {
+    "quote": "use the right workflow in Higgsfield to create. i approve paid rendering. i want to see nothing generic",
+    "date": "2026-09-11",
+    "scope": "Approved campaign reference-based render production; no publication; excluded jersey/back preserved",
+    "budget": "Stay within previously quoted47.25-credit production envelope unless further authorization",
+    "retry": "No automatic paid retries"
+  },
+  "status": "RENDERED_FOR_FOUNDER_REVIEW",
+  "production_report": "rendered/PRODUCTION-REPORT.md"
+}

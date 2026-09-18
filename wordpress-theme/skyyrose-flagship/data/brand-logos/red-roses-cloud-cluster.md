@@ -1,14 +1,14 @@
 ---
 logo_id: red-roses-cloud-cluster
-collection: love-hurts
+collection: shared_signature_love_hurts
 image_path: wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg
 sibling_of: data/brand-logos/black-rose-logo.md
 ---
 
 # Red Roses Cloud Cluster — Canonical Reference
 
-The Love Hurts collection's variant of the canonical rose-cluster logo
-composition. Identical structure to the Black Rose logo (three roses, thorny
+The shared red rose-cluster used on the Signature Sherpa Jacket (sg-009)
+and the Love Hurts placements explicitly listed in logo-registry.json. Identical structure to the Black Rose logo (three roses, thorny
 green vines, white-and-blue cloud at the base) but rendered with **red roses**
 instead of greyscale.
 
@@ -31,8 +31,8 @@ green vines wrapping around the stems:
 
 ## Relationship to the Black Rose Logo
 
-This is the **Love Hurts collection's parallel** to the Black Rose
-three-rose-cluster. The structure / composition / cloud / vines / leaves
+This shared red colorway is used in both Signature and Love Hurts; the
+registry and product dossier determine each actual placement. The structure / composition / cloud / vines / leaves
 are identical — only the rose petal color changes from greyscale to red.
 
 ## Color Palette

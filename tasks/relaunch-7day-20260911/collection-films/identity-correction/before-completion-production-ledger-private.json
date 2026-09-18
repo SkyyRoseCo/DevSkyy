@@ -1,0 +1,40 @@
+{
+  "master": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+  "tasks": {
+    "SGB_rejected": "41409ced-d252-4659-9840-b80f13e319ae",
+    "SG_wardrobe": "4f08df8a-237b-4a2e-afb0-1b9bef5e0b48",
+    "BR_candidate_rejected": "077c02ac-a4f6-4fa5-b958-390f020064be"
+  },
+  "starting_runway_credits": 1870,
+  "latest_observed_runway_credits": 1725,
+  "observed_image_spend": 60,
+  "motion_model": "kling-o3-pro",
+  "motion_jobs": [
+    {
+      "task_id": "f1c5baf3-e8a5-4165-8416-3a52f955445c",
+      "status": "FAILED_CONTENT_MODERATION",
+      "moderation_category": "CHILDREN",
+      "submitted_credits": 85,
+      "credits_returned_observed": 85,
+      "output": null,
+      "retry": false
+    },
+    {
+      "task_id": "14616b11-3f52-44e0-889a-945f1227ffaa",
+      "status": "SUCCEEDED_CORRECTION_REQUIRED_DO_NOT_ASSEMBLE",
+      "scope": "Separate adult-only source-performer shot; no child or mascot",
+      "reserved_credits": 85,
+      "result": "kling-adult-shot-result.json",
+      "review": "kling-adult-shot-review.json"
+    }
+  ],
+  "no_automatic_retries": true,
+  "reference_requirements": {
+    "Skyy": "Use founder image.png in every image and motion call; no alternative mascot identities.",
+    "Black_Rose": "Use actual-video male frames731 and1427 in every image and motion call; no invented male from earlier film."
+  },
+  "next_action": "Resolve mascot-generation provider block and correct adult-shot trouser graphic, copied overlay and reveal. No additional generations submitted.",
+  "motion_reserved_credits": 0,
+  "completed_motion_spend": 85,
+  "total_observed_net_spend": 145
+}

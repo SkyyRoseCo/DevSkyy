@@ -1,0 +1,46 @@
+[
+  {
+    "skill": "video-script",
+    "source": "/Users/theceo/plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/video-script/SKILL.md",
+    "expected_sha256": "f18b22ee9ebbf94d66612363d1c1591738f4d52b1fcf45bcbfd0a54557883b01",
+    "actual_sha256": "f18b22ee9ebbf94d66612363d1c1591738f4d52b1fcf45bcbfd0a54557883b01",
+    "gap_ids": [
+      "missing-skyyrose-authority-binding",
+      "missing-candidate-evidence-binding",
+      "missing-authenticated-claim-sources",
+      "missing-explicit-input-contract",
+      "privacy-consent-suppression-gap",
+      "commerce-truth-and-dark-pattern-gap",
+      "rights-and-media-provenance-gap"
+    ],
+    "closure_ids": [
+      "bind-skyyrose-canon-and-sot",
+      "bind-candidate-and-independent-review",
+      "retrieve-pinned-primary-authority",
+      "require-typed-task-inputs",
+      "enforce-privacy-consent-suppression",
+      "enforce-commerce-truth-and-experiment-gates",
+      "enforce-rights-and-media-provenance"
+    ]
+  },
+  {
+    "skill": "viral-content-formula",
+    "source": "/Users/theceo/plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/viral-content-formula/SKILL.md",
+    "expected_sha256": "91bf993bab53fc25d3efbfac2f58a3fccc80685a8ada96260438c5e9227282ca",
+    "actual_sha256": "91bf993bab53fc25d3efbfac2f58a3fccc80685a8ada96260438c5e9227282ca",
+    "gap_ids": [
+      "missing-skyyrose-authority-binding",
+      "missing-candidate-evidence-binding",
+      "missing-authenticated-claim-sources",
+      "privacy-consent-suppression-gap",
+      "rights-and-media-provenance-gap"
+    ],
+    "closure_ids": [
+      "bind-skyyrose-canon-and-sot",
+      "bind-candidate-and-independent-review",
+      "retrieve-pinned-primary-authority",
+      "enforce-privacy-consent-suppression",
+      "enforce-rights-and-media-provenance"
+    ]
+  }
+]

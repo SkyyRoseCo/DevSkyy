@@ -1,0 +1,74 @@
+{
+  "request": {
+    "model": "gpt-image-2",
+    "count": 1,
+    "ratio": "9:16",
+    "rationale": "Rebuild Black Rose directly from the actual man in the user's original bomber video, with the exact new Skyy identity; do not use the previously invented male as a reference.",
+    "referenceImages": [
+      {
+        "tag": "actual_man",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0e4f2dc8-d20c-4245-8e51-a37dcea29ea6.png"
+      },
+      {
+        "tag": "same_man",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0bd8bc95-0044-44b6-872b-8d6805de2fcb.png"
+      },
+      {
+        "tag": "skyy",
+        "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA"
+      },
+      {
+        "tag": "bomber",
+        "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/br-006-sherpa-jacket.jpeg"
+      },
+      {
+        "tag": "hero",
+        "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp"
+      }
+    ],
+    "promptText": "Create a single cinematic portrait 9:16 frame by relocating the EXACT photographed man in @actual_man into a night train carriage. @same_man is a second unchanged frame of THAT SAME MAN, confirming his identity. Retain his precise face, facial structure, textured hair and fringe, eyebrows, nose ring, stud earrings, cheek mark, thin mustache, chin beard, skin and age appearance from these actual footage frames. Preserve his photographic likeness; do not recast, beautify or invent a similar model. He is seated at camera-left at shallow three-quarter front, hands resting low, in the exact black satin hooded sherpa bomber and dark trousers he wears in the source, chest embroidery readable, hood down. Beside him at camera-right stands the EXACT stylized girl @skyy, preserving her rounded cheeks, large dark-brown eyes, full eyebrows, small nose, smile, warm brown skin, dense voluminous dark ringlets and child head-to-body proportions. She wears a correctly fitted child-scale version of the SAME black bomber, matched to @bomber and the actual footage; black pants. Her white Love Hurts outfit in the identity reference is NOT carried into this scene. The two exchange a small warm glance; Skyy's shoulders remain front-readable. Frame both full silhouettes seated/standing from hair to feet, faces clearly resolved at a shared eye line. Carriage: curved black metal shell, tall rounded-rectangle windows, tactile black bench, straight aisle, restrained silver practical lights. Neutral face fill, satin texture; dramatic night but no crushed details. Through the side window show a monumental fragment of the exact silver-edged black rose-star and Bay Bridge from @hero, fixed in the exterior landscape. @hero provides architecture/sculpture only: none of its people, lettering or wardrobe. Natural shadows attach Skyy's stylized 3D body to the photographic space. No added text, sign, title, other person, smoke effect or changes to the products."
+  },
+  "submission": {
+    "kind": "task_pending",
+    "taskId": "077c02ac-a4f6-4fa5-b958-390f020064be",
+    "taskType": "gpt_image_2",
+    "outputKind": "image",
+    "prompt": "Create a single cinematic portrait 9:16 frame by relocating the EXACT photographed man in @actual_man into a night train carriage. @same_man is a second unchanged frame of THAT SAME MAN, confirming his identity. Retain his precise face, facial structure, textured hair and fringe, eyebrows, nose ring, stud earrings, cheek mark, thin mustache, chin beard, skin and age appearance from these actual footage frames. Preserve his photographic likeness; do not recast, beautify or invent a similar model. He is seated at camera-left at shallow three-quarter front, hands resting low, in the exact black satin hooded sherpa bomber and dark trousers he wears in the source, chest embroidery readable, hood down. Beside him at camera-right stands the EXACT stylized girl @skyy, preserving her rounded cheeks, large dark-brown eyes, full eyebrows, small nose, smile, warm brown skin, dense voluminous dark ringlets and child head-to-body proportions. She wears a correctly fitted child-scale version of the SAME black bomber, matched to @bomber and the actual footage; black pants. Her white Love Hurts outfit in the identity reference is NOT carried into this scene. The two exchange a small warm glance; Skyy's shoulders remain front-readable. Frame both full silhouettes seated/standing from hair to feet, faces clearly resolved at a shared eye line. Carriage: curved black metal shell, tall rounded-rectangle windows, tactile black bench, straight aisle, restrained silver practical lights. Neutral face fill, satin texture; dramatic night but no crushed details. Through the side window show a monumental fragment of the exact silver-edged black rose-star and Bay Bridge from @hero, fixed in the exterior landscape. @hero provides architecture/sculpture only: none of its people, lettering or wardrobe. Natural shadows attach Skyy's stylized 3D body to the photographic space. No added text, sign, title, other person, smoke effect or changes to the products.",
+    "meta": {
+      "aspectRatio": "9:16"
+    },
+    "_regenerate": {
+      "tool": "generate_image",
+      "arguments": {
+        "model": "gpt-image-2",
+        "promptText": "Create a single cinematic portrait 9:16 frame by relocating the EXACT photographed man in @actual_man into a night train carriage. @same_man is a second unchanged frame of THAT SAME MAN, confirming his identity. Retain his precise face, facial structure, textured hair and fringe, eyebrows, nose ring, stud earrings, cheek mark, thin mustache, chin beard, skin and age appearance from these actual footage frames. Preserve his photographic likeness; do not recast, beautify or invent a similar model. He is seated at camera-left at shallow three-quarter front, hands resting low, in the exact black satin hooded sherpa bomber and dark trousers he wears in the source, chest embroidery readable, hood down. Beside him at camera-right stands the EXACT stylized girl @skyy, preserving her rounded cheeks, large dark-brown eyes, full eyebrows, small nose, smile, warm brown skin, dense voluminous dark ringlets and child head-to-body proportions. She wears a correctly fitted child-scale version of the SAME black bomber, matched to @bomber and the actual footage; black pants. Her white Love Hurts outfit in the identity reference is NOT carried into this scene. The two exchange a small warm glance; Skyy's shoulders remain front-readable. Frame both full silhouettes seated/standing from hair to feet, faces clearly resolved at a shared eye line. Carriage: curved black metal shell, tall rounded-rectangle windows, tactile black bench, straight aisle, restrained silver practical lights. Neutral face fill, satin texture; dramatic night but no crushed details. Through the side window show a monumental fragment of the exact silver-edged black rose-star and Bay Bridge from @hero, fixed in the exterior landscape. @hero provides architecture/sculpture only: none of its people, lettering or wardrobe. Natural shadows attach Skyy's stylized 3D body to the photographic space. No added text, sign, title, other person, smoke effect or changes to the products.",
+        "ratio": "9:16",
+        "count": 1,
+        "referenceImages": [
+          {
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0e4f2dc8-d20c-4245-8e51-a37dcea29ea6.png",
+            "tag": "actual_man"
+          },
+          {
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0bd8bc95-0044-44b6-872b-8d6805de2fcb.png",
+            "tag": "same_man"
+          },
+          {
+            "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+            "tag": "skyy"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/br-006-sherpa-jacket.jpeg",
+            "tag": "bomber"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+            "tag": "hero"
+          }
+        ],
+        "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+      }
+    },
+    "creditsRemaining": 1830
+  }
+}

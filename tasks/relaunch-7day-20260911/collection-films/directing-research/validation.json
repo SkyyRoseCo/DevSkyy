@@ -1,0 +1,111 @@
+{
+  "date": "2026-09-12",
+  "scope": "Research production playbook",
+  "status": "COMPLETE",
+  "authentication": "NOT_APPLICABLE: public source and local document review; no provider account execution",
+  "source_entries": 18,
+  "citation_ids_matched": true,
+  "pdf_pages": [
+    {
+      "page": 1,
+      "text_characters": 2639,
+      "links": 2
+    },
+    {
+      "page": 2,
+      "text_characters": 2672,
+      "links": 0
+    },
+    {
+      "page": 3,
+      "text_characters": 2733,
+      "links": 1
+    },
+    {
+      "page": 4,
+      "text_characters": 2923,
+      "links": 3
+    },
+    {
+      "page": 5,
+      "text_characters": 3205,
+      "links": 1
+    },
+    {
+      "page": 6,
+      "text_characters": 3167,
+      "links": 1
+    },
+    {
+      "page": 7,
+      "text_characters": 2983,
+      "links": 4
+    },
+    {
+      "page": 8,
+      "text_characters": 2624,
+      "links": 1
+    },
+    {
+      "page": 9,
+      "text_characters": 2480,
+      "links": 0
+    },
+    {
+      "page": 10,
+      "text_characters": 2871,
+      "links": 2
+    },
+    {
+      "page": 11,
+      "text_characters": 2641,
+      "links": 0
+    },
+    {
+      "page": 12,
+      "text_characters": 1737,
+      "links": 6
+    },
+    {
+      "page": 13,
+      "text_characters": 1418,
+      "links": 11
+    }
+  ],
+  "visual_review": "All 13 page layouts inspected; page 5 footnote overflow corrected and re-rendered. No clipping or orphaned notes remains.",
+  "independent_reviews": [
+    {
+      "reviewer": "research_identity_routes",
+      "scope": "Identity/reference/model-route claims and examples",
+      "verdict": "PASS",
+      "optional_improvement": "Explicit five-second timing added to illustrative motion example"
+    },
+    {
+      "reviewer": "research_enhancement",
+      "scope": "Enhancement, Cinema and adoption claims",
+      "verdict": "CORRECTION_IMPLEMENTED",
+      "correction": "Hidden submitted expansion now marked unverified; preserve available request receipt and inspect candidate; no false unchanged-prompt claim"
+    }
+  ],
+  "limits": [
+    "New prompt examples illustrative and unexecuted",
+    "No comparative render benchmark",
+    "No fresh account or price verification",
+    "No new film approval",
+    "No installed skill changes"
+  ],
+  "artifacts": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-research/PLAYBOOK.md",
+      "sha256": "9ab59b09499acbd6a29013aa53debdfe4529fd83344c854c7a8fb6620d016961"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-research/SkyyRose-Film-Production-Playbook.pdf",
+      "sha256": "bc56f9d55c283a068f43a4375cc278363b1f0d00ee83bb7be0865f3aa0cda856"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-research/sources.json",
+      "sha256": "6ddc1cf79a5a7adcca76334d1dd48a37e4bbce17b607d3e560b11cd82a3c8062"
+    }
+  ]
+}

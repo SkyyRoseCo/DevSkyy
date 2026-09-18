@@ -184,6 +184,11 @@ def _load_json_list(json_path: Path) -> list[dict]:
 
 
 def _read_catalog(csv_path: Path) -> tuple[list[dict], list[str]]:
+    from skyyrose.core.catalog_loader import CATALOG_CSV, read_catalog_rows
+
+    if csv_path.resolve() == CATALOG_CSV.resolve():
+        rows = read_catalog_rows()
+        return rows, list(rows[0])
     if not csv_path.exists():
         raise ReviewError(f"catalog not found: {csv_path}")
     with csv_path.open(encoding="utf-8", newline="") as f:
@@ -288,7 +293,14 @@ def approve(sku: str, *, root: Path | str | None = None) -> ApprovalResult:
             raise ReviewError(
                 f"row count drift before write: expected {row_count_before}, got {len(rows)}"
             )
-        atomic_csv_write(rows, fieldnames, csv_path)
+        from skyyrose.core.product_registry import PRODUCT_REGISTRY, update_catalog_fields
+
+        registry_path = csv_path.parent / "logo-registry.json"
+        if registry_path.exists() or registry_path.resolve() == PRODUCT_REGISTRY.resolve():
+            update_catalog_fields(sku, {FRONT_MODEL_COL: new_front}, registry_path)
+        else:
+            # Explicit custom-root fixtures retain their standalone CSV behavior.
+            atomic_csv_write(rows, fieldnames, csv_path)
     except BaseException:
         if theme_dst.exists():
             try:

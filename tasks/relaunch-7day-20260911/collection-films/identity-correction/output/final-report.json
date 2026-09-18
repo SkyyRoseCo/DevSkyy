@@ -1,0 +1,1092 @@
+{
+  "archive": {
+    "bytes": 864725219,
+    "crc": "PASS",
+    "file": "SkyyRose-Town-Line-Corrected-Films.zip",
+    "members": 46,
+    "private_download_data_excluded": true,
+    "sha256": "81544b77481cc38f129ed29f3dfb00d948c105fd07196cfe276525cfc83e39d5"
+  },
+  "audio_tracks": 0,
+  "canvas": [
+    720,
+    1280
+  ],
+  "films": [
+    {
+      "frames": 480,
+      "id": "signature",
+      "master": {
+        "all_frame_timestamps_exact": true,
+        "audio_tracks": 0,
+        "average_fps": "24000/1001",
+        "bytes": 105312015,
+        "duration": 20.02,
+        "file": "signature-lossless.mp4",
+        "fps": "24000/1001",
+        "frames": 480,
+        "height": 1280,
+        "keyframes": [
+          {
+            "frame": 0,
+            "pts": 0
+          },
+          {
+            "frame": 48,
+            "pts": 48048
+          },
+          {
+            "frame": 96,
+            "pts": 96096
+          },
+          {
+            "frame": 144,
+            "pts": 144144
+          },
+          {
+            "frame": 192,
+            "pts": 192192
+          },
+          {
+            "frame": 240,
+            "pts": 240240
+          },
+          {
+            "frame": 288,
+            "pts": 288288
+          },
+          {
+            "frame": 336,
+            "pts": 336336
+          },
+          {
+            "frame": 384,
+            "pts": 384384
+          },
+          {
+            "frame": 432,
+            "pts": 432432
+          }
+        ],
+        "pixel_format": "yuv420p",
+        "sha256": "381720ee14916169b6c36a66266dee9bb428d20f3ad8e35c8f9f2ba73318a6ad",
+        "time_base": "1/24000",
+        "width": 720
+      },
+      "segments": [
+        {
+          "clip": "SGA",
+          "end": 240,
+          "start": 0
+        },
+        {
+          "clip": "SGB",
+          "end": 240,
+          "start": 0
+        }
+      ],
+      "sheet": "signature-sheet.jpg",
+      "source_frames_pixel_matched": 0,
+      "source_proof": "signature-source-frame-proof.json",
+      "title": "The First Light",
+      "viewing": {
+        "all_frame_timestamps_exact": true,
+        "audio_tracks": 0,
+        "average_fps": "24000/1001",
+        "bytes": 11900310,
+        "duration": 20.02,
+        "file": "signature.mp4",
+        "fps": "24000/1001",
+        "frames": 480,
+        "height": 1280,
+        "keyframes": [
+          {
+            "frame": 0,
+            "pts": 0
+          },
+          {
+            "frame": 48,
+            "pts": 48048
+          },
+          {
+            "frame": 96,
+            "pts": 96096
+          },
+          {
+            "frame": 144,
+            "pts": 144144
+          },
+          {
+            "frame": 192,
+            "pts": 192192
+          },
+          {
+            "frame": 240,
+            "pts": 240240
+          },
+          {
+            "frame": 288,
+            "pts": 288288
+          },
+          {
+            "frame": 336,
+            "pts": 336336
+          },
+          {
+            "frame": 384,
+            "pts": 384384
+          },
+          {
+            "frame": 432,
+            "pts": 432432
+          }
+        ],
+        "pixel_format": "yuv420p",
+        "sha256": "9920eaae53d6d1dda711d819a28dbe6c45dbc45a1a1a4e03fb71e13abbc355c3",
+        "time_base": "1/24000",
+        "width": 720
+      }
+    },
+    {
+      "frames": 480,
+      "id": "black-rose",
+      "master": {
+        "all_frame_timestamps_exact": true,
+        "audio_tracks": 0,
+        "average_fps": "24000/1001",
+        "bytes": 101297409,
+        "duration": 20.02,
+        "file": "black-rose-lossless.mp4",
+        "fps": "24000/1001",
+        "frames": 480,
+        "height": 1280,
+        "keyframes": [
+          {
+            "frame": 0,
+            "pts": 0
+          },
+          {
+            "frame": 48,
+            "pts": 48048
+          },
+          {
+            "frame": 96,
+            "pts": 96096
+          },
+          {
+            "frame": 120,
+            "pts": 120120
+          },
+          {
+            "frame": 144,
+            "pts": 144144
+          },
+          {
+            "frame": 192,
+            "pts": 192192
+          },
+          {
+            "frame": 240,
+            "pts": 240240
+          },
+          {
+            "frame": 288,
+            "pts": 288288
+          },
+          {
+            "frame": 336,
+            "pts": 336336
+          },
+          {
+            "frame": 360,
+            "pts": 360360
+          },
+          {
+            "frame": 408,
+            "pts": 408408
+          },
+          {
+            "frame": 456,
+            "pts": 456456
+          }
+        ],
+        "pixel_format": "yuv420p",
+        "sha256": "c650d0921639af480cb1834c18bf7f9b781fa948353b48177f55be9471d5bfe6",
+        "time_base": "1/24000",
+        "width": 720
+      },
+      "segments": [
+        {
+          "clip": "SOURCE",
+          "end": 48,
+          "start": 0
+        },
+        {
+          "clip": "BRA",
+          "end": 72,
+          "start": 0
+        },
+        {
+          "clip": "SOURCE",
+          "end": 72,
+          "start": 48
+        },
+        {
+          "clip": "SOURCE",
+          "end": 120,
+          "start": 72
+        },
+        {
+          "clip": "BRA",
+          "end": 168,
+          "start": 72
+        },
+        {
+          "clip": "SOURCE",
+          "end": 192,
+          "start": 120
+        },
+        {
+          "clip": "BRB",
+          "end": 120,
+          "start": 0
+        }
+      ],
+      "sheet": "black-rose-sheet.jpg",
+      "source_frames_pixel_matched": 192,
+      "source_proof": "black-rose-source-frame-proof.json",
+      "title": "The Night Car",
+      "viewing": {
+        "all_frame_timestamps_exact": true,
+        "audio_tracks": 0,
+        "average_fps": "24000/1001",
+        "bytes": 12736564,
+        "duration": 20.02,
+        "file": "black-rose.mp4",
+        "fps": "24000/1001",
+        "frames": 480,
+        "height": 1280,
+        "keyframes": [
+          {
+            "frame": 0,
+            "pts": 0
+          },
+          {
+            "frame": 48,
+            "pts": 48048
+          },
+          {
+            "frame": 96,
+            "pts": 96096
+          },
+          {
+            "frame": 120,
+            "pts": 120120
+          },
+          {
+            "frame": 144,
+            "pts": 144144
+          },
+          {
+            "frame": 192,
+            "pts": 192192
+          },
+          {
+            "frame": 240,
+            "pts": 240240
+          },
+          {
+            "frame": 288,
+            "pts": 288288
+          },
+          {
+            "frame": 336,
+            "pts": 336336
+          },
+          {
+            "frame": 360,
+            "pts": 360360
+          },
+          {
+            "frame": 408,
+            "pts": 408408
+          },
+          {
+            "frame": 456,
+            "pts": 456456
+          }
+        ],
+        "pixel_format": "yuv420p",
+        "sha256": "26ca30f55d346b38561a0fe70cb7d3dff46c515e6e2c88bef5f88043f0cff6b2",
+        "time_base": "1/24000",
+        "width": 720
+      }
+    },
+    {
+      "frames": 480,
+      "id": "love-hurts",
+      "master": {
+        "all_frame_timestamps_exact": true,
+        "audio_tracks": 0,
+        "average_fps": "24000/1001",
+        "bytes": 135783703,
+        "duration": 20.02,
+        "file": "love-hurts-lossless.mp4",
+        "fps": "24000/1001",
+        "frames": 480,
+        "height": 1280,
+        "keyframes": [
+          {
+            "frame": 0,
+            "pts": 0
+          },
+          {
+            "frame": 48,
+            "pts": 48048
+          },
+          {
+            "frame": 96,
+            "pts": 96096
+          },
+          {
+            "frame": 144,
+            "pts": 144144
+          },
+          {
+            "frame": 192,
+            "pts": 192192
+          },
+          {
+            "frame": 240,
+            "pts": 240240
+          },
+          {
+            "frame": 288,
+            "pts": 288288
+          },
+          {
+            "frame": 336,
+            "pts": 336336
+          },
+          {
+            "frame": 384,
+            "pts": 384384
+          },
+          {
+            "frame": 432,
+            "pts": 432432
+          }
+        ],
+        "pixel_format": "yuv420p",
+        "sha256": "b23758241e0da71c55e199358a949c6fc3fa2a884b3e97311b291ce3076755ee",
+        "time_base": "1/24000",
+        "width": 720
+      },
+      "segments": [
+        {
+          "clip": "LHA",
+          "end": 240,
+          "start": 0
+        },
+        {
+          "clip": "LHB",
+          "end": 240,
+          "start": 0
+        }
+      ],
+      "sheet": "love-hurts-sheet.jpg",
+      "source_frames_pixel_matched": 0,
+      "source_proof": "love-hurts-source-frame-proof.json",
+      "title": "The Seat Beside You",
+      "viewing": {
+        "all_frame_timestamps_exact": true,
+        "audio_tracks": 0,
+        "average_fps": "24000/1001",
+        "bytes": 16161916,
+        "duration": 20.02,
+        "file": "love-hurts.mp4",
+        "fps": "24000/1001",
+        "frames": 480,
+        "height": 1280,
+        "keyframes": [
+          {
+            "frame": 0,
+            "pts": 0
+          },
+          {
+            "frame": 48,
+            "pts": 48048
+          },
+          {
+            "frame": 96,
+            "pts": 96096
+          },
+          {
+            "frame": 144,
+            "pts": 144144
+          },
+          {
+            "frame": 192,
+            "pts": 192192
+          },
+          {
+            "frame": 240,
+            "pts": 240240
+          },
+          {
+            "frame": 288,
+            "pts": 288288
+          },
+          {
+            "frame": 336,
+            "pts": 336336
+          },
+          {
+            "frame": 384,
+            "pts": 384384
+          },
+          {
+            "frame": 432,
+            "pts": 432432
+          }
+        ],
+        "pixel_format": "yuv420p",
+        "sha256": "210538ac91ef1fe48db726d6c14f7bae70af2cac79aa46fc418425f3fbf22072",
+        "time_base": "1/24000",
+        "width": 720
+      }
+    },
+    {
+      "frames": 480,
+      "id": "kids-capsule",
+      "master": {
+        "all_frame_timestamps_exact": true,
+        "audio_tracks": 0,
+        "average_fps": "24000/1001",
+        "bytes": 171600337,
+        "duration": 20.02,
+        "file": "kids-capsule-lossless.mp4",
+        "fps": "24000/1001",
+        "frames": 480,
+        "height": 1280,
+        "keyframes": [
+          {
+            "frame": 0,
+            "pts": 0
+          },
+          {
+            "frame": 12,
+            "pts": 12012
+          },
+          {
+            "frame": 60,
+            "pts": 60060
+          },
+          {
+            "frame": 108,
+            "pts": 108108
+          },
+          {
+            "frame": 156,
+            "pts": 156156
+          },
+          {
+            "frame": 204,
+            "pts": 204204
+          },
+          {
+            "frame": 252,
+            "pts": 252252
+          },
+          {
+            "frame": 300,
+            "pts": 300300
+          },
+          {
+            "frame": 348,
+            "pts": 348348
+          },
+          {
+            "frame": 384,
+            "pts": 384384
+          },
+          {
+            "frame": 432,
+            "pts": 432432
+          }
+        ],
+        "pixel_format": "yuv420p",
+        "sha256": "6f3b31f9d11a5469970a4c3e797e8450999bd9bf81d35397982747bf0671e019",
+        "time_base": "1/24000",
+        "width": 720
+      },
+      "segments": [
+        {
+          "clip": "DOOR",
+          "end": 12,
+          "start": 0
+        },
+        {
+          "clip": "KR",
+          "end": 144,
+          "start": 0
+        },
+        {
+          "clip": "KP",
+          "end": 228,
+          "start": 0
+        },
+        {
+          "clip": "KR",
+          "end": 240,
+          "start": 144
+        }
+      ],
+      "sheet": "kids-capsule-sheet.jpg",
+      "source_frames_pixel_matched": 0,
+      "source_proof": "kids-capsule-source-frame-proof.json",
+      "title": "Your Turn",
+      "viewing": {
+        "all_frame_timestamps_exact": true,
+        "audio_tracks": 0,
+        "average_fps": "24000/1001",
+        "bytes": 20372030,
+        "duration": 20.02,
+        "file": "kids-capsule.mp4",
+        "fps": "24000/1001",
+        "frames": 480,
+        "height": 1280,
+        "keyframes": [
+          {
+            "frame": 0,
+            "pts": 0
+          },
+          {
+            "frame": 12,
+            "pts": 12012
+          },
+          {
+            "frame": 60,
+            "pts": 60060
+          },
+          {
+            "frame": 108,
+            "pts": 108108
+          },
+          {
+            "frame": 156,
+            "pts": 156156
+          },
+          {
+            "frame": 204,
+            "pts": 204204
+          },
+          {
+            "frame": 252,
+            "pts": 252252
+          },
+          {
+            "frame": 300,
+            "pts": 300300
+          },
+          {
+            "frame": 348,
+            "pts": 348348
+          },
+          {
+            "frame": 384,
+            "pts": 384384
+          },
+          {
+            "frame": 432,
+            "pts": 432432
+          }
+        ],
+        "pixel_format": "yuv420p",
+        "sha256": "f5323f1f80dba25af6b9cba80839e3f1567a4d08f2f9f0ff3f98735d536f879a",
+        "time_base": "1/24000",
+        "width": 720
+      }
+    },
+    {
+      "frames": 960,
+      "id": "town-line-main",
+      "master": {
+        "all_frame_timestamps_exact": true,
+        "audio_tracks": 0,
+        "average_fps": "24000/1001",
+        "bytes": 252636673,
+        "duration": 40.04,
+        "file": "town-line-main-lossless.mp4",
+        "fps": "24000/1001",
+        "frames": 960,
+        "height": 1280,
+        "keyframes": [
+          {
+            "frame": 0,
+            "pts": 0
+          },
+          {
+            "frame": 48,
+            "pts": 48048
+          },
+          {
+            "frame": 96,
+            "pts": 96096
+          },
+          {
+            "frame": 144,
+            "pts": 144144
+          },
+          {
+            "frame": 192,
+            "pts": 192192
+          },
+          {
+            "frame": 216,
+            "pts": 216216
+          },
+          {
+            "frame": 264,
+            "pts": 264264
+          },
+          {
+            "frame": 288,
+            "pts": 288288
+          },
+          {
+            "frame": 336,
+            "pts": 336336
+          },
+          {
+            "frame": 384,
+            "pts": 384384
+          },
+          {
+            "frame": 432,
+            "pts": 432432
+          },
+          {
+            "frame": 480,
+            "pts": 480480
+          },
+          {
+            "frame": 528,
+            "pts": 528528
+          },
+          {
+            "frame": 576,
+            "pts": 576576
+          },
+          {
+            "frame": 624,
+            "pts": 624624
+          },
+          {
+            "frame": 672,
+            "pts": 672672
+          },
+          {
+            "frame": 684,
+            "pts": 684684
+          },
+          {
+            "frame": 732,
+            "pts": 732732
+          },
+          {
+            "frame": 780,
+            "pts": 780780
+          },
+          {
+            "frame": 804,
+            "pts": 804804
+          },
+          {
+            "frame": 852,
+            "pts": 852852
+          },
+          {
+            "frame": 900,
+            "pts": 900900
+          },
+          {
+            "frame": 948,
+            "pts": 948948
+          }
+        ],
+        "pixel_format": "yuv420p",
+        "sha256": "43b907965160a053cd030679ab40e58f4b7ab48131ed63936a6ca20aabc8575c",
+        "time_base": "1/24000",
+        "width": 720
+      },
+      "segments": [
+        {
+          "clip": "TRAIN",
+          "end": 48,
+          "start": 0
+        },
+        {
+          "clip": "SGA",
+          "end": 192,
+          "start": 144
+        },
+        {
+          "clip": "SGB",
+          "end": 240,
+          "start": 144
+        },
+        {
+          "clip": "SOURCE",
+          "end": 24,
+          "start": 0
+        },
+        {
+          "clip": "BRA",
+          "end": 72,
+          "start": 24
+        },
+        {
+          "clip": "SOURCE",
+          "end": 48,
+          "start": 24
+        },
+        {
+          "clip": "SOURCE",
+          "end": 120,
+          "start": 72
+        },
+        {
+          "clip": "SOURCE",
+          "end": 168,
+          "start": 120
+        },
+        {
+          "clip": "BRB",
+          "end": 120,
+          "start": 24
+        },
+        {
+          "clip": "LHA",
+          "end": 240,
+          "start": 144
+        },
+        {
+          "clip": "LHB",
+          "end": 240,
+          "start": 144
+        },
+        {
+          "clip": "DOOR",
+          "end": 12,
+          "start": 0
+        },
+        {
+          "clip": "KR",
+          "end": 120,
+          "start": 0
+        },
+        {
+          "clip": "KP",
+          "end": 120,
+          "start": 24
+        },
+        {
+          "clip": "KR",
+          "end": 240,
+          "start": 180
+        }
+      ],
+      "sheet": "town-line-main-sheet.jpg",
+      "source_frames_pixel_matched": 144,
+      "source_proof": "town-line-main-source-frame-proof.json",
+      "title": "The Town Line",
+      "viewing": {
+        "all_frame_timestamps_exact": true,
+        "audio_tracks": 0,
+        "average_fps": "24000/1001",
+        "bytes": 30278095,
+        "duration": 40.04,
+        "file": "town-line-main.mp4",
+        "fps": "24000/1001",
+        "frames": 960,
+        "height": 1280,
+        "keyframes": [
+          {
+            "frame": 0,
+            "pts": 0
+          },
+          {
+            "frame": 48,
+            "pts": 48048
+          },
+          {
+            "frame": 96,
+            "pts": 96096
+          },
+          {
+            "frame": 144,
+            "pts": 144144
+          },
+          {
+            "frame": 192,
+            "pts": 192192
+          },
+          {
+            "frame": 216,
+            "pts": 216216
+          },
+          {
+            "frame": 264,
+            "pts": 264264
+          },
+          {
+            "frame": 288,
+            "pts": 288288
+          },
+          {
+            "frame": 336,
+            "pts": 336336
+          },
+          {
+            "frame": 384,
+            "pts": 384384
+          },
+          {
+            "frame": 432,
+            "pts": 432432
+          },
+          {
+            "frame": 480,
+            "pts": 480480
+          },
+          {
+            "frame": 528,
+            "pts": 528528
+          },
+          {
+            "frame": 576,
+            "pts": 576576
+          },
+          {
+            "frame": 624,
+            "pts": 624624
+          },
+          {
+            "frame": 672,
+            "pts": 672672
+          },
+          {
+            "frame": 684,
+            "pts": 684684
+          },
+          {
+            "frame": 732,
+            "pts": 732732
+          },
+          {
+            "frame": 780,
+            "pts": 780780
+          },
+          {
+            "frame": 804,
+            "pts": 804804
+          },
+          {
+            "frame": 852,
+            "pts": 852852
+          },
+          {
+            "frame": 900,
+            "pts": 900900
+          },
+          {
+            "frame": 948,
+            "pts": 948948
+          }
+        ],
+        "pixel_format": "yuv420p",
+        "sha256": "4f0d6273e51ee0596cf656a373ba0e3995fda2634ab84452404114f827a85804",
+        "time_base": "1/24000",
+        "width": 720
+      }
+    }
+  ],
+  "fps": "24000/1001",
+  "inputs": {
+    "BRA": {
+      "audio_tracks": 0,
+      "average_fps": "24/1",
+      "bytes": 22014629,
+      "duration": 10.041667,
+      "file": "BRA.mp4",
+      "fps": "24/1",
+      "frames": 241,
+      "height": 1912,
+      "pixel_format": "yuv420p",
+      "sha256": "607d6fa0f80079996ee4ec8a98a775557757e376b723c8bdcd76b67c05b44d40",
+      "time_base": "1/12288",
+      "width": 1084
+    },
+    "BRB": {
+      "audio_tracks": 0,
+      "average_fps": "24/1",
+      "bytes": 9744225,
+      "duration": 5.041667,
+      "file": "BRB.mp4",
+      "fps": "24/1",
+      "frames": 121,
+      "height": 1912,
+      "pixel_format": "yuv420p",
+      "sha256": "6c0134b713af7877ab3e9693b1646b17e232f74395003470bb3a78a4ad66085c",
+      "time_base": "1/12288",
+      "width": 1084
+    },
+    "DOOR": {
+      "audio_tracks": 0,
+      "average_fps": "24/1",
+      "bytes": 5345970,
+      "duration": 3.041667,
+      "file": "DOOR.mp4",
+      "fps": "24/1",
+      "frames": 73,
+      "height": 1912,
+      "pixel_format": "yuv420p",
+      "sha256": "f071c24131d3fd4329bb1766fbf47656ca7299f382bc71c33a1f4bacabc51efe",
+      "time_base": "1/12288",
+      "width": 1080
+    },
+    "KP": {
+      "audio_tracks": 0,
+      "average_fps": "24/1",
+      "bytes": 28261210,
+      "duration": 10.041667,
+      "file": "KP.mp4",
+      "fps": "24/1",
+      "frames": 241,
+      "height": 1912,
+      "pixel_format": "yuv420p",
+      "sha256": "60612f4ea9bb98313cb1ef464f7747a292f66d492d45e6d2f47cc5c6290480ab",
+      "time_base": "1/12288",
+      "width": 1084
+    },
+    "KR": {
+      "audio_tracks": 0,
+      "average_fps": "24/1",
+      "bytes": 28348191,
+      "duration": 10.041667,
+      "file": "KR.mp4",
+      "fps": "24/1",
+      "frames": 241,
+      "height": 1912,
+      "pixel_format": "yuv420p",
+      "sha256": "d585288de674d879fc93aa83710f03ba9f00f35068ef850dd3488a84500902f9",
+      "time_base": "1/12288",
+      "width": 1084
+    },
+    "LHA": {
+      "audio_tracks": 0,
+      "average_fps": "24/1",
+      "bytes": 21009652,
+      "duration": 10.041667,
+      "file": "LHA.mp4",
+      "fps": "24/1",
+      "frames": 241,
+      "height": 1912,
+      "pixel_format": "yuv420p",
+      "sha256": "00e8732e8b27bc0929442a80c92942c70a1c2036247b935f4cf3589e3324c7e3",
+      "time_base": "1/12288",
+      "width": 1084
+    },
+    "LHB": {
+      "audio_tracks": 0,
+      "average_fps": "24/1",
+      "bytes": 21827680,
+      "duration": 10.041667,
+      "file": "LHB.mp4",
+      "fps": "24/1",
+      "frames": 241,
+      "height": 1912,
+      "pixel_format": "yuv420p",
+      "sha256": "f86d2ce29291a618503947ae9f6b98e8e03d0a2f1aa5f69dfb3c823dd9d8c2c2",
+      "time_base": "1/12288",
+      "width": 1084
+    },
+    "SGA": {
+      "audio_tracks": 0,
+      "average_fps": "24/1",
+      "bytes": 18724268,
+      "duration": 10.041667,
+      "file": "SGA.mp4",
+      "fps": "24/1",
+      "frames": 241,
+      "height": 1912,
+      "pixel_format": "yuv420p",
+      "sha256": "9363cb033c9e665820f31247f7c366513f8bb6b4e3d8a4a7f7ecf27a588f1b21",
+      "time_base": "1/12288",
+      "width": 1084
+    },
+    "SGB": {
+      "audio_tracks": 0,
+      "average_fps": "24/1",
+      "bytes": 13177037,
+      "duration": 10.041667,
+      "file": "SGB.mp4",
+      "fps": "24/1",
+      "frames": 241,
+      "height": 1912,
+      "pixel_format": "yuv420p",
+      "sha256": "b480420950ae03ba20b72c105f6f12a96b7a16264a19df2a2f7ba73bf9189608",
+      "time_base": "1/12288",
+      "width": 1084
+    },
+    "SOURCE": {
+      "audio_tracks": 1,
+      "average_fps": "24000/1001",
+      "bytes": 20973139,
+      "duration": 65.106708,
+      "file": "Video Apr 21 2024, 11 01 18 AM.mp4",
+      "fps": "24000/1001",
+      "frames": 1561,
+      "height": 1280,
+      "pixel_format": "yuv420p",
+      "sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+      "time_base": "1/24000",
+      "width": 720
+    },
+    "TRAIN": {
+      "audio_tracks": 0,
+      "average_fps": "24/1",
+      "bytes": 6019363,
+      "duration": 3.041667,
+      "file": "TRAIN.mp4",
+      "fps": "24/1",
+      "frames": 73,
+      "height": 1912,
+      "pixel_format": "yuv420p",
+      "sha256": "95a736ed1550944b038040641d4247b07ab33d7bf3041965535e77ac67b20b02",
+      "time_base": "1/12288",
+      "width": 1080
+    }
+  },
+  "original_sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+  "published": false,
+  "schema": "skyyrose.collection-films.corrected.v1",
+  "source_file_unchanged": true,
+  "source_original_intervals": [
+    [
+      695,
+      767
+    ],
+    [
+      983,
+      1031
+    ],
+    [
+      1391,
+      1463
+    ]
+  ],
+  "source_policy": "Every selected original decoded frame matched in lossless masters; viewing copies use delivery compression.",
+  "visual_review": "SAMPLED_FINAL_FILM_REVIEW_PASS; final founder creative acceptance pending. See visual-review.json."
+}
