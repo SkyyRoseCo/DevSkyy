@@ -76,6 +76,9 @@ const PROTECTED = [
   ['wordpress-theme/skyyrose-flagship/data/editorial-index.json', 'build-editorial-index.js (tab-indented)'],
   ['wordpress-theme/skyyrose-flagship/data/collections/black-rose/index.html', 'gen-collection-hub.py (deployed)'],
   ['assets/products/manifest.json', 'build_asset_manifest.py (content-hashed)'],
+  ['wordpress-theme/skyyrose-flagship/data/v7-cards.json', 'build_v7_cards.py (v7_cards_current CI byte check)'],
+  ['wordpress-theme/skyyrose-flagship/data/site-guide.json', 'build-site-guide.py'],
+  ['wordpress-theme/skyyrose-flagship/data/product-embeddings.json', 'generate_product_embeddings.py'],
   // Machine-maintained logs parsed line-by-line; proseWrap orphans continuation lines.
   ['.wolf/anatomy.md', 'OpenWolf anatomy (anatomy_filter_main.py parses per line)'],
   ['.wolf/memory.md', 'append-only cross-session log'],

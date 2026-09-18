@@ -60,3 +60,10 @@ tasks/phase-e-manifest.md
 # which both orphaned continuation lines from their entries and mutated content that
 # looks like markdown syntax (__init__.py -> **init**.py, DB_*/REDIS_* -> DB__/REDIS__).
 .wolf/anatomy.md
+# Generated views with an up-to-date guard. v7-cards.json is regenerated and
+# byte-compared by validate_catalog_consistency's v7_cards_current check (CI), so a
+# reformat deadlocks it the same way design-tokens.css would; the other two are
+# generator-owned and would churn on every rebuild.
+wordpress-theme/skyyrose-flagship/data/v7-cards.json
+wordpress-theme/skyyrose-flagship/data/site-guide.json
+wordpress-theme/skyyrose-flagship/data/product-embeddings.json
