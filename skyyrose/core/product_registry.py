@@ -17,6 +17,17 @@ PRODUCT_REGISTRY = (
     / "wordpress-theme/skyyrose-flagship/data/logo-registry.json"
 )
 
+# Dossier files the founder chose to keep that no product projects to. Each is
+# exempt from the orphan check by exact filename only, with the reason; any
+# other unowned dossier still fails it. tests/test_unified_product_registry.py
+# fails if an entry's file disappears or its name becomes a registry slug.
+RETAINED_DOSSIERS: dict[str, str] = {
+    "black-rose-bomber-sherpa.md": (
+        "Earlier dossier for br-006 The Bomber Sherpa, whose registry dossier is "
+        "black-rose-sherpa-jacket. Kept as-is by founder decision, 2026-09-18."
+    ),
+}
+
 
 def _registry_target(path: Path | None) -> Path:
     """The real file behind the registry path.
@@ -165,13 +176,13 @@ def _orphan_dossiers(raw: dict[str, Any], target: Path) -> list[Path]:
     Only the projections the registry expects are otherwise compared, so a
     hand-authored or unbound dossier would never be examined. It is reported as
     drift and never deleted — it may be founder data awaiting a registry binding.
+    Files named in ``RETAINED_DOSSIERS`` are kept by founder decision.
     """
     expected = {f"{product['dossier']['slug']}.md" for product in raw["products"].values()}
+    exempt = expected | set(RETAINED_DOSSIERS) | {"_template.md"}
     dossiers_dir = target.parent / "dossiers"
     return sorted(
-        candidate
-        for candidate in dossiers_dir.glob("*.md")
-        if candidate.name not in expected and candidate.name != "_template.md"
+        candidate for candidate in dossiers_dir.glob("*.md") if candidate.name not in exempt
     )
 
 

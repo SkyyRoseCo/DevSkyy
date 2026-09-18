@@ -201,6 +201,37 @@ def test_check_reports_orphan_dossiers_without_deleting_them(registry):
     assert rogue.is_file()
 
 
+def test_retained_dossier_is_exempt_but_any_other_orphan_still_fails(registry):
+    """The founder's keep-as-is exemption covers its exact filename and nothing else."""
+    from skyyrose.core.product_registry import RETAINED_DOSSIERS, orphan_dossiers
+
+    export_compatibility(registry)
+    dossiers = registry.parent / "dossiers"
+    for name in RETAINED_DOSSIERS:
+        (dossiers / name).write_text("---\nsku: zz-001\n---\nKept by founder decision\n")
+    rogue = dossiers / "hand-authored.md"
+    rogue.write_text("---\nsku: zz-999\n---\nAuthored outside the registry\n")
+
+    assert orphan_dossiers(registry) == [rogue]
+    assert export_compatibility(registry, check=True) == [str(rogue)]
+
+
+def test_every_retained_dossier_is_real_and_still_unowned():
+    """An exemption whose file is gone, or that now shadows a product's dossier, must go."""
+    from skyyrose.core.product_registry import (
+        PRODUCT_REGISTRY,
+        RETAINED_DOSSIERS,
+        load_registry,
+    )
+
+    dossiers = PRODUCT_REGISTRY.resolve().parent / "dossiers"
+    owned = {f"{p['dossier']['slug']}.md" for p in load_registry()["products"].values()}
+    for name, reason in RETAINED_DOSSIERS.items():
+        assert (dossiers / name).is_file(), f"{name} is exempt but no longer exists"
+        assert name not in owned, f"{name} is a registry product's dossier, not an exception"
+        assert len(reason) > 40, f"{name} needs a real reason"
+
+
 def test_sync_check_cli_fails_on_orphan_dossier(registry, monkeypatch, capsys):
     """`sync_product_registry.py --check` exits non-zero and names the orphan."""
     import importlib
