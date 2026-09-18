@@ -28,6 +28,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from collections import Counter
@@ -538,7 +539,10 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--branch", default=RECOVERY_BRANCH, help="Recovery branch to search.")
     parser.add_argument("--model", default=AGENT_MODEL, help="agent.model for --fire.")
     parser.add_argument(
-        "--yes", action="store_true", help="Skip the interactive y/N prompt after the manifest."
+        "--yes",
+        action="store_true",
+        help="Skip the y/N prompt — only at a terminal. Without a TTY the run aborts "
+        "unless SKYYROSE_AUTO_CONFIRM=1.",
     )
     parser.add_argument(
         "--keep-session", action="store_true", help="Do not DELETE the session afterwards."
@@ -585,8 +589,31 @@ def _check_access(client_factory: Callable[[], AgentsApiClient]) -> int:
     return 0 if probe.ok else 3
 
 
-def _confirm(prompt_fn: Callable[[str], str]) -> bool:
-    return prompt_fn("Proceed? [y/N] ").strip().lower() in ("y", "yes")
+def _confirm(prompt_fn: Callable[[str], str], *, yes: bool, is_tty: Callable[[], bool]) -> bool:
+    """Fail-closed money gate; the manifest has already been printed by the caller.
+
+    Same contract as ``skyyrose/elite_studio/pipeline3d/cli._confirm``:
+
+      * ``SKYYROSE_AUTO_CONFIRM=1`` -> the ONLY non-interactive opt-in.
+      * no TTY (agent, cron, CI, subprocess) -> ABORT, even with ``--yes``. ``--yes`` is
+        a convenience for a person at a terminal, never a substitute for one.
+      * a TTY -> ``--yes`` or an explicit ``y``. A closed stdin is "not confirmed".
+    """
+    if os.environ.get("SKYYROSE_AUTO_CONFIRM") == "1":
+        print("auto-confirmed via SKYYROSE_AUTO_CONFIRM=1")
+        return True
+    if not is_tty():
+        print(
+            "non-interactive context — aborting paid dispatch "
+            "(set SKYYROSE_AUTO_CONFIRM=1 to allow)"
+        )
+        return False
+    if yes:
+        return True
+    try:
+        return prompt_fn("Proceed? [y/N] ").strip().lower() in ("y", "yes")
+    except EOFError:
+        return False
 
 
 def _fire(
@@ -594,6 +621,7 @@ def _fire(
     args: argparse.Namespace,
     client_factory: Callable[[], AgentsApiClient],
     prompt_fn: Callable[[str], str],
+    is_tty: Callable[[], bool],
 ) -> int:
     request = build_session_request(report, model=args.model)
     try:
@@ -616,7 +644,7 @@ def _fire(
             )
             return 3
         print(format_session_manifest(request, TASK_LABEL))
-        if not args.yes and not _confirm(prompt_fn):
+        if not _confirm(prompt_fn, yes=args.yes, is_tty=is_tty):
             print("Not confirmed. No session created.")
             return 2
         try:
@@ -653,6 +681,7 @@ def main(
     git: GitRunner = run_git,
     client_factory: Callable[[], AgentsApiClient] = AgentsApiClient,
     prompt_fn: Callable[[str], str] = input,
+    is_tty: Callable[[], bool] = sys.stdin.isatty,
 ) -> int:
     args = _build_parser().parse_args(argv)
     if args.check_access:
@@ -676,7 +705,7 @@ def main(
     if args.local_only:
         print("\nLOCAL ONLY — no OpenAI calls made.")
         return 0
-    return _fire(report, args, client_factory, prompt_fn)
+    return _fire(report, args, client_factory, prompt_fn, is_tty)
 
 
 if __name__ == "__main__":

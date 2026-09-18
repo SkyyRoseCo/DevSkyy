@@ -450,6 +450,7 @@ def test_cli_fire_declined_at_prompt_never_posts(
         git=git,
         client_factory=lambda: AgentsApiClient(api_key="k", transport=httpx.MockTransport(handler)),
         prompt_fn=lambda _prompt: "n",
+        is_tty=lambda: True,
     )
     assert rc == 2
     out = capsys.readouterr().out
@@ -479,6 +480,7 @@ def test_cli_fire_confirmed_streams_turn_and_deletes_session(
         git=git,
         client_factory=lambda: AgentsApiClient(api_key="k", transport=httpx.MockTransport(handler)),
         prompt_fn=lambda _prompt: "y",
+        is_tty=lambda: True,
     )
     assert rc == 0
     out = capsys.readouterr().out
@@ -494,3 +496,104 @@ def test_access_probe_dataclass_is_frozen() -> None:
     probe = AccessProbe(True, 200, "ok")
     with pytest.raises(AttributeError):
         probe.ok = False  # type: ignore[misc]
+
+
+# --- money gate: fail-closed without a human (skyyrose/elite_studio/CLAUDE.md) -------------
+
+
+def _ok_handler(seen: list[httpx.Request]):
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        return httpx.Response(200, json={"id": "ok", "data": []})
+
+    return handler
+
+
+def _fire(workspace, seen, *flags: str, **kw) -> int:
+    _, _, git = workspace
+    return audit.main(
+        _cli_args(workspace, "--fire", *flags),
+        git=git,
+        client_factory=lambda: AgentsApiClient(
+            api_key="k", transport=httpx.MockTransport(_ok_handler(seen))
+        ),
+        **kw,
+    )
+
+
+def test_yes_flag_without_a_tty_never_posts(
+    workspace: tuple[Path, Path, FakeGit],
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # An agent, cron job or CI step running `--fire --yes` used to spend money with no
+    # human having seen the manifest. --yes is a convenience for a person at a terminal,
+    # never a substitute for one.
+    monkeypatch.delenv("SKYYROSE_AUTO_CONFIRM", raising=False)
+    seen: list[httpx.Request] = []
+    rc = _fire(workspace, seen, "--yes", is_tty=lambda: False)
+    assert rc == 2
+    out = capsys.readouterr().out
+    assert "STOP — Confirm before proceeding" in out, "the manifest must print even when aborting"
+    assert "non-interactive" in out and "SKYYROSE_AUTO_CONFIRM=1" in out
+    assert "POST" not in [r.method for r in seen]
+
+
+def test_no_tty_without_yes_aborts_cleanly_instead_of_crashing(
+    workspace: tuple[Path, Path, FakeGit], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # Previously fail-closed only by accident: input() raised an uncaught EOFError.
+    monkeypatch.delenv("SKYYROSE_AUTO_CONFIRM", raising=False)
+    seen: list[httpx.Request] = []
+
+    def eof(_prompt: str) -> str:
+        raise EOFError
+
+    assert _fire(workspace, seen, is_tty=lambda: False, prompt_fn=eof) == 2
+    assert _fire(workspace, seen, is_tty=lambda: True, prompt_fn=eof) == 2
+    assert "POST" not in [r.method for r in seen]
+
+
+def test_env_opt_in_is_the_only_non_interactive_path(
+    workspace: tuple[Path, Path, FakeGit],
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("SKYYROSE_AUTO_CONFIRM", "1")
+    seen: list[httpx.Request] = []
+    _fire(workspace, seen, is_tty=lambda: False)
+    assert "auto-confirmed via SKYYROSE_AUTO_CONFIRM=1" in capsys.readouterr().out
+    assert "POST" in [r.method for r in seen]
+
+
+@pytest.mark.parametrize("value", ["0", "true", "yes", ""])
+def test_env_opt_in_requires_exactly_1(
+    workspace: tuple[Path, Path, FakeGit], monkeypatch: pytest.MonkeyPatch, value: str
+) -> None:
+    monkeypatch.setenv("SKYYROSE_AUTO_CONFIRM", value)
+    seen: list[httpx.Request] = []
+    assert _fire(workspace, seen, "--yes", is_tty=lambda: False) == 2
+    assert "POST" not in [r.method for r in seen]
+
+
+def test_yes_flag_at_a_real_terminal_still_works(
+    workspace: tuple[Path, Path, FakeGit], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.delenv("SKYYROSE_AUTO_CONFIRM", raising=False)
+    seen: list[httpx.Request] = []
+    _fire(workspace, seen, "--yes", is_tty=lambda: True)
+    assert "POST" in [r.method for r in seen]
+
+
+def test_production_default_tty_check_is_wired(
+    workspace: tuple[Path, Path, FakeGit], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # No is_tty override: this exercises main()'s real default (sys.stdin.isatty). Under
+    # pytest stdin is not a terminal — the same condition as an agent, cron or CI run.
+    import sys
+
+    monkeypatch.delenv("SKYYROSE_AUTO_CONFIRM", raising=False)
+    assert not sys.stdin.isatty()
+    seen: list[httpx.Request] = []
+    assert _fire(workspace, seen, "--yes") == 2
+    assert "POST" not in [r.method for r in seen]
