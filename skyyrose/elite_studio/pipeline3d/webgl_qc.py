@@ -31,7 +31,8 @@ import shutil
 import socketserver
 import tempfile
 import threading
-from collections.abc import Iterable, Mapping, Sequence
+from collections.abc import Iterable, Iterator, Mapping, Sequence
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -150,6 +151,7 @@ class RenderedImage:
     webgl: str
 
     def as_dict(self) -> dict[str, Any]:
+        """JSON-serialisable form, as written to ``--report``."""
         return {
             "label": self.label,
             "angle": self.angle,
@@ -180,12 +182,14 @@ class RenderReport:
         return tuple(m for m in self.console_messages if m.get("type") == "warning")
 
     def image(self, label: str, angle: str) -> RenderedImage:
+        """The frame for ``(label, angle)``; ``KeyError`` when it was not rendered."""
         for img in self.images:
             if img.label == label and img.angle == angle:
                 return img
         raise KeyError(f"no render for {label!r} at angle {angle!r}")
 
     def as_dict(self) -> dict[str, Any]:
+        """JSON-serialisable form, as written to ``--report``."""
         return {
             "parity": dict(VIEWER_PARITY),
             "images": [i.as_dict() for i in self.images],
@@ -215,6 +219,7 @@ class PixelDiff:
         return self.max_abs_delta == 0
 
     def as_dict(self) -> dict[str, Any]:
+        """JSON-serialisable form, as written to ``--report``."""
         return {
             "baseline_label": self.baseline_label,
             "target_label": self.target_label,
@@ -461,6 +466,34 @@ def _check_inputs(
     return unique
 
 
+@contextmanager
+def _loopback(serve_root: Path) -> Iterator[int]:
+    """Serve ``serve_root`` on an ephemeral loopback port for the life of the block."""
+    server, port = _serve(serve_root)
+    try:
+        yield port
+    finally:
+        server.shutdown()
+        server.server_close()
+
+
+@contextmanager
+def _chromium(pw: Any) -> Iterator[Any]:
+    """A headless Chromium that is always closed, and whose launch cannot hang."""
+    try:
+        browser = pw.chromium.launch(
+            headless=True, args=list(_CHROMIUM_ARGS), timeout=_BROWSER_STARTUP_TIMEOUT_MS
+        )
+    except Exception as exc:
+        raise WebGlQcError(
+            f"could not launch Chromium (playwright install chromium?): {exc}"
+        ) from exc
+    try:
+        yield browser
+    finally:
+        browser.close()
+
+
 _Frame = tuple[RenderTarget, str, dict[str, Any], bytes]
 
 
@@ -482,34 +515,17 @@ def _render_frames(
 
     frames: list[_Frame] = []
     console_messages: list[dict[str, Any]] = []
-    server, port = _serve(serve_root)
-    try:
-        with sync_playwright() as pw:
-            try:
-                browser = pw.chromium.launch(
-                    headless=True, args=list(_CHROMIUM_ARGS), timeout=_BROWSER_STARTUP_TIMEOUT_MS
-                )
-            except Exception as exc:
-                raise WebGlQcError(
-                    f"could not launch Chromium (playwright install chromium?): {exc}"
-                ) from exc
-            try:
-                context = browser.new_context(
-                    viewport={"width": size, "height": size}, device_scale_factor=1
-                )
-                context.set_default_timeout(timeout_ms)
-                for target in targets:
-                    for angle in angles:
-                        result, png_bytes, messages = _render_one(
-                            context, port, target, angle, size, timeout_ms
-                        )
-                        frames.append((target, angle, result, png_bytes))
-                        console_messages.extend(messages)
-            finally:
-                browser.close()
-    finally:
-        server.shutdown()
-        server.server_close()
+    with _loopback(serve_root) as port, sync_playwright() as pw, _chromium(pw) as browser:
+        context = browser.new_context(
+            viewport={"width": size, "height": size}, device_scale_factor=1
+        )
+        context.set_default_timeout(timeout_ms)
+        for target, angle in ((t, a) for t in targets for a in angles):
+            result, png_bytes, messages = _render_one(
+                context, port, target, angle, size, timeout_ms
+            )
+            frames.append((target, angle, result, png_bytes))
+            console_messages.extend(messages)
     return frames, console_messages
 
 
