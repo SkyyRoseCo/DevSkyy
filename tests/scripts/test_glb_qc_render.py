@@ -1,6 +1,6 @@
 """CLI contract for scripts/glb_qc_render.py — above all, the exit codes.
 
-Exit 2 (VOID) is the contract callers branch on: two byte-identical renders mean the
+Exit 3 (VOID) is the contract callers branch on: two byte-identical renders mean the
 change under test produced no pixels. If that ever collapses into exit 0, a null render
 reads as a passing look-verdict.
 """
@@ -60,7 +60,10 @@ def _argv(tmp_path: Path, *extra: str) -> list[str]:
 
 def test_exit_codes_are_distinct() -> None:
     assert len({cli.EXIT_OK, cli.EXIT_FAILED, cli.EXIT_VOID}) == 3
-    assert (cli.EXIT_OK, cli.EXIT_FAILED, cli.EXIT_VOID) == (0, 1, 2)
+    assert (cli.EXIT_OK, cli.EXIT_FAILED) == (0, 1)
+    # argparse owns exit 2 (usage error); VOID sharing it would let a mistyped flag read
+    # as "the change rendered nothing".
+    assert cli.EXIT_VOID not in (0, 1, 2)
 
 
 def test_differing_renders_exit_ok(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -116,3 +119,24 @@ def test_overwrite_flag_reaches_render(tmp_path: Path, monkeypatch: pytest.Monke
     assert seen["overwrite"] is False
     cli.main(_argv(tmp_path, "--overwrite"))
     assert seen["overwrite"] is True
+
+
+@pytest.mark.parametrize(
+    "argv",
+    [
+        ["--glb", "a/b=x.glb", "--out-dir", "o"],
+        ["--glb", "a=x.glb", "--out-dir", "o", "--size", "99999"],
+        ["--glb", "a=x.glb", "--out-dir", "o", "--size", "0"],
+        ["--glb", "a=x.glb", "--out-dir", "o", "--angle", "sideways"],
+    ],
+    ids=["bad-label", "size-too-big", "size-zero", "unknown-angle"],
+)
+def test_bad_arguments_are_usage_errors_not_tracebacks_and_never_void(
+    argv: list[str], capsys: pytest.CaptureFixture[str]
+) -> None:
+    # --size 99999 used to crash the headless shell and hang the process forever.
+    with pytest.raises(SystemExit) as exc:
+        cli.main(argv)
+    assert exc.value.code == 2
+    assert exc.value.code != cli.EXIT_VOID
+    assert "Traceback" not in capsys.readouterr().err

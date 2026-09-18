@@ -15,7 +15,8 @@ Exit codes:
     0  every render succeeded, and every requested diff showed a real pixel difference
     1  a render or diff failed — including a console/page error, a blank frame, or an
        --out-dir that already holds PNGs without --overwrite
-    2  VOID — at least one diff was byte-identical. That is NOT "no visible difference":
+    2  usage error (argparse)
+    3  VOID — at least one diff was byte-identical. That is NOT "no visible difference":
        the change under test produced no pixels, so any look-based verdict drawn from
        those two images would be a verdict on a null result. Callers must branch on it.
 
@@ -36,6 +37,8 @@ from pathlib import Path
 
 from skyyrose.elite_studio.pipeline3d.webgl_qc import (
     ANGLES,
+    MAX_SIZE,
+    MIN_SIZE,
     PixelDiff,
     RenderReport,
     RenderTarget,
@@ -46,14 +49,31 @@ from skyyrose.elite_studio.pipeline3d.webgl_qc import (
 
 EXIT_OK = 0
 EXIT_FAILED = 1
-EXIT_VOID = 2
+# Not 2: argparse exits 2 on a usage error, and a caller branching on the code must never
+# read "you mistyped a flag" as "the change rendered nothing".
+EXIT_VOID = 3
 
 
 def _parse_glb(value: str) -> RenderTarget:
     label, _, path = value.partition("=")
     if not label or not path:
         raise argparse.ArgumentTypeError(f"--glb expects LABEL=PATH, got {value!r}")
-    return RenderTarget(label=label, glb=Path(path))
+    try:
+        return RenderTarget(label=label, glb=Path(path))
+    except WebGlQcError as exc:
+        # argparse only turns ArgumentTypeError/TypeError/ValueError into a usage error;
+        # anything else escapes as a traceback.
+        raise argparse.ArgumentTypeError(str(exc)) from exc
+
+
+def _parse_size(value: str) -> int:
+    try:
+        size = int(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"--size expects an integer, got {value!r}") from exc
+    if not MIN_SIZE <= size <= MAX_SIZE:
+        raise argparse.ArgumentTypeError(f"--size must be in [{MIN_SIZE}, {MAX_SIZE}], got {size}")
+    return size
 
 
 def _parse_pair(value: str) -> tuple[str, str]:
@@ -82,7 +102,12 @@ def _build_parser() -> argparse.ArgumentParser:
         help=f"repeatable; default all of {sorted(ANGLES)}",
     )
     parser.add_argument("--out-dir", type=Path, required=True)
-    parser.add_argument("--size", type=int, default=1024, help="square render size, default 1024")
+    parser.add_argument(
+        "--size",
+        type=_parse_size,
+        default=1024,
+        help=f"square render size in [{MIN_SIZE}, {MAX_SIZE}], default 1024",
+    )
     parser.add_argument(
         "--diff",
         type=_parse_pair,

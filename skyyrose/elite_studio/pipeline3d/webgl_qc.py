@@ -18,7 +18,7 @@ an absent Playwright or browser binary, and a render that reports ``ok: false`` 
 errors, never a skip. The one result that is neither pass nor fail is VOID — see
 ``PixelDiff.is_void``: two renders identical to the byte mean the change under test
 produced NO pixels, which is a statement about the pipeline, not a verdict on how it
-looks. Callers must branch on it (``scripts/glb_qc_render.py`` exits 2).
+looks. Callers must branch on it (``scripts/glb_qc_render.py`` exits 3).
 """
 
 from __future__ import annotations
@@ -35,6 +35,7 @@ from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlencode
 
 from skyyrose.core.paths import REPO_ROOT
 
@@ -98,6 +99,12 @@ _CHROMIUM_ARGS = (
 )
 _DIFF_AMPLIFY = 16
 _PNG_PREFIX = "data:image/png;base64,"
+#: An oversized viewport crashes chrome-headless-shell, and Playwright then waits on the
+#: dead browser forever — a hang, not an error. Bound it before anything launches.
+MIN_SIZE, MAX_SIZE = 16, 4096
+#: Browser launch must finish inside this, or the run is abandoned.
+_BROWSER_STARTUP_TIMEOUT_MS = 60_000
+_WEBGL_POINTER_RE = re.compile(r"\[\.WebGL-0x[0-9a-f]+\]")
 _LABEL_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,63}")
 
 
@@ -287,6 +294,9 @@ def _serve(root: Path) -> tuple[_LoopbackServer, int]:
                 self, *a, directory=str(root), **kw
             ),
             "log_message": lambda self, *a: None,
+            # Containment rests on what is linked into the serve root; refusing listings
+            # means a future over-broad link is not also browsable.
+            "list_directory": lambda self, path: self.send_error(404, "no listing"),
         },
     )
     server = _LoopbackServer(("127.0.0.1", 0), handler)
@@ -296,10 +306,13 @@ def _serve(root: Path) -> tuple[_LoopbackServer, int]:
 
 def _capture(page: Any, url: str, timeout_ms: int) -> dict[str, Any]:
     page.goto(url, wait_until="load")
-    page.wait_for_function("window.__result !== null", timeout=timeout_ms)
+    # Loose inequality on purpose: `undefined !== null` is TRUE, so the strict form could
+    # return before the harness had assigned anything and evaluate() then read a null.
+    page.wait_for_function("window.__result != null", timeout=timeout_ms)
     return page.evaluate(
-        "() => ({ result: { ...window.__result, dataUrl: undefined },"
-        " dataUrl: window.__result.dataUrl || null, errors: window.__errors })"
+        "() => { const r = window.__result || { ok: false, error: 'harness produced no result' };"
+        " return { result: { ...r, dataUrl: undefined }, dataUrl: r.dataUrl || null,"
+        " errors: window.__errors || [] }; }"
     )
 
 
@@ -346,6 +359,33 @@ def _assert_not_blank(png_bytes: bytes, where: str) -> None:
         )
 
 
+def _validate_capture(
+    captured: dict[str, Any],
+    messages: Sequence[Mapping[str, Any]],
+    page_errors: Sequence[str],
+    requested: str,
+    where: str,
+) -> tuple[dict[str, Any], bytes]:
+    """Every reason a frame that came back is still not a usable render."""
+    result = captured["result"]
+    if not result.get("ok") or not captured["dataUrl"]:
+        raise RenderFailedError(f"{where}: {result.get('error')}")
+    # The label allow-list already makes this unreachable; it stays because the failure
+    # it guards is a confidently WRONG verdict (one label rendering another's GLB), and
+    # that is worth one comparison per frame.
+    if result.get("glb") != requested:
+        raise RenderFailedError(
+            f"{where}: harness loaded {result.get('glb')!r}, not the requested {requested!r}"
+        )
+    errors = [m["text"] for m in messages if m["type"] == "error"]
+    errors += page_errors + [str(e) for e in captured["errors"]]
+    if errors:
+        raise RenderFailedError(f"{where}: page reported error(s): {errors}")
+    png_bytes = base64.b64decode(captured["dataUrl"][len(_PNG_PREFIX) :])
+    _assert_not_blank(png_bytes, where)
+    return result, png_bytes
+
+
 def _render_one(
     context: Any, port: int, target: RenderTarget, angle: str, size: int, timeout_ms: int
 ) -> tuple[dict[str, Any], bytes, list[dict[str, Any]]]:
@@ -363,15 +403,24 @@ def _render_one(
         "console",
         lambda msg: (
             messages.append(
-                {"label": target.label, "angle": angle, "type": msg.type, "text": msg.text}
+                {
+                    "label": target.label,
+                    "angle": angle,
+                    "type": msg.type,
+                    # The context pointer differs per process; without this two reports
+                    # of byte-identical renders never diff clean.
+                    "text": _WEBGL_POINTER_RE.sub("[.WebGL]", msg.text),
+                }
             )
             if msg.type in ("error", "warning")
             else None
         ),
     )
     page.on("pageerror", lambda err: page_errors.append(str(err)))
-    url = (
-        f"http://127.0.0.1:{port}/harness.html" f"?glb={target.label}.glb&angle={angle}&size={size}"
+    page.on("crash", lambda *_: page_errors.append("the browser page crashed"))
+    requested = f"{target.label}.glb"
+    url = f"http://127.0.0.1:{port}/harness.html?" + urlencode(
+        {"glb": requested, "angle": angle, "size": size}
     )
     try:
         captured = _capture(page, url, timeout_ms)
@@ -380,19 +429,15 @@ def _render_one(
     finally:
         page.close()
 
-    result = captured["result"]
-    if not result.get("ok") or not captured["dataUrl"]:
-        raise RenderFailedError(f"{where}: {result.get('error')}")
-    errors = [m["text"] for m in messages if m["type"] == "error"]
-    errors += page_errors + [str(e) for e in captured["errors"]]
-    if errors:
-        raise RenderFailedError(f"{where}: page reported error(s): {errors}")
-    png_bytes = base64.b64decode(captured["dataUrl"][len(_PNG_PREFIX) :])
-    _assert_not_blank(png_bytes, where)
+    result, png_bytes = _validate_capture(captured, messages, page_errors, requested, where)
     return result, png_bytes, messages
 
 
-def _check_inputs(targets: Sequence[RenderTarget], angles: Sequence[str]) -> tuple[str, ...]:
+def _check_inputs(
+    targets: Sequence[RenderTarget], angles: Sequence[str], size: int
+) -> tuple[str, ...]:
+    if isinstance(size, bool) or not isinstance(size, int) or not MIN_SIZE <= size <= MAX_SIZE:
+        raise WebGlQcError(f"size must be an integer in [{MIN_SIZE}, {MAX_SIZE}], got {size!r}")
     if not targets:
         raise WebGlQcError("no render targets given")
     unique = tuple(dict.fromkeys(angles))
@@ -441,7 +486,9 @@ def _render_frames(
     try:
         with sync_playwright() as pw:
             try:
-                browser = pw.chromium.launch(headless=True, args=list(_CHROMIUM_ARGS))
+                browser = pw.chromium.launch(
+                    headless=True, args=list(_CHROMIUM_ARGS), timeout=_BROWSER_STARTUP_TIMEOUT_MS
+                )
             except Exception as exc:
                 raise WebGlQcError(
                     f"could not launch Chromium (playwright install chromium?): {exc}"
@@ -450,6 +497,7 @@ def _render_frames(
                 context = browser.new_context(
                     viewport={"width": size, "height": size}, device_scale_factor=1
                 )
+                context.set_default_timeout(timeout_ms)
                 for target in targets:
                     for angle in angles:
                         result, png_bytes, messages = _render_one(
@@ -481,7 +529,7 @@ def render(
     failed render invites a verdict drawn from the frames that happened to work. PNGs
     are written only after EVERY render succeeded, for the same reason.
     """
-    angles = _check_inputs(targets, angles)
+    angles = _check_inputs(targets, angles, size)
     lib = resolve_three_lib(three_lib)
     prepare_out_dir(out_dir, overwrite=overwrite)
 
