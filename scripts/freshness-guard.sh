@@ -231,11 +231,13 @@ fi
 # prettier expand three.module.min.js 691,648 -> 952,111 bytes (bug-332).
 hdr "6. Formatter-ignore coverage"
 if command -v node > /dev/null 2>&1; then
-  if node "$ROOT/scripts/verify-formatter-ignores.mjs" --quiet > /tmp/fg_fmt_ignore.log 2>&1; then
+  # Captured in a variable, not a fixed /tmp file: sessions commit concurrently here, and
+  # a shared log would let one run print another's diagnosis.
+  if FMT_OUT="$(node "$ROOT/scripts/verify-formatter-ignores.mjs" --quiet 2>&1)"; then
     c_ok "derived/vendored/pinned files are prettier-ignored"
   else
     c_bad "a derived or pinned file is formattable — lint-staged would rewrite it after review:"
-    sed 's/^/    /' /tmp/fg_fmt_ignore.log
+    printf '%s\n' "$FMT_OUT" | sed 's/^/    /'
   fi
 else
   c_bad "node unavailable — cannot prove derived files are prettier-ignored (gate fails closed)"
