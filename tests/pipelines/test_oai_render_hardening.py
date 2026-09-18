@@ -931,17 +931,16 @@ def test_pair_with_excluded_member_falls_back_to_solo(monkeypatch):
     assert not plans[0].output_slug.startswith("pair__")
 
 
-def test_br009_generation_hold_is_enforced_for_batch_planning():
-    # The br-009 dossier (2026-09-11) holds new garment generation: technique,
-    # color and patch fields are unresolved against data/logo-registry.json and
-    # the catalog. Prose alone is not a gate — batch planning must fail closed.
-    # Explicit --sku stays the documented founder override (see EXCLUDED_SKUS).
+def test_br009_founder_specified_garment_is_batch_plannable():
+    # br-009's technique, colour, digit placement and 3in x 4in patch are all
+    # founder-specified in the registry dossier, so nothing holds it out of batch
+    # planning. (A "generation hold" written into the dossier by an agent was
+    # removed as an imposed verification requirement.) Paid generation stays
+    # gated separately: `generate` needs --yes and a founder y.
     from scripts.oai_render import pipeline, references
 
-    assert "br-009" in config.EXCLUDED_SKUS
-    assert "hold" in config.EXCLUDED_SKUS["br-009"]
+    assert "br-009" not in config.EXCLUDED_SKUS
     catalog = references.load_catalog()
-    assert "br-009" in catalog
-    assert "br-009" not in pipeline.resolve_targets(catalog, collection="black-rose")
-    assert "br-009" not in pipeline.resolve_targets(catalog, all_skus=True)
+    assert "br-009" in pipeline.resolve_targets(catalog, collection="black-rose")
+    assert "br-009" in pipeline.resolve_targets(catalog, all_skus=True)
     assert pipeline.resolve_targets(catalog, sku="br-009") == ["br-009"]

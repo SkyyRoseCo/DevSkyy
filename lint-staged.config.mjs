@@ -48,6 +48,12 @@ const isByteStableOrManaged = file => {
     // Canonical dossier generation owns these bytes; generic Markdown
     // formatting would desynchronize the checked-in placement brief.
     /(^|\/)skyyrose\/elite_studio\/assets\/golden\/[^/]+\/placement\.md$/.test(normalized) ||
+    // The product registry and its dossier projections are byte-compared by
+    // sync_product_registry.py --check and the registry is sha256-pinned in the
+    // asset manifest; reformatting either one desynchronizes the SOT. The root
+    // logo-registry.json is a symlink, so a write through it lands on the registry.
+    /(^|\/)logo-registry\.json$/.test(normalized) ||
+    /(^|\/)wordpress-theme\/skyyrose-flagship\/data\/dossiers\/[^/]+\.md$/.test(normalized) ||
     /\.(?:png|jpe?g|webp|gif|avif|mp4|mov|webm|mp3|wav|flac|safetensors|ckpt|pt|pth|bin)$/i.test(normalized)
   );
 };

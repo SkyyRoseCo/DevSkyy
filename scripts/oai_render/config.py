@@ -130,9 +130,6 @@ EXCLUDED_SKUS: dict[str, str] = {
     "techflat before it can render as a single garment (would otherwise produce a multi-panel).",
     # sg-006 / sg-014 removed 2026-06-10: dossiers re-authored from the real mint
     # garments (bug-119 contamination cleared) — both SKUs render again.
-    "br-009": "dossier holds new garment generation (2026-09-11): technique/color/patch "
-    "fields are unresolved against data/logo-registry.json and the catalog; digit "
-    "placement is the only founder-resolved field. Clear the hold in the dossier first.",
 }
 
 # ── Paths (single authority: skyyrose/core/paths.py) ────────────────────────

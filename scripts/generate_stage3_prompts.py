@@ -28,6 +28,7 @@ OUTPUT_DIR = REPO_ROOT / "renders/prompts-preview"
 # Ensure repo root is on sys.path so we can import from the package tree.
 sys.path.insert(0, str(REPO_ROOT))
 
+from skyyrose.core.product_registry import RETAINED_DOSSIERS  # noqa: E402
 from skyyrose.elite_studio.synthesis.prompts.decoration_prompts import (  # noqa: E402
     build_decoration_prompt,
 )
@@ -377,7 +378,11 @@ def main() -> None:
     dossier_files = sorted(
         f for f in DOSSIER_DIR.glob("*.md") if not f.name.startswith("_") and f.name != "CLAUDE.md"
     )
-    dossier_files = [f for f in dossier_files if f.name != "_template.md"]
+    # Dossiers kept by founder decision outside the registry are not a product's
+    # spec; rendering them would emit a second prompt set for an existing SKU.
+    dossier_files = [
+        f for f in dossier_files if f.name != "_template.md" and f.name not in RETAINED_DOSSIERS
+    ]
 
     if args.slug:
         dossier_files = [f for f in dossier_files if f.stem == args.slug]

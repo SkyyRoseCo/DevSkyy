@@ -3,3 +3,10 @@
 assets/products/source-photos/manifest.json
 tasks/source-photo-audit-report.md
 tasks/source-photo-shoot-list.md
+
+# The product registry and its dossier projections are byte-compared by
+# scripts/sync_product_registry.py --check; the registry is sha256-pinned in
+# assets/products/manifest.json. The root logo-registry.json is a symlink to it.
+/logo-registry.json
+wordpress-theme/skyyrose-flagship/data/logo-registry.json
+wordpress-theme/skyyrose-flagship/data/dossiers/*.md
