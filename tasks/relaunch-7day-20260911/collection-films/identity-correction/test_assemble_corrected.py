@@ -1,7 +1,7 @@
 """Focused offline checks for the corrected film assembler."""
 
-import subprocess
 import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path

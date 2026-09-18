@@ -24,8 +24,8 @@ sys.path.insert(0, str(DATA))
 sys.path.insert(0, str(DATA.parents[2]))
 import sot_common  # noqa: E402
 
-from skyyrose.core.product_registry import load_registry  # noqa: E402
 from skyyrose.core.catalog_loader import bool_col, read_catalog_rows  # noqa: E402
+from skyyrose.core.product_registry import load_registry  # noqa: E402
 
 ASSETS = sot_common.ASSETS
 IMG_EXTS = sot_common.IMG_EXTS

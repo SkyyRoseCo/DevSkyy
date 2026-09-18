@@ -41,9 +41,9 @@ def _load_builder():
 
 @requires_asset_tree
 def test_manifest_exists_and_loads():
-    assert MANIFEST.exists(), (
-        "assets/products/manifest.json missing — run scripts/build_asset_manifest.py"
-    )
+    assert (
+        MANIFEST.exists()
+    ), "assets/products/manifest.json missing — run scripts/build_asset_manifest.py"
     m = AssetManifest.load()
     assert m.skus, "manifest registered zero SKUs"
 

@@ -58,9 +58,8 @@ from skyyrose.core.paths import (  # noqa: E402
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger = logging.getLogger(__name__)
 
-from skyyrose.elite_studio.logo_registry import LogoRegistry
-
 from skyyrose.core import paths
+from skyyrose.elite_studio.logo_registry import LogoRegistry
 
 PRODUCT_REFERENCES_DIR = paths.PRODUCT_REFERENCES
 LOGO_REGISTRY_JSON = THEME_ROOT / "data" / "logo-registry.json"

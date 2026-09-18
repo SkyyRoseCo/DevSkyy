@@ -244,13 +244,15 @@ def build_references(
     if flatlay and flatlay.exists():
         refs.append(
             ReferenceImage(
-                label=physical_front_label
-                if flatlay == bound_garment
-                else (
-                    "REFERENCE IMAGE {n} — REGISTERED PRODUCT SOURCE: use this explicitly "
-                    "bound image for the garment's appearance. This source may be a "
-                    "photo, techflat, or prior render; founder specifications in the "
-                    "registry remain authoritative."
+                label=(
+                    physical_front_label
+                    if flatlay == bound_garment
+                    else (
+                        "REFERENCE IMAGE {n} — REGISTERED PRODUCT SOURCE: use this explicitly "
+                        "bound image for the garment's appearance. This source may be a "
+                        "photo, techflat, or prior render; founder specifications in the "
+                        "registry remain authoritative."
+                    )
                 ),
                 path=flatlay,
                 kind="garment",
@@ -260,12 +262,14 @@ def build_references(
     if front and front.exists():
         refs.append(
             ReferenceImage(
-                label=physical_front_label
-                if front == bound_garment
-                else (
-                    "REFERENCE IMAGE {n} — GARMENT TECH FLAT (FRONT VIEW): front-facing design "
-                    "illustration showing front panel layout, graphic placement, silhouette, "
-                    "and construction."
+                label=(
+                    physical_front_label
+                    if front == bound_garment
+                    else (
+                        "REFERENCE IMAGE {n} — GARMENT TECH FLAT (FRONT VIEW): front-facing design "
+                        "illustration showing front panel layout, graphic placement, silhouette, "
+                        "and construction."
+                    )
                 ),
                 path=front,
                 kind="garment",
@@ -297,14 +301,16 @@ def build_references(
         is_patch = patch_required
         refs.append(
             ReferenceImage(
-                label=physical_front_label
-                if reference_kind == "garment"
-                else (
-                    "REFERENCE IMAGE {n} — "
-                    + ("SPORT PATCH" if is_patch else "LOGO/BRANDING")
-                    + " CLOSE-UP: the EXACT graphic on the garment. Reproduce it at the EXACT "
-                    "position and size shown in the tech flat. Do NOT resize, reposition, "
-                    "duplicate, omit, or alter it."
+                label=(
+                    physical_front_label
+                    if reference_kind == "garment"
+                    else (
+                        "REFERENCE IMAGE {n} — "
+                        + ("SPORT PATCH" if is_patch else "LOGO/BRANDING")
+                        + " CLOSE-UP: the EXACT graphic on the garment. Reproduce it at the EXACT "
+                        "position and size shown in the tech flat. Do NOT resize, reposition, "
+                        "duplicate, omit, or alter it."
+                    )
                 ),
                 path=logo,
                 kind=reference_kind,
