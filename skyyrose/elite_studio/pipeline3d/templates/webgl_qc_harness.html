@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GLB QC harness</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+    <script type="module">
+      /*
+       * Deterministic single-GLB render harness for GLB QC.
+       *
+       * Served from a temporary directory by skyyrose.elite_studio.pipeline3d.webgl_qc,
+       * which injects PARITY (the production-viewer constants) and symlinks the theme's
+       * vendored three tree in beside this file. Opening this file directly does nothing:
+       * the PARITY sentinel is still in place and main() fails closed.
+       *
+       * Query: ?glb=<path relative to the serve root>&angle=<name>
+       *
+       * Every knob below exists to make two renders differ ONLY because their GLBs
+       * differ. Drop any of them and the pixel diff stops meaning anything:
+       *   - fixed canvas size + pixelRatio 1  -> no DPR-dependent resampling
+       *   - opaque constant clear colour      -> no alpha compositing variance
+       *   - camera derived from the bounding box, never from a control -> identical framing
+       *   - compileAsync before the frame loop -> no first-frame shader-compile artefacts
+       *   - fixed frame count before capture   -> no time-dependent state
+       *   - preserveDrawingBuffer              -> toDataURL reads the frame just rendered
+       */
+      const PARITY = /*__PARITY__*/ null;
+      const ANGLES = /*__ANGLES__*/ null;
+
+      window.__result = null;
+      window.__errors = [];
+      window.addEventListener('error', e => window.__errors.push(String(e.message || e)));
+      window.addEventListener('unhandledrejection', e =>
+        window.__errors.push(String((e.reason && e.reason.message) || e.reason))
+      );
+
+      async function main() {
+        if (!PARITY || !ANGLES) {
+          throw new Error('harness served without injected PARITY/ANGLES — refusing to render');
+        }
+
+        const params = new URLSearchParams(location.search);
+        const glbUrl = params.get('glb');
+        const angleName = params.get('angle');
+        const size = Number(params.get('size') || PARITY.size);
+
+        if (!glbUrl) throw new Error('missing ?glb=');
+        if (!angleName) throw new Error('missing ?angle=');
+        if (!ANGLES[angleName]) throw new Error('unknown angle: ' + angleName);
+        if (!Number.isFinite(size) || size < 16) throw new Error('bad size: ' + size);
+
+        const lib = './' + PARITY.threeLibDirName + '/';
+        const THREE = await import(lib + 'three.module.min.js');
+        const { GLTFLoader } = await import(lib + 'GLTFLoader.js');
+        const { KTX2Loader } = await import(lib + 'KTX2Loader.js');
+        const { RoomEnvironment } = await import(lib + 'RoomEnvironment.js');
+        const { MeshoptDecoder } = await import(lib + 'meshopt_decoder.module.js');
+
+        const canvas = document.getElementById('c');
+        canvas.width = size;
+        canvas.height = size;
+        canvas.style.width = size + 'px';
+        canvas.style.height = size + 'px';
+
+        const renderer = new THREE.WebGLRenderer({
+          canvas,
+          antialias: true,
+          alpha: false,
+          preserveDrawingBuffer: true,
+          powerPreference: 'high-performance',
+        });
+        renderer.setPixelRatio(1);
+        renderer.setSize(size, size, false);
+        renderer.setClearColor(PARITY.clearColor, 1);
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE[PARITY.toneMapping];
+        if (renderer.toneMapping === undefined) {
+          throw new Error('three has no tone mapping named ' + PARITY.toneMapping);
+        }
+        renderer.toneMappingExposure = PARITY.toneMappingExposure;
+
+        const scene = new THREE.Scene();
+        const pmrem = new THREE.PMREMGenerator(renderer);
+        const envTarget = pmrem.fromScene(new RoomEnvironment(), PARITY.environmentSigma);
+        scene.environment = envTarget.texture;
+        pmrem.dispose();
+
+        const camera = new THREE.PerspectiveCamera(PARITY.fov, 1, 0.01, 100);
+
+        const ktx2 = new KTX2Loader().setTranscoderPath(lib + 'basis/').detectSupport(renderer);
+        const loader = new GLTFLoader().setKTX2Loader(ktx2).setMeshoptDecoder(MeshoptDecoder);
+        const gltf = await loader.loadAsync(glbUrl);
+
+        const model = gltf.scene;
+        const box = new THREE.Box3().setFromObject(model);
+        if (box.isEmpty()) throw new Error('GLB contains no renderable geometry');
+        const modelSize = box.getSize(new THREE.Vector3());
+        const center = box.getCenter(new THREE.Vector3());
+        model.position.sub(center);
+        scene.add(model);
+
+        // The production viewer's applyFit(): fit BOTH axes, then back off by
+        // fitMargin. Vertical-only fitting cropped wide garments on portrait phones.
+        const half = Math.tan((camera.fov * Math.PI) / 180 / 2);
+        const framing = {
+          height: (modelSize.y || 1) / 2,
+          width: (Math.max(modelSize.x, modelSize.z) || 1) / 2,
+        };
+        const distance = Math.max(framing.height / half, framing.width / half / camera.aspect) * PARITY.fitMargin;
+        camera.near = distance / 100;
+        camera.far = distance * 100;
+
+        const a = ANGLES[angleName];
+        if (a.heightFraction !== undefined) {
+          // Reproduces the production viewer's opening shot verbatim, including the
+          // fact that it is NOT on the fit sphere: applyFit(initial) sets
+          // position(0, framing.height * 0.1, distance), so the true distance is
+          // hypot(distance, 0.1*height). Normalising it here would render a view the
+          // PDP never shows.
+          camera.position.set(0, framing.height * a.heightFraction, distance);
+        } else {
+          const az = (a.azimuthDeg * Math.PI) / 180;
+          const el = (a.elevationDeg * Math.PI) / 180;
+          camera.position.set(
+            distance * Math.cos(el) * Math.sin(az),
+            distance * Math.sin(el),
+            distance * Math.cos(el) * Math.cos(az)
+          );
+        }
+        camera.lookAt(0, 0, 0);
+        camera.updateProjectionMatrix();
+
+        // Report what the LOADER produced, not what the file claims. A correct
+        // material.anisotropy value does not prove the shader rendered anything —
+        // that is what the pixel diff is for — but a zero here proves it did not.
+        const materials = [];
+        const geometryAttributes = [];
+        model.traverse(node => {
+          if (!node.isMesh) return;
+          geometryAttributes.push(Object.keys(node.geometry.attributes).sort().join(','));
+          const mats = Array.isArray(node.material) ? node.material : [node.material];
+          for (const m of mats) {
+            if (!materials.includes(m)) materials.push(m);
+          }
+        });
+        const materialReport = materials.map(m => ({
+          name: m.name,
+          type: m.type,
+          sheen: m.sheen,
+          sheenRoughness: m.sheenRoughness,
+          sheenColor: m.sheenColor ? m.sheenColor.toArray() : null,
+          anisotropy: m.anisotropy,
+          anisotropyRotation: m.anisotropyRotation,
+          anisotropyMap: !!m.anisotropyMap,
+          normalMap: !!m.normalMap,
+          roughness: m.roughness,
+          metalness: m.metalness,
+        }));
+
+        if (renderer.compileAsync) {
+          await renderer.compileAsync(scene, camera);
+        }
+
+        let frames = 0;
+        await new Promise(resolve => {
+          function tick() {
+            renderer.render(scene, camera);
+            frames += 1;
+            if (frames >= PARITY.framesBeforeCapture) {
+              resolve();
+            } else {
+              requestAnimationFrame(tick);
+            }
+          }
+          requestAnimationFrame(tick);
+        });
+        renderer.render(scene, camera);
+
+        window.__result = {
+          ok: true,
+          glb: glbUrl,
+          angle: angleName,
+          size,
+          camera: {
+            fov: camera.fov,
+            distance,
+            position: camera.position.toArray(),
+            near: camera.near,
+            far: camera.far,
+          },
+          bbox: { size: modelSize.toArray(), center: center.toArray() },
+          materials: materialReport,
+          geometryAttributes,
+          framesRendered: frames + 1,
+          webgl: renderer.capabilities.isWebGL2 ? 'webgl2' : 'webgl1',
+          dataUrl: canvas.toDataURL('image/png'),
+        };
+      }
+
+      main().catch(err => {
+        window.__errors.push(String((err && err.stack) || err));
+        window.__result = { ok: false, error: String((err && err.message) || err) };
+      });
+    </script>
+  </body>
+</html>

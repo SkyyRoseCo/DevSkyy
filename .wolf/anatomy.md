@@ -9235,3 +9235,5 @@ CLOSED on every path.
 - `glb_container.py` — lossless GLB I/O: rewrites ONLY the JSON chunk, walks every chunk and fails closed on BIN overrun / trailing junk / unpadded length / duplicate BIN / NaN literals. (~1246 tok)
 - `glb_materials.py` — fabric classifier over founder prose (negation-stripping, exterior-shell precedence) + sheen presets per class; anisotropy opt-in only (AI atlases have no grain). (~2881 tok)
 - `glb_optimize.py` — gltfpack `-cc -tc` wrapper + web gate (≤3MB, meshopt in extensionsRequired AND on a real bufferView, basisu, sheen VALUES valid, KTX2-only images). (~1790 tok)
+- `webgl_qc.py` — renders a web GLB in the PRODUCTION three.js viewer (Playwright + loopback server over a temp serve root) and pixel-diffs variants; VIEWER_PARITY is parity-gated against product-3d-viewer.js; VOID (maxΔ=0) is distinct from "no visible difference". (~3900 tok)
+- `templates/webgl_qc_harness.html` — the deterministic render page; PARITY/ANGLES are injected at serve time, un-injected it refuses to render. (~1700 tok)
