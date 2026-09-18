@@ -21,6 +21,9 @@
 #   5. Retired refs  — no code points at retired masters (product-masters/
 #                      catalog.yaml, manifest.json, data/product-catalog.csv,
 #                      products.json, the deleted flat data/collections/*.json).
+#   6. Formatter-ignore coverage — every derived / vendored / sha256-pinned file
+#                      is prettier-ignored, so lint-staged cannot rewrite it
+#                      after the diff was reviewed (bug-332). Always runs.
 #
 # Modes:
 #   (default)  check staged files only — fast; used by the pre-commit hook.
@@ -28,7 +31,8 @@
 #   --fix      regenerate the SOT, rebuild .min, and re-stage them; then re-check.
 #
 # Exit 0 = everything fresh. Exit 1 = stale (with the exact fix command).
-# Missing tooling (no venv / no npm) downgrades a check to a skip, never a fail.
+# Missing tooling (no venv / no npm) downgrades checks 1-5 to a skip, never a fail.
+# CHECK 6 is the exception and fails closed — see its comment for why.
 
 set -uo pipefail
 
@@ -41,46 +45,61 @@ PY="$ROOT/.venv/bin/python"
 MODE="${1:-check}"
 FAIL=0
 
-c_ok()   { printf '\033[32m  ✓\033[0m %s\n' "$1"; }
-c_bad()  { printf '\033[31m  ✗\033[0m %s\n' "$1"; FAIL=1; }
+c_ok() { printf '\033[32m  ✓\033[0m %s\n' "$1"; }
+c_bad() {
+  printf '\033[31m  ✗\033[0m %s\n' "$1"
+  FAIL=1
+}
 c_skip() { printf '\033[33m  ·\033[0m %s\n' "$1"; }
-hdr()    { printf '\n\033[1m%s\033[0m\n' "$1"; }
+hdr() { printf '\n\033[1m%s\033[0m\n' "$1"; }
 
 # Staged file list (ACMR). --all/--fix consider the whole tree.
 if [ "$MODE" = "--all" ] || [ "$MODE" = "--fix" ]; then
   STAGED="$(git -C "$ROOT" ls-files)"
 else
-  STAGED="$(git -C "$ROOT" diff --cached --name-only --diff-filter=ACMR 2>/dev/null || true)"
+  STAGED="$(git -C "$ROOT" diff --cached --name-only --diff-filter=ACMR 2> /dev/null || true)"
 fi
 forced() { [ "$MODE" = "--all" ] || [ "$MODE" = "--fix" ]; }
 staged_match() { printf '%s\n' "$STAGED" | grep -qE "$1"; }
-extract_ver() { grep -iE "$1" "$2" 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1; }
+extract_ver() { grep -iE "$1" "$2" 2> /dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1; }
 
 hdr "freshness-guard ($MODE)"
 
 # ── --fix: regenerate before checking ───────────────────────────────────────
 if [ "$MODE" = "--fix" ]; then
   if [ -x "$PY" ]; then
-    ( cd "$THEME" && "$PY" data/gen-design-tokens.py && "$PY" data/build-collection-sot.py \
-        && "$PY" data/gen-collection-hub.py ) >/tmp/fg_fix_sot.log 2>&1 \
+    (cd "$THEME" && "$PY" data/gen-design-tokens.py && "$PY" data/build-collection-sot.py \
+      && "$PY" data/gen-collection-hub.py) > /tmp/fg_fix_sot.log 2>&1 \
       && c_ok "regenerated collection SOTs (design-tokens + collection sot.json + hubs)" \
-      || { c_bad "SOT regeneration failed (see /tmp/fg_fix_sot.log)"; tail -8 /tmp/fg_fix_sot.log | sed 's/^/    /'; }
-    ( cd "$ROOT" && "$PY" scripts/build-lookbook-sot.py ) >/tmp/fg_fix_lookbook_sot.log 2>&1 \
+      || {
+        c_bad "SOT regeneration failed (see /tmp/fg_fix_sot.log)"
+        tail -8 /tmp/fg_fix_sot.log | sed 's/^/    /'
+      }
+    (cd "$ROOT" && "$PY" scripts/build-lookbook-sot.py) > /tmp/fg_fix_lookbook_sot.log 2>&1 \
       && c_ok "regenerated lookbook-sot.json" \
-      || { c_bad "lookbook SOT regeneration failed (see /tmp/fg_fix_lookbook_sot.log)"; tail -8 /tmp/fg_fix_lookbook_sot.log | sed 's/^/    /'; }
-    ( cd "$ROOT" && "$PY" scripts/build-lookbook-from-sot.py ) >/tmp/fg_fix_lookbook_html.log 2>&1 \
+      || {
+        c_bad "lookbook SOT regeneration failed (see /tmp/fg_fix_lookbook_sot.log)"
+        tail -8 /tmp/fg_fix_lookbook_sot.log | sed 's/^/    /'
+      }
+    (cd "$ROOT" && "$PY" scripts/build-lookbook-from-sot.py) > /tmp/fg_fix_lookbook_html.log 2>&1 \
       && c_ok "regenerated docs/campaigns/sot-lookbook.html" \
-      || { c_bad "lookbook HTML regeneration failed (see /tmp/fg_fix_lookbook_html.log)"; tail -8 /tmp/fg_fix_lookbook_html.log | sed 's/^/    /'; }
+      || {
+        c_bad "lookbook HTML regeneration failed (see /tmp/fg_fix_lookbook_html.log)"
+        tail -8 /tmp/fg_fix_lookbook_html.log | sed 's/^/    /'
+      }
   fi
-  if command -v npm >/dev/null 2>&1 && [ -d "$WP/node_modules/clean-css" ]; then
-    ( cd "$WP" && npm run build ) >/tmp/fg_fix_min.log 2>&1 \
-      && { c_ok "rebuilt .min (css + js)"; MIN_REBUILT=1; } \
+  if command -v npm > /dev/null 2>&1 && [ -d "$WP/node_modules/clean-css" ]; then
+    (cd "$WP" && npm run build) > /tmp/fg_fix_min.log 2>&1 \
+      && {
+        c_ok "rebuilt .min (css + js)"
+        MIN_REBUILT=1
+      } \
       || c_bad "min rebuild failed (see /tmp/fg_fix_min.log)"
   fi
   git -C "$ROOT" add -- "$THEME/assets/css/design-tokens.css" \
-      "$THEME/data/collections" "$THEME/assets/css" "$THEME/assets/js" \
-      "$ROOT/scripts/lookbook-manifest.json" "$ROOT/wordpress-theme/skyyrose-flagship/data/lookbook-sot.json" \
-      "$ROOT/docs/campaigns/sot-lookbook.html" 2>/dev/null || true
+    "$THEME/data/collections" "$THEME/assets/css" "$THEME/assets/js" \
+    "$ROOT/scripts/lookbook-manifest.json" "$ROOT/wordpress-theme/skyyrose-flagship/data/lookbook-sot.json" \
+    "$ROOT/docs/campaigns/sot-lookbook.html" 2> /dev/null || true
   c_ok "re-staged regenerated derived files — review then commit"
 fi
 
@@ -89,7 +108,7 @@ SOT_TRIGGER='wordpress-theme/skyyrose-flagship/data/(skyyrose-catalog\.csv|visua
 if forced || staged_match "$SOT_TRIGGER"; then
   hdr "1. Collection SOT ↔ masters"
   if [ -x "$PY" ] && [ -f "$THEME/data/verify-collection-sot.py" ]; then
-    if ( cd "$THEME" && "$PY" data/verify-collection-sot.py ) >/tmp/fg_sot.log 2>&1; then
+    if (cd "$THEME" && "$PY" data/verify-collection-sot.py) > /tmp/fg_sot.log 2>&1; then
       c_ok "SOT in sync ($(grep -cE 'SKUs, 0 broken' /tmp/fg_sot.log) collections verified)"
     else
       c_bad "SOT DRIFT — run: bash scripts/freshness-guard.sh --fix   (then git add + recommit)"
@@ -105,7 +124,7 @@ LOOKBOOK_TRIGGER='scripts/lookbook-manifest\.json|scripts/build-lookbook-sot\.py
 if forced || staged_match "$LOOKBOOK_TRIGGER"; then
   hdr "2. Lookbook SOT ↔ derived HTML"
   if [ -x "$PY" ]; then
-    if "$PY" scripts/validate_catalog_consistency.py --checks lookbook_sot_current,lookbook_html_current >/tmp/fg_lookbook_guard.log 2>&1; then
+    if "$PY" scripts/validate_catalog_consistency.py --checks lookbook_sot_current,lookbook_html_current > /tmp/fg_lookbook_guard.log 2>&1; then
       c_ok "lookbook-sot.json and sot-lookbook.html are in sync"
     else
       c_bad "lookbook drift — run: bash scripts/freshness-guard.sh --fix   (then git add + recommit)"
@@ -123,13 +142,13 @@ if forced || staged_match "$MIN_TRIGGER"; then
   if forced; then
     # --all/--fix audit: rebuild, surface any .min that differs from the build
     # (also catches toolchain drift), then restore the tree (read-only audit).
-    if command -v npm >/dev/null 2>&1 && [ -d "$WP/node_modules/clean-css" ]; then
+    if command -v npm > /dev/null 2>&1 && [ -d "$WP/node_modules/clean-css" ]; then
       # --fix already rebuilt above; avoid a second redundant minification pass.
-      [ "${MIN_REBUILT:-0}" = "1" ] || ( cd "$WP" && npm run build ) >/tmp/fg_min.log 2>&1 || true
-      DRIFTED="$(git -C "$ROOT" diff --name-only -- '*.min.css' '*.min.js' 2>/dev/null)"
-      [ "$MODE" = "--fix" ] || git -C "$ROOT" checkout -- '*.min.css' '*.min.js' 2>/dev/null || true
+      [ "${MIN_REBUILT:-0}" = "1" ] || (cd "$WP" && npm run build) > /tmp/fg_min.log 2>&1 || true
+      DRIFTED="$(git -C "$ROOT" diff --name-only -- '*.min.css' '*.min.js' 2> /dev/null)"
+      [ "$MODE" = "--fix" ] || git -C "$ROOT" checkout -- '*.min.css' '*.min.js' 2> /dev/null || true
       if [ -n "$DRIFTED" ]; then
-        c_bad "$(printf '%s\n' "$DRIFTED" | grep -c . ) .min file(s) differ from the build — run: bash scripts/freshness-guard.sh --fix && git add"
+        c_bad "$(printf '%s\n' "$DRIFTED" | grep -c .) .min file(s) differ from the build — run: bash scripts/freshness-guard.sh --fix && git add"
         printf '%s\n' "$DRIFTED" | head -6 | sed 's/^/    /'
       else
         c_ok ".min build up to date"
@@ -144,7 +163,7 @@ if forced || staged_match "$MIN_TRIGGER"; then
     while IFS= read -r f; do
       [ -n "$f" ] || continue
       min="${f%.*}.min.${f##*.}"
-      [ -f "$ROOT/$min" ] || continue          # source isn't a built asset → skip
+      [ -f "$ROOT/$min" ] || continue # source isn't a built asset → skip
       if ! printf '%s\n' "$STAGED" | grep -qxF "$min"; then
         # Comment/whitespace-only source edits rebuild to a byte-identical
         # .min — there is nothing to stage and the presence check can never
@@ -152,10 +171,10 @@ if forced || staged_match "$MIN_TRIGGER"; then
         # from the staged source and HEAD's copy; identical => cosmetic-only
         # edit, .min is fresh by definition. (Checking the .min against HEAD
         # alone would also pass for a stale un-rebuilt .min — insufficient.)
-        if command -v perl >/dev/null 2>&1; then
+        if command -v perl > /dev/null 2>&1; then
           norm() { perl -0777 -pe 's{/\*.*?\*/}{}gs; s{^\s*//[^\n]*$}{}gm; s/\s+//g'; }
-          staged_sig=$(git -C "$ROOT" show ":$f" 2>/dev/null | norm | git hash-object --stdin)
-          head_sig=$(git -C "$ROOT" show "HEAD:$f" 2>/dev/null | norm | git hash-object --stdin)
+          staged_sig=$(git -C "$ROOT" show ":$f" 2> /dev/null | norm | git hash-object --stdin)
+          head_sig=$(git -C "$ROOT" show "HEAD:$f" 2> /dev/null | norm | git hash-object --stdin)
           if [ -n "$staged_sig" ] && [ "$staged_sig" = "$head_sig" ]; then
             continue
           fi
@@ -163,7 +182,7 @@ if forced || staged_match "$MIN_TRIGGER"; then
         c_bad "edited source not rebuilt: $f  →  (cd wordpress-theme && npm run build) && git add $min"
         STALE_MIN=1
       fi
-    done <<EOF
+    done << EOF
 $(printf '%s\n' "$STAGED" | grep -E 'wordpress-theme/skyyrose-flagship/assets/(css|js)/.*\.(css|js)$' | grep -vE '\.min\.')
 EOF
     [ "$STALE_MIN" -eq 0 ] && c_ok "edited assets have their rebuilt .min staged"
@@ -175,7 +194,7 @@ VER_TRIGGER='wordpress-theme/skyyrose-flagship/(style\.css|readme\.txt|functions
 if forced || staged_match "$VER_TRIGGER"; then
   hdr "4. Theme version sync"
   v_style="$(extract_ver '^Version:' "$THEME/style.css")"
-  v_fn="$(grep -E "SKYYROSE_VERSION" "$THEME/functions.php" 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)"
+  v_fn="$(grep -E "SKYYROSE_VERSION" "$THEME/functions.php" 2> /dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)"
   v_rm="$(extract_ver 'stable tag' "$THEME/readme.txt")"
   if [ -n "$v_style" ] && [ "$v_style" = "$v_fn" ] && [ "$v_style" = "$v_rm" ]; then
     c_ok "version synced ($v_style)"
@@ -188,20 +207,38 @@ fi
 RETIRED='product-masters/(catalog\.yaml|manifest\.json)|data/product-catalog\.csv|/products\.json|data/collections/(black-rose|love-hurts|signature|kids-capsule)\.json'
 hdr "5. Retired-master references"
 if forced; then
-  HITS="$(git -C "$ROOT" grep -nIE "$RETIRED" -- '*.py' '*.php' '*.js' ':!*test*' ':!*/tests/*' ':!*/docs/*' ':!*.min.*' 2>/dev/null || true)"
+  HITS="$(git -C "$ROOT" grep -nIE "$RETIRED" -- '*.py' '*.php' '*.js' ':!*test*' ':!*/tests/*' ':!*/docs/*' ':!*.min.*' 2> /dev/null || true)"
 else
   CODE="$(printf '%s\n' "$STAGED" | grep -E '\.(py|php|js)$' | grep -vE 'test|/tests/|/docs/|\.min\.' || true)"
   HITS=""
   # NUL-delimit the path list so filenames with spaces, globs, or a leading
   # dash cannot word-split or inject grep flags ('--' terminates options).
   [ -n "$CODE" ] && HITS="$(cd "$ROOT" && printf '%s\n' "$CODE" | tr '\n' '\0' \
-    | xargs -0 grep -nIE "$RETIRED" -- 2>/dev/null || true)"
+    | xargs -0 grep -nIE "$RETIRED" -- 2> /dev/null || true)"
 fi
 if [ -n "$HITS" ]; then
   c_bad "retired-master reference(s) — repoint to the catalog CSV / per-collection SOT:"
   printf '%s\n' "$HITS" | head -12 | sed 's/^/    /'
 else
   c_ok "no retired-master references"
+fi
+
+# ── CHECK 6: formatter-ignore coverage ──────────────────────────────────────
+# Unconditional (40ms) and fails CLOSED, unlike checks 1-5. The failure it
+# guards against happens BETWEEN review and commit: lint-staged formats and
+# re-stages files after the diff a human approved, so no other gate in this
+# hook can see it. A skip here would restore exactly the silence that let
+# prettier expand three.module.min.js 691,648 -> 952,111 bytes (bug-332).
+hdr "6. Formatter-ignore coverage"
+if command -v node > /dev/null 2>&1; then
+  if node "$ROOT/scripts/verify-formatter-ignores.mjs" --quiet > /tmp/fg_fmt_ignore.log 2>&1; then
+    c_ok "derived/vendored/pinned files are prettier-ignored"
+  else
+    c_bad "a derived or pinned file is formattable — lint-staged would rewrite it after review:"
+    sed 's/^/    /' /tmp/fg_fmt_ignore.log
+  fi
+else
+  c_bad "node unavailable — cannot prove derived files are prettier-ignored (gate fails closed)"
 fi
 
 # ── Summary ─────────────────────────────────────────────────────────────────

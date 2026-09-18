@@ -20,5 +20,43 @@ tasks/source-photo-shoot-list.md
 **/*.min.css
 # Vendored third-party libraries, pinned by sha256 in VENDOR.md and reproduced
 # byte-identically by scripts/vendor-three.sh. Reformatting them breaks that pin
-# (three.module.min.js went 691,648 -> 952,111 bytes).
-wordpress-theme/skyyrose-flagship/assets/js/lib/**
+# (three.module.min.js went 691,648 -> 952,111 bytes). The glob spans every theme,
+# not just skyyrose-flagship: skyyrose-flagship-2 carries its own draco decoder.
+wordpress-theme/*/assets/js/lib/**
+# Same class, different tree: the dashboard's draco decoder. Prettier expands
+# draco_decoder.js 719,410 -> 2,929,568 bytes (4.07x).
+public/draco/**
+# 234 vendored skill files, each pinned by sha256 in
+# plugins/fashion-theme-team/skills/fashion-theme-team/brain/branded-skills/sources/source-registry.json
+# and verified by scripts/verify.sh. The plugin's own .prettierignore does not apply
+# because lint-staged runs prettier from the repo root, so the pin must be held here.
+plugins/fashion-theme-team/vendor/**
+# Deterministic generator outputs that a gate compares BYTE-FOR-BYTE against a fresh
+# build. Formatting them after generation makes the gate unsatisfiable: freshness-guard
+# reports STALE, --fix regenerates, lint-staged reformats on the retry, and the only
+# way out is --no-verify.
+#   design-tokens.css   <- data/gen-design-tokens.py, byte-checked by data/verify-collection-sot.py
+#   sot-lookbook.html   <- scripts/build-lookbook-from-sot.py, byte-checked by validate_catalog_consistency
+#   dossiers/*.md       <- registry projections, byte-checked by sync_product_registry.py --check (CI)
+#   lookbook-sot.json / collections sot.json <- byte-checked by validate_catalog_consistency
+wordpress-theme/skyyrose-flagship/assets/css/design-tokens.css
+docs/campaigns/sot-lookbook.html
+wordpress-theme/skyyrose-flagship/data/dossiers/*.md
+wordpress-theme/skyyrose-flagship/data/lookbook-sot.json
+wordpress-theme/skyyrose-flagship/data/collections/**/sot.json
+wordpress-theme/skyyrose-flagship/data/collections/**/_orphans.json
+# Content-hashed SKU→asset map; scripts/build_asset_manifest.py --check exits 1 on
+# drift vs the committed bytes. Prettier's output happens to match the generator's
+# today, so this is protection against a coincidence, not a current failure.
+assets/products/manifest.json
+# Tool-written files: the generator owns the bytes, so reformatting them only creates
+# churn — every regeneration re-dirties the tree and every commit re-formats it back.
+wordpress-theme/skyyrose-flagship/data/collections/*/index.html
+wordpress-theme/skyyrose-flagship/data/editorial-index.json
+wordpress-theme/skyyrose-flagship/data/logo-registry.json
+tasks/phase-e-manifest.md
+# Machine-maintained by OpenWolf, parsed line-by-line by scripts/anatomy_filter_main.py
+# (ENTRY_RE anchors on "- `path`"). Prettier's proseWrap reflowed it on 2026-09-17,
+# which both orphaned continuation lines from their entries and mutated content that
+# looks like markdown syntax (__init__.py -> **init**.py, DB_*/REDIS_* -> DB__/REDIS__).
+.wolf/anatomy.md

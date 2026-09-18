@@ -1,3 +1,36 @@
+## Single product registry — required for SkyyRose work
+
+`logo-registry.json` at the repository root is a symlink to
+`wordpress-theme/skyyrose-flagship/data/logo-registry.json`. This ONE JSON is
+the editable product SOT. Its `products[sku]` records own commerce fields,
+garment color, available sizes and sizing references, fit, materials, features,
+the complete design specification, and image/source bindings. Its logo/placement
+sections own graphics and decoration dimensions. Founder corrections are applied
+here first.
+
+Do not author separate product facts in CSVs, dossier files, prompts, local
+maps, or generated manifests. Those are compatibility projections or consumers.
+**Read through ONE entry point:**
+`from skyyrose.core.product import get_product`. `get_product(sku)` returns the
+complete record in one call — commerce fields, garment facts, the founder's
+design specification, an image for every role, render sources, logos and
+placements, copy, founder-verbatim corrections, authority, and a `gaps` list
+naming anything absent. It fails closed: an unknown SKU raises, and a fact is
+never a silent blank. Non-Python callers use
+`python -m skyyrose.core.product <sku>` for the identical JSON. The narrow
+readers (`product_registry`, `catalog_loader`, `dossier_loader`, `sot_images`,
+`LogoRegistry`) remain for single-field needs but are no longer the default. Use
+the registry update API for catalog writes. Run
+`python scripts/sync_product_registry.py` after direct JSON edits and
+`python scripts/sync_product_registry.py --check` before handoff. CI must fail
+if CSV/dossier projections drift. Actual image binaries retain their existing
+asset paths; the registry owns the references.
+
+When operating in another checkout, verify it has the unified `products` schema
+and current founder corrections before execution. Never substitute an old
+checkout's CSV/dossiers when its registry is stale. Pass the registry location
+and this authority rule to every delegated agent and workflow.
+
 # OpenWolf
 
 @.wolf/OPENWOLF.md
@@ -472,5 +505,7 @@ Grep before re-deriving a fix. Engineering → **`docs/engineering-learnings.md`
 - **bug-098** (×4, 2026-05-12): DATA-01: /collection-black-rose/, /collection-love-hurts/, /collection-signatur… → fix: Bumped SKYYROSE_SETUP_VERSION constant from '4.0.0' to '4.1.0' in inc/theme-act…
 - **bug-257** (×2, 2026-07-13): Stop-gate: tests/test_asset_manifest.py::test_manifest_exists_and_loads fails i… → fix: Centralized guard in tests/sparse_guard.py: requires_tree(rel) skips ONLY when…
 - **bug-287** (×2, 2026-07-24): Reported a stale repo-side style.min.css as 'a real production stale-serve defe… → fix: Evidence-scope rule in tasks/lessons.md: tag load-bearing claims inline ([repo]…
+- **bug-327** (×2, 2026-09-17): wolf-memory (CONNECTION_CLOSED) and worktree-fleet (CONNECTION_CLOSED) MCP serv… → fix: Changed the `command` for wolf-memory and worktree-fleet in .mcp.json from `pyt…
+- **bug-332** (×2, 2026-09-18): Pre-commit lint-staged/prettier reformatted derived and vendored assets, and th… → fix: Added `**/*.min.js`, `**/*.min.css` and `wordpress-theme/skyyrose-flagship/asse…
 <!-- wolf:recurring:end -->
 <!-- prettier-ignore-end -->
