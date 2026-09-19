@@ -1,16 +1,28 @@
 #!/usr/bin/env bash
-# scripts/deploy-theme.sh -- Production deploy script for SkyyRose WordPress theme
-# Transfers built theme files to skyyrose.co with maintenance mode safety and cache flushing.
+# scripts/deploy-theme.sh -- Deploy ENGINE for the SkyyRose WordPress theme
+# Transfers built theme files to a WordPress.com site with hot-swap safety,
+# cache flushing and post-deploy verification.
 #
-# Usage:
-#   bash scripts/deploy-theme.sh              # Live deploy to production
-#   bash scripts/deploy-theme.sh --dry-run    # Preview what would happen (no server contact)
-#   bash scripts/deploy-theme.sh --help       # Show this help message
+# This is the engine, not the entry point. Target selection lives in the
+# wrappers (founder directive 2026-09-18: separate staging/production scripts):
+#   bash scripts/deploy-staging.sh [--dry-run]      # staging-7e48-skyyrose.wpcomstaging.com
+#   bash scripts/deploy-production.sh [--dry-run]   # skyyrose.co
+# Running this file directly refuses unless DEPLOY_TARGET is staging|production.
+#
+# Usage (via a wrapper):
+#   ... --dry-run    # Preflight only: no SSH, no transfer (one read-only GET for identity)
+#   ... --help       # Show this help message
 #
 # Requirements:
-#   - .env.wordpress with SSH/SFTP credentials (or set ENV_FILE to override path)
+#   - the target's env file with SSH/SFTP credentials, WP_THEME_PATH and
+#     PUBLIC_URL (or WORDPRESS_URL) -- selected by the wrapper via ENV_FILE
 #   - sshpass installed (brew install hudochenkov/sshpass/sshpass)
-#   - Theme directory at wordpress-theme/skyyrose-flagship/
+#   - Theme source directory -- selected by the wrapper via THEME_DIR_OVERRIDE
+#
+# Scope: this engine is V1-only (SKYYROSE_VERSION regex, V1 asset floor, V1
+# data/ allowlist, `mv skyyrose-flagship` in the hot-swap). A flagship-2 source
+# is refused explicitly by check_engine_supports_source() until PR #918's V2
+# engine support lands.
 #
 # Safety:
 #   - Maintenance mode is activated before file transfer and deactivated after
@@ -52,25 +64,42 @@ log_error()   { echo -e "${RED}[ERROR]${NC} $1" >&2; }
 # Usage / help
 # ---------------------------------------------------------------------------
 usage() {
-    echo "Usage: deploy-theme.sh [OPTIONS]"
+    echo "Usage: deploy-staging.sh | deploy-production.sh [OPTIONS]"
+    echo "       (deploy-theme.sh is the engine; it refuses without DEPLOY_TARGET)"
     echo ""
-    echo "Deploy the SkyyRose WordPress theme to production."
+    echo "Deploy the SkyyRose WordPress theme to the selected target."
     echo ""
     echo "Options:"
-    echo "  --dry-run            Preview what would happen without touching production"
+    echo "  --dry-run            Preflight only -- no SSH/transfer (one read-only GET for identity)"
     echo "  --with-maintenance   Enable wp maintenance-mode during deploy (legacy)."
     echo "                       Default is hot-swap, which avoids the Jetpack Uptime"
     echo "                       false-positive 503 window. Use --with-maintenance for"
     echo "                       deploys that include DB migrations or plugin changes."
     echo "  --help               Show this help message"
     echo ""
-    echo "Environment:"
-    echo "  ENV_FILE             Path to .env.wordpress (default: \$PROJECT_ROOT/.env.wordpress)"
-    echo "  THEME_DIR_OVERRIDE   Override theme source directory"
-    echo "  PUBLIC_URL           Verified URL for post-deploy check (default: https://skyyrose.co/)"
+    echo "Environment (set by the wrappers):"
+    echo "  DEPLOY_TARGET        staging | production (required; anything else refuses)"
+    echo "  ENV_FILE             Path to the target's env file (default: \$PROJECT_ROOT/.env.wordpress)"
+    echo "  THEME_DIR_OVERRIDE   Theme source directory"
+    echo "  PUBLIC_URL           Site URL for identity + post-deploy checks; read from the env"
+    echo "                       file (PUBLIC_URL, else WORDPRESS_URL). No default -- required."
+    echo ""
+    echo "Overrides (each is logged loudly; never set them by habit). Pass the wrapper"
+    echo "flag -- the wrappers refuse these variables when inherited from the caller and"
+    echo "set them only for the engine they exec:"
+    echo "  --allow-theme-identity-change   (engine env ALLOW_THEME_IDENTITY_CHANGE=1)"
+    echo "                                  deploy a source whose Theme Name/Text Domain"
+    echo "                                  differ from the theme currently live in that folder"
+    echo "  --allow-new-theme-folder        (engine env ALLOW_NEW_THEME_FOLDER=1)"
+    echo "                                  deploy into a folder the site does not have yet"
+    echo "                                  (live style.css 404) -- first deploy of skyyrose-flagship-2;"
+    echo "                                  honoured only after /index.php?rest_route=/ proves"
+    echo "                                  PUBLIC_URL is a WordPress root"
+    echo "  PREFLIGHT_SKIP_COMPLETENESS=1   skip the source-completeness gate (bug-252);"
+    echo "                                  no wrapper flag -- refused when inherited"
     echo ""
     echo "The script will:"
-    echo "  1. Run preflight checks (credentials, tools, PHP syntax)"
+    echo "  1. Run preflight checks (credentials, target host, live theme identity, PHP syntax)"
     echo "  2. Transfer theme files via tar+scp with atomic hot-swap on remote"
     echo "     (or, with --with-maintenance, enable maintenance mode first)"
     echo "  3. Flush object/transient/rewrite caches"
@@ -271,6 +300,268 @@ extract_theme_version() {
     grep -m1 -iE "^[[:space:]]*Version:" | awk '{print $2}'
 }
 
+# Extract one "<Key>:" header value from a WP style.css on stdin. Trailing CR
+# and padding are stripped (the V1 header pads values into a column). An
+# absent header yields "" -- the `|| true` keeps `set -o pipefail` from
+# turning grep's no-match exit 1 into a silent script death, so the caller's
+# own "-z" check produces the refusal message.
+extract_theme_header() {
+    { grep -m1 -iE "^[[:space:]]*$1:" || true; } \
+        | sed -E 's/^[^:]*:[[:space:]]*//; s/[[:space:]]+$//' | tr -d '\r'
+}
+
+# Lower-cased host of a URL (scheme, port, path, query and fragment stripped).
+url_host() {
+    printf '%s' "$1" | sed -E 's#^[A-Za-z][A-Za-z0-9+.-]*://##; s#[/:?#].*$##' | tr '[:upper:]' '[:lower:]'
+}
+
+# The URL authority: everything between :// and the first /. Userinfo ('@')
+# in it means the host url_host() returns is not the host curl would use.
+url_authority() {
+    local rest="${1#*://}"
+    printf '%s' "${rest%%/*}"
+}
+
+# WP.com SSH/SFTP account for a public host: "<first DNS label, leading www.
+# removed>.wordpress.com" (skyyrose.co -> skyyrose.wordpress.com;
+# staging-7e48-skyyrose.wpcomstaging.com -> staging-7e48-skyyrose.wordpress.com).
+expected_ssh_user() {
+    local host="${1#www.}"
+    printf '%s.wordpress.com' "${host%%.*}"
+}
+
+# ---------------------------------------------------------------------------
+# Target selection (founder directive 2026-09-18: separate staging and
+# production scripts). The engine never picks a target itself: DEPLOY_TARGET
+# is exported by scripts/deploy-staging.sh / scripts/deploy-production.sh,
+# and an unset or unknown value refuses before the lock is even taken.
+# ---------------------------------------------------------------------------
+check_deploy_target() {
+    case "${DEPLOY_TARGET:-}" in
+        staging|production)
+            return 0
+            ;;
+        "")
+            log_error "DEPLOY_TARGET is unset -- run scripts/deploy-staging.sh or scripts/deploy-production.sh (deploy-theme.sh is the engine, not the entry point)"
+            exit 1
+            ;;
+        *)
+            log_error "DEPLOY_TARGET='${DEPLOY_TARGET}' is not one of {staging, production} -- run scripts/deploy-staging.sh or scripts/deploy-production.sh"
+            exit 1
+            ;;
+    esac
+}
+
+# Resolve the site URL from the sourced env file: PUBLIC_URL, else
+# WORDPRESS_URL. There is deliberately NO literal default -- a deploy that
+# cannot say which site it targets refuses. Also derives TARGET_HOST and
+# THEME_FOLDER (basename of WP_THEME_PATH) for the banner and the gates.
+TARGET_HOST=""
+THEME_FOLDER=""
+resolve_public_url() {
+    PUBLIC_URL="${PUBLIC_URL:-${WORDPRESS_URL:-}}"
+    if [[ -z "$PUBLIC_URL" ]]; then
+        log_error "PUBLIC_URL (or WORDPRESS_URL) missing from ${ENV_FILE} -- refusing to deploy to an unknown site"
+        exit 1
+    fi
+    if [[ "$(url_authority "$PUBLIC_URL")" == *@* ]]; then
+        log_error "PUBLIC_URL/WORDPRESS_URL in ${ENV_FILE##*/} carries userinfo ('@' in the authority) -- the real host would differ from the one checked; refusing"
+        exit 1
+    fi
+    TARGET_HOST="$(url_host "$PUBLIC_URL")"
+    if [[ -n "${WP_THEME_PATH:-}" ]]; then
+        THEME_FOLDER="$(basename "$WP_THEME_PATH")"
+    fi
+}
+
+# The host the env file points at must agree with DEPLOY_TARGET. A production
+# target fed a staging env file (or vice versa) is refused here even when the
+# caller bypassed the wrappers.
+check_target_host() {
+    case "$DEPLOY_TARGET" in
+        production)
+            if [[ "$TARGET_HOST" != "skyyrose.co" && "$TARGET_HOST" != "www.skyyrose.co" ]]; then
+                log_error "DEPLOY_TARGET=production but PUBLIC_URL host is '${TARGET_HOST}' (expected skyyrose.co) -- refusing"
+                exit 1
+            fi
+            ;;
+        staging)
+            # Allowlist, same as deploy-target-lib.sh: a direct engine run may
+            # not aim "staging" at any host that merely is not production.
+            if [[ "$TARGET_HOST" != *.wpcomstaging.com ]]; then
+                log_error "DEPLOY_TARGET=staging but PUBLIC_URL host is '${TARGET_HOST}' (expected a *.wpcomstaging.com staging host) -- refusing"
+                exit 1
+            fi
+            ;;
+    esac
+    log_success "Target host agrees with DEPLOY_TARGET=${DEPLOY_TARGET}: ${TARGET_HOST}"
+    check_ssh_destination
+}
+
+# The SSH destination must belong to the target site (runs after
+# load_credentials): SSH_USER must be the host's own WP.com account and
+# SFTP_USER (when set) must equal SSH_USER. A production credential in a
+# staging env file would otherwise ship the staging tree to skyyrose.co. The
+# sourced values are never printed -- only the expected account (derived from
+# PUBLIC_URL) and the offending key name are.
+check_ssh_destination() {
+    local expected
+    expected="$(expected_ssh_user "$TARGET_HOST")"
+    if [[ "${SSH_USER:-}" != "$expected" ]]; then
+        log_error "SSH_USER in ${ENV_FILE##*/} does not belong to the ${DEPLOY_TARGET} host ${TARGET_HOST}: expected '${expected}' (derived from PUBLIC_URL) -- refusing; the SSH destination must be the target site's own account"
+        exit 1
+    fi
+    if [[ -n "${SFTP_USER:-}" && "${SFTP_USER}" != "${SSH_USER}" ]]; then
+        log_error "SFTP_USER in ${ENV_FILE##*/} differs from SSH_USER (expected both to be '${expected}') -- refusing"
+        exit 1
+    fi
+    log_success "SSH destination belongs to ${TARGET_HOST}: ${expected}"
+}
+
+# ---------------------------------------------------------------------------
+# Engine scope guard. This engine is V1-only: SKYYROSE_VERSION regex
+# (check_version_triple), V1 asset floor, V1 data/ allowlist and a literal
+# `mv skyyrose-flagship` in the remote hot-swap. A flagship-2 source would
+# otherwise die at the version-triple check with a cryptic "unreadable"
+# message -- or, forced past it, extract under the wrong folder name.
+# PR #918 carries the V2 engine support; it is deliberately not ported here.
+# ---------------------------------------------------------------------------
+check_engine_supports_source() {
+    local source_name local_domain=""
+    source_name="$(basename "$THEME_DIR")"
+    if [[ -f "$THEME_DIR/style.css" ]]; then
+        local_domain="$(extract_theme_header "Text Domain" < "$THEME_DIR/style.css")"
+    fi
+    if [[ "$source_name" == "skyyrose-flagship-2" || "$local_domain" == "skyyrose-flagship-2" ]] \
+        || grep -q "SKYYROSE2_VERSION" "$THEME_DIR/functions.php" 2>/dev/null; then
+        log_error "Deploy source is skyyrose-flagship-2 (${THEME_DIR}) but this engine lacks skyyrose-flagship-2 support -- land PR #918's deploy changes (SKYYROSE2_VERSION regex, V2 asset floor, V2 data/ allowlist, basename-driven hot-swap) before deploying it"
+        exit 1
+    fi
+    # The tarball is built from the parent dir and the remote hot-swap does a
+    # literal `mv skyyrose-flagship`; any other basename extracts to a folder
+    # the swap never renames into place.
+    if [[ "$source_name" != "skyyrose-flagship" ]]; then
+        log_error "Deploy source folder is '${source_name}' (${THEME_DIR}) but this V1-only engine extracts the tarball as skyyrose-flagship -- the remote hot-swap would not find it; point THEME_DIR_OVERRIDE at a folder named skyyrose-flagship"
+        exit 1
+    fi
+    log_success "Engine supports source: ${source_name} (text domain '${local_domain:-?}')"
+}
+
+# ---------------------------------------------------------------------------
+# Live theme identity gate (audit H3, 2026-09-18) -- fail CLOSED
+#
+# Production serves Flagship 2 inside the folder the default env points at.
+# Deploying the repo's V1 tree there would roll the live site back a major
+# version while every other preflight passes. So before any transfer, fetch
+# the LIVE style.css of the folder about to be replaced and compare
+# Theme Name + Text Domain with the source tree:
+#   match          -> proceed
+#   mismatch       -> refuse unless ALLOW_THEME_IDENTITY_CHANGE=1 (logged loudly)
+#   HTTP 404       -> folder not on the server yet (first deploy of -2):
+#                     refuse unless ALLOW_NEW_THEME_FOLDER=1 (logged loudly)
+#   anything else  -> refuse; a failed fetch proves nothing about what is live
+# Runs under --dry-run too: it is one read-only GET, and the audit's can-fail
+# case is exactly "dry-run with the wrong source must be refused".
+# ---------------------------------------------------------------------------
+SOURCE_THEME_NAME=""
+SOURCE_TEXT_DOMAIN=""
+LIVE_THEME_NAME=""
+LIVE_TEXT_DOMAIN=""
+
+read_source_identity() {
+    if [[ ! -f "$THEME_DIR/style.css" ]]; then
+        log_error "Cannot establish source theme identity: ${THEME_DIR}/style.css missing -- refusing"
+        exit 1
+    fi
+    SOURCE_THEME_NAME="$(extract_theme_header "Theme Name" < "$THEME_DIR/style.css")"
+    SOURCE_TEXT_DOMAIN="$(extract_theme_header "Text Domain" < "$THEME_DIR/style.css")"
+    if [[ -z "$SOURCE_THEME_NAME" || -z "$SOURCE_TEXT_DOMAIN" ]]; then
+        log_error "Source style.css lacks Theme Name/Text Domain (name='${SOURCE_THEME_NAME:-?}' domain='${SOURCE_TEXT_DOMAIN:-?}') -- refusing"
+        exit 1
+    fi
+}
+
+# A style.css 404 only means "folder absent" when PUBLIC_URL really is the
+# WordPress root -- a parked domain, a redirect target or a typo also 404s.
+# Before ALLOW_NEW_THEME_FOLDER is honoured, the REST index at
+# <root>/index.php?rest_route=/ must answer HTTP 200 with "namespaces" in
+# the body (the WP.com REST convention; built like live_url).
+require_wordpress_root() {
+    local rest_url tmpfile http_code
+    rest_url="${PUBLIC_URL%%\?*}"
+    rest_url="${rest_url%/}/index.php?rest_route=/&deploy_verify=$(date +%s)"
+    tmpfile="$(mktemp)"
+    http_code=$(curl -sS -o "$tmpfile" -w "%{http_code}" -A "DevSkyy-deploy-verify/1.0" \
+        --max-time 20 "$rest_url" 2>/dev/null) || http_code="000"
+    if [[ "$http_code" == "200" ]] && grep -q "namespaces" "$tmpfile"; then
+        rm -f "$tmpfile"
+        log_success "PUBLIC_URL is a WordPress root (REST index answered 200 with namespaces)"
+        return 0
+    fi
+    rm -f "$tmpfile"
+    log_error "REST index ${rest_url} answered HTTP ${http_code} without a 'namespaces' body -- PUBLIC_URL is not proven to be the WordPress root, so the style.css 404 cannot be trusted as 'folder absent'; refusing (fail closed)"
+    exit 1
+}
+
+# Returns 0 with LIVE_* set on HTTP 200; returns 0 with LIVE_* empty on an
+# allowed 404 (ALLOW_NEW_THEME_FOLDER=1 + REST root proof); exits 1 on every
+# other outcome.
+fetch_live_identity() {
+    local live_url tmpfile http_code
+    live_url="${PUBLIC_URL%%\?*}"
+    live_url="${live_url%/}/wp-content/themes/${THEME_FOLDER}/style.css?deploy_verify=$(date +%s)"
+    tmpfile="$(mktemp)"
+    http_code=$(curl -sS -o "$tmpfile" -w "%{http_code}" -A "DevSkyy-deploy-verify/1.0" \
+        --max-time 20 "$live_url" 2>/dev/null) || http_code="000"
+    case "$http_code" in
+        200)
+            LIVE_THEME_NAME="$(extract_theme_header "Theme Name" < "$tmpfile")"
+            LIVE_TEXT_DOMAIN="$(extract_theme_header "Text Domain" < "$tmpfile")"
+            rm -f "$tmpfile"
+            if [[ -z "$LIVE_THEME_NAME" || -z "$LIVE_TEXT_DOMAIN" ]]; then
+                log_error "Live style.css at ${live_url} has no parseable Theme Name/Text Domain -- refusing (fail closed)"
+                exit 1
+            fi
+            return 0
+            ;;
+        404)
+            rm -f "$tmpfile"
+            if [[ "${ALLOW_NEW_THEME_FOLDER:-0}" == "1" ]]; then
+                require_wordpress_root
+                log_warn "OVERRIDE ALLOW_NEW_THEME_FOLDER=1: folder '${THEME_FOLDER}' is absent on ${TARGET_HOST} (HTTP 404) -- proceeding with a FIRST deploy of this folder"
+                return 0
+            fi
+            log_error "Live theme folder '${THEME_FOLDER}' is absent on ${TARGET_HOST} (HTTP 404 for ${live_url})"
+            log_error "Deploying would create a new theme folder. If that is intended (first deploy of skyyrose-flagship-2), re-run the wrapper with --allow-new-theme-folder (engine env ALLOW_NEW_THEME_FOLDER=1)"
+            exit 1
+            ;;
+        *)
+            rm -f "$tmpfile"
+            log_error "Live theme identity fetch FAILED (HTTP ${http_code} for ${live_url}) -- cannot prove what is live; refusing (fail closed)"
+            exit 1
+            ;;
+    esac
+}
+
+check_theme_identity() {
+    read_source_identity
+    fetch_live_identity
+    if [[ -z "$LIVE_THEME_NAME" ]]; then
+        return 0  # allowed 404 -- nothing live to compare against
+    fi
+    if [[ "$LIVE_THEME_NAME" == "$SOURCE_THEME_NAME" && "$LIVE_TEXT_DOMAIN" == "$SOURCE_TEXT_DOMAIN" ]]; then
+        log_success "Live theme identity matches source: '${SOURCE_THEME_NAME}' / text domain '${SOURCE_TEXT_DOMAIN}' in folder '${THEME_FOLDER}'"
+        return 0
+    fi
+    if [[ "${ALLOW_THEME_IDENTITY_CHANGE:-0}" == "1" ]]; then
+        log_warn "OVERRIDE ALLOW_THEME_IDENTITY_CHANGE=1: REPLACING live '${LIVE_THEME_NAME}' / '${LIVE_TEXT_DOMAIN}' with source '${SOURCE_THEME_NAME}' / '${SOURCE_TEXT_DOMAIN}' in folder '${THEME_FOLDER}' on ${TARGET_HOST}"
+        return 0
+    fi
+    log_error "Live theme identity MISMATCH in folder '${THEME_FOLDER}' on ${TARGET_HOST}: live='${LIVE_THEME_NAME}' / '${LIVE_TEXT_DOMAIN}', source='${SOURCE_THEME_NAME}' / '${SOURCE_TEXT_DOMAIN}'"
+    log_error "Deploying would replace the live theme with a different one. If that is intended, re-run the wrapper with --allow-theme-identity-change (engine env ALLOW_THEME_IDENTITY_CHANGE=1)"
+    exit 1
+}
+
 # Build an SSH command array with auth resolved once.
 # Usage: "${SSH_CMD[@]}" user@host "command"
 build_ssh_cmd() {
@@ -416,6 +707,9 @@ preflight() {
     done
     log_success "All credentials present"
 
+    # The env file's host must agree with the wrapper-selected target.
+    check_target_host
+
     # Verify SSH auth method (key preferred, sshpass fallback)
     if [[ -f "${SSH_KEY_PATH:-$HOME/.ssh/skyyrose-deploy}" ]]; then
         log_success "SSH key found: ${SSH_KEY_PATH:-$HOME/.ssh/skyyrose-deploy}"
@@ -433,8 +727,15 @@ preflight() {
     fi
     log_success "Theme directory exists: $THEME_DIR"
 
+    # Engine scope guard -- an explicit refusal for a flagship-2 source, ahead
+    # of the V1-only version-triple regex that would otherwise misreport it.
+    check_engine_supports_source
+
     # Source-completeness gate (bug-252) -- cheap checks before the PHP lint sweep.
     preflight_completeness
+
+    # Live theme identity gate (audit H3) -- one read-only GET, runs in dry-run too.
+    check_theme_identity
 
     # PHP syntax check — scope matches tarball (vendor/node_modules/tests
     # are gitignored and excluded from deploy, so don't lint them either).
@@ -850,7 +1151,7 @@ verify_live() {
         return 0
     fi
 
-    local public_url="${PUBLIC_URL:-https://skyyrose.co/}"
+    local public_url="$PUBLIC_URL"  # resolved (and required) by resolve_public_url
     local expected_status="${EXPECTED_STATUS:-200}"
     # Use '&' as query separator when PUBLIC_URL already carries a query string
     # (e.g. ?bypass-coming-soon=<token>); otherwise '?'. This keeps the cache
@@ -980,7 +1281,7 @@ structural_verify_live() {
 
     log_info "Running structural verification (Scrapling) against $public_url ..."
     local rc=0
-    "$py_bin" "$script_path" --url "$public_url" --timeout 25 || rc=$?
+    "$py_bin" "$script_path" --url "$public_url" --theme-slug "$THEME_FOLDER" --timeout 25 || rc=$?
 
     case "$rc" in
         0)
@@ -1045,6 +1346,9 @@ playwright_verify_live() {
 main() {
     parse_args "$@"
 
+    # Target gate first: nothing (not even the lock) happens without a target.
+    check_deploy_target
+
     if [[ "$DRY_RUN" == "true" ]]; then
         log_info "=== DRY RUN MODE -- no changes will be made ==="
     fi
@@ -1055,16 +1359,18 @@ main() {
         exec > >(tee -a "$DEPLOY_LOG_FILE") 2>&1
     fi
 
-    log_info "=== SkyyRose Theme Deploy ==="
-    log_info "Theme: $THEME_DIR"
-    log_info "Target: ${ENV_FILE##*/}"
+    log_info "=== SkyyRose Theme Deploy -- target: ${DEPLOY_TARGET} ==="
+    log_info "Source: $THEME_DIR"
+    log_info "Env:    ${ENV_FILE##*/}"
     log_info "Log:    $DEPLOY_LOG_FILE"
 
     # 0. Concurrency lock — refuses to start if another deploy is running
     acquire_deploy_lock
 
-    # Load credentials (validates file exists)
+    # Load credentials (validates file exists), then pin the site + folder.
     load_credentials
+    resolve_public_url
+    log_info "=== TARGET ${DEPLOY_TARGET}: host ${TARGET_HOST} | theme folder ${THEME_FOLDER:-?} | source $(basename "$THEME_DIR") ==="
 
     # 1. Preflight checks
     phase_start preflight

@@ -32,13 +32,22 @@ cwd=$(printf '%s' "$input" | jq -r '.cwd // empty' 2>/dev/null || true)
 REPO=$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null) || exit 0
 cd "$REPO" || exit 0
 
-# Worktrees have no venv of their own — they share the primary checkout's .venv.
-PY="$REPO/.venv/bin/python"
-[ -x "$PY" ] || PY="/Users/theceo/DevSkyy/.venv/bin/python"
-[ -x "$PY" ] || exit 0
-
-# Gate only when Python actually changed in THIS worktree.
+# Gate only when Python actually changed in THIS worktree. No Python change means
+# there is nothing to verify, so this is the one legitimately silent exit 0.
 git status --porcelain -- '*.py' | grep -q . || exit 0
+
+# Worktrees have no venv of their own — they share the primary checkout's .venv
+# (first entry of `git worktree list`). No interpreter = tests NOT verified:
+# fail CLOSED (bug-230), never a silent pass.
+PY="$REPO/.venv/bin/python"
+if [ ! -x "$PY" ]; then
+  MAIN_WT=$(git -C "$REPO" worktree list --porcelain 2>/dev/null | sed -n '1s/^worktree //p')
+  PY="${MAIN_WT:-/nonexistent}/.venv/bin/python"
+fi
+if [ ! -x "$PY" ]; then
+  echo "Stop-gate: no python interpreter — tests NOT verified (looked for $REPO/.venv/bin/python and the primary worktree's .venv/bin/python). Blocking Stop (worktree: $REPO)." >&2
+  exit 2
+fi
 
 # Half-written NEW test files (untracked) are not a gate — ignore them.
 ig=$(git ls-files --others --exclude-standard "tests/*.py" "tests/**/*.py" 2>/dev/null \
@@ -60,6 +69,6 @@ if [ "$rc2" -eq 0 ]; then
   exit 0
 fi
 
-echo "$out2" | tail -25
-echo "Stop-gate: failure reproduced on re-run — blocking Stop (worktree: $REPO)."
+echo "$out2" | tail -25 >&2
+echo "Stop-gate: failure reproduced on re-run — blocking Stop (worktree: $REPO)." >&2
 exit 2

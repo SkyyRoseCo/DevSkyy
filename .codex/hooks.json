@@ -78,7 +78,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // empty'); case \"$fp\" in /Users/theceo/DevSkyy/frontend/*.ts|/Users/theceo/DevSkyy/frontend/*.tsx) cd /Users/theceo/DevSkyy/frontend && npx tsc --noEmit --pretty false 2>&1 | head -10 ;; esac; true",
+            "command": "fp=$(jq -r '.tool_input.file_path // empty'); case \"$fp\" in */frontend/*.ts|*/frontend/*.tsx) root=$(git -C \"$(dirname \"$fp\")\" rev-parse --show-toplevel 2>/dev/null) || exit 0; [ \"$(git -C \"$root\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)\" = \"$(git -C \"${CLAUDE_PROJECT_DIR:-/Users/theceo/DevSkyy}\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)\" ] || exit 0; fe=\"$root/frontend\"; [ -f \"$fe/package.json\" ] || exit 0; if [ ! -x \"$fe/node_modules/.bin/tsc\" ]; then echo \"[tsc-on-write] $fe/node_modules missing — run: cd $fe && npm install (type check skipped)\"; exit 0; fi; cd \"$fe\" && npx tsc --noEmit --pretty false 2>&1 | head -10 ;; esac; true",
             "timeout": 90,
             "statusMessage": "Type-checking frontend"
           }
@@ -89,7 +89,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path // empty' | { read -r fp; [ -z \"$fp\" ] && exit 0; case \"$fp\" in *.py) ruff check \"$fp\" 2>&1 | head -5;; */frontend/*.ts|*/frontend/*.tsx) cd /Users/theceo/DevSkyy/frontend && npx tsc --noEmit 2>&1 | tail -10;; *.php) /opt/homebrew/bin/php -l \"$fp\" 2>&1;; esac; true; }",
+            "command": "jq -r '.tool_input.file_path // empty' | { read -r fp; [ -z \"$fp\" ] && exit 0; case \"$fp\" in *.py) ruff check \"$fp\" 2>&1 | head -5;; *.php) /opt/homebrew/bin/php -l \"$fp\" 2>&1;; esac; true; }",
             "timeout": 15,
             "statusMessage": "Checking..."
           }

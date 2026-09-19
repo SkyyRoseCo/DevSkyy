@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Structural deploy verification for skyyrose.co.
+"""Structural deploy verification for a SkyyRose WordPress site.
 
 Called by scripts/deploy-theme.sh::verify_live() AFTER the curl-based
 HTTP / size / PHP-error checks pass. Uses Scrapling to fetch live pages
@@ -7,16 +7,23 @@ and assert that template-specific DOM markers exist - catches regressions
 where WordPress returns HTTP 200 but a template fell back to a default
 page or stripped a critical section.
 
+The target URL and the theme folder (slug) come from the caller or the
+environment - there is no literal production default. The page registry is
+selected by the LIVE theme's Text Domain (read from
+/wp-content/themes/<slug>/style.css): "skyyrose" -> the V1 registry,
+"skyyrose-flagship-2" -> the V2 registry. Anything else fails closed.
+
 Usage:
-  python3 verify_live_structure.py                    # homepage only (default)
-  python3 verify_live_structure.py --page black-rose  # one named page
-  python3 verify_live_structure.py --all              # every registered page
-  python3 verify_live_structure.py --list             # print registry, no fetch
-  python3 verify_live_structure.py --url https://staging.skyyrose.co --all
+  verify_live_structure.py --url URL --theme-slug SLUG            # homepage only
+  verify_live_structure.py --url URL --theme-slug SLUG --page black-rose
+  verify_live_structure.py --url URL --theme-slug SLUG --all
+  verify_live_structure.py --list [--text-domain skyyrose-flagship-2]
+  PUBLIC_URL=https://... WP_THEME_PATH=/.../skyyrose-flagship-2 verify_live_structure.py --all
 
 Exit codes:
   0 - all assertions passed for every page checked
   2 - one or more assertions failed (real regression) OR usage error
+      (missing/unknown URL, slug, page or text domain)
   3 - environment problem (scrapling missing, total network failure)
       Bash deploy script logs as warning; does NOT trigger rollback.
 """
@@ -24,16 +31,32 @@ Exit codes:
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 import time
 from dataclasses import dataclass, field
+from pathlib import Path
 from urllib.parse import urljoin
+
+# The page registries live beside this script; make them importable whether it
+# runs as `python scripts/verify_live_structure.py` or is loaded by path.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+# E402: must follow the sys.path insert. F401: theme_css_assertion is re-exported.
+from verify_live_registries import (  # noqa: E402,F401
+    KNOWN_TEXT_DOMAINS,
+    Assertion,
+    Page,
+    PricingCheck,
+    Registry,
+    parse_text_domain,
+    select_registry,
+    theme_css_assertion,
+)
 
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
-DEFAULT_BASE_URL = "https://skyyrose.co"
 DEFAULT_TIMEOUT = 25
 
 # Cache-bust query param appended to every fetched URL unless --no-cache-bust.
@@ -46,22 +69,6 @@ CACHE_BUST_PARAM = "deploy_verify"
 FETCH_RETRY_ATTEMPTS = 2
 FETCH_RETRY_BACKOFF_SECONDS = 1.5
 
-# Theme slug — extracted because it appears in both the CSS-link selector
-# and the human-readable label, so any rename happens in one place.
-THEME_SLUG = "skyyrose-flagship"
-
-# Per-collection holo-card minimums derived from the canonical CSV at
-# wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv.
-# Floors are set ~20% below actual counts so adding/removing one SKU
-# does not auto-fail the gate; the regression mode we are catching is
-# "page rendered ZERO or ONE card", not "catalog drifted by 1".
-COLLECTION_CARD_FLOORS = {
-    "black-rose": 12,  # 15 actual
-    "love-hurts": 3,  # 4 actual
-    "signature": 10,  # 12 actual
-    "kids-capsule": 2,  # 2 actual (cannot go lower without breaking)
-}
-
 
 # ---------------------------------------------------------------------------
 # Domain types
@@ -70,44 +77,6 @@ COLLECTION_CARD_FLOORS = {
 
 class FetchError(Exception):
     """Transport-layer fetch failure (connection, TLS, timeout)."""
-
-
-@dataclass(frozen=True)
-class Assertion:
-    selector: str
-    min_count: int
-    label: str
-    # When set, count must satisfy min_count <= actual <= max_count.
-    # Used by GLOBAL_ASSERTIONS to assert error markers stay at 0.
-    max_count: int | None = None
-
-    def bounds_str(self) -> str:
-        if self.max_count is not None and self.max_count == self.min_count:
-            return f"exactly={self.min_count}"
-        if self.max_count is not None:
-            return f"min={self.min_count}, max={self.max_count}"
-        return f"min={self.min_count}"
-
-
-@dataclass(frozen=True)
-class PricingCheck:
-    """
-    Text-content assertion for rendered price elements.
-
-    Standard CSS selectors cannot assert on text content (no :contains()),
-    so CNTR-04 pricing assertions use this separate dataclass + helper.
-    """
-
-    selector: str
-    forbidden_texts: tuple[str, ...]
-    label: str
-
-
-@dataclass(frozen=True)
-class Page:
-    name: str
-    path: str
-    assertions: tuple[Assertion, ...]
 
 
 @dataclass(frozen=True)
@@ -137,233 +106,23 @@ class PageReport:
 
 
 # ---------------------------------------------------------------------------
-# Reusable assertion builders
+# Target resolution -- fail CLOSED, no literal production default
 # ---------------------------------------------------------------------------
 
 
-# Single instance reused across every page in the registry. Renaming the
-# theme means changing THEME_SLUG above, not editing 8+ scattered strings.
-THEME_CSS_ASSERTION = Assertion(
-    f"link[href*='{THEME_SLUG}']",
-    1,
-    f"theme CSS enqueued ({THEME_SLUG} active)",
-)
+def resolve_base_url(cli_value: str | None, env: dict[str, str] | None = None) -> str | None:
+    env = os.environ if env is None else env
+    value = cli_value or env.get("PUBLIC_URL") or env.get("WORDPRESS_URL") or ""
+    value = value.split("?", 1)[0].rstrip("/")
+    return value or None
 
 
-# Universal assertions applied to every page. Catch render regressions
-# without per-page setup. data-skyyrose-error is a project-wide beacon
-# emitted by template parts that hit a "should not happen" branch (e.g.,
-# template-parts/collection/page.php when content config is missing).
-_STRUCTURAL_ASSERTIONS: tuple[Assertion, ...] = (
-    Assertion(
-        "[data-skyyrose-error]",
-        0,
-        "no skyyrose render-error markers (universal regression beacon)",
-        max_count=0,
-    ),
-)
-
-# A11Y post-deploy gate — applied to every page checked by --all / --page.
-# These three selectors catch high-impact accessibility regressions that are
-# observable from the rendered HTML without a browser:
-#
-#   A11Y-05: aria-hidden focusable elements must have tabindex="-1"
-#            Asserts that at least one tabindex="-1" element exists globally
-#            (inc/accessibility-fix.php Section 5 injects this on aria-hidden
-#            buttons/links; if the fix is absent from the render the selector
-#            returns 0 even on nav-heavy pages).
-#
-#   A11Y-07: Skip-link must exist and its href target must be in the DOM.
-#            Pojo Accessibility plugin emits <a class="skip-link" href="#primary">.
-#            This selector confirms the link and its target both exist.
-#
-#   A11Y-09: Images must use loading="lazy" (inc/accessibility-fix.php Section 8
-#            adds this to all <img> without an existing loading= attribute, except
-#            those with class matching hero|logo|brand|monogram).
-#            A floor of 1 catches pages that render zero lazy images — meaning
-#            either no images rendered at all (template failure) or the fix did
-#            not run (output buffer disabled / cached before fix shipped).
-A11Y_ASSERTIONS: tuple[Assertion, ...] = (
-    Assertion(
-        "[tabindex='-1']",
-        1,
-        "A11Y-05: at least 1 tabindex='-1' element present (aria-hidden focusable fix active)",
-    ),
-    Assertion(
-        "a.skip-link",
-        1,
-        "A11Y-07: skip-link anchor exists (Pojo Accessibility plugin active)",
-    ),
-    Assertion(
-        "img[loading='lazy']",
-        1,
-        "A11Y-09: at least 1 lazy-loaded image (inc/accessibility-fix.php Section 8 active)",
-    ),
-)
-
-GLOBAL_ASSERTIONS: tuple[Assertion, ...] = _STRUCTURAL_ASSERTIONS + A11Y_ASSERTIONS
-
-# ---------------------------------------------------------------------------
-# CNTR-04: Pricing text gate
-# ---------------------------------------------------------------------------
-# Pre-order SKUs (e.g., lh-001 Love Hurts) must NOT show "$0" or "$0.00" in
-# their rendered price elements. These placeholders indicate WooCommerce returned
-# a zero-price product instead of the "Pre-Order" display string set by the theme.
-# Standard Assertion selectors cannot check text content (CSS has no :contains()),
-# so PricingCheck + check_no_forbidden_text() are used instead.
-PRICING_CHECKS: tuple[PricingCheck, ...] = (
-    PricingCheck(
-        selector=".holo-card .product-price, .holo-card .price, .product-card .price",
-        forbidden_texts=("$0", "$0.00"),
-        label="CNTR-04: no $0/$0.00 prices on holo-card pre-order SKUs",
-    ),
-)
-
-
-def _main_assertion(class_name: str, what_ran: str) -> Assertion:
-    """Build a `<main class="X">` assertion with a consistent label format."""
-    return Assertion(
-        f"main#primary.{class_name}",
-        1,
-        f"<main class='{class_name}'> ({what_ran})",
-    )
-
-
-# Hero background image filename for each collection, as deployed to the CDN.
-# Verified against inc/collection-content.php hero_bg keys and
-# assets/branding/ directory. Used in collection_assertions() below.
-COLLECTION_HERO_ASSETS: dict[str, str] = {
-    "black-rose": "sr-collection-black-rose.webp",
-    "love-hurts": "sr-collection-love-hurts.webp",
-    "signature": "sr-collection-signature.webp",
-    "kids-capsule": "sr-collection-kids-capsule.webp",
-}
-
-
-def collection_assertions(slug: str) -> tuple[Assertion, ...]:
-    """Build assertion tuple for a collection page (BR/LH/SIG/Kids)."""
-    floor = COLLECTION_CARD_FLOORS[slug]
-    base_assertions: tuple[Assertion, ...] = (
-        Assertion(
-            f"div.col-page[data-collection='{slug}']",
-            1,
-            f"<div class='col-page' data-collection='{slug}'>",
-        ),
-        Assertion("section.col-hero", 1, "<section class='col-hero'> (collection hero)"),
-        Assertion(
-            "div.holo",
-            floor,
-            f">= {floor} <.holo> product cards (universal grid rendered)",
-        ),
-        Assertion(
-            f"div.holo--{slug}",
-            floor,
-            f">= {floor} <.holo--{slug}> cards (collection-specific rendered)",
-        ),
-        THEME_CSS_ASSERTION,
-    )
-    hero_asset = COLLECTION_HERO_ASSETS.get(slug)
-    if hero_asset:
-        return base_assertions + (
-            Assertion(
-                f"img[src*='{hero_asset}']",
-                1,
-                f"collection hero <img src> contains {hero_asset} (DATA-01)",
-            ),
-        )
-    return base_assertions
-
-
-def immersive_assertions(name: str) -> tuple[Assertion, ...]:
-    """Build assertion tuple for the 3 immersive 3D pages.
-
-    `name` is the human-readable collection name (e.g., "Black Rose")
-    used only in the label, not in any selector. All 3 immersive pages
-    share the same template-emitted markup.
-    """
-    return (
-        _main_assertion("immersive-page", f"immersive template ran for {name}"),
-        THEME_CSS_ASSERTION,
-    )
-
-
-HOMEPAGE_ASSERTIONS: tuple[Assertion, ...] = (
-    Assertion("body.home", 1, "<body class='home'> (WP routed to front page)"),
-    _main_assertion("homepage-v3", "front-page.php template ran"),
-    Assertion("header#masthead", 1, "<header id='masthead'> (standard site header rendered)"),
-    Assertion("section.hp-hero", 1, "<section class='hp-hero'> (hero section emitted)"),
-    THEME_CSS_ASSERTION,
-    Assertion("meta[name='generator']", 1, "<meta name='generator'> (WordPress emitted)"),
-    # CURS-01/CURS-03: luxury cursor JS must be present on front-page (global enqueue confirmed).
-    # NOTE: CURS-03 gap — this assertion verifies the JS loads on front-page (correct behaviour).
-    # A separate immersive-page assertion would confirm the JS is ABSENT there (not yet wired).
-    Assertion(
-        "script[src*='luxury-cursor']",
-        1,
-        "CURS-01/CURS-03 — luxury cursor JS present on front-page (global enqueue confirmed)",
-    ),
-)
-
-
-ABOUT_ASSERTIONS: tuple[Assertion, ...] = (
-    _main_assertion("abt-page", "about template ran"),
-    Assertion("section.abt-hero", 1, "<section class='abt-hero'> (about hero section)"),
-    THEME_CSS_ASSERTION,
-)
-
-
-PREORDER_ASSERTIONS: tuple[Assertion, ...] = (
-    _main_assertion("preorder-gateway", "preorder template ran"),
-    Assertion("section#hero", 1, "<section id='hero'>"),
-    Assertion("section#showcase", 1, "<section id='showcase'> (preorder showcase)"),
-    THEME_CSS_ASSERTION,
-)
-
-
-# ---------------------------------------------------------------------------
-# Page registry
-# ---------------------------------------------------------------------------
-
-PAGE_REGISTRY: dict[str, Page] = {
-    "home": Page("Homepage", "/", HOMEPAGE_ASSERTIONS),
-    "black-rose": Page(
-        "Collection: Black Rose",
-        "/collection-black-rose/",
-        collection_assertions("black-rose"),
-    ),
-    "love-hurts": Page(
-        "Collection: Love Hurts",
-        "/collection-love-hurts/",
-        collection_assertions("love-hurts"),
-    ),
-    "signature": Page(
-        "Collection: Signature",
-        "/collection-signature/",
-        collection_assertions("signature"),
-    ),
-    "kids-capsule": Page(
-        "Collection: Kids Capsule",
-        "/collection-kids-capsule/",
-        collection_assertions("kids-capsule"),
-    ),
-    "about": Page("About", "/about/", ABOUT_ASSERTIONS),
-    "preorder": Page("Pre-Order Gateway", "/pre-order/", PREORDER_ASSERTIONS),
-    "experience-black-rose": Page(
-        "Immersive: Black Rose",
-        "/experience-black-rose/",
-        immersive_assertions("Black Rose"),
-    ),
-    "experience-love-hurts": Page(
-        "Immersive: Love Hurts",
-        "/experience-love-hurts/",
-        immersive_assertions("Love Hurts"),
-    ),
-    "experience-signature": Page(
-        "Immersive: Signature",
-        "/experience-signature/",
-        immersive_assertions("Signature"),
-    ),
-}
+def resolve_theme_slug(cli_value: str | None, env: dict[str, str] | None = None) -> str | None:
+    env = os.environ if env is None else env
+    value = cli_value or env.get("THEME_SLUG") or ""
+    if not value and env.get("WP_THEME_PATH"):
+        value = os.path.basename(env["WP_THEME_PATH"].rstrip("/"))
+    return value or None
 
 
 # ---------------------------------------------------------------------------
@@ -409,6 +168,36 @@ def fetch_page(fetcher, url: str, timeout: int) -> tuple[object | None, str | No
     return None, last_error
 
 
+def _response_text(response) -> str:
+    """Decode a Scrapling Response body (bytes per the v0.4+ contract)."""
+    body = getattr(response, "body", b"")
+    if isinstance(body, bytes):
+        return body.decode(getattr(response, "encoding", None) or "utf-8", errors="replace")
+    return str(body)
+
+
+def fetch_live_text_domain(
+    fetcher, base_url: str, theme_slug: str, timeout: int, cache_bust: bool
+) -> tuple[str | None, str | None]:
+    """Read the live theme's Text Domain. Returns (text_domain, error).
+
+    Both None-with-error outcomes (fetch failure, non-200, unparseable) are
+    reported to the caller, which fails closed -- guessing a registry would
+    turn a wrong-theme deploy into a green structural check.
+    """
+    url = _build_url(base_url, f"/wp-content/themes/{theme_slug}/style.css", cache_bust)
+    response, err = fetch_page(fetcher, url, timeout)
+    if response is None:
+        return None, f"style.css fetch failed: {err}"
+    status = getattr(response, "status", None)
+    if status != 200:
+        return None, f"style.css returned HTTP {status} at {url}"
+    domain = parse_text_domain(_response_text(response))
+    if not domain:
+        return None, f"style.css at {url} has no parseable Text Domain header"
+    return domain, None
+
+
 def evaluate_assertions(response, assertions: tuple[Assertion, ...]) -> list[CheckResult]:
     """Run every selector against `response` and produce CheckResult per assertion.
 
@@ -439,9 +228,6 @@ def check_no_forbidden_text(response, checks: tuple[PricingCheck, ...]) -> list[
     Returns one synthetic CheckResult per PricingCheck where:
     - actual=0  → no forbidden text found (PASS, min_count=0, max_count=0)
     - actual=N  → N elements with forbidden text (FAIL)
-
-    A synthetic Assertion with max_count=0 is used so the result integrates
-    cleanly into the existing CheckResult / reporting pipeline.
     """
     results: list[CheckResult] = []
     for check in checks:
@@ -470,14 +256,16 @@ def check_no_forbidden_text(response, checks: tuple[PricingCheck, ...]) -> list[
 
 
 def _build_url(base_url: str, path: str, cache_bust: bool) -> str:
-    url = urljoin(base_url, path)
+    url = urljoin(base_url + "/", path.lstrip("/"))
     if cache_bust:
         sep = "&" if "?" in url else "?"
         url = f"{url}{sep}{CACHE_BUST_PARAM}={int(time.time())}"
     return url
 
 
-def check_page(fetcher, page: Page, base_url: str, timeout: int, cache_bust: bool) -> PageReport:
+def check_page(
+    fetcher, page: Page, registry: Registry, base_url: str, timeout: int, cache_bust: bool
+) -> PageReport:
     url = _build_url(base_url, page.path, cache_bust)
 
     response, err = fetch_page(fetcher, url, timeout)
@@ -500,8 +288,8 @@ def check_page(fetcher, page: Page, base_url: str, timeout: int, cache_bust: boo
     if status != 200:
         return PageReport(page=page, url=url, http_status=status, fetched=True)
 
-    results = evaluate_assertions(response, GLOBAL_ASSERTIONS + page.assertions)
-    results += check_no_forbidden_text(response, PRICING_CHECKS)
+    results = evaluate_assertions(response, registry.global_assertions + page.assertions)
+    results += check_no_forbidden_text(response, registry.pricing_checks)
     return PageReport(page=page, url=url, http_status=status, fetched=True, results=results)
 
 
@@ -553,13 +341,14 @@ def print_summary(reports: list[PageReport]) -> None:
         print(f"Failed pages: {', '.join(r.page.name for r in failed)}")
 
 
-def list_registry() -> None:
+def list_registry(registry: Registry) -> None:
+    print(f"Registry for text domain: {registry.text_domain}")
     print("Global assertions (run on every page):")
-    for a in GLOBAL_ASSERTIONS:
+    for a in registry.global_assertions:
         print(f"  - {a.label}  ({a.bounds_str()})")
     print()
-    print(f"Registered pages ({len(PAGE_REGISTRY)}):\n")
-    for key, page in PAGE_REGISTRY.items():
+    print(f"Registered pages ({len(registry.pages)}):\n")
+    for key, page in registry.pages.items():
         print(f"  {key:<22} -> {page.path}")
         print(f"  {'':<22}    {page.name}")
         for a in page.assertions:
@@ -572,23 +361,23 @@ def list_registry() -> None:
 # ---------------------------------------------------------------------------
 
 
-def _resolve_pages(args: argparse.Namespace) -> list[Page]:
+def _resolve_pages(args: argparse.Namespace, registry: Registry) -> list[Page]:
     """Translate --all / --page args into the actual page list to verify.
 
     Raises SystemExit(2) with a useful message on unknown --page values
     so the operator sees the available registry without re-running --list.
     """
     if args.all:
-        return list(PAGE_REGISTRY.values())
-    if args.page not in PAGE_REGISTRY:
-        known = ", ".join(sorted(PAGE_REGISTRY))
+        return list(registry.pages.values())
+    if args.page not in registry.pages:
+        known = ", ".join(sorted(registry.pages))
         print(
-            f"Unknown page: {args.page!r}\nKnown pages: {known}\n"
-            f"Run with --list for full assertion details.",
+            f"Unknown page: {args.page!r} for text domain {registry.text_domain}\n"
+            f"Known pages: {known}\nRun with --list for full assertion details.",
             file=sys.stderr,
         )
         sys.exit(2)
-    return [PAGE_REGISTRY[args.page]]
+    return [registry.pages[args.page]]
 
 
 def _build_arg_parser() -> argparse.ArgumentParser:
@@ -596,7 +385,18 @@ def _build_arg_parser() -> argparse.ArgumentParser:
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument(
-        "--url", default=DEFAULT_BASE_URL, help=f"Base URL (default: {DEFAULT_BASE_URL})"
+        "--url", default=None, help="Base URL (else $PUBLIC_URL, else $WORDPRESS_URL; required)"
+    )
+    parser.add_argument(
+        "--theme-slug",
+        default=None,
+        help="Live theme folder (else $THEME_SLUG, else basename of $WP_THEME_PATH; required)",
+    )
+    parser.add_argument(
+        "--text-domain",
+        default=None,
+        choices=KNOWN_TEXT_DOMAINS,
+        help="Skip the live style.css read and use this registry (tests / --list)",
     )
     parser.add_argument(
         "--page", default="home", help="Page name from registry (default: home). See --list."
@@ -619,22 +419,67 @@ def _build_arg_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _list_registries(args: argparse.Namespace) -> int:
+    slug = resolve_theme_slug(args.theme_slug) or "<theme-slug>"
+    domains = (args.text_domain,) if args.text_domain else KNOWN_TEXT_DOMAINS
+    for domain in domains:
+        list_registry(select_registry(domain, slug))
+    return 0
+
+
+def _resolve_target(args: argparse.Namespace) -> tuple[str, str] | None:
+    """(base_url, theme_slug) from CLI/env, or None after printing why not."""
+    base_url = resolve_base_url(args.url)
+    if not base_url:
+        print("No target URL: pass --url or set PUBLIC_URL / WORDPRESS_URL", file=sys.stderr)
+        return None
+    theme_slug = resolve_theme_slug(args.theme_slug)
+    if not theme_slug:
+        print("No theme slug: pass --theme-slug or set THEME_SLUG / WP_THEME_PATH", file=sys.stderr)
+        return None
+    return base_url, theme_slug
+
+
+def _live_registry(
+    args: argparse.Namespace, fetcher, base_url: str, theme_slug: str, cache_bust: bool
+) -> Registry | int:
+    """The registry for the live theme, or the exit code when it cannot be established."""
+    text_domain = args.text_domain
+    if text_domain is None:
+        text_domain, err = fetch_live_text_domain(
+            fetcher, base_url, theme_slug, args.timeout, cache_bust
+        )
+        if text_domain is None:
+            print(f"Cannot establish live theme identity: {err}", file=sys.stderr)
+            return 3 if err and "fetch failed" in err else 2
+    try:
+        registry = select_registry(text_domain, theme_slug)
+    except ValueError as exc:
+        print(f"Refusing to guess a registry: {exc}", file=sys.stderr)
+        return 2
+    print(f"Live theme: {theme_slug} (text domain {text_domain}) at {base_url}\n")
+    return registry
+
+
 def main() -> int:
     args = _build_arg_parser().parse_args()
-
+    cache_bust = not args.no_cache_bust
     if args.list:
-        list_registry()
-        return 0
+        return _list_registries(args)
 
-    pages = _resolve_pages(args)
+    target = _resolve_target(args)
+    if target is None:
+        return 2
+    base_url, theme_slug = target
     fetcher = _import_fetcher()
-    base_url = args.url.rstrip("/")
+    registry = _live_registry(args, fetcher, base_url, theme_slug, cache_bust)
+    if isinstance(registry, int):
+        return registry
 
+    pages = _resolve_pages(args, registry)
     reports: list[PageReport] = []
     for page in pages:
-        report = check_page(
-            fetcher, page, base_url, args.timeout, cache_bust=not args.no_cache_bust
-        )
+        report = check_page(fetcher, page, registry, base_url, args.timeout, cache_bust)
         print_page_report(report)
         reports.append(report)
         print()

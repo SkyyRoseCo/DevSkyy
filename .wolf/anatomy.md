@@ -8889,6 +8889,9 @@
   - fn `build_matrix` L206-335 (~1426 tok)
   - fn `render_markdown` L336-395 (~793 tok)
   - fn `main` L396-434 (~476 tok)
+- `deploy-production.sh` — Production wrapper: pins .env.wordpress + skyyrose-flagship-2 source, validates host/SSH user/WP_THEME_PATH, execs deploy-theme.sh (~450 tok)
+- `deploy-staging.sh` — Staging wrapper: pins .env.wordpress.staging + skyyrose-flagship-2 source, validates *.wpcomstaging.com host, execs deploy-theme.sh (~400 tok)
+- `deploy-target-lib.sh` — Shared wrapper body: env-file validation without sourcing, inherited-var refusal, --allow-* one-shot flags (~2200 tok)
 - `deploy_elementor_templates.py` — ElementorDeployer: get_page_by_slug, deploy_template, deploy_all, main (~1786 tok)
   - class `ElementorDeployer` L14-147 (~1362 tok)
   - fn `main` L148-189 (~373 tok)
@@ -8906,7 +8909,7 @@
 - `deploy-holo-cards.sh` — scripts/deploy-holo-cards.sh -- Deploy Holo product card rollout to production (~3234 tok)
 - `deploy-mu-plugin.sh` — scripts/deploy-mu-plugin.sh -- SCP one MU-plugin (MU_SRC param, dest=basename) to wp-content/mu-plugins/ + nonce-endpoint verify; STOPSHOW_ACK-gated (~1048 tok)
 - `deploy-pipeline.sh` — scripts/deploy-pipeline.sh -- Single-command deploy pipeline for SkyyRose WordPress theme (~1847 tok)
-- `deploy-theme.sh` — scripts/deploy-theme.sh -- Production deploy script for SkyyRose WordPress theme (~13969 tok)
+- `deploy-theme.sh` — Deploy ENGINE for the WordPress theme; refuses direct runs (needs DEPLOY_TARGET from a wrapper), target-host + SSH-destination + live theme identity gates, V1-only until PR #918 (~17800 tok)
 - `designqc-playwright.mjs` — Captures desktop and mobile visual-QA evidence without OpenWolf's (~644 tok)
 - `diagnose_cli_raw.py` — Build the exact CLI command the SDK would use and run it via subprocess (~507 tok)
 - `diagnose_orchestrator.py` — Test ClaudeSDKClient (async context manager) with MCP server. (~665 tok)
@@ -9135,6 +9138,8 @@
   - fn `generate_model_with_product` L131-176 (~403 tok)
   - fn `main` L177-265 (~840 tok)
 
+- `verify_live_registries.py` — Page registries (V1 skyyrose / V2 skyyrose-flagship-2 routes + DOM assertions) for verify_live_structure.py (~3600 tok)
+- `verify_live_structure.py` — Post-deploy Scrapling DOM check; picks the registry from the LIVE theme's Text Domain, fails closed (~5000 tok)
 ## scripts/_lib/
 
 - `script-utils.js` — scripts/_lib/script-utils.js — shared utilities for the per-edit toolchain. (~543 tok)

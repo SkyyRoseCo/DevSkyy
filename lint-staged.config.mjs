@@ -102,6 +102,10 @@ export default {
     mutableFiles(files).length ? 'tsc --noEmit --project frontend/tsconfig.json' : [],
 
   // WordPress PHP: PHPCBF applies every safe WPCS fix before php -l validates
-  // syntax. The formatter wrapper accepts PHPCBF's "changes applied" status.
+  // syntax. The formatter wrapper groups files by wordpress-theme/<theme>/ and
+  // applies THAT theme's own ruleset (V1 `.phpcs.xml`, V2 `phpcs.xml` — text
+  // domain, prefixes); a theme with
+  // no ruleset is skipped with a notice, never formatted under another theme's
+  // standard. The wrapper accepts PHPCBF's "changes applied" status.
   'wordpress-theme/**/*.php': files => commandsFor(['bash scripts/php-format.sh', 'bash scripts/php-lint.sh'], files),
 };

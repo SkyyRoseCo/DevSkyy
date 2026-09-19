@@ -31,9 +31,12 @@ mypy .                               # Type checking
 **ABORT if tests fail or coverage <70%**
 
 ## Deploy Commands
+All are STOP-AND-SHOW (manifest → founder `y` → run).
 ```bash
-vercel --prod                        # Frontend
+cd frontend && npm run deploy:prod   # Frontend — Vercel, current but retiring (devskyy.app 402 DEPLOYMENT_DISABLED 2026-09-18; replacement host undecided)
 docker-compose build && push         # Backend
+bash scripts/deploy-staging.sh [--dry-run]     # WordPress theme skyyrose-flagship-2 → staging-7e48-skyyrose.wpcomstaging.com (.env.wordpress.staging)
+bash scripts/deploy-production.sh [--dry-run]  # WordPress theme skyyrose-flagship-2 → skyyrose.co (.env.wordpress); scripts/deploy-theme.sh is the engine, refuses direct runs
 ```
 
 ## Post-Deploy Verification

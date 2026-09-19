@@ -10,8 +10,8 @@ devskyy.app = the agent-management hub (Next.js 16 + React 19 in `frontend/`). s
 ## Hard-won production rules
 
 - **cacheComponents (bug-161)**: with Next 16 `cacheComponents`, any page reading request-time data must `await connection()` (from `next/server`) before dynamic reads, or it silently serves stale prerender. Admin pages that read live catalog/WC data: always.
-- **Auth gate lives in `frontend/proxy.ts`, NOT middleware.ts (bug-162)** — this project routes through a custom proxy; adding `middleware.ts` auth creates a second, conflicting gate. Extend the existing one.
-- **Deploys: npm, never pnpm** (ERR_INVALID_THIS on Node 22+ with Vercel). `cd frontend && npm run deploy`.
+- **Auth gate is per-handler `withAuth()` from `frontend/lib/api-auth.ts` (bug-162)** — wrap every API route handler (`export const GET = withAuth(getHandler)`); public exceptions are listed in `frontend/lib/api-public-routes.ts` and `frontend/tests/api-auth-coverage.test.ts` fails on any unwrapped, unlisted route. There is no edge gate: `frontend/proxy.ts` was removed 2026-07-28 — do not add `middleware.ts` auth or recreate a proxy, that is a second, conflicting gate.
+- **Deploys: npm, never pnpm** (ERR_INVALID_THIS on Node 22+ with Vercel). `cd frontend && npm run deploy`. Vercel is current but retiring — devskyy.app returns 402 `DEPLOYMENT_DISABLED` `[live 2026-09-18]`; the replacement host is undecided, so do not document one.
 - **Env**: Vercel project `skyyroseco/devskyy`, linked at `frontend/.vercel`. Production env synced via `vercel env add <KEY> production`; preview target must be added manually by founder (CLI add silently fails from agent sessions).
 - **WP/WC data**: `https://skyyrose.co/wp-json/wc/v3` + BasicAuth consumer key/secret from env (`WC_CONSUMER_KEY`/`WC_CONSUMER_SECRET`); app-password auth for `wp/v2` + `skyyrose/v1`. On WP.com Atomic, `?rest_route=` form 401s for wc/v3 — use `/wp-json/` path there.
 

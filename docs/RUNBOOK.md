@@ -1,8 +1,8 @@
 # DevSkyy Production Runbook
 
 **Last Updated**: 2026-07-06
-**Production URL**: devskyy.app (Vercel)
-**WordPress**: SkyyRose Flagship theme at skyyrose.co
+**Production URL**: devskyy.app (Vercel — current but retiring: HTTP 402 `DEPLOYMENT_DISABLED` `[live 2026-09-18]`; replacement host undecided)
+**WordPress**: theme `skyyrose-flagship-2` ("SkyyRose Flagship 2") at skyyrose.co; staging https://staging-7e48-skyyrose.wpcomstaging.com (`staging.skyyrose.co` does not resolve). The V1 theme `wordpress-theme/skyyrose-flagship` is not the deploy target.
 
 ---
 
@@ -41,9 +41,9 @@ pytest tests/ -v                 # Tests
 
 ## Deployment
 
-### Frontend (Vercel)
+### Frontend (Vercel — current, retiring)
 
-Deployments are automatic on push to `main`. Manual deploy:
+devskyy.app returns HTTP 402 `DEPLOYMENT_DISABLED` `[live 2026-09-18]`; the dashboard's next host is undecided. Until then the Vercel path below is the documented one. Deployments are automatic on push to `main`. Manual deploy:
 
 ```bash
 cd frontend
@@ -58,24 +58,22 @@ git push origin main   # Triggers Vercel auto-deploy
 
 ### WordPress Theme
 
-Single-command pipeline (build → deploy → verify):
+**BLOCKED until PR #918 lands — both wrappers refuse a `skyyrose-flagship-2` source, `--dry-run` included.** Two wrappers, one engine. Both wrappers deploy `wordpress-theme/skyyrose-flagship-2` and are STOP-AND-SHOW (manifest → founder `y` → run):
 
 ```bash
-bash scripts/deploy-pipeline.sh        # Full deploy + verify
-bash scripts/deploy-pipeline.sh --dry-run  # Preview without deploying
+bash scripts/deploy-staging.sh --dry-run      # preview; env .env.wordpress.staging → staging-7e48-skyyrose.wpcomstaging.com
+bash scripts/deploy-staging.sh                # deploy to staging
+bash scripts/deploy-production.sh --dry-run   # preview; env .env.wordpress → skyyrose.co
+bash scripts/deploy-production.sh             # refuses until .env.wordpress WP_THEME_PATH points at the -2 folder
+bash scripts/verify-deploy.sh --env-file .env.wordpress            # Verify pages post-deploy (production; URL + theme slug from the env file)
+bash scripts/verify-deploy.sh --env-file .env.wordpress.staging    # Staging (staging-7e48-skyyrose.wpcomstaging.com)
 ```
 
-Individual steps:
-```bash
-cd wordpress-theme && npm run deploy        # Wraps: bash ../scripts/deploy-theme.sh
-cd wordpress-theme && npm run deploy:dry    # --dry-run, no server contact
-bash scripts/verify-deploy.sh               # Verify pages post-deploy
-WORDPRESS_URL=https://staging.skyyrose.co bash scripts/verify-deploy.sh  # Staging
-```
+`cd wordpress-theme && npm run deploy:staging[:dry]` / `npm run deploy:production[:dry]` (and `npm run deploy` = production, `deploy:verify[:staging]`) wrap the same scripts. `scripts/deploy-theme.sh` is the engine and refuses direct runs; its preflight `check_theme_identity` refuses when the live theme's Name/Text Domain differs from the source, and it does not yet support deploying `skyyrose-flagship-2` (PR #918's V2 deploy changes are a follow-up). Cutover to production = env switch (`.env.wordpress` `WP_THEME_PATH` → the `-2` folder) → deploy → `wp theme activate skyyrose-flagship-2`, each its own STOP-AND-SHOW; after cutover production runs folder `skyyrose-flagship-2`.
 
 `deploy-theme.sh` transfers via **tar + scp with an atomic hot-swap on the remote by default** (not maintenance mode). Pass `--with-maintenance` (`npm run deploy:full`) only for deploys that include DB migrations or plugin changes — that path is kept as a legacy fallback. The script already has: a concurrency lock (refuses a second concurrent deploy), retention of the last 2 `.old.*` swap directories, and **auto-rollback** if `verify_live()` fails post-swap (reverses the swap and flushes caches without human intervention). Manual `git checkout` rollback (below) is the fallback if auto-rollback itself can't recover.
 
-Credentials required in `.env.wordpress`: `SSH_HOST`, `SSH_USER`, `SSH_PASS`, `WP_THEME_PATH`, `SFTP_HOST`, `SFTP_USER`, `SFTP_PASS`. Override the path with `ENV_FILE=<path>`.
+Credentials required in `.env.wordpress` (production) and `.env.wordpress.staging` (staging): `SSH_HOST`, `SSH_USER`, `SSH_PASS`, `WP_THEME_PATH`, `SFTP_HOST`, `SFTP_USER`, `SFTP_PASS`. The wrappers select the env file; `WP_THEME_PATH` must end in `skyyrose-flagship-2`. `SSH_USER` must equal `<first label of the PUBLIC_URL host>.wordpress.com` and `SFTP_USER` (if set) must equal `SSH_USER`; the local `.env.wordpress.staging` lacks the `SFTP_*` keys `[repro 2026-09-19]` (template: `.env.wordpress.staging.example`). One-shot wrapper flags `--allow-new-theme-folder` (first deploy into a folder the site lacks) and `--allow-theme-identity-change` (replace a live theme whose Name/Text Domain differ) replace exporting `ALLOW_NEW_THEME_FOLDER` / `ALLOW_THEME_IDENTITY_CHANGE` — the wrappers refuse those if inherited.
 
 Note: theme product imagery under `assets/images/products/` is **tracked in git**
 (deploy-from-clean-tree convention) even though `.gitignore` blanket-ignores theme
@@ -272,7 +270,7 @@ echo $CORS_ORIGINS
 
 **Symptom**: All product links go to `/pre-order/` instead of collection pages.
 **Cause**: `skyyrose_product_url()` fallback routes to pre-order when WooCommerce doesn't have the product.
-**Fix**: Verify `is_preorder` flags in `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (the canonical catalog — `inc/product-catalog.php:28` resolves it via `get_theme_file_path('data/skyyrose-catalog.csv')`, not the root-level `data/product-catalog.csv`). The PHP theme reads this at runtime, not a hardcoded array. Non-preorder products must have `is_preorder=0` in the CSV.
+**Fix**: Verify `is_preorder` in the product registry (`wordpress-theme/skyyrose-flagship/data/logo-registry.json`, read via `python -m skyyrose.core.product <sku>`); `skyyrose-catalog.csv` is its generated projection — fix the registry record, then run `python scripts/sync_product_registry.py` so the CSV follows. The V1 theme reads that CSV at runtime (`inc/product-catalog.php:28` resolves it via `get_theme_file_path('data/skyyrose-catalog.csv')`, not the root-level `data/product-catalog.csv`), not a hardcoded array. Non-preorder products must project to `is_preorder=0`.
 
 ## Rollback Procedures
 
@@ -295,8 +293,8 @@ vercel promote <deployment-url>
 # Switch back via WP Admin > Appearance > Themes
 # Or restore from git:
 git log --oneline wordpress-theme/ | head -5
-git checkout <commit> -- wordpress-theme/skyyrose-flagship/
-# Re-deploy via SFTP
+git checkout <commit> -- wordpress-theme/skyyrose-flagship-2/
+# Re-deploy through the gated wrapper (STOP-AND-SHOW): bash scripts/deploy-production.sh
 ```
 
 ### Backend
