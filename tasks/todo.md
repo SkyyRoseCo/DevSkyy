@@ -814,3 +814,18 @@ Post-deploy verify matrix:
 - [ ] `.exp-name` renders bespoke scripts; both new woff2 200 (`skyyrose-black-rose-script-latin`, `skyyrose-love-hurts-graffiti-latin`)
 - [ ] BR/LH emblems still 200 · KC teaser hero visible · homepage hero un-clipped @1440px · cart shell present
 - [ ] Playwright eyes-on mobile + desktop, console clean
+
+## Hooks + deploy gates: two themes, staging → production cutover (2026-09-18, founder-approved)
+
+Founder decisions: one PR; after cutover production runs folder `skyyrose-flagship-2` (retire the old `skyyrose-flagship` folder on the server); cutover = `deploy-theme.sh` + `wp theme activate`, each step its own STOP-AND-SHOW; user-level Prettier hook no longer formats md/json/css (done 2026-09-18).
+Facts [live 2026-09-18]: production `skyyrose.co` serves Flagship 2 v2.3.1 inside folder `skyyrose-flagship`; staging `staging-7e48-skyyrose.wpcomstaging.com` serves `skyyrose-flagship-2` v2.4.4; `staging.skyyrose.co` does not resolve.
+
+- [x] A. Hook gates: paid-api-stopgate (per-segment normalized rules, staging vs production, gate `wp theme activate`/stylesheet/db/search-replace, Vercel retitled, internal errors fail closed); catalog-drift-guard reads `.tool_input.file_path` + worktree-aware (+ .codex mirror); stop-test-gate fails closed without python, reasons on stderr; format/phpcs/tsc hooks work in worktrees
+- [x] B. Deploy + verify: separate `deploy-staging.sh` / `deploy-production.sh` wrappers over the `deploy-theme.sh` engine; engine refuses when live theme identity != local, when SSH_USER is not the target site's account, on URL userinfo; 404 first deploy needs WP REST root proof; one-shot `--allow-*` flags; verify scripts take URL/slug from env, exact redirect check
+- [x] C. Per-theme tooling: php-format/lint-staged/phpcs-on-write route each file to its theme's own ruleset (flagship `.phpcs.xml`, flagship-2's tracked `phpcs.xml`), freshness-guard (pinned V2 minifiers) + CI cover flagship-2; `*.min.*` prettier-ignored
+- [x] D. Instructions: docs/skills/router/canon-prefetch name both themes, real staging host, registry-first, deploy BLOCKED-until-#918 labels
+- [x] Review 2026-09-19 (/code-review, 3 independent reviewers): 5 HIGH + 11 MEDIUM confirmed and fixed with RED→GREEN tests (bug-340..347); full suite 7316 passed / 0 failed before the final splits — re-run before commit
+- [ ] One commit, PR, CI green (merge only on the founder's y)
+- [x] `.env.wordpress.staging` `SFTP_*` added as literal copies of its `SSH_*` (founder request 2026-09-19); `dt_validate_env_file staging` passes
+- [ ] Founder: `deploy-pipeline.sh` / `deploy-holo-cards.sh` build V1 then deploy V2 via the wrapper (pipeline build step already fails: V1 folder has no package.json) — repoint the build, or delete both scripts (deletion needs y)
+- [ ] Follow-up (separate): land PR #918's V2 deploy support on main

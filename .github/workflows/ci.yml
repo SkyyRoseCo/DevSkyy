@@ -446,7 +446,7 @@ jobs:
               echo "::error file=$file::PHP syntax error: $output"
               error_count=$((error_count + 1))
             fi
-          done < <(find wordpress-theme/skyyrose-flagship \
+          done < <(find wordpress-theme/skyyrose-flagship wordpress-theme/skyyrose-flagship-2 \
             -name "*.php" \
             -not -path "*/node_modules/*" \
             -not -path "*/vendor/*")
@@ -477,6 +477,22 @@ jobs:
             exit 1
           fi
           echo "No minification drift -- build output is clean"
+
+      # skyyrose-flagship-2 is self-contained: its own package.json (npm-shrinkwrap
+      # pins clean-css/terser) and scripts/build-assets.mjs, whose --check mode
+      # compares the committed .min files against a fresh build without writing.
+      - name: Install Flagship 2 theme dependencies
+        working-directory: wordpress-theme/skyyrose-flagship-2
+        run: npm ci
+
+      - name: Check Flagship 2 minification drift (CI-05b)
+        working-directory: wordpress-theme/skyyrose-flagship-2
+        run: |
+          if ! npm run check:assets; then
+            echo "::error::Flagship 2 minification drift: committed .min files differ from a fresh build."
+            echo "Fix: cd wordpress-theme/skyyrose-flagship-2 && npm run build:assets && git add assets && git commit"
+            exit 1
+          fi
 
   # ===========================================================================
   # Stage 3: E2E Tests with Playwright
@@ -795,14 +811,14 @@ jobs:
     timeout-minutes: 15
     needs: [python-tests, frontend-tests, security, api-integration]
     # DISABLED 2026-07-07: Render deploy hooks are inert (secrets never configured,
-    # no render.yaml exists) and the URLs reference the wrong domain (skyyrose.com;
-    # live site is skyyrose.co). Real deploys are gated manual runs — see
+    # no render.yaml exists) and the URLs referenced the wrong domain (skyyrose.com,
+    # corrected to skyyrose.co 2026-09-19). Real deploys are gated manual runs — see
     # tasks/mcp-golive-manifest.md; backend production home is the planned Fly app
     # (P5, ~/.claude/plans/lucky-nibbling-oasis.md). Re-enable only with a real target.
     if: false
     environment:
       name: staging
-      url: https://staging.skyyrose.com
+      url: https://staging-7e48-skyyrose.wpcomstaging.com
 
     steps:
       - name: Checkout code
@@ -852,7 +868,7 @@ jobs:
     if: false
     environment:
       name: production
-      url: https://skyyrose.com
+      url: https://skyyrose.co
 
     steps:
       - name: Checkout code
@@ -902,7 +918,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Environment**: production" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **URL**: https://skyyrose.com" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL**: https://skyyrose.co" >> $GITHUB_STEP_SUMMARY
 
   # ===========================================================================
   # Workflow Summary

@@ -13,8 +13,12 @@
 #
 # Requirements:
 #   - npx (terser, csso-cli) for minification
-#   - .env.wordpress for deploy credentials (passed to deploy-theme.sh)
+#   - .env.wordpress for deploy credentials (pinned by deploy-production.sh,
+#     the wrapper that execs the deploy-theme.sh engine; the engine refuses a
+#     direct call without DEPLOY_TARGET)
 #   - curl for post-deploy verification
+#
+# This is a PRODUCTION script (skyyrose.co).
 #
 # What changed in this rollout:
 #   - assets/css/product-card-holo.min.css       (NEW — minified CSS)
@@ -75,8 +79,9 @@ Pipeline:
   1. Minify   product-card-holo.css → .min.css  (csso)
   2. Minify   product-card-holo.js  → .min.js   (terser)
   3. Lint     PHP syntax on all changed files
-  4. Deploy   via deploy-theme.sh
-  5. Verify   holo card class present on all collection pages + shop
+  4. Deploy   via deploy-production.sh (wrapper around the deploy-theme.sh engine)
+  5. Verify   holo card class present on all collection pages + shop, then
+              verify-deploy.sh --env-file .env.wordpress
 EOF
 }
 
@@ -183,14 +188,16 @@ lint_php() {
 deploy() {
     log_info "=== Deploying Theme ==="
 
-    local deploy_script="$SCRIPT_DIR/deploy-theme.sh"
+    # The production wrapper pins DEPLOY_TARGET=production + .env.wordpress and
+    # execs the engine (deploy-theme.sh), which refuses a direct call.
+    local deploy_script="$SCRIPT_DIR/deploy-production.sh"
     if [[ ! -f "$deploy_script" ]]; then
-        log_error "deploy-theme.sh not found at $deploy_script"
+        log_error "deploy-production.sh not found at $deploy_script"
         exit 1
     fi
 
     if [[ "$DRY_RUN" == "true" ]]; then
-        log_info "Calling deploy-theme.sh --dry-run"
+        log_info "Calling deploy-production.sh --dry-run"
         bash "$deploy_script" --dry-run
     else
         bash "$deploy_script"
@@ -294,7 +301,8 @@ verify_full_site() {
     local verify_script="$SCRIPT_DIR/verify-deploy.sh"
     if [[ -f "$verify_script" && "$DRY_RUN" == "false" ]]; then
         log_info "=== Full-Site Verification ==="
-        bash "$verify_script" || log_warn "Some full-site checks failed (see above)"
+        bash "$verify_script" --env-file "$PROJECT_ROOT/.env.wordpress" \
+            || log_warn "Some full-site checks failed (see above)"
     fi
 }
 

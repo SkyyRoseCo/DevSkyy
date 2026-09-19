@@ -3,7 +3,7 @@
 # ("Glob Fishing Instead of Consulting Canonical Source").
 #
 # Per cerebrum.md: before any task, name the canonical source. Examples:
-#   Catalog → wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+#   Catalog → wordpress-theme/skyyrose-flagship/data/logo-registry.json (via skyyrose.core.product.get_product)
 #   Brand   → knowledge-base/seed/from-interview.md
 #   ADRs    → knowledge-base/decisions/
 #
@@ -31,14 +31,14 @@ ttl=$((24 * 3600))
 # Detect mentions of domains that have a canonical source-of-truth.
 # Format: <canonical-topic-name>|<case-insensitive-regex>
 matches=$(scan_patterns "$prompt" <<'PATTERNS'
-catalog|product[._ -]?catalog|skyyrose-catalog|all skus|product list|sku [a-z]{2,3}-[0-9]{3}|catalog\.csv
+catalog|product[._ -]?catalog|skyyrose-catalog|all skus|product list|sku [a-z]{2,3}-[0-9]{3}|catalog\.csv|logo-registry|get_product|product registry
 brand|skyyrose brand|brand canon|brand voice|brand identity|brand guidelines|brand-canon
 collection|black[._ -]?rose|love[._ -]?hurts|signature collection|kids capsule
 imagery-pipeline|elite[._ -]?studio|nano[._ -]?banana|render pipeline|imagery pipeline
 adr|architecture decision|adr-[0-9]|architectural decision
 managed-agents|claude[._ -]?agent[._ -]?sdk|multi[._ -]?agent orchestrator
 preorder|pre[._ -]?order|preorder gateway
-theme|wordpress theme|skyyrose-flagship|skyyrose flagship
+theme|wordpress theme|skyyrose-flagship|skyyrose flagship|flagship[ -]?2
 PATTERNS
 )
 
@@ -64,20 +64,21 @@ build_directive() {
     for t in "${stale[@]}"; do
         case "$t" in
             catalog)
-                out+="  - catalog → wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv (30 SKUs, source of truth; never grep individual JSONs)\n"
-                out+="    Python loader: skyyrose/core/catalog_loader.py   PHP loader: inc/product-catalog.php\n"
+                out+="  - catalog → wordpress-theme/skyyrose-flagship/data/logo-registry.json (root symlink logo-registry.json) — the ONE product SOT (33 SKUs). Corey (founder) is authoritative on his products.\n"
+                out+="    Read ONE entry point: from skyyrose.core.product import get_product  /  python -m skyyrose.core.product <sku>\n"
+                out+="    skyyrose-catalog.csv, dossiers, sot-images.json, collection sot.json are GENERATED projections — never the source; after a registry edit run python scripts/sync_product_registry.py (--check before handoff)\n"
                 ;;
             brand)
                 out+="  - brand → knowledge-base/seed/from-interview.md (PRIMARY brand canon, Corey-authored; wins over derived docs)\n"
                 ;;
             collection)
-                out+="  - collection → knowledge-base/seed/from-interview.md (collection narratives) + wordpress-theme/skyyrose-flagship/template-collection-*.php\n"
+                out+="  - collection → knowledge-base/seed/from-interview.md (collection narratives) + logo-registry.json collections.<slug> (identity SOT); templates: V1 skyyrose-flagship/template-collection-*.php, V2 skyyrose-flagship-2/template-collection.php\n"
                 ;;
             imagery-pipeline)
                 out+="  - imagery pipeline → docs/NANO_BANANA.md and skyyrose/elite_studio/ (canonical hub); NEVER call FASHN/Tripo/Meshy outside their agent wrappers\n"
                 ;;
             adr)
-                out+="  - ADR / architectural decision → knowledge-base/decisions/ (numbered ADRs); SKYYROSE_V2_MASTER_PLAN.md §1.1 has locked decisions\n"
+                out+="  - ADR / architectural decision → knowledge-base/decisions/ (numbered ADRs); docs/SKYYROSE_V2_MASTER_PLAN.md §1 has locked decisions\n"
                 ;;
             managed-agents)
                 out+="  - managed agents → docs/MANAGED_AGENTS.md (two-stack architecture, recipes, smoke tests, pitfalls)\n"
@@ -86,7 +87,7 @@ build_directive() {
                 out+="  - preorder → wordpress-theme/skyyrose-flagship/inc/woocommerce-preorder.php + template-preorder-gateway.php\n"
                 ;;
             theme)
-                out+="  - theme → wordpress-theme/skyyrose-flagship/CLAUDE.md + functions.php (SKYYROSE_VERSION constant)\n"
+                out+="  - theme → TWO themes, name which before editing: V1 wordpress-theme/skyyrose-flagship/ (\"SkyyRose\", text domain skyyrose, SKYYROSE_VERSION) and V2 wordpress-theme/skyyrose-flagship-2/ (\"SkyyRose Flagship 2\", text domain skyyrose-flagship-2, SKYYROSE2_VERSION). Read that theme's CLAUDE.md + functions.php. skyyrose.co + staging serve the Flagship 2 lineage; deploys go through scripts/deploy-staging.sh / deploy-production.sh (STOP-AND-SHOW)\n"
                 ;;
         esac
     done
