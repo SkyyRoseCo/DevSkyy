@@ -365,7 +365,7 @@ AI-driven luxury fashion e-commerce (SkyyRose). Python 3.11+ · FastAPI · Next.
 | Surface             | Host               |
 | ------------------- | ------------------ |
 | **skyyrose.co**     | WP storefront      |
-| **devskyy.app**     | dashboard (Vercel) |
+| **devskyy.app**     | dashboard (Vercel — current, retiring: HTTP 402 `DEPLOYMENT_DISABLED` `[live 2026-09-18]`; replacement host undecided) |
 | **api.devskyy.app** | FastAPI (Fly)      |
 
 Dependency flow:
@@ -373,8 +373,10 @@ Dependency flow:
 
 **Entry points** — `main_enterprise.py` (FastAPI: REST + GraphQL + webhooks) ·
 `devskyy_mcp.py` (MCP: agents, WooCommerce, imagery, RAG) · `frontend/` (Next.js
-16 + React 19 dashboard) · `wordpress-theme/skyyrose-flagship/` (production WP
-theme) · `skyyrose/elite_studio/` (multi-agent image pipeline) ·
+16 + React 19 dashboard) · `wordpress-theme/skyyrose-flagship-2/` ("SkyyRose
+Flagship 2" — the lineage production and staging serve) ·
+`wordpress-theme/skyyrose-flagship/` (V1 "SkyyRose" theme) ·
+`skyyrose/elite_studio/` (multi-agent image pipeline) ·
 `agents/base_super_agent/agent.py` (EnhancedSuperAgent base).
 
 **Workspaces are self-contained:**
@@ -383,7 +385,8 @@ theme) · `skyyrose/elite_studio/` (multi-agent image pipeline) ·
 | ---------- | ----------- | ------------------ | ---------------------------------------------------------------------------------------- |
 | Python API | 3.11+       | `/`                | `make install`, `make dev`                                                               |
 | Dashboard  | Node 22     | `frontend/`        | `npm install`, `npm run dev`                                                             |
-| WordPress  | PHP 8.2     | `wordpress-theme/` | deploy only                                                                              |
+| WP theme V1 | PHP 8.2    | `wordpress-theme/skyyrose-flagship/` | builds via `wordpress-theme/package.json` (`npm install`, `npm run build`)      |
+| WP theme V2 | PHP 8.2    | `wordpress-theme/skyyrose-flagship-2/` | its own `package.json` (`npm install`, `npm run build`, `npm run verify`)     |
 | Imagery    | Python 3.13 | main `.venv/`      | `requirements-imagery.txt`; engine `scripts/oai_render/` (paid `generate` needs `--yes`) |
 | ADK        | —           | `.venv-agents/`    | `pip install google-adk`                                                                 |
 
@@ -391,21 +394,36 @@ theme) · `skyyrose/elite_studio/` (multi-agent image pipeline) ·
 _numpy conflicts_; create `.venv-agents/`.
 
 Scoped `CLAUDE.md` files auto-load under `agents/`, `api/`, `database/`, `llm/`,
-`frontend/`, `docs/`, `skyyrose/elite_studio/`, and the theme — read those for
+`frontend/`, `docs/`, `skyyrose/elite_studio/`, and each theme
+(`wordpress-theme/skyyrose-flagship/CLAUDE.md` for V1,
+`wordpress-theme/skyyrose-flagship-2/CLAUDE.md` for V2) — read those for
 subsystem rules.
 
-### WordPress theme
+### WordPress theme — TWO themes, never conflate
 
-Structure, the `.min` build rule, escaping/nonce conventions, PHPCS →
-`wordpress-theme/skyyrose-flagship/CLAUDE.md` (auto-loads under the theme). Text
-domain `skyyrose` · version = `SKYYROSE_VERSION` in `functions.php`.
+| Theme | Folder                                 | Name · text domain · version constant                          | Build            |
+| ----- | -------------------------------------- | -------------------------------------------------------------- | ---------------- |
+| V1    | `wordpress-theme/skyyrose-flagship/`   | "SkyyRose" · `skyyrose` · `SKYYROSE_VERSION` (`functions.php`) | `wordpress-theme/package.json` |
+| V2    | `wordpress-theme/skyyrose-flagship-2/` | "SkyyRose Flagship 2" · `skyyrose-flagship-2` · `SKYYROSE2_VERSION` (`functions.php`) | its own `package.json` |
+
+The V2 theme is named `skyyrose-flagship-2` (never `-v2`). `[live 2026-09-18]`:
+skyyrose.co serves Flagship 2 v2.3.1 inside folder `skyyrose-flagship`; staging
+`staging-7e48-skyyrose.wpcomstaging.com` serves `skyyrose-flagship-2` v2.4.4;
+`staging.skyyrose.co` does not resolve. After cutover production runs folder
+`skyyrose-flagship-2`. Structure, the `.min` build rule, escaping/nonce
+conventions, PHPCS → each theme's scoped `CLAUDE.md` (auto-loads under it).
 
 ```bash
+# V1 — from wordpress-theme/
 cd wordpress-theme
 npm run build         # editorial + css + js — ALWAYS use this, not the raw scripts
-npm run deploy        # → skyyrose.co (STOP-AND-SHOW)   deploy:dry = preview
 npm run lint:php      # syntax check all files
 npm run verify:theme  # per-aspect gate (--only <id>, --json, --list)
+# V2 — from its own folder
+cd wordpress-theme/skyyrose-flagship-2
+npm run build         # registry + assets (.min) + i18n   check:assets = .min drift
+npm run verify        # scripts/verify-marketplace.sh      lint:php = php -l sweep
+# Deploy (both STOP-AND-SHOW, theme skyyrose-flagship-2): see §7
 # key ~/.ssh/skyyrose-deploy · server sftp.wp.com
 ```
 
@@ -450,11 +468,26 @@ All targets are STOP-AND-SHOW (§1).
 
 | Target       | Command                                                                                    | Config                                    |
 | ------------ | ------------------------------------------------------------------------------------------ | ----------------------------------------- |
-| WordPress    | `bash scripts/deploy-theme.sh`                                                             | `.env.wordpress`                          |
+| WP staging   | **BLOCKED until PR #918 lands** (refuses a `skyyrose-flagship-2` source, `--dry-run` included) · `bash scripts/deploy-staging.sh [--dry-run]` → `staging-7e48-skyyrose.wpcomstaging.com`, theme `skyyrose-flagship-2` | `.env.wordpress.staging` (`SFTP_*` = literal copies of its `SSH_*` — one WP.com credential; passes `dt_validate_env_file staging` `[repro 2026-09-19]`) |
+| WP production | **BLOCKED until PR #918 lands** (same refusal) · `bash scripts/deploy-production.sh [--dry-run]` → skyyrose.co, theme `skyyrose-flagship-2`; refuses until `.env.wordpress` `WP_THEME_PATH` names the `-2` folder | `.env.wordpress`                          |
 | WP MU-plugin | `STOPSHOW_ACK=1 [MU_SRC=wordpress/mu-plugins/<file>.php] bash scripts/deploy-mu-plugin.sh` | `.env.wordpress` (dest = source basename) |
-| Frontend     | `cd frontend && npm run deploy`                                                            | `vercel.json`                             |
+| Frontend     | `cd frontend && npm run deploy` — Vercel, current but retiring (devskyy.app 402 `[live 2026-09-18]`; replacement undecided) | `vercel.json`                             |
 | API          | `docker compose up -d`                                                                     | `docker-compose.yml`                      |
 | HF Spaces    | `bash scripts/deploy_hf_spaces.sh`                                                         | `.env`                                    |
+
+`scripts/deploy-theme.sh` is the engine behind both WP wrappers and refuses
+direct runs. Its preflight `check_theme_identity` refuses when the live theme's
+Name/Text Domain differs from the source (deploying the repo's V1 folder would
+roll production back from Flagship 2). The engine does not yet deploy
+`skyyrose-flagship-2` (PR #918's V2 deploy changes are a follow-up), so both
+wrappers refuse today, `--dry-run` included. One-shot wrapper flags
+`--allow-new-theme-folder` (first deploy into a folder the site lacks) and
+`--allow-theme-identity-change` (replace a live theme whose Name/Text Domain
+differ) replace exporting `ALLOW_NEW_THEME_FOLDER` / `ALLOW_THEME_IDENTITY_CHANGE`
+(inherited exports are refused). The env file's `SSH_USER` must equal
+`<first label of the PUBLIC_URL host>.wordpress.com` and `SFTP_USER` (if set)
+must equal `SSH_USER`. Cutover = deploy + `wp theme activate skyyrose-flagship-2`,
+each its own STOP-AND-SHOW.
 
 ### Theme deploy = atomic hot-swap; the source tree must be COMPLETE
 
@@ -469,15 +502,17 @@ stale). **3 remain untracked** and absent from a clean checkout:
 (blanket-ignored at `.gitignore:290`). No theme code references them; byte
 copies live in the `collections-scroll-world` worktree.
 
-> **Gate gap:** `preflight_completeness()` (`scripts/deploy-theme.sh:313`) only
+> **Gate gap:** `preflight_completeness()` (`scripts/deploy-theme.sh`) only
 > checks that **git-tracked** files exist on disk. Untracked riders are
 > invisible to it — a source missing them passes silently, with no warning.
 > Tracking a rider (`git add -f`) is what puts it under the gate.
 
-**Version bump is deploy-correctness, not bookkeeping.** `SKYYROSE_VERSION` is
-the cache-bust param on ~52 enqueue calls; shipping changed CSS/JS without
-bumping the triple (`functions.php`, `style.css`, `readme.txt`) leaves returning
-visitors on stale cached assets.
+**Version bump is deploy-correctness, not bookkeeping.** V1 `SKYYROSE_VERSION`
+is the cache-bust param on ~52 enqueue calls; V2 `SKYYROSE2_VERSION`
+(`skyyrose-flagship-2/functions.php:10`) prefixes every asset `?ver=` (plus a
+per-file content hash). Shipping changed CSS/JS without bumping that theme's
+triple (`functions.php`, `style.css`, `readme.txt`) leaves returning visitors on
+stale cached assets.
 
 ---
 
@@ -503,6 +538,7 @@ Grep before re-deriving a fix. Engineering → **`docs/engineering-learnings.md`
 - **bug-230** (×7, 2026-08-01): PATTERN: fail-open guards / silent fallbacks — gates that pass when their input… → fix: Rule: every gate fails CLOSED — absent manifest/config/token = block, exception…
 - **bug-231** (×6, 2026-09-18): PATTERN: test isolation / shared-state pollution — tests failing only in full-s… → fix: Rule: per-test tmp_path (never hardcoded /tmp), monkeypatch.setenv/delenv (neve…
 - **bug-098** (×4, 2026-05-12): DATA-01: /collection-black-rose/, /collection-love-hurts/, /collection-signatur… → fix: Bumped SKYYROSE_SETUP_VERSION constant from '4.0.0' to '4.1.0' in inc/theme-act…
+- **bug-177** (×2, 2026-09-19): paid-api-stopgate blocked read-only commands (head/grep of deploy-theme.sh) and… → fix: deploy rules now require execution context (interpreter invocation or command-p…
 - **bug-257** (×2, 2026-07-13): Stop-gate: tests/test_asset_manifest.py::test_manifest_exists_and_loads fails i… → fix: Centralized guard in tests/sparse_guard.py: requires_tree(rel) skips ONLY when…
 - **bug-287** (×2, 2026-07-24): Reported a stale repo-side style.min.css as 'a real production stale-serve defe… → fix: Evidence-scope rule in tasks/lessons.md: tag load-bearing claims inline ([repo]…
 - **bug-327** (×2, 2026-09-17): wolf-memory (CONNECTION_CLOSED) and worktree-fleet (CONNECTION_CLOSED) MCP serv… → fix: Changed the `command` for wolf-memory and worktree-fleet in .mcp.json from `pyt…

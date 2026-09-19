@@ -9,8 +9,9 @@ if [ -x /opt/homebrew/bin/php ]; then
 elif command -v php >/dev/null 2>&1; then
   PHP=php
 else
-  echo "WARN: php not found, skipping lint"
-  exit 0
+  # Fail closed: a missing interpreter is not a passing syntax check.
+  echo "php-lint: php not found — PHP syntax NOT verified" >&2
+  exit 2
 fi
 
 ERRORS=0
@@ -23,7 +24,9 @@ for file in "$@"; do
 
   if ! "$PHP" -l "$file" 2>&1 | grep -q "No syntax errors"; then
     echo "FAIL: $file"
-    "$PHP" -l "$file" 2>&1
+    # php -l exits 255 on a syntax error; under set -e that would abort the
+    # loop before the summary. The failure is already counted below.
+    "$PHP" -l "$file" 2>&1 || true
     ERRORS=$((ERRORS + 1))
   fi
 done

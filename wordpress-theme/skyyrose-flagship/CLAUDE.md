@@ -1,7 +1,8 @@
 # SkyyRose Theme — scoped context
 
-**Commercial marketplace theme. Production at skyyrose.co**
+**Commercial marketplace theme — this is the V1 theme.**
 **Theme Name:** SkyyRose | **Text Domain:** `skyyrose` | **@package:** SkyyRose
+The v2 theme ("SkyyRose Flagship 2", text domain `skyyrose-flagship-2`, `SKYYROSE2_VERSION`) lives in `../skyyrose-flagship-2/` with its own `CLAUDE.md`, `package.json` and deploy wrappers (`scripts/deploy-staging.sh` / `deploy-production.sh`). skyyrose.co and staging serve the Flagship 2 lineage `[live 2026-09-18]`; this V1 tree is not the deploy target.
 
 Per-file map + token sizes: `.wolf/anatomy.md`. Directory layout is derivable via `ls`/`find` —
 not duplicated here.

@@ -2664,8 +2664,8 @@
     "related_bugs": [
       "bug-174"
     ],
-    "occurrences": 1,
-    "last_seen": "2026-07-07"
+    "occurrences": 2,
+    "last_seen": "2026-09-19"
   },
   {
     "id": "bug-178",
@@ -5940,5 +5940,168 @@
       "bug-230",
       "bug-338"
     ]
+  },
+  {
+    "id": "bug-340",
+    "timestamp": "2026-09-19T00:00:00-07:00",
+    "error_message": "catalog-drift-guard.sh never fired on registry/CSV/dossier edits",
+    "file": ".claude/hooks/catalog-drift-guard.sh",
+    "root_cause": "The hook wrapped its check in GNU `timeout`, which macOS does not ship, and read the wrong PostToolUse payload field; both failures exited quietly, so the guard passed every edit (fail-open).",
+    "fix": "Reads .tool_input.file_path, resolves the repo root from the edited file, drops the `timeout` dependency, treats the registry as the SOT and CSV/dossiers as projections; .codex copy kept identical; tests/hooks/test_catalog_drift_guard.py.",
+    "tags": [
+      "hooks",
+      "fail-open",
+      "macos",
+      "catalog",
+      "registry"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-19"
+  },
+  {
+    "id": "bug-341",
+    "timestamp": "2026-09-19T00:00:00-07:00",
+    "error_message": "scripts/php-lint.sh passed when php was not installed; also aborted with exit 255 under set -e",
+    "file": "scripts/php-lint.sh",
+    "root_cause": "A missing php binary skipped the lint loop and still exited 0 (fail-open); an arithmetic/command status under `set -e` aborted the script with 255 instead of reporting the failing file.",
+    "fix": "Fails closed (exit 2) when php is absent; the loop no longer trips set -e; both themes linted; tests/scripts/test_php_theme_routing.py.",
+    "tags": [
+      "php",
+      "lint",
+      "fail-open",
+      "set-e",
+      "two-themes"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-19"
+  },
+  {
+    "id": "bug-342",
+    "timestamp": "2026-09-19T00:00:00-07:00",
+    "error_message": "verify-deploy.sh exited 1 with no message when the live style.css had no Text Domain header",
+    "file": "scripts/verify-deploy.sh",
+    "root_cause": "`LIVE_TEXT_DOMAIN=\"$(grep ... | sed ... | tr ...)\"` under `set -o pipefail`: grep's no-match exit 1 made the assignment fail and `set -e` killed the script before the refusal branch could print a reason (temp file also leaked). Fail-closed, but silent.",
+    "fix": "`{ grep ... || true; }` in the pipeline, matching the engine's extract_theme_header; RED->GREEN test test_style_css_without_text_domain_refuses_with_reason.",
+    "tags": [
+      "bash",
+      "pipefail",
+      "set-e",
+      "deploy",
+      "verify"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-19"
+  },
+  {
+    "id": "bug-343",
+    "timestamp": "2026-09-19T00:00:00-07:00",
+    "error_message": "deploy-theme.sh accepted DEPLOY_TARGET=staging with any non-production host (e.g. example.com)",
+    "file": "scripts/deploy-theme.sh",
+    "root_cause": "The engine's staging host check was a denylist of production hosts while the staging wrapper used an allowlist (*.wpcomstaging.com); a direct engine run could aim 'staging' at an arbitrary site.",
+    "fix": "Engine uses the same *.wpcomstaging.com allowlist as deploy-target-lib.sh; RED->GREEN test test_staging_target_refuses_non_staging_host.",
+    "tags": [
+      "deploy",
+      "fail-open",
+      "allowlist",
+      "staging",
+      "two-themes"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-19"
+  },
+  {
+    "id": "bug-344",
+    "timestamp": "2026-09-19T00:00:00-07:00",
+    "error_message": "paid-api-stopgate let 16 executing deploy shapes through that origin/main blocked: (bash x), timeout 60 bash x, nohup bash x &, bash -c \"bash x\", bash \"x\", bash x; echo, bash x|tee, leading space, continued line, xargs bash x, pnpm run deploy; and never gated the npm deploy:staging / deploy:production scripts added in the same diff",
+    "file": ".claude/hooks/paid-api-stopgate.sh",
+    "root_cause": "The 2026-09-18 rewrite anchored every deploy rule to command position with a trailing ([[:space:]]|$). Fixing the read-only false positives (verify-deploy.sh read as an interpreter) this way made the gate blind to any wrapper, quote, subshell or separator around the executed script; the tests only exercised bare commands, so they stayed green.",
+    "fix": "Two tiers: substring rules for paid HTTP/CLIs/destructive ops; program rules matched per segment after normalization (quotes and backslashes dropped, split on newline ; & | ( ) { } and backticks, leading wrappers stripped). npm/pnpm/yarn deploy* gated except deploy:*:dry and deploy:verify*; ssh-quoted wp, fly -a X deploy, vercel --cwd X --prod, git push +ref and trailing --force now caught; bash -n allowed. 32 new matrix cases; they fail against the HEAD hook.",
+    "tags": [
+      "hooks",
+      "stopgate",
+      "fail-open",
+      "regression",
+      "deploy",
+      "security"
+    ],
+    "related_bugs": [
+      "bug-177",
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-19"
+  },
+  {
+    "id": "bug-345",
+    "timestamp": "2026-09-19T00:00:00-07:00",
+    "error_message": "paid-api-stopgate exited 1 (unbound BASH_REMATCH[5] under set -u) on every npm deploy command; Claude Code treats a non-2 PreToolUse exit as non-blocking, so the command would have run",
+    "file": ".claude/hooks/paid-api-stopgate.sh",
+    "root_cause": "A second [[ =~ ]] overwrote BASH_REMATCH before the category string read group 5. More generally any internal error exits 1 and fails OPEN (docs: only exit 2 blocks). A status-based EXIT trap cannot catch it: macOS /bin/bash 3.2 reports $?=0 to the EXIT trap after a set -u abort, and the script then exits 0.",
+    "fix": "Capture the script name before the second match. Every deliberate exit goes through allow() / block() (or sets GATE_DECIDED=1); an EXIT trap turns any other exit into a block with an 'internal error' message. test_internal_error_fails_closed injects an unbound variable into a tmp copy of the hook and expects exit 2.",
+    "tags": [
+      "hooks",
+      "stopgate",
+      "fail-open",
+      "bash32",
+      "set-u",
+      "exit-trap"
+    ],
+    "related_bugs": [
+      "bug-230",
+      "bug-344"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-19"
+  },
+  {
+    "id": "bug-346",
+    "timestamp": "2026-09-19T00:00:00-07:00",
+    "error_message": "catalog-drift-guard called visual-manifest.json and product-similarities.json 'generated from logo-registry.json by scripts/sync_product_registry.py' and told the agent to apply the change in the registry",
+    "file": ".claude/hooks/catalog-drift-guard.sh",
+    "root_cause": "Both files were listed as registry projections. The sync writes only the CSV, its frontend replica and the dossiers; visual-manifest.json is the editable non-product imagery master (sot_common.py loads it as a master) and product-similarities.json is written by scripts/build_product_similarities.py.",
+    "fix": "New kinds: 'imagery-master' (NON-PRODUCT IMAGERY MASTER EDITED; product facts belong in the registry) and 'generated' (GENERATED FILE EDITED; names the real generator). Regeneration triggers unchanged. Two tests; .codex mirror identical.",
+    "tags": [
+      "hooks",
+      "catalog",
+      "registry",
+      "sot",
+      "messaging"
+    ],
+    "related_bugs": [
+      "bug-340"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-19"
+  },
+  {
+    "id": "bug-347",
+    "timestamp": "2026-09-19T00:00:00-07:00",
+    "error_message": "stop-test-gate printed its blocking reasons (no interpreter; failure reproduced + failing test tail) to stdout, so Claude was blocked from stopping without being told why",
+    "file": ".claude/hooks/stop-test-gate.sh",
+    "root_cause": "On exit 2 Claude Code feeds stderr to the model; plain-text stdout is not delivered (code.claude.com hooks reference). The tests asserted on stdout and enshrined the defect.",
+    "fix": "Both reasons and the failing-test tail go to stderr in both copies; tests assert on stderr, plus a new reproduced-failure test with a failing fake python.",
+    "tags": [
+      "hooks",
+      "stop-hook",
+      "stderr",
+      "feedback"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-19"
   }
 ]

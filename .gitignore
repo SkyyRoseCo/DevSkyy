@@ -80,6 +80,7 @@ dmypy.json
 .env.*
 !.env.example
 !.env.wordpress.example
+!.env.wordpress.staging.example
 !.env.docker.example
 .env.secrets
 .env.secrets.*
@@ -179,6 +180,8 @@ data/user/
 *.min.css
 !wordpress-theme/skyyrose-flagship/assets/**/*.min.js
 !wordpress-theme/skyyrose-flagship/assets/**/*.min.css
+!wordpress-theme/skyyrose-flagship-2/assets/**/*.min.js
+!wordpress-theme/skyyrose-flagship-2/assets/**/*.min.css
 
 # --- Staging/deployment logs & backups ---
 keys/

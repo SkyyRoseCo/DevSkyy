@@ -10,3 +10,16 @@ tasks/source-photo-shoot-list.md
 /logo-registry.json
 wordpress-theme/skyyrose-flagship/data/logo-registry.json
 wordpress-theme/skyyrose-flagship/data/dossiers/*.md
+
+# Byte-stable or externally managed trees that lint-staged never formats
+# (lint-staged.config.mjs isByteStableOrManaged). Listed here too so edit-time
+# formatting (editor / PostToolUse prettier hooks) agrees with commit time.
+plugins/fashion-theme-team/
+Comfy/receipts/
+Comfy/quarantine/
+skyyrose/elite_studio/assets/golden/*/placement.md
+
+# Built minified theme assets (both themes) are byte-compared against a fresh
+# build (check:assets / freshness-guard); prettier must never rewrite them.
+**/*.min.js
+**/*.min.css

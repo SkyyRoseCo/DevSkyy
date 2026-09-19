@@ -40,6 +40,7 @@ PHP_BIN="${PHP_BIN:-php}"
 command -v "$PHP_BIN" >/dev/null 2>&1 || PHP_BIN="/opt/homebrew/bin/php"
 THEME_DIR="wordpress-theme/skyyrose-flagship"   # source + built assets live here
 THEME_PKG_DIR="wordpress-theme"                  # package.json + build scripts live here
+THEME2_DIR="wordpress-theme/skyyrose-flagship-2" # self-contained: own package.json + scripts/build-assets.mjs
 FAST="${FAST:-0}"
 
 # Activate the isolated CI python toolchain if present (ci-env/setup.sh creates it).
@@ -71,44 +72,86 @@ _run() {
 }
 
 # ── Job: 🏗️ WordPress Theme ──────────────────────────────────────────────────
-job_wordpress_theme() {
-  _hdr "🏗️  WordPress Theme"
-  local ok=1
-
-  # Step CI-03: PHP syntax check across the whole theme (mirrors ci.yml).
-  local php_errors=0 file
+# Step CI-03: PHP syntax check across BOTH themes (mirrors ci.yml).
+_wp_php_lint() {
+  local php_errors=0 file out
   while IFS= read -r file; do
     if ! out=$("$PHP_BIN" -l "$file" 2>&1); then
       printf '    PHP syntax error: %s\n      %s\n' "$file" "$out"
       php_errors=$((php_errors + 1))
     fi
-  done < <(find "$THEME_DIR" -name '*.php' -not -path '*/node_modules/*' -not -path '*/vendor/*')
-  if [ "$php_errors" -eq 0 ]; then _pass "wordpress-theme: php -l (all files)"; else _fail "wordpress-theme: php -l ($php_errors error files)"; ok=0; fi
+  done < <(find "$THEME_DIR" "$THEME2_DIR" -name '*.php' -not -path '*/node_modules/*' -not -path '*/vendor/*')
+  if [ "$php_errors" -eq 0 ]; then _pass "wordpress-theme: php -l (both themes, all files)"; return 0; fi
+  _fail "wordpress-theme: php -l ($php_errors error files)"; return 1
+}
 
-  # Step CI-04/05: build assets + minification-drift. OPT-IN only (WITH_BUILD=1).
-  # Why off by default: `npm run build` regenerates every .min.css/.min.js into
-  # the worktree, and minifier output is node-version-sensitive (local node may
-  # differ from CI's node 22) → the drift check fails SPURIOUSLY and the build
-  # mutates the tree. For diffs that don't touch source CSS/JS (e.g. deletions),
-  # php -l alone validates. Run `WITH_BUILD=1 ci-local.sh wordpress-theme` (ideally
-  # via the node-22 Docker/act env) when you actually changed buildable assets.
-  #
-  # NOTE: npm install/build run from THEME_PKG_DIR (package.json lives there, not
-  # in the skyyrose-flagship/ subdir). The min-drift check scopes to THEME_DIR
-  # because the built .min.* assets live under skyyrose-flagship/assets.
-  if [ "${WITH_BUILD:-0}" = "1" ]; then
-    [ -d "$THEME_PKG_DIR/node_modules" ] || _run "theme npm install" npm --prefix "$THEME_PKG_DIR" install --no-audit --no-fund
-    if _run "theme npm run build" npm --prefix "$THEME_PKG_DIR" run build; then _pass "wordpress-theme: npm run build"; else _fail "wordpress-theme: npm run build"; ok=0; fi
-    if git status --porcelain --untracked-files=all -- "$THEME_DIR" | grep -Eq '\.min\.(js|css)$'; then
-      _fail "wordpress-theme: min-drift (rebuild differs from committed — check node version parity)"
-      git status --porcelain --untracked-files=all -- "$THEME_DIR" | grep -E '\.min\.(js|css)$' | sed 's/^/      /'
-      ok=0
-    else
-      _pass "wordpress-theme: no minification drift"
-    fi
-  else
-    _skip "wordpress-theme: build + min-drift" "opt-in: WITH_BUILD=1 (needs node-22 parity)"
+# skyyrose-flagship-2's builder pins clean-css/terser exactly (npm-shrinkwrap).
+# Returns 0 when node resolves BOTH pinned versions (the theme's own
+# node_modules, or the shared wordpress-theme/ install); WITH_BUILD=1 installs
+# them via npm ci. scripts/freshness-guard.sh copies this probe verbatim.
+_wp2_pinned_toolchain() {
+  if _have node && ( cd "$THEME2_DIR" && node -e '
+    const pkg = require("./package.json").devDependencies;
+    for (const name of ["clean-css", "terser"]) {
+      const v = require(name + "/package.json").version;
+      if (v !== pkg[name]) { console.error(`${name} ${v} != pinned ${pkg[name]}`); process.exit(1); }
+    }' ) >/dev/null 2>&1; then
+    return 0
   fi
+  if [ "${WITH_BUILD:-0}" = "1" ] && _have npm; then
+    _run "flagship-2 npm ci" npm --prefix "$THEME2_DIR" ci --no-audit --no-fund && return 0
+  fi
+  return 1
+}
+
+# Step CI-05b: skyyrose-flagship-2 minified assets. Its builder has a
+# read-only --check mode, so this is deterministic and never mutates the tree.
+_wp2_check_assets() {
+  if ! _wp2_pinned_toolchain; then
+    _skip "wordpress-theme: skyyrose-flagship-2 check:assets" "pinned clean-css/terser not resolvable — WITH_BUILD=1 runs npm ci"
+    return 0
+  fi
+  if _run "flagship-2 check:assets" npm --prefix "$THEME2_DIR" run check:assets; then
+    _pass "wordpress-theme: skyyrose-flagship-2 .min assets match source (check:assets)"; return 0
+  fi
+  _fail "wordpress-theme: skyyrose-flagship-2 .min drift (cd $THEME2_DIR && npm run build:assets)"; return 1
+}
+
+# Step CI-04/05: build assets + minification-drift. OPT-IN only (WITH_BUILD=1).
+# Why off by default: `npm run build` regenerates every .min.css/.min.js into
+# the worktree, and minifier output is node-version-sensitive (local node may
+# differ from CI's node 22) → the drift check fails SPURIOUSLY and the build
+# mutates the tree. For diffs that don't touch source CSS/JS (e.g. deletions),
+# php -l alone validates. Run `WITH_BUILD=1 ci-local.sh wordpress-theme` (ideally
+# via the node-22 Docker/act env) when you actually changed buildable assets.
+#
+# NOTE: npm install/build run from THEME_PKG_DIR (package.json lives there, not
+# in the skyyrose-flagship/ subdir). The min-drift check scopes to THEME_DIR
+# because the built .min.* assets live under skyyrose-flagship/assets.
+_wp_build_min_drift() {
+  local ok=0
+  if [ "${WITH_BUILD:-0}" != "1" ]; then
+    _skip "wordpress-theme: build + min-drift" "opt-in: WITH_BUILD=1 (needs node-22 parity)"
+    return 0
+  fi
+  [ -d "$THEME_PKG_DIR/node_modules" ] || _run "theme npm install" npm --prefix "$THEME_PKG_DIR" install --no-audit --no-fund
+  if _run "theme npm run build" npm --prefix "$THEME_PKG_DIR" run build; then _pass "wordpress-theme: npm run build"; else _fail "wordpress-theme: npm run build"; ok=1; fi
+  if git status --porcelain --untracked-files=all -- "$THEME_DIR" | grep -Eq '\.min\.(js|css)$'; then
+    _fail "wordpress-theme: min-drift (rebuild differs from committed — check node version parity)"
+    git status --porcelain --untracked-files=all -- "$THEME_DIR" | grep -E '\.min\.(js|css)$' | sed 's/^/      /'
+    ok=1
+  else
+    _pass "wordpress-theme: no minification drift"
+  fi
+  return $ok
+}
+
+job_wordpress_theme() {
+  _hdr "🏗️  WordPress Theme"
+  local ok=1   # historical: 1 = clean, 0 = a step failed (OVERALL is set by _fail)
+  _wp_php_lint || ok=0
+  _wp2_check_assets || ok=0
+  _wp_build_min_drift || ok=0
   return $ok
 }
 
