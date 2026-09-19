@@ -826,6 +826,6 @@ Facts [live 2026-09-18]: production `skyyrose.co` serves Flagship 2 v2.3.1 insid
 - [x] D. Instructions: docs/skills/router/canon-prefetch name both themes, real staging host, registry-first, deploy BLOCKED-until-#918 labels
 - [x] Review 2026-09-19 (/code-review, 3 independent reviewers): 5 HIGH + 11 MEDIUM confirmed and fixed with RED→GREEN tests (bug-340..347); full suite 7316 passed / 0 failed before the final splits — re-run before commit
 - [ ] One commit, PR, CI green (merge only on the founder's y)
-- [ ] Founder: `.env.wordpress.staging` lacks `SFTP_HOST`/`SFTP_USER`/`SFTP_PASS` (engine preflight requires them)
+- [x] `.env.wordpress.staging` `SFTP_*` added as literal copies of its `SSH_*` (founder request 2026-09-19); `dt_validate_env_file staging` passes
 - [ ] Founder: `deploy-pipeline.sh` / `deploy-holo-cards.sh` build V1 then deploy V2 via the wrapper (pipeline build step already fails: V1 folder has no package.json) — repoint the build, or delete both scripts (deletion needs y)
 - [ ] Follow-up (separate): land PR #918's V2 deploy support on main

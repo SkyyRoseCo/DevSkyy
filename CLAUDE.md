@@ -468,7 +468,7 @@ All targets are STOP-AND-SHOW (§1).
 
 | Target       | Command                                                                                    | Config                                    |
 | ------------ | ------------------------------------------------------------------------------------------ | ----------------------------------------- |
-| WP staging   | **BLOCKED until PR #918 lands** (refuses a `skyyrose-flagship-2` source, `--dry-run` included) · `bash scripts/deploy-staging.sh [--dry-run]` → `staging-7e48-skyyrose.wpcomstaging.com`, theme `skyyrose-flagship-2` | `.env.wordpress.staging` (needs `SFTP_HOST`/`SFTP_USER`/`SFTP_PASS` — absent locally `[repro 2026-09-19]`) |
+| WP staging   | **BLOCKED until PR #918 lands** (refuses a `skyyrose-flagship-2` source, `--dry-run` included) · `bash scripts/deploy-staging.sh [--dry-run]` → `staging-7e48-skyyrose.wpcomstaging.com`, theme `skyyrose-flagship-2` | `.env.wordpress.staging` (`SFTP_*` = literal copies of its `SSH_*` — one WP.com credential; passes `dt_validate_env_file staging` `[repro 2026-09-19]`) |
 | WP production | **BLOCKED until PR #918 lands** (same refusal) · `bash scripts/deploy-production.sh [--dry-run]` → skyyrose.co, theme `skyyrose-flagship-2`; refuses until `.env.wordpress` `WP_THEME_PATH` names the `-2` folder | `.env.wordpress`                          |
 | WP MU-plugin | `STOPSHOW_ACK=1 [MU_SRC=wordpress/mu-plugins/<file>.php] bash scripts/deploy-mu-plugin.sh` | `.env.wordpress` (dest = source basename) |
 | Frontend     | `cd frontend && npm run deploy` — Vercel, current but retiring (devskyy.app 402 `[live 2026-09-18]`; replacement undecided) | `vercel.json`                             |

@@ -78,8 +78,8 @@ product SOT `wordpress-theme/skyyrose-flagship/data/logo-registry.json` (read vi
 **BLOCKED until PR #918 lands — both wrappers refuse a `skyyrose-flagship-2` source, `--dry-run`
 included.** One-shot flags `--allow-new-theme-folder` / `--allow-theme-identity-change` replace exporting
 `ALLOW_NEW_THEME_FOLDER` / `ALLOW_THEME_IDENTITY_CHANGE` (inherited exports are refused); the env file's
-`SSH_USER` must be `<first label of the PUBLIC_URL host>.wordpress.com` and `.env.wordpress.staging` needs
-`SFTP_HOST`/`SFTP_USER`/`SFTP_PASS` (absent locally `[repro 2026-09-19]`).
+`SSH_USER` must be `<first label of the PUBLIC_URL host>.wordpress.com` and `SFTP_USER` must equal it;
+`.env.wordpress.staging` carries `SFTP_*` as literal copies of its `SSH_*` (one WP.com credential).
 
 ```bash
 bash scripts/deploy-staging.sh [--dry-run]      # env .env.wordpress.staging → staging-7e48-skyyrose.wpcomstaging.com
