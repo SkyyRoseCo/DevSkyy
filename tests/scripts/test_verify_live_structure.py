@@ -28,6 +28,13 @@ def vls():
     return module
 
 
+@pytest.fixture(scope="module")
+def registries(vls):
+    # Loading the engine puts scripts/ on sys.path and imports its sibling
+    # registries module; test that module where it lives.
+    return sys.modules["verify_live_registries"]
+
+
 class FakeResponse:
     def __init__(self, status=200, body=b"", counts=None):
         self.status = status
@@ -126,8 +133,8 @@ class TestRegistries:
         with pytest.raises(ValueError, match="unrecognised text domain"):
             vls.select_registry("twentytwentyfive", "x")
 
-    def test_theme_css_assertion_uses_slug(self, vls):
-        assert vls.theme_css_assertion("abc").selector == "link[href*='abc']"
+    def test_theme_css_assertion_uses_slug(self, registries):
+        assert registries.theme_css_assertion("abc").selector == "link[href*='abc']"
 
 
 class TestLiveTextDomain:

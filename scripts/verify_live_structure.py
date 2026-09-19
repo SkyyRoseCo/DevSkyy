@@ -41,8 +41,8 @@ from urllib.parse import urljoin
 # The page registries live beside this script; make them importable whether it
 # runs as `python scripts/verify_live_structure.py` or is loaded by path.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-# E402: must follow the sys.path insert. F401: theme_css_assertion is re-exported.
-from verify_live_registries import (  # noqa: E402,F401
+# E402: must follow the sys.path insert.
+from verify_live_registries import (  # noqa: E402
     KNOWN_TEXT_DOMAINS,
     Assertion,
     Page,
@@ -50,7 +50,6 @@ from verify_live_registries import (  # noqa: E402,F401
     Registry,
     parse_text_domain,
     select_registry,
-    theme_css_assertion,
 )
 
 # ---------------------------------------------------------------------------
