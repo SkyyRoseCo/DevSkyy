@@ -45,9 +45,31 @@ const mergeChanges =
 // .wolf/buglog.json ended up in neither, and prettier rewrote 1,643 lines of it.
 // tests/test_machine_managed_files.py fails if this file stops reading the
 // registry, or if .prettierignore and the registry drift apart.
-const managedPatterns = JSON.parse(
-  readFileSync(path.join(repositoryRoot, 'data', 'machine-managed-files.json'), 'utf8')
-).entries.map(entry => entry.pattern);
+// Fails CLOSED and says why: without the registry there is no way to know which
+// files a program owns, and the safe assumption is not "none of them". Raising
+// here refuses the whole commit rather than letting formatters loose on
+// generated output. lint-staged reports only "Failed to read config from file",
+// so the cause has to come from this message.
+const registryPath = path.join(repositoryRoot, 'data', 'machine-managed-files.json');
+const managedPatterns = (() => {
+  let entries;
+  try {
+    entries = JSON.parse(readFileSync(registryPath, 'utf8')).entries;
+  } catch (error) {
+    throw new Error(
+      `lint-staged: cannot read the machine-managed-files registry at ${registryPath} ` +
+        `(${error.message}). Refusing to run: without it this config cannot tell which ` +
+        'files a program owns, and formatting one means fighting its generator forever.'
+    );
+  }
+  if (!Array.isArray(entries) || entries.length === 0) {
+    throw new Error(
+      `lint-staged: ${registryPath} lists no entries. Refusing to run rather than treating ` +
+        'an empty registry as "nothing is machine-managed".'
+    );
+  }
+  return entries.map(entry => entry.pattern);
+})();
 
 // .prettierignore uses gitignore syntax; this covers the subset the registry
 // uses: a leading "/" anchors to the repo root, a trailing "/" matches a whole
@@ -87,14 +109,36 @@ const managedMatchers = managedPatterns.map(patternToRegExp);
 // formatter command that would rewrite it.
 const BINARY_FILE = /\.(?:png|jpe?g|webp|gif|avif|mp4|mov|webm|mp3|wav|flac|safetensors|ckpt|pt|pth|bin)$/i;
 
+// Resolve directory aliases (for example /var versus /private/var on macOS)
+// without following a symlink in the indexed filename itself. git reports the
+// REAL path of the toplevel while a caller may hand us one that still goes
+// through the symlink; comparing the two directly yields a "../../.." relative
+// path that matches no pattern, which would silently protect nothing. Only the
+// deepest EXISTING ancestor is resolved, because lint-staged also names deleted
+// files and this must answer for a path rather than require one.
+const canonicalFile = file => {
+  const absolute = path.resolve(file);
+  const trailing = [path.basename(absolute)];
+  let current = path.dirname(absolute);
+  for (;;) {
+    try {
+      return path.join(realpathSync(current), ...trailing);
+    } catch {
+      const parent = path.dirname(current);
+      if (parent === current) return absolute;
+      trailing.unshift(path.basename(current));
+      current = parent;
+    }
+  }
+};
+
+const canonicalRoot = canonicalFile(repositoryRoot);
+
 const isByteStableOrManaged = file => {
-  const relative = path.relative(repositoryRoot, file).replace(/\\/g, '/');
+  const relative = path.relative(canonicalRoot, canonicalFile(file)).replace(/\\/g, '/');
   return managedMatchers.some(matcher => matcher.test(relative)) || BINARY_FILE.test(relative);
 };
 
-// Resolve directory aliases (for example /var versus /private/var on macOS)
-// without following a symlink in the indexed filename itself.
-const canonicalFile = file => path.join(realpathSync(path.dirname(file)), path.basename(file));
 const mutableFiles = files =>
   files.filter(
     file => !isByteStableOrManaged(file) && (mergeChanges === null || mergeChanges.has(canonicalFile(file)))
