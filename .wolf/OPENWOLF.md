@@ -125,14 +125,26 @@ discovery process.
 - You change error handling, try/catch blocks, or validation logic
 - The user says something "doesn't work", "is broken", or "shows wrong X"
 
-**Before fixing:** Read `.wolf/buglog.json` first — the fix may already be
-known.
+**Before fixing:** call the `wolf-memory` MCP tool `bug_search` (or read
+`.wolf/buglog.json` if that server isn't available in this harness) — the fix
+may already be known.
 
-**Before allocating a new ID:** run `python scripts/wolf_bug_id.py` for the next
-free `bug-NNN` ID — do not guess or reuse an ID from memory (past cross-session
-collisions came from manual ID guessing).
+**Preferred path — the `wolf-memory` MCP server:** call `bug_log` directly. It
+allocates the next `bug-NNN` id and appends the entry atomically across
+concurrent sessions on this checkout, and bumps an existing near-duplicate
+instead of creating a new entry, per the rule below.
+`python scripts/wolf_bug_id.py` remains the CLI fallback where there is no MCP
+client; hand-editing `buglog.json` is what caused past cross-session id
+collisions — use it only when neither is reachable.
 
-**After fixing:** ALWAYS append to `.wolf/buglog.json` with this structure:
+**Ids are provisional on a branch that is behind `main`.** The counter is seeded
+from the local `buglog.json`, so it de-races sessions sharing one checkout, not
+branches: a branch that predates entries on `main` will hand out ids `main` has
+already used. Merge `main`'s buglog before treating an id as final (bug-348/349
+were first issued as 339/340 this way).
+
+**After fixing (manual-edit fallback only):** if you can't use `bug_log`, append
+to `.wolf/buglog.json` with this structure:
 
 ```json
 {
