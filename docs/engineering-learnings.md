@@ -239,7 +239,7 @@ generalizes past formatters:
 
 **The rule:** a gate that iterates a derived collection needs a **floor on the
 collection itself** — not merely non-empty, a count, so silent shrinkage fails
-too. `test_registry_is_not_empty` asserts `>= 14`. Verify the floor by mutation,
+too. `test_registry_is_not_empty` asserts `>= 22`. Verify the floor by mutation,
 not by inspection: truncate the input and confirm the gate goes red
 (`[empty] exit=1 … expected at least 14`, `[shrunk to 3] exit=1`). Prefer a
 declared registry over list-to-list parity for exactly this reason — the

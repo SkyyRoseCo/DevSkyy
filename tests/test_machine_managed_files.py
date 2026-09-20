@@ -59,8 +59,8 @@ class TestRegistryShape:
         """
         entries = registry.get("entries")
         assert isinstance(entries, list), "registry.entries must be a list"
-        assert len(entries) >= 14, (
-            f"registry has {len(entries)} entries, expected at least 14 — "
+        assert len(entries) >= 22, (
+            f"registry has {len(entries)} entries, expected at least 22 — "
             "entries were removed, or the file was truncated"
         )
 
