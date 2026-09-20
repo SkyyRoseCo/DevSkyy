@@ -121,6 +121,22 @@ class TestLintStagedReadsTheRegistry:
             "carry its own copy of the list — a second list is what drifted before"
         )
 
+    def test_config_is_reviewable_text(self) -> None:
+        """A control byte in the source makes git treat the file as binary.
+
+        The first version of the pattern matcher used a NUL byte as its "**"
+        placeholder. It worked, and every gate passed — but git then rendered
+        the file as `Bin 5778 -> 6796 bytes`, so the config that decides which
+        files a formatter may rewrite had no reviewable line diff. Editors and
+        `Read` display NUL as a space, which is what hid it.
+        """
+        raw = LINT_STAGED_PATH.read_bytes()
+        control = {b for b in raw if b < 9 or 13 < b < 32}
+        assert not control, (
+            f"lint-staged.config.mjs contains control bytes {sorted(control)}; git treats "
+            "the file as binary and its diff stops being reviewable"
+        )
+
     def test_config_has_no_second_hardcoded_path_list(self) -> None:
         """The old `isByteStableOrManaged` inlined the paths as regexes."""
         source = LINT_STAGED_PATH.read_text(encoding="utf-8")
