@@ -29,6 +29,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 from collections import Counter
@@ -38,6 +39,8 @@ from pathlib import Path
 from typing import Any, Protocol
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+# The file integrations/openai_agents_api.py loads into os.environ at import time.
+ENV_FILE = PROJECT_ROOT / ".env"
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -589,19 +592,45 @@ def _check_access(client_factory: Callable[[], AgentsApiClient]) -> int:
     return 0 if probe.ok else 3
 
 
+_OPT_IN_LINE = re.compile(r"^\s*(?:export\s+)?SKYYROSE_AUTO_CONFIRM\s*=")
+
+
+def _env_file_defines_opt_in(env_file: Path) -> bool:
+    """True when `env_file` sets SKYYROSE_AUTO_CONFIRM, or cannot be read to rule it out.
+
+    The Agents client loads this file into os.environ at import time, so once the gate
+    runs a line in it looks exactly like a variable the operator exported. Fails closed:
+    an unreadable file counts as defining it.
+    """
+    if not env_file.exists():
+        return False
+    try:
+        lines = env_file.read_text(encoding="utf-8").splitlines()
+    except (OSError, UnicodeDecodeError):
+        return True
+    return any(_OPT_IN_LINE.match(line) for line in lines)
+
+
 def _confirm(prompt_fn: Callable[[str], str], *, yes: bool, is_tty: Callable[[], bool]) -> bool:
     """Fail-closed money gate; the manifest has already been printed by the caller.
 
     Same contract as ``skyyrose/elite_studio/pipeline3d/cli._confirm``:
 
-      * ``SKYYROSE_AUTO_CONFIRM=1`` -> the ONLY non-interactive opt-in.
+      * ``SKYYROSE_AUTO_CONFIRM=1`` -> the ONLY non-interactive opt-in, and only when it
+        comes from the operator's environment: if ``ENV_FILE`` defines it, it is ignored,
+        because a line in a file would approve every future paid run.
       * no TTY (agent, cron, CI, subprocess) -> ABORT, even with ``--yes``. ``--yes`` is
         a convenience for a person at a terminal, never a substitute for one.
       * a TTY -> ``--yes`` or an explicit ``y``. A closed stdin is "not confirmed".
     """
     if os.environ.get("SKYYROSE_AUTO_CONFIRM") == "1":
-        print("auto-confirmed via SKYYROSE_AUTO_CONFIRM=1")
-        return True
+        if not _env_file_defines_opt_in(ENV_FILE):
+            print("auto-confirmed via SKYYROSE_AUTO_CONFIRM=1")
+            return True
+        print(
+            f"ignoring SKYYROSE_AUTO_CONFIRM: it is defined in (or cannot be ruled out of) "
+            f"{ENV_FILE} — remove that line and export it for this run instead"
+        )
     if not is_tty():
         print(
             "non-interactive context — aborting paid dispatch "

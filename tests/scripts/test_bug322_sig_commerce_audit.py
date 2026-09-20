@@ -597,3 +597,73 @@ def test_production_default_tty_check_is_wired(
     seen: list[httpx.Request] = []
     assert _fire(workspace, seen, "--yes") == 2
     assert "POST" not in [r.method for r in seen]
+
+
+class TestEnvFileCannotGrantTheOptIn:
+    """integrations/openai_agents_api.py loads PROJECT_ROOT/.env at IMPORT time, so by
+    the time the gate runs a line in that file is indistinguishable from a variable the
+    operator exported. Reproduced: shell unset + no TTY + no --yes -> auto-confirmed.
+    """
+
+    @pytest.fixture
+    def env_file(self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+        path = tmp_path / ".env"
+        monkeypatch.setattr(audit, "ENV_FILE", path)
+        # What load_dotenv has already done to the process by the time main() runs.
+        monkeypatch.setenv("SKYYROSE_AUTO_CONFIRM", "1")
+        return path
+
+    @pytest.mark.parametrize(
+        "line",
+        [
+            "SKYYROSE_AUTO_CONFIRM=1",
+            "  SKYYROSE_AUTO_CONFIRM = 1",
+            "export SKYYROSE_AUTO_CONFIRM=1",
+            'SKYYROSE_AUTO_CONFIRM="1"',
+        ],
+    )
+    def test_opt_in_defined_in_the_env_file_is_ignored(
+        self,
+        workspace: tuple[Path, Path, FakeGit],
+        env_file: Path,
+        capsys: pytest.CaptureFixture[str],
+        line: str,
+    ) -> None:
+        env_file.write_text(f"OPENAI_API_KEY=k\n{line}\n")
+        seen: list[httpx.Request] = []
+        assert _fire(workspace, seen, "--yes", is_tty=lambda: False) == 2
+        assert "POST" not in [r.method for r in seen]
+        out = capsys.readouterr().out
+        assert "auto-confirmed" not in out
+        assert str(env_file) in out
+
+    def test_a_commented_out_line_does_not_block_a_real_opt_in(
+        self, workspace: tuple[Path, Path, FakeGit], env_file: Path
+    ) -> None:
+        env_file.write_text("# SKYYROSE_AUTO_CONFIRM=1\nOTHER_SKYYROSE_AUTO_CONFIRM=1\n")
+        seen: list[httpx.Request] = []
+        _fire(workspace, seen, is_tty=lambda: False)
+        assert "POST" in [r.method for r in seen]
+
+    def test_absent_env_file_leaves_the_shell_opt_in_working(
+        self, workspace: tuple[Path, Path, FakeGit], env_file: Path
+    ) -> None:
+        assert not env_file.exists()
+        seen: list[httpx.Request] = []
+        _fire(workspace, seen, is_tty=lambda: False)
+        assert "POST" in [r.method for r in seen]
+
+    def test_unreadable_env_file_fails_closed(
+        self, workspace: tuple[Path, Path, FakeGit], env_file: Path
+    ) -> None:
+        env_file.mkdir()  # exists but cannot be read as a file
+        seen: list[httpx.Request] = []
+        assert _fire(workspace, seen, "--yes", is_tty=lambda: False) == 2
+        assert "POST" not in [r.method for r in seen]
+
+    def test_production_env_file_is_the_one_the_client_loads(self) -> None:
+        from integrations import openai_agents_api
+
+        # No fixture here: this is the real default, and it must be the exact file the
+        # client's import-time load_dotenv reads, or the guard watches the wrong one.
+        assert audit.ENV_FILE == openai_agents_api.PROJECT_ROOT / ".env"
