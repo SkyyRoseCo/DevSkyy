@@ -6,6 +6,7 @@ Shared fixtures and configuration.
 """
 
 import base64
+import ipaddress
 import os
 import sys
 
@@ -36,6 +37,46 @@ def _reset_rate_limiter():
 
     rate_limiter.sliding_windows.clear()
     rate_limiter.token_buckets.clear()
+
+
+@pytest.fixture(autouse=True)
+def _offline_ssrf_dns():
+    """Keep the SSRF validator's DNS lookup off the network.
+
+    SSRFProtection._resolve_hostname calls a real socket.getaddrinfo, so any test
+    that pushes a URL through validate_url passed or failed with the machine's
+    resolver: a transient outage blocked the Stop gate (bug-352) and a whole-tree
+    outage census found 18 such tests in four files. Only resolution is stubbed,
+    hostnames get a public address and IP literals resolve to themselves, so the
+    scheme / blocked-domain / private-range / metadata checks still run. Set DEVSKYY_TESTS_ALLOW_DNS=1 to opt a run back in.
+    """
+    if os.environ.get("DEVSKYY_TESTS_ALLOW_DNS") == "1":
+        yield
+        return
+    # Same two constraints as _no_live_sdk_escalation below: patch only when a test
+    # module has already loaded the class (importing `security` here would drag its
+    # package into jobs that never touch it), and do not request ``monkeypatch``.
+    module = sys.modules.get("security.ssrf_protection")
+    cls = getattr(module, "SSRFProtection", None) if module else None
+    if cls is None:
+        yield
+        return
+
+    def _resolve_offline(self, hostname: str) -> list[str]:
+        # An IP literal must resolve to ITSELF: the validator blocks private ranges
+        # by checking the resolved address, so answering "public" for 10.0.0.1 would
+        # switch that protection off inside the tests written to prove it.
+        try:
+            return [str(ipaddress.ip_address(hostname.strip("[]")))]
+        except ValueError:
+            return ["93.184.216.34"]
+
+    original = cls.__dict__["_resolve_hostname"]
+    cls._resolve_hostname = _resolve_offline
+    try:
+        yield
+    finally:
+        cls._resolve_hostname = original
 
 
 @pytest.fixture(autouse=True)

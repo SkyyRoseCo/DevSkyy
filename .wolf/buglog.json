@@ -6212,5 +6212,26 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-20T11:00:37.903320+00:00"
+  },
+  {
+    "id": "bug-353",
+    "timestamp": "2026-09-20T23:04:55.366075+00:00",
+    "error_message": "A test fixture that stubbed SSRFProtection._resolve_hostname to return a public address for EVERY input silently disabled private-IP blocking: 4 security tests failed with 'DID NOT RAISE ValueError' for http://10.0.0.1, 192.168.x, 172.16.x. The same stub had already been committed per-file in tests/services/test_three_d_providers.py (bug-352) where no test happened to exercise it.",
+    "file": "tests/conftest.py",
+    "root_cause": "The validator blocks private ranges by resolving the host -- including an IP literal -- and checking the RESOLVED address. 'Stub DNS, keep the checks' is only true if literals still resolve to themselves. The earlier claim that private-range checks still ran was verified only with 127.0.0.1 and 169.254.169.254, which the blocked-domain list refuses before resolution, so the probe could not fail.",
+    "fix": "Tree-wide autouse _offline_ssrf_dns in tests/conftest.py: hostnames -> one public address, IP literals -> themselves; patches only when security.ssrf_protection is already loaded, no monkeypatch fixture (same constraints as _no_live_sdk_escalation); DEVSKYY_TESTS_ALLOW_DNS=1 opts out. Per-file fixture removed (file is back to main's bytes). Reverting to the all-public stub is KILLED by tests/test_p0_ssrf_replicate.py. Whole tree with external DNS failing: live-DNS dependencies 17 -> 0. LESSON: when stubbing a dependency of a security check, run that check's own negative tests against the stub.",
+    "tags": [
+      "ssrf",
+      "test-double",
+      "security-regression-in-tests",
+      "dns",
+      "fail-open"
+    ],
+    "related_bugs": [
+      "bug-352",
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-20T23:04:55.366075+00:00"
   }
 ]
