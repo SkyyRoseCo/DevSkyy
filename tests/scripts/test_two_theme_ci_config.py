@@ -5,8 +5,9 @@
   in read-only ``check:assets`` mode); the staging environment points at the
   real WP.com staging host.
 - scripts/ci-local.sh mirrors the same scope offline.
-- .prettierignore lists every path lint-staged treats as byte-stable, so
-  edit-time and commit-time formatting agree.
+- prettier really does ignore the files a program owns. The registry that
+  declares them, and its parity with .prettierignore and lint-staged, is
+  covered by tests/test_machine_managed_files.py.
 """
 
 from __future__ import annotations
@@ -24,8 +25,6 @@ import yaml
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 CI_YML = PROJECT_ROOT / ".github" / "workflows" / "ci.yml"
 CI_LOCAL = PROJECT_ROOT / "scripts" / "ci-local.sh"
-PRETTIERIGNORE = PROJECT_ROOT / ".prettierignore"
-LINT_STAGED = PROJECT_ROOT / "lint-staged.config.mjs"
 FLAGSHIP2 = PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship-2"
 PRETTIER = PROJECT_ROOT / "node_modules" / ".bin" / "prettier"
 STAGING_URL = "https://staging-7e48-skyyrose.wpcomstaging.com"
@@ -153,38 +152,10 @@ class TestCiLocal:
         assert re.search(r"(PASS|SKIP)\s+wordpress-theme: skyyrose-flagship-2", plain), plain
 
 
-# The isByteStableOrManaged path tests in lint-staged.config.mjs all have the
-# shape /(^|\/)<escaped path>/.test(normalized). The binary-extension test has
-# a different shape and is deliberately not derived (prettier --ignore-unknown
-# already skips those files).
-# body = escaped chars, bracket classes (which may contain a bare "/"), or plain chars.
-MANAGED_PATH_RE = re.compile(
-    r"/\(\^\|\\/\)(?P<body>(?:\\.|\[[^\]]*\]|[^/\\\[])+?)/\.test\(normalized\)"
-)
-
-
-def lint_staged_managed_patterns(source: str) -> list[str]:
-    """Derive .prettierignore-style patterns from lint-staged's isByteStableOrManaged."""
-    patterns = []
-    for match in MANAGED_PATH_RE.finditer(source):
-        body = match.group("body").rstrip("$")
-        body = body.replace("[^/]+", "*").replace("\\/", "/").replace("\\.", ".")
-        patterns.append(body)
-    return patterns
-
-
-def prettierignore_covers(pattern: str, lines: set[str]) -> bool:
-    return any(line.lstrip("/") == pattern or line.endswith("/" + pattern) for line in lines)
-
-
-def prettierignore_lines() -> set[str]:
-    return {
-        line.strip()
-        for line in PRETTIERIGNORE.read_text().splitlines()
-        if line.strip() and not line.startswith("#")
-    }
-
-
+# Kept deliberately hand-written rather than derived from
+# data/machine-managed-files.json: an independently-authored sample list does
+# not share the registry's failure mode, so it still catches a registry that
+# lost an entry. Do not "simplify" it into a loop over the registry.
 SAMPLES = [
     "plugins/fashion-theme-team/README.md",
     "Comfy/receipts/sample.json",
@@ -196,29 +167,17 @@ SAMPLES = [
 
 
 class TestPrettierIgnoreParity:
-    def test_derivation_reads_the_real_config(self):
-        patterns = lint_staged_managed_patterns(LINT_STAGED.read_text())
-        assert "plugins/fashion-theme-team/" in patterns, patterns
-        assert "skyyrose/elite_studio/assets/golden/*/placement.md" in patterns, patterns
-        assert "logo-registry.json" in patterns, patterns
-        assert len(patterns) >= 6, patterns
+    """Does prettier ACTUALLY ignore a machine-managed file?
 
-    def test_every_lint_staged_managed_path_is_listed(self):
-        patterns = lint_staged_managed_patterns(LINT_STAGED.read_text())
-        lines = prettierignore_lines()
-        missing = [p for p in patterns if not prettierignore_covers(p, lines)]
-        assert not missing, f".prettierignore lacks lint-staged managed paths: {missing}"
-
-    def test_path_added_only_to_lint_staged_is_detected(self):
-        source = LINT_STAGED.read_text().replace(
-            "/(^|\\/)Comfy\\/receipts\\//.test(normalized) ||",
-            "/(^|\\/)Comfy\\/receipts\\//.test(normalized) ||\n"
-            "    /(^|\\/)only\\/in\\/lint-staged\\//.test(normalized) ||",
-        )
-        patterns = lint_staged_managed_patterns(source)
-        assert "only/in/lint-staged/" in patterns, patterns
-        missing = [p for p in patterns if not prettierignore_covers(p, prettierignore_lines())]
-        assert missing == ["only/in/lint-staged/"], missing
+    The list-vs-list parity checks that used to live here scraped the managed
+    paths back out of lint-staged.config.mjs's regexes and compared them with
+    .prettierignore. lint-staged now reads data/machine-managed-files.json, so
+    there is no second list to compare — and the scraper returning nothing made
+    one of those checks pass while testing nothing. Registry-vs-.prettierignore
+    parity moved to tests/test_machine_managed_files.py, which fails closed in
+    both directions; the behavioural checks below stay because asking the real
+    prettier binary is evidence no amount of config parsing can give.
+    """
 
     @pytest.mark.skipif(
         not PRETTIER.exists(), reason="root node_modules/.bin/prettier not installed"

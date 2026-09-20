@@ -179,3 +179,68 @@
   - **Still true (the one salvageable sub-claim):** the `try_lftp()` fallback's `mirror --reverse --delete` is unreachable on this host (hardcodes a nonexistent `~/.ssh/skyyrose-deploy` key). But that path is not the reason for deletion — the primary tar+swap path deletes by design.
 - **Junk does NOT self-clean via a normal deploy IF the deploy runs from the same dirty working tree that carries the junk** — but a clean-tree deploy (which the excludes now scrub) drops the ~40 exposed `CLAUDE.local.md`. Since the `tar_excludes`/`RSYNC_EXCLUDES` gap was closed 2026-07-13, any deploy now stops *shipping* them; existing exposed copies persist until a clean-tree deploy overwrites the live dir or they are removed server-side (`rm`, a STOP-AND-SHOW production write).
 - **CONFIRMED 2026-07-27 — the 3 still-untracked `*-v2-avatar.webp` riders are now 404 on production.** `[live]` cache-busted curl of all 17 documented riders: 14 return 200 (the 14 that got `git add -f` tracked in `1dc868199`), but `black-rose-rooftop-garden-v2-avatar.webp`, `love-hurts-cathedral-rose-chamber-v2-avatar.webp`, and `signature-golden-gate-showroom-v2-avatar.webp` all 404 — their `-lookbook.webp` siblings are still 200. `[repo]` confirms they are absent from `git ls-files` AND absent from the main checkout's disk entirely (`find` returns nothing) — exactly the bug-252 failure mode: a clean-tree/CI deploy since these were last live-verified wholesale-replaced the live dir with a source that never had them. They are NOT lost — `[repo]` found byte-identical copies still sitting in a different worktree, `.claude/worktrees/collections-scroll-world/wordpress-theme/skyyrose-flagship/assets/scenes/{black-rose,love-hurts,signature}/`. **Fix (not yet applied — needs a STOP-AND-SHOW production-write confirm):** copy the 3 files from that worktree into the main checkout and `git add -f` them, same treatment as the other 14, so the ls-files completeness gate protects them too; then redeploy. Full JS/CSS bundle content otherwise verified byte-identical between live and repo via SHA-256 (11 JS + 3 CSS enqueued files, all MATCH) — this is the one confirmed drift, not a broader pattern.
+
+## Formatter ownership — one registry, two checks (2026-09-20)
+
+**The failure mode.** A file whose bytes a program owns (a serializer, a
+generator, a minifier) plus a formatter that also rewrites it is two writers on
+one file: each "fixes" the other's output forever. Prettier rewrites 1,643 lines
+of `.wolf/buglog.json`, after which the wolf-memory MCP server's serializer
+writes it straight back on the next `bug_log`. The same shape broke `.min`
+assets (bug-332, twice) and desynchronizes byte-comparing gates
+(`sync_product_registry.py --check`, `check:assets`, `freshness-guard`) for
+reasons unrelated to the change under review.
+
+**Why it kept recurring.** The knowledge lived in two hand-maintained lists —
+`.prettierignore` and `lint-staged.config.mjs`'s `isByteStableOrManaged` — with
+nothing tying them together. A new generated file could land in one, the other,
+or (as with `.wolf/buglog.json` and `.wolf/anatomy.md`) neither. Nothing failed
+until someone staged the file.
+
+**The fix.** `data/machine-managed-files.json` is the one list: each entry names
+the `pattern`, real `samples`, the `owner` program and `why`. Two gates, chosen
+so neither depends on the other being runnable:
+
+| Gate | Needs | Catches |
+| --- | --- | --- |
+| `tests/test_machine_managed_files.py` | Python only — runs in the main CI pytest job (`ci.yml:153`) | Registry ↔ `.prettierignore` drift in both directions, a second hardcoded list in `lint-staged.config.mjs`, registry entries pointing at deleted files, a truncated registry |
+| `scripts/verify-formatter-ignores.mjs` (`npm run verify:formatter-ignores`) | node + root `node_modules` — pre-commit hook and the root TypeScript CI job | What prettier and lint-staged would ACTUALLY do, via prettier's own ignore resolution and the real task functions |
+
+**Adding a generated file:** add it to the registry, then to `.prettierignore`.
+The Python gate fails if you do one without the other, and lint-staged reads the
+registry directly, so there is no third place to update.
+
+**Two traps worth knowing.** (1) lint-staged reads the same registry, so its
+half of the node check would be tautological — the script therefore runs a
+positive control: an unowned file (`README.md`) must still be selected by at
+least one task, or the filter is inert and its verdict is worthless. (2) The
+pre-commit hook says out loud when it skips for want of `node_modules` rather
+than passing silently, and the node script reports an unloadable prettier as an
+explicit UNVERIFIED failure instead of aborting before the lint-staged half.
+
+### A parity check between two lists dies quietly when one list moves (bug-353)
+
+The gate this replaced derived the managed paths by regex-scraping
+`lint-staged.config.mjs`, then diffed them against `.prettierignore`. When the
+hardcoded regexes became a registry read, the scraper returned `[]` — and:
+
+```python
+missing = [p for p in patterns if not prettierignore_covers(p, lines)]
+assert not missing          # patterns == []  ->  missing == []  ->  PASSES
+```
+
+Two sibling tests failed loudly; **this one went green while testing nothing**.
+That is bug-230's fail-open inside the very gate meant to prevent churn, and it
+generalizes past formatters:
+
+> Any check shaped `violations = [x for x in DERIVED if bad(x)]; assert not
+> violations` passes when `DERIVED` is empty. If `DERIVED` comes from parsing
+> another file, a refactor of that file silently disarms the check.
+
+**The rule:** a gate that iterates a derived collection needs a **floor on the
+collection itself** — not merely non-empty, a count, so silent shrinkage fails
+too. `test_registry_is_not_empty` asserts `>= 14`. Verify the floor by mutation,
+not by inspection: truncate the input and confirm the gate goes red
+(`[empty] exit=1 … expected at least 14`, `[shrunk to 3] exit=1`). Prefer a
+declared registry over list-to-list parity for exactly this reason — the
+registry is still there to compare against after either consumer moves.

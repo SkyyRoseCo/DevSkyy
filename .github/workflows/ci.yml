@@ -410,6 +410,14 @@ jobs:
       - name: Audit production dependencies
         run: npm run security:audit:production
 
+      # Asks prettier and lint-staged themselves whether they would rewrite a
+      # file some program owns (data/machine-managed-files.json). This job is
+      # the one that installs the ROOT node_modules, so it is where prettier is
+      # available; tests/test_machine_managed_files.py covers the same registry
+      # with no dependencies in the Python job.
+      - name: Verify machine-managed files are invisible to formatters
+        run: npm run verify:formatter-ignores
+
       - name: Run root unit tests
         run: npm test
 

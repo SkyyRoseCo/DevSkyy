@@ -180,6 +180,7 @@
     "lint:fix": "eslint \"src/**/*.{ts,tsx,js,jsx}\" --no-error-on-unmatched-pattern --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\" \"*.{json,md}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx}\" \"*.{json,md}\"",
+    "verify:formatter-ignores": "node scripts/verify-formatter-ignores.mjs",
     "type-check": "tsc --project config/typescript/tsconfig.json --noEmit",
     "clean": "rm -rf dist coverage",
     "prepare": "husky && npm run build",
