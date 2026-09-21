@@ -74,6 +74,9 @@
 - `skills-lock.json` (~3853 tok)
 - `SOT.md` — Source of Truth (SOT) Registry (~5533 tok)
 - `vercel.json` — /*.ts": { (~525 tok)
+- `main.py` — Higgsfield Seedance 2.5 text-to-video example — BILLABLE; fail-closed confirm_billable_run gate (manifest always, SKYYROSE_AUTO_CONFIRM read before .env.local loads, no TTY aborts, exit 5) (~1818 tok)
+- `wolf_memory_mcp.py` — stdio launcher for the wolf-memory MCP server (darwin fork-safety guard before imports) (~249 tok)
+- `worktree_fleet_mcp.py` — stdio launcher for the worktree-fleet MCP server (darwin fork-safety guard before imports) (~208 tok)
 
 ## .claude/
 
@@ -3998,6 +4001,7 @@
 - `README.md` — Project documentation (~1993 tok)
 - `render-fidelity-industry-standard-2026-06-15.html` — AI Product-Render Fidelity — Industry Standard & SkyyRose Reconciliation (2026-06-15) (~4363 tok)
 - `SYSTEM_ARCHITECTURE.md` — DevSkyy System Architecture (~3118 tok)
+- `mcp-worktree-fleet-and-wolf-memory.html` — Architecture of the two in-repo MCP servers: tools, stores, locking, failure modes (~6296 tok)
 
 ## docs/audits/
 
@@ -6340,6 +6344,26 @@
   - class `StabilityClient` L38-630 (~5050 tok)
 - `vertex_imagen.py` — VertexImagenClient: generate, generate_fast, edit, upscale + 1 more (~4680 tok)
   - class `VertexImagenClient` L47-501 (~4286 tok)
+
+## mcp_servers/
+
+- `__init__.py` — Package marker for the in-repo stdio MCP servers (~20 tok)
+- `_shared.py` — Shared by both servers: ResponseFormat/format_response, locked_transaction (cross-process SQLite write lock), apply_darwin_fork_safety (bug-263) (~1512 tok)
+
+## mcp_servers/wolf_memory/
+
+- `__init__.py` — Package marker (~22 tok)
+- `server.py` — FastMCP instance + paths; WOLF_BUGLOG_PATH / WOLF_CEREBRUM_PATH / WOLF_LOCK_DB_PATH override the .wolf/ defaults (~154 tok)
+- `store.py` — WolfMemoryStore: atomic bug-NNN allocation, near-duplicate bump, byte-stable _serialize, cerebrum_append; validate_cerebrum_entry refuses any line break or leading '#' (~3105 tok)
+- `tools.py` — MCP tools bug_next_id / bug_log / bug_bump / bug_search / cerebrum_append and their Pydantic inputs (~1570 tok)
+
+## mcp_servers/worktree_fleet/
+
+- `__init__.py` — Package marker (~19 tok)
+- `git_ops.py` — Real `git worktree` wrappers: _reject_option_like (no '-' refs/paths), local-branch-only adoption, push_status with PushState.UNKNOWN for an unresolvable base_ref (~1968 tok)
+- `server.py` — FastMCP instance + REPO_ROOT; FLEET_DB_PATH overrides .wolf/fleet.db (~109 tok)
+- `store.py` — WorktreeFleetStore ownership registry: claim (row under lock, git outside it, rollback on failure), owner-checked release with an allow-list push gate, heartbeat, prune that reports failures; paths resolved + containment-checked (~3644 tok)
+- `tools.py` — MCP tools worktree_claim / heartbeat / list / release / prune; maps store and git errors to structured responses (~1865 tok)
 
 ## mcp_tools/
 
@@ -9218,3 +9242,13 @@
 
 - `2026-09-12-brand-story-storyboard-line-introduction-workflows.md` — deep-research report: brand-story frameworks/tests, storyboard + AI pipeline, collection-launch/drop model, AI disclosure law, SkyyRose applied section; 130 cited sources (~17770 tok)
 - `2026-09-12-brand-story-ledgers/` — three exa agent reports with full URL ledgers backing the report above; provenance evidence, not prose to read (~34497 tok)
+
+## tests/mcp_servers/
+
+- `__init__.py` — Package marker — without it this dir's conftest shadows the ROOT conftest for `import conftest` (bug-350) (~109 tok)
+- `conftest.py` — Points both servers' env path overrides at a throwaway dir at collection time (assigned, not setdefault) so tool imports never open the live .wolf stores (~322 tok)
+- `test_wolf_memory_cerebrum.py` — cerebrum_append: section targeting, heading-injection and every-line-break refusal, anchored heading match (~1955 tok)
+- `test_wolf_memory_store.py` — Bug store: id allocation, bump-not-duplicate, serializer stability, cross-process concurrency (~3472 tok)
+- `test_worktree_fleet_git_ops.py` — git_ops against real tmp repos: option injection, branch-kind rule, push states incl. UNKNOWN (~3456 tok)
+- `test_worktree_fleet_store.py` — Registry logic with git faked: claim conflicts, release ownership + allow-list gate, prune, path validation (~5737 tok)
+- `test_worktree_fleet_tools.py` — Tool layer error mapping: heartbeat on unregistered path, git failure text, prune failures (~932 tok)
