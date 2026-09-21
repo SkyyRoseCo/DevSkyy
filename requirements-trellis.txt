@@ -17,8 +17,11 @@ gradio_client>=1.0
 huggingface_hub>=0.24
 
 # --- Mesh postprocessing (recommended) ---
-trimesh>=4.0
+trimesh>=5.0.0
+fast-simplification>=0.2.0
 numpy>=1.26
+scipy>=1.14.1
+networkx>=3.0
 
 # --- Background removal (optional but recommended) ---
 # rembg pulls onnxruntime; pin a lighter wheel for slim images.

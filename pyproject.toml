@@ -9,361 +9,355 @@ description = "AI-driven multi-agent orchestration platform for enterprise e-com
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.12,<3.15"
-authors = [
-    { name = "DevSkyy Platform Team", email = "dev@devskyy.com" }
-]
+authors = [{ name = "DevSkyy Platform Team", email = "dev@devskyy.com" }]
 keywords = [
-    "ai",
-    "agents",
-    "multi-agent",
-    "orchestration",
-    "wordpress",
-    "woocommerce",
-    "elementor",
-    "e-commerce",
-    "automation",
-    "llm",
-    "mcp",
+  "ai",
+  "agents",
+  "multi-agent",
+  "orchestration",
+  "wordpress",
+  "woocommerce",
+  "elementor",
+  "e-commerce",
+  "automation",
+  "llm",
+  "mcp",
 ]
 classifiers = [
-    "Development Status :: 4 - Beta",
-    "Environment :: Web Environment",
-    "Framework :: FastAPI",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
-    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
-    "Topic :: Scientific/Engineering :: Artificial Intelligence",
-    "Topic :: Software Development :: Libraries :: Python Modules",
-    "Typing :: Typed",
+  "Development Status :: 4 - Beta",
+  "Environment :: Web Environment",
+  "Framework :: FastAPI",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Typing :: Typed",
 ]
 
 dependencies = [
-    # Core Framework
-    "fastapi>=0.104",
-    "uvicorn[standard]>=0.24",
-    "mangum>=0.18.0",  # ASGI adapter for serverless
-    "pydantic>=2.5",
-    "pydantic-settings>=2.1",
-    "python-multipart>=0.0.30",
+  # Core Framework
+  "fastapi>=0.104",
+  "uvicorn[standard]>=0.24",
+  "mangum>=0.18.0",           # ASGI adapter for serverless
+  "pydantic>=2.5",
+  "pydantic-settings>=2.1",
+  "python-multipart>=0.0.30",
 
-    # Database
-    "sqlalchemy>=2.0",
-    "alembic>=1.13",
-    "asyncpg>=0.29",
-    "aiosqlite>=0.19",
+  # Database
+  "sqlalchemy>=2.0",
+  "alembic>=1.13",
+  "asyncpg>=0.29",
+  "aiosqlite>=0.19",
 
-    # Security
-    "PyJWT>=2.13.0",
-    "passlib[bcrypt]>=1.7",
-    "argon2-cffi>=23.1",
-    "cryptography>=48.0.1",
-    "bcrypt>=4.1",
+  # Security
+  "PyJWT>=2.13.0",
+  "passlib[bcrypt]>=1.7",
+  "argon2-cffi>=23.1",
+  "cryptography>=48.0.1",
+  "bcrypt>=4.1",
 
-    # HTTP
-    "httpx>=0.25",
-    "aiohttp>=3.9",
-    "requests>=2.31",
+  # HTTP
+  "httpx>=0.25",
+  "aiohttp>=3.9",
+  "requests>=2.31",
 
-    # GraphQL
-    "strawberry-graphql[fastapi]>=0.217.0",  # GraphQL library for FastAPI
-    "aiodataloader>=0.2.0",  # DataLoader pattern for N+1 query prevention
+  # GraphQL
+  "strawberry-graphql[fastapi]>=0.217.0", # GraphQL library for FastAPI
+  "aiodataloader>=0.2.0",                 # DataLoader pattern for N+1 query prevention
 
-    # AI/ML & MCP Server
-    # Capped <2 deliberately: the codebase + paid gpt-image-2 pipeline run on the
-    # openai 1.x client (verified green). openai 2.x is API-compatible for our usage
-    # (Context7-checked, 486 mocked tests pass) but the live imagery path is unverified;
-    # lifting this cap is the deliberate 2.x migration, not a routine bump (bug-254).
-    "openai>=1.6,<3",
-    "mcp>=1.28.1,<2",  # Fixed: CVE-2025-53365, CVE-2025-53366, CVE-2025-66416
-    "claude-agent-sdk>=0.1.0",  # Claude Agent SDK for multi-agent orchestration
+  # AI/ML & MCP Server
+  # Capped <2 deliberately: the codebase + paid gpt-image-2 pipeline run on the
+  # openai 1.x client (verified green). openai 2.x is API-compatible for our usage
+  # (Context7-checked, 486 mocked tests pass) but the live imagery path is unverified;
+  # lifting this cap is the deliberate 2.x migration, not a routine bump (bug-254).
+  "openai>=1.6,<3",
+  "mcp>=1.28.1,<2",          # Fixed: CVE-2025-53365, CVE-2025-53366, CVE-2025-66416
+  "claude-agent-sdk>=0.1.0", # Claude Agent SDK for multi-agent orchestration
 
-    # LLM Provider SDKs
-    "anthropic>=0.75.0",
-    "google-genai>=1.50.0",
-    "cohere>=5.20.0",
-    "mistralai>=1.10.1",  # Updated for security and compatibility
-    "groq>=0.37.0",
-    "voyageai>=0.2.4",  # Asymmetric document/query embeddings (RAG-optimized)
-    # llm/providers/litellm_provider.py universal fallback. Capped <1.81 on purpose:
-    # litellm 1.81+ requires openai>=2.8, but this codebase runs on the openai 1.x
-    # client (verified green). 1.80.0 needs only openai>=1.99.5. Lifting this cap is
-    # part of the deliberate openai 2.x migration, not a routine bump (bug-254).
-    # SECURITY: 1.80.x carries 7 GHSA advisories (fixed 1.84.0) — ALL scoped to
-    # litellm.proxy, which this repo neither installs ([proxy] extra) nor runs; usage
-    # is SDK-only (acompletion/completion_cost), so unreachable here. The 2.x migration
-    # MUST target litellm>=1.84.0 (not just >=1.81) to clear them in the same step.
-    "litellm>=1.80,<1.94",
+  # LLM Provider SDKs
+  "anthropic>=0.75.0",
+  "google-genai>=1.50.0",
+  "cohere>=5.20.0",
+  "mistralai>=1.10.1",    # Updated for security and compatibility
+  "groq>=0.37.0",
+  "voyageai>=0.2.4",      # Asymmetric document/query embeddings (RAG-optimized)
+  # llm/providers/litellm_provider.py universal fallback. Capped <1.81 on purpose:
+  # litellm 1.81+ requires openai>=2.8, but this codebase runs on the openai 1.x
+  # client (verified green). 1.80.0 needs only openai>=1.99.5. Lifting this cap is
+  # part of the deliberate openai 2.x migration, not a routine bump (bug-254).
+  # SECURITY: 1.80.x carries 7 GHSA advisories (fixed 1.84.0) — ALL scoped to
+  # litellm.proxy, which this repo neither installs ([proxy] extra) nor runs; usage
+  # is SDK-only (acompletion/completion_cost), so unreachable here. The 2.x migration
+  # MUST target litellm>=1.84.0 (not just >=1.81) to clear them in the same step.
+  "litellm>=1.80,<1.94",
 
-    # Monitoring
-    "prometheus-client>=0.19",
-    "psutil>=7.2.2",  # api/v1/monitoring.py:21 hard-imports; was only in an extra — broke .[api] image boot
-    "boto3>=1.34",  # integrations/cloudflare_r2_manager.py:6 hard-imports via integrations/__init__.py:6; was transitive-only in [all]
-    "langgraph>=0.2",  # orchestration/langgraph_integration.py:37 hard-imports (reached at boot via router from-imports); was mcp-extra-only
+  # Monitoring
+  "prometheus-client>=0.19",
+  "psutil>=7.2.2",           # api/v1/monitoring.py:21 hard-imports; was only in an extra — broke .[api] image boot
+  "boto3>=1.34",             # integrations/cloudflare_r2_manager.py:6 hard-imports via integrations/__init__.py:6; was transitive-only in [all]
+  "langgraph>=0.2",          # orchestration/langgraph_integration.py:37 hard-imports (reached at boot via router from-imports); was mcp-extra-only
 
-    # Utilities
-    "python-dotenv>=1.0",
-    "tenacity>=8.2",
-    "pyyaml>=6.0",
-    "orjson>=3.9",
-    "python-dateutil>=2.8",
-    "email-validator>=2.1",
-    "structlog>=25.5.0",
-    # "python-jose[cryptography]>=3.3",  # Removed: depends on ecdsa (CVE-2024-23342). Using PyJWT instead.
-    "sentry-sdk>=2.49.0",
-    "toml>=0.10.2",
-    "openpyxl>=3.1.0",  # Excel spreadsheet creation/analysis
+  # Utilities
+  "python-dotenv>=1.0",
+  "tenacity>=8.2",
+  "pyyaml>=6.0",
+  "orjson>=3.9",
+  "python-dateutil>=2.8",
+  "email-validator>=2.1",
+  "structlog>=25.5.0",
+  # "python-jose[cryptography]>=3.3",  # Removed: depends on ecdsa (CVE-2024-23342). Using PyJWT instead.
+  "sentry-sdk>=2.49.0",
+  "toml>=0.10.2",
+  "openpyxl>=3.1.0",    # Excel spreadsheet creation/analysis
 
-    # 3D & Visual Generation
-    "Pillow>=12.3.0",  # >=12.3.0 closes open CVEs (GHSA-jjj6/-fj7v/-vjc4 et al); matches mcp/ml extras + uv.lock
-    "opencv-python>=4.8",
-    "fonttools>=4.55",  # scripts/font_generator: PNG-template -> TTF vectorization
+  # 3D & Visual Generation
+  "Pillow>=12.3.0",     # >=12.3.0 closes open CVEs (GHSA-jjj6/-fj7v/-vjc4 et al); matches mcp/ml extras + uv.lock
+  "opencv-python>=4.8",
+  "fonttools>=4.55",    # scripts/font_generator: PNG-template -> TTF vectorization
 
-    # Performance & Async I/O
-    "aiofiles>=24.1.0",
-    "fastapi-cache2>=0.2.1",
-    "redis>=5.0",
-    "cachetools>=5.3.0",  # In-memory LRU cache for multi-tier caching
+  # Performance & Async I/O
+  "aiofiles>=24.1.0",
+  "fastapi-cache2>=0.2.1",
+  "redis>=5.0",
+  "cachetools>=5.3.0",     # In-memory LRU cache for multi-tier caching
 
-    # gRPC — High-performance inter-service communication
-    "grpcio>=1.60.0",
-    "grpcio-tools>=1.60.0",  # Proto compiler (grpc_tools.protoc)
-    "protobuf>=4.25.0",
+  # gRPC — High-performance inter-service communication
+  "grpcio>=1.60.0",
+  "grpcio-tools>=1.60.0", # Proto compiler (grpc_tools.protoc)
+  "protobuf>=4.25.0",
 
-    # Kafka — Real-time event streaming and analytics
-    "confluent-kafka>=2.3.0",
+  # Kafka — Real-time event streaming and analytics
+  "confluent-kafka>=2.3.0",
 
-    # ML/AI - Critical for Round Table and RAG. Heavy transformer/vector-store
-    # libs (transformers, sentence-transformers, chromadb, diffusers) live in
-    # the `ml` extra so `pip install -e ".[api]"` never pulls torch — see `ml`.
-    "numpy>=2.1.3",
-    "scipy>=1.14.1",
-    "tiktoken>=0.8.0",
-    "context-dev>=2.12.0",
+  # ML/AI - Critical for Round Table and RAG. Heavy transformer/vector-store
+  # libs (transformers, sentence-transformers, chromadb, diffusers) live in
+  # the `ml` extra so `pip install -e ".[api]"` never pulls torch — see `ml`.
+  "numpy>=2.1.3",
+  "scipy>=1.14.1",
+  "tiktoken>=0.8.0",
+  "context-dev>=2.12.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.4",
-    "pytest-asyncio>=0.23",
-    "pytest-cov>=4.1",
-    "pytest-mock>=3.12",
-    # Full-suite character and provider tests import these optional runtimes.
-    "gradio-client==2.5.0",
-    "matplotlib==3.11.1",
-    "pytest-timeout>=2.4",
-    "pytest-xdist>=3.6",
-    "rich>=13.9",
-    "typer>=0.15",
-    # Test-only deps for tests/test_elite_*.py and tests/test_a11y_html_integrity.py.
-    # These also appear in optional runtime extras or CI bootstrap. They are listed
-    # here so `uv sync --extra dev` alone can collect the default test suite.
-    "fakeredis>=2.20",
-    "beautifulsoup4>=4.13.5",
-    "pygltflib>=1.16.5",
-    "pyotp>=2.9",
-    "mypy>=1.8",
-    "ruff>=0.1",
-    "black>=24.1",
-    "isort>=5.13",
-    "pre-commit>=3.6",
-    "selenium>=4.15",
-    "playwright>=1.40",
-    # Additional dev tools from requirements-dev.txt
-    "pip-tools>=7.3",
-    "ipython>=8.18",
-    "watchfiles>=0.21",
+  "trimesh>=5.0.0",
+  "fast-simplification>=0.2.0",
+  "networkx>=3.0",
+  "pytest>=7.4",
+  "pytest-asyncio>=0.23",
+  "pytest-cov>=4.1",
+  "pytest-mock>=3.12",
+  # Full-suite character and provider tests import these optional runtimes.
+  "gradio-client==2.5.0",
+  "matplotlib==3.11.1",
+  "pytest-timeout>=2.4",
+  "pytest-xdist>=3.6",
+  "rich>=13.9",
+  "typer>=0.15",
+  # Test-only deps for tests/test_elite_*.py and tests/test_a11y_html_integrity.py.
+  # These also appear in optional runtime extras or CI bootstrap. They are listed
+  # here so `uv sync --extra dev` alone can collect the default test suite.
+  "fakeredis>=2.20",
+  "beautifulsoup4>=4.13.5",
+  "pygltflib>=1.16.5",
+  "pyotp>=2.9",
+  "mypy>=1.8",
+  "ruff>=0.1",
+  "black>=24.1",
+  "isort>=5.13",
+  "pre-commit>=3.6",
+  "selenium>=4.15",
+  "playwright>=1.40",
+  # Additional dev tools from requirements-dev.txt
+  "pip-tools>=7.3",
+  "ipython>=8.18",
+  "watchfiles>=0.21",
 ]
 
-api = [
-    "fastapi>=0.104",
-    "mangum>=0.18.0",
-    "pydantic>=2.5",
-    "PyJWT>=2.13.0",
-]
+api = ["fastapi>=0.104", "mangum>=0.18.0", "pydantic>=2.5", "PyJWT>=2.13.0"]
 
 mcp = [
-    "mcp>=1.28.1,<2",
-    "fastmcp==3.4.4",  # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
-    "openai>=1.57.2,<3",  # keep in lockstep with the base openai<2 cap (bug-254)
-    "anthropic>=0.75.0",
-    "google-genai>=1.50.0",
-    "fastapi>=0.119.0",
-    "uvicorn>=0.32.1",
-    "starlette>=1.3.1",
-    "pydantic>=2.11.0",
-    "pydantic-settings>=2.8.0",
-    "httpx>=0.28.1",
-    "aiohttp>=3.12.14",
-    # Capped <25 so .[all] resolves: the rag extra (raganything->mineru->gradio)
-    # requires aiofiles<25.0; base needs >=24.1.0. Neither fastmcp nor the mcp
-    # SDK depend on aiofiles (verified via PyPI requires-dist), so the prior
-    # ==25.1.0 pin was arbitrary and made .[all] unsatisfiable in Docker.
-    "aiofiles>=24.1.0,<26.0",
-    "orjson==3.11.9",
-    "python-dotenv==1.2.2",
-    "structlog==26.1.0",
-    "loguru==0.7.3",
-    "tenacity==9.1.2",
-    "backoff==2.2.1",
-    "ratelimit==2.2.1",
-    "boto3>=1.43.0",  # integrations/cloudflare_r2_manager.py — was undeclared, install -e .[all] never pulled it
-    "cryptography==49.0.0",
-    "pyjwt==2.13.0",
-    "sqlalchemy==2.0.51",
-    "aiosqlite==0.22.1",
-    "redis==8.1.0",
-    "pyyaml==6.0.3",
-    "toml==0.10.2",
-    "typing-extensions==4.16.0",
-    "python-dateutil==2.9.0.post0",
-    "tiktoken>=0.8.0",
-    "transformers>=4.53.0",
-    "sentence-transformers==5.6.0",
-    "langchain>=0.3.18",
-    "langchain-openai>=0.3.0",
-    "langchain-anthropic>=0.3.0",
-    "langgraph>=0.2",
-    "langgraph-checkpoint-postgres>=2.0.0",
-    "psycopg[binary,pool]>=3.2",
-    "chromadb>=0.6.0",
-    "faiss-cpu==1.15.0",
-    "beautifulsoup4>=4.13.5",  # Fixed: raganything>=1.2.10 requires >=4.13.5 via mineru
-    "requests==2.34.2",
-    "pypdf>=6.6.2",
-    "python-docx>=1.1.2",
-    "python-pptx>=1.0.2",
-    "pillow>=12.3.0",
-    "soundfile==0.14.0",
-    "rich==15.0.0",
-    "click>=8.1.8",  # Fixed: raganything>=1.2.10 requires >=8.1.8 via mineru/pdftext
-    "pytest==9.1.1",
-    "pytest-asyncio==1.4.0",
-    "healthcheck==1.3.3",
-    "psutil==7.2.2",
-    # OpenTelemetry compatibility (google-adk requires <=1.37.0)
-    "opentelemetry-api>=1.37.0,<=1.44.0",
-    "opentelemetry-sdk>=1.37.0,<=1.44.0",
-    "opentelemetry-semantic-conventions>=0.48b0,<0.66",  # Required by mistralai
+  "mcp>=1.28.1,<2",
+  "fastmcp==3.4.4",           # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
+  "openai>=1.57.2,<3",        # keep in lockstep with the base openai<2 cap (bug-254)
+  "anthropic>=0.75.0",
+  "google-genai>=1.50.0",
+  "fastapi>=0.119.0",
+  "uvicorn>=0.32.1",
+  "starlette>=1.3.1",
+  "pydantic>=2.11.0",
+  "pydantic-settings>=2.8.0",
+  "httpx>=0.28.1",
+  "aiohttp>=3.12.14",
+  # Capped <25 so .[all] resolves: the rag extra (raganything->mineru->gradio)
+  # requires aiofiles<25.0; base needs >=24.1.0. Neither fastmcp nor the mcp
+  # SDK depend on aiofiles (verified via PyPI requires-dist), so the prior
+  # ==25.1.0 pin was arbitrary and made .[all] unsatisfiable in Docker.
+  "aiofiles>=24.1.0,<26.0",
+  "orjson==3.11.9",
+  "python-dotenv==1.2.2",
+  "structlog==26.1.0",
+  "loguru==0.7.3",
+  "tenacity==9.1.2",
+  "backoff==2.2.1",
+  "ratelimit==2.2.1",
+  "boto3>=1.43.0",                        # integrations/cloudflare_r2_manager.py — was undeclared, install -e .[all] never pulled it
+  "cryptography==49.0.0",
+  "pyjwt==2.13.0",
+  "sqlalchemy==2.0.51",
+  "aiosqlite==0.22.1",
+  "redis==8.1.0",
+  "pyyaml==6.0.3",
+  "toml==0.10.2",
+  "typing-extensions==4.16.0",
+  "python-dateutil==2.9.0.post0",
+  "tiktoken>=0.8.0",
+  "transformers>=4.53.0",
+  "sentence-transformers==5.6.0",
+  "langchain>=0.3.18",
+  "langchain-openai>=0.3.0",
+  "langchain-anthropic>=0.3.0",
+  "langgraph>=0.2",
+  "langgraph-checkpoint-postgres>=2.0.0",
+  "psycopg[binary,pool]>=3.2",
+  "chromadb>=0.6.0",
+  "faiss-cpu==1.15.0",
+  "beautifulsoup4>=4.13.5",               # Fixed: raganything>=1.2.10 requires >=4.13.5 via mineru
+  "requests==2.34.2",
+  "pypdf>=6.6.2",
+  "python-docx>=1.1.2",
+  "python-pptx>=1.0.2",
+  "pillow>=12.3.0",
+  "soundfile==0.14.0",
+  "rich==15.0.0",
+  "click>=8.1.8",                         # Fixed: raganything>=1.2.10 requires >=8.1.8 via mineru/pdftext
+  "pytest==9.1.1",
+  "pytest-asyncio==1.4.0",
+  "healthcheck==1.3.3",
+  "psutil==7.2.2",
+  # OpenTelemetry compatibility (google-adk requires <=1.37.0)
+  "opentelemetry-api>=1.37.0,<=1.44.0",
+  "opentelemetry-sdk>=1.37.0,<=1.44.0",
+  "opentelemetry-semantic-conventions>=0.48b0,<0.66", # Required by mistralai
 ]
 
 ml = [
-    # Keep the torch/torchvision/torchaudio trio version-consistent: torchvision
-    # 0.24.1 requires torch 2.9.1, so torch must stay 2.9.1 (and torchaudio 2.9.1).
-    # A Dependabot bump of torch alone (2.9.1 -> 2.12.1) made the [all] extra
-    # unresolvable and broke the Docker build; this is the locally-installed,
-    # test-validated set. Bump all three together (and re-validate) if upgrading.
-    "torch==2.9.1",
-    "torchvision==0.24.1",
-    "torchaudio==2.11.0",
-    "transformers>=4.53.0",
-    "sentence-transformers>=5.6.0",
-    "chromadb>=0.6.0",
-    "diffusers>=0.38.0",
-    "huggingface-hub>=0.27.0",
-    "numpy>=2.1.3",
-    "pandas>=2.2.3",
-    "scipy>=1.14.1",
-    "scikit-learn>=1.6.0",
-    "accelerate>=1.2.1",
-    "datasets>=3.1.0",
-    "tokenizers>=0.21.0",
-    "opencv-python>=4.10.0.84",
-    "pillow>=12.3.0",
-    "imageio>=2.36.1",
-    "nltk>=3.10.0",  # Fixed: CVE-2025-xxx path traversal, fixed in 3.9.3
-    "spacy>=3.8.2",
-    "textblob>=0.18.0.post0",
-    # mlflow removed 2026-06-22: imported in 0 files (dead dep) and its
-    # cryptography<49 cap conflicted with the mcp extra's cryptography==49.0.0
-    # security pin, making .[all] unresolvable (Docker + local + CI).
-    "bentoml>=1.4.34",
-    "wandb>=0.24.2",  # Updated for protobuf 6.x compatibility
-    "tensorboard==2.21.0",
-    "matplotlib==3.11.1",
-    "seaborn==0.13.2",
-    "plotly==7.0.0",
-    "feature-engine==1.9.4",
-    "category-encoders==2.10.0",
-    "optuna==4.9.0",
-    "hyperopt==0.3.0",
-    # Removed 2026-06-22 — all force source builds that break a clean py3.12
-    # install, and all are unused EXCEPT prophet:
-    #   librosa, shap → numba → llvmlite 0.36 (no py3.12 support)
-    #   prophet, statsmodels → cmdstan/compile. prophet is imported only behind a
-    #     try/except ImportError in agents/base_super_agent/ml_module.py with a
-    #     TrendExtrapolationWrapper fallback, so removal degrades gracefully (and
-    #     prophet's cmdstan build never succeeded in the py3.12 image anyway).
-    #   gymnasium, stable-baselines3, soundfile, lime → dead RL/audio/explainability
-    # This unbreaks `uv pip install .[all]` on Python 3.12.
-    "polars==1.44.1",
-    "pyarrow==25.0.1",
-    "hydra-core==1.3.6",
-    "omegaconf==2.3.1",
-    "tqdm==4.70.0",
-    "joblib==1.6.0",
-    "dill==0.4.1",
-    "fastapi>=0.119.0",
-    "uvicorn>=0.32.1",
-    "pydantic>=2.10.3",
-    "sqlalchemy==2.0.51",
-    "pymongo==4.18.0",
-    # Compatibility constraints for dependency resolution
-    "protobuf>=6.33.5",  # CVE-2026-0994 fix: JSON recursion depth bypass vulnerability
-    "fsspec>=2025.7.0",  # Required by bentoml>=1.4.34
-    # LlamaIndex multimodal capabilities
-    "llama-index>=0.12.0",
-    "llama-index-llms-openai>=0.3.0",
-    "llama-index-multi-modal-llms-anthropic>=0.2.0",
-    "llama-index-multi-modal-llms-huggingface>=0.2.0",
-    # Gradio client for HF Spaces
-    "gradio-client>=1.5.0",
+  # Keep the torch/torchvision/torchaudio trio version-consistent: torchvision
+  # 0.24.1 requires torch 2.9.1, so torch must stay 2.9.1 (and torchaudio 2.9.1).
+  # A Dependabot bump of torch alone (2.9.1 -> 2.12.1) made the [all] extra
+  # unresolvable and broke the Docker build; this is the locally-installed,
+  # test-validated set. Bump all three together (and re-validate) if upgrading.
+  "torch==2.9.1",
+  "torchvision==0.24.1",
+  "torchaudio==2.11.0",
+  "transformers>=4.53.0",
+  "sentence-transformers>=5.6.0",
+  "chromadb>=0.6.0",
+  "diffusers>=0.38.0",
+  "huggingface-hub>=0.27.0",
+  "numpy>=2.1.3",
+  "pandas>=2.2.3",
+  "scipy>=1.14.1",
+  "scikit-learn>=1.6.0",
+  "accelerate>=1.2.1",
+  "datasets>=3.1.0",
+  "tokenizers>=0.21.0",
+  "opencv-python>=4.10.0.84",
+  "pillow>=12.3.0",
+  "imageio>=2.36.1",
+  "nltk>=3.10.0",                 # Fixed: CVE-2025-xxx path traversal, fixed in 3.9.3
+  "spacy>=3.8.2",
+  "textblob>=0.18.0.post0",
+  # mlflow removed 2026-06-22: imported in 0 files (dead dep) and its
+  # cryptography<49 cap conflicted with the mcp extra's cryptography==49.0.0
+  # security pin, making .[all] unresolvable (Docker + local + CI).
+  "bentoml>=1.4.34",
+  "wandb>=0.24.2",             # Updated for protobuf 6.x compatibility
+  "tensorboard==2.21.0",
+  "matplotlib==3.11.1",
+  "seaborn==0.13.2",
+  "plotly==7.0.0",
+  "feature-engine==1.9.4",
+  "category-encoders==2.10.0",
+  "optuna==4.9.0",
+  "hyperopt==0.3.0",
+  # Removed 2026-06-22 — all force source builds that break a clean py3.12
+  # install, and all are unused EXCEPT prophet:
+  #   librosa, shap → numba → llvmlite 0.36 (no py3.12 support)
+  #   prophet, statsmodels → cmdstan/compile. prophet is imported only behind a
+  #     try/except ImportError in agents/base_super_agent/ml_module.py with a
+  #     TrendExtrapolationWrapper fallback, so removal degrades gracefully (and
+  #     prophet's cmdstan build never succeeded in the py3.12 image anyway).
+  #   gymnasium, stable-baselines3, soundfile, lime → dead RL/audio/explainability
+  # This unbreaks `uv pip install .[all]` on Python 3.12.
+  "polars==1.44.1",
+  "pyarrow==25.0.1",
+  "hydra-core==1.3.6",
+  "omegaconf==2.3.1",
+  "tqdm==4.70.0",
+  "joblib==1.6.0",
+  "dill==0.4.1",
+  "fastapi>=0.119.0",
+  "uvicorn>=0.32.1",
+  "pydantic>=2.10.3",
+  "sqlalchemy==2.0.51",
+  "pymongo==4.18.0",
+  # Compatibility constraints for dependency resolution
+  "protobuf>=6.33.5", # CVE-2026-0994 fix: JSON recursion depth bypass vulnerability
+  "fsspec>=2025.7.0", # Required by bentoml>=1.4.34
+  # LlamaIndex multimodal capabilities
+  "llama-index>=0.12.0",
+  "llama-index-llms-openai>=0.3.0",
+  "llama-index-multi-modal-llms-anthropic>=0.2.0",
+  "llama-index-multi-modal-llms-huggingface>=0.2.0",
+  # Gradio client for HF Spaces
+  "gradio-client>=1.5.0",
 ]
 
 rag = [
-    # Multimodal knowledge-graph RAG (LightRAG + any-format ingestion)
-    "raganything>=1.2.10",
-    "lightrag-hku>=1.5.4",
+  # Multimodal knowledge-graph RAG (LightRAG + any-format ingestion)
+  "raganything>=1.2.10",
+  "lightrag-hku>=1.5.4",
 ]
 
 worker = [
-    # Background task processing
-    "celery>=5.4.0",
-    "kombu>=5.4.2",
-    "flower>=2.0.0",
+  # Background task processing
+  "celery>=5.4.0",
+  "kombu>=5.4.2",
+  "flower>=2.0.0",
 ]
 
 deploy = [
-    # Production deployment
-    "gunicorn>=23.0.0",
-    "uvicorn[standard]>=0.32.1",
+  # Production deployment
+  "gunicorn>=23.0.0",
+  "uvicorn[standard]>=0.32.1",
 ]
 
 sdk = [
-    # Claude Agent SDK integration
-    "claude-agent-sdk>=0.1.18",
+  # Claude Agent SDK integration
+  "claude-agent-sdk>=0.1.18",
 ]
 
 observability = [
-    # LLM / pipeline tracing — drop-in OpenAI wrapper + LangGraph CallbackHandler.
-    # Optional: code paths fall back to vanilla openai + no-op tracing if absent.
-    "langfuse>=4.6,<5",
+  # LLM / pipeline tracing — drop-in OpenAI wrapper + LangGraph CallbackHandler.
+  # Optional: code paths fall back to vanilla openai + no-op tracing if absent.
+  "langfuse>=4.6,<5",
 ]
 
 rigging = [
-    # Skyy avatar rigging pipeline (scripts/skyy_avatar_rig.py, scripts/skyy_mixamo_merge.py)
-    "tripo3d>=0.4.1",   # Tripo3D SDK for 3D generation + rigging + animation
-    "pygltflib>=1.16.5",  # GLB/GLTF read-write for animation clip renaming
+  # Skyy avatar rigging pipeline (scripts/skyy_avatar_rig.py, scripts/skyy_mixamo_merge.py)
+  "tripo3d>=0.4.1",    # Tripo3D SDK for 3D generation + rigging + animation
+  "pygltflib>=1.16.5", # GLB/GLTF read-write for animation clip renaming
 ]
 
-all = [
-    "devskyy[dev,api,mcp,ml,worker,deploy,sdk,rag,observability]",
-]
+all = ["devskyy[dev,api,mcp,ml,worker,deploy,sdk,rag,observability]"]
 
 [project.urls]
 Homepage = "https://github.com/devskyy/devskyy"
@@ -379,19 +373,19 @@ devskyy-character = "skyyrose.character_pipeline.cli:main"
 [tool.setuptools.packages.find]
 where = ["."]
 include = [
-    "core*",
-    "api*",
-    "skyyrose*",
-    "security*",
-    "database*",
-    "wordpress*",
-    "agents*",
-    "orchestration*",
-    "runtime*",
-    "llm*",
-    "cli*",
-    "services*",
-    "pipelines*",
+  "core*",
+  "api*",
+  "skyyrose*",
+  "security*",
+  "database*",
+  "wordpress*",
+  "agents*",
+  "orchestration*",
+  "runtime*",
+  "llm*",
+  "cli*",
+  "services*",
+  "pipelines*",
 ]
 exclude = ["tests*", "docs*", "legacy*"]
 
@@ -406,65 +400,77 @@ exclude = ["tests*", "docs*", "legacy*"]
 target-version = "py313"
 line-length = 100
 exclude = [
-    "legacy/",
-    "*.pyi",
-    "__pycache__",
-    "archive/",
-    "_archive/",
-    "open-claude-code/",
-    ".claude/",
-    ".agents/",
-    ".aidesigner/",
-    ".venv*/",
-    "node_modules/",
-    "claude-context/",
-    "sdk/",
-    ".wolf/",
-    "dev/",
-    "editorial-staging/",
-    "hf-spaces/",
-    "skyyrose/cli_harnesses/",  # vendored CLI tooling (relocated from vendor/) — not host-linted
-    "plugins/fashion-theme-team/",  # byte-parity-managed distribution; verified by its canonical toolchain
+  "legacy/",
+  "*.pyi",
+  "__pycache__",
+  "archive/",
+  "_archive/",
+  "open-claude-code/",
+  ".claude/",
+  ".agents/",
+  ".aidesigner/",
+  ".venv*/",
+  "node_modules/",
+  "claude-context/",
+  "sdk/",
+  ".wolf/",
+  "dev/",
+  "editorial-staging/",
+  "hf-spaces/",
+  "skyyrose/cli_harnesses/",     # vendored CLI tooling (relocated from vendor/) — not host-linted
+  "plugins/fashion-theme-team/", # byte-parity-managed distribution; verified by its canonical toolchain
 ]
 
 [tool.ruff.lint]
 select = [
-    "E",      # pycodestyle errors
-    "W",      # pycodestyle warnings
-    "F",      # Pyflakes
-    # "I",    # isort -- disabled: standalone isort handles import sorting (avoids config drift between ruff-isort and isort)
-    "B",      # flake8-bugbear
-    "C4",     # flake8-comprehensions
-    "UP",     # pyupgrade
-    "ARG",    # flake8-unused-arguments
-    "SIM",    # flake8-simplify
+  "E", # pycodestyle errors
+  "W", # pycodestyle warnings
+  "F", # Pyflakes
+  # "I",    # isort -- disabled: standalone isort handles import sorting (avoids config drift between ruff-isort and isort)
+  "B",   # flake8-bugbear
+  "C4",  # flake8-comprehensions
+  "UP",  # pyupgrade
+  "ARG", # flake8-unused-arguments
+  "SIM", # flake8-simplify
 ]
 ignore = [
-    "E501",   # line too long (handled by black)
-    "E402",   # module import not at top (intentional: try/except optional deps)
-    "E722",   # bare except (intentional in optional import blocks)
-    "E741",   # ambiguous variable name (e, l, I — context makes clear)
-    "B008",   # do not perform function calls in argument defaults
-    "B904",   # raise without from inside except
-    "ARG001", # unused function argument (common with FastAPI dependencies)
-    "ARG002", # unused method argument (common with API handlers)
-    "ARG005", # unused lambda argument (common with callback signatures)
-    "SIM102", # nested if statements (sometimes more readable)
-    "SIM105", # suppressible exception (contextlib.suppress not always clearer)
-    "SIM115", # open file with context handler (scripts use explicit close)
-    "SIM116", # if-else instead of dict lookup (readability preference)
-    "SIM117", # multiple with statements (sometimes more readable)
-    "SIM108", # if-else block instead of ternary (readability preference)
-    "SIM118", # key in dict.keys() (explicit is fine)
-    "B007",   # unused loop control variable (use _ prefix convention)
-    "B017",   # assert-raises-exception (tests use broad exception matching)
-    "C401",   # unnecessary generator in set() (readability preference)
-    "C408",   # unnecessary collection call (dict() vs {})
-    "UP028",  # yield in for loop (clarity over brevity)
+  "E501",   # line too long (handled by black)
+  "E402",   # module import not at top (intentional: try/except optional deps)
+  "E722",   # bare except (intentional in optional import blocks)
+  "E741",   # ambiguous variable name (e, l, I — context makes clear)
+  "B008",   # do not perform function calls in argument defaults
+  "B904",   # raise without from inside except
+  "ARG001", # unused function argument (common with FastAPI dependencies)
+  "ARG002", # unused method argument (common with API handlers)
+  "ARG005", # unused lambda argument (common with callback signatures)
+  "SIM102", # nested if statements (sometimes more readable)
+  "SIM105", # suppressible exception (contextlib.suppress not always clearer)
+  "SIM115", # open file with context handler (scripts use explicit close)
+  "SIM116", # if-else instead of dict lookup (readability preference)
+  "SIM117", # multiple with statements (sometimes more readable)
+  "SIM108", # if-else block instead of ternary (readability preference)
+  "SIM118", # key in dict.keys() (explicit is fine)
+  "B007",   # unused loop control variable (use _ prefix convention)
+  "B017",   # assert-raises-exception (tests use broad exception matching)
+  "C401",   # unnecessary generator in set() (readability preference)
+  "C408",   # unnecessary collection call (dict() vs {})
+  "UP028",  # yield in for loop (clarity over brevity)
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["core", "api", "security", "database", "wordpress", "agents", "orchestration", "runtime", "llm", "catalog", "tools"]
+known-first-party = [
+  "core",
+  "api",
+  "security",
+  "database",
+  "wordpress",
+  "agents",
+  "orchestration",
+  "runtime",
+  "llm",
+  "catalog",
+  "tools",
+]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["ARG001", "ARG002", "B017", "F841"]
@@ -510,8 +516,33 @@ exclude = '''
 [tool.isort]
 profile = "black"
 line_length = 100
-known_first_party = ["core", "api", "security", "database", "wordpress", "agents", "orchestration", "runtime", "llm", "catalog", "tools"]
-skip = ["legacy/", ".venv/", ".venv-*/", "node_modules/", "frontend/node_modules/", ".claude/", "_archive/", "open-claude-code/", ".agents/", ".aidesigner/", "skyyrose/cli_harnesses/", "plugins/fashion-theme-team/"]
+known_first_party = [
+  "core",
+  "api",
+  "security",
+  "database",
+  "wordpress",
+  "agents",
+  "orchestration",
+  "runtime",
+  "llm",
+  "catalog",
+  "tools",
+]
+skip = [
+  "legacy/",
+  ".venv/",
+  ".venv-*/",
+  "node_modules/",
+  "frontend/node_modules/",
+  ".claude/",
+  "_archive/",
+  "open-claude-code/",
+  ".agents/",
+  ".aidesigner/",
+  "skyyrose/cli_harnesses/",
+  "plugins/fashion-theme-team/",
+]
 
 # =============================================================================
 # MyPy Configuration — canonical config lives in mypy.ini (not here)
@@ -531,25 +562,14 @@ testpaths = ["tests"]
 pythonpath = [".", "scripts"]
 python_files = ["test_*.py", "*_test.py"]
 python_functions = ["test_*"]
-addopts = [
-    "-ra",
-    "-q",
-    "--strict-markers",
-    "--strict-config",
-    "--tb=short",
-    "-m",
-    "not slow and not integration",
-]
-filterwarnings = [
-    "ignore::DeprecationWarning",
-    "ignore::PendingDeprecationWarning",
-]
+addopts = ["-ra", "-q", "--strict-markers", "--strict-config", "--tb=short", "-m", "not slow and not integration"]
+filterwarnings = ["ignore::DeprecationWarning", "ignore::PendingDeprecationWarning"]
 markers = [
-    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
-    "integration: marks tests as integration tests",
-    "unit: marks tests as unit tests",
-    "security: marks tests as security tests (XSS, CSRF, SQL injection, etc.)",
-    "smoke: critical path tests for CI (run with '-m smoke')",
+  "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+  "integration: marks tests as integration tests",
+  "unit: marks tests as unit tests",
+  "security: marks tests as security tests (XSS, CSRF, SQL injection, etc.)",
+  "smoke: critical path tests for CI (run with '-m smoke')",
 ]
 
 # =============================================================================
@@ -563,15 +583,15 @@ omit = ["tests/*", "*/__init__.py", "legacy/*"]
 
 [tool.coverage.report]
 exclude_lines = [
-    "pragma: no cover",
-    "def __repr__",
-    "raise AssertionError",
-    "raise NotImplementedError",
-    "if __name__ == .__main__.:",
-    "if TYPE_CHECKING:",
-    "@abstractmethod",
-    "@overload",
-    "^\\s*\\.\\.\\.$",
+  "pragma: no cover",
+  "def __repr__",
+  "raise AssertionError",
+  "raise NotImplementedError",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+  "@abstractmethod",
+  "@overload",
+  "^\\s*\\.\\.\\.$",
 ]
 show_missing = true
 precision = 2

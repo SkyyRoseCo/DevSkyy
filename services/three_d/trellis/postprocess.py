@@ -172,11 +172,11 @@ class MeshPostprocessor:
         target = self._target_polycount(category, sampling)
         for i, mesh in enumerate(meshes):
             mesh.fix_normals()
-            mesh.remove_degenerate_faces()
+            mesh.update_faces(mesh.nondegenerate_faces())
             mesh.remove_unreferenced_vertices()
             if mesh.faces.shape[0] > target:
                 try:
-                    decimated = mesh.simplify_quadric_decimation(target)
+                    decimated = mesh.simplify_quadric_decimation(face_count=target)
                     if decimated is not None and decimated.faces.shape[0] > 0:
                         meshes[i] = decimated
                 except Exception as exc:  # noqa: BLE001
