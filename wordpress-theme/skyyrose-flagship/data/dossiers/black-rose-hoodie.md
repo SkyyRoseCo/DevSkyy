@@ -29,14 +29,16 @@ reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
   rose on back-center. NO logos anywhere on the back.)
 
 ### Sleeves / Collar / Hem / Other
-- **left-sleeve** (upper / shoulder area, exact dimensions TBD): A small
-  patch is visible in the reference photo at the upper-left-sleeve area.
+- **left-hip** (left side of the body, exact dimensions TBD): A small
+  patch sits at the left hip / left side of the body. It is NOT on the
+  sleeve (founder-confirmed 2026-09-21).
   Patch content, technique, and dimensions are **PARKED for later
   verification** — Corey will confirm the patch detail in a follow-up
   read-back. **Do not render this region with guessed content** —
-  the RAS pipeline should treat the upper-left-sleeve area as "small patch
+  the RAS pipeline should treat the left-hip area as "small patch
   present, content unverified" and prompt for the verification before
   rendering this region in production.
+- **left-sleeve**: clean, no decoration.
 - **right-sleeve**: clean, no decoration.
 - **kangaroo-pocket** (front): clean, no embroidery, no logo, no
   decoration on the pocket itself.
@@ -66,7 +68,8 @@ reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
 - NO printed graphics, NO sublimated panels, NO heat-transfer vinyl,
   NO puff-print decoration.
 - NO front-pocket branding — the kangaroo pocket fabric is clean.
-- NO right-sleeve patch (only the left sleeve carries a small patch).
+- NO sleeve patch on either sleeve (the small patch is at the left hip /
+  left side of the body, NOT the sleeve).
 - NO contrasting hood lining (assume same black tonal — to be verified
   if a contrast lining exists, but default is uniform black).
 - NO chest text or wordmark (the front rose is the only chest decoration).
