@@ -148,6 +148,13 @@ jobs:
           # not silently skip the tests that need them.
           pip install boto3 scikit-image trimesh pyotp
 
+      # tests/test_buglog_published_ids.py compares this tree's bug ids against
+      # what main has published. actions/checkout fetches only the ref under test
+      # at depth 1, so origin/main is absent and that gate would skip silently;
+      # it raises in CI instead, and this is what keeps it able to run.
+      - name: Fetch origin/main for published-id comparison
+        run: git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main
+
       - name: Run pytest with coverage
         run: |
           pytest tests/ \

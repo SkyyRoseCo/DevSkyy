@@ -19,6 +19,7 @@ the normal operations and stay allowed. Changing what an id MEANS is not.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 from pathlib import Path
 
@@ -44,7 +45,16 @@ def _entries(payload: str) -> list[dict]:
 
 
 def _published_buglog() -> list[dict] | None:
-    """Entries on origin/main, or None when there is nothing published here."""
+    """Entries on origin/main, or None when there is nothing published here.
+
+    A missing ref means "nothing to compare against" only on a developer
+    machine. In CI it means this gate is inert, which is the failure it exists
+    to catch, so there it is an error instead of a skip — `actions/checkout`
+    fetches only the ref under test at depth 1, so `origin/main` is absent
+    unless the workflow asks for it (verified 2026-09-21 by replaying that
+    fetch shape). This deliberately does NOT fetch: tests in this repo do not
+    reach the network (bug-333/334/335).
+    """
     ref = subprocess.run(
         ["git", "rev-parse", "--verify", "--quiet", f"refs/remotes/{PUBLISHED}"],
         cwd=REPO_ROOT,
@@ -53,6 +63,12 @@ def _published_buglog() -> list[dict] | None:
         check=False,
     )
     if ref.returncode != 0:
+        if os.environ.get("CI"):
+            raise AssertionError(
+                f"{PUBLISHED} is not present, so this gate would pass without checking "
+                "anything. The workflow must fetch it before running pytest:\n"
+                f"    git fetch --no-tags --depth=1 origin main:refs/remotes/{PUBLISHED}"
+            )
         return None
     relative = BUGLOG.relative_to(REPO_ROOT).as_posix()
     blob = subprocess.run(
