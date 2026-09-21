@@ -10,8 +10,9 @@ from pathlib import Path
 
 import pytest
 
-# higgsfield_client is not a declared dependency of this repo (it is installed by hand
-# where the example is used), so skip here instead of failing collection in CI.
+# higgsfield_client is declared in the optional `higgsfield` extra, which CI installs
+# (.github/workflows/ci.yml). importorskip keeps collection green anyway if that install
+# fell back to a narrower extra set.
 higgsfield_client = pytest.importorskip("higgsfield_client")
 
 _SPEC = importlib.util.spec_from_file_location(
