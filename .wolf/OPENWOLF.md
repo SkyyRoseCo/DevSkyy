@@ -137,11 +137,27 @@ instead of creating a new entry, per the rule below.
 client; hand-editing `buglog.json` is what caused past cross-session id
 collisions — use it only when neither is reachable.
 
-**Ids are provisional on a branch that is behind `main`.** The counter is seeded
-from the local `buglog.json`, so it de-races sessions sharing one checkout, not
-branches: a branch that predates entries on `main` will hand out ids `main` has
-already used. Merge `main`'s buglog before treating an id as final (bug-348/349
-were first issued as 339/340 this way).
+**Ids no longer go stale on a branch that is behind `main`** — this used to be
+your job and is now enforced. The counter's floor is
+`max(local buglog, origin/main buglog)`, read from the local remote-tracking ref
+with no network, so a checkout missing entries can no longer reissue an id
+`main` has published. If `origin/main` exists but its buglog cannot be parsed,
+`bug_log` **refuses to allocate** rather than guess (bug-230: an unreadable
+input is not an empty one). With no `origin/main` ref at all — a fresh clone —
+allocation falls back to the local file, because then nothing is published to
+collide with.
+
+It went wrong twice before the fix: bug-348/349 were first issued as 339/340,
+and bug-353 was issued for a second, unrelated defect while `main`'s bug-353
+was an SSRF-fixture bug — a citation in `docs/engineering-learnings.md` then
+pointed at the wrong entry.
+
+The manual-edit fallback below is still unpoliceable from inside the allocator,
+so `tests/test_buglog_published_ids.py` is the backstop: it fails if this tree
+duplicates an id, **redefines** one `main` has published (`error_message` or
+`file` changed), or has silently dropped published entries. Bumping
+`occurrences`, `last_seen`, `fix`, `tags`, `related_bugs` or `root_cause` on an
+existing entry stays allowed — those are the normal operations.
 
 **After fixing (manual-edit fallback only):** if you can't use `bug_log`, append
 to `.wolf/buglog.json` with this structure:
