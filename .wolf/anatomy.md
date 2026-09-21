@@ -38,7 +38,6 @@
 - `IDEA.md` (~5 tok)
 - `init.sql` — DevSkyy Database Initialization (~198 tok)
 - `lint-staged.config.mjs` — Declares relPaths (~346 tok)
-- `main.py` — Higgsfield SDK example: Seedance 2.5 text-to-video via higgsfield_client.subscribe; HF_KEY from .env.local; fails closed on failed/nsfw/canceled (~1100 tok)
 - `main_enterprise.py` — API router (~5854 tok)
   - fn `_parse_sentry_sample_rate` L39-52 (~130 tok)
   - fn `_resolve_cors_origin_regex` L53-78 (~327 tok)
