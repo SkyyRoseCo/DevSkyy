@@ -9022,6 +9022,7 @@
   - fn `print_banner` L951-970 (~343 tok)
   - fn `print_results` L971-989 (~204 tok)
   - fn `main` L990-1030 (~417 tok)
+- `env_import.sh` — Batch-import KEY=VALUE lines from the clipboard/file/stdin into a gitignored env file; dedupes (last wins), chmod 600, names-only summary, refuses non-ignored targets (~700 tok)
 - `enhance-product-images.ts` — Non-Destructive Product Image Enhancement (~1188 tok)
   - fn `applyLuxuryGrading` L36-57 (~214 tok)
   - fn `main` L58-130 (~608 tok)
