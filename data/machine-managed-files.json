@@ -1,0 +1,207 @@
+{
+  "$comment": [
+    "THE list of files no formatter may rewrite, and the single source both",
+    "formatter configs are checked against.",
+    "",
+    "Each of these files has a program that owns its bytes: a serializer, a",
+    "generator, a minifier, or a byte-comparing gate. When a formatter also",
+    "rewrites them, the two writers undo each other forever — every commit",
+    "carries thousands of lines of churn, and byte-comparing checks",
+    "(sync_product_registry.py --check, check:assets, freshness-guard) fail",
+    "for reasons unrelated to the change under review.",
+    "",
+    "This kept happening because the knowledge lived in two hand-maintained",
+    "places (.prettierignore and lint-staged.config.mjs) with nothing tying",
+    "them together: .wolf/buglog.json and .wolf/anatomy.md were in neither,",
+    "and prettier rewrote 1,643 lines of the bug log the first time it was",
+    "staged from a main-based branch.",
+    "",
+    "TO ADD A FILE: add an entry here. `pattern` must then appear verbatim as",
+    "a line in .prettierignore (tests/test_machine_managed_files.py fails",
+    "otherwise), and lint-staged.config.mjs reads this file directly, so no",
+    "second list can drift. `samples` are real paths used by",
+    "scripts/verify-formatter-ignores.mjs to ask prettier and lint-staged",
+    "whether they would actually touch them."
+  ],
+  "entries": [
+    {
+      "pattern": ".wolf/buglog.json",
+      "samples": [
+        ".wolf/buglog.json"
+      ],
+      "owner": "mcp_servers/wolf_memory/store.py (_serialize)",
+      "why": "The wolf-memory MCP server writes one entry per line group in its own layout and allocates ids atomically. Prettier collapses its arrays; the next bug_log call rewrites the file back."
+    },
+    {
+      "pattern": ".wolf/anatomy.md",
+      "samples": [
+        ".wolf/anatomy.md"
+      ],
+      "owner": "scripts/regen_anatomy_from_main.sh (post-commit)",
+      "why": "Regenerated wholesale by the anatomy scanner in its own layout; reformatting it guarantees a diff against the next regeneration."
+    },
+    {
+      "pattern": "/logo-registry.json",
+      "samples": [
+        "logo-registry.json"
+      ],
+      "owner": "skyyrose/core/product_registry.py (registry update API)",
+      "why": "The product SOT. Byte-compared by scripts/sync_product_registry.py --check and sha256-pinned in assets/products/manifest.json. The root path is a symlink, so a write through it lands on the registry."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship/data/logo-registry.json"
+      ],
+      "owner": "skyyrose/core/product_registry.py (registry update API)",
+      "why": "The real file behind the root symlink — the one editable product SOT."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/data/dossiers/*.md",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie.md"
+      ],
+      "owner": "skyyrose/core/product_registry.py (export_compatibility)",
+      "why": "Generated projections of the registry, byte-compared by sync_product_registry.py --check. They also carry the founder's verbatim specifications, which no formatter may reflow."
+    },
+    {
+      "pattern": "assets/products/source-photos/manifest.json",
+      "samples": [
+        "assets/products/source-photos/manifest.json"
+      ],
+      "owner": "scripts/audit_source_photos.py",
+      "why": "Deterministic generator output behind a byte-for-byte freshness gate."
+    },
+    {
+      "pattern": "tasks/source-photo-audit-report.md",
+      "samples": [
+        "tasks/source-photo-audit-report.md"
+      ],
+      "owner": "scripts/audit_source_photos.py",
+      "why": "Generated report; reformatting breaks the same freshness gate."
+    },
+    {
+      "pattern": "tasks/source-photo-shoot-list.md",
+      "samples": [
+        "tasks/source-photo-shoot-list.md"
+      ],
+      "owner": "scripts/audit_source_photos.py",
+      "why": "Generated shoot list; same gate."
+    },
+    {
+      "pattern": "skyyrose/elite_studio/assets/golden/*/placement.md",
+      "samples": [
+        "skyyrose/elite_studio/assets/golden/br-001/placement.md"
+      ],
+      "owner": "skyyrose/elite_studio (golden placement generation)",
+      "why": "Canonical dossier generation owns these bytes; generic Markdown formatting desynchronizes the checked-in placement brief."
+    },
+    {
+      "pattern": "**/*.min.js",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.min.js"
+      ],
+      "owner": "each theme's build (npm run build / build-assets.mjs)",
+      "why": "Minifier output, byte-compared against a fresh build by check:assets and the freshness guard."
+    },
+    {
+      "pattern": "**/*.min.css",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship/style.min.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.min.css"
+      ],
+      "owner": "each theme's build (npm run build / build-assets.mjs)",
+      "why": "Minifier output under the same byte comparison."
+    },
+    {
+      "pattern": "plugins/fashion-theme-team/",
+      "samples": [
+        "plugins/fashion-theme-team/formatting.toml"
+      ],
+      "owner": "the fashion-theme-team plugin (vendored)",
+      "why": "Externally managed tree; the repo does not own its formatting."
+    },
+    {
+      "pattern": "Comfy/receipts/",
+      "samples": [
+        "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T072421816848Z.json"
+      ],
+      "owner": "ComfyUI run receipts",
+      "why": "Byte-stable run records written by tooling, not by hand."
+    },
+    {
+      "pattern": "Comfy/quarantine/",
+      "samples": [
+        "Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-HF-PILOT-20260902-A1.png"
+      ],
+      "owner": "ComfyUI quarantine",
+      "why": "Quarantined artifacts kept exactly as produced."
+    },
+    {
+      "pattern": "draco/",
+      "samples": [
+        "public/draco/draco_decoder.js",
+        "wordpress-theme/skyyrose-flagship/assets/js/lib/draco/draco_decoder.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.js"
+      ],
+      "owner": "vendored Draco decoder (upstream build artefact, three copies)",
+      "why": "Emscripten output, served to production. Prettier expands it 719,410 -> 2,929,568 bytes (measured 2026-09-20), so every visitor downloads a 4x larger decoder and the vendored copy no longer matches upstream."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/assets/css/design-tokens.css",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship/assets/css/design-tokens.css"
+      ],
+      "owner": "scripts/gen-design-tokens.py (from data/brand/typography.json)",
+      "why": "Generated and byte-compared by verify-collection-sot. Prettier rewrites it 15,325 -> 15,142 bytes, so the gate reports STALE, --fix regenerates, and the formatter undoes it again on the retry."
+    },
+    {
+      "pattern": "docs/campaigns/sot-lookbook.html",
+      "samples": [
+        "docs/campaigns/sot-lookbook.html"
+      ],
+      "owner": "scripts/build-lookbook-from-sot.py",
+      "why": "Generated and byte-compared by validate_catalog_consistency. Prettier rewrites it 17,118 -> 25,176 bytes, which makes that byte check unsatisfiable."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/data/editorial-index.json",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship/data/editorial-index.json"
+      ],
+      "owner": "scripts/build-editorial-index.js",
+      "why": "Written tab-indented by its generator; prettier re-indents it (1,677 -> 1,752 bytes) and the next build writes it straight back."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/data/collections/*/index.html",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship/data/collections/black-rose/index.html"
+      ],
+      "owner": "scripts/gen-collection-hub.py",
+      "why": "Generated collection hub markup that is deployed as-is. Prettier rewrites it 8,759 -> 10,842 bytes, changing what ships."
+    },
+    {
+      "pattern": ".wolf/memory.md",
+      "samples": [
+        ".wolf/memory.md"
+      ],
+      "owner": "every session (append-only one-row-per-action log, founder-mandated in every commit)",
+      "why": "Rows are single long table lines read per line. proseWrap reflows them, and because a row is appended in EVERY commit this is the highest-frequency exposure of the whole list."
+    },
+    {
+      "pattern": ".wolf/cerebrum.md",
+      "samples": [
+        ".wolf/cerebrum.md"
+      ],
+      "owner": "OpenWolf cross-session learning log (appended by every session)",
+      "why": "Prettier rewrites it 156,585 -> 160,446 bytes, renumbering and re-indenting entries that sessions append to by position."
+    },
+    {
+      "pattern": "tasks/phase-e-manifest.md",
+      "samples": [
+        "tasks/phase-e-manifest.md"
+      ],
+      "owner": "scripts/regen_phase_e_manifest_auto.py (AUTO regions)",
+      "why": "Prettier rewrites it 12,998 -> 21,331 bytes, moving the AUTO region markers its generator edits between."
+    }
+  ]
+}

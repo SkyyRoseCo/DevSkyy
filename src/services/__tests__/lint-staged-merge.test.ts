@@ -16,6 +16,11 @@ import { afterEach, describe, expect, it } from 'vitest';
 const fixtures: string[] = [];
 // Tests live under src/services/__tests__, three levels below repository root.
 const source = path.resolve(import.meta.dirname, '../../../lint-staged.config.mjs');
+// The config reads the machine-managed-files registry to decide which files a
+// program owns. A fixture repo without it is not a repo this config can run in
+// -- it fails closed by design, which `refuses to run without the registry`
+// below pins down.
+const registry = path.resolve(path.dirname(source), 'data/machine-managed-files.json');
 
 function fixture() {
   const cwd = mkdtempSync(path.join(tmpdir(), 'devskyy-merge-hook-'));
@@ -28,6 +33,8 @@ function fixture() {
   git('config', 'core.hooksPath', '.no-hooks');
   git('config', 'commit.gpgsign', 'false');
   copyFileSync(source, path.join(cwd, 'lint-staged.config.mjs'));
+  mkdirSync(path.join(cwd, 'data'), { recursive: true });
+  copyFileSync(registry, path.join(cwd, 'data/machine-managed-files.json'));
   const write = (file: string, content: string) => {
     mkdirSync(path.dirname(path.join(cwd, file)), { recursive: true });
     writeFileSync(path.join(cwd, file), content);
@@ -202,6 +209,34 @@ describe('real lint-staged execution', () => {
       failure ? working : working.replace('STAGED', 'FORMATTED')
     );
     expect(repo.git('stash', 'list')).toBe('');
+  });
+
+  it.each([
+    ['missing', null],
+    ['empty', '{"entries": []}'],
+  ])('refuses to run when the machine-managed registry is %s', (_label, contents) => {
+    // An unreadable or empty registry must BLOCK, not quietly mean "no file is
+    // machine-managed" -- that reading is the fail-open shape (bug-230) which
+    // would hand every generated file straight to a formatter.
+    const repo = fixture();
+    const registryInRepo = path.join(repo.cwd, 'data/machine-managed-files.json');
+    if (contents === null) rmSync(registryInRepo);
+    else writeFileSync(registryInRepo, contents);
+    repo.write('sample.txt', 'x\n');
+    repo.commit('base');
+
+    const result = spawnSync(
+      process.execPath,
+      [
+        '--input-type=module',
+        '-e',
+        "import('./lint-staged.config.mjs').catch(e => {console.error(e.message); process.exit(1);})",
+      ],
+      { cwd: repo.cwd, encoding: 'utf8' }
+    );
+    expect(result.status, result.stdout + result.stderr).toBe(1);
+    expect(result.stderr).toContain('Refusing to run');
+    expect(result.stderr).toContain('machine-managed-files.json');
   });
 
   it('rejects an actual octopus merge instead of treating its first head as the entire baseline', () => {

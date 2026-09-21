@@ -39,28 +39,106 @@ const mergeChanges =
       )
     : null;
 
-const isByteStableOrManaged = file => {
-  const normalized = file.replace(/\\/g, '/');
-  return (
-    /(^|\/)plugins\/fashion-theme-team\//.test(normalized) ||
-    /(^|\/)Comfy\/receipts\//.test(normalized) ||
-    /(^|\/)Comfy\/quarantine\//.test(normalized) ||
-    // Canonical dossier generation owns these bytes; generic Markdown
-    // formatting would desynchronize the checked-in placement brief.
-    /(^|\/)skyyrose\/elite_studio\/assets\/golden\/[^/]+\/placement\.md$/.test(normalized) ||
-    // The product registry and its dossier projections are byte-compared by
-    // sync_product_registry.py --check and the registry is sha256-pinned in the
-    // asset manifest; reformatting either one desynchronizes the SOT. The root
-    // logo-registry.json is a symlink, so a write through it lands on the registry.
-    /(^|\/)logo-registry\.json$/.test(normalized) ||
-    /(^|\/)wordpress-theme\/skyyrose-flagship\/data\/dossiers\/[^/]+\.md$/.test(normalized) ||
-    /\.(?:png|jpe?g|webp|gif|avif|mp4|mov|webm|mp3|wav|flac|safetensors|ckpt|pt|pth|bin)$/i.test(normalized)
-  );
+// The files a program owns are listed ONCE, in data/machine-managed-files.json,
+// with each file's owning program and the reason. This config reads that list
+// instead of keeping its own copy: two hand-maintained lists is exactly how
+// .wolf/buglog.json ended up in neither, and prettier rewrote 1,643 lines of it.
+// tests/test_machine_managed_files.py fails if this file stops reading the
+// registry, or if .prettierignore and the registry drift apart.
+// Fails CLOSED and says why: without the registry there is no way to know which
+// files a program owns, and the safe assumption is not "none of them". Raising
+// here refuses the whole commit rather than letting formatters loose on
+// generated output. lint-staged reports only "Failed to read config from file",
+// so the cause has to come from this message.
+const registryPath = path.join(repositoryRoot, 'data', 'machine-managed-files.json');
+const managedPatterns = (() => {
+  let entries;
+  try {
+    entries = JSON.parse(readFileSync(registryPath, 'utf8')).entries;
+  } catch (error) {
+    throw new Error(
+      `lint-staged: cannot read the machine-managed-files registry at ${registryPath} ` +
+        `(${error.message}). Refusing to run: without it this config cannot tell which ` +
+        'files a program owns, and formatting one means fighting its generator forever.'
+    );
+  }
+  if (!Array.isArray(entries) || entries.length === 0) {
+    throw new Error(
+      `lint-staged: ${registryPath} lists no entries. Refusing to run rather than treating ` +
+        'an empty registry as "nothing is machine-managed".'
+    );
+  }
+  return entries.map(entry => entry.pattern);
+})();
+
+// .prettierignore uses gitignore syntax; this covers the subset the registry
+// uses: a leading "/" anchors to the repo root, a trailing "/" matches a whole
+// directory, "**" spans directories and "*" stays within one segment.
+const patternToRegExp = pattern => {
+  let body = pattern.trim();
+  const anchored = body.startsWith('/');
+  if (anchored) body = body.slice(1);
+  const directoryOnly = body.endsWith('/');
+  if (directoryOnly) body = body.replace(/\/$/, '');
+  // Decided while walking the segments rather than via a placeholder
+  // character: a sentinel byte would make this file binary to git, and a
+  // config nobody can read a line diff of is a config nobody reviews.
+  const segments = body.split('/');
+  let source = '';
+  segments.forEach((segment, index) => {
+    const last = index === segments.length - 1;
+    if (segment === '**') {
+      // Spans directories: 'a/**/b' must also match 'a/b'.
+      source += last ? '.*' : '(?:.*/)?';
+      return;
+    }
+    source += segment
+      .replace(/[.+^${}()|[\]\\]/g, '\\$&')
+      .replace(/\*/g, '[^/]*')
+      .replace(/\?/g, '[^/]');
+    if (!last) source += '/';
+  });
+  const prefix = anchored || body.includes('/') ? '^' : '^(?:.*/)?';
+  return new RegExp(`${prefix}${source}${directoryOnly ? '(?:/.*)?' : ''}$`);
 };
 
+const managedMatchers = managedPatterns.map(patternToRegExp);
+
+// Binaries are not in the registry because no formatter claims to own them;
+// they are here so a media file staged alongside code never reaches a
+// formatter command that would rewrite it.
+const BINARY_FILE = /\.(?:png|jpe?g|webp|gif|avif|mp4|mov|webm|mp3|wav|flac|safetensors|ckpt|pt|pth|bin)$/i;
+
 // Resolve directory aliases (for example /var versus /private/var on macOS)
-// without following a symlink in the indexed filename itself.
-const canonicalFile = file => path.join(realpathSync(path.dirname(file)), path.basename(file));
+// without following a symlink in the indexed filename itself. git reports the
+// REAL path of the toplevel while a caller may hand us one that still goes
+// through the symlink; comparing the two directly yields a "../../.." relative
+// path that matches no pattern, which would silently protect nothing. Only the
+// deepest EXISTING ancestor is resolved, because lint-staged also names deleted
+// files and this must answer for a path rather than require one.
+const canonicalFile = file => {
+  const absolute = path.resolve(file);
+  const trailing = [path.basename(absolute)];
+  let current = path.dirname(absolute);
+  for (;;) {
+    try {
+      return path.join(realpathSync(current), ...trailing);
+    } catch {
+      const parent = path.dirname(current);
+      if (parent === current) return absolute;
+      trailing.unshift(path.basename(current));
+      current = parent;
+    }
+  }
+};
+
+const canonicalRoot = canonicalFile(repositoryRoot);
+
+const isByteStableOrManaged = file => {
+  const relative = path.relative(canonicalRoot, canonicalFile(file)).replace(/\\/g, '/');
+  return managedMatchers.some(matcher => matcher.test(relative)) || BINARY_FILE.test(relative);
+};
+
 const mutableFiles = files =>
   files.filter(
     file => !isByteStableOrManaged(file) && (mergeChanges === null || mergeChanges.has(canonicalFile(file)))
