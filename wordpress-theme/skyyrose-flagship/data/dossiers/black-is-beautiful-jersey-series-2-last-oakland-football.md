@@ -24,6 +24,8 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 
 **FOUNDER_CONFIRMED:** The rose-cluster artwork fills only the **front 3** and the **back 2**. The front 2 and back 3 remain plain white. The founder's recorded review comments are preserved in `data/render-corrections.json` under br-009 and `renders/oai/_review/review-state.json` (front: 2026-06-10T02:03:26.224Z; back: 2026-06-10T02:03:50.416Z). They supersede the older both-digits-fill instruction.
 
+**FOUNDER_CONFIRMED:** True to size, relaxed through the body. (Founder statement, 2026-09-21, verbatim: "all jerseys true to size, relaxed through the body".)
+
 Corrected specifications do not approve the previously flagged renders or authorize paid generation, media promotion, or deployment. Keep the existing candidate-review and execution-approval boundaries.
 
 ## Branding — exactly what IS on this product
