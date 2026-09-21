@@ -7,6 +7,24 @@
     "gemini-api-docs-mcp": {
       "type": "http",
       "url": "https://gemini-api-docs-mcp.dev"
+    },
+    "wolf-memory": {
+      "command": ".venv/bin/python",
+      "args": [
+        "wolf_memory_mcp.py"
+      ],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    },
+    "worktree-fleet": {
+      "command": ".venv/bin/python",
+      "args": [
+        "worktree_fleet_mcp.py"
+      ],
+      "env": {
+        "PYTHONPATH": "."
+      }
     }
   },
   "_disabled_mcpServers__firecrawl_needs_api_key": {

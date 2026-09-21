@@ -6103,5 +6103,135 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-19"
+  },
+  {
+    "id": "bug-348",
+    "timestamp": "2026-09-19T20:35:19.617005+00:00",
+    "error_message": "Paid script with no confirmation gate: `python main.py` (repo root) submitted a billable Higgsfield Seedance 2.5 generation on every run with no manifest, no TTY check and no SKYYROSE_AUTO_CONFIRM opt-in. Same class as the bug322_sig_commerce_audit.py `--fire --yes` defect fixed the same day.",
+    "file": "main.py",
+    "root_cause": "The script was written as an SDK example: credentials check then straight into higgsfield_client.subscribe(). The repo's STOP-AND-SHOW money rule (pipeline3d/cli._confirm) was never applied, and its tests only covered credential/URL handling, so nothing could fail on a missing gate.",
+    "fix": "Added confirm_billable_run(prompt_fn, is_tty): manifest always printed to stderr (stdout stays URL-only), SKYYROSE_AUTO_CONFIRM must equal exactly '1', no TTY aborts, only y/yes proceeds at a TTY, EOFError = not confirmed; main() returns EXIT_NOT_CONFIRMED=5. is_tty is resolved at call time (sys.stdin can be replaced after import), not bound as a def-time default. 18 tests written red first; 5 gate mutations all killed. Price deliberately not stated: no verified figure.",
+    "tags": [
+      "money-gate",
+      "fail-closed",
+      "stop-and-show",
+      "higgsfield",
+      "paid-api"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-19T20:35:19.617005+00:00"
+  },
+  {
+    "id": "bug-349",
+    "timestamp": "2026-09-19T20:35:25.481306+00:00",
+    "error_message": "worktree-fleet MCP: (a) git option injection — caller-supplied base_ref/branch/path were passed positionally into git argv; reproduced add_worktree(base_ref='--force') ACCEPTED, worktree created with --force in effect. (b) store.release() took no owner: any session could close another session's claim, and force=True skipped the dirty/unpushed gate on it.",
+    "file": "mcp_servers/worktree_fleet/git_ops.py",
+    "root_cause": "(a) _run() builds ['git', *args] from Pydantic fields that only constrained length, and nothing rejected a leading '-'; '--detach' and '-'-prefixed branches were only stopped because git itself happened to refuse them. (b) Ownership was enforced on claim() but never on release(), so the registry's core guarantee held in one direction only.",
+    "fix": "(a) _reject_option_like(**values) raises ValueError for any value starting with '-', called at the argv chokepoint in add_worktree, remove_worktree and push_status; claim() runs git before its INSERT so a rejected ref leaves no phantom row; the claim/release tools return ValueError as a formatted error. (b) release() now REQUIRES owner, checks it before touching git, and force does not waive it — stale claims are reclaimed by prune() via TTL. ReleaseInput.owner is required (breaking for callers; running MCP server needs a restart). 18 tests red first, 6 mutations killed.",
+    "tags": [
+      "argument-injection",
+      "input-validation",
+      "authorization",
+      "mcp",
+      "worktree-fleet",
+      "fail-closed"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-19T20:35:25.481306+00:00"
+  },
+  {
+    "id": "bug-350",
+    "timestamp": "2026-09-20T09:55:54.967527+00:00",
+    "error_message": "Stop-gate: tests/test_bug263_fork_safety.py::test_resource_tracker_prespawned_and_stable failed with 'conftest darwin guard did not pre-spawn the multiprocessing resource tracker (bug-263 layer 5 removed?)' — only when run in the same pytest process as tests/mcp_servers; either path alone passed.",
+    "file": "tests/mcp_servers/__init__.py",
+    "root_cause": "A new tests/mcp_servers/conftest.py was added to a test directory with no __init__.py. Under pytest's default prepend import mode a conftest in a non-package directory is imported under the plain module name 'conftest', replacing the ROOT conftest.py in sys.modules. test_bug263 does a bare `import conftest` to read _BUG263_TRACKER_PID, got the nested sandbox conftest instead, and reported the darwin fork-safety guard as removed. The guard was intact; the import resolved to the wrong module. Scoped test runs (one directory at a time) could not see it — both the patch author and the applier verified only tests/mcp_servers.",
+    "fix": "Added tests/mcp_servers/__init__.py (package marker, docstring only), so the nested conftest registers as tests.mcp_servers.conftest. Verified: the failing pair 1 failed/110 passed -> 111 passed; a mid-suite probe shows `import conftest` resolving to /conftest.py with _BUG263_TRACKER_PID present; control run with the nested conftest moved aside also passed, isolating the cause. RULE: any new conftest.py must sit in a directory that has __init__.py (every other nested conftest under tests/ already does), and a change that adds test infrastructure is verified against the whole tests/ tree, not the directory it lives in.",
+    "tags": [
+      "pytest",
+      "conftest",
+      "module-shadowing",
+      "test-isolation",
+      "stop-gate",
+      "darwin-fork-safety"
+    ],
+    "related_bugs": [
+      "bug-263",
+      "bug-231"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-20T09:55:54.967527+00:00"
+  },
+  {
+    "id": "bug-351",
+    "timestamp": "2026-09-20T10:05:36.172379+00:00",
+    "error_message": "A whole-tree `pytest -o addopts=\"\" tests/` run executed tests/orchestration/test_orchestration_mode.py::test_live_smoke_single_turn, which sent a LIVE request to the Anthropic API with no STOP-AND-SHOW. Response: 400 invalid_request_error 'Your credit balance is too low' — nothing generated or billed, by luck rather than by design.",
+    "file": "pyproject.toml",
+    "root_cause": "[tool.pytest.ini_options] addopts carries `-m \"not slow and not integration\"`, the ONLY thing keeping live-network tests out of a normal run (they self-gate on 'is ANTHROPIC_API_KEY set', and it always is on this machine). `-o addopts=\"\"` had been adopted earlier in the session to work around an empty summary caused by stacking a second -q on the repo's own -q; it fixed the summary and silently removed the marker filter. Scoped runs over directories with no integration tests hid it for ~30 uses.",
+    "fix": "Process fix, no code change: never pass -o addopts=\"\"; do not add a second -q instead; if addopts must be overridden, restate `-m \"not slow and not integration\"` in the same command; run a single integration test only by node id after reading it for paid calls. Saved as memory feedback_never_override_pytest_addopts. Under the override tests/test_gdpr.py (22) and test_dino_embedder.py (missing torchvision) also run and fail — deselected under repo config, not regressions. Authoritative result with repo config: tests/ = 7261 passed, 0 failed.",
+    "tags": [
+      "paid-api",
+      "stop-and-show",
+      "pytest",
+      "addopts",
+      "integration-marker",
+      "process"
+    ],
+    "related_bugs": [
+      "bug-230",
+      "bug-333"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-20T10:05:36.172379+00:00"
+  },
+  {
+    "id": "bug-352",
+    "timestamp": "2026-09-20T11:00:37.903320+00:00",
+    "error_message": "Stop-gate: tests/services/test_three_d_providers.py::TestReplicateProvider::test_generate_from_text_success failed with 'ThreeDProviderError: [DEVSKYY-3001] Model download URL failed SSRF validation: Cannot resolve hostname: replicate.com' and reproduced on the gate's re-run. Passed alone minutes later and in a 7261-pass full run 10 minutes earlier.",
+    "file": "tests/services/test_three_d_providers.py",
+    "root_cause": "The provider validates every download URL with SSRFProtection, whose _resolve_hostname calls a real socket.getaddrinfo. Three tests in the file (generate_from_text_success, generate_from_image_success, download_model_http_error) mock both API clients but not that lookup, so they pass or fail with the machine's DNS. A transient resolver outage spanned both gate runs. Same class as bug-333/334/335 (tests making real network calls); no file in the path was modified.",
+    "fix": "Module-level autouse fixture offline_dns monkeypatches SSRFProtection._resolve_hostname to return a public address. Only resolution is stubbed: scheme / private-range / metadata checks in validate_url still run (verified — 169.254.169.254, 127.0.0.1 and file:// are still refused with the stub in place). RED = the file run with getaddrinfo forced to fail: 3 failed; GREEN: 78 passed with DNS dead, 78 passed normally. Diff is +17/-0 (ruff format also rewrapped 3 unrelated `with` lines; reverted, fixture re-added pre-formatted). Census note: forcing ALL getaddrinfo to fail is an unfaithful outage — it also breaks numeric IPs and localhost and produced false failures in loopback-server tests; simulate an outage by failing only non-numeric, non-localhost hosts.",
+    "tags": [
+      "flaky-test",
+      "network-in-tests",
+      "dns",
+      "ssrf",
+      "stop-gate",
+      "test-isolation"
+    ],
+    "related_bugs": [
+      "bug-333",
+      "bug-334",
+      "bug-335",
+      "bug-231"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-20T11:00:37.903320+00:00"
+  },
+  {
+    "id": "bug-353",
+    "timestamp": "2026-09-20T23:04:55.366075+00:00",
+    "error_message": "A test fixture that stubbed SSRFProtection._resolve_hostname to return a public address for EVERY input silently disabled private-IP blocking: 4 security tests failed with 'DID NOT RAISE ValueError' for http://10.0.0.1, 192.168.x, 172.16.x. The same stub had already been committed per-file in tests/services/test_three_d_providers.py (bug-352) where no test happened to exercise it.",
+    "file": "tests/conftest.py",
+    "root_cause": "The validator blocks private ranges by resolving the host -- including an IP literal -- and checking the RESOLVED address. 'Stub DNS, keep the checks' is only true if literals still resolve to themselves. The earlier claim that private-range checks still ran was verified only with 127.0.0.1 and 169.254.169.254, which the blocked-domain list refuses before resolution, so the probe could not fail.",
+    "fix": "Tree-wide autouse _offline_ssrf_dns in tests/conftest.py: hostnames -> one public address, IP literals -> themselves; patches only when security.ssrf_protection is already loaded, no monkeypatch fixture (same constraints as _no_live_sdk_escalation); DEVSKYY_TESTS_ALLOW_DNS=1 opts out. Per-file fixture removed (file is back to main's bytes). Reverting to the all-public stub is KILLED by tests/test_p0_ssrf_replicate.py. Whole tree with external DNS failing: live-DNS dependencies 17 -> 0. LESSON: when stubbing a dependency of a security check, run that check's own negative tests against the stub.",
+    "tags": [
+      "ssrf",
+      "test-double",
+      "security-regression-in-tests",
+      "dns",
+      "fail-open"
+    ],
+    "related_bugs": [
+      "bug-352",
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-20T23:04:55.366075+00:00"
   }
 ]
