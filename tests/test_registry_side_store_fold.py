@@ -39,6 +39,23 @@ RETIRED_SIDE_STORES = (
 # line is a founder review-board comment from 2026-06-09 (409187921).
 TWO_ROSE = "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE"
 CHEST_SCALE = "[ghost] Render the rose logo at the size and position shown"
+FOLD_CAPTURED = "2026-06-09"
+# Founder corrections given after the fold. A FOUNDER_VERBATIM line with any
+# other date must be listed here word for word, so an agent cannot add one
+# silently.
+POST_FOLD_FOUNDER = {
+    (
+        "br-005",
+        "2026-09-21",
+        "[on-model] right chest logo is a silicone 3D cutout and left logo it on side hip NOT SLEEVE",
+    ),
+    (
+        "br-004",
+        "2026-09-21",
+        "[on-model] its left hip, left side of the body whatever you need to change it too "
+        "but it not the sleeve",
+    ),
+}
 AGENT_ADDED = {
     **{sku: [TWO_ROSE] for sku in ("br-002", "br-005", "br-007")},
     **{sku: [TWO_ROSE, CHEST_SCALE] for sku in ("br-001", "br-004", "br-006")},
@@ -76,7 +93,11 @@ def test_each_correction_names_who_wrote_it(registry: dict) -> None:
                 agent_added.setdefault(sku, []).append(line["text"])
             else:
                 assert line["authority"] == "FOUNDER_VERBATIM", (sku, line["authority"])
-                assert line["captured"] == "2026-06-09", (sku, line["text"][:40])
+                if line["captured"] != FOLD_CAPTURED:
+                    assert (sku, line["captured"], line["text"]) in POST_FOLD_FOUNDER, (
+                        sku,
+                        line["text"][:40],
+                    )
     assert {sku: len(lines) for sku, lines in agent_added.items()} == {
         sku: len(prefixes) for sku, prefixes in AGENT_ADDED.items()
     }
@@ -92,7 +113,8 @@ def test_founder_review_lines_are_the_majority_and_verbatim(registry: dict) -> N
         for line in product.get("corrections") or []
         if line["authority"] == "FOUNDER_VERBATIM"
     ]
-    assert len(founder) == 32
+    assert sum(line["captured"] == FOLD_CAPTURED for line in founder) == 32
+    assert len(founder) == 32 + len(POST_FOLD_FOUNDER)
     assert all(line["text"].startswith("[") for line in founder)
 
 
