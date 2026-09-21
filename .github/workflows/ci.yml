@@ -140,7 +140,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e ".[dev,mcp]" || pip install -e ".[dev]" || pip install -e .
+          pip install -e ".[dev,mcp,higgsfield]" || pip install -e ".[dev,mcp]" || pip install -e ".[dev]" || pip install -e .
           pip install pytest pytest-asyncio pytest-cov pytest-xdist httpx
           # Optional deps the test suite imports (langgraph comes from the [mcp]
           # extra above with a compatible pin; the rest are standalone). No

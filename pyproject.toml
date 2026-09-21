@@ -364,6 +364,7 @@ rigging = [
 all = [
     "devskyy[dev,api,mcp,ml,worker,deploy,sdk,rag,observability]",
 ]
+higgsfield = ["higgsfield-client>=0.2.0,<0.3"]
 
 [project.urls]
 Homepage = "https://github.com/devskyy/devskyy"
