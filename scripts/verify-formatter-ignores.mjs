@@ -74,23 +74,84 @@ const commandsFor = file => {
   return produced;
 };
 
-// Positive control. lint-staged reads the same registry this script does, so a
-// registered file is skipped by construction — without this, "lint-staged would
-// not touch it" could just mean the filter is inert and the check could never
-// fail. An unowned file must still be picked up.
-const control = ['README.md', 'package.json', 'pyproject.toml']
-  .map(name => path.join(repositoryRoot, name))
-  .find(existsSync);
-if (!control) {
-  console.error('verify-formatter-ignores: no control file found — cannot prove the filter works');
-  process.exit(1);
+// During a merge, lint-staged.config.mjs narrows every task to files the merge
+// itself changed, so a file outside that set is skipped for a reason that has
+// nothing to do with ownership. The control has to come from inside the merge
+// set, or this half cannot be exercised at all — and running the ordinary
+// control there would fail every merge commit in the repo.
+const mergeHeadFile = path.resolve(
+  repositoryRoot,
+  execFileSync('git', ['rev-parse', '--git-path', 'MERGE_HEAD'], {
+    cwd: repositoryRoot,
+    encoding: 'utf8',
+  }).trim()
+);
+const inMerge = existsSync(mergeHeadFile);
+
+// A file nothing owns, by the authoritative definition: every registry pattern
+// is a .prettierignore line, so "prettier would not ignore it" means unowned.
+const unowned = async file => {
+  if (!prettier) return false;
+  const info = await prettier.getFileInfo(file, {
+    ignorePath: path.join(repositoryRoot, '.prettierignore'),
+    resolveConfig: false,
+  });
+  return !info.ignored && Boolean(info.inferredParser);
+};
+
+let control = null;
+if (inMerge) {
+  const changed = execFileSync(
+    'git',
+    ['diff', '--cached', '--name-only', '-z', '--no-renames', 'MERGE_HEAD', '--'],
+    { cwd: repositoryRoot, encoding: 'utf8' }
+  )
+    .split('\0')
+    .filter(Boolean)
+    .map(file => path.join(repositoryRoot, file));
+  for (const file of changed) {
+    if (existsSync(file) && (await unowned(file))) {
+      control = file;
+      break;
+    }
+  }
+} else {
+  for (const name of ['README.md', 'package.json', 'pyproject.toml']) {
+    const file = path.join(repositoryRoot, name);
+    if (existsSync(file)) {
+      control = file;
+      break;
+    }
+  }
+  if (!control) {
+    console.error('verify-formatter-ignores: no control file found — cannot prove the filter works');
+    process.exit(1);
+  }
 }
-if (commandsFor(control).length === 0) {
+
+if (control) {
+  // Positive control. lint-staged reads the same registry this script does, so a
+  // registered file is skipped by construction — without this, "lint-staged would
+  // not touch it" could just mean the filter is inert and the check could never
+  // fail. An unowned file must still be picked up.
+  if (commandsFor(control).length === 0) {
+    console.error(
+      `verify-formatter-ignores: lint-staged selects no task for ${path.relative(repositoryRoot, control)}, ` +
+        'which nothing owns — the filter is inert, so its verdict on managed files is worthless'
+    );
+    process.exit(1);
+  }
+} else {
+  // Only reachable mid-merge, when every file the merge touches is one a program
+  // owns. Say it rather than reporting a pass this run did not earn: the
+  // per-sample prettier checks below still run, and they are the protection that
+  // covers prettier itself. What goes unverified here is the matcher that keeps
+  // NON-prettier tasks (isort, black, phpcbf, format_markup.py) off those files.
   console.error(
-    `verify-formatter-ignores: lint-staged selects no task for ${path.basename(control)}, ` +
-      'which nothing owns — the filter is inert, so its verdict on managed files is worthless'
+    'verify-formatter-ignores: NOTE — this merge changes only machine-managed files, so ' +
+      "lint-staged's task filter could not be exercised (no unowned file in the merge set). " +
+      "prettier's own ignore resolution is still checked below."
   );
-  process.exit(1);
 }
 
 for (const entry of registry.entries) {
