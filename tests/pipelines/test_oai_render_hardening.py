@@ -828,6 +828,13 @@ def test_agent_added_corrections_never_appear_as_founder_words(tmp_path: Path, m
     assert "agent line" in agent_block and "founder line" not in agent_block
 
 
+# The founder's own words, kept character for character (typos included).
+_BR004_FOUNDER_LINE = (
+    "[on-model] its left hip, left side of the body whatever you need to change it too "
+    "but it not the sleeve"
+)
+
+
 def test_live_br004_agent_lines_are_not_labelled_founder():
     p = build_prompt(
         name="BLACK Rose Hoodie",
@@ -839,10 +846,21 @@ def test_live_br004_agent_lines_are_not_labelled_founder():
         style="ghost",
         view="front",
     )
-    # br-004's only two corrections were added by an agent on 2026-06-12.
-    assert "FOUNDER CORRECTIONS" not in p
-    assert "AGENT-ADDED RENDER CONSTRAINTS" in p
-    assert "rose-cluster logo is a cluster of MULTIPLE" in p
+    # br-004 carries two lines an agent added on 2026-06-12 and the founder's own
+    # 2026-09-21 patch-placement correction. Each must sit under its own header:
+    # the agent's lines never under the founder's, the founder's never under the agent's.
+    founder_at = p.index("FOUNDER CORRECTIONS")
+    agent_at = p.index("AGENT-ADDED RENDER CONSTRAINTS")
+    assert founder_at < agent_at
+    founder_block, agent_block = p[founder_at:agent_at], p[agent_at:]
+    assert _BR004_FOUNDER_LINE in founder_block
+    assert _BR004_FOUNDER_LINE not in agent_block
+    for agent_words in (
+        "rose-cluster logo is a cluster of MULTIPLE",
+        "Render the rose logo at the size and position shown",
+    ):
+        assert agent_words in agent_block
+        assert agent_words not in founder_block
 
 
 def test_corrections_missing_registry_fails_closed(tmp_path: Path, monkeypatch):
@@ -854,10 +872,16 @@ def test_corrections_missing_registry_fails_closed(tmp_path: Path, monkeypatch):
 
 
 def test_live_registry_corrections_reach_the_prompt():
-    # br-004's two lines live only in the registry now; they must still arrive
-    # verbatim, in order, exactly as the retired render-corrections.json held them.
+    # br-004's two agent lines live only in the registry now; they must still arrive
+    # verbatim, in order, exactly as the retired render-corrections.json held them,
+    # followed by the founder's 2026-09-21 correction, word for word.
     lines = prompt_mod.corrections_for("br-004")
-    assert [line["authority"] for line in lines] == ["AGENT_ADDED", "AGENT_ADDED"]
+    assert [line["authority"] for line in lines] == [
+        "AGENT_ADDED",
+        "AGENT_ADDED",
+        "FOUNDER_VERBATIM",
+    ]
+    assert lines[2]["text"] == _BR004_FOUNDER_LINE
     assert lines[0]["text"].startswith(
         "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE"
     )
