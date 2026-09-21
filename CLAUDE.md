@@ -6,6 +6,10 @@ Do not author separate product facts in CSVs, dossier files, prompts, local maps
 
 When operating in another checkout, verify it has the unified `products` schema and current founder corrections before execution. Never substitute an old checkout's CSV/dossiers when its registry is stale. Pass the registry location and this authority rule to every delegated agent and workflow.
 
+**A founder statement about a garment goes in the DOSSIER first, never straight into a garment field.** `tests/test_dossier_founder_prose.py` pins every `garment.{fit,materials,features}.source` to `derived_from_dossier` — a test-enforced assertion that nothing in those fields is founder-authored. So when he states a garment fact: add a `**FOUNDER_CONFIRMED:** <his words>` paragraph to that SKU's dossier (its `## Founder-confirmed correction` section, before `## Branding`), keep a parenthetical quoting him verbatim with the date, then derive the field from it. That makes the existing label true instead of widening the assertion, and never relabels a field to claim founder authorship. Gate every write on the text being a verbatim substring of that SKU's own dossier; fail closed on a half-applied set. Worked example: the 8 jersey fit values, 2026-09-21.
+
+**Prefer `null` over wrong.** A field holding the wrong kind of sentence passes every completeness check and is invisible to the gap queries built to find it — a null is discoverable, a plausible-but-wrong value is not. (br-010 carried a fabric sentence in `fit` for months; the 7 null ones surfaced instantly.)
+
 # OpenWolf
 
 @.wolf/OPENWOLF.md
@@ -239,6 +243,14 @@ shared-worktree discipline). Also: when a check FAILS, diff its _contents_, not
 just its state — a new violation hides as one more line inside an already-red
 check.
 
+**Same rule for merges: use the MERGE BASE, never the other branch.** A two-way
+diff cannot separate "they changed it" from "I changed it" — it returns your own
+work as a list of their regressions, silently and plausibly.
+`base=$(git merge-base <mine> origin/main)`; `theirs` = base→main, `ours` =
+base→mine; the merged tree must carry theirs' value for `theirs - ours` and ours'
+for `ours - theirs`, and only `theirs ∩ ours` needs judgment. **Whenever the
+question is "who did this," a two-point comparison is the wrong instrument.**
+
 ### Think before coding
 
 - **Simplicity first.** Minimum code that solves it. No speculative features, no
@@ -259,6 +271,14 @@ check.
 - Files < 800 lines · functions < 50 lines
 - Immutability: `{...obj, key}`, never `obj.key = val`
 - No hardcoded secrets — env only (`.env`, `.env.wordpress`, `.env.secrets`)
+- **Redacting env data is a WHITELIST, never "names only"** (bug-357). On a
+  malformed env file the KEY side can be the secret — a credentials notebook has
+  lines shaped `<label> = <secret>` and `Name: <secret>`, so `dotenv_values()`
+  returns the secret as the dict key. Print a name only if it matches
+  `^[A-Z][A-Z0-9_]*$`, else a `sha256[:8]`; compare values by hash, never print
+  them. Containment after a leak is **rotation**, not deletion — context re-sends
+  every turn, so rotate then start a fresh session, and check
+  `.wolf/claude-mem-digest.md` (in-repo) and `~/.claude-mem/`.
 - Validate at boundaries: Zod (frontend) / Pydantic (backend)
 - Generic errors to clients; detailed logs server-side
 - Error handling on every external call
@@ -515,6 +535,25 @@ triple (`functions.php`, `style.css`, `readme.txt`) leaves returning visitors on
 stale cached assets.
 
 ---
+
+### CI: what gates, and what doesn't (re-verified 2026-09-21)
+
+- **Playwright E2E IS gating.** `ci.yml` Stage 3 says browser regressions must
+  fail CI; `continue-on-error` appears nowhere. It starts late
+  (`needs: [python-tests, frontend-tests]`) and runs 10+ min — a PR at 21/22 green
+  with E2E pending is normal, not stalled. _Any memory claiming "E2E non-gating"
+  is stale._
+- **`main` has NO branch protection** — no required checks, no required reviews,
+  admins not enforced. "Green" is the workflow's own conclusion, never a
+  server-enforced gate, so **nothing stops a merge with red or pending checks.**
+  Drive-to-green automation must wait for every job itself; there is no backstop.
+- **A CONFLICTING PR runs almost no CI** — GitHub builds no merge ref, so
+  `pull_request` workflows never fire (only push-triggered CodeQL). It looks
+  _stalled_, not failing. Fix the conflict, then checks appear.
+- **An untracked binary behind a SOT binding is a latent 404** — deploy is an
+  atomic hot-swap shipping only tracked files, and theme webp is gitignored.
+  `git add -f` the binaries FIRST, repoint bindings SECOND. Establish asset
+  identity by **content hash, not filename**.
 
 ## 8. Learnings
 
