@@ -134,6 +134,8 @@ sr2_assert( array( array( 'href' => 'x' ) ) === skyyrose2_critical_font_preloads
 $GLOBALS['sr2_front'] = true;
 $preloads = skyyrose2_critical_font_preloads( array() );
 sr2_assert( 2 === count( $preloads ), 'front page preloads only its two first-view faces' );
+sr2_assert( in_array( SKYYROSE2_URI . '/assets/derived/fonts/archivo-normal-width.woff2', array_column( $preloads, 'href' ), true ), 'the current Archivo headline face is preloaded' );
+sr2_assert( ! in_array( SKYYROSE2_URI . '/assets/sot/fonts/cinzel-latin.woff2', array_column( $preloads, 'href' ), true ), 'the former Cinzel headline face does not compete for first-view bandwidth' );
 foreach ( $preloads as $record ) {
 	sr2_assert( 'font' === $record['as'] && 'font/woff2' === $record['type'] && 'anonymous' === $record['crossorigin'], 'font preload records are CORS font preloads' );
 	sr2_assert( 1 === preg_match( '#url\\(["\']?' . preg_quote( $record['href'], '#' ) . '["\']?\\)#', $head ), 'preload href matches the inline @font-face URL byte for byte: ' . $record['href'] );
