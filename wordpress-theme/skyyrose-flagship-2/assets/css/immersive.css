@@ -6,95 +6,95 @@
  */
 
 .sr2-immersive {
-	--sr2-immersive-accent: #b76e79;
-	--sr2-immersive-accent-rgb: 183, 110, 121;
-	--sr2-immersive-void: #0a0a0a;
-	--sr2-immersive-ink: #f5f5f0;
-	--sr2-immersive-silver: #c0c0c0;
-	position: relative;
-	background: var(--sr2-immersive-void);
-	color: var(--sr2-immersive-ink);
-	overflow: clip;
+  --sr2-immersive-accent: #b76e79;
+  --sr2-immersive-accent-rgb: 183, 110, 121;
+  --sr2-immersive-void: #0a0a0a;
+  --sr2-immersive-ink: #f5f5f0;
+  --sr2-immersive-silver: #c0c0c0;
+  position: relative;
+  background: var(--sr2-immersive-void);
+  color: var(--sr2-immersive-ink);
+  overflow: clip;
 }
 
 .sr2-immersive *,
 .sr2-immersive *::before,
 .sr2-immersive *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .sr2-immersive__progress {
-	position: fixed;
-	inset: 0 0 auto;
-	z-index: 80;
-	height: 2px;
-	background: rgba(192, 192, 192, 0.12);
-	pointer-events: none;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 80;
+  height: 2px;
+  background: rgba(192, 192, 192, 0.12);
+  pointer-events: none;
 }
 
 .sr2-immersive__progress span {
-	display: block;
-	width: 100%;
-	height: 100%;
-	background: var(--sr2-immersive-accent);
-	transform: scaleX(0);
-	transform-origin: left center;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--sr2-immersive-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
 }
 
 .sr2-immersive__entry {
-	position: relative;
-	display: grid;
-	place-items: end start;
-	min-height: max(42rem, 100svh);
-	isolation: isolate;
-	background: var(--sr2-immersive-void);
+  position: relative;
+  display: grid;
+  place-items: end start;
+  min-height: max(42rem, 100svh);
+  isolation: isolate;
+  background: var(--sr2-immersive-void);
 }
 
 .sr2-immersive__poster,
 .sr2-immersive__canvas,
 .sr2-immersive__entry-veil {
-	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .sr2-immersive__poster {
-	z-index: -3;
+  z-index: -3;
 }
 
 .sr2-immersive__poster img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .sr2-immersive__canvas {
-	z-index: -2;
-	display: none;
-	pointer-events: none;
+  z-index: -2;
+  display: none;
+  pointer-events: none;
 }
 
 .sr2-immersive.is-motion-ready .sr2-immersive__canvas {
-	display: block;
+  display: block;
 }
 
 .sr2-immersive.is-motion-ready .sr2-immersive__poster {
-	opacity: 0.54;
+  opacity: 0.54;
 }
 
 .sr2-immersive__entry-veil {
-	z-index: -1;
-	background:
-		linear-gradient(90deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.3) 54%, rgba(10, 10, 10, 0.1) 100%),
-		linear-gradient(0deg, #0a0a0a 0%, rgba(10, 10, 10, 0) 48%);
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.3) 54%, rgba(10, 10, 10, 0.1) 100%),
+    linear-gradient(0deg, #0a0a0a 0%, rgba(10, 10, 10, 0) 48%);
 }
 
 .sr2-immersive__entry-copy {
-	width: min(44rem, calc(100% - 2rem));
-	margin: clamp(6rem, 15vh, 11rem) clamp(1rem, 7vw, 7rem) clamp(3rem, 9vh, 7rem);
+  width: min(44rem, calc(100% - 2rem));
+  margin: clamp(6rem, 15vh, 11rem) clamp(1rem, 7vw, 7rem) clamp(3rem, 9vh, 7rem);
 }
 
 .sr2-immersive__kicker,
@@ -102,582 +102,615 @@
 .sr2-immersive__chapter-number,
 .sr2-immersive__chapter-nav,
 .sr2-immersive__aside {
-	font-family: Archivo, Arial, sans-serif;
-	font-size: clamp(0.69rem, 0.8vw, 0.82rem);
-	font-weight: 650;
-	letter-spacing: 0.16em;
-	line-height: 1.5;
-	text-transform: uppercase;
+  font-family: Archivo, Arial, sans-serif;
+  font-size: clamp(0.69rem, 0.8vw, 0.82rem);
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-transform: uppercase;
 }
 
 .sr2-immersive__kicker,
 .sr2-immersive__eyebrow,
 .sr2-immersive__chapter-number {
-	color: var(--sr2-immersive-accent);
+  color: var(--sr2-immersive-accent);
 }
 
 .sr2-immersive__direction {
-	max-width: 34rem;
-	margin: 1rem 0 0;
-	font-family: Hanken Grotesk, Arial, sans-serif;
-	font-size: clamp(1.1rem, 2.2vw, 1.75rem);
-	font-weight: 400;
-	line-height: 1.34;
-	text-wrap: balance;
+  max-width: 34rem;
+  margin: 1rem 0 0;
+  font-family:
+    Hanken Grotesk,
+    Arial,
+    sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.34;
+  text-wrap: balance;
 }
 
 .sr2-immersive__sr-title {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .sr2-immersive__enter,
 .sr2-immersive__portal-link {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	min-height: 48px;
-	margin-top: 1.75rem;
-	padding: 0.8rem 1.25rem;
-	border: 1px solid var(--sr2-immersive-accent);
-	color: var(--sr2-immersive-ink);
-	font-family: Archivo, Arial, sans-serif;
-	font-size: 0.78rem;
-	font-weight: 650;
-	letter-spacing: 0.14em;
-	text-decoration: none;
-	text-transform: uppercase;
-	transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 1.75rem;
+  padding: 0.8rem 1.25rem;
+  border: 1px solid var(--sr2-immersive-accent);
+  color: var(--sr2-immersive-ink);
+  font-family: Archivo, Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
 }
 
 .sr2-immersive__enter {
-	gap: 0.8rem;
+  gap: 0.8rem;
 }
 
 .sr2-immersive__enter:hover,
 .sr2-immersive__portal-link:hover {
-	background: var(--sr2-immersive-accent);
-	color: #0a0a0a;
-	transform: translateY(-2px);
+  background: var(--sr2-immersive-accent);
+  color: #0a0a0a;
+  transform: translateY(-2px);
 }
 
 .sr2-immersive__enter:focus-visible,
 .sr2-immersive__portal-link:focus-visible,
 .sr2-immersive__chapter-nav a:focus-visible,
 .sr2-immersive__hotspot:focus-visible {
-	outline: 3px solid #f5f5f0;
-	outline-offset: 4px;
+  outline: 3px solid #f5f5f0;
+  outline-offset: 4px;
 }
 
 .sr2-immersive__noscript {
-	position: absolute;
-	inset: auto 1rem 1rem;
-	z-index: 2;
-	margin: 0;
-	padding: 0.75rem 1rem;
-	background: #0a0a0a;
-	color: #f5f5f0;
-	font: 600 0.82rem/1.5 Archivo, Arial, sans-serif;
-	text-align: center;
+  position: absolute;
+  inset: auto 1rem 1rem;
+  z-index: 2;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: #0a0a0a;
+  color: #f5f5f0;
+  font:
+    600 0.82rem/1.5 Archivo,
+    Arial,
+    sans-serif;
+  text-align: center;
 }
 
 .sr2-immersive__chapter-nav {
-	position: sticky;
-	top: 0;
-	z-index: 20;
-	display: grid;
-	grid-template-columns: auto minmax(0, 1fr);
-	align-items: center;
-	gap: 1rem;
-	min-height: 64px;
-	padding: 0.5rem clamp(1rem, 4vw, 4rem);
-	border-block: 1px solid rgba(192, 192, 192, 0.22);
-	background: #0a0a0a;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  min-height: 64px;
+  padding: 0.5rem clamp(1rem, 4vw, 4rem);
+  border-block: 1px solid rgba(192, 192, 192, 0.22);
+  background: #0a0a0a;
 }
 
 .sr2-immersive__chapter-mark {
-	margin: 0;
-	color: var(--sr2-immersive-accent);
+  margin: 0;
+  color: var(--sr2-immersive-accent);
+}
+
+/* These small Love Hurts utility labels sit on the void; retain crimson at AA contrast. */
+.sr2-immersive--romantic-castle :is(.sr2-immersive__chapter-mark, .sr2-immersive__eyebrow),
+.sr2-immersive--romantic-castle .sr2-immersive__chapter-nav a span {
+  color: #ef5269;
 }
 
 .sr2-immersive__chapter-nav ol {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	gap: clamp(0.35rem, 2vw, 2.5rem);
-	padding: 0;
-	margin: 0;
-	list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(0.35rem, 2vw, 2.5rem);
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .sr2-immersive__chapter-nav a {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	min-height: 44px;
-	color: rgba(245, 245, 240, 0.66);
-	text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  color: rgba(245, 245, 240, 0.66);
+  text-decoration: none;
 }
 
 .sr2-immersive__chapter-nav a span {
-	color: var(--sr2-immersive-accent);
+  color: var(--sr2-immersive-accent);
 }
 
 .sr2-immersive__chapter-nav a[aria-current="step"] {
-	color: #f5f5f0;
+  color: #f5f5f0;
 }
 
 .sr2-immersive__prologue,
 .sr2-immersive__portal {
-	width: min(74rem, calc(100% - 2rem));
-	margin-inline: auto;
-	padding: clamp(5rem, 11vw, 10rem) clamp(0rem, 5vw, 5rem);
-	text-align: center;
+  width: min(74rem, calc(100% - 2rem));
+  margin-inline: auto;
+  padding: clamp(5rem, 11vw, 10rem) clamp(0rem, 5vw, 5rem);
+  text-align: center;
 }
 
 .sr2-immersive__prologue h2,
 .sr2-immersive__portal h2,
 .sr2-immersive__chapter-copy h2 {
-	margin: 0;
-	font-family: Cinzel, Georgia, serif;
-	font-weight: 500;
-	letter-spacing: 0.02em;
-	line-height: 1.04;
-	text-wrap: balance;
+  margin: 0;
+  font-family: Cinzel, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.04;
+  text-wrap: balance;
 }
 
 .sr2-immersive__prologue h2,
 .sr2-immersive__portal h2 {
-	font-size: clamp(2.5rem, 7vw, 6.8rem);
+  font-size: clamp(2.5rem, 7vw, 6.8rem);
 }
 
 .sr2-immersive__prologue > p:last-child,
 .sr2-immersive__portal > p:not(.sr2-immersive__eyebrow) {
-	max-width: 54rem;
-	margin: 1.5rem auto 0;
-	color: rgba(245, 245, 240, 0.74);
-	font-family: Hanken Grotesk, Arial, sans-serif;
-	font-size: clamp(1.05rem, 1.8vw, 1.4rem);
-	line-height: 1.7;
+  max-width: 54rem;
+  margin: 1.5rem auto 0;
+  color: rgba(245, 245, 240, 0.74);
+  font-family:
+    Hanken Grotesk,
+    Arial,
+    sans-serif;
+  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  line-height: 1.7;
 }
 
 .sr2-immersive__chapters {
-	display: grid;
-	gap: clamp(5rem, 11vw, 10rem);
-	padding: 0 clamp(1rem, 4vw, 4rem) clamp(5rem, 11vw, 10rem);
+  display: grid;
+  gap: clamp(5rem, 11vw, 10rem);
+  padding: 0 clamp(1rem, 4vw, 4rem) clamp(5rem, 11vw, 10rem);
 }
 
 .sr2-immersive__chapter {
-	position: relative;
-	display: grid;
-	grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.55fr);
-	align-items: center;
-	gap: clamp(2rem, 6vw, 7rem);
-	min-height: 72vh;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.55fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 7rem);
+  min-height: 72vh;
 }
 
 .sr2-immersive__chapter-media {
-	position: relative;
-	min-height: clamp(30rem, 68vw, 56rem);
-	overflow: hidden;
-	background: #0a0a0a;
+  position: relative;
+  min-height: clamp(30rem, 68vw, 56rem);
+  overflow: hidden;
+  background: #0a0a0a;
 }
 
 .sr2-immersive__chapter-media > img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	min-height: inherit;
-	object-fit: cover;
-	transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .sr2-immersive__chapter.is-active .sr2-immersive__chapter-media > img {
-	transform: scale(1.025);
+  transform: scale(1.025);
 }
 
 .sr2-immersive__chapter-shade {
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(180deg, rgba(10, 10, 10, 0.04), rgba(10, 10, 10, 0.58));
-	pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.04), rgba(10, 10, 10, 0.58));
+  pointer-events: none;
 }
 
 .sr2-immersive__chapter-copy {
-	max-width: 34rem;
+  max-width: 34rem;
 }
 
 .sr2-immersive__chapter-copy h2 {
-	font-size: clamp(2.1rem, 4.5vw, 5rem);
+  font-size: clamp(2.1rem, 4.5vw, 5rem);
 }
 
 .sr2-immersive__chapter-copy > p:not(.sr2-immersive__chapter-number):not(.sr2-immersive__aside) {
-	color: rgba(245, 245, 240, 0.72);
-	font-family: Hanken Grotesk, Arial, sans-serif;
-	font-size: clamp(1rem, 1.45vw, 1.25rem);
-	line-height: 1.75;
+  color: rgba(245, 245, 240, 0.72);
+  font-family:
+    Hanken Grotesk,
+    Arial,
+    sans-serif;
+  font-size: clamp(1rem, 1.45vw, 1.25rem);
+  line-height: 1.75;
 }
 
 .sr2-immersive__aside {
-	margin-top: 2rem;
-	padding-left: 1rem;
-	border-left: 1px solid var(--sr2-immersive-accent);
-	color: var(--sr2-immersive-accent);
+  margin-top: 2rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--sr2-immersive-accent);
+  color: var(--sr2-immersive-accent);
 }
 
 .sr2-immersive__hotspot {
-	position: absolute;
-	top: var(--hotspot-y);
-	left: var(--hotspot-x);
-	z-index: 3;
-	display: grid;
-	width: clamp(12rem, 18vw, 19rem);
-	overflow: hidden;
-	border: 1px solid rgba(var(--sr2-immersive-accent-rgb), 0.76);
-	background: rgba(10, 10, 10, 0.86);
-	color: #f5f5f0;
-	font-family: Archivo, Arial, sans-serif;
-	font-size: 0.76rem;
-	letter-spacing: 0.05em;
-	text-decoration: none;
-	transform: translate(-50%, -50%);
-	box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.46), inset 0 0 0 0.3rem rgba(10, 10, 10, 0.72);
-	backdrop-filter: blur(10px);
-	transition: border-color 240ms ease, transform 420ms cubic-bezier(0.22, 0.78, 0.26, 1);
+  position: absolute;
+  top: var(--hotspot-y);
+  left: var(--hotspot-x);
+  z-index: 3;
+  display: grid;
+  width: clamp(12rem, 18vw, 19rem);
+  overflow: hidden;
+  border: 1px solid rgba(var(--sr2-immersive-accent-rgb), 0.76);
+  background: rgba(10, 10, 10, 0.86);
+  color: #f5f5f0;
+  font-family: Archivo, Arial, sans-serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 1.25rem 3rem rgba(0, 0, 0, 0.46),
+    inset 0 0 0 0.3rem rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(10px);
+  transition:
+    border-color 240ms ease,
+    transform 420ms cubic-bezier(0.22, 0.78, 0.26, 1);
 }
 
 .sr2-immersive__hotspot::before,
 .sr2-immersive__hotspot::after {
-	position: absolute;
-	z-index: 2;
-	width: 2.4rem;
-	height: 2.4rem;
-	content: "";
-	pointer-events: none;
+  position: absolute;
+  z-index: 2;
+  width: 2.4rem;
+  height: 2.4rem;
+  content: "";
+  pointer-events: none;
 }
 
 .sr2-immersive__hotspot::before {
-	top: 0.45rem;
-	left: 0.45rem;
-	border-top: 1px solid var(--sr2-immersive-accent);
-	border-left: 1px solid var(--sr2-immersive-accent);
+  top: 0.45rem;
+  left: 0.45rem;
+  border-top: 1px solid var(--sr2-immersive-accent);
+  border-left: 1px solid var(--sr2-immersive-accent);
 }
 
 .sr2-immersive__hotspot::after {
-	right: 0.45rem;
-	bottom: 0.45rem;
-	border-right: 1px solid var(--sr2-immersive-accent);
-	border-bottom: 1px solid var(--sr2-immersive-accent);
+  right: 0.45rem;
+  bottom: 0.45rem;
+  border-right: 1px solid var(--sr2-immersive-accent);
+  border-bottom: 1px solid var(--sr2-immersive-accent);
 }
 
 .sr2-immersive__hotspot-media {
-	display: block;
-	aspect-ratio: 3 / 4;
-	overflow: hidden;
-	background: radial-gradient(circle at 50% 38%, rgba(var(--sr2-immersive-accent-rgb), 0.18), #0a0a0a 72%);
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 38%, rgba(var(--sr2-immersive-accent-rgb), 0.18), #0a0a0a 72%);
 }
 
 .sr2-immersive__hotspot-image {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center top;
-	filter: saturate(0.92) contrast(1.04);
-	transition: transform 700ms cubic-bezier(0.22, 0.78, 0.26, 1), filter 300ms ease;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.92) contrast(1.04);
+  transition:
+    transform 700ms cubic-bezier(0.22, 0.78, 0.26, 1),
+    filter 300ms ease;
 }
 
 .sr2-immersive__hotspot-copy {
-	display: grid;
-	gap: 0.35rem;
-	padding: 0.8rem 0.9rem 0.95rem;
-	border-top: 1px solid rgba(var(--sr2-immersive-accent-rgb), 0.44);
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.8rem 0.9rem 0.95rem;
+  border-top: 1px solid rgba(var(--sr2-immersive-accent-rgb), 0.44);
 }
 
 .sr2-immersive__hotspot-copy small,
 .sr2-immersive__hotspot-copy em {
-	color: var(--sr2-immersive-accent);
-	font-size: 0.58rem;
-	font-style: normal;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
+  color: var(--sr2-immersive-accent);
+  font-size: 0.58rem;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .sr2-immersive__hotspot-copy strong {
-	font-family: Cinzel, Georgia, serif;
-	font-size: 0.88rem;
-	font-weight: 500;
-	line-height: 1.25;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 .sr2-immersive__hotspot:hover,
 .sr2-immersive__hotspot:focus-visible {
-	border-color: var(--sr2-immersive-accent);
-	transform: translate(-50%, calc(-50% - 0.35rem));
+  border-color: var(--sr2-immersive-accent);
+  transform: translate(-50%, calc(-50% - 0.35rem));
 }
 
 .sr2-immersive__hotspot:hover .sr2-immersive__hotspot-image,
 .sr2-immersive__hotspot:focus-visible .sr2-immersive__hotspot-image {
-	filter: saturate(1.04) contrast(1.02);
-	transform: scale(1.035);
+  filter: saturate(1.04) contrast(1.02);
+  transform: scale(1.035);
 }
 
 .sr2-immersive__portal {
-	position: relative;
-	border-top: 1px solid rgba(var(--sr2-immersive-accent-rgb), 0.34);
+  position: relative;
+  border-top: 1px solid rgba(var(--sr2-immersive-accent-rgb), 0.34);
+}
+
+.sr2-immersive__portal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sr2-space-3);
 }
 
 .sr2-immersive__portal-link {
-	gap: 1rem;
+  gap: 1rem;
 }
 
 /* Signature: a measured city route that crosses and returns. */
 .sr2-immersive--city-tour .sr2-immersive__chapters {
-	position: relative;
+  position: relative;
 }
 
 .sr2-immersive--city-tour .sr2-immersive__chapters::before {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 50%;
-	width: 1px;
-	background: #d4af37;
-	content: "";
-	opacity: 0.3;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: #d4af37;
+  content: "";
+  opacity: 0.3;
 }
 
 .sr2-immersive--city-tour .sr2-immersive__chapter:nth-child(even) {
-	grid-template-columns: minmax(18rem, 0.55fr) minmax(0, 1.45fr);
+  grid-template-columns: minmax(18rem, 0.55fr) minmax(0, 1.45fr);
 }
 
 .sr2-immersive--city-tour .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-media {
-	grid-column: 2;
-	grid-row: 1;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .sr2-immersive--city-tour .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-copy {
-	grid-column: 1;
-	grid-row: 1;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 /* Black Rose: centered, cathedral-like symmetry and silver restraint. */
 .sr2-immersive--gothic-cathedral .sr2-immersive__chapter {
-	grid-template-columns: minmax(0, 1fr);
-	justify-items: center;
-	text-align: center;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  text-align: center;
 }
 
 .sr2-immersive--gothic-cathedral .sr2-immersive__chapter-media {
-	width: min(82rem, 100%);
-	border: 1px solid rgba(192, 192, 192, 0.28);
-	border-radius: 42vw 42vw 0 0;
+  width: min(82rem, 100%);
+  border: 1px solid rgba(192, 192, 192, 0.28);
+  border-radius: 42vw 42vw 0 0;
 }
 
 .sr2-immersive--gothic-cathedral .sr2-immersive__chapter-copy {
-	max-width: 50rem;
+  max-width: 50rem;
 }
 
 .sr2-immersive--gothic-cathedral .sr2-immersive__aside {
-	padding-left: 0;
-	border-left: 0;
+  padding-left: 0;
+  border-left: 0;
 }
 
 /* Love Hurts: fractured composition, never a borrowed Black Rose grid. */
 .sr2-immersive--romantic-castle .sr2-immersive__chapter {
-	grid-template-columns: minmax(17rem, 0.5fr) minmax(0, 1.5fr);
+  grid-template-columns: minmax(17rem, 0.5fr) minmax(0, 1.5fr);
 }
 
 .sr2-immersive--romantic-castle .sr2-immersive__chapter-media {
-	grid-column: 2;
-	grid-row: 1;
-	clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 92%);
+  grid-column: 2;
+  grid-row: 1;
+  clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 92%);
 }
 
 .sr2-immersive--romantic-castle .sr2-immersive__chapter-copy {
-	grid-column: 1;
-	grid-row: 1;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) {
-	grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.5fr);
+  grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.5fr);
 }
 
 .sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-media {
-	grid-column: 1;
-	clip-path: polygon(0 0, 94% 4%, 100% 94%, 8% 100%);
+  grid-column: 1;
+  clip-path: polygon(0 0, 94% 4%, 100% 94%, 8% 100%);
 }
 
 .sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-copy {
-	grid-column: 2;
+  grid-column: 2;
 }
 
 /* Kids Capsule: full-color throne first, then an illustrated storybook grid. */
 .sr2-immersive--heirs-room .sr2-immersive__entry-veil {
-	background: linear-gradient(0deg, #0a0a0a 0%, rgba(10, 10, 10, 0.08) 64%);
+  background: linear-gradient(0deg, #0a0a0a 0%, rgba(10, 10, 10, 0.08) 64%);
 }
 
 .sr2-immersive--heirs-room .sr2-immersive__entry-copy {
-	justify-self: center;
-	text-align: center;
+  justify-self: center;
+  text-align: center;
 }
 
 .sr2-immersive--heirs-room .sr2-immersive__chapters {
-	grid-template-columns: repeat(12, minmax(0, 1fr));
-	gap: clamp(2rem, 4vw, 4rem);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
 }
 
 .sr2-immersive--heirs-room .sr2-immersive__chapter {
-	grid-column: 1 / -1;
-	grid-template-columns: minmax(0, 1fr);
-	gap: 1.5rem;
-	min-height: 0;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  min-height: 0;
 }
 
 .sr2-immersive--heirs-room .sr2-immersive__chapter:nth-child(2),
 .sr2-immersive--heirs-room .sr2-immersive__chapter:nth-child(3) {
-	grid-column: span 6;
+  grid-column: span 6;
 }
 
 .sr2-immersive--heirs-room .sr2-immersive__chapter-media {
-	min-height: clamp(24rem, 50vw, 44rem);
-	border: 1px solid rgba(183, 110, 121, 0.46);
-	border-radius: 1.5rem 1.5rem 0 0;
+  min-height: clamp(24rem, 50vw, 44rem);
+  border: 1px solid rgba(183, 110, 121, 0.46);
+  border-radius: 1.5rem 1.5rem 0 0;
 }
 
 .sr2-immersive--heirs-room .sr2-immersive__chapter-copy {
-	max-width: 48rem;
-	padding-inline: clamp(0rem, 2vw, 2rem);
+  max-width: 48rem;
+  padding-inline: clamp(0rem, 2vw, 2rem);
 }
 
 @media (max-width: 800px) {
-	.sr2-immersive__entry {
-		min-height: 86svh;
-	}
+  .sr2-immersive__entry {
+    min-height: 86svh;
+  }
 
-	.sr2-immersive__entry-veil {
-		background: linear-gradient(0deg, #0a0a0a 0%, rgba(10, 10, 10, 0.2) 72%);
-	}
+  .sr2-immersive__entry-veil {
+    background: linear-gradient(0deg, #0a0a0a 0%, rgba(10, 10, 10, 0.2) 72%);
+  }
 
-	.sr2-immersive__entry-copy {
-		margin-inline: 1rem;
-	}
+  .sr2-immersive__entry-copy {
+    margin-inline: 1rem;
+  }
 
-	.sr2-immersive__chapter-nav {
-		grid-template-columns: 1fr;
-		padding: 0.35rem 1rem;
-		overflow-x: auto;
-	}
+  .sr2-immersive__chapter-nav {
+    grid-template-columns: 1fr;
+    padding: 0.35rem 1rem;
+    overflow-x: auto;
+  }
 
-	.sr2-immersive__chapter-mark {
-		display: none;
-	}
+  .sr2-immersive__chapter-mark {
+    display: none;
+  }
 
-	.sr2-immersive__chapter-nav ol {
-		justify-content: flex-start;
-		width: max-content;
-	}
+  .sr2-immersive__chapter-nav ol {
+    justify-content: flex-start;
+    width: max-content;
+  }
 
-	.sr2-immersive__chapter-nav a {
-		padding-inline: 0.4rem;
-	}
+  .sr2-immersive__chapter-nav a {
+    padding-inline: 0.4rem;
+  }
 
-	.sr2-immersive__chapter,
-	.sr2-immersive--city-tour .sr2-immersive__chapter:nth-child(even),
-	.sr2-immersive--romantic-castle .sr2-immersive__chapter,
-	.sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) {
-		grid-template-columns: minmax(0, 1fr);
-		gap: 1.5rem;
-		min-height: 0;
-	}
+  .sr2-immersive__chapter,
+  .sr2-immersive--city-tour .sr2-immersive__chapter:nth-child(even),
+  .sr2-immersive--romantic-castle .sr2-immersive__chapter,
+  .sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    min-height: 0;
+  }
 
-	.sr2-immersive__chapter-media,
-	.sr2-immersive--city-tour .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-media,
-	.sr2-immersive--romantic-castle .sr2-immersive__chapter-media,
-	.sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-media {
-		grid-column: 1;
-		grid-row: 1;
-		min-height: min(34rem, 116vw);
-	}
+  .sr2-immersive__chapter-media,
+  .sr2-immersive--city-tour .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-media,
+  .sr2-immersive--romantic-castle .sr2-immersive__chapter-media,
+  .sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-media {
+    grid-column: 1;
+    grid-row: 1;
+    min-height: min(34rem, 116vw);
+  }
 
-	.sr2-immersive__chapter-copy,
-	.sr2-immersive--city-tour .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-copy,
-	.sr2-immersive--romantic-castle .sr2-immersive__chapter-copy,
-	.sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-copy {
-		grid-column: 1;
-		grid-row: 2;
-	}
+  .sr2-immersive__chapter-copy,
+  .sr2-immersive--city-tour .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-copy,
+  .sr2-immersive--romantic-castle .sr2-immersive__chapter-copy,
+  .sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-copy {
+    grid-column: 1;
+    grid-row: 2;
+  }
 
-	.sr2-immersive--city-tour .sr2-immersive__chapters::before {
-		display: none;
-	}
+  .sr2-immersive--city-tour .sr2-immersive__chapters::before {
+    display: none;
+  }
 
-	.sr2-immersive--romantic-castle .sr2-immersive__chapter-media,
-	.sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-media {
-		clip-path: none;
-	}
+  .sr2-immersive--romantic-castle .sr2-immersive__chapter-media,
+  .sr2-immersive--romantic-castle .sr2-immersive__chapter:nth-child(even) .sr2-immersive__chapter-media {
+    clip-path: none;
+  }
 
-	.sr2-immersive--heirs-room .sr2-immersive__chapters {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr);
-	}
+  .sr2-immersive--heirs-room .sr2-immersive__chapters {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-	.sr2-immersive--heirs-room .sr2-immersive__chapter,
-	.sr2-immersive--heirs-room .sr2-immersive__chapter:nth-child(2),
-	.sr2-immersive--heirs-room .sr2-immersive__chapter:nth-child(3) {
-		grid-column: 1;
-	}
+  .sr2-immersive--heirs-room .sr2-immersive__chapter,
+  .sr2-immersive--heirs-room .sr2-immersive__chapter:nth-child(2),
+  .sr2-immersive--heirs-room .sr2-immersive__chapter:nth-child(3) {
+    grid-column: 1;
+  }
 
-	.sr2-immersive__hotspot {
-		top: auto !important;
-		right: 1rem;
-		bottom: 1rem;
-		left: 1rem !important;
-		width: auto;
-		grid-template-columns: 5.5rem minmax(0, 1fr);
-		transform: none;
-	}
+  .sr2-immersive__hotspot {
+    top: auto !important;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem !important;
+    width: auto;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    transform: none;
+  }
 
-	.sr2-immersive__hotspot:hover,
-	.sr2-immersive__hotspot:focus-visible {
-		transform: translateY(-0.2rem);
-	}
+  .sr2-immersive__hotspot:hover,
+  .sr2-immersive__hotspot:focus-visible {
+    transform: translateY(-0.2rem);
+  }
 
-	.sr2-immersive__hotspot-media {
-		aspect-ratio: 4 / 5;
-	}
+  .sr2-immersive__hotspot-media {
+    aspect-ratio: 4 / 5;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.sr2-immersive *,
-	.sr2-immersive *::before,
-	.sr2-immersive *::after {
-		scroll-behavior: auto !important;
-		transition-duration: 0.01ms !important;
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-	}
+  .sr2-immersive *,
+  .sr2-immersive *::before,
+  .sr2-immersive *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 
-	.sr2-immersive__canvas {
-		display: none !important;
-	}
+  .sr2-immersive__canvas {
+    display: none !important;
+  }
 
-	.sr2-immersive.is-motion-ready .sr2-immersive__poster {
-		opacity: 1;
-	}
+  .sr2-immersive.is-motion-ready .sr2-immersive__poster {
+    opacity: 1;
+  }
 }
 
 @media (forced-colors: active) {
-	.sr2-immersive__enter,
-	.sr2-immersive__portal-link,
-	.sr2-immersive__hotspot {
-		border: 2px solid ButtonText;
-	}
+  .sr2-immersive__enter,
+  .sr2-immersive__portal-link,
+  .sr2-immersive__hotspot {
+    border: 2px solid ButtonText;
+  }
 }

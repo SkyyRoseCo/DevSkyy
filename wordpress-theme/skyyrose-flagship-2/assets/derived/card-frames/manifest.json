@@ -1,0 +1,102 @@
+{
+  "collections": {
+    "black-rose": {
+      "narrow_rendition": {
+        "alpha_exact": true,
+        "bytes": 43492,
+        "height": 601,
+        "sha256": "d4182e8e8cfc49335a2111fdce5dc0ed5f37e567ed301626a23f14089e9bfcf0",
+        "src": "assets/derived/card-frames/black-rose-360w.webp",
+        "width": 360
+      },
+      "rendition": {
+        "alpha_exact": true,
+        "bytes": 47630,
+        "height": 641,
+        "sha256": "84e384ca31c5ed9c7dd73a50ecf1b6dff100a79a0e311cf10665afbbdd61efff",
+        "src": "assets/derived/card-frames/black-rose-384w.webp",
+        "width": 384
+      },
+      "source": "assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+      "source_height": 1068,
+      "source_sha256": "37809df50e66216e624742ee1addf0fff822509fcd8951e1483af273bf50bd9d",
+      "source_width": 640
+    },
+    "kids-capsule": {
+      "narrow_rendition": {
+        "alpha_exact": true,
+        "bytes": 43088,
+        "height": 601,
+        "sha256": "812adf5aae02d42a7fc1c64fb8eefcfff0df8ecd0d92d0e947975074108e246c",
+        "src": "assets/derived/card-frames/kids-capsule-360w.webp",
+        "width": 360
+      },
+      "rendition": {
+        "alpha_exact": true,
+        "bytes": 49014,
+        "height": 641,
+        "sha256": "3e592a8504ee6909b0181ed2cd0a8970366d0c1ab5f956ea04cee893632294ef",
+        "src": "assets/derived/card-frames/kids-capsule-384w.webp",
+        "width": 384
+      },
+      "source": "assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp",
+      "source_height": 1068,
+      "source_sha256": "99480ca73a7d1fe7e0b7a0d2ac891b523fcdb8f1101a5210ec764e9414cb8cc9",
+      "source_width": 640
+    },
+    "love-hurts": {
+      "narrow_rendition": {
+        "alpha_exact": true,
+        "bytes": 46122,
+        "height": 605,
+        "sha256": "e3a765a52c9feffc6ce90e21cb072d4550d7aba222f41f9b8f04d43c007e4ede",
+        "src": "assets/derived/card-frames/love-hurts-360w.webp",
+        "width": 360
+      },
+      "rendition": {
+        "alpha_exact": true,
+        "bytes": 51128,
+        "height": 645,
+        "sha256": "61c7b2fa183643c5963970a46aab740796cf53ec9d73139d56bff902c702acbb",
+        "src": "assets/derived/card-frames/love-hurts-384w.webp",
+        "width": 384
+      },
+      "source": "assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp",
+      "source_height": 1075,
+      "source_sha256": "d3294b315a023ce6d9fadd0a9b87742f00749200b2efa3ba1ce87fab43eca190",
+      "source_width": 640
+    },
+    "signature": {
+      "narrow_rendition": {
+        "alpha_exact": true,
+        "bytes": 43386,
+        "height": 602,
+        "sha256": "e4c5a8caa8cce152018bfe62cd369d13131dcdc6118a8555eedad4b63726dcb9",
+        "src": "assets/derived/card-frames/signature-360w.webp",
+        "width": 360
+      },
+      "rendition": {
+        "alpha_exact": true,
+        "bytes": 49150,
+        "height": 642,
+        "sha256": "9cb9b3a26d105b6ec59cc9c8298cf88aeade70282834e438a2776be28176de75",
+        "src": "assets/derived/card-frames/signature-384w.webp",
+        "width": 384
+      },
+      "source": "assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+      "source_height": 1070,
+      "source_sha256": "554c2372bc1a9cf61aefd5782b9792db26522698ee8e860ae2befcde9302857d",
+      "source_width": 640
+    }
+  },
+  "recipe": {
+    "exact": true,
+    "libwebp": "1.6.0",
+    "method": 6,
+    "pillow": "12.3.0",
+    "quality": 80,
+    "resampling": "LANCZOS",
+    "width": 384
+  },
+  "schema": "skyyrose.frame-delivery.v1"
+}

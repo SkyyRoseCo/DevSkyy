@@ -1,0 +1,94 @@
+/* House editorial system. Existing licensed faces; original marks stay artwork. */
+.sr2-lookbook { --lb-paper: #f2ecdf; --lb-ink: #201c18; --lb-muted: #665b50; --lb-rule: #b9a68f; --lb-metal: #b76e79; --lb-impact: var(--sr2-font-ui, Anton, sans-serif); --lb-reading: var(--sr2-font-body, "Hanken Grotesk", sans-serif); --lb-chapter: var(--sr2-font-caps, Cinzel, serif); color: var(--lb-ink); background: var(--lb-paper); padding-top: var(--sr2-header, 76px); font: 400 1rem/1.6 var(--lb-reading); }
+.sr2-lookbook *, .sr2-lookbook *::before, .sr2-lookbook *::after { box-sizing: border-box; }
+.sr2-lookbook a { color: inherit; }
+.sr2-lookbook :focus-visible { outline: 3px solid currentColor; outline-offset: 5px; box-shadow: none; }
+.sr2-lookbook__cover, .sr2-lookbook__chapter, .sr2-lookbook__closing { padding: clamp(1.25rem, 4vw, 4rem); }
+.sr2-lookbook__cover { background: linear-gradient(115deg, #f2ecdf 68%, #e6dac8); }
+.sr2-lookbook__folio { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 0 0 3.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--lb-rule); font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.sr2-lookbook__cover h1 { margin: 0; font: 400 clamp(4rem, 13.4vw, 13rem)/.96 var(--lb-impact); text-transform: uppercase; letter-spacing: -.025em; font-size: clamp(3.1rem, 9vw, 8.5rem); text-align: center; line-height: 1.06; }
+.sr2-lookbook__cover h1 em { display: inline-block; margin-block-start: .05em; font: 400 .67em/1.1 var(--lb-chapter); text-transform: none; letter-spacing: -.065em; }
+.sr2-lookbook__cover-note { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 1.5rem; margin-block: 2.5rem 3rem; }
+.sr2-lookbook__cover-note p { max-width: 34ch; margin: 0; font-size: clamp(1rem, 1.6vw, 1.35rem); }
+.sr2-lookbook__link { display: inline-flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 48px; padding-block: .75rem; border-bottom: 1px solid currentColor; text-decoration: none; font-size: .85rem; font-weight: 650; letter-spacing: .045em; }
+.sr2-lookbook__link span { font-size: 1.5rem; transition: transform 180ms var(--sr2-ease-enter, ease-out); }
+.sr2-lookbook__link:hover span { transform: translate(3px, -3px); }
+.sr2-lookbook__index { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--lb-rule); }
+.sr2-lookbook__index a { display: flex; gap: 1rem; align-items: center; padding: 1.5rem .5rem; text-decoration: none; font-weight: 600; }
+.sr2-lookbook__index span { color: var(--lb-muted); font-size: .7rem; }
+.sr2-lookbook__index a:hover { text-decoration: underline; text-underline-offset: .3em; }
+.sr2-lookbook__chapter { scroll-margin-top: calc(var(--sr2-header, 76px) + 1rem); padding-block: clamp(3rem, 7vw, 7rem); border-top: 1px solid var(--lb-rule); }
+.sr2-lookbook__chapter[data-collection="black-rose"] { --lb-ink: #f2ecdf; --lb-muted: #bdb3a8; --lb-rule: #514b43; color: var(--lb-ink); background: #111110; }
+.sr2-lookbook__chapter[data-collection="love-hurts"] { --lb-paper: #eaded7; background: var(--lb-paper); }
+.sr2-lookbook__chapter[data-collection="kids-capsule"] { --lb-paper: #ede2cb; background: var(--lb-paper); }
+.sr2-lookbook__chapter-head { display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(12rem, .45fr); align-items: end; gap: clamp(1rem, 3vw, 3rem); margin-bottom: 2rem; }
+.sr2-lookbook__number { align-self: start; font: 400 clamp(3rem, 7vw, 7rem)/1 var(--lb-impact); color: var(--lb-muted); }
+.sr2-lookbook__eyebrow { margin: 0 0 1rem; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.sr2-lookbook__chapter-head h2 { margin: 0; font: 400 clamp(2.35rem, 6vw, 6rem)/1.05 var(--lb-chapter); letter-spacing: -.05em; overflow-wrap: anywhere; }
+.sr2-lookbook__chapter-head > p { max-width: 23ch; margin: 0; font-size: 1.1rem; color: var(--lb-muted); }
+.sr2-lookbook__scene { margin: 0; }
+.sr2-lookbook__motion { position: relative; background: #111110; }
+.sr2-lookbook__motion [data-recovery-hero-video] { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; opacity: 0; }
+.sr2-lookbook__motion:is(.is-hero-poster-ready, .is-hero-video-ready) [data-recovery-hero-video] { opacity: 1; }
+.sr2-lookbook__scene img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: #111110; }
+.sr2-lookbook__scene figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1rem; padding-block: .85rem; border-bottom: 1px solid var(--lb-rule); color: var(--lb-muted); font-size: .7rem; }
+.sr2-lookbook__edit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 7vw, 7rem); padding-block: clamp(2.5rem, 6vw, 6rem) 1rem; }
+.sr2-lookbook__story { max-width: 38rem; }
+.sr2-lookbook__story h3 { margin: 0 0 1.5rem; max-width: 13ch; font: 400 clamp(2.75rem, 5vw, 5rem)/1 var(--lb-impact); letter-spacing: -.02em; text-transform: uppercase; }
+.sr2-lookbook__story > p:not(.sr2-lookbook__eyebrow) { max-width: 39ch; font-size: 1.1rem; color: var(--lb-muted); }
+.sr2-lookbook__destinations { display: flex; flex-wrap: wrap; gap: 1rem 2rem; padding-block-start: 1rem; }
+.sr2-lookbook__product { padding: clamp(1rem, 2vw, 2rem); color: #f5f5f0; background: #111; }
+.sr2-lookbook__product .sr2-world-products { width: 100%; }
+.sr2-lookbook__closing { padding-block: 5rem; background: #201c18; color: #f2ecdf; }
+.sr2-lookbook__closing h2 { max-width: 13ch; margin: 1rem 0 2rem; font: 400 clamp(3rem, 8vw, 8rem)/1 var(--lb-chapter); letter-spacing: -.05em; margin-inline: auto; text-align: center; font-size: clamp(2.5rem, 6vw, 6rem); line-height: 1.08; }
+@media (max-width: 47.99em) {
+  .sr2-lookbook__folio { margin-bottom: 2rem; }
+  .sr2-lookbook__index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sr2-lookbook__index a { padding-block: 1rem; gap: .65rem; font-size: .85rem; }
+  .sr2-lookbook__chapter-head { grid-template-columns: auto minmax(0, 1fr); }
+  .sr2-lookbook__chapter-head > p { grid-column: 2; }
+  .sr2-lookbook__edit { grid-template-columns: minmax(0, 1fr); }
+  .sr2-lookbook__story { max-width: none; }
+  .sr2-lookbook__cover h1 { font-size: clamp(3.1rem, 9vw, 8.5rem); text-align: center; line-height: 1.06; }
+}
+@media (prefers-reduced-motion: reduce) { .sr2-lookbook__link span { transition: none; transform: none; } }
+@media (forced-colors: active) { .sr2-lookbook__index, .sr2-lookbook__chapter, .sr2-lookbook__scene figcaption { border-color: CanvasText; } }
+
+/* Scene-to-garment continuity uses the same approved renderer as collections. */
+.sr2-lookbook__shopping-note { max-width: 48ch; color: var(--lb-muted); }
+.sr2-lookbook__scene-index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-block: 1px solid var(--lb-rule); margin: 1.5rem 0 2rem; }
+.sr2-lookbook__scene-index a { display: flex; align-items: center; gap: 1rem; min-height: 56px; padding: 1rem .5rem; font-size: .875rem; text-decoration-thickness: 1px; text-underline-offset: .3em; }
+.sr2-lookbook__scene-index span { font-family: var(--sr2-font-index); font-size: .75rem; color: var(--lb-muted); }
+.sr2-lookbook__looks { display: grid; gap: clamp(2.5rem, 6vw, 6rem); }
+.sr2-lookbook__look { min-width: 0; scroll-margin-top: calc(var(--sr2-header, 76px) + 1rem); }
+.sr2-lookbook__look .sr2-world--hero-composed { width: 100%; max-width: none; flex-basis: auto; border: 1px solid var(--lb-rule); border-radius: 0; }
+.sr2-lookbook__look .sr2-hero-commerce__details { background: #111110; }
+.sr2-lookbook__look .sr2-hero-commerce__story h3 { font: 400 clamp(2rem, 4vw, 4.5rem)/1.08 var(--lb-impact); letter-spacing: -.015em; text-transform: uppercase; overflow-wrap: anywhere; }
+.sr2-lookbook__look .sr2-hero-commerce__story > p { font-family: var(--lb-reading); color: #bdb3a8; }
+.sr2-lookbook__look .sr2-hero-commerce__products h4 { font: 600 .875rem/1.4 var(--lb-reading); letter-spacing: .1em; }
+.sr2-lookbook__look .sr2-hero-commerce__products a > span { font: 600 clamp(1rem, 1.4vw, 1.2rem)/1.4 var(--lb-reading); }
+.sr2-lookbook__look .sr2-hero-commerce__products a > small { font: 600 1rem/1.4 var(--lb-reading); font-variant-numeric: tabular-nums; }
+.sr2-lookbook__look .sr2-hero-commerce__products a > em { font: 400 .875rem/1.5 var(--lb-reading); }
+.sr2-lookbook__look .sr2-hero-commerce__products a { min-height: 88px; }
+.sr2-lookbook__atmosphere { margin-top: 2rem; border-block: 1px solid var(--lb-rule); }
+.sr2-lookbook__atmosphere summary { min-height: 56px; padding-block: 1rem; font-weight: 600; cursor: pointer; }
+.sr2-lookbook__atmosphere[open] summary { margin-bottom: 1rem; }
+.sr2-lookbook__edit--story { grid-template-columns: minmax(0, 1fr); }
+.sr2-lookbook__edit--story .sr2-lookbook__story { max-width: 60rem; }
+@media (min-width: 64em) {
+  .sr2-lookbook__edit--story .sr2-lookbook__story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem 3rem; }
+  .sr2-lookbook__edit--story .sr2-lookbook__eyebrow { grid-column: 1 / -1; }
+  .sr2-lookbook__edit--story .sr2-lookbook__destinations { grid-column: 1 / -1; }
+}
+@media (max-width: 47.99em) {
+  .sr2-lookbook__scene-index { grid-template-columns: minmax(0, 1fr); }
+  .sr2-lookbook__scene-index a + a { border-top: 1px solid var(--lb-rule); }
+  .sr2-lookbook__look .sr2-hero-commerce__details { padding: 1.25rem; }
+  .sr2-lookbook__look .sr2-hero-commerce__products a { grid-template-columns: minmax(0, 1fr); }
+}
+/* Retain ivory editorial rhythm and every film; align chapter typography. */
+.sr2-lookbook__cover-note { flex-direction: column; align-items: center; text-align: center; margin-block: 2rem; }
+.sr2-lookbook__cover-note p { max-width: 44ch; }
+.sr2-lookbook__chapter h2 { text-align: center; line-height: 1.12; }
+.sr2-lookbook__closing { text-align: center; }
+.sr2-lookbook__closing > p { margin-inline: auto; max-width: 48ch; }

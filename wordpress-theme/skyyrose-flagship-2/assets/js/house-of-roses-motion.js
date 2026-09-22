@@ -1,8 +1,8 @@
 /**
  * House of Roses motion controller.
  *
- * Progressive enhancement only: the server-rendered header reel, film poster,
- * transcript, chapter links, and commerce links remain complete without this
+ * Progressive enhancement only: the server-rendered film poster, transcript,
+ * chapter links, and commerce links remain complete without this
  * file. CSS owns composition and transitions; this controller owns state,
  * cancellation, media eligibility, and accessible controls.
  *
@@ -13,19 +13,10 @@
   'use strict';
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const expandedHeader = window.matchMedia('(min-width: 64em)');
   const filmViewport = window.matchMedia('(min-width: 48em)');
+  const filmScrollWorld = window.matchMedia('(min-width: 75em) and (hover: hover) and (pointer: fine)');
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   const controllers = [];
-  const focusableSelector = [
-    'a[href]',
-    'button:not([disabled])',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
-    '[tabindex]',
-    '[contenteditable="true"]'
-  ].join(',');
 
   const dataSaving = () => Boolean(connection && connection.saveData);
   const clamp = (value, minimum, maximum) => Math.min(maximum, Math.max(minimum, value));
@@ -39,240 +30,6 @@
     }
   };
 
-  const restoreFocusable = (container) => {
-    container.querySelectorAll('[data-house-original-tabindex]').forEach((element) => {
-      const original = element.dataset.houseOriginalTabindex;
-      if (original === '') {
-        element.removeAttribute('tabindex');
-      } else {
-        element.setAttribute('tabindex', original);
-      }
-      delete element.dataset.houseOriginalTabindex;
-    });
-  };
-
-  const makeSlideAvailable = (slide, available) => {
-    if (available) {
-      slide.removeAttribute('aria-hidden');
-      slide.removeAttribute('inert');
-      restoreFocusable(slide);
-      return;
-    }
-
-    slide.setAttribute('aria-hidden', 'true');
-    slide.setAttribute('inert', '');
-    slide.querySelectorAll(focusableSelector).forEach((element) => {
-      if (!Object.prototype.hasOwnProperty.call(element.dataset, 'houseOriginalTabindex')) {
-        element.dataset.houseOriginalTabindex = element.getAttribute('tabindex') || '';
-      }
-      element.setAttribute('tabindex', '-1');
-    });
-  };
-
-  const initHeaderReel = (root) => {
-    if (root.dataset.houseController === 'ready') return;
-
-    const track = root.querySelector('[data-house-header-track]');
-    const slides = Array.from(root.querySelectorAll('[data-house-header-slide]'));
-    if (!track || slides.length < 2) return;
-
-    const previous = root.querySelector('[data-house-header-prev]');
-    const next = root.querySelector('[data-house-header-next]');
-    const toggle = root.querySelector('[data-house-header-toggle]');
-    const count = root.querySelector('[data-house-header-count]');
-    const status = root.querySelector('[data-house-header-status]');
-    const abortController = new AbortController();
-    const { signal } = abortController;
-    const interval = clamp(Number.parseInt(root.dataset.houseHeaderInterval || '6500', 10) || 6500, 5000, 15000);
-    let activeIndex = clamp(Number.parseInt(root.dataset.houseHeaderStart || '0', 10) || 0, 0, slides.length - 1);
-    let timeout = 0;
-    let scrollFrame = 0;
-    let userPaused = false;
-    let pointerInside = false;
-    let focusInside = false;
-    let outsideViewport = false;
-    let observer = null;
-
-    root.dataset.houseController = 'ready';
-
-    const carouselEligible = () => expandedHeader.matches && !reducedMotion.matches && !dataSaving();
-
-    const describeSlide = (slide, index) => {
-      const label = slide.dataset.houseHeaderLabel || slide.getAttribute('aria-label') || `Collection scene ${index + 1}`;
-      return `${label}. ${index + 1} of ${slides.length}.`;
-    };
-
-    const announce = (source) => {
-      if (!status || source === 'auto' || source === 'scroll') return;
-      status.textContent = describeSlide(slides[activeIndex], activeIndex);
-    };
-
-    const applySlideState = (source = 'sync') => {
-      const enhanced = carouselEligible();
-      root.dataset.houseHeaderMode = enhanced ? 'carousel' : 'native';
-      root.dataset.houseHeaderIndex = String(activeIndex);
-
-      slides.forEach((slide, index) => {
-        const active = index === activeIndex;
-        slide.classList.toggle('is-active', active);
-        slide.dataset.houseHeaderActive = active ? 'true' : 'false';
-        makeSlideAvailable(slide, !enhanced || active);
-      });
-
-      if (count) {
-        count.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
-      }
-
-      root.dispatchEvent(new CustomEvent('house:headerchange', {
-        bubbles: true,
-        detail: {
-          index: activeIndex,
-          label: slides[activeIndex].dataset.houseHeaderLabel || '',
-          source
-        }
-      }));
-      announce(source);
-    };
-
-    const state = () => {
-      if (!carouselEligible()) return 'static';
-      if (document.hidden) return 'paused-hidden';
-      if (outsideViewport) return 'paused-offscreen';
-      if (userPaused) return 'paused-user';
-      if (focusInside) return 'paused-focus';
-      if (pointerInside) return 'paused-hover';
-      return 'running';
-    };
-
-    const clearAdvance = () => {
-      if (timeout) window.clearTimeout(timeout);
-      timeout = 0;
-    };
-
-    const scheduleAdvance = () => {
-      clearAdvance();
-      if (state() !== 'running') return;
-      timeout = window.setTimeout(() => {
-        activeIndex = (activeIndex + 1) % slides.length;
-        applySlideState('auto');
-        syncState();
-      }, interval);
-    };
-
-    const syncState = () => {
-      const current = state();
-      root.dataset.houseHeaderState = current;
-      if (toggle) {
-        toggle.hidden = !carouselEligible();
-        toggle.setAttribute('aria-pressed', String(userPaused));
-        toggle.textContent = userPaused ? 'Resume collection scenes' : 'Pause collection scenes';
-      }
-      if (current === 'running') {
-        scheduleAdvance();
-      } else {
-        clearAdvance();
-      }
-    };
-
-    const scrollNativeTrack = () => {
-      if (carouselEligible()) return;
-      const slide = slides[activeIndex];
-      const left = slide.offsetLeft - track.offsetLeft - Math.max(0, (track.clientWidth - slide.clientWidth) / 2);
-      track.scrollTo({ left: Math.max(0, left), behavior: reducedMotion.matches ? 'auto' : 'smooth' });
-    };
-
-    const setIndex = (nextIndex, source) => {
-      activeIndex = (nextIndex + slides.length) % slides.length;
-      applySlideState(source);
-      scrollNativeTrack();
-      syncState();
-    };
-
-    previous?.addEventListener('click', () => setIndex(activeIndex - 1, 'previous'), { signal });
-    next?.addEventListener('click', () => setIndex(activeIndex + 1, 'next'), { signal });
-    toggle?.addEventListener('click', () => {
-      userPaused = !userPaused;
-      syncState();
-      announce('toggle');
-    }, { signal });
-
-    root.addEventListener('pointerenter', () => {
-      pointerInside = true;
-      syncState();
-    }, { signal });
-    root.addEventListener('pointerleave', () => {
-      pointerInside = false;
-      syncState();
-    }, { signal });
-    root.addEventListener('focusin', () => {
-      focusInside = true;
-      syncState();
-    }, { signal });
-    root.addEventListener('focusout', (event) => {
-      focusInside = root.contains(event.relatedTarget);
-      syncState();
-    }, { signal });
-    root.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape' || userPaused || !carouselEligible()) return;
-      userPaused = true;
-      syncState();
-      toggle?.focus();
-    }, { signal });
-
-    track.addEventListener('scroll', () => {
-      if (carouselEligible() || scrollFrame) return;
-      scrollFrame = window.requestAnimationFrame(() => {
-        scrollFrame = 0;
-        const center = track.scrollLeft + (track.clientWidth / 2);
-        let closestIndex = activeIndex;
-        let closestDistance = Number.POSITIVE_INFINITY;
-        slides.forEach((slide, index) => {
-          const slideCenter = slide.offsetLeft + (slide.clientWidth / 2);
-          const distance = Math.abs(center - slideCenter);
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestIndex = index;
-          }
-        });
-        if (closestIndex !== activeIndex) {
-          activeIndex = closestIndex;
-          applySlideState('scroll');
-        }
-      });
-    }, { passive: true, signal });
-
-    const preferenceChanged = () => {
-      applySlideState('preference');
-      syncState();
-    };
-    listenToMedia(reducedMotion, preferenceChanged, signal);
-    listenToMedia(expandedHeader, preferenceChanged, signal);
-    connection?.addEventListener?.('change', preferenceChanged, { signal });
-    document.addEventListener('visibilitychange', syncState, { signal });
-
-    if ('IntersectionObserver' in window) {
-      observer = new IntersectionObserver((entries) => {
-        outsideViewport = !entries[0]?.isIntersecting;
-        syncState();
-      }, { threshold: 0.05 });
-      observer.observe(root);
-    }
-
-    const cleanup = () => {
-      clearAdvance();
-      if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
-      observer?.disconnect();
-      abortController.abort();
-      slides.forEach((slide) => makeSlideAvailable(slide, true));
-      delete root.dataset.houseController;
-      delete root.dataset.houseHeaderMode;
-      delete root.dataset.houseHeaderState;
-    };
-
-    applySlideState('initial');
-    syncState();
-    controllers.push(cleanup);
-  };
 
   const initFilm = (root) => {
     if (root.dataset.houseController === 'ready') return;
@@ -285,6 +42,7 @@
     const toggle = root.querySelector('[data-house-film-toggle]');
     const sound = root.querySelector('[data-house-film-sound]');
     const status = root.querySelector('[data-house-film-status]');
+    const scrollStage = root.querySelector('[data-scroll-world-stage]');
     const chapters = Array.from(root.querySelectorAll('[data-house-film-chapter][data-start]'));
     const abortController = new AbortController();
     const { signal } = abortController;
@@ -295,6 +53,10 @@
     let completed = false;
     let autoplayAttempted = false;
     let resumeMutedPlayback = false;
+    let scrollWorldActive = false;
+    let scrollStart = 0;
+    let scrollDistance = 1;
+    let scrollFrame = 0;
 
     root.dataset.houseController = 'ready';
     video.muted = true;
@@ -400,18 +162,78 @@
       root.style.setProperty('--house-film-progress', video.duration ? String(currentTime / video.duration) : '0');
     };
 
+    const updateScrollWorld = () => {
+      scrollFrame = 0;
+      if (!scrollWorldActive || !video.duration || document.hidden) return;
+      const ratio = clamp((window.scrollY - scrollStart) / scrollDistance, 0, 1);
+      const targetTime = ratio * video.duration;
+      if (Math.abs(video.currentTime - targetTime) > 0.03) video.currentTime = targetTime;
+      updateChapter();
+    };
+
+    const requestScrollWorldUpdate = () => {
+      if (!scrollWorldActive || scrollFrame) return;
+      scrollFrame = window.requestAnimationFrame(updateScrollWorld);
+    };
+
+    const disableScrollWorld = () => {
+      if (!scrollWorldActive) return;
+      scrollWorldActive = false;
+      if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
+      scrollFrame = 0;
+      root.classList.remove('is-scroll-world');
+      root.style.height = '';
+    };
+
+    const layoutScrollWorld = () => {
+      const eligible = root.hasAttribute('data-house-film-scroll-world')
+        && scrollStage
+        && filmScrollWorld.matches
+        && !reducedMotion.matches
+        && mediaEligible()
+        && loaded
+        && video.duration;
+      if (!eligible) {
+        disableScrollWorld();
+        return;
+      }
+      scrollWorldActive = true;
+      video.pause();
+      root.classList.add('is-scroll-world');
+      const headerHeight = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sr2-header')) || 0;
+      const worldTop = root.getBoundingClientRect().top + window.scrollY;
+      scrollDistance = Math.max(window.innerHeight * 4, chapters.length * window.innerHeight * 0.72);
+      scrollStart = worldTop - headerHeight;
+      root.style.height = `${scrollStage.offsetHeight + scrollDistance}px`;
+      requestScrollWorldUpdate();
+    };
+
     const maybeAutoplay = () => {
+      if (root.hasAttribute('data-house-film-scroll-world') && filmScrollWorld.matches && !reducedMotion.matches) return;
       const requested = root.dataset.houseFilmAutoplay === 'true' || root.dataset.houseFilmAutoplay === 'once';
       if (!requested || autoplayAttempted || !inView || document.hidden || !mediaEligible()) return;
       autoplayAttempted = true;
       play('auto');
     };
 
+    const prepareScrollWorld = () => {
+      if (
+        !root.hasAttribute('data-house-film-scroll-world')
+        || !filmScrollWorld.matches
+        || reducedMotion.matches
+        || !inView
+        || !mediaEligible()
+      ) return false;
+      load();
+      if (video.readyState >= 1) layoutScrollWorld();
+      return true;
+    };
+
     const eligibilityChanged = () => {
       if (!mediaEligible()) {
         unload();
         setStatus('poster');
-      } else if (inView) {
+      } else if (inView && !prepareScrollWorld()) {
         maybeAutoplay();
       }
       syncControls();
@@ -435,6 +257,7 @@
 
     video.addEventListener('loadedmetadata', () => {
       setStatus('ready');
+      layoutScrollWorld();
       syncControls();
     }, { signal });
     video.addEventListener('play', syncControls, { signal });
@@ -465,13 +288,18 @@
 
     listenToMedia(reducedMotion, eligibilityChanged, signal);
     listenToMedia(filmViewport, eligibilityChanged, signal);
+    listenToMedia(filmScrollWorld, layoutScrollWorld, signal);
     connection?.addEventListener?.('change', eligibilityChanged, { signal });
+    window.addEventListener('scroll', requestScrollWorldUpdate, { passive: true, signal });
+    window.addEventListener('resize', layoutScrollWorld, { passive: true, signal });
 
     if ('IntersectionObserver' in window) {
       observer = new IntersectionObserver((entries) => {
         inView = Boolean(entries[0]?.isIntersecting);
         if (inView) {
-          if (resumeMutedPlayback && mediaEligible()) {
+          if (prepareScrollWorld()) {
+            resumeMutedPlayback = false;
+          } else if (resumeMutedPlayback && mediaEligible()) {
             resumeMutedPlayback = false;
             play('auto-resume');
           } else {
@@ -489,6 +317,7 @@
 
     const cleanup = () => {
       video.pause();
+      disableScrollWorld();
       observer?.disconnect();
       abortController.abort();
       root.style.removeProperty('--house-film-progress');
@@ -501,7 +330,6 @@
   };
 
   const init = () => {
-    document.querySelectorAll('[data-house-header-reel]').forEach(initHeaderReel);
     document.querySelectorAll('[data-house-film]').forEach(initFilm);
   };
 

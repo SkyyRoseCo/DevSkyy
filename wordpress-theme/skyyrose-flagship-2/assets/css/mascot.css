@@ -302,548 +302,65 @@
 	100% { transform: translateY(0) rotate(0deg); }
 }
 
-/* --- Widget Container — settled end-state, no motion by default --- */
-
-.skyyrose-mascot {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	z-index: 9990;
-	display: flex;
-	flex-direction: row-reverse;
-	align-items: flex-end;
-	gap: 12px;
-	pointer-events: none;
+/* Ask Skyy: the canonical character owns a native, invited conversation. */
+body #skyyrose-mascot-recall {
+ position: static; inset: auto !important;
+ z-index: var(--sr2-layer-guide); display: inline-flex; align-items: center; gap: var(--sr2-space-2);
+ width: auto; min-width: 44px; min-height: var(--sr2-target-size); margin: 0; padding: 0;
+ border: 0; border-radius: var(--sr2-radius-control); background: transparent;
+ color: var(--sr2-color-text); font-family: var(--sr2-font-body); font-size: .8125rem; line-height: 1.2; text-decoration: none;
+ box-shadow: none; cursor: pointer;
 }
-
-/* Consent-banner clearance (audit D5): the cookie banner (z 9998,
-   cookie-consent.css) sits above this widget (z 9990) and was clipping it.
-   While <html> carries .skyyrose-consent-open the clearance var is non-zero
-   and lifts the widget above the banner; it collapses back to 20px once
-   consent is resolved. */
-.skyyrose-consent-open .skyyrose-mascot {
-	bottom: calc(20px + var(--skyyrose-consent-clearance, 0px));
+#skyyrose-mascot-recall img { width: 28px; height: 28px; object-fit: contain; }
+#skyyrose-mascot-recall small { display: none; }
+body #skyy-ask-dialog {
+ width: min(42rem, calc(100% - 2rem)); max-width: none; max-height: calc(100dvh - 2rem); margin: auto;
+ padding: var(--sr2-space-6); border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control);
+ background: var(--sr2-material-glass, var(--sr2-surface-dialog)); color: var(--sr2-color-text); font-family: var(--sr2-font-body); overflow: auto;
 }
-
-/* Black Rose walks in from the left; everyone else from the right. */
-.skyyrose-mascot[data-walk-side="left"] {
-	right: auto;
-	left: 20px;
-	flex-direction: row;
+#skyy-ask-dialog::backdrop { background: var(--sr2-surface-scrim); }
+.skyy-ask-dialog__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sr2-space-4); margin-bottom: var(--sr2-space-4); }
+#skyy-ask-minimize { margin-inline-start: auto; }
+.skyy-ask-dialog__eyebrow { color: var(--sr2-color-text-muted); font-size: .625rem; letter-spacing: .16em; margin: 0 0 .25rem; }
+#skyy-ask-dialog-title { margin: 0; font-family: var(--sr2-font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.1; font-weight: 700; }
+.skyy-ask-dialog__body { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: var(--sr2-space-6); }
+#skyyrose-mascot.skyy-concierge-stage { position: relative; align-self: start; min-width: 0; }
+#skyy-ask-dialog .skyyrose-mascot__character { position: relative; width: 100%; height: auto; aspect-ratio: 220 / 340; overflow: hidden; }
+#skyy-ask-dialog .skyyrose-mascot__image, #skyy-ask-dialog .skyy-3d-canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+#skyy-ask-dialog [hidden] { display: none !important; }
+.skyy-ask-dialog__conversation { min-width: 0; }
+#skyy-ask-description { margin: 0 0 var(--sr2-space-4); font-size: .8125rem; line-height: 1.5; color: var(--sr2-color-text-muted); }
+.skyy-conversation { max-height: 19rem; min-height: 8rem; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding-inline-end: .375rem; }
+.skyy-message { padding: var(--sr2-space-3) 0; border-top: 1px solid var(--sr2-border-subtle); overflow-wrap: anywhere; }
+.skyy-message strong { font-size: .6875rem; letter-spacing: .1em; text-transform: uppercase; color: var(--sr2-color-text-muted); }
+.skyy-message p { margin: .375rem 0; font-size: .875rem; line-height: 1.55; }
+.skyy-message--visitor { padding-inline-start: var(--sr2-space-3); border-inline-start: 2px solid var(--sr2-color-action); }
+.skyy-message a { display: block; min-height: var(--sr2-target-size); padding-block: .625rem; font-size: .875rem; color: var(--sr2-color-text); text-decoration: underline; text-underline-offset: .2em; }
+#skyy-chips { display: flex; flex-wrap: wrap; gap: var(--sr2-space-2); margin-block: var(--sr2-space-3); }
+#skyy-ask-dialog button { min-width: var(--sr2-target-size); min-height: var(--sr2-target-size); padding: .625rem .75rem; border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control); background: transparent; color: var(--sr2-color-text); font: inherit; font-size: .8125rem; cursor: pointer; }
+#skyy-ask-dialog #skyy-ask-cancel { font-size: 1.5rem; line-height: 1; padding: .375rem; }
+#skyy-ask-dialog #skyy-motion-toggle { width: 100%; margin-top: var(--sr2-space-2); }
+#skyy-ask-form label { display: block; margin-bottom: .375rem; font-size: .8125rem; }
+.skyy-ask-form__row { display: flex; gap: var(--sr2-space-2); }
+#skyy-ask-input { width: 100%; min-width: 0; min-height: var(--sr2-target-size); padding: .625rem; border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control); background: var(--sr2-surface-page); color: var(--sr2-color-text); font: inherit; font-size: 1rem; }
+#skyy-ask-input::placeholder { color: var(--sr2-color-text-muted); }
+#skyy-ask-dialog button[type="submit"] { background: var(--sr2-color-action); border-color: var(--sr2-color-action); color: var(--sr2-color-on-action); }
+#skyy-ask-dialog :is(a, button, input):focus-visible, #skyy-conversation:focus-visible, #skyyrose-mascot-recall:focus-visible { outline: var(--sr2-focus-width, 2px) solid var(--sr2-color-text); outline-offset: 3px; box-shadow: var(--sr2-focus); }
+#skyy-ask-dialog button:hover { border-color: var(--sr2-color-text); }
+/* The existing rig owns walk/turn; reparenting into chat never hides its painted frame. */
+@media (max-width: 47.99rem) {
+ body #skyyrose-mascot-recall { position: static; inset: auto !important; flex-direction: column; justify-content: center; gap: 0; width: 44px; min-width: 44px; min-height: 46px; max-width: none; margin: 0; padding: 0; border: 0; box-shadow: none; background: transparent; font-size: 10px; line-height: 1.2; }
+ #skyyrose-mascot-recall img { width: 24px; height: 24px; }
+ #skyyrose-mascot-recall small { display: none; }
+ body #skyy-ask-dialog { padding: var(--sr2-space-4); }
+ .skyy-ask-dialog__body { grid-template-columns: minmax(0, 1fr); gap: var(--sr2-space-3); }
+ #skyyrose-mascot.skyy-concierge-stage { width: 100%; display: flex; justify-content: center; align-items: end; gap: var(--sr2-space-3); }
+ #skyy-ask-dialog .skyyrose-mascot__character { flex: 0 0 120px; height: 185px; width: 120px; }
+ #skyy-ask-dialog #skyy-motion-toggle { width: auto; font-size: .75rem; max-width: 8rem; }
+ .skyy-conversation { max-height: 12rem; min-height: 5rem; }
 }
-
-.skyyrose-mascot--entering,
-.skyyrose-mascot--idle {
-	transform: translateX(0) scale(1);
-	opacity: 1;
-	pointer-events: auto;
-}
-
-.skyyrose-mascot--exiting {
-	opacity: 0;
-	pointer-events: none;
-}
-
-.skyyrose-mascot--hidden {
-	display: none !important;
-}
-
-/* --- Character Button --- */
-
-.skyyrose-mascot__character {
-	background: none;
-	border: none;
-	cursor: pointer;
-	padding: 0;
-	position: relative;
-	flex-shrink: 0;
-	width: 168px;
-	min-height: 168px;
-}
-
-.skyyrose-mascot__character.is-3d-ready {
-	height: 260px;
-}
-
-/* --- Character Image — full body, never cropped ---
-   aspect-ratio locks the fallback 2D image (shown only when the 3D canvas
-   isn't available/ready — headless Chrome, WebGL-disabled, slow GLB fetch)
-   to its real source proportions (skyy-canonical.jpeg is 1024x1035) at
-   whatever width the current breakpoint sets — so a future asset swap with
-   a different aspect ratio gets letterboxed inside this same footprint via
-   object-fit:contain, never rendering taller than the ratio allows, at
-   every breakpoint, with no separate mobile override needed (bug-317). */
-
-.skyyrose-mascot__image {
-	width: 168px;
-	aspect-ratio: 1024 / 1035;
-	height: auto;
-	object-fit: contain;
-	display: block;
-	filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.35));
-}
-
-.skyy--glancing .skyyrose-mascot__image {
-	filter: drop-shadow(0 12px 32px rgba(183, 110, 121, 0.55));
-}
-
-/* --- Speech Bubble (left of character via flex row-reverse; right of
-   character on the left-side variant) — the open/close transition here is
-   a short, interaction-triggered UI affordance, not auto-motion, so it
-   isn't gated behind prefers-reduced-motion. --- */
-
-.skyy-bubble {
-	position: relative;
-	background: rgba(14, 14, 14, 0.97);
-	border: 1.5px solid rgba(183, 110, 121, 0.5);
-	border-radius: 1rem;
-	padding: 0.875rem 1rem 0.75rem;
-	max-width: 240px;
-	min-width: 160px;
-	box-shadow:
-		0 8px 32px rgba(0, 0, 0, 0.5),
-		0 0 24px rgba(183, 110, 121, 0.08);
-	opacity: 0;
-	transform: translateX(12px) scale(0.95);
-	transition: opacity 0.25s ease, transform 0.25s ease;
-	pointer-events: none;
-	align-self: flex-end;
-	margin-bottom: 48px;
-}
-
-.skyyrose-mascot[data-walk-side="left"] .skyy-bubble {
-	transform: translateX(-12px) scale(0.95);
-}
-
-.skyy-bubble--visible {
-	opacity: 1;
-	transform: translateX(0) scale(1);
-	pointer-events: auto;
-}
-
-/* Right-pointing tail — points at the character to its right. */
-.skyy-bubble::after {
-	content: '';
-	position: absolute;
-	right: -8px;
-	bottom: 24px;
-	width: 14px;
-	height: 14px;
-	background: rgba(14, 14, 14, 0.97);
-	border-top: 1.5px solid rgba(183, 110, 121, 0.5);
-	border-right: 1.5px solid rgba(183, 110, 121, 0.5);
-	transform: rotate(45deg);
-	border-radius: 0 2px 0 0;
-}
-
-/* Left-pointing tail on the left-side variant — points at the character
-   to its left instead. */
-.skyyrose-mascot[data-walk-side="left"] .skyy-bubble::after {
-	right: auto;
-	left: -8px;
-	border-top: none;
-	border-right: none;
-	border-bottom: 1.5px solid rgba(183, 110, 121, 0.5);
-	border-left: 1.5px solid rgba(183, 110, 121, 0.5);
-	border-radius: 0 0 0 2px;
-}
-
-.skyy-bubble__text {
-	font-size: 0.85rem;
-	line-height: 1.55;
-	color: rgba(255, 255, 255, 0.92);
-	margin: 0;
-	font-family: inherit;
-}
-
-/* --- Ask Skyy trigger — opens the native <dialog> panel below --- */
-
-.skyy-ask-trigger {
-	display: block;
-	margin-top: 0.625rem;
-	background: none;
-	border: none;
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
-	padding-top: 0.5rem;
-	color: rgba(255, 255, 255, 0.5);
-	font-size: 0.72rem;
-	font-family: inherit;
-	text-decoration: underline;
-	text-underline-offset: 2px;
-	cursor: pointer;
-}
-
-.skyy-ask-trigger:hover,
-.skyy-ask-trigger:focus-visible {
-	color: #c08090;
-	outline: none;
-}
-
-/* --- Ask Skyy dialog — native <dialog> + showModal(): the one deliberate,
-   user-initiated "panel" in the widget. Focus is trapped while open (native
-   dialog behaviour) and restored to the trigger on close (mascot.js). --- */
-
-.skyy-ask-dialog {
-	border: 1.5px solid rgba(183, 110, 121, 0.5);
-	border-radius: 1rem;
-	padding: 1.25rem;
-	max-width: 320px;
-	width: calc(100% - 2rem);
-	background: rgba(14, 14, 14, 0.98);
-	color: rgba(255, 255, 255, 0.92);
-	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-}
-
-.skyy-ask-dialog::backdrop {
-	background: rgba(0, 0, 0, 0.5);
-}
-
-.skyy-ask-dialog__title {
-	font-size: 1.05rem;
-	margin: 0 0 0.75rem;
-	font-family: inherit;
-}
-
-.skyy-ask-form__label {
-	display: block;
-	font-size: 0.78rem;
-	color: rgba(255, 255, 255, 0.65);
-	margin-bottom: 0.4rem;
-}
-
-.skyy-ask-form__input {
-	width: 100%;
-	background: rgba(255, 255, 255, 0.06);
-	border: 1px solid rgba(183, 110, 121, 0.35);
-	border-radius: 999px;
-	color: rgba(255, 255, 255, 0.92);
-	font-size: 0.85rem;
-	font-family: inherit;
-	padding: 0.55rem 0.9rem;
-	transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.skyy-ask-form__input:focus-visible {
-	outline: none;
-	border-color: #B76E79;
-	background: rgba(255, 255, 255, 0.1);
-}
-
-.skyy-ask-form__input::placeholder {
-	color: rgba(255, 255, 255, 0.4);
-}
-
-.skyy-ask-form__actions {
-	display: flex;
-	justify-content: flex-end;
-	gap: 0.5rem;
-	margin-top: 1rem;
-}
-
-.skyy-ask-form__cancel,
-.skyy-ask-form__submit {
-	font-family: inherit;
-	font-size: 0.8rem;
-	font-weight: 600;
-	padding: 0.45rem 1rem;
-	border-radius: 999px;
-	cursor: pointer;
-}
-
-.skyy-ask-form__cancel {
-	background: none;
-	border: 1px solid rgba(255, 255, 255, 0.2);
-	color: rgba(255, 255, 255, 0.7);
-}
-
-.skyy-ask-form__submit {
-	background: #B76E79;
-	border: 1px solid #B76E79;
-	color: #fff;
-}
-
-.skyy-ask-form__cancel:hover,
-.skyy-ask-form__cancel:focus-visible,
-.skyy-ask-form__submit:hover,
-.skyy-ask-form__submit:focus-visible {
-	filter: brightness(1.15);
-	outline: none;
-}
-
-/* --- Choice Chips --- */
-
-.skyy-chips {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.375rem;
-	margin-top: 0.625rem;
-}
-
-.skyy-chip {
-	background: rgba(183, 110, 121, 0.12);
-	border: 1px solid rgba(183, 110, 121, 0.35);
-	color: #c08090;
-	font-size: 0.78rem;
-	font-weight: 600;
-	padding: 0.35rem 0.75rem;
-	border-radius: 999px;
-	cursor: pointer;
-	transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-	white-space: nowrap;
-	font-family: inherit;
-	line-height: 1.4;
-}
-
-.skyy-chip:hover,
-.skyy-chip:focus-visible {
-	background: rgba(183, 110, 121, 0.28);
-	border-color: #B76E79;
-	color: #fff;
-	outline: none;
-}
-
-/* --- Minimize Button (× at top-right of character) — the visible,
-   always keyboard-reachable SC 2.2.2 stop control. --- */
-
-.skyyrose-mascot__minimize {
-	position: absolute;
-	top: 0;
-	right: -8px;
-	width: 22px;
-	height: 22px;
-	border-radius: 50%;
-	background: rgba(30, 30, 30, 0.92);
-	border: 1px solid rgba(255, 255, 255, 0.15);
-	color: rgba(255, 255, 255, 0.55);
-	font-size: 14px;
-	line-height: 1;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	opacity: 0;
-	transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
-	z-index: 2;
-}
-
-.skyyrose-mascot[data-walk-side="left"] .skyyrose-mascot__minimize {
-	right: auto;
-	left: -8px;
-}
-
-.skyyrose-mascot--idle .skyyrose-mascot__minimize,
-.skyy--speaking .skyyrose-mascot__minimize {
-	opacity: 1;
-}
-
-.skyyrose-mascot__minimize:hover,
-.skyyrose-mascot__minimize:focus-visible {
-	background: rgba(200, 40, 40, 0.85);
-	color: #fff;
-	outline: none;
-}
-
-/* --- Recall Pill (bottom-right when minimized) --- */
-
-.skyyrose-mascot__recall {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	padding: 7px 14px 7px 7px;
-	background: linear-gradient(135deg, rgba(20, 20, 20, 0.97), rgba(32, 32, 32, 0.97));
-	border: 1px solid rgba(183, 110, 121, 0.4);
-	border-radius: 999px;
-	color: rgba(255, 255, 255, 0.85);
-	font-size: 0.8rem;
-	font-weight: 600;
-	cursor: pointer;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-	z-index: 9990;
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-	font-family: inherit;
-}
-
-/* Same consent-banner clearance contract as .skyyrose-mascot above. */
-.skyyrose-consent-open .skyyrose-mascot__recall {
-	bottom: calc(20px + var(--skyyrose-consent-clearance, 0px));
-}
-
-.skyyrose-mascot__recall img {
-	border-radius: 50%;
-	width: 32px;
-	height: 32px;
-	object-fit: cover;
-}
-
-.skyyrose-mascot__recall:hover {
-	transform: scale(1.05);
-	box-shadow: 0 6px 28px rgba(183, 110, 121, 0.4);
-}
-
-/* --- 3D canvas — lives inside the character button so the full body is
-   the chatbot trigger and inherits the widget's walk-on/off choreography. --- */
-
-.skyy-3d-canvas {
-	position: absolute;
-	inset: 0;
-	width: 168px;
-	height: 260px;
-	pointer-events: none;
-}
-
-/* ===================================================================
-   Motion — opt-in only (SC 2.3.3 / 2.2.2)
-
-   Nothing above this point animates. These rules are the ONLY place the
-   Skyy widget gains keyframe motion, and only for users/agents whose
-   `prefers-reduced-motion` evaluates to `no-preference`.
-   =================================================================== */
-
-@media (prefers-reduced-motion: no-preference) {
-	/* CLS fix (Wave 3, wishlist desktop 0.388): the breathe/walk keyframes
-	   are transform-only, but Chrome only EXCLUDES transform motion from
-	   layout-shift scoring when the animation is composited — skyy-breathe
-	   also animates filter and ran on the main thread, so every idle frame
-	   logged a layout-shift entry against the widget (attributed to the
-	   surrounding footer section in Lighthouse). will-change promotes the
-	   animated elements; contain isolates the widget's internal layout. */
-	.skyyrose-mascot {
-		contain: layout;
-	}
-
-	.skyyrose-mascot--entering,
-	.skyyrose-mascot--exiting,
-	.skyyrose-mascot--idle .skyyrose-mascot__image,
-	.skyy--speaking .skyyrose-mascot__image,
-	.skyy--excited .skyyrose-mascot__image {
-		will-change: transform;
-	}
-
-	.skyyrose-mascot--entering {
-		animation: skyy-walk-on 1.4s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
-	}
-
-	.skyyrose-mascot[data-walk-side="left"].skyyrose-mascot--entering {
-		animation-name: skyy-walk-on-left;
-	}
-
-	.skyyrose-mascot--idle .skyyrose-mascot__image {
-		animation: skyy-breathe 3.5s ease-in-out infinite;
-	}
-
-	.skyy--speaking .skyyrose-mascot__image {
-		animation: skyy-speak-pulse 0.8s ease-in-out infinite;
-	}
-
-	.skyy--excited .skyyrose-mascot__image {
-		animation: skyy-excited 0.65s ease-out;
-	}
-
-	.skyyrose-mascot--exiting {
-		animation: skyy-walk-off 0.6s ease-in forwards;
-	}
-
-	.skyyrose-mascot[data-walk-side="left"].skyyrose-mascot--exiting {
-		animation-name: skyy-walk-off-left;
-	}
-}
-
-/* ===================================================================
-   Responsive — Skyy Widget
-   =================================================================== */
-
-@media (max-width: 768px) {
-	/* .mobile-nav (assets/css/mobile-bottom-nav.css) is a fixed var(--skyyrose-mobile-nav-h)+safe-area
-	   band pinned to the same bottom-right corner at a lower z-index (9000
-	   vs this widget's 9990) — without clearance the mascot/recall pill
-	   render on top of the nav's rightmost tap target instead of above it. */
-	.skyyrose-mascot {
-		bottom: calc(var(--skyyrose-mobile-nav-h, 72px) + env(safe-area-inset-bottom) + 16px);
-		right: 16px;
-		flex-direction: column;
-		align-items: flex-end;
-		gap: 8px;
-	}
-
-	/* Consent clearance on mobile stacks on TOP of the nav clearance —
-	   the banner itself is offset above the nav band (cookie-consent.css). */
-	.skyyrose-consent-open .skyyrose-mascot,
-	.skyyrose-consent-open .skyyrose-mascot__recall {
-		bottom: calc(var(--skyyrose-mobile-nav-h, 72px) + env(safe-area-inset-bottom) + 16px + var(--skyyrose-consent-clearance, 0px));
-	}
-
-	/* Side-entrance is a desktop nicety — mobile always anchors bottom-right
-	   regardless of collection, keeping the responsive CSS surface small. */
-	.skyyrose-mascot[data-walk-side="left"] {
-		left: auto;
-		right: 16px;
-		flex-direction: column;
-	}
-
-	.skyyrose-mascot__image {
-		width: 104px;
-	}
-
-	.skyyrose-mascot__character {
-		width: 104px;
-		min-height: 105px;
-	}
-
-	.skyyrose-mascot__character.is-3d-ready {
-		height: 161px;
-	}
-
-	.skyy-bubble,
-	.skyyrose-mascot[data-walk-side="left"] .skyy-bubble {
-		max-width: 210px;
-		margin-bottom: 0;
-		align-self: flex-end;
-		transform: translateX(0) scale(0.95);
-	}
-
-	/* On mobile, tail points downward (bubble is above character) regardless
-	   of walk-side, since mobile always stacks bottom-right. */
-	.skyy-bubble::after,
-	.skyyrose-mascot[data-walk-side="left"] .skyy-bubble::after {
-		right: 24px;
-		left: auto;
-		bottom: -8px;
-		top: auto;
-		transform: rotate(135deg);
-		border-top: 1.5px solid rgba(183, 110, 121, 0.5);
-		border-right: 1.5px solid rgba(183, 110, 121, 0.5);
-		border-bottom: none;
-		border-left: none;
-		border-radius: 0 2px 0 0;
-	}
-
-	.skyy-chips {
-		flex-direction: column;
-	}
-
-	.skyy-chip {
-		text-align: center;
-	}
-
-	/* Recall pill shares the mascot's mobile clearance/offset so it doesn't
-	   sit on top of the mobile nav band either. */
-	.skyyrose-mascot__recall {
-		bottom: calc(var(--skyyrose-mobile-nav-h, 72px) + env(safe-area-inset-bottom) + 16px);
-		right: 16px;
-	}
-
-	/* 3D canvas mirrors the widget's mobile size/offset — without this it
-	   stays at the desktop footprint regardless of
-	   viewport, occupying far more mobile screen real estate than the 2D
-	   sprite it replaces. */
-	.skyy-3d-canvas {
-		width: 104px;
-		height: 161px;
-	}
-}
+@media (prefers-reduced-motion: reduce) { #skyy-ask-dialog *, #skyyrose-mascot-recall { animation: none !important; transition: none !important; } }
+@media (forced-colors: active) { body #skyyrose-mascot-recall, body #skyy-ask-dialog, #skyy-ask-dialog button, #skyy-ask-input { border-color: CanvasText; } }
 
 /* ===================================================================
    Reduced Motion — Kids Capsule + 404 static sections
@@ -869,4 +386,67 @@
 	.collection-mascot__cta {
 		transition: none;
 	}
+}
+
+/* The same canonical stage walks onto Home, then moves into the native dialog. */
+#skyy-dialog-stage { min-width: 0; }
+#skyy-ask-dialog .skyy-hero-actions { display: none; }
+#skyy-hero-stage #skyyrose-mascot {
+ display: grid; grid-template-columns: minmax(0, 1fr) 8rem; grid-template-rows: 1fr 1fr;
+ align-items: center; column-gap: .5rem; width: 100%; min-height: 18rem; margin: 0;
+}
+#skyy-hero-stage #skyyrose-mascot[hidden] { display: none; }
+#skyy-hero-stage .skyyrose-mascot__character {
+ position: relative; grid-column: 1; grid-row: 1 / 3; width: 180px; height: 278px; margin-inline: auto;
+}
+#skyy-hero-stage .skyyrose-mascot__image, #skyy-hero-stage .skyy-3d-canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+#skyy-hero-stage [hidden] { display: none !important; }
+#skyy-hero-stage #skyy-motion-toggle { grid-column: 2; grid-row: 1; align-self: end; margin-bottom: .5rem; }
+#skyy-hero-stage .skyy-hero-actions { grid-column: 2; grid-row: 2; display: flex; flex-direction: column; gap: .5rem; align-self: start; }
+#skyy-hero-stage button { min-height: 44px; min-width: 44px; border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control); padding: .5rem .75rem; background: var(--sr2-surface-dialog); color: var(--sr2-color-text); font: 500 .75rem var(--sr2-font-body); cursor: pointer; }
+#skyy-hero-stage button:focus-visible { outline: 2px solid var(--sr2-color-text); outline-offset: 3px; }
+#skyy-hero-stage #skyy-hero-chat { border-color: var(--sr2-color-action); }
+@media (prefers-reduced-motion: no-preference) {
+ #skyy-hero-stage [data-renderer="3d"] .skyy-3d-canvas { transform: translateX(var(--skyy-entry-shift, 0px)); }
+}
+#skyy-hero-stage [data-motion-paused="true"] .skyyrose-mascot__character { animation-play-state: paused !important; }
+@media (max-width: 47.99rem) {
+ #skyy-hero-stage #skyyrose-mascot { min-height: 15rem; }
+ #skyy-hero-stage .skyyrose-mascot__character { width: 120px; height: 185px; }
+}
+@media (prefers-reduced-motion: reduce) { #skyy-hero-stage * { animation: none !important; transition: none !important; } }
+@media (forced-colors: active) { #skyy-hero-stage button { border-color: CanvasText; } }
+
+/* Completion: one portrait/canvas layer stack, stable feet and a reserved status. */
+#skyyrose-mascot .skyyrose-mascot__image { object-position: center bottom; transform: none; transform-origin: center bottom; opacity: 1; }
+#skyyrose-mascot .skyy-3d-canvas { opacity: 0; }
+#skyyrose-mascot[data-presence="live"] .skyyrose-mascot__image { opacity: 0; }
+#skyyrose-mascot[data-presence="live"] .skyy-3d-canvas { opacity: 1; }
+.skyy-presence-status { min-height: 2.8em; margin: .5rem 0 0; font: 400 .6875rem/1.4 var(--sr2-font-body); color: var(--sr2-color-text-muted); overflow-wrap: anywhere; }
+#skyy-hero-stage .skyy-presence-status { position: absolute; inset-inline-end: 0; top: .25rem; width: 8rem; margin: 0; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+ #skyyrose-mascot .skyyrose-mascot__image, #skyyrose-mascot .skyy-3d-canvas { transition: opacity 240ms var(--sr2-ease); }
+}
+@media (max-width: 47.99rem) {
+ #skyy-dialog-stage .skyy-concierge-stage { display: grid; grid-template-columns: 120px minmax(0, 1fr); justify-content: center; align-items: end; gap: 0 var(--sr2-space-3); }
+ #skyy-dialog-stage .skyyrose-mascot__character { grid-column: 1; grid-row: 1; }
+ #skyy-dialog-stage #skyy-motion-toggle { grid-column: 2; grid-row: 1; }
+ #skyy-dialog-stage .skyy-presence-status { grid-column: 1 / -1; grid-row: 2; }
+ body #skyy-ask-dialog { max-height: calc(100dvh - 2rem - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
+}
+@media (max-height: 34rem) and (max-width: 60rem) {
+ #skyy-ask-dialog .skyy-ask-dialog__body { grid-template-columns: minmax(0, 100px) minmax(0, 1fr); gap: var(--sr2-space-3); }
+ #skyy-dialog-stage .skyy-concierge-stage { display: block; }
+ #skyy-ask-dialog .skyyrose-mascot__character { width: 76px; height: 118px; margin-inline: auto; }
+ #skyy-ask-description { margin-bottom: var(--sr2-space-2); }
+ .skyy-conversation { min-height: 4rem; max-height: 8rem; }
+}
+
+/* Narrow phones keep the question and Ask action visible without losing the guide. */
+@media (max-width: 22.49rem) {
+ #skyy-dialog-stage .skyy-concierge-stage { grid-template-columns: 96px minmax(0, 1fr); }
+ #skyy-ask-dialog .skyyrose-mascot__character { width: 96px; height: 148px; }
+ #skyy-ask-dialog .skyy-conversation { max-height: 8rem; min-height: 4rem; }
+ #skyy-ask-dialog #skyy-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ #skyy-ask-dialog .skyy-chip { min-width: 0; padding-inline: .375rem; }
 }

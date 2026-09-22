@@ -1,0 +1,92 @@
+/** About editorial archive. Native WordPress content owns words and sequence. */
+.sr2-about-archive {
+  padding-top: var(--sr2-header);
+  background: var(--sr2-void);
+  color: var(--sr2-ink);
+  font-family: var(--sr2-font-body);
+  overflow-wrap: anywhere;
+}
+.sr2-about-archive > :where(.wp-block-group, .wp-block-columns, section) {
+  padding: clamp(3rem, 7vw, 7rem) var(--sr2-page-pad);
+  margin-block: 0;
+  border-bottom: 1px solid var(--sr2-line);
+}
+.sr2-about-archive :where(h1, h2, h3) {
+  font-family: var(--sr2-font-display);
+  font-variation-settings: 'wdth' 125;
+  font-weight: 600;
+  text-wrap: balance;
+  margin-block: 0 1.2rem;
+}
+.sr2-about-archive h1 { font-size: var(--sr2-refine-title); line-height: 1.1; letter-spacing: -.035em; text-align: center; }
+.sr2-about-archive h2 { font-size: clamp(1.75rem, 3vw, 3.25rem); line-height: 1.15; letter-spacing: -.035em; text-align: center; }
+.sr2-about-archive h3 { font-size: clamp(1.25rem, 2vw, 1.8rem); line-height: 1.2; }
+.sr2-about-archive p { font-size: clamp(1rem, 1.15vw, 1.16rem); line-height: 1.8; margin-block: 0 1.3em; }
+.sr2-about-archive :where(.sr2-eyebrow, .sr2-about-label) { color: var(--sr2-muted); font-size: .75rem; letter-spacing: .13em; text-transform: uppercase; }
+.sr2-about-archive :where(.wp-block-image, .wp-block-video) { margin: 0; }
+.sr2-about-archive img { width: 100%; height: auto; }
+.sr2-about-archive figcaption { color: var(--sr2-muted); font-size: .8rem; line-height: 1.5; margin-block: .8rem 0; }
+.sr2-about-archive .sr2-about-lead { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); align-items: center; gap: clamp(2rem, 6vw, 6rem); }
+.sr2-about-archive .sr2-about-lead > * { min-width: 0; }
+.sr2-about-archive .sr2-about-lead figure { max-width: 32rem; justify-self: end; width: 100%; }
+.sr2-about-archive .sr2-about-lead figure img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: contain; }
+.sr2-about-archive .sr2-about-lead > .wp-block-group { max-width: 46rem; text-align: center; margin-inline: auto; }
+.sr2-about-archive .sr2-about-lead > .wp-block-group > p { max-width: 52ch; margin-inline: auto; }
+.sr2-about-archive .sr2-about-reading { max-width: 68ch; margin-inline: auto; }
+.sr2-about-archive .sr2-about-story-chapter > :where(h2, .sr2-about-label, .sr2-eyebrow) { max-width: var(--sr2-content); margin-inline: auto; }
+.sr2-about-archive .sr2-about-story-chapter > h2 { margin-bottom: 2.5rem; }
+.sr2-about-archive .sr2-about-quote { max-width: 62ch; margin: 3rem auto; padding: 1rem 0 1rem clamp(1.25rem, 3vw, 3rem); border: 0; border-left: 2px solid var(--sr2-accent); }
+.sr2-about-archive .sr2-about-quote p { font-size: clamp(1.2rem, 2vw, 1.9rem); line-height: 1.55; }
+.sr2-about-archive .sr2-about-quote cite { font-style: normal; font-size: .8rem; color: var(--sr2-muted); }
+.sr2-about-archive .sr2-about-film { max-width: var(--sr2-wide); margin-inline: auto; }
+.sr2-about-archive .sr2-about-film > p { max-width: 68ch; }
+.sr2-about-archive .sr2-about-film .wp-block-image { max-width: 64rem; margin: 2rem 0 1rem; }
+.sr2-about-archive .sr2-about-film .wp-block-image img { aspect-ratio: 16 / 9; object-fit: contain; background: var(--sr2-card); }
+.sr2-about-archive .sr2-about-film-slot { position: relative; aspect-ratio: 16 / 9; background: var(--sr2-card); }
+.sr2-about-archive .sr2-about-film-slot > img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.sr2-about-archive .sr2-about-film-slot > .sr2-about-player { position: absolute; inset: 0; height: 100%; margin: 0; }
+.sr2-about-archive .sr2-about-player { width: 100%; max-width: 64rem; aspect-ratio: 16 / 9; background: var(--sr2-card); margin-block: 1.5rem; }
+.sr2-about-archive .sr2-about-player iframe { display: block; width: 100%; height: 100%; border: 0; }
+.sr2-about-archive .sr2-about-player-status { color: var(--sr2-muted); font-size: .85rem; }
+.sr2-about-archive :where(.wp-block-button__link, a.sr2-about-play) { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .8rem 1.25rem; border: 1px solid var(--sr2-accent); border-radius: 0; background: transparent; color: var(--sr2-ink); font-family: var(--sr2-font-body); font-size: .8rem; font-weight: 600; letter-spacing: .06em; text-decoration: none; }
+.sr2-about-archive a:focus-visible { outline: 2px solid var(--sr2-ink); outline-offset: 5px; }
+.sr2-about-archive a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.sr2-about-archive :where(.sr2-about-press-list, .sr2-about-timeline) > .wp-block-group { max-width: var(--sr2-content); margin-inline: auto; padding-block: 2rem; border-top: 1px solid var(--sr2-line); }
+.sr2-about-archive :where(.sr2-about-press-list, .sr2-about-timeline) > .wp-block-group > p { max-width: 68ch; }
+.sr2-about-archive .sr2-about-worlds > .wp-block-columns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; gap: clamp(1.5rem, 3vw, 3rem); max-width: var(--sr2-wide); margin: 3rem auto 0; }
+.sr2-about-archive .sr2-about-worlds .wp-block-column { min-width: 0; }
+/* Graphic collection artwork stays intact. The restrained base suggests a
+   miniature display; this is a two-dimensional image, not a model or film. */
+.sr2-about-archive .sr2-about-worlds figure { position: relative; display: grid; align-content: center; min-height: 17rem; margin: 0 0 2rem; padding: 1.5rem 1rem 2.5rem; isolation: isolate; }
+.sr2-about-archive .sr2-about-worlds figure::before { position: absolute; z-index: -1; right: 12%; bottom: .8rem; left: 12%; height: .75rem; border: 1px solid var(--sr2-line); background: var(--sr2-card); transform: skewX(-22deg); content: ''; }
+.sr2-about-archive .sr2-about-worlds figure::after { position: absolute; z-index: -1; right: 10%; bottom: .3rem; left: 10%; height: .5rem; border-bottom: 1px solid var(--sr2-line); background: var(--sr2-void); content: ''; }
+.sr2-about-archive .sr2-about-worlds figure img { display: block; width: 100%; height: 13rem; object-fit: contain; object-position: center; }
+.sr2-about-archive .sr2-about-worlds figure a { display: block; }
+.sr2-about-archive .sr2-about-worlds figure figcaption { margin-top: .75rem; }
+.sr2-about-archive .sr2-about-worlds h3 { font-size: clamp(1.25rem, 1.7vw, 1.7rem); }
+.sr2-about-archive .sr2-about-worlds .wp-block-column > p { font-size: 1rem; line-height: 1.7; }
+.sr2-about-archive .sr2-about-oakland { display: grid; grid-template-columns: minmax(0, 480px) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); }
+.sr2-about-archive .sr2-about-oakland > figure { width: 100%; max-width: 480px; }
+.sr2-about-archive .sr2-about-oakland > figure img { aspect-ratio: 24 / 11; object-fit: contain; }
+.sr2-about-archive .sr2-about-oakland .sr2-about-oakland-sign { max-width: 170px; margin-top: 2rem; }
+.sr2-about-archive .sr2-about-oakland .sr2-about-oakland-sign img { aspect-ratio: 34 / 21; object-fit: contain; }
+.sr2-about-archive .sr2-about-continue { padding-block: clamp(4rem, 9vw, 9rem); }
+.sr2-about-archive .sr2-about-continue .wp-block-buttons { gap: 1rem; flex-wrap: wrap; }
+.sr2-about-archive [hidden] { display: none !important; }
+@media (max-width: 63.99em) {
+  .sr2-about-archive .sr2-about-lead { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .sr2-about-archive .sr2-about-oakland { grid-template-columns: minmax(0, 1fr); }
+  .sr2-about-archive .sr2-about-worlds > .wp-block-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem 2rem; }
+}
+@media (max-width: 47.99em) {
+  .sr2-about-archive .sr2-about-lead { grid-template-columns: minmax(0, 1fr); padding-top: 1rem; }
+  .sr2-about-archive .sr2-about-lead > figure { grid-row: 1; width: min(100%, 40svh); max-width: 26rem; justify-self: center; }
+  .sr2-about-archive .sr2-about-lead figure img { max-height: 60svh; }
+  .sr2-about-archive .sr2-about-worlds > .wp-block-columns { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
+  .sr2-about-archive .sr2-about-worlds figure { max-width: 20rem; min-height: 15rem; margin-inline: auto; width: 100%; }
+  .sr2-about-archive .sr2-about-worlds figure img { height: 11rem; }
+  .sr2-about-archive .sr2-about-quote { margin-block: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sr2-about-archive *, .sr2-about-archive *::before, .sr2-about-archive *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

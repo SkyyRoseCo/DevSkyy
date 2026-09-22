@@ -1,0 +1,506 @@
+{
+  "schema": "skyyrose.v2.scene-narrative-blueprints.v1",
+  "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+  "plate_approval_date": "2026-08-23",
+  "plate_approval_scope": "Founder-approved environment direction. Product-composite approval remains independently gated per scene.",
+  "governing_arc": "Product -> world-building chapter -> finished hero monument",
+  "story_definition": "The heroes are the finished footprint. Product chapters are the visual origin story that shows how each hero was built.",
+  "commerce_scene_composition": {
+    "experience_goal": "Create a one-of-one cinematic shopping experience: each frame reads first as an original SkyyRose fashion-film statement, then reveals exact independently shoppable products without collapsing into a generic catalog carousel, pasted cutout, or decorative ecommerce banner.",
+    "priority_order": [
+      "exact product and on-model fit",
+      "construction, decoration technique, logo, patch, front, and back fidelity",
+      "collection story element",
+      "cinematic atmosphere"
+    ],
+    "product_focus": "The product is the dominant, naturally placed, fully readable subject. Collection storytelling frames the garment but never obscures, miniaturizes, recolors, redraws, or competes with it.",
+    "story_focus": "Every chapter carries one unmistakable hero-derived aspect and a distinct environment within the collection world; architecture, light, reflections, atmosphere, and model blocking respond to the product, and one backdrop may not be repeated across all three chapters.",
+    "commerce_choreography": "The image reserves intentional crop-safe negative space for exact product links and the approved Complete the Set, Complete the Look, Shop, or Pre-Order action. Commerce controls must feel composed into the film frame while remaining unmistakably usable, separately linked, keyboard accessible, and truthful to live WooCommerce state.",
+    "fidelity_gate": "Founder-approved environment plates may be wired with exact product links and explicit pending-media states. No product composite may be labeled complete until every visible SKU has current hash-bound approved product evidence and the finished composite passes front/back, technique, logo, patch, responsive-crop, 100-percent, and 200-percent inspection."
+  },
+  "rules": [
+    "The product is the protagonist of every scene.",
+    "The collection hero is the completed destination and visual footprint.",
+    "Chapter scenes reveal how the hero's materials, symbols, light, and architecture came together.",
+    "A chapter may foreshadow hero motifs but must not merely reproduce the hero.",
+    "Every environment must respond physically and narratively to the worn product.",
+    "Every commerce scene is locked to exact SKUs; products may never be rotated, substituted, or inferred by query order.",
+    "Complete the Set and Complete the Look are editorial discovery actions only. Every item remains separately sold and keeps its own WooCommerce product link.",
+    "Pre-order scenes expose a separate pre-order action for every included product and never imply an aggregate bundle product."
+  ],
+  "collections": {
+    "signature": {
+      "hero_endpoint": "Two finished Signature monuments frame Golden Gate light and the Bay crossing.",
+      "hero_master_asset": "assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+      "hero_master_sha256": "f8bb7d2a1572f575e4f9e4e45edebf6115b4339708e64f95c3bb251813fc0fd8",
+      "product_role": "The wearer carries the first house mark from the Oakland atelier across the water.",
+      "hero_aspect_chapters": [
+        {
+          "scene_id": "SIG-1",
+          "hero_aspect": "font",
+          "font_statue_source_asset": "assets/sot/images/lockups/founder-supplied/signature-font-statue-founder-supplied-v1.png",
+          "font_statue_source_sha256": "c730cfe5e6f9646aeb54561d2e4d403f4aa91d035d6dcc2beefc23b9f0cdcb68",
+          "font_statue_scene_asset": "assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-v1.png",
+          "font_statue_scene_sha256": "e259c246a320b8220044da915c3b6fa89ecbbe7ab4a74eb80bafebe668d0e274",
+          "approved_text_edit": "Keep SkyyRose only; omit THE, COLLECTION, the freestanding statue legs, and the source background.",
+          "treatment": "Use the clean transparent founder-supplied gold SkyyRose script and integrated rose sculpture as the font monument inside the first Oakland atelier. Preserve its exact script, rose, metallic finish, and proportions as one protected object. THE, COLLECTION, the freestanding statue legs, and source background are intentionally omitted by founder direction. Redrawing, re-lettering, simplification, recoloring, or generated substitution is forbidden.",
+          "product_binding": "sg-015 on_model_front",
+          "integration": "The verified Windbreaker Set model stands naturally in the atelier light; the complete founder-supplied statue belongs to the room, remains readable, and does not overlap or alter the garment."
+        },
+        {
+          "scene_id": "SIG-2",
+          "hero_aspect": "background_bridge_landscape",
+          "treatment": "Carry forward the Golden Gate and Bay landscape, water, fog, dusk light, and reflected rose-gold lines without either finished hero monument.",
+          "product_binding": "sg-009 on_model_front",
+          "integration": "The verified Sherpa Jacket model occupies a believable waterfront overlook with correct contact shadow, scale, depth, and environmental light."
+        },
+        {
+          "scene_id": "SIG-3",
+          "hero_aspect": "graphic",
+          "graphic_asset": "assets/sot/images/lockups/founder-supplied/signature-sr-rose-graphic-founder-supplied-v1.png",
+          "graphic_sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc",
+          "treatment": "Use the exact founder-supplied rose-gold SR monogram graphic as a protected sculptural house mark. It may become architecture or a monument, but the supplied RGBA pixels, silhouette, metallic palette, letterform, flourish, leaves, and internal rose remain exact; never ask a generator to redraw it.",
+          "product_binding": "sg-005 on_model_front",
+          "integration": "The verified Bay Bridge Shirt model is the foreground protagonist; the SR graphic sits in the world as a separate environmental element and never replaces or contaminates the shirt artwork."
+        }
+      ],
+      "motif_evolution": [
+        "raw black stone and rose-gold drafting materials",
+        "bridge geometry and reflected water lines",
+        "the completed Signature and SR monuments"
+      ],
+      "chapter_arc": [
+        "The product is authored inside the first Oakland atelier.",
+        "The wearer carries it across the Bay as the house language gains scale.",
+        "The bridge, water, and rose-gold mark resolve into the finished hero monuments."
+      ],
+      "commerce_scene_chapters": [
+        {
+          "scene_id": "SIG-COMMERCE-1",
+          "label": "The Oakland Atelier",
+          "copy": "The Sherpa enters the room where the house mark was first authored.",
+          "plate_asset": "generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-1-oakland-atelier-plate-v1.png",
+          "plate_sha256": "ec4767d6d38e76482f6d184a2d76a266a3e695a881d2ce1d155fa80f1106b209",
+          "plate_dimensions": [
+            1672,
+            941
+          ],
+          "plate_approval_state": "FOUNDER_APPROVED",
+          "model_layers": [
+            {
+              "sku": "sg-009",
+              "asset": "generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-009-onmodel-front-protected-v1.png",
+              "sha256": "4626dade5bf9a3825b5d4a65afac8df214e7f7aae2773248871a45337a9d9a45",
+              "placement": "signature-atelier",
+              "approval_state": "APPROVED_FRONT_ONLY"
+            }
+          ],
+          "direction": "One on-model Signature look pairs The Sherpa Jacket with The Signature Beanie.",
+          "hero_aspect": "font",
+          "hero_aspect_source_scene_id": "SIG-1",
+          "story_support": "The exact cleaned founder-supplied gold SkyyRose font sculpture is integrated into the Oakland atelier wall as supporting architecture.",
+          "product_focus": "The on-model Sherpa and Beanie look is the dominant subject; preserve the Sherpa's smooth black exterior, cream lining, funnel collar, red rose embroidery, and the Beanie's exact source-backed molded silicone patch variant.",
+          "model_cast": [
+            {
+              "model": "one on-model look",
+              "wears": [
+                "sg-009",
+                "sg-007"
+              ]
+            }
+          ],
+          "product_bindings": [
+            "sg-009",
+            "sg-007"
+          ],
+          "primary_cta": "Complete the Look",
+          "individual_product_links_required": true,
+          "aggregate_bundle_product": false,
+          "generation_gate": "PLATE_WIRED_MODEL_PARTIAL_BEANIE_PENDING_APPROVED_JOINT_LOOK",
+          "generation_state": "FOUNDER_APPROVED_PLATE_WITH_PROTECTED_MODEL_PREVIEW",
+          "approval_state": "FOUNDER_DIRECTION_LOCKED"
+        },
+        {
+          "scene_id": "SIG-COMMERCE-2",
+          "label": "Fog Over the Bay",
+          "copy": "Mint and lavender hold their color against Oakland fog and bridge light.",
+          "plate_asset": "generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-2-fog-over-bay-plate-v1.png",
+          "plate_sha256": "0dc11e853d4be2bb927d9a3c40997087635b32c0c17ff84b2694dd3862234aa3",
+          "plate_dimensions": [
+            1672,
+            941
+          ],
+          "plate_approval_state": "FOUNDER_APPROVED",
+          "model_layers": [
+            {
+              "sku": "sg-013",
+              "asset": "generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-013-onmodel-front-protected-v1.png",
+              "sha256": "876323d4e9bea50c16bb03a22b3b38ca2cfdfcad2c2a466f70d9181f6fab05dd",
+              "placement": "signature-bay-left",
+              "approval_state": "APPROVED_FRONT_ONLY"
+            }
+          ],
+          "direction": "A male model wears the Mint & Lavender Crewneck with the Mint & Lavender Sweatpants while a female model wears the Mint & Lavender Hoodie.",
+          "hero_aspect": "background_bridge_landscape",
+          "hero_aspect_source_scene_id": "SIG-2",
+          "story_support": "Golden Gate and Bay water, fog, dusk light, and rose-gold reflected lines form a distinct open landscape without finished monuments.",
+          "product_focus": "The three mint-and-lavender products dominate the frame. Preserve the Crewneck and Sweatpants lavender embroidery and the Hoodie's large lavender printed chest artwork without inventing branded lower garments for the female model.",
+          "model_cast": [
+            {
+              "model": "male",
+              "wears": [
+                "sg-013",
+                "sg-014"
+              ]
+            },
+            {
+              "model": "female",
+              "wears": [
+                "sg-006"
+              ]
+            }
+          ],
+          "product_bindings": [
+            "sg-013",
+            "sg-014",
+            "sg-006"
+          ],
+          "primary_cta": "Complete the Look",
+          "individual_product_links_required": true,
+          "aggregate_bundle_product": false,
+          "generation_gate": "PLATE_WIRED_MODEL_PARTIAL_HOODIE_AND_PRODUCT_ROLE_APPROVAL_PENDING",
+          "generation_state": "FOUNDER_APPROVED_PLATE_WITH_PROTECTED_MODEL_PREVIEW",
+          "approval_state": "FOUNDER_DIRECTION_LOCKED"
+        },
+        {
+          "scene_id": "SIG-COMMERCE-3",
+          "label": "The Departure Terrace",
+          "copy": "Three pre-order stories leave the Bay as separate, exact product identities.",
+          "plate_asset": "generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-departure-terrace-plate-v1.png",
+          "plate_sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97",
+          "plate_dimensions": [
+            1672,
+            941
+          ],
+          "plate_approval_state": "FOUNDER_APPROVED",
+          "model_layers": [],
+          "direction": "A pre-order chapter presents the Bay Bridge Shorts and Shirt, Stay Golden Shorts and Shirt, and The Windbreaker Set as five exact product identities and four separately reservable product groups; the Windbreaker jacket and pants remain one canonical set SKU.",
+          "hero_aspect": "graphic",
+          "hero_aspect_source_scene_id": "SIG-3",
+          "story_support": "The exact founder-supplied rose-gold SR monogram and integrated rose stand as a separate protected environmental monument.",
+          "product_focus": "The Bay Bridge pair, Stay Golden pair, and complete Windbreaker Set remain readable as distinct designs; preserve their different bridge palettes and the Windbreaker's white, pink, multicolor-chevron, striped-band construction.",
+          "product_bindings": [
+            "sg-001",
+            "sg-005",
+            "sg-003",
+            "sg-002",
+            "sg-015"
+          ],
+          "primary_cta": "Explore Pre-Orders",
+          "individual_product_links_required": true,
+          "preorder_product_links_required": true,
+          "aggregate_bundle_product": false,
+          "generation_gate": "CORRECTED_PRODUCT_LAYERS_REQUIRED",
+          "generation_state": "PRODUCT_VISUAL_CONTRACT_CHANGED_REVIEW_REQUIRED",
+          "approval_state": "FOUNDER_DIRECTION_LOCKED"
+        }
+      ]
+    },
+    "black-rose": {
+      "hero_endpoint": "The Black Rose wordmark and star-and-rose monuments hold court beneath a Bay Bridge moon.",
+      "hero_master_asset": "assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+      "hero_master_sha256": "e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9",
+      "product_role": "The wearer enters protected, and the garden transforms around the garment's contrast, embroidery, and guarded elegance.",
+      "hero_aspect_chapters": [
+        {
+          "scene_id": "BR-1",
+          "hero_aspect": "font",
+          "font_statue_scene_asset": "assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png",
+          "font_statue_scene_sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+          "treatment": "Use the exact Black Rose font-and-rose statue pixels extracted directly from the approved hero master. Preserve the identical letterforms, 3D silver depth, backing rails, Collection line, rose, and proportions. Do not use a flat lockup, redraw the lettering, or generate substitute fragments.",
+          "product_binding": "br-001 on_model_front",
+          "integration": "The verified Crewneck model is naturally placed in front of the type architecture. Preserve the crewneck's raised embossed black-white-grey chest relief and white ribbed trim; never reinterpret it as embroidery."
+        },
+        {
+          "scene_id": "BR-2",
+          "hero_aspect": "background_bridge_landscape",
+          "treatment": "Use the open Oakland waterfront, Bay Bridge, water reflections, and full-moon atmosphere without the finished font or star monument.",
+          "product_binding": "br-006 protected founder footage and verified on_model_front",
+          "integration": "The Black Rose Sherpa Bomber remains the authentic product layer in the open-air world. The source footage and garment pixels are never AI-repainted."
+        },
+        {
+          "scene_id": "BR-3",
+          "hero_aspect": "graphic",
+          "graphic_statue_scene_asset": "assets/sot/images/lockups/black-rose-star-graphic.png",
+          "graphic_statue_scene_sha256": "6af686d798fb6541c3a691492809224a6318d62573d1462c4f3f99af9957ec78",
+          "founder_identity_confirmation": "The star, single rose, leaves and stem, black-and-silver treatment, and natural placement are required. The architectural base may vary and is not a rejection condition.",
+          "treatment": "Use the authentic black-and-silver star, single rose, leaves, loose leaves, and stem as the environmental monument. Preserve the graphic identity and natural placement; do not substitute the three-rose garment cluster. The pedestal or architectural base may adapt to the scene.",
+          "product_binding": "br-001 on_model_front until a different Black Rose non-Jersey on-model source passes the fidelity gate",
+          "integration": "The protected model remains physically separate from the star graphic, with credible scale, floor contact, reflections, and edge light."
+        }
+      ],
+      "motif_evolution": [
+        "wrought-iron threshold, wet stone, and first black roses",
+        "protective midnight architecture and silver edge light",
+        "the completed star-and-rose court beneath the full moon"
+      ],
+      "chapter_arc": [
+        "The product crosses the forbidden garden threshold.",
+        "The waterfront monument begins around protection, depth, restrained light, and authentic garment memory.",
+        "The rose, star, bridge, and moon resolve into the finished hero court."
+      ],
+      "special_chapters": {
+        "hero-origin-film-br-006": {
+          "product": "The Black Rose Bomber Sherpa",
+          "treatment": "Founder-shot footage loops silently as the face of a large open-air film monument while a verified on-model back view reveals the large center-back embroidery.",
+          "continuity": "The real garment remains the product truth; Bay Bridge light, moon, forged rose metalwork, black stone, and unfinished star rays build around it toward the hero endpoint."
+        }
+      },
+      "commerce_scene_chapters": [
+        {
+          "scene_id": "BR-COMMERCE-1",
+          "label": "The Type Foundry",
+          "copy": "Embossed armor and molded silicone enter the Black Rose wordmark architecture.",
+          "plate_asset": "generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-1-font-type-foundry-plate-v1.png",
+          "plate_sha256": "f0667422fb3d5c766ba490a89fe1e65005867796dd645331d245765541912112",
+          "plate_dimensions": [
+            1672,
+            941
+          ],
+          "plate_approval_state": "FOUNDER_APPROVED",
+          "model_layers": [],
+          "direction": "The BLACK Rose Crewneck and BLACK Rose Joggers appear together as one natural on-model set while remaining separately sold.",
+          "hero_aspect": "font",
+          "hero_aspect_source_scene_id": "BR-1",
+          "story_support": "The exact hero-derived silver Black Rose font-and-rose statue is integrated inline with the wall as supporting architecture.",
+          "product_focus": "The on-model set dominates the frame. The Crewneck keeps its raised embossed black-white-grey relief and white ribbed trim; the Joggers keep the molded silicone thigh appliqué and white waistband and ankle cuffs.",
+          "product_bindings": [
+            "br-001",
+            "br-002"
+          ],
+          "primary_cta": "Complete the Set",
+          "individual_product_links_required": true,
+          "aggregate_bundle_product": false,
+          "generation_gate": "PLATE_WIRED_PRODUCT_COMPOSITE_PENDING_CORRECT_EMBOSSED_CREWNECK_AND_JOGGER_MODEL",
+          "generation_state": "FOUNDER_APPROVED_PLATE_PRODUCT_COMPOSITE_PENDING",
+          "approval_state": "FOUNDER_DIRECTION_LOCKED"
+        },
+        {
+          "scene_id": "BR-COMMERCE-2",
+          "label": "The Open Waterfront",
+          "copy": "Signature restraint meets Love Hurts energy under the Bay Bridge moon.",
+          "plate_asset": "generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-2-waterfront-plate-v1.png",
+          "plate_sha256": "b3d8ebb29516a329b0fef02d1b059a940288c836bd581d9f5b0eeeea8f7e819a",
+          "plate_dimensions": [
+            1672,
+            941
+          ],
+          "plate_approval_state": "FOUNDER_APPROVED",
+          "model_layers": [],
+          "direction": "The BLACK Rose Hoodie — Signature Edition is paired naturally with the BLACK Rose x Love Hurts Basketball Shorts.",
+          "hero_aspect": "background_bridge_landscape",
+          "hero_aspect_source_scene_id": "BR-2",
+          "story_support": "The open Oakland waterfront, Bay Bridge, water reflections, and full moon form a distinct natural environment without the completed hero statues.",
+          "product_focus": "The Hoodie and Shorts dominate the frame. Preserve the Hoodie's silicone chest mark, embroidered forearm art, and sublimated hood lining, plus the Shorts' tonal sublimation, readable OAKLAND tackle twill, exact side-panel marks, and zipper pockets.",
+          "product_bindings": [
+            "br-005",
+            "br-007"
+          ],
+          "primary_cta": "Complete the Look",
+          "individual_product_links_required": true,
+          "aggregate_bundle_product": false,
+          "generation_gate": "CORRECTED_PRODUCT_LAYERS_REQUIRED",
+          "generation_state": "PRODUCT_VISUAL_CONTRACT_CHANGED_REVIEW_REQUIRED",
+          "approval_state": "FOUNDER_DIRECTION_LOCKED"
+        },
+        {
+          "scene_id": "BR-COMMERCE-3",
+          "label": "The Town Line",
+          "copy": "Five Bay sports stories share one room while every jersey keeps its own identity.",
+          "plate_asset": "generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+          "plate_sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+          "plate_dimensions": [
+            1536,
+            1024
+          ],
+          "plate_approval_state": "FOUNDER_APPROVED_AFTER_REQUIRED_A_CORRECTION",
+          "founder_source_asset": "generated-candidates/founder-commerce-scenes-v1/black-rose/sources/br-commerce-3-five-jersey-lounge-founder-source-v1.png",
+          "founder_source_sha256": "11fd3d70368483df3d58c79c5ec27089d8924aab72bd59bd8975e906e3d3e2a9",
+          "allowed_pixel_edit": {
+            "description": "Only the interior face of the A in BLACK on br-012 changes to black; the gold edge and all other pixels remain unchanged.",
+            "changed_pixel_count": 79,
+            "maximum_changed_pixel_count": 100,
+            "bounding_box": [
+              206,
+              628,
+              14,
+              17
+            ]
+          },
+          "model_layers": [],
+          "direction": "One Jersey Series image chapter presents only the five sport-team-inspired jerseys: SF Inspired Football, Last Oakland Football, The Bay Basketball, The Rose Hockey, and Last Oakland Baseball.",
+          "hero_aspect": "graphic",
+          "hero_aspect_source_scene_id": "BR-3",
+          "story_support": "The product-focused Bay Bridge lounge carries the Black Rose silver-rose language. When the star-and-rose graphic is used elsewhere, its graphic identity is required while its base may adapt.",
+          "product_focus": "All five jerseys remain visually distinct and product-readable. Preserve each sport silhouette, exact colors, lettering, stripes, back art, and the exact SKU-specific 3-inch-wide by 4-inch-tall patch at wearer-left lower hem when visible; never add professional-team logos or generic league patches.",
+          "product_bindings": [
+            "br-008",
+            "br-009",
+            "br-010",
+            "br-011",
+            "br-012"
+          ],
+          "primary_cta": "Pre-Order the Jersey Series",
+          "individual_product_links_required": true,
+          "preorder_product_links_required": true,
+          "aggregate_bundle_product": false,
+          "generation_gate": "FOUNDER_APPROVED_SCENE_REQUIRES_HASH_AND_SURGICAL_EDIT_BOUNDARY_VERIFICATION",
+          "generation_state": "FOUNDER_APPROVED_PRODUCT_SCENE",
+          "approval_state": "FOUNDER_DIRECTION_LOCKED"
+        }
+      ]
+    },
+    "love-hurts": {
+      "hero_endpoint": "The Love Hurts script and cracked-heart star face the Beast and the protected rose across a crimson aisle.",
+      "product_role": "The wearer carries tenderness as armor through damage, distance, and devotion.",
+      "motif_evolution": [
+        "first thorns, petals, and fractured red reflections",
+        "the Beast's distance from the rose under glass",
+        "the completed crimson aisle, script monument, and cracked-heart star"
+      ],
+      "chapter_arc": [
+        "The product enters the cathedral while the wound is still exposed.",
+        "The wearer crosses the chamber where distance becomes protection.",
+        "The heart, thorns, script, and rose resolve into the finished hero aisle."
+      ],
+      "commerce_scene_chapters": [
+        {
+          "scene_id": "LH-COMMERCE-1",
+          "label": "The Vow Aisle",
+          "copy": "The bomber steps into the aisle while the enchanted rose remains equally visible.",
+          "plate_asset": "generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-vow-aisle-founder-approved-v2.png",
+          "plate_sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38",
+          "plate_dimensions": [
+            1672,
+            941
+          ],
+          "plate_approval_state": "FOUNDER_APPROVED_NATIVE_SCENE_WITH_REVIEW_OVERRIDE",
+          "model_layers": [],
+          "direction": "A male and female model both wear the Love Hurts Bomber Jacket. The male pairs it with the black Love Hurts Joggers and the female pairs it with the white Love Hurts Joggers.",
+          "hero_aspect": "cathedral_aisle_and_protected_rose",
+          "story_support": "A long crimson cathedral aisle, fractured red reflections, thorns, and the enchanted rose under glass hold the collection story without becoming a generic red backdrop.",
+          "product_focus": "Both Bomber looks dominate the frame while the enchanted rose remains an equally legible emotional focal point. Preserve the Bomber embroidery and rib bands plus each Jogger colorway and exact embroidered thigh mark.",
+          "model_cast": [
+            {
+              "model": "male",
+              "wears": [
+                "lh-004",
+                "lh-002"
+              ],
+              "jogger_assignment": "lh-002 black Love Hurts Joggers"
+            },
+            {
+              "model": "female",
+              "wears": [
+                "lh-004",
+                "lh-006"
+              ],
+              "jogger_assignment": "lh-006 white Love Hurts Joggers"
+            }
+          ],
+          "product_bindings": [
+            "lh-004",
+            "lh-002",
+            "lh-006"
+          ],
+          "primary_cta": "Complete the Look",
+          "individual_product_links_required": true,
+          "aggregate_bundle_product": false,
+          "generation_gate": "FOUNDER_SELECTED_NATIVE_SCENE_HASH_BOUND_WITH_GPT_REVIEW_EXCEPTION",
+          "generation_state": "FOUNDER_APPROVED_PRODUCT_SCENE",
+          "approval_state": "FOUNDER_APPROVED_WITH_GPT_REVIEW_OVERRIDE",
+          "founder_approval_receipt": "generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-vow-aisle-founder-approved-v2.receipt.json"
+        },
+        {
+          "scene_id": "LH-COMMERCE-2",
+          "label": "The Fractured Chamber",
+          "copy": "The shorts take the foreground while the protected rose holds the opposite side.",
+          "plate_asset": "generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-shorts-chamber-plate-v1.png",
+          "plate_sha256": "371ff6295b2002cfb1670683e2dc0601782ed0504565ce1fe1a85cf0ad3f616d",
+          "plate_dimensions": [
+            1672,
+            941
+          ],
+          "plate_approval_state": "FOUNDER_APPROVED",
+          "model_layers": [],
+          "direction": "The Love Hurts Basketball Shorts are the sole product protagonist in their own cinematic chapter.",
+          "hero_aspect": "cracked_rose_chamber",
+          "story_support": "A closer, lower-camera thorned runway and cracked-rose chamber create a distinct second environment; the enchanted rose remains independently lit and in focus.",
+          "product_focus": "The Shorts fill enough of the frame to prove the red rose-cloud sublimation, Love Hurts side lettering, embroidered side marks, waistband, pockets, and binding.",
+          "product_bindings": [
+            "lh-003"
+          ],
+          "primary_cta": "Shop the Shorts",
+          "individual_product_links_required": true,
+          "aggregate_bundle_product": false,
+          "generation_gate": "PLATE_WIRED_PRODUCT_COMPOSITE_PENDING_FOUNDER_LOGO_PASS",
+          "generation_state": "FOUNDER_APPROVED_PLATE_PRODUCT_COMPOSITE_PENDING",
+          "approval_state": "FOUNDER_DIRECTION_LOCKED"
+        },
+        {
+          "scene_id": "LH-COMMERCE-3",
+          "label": "The Rose Vitrine",
+          "copy": "The Fannie and the enchanted rose share an intimate accessory-scale frame.",
+          "plate_asset": "generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-3-fannie-vitrine-plate-v1.png",
+          "plate_sha256": "8179bf5a0b7fc83427844e4d4d06a684ea8ee055a9ce59423ccc5923ab40c73b",
+          "plate_dimensions": [
+            1672,
+            941
+          ],
+          "plate_approval_state": "FOUNDER_APPROVED",
+          "model_layers": [],
+          "direction": "The Fannie appears on-model as the sole product protagonist with a direct pre-order action.",
+          "hero_aspect": "rose_vitrine_threshold",
+          "story_support": "An intimate threshold and enchanted-rose vitrine create a distinct accessory-scale third environment, not another wide cathedral shot.",
+          "product_focus": "Use a close on-model cross-body composition that proves the pebbled black material, front and rear zipper pockets, adjustable webbing, buckle, black hardware, exact white FANNIE embroidery, and small red rose accent while keeping the enchanted rose in focus.",
+          "product_bindings": [
+            "lh-005"
+          ],
+          "primary_cta": "Pre-Order The Fannie",
+          "individual_product_links_required": true,
+          "preorder_product_links_required": true,
+          "aggregate_bundle_product": false,
+          "generation_gate": "PLATE_WIRED_PRODUCT_COMPOSITE_PENDING_FOUNDER_LOGO_PASS",
+          "generation_state": "FOUNDER_APPROVED_PLATE_PRODUCT_COMPOSITE_PENDING",
+          "approval_state": "FOUNDER_DIRECTION_LOCKED"
+        }
+      ]
+    },
+    "kids-capsule": {
+      "hero_endpoint": "The heir commands the completed black-and-gold throne room at the center of the house.",
+      "product_role": "The child creates the room through play, movement, and confidence rather than waiting to inherit it.",
+      "motif_evolution": [
+        "play objects, rose-gold light paths, and first house materials",
+        "a runway formed by the child's movement",
+        "the completed throne and heir monument"
+      ],
+      "chapter_arc": [
+        "The product enters an after-dark playroom built for imagination.",
+        "The child's movement turns the room into a first runway.",
+        "The runway, crown, rose-gold light, and throne resolve into the finished hero."
+      ]
+    }
+  },
+  "visual_product_sot_rebind": {
+    "kind": "visual_product_sot_scene_rebind",
+    "audited_at": "2026-08-23",
+    "changed_skus": [
+      "br-007"
+    ],
+    "affected_scene_ids": [
+      "BR-COMMERCE-2"
+    ],
+    "plate_assets_changed": false,
+    "product_layers_require_founder_review": true
+  }
+}

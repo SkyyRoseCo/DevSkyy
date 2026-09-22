@@ -1,24 +1,23 @@
 <?php
+/** Canonical Skyy character and progressively enhanced house concierge. */
 defined( 'ABSPATH' ) || exit;
-$context = is_front_page() ? 'homepage' : 'default';
-if ( is_page( 'pre-order' ) || is_page( 'preorder' ) ) { $context = 'preorder'; }
-if ( is_page( 'black-rose' ) ) { $context = 'black-rose'; }
-if ( is_page( 'love-hurts' ) ) { $context = 'love-hurts'; }
-if ( is_page( 'signature' ) ) { $context = 'signature'; }
-if ( is_page( 'kids-capsule' ) ) { $context = 'kids-capsule'; }
-$mascot = skyyrose2_sot_asset_uri( 'images/mascot/skyy-canonical-v2.png' );
+$mascot = get_template_directory_uri() . '/assets/images/skyy-runtime-poster.webp';
 ?>
-<div id="skyyrose-mascot" class="skyyrose-mascot skyyrose-mascot--hidden" aria-label="Skyy, your SkyyRose style guide" data-context="<?php echo esc_attr( $context ); ?>" data-walk-side="right" role="complementary">
-	<div id="skyy-bubble" class="skyy-bubble" role="status" aria-live="polite" hidden>
-		<p id="skyy-bubble-text" class="skyy-bubble__text"></p>
-		<div id="skyy-chips" class="skyy-chips" role="group" aria-label="Quick replies"></div>
-		<button id="skyy-ask-trigger" class="skyy-ask-trigger" type="button" hidden>Ask a question</button>
+<dialog id="skyy-ask-dialog" class="skyy-ask-dialog" aria-labelledby="skyy-ask-dialog-title" aria-describedby="skyy-ask-description">
+	<header class="skyy-ask-dialog__head"><div><p class="skyy-ask-dialog__eyebrow">THE HOUSE CONCIERGE</p><h2 id="skyy-ask-dialog-title">Ask Skyy</h2></div><button id="skyy-ask-minimize" type="button" aria-label="<?php echo esc_attr__( 'Minimize Ask Skyy', 'skyyrose-flagship-2' ); ?>">−</button><button id="skyy-ask-cancel" type="button" aria-label="Close Ask Skyy">×</button></header>
+	<div class="skyy-ask-dialog__body">
+		<div id="skyy-dialog-stage">
+		<div id="skyyrose-mascot" class="skyy-concierge-stage" data-state="hidden" data-renderer="static" data-presence="static">
+			<div id="skyyrose-mascot-trigger" class="skyyrose-mascot__character" aria-hidden="true"><img class="skyyrose-mascot__image" data-fallback-src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/mascot/skyy-canonical-v2-512w.webp' ) ); ?>" src="<?php echo esc_url( $mascot ); ?>" alt="" width="220" height="340" loading="lazy" decoding="async"><canvas id="skyy-3d-canvas" class="skyy-3d-canvas" width="220" height="340" aria-hidden="true" hidden></canvas></div>
+			<p id="skyy-presence-status" class="skyy-presence-status" role="status" aria-live="polite" aria-atomic="true" data-guide-failed="<?php echo esc_attr__( 'Skyy’s guide could not load. Contact the house.', 'skyyrose-flagship-2' ); ?>" data-contact="<?php echo esc_attr__( 'Contact', 'skyyrose-flagship-2' ); ?>" data-static="<?php echo esc_attr__( 'Your house guide.', 'skyyrose-flagship-2' ); ?>" data-loading="<?php echo esc_attr__( 'Skyy is joining you…', 'skyyrose-flagship-2' ); ?>" data-live="<?php echo esc_attr__( 'Your house guide.', 'skyyrose-flagship-2' ); ?>" data-reduced="<?php echo esc_attr__( 'Skyy is here, with motion off.', 'skyyrose-flagship-2' ); ?>" data-saving="<?php echo esc_attr__( 'Skyy is here in data-saving mode.', 'skyyrose-flagship-2' ); ?>" data-failed="<?php echo esc_attr__( 'Motion is unavailable. You can still ask Skyy.', 'skyyrose-flagship-2' ); ?>"><?php esc_html_e( 'Your house guide.', 'skyyrose-flagship-2' ); ?></p>
+			<button id="skyy-motion-toggle" type="button" aria-pressed="false" hidden>Pause character</button>
+			<div class="skyy-hero-actions"><button id="skyy-hero-chat" type="button" aria-haspopup="dialog" aria-controls="skyy-ask-dialog">Ask Skyy</button><button id="skyy-hero-dismiss" type="button">Dismiss Skyy</button></div>
+		</div>
+		</div>
+		<div class="skyy-ask-dialog__conversation"><p id="skyy-ask-description">Explore the house, find a piece, or ask about sizing. Answers use our site guide and current catalog; this is not a live support chat.</p>
+			<div id="skyy-conversation" class="skyy-conversation" role="log" tabindex="0" aria-label="Conversation with Skyy" aria-live="polite" aria-relevant="additions"></div>
+			<div id="skyy-chips" class="skyy-chips" role="group" aria-label="Suggested questions"></div>
+			<form id="skyy-ask-form" class="skyy-ask-form"><label for="skyy-ask-input">Your question</label><div class="skyy-ask-form__row"><input id="skyy-ask-input" name="question" type="text" autocomplete="off" maxlength="300" required placeholder="A product, collection, or question…"><button type="submit">Ask</button></div></form>
+		</div>
 	</div>
-	<button id="skyyrose-mascot-trigger" class="skyyrose-mascot__character" type="button" aria-label="Chat with Skyy" aria-expanded="false">
-		<img class="skyyrose-mascot__image" src="<?php echo esc_url( $mascot ); ?>" alt="SkyyRose mascot" width="220" height="220" loading="lazy" decoding="async">
-		<canvas id="skyy-3d-canvas" class="skyy-3d-canvas" width="220" height="340" aria-hidden="true" style="display:none"></canvas>
-	</button>
-	<button id="skyyrose-mascot-minimize" class="skyyrose-mascot__minimize" type="button" aria-label="Minimize Skyy">×</button>
-</div>
-<button id="skyyrose-mascot-recall" class="skyyrose-mascot__recall" type="button" style="display:none" aria-hidden="true" aria-label="Bring Skyy back"><img src="<?php echo esc_url( $mascot ); ?>" alt="" width="32" height="32"><span>Skyy</span></button>
-<dialog id="skyy-ask-dialog" class="skyy-ask-dialog" aria-labelledby="skyy-ask-dialog-title"><form id="skyy-ask-form" class="skyy-ask-form" method="dialog"><h2 id="skyy-ask-dialog-title">Ask Skyy</h2><label for="skyy-ask-input">Sizing, shipping, a collection…</label><input id="skyy-ask-input" type="text" autocomplete="off"><div><button type="button" id="skyy-ask-cancel">Cancel</button><button type="submit">Ask</button></div></form></dialog>
+</dialog>

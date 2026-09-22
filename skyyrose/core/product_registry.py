@@ -165,6 +165,86 @@ def update_catalog_fields(sku: str, changes: dict[str, str], path: Path | None =
     return changed
 
 
+MERCHANDISING_SERIES = {"jersey-series": frozenset({"oakland", "san-francisco", "san-jose"})}
+
+
+def validate_merchandising(value: Any) -> None:
+    """Reject unknown route assignments and malformed ordering, including booleans."""
+    if not isinstance(value, dict) or set(value) != {
+        "series_slug",
+        "series_region",
+        "series_order",
+    }:
+        raise ValueError("Merchandising requires series_slug, series_region, series_order")
+    slug, region, order = (value[key] for key in ("series_slug", "series_region", "series_order"))
+    if not isinstance(slug, str) or not isinstance(region, str) or type(order) is not int:
+        raise ValueError("Merchandising slug/region must be strings and order an integer")
+    if not slug:
+        if region or order != 0:
+            raise ValueError("Unassigned merchandising must have empty region and zero order")
+    elif slug not in MERCHANDISING_SERIES or region not in MERCHANDISING_SERIES[slug]:
+        raise ValueError(f"Unknown merchandising series or region: {slug!r}/{region!r}")
+    elif order <= 0:
+        raise ValueError("Assigned merchandising order must be positive")
+
+
+def update_product_merchandising(
+    assignments: dict[str, dict[str, Any]],
+    *,
+    source: str,
+    only_missing: bool = False,
+    path: Path | None = None,
+) -> list[str]:
+    """Atomically write route configuration without altering founder product facts.
+
+    Validate the entire batch before committing. ``only_missing`` supports a
+    one-time migration without overwriting a current canonical assignment.
+    Merchandising is not included in CSV or dossier compatibility projections.
+    """
+    if not isinstance(source, str) or not source.strip():
+        raise ValueError("Merchandising source must identify its provenance")
+    target = _registry_target(path)
+    with target.with_suffix(".json.lock").open("a") as lock:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+        raw = load_registry(target)
+        changed = []
+        for sku, value in assignments.items():
+            if sku not in raw["products"]:
+                raise KeyError(f"SKU {sku!r} is not in the product registry")
+            validate_merchandising(value)
+            product = raw["products"][sku]
+            if only_missing and "merchandising" in product:
+                continue
+            if product.get("merchandising") == value:
+                continue
+            product["merchandising"] = copy.deepcopy(value)
+            product["merchandising_provenance"] = {
+                "source": source,
+                "kind": "ROUTE_CONFIGURATION",
+            }
+            changed.append(sku)
+        # Check the final set, not intermediate edits: a batch may legitimately
+        # swap positions, but must not commit a collision with an unchanged SKU.
+        positions: dict[tuple[str, int], str] = {}
+        for sku, product in raw["products"].items():
+            value = product.get("merchandising")
+            if value is None:
+                continue
+            validate_merchandising(value)
+            if not value["series_slug"]:
+                continue
+            position = (value["series_slug"], value["series_order"])
+            if position in positions:
+                raise ValueError(
+                    f"Duplicate merchandising series/order {position!r}: "
+                    f"{positions[position]} and {sku}"
+                )
+            positions[position] = sku
+        if changed:
+            _atomic_write(target, json.dumps(raw, ensure_ascii=False, indent=2) + "\n")
+    return changed
+
+
 CONTENT_FIELDS = ("description", "short_description", "seo_meta", "instagram", "tiktok")
 CONTENT_AUTHORITIES = frozenset({"FOUNDER_AUTHORED", "AGENT_GENERATED"})
 

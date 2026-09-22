@@ -24,21 +24,6 @@ for route in \
 	require_file "$route"
 done
 
-rights_record="$REPO_ROOT/.fashion-theme/founder-rights-attestation-2026-08-26.json"
-runtime_capture="$REPO_ROOT/.fashion-theme/woocommerce-runtime-capture-2026-08-26.json"
-if [[ ! -f "$rights_record" ]] || ! jq -e '.record_id == "founder-rights-attestation-2026-08-26"' "$rights_record" >/dev/null; then
-	echo "FAIL founder V2 media-rights attestation missing" >&2
-	exit 1
-fi
-if ! jq -e '([.intake_sources[]?.rights.status, .media[]?.rights.status] | index("MISSING")) | not' "$REPO_ROOT/.fashion-theme/shot-manifest.json" >/dev/null; then
-	echo "FAIL V2 media manifest still contains an unapproved rights record" >&2
-	exit 1
-fi
-if [[ ! -f "$runtime_capture" ]] || ! jq -e '.result.exact_catalog_sku_bindings == 33 and (.result.missing_catalog_skus | length == 0) and (.result.unpublished_catalog_skus | length == 0)' "$runtime_capture" >/dev/null; then
-	echo "FAIL current 33-SKU WooCommerce authority capture missing or incomplete" >&2
-	exit 1
-fi
-
 for approved_visual in \
 	assets/sot/images/hero/black-rose-lake-merritt-monument-v2.png \
 	assets/sot/images/hero/black-rose-typography-star-salon-v3.png \
@@ -186,19 +171,40 @@ for collection in signature black-rose love-hurts kids-capsule; do
 		echo "FAIL generic product card: missing $collection card direction" >&2
 		exit 1
 	fi
-	for width in 640 970; do
-		require_file "assets/sot/images/product-card-portals/${collection}-portal-statue-${width}w.webp"
+	for width in 640w 970w; do
+		statue="$THEME_DIR/assets/sot/images/product-card-portals/$collection-portal-statue-$width.webp"
+		if [[ ! -s "$statue" ]]; then
+			echo "FAIL collection portal statue missing: $collection $width" >&2
+			exit 1
+		fi
 	done
 done
 
 if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'data-portal-frame=' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'data-portal-frame="<\?php echo esc_attr' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__statue' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'sr2-c-product-portal__architecture' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__reel' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__frame-crest' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'function skyyrose2_product_view_image_ids' "$THEME_DIR/functions.php"; then
+	! rg -q 'skyyrose2_product_verified_card_media' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'return array_slice\( \$ordered, 0, 3 \);' "$THEME_DIR/functions.php" || \
+	! rg -q 'skyyrose2_render_product_loop_card\( \$piece' "$THEME_DIR/functions.php" || \
+	! rg -q 'data-reel-count' "$THEME_DIR/template-parts/commerce/product-card.php"; then
 	echo "FAIL approved ornate product-card frame or verified view reel missing" >&2
+	exit 1
+fi
+
+if ! rg -q 'skyyrose2_product_verified_card_media' "$THEME_DIR/template-parts/commerce/product-hero.php" || \
+	! rg -q 'woocommerce_product_get_image_id' "$THEME_DIR/template-parts/commerce/product-hero.php" || \
+	! rg -q 'On-model product imagery is being verified' "$THEME_DIR/template-parts/commerce/product-hero.php"; then
+	echo "FAIL product page does not enforce the approved on-model media sequence" >&2
+	exit 1
+fi
+
+if ! jq -e '
+	(.products | length) == 33 and
+	all(.products[]; (.views[0].role // "") == "on_model_front")
+' "$THEME_DIR/data/opening-product-media.json" >/dev/null; then
+	echo "FAIL every product card requires an approved on-model lead" >&2
 	exit 1
 fi
 

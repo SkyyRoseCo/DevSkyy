@@ -1,0 +1,191 @@
+{
+  "schema": "skyyrose.v2.cinematic-scene-contract.v1",
+  "release_rule": "Every category and every required check must pass independently. Scores are not averaged.",
+  "required_score": 100,
+  "delivery_policy": {
+    "required_motion_formats": ["mp4", "webm"],
+    "max_served_motion_bytes": 5000000,
+    "source_footage_not_served_directly": true
+  },
+  "categories": {
+    "product_fidelity": {
+      "required_score": 100,
+      "checks": [
+        "garment_type_exact",
+        "construction_exact",
+        "silhouette_exact",
+        "color_exact",
+        "material_exact",
+        "logo_art_exact",
+        "logo_scale_exact",
+        "logo_placement_exact",
+        "text_exact",
+        "all_branding_regions_present",
+      "embroidery_regions_complete",
+      "embroidery_stitch_character_exact",
+      "decoration_technique_exact",
+      "surface_relief_exact",
+      "embossed_relief_direction_and_palette_exact",
+      "silicone_cutout_dimensions_and_edge_profile_exact",
+      "tackle_twill_layering_and_stitch_edge_exact",
+      "sublimation_registration_and_fabric_integration_exact",
+      "no_decoration_technique_substitution",
+      "variant_identity_exact",
+      "no_variant_blending",
+      "front_back_view_specific_art_exact",
+        "graphic_repeat_pattern_exact",
+        "hood_lining_exact",
+        "closure_and_hardware_exact",
+        "small_labels_and_patches_exact",
+        "no_detail_simplification",
+        "product_detail_resolution_sufficient",
+        "patch_dimensions_exact",
+        "stripes_and_trim_exact",
+        "negative_constraints_clear"
+      ]
+    },
+    "physical_integration": {
+      "required_score": 100,
+      "checks": [
+        "floor_plane_aligned",
+        "body_scale_plausible",
+        "contact_shadow_present",
+        "cast_shadow_direction_correct",
+        "reflections_physically_plausible",
+        "environmental_occlusion_present",
+        "fabric_responds_to_pose",
+        "environment_interaction_natural"
+      ]
+    },
+    "optical_realism": {
+      "required_score": 100,
+      "checks": [
+        "camera_height_consistent",
+        "lens_perspective_consistent",
+        "horizon_consistent",
+        "depth_of_field_consistent",
+        "subject_edge_response_consistent",
+        "light_direction_consistent",
+        "light_temperature_consistent",
+        "bounce_light_present",
+        "atmospheric_depth_consistent",
+        "grain_and_sharpness_consistent",
+        "skin_and_anatomy_natural"
+      ]
+    },
+    "cinematography": {
+      "required_score": 100,
+      "checks": [
+        "subject_has_story_action",
+        "composition_has_depth_layers",
+        "focal_hierarchy_clear",
+        "negative_space_intentional",
+        "scene_not_symmetrically_staged",
+        "frame_feels_captured_not_composited"
+      ]
+    },
+    "collection_identity": {
+      "required_score": 100,
+      "checks": [
+        "hero_language_preserved",
+        "hero_monument_font_face_exact",
+        "hero_monument_graphic_face_exact",
+        "hero_monument_silhouette_and_plinth_exact",
+        "no_hero_mark_redrawing_or_substitution",
+        "collection_recognizable_without_logo",
+        "symbols_collection_correct",
+        "palette_collection_correct",
+        "no_cross_collection_contamination"
+      ]
+    },
+    "narrative_architecture": {
+      "required_score": 100,
+      "checks": [
+        "product_is_scene_protagonist",
+        "scene_explains_hero_origin",
+        "hero_motifs_evolve_through_chapter",
+        "scene_is_not_hero_duplicate",
+        "environment_responds_to_product",
+        "chapter_has_clear_story_action",
+        "chapter_sequence_builds_to_hero",
+        "story_legible_without_copy"
+      ]
+    },
+    "web_delivery": {
+      "required_score": 100,
+      "checks": [
+        "desktop_crop_safe",
+        "tablet_crop_safe",
+        "mobile_crop_safe",
+        "copy_zone_clear",
+        "commerce_zone_clear",
+        "reduced_motion_poster_valid",
+        "optimized_asset_within_budget"
+      ]
+    }
+  },
+  "required_evidence": [
+    "current_product_sot_hash",
+    "source_product_hashes",
+    "source_scene_hash",
+    "full_frame_review",
+    "product_detail_review_100_percent",
+    "product_detail_review_200_percent",
+    "desktop_crop_review",
+    "tablet_crop_review",
+    "mobile_crop_review",
+    "independent_visual_qa",
+    "founder_approval"
+  ],
+  "generation_fidelity_gate": {
+    "policy": "fail_closed",
+    "candidate_entry_rule": "A generated asset may enter founder review only after every product-fidelity check is independently true at full-frame, 100-percent, and 200-percent inspection. One omitted or simplified detail rejects the entire asset.",
+    "protected_product_target_required_when_available": true,
+    "protected_product_rule": "Preserve the approved on-model person and garment as the edit target. Rebuild the environment around the protected subject; do not regenerate garment pixels when verified on-model proof exists.",
+    "hero_monument_identity_rule": "Every font or graphic chapter must use a hash-bound founder-supplied asset, the founder-confirmed authentic standalone graphic, or pixels derived directly from the approved collection hero master. A founder-confirmed standalone graphic takes identity precedence when its complete silhouette differs from the scene mounting visible in the hero master. The letterforms, rose construction, monogram, star geometry, internal linework, color, silhouette, depth treatment, and required base must remain identical to the designated authority asset. Prompt-generated lookalikes, unconfirmed alternate logo files, added or missing bases, re-lettering, tracing, or silhouette substitutions fail the gate.",
+    "product_scale_rule": "Frame by garment type so every required branding region survives delivery resolution: pants from waistband through ankles, shorts from waistband through hem, tops from collar or hood through waist hem, and accessories close enough for exact wordmark and hardware inspection. Wider full-body frames require a separate detail asset and cannot substitute for product proof.",
+    "jersey_patch_rule": "For every product whose data/product-sot.json merchandising.series_slug is jersey-series, the view-specific lower-left Authentic or Championship patch must be exactly 3in wide by 4in tall at wearer-left lower hem. The patch family, artwork, text, colors, aspect ratio, placement, and rendered scale must match that SKU; a generic sports patch or merely patch-like rectangle fails.",
+    "decoration_technique_rule": "Resolve every branding region's technique from data/product-sot.json and its canonical dossier before generation. Embossing must preserve raised rather than sunken relief, dimensional edge light, the approved relief palette, and a non-thread surface; embroidery must preserve thread direction, stitch density, raised thread relief, inner linework, and edge finish; silicone or silicone-applique must preserve the cutout silhouette, thickness, molded edge, scale, placement, and non-thread surface; tackle twill must preserve separate fabric-letter faces, layered appliqué construction, outline treatment, and stitched edges; sublimated or printed artwork must remain integrated into the fabric plane with the exact repeat, registration, crop, and color behavior. Substituting one technique for another fails even when the logo silhouette is recognizable.",
+    "known_product_technique_locks": {
+      "br-001": "BLACK Rose Crewneck front-chest mark is physically EMBOSSED as raised dimensional relief, approximately 10in tall by proportional width, in black, white, and grey only. It is not embroidery, silicone, print, tackle twill, or debossing. Preserve the three roses, stems, thorny vines, and single cloud pedestal; white ribbed neckband, cuffs, and waist hem remain exact.",
+      "br-012": "Last Oakland Baseball is a dark forest-green button-front jersey with gold/yellow trim. FRONT: authentic tackle-twill BLACK IS BEAUTIFUL spans approximately 80% of visible torso width; all letter faces are WHITE except the A in BLACK, whose face is BLACK; every letter has a GOLD satin-stitched edge. BACK: use only the view-specific br-012 physical back reference, preserving its gold SR monogram and embroidered black/white/grey rose-and-stem cluster over a yellow/gold and grey cloud base. Never infer the back from the front or another back-sheet tile.",
+      "lh-002": "Black Love Hurts joggers use the small embroidered Heart-and-Roses Composite on the wearer-left thigh: cracked red heart wrapped in dark thorns with red roses and green leaves emerging above. No cloud base and no Red Roses Cloud Cluster substitution.",
+      "lh-006": "White Love Hurts joggers use the small embroidered Heart-and-Roses Composite on the wearer-left thigh: cracked red heart wrapped in dark thorns with red roses and green leaves emerging above. No cloud base and no Red Roses Cloud Cluster substitution."
+    },
+    "variant_rule": "A decoration or color variation is an independently bound visual truth. Use only the variant-specific garment reference, exact art, named colors, construction, and SKU or declared option. Never average, merge, mirror, recolor, or combine two variants in one candidate. Matching sets sold separately remain separate product identities even when photographed together; two-piece sets sold as one SKU must retain both pieces.",
+    "required_reference_roles": [
+      "view_specific_full_product",
+      "view_specific_on_model_or_blocker",
+      "every_branding_region_detail",
+      "exact_logo_or_graphic_art",
+      "branding_region_technique_proof",
+      "variant_specific_color_and_decoration_proof",
+      "material_and_construction_proof",
+      "patch_and_small_label_proof_when_applicable"
+    ],
+    "missing_reference_result": "blocked",
+    "prohibited_shortcuts": [
+      "product_name_inference",
+      "filename_only_inference",
+      "generic_logo_substitution",
+      "decoration_technique_substitution",
+      "variant_blending",
+      "unverified_variant_recoloring",
+      "invented_back_art",
+      "front_view_mirroring",
+      "embroidery_simplification",
+      "unverified_color_interpolation"
+    ]
+  },
+  "production_passes": [
+    "hero_origin_blueprint",
+    "shot_blocking",
+    "model_performance",
+    "physical_integration",
+    "garment_recovery",
+    "cinematic_grade",
+    "responsive_crop",
+    "independent_qa",
+    "founder_approval"
+  ]
+}

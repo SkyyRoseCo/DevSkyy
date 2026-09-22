@@ -193,7 +193,7 @@ function skyyrose2_seo_resolved_context() {
 	);
 
 	if ( is_front_page() ) {
-		$context['title']       = $site_name . ' | ' . __( 'Luxury Grows from Concrete', 'skyyrose-flagship-2' );
+		$context['title']       = $site_name;
 		$context['description'] = skyyrose2_seo_excerpt( __( 'Enter SkyyRose: Oakland-rooted luxury streetwear, living collection worlds, limited pieces, and the stories behind the house.', 'skyyrose-flagship-2' ) );
 	} elseif ( is_singular( 'product' ) && function_exists( 'wc_get_product' ) ) {
 		$product = wc_get_product( get_queried_object_id() );
@@ -202,7 +202,8 @@ function skyyrose2_seo_resolved_context() {
 			$product_description    = skyyrose2_seo_excerpt( $product_copy );
 			$context['title']       = $product->get_name() . ' | ' . $site_name;
 			$context['description'] = $product_description ? $product_description : $context['description'];
-			$context['image']       = $product->get_image_id() ? (string) wp_get_attachment_image_url( $product->get_image_id(), 'full' ) : $context['image'];
+			$media                 = function_exists( 'skyyrose2_product_commerce_media' ) ? skyyrose2_product_commerce_media( $product ) : array();
+			$context['image']       = ! empty( $media['ids'] ) ? (string) wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '';
 			$context['type']        = 'product';
 		}
 	} elseif ( is_single() ) {
@@ -283,7 +284,7 @@ function skyyrose2_seo_render_meta() {
 	if ( $context['image'] ) :
 		?>
 		<meta property="og:image" content="<?php echo esc_url( $context['image'] ); ?>"><?php endif; ?>
-	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:card" content="<?php echo empty( $context['image'] ) ? 'summary' : 'summary_large_image'; ?>">
 	<meta name="twitter:title" content="<?php echo esc_attr( $context['title'] ); ?>">
 	<?php
 	if ( $context['description'] ) :
@@ -352,7 +353,7 @@ function skyyrose2_seo_breadcrumbs() {
 }
 
 /**
- * Extract visible core Details blocks for honest FAQ schema.
+ * Extract the maintained, visible FAQ for honest FAQ schema.
  *
  * @return array<int,array{question:string,answer:string}>
  */
@@ -361,8 +362,20 @@ function skyyrose2_seo_faq_entries() {
 		return array();
 	}
 	$content = (string) get_post_field( 'post_content', get_queried_object_id() );
+
 	$entries = array();
 	if ( preg_match_all( '#<details[^>]*>\s*<summary[^>]*>(.*?)</summary>(.*?)</details>#is', $content, $matches, PREG_SET_ORDER ) ) {
+		foreach ( $matches as $match ) {
+			$question = skyyrose2_seo_excerpt( $match[1], 240 );
+			$answer   = skyyrose2_seo_excerpt( $match[2], 1000 );
+			if ( $question && $answer ) {
+				$entries[] = array(
+					'question' => $question,
+					'answer'   => $answer,
+				);
+			}
+		}
+	} elseif ( preg_match_all( '#<h2[^>]*>(.*?)</h2>\s*(?:<!--[^>]*-->\s*)*<p[^>]*>(.*?)</p>#is', $content, $matches, PREG_SET_ORDER ) ) {
 		foreach ( $matches as $match ) {
 			$question = skyyrose2_seo_excerpt( $match[1], 240 );
 			$answer   = skyyrose2_seo_excerpt( $match[2], 1000 );

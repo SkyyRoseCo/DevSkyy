@@ -1,0 +1,38 @@
+{
+  "schema": "skyyrose.v2.founder-supplied-scene-assets.v1",
+  "received_at": "2026-08-22",
+  "assets": [
+    {
+      "collection": "signature",
+      "role": "hero_font_statue_exact_art",
+      "source_filename": "ChatGPT Image Aug 22, 2026 at 08_04_19 PM.png",
+      "file": "assets/sot/images/lockups/founder-supplied/signature-font-statue-founder-supplied-v1.png",
+      "sha256": "c730cfe5e6f9646aeb54561d2e4d403f4aa91d035d6dcc2beefc23b9f0cdcb68",
+      "dimensions": "1618x972",
+      "color_type": "RGB",
+      "alpha_preserved": false,
+      "usage": "SIG-1 font-statue Scroll World scene only unless the founder approves an additional role.",
+      "approved_edit": "Founder directed a clean transparent SkyyRose-only asset: remove THE, COLLECTION, the freestanding statue legs, the background, and isolated support remnants.",
+      "fidelity_rule": "Preserve the founder-approved SkyyRose script and integrated rose as the protected object: exact letterforms, gold finish, proportions, and rose. Remove only THE, COLLECTION, freestanding statue legs, background, and isolated support remnants. Do not regenerate, trace, re-letter, simplify, recolor, or replace any part of SkyyRose or the rose.",
+      "approved_scene_derivative": {
+        "file": "assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-v1.png",
+        "sha256": "e259c246a320b8220044da915c3b6fa89ecbbe7ab4a74eb80bafebe668d0e274",
+        "dimensions": "1469x414",
+        "color_type": "RGBA",
+        "alpha_preserved": true
+      }
+    },
+    {
+      "collection": "signature",
+      "role": "hero_graphic_exact_art",
+      "source_filename": "Photoroom_20260201_143638.png",
+      "file": "assets/sot/images/lockups/founder-supplied/signature-sr-rose-graphic-founder-supplied-v1.png",
+      "sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc",
+      "dimensions": "512x512",
+      "color_type": "RGBA",
+      "alpha_preserved": true,
+      "usage": "SIG-3 graphic-aspect Scroll World scene only unless the founder approves an additional role.",
+      "fidelity_rule": "Composite the exact supplied pixels. Do not regenerate, trace, simplify, recolor, re-letter, or replace the rose, monogram, leaves, or flourish."
+    }
+  ]
+}
