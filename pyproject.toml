@@ -98,7 +98,7 @@ dependencies = [
     # litellm.proxy, which this repo neither installs ([proxy] extra) nor runs; usage
     # is SDK-only (acompletion/completion_cost), so unreachable here. The 2.x migration
     # MUST target litellm>=1.84.0 (not just >=1.81) to clear them in the same step.
-    "litellm>=1.80,<1.94",
+    "litellm>=1.80,<1.103",
 
     # Monitoring
     "prometheus-client>=0.19",
