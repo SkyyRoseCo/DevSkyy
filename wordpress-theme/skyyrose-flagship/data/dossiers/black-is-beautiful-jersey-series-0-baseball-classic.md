@@ -11,7 +11,11 @@ reference_image: assets/products/references/br-003-baseball-classic-techflat.jpe
 
 # BLACK is Beautiful Jersey Series — 0. Baseball Classic
 
-**Garment type lock:** Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid BLACK base fabric. White piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. White buttons on the placket. NO player number on front. NO player number on back. NO player name on back. NO pinstripes. NOT a t-shirt. NOT a hoodie. NOT a basketball jersey. NOT a football jersey. Mid-weight knit jersey fabric. Solid black colorway (this is the Classic base; Oakland / Giants / White editions are separate SKUs br-012 / br-014 / br-015).
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Solid BLACK base fabric. Mid-weight knit jersey fabric.
+Features: Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid BLACK base fabric. White piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. White buttons on the placket. NO player number on front. NO player number on back. NO player name on back. NO pinstripes. NOT a t-shirt. NOT a hoodie. NOT a basketball jersey. NOT a football jersey. Mid-weight knit jersey fabric. Solid black colorway (this is the Classic base; Oakland / Giants / White editions are separate SKUs br-012 / br-014 / br-015).
+Color: Black
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 
@@ -31,7 +35,7 @@ reference_image: assets/products/references/br-003-baseball-classic-techflat.jpe
   outline, arched across the upper-front-chest. **Technique:** tackle-twill.
   **Color:** white twill letters (no contrast satin-stitch edge — clean
   white-on-black).
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in, near the bottom
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall, near the bottom
   hem on the wearer's left hip): The Black Rose Authentic Collection patch —
   the rectangular yellow-and-white multi-element patch defined in the patch
   reference file (BLACK ROSE / MLB-style batter silhouette / AUTHENTIC banner /

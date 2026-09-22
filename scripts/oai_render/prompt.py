@@ -14,6 +14,9 @@ import logging
 import re
 from pathlib import Path
 
+from skyyrose.core.dossier_loader import DOSSIERS_DIR, load_dossier
+from skyyrose.elite_studio.logo_registry import LogoRegistry
+
 from . import config
 
 log = logging.getLogger(__name__)
@@ -248,12 +251,17 @@ def read_dossier(dossier_path: Path | None) -> str | None:
     blocked-phrase line filter → length cap. Only construction/material prose
     survives into the prompt.
     """
-    if not dossier_path or not dossier_path.exists():
+    if dossier_path is None:
         return None
-    try:
-        body = _strip_frontmatter_and_comments(dossier_path.read_text(encoding="utf-8"))
-    except OSError:
-        return None
+    if dossier_path.parent.resolve() == DOSSIERS_DIR.resolve():
+        # Canonical paths are logical identifiers; mirrors may be stale or absent.
+        raw = load_dossier(dossier_path.stem).raw
+    else:
+        try:
+            raw = dossier_path.read_text(encoding="utf-8")
+        except OSError:
+            return None
+    body = _strip_frontmatter_and_comments(raw)
     if not body:
         return None
     body = sanitize_injected_text(body, source=dossier_path.name)
@@ -436,6 +444,8 @@ def build_prompt(
         parts.append("")
 
     parts.extend(_corrections_block(sku))
+    parts.append(LogoRegistry.load().prompt_instructions(sku, require_sizing=is_patch))
+    parts.append("")
 
     if is_patch and view == "front":
         parts.append(
@@ -527,6 +537,11 @@ def build_pair_prompt(
 
     for g in garments:
         parts.extend(_corrections_block(g["sku"]))
+        parts.append(
+            LogoRegistry.load().prompt_instructions(
+                g["sku"], require_sizing=bool(g.get("is_patch"))
+            )
+        )
 
     for i, g in enumerate(garments):
         if g.get("is_patch"):

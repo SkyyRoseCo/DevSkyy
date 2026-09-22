@@ -7,10 +7,8 @@ manifest) — resolves product imagery through here, never through ad-hoc paths.
 Hardcoding ``assets/images/products/<sku>...`` anywhere else is a drift bug
 (``tests/test_sot_no_adhoc_imagery.py`` guards against it).
 
-Source of truth = the per-collection SOT view
-``wordpress-theme/skyyrose-flagship/data/collections/<slug>/sot.json`` (itself
-generated from ``identity.json`` + the catalog CSV + ``visual-manifest.json`` by
-``data/build-collection-sot.py`` — do not hand-edit it).
+Source of truth = product image records in ``logo-registry.json``. Collection
+SOT views and ``data/sot-images.json`` are generated mirrors, not editable inputs.
 
 The front-first fallback chain mirrors the WordPress theme's
 ``template-parts/product-card-holo.php`` rule exactly: the on-model render
@@ -22,7 +20,6 @@ previews this module exists to prevent.
 
 from __future__ import annotations
 
-import functools
 import json
 from pathlib import Path
 from typing import Literal
@@ -30,8 +27,10 @@ from typing import Literal
 # Anchor on the canonical path registry (skyyrose.core.paths) — never recompute
 # repo/theme roots locally (paths.py is the single place that answers "where").
 from skyyrose.core.paths import REPO_ROOT, THEME_ROOT
+from skyyrose.core.product_registry import load_registry
 
 COLLECTIONS_DIR: Path = THEME_ROOT / "data" / "collections"
+_CANONICAL_COLLECTIONS_DIR = COLLECTIONS_DIR
 
 Role = Literal["front", "back", "packshot", "back_packshot"]
 
@@ -45,16 +44,16 @@ _ROLE_KEYS: dict[str, tuple[str, ...]] = {
 }
 
 
-@functools.lru_cache(maxsize=1)
 def _index() -> dict[str, dict]:
-    """Build ``sku -> product`` from every collection's ``sot.json`` (cached).
+    """Read current registry products, or an explicitly redirected fixture tree."""
+    if COLLECTIONS_DIR.resolve() == _CANONICAL_COLLECTIONS_DIR.resolve():
+        return {
+            sku: {**product["catalog"], "sku": sku, "images": product.get("images", {})}
+            for sku, product in load_registry()["products"].items()
+        }
 
-    The verified asset hub's overrides are baked into ``sot.json`` upstream by
-    ``build-collection-sot.py`` (the single seam), so this resolver — and every
-    surface it feeds (Python ``resolve_image``, the PHP theme via ``sot.json``, the
-    dashboard via ``data/sot-images.json``) — honors the hub verdict uniformly
-    without a parallel override here.
-    """
+    # Noncanonical directories are deliberate fixture inputs. Never consult
+    # generated collection files to repair a missing canonical registry record.
     idx: dict[str, dict] = {}
     # Enumerate collections from the filesystem so a newly-added collection is
     # picked up automatically — never a hardcoded slug list that silently omits it.
@@ -69,8 +68,7 @@ def _index() -> dict[str, dict]:
 
 
 def refresh() -> None:
-    """Drop the cached index (call after regenerating ``sot.json``)."""
-    _index.cache_clear()
+    """Compatibility hook: reads already reload the current registry each time."""
 
 
 def all_skus() -> list[str]:
@@ -143,7 +141,7 @@ def build_manifest() -> dict[str, dict[str, str]]:
     non-Python surfaces (the Next.js dashboard, any JS/PHP consumer). Generated —
     regenerate via :func:`write_manifest`; never hand-edit.
     """
-    # Single pass over the cached index, reusing the same _ROLE_KEYS fallback
+    # Single pass over the current index, reusing the same _ROLE_KEYS fallback
     # chain resolve_image() applies (one authority for the front-first rule).
     manifest: dict[str, dict[str, str]] = {}
     for sku, prod in sorted(_index().items()):

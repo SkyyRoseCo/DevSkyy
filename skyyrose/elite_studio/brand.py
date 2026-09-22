@@ -5,7 +5,7 @@ Reads `assets/brand/brand.yaml` and exposes a typed API:
     from skyyrose.elite_studio.brand import BrandConfig
 
     brand = BrandConfig.load()
-    print(brand.tagline_active)        # "Luxury Grows from Concrete."
+    print(brand.tagline_active)        # ""
     print(brand.retired_taglines)      # ("Where Love Meets Luxury",)
     print(brand.collection("black-rose").palette["primary"])  # "#0A0A0A"
 
@@ -32,7 +32,7 @@ except ImportError as _e:  # pragma: no cover
         "PyYAML is required to load brand.yaml. Install with `pip install pyyaml`."
     ) from _e
 
-from .validation import validate_hex_color, validate_not_empty
+from .validation import validate_hex_color
 
 _ENV_BRAND_PATH = "SKYYROSE_BRAND_PATH"
 
@@ -89,7 +89,7 @@ class BrandConfig:
     def _from_dict(cls, data: dict) -> BrandConfig:
         tagline_block = data.get("tagline") or {}
         active = str(tagline_block.get("active") or "")
-        validate_not_empty(active, "tagline.active")
+        # An empty active tagline intentionally means the brand has no slogan.
 
         retired_raw = tagline_block.get("retired") or []
         retired: list[str] = []

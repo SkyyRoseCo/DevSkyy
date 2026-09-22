@@ -5,7 +5,7 @@ run_creative() is the sync entry point (no checkpointing).
 arun_creative() is the async entry point with PG checkpointing,
 and resume_creative() picks up an interrupted run by operation_id.
 
-"Luxury Grows from Concrete."
+""
 """
 
 from __future__ import annotations

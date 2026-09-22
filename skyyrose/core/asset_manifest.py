@@ -69,6 +69,7 @@ class SkuAssets:
     collection: str
     garment_type: str
     assets: list[AssetRecord] = field(default_factory=list)
+    resolution_error: str | None = None
 
     def by_role(self, role: str) -> AssetRecord | None:
         for a in self.assets:
@@ -96,6 +97,8 @@ class AssetManifest:
     generated_at: str = ""
     catalog_sha: str | None = None
     skus: dict[str, SkuAssets] = field(default_factory=dict)
+    registry_sha: str | None = None
+    registry_path: str = "wordpress-theme/skyyrose-flagship/data/logo-registry.json"
 
     # ── serialization ──────────────────────────────────────────────────────
     @classmethod
@@ -116,6 +119,7 @@ class AssetManifest:
                 name=entry.get("name", ""),
                 collection=entry.get("collection", ""),
                 garment_type=entry.get("garment_type", ""),
+                resolution_error=entry.get("resolution_error"),
                 assets=[
                     AssetRecord(role=a["role"], path=a["path"], sha256=a.get("sha256"))
                     for a in entry.get("assets", [])
@@ -128,6 +132,8 @@ class AssetManifest:
             generated_at=raw.get("generated_at", ""),
             catalog_sha=raw.get("catalog_sha"),
             skus=skus,
+            registry_sha=raw.get("registry_sha"),
+            registry_path=raw.get("registry_path", cls.registry_path),
         )
 
     def to_payload(self) -> dict:
@@ -135,6 +141,11 @@ class AssetManifest:
             "version": self.version,
             "generated_at": self.generated_at,
             "catalog_sha": self.catalog_sha,
+            **(
+                {"registry_sha": self.registry_sha, "registry_path": self.registry_path}
+                if self.registry_sha is not None or self.version >= 2
+                else {}
+            ),
             "skus": {
                 sku: {
                     "sku": sa.sku,
@@ -142,6 +153,7 @@ class AssetManifest:
                     "collection": sa.collection,
                     "garment_type": sa.garment_type,
                     "assets": [asdict(a) for a in sa.assets],
+                    **({"resolution_error": sa.resolution_error} if sa.resolution_error else {}),
                 }
                 for sku, sa in sorted(self.skus.items())
             },
@@ -173,10 +185,46 @@ class AssetManifest:
         base = base or REPO_ROOT
         targets = skus if skus is not None else list(self.skus)
         findings: list[DriftFinding] = []
+        if self.registry_sha is not None:
+            registry_file = base / self.registry_path
+            if not registry_file.is_file():
+                findings.append(
+                    DriftFinding(
+                        "*",
+                        "registry",
+                        self.registry_path,
+                        "missing",
+                        "product registry is missing",
+                    )
+                )
+            elif sha256_of_file(registry_file) != self.registry_sha:
+                findings.append(
+                    DriftFinding(
+                        "*",
+                        "registry",
+                        self.registry_path,
+                        "hash_mismatch",
+                        "product authority changed; regenerate the asset manifest",
+                    )
+                )
+        elif self.version >= 2:
+            findings.append(
+                DriftFinding(
+                    "*",
+                    "registry",
+                    self.registry_path,
+                    "registry_unpinned",
+                    "manifest has no product authority hash; regenerate it",
+                )
+            )
         for sku in targets:
             sa = self.skus.get(sku)
             if sa is None:
                 continue
+            if sa.resolution_error:
+                findings.append(
+                    DriftFinding(sku, "resolution", "", "resolution_error", sa.resolution_error)
+                )
             for a in sa.assets:
                 if a.sha256 is None:
                     continue  # was absent at generation; not a regression

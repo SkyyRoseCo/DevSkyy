@@ -11,7 +11,6 @@ Tripo client is lazy-imported inside verify_tripo_region() to avoid hard dep at 
 from __future__ import annotations
 
 import asyncio
-import csv
 import logging
 import os
 import re
@@ -162,13 +161,16 @@ def resolve_sku(
     effective_catalog = catalog_path or CATALOG_CSV_PATH
     effective_bundle_root = bundle_root or BUNDLE_DIR
 
-    with open(effective_catalog, newline="", encoding="utf-8") as fh:
-        reader = csv.DictReader(fh)
-        matching_row: dict[str, str] | None = None
-        for row in reader:
-            if row.get("sku", "").strip() == sanitized_sku:
-                matching_row = row
-                break
+    from skyyrose.core.catalog_loader import read_catalog_rows
+
+    matching_row = next(
+        (
+            row
+            for row in read_catalog_rows(effective_catalog)
+            if row.get("sku", "").strip() == sanitized_sku
+        ),
+        None,
+    )
 
     if matching_row is None:
         raise ValueError(f"SKU {sanitized_sku!r} not found in catalog")

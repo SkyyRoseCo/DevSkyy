@@ -30,7 +30,7 @@ Landing page story: *"Signature is the collection that started everything. Befor
 
 Founder quote from `collection-content.php`:
 
-> "They told me luxury doesn't come from Oakland. I said luxury grows from concrete — and I meant that literally. This collection is the concrete. Everything else grew from here."
+> "They told me luxury doesn't come from Oakland. I said  — and I meant that literally. This collection is the concrete. Everything else grew from here."
 
 Verbatim founder quote also present in `template-parts/collection/founder-pullquote.php`:
 

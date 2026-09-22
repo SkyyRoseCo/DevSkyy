@@ -11,7 +11,7 @@ Rosie already exists — reference assets live at:
 The frontend mascot system (/api/mascot, MascotBubble.tsx) is the canonical
 generation system. This agent bridges Rosie into the Elite Studio creative pipeline.
 
-"Luxury Grows from Concrete."
+""
 """
 
 from __future__ import annotations
@@ -78,7 +78,7 @@ _ROSIE_SPEC = CharacterSpec(
         "'Love Hurts' script lettering on jacket chest",
         "Rose embroidery on jacket hood lining, pants leg, and sneakers",
         "White satin + black leather varsity aesthetic",
-        "'Luxury Grows from Concrete.' — Oakland roots embodied in her confident stance",
+        "'' — Oakland roots embodied in her confident stance",
     ),
     reference_paths=(
         str(_CANONICAL_REFERENCE),  # PRIMARY — actual Skyy character image
@@ -128,7 +128,7 @@ def _base_character_block(spec: CharacterSpec) -> str:
         f"Face: {spec.face_features} "
         f"Outfit: {spec.outfit_base} "
         f"Brand elements: {elements}. "
-        "SkyyRose luxury streetwear brand. 'Luxury Grows from Concrete.' Oakland, CA."
+        "SkyyRose luxury streetwear brand. '' Oakland, CA."
     )
 
 
@@ -255,7 +255,7 @@ class CharacterCreationAgent:
                 f"Pose: {pose_desc}. "
                 "Dynamic, expressive pose with SkyyRose brand energy. "
                 "Clean background suitable for compositing. "
-                "'Luxury Grows from Concrete.' brand spirit."
+                "'' brand spirit."
             )
 
             return CharacterPose(
@@ -295,7 +295,7 @@ class CharacterCreationAgent:
             front_view = (
                 f"{base} {ref_note}"
                 "Full body, standing confidently with hands on hips, studio lighting. "
-                "SkyyRose brand energy, 'Luxury Grows from Concrete.' Oakland, CA."
+                "SkyyRose brand energy, '' Oakland, CA."
             )
             side_view = (
                 f"{base} {ref_note}"

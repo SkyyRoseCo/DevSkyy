@@ -4,7 +4,7 @@ Mockup generation tools for SkyyRose Elite Studio.
 MockupGenerator produces structured prompts and specifications for
 AI-generated product mockups.
 
-"Luxury Grows from Concrete."
+""
 """
 
 from __future__ import annotations
@@ -84,7 +84,7 @@ class MockupGenerator:
         brand_elements = (
             "SkyyRose embroidered rose detail",
             f"{collection.replace('-', ' ').title()} collection aesthetic",
-            "'Luxury Grows from Concrete.' brand DNA",
+            "'' brand DNA",
         )
 
         # QA checks from garment rules
@@ -104,7 +104,7 @@ class MockupGenerator:
             f"Fabric: {texture_str}. "
             f"{avoid_clause}"
             f"{style.capitalize()} photography. "
-            f"Premium quality, 'Luxury Grows from Concrete.' Oakland streetwear brand. "
+            f"Premium quality, '' Oakland streetwear brand. "
             f"Photorealistic product render."
         )
 

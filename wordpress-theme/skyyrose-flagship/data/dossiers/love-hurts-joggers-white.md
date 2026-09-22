@@ -10,7 +10,12 @@ reference_image: assets/products/references/lh-006-techflat-front.jpeg
 
 # Love Hurts Joggers (White)
 
-**Garment type lock:** Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **WHITE body** with **BLACK contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). White flat drawstring. NOT pants. NOT shorts. NOT a track short. NOT a basketball jogger. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The black-base mirror colorway is a separate SKU (`lh-002`).
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Mid-weight cotton-fleece fabric. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique.
+Fit: Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs).
+Features: Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **WHITE body** with **BLACK contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). White flat drawstring. NOT pants. NOT shorts. NOT a track short. NOT a basketball jogger. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The black-base mirror colorway is a separate SKU (`lh-002`).
+Color: White
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 

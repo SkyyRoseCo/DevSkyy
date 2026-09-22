@@ -12,15 +12,26 @@ reference_image: assets/products/references/br-009-design-front.jpeg
 
 # BLACK is Beautiful Jersey Series — 2. Last Oakland (Football)
 
-**Garment type lock:** Authentic-style football jersey — V-neck collar opening
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Solid **white** base fabric (Last Oakland Raiders-inspired road/away
+colorway). Mid-weight knit jersey fabric.
+Features: Authentic-style football jersey — V-neck collar opening
 with **solid black neckband** (contrast against the white body), short sleeves
 with a **black-and-white horizontal striped cuff band** at each cuff, straight
 even hem. Solid **white** base fabric (Last Oakland Raiders-inspired road/away
 colorway). Mid-weight knit jersey fabric. Pullover construction — NO buttons,
 NO front placket. NOT a t-shirt. NOT a hoodie. NOT a basketball tank. NOT a
 baseball jersey. **PRE-ORDER product** — design renderings only.
+Color: White
+Available sizes: S | M | L | XL | 2XL | 3XL
 
-## Branding — exactly what IS on this product
+## Source correction and unresolved generation hold — 2026-09-11
+
+Recorded founder corrections in `renders/oai/_review/review-state.json` supersede the older both-digits-fill instruction: `jersey-last-oakland-football/ghost.png` (2026-06-10T02:03:26.224Z) specifies the rose only in the front 3; `ghost-back.png` (2026-06-10T02:03:50.416Z) specifies it only in the back 2; the on-model entry agrees. See `data/render-corrections.json` br-009 and `assets/products/references/br-009-design-front.jpeg`. These records agree with the catalog. The reviewed renders remain flagged and unapproved.
+
+**HOLD new garment generation and ad use:** the legacy technique/color/patch assertions below are unresolved where they differ from `data/logo-registry.json` and the catalog. In particular, this dossier says sublimated/greyscale while those structured sources say stitched/rose_gold. The later founder comments resolve digit placement only. `assets/hub/manifest.json` keeps br-009 front pending for a missing patch and back pending. Do not invent a patch, silently resolve technique/color, or treat the design reference as a fully approved replacement. Campaign may use a separately approved train-only series concept.
+
+## Branding — recorded details; unresolved fields subject to hold above
 
 > Logo art canonical references:
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
@@ -40,10 +51,10 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 ### Front
 - **front-chest** (large, ~10in tall, vertically centered): The number
   **"32"** rendered as athletic-block digits with a **black outline edge**
-  and greyscale Black Rose three-rose-cluster art filling the interior of
-  both digits. **Technique:** sublimated. **Color:** black outline +
+  and Black Rose three-rose-cluster art filling the **3 only**; the **2
+  remains plain white**. The legacy color/technique fields below remain unresolved. **Technique:** sublimated. **Color:** black outline +
   greyscale rose-cluster fill on white ground.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in): The NFL
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall): The NFL
   Authentic Collection patch sewn onto the lower-left hip. **Technique:**
   embroidered-patch.
 
@@ -57,7 +68,8 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
   **black twill** on the white body. **Technique:** tackle-twill. **Color:**
   black twill letters on white ground.
 - **back-center** (large, ~12in tall, vertically centered): The number
-  **"32"** rendered identically to the front. **Technique:** sublimated.
+  **"32"** with the rose fill in the **2 only** and the **3 plain white**,
+  reversing the front fill assignment. **Technique:** unresolved legacy claim: sublimated.
   **Color:** black outline + greyscale rose-cluster fill.
 
 ### Sleeves
@@ -81,7 +93,7 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 - NO multi-color rendering of the rose-cluster fill — greyscale only.
 - NO red anywhere on this colorway (this is the Last Oakland white away —
   NO 49ers red, NO Giants orange).
-- NO solid-color "32" digits — the digits have black outline + rose fill.
+- NO rose fill in both digits. Front: rose in 3, plain white 2. Back: plain white 3, rose in 2. Preserve the black outline; technique/color remain held above.
 - NO MLB Authentic Collection patch (baseball series only).
 - NO Hockey Championship patch.
 - NO NBA Authentic Collection patch.

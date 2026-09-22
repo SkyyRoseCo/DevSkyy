@@ -1,8 +1,9 @@
 ---
-logo_id: three-rose-cluster
+logo_id: black-roses-cloud-cluster
 collection: shared
 image_path: data/brand-logos/three-rose-cluster.jpeg
 aliases:
+  - three-rose-cluster
   - black-rose
 ---
 
@@ -50,8 +51,8 @@ specifies the recolor):
   silicone appliqué / screen-print).
 - **Signature 'Stay Golden' Shirt (sg-002)** — recolored to **purple**.
 - **Signature 'Bay Bridge' Shirt (sg-005)** — recolored to **blue/cyan**.
-- **Signature Beanie (sg-007)** — **greyscale** cluster (cuff face).
-- **Mint & Lavender (sg-006 hoodie, sg-014 sweatpants)** — small **lavender**
+- **Signature Beanie (sg-007)** — resolve the selected variant from its actual product artwork. The registry records an open variant/technique conflict; do not use greyscale as a universal default.
+- **Mint & Lavender (sg-006 hoodie, sg-013 crewneck, sg-014 sweatpants)** — small **lavender**
   rose-cluster recolor (founder-confirmed 2026-06-11 from the techflat; the
   earlier 'pink' note was stale — the real garment shows lavender/purple roses).
 

@@ -12,7 +12,11 @@ inherits_from: black-is-beautiful-jersey-series-0-baseball-classic
 
 # BLACK is Beautiful Jersey Series — 0. Baseball Classic (White Edition)
 
-**Garment type lock:** Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid **white** base fabric with **black** piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. Black buttons on the placket. NO player number on front or back. NO player name on back. NO pinstripes. Mid-weight knit jersey. This is the WHITE colorway (separate SKU from Classic black br-003 / Giants br-014 / Oakland br-012).
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Solid **white** base fabric with **black** piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. Mid-weight knit jersey.
+Features: Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid **white** base fabric with **black** piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. Black buttons on the placket. NO player number on front or back. NO player name on back. NO pinstripes. Mid-weight knit jersey. This is the WHITE colorway (separate SKU from Classic black br-003 / Giants br-014 / Oakland br-012).
+Color: White
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 
@@ -29,7 +33,7 @@ inherits_from: black-is-beautiful-jersey-series-0-baseball-classic
   across the upper-front-chest. **Technique:** tackle-twill. **Color:** black
   twill letters (the inverse colorway treatment of the Classic black; clean
   black-on-white with no contrast satin-stitch edge).
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in): The Black Rose
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall): The Black Rose
   Authentic Collection patch (full multi-color — yellow field, navy text,
   white banner, red diamond divider, etc.). Sewn onto the lower-left hip.
   **Technique:** embroidered-patch.

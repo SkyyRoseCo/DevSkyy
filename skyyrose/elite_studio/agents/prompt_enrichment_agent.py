@@ -21,7 +21,7 @@ _COLLECTION_DNA: dict[str, str] = {
         "black-rose collection | East Oakland Deep East industrial canon | "
         "armor not flower — a conviction | concrete is the only soil that matters | "
         "beauty forces through cracks | silver-on-black palette | midnight tones | "
-        "Luxury Grows from Concrete | Bay Bridge night seen from Oakland side | "
+        " | Bay Bridge night seen from Oakland side | "
         "cinematic FOG-style restraint, no warm tones"
     ),
     "lh": (

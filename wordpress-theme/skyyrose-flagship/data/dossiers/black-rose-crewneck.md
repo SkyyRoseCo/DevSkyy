@@ -9,7 +9,11 @@ extra_logos:
 
 # BLACK Rose Crewneck
 
-**Garment type lock:** Crewneck sweatshirt — upper body only, round ribbed neckline, no hood, no buttons, no zipper, no front pocket. NOT a jersey. NOT a hoodie. NOT a jacket. NOT a t-shirt. NOT a tank top. Heavyweight cotton fleece, relaxed fit. **White ribbed neckband, white ribbed sleeve cuffs, white ribbed waist hem** (contrast white trim against the black body — same pattern as the matching joggers in the Black Rose set).
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials / Fit: Heavyweight cotton fleece, relaxed fit.
+Features: Crewneck sweatshirt — upper body only, round ribbed neckline, no hood, no buttons, no zipper, no front pocket. NOT a jersey. NOT a hoodie. NOT a jacket. NOT a t-shirt. NOT a tank top. Heavyweight cotton fleece, relaxed fit. **White ribbed neckband, white ribbed sleeve cuffs, white ribbed waist hem** (contrast white trim against the black body — same pattern as the matching joggers in the Black Rose set).
+Color: Black
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 
