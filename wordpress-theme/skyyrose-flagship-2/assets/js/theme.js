@@ -11,74 +11,346 @@
 
   root.classList.add('sr2-motion-ready');
 
-  const saveData = Boolean(navigator.connection?.saveData);
+  let saveData = Boolean(navigator.connection?.saveData);
   if (reducedMotion || saveData) {
     root.classList.add('sr2-motion-reduced');
   }
+
+  // Founder-approved rotating identity. Keep the reserved still immediately
+  // usable; start the unchanged animation after critical page resources load.
+  const brandMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const brandConnection = navigator.connection;
   document.querySelectorAll('[data-brand-animation]').forEach((image) => {
-    if (reducedMotion || saveData) {
-      return;
-    }
-
-    const loadAnimation = () => {
-      if (image.dataset.brandAnimationLoaded === 'true') return;
-      image.dataset.brandAnimationLoaded = 'true';
-      image.src = image.dataset.brandAnimation;
+    const fallback = image.src;
+    let nearViewport = image.dataset.brandAnimationMode !== 'viewport';
+    let pageReady = document.readyState === 'complete';
+    let imageFailed = false;
+    let videoFailed = false;
+    let video = null;
+    let videoReady = false;
+    let videoTimer = null;
+    let playAttempt = 0;
+    const wantsMotion = () => pageReady && nearViewport && !document.hidden && !brandMotion.matches && !brandConnection?.saveData;
+    const showImage = () => { image.dataset.brandVideoActive = 'false'; };
+    const failVideo = () => {
+      videoFailed = true;
+      playAttempt += 1;
+      clearTimeout(videoTimer);
+      if (video) { video.pause(); video.hidden = true; video.removeAttribute('src'); video.load(); }
+      showImage();
+      update();
     };
-
-    // Below-fold brand motion stays on its tiny still until it approaches the
-    // viewport. The header animation remains immediate and layout-stable.
-    if (image.dataset.brandAnimationMode === 'viewport' && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        if (!entries[0]?.isIntersecting) return;
-        loadAnimation();
-        observer.disconnect();
-      }, { rootMargin: '320px 0px' });
-      observer.observe(image);
-      return;
+    const playVideo = () => {
+      const attempt = ++playAttempt;
+      video.play().then(() => {
+        if (attempt !== playAttempt) return;
+        if (!wantsMotion() || videoFailed) { video.pause(); return; }
+        video.hidden = false;
+        image.dataset.brandVideoActive = 'true';
+      }).catch(() => {
+        // A preference/proximity pause cancels pending play promises. That is
+        // lifecycle cancellation, not a codec or delivery failure.
+        if (attempt !== playAttempt || !wantsMotion()) return;
+        failVideo();
+      });
+    };
+    const update = () => {
+      const animate = wantsMotion();
+      image.dataset.brandAnimationLoaded = String(animate);
+      if (!animate) {
+        playAttempt += 1;
+        if (video) { video.pause(); video.hidden = true; }
+        showImage();
+        if (image.src !== fallback) image.src = fallback;
+        return;
+      }
+      if (!video && !videoFailed && image.dataset.brandVideo) {
+        const candidate = document.createElement('video');
+        if (!candidate.canPlayType('video/webm; codecs="vp9"')) videoFailed = true;
+        else {
+          video = candidate;
+          video.muted = true;
+          video.defaultMuted = true;
+          video.playsInline = true;
+          video.loop = true;
+          video.preload = 'auto';
+          video.hidden = true;
+          video.setAttribute('aria-hidden', 'true');
+          video.tabIndex = -1;
+          video.addEventListener('error', failVideo, { once: true });
+          video.addEventListener('loadeddata', () => {
+            // Some engines decode VP9 but discard its alpha. Verify the exact
+            // asset's transparent corner before revealing its first frame.
+            try {
+              const canvas = document.createElement('canvas');
+              canvas.width = canvas.height = 1;
+              const context = canvas.getContext('2d');
+              context.drawImage(video, 0, 0, 1, 1, 0, 0, 1, 1);
+              if (context.getImageData(0, 0, 1, 1).data[3] !== 0) { failVideo(); return; }
+              clearTimeout(videoTimer);
+              videoReady = true;
+              if (wantsMotion()) playVideo();
+            } catch { failVideo(); }
+          }, { once: true });
+          image.parentElement.append(video);
+          videoTimer = setTimeout(failVideo, 12000);
+          video.src = image.dataset.brandVideo;
+          return;
+        }
+      }
+      if (video && !videoFailed) {
+        if (videoReady) playVideo();
+        return;
+      }
+      const source = imageFailed ? fallback : image.dataset.brandAnimation;
+      if (image.src !== source) image.src = source;
+    };
+    image.addEventListener('error', () => {
+      imageFailed = true;
+      update();
+    });
+    brandMotion.addEventListener?.('change', update);
+    brandConnection?.addEventListener?.('change', update);
+    document.addEventListener('visibilitychange', update);
+    if (!nearViewport) {
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          nearViewport = entries.some((entry) => entry.isIntersecting);
+          update();
+        }, { rootMargin: '320px 0px' });
+        observer.observe(image);
+      } else {
+        // Unsupported observers still retain the approved animation.
+        nearViewport = true;
+      }
     }
-    loadAnimation();
+    if (pageReady) update();
+    else window.addEventListener('load', () => { pageReady = true; update(); }, { once: true });
   });
 
-  const setMenu = (open) => {
-    if (!menuButton || !menu) return;
-    menu.classList.toggle('is-open', open);
-    menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.setAttribute('aria-label', open ? 'Close site menu' : 'Open site menu');
-    body.classList.toggle('sr2-nav-open', open);
-  };
-
-  if (menuButton && menu) {
-    menuButton.addEventListener('click', () => {
-      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+  /* One lifecycle owns shell navigation and every native dialog. Native modal
+     semantics remain intact, including third-party/mascot showModal() calls. */
+  const overlays = (() => {
+    let active = null;
+    let lock = null;
+    const inertState = new Map();
+    const wired = new WeakSet();
+    const focusable = 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const visible = (element) => element?.isConnected && !element.closest('[inert]') && element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden';
+    const controls = (scope) => [...scope.querySelectorAll(focusable)].filter(visible);
+    const rememberStyle = (element, names) => names.map((name) => [name, element.style.getPropertyValue(name), element.style.getPropertyPriority(name)]);
+    const restoreStyle = (element, values) => values.forEach(([name, value, priority]) => {
+      if (value) element.style.setProperty(name, value, priority);
+      else element.style.removeProperty(name);
     });
+    const lockScroll = () => {
+      if (lock) return;
+      const gutter = Math.max(0, window.innerWidth - root.clientWidth);
+      lock = {
+        x: window.scrollX, y: window.scrollY,
+        body: rememberStyle(body, ['position', 'top', 'left', 'width', 'overflow', 'padding-right']),
+        root: rememberStyle(root, ['overflow', 'scroll-behavior', '--sr2-scrollbar']),
+      };
+      const padding = Number.parseFloat(getComputedStyle(body).paddingRight) || 0;
+      body.style.setProperty('position', 'fixed');
+      body.style.setProperty('top', `${-lock.y}px`);
+      body.style.setProperty('left', `${-lock.x}px`);
+      body.style.setProperty('width', '100%');
+      body.style.setProperty('overflow', 'hidden');
+      if (gutter) body.style.setProperty('padding-right', `${padding + gutter}px`);
+      root.style.setProperty('overflow', 'hidden');
+      root.style.setProperty('--sr2-scrollbar', `${gutter}px`);
+      body.classList.add('sr2-overlay-open');
+    };
+    const unlockScroll = () => {
+      if (!lock) return;
+      const previous = lock;
+      lock = null;
+      restoreStyle(body, previous.body);
+      restoreStyle(root, previous.root);
+      body.classList.remove('sr2-overlay-open');
+      // CSS smooth scrolling must not animate a restored body position.
+      root.style.setProperty('scroll-behavior', 'auto');
+      window.scrollTo(previous.x, previous.y);
+      restoreStyle(root, previous.root);
+    };
+    const restoreInert = () => {
+      inertState.forEach((value, element) => { element.inert = value; });
+      inertState.clear();
+    };
+    const isolate = (scope) => {
+      restoreInert();
+      // Preserve all siblings along the active scope's ancestor path. A dialog
+      // may live inside main/footer; never make its own ancestor inert.
+      for (let node = scope; node && node !== body; node = node.parentElement) {
+        if (!node.parentElement) break;
+        [...node.parentElement.children].forEach((sibling) => {
+          if (sibling === node || sibling.matches('script, style, link')) return;
+          inertState.set(sibling, sibling.inert);
+          sibling.inert = true;
+        });
+      }
+    };
+    const returnFocus = (opener) => {
+      const target = visible(opener) ? opener : (visible(menuButton) ? menuButton : null);
+      target?.focus({ preventScroll: true });
 
-    menu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setMenu(false));
-    });
-
+    };
+    const close = (restoreFocus = true, keepLock = false) => {
+      const previous = active;
+      active = null;
+      if (previous?.kind === 'navigation') {
+        menu.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open site menu');
+        body.classList.remove('sr2-nav-open');
+      } else if (previous?.element.open) {
+        previous.element.close();
+      }
+      restoreInert();
+      if (!keepLock) unlockScroll();
+      if (restoreFocus && previous) returnFocus(previous.opener);
+    };
+    const activate = (element, kind, opener) => {
+      if (active?.element === element) return;
+      // Capture the initiating control before closing another overlay restores
+      // native dialog focus. Hidden menu links fall back to the menu trigger.
+      const origin = opener || document.activeElement;
+      close(false, true);
+      document.querySelectorAll('dialog[open]').forEach((other) => {
+        if (other !== element) other.close();
+      });
+      active = { element, kind, opener: origin };
+      lockScroll();
+      isolate(kind === 'navigation' ? header : element);
+      header?.classList.remove('is-hidden');
+    };
+    const register = (dialog) => {
+      if (wired.has(dialog)) return;
+      wired.add(dialog);
+      dialog.addEventListener('beforetoggle', (event) => {
+        if (event.newState !== 'open') return;
+        activate(dialog, 'dialog');
+        // Another native listener may cancel beforetoggle. A canceled opening
+        // must release the lock even though no open-attribute mutation occurs.
+        window.queueMicrotask?.(() => {
+          if (active?.element === dialog && !dialog.open) close();
+        });
+      });
+      dialog.addEventListener('close', () => {
+        if (active?.element === dialog && !dialog.open) close();
+      });
+      dialog.addEventListener('cancel', (event) => {
+        if (active?.element !== dialog) return;
+        event.preventDefault();
+        close();
+      });
+    };
+    const openDialog = (dialog, opener) => {
+      if (typeof dialog?.showModal !== 'function') return false;
+      register(dialog);
+      activate(dialog, 'dialog', opener);
+      try {
+        if (!dialog.open) dialog.showModal();
+        return true;
+      } catch {
+        close();
+        return false;
+      }
+    };
+    const setNavigation = (open) => {
+      if (!menuButton || !menu || !header) return;
+      if (!open) {
+        if (active?.kind === 'navigation') close();
+        return;
+      }
+      activate(menu, 'navigation', menuButton);
+      menu.classList.add('is-open');
+      menuButton.setAttribute('aria-expanded', 'true');
+      menuButton.setAttribute('aria-label', 'Close site menu');
+      body.classList.add('sr2-nav-open');
+      controls(menu)[0]?.focus({ preventScroll: true });
+    };
+    const ensureFocus = () => {
+      if (!active) return;
+      const scope = active.kind === 'navigation' ? header : active.element;
+      if (!scope.contains(document.activeElement) || !visible(document.activeElement)) {
+        controls(scope)[0]?.focus({ preventScroll: true });
+      }
+    };
+    document.querySelectorAll('dialog').forEach(register);
+    // Observe inserted/native dialogs for browsers without beforetoggle support
+    // and for external native showModal() callers; do not patch browser methods.
+    if ('MutationObserver' in window) {
+      new MutationObserver(() => {
+        document.querySelectorAll('dialog').forEach(register);
+        const openDialogs = [...document.querySelectorAll('dialog[open]')];
+        const newlyOpened = openDialogs.find((dialog) => dialog !== active?.element);
+        if (newlyOpened) activate(newlyOpened, 'dialog');
+        else if (active?.kind === 'dialog' && (!active.element.open || !active.element.isConnected)) close();
+        // Woo fragments can detach the focused remove link without firing
+        // focusin. Repair only lost/hidden focus; preserve a valid field focus.
+        ensureFocus();
+      }).observe(body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open'] });
+    }
     document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape' || menuButton.getAttribute('aria-expanded') !== 'true') return;
-      setMenu(false);
-      menuButton.focus();
+      if (!active) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        // The same key must not reach guide/page handlers after focus returns.
+        event.stopImmediatePropagation?.();
+        close();
+      } else if (event.key === 'Tab') {
+        const scope = active.kind === 'navigation' ? header : active.element;
+        const items = controls(scope);
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (!first) { event.preventDefault(); active.element.focus({ preventScroll: true }); }
+        else if (!scope.contains(document.activeElement) || (event.shiftKey && document.activeElement === first)) {
+          event.preventDefault(); (event.shiftKey ? last : first).focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault(); first.focus();
+        }
+      }
+    }, true);
+    document.addEventListener('focusin', (event) => {
+      if (!active) return;
+      const scope = active.kind === 'navigation' ? header : active.element;
+      if (!scope.contains(event.target)) controls(scope)[0]?.focus({ preventScroll: true });
+    });
+    window.addEventListener('resize', () => {
+      if (!active) return;
+      const scope = active.kind === 'navigation' ? header : active.element;
+      if (!visible(document.activeElement)) controls(scope)[0]?.focus({ preventScroll: true });
+    }, { passive: true });
+    // Clear state before leaving and on bfcache restoration, even if an opener
+    // navigates away mid-transition. Scroll and inline-style snapshots are exact.
+    window.addEventListener('pagehide', () => close(false));
+    window.addEventListener('pageshow', () => close(false));
+    return { close, openDialog, setNavigation, isOpen: () => Boolean(active) };
+  })();
+  const setMenu = (open) => overlays.setNavigation(open);
+  if (menuButton && menu) {
+    menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (!link.matches('[data-search-open], [data-bag-open]')) setMenu(false);
+      });
     });
   }
 
   if (header) {
-    let previousY = window.scrollY;
     let ticking = false;
 
     const updateHeader = () => {
       const currentY = window.scrollY;
       header.classList.toggle('is-scrolled', currentY > 48);
-      header.classList.toggle(
-        'is-hidden',
-        currentY > previousY && currentY > 500 && !body.classList.contains('sr2-nav-open')
-      );
-      previousY = currentY;
+      // The house shell keeps navigation and commerce access stable on scroll.
+      header.classList.remove('is-hidden');
       ticking = false;
     };
 
+    header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
     window.addEventListener('scroll', () => {
       if (ticking) return;
       ticking = true;
@@ -114,21 +386,87 @@
      visitor explicitly asks for less data or motion. */
   document.querySelectorAll('[data-scene-motion]').forEach((scene) => {
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const hero = scene.closest('.sr2-collection-hero');
+    const motionVideo = hero?.querySelector('[data-collection-hero-video]');
+    const motionToggle = hero?.querySelector('[data-scene-motion-toggle]');
+    const motionSources = motionVideo ? Array.from(motionVideo.querySelectorAll('source[data-src]')) : [];
+    let motionLoaded = false;
+    let motionReady = false;
+    let motionFailed = false;
+    let loadTimer = 0;
     let inViewport = false;
+    let explicitlyPaused = false;
+
+    const markMotionFailed = () => {
+      motionFailed = true;
+      motionReady = false;
+      window.clearTimeout(loadTimer);
+      hero?.classList.remove('has-motion-plate');
+      if (motionVideo) {
+        motionVideo.dataset.motionState = 'fallback';
+        motionVideo.pause();
+      }
+    };
+
+    const markMotionReady = () => {
+      if (motionFailed) return;
+      motionReady = true;
+      window.clearTimeout(loadTimer);
+      hero?.classList.add('has-motion-plate');
+      if (motionVideo) motionVideo.dataset.motionState = 'ready';
+      syncScene();
+    };
+
+    const loadMotion = () => {
+      if (!motionVideo || motionLoaded || motionFailed) return;
+      if (motionSources.length < 2 || motionSources.some((source) => !source.dataset.src)) {
+        markMotionFailed();
+        return;
+      }
+      motionLoaded = true;
+      motionSources.forEach((source) => {
+        source.src = source.dataset.src;
+        delete source.dataset.src;
+      });
+      motionVideo.dataset.motionState = 'loading';
+      motionVideo.addEventListener('canplay', markMotionReady, { once: true });
+      motionVideo.addEventListener('error', markMotionFailed, { once: true });
+      motionVideo.addEventListener('abort', markMotionFailed, { once: true });
+      loadTimer = window.setTimeout(markMotionFailed, 12000);
+      motionVideo.load();
+    };
 
     const syncScene = () => {
-      const canAnimate = !motionPreference.matches && !saveData && !document.hidden;
+      const motionAvailable = !motionPreference.matches && !saveData;
+      const canAnimate = motionAvailable && !explicitlyPaused && !document.hidden;
       const state = canAnimate && inViewport ? 'running' : (canAnimate ? 'paused' : 'static');
       scene.dataset.sceneState = state;
       scene.dataset.sceneMode = motionPreference.matches ? 'reduced' : (saveData ? 'data-save' : 'cinematic');
+      hero?.classList.toggle('is-scene-running', state === 'running');
+      if (motionToggle) {
+        motionToggle.hidden = !motionAvailable;
+        motionToggle.setAttribute('aria-pressed', String(explicitlyPaused));
+        motionToggle.textContent = explicitlyPaused ? 'Resume motion' : 'Pause motion';
+      }
+      if (motionVideo && !motionFailed && canAnimate && inViewport) {
+        loadMotion();
+        if (motionReady) motionVideo.play().catch(markMotionFailed);
+      } else {
+        motionVideo?.pause();
+      }
     };
+
+    motionToggle?.addEventListener('click', () => {
+      explicitlyPaused = !explicitlyPaused;
+      syncScene();
+    });
 
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         inViewport = Boolean(entries[0]?.isIntersecting);
         syncScene();
       }, { rootMargin: '18% 0px', threshold: 0.01 });
-      observer.observe(scene);
+      observer.observe(hero || scene);
       window.addEventListener('pagehide', () => observer.disconnect(), { once: true });
     } else {
       // A static scene is the correct progressive fallback; do not start an
@@ -142,6 +480,11 @@
     } else if (motionPreference.addListener) {
       motionPreference.addListener(syncScene);
     }
+    navigator.connection?.addEventListener?.('change', () => {
+      saveData = Boolean(navigator.connection?.saveData);
+      root.classList.toggle('sr2-motion-reduced', motionPreference.matches || saveData);
+      syncScene();
+    });
     syncScene();
   });
 
@@ -326,59 +669,11 @@
 
   document.querySelectorAll('[data-horizontal-rail]').forEach(setupRail);
 
-  document.querySelectorAll('[data-interactive-scene]').forEach((scene) => {
-    const hotspots = Array.from(scene.querySelectorAll('[data-scene-hotspot]'));
-    const cards = Array.from(scene.querySelectorAll('[data-scene-card]'));
-    const activate = (index) => {
-      hotspots.forEach((item, itemIndex) => item.classList.toggle('is-active', itemIndex === index));
-      cards.forEach((item, itemIndex) => item.classList.toggle('is-active', itemIndex === index));
-    };
-    hotspots.forEach((hotspot, index) => {
-      hotspot.addEventListener('mouseenter', () => activate(index));
-      hotspot.addEventListener('focus', () => activate(index));
-    });
-    cards.forEach((card, index) => {
-      card.addEventListener('mouseenter', () => activate(index));
-      card.addEventListener('focus', () => activate(index));
-    });
-  });
 
-  const setupProductReel = (card) => {
-    const frames = card.querySelectorAll('.sr2-c-product-card__reel-frame, .sr2-c-product-portal__reel-frame');
-    if (frames.length < 2 || reducedMotion || !finePointer) return;
 
-    let timer = 0;
-    let activeIndex = 0;
-    const setFrame = (index) => {
-      activeIndex = index % frames.length;
-      card.style.setProperty('--sr2-reel-index', String(activeIndex));
-    };
-    const stop = () => {
-      if (timer) window.clearInterval(timer);
-      timer = 0;
-      card.dataset.reelState = 'idle';
-      setFrame(0);
-    };
-    const play = () => {
-      if (timer) return;
-      card.dataset.reelState = 'playing';
-      setFrame(0);
-      timer = window.setInterval(() => setFrame(activeIndex + 1), 1500);
-    };
-
-    card.addEventListener('pointerenter', play);
-    card.addEventListener('pointerleave', stop);
-    card.addEventListener('focusin', play);
-    card.addEventListener('focusout', (event) => {
-      if (!card.contains(event.relatedTarget)) stop();
-    });
-  };
-
-  document.querySelectorAll('[data-product-reel]').forEach(setupProductReel);
-
-  /* Product-card quick view is a progressive layer over the direct PDP link.
-   * All facts are copied from the live card payload; the full product page
-   * remains the canonical place for options, variation resolution, and cart. */
+  /* Immediate card preview over the direct PDP link. The separate commerce
+   * module refreshes server facts and imports the native purchase form on
+   * intent; the PDP remains the complete progressive fallback. */
   const quickView = document.querySelector('[data-quick-view-dialog], #sr2-quick-view-dialog');
   if (quickView && typeof quickView.showModal === 'function') {
     const fields = {
@@ -391,14 +686,10 @@
       media: quickView.querySelector('[data-quick-view-media]'),
       url: quickView.querySelector('[data-quick-view-url]')
     };
-    let opener = null;
-    const closeQuickView = () => {
-      if (quickView.open) quickView.close();
-      opener?.focus();
-    };
+    const closeQuickView = () => overlays.close();
     document.querySelectorAll('[data-quick-view]').forEach((button) => {
-      button.addEventListener('click', () => {
-        opener = button;
+      button.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         Object.entries(fields).forEach(([key, field]) => {
           if (!field || key === 'media') return;
           const value = button.dataset[`quickView${key[0].toUpperCase()}${key.slice(1)}`] || '';
@@ -412,64 +703,69 @@
             field.textContent = value;
           }
         });
-        quickView.showModal();
+        if (overlays.openDialog(quickView, button)) event.preventDefault();
       });
     });
     quickView.querySelectorAll('[data-quick-view-dismiss]').forEach((button) => button.addEventListener('click', closeQuickView));
     quickView.addEventListener('click', (event) => { if (event.target === quickView) closeQuickView(); });
-    quickView.addEventListener('close', () => opener?.focus());
   }
 
   const sizeGuide = document.querySelector('#sr2-size-guide-dialog');
   if (sizeGuide && typeof sizeGuide.showModal === 'function') {
-    let sizeGuideOpener = null;
-    const closeSizeGuide = () => {
-      if (sizeGuide.open) sizeGuide.close();
-      sizeGuideOpener?.focus();
-    };
     document.querySelectorAll('[data-size-guide-open]').forEach((button) => {
-      button.addEventListener('click', () => {
-        sizeGuideOpener = button;
-        sizeGuide.showModal();
+      button.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (overlays.openDialog(sizeGuide, button)) event.preventDefault();
       });
     });
-    sizeGuide.addEventListener('click', (event) => { if (event.target === sizeGuide) closeSizeGuide(); });
-    sizeGuide.addEventListener('close', () => sizeGuideOpener?.focus());
+    sizeGuide.addEventListener('click', (event) => { if (event.target === sizeGuide) overlays.close(); });
   }
 
-  /* Global search remains a native GET form so WordPress owns the results,
-   * filters, and indexing. The dialog only removes the blank-query detour. */
-  const searchDialog = document.querySelector('#sr2-search-dialog');
-  if (searchDialog && typeof searchDialog.showModal === 'function') {
-    let searchOpener = null;
-    const closeSearch = () => {
-      if (searchDialog.open) searchDialog.close();
-      searchOpener?.focus();
-    };
-    document.querySelectorAll('[data-search-open]').forEach((button) => {
-      button.addEventListener('click', () => {
-        searchOpener = button;
-        if (menuButton?.getAttribute('aria-expanded') === 'true') setMenu(false);
-        searchDialog.showModal();
-        window.requestAnimationFrame(() => searchDialog.querySelector('[data-search-input]')?.focus());
+  /* Native links and GET search remain complete progressive fallbacks. The bag
+     uses Woo-rendered fragments; no prices, totals or cart writes live here. */
+  [
+    ['#sr2-search-dialog', '[data-search-open]', '[data-search-input]'],
+    ['#sr2-bag-dialog', '[data-bag-open]', '[data-bag-close]'],
+  ].forEach(([selector, trigger, initialFocus]) => {
+    const dialog = document.querySelector(selector);
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+    document.querySelectorAll(trigger).forEach((button) => {
+      button.addEventListener('click', (event) => {
+        // Keep ordinary modified-link gestures and native route behavior.
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (!overlays.openDialog(dialog, button)) return;
+        event.preventDefault();
+        dialog.querySelector(initialFocus)?.focus({ preventScroll: true });
       });
     });
-    searchDialog.addEventListener('click', (event) => { if (event.target === searchDialog) closeSearch(); });
-    searchDialog.addEventListener('close', () => searchOpener?.focus());
+    dialog.querySelectorAll('[data-bag-close], [data-search-close]').forEach((button) => {
+      button.addEventListener('click', () => overlays.close());
+    });
+    dialog.addEventListener('click', (event) => { if (event.target === dialog) overlays.close(); });
+  });
+
+  /* Woo's global live region is outside the modal accessibility tree. Relay
+     only its own confirmed success message to a stable in-dialog status. */
+  const bagDialog = document.querySelector('#sr2-bag-dialog');
+  const bagStatus = bagDialog?.querySelector('[data-bag-status]');
+  if (bagStatus && window.jQuery) {
+    let pendingRemoval = null;
+    bagDialog.addEventListener('click', (event) => {
+      const control = event.target.closest?.('.remove_from_cart_button');
+      if (!control || !bagDialog.contains(control)) return;
+      pendingRemoval = control;
+      bagStatus.textContent = '';
+    });
+    window.jQuery(body).on('removed_from_cart.sr2Bag', (_event, _fragments, _hash, button) => {
+      if (!bagDialog.open || !pendingRemoval || button?.[0] !== pendingRemoval) return;
+      const message = button.data('success_message');
+      pendingRemoval = null;
+      if (typeof message === 'string' && message.trim()) bagStatus.textContent = message;
+    });
+    bagDialog.addEventListener('close', () => { pendingRemoval = null; bagStatus.textContent = ''; });
   }
 
   if (finePointer && !reducedMotion) {
-    document.querySelectorAll('[data-depth-card]').forEach((card) => {
-      card.addEventListener('pointermove', (event) => {
-        const bounds = card.getBoundingClientRect();
-        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-        card.style.transform = `perspective(900px) rotateX(${-y * 2.5}deg) rotateY(${x * 2.5}deg) translateY(-2px)`;
-      });
-      card.addEventListener('pointerleave', () => {
-        card.style.transform = '';
-      });
-    });
 
     document.querySelectorAll('[data-hero-depth]').forEach((hero) => {
       const media = hero.querySelector('img');
@@ -485,132 +781,6 @@
     });
   }
 
-  /* Cinematic hero video: opt-in enhancement over the poster/static hero. */
-  const heroVideo = document.querySelector('[data-hero-video]');
-  const heroNav = document.querySelector('.sr-home__hero-nav');
-  if (heroVideo) {
-    const heroSource = heroVideo.querySelector('source[data-src]');
-    const canPlayHero = !reducedMotion && !saveData;
-    const FADE_MS = 500;
-    let fadeFrame = 0;
-    let fadeStart = 0;
-    let fadeFrom = 0;
-    let fadeTarget = 0;
-
-    const fadeTo = (target) => {
-      if (reducedMotion || saveData) {
-        heroVideo.style.opacity = String(target);
-        return;
-      }
-      fadeStart = performance.now();
-      fadeFrom = Number.parseFloat(heroVideo.style.opacity || getComputedStyle(heroVideo).opacity) || 0;
-      fadeTarget = target;
-      if (fadeFrame) return;
-      const tick = (now) => {
-        const progress = Math.min(1, (now - fadeStart) / FADE_MS);
-        const eased = 1 - ((1 - progress) ** 3);
-        const lerped = fadeFrom + ((fadeTarget - fadeFrom) * eased);
-        heroVideo.style.opacity = String(lerped);
-        if (progress < 1) {
-          fadeFrame = window.requestAnimationFrame(tick);
-        } else {
-          fadeFrame = 0;
-        }
-      };
-      fadeFrame = window.requestAnimationFrame(tick);
-    };
-
-    const stopHero = () => {
-      if (fadeFrame) window.cancelAnimationFrame(fadeFrame);
-      fadeFrame = 0;
-      heroVideo.pause();
-      heroVideo.style.opacity = '1';
-    };
-
-    if (!canPlayHero || !heroSource) {
-      stopHero();
-    } else {
-      heroSource.src = heroSource.dataset.src;
-      heroVideo.addEventListener('loadeddata', () => {
-        heroVideo.play().then(() => fadeTo(1)).catch(() => {});
-      }, { once: true });
-      heroVideo.addEventListener('error', stopHero, { once: true });
-      heroVideo.addEventListener('timeupdate', () => {
-        if (Number.isFinite(heroVideo.duration) && heroVideo.duration - heroVideo.currentTime <= 0.55) fadeTo(0);
-      });
-      heroVideo.addEventListener('ended', () => {
-        heroVideo.style.opacity = '0';
-        heroVideo.currentTime = 0;
-        window.setTimeout(() => heroVideo.play().then(() => fadeTo(1)).catch(() => {}), 100);
-      });
-      heroVideo.load();
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stopHero();
-      });
-      window.addEventListener('pagehide', stopHero, { once: true });
-    }
-  }
-
-  /* V2 collection model loop. CSS owns the seamless track; JavaScript adds
-     explicit user, visibility, and viewport pause states without taking over
-     scrolling or collection navigation. */
-  const heroModelLoop = document.querySelector('[data-home-model-loop]');
-  if (heroModelLoop) {
-    const loopToggle = heroModelLoop.querySelector('[data-home-model-toggle]');
-    const desktopMotion = window.matchMedia('(min-width: 781px) and (prefers-reduced-motion: no-preference)');
-    let userPaused = false;
-    let outsideViewport = false;
-
-    const motionAllowed = () => desktopMotion.matches && !saveData;
-    const syncModelLoop = () => {
-      const canMove = motionAllowed();
-      const paused = !canMove || userPaused || outsideViewport || document.hidden;
-      heroModelLoop.dataset.motion = canMove ? 'continuous' : 'static';
-      heroModelLoop.dataset.loopState = paused ? 'paused' : 'running';
-
-      if (canMove) {
-        heroModelLoop.dataset.enhanced = 'true';
-      } else {
-        delete heroModelLoop.dataset.enhanced;
-      }
-
-      if (loopToggle) {
-        loopToggle.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
-        loopToggle.textContent = userPaused ? 'Resume rotation' : 'Pause rotation';
-      }
-    };
-
-    loopToggle?.addEventListener('click', () => {
-      userPaused = !userPaused;
-      syncModelLoop();
-    });
-    heroModelLoop.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && !userPaused) {
-        userPaused = true;
-        syncModelLoop();
-        loopToggle?.focus();
-      }
-    });
-    document.addEventListener('visibilitychange', syncModelLoop);
-    desktopMotion.addEventListener?.('change', syncModelLoop);
-
-    if ('IntersectionObserver' in window) {
-      const modelLoopObserver = new IntersectionObserver((entries) => {
-        outsideViewport = !entries[0]?.isIntersecting;
-        syncModelLoop();
-      }, { threshold: 0.05 });
-      modelLoopObserver.observe(heroModelLoop);
-      window.addEventListener('pagehide', () => modelLoopObserver.disconnect(), { once: true });
-    }
-
-    syncModelLoop();
-  }
-
-  if (heroNav) {
-    const updateHeroNav = () => heroNav.classList.toggle('is-scrolled', window.scrollY > 100);
-    updateHeroNav();
-    window.addEventListener('scroll', updateHeroNav, { passive: true });
-  }
 
   /* WooCommerce owns variation resolution and cart writes. This adapter only
      reflects confirmed form events as V2 state/status; it never calculates
@@ -629,8 +799,13 @@
     $('.variations_form').each(function attachVariationState() {
       const form = this;
       setPdpStatus(form, 'incomplete', 'Select options to see the current piece availability.');
-      $(form).on('found_variation', (_event, variation) => {
-        const available = variation?.is_in_stock !== false && variation?.is_purchasable !== false;
+      $(form).on('show_variation', (_event, variation, purchasable) => {
+        const nativeId = Number(form.querySelector('input[name="variation_id"]')?.value);
+        if (!nativeId || nativeId !== Number(variation?.variation_id)) {
+          setPdpStatus(form, 'resolving', 'Checking this selection.');
+          return;
+        }
+        const available = purchasable !== false && variation?.is_in_stock !== false && variation?.is_purchasable !== false;
         setPdpStatus(
           form,
           available ? 'valid' : 'unavailable',
@@ -640,8 +815,8 @@
       $(form).on('hide_variation reset_data', () => {
         setPdpStatus(form, 'incomplete', 'Select options to see the current piece availability.');
       });
-      $(form).on('woocommerce_variation_has_changed', () => {
-        if (form.dataset.sr2VariationState !== 'valid') setPdpStatus(form, 'resolving', 'Checking this selection.');
+      $(form).on('woocommerce_variation_select_change woocommerce_variation_has_changed', () => {
+        setPdpStatus(form, 'resolving', 'Checking this selection.');
       });
     });
   }
@@ -653,12 +828,22 @@
       button.removeAttribute('aria-busy');
       if (button.dataset.sr2OriginalLabel) button.textContent = button.dataset.sr2OriginalLabel;
     };
-    form.addEventListener('submit', () => {
-      if (button.disabled || button.getAttribute('aria-busy') === 'true') return;
+    form.addEventListener('submit', (event) => {
+      if (event.defaultPrevented) return;
+      if (button.disabled || button.getAttribute('aria-busy') === 'true') {
+        event.preventDefault();
+        return;
+      }
+      if (form.matches('.variations_form') && (!Number(form.querySelector('input[name="variation_id"]')?.value) || button.classList.contains('disabled'))) {
+        event.preventDefault();
+        setPdpStatus(form, 'incomplete', 'Choose an available size before adding this piece.');
+        return;
+      }
       button.setAttribute('aria-busy', 'true');
       button.dataset.sr2OriginalLabel = button.textContent;
       button.textContent = 'Adding…';
     });
+    window.addEventListener('pageshow', restoreCartButton);
     // WooCommerce emits its cart lifecycle through jQuery when that runtime is
     // present. Keep a native listener as a progressive fallback for a custom
     // cart integration, but never assume one event transport for both cases.
@@ -670,53 +855,63 @@
     }
   });
 
-  const heroHeadline = document.querySelector('[data-hero-headline]');
-  if (heroHeadline && !reducedMotion) {
-    const words = heroHeadline.textContent.trim().split(/\s+/).filter(Boolean);
-    const fragment = document.createDocumentFragment();
-    words.forEach((word, index) => {
-      const wordElement = document.createElement('span');
-      wordElement.className = 'sr-home__hero-word';
-      wordElement.style.setProperty('--word-delay', `${index * 100}ms`);
-      wordElement.textContent = word;
-      fragment.append(wordElement);
-      if (index < words.length - 1) fragment.append(document.createTextNode(' '));
-    });
-    heroHeadline.replaceChildren(fragment);
-  }
+  /* End native commerce adapter. */
 
-  const bayMap = document.querySelector('[data-bay-map]');
-  if (bayMap) {
-    const stops = Array.from(bayMap.querySelectorAll('[data-bay-stop]'));
-    const status = bayMap.querySelector('[data-bay-status]');
-    const labels = {
-      oakland: 'Oakland · The root',
-      'san-francisco': 'San Francisco · The fog',
-      'san-jose': 'San Jose · The night',
+  // The three founder-selected on-model looks retain their original seamless
+  // House of Roses loop. CSS owns motion; this controller only gates it.
+  const heroModelLoop = document.querySelector('[data-home-model-loop]');
+  if (heroModelLoop) {
+    const loopToggle = heroModelLoop.querySelector('[data-home-model-toggle]');
+    const desktopMotion = window.matchMedia('(min-width: 64em) and (prefers-reduced-motion: no-preference)');
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let userPaused = false;
+    let outsideViewport = false;
+    let focusActive = false;
+    const syncModelLoop = () => {
+      const motionAllowed = desktopMotion.matches && !navigator.connection?.saveData;
+      const canMove = motionAllowed && !focusActive;
+      const paused = !canMove || userPaused || outsideViewport || document.hidden;
+      if (canMove && heroModelLoop.dataset.motion !== 'continuous') heroModelLoop.scrollLeft = 0;
+      heroModelLoop.dataset.motion = canMove ? 'continuous' : 'static';
+      heroModelLoop.dataset.loopState = paused ? 'paused' : 'running';
+      heroModelLoop.dataset.enhanced = motionAllowed ? 'true' : '';
+      if (!motionAllowed) delete heroModelLoop.dataset.enhanced;
+      if (loopToggle) {
+        loopToggle.hidden = !motionAllowed;
+        loopToggle.setAttribute('aria-pressed', String(userPaused));
+        loopToggle.textContent = userPaused ? 'Resume product film' : 'Pause product film';
+      }
     };
-    const lightStop = (stop, index) => {
+    const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+      outsideViewport = !entries[0]?.isIntersecting;
+      syncModelLoop();
+    }, { threshold: 0.05 }) : null;
+    observer?.observe(heroModelLoop);
+    loopToggle?.addEventListener('click', () => { userPaused = !userPaused; syncModelLoop(); });
+    heroModelLoop.addEventListener('focusin', (event) => {
+      if (!event.target.matches('.sr2-editorial-hero__film-card[href]')) return;
+      focusActive = true;
+      syncModelLoop();
+      event.target.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'auto' });
+    });
+    heroModelLoop.addEventListener('focusout', () => {
       window.setTimeout(() => {
-        stop.classList.add('is-lit');
-        if (status) status.textContent = labels[stop.dataset.bayStop] || `Chapter ${index + 1}`;
-      }, reducedMotion ? 0 : index * 650);
-    };
-    const lightAll = () => {
-      bayMap.classList.add('is-active');
-      stops.forEach(lightStop);
-    };
-    if (reducedMotion || !('IntersectionObserver' in window)) {
-      lightAll();
-    } else {
-      const mapObserver = new IntersectionObserver((entries, observer) => {
-        if (!entries.some((entry) => entry.isIntersecting)) return;
-        lightAll();
-        observer.disconnect();
-      }, { threshold: 0.35 });
-      mapObserver.observe(bayMap);
-    }
-    stops.forEach((stop, index) => stop.addEventListener('focus', () => {
-      stop.classList.add('is-lit');
-      if (status) status.textContent = labels[stop.dataset.bayStop] || `Chapter ${index + 1}`;
-    }));
+        focusActive = document.activeElement?.matches('.sr2-editorial-hero__film-card[href]') || false;
+        syncModelLoop();
+      }, 0);
+    });
+    heroModelLoop.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !desktopMotion.matches || navigator.connection?.saveData) return;
+      userPaused = true;
+      syncModelLoop();
+      loopToggle?.focus();
+    });
+    document.addEventListener('visibilitychange', syncModelLoop);
+    desktopMotion.addEventListener?.('change', syncModelLoop);
+    motionPreference.addEventListener?.('change', syncModelLoop);
+    navigator.connection?.addEventListener?.('change', syncModelLoop);
+    window.addEventListener('pagehide', () => observer?.disconnect());
+    window.addEventListener('pageshow', () => { observer?.observe(heroModelLoop); syncModelLoop(); }, { passive: true });
+    syncModelLoop();
   }
 })();

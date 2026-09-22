@@ -1,0 +1,25 @@
+{
+  "bytes": 34976,
+  "fixed_axes": {
+    "wdth": 100
+  },
+  "license": "OFL-1.1",
+  "license_path": "assets/sot/fonts/OFL-1.1.txt",
+  "output": "assets/derived/fonts/archivo-normal-width.woff2",
+  "retained_axes": {
+    "wght": [
+      100,
+      600,
+      900
+    ]
+  },
+  "schema": "skyyrose.font-delivery.v1",
+  "sha256": "7ad8d3aba9616844d4d13eddb34a7584a969c59af1f52a19e89ab4783eab41f5",
+  "source": "assets/sot/fonts/archivo-latin.woff2",
+  "source_sha256": "4c98b9d490d1698ec95f2ff17a6c7d0e72691864c0c5d7bc2a2c161b45afe5ad",
+  "unicode_subset": false,
+  "versions": {
+    "brotli": "1.2.0",
+    "fonttools": "4.59.2"
+  }
+}

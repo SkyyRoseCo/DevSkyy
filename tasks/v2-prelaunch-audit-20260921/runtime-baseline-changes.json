@@ -1,0 +1,30 @@
+{
+  "functions.php": {
+    "before": "b441fa757cb0d71ceb0016b16f2b9fcd3d26f1b1b1fb950b0f4209f1c8a8a7a1",
+    "after": "c92f5fe7fd04c162dfac6f15b0447d08cf107941a8da18b64120421f817071dd"
+  },
+  "inc/demo-import.php": {
+    "before": "5eeafe3e9fa8477a2cae6735901faa2c5d5229259ff7685e7c9a4a97dd530b6b",
+    "after": "e4366d38651e2ff35a337cc495e30913c4a2b1f3af6cca8771d16d2433995e56"
+  },
+  "inc/launch-readiness.php": {
+    "before": "139e43f3e33927f246fca7df984ee343871d18619c88e7031ef44bd28fbb5c79",
+    "after": "409654d501ad15114a4cdca26a6d859473c3fac93394a15f403803ff3cded713"
+  },
+  "inc/seo-indexing.php": {
+    "before": "8f77c66ac34e069a86904618a7bf80b193de92d197c89bfd772403604fadf4fc",
+    "after": "fe0fc6eeb1e38e2f8b93ab561536921eb041f0d5d40b1186d1b4cc8bfb81b05b"
+  },
+  "page.php": {
+    "before": "7812c3384296c806284960e54adb6af9554e7ced8db598f7af0a747b89242bea",
+    "after": "ec71d508e83f5d684da332c0ee4371fafebc3386e41aadcd26e48d2393f10b91"
+  },
+  "scripts/test-seo-indexing.php": {
+    "before": "dc7d2299561bd0c8badf2e23b29d2773402e6e884a407c531c664cffb0235a03",
+    "after": "bcf214f2e8d061f32d82bb5d563dcc25c7a33007db222f974eb4fb7e0adc4187"
+  },
+  "template-parts/home/editorial-hero.php": {
+    "before": "cd6b953be136685488bb49ef0d44ea61496dc9741ad94057553ee92647007c34",
+    "after": "d5e4b6b8b559b97136351976598183c772cd53cc1b4041211ca5fbae262aa928"
+  }
+}

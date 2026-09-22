@@ -11,17 +11,16 @@ from pathlib import Path
 
 THEME = Path(__file__).resolve().parents[1]
 OUTPUT = THEME / "languages/skyyrose-flagship-2.pot"
-_TRANSLATION_FUNCTIONS = r"__|_e|esc_html__|esc_html_e|esc_attr__|esc_attr_e"
-CALL_SINGLE = re.compile(
-    rf"(?P<fn>{_TRANSLATION_FUNCTIONS})\(\s*"
-    r"'(?P<message>(?:\\.|[^'\\])*)'\s*,\s*"
-    r"'skyyrose-flagship-2'",
+CALL = re.compile(
+    r"(?P<fn>__|_e|esc_html__|esc_html_e|esc_attr__|esc_attr_e)\(\s*"
+    r"(?P<quote>'|\")(?P<message>(?:\\.|(?!\2)[^\\])*)\2\s*,\s*"
+    r"(?P<domain>'|\")skyyrose-flagship-2\4",
     re.DOTALL,
 )
-CALL_DOUBLE = re.compile(
-    rf"(?P<fn>{_TRANSLATION_FUNCTIONS})\(\s*"
-    r'"(?P<message>(?:\\.|[^"\\])*)"\s*,\s*'
-    r'"skyyrose-flagship-2"',
+PLURAL_CALL = re.compile(
+    r"\b_n\(\s*(?P<q1>['\"])(?P<single>(?:\\.|(?!(?P=q1))[^\\])*)(?P=q1)\s*,\s*"
+    r"(?P<q2>['\"])(?P<plural>(?:\\.|(?!(?P=q2))[^\\])*)(?P=q2)\s*,\s*"
+    r"[^,]+,\s*['\"]skyyrose-flagship-2['\"]",
     re.DOTALL,
 )
 
@@ -50,18 +49,39 @@ def po_quote(value: str) -> str:
 def collect() -> dict[str, list[str]]:
     messages: dict[str, list[str]] = defaultdict(list)
     for source in sorted(THEME.rglob("*.php")):
-        if any(part in {"node_modules", "vendor"} for part in source.parts):
+        if any(
+            part in {"node_modules", "vendor", "scripts", "dist", "tests"} for part in source.parts
+        ):
             continue
         text = source.read_text(encoding="utf-8")
-        for call, quote in ((CALL_SINGLE, "'"), (CALL_DOUBLE, '"')):
-            for match in call.finditer(text):
-                message = decode(match.group("message"), quote)
-                line = text.count("\n", 0, match.start()) + 1
-                messages[message].append(f"{source.relative_to(THEME)}:{line}")
+        for match in CALL.finditer(text):
+            message = decode(match.group("message"), match.group("quote"))
+            line = text.count("\n", 0, match.start()) + 1
+            messages[message].append(f"{source.relative_to(THEME)}:{line}")
     return dict(sorted(messages.items()))
 
 
+def collect_plurals() -> dict[str, tuple[str, list[str]]]:
+    messages: dict[str, tuple[str, list[str]]] = {}
+    for source in sorted(THEME.rglob("*.php")):
+        if any(
+            part in {"node_modules", "vendor", "scripts", "dist", "tests"} for part in source.parts
+        ):
+            continue
+        text = source.read_text(encoding="utf-8")
+        for match in PLURAL_CALL.finditer(text):
+            singular = decode(match.group("single"), match.group("q1"))
+            plural = decode(match.group("plural"), match.group("q2"))
+            if singular in messages and messages[singular][0] != plural:
+                raise ValueError(f"Conflicting plural translation: {singular}")
+            record = messages.setdefault(singular, (plural, []))
+            line = text.count("\n", 0, match.start()) + 1
+            record[1].append(f"{source.relative_to(THEME)}:{line}")
+    return messages
+
+
 def render(messages: dict[str, list[str]]) -> str:
+    plurals = collect_plurals()
     version = theme_version()
     header = [
         'msgid ""',
@@ -76,10 +96,18 @@ def render(messages: dict[str, list[str]]) -> str:
         "",
     ]
     entries = list(header)
-    for message, references in messages.items():
+    for message in sorted(set(messages) | set(plurals)):
+        references = list(messages.get(message, []))
+        if message in plurals:
+            references.extend(plurals[message][1])
+        references = sorted(set(references))
         entries.append(f"#: {' '.join(references)}")
         entries.append(f"msgid {po_quote(message)}")
-        entries.append('msgstr ""')
+        if message in plurals:
+            entries.append(f"msgid_plural {po_quote(plurals[message][0])}")
+            entries.extend(['msgstr[0] ""', 'msgstr[1] ""'])
+        else:
+            entries.append('msgstr ""')
         entries.append("")
     return "\n".join(entries)
 
@@ -91,11 +119,15 @@ def main() -> int:
         if not OUTPUT.is_file() or OUTPUT.read_text(encoding="utf-8") != rendered:
             print("Translation catalog is stale. Run this script without --check.", file=sys.stderr)
             return 1
-        print(f"Translation catalog is current ({len(messages)} messages).")
+        print(
+            f"Translation catalog is current ({len(messages)} singular messages, {len(collect_plurals())} plural records)."
+        )
         return 0
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(rendered, encoding="utf-8")
-    print(f"Wrote {OUTPUT} ({len(messages)} messages).")
+    print(
+        f"Wrote {OUTPUT} ({len(messages)} singular messages, {len(collect_plurals())} plural records)."
+    )
     return 0
 
 

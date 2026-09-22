@@ -1,233 +1,335 @@
 {
-  "generated_from": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+  "generated_from": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
   "kind": "skyyrose-v2-product-presentation-registry",
+  "product_registry_sha256": "4bd403a92525048d",
+  "product_sot_scope": "historical_media_binding_only",
+  "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
   "products": {
     "br-001": {
       "collection": "black-rose",
+      "garment_type": "crewneck",
       "is_preorder": false,
+      "media_proof_level": "catalog_media_only",
       "presentation": "black-rose",
+      "product_sot_hash": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c",
       "route": "/collections/black-rose/"
     },
     "br-002": {
       "collection": "black-rose",
+      "garment_type": "joggers",
       "is_preorder": false,
+      "media_proof_level": "catalog_media_only",
       "presentation": "black-rose",
+      "product_sot_hash": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e",
       "route": "/collections/black-rose/"
     },
     "br-003": {
       "collection": "black-rose",
-      "film_start": 0,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "00 / Baseball Classic (Black)",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "route": "/collections/black-rose/#jersey-series"
+      "product_sot_hash": "665aca97d1b61be02dec4fce949fb32ea562ee82c9a63854cbbac4214041112e",
+      "route": "/jersey-series/",
+      "series_order": 10,
+      "series_region": "oakland"
     },
     "br-004": {
       "collection": "black-rose",
+      "garment_type": "hoodie",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
+      "product_sot_hash": "977cd308b8b9d512b72f0db91151b23936777282406aeaafe6977e635862bbac",
       "route": "/collections/black-rose/"
     },
     "br-005": {
       "collection": "black-rose",
+      "garment_type": "hoodie",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
+      "product_sot_hash": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e",
       "route": "/collections/black-rose/"
     },
     "br-006": {
       "collection": "black-rose",
+      "garment_type": "jacket",
       "is_preorder": true,
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
+      "product_sot_hash": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd",
       "route": "/collections/black-rose/"
     },
     "br-007": {
       "collection": "black-rose",
+      "garment_type": "shorts",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
+      "product_sot_hash": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b",
       "route": "/collections/black-rose/"
     },
     "br-008": {
       "collection": "black-rose",
-      "film_start": 3.2,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "01 / SF Inspired",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "route": "/collections/black-rose/#jersey-series"
+      "product_sot_hash": "6e5df3321ee8d9c262296ae28789b926b5e25c4e13af64f7cabb4a69c9c5d163",
+      "route": "/jersey-series/",
+      "series_order": 50,
+      "series_region": "san-francisco"
     },
     "br-009": {
       "collection": "black-rose",
-      "film_start": 6.4,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "02 / Last Oakland",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "route": "/collections/black-rose/#jersey-series"
+      "product_sot_hash": "348f18190d00ccdd6eb9b9702743a518ceee2c471e0a575d42381030341ac614",
+      "route": "/jersey-series/",
+      "series_order": 30,
+      "series_region": "oakland"
     },
     "br-010": {
       "collection": "black-rose",
-      "film_start": 9.6,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "03 / The Bay",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "route": "/collections/black-rose/#jersey-series"
+      "product_sot_hash": "a657b4ebe780966746b0cf72686575ba9a830c212dd518ad029e7642bc583329",
+      "route": "/jersey-series/",
+      "series_order": 70,
+      "series_region": "san-francisco"
     },
     "br-011": {
       "collection": "black-rose",
-      "film_start": 12.8,
+      "garment_type": "hoodie",
       "is_preorder": true,
-      "jersey_chapter": "04 / The Rose",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "route": "/collections/black-rose/#jersey-series"
+      "product_sot_hash": "9dd33981cdf7e1e98247f0aa708054186bf877c3bb2c4c03687536a5e9cf42a0",
+      "route": "/jersey-series/",
+      "series_order": 80,
+      "series_region": "san-jose"
     },
     "br-012": {
       "collection": "black-rose",
-      "film_start": 6.4,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "05 / Baseball Classic (Last Oakland)",
+      "media_proof_level": "physical_product_photo",
       "presentation": "jersey-series",
-      "route": "/collections/black-rose/#jersey-series"
+      "product_sot_hash": "b34b44167fcb5f8d7d7d72d200d533274d4074e134de695274cd0c5ca52033d6",
+      "route": "/jersey-series/",
+      "series_order": 40,
+      "series_region": "oakland"
     },
     "br-014": {
       "collection": "black-rose",
-      "film_start": 3.2,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "00 / Baseball Classic (Giants)",
+      "media_proof_level": "physical_product_photo",
       "presentation": "jersey-series",
-      "route": "/collections/black-rose/#jersey-series"
+      "product_sot_hash": "2741304d4950265536ffc9b52d58f68b5ad88bce911fde8588612107aac9842f",
+      "route": "/jersey-series/",
+      "series_order": 60,
+      "series_region": "san-francisco"
     },
     "br-015": {
       "collection": "black-rose",
-      "film_start": 0,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "00 / Baseball Classic (White)",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "route": "/collections/black-rose/#jersey-series"
+      "product_sot_hash": "06adab4dd19a5c9092755f031b30176f406b9799f9ee366000538e4b85429ebb",
+      "route": "/jersey-series/",
+      "series_order": 20,
+      "series_region": "oakland"
     },
     "kids-001": {
       "collection": "kids-capsule",
+      "garment_type": "hoodie",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "kids-capsule",
+      "product_sot_hash": "055e87cefa9cda456b59b230b7597fbead5a822854ccc615ff8f021ed9387028",
       "route": "/collections/kids-capsule/"
     },
     "kids-002": {
       "collection": "kids-capsule",
+      "garment_type": "hoodie",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "kids-capsule",
+      "product_sot_hash": "9de73174b9b580cfadf21040753ddd17fdf34640ef3259a549352119a5251878",
       "route": "/collections/kids-capsule/"
     },
     "lh-002": {
       "collection": "love-hurts",
+      "garment_type": "joggers",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "love-hurts",
+      "product_sot_hash": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed",
       "route": "/collections/love-hurts/"
     },
     "lh-003": {
       "collection": "love-hurts",
+      "garment_type": "shorts",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "love-hurts",
+      "product_sot_hash": "3cceca9656872d9cb1598539dbb23801241e57fa63d749a32f740087743a3a8c",
       "route": "/collections/love-hurts/"
     },
     "lh-004": {
       "collection": "love-hurts",
+      "garment_type": "bomber jacket",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "love-hurts",
+      "product_sot_hash": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69",
       "route": "/collections/love-hurts/"
     },
     "lh-005": {
       "collection": "love-hurts",
+      "garment_type": "",
       "is_preorder": true,
+      "media_proof_level": "canonical_product_reference",
       "presentation": "love-hurts",
+      "product_sot_hash": "67cba7ca43810be60c66e5e29d12449c61a76a8704ef1498c145950f9ae53583",
       "route": "/collections/love-hurts/"
     },
     "lh-006": {
       "collection": "love-hurts",
+      "garment_type": "joggers",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "love-hurts",
+      "product_sot_hash": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079",
       "route": "/collections/love-hurts/"
     },
     "sg-001": {
       "collection": "signature",
+      "garment_type": "shorts",
       "is_preorder": true,
+      "media_proof_level": "physical_product_photo",
       "presentation": "signature",
+      "product_sot_hash": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941",
       "route": "/collections/signature/"
     },
     "sg-002": {
       "collection": "signature",
+      "garment_type": "shirt",
       "is_preorder": true,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e",
       "route": "/collections/signature/"
     },
     "sg-003": {
       "collection": "signature",
+      "garment_type": "shorts",
       "is_preorder": true,
+      "media_proof_level": "canonical_product_reference",
       "presentation": "signature",
+      "product_sot_hash": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23",
       "route": "/collections/signature/"
     },
     "sg-005": {
       "collection": "signature",
+      "garment_type": "shirt",
       "is_preorder": true,
+      "media_proof_level": "physical_product_photo",
       "presentation": "signature",
+      "product_sot_hash": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6",
       "route": "/collections/signature/"
     },
     "sg-006": {
       "collection": "signature",
+      "garment_type": "hoodie",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3",
       "route": "/collections/signature/"
     },
     "sg-007": {
       "collection": "signature",
+      "garment_type": "",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c",
       "route": "/collections/signature/"
     },
     "sg-009": {
       "collection": "signature",
+      "garment_type": "jacket",
       "is_preorder": false,
+      "media_proof_level": "canonical_product_reference",
       "presentation": "signature",
+      "product_sot_hash": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a",
       "route": "/collections/signature/"
     },
     "sg-011": {
       "collection": "signature",
+      "garment_type": "shirt",
       "is_preorder": false,
+      "media_proof_level": "catalog_media_only",
       "presentation": "signature",
+      "product_sot_hash": "07116629c233b65d83677575f5661720c872c01441333619b8e874146505e669",
       "route": "/collections/signature/"
     },
     "sg-012": {
       "collection": "signature",
+      "garment_type": "shirt",
       "is_preorder": false,
+      "media_proof_level": "catalog_media_only",
       "presentation": "signature",
+      "product_sot_hash": "d96a7efcf46057a84afb93fb27031849891b2d81965cc2df5b47c1a50eda8786",
       "route": "/collections/signature/"
     },
     "sg-013": {
       "collection": "signature",
+      "garment_type": "crewneck",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2",
       "route": "/collections/signature/"
     },
     "sg-014": {
       "collection": "signature",
+      "garment_type": "sweatpants",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "0f063bd55595390672123e0aecff6df96be10bdefddcbdec45614d665dbc6867",
       "route": "/collections/signature/"
     },
     "sg-015": {
       "collection": "signature",
+      "garment_type": "set",
       "is_preorder": true,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "b01ceabb690a9924c160bc4599d065f26f59d4b203248ad308a72484a9f2d34d",
       "route": "/collections/signature/"
     }
   },
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "supplements": {
     "jersey_series_skus": [
       "br-003",
-      "br-008",
+      "br-015",
       "br-009",
-      "br-010",
-      "br-011",
       "br-012",
+      "br-008",
       "br-014",
-      "br-015"
+      "br-010",
+      "br-011"
     ]
   }
 }

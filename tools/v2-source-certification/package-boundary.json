@@ -1,0 +1,3285 @@
+{
+  "files": {
+    "404.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "CHANGELOG.md": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "CLAUDE.md": {
+      "category": "AUTHORING ONLY",
+      "reason": "Repository instructions or prelaunch regression test; not storefront runtime",
+      "release": false
+    },
+    "IMAGE-PROMPTS.md": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal prompt document",
+      "release": false
+    },
+    "LICENSE.txt": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "README.md": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "archive.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/br-001-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/br-002-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/br-004-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/br-005-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/br-007-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/kids-001-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/kids-002-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/lh-002-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/lh-003-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/lh-004-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/lh-005-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/lh-006-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-001-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-003-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-005-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-006-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-007-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-009-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-011-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-012-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-013-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-014-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/approved-card-fronts/sg-015-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/card-scenes/br-003-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/card-scenes/br-006-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/card-scenes/br-008-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/card-scenes/br-009-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/card-scenes/br-010-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/card-scenes/br-011-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/card-scenes/br-012-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/card-scenes/br-014-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/card-scenes/br-015-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/card-scenes/sg-002-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/about-archive.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/about-archive.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/archive-style-inputs.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Exact six-source authority for bounded native archive CSS inlining; originals retained",
+      "release": true
+    },
+    "assets/css/archive-theme.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Native archive projection retaining all shared rules and original full stylesheet; SHA-bound selector classification",
+      "release": true
+    },
+    "assets/css/archive-theme.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Native archive projection retaining all shared rules and original full stylesheet; SHA-bound selector classification",
+      "release": true
+    },
+    "assets/css/collection-scene-motion.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/collection-scene-motion.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/collection-world.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "assets/css/collection-world.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
+    "assets/css/content-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
+      "release": true
+    },
+    "assets/css/content-page.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
+      "release": true
+    },
+    "assets/css/controls.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3A global shell or canonical control styles",
+      "release": true
+    },
+    "assets/css/controls.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Phase3A global shell or canonical control styles",
+      "release": true
+    },
+    "assets/css/critical/home.contract.json": {
+      "category": "BUILD TOOLING",
+      "reason": "Critical CSS extraction contract consumed by scripts/build-critical-css.mjs; not a PHP runtime reader",
+      "release": false
+    },
+    "assets/css/critical/home.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/design-tokens.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/design-tokens.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/global-shell.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3A global shell or canonical control styles",
+      "release": true
+    },
+    "assets/css/global-shell.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Phase3A global shell or canonical control styles",
+      "release": true
+    },
+    "assets/css/hero-commerce-scenes.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/hero-commerce-scenes.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/home-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "assets/css/home-page.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
+    "assets/css/immersive.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/immersive.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/legacy-world-components.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "assets/css/legacy-world-components.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
+    "assets/css/lookbook.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Soft-launch lookbook candidate; native collection/product routing, existing approved media",
+      "release": true
+    },
+    "assets/css/lookbook.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Soft-launch lookbook candidate; native collection/product routing, existing approved media",
+      "release": true
+    },
+    "assets/css/mascot.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/mascot.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/premium-commerce.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/premium-commerce.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/product-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "assets/css/product-page.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
+    "assets/css/quick-view-commerce.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/quick-view-commerce.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/scene-handoff.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/scene-handoff.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/search-preview.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/search-preview.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/shop-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "assets/css/shop-page.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
+    "assets/css/theme.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/theme.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/visual-recovery.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/css/visual-recovery.min.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/derived/card-frames/black-rose-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/black-rose-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/kids-capsule-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/kids-capsule-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/love-hurts-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/love-hurts-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/manifest.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/signature-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/signature-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-001-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-001-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-001-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-002-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-002-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-002-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-003-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-003-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-003-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-004-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-004-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-004-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-005-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-005-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-005-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-006-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-006-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-006-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-007-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-007-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-007-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-008-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-008-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-008-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-009-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-009-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-009-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-010-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-010-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-010-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-011-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-011-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-011-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-012-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-012-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-012-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-014-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-014-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-014-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-015-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-015-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-015-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-001-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-001-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-001-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-002-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-002-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-002-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-002-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-002-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-002-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-003-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-003-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-003-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-004-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-004-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-004-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-005-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-005-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-005-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-006-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-006-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-006-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/manifest.json": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-001-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-001-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-001-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-002-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-002-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-002-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-003-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-003-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-003-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-005-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-005-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-005-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-006-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-006-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-006-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-007-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-007-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-007-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-009-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-009-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-009-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-011-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-011-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-011-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-012-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-012-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-012-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-013-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-013-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-013-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-014-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-014-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-014-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-015-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-015-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-015-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/fonts/archivo-normal-width.woff2": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/fonts/inter-fallback-latin.woff2": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Derived fallback face without an @font-face consumer; provenance in data/font-fallback.json",
+      "release": false
+    },
+    "assets/derived/fonts/manifest.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/images/about/kids-heir-founder-supplied.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/images/about/oakland-reference-mural.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/images/about/oakland-reference-sign.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/images/skyy-runtime-poster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/about-archive.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/about-archive.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/collection-scene-motion.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/collection-scene-motion.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/house-of-roses-motion.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/house-of-roses-motion.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/immersive.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/immersive.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/kids-capsule-reveal.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/kids-capsule-reveal.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/lib/draco/draco_decoder.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/lib/draco/draco_decoder.wasm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/lib/draco/draco_wasm_wrapper.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/lib/three-r170/BufferGeometryUtils.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/DRACOLoader.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/GLTFLoader.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/LICENSE": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/three.module.min.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/mascot-loader.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/mascot-loader.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/mascot.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/mascot.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/premium-commerce.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/premium-commerce.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/quick-view-commerce.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/quick-view-commerce.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/scene-handoff.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/scene-handoff.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/search-preview.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/search-preview.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/skyy-3d.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/skyy-3d.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/theme.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/theme.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/visual-recovery.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/visual-recovery.min.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/models/skyy-mascot.glb": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster",
+      "release": true
+    },
+    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster",
+      "release": true
+    },
+    "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1.png": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1.png": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-archive-4-poster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-motion-k1-1080p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-motion-k1-720p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/br-commerce-2-motion-k1-1080p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/br-commerce-2-motion-k1-720p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/br-commerce-3-motion-k1-1080p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/br-commerce-3-motion-k1-720p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-archive-4-poster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-motion-k1-1080p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-motion-k1-720p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-2-motion-k1-1080p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-2-motion-k1-720p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-archive-4-poster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-motion-k1-1080p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-motion-k1-720p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-1-motion-k1-1080p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-1-motion-k1-720p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-2-motion-k1-1080p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-2-motion-k1-720p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-1080p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-720p.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-poster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/placeholders/founder-selected-v1/black-rose-east-oakland-crewneck-v1.png": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
+    },
+    "assets/scroll-world/placeholders/founder-selected-v1/love-hurts-graphic-heart-backdrop-v1.png": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
+    },
+    "assets/scroll-world/placeholders/founder-selected-v1/love-hurts-star-heart-statue-backdrop-v1.png": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
+    },
+    "assets/scroll-world/placeholders/founder-selected-v1/signature-bay-bridge-shorts-v1.png": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
+    },
+    "assets/scroll-world/placeholders/founder-selected-v1/signature-graphic-monogram-backdrop-v1.png": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
+    },
+    "assets/scroll-world/scene-1-signature.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/scene-2-black-rose.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/scene-3-love-hurts.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/scene-4-kids-capsule.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/scene-5-finale.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4": {
+      "category": "AUTHORING SOURCE",
+      "reason": "Verified no runtime or active content references; preserve exact founder/SOT/authoring source. See tasks/v2-completion-20260906/dependency-cleanup.json.",
+      "release": false
+    },
+    "assets/scroll-world/video/black-rose/br-006/motion-plates/web/br-006-hero-origin-backdrop-loop.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/video/black-rose/br-006/motion-plates/web/br-006-hero-origin-backdrop-loop.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/video/black-rose/br-006/poster/br-006-hero-origin-poster.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4": {
+      "category": "AUTHORING SOURCE",
+      "reason": "Verified no runtime or active content references; preserve exact founder/SOT/authoring source. See tasks/v2-completion-20260906/dependency-cleanup.json.",
+      "release": false
+    },
+    "assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/brand/skyyrose-logo-animated-256w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/brand/skyyrose-logo-animated-384w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/brand/skyyrose-logo-optimized-384w.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/brand/skyyrose-logo-still-384w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/branding/hero/beauty-and-beast-1280w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/branding/hero/flagship-house-runway-gpt2.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/branding/hero/forbidden-midnight-1280w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/branding/hero/signature-golden-gate-yacht-1280w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/FONT-ATTRIBUTIONS.md": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/OFL-1.1.txt": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/anton-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/archivo-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/cinzel-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/grand-hotel-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/hanken-grotesk-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/inter-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/pinyon-script-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/skyyrose-black-rose-script-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/skyyrose-love-hurts-graffiti-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/about/skyy-rose-founder-hero.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/about/the-blox-premiere.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/emblems/black-rose-emblem.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/emblems/love-hurts-emblem.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/black-rose-lake-merritt-monument-v2.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/black-rose-typography-star-salon-v3.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/candidates/black-rose-bay-bridge-lockup-hero-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/candidates/black-rose-bay-bridge-monuments-v5-heart-base-candidate.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/candidates/black-rose-bay-bridge-monuments-v5-heart-base-candidate.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/candidates/black-rose-v4-v5-heart-base-comparison.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/jersey-series-town-line-train-v1.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/kids-capsule-heir-throne-v2.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/kids-capsule-heir-throne-v3.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/love-hurts-golden-gate-monument-v2.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/black-rose-lake-merritt-monument-v2-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/black-rose-lake-merritt-monument-v2-1440w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/black-rose-lake-merritt-monument-v2-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/black-rose-typography-star-salon-v3-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/black-rose-typography-star-salon-v3-1440w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/black-rose-typography-star-salon-v3-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/jersey-series-town-line-train-v1-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/jersey-series-town-line-train-v1-1440w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/jersey-series-town-line-train-v1-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/love-hurts-golden-gate-monument-v2-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/love-hurts-golden-gate-monument-v2-1440w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/love-hurts-golden-gate-monument-v2-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/hero/signature-golden-gate-monuments-v2.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/home/on-model/black-rose-br-004-512w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/home/on-model/black-rose-br-004.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/home/on-model/kids-capsule-kids-001.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/home/on-model/kids-capsule-mascot-purple-guard.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/home/on-model/kids-capsule-mascot-red-guard.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/home/on-model/love-hurts-lh-004-512w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/home/on-model/love-hurts-lh-004.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/home/on-model/signature-sg-005-512w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/home/on-model/signature-sg-005.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/immersive/scene-black-rose-moon-court-gpt2.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/immersive/scene-kids-capsule-heir-runway-gpt2.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/immersive/scene-kids-capsule-playroom.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/immersive/scene-kids-capsule-runway.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/immersive/scene-love-hurts-cathedral.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/immersive/scene-love-hurts-cracked-rose-gpt2.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/immersive/scene-signature-golden-gate.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/immersive/scene-signature-oakland-atelier-gpt2.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/black-rose-lockup.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/black-rose-star-graphic.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/black-rose-star-graphic.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/founder-supplied/derived/signature-font-statue-protected-cutout-review-v1.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/founder-supplied/derived/signature-font-statue-protected-cutout-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-review-v1.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/founder-supplied/signature-font-statue-founder-supplied-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/founder-supplied/signature-sr-rose-graphic-founder-supplied-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1-review.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/love-hurts-lockup.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/love-hurts-star-heart-graphic.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/love-hurts-star-heart-graphic.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lockups/signature-lockup.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/logos/black-roses-cloud-cluster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/logos/heart-rose-composite.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/logos/red-roses-cloud-cluster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/logos/rose-gold-rose.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/logos/sr-monogram-rose-gold.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lookbook/lb-black-rose-football-480w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lookbook/lb-black-rose-football-960w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lookbook/lb-kid-black-rose-480w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lookbook/lb-kid-black-rose-960w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lookbook/lb-love-hurts-varsity-480w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lookbook/lb-love-hurts-varsity-960w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lookbook/lb-rose-hoodie-beanie-480w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/lookbook/lb-rose-hoodie-beanie-960w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/mascot/skyy-canonical-v2-512w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/mascot/skyy-canonical-v2.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/preorder/black-rose-salon.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/preorder/responsive/black-rose-salon-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/preorder/responsive/black-rose-salon-1440w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/preorder/responsive/black-rose-salon-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/product-card-portals/black-rose-portal-statue-970w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/product-card-portals/kids-capsule-portal-statue-970w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/product-card-portals/love-hurts-portal-statue-970w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/product-card-portals/signature-portal-statue-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/product-card-portals/signature-portal-statue-970w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/br-001-onmodel-front-protected-review.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/br-001-onmodel-front-protected.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/br-006-onmodel-front-protected-review.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/br-006-onmodel-front-protected.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/protected-cutout-review.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-005-onmodel-front-protected-review.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-005-onmodel-front-protected.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-009-onmodel-front-protected-review.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-009-onmodel-front-protected.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-015-onmodel-front-protected-review.jpg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-015-onmodel-front-protected.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/replica-generation/br-001/batch-01/ghost-back-candidate.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/replica-generation/br-001/batch-01/ghost-front-candidate.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/replica-generation/br-001/batch-01/on-model-back-candidate.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-22/replica-generation/br-001/batch-01/on-model-front-candidate.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-002-onmodel-heart-logo-pass-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-003-onmodel-logo-pass-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-005-onmodel-logo-pass-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-006-onmodel-heart-logo-pass-v1.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/qa/love-hurts-logo-pass-contact-sheet-v1.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/sot/images/products/kids-001-product-proof-400.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/kids-002-product-proof-400.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/kids-002-purple-set.jpeg": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/br-004-back.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Preserved current-main product preview; no source media replacement",
+      "release": true
+    },
+    "assets/sot/images/products/preview/br-004-front.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Preserved current-main product preview; no source media replacement",
+      "release": true
+    },
+    "assets/sot/images/products/preview/br-004-packshot.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Preserved current-main product preview; no source media replacement",
+      "release": true
+    },
+    "assets/sot/images/products/preview/kids-001-back.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/kids-001-front.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/kids-001-packshot.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/kids-002-back.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/kids-002-front.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/kids-002-packshot.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/lh-002-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/lh-003-front.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/lh-004-back.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/lh-004-front.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/lh-004-packshot.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/lh-005-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/lh-006-onmodel.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/sg-005-front.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/preview/sg-005-packshot.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/SHA256SUMS": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-002/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-003/ghost-back.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-003/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-004/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-007/ghost-back.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-007/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-009/ghost-back.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-009/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-010/ghost-back.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-010/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-011/ghost-back.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-011/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-012/ghost-back.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/br-012/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/kids-001/ghost-back.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/kids-001/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/kids-001/on-model-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/manifest.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/sot/images/products/replica-v1/qa/ghost-back-contact-sheet.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/sot/images/products/replica-v1/qa/ghost-front-contact-sheet.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/sot/images/products/replica-v1/qa/on-model-front-contact-sheet.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/sot/images/products/replica-v1/sg-001/ghost-back.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/sg-001/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/sg-005/ghost-back.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/sg-005/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/sg-005/on-model-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/sg-007/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/video/rose-gold-spin-alpha.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/video/rose-gold-spin-alpha.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/video/tsrc-spin-alpha.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/video/tsrc-spin-alpha.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/black-rose/black-rose-authentic-motion-v3-a1.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/black-rose/black-rose-bay-bridge-monuments-motion-v2.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/black-rose/qa/contact-sheet-v2.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/black-rose/qa/metadata-v2.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/black-rose/web/black-rose-bay-bridge-monuments-motion-v2.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/black-rose/web/black-rose-bay-bridge-monuments-motion-v2.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/kids-capsule-heir-throne-motion-v2.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/qa/contact-sheet-v2.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/qa/metadata-v2.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/love-hurts/love-hurts-authentic-motion-v3-a1.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/love-hurts/love-hurts-rose-aisle-monuments-motion-v2.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/love-hurts/qa/contact-sheet-v2.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/love-hurts/qa/metadata-v2.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-rose-aisle-monuments-motion-v2.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-rose-aisle-monuments-motion-v2.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/signature/signature-golden-gate-monuments-motion-v1.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/jersey-series-bart-journey.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/jersey-series-bart-journey.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/jersey-series-bart-poster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/skyyrose-tour-around-the-bay-poster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/skyyrose-tour-around-the-bay.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/video/skyyrose-tour-around-the-bay.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/approved-card-fronts.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/approved-scroll-world-scenes.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "data/brand-asset-transparency.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/collection-hero-motion.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/collection-scene-motion.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/editor/about-page.html": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Editor-installed About content; no PHP runtime reader",
+      "release": false
+    },
+    "data/font-fallback.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/font-provenance.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/founder-scene-rejections-2026-08-22.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/founder-selected-theme-placeholders-v1.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/founder-supplied-scene-assets-2026-08-22.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/hero-aspect-remakes-v3-manifest.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/hero-commerce-scenes-c1.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/image-generation-tournament-policy-v1.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/image-optimization.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/love-hurts-logo-pass-candidates-2026-08-23.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/opening-product-media.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/product-presentation-registry.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/scene-hotspots.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Poster-hash-bound garment hotspot coordinates; no product authority replacement",
+      "release": true
+    },
+    "data/scene-narrative-blueprints.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/scene-production-contract.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "editor-style.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "footer.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "front-page.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "functions.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "header.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "home.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/approved-card-fronts.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/archive-style-bundle.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Guarded archive theme projection and head-only native Core inline allowance with exact input authority and late-change fallback",
+      "release": true
+    },
+    "inc/critical-rendering.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/demo-import.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/frame-delivery.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Native archive responsive frame delivery and exact source fallback",
+      "release": true
+    },
+    "inc/global-shell.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3A global shell or canonical control styles",
+      "release": true
+    },
+    "inc/hero-commerce-scenes.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/launch-readiness.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "V2 canonical navigation, scoped heading and editorial cleanup, approved PDP styling views",
+      "release": true
+    },
+    "inc/marketplace.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/pdp-media-delivery.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "inc/performance.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/presentation-registry.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/quick-view-commerce.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/security.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/seo-indexing.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/shop-archive.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "inc/starter-content.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "index.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "languages/skyyrose-flagship-2.pot": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "npm-shrinkwrap.json": {
+      "category": "BUILD TOOLING",
+      "reason": "Source dependency or lint configuration",
+      "release": false
+    },
+    "package.json": {
+      "category": "BUILD TOOLING",
+      "reason": "Source dependency or lint configuration",
+      "release": false
+    },
+    "page-lookbook.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Soft-launch lookbook candidate; native collection/product routing, existing approved media",
+      "release": true
+    },
+    "page-wishlist.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "page.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "phpcs.xml": {
+      "category": "BUILD TOOLING",
+      "reason": "Source dependency or lint configuration",
+      "release": false
+    },
+    "readme.txt": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "rtl.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "screenshot.png": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "scripts/author-mascot-actions.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/author-vision-grounded-image-prompt.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-assets.mjs": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/build-critical-css.mjs": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/build-founder-commerce-review-batch.cjs": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-hero-commerce-c1.cjs": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-image-generation-product-proof.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-jersey-bart-film.sh": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-natural-scene-integration.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-pot.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/build-product-presentation-registry.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/build-protected-model-layer.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-protected-scene-composite.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-skyyrose-tour-film.sh": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/invalidate-visual-product-sot.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/measure-native-scene-safe-zones.mjs": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/package-theme.sh": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/patch-love-hurts-thigh-logos.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/rebind-nonvisual-product-sot.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/record-image-generation-batch.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/render-founder-commerce-scenes.cjs": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/render-founder-commerce-scenes.sh": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/revise-signature-hoodie-dress-c2.cjs": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/run-native-scene-image-workflow.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/test-critical-rendering.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/test-global-shell-contract.php": {
+      "category": "TEST SOURCE",
+      "reason": "Preserved shell controls regression",
+      "release": false
+    },
+    "scripts/test-marketplace-registry.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/test-page-service-template.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Service-section rendering regression; not PHP runtime",
+      "release": false
+    },
+    "scripts/test-performance.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/test-prelaunch-safety.php": {
+      "category": "AUTHORING ONLY",
+      "reason": "Repository instructions or prelaunch regression test; not storefront runtime",
+      "release": false
+    },
+    "scripts/test-seo-indexing.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-collection-hero-motion.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-founder-commerce-review-batch.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/validate-founder-commerce-scenes.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-image-generation-adversarial.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/validate-image-generation-preflight.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/validate-limited-pro-image-prompt.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-native-scene-regeneration-preflight.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/validate-opening-product-media.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-scene-production.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-image-judge-availability.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-marketplace.sh": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-performance.sh": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-v2-candidate.sh": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-v2-workspace.sh": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "search.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "single.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "style.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-collection.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-immersive-black-rose.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-immersive-kids-capsule.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-immersive-love-hurts.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-immersive-signature.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/collections/arrival.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/collections/next-world.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/collections/product-edit.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/collections/scroll-world.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "template-parts/collections/story.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/collections/world.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/commerce/hero-composed-scene.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/commerce/product-card.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/commerce/product-hero.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/commerce/quick-view.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/commerce/search-dialog.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/commerce/size-guide-dialog.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/commerce/town-line.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/home/editorial-collection.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reusable reference editorial homepage section",
+      "release": true
+    },
+    "template-parts/home/editorial-hero.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reusable reference editorial homepage section",
+      "release": true
+    },
+    "template-parts/home/editorial-journal.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reusable reference editorial homepage section",
+      "release": true
+    },
+    "template-parts/home/editorial-philosophy.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reusable reference editorial homepage section",
+      "release": true
+    },
+    "template-parts/home/editorial-product-edit.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reusable reference editorial homepage section",
+      "release": true
+    },
+    "template-parts/home/kids-capsule-reveal.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/home/living-archive-worlds.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/immersive/world.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/journal-press-fallback.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/pages/service.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Shared generic, service, FAQ and account page section",
+      "release": true
+    },
+    "template-parts/skyy-mascot.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/v2-about.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/v2-commerce-preview.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/v2-preorder.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "theme.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "woocommerce/archive-product.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "woocommerce/cart/cart.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "woocommerce/checkout/form-checkout.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "woocommerce/checkout/thankyou.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "woocommerce/content-product.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "woocommerce/notices/error.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Native notice8.6 list markup with preserved escaping/data and valid assertive list semantics.",
+      "release": true
+    },
+    "woocommerce/single-product.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "woocommerce/single-product/product-image.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    }
+  },
+  "schema": "skyyrose.v2.package-boundary.v1"
+}

@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "authorization": "Founder request: now wire all fronts to product cards and redo the jersey scroll world video to include all jersey fronts",
+  "products": {
+    "br-003": {
+      "src": "assets/card-scenes/br-003-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) — front on model",
+      "source_sha256": "8e9844277eb99b2bbd3e505903334da37084dd8bb4c11fa16c63d05ef199d4f3",
+      "sha256": "43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-008": {
+      "src": "assets/card-scenes/br-008-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK is Beautiful Jersey Series: 1. SF Inspired (Football) — front on model",
+      "source_sha256": "596b2bc258069939baec6cdf1a0975c1eefe99860ad939bf1729705d6eb66ce2",
+      "sha256": "cd4ca4c0ba5d7723b0ad786ad7312502bf820aece583f8a007de4be20fa6088c",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-009": {
+      "src": "assets/card-scenes/br-009-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK is Beautiful Jersey Series: 2. Last Oakland (Football) — front on model",
+      "source_sha256": "b22d2c5ab7ae4dd8b9e9fbf1c2892f1f90c3fdd1af9d1bbb7a71b343a4213c06",
+      "sha256": "e220fb9c3d2a1413bb2a9d9158736c7a7b8622beadecc5e44debacbdc3441ffc",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-010": {
+      "src": "assets/card-scenes/br-010-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK is Beautiful Jersey Series: 3. The Bay (Basketball) — front on model",
+      "source_sha256": "b0bb680e4a5eee18d1005d780c086485e0cd049b20c8b7d48a72f15a5ca3fac2",
+      "sha256": "b8862f06ddfde790a9dd3327e23f824d21abfa73bf1410630e4f9b9b710abea7",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-011": {
+      "src": "assets/card-scenes/br-011-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK is Beautiful Jersey Series: 4. The Rose (Hockey) — front on model",
+      "source_sha256": "ed9a1ca7f1ac77a7a06373807a97c8b6edfb17239cd1c7f6e4d34574157c7ab0",
+      "sha256": "aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-012": {
+      "src": "assets/card-scenes/br-012-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland) — front on model",
+      "source_sha256": "c0f2dde7a09f602e782f0edc3936e74f3d90b9fda8dc4dc6609d4b4d9f6b2b5b",
+      "sha256": "75f96a81896afb52b9742d561a1ee84578b94683c78d1d0aa098b8da50452625",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-014": {
+      "src": "assets/card-scenes/br-014-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Giants) — front on model",
+      "source_sha256": "2b0ee5724a997bee7191dc9b5cd5936381bbaf449eb247e95985435f553f9b62",
+      "sha256": "4cc4c60b2e39bfb3986626419828b57eee1381c20889d51a9a5dbaf2d972d8ff",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-015": {
+      "src": "assets/card-scenes/br-015-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (White) — front on model",
+      "source_sha256": "e4be508ec9b74a873d7476bfc1c372cdf0e943eada6d7c8cfa29898861606409",
+      "sha256": "d708a0e9f468c77fc43d2882c63877e4a41358de1944e0c091f85a66670cd8ad",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-006": {
+      "src": "assets/card-scenes/br-006-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "The Bomber Sherpa — front on model",
+      "source_sha256": "2f68a2c273228117397883b0c6cacabda708b0bca0d9ae4799e0c88382e0f071",
+      "sha256": "443a7d3546c8bec2495426e20e7b8a4e84b5b91c02ea57b20d43cb3c96763d2d",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-001": {
+      "src": "assets/approved-card-fronts/br-001-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK Rose Crewneck — front on model",
+      "source_sha256": "d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724",
+      "sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8",
+      "candidate_id": "BR-001-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-002": {
+      "src": "assets/approved-card-fronts/br-002-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK Rose Joggers — front on model",
+      "source_sha256": "ab4f5f9b1c74550ee053963919091c8da71f4123ef0d502c9d4d61f20c90ec4e",
+      "sha256": "6e395127c4b6f09a1602db3c30963bb31a42559fe64dfbca990832c3dbc951ba",
+      "candidate_id": "BR-002-C",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-004": {
+      "src": "assets/approved-card-fronts/br-004-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK Rose Hoodie — front on model",
+      "source_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+      "sha256": "8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8",
+      "candidate_id": "BR-004-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-005": {
+      "src": "assets/approved-card-fronts/br-005-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK Rose Hoodie — Signature Edition — front on model",
+      "source_sha256": "3772bec455a97b1b6dce80fa37d5c116f33eb8eaeab85dc49cf751b7a817111d",
+      "sha256": "19f888f11bc6e3a282088281040ee8b27be1e5473e1b4b53fc5ad5509e80a19b",
+      "candidate_id": "BR-005-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "br-007": {
+      "src": "assets/approved-card-fronts/br-007-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "BLACK Rose x Love Hurts Basketball Shorts — front on model",
+      "source_sha256": "2b7f8740f6ceb734f639be69121bc859c60ddbdad7a631a5a7dd096b2903deeb",
+      "sha256": "b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d",
+      "candidate_id": "BR-007-E",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "lh-002": {
+      "src": "assets/approved-card-fronts/lh-002-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Love Hurts Joggers (Black) — front on model",
+      "source_sha256": "c58b3741972167576efa0c2dafb4925570961734fa19d9373e3730c4330b674a",
+      "sha256": "dd1192e520e521308064f42d8ac0c9addc5d403a711c7e62d559541f65b35507",
+      "candidate_id": "LH-002-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "lh-003": {
+      "src": "assets/approved-card-fronts/lh-003-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Love Hurts Basketball Shorts — front on model",
+      "source_sha256": "a5535461dc6684588ffaa7a58f6f0b12bd6017f0171f3a9fdb3d7f709e3f030e",
+      "sha256": "a8338e8a18009573203e7e09ef21e71678deaacee40ff186dacf5350e61f1089",
+      "candidate_id": "LH-003-C",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "lh-004": {
+      "src": "assets/approved-card-fronts/lh-004-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Love Hurts Bomber Jacket — front on model",
+      "source_sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
+      "sha256": "1c5aed2f72b85b5afc7a25515931e450e68dfa66011b0345c13605020b89fddc",
+      "candidate_id": "LH-004-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "lh-005": {
+      "src": "assets/approved-card-fronts/lh-005-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "The Fannie — front on model",
+      "source_sha256": "e3df4aa2781881b9364490c09611308d0c9c0a42fbab19fd114365eca8bda43c",
+      "sha256": "3274c53abb457fd03856dab4014ac6076eab1853a67722fb90015749497e830f",
+      "candidate_id": "LH-005-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "lh-006": {
+      "src": "assets/approved-card-fronts/lh-006-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Love Hurts Joggers (White) — front on model",
+      "source_sha256": "805af391800f930d5631db76521ae1b6443e4c6e70e71ba4ac7e215d670e3201",
+      "sha256": "7905342f32bd2963d3d5d095a0825c9ae3ec98f731de100fb481631ee76244dc",
+      "candidate_id": "LH-006-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-001": {
+      "src": "assets/approved-card-fronts/sg-001-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "The Bridge Series 'The Bay Bridge' Shorts — front on model",
+      "source_sha256": "25b68eebde53d1c1afa296f77401f272de5c96f9745c7035ed3ba06a2e94a695",
+      "sha256": "31b85575f88df52d1a61f8ce7b01b0b60c1c1de1749060e3f0bca8873b71ffce",
+      "candidate_id": "SG-001-C",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-002": {
+      "src": "assets/card-scenes/sg-002-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "The Bridge Series 'Stay Golden' Shirt — front on model",
+      "source_sha256": "6ac286b916975bd0b2e8eed4fce618554b90a07546d5deffedaf9e4e10f7934a",
+      "sha256": "48561fab14ae39618e048bb5ba3226fef4da3affb85855d441bb54be3e767f18",
+      "candidate_id": "SG-002-G",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-003": {
+      "src": "assets/approved-card-fronts/sg-003-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "The Bridge Series 'Stay Golden' Shorts — front on model",
+      "source_sha256": "6a2b18619dce5fcde6fec1703c3c8a1447b4b410f8a2178e58fa8d322a5c881a",
+      "sha256": "a06526e3136ab5e4f157aa431850c13e6bc75969a10f8240012db7bfac63968c",
+      "candidate_id": "SG-003-D",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-005": {
+      "src": "assets/approved-card-fronts/sg-005-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "The Bridge Series 'The Bay Bridge' Shirt — front on model",
+      "source_sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a",
+      "sha256": "052915cfb4aaa7f3d1fdd01d222661289cb7a1eab0fdec9b68a8be8dda8f28f0",
+      "candidate_id": "SG-005-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-006": {
+      "src": "assets/approved-card-fronts/sg-006-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Mint & Lavender Hoodie — front on model",
+      "source_sha256": "510cac2c051615d0713180d512c1f4f132e6d774dd989e2e536e608be62bfe2f",
+      "sha256": "27d6865fb5ea6b23fbd7df5f4169543348c3dc0b5f34828ca956ca486411b44d",
+      "candidate_id": "SG-006-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-007": {
+      "src": "assets/approved-card-fronts/sg-007-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "The Signature Beanie — front on model",
+      "source_sha256": "ba6b7523a516ae1feb310c38051e5367c891e4578628161794d0d63d0334363b",
+      "sha256": "15dd6abe1bc49ee8fc3e70a17c90d0c05aa11aff517b296290390c449307e730",
+      "candidate_id": "SG-007-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-009": {
+      "src": "assets/approved-card-fronts/sg-009-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "The Sherpa Jacket — front on model",
+      "source_sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
+      "sha256": "fad97fce9afde5e752ea62ed256b03ca7b5ad2ca449f070c9037bd266fa5222d",
+      "candidate_id": "SG-009-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-011": {
+      "src": "assets/approved-card-fronts/sg-011-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Original Label Tee (White) — front on model",
+      "source_sha256": "b278f4abfc7127ef62c97db79e21bd65d1f7506d18e44686325b1953dec89f06",
+      "sha256": "25055af2f7d59fdaa18bf9fec4f7b5abe1ec9c7d9a4e5306e7be232a9163ac8e",
+      "candidate_id": "SG-011-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-012": {
+      "src": "assets/approved-card-fronts/sg-012-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Original Label Tee (Orchid) — front on model",
+      "source_sha256": "5cd91f17c0bbd77633be628e76b7d0100c2572f76b2912add5022b9831262f87",
+      "sha256": "360cdb19236dd2108934b9c2eaf15eb539defdb4cb4c4a176d0427ef2bf3a0cf",
+      "candidate_id": "SG-012-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-013": {
+      "src": "assets/approved-card-fronts/sg-013-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Mint & Lavender Crewneck — front on model",
+      "source_sha256": "cb58e694639ff02b4dd7c1d009516df237f0acb39a8c6f6948930dad5d3c157b",
+      "sha256": "fc3fc604b56f4e9abfc95fe45ec4642ccafce625f26241605ff830bad49c8bf8",
+      "candidate_id": "SG-013-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-014": {
+      "src": "assets/approved-card-fronts/sg-014-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Mint & Lavender Sweatpants — front on model",
+      "source_sha256": "4d21b30b7cca2a55e6a625b2968a2a399c91f88a189e45a1d50d0cfb19a7c876",
+      "sha256": "e07277762c0b939b7ba1756685675aa4184968de9a3e83fc3d4303d8a400f67b",
+      "candidate_id": "SG-014-C",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "sg-015": {
+      "src": "assets/approved-card-fronts/sg-015-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "The Windbreaker Set — front on model",
+      "source_sha256": "3d2c32ea1ef392a234d25d487c524234faa3f3c05830673ce8ba387898de52a5",
+      "sha256": "e8f365cb5a1e1546977f41a5271bb7ce62287b18ac64f1c62934783198cebfcf",
+      "candidate_id": "SG-015-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "kids-001": {
+      "src": "assets/approved-card-fronts/kids-001-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Kids Colorblock Hoodie Set — Red/Black — front on model",
+      "source_sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
+      "sha256": "c6bd2ddd555c4359c302eebb051d5fbad4d34bec0b324b44f3447831f3ec9c9a",
+      "candidate_id": "KIDS-001-A",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    },
+    "kids-002": {
+      "src": "assets/approved-card-fronts/kids-002-onmodel.webp",
+      "width": 1024,
+      "height": 1536,
+      "alt": "Kids Colorblock Hoodie Set — Purple/Black — front on model",
+      "source_sha256": "28614e22dea4e655bf011f6d418b0413779695275750446874b07c28db1dee4f",
+      "sha256": "88c0ca36b22a95ce1ee7969b50b4e256718ffda584027dfd97e219605aa3e51b",
+      "candidate_id": "KIDS-002-D",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD"
+    }
+  },
+  "card_treatment_approval": {
+    "date": "2026-09-05",
+    "request": "good now get those synced and wired into V2",
+    "scope": "All 33 product cards: approved fronts, V2 collection frames, adult top crops, bold single-line inscriptions centered inside each nameplate."
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "skyyrose.product-media-candidate-review.v1",
+  "collection": "love-hurts",
+  "recorded_at": "2026-08-23",
+  "founder_direction": "Model, pose, garment silhouette, composition, lighting, and scene are approved candidate foundations. Preserve them exactly; perform only the SKU-specific logo and decoration pass.",
+  "promotion_policy": "candidate_only_until_logo_fidelity_pass_and_founder_approval",
+  "contact_sheet": {
+    "path": "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/qa/love-hurts-logo-pass-contact-sheet-v1.jpg",
+    "sha256": "4934c194a36b9c565bd5d8de036c3c80dd4a3bc9462ca7a3f116eb30d9ae5c46"
+  },
+  "protected_invariants": [
+    "model identity, face, skin, hair, body, hands, pose, and expression",
+    "camera, crop, composition, lighting, shadows, enchanted-rose scene, and background",
+    "garment silhouette, construction, fabric, seams, panels, pockets, hardware, and colorway"
+  ],
+  "required_logo_gate": [
+    "exact canonical logo silhouette and internal linework",
+    "exact SKU-specific placement, scale, orientation, color, and technique",
+    "verbatim readable lettering where the physical product contains text",
+    "full-frame, 100-percent, and 200-percent visual inspection",
+    "no garment, model, or scene repaint outside the branding regions"
+  ],
+  "candidates": {
+    "lh-002": {
+      "role": "on_model_front_candidate",
+      "path": "assets/sot/images/products/preview/lh-002-onmodel.webp",
+      "sha256": "c58b3741972167576efa0c2dafb4925570961734fa19d9373e3730c4330b674a",
+      "logo_pass": "Replace only the wearer-left jogger-thigh mark with the exact small embroidered Heart-and-Roses Composite: cracked red heart wrapped in dark thorns with red roses and green leaves emerging above. No cloud base and no Love Hurts wordmark on the joggers.",
+      "logo_pass_candidate": {
+        "path": "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-002-onmodel-heart-logo-pass-v1.png",
+        "sha256": "38fec034eaede735f5de0676755308eed11c35261c535e56c369be07c9e9eff9",
+        "status": "FOUNDER_REVIEW_REQUIRED"
+      }
+    },
+    "lh-003": {
+      "role": "on_model_front_candidate",
+      "path": "assets/sot/images/products/preview/lh-003-front.webp",
+      "sha256": "9774945ccd040eb37e0e3cb30043c30192697c7acd793d65dec856c09c80ea33",
+      "logo_pass": "Reconcile only the shorts artwork to the physical techflat: canonical all-over Red Roses Cloud Cluster repeat, exact large red Love Hurts script on wearer-left, and distinct side-panel marks.",
+      "logo_pass_candidate": {
+        "path": "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-003-onmodel-logo-pass-v1.png",
+        "sha256": "c63cc57365bf2801137c9b13cb3ddc5ff3340c0919a52930bf0fb2b1ec1268ee",
+        "status": "FOUNDER_REVIEW_REQUIRED"
+      }
+    },
+    "lh-005": {
+      "role": "on_model_front_candidate",
+      "path": "assets/sot/images/products/preview/lh-005-onmodel.webp",
+      "sha256": "e3df4aa2781881b9364490c09611308d0c9c0a42fbab19fd114365eca8bda43c",
+      "logo_pass": "Replace only the bag-front embroidery with verbatim white FANNIE lettering and the single small red rose accent, matching the physical product. Preserve bag construction and all-black hardware.",
+      "logo_pass_candidate": {
+        "path": "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-005-onmodel-logo-pass-v1.png",
+        "sha256": "8ad8c741e10c4acb9520d46b96b0532a47e34cae58e14fe87aba4c89836532dc",
+        "status": "FOUNDER_REVIEW_REQUIRED"
+      }
+    },
+    "lh-006": {
+      "role": "on_model_front_candidate",
+      "path": "assets/sot/images/products/preview/lh-006-onmodel.webp",
+      "sha256": "805af391800f930d5631db76521ae1b6443e4c6e70e71ba4ac7e215d670e3201",
+      "logo_pass": "Replace only the wearer-left jogger-thigh mark with the exact small embroidered Heart-and-Roses Composite: cracked red heart wrapped in dark thorns with red roses and green leaves emerging above. No cloud base and no Love Hurts wordmark on the joggers.",
+      "logo_pass_candidate": {
+        "path": "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-006-onmodel-heart-logo-pass-v1.png",
+        "sha256": "c71106349426180b0ccf8332460df4cc9f7b6f76f171db35ccf4473b5bf63261",
+        "status": "FOUNDER_REVIEW_REQUIRED"
+      }
+    }
+  },
+  "rejected_attempts": [
+    {
+      "skus": [
+        "lh-002",
+        "lh-006"
+      ],
+      "reason": "Wrong Red Roses Cloud Cluster was substituted for the techflat-proven Heart-and-Roses Composite.",
+      "repository_files_removed": true,
+      "promoted": false
+    }
+  ]
+}

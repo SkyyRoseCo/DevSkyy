@@ -1,0 +1,201 @@
+{
+  "schema": "skyyrose.hero-commerce-candidates.v1",
+  "task_id": "HERO-COMMERCE-C1",
+  "created_at": "2026-09-05T00:29:41.317Z",
+  "scope": "User-authorized local model/product composition and wiring; candidate state never asserts final product fidelity.",
+  "local_wiring_authority": "Current user request plus explicit replacement-candidate direction.",
+  "deployment_authorized": false,
+  "original_hero_loops_changed": false,
+  "prior_environment_candidates_retained": true,
+  "scenes": {
+    "LH-COMMERCE-2": {
+      "collection": "love-hurts",
+      "label": "The Rose Side Chapel",
+      "copy": "Love Hurts takes the foreground inside the crimson cathedral.",
+      "alt": "Love Hurts front-view model wearing LH-003 basketball shorts in the rose cathedral side chapel.",
+      "product_bindings": [
+        "lh-003"
+      ],
+      "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 67264,
+          "sha256": "abdb345fb2d2c7600c8bf719c3105e3fc57d57198c58d9cc7375a3c51499ab76"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 145222,
+          "sha256": "8d180d2617fdce15ea4e53d89a4cf93cb44c9bce99e19edb83f39c0a41fd9836"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 340456,
+          "sha256": "bf251eba7a2366a8d133e10a7bd548f3c6d89d2137da8263a418e761bfdefa54"
+        }
+      ],
+      "master": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+      "master_sha256": "9b259f80915d358be417633d657975d5881827eb029d57f969368ea207e84beb",
+      "source_scope": "FOUNDER_APPROVED_FRONT_VIEW",
+      "local_wiring_authorized": true,
+      "founder_final_visual_approval": false,
+      "generation_state": "LOCAL_WIRED_COMPOSITION_CANDIDATE_NEEDS_REVIEW",
+      "review_message": "Approved front-view source, newly composed. Final scene review pending; no side or back claim.",
+      "deployment_authorized": false
+    },
+    "BR-COMMERCE-2": {
+      "collection": "black-rose",
+      "label": "The Moonlit Waterfront",
+      "copy": "The Black Rose looks share the Bay Bridge waterfront.",
+      "alt": "Two models on the moonlit Bay Bridge terrace: one wears the BLACK Rose Hoodie — Signature Edition with BLACK Rose x Love Hurts Basketball Shorts, and the other wears the BLACK Rose Hoodie as a longline look.",
+      "product_bindings": [
+        "br-005",
+        "br-007",
+        "br-004"
+      ],
+      "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "width": 640,
+          "height": 360,
+          "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-640w.webp",
+          "bytes": 49668
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-960w.webp",
+          "bytes": 108724
+        },
+        {
+          "width": 1672,
+          "height": 941,
+          "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp",
+          "bytes": 289988
+        }
+      ],
+      "master": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png",
+      "master_sha256": "ae4fd5f5cc40e6695939cd438c3abb402de0120f48c695a8819512ba5e8ac225",
+      "source_scope": "Wall-only insertion; original cast, clothing, bridge and framing retained outside the wall ROI.",
+      "local_wiring_authorized": true,
+      "founder_final_visual_approval": false,
+      "generation_state": "USER_REQUESTED_WALL_EDIT_LOCALLY_WIRED",
+      "review_message": "Monumental wall lettering with the complete rose and stem; original models protected in front.",
+      "deployment_authorized": false,
+      "scene_id": "BR-COMMERCE-2",
+      "supersedes": "BR-COMMERCE-2-HERO-WALL-STATUE-I2",
+      "candidate_id": "BR-COMMERCE-2-HERO-WALL-STATUE-I3",
+      "edit_receipt": "Comfy/receipts/br-commerce-2-wall-statue-i3/receipt.json"
+    },
+    "SIG-COMMERCE-1": {
+      "collection": "signature",
+      "label": "The Golden Gate Overlook",
+      "copy": "The Sherpa and Signature Beanie meet the gold-lit overlook.",
+      "alt": "Signature male model wearing The Sherpa Jacket and black Signature Beanie at the Golden Gate overlook.",
+      "product_bindings": [
+        "sg-009",
+        "sg-007"
+      ],
+      "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp",
+      "width": 1671,
+      "height": 941,
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 51602,
+          "sha256": "4a57103a322389f978dd700826855b14751f999fb89a9d59785318ce3a21989b"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-960w.webp",
+          "width": 960,
+          "height": 541,
+          "bytes": 105458,
+          "sha256": "0a9ba312f489c623ee406b8a3f61209ac975c9f0be5acb1381c7c6789faf597e"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp",
+          "width": 1671,
+          "height": 941,
+          "bytes": 255858,
+          "sha256": "a42deb80c50e5caecc989b2ac43982e4c2aa8e6abb2b91c7c10be1d34bfc9026"
+        }
+      ],
+      "master": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1.png",
+      "master_sha256": "24d086b221d8fff59cde4f719dc55831b7ac4c8d7b98ebdef07b226c6952d830",
+      "source_scope": "Founder-approved H1 visual revision; previous locked sources preserved.",
+      "local_wiring_authorized": true,
+      "founder_final_visual_approval": true,
+      "generation_state": "FOUNDER_APPROVED_VISUAL",
+      "review_message": "Founder-approved Signature scene.",
+      "deployment_authorized": false,
+      "candidate_id": "SIG-COMMERCE-1-NATURAL-FONT-H1",
+      "founder_approved_at": "2026-09-05T01:53:40.524Z",
+      "founder_approval_receipt": "Comfy/receipts/scroll-world-lineup-f4/founder-approval-h1.json",
+      "supersedes": "generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1.png",
+      "independent_visual_review": "NOT_RUN"
+    },
+    "SIG-COMMERCE-2": {
+      "collection": "signature",
+      "label": "The Lateral Terrace",
+      "copy": "Mint and lavender on the Golden Gate terrace: the crewneck set and the long hoodie worn as a dress.",
+      "alt": "Two models on the Golden Gate terrace: one wears the Mint & Lavender Crewneck with matching Sweatpants, and the other wears the Mint & Lavender Hoodie as a longline look with white sneakers.",
+      "product_bindings": [
+        "sg-013",
+        "sg-014",
+        "sg-006"
+      ],
+      "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 58552,
+          "sha256": "9bcc36a95717008cd9bd009661bccf474e0d867c53046f0db1eaee54b188aa24"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 125368,
+          "sha256": "7a3dadc0def2a056bc723f546354f20270a91a7e657ef0b7d0ffe4526ed38b77"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 310334,
+          "sha256": "df2f79e55c5cff38dbac7efae3cd7258685cd546c4713fa413ec9b6f0640111e"
+        }
+      ],
+      "master": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1.png",
+      "master_sha256": "b085e0ee82401c2e5db71c8a36ab63271d410ad20c29d72fa369a78e4f54ca5c",
+      "source_scope": "Founder-approved H1 visual revision; previous locked sources preserved.",
+      "local_wiring_authorized": true,
+      "founder_final_visual_approval": true,
+      "generation_state": "FOUNDER_APPROVED_VISUAL",
+      "review_message": "Founder-approved Signature scene.",
+      "deployment_authorized": false,
+      "styling": "SG-006_LONG_HOODIE_WORN_AS_DRESS_NO_TROUSERS",
+      "candidate_id": "SIG-COMMERCE-2-NATURAL-DRESS-H1",
+      "supersedes": "SIG-COMMERCE-2-HERO-COMPOSED-DRESS-C2",
+      "founder_approved_at": "2026-09-05T01:53:40.524Z",
+      "founder_approval_receipt": "Comfy/receipts/scroll-world-lineup-f4/founder-approval-h1.json",
+      "independent_visual_review": "NOT_RUN"
+    }
+  }
+}

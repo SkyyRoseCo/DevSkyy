@@ -63,30 +63,40 @@ else :
 else :
 	?>
 							<?php echo wp_kses_post( $product_name ); ?><?php endif; ?></h2>
-						<span><?php echo wp_kses_post( WC()->cart->get_product_price( $product ) ); ?></span>
+						<?php do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key ); ?>
+						<span class="sr2-cart__unit-price"><?php esc_html_e( 'Each', 'skyyrose-flagship-2' ); ?> <?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) ); ?></span>
 						<?php echo wp_kses_post( wc_get_formatted_cart_item_data( $cart_item ) ); ?>
+						<?php
+						if ( $product->backorders_require_notification() && $product->is_on_backorder( $cart_item['quantity'] ) ) {
+							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'skyyrose-flagship-2' ) . '</p>', $product_id ) );
+						}
+						?>
+						<p class="sr2-cart__line-total"><span><?php esc_html_e( 'Line subtotal', 'skyyrose-flagship-2' ); ?></span> <strong><?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $product, $cart_item['quantity'] ), $cart_item, $cart_item_key ) ); ?></strong></p>
 					</div>
 					<div class="sr2-cart__controls">
 						<?php
-						echo wp_kses_post(
-							woocommerce_quantity_input(
-								array(
-									'input_name'   => "cart[{$cart_item_key}][qty]",
-									'input_value'  => $cart_item['quantity'],
-									'max_value'    => $product->get_max_purchase_quantity(),
-									'min_value'    => '0',
-									'product_name' => $product_name,
-								),
-								$product,
-								false
+						// WooCommerce escapes its native control; post-content KSES removes inputs.
+						$quantity = woocommerce_quantity_input(
+							array(
+								'input_name'  => "cart[{$cart_item_key}][qty]",
+								'input_value' => $cart_item['quantity'],
+								'max_value'   => $product->is_sold_individually() ? 1 : $product->get_max_purchase_quantity(),
+								'min_value'   => $product->is_sold_individually() ? 1 : 0,
+								'product_name' => $product_name,
 							),
+							$product,
+							false
 						);
+						echo apply_filters( 'woocommerce_cart_item_quantity', $quantity, $cart_item_key, $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Native Woo control/filter; KSES strips required inputs.
 						?>
 						<?php
 						/* translators: %s: product name. */
 						$remove_label = sprintf( __( 'Remove %s from your bag', 'skyyrose-flagship-2' ), wp_strip_all_tags( $product_name ) );
 						?>
-						<a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>" aria-label="<?php echo esc_attr( $remove_label ); ?>"><?php esc_html_e( 'Remove', 'skyyrose-flagship-2' ); ?></a>
+						<?php
+						$remove_link = sprintf( '<a class="sr2-cart__remove" href="%s" aria-label="%s" data-product_id="%s" data-product_sku="%s">%s</a>', esc_url( wc_get_cart_remove_url( $cart_item_key ) ), esc_attr( $remove_label ), esc_attr( $product_id ), esc_attr( $product->get_sku() ), esc_html__( 'Remove', 'skyyrose-flagship-2' ) );
+						echo wp_kses_post( apply_filters( 'woocommerce_cart_item_remove_link', $remove_link, $cart_item_key ) );
+						?>
 					</div>
 				</article>
 			<?php endforeach; ?>
@@ -96,8 +106,8 @@ else :
 				<?php
 				if ( wc_coupons_enabled() ) :
 					?>
-					<label for="coupon_code"><?php esc_html_e( 'Code', 'skyyrose-flagship-2' ); ?></label><input id="coupon_code" type="text" name="coupon_code" value="" placeholder="<?php esc_attr_e( 'Gift code', 'skyyrose-flagship-2' ); ?>"><button type="submit" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'skyyrose-flagship-2' ); ?>"><?php esc_html_e( 'Apply', 'skyyrose-flagship-2' ); ?></button><?php endif; ?>
-				<button type="submit" name="update_cart" value="<?php esc_attr_e( 'Update bag', 'skyyrose-flagship-2' ); ?>"><?php esc_html_e( 'Update bag', 'skyyrose-flagship-2' ); ?></button>
+					<label for="coupon_code"><?php esc_html_e( 'Code', 'skyyrose-flagship-2' ); ?></label><input id="coupon_code" type="text" name="coupon_code" value="" placeholder="<?php esc_attr_e( 'Gift code', 'skyyrose-flagship-2' ); ?>"><button class="button sr2-page-action" type="submit" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'skyyrose-flagship-2' ); ?>"><?php esc_html_e( 'Apply', 'skyyrose-flagship-2' ); ?></button><?php do_action( 'woocommerce_cart_coupon' ); ?><?php endif; ?>
+				<button class="button sr2-page-action" type="submit" name="update_cart" value="<?php esc_attr_e( 'Update bag', 'skyyrose-flagship-2' ); ?>"><?php esc_html_e( 'Update bag', 'skyyrose-flagship-2' ); ?></button>
 				<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 			</div>
 			<?php do_action( 'woocommerce_cart_actions' ); ?>

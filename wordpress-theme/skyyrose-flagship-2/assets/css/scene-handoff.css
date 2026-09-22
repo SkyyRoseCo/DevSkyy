@@ -1,0 +1,8 @@
+/* Core collection handoff. Content is visible by default, including without JavaScript.
+ * The optional arrival runs through WAAPI and never changes scene artwork. */
+.sr2-collection-world [data-scene-handoff] {
+	--sr2-handoff-duration: var(--sr2-motion-commerce);
+	--sr2-handoff-easing: var(--sr2-ease-enter);
+	--sr2-handoff-distance: var(--sr2-motion-distance);
+	--sr2-handoff-stagger: var(--sr2-motion-stagger);
+}

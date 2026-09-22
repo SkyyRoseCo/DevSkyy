@@ -1,0 +1,65 @@
+name: V2 source certification
+on:
+  pull_request:
+    paths:
+      - 'wordpress-theme/skyyrose-flagship-2/**'
+      - 'wordpress-theme/skyyrose-flagship/data/**'
+      - 'wordpress-theme/skyyrose-flagship/assets/images/products/**'
+      - 'tools/v2-source-certification/**'
+      - 'tools/v2-runtime/**'
+      - 'skyyrose/core/**'
+      - 'logo-registry.json'
+      - 'scripts/sync_product_registry.py'
+      - 'tests/test_v2_product_presentation_registry.py'
+      - '.github/workflows/v2-source-certification.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    # Approved WebP derivatives were authored on ARM64. The pinned encoder's
+    # x86 SIMD path produces different bytes for the 1024px poster.
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '22.23.2'
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12.12'
+      - name: Install declared verification tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y php-cli jq ripgrep imagemagick
+          npm install --global npm@10.9.8
+          python -m pip install -r tools/v2-source-certification/requirements.txt
+          npm --prefix wordpress-theme/skyyrose-flagship-2 ci --ignore-scripts --no-audit --no-fund
+      - name: Install pinned scene poster encoder
+        run: |
+          curl --fail --location --retry 2 --max-time 90 \
+            https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.6.0-linux-aarch64.tar.gz \
+            --output "$RUNNER_TEMP/libwebp.tar.gz"
+          echo "69f5eebe203e0f3942fe37986209a1725741be19c152950a4283b376c95ec798  $RUNNER_TEMP/libwebp.tar.gz" | sha256sum --check --strict
+          tar -xzf "$RUNNER_TEMP/libwebp.tar.gz" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/libwebp-1.6.0-linux-aarch64/bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/libwebp-1.6.0-linux-aarch64/bin/cwebp" -version
+      - name: Negative integrity tests
+        run: python -m unittest discover -s tools/v2-source-certification -p 'test_*.py'
+      - name: Verify current registry compatibility projections
+        run: python scripts/sync_product_registry.py --check
+      - name: Verify current presentation registry authority
+        run: python -m unittest discover -s tests -p 'test_v2_product_presentation_registry.py'
+      - name: Prepare hash-pinned native gallery fixture
+        run: |
+          python tools/v2-source-certification/prepare-native-fixture.py "$RUNNER_TEMP/v2-native-wordpress"
+          echo "V2_WP_FIXTURE=$RUNNER_TEMP/v2-native-wordpress" >> "$GITHUB_ENV"
+      - name: Build, verify, package and compare
+        run: |
+          npm --prefix wordpress-theme/skyyrose-flagship-2 run package:theme
+          git diff --exit-code
+          cp wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip /tmp/v2-first.zip
+          npm --prefix wordpress-theme/skyyrose-flagship-2 run package:theme
+          cmp /tmp/v2-first.zip wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip
+          git diff --exit-code

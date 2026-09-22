@@ -12,6 +12,52 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// Recovered editorial content is opt-in and remains owned by the page editor.
+// Keep the historical presentation below until an archive payload is installed.
+$sr2_about_content = get_post_field( 'post_content', get_the_ID() );
+if ( has_block( 'core/group', $sr2_about_content ) && preg_match( '/"className"\s*:\s*"[^"\r\n]*\bsr2-about-archive\b/', $sr2_about_content ) ) {
+	// Delivery metadata belongs to presentation; the native image block stays editable.
+	$sr2_about_image_delivery = static function ( $html ) {
+		$tag = new WP_HTML_Tag_Processor( $html );
+		if ( ! $tag->next_tag( 'IMG' ) ) {
+			return $html;
+		}
+		$path = wp_parse_url( (string) $tag->get_attribute( 'src' ), PHP_URL_PATH );
+		$known = array(
+			'/assets/sot/images/about/skyy-rose-founder-hero.webp' => array( 724, 1086, true ),
+			'/assets/sot/images/lockups/founder-supplied/signature-sr-rose-graphic-founder-supplied-v1.png' => array( 512, 512, false ),
+			'/assets/sot/images/lockups/black-rose-star-graphic.webp' => array( 1254, 1254, false ),
+			'/assets/sot/images/lockups/love-hurts-star-heart-graphic.webp' => array( 1254, 1254, false ),
+			'/assets/sot/images/logos/sr-monogram-rose-gold.webp' => array( 720, 720, false ),
+			'/assets/images/about/kids-heir-founder-supplied.png' => array( 1320, 1336, false ),
+			'/assets/images/about/oakland-reference-mural.webp' => array( 480, 220, false ),
+			'/assets/images/about/oakland-reference-sign.webp' => array( 170, 105, false ),
+		);
+		$prefix = wp_parse_url( get_template_directory_uri(), PHP_URL_PATH );
+		foreach ( $known as $asset => $meta ) {
+			if ( $path === $prefix . $asset ) {
+				$tag->set_attribute( 'width', $meta[0] );
+				$tag->set_attribute( 'height', $meta[1] );
+				$tag->set_attribute( 'loading', $meta[2] ? 'eager' : 'lazy' );
+				$tag->set_attribute( 'fetchpriority', $meta[2] ? 'high' : 'low' );
+				$tag->set_attribute( 'decoding', 'async' );
+				break;
+			}
+		}
+		if ( 'https://i.ytimg.com/vi/Ja11W-g34Zo/hqdefault.jpg' === $tag->get_attribute( 'src' ) ) {
+			$tag->set_attribute( 'width', 480 );
+			$tag->set_attribute( 'height', 360 );
+			$tag->set_attribute( 'loading', 'lazy' );
+			$tag->set_attribute( 'decoding', 'async' );
+		}
+		return $tag->get_updated_html();
+	};
+	add_filter( 'render_block_core/image', $sr2_about_image_delivery );
+	the_content();
+	remove_filter( 'render_block_core/image', $sr2_about_image_delivery );
+	return;
+}
+
 $sr2_about_assets = array(
 	'founder'    => 'images/about/skyy-rose-founder-hero.webp',
 	'blox'       => 'images/about/the-blox-premiere.webp',

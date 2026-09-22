@@ -1,0 +1,14 @@
+{
+  "name": "skyyrose-v2-phase3b-browser",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Explicit local-only Phase 3B browser verification; excluded from unit-test wildcards.",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "4.11.1",
+    "lighthouse": "13.4.1",
+    "playwright": "1.58.2"
+  }
+}

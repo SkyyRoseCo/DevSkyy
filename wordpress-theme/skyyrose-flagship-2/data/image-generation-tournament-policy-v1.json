@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.image-generation-tournament-policy.v1",
+  "required_vision_judges": [
+    "gpt-5.5-pro"
+  ],
+  "synthesis_model": null,
+  "minimum_each_vision_score": 95,
+  "minimum_final_score": 95,
+  "required_hallucination_veto_result": false,
+  "all_judges_available": true,
+  "unverifiable_required_regions": 0,
+  "source_hashes_current": true,
+  "founder_approval_required": true,
+  "evaluation_scope": "every generated output in every image-generation batch",
+  "review_authorities": [
+    "gpt-5.5-pro",
+    "founder"
+  ],
+  "downstream_rule": "all outputs must pass GPT vision review and explicit founder approval before compositing"
+}

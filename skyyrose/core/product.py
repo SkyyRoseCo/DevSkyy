@@ -246,7 +246,7 @@ def get_product(sku: str) -> dict[str, Any]:
     ``logos`` (graphics, placements, decoration dimensions), ``content``
     (marketing copy and SEO), ``alt_text``, ``corrections`` (render corrections,
     each naming its author), ``render_policy`` (founder keep decisions),
-    ``authority``, and ``gaps``.
+    ``merchandising`` (series route, region, ordering), ``authority``, and ``gaps``.
 
     Raises:
         KeyError: ``sku`` is not in the product registry.
@@ -263,6 +263,10 @@ def get_product(sku: str) -> dict[str, Any]:
     catalog = product.get("catalog", {})
     images, image_gaps = _images_for(product, sku)
     content, alt_text, content_gaps = _content_for(product, catalog)
+    merchandising = product.get("merchandising")
+    if merchandising is not None:
+        product_registry.validate_merchandising(merchandising)
+    merchandising_gaps = [] if merchandising is not None else ["merchandising"]
 
     return {
         "sku": sku,
@@ -270,6 +274,8 @@ def get_product(sku: str) -> dict[str, Any]:
         "collection": catalog.get("collection"),
         "catalog": catalog,
         "garment": product.get("garment", {}),
+        "merchandising": merchandising,
+        "merchandising_provenance": product.get("merchandising_provenance"),
         "dossier": merged["dossier"],
         "images": images,
         "render_sources": product.get("render_sources", {}),
@@ -281,7 +287,7 @@ def get_product(sku: str) -> dict[str, Any]:
             "keepers": [dict(k) for k in (product.get("render_policy") or {}).get("keepers", [])]
         },
         "authority": product.get("authority"),
-        "gaps": image_gaps + content_gaps,
+        "gaps": image_gaps + content_gaps + merchandising_gaps,
         "provenance": provenance(),
     }
 
