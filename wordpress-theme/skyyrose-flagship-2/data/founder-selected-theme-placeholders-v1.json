@@ -1,0 +1,87 @@
+{
+  "schema": "skyyrose.v2.founder-selected-theme-placeholders.v1",
+  "selected_at": "2026-08-24",
+  "status": "FOUNDER_SELECTED_PLACEHOLDERS_NOT_FINAL_SCENE_APPROVAL",
+  "rules": {
+    "placeholder_media_is_not_final_composite_approval": true,
+    "placeholder_media_may_not_authorize_generation": true,
+    "placeholder_media_may_not_authorize_deployment": true,
+    "suppress_separate_model_overlays_while_placeholder_is_active": true,
+    "preserve_exact_asset_bytes": true
+  },
+  "scene_placeholders": {
+    "SIG-COMMERCE-1": {
+      "collection": "signature",
+      "role": "graphic_monogram_environment_placeholder",
+      "asset": "placeholders/founder-selected-v1/signature-graphic-monogram-backdrop-v1.png",
+      "sha256": "3fb4c7c897adfd23a2ffde746e6222b998ab5e22c49b66d86c143e85d6360380",
+      "dimensions": [1672, 941],
+      "source": ".fashion-theme/review-assets/signature-graphic-monogram-backdrop-v1.png",
+      "source_sha256": "3fb4c7c897adfd23a2ffde746e6222b998ab5e22c49b66d86c143e85d6360380",
+      "state": "FOUNDER_SELECTED_PLACEHOLDER",
+      "suppress_model_layers": true
+    },
+    "SIG-COMMERCE-3": {
+      "collection": "signature",
+      "role": "bay_bridge_product_look_placeholder",
+      "asset": "placeholders/founder-selected-v1/signature-bay-bridge-shorts-v1.png",
+      "sha256": "71cdb6a0abc2788105aa8c7212399da4ed08b4614d87a785633a6ad34841d265",
+      "dimensions": [1536, 1024],
+      "source": "docs/design/v2-remodel/review-assets/lookbook-wave-01/signature-bay-bridge-shorts-v1.png",
+      "source_sha256": "71cdb6a0abc2788105aa8c7212399da4ed08b4614d87a785633a6ad34841d265",
+      "state": "FOUNDER_SELECTED_PLACEHOLDER",
+      "suppress_model_layers": true
+    },
+    "BR-COMMERCE-1": {
+      "collection": "black-rose",
+      "role": "east_oakland_crewneck_product_look_placeholder",
+      "asset": "placeholders/founder-selected-v1/black-rose-east-oakland-crewneck-v1.png",
+      "sha256": "7398d0f2f8fddbd80c5a4f5a63dcb6d555a84d19c6bf8ad6051ac0119fdd94fd",
+      "dimensions": [1023, 1537],
+      "source": "docs/design/v2-remodel/review-assets/lookbook-wave-02/black-rose-east-oakland-crewneck-v1.png",
+      "source_sha256": "7398d0f2f8fddbd80c5a4f5a63dcb6d555a84d19c6bf8ad6051ac0119fdd94fd",
+      "state": "FOUNDER_SELECTED_PLACEHOLDER",
+      "suppress_model_layers": true
+    },
+    "LH-COMMERCE-2": {
+      "collection": "love-hurts",
+      "role": "star_heart_statue_environment_placeholder",
+      "asset": "placeholders/founder-selected-v1/love-hurts-star-heart-statue-backdrop-v1.png",
+      "sha256": "59d44d3597e126868ece71f9276d91dd0a223a888f9526add01ce7267ebee895",
+      "dimensions": [1672, 941],
+      "source": ".fashion-theme/review-assets/love-hurts-star-heart-statue-backdrop-v1.png",
+      "source_sha256": "59d44d3597e126868ece71f9276d91dd0a223a888f9526add01ce7267ebee895",
+      "state": "FOUNDER_SELECTED_PLACEHOLDER",
+      "suppress_model_layers": true
+    },
+    "LH-COMMERCE-3": {
+      "collection": "love-hurts",
+      "role": "graphic_heart_environment_placeholder",
+      "asset": "placeholders/founder-selected-v1/love-hurts-graphic-heart-backdrop-v1.png",
+      "sha256": "fd5305ee58fd9aa751fa9c26631609bea315bafc87ac0f36c88bb0666fc66f6c",
+      "dimensions": [1672, 941],
+      "source": ".fashion-theme/review-assets/love-hurts-graphic-heart-backdrop-v1.png",
+      "source_sha256": "fd5305ee58fd9aa751fa9c26631609bea315bafc87ac0f36c88bb0666fc66f6c",
+      "state": "FOUNDER_SELECTED_PLACEHOLDER",
+      "suppress_model_layers": true
+    }
+  },
+  "existing_theme_assets": [
+    {
+      "collection": "love-hurts",
+      "role": "mobile_hero_placeholder",
+      "asset": "assets/sot/images/hero/responsive/love-hurts-golden-gate-monument-v2-640w.webp",
+      "sha256": "1d3f83ae8d22a3cb1a47b487b41c0050d3944254fb72fdf996a6e6b499f73a0f",
+      "dimensions": [640, 360],
+      "state": "FOUNDER_SELECTED_PLACEHOLDER"
+    },
+    {
+      "collection": "signature",
+      "role": "atmosphere_and_portal_rose",
+      "asset": "assets/sot/images/logos/rose-gold-rose.webp",
+      "sha256": "2f98fd671e121057b73caa8a1052a30d6afddf1cbe75cd11b25f356f70bfc1db",
+      "dimensions": [1544, 2036],
+      "state": "EXISTING_RUNTIME_ASSET_RECONFIRMED"
+    }
+  ]
+}

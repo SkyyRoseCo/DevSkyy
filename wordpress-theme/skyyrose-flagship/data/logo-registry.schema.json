@@ -138,6 +138,42 @@
       ],
       "properties": {
         "catalog": { "$ref": "#/$defs/catalog" },
+        "merchandising": {
+          "type": "object",
+          "description": "Current route configuration; not a founder garment specification.",
+          "required": ["series_slug", "series_region", "series_order"],
+          "properties": {
+            "series_slug": { "type": "string" },
+            "series_region": { "type": "string" },
+            "series_order": { "type": "integer" }
+          },
+          "additionalProperties": false,
+          "oneOf": [
+            {
+              "properties": {
+                "series_slug": { "const": "" },
+                "series_region": { "const": "" },
+                "series_order": { "const": 0 }
+              }
+            },
+            {
+              "properties": {
+                "series_slug": { "const": "jersey-series" },
+                "series_region": { "enum": ["oakland", "san-francisco", "san-jose"] },
+                "series_order": { "minimum": 1 }
+              }
+            }
+          ]
+        },
+        "merchandising_provenance": {
+          "type": "object",
+          "required": ["source", "kind"],
+          "properties": {
+            "source": { "type": "string", "pattern": "\\S" },
+            "kind": { "const": "ROUTE_CONFIGURATION" }
+          },
+          "additionalProperties": false
+        },
         "garment": { "$ref": "#/$defs/garment" },
         "dossier": {
           "type": "object",
@@ -252,7 +288,11 @@
           "description": "Legacy migration record. Not authored; retire once the asset tree is settled."
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "dependentRequired": {
+        "merchandising": ["merchandising_provenance"],
+        "merchandising_provenance": ["merchandising"]
+      }
     },
 
     "catalog": {

@@ -5,7 +5,7 @@ THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$THEME_DIR"
 
 find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l >/dev/null
-for document in theme.json data/product-presentation-registry.json data/image-optimization.json data/opening-product-media.json data/font-provenance.json; do
+for document in theme.json data/product-presentation-registry.json data/image-optimization.json data/opening-product-media.json data/font-provenance.json data/collection-hero-motion.json; do
 	jq empty "$document"
 done
 
@@ -35,15 +35,19 @@ while IFS= read -r artwork_face; do
 done < <(jq -r '.artwork_only[] | .family + "|" + .path' "$font_manifest" | cut -d'|' -f1)
 
 python3 scripts/build-product-presentation-registry.py --check
+python3 ../../tools/v2-source-certification/check-commerce-projection.py --check
+python3 scripts/validate-opening-product-media.py
+python3 scripts/validate-collection-hero-motion.py
 python3 scripts/build-pot.py --check
 php scripts/test-marketplace-registry.php
 node scripts/build-assets.mjs --check
+node scripts/build-critical-css.mjs --check
 
 while IFS= read -r base; do
 	for width in 640 1024 1440; do
 		asset="assets/sot/images/hero/responsive/${base}-${width}w.webp"
 		test -s "$asset" || { echo "Missing optimized hero derivative: $asset" >&2; exit 1; }
-		bytes="$(stat -f '%z' "$asset")"
+		bytes="$(wc -c < "$asset" | tr -d '[:space:]')"
 		if [ "$bytes" -gt 260000 ]; then
 			echo "Optimized hero derivative exceeds 260KB: $asset" >&2
 			exit 1
@@ -59,7 +63,7 @@ while IFS=$'\t' read -r derivative_root basename widths; do
 	while IFS= read -r width; do
 		asset="${derivative_root}/${basename}-${width}w.webp"
 		test -s "$asset" || { echo "Missing optimized editorial derivative: $asset" >&2; exit 1; }
-		bytes="$(stat -f '%z' "$asset")"
+		bytes="$(wc -c < "$asset" | tr -d '[:space:]')"
 		if [ "$bytes" -gt "$editorial_max_bytes" ]; then
 			echo "Optimized editorial derivative exceeds ${editorial_max_bytes} bytes: $asset" >&2
 			exit 1
@@ -77,14 +81,15 @@ while IFS= read -r asset; do
 	fi
 done < <(jq -r '.transparent_brand_assets[]' data/image-optimization.json)
 
+product_media_max_bytes="$(jq -r '.delivery.max_bytes' data/opening-product-media.json)"
 while IFS= read -r derivative; do
 	test -s "$derivative" || { echo "Missing opening product-media derivative: $derivative" >&2; exit 1; }
-	bytes="$(stat -f '%z' "$derivative")"
-	if [ "$bytes" -gt 80000 ]; then
-		echo "Opening product-media derivative exceeds 80KB: $derivative" >&2
+	bytes="$(wc -c < "$derivative" | tr -d '[:space:]')"
+	if [ "$bytes" -gt "$product_media_max_bytes" ]; then
+		echo "Opening product-media derivative exceeds ${product_media_max_bytes} bytes: $derivative" >&2
 		exit 1
 	fi
-done < <(jq -r '.products[] | .views[] | .derivative' data/opening-product-media.json)
+done < <(jq -r '.products[] | .views[]? | .derivative // empty' data/opening-product-media.json)
 
 STYLE_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' style.css | head -n1)"
 PACKAGE_VERSION="$(jq -r '.version' package.json)"
@@ -105,14 +110,14 @@ for required in \
 	test -s "$required" || { echo "Missing required marketplace artifact: $required" >&2; exit 1; }
 done
 
-if rg -n --glob '!node_modules/**' --glob '!dist/**' --glob '!scripts/verify-marketplace.sh' --glob '!README.md' --glob '!readme.txt' --glob '!CHANGELOG.md' \
+if rg -n --glob '!node_modules/**' --glob '!dist/**' --glob '!scripts/verify-marketplace.sh' --glob '!README.md' --glob '!readme.txt' --glob '!CHANGELOG.md' --glob '!assets/js/lib/three-r170/**' \
 	'\b(TODO|FIXME|Lorem ipsum|dummy data)\b' .; then
 	echo 'Placeholder marker found in delivered theme.' >&2
 	exit 1
 fi
 
 if rg -n --glob '!scripts/verify-marketplace.sh' 'Cormorant Garamond|Playfair Display|Bebas Neue|Yellowtail' \
-	theme.json editor-style.css rtl.css inc scripts; then
+	theme.json editor-style.css rtl.css assets/css inc template-parts ./*.php; then
 	echo 'Retired font found in marketplace architecture.' >&2
 	exit 1
 fi

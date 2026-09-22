@@ -1,6 +1,6 @@
 <?php
 /**
- * V2 pre-order page: a factual reservation path wrapped in the Black Rose salon.
+ * V2 pre-order page: a standard purchase path wrapped in the Black Rose salon.
  *
  * @package SkyyRoseFlagship2
  */
@@ -8,8 +8,8 @@
 defined( 'ABSPATH' ) || exit;
 
 $sr2_reserve_principles = array(
-	array( 'number' => '01', 'title' => 'Choose with the details open', 'copy' => 'Every reservable product links to its actual WooCommerce page for size, price, availability, and order terms.' ),
-	array( 'number' => '02', 'title' => 'Reserve through checkout', 'copy' => 'Your order is placed through the store checkout. The page does not manufacture a queue, count, or fulfillment promise.' ),
+	array( 'number' => '01', 'title' => 'Choose with the details open', 'copy' => 'Each piece links to its product page for size, price, availability, and order terms.' ),
+	array( 'number' => '02', 'title' => 'Full payment at checkout', 'copy' => 'Pre-orders require full payment at checkout. The pre-order label does not reserve stock or establish a shipping date. Contact Client Services for shipping estimates before ordering.' ),
 	array( 'number' => '03', 'title' => 'Keep the receipt', 'copy' => 'Order confirmation and account history remain the source for purchase status and any updates the store publishes.' ),
 );
 ?>
@@ -17,10 +17,10 @@ $sr2_reserve_principles = array(
 <section class="sr2-reserve-hero" aria-labelledby="sr2-page-title">
 	<div class="sr2-reserve-hero__media"><picture><source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/preorder/responsive/black-rose-salon-640w.webp' ) ); ?>"><source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/preorder/responsive/black-rose-salon-1024w.webp' ) ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/preorder/responsive/black-rose-salon-1440w.webp' ) ); ?>" alt="Black Rose pieces displayed in the SkyyRose pre-order salon" width="1440" height="960" fetchpriority="high" decoding="sync"></picture></div>
 	<div class="sr2-reserve-hero__copy">
-		<p class="sr2-eyebrow">The Reservation Room / Limited editions</p>
+		<p class="sr2-eyebrow">The Pre-Order Collection</p>
 		<h1 id="sr2-page-title">The piece is the invitation.</h1>
-		<p>Enter through the Black Rose salon, then select the piece with the product facts in front of you. This is where the worlds become an order—not a manufactured countdown.</p>
-		<a class="sr2-button sr2-button--fill" href="#reserve">View reservable pieces</a>
+		<p>Enter through the Black Rose salon, then select the piece with the product facts in front of you. Review size, price, and availability before ordering.</p>
+		<a class="sr2-button sr2-button--fill" href="#reserve">View pieces</a>
 	</div>
 	<p class="sr2-reserve-hero__caption">SkyyRose / Black Rose Salon / Oakland</p>
 </section>
@@ -40,7 +40,7 @@ $sr2_reserve_principles = array(
 </section>
 
 <section id="reserve" class="sr2-section sr2-section--products sr2-reserve-products" aria-labelledby="sr2-reserve-products-title">
-	<header class="sr2-section-head"><p>Available to reserve</p><h2 id="sr2-reserve-products-title">Future pieces. Present choice.</h2><p class="sr2-section-head__note">Only WooCommerce determines which pieces appear here and what the store can actually sell.</p></header>
+	<header class="sr2-section-head"><p>Browse the collection</p><h2 id="sr2-reserve-products-title">Future pieces. Present choice.</h2><p class="sr2-section-head__note">Review each product for current price and availability.</p></header>
 	<?php skyyrose2_product_cards( 12, 'pre-order' ); ?>
 </section>
 

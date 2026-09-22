@@ -1,128 +1,150 @@
-/**
- * Skyy Mascot — Post-Load Idle Loader
- *
- * Perf budget (non-negotiable, mascot system scope Pillar 3): the mascot
- * bundle must not cost any LCP/CLS/TBT budget. This tiny bootstrap is the
- * only script that loads eagerly; it defers fetching mascot.min.js (and
- * skyy-3d.min.js, when a GLB is configured) until AFTER the window load
- * event AND a genuine idle slot — or the first user interaction, whichever
- * comes first — with a long post-load safety timeout so the character
- * always appears even on pages nobody scrolls or touches.
- *
- * Wave 6 (round-5 evidence): the original 4s requestIdleCallback timeout
- * with no load-event dependency fired inside the throttled-mobile load
- * window (wishlist 92→77). Wave 7 (round-6 evidence): post-load rIC was
- * still near-immediate — an idle frame exists ~100ms after load even on a
- * busy PDP — so the schedule is now a fixed post-load delay, and 'scroll'
- * was dropped from the interaction fast-path (it fires programmatically).
- *
- * Save-Data: when the visitor has data saver on, only mascot.min.js loads
- * and she renders via her 2D sprite path (same visual presence, no 1.1MB
- * GLB + three.js). This honors an explicit user preference — it is NOT the
- * pending founder decision about 2D-on-mobile-PDPs, which stays open.
- *
- * Config is localized onto this script's handle as window.SKYY_LOADER_CONFIG:
- *   { mascotUrl: string, skyy3dUrl: string|null }
- *
- * @package SkyyRose_Flagship
- * @since   7.1.0
- */
-( function () {
-	'use strict';
-
-	var config = window.SKYY_LOADER_CONFIG;
-	if ( ! config || ! config.mascotUrl ) {
-		return;
-	}
-
-	var loaded = false;
-	var threeLoaded = false;
-	var delayTimer = null;
-
-	function injectScript( src ) {
-		var script = document.createElement( 'script' );
-		script.src = src;
-		script.async = true;
-		document.body.appendChild( script );
-	}
-
-	function saveDataOn() {
-		return !! ( navigator.connection && navigator.connection.saveData );
-	}
-
-	function reducedMotionOn() {
-		return window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
-	}
-
-	function shouldLoadThree() {
-		return !! config.skyy3dUrl && ! saveDataOn() && ! reducedMotionOn();
-	}
-
-	function loadThree() {
-		if ( threeLoaded || ! shouldLoadThree() ) {
-			return;
-		}
-		threeLoaded = true;
-		window.SKYY_3D_CONFIG = window.SKYY_3D_CONFIG || {};
-		window.SKYY_3D_CONFIG.startVisible = true;
-		injectScript( config.skyy3dUrl );
-	}
-
-	function unbindInteractionTriggers() {
-		INTERACTION_EVENTS.forEach( function ( eventName ) {
-			window.removeEventListener( eventName, loadMascot );
-		} );
-	}
-
-	function loadMascot() {
-		if ( loaded ) {
-			return;
-		}
-		loaded = true;
-		window.clearTimeout( delayTimer );
-		unbindInteractionTriggers();
-
-		// Keep the 1.1MB model + Three.js out of the page until Skyy actually
-		// begins entering. The lightweight 2D character remains the fallback
-		// only when Save-Data explicitly requests the lightweight path.
-		if ( shouldLoadThree() ) {
-			document.addEventListener( 'skyy:walking-in', loadThree, { once: true } );
-		}
-		injectScript( config.mascotUrl );
-	}
-
-	// Post-load FIXED delay — not requestIdleCallback. Wave 7 (round-6 PDP
-	// traces): an "idle" frame appears within ~100ms of the load event even
-	// on a busy page, so post-load rIC booted the 3D stack near-immediately;
-	// three.js parse plus the render loop then held Lighthouse's trace open
-	// to its 45s max and landed 583ms of TBT on the PDP. A fixed delay is
-	// the only scheduling primitive that reliably clears the audit window
-	// (PDP's own Stripe/GPay activity quiets ~6-7s in). Real engaged users
-	// never wait — any interaction below summons her instantly.
-	var POST_LOAD_DELAY_MS = 8000;
-	// 'scroll' removed from the fast-path (Wave 7): scroll events also fire
-	// programmatically (scrollTo, scroll anchoring, restoration), so they
-	// are not evidence of a real user. Touch users emit touchstart before
-	// any scroll; desktop wheel-scroll emits wheel; keyboard emits keydown.
-	var INTERACTION_EVENTS = [ 'pointerdown', 'keydown', 'touchstart', 'wheel' ];
-
-	function bindInteractionTriggers() {
-		INTERACTION_EVENTS.forEach( function ( eventName ) {
-			window.addEventListener( eventName, loadMascot, { once: true, passive: true } );
-		} );
-	}
-
-	function schedulePostLoadDelay() {
-		delayTimer = window.setTimeout( loadMascot, POST_LOAD_DELAY_MS );
-	}
-
-	// Real user input is an immediate, genuine signal — keep the fast path.
-	// (Lab runs send no input, so this never re-enters the audit window.)
-	bindInteractionTriggers();
-
-	if ( 'complete' === document.readyState ) {
-		schedulePostLoadDelay();
-	} else {
-		window.addEventListener( 'load', schedulePostLoadDelay, { once: true } );
-	}
-} )();
+/** Native invitation; character-intent Home entrance and invitation-owned guide loading. */
+(function () {
+  'use strict';
+  var config = window.SKYY_LOADER_CONFIG || {};
+  var invite = document.getElementById('skyyrose-mascot-recall');
+  if (!invite || !config.mascotUrl) return;
+  var pending;
+  var threePending;
+  var home = document.getElementById('skyy-hero-stage');
+  function loadGuide() {
+    if (!pending) pending = script(config.mascotUrl);
+    return pending;
+  }
+  function localUrl(value) {
+    try {
+      var url = new URL(value, location.href);
+      return url.origin === location.origin && /^https?:$/.test(url.protocol) ? url.href : '';
+    } catch (_) {
+      return '';
+    }
+  }
+  function script(value) {
+    return new Promise(function (resolve, reject) {
+      var src = localUrl(value);
+      if (!src) {
+        reject(new Error('Skyy script must be local'));
+        return;
+      }
+      var el = document.createElement('script');
+      var timer = setTimeout(function () {
+        finish(new Error('Skyy script timed out'));
+      }, 15000);
+      function finish(error) {
+        clearTimeout(timer);
+        el.onload = el.onerror = null;
+        if (error) {
+          el.remove();
+          reject(error);
+        } else resolve();
+      }
+      el.async = true;
+      el.src = src;
+      el.onload = function () {
+        finish();
+      };
+      el.onerror = function () {
+        finish(new Error('Skyy script unavailable'));
+      };
+      document.head.appendChild(el);
+    });
+  }
+  function loadThree() {
+    if (
+      threePending ||
+      !config.skyy3dUrl ||
+      (navigator.connection && navigator.connection.saveData) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
+      return;
+    window.SKYY_3D_CONFIG = window.SKYY_3D_CONFIG || {};
+    window.SKYY_3D_CONFIG.startVisible = true;
+    document.dispatchEvent(new CustomEvent('skyy:3d-loading'));
+    threePending = script(config.skyy3dUrl).catch(function () {
+      window.SKYY_3D_CONFIG.loadFailed = true;
+      document.dispatchEvent(new CustomEvent('skyy:3d-fallback'));
+    });
+  }
+  document.addEventListener('skyy:walking-in', loadThree);
+  document.addEventListener('skyy:prepare', loadThree);
+  if (home) {
+    // Mount the lightweight canonical portrait promptly. The heavy renderer
+    // waits for the actual hero image, page load and character intent.
+    loadGuide().catch(function () {});
+    var heroImage = home.closest('[data-recovery-hero]')?.querySelector('picture img, img');
+    var poster = heroImage?.decode ? heroImage.decode().catch(function () {}) : Promise.resolve();
+    var loaded =
+      document.readyState === 'complete'
+        ? Promise.resolve()
+        : new Promise(function (resolve) {
+            window.addEventListener('load', resolve, { once: true });
+          });
+    var heroIntent = false;
+    var heroReady = false;
+    var heroPrepared = false;
+    function prepareInvitedHero() {
+      if (!heroIntent || !heroReady || heroPrepared) return;
+      heroPrepared = true;
+      window.skyyRoseConcierge?.prepareHome();
+    }
+    function intendHero() {
+      heroIntent = true;
+      prepareInvitedHero();
+    }
+    // Keep the same-model portrait present immediately. Heavy modules, Draco
+    // and the model wait for interest in the character, never load/idle alone.
+    var character = document.getElementById('skyyrose-mascot-trigger');
+    character?.addEventListener('pointerenter', intendHero, { once: true });
+    character?.addEventListener('pointerdown', intendHero, { once: true });
+    home.addEventListener('focusin', function (event) {
+      if (event.target?.id === 'skyy-hero-chat') intendHero();
+    });
+    Promise.all([loadGuide(), poster, loaded])
+      .then(function () {
+        heroReady = true;
+        prepareInvitedHero();
+      })
+      .catch(function () {});
+  }
+  invite.addEventListener('click', function (event) {
+    var dialog = document.getElementById('skyy-ask-dialog');
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.altKey ||
+      event.shiftKey
+    )
+      return;
+    if (window.skyyRoseConcierge) return;
+    event.preventDefault();
+    var invitedFrom = document.activeElement;
+    invite.setAttribute('aria-busy', 'true');
+    loadGuide()
+      .then(function () {
+        invite.removeAttribute('aria-busy');
+        if (window.skyyRoseConcierge) {
+          if (!document.hidden && (document.activeElement === invitedFrom || document.activeElement === invite))
+            window.skyyRoseConcierge.open();
+        } else throw new Error('Skyy guide unavailable');
+      })
+      .catch(function () {
+        invite.removeAttribute('aria-busy');
+        // A real contact link remains the fallback; a second activation follows it.
+        config.mascotUrl = '';
+        var labels = document.getElementById('skyy-presence-status')?.dataset || {};
+        if (labels.guideFailed) invite.title = labels.guideFailed;
+        invite.removeAttribute('aria-haspopup');
+        invite.removeAttribute('aria-controls');
+        invite.removeAttribute('aria-expanded');
+        var label = invite.querySelector?.('span');
+        if (label && labels.contact) label.textContent = labels.contact;
+        var fallback = invite.cloneNode(true);
+        var ownedFocus = document.activeElement === invite;
+        invite.replaceWith(fallback);
+        if (ownedFocus) fallback.focus({ preventScroll: true });
+      });
+  });
+})();

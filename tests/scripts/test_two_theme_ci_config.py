@@ -66,10 +66,15 @@ class TestCiWorkflow:
 
     def test_flagship2_build_contract_exists(self):
         scripts = json.loads((FLAGSHIP2 / "package.json").read_text())["scripts"]
-        assert scripts["check:assets"] == "node scripts/build-assets.mjs --check"
-        assert scripts["build:assets"] == "node scripts/build-assets.mjs"
+        assert scripts["check:assets"] == (
+            "node scripts/build-assets.mjs --check && node scripts/build-critical-css.mjs --check"
+        )
+        assert scripts["build:assets"] == (
+            "node scripts/build-assets.mjs && node scripts/build-critical-css.mjs"
+        )
         assert (FLAGSHIP2 / "npm-shrinkwrap.json").exists(), "npm ci needs a lockfile"
         assert "--check" in (FLAGSHIP2 / "scripts" / "build-assets.mjs").read_text()
+        assert "--check" in (FLAGSHIP2 / "scripts" / "build-critical-css.mjs").read_text()
 
     def test_staging_environment_url(self, workflow: dict):
         envs = [

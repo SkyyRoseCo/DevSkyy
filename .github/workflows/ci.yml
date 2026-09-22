@@ -140,13 +140,20 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e ".[dev,mcp]" || pip install -e ".[dev]" || pip install -e .
+          pip install -e ".[dev,mcp,higgsfield]" || pip install -e ".[dev,mcp]" || pip install -e ".[dev]" || pip install -e .
           pip install pytest pytest-asyncio pytest-cov pytest-xdist httpx
           # Optional deps the test suite imports (langgraph comes from the [mcp]
           # extra above with a compatible pin; the rest are standalone). No
           # `|| true` mask — if these fail to install we want the job to say so,
           # not silently skip the tests that need them.
           pip install boto3 scikit-image trimesh pyotp
+
+      # tests/test_buglog_published_ids.py compares this tree's bug ids against
+      # what main has published. actions/checkout fetches only the ref under test
+      # at depth 1, so origin/main is absent and that gate would skip silently;
+      # it raises in CI instead, and this is what keeps it able to run.
+      - name: Fetch origin/main for published-id comparison
+        run: git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main
 
       - name: Run pytest with coverage
         run: |

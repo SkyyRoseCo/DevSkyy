@@ -1787,6 +1787,15 @@
         "front": "assets/products/techflats/split/black-rose/br-crewneck-front.jpeg",
         "back": "assets/products/techflats/split/black-rose/br-crewneck-back.jpeg",
         "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/br-001-crewneck.png"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-002": {
@@ -1883,6 +1892,15 @@
         "front": "assets/products/techflats/split/black-rose/br-joggers-front.jpeg",
         "back": "assets/products/techflats/split/black-rose/br-joggers-back.jpeg",
         "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/br-002-joggers.png"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-003": {
@@ -1967,6 +1985,15 @@
         "front": "assets/products/techflats/split/black-rose/br-jersey-baseball-black-front.jpeg",
         "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-black-back.jpeg",
         "reference": "assets/products/references/br-003-classic-real-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "oakland",
+        "series_order": 10
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-004": {
@@ -2068,6 +2095,15 @@
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-source.jpg",
         "back": null,
         "reference": "assets/products/references/br-004-hoodie-real-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-005": {
@@ -2169,6 +2205,15 @@
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-signature-edition-hoodie-ltd-source.jpg",
         "back": null,
         "reference": "assets/products/references/br-005-signature-hoodie-real.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-006": {
@@ -2275,6 +2320,15 @@
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-sherpa-jacket-sherpa-product.jpg",
         "back": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-sherpa-jacket-back.jpg",
         "reference": "assets/products/references/br-006-sherpa-jacket-real-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-007": {
@@ -2380,6 +2434,15 @@
       "render_source_migration": {
         "previous_missing_front": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007-real-front.jpg",
         "replacement_basis": "Existing supplemental reference already selected by the renderer; promoted to front because the prior front path does not exist. No new asset selected."
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-008": {
@@ -2473,6 +2536,15 @@
         "front": "assets/products/techflats/split/black-rose/br-jersey-football-sf-front.jpeg",
         "back": "assets/products/techflats/split/black-rose/br-jersey-football-sf-back.jpeg",
         "reference": "assets/products/references/br-008-design-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "san-francisco",
+        "series_order": 50
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-009": {
@@ -2566,6 +2638,15 @@
         "front": "assets/products/techflats/split/black-rose/br-jersey-football-oakland-front.jpeg",
         "back": "assets/products/techflats/split/black-rose/br-jersey-football-oakland-back.jpeg",
         "reference": "assets/products/references/br-009-design-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "oakland",
+        "series_order": 30
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-010": {
@@ -2642,6 +2723,15 @@
         "front": "assets/products/techflats/split/black-rose/br-jersey-basketball-front.jpeg",
         "back": "assets/products/techflats/split/black-rose/br-jersey-basketball-back.jpeg",
         "reference": "assets/products/references/br-010-design-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "san-francisco",
+        "series_order": 70
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-011": {
@@ -2738,6 +2828,15 @@
         "front": "assets/products/techflats/split/black-rose/br-jersey-hockey-front.jpeg",
         "back": "assets/products/techflats/split/black-rose/br-jersey-hockey-back.jpeg",
         "reference": "assets/products/references/br-011-design-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "san-jose",
+        "series_order": 80
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-012": {
@@ -2822,6 +2921,15 @@
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/last-oakland-baseball-jersey-front.jpeg",
         "back": "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-back.jpeg",
         "reference": "assets/products/references/br-012-techflat.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "oakland",
+        "series_order": 40
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "lh-002": {
@@ -2906,6 +3014,15 @@
         "front": "assets/products/techflats/split/love-hurts/lh-joggers-front.jpeg",
         "back": null,
         "reference": "assets/products/references/lh-002-techflat-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "lh-003": {
@@ -2990,6 +3107,15 @@
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-front.jpg",
         "back": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg",
         "reference": "assets/products/references/lh-003-techflat-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "lh-004": {
@@ -3086,6 +3212,15 @@
         "front": "assets/products/techflats/split/love-hurts/lh-bomber-front.jpeg",
         "back": "assets/products/techflats/split/love-hurts/lh-bomber-back.jpeg",
         "reference": "assets/products/references/lh-004-techflat-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "lh-005": {
@@ -3173,6 +3308,15 @@
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/the-fannie-pack-photo.jpg",
         "back": null,
         "reference": "assets/products/references/lh-005-fannie-mockup.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "lh-006": {
@@ -3257,6 +3401,15 @@
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-joggers-white.jpeg",
         "back": null,
         "reference": "assets/products/references/lh-006-techflat-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-001": {
@@ -3367,6 +3520,15 @@
         },
         "superseded_dossier_content": "---\nsku: sg-001\nname: The Bridge Series 'The Bay Bridge' Shorts\ncollection: signature\nlogo_reference: data/brand-logos/three-rose-cluster.md\nreference_image: assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg\nextra_references:\n  - assets/products/references/sg-001-day-bay-bridge-shorts.jpeg\n---\n\n# The Bridge Series 'The Bay Bridge' Shorts\n\n**Garment type lock:** Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**. The photo print shows the steel-cabled Bay Bridge crossing the water with the SF skyline visible in the background, blue sky overhead, and water reflections at the bottom hem. Standard basketball-shorts construction: black elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT a basketball jersey. NOT the Stay Golden Shorts (that's sg-003 — Golden Gate Bridge sunset palette, separate SKU).\n\n## Branding — exactly what IS on this product\n\nLogo binding: `black-roses-cloud-cluster`, blue colorway, bottom-left leg per catalog/dossier. The all-over bridge photograph is separate garment decoration. The registry records conflicting older product sheets; this binding is not a fresh pixel approval.\n\n> Reference images:\n> - Bridge Series shorts variants (Bay Bridge top + Stay Golden bottom): `assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg`\n> - Bay Bridge shorts standalone techflat: `assets/products/references/sg-001-day-bay-bridge-shorts.jpeg`\n\n### Front\n- **front-body** (entire body — front and back continuous): All-over sublimated photographic print of the **San Francisco-Oakland Bay Bridge in daytime daylight** — clear blue sky filling the upper third, the steel-truss Bay Bridge spanning across the middle (center-aligned, with the cantilever section visible), the SF skyline (downtown buildings) visible behind/beside the bridge, and water at the lower portion with reflections of the bridge. Photographic, hyper-realistic, NOT illustrated. The print wraps continuously front-to-back. **Technique:** sublimated. **Color:** photographic full-color (blue sky + grey-and-white bridge steel + tan/grey building skyline + blue water with reflections).\n\n- **front-bottom-left-leg** (~3in tall, lower-left leg panel, layered on top of the sublimated bridge print): Embroidered **blue** rose-cluster — the daytime variant carries a BLUE rose (the night Stay Golden variant carries a purple rose, see sg-003). **Technique:** embroidered. **Color:** blue thread. Catalog branding_spec (canonical): \"Embroidered rose on the bottom-left.\"\n\n### Back\n- **back-body** (entire field, continuation of front): Same Bay Bridge daytime photographic print continuing seamlessly from the front around to the back. **Technique:** sublimated. **Color:** photographic full-color, continuous wrap.\n\n### Sleeves / Collar / Hem / Other\n- **waistband** (~1.5in tall, top of shorts): Black elasticated waistband at the top. **Technique:** stitched. **Color:** black.\n- **drawstring** (~24in long, threaded through waistband): White flat drawstring threaded through the waistband, hanging from the front center. **Technique:** stitched. **Color:** white.\n- **left-pocket** (front-side hand pocket on wearer's left): Vertical slash hand pocket with welt opening. **Technique:** stitched. **Color:** body-matching (mesh shows the underlying photo print).\n- **right-pocket** (front-side hand pocket on wearer's right): Vertical slash hand pocket with welt opening. **Technique:** stitched. **Color:** body-matching.\n- **leg-hem** (each leg opening, clean hem): Plain finished hem at each leg opening — no contrast piping, no contrast binding, no rib-knit band. **Technique:** stitched. **Color:** body-matching.\n- **inside-waistband** (~1.5in × 0.5in interior tag): Branded woven size tag (universal SkyyRose product rule). **Technique:** woven-label. **Color:** brand-label palette.\n\n## Negative — what is NOT on this product (DO NOT render)\n\n- NO Golden Gate Bridge in the print — this is the BAY BRIDGE (a steel-truss/cantilever bridge with the SF skyline behind it), NOT the Golden Gate (the orange suspension bridge between SF and Marin). The Golden Gate appears on sg-003 Stay Golden Shorts.\n- NO sunset / twilight / orange palette — this is the DAYTIME Bay Bridge with blue sky. Sunset/sunrise palette belongs to sg-003.\n- NO night-time Bay Bridge with city lights — this is the clear-day variant. (A night-Bay-Bridge alternate render exists in older asset directories but is NOT a current SKU.)\n- NO illustrated / cartoon-rendered bridge — the print is a hyper-realistic photographic sublimation, not a stylized illustration.\n- The ONLY layered mark is the embroidered BLUE rose-cluster at the bottom-left leg (see Front) — daytime Bay Bridge variant = BLUE rose. NO rose graphics anywhere else on the body.\n- NO purple rose on this SKU — purple is the night variant (sg-003 Stay Golden). The daytime Bay Bridge carries the BLUE rose.\n- NO Love Hurts canonical roses, NO SR monogram, NO Authentic Collection patch on these shorts. Branding = the bridge photograph + the single bottom-left blue rose.\n- NO black mesh body — body is WHITE mesh with the sublimated print on top (the print supplies all visible color).\n- NO contrast color side-panels — body is uniform front-to-back.\n- NO black drawstring — drawstring is WHITE.\n- NO white waistband — waistband is BLACK.\n- NO zipper closures on the pockets — open welt.\n- NO additional pockets on the back — only two front side hand pockets.\n- NO embossed/debossed decoration anywhere.\n- NO rib-knit leg-binding — the leg opening is a clean stitched hem.\n- NO numbers, NO wordmark, NO chest text — bridge photo print is the only graphic.\n- NO sleeves (this is a shorts garment, lower-body only).\n\n## Scene direction\n\n- **Pose:** Front view straight-on (laid flat or on a model) showing the full daytime Bay Bridge sublimated print, the black waistband, white drawstring, and clean leg hem. Three-quarter view shows the side wrap of the photo print and the slash pocket openings. For the back: back view straight-on showing the continuous bridge print.\n- **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.\n",
         "rule": "Superseded snapshots are historical records, not active prompt instructions. No image pixels were edited or generated."
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-002": {
@@ -3468,6 +3630,15 @@
         },
         "superseded_dossier_content": "---\nsku: sg-002\nname: The Bridge Series 'Stay Golden' Shirt\ncollection: signature\nlogo_reference: data/brand-logos/three-rose-cluster.md\nextra_logos:\n  - data/brand-logos/sr-monogram.md\nreference_image: assets/products/references/sg-002-stay-golden-shirt-techflat.jpeg\n---\n\n# The Bridge Series 'Stay Golden' Shirt\n\n**Garment type lock:** Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Stay Golden Shorts (sg-003 Golden Gate sunset palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Bay Bridge Shirt (that's sg-005 — blue rose-cluster decoration, separate SKU). **The Stay Golden colorway uses a PURPLE/VIOLET rose-cluster on the chest** (matching the purple-and-orange Golden Gate sunset palette).\n\n## Branding — exactly what IS on this product\n\nSource reconciliation pending: see `logo-registry.json::gaps::signature-bridge-source-conflict`. Preserve the specific product/variant artwork; the existing text below must not be treated as proof that conflicting references have been resolved.\n\n> Logo art canonical references:\n> - Black Rose three-rose-cluster (recolored to purple for this SKU): `data/brand-logos/three-rose-cluster.md`\n> - SR monogram (back-neck):                                          `data/brand-logos/sr-monogram.md`\n> - Product techflat:                                                  `assets/products/references/sg-002-stay-golden-shirt-techflat.jpeg`\n>\n> ### COLORWAY OVERRIDE — read this BEFORE rendering\n>\n> The chest rose-cluster is rendered in **PURPLE/VIOLET tonal colors** with\n> dark grey/black ink outlines, sitting on a dark grey/black cloud at the\n> base — NOT canonical multi-color and NOT canonical greyscale. The\n> \"Stay Golden\" colorway uses a violet-on-white palette to harmonize with\n> the matching Stay Golden Shorts (sg-003) sunset Golden Gate colorway.\n\n### Front\n- **front-left-chest** (small, ~3in tall, on the wearer's left chest): The canonical Black Rose three-rose-cluster art (three roses + thorny vines + cloud at base) rendered in **purple/violet tonal colors** — petals in saturated purple-and-violet shades with darker violet shading and black ink outlines, stems and vines in darker purple-grey, cloud at the base in dark grey/charcoal. NOT canonical multi-color. NOT canonical greyscale. **Technique:** sublimated. **Color:** purple-violet rose-cluster on white ground.\n\n### Back\n- **back-neck** (small, ~1.5in wide, top-center just below the collar): The SR monogram embroidered onto the jersey in **dark grey / black thread** (NOT canonical gold — black-on-white reads cleanly where gold-on-white would not on a casual tee). Rendered as the canonical SR cursive script. **Technique:** embroidered. **Color:** dark grey / black thread on white.\n\n### Sleeves / Collar / Hem / Other\n- **collar** (~0.5in wide ribbed crew neck): Standard ribbed crew-neck collar. **Technique:** stitched. **Color:** white.\n- **left-sleeve** (short sleeve, plain hem): Short set-in sleeve, plain stitched hem at the cuff. **Technique:** stitched. **Color:** white.\n- **right-sleeve** (short sleeve, plain hem): Mirror of left-sleeve. **Technique:** stitched. **Color:** white.\n- **hem** (straight even bottom hem): Plain stitched bottom hem. **Technique:** stitched. **Color:** white.\n- **collar-inside** (~1.5in × 0.5in interior tag): Branded woven size tag. **Technique:** woven-label. **Color:** brand-label palette.\n\n## Negative — what is NOT on this product (DO NOT render)\n\n- NO blue rose-cluster on the chest — this is the PURPLE/VIOLET Stay Golden colorway. Blue rose-cluster belongs to sg-005 Bay Bridge Shirt.\n- NO canonical multi-color rose-cluster (red roses + green stems + white-and-blue cloud) — the cluster is recolored to violet on this SKU.\n- NO canonical greyscale rose-cluster (Black Rose canonical) — recolored to violet.\n- NO Bay Bridge / Golden Gate photo print on the body — the body is solid white. The bridge photo prints are on the matching shorts (sg-001, sg-003), NOT on this shirt.\n- NO chest text or wordmark on the front body fabric — only the chest rose decoration.\n- NO logo or graphic on the back body — only the small back-neck SR monogram.\n- NO Authentic Collection patch — that patch is reserved for the Black Rose jersey series.\n- NO Black Rose logo at front-center, front-right, or as a back-center large emblem — chest mark is small left-chest only.\n- NO Love Hurts branding — this is a Signature collection product.\n- NO sublimated all-over body pattern — body is solid white.\n- NO contrast color sleeve cuffs or hem.\n- NO embossed/debossed decoration.\n- NO V-neck or henley placket — this is a crew-neck tee with no front opening.\n\n## Scene direction\n\n- **Pose:** Front view straight-on showing the small left-chest violet rose-cluster on the white tee, the crew neck, and the short sleeves. For the back: back view straight-on showing the small SR monogram at the back-neck.\n- **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.\n",
         "rule": "Superseded snapshots are historical records, not active prompt instructions. No image pixels were edited or generated."
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-003": {
@@ -3574,6 +3745,15 @@
         },
         "superseded_dossier_content": "---\nsku: sg-003\nname: The Bridge Series 'Stay Golden' Shorts\ncollection: signature\nlogo_reference: data/brand-logos/three-rose-cluster.md\nreference_image: assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg\nextra_references:\n  - assets/products/references/sg-003-sunset-golden-gate-shorts.jpeg\n---\n\n# The Bridge Series 'Stay Golden' Shorts\n\n**Garment type lock:** Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Golden Gate Bridge at night**. The photo print shows the iconic Golden Gate Bridge illuminated against a deep purple-violet/navy night sky, with golden city-light reflections rippling vertically across the dark water at the lower portion. Standard basketball-shorts construction: black elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. \"Stay Golden\" refers to the **Golden Gate Bridge lit gold against the night sky** (this is the NIGHT variant — carries a purple rose; the daytime Bay Bridge variant sg-001 carries a blue rose). NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT the Bay Bridge Shorts (that's sg-001 — daytime SF-Oakland Bay Bridge, separate SKU).\n\n## Branding — exactly what IS on this product\n\nLogo binding: `black-roses-cloud-cluster`, purple colorway, bottom-left leg per catalog/dossier. The all-over bridge photograph is separate garment decoration. The registry records conflicting older product sheets; this binding is not a fresh pixel approval.\n\n> Reference images:\n> - Bridge Series shorts variants (Bay Bridge top + Stay Golden bottom): `assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg`\n> - Stay Golden shorts standalone techflat: `assets/products/references/sg-003-sunset-golden-gate-shorts.jpeg`\n\n### Front\n- **front-body** (entire body — front and back continuous): All-over sublimated photographic print of the **Golden Gate Bridge at night** — deep purple-violet/navy night sky filling the upper third, the iconic **Golden Gate Bridge illuminated** across the middle (the bridge reads warm orange-gold from its lighting against the dark sky), and rippling dark water at the lower portion with **vertical golden city-light reflections** (gold + yellow + pink + white streaks running vertically downward) reflecting the lit bridge and city against the water. Photographic, hyper-realistic, NOT illustrated. The print wraps continuously front-to-back. **Technique:** sublimated. **Color:** photographic full-color (deep purple-violet/navy sky + warm gold lit bridge + golden/yellow/pink reflections on dark water).\n- **front-bottom-left-leg** (~3in tall, lower-left leg panel, layered on top of the sublimated bridge print): Embroidered **purple** rose-cluster — the night Stay Golden variant carries a PURPLE rose (the daytime Bay Bridge variant sg-001 carries a blue rose). **Technique:** embroidered. **Color:** purple thread. Catalog branding_spec (canonical): \"Purple embroidered rose on the bottom-left.\"\n\n### Back\n- **back-body** (entire field, continuation of front): Same Golden Gate sunset photographic print continuing seamlessly from the front around to the back. **Technique:** sublimated. **Color:** photographic full-color sunset, continuous wrap.\n\n### Sleeves / Collar / Hem / Other\n- **waistband** (~1.5in tall, top of shorts): Black elasticated waistband at the top (matching sg-001 construction). **Technique:** stitched. **Color:** black.\n- **drawstring** (~24in long, threaded through waistband): White flat drawstring threaded through the waistband, hanging from the front center. **Technique:** stitched. **Color:** white.\n- **left-pocket** (front-side hand pocket on wearer's left): Vertical slash hand pocket with welt opening. **Technique:** stitched. **Color:** body-matching.\n- **right-pocket** (front-side hand pocket on wearer's right): Vertical slash hand pocket with welt opening. **Technique:** stitched. **Color:** body-matching.\n- **leg-hem** (each leg opening, clean hem): Plain finished hem — no contrast piping, no rib-knit band. **Technique:** stitched. **Color:** body-matching.\n- **inside-waistband** (~1.5in × 0.5in interior tag): Branded woven size tag (universal SkyyRose product rule). **Technique:** woven-label. **Color:** brand-label palette.\n\n## Negative — what is NOT on this product (DO NOT render)\n\n- NO Bay Bridge in the print — this is the GOLDEN GATE (orange-red suspension bridge between SF and Marin), NOT the Bay Bridge (steel-truss bridge between SF and Oakland with downtown skyline). The Bay Bridge appears on sg-001.\n- NO daytime / clear-blue-sky palette — this is the NIGHT variant with a deep purple-violet/navy sky and golden city lights. Daytime palette belongs to sg-001.\n- NO illustrated / cartoon-rendered bridge — the print is a hyper-realistic photographic sublimation.\n- NO SF skyline in the photo — the Golden Gate bridge spans water + Marin headlands, NOT downtown skyline. (The Bay Bridge image has the skyline; this one does not.)\n- The ONLY layered mark is the embroidered PURPLE rose-cluster at the bottom-left leg (see Front) — night Stay Golden variant = PURPLE rose. NO rose graphics anywhere else on the body.\n- NO blue rose on this SKU — blue is the daytime variant (sg-001 Bay Bridge). The night Stay Golden carries the PURPLE rose.\n- NO Love Hurts canonical roses, NO SR monogram, NO Authentic Collection patch. Branding = the bridge photograph + the single bottom-left purple rose.\n- NO black mesh body — body is WHITE mesh with the sublimated sunset print on top.\n- NO contrast color side-panels.\n- NO black drawstring — drawstring is WHITE.\n- NO white waistband — waistband is BLACK.\n- NO zipper closures on the pockets.\n- NO additional back pockets.\n- NO embossed/debossed decoration.\n- NO rib-knit leg-binding — clean stitched hem.\n- NO numbers, NO wordmark, NO chest text on the body.\n- NO sleeves.\n\n## Scene direction\n\n- **Pose:** Front view straight-on showing the full sunset Golden Gate sublimated print, the black waistband, white drawstring, and clean leg hem. Three-quarter view shows the side wrap of the sunset gradient and the orange-red bridge silhouette wrapping side-to-side. For the back: back view straight-on showing the continuous sunset bridge print.\n- **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.\n",
         "rule": "Superseded snapshots are historical records, not active prompt instructions. No image pixels were edited or generated."
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-005": {
@@ -3674,6 +3854,15 @@
         },
         "superseded_dossier_content": "---\nsku: sg-005\nname: The Bridge Series 'The Bay Bridge' Shirt\ncollection: signature\nlogo_reference: data/brand-logos/three-rose-cluster.md\nextra_logos:\n  - data/brand-logos/sr-monogram.md\nreference_image: assets/products/references/sg-005-bay-bridge-shirt-techflat.jpeg\n---\n\n# The Bridge Series 'The Bay Bridge' Shirt\n\n**Garment type lock:** Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Bay Bridge Shorts (sg-001 daytime SF-Oakland Bay Bridge palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Stay Golden Shirt (that's sg-002 — purple rose-cluster decoration, separate SKU). **The Bay Bridge colorway uses a BLUE/CYAN rose-cluster on the chest** (matching the daytime-blue Bay Bridge palette).\n\n> **Note on source filename drift:** The techflat for this SKU was found in the\n> Downloads asset directory under the filename `sg-004-techflat.jpeg`, but that\n> filename is misleading — sg-004 is \"The Signature Hoodie\" (a different\n> product). The blue-rose t-shirt + day-Bay-Bridge shorts shown in\n> `sg-004-techflat.jpeg` are actually documenting sg-005 + sg-001 paired\n> styling. Source has been re-saved to product-references under the correct\n> sg-005 prefix.\n\n## Branding — exactly what IS on this product\n\nSource reconciliation pending: see `logo-registry.json::gaps::signature-bridge-source-conflict`. Preserve the specific product/variant artwork; the existing text below must not be treated as proof that conflicting references have been resolved.\n\n> Logo art canonical references:\n> - Black Rose three-rose-cluster (recolored to blue for this SKU): `data/brand-logos/three-rose-cluster.md`\n> - SR monogram (back-neck):                                         `data/brand-logos/sr-monogram.md`\n> - Product techflat:                                                 `assets/products/references/sg-005-bay-bridge-shirt-techflat.jpeg`\n>\n> ### COLORWAY OVERRIDE — read this BEFORE rendering\n>\n> The chest rose-cluster is rendered in **BLUE/CYAN colors** with\n> grey/silver vine outlines, sitting on a **BLUE cloud** at the base\n> (light-blue with darker accents — NOT grey/charcoal), and the rose\n> **petals are filled with a photographic Bay Bridge scene** (the bridge\n> is rendered *inside* the bloom). NOT canonical multi-color and NOT\n> canonical greyscale. The \"Bay Bridge\" colorway uses a blue-on-white\n> palette to harmonize with the matching Bay Bridge Shorts (sg-001)\n> daytime blue-sky colorway. (Founder-verified 2026-06-16 against the\n> authentic product photo.)\n\n### Front\n- **front-chest** (small, ~3in tall, center-to-left chest): The Black Rose three-rose-cluster art (three roses + thorny vines + cloud at base) in a **blue colorway whose rose petals are filled with a photographic Bay Bridge scene** — the large bloom's petals contain a small hyper-real Bay Bridge image (steel-truss bridge + water + sky), so the blue/cyan rose's interior IS the bridge. Grey/silver thorny vines and stems, and a **BLUE cloud at the base** (light-blue with darker accents, matching the blue rose — NOT grey/charcoal). NOT canonical multi-color. NOT canonical greyscale. **Technique:** sublimated/printed. **Color:** blue rose with photographic-bridge petal fill + blue cloud on white ground.\n\n### Back\n- **back-neck** (small, ~1.5in wide, top-center just below the collar): The SR monogram embroidered onto the jersey in **dark grey / black thread** (NOT canonical gold). **Technique:** embroidered. **Color:** dark grey / black thread on white.\n\n### Sleeves / Collar / Hem / Other\n- **collar** (~0.5in wide ribbed crew neck): Standard ribbed crew-neck collar. **Technique:** stitched. **Color:** white.\n- **left-sleeve** (short sleeve, plain hem): Short set-in sleeve. **Technique:** stitched. **Color:** white.\n- **right-sleeve** (short sleeve, plain hem): Mirror of left. **Technique:** stitched. **Color:** white.\n- **hem** (straight even bottom hem): Plain stitched bottom hem. **Technique:** stitched. **Color:** white.\n- **collar-inside** (~1.5in × 0.5in interior tag): Branded woven size tag. **Technique:** woven-label. **Color:** brand-label palette.\n\n## Negative — what is NOT on this product (DO NOT render)\n\n- NO purple rose-cluster on the chest — this is the BLUE/CYAN Bay Bridge colorway. Purple rose-cluster belongs to sg-002 Stay Golden Shirt.\n- NO canonical multi-color rose-cluster — the cluster is recolored to blue on this SKU.\n- NO canonical greyscale rose-cluster — recolored to blue.\n- NO Bay Bridge / Golden Gate photo print on the body — body is solid white. Bridge photo prints belong to the matching shorts.\n- NO chest text or wordmark on the front body fabric — only the chest rose.\n- NO logo on the back body — only the small back-neck SR monogram.\n- NO Authentic Collection patch.\n- NO Black Rose logo at front-center, front-right, or as a back-center large emblem.\n- NO Love Hurts branding.\n- NO sublimated all-over body pattern — body is solid white.\n- NO contrast color sleeve cuffs or hem.\n- NO embossed/debossed decoration.\n- NO V-neck or henley placket.\n\n## Scene direction\n\n- **Pose:** Front view straight-on showing the small left-chest blue rose-cluster on the white tee, the crew neck, and the short sleeves. For the back: back view straight-on showing the small SR monogram at the back-neck.\n- **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.\n",
         "rule": "Superseded snapshots are historical records, not active prompt instructions. No image pixels were edited or generated."
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-006": {
@@ -3758,6 +3947,15 @@
         "front": "assets/products/techflats/split/signature/sg-mint-lav-hoodie-front.jpeg",
         "back": null,
         "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-006-mint-lavender-hoodie.png"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-007": {
@@ -3845,6 +4043,15 @@
         "front": "assets/products/techflats/split/signature/sg-beanie-purple.jpeg",
         "back": null,
         "reference": "assets/products/references/sg-007-techflat.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-009": {
@@ -3951,6 +4158,15 @@
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/sherpa-jacket-front.jpg",
         "back": null,
         "reference": "assets/products/references/sg-009-sherpa-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-011": {
@@ -4035,6 +4251,15 @@
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/original-label-tee-white-front.webp",
         "back": null,
         "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-011-onmodel.webp"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-012": {
@@ -4131,6 +4356,15 @@
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-012-original-label-tee-orchid.webp",
         "back": null,
         "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-012-onmodel.webp"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-013": {
@@ -4211,6 +4445,15 @@
         "front": "assets/products/techflats/split/signature/sg-mint-lav-crewneck-front.jpeg",
         "back": "assets/products/techflats/split/signature/sg-mint-lav-crewneck-back.jpeg",
         "reference": "assets/products/references/sg-013-techflat-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-014": {
@@ -4291,6 +4534,15 @@
         "front": "assets/products/techflats/split/signature/sg-mint-lav-sweats-front.jpeg",
         "back": "assets/products/techflats/split/signature/sg-mint-lav-sweats-back.jpeg",
         "reference": "assets/products/references/sg-014-techflat-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "sg-015": {
@@ -4369,6 +4621,15 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "reference": "assets/products/references/sg-015-windbreaker-set-techflat.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "kids-001": {
@@ -4461,6 +4722,15 @@
         "front": "assets/products/techflats/split/kids-capsule/kids-red-hoodie-front.jpeg",
         "back": "assets/products/techflats/split/kids-capsule/kids-red-hoodie-back.jpeg",
         "reference": "assets/products/references/kids-001-real-photo.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "kids-002": {
@@ -4553,6 +4823,15 @@
         "front": "assets/products/techflats/split/kids-capsule/kids-purple-hoodie-front.jpeg",
         "back": "assets/products/techflats/split/kids-capsule/kids-purple-hoodie-back.jpeg",
         "reference": "assets/products/references/kids-002-real-photo.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-014": {
@@ -4633,6 +4912,15 @@
         "front": "assets/products/techflats/split/black-rose/br-jersey-baseball-giants-front.jpeg",
         "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-giants-back.jpeg",
         "reference": "assets/products/references/br-014-real-front.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "san-francisco",
+        "series_order": 60
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     },
     "br-015": {
@@ -4713,6 +5001,15 @@
         "front": "assets/products/techflats/split/black-rose/br-jersey-baseball-white-front.jpeg",
         "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-white-back.jpeg",
         "reference": "assets/products/references/br-015-techflat.jpeg"
+      },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "oakland",
+        "series_order": 20
+      },
+      "merchandising_provenance": {
+        "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+        "kind": "ROUTE_CONFIGURATION"
       }
     }
   },
