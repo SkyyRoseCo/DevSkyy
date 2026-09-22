@@ -188,7 +188,7 @@ corrections are authoritative.
 
 **Prefer `null` over wrong in product fields.** A field holding the wrong kind of sentence passes every completeness check and is invisible to the gap queries built to find it. A null is discoverable; a plausible-but-wrong value is not.
 
-**Redacting env data is a whitelist, never "names only."** On a malformed env file the KEY side can be the secret — a credentials notebook contains lines shaped `<label> = <secret>` and `Name: <secret>`, so `dotenv_values()` returns the secret as the dict key. Print a name only if it matches `^[A-Z][A-Z0-9_]*$`, otherwise a `sha256[:8]`; compare values by hash and never print them. Containment after a leak is rotation, not deletion.
+**Redacting env data is a whitelist, never "names only."** On a malformed env file the KEY side can be the secret — a credentials notebook contains lines shaped `<label> = <secret>` and `Name: <secret>`, so `dotenv_values()` returns the secret as the dict key. Use `skyyrose.core.env_redaction` — `redact_env_name(token)` and `safe_env_names(parsed)`, landed on main via #963 — rather than hand-rolling the check: its `ENV_NAME_RE` anchors with `\A..\Z` instead of `^..$`, because in Python `$` also matches before a trailing newline and a multi-line token would slip a `^..$` guard. Compare values by hash and never print them. Containment after a leak is rotation, not deletion.
 
 ## Repository map
 

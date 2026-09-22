@@ -274,9 +274,12 @@ question is "who did this," a two-point comparison is the wrong instrument.**
 - **Redacting env data is a WHITELIST, never "names only"** (bug-357). On a
   malformed env file the KEY side can be the secret — a credentials notebook has
   lines shaped `<label> = <secret>` and `Name: <secret>`, so `dotenv_values()`
-  returns the secret as the dict key. Print a name only if it matches
-  `^[A-Z][A-Z0-9_]*$`, else a `sha256[:8]`; compare values by hash, never print
-  them. Containment after a leak is **rotation**, not deletion — context re-sends
+  returns the secret as the dict key. **Use `skyyrose.core.env_redaction`
+  (`redact_env_name` / `safe_env_names`, on main via #963) — do not hand-roll the
+  regex.** Its `ENV_NAME_RE` anchors with `\A..\Z`, not `^..$`: in Python `$`
+  also matches before a trailing newline, so a multi-line token slips a `^..$`
+  check. Compare values by hash, never print them. Containment after a leak is
+  **rotation**, not deletion — context re-sends
   every turn, so rotate then start a fresh session, and check
   `.wolf/claude-mem-digest.md` (in-repo) and `~/.claude-mem/`.
 - Validate at boundaries: Zod (frontend) / Pydantic (backend)
