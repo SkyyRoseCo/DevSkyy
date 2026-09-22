@@ -21,3 +21,9 @@ $mascot = get_template_directory_uri() . '/assets/images/skyy-runtime-poster.web
 		</div>
 	</div>
 </dialog>
+<?php if ( ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) : ?>
+<div id="skyy-hero-stage" class="skyy-dock" role="region" aria-label="<?php esc_attr_e( 'Skyy, your house concierge', 'skyyrose-flagship-2' ); ?>" data-skyy-dock>
+	<noscript><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/mascot/skyy-canonical-v2-512w.webp' ) ); ?>" width="120" height="180" alt="<?php esc_attr_e( 'Skyy, the house concierge', 'skyyrose-flagship-2' ); ?>" loading="lazy"><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'contact' ) ); ?>"><?php esc_html_e( 'Ask Skyy / Client Services', 'skyyrose-flagship-2' ); ?></a></noscript>
+</div>
+<a id="skyyrose-mascot-recall" class="skyyrose-mascot__recall skyy-dock__recall" href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'contact' ) ); ?>" aria-controls="skyy-ask-dialog" aria-haspopup="dialog" aria-expanded="false" hidden><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/mascot/skyy-canonical-v2-512w.webp' ) ); ?>" alt="" width="40" height="40" loading="lazy" decoding="async"><span><?php esc_html_e( 'Ask Skyy', 'skyyrose-flagship-2' ); ?><small><?php esc_html_e( 'Your house guide', 'skyyrose-flagship-2' ); ?></small></span></a>
+<?php endif; ?>

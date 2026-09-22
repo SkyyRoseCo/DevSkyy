@@ -1,0 +1,72 @@
+{
+  "schema": "skyyrose.fashion-e2e.task-ledger.v1",
+  "task_id": "v2-whole-site-rework-20260922",
+  "title": "SkyyRose V2 whole-site redesign — Veritas composition × SkyyRose identity",
+  "append_only": true,
+  "scope": {
+    "candidate_ref": "codex/v2-whole-site-rework-20260922 (base 5430de9da on origin/main 6994d9785)",
+    "theme_path": "wordpress-theme/skyyrose-flagship-2",
+    "surfaces": [
+      "header/footer shell", "homepage", "collection landings (4)", "immersive worlds (3)",
+      "shop archive + taxonomy", "product page", "cart/checkout/account/order-tracking",
+      "about/journal/lookbook/pre-order", "contact/FAQ/policies/size-guide/wishlist/search/404",
+      "Skyy walk-on concierge (all non-checkout routes)"
+    ],
+    "target_environment": "local fixture (tools/v2-theme-preview.php) → PR → staging-7e48-skyyrose.wpcomstaging.com (conditional, pre-approved once fixed+verified)",
+    "exclusions": [
+      "production skyyrose.co", "database changes", "payment settings",
+      "PR970 package fb1220db… and archive 37f0d6f7… must not deploy",
+      "paid image/video generation", "WooCommerce writes", "media library uploads"
+    ]
+  },
+  "acceptance_criteria": [
+    "Every route renders at 1440 and 390 with one dominant focal point per view, full-bleed imagery as structure, restrained navigation, garment as protagonist",
+    "Header carries no mascot; Skyy walks onto the screen as a full-body character and is the chat entry (Ask Skyy) on all non-checkout routes; dismiss/recall/pause/reduced-motion/keyboard preserved",
+    "Natural-motion GLB tiers (desktop 9b405468…, mobile 72671339…) are the served rig; old rig not deleted without founder y",
+    "All existing controllers keep their DOM hooks (visual-recovery, theme.js, scene motion, quick view, bag, search, mascot)",
+    "npm run build → check:assets → verify → lint:php → phpcs → package:theme all pass in this session; critical CSS ≤ 16384 bytes",
+    "Version triple + CHANGELOG bumped; build-inputs.json input_hashes reconciled; package-boundary.json matches the tree",
+    "Independent red-team (Workflow/ultracode, founder-directed) finds no unresolved material defect; every finding first-seen logged here",
+    "PR supersedes draft PR970; pr-green-loop drives checks green; merge only on fresh green checks"
+  ],
+  "evidence_requirements": [
+    "source/build hash + minified parity (check:assets)",
+    "1440 and 390 fullPage captures per route under tasks/v2-whole-site-rework-20260922/evidence/<surface>/",
+    "reduced-motion + no-JS fallback proof for hero video, film band, mascot",
+    "console/network trace per route (0 page errors, 0 failed theme requests)",
+    "keyboard/focus trace: header menu, search, bag, quick view, mascot dock/dialog, variation form, checkout form",
+    "commerce journey proof in fixture: card → PDP → variation → add to bag → cart → checkout form validation",
+    "independent_review (red team) verdict per surface",
+    "runtime tests: npm run verify output",
+    "Lighthouse lab run per key route (fixture) recorded separately from any staging field measurement"
+  ],
+  "project_manager": {
+    "name": "Claude Fable 5.1 — foreground session (Agent A)",
+    "owns": "scope, dependencies, evidence completeness, issue recurrence, final handoff; cannot self-approve; independent reviewer is the red-team Workflow"
+  },
+  "roster": [
+    {"name": "Agent A (manager + shell/home/mascot placement)", "title": "Lead engineer", "capabilities": ["fashion-frontend-motion", "fashion-design-system"], "owns": "design contract, design-tokens.css, theme.css (phase 1), global-shell.css, controls.css, inc/global-shell.php, functions.php, front-page.php, template-parts/home/*, home-page.css, critical/home.contract.json, template-parts/skyy-mascot.php, build/verify/package, reconciliation, PR"},
+    {"name": "Agent B (collections + immersive)", "title": "Frontend engineer", "capabilities": ["fashion-frontend-motion"], "owns": "template-collection.php, template-parts/collections/*, template-parts/commerce/hero-composed-scene.php, template-parts/collections/town-line.php, template-immersive-*.php, template-parts/immersive/*, collection-world.css, hero-commerce-scenes.css, collection-scene-motion.css, visual-recovery.css, immersive.css, legacy-world-components.css, scene-handoff.css"},
+    {"name": "Agent C (shop + PDP + card)", "title": "Commerce frontend engineer", "capabilities": ["fashion-commerce-engineering"], "owns": "woocommerce/* except cart/ and checkout/, template-parts/commerce/{product-card,product-hero,quick-view,size-guide-dialog}.php, inc/shop-archive.php, shop-page.css, product-page.css, premium-commerce.css, quick-view-commerce.css, tools/v2-theme-preview.php fixture stubs, tools/verify-v2-theme-preview.sh"},
+    {"name": "Agent D (supporting + commerce pages)", "title": "Frontend engineer", "capabilities": ["fashion-frontend-motion", "fashion-accessibility-content-engineer"], "owns": "page.php, template-parts/pages/*, template-parts/v2-about.php, template-parts/v2-preorder.php, template-parts/v2-commerce-preview.php, page-lookbook.php, home.php, index.php, single.php, archive.php, search.php, 404.php, page-wishlist.php, woocommerce/cart/*, woocommerce/checkout/*, woocommerce/myaccount/*, template-parts/journal-press-fallback.php, content-page.css, about-archive.css, lookbook.css, search-preview.css, theme.css from '/* Content pages */' down (after phase 1 commit)"},
+    {"name": "Agent E (Skyy natural motion)", "title": "Character runtime engineer", "capabilities": ["fashion-frontend-motion", "fashion-a11y-performance"], "owns": "assets/js/mascot.js, assets/js/mascot-loader.js, assets/js/skyy-3d.js, assets/css/mascot.css, assets/models/*, tools/v2-runtime/test-skyy-concierge.cjs (+ fixtures), scripts/test-global-shell-contract.php mascot pins"},
+    {"name": "Red team (Workflow / ultracode)", "title": "Independent reviewers", "capabilities": ["fashion-visual-qa-red-team", "fashion-a11y-performance", "fashion-commerce-engineering", "security"], "owns": "adversarial review of the integrated candidate; verdicts only, no repairs"},
+    {"name": "pr-green-loop", "title": "PR automation", "capabilities": ["ci"], "owns": "driving the superseding PR to green"},
+    {"name": "Corey (founder)", "title": "Approver", "capabilities": [], "owns": "founder approval; staging deploy y; production out of scope"}
+  ],
+  "authority": {
+    "product_registry": "logo-registry.json via skyyrose.core.product.get_product (sync_product_registry --check PASS at start)",
+    "featured_skus": {"signature": ["sg-005"], "black-rose": ["br-001", "br-004"], "love-hurts": ["lh-004"], "kids-capsule": ["kids-001"], "excluded": ["br-002", "kids-002"]},
+    "mascot_delivery": ".artifacts/mascot-repair-20260911/Skyy-Natural-Motion-20260911.zip — desktop GLB sha256 9b40546847d2b2776334a71edcd8f4836b3eeab904f74f6fc568d5a3d3040a00 (2,143,292 B), mobile 7267133a69d8401ba3edbe97d55a5b4605002d97114750081549671bdba129c7 (1,247,220 B); clips Skyy_Idle/Walk/Talk/Joy/Exit/Wave; KHR_draco_mesh_compression + EXT_texture_webp",
+    "founder_rulebook": "tasks/mascot-design-rulebook.md (walk-in ~4.5s after load, dismissed = gone for session, ≤2–4 proactive appearances, motion opt-in, native dialog)",
+    "brand": "CLAUDE.md §6, docs/brand/visual-references.md (Kith/Oaklandish/Culture Kings/FoG/Palm Angels; never European luxury), typography.json (cut: Playfair/Cormorant/Bebas/Yellowtail)",
+    "toolchain": "node 22.23.2 (/Users/theceo/.local/bin), npm 10.9.8, python 3.12.12 (/tmp/skyyrose-v2-audit-venv), V2_WP_FIXTURE=/tmp/skyyrose-v2-native-fixture"
+  },
+  "events": [
+    {"ts": "2026-09-22T00:00:00Z", "type": "task_started", "by": "Agent A", "note": "Handoff read; baseline evidence viewed; pristine build is a no-op (git status clean after npm run build)."},
+    {"ts": "2026-09-22T00:00:00Z", "type": "founder_direction", "by": "Corey", "note": "Take the mascot out of the header; implement Skyy as the walk-on-screen chatbot using Skyy-Natural-Motion-20260911.zip."},
+    {"ts": "2026-09-22T00:00:00Z", "type": "founder_direction", "by": "Corey", "note": "Red team for the entire redesign runs as Ultracode (Workflow multi-agent orchestration)."}
+  ],
+  "issues": [],
+  "state": "IN_PROGRESS"
+}

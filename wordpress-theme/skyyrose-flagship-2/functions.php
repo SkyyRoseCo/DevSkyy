@@ -507,9 +507,10 @@ JS
 			'skyyrose2-mascot-loader',
 			'SKYY_3D_CONFIG',
 			array(
-				'modelUrl'    => add_query_arg( 'ver', skyyrose2_asset_version( '/assets/models/skyy-mascot.glb' ), SKYYROSE2_URI . '/assets/models/skyy-mascot.glb' ),
-				'decoderPath' => SKYYROSE2_URI . '/assets/js/lib/draco/',
-				'moduleBase'  => SKYYROSE2_URI . '/assets/js/lib/three-r170/',
+				'modelUrl'       => add_query_arg( 'ver', skyyrose2_asset_version( '/assets/models/skyy-natural-desktop.glb' ), SKYYROSE2_URI . '/assets/models/skyy-natural-desktop.glb' ),
+				'mobileModelUrl' => add_query_arg( 'ver', skyyrose2_asset_version( '/assets/models/skyy-natural-mobile.glb' ), SKYYROSE2_URI . '/assets/models/skyy-natural-mobile.glb' ),
+				'decoderPath'    => SKYYROSE2_URI . '/assets/js/lib/draco/',
+				'moduleBase'     => SKYYROSE2_URI . '/assets/js/lib/three-r170/',
 			)
 		);
 		wp_localize_script( 'skyyrose2-mascot-loader', 'SKYY_GUIDE_DATA', skyyrose2_concierge_guide() );

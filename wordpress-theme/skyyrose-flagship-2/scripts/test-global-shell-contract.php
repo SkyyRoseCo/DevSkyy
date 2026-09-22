@@ -22,8 +22,6 @@ $required = array(
 	'data-sr2-menu',
 	'aria-controls="sr2-menu"',
 	"wc_get_page_permalink( 'myaccount' )",
-	'id="skyyrose-mascot-recall"',
-	'aria-controls="skyy-ask-dialog"',
 	'data-nav-preview-toggle',
 	"'footer-house'",
 	"'footer-services'",
@@ -39,8 +37,25 @@ foreach ( $required as $needle ) {
 	}
 }
 
-if ( 1 !== substr_count( $source, 'id="skyyrose-mascot-recall"' ) ) {
-	fwrite( STDERR, "Ask Skyy recall ID must remain unique.\n" );
+// Founder direction 2026-09-22: the masthead and menu carry no mascot. Skyy walks
+// onto the page from the footer-mounted dock and owns the only recall control.
+if ( false !== strpos( $source, 'skyyrose-mascot' ) ) {
+	fwrite( STDERR, "The header must not carry the mascot; the dock in template-parts/skyy-mascot.php owns it.\n" );
+	exit( 1 );
+}
+$mascot = file_get_contents( dirname( __DIR__ ) . '/template-parts/skyy-mascot.php' );
+if ( false === $mascot ) {
+	fwrite( STDERR, "Unable to read the mascot template.\n" );
+	exit( 1 );
+}
+foreach ( array( 'id="skyy-hero-stage"', 'aria-controls="skyy-ask-dialog"', 'id="skyy-hero-chat"', 'id="skyy-hero-dismiss"' ) as $needle ) {
+	if ( false === strpos( $mascot, $needle ) ) {
+		fwrite( STDERR, "Missing walk-on dock contract: {$needle}\n" );
+		exit( 1 );
+	}
+}
+if ( 1 !== substr_count( $mascot, 'id="skyyrose-mascot-recall"' ) ) {
+	fwrite( STDERR, "Ask Skyy recall ID must appear exactly once, in the dock.\n" );
 	exit( 1 );
 }
 
