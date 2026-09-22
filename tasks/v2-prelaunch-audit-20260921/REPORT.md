@@ -4,7 +4,7 @@ Status: source remediation validated locally; hosted PR validation pending. **Go
 
 ## Identity and evidence
 
-- Repository: SkyyRoseCo/DevSkyy; isolated branch `codex/v2-prelaunch-audit-20260921`, based on current main `337d9c86d`.
+- Repository: SkyyRoseCo/DevSkyy; isolated branch `codex/v2-prelaunch-audit-20260921`, based on main `7c2b97cb50266d10c88b5f84606bc78b1a01e0b6`; PR [#964](https://github.com/SkyyRoseCo/DevSkyy/pull/964).
 - Audited staging: https://staging-7e48-skyyrose.wpcomstaging.com (WordPress.com site 256563697). An authenticated connector read confirmed active stylesheet `skyyrose-flagship-2`. Subsequent browser/API tests were anonymous. No credentials or customer data are included.
 - The original working checkout did not match staging. Eight sampled served CSS/JS hashes match the V2 source in worktree `abe0`, HEAD `2c7644772be1d19c9218ebfb2b980350033b83f7`, including its uncommitted source. The source manifest records exact imported bytes; this is sampled parity, not proof of every deployed file.
 - Imported scope: V2 theme, its runtime/certification tools, and two hash-bound existing scene receipts. Current main's registry was retained. No deployment, purchase, email send, webhook dispatch, or provider generation occurred.
@@ -21,6 +21,7 @@ Status: source remediation validated locally; hosted PR validation pending. **Go
 | Demo repair could overwrite existing merchant template | Medium | Require theme ownership and recognized default/theme template; preserve custom templates and repeat-import idempotency. |
 | Historical product snapshot still controlled current routing | Medium | Read current product facts and merchandising through get_product; migrate exact existing routing assignments into canonical registry with ROUTE_CONFIGURATION provenance. Historical snapshot remains media receipt identity. |
 | Registry updater could persist duplicate series positions | High | Validate whole final batch before atomic save; tests reject collision without changing bytes and allow position swaps. |
+| Registry schema omitted newly canonical merchandising | Medium | Hosted Catalog Consistency Validation caught missing schema fields. Add strict assigned/unassigned route and provenance definitions, require paired records, retain unknown-key rejection; 34 focused registry/presentation tests and Python static checks pass locally. |
 | Homepage display typography used ceremonial face broadly | Design | Use brand Archivo display role; verify 390/768/1440px preview, no overflow or automated axe violations. Original visual product assets preserved. |
 | Measured homepage LCP image lacked priority | Performance | Prioritize original first film image; keep duplicated loop images lazy. No claim of post-deployment performance improvement yet. |
 | Retired related/upsell/cross-sell modules could surface | Design / commerce | Remove their native WooCommerce hooks while preserving cart/checkout hooks. |
@@ -52,6 +53,24 @@ Status: source remediation validated locally; hosted PR validation pending. **Go
 3. Verify production indexability/canonicals/sitemap, cache exclusions for cart/checkout/account, gateway environment, secrets scope, backup restoration, rollback and monitoring/alert delivery. Obtain final visual/commerce acceptance.
 
 These are coverage gaps or environment blockers, not passing checks. The code can be reviewed and merged while the launch remains blocked.
+
+## Broader repository dependency risk
+
+An authenticated GitHub Dependabot inventory on 2026-09-21 returned 284 open
+repository alerts: 13 critical, 104 high, 137 medium and 30 low. The affected
+manifests were root `uv.lock` (112), `agents/devskyy-a2a/uv.lock` (81),
+`frontend/package-lock.json` (70),
+`design-system/skyyrose-storefront/package-lock.json` (15),
+`devskyy-sdk-app/uv.lock` (4) and root `package-lock.json` (2). No affected
+manifest in that inventory belongs to the V2 theme. Critical findings include
+anyio, litellm, GitPython, nltk, next and next-auth. These are repository-wide
+risks requiring separate dependency and deployed-reachability triage; the V2
+theme's zero-vulnerability npm audit does not establish repository-wide safety.
+
+A bounded V2 runtime source scan found same-origin HTML requests for quick-view
+and search, plus model asset fetching; it did not establish direct FastAPI
+coupling or custom PHP REST/AJAX/outbound HTTP handlers. That source observation
+does not establish the absence of exploitable deployed services or plugins.
 
 ## Reproduction
 
