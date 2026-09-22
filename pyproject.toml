@@ -213,7 +213,7 @@ mcp = [
     "backoff==2.2.1",
     "ratelimit==2.2.1",
     "boto3>=1.43.0",  # integrations/cloudflare_r2_manager.py — was undeclared, install -e .[all] never pulled it
-    "cryptography==49.0.0",
+    "cryptography==50.0.0",
     "pyjwt==2.13.0",
     "sqlalchemy==2.0.51",
     "aiosqlite==0.22.1",
@@ -280,7 +280,7 @@ ml = [
     "spacy>=3.8.2",
     "textblob>=0.18.0.post0",
     # mlflow removed 2026-06-22: imported in 0 files (dead dep) and its
-    # cryptography<49 cap conflicted with the mcp extra's cryptography==49.0.0
+    # cryptography<49 cap conflicted with the mcp extra's cryptography==50.0.0
     # security pin, making .[all] unresolvable (Docker + local + CI).
     "bentoml>=1.4.34",
     "wandb>=0.24.2",  # Updated for protobuf 6.x compatibility
