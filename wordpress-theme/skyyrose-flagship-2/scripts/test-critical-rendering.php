@@ -62,7 +62,7 @@ $built    = file_get_contents( skyyrose2_critical_css_path() );
 sr2_assert( is_array( $contract ) && ! empty( $contract['budgetBytes'] ), 'contract declares a byte budget' );
 sr2_assert( is_string( $built ) && '' !== trim( $built ), 'built critical CSS exists' );
 sr2_assert( strlen( $built ) <= (int) $contract['budgetBytes'], 'built critical CSS is within budget' );
-foreach ( array( '@font-face', ':root', '.sr2-house-header', '.sr2-header__brand-mark', '.sr2-brand-media', '.sr2-archive-scene', '.sr2-editorial-hero__copy', '#sr2-archive-title', '.sr2-control--primary', '[data-recovery-hero-video]', '.sr2-archive-scene__concierge', '.sr2-house-nav' ) as $needle ) {
+foreach ( array( '@font-face', ':root', '.sr2-house-header', '.sr2-header__brand-mark', '.sr2-brand-media', '.sr2-archive-scene', '.sr2-editorial-hero__copy', '#sr2-archive-title', '.sr2-control--primary', '[data-recovery-hero-video]', '.sr2-arrival', '.sr2-house-nav' ) as $needle ) {
 	sr2_assert( false !== strpos( $built, $needle ), "critical CSS carries first-view structure: {$needle}" );
 }
 sr2_assert( false === strpos( $built, '__SKYYROSE2_ASSETS__/css/' ), 'no relative asset path survives that would resolve against the document' );

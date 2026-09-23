@@ -123,7 +123,7 @@ fi
 
 if ! rg -q "function skyyrose2_presentation_registry" "$THEME_DIR/functions.php" || \
 	! rg -q "woocommerce_cart_is_empty" "$THEME_DIR/woocommerce/cart/cart.php" || \
-	! rg -Fq "function_exists( 'wc_get_page_permalink' )" "$THEME_DIR/404.php" || \
+	! rg -Fq "home_url( '/collections/' )" "$THEME_DIR/404.php" || \
 	rg -Fq "if ( empty( \$products ) && 'pre-order' === \$collection )" "$THEME_DIR/functions.php"; then
 	echo "FAIL V2 truth and WooCommerce compatibility contract missing" >&2
 	exit 1
@@ -237,7 +237,7 @@ if ! rg -q 'function skyyrose2_collection_scene_product' "$THEME_DIR/functions.p
 fi
 
 if ! rg -q 'function skyyrose2_immersive_url' "$THEME_DIR/functions.php" || \
-	! rg -q 'Enter the full scene' "$THEME_DIR/template-collection.php" || \
+	! rg -q 'skyyrose2_immersive_url' "$THEME_DIR/template-parts/collections/chapters.php" || \
 	! rg -q "'immersive-signature'.*template-immersive-signature.php" "$THEME_DIR/inc/presentation-registry.php"; then
 	echo "FAIL dedicated immersive collection routes are not provisioned and linked" >&2
 	exit 1
@@ -262,11 +262,11 @@ if ! rg -q "privacy-policy" "$THEME_DIR/functions.php" || \
 	exit 1
 fi
 
-if ! rg -q 'sr2-scene-effect--bridge-lights' "$THEME_DIR/template-collection.php" || \
-	! rg -q 'sr2-scene-effect--petals' "$THEME_DIR/template-collection.php" || \
-	! rg -q 'sr2-cloud-roll' "$THEME_DIR/assets/css/theme.css" || \
-	! rg -q 'sr2-petal-fall' "$THEME_DIR/assets/css/theme.css"; then
-	echo "FAIL collection-specific hero atmosphere animation contract missing" >&2
+if ! rg -q 'sr2-arrival' "$THEME_DIR/template-parts/collections/arrival.php" || \
+	! rg -q 'data-recovery-hero-video' "$THEME_DIR/template-parts/collections/arrival.php" || \
+	! rg -q 'skyyrose2_collection_hero_motion' "$THEME_DIR/template-parts/collections/arrival.php" || \
+	! rg -q 'data-recovery-hero-video' "$THEME_DIR/assets/js/visual-recovery.js"; then
+	echo "FAIL collection arrival motion contract missing" >&2
 	exit 1
 fi
 

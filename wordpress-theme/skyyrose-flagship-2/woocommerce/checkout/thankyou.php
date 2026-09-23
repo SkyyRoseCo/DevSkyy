@@ -22,22 +22,32 @@ defined( 'ABSPATH' ) || exit;
 		);
 		$sr2_message = $sr2_messages[ $order->get_status() ] ?? __( 'Review your current order status and details below.', 'skyyrose-flagship-2' );
 		?>
-		<h1><?php esc_html_e( 'Order status', 'skyyrose-flagship-2' ); ?></h1>
-		<p class="sr2-c-status" data-state="<?php echo $order->has_status( 'failed' ) ? 'error' : 'info'; ?>"><?php echo esc_html( $sr2_message ); ?></p>
-		<?php if ( $order->has_status( array( 'failed', 'pending' ) ) ) : ?>
-			<p><a class="sr2-c-action" href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>"><?php esc_html_e( 'Review payment options', 'skyyrose-flagship-2' ); ?></a></p>
-		<?php endif; ?>
-		<dl class="sr2-thankyou__details">
-			<div><dt><?php esc_html_e( 'Order', 'skyyrose-flagship-2' ); ?></dt><dd><?php echo esc_html( $order->get_order_number() ); ?></dd></div>
-			<?php if ( $order->get_date_created() ) : ?><div><dt><?php esc_html_e( 'Date', 'skyyrose-flagship-2' ); ?></dt><dd><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></dd></div><?php endif; ?>
-			<div><dt><?php esc_html_e( 'Total', 'skyyrose-flagship-2' ); ?></dt><dd><?php echo wp_kses_post( $order->get_formatted_order_total() ); ?></dd></div>
-		</dl>
-		<?php
-		// WooCommerce owns order details and gateway-specific instructions.
-		do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
-		do_action( 'woocommerce_thankyou', $order->get_id() );
-		?>
+		<header class="sr2-band__head sr2-thankyou__head">
+			<div>
+				<p class="sr2-eyebrow"><?php esc_html_e( 'Your order', 'skyyrose-flagship-2' ); ?></p>
+				<h1 class="sr2-title-display"><?php esc_html_e( 'Order status', 'skyyrose-flagship-2' ); ?></h1>
+			</div>
+		</header>
+		<div class="sr2-page-grid sr2-thankyou__grid">
+			<div class="sr2-page-grid__main">
+				<p class="sr2-c-status" data-state="<?php echo $order->has_status( 'failed' ) ? 'error' : 'info'; ?>"><?php echo esc_html( $sr2_message ); ?></p>
+				<?php if ( $order->has_status( array( 'failed', 'pending' ) ) ) : ?>
+					<p class="sr2-thankyou__retry"><a class="sr2-control sr2-control--primary" href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>"><?php esc_html_e( 'Review payment options', 'skyyrose-flagship-2' ); ?></a></p>
+				<?php endif; ?>
+				<?php
+				// WooCommerce owns order details and gateway-specific instructions.
+				do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
+				do_action( 'woocommerce_thankyou', $order->get_id() );
+				?>
+			</div>
+			<dl class="sr2-thankyou__details sr2-page-grid__aside">
+				<div><dt><?php esc_html_e( 'Order', 'skyyrose-flagship-2' ); ?></dt><dd><?php echo esc_html( $order->get_order_number() ); ?></dd></div>
+				<?php if ( $order->get_date_created() ) : ?><div><dt><?php esc_html_e( 'Date', 'skyyrose-flagship-2' ); ?></dt><dd><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></dd></div><?php endif; ?>
+				<div><dt><?php esc_html_e( 'Total', 'skyyrose-flagship-2' ); ?></dt><dd><?php echo wp_kses_post( $order->get_formatted_order_total() ); ?></dd></div>
+			</dl>
+		</div>
 	<?php else : ?>
-		<p><?php esc_html_e( 'Check your account or contact Client Services to confirm your order status.', 'skyyrose-flagship-2' ); ?></p>
+		<header class="sr2-band__head sr2-thankyou__head"><div><p class="sr2-eyebrow"><?php esc_html_e( 'Your order', 'skyyrose-flagship-2' ); ?></p><h1 class="sr2-title-display"><?php esc_html_e( 'Order status', 'skyyrose-flagship-2' ); ?></h1></div></header>
+		<p class="sr2-lede"><?php esc_html_e( 'Check your account or contact Client Services to confirm your order status.', 'skyyrose-flagship-2' ); ?></p>
 	<?php endif; ?>
 </section>

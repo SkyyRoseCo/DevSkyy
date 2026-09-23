@@ -87,7 +87,9 @@ if ( 'preorder' === $route ) {
 }
 $preview_state = preg_replace( '/[^a-z-]/', '', $_GET['state'] ?? '' );
 $preview_sku = strtolower( preg_replace( '/[^a-z0-9-]/i', '', $_GET['sku'] ?? 'sg-005' ) ) ?: 'sg-005';
-$preview_routes = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'immersive-signature', 'immersive-black-rose', 'immersive-love-hurts', 'immersive-kids-capsule', 'pre-order', 'about', 'contact', 'journal', 'wishlist', 'faq', 'shipping-returns', 'returns-exchanges', 'size-guide', 'privacy-policy', 'terms-of-service', 'accessibility', 'cart', 'checkout', 'account', 'order-tracking', 'shop', 'product', '404' );
+// `skyy=1` renders the Skyy walk-on dock with its source runtime (mascot.css, loader, 3D config, a minimal guide).
+$preview_skyy = '1' === ( $_GET['skyy'] ?? '' );
+$preview_routes = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'immersive-signature', 'immersive-black-rose', 'immersive-love-hurts', 'immersive-kids-capsule', 'pre-order', 'about', 'contact', 'journal', 'wishlist', 'lookbook', 'faq', 'shipping-returns', 'returns-exchanges', 'size-guide', 'privacy-policy', 'terms-of-service', 'accessibility', 'cart', 'checkout', 'account', 'order-tracking', 'shop', 'product', '404' );
 $preview_template_map = array(
 	'home'                  => 'front-page.php',
 	'collections'           => 'page.php',
@@ -103,7 +105,8 @@ $preview_template_map = array(
 	'about'                 => 'page.php',
 	'contact'               => 'page.php',
 	'journal'               => 'index.php',
-	'wishlist'              => 'page.php',
+	'wishlist'              => 'page-wishlist.php',
+	'lookbook'              => 'page-lookbook.php',
 	'faq'                   => 'page.php',
 	'shipping-returns'      => 'page.php',
 	'returns-exchanges'     => 'page.php',
@@ -127,6 +130,7 @@ if ( ! is_file( $theme_dir . '/' . $preview_template_map[ $route ] ) ) {
 }
 $preview_posts = array();
 $preview_cursor = 0;
+$preview_loop = 0;
 
 function __( $text ) { return $text; }
 function esc_html__( $text ) { return htmlspecialchars( $text, ENT_QUOTES, 'UTF-8' ); }
@@ -161,9 +165,14 @@ function wp_json_encode( $value, $flags = 0 ) { return json_encode( $value, $fla
 function do_action( $hook ) {
 	global $product, $preview_sku;
 	if ( 'woocommerce_before_single_product_summary' === $hook && $product instanceof WC_Product ) {
+		// The template removes woocommerce_show_product_images when no verified media exists; mirror that.
+		if ( empty( $GLOBALS['skyyrose2_pdp_media_context']['media']['ids'] ) ) {
+			return;
+		}
 		$main_id = $product->get_image_id();
 		echo '<div class="woocommerce-product-gallery sr2-preview-gallery">';
-		echo '<figure class="woocommerce-product-gallery__wrapper"><div class="woocommerce-product-gallery__image">' . wp_get_attachment_image( $main_id, 'full', false, array( 'class' => 'wp-post-image' ) ) . '</div></figure>';
+		// Woo's wc_get_gallery_image_html() wraps the image in a link; the theme's gallery CSS targets that shape.
+		echo '<figure class="woocommerce-product-gallery__wrapper"><div class="woocommerce-product-gallery__image"><a href="' . esc_url( wp_get_attachment_url( $main_id ) ) . '">' . wp_get_attachment_image( $main_id, 'full', false, array( 'class' => 'wp-post-image', 'fetchpriority' => 'high' ) ) . '</a></div></figure>';
 		echo '<div class="sr2-preview-gallery__thumbs">';
 		foreach ( $product->get_gallery_image_ids() as $gallery_id ) {
 			echo wp_get_attachment_image( $gallery_id, 'thumbnail', false, array( 'class' => 'sr2-preview-gallery__thumb' ) );
@@ -173,6 +182,7 @@ function do_action( $hook ) {
 		echo '<h1 class="product_title entry-title">' . esc_html( $product->get_name() ) . '</h1>';
 		echo '<p class="price">' . wp_kses_post( $product->get_price_html() ) . '</p>';
 		echo '<div class="woocommerce-product-details__short-description"><p>' . esc_html( $product->get_short_description() ) . '</p></div>';
+		echo wp_kses_post( wc_get_stock_html( $product ) );
 		echo '<form class="cart variations_form"><table class="variations"><tbody><tr><th><label for="preview-size">Size</label></th><td><select id="preview-size"><option>Choose a size</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option></select></td></tr></tbody></table><div class="quantity"><label for="preview-qty">Quantity</label><input id="preview-qty" type="number" min="1" value="1"></div><button class="single_add_to_cart_button button alt" type="button">Secure this piece</button></form>';
 		$collection_labels = array( 'signature' => 'Signature', 'black-rose' => 'Black Rose', 'love-hurts' => 'Love Hurts', 'kids-capsule' => 'Kids Capsule', 'jersey-series' => 'Jersey Series / Black Rose release' );
 		$collection_terms  = wp_get_post_terms( $product->get_id(), 'product_cat', array( 'fields' => 'slugs' ) );
@@ -180,11 +190,31 @@ function do_action( $hook ) {
 		$collection_label   = $collection_labels[ $collection_slug ] ?? 'SkyyRose';
 		echo '<div class="product_meta"><span class="sku_wrapper">SKU: <span class="sku">' . esc_html( strtoupper( $product->get_sku() ) ) . '</span></span><span class="posted_in">Collection: ' . esc_html( $collection_label ) . '</span></div>';
 		echo '<ul class="sr2-preview-promises"><li>Limited archive release</li><li>Tracked delivery</li><li>Secure checkout</li></ul>';
+	} elseif ( 'woocommerce_before_shop_loop' === $hook ) {
+		global $preview_posts;
+		echo '<p class="woocommerce-result-count" role="alert" aria-relevant="all">' . esc_html( sprintf( 'Showing all %d results', count( $preview_posts ) ) ) . '</p>';
+		skyyrose2_shop_ordering();
 	} elseif ( 'woocommerce_after_single_product_summary' === $hook ) {
-		echo '<section class="woocommerce-tabs sr2-preview-tabs"><h2>Built to carry the story</h2><p>Published construction, care, fit, shipping, and return details remain attached to the live WooCommerce product record.</p><div class="sr2-preview-tabs__grid"><article><h3>Construction</h3><p>Material and finishing details from the product SOT.</p></article><article><h3>Fit</h3><p>Size guidance and model measurements beside the purchase decision.</p></article><article><h3>Delivery</h3><p>Real fulfillment status and preorder timing—never fabricated.</p></article></div></section><section class="related products"><h2>Continue through the house</h2></section>';
+		// Native tab markup (woocommerce_output_product_data_tabs) with fixture copy only.
+		echo '<div class="woocommerce-tabs wc-tabs-wrapper"><ul class="tabs wc-tabs" role="tablist"><li class="description_tab active" role="presentation"><a href="#tab-description" role="tab">Description</a></li><li class="additional_information_tab" role="presentation"><a href="#tab-additional_information" role="tab">Additional information</a></li></ul>';
+		echo '<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab" id="tab-description" role="tabpanel"><h2>Description</h2><p>Published construction, care, fit, shipping, and return details remain attached to the live WooCommerce product record.</p></div>';
+		echo '<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content wc-tab" id="tab-additional_information" role="tabpanel" hidden><h2>Additional information</h2><table class="woocommerce-product-attributes shop_attributes"><tr><th>Fit</th><td>Size guidance and model measurements are published on the live product record.</td></tr><tr><th>Delivery</th><td>Real fulfillment status and preorder timing come from WooCommerce; never fabricated here.</td></tr></table></div></div>';
+		// Related loop: the same native card, other fixture products with verified media, like woocommerce_output_related_products.
+		$related = array_values( array_filter( wc_get_products(), static function ( $candidate ) use ( $product ) { return $candidate->get_id() !== $product->get_id() && preview_product_has_fixture_media( $candidate ); } ) );
+		$related = array_slice( $related, 0, 4 );
+		if ( $related ) {
+			$previous_product = $product;
+			echo '<section class="related products"><h2>More from the house</h2><ul class="products columns-4">';
+			foreach ( $related as $related_product ) {
+				$product = $related_product;
+				wc_get_template_part( 'content', 'product' );
+			}
+			$product = $previous_product;
+			echo '</ul></section>';
+		}
 	}
 }
-function apply_filters( $value ) { return $value; }
+function apply_filters( $hook, $value = null ) { return func_num_args() > 1 ? $value : $hook; }
 function is_wp_error() { return false; }
 function get_template_directory() { global $theme_dir; return $theme_dir; }
 function get_template_directory_uri() { return '/wordpress-theme/skyyrose-flagship-2'; }
@@ -235,22 +265,73 @@ function wp_head() {
 	$title       = 'home' === $route ? 'SkyyRose — House of Roses' : 'SkyyRose — ' . ucwords( str_replace( '-', ' ', $route ) );
 	$description = 'SkyyRose is an Oakland luxury streetwear house where every collection opens a distinct story world.';
 	$immersive_css = 0 === strpos( $route, 'immersive-' ) ? '<link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/immersive.css">' : '';
+	// skyy=1: source mascot.css; the preview banner moves bottom-left so the dock at bottom-right stays visible in captures.
+	$skyy_css = ! empty( $GLOBALS['preview_skyy'] ) && ! is_checkout() ? '<link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css"><style>.sr2-preview-banner{right:auto;left:12px;text-align:left}@media(max-width:640px){.sr2-preview-banner{right:auto;left:8px;max-width:32%}}</style>' : '';
+	// Source sheets in the skyyrose2_assets() enqueue order so every route renders its real cascade:
+	// theme → page sheets → controls, global-shell → visual-recovery → scene sheets → search-preview → premium-commerce → quick-view-commerce.
+	$collection_routes = array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' );
+	$page_sheets       = array();
+	if ( 'about' === $route ) { $page_sheets[] = 'about-archive'; }
+	// page-lookbook.php enqueues its own sheets in this order (collection-world, premium-commerce, hero-commerce-scenes, collection-scene-motion, lookbook).
+	if ( 'lookbook' === $route ) { array_push( $page_sheets, 'collection-world', 'lookbook' ); }
+	if ( ! in_array( $route, array_merge( array( 'home', 'shop', 'product', 'cart', 'checkout' ), $collection_routes ), true ) && 0 !== strpos( $route, 'immersive-' ) ) { array_push( $page_sheets, 'legacy-world-components', 'content-page' ); }
+	if ( 'home' === $route ) { array_push( $page_sheets, 'collection-world', 'home-page' ); }
+	if ( 'product' === $route ) { $page_sheets[] = 'product-page'; }
+	if ( 'shop' === $route ) { $page_sheets[] = 'shop-page'; }
+	if ( in_array( $route, $collection_routes, true ) ) { $page_sheets[] = 'collection-world'; }
+	$route_sheets = array_merge( $page_sheets, array( 'controls', 'global-shell', 'visual-recovery' ) );
+	if ( 'home' === $route || 'lookbook' === $route || in_array( $route, $collection_routes, true ) ) { array_push( $route_sheets, 'hero-commerce-scenes', 'collection-scene-motion' ); }
+	if ( in_array( $route, array( 'signature', 'black-rose', 'love-hurts' ), true ) ) { $route_sheets[] = 'scene-handoff'; }
+	if ( 'checkout' !== $route ) { array_push( $route_sheets, 'search-preview', 'premium-commerce' ); }
+	if ( ! in_array( $route, array( 'cart', 'checkout', 'account' ), true ) ) { $route_sheets[] = 'quick-view-commerce'; }
+	$route_css = '';
+	foreach ( $route_sheets as $sheet ) { $route_css .= '<link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/' . $sheet . '.css">'; }
 	header( 'X-SkyyRose-Preview-Theme: ' . $preview_identity['theme'] );
 	header( 'X-SkyyRose-Preview-Candidate: ' . $preview_identity['candidate_id'] );
 	header( 'X-SkyyRose-Preview-Commit: ' . $preview_identity['commit'] );
 	header( 'X-SkyyRose-Preview-Route: ' . $route );
 	header( 'X-SkyyRose-Preview-Template: ' . $preview_template_map[ $route ] );
-	echo '<title>' . esc_html( $title ) . '</title><meta name="description" content="' . esc_attr( $description ) . '"><meta name="robots" content="noindex,nofollow"><meta name="skyyrose-preview-theme" content="' . esc_attr( $preview_identity['theme'] ) . '"><meta name="skyyrose-preview-candidate" content="' . esc_attr( $preview_identity['candidate_id'] ) . '"><meta name="skyyrose-preview-commit" content="' . esc_attr( $preview_identity['commit'] ) . '"><meta name="skyyrose-preview-route" content="' . esc_attr( $route ) . '"><meta name="skyyrose-preview-template" content="' . esc_attr( $preview_template_map[ $route ] ) . '"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css">' . $immersive_css . '<style>.sr2-preview-banner{position:fixed;z-index:1000;right:12px;bottom:12px;display:grid;gap:3px;padding:8px 10px;background:#e2b6a7;color:#100e0c;font:600 10px/1.2 sans-serif;letter-spacing:.06em;text-align:right;box-shadow:0 4px 16px rgba(0,0,0,.25)}.sr2-preview-banner strong{font-size:11px}.sr2-preview-gallery img{display:block;width:100%;height:auto}.sr2-preview-gallery__thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}.sr2-preview-gallery__thumb{border:1px solid var(--sr2-line);aspect-ratio:1;object-fit:cover}.sr2-pdp-product--portal .quantity{display:grid;gap:4px;flex:0 0 7rem}.sr2-pdp-product--portal .quantity input{width:100%;min-height:48px}.sr2-pdp-product--portal .product_meta{display:grid;gap:6px;margin-top:24px;color:var(--sr2-muted);font:600 .7rem/1.4 var(--sr2-font-ui);letter-spacing:.08em;text-transform:uppercase}.sr2-preview-promises{display:grid;gap:7px;margin-top:24px;padding-left:1.2rem}.sr2-preview-tabs__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:32px}@media(max-width:640px){.sr2-preview-banner{right:8px;left:8px;text-align:left}.sr2-preview-tabs__grid{grid-template-columns:1fr}}</style>';
+	echo '<title>' . esc_html( $title ) . '</title><meta name="description" content="' . esc_attr( $description ) . '"><meta name="robots" content="noindex,nofollow"><meta name="skyyrose-preview-theme" content="' . esc_attr( $preview_identity['theme'] ) . '"><meta name="skyyrose-preview-candidate" content="' . esc_attr( $preview_identity['candidate_id'] ) . '"><meta name="skyyrose-preview-commit" content="' . esc_attr( $preview_identity['commit'] ) . '"><meta name="skyyrose-preview-route" content="' . esc_attr( $route ) . '"><meta name="skyyrose-preview-template" content="' . esc_attr( $preview_template_map[ $route ] ) . '"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css">' . $route_css . $immersive_css . '<style>.sr2-preview-banner{position:fixed;z-index:1000;right:12px;bottom:12px;display:grid;gap:3px;padding:8px 10px;background:#e2b6a7;color:#100e0c;font:600 10px/1.2 sans-serif;letter-spacing:.06em;text-align:right;box-shadow:0 4px 16px rgba(0,0,0,.25)}.sr2-preview-banner strong{font-size:11px}.sr2-preview-gallery img{display:block;width:100%;height:auto}.sr2-preview-gallery__thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}.sr2-preview-gallery__thumb{border:1px solid var(--sr2-line);aspect-ratio:1;object-fit:cover}.sr2-pdp-product--portal .quantity{display:grid;gap:4px;flex:0 0 7rem}.sr2-pdp-product--portal .quantity input{width:100%;min-height:48px}.sr2-pdp-product--portal .product_meta{display:grid;gap:6px;margin-top:24px;color:var(--sr2-muted);font:600 .7rem/1.4 var(--sr2-font-ui);letter-spacing:.08em;text-transform:uppercase}.sr2-preview-promises{display:grid;gap:7px;margin-top:24px;padding-left:1.2rem}.sr2-preview-tabs__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:32px}@media(max-width:640px){.sr2-preview-banner{right:8px;left:8px;text-align:left}.sr2-preview-tabs__grid{grid-template-columns:1fr}}</style>' . $skyy_css;
+}
+/** Source Skyy runtime for the `skyy=1` preview flag: loader config, tiered GLB config and a minimal deterministic guide. */
+function sr2_preview_skyy_footer() {
+	if ( empty( $GLOBALS['preview_skyy'] ) || is_checkout() ) {
+		return '';
+	}
+	$base   = '/wordpress-theme/skyyrose-flagship-2';
+	$loader = array( 'mascotUrl' => $base . '/assets/js/mascot.js', 'skyy3dUrl' => $base . '/assets/js/skyy-3d.js' );
+	$three  = array(
+		'modelUrl'       => $base . '/assets/models/skyy-natural-desktop.glb',
+		'mobileModelUrl' => $base . '/assets/models/skyy-natural-mobile.glb',
+		'decoderPath'    => $base . '/assets/js/lib/draco/',
+		'moduleBase'     => $base . '/assets/js/lib/three-r170/',
+	);
+	$guide  = array(
+		'greeting' => 'Welcome to SkyyRose. I’m Skyy, your digital house guide. I can help you explore a collection or find a piece by name or SKU.',
+		'pages'    => array(
+			'shop'    => array( 'label' => 'Shop the house', 'url' => '/tools/v2-theme-preview.php?route=shop' ),
+			'contact' => array( 'label' => 'Contact the house', 'url' => '/tools/v2-theme-preview.php?route=contact' ),
+		),
+		'products' => array(),
+		'intents'  => array(
+			array( 'id' => 'collections', 'label' => 'Explore the collections', 'patterns' => array( 'collections', 'collection' ), 'answer' => 'Signature, Black Rose, Love Hurts and the Kids Capsule each open their own world.', 'link' => '/tools/v2-theme-preview.php?route=collections' ),
+			array( 'id' => 'shipping', 'label' => 'Shipping and returns', 'patterns' => array( 'shipping', 'returns' ), 'answer' => 'Read the current shipping and returns guidance.', 'link' => '/tools/v2-theme-preview.php?route=shipping-returns' ),
+		),
+	);
+	$flags = JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT;
+	return '<script>window.SKYY_LOADER_CONFIG = ' . json_encode( $loader, $flags ) . ';window.SKYY_3D_CONFIG = ' . json_encode( $three, $flags ) . ';window.SKYY_GUIDE_DATA = ' . json_encode( $guide, $flags ) . ';</script><script src="' . $base . '/assets/js/mascot-loader.js" defer></script>';
 }
 function wp_footer() {
 	global $route;
 	$immersive_js = 0 === strpos( $route, 'immersive-' ) ? '<script src="/wordpress-theme/skyyrose-flagship-2/assets/js/immersive.js" defer></script>' : '';
-	echo '<script src="/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js" defer></script><script src="/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js" defer></script><script src="/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js" defer></script>' . $immersive_js;
+	$commerce_js  = 'checkout' === $route ? '' : '<script src="/wordpress-theme/skyyrose-flagship-2/assets/js/premium-commerce.js" defer></script>';
+	$commerce_js .= in_array( $route, array( 'cart', 'checkout', 'account' ), true ) ? '' : '<script src="/wordpress-theme/skyyrose-flagship-2/assets/js/quick-view-commerce.js" defer></script>';
+	echo '<script src="/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js" defer></script><script src="/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js" defer></script><script src="/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js" defer></script>' . $commerce_js . $immersive_js . sr2_preview_skyy_footer();
 }
 function get_header() { require get_template_directory() . '/header.php'; }
 function get_footer() { require get_template_directory() . '/footer.php'; }
 function get_template_part( $slug, $name = null, $args = array() ) {
-	if ( 'template-parts/skyy-mascot' === $slug ) { return; }
+	if ( 'template-parts/skyy-mascot' === $slug && empty( $GLOBALS['preview_skyy'] ) ) { return; }
 	$file = get_template_directory() . '/' . $slug . ( $name ? '-' . $name : '' ) . '.php';
 	if ( is_file( $file ) ) { require $file; }
 }
@@ -284,6 +365,50 @@ function the_content() {
 function have_posts() { global $preview_posts, $preview_cursor; return $preview_cursor < count( $preview_posts ); }
 function the_post() { global $preview_posts, $preview_cursor, $product; $product = $preview_posts[ $preview_cursor++ ]; }
 function is_account_page() { return false; }
+// Native WooCommerce/WordPress conditionals the shop and product templates call directly.
+function is_shop() { global $route; return 'shop' === $route; }
+// The dock and its runtime stay off checkout exactly as production gates them (template-parts/skyy-mascot.php, functions.php).
+function is_checkout() { global $route; return 'checkout' === $route; }
+function is_cart() { global $route; return 'cart' === $route; }
+function is_product() { global $route; return 'product' === $route; }
+function is_product_taxonomy() { return false; }
+function is_product_category() { return false; }
+function is_product_tag() { return false; }
+function is_singular( $post_types = '' ) { global $route; return 'product' === $route; }
+function is_main_query() { return true; }
+function is_user_logged_in() { return false; }
+function is_admin() { return false; }
+function is_customize_preview() { return false; }
+function has_block() { return false; }
+function wp_print_inline_script_tag( $javascript, $attributes = array() ) {
+	$attribute_markup = '';
+	foreach ( $attributes as $name => $value ) { $attribute_markup .= ' ' . preg_replace( '/[^a-z0-9-]/', '', strtolower( (string) $name ) ) . '="' . esc_attr( (string) $value ) . '"'; }
+	echo '<script' . $attribute_markup . '>' . $javascript . '</script>';
+}
+function is_front_page() { global $route; return 'home' === $route; }
+function untrailingslashit( $value ) { return rtrim( (string) $value, '/' ); }
+function map_deep( $value, $callback ) { return is_array( $value ) ? array_map( static fn( $item ) => map_deep( $item, $callback ), $value ) : $callback( $value ); }
+function tag_escape( $value ) { return strtolower( preg_replace( '/[^a-zA-Z0-9_:]/', '', (string) $value ) ); }
+function has_action() { return false; }
+function remove_action() {}
+function remove_filter() {}
+function url_to_postid() { return 0; }
+function get_queried_object() { return null; }
+function get_woocommerce_currency() { return 'USD'; }
+function wc_query_string_form_fields() {}
+function selected( $selected, $current = true, $display = true ) {
+	$result = (string) $selected === (string) $current ? ' selected="selected"' : '';
+	if ( $display ) { echo $result; }
+	return $result;
+}
+/** Visual fixture terms for the archive collection filter; live terms are WordPress-owned. */
+function get_terms( $args = array() ) {
+	$terms = array();
+	foreach ( array( 'signature' => 'Signature', 'black-rose' => 'Black Rose', 'love-hurts' => 'Love Hurts', 'kids-capsule' => 'Kids Capsule' ) as $slug => $name ) {
+		$terms[] = (object) array( 'slug' => $slug, 'name' => $name, 'taxonomy' => 'product_cat', 'count' => 1 );
+	}
+	return $terms;
+}
 function get_option( $name ) { return 'admin_email' === $name ? 'hello@skyyrose.com' : ''; }
 function wp_nonce_field() { echo '<input type="hidden" value="preview">'; }
 function get_page_by_path() { return null; }
@@ -335,29 +460,69 @@ function wp_get_attachment_image( $id, $size = 'thumbnail', $icon = false, $attr
 	if ( ! $path ) {
 		return '';
 	}
-	$class = ! empty( $attrs['class'] ) ? $attrs['class'] : '';
-	return '<img class="' . esc_attr( $class ) . '" src="' . esc_url( get_template_directory_uri() . '/assets/sot/' . $path ) . '" alt="SkyyRose published product view">';
+	// Mirror core: width/height from the real file so the fixture measures the same layout stability as WordPress.
+	$meta  = wp_get_attachment_metadata( $id );
+	$attrs = array_merge( array( 'class' => '', 'alt' => 'SkyyRose published product view', 'decoding' => 'async' ), (array) $attrs );
+	if ( ! empty( $meta['width'] ) && ! empty( $meta['height'] ) ) {
+		$attrs['width']  = (string) $meta['width'];
+		$attrs['height'] = (string) $meta['height'];
+	}
+	$html = '<img src="' . esc_url( get_template_directory_uri() . '/assets/sot/' . $path ) . '"';
+	foreach ( $attrs as $name => $value ) {
+		if ( '' !== (string) $value && preg_match( '/^[a-z-]+$/', (string) $name ) ) {
+			$html .= ' ' . $name . '="' . esc_attr( (string) $value ) . '"';
+		}
+	}
+	return $html . '>';
 }
 function wp_get_attachment_image_url( $id, $size = 'thumbnail' ) {
 	$path = preview_attachment_path( $id );
 	return $path ? get_template_directory_uri() . '/assets/sot/' . $path : '';
 }
+/** Real pixel dimensions of the local fixture file; missing files stay non-images. */
+function wp_get_attachment_metadata( $id ) {
+	global $theme_dir;
+	$path = preview_attachment_path( $id );
+	$size = $path ? getimagesize( $theme_dir . '/assets/sot/' . $path ) : false;
+	return $size ? array( 'width' => (int) $size[0], 'height' => (int) $size[1] ) : array();
+}
+function wp_attachment_is_image( $id ) { return (bool) preview_attachment_path( $id ); }
 function wp_get_attachment_url( $id ) {
 	$path = preview_attachment_path( $id );
 	return $path ? get_template_directory_uri() . '/assets/sot/' . $path : '';
 }
-function woocommerce_page_title() { return 'The House Edit'; }
+function woocommerce_page_title() { return 'Shop'; }
+function woocommerce_catalog_ordering( $args = array() ) {
+	echo '<form class="woocommerce-ordering" method="get"><label class="orderby-label" for="woocommerce-orderby">Shop order</label><select name="orderby" class="orderby" id="woocommerce-orderby"><option value="menu_order" selected="selected">Default sorting</option><option value="popularity">Sort by popularity</option><option value="date">Sort by latest</option><option value="price">Sort by price: low to high</option><option value="price-desc">Sort by price: high to low</option></select><input type="hidden" name="paged" value="1"></form>';
+}
 function woocommerce_product_loop() { return true; }
 function woocommerce_product_loop_start() { echo '<ul class="products">'; }
 function woocommerce_product_loop_end() { echo '</ul>'; }
 function wc_get_template_part() { require get_template_directory() . '/woocommerce/content-product.php'; }
-function wc_product_class( $class = '', $product = null ) { echo 'class="' . esc_attr( $class ) . '"'; }
-function wc_get_loop_prop( $prop, $default = 0 ) { static $loop = 0; return 'loop' === $prop ? ++$loop : $default; }
-function wc_get_stock_html( $product ) { return '<p class="stock in-stock">Available for preorder</p>'; }
+function wc_product_class( $class = '', $product = null ) { global $preview_loop; $preview_loop = (int) $preview_loop + 1; $type = $product instanceof WC_Product ? $product->get_type() : 'simple'; echo 'class="product type-product status-publish instock purchasable product-type-' . esc_attr( $type ) . ' ' . esc_attr( $class ) . '"'; }
+function wc_get_loop_prop( $prop, $default = 0 ) { global $preview_posts, $preview_loop; if ( 'loop' === $prop ) { return (int) $preview_loop; } if ( 'total' === $prop ) { return is_array( $preview_posts ) ? count( $preview_posts ) : 0; } return $default; }
+function wc_get_stock_html( $product ) { $row = $product instanceof WC_Product ? sr2_preview_catalog_row( $product->get_sku() ) : array(); return '1' === ( $row['is_preorder'] ?? '' ) ? '<p class="stock in-stock">Available for preorder</p>' : '<p class="stock in-stock">In stock</p>'; }
+/** Registry projection (wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv) for names, prices and pre-order state; never a second source of product facts. */
+function sr2_preview_catalog_row( $sku ) {
+	static $rows = null;
+	if ( null === $rows ) {
+		$rows = array();
+		$path = dirname( __DIR__ ) . '/wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv';
+		$handle = is_readable( $path ) ? fopen( $path, 'r' ) : false;
+		if ( $handle ) {
+			$header = fgetcsv( $handle );
+			while ( $header && false !== ( $line = fgetcsv( $handle ) ) ) {
+				if ( count( $line ) === count( $header ) ) { $row = array_combine( $header, $line ); $rows[ strtolower( $row['sku'] ) ] = $row; }
+			}
+			fclose( $handle );
+		}
+	}
+	return $rows[ strtolower( (string) $sku ) ] ?? array();
+}
 function woocommerce_template_loop_add_to_cart() {
 	global $product;
 	$url = $product instanceof WC_Product ? get_permalink( $product ) : '/tools/v2-theme-preview.php?route=product&sku=sg-005';
-	echo '<a class="button product_type_simple add_to_cart_button" href="' . esc_url( $url ) . '">Enter the scene</a>';
+	echo '<a class="button product_type_variable add_to_cart_button" href="' . esc_url( $url ) . '" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_' . esc_attr( $product instanceof WC_Product ? $product->get_id() : 0 ) . '">Select options</a><span id="woocommerce_loop_add_to_cart_link_describedby_' . esc_attr( $product instanceof WC_Product ? $product->get_id() : 0 ) . '" class="screen-reader-text">This product has multiple variants. The options may be chosen on the product page</span>';
 }
 function post_password_required() { return false; }
 function get_the_password_form() { return ''; }
@@ -371,12 +536,12 @@ function _n( $single, $plural, $number ) { return 1 === (int) $number ? $single 
 
 class WC_Product {
 	private $id; private $name; private $image; private $sku; private $gallery;
-	public function __construct( $id, $name, $image, $sku = '', $gallery = array() ) { $this->id = $id; $this->name = $name; $this->image = $image; $this->sku = $sku ?: 'preview-' . $id; $this->gallery = $gallery; }
+	public function __construct( $id, $name, $image, $sku = '', $gallery = array() ) { $this->id = $id; $row = sr2_preview_catalog_row( $sku ); $this->name = $row['name'] ?? $name; $this->image = $image; $this->sku = $sku ?: 'preview-' . $id; $this->gallery = $gallery; }
 	public function get_id() { return $this->id; }
 	public function get_name() { return $this->name; }
 	public function get_image_id() { return $this->image; }
 	public function get_gallery_image_ids() { return $this->gallery; }
-	public function get_price_html() { return '<span class="woocommerce-Price-amount amount">$128.00</span>'; }
+	public function get_price_html() { $row = sr2_preview_catalog_row( $this->sku ); $price = isset( $row['price'] ) ? (float) $row['price'] : 128.0; return '<span class="woocommerce-Price-amount amount">$' . number_format( $price, 2 ) . '</span>'; }
 	public function is_in_stock() { return true; }
 	public function is_visible() { return true; }
 	public function is_purchasable() { return true; }

@@ -4,7 +4,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const { INPUTS, project, classifySelector, safe, build } = require('./build-archive-style-bundle.cjs');
+const { INPUTS, INLINE_ALLOWANCE, project, classifySelector, safe, build } = require('./build-archive-style-bundle.cjs');
+const THEME = path.resolve(__dirname, '../../wordpress-theme/skyyrose-flagship-2');
 function fixture(t) {
   const root = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'archive-projection-')));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
@@ -14,8 +15,8 @@ function fixture(t) {
   return root;
 }
 test('only positive explicit route owners classify; broad/shared/negative selectors remain', () => {
-  for (const selector of ['body', '*', '.woocommerce .button', ':not(.sr2-cart)', 'body:has(.sr2-cart)', '.sr2-search-dialog', '.sr2-cartoon', '.sr2-c-action', '.sr2-quick-view', '.sr2-size-guide-dialog']) assert.equal(classifySelector(selector), null, selector);
-  for (const selector of ['.sr2-cart__item img', '.sr2-search__result', '.sr2-story h2', '.woocommerce div.product .summary']) assert.ok(classifySelector(selector), selector);
+  for (const selector of ['body', '*', '.woocommerce .button', ':not(.sr2-cart)', 'body:has(.sr2-cart)', '.sr2-search-dialog', '.sr2-cartoon', '.sr2-c-action', '.sr2-quick-view', '.sr2-size-guide-dialog', '.sr2-band__head', '.sr2-title-display', '.sr2-lede', '.sr2-editorial-link', '.sr2-eyebrow--engraved']) assert.equal(classifySelector(selector), null, selector);
+  for (const selector of ['.sr2-cart__item img', '.sr2-search__result', '.sr2-story h2', '.woocommerce div.product .summary', '.sr2-arrival__media :is(picture, img, video)', '.sr2-chapter--flip .sr2-chapter__copy', '.sr2-title-chapter', '.sr2-page--cart > .woocommerce', '.sr2-page-grid__main', '.sr2-index-list a', '.sr2-wishlist__list table', '.woocommerce-form-track-order .form-row .button', '.sr2-page-copy--generic p']) assert.ok(classifySelector(selector), selector);
 });
 test('mixed selector rules, relative URLs, wrappers and all keyframes survive unchanged in order', () => {
   const source = '.shared{color:red}@media(max-width:600px){.sr2-cart{color:blue}.sr2-cart,.sr2-quick-view{color:gold}.shared{background:url(../sot/test.webp)}}@keyframes legacy{to{opacity:0}}.shared{color:green}';
@@ -81,4 +82,31 @@ test('input receipt rejects missing or symlinked token authority without writing
   assert.equal(fs.existsSync(path.join(root, 'archive-theme.min.css')), false);
   fs.symlinkSync(path.join(root, 'controls.min.css'), path.join(root, 'design-tokens.min.css'));
   assert.throws(() => build({ root }), /Symlink/);
+});
+
+test('Shop inline allowance: seven-sheet total above 100,000 B fails the build', t => {
+  const root = fixture(t);
+  fs.writeFileSync(path.join(root, 'controls.min.css'), '.controls{color:red}'.repeat(5100));
+  assert.ok(fs.statSync(path.join(root, 'controls.min.css')).size > INLINE_ALLOWANCE);
+  assert.throws(() => build({ root }), /Shop inline allowance exceeded/);
+  assert.equal(fs.existsSync(path.join(root, 'archive-theme.min.css')), false);
+});
+test('every theme.css class the Shop templates render survives in the committed projection', () => {
+  const templates = ['woocommerce/archive-product.php', 'woocommerce/content-product.php', 'template-parts/commerce/product-card.php', 'inc/shop-archive.php'];
+  const classes = new Set();
+  for (const rel of templates) {
+    const source = fs.readFileSync(path.join(THEME, rel), 'utf8');
+    for (const match of source.matchAll(/class="([^"]*)"/g)) {
+      for (const token of match[1].replace(/<\?php[\s\S]*?\?>/g, ' ').split(/\s+/)) if (/^[a-z][\w-]*$/.test(token)) classes.add(token);
+    }
+  }
+  assert.ok(classes.size > 20, 'Shop templates yielded too few classes: ' + classes.size);
+  const theme = fs.readFileSync(path.join(THEME, 'assets/css/theme.min.css'), 'utf8');
+  const projection = fs.readFileSync(path.join(THEME, 'assets/css/archive-theme.min.css'), 'utf8');
+  const styled = [...classes].filter(name => new RegExp('\\.' + name.replace(/[-]/g, '\\-') + '(?![\\w-])').test(theme));
+  assert.ok(styled.length > 5, 'no Shop class is styled by theme.css?');
+  const missing = styled.filter(name => !new RegExp('\\.' + name.replace(/[-]/g, '\\-') + '(?![\\w-])').test(projection));
+  assert.deepEqual(missing, [], 'Shop classes dropped from the archive projection');
+  // The probe can fail: a world-only primitive is styled by theme.css and absent from the projection.
+  assert.ok(/\.sr2-chapter(?![\w-])/.test(theme) && !/\.sr2-chapter(?![\w-])/.test(projection));
 });

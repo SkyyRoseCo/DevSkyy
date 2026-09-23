@@ -9253,3 +9253,23 @@
 - `test_worktree_fleet_git_ops.py` — git_ops against real tmp repos: option injection, branch-kind rule, push states incl. UNKNOWN (~3456 tok)
 - `test_worktree_fleet_store.py` — Registry logic with git faked: claim conflicts, release ownership + allow-list gate, prune, path validation (~5737 tok)
 - `test_worktree_fleet_tools.py` — Tool layer error mapping: heartbeat on unregistered path, git failure text, prune failures (~932 tok)
+## wordpress-theme/skyyrose-flagship-2/assets/models/
+
+- `skyy-natural-desktop.glb` — Skyy natural-motion rig, desktop tier (110k tris, 30 joints, Draco + WebP; sha256 9b405468…, 2,143,292 B); clips Skyy_Idle/Walk/Talk/Joy/Exit/Wave; wired via SKYY_3D_CONFIG.modelUrl (binary)
+- `skyy-natural-mobile.glb` — Skyy natural-motion rig, mobile tier (Draco + WebP; sha256 7267133a…, 1,247,220 B); chosen by skyy-3d.js below 47.99em or deviceMemory ≤ 4 via SKYY_3D_CONFIG.mobileModelUrl (binary)
+- `skyy-mascot.glb` — Previous 5.8 MB paid rig, retained; no runtime reference after 2.5.0 — removal is a founder decision (binary)
+
+## wordpress-theme/skyyrose-flagship-2/template-parts/collections/
+
+- `chapters.php` — The three `world` scenes as alternating `.sr2-chapter` bands (engraved index, chapter title, lede; last carries the quiet "Enter the full scene" link) (~900 tok)
+- `index.php` — Collections index for page.php: quiet head + four full-bleed `.sr2-chapter`s (lockup, founder line, "Enter the {name} collection"); no cards (~700 tok)
+
+## wordpress-theme/skyyrose-flagship-2/template-parts/home/
+
+- `editorial-film.php` — On-model film band: one founder-selected worn look per world in a `[data-home-model-loop]` strip (original + `data-loop-copy` duplicates, toggle in its own lane) (~600 tok)
+
+## wordpress-theme/skyyrose-flagship-2/template-parts/pages/
+
+- `contact.php` — Contact page composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
+- `journal-entry.php` — Single journal entry composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
+

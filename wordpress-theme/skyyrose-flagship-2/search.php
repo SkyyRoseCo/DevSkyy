@@ -33,28 +33,46 @@ if ( $query && get_query_var( 'paged', 1 ) <= 1 && function_exists( 'wc_get_prod
 }
 wp_reset_postdata();
 ?>
-<main id="primary" class="sr2-search" data-sr2-route="shop">
-	<header class="sr2-journal__hero">
-		<p class="sr2-eyebrow"><?php esc_html_e( 'Search the House', 'skyyrose-flagship-2' ); ?></p>
-		<h1><?php printf( esc_html__( 'Results for “%s”', 'skyyrose-flagship-2' ), esc_html( $query ) ); ?></h1>
-		<form class="sr2-search__form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>"><label class="screen-reader-text" for="sr2-search-field"><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></label><input id="sr2-search-field" type="search" name="s" value="<?php echo esc_attr( $query ); ?>" required><button class="sr2-c-action" type="submit"><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></button></form>
+<main id="primary" tabindex="-1" class="sr2-search" data-sr2-route="shop">
+	<header class="sr2-journal__hero sr2-band__head">
+		<div>
+			<p class="sr2-eyebrow"><?php esc_html_e( 'Search the House', 'skyyrose-flagship-2' ); ?></p>
+			<h1><?php printf( esc_html__( 'Results for “%s”', 'skyyrose-flagship-2' ), esc_html( $query ) ); ?></h1>
+		</div>
+		<form class="sr2-search__form sr2-field" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>"><label class="screen-reader-text" for="sr2-search-field"><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></label><input id="sr2-search-field" type="search" name="s" value="<?php echo esc_attr( $query ); ?>" required><button class="sr2-control" type="submit"><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></button></form>
 	</header>
 	<?php foreach ( $groups as $group => $results ) : ?>
 		<?php if ( ! $results ) { continue; } ?>
-		<section class="sr2-search__<?php echo 'products' === $group ? 'products' : 'list'; ?>" data-search-group="<?php echo esc_attr( $group ); ?>" aria-labelledby="sr2-search-<?php echo esc_attr( $group ); ?>-title">
-			<header class="sr2-section-head"><h2 id="sr2-search-<?php echo esc_attr( $group ); ?>-title"><?php echo esc_html( $labels[ $group ] ); ?></h2></header>
+		<section class="sr2-search__group sr2-search__<?php echo 'products' === $group ? 'products' : 'list'; ?>" data-search-group="<?php echo esc_attr( $group ); ?>" aria-labelledby="sr2-search-<?php echo esc_attr( $group ); ?>-title">
+			<header class="sr2-band__head sr2-search__group-head"><div><h2 id="sr2-search-<?php echo esc_attr( $group ); ?>-title" class="sr2-title-chapter"><?php echo esc_html( $labels[ $group ] ); ?></h2></div></header>
 			<?php if ( 'products' === $group ) : ?>
-				<div class="sr2-c-product-grid"><?php $index = 0; foreach ( $results as $product ) { skyyrose2_render_product_loop_card( $product, $index++ ); } ?></div>
+				<div class="sr2-garment-grid">
+					<?php $index = 0; foreach ( $results as $product ) : ?>
+						<?php get_template_part( 'template-parts/commerce/product-card', null, array( 'product' => $product, 'index' => $index++, 'heading_level' => 3, 'variant' => 'standard', 'media_priority' => 'lazy', 'frame' => false, 'sizes' => '(max-width: 47.99em) calc((100vw - 3rem) / 2), (max-width: 74.99em) calc((100vw - 5rem) / 3), 360px' ) ); ?>
+					<?php endforeach; ?>
+				</div>
 			<?php else : ?>
-				<?php foreach ( $results as $result ) : ?>
-					<article class="sr2-search__result"><h2><a href="<?php echo esc_url( get_permalink( $result ) ); ?>"><?php echo esc_html( get_the_title( $result ) ); ?></a></h2><?php if ( 'stories' === $group ) : ?><p><?php echo esc_html( wp_trim_words( get_the_excerpt( $result ), 32 ) ); ?></p><?php endif; ?></article>
-				<?php endforeach; ?>
+				<ol class="sr2-press-list sr2-search__results">
+					<?php foreach ( $results as $result ) : ?>
+						<li class="sr2-press-list__item sr2-search__result">
+							<div class="sr2-press-list__copy">
+								<h3 class="sr2-title-editorial"><a href="<?php echo esc_url( get_permalink( $result ) ); ?>"><?php echo esc_html( get_the_title( $result ) ); ?></a></h3>
+								<?php if ( 'stories' === $group ) : ?><p><?php echo esc_html( wp_trim_words( get_the_excerpt( $result ), 32 ) ); ?></p><?php endif; ?>
+							</div>
+							<a class="sr2-editorial-link sr2-press-list__link" href="<?php echo esc_url( get_permalink( $result ) ); ?>" tabindex="-1" aria-hidden="true"><?php esc_html_e( 'Open', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">→</span></a>
+						</li>
+					<?php endforeach; ?>
+				</ol>
 			<?php endif; ?>
 		</section>
 	<?php endforeach; ?>
 	<?php if ( ! array_filter( $groups ) ) : ?>
-		<section class="sr2-search__empty"><h2><?php esc_html_e( 'Nothing surfaced.', 'skyyrose-flagship-2' ); ?></h2><p><?php esc_html_e( 'Try a collection, product, or story title.', 'skyyrose-flagship-2' ); ?></p><a class="sr2-c-action" href="<?php echo esc_url( function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' ) ); ?>"><?php esc_html_e( 'Shop all pieces', 'skyyrose-flagship-2' ); ?></a></section>
+		<section class="sr2-search__empty">
+			<h2 class="sr2-title-chapter"><?php esc_html_e( 'Nothing surfaced.', 'skyyrose-flagship-2' ); ?></h2>
+			<p class="sr2-lede"><?php esc_html_e( 'Try a collection, product, or story title.', 'skyyrose-flagship-2' ); ?></p>
+			<a class="sr2-editorial-link" href="<?php echo esc_url( function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' ) ); ?>"><?php esc_html_e( 'Shop all pieces', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">→</span></a>
+		</section>
 	<?php endif; ?>
-	<nav class="sr2-pagination"><?php the_posts_pagination(); ?></nav>
+	<nav class="sr2-pagination" aria-label="<?php esc_attr_e( 'Search pages', 'skyyrose-flagship-2' ); ?>"><?php the_posts_pagination(); ?></nav>
 </main>
 <?php get_footer(); ?>

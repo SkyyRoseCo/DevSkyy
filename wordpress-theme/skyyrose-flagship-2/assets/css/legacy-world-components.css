@@ -45,85 +45,6 @@
 .sr2-worlds.is-scroll-world .sr2-world { flex: 0 0 100vw; min-height: 100%; scroll-snap-align: none; }
 .sr2-worlds.is-scroll-world .sr2-world__copy { max-width: 720px; }
 .sr2-worlds.is-scroll-world .sr2-rail-progress { position: absolute; right: var(--sr2-page-pad); bottom: var(--sr2-space-5); left: var(--sr2-page-pad); z-index: 3; margin: 0; }
-.sr2-collection-hero { position: relative; display: grid; min-height: 100dvh; isolation: isolate; overflow: hidden; }
-.sr2-collection-hero__media, .sr2-collection-hero__veil { position: absolute; inset: 0; z-index: -2; }
-.sr2-collection-hero__media picture { display: block; width: 100%; height: 100%; transform: scale(1.008); transform-origin: var(--sr2-hero-origin, 50% 50%); animation: sr2-hero-breathe 14s cubic-bezier(.25, 1, .5, 1) infinite alternate; animation-play-state: paused; will-change: transform; }
-.sr2-collection-hero.is-scene-running .sr2-collection-hero__media picture { animation-play-state: running; }
-.sr2-collection-hero__media img { width: 100%; height: 100%; object-fit: cover; }
-.sr2-collection-hero__motion { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 800ms cubic-bezier(.25, 1, .5, 1); }
-.sr2-collection-hero.has-motion-plate .sr2-collection-hero__motion { opacity: 1; }
-.sr2-collection-hero.has-motion-plate .sr2-collection-hero__effects { display: none; }
-.sr2-collection-hero.has-motion-plate .sr2-collection-hero__media picture { animation: none; transform: none; will-change: auto; }
-.sr2-motion-reduced .sr2-collection-hero__motion { display: none; }
-.sr2-collection-hero__veil { z-index: -1; background: linear-gradient(0deg, rgba(5,5,6,.45), transparent 22%); }
-.sr2-collection-hero__motion-toggle { position: absolute; right: clamp(1rem, 2.5vw, 2.5rem); bottom: clamp(1rem, 2.5vw, 2.5rem); z-index: 3; min-height: 44px; padding: .7rem .9rem; border: 1px solid rgba(245, 241, 232, .42); background: rgba(4, 5, 6, .62); color: var(--sr2-ink); font-family: var(--sr2-font-ui); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; backdrop-filter: blur(.7rem); cursor: pointer; transition: border-color 220ms cubic-bezier(.25, 1, .5, 1), background 220ms cubic-bezier(.25, 1, .5, 1), transform 120ms cubic-bezier(.25, 1, .5, 1); }
-.sr2-collection-hero__motion-toggle:hover, .sr2-collection-hero__motion-toggle:focus-visible { border-color: var(--sr2-ink); background: rgba(4, 5, 6, .82); outline: none; }
-.sr2-collection-hero__motion-toggle:active { transform: scale(.97); }
-.sr2-collection-hero__effects { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; contain: paint; }
-.sr2-scene-effect { position: absolute; inset: 0; opacity: 0; animation-play-state: paused; will-change: transform, opacity; }
-.sr2-collection-hero__effects[data-scene-state="running"] .sr2-scene-effect { animation-play-state: running; }
-.sr2-scene-effect--hook { mix-blend-mode: screen; opacity: 0; animation: sr2-hero-hook 8s cubic-bezier(.22, 1, .36, 1) infinite; }
-[data-collection="signature"] .sr2-scene-effect--hook { background: linear-gradient(105deg, transparent 16%, rgba(236, 190, 119, .04) 36%, rgba(255, 224, 164, .82) 49%, rgba(236, 190, 119, .04) 61%, transparent 82%); filter: blur(.35rem); mask-image: linear-gradient(transparent 38%, #000 55% 86%, transparent 98%); }
-[data-collection="black-rose"] .sr2-scene-effect--hook { background: radial-gradient(circle at 91% 14%, rgba(239, 244, 246, .7), transparent 7%), linear-gradient(111deg, transparent 48%, rgba(229, 237, 240, .76) 58%, transparent 67%); filter: blur(.25rem); mask-image: linear-gradient(#000 0 67%, transparent 89%); }
-[data-collection="love-hurts"] .sr2-scene-effect--hook { background: radial-gradient(ellipse at 50% 49%, rgba(255, 101, 71, .72), transparent 17%), linear-gradient(90deg, transparent 8%, rgba(191, 8, 25, .62) 49%, transparent 91%); filter: blur(.45rem); mask-image: linear-gradient(#000 0 74%, transparent 96%); }
-[data-collection="kids-capsule"] .sr2-scene-effect--hook { background: radial-gradient(circle at 51% 15%, rgba(255, 218, 144, .88), transparent 9%), linear-gradient(105deg, transparent 27%, rgba(255, 213, 132, .08) 43%, rgba(255, 229, 177, .72) 51%, rgba(255, 213, 132, .08) 60%, transparent 75%); filter: blur(.3rem); mask-image: radial-gradient(ellipse at 51% 49%, #000 0 31%, transparent 61%); }
-.sr2-scene-effect--clouds { background: radial-gradient(ellipse at 30% 28%, rgba(186, 193, 205, .18), transparent 34%), radial-gradient(ellipse at 72% 18%, rgba(103, 113, 131, .26), transparent 38%); filter: blur(1.5rem); mix-blend-mode: screen; opacity: .24; transform: scale(1.14); animation: sr2-cloud-roll 24s linear infinite; }
-.sr2-scene-effect--bridge-lights { background: radial-gradient(circle at 29% 64%, rgba(222, 211, 179, .96) 0 .16rem, transparent .38rem), radial-gradient(circle at 35% 61%, rgba(222, 211, 179, .82) 0 .14rem, transparent .34rem), radial-gradient(circle at 43% 58%, rgba(222, 211, 179, .9) 0 .14rem, transparent .34rem), radial-gradient(circle at 53% 56%, rgba(222, 211, 179, .84) 0 .14rem, transparent .34rem), radial-gradient(circle at 63% 56%, rgba(222, 211, 179, .92) 0 .14rem, transparent .36rem), radial-gradient(circle at 73% 58%, rgba(222, 211, 179, .72) 0 .13rem, transparent .32rem); background-size: 18% 18%; background-position: 0 0, 8% 4%, 18% 1%, 32% 0, 49% 3%, 66% 0; background-repeat: no-repeat; mix-blend-mode: screen; animation: sr2-bridge-flicker 3.8s steps(5, end) infinite; }
-.sr2-scene-effect--signature-glow { background: radial-gradient(ellipse at 74% 73%, color-mix(in srgb, var(--sr2-gold) 30%, transparent), transparent 31%), radial-gradient(circle at 71% 58%, color-mix(in srgb, var(--sr2-gold) 60%, transparent), transparent 20%); mix-blend-mode: screen; animation: sr2-signature-glow 5.5s ease-in-out infinite; }
-.sr2-scene-effect--throne-glow { background: radial-gradient(circle at 53% 57%, color-mix(in srgb, var(--sr2-rose) 42%, transparent), transparent 20%), radial-gradient(circle at 52% 64%, color-mix(in srgb, var(--sr2-gold) 28%, transparent), transparent 32%); mix-blend-mode: screen; animation: sr2-throne-glow 4.6s ease-in-out infinite; }
-.sr2-scene-effect--petals { inset: -10% 0 0; }
-.sr2-scene-effect--petals i { position: absolute; top: -8%; left: var(--petal-x); display: block; width: var(--petal-size); height: calc(var(--petal-size) * 1.45); border-radius: 72% 28% 68% 32%; background: color-mix(in srgb, var(--sr2-crimson) 82%, #6f0d1a); box-shadow: 0 .15rem .35rem rgba(0,0,0,.28); opacity: 0; transform: rotate(24deg); animation: sr2-petal-fall var(--petal-duration) linear var(--petal-delay) infinite; }
-.sr2-scene-effect--petals i:nth-child(1) { --petal-x: 8%; --petal-size: .65rem; --petal-duration: 9s; --petal-delay: -1.2s; --petal-drift: 14vw; }
-.sr2-scene-effect--petals i:nth-child(2) { --petal-x: 17%; --petal-size: .48rem; --petal-duration: 11s; --petal-delay: -6s; --petal-drift: -9vw; }
-.sr2-scene-effect--petals i:nth-child(3) { --petal-x: 28%; --petal-size: .72rem; --petal-duration: 10s; --petal-delay: -3.6s; --petal-drift: 18vw; }
-.sr2-scene-effect--petals i:nth-child(4) { --petal-x: 39%; --petal-size: .55rem; --petal-duration: 12s; --petal-delay: -8s; --petal-drift: -12vw; }
-.sr2-scene-effect--petals i:nth-child(5) { --petal-x: 48%; --petal-size: .44rem; --petal-duration: 8.5s; --petal-delay: -4s; --petal-drift: 10vw; }
-.sr2-scene-effect--petals i:nth-child(6) { --petal-x: 56%; --petal-size: .7rem; --petal-duration: 10.5s; --petal-delay: -1s; --petal-drift: -16vw; }
-.sr2-scene-effect--petals i:nth-child(7) { --petal-x: 64%; --petal-size: .52rem; --petal-duration: 9.6s; --petal-delay: -5.2s; --petal-drift: 12vw; }
-.sr2-scene-effect--petals i:nth-child(8) { --petal-x: 73%; --petal-size: .78rem; --petal-duration: 12.5s; --petal-delay: -7.4s; --petal-drift: -20vw; }
-.sr2-scene-effect--petals i:nth-child(9) { --petal-x: 81%; --petal-size: .46rem; --petal-duration: 8.8s; --petal-delay: -2.8s; --petal-drift: 9vw; }
-.sr2-scene-effect--petals i:nth-child(10) { --petal-x: 89%; --petal-size: .62rem; --petal-duration: 10.8s; --petal-delay: -9s; --petal-drift: -14vw; }
-.sr2-scene-effect--petals i:nth-child(11) { --petal-x: 23%; --petal-size: .39rem; --petal-duration: 13s; --petal-delay: -10s; --petal-drift: 16vw; }
-.sr2-scene-effect--petals i:nth-child(12) { --petal-x: 69%; --petal-size: .58rem; --petal-duration: 11.4s; --petal-delay: -3s; --petal-drift: -10vw; }
-[data-collection="signature"] .sr2-scene-effect--clouds, [data-collection="signature"] .sr2-scene-effect--bridge-lights, [data-collection="signature"] .sr2-scene-effect--throne-glow, [data-collection="signature"] .sr2-scene-effect--petals, [data-collection="black-rose"] .sr2-scene-effect--signature-glow, [data-collection="black-rose"] .sr2-scene-effect--throne-glow, [data-collection="black-rose"] .sr2-scene-effect--petals, [data-collection="love-hurts"] .sr2-scene-effect--clouds, [data-collection="love-hurts"] .sr2-scene-effect--bridge-lights, [data-collection="love-hurts"] .sr2-scene-effect--signature-glow, [data-collection="love-hurts"] .sr2-scene-effect--throne-glow, [data-collection="kids-capsule"] .sr2-scene-effect--clouds, [data-collection="kids-capsule"] .sr2-scene-effect--bridge-lights, [data-collection="kids-capsule"] .sr2-scene-effect--signature-glow, [data-collection="kids-capsule"] .sr2-scene-effect--petals { display: none; }
-.sr2-motion-reduced .sr2-collection-hero__effects { display: none; }
-@media (max-width: 640px), (hover: none), (pointer: coarse) {
-	.sr2-scene-effect--clouds { filter: blur(1rem); opacity: .17; }
-	.sr2-scene-effect--bridge-lights { opacity: .72; }
-	.sr2-scene-effect--petals i:nth-child(2n) { display: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-	.sr2-collection-hero__motion { display: none; }
-	.sr2-collection-hero__effects { display: none; }
-}
-.sr2-collection-identity { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(2rem, 8vw, 10rem); align-items: end; padding: clamp(3rem, 7vw, 7rem) var(--sr2-page-pad); border-bottom: 1px solid var(--sr2-line); background: radial-gradient(circle at 75% 20%, color-mix(in srgb, var(--sr2-accent) 9%, transparent), transparent 45%), var(--sr2-void); }
-.sr2-collection-identity__copy { max-width: 52rem; }
-.sr2-collection-identity__title { max-width: 10ch; margin: 0; font-family: var(--sr2-font-display); font-size: clamp(3.4rem, 8vw, 8.5rem); font-weight: 700; letter-spacing: -.065em; line-height: .82; text-wrap: balance; }
-.sr2-collection-identity__line { max-width: 48ch; margin: var(--sr2-space-6) 0 0; color: var(--sr2-muted); font-size: clamp(1rem, 1.5vw, 1.25rem); }
-.sr2-collection-identity__chapter { margin: 0; color: var(--sr2-muted); font-family: var(--sr2-font-ui); font-size: 0.62rem; letter-spacing: 0.14em; writing-mode: vertical-rl; }
-.sr2-collection-intro { display: grid; grid-template-columns: 0.35fr 1fr 0.65fr; gap: clamp(2rem, 6vw, 7rem); align-items: start; padding: var(--sr2-section-pad) var(--sr2-page-pad); border-bottom: 1px solid var(--sr2-line); }
-.sr2-collection-intro > p { color: var(--sr2-accent); font-family: var(--sr2-font-ui); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; }
-.sr2-collection-intro h2 { margin: 0; font-family: var(--sr2-font-display); font-size: clamp(3rem, 7vw, 7.5rem); letter-spacing: -0.06em; line-height: 0.86; }
-.sr2-collection-intro > span { color: var(--sr2-muted); font-size: 1.1rem; }
-[data-collection="love-hurts"] .sr2-collection-intro h2 { color: var(--sr2-ink); }
-[data-collection="black-rose"] .sr2-collection-intro h2 { letter-spacing: -0.03em; text-transform: uppercase; }
-[data-collection="kids-capsule"] .sr2-collection-intro h2 { letter-spacing: -0.055em; }
-[data-collection="signature"] .sr2-collection-identity__copy { border-inline-start: 1px solid color-mix(in srgb, var(--sr2-gold) 78%, transparent); padding-inline-start: clamp(1rem, 2vw, 1.5rem); }
-[data-collection="signature"] .sr2-collection-hero { --sr2-hero-origin: 50% 58%; }
-[data-collection="signature"] .sr2-collection-identity__line { max-width: 38ch; }
-[data-collection="signature"] .sr2-collection-identity__chapter { letter-spacing: .25em; }
-[data-collection="black-rose"] .sr2-collection-hero__media img { object-position: center center; }
-[data-collection="black-rose"] .sr2-collection-hero { --sr2-hero-origin: 58% 48%; }
-[data-collection="black-rose"] .sr2-collection-identity__title { text-transform: uppercase; }
-[data-collection="love-hurts"] .sr2-collection-identity__copy { justify-self: end; text-align: right; }
-[data-collection="love-hurts"] .sr2-collection-hero { --sr2-hero-origin: 50% 54%; }
-[data-collection="love-hurts"] .sr2-collection-identity__title, [data-collection="love-hurts"] .sr2-collection-identity__line { margin-left: auto; }
-[data-collection="love-hurts"] .sr2-collection-identity__chapter { color: var(--sr2-crimson); }
-[data-collection="kids-capsule"] .sr2-collection-identity__chapter { color: var(--sr2-gold); }
-[data-collection="kids-capsule"] .sr2-collection-hero { --sr2-hero-origin: 51% 47%; }
-.sr2-collection-subchapter { margin-top: clamp(4rem, 9vw, 9rem); padding: clamp(2rem, 5vw, 5rem) 0 0; border-top: 1px solid var(--sr2-line); }
-.sr2-collection-subchapter > h2 { max-width: 12ch; margin: .2em 0 .35em; color: var(--sr2-ink); font-family: var(--sr2-font-display); font-size: clamp(2.6rem, 6vw, 6rem); letter-spacing: -.06em; line-height: .86; }
-.sr2-collection-subchapter > p:not(.sr2-eyebrow) { max-width: 52ch; margin: 0 0 clamp(2rem, 4vw, 4rem); color: var(--sr2-muted); }
 .sr2-jersey-reveal { position: relative; isolation: isolate; overflow: clip; padding: clamp(5rem, 11vw, 11rem) var(--sr2-page-pad); border-bottom: 1px solid var(--sr2-line); background: radial-gradient(circle at 78% 12%, color-mix(in srgb, var(--sr2-silver) 18%, transparent), transparent 34%), #090a0b; }
 .sr2-jersey-reveal::before { position: absolute; inset: 0; z-index: -1; content: "00 01 02 03 04 05"; color: color-mix(in srgb, var(--sr2-ink) 5%, transparent); font-family: var(--sr2-font-display); font-size: clamp(10rem, 32vw, 38rem); font-weight: 900; letter-spacing: -0.12em; line-height: .72; pointer-events: none; white-space: nowrap; transform: translate(-4%, 10%); }
 .sr2-jersey-reveal__head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .6fr); gap: clamp(2rem, 8vw, 9rem); align-items: end; margin-bottom: clamp(3rem, 7vw, 7rem); }
@@ -166,32 +87,6 @@
 @media (max-width: 760px) { .sr2-jersey-reveal__head, .sr2-jersey-reveal__grid { grid-template-columns: 1fr; } .sr2-jersey-reveal__piece { grid-template-rows: auto minmax(18rem, 112vw) auto auto; border-block-start: 1px solid var(--sr2-line); border-inline-start: 0; } .sr2-jersey-reveal__piece:first-child { border-block-start: 0; } }
 @media (max-width: 560px) { .sr2-house-film__chapters { grid-template-columns: 1fr; } .sr2-house-film__controls { position: static; padding: var(--sr2-space-3); } }
 @media (prefers-reduced-motion: reduce) { .sr2-jersey-reveal__piece > a:not(.sr2-text-link) img, .sr2-house-film__media::after { transition: none; } }
-.sr2-manifesto { display: grid; grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr); gap: clamp(3rem, 8vw, 10rem); padding: var(--sr2-section-pad) var(--sr2-page-pad); border-bottom: 1px solid var(--sr2-line); }
-.sr2-manifesto__sticky { position: sticky; top: calc(var(--sr2-header) + var(--sr2-space-8)); height: fit-content; overflow: hidden; }
-.sr2-manifesto__sticky h2 { max-width: 11ch; margin: 0; font-family: var(--sr2-font-display); font-size: clamp(2.8rem, 5vw, 5.5rem); letter-spacing: -0.055em; line-height: 0.9; }
-.sr2-manifesto__mark { width: min(72%, 420px); max-height: 420px; margin: var(--sr2-space-12) auto 0; object-fit: contain; opacity: 0.45; }
-.sr2-manifesto__scroll { display: flex; flex-direction: column; gap: clamp(5rem, 12vw, 12rem); }
-.sr2-manifesto__scroll article { min-height: 55vh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; border-top: 1px solid var(--sr2-line); }
-.sr2-manifesto__scroll article > span, .sr2-manifesto__scroll figcaption { color: var(--sr2-accent); font-family: var(--sr2-font-ui); font-size: 0.62rem; letter-spacing: 0.14em; }
-.sr2-manifesto__scroll h3 { max-width: 12ch; margin: var(--sr2-space-5) 0; font-family: var(--sr2-font-display); font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 800; letter-spacing: -.055em; line-height: .88; }
-.sr2-manifesto__scroll article p { max-width: 42ch; color: var(--sr2-muted); font-size: 1.15rem; }
-.sr2-manifesto__scroll figure { margin: 0; }
-.sr2-manifesto__scroll figure img { width: 100%; max-height: 820px; object-fit: cover; }
-.sr2-manifesto__scroll figcaption { margin-top: var(--sr2-space-3); }
-.sr2-crossnav { padding: var(--sr2-section-pad) var(--sr2-page-pad); }
-.sr2-crossnav > a { display: grid; grid-template-columns: 1fr 1fr auto; align-items: center; gap: var(--sr2-space-6); padding: var(--sr2-space-6) 0; border-top: 1px solid var(--sr2-line); color: var(--sr2-muted); text-decoration: none; transition: color var(--sr2-fast), padding var(--sr2-normal) var(--sr2-ease); }
-.sr2-crossnav > a:last-child { border-bottom: 1px solid var(--sr2-line); }
-.sr2-crossnav > a span { color: var(--sr2-accent); font-family: var(--sr2-font-script); font-size: clamp(2rem, 5vw, 5rem); line-height: 1; }
-.sr2-crossnav > a em { font-style: normal; }
-.sr2-crossnav > a:hover, .sr2-crossnav > a:focus-visible { padding-inline: var(--sr2-space-5); color: var(--sr2-ink); }
-@media (max-width: 900px) {
-	.sr2-collection-intro { grid-template-columns: 1fr; }
-	.sr2-collection-intro > p { margin: 0; }
-	.sr2-manifesto { grid-template-columns: 1fr; }
-	.sr2-manifesto__sticky { position: relative; top: auto; }
-	.sr2-manifesto__mark { max-height: 260px; }
-	.sr2-manifesto__scroll article { min-height: auto; padding-block: var(--sr2-space-16); }
-}
 @media (max-width: 640px) {
 	.sr2-world { flex-basis: 90vw; min-height: 570px; }
 	.sr2-world strong { font-size: clamp(3.2rem, 17vw, 5.5rem); }
@@ -208,15 +103,18 @@
 	.sr2-world[data-scene-id="sig-commerce-2"] .sr2-world__copy { right: .75rem; left: 44%; padding: .85rem; }
 	.sr2-world[data-scene-id="sig-commerce-2"] .sr2-world__copy strong { font-size: clamp(2.15rem, 10vw, 3rem); }
 	.sr2-world[data-scene-id="sig-commerce-2"] .sr2-world__model--signature-bay-left { right: auto; bottom: 2%; left: -3%; height: 66%; transform: none; }
-	.sr2-collection-hero { min-height: 760px; }
-	.sr2-collection-hero__chapter { display: none; }
-	.sr2-crossnav > a { grid-template-columns: 1fr auto; }
-	.sr2-crossnav > a em { display: none; }
 }
-.sr2-world-story { padding-top: clamp(6rem, 10vw, 10rem); background: linear-gradient(180deg, #090909, var(--sr2-void)); }
-.sr2-collection-shop { position: relative; padding-top: clamp(7rem, 12vw, 12rem); border-top: 1px solid var(--sr2-line); }
-.sr2-collection-shop::before { position: absolute; top: 0; left: var(--sr2-page-pad); width: min(18rem, 35vw); height: 2px; background: var(--sr2-accent); content: ""; }
-@media (max-width: 780px) { .sr2-collection-identity { grid-template-columns: 1fr; } .sr2-collection-identity__copy, [data-collection] .sr2-collection-identity__copy { max-width: min(100%, 34rem); text-align: left; justify-self: start; } [data-collection="love-hurts"] .sr2-collection-identity__title, [data-collection="love-hurts"] .sr2-collection-identity__line { margin-left: 0; } .sr2-collection-identity__chapter { writing-mode: horizontal-tb; } }
 .sr2-jersey-reveal__grid.sr2-products { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.2rem, 2.5vw, 2.8rem); padding-block: var(--sr2-space-6); border: 0; }
 @media (max-width: 1024px) { .sr2-jersey-reveal__grid.sr2-products { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .sr2-jersey-reveal__grid.sr2-products { grid-template-columns: minmax(0, 1fr); } }
+
+/* Collections index (template-parts/collections/index.php): four full-bleed chapters on the
+ * theme.css primitives. This sheet is the one loaded on the collections page. */
+.sr2-collections-index__head .sr2-band__head { margin-bottom: 0; }
+.sr2-collections-index__head .sr2-eyebrow { margin: 0; }
+.sr2-collections-index__chapter { border-top: 1px solid var(--sr2-line-soft); }
+.sr2-collections-index__chapter .sr2-chapter__copy > .sr2-lede { max-width: 44ch; }
+.sr2-collections-index__title { margin: 0; }
+.sr2-collections-index__lockup { display: block; width: clamp(10rem, 22vw, 18rem); height: auto; }
+.sr2-collections-index__lockup--mark { width: auto; height: clamp(4.5rem, 8vw, 6.5rem); }
+.sr2-collections-index__action { margin: var(--sr2-space-2) 0 0; }

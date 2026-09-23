@@ -43,9 +43,14 @@ class WC_Product {
 }
 function wc_get_product( $id ) { $GLOBALS['hydrated'][] = $id; return new WC_Product( $id ); }
 function skyyrose2_product_presentation( $product ) { return array( 'collection' => $GLOBALS['collections'][ $product->ID ] ?? 'signature' ); }
+function skyyrose2_shop_card_sizes() { return '(max-width: 47.99em) calc(100vw - 2rem), 363px'; }
+function skyyrose2_approved_card_front( $product ) {
+	if ( array_key_exists( $product->ID, $GLOBALS['fronts'] ?? array() ) ) { return $GLOBALS['fronts'][ $product->ID ]; }
+	return array( 'src' => 'https://example.test/theme/assets/products/sg-005-front.webp', 'card_src' => 'https://example.test/theme/assets/derived/card-fronts/sg-005-640w.webp', 'srcset' => 'https://example.test/theme/assets/derived/card-fronts/sg-005-320w.webp 320w, https://example.test/theme/assets/derived/card-fronts/sg-005-640w.webp 640w', 'width' => 1024, 'height' => 1536, 'alt' => 'Bay Bridge Shirt' );
+}
 require SKYYROSE2_DIR . '/inc/performance.php';
 function reset_case() {
-	foreach ( array( 'admin', 'visibility_filter', 'loop_action', 'display', 'term_display', 'hidden', 'collections', 'woocommerce_loop' ) as $key ) { unset( $GLOBALS[ $key ] ); }
+	foreach ( array( 'admin', 'visibility_filter', 'loop_action', 'display', 'term_display', 'hidden', 'collections', 'fronts', 'woocommerce_loop' ) as $key ) { unset( $GLOBALS[ $key ] ); }
 	$GLOBALS['route'] = 'shop';
 	$GLOBALS['wp_query'] = new WP_Query();
 	$GLOBALS['wp_the_query'] = $GLOBALS['wp_query'];
@@ -55,16 +60,16 @@ function check( $condition, $message ) { if ( ! $condition ) { throw new Runtime
 reset_case();
 $before = serialize( $GLOBALS['wp_query'] );
 $hint = skyyrose2_performance_route_preloads();
-check( count( $hint ) === 1 && str_ends_with( $hint[0]['href'], 'signature-portal-statue-640w.webp' ) && $hint[0]['fetchpriority'] === 'high', 'Exact first frame hint' );
+check( count( $hint ) === 1 && str_ends_with( $hint[0]['href'], 'sg-005-640w.webp' ) && $hint[0]['fetchpriority'] === 'high' && $hint[0]['type'] === 'image/webp' && str_contains( $hint[0]['imagesrcset'], 'sg-005-320w.webp 320w' ) && $hint[0]['imagesizes'] === skyyrose2_shop_card_sizes(), 'Exact first garment hint with the card srcset and sizes' );
 check( serialize( $GLOBALS['wp_query'] ) === $before && ! isset( $GLOBALS['woocommerce_loop'] ) && $GLOBALS['hydrated'] === array( 1 ), 'No cursor, loop or selection mutation' );
 check( count( skyyrose2_performance_preload_resources( $hint ) ) === 1, 'Native hint deduplication' );
 reset_case();
 $GLOBALS['hidden'] = array( 1 );
-check( ! empty( skyyrose2_performance_archive_frame_preload() ) && $GLOBALS['hydrated'] === array( 1, 2 ), 'Invisible products skipped in resolved order' );
+check( ! empty( skyyrose2_performance_archive_front_preload() ) && $GLOBALS['hydrated'] === array( 1, 2 ), 'Invisible products skipped in resolved order' );
 reset_case();
 $GLOBALS['wp_query']->posts = array( new WP_Post( 2 ), new WP_Post( 1 ) );
-$GLOBALS['collections'][2] = 'unknown';
-check( skyyrose2_performance_archive_frame_preload() === array() && $GLOBALS['hydrated'] === array( 2 ), 'Unknown first visible product cannot borrow later frame' );
+$GLOBALS['fronts'][2] = array();
+check( skyyrose2_performance_archive_front_preload() === array() && $GLOBALS['hydrated'] === array( 2 ), 'First visible product without an approved front cannot borrow a later one' );
 $cases = array(
 	'admin' => function() { $GLOBALS['admin'] = true; },
 	'visibility extension' => function() { $GLOBALS['visibility_filter'] = true; },
@@ -84,13 +89,13 @@ $cases = array(
 );
 foreach ( $cases as $name => $setup ) {
 	reset_case(); $setup();
-	check( skyyrose2_performance_archive_frame_preload() === array(), $name . ' must omit hint' );
+	check( skyyrose2_performance_archive_front_preload() === array(), $name . ' must omit hint' );
 	check( $GLOBALS['hydrated'] === array(), $name . ' must not hydrate products' );
 }
 reset_case();
 $GLOBALS['route'] = 'category';
-check( ! empty( skyyrose2_performance_archive_frame_preload() ), 'Product-only taxonomy allowed' );
+check( ! empty( skyyrose2_performance_archive_front_preload() ), 'Product-only taxonomy allowed' );
 reset_case();
 $GLOBALS['hidden'] = array( 1, 2 );
-check( skyyrose2_performance_archive_frame_preload() === array(), 'All invisible gives no hint' );
-echo "PASS native archive preload order, nonmutation, deduplication and 15 exclusion cases\n";
+check( skyyrose2_performance_archive_front_preload() === array(), 'All invisible gives no hint' );
+echo "PASS native archive garment-front preload order, nonmutation, deduplication and 15 exclusion cases\n";

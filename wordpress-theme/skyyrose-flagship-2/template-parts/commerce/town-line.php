@@ -26,9 +26,9 @@ if ( ! $town_products ) {
 ?>
 <section class="sr2-town-line" aria-labelledby="sr2-town-line-title" data-collection="black-rose" data-presentation="jersey-series">
 	<header class="sr2-town-line__head">
-		<p class="sr2-world-index"><?php esc_html_e( 'Jersey Series / The Town Line', 'skyyrose-flagship-2' ); ?></p>
-		<h2 id="sr2-town-line-title"><?php esc_html_e( 'Every number carries the tour.', 'skyyrose-flagship-2' ); ?></h2>
-		<p><?php esc_html_e( 'Oakland is the origin. San Francisco, The Bay, and San Jose become chapters on The Town Line: SkyyRose’s fictional house journey.', 'skyyrose-flagship-2' ); ?></p>
+		<p class="sr2-chapter__index sr2-eyebrow sr2-eyebrow--engraved"><?php esc_html_e( 'Jersey Series / The Town Line', 'skyyrose-flagship-2' ); ?></p>
+		<h2 id="sr2-town-line-title" class="sr2-title-chapter"><?php esc_html_e( 'Every number carries the tour.', 'skyyrose-flagship-2' ); ?></h2>
+		<p class="sr2-lede"><?php esc_html_e( 'Oakland is the origin. San Francisco, The Bay, and San Jose become chapters on The Town Line: SkyyRose’s fictional house journey.', 'skyyrose-flagship-2' ); ?></p>
 	</header>
 	<ol class="sr2-town-line__directory">
 		<?php foreach ( $town_products as $town_sku => $town_product ) : ?>

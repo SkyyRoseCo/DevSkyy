@@ -5,13 +5,16 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 THEME = Path(__file__).resolve().parents[1]
 MANIFEST = THEME / "data/collection-hero-motion.json"
 FUNCTIONS = THEME / "functions.php"
 TEMPLATE = THEME / "template-collection.php"
-CONTROLLER = THEME / "assets/js/theme.js"
+# The template delegates rendering to the arrival part, which is where the hero <video> is emitted.
+ARRIVAL = THEME / "template-parts/collections/arrival.php"
+CONTROLLER = THEME / "assets/js/visual-recovery.js"
 EXPECTED_SOURCES = {
     "signature": "assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
     "black-rose": "assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
@@ -155,18 +158,51 @@ def main() -> int:
 
     functions_source = FUNCTIONS.read_text(encoding="utf-8")
     template_source = TEMPLATE.read_text(encoding="utf-8")
+    arrival_source = ARRIVAL.read_text(encoding="utf-8")
     controller_source = CONTROLLER.read_text(encoding="utf-8")
     for source in EXPECTED_SOURCES.values():
         responsive_name = Path(source).stem + "-1440w.webp"
         if responsive_name not in functions_source:
             raise ValueError(f"approved responsive hero is not wired: {responsive_name}")
     if (
-        "skyyrose2_collection_hero_motion" not in template_source
+        "skyyrose2_collection_hero_motion" not in arrival_source
+        or "hero_motion_mp4" in arrival_source
         or "hero_motion_mp4" in template_source
     ):
         raise ValueError("collection template can bypass the approved hero-motion resolver")
+    # Every runtime <video> emitter must trace to an approved resolver; any other PHP emitter fails closed.
+    video_emitters = {
+        "template-parts/collections/arrival.php": ("template-parts/collections/arrival.php", "skyyrose2_collection_hero_motion("),
+        "template-parts/home/editorial-hero.php": ("front-page.php", "skyyrose2_collection_hero_motion("),
+        "page-lookbook.php": ("page-lookbook.php", "skyyrose2_collection_hero_motion("),
+        "template-parts/commerce/hero-composed-scene.php": ("template-parts/commerce/hero-composed-scene.php", "skyyrose2_approved_scroll_world_scene("),
+        "functions.php": ("functions.php", "function skyyrose2_render_black_rose_jersey_series"),
+    }
+    for php_file in sorted(THEME.rglob("*.php")):
+        relative = php_file.relative_to(THEME).as_posix()
+        if relative.startswith(("node_modules/", "scripts/", "tools/", "vendor/")):
+            continue
+        source = php_file.read_text(encoding="utf-8", errors="replace")
+        if not re.search(r"<\s*video\b", source, re.IGNORECASE) and "data-recovery-hero-video" not in source.lower():
+            continue
+        if relative not in video_emitters:
+            raise ValueError(f"unapproved video emitter: {relative}")
+        resolver_file, resolver_token = video_emitters[relative]
+        resolver_source = (THEME / resolver_file).read_text(encoding="utf-8")
+        if resolver_token not in resolver_source:
+            raise ValueError(f"{relative} emits video without {resolver_token} in {resolver_file}")
+        # A callable resolver (token ends in "(") must feed a real assignment in its
+        # resolver file — the emitter itself when they are the same file (arrival.php,
+        # page-lookbook.php, hero-composed-scene.php), or the caller that passes the
+        # result down as a template-part arg (front-page.php for editorial-hero.php).
+        # A definition-style token (the emitter IS the resolver, e.g. functions.php's
+        # jersey-series function) has no separate call to find.
+        if resolver_token.endswith("("):
+            call_name = resolver_token[:-1]
+            if not re.search(r"\$\w+(?:\[[^\]]+\])?\s*=[^=]*?" + re.escape(call_name) + r"\s*\(", resolver_source):
+                raise ValueError(f"{relative} calls {resolver_token} without an assignment in {resolver_file}")
     for runtime_guard in (
-        "markMotionFailed",
+        "failVideo",
         "prefers-reduced-motion",
         "navigator.connection",
         "IntersectionObserver",

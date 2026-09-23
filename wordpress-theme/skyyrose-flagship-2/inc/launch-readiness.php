@@ -75,10 +75,10 @@ function skyyrose2_exclude_demo_editorials( $query ) {
 }
 add_action( 'pre_get_posts', 'skyyrose2_exclude_demo_editorials', 21 );
 
-/** Founder-approved card reuse, separately labeled; never authorizes native media. */
-function skyyrose2_render_approved_pdp_styling_view( $product ) {
+/** Resolve the founder-approved styling view a PDP may reuse, or null; renders nothing. */
+function skyyrose2_approved_pdp_styling_view_front( $product ) {
 	if ( ! $product instanceof WC_Product || ! function_exists( 'skyyrose2_approved_card_front' ) ) {
-		return false;
+		return null;
 	}
 	$approved = array(
 		'br-001' => array( 'src' => 'assets/approved-card-fronts/br-001-onmodel.webp', 'sha256' => 'fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8' ),
@@ -89,24 +89,34 @@ function skyyrose2_render_approved_pdp_styling_view( $product ) {
 	);
 	$sku = strtolower( $product->get_sku() );
 	if ( ! isset( $approved[ $sku ] ) ) {
-		return false;
+		return null;
 	}
 	$entry = $approved[ $sku ];
 	$root = realpath( SKYYROSE2_DIR . '/assets' );
 	$file = realpath( SKYYROSE2_DIR . '/' . $entry['src'] );
 	if ( ! $root || ! $file || 0 !== strpos( $file, $root . DIRECTORY_SEPARATOR ) || ! is_file( $file ) || ! is_readable( $file ) || ! hash_equals( $entry['sha256'], hash_file( 'sha256', $file ) ) ) {
-		return false;
+		return null;
 	}
 	$front = skyyrose2_approved_card_front( $product );
 	if ( ! $front || $front['src'] !== SKYYROSE2_URI . '/' . $entry['src'] ) {
-		return false;
+		return null;
 	}
 	$src = $front['card_src'] ?? $front['src'];
 	$width = (int) ( $front['card_width'] ?? $front['width'] );
 	$height = (int) ( $front['card_height'] ?? $front['height'] );
 	$sizes = function_exists( 'skyyrose2_pdp_gallery_sizes' ) ? skyyrose2_pdp_gallery_sizes( $front['width'], $front['height'] ) : '';
-	return skyyrose2_render_approved_pdp_styling_front( $sku, $front, $src, $width, $height, $sizes );
+	return compact( 'sku', 'front', 'src', 'width', 'height', 'sizes' );
 }
+
+/** Founder-approved card reuse, separately labeled; never authorizes native media. */
+function skyyrose2_render_approved_pdp_styling_view( $product ) {
+	$view = skyyrose2_approved_pdp_styling_view_front( $product );
+	if ( ! $view ) {
+		return false;
+	}
+	return skyyrose2_render_approved_pdp_styling_front( $view['sku'], $view['front'], $view['src'], $view['width'], $view['height'], $view['sizes'] );
+}
+
 
 /** Render an approved original when no integrity-valid derivative is available. */
 function skyyrose2_render_approved_pdp_styling_front( $sku, $front, $src = '', $width = 0, $height = 0, $sizes = '' ) {

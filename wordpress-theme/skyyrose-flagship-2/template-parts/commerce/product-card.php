@@ -4,7 +4,10 @@
  *
  * Arguments: product (WC_Product), index (zero-based editorial order), variant
  * (standard|feature|compact), heading_level (2|3|4), media_priority (lazy|eager|high),
- * sizes (optional responsive image slot contract owned by the rendering module).
+ * sizes (optional responsive image slot contract owned by the rendering module),
+ * frame (bool, default true). frame => false renders the garment alone on its tile:
+ * no portal frame image, no frame label, no frame delivery srcset, and
+ * data-card-frame="archive". Every other attribute and native action is unchanged.
  * Eager priority requires explicit intent in the first two native archive cards.
  *
  * @package SkyyRoseFlagship2
@@ -36,8 +39,11 @@ try {
 	$collection_name = 'jersey-series' === $presentation
 		? __( 'Jersey Series', 'skyyrose-flagship-2' )
 		: ( $collections[ $collection ]['name'] ?? __( 'SkyyRose', 'skyyrose-flagship-2' ) );
-	$frame           = $collections[ $collection ]['portal_statue'] ?? array();
-	$frame_uri       = ! empty( $frame['small'] ) ? skyyrose2_sot_asset_uri( $frame['small'] ) : '';
+	// The paid portal frame stays available for the archive test and founder-directed
+	// uses; grids pass frame => false so the garment is the only image on the tile.
+	$show_frame      = ! array_key_exists( 'frame', (array) $args ) || false !== $args['frame'];
+	$frame           = $show_frame ? ( $collections[ $collection ]['portal_statue'] ?? array() ) : array();
+	$frame_uri       = $show_frame && ! empty( $frame['small'] ) ? skyyrose2_sot_asset_uri( $frame['small'] ) : '';
 	$variant         = in_array( $args['variant'] ?? '', array( 'standard', 'feature', 'compact' ), true ) ? $args['variant'] : 'standard';
 	$is_archive      = ( function_exists( 'is_shop' ) && is_shop() ) || ( function_exists( 'is_product_taxonomy' ) && is_product_taxonomy() );
 	$heading_level   = isset( $args['heading_level'] ) && in_array( (int) $args['heading_level'], array( 2, 3, 4 ), true )
@@ -73,6 +79,7 @@ try {
 	$native_stock_label = trim( wp_strip_all_tags( $stock_html ) );
 	$stock_label        = '' !== $native_stock_label ? $native_stock_label : ( $card_product->is_in_stock() ? __( 'Available', 'skyyrose-flagship-2' ) : __( 'Unavailable', 'skyyrose-flagship-2' ) );
 	$quick_view_excerpt = wp_trim_words( wp_strip_all_tags( $card_product->get_short_description() ), 26, '…' );
+	$is_preorder        = function_exists( 'skyyrose2_is_preorder_product' ) && skyyrose2_is_preorder_product( $card_product );
 	$image_attrs        = array(
 		'class'         => 'sr2-c-editorial-card__product-image',
 		'loading'       => $loading,
@@ -81,7 +88,7 @@ try {
 		'sizes'         => $image_sizes,
 	);
 	?>
-<article class="sr2-c-editorial-card" data-card-direction="living-archive" data-preorder="<?php echo function_exists( 'skyyrose2_is_preorder_product' ) && skyyrose2_is_preorder_product( $card_product ) ? 'true' : 'false'; ?>" data-sale="<?php echo method_exists( $card_product, 'is_on_sale' ) && $card_product->is_on_sale() ? 'true' : 'false'; ?>" data-card-variant="<?php echo esc_attr( $variant ); ?>" data-card-crop="full" data-card-frame="<?php echo $frame_uri ? 'v2-statue' : 'archive'; ?>" data-presentation="<?php echo esc_attr( $presentation ?: 'house' ); ?>" data-collection="<?php echo esc_attr( $collection ?: 'house' ); ?>" data-product-type="<?php echo esc_attr( $card_product->get_type() ); ?>" data-purchasable="<?php echo $card_product->is_purchasable() ? 'true' : 'false'; ?>" data-availability="<?php echo esc_attr( $stock_state ); ?>" data-media-state="<?php echo esc_attr( $media_state ); ?>" data-media-source="<?php echo esc_attr( $media_source ); ?>">
+<article class="sr2-c-editorial-card" data-card-direction="living-archive" data-preorder="<?php echo $is_preorder ? 'true' : 'false'; ?>" data-sale="<?php echo method_exists( $card_product, 'is_on_sale' ) && $card_product->is_on_sale() ? 'true' : 'false'; ?>" data-card-variant="<?php echo esc_attr( $variant ); ?>" data-card-crop="full" data-card-frame="<?php echo $frame_uri ? 'v2-statue' : 'archive'; ?>" data-presentation="<?php echo esc_attr( $presentation ?: 'house' ); ?>" data-collection="<?php echo esc_attr( $collection ?: 'house' ); ?>" data-product-type="<?php echo esc_attr( $card_product->get_type() ); ?>" data-purchasable="<?php echo $card_product->is_purchasable() ? 'true' : 'false'; ?>" data-availability="<?php echo esc_attr( $stock_state ); ?>" data-media-state="<?php echo esc_attr( $media_state ); ?>" data-media-source="<?php echo esc_attr( $media_source ); ?>">
 	<a class="sr2-c-editorial-card__media" href="<?php echo esc_url( $product_url ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>">
 		<span class="sr2-c-editorial-card__photo-window">
 		<?php if ( $front ) : ?>
@@ -112,10 +119,10 @@ try {
 		<div class="sr2-c-editorial-card__nameplate">
 			<span class="sr2-c-editorial-card__index" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $card_index + 1 ) ); ?></span>
 			<p class="sr2-c-editorial-card__collection"><?php echo esc_html( $collection_name ); ?></p>
+			<?php if ( $product_sku ) : ?>
+				<p class="sr2-c-editorial-card__reference"><span class="screen-reader-text"><?php esc_html_e( 'SKU:', 'skyyrose-flagship-2' ); ?></span><?php echo esc_html( strtoupper( $product_sku ) ); ?></p>
+			<?php endif; ?>
 		</div>
-		<?php if ( $product_sku ) : ?>
-			<p class="sr2-c-editorial-card__reference"><span class="screen-reader-text"><?php esc_html_e( 'SKU:', 'skyyrose-flagship-2' ); ?></span><?php echo esc_html( strtoupper( $product_sku ) ); ?></p>
-		<?php endif; ?>
 		<<?php echo tag_escape( $heading_tag ); ?> class="woocommerce-loop-product__title sr2-c-editorial-card__title"><a href="<?php echo esc_url( $product_url ); ?>"><?php echo esc_html( $product_name ); ?></a></<?php echo tag_escape( $heading_tag ); ?>>
 		<div class="sr2-c-editorial-card__commerce">
 			<?php if ( $price_html ) : ?>
@@ -132,15 +139,15 @@ else :
 					<span><?php echo esc_html( $stock_label ); ?></span><?php endif; ?>
 			</div>
 		</div>
-		<?php if ( function_exists( 'skyyrose2_is_preorder_product' ) && skyyrose2_is_preorder_product( $card_product ) ) : ?>
+		<?php if ( $is_preorder ) : ?>
 			<p class="sr2-c-editorial-card__edition"><?php esc_html_e( 'Pre-order edition', 'skyyrose-flagship-2' ); ?></p>
 		<?php endif; ?>
 		<div class="sr2-c-editorial-card__actions">
+			<a class="sr2-c-editorial-card__quick-view" href="<?php echo esc_url( $product_url ); ?>" data-quick-view aria-haspopup="dialog" aria-controls="sr2-quick-view-dialog" aria-expanded="false" data-quick-view-name="<?php echo esc_attr( $product_name ); ?>" data-quick-view-collection="<?php echo esc_attr( $collection_name ); ?>" data-quick-view-price="<?php echo esc_attr( wp_strip_all_tags( $price_html ) ); ?>" data-quick-view-availability="<?php echo esc_attr( $stock_label ); ?>" data-quick-view-excerpt="<?php echo esc_attr( $quick_view_excerpt ); ?>" data-quick-view-image="<?php echo esc_url( $quick_view_image ); ?>" data-quick-view-url="<?php echo esc_url( $product_url ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Quick view %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>"><?php esc_html_e( 'Quick view', 'skyyrose-flagship-2' ); ?></a>
 			<?php
 			if ( function_exists( 'woocommerce_template_loop_add_to_cart' ) ) :
 				?>
 				<?php woocommerce_template_loop_add_to_cart(); ?><?php endif; ?>
-			<a class="sr2-c-editorial-card__quick-view" href="<?php echo esc_url( $product_url ); ?>" data-quick-view aria-haspopup="dialog" aria-controls="sr2-quick-view-dialog" aria-expanded="false" data-quick-view-name="<?php echo esc_attr( $product_name ); ?>" data-quick-view-collection="<?php echo esc_attr( $collection_name ); ?>" data-quick-view-price="<?php echo esc_attr( wp_strip_all_tags( $price_html ) ); ?>" data-quick-view-availability="<?php echo esc_attr( $stock_label ); ?>" data-quick-view-excerpt="<?php echo esc_attr( $quick_view_excerpt ); ?>" data-quick-view-image="<?php echo esc_url( $quick_view_image ); ?>" data-quick-view-url="<?php echo esc_url( $product_url ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Quick view %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>"><?php esc_html_e( 'Quick view', 'skyyrose-flagship-2' ); ?></a>
 		</div>
 		<p class="sr2-c-editorial-card__feedback" data-card-cart-feedback role="status" aria-live="polite" hidden data-added="<?php echo esc_attr( __( 'Added to your bag.', 'skyyrose-flagship-2' ) ); ?>" data-failed="<?php echo esc_attr( __( 'This piece could not be added. Open the product to try again.', 'skyyrose-flagship-2' ) ); ?>"></p>
 	</div>

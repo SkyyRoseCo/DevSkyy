@@ -8,11 +8,26 @@
   var sprite = stage.querySelector('.skyyrose-mascot__image');
   var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var connection = navigator.connection;
-  var renderer, scene, camera, mixer, model, modules, controller, draco;
+  var renderer, scene, camera, mixer, model, modules, controller, draco, three;
   var phase = 'dormant';
-  var clock = function () { return window.performance ? window.performance.now() : Date.now(); };
+  var clock = function () {
+    return window.performance ? window.performance.now() : Date.now();
+  };
   var profile = { startedAt: null, firstStableFrameMs: null, modelBytes: 0, frames: [], intervals: [], stages: [] };
   var phaseStarted = 0;
+  // Rig tiers: the compact export serves narrow viewports and low-memory clients.
+  var compactClient = (function () {
+    try {
+      return (
+        window.matchMedia('(max-width: 47.99em)').matches ||
+        (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4)
+      );
+    } catch (_) {
+      return false;
+    }
+  })();
+  var tier = compactClient && config.mobileModelUrl ? 'mobile' : 'desktop';
+  stage.dataset.rigTier = tier;
   function markPhase(next) {
     var now = clock();
     if (phaseStarted) profile.stages.push({ name: phase, startedAt: phaseStarted, duration: now - phaseStarted });
@@ -22,7 +37,9 @@
   function yieldMainThread() {
     return window.scheduler && window.scheduler.yield
       ? window.scheduler.yield()
-      : new Promise(function (resolve) { setTimeout(resolve, 0); });
+      : new Promise(function (resolve) {
+          setTimeout(resolve, 0);
+        });
   }
   async function prepareShaders(targetRenderer, targetScene, targetCamera, cancelled, yieldTask) {
     if (cancelled()) return false;
@@ -63,6 +80,8 @@
   var failureReason = null;
   var actions = {};
   var currentAction;
+  var nextAction = null;
+  var entryPending = false;
   var ready = false;
   var started = false;
   var failed = false;
@@ -77,6 +96,14 @@
     actionElapsed = 0,
     actionDuration = 0;
   var facing = 0;
+  // Walk-on: two authored gait cycles carry her from beyond the viewport edge
+  // to her dock mark in a three-quarter view, then she turns and waves.
+  var ENTRY_CYCLES = 2;
+  var ENTRY_YAW = -Math.PI * 0.4;
+  var entryDistance = 0;
+  var LOAD_TIMEOUT_MS = 20000;
+  // Transient gestures play once; the mixer's finished event returns her to idle.
+  var transient = { skyy_wave: true, skyy_talk: true, skyy_joy: true, skyy_exit: true };
   // NEW UPGRADE: the approved GLB contains six held poses, not baked motion.
   // Clone their tracks and animate only existing rig joints; never mutate source clips.
   function deriveRigMotion(THREE, sourceClips, root) {
@@ -275,13 +302,19 @@
     if (profile.firstStableFrameMs === null) profile.firstStableFrameMs = clock() - profile.startedAt;
   }
   function profileModel() {
-    var textures = new Set(), materials = new Set(), bones = new Set(), geometries = new Set();
-    var geometryBytes = 0, textureBytes = 0;
+    var textures = new Set(),
+      materials = new Set(),
+      bones = new Set(),
+      geometries = new Set();
+    var geometryBytes = 0,
+      textureBytes = 0;
     model.traverse(function (node) {
       if (node.isBone) bones.add(node);
       if (node.geometry && !geometries.has(node.geometry)) {
         geometries.add(node.geometry);
-        Object.values(node.geometry.attributes).forEach(function (a) { geometryBytes += a.array.byteLength; });
+        Object.values(node.geometry.attributes).forEach(function (a) {
+          geometryBytes += a.array.byteLength;
+        });
         if (node.geometry.index) geometryBytes += node.geometry.index.array.byteLength;
       }
       (Array.isArray(node.material) ? node.material : [node.material]).filter(Boolean).forEach(function (material) {
@@ -295,11 +328,18 @@
         });
       });
     });
-    var context = renderer.getContext(), debug = context.getExtension('WEBGL_debug_renderer_info');
-    profile.gpuRenderer = debug ? context.getParameter(debug.UNMASKED_RENDERER_WEBGL) : context.getParameter(context.RENDERER);
-    profile.materials = materials.size; profile.bones = bones.size; profile.textures = textures.size;
-    profile.geometryDecodedBytes = geometryBytes; profile.textureDecodedBytesEstimate = Math.ceil(textureBytes);
-    profile.memoryBoundary = 'Typed geometry arrays plus RGBA8 texture and mip estimate; excludes driver, decoder and JavaScript heap.';
+    var context = renderer.getContext(),
+      debug = context.getExtension('WEBGL_debug_renderer_info');
+    profile.gpuRenderer = debug
+      ? context.getParameter(debug.UNMASKED_RENDERER_WEBGL)
+      : context.getParameter(context.RENDERER);
+    profile.materials = materials.size;
+    profile.bones = bones.size;
+    profile.textures = textures.size;
+    profile.geometryDecodedBytes = geometryBytes;
+    profile.textureDecodedBytesEstimate = Math.ceil(textureBytes);
+    profile.memoryBoundary =
+      'Typed geometry arrays plus RGBA8 texture and mip estimate; excludes driver, decoder and JavaScript heap.';
   }
   function showFallback() {
     firstReveal = true;
@@ -351,6 +391,7 @@
     mixer = null;
     actions = {};
     currentAction = null;
+    nextAction = null;
     ready = false;
     if (renderer) {
       renderer.dispose();
@@ -359,11 +400,47 @@
     scene = null;
   }
   function fallback(reason) {
+    // The first failure owns its reason; late callbacks cannot revive rendering.
+    if (failed) return;
     failureReason = reason || phase;
     stage.dataset.failureReason = failureReason;
     failed = true;
     teardown();
     showFallback();
+  }
+  function measureEntryDistance() {
+    if (typeof canvas.getBoundingClientRect !== 'function') return 0;
+    var rect = canvas.getBoundingClientRect();
+    var viewport = window.innerWidth || 0;
+    // She starts beyond the viewport's right edge and walks to her dock mark.
+    return rect.width && viewport ? Math.max(0, Math.round(viewport - rect.left)) : 0;
+  }
+  function enter() {
+    if (!ready || lightMode() || !actions.skyy_walk) return;
+    entryDistance = measureEntryDistance();
+    stage.dataset.actionPhase = 'walking-in';
+    stage.style.setProperty('--skyy-entry-progress', '0');
+    stage.style.setProperty('--skyy-entry-shift', entryDistance + 'px');
+    play('skyy_walk', { duration: actions.skyy_walk.getClip().duration * ENTRY_CYCLES, then: 'skyy_wave' });
+  }
+  function inFlight() {
+    return !!(
+      actionDuration ||
+      nextAction ||
+      (currentAction && three && currentAction.loop === three.LoopOnce && currentAction.isRunning())
+    );
+  }
+  function advance() {
+    var then = nextAction;
+    nextAction = null;
+    actionDuration = 0;
+    if (then && actions[then]) {
+      play(then, { once: !!transient[then] });
+      return;
+    }
+    play('skyy_idle');
+    stage.dataset.actionPhase = 'idle';
+    document.dispatchEvent(new CustomEvent('skyy:action-complete'));
   }
   function sync() {
     stop();
@@ -376,13 +453,22 @@
     canvas.style.display = 'block';
     // Render the settled poster pose before exposing the canvas, never a bind/T pose.
     if (firstReveal) {
-      mixer.stopAllAction(); currentAction = null;
+      mixer.stopAllAction();
+      currentAction = null;
+      nextAction = null;
+      actionDuration = 0;
       play('skyy_idle');
-      mixer.setTime(0); model.rotation.y = facing;
+      mixer.setTime(0);
+      model.rotation.y = facing;
       stage.style.setProperty('--skyy-entry-progress', '1');
       stage.style.setProperty('--skyy-entry-shift', '0px');
+      if (entryPending) {
+        entryPending = false;
+        enter();
+      }
       renderFrame();
-      firstReveal = false; revealAt = clock() + 300;
+      firstReveal = false;
+      revealAt = clock() + 300;
     } else renderFrame();
     if (sprite) sprite.style.display = 'block';
     stage.dataset.renderer = '3d';
@@ -401,56 +487,84 @@
       var targetFps = currentAction && /skyy_idle/i.test(currentAction.getClip().name) ? 15 : 30;
       // RAF timestamps are quantized:33.3ms must not be rejected as below33.333ms.
       if (time - lastFrame + 0.5 < 1000 / targetFps) return;
-      if (revealAt && clock() < revealAt) { lastFrame = time; return; }
-      if (revealAt) { revealAt = 0; play('skyy_walk', 1600); }
+      if (revealAt && clock() < revealAt) {
+        lastFrame = time;
+        return;
+      }
+      if (revealAt) {
+        revealAt = 0;
+        if (entryPending) {
+          entryPending = false;
+          enter();
+        }
+      }
       if (profile.intervals.length < 120) profile.intervals.push(time - lastFrame);
       var delta = Math.min((time - lastFrame) / 1000, 0.5);
       mixer.update(delta);
       actionElapsed += delta;
-      var locomotion = currentAction && /skyy_(walk|exit)/i.test(currentAction.getClip().name);
-      var progress = locomotion ? Math.min(1, actionElapsed / 1.6) : 1;
-      stage.style.setProperty('--skyy-entry-progress', progress.toFixed(4));
-      stage.style.setProperty('--skyy-entry-shift', (locomotion ? -20 * Math.sin(progress * Math.PI) : 0).toFixed(2) + 'px');
-      // Begin and end on the same frontal anchor; the existing rig takes a short
-      // two-step arc, then turns back without a discontinuous first-frame jump.
-      model.rotation.y = facing + (locomotion ? Math.sin(progress * Math.PI) * 0.45 : 0);
-      if (locomotion && progress > 0.75) stage.dataset.actionPhase = 'turning';
-      else stage.dataset.actionPhase = locomotion ? 'walking-in' : 'idle';
-      if (actionDuration && actionElapsed >= actionDuration) {
-        play('skyy_idle');
-        stage.dataset.actionPhase = 'idle';
-        document.dispatchEvent(new CustomEvent('skyy:action-complete'));
+      var locomotion = currentAction && /skyy_(walk|exit)/i.test(currentAction.getClip().name) && actionDuration > 0;
+      if (locomotion) {
+        var progress = Math.min(1, actionElapsed / actionDuration);
+        var eased = 1 - (1 - progress) * (1 - progress);
+        stage.style.setProperty('--skyy-entry-progress', progress.toFixed(4));
+        stage.style.setProperty('--skyy-entry-shift', ((1 - eased) * entryDistance).toFixed(1) + 'px');
+        // Three-quarter view along her path, then a smooth turn to the visitor for the wave.
+        var turn = progress < 0.6 ? 0 : (progress - 0.6) / 0.4;
+        var smooth = turn * turn * (3 - 2 * turn);
+        model.rotation.y = facing + ENTRY_YAW * (1 - smooth);
+        stage.dataset.actionPhase = progress > 0.6 ? 'turning' : 'walking-in';
+      } else {
+        stage.style.setProperty('--skyy-entry-progress', '1');
+        stage.style.setProperty('--skyy-entry-shift', '0px');
+        model.rotation.y = facing;
+        stage.dataset.actionPhase =
+          currentAction && !/skyy_idle/i.test(currentAction.getClip().name) ? 'gesture' : 'idle';
       }
+      if (actionDuration && actionElapsed >= actionDuration) advance();
       lastFrame = time;
       renderFrame();
     });
   }
-  function play(name, transient) {
+  function play(name, options) {
     clearTimeout(timer);
     timer = null;
     if (!ready || !actions[name] || lightMode()) return;
+    options = options || {};
     var next = actions[name];
+    var once = !!options.once;
     if (currentAction !== next) {
       var previous = currentAction;
-      if (previous) previous.fadeOut(0.25);
-      next.reset().setEffectiveWeight(1).setEffectiveTimeScale(1).play();
-      if (previous) next.fadeIn(0.25);
-      else {
+      next.reset();
+      next.setLoop(once ? three.LoopOnce : three.LoopRepeat, once ? 1 : Infinity);
+      next.clampWhenFinished = once;
+      next.setEffectiveWeight(1).setEffectiveTimeScale(1).play();
+      if (previous) {
+        previous.fadeOut(0.25);
+        next.fadeIn(0.25);
+      } else {
         mixer.update(0);
         model.rotation.y = facing;
-        stage.style.setProperty('--skyy-entry-progress', /skyy_(walk|exit)/.test(name) ? '0' : '1');
       }
       currentAction = next;
       actionElapsed = 0;
+    } else if (once && !next.isRunning()) {
+      // The same gesture requested after it settled replays from its start.
+      next.reset().play();
+      actionElapsed = 0;
     }
-    if (transient) actionElapsed = 0;
-    actionDuration = transient ? transient / 1000 : 0;
+    // A repeated request for the clip already playing keeps its phase.
+    actionDuration = options.duration || 0;
+    nextAction = options.then || null;
   }
   async function boot() {
     if (started || failed || disposed || config.loadFailed || lightMode()) return;
     started = true;
     profile.startedAt = clock();
     stage.dataset.renderer = 'loading';
+    // One overall budget: a slow network or decoder keeps the static portrait.
+    timer = setTimeout(function () {
+      if (!ready) fallback('load-timeout');
+    }, LOAD_TIMEOUT_MS);
     try {
       markPhase('webgl-context');
       var context = canvas.getContext('webgl2', { alpha: true, antialias: true, powerPreference: 'low-power' });
@@ -459,7 +573,10 @@
       modules = await loadThree();
       if (disposed || failed) return;
       var THREE = modules[0];
-      var modelUrl = local(config.modelUrl);
+      three = THREE;
+      var modelUrl = local(tier === 'mobile' ? config.mobileModelUrl : config.modelUrl);
+      profile.modelUrl = modelUrl;
+      profile.tier = tier;
       markPhase('model-fetch');
       controller = new AbortController();
       var fetchTimer = setTimeout(function () {
@@ -526,7 +643,17 @@
       )
         throw new Error('Skyy canonical rig/action set incomplete');
       markPhase('model-bounds');
-      if (!(await prepareBounds(THREE, model, function () { return disposed || failed; }, yieldMainThread))) return;
+      if (
+        !(await prepareBounds(
+          THREE,
+          model,
+          function () {
+            return disposed || failed;
+          },
+          yieldMainThread
+        ))
+      )
+        return;
       var size = new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3());
       if (!Number.isFinite(size.y) || size.y <= 0) throw new Error('Skyy model bounds invalid');
       model.scale.setScalar(1.8 / size.y);
@@ -560,6 +687,9 @@
       scene.add(model);
       markPhase('animation-setup');
       mixer = new THREE.AnimationMixer(model);
+      mixer.addEventListener('finished', function (event) {
+        if (event.action === currentAction) advance();
+      });
       facing = model.rotation.y;
       rigMotion = deriveRigMotion(THREE, clips, model);
       rigMotion.clips.forEach(function (clip) {
@@ -574,14 +704,38 @@
       actions.skyy_idle.play();
       mixer.setTime(0);
       markPhase('shader-prepare');
-      if (!(await prepareShaders(renderer, scene, camera, function () { return disposed || failed; }, yieldMainThread))) return;
+      if (
+        !(await prepareShaders(
+          renderer,
+          scene,
+          camera,
+          function () {
+            return disposed || failed;
+          },
+          yieldMainThread
+        ))
+      )
+        return;
       markPhase('idle-sphere');
-      if (!(await prepareBounds(THREE, model, function () { return disposed || failed; }, yieldMainThread, true))) return;
+      if (
+        !(await prepareBounds(
+          THREE,
+          model,
+          function () {
+            return disposed || failed;
+          },
+          yieldMainThread,
+          true
+        ))
+      )
+        return;
       markPhase('texture-upload');
       var uploadTextures = new Set();
       model.traverse(function (node) {
         (Array.isArray(node.material) ? node.material : [node.material]).filter(Boolean).forEach(function (material) {
-          Object.values(material).forEach(function (value) { if (value && value.isTexture) uploadTextures.add(value); });
+          Object.values(material).forEach(function (value) {
+            if (value && value.isTexture) uploadTextures.add(value);
+          });
         });
       });
       for (var texture of uploadTextures) {
@@ -590,12 +744,13 @@
         await yieldMainThread();
       }
       if (disposed || failed) return;
+      clearTimeout(timer);
+      timer = null;
       ready = true;
       markPhase('ready');
-      document.dispatchEvent(new CustomEvent('skyy:3d-ready', { detail: { clips: Object.keys(actions) } }));
-      // The source clips remain intact; held poses receive the documented runtime gait.
-      play('skyy_idle');
-      sync();
+      document.dispatchEvent(new CustomEvent('skyy:3d-ready', { detail: { clips: Object.keys(actions), tier: tier } }));
+      // Baked source clips play as authored; held poses receive the documented runtime gait.
+      if (!running) sync();
     } catch (_) {
       if (!disposed) fallback();
     }
@@ -604,9 +759,10 @@
     visible = true;
     boot();
     if (ready) {
-      play('skyy_walk', 1600);
+      if (firstReveal) entryPending = true;
+      else enter();
       sync();
-    }
+    } else entryPending = true;
   });
   document.addEventListener('skyy:prepare', function () {
     visible = true;
@@ -615,24 +771,24 @@
   });
   document.addEventListener('skyy:show', function () {
     visible = true;
-    if (ready) play('skyy_idle');
+    if (ready && !currentAction) play('skyy_idle');
     sync();
   });
   document.addEventListener('skyy:hidden', function () {
     visible = false;
-    clearTimeout(timer);
+    entryPending = false;
     stop();
     canvas.hidden = true;
   });
   document.addEventListener('skyy:idle', function () {
-    if (!actionDuration) play('skyy_idle');
+    if (!inFlight()) play('skyy_idle');
   });
   document.addEventListener('skyy:speaking', function () {
-    play('skyy_talk', 2400);
+    play('skyy_talk', { once: true });
   });
   ['wave', 'joy', 'exit'].forEach(function (name) {
     document.addEventListener('skyy:' + name, function () {
-      play('skyy_' + name, 1400);
+      play('skyy_' + name, { once: true });
     });
   });
   document.addEventListener('skyy:motion', function (event) {
@@ -666,6 +822,9 @@
     getCurrentAction: function () {
       return currentAction ? currentAction.getClip().name : null;
     },
+    getRigTier: function () {
+      return tier;
+    },
     getMotionEvidence: function () {
       if (!rigMotion || !model) return null;
       var poses = {};
@@ -686,23 +845,46 @@
     getFailureReason: function () {
       return failureReason;
     },
-    resetFrameProfile: function () { profile.frames = []; profile.intervals = []; },
+    resetFrameProfile: function () {
+      profile.frames = [];
+      profile.intervals = [];
+    },
     getProfile: function () {
-      return Object.assign({}, profile, { frames: profile.frames.slice(), intervals: profile.intervals.slice(), stages: profile.stages.slice(),
+      return Object.assign({}, profile, {
+        frames: profile.frames.slice(),
+        intervals: profile.intervals.slice(),
+        stages: profile.stages.slice(),
         triangles: renderer ? renderer.info.render.triangles : null,
         drawCalls: renderer ? renderer.info.render.calls : null,
         runtimeGeometries: renderer ? renderer.info.memory.geometries : null,
-        runtimeTextures: renderer ? renderer.info.memory.textures : null });
+        runtimeTextures: renderer ? renderer.info.memory.textures : null,
+      });
     },
     capturePoster: function () {
       if (!ready || !renderer) return null;
-      stop(); mixer.stopAllAction(); currentAction = null;
-      play('skyy_idle'); mixer.setTime(0); model.rotation.y = facing;
+      stop();
+      mixer.stopAllAction();
+      currentAction = null;
+      nextAction = null;
+      actionDuration = 0;
+      play('skyy_idle');
+      mixer.setTime(0);
+      model.rotation.y = facing;
       renderer.render(scene, camera);
       return canvas.toDataURL('image/png');
     },
     getRenderState: function () {
-      return { phase: phase, frames: frameCount, running: running, visible: visible, paused: paused };
+      return {
+        phase: phase,
+        frames: frameCount,
+        running: running,
+        visible: visible,
+        paused: paused,
+        tier: tier,
+        entryDistance: entryDistance,
+        actionPhase: stage.dataset.actionPhase || null,
+        pendingAction: nextAction,
+      };
     },
   });
   if (visible) boot();

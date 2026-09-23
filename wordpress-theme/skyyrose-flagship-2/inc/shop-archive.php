@@ -9,23 +9,36 @@ defined( 'ABSPATH' ) || exit;
 
 /** Real Woo category terms; never route filtering into a collection story page. */
 function skyyrose2_shop_categories( $hide_empty = false ) {
-	$terms = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => $hide_empty, 'orderby' => 'name', 'order' => 'ASC' ) );
+	$terms = get_terms(
+		array(
+			'taxonomy'   => 'product_cat',
+			'hide_empty' => $hide_empty,
+			'orderby'    => 'name',
+			'order'      => 'ASC',
+		)
+	);
 	return is_wp_error( $terms ) ? array() : $terms;
 }
 
 /** Validate only the Shop-owned scalar dimensions, before Woo reads URL prices. */
 function skyyrose2_shop_filter_state( $input ) {
-	$state = array( 'product_cat' => '', 'stock_status' => '', 'min_price' => '', 'max_price' => '', 'orderby' => '' );
+	$state = array(
+		'product_cat'  => '',
+		'stock_status' => '',
+		'min_price'    => '',
+		'max_price'    => '',
+		'orderby'      => '',
+	);
 	if ( ! is_array( $input ) ) {
 		return $state;
 	}
 	$categories = array_column( skyyrose2_shop_categories(), 'slug' );
-	$sort_keys = array_keys( apply_filters( 'woocommerce_catalog_orderby', array_fill_keys( array( 'menu_order', 'popularity', 'rating', 'date', 'price', 'price-desc', 'relevance' ), '' ) ) );
+	$sort_keys  = array_keys( apply_filters( 'woocommerce_catalog_orderby', array_fill_keys( array( 'menu_order', 'popularity', 'rating', 'date', 'price', 'price-desc', 'relevance' ), '' ) ) );
 	foreach ( $state as $key => $unused ) {
 		if ( ! isset( $input[ $key ] ) || ! is_string( $input[ $key ] ) ) {
 			continue;
 		}
-		$value = trim( wp_unslash( $input[ $key ] ) );
+		$value         = trim( wp_unslash( $input[ $key ] ) );
 		$category_slug = 'product_cat' === $key ? basename( $value ) : '';
 		if ( 'product_cat' === $key && in_array( $category_slug, $categories, true ) ) {
 			$state[ $key ] = $category_slug;
@@ -100,9 +113,13 @@ function skyyrose2_shop_stock_query( $query ) {
 	if ( '' === $state['stock_status'] ) {
 		return;
 	}
-	$stock_clause = array( 'key' => '_stock_status', 'value' => $state['stock_status'], 'compare' => '=' );
-	$existing = $query->get( 'meta_query' );
-	$meta = array( 'relation' => 'AND' );
+	$stock_clause = array(
+		'key'     => '_stock_status',
+		'value'   => $state['stock_status'],
+		'compare' => '=',
+	);
+	$existing     = $query->get( 'meta_query' );
+	$meta         = array( 'relation' => 'AND' );
 	if ( is_array( $existing ) && $existing ) {
 		$meta[] = $existing;
 	}
@@ -150,16 +167,45 @@ function skyyrose2_shop_category_url( $slug ) {
 	return add_query_arg( $args, wc_get_page_permalink( 'shop' ) );
 }
 
-/** Painted image slots: a 280px contained portrait below360, then 2/3/4 tracks. */
+/**
+ * Image slots for the garment grid: one full-width tile below 48em, then 2/3/4
+ * tracks at 48/64/90em with the page pad and --sr2-grid-gap subtracted; the
+ * grid stops growing at four 363px tracks (shop-page.css caps the shell).
+ */
 function skyyrose2_shop_card_sizes() {
-	return '(max-width: 22.49em) 187px, (max-width: 47.99em) calc((100vw - 3rem) / 2), (max-width: 74.99em) calc((100vw - 4rem) / 3), (max-width: 95.75em) calc((100vw - 5rem) / 4), 363px';
+	return '(max-width: 22.49em) calc(100vw - 2rem), (max-width: 47.99em) calc(100vw - 2 * clamp(1rem, 4vw, 4rem)), (max-width: 63.99em) calc((100vw - 2 * clamp(1rem, 4vw, 4rem) - clamp(1rem, 2vw, 2rem)) / 2), (max-width: 89.99em) calc((100vw - 2 * clamp(1rem, 4vw, 4rem) - 2 * clamp(1rem, 2vw, 2rem)) / 3), (max-width: 104.74em) calc((100vw - 2 * clamp(1rem, 4vw, 4rem) - 3 * clamp(1rem, 2vw, 2rem)) / 4), 363px';
+}
+
+/**
+ * Arrival copy for the archive head. A collection category speaks in its own
+ * shop voice from skyyrose2_collections(); everything else is the house edit.
+ *
+ * @param array $filter_state Output of skyyrose2_shop_current_state().
+ * @return array{collection:string,eyebrow:string,lede:string}
+ */
+function skyyrose2_shop_archive_context( $filter_state ) {
+	$slug        = is_array( $filter_state ) ? (string) ( $filter_state['product_cat'] ?? '' ) : '';
+	$collections = skyyrose2_collections();
+	if ( '' !== $slug && isset( $collections[ $slug ] ) ) {
+		$collection = $collections[ $slug ];
+		return array(
+			'collection' => $slug,
+			'eyebrow'    => (string) ( $collection['shop_kicker'] ?? $collection['name'] ),
+			'lede'       => (string) ( $collection['shop_intro'] ?? '' ),
+		);
+	}
+	return array(
+		'collection' => '',
+		'eyebrow'    => __( 'The House Edit', 'skyyrose-flagship-2' ),
+		'lede'       => '',
+	);
 }
 
 /** Keep Woo's options, selection, extension filters and URL fields; add no-JS submit. */
 function skyyrose2_shop_ordering() {
 	ob_start();
 	woocommerce_catalog_ordering( array( 'useLabel' => true ) );
-	$form = ob_get_clean();
+	$form   = ob_get_clean();
 	$submit = '<button type="submit" class="sr2-control sr2-shop-sort-submit">' . esc_html__( 'Sort', 'skyyrose-flagship-2' ) . '</button>';
 	// The native template owns this form. Only append its missing submit action.
 	echo str_replace( '</form>', $submit . '</form>', $form ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -180,14 +226,15 @@ function skyyrose2_shop_world_note( $slug ) {
 	if ( ! is_string( $slug ) || ! isset( $worlds[ $slug ] ) ) {
 		return;
 	}
-	$world = $worlds[ $slug ];
+	$world  = $worlds[ $slug ];
 	$number = array_search( $slug, array_keys( $worlds ), true ) + 1;
 	?>
-	<li class="sr2-shop-world-note">
-		<aside aria-labelledby="sr2-shop-world-title">
-			<span class="sr2-shop-world-note__number" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $number ) ); ?></span>
-			<div class="sr2-shop-world-note__identity"><p><?php esc_html_e( 'From the house', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-shop-world-title"><?php echo esc_html( $world['name'] ); ?></h2><a href="<?php echo esc_url( skyyrose2_collection_url( $slug ) ); ?>"><?php echo esc_html( sprintf( __( 'Enter %s', 'skyyrose-flagship-2' ), $world['name'] ) ); ?><span aria-hidden="true"> ↗</span></a></div>
-			<p class="sr2-shop-world-note__story"><?php echo esc_html( $world['manifesto'] ); ?></p>
+	<li class="sr2-shop-world-note" data-collection="<?php echo esc_attr( $slug ); ?>">
+		<aside class="sr2-shop-world-note__inner" aria-labelledby="sr2-shop-world-title">
+			<p class="sr2-eyebrow sr2-eyebrow--engraved sr2-shop-world-note__index"><?php echo esc_html( sprintf( '%02d / %s', $number, $world['name'] ) ); ?></p>
+			<h2 id="sr2-shop-world-title" class="sr2-shop-world-note__title"><?php echo esc_html( $world['shop_heading'] ?? $world['headline'] ); ?></h2>
+			<p class="sr2-lede sr2-shop-world-note__story"><?php echo esc_html( $world['manifesto'] ); ?></p>
+			<a class="sr2-editorial-link" href="<?php echo esc_url( skyyrose2_collection_url( $slug ) ); ?>"><?php echo esc_html( sprintf( __( 'Enter %s', 'skyyrose-flagship-2' ), $world['name'] ) ); ?><span aria-hidden="true">→</span></a>
 		</aside>
 	</li>
 	<?php

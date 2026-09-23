@@ -2,6 +2,9 @@
 /**
  * The house garment archive, backed by the native WooCommerce main query.
  *
+ * Arrival band (eyebrow, title, count, native ordering) → garment-led grid →
+ * native pagination. Collection routes rebind the accent through data-collection.
+ *
  * @package SkyyRoseFlagship2
  */
 
@@ -20,26 +23,35 @@ $stock_labels = array(
 	'onbackorder' => __( 'On backorder', 'skyyrose-flagship-2' ),
 );
 $active_count = count( array_filter( array_diff_key( $filter_state, array( 'orderby' => true ) ), static function ( $value ) { return '' !== $value; } ) );
-$reset_url = wc_get_page_permalink( 'shop' );
+$reset_url    = wc_get_page_permalink( 'shop' );
+$context      = skyyrose2_shop_archive_context( $filter_state );
 
 get_header();
 ?>
-<main id="primary" class="sr2-shop sr2-shop-archive">
-	<div class="sr2-shop-archive__inner">
-		<?php do_action( 'woocommerce_before_main_content' ); ?>
-		<header class="sr2-shop-archive__head">
-			<p class="sr2-shop-archive__index"><?php esc_html_e( 'Oakland, California', 'skyyrose-flagship-2' ); ?><span> / <?php esc_html_e( 'The living archive', 'skyyrose-flagship-2' ); ?></span></p>
-			<h1><?php echo esc_html( $archive_title ); ?></h1>
-		</header>
-		<nav class="sr2-shop-archive__collections" aria-label="<?php esc_attr_e( 'Filter by collection', 'skyyrose-flagship-2' ); ?>">
-			<a href="<?php echo esc_url( skyyrose2_shop_category_url( '' ) ); ?>"<?php if ( '' === $filter_state['product_cat'] ) : ?> aria-current="page"<?php endif; ?>><?php esc_html_e( 'All pieces', 'skyyrose-flagship-2' ); ?></a>
-			<?php foreach ( skyyrose2_collections() as $slug => $collection ) : ?>
-				<?php if ( ! isset( $category_map[ $slug ] ) ) { continue; } ?>
-				<a href="<?php echo esc_url( skyyrose2_shop_category_url( $slug ) ); ?>"<?php if ( $slug === $filter_state['product_cat'] ) : ?> aria-current="page"<?php endif; ?>><?php echo esc_html( $category_map[ $slug ]->name ); ?></a>
-			<?php endforeach; ?>
-		</nav>
-		<section class="sr2-shop-archive__results" aria-label="<?php esc_attr_e( 'Products', 'skyyrose-flagship-2' ); ?>">
+<main id="primary" tabindex="-1" class="sr2-shop sr2-shop-archive"<?php echo $context['collection'] ? ' data-collection="' . esc_attr( $context['collection'] ) . '"' : ''; ?>>
+	<?php do_action( 'woocommerce_before_main_content' ); ?>
+	<section class="sr2-band sr2-shop-archive__arrival" aria-labelledby="sr2-shop-title">
+		<header class="sr2-band__head sr2-shop-archive__head">
+			<div class="sr2-shop-archive__identity">
+				<p class="sr2-eyebrow"><?php echo esc_html( $context['eyebrow'] ); ?></p>
+				<h1 id="sr2-shop-title" class="sr2-title-display"><?php echo esc_html( $archive_title ); ?></h1>
+				<?php if ( $context['lede'] ) : ?>
+					<p class="sr2-lede"><?php echo esc_html( $context['lede'] ); ?></p>
+				<?php endif; ?>
+				<nav class="sr2-shop-archive__collections" aria-label="<?php esc_attr_e( 'Filter by collection', 'skyyrose-flagship-2' ); ?>">
+					<a href="<?php echo esc_url( skyyrose2_shop_category_url( '' ) ); ?>"<?php if ( '' === $filter_state['product_cat'] ) : ?> aria-current="page"<?php endif; ?>><?php esc_html_e( 'All pieces', 'skyyrose-flagship-2' ); ?></a>
+					<?php foreach ( skyyrose2_collections() as $slug => $collection ) : ?>
+						<?php if ( ! isset( $category_map[ $slug ] ) ) { continue; } ?>
+						<a href="<?php echo esc_url( skyyrose2_shop_category_url( $slug ) ); ?>"<?php if ( $slug === $filter_state['product_cat'] ) : ?> aria-current="page"<?php endif; ?>><?php echo esc_html( $category_map[ $slug ]->name ); ?></a>
+					<?php endforeach; ?>
+				</nav>
+			</div>
 			<div class="sr2-shop-archive__tools">
+				<?php if ( woocommerce_product_loop() ) : ?>
+					<?php do_action( 'woocommerce_before_shop_loop' ); ?>
+				<?php else : ?>
+					<p class="sr2-shop-archive__no-count"><?php esc_html_e( 'No matching pieces', 'skyyrose-flagship-2' ); ?></p>
+				<?php endif; ?>
 				<details class="sr2-shop-filters">
 					<summary><?php esc_html_e( 'Filters', 'skyyrose-flagship-2' ); ?><?php if ( $active_count ) : ?><span class="sr2-shop-filters__count"><?php echo esc_html( sprintf( __( '%d active', 'skyyrose-flagship-2' ), $active_count ) ); ?></span><?php endif; ?></summary>
 					<form method="get" action="<?php echo esc_url( $reset_url ); ?>" class="sr2-shop-filters__form">
@@ -54,54 +66,51 @@ get_header();
 						<div class="sr2-shop-filters__actions"><button type="submit" class="sr2-control sr2-control--primary"><?php esc_html_e( 'Apply filters', 'skyyrose-flagship-2' ); ?></button><a class="sr2-control sr2-control--quiet" href="<?php echo esc_url( $reset_url ); ?>"><?php esc_html_e( 'Clear filters', 'skyyrose-flagship-2' ); ?></a></div>
 					</form>
 				</details>
-				<?php if ( woocommerce_product_loop() ) : ?>
-					<?php do_action( 'woocommerce_before_shop_loop' ); ?>
-				<?php else : ?>
-					<p class="sr2-shop-archive__no-count"><?php esc_html_e( 'No matching pieces', 'skyyrose-flagship-2' ); ?></p>
-				<?php endif; ?>
 			</div>
-			<?php if ( $active_count ) : ?>
-				<p class="sr2-shop-archive__active"><span><?php esc_html_e( 'Viewing:', 'skyyrose-flagship-2' ); ?> <?php
-					$active_labels = array();
-					if ( $filter_state['product_cat'] ) { $active_labels[] = $category_map[ $filter_state['product_cat'] ]->name; }
-					if ( $filter_state['stock_status'] ) { $active_labels[] = $stock_labels[ $filter_state['stock_status'] ]; }
-					if ( '' !== $filter_state['min_price'] ) { $active_labels[] = sprintf( __( 'From %s %s', 'skyyrose-flagship-2' ), $filter_state['min_price'], get_woocommerce_currency() ); }
-					if ( '' !== $filter_state['max_price'] ) { $active_labels[] = sprintf( __( 'Up to %s %s', 'skyyrose-flagship-2' ), $filter_state['max_price'], get_woocommerce_currency() ); }
-					echo esc_html( implode( ' · ', $active_labels ) );
-				?></span><a href="<?php echo esc_url( $reset_url ); ?>"><?php esc_html_e( 'Clear', 'skyyrose-flagship-2' ); ?></a></p>
-			<?php endif; ?>
-			<?php
-			if ( woocommerce_product_loop() ) {
-				woocommerce_product_loop_start();
-				$piece_number = 0;
-				$editorial_world = '';
-				if ( wc_get_loop_prop( 'total' ) ) {
-					while ( have_posts() ) {
-						the_post();
-						if ( 0 === $piece_number ) {
-							$first_piece = wc_get_product( get_the_ID() );
-							$first_record = $first_piece ? skyyrose2_product_presentation( $first_piece ) : array();
-							$editorial_world = $first_record['collection'] ?? '';
-						}
-						if ( 8 === $piece_number ) {
-							skyyrose2_shop_world_note( $editorial_world );
-						}
-						++$piece_number;
-						do_action( 'woocommerce_shop_loop' );
-						wc_get_template_part( 'content', 'product' );
+		</header>
+		<?php if ( $active_count ) : ?>
+			<p class="sr2-shop-archive__active"><span><?php esc_html_e( 'Viewing:', 'skyyrose-flagship-2' ); ?> <?php
+				$active_labels = array();
+				if ( $filter_state['product_cat'] ) { $active_labels[] = $category_map[ $filter_state['product_cat'] ]->name; }
+				if ( $filter_state['stock_status'] ) { $active_labels[] = $stock_labels[ $filter_state['stock_status'] ]; }
+				if ( '' !== $filter_state['min_price'] ) { $active_labels[] = sprintf( __( 'From %s %s', 'skyyrose-flagship-2' ), $filter_state['min_price'], get_woocommerce_currency() ); }
+				if ( '' !== $filter_state['max_price'] ) { $active_labels[] = sprintf( __( 'Up to %s %s', 'skyyrose-flagship-2' ), $filter_state['max_price'], get_woocommerce_currency() ); }
+				echo esc_html( implode( ' · ', $active_labels ) );
+			?></span><a href="<?php echo esc_url( $reset_url ); ?>"><?php esc_html_e( 'Clear', 'skyyrose-flagship-2' ); ?></a></p>
+		<?php endif; ?>
+	</section>
+	<section class="sr2-shop-archive__results" aria-label="<?php esc_attr_e( 'Products', 'skyyrose-flagship-2' ); ?>">
+		<?php
+		if ( woocommerce_product_loop() ) {
+			woocommerce_product_loop_start();
+			$piece_number    = 0;
+			$editorial_world = '';
+			if ( wc_get_loop_prop( 'total' ) ) {
+				while ( have_posts() ) {
+					the_post();
+					if ( 0 === $piece_number ) {
+						$first_piece     = wc_get_product( get_the_ID() );
+						$first_record    = $first_piece ? skyyrose2_product_presentation( $first_piece ) : array();
+						$editorial_world = $first_record['collection'] ?? '';
 					}
+					if ( 8 === $piece_number ) {
+						skyyrose2_shop_world_note( $editorial_world );
+					}
+					++$piece_number;
+					do_action( 'woocommerce_shop_loop' );
+					wc_get_template_part( 'content', 'product' );
 				}
-				woocommerce_product_loop_end();
-				do_action( 'woocommerce_after_shop_loop' );
-			} else {
-				do_action( 'woocommerce_no_products_found' );
-				?>
-				<div class="sr2-shop-archive__empty"><p><?php esc_html_e( 'Try another category or widen your price and availability filters.', 'skyyrose-flagship-2' ); ?></p><a class="sr2-control sr2-control--primary" href="<?php echo esc_url( $reset_url ); ?>"><?php esc_html_e( 'View all pieces', 'skyyrose-flagship-2' ); ?></a></div>
-				<?php
 			}
-			do_action( 'woocommerce_after_main_content' );
+			woocommerce_product_loop_end();
+			do_action( 'woocommerce_after_shop_loop' );
+		} else {
+			do_action( 'woocommerce_no_products_found' );
 			?>
-		</section>
-	</div>
+			<div class="sr2-shop-archive__empty"><p class="sr2-lede"><?php esc_html_e( 'Try another category or widen your price and availability filters.', 'skyyrose-flagship-2' ); ?></p><a class="sr2-control sr2-control--primary" href="<?php echo esc_url( $reset_url ); ?>"><?php esc_html_e( 'View all pieces', 'skyyrose-flagship-2' ); ?></a></div>
+			<?php
+		}
+		?>
+	</section>
+	<?php do_action( 'woocommerce_after_main_content' ); ?>
 </main>
 <?php get_footer(); ?>

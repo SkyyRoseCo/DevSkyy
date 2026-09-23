@@ -3,10 +3,6 @@
 .sr2-c-editorial-card__media-unavailable[hidden] {
   display: none;
 }
-.sr2-recovery-hero-media {
-  position: relative;
-  overflow: hidden;
-}
 [data-recovery-hero-video] {
   position: absolute;
   inset: 0;
@@ -33,59 +29,30 @@
   z-index: 3;
   right: 1rem;
   bottom: 1rem;
-  min-width: 46px;
-  min-height: 46px;
-  padding: 0.75rem 1rem;
-  border: 1px solid #c4b9b0;
-  background: #141212;
-  color: #faf5ef;
-  font: 0.8rem var(--sr2-font-ui);
+  min-width: var(--sr2-target-size);
+  min-height: var(--sr2-target-size);
+  padding: var(--sr2-space-2) var(--sr2-space-4);
+  border: var(--sr2-border-width) solid var(--sr2-line);
+  background: rgb(10 10 10 / 0.6);
+  color: var(--sr2-ink);
+  font: 500 0.75rem/1.35 var(--sr2-font-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
   cursor: pointer;
 }
+.sr2-recovery-motion-toggle:is(:hover, :focus-visible) { border-color: var(--sr2-ink); }
+/* Inside the arrival utility slot the primitive owns placement. */
+.sr2-arrival__utility > .sr2-recovery-motion-toggle { position: static; }
 .sr2-archive-scene > .sr2-recovery-motion-toggle {
   bottom: 6rem;
 }
-.sr2-collection-world .sr2-world-arrival--cinematic {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding-top: 0;
-}
-.sr2-world-arrival--cinematic .sr2-recovery-hero-media > img {
-  width: 100%;
-  height: min(82svh, 70vw);
-  min-height: 30rem;
-  object-fit: cover;
-  object-position: center;
-}
-.sr2-world-arrival--cinematic .sr2-world-arrival__monument {
-  flex: none;
-}
-.sr2-world-arrival--cinematic .sr2-world-arrival__identity {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-items: center;
-  gap: .75rem;
-  justify-items: center;
-}
-.sr2-world-arrival--cinematic .sr2-world-arrival__identity > .sr2-world-index {
-  grid-column: 1 / -1;
-}
-.sr2-world-arrival--cinematic .sr2-world-arrival__identity h1 {
-  margin: .5rem auto;
-  text-align: center;
-}
-.sr2-world-arrival--cinematic .sr2-world-arrival__line {
-  grid-column: 1;
-}
-.sr2-world-arrival--cinematic .sr2-world-arrival__actions {
-  grid-column: 2;
-  grid-row: 2 / 4;
-  padding-bottom: 0.5rem;
-}
 .sr2-recovered-worlds {
-  padding-block: 2rem 5rem;
+  padding-block: var(--sr2-band-pad);
+  border-top: 1px solid var(--sr2-line-soft);
 }
+.sr2-recovered-worlds__head { padding-inline: var(--sr2-page-pad); }
+.sr2-recovered-worlds__head .sr2-eyebrow { margin: 0; }
 .sr2-recovery-collection-worlds {
   margin-bottom: 4rem;
 }
@@ -93,27 +60,32 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 1rem;
-  margin-block: 1rem;
+  gap: var(--sr2-space-3);
 }
 .sr2-recovery-controls[hidden],
 .sr2-recovery-motion-toggle[hidden] {
   display: none;
 }
 .sr2-recovery-controls button {
-  width: 46px;
-  height: 46px;
-  border: 1px solid var(--sr2-border-control);
-  background: var(--sr2-surface-page);
+  width: var(--sr2-target-size);
+  height: var(--sr2-target-size);
+  border: var(--sr2-border-width) solid var(--sr2-border-control);
+  background: transparent;
   color: var(--sr2-color-text);
   cursor: pointer;
 }
+.sr2-recovery-controls button:not(:disabled):is(:hover, :focus-visible) { border-color: var(--sr2-ink); }
 .sr2-recovery-controls button:disabled {
   opacity: 0.4;
   cursor: default;
 }
 .sr2-recovery-controls [data-recovery-count] {
-  font: 0.85rem var(--sr2-font-index);
+  min-width: 4.5rem;
+  color: var(--sr2-color-text-muted);
+  font: 400 var(--sr2-type-index)/var(--sr2-leading-utility) var(--sr2-font-index);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--sr2-tracking-index);
+  text-align: center;
 }
 .sr2-recovered-worlds__rail,
 .sr2-recovery-collection-worlds__rail {
@@ -124,8 +96,9 @@
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x proximity;
-  gap: 1.5rem;
-  padding: 0.5rem 0.25rem 1.5rem;
+  gap: var(--sr2-grid-gap);
+  padding: 0 var(--sr2-page-pad) var(--sr2-space-6);
+  scroll-padding-inline: var(--sr2-page-pad);
   scrollbar-color: var(--sr2-color-action) var(--sr2-surface-page);
 }
 .sr2-recovered-worlds__rail > *,
@@ -134,8 +107,11 @@
   min-width: 0;
   scroll-snap-align: start;
 }
+/* One shop-the-look scene per view; the frame keeps its exact ratio for the hotspots. */
+.sr2-recovered-worlds__rail > .sr2-world--hero-composed {
+  flex-basis: 100%;
+}
 @media (min-width: 48em) {
-  .sr2-recovered-worlds__rail > .sr2-world--hero-composed,
   .sr2-recovered-worlds__rail > .sr2-recovery-home-world {
     flex-basis: min(94%, calc(72svh * var(--scene-ratio, 1.7778)));
   }
@@ -144,13 +120,13 @@
   display: flex;
   flex-direction: column;
   height: auto;
-  background: var(--sr2-surface-commerce);
+  background: var(--sr2-void);
 }
 [data-recovery-track]:focus-visible,
 .sr2-recovery-controls button:focus-visible,
 .sr2-recovery-motion-toggle:focus-visible {
-  outline: 3px solid #f4d2a6;
-  outline-offset: 3px;
+  outline: var(--sr2-focus-width) solid var(--sr2-focus-outer);
+  outline-offset: var(--sr2-focus-offset);
 }
 /* Paid frames surround a contained image; no garment crop, hover reel or overlay on product facts. */
 .sr2-c-editorial-card[data-card-frame="v2-statue"] .sr2-c-editorial-card__media {
@@ -215,8 +191,7 @@
   border-color: var(--sr2-card-accent);
 }
 @media (max-width: 29.99em) {
-  .woocommerce .sr2-shop-archive ul.products,
-  .sr2-world-products {
+  .woocommerce .sr2-shop-archive ul.products {
     grid-template-columns: minmax(0, 1fr);
   }
 }
@@ -257,29 +232,6 @@
   .sr2-house-header .sr2-house-header__end {
     gap: 8px;
   }
-  .sr2-collection-world {
-    --sr2-mobile-hero-focus: 75%;
-  }
-  .sr2-collection-world[data-collection="love-hurts"],
-  .sr2-collection-world[data-collection="kids-capsule"] {
-    --sr2-mobile-hero-focus: 50%;
-  }
-  .sr2-world-arrival--cinematic .sr2-recovery-hero-media > img {
-    height: clamp(18rem, 80vw, 26rem);
-    min-height: 0;
-    object-position: var(--sr2-mobile-hero-focus) center;
-  }
-  .sr2-world-arrival--cinematic [data-recovery-hero-video] {
-    object-position: var(--sr2-mobile-hero-focus) center;
-  }
-  .sr2-world-arrival--cinematic .sr2-world-arrival__identity {
-    display: block;
-    grid-template-columns: minmax(0, 1fr);
-    justify-items: center;
-    align-items: center;
-    gap: .75rem;
-  }
-  .sr2-recovered-worlds__rail > *,
   .sr2-recovery-collection-worlds__rail > * {
     flex-basis: 96%;
   }

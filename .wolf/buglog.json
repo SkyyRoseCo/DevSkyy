@@ -6233,5 +6233,283 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-20T23:04:55.366075+00:00"
+  },
+  {
+    "id": "bug-360",
+    "timestamp": "2026-09-22T21:30:00+00:00",
+    "error_message": "No-JS visitors could not scroll the V2 storefront: with scripting disabled the house directory rendered in flow but wheel input over it never moved the page (probe frames s01≡s04≡s06 at 1440 and 390).",
+    "file": "wordpress-theme/skyyrose-flagship-2/assets/css/global-shell.css",
+    "root_cause": "The @media (scripting: none) fallback set .sr2-house-nav to height:auto but inherited the base rule's overflow-y:auto + overscroll-behavior:contain, so the directory stayed a (non-scrollable) scroll container that consumed wheel events without chaining them to the document.",
+    "fix": "Fallback block now sets overflow:visible; overscroll-behavior:auto on .sr2-house-nav. Verified with a wheel-driven no-JS Playwright probe (javaScriptEnabled:false): s01/s04/s08 frame hashes differ at both widths.",
+    "tags": [
+      "css",
+      "no-js",
+      "progressive-enhancement",
+      "scroll",
+      "theme-v2",
+      "shell"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-22T21:30:00+00:00"
+  },
+  {
+    "id": "bug-361",
+    "timestamp": "2026-09-22T21:30:00+00:00",
+    "error_message": "Local V2 preview served every static asset as HTML (0 CSS rules applied, 'Unexpected token <' x5) when tools/v2-theme-preview.php was passed to php -S as the router script.",
+    "file": "tools/v2-theme-preview.php",
+    "root_cause": "php -S <host> -t <root> <router> routes EVERY request through the router; the fixture renders a theme route for any URL, so /wordpress-theme/.../*.css came back as the HTML page. The design contract's first draft documented the router form.",
+    "fix": "Serve the repo as a plain document root (php -S 127.0.0.1:<port> -t <repo>, no router argument) and browse /tools/v2-theme-preview.php?route=<route>[&skyy=1]. DESIGN-CONTRACT §8 corrected; agents messaged.",
+    "tags": [
+      "tooling",
+      "fixture",
+      "php-s",
+      "preview",
+      "theme-v2"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-22T21:30:00+00:00"
+  },
+  {
+    "id": "bug-362",
+    "timestamp": "2026-09-22T21:30:00+00:00",
+    "error_message": "Full-page screenshots of the redesigned home/collection pages showed solid accent blocks where scenes, lockups and portraits should be; two agents independently read them as rendering defects.",
+    "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+    "root_cause": "The .sr2-image-reveal wipe overlay (gated on html.sr2-motion-ready) clears only when IntersectionObserver marks the element is-seen; a Playwright fullPage screenshot never scrolls, so off-screen reveals stay covered and loading=lazy images below the fold never load. A capture artifact, not a theme defect (no-JS and reduced-motion render the images directly).",
+    "fix": "Capture protocol: scroll in ~0.85vh steps with ~650ms dwell, bounded image-settle, then the full-page shot; per-viewport frames saved for eyes-on review (scratchpad agent-a/capture-a.cjs, SCROLL_SHOTS=1). Recorded in DESIGN-CONTRACT verification protocol and sent to Agent B.",
+    "tags": [
+      "verification",
+      "playwright",
+      "screenshot",
+      "intersection-observer",
+      "false-positive",
+      "theme-v2"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-22T21:30:00+00:00"
+  },
+  {
+    "id": "bug-363",
+    "timestamp": "2026-09-22T21:30:00+00:00",
+    "error_message": "inc/performance.php preloaded the collection portal-frame image with fetchpriority=high on shop/taxonomy routes although every product-card caller now passes frame=>false, so the archive never rendered that image (wasted high-priority fetch competing with the real LCP garment).",
+    "file": "wordpress-theme/skyyrose-flagship-2/inc/performance.php",
+    "root_cause": "The hint was written for the framed card and was not revisited when the archive went garment-first.",
+    "fix": "skyyrose2_performance_archive_front_preload(): the first visible product's skyyrose2_approved_card_front() card_src/srcset with skyyrose2_shop_card_sizes() (the exact values the card template emits); no approved front = no hint, never borrow a later product's image. tools/v2-runtime/test-archive-preload.php updated: PASS (15 exclusion cases + garment-front assertions).",
+    "tags": [
+      "performance",
+      "preload",
+      "lcp",
+      "woocommerce",
+      "theme-v2"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-22T21:30:00+00:00"
+  },
+  {
+    "id": "bug-364",
+    "timestamp": "2026-09-22T21:30:00+00:00",
+    "error_message": "Skyy walk-on dock: after opening the native <dialog> and reparenting the character stage, Chromium's focus fixup moved focus to <body> and theme.js fell back to focusing the header menu; the recall pill also re-appended a node that held focus.",
+    "file": "wordpress-theme/skyyrose-flagship-2/assets/js/mascot.js",
+    "root_cause": "Reparenting a subtree that contains document.activeElement (or hiding the opener before the dialog records it) triggers the browser's focus fixup; appendChild of a focused node likewise drops focus.",
+    "fix": "Reparent AFTER showModal(); never re-appendChild a node holding focus (restoreHome() no longer re-appends); hide an opener only after the dialog has recorded it; beforetoggle(closed) moves the stage home, with a close-handler fallback owning the final focus decision. Covered by tools/v2-runtime/test-skyy-concierge.cjs (43/43).",
+    "tags": [
+      "mascot",
+      "dialog",
+      "focus",
+      "a11y",
+      "javascript",
+      "theme-v2"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-22T21:30:00+00:00"
+  },
+  {
+    "id": "bug-365",
+    "timestamp": "2026-09-22T23:05:00+00:00",
+    "error_message": "npm run verify: 'exact bounded archive projection is offered to Core without changing its total budget' — assets/css/archive-theme.min.css grew to 33,215 B, past the 32,768 B per-file ceiling in inc/performance.php (pristine 30,056 B).",
+    "file": "tools/v2-runtime/build-archive-style-bundle.cjs",
+    "root_cause": "The projection classifier is fail-open for UNKNOWN owner families (unattributed rules are preserved so the Shop archive never loses CSS it needs). The 2026-09-22 redesign added route-owned primitives to theme.css (.sr2-arrival, .sr2-chapter, .sr2-title-chapter, .sr2-page-grid, .sr2-index-list, .sr2-press-list, .sr2-garment-grid, .sr2-wishlist, track-order/review-order) that no GROUPS entry owned, so they rode into the Shop projection.",
+    "fix": "Taught GROUPS/CONSUMERS the new owners (editorialWorlds group + content/transactions additions) instead of raising the ceiling; projection 26,637 B. Pinned in test-archive-style-bundle.cjs: archive primitives (.sr2-band, .sr2-title-display, .sr2-lede, .sr2-editorial-link, .sr2-eyebrow--engraved) stay unowned; new families classify. Completeness probe: all 43 theme.css classes rendered by the fixture Shop DOM survive in the projection; probe proven fail-able on .sr2-chapter.",
+    "tags": [
+      "v2-theme",
+      "archive-projection",
+      "css-budget",
+      "fail-open",
+      "classifier",
+      "verify-gate"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-22T23:05:00+00:00"
+  },
+  {
+    "id": "bug-366",
+    "timestamp": "2026-09-22T23:20:00+00:00",
+    "error_message": "tools/v2-source-certification/test_i18n.py::test_runtime_plural_is_retained KeyError '%d published view' (CI runs unittest discover on this dir). build:i18n reported 0 plural records.",
+    "file": "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-hero.php",
+    "root_cause": "The PDP editorial rework removed the 'Product archive · N published views' media label, which held the theme's ONLY _n() call; the pot builder's plural path lost its live fixture and the pinned test went red.",
+    "fix": "The gallery region's aria-label now carries the runtime plural (sprintf(_n('%d published view','%d published views',$gallery_count))) — a real accessible-name improvement, not chrome restored for a test. test_i18n unchanged (4/4 OK); pot regains 1 plural record; runtime-php-baseline re-pinned.",
+    "tags": [
+      "v2-theme",
+      "i18n",
+      "pot",
+      "pdp",
+      "test-pin",
+      "a11y"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-22T23:20:00+00:00"
+  },
+  {
+    "id": "bug-367",
+    "timestamp": "2026-09-23T00:40:00+00:00",
+    "error_message": "Skyy walk-on dock permanently occluded and click-shielded page content (About h1 at 1440, PDP title/price at 390) after the greeting; first fix rested her BEFORE the walk-on on slow pages.",
+    "file": "wordpress-theme/skyyrose-flagship-2/assets/js/mascot.js",
+    "root_cause": "A fixed, always-visible character box has no end state; a rest timer keyed on the pre-walk 'show' presence fires before window.load+4.5 s on image-heavy pages.",
+    "fix": "Rest timer (data-rest-after) starts only on 'idle' or on a static-only 'show' (lightweight()/renderFailed); hides the character, shows the recall pill; hover/focus cancel; recall clears. Probe timeline verified at 1440/390.",
+    "tags": [
+      "skyy",
+      "mascot",
+      "occlusion",
+      "a11y",
+      "ux"
+    ],
+    "related_bugs": [
+      "bug-364"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-23T00:40:00+00:00"
+  },
+  {
+    "id": "bug-368",
+    "timestamp": "2026-09-23T00:45:00+00:00",
+    "error_message": "Unprompted Skyy walk-in fetched the full 2.4–3.3 MB 3D chain on every non-checkout route with no network/device gate.",
+    "file": "wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+    "root_cause": "autoWalk gated only on Save-Data and reduced motion.",
+    "fix": "networkAllowsAutoWalk() (effectiveType 4g, !saveData, deviceMemory ≥ 4) + requestIdleCallback scheduling; intent paths untouched.",
+    "tags": [
+      "skyy",
+      "performance",
+      "network"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-23T00:45:00+00:00"
+  },
+  {
+    "id": "bug-369",
+    "timestamp": "2026-09-23T00:50:00+00:00",
+    "error_message": "Preload hints named images the redesigned templates never render: collection arrivals (srcset hint vs <picture>), /collections/ (retired yacht hero), /contact/ (atelier scene).",
+    "file": "wordpress-theme/skyyrose-flagship-2/inc/performance.php",
+    "root_cause": "Route preload rules were pinned to pristine templates; the redesign changed the rendered <picture> sources without touching the hint table.",
+    "fix": "Art-directed three-tier hints for collections and the collections index; contact rule removed; orphaned skyyrose2_collection_arrival_media() deleted; test-performance.php pins the tiers.",
+    "tags": [
+      "performance",
+      "preload",
+      "lcp"
+    ],
+    "related_bugs": [
+      "bug-363"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-23T00:50:00+00:00"
+  },
+  {
+    "id": "bug-370",
+    "timestamp": "2026-09-23T00:55:00+00:00",
+    "error_message": "validate-collection-hero-motion.py checked runtime guards on theme.js's DEAD [data-scene-motion] controller and only a substring in arrival.php, so a rogue <video> in any other template passed.",
+    "file": "wordpress-theme/skyyrose-flagship-2/scripts/validate-collection-hero-motion.py",
+    "root_cause": "Gate pinned to a symbol in dead code; positive assertion was a bare substring on one file.",
+    "fix": "Allow-list of runtime <video> emitters → resolver tokens, fails on any other emitter (rogue probe verified); CONTROLLER = visual-recovery.js (failVideo/prefers-reduced-motion/navigator.connection/IntersectionObserver); dead theme.js block removed.",
+    "tags": [
+      "gate-integrity",
+      "fail-open",
+      "validator",
+      "video"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-23T00:55:00+00:00"
+  },
+  {
+    "id": "bug-371",
+    "timestamp": "2026-09-23T01:50:00+00:00",
+    "error_message": "Journal entry list carried aria-label on a bare <div> (generic role — aria-label prohibited on it per WAI-ARIA 1.2); index.php/archive.php had no landmark at all.",
+    "file": "wordpress-theme/skyyrose-flagship-2/home.php",
+    "root_cause": "Redesign dropped the origin/main <section aria-label> landmark and left (or never added) the attribute on a role-less div.",
+    "fix": "All three journal-list containers now carry role=\"region\" aria-label=\"Journal entries\".",
+    "tags": [
+      "a11y",
+      "landmark",
+      "aria"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-23T01:50:00+00:00"
+  },
+  {
+    "id": "bug-372",
+    "timestamp": "2026-09-23T01:52:00+00:00",
+    "error_message": "Closing Ask Skyy in an engine without dialog beforetoggle strands the opener inside the closed dialog; theme.js's overlay lifecycle then falls back to focusing the header Menu button.",
+    "file": "wordpress-theme/skyyrose-flagship-2/assets/js/mascot.js",
+    "root_cause": "Reparenting the stage back into the dock was conditional on the beforetoggle event, which not every engine fires on <dialog>.",
+    "fix": "close() reparents the stage into the dock synchronously before dialog.close(), independent of beforetoggle support.",
+    "tags": [
+      "skyy",
+      "focus",
+      "a11y",
+      "cross-browser"
+    ],
+    "related_bugs": [
+      "bug-364"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-23T01:52:00+00:00"
+  },
+  {
+    "id": "bug-373",
+    "timestamp": "2026-09-23T01:54:00+00:00",
+    "error_message": "Home on-model film: kids-001 card downloaded its 1024x1536/193,008 B original into a ~320px slot while its three neighbours used 512x768 tiers (37-63 KB).",
+    "file": "wordpress-theme/skyyrose-flagship-2/template-parts/home/editorial-film.php",
+    "root_cause": "No 512w tier existed for kids-001 when the SKU->image map was authored.",
+    "fix": "Generated kids-capsule-kids-001-512w.webp (512x768, 57,706 B, Lanczos resize of the same approved source) and pointed the film map at it.",
+    "tags": [
+      "performance",
+      "image",
+      "home"
+    ],
+    "related_bugs": [
+      "bug-363"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-23T01:54:00+00:00"
+  },
+  {
+    "id": "bug-374",
+    "timestamp": "2026-09-23T01:56:00+00:00",
+    "error_message": "Hero-motion validator's video-emitter allowlist (bug-370's fix) matched only the lowercase substring '<video' and treated bare token presence as proof of wiring — an uppercase <VIDEO> tag or an unassigned resolver call would still pass.",
+    "file": "wordpress-theme/skyyrose-flagship-2/scripts/validate-collection-hero-motion.py",
+    "root_cause": "Regex/substring check written case-sensitively with no requirement that a callable resolver token feed a real assignment.",
+    "fix": "Case-insensitive tag detection; callable tokens now require a $var = token( assignment in the resolver file. Negative-probed against an uppercase <VIDEO> bypass.",
+    "tags": [
+      "gate-integrity",
+      "validator",
+      "fail-open"
+    ],
+    "related_bugs": [
+      "bug-230",
+      "bug-370"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-23T01:56:00+00:00"
   }
 ]

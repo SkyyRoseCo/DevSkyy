@@ -35,7 +35,8 @@
 /* Without scripting navigation stays in document flow; Shop and Bag stay real links. */
 @media (scripting: none) {
  .sr2-house-header { position: relative; height: auto; min-height: var(--sr2-header); }
- .sr2-house-nav { display: grid; position: static; visibility: visible; opacity: 1; grid-column: 1 / -1; height: auto; padding-top: var(--sr2-space-8); }
+ /* The base rule makes the nav a scroll container that contains overscroll; in flow it must chain to the document or wheel input over it never scrolls the page. */
+ .sr2-house-nav { display: grid; position: static; visibility: visible; opacity: 1; grid-column: 1 / -1; height: auto; overflow: visible; overscroll-behavior: auto; padding-top: var(--sr2-space-8); }
  [data-sr2-menu] { display: none; }
 }
 .sr2-dialog-head { display: flex; align-items: center; justify-content: space-between; gap: var(--sr2-space-4); }
@@ -103,7 +104,6 @@ body.sr2-overlay-open .skyyrose-mascot, body.sr2-overlay-open .skyyrose-mascot__
 .sr2-house-nav__previews a:focus-visible { outline-offset: var(--sr2-space-1); }
 .sr2-bag-empty-link { display: none; }
 .sr2-bag-dialog:has(.woocommerce-mini-cart__empty-message) .sr2-bag-empty-link { display: inline-flex; margin-block-start: var(--sr2-space-6); }
-.sr2-empty-bag-head { padding: calc(var(--sr2-header) + var(--sr2-space-8)) var(--sr2-page-pad) var(--sr2-space-5); }
 .sr2-page--cart > .woocommerce { padding-inline: var(--sr2-page-pad); }
 
 .sr2-shell-links a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: var(--sr2-border-width); text-underline-offset: .2em; }
@@ -141,10 +141,6 @@ body.sr2-overlay-open .skyyrose-mascot, body.sr2-overlay-open .skyyrose-mascot__
 .sr2-house-footer__legacy { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--sr2-line); }
 .sr2-house-nav__utility { flex-wrap: wrap; }
 .sr2-house-nav__utility a { min-height: 44px; }
-.sr2-journal-card { min-width: 0; }
-.sr2-journal-card:not(:has(.sr2-journal-card__media)) { padding: clamp(1.25rem, 3vw, 2.5rem); border: 1px solid var(--sr2-line); background: var(--sr2-card); }
-.sr2-journal-card__copy h2 { line-height: 1.2; }
-.sr2-journal-card__media img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 .woocommerce :is(.sr2-c-account, .woocommerce-form-login, .woocommerce-ResetPassword, .woocommerce-form-track-order) :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) { font-size: 1rem; max-width: 100%; min-height: 48px; }
 @media (max-width: 47.99rem) {
  .sr2-cart__item-copy h2 { font-size: 1.125rem; line-height: 1.35; }
@@ -155,16 +151,11 @@ body.sr2-overlay-open .skyyrose-mascot, body.sr2-overlay-open .skyyrose-mascot__
 .sr2-house-nav__experience-links { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; }
 .sr2-house-nav__experience-links a { display: inline-flex; align-items: center; min-height: 44px; }
 
-/* Image-free editorials do not reserve an empty photography column. */
-.sr2-journal-card:not(.has-post-thumbnail) { grid-template-columns: minmax(0, 1fr); }
-.sr2-journal-card:not(.has-post-thumbnail) .sr2-journal-card__copy { grid-column: 1 / -1; width: auto; min-width: 0; max-width: none; }
 @media (max-width: 47.99em) {
   body .sr2-c-editorial-card .sr2-c-editorial-card__body { min-width: 0; }
   body .sr2-c-editorial-card .sr2-c-editorial-card__nameplate { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: .625rem; min-width: 0; box-sizing: border-box; }
   body .sr2-c-editorial-card .sr2-c-editorial-card__collection { min-width: 0; margin: 0; font-size: .75rem; line-height: 1.45; letter-spacing: .04em; white-space: normal; overflow-wrap: anywhere; }
   body .sr2-c-editorial-card .sr2-c-editorial-card__index { font-size: .6875rem; line-height: 1.45; }
-  .sr2-journal-card:not(.has-post-thumbnail) .sr2-journal-card__copy > :is(h2, p) { width: 100%; max-width: none; }
-  .sr2-journal-card:not(.has-post-thumbnail) .sr2-journal-card__copy h2 { font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1.2; }
 }
 
 /* Final launch audit: compact native/Elementor bag presentation. */
@@ -230,9 +221,6 @@ body .sr2-house-header .sr2-header__brand-mark { height: clamp(2.5rem, 3.2vw, 3r
 .sr2-house-header .sr2-header__menu { grid-column: auto; justify-self: auto; }
 .sr2-house-header .sr2-header__menu > span:last-child { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 .sr2-house-header .sr2-header__menu > span:first-child { width: 1.1rem; box-shadow: 0 5px 0 currentColor; }
-.sr2-house-nav__ask { position: static; inset: auto; width: auto; max-width: none; margin: 0; padding: 0; }
-.sr2-house-nav__ask img { width: 2rem; height: 2rem; object-fit: contain; }
-.sr2-house-nav__ask small { display: block; color: var(--sr2-muted); font-size: .68rem; }
 
 /* Cinzel is reserved for engraved index labels (.sr2-eyebrow--engraved); titles are Archivo. */
 :is(.sr2-page-copy, .sr2-page-copy--generic, .woocommerce form, .woocommerce-account, .sr2-c-checkout) { text-align: start; }
@@ -292,8 +280,5 @@ body .sr2-story .sr2-story__body { max-width: 72ch; margin-inline: auto; }
 body .sr2-story .sr2-story__body :is(h2, h3) { line-height: 1.25; overflow-wrap: anywhere; }
 .sr2-content-title-anchor { display: block; scroll-margin-top: 6rem; }
 
-/* Scene columns respond to their actual card width, including desktop rails. */
-body .sr2-world.sr2-world--hero-composed .sr2-hero-commerce__details { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
-body .sr2-world.sr2-world--hero-composed .sr2-hero-commerce__story { min-width: 0; }
-body .sr2-world.sr2-world--hero-composed .sr2-hero-commerce__story h3 { line-height: 1.15; overflow-wrap: anywhere; }
+/* The shop-the-look details band is owned by hero-commerce-scenes.css (12-column story + product list). */
 body.woocommerce-cart #coupon_code { font-size: 1rem; }

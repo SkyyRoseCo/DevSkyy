@@ -49,10 +49,17 @@ test('immersive shell has the shared skip target and immediate native commerce',
 });
 
 test('Kids keeps both world and shopping entries plus its editorial story', () => {
-  const source = read('template-parts/collections/arrival.php');
-  assert.match(source, /skyyrose2_immersive_url\( \$args\['slug'\] \)/);
-  assert.match(source, /Explore world/);
-  assert.match(source, /Shop collection/);
-  assert.match(source, /href="#origin"/);
-  assert.match(source, /href="#shop"/);
+  // 2.5.0 arrival: one primary action to the shop band, one quiet link into the chapters
+  // (#world); the immersive world entry moved to the last chapter, the story keeps its own part.
+  const arrival = read('template-parts/collections/arrival.php');
+  assert.match(arrival, /class="sr2-control sr2-control--primary" href="#shop"/);
+  assert.match(arrival, /\$arrival\['hero_cta'\]/);
+  assert.match(arrival, /class="sr2-editorial-link" href="#world"/);
+  assert.match(arrival, /\$arrival\['world_cta'\]/);
+  const chapters = read('template-parts/collections/chapters.php');
+  assert.match(chapters, /id="world"/);
+  assert.match(chapters, /skyyrose2_immersive_url\( \$chapter_slug \)/);
+  const world = read('template-parts/collections/world.php');
+  assert.match(world, /<section id="shop"/);
+  assert.match(world, /get_template_part\( 'template-parts\/collections\/story'/);
 });

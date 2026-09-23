@@ -45,7 +45,6 @@ get_template_part(
 				'image'    => 'images/immersive/scene-kids-capsule-runway.webp',
 				'alt'      => __( 'A first Kids Capsule runway framed in royal color', 'skyyrose-flagship-2' ),
 				'copy'     => __( 'Confidence does not arrive borrowed. The first walk belongs to the child wearing it — their pace, their color, their way of taking the room.', 'skyyrose-flagship-2' ),
-				'hotspots' => array( array( 'sku' => 'kids-002', 'left' => 32, 'top' => 60 ) ),
 			),
 			array(
 				'id'    => 'next-up',

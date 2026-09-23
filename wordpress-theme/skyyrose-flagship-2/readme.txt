@@ -3,7 +3,7 @@ Contributors: skyyrose
 Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 2.4.4
+Stable tag: 2.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: e-commerce, custom-menu, featured-images, rtl-language-support, accessibility-ready
@@ -45,6 +45,14 @@ Yes. It is idempotent and reuses exact existing pages and menus without replacin
 No. Motion is progressive enhancement. Purchase controls and route links remain available with JavaScript disabled or reduced motion enabled.
 
 == Changelog ==
+
+= 2.5.0 =
+* Whole-site editorial redesign: every route follows one composition — a full-bleed cinematic arrival with a single focal point, editorial chapters, then a quiet colophon. Shared primitives live in theme.css; page sheets compose them.
+* Shell: 64px header with a smaller mark and Hanken links; Cinzel reserved for engraved index labels; controls and WooCommerce buttons in Hanken.
+* Home recomposed: Bay Bridge arrival with founder-approved motion, on-model film band, four collection chapters, worlds rail, founder portrait, journal films; critical CSS rebuilt.
+* Skyy: no mascot in the header or menu; Skyy walks on in a footer-rendered dock on every non-checkout route and is the chat entry; natural-motion rig tiers ship.
+* Shop, product, collection, immersive, cart, checkout, account and content pages recomposed to the same system; product cards ship without portal frames.
+* Archive projection classifier learns the redesign's owner families; PDP gallery region announces its published-view count.
 
 = 2.4.0 =
 * Added the V2 marketplace route, starter-content, and one-click import architecture.
