@@ -259,7 +259,7 @@ ml = [
     # unresolvable and broke the Docker build; this is the locally-installed,
     # test-validated set. Bump all three together (and re-validate) if upgrading.
     "torch==2.9.1",
-    "torchvision==0.24.1",
+    "torchvision==0.29.0",
     "torchaudio==2.11.0",
     "transformers>=4.53.0",
     "sentence-transformers>=5.6.0",
