@@ -1,7 +1,8 @@
 """Engine gates of scripts/deploy-theme.sh (founder directive 2026-09-18).
 
 DEPLOY_TARGET gate, target-host and SSH-destination checks, the live theme
-identity gate and the V1-only scope guard. The staging/production wrappers are
+identity gate and the folder-name scope guard (skyyrose-flagship or
+skyyrose-flagship-2 only). The staging/production wrappers are
 covered by tests/scripts/test_deploy_wrappers.py; shared fixtures live in
 tests/scripts/deploy_target_fixtures.py. Nothing here touches the network.
 """
@@ -392,7 +393,10 @@ class TestEngineScopeGuard:
         ],
         ids=["full-v2", "text-domain-only", "version-define-only"],
     )
-    def test_flagship2_source_is_refused_explicitly(self, tmp_path, kwargs):
+    def test_unrecognized_folder_name_is_refused_regardless_of_content(self, tmp_path, kwargs):
+        """The scope guard is folder-basename-driven, not content-driven: a
+        source folder named neither skyyrose-flagship nor skyyrose-flagship-2
+        is refused even when its style.css/functions.php carry V2 markers."""
         env_file = tmp_path / "env"
         env_file.write_text(
             _env_text(public_url=f"https://{STAGING_HOST}/", theme_folder=V2_FOLDER)
@@ -420,11 +424,18 @@ class TestEngineScopeGuard:
         result = _run(["bash", str(ENGINE), "--dry-run"], env)
         assert result.returncode == 1
         out = _out(result)
-        assert "engine lacks skyyrose-flagship-2 support" in out
-        assert "PR #918" in out
+        assert "Deploy source folder is 'some-source'" in out
+        assert "this engine only recognizes skyyrose-flagship or skyyrose-flagship-2" in out
         assert "Version triple unreadable" not in out
 
-    def test_folder_name_alone_is_refused(self, tmp_path):
+    def test_v2_named_folder_with_v1_content_is_treated_as_v1_and_still_gated(self, tmp_path):
+        """A folder literally named skyyrose-flagship-2 now passes the
+        basename-only scope guard, but V1-shaped content (no SKYYROSE2_VERSION
+        define) makes skyyrose_is_v2_theme() classify it as V1 -- the V2 data/
+        boundary gate is skipped, and it proceeds to the ordinary V1 checks and
+        then the live theme identity gate, which is what actually catches it
+        here (no live route configured for this folder -> 404 -> new-folder
+        gate). Folder name alone no longer grants a free pass."""
         env_file = tmp_path / "env"
         env_file.write_text(
             _env_text(public_url=f"https://{STAGING_HOST}/", theme_folder=V2_FOLDER)
@@ -441,12 +452,24 @@ class TestEngineScopeGuard:
         )
         result = _run(["bash", str(ENGINE), "--dry-run"], env)
         assert result.returncode == 1
-        assert "engine lacks skyyrose-flagship-2 support" in _out(result)
-        assert fetched_urls(env) == []  # refused before the identity GET
+        out = _out(result)
+        assert f"Engine supports source: {V2_FOLDER}" in out
+        assert "Version triple in sync: 1.0.0" in out
+        assert f"is absent on {STAGING_HOST} (HTTP 404" in out
+        assert "Deploying would create a new theme folder" in out
+        assert "--allow-new-theme-folder" in out
+        # Unlike the pre-support refusal, this now reaches the live identity
+        # GET -- it is the gate that actually catches this case.
+        assert len(fetched_urls(env)) == 1
+        assert fetched_urls(env)[0].startswith(
+            f"https://{STAGING_HOST}/wp-content/themes/{V2_FOLDER}/style.css"
+        )
 
     def test_v1_source_under_another_basename_is_refused(self, tmp_path):
-        """D2: the remote hot-swap does a literal `mv skyyrose-flagship`, so a
-        V1 tree under any other folder name would extract to the wrong place."""
+        """D2: the remote hot-swap moves the extracted archive under its own
+        basename, so a source tree under any unrecognized folder name would
+        extract to a path the swap never renames into place -- the scope
+        guard refuses it up front regardless of content."""
         env_file = tmp_path / "env"
         env_file.write_text(
             _env_text(public_url=f"https://{STAGING_HOST}/", theme_folder=V1_FOLDER)
@@ -464,6 +487,6 @@ class TestEngineScopeGuard:
         result = _run(["bash", str(ENGINE), "--dry-run"], env)
         assert result.returncode == 1
         out = _out(result)
-        assert "extracts the tarball as skyyrose-flagship" in out
-        assert "skyyrose-flagship-copy" in out
+        assert "Deploy source folder is 'skyyrose-flagship-copy'" in out
+        assert "this engine only recognizes skyyrose-flagship or skyyrose-flagship-2" in out
         assert fetched_urls(env) == []
