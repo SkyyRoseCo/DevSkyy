@@ -6528,5 +6528,25 @@
     "related_bugs": [],
     "occurrences": 1,
     "last_seen": "2026-09-23T03:17:50.152226+00:00"
+  },
+  {
+    "id": "bug-376",
+    "timestamp": "2026-09-23T13:46:47.434182+00:00",
+    "error_message": "Post-deploy WordPress.com edge-cache purge (POST public-api.wordpress.com/wpcom/v2/sites/256563697/hosting/edge-cache/purge) and a full Lighthouse performance audit could not be run after the first successful V2 staging deploy",
+    "file": "scripts/deploy-staging.sh",
+    "root_cause": "No WPCOM REST API OAuth token exists anywhere in .env.wordpress.staging/.env.wordpress/.env.secrets (checked key names only); npx lighthouse install failed with npm ETIMEDOUT (no network egress to the npm registry from this environment).",
+    "fix": "NOT FIXED -- worked around with what was available: deploy verification used its existing cache-busted GET (bypasses Batcache) confirming version 2.5.0 live; performance was spot-checked with 3x curl timing runs instead of Lighthouse (TTFB ~1.6-2.0s, total ~1.9-2.6s, consistent 197719B). A real edge-cache purge still needs a WPCOM token the founder would have to supply; visitors hitting a cached URL without a cache-buster may see stale content until Batcache naturally expires it.",
+    "tags": [
+      "deploy",
+      "staging",
+      "edge-cache",
+      "performance",
+      "v2-theme"
+    ],
+    "related_bugs": [
+      "bug-375"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-23T13:46:47.434298+00:00"
   }
 ]
