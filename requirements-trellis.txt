@@ -29,7 +29,7 @@ onnxruntime>=1.26.0
 # Pick one of:
 #   - usd-core (Python, partial GLB→USDZ support)
 #   - usd_from_gltf (Google's C++ CLI, install via brew/apt)
-usd-core>=26.5; platform_system != "Windows"
+usd-core>=26.8; platform_system != "Windows"
 
 # --- Replicate backend (optional) ---
 replicate>=1.0.7
