@@ -23,7 +23,7 @@ numpy>=1.26
 # --- Background removal (optional but recommended) ---
 # rembg pulls onnxruntime; pin a lighter wheel for slim images.
 rembg>=2.0.77
-onnxruntime>=1.26.0
+onnxruntime>=1.30.0
 
 # --- USDZ export (optional, iOS AR) ---
 # Pick one of:
