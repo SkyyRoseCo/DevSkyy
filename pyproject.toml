@@ -258,7 +258,7 @@ ml = [
     # A Dependabot bump of torch alone (2.9.1 -> 2.12.1) made the [all] extra
     # unresolvable and broke the Docker build; this is the locally-installed,
     # test-validated set. Bump all three together (and re-validate) if upgrading.
-    "torch==2.9.1",
+    "torch==2.14.0",
     "torchvision==0.24.1",
     "torchaudio==2.11.0",
     "transformers>=4.53.0",
