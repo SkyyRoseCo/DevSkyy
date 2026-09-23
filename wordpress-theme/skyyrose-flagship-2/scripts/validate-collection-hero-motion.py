@@ -172,10 +172,19 @@ def main() -> int:
         raise ValueError("collection template can bypass the approved hero-motion resolver")
     # Every runtime <video> emitter must trace to an approved resolver; any other PHP emitter fails closed.
     video_emitters = {
-        "template-parts/collections/arrival.php": ("template-parts/collections/arrival.php", "skyyrose2_collection_hero_motion("),
-        "template-parts/home/editorial-hero.php": ("front-page.php", "skyyrose2_collection_hero_motion("),
+        "template-parts/collections/arrival.php": (
+            "template-parts/collections/arrival.php",
+            "skyyrose2_collection_hero_motion(",
+        ),
+        "template-parts/home/editorial-hero.php": (
+            "front-page.php",
+            "skyyrose2_collection_hero_motion(",
+        ),
         "page-lookbook.php": ("page-lookbook.php", "skyyrose2_collection_hero_motion("),
-        "template-parts/commerce/hero-composed-scene.php": ("template-parts/commerce/hero-composed-scene.php", "skyyrose2_approved_scroll_world_scene("),
+        "template-parts/commerce/hero-composed-scene.php": (
+            "template-parts/commerce/hero-composed-scene.php",
+            "skyyrose2_approved_scroll_world_scene(",
+        ),
         "functions.php": ("functions.php", "function skyyrose2_render_black_rose_jersey_series"),
     }
     for php_file in sorted(THEME.rglob("*.php")):
@@ -183,7 +192,10 @@ def main() -> int:
         if relative.startswith(("node_modules/", "scripts/", "tools/", "vendor/")):
             continue
         source = php_file.read_text(encoding="utf-8", errors="replace")
-        if not re.search(r"<\s*video\b", source, re.IGNORECASE) and "data-recovery-hero-video" not in source.lower():
+        if (
+            not re.search(r"<\s*video\b", source, re.IGNORECASE)
+            and "data-recovery-hero-video" not in source.lower()
+        ):
             continue
         if relative not in video_emitters:
             raise ValueError(f"unapproved video emitter: {relative}")
@@ -199,8 +211,12 @@ def main() -> int:
         # jersey-series function) has no separate call to find.
         if resolver_token.endswith("("):
             call_name = resolver_token[:-1]
-            if not re.search(r"\$\w+(?:\[[^\]]+\])?\s*=[^=]*?" + re.escape(call_name) + r"\s*\(", resolver_source):
-                raise ValueError(f"{relative} calls {resolver_token} without an assignment in {resolver_file}")
+            if not re.search(
+                r"\$\w+(?:\[[^\]]+\])?\s*=[^=]*?" + re.escape(call_name) + r"\s*\(", resolver_source
+            ):
+                raise ValueError(
+                    f"{relative} calls {resolver_token} without an assignment in {resolver_file}"
+                )
     for runtime_guard in (
         "failVideo",
         "prefers-reduced-motion",
