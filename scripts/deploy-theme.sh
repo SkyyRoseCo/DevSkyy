@@ -19,10 +19,11 @@
 #   - sshpass installed (brew install hudochenkov/sshpass/sshpass)
 #   - Theme source directory -- selected by the wrapper via THEME_DIR_OVERRIDE
 #
-# Scope: this engine is V1-only (SKYYROSE_VERSION regex, V1 asset floor, V1
-# data/ allowlist, `mv skyyrose-flagship` in the hot-swap). A flagship-2 source
-# is refused explicitly by check_engine_supports_source() until PR #918's V2
-# engine support lands.
+# Scope: supports both skyyrose-flagship (V1: SKYYROSE_VERSION) and
+# skyyrose-flagship-2 (V2: SKYYROSE2_VERSION) sources. check_version_triple,
+# check_asset_floor and skyyrose_data_extra_excludes each branch on which one
+# functions.php declares; check_engine_supports_source refuses any other
+# source folder name.
 #
 # Safety:
 #   - Maintenance mode is activated before file transfer and deactivated after
@@ -419,12 +420,12 @@ check_ssh_destination() {
 }
 
 # ---------------------------------------------------------------------------
-# Engine scope guard. This engine is V1-only: SKYYROSE_VERSION regex
-# (check_version_triple), V1 asset floor, V1 data/ allowlist and a literal
-# `mv skyyrose-flagship` in the remote hot-swap. A flagship-2 source would
-# otherwise die at the version-triple check with a cryptic "unreadable"
-# message -- or, forced past it, extract under the wrong folder name.
-# PR #918 carries the V2 engine support; it is deliberately not ported here.
+# Engine scope guard. Supports both skyyrose-flagship (V1: SKYYROSE_VERSION)
+# and skyyrose-flagship-2 (V2: SKYYROSE2_VERSION) sources -- check_version_triple,
+# check_asset_floor and skyyrose_data_extra_excludes each branch on which one
+# functions.php declares, and the remote hot-swap moves the archive root
+# under its own basename rather than a literal `mv skyyrose-flagship`, so any
+# known theme folder name is supported.
 # ---------------------------------------------------------------------------
 check_engine_supports_source() {
     local source_name local_domain=""
@@ -432,16 +433,11 @@ check_engine_supports_source() {
     if [[ -f "$THEME_DIR/style.css" ]]; then
         local_domain="$(extract_theme_header "Text Domain" < "$THEME_DIR/style.css")"
     fi
-    if [[ "$source_name" == "skyyrose-flagship-2" || "$local_domain" == "skyyrose-flagship-2" ]] \
-        || grep -q "SKYYROSE2_VERSION" "$THEME_DIR/functions.php" 2>/dev/null; then
-        log_error "Deploy source is skyyrose-flagship-2 (${THEME_DIR}) but this engine lacks skyyrose-flagship-2 support -- land PR #918's deploy changes (SKYYROSE2_VERSION regex, V2 asset floor, V2 data/ allowlist, basename-driven hot-swap) before deploying it"
-        exit 1
-    fi
-    # The tarball is built from the parent dir and the remote hot-swap does a
-    # literal `mv skyyrose-flagship`; any other basename extracts to a folder
-    # the swap never renames into place.
-    if [[ "$source_name" != "skyyrose-flagship" ]]; then
-        log_error "Deploy source folder is '${source_name}' (${THEME_DIR}) but this V1-only engine extracts the tarball as skyyrose-flagship -- the remote hot-swap would not find it; point THEME_DIR_OVERRIDE at a folder named skyyrose-flagship"
+    # The tarball is built from the parent dir and the remote hot-swap moves
+    # it into place under its own basename; any other folder name extracts to
+    # a path the swap never renames into place.
+    if [[ "$source_name" != "skyyrose-flagship" && "$source_name" != "skyyrose-flagship-2" ]]; then
+        log_error "Deploy source folder is '${source_name}' (${THEME_DIR}) but this engine only recognizes skyyrose-flagship or skyyrose-flagship-2 -- point THEME_DIR_OVERRIDE at one of those folder names"
         exit 1
     fi
     log_success "Engine supports source: ${source_name} (text domain '${local_domain:-?}')"
@@ -616,7 +612,8 @@ check_version_triple() {
         fi
     done
     v_style=$(awk '/^Version:/ {print $2; exit}' "$THEME_DIR/style.css" 2>/dev/null || true)
-    v_func=$(sed -nE "s/^define\( 'SKYYROSE_VERSION', '([^']+)' \);.*/\1/p" "$THEME_DIR/functions.php" 2>/dev/null | head -1 || true)
+    # V1 defines SKYYROSE_VERSION; the V2 theme (skyyrose-flagship-2) defines SKYYROSE2_VERSION.
+    v_func=$(sed -nE "s/^define\( 'SKYYROSE2?_VERSION', '([^']+)' \);.*/\1/p" "$THEME_DIR/functions.php" 2>/dev/null | head -1 || true)
     v_readme=$(awk '/^Stable tag:/ {print $3; exit}' "$THEME_DIR/readme.txt" 2>/dev/null || true)
     if [[ -z "$v_style" || -z "$v_func" || -z "$v_readme" ]]; then
         log_error "Version triple unreadable (style.css='${v_style:-?}' functions.php='${v_func:-?}' readme.txt='${v_readme:-?}') -- refusing to deploy"
@@ -671,6 +668,24 @@ check_tracked_files() {
 # static minimums, not exact counts).
 check_asset_floor() {
     local emblems fonts glb_state="MISSING"
+    # The V2 theme keeps a different rider set: self-hosted fonts under
+    # assets/sot/fonts, hero/scene motion video under assets/video and
+    # assets/scroll-world (no fixed subpath -- the redesign moved these more
+    # than once; count both trees), and the mascot GLB under assets/models
+    # (skyy-mascot.glb plus the natural-motion desktop/mobile variants). No
+    # emblem webps in V2.
+    if grep -qE "^define\( 'SKYYROSE2_VERSION'" "$THEME_DIR/functions.php" 2>/dev/null; then
+        local videos
+        fonts=$({ find "$THEME_DIR/assets/sot/fonts" -maxdepth 1 -name '*.woff2' 2>/dev/null || true; } | wc -l | tr -d ' ')
+        videos=$({ find "$THEME_DIR/assets/video" "$THEME_DIR/assets/scroll-world" \( -iname '*.webm' -o -iname '*.mp4' \) 2>/dev/null || true; } | wc -l | tr -d ' ')
+        if compgen -G "$THEME_DIR/assets/models/*.glb" >/dev/null; then glb_state="present"; fi
+        if (( fonts < 8 )) || (( videos < 15 )) || [[ "$glb_state" == "MISSING" ]]; then
+            log_error "Critical-asset floor FAILED (V2): woff2=$fonts (need >=8), motion video=$videos (need >=15), mascot GLB $glb_state"
+            exit 1
+        fi
+        log_success "Critical-asset floor (V2): $fonts woff2, $videos motion video, mascot GLB $glb_state"
+        return 0
+    fi
     emblems=$({ find "$THEME_DIR/assets/images/emblems" -maxdepth 1 -name '*.webp' 2>/dev/null || true; } | wc -l | tr -d ' ')
     fonts=$({ find "$THEME_DIR/assets/fonts" -maxdepth 1 -name '*.woff2' 2>/dev/null || true; } | wc -l | tr -d ' ')
     if [[ -f "$THEME_DIR/assets/models/skyy.glb" ]]; then glb_state="present"; fi
@@ -727,9 +742,12 @@ preflight() {
     fi
     log_success "Theme directory exists: $THEME_DIR"
 
-    # Engine scope guard -- an explicit refusal for a flagship-2 source, ahead
-    # of the V1-only version-triple regex that would otherwise misreport it.
+    # Engine scope guard -- refuses an unrecognized source folder name before
+    # any version/asset check runs against it.
     check_engine_supports_source
+
+    # V2 data/ release allowlist must resolve before any transfer list is built.
+    check_v2_data_boundary
 
     # Source-completeness gate (bug-252) -- cheap checks before the PHP lint sweep.
     preflight_completeness
@@ -777,6 +795,47 @@ preflight() {
     log_success "All preflight checks passed"
 }
 
+skyyrose_is_v2_theme() {
+    grep -qE "^define\( 'SKYYROSE2_VERSION'" "$THEME_DIR/functions.php" 2>/dev/null
+}
+
+# V2 data/ allowlist: the package boundary
+# (tools/v2-source-certification/package-boundary.json) is the release
+# authority for skyyrose-flagship-2. Only data/ files it marks release:true
+# ship; founder rejection records, QA manifests and production contracts are
+# release:false there and stay off the public theme directory. Prints one
+# theme-relative path per line; non-zero when the boundary is missing,
+# unreadable, or lists nothing (an empty list would let the hot-swap delete
+# runtime data).
+skyyrose_v2_data_allowlist() {
+    local boundary="$PROJECT_ROOT/tools/v2-source-certification/package-boundary.json"
+    [[ -r "$boundary" ]] || return 1
+    command -v python3 &>/dev/null || return 1
+    local allow
+    allow="$(python3 - "$boundary" <<'PY'
+import json, sys
+files = json.load(open(sys.argv[1]))["files"]
+for rel in sorted(files):
+    if rel.startswith("data/") and files[rel].get("release") is True:
+        print(rel)
+PY
+)" || return 1
+    [[ -n "$allow" ]] || return 1
+    printf '%s\n' "$allow"
+}
+
+# Preflight gate (main shell, so a failure stops the deploy): the V2 allowlist
+# must resolve before any transfer list is trusted.
+check_v2_data_boundary() {
+    skyyrose_is_v2_theme || return 0
+    local count
+    if ! count="$(skyyrose_v2_data_allowlist | wc -l | tr -d ' ')" || [[ "$count" -eq 0 ]]; then
+        log_error "V2 package boundary unreadable or lists no releasable data/ files: $PROJECT_ROOT/tools/v2-source-certification/package-boundary.json -- refusing to deploy"
+        exit 1
+    fi
+    log_success "V2 data/ allowlist: $count runtime file(s) from the package boundary"
+}
+
 # ---------------------------------------------------------------------------
 # data/ fail-closed allowlist (bug-230 class)
 #
@@ -786,10 +845,31 @@ preflight() {
 # instead of shipping world-readable (the fail-open that let 36 dossiers,
 # _orphans.json, identity.schema.json and README.md reach production).
 # Allowlist + file:line evidence: architecture-census.md + fix-log Wave 1b.
+#
+# V2's data/ holds only runtime JSON and editor HTML that PHP reads (card
+# fronts, scene motion, presentation registry, ...); its release boundary is
+# enforced by tools/v2-source-certification, not the static V1 list below, so
+# it branches to skyyrose_v2_data_allowlist()/check_v2_data_boundary() instead.
 # ---------------------------------------------------------------------------
 skyyrose_data_extra_excludes() {
-    local f rel
+    local f rel allow
     [[ -d "$THEME_DIR/data" ]] || return 0
+    if skyyrose_is_v2_theme; then
+        # Runs inside process substitutions too, where exit cannot stop the
+        # deploy: an unresolved allowlist excludes every data/ file (fail
+        # closed) and check_v2_data_boundary aborts in preflight.
+        if ! allow="$(skyyrose_v2_data_allowlist)"; then
+            log_error "V2 data/ allowlist unresolved -- excluding all of data/"
+            allow=""
+        fi
+        while IFS= read -r f; do
+            rel="${f#"$THEME_DIR"/}"
+            if [[ -z "$allow" ]] || ! grep -qxF -- "$rel" <<<"$allow"; then
+                printf -- '--exclude=%s\n' "$rel"
+            fi
+        done < <(find "$THEME_DIR/data" -type f | LC_ALL=C sort)
+        return 0
+    fi
     while IFS= read -r f; do
         rel="${f#"$THEME_DIR"/}"
         case "$rel" in
@@ -1013,7 +1093,20 @@ try_rsync() {
     local parent_dir theme_name
     parent_dir="$(dirname "$WP_THEME_PATH")"
     theme_name="$(basename "$WP_THEME_PATH")"
-    if ! "${SSH_CMD[@]}" "${SSH_USER}@${SSH_HOST}" "set -e; cd /tmp && tar ${zstd_flag} -xf ${remote_tar_name} && (if [ -d '${WP_THEME_PATH}' ]; then mv '${WP_THEME_PATH}' '${WP_THEME_PATH}.old.${swap_id}'; fi) && mv skyyrose-flagship '${WP_THEME_PATH}' && rm -f ${remote_tar_name} && (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf {} 2>/dev/null; true)"; then
+    # The tar archive root is built from $(basename "$THEME_DIR") (see the tar
+    # invocation above), so the remote extract/swap must move that same name
+    # into place -- a literal `mv skyyrose-flagship` only worked for V1 and
+    # silently no-ops for any other source folder (e.g. skyyrose-flagship-2),
+    # stranding the extracted files in /tmp while WP_THEME_PATH never updates.
+    local source_name
+    source_name="$(basename "$THEME_DIR")"
+    if [[ ! "$source_name" =~ ^[A-Za-z0-9._-]+$ ]]; then
+        log_error "Theme source directory name is not shell-safe for the remote swap: ${source_name}"
+        rm -f "$tmpzip"
+        phase_end swap
+        return 1
+    fi
+    if ! "${SSH_CMD[@]}" "${SSH_USER}@${SSH_HOST}" "set -e; cd /tmp && tar ${zstd_flag} -xf ${remote_tar_name} && test -d '/tmp/${source_name}' && (if [ -d '${WP_THEME_PATH}' ]; then mv '${WP_THEME_PATH}' '${WP_THEME_PATH}.old.${swap_id}'; fi) && mv '/tmp/${source_name}' '${WP_THEME_PATH}' && rm -f ${remote_tar_name} && (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf {} 2>/dev/null; true)"; then
         log_error "Remote extract/swap FAILED — live theme was not swapped"
         rm -f "$tmpzip"
         phase_end swap
