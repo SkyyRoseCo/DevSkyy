@@ -86,7 +86,7 @@
   --sr2-layer-guide: 80;
   --sr2-layer-header: 100;
   --sr2-layer-skip: 999;
-  --sr2-header: 76px;
+  --sr2-header: 64px;
   --sr2-content: 1200px;
   --sr2-wide: 1500px;
   --sr2-space-1: 0.25rem;
@@ -155,6 +155,14 @@
   --sr2-index-width: 2.5rem;
   --sr2-grid-gap: clamp(1rem, 2vw, 2rem);
   --sr2-shell-space: clamp(2rem, 5vw, 5rem);
+  /* Whole-site editorial rhythm (2026-09-22): chapter scenes, bands, and the Skyy dock. */
+  --sr2-band-pad: clamp(3.5rem, 7vw, 7rem);
+  --sr2-type-chapter: clamp(2.25rem, 4.4vw, 4.25rem);
+  --sr2-type-lede: clamp(1rem, 0.5rem + 1vw, 1.125rem);
+  --sr2-scene-ratio: 16 / 9;
+  --sr2-scene-ratio-mobile: 3 / 2;
+  --sr2-dock-offset: clamp(0.75rem, 2vw, 1.5rem);
+  --sr2-focal: 50% 40%;
   --sr2-safe-top: env(safe-area-inset-top, 0px);
   --sr2-safe-bottom: env(safe-area-inset-bottom, 0px);
   --sr2-motion-micro: var(--sr2-fast);

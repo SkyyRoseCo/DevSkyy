@@ -89,8 +89,8 @@ get_header();
 	style="--sr2-immersive-accent: <?php echo esc_attr( $accent ); ?>; --sr2-immersive-accent-rgb: <?php echo esc_attr( $accent_rgb ); ?>;">
 	<div class="sr2-immersive__progress" aria-hidden="true"><span></span></div>
 
-	<section class="sr2-immersive__entry" id="world-entry" aria-labelledby="immersive-world-title">
-		<div class="sr2-immersive__poster" aria-hidden="true">
+	<section class="sr2-immersive__entry sr2-arrival" id="world-entry" aria-labelledby="immersive-world-title">
+		<div class="sr2-immersive__poster sr2-arrival__media" aria-hidden="true">
 			<img src="<?php echo esc_url( $poster_uri ); ?>"
 				alt=""
 				width="1672"
@@ -99,17 +99,14 @@ get_header();
 				decoding="async">
 		</div>
 		<canvas class="sr2-immersive__canvas" width="1280" height="720" aria-hidden="true"></canvas>
-		<div class="sr2-immersive__entry-veil" aria-hidden="true"></div>
-		<div class="sr2-immersive__entry-copy">
-			<p class="sr2-immersive__kicker"><?php echo esc_html( $kicker ); ?></p>
+		<div class="sr2-immersive__entry-veil sr2-arrival__veil" aria-hidden="true"></div>
+		<div class="sr2-immersive__entry-copy sr2-arrival__copy">
+			<p class="sr2-immersive__kicker sr2-eyebrow"><?php echo esc_html( $kicker ); ?></p>
 			<h1 id="immersive-world-title" class="sr2-immersive__sr-title"><?php echo esc_html( $collection_name . ': ' . $world_name ); ?></h1>
-			<p class="sr2-immersive__direction"><?php echo esc_html( $direction ); ?></p>
-			<div class="sr2-immersive__portal-actions">
-			<a class="sr2-immersive__enter" href="#chapter-<?php echo esc_attr( sanitize_key( $chapters[0]['id'] ?? 'one' ) ); ?>">
-				<span><?php esc_html_e( 'Enter the story', 'skyyrose-flagship-2' ); ?></span>
-				<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 3v17m-7-7 7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-			</a>
-			<a class="sr2-immersive__enter" href="<?php echo esc_url( skyyrose2_collection_url( $collection_slug ) ); ?>#shop"><?php esc_html_e( 'Shop collection', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↗</span></a>
+			<p class="sr2-immersive__direction sr2-lede"><?php echo esc_html( $direction ); ?></p>
+			<div class="sr2-immersive__portal-actions sr2-arrival__actions">
+				<a class="sr2-immersive__enter sr2-control sr2-control--primary" href="#chapter-<?php echo esc_attr( sanitize_key( $chapters[0]['id'] ?? 'one' ) ); ?>"><?php esc_html_e( 'Enter the story', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↓</span></a>
+				<a class="sr2-immersive__enter sr2-editorial-link" href="<?php echo esc_url( skyyrose2_collection_url( $collection_slug ) ); ?>#shop"><?php esc_html_e( 'Shop collection', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↗</span></a>
 			</div>
 		</div>
 		<p class="sr2-immersive__scene-status screen-reader-text" aria-live="polite"><?php esc_html_e( 'The static story scene is ready.', 'skyyrose-flagship-2' ); ?></p>
@@ -117,19 +114,23 @@ get_header();
 	</section>
 
 	<nav class="sr2-immersive__chapter-nav" aria-label="<?php esc_attr_e( 'Story chapters', 'skyyrose-flagship-2' ); ?>">
-		<p class="sr2-immersive__chapter-mark" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', count( $chapters ) ) ); ?></p>
+		<p class="sr2-immersive__chapter-mark sr2-eyebrow sr2-eyebrow--engraved" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', count( $chapters ) ) ); ?></p>
 		<ol>
 			<?php foreach ( $chapters as $index => $chapter ) : ?>
 				<?php $chapter_id = sanitize_key( $chapter['id'] ?? 'chapter-' . ( $index + 1 ) ); ?>
-				<li><a href="#chapter-<?php echo esc_attr( $chapter_id ); ?>"<?php echo 0 === $index ? ' aria-current="step"' : ''; ?>><span><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span><?php echo esc_html( $chapter['label'] ?? '' ); ?></a></li>
+				<li><a href="#chapter-<?php echo esc_attr( $chapter_id ); ?>"<?php echo 0 === $index ? ' aria-current="step"' : ''; ?>><span class="sr2-eyebrow sr2-eyebrow--engraved"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span><?php echo esc_html( $chapter['label'] ?? '' ); ?></a></li>
 			<?php endforeach; ?>
 		</ol>
 	</nav>
 
-	<section class="sr2-immersive__prologue" aria-labelledby="immersive-prologue-title">
-		<p class="sr2-immersive__eyebrow"><?php echo esc_html( $collection_name ); ?></p>
-		<h2 id="immersive-prologue-title"><?php echo esc_html( $world_name ); ?></h2>
-		<p><?php echo esc_html( $manifesto ); ?></p>
+	<section class="sr2-immersive__prologue sr2-band" aria-labelledby="immersive-prologue-title">
+		<div class="sr2-band__head">
+			<div>
+				<p class="sr2-immersive__eyebrow sr2-eyebrow sr2-eyebrow--engraved"><?php echo esc_html( $collection_name ); ?></p>
+				<h2 id="immersive-prologue-title" class="sr2-title-chapter"><?php echo esc_html( $world_name ); ?></h2>
+				<p class="sr2-lede"><?php echo esc_html( $manifesto ); ?></p>
+			</div>
+		</div>
 	</section>
 
 	<div class="sr2-immersive__chapters">
@@ -160,15 +161,17 @@ get_header();
 			$image_path    = $is_scroll ? SKYYROSE2_DIR . '/assets/scroll-world/' . $chapter_image : SKYYROSE2_DIR . '/assets/sot/' . $chapter_image;
 			$image_uri     = $is_scroll ? skyyrose2_scroll_world_asset_uri( $chapter_image ) : skyyrose2_sot_asset_uri( $chapter_image );
 			$image_exists  = $chapter_image && file_exists( $image_path );
+			$image_size    = $image_exists ? getimagesize( $image_path ) : false;
 			$hotspots      = isset( $chapter['hotspots'] ) && is_array( $chapter['hotspots'] ) ? $chapter['hotspots'] : array();
+			$chapter_title = 'immersive-chapter-' . $chapter_id . '-title';
 			?>
-			<article class="sr2-immersive__chapter" id="chapter-<?php echo esc_attr( $chapter_id ); ?>" data-chapter="<?php echo esc_attr( $chapter_id ); ?>" data-index="<?php echo esc_attr( (string) $index ); ?>">
-				<div class="sr2-immersive__chapter-media">
+			<article class="sr2-immersive__chapter sr2-chapter<?php echo 1 === $index % 2 ? ' sr2-chapter--flip' : ''; ?>" id="chapter-<?php echo esc_attr( $chapter_id ); ?>" data-chapter="<?php echo esc_attr( $chapter_id ); ?>" data-index="<?php echo esc_attr( (string) $index ); ?>" aria-labelledby="<?php echo esc_attr( $chapter_title ); ?>">
+				<div class="sr2-immersive__chapter-media sr2-chapter__scene">
 					<?php if ( $image_exists ) : ?>
 						<img src="<?php echo esc_url( $image_uri ); ?>"
 							alt="<?php echo esc_attr( $chapter['alt'] ?? $chapter['label'] ?? '' ); ?>"
-							width="1344"
-							height="896"
+							width="<?php echo esc_attr( (string) ( $image_size ? $image_size[0] : 1344 ) ); ?>"
+							height="<?php echo esc_attr( (string) ( $image_size ? $image_size[1] : 896 ) ); ?>"
 							loading="lazy"
 							decoding="async">
 					<?php else : ?>
@@ -224,26 +227,31 @@ get_header();
 						</a>
 					<?php endforeach; ?>
 				</div>
-				<div class="sr2-immersive__chapter-copy">
-					<p class="sr2-immersive__chapter-number"><?php echo esc_html( sprintf( '%02d / %02d', $index + 1, count( $chapters ) ) ); ?></p>
-					<h2><?php echo esc_html( $chapter['label'] ?? '' ); ?></h2>
-					<p><?php echo esc_html( $chapter['copy'] ?? '' ); ?></p>
-					<?php
-					if ( ! empty( $chapter['aside'] ) ) :
-						?>
-						<p class="sr2-immersive__aside"><?php echo esc_html( $chapter['aside'] ); ?></p><?php endif; ?>
+				<div class="sr2-immersive__chapter-copy sr2-chapter__band">
+					<div class="sr2-chapter__copy">
+						<p class="sr2-immersive__chapter-number sr2-chapter__index sr2-eyebrow sr2-eyebrow--engraved"><?php echo esc_html( sprintf( '%02d / %02d', $index + 1, count( $chapters ) ) ); ?></p>
+						<h2 id="<?php echo esc_attr( $chapter_title ); ?>" class="sr2-title-chapter"><?php echo esc_html( $chapter['label'] ?? '' ); ?></h2>
+						<p class="sr2-lede"><?php echo esc_html( $chapter['copy'] ?? '' ); ?></p>
+						<?php if ( ! empty( $chapter['aside'] ) ) : ?>
+							<p class="sr2-immersive__aside"><?php echo esc_html( $chapter['aside'] ); ?></p>
+						<?php endif; ?>
+					</div>
 				</div>
 			</article>
 		<?php endforeach; ?>
 	</div>
 
-	<section class="sr2-immersive__portal" aria-labelledby="immersive-portal-title">
-		<p class="sr2-immersive__eyebrow"><?php esc_html_e( 'The story continues in the collection', 'skyyrose-flagship-2' ); ?></p>
-		<h2 id="immersive-portal-title"><?php echo esc_html( $args['exit_title'] ?? __( 'Carry the world with you.', 'skyyrose-flagship-2' ) ); ?></h2>
-		<p><?php echo esc_html( $args['exit_copy'] ?? '' ); ?></p>
-		<div class="sr2-immersive__portal-actions">
-			<a class="sr2-immersive__portal-link" href="<?php echo esc_url( skyyrose2_collection_url( $collection_slug ) ); ?>"><?php echo esc_html( sprintf( __( 'Enter the %s collection', 'skyyrose-flagship-2' ), $collection_name ) ); ?><span aria-hidden="true">→</span></a>
-			<a class="sr2-immersive__portal-link" href="<?php echo esc_url( skyyrose2_shop_url() ); ?>"><?php esc_html_e( 'Shop all pieces', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↗</span></a>
+	<section class="sr2-immersive__portal sr2-band" aria-labelledby="immersive-portal-title">
+		<div class="sr2-band__head">
+			<div>
+				<p class="sr2-immersive__eyebrow sr2-eyebrow sr2-eyebrow--engraved"><?php esc_html_e( 'The story continues in the collection', 'skyyrose-flagship-2' ); ?></p>
+				<h2 id="immersive-portal-title" class="sr2-title-chapter"><?php echo esc_html( $args['exit_title'] ?? __( 'Carry the world with you.', 'skyyrose-flagship-2' ) ); ?></h2>
+				<p class="sr2-lede"><?php echo esc_html( $args['exit_copy'] ?? '' ); ?></p>
+				<div class="sr2-immersive__portal-actions">
+					<a class="sr2-immersive__portal-link sr2-control sr2-control--primary" href="<?php echo esc_url( skyyrose2_collection_url( $collection_slug ) ); ?>"><?php echo esc_html( sprintf( __( 'Enter the %s collection', 'skyyrose-flagship-2' ), $collection_name ) ); ?><span aria-hidden="true">→</span></a>
+					<a class="sr2-immersive__portal-link sr2-editorial-link" href="<?php echo esc_url( skyyrose2_shop_url() ); ?>"><?php esc_html_e( 'Shop all pieces', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
 		</div>
 	</section>
 

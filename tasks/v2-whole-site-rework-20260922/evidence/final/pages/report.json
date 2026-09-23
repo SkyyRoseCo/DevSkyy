@@ -1,0 +1,4527 @@
+{
+  "agent": "H",
+  "fixture": "http://127.0.0.1:8790",
+  "fixture_note": "tools/v2-theme-preview.php plain document server on 127.0.0.1:8790 (Agent A's port); serves unminified source; WooCommerce/WP functions are stubs (4 WC_Product stubs, get_the_title()=ucwords(slug), policy body = one summary + stub sentence). All 15 requested URLs returned HTTP 200.",
+  "worktree": "/Users/theceo/.codex/worktrees/v2-home-layout-repair/DevSkyy (codex/v2-whole-site-rework-20260922)",
+  "generated": "2026-09-22",
+  "method": {
+    "capture": "Playwright chromium (--use-gl=swiftshader --enable-unsafe-swiftshader --ignore-gpu-blocklist); contexts 1440x900 DSF1 and 390x844 DSF2 isMobile+hasTouch; scroll-dwell 0.85vh steps / 650 ms to the bottom, back to top, bounded 4 s image settle, then fullPage PNG; reducedMotion:reduce variant at 390 for about/pre-order/lookbook/journal; no-JS (javaScriptEnabled:false) at 1440 for about/lookbook with mouse.wheel only and md5 frame hashes; keyboard probe = fresh load then Tab x12 recording activeElement + computed outline/box-shadow; brand probes = computed fontFamily/color over every text node; Skyy probe polls #skyyrose-mascot dataset every 100 ms, captures 6 viewport frames at ~400 ms once data-action-phase=walking-in, measures dock/character/h1/.sr2-arrival__copy rects at scrollY 0, exercises Tab-to-opener → Enter → Escape.",
+    "judging": "Full-page PNGs taller than ~2,000 px were sliced into viewport-height tiles (scratchpad) and read at full resolution; every 1440 and 390 fullPage capture was read.",
+    "scripts": "/private/tmp/claude-501/-Users-theceo-DevSkyy--claude-worktrees-v2-theme-ad-campaigns-22f799/b1acc3cb-f1c1-452b-9dd5-167746950793/scratchpad/agent-h/{capture-h,nojs-h,probe2-h,skyy-h}.cjs",
+    "raw_data": [
+      "main-1440.json",
+      "main-390.json",
+      "main-390-reduced.json",
+      "nojs.json",
+      "probe2.json",
+      "skyy-home-1440.json",
+      "skyy-home-390.json",
+      "skyy-home-1440-reduced.json",
+      "skyy-about-1440.json",
+      "skyy-about-390.json",
+      "skyy-about-1440-reduced.json"
+    ]
+  },
+  "invariants_summary": {
+    "header_has_mascot_any_route": false,
+    "cut_fonts_seen_any_route": false,
+    "cinzel_off_engraved_any_route": false,
+    "crimson_dc143c_text_any_route": false,
+    "horizontal_overflow_390_any_route": false,
+    "skip_link_first_all_routes": true,
+    "page_errors_any_route": false,
+    "failed_requests_js_on_any_route": false,
+    "policy_body_measure_1440_ch": 72,
+    "policy_body_measure_390_ch": 40,
+    "nojs_about_scrolls": true,
+    "nojs_lookbook_scrolls": true,
+    "nojs_nav_in_flow": true,
+    "nojs_menu_button_hidden": false,
+    "skyy_header_mascot": false,
+    "skyy_walk_in_observed_1440": true,
+    "skyy_dialog_focus_ok": true,
+    "skyy_reduced_motion_static": true,
+    "about_headline_overlap_px_1440": {
+      "w": 300,
+      "h": 115,
+      "area": 34500
+    },
+    "about_headline_overlap_px_390": {
+      "w": 236,
+      "h": 64,
+      "area": 15104
+    },
+    "home_arrival_copy_overlap_px_1440": {
+      "w": 0,
+      "h": 68,
+      "area": 0
+    },
+    "home_arrival_copy_overlap_px_390": {
+      "w": 236,
+      "h": 0,
+      "area": 0
+    }
+  },
+  "global_findings": [
+    {
+      "severity": "minor",
+      "invariant": "no-js-nav-fallback",
+      "observation": "With scripting disabled the \"Menu\" button [data-sr2-menu] stays visible (inline-flex, 44x44 at 1034,9 on About) although its target nav is already in flow: .sr2-house-header .sr2-header__menu {display:inline-flex} (assets/css/global-shell.css:10, specificity 0-2-0) outranks @media (scripting: none) [data-sr2-menu]{display:none} (line 40, 0-1-0). A dead control in the no-JS header. [repro][repo]",
+      "evidence": "about-1440-nojs.png"
+    },
+    {
+      "severity": "note",
+      "invariant": "header-no-mascot",
+      "observation": "PASS: strict header query (#skyyrose-mascot-recall, .skyyrose-mascot*, img[src*=\"/mascot/\"], [class*=mascot], [id*=mascot]) matches nothing in [data-site-header] on 13 routes x 2 widths and on home/about &skyy=1 (only hit is IMG.sr2-header__brand-mark, the wordmark). [repro]",
+      "evidence": "probe2.json"
+    },
+    {
+      "severity": "note",
+      "invariant": "brand-type",
+      "observation": "PASS: fonts seen = Archivo, Hanken Grotesk, Anton, Cinzel (+ UA sans-serif/ui-monospace on hidden/utility nodes); Cinzel appears only inside .sr2-eyebrow--engraved (0 off-label elements across 26 captures); no Playfair/Cormorant/Bebas/Yellowtail; 0 text nodes with color #DC143C; no horizontal overflow at 390 on any route. [repro]",
+      "evidence": "main-1440.json"
+    },
+    {
+      "severity": "note",
+      "invariant": "keyboard-skip-link",
+      "observation": "PASS: first Tab stop on every route is a.sr2-skip href=\"#primary\" with a visible outline; stops 2-9 are the masthead (home, Shop, Collections, Journal, About, Search, Bag, Menu), all with visible indicators. [repro]",
+      "evidence": "main-1440.json"
+    },
+    {
+      "severity": "note",
+      "invariant": "console-network",
+      "observation": "PASS: 0 page errors and 0 failed/>=400 requests on all 13 routes at both widths (JS on). Only About logs console warnings, all from the YouTube embed. Skyy runs add a swiftshader \"GL Driver Message ... GL_CLOSE_PATH_NV\" performance warning (test-environment). [repro]",
+      "evidence": "main-1440.json"
+    },
+    {
+      "severity": "note",
+      "invariant": "capture-artifact",
+      "observation": "In the no-JS shots the directory row \"05 Journal\" is rose on About and Lookbook. No aria-current is emitted on those routes; the probe parks the mouse at (720,450) before each wheel tick, which is on that full-width row — a hover artifact of the capture, not a current-item bug. [inferred]",
+      "evidence": "about-1440-nojs.png"
+    }
+  ],
+  "routes": [
+    {
+      "route": "about",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=about",
+      "http_status": 200,
+      "captures": [
+        "about-1440.png",
+        "about-390.png",
+        "about-390-reduced.png",
+        "about-1440-nojs.png",
+        "about-1440-nojs-s01.png",
+        "about-1440-nojs-s02.png",
+        "about-1440-nojs-s03.png",
+        "skyy-about-1440-settled.png",
+        "skyy-about-390-settled.png",
+        "skyy-about-1440-dialog.png",
+        "skyy-about-390-dialog.png",
+        "skyy-about-1440-reduced.png",
+        "skyy-about-1440-entry-1.png",
+        "skyy-about-1440-entry-2.png",
+        "skyy-about-1440-entry-3.png",
+        "skyy-about-1440-entry-4.png",
+        "skyy-about-1440-entry-5.png",
+        "skyy-about-1440-entry-6.png",
+        "skyy-about-390-entry-1.png",
+        "skyy-about-390-entry-2.png",
+        "skyy-about-390-entry-3.png",
+        "skyy-about-390-entry-4.png",
+        "skyy-about-390-entry-5.png",
+        "skyy-about-390-entry-6.png"
+      ],
+      "eyes_on": {
+        "1440": "Portrait column (724x1086 founder-supplied photo of Skyy Rose, shown upright, never panoramic) left; eyebrow + Archivo h1 \"Built by a father. Named for his daughter.\" + lede + Founded/Origin/Design facts right, copy aligned to the lower half of the portrait. Full-bleed Blox premiere scene (16:9, poster + youtube-nocookie iframe), chapter band with the only Cinzel on the page in the engraved index \"THE BLOX / PREMIERE\", quiet \"Watch on YouTube\" link. Editorial press list (Maxim, San Francisco Post, Best of Best Review, CEO Weekly) with hairline rows and \"Read the original\" links; four-collection index; Town band (\"Deep East · The Hills · Stone City · Lake Merritt · The 510\") with one rose-filled primary. On-brand, restrained, garment/portrait as protagonist; nothing generic or cramped.",
+        "390": "Portrait full-width, then eyebrow/h1/lede/facts stacked; Blox scene at 3:2; press list stacks cleanly with dates as engraved-style labels; Town band and filled primary at full width; footer disclosures stacked. No horizontal overflow, no cramping."
+      },
+      "console": [
+        {
+          "type": "warning",
+          "text": "Unrecognized feature: 'web-share'."
+        },
+        {
+          "type": "warning",
+          "text": "No available adapters."
+        },
+        {
+          "type": "warning",
+          "text": "Unrecognized feature: 'web-share'."
+        },
+        {
+          "type": "warning",
+          "text": "No available adapters."
+        }
+      ],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [
+        {
+          "type": "warning",
+          "text": "Unrecognized feature: 'web-share'."
+        },
+        {
+          "type": "warning",
+          "text": "No available adapters."
+        },
+        {
+          "type": "warning",
+          "text": "Unrecognized feature: 'web-share'."
+        },
+        {
+          "type": "warning",
+          "text": "No available adapters."
+        }
+      ],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "iframe",
+          "id": null,
+          "class": "sr2-about-blox__player",
+          "text": "",
+          "href": null,
+          "visible_indicator": false,
+          "indicator": null
+        },
+        {
+          "stop": 11,
+          "tag": "iframe",
+          "id": null,
+          "class": "sr2-about-blox__player",
+          "text": "",
+          "href": null,
+          "visible_indicator": false,
+          "indicator": null
+        },
+        {
+          "stop": 12,
+          "tag": "iframe",
+          "id": null,
+          "class": "sr2-about-blox__player",
+          "text": "",
+          "href": null,
+          "visible_indicator": false,
+          "indicator": null
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "p.sr2-chapter__index.sr2-eyebrow \"The Blox / Premiere\"",
+        "span.sr2-about-chapters__index.sr2-eyebrow \"01\"",
+        "span.sr2-about-chapters__index.sr2-eyebrow \"02\"",
+        "span.sr2-about-chapters__index.sr2-eyebrow \"03\"",
+        "span.sr2-about-chapters__index.sr2-eyebrow \"04\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 72,
+        "px": 648,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Corey Foster is an innovative entrepreneur and art"
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "dd.",
+        "text": "2020"
+      },
+      "lede_measure_1440": {
+        "ch": 52,
+        "px": 524,
+        "font": "Hanken Grotesk",
+        "size": "18px",
+        "sig": "p.sr2-lede",
+        "text": "SkyyRose began as Corey Foster's promise to build "
+      },
+      "placeholder_hits": [],
+      "h1": "Built by a father. Named for his daughter.",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Built by a father. Named for his daughter.",
+        "H2: The founder, in his own words.",
+        "H2: The press did not make the story. It documented it.",
+        "H3: 14 Game-Changing Entrepreneurs To Watch In 2023",
+        "H3: From Oakland's Streets to Fashion Heights",
+        "H3: Best Bay Area Clothing Line Award 2024",
+        "H3: The Unyielding Journey of a Single Father and Entrepreneur",
+        "H2: The V1 lookbook, carried forward.",
+        "H2: Deep East · The Hills · Stone City · Lake Merritt · The 510",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [
+        {
+          "text": "Watch on YouTube↗",
+          "href": "https://www.youtube.com/watch?v=Ja11W-g34Zo",
+          "primary": false
+        },
+        {
+          "text": "Read the original↗",
+          "href": "https://www.maxim.com/partner/14-game-changing-entrepreneurs-to-watch-in-2023/",
+          "primary": false
+        },
+        {
+          "text": "Read the original↗",
+          "href": "https://sanfranciscopost.com/the-skyy-rose-collection-from-oaklands-streets-to-fashion-heights/",
+          "primary": false
+        },
+        {
+          "text": "Read the original↗",
+          "href": "https://bestofbestreview.com/awards/the-skyy-rose-collection-best-bay-area-clothing-line-award-2024",
+          "primary": false
+        },
+        {
+          "text": "Read the original↗",
+          "href": "https://ceoweekly.com/the-unyielding-journey-of-a-single-father-and-entrepreneur/",
+          "primary": false
+        },
+        {
+          "text": "Enter the collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "primary": true
+        }
+      ],
+      "scroll_height": {
+        "1440": 5335,
+        "390": 5078
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "skyy-rose-founder-hero.webp",
+          "natural": "724x1086",
+          "rendered": "535x803",
+          "alt": "Skyy Rose, the daughter whose name inspired the SkyyRose hou"
+        },
+        {
+          "src": "the-blox-premiere.webp",
+          "natural": "1344x768",
+          "rendered": "1440x823",
+          "alt": "Corey Foster featured on The Blox"
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "major",
+          "invariant": "founder-copy-canon",
+          "observation": "The About founder copy is agent-authored paraphrase, not founder text. h1 \"Built by a father. Named for his daughter.\" traces only to docs/superpowers/specs/2026-05-25-v2-mockup-design.md and plans/; the lede \"SkyyRose began as Corey Foster's promise ... the refusal to shrink.\" exists nowhere but template-parts/v2-about.php. The founder-supplied V1 page record (data/editor/about-page.html: \"SkyyRose is more than a brand—it is a promise. To my daughter. To our city. ...\") is absent, and 0 of 23 sentences of the 2026-05-13 founder bio canon appear. This contradicts v2-about.php's own header comment \"Founder copy is restyled, never rewritten.\" Press excerpts below it are verbatim third-party features (fine). [repo][repro]",
+          "evidence": "about-1440.png"
+        },
+        {
+          "severity": "major",
+          "invariant": "skyy-dock-never-covers-headline",
+          "observation": "At 390 the Skyy dock (character 96x148 at x138,y684 plus three 136x44 buttons at x242) sits over the About h1 on arrival: dock∩h1 = 236x64 px (15,104 px²), character∩h1 = 96x64 px; the eyebrow is also partly under \"Pause character\". Same in the settled state. [repro]",
+          "evidence": "skyy-about-390-settled.png"
+        },
+        {
+          "severity": "major",
+          "invariant": "skyy-dock-never-covers-headline",
+          "known_open_founder_decision": true,
+          "observation": "At 1440 the dock overlaps the About headline right column: dock∩h1 = 300x115 px (34,500 px²); character alone ∩h1 = 160x115 px (18,400 px²) — the character stands on the \"N\" of \"Named\" and the lede's right edge. Reduced-motion static pose: 282x115 px (32,430 px²). Measured for the open founder decision. [repro]",
+          "evidence": "skyy-about-1440-settled.png"
+        },
+        {
+          "severity": "minor",
+          "invariant": "keyboard-focus-visible",
+          "observation": "Tab stops 10–12 land on the youtube-nocookie iframe (focus trapped inside the embed for 3 stops) with no visible indicator on the iframe element; the embed also logs \"Unrecognized feature: 'web-share'\" x2 and \"No available adapters.\" x2 (neither string exists in theme JS or the fixture — third-party [inferred]), and in no-JS its fallback image 404s (youtube-nocookie.com/img/meh7.png). [repro]",
+          "evidence": "about-1440.png"
+        },
+        {
+          "severity": "minor",
+          "invariant": "dialog-focus-return",
+          "observation": "Under prefers-reduced-motion, Escape closes Ask Skyy but focus lands on an id-less <button>, not the opener #skyy-hero-chat (motion runs at 1440 and 390 return focus correctly). [repro]",
+          "evidence": "skyy-about-1440-reduced.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "locked-vocabulary",
+          "observation": "\"San Francisco\" on this page is the press outlet name \"San Francisco Post\" (functions.php:984), a proper noun — not brand copy naming the city. No violation.",
+          "evidence": "about-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "about-1440.png"
+        }
+      ],
+      "reduced_motion_390": {
+        "capture": "about-390-reduced.png",
+        "body_class": "sr2-preview woocommerce",
+        "h_overflow": false,
+        "scroll_height": 5078,
+        "console": [
+          {
+            "type": "warning",
+            "text": "Unrecognized feature: 'web-share'."
+          },
+          {
+            "type": "warning",
+            "text": "No available adapters."
+          },
+          {
+            "type": "warning",
+            "text": "Unrecognized feature: 'web-share'."
+          },
+          {
+            "type": "warning",
+            "text": "No available adapters."
+          }
+        ],
+        "failed": [],
+        "eyes_on": "Composition identical to the motion capture; images loaded, no reveal-block artifacts, static."
+      },
+      "no_js_1440": {
+        "http_status": 200,
+        "scrolled_with_wheel": true,
+        "distinct_frame_hashes": "8/12",
+        "first_two_hashes": [
+          "3628cd9a58bd",
+          "1cceeeff2a5c"
+        ],
+        "bottom_scrollY": 5119,
+        "doc_height": 6019,
+        "nav_fallback": {
+          "position": "static",
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "x": 58,
+            "y": 53,
+            "w": 1325,
+            "h": 696
+          },
+          "before_main": true,
+          "visible_links": 15,
+          "link_labels": [
+            "Collections",
+            "Shop",
+            "Lookbook",
+            "Pre-Order",
+            "Journal",
+            "About",
+            "Contact",
+            "Search",
+            "Account",
+            "Saved pieces",
+            "Lookbook",
+            "Signature↗",
+            "Black Rose↗",
+            "Love Hurts↗",
+            "Kids Capsule↗"
+          ],
+          "header_position": "relative",
+          "menu_button_display": "inline-flex"
+        },
+        "images_loaded": "8/8",
+        "failed_requests": [
+          "404 https://www.youtube-nocookie.com/img/meh7.png"
+        ],
+        "eyes_on": "Header renders in flow with the house directory expanded (01 Collections ... 07 Contact, utility links, \"Choose your chapter.\" with four collection thumbnails), then the page content with images loaded; the Menu button remains visible (see global finding)."
+      },
+      "skyy": {
+        "header_has_mascot": false,
+        "header_match_note": "strict header query returns only IMG.sr2-header__brand-mark (the wordmark) on every run; no mascot element, recall, or mascot image in [data-site-header]",
+        "entry_frames": [
+          "skyy-about-1440-entry-1.png",
+          "skyy-about-1440-entry-2.png",
+          "skyy-about-1440-entry-3.png",
+          "skyy-about-1440-entry-4.png",
+          "skyy-about-1440-entry-5.png",
+          "skyy-about-1440-entry-6.png"
+        ],
+        "entry_frame_data_1440": [
+          {
+            "n": 1,
+            "t_ms": 4802,
+            "phase": "walking-in",
+            "entry_shift": "358px",
+            "progress": "0",
+            "canvas_x": 1440
+          },
+          {
+            "n": 2,
+            "t_ms": 5377,
+            "phase": "walking-in",
+            "entry_shift": "256.0px",
+            "progress": "0.1544",
+            "canvas_x": 1338
+          },
+          {
+            "n": 3,
+            "t_ms": 5912,
+            "phase": "walking-in",
+            "entry_shift": "133.4px",
+            "progress": "0.3896",
+            "canvas_x": 1215
+          },
+          {
+            "n": 4,
+            "t_ms": 6445,
+            "phase": "turning",
+            "entry_shift": "50.4px",
+            "progress": "0.6250",
+            "canvas_x": 1132
+          },
+          {
+            "n": 5,
+            "t_ms": 6979,
+            "phase": "turning",
+            "entry_shift": "7.0px",
+            "progress": "0.8603",
+            "canvas_x": 1089
+          },
+          {
+            "n": 6,
+            "t_ms": 7515,
+            "phase": "gesture",
+            "entry_shift": "0px",
+            "progress": "1",
+            "canvas_x": 1082
+          }
+        ],
+        "entry_frames_390": [
+          "skyy-about-390-entry-1.png",
+          "skyy-about-390-entry-2.png",
+          "skyy-about-390-entry-3.png",
+          "skyy-about-390-entry-4.png",
+          "skyy-about-390-entry-5.png",
+          "skyy-about-390-entry-6.png"
+        ],
+        "portrait_visible_ms_after_navigation": {
+          "1440": 73,
+          "390": 978
+        },
+        "walk_in_start_ms_after_navigation": {
+          "1440": 4727,
+          "390": 5614
+        },
+        "settled_state": {
+          "1440": {
+            "state": "idle",
+            "actionPhase": "idle",
+            "renderer": "3d",
+            "presence": "live"
+          },
+          "390": {
+            "state": "idle",
+            "actionPhase": "idle",
+            "renderer": "3d",
+            "presence": "live"
+          }
+        },
+        "dock_box_1440": {
+          "x": 1082,
+          "y": 628,
+          "w": 334,
+          "h": 248
+        },
+        "dock_box_390": {
+          "x": 138,
+          "y": 672,
+          "w": 240,
+          "h": 160
+        },
+        "character_box_1440": {
+          "x": 1082,
+          "y": 628,
+          "w": 160,
+          "h": 248
+        },
+        "character_box_390": {
+          "x": 138,
+          "y": 684,
+          "w": 96,
+          "h": 148
+        },
+        "headline_overlap_px_1440": {
+          "w": 300,
+          "h": 115,
+          "area": 34500
+        },
+        "headline_overlap_px_390": {
+          "w": 236,
+          "h": 64,
+          "area": 15104
+        },
+        "headline_overlap_character_only_1440": {
+          "w": 160,
+          "h": 115,
+          "area": 18400
+        },
+        "headline_overlap_character_only_390": {
+          "w": 96,
+          "h": 64,
+          "area": 6144
+        },
+        "headline_overlap_px_1440_reduced": {
+          "w": 282,
+          "h": 115,
+          "area": 32430
+        },
+        "arrival_copy_overlap_px_1440": null,
+        "arrival_copy_overlap_px_390": null,
+        "headline_text": "Built by a father. Named for his daughter.",
+        "dock_a11y": {
+          "role": "region",
+          "aria_label": "Skyy, your house concierge",
+          "ask_button": {
+            "name": "Ask Skyy",
+            "tabIndex": 0,
+            "rect": {
+              "x": 1254,
+              "y": 780,
+              "w": 162,
+              "h": 44
+            },
+            "ariaControls": "skyy-ask-dialog",
+            "haspopup": "dialog"
+          },
+          "ask_button_390_rect": {
+            "x": 242,
+            "y": 736,
+            "w": 136,
+            "h": 44
+          },
+          "dismiss_button": {
+            "name": "Dismiss Skyy",
+            "tabIndex": 0,
+            "rect": {
+              "x": 1254,
+              "y": 832,
+              "w": 162,
+              "h": 44
+            }
+          },
+          "pause_button": {
+            "name": "Pause character",
+            "tabIndex": 0,
+            "rect": {
+              "x": 1254,
+              "y": 728,
+              "w": 162,
+              "h": 44
+            },
+            "hidden": false
+          },
+          "recall_hidden_until_dismiss": true
+        },
+        "dialog_focus_ok": true,
+        "dialog_detail": {
+          "1440": {
+            "tabs_to_reach_opener": 28,
+            "open": true,
+            "focus_inside": "input#skyy-ask-input",
+            "stage_reparented_into_dialog": true,
+            "dock_hidden_while_open": true,
+            "escape_closes": true,
+            "focus_returned_to": "button#skyy-hero-chat"
+          },
+          "390": {
+            "tabs_to_reach_opener": 23,
+            "escape_closes": true,
+            "focus_returned_to": "button#skyy-hero-chat"
+          },
+          "1440_reduced": {
+            "escape_closes": true,
+            "focus_returned_to": "button",
+            "returned_to_opener": false
+          }
+        },
+        "greeting": "SKYY Welcome to SkyyRose. I’m Skyy, your digital house guide. I can help you explore a collection or find a piece by name or SKU.",
+        "reduced_motion_static": true,
+        "reduced_motion_detail": {
+          "state": "show",
+          "renderer": "static",
+          "presence": "reduced",
+          "walk_in_observed": false,
+          "canvas_visible": false,
+          "portrait_visible": true,
+          "status_text": "Skyy is here, with motion off.",
+          "two_frames_600ms_apart_identical": true,
+          "capture": "skyy-about-1440-reduced.png",
+          "model_requests": 0
+        },
+        "asset_requests": {
+          "1440": [
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+              "status": 200,
+              "bytes": 20357,
+              "t_ms": 35
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+              "status": 200,
+              "bytes": 7717,
+              "t_ms": 35
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+              "status": 200,
+              "bytes": 61276,
+              "t_ms": 74
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+              "status": 200,
+              "bytes": 32637,
+              "t_ms": 4557
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+              "status": 200,
+              "bytes": 13715,
+              "t_ms": 4564
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+              "status": 200,
+              "bytes": 110282,
+              "t_ms": 4565
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+              "status": 200,
+              "bytes": 31784,
+              "t_ms": 4566
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+              "status": 200,
+              "bytes": 691648,
+              "t_ms": 4570
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-desktop.glb",
+              "status": 200,
+              "bytes": 2143292,
+              "t_ms": 4574
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+              "status": 200,
+              "bytes": 58763,
+              "t_ms": 4583
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+              "status": 200,
+              "bytes": 285747,
+              "t_ms": 4583
+            }
+          ],
+          "390": [
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+              "status": 200,
+              "bytes": 20357,
+              "t_ms": 65
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+              "status": 200,
+              "bytes": 7717,
+              "t_ms": 67
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+              "status": 200,
+              "bytes": 61276,
+              "t_ms": 139
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+              "status": 200,
+              "bytes": 32637,
+              "t_ms": 5483
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+              "status": 200,
+              "bytes": 13715,
+              "t_ms": 5488
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+              "status": 200,
+              "bytes": 110282,
+              "t_ms": 5489
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+              "status": 200,
+              "bytes": 31784,
+              "t_ms": 5490
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+              "status": 200,
+              "bytes": 691648,
+              "t_ms": 5495
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-mobile.glb",
+              "status": 200,
+              "bytes": 1247220,
+              "t_ms": 5498
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+              "status": 200,
+              "bytes": 58763,
+              "t_ms": 5506
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+              "status": 200,
+              "bytes": 285747,
+              "t_ms": 5506
+            }
+          ],
+          "1440_reduced": [
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+              "status": 200,
+              "bytes": 20357,
+              "t_ms": 29
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+              "status": 200,
+              "bytes": 7717,
+              "t_ms": 30
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+              "status": 200,
+              "bytes": 61276,
+              "t_ms": 61
+            }
+          ]
+        },
+        "console": {
+          "1440": [
+            "No available adapters.",
+            "Unrecognized feature: 'web-share'.",
+            "[.WebGL-0x13400519e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+            "[.WebGL-0x13400519e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+          ],
+          "390": [
+            "No available adapters.",
+            "Unrecognized feature: 'web-share'.",
+            "[.WebGL-0x1340050b400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+            "[.WebGL-0x1340050b400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+          ]
+        },
+        "page_errors": {
+          "1440": [],
+          "390": []
+        },
+        "failed_requests": {
+          "1440": [],
+          "390": []
+        },
+        "captures": [
+          "skyy-about-1440-settled.png",
+          "skyy-about-390-settled.png",
+          "skyy-about-1440-dialog.png",
+          "skyy-about-390-dialog.png",
+          "skyy-about-1440-reduced.png"
+        ]
+      }
+    },
+    {
+      "route": "pre-order",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=pre-order",
+      "http_status": 200,
+      "captures": [
+        "pre-order-1440.png",
+        "pre-order-390.png",
+        "pre-order-390-reduced.png"
+      ],
+      "eyes_on": {
+        "1440": "Full-bleed Black Rose salon arrival (jerseys on the couch, Bay Bridge at night) with eyebrow, h1 \"The piece is the invitation.\", lede, silver-filled primary \"View pieces\" (collection accent) and quiet \"Enter Black Rose\". Numbered three-column terms band (\"Clear terms belong beside the feeling.\"), then the product edit with a single unframed card on a #111 tile (SG-005 on-model, \"01 Signature · SG-005 · Bay Bridge Shirt · $128.00 · Available for preorder · Pre-order edition · Quick view / Select options\"), then a four-row world index. Composition follows Arrival -> Chapters -> Colophon; the one-card grid reads sparse. The eyebrow collides with the \"BLACK IS BEAUTIFUL\" print in the photo.",
+        "390": "Arrival fills the viewport with the jerseys and the copy at the bottom; terms stack 01/02/03; single card full width; world index; footer. Clean stack, no overflow."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-control sr2-control--primary",
+          "text": "View pieces",
+          "href": "#reserve",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-editorial-link",
+          "text": "Enter Black Rose→",
+          "href": "/tools/v2-theme-preview.php?route=black-rose",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-c-editorial-card__media",
+          "text": "View Bay Bridge Shirt",
+          "href": "/tools/v2-theme-preview.php?route=product&sku=sg-005",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "p.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "p.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "p.sr2-eyebrow.sr2-eyebrow--engraved \"03\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"04\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 47,
+        "px": 422,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Each piece links to its product page for size, pri"
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Each piece links to its product page for size, pri"
+      },
+      "lede_measure_1440": {
+        "ch": 52,
+        "px": 524,
+        "font": "Hanken Grotesk",
+        "size": "18px",
+        "sig": "p.sr2-lede",
+        "text": "Enter through the Black Rose salon, then select th"
+      },
+      "placeholder_hits": [],
+      "h1": "The piece is the invitation.",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: The piece is the invitation.",
+        "H2: Clear terms belong beside the feeling.",
+        "H3: Choose with the details open",
+        "H3: Full payment at checkout",
+        "H3: Keep the receipt",
+        "H2: Future pieces. Present choice.",
+        "H3: Bay Bridge Shirt",
+        "H2: Choose the world before the product.",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [
+        {
+          "text": "View pieces",
+          "href": "#reserve",
+          "primary": true
+        },
+        {
+          "text": "Enter Black Rose→",
+          "href": "/tools/v2-theme-preview.php?route=black-rose",
+          "primary": false
+        }
+      ],
+      "scroll_height": {
+        "1440": 3406,
+        "390": 3312
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "black-rose-salon-1440w.webp",
+          "natural": "1440x960",
+          "rendered": "1440x900",
+          "alt": "Black Rose pieces displayed in the SkyyRose pre-order salon"
+        },
+        {
+          "src": "sg-005-480w.webp",
+          "natural": "360x540",
+          "rendered": "285x427",
+          "alt": "The Bridge Series 'The Bay Bridge' Shirt — front on model"
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "minor",
+          "invariant": "one-focal-point-legibility",
+          "observation": "The arrival eyebrow \"The pre-order collection\" is set directly over the dark jersey's own \"BLACK IS BEAUTIFUL\" lettering in the salon photo at 1440 — small type on photographed type. Move the copy block or the --sr2-focal. [repro]",
+          "evidence": "pre-order-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "product-facts-from-registry",
+          "observation": "The card reads \"Bay Bridge Shirt · $128.00\"; these come from the fixture's WC_Product stubs (tools/v2-theme-preview.php:524 get_price_html \"$128.00\", :536 name \"Bay Bridge Shirt\"). Registry sg-005 = \"The Bridge Series 'The Bay Bridge' Shirt\", price 25, is_preorder 1. Fixture data, not theme, but the review evidence shows a non-registry name and price. [repo][repro]",
+          "evidence": "pre-order-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "garment-led-grid",
+          "observation": "The product edit renders one card in a four-column grid (fixture has one Signature stub product); the live count depends on the catalog. Reads sparse in this capture only.",
+          "evidence": "pre-order-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "pre-order-1440.png"
+        }
+      ],
+      "reduced_motion_390": {
+        "capture": "pre-order-390-reduced.png",
+        "body_class": "sr2-preview woocommerce",
+        "h_overflow": false,
+        "scroll_height": 3312,
+        "console": [],
+        "failed": [],
+        "eyes_on": "Composition identical to the motion capture; images loaded, no reveal-block artifacts, static."
+      }
+    },
+    {
+      "route": "contact",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=contact",
+      "http_status": 200,
+      "captures": [
+        "contact-1440.png",
+        "contact-390.png"
+      ],
+      "eyes_on": {
+        "1440": "Quiet arrival (eyebrow \"Client Services\", Archivo h1 \"Talk to the house.\", lede, hairline). Twelve-column body: form left (Name/Email two-up, \"What can we help with?\" select, Message, consent checkbox with Privacy policy link, rose-filled \"Send to the house\"), aside right (\"Direct\" hello@skyyrose.com, reply-time note, \"Before you write\" service links with arrows). Controls follow controls.css; honeypot field invisible. Nothing generic.",
+        "390": "Fields stack full width in order; consent and primary follow; direct email and service links below. Comfortable touch targets."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "input",
+          "id": "sr2-contact-name",
+          "class": "",
+          "text": "",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "input",
+          "id": "sr2-contact-email",
+          "class": "",
+          "text": "",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "select",
+          "id": "sr2-contact-subject",
+          "class": "",
+          "text": "Order supportStyling appointmentPress or collabora",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 47,
+        "px": 422,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.sr2-contact-direct__note",
+        "text": "Replies typically arrive within two business days."
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.sr2-contact-direct__note",
+        "text": "Replies typically arrive within two business days."
+      },
+      "lede_measure_1440": {
+        "ch": 52,
+        "px": 524,
+        "font": "Hanken Grotesk",
+        "size": "18px",
+        "sig": "p.sr2-lede",
+        "text": "Orders, sizing, press, collaborations, or anything"
+      },
+      "placeholder_hits": [],
+      "h1": "Talk to the house.",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Talk to the house.",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [
+        {
+          "text": "Send to the house",
+          "href": null,
+          "primary": true
+        }
+      ],
+      "scroll_height": {
+        "1440": 1448,
+        "390": 1855
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "form-reachable-labelled",
+          "observation": "PASS: form reached at Tab stop 10 (Name), all 6 fields labelled via <label for>, submit \"Send to the house\" tabIndex 0, honeypot \"Website\" excluded from the tab order. The form has no action attribute (posts to self) and the direct address hello@skyyrose.com is the fixture's get_option('admin_email') stub (tools/v2-theme-preview.php:409) — confirm the live address on the .co domain. [repro][repo]",
+          "evidence": "contact-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "contact-1440.png"
+        }
+      ],
+      "form_audit": {
+        "action": null,
+        "method": "post",
+        "fields": [
+          {
+            "name": "contact_website",
+            "type": "text",
+            "required": false,
+            "labelled": true,
+            "label": "Website"
+          },
+          {
+            "name": "contact_name",
+            "type": "text",
+            "required": true,
+            "labelled": true,
+            "label": "Name"
+          },
+          {
+            "name": "contact_email",
+            "type": "email",
+            "required": true,
+            "labelled": true,
+            "label": "Email"
+          },
+          {
+            "name": "contact_subject",
+            "type": "select-one",
+            "required": false,
+            "labelled": true,
+            "label": "What can we help with?"
+          },
+          {
+            "name": "contact_message",
+            "type": "textarea",
+            "required": true,
+            "labelled": true,
+            "label": "Message"
+          },
+          {
+            "name": "contact_privacy",
+            "type": "checkbox",
+            "required": true,
+            "labelled": true,
+            "label": "I agree that SkyyRose may use these deta"
+          }
+        ],
+        "submit": {
+          "text": "Send to the house",
+          "tabIndex": 0,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "route": "journal",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=journal",
+      "http_status": 200,
+      "captures": [
+        "journal-1440.png",
+        "journal-390.png",
+        "journal-390-reduced.png"
+      ],
+      "eyes_on": {
+        "1440": "Quiet arrival \"Journal\" then \"Source archive\" head \"The work has already been documented.\" with an honest fallback lede; four editorial rows (outlet + date labels left in Anton, Archivo h3 titles, Hanken excerpts, hairline \"Read the original\" links). Restrained and consistent with the About press list.",
+        "390": "Rows stack with labels above titles; excerpts at 40ch; links keep hairlines."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-editorial-link sr2-press-list__link",
+          "text": "Read the original↗",
+          "href": "https://www.maxim.com/partner/14-game-changing-entrepreneurs-to-watch-in-2023/",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-editorial-link sr2-press-list__link",
+          "text": "Read the original↗",
+          "href": "https://sanfranciscopost.com/the-skyy-rose-collection-from-oaklands-streets-to-fashion-heights/",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-editorial-link sr2-press-list__link",
+          "text": "Read the original↗",
+          "href": "https://bestofbestreview.com/awards/the-skyy-rose-collection-best-bay-area-clothing-line-award-2024",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 72,
+        "px": 648,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Corey Foster is an innovative entrepreneur and art"
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Corey Foster is an innovative entrepreneur and art"
+      },
+      "lede_measure_1440": {
+        "ch": 52,
+        "px": 524,
+        "font": "Hanken Grotesk",
+        "size": "18px",
+        "sig": "p.sr2-lede",
+        "text": "Fresh installs begin with the founder-approved pre"
+      },
+      "placeholder_hits": [],
+      "h1": "Journal",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Journal",
+        "H2: The work has already been documented.",
+        "H3: 14 Game-Changing Entrepreneurs To Watch In 2023",
+        "H3: From Oakland's Streets to Fashion Heights",
+        "H3: Best Bay Area Clothing Line Award 2024",
+        "H3: The Unyielding Journey of a Single Father and Entrepreneur",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [
+        {
+          "text": "Read the original↗",
+          "href": "https://www.maxim.com/partner/14-game-changing-entrepreneurs-to-watch-in-2023/",
+          "primary": false
+        },
+        {
+          "text": "Read the original↗",
+          "href": "https://sanfranciscopost.com/the-skyy-rose-collection-from-oaklands-streets-to-fashion-heights/",
+          "primary": false
+        },
+        {
+          "text": "Read the original↗",
+          "href": "https://bestofbestreview.com/awards/the-skyy-rose-collection-best-bay-area-clothing-line-award-2024",
+          "primary": false
+        },
+        {
+          "text": "Read the original↗",
+          "href": "https://ceoweekly.com/the-unyielding-journey-of-a-single-father-and-entrepreneur/",
+          "primary": false
+        }
+      ],
+      "scroll_height": {
+        "1440": 2229,
+        "390": 2529
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "real-content",
+          "observation": "Fallback press archive renders with an explicit, honest lede (\"Fresh installs begin with the founder-approved press record below...\"). \"San Francisco\" appears only as the outlet name. No defects.",
+          "evidence": "journal-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "journal-1440.png"
+        }
+      ],
+      "reduced_motion_390": {
+        "capture": "journal-390-reduced.png",
+        "body_class": "sr2-preview woocommerce",
+        "h_overflow": false,
+        "scroll_height": 2529,
+        "console": [],
+        "failed": [],
+        "eyes_on": "Composition identical to the motion capture; images loaded, no reveal-block artifacts, static."
+      }
+    },
+    {
+      "route": "lookbook",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=lookbook",
+      "http_status": 200,
+      "captures": [
+        "lookbook-1440.png",
+        "lookbook-390.png",
+        "lookbook-390-reduced.png",
+        "lookbook-1440-nojs.png",
+        "lookbook-1440-nojs-s01.png",
+        "lookbook-1440-nojs-s02.png",
+        "lookbook-1440-nojs-s03.png"
+      ],
+      "eyes_on": {
+        "1440": "Ivory paper editorial (.sr2-surface--light). \"Four worlds. One house.\" arrival with quiet \"Shop the house\" and a four-name index strip. Each collection opens with a Cinzel engraved index (\"01 / SIGNATURE\"), Anton kicker, Archivo title, right-set one-line lede, three chapter anchors, then three scenes inside dark tiles with \"Shop this look / Pre-order this look\" hairline actions and a cast list; collections alternate paper (SIG, KIDS) / void (BR) / blush (LH). Garment-led scenes (Golden Gate overlook, Lateral Terrace, Departure Terrace with the SR monogram; Type Foundry, Moonlit Waterfront, Town Line salon; Vow Aisle, Rose Side Chapel, Rose Vitrine; Heir throne). Kids ends with one COLLECTION EDIT card (kids-001) and a dark \"A legacy in bloom.\" colophon. Two portrait renders are pillarboxed with blurred fill; cast lists print raw SKU codes as fallback copy.",
+        "390": "Same sequence stacked: index strips become two-up, scenes at 3:2 inside tiles, cast lists and chapter copy stack under each scene. Readable measure, no overflow; the page is long (13,449 CSS px) but paced by the paper/void alternation."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-editorial-link",
+          "text": "Shop the house→",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(10, 10, 10)"
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "01Signature",
+          "href": "#lookbook-signature",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(10, 10, 10)"
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "02Black Rose",
+          "href": "#lookbook-black-rose",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(10, 10, 10)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "p.sr2-lookbook__number.sr2-eyebrow \"01 / Signature\"",
+        "p.sr2-lookbook__number.sr2-eyebrow \"02 / Black Rose\"",
+        "p.sr2-lookbook__number.sr2-eyebrow \"03 / Love Hurts\"",
+        "p.sr2-lookbook__number.sr2-eyebrow \"04 / Kids Capsule\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 52,
+        "px": 408,
+        "font": "Hanken Grotesk",
+        "size": "14px",
+        "sig": "p.",
+        "text": "The pieces in this scene are pre-order items. Full"
+      },
+      "body_measure_390": {
+        "ch": 41,
+        "px": 324,
+        "font": "Hanken Grotesk",
+        "size": "14px",
+        "sig": "p.",
+        "text": "The pieces in this scene are pre-order items. Full"
+      },
+      "lede_measure_1440": {
+        "ch": 0
+      },
+      "placeholder_hits": [],
+      "h1": "Four worlds. One house.",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Four worlds. One house.",
+        "H2: Signature",
+        "H3: The Golden Gate Overlook",
+        "H3: The Lateral Terrace",
+        "H3: The Departure Terrace",
+        "H3: Carry the first mark forward.",
+        "H2: Black Rose",
+        "H3: The Type Foundry",
+        "H3: The Moonlit Waterfront",
+        "H3: The Town Line",
+        "H3: Wear the protection beautifully.",
+        "H2: Love Hurts",
+        "H3: The Vow Aisle",
+        "H3: The Rose Side Chapel",
+        "H3: The Rose Vitrine"
+      ],
+      "controls_1440": [
+        {
+          "text": "Shop the house→",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "primary": false
+        },
+        {
+          "text": "Shop collection→",
+          "href": "/tools/v2-theme-preview.php?route=signature",
+          "primary": false
+        },
+        {
+          "text": "Explore world→",
+          "href": "/tools/v2-theme-preview.php?route=immersive-signature",
+          "primary": false
+        },
+        {
+          "text": "Shop collection→",
+          "href": "/tools/v2-theme-preview.php?route=black-rose",
+          "primary": false
+        },
+        {
+          "text": "Explore world→",
+          "href": "/tools/v2-theme-preview.php?route=immersive-black-rose",
+          "primary": false
+        },
+        {
+          "text": "Shop collection→",
+          "href": "/tools/v2-theme-preview.php?route=love-hurts",
+          "primary": false
+        },
+        {
+          "text": "Explore world→",
+          "href": "/tools/v2-theme-preview.php?route=immersive-love-hurts",
+          "primary": false
+        },
+        {
+          "text": "Shop collection→",
+          "href": "/tools/v2-theme-preview.php?route=kids-capsule",
+          "primary": false
+        }
+      ],
+      "scroll_height": {
+        "1440": 17145,
+        "390": 13449
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "sig-commerce-1-natural-fo",
+          "natural": "1671x941",
+          "rendered": "1279x720",
+          "alt": "Signature male model wearing The Sherpa Jacket and black Sig"
+        },
+        {
+          "src": "sig-commerce-2-natural-dr",
+          "natural": "1672x941",
+          "rendered": "1279x720",
+          "alt": "Two models on the Golden Gate terrace: one wears the Mint & "
+        },
+        {
+          "src": "sig-commerce-3-motion-k1-poster.web",
+          "natural": "1671x942",
+          "rendered": "1277x720",
+          "alt": "A pre-order chapter presents the Bay Bridge Shorts and Shirt"
+        },
+        {
+          "src": "signature-golden-gate-monuments-v2-1440w.webp",
+          "natural": "1344x756",
+          "rendered": "1325x745",
+          "alt": "Signature collection world"
+        },
+        {
+          "src": "br-commerce-1-archive-4-poster.webp",
+          "natural": "960x1707",
+          "rendered": "405x720",
+          "alt": "The BLACK Rose Crewneck and BLACK Rose Joggers appear togeth"
+        },
+        {
+          "src": "br-commerce-2-hero-wall-s",
+          "natural": "1672x941",
+          "rendered": "1279x720",
+          "alt": "Two models on the moonlit Bay Bridge terrace: one wears the "
+        },
+        {
+          "src": "br-commerce-3-poster-1024w.webp",
+          "natural": "1324x883",
+          "rendered": "1080x720",
+          "alt": "One Jersey Series image chapter presents only the five sport"
+        },
+        {
+          "src": "black-rose-bay-bridge-monuments-v4-1440w.webp",
+          "natural": "1344x756",
+          "rendered": "1325x745",
+          "alt": "Black Rose collection world"
+        },
+        {
+          "src": "lh-commerce-1-archive-4-poster.webp",
+          "natural": "960x540",
+          "rendered": "1280x720",
+          "alt": "A male and female model both wear the Love Hurts Bomber Jack"
+        },
+        {
+          "src": "lh-commerce-2-hero-compos",
+          "natural": "1672x941",
+          "rendered": "1279x720",
+          "alt": "Love Hurts front-view model wearing LH-003 basketball shorts"
+        },
+        {
+          "src": "lh-commerce-3-archive-4-poster.webp",
+          "natural": "960x1280",
+          "rendered": "540x720",
+          "alt": "The Fannie appears on-model as the sole product protagonist "
+        },
+        {
+          "src": "love-hurts-rose-aisle-monuments-v3-1440w.webp",
+          "natural": "1344x756",
+          "rendered": "1325x745",
+          "alt": "Love Hurts collection world"
+        },
+        {
+          "src": "kids-capsule-heir-throne-v3-1440w.webp",
+          "natural": "1344x756",
+          "rendered": "1325x745",
+          "alt": "Kids Capsule collection world"
+        },
+        {
+          "src": "kids-001-320w.webp",
+          "natural": "299x449",
+          "rendered": "116x174",
+          "alt": "Kids Colorblock Hoodie Set — Red/Black — front on model"
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "minor",
+          "invariant": "copy-no-internal-codes",
+          "observation": "\"Shop this look\" cast lists print raw SKU codes as customer-facing fallback text (\"SG-009 is not currently available.\", ~25 rows across the four collections in the fixture). The registry carries a name for every SKU; the fallback should name the piece, not the code. Frequency is fixture-dependent (only 4 WC stubs), the fallback string is theme code. [repro]",
+          "evidence": "lookbook-1440.png"
+        },
+        {
+          "severity": "minor",
+          "invariant": "scene-cover-focal",
+          "observation": "Two scenes place a portrait render inside the 16:9 tile with a blurred pillarbox fill instead of object-fit: cover + --sr2-focal (§2 Imagery): Black Rose \"The Type Foundry\" (br-commerce-1-archive-4-poster.webp, 960x1707 shown 405x720) and Love Hurts \"The Rose Vitrine\" (lh-commerce-3-archive-4-poster.webp, 960x1280 shown 540x720). Reads as a filmstrip. [repro]",
+          "evidence": "lookbook-1440.png"
+        },
+        {
+          "severity": "minor",
+          "invariant": "BR-002-out-of-featured-slots",
+          "observation": "BR-002 is listed in the Black Rose \"Type Foundry\" cast (\"BR-002 is not currently available.\"). Contract §9 keeps BR-002 and KIDS-002 out of featured slots; whether a lookbook cast row counts is a founder call. [repro]",
+          "evidence": "lookbook-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "product-image-fidelity",
+          "observation": "\"The Rose Vitrine\" shows a model wearing a \"FANNIE\" bag as LH-005. Registry lh-005 = \"The Fannie\", render_is_accessory 1, is_preorder 1, price 45 — identity consistent; scene comes from data/approved-scroll-world-scenes.json. Pixel side-by-side against the registry reference was not performed in this pass. [repro][repo]",
+          "evidence": "lookbook-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "lookbook-1440.png"
+        }
+      ],
+      "reduced_motion_390": {
+        "capture": "lookbook-390-reduced.png",
+        "body_class": "sr2-preview woocommerce",
+        "h_overflow": false,
+        "scroll_height": 13449,
+        "console": [],
+        "failed": [],
+        "eyes_on": "Composition identical to the motion capture; images loaded, no reveal-block artifacts, static."
+      },
+      "no_js_1440": {
+        "http_status": 200,
+        "scrolled_with_wheel": true,
+        "distinct_frame_hashes": "12/12",
+        "first_two_hashes": [
+          "c93ab170f934",
+          "aaf98a1bfa50"
+        ],
+        "bottom_scrollY": 9180,
+        "doc_height": 17894,
+        "nav_fallback": {
+          "position": "static",
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "x": 58,
+            "y": 53,
+            "w": 1325,
+            "h": 696
+          },
+          "before_main": true,
+          "visible_links": 15,
+          "link_labels": [
+            "Collections",
+            "Shop",
+            "Lookbook",
+            "Pre-Order",
+            "Journal",
+            "About",
+            "Contact",
+            "Search",
+            "Account",
+            "Saved pieces",
+            "Lookbook",
+            "Signature↗",
+            "Black Rose↗",
+            "Love Hurts↗",
+            "Kids Capsule↗"
+          ],
+          "header_position": "relative",
+          "menu_button_display": "inline-flex"
+        },
+        "images_loaded": "20/20",
+        "failed_requests": [],
+        "eyes_on": "Header renders in flow with the house directory expanded (01 Collections ... 07 Contact, utility links, \"Choose your chapter.\" with four collection thumbnails), then the page content with images loaded; the Menu button remains visible (see global finding)."
+      }
+    },
+    {
+      "route": "404",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=404",
+      "http_status": 200,
+      "captures": [
+        "404-1440.png",
+        "404-390.png"
+      ],
+      "eyes_on": {
+        "1440": "One full-bleed Black Rose scene (lake and star-rose monument), \"404\" index label, Archivo h1 \"This chapter moved.\", one-line lede, one silver-filled control \"Enter the collections\". Exactly the contract's one scene + one link.",
+        "390": "Scene fills the viewport, copy bottom-left; the primary control sits at the bottom edge (partly under the fixture badge in this capture)."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-control sr2-control--primary",
+          "text": "Enter the collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-footer__wordmark",
+          "text": "SkyyRose",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "summary",
+          "id": null,
+          "class": "",
+          "text": "Explore",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 0
+      },
+      "body_measure_390": {
+        "ch": 0
+      },
+      "lede_measure_1440": {
+        "ch": 52,
+        "px": 524,
+        "font": "Hanken Grotesk",
+        "size": "18px",
+        "sig": "p.sr2-lede",
+        "text": "The house is still here. Find a collection, a piec"
+      },
+      "placeholder_hits": [],
+      "h1": "This chapter moved.",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: This chapter moved.",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [
+        {
+          "text": "Enter the collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "primary": true
+        }
+      ],
+      "scroll_height": {
+        "1440": 1249,
+        "390": 1233
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "black-rose-lake-merritt-monument-v2-1440w.webp",
+          "natural": "1440x810",
+          "rendered": "1440x900",
+          "alt": ""
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "404-one-scene-one-link",
+          "observation": "PASS: one full-bleed scene + one control. The primary \"Enter the collections\" links to route=collections (a house entry rather than shop/home). Footer wordmark and disclosures follow. [repro]",
+          "evidence": "404-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "404-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "faq",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=faq",
+      "http_status": 200,
+      "captures": [
+        "faq-1440.png",
+        "faq-390.png"
+      ],
+      "eyes_on": {
+        "1440": "Quiet arrival (eyebrow \"Client Services\" or \"The House\", Archivo h1, hairline) then a 72ch reading column holding the fixture's one-line summary and the stub sentence \"Live policy copy is supplied by the WordPress page record after import.\"; the four client-services pages carry a right-column aside of service links, the three house pages have no aside. Page grid and type roles are correct; the copy shown is the fixture stub, so content depth cannot be judged here.",
+        "390": "Arrival then a single 40ch column; service-link aside (where present) stacks under the copy. Clean, no overflow."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shipping + returns",
+          "href": "/tools/v2-theme-preview.php?route=shipping-returns",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Returns + exchanges",
+          "href": "/tools/v2-theme-preview.php?route=returns-exchanges",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Size guide",
+          "href": "/tools/v2-theme-preview.php?route=size-guide",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 72,
+        "px": 645,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Answers on fit, pre-order timing, order support, a"
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Answers on fit, pre-order timing, order support, a"
+      },
+      "lede_measure_1440": {
+        "ch": 0
+      },
+      "placeholder_hits": [],
+      "h1": "Faq",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Faq",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [],
+      "scroll_height": {
+        "1440": 1068,
+        "390": 1089
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "policy-real-content",
+          "scope": "fixture",
+          "observation": "Body copy is the fixture stub: one summary sentence plus \"Live policy copy is supplied by the WordPress page record after import.\" (tools/v2-theme-preview.php:360); the h1 \"Faq\" is ucwords(slug) from the fixture's get_the_title() stub (line 345). The real-content invariant cannot be verified on this fixture; layout invariants pass: 72ch/645px body measure at 1440 and 40ch at 390, page grid with the service-link aside. [repro][repo]",
+          "evidence": "faq-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "faq-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "shipping-returns",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=shipping-returns",
+      "http_status": 200,
+      "captures": [
+        "shipping-returns-1440.png",
+        "shipping-returns-390.png"
+      ],
+      "eyes_on": {
+        "1440": "Quiet arrival (eyebrow \"Client Services\" or \"The House\", Archivo h1, hairline) then a 72ch reading column holding the fixture's one-line summary and the stub sentence \"Live policy copy is supplied by the WordPress page record after import.\"; the four client-services pages carry a right-column aside of service links, the three house pages have no aside. Page grid and type roles are correct; the copy shown is the fixture stub, so content depth cannot be judged here.",
+        "390": "Arrival then a single 40ch column; service-link aside (where present) stacks under the copy. Clean, no overflow."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shipping + returns",
+          "href": "/tools/v2-theme-preview.php?route=shipping-returns",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Returns + exchanges",
+          "href": "/tools/v2-theme-preview.php?route=returns-exchanges",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Size guide",
+          "href": "/tools/v2-theme-preview.php?route=size-guide",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 72,
+        "px": 645,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "In-stock and pre-order fulfillment guidance, track"
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "In-stock and pre-order fulfillment guidance, track"
+      },
+      "lede_measure_1440": {
+        "ch": 0
+      },
+      "placeholder_hits": [],
+      "h1": "Shipping Returns",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Shipping Returns",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [],
+      "scroll_height": {
+        "1440": 1068,
+        "390": 1089
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "policy-real-content",
+          "scope": "fixture",
+          "observation": "Body copy is the fixture stub: one summary sentence plus \"Live policy copy is supplied by the WordPress page record after import.\" (tools/v2-theme-preview.php:360); the h1 \"Shipping Returns\" is ucwords(slug) from the fixture's get_the_title() stub (line 345). The real-content invariant cannot be verified on this fixture; layout invariants pass: 72ch/645px body measure at 1440 and 40ch at 390, page grid with the service-link aside. [repro][repo]",
+          "evidence": "shipping-returns-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "shipping-returns-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "returns-exchanges",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=returns-exchanges",
+      "http_status": 200,
+      "captures": [
+        "returns-exchanges-1440.png",
+        "returns-exchanges-390.png"
+      ],
+      "eyes_on": {
+        "1440": "Quiet arrival (eyebrow \"Client Services\" or \"The House\", Archivo h1, hairline) then a 72ch reading column holding the fixture's one-line summary and the stub sentence \"Live policy copy is supplied by the WordPress page record after import.\"; the four client-services pages carry a right-column aside of service links, the three house pages have no aside. Page grid and type roles are correct; the copy shown is the fixture stub, so content depth cannot be judged here.",
+        "390": "Arrival then a single 40ch column; service-link aside (where present) stacks under the copy. Clean, no overflow."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shipping + returns",
+          "href": "/tools/v2-theme-preview.php?route=shipping-returns",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Returns + exchanges",
+          "href": "/tools/v2-theme-preview.php?route=returns-exchanges",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Size guide",
+          "href": "/tools/v2-theme-preview.php?route=size-guide",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 72,
+        "px": 645,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Start a request with Client Services before shippi"
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Start a request with Client Services before shippi"
+      },
+      "lede_measure_1440": {
+        "ch": 0
+      },
+      "placeholder_hits": [],
+      "h1": "Returns Exchanges",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Returns Exchanges",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [],
+      "scroll_height": {
+        "1440": 1068,
+        "390": 1145
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "policy-real-content",
+          "scope": "fixture",
+          "observation": "Body copy is the fixture stub: one summary sentence plus \"Live policy copy is supplied by the WordPress page record after import.\" (tools/v2-theme-preview.php:360); the h1 \"Returns Exchanges\" is ucwords(slug) from the fixture's get_the_title() stub (line 345). The real-content invariant cannot be verified on this fixture; layout invariants pass: 72ch/645px body measure at 1440 and 40ch at 390, page grid with the service-link aside. [repro][repo]",
+          "evidence": "returns-exchanges-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "returns-exchanges-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "size-guide",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=size-guide",
+      "http_status": 200,
+      "captures": [
+        "size-guide-1440.png",
+        "size-guide-390.png"
+      ],
+      "eyes_on": {
+        "1440": "Quiet arrival (eyebrow \"Client Services\" or \"The House\", Archivo h1, hairline) then a 72ch reading column holding the fixture's one-line summary and the stub sentence \"Live policy copy is supplied by the WordPress page record after import.\"; the four client-services pages carry a right-column aside of service links, the three house pages have no aside. Page grid and type roles are correct; the copy shown is the fixture stub, so content depth cannot be judged here.",
+        "390": "Arrival then a single 40ch column; service-link aside (where present) stacks under the copy. Clean, no overflow."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shipping + returns",
+          "href": "/tools/v2-theme-preview.php?route=shipping-returns",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Returns + exchanges",
+          "href": "/tools/v2-theme-preview.php?route=returns-exchanges",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Size guide",
+          "href": "/tools/v2-theme-preview.php?route=size-guide",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 72,
+        "px": 645,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Measure a piece you own flat, compare the publishe"
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Measure a piece you own flat, compare the publishe"
+      },
+      "lede_measure_1440": {
+        "ch": 0
+      },
+      "placeholder_hits": [],
+      "h1": "Size Guide",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Size Guide",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [],
+      "scroll_height": {
+        "1440": 1068,
+        "390": 1117
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "policy-real-content",
+          "scope": "fixture",
+          "observation": "Body copy is the fixture stub: one summary sentence plus \"Live policy copy is supplied by the WordPress page record after import.\" (tools/v2-theme-preview.php:360); the h1 \"Size Guide\" is ucwords(slug) from the fixture's get_the_title() stub (line 345). The real-content invariant cannot be verified on this fixture; layout invariants pass: 72ch/645px body measure at 1440 and 40ch at 390, page grid with the service-link aside. [repro][repo]",
+          "evidence": "size-guide-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "size-guide-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "privacy-policy",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=privacy-policy",
+      "http_status": 200,
+      "captures": [
+        "privacy-policy-1440.png",
+        "privacy-policy-390.png"
+      ],
+      "eyes_on": {
+        "1440": "Quiet arrival (eyebrow \"Client Services\" or \"The House\", Archivo h1, hairline) then a 72ch reading column holding the fixture's one-line summary and the stub sentence \"Live policy copy is supplied by the WordPress page record after import.\"; the four client-services pages carry a right-column aside of service links, the three house pages have no aside. Page grid and type roles are correct; the copy shown is the fixture stub, so content depth cannot be judged here.",
+        "390": "Arrival then a single 40ch column; service-link aside (where present) stacks under the copy. Clean, no overflow."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-footer__wordmark",
+          "text": "SkyyRose",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "summary",
+          "id": null,
+          "class": "",
+          "text": "Explore",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "summary",
+          "id": null,
+          "class": "",
+          "text": "Client Services",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 72,
+        "px": 645,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "The store uses order, support, security, and reque"
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "The store uses order, support, security, and reque"
+      },
+      "lede_measure_1440": {
+        "ch": 0
+      },
+      "placeholder_hits": [],
+      "h1": "Privacy Policy",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Privacy Policy",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [],
+      "scroll_height": {
+        "1440": 979,
+        "390": 980
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "policy-real-content",
+          "scope": "fixture",
+          "observation": "Body copy is the fixture stub: one summary sentence plus \"Live policy copy is supplied by the WordPress page record after import.\" (tools/v2-theme-preview.php:360); the h1 \"Privacy Policy\" is ucwords(slug) from the fixture's get_the_title() stub (line 345). The real-content invariant cannot be verified on this fixture; layout invariants pass: 72ch/645px body measure at 1440 and 40ch at 390, page grid, reading column only (house pages carry no aside). [repro][repo]",
+          "evidence": "privacy-policy-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "privacy-policy-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "terms-of-service",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=terms-of-service",
+      "http_status": 200,
+      "captures": [
+        "terms-of-service-1440.png",
+        "terms-of-service-390.png"
+      ],
+      "eyes_on": {
+        "1440": "Quiet arrival (eyebrow \"Client Services\" or \"The House\", Archivo h1, hairline) then a 72ch reading column holding the fixture's one-line summary and the stub sentence \"Live policy copy is supplied by the WordPress page record after import.\"; the four client-services pages carry a right-column aside of service links, the three house pages have no aside. Page grid and type roles are correct; the copy shown is the fixture stub, so content depth cannot be judged here.",
+        "390": "Arrival then a single 40ch column; service-link aside (where present) stacks under the copy. Clean, no overflow."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-footer__wordmark",
+          "text": "SkyyRose",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "summary",
+          "id": null,
+          "class": "",
+          "text": "Explore",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "summary",
+          "id": null,
+          "class": "",
+          "text": "Client Services",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 72,
+        "px": 645,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Orders remain subject to acceptance, payment confi"
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "Orders remain subject to acceptance, payment confi"
+      },
+      "lede_measure_1440": {
+        "ch": 0
+      },
+      "placeholder_hits": [],
+      "h1": "Terms Of Service",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Terms Of Service",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [],
+      "scroll_height": {
+        "1440": 979,
+        "390": 980
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "policy-real-content",
+          "scope": "fixture",
+          "observation": "Body copy is the fixture stub: one summary sentence plus \"Live policy copy is supplied by the WordPress page record after import.\" (tools/v2-theme-preview.php:360); the h1 \"Terms Of Service\" is ucwords(slug) from the fixture's get_the_title() stub (line 345). The real-content invariant cannot be verified on this fixture; layout invariants pass: 72ch/645px body measure at 1440 and 40ch at 390, page grid, reading column only (house pages carry no aside). [repro][repo]",
+          "evidence": "terms-of-service-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "terms-of-service-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "accessibility",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=accessibility",
+      "http_status": 200,
+      "captures": [
+        "accessibility-1440.png",
+        "accessibility-390.png"
+      ],
+      "eyes_on": {
+        "1440": "Quiet arrival (eyebrow \"Client Services\" or \"The House\", Archivo h1, hairline) then a 72ch reading column holding the fixture's one-line summary and the stub sentence \"Live policy copy is supplied by the WordPress page record after import.\"; the four client-services pages carry a right-column aside of service links, the three house pages have no aside. Page grid and type roles are correct; the copy shown is the fixture stub, so content depth cannot be judged here.",
+        "390": "Arrival then a single 40ch column; service-link aside (where present) stacks under the copy. Clean, no overflow."
+      },
+      "console": [],
+      "page_errors": [],
+      "failed_requests": [],
+      "console_390": [],
+      "failed_requests_390": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "href": "#primary",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Shop",
+          "href": "/tools/v2-theme-preview.php?route=shop",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Collections",
+          "href": "/tools/v2-theme-preview.php?route=collections",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "Journal",
+          "href": "/tools/v2-theme-preview.php?route=journal",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "id": null,
+          "class": "",
+          "text": "About",
+          "href": "/tools/v2-theme-preview.php?route=about",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "href": "/tools/v2-theme-preview.php?route=%3Fs%3D",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "href": "/tools/v2-theme-preview.php?route=cart",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "id": null,
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "id": null,
+          "class": "sr2-house-footer__wordmark",
+          "text": "SkyyRose",
+          "href": "/tools/v2-theme-preview.php?route=home",
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 11,
+          "tag": "summary",
+          "id": null,
+          "class": "",
+          "text": "Explore",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        },
+        {
+          "stop": 12,
+          "tag": "summary",
+          "id": null,
+          "class": "",
+          "text": "Client Services",
+          "href": null,
+          "visible_indicator": true,
+          "indicator": "solid 2px rgb(245, 245, 240)"
+        }
+      ],
+      "skip_link_ok": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "Anton",
+        "Archivo",
+        "Cinzel",
+        "Hanken Grotesk",
+        "sans-serif",
+        "ui-monospace"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "cinzel_engraved_elements": [
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"01\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"02\"",
+        "span.sr2-eyebrow.sr2-eyebrow--engraved \"03\""
+      ],
+      "crimson_dc143c_text_elements": [],
+      "body_measure_1440": {
+        "ch": 72,
+        "px": 645,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "SkyyRose works toward a WCAG 2.2 AA shopping exper"
+      },
+      "body_measure_390": {
+        "ch": 40,
+        "px": 358,
+        "font": "Hanken Grotesk",
+        "size": "16px",
+        "sig": "p.",
+        "text": "SkyyRose works toward a WCAG 2.2 AA shopping exper"
+      },
+      "lede_measure_1440": {
+        "ch": 0
+      },
+      "placeholder_hits": [],
+      "h1": "Accessibility",
+      "headings_1440": [
+        "H2: Choose your chapter.",
+        "H1: Accessibility",
+        "H2: Choose a piece",
+        "H2: Choose the silhouette you want to live in.",
+        "H3: Start with the piece",
+        "H3: Measure what you own",
+        "H3: Ask before the order",
+        "H2: Search the house."
+      ],
+      "controls_1440": [],
+      "scroll_height": {
+        "1440": 979,
+        "390": 980
+      },
+      "images_1440": [
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "115x46",
+          "alt": ""
+        },
+        {
+          "src": "skyyrose-logo-still-384w.webp",
+          "natural": "179x134",
+          "rendered": "112x56",
+          "alt": ""
+        }
+      ],
+      "broken_images": [],
+      "header_has_mascot_strict": false,
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "policy-real-content",
+          "scope": "fixture",
+          "observation": "Body copy is the fixture stub: one summary sentence plus \"Live policy copy is supplied by the WordPress page record after import.\" (tools/v2-theme-preview.php:360); the h1 \"Accessibility\" is ucwords(slug) from the fixture's get_the_title() stub (line 345). The real-content invariant cannot be verified on this fixture; layout invariants pass: 72ch/645px body measure at 1440 and 40ch at 390, page grid, reading column only (house pages carry no aside). [repro][repo]",
+          "evidence": "accessibility-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "capture-artifact",
+          "observation": "The fixture's \"LOCAL V2 REVIEW\" badge (fixed, bottom-right/left) sits over page copy in several shots (About lede at 1440 and h1 line 2 at 390; Pre-order primary control at 390; Lookbook Signature lede at 1440). Fixture chrome from tools/v2-theme-preview.php, not theme output [repo].",
+          "evidence": "accessibility-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "home",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=home&skyy=1",
+      "scope": "Skyy walk-on only (home page evidence belongs to Agent A/F)",
+      "http_status": 200,
+      "captures": [
+        "skyy-home-1440-settled.png",
+        "skyy-home-390-settled.png",
+        "skyy-home-1440-dialog.png",
+        "skyy-home-390-dialog.png",
+        "skyy-home-1440-reduced.png",
+        "skyy-home-1440-entry-1.png",
+        "skyy-home-1440-entry-2.png",
+        "skyy-home-1440-entry-3.png",
+        "skyy-home-1440-entry-4.png",
+        "skyy-home-1440-entry-5.png",
+        "skyy-home-1440-entry-6.png",
+        "skyy-home-390-entry-1.png",
+        "skyy-home-390-entry-2.png",
+        "skyy-home-390-entry-3.png",
+        "skyy-home-390-entry-4.png",
+        "skyy-home-390-entry-5.png",
+        "skyy-home-390-entry-6.png"
+      ],
+      "skyy": {
+        "header_has_mascot": false,
+        "header_match_note": "strict header query returns only IMG.sr2-header__brand-mark (the wordmark) on every run; no mascot element, recall, or mascot image in [data-site-header]",
+        "entry_frames": [
+          "skyy-home-1440-entry-1.png",
+          "skyy-home-1440-entry-2.png",
+          "skyy-home-1440-entry-3.png",
+          "skyy-home-1440-entry-4.png",
+          "skyy-home-1440-entry-5.png",
+          "skyy-home-1440-entry-6.png"
+        ],
+        "entry_frame_data_1440": [
+          {
+            "n": 1,
+            "t_ms": 5018,
+            "phase": "walking-in",
+            "entry_shift": "358px",
+            "progress": "0",
+            "canvas_x": 1440
+          },
+          {
+            "n": 2,
+            "t_ms": 5794,
+            "phase": "walking-in",
+            "entry_shift": "185.9px",
+            "progress": "0.2794",
+            "canvas_x": 1268
+          },
+          {
+            "n": 3,
+            "t_ms": 6551,
+            "phase": "turning",
+            "entry_shift": "52.3px",
+            "progress": "0.6176",
+            "canvas_x": 1134
+          },
+          {
+            "n": 4,
+            "t_ms": 7321,
+            "phase": "turning",
+            "entry_shift": "0.7px",
+            "progress": "0.9559",
+            "canvas_x": 1083
+          },
+          {
+            "n": 5,
+            "t_ms": 8055,
+            "phase": "gesture",
+            "entry_shift": "0px",
+            "progress": "1",
+            "canvas_x": 1082
+          },
+          {
+            "n": 6,
+            "t_ms": 8698,
+            "phase": "gesture",
+            "entry_shift": "0px",
+            "progress": "1",
+            "canvas_x": 1082
+          }
+        ],
+        "entry_frames_390": [
+          "skyy-home-390-entry-1.png",
+          "skyy-home-390-entry-2.png",
+          "skyy-home-390-entry-3.png",
+          "skyy-home-390-entry-4.png",
+          "skyy-home-390-entry-5.png",
+          "skyy-home-390-entry-6.png"
+        ],
+        "portrait_visible_ms_after_navigation": {
+          "1440": 156,
+          "390": 396
+        },
+        "walk_in_start_ms_after_navigation": {
+          "1440": 4820,
+          "390": 4986
+        },
+        "settled_state": {
+          "1440": {
+            "state": "idle",
+            "actionPhase": "idle",
+            "renderer": "3d",
+            "presence": "live"
+          },
+          "390": {
+            "state": "idle",
+            "actionPhase": "idle",
+            "renderer": "3d",
+            "presence": "live"
+          }
+        },
+        "dock_box_1440": {
+          "x": 1082,
+          "y": 628,
+          "w": 334,
+          "h": 248
+        },
+        "dock_box_390": {
+          "x": 138,
+          "y": 672,
+          "w": 240,
+          "h": 160
+        },
+        "character_box_1440": {
+          "x": 1082,
+          "y": 628,
+          "w": 160,
+          "h": 248
+        },
+        "character_box_390": {
+          "x": 138,
+          "y": 684,
+          "w": 96,
+          "h": 148
+        },
+        "headline_overlap_px_1440": {
+          "w": 0,
+          "h": 0,
+          "area": 0
+        },
+        "headline_overlap_px_390": {
+          "w": 236,
+          "h": 0,
+          "area": 0
+        },
+        "headline_overlap_character_only_1440": {
+          "w": 0,
+          "h": 0,
+          "area": 0
+        },
+        "headline_overlap_character_only_390": {
+          "w": 96,
+          "h": 0,
+          "area": 0
+        },
+        "headline_overlap_px_1440_reduced": {
+          "w": 0,
+          "h": 0,
+          "area": 0
+        },
+        "arrival_copy_overlap_px_1440": {
+          "w": 0,
+          "h": 68,
+          "area": 0
+        },
+        "arrival_copy_overlap_px_390": {
+          "w": 236,
+          "h": 0,
+          "area": 0
+        },
+        "headline_text": "SKYYROSE",
+        "dock_a11y": {
+          "role": "region",
+          "aria_label": "Skyy, your house concierge",
+          "ask_button": {
+            "name": "Ask Skyy",
+            "tabIndex": 0,
+            "rect": {
+              "x": 1254,
+              "y": 780,
+              "w": 162,
+              "h": 44
+            },
+            "ariaControls": "skyy-ask-dialog",
+            "haspopup": "dialog"
+          },
+          "ask_button_390_rect": {
+            "x": 242,
+            "y": 736,
+            "w": 136,
+            "h": 44
+          },
+          "dismiss_button": {
+            "name": "Dismiss Skyy",
+            "tabIndex": 0,
+            "rect": {
+              "x": 1254,
+              "y": 832,
+              "w": 162,
+              "h": 44
+            }
+          },
+          "pause_button": {
+            "name": "Pause character",
+            "tabIndex": 0,
+            "rect": {
+              "x": 1254,
+              "y": 728,
+              "w": 162,
+              "h": 44
+            },
+            "hidden": false
+          },
+          "recall_hidden_until_dismiss": true
+        },
+        "dialog_focus_ok": true,
+        "dialog_detail": {
+          "1440": {
+            "tabs_to_reach_opener": 58,
+            "open": true,
+            "focus_inside": "input#skyy-ask-input",
+            "stage_reparented_into_dialog": true,
+            "dock_hidden_while_open": true,
+            "escape_closes": true,
+            "focus_returned_to": "button#skyy-hero-chat"
+          },
+          "390": {
+            "tabs_to_reach_opener": 52,
+            "escape_closes": true,
+            "focus_returned_to": "button#skyy-hero-chat"
+          },
+          "1440_reduced": {
+            "escape_closes": true,
+            "focus_returned_to": "button",
+            "returned_to_opener": false
+          }
+        },
+        "greeting": "SKYY Welcome to SkyyRose. I’m Skyy, your digital house guide. I can help you explore a collection or find a piece by name or SKU.",
+        "reduced_motion_static": true,
+        "reduced_motion_detail": {
+          "state": "show",
+          "renderer": "static",
+          "presence": "reduced",
+          "walk_in_observed": false,
+          "canvas_visible": false,
+          "portrait_visible": true,
+          "status_text": "Skyy is here, with motion off.",
+          "two_frames_600ms_apart_identical": true,
+          "capture": "skyy-home-1440-reduced.png",
+          "model_requests": 0
+        },
+        "asset_requests": {
+          "1440": [
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+              "status": 200,
+              "bytes": 20357,
+              "t_ms": 92
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+              "status": 200,
+              "bytes": 7717,
+              "t_ms": 106
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+              "status": 200,
+              "bytes": 61276,
+              "t_ms": 166
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+              "status": 200,
+              "bytes": 32637,
+              "t_ms": 4651
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+              "status": 200,
+              "bytes": 13715,
+              "t_ms": 4657
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+              "status": 200,
+              "bytes": 110282,
+              "t_ms": 4657
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+              "status": 200,
+              "bytes": 31784,
+              "t_ms": 4658
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+              "status": 200,
+              "bytes": 691648,
+              "t_ms": 4662
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-desktop.glb",
+              "status": 200,
+              "bytes": 2143292,
+              "t_ms": 4666
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+              "status": 200,
+              "bytes": 58763,
+              "t_ms": 4676
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+              "status": 200,
+              "bytes": 285747,
+              "t_ms": 4676
+            }
+          ],
+          "390": [
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+              "status": 200,
+              "bytes": 20357,
+              "t_ms": 220
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+              "status": 200,
+              "bytes": 7717,
+              "t_ms": 265
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+              "status": 200,
+              "bytes": 61276,
+              "t_ms": 368
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+              "status": 200,
+              "bytes": 32637,
+              "t_ms": 4875
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+              "status": 200,
+              "bytes": 13715,
+              "t_ms": 4881
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+              "status": 200,
+              "bytes": 110282,
+              "t_ms": 4881
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+              "status": 200,
+              "bytes": 31784,
+              "t_ms": 4882
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+              "status": 200,
+              "bytes": 691648,
+              "t_ms": 4888
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-mobile.glb",
+              "status": 200,
+              "bytes": 1247220,
+              "t_ms": 4890
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+              "status": 200,
+              "bytes": 58763,
+              "t_ms": 4898
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+              "status": 200,
+              "bytes": 285747,
+              "t_ms": 4898
+            }
+          ],
+          "1440_reduced": [
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+              "status": 200,
+              "bytes": 20357,
+              "t_ms": 71
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+              "status": 200,
+              "bytes": 7717,
+              "t_ms": 72
+            },
+            {
+              "url": "/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+              "status": 200,
+              "bytes": 61276,
+              "t_ms": 115
+            }
+          ]
+        },
+        "console": {
+          "1440": [
+            "[.WebGL-0x1340051b000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+            "[.WebGL-0x1340051b000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+          ],
+          "390": [
+            "[.WebGL-0x13400513e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+            "[.WebGL-0x13400513e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+          ]
+        },
+        "page_errors": {
+          "1440": [],
+          "390": []
+        },
+        "failed_requests": {
+          "1440": [],
+          "390": []
+        },
+        "captures": [
+          "skyy-home-1440-settled.png",
+          "skyy-home-390-settled.png",
+          "skyy-home-1440-dialog.png",
+          "skyy-home-390-dialog.png",
+          "skyy-home-1440-reduced.png"
+        ]
+      },
+      "eyes_on": {
+        "1440": "Black Rose Bay Bridge arrival with the SKYYROSE wordmark, lede, filled primary \"Enter the collection\", quiet \"Shop the house\", motion toggle top-right, four-name chapter index at the hero's bottom edge. Skyy enters from the right edge over ~3 s, turns to face the visitor and waves, then idles beside the stacked \"Pause character / Ask Skyy / Dismiss Skyy\" controls with the \"Your house guide.\" label; her settled position covers part of the \"04 KIDS CAPSULE\" index label.",
+        "390": "Wordmark, lede, full-width primary, quiet link, two-up chapter index; the compact dock (96x148 character + two 44 px buttons and the pause toggle) sits below the index without touching the headline or lede."
+      },
+      "findings": [
+        {
+          "severity": "minor",
+          "invariant": "skyy-dock-never-covers-copy",
+          "observation": "At 1440 the settled character (160x248 at x1082,y628) stands over the hero chapter-index strip label \"04 KIDS CAPSULE\" (eyes-on: \"KIDS C▮▮LE\"); measured overlap against the h1 and .sr2-arrival__copy is 0. [repro]",
+          "evidence": "skyy-home-1440-entry-6.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "skyy-walk-on",
+          "observation": "PASS: portrait in the dock 73–978 ms after navigation; natural-motion rig requested ~4.5 s after load (skyy-3d.js, three r170 692 KB, GLTF/DRACO loaders, draco_decoder.wasm 286 KB, skyy-natural-desktop.glb 2,143,292 B at 1440 / skyy-natural-mobile.glb 1,247,220 B at 390, all 200); walk-in starts 4.7–5.6 s after navigation from beyond the right edge (--skyy-entry-shift 358px→0, canvas x 1440→1082 over ~3 s) through walking-in → turning → gesture (wave facing the visitor) → idle; dock role=region aria-label \"Skyy, your house concierge\"; Ask Skyy button 162x44 (136x44 at 390) with aria-haspopup=dialog + aria-controls; dialog opens with focus on #skyy-ask-input, stage reparented into the dialog, dock hidden while open, Escape closes and returns focus to #skyy-hero-chat; greeting \"Welcome to SkyyRose. I'm Skyy, your digital house guide...\"; reduced motion → renderer static, presence reduced, no walk-in, no GLB request, portrait visible, \"Skyy is here, with motion off.\", two frames 600 ms apart identical; mobile character exactly 96x148 with two 44 px buttons. Dismiss/recall and the 3-per-session auto-walk cap were not exercised. [repro]",
+          "evidence": "skyy-home-1440-entry-1.png"
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "blocker": 0,
+    "major": 3,
+    "minor": 8,
+    "note": 33
+  }
+}

@@ -3,7 +3,7 @@
  *
  * Two distinct mascot systems:
  * 1. Static in-page mascot sections (Kids Capsule, 404)
- * 2. Skyy — living mascot widget (cinematic walk-on, speech bubbles, choice chips)
+ * 2. Skyy — the walk-on house concierge (fixed dock, native Ask Skyy dialog, recall pill)
  *
  * @package SkyyRose_Flagship
  * @since   4.0.0
@@ -219,100 +219,38 @@
 }
 
 /* ===================================================================
-   SKYY — Living Mascot Widget
-   Cinematic walk-on · speech bubbles · choice chips
+   SKYY — Walk-on house concierge
 
-   Motion is OPT-IN (WCAG 2.3.3 / 2.2.2): the widget's base rules below
-   render every state in its settled end-position with NO animation.
-   Keyframe motion (walk-on/off, breathing idle, speak pulse, excited
-   jump) is added ONLY inside `@media (prefers-reduced-motion:
-   no-preference)` further down — never as the unconditional default.
-   This is a fail-safe posture: a browser or user-agent that doesn't
-   evaluate the media query at all gets the motion-free state, not the
-   animated one. The minimize button (always visible + keyboard-reachable
-   whenever the widget is idle or speaking) is the SC 2.2.2 pause/stop
-   control for the looping idle-breathe animation.
+   Motion is OPT-IN (WCAG 2.3.3 / 2.2.2): every rule below renders the
+   settled state with NO animation. The only motion is the rig's own
+   walk-on translate and the portrait/canvas opacity handoff, and both
+   live inside `@media (prefers-reduced-motion: no-preference)`. A
+   user-agent that never evaluates the query gets the static portrait.
+   The Pause control (shown once the rig is live) is the SC 2.2.2 stop
+   control; Dismiss removes her for the session.
    =================================================================== */
 
-/* --- Keyframes (inert until referenced inside the no-preference block) --- */
-
-@keyframes skyy-walk-on {
-	0% {
-		transform: translateX(120%) scale(0.35) translateY(40px);
-		opacity: 0;
-	}
-	40%  { opacity: 1; }
-	70%  { transform: translateX(8%) scale(1.04) translateY(-4px); }
-	100% { transform: translateX(0) scale(1) translateY(0); }
-}
-
-@keyframes skyy-walk-on-left {
-	0% {
-		transform: translateX(-120%) scale(0.35) translateY(40px);
-		opacity: 0;
-	}
-	40%  { opacity: 1; }
-	70%  { transform: translateX(-8%) scale(1.04) translateY(-4px); }
-	100% { transform: translateX(0) scale(1) translateY(0); }
-}
-
-@keyframes skyy-walk-off {
-	0% {
-		transform: translateX(0) scale(1);
-		opacity: 1;
-	}
-	100% {
-		transform: translateX(140%) scale(0.45);
-		opacity: 0;
-	}
-}
-
-@keyframes skyy-walk-off-left {
-	0% {
-		transform: translateX(0) scale(1);
-		opacity: 1;
-	}
-	100% {
-		transform: translateX(-140%) scale(0.45);
-		opacity: 0;
-	}
-}
-
-@keyframes skyy-breathe {
-	0%, 100% {
-		transform: translateY(0);
-		filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.35));
-	}
-	50% {
-		transform: translateY(-6px);
-		filter: drop-shadow(0 20px 44px rgba(0, 0, 0, 0.5));
-	}
-}
-
-@keyframes skyy-speak-pulse {
-	0%, 100% { transform: scale(1.0); }
-	50%       { transform: scale(1.025); }
-}
-
-@keyframes skyy-excited {
-	0%   { transform: translateY(0) rotate(0deg); }
-	25%  { transform: translateY(-10px) rotate(-4deg); }
-	50%  { transform: translateY(-14px) rotate(3deg); }
-	75%  { transform: translateY(-8px) rotate(-2deg); }
-	100% { transform: translateY(0) rotate(0deg); }
-}
-
-/* Ask Skyy: the canonical character owns a native, invited conversation. */
-body #skyyrose-mascot-recall {
- position: static; inset: auto !important;
+/* --- Recall pill: fixed bottom-right, present only after a dismissal --- */
+/* theme.css still carries V1 `.skyyrose-mascot__recall` rules (relative +
+   `inset: auto !important` under 768px); the id + class selector and the
+   important offsets below out-rank them until that legacy block is removed. */
+body #skyyrose-mascot-recall.skyy-dock__recall {
+ position: fixed; top: auto !important; left: auto !important;
+ right: var(--sr2-dock-offset) !important; bottom: var(--sr2-dock-offset) !important;
  z-index: var(--sr2-layer-guide); display: inline-flex; align-items: center; gap: var(--sr2-space-2);
- width: auto; min-width: 44px; min-height: var(--sr2-target-size); margin: 0; padding: 0;
- border: 0; border-radius: var(--sr2-radius-control); background: transparent;
- color: var(--sr2-color-text); font-family: var(--sr2-font-body); font-size: .8125rem; line-height: 1.2; text-decoration: none;
- box-shadow: none; cursor: pointer;
+ width: auto; max-width: none; min-width: var(--sr2-target-size); min-height: var(--sr2-target-size); margin: 0;
+ padding: .375rem .875rem .375rem .375rem;
+ border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control); background: var(--sr2-surface-dialog);
+ color: var(--sr2-color-text); font: 500 .75rem/1.2 var(--sr2-font-body); letter-spacing: .14em; text-transform: uppercase;
+ text-decoration: none; box-shadow: none; cursor: pointer;
 }
-#skyyrose-mascot-recall img { width: 28px; height: 28px; object-fit: contain; }
+body #skyyrose-mascot-recall[hidden] { display: none !important; }
+#skyyrose-mascot-recall img { width: 28px; height: 28px; object-fit: contain; object-position: center top; }
 #skyyrose-mascot-recall small { display: none; }
+#skyyrose-mascot-recall:hover { border-color: var(--sr2-color-text); }
+#skyyrose-mascot-recall:focus-visible { outline: var(--sr2-focus-width, 2px) solid var(--sr2-color-text); outline-offset: 3px; box-shadow: var(--sr2-focus); }
+
+/* --- Ask Skyy: the canonical character owns a native, invited conversation --- */
 body #skyy-ask-dialog {
  width: min(42rem, calc(100% - 2rem)); max-width: none; max-height: calc(100dvh - 2rem); margin: auto;
  padding: var(--sr2-space-6); border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control);
@@ -345,13 +283,10 @@ body #skyy-ask-dialog {
 #skyy-ask-input { width: 100%; min-width: 0; min-height: var(--sr2-target-size); padding: .625rem; border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control); background: var(--sr2-surface-page); color: var(--sr2-color-text); font: inherit; font-size: 1rem; }
 #skyy-ask-input::placeholder { color: var(--sr2-color-text-muted); }
 #skyy-ask-dialog button[type="submit"] { background: var(--sr2-color-action); border-color: var(--sr2-color-action); color: var(--sr2-color-on-action); }
-#skyy-ask-dialog :is(a, button, input):focus-visible, #skyy-conversation:focus-visible, #skyyrose-mascot-recall:focus-visible { outline: var(--sr2-focus-width, 2px) solid var(--sr2-color-text); outline-offset: 3px; box-shadow: var(--sr2-focus); }
+#skyy-ask-dialog :is(a, button, input):focus-visible, #skyy-conversation:focus-visible { outline: var(--sr2-focus-width, 2px) solid var(--sr2-color-text); outline-offset: 3px; box-shadow: var(--sr2-focus); }
 #skyy-ask-dialog button:hover { border-color: var(--sr2-color-text); }
-/* The existing rig owns walk/turn; reparenting into chat never hides its painted frame. */
-@media (max-width: 47.99rem) {
- body #skyyrose-mascot-recall { position: static; inset: auto !important; flex-direction: column; justify-content: center; gap: 0; width: 44px; min-width: 44px; min-height: 46px; max-width: none; margin: 0; padding: 0; border: 0; box-shadow: none; background: transparent; font-size: 10px; line-height: 1.2; }
- #skyyrose-mascot-recall img { width: 24px; height: 24px; }
- #skyyrose-mascot-recall small { display: none; }
+/* The rig owns walk/turn; reparenting into chat never hides its painted frame. */
+@media (max-width: 47.99em) {
  body #skyy-ask-dialog { padding: var(--sr2-space-4); }
  .skyy-ask-dialog__body { grid-template-columns: minmax(0, 1fr); gap: var(--sr2-space-3); }
  #skyyrose-mascot.skyy-concierge-stage { width: 100%; display: flex; justify-content: center; align-items: end; gap: var(--sr2-space-3); }
@@ -388,34 +323,60 @@ body #skyy-ask-dialog {
 	}
 }
 
-/* The same canonical stage walks onto Home, then moves into the native dialog. */
+/* --- Skyy dock: the same canonical stage walks onto every page, then moves into the native dialog --- */
 #skyy-dialog-stage { min-width: 0; }
 #skyy-ask-dialog .skyy-hero-actions { display: none; }
+#skyy-hero-stage.skyy-dock {
+ position: fixed; right: var(--sr2-dock-offset); bottom: var(--sr2-dock-offset); z-index: var(--sr2-layer-guide);
+ width: max-content; max-width: calc(100vw - var(--sr2-dock-offset) * 2); margin: 0; padding: 0;
+ /* Only her character and controls take pointer events; the dock never shields the page. */
+ pointer-events: none;
+}
+/* Overlays own the top layer: the dock steps back while any dialog, the menu or a scrim is open. */
+body.sr2-overlay-open #skyy-hero-stage.skyy-dock, body.sr2-nav-open #skyy-hero-stage.skyy-dock, body:has(dialog[open]) #skyy-hero-stage.skyy-dock { visibility: hidden; }
+#skyy-hero-stage noscript { display: grid; justify-items: end; gap: var(--sr2-space-2); pointer-events: auto; }
+#skyy-hero-stage noscript img { width: 96px; height: auto; }
+#skyy-hero-stage noscript a { display: inline-flex; align-items: center; min-height: var(--sr2-target-size); padding: .625rem .875rem; border: 1px solid var(--sr2-border-control); background: var(--sr2-surface-dialog); color: var(--sr2-color-text); font: 500 .75rem/1.2 var(--sr2-font-body); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; }
 #skyy-hero-stage #skyyrose-mascot {
- display: grid; grid-template-columns: minmax(0, 1fr) 8rem; grid-template-rows: 1fr 1fr;
- align-items: center; column-gap: .5rem; width: 100%; min-height: 18rem; margin: 0;
+ display: grid; grid-template-columns: 160px max-content; grid-template-rows: auto minmax(0, 1fr) auto;
+ align-items: end; column-gap: var(--sr2-space-3); width: max-content; min-height: 0; margin: 0; pointer-events: none;
 }
 #skyy-hero-stage #skyyrose-mascot[hidden] { display: none; }
+#skyy-hero-stage #skyyrose-mascot[data-visibility="covered"], #skyy-hero-stage #skyyrose-mascot[data-visibility="document-hidden"] { visibility: hidden; }
 #skyy-hero-stage .skyyrose-mascot__character {
- position: relative; grid-column: 1; grid-row: 1 / 3; width: 180px; height: 278px; margin-inline: auto;
+ position: relative; grid-column: 1; grid-row: 1 / 4; width: 160px; height: 248px; margin: 0; pointer-events: auto;
 }
-#skyy-hero-stage .skyyrose-mascot__image, #skyy-hero-stage .skyy-3d-canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+#skyy-hero-stage .skyyrose-mascot__image, #skyy-hero-stage .skyy-3d-canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
 #skyy-hero-stage [hidden] { display: none !important; }
-#skyy-hero-stage #skyy-motion-toggle { grid-column: 2; grid-row: 1; align-self: end; margin-bottom: .5rem; }
-#skyy-hero-stage .skyy-hero-actions { grid-column: 2; grid-row: 2; display: flex; flex-direction: column; gap: .5rem; align-self: start; }
-#skyy-hero-stage button { min-height: 44px; min-width: 44px; border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control); padding: .5rem .75rem; background: var(--sr2-surface-dialog); color: var(--sr2-color-text); font: 500 .75rem var(--sr2-font-body); cursor: pointer; }
-#skyy-hero-stage button:focus-visible { outline: 2px solid var(--sr2-color-text); outline-offset: 3px; }
+#skyy-hero-stage .skyy-presence-status { grid-column: 2; grid-row: 1; align-self: start; width: 9rem; margin: 0 0 var(--sr2-space-2); pointer-events: none; }
+#skyy-hero-stage #skyy-motion-toggle { grid-column: 2; grid-row: 2; align-self: end; margin-bottom: var(--sr2-space-2); }
+#skyy-hero-stage .skyy-hero-actions { grid-column: 2; grid-row: 3; display: flex; flex-direction: column; gap: var(--sr2-space-2); }
+/* House control language: Hanken 500 .75rem uppercase, hairline borders, 44px targets. */
+#skyy-hero-stage button {
+ pointer-events: auto; min-width: var(--sr2-target-size); min-height: var(--sr2-target-size); padding: .625rem .875rem;
+ border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control); background: var(--sr2-surface-dialog);
+ color: var(--sr2-color-text); font: 500 .75rem/1.2 var(--sr2-font-body); letter-spacing: .14em; text-transform: uppercase; cursor: pointer;
+}
+#skyy-hero-stage button:hover { border-color: var(--sr2-color-text); }
+#skyy-hero-stage button:focus-visible { outline: var(--sr2-focus-width, 2px) solid var(--sr2-color-text); outline-offset: 3px; box-shadow: var(--sr2-focus); }
 #skyy-hero-stage #skyy-hero-chat { border-color: var(--sr2-color-action); }
+/* Walk-on: the rig drives --skyy-entry-shift from beyond the viewport edge to her mark. */
 @media (prefers-reduced-motion: no-preference) {
  #skyy-hero-stage [data-renderer="3d"] .skyy-3d-canvas { transform: translateX(var(--skyy-entry-shift, 0px)); }
 }
 #skyy-hero-stage [data-motion-paused="true"] .skyyrose-mascot__character { animation-play-state: paused !important; }
-@media (max-width: 47.99rem) {
- #skyy-hero-stage #skyyrose-mascot { min-height: 15rem; }
- #skyy-hero-stage .skyyrose-mascot__character { width: 120px; height: 185px; }
+/* Compact dock: character ≤ 96×148 with the two 44px controls beside it. */
+@media (max-width: 47.99em), (max-height: 30em) {
+ #skyy-hero-stage #skyyrose-mascot { grid-template-columns: 96px max-content; grid-template-rows: minmax(0, 1fr) auto; column-gap: var(--sr2-space-2); }
+ #skyy-hero-stage .skyyrose-mascot__character { width: 96px; height: 148px; grid-row: 1 / 3; }
+ /* The live status stays announced but leaves the small screen to the page; the buttons fill her height. */
+ #skyy-hero-stage .skyy-presence-status { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+ #skyy-hero-stage #skyy-motion-toggle { grid-row: 1; margin-bottom: var(--sr2-space-2); }
+ #skyy-hero-stage .skyy-hero-actions { grid-row: 2; }
+ #skyy-hero-stage button { padding: .5rem .625rem; font-size: .6875rem; letter-spacing: .1em; }
 }
 @media (prefers-reduced-motion: reduce) { #skyy-hero-stage * { animation: none !important; transition: none !important; } }
-@media (forced-colors: active) { #skyy-hero-stage button { border-color: CanvasText; } }
+@media (forced-colors: active) { #skyy-hero-stage button, #skyy-hero-stage noscript a { border-color: CanvasText; } }
 
 /* Completion: one portrait/canvas layer stack, stable feet and a reserved status. */
 #skyyrose-mascot .skyyrose-mascot__image { object-position: center bottom; transform: none; transform-origin: center bottom; opacity: 1; }
@@ -423,11 +384,10 @@ body #skyy-ask-dialog {
 #skyyrose-mascot[data-presence="live"] .skyyrose-mascot__image { opacity: 0; }
 #skyyrose-mascot[data-presence="live"] .skyy-3d-canvas { opacity: 1; }
 .skyy-presence-status { min-height: 2.8em; margin: .5rem 0 0; font: 400 .6875rem/1.4 var(--sr2-font-body); color: var(--sr2-color-text-muted); overflow-wrap: anywhere; }
-#skyy-hero-stage .skyy-presence-status { position: absolute; inset-inline-end: 0; top: .25rem; width: 8rem; margin: 0; pointer-events: none; }
 @media (prefers-reduced-motion: no-preference) {
  #skyyrose-mascot .skyyrose-mascot__image, #skyyrose-mascot .skyy-3d-canvas { transition: opacity 240ms var(--sr2-ease); }
 }
-@media (max-width: 47.99rem) {
+@media (max-width: 47.99em) {
  #skyy-dialog-stage .skyy-concierge-stage { display: grid; grid-template-columns: 120px minmax(0, 1fr); justify-content: center; align-items: end; gap: 0 var(--sr2-space-3); }
  #skyy-dialog-stage .skyyrose-mascot__character { grid-column: 1; grid-row: 1; }
  #skyy-dialog-stage #skyy-motion-toggle { grid-column: 2; grid-row: 1; }

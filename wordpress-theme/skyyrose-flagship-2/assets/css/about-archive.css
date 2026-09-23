@@ -13,32 +13,32 @@
 }
 .sr2-about-archive :where(h1, h2, h3) {
   font-family: var(--sr2-font-display);
-  font-variation-settings: 'wdth' 125;
   font-weight: 600;
   text-wrap: balance;
   margin-block: 0 1.2rem;
 }
-.sr2-about-archive h1 { font-size: var(--sr2-refine-title); line-height: 1.1; letter-spacing: -.035em; text-align: center; }
-.sr2-about-archive h2 { font-size: clamp(1.75rem, 3vw, 3.25rem); line-height: 1.15; letter-spacing: -.035em; text-align: center; }
+.sr2-about-archive h1 { max-width: 20ch; font-size: var(--sr2-refine-title); line-height: 1.02; letter-spacing: -.035em; text-align: start; }
+.sr2-about-archive h2 { max-width: 18ch; font-size: var(--sr2-type-chapter); line-height: 1.02; letter-spacing: -.035em; text-align: start; }
 .sr2-about-archive h3 { font-size: clamp(1.25rem, 2vw, 1.8rem); line-height: 1.2; }
 .sr2-about-archive p { font-size: clamp(1rem, 1.15vw, 1.16rem); line-height: 1.8; margin-block: 0 1.3em; }
 .sr2-about-archive :where(.sr2-eyebrow, .sr2-about-label) { color: var(--sr2-muted); font-size: .75rem; letter-spacing: .13em; text-transform: uppercase; }
 .sr2-about-archive :where(.wp-block-image, .wp-block-video) { margin: 0; }
 .sr2-about-archive img { width: 100%; height: auto; }
 .sr2-about-archive figcaption { color: var(--sr2-muted); font-size: .8rem; line-height: 1.5; margin-block: .8rem 0; }
-.sr2-about-archive .sr2-about-lead { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); align-items: center; gap: clamp(2rem, 6vw, 6rem); }
+/* The founder portrait (724×1086) is a portrait column beside the words: full frame, never veiled or cropped. */
+.sr2-about-archive .sr2-about-lead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: end; gap: clamp(2rem, 4vw, 4rem) var(--sr2-grid-gap); }
 .sr2-about-archive .sr2-about-lead > * { min-width: 0; }
-.sr2-about-archive .sr2-about-lead figure { max-width: 32rem; justify-self: end; width: 100%; }
-.sr2-about-archive .sr2-about-lead figure img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: contain; }
-.sr2-about-archive .sr2-about-lead > .wp-block-group { max-width: 46rem; text-align: center; margin-inline: auto; }
-.sr2-about-archive .sr2-about-lead > .wp-block-group > p { max-width: 52ch; margin-inline: auto; }
-.sr2-about-archive .sr2-about-reading { max-width: 68ch; margin-inline: auto; }
-.sr2-about-archive .sr2-about-story-chapter > :where(h2, .sr2-about-label, .sr2-eyebrow) { max-width: var(--sr2-content); margin-inline: auto; }
+.sr2-about-archive .sr2-about-lead figure { grid-column: 1 / span 5; width: 100%; max-width: none; justify-self: start; }
+.sr2-about-archive .sr2-about-lead figure img { display: block; width: 100%; height: auto; aspect-ratio: 724 / 1086; object-fit: cover; }
+.sr2-about-archive .sr2-about-lead > .wp-block-group { grid-column: 7 / -1; max-width: none; text-align: start; margin-inline: 0; }
+.sr2-about-archive .sr2-about-lead > .wp-block-group > p { max-width: 52ch; margin-inline: 0; }
+.sr2-about-archive .sr2-about-reading { max-width: 72ch; margin-inline: 0; }
+.sr2-about-archive .sr2-about-story-chapter > :where(h2, .sr2-about-label, .sr2-eyebrow) { max-width: var(--sr2-content); margin-inline: 0; }
 .sr2-about-archive .sr2-about-story-chapter > h2 { margin-bottom: 2.5rem; }
-.sr2-about-archive .sr2-about-quote { max-width: 62ch; margin: 3rem auto; padding: 1rem 0 1rem clamp(1.25rem, 3vw, 3rem); border: 0; border-left: 2px solid var(--sr2-accent); }
+.sr2-about-archive .sr2-about-quote { max-width: 62ch; margin: 3rem 0; padding: 1rem 0 1rem clamp(1.25rem, 3vw, 3rem); border: 0; border-left: 2px solid var(--sr2-accent); }
 .sr2-about-archive .sr2-about-quote p { font-size: clamp(1.2rem, 2vw, 1.9rem); line-height: 1.55; }
 .sr2-about-archive .sr2-about-quote cite { font-style: normal; font-size: .8rem; color: var(--sr2-muted); }
-.sr2-about-archive .sr2-about-film { max-width: var(--sr2-wide); margin-inline: auto; }
+.sr2-about-archive .sr2-about-film { max-width: var(--sr2-wide); margin-inline: 0; }
 .sr2-about-archive .sr2-about-film > p { max-width: 68ch; }
 .sr2-about-archive .sr2-about-film .wp-block-image { max-width: 64rem; margin: 2rem 0 1rem; }
 .sr2-about-archive .sr2-about-film .wp-block-image img { aspect-ratio: 16 / 9; object-fit: contain; background: var(--sr2-card); }
@@ -51,7 +51,7 @@
 .sr2-about-archive :where(.wp-block-button__link, a.sr2-about-play) { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .8rem 1.25rem; border: 1px solid var(--sr2-accent); border-radius: 0; background: transparent; color: var(--sr2-ink); font-family: var(--sr2-font-body); font-size: .8rem; font-weight: 600; letter-spacing: .06em; text-decoration: none; }
 .sr2-about-archive a:focus-visible { outline: 2px solid var(--sr2-ink); outline-offset: 5px; }
 .sr2-about-archive a:hover { text-decoration: underline; text-underline-offset: .2em; }
-.sr2-about-archive :where(.sr2-about-press-list, .sr2-about-timeline) > .wp-block-group { max-width: var(--sr2-content); margin-inline: auto; padding-block: 2rem; border-top: 1px solid var(--sr2-line); }
+.sr2-about-archive :where(.sr2-about-press-list, .sr2-about-timeline) > .wp-block-group { max-width: var(--sr2-content); margin-inline: 0; padding-block: 2rem; border-top: 1px solid var(--sr2-line); }
 .sr2-about-archive :where(.sr2-about-press-list, .sr2-about-timeline) > .wp-block-group > p { max-width: 68ch; }
 .sr2-about-archive .sr2-about-worlds > .wp-block-columns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; gap: clamp(1.5rem, 3vw, 3rem); max-width: var(--sr2-wide); margin: 3rem auto 0; }
 .sr2-about-archive .sr2-about-worlds .wp-block-column { min-width: 0; }
@@ -74,14 +74,14 @@
 .sr2-about-archive .sr2-about-continue .wp-block-buttons { gap: 1rem; flex-wrap: wrap; }
 .sr2-about-archive [hidden] { display: none !important; }
 @media (max-width: 63.99em) {
-  .sr2-about-archive .sr2-about-lead { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .sr2-about-archive .sr2-about-lead figure { grid-column: 1 / -1; max-width: min(100%, 24rem); }
+  .sr2-about-archive .sr2-about-lead > .wp-block-group { grid-column: 1 / -1; }
   .sr2-about-archive .sr2-about-oakland { grid-template-columns: minmax(0, 1fr); }
   .sr2-about-archive .sr2-about-worlds > .wp-block-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem 2rem; }
 }
 @media (max-width: 47.99em) {
-  .sr2-about-archive .sr2-about-lead { grid-template-columns: minmax(0, 1fr); padding-top: 1rem; }
-  .sr2-about-archive .sr2-about-lead > figure { grid-row: 1; width: min(100%, 40svh); max-width: 26rem; justify-self: center; }
-  .sr2-about-archive .sr2-about-lead figure img { max-height: 60svh; }
+  .sr2-about-archive .sr2-about-lead { padding-top: 1rem; }
+  .sr2-about-archive .sr2-about-lead > figure { grid-row: 1; width: min(100%, 22rem); justify-self: start; }
   .sr2-about-archive .sr2-about-worlds > .wp-block-columns { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
   .sr2-about-archive .sr2-about-worlds figure { max-width: 20rem; min-height: 15rem; margin-inline: auto; width: 100%; }
   .sr2-about-archive .sr2-about-worlds figure img { height: 11rem; }
@@ -90,3 +90,10 @@
 @media (prefers-reduced-motion: reduce) {
   .sr2-about-archive *, .sr2-about-archive *::before, .sr2-about-archive *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Lookbook frames under 'The V1 lookbook, carried forward.' — one row of four, two-up on phones. */
+.sr2-about-chapters__frames { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sr2-grid-gap); margin-top: var(--sr2-space-6); }
+.sr2-about-chapters__frame { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; background: var(--sr2-card); }
+.sr2-about-chapters__frame :is(picture, img) { display: block; width: 100%; height: 100%; }
+.sr2-about-chapters__frame img { object-fit: cover; object-position: center top; }
+@media (max-width: 63.99em) { .sr2-about-chapters__frames { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

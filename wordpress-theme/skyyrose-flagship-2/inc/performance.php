@@ -310,8 +310,8 @@ function skyyrose2_performance_route_preloads() {
 		);
 	}
 	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
-		$frame = skyyrose2_performance_archive_frame_preload();
-		return $frame ? array( $frame ) : array();
+		$front = skyyrose2_performance_archive_front_preload();
+		return $front ? array( $front ) : array();
 	}
 
 	if ( ( ( function_exists( 'skyyrose2_collection_page_slug' ) && skyyrose2_collection_page_slug() ) || is_page_template( 'template-collection.php' ) ) && function_exists( 'skyyrose2_collections' ) ) {
@@ -319,10 +319,7 @@ function skyyrose2_performance_route_preloads() {
 		$collections = skyyrose2_collections();
 		$collection  = $collections[ $slug ] ?? array();
 		if ( ! empty( $collection['hero'] ) ) {
-			if ( function_exists( 'skyyrose2_collection_world_enabled' ) && skyyrose2_collection_world_enabled( $slug ) && function_exists( 'skyyrose2_collection_arrival_media' ) ) {
-				$arrival = skyyrose2_collection_arrival_media( $collection );
-				return array( array( 'href' => $arrival['src'], 'as' => 'image', 'type' => 'image/webp', 'fetchpriority' => 'high', 'imagesrcset' => $arrival['srcset'], 'imagesizes' => $arrival['sizes'] ) );
-			}
+			// The arrival <picture> selects its candidate by viewport, so the hint is art-directed the same way.
 			return skyyrose2_performance_art_directed_preloads(
 				$collection['hero'],
 				$collection['hero_tablet'] ?? $collection['hero'],
@@ -346,9 +343,17 @@ function skyyrose2_performance_route_preloads() {
 
 	if ( is_page() ) {
 		$slug = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
-		if ( 'collections' === $slug ) {
-			$resource = skyyrose2_performance_sot_preload( 'branding/hero/signature-golden-gate-yacht-1280w.webp' );
-			return $resource ? array( $resource ) : array();
+		if ( 'collections' === $slug && function_exists( 'skyyrose2_collections' ) ) {
+			// The collections index opens on the first world's monument (template-parts/collections/index.php).
+			$first = current( skyyrose2_collections() );
+			if ( empty( $first['hero'] ) ) {
+				return array();
+			}
+			return skyyrose2_performance_art_directed_preloads(
+				$first['hero'],
+				$first['hero_tablet'] ?? $first['hero'],
+				$first['hero_mobile'] ?? $first['hero']
+			);
 		}
 		if ( in_array( $slug, array( 'pre-order', 'preorder' ), true ) ) {
 			return skyyrose2_performance_art_directed_preloads(
@@ -357,9 +362,9 @@ function skyyrose2_performance_route_preloads() {
 				'images/preorder/responsive/black-rose-salon-640w.webp'
 			);
 		}
+		// Contact renders no hero image since 2.5.0; only About keeps a page hero.
 		$page_heroes = array(
-			'about'   => 'images/about/skyy-rose-founder-hero.webp',
-			'contact' => 'images/immersive/scene-signature-oakland-atelier-gpt2.webp',
+			'about' => 'images/about/skyy-rose-founder-hero.webp',
 		);
 		if ( isset( $page_heroes[ $slug ] ) ) {
 			$resource = skyyrose2_performance_sot_preload( $page_heroes[ $slug ] );
@@ -408,7 +413,9 @@ function skyyrose2_performance_route_preloads() {
 }
 
 /**
- * Discover the first native archive frame without advancing or replacing its query.
+ * Discover the first native archive card's approved garment front without advancing
+ * or replacing its query. The archive renders garment-first (no portal frame), so the
+ * hint carries the same approved front, srcset and sizes the first card will request.
  *
  * Category displays and extension-owned loop/visibility behavior are deliberately
  * excluded. Product hydration may read metadata; no product-selection query or
@@ -416,7 +423,7 @@ function skyyrose2_performance_route_preloads() {
  *
  * @return array<string,string>
  */
-function skyyrose2_performance_archive_frame_preload() {
+function skyyrose2_performance_archive_front_preload() {
 	global $wp_query, $wp_the_query;
 	if (
 		! function_exists( 'is_shop' ) || ! ( is_shop() || is_product_taxonomy() ) ||
@@ -450,15 +457,25 @@ function skyyrose2_performance_archive_frame_preload() {
 		if ( ! ( $candidate instanceof WC_Product ) || ! $candidate->is_visible() ) {
 			continue;
 		}
-		$record = skyyrose2_product_presentation( $candidate );
-		$collection = sanitize_title( $record['collection'] ?? '' );
-		$collections = skyyrose2_collections();
-		$frame = $collections[ $collection ]['portal_statue']['small'] ?? '';
-		$resource = $frame ? skyyrose2_performance_sot_preload( $frame ) : array();
-		$delivery = $resource && function_exists( 'skyyrose2_archive_frame_delivery' ) ? skyyrose2_archive_frame_delivery( $collection ) : array();
-		if ( $delivery ) {
-			$resource['imagesrcset'] = $delivery['srcset'];
-			$resource['imagesizes'] = $delivery['sizes'];
+		$front = function_exists( 'skyyrose2_approved_card_front' ) ? skyyrose2_approved_card_front( $candidate ) : array();
+		$href  = (string) ( $front['card_src'] ?? $front['src'] ?? '' );
+		if ( '' === $href ) {
+			return array();
+		}
+		$resource = array(
+			'href'          => $href,
+			'as'            => 'image',
+			'fetchpriority' => 'high',
+		);
+		$type = skyyrose2_performance_image_mime( $href );
+		if ( $type ) {
+			$resource['type'] = $type;
+		}
+		// The card only emits sizes alongside a srcset; the hint mirrors that exactly so
+		// the preloaded candidate is the one the img element selects.
+		if ( ! empty( $front['srcset'] ) && function_exists( 'skyyrose2_shop_card_sizes' ) ) {
+			$resource['imagesrcset'] = $front['srcset'];
+			$resource['imagesizes']  = skyyrose2_shop_card_sizes();
 		}
 		return $resource;
 	}

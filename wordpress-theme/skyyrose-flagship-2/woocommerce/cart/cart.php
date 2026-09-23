@@ -2,6 +2,10 @@
 /**
  * SkyyRose Flagship 2 cart.
  *
+ * Quiet arrival head, garment-led item rows on the left, the native totals in a
+ * sticky summary on the right (≥64em). Every WooCommerce hook, filter, nonce,
+ * field name and the native quantity control are preserved.
+ *
  * @package SkyyRoseFlagship2
  */
 
@@ -18,15 +22,23 @@ if ( ! WC()->cart || WC()->cart->is_empty() ) :
 	do_action( 'woocommerce_cart_is_empty' );
 	?>
 	<section class="sr2-cart sr2-cart--empty">
-		<p><?php esc_html_e( 'Your bag', 'skyyrose-flagship-2' ); ?></p>
-		<h1><?php esc_html_e( 'Nothing here yet.', 'skyyrose-flagship-2' ); ?></h1>
-		<a class="sr2-page-action" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'Shop collections', 'skyyrose-flagship-2' ); ?></a>
+		<div class="sr2-band__head">
+			<div>
+				<p class="sr2-eyebrow"><?php esc_html_e( 'Your bag', 'skyyrose-flagship-2' ); ?></p>
+				<h1 class="sr2-title-display"><?php esc_html_e( 'Nothing here yet.', 'skyyrose-flagship-2' ); ?></h1>
+				<p class="sr2-lede"><?php esc_html_e( 'Choose a piece from a collection and it will wait for you here, with its live price and availability.', 'skyyrose-flagship-2' ); ?></p>
+			</div>
+			<a class="sr2-control sr2-control--primary" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'Shop collections', 'skyyrose-flagship-2' ); ?></a>
+		</div>
 	</section>
 	<?php
 else :
 ?>
 <section class="sr2-cart">
-	<header class="sr2-page-head"><p><?php esc_html_e( 'Your bag', 'skyyrose-flagship-2' ); ?></p><h1><?php esc_html_e( 'Keep your pieces close.', 'skyyrose-flagship-2' ); ?></h1></header>
+	<header class="sr2-band__head sr2-cart__head">
+		<div><p class="sr2-eyebrow"><?php esc_html_e( 'Your bag', 'skyyrose-flagship-2' ); ?></p><h1 class="sr2-title-display"><?php esc_html_e( 'Keep your pieces close.', 'skyyrose-flagship-2' ); ?></h1></div>
+		<a class="sr2-editorial-link" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'Continue shopping', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">→</span></a>
+	</header>
 	<div class="sr2-cart__layout">
 		<form class="woocommerce-cart-form sr2-cart__items" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 			<?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -47,7 +59,7 @@ else :
 						<?php
 						if ( $product_permalink ) :
 							?>
-							<a href="<?php echo esc_url( $product_permalink ); ?>"><?php echo wp_kses_post( $product_thumbnail ); ?></a>
+							<a href="<?php echo esc_url( $product_permalink ); ?>" tabindex="-1" aria-hidden="true"><?php echo wp_kses_post( $product_thumbnail ); ?></a>
 							<?php
 else :
 	?>
@@ -64,8 +76,8 @@ else :
 	?>
 							<?php echo wp_kses_post( $product_name ); ?><?php endif; ?></h2>
 						<?php do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key ); ?>
-						<span class="sr2-cart__unit-price"><?php esc_html_e( 'Each', 'skyyrose-flagship-2' ); ?> <?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) ); ?></span>
 						<?php echo wp_kses_post( wc_get_formatted_cart_item_data( $cart_item ) ); ?>
+						<span class="sr2-cart__unit-price"><?php esc_html_e( 'Each', 'skyyrose-flagship-2' ); ?> <?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) ); ?></span>
 						<?php
 						if ( $product->backorders_require_notification() && $product->is_on_backorder( $cart_item['quantity'] ) ) {
 							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'skyyrose-flagship-2' ) . '</p>', $product_id ) );
@@ -106,8 +118,8 @@ else :
 				<?php
 				if ( wc_coupons_enabled() ) :
 					?>
-					<label for="coupon_code"><?php esc_html_e( 'Code', 'skyyrose-flagship-2' ); ?></label><input id="coupon_code" type="text" name="coupon_code" value="" placeholder="<?php esc_attr_e( 'Gift code', 'skyyrose-flagship-2' ); ?>"><button class="button sr2-page-action" type="submit" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'skyyrose-flagship-2' ); ?>"><?php esc_html_e( 'Apply', 'skyyrose-flagship-2' ); ?></button><?php do_action( 'woocommerce_cart_coupon' ); ?><?php endif; ?>
-				<button class="button sr2-page-action" type="submit" name="update_cart" value="<?php esc_attr_e( 'Update bag', 'skyyrose-flagship-2' ); ?>"><?php esc_html_e( 'Update bag', 'skyyrose-flagship-2' ); ?></button>
+					<label for="coupon_code"><?php esc_html_e( 'Code', 'skyyrose-flagship-2' ); ?></label><input id="coupon_code" type="text" name="coupon_code" value="" placeholder="<?php esc_attr_e( 'Gift code', 'skyyrose-flagship-2' ); ?>"><button class="button sr2-cart__quiet-action" type="submit" name="apply_coupon" value="<?php esc_attr_e( 'Apply', 'skyyrose-flagship-2' ); ?>"><?php esc_html_e( 'Apply', 'skyyrose-flagship-2' ); ?></button><?php do_action( 'woocommerce_cart_coupon' ); ?><?php endif; ?>
+				<button class="button sr2-cart__quiet-action" type="submit" name="update_cart" value="<?php esc_attr_e( 'Update bag', 'skyyrose-flagship-2' ); ?>"><?php esc_html_e( 'Update bag', 'skyyrose-flagship-2' ); ?></button>
 				<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 			</div>
 			<?php do_action( 'woocommerce_cart_actions' ); ?>

@@ -1197,6 +1197,16 @@
     },
     "assets/models/skyy-mascot.glb": {
       "category": "RUNTIME MEDIA",
+      "reason": "Founder-retained legacy rig with no runtime reference since 2.5.0; removal pending the founder's y",
+      "release": true
+    },
+    "assets/models/skyy-natural-desktop.glb": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/models/skyy-natural-mobile.glb": {
+      "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
@@ -1756,6 +1766,11 @@
       "release": true
     },
     "assets/sot/images/home/on-model/black-rose-br-004.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/home/on-model/kids-capsule-kids-001-512w.webp": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
@@ -2705,6 +2720,11 @@
       "reason": "Guarded archive theme projection and head-only native Core inline allowance with exact input authority and late-change fallback",
       "release": true
     },
+    "inc/collection-presentation.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "inc/critical-rendering.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -3105,6 +3125,16 @@
       "reason": "Phase3B reviewed page implementation",
       "release": true
     },
+    "template-parts/collections/chapters.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/collections/index.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "template-parts/collections/next-world.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
@@ -3170,6 +3200,11 @@
       "reason": "Reusable reference editorial homepage section",
       "release": true
     },
+    "template-parts/home/editorial-film.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "template-parts/home/editorial-hero.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Reusable reference editorial homepage section",
@@ -3181,11 +3216,6 @@
       "release": true
     },
     "template-parts/home/editorial-philosophy.php": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Reusable reference editorial homepage section",
-      "release": true
-    },
-    "template-parts/home/editorial-product-edit.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Reusable reference editorial homepage section",
       "release": true
@@ -3210,6 +3240,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "template-parts/pages/contact.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/pages/journal-entry.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "template-parts/pages/service.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Shared generic, service, FAQ and account page section",
@@ -3226,9 +3266,9 @@
       "release": true
     },
     "template-parts/v2-commerce-preview.php": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
+      "category": "AUTHORING SOURCE",
+      "reason": "Local-only commerce state preview markup consumed solely by tools/v2-theme-preview.php; never a runtime template",
+      "release": false
     },
     "template-parts/v2-preorder.php": {
       "category": "RUNTIME SOURCE",
