@@ -1,8 +1,6 @@
-gradio>=6.7.0
-# pillow held at >=10.0.0: the Space's README sdk_version pins gradio 4.44.0,
-# which requires pillow<11.0 — so >=12.3.0 is unresolvable on the live build.
-# Closing the Pillow CVE here needs the gradio runtime reconciled first
-# (bump sdk_version to 6.x + retest the app), which is a deliberate deploy, not
-# a drive-by floor bump. Do NOT raise this without moving sdk_version together.
-pillow>=10.0.0
-requests>=2.31.0
+# Keep this exact runtime aligned with README.md sdk_version.
+gradio==6.26.0
+pillow>=12.3.0
+requests>=2.34.2
+# app.py imports aiohttp directly for prediction and image requests.
+aiohttp>=3.14.3

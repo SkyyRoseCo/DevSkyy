@@ -213,13 +213,7 @@ def virtual_tryon(
 def create_app() -> gr.Blocks:
     """Create Gradio application."""
 
-    with gr.Blocks(
-        title="SkyyRose Virtual Try-On",
-        theme=gr.themes.Soft(
-            primary_hue="rose",
-            secondary_hue="stone",
-        ),
-    ) as app:
+    with gr.Blocks(title="SkyyRose Virtual Try-On") as app:
         gr.Markdown("""
             # 🌹 SkyyRose Virtual Try-On
 
@@ -321,6 +315,7 @@ def create_app() -> gr.Blocks:
 if __name__ == "__main__":
     app = create_app()
     app.launch(
+        theme=gr.themes.Soft(primary_hue="rose", secondary_hue="stone"),
         server_name="0.0.0.0",  # nosec B104 — 0.0.0.0 required in containerized/cloud deployment; network isolation at infra layer
         server_port=7860,
         share=False,
