@@ -1,0 +1,190 @@
+{
+  "kind": "DOCUMENT_VALIDATION_FIXTURES",
+  "runtime_test_status": "NOT_EXECUTED_NO_RUNTIME_IMPLEMENTED",
+  "fixtures": [
+    {
+      "id": "DOC-01",
+      "rule_id": "K1-001",
+      "field": "rule_and_source_context",
+      "must_contain": "possibility",
+      "purpose": "Durable Kids meaning includes possibility."
+    },
+    {
+      "id": "DOC-02",
+      "rule_id": "K2-001",
+      "field": "rule_and_source_context",
+      "must_contain": "Kids should not simply be adult SkyyRose made smaller.",
+      "purpose": "Independent Kids language preserved."
+    },
+    {
+      "id": "DOC-03",
+      "rule_id": "K3-001",
+      "field": "rule_and_source_context",
+      "must_contain": "priority territory",
+      "purpose": "Kids experimentation priority preserved."
+    },
+    {
+      "id": "DOC-04",
+      "rule_id": "K4-001",
+      "field": "rule_and_source_context",
+      "must_contain": "exact, verifiable representation",
+      "purpose": "Kids fidelity is absolute."
+    },
+    {
+      "id": "DOC-05",
+      "rule_id": "K5-001",
+      "field": "rule_and_source_context",
+      "must_contain": "does not grant authority to redesign products",
+      "purpose": "Worlds do not redefine protected truth."
+    },
+    {
+      "id": "DOC-06",
+      "rule_id": "P1-001",
+      "field": "rule_and_source_context",
+      "must_contain": "lighting color, and natural-location color",
+      "purpose": "Eight palette domains preserved."
+    },
+    {
+      "id": "DOC-07",
+      "rule_id": "P2-001",
+      "field": "rule_and_source_context",
+      "must_contain": "may not silently recolor the product",
+      "purpose": "Environmental lighting cannot rewrite garment color."
+    },
+    {
+      "id": "DOC-08",
+      "rule_id": "P3-001",
+      "field": "rule_and_source_context",
+      "must_contain": "does not automatically authorize recoloring protected marks",
+      "purpose": "Marks retain separate authority."
+    },
+    {
+      "id": "DOC-09",
+      "rule_id": "P5-001",
+      "field": "rule_and_source_context",
+      "must_contain": "do not automatically establish or violate",
+      "purpose": "Natural color is not master-palette redefinition."
+    },
+    {
+      "id": "DOC-10",
+      "rule_id": "P6-001",
+      "field": "rule_and_source_context",
+      "must_contain": "without redefining product color or master-brand identity",
+      "purpose": "Accessible UI colors stay in their scope."
+    },
+    {
+      "id": "DOC-11",
+      "rule_id": "P8-001",
+      "field": "rule_and_source_context",
+      "must_contain": "record whether its authority comes from",
+      "purpose": "Palette provenance recorded."
+    },
+    {
+      "id": "DOC-12",
+      "rule_id": "S1-001",
+      "field": "rule_and_source_context",
+      "must_contain": "Before major creative production",
+      "purpose": "Review applicability preserved."
+    },
+    {
+      "id": "DOC-13",
+      "rule_id": "S4-001",
+      "field": "rule_and_source_context",
+      "must_contain": "when practical",
+      "purpose": "No invented mandatory candidate quota."
+    },
+    {
+      "id": "DOC-14",
+      "rule_id": "S5-001",
+      "field": "rule_and_source_context",
+      "must_contain": "### Market",
+      "purpose": "Four experiment classes retained."
+    },
+    {
+      "id": "DOC-15",
+      "rule_id": "S6-001",
+      "field": "rule_and_source_context",
+      "must_contain": "The synthesis must itself be tested.",
+      "purpose": "Synthesis requires new evidence."
+    },
+    {
+      "id": "DOC-16",
+      "rule_id": "S9-001",
+      "field": "rule_and_source_context",
+      "must_contain": "evaluated separately",
+      "purpose": "Compliance and novelty are independent."
+    },
+    {
+      "id": "DOC-17",
+      "rule_id": "S10-001",
+      "field": "rule_and_source_context",
+      "must_contain": "difference map",
+      "purpose": "Unquoted operating rule retained."
+    },
+    {
+      "id": "DOC-18",
+      "rule_id": "S11-001",
+      "field": "rule_and_source_context",
+      "must_contain": "content intents",
+      "purpose": "Archive includes unquoted field contract."
+    },
+    {
+      "id": "DOC-19",
+      "rule_id": "S11-001",
+      "field": "rule_and_source_context",
+      "must_contain": "failures",
+      "purpose": "Archive includes failures."
+    },
+    {
+      "id": "DOC-20",
+      "rule_id": "S12-001",
+      "field": "rule_and_source_context",
+      "must_contain": "unless explicitly ratified",
+      "purpose": "Learning cannot silently become Constitution."
+    }
+  ],
+  "runtime_acceptance_cases": [
+    {
+      "id": "RUNTIME-01",
+      "scenario": "Truthful blue sky around an exact black product",
+      "expected": "Permit natural color; do not assign blue as master brand color.",
+      "status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "RUNTIME-02",
+      "scenario": "Environmental light makes a black garment appear blue",
+      "expected": "FAIL exact-product color check; remediate depiction.",
+      "status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "RUNTIME-03",
+      "scenario": "Accessible blue UI focus state",
+      "expected": "Permit appropriate functional color; no garment/mark recolor permission.",
+      "status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "RUNTIME-04",
+      "scenario": "Kids playful world without throne",
+      "expected": "Permit contextual expression; exact real SKU fidelity still required.",
+      "status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "RUNTIME-05",
+      "scenario": "Major direction identical except brushed chrome",
+      "expected": "Challenge novelty independently of brand compliance.",
+      "status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "RUNTIME-06",
+      "scenario": "Synthesis of three previously tested candidates",
+      "expected": "Create new prototype and test synthesized result.",
+      "status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "RUNTIME-07",
+      "scenario": "Generic execution wins market test",
+      "expected": "Archive contextual evidence; no automatic constitutional change.",
+      "status": "SPECIFIED_NOT_EXECUTED"
+    }
+  ]
+}
