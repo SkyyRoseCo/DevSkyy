@@ -1,0 +1,705 @@
+{
+ "schema": "skyyrose.fashion-e2e.task-ledger.v1",
+ "task_id": "v2-whole-site-rework-20260922",
+ "title": "SkyyRose V2 whole-site redesign — Veritas composition × SkyyRose identity",
+ "append_only": true,
+ "scope": {
+  "candidate_ref": "codex/v2-whole-site-rework-20260922 (base 5430de9da on origin/main 6994d9785)",
+  "theme_path": "wordpress-theme/skyyrose-flagship-2",
+  "surfaces": [
+   "header/footer shell",
+   "homepage",
+   "collection landings (4)",
+   "immersive worlds (3)",
+   "shop archive + taxonomy",
+   "product page",
+   "cart/checkout/account/order-tracking",
+   "about/journal/lookbook/pre-order",
+   "contact/FAQ/policies/size-guide/wishlist/search/404",
+   "Skyy walk-on concierge (all non-checkout routes)"
+  ],
+  "target_environment": "local fixture (tools/v2-theme-preview.php) → PR → staging-7e48-skyyrose.wpcomstaging.com (conditional, pre-approved once fixed+verified)",
+  "exclusions": [
+   "production skyyrose.co",
+   "database changes",
+   "payment settings",
+   "PR970 package fb1220db… and archive 37f0d6f7… must not deploy",
+   "paid image/video generation",
+   "WooCommerce writes",
+   "media library uploads"
+  ]
+ },
+ "acceptance_criteria": [
+  "Every route renders at 1440 and 390 with one dominant focal point per view, full-bleed imagery as structure, restrained navigation, garment as protagonist",
+  "Header carries no mascot; Skyy walks onto the screen as a full-body character and is the chat entry (Ask Skyy) on all non-checkout routes; dismiss/recall/pause/reduced-motion/keyboard preserved",
+  "Natural-motion GLB tiers (desktop 9b405468…, mobile 72671339…) are the served rig; old rig not deleted without founder y",
+  "All existing controllers keep their DOM hooks (visual-recovery, theme.js, scene motion, quick view, bag, search, mascot)",
+  "npm run build → check:assets → verify → lint:php → phpcs → package:theme all pass in this session; critical CSS ≤ 16384 bytes",
+  "Version triple + CHANGELOG bumped; build-inputs.json input_hashes reconciled; package-boundary.json matches the tree",
+  "Independent red-team (Workflow/ultracode, founder-directed) finds no unresolved material defect; every finding first-seen logged here",
+  "PR supersedes draft PR970; pr-green-loop drives checks green; merge only on fresh green checks"
+ ],
+ "evidence_requirements": [
+  "source/build hash + minified parity (check:assets)",
+  "1440 and 390 fullPage captures per route under tasks/v2-whole-site-rework-20260922/evidence/<surface>/",
+  "reduced-motion + no-JS fallback proof for hero video, film band, mascot",
+  "console/network trace per route (0 page errors, 0 failed theme requests)",
+  "keyboard/focus trace: header menu, search, bag, quick view, mascot dock/dialog, variation form, checkout form",
+  "commerce journey proof in fixture: card → PDP → variation → add to bag → cart → checkout form validation",
+  "independent_review (red team) verdict per surface",
+  "runtime tests: npm run verify output",
+  "Lighthouse lab run per key route (fixture) recorded separately from any staging field measurement"
+ ],
+ "project_manager": {
+  "name": "Claude Fable 5.1 — foreground session (Agent A)",
+  "owns": "scope, dependencies, evidence completeness, issue recurrence, final handoff; cannot self-approve; independent reviewer is the red-team Workflow"
+ },
+ "roster": [
+  {
+   "name": "Agent A (manager + shell/home/mascot placement)",
+   "title": "Lead engineer",
+   "capabilities": [
+    "fashion-frontend-motion",
+    "fashion-design-system"
+   ],
+   "owns": "design contract, design-tokens.css, theme.css (phase 1), global-shell.css, controls.css, inc/global-shell.php, functions.php, front-page.php, template-parts/home/*, home-page.css, critical/home.contract.json, template-parts/skyy-mascot.php, build/verify/package, reconciliation, PR"
+  },
+  {
+   "name": "Agent B (collections + immersive)",
+   "title": "Frontend engineer",
+   "capabilities": [
+    "fashion-frontend-motion"
+   ],
+   "owns": "template-collection.php, template-parts/collections/*, template-parts/commerce/hero-composed-scene.php, template-parts/collections/town-line.php, template-immersive-*.php, template-parts/immersive/*, collection-world.css, hero-commerce-scenes.css, collection-scene-motion.css, visual-recovery.css, immersive.css, legacy-world-components.css, scene-handoff.css"
+  },
+  {
+   "name": "Agent C (shop + PDP + card)",
+   "title": "Commerce frontend engineer",
+   "capabilities": [
+    "fashion-commerce-engineering"
+   ],
+   "owns": "woocommerce/* except cart/ and checkout/, template-parts/commerce/{product-card,product-hero,quick-view,size-guide-dialog}.php, inc/shop-archive.php, shop-page.css, product-page.css, premium-commerce.css, quick-view-commerce.css, tools/v2-theme-preview.php fixture stubs, tools/verify-v2-theme-preview.sh"
+  },
+  {
+   "name": "Agent D (supporting + commerce pages)",
+   "title": "Frontend engineer",
+   "capabilities": [
+    "fashion-frontend-motion",
+    "fashion-accessibility-content-engineer"
+   ],
+   "owns": "page.php, template-parts/pages/*, template-parts/v2-about.php, template-parts/v2-preorder.php, template-parts/v2-commerce-preview.php, page-lookbook.php, home.php, index.php, single.php, archive.php, search.php, 404.php, page-wishlist.php, woocommerce/cart/*, woocommerce/checkout/*, woocommerce/myaccount/*, template-parts/journal-press-fallback.php, content-page.css, about-archive.css, lookbook.css, search-preview.css, theme.css from '/* Content pages */' down (after phase 1 commit)"
+  },
+  {
+   "name": "Agent E (Skyy natural motion)",
+   "title": "Character runtime engineer",
+   "capabilities": [
+    "fashion-frontend-motion",
+    "fashion-a11y-performance"
+   ],
+   "owns": "assets/js/mascot.js, assets/js/mascot-loader.js, assets/js/skyy-3d.js, assets/css/mascot.css, assets/models/*, tools/v2-runtime/test-skyy-concierge.cjs (+ fixtures), scripts/test-global-shell-contract.php mascot pins"
+  },
+  {
+   "name": "Red team (Workflow / ultracode)",
+   "title": "Independent reviewers",
+   "capabilities": [
+    "fashion-visual-qa-red-team",
+    "fashion-a11y-performance",
+    "fashion-commerce-engineering",
+    "security"
+   ],
+   "owns": "adversarial review of the integrated candidate; verdicts only, no repairs"
+  },
+  {
+   "name": "pr-green-loop",
+   "title": "PR automation",
+   "capabilities": [
+    "ci"
+   ],
+   "owns": "driving the superseding PR to green"
+  },
+  {
+   "name": "Corey (founder)",
+   "title": "Approver",
+   "capabilities": [],
+   "owns": "founder approval; staging deploy y; production out of scope"
+  }
+ ],
+ "authority": {
+  "product_registry": "logo-registry.json via skyyrose.core.product.get_product (sync_product_registry --check PASS at start)",
+  "featured_skus": {
+   "signature": [
+    "sg-005"
+   ],
+   "black-rose": [
+    "br-001",
+    "br-004"
+   ],
+   "love-hurts": [
+    "lh-004"
+   ],
+   "kids-capsule": [
+    "kids-001"
+   ],
+   "excluded": [
+    "br-002",
+    "kids-002"
+   ]
+  },
+  "mascot_delivery": ".artifacts/mascot-repair-20260911/Skyy-Natural-Motion-20260911.zip — desktop GLB sha256 9b40546847d2b2776334a71edcd8f4836b3eeab904f74f6fc568d5a3d3040a00 (2,143,292 B), mobile 7267133a69d8401ba3edbe97d55a5b4605002d97114750081549671bdba129c7 (1,247,220 B); clips Skyy_Idle/Walk/Talk/Joy/Exit/Wave; KHR_draco_mesh_compression + EXT_texture_webp",
+  "founder_rulebook": "tasks/mascot-design-rulebook.md (walk-in ~4.5s after load, dismissed = gone for session, ≤2–4 proactive appearances, motion opt-in, native dialog)",
+  "brand": "CLAUDE.md §6, docs/brand/visual-references.md (Kith/Oaklandish/Culture Kings/FoG/Palm Angels; never European luxury), typography.json (cut: Playfair/Cormorant/Bebas/Yellowtail)",
+  "toolchain": "node 22.23.2 (/Users/theceo/.local/bin), npm 10.9.8, python 3.12.12 (/tmp/skyyrose-v2-audit-venv), V2_WP_FIXTURE=/tmp/skyyrose-v2-native-fixture"
+ },
+ "events": [
+  {
+   "ts": "2026-09-22T00:00:00Z",
+   "type": "task_started",
+   "by": "Agent A",
+   "note": "Handoff read; baseline evidence viewed; pristine build is a no-op (git status clean after npm run build)."
+  },
+  {
+   "ts": "2026-09-22T00:00:00Z",
+   "type": "founder_direction",
+   "by": "Corey",
+   "note": "Take the mascot out of the header; implement Skyy as the walk-on-screen chatbot using Skyy-Natural-Motion-20260911.zip."
+  },
+  {
+   "ts": "2026-09-22T00:00:00Z",
+   "type": "founder_direction",
+   "by": "Corey",
+   "note": "Red team for the entire redesign runs as Ultracode (Workflow multi-agent orchestration)."
+  },
+  {
+   "ts": "2026-09-22T19:30:00Z",
+   "type": "commit",
+   "by": "Agent A",
+   "ref": "cbb930bd6",
+   "note": "Phase 1 shared system: design contract, ledger, primitives, restrained shell, Skyy walk-on dock, natural-motion GLB tiers wired, shell contract test tightened."
+  },
+  {
+   "ts": "2026-09-22T20:20:00Z",
+   "type": "surface_recomposed",
+   "by": "Agent A",
+   "surface": "home",
+   "files": [
+    "front-page.php",
+    "template-parts/home/editorial-hero.php",
+    "template-parts/home/editorial-film.php",
+    "template-parts/home/editorial-collection.php",
+    "template-parts/home/editorial-philosophy.php",
+    "template-parts/home/editorial-journal.php",
+    "assets/css/home-page.css",
+    "assets/css/critical/home.contract.json"
+   ],
+   "removed": [
+    "template-parts/home/editorial-product-edit.php"
+   ],
+   "note": "Arrival (one viewport, BR bay-bridge scene, SKYYROSE title, world rail) → on-model film band → four collection chapters (scene + lockup + one card, alternating) → worlds carousel band → founder band → journal band. Version triple + package.json bumped to 2.5.0; CHANGELOG entry added."
+  },
+  {
+   "ts": "2026-09-22T20:35:00Z",
+   "type": "evidence",
+   "by": "Agent A",
+   "surface": "home",
+   "artifacts": [
+    "tasks/v2-whole-site-rework-20260922/evidence/home/home-1440.png",
+    "tasks/v2-whole-site-rework-20260922/evidence/home/home-390.png",
+    "tasks/v2-whole-site-rework-20260922/evidence/home/home-1440-s01..s17.png",
+    "tasks/v2-whole-site-rework-20260922/evidence/home/home-390-s01..s15.png",
+    "tasks/v2-whole-site-rework-20260922/evidence/home/report.json"
+   ],
+   "result": "home@1440 h=12888 hOverflow=false errors=0 failed=0 bad=0; home@390 h=10682 hOverflow=false errors=0 failed=0 bad=0 [repro]. Eyes-on: every band renders real imagery when scrolled as a user would; reveal wipes fire; no console errors.",
+   "scope": "local fixture (tools/v2-theme-preview.php, plain-document serve), source CSS; not staging"
+  },
+  {
+   "ts": "2026-09-22T20:45:00Z",
+   "type": "fix",
+   "by": "Agent A",
+   "surface": "home",
+   "note": "Film toggle floated over the fourth on-model card at 1440; strip now reserves a lane above the cards when enhanced and the loop mask fades over 3% so the toggle sits in the opaque zone. Re-captured: home@1440 h=12472 errors=0 [repro]."
+  },
+  {
+   "ts": "2026-09-22T20:46:00Z",
+   "type": "correction",
+   "by": "Agent A",
+   "note": "DESIGN-CONTRACT §8 fixture instruction corrected: serve the repo as a plain document (no router argument) and browse /tools/v2-theme-preview.php?route=…; &skyy=1 renders the dock. Agents were messaged the same correction earlier."
+  },
+  {
+   "ts": "2026-09-22T21:20:00Z",
+   "type": "issues_recorded",
+   "by": "Agent A",
+   "note": "ISS-001..004 first-seen and resolved; see issues[]. Agents C and E complete; B awaiting its own re-capture; D in flight."
+  },
+  {
+   "ts": "2026-09-22T22:05:00Z",
+   "type": "integration",
+   "by": "Agent A",
+   "note": "Agent B handoff received (29 captures clean). Retired global-shell.css auto-fit override; removed 7 orphaned theme.css keyframes (census clean); reconciler extended for runtime-php-baseline.json (-1 ~45 +5 on dry run); ISS-005 resolved; B's page.php request forwarded to Agent D."
+  },
+  {
+   "ts": "2026-09-22T22:40:00Z",
+   "type": "evidence",
+   "by": "Agent A",
+   "surface": "home, shop, product, signature, immersive-black-rose",
+   "artifacts": [
+    "tasks/v2-whole-site-rework-20260922/evidence/lighthouse/summary.json"
+   ],
+   "result": "Lighthouse 13.5.0 lab on the fixture: accessibility 100 on all 10 runs; desktop performance 96–99; mobile 78–86 (unminified source over php -S). PDP CLS 0 after the fixture gallery stub gained real width/height + Woo's link wrapper (first pass 0.528 was the stub, not the theme). [repro]",
+   "scope": "local fixture; not staging"
+  },
+  {
+   "ts": "2026-09-22T23:05:00Z",
+   "type": "fix",
+   "by": "Agent A",
+   "surface": "shop",
+   "ref": "ISS-006",
+   "files": [
+    "tools/v2-runtime/build-archive-style-bundle.cjs",
+    "tools/v2-runtime/test-archive-style-bundle.cjs",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/archive-theme.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/archive-theme.json",
+    "tools/v2-source-certification/build-inputs.json"
+   ],
+   "result": "Archive projection classifier taught the redesign's owner families; 33,215 → 26,637 B under the unchanged 32,768 B ceiling. 7/7 node tests; 43/43 shop-DOM classes retained. [test][repro]",
+   "scope": "build + fixture"
+  },
+  {
+   "ts": "2026-09-22T23:20:00Z",
+   "type": "fix",
+   "by": "Agent A",
+   "surface": "product",
+   "ref": "ISS-007",
+   "files": [
+    "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-hero.php",
+    "wordpress-theme/skyyrose-flagship-2/languages/skyyrose-flagship-2.pot",
+    "tools/v2-source-certification/runtime-php-baseline.json"
+   ],
+   "result": "Gallery region accessible name carries the runtime plural; test_i18n 4/4; check:i18n rc=0. [test]",
+   "scope": "source"
+  },
+  {
+   "ts": "2026-09-22T23:45:00Z",
+   "type": "evidence",
+   "by": "Agent A",
+   "surface": "whole theme",
+   "artifacts": [
+    "wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip (gitignored)"
+   ],
+   "result": "Full gate chain on the rebuilt tree: npm run build rc=0; check:assets rc=0; check:commerce-scenes rc=0; lint:php rc=0; verify rc=0 (marketplace verification passed; archive projection 26,637 B; critical/home 13,267 B); python certification unittest discover 17/17 OK; 38/38 PHP+JS test files; package:theme rc=0 → dist/skyyrose-flagship-2.zip sha256 cc2c86b015f1e829a3e0d5a3fd14e9414a11c6f905f73ed7d008a9bfa97e20ae, 572 files. This archive supersedes PR970's fb1220db… package, which must not ship. [test][repro]",
+   "scope": "local build; not staging"
+  },
+  {
+   "ts": "2026-09-23T01:10:00Z",
+   "type": "fix",
+   "by": "Agent A",
+   "surface": "whole theme",
+   "ref": "ISS-008..ISS-019",
+   "files": [
+    "assets/js/mascot.js",
+    "assets/js/mascot-loader.js",
+    "template-parts/skyy-mascot.php",
+    "inc/performance.php",
+    "functions.php",
+    "scripts/test-performance.php",
+    "scripts/validate-collection-hero-motion.py",
+    "assets/js/theme.js",
+    "assets/css/immersive.css",
+    "template-parts/immersive/world.php",
+    "inc/collection-presentation.php",
+    "template-parts/collections/world.php",
+    "woocommerce/single-product.php",
+    "assets/css/product-page.css",
+    "template-parts/v2-about.php",
+    "assets/css/about-archive.css",
+    "template-parts/collections/arrival.php",
+    "template-parts/commerce/product-hero.php",
+    "readme.txt",
+    "scripts/verify-v2-candidate.sh",
+    "assets/css/global-shell.css",
+    "front-page.php",
+    "page-lookbook.php",
+    "tools/v2-runtime/build-archive-style-bundle.cjs",
+    "tools/v2-runtime/test-archive-style-bundle.cjs",
+    "tools/v2-source-certification/package-boundary.json",
+    "tools/v2-theme-preview.php",
+    "DESIGN-CONTRACT.html"
+   ],
+   "result": "Red-team round-1 fixes applied and re-gated: build rc=0, check:assets/commerce-scenes/lint:php rc=0, verify rc=0 (marketplace verification passed), 38/38 PHP+JS test files, 17/17 python certification, package:theme rc=0 → dist/skyyrose-flagship-2.zip sha256 26340f1b7bb2492b39cd228610b5b8edf2851200c7b304d27101bbf9904f963f, 572 files. Eyes-on probes [repro]: dock walk→wave→idle→rest at 1440 and 390; kids closing scene intact at 390; 4 About frames; Cinzel only via engraved class; checkout has no dock. [test][repro]",
+   "scope": "local build + fixture"
+  },
+  {
+   "ts": "2026-09-23T01:12:00Z",
+   "type": "issues_recorded",
+   "by": "Agent A",
+   "surface": "founder decisions",
+   "note": "Open for Corey (no agent action): ISS-020 BR-004 media record vs registry; retire assets/models/skyy-mascot.glb (6.06 MB, unreferenced since 2.5.0) — needs y; About eyebrow 'Four Worlds / One Bloodline' (founder-era copy; 'bloodline' is Love Hurts vocabulary); --sr2-font-index resolves to a system monospace outside the type canon (pre-existing, footprint widened by the redesign); no #DC143C fill token (Love Hurts fills use #eb4666); CLAUDE.md §6 still cites Archivo 'wdth' 125 which the instanced font cannot resolve; Skyy_Exit clip is byte-identical to Skyy_Walk (asset request); the dock's resting poster (skyy-runtime-poster.webp) is an A-pose rig render — recapture from the idle pose or use the canonical 2D; scripts/verify-v2-candidate.sh still fails first on a pre-existing needle ('global header animation adapter') and needs retiring or repair; skyyrose2_render_black_rose_jersey_series() is pre-existing dead code holding a founder-review-candidate <video>; staging deploy engine (scripts/deploy-theme.sh) refuses V2 sources until PR #918 lands. Note for reviewers: the Skyy natural-motion rig is Draco + WebP (no meshopt) — the 'draco corrupts skinning' rule belongs to the child character rig, not Skyy."
+  },
+  {
+   "ts": "2026-09-23T02:05:00Z",
+   "type": "fix",
+   "by": "Agent A",
+   "surface": "whole theme",
+   "ref": "ISS-021..ISS-028",
+   "files": [
+    "home.php",
+    "index.php",
+    "archive.php",
+    "assets/js/mascot.js",
+    "scripts/validate-collection-hero-motion.py",
+    "assets/css/product-page.css",
+    "npm-shrinkwrap.json",
+    "functions.php",
+    "template-parts/home/editorial-film.php",
+    "assets/sot/images/home/on-model/kids-capsule-kids-001-512w.webp"
+   ],
+   "result": "Red-team round-2 fixes (5 confirmed findings + 3 cheap note fixes) applied and re-gated: build rc=0, check:assets/commerce-scenes/lint:php rc=0, verify rc=0, 38/38 PHP+JS test files, 17/17 python certification, package:theme rc=0 → dist/skyyrose-flagship-2.zip sha256 b61cdd82a976998614a72f9750561b58b366729b645ff6bbb790f01787a0940a, 573 files. Negative probes [repro]: hero-motion validator now rejects an uppercase <VIDEO> in an unlisted template. [test][repro]",
+   "scope": "local build"
+  },
+  {
+   "ts": "2026-09-23T02:07:00Z",
+   "type": "correction",
+   "by": "Agent A",
+   "surface": "process",
+   "note": "Both red-team workflow runs hit account-wide 'out of usage credits' partway through (round 1: 75/83 agents errored; round 2 resumed with 2 unanimous lenses and still lost 95/136 verifier agents, though the finder pass completed 8/8 dimensions both times). Confirmed findings from partial verification were still acted on; unverified 'notes' were triaged manually against the code before deciding to fix (Cinzel scoping, shrinkwrap version, GLB hashing) or defer. No further large-fleet workflow runs planned for this task; remaining verification proceeds through direct reads and targeted probes."
+  }
+ ],
+ "issues": [
+  {
+   "id": "ISS-001",
+   "fingerprint": "home::controls never cover a garment",
+   "surface": "home",
+   "invariant": "controls never cover a garment",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (eyes-on capture)",
+   "observation": "1440 film band: 'Pause product film' toggle floated over the fourth on-model card (evidence/home/home-1440-s02.png, first capture).",
+   "occurrences": 1,
+   "resolution": "home-page.css: enhanced strip reserves a lane above the cards; loop mask fades over 3% so the toggle sits in the opaque zone. Re-captured clean.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-002",
+   "fingerprint": "home::one dominant focal point per view; no clipped copy",
+   "surface": "home",
+   "invariant": "one dominant focal point per view; no clipped copy",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (eyes-on capture)",
+   "observation": "1440 worlds band: rail added a second page gutter inside .sr2-band (image at x=115) and the 94%-basis rail exposed the next slide's chapter copy as clipped text at the right edge (home-1440-s13.png).",
+   "occurrences": 1,
+   "resolution": "home-page.css: rail padding-inline/scroll-padding-inline 0 inside .sr2-editorial-worlds; .sr2-recovery-home-world flex-basis 100% (one world per view, arrows navigate). Gutter re-captured clean; one-per-view pending final home capture.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-003",
+   "fingerprint": "shell::no-JS visitor can scroll and reach the page",
+   "surface": "shell",
+   "invariant": "no-JS visitor can scroll and reach the page",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (eyes-on capture)",
+   "observation": "No-JS probe (wheel input, javaScriptEnabled=false): frames s01≡s04≡s06 at 1440 and 390 — the (scripting:none) directory kept overflow-y:auto + overscroll-behavior:contain from the base rule and swallowed wheel input.",
+   "occurrences": 1,
+   "resolution": "global-shell.css (scripting:none): .sr2-house-nav overflow:visible; overscroll-behavior:auto. Probe re-run: s01/s04/s08 hashes differ at both widths (SCROLLS).",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-004",
+   "fingerprint": "shop::no wasted high-priority fetch",
+   "surface": "shop",
+   "invariant": "no wasted high-priority fetch",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (eyes-on capture)",
+   "observation": "inc/performance.php preloaded the portal frame on shop/taxonomy routes although every card caller now passes frame=>false (Agent C report).",
+   "occurrences": 1,
+   "resolution": "skyyrose2_performance_archive_front_preload(): hint follows skyyrose2_approved_card_front() card_src/srcset with skyyrose2_shop_card_sizes(); first visible product owns the hint or none. tools/v2-runtime/test-archive-preload.php updated: PASS (15 exclusion cases + garment-front assertions).",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-005",
+   "fingerprint": "collections::one mark rendered once per frame",
+   "surface": "collection arrivals (signature, black-rose, love-hurts)",
+   "invariant": "the collection lockup is never laid over a scene that already spells the same name",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent B (flagged open in handoff); confirmed by Agent A eyes-on (evidence/collections/signature-1440-reduced.png)",
+   "observation": "The gold lockup image sat directly over the monument's own bronze 'The Skyy Rose Collection' lettering at 1440; same pattern on BR and LH.",
+   "occurrences": 1,
+   "resolution": "world.php presentations: title_in_scene=true for SIG/BR/LH; arrival.php renders the lockup lazy and collection-world.css hides it from 48em (monument is the title; h1 keeps the sr-only name). Below 48em the mobile crop carries no lettering, so the lockup stays the visible title. Probe: 1440 → 0 lockup requests, display none; 390 → fetched, 256×86 visible. Kids Capsule unchanged (its scene lettering is 'The Heir / Next Up').",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-006",
+   "fingerprint": "shop-archive::projection within 32768 B and owner-complete",
+   "surface": "shop, product taxonomy archives",
+   "invariant": "the Shop archive receives exactly the theme.css rules it composes, inside the 32,768 B inline ceiling",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (npm run verify, scripts/test-performance.php:230)",
+   "observation": "Redesign primitives owned by worlds/pages (.sr2-arrival, .sr2-chapter, .sr2-page-grid, lists, wishlist, track-order) were unknown to the projection classifier and preserved by its fail-open default; archive-theme.min.css 33,215 B > 32,768 B.",
+   "occurrences": 1,
+   "resolution": "GROUPS/CONSUMERS extended (editorialWorlds + content/transactions); projection 26,637 B sha256 ec28606c…5953a. Node tests 7/7 pin archive primitives unowned and new families owned. Fixture Shop DOM probe: 43/43 theme.css classes present in projection (probe fail-able). verify rc=0. bug-365.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-007",
+   "fingerprint": "pdp::runtime plural retained through pot build",
+   "surface": "product",
+   "invariant": "the theme keeps a live _n() plural and the pot build renders it",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (unittest discover, CI form)",
+   "observation": "PDP rework removed the only _n() call ('%d published view'); test_i18n KeyError; pot had 0 plural records.",
+   "occurrences": 1,
+   "resolution": "#sr2-product-views aria-label = sprintf(_n('%d published view','%d published views',$gallery_count)); test_i18n 4/4 unchanged; pot 1 plural record; phpcs on product-hero.php 16→4 errors vs pristine. bug-366.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-008",
+   "fingerprint": "skyy::dock never shields page content",
+   "surface": "every non-checkout route",
+   "invariant": "Skyy's dock never occludes or click-shields copy or commerce controls once her greeting is over",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "Fixed dock character (160×248; 96×148 compact) stayed pointer-active over the About h1 at 1440 and the PDP title/price at 390 indefinitely (skyy-runtime finder, [repro]); Agent G's commerce pass found no overlap only because its routes ran without &skyy=1.",
+   "occurrences": 1,
+   "resolution": "mascot.js: after the greeting settles (idle) — or immediately for a static-only presence — a rest timer (data-rest-after=9000 on #skyy-hero-stage) hides the character and shows the recall pill; hover/focus on the dock cancels it; recall reopens the dialog. Probe [repro]: 1440 About walk 9 s → wave → idle 16 s → rested 25 s, pill 126×44, overlap 0; 390 BR-004 PDP walk 6 s → idle 12 s → rested 20 s. Rest never pre-empts the walk-on (guarded to idle or static-only). bug-367.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-009",
+   "fingerprint": "skyy::unprompted 3D load respects network and device",
+   "surface": "every non-checkout route",
+   "invariant": "the automatic walk-in (2.4–3.3 MB three.js+Draco+GLB) is gated on network and device; visitor intent stays ungated",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "mascot-loader.js armed autoWalk 4.5 s after load with only Save-Data/reduced-motion as gates.",
+   "occurrences": 1,
+   "resolution": "networkAllowsAutoWalk(): skip when connection.saveData, effectiveType !== '4g', or deviceMemory < 4; autoWalk scheduled through requestIdleCallback(timeout 2000). Pointer/focus intent paths unchanged. bug-368.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-010",
+   "fingerprint": "collections::preload names the rendered tier",
+   "surface": "signature, black-rose, love-hurts, kids-capsule, collections, contact",
+   "invariant": "every preload hint names an image the route renders at that viewport",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "Collection arrivals preloaded a srcset/100vw hint the new <picture> ignores (wrong tier at high priority on phones); /collections/ preloaded the retired yacht hero; /contact/ preloaded an atelier scene the redesigned template never renders.",
+   "occurrences": 1,
+   "resolution": "inc/performance.php: collection routes use skyyrose2_performance_art_directed_preloads(hero, hero_tablet, hero_mobile) matching arrival.php's breakpoints; collections index preloads the first world's tiers; contact entry removed; orphaned skyyrose2_collection_arrival_media() deleted; scripts/test-performance.php pins the three-tier contract (PASS). Kids arrival lockup is eager, not fetchpriority=high (one high-priority image per route). bug-369.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-011",
+   "fingerprint": "gates::hero-motion validator fails closed on any video emitter",
+   "surface": "verify",
+   "invariant": "no PHP template can emit <video> outside an approved motion resolver, and runtime guards are checked on the LIVE controller",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "validate-collection-hero-motion.py checked a substring in arrival.php only and read runtime guards from theme.js's dead [data-scene-motion] controller (its only emitter was removed in 2.5.0).",
+   "occurrences": 1,
+   "resolution": "Validator now allow-lists every runtime <video> emitter with its resolver (arrival/editorial-hero/lookbook → skyyrose2_collection_hero_motion; hero-composed-scene → skyyrose2_approved_scroll_world_scene; functions.php house film) and fails on any other emitter (negative probe: rogue template → ValueError [repro]); CONTROLLER = assets/js/visual-recovery.js with guards failVideo / prefers-reduced-motion / navigator.connection / IntersectionObserver. Dead theme.js controller (107 lines) removed. bug-370.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-012",
+   "fingerprint": "brand::Cinzel only on engraved eyebrows",
+   "surface": "immersive worlds",
+   "invariant": "Cinzel renders only through .sr2-eyebrow--engraved",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "immersive.css set var(--sr2-font-caps) on .sr2-immersive__chapter-mark and the chapter-nav numerals without the engraved class.",
+   "occurrences": 1,
+   "resolution": "world.php chapter mark and numerals carry sr2-eyebrow sr2-eyebrow--engraved; immersive.css only sizes/places them. Probe [repro]: computed Cinzel outside engraved = [].",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-013",
+   "fingerprint": "pdp::closing scene crops on the collection focal",
+   "surface": "product (kids-capsule)",
+   "invariant": "the PDP closing world chapter uses the collection's focal points so baked lettering survives the 3:2 phone crop",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "single-product.php closing figure had no --sr2-focal; Kids 'The Heir' lettering cropped at 390.",
+   "occurrences": 1,
+   "resolution": "New inc/collection-presentation.php (skyyrose2_collection_presentation) shared by world.php and single-product.php; figure emits --sr2-focal-desktop/--sr2-focal-mobile; product-page.css scopes them. Probe [repro]: kids-001 390 closing scene shows 'The Heir' and 'Next Up' intact.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-014",
+   "fingerprint": "about::founder heading matches what renders",
+   "surface": "about",
+   "invariant": "'The V1 lookbook, carried forward.' labels lookbook imagery, not a text list",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "Agent D's recomposition dropped the four lookbook <picture> frames but kept the founder heading.",
+   "occurrences": 1,
+   "resolution": "v2-about.php renders the four V1 lookbook frames (Signature, Black Rose, Love Hurts, Kids; same assets page-lookbook.php serves) in a row of four (two-up on phones) under the index list; about-archive.css owns the grid. Probe [repro]: 4/4 frames load 310×387 at 1440.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-015",
+   "fingerprint": "release::package carries only runtime source and truthful reasons",
+   "surface": "package",
+   "invariant": "the release boundary ships no fixture markup and every reason is true",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "template-parts/v2-commerce-preview.php (local-only fixture with fake login/checkout forms, consumed only by tools/v2-theme-preview.php) shipped as RUNTIME SOURCE; skyy-mascot.glb's reason claimed a fallback nothing references.",
+   "occurrences": 1,
+   "resolution": "package-boundary.json: v2-commerce-preview.php → AUTHORING SOURCE, release=false; skyy-mascot.glb reason → founder-retained legacy rig pending the founder's y. Package 572 files (readme/changelog added, preview dropped).",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-016",
+   "fingerprint": "release::readme changelog matches the stable tag",
+   "surface": "package",
+   "invariant": "readme.txt carries a changelog block for the Stable tag",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "Stable tag 2.5.0 with a changelog ending at 2.4.0.",
+   "occurrences": 1,
+   "resolution": "= 2.5.0 = block added mirroring CHANGELOG.md.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-017",
+   "fingerprint": "i18n::placeholders carry translators comments",
+   "surface": "product",
+   "invariant": "every sprintf(__()) placeholder has a translators comment",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "product-hero.php 'More from %s' and single-product.php 'Enter %s' lacked comments.",
+   "occurrences": 1,
+   "resolution": "Comments added; pot rebuilt.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-018",
+   "fingerprint": "fixture::preview proves production gates and facts",
+   "surface": "fixture (not shipped)",
+   "invariant": "the preview fixture stubs is_checkout/is_cart and shows registry-projection names, prices and pre-order state",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "No is_checkout() stub (dock rendered on checkout&skyy=1); every product stubbed as $128.00 with invented names; wishlist mapped to page.php.",
+   "occurrences": 1,
+   "resolution": "tools/v2-theme-preview.php: is_checkout/is_cart stubs (dock, loader and mascot.css off on checkout [repro]); WC_Product stubs read wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv (the registry's projection) for name/price/is_preorder — SG-005 $25.00, LH-004 $265.00 [repro]; wishlist → page-wishlist.php.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-019",
+   "fingerprint": "shop::projection completeness and inline allowance are gated",
+   "surface": "shop",
+   "invariant": "a committed test proves every theme.css class the Shop templates render survives the projection, and the seven-sheet inline total stays ≤ 100,000 B",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent A (Ultracode static red team round 1: 7 finders, 38 findings; verification re-run on the fixed tree)",
+   "observation": "Coverage rested on an ad-hoc probe; the 99,297 B inline total had 703 B headroom with no gate.",
+   "occurrences": 1,
+   "resolution": "test-archive-style-bundle.cjs: Shop-DOM coverage test (fail-able on .sr2-chapter) + allowance test; builder asserts inlineTotal ≤ 100,000 (warns > 96,000). 9/9 node tests.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-020",
+   "fingerprint": "product::BR-004 media record contradicts the registry",
+   "surface": "product (br-004)",
+   "invariant": "product facts live only in logo-registry.json; consumers never author a second description",
+   "first_seen": "2026-09-22",
+   "seen_by": "Agent G (commerce evidence pass, eyes-on vs registry)",
+   "observation": "data/opening-product-media.json br-004 REJECTED_AUTHENTICITY reason describes a garment (wearer-left chest mark, forearm artwork, floral hood lining, white drawstrings) that contradicts the registry record (centre-chest cloud cluster, tonal black); the served approved styling view matches the REGISTRY (Agent G, eyes-on).",
+   "occurrences": 1,
+   "resolution": "FOUNDER DECISION: Corey confirms which BR-004 specification is current; the stale rejection text is then corrected or the record retired. No code change; page currently follows the registry.",
+   "state": "NEEDS_REVIEW"
+  },
+  {
+   "id": "ISS-021",
+   "fingerprint": "release::every require_once/get_template_part target is tracked before commit",
+   "surface": "release",
+   "invariant": "no theme route depends on an untracked file",
+   "first_seen": "2026-09-23",
+   "seen_by": "Agent A (Ultracode static red team round 2, resumed: 8/8 finders, partial verification due to two account-wide credit exhaustions mid-run)",
+   "observation": "Six 2.5.0 files (inc/collection-presentation.php — hard require_once at functions.php:25 — plus editorial-film.php, collections/chapters.php, collections/index.php, pages/contact.php, pages/journal-entry.php) were still '??' in git status; a git add -u / commit -a would fatal every route.",
+   "occurrences": 1,
+   "resolution": "Tracked in the same commit that ships this round (git add). No code change; recorded so the reconciliation step never lets this recur silently.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-022",
+   "fingerprint": "a11y::named list regions use a role ARIA permits",
+   "surface": "journal (home, index, archive)",
+   "invariant": "aria-label only appears on an element whose role accepts a name",
+   "first_seen": "2026-09-23",
+   "seen_by": "Agent A (Ultracode static red team round 2, resumed: 8/8 finders, partial verification due to two account-wide credit exhaustions mid-run)",
+   "observation": "home.php put aria-label on a bare <div> (generic role — aria-label is prohibited on it per WAI-ARIA 1.2); index.php and archive.php had no landmark at all, unlike origin/main's <section aria-label>.",
+   "occurrences": 1,
+   "resolution": "All three journal lists are role=\"region\" aria-label=\"Journal entries\" (home.php:21, index.php:20, archive.php:15). bug-371.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-023",
+   "fingerprint": "skyy::dialog close returns focus without relying on beforetoggle",
+   "surface": "Skyy chat dialog",
+   "invariant": "closing Ask Skyy hands focus back to its real opener on every engine, not only ones firing dialog beforetoggle",
+   "first_seen": "2026-09-23",
+   "seen_by": "Agent A (Ultracode static red team round 2, resumed: 8/8 finders, partial verification due to two account-wide credit exhaustions mid-run)",
+   "observation": "mascot.js close() depended on the beforetoggle event to reparent the stage into the dock before theme.js's overlay lifecycle restored focus; an engine without it strands the opener inside the closed dialog and focus falls back to the header menu.",
+   "occurrences": 1,
+   "resolution": "close() now reparents the stage into the dock synchronously, before dialog.close(), regardless of beforetoggle support; the beforetoggle handler stays as a now-redundant fast path (its own guard makes it a safe no-op). bug-372.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-024",
+   "fingerprint": "home::on-model film cards ship comparable bytes",
+   "surface": "home (on-model film band)",
+   "invariant": "every card in the film band ships a tier sized for its ~320px slot",
+   "first_seen": "2026-09-23",
+   "seen_by": "Agent A (Ultracode static red team round 2, resumed: 8/8 finders, partial verification due to two account-wide credit exhaustions mid-run)",
+   "observation": "sg-005/br-004/lh-004 used 512×768 tiers (37–63 KB); kids-001 shipped its 1024×1536 original (193,008 B, 3–5× its neighbours) because no 512w tier existed.",
+   "occurrences": 1,
+   "resolution": "New assets/sot/images/home/on-model/kids-capsule-kids-001-512w.webp (512×768, 57,706 B) generated from the same approved on-model source via ImageMagick Lanczos resize; editorial-film.php now points at it. bug-373.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-025",
+   "fingerprint": "gates::hero-motion validator resists case and false-token bypasses",
+   "surface": "verify",
+   "invariant": "the video-emitter allowlist can't be defeated by tag case or a token merely present in the file",
+   "first_seen": "2026-09-23",
+   "seen_by": "Agent A (Ultracode static red team round 2, resumed: 8/8 finders, partial verification due to two account-wide credit exhaustions mid-run)",
+   "observation": "The allowlist added for ISS-011 matched only the lowercase substring '<video' and treated any occurrence of the resolver token as proof of wiring, so an uppercase <VIDEO> tag in an unlisted template, or a resolver token present without a real assignment, would still pass.",
+   "occurrences": 1,
+   "resolution": "Detection is now case-insensitive (re.search on <\\s*video\\b, IGNORECASE); a callable resolver token additionally requires a $var = token( assignment in its resolver file. Negative-probed: an uppercase <VIDEO> in an unlisted template now raises ValueError; the real tree still passes. Residual gap (documented, not fixed): a regex can't distinguish an active call from one inside a PHP comment — accepted, out of scope for a static gate. bug-374.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-026",
+   "fingerprint": "brand::size-guide Cinzel scoped to the engraved eyebrow class",
+   "surface": "product (size guide dialog)",
+   "invariant": "every Cinzel rule targets .sr2-eyebrow--engraved, never the bare .sr2-eyebrow family",
+   "first_seen": "2026-09-23",
+   "seen_by": "Agent A (Ultracode static red team round 2, resumed: 8/8 finders, partial verification due to two account-wide credit exhaustions mid-run)",
+   "observation": "product-page.css styled .sr2-size-guide-dialog__steps .sr2-eyebrow with Cinzel; correct today only because every markup instance also carries --engraved, so the selector was a latent trap for the next non-engraved eyebrow.",
+   "occurrences": 1,
+   "resolution": "Selector renamed to .sr2-size-guide-dialog__steps .sr2-eyebrow--engraved.",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-027",
+   "fingerprint": "release::npm-shrinkwrap.json root version matches package.json",
+   "surface": "package",
+   "invariant": "the shrinkwrap's own package version is the shipped version",
+   "first_seen": "2026-09-23",
+   "seen_by": "Agent A (Ultracode static red team round 2, resumed: 8/8 finders, partial verification due to two account-wide credit exhaustions mid-run)",
+   "observation": "npm-shrinkwrap.json's two root \"version\" fields still read 2.4.4 after package.json was bumped to 2.5.0.",
+   "occurrences": 1,
+   "resolution": "Both root version fields bumped to 2.5.0 (dependency graph untouched).",
+   "state": "RESOLVED"
+  },
+  {
+   "id": "ISS-028",
+   "fingerprint": "performance::asset-version cache-bust avoids per-request GLB hashing",
+   "surface": "Skyy runtime (every non-checkout route)",
+   "invariant": "the cache-bust token for a binary asset costs O(1) I/O per request, not O(file size)",
+   "first_seen": "2026-09-23",
+   "seen_by": "Agent A (Ultracode static red team round 2, resumed: 8/8 finders, partial verification due to two account-wide credit exhaustions mid-run)",
+   "observation": "skyyrose2_asset_version() ran hash_file('sha256', …) on the full file on every request with no cross-request cache; the Skyy dock alone pulls 3.3 MB across two GLBs, so every page load paid a full-file SHA-256 read.",
+   "occurrences": 1,
+   "resolution": "Binaries over 256 KB now version on filemtime()+filesize() (sha1 of the pair, 12-char prefix) instead of hashing file contents; smaller assets (CSS/JS) keep content hashing. Cache still busts correctly on any real file replace.",
+   "state": "RESOLVED"
+  }
+ ],
+ "state": "IN_PROGRESS"
+}

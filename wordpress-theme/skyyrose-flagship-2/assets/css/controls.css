@@ -5,11 +5,11 @@
 	min-height: var(--sr2-control-size);
 	padding: var(--sr2-control-padding);
 	border-radius: var(--sr2-radius-control);
-	font-family: var(--sr2-font-ui);
-	font-size: var(--sr2-type-utility);
-	font-weight: 400;
+	font-family: var(--sr2-font-body);
+	font-size: 0.75rem;
+	font-weight: 500;
 	line-height: var(--sr2-leading-utility);
-	letter-spacing: var(--sr2-tracking-utility);
+	letter-spacing: 0.14em;
 	text-transform: uppercase;
 	white-space: normal;
 	text-align: center;

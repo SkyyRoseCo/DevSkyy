@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SKYYROSE2_VERSION', '2.4.4' );
+define( 'SKYYROSE2_VERSION', '2.5.0' );
 define( 'SKYYROSE2_DIR', get_template_directory() );
 define( 'SKYYROSE2_URI', get_template_directory_uri() );
 
@@ -22,6 +22,7 @@ require_once SKYYROSE2_DIR . '/inc/approved-card-fronts.php';
 require_once SKYYROSE2_DIR . '/inc/pdp-media-delivery.php';
 require_once SKYYROSE2_DIR . '/inc/hero-commerce-scenes.php';
 require_once SKYYROSE2_DIR . '/inc/global-shell.php';
+require_once SKYYROSE2_DIR . '/inc/collection-presentation.php';
 require_once SKYYROSE2_DIR . '/inc/shop-archive.php';
 require_once SKYYROSE2_DIR . '/inc/quick-view-commerce.php';
 require_once SKYYROSE2_DIR . '/inc/critical-rendering.php';
@@ -338,6 +339,17 @@ function skyyrose2_asset_version( $relative_path ) {
 		return SKYYROSE2_VERSION;
 	}
 
+	// Large binaries (GLBs, video) bust the cache on mtime + size instead of a full-file
+	// hash: the Skyy dock alone pulls 3.3 MB of model data on every non-checkout request,
+	// and hashing it per request is real CPU/I-O for a token that only needs to change
+	// when the file is actually replaced.
+	$size = filesize( $path );
+	if ( false !== $size && $size > 262144 ) {
+		$mtime = filemtime( $path );
+		$versions[ $relative_path ] = $mtime ? SKYYROSE2_VERSION . '-' . substr( sha1( $mtime . ':' . $size ), 0, 12 ) : SKYYROSE2_VERSION;
+		return $versions[ $relative_path ];
+	}
+
 	$hash = hash_file( 'sha256', $path );
 	$versions[ $relative_path ] = $hash ? SKYYROSE2_VERSION . '-' . substr( $hash, 0, 12 ) : SKYYROSE2_VERSION;
 
@@ -507,9 +519,10 @@ JS
 			'skyyrose2-mascot-loader',
 			'SKYY_3D_CONFIG',
 			array(
-				'modelUrl'    => add_query_arg( 'ver', skyyrose2_asset_version( '/assets/models/skyy-mascot.glb' ), SKYYROSE2_URI . '/assets/models/skyy-mascot.glb' ),
-				'decoderPath' => SKYYROSE2_URI . '/assets/js/lib/draco/',
-				'moduleBase'  => SKYYROSE2_URI . '/assets/js/lib/three-r170/',
+				'modelUrl'       => add_query_arg( 'ver', skyyrose2_asset_version( '/assets/models/skyy-natural-desktop.glb' ), SKYYROSE2_URI . '/assets/models/skyy-natural-desktop.glb' ),
+				'mobileModelUrl' => add_query_arg( 'ver', skyyrose2_asset_version( '/assets/models/skyy-natural-mobile.glb' ), SKYYROSE2_URI . '/assets/models/skyy-natural-mobile.glb' ),
+				'decoderPath'    => SKYYROSE2_URI . '/assets/js/lib/draco/',
+				'moduleBase'     => SKYYROSE2_URI . '/assets/js/lib/three-r170/',
 			)
 		);
 		wp_localize_script( 'skyyrose2-mascot-loader', 'SKYY_GUIDE_DATA', skyyrose2_concierge_guide() );
@@ -1703,50 +1716,9 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 	<?php
 }
 
-/** Render collection runway with accessible native horizontal scroll. */
-function skyyrose2_render_collection_rail() {
-	$collections = skyyrose2_collections();
-	?>
-	<section class="sr2-worlds" aria-labelledby="sr2-worlds-title" data-horizontal-world>
-		<header class="sr2-section-head sr2-section-head--split">
-			<div><p><?php esc_html_e( 'Choose Your World', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-worlds-title"><?php esc_html_e( 'Four stories. One house.', 'skyyrose-flagship-2' ); ?></h2></div>
-			<div class="sr2-rail-controls"><button type="button" data-rail-prev aria-label="<?php esc_attr_e( 'Previous collection', 'skyyrose-flagship-2' ); ?>">←</button><span data-rail-count>01 / 04</span><button type="button" data-rail-next aria-label="<?php esc_attr_e( 'Next collection', 'skyyrose-flagship-2' ); ?>">→</button></div>
-		</header>
-		<div class="sr2-worlds__stage" data-scroll-world-stage>
-		<div class="sr2-worlds__rail" tabindex="0" aria-label="<?php esc_attr_e( 'Collection worlds. Scroll horizontally.', 'skyyrose-flagship-2' ); ?>" data-horizontal-rail>
-			<?php foreach ( $collections as $index => $collection ) : ?>
-				<?php
-				if ( isset( $collection['portrait_source'] ) && 'scroll-world' === $collection['portrait_source'] ) {
-					$portrait_uri = skyyrose2_scroll_world_asset_uri( $collection['portrait'] );
-				} else {
-					$portrait_uri = skyyrose2_sot_asset_uri( $collection['portrait'] );
-				}
-				?>
-				<a class="sr2-world" data-collection="<?php echo esc_attr( $index ); ?>" href="<?php echo esc_url( skyyrose2_collection_url( $index ) ); ?>">
-					<img src="<?php echo esc_url( $portrait_uri ); ?>" alt="" width="1920" height="1275" loading="<?php echo 0 === array_search( $index, array_keys( $collections ), true ) ? 'eager' : 'lazy'; ?>" decoding="async">
-					<span class="sr2-world__shade" aria-hidden="true"></span>
-					<span class="sr2-world__copy"><small><?php echo esc_html( sprintf( '%02d · %s', array_search( $index, array_keys( $collections ), true ) + 1, $collection['kicker'] ) ); ?></small><strong><?php echo esc_html( $collection['name'] ); ?></strong><em><?php echo esc_html( $collection['line'] ); ?></em><b><?php esc_html_e( 'Enter world', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></b></span>
-				</a>
-			<?php endforeach; ?>
-		</div>
-		<div class="sr2-rail-progress" aria-hidden="true"><span data-rail-progress></span></div>
-		</div>
-	</section>
-	<?php
-}
-
 /** Explicit rollout boundary shared by template and asset consumers. */
 function skyyrose2_collection_world_enabled( $slug ) {
 	return in_array( $slug, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true );
-}
-
-/** Matching responsive delivery for the static collection arrival and its preload. */
-function skyyrose2_collection_arrival_media( $collection ) {
-	return array(
-		'src' => skyyrose2_sot_asset_uri( $collection['hero'] ),
-		'srcset' => implode( ', ', array( skyyrose2_sot_asset_uri( $collection['hero_mobile'] ) . ' 640w', skyyrose2_sot_asset_uri( $collection['hero_tablet'] ) . ' 1024w', skyyrose2_sot_asset_uri( $collection['hero'] ) . ' 1440w' ) ),
-		'sizes' => '100vw',
-	);
 }
 
 /** One exact collection-route predicate shared by templates and asset delivery. */

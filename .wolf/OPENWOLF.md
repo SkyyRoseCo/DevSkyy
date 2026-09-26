@@ -150,7 +150,13 @@ collide with.
 It went wrong twice before the fix: bug-348/349 were first issued as 339/340,
 and bug-353 was issued for a second, unrelated defect while `main`'s bug-353
 was an SSRF-fixture bug — a citation in `docs/engineering-learnings.md` then
-pointed at the wrong entry.
+pointed at the wrong entry. **Resolved 2026-09-21: the published id wins**, so
+`bug-353` stays the SSRF-fixture bug and the later, unpublished entry was
+renumbered to **bug-359**, with the three entries that referenced it repointed.
+The same tree had also dropped bug-339..347, which are published — committing
+it would have deleted them from `main`; they were restored in the same repair.
+That rule generalises: when two trees disagree about an id, the one already on
+`main` keeps it.
 
 The manual-edit fallback below is still unpoliceable from inside the allocator,
 so `tests/test_buglog_published_ids.py` is the backstop: it fails if this tree

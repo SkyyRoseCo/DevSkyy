@@ -2,6 +2,35 @@
 
 All notable changes to SkyyRose Flagship 2 are documented here.
 
+## 2.5.0 — Whole-site editorial redesign — 2026-09-22
+
+- Every route now follows one composition: a full-bleed cinematic arrival with a
+  single focal point, editorial chapters (16:9 scene → copy/commerce band, 3:2 on
+  phones), then a quiet colophon. Shared primitives (`.sr2-arrival`,
+  `.sr2-chapter`, `.sr2-band`, `.sr2-title-*`, `.sr2-lede`, `.sr2-editorial-link`)
+  live in `theme.css`; page sheets compose them.
+- Shell: header drops to 64px with a smaller mark and Hanken links, floats over
+  cinematic arrivals until scroll; Cinzel is reserved for engraved index labels;
+  controls and WooCommerce buttons move to Hanken; footer wordmark is type, not
+  Cinzel.
+- Home: Bay Bridge arrival (founder-approved motion, wordmark low-left, one
+  primary action, four-world index strip), on-model film band (SG-005, BR-004,
+  LH-004, KIDS-001), four collection chapters with the approved monument scenes
+  and unframed garment cards, the worlds rail on an open band, founder portrait
+  kept as a portrait, journal films at native 16:9. `editorial-product-edit.php`
+  removed. Critical CSS rebuilt from the new hero (13.3 KB of the 16 KB budget).
+- Skyy (founder direction 2026-09-22): the header and menu carry no mascot. Skyy
+  mounts in a footer-rendered walk-on dock on every non-checkout route and is the
+  chat entry; a recall pill appears only after dismissal. Natural-motion rig
+  tiers ship (`skyy-natural-desktop.glb` 2.1 MB / `skyy-natural-mobile.glb`
+  1.2 MB; clips Idle/Walk/Talk/Joy/Exit/Wave) via `SKYY_3D_CONFIG.mobileModelUrl`.
+  The previous `skyy-mascot.glb` remains in the tree pending founder removal.
+- Shop, product, collection, immersive, cart/checkout/account and content pages
+  recomposed to the same system; product cards accept `'frame' => false` and
+  grids ship without portal frames.
+- Tests: shell contract asserts the dock instead of the header pin; critical
+  rendering pin moves from `.sr2-archive-scene__concierge` to `.sr2-arrival`.
+
 ## Unreleased — Home critical rendering repair — 2026-09-07
 
 - Home inlines a source-derived structural critical contract

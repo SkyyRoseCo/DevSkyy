@@ -829,3 +829,15 @@ Facts [live 2026-09-18]: production `skyyrose.co` serves Flagship 2 v2.3.1 insid
 - [x] `.env.wordpress.staging` `SFTP_*` added as literal copies of its `SSH_*` (founder request 2026-09-19); `dt_validate_env_file staging` passes
 - [ ] Founder: `deploy-pipeline.sh` / `deploy-holo-cards.sh` build V1 then deploy V2 via the wrapper (pipeline build step already fails: V1 folder has no package.json) — repoint the build, or delete both scripts (deletion needs y)
 - [ ] Follow-up (separate): land PR #918's V2 deploy support on main
+
+## V2 whole-site redesign — codex/v2-whole-site-rework-20260922 (2026-09-22)
+
+- [x] Read HANDOFF.md + baseline evidence; confirm pristine build is a no-op; map pinned tests, JS hooks, critical-CSS contract, packaging boundary
+- [x] Write DESIGN-CONTRACT.html + task-ledger.json (fashion-e2e strict ledger)
+- [x] Phase 1 (A): tokens, theme.css primitives, global-shell (header/footer, Cinzel → eyebrows), controls, header mascot removal, skyy-mascot.php dock markup, functions.php (mobileModelUrl, content-page on cart/checkout), natural-motion GLBs staged in assets/models
+- [x] Phase 2 parallel: A homepage ✅ (recomposed, evidence captured, film-toggle lane fix) · B collections+immersive · C shop/PDP/card · D supporting+commerce pages · E Skyy natural motion runtime — B/C/D/E in flight
+- [x] Integrate: home.contract.json, package-boundary.json + build-inputs.json reconciliation, build → check:assets → verify → lint:php → phpcs → package:theme; version triple 2.5.0 + CHANGELOG
+- [ ] Evidence: 1440/390 captures per route (home ✅ + Lighthouse ✅; final pass F/G/H running 2026-09-22 23:50Z), reduced-motion/no-JS, console/network, keyboard, commerce journey, Lighthouse lab
+- [ ] Red team = Ultracode Workflow (independent reviewers, verdicts only) → fix material findings → re-verify
+- [ ] Commit (global identity), PR superseding PR970, pr-green-loop, merge on fresh green
+- [ ] Staging (conditional y): manifest with archive SHA/count, preserve original, remote hash verify, edge purge, fresh-browser verify, perf measurement

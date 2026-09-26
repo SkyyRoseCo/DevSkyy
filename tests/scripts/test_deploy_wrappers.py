@@ -267,9 +267,13 @@ class TestStagingWrapper:
         result = self._run_wrapper(repo, _base_env(tmp_path, []))
         assert "fake-password" not in _out(result)
 
-    def test_end_to_end_real_engine_refuses_flagship2_source_explicitly(self, tmp_path):
-        """Wrapper -> real engine: today the chain must stop at the scope guard,
-        with the explicit PR #918 message, before any transfer or SSH."""
+    def test_end_to_end_real_engine_refuses_without_v2_package_boundary(self, tmp_path):
+        """Wrapper -> real engine: the engine now supports a skyyrose-flagship-2
+        source (scope guard passes), but the V2 data/ release allowlist
+        (tools/v2-source-certification/package-boundary.json) is a separate
+        fail-closed gate -- this scratch repo doesn't have one, so the chain
+        must still stop, before any transfer or SSH, just at a later gate and
+        with a different message than the pre-support refusal."""
         repo = _scratch_repo(tmp_path, real_engine=True)
         (repo / ".env.wordpress.staging").write_text(
             _env_text(public_url=f"https://{STAGING_HOST}/", theme_folder=V2_FOLDER)
@@ -289,7 +293,10 @@ class TestStagingWrapper:
             f"TARGET staging: host {STAGING_HOST} | theme folder {V2_FOLDER} | source {V2_FOLDER}"
             in out
         )
-        assert "engine lacks skyyrose-flagship-2 support" in out
+        assert f"Engine supports source: {V2_FOLDER}" in out
+        assert "V2 package boundary unreadable or lists no releasable data/ files" in out
+        assert "tools/v2-source-certification/package-boundary.json" in out
+        assert "refusing to deploy" in out
         assert fetched_urls(env) == []
 
 

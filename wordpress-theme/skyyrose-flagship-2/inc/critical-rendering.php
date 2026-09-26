@@ -147,21 +147,21 @@ function skyyrose2_print_hero_bootstrap() {
  *
  * The @font-face declarations arrive inline with the contract, but a font
  * download only starts once text that uses the face is laid out. Preloading
- * the two faces the editorial first view sets (Cinzel title, Hanken body and
+ * the two faces the editorial first view sets (Archivo title, Hanken body and
  * controls) closes that gap so the first paint is set in the brand faces
  * instead of swapping to them a frame later.
  *
- * @return string[] File names beneath assets/sot/fonts.
+ * @return string[] Paths beneath assets, matching the CSS font-face URLs.
  */
 function skyyrose2_critical_font_files() {
-	return array( 'hanken-grotesk-latin.woff2', 'cinzel-latin.woff2' );
+	return array( 'sot/fonts/hanken-grotesk-latin.woff2', 'derived/fonts/archivo-normal-width.woff2' );
 }
 
 /**
  * Add the first-view font preloads on the front page, once per href.
  *
  * The preload href must equal the @font-face URL byte for byte or the browser
- * downloads the face twice; both resolve through skyyrose2_sot_asset_uri().
+ * downloads the face twice; both resolve beneath the same theme assets URL.
  *
  * @param array<int,mixed> $resources Existing preload records.
  * @return array<int,mixed>
@@ -179,10 +179,10 @@ function skyyrose2_critical_font_preloads( $resources ) {
 	}
 
 	foreach ( skyyrose2_critical_font_files() as $file ) {
-		if ( ! is_readable( SKYYROSE2_DIR . '/assets/sot/fonts/' . $file ) ) {
+		if ( ! is_readable( SKYYROSE2_DIR . '/assets/' . $file ) ) {
 			continue;
 		}
-		$href = skyyrose2_sot_asset_uri( 'fonts/' . $file );
+		$href = SKYYROSE2_URI . '/assets/' . $file;
 		if ( isset( $existing[ $href ] ) ) {
 			continue;
 		}

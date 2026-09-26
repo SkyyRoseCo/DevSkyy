@@ -66,8 +66,6 @@
     ".sr2-recovery-motion-toggle",
     "[data-recovery-hero-video]",
     ".is-hero-video-ready",
-    "#skyy-hero-stage",
-    ".skyy-presence-status",
     ".sr2-editorial-home",
     ".sr2-editorial-hero",
     ".sr2-editorial-hero__media",
@@ -79,7 +77,13 @@
     ".sr2-house-header__editorial-links",
     ".sr2-house-header__search",
     ".sr2-shell-links",
-    "#sr2-archive-arrival"
+    "#sr2-archive-arrival",
+    ".sr2-arrival",
+    ".sr2-arrival__media",
+    ".sr2-arrival__veil",
+    ".sr2-arrival__copy",
+    ".sr2-arrival__actions",
+    ".sr2-arrival__utility"
   ],
   "excludeSelectorPatterns": [
     ":hover",
@@ -130,7 +134,11 @@
     "^\\.sr2-archive-scene h1$",
     "^\\.sr2-editorial-hero__film",
     "^body \\.sr2-editorial-home \\.sr2-editorial-hero",
-    "\\.skyy-presence-status"
+    "\\.skyy-presence-status",
+    "\\.sr2-editorial-film",
+    "\\.sr2-chapter",
+    "\\.sr2-band",
+    "\\.skyy-dock"
   ],
   "templates": [
     {
@@ -161,14 +169,11 @@
     "sr2-archive-scene__veil": "Same element carries included sr2-editorial-hero__veil.",
     "sr2-archive-scene__copy": "Same element carries included sr2-editorial-hero__copy.",
     "sr2-archive-scene__worlds": "Same element carries included sr2-editorial-hero__world-rail.",
-    "sr2-editorial-hero__film": "The homepage stylesheet is a normal render-blocking link; this optional enhancement is absent only if that stylesheet cannot load.",
-    "sr2-editorial-hero__film-track": "The homepage stylesheet is a normal render-blocking link; this track is styled there.",
-    "sr2-editorial-hero__film-card": "The homepage stylesheet is a normal render-blocking link; original linked product cards are styled there.",
-    "sr2-editorial-hero__film-toggle": "The controller keeps this optional enhancement hidden until desktop motion is available.",
-    "skyy-presence-status": "Concierge status text remains readable if the homepage stylesheet cannot load."
+    "sr2-control--quiet": "inherits .sr2-control; the hero-scoped rule in home-page.css styles it",
+    "sr2-archive-scene__actions": "Same element carries included sr2-arrival__actions."
   },
   "fontFamilies": [
-    "Cinzel",
+    "Archivo",
     "Hanken Grotesk"
   ],
   "criticalDeclarations": {

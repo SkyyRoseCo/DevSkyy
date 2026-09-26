@@ -1,14 +1,32 @@
-/* Scoped composition cards: retain the whole garment frame at every width. */
+/* Shop-the-look scenes: the whole approved frame at every width, then a 12-column
+ * band with the chapter copy and the live product list. Hotspot coordinates depend
+ * on the frame ratio, so the frame is never cropped. */
 .sr2-world.sr2-world--hero-composed {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: auto;
   min-height: 0;
   aspect-ratio: auto;
   overflow: hidden;
-  background: #10100f;
-  color: #f4eee4;
+  isolation: isolate;
+  background: var(--sr2-void);
+  color: var(--sr2-ink);
 }
+/* Plates keep their exact ratio (hotspot coordinates depend on it); the approved collection hero
+ * sits blurred behind the frame so portrait plates read as one cinematic scene, not a letterbox. */
+.sr2-world.sr2-world--hero-composed::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--sr2-scene-backdrop, none) center / cover no-repeat var(--sr2-void);
+  filter: blur(14px) brightness(0.42) saturate(0.85);
+  transform: scale(1.06);
+  pointer-events: none;
+}
+.sr2-world--hero-composed .sr2-scene-motion-controls,
+.sr2-world--hero-composed .sr2-hero-commerce__details { position: relative; background: var(--sr2-void); }
 .sr2-hero-commerce__frame {
   position: relative;
   flex: 0 0 auto;
@@ -16,7 +34,7 @@
   margin: 0;
   aspect-ratio: 1672 / 941;
   overflow: hidden;
-  background: #10100f;
+  background: var(--sr2-void);
 }
 .sr2-hero-commerce__frame img {
   position: static;
@@ -28,53 +46,64 @@
   animation: none;
   filter: none;
 }
-.sr2-hero-commerce__details {
+/* global-shell.css:296 still carries a `body .sr2-world.sr2-world--hero-composed .sr2-hero-commerce__details`
+ * auto-fit override from an earlier repair; this sheet loads later and matches its specificity so the
+ * 12-column band wins until that shell rule is retired. */
+body .sr2-world.sr2-world--hero-composed .sr2-hero-commerce__details {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  gap: clamp(20px, 3vw, 48px);
-  padding: clamp(20px, 3vw, 42px);
-  border-top: 1px solid rgba(191, 154, 111, .3);
-  background: linear-gradient(125deg, #191714, #10100f 65%);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem) var(--sr2-grid-gap);
+  padding: clamp(2rem, 4vw, 3.5rem) var(--sr2-page-pad) clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--sr2-line);
 }
+.sr2-hero-commerce__story { display: grid; grid-column: 1 / span 5; gap: var(--sr2-space-3); align-content: start; min-width: 0; }
+.sr2-hero-commerce__story .sr2-eyebrow { margin: 0; }
 .sr2-hero-commerce__story h3 {
-  margin: 8px 0 12px;
-  font: inherit;
-  font-family: var(--font-display, Georgia, serif);
-  font-size: clamp(26px, 2.6vw, 42px);
-  line-height: 1.1;
+  margin: 0;
+  font: 650 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display);
+  letter-spacing: var(--sr2-tracking-display);
+  text-wrap: balance;
 }
-.sr2-hero-commerce__story > p { max-width: 50ch; line-height: 1.6; }
-.sr2-hero-commerce__review { font-size: 11px; color: #c3bbae; }
+.sr2-hero-commerce__story > p:not(.sr2-eyebrow) { max-width: 44ch; margin: 0; color: var(--sr2-muted); font: 400 var(--sr2-type-lede)/1.6 var(--sr2-font-body); }
+.sr2-hero-commerce__review { color: var(--sr2-color-text-muted); font-size: var(--sr2-type-utility); }
+.sr2-hero-commerce__products { grid-column: 7 / -1; min-width: 0; }
 .sr2-hero-commerce__products h4 {
-  margin: 0 0 12px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .12em;
+  margin: 0 0 var(--sr2-space-3);
+  color: var(--sr2-color-text-muted);
+  font: 500 0.75rem/1.35 var(--sr2-font-body);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.sr2-hero-commerce__products ul { margin: 0; padding: 0; list-style: none; }
-.sr2-hero-commerce__products li { border-top: 1px solid rgba(255, 255, 255, .14); }
+.sr2-hero-commerce__products > p { max-width: 52ch; margin: 0 0 var(--sr2-space-3); color: var(--sr2-color-text-muted); font-size: var(--sr2-type-utility); }
+.sr2-hero-commerce__products ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--sr2-line); }
+.sr2-hero-commerce__products li { border-bottom: 1px solid var(--sr2-line); }
 .sr2-hero-commerce__products a {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 8px 16px;
+  gap: var(--sr2-space-1) var(--sr2-space-4);
   align-items: center;
-  min-height: 64px;
-  padding: 14px 0;
+  min-height: var(--sr2-control-size);
+  padding: var(--sr2-space-4) 0;
   color: inherit;
   text-decoration: none;
 }
-.sr2-hero-commerce__products a > span { font-size: 13px; }
-.sr2-hero-commerce__products a > small { font-size: 12px; }
+.sr2-hero-commerce__products a > span { font: 500 var(--sr2-type-commerce)/var(--sr2-leading-commerce) var(--sr2-font-body); }
+.sr2-hero-commerce__products a > small { color: var(--sr2-color-text-muted); font: 400 var(--sr2-type-utility)/var(--sr2-leading-utility) var(--sr2-font-body); font-variant-numeric: tabular-nums; }
 .sr2-hero-commerce__products a > em {
   grid-column: 1 / -1;
-  font-size: 11px;
+  color: var(--sr2-color-action);
+  font: 500 0.75rem/1.35 var(--sr2-font-body);
   font-style: normal;
-  color: #cfb18b;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
-.sr2-hero-commerce__products li > span { display: block; padding: 16px 0; font-size: 12px; }
-.sr2-hero-commerce__products a:focus-visible { outline: 2px solid #cfb18b; outline-offset: 4px; }
-@media (max-width: 767px) {
-  .sr2-hero-commerce__details { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 20px; }
+.sr2-hero-commerce__products a:is(:hover, :focus-visible) > span { color: var(--sr2-color-action); }
+.sr2-hero-commerce__products li > span { display: block; padding: var(--sr2-space-4) 0; color: var(--sr2-color-text-muted); font-size: var(--sr2-type-utility); }
+.sr2-hero-commerce__products a:focus-visible { outline: var(--sr2-focus-width) solid var(--sr2-focus-outer); outline-offset: var(--sr2-focus-offset); }
+@media (max-width: 63.99em) {
+  .sr2-hero-commerce__story, .sr2-hero-commerce__products { grid-column: 1 / -1; }
+}
+@media (max-width: 47.99em) {
   .sr2-world.sr2-world--hero-composed { min-height: 0; }
+  .sr2-hero-commerce__products a { grid-template-columns: minmax(0, 1fr); }
 }

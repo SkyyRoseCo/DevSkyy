@@ -26,7 +26,28 @@
   var paused = false;
   var homeReady = false;
   var homeVisible = false;
-  var homeDismissed = false;
+  var SESSION_DISMISSED = 'skyy:dismissed';
+  function readSession(key) {
+    try {
+      return window.sessionStorage.getItem(key);
+    } catch (_) {
+      return null;
+    }
+  }
+  function writeSession(key, value) {
+    try {
+      if (value === null) window.sessionStorage.removeItem(key);
+      else window.sessionStorage.setItem(key, value);
+    } catch (_) {
+      /* Private mode only loses the memory, never the guide. */
+    }
+  }
+  // Dismissed = gone for the session (rulebook); the recall pill is her only way back.
+  var homeDismissed = readSession(SESSION_DISMISSED) === '1';
+  // Rested = she has greeted and nobody engaged; the pill holds her place so page content is never shielded.
+  var homeRested = false;
+  var restTimer;
+  var restAfter = hero ? parseInt(hero.dataset.restAfter || '0', 10) || 0 : 0;
   var homeEntered = false;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   function lightweight() {
@@ -34,12 +55,14 @@
   }
   var presence = document.getElementById('skyy-presence-status');
   var portrait = stage.querySelector('.skyyrose-mascot__image');
-  if (portrait) portrait.addEventListener('error', function () {
-    var fallback = safeUrl(portrait.dataset.fallbackSrc);
-    if (fallback && portrait.src !== fallback) {
-      portrait.src = fallback; stage.dataset.posterFallback = 'true';
-    }
-  });
+  if (portrait)
+    portrait.addEventListener('error', function () {
+      var fallback = safeUrl(portrait.dataset.fallbackSrc);
+      if (fallback && portrait.src !== fallback) {
+        portrait.src = fallback;
+        stage.dataset.posterFallback = 'true';
+      }
+    });
   var renderFailed = false;
   var presenceFrame = null;
   function cancelPresenceFrame() {
@@ -91,12 +114,31 @@
   navigator.connection?.addEventListener?.('change', staticPresence);
   staticPresence();
 
+  function overlayOpen() {
+    var classes = document.body && document.body.classList;
+    return !!(
+      document.querySelector('dialog[open]') ||
+      (classes && (classes.contains('sr2-nav-open') || classes.contains('sr2-overlay-open')))
+    );
+  }
   function syncHome() {
     if (!hero || dialog.open || stage.parentElement !== hero) return;
-    var otherOverlay = document.querySelector('dialog[open]') || document.body.classList.contains('sr2-nav-open');
-    var visible = homeVisible && !homeDismissed && !document.hidden && !otherOverlay;
-    stage.dataset.visibility = document.hidden ? 'document-hidden' : homeDismissed ? 'dismissed' : !homeVisible ? 'offscreen' : otherOverlay ? 'covered' : 'visible';
-    stage.hidden = homeDismissed;
+    var otherOverlay = overlayOpen();
+    var visible = homeVisible && !homeDismissed && !homeRested && !document.hidden && !otherOverlay;
+    stage.dataset.visibility = document.hidden
+      ? 'document-hidden'
+      : homeDismissed
+        ? 'dismissed'
+        : homeRested
+          ? 'rested'
+        : !homeVisible
+          ? 'offscreen'
+          : otherOverlay
+            ? 'covered'
+            : 'visible';
+    stage.hidden = homeDismissed || homeRested;
+    // The recall pill is shown only while she is dismissed or rested.
+    invite.hidden = !(homeDismissed || homeRested);
     stage.dataset.motionPaused = String(paused || lightweight());
     if (!visible) {
       clearTimeout(timer);
@@ -122,9 +164,42 @@
   }
   function restoreHome() {
     if (!hero) return;
-    hero.appendChild(stage);
+    // Re-inserting a node blurs any focused descendant; only move her when she is elsewhere.
+    if (stage.parentElement !== hero) hero.appendChild(stage);
     stage.dataset.location = 'hero';
     syncHome();
+  }
+  function focusHome() {
+    // Her dock opener is the natural return; the recall pill only while dismissed.
+    if (hero && stage.parentElement === hero && !stage.hidden && heroChat && heroChat.getClientRects().length)
+      heroChat.focus({ preventScroll: true });
+    else if (!invite.hidden) invite.focus({ preventScroll: true });
+  }
+  function restHome() {
+    if (!hero || dialog.open || homeDismissed || stage.parentElement !== hero) return;
+    if (hero.matches(':hover') || hero.contains(document.activeElement)) return scheduleRest();
+    homeRested = true;
+    syncHome();
+  }
+  function scheduleRest() {
+    clearTimeout(restTimer);
+    if (restAfter > 0 && hero && !homeRested && !homeDismissed) restTimer = setTimeout(restHome, restAfter);
+  }
+  function recall() {
+    // A recall clears the session dismissal and any rest; she stays in the dock after the chat.
+    homeDismissed = false;
+    homeRested = false;
+    clearTimeout(restTimer);
+    writeSession(SESSION_DISMISSED, null);
+    if (hero) {
+      // Restore her dock first (this hides the pill) and hand focus to its Ask
+      // Skyy button: the shell's overlay lifecycle records document.activeElement
+      // as the dialog opener, so both lifecycles return focus to the same visible
+      // control instead of a hidden pill or the header menu.
+      syncHome();
+      if (heroChat && heroChat.getClientRects().length) heroChat.focus({ preventScroll: true });
+    }
+    open();
   }
   function normalize(value) {
     return String(value || '')
@@ -147,6 +222,7 @@
   function emit(state) {
     stage.dataset.state = state;
     if (state === 'hidden') cancelPresenceFrame();
+    if (!dialog.open && (state === 'idle' || (state === 'show' && (lightweight() || renderFailed)))) scheduleRest();
     if (
       (state === 'loading' || state === 'walking-in') &&
       !window.skyyRoseMascot3D?.isReady() &&
@@ -196,7 +272,9 @@
     add(question, 'visitor');
     if (!guideAvailable) {
       stage.dataset.conversation = 'chat-failure';
-      add('The house guide is unavailable right now. You can still browse the shop or contact the house.', 'skyy', [{ url: invite.href, label: 'Contact the house' }]);
+      add('The house guide is unavailable right now. You can still browse the shop or contact the house.', 'skyy', [
+        { url: invite.href, label: 'Contact the house' },
+      ]);
       emit('idle');
       return;
     }
@@ -257,19 +335,27 @@
           .slice(0, 2)
       );
     }
-    stage.dataset.conversation = found.length ? 'gesture' : /^(hi|hello|hey)( skyy)?$/.test(query) ? 'greeting' : 'talking';
+    stage.dataset.conversation = found.length
+      ? 'gesture'
+      : /^(hi|hello|hey)( skyy)?$/.test(query)
+        ? 'greeting'
+        : 'talking';
     emit(found.length ? 'joy' : /^(hi|hello|hey)( skyy)?$/.test(query) ? 'wave' : 'speaking');
     settle(2400);
   }
   function open() {
     if (dialog.open || typeof dialog.showModal !== 'function') return;
-    if (document.querySelector('dialog[open]') || document.body.classList.contains('sr2-nav-open')) return;
+    if (overlayOpen()) return;
     returnFocus = document.activeElement;
+    stage.hidden = false;
+    // Open before reparenting: the shell's overlay lifecycle records the
+    // active element at beforetoggle as the opener, and her Ask Skyy button
+    // must still be rendered in the dock at that instant.
+    dialog.showModal();
     if (dialogStage) dialogStage.appendChild(stage);
     stage.dataset.location = 'dialog';
-    stage.hidden = false;
-    dialog.showModal();
-    minimized = false; stage.dataset.chat = 'open';
+    minimized = false;
+    stage.dataset.chat = 'open';
     stage.dataset.visibility = 'visible';
     stage.dataset.conversation = 'greeting';
     invite.setAttribute('aria-expanded', 'true');
@@ -283,10 +369,14 @@
     input.focus({ preventScroll: true });
   }
   input.addEventListener('input', function () {
-    if (dialog.open) { stage.dataset.conversation = 'listening'; document.dispatchEvent(new CustomEvent('skyy:listening')); }
+    if (dialog.open) {
+      stage.dataset.conversation = 'listening';
+      document.dispatchEvent(new CustomEvent('skyy:listening'));
+    }
   });
   document.getElementById('skyy-ask-minimize')?.addEventListener('click', function () {
-    minimized = true; close();
+    minimized = true;
+    close();
   });
   invite.addEventListener('click', function (event) {
     if (
@@ -300,7 +390,7 @@
     )
       return;
     event.preventDefault();
-    open();
+    recall();
   });
   form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -317,6 +407,13 @@
     if (closeTimer || !dialog.open) return;
     clearTimeout(timer);
     emit('exit');
+    // Move her stage back into the dock now: some engines do not fire the dialog's
+    // `beforetoggle` event, and the 'close' handler below needs her opener (Ask
+    // Skyy) already in the dock to hand focus back to it instead of stranding it.
+    if (hero && stage.parentElement === dialogStage) {
+      hero.appendChild(stage);
+      stage.dataset.location = 'hero';
+    }
     var animate =
       stage.dataset.renderer === '3d' && !paused && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!animate) {
@@ -329,6 +426,16 @@
     }, 450);
   }
   document.getElementById('skyy-ask-cancel').addEventListener('click', close);
+  // The shell's overlay lifecycle returns focus to its recorded opener the
+  // instant the dialog closes. Move her stage back to the dock first so that
+  // opener (her Ask Skyy button) is rendered when that happens; the close
+  // handler below still owns the final focus decision where beforetoggle is
+  // unsupported.
+  dialog.addEventListener('beforetoggle', function (event) {
+    if (event.newState !== 'closed' || !hero || stage.parentElement !== dialogStage) return;
+    hero.appendChild(stage);
+    stage.dataset.location = 'hero';
+  });
   dialog.addEventListener('close', function () {
     clearTimeout(timer);
     clearTimeout(closeTimer);
@@ -346,12 +453,14 @@
     if (needsFocus) {
       if (
         returnFocus &&
+        returnFocus !== document.body &&
+        returnFocus !== dialog &&
         returnFocus.isConnected &&
         returnFocus.getClientRects().length &&
         !(hero?.contains(returnFocus) && (!homeVisible || homeDismissed))
       )
         returnFocus.focus({ preventScroll: true });
-      else invite.focus({ preventScroll: true });
+      else focusHome();
     }
   });
   var chips = document.getElementById('skyy-chips');
@@ -412,11 +521,16 @@
     homeVisible = rect.bottom > 0 && rect.top < window.innerHeight;
     restoreHome();
     heroChat?.addEventListener('click', open);
+    hero.addEventListener('pointerenter', function () { clearTimeout(restTimer); });
+    hero.addEventListener('pointerleave', scheduleRest);
+    hero.addEventListener('focusin', function () { clearTimeout(restTimer); });
+    hero.addEventListener('focusout', scheduleRest);
     heroDismiss?.addEventListener('click', function () {
-      var ownedFocus = stage.contains(document.activeElement);
+      // Dismissed = gone for the session; the recall pill takes her place and the focus.
       homeDismissed = true;
+      writeSession(SESSION_DISMISSED, '1');
       syncHome();
-      if (ownedFocus) invite.focus({ preventScroll: true });
+      invite.focus({ preventScroll: true });
     });
     if ('IntersectionObserver' in window) {
       var observer = new IntersectionObserver(

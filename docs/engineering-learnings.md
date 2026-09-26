@@ -218,7 +218,7 @@ pre-commit hook says out loud when it skips for want of `node_modules` rather
 than passing silently, and the node script reports an unloadable prettier as an
 explicit UNVERIFIED failure instead of aborting before the lint-staged half.
 
-### A parity check between two lists dies quietly when one list moves (bug-353)
+### A parity check between two lists dies quietly when one list moves (bug-359)
 
 The gate this replaced derived the managed paths by regex-scraping
 `lint-staged.config.mjs`, then diffed them against `.prettierignore`. When the

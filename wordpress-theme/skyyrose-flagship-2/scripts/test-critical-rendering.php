@@ -62,7 +62,7 @@ $built    = file_get_contents( skyyrose2_critical_css_path() );
 sr2_assert( is_array( $contract ) && ! empty( $contract['budgetBytes'] ), 'contract declares a byte budget' );
 sr2_assert( is_string( $built ) && '' !== trim( $built ), 'built critical CSS exists' );
 sr2_assert( strlen( $built ) <= (int) $contract['budgetBytes'], 'built critical CSS is within budget' );
-foreach ( array( '@font-face', ':root', '.sr2-house-header', '.sr2-header__brand-mark', '.sr2-brand-media', '.sr2-archive-scene', '.sr2-editorial-hero__copy', '#sr2-archive-title', '.sr2-control--primary', '[data-recovery-hero-video]', '.sr2-archive-scene__concierge', '.sr2-house-nav' ) as $needle ) {
+foreach ( array( '@font-face', ':root', '.sr2-house-header', '.sr2-header__brand-mark', '.sr2-brand-media', '.sr2-archive-scene', '.sr2-editorial-hero__copy', '#sr2-archive-title', '.sr2-control--primary', '[data-recovery-hero-video]', '.sr2-arrival', '.sr2-house-nav' ) as $needle ) {
 	sr2_assert( false !== strpos( $built, $needle ), "critical CSS carries first-view structure: {$needle}" );
 }
 sr2_assert( false === strpos( $built, '__SKYYROSE2_ASSETS__/css/' ), 'no relative asset path survives that would resolve against the document' );
@@ -134,6 +134,8 @@ sr2_assert( array( array( 'href' => 'x' ) ) === skyyrose2_critical_font_preloads
 $GLOBALS['sr2_front'] = true;
 $preloads = skyyrose2_critical_font_preloads( array() );
 sr2_assert( 2 === count( $preloads ), 'front page preloads only its two first-view faces' );
+sr2_assert( in_array( SKYYROSE2_URI . '/assets/derived/fonts/archivo-normal-width.woff2', array_column( $preloads, 'href' ), true ), 'the current Archivo headline face is preloaded' );
+sr2_assert( ! in_array( SKYYROSE2_URI . '/assets/sot/fonts/cinzel-latin.woff2', array_column( $preloads, 'href' ), true ), 'the former Cinzel headline face does not compete for first-view bandwidth' );
 foreach ( $preloads as $record ) {
 	sr2_assert( 'font' === $record['as'] && 'font/woff2' === $record['type'] && 'anonymous' === $record['crossorigin'], 'font preload records are CORS font preloads' );
 	sr2_assert( 1 === preg_match( '#url\\(["\']?' . preg_quote( $record['href'], '#' ) . '["\']?\\)#', $head ), 'preload href matches the inline @font-face URL byte for byte: ' . $record['href'] );
