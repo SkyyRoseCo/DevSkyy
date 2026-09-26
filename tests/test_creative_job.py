@@ -231,8 +231,9 @@ def test_missing_or_changed_review_evidence_blocks(tmp_path, evidence):
 
 
 def test_rule_checklist_matches_ratified_contract():
-    from skyyrose.core.creative_job import FIDELITY
     import json
+
+    from skyyrose.core.creative_job import FIDELITY
 
     spec = json.loads(
         (REPO_ROOT / "docs/brand/constitution-v1/implementation-contracts.json").read_text()
@@ -242,6 +243,7 @@ def test_rule_checklist_matches_ratified_contract():
 
 def test_exact_photography_requires_actual_requested_view():
     import hashlib
+
     from skyyrose.core.context_resolver import ProductRequirement
 
     wrong = REPO_ROOT / "docs/brand/constitution-v1/constitution.json"

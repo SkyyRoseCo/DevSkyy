@@ -15,16 +15,16 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from skyyrose.core.paths import REPO_ROOT, THEME_ROOT
 from skyyrose.core.content_intent import (
-    ContentIntent,
     TAXONOMY,
+    ContentIntent,
     missing_planning_fields,
     verification_requirements,
 )
-from skyyrose.core.product_truth import project_product
 from skyyrose.core.execution_policy import STAGES, LifecycleStatus, select_rules
+from skyyrose.core.paths import REPO_ROOT, THEME_ROOT
 from skyyrose.core.product import get_product, provenance
+from skyyrose.core.product_truth import project_product
 
 PACKAGE = REPO_ROOT / "docs/brand/constitution-v1"
 Mode = Literal["EXACT_PRODUCT", "PRODUCT_CONCEPT", "BRAND_ABSTRACT"]

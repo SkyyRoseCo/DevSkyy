@@ -9,6 +9,7 @@ from typing import Any, Literal
 
 from pydantic import Field, model_validator
 
+from skyyrose.core.content_intent import DerivativePlan
 from skyyrose.core.context_resolver import (
     Contract,
     ResolutionRequest,
@@ -16,9 +17,8 @@ from skyyrose.core.context_resolver import (
     SourceReference,
     resolve_context,
 )
-from skyyrose.core.paths import REPO_ROOT, THEME_ROOT
-from skyyrose.core.content_intent import DerivativePlan
 from skyyrose.core.execution_policy import LOCAL_TERRITORY, LifecycleStatus
+from skyyrose.core.paths import REPO_ROOT, THEME_ROOT
 
 Gate = Literal[
     "CONSTITUTION",
