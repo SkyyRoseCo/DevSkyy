@@ -17,6 +17,10 @@ reference_image: assets/products/references/br-012-techflat.jpeg
 
 This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giants br-014 / White br-015). Green base + gold/yellow piping is the Oakland palette throughout.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** True to size, relaxed through the body. (Founder statement, 2026-09-21, verbatim: "all jerseys true to size, relaxed through the body".)
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:

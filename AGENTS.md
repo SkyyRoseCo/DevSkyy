@@ -184,6 +184,12 @@ corrections are authoritative.
 - Include these founder-authority requirements in delegated briefs and handoffs
   involving SkyyRose products, catalogs, design, rendering, or review.
 
+**How to record a founder statement — dossier first, never the field directly.** `tests/test_dossier_founder_prose.py` pins every `garment.{fit,materials,features}.source` to `derived_from_dossier`, a test-enforced assertion that nothing in those fields is founder-authored. So when he states a garment fact: add a `**FOUNDER_CONFIRMED:** <his words>` paragraph to that SKU's dossier (its `## Founder-confirmed correction` section, before `## Branding`), keep a parenthetical quoting him verbatim with the date, then derive the field from it. That makes the existing label honest instead of widening the assertion, and never relabels a field to claim founder authorship. Gate every write on the written text being a verbatim substring of that SKU's own dossier, and fail closed on a half-applied set. If a check or reviewer disputes the product fact itself rather than the code, stop and report — do not "fix" it.
+
+**Prefer `null` over wrong in product fields.** A field holding the wrong kind of sentence passes every completeness check and is invisible to the gap queries built to find it. A null is discoverable; a plausible-but-wrong value is not.
+
+**Redacting env data is a whitelist, never "names only."** On a malformed env file the KEY side can be the secret — a credentials notebook contains lines shaped `<label> = <secret>` and `Name: <secret>`, so `dotenv_values()` returns the secret as the dict key. Use `skyyrose.core.env_redaction` — `redact_env_name(token)` and `safe_env_names(parsed)`, landed on main via #963 — rather than hand-rolling the check: its `ENV_NAME_RE` anchors with `\A..\Z` instead of `^..$`, because in Python `$` also matches before a trailing newline and a multi-line token would slip a `^..$` guard. Compare values by hash and never print them. Containment after a leak is rotation, not deletion.
+
 ## Repository map
 
 DevSkyy is a Python, TypeScript, Next.js, and WordPress monorepo.

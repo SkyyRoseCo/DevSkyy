@@ -13,6 +13,10 @@ reference_image: assets/products/references/br-003-baseball-classic-techflat.jpe
 
 **Garment type lock:** Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid BLACK base fabric. White piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. White buttons on the placket. NO player number on front. NO player number on back. NO player name on back. NO pinstripes. NOT a t-shirt. NOT a hoodie. NOT a basketball jersey. NOT a football jersey. Mid-weight knit jersey fabric. Solid black colorway (this is the Classic base; Oakland / Giants / White editions are separate SKUs br-012 / br-014 / br-015).
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** True to size, relaxed through the body. (Founder statement, 2026-09-21, verbatim: "all jerseys true to size, relaxed through the body".)
+
 ## Branding — exactly what IS on this product
 
 > Logo art for "Black Rose logo" entries below is the canonical
