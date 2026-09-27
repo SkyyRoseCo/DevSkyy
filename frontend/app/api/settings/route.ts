@@ -5,7 +5,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { withAuth } from '@/lib/api-auth';
 
-const SETTINGS_FILE = path.join(process.cwd(), 'data', 'settings.json');
+const SETTINGS_FILE = process.env.SETTINGS_FILE || path.join(process.cwd(), 'data', 'settings.json');
 
 async function getSettings() {
     try {
@@ -84,7 +84,7 @@ async function postHandler(req: NextRequest) {
         await fs.mkdir(path.dirname(SETTINGS_FILE), { recursive: true });
         
         // Write to file
-        await fs.writeFile(SETTINGS_FILE, JSON.stringify(settings, null, 2));
+        await fs.writeFile(SETTINGS_FILE, JSON.stringify(settings, null, 2), { mode: 0o600 });
         
         return NextResponse.json(settings);
     } catch (error) {
