@@ -1,0 +1,96 @@
+{
+  "site": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "source_head": "2c7644772be1d19c9218ebfb2b980350033b83f7",
+  "files": [
+    {
+      "path": "assets/css/archive-style-inputs.json",
+      "before": "2e7f66601b93dfef2a5fbbc97633470176bd6b4cb250704fef5edc5cfee05d55",
+      "after": "47c5ef45c474ea17c2958943dbb9960bb6ee3256c3f0bd0c09237212e2fb97a8"
+    },
+    {
+      "path": "assets/css/archive-theme.json",
+      "before": "8d661e26151899e222ca811bcc18f0e8572d81d65a84d470e3061b2ae2e59403",
+      "after": "397b610a8dd04d9837fd6a0f731e4064ffddb777552dd216786cb2879c28dd3a"
+    },
+    {
+      "path": "assets/css/content-page.css",
+      "before": "7a377598d7a6c012b503a35ed1565d11f4e83679d4e895c8448cb2310a6f246e",
+      "after": "3d0ac794ef382a90423ebd312ffc239ec58fb0005d849cbe23825f741de89166"
+    },
+    {
+      "path": "assets/css/content-page.min.css",
+      "before": "624e76766ea1299a7b2c26e3cad2eeb433ded0eabba8b5ff7c82c5c4e4179e17",
+      "after": "25858a6d204865196f6ad4939b5fd48dd326e3a4a5dd5ae85d50b06530631217"
+    },
+    {
+      "path": "assets/css/critical/home.min.css",
+      "before": "b8275fdf40592fffad2992bd94280f39f1a2c324eaf2a4c6b0423f2014eaf81d",
+      "after": "b86562cf237967410e3b0fe958b2f77b0d7ea98ce060a79e326d039d8db87178"
+    },
+    {
+      "path": "assets/css/home-page.css",
+      "before": "a2983a3d650edee5020a7831e870b856eb613e0ed79231019270225f96bbd542",
+      "after": "a1c765afb9579bb23356b241d82f99ea1e5564c8672afe4c73bf10b6a9b43f18"
+    },
+    {
+      "path": "assets/css/home-page.min.css",
+      "before": "45852026b62928028b56c3fa3be69c4ad8c2193593902cb7d4c09d0b1d51f3c1",
+      "after": "4f5627f134846460b2b9a0aa9a9eb97fbad1cd22812f0e1fe1f85210aaa9acbd"
+    },
+    {
+      "path": "assets/css/shop-page.css",
+      "before": "ce3008155e56ed25f84d8014d7c0e5068ea0ac4f4bd8b0e906df3faf8c6c4f91",
+      "after": "52a6823c67a424897dcfc9d3b438af6bcb5424160f7998321ad6cef5586392ff"
+    },
+    {
+      "path": "assets/css/shop-page.min.css",
+      "before": "45e3a8de4bd578e1bea832e68c043a8b78d7a19c93f57b1254c04619d7cb8e16",
+      "after": "2bcbd65b5f08fe3668da34f6495b73775cd15304eb8e2139473faea109ec46f6"
+    },
+    {
+      "path": "assets/css/theme.css",
+      "before": "c1e1c2ab01ef211f76f10957e250b26aed1a80b9fb672e08c95a8f3ccc6fff74",
+      "after": "1c6802bedc4334fd14e55764d94fba7f25ac892ef028ae731b2218c4f8d4b62f"
+    },
+    {
+      "path": "assets/css/theme.min.css",
+      "before": "b1858fce7be6c20f8f908354f7e320511ac37db47ada9e6c642495bdac532560",
+      "after": "1ca4b4230e043f281df5943bf27e9f3b061976bd7cfbe298331b4cf45c865e93"
+    },
+    {
+      "path": "inc/approved-card-fronts.php",
+      "before": "ba65bf97afe13cca54d4e1214a0d43e1fbc12a4c257cded31414720a3ccfe4bf",
+      "after": "dfaab5d818bde400f169e292d9763c67dbb89bd2c68de0c54119d0cf49264e03"
+    },
+    {
+      "path": "inc/pdp-media-delivery.php",
+      "before": "068935b92f9a73370dfdca6dd90cc1fcf8e87e2560cab704516104dbbbcab6ba",
+      "after": "777d9cd06e2d2692d9bf2d4ae4c721496f5830b420de091a4629d58a1c6f0b2c"
+    },
+    {
+      "path": "inc/seo-indexing.php",
+      "before": "0448f1c9af0d1e6076592e96bde67620d961175d84c5fe8db6313edf37d90049",
+      "after": "8f77c66ac34e069a86904618a7bf80b193de92d197c89bfd772403604fadf4fc"
+    },
+    {
+      "path": "languages/skyyrose-flagship-2.pot",
+      "before": "db7847f0b59e317eeae8d6fc0ea3c82996c1a731fbc6e5a8ba62e9f9385510ca",
+      "after": "3828f6e7e7d5bff97bbdbc0f669b8acf5660e85b2f6373713734b3445ea0b178"
+    },
+    {
+      "path": "page.php",
+      "before": "d30758d439bc94a3753d56e8d432b53b46072e3f3354bd9cdb395139c340668b",
+      "after": "a3f05485daa0efa68ce22b2f0c6240242d092d18a3ec7142b2dd76ee6abc5023"
+    },
+    {
+      "path": "template-parts/commerce/product-card.php",
+      "before": "68ce8cec82f0ef5f76aaca841cb0766565978aafa08cd5126805e60c131d7468",
+      "after": "75a94f99276a74574535f15b743ac94f513f4f4d1e59d90c4916e48cc91be919"
+    },
+    {
+      "path": "woocommerce/single-product/product-image.php",
+      "before": "ce9e7e8f2928b6286b44b161115f70906cad0dd57d1cfee8744b4385aec9e837",
+      "after": "7185622650ec585926b191d110f7b02050c588d901cbb4e97989a757127d0405"
+    }
+  ]
+}

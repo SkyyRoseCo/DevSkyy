@@ -400,8 +400,8 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 @container sr2-checkout (max-width: 38rem) {
 	.woocommerce form.sr2-c-checkout .form-row-first, .woocommerce form.sr2-c-checkout .form-row-last { float: none; clear: both; width: 100%; }
 }
-.sr2-c-account__nav, .sr2-c-service__links { display: flex; flex-wrap: wrap; gap: var(--sr2-space-2); }
-.sr2-c-account__nav a, .sr2-c-service__links a { padding: var(--sr2-space-2) var(--sr2-space-3); border: 1px solid var(--sr2-line); color: var(--sr2-ink); text-decoration: none; }
+.sr2-c-account__nav, .sr2-c-service__links { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sr2-space-2); }
+.sr2-c-account__nav a, .sr2-c-service__links a { display: inline-flex; min-height: var(--sr2-target-size); align-items: center; padding: var(--sr2-space-2) var(--sr2-space-3); border: 1px solid var(--sr2-line); color: var(--sr2-ink); text-decoration: none; }
 .sr2-c-account__nav a[aria-current="page"], .sr2-c-service__links a:hover, .sr2-c-service__links a:focus-visible { border-color: var(--sr2-route-accent); color: var(--sr2-route-accent); }
 
 @keyframes sr2-commerce-spin { to { transform: rotate(1turn); } }

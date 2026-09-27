@@ -50,6 +50,16 @@ function skyyrose2_normalize_page_content_headings( $content ) {
 }
 add_filter( 'the_content', 'skyyrose2_normalize_page_content_headings', 30 );
 
+/** Keep Jetpack sharing and Like controls without utility labels skipping heading levels. */
+function skyyrose2_jetpack_sharing_headline_html( $headline_html, $label, $context ) {
+	if ( ! in_array( $context, array( 'sharing', 'likes' ), true ) ) {
+		return $headline_html;
+	}
+	// Jetpack supplies the escaped label to sprintf after filtering this format.
+	return '<p class="sd-title">%s</p>';
+}
+add_filter( 'jetpack_sharing_headline_html', 'skyyrose2_jetpack_sharing_headline_html', 10, 3 );
+
 /** Preserve legacy URLs while keeping verified demo prose out of discovery. */
 function skyyrose2_exclude_demo_editorials( $query ) {
 	if ( is_admin() || ! $query->is_main_query() || ! ( $query->is_home() || $query->is_search() ) ) {
@@ -92,8 +102,27 @@ function skyyrose2_render_approved_pdp_styling_view( $product ) {
 	if ( ! $front || $front['src'] !== SKYYROSE2_URI . '/' . $entry['src'] ) {
 		return false;
 	}
+	$src = $front['card_src'] ?? $front['src'];
+	$width = (int) ( $front['card_width'] ?? $front['width'] );
+	$height = (int) ( $front['card_height'] ?? $front['height'] );
+	$sizes = function_exists( 'skyyrose2_pdp_gallery_sizes' ) ? skyyrose2_pdp_gallery_sizes( $front['width'], $front['height'] ) : '';
+	return skyyrose2_render_approved_pdp_styling_front( $sku, $front, $src, $width, $height, $sizes );
+}
+
+/** Render an approved original when no integrity-valid derivative is available. */
+function skyyrose2_render_approved_pdp_styling_front( $sku, $front, $src = '', $width = 0, $height = 0, $sizes = '' ) {
+	if ( ! is_array( $front ) || 'FOUNDER_APPROVED_V2_CARD' !== ( $front['scene_status'] ?? '' ) || empty( $front['src'] ) || empty( $front['alt'] ) ) {
+		return false;
+	}
+	$src = $src ?: $front['src'];
+	$width = (int) ( $width ?: $front['width'] );
+	$height = (int) ( $height ?: $front['height'] );
 	echo '<figure class="sr2-pdp-styling-view" data-sr2-approved-styling="' . esc_attr( $sku ) . '">';
-	echo '<img src="' . esc_url( $front['src'] ) . '" width="' . (int) $front['width'] . '" height="' . (int) $front['height'] . '" alt="' . esc_attr( $front['alt'] ) . '" decoding="async" fetchpriority="high">';
+	echo '<img src="' . esc_url( $src ) . '" width="' . $width . '" height="' . $height . '"';
+	if ( ! empty( $front['srcset'] ) && $sizes ) {
+		echo ' srcset="' . esc_attr( $front['srcset'] ) . '" sizes="' . esc_attr( $sizes ) . '"';
+	}
+	echo ' alt="' . esc_attr( $front['alt'] ) . '" decoding="async" fetchpriority="high">';
 	echo '<figcaption>' . esc_html__( 'On-model styling view', 'skyyrose-flagship-2' ) . '</figcaption></figure>';
 	return true;
 }

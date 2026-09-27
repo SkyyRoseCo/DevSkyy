@@ -1,0 +1,44 @@
+{
+  "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+  "at": "2026-09-21T23:29:52.457Z",
+  "links": [
+    {
+      "sku": "SG-005",
+      "href": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/",
+      "status": 200,
+      "actualSku": "sg-005"
+    },
+    {
+      "sku": "BR-004",
+      "href": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-004/",
+      "status": 200,
+      "actualSku": "br-004"
+    },
+    {
+      "sku": "LH-004",
+      "href": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-004/",
+      "status": 200,
+      "actualSku": "lh-004"
+    }
+  ],
+  "controls": [
+    {
+      "text": "Ask Skyy",
+      "insideHero": true,
+      "overlapsAction": false
+    },
+    {
+      "text": "Dismiss Skyy",
+      "insideHero": true,
+      "overlapsAction": false
+    }
+  ],
+  "paused": "paused",
+  "resumed": "running",
+  "scene": {
+    "sourceCount": 2,
+    "readyState": 4,
+    "paused": false,
+    "currentTime": 3.059027
+  }
+}

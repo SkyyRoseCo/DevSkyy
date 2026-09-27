@@ -1,0 +1,295 @@
+{
+  "target": "/Users/theceo/DevSkyy/plugins/fashion-theme-team",
+  "files": [
+    {
+      "status": "MISSING",
+      "path": ".claude-plugin/marketplace.json",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": ".claude-plugin/plugin.json",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "portable/PORTABLE-PROMPT.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "portable/README.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "scripts/export-portable.sh",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "scripts/install-global.sh",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-a11y.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-animate.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-audit.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-cascade-discipline.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-debug.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-expert/anti-patterns.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-expert/browser-compat.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-expert/modern-patterns.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-expert/overview.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-layout.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-refactor.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-responsive.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/css-theme.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/css/index.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/index.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/immersive-interactive-architect/ar-mediapipe.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/immersive-interactive-architect/gsap-scroll-patterns.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/immersive-interactive-architect/overview.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/immersive-interactive-architect/three-js-patterns.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/immersive-interactive-architect/woocommerce-3d-embed.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/index.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/threejs/animation.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/threejs/fundamentals.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/threejs/geometry.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/threejs/interaction.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/threejs/materials.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/threejs/postprocessing.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/threejs-immersive/threejs/shaders.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/wordpress-woocommerce/index.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/wordpress-woocommerce/skyyrose-wp-platform/build-and-templates.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/wordpress-woocommerce/skyyrose-wp-platform/overview.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/wordpress-woocommerce/skyyrose-wp-platform/quality-gates.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/wordpress-woocommerce/skyyrose-wp-platform/threejs-immersive.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/wordpress-woocommerce/skyyrose-wp-platform/woocommerce-integration.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/engineering/wordpress-woocommerce/wc-pdp-correctness.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/product-registry-authority.md",
+      "before_sha256": null
+    },
+    {
+      "status": "MISSING",
+      "path": "skills/fashion-theme-team/references/verified-examples.md",
+      "before_sha256": null
+    },
+    {
+      "status": "CHANGED",
+      "path": ".codex-plugin/plugin.json",
+      "before_sha256": "eae43f257868714006ea49eec81e48c234df79b3756e4f56c59cca38b5ee574c"
+    },
+    {
+      "status": "CHANGED",
+      "path": "formatting.toml",
+      "before_sha256": "c338a43289928b2aa5b167bac08ced90f8c34ef1369fa1f13b53f314ad57485d"
+    },
+    {
+      "status": "CHANGED",
+      "path": "requirements-formatting.txt",
+      "before_sha256": "762e53c4d41c38f82d9500efbe6a4b556b43ebc758298d520e3214386393c840"
+    },
+    {
+      "status": "CHANGED",
+      "path": "runtime/elite_web_builder/agents/__init__.py",
+      "before_sha256": "19d5c8c5135054aaf182bf6ce7fa373df9b7387bce8b07830ef55090d1390913"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-brand-experience/SKILL.md",
+      "before_sha256": "87a6eca5884697845f792cc9d442d05ad55a63e96cedddc4ddbc16c85fc076fc"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-commerce-engineering/SKILL.md",
+      "before_sha256": "a59e42727f9412d58184336d75154491a71d98113bdfffa015a789e4c07425cd"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-design-system/SKILL.md",
+      "before_sha256": "88fb1529f2521354fb8d42fa30c7b96ad8578dde073d65e7b0a20a43151fe71b"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-frontend-motion/SKILL.md",
+      "before_sha256": "e99fda67e18e42c4d5b149d34d048335c750a4bd0f71491b457e4d9099cf50cf"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-theme-team/SKILL.md",
+      "before_sha256": "e45c24529eb0a9f4b9674a846e31d2af9e8bace5e2b0b6e363c541954b6d01e3"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-theme-team/brain/brand/skyyrose-artifact-system.json",
+      "before_sha256": "b9e17c49a7751eb807414c2b6f69a2c496370f88b38a2db6da56a73365eccf7c"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-theme-team/brain/brand/skyyrose-artifact.css",
+      "before_sha256": "a9066299a816509b5d90bdfb5e8a98356324bf3c86e3c744e2985c4f7c720354"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-theme-team/brain/branded-skills/sources/authority-capture.json",
+      "before_sha256": "d4d603076c1ae3a1b40adadfa0724ac3f73cdf7152b30709590db77ef46e2ecf"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-theme-team/brain/v2/gap-closure-procedure.json",
+      "before_sha256": "2ce8f72bcb43dece93f0cda83d6400444c911cba9e6faf922a312120b2572a28"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-theme-team/references/acceptance-gates.md",
+      "before_sha256": "5c38c8c9fc37f1597fcca02e3235fabf9f4869d539e980cdc16a88355a70f78b"
+    },
+    {
+      "status": "CHANGED",
+      "path": "skills/fashion-theme-team/references/skyyrose-design-canon.md",
+      "before_sha256": "5ab233b44443c5ecdcae63b29a05ff1abf51510e0fcc551c6963bed663c72b4f"
+    }
+  ]
+}

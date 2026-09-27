@@ -46,16 +46,13 @@ try {
 	$priority_intent = $args['media_priority'] ?? 'lazy';
 	$native_archive  = $is_archive && function_exists( 'is_main_query' ) && is_main_query()
 		&& function_exists( 'wc_get_loop_prop' ) && ! wc_get_loop_prop( 'name' );
-	// Image slot width belongs to its composition, not to the approved asset.
-	// Main archive cards use its two-column mobile grid; editorial/feature
-	// modules default conservatively to one mobile column unless specified.
-	$default_sizes = $native_archive && 'feature' !== $variant
-		? '(max-width: 47.99em) calc((100vw - 3rem) / 2), (max-width: 74.99em) calc((100vw - 5rem) / 3), 360px'
+	// Match the owning archive grid: one card per row through 479px, then
+	// two/three/four columns. The outer 4vw gutters are clamped and the inner
+	// shell/gaps contribute 3/4/5rem at their respective column counts.
+	$default_sizes = $native_archive
+		? '(max-width: 29.99em) calc(100vw - 4rem), (max-width: 47.99em) calc((100vw - clamp(2rem, 8vw, 9rem) - 3rem) / 2), (max-width: 74.99em) calc((100vw - clamp(2rem, 8vw, 9rem) - 4rem) / 3), (max-width: 95.75em) calc((100vw - clamp(2rem, 8vw, 9rem) - 5rem) / 4), 360px'
 		: '(max-width: 47.99em) calc(100vw - 2rem), (max-width: 74.99em) calc((100vw - 5rem) / 2), 480px';
 	$image_sizes   = isset( $args['sizes'] ) && is_string( $args['sizes'] ) && '' !== trim( $args['sizes'] ) ? $args['sizes'] : $default_sizes;
-	if ( $frame_uri ) {
-		$image_sizes = '(max-width: 29.99em) calc((100vw - 2rem) * .66), ' . $image_sizes;
-	}
 	$frame_delivery = $native_archive && $frame_uri && function_exists( 'skyyrose2_archive_frame_delivery' ) ? skyyrose2_archive_frame_delivery( $collection ) : array();
 	$is_eager       = $native_archive && $card_index < 2 && in_array( $priority_intent, array( 'eager', 'high' ), true );
 	$loading        = $is_eager ? 'eager' : 'lazy';

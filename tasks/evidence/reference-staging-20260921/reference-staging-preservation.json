@@ -1,0 +1,354 @@
+{
+  "date": "2026-09-21T22:26:21.942Z",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+  "candidate": "deployed staging candidate; public browser",
+  "authentication": "NOT_APPLICABLE",
+  "viewports": [
+    {
+      "width": 390,
+      "errors": [],
+      "styles": [
+        "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??e20dbb47aa",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.3-a.1"
+      ],
+      "geometry": [
+        {
+          "tag": "SECTION",
+          "class": "sr2-archive-scene sr2-editorial-hero is-hero-poster-ready is-hero-video-ready",
+          "id": "sr2-archive-arrival",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 800,
+            "top": 0,
+            "right": 390,
+            "bottom": 800,
+            "left": 0
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "class": "",
+          "id": "skyy-hero-chat",
+          "rect": {
+            "x": 132,
+            "y": 622,
+            "width": 116.203125,
+            "height": 44,
+            "top": 622,
+            "right": 248.203125,
+            "bottom": 666,
+            "left": 132
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "class": "sr2-recovery-motion-toggle",
+          "id": "",
+          "rect": {
+            "x": 266.234375,
+            "y": 86.390625,
+            "width": 103.765625,
+            "height": 46,
+            "top": 86.390625,
+            "right": 370,
+            "bottom": 132.390625,
+            "left": 266.234375
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-collection",
+          "id": "sr2-archive-worlds",
+          "rect": {
+            "x": 0,
+            "y": 800,
+            "width": 390,
+            "height": 775.734375,
+            "top": 800,
+            "right": 390,
+            "bottom": 1575.734375,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-products",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 1575.734375,
+            "width": 390,
+            "height": 955.4375,
+            "top": 1575.734375,
+            "right": 390,
+            "bottom": 2531.171875,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-philosophy",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 2531.171875,
+            "width": 390,
+            "height": 787.3125,
+            "top": 2531.171875,
+            "right": 390,
+            "bottom": 3318.484375,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-journal",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 3318.484375,
+            "width": 390,
+            "height": 781.15625,
+            "top": 3318.484375,
+            "right": 390,
+            "bottom": 4099.640625,
+            "left": 0
+          }
+        },
+        {
+          "tag": "DETAILS",
+          "class": "sr2-editorial-worlds",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 4099.640625,
+            "width": 390,
+            "height": 156.171875,
+            "top": 4099.640625,
+            "right": 390,
+            "bottom": 4255.8125,
+            "left": 0
+          }
+        }
+      ],
+      "dialogOpen": true,
+      "restoredFocus": "skyy-hero-chat",
+      "pauseLabel": "Play motion",
+      "resumeLabel": "Pause motion",
+      "closedVideos": [
+        {
+          "paused": true,
+          "src": null
+        },
+        {
+          "paused": true,
+          "src": null
+        },
+        {
+          "paused": true,
+          "src": null
+        }
+      ],
+      "detailsOpen": true,
+      "rail": {
+        "width": 358,
+        "scrollWidth": 1064,
+        "scroll": 706
+      },
+      "counter": "03 / 03",
+      "reclosedVideos": [
+        {
+          "paused": true,
+          "state": "offscreen"
+        },
+        {
+          "paused": true,
+          "state": "offscreen"
+        },
+        {
+          "paused": true,
+          "state": "offscreen"
+        }
+      ],
+      "pageWidth": {
+        "viewport": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "width": 1440,
+      "errors": [],
+      "styles": [
+        "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??e20dbb47aa",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.3-a.1"
+      ],
+      "geometry": [
+        {
+          "tag": "SECTION",
+          "class": "sr2-archive-scene sr2-editorial-hero is-hero-poster-ready is-hero-video-ready",
+          "id": "sr2-archive-arrival",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 619.1875,
+            "top": 0,
+            "right": 1440,
+            "bottom": 619.1875,
+            "left": 0
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "class": "",
+          "id": "skyy-hero-chat",
+          "rect": {
+            "x": 1056,
+            "y": 520.78125,
+            "width": 120,
+            "height": 44,
+            "top": 520.78125,
+            "right": 1176,
+            "bottom": 564.78125,
+            "left": 1056
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "class": "sr2-recovery-motion-toggle",
+          "id": "",
+          "rect": {
+            "x": 1264.234375,
+            "y": 92,
+            "width": 103.765625,
+            "height": 46,
+            "top": 92,
+            "right": 1368,
+            "bottom": 138,
+            "left": 1264.234375
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-collection",
+          "id": "sr2-archive-worlds",
+          "rect": {
+            "x": 0,
+            "y": 619.1875,
+            "width": 1440,
+            "height": 360,
+            "top": 619.1875,
+            "right": 1440,
+            "bottom": 979.1875,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-products",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 979.1875,
+            "width": 1440,
+            "height": 470.703125,
+            "top": 979.1875,
+            "right": 1440,
+            "bottom": 1449.890625,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-philosophy",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 1449.890625,
+            "width": 1440,
+            "height": 497.671875,
+            "top": 1449.890625,
+            "right": 1440,
+            "bottom": 1947.5625,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-journal",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 1947.5625,
+            "width": 1440,
+            "height": 288,
+            "top": 1947.5625,
+            "right": 1440,
+            "bottom": 2235.5625,
+            "left": 0
+          }
+        },
+        {
+          "tag": "DETAILS",
+          "class": "sr2-editorial-worlds",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 2235.5625,
+            "width": 1440,
+            "height": 178.5625,
+            "top": 2235.5625,
+            "right": 1440,
+            "bottom": 2414.125,
+            "left": 0
+          }
+        }
+      ],
+      "dialogOpen": true,
+      "restoredFocus": "skyy-hero-chat",
+      "pauseLabel": "Play motion",
+      "resumeLabel": "Pause motion",
+      "closedVideos": [
+        {
+          "paused": true,
+          "src": null
+        },
+        {
+          "paused": true,
+          "src": null
+        },
+        {
+          "paused": true,
+          "src": null
+        }
+      ],
+      "detailsOpen": true,
+      "rail": {
+        "width": 1296,
+        "scrollWidth": 3245,
+        "scroll": 1946
+      },
+      "counter": "03 / 03",
+      "reclosedVideos": [
+        {
+          "paused": true,
+          "state": "offscreen"
+        },
+        {
+          "paused": true,
+          "state": "offscreen"
+        },
+        {
+          "paused": true,
+          "state": "offscreen"
+        }
+      ],
+      "pageWidth": {
+        "viewport": 1440,
+        "scroll": 1440
+      }
+    }
+  ]
+}

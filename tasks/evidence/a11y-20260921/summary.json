@@ -1,0 +1,551 @@
+{
+  "routes": 80,
+  "scans": 160,
+  "errors": [],
+  "affectedRoutes": 13,
+  "violations": [
+    {
+      "id": "landmark-unique",
+      "impact": "moderate",
+      "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+      "url": "https://dequeuniversity.com/rules/axe/4.13/landmark-unique?application=axeAPI",
+      "pages": [
+        "https://staging-7e48-skyyrose.wpcomstaging.com/lookbook/",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/black-rose/",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/signature/",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/"
+      ],
+      "instances": 22,
+      "nodes": [
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/lookbook/",
+          "width": 390,
+          "target": [
+            "article[data-scene-id=\"sig-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-sig-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/lookbook/",
+          "width": 390,
+          "target": [
+            "article[data-scene-id=\"sig-commerce-3\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-sig-commerce-3\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/lookbook/",
+          "width": 1440,
+          "target": [
+            "article[data-scene-id=\"sig-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-sig-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/lookbook/",
+          "width": 1440,
+          "target": [
+            "article[data-scene-id=\"sig-commerce-3\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-sig-commerce-3\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 1440,
+          "target": [
+            "article[data-scene-id=\"lh-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-lh-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 390,
+          "target": [
+            "article[data-scene-id=\"lh-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-lh-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/black-rose/",
+          "width": 1440,
+          "target": [
+            "article[data-scene-id=\"br-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-br-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/black-rose/",
+          "width": 390,
+          "target": [
+            "article[data-scene-id=\"br-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-br-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/signature/",
+          "width": 1440,
+          "target": [
+            "article[data-scene-id=\"sig-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-sig-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/signature/",
+          "width": 390,
+          "target": [
+            "article[data-scene-id=\"sig-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-sig-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+          "width": 1440,
+          "target": [
+            ".sr2-recovered-worlds"
+          ],
+          "html": "<section class=\"sr2-recovered-worlds\" data-recovery-rail=\"\" aria-labelledby=\"sr2-recovered-worlds-title\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+          "width": 1440,
+          "target": [
+            "article[data-scene-id=\"lh-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-lh-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+          "width": 1440,
+          "target": [
+            ".sr2-recovered-worlds"
+          ],
+          "html": "<section class=\"sr2-recovered-worlds\" data-recovery-rail=\"\" aria-labelledby=\"sr2-recovered-worlds-title\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+          "width": 1440,
+          "target": [
+            "article[data-scene-id=\"br-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-br-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+          "width": 390,
+          "target": [
+            ".sr2-recovered-worlds"
+          ],
+          "html": "<section class=\"sr2-recovered-worlds\" data-recovery-rail=\"\" aria-labelledby=\"sr2-recovered-worlds-title\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+          "width": 390,
+          "target": [
+            "article[data-scene-id=\"lh-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-lh-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+          "width": 390,
+          "target": [
+            ".sr2-recovered-worlds"
+          ],
+          "html": "<section class=\"sr2-recovered-worlds\" data-recovery-rail=\"\" aria-labelledby=\"sr2-recovered-worlds-title\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+          "width": 390,
+          "target": [
+            "article[data-scene-id=\"br-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-br-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+          "width": 1440,
+          "target": [
+            ".sr2-recovered-worlds"
+          ],
+          "html": "<section class=\"sr2-recovered-worlds\" data-recovery-rail=\"\" aria-labelledby=\"sr2-recovered-worlds-title\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+          "width": 1440,
+          "target": [
+            "article[data-scene-id=\"sig-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-sig-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+          "width": 390,
+          "target": [
+            ".sr2-recovered-worlds"
+          ],
+          "html": "<section class=\"sr2-recovered-worlds\" data-recovery-rail=\"\" aria-labelledby=\"sr2-recovered-worlds-title\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+          "width": 390,
+          "target": [
+            "article[data-scene-id=\"sig-commerce-1\"] > .sr2-hero-commerce__details > .sr2-hero-commerce__products"
+          ],
+          "html": "<nav class=\"sr2-hero-commerce__products\" aria-labelledby=\"scene-products-title-sig-commerce-1\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        }
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "url": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=axeAPI",
+      "pages": [
+        "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/"
+      ],
+      "instances": 11,
+      "nodes": [
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 1440,
+          "target": [
+            ".sr2-immersive__chapter-mark"
+          ],
+          "html": "<p class=\"sr2-immersive__chapter-mark\" aria-hidden=\"true\">03</p>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.6pt (11.52px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 1440,
+          "target": [
+            "a[aria-current=\"step\"] > span"
+          ],
+          "html": "<span>01</span>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.6pt (11.52px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 1440,
+          "target": [
+            "a[href$=\"#chapter-lh-commerce-2\"] > span"
+          ],
+          "html": "<span>02</span>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.6pt (11.52px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 1440,
+          "target": [
+            "a[href$=\"#chapter-lh-commerce-3\"] > span"
+          ],
+          "html": "<span>03</span>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.6pt (11.52px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 1440,
+          "target": [
+            ".sr2-immersive__prologue > .sr2-immersive__eyebrow"
+          ],
+          "html": "<p class=\"sr2-immersive__eyebrow\">Love Hurts</p>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.6pt (11.52px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 1440,
+          "target": [
+            ".sr2-immersive__portal > .sr2-immersive__eyebrow"
+          ],
+          "html": "<p class=\"sr2-immersive__eyebrow\">The story continues in the collection</p>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.6pt (11.52px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 390,
+          "target": [
+            "a[aria-current=\"step\"] > span"
+          ],
+          "html": "<span>01</span>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.3pt (11.04px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 390,
+          "target": [
+            "a[href$=\"#chapter-lh-commerce-2\"] > span"
+          ],
+          "html": "<span>02</span>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.3pt (11.04px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 390,
+          "target": [
+            "a[href$=\"#chapter-lh-commerce-3\"] > span"
+          ],
+          "html": "<span>03</span>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.3pt (11.04px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 390,
+          "target": [
+            ".sr2-immersive__prologue > .sr2-immersive__eyebrow"
+          ],
+          "html": "<p class=\"sr2-immersive__eyebrow\">Love Hurts</p>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.3pt (11.04px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/",
+          "width": 390,
+          "target": [
+            ".sr2-immersive__portal > .sr2-immersive__eyebrow"
+          ],
+          "html": "<p class=\"sr2-immersive__eyebrow\">The story continues in the collection</p>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.96 (foreground color: #dc143c, background color: #0a0a0a, font size: 8.3pt (11.04px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "id": "heading-order",
+      "impact": "moderate",
+      "help": "Heading levels should only increase by one",
+      "url": "https://dequeuniversity.com/rules/axe/4.13/heading-order?application=axeAPI",
+      "pages": [
+        "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/track-order/",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/wishlist/"
+      ],
+      "instances": 6,
+      "nodes": [
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/",
+          "width": 1440,
+          "target": [
+            ".robots-nocontent > .sd-title"
+          ],
+          "html": "<h3 class=\"sd-title\">Share this:</h3>",
+          "summary": "Fix any of the following:\n  Heading order invalid"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/",
+          "width": 390,
+          "target": [
+            ".robots-nocontent > .sd-title"
+          ],
+          "html": "<h3 class=\"sd-title\">Share this:</h3>",
+          "summary": "Fix any of the following:\n  Heading order invalid"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/track-order/",
+          "width": 1440,
+          "target": [
+            ".robots-nocontent > .sd-title"
+          ],
+          "html": "<h3 class=\"sd-title\">Share this:</h3>",
+          "summary": "Fix any of the following:\n  Heading order invalid"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/track-order/",
+          "width": 390,
+          "target": [
+            ".robots-nocontent > .sd-title"
+          ],
+          "html": "<h3 class=\"sd-title\">Share this:</h3>",
+          "summary": "Fix any of the following:\n  Heading order invalid"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wishlist/",
+          "width": 1440,
+          "target": [
+            ".robots-nocontent > .sd-title"
+          ],
+          "html": "<h3 class=\"sd-title\">Share this:</h3>",
+          "summary": "Fix any of the following:\n  Heading order invalid"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wishlist/",
+          "width": 390,
+          "target": [
+            ".robots-nocontent > .sd-title"
+          ],
+          "html": "<h3 class=\"sd-title\">Share this:</h3>",
+          "summary": "Fix any of the following:\n  Heading order invalid"
+        }
+      ]
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "help": "All page content should be contained by landmarks",
+      "url": "https://dequeuniversity.com/rules/axe/4.13/region?application=axeAPI",
+      "pages": [
+        "https://staging-7e48-skyyrose.wpcomstaging.com/step-inside-the-signature-virtual-experience/"
+      ],
+      "instances": 2,
+      "nodes": [
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/step-inside-the-signature-virtual-experience/",
+          "width": 1440,
+          "target": [
+            "#reply-title"
+          ],
+          "html": "<h3 id=\"reply-title\" class=\"comment-reply-title\">Leave a Reply<small><a rel=\"nofollow\" id=\"cancel-comment-reply-link\" href=\"/step-inside-the-signature-virtual-experience/#respond\" style=\"display:none;\">Cancel reply</a></small></h3>",
+          "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/step-inside-the-signature-virtual-experience/",
+          "width": 390,
+          "target": [
+            "#reply-title"
+          ],
+          "html": "<h3 id=\"reply-title\" class=\"comment-reply-title\">Leave a Reply<small><a rel=\"nofollow\" id=\"cancel-comment-reply-link\" href=\"/step-inside-the-signature-virtual-experience/#respond\" style=\"display:none;\">Cancel reply</a></small></h3>",
+          "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        }
+      ]
+    },
+    {
+      "id": "link-name",
+      "impact": "serious",
+      "help": "Links must have discernible text",
+      "url": "https://dequeuniversity.com/rules/axe/4.13/link-name?application=axeAPI",
+      "pages": [
+        "https://staging-7e48-skyyrose.wpcomstaging.com/category/collections/",
+        "https://staging-7e48-skyyrose.wpcomstaging.com/category/collections/signature-collection/"
+      ],
+      "instances": 4,
+      "nodes": [
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/category/collections/",
+          "width": 1440,
+          "target": [
+            ".sr2-journal-card__media"
+          ],
+          "html": "<a class=\"sr2-journal-card__media\" href=\"https://staging-7e48-skyyrose.wpcomstaging.com/step-inside-the-signature-virtual-experience/\"></a>",
+          "summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/category/collections/",
+          "width": 390,
+          "target": [
+            ".sr2-journal-card__media"
+          ],
+          "html": "<a class=\"sr2-journal-card__media\" href=\"https://staging-7e48-skyyrose.wpcomstaging.com/step-inside-the-signature-virtual-experience/\"></a>",
+          "summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/category/collections/signature-collection/",
+          "width": 1440,
+          "target": [
+            ".sr2-journal-card__media"
+          ],
+          "html": "<a class=\"sr2-journal-card__media\" href=\"https://staging-7e48-skyyrose.wpcomstaging.com/step-inside-the-signature-virtual-experience/\"></a>",
+          "summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+        },
+        {
+          "url": "https://staging-7e48-skyyrose.wpcomstaging.com/category/collections/signature-collection/",
+          "width": 390,
+          "target": [
+            ".sr2-journal-card__media"
+          ],
+          "html": "<a class=\"sr2-journal-card__media\" href=\"https://staging-7e48-skyyrose.wpcomstaging.com/step-inside-the-signature-virtual-experience/\"></a>",
+          "summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+      "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+      "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/hello-world/",
+      "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/journal/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/hello-world/",
+      "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/journal/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/10-designer-buys-that-are-worth-the-investment/",
+      "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/journal/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/10-designer-buys-that-are-worth-the-investment/",
+      "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/journal/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/our-pick-of-the-coolest-denim-jackets-this-season/",
+      "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/journal/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/our-pick-of-the-coolest-denim-jackets-this-season/",
+      "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/journal/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/jay-ellis-proves-one-suit-can-work-four-different-ways/",
+      "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/journal/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/jay-ellis-proves-one-suit-can-work-four-different-ways/",
+      "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/journal/",
+      "width": 390,
+      "status": 200
+    }
+  ],
+  "overflows": [],
+  "incompleteRules": [
+    "color-contrast",
+    "aria-valid-attr-value",
+    "aria-prohibited-attr",
+    "frame-tested"
+  ]
+}

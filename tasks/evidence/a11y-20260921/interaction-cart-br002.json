@@ -1,0 +1,52 @@
+{
+  "scope": "isolated anonymous staging context;BR-002 M quantity1;no order/payment",
+  "runs": [
+    {
+      "width": 1440,
+      "route": "cart",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+      "h1": [
+        "Keep your pieces close."
+      ],
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 1440,
+      "route": "checkout",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+      "h1": [
+        "Your pieces are almost home.",
+        "Terms of Service"
+      ],
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 390,
+      "route": "cart",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+      "h1": [
+        "Keep your pieces close."
+      ],
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "width": 390,
+      "route": "checkout",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+      "h1": [
+        "Your pieces are almost home.",
+        "Terms of Service"
+      ],
+      "violations": [],
+      "incomplete": []
+    }
+  ],
+  "beforeCleanup": [
+    "\n\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\tBLACK Rose Joggers - M\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\tEach $50.00\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tLine subtotal $50.00\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\tBLACK Rose Joggers - M quantity\n\t\n\t\n\t\t\t\t\t\t\t\t\t\t\t\tRemove\t\t\t\t\t\n\t\t\t\t",
+    "\n\n\t\t\t\n\t\t\t\t\t\t\t\n\n\t\t\t\n\t\t\t\tBLACK Rose Joggers - M\t\t\t\n\n\t\t\t\n\t\t\t\t1 × $50.00\t\t\t\n\n\t\t\t\n\t\t\t\t\t\t\t\n\t\t"
+  ],
+  "afterCleanup": "YOUR BAG\n\nKeep your pieces close.\nBLACK Rose Joggers - M\nEach $50.00\n\nLine subtotal\n$50.00\n\nBLACK Rose Joggers - M quantity\nREMOVE\nCode\nAPPLY\nUPDATE BAG\nCart totals\n$50.00\nStandard shipping: $17.00\nExpress shipping: $22.00\n\nShipping to CA.\n\nChange address\n$67.00\nPROCEED TO CHECKOUT"
+}

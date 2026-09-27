@@ -95,7 +95,7 @@ foreach ( (array) ( $record['variants'] ?? array() ) as $variant ) {
 			<?php if ( ! empty( $record['review_message'] ) ) : ?><p class="sr2-hero-commerce__review"><?php echo esc_html( $record['review_message'] ); ?></p><?php endif; ?>
 		</header>
 		<nav class="sr2-hero-commerce__products" aria-labelledby="<?php echo esc_attr( 'scene-products-title-' . $scene_id ); ?>">
-			<h4 id="<?php echo esc_attr( 'scene-products-title-' . $scene_id ); ?>" tabindex="-1"><?php echo esc_html( $is_preorder_scene ? __( 'Pre-order this look', 'skyyrose-flagship-2' ) : __( 'Shop this look', 'skyyrose-flagship-2' ) ); ?></h4>
+			<h4 id="<?php echo esc_attr( 'scene-products-title-' . $scene_id ); ?>" tabindex="-1"><?php echo esc_html( $is_preorder_scene ? __( 'Pre-order this look', 'skyyrose-flagship-2' ) : __( 'Shop this look', 'skyyrose-flagship-2' ) ); ?><span class="screen-reader-text">: <?php echo esc_html( $scene['label'] ); ?></span></h4>
 			<?php if ( $is_preorder_scene ) : ?><p><?php esc_html_e( 'The pieces in this scene are pre-order items. Full payment is due at checkout. Review each product for shipping details, or contact Client Services for an estimate before ordering.', 'skyyrose-flagship-2' ); ?></p><?php endif; ?>
 			<ul>
 				<?php foreach ( $products['slots'] as $slot ) : ?>

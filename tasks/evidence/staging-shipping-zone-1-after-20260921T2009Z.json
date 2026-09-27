@@ -1,0 +1,57 @@
+{
+  "home": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "environment": "staging",
+  "zone": {
+    "id": 1,
+    "name": "United States (US)",
+    "methods": [
+      {
+        "id": "free_shipping",
+        "instance_id": 1,
+        "enabled": "yes",
+        "title": "Free standard shipping",
+        "settings": {
+          "requires": "min_amount",
+          "min_amount": "200",
+          "ignore_discounts": "no"
+        }
+      },
+      {
+        "id": "flat_rate",
+        "instance_id": 2,
+        "enabled": "yes",
+        "title": "Standard shipping",
+        "settings": {
+          "tax_status": "taxable",
+          "cost": "17"
+        }
+      },
+      {
+        "id": "flat_rate",
+        "instance_id": 3,
+        "enabled": "yes",
+        "title": "Express shipping",
+        "settings": {
+          "tax_status": "taxable",
+          "cost": "22"
+        }
+      }
+    ]
+  },
+  "synthetic_cart_verification": [
+    {
+      "sku": "br-003",
+      "quantity": 1,
+      "subtotal": "100",
+      "available": ["Standard shipping", "Express shipping"]
+    },
+    {
+      "sku": "br-003",
+      "quantity": 2,
+      "subtotal": "200",
+      "available": ["Free standard shipping", "Standard shipping", "Express shipping"]
+    }
+  ],
+  "order_created": false,
+  "payment_attempted": false
+}

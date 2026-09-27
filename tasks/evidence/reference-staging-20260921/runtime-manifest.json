@@ -1,0 +1,84 @@
+{
+  "site": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "source_checkout": "/Users/theceo/.codex/worktrees/abe0/DevSkyy",
+  "source_head": "2c7644772be1d19c9218ebfb2b980350033b83f7",
+  "reason": "Reference-design runtime patch; existing approved SkyyRose assets and motion preserved",
+  "allowlist_only": true,
+  "files": [
+    {
+      "path": "template-parts/home/editorial-collection.php",
+      "before": "ABSENT",
+      "after": "3e50ee82663e270f96d951de49be31860b027d9f5a0366ee5d9df695638ac515"
+    },
+    {
+      "path": "template-parts/home/editorial-hero.php",
+      "before": "ABSENT",
+      "after": "a64ce5442e8ae800b700ca545068a623481b4117e7e7f55b933e1e56b0c7a92a"
+    },
+    {
+      "path": "template-parts/home/editorial-journal.php",
+      "before": "ABSENT",
+      "after": "a8daf8b0bb61a899c7db63f53a361e92fc4d0df40c33b80c13a9d0c7791e633a"
+    },
+    {
+      "path": "template-parts/home/editorial-philosophy.php",
+      "before": "ABSENT",
+      "after": "f6c07de4e120545845d113ee9c77793487fef8ab30966691540fa8bf3600518d"
+    },
+    {
+      "path": "template-parts/home/editorial-product-edit.php",
+      "before": "ABSENT",
+      "after": "843269ba53b91cb97cd5f01544a5dd7377ca3ac47fc51c5c7253f158e38be5a0"
+    },
+    {
+      "path": "assets/css/critical/home.min.css",
+      "before": "18138ebf851e850fa830b71447c873d7af6a2feda87f8160c2b3a8561341741e",
+      "after": "00e87efbb58cc9cbc091c9979e394f06ef677d9294e899baad896603c06074d1"
+    },
+    {
+      "path": "assets/css/global-shell.css",
+      "before": "8c7b86b2c4eb0ef4403ce6aba26fb0eed3c741ad4765279ba744e2e8261d1b48",
+      "after": "c5b3894fe676fca73b1c7bd3f136ce97d32c0cbed7bd8610b2c5ff99280263af"
+    },
+    {
+      "path": "assets/css/global-shell.min.css",
+      "before": "3605b1a55d888abee1defc437abaadbc34b75cb451c0eeccd55e5641474f7981",
+      "after": "d61fc1d07df5374b601535790b91fdaae79c79a115f4c560ac9b94918cb91e45"
+    },
+    {
+      "path": "assets/css/home-page.css",
+      "before": "97a9695f5821df79d08578b71bca0207b32a59577eccac4e3105209745046278",
+      "after": "9aa5fd2f372b7a18f6e6f6837c7b8550f6b4ee0d59aac3b7ef1a4fb25b174f36"
+    },
+    {
+      "path": "assets/css/home-page.min.css",
+      "before": "e5f099955bc2f3740e1cb7a2f7d3b299caa8b77dbafe653a848bdeb18de38e4c",
+      "after": "35b3d6a88c242110eb80590130822173b08536f76ea9e6d685d3f9d3779b96f1"
+    },
+    {
+      "path": "front-page.php",
+      "before": "3604bf1816e0305fa113613718f4efed0335d677c3f17ce7134492e0e259e0d3",
+      "after": "d06bcd8c0fa142a813b6020992bc76a2dfe84d63e30240f8f6ef876435f5a9d1"
+    },
+    {
+      "path": "inc/critical-rendering.php",
+      "before": "37f4729df8a296efd314d9d7fd8e778327c6ee99a4d4d88d2a45632651792c99",
+      "after": "c6c227bd52d4142135686a463e2235601c216e89d748d93943735c0d9dfe3123"
+    },
+    {
+      "path": "inc/global-shell.php",
+      "before": "5b564341263f67b7fbca6c4b75db81545c8ba259719ea93d018abcc11fb65d16",
+      "after": "26eadb2dcf6baacfca5576b5a68dddd1cc47eb4e057fb4287e3235bedfbe2b4f"
+    },
+    {
+      "path": "inc/presentation-registry.php",
+      "before": "5df3b06c98df51fcc1bd24e6b78e08a666f992448a917a6c182af00a5263500d",
+      "after": "d6da13f00c9c81ba3fc228c5273ff3d671038527fcf8b856e5b878ab763fe61c"
+    },
+    {
+      "path": "languages/skyyrose-flagship-2.pot",
+      "before": "4b488af1d77bc91a8e7d536386de208318899647ecc073da43fd26a29e65b196",
+      "after": "65058780e09abed6b9273df79e826b27ab02862a5575ae438c34814173e03e8d"
+    }
+  ]
+}

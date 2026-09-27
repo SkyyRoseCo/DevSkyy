@@ -1,0 +1,364 @@
+{
+  "date": "2026-09-21T22:12:32.628Z",
+  "target": "http://127.0.0.1:18883/",
+  "candidate": "in-progress latest Terra build; local fixture",
+  "authentication": "NOT_APPLICABLE",
+  "viewports": [
+    {
+      "width": 390,
+      "errors": [],
+      "styles": [
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css?ver=2.4.4-10460ea9ad7f",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css?ver=2.4.4-a652cf8ed16a",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/home-page.min.css?ver=2.4.4-f17883bd4dcd",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/global-shell.min.css?ver=2.4.4-d61fc1d07df5",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/search-preview.min.css?ver=2.4.4-b17834580431",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/premium-commerce.min.css?ver=2.4.4-62689af757be",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/quick-view-commerce.min.css?ver=2.4.4-ed07f9eab29d",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/mascot.min.css?ver=2.4.4-2972d42a1239"
+      ],
+      "geometry": [
+        {
+          "tag": "SECTION",
+          "class": "sr2-archive-scene sr2-editorial-hero is-hero-poster-ready is-hero-video-ready",
+          "id": "sr2-archive-arrival",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 597.46875,
+            "top": 0,
+            "right": 390,
+            "bottom": 597.46875,
+            "left": 0
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "class": "",
+          "id": "skyy-hero-chat",
+          "rect": {
+            "x": 172,
+            "y": 459.0625,
+            "width": 120,
+            "height": 44,
+            "top": 459.0625,
+            "right": 292,
+            "bottom": 503.0625,
+            "left": 172
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "class": "sr2-recovery-motion-toggle",
+          "id": "",
+          "rect": {
+            "x": 266.234375,
+            "y": 74.390625,
+            "width": 103.765625,
+            "height": 46,
+            "top": 74.390625,
+            "right": 370,
+            "bottom": 120.390625,
+            "left": 266.234375
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-collection",
+          "id": "sr2-archive-worlds",
+          "rect": {
+            "x": 0,
+            "y": 597.46875,
+            "width": 390,
+            "height": 775.734375,
+            "top": 597.46875,
+            "right": 390,
+            "bottom": 1373.203125,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-products",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 1373.203125,
+            "width": 390,
+            "height": 1135.4375,
+            "top": 1373.203125,
+            "right": 390,
+            "bottom": 2508.640625,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-philosophy",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 2508.640625,
+            "width": 390,
+            "height": 787.3125,
+            "top": 2508.640625,
+            "right": 390,
+            "bottom": 3295.953125,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-journal",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 3295.953125,
+            "width": 390,
+            "height": 810.90625,
+            "top": 3295.953125,
+            "right": 390,
+            "bottom": 4106.859375,
+            "left": 0
+          }
+        },
+        {
+          "tag": "DETAILS",
+          "class": "sr2-editorial-worlds",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 4106.859375,
+            "width": 390,
+            "height": 156.171875,
+            "top": 4106.859375,
+            "right": 390,
+            "bottom": 4263.03125,
+            "left": 0
+          }
+        }
+      ],
+      "dialogOpen": true,
+      "restoredFocus": "skyy-ask-input",
+      "pauseLabel": "Play motion",
+      "resumeLabel": "Pause motion",
+      "closedVideos": [
+        {
+          "paused": true,
+          "src": null
+        },
+        {
+          "paused": true,
+          "src": null
+        },
+        {
+          "paused": true,
+          "src": null
+        }
+      ],
+      "detailsOpen": true,
+      "rail": {
+        "width": 358,
+        "scrollWidth": 1064,
+        "scroll": 706
+      },
+      "counter": "03 / 03",
+      "reclosedVideos": [
+        {
+          "paused": true,
+          "state": "offscreen"
+        },
+        {
+          "paused": true,
+          "state": "offscreen"
+        },
+        {
+          "paused": true,
+          "state": "offscreen"
+        }
+      ],
+      "pageWidth": {
+        "viewport": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "width": 1440,
+      "errors": [],
+      "styles": [
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css?ver=2.4.4-10460ea9ad7f",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css?ver=2.4.4-a652cf8ed16a",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/home-page.min.css?ver=2.4.4-f17883bd4dcd",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/global-shell.min.css?ver=2.4.4-d61fc1d07df5",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/search-preview.min.css?ver=2.4.4-b17834580431",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/premium-commerce.min.css?ver=2.4.4-62689af757be",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/quick-view-commerce.min.css?ver=2.4.4-ed07f9eab29d",
+        "http://127.0.0.1:18883/wp-content/themes/skyyrose-flagship-2/assets/css/mascot.min.css?ver=2.4.4-2972d42a1239"
+      ],
+      "geometry": [
+        {
+          "tag": "SECTION",
+          "class": "sr2-archive-scene sr2-editorial-hero is-hero-poster-ready is-hero-video-ready",
+          "id": "sr2-archive-arrival",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 619.1875,
+            "top": 0,
+            "right": 1440,
+            "bottom": 619.1875,
+            "left": 0
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "class": "",
+          "id": "skyy-hero-chat",
+          "rect": {
+            "x": 1056,
+            "y": 548.78125,
+            "width": 120,
+            "height": 44,
+            "top": 548.78125,
+            "right": 1176,
+            "bottom": 592.78125,
+            "left": 1056
+          }
+        },
+        {
+          "tag": "BUTTON",
+          "class": "sr2-recovery-motion-toggle",
+          "id": "",
+          "rect": {
+            "x": 1080.234375,
+            "y": 553.1875,
+            "width": 103.765625,
+            "height": 46,
+            "top": 553.1875,
+            "right": 1184,
+            "bottom": 599.1875,
+            "left": 1080.234375
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-collection",
+          "id": "sr2-archive-worlds",
+          "rect": {
+            "x": 0,
+            "y": 619.1875,
+            "width": 1440,
+            "height": 360,
+            "top": 619.1875,
+            "right": 1440,
+            "bottom": 979.1875,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-products",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 979.1875,
+            "width": 1440,
+            "height": 470.703125,
+            "top": 979.1875,
+            "right": 1440,
+            "bottom": 1449.890625,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-philosophy",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 1449.890625,
+            "width": 1440,
+            "height": 497.671875,
+            "top": 1449.890625,
+            "right": 1440,
+            "bottom": 1947.5625,
+            "left": 0
+          }
+        },
+        {
+          "tag": "SECTION",
+          "class": "sr2-editorial-journal",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 1947.5625,
+            "width": 1440,
+            "height": 288,
+            "top": 1947.5625,
+            "right": 1440,
+            "bottom": 2235.5625,
+            "left": 0
+          }
+        },
+        {
+          "tag": "DETAILS",
+          "class": "sr2-editorial-worlds",
+          "id": "",
+          "rect": {
+            "x": 0,
+            "y": 2235.5625,
+            "width": 1440,
+            "height": 178.5625,
+            "top": 2235.5625,
+            "right": 1440,
+            "bottom": 2414.125,
+            "left": 0
+          }
+        }
+      ],
+      "pauseLabel": "Play motion",
+      "resumeLabel": "Pause motion",
+      "closedVideos": [
+        {
+          "paused": true,
+          "src": null
+        },
+        {
+          "paused": true,
+          "src": null
+        },
+        {
+          "paused": true,
+          "src": null
+        }
+      ],
+      "detailsOpen": true,
+      "rail": {
+        "width": 1296,
+        "scrollWidth": 3245,
+        "scroll": 1946
+      },
+      "counter": "03 / 03",
+      "reclosedVideos": [
+        {
+          "paused": true,
+          "state": "offscreen"
+        },
+        {
+          "paused": true,
+          "state": "offscreen"
+        },
+        {
+          "paused": true,
+          "state": "offscreen"
+        }
+      ],
+      "pageWidth": {
+        "viewport": 1440,
+        "scroll": 1440
+      }
+    }
+  ]
+}

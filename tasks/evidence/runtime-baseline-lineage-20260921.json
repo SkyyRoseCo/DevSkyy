@@ -1,0 +1,110 @@
+{
+  "source_head": "2c7644772be1d19c9218ebfb2b980350033b83f7",
+  "reason": "Reviewed FAQ rendering/schema, approved model-front initial/variation/reset gallery, and responsive card delivery fixes. Existing baseline matched HEAD for every changed entry. No scene or product authority hashes changed.",
+  "verification": [
+    "PHP SEO contract PASS",
+    "Pinned native WP7.1/Woo11.1.0 gallery PASS including AJAX and reset",
+    "33 approved front source hashes and exact five ghost substitutions PASS",
+    "Product card and PDP delivery regressions PASS"
+  ],
+  "files": [
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/inc/approved-card-fronts.php",
+      "before": "ba65bf97afe13cca54d4e1214a0d43e1fbc12a4c257cded31414720a3ccfe4bf",
+      "after": "dfaab5d818bde400f169e292d9763c67dbb89bd2c68de0c54119d0cf49264e03"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/inc/pdp-media-delivery.php",
+      "before": "068935b92f9a73370dfdca6dd90cc1fcf8e87e2560cab704516104dbbbcab6ba",
+      "after": "777d9cd06e2d2692d9bf2d4ae4c721496f5830b420de091a4629d58a1c6f0b2c"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/inc/seo-indexing.php",
+      "before": "0448f1c9af0d1e6076592e96bde67620d961175d84c5fe8db6313edf37d90049",
+      "after": "8f77c66ac34e069a86904618a7bf80b193de92d197c89bfd772403604fadf4fc"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/page.php",
+      "before": "d30758d439bc94a3753d56e8d432b53b46072e3f3354bd9cdb395139c340668b",
+      "after": "a3f05485daa0efa68ce22b2f0c6240242d092d18a3ec7142b2dd76ee6abc5023"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/scripts/test-seo-indexing.php",
+      "before": "34cb5c8698e077a10eafa637d71454ce13af26daa68218c2eed6caffb7e7a020",
+      "after": "dc7d2299561bd0c8badf2e23b29d2773402e6e884a407c531c664cffb0235a03"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php",
+      "before": "68ce8cec82f0ef5f76aaca841cb0766565978aafa08cd5126805e60c131d7468",
+      "after": "75a94f99276a74574535f15b743ac94f513f4f4d1e59d90c4916e48cc91be919"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/woocommerce/single-product/product-image.php",
+      "before": "ce9e7e8f2928b6286b44b161115f70906cad0dd57d1cfee8744b4385aec9e837",
+      "after": "7185622650ec585926b191d110f7b02050c588d901cbb4e97989a757127d0405"
+    }
+  ],
+  "baseline_manifest": {
+    "path": "tools/v2-source-certification/runtime-php-baseline.json",
+    "before": "e556c214b650705c62909952850886aade1186a20a2c475912a3bb6b9bfef33f",
+    "after": "9f1860989f1fb4903d96d47ff5340c1265a2454b0d03b6013f956da8d0341960"
+  },
+  "followup": {
+    "reason": "PDP responsive sizes corrected to actual final CSS 52svh mobile and64svh desktop; scoped same-source fallback delivery regression passes",
+    "path": "inc/pdp-media-delivery.php",
+    "before": "777d9cd06e2d2692d9bf2d4ae4c721496f5830b420de091a4629d58a1c6f0b2c",
+    "after": "61ebe09805bc391ff871d85837d64bcee01fff6f6acad029567da5e0b61f0d69",
+    "baseline_manifest_after": "e54f186ea7b49934a05e39769eb7d96509601d370a3e164d2fd56ad725e76ffa"
+  },
+  "final_followup": {
+    "reason": "Reviewed responsive derivative integrity and original-only fallback; per-page reusable service section; add both regression suites to verify command. Existing scene/product authority pins unchanged.",
+    "files": [
+      {
+        "path": "inc/approved-card-fronts.php",
+        "before_runtime_baseline": "dfaab5d818bde400f169e292d9763c67dbb89bd2c68de0c54119d0cf49264e03",
+        "after": "b8152869e4b0c4b000441b245bdb42b53abf3a8866ff83743d7dc23f727cf2fa"
+      },
+      {
+        "path": "inc/pdp-media-delivery.php",
+        "before_runtime_baseline": "61ebe09805bc391ff871d85837d64bcee01fff6f6acad029567da5e0b61f0d69",
+        "after": "359ec0d85b88371aaca41dd8d253cce184a8f2dc111c9fd29b0744a1317584a8"
+      },
+      {
+        "path": "inc/launch-readiness.php",
+        "before_runtime_baseline": null,
+        "after": "5dd0892e606f612881682ca936bdb87f19a825ec5be801786c8e42aa989a7a91"
+      },
+      {
+        "path": "page.php",
+        "before_runtime_baseline": "a3f05485daa0efa68ce22b2f0c6240242d092d18a3ec7142b2dd76ee6abc5023",
+        "after": "7812c3384296c806284960e54adb6af9554e7ced8db598f7af0a747b89242bea"
+      },
+      {
+        "path": "template-parts/pages/service.php",
+        "before_runtime_baseline": null,
+        "after": "b9fa3e29d6729812b03768b9da8d1f500e9ce97a991f8ed8498a1a19bb0d1c9e"
+      }
+    ],
+    "inputs": [
+      {
+        "path": "tools/v2-source-certification/runtime-php-baseline.json",
+        "before": "e54f186ea7b49934a05e39769eb7d96509601d370a3e164d2fd56ad725e76ffa",
+        "after": "85b10d6721599872130b32713f065c649d63c3b5b4c58848b1cfde334edd8ec1"
+      },
+      {
+        "path": "wordpress-theme/skyyrose-flagship-2/package.json",
+        "before": "617a221b051beb1a4c804d405480518fca9b9a59de048b5c042008a194138c1d",
+        "after": "bce159d9953a28fb55baba8080890668d477ef91d3ef28cf146c3d7e381bdd08"
+      }
+    ]
+  },
+  "package_classification": {
+    "added": [
+      "template-parts/pages/service.php",
+      "scripts/test-page-service-template.php"
+    ],
+    "before": "41bac1a8a3a2277cb1d28c397bfdcd0bb99384d2ff04f3d15a68bff1084ad79e",
+    "after": "d7b8622e5e63ee6363aca45ddcccc117b1fff4149f67f1610ee4c16fbe22c304",
+    "reason": "Include real reusable runtime section; exclude its regression from customer package"
+  }
+}

@@ -856,4 +856,62 @@
   });
 
   /* End native commerce adapter. */
+
+  // The three founder-selected on-model looks retain their original seamless
+  // House of Roses loop. CSS owns motion; this controller only gates it.
+  const heroModelLoop = document.querySelector('[data-home-model-loop]');
+  if (heroModelLoop) {
+    const loopToggle = heroModelLoop.querySelector('[data-home-model-toggle]');
+    const desktopMotion = window.matchMedia('(min-width: 64em) and (prefers-reduced-motion: no-preference)');
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let userPaused = false;
+    let outsideViewport = false;
+    let focusActive = false;
+    const syncModelLoop = () => {
+      const motionAllowed = desktopMotion.matches && !navigator.connection?.saveData;
+      const canMove = motionAllowed && !focusActive;
+      const paused = !canMove || userPaused || outsideViewport || document.hidden;
+      if (canMove && heroModelLoop.dataset.motion !== 'continuous') heroModelLoop.scrollLeft = 0;
+      heroModelLoop.dataset.motion = canMove ? 'continuous' : 'static';
+      heroModelLoop.dataset.loopState = paused ? 'paused' : 'running';
+      heroModelLoop.dataset.enhanced = motionAllowed ? 'true' : '';
+      if (!motionAllowed) delete heroModelLoop.dataset.enhanced;
+      if (loopToggle) {
+        loopToggle.hidden = !motionAllowed;
+        loopToggle.setAttribute('aria-pressed', String(userPaused));
+        loopToggle.textContent = userPaused ? 'Resume product film' : 'Pause product film';
+      }
+    };
+    const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+      outsideViewport = !entries[0]?.isIntersecting;
+      syncModelLoop();
+    }, { threshold: 0.05 }) : null;
+    observer?.observe(heroModelLoop);
+    loopToggle?.addEventListener('click', () => { userPaused = !userPaused; syncModelLoop(); });
+    heroModelLoop.addEventListener('focusin', (event) => {
+      if (!event.target.matches('.sr2-editorial-hero__film-card[href]')) return;
+      focusActive = true;
+      syncModelLoop();
+      event.target.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'auto' });
+    });
+    heroModelLoop.addEventListener('focusout', () => {
+      window.setTimeout(() => {
+        focusActive = document.activeElement?.matches('.sr2-editorial-hero__film-card[href]') || false;
+        syncModelLoop();
+      }, 0);
+    });
+    heroModelLoop.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !desktopMotion.matches || navigator.connection?.saveData) return;
+      userPaused = true;
+      syncModelLoop();
+      loopToggle?.focus();
+    });
+    document.addEventListener('visibilitychange', syncModelLoop);
+    desktopMotion.addEventListener?.('change', syncModelLoop);
+    motionPreference.addEventListener?.('change', syncModelLoop);
+    navigator.connection?.addEventListener?.('change', syncModelLoop);
+    window.addEventListener('pagehide', () => observer?.disconnect());
+    window.addEventListener('pageshow', () => { observer?.observe(heroModelLoop); syncModelLoop(); }, { passive: true });
+    syncModelLoop();
+  }
 })();

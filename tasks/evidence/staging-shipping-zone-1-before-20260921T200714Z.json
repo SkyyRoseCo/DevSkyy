@@ -1,0 +1,30 @@
+{
+  "captured_at_gmt": "2026-09-21T20:07:14+00:00",
+  "home": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "environment": "staging",
+  "zone": {
+    "id": 1,
+    "name": "United States (US)",
+    "locations": [
+      {
+        "code": "US",
+        "type": "country"
+      }
+    ],
+    "methods": [
+      {
+        "id": "free_shipping",
+        "instance_id": 1,
+        "enabled": "yes",
+        "title": "Free shipping",
+        "option_name": "woocommerce_free_shipping_1_settings",
+        "settings": {
+          "title": "Free shipping",
+          "requires": "",
+          "min_amount": "0",
+          "ignore_discounts": "no"
+        }
+      }
+    ]
+  }
+}

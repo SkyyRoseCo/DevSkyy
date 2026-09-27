@@ -30,7 +30,7 @@
 /* The template moves only the registered native excerpt after the summary hook.
  * All visual order now follows DOM order, including extension controls and links. */
 .woocommerce div.product.sr2-pdp-product--editorial div.summary { display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: var(--sr2-space-3); width: auto; min-width: 0; float: none; margin: 0; padding: var(--sr2-space-8) 0 0 var(--sr2-space-6); }
-.sr2-pdp-product--editorial .summary > .sr2-pdp-product__collection { margin: 0; color: var(--sr2-color-action); font: 400 var(--sr2-type-index)/var(--sr2-leading-utility) var(--sr2-font-index); letter-spacing: var(--sr2-tracking-index); text-transform: none; }
+.sr2-pdp-product--editorial .summary > .sr2-pdp-product__collection { margin: 0; color: var(--sr2-color-action); font: 400 var(--sr2-type-index)/var(--sr2-leading-utility) var(--sr2-font-index); letter-spacing: var(--sr2-tracking-index); text-align: center; text-transform: none; }
 .woocommerce div.product.sr2-pdp-product--editorial .summary > .product_title { max-width: 20ch; margin: 0; font: 750 var(--sr2-type-display)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); }
 .woocommerce div.product.sr2-pdp-product--editorial .summary > .price { margin: 0; color: var(--sr2-color-text); font: 600 var(--sr2-type-commerce)/var(--sr2-leading-commerce) var(--sr2-font-body); }
 .sr2-pdp-product--editorial .summary > .woocommerce-product-rating { margin: 0; font-size: var(--sr2-type-utility); }

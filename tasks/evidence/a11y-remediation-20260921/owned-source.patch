@@ -1,0 +1,113 @@
+diff --git a/tmp/skyyrose-a11y-fixes-20260921/baseline/archive.php b/archive.php
+index d0772afb5..7d0f93d12 100644
+--- a/tmp/skyyrose-a11y-fixes-20260921/baseline/archive.php
++++ b/archive.php
+@@ -3,5 +3,5 @@
+ defined( 'ABSPATH' ) || exit;
+ get_header();
+ ?>
+-<main id="primary" class="sr2-journal" data-sr2-route="journal"><header class="sr2-journal__hero"><p class="sr2-eyebrow"><?php esc_html_e( 'SkyyRose Journal', 'skyyrose-flagship-2' ); ?></p><h1><?php the_archive_title(); ?></h1><?php the_archive_description( '<p>', '</p>' ); ?></header><?php if ( have_posts() ) : ?><section class="sr2-journal__grid"><?php while ( have_posts() ) : the_post(); ?><article <?php post_class( 'sr2-journal-card' ); ?>><a class="sr2-journal-card__media" href="<?php the_permalink(); ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'large', array( 'loading' => 'lazy', 'decoding' => 'async' ) ); } ?></a><div class="sr2-journal-card__copy"><p class="sr2-eyebrow"><?php echo esc_html( get_the_date() ); ?></p><h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2><p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 26 ) ); ?></p></div></article><?php endwhile; ?></section><nav class="sr2-pagination" aria-label="<?php esc_attr_e( 'Archive pages', 'skyyrose-flagship-2' ); ?>"><?php the_posts_pagination(); ?></nav><?php else : ?><p class="sr2-empty"><?php esc_html_e( 'No stories were found.', 'skyyrose-flagship-2' ); ?></p><?php endif; ?></main>
++<main id="primary" class="sr2-journal" data-sr2-route="journal"><header class="sr2-journal__hero"><p class="sr2-eyebrow"><?php esc_html_e( 'SkyyRose Journal', 'skyyrose-flagship-2' ); ?></p><h1><?php the_archive_title(); ?></h1><?php the_archive_description( '<p>', '</p>' ); ?></header><?php if ( have_posts() ) : ?><section class="sr2-journal__grid"><?php while ( have_posts() ) : the_post(); ?><article <?php post_class( 'sr2-journal-card' ); ?>><?php if ( has_post_thumbnail() ) : ?><a class="sr2-journal-card__media" href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr( get_the_title() ); ?>"><?php the_post_thumbnail( 'large', array( 'loading' => 'lazy', 'decoding' => 'async' ) ); ?></a><?php endif; ?><div class="sr2-journal-card__copy"><p class="sr2-eyebrow"><?php echo esc_html( get_the_date() ); ?></p><h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2><p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 26 ) ); ?></p></div></article><?php endwhile; ?></section><nav class="sr2-pagination" aria-label="<?php esc_attr_e( 'Archive pages', 'skyyrose-flagship-2' ); ?>"><?php the_posts_pagination(); ?></nav><?php else : ?><p class="sr2-empty"><?php esc_html_e( 'No stories were found.', 'skyyrose-flagship-2' ); ?></p><?php endif; ?></main>
+ <?php get_footer(); ?>
+diff --git a/tmp/skyyrose-a11y-fixes-20260921/baseline/single.php b/single.php
+index 633fe7451..7a5778753 100644
+--- a/tmp/skyyrose-a11y-fixes-20260921/baseline/single.php
++++ b/single.php
+@@ -17,7 +17,7 @@ while ( have_posts() ) : the_post();
+ 			<header class="sr2-story__head"><p class="sr2-eyebrow"><?php echo esc_html( get_the_date() ); ?><?php if ( ! empty( $categories ) ) : ?> · <?php echo esc_html( $categories[0]->name ); ?><?php endif; ?></p><h1><?php the_title(); ?></h1></header>
+ 			<div class="sr2-story__body entry-content"><?php the_content(); wp_link_pages( array( 'before' => '<nav class="sr2-pagination">', 'after' => '</nav>' ) ); ?></div>
+ 			<nav class="sr2-story__nav" aria-label="<?php esc_attr_e( 'Post navigation', 'skyyrose-flagship-2' ); ?>"><?php the_post_navigation( array( 'prev_text' => esc_html__( 'Previous story: %title', 'skyyrose-flagship-2' ), 'next_text' => esc_html__( 'Next story: %title', 'skyyrose-flagship-2' ) ) ); ?></nav>
++			<?php if ( comments_open() || get_comments_number() ) : comments_template(); endif; ?>
+ 		</article>
+ 	</main>
+-	<?php if ( comments_open() || get_comments_number() ) : comments_template(); endif; ?>
+ <?php endwhile; get_footer(); ?>
+diff --git a/tmp/skyyrose-a11y-fixes-20260921/baseline/template-parts/commerce/hero-composed-scene.php b/template-parts/commerce/hero-composed-scene.php
+index 58ba66aac..1261a5a75 100644
+--- a/tmp/skyyrose-a11y-fixes-20260921/baseline/template-parts/commerce/hero-composed-scene.php
++++ b/template-parts/commerce/hero-composed-scene.php
+@@ -95,7 +95,7 @@ foreach ( (array) ( $record['variants'] ?? array() ) as $variant ) {
+ 			<?php if ( ! empty( $record['review_message'] ) ) : ?><p class="sr2-hero-commerce__review"><?php echo esc_html( $record['review_message'] ); ?></p><?php endif; ?>
+ 		</header>
+ 		<nav class="sr2-hero-commerce__products" aria-labelledby="<?php echo esc_attr( 'scene-products-title-' . $scene_id ); ?>">
+-			<h4 id="<?php echo esc_attr( 'scene-products-title-' . $scene_id ); ?>" tabindex="-1"><?php echo esc_html( $is_preorder_scene ? __( 'Pre-order this look', 'skyyrose-flagship-2' ) : __( 'Shop this look', 'skyyrose-flagship-2' ) ); ?></h4>
++			<h4 id="<?php echo esc_attr( 'scene-products-title-' . $scene_id ); ?>" tabindex="-1"><?php echo esc_html( $is_preorder_scene ? __( 'Pre-order this look', 'skyyrose-flagship-2' ) : __( 'Shop this look', 'skyyrose-flagship-2' ) ); ?><span class="screen-reader-text">: <?php echo esc_html( $scene['label'] ); ?></span></h4>
+ 			<?php if ( $is_preorder_scene ) : ?><p><?php esc_html_e( 'The pieces in this scene are pre-order items. Full payment is due at checkout. Review each product for shipping details, or contact Client Services for an estimate before ordering.', 'skyyrose-flagship-2' ); ?></p><?php endif; ?>
+ 			<ul>
+ 				<?php foreach ( $products['slots'] as $slot ) : ?>
+diff --git a/tmp/skyyrose-a11y-fixes-20260921/baseline/template-parts/collections/scroll-world.php b/template-parts/collections/scroll-world.php
+index 1a0979950..8df27745a 100644
+--- a/tmp/skyyrose-a11y-fixes-20260921/baseline/template-parts/collections/scroll-world.php
++++ b/template-parts/collections/scroll-world.php
+@@ -7,7 +7,7 @@ $scene_chapters = skyyrose2_collection_commerce_scenes( $scene_slug );
+ if ( ! $scene_chapters ) { return; }
+ ?>
+ <section class="sr2-recovered-worlds" data-recovery-rail aria-labelledby="sr2-recovered-worlds-title">
+-	<header class="sr2-world-section-head"><div><p class="sr2-world-index"><?php esc_html_e( 'Scroll World', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-recovered-worlds-title" data-sr2-type-motion="collection"><?php echo esc_html( $scene_collection['world_heading'] ); ?></h2><p><?php echo esc_html( $scene_collection['world_intro'] ); ?></p></div><div class="sr2-recovery-controls" hidden><button type="button" data-recovery-prev aria-label="<?php esc_attr_e( 'Previous chapter', 'skyyrose-flagship-2' ); ?>">←</button><span data-recovery-count aria-live="polite"></span><button type="button" data-recovery-next aria-label="<?php esc_attr_e( 'Next chapter', 'skyyrose-flagship-2' ); ?>">→</button></div></header>
++	<header class="sr2-world-section-head"><div><p class="sr2-world-index"><?php esc_html_e( 'Scroll World', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-recovered-worlds-title" data-sr2-type-motion="collection"><span class="screen-reader-text"><?php echo esc_html( $scene_collection['name'] ); ?>: </span><?php echo esc_html( $scene_collection['world_heading'] ); ?></h2><p><?php echo esc_html( $scene_collection['world_intro'] ); ?></p></div><div class="sr2-recovery-controls" hidden><button type="button" data-recovery-prev aria-label="<?php esc_attr_e( 'Previous chapter', 'skyyrose-flagship-2' ); ?>">←</button><span data-recovery-count aria-live="polite"></span><button type="button" data-recovery-next aria-label="<?php esc_attr_e( 'Next chapter', 'skyyrose-flagship-2' ); ?>">→</button></div></header>
+ 	<div class="sr2-recovered-worlds__rail" data-recovery-track tabindex="0" aria-label="<?php esc_attr_e( 'Collection story chapters', 'skyyrose-flagship-2' ); ?>">
+ 	<?php foreach ( $scene_chapters as $scene_index => $scene_chapter ) : ?>
+ 		<?php if ( ! empty( $scene_chapter['hero_composed'] ) ) : ?>
+diff --git a/tmp/skyyrose-a11y-fixes-20260921/baseline/template-parts/home/editorial-hero.php b/template-parts/home/editorial-hero.php
+index 5eda02ecf..ba369ef24 100644
+--- a/tmp/skyyrose-a11y-fixes-20260921/baseline/template-parts/home/editorial-hero.php
++++ b/template-parts/home/editorial-hero.php
+@@ -23,7 +23,7 @@ $model_media = array(
+ 	</div>
+ 	<div class="sr2-archive-scene__veil sr2-editorial-hero__veil" aria-hidden="true"></div>
+ 	<?php if ( count( $products ) === count( $model_media ) ) : ?>
+-		<div class="sr2-editorial-hero__film" data-home-model-loop data-motion="static" aria-label="<?php esc_attr_e( 'Featured on-model looks', 'skyyrose-flagship-2' ); ?>">
++		<div class="sr2-editorial-hero__film" data-home-model-loop data-motion="static" role="group" aria-label="<?php esc_attr_e( 'Featured on-model looks', 'skyyrose-flagship-2' ); ?>">
+ 			<div class="sr2-editorial-hero__film-track">
+ 				<?php foreach ( array( false, true ) as $is_copy ) : ?>
+ 					<?php foreach ( $model_media as $sku => $media_path ) : ?>
+diff --git a/tmp/skyyrose-a11y-fixes-20260921/baseline/inc/launch-readiness.php b/inc/launch-readiness.php
+index 42ef5960c..07428e149 100644
+--- a/tmp/skyyrose-a11y-fixes-20260921/baseline/inc/launch-readiness.php
++++ b/inc/launch-readiness.php
+@@ -50,6 +50,15 @@ function skyyrose2_normalize_page_content_headings( $content ) {
+ }
+ add_filter( 'the_content', 'skyyrose2_normalize_page_content_headings', 30 );
+ 
++/** Keep Jetpack sharing controls while preventing their utility label from skipping heading levels. */
++function skyyrose2_jetpack_sharing_headline_html( $headline_html, $label, $context ) {
++	if ( 'sharing' !== $context ) {
++		return $headline_html;
++	}
++	return '<p class="sd-title">' . esc_html( $label ) . '</p>';
++}
++add_filter( 'jetpack_sharing_headline_html', 'skyyrose2_jetpack_sharing_headline_html', 10, 3 );
++
+ /** Preserve legacy URLs while keeping verified demo prose out of discovery. */
+ function skyyrose2_exclude_demo_editorials( $query ) {
+ 	if ( is_admin() || ! $query->is_main_query() || ! ( $query->is_home() || $query->is_search() ) ) {
+diff --git a/tmp/skyyrose-a11y-fixes-20260921/baseline/assets/css/immersive.css b/assets/css/immersive.css
+index 047a49eb3..17103fda2 100644
+--- a/tmp/skyyrose-a11y-fixes-20260921/baseline/assets/css/immersive.css
++++ b/assets/css/immersive.css
+@@ -216,6 +216,12 @@
+   color: var(--sr2-immersive-accent);
+ }
+ 
++/* These small Love Hurts utility labels sit on the void; retain crimson at AA contrast. */
++.sr2-immersive--romantic-castle :is(.sr2-immersive__chapter-mark, .sr2-immersive__eyebrow),
++.sr2-immersive--romantic-castle .sr2-immersive__chapter-nav a span {
++  color: #ef5269;
++}
++
+ .sr2-immersive__chapter-nav ol {
+   display: flex;
+   align-items: center;
+diff --git a/tmp/skyyrose-a11y-fixes-20260921/baseline/assets/css/global-shell.css b/assets/css/global-shell.css
+index d5adb1444..2743c9352 100644
+--- a/tmp/skyyrose-a11y-fixes-20260921/baseline/assets/css/global-shell.css
++++ b/assets/css/global-shell.css
+@@ -255,7 +255,7 @@ body .sr2-house-header .sr2-header__brand-mark { height: clamp(4.25rem, 5.5vw, 5
+ .sr2-house-footer__disclosures details[open] { flex-basis: 100%; }
+ .sr2-house-footer__disclosures nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem 1.25rem; padding-block: .75rem 1.25rem; }
+ .sr2-house-footer__disclosures .sr2-shell-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem 1.25rem; }
+-.sr2-house-footer__disclosures a { display: inline-flex; min-height: var(--sr2-target-size); align-items: center; font-size: .8rem; text-decoration: none; }
++.sr2-house-footer__disclosures a { display: inline-flex; min-inline-size: 24px; min-height: 44px; min-height: max(44px, var(--sr2-target-size, 44px)); align-items: center; font-size: .8rem; text-decoration: none; }
+ .sr2-house-footer__legacy { flex-basis: 100%; margin: 0; padding: 0; border: 0; }
+ .sr2-house-footer__copyright { margin: 0; color: var(--sr2-muted); font-size: .68rem; }
+ 

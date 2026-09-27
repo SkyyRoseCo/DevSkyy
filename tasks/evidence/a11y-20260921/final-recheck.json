@@ -1,0 +1,1180 @@
+[
+  {
+    "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/kids-001/",
+    "width": 390,
+    "status": 200,
+    "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/product/kids-001/",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "impact": "critical",
+        "tags": [
+          "cat.aria",
+          "wcag2a",
+          "wcag412",
+          "EN-301-549",
+          "EN-9.4.1.2",
+          "RGAAv4",
+          "RGAA-7.1.1"
+        ],
+        "description": "Ensure all ARIA attributes have valid values",
+        "help": "ARIA attributes must conform to valid values",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-valid-attr-value?application=axeAPI",
+        "nodes": [
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-size-guide-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-size-guide-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a href=\"https://staging-7e48-skyyrose.wpcomstaging.com/size-guide/\" data-size-guide-open=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-size-guide-dialog\">Fit + size guide <span aria-hidden=\"true\">↗</span></a>",
+            "target": [
+              "a[data-size-guide-open=\"\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-size-guide-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"Kids Colorblock Hood...\" data-quick-view-coll...=\"Kids Capsule\" data-quick-view-pric...=\"$65.00\" ...>",
+            "target": [
+              ".sr2-c-editorial-card__quick-view"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgImage",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<select id=\"size\" class=\"\" name=\"attribute_size\" data-attribute_name=\"attribute_size\" data-show_option_none=\"yes\">",
+                    "target": [
+                      "#size"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined due to a background image"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<select id=\"size\" class=\"\" name=\"attribute_size\" data-attribute_name=\"attribute_size\" data-show_option_none=\"yes\">",
+            "target": [
+              "#size"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "7.8pt (10.4px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"971\" height=\"1619\" loading=\"lazy\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      ".sr2-c-editorial-card__frame"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Kids Capsule</span>",
+            "target": [
+              ".sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          }
+        ]
+      }
+    ],
+    "passes": 54,
+    "geometry": {
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1
+    }
+  },
+  {
+    "url": "https://staging-7e48-skyyrose.wpcomstaging.com/?s=rose",
+    "width": 390,
+    "status": 200,
+    "finalUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/?s=rose",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "impact": "serious",
+        "tags": [
+          "cat.aria",
+          "wcag2a",
+          "wcag412",
+          "EN-301-549",
+          "EN-9.4.1.2",
+          "RGAAv4",
+          "RGAA-7.1.1"
+        ],
+        "description": "Ensure ARIA attributes are not prohibited for an element's role",
+        "help": "Elements must only use permitted ARIA attributes",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-prohibited-attr?application=axeAPI",
+        "nodes": [
+          {
+            "any": [],
+            "all": [],
+            "none": [
+              {
+                "id": "aria-prohibited-attr",
+                "data": {
+                  "role": null,
+                  "nodeName": "span",
+                  "messageKey": "noRoleSingular",
+                  "prohibited": [
+                    "aria-label"
+                  ]
+                },
+                "relatedNodes": [],
+                "impact": "serious",
+                "message": "aria-label attribute is not well supported on a span with no valid role attribute."
+              }
+            ],
+            "impact": "serious",
+            "html": "<span aria-label=\"Page 1\" aria-current=\"page\" class=\"page-numbers current\">1</span>",
+            "target": [
+              ".current"
+            ],
+            "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on a span with no valid role attribute."
+          }
+        ]
+      },
+      {
+        "id": "aria-valid-attr-value",
+        "impact": "critical",
+        "tags": [
+          "cat.aria",
+          "wcag2a",
+          "wcag412",
+          "EN-301-549",
+          "EN-9.4.1.2",
+          "RGAAv4",
+          "RGAA-7.1.1"
+        ],
+        "description": "Ensure all ARIA attributes have valid values",
+        "help": "ARIA attributes must conform to valid values",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-valid-attr-value?application=axeAPI",
+        "nodes": [
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"BLACK is Beautiful J...\" data-quick-view-coll...=\"Jersey Series\" data-quick-view-pric...=\"$115.00\" ...>",
+            "target": [
+              "a[data-quick-view-price=\"$115.00\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"BLACK Rose Hoodie\" data-quick-view-coll...=\"Black Rose\" data-quick-view-pric...=\"$40.00\" ...>",
+            "target": [
+              "a[data-quick-view-name=\"BLACK Rose Hoodie\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"BLACK Rose Hoodie — ...\" data-quick-view-coll...=\"Black Rose\" data-quick-view-pric...=\"$65.00\" ...>",
+            "target": [
+              "article[data-image-state=\"ready\"][data-presentation=\"black-rose\"][data-collection=\"black-rose\"]:nth-child(3) > .sr2-c-editorial-card__body > .sr2-c-editorial-card__actions > .sr2-c-editorial-card__quick-view[data-quick-view-price=\"$65.00\"][data-quick-view-collection=\"Black Rose\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"BLACK Rose Sherpa Ja...\" data-quick-view-coll...=\"Black Rose\" data-quick-view-pric...=\"$95.00\" ...>",
+            "target": [
+              "a[data-quick-view-name=\"BLACK Rose Sherpa Jacket\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"BLACK Rose x Love Hu...\" data-quick-view-coll...=\"Black Rose\" data-quick-view-pric...=\"$65.00\" ...>",
+            "target": [
+              "article[data-presentation=\"black-rose\"][data-collection=\"black-rose\"][data-preorder=\"false\"]:nth-child(5) > .sr2-c-editorial-card__body > .sr2-c-editorial-card__actions > .sr2-c-editorial-card__quick-view[data-quick-view-price=\"$65.00\"][data-quick-view-collection=\"Black Rose\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"BLACK Rose Crewneck\" data-quick-view-coll...=\"Black Rose\" data-quick-view-pric...=\"$35.00\" ...>",
+            "target": [
+              "a[data-quick-view-name=\"BLACK Rose Crewneck\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"BLACK Rose Joggers\" data-quick-view-coll...=\"Black Rose\" data-quick-view-pric...=\"$50.00\" ...>",
+            "target": [
+              "a[data-quick-view-name=\"BLACK Rose Joggers\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"Mint & Lavender Swea...\" data-quick-view-coll...=\"Signature\" data-quick-view-pric...=\"$45.00\" ...>",
+            "target": [
+              "a[data-quick-view-name=\"Mint & Lavender Sweatpants\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"Mint & Lavender Crew...\" data-quick-view-coll...=\"Signature\" data-quick-view-pric...=\"$40.00\" ...>",
+            "target": [
+              "a[data-quick-view-name=\"Mint & Lavender Crewneck\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"BLACK is Beautiful J...\" data-quick-view-coll...=\"Jersey Series\" data-quick-view-pric...=\"$100.00\" ...>",
+            "target": [
+              "a[data-quick-view-price=\"$100.00\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"The Sherpa Jacket\" data-quick-view-coll...=\"Signature\" data-quick-view-pric...=\"$80.00\" ...>",
+            "target": [
+              "a[data-quick-view-name=\"The Sherpa Jacket\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"Original Label Tee (...\" data-quick-view-coll...=\"Signature\" data-quick-view-pric...=\"$30.00\" ...>",
+            "target": [
+              "a[data-quick-view-name=\"Original Label Tee (White)\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"Original Label Tee (...\" data-quick-view-coll...=\"Signature\" data-quick-view-pric...=\"$30.00\" ...>",
+            "target": [
+              "a[data-quick-view-name=\"Original Label Tee (Orchid)\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"Love Hurts Joggers (...\" data-quick-view-coll...=\"Love Hurts\" data-quick-view-pric...=\"$95.00\" ...>",
+            "target": [
+              "a[data-quick-view-name=\"Love Hurts Joggers (White)\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"The Bridge Series 'T...\" data-quick-view-coll...=\"Signature\" data-quick-view-pric...=\"$25.00\" ...>",
+            "target": [
+              "a[data-quick-view-price=\"$25.00\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"The Bridge Series 'T...\" data-quick-view-coll...=\"Signature\" data-quick-view-pric...=\"$65.00\" ...>",
+            "target": [
+              "article[data-preorder=\"true\"][data-presentation=\"signature\"][data-collection=\"signature\"]:nth-child(16) > .sr2-c-editorial-card__body > .sr2-c-editorial-card__actions > .sr2-c-editorial-card__quick-view[data-quick-view-price=\"$65.00\"][data-quick-view-collection=\"Signature\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          },
+          {
+            "any": [],
+            "all": [
+              {
+                "id": "aria-valid-attr-value",
+                "data": {
+                  "messageKey": "controlsWithinPopup",
+                  "needsReview": "aria-controls=\"sr2-quick-view-dialog\""
+                },
+                "relatedNodes": [],
+                "impact": "critical",
+                "message": "Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+              }
+            ],
+            "none": [],
+            "impact": "critical",
+            "html": "<a class=\"sr2-c-editorial-card...\" href=\"https://staging-7e48...\" data-quick-view=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-quick-view-dialo...\" aria-expanded=\"false\" data-quick-view-name=\"The Bridge Series 'S...\" data-quick-view-coll...=\"Signature\" data-quick-view-pric...=\"$65.00\" ...>",
+            "target": [
+              "article[data-preorder=\"true\"][data-presentation=\"signature\"][data-collection=\"signature\"]:nth-child(17) > .sr2-c-editorial-card__body > .sr2-c-editorial-card__actions > .sr2-c-editorial-card__quick-view[data-quick-view-price=\"$65.00\"][data-quick-view-collection=\"Signature\"]"
+            ],
+            "failureSummary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"sr2-quick-view-dialog\""
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"971\" height=\"1619\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "article[data-presentation=\"jersey-series\"][data-image-state=\"ready\"][data-preorder=\"true\"] > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame[width=\"971\"][height=\"1619\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Jersey Series</span>",
+            "target": [
+              "article[data-presentation=\"jersey-series\"][data-image-state=\"ready\"][data-preorder=\"true\"] > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"971\" height=\"1619\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "a[aria-label=\"View BLACK Rose Hoodie\"] > .sr2-c-editorial-card__frame[width=\"971\"][height=\"1619\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Black Rose</span>",
+            "target": [
+              "a[aria-label=\"View BLACK Rose Hoodie\"] > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"971\" height=\"1619\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "article[data-image-state=\"ready\"][data-presentation=\"black-rose\"][data-collection=\"black-rose\"]:nth-child(3) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame[width=\"971\"][height=\"1619\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Black Rose</span>",
+            "target": [
+              "article[data-image-state=\"ready\"][data-presentation=\"black-rose\"][data-collection=\"black-rose\"]:nth-child(3) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"971\" height=\"1619\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "a[aria-label=\"View BLACK Rose Sherpa Jacket\"] > .sr2-c-editorial-card__frame[width=\"971\"][height=\"1619\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Black Rose</span>",
+            "target": [
+              "a[aria-label=\"View BLACK Rose Sherpa Jacket\"] > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"971\" height=\"1619\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "article[data-presentation=\"black-rose\"][data-collection=\"black-rose\"][data-preorder=\"false\"]:nth-child(5) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame[width=\"971\"][height=\"1619\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Black Rose</span>",
+            "target": [
+              "article[data-presentation=\"black-rose\"][data-collection=\"black-rose\"][data-preorder=\"false\"]:nth-child(5) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"971\" height=\"1619\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "a[aria-label=\"View BLACK Rose Crewneck\"] > .sr2-c-editorial-card__frame[width=\"971\"][height=\"1619\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Black Rose</span>",
+            "target": [
+              "a[aria-label=\"View BLACK Rose Crewneck\"] > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"971\" height=\"1619\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "a[aria-label=\"View BLACK Rose Joggers\"] > .sr2-c-editorial-card__frame[width=\"971\"][height=\"1619\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Black Rose</span>",
+            "target": [
+              "a[aria-label=\"View BLACK Rose Joggers\"] > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"970\" height=\"1621\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "article[data-presentation=\"signature\"][data-collection=\"signature\"][data-preorder=\"false\"]:nth-child(8) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame[width=\"970\"][height=\"1621\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Signature</span>",
+            "target": [
+              "article[data-presentation=\"signature\"][data-collection=\"signature\"][data-preorder=\"false\"]:nth-child(8) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"970\" height=\"1621\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "a[aria-label=\"View Mint & Lavender Crewneck\"] > .sr2-c-editorial-card__frame[width=\"970\"][height=\"1621\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Signature</span>",
+            "target": [
+              "a[aria-label=\"View Mint & Lavender Crewneck\"] > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"971\" height=\"1619\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "article[data-presentation=\"jersey-series\"][data-preorder=\"true\"][data-collection=\"black-rose\"]:nth-child(10) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame[width=\"971\"][height=\"1619\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Jersey Series</span>",
+            "target": [
+              "article[data-presentation=\"jersey-series\"][data-preorder=\"true\"][data-collection=\"black-rose\"]:nth-child(10) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"970\" height=\"1621\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "a[aria-label=\"View The Sherpa Jacket\"] > .sr2-c-editorial-card__frame[width=\"970\"][height=\"1621\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Signature</span>",
+            "target": [
+              "a[aria-label=\"View The Sherpa Jacket\"] > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"970\" height=\"1621\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "article[data-presentation=\"signature\"][data-collection=\"signature\"][data-preorder=\"false\"]:nth-child(12) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame[width=\"970\"][height=\"1621\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Signature</span>",
+            "target": [
+              "article[data-presentation=\"signature\"][data-collection=\"signature\"][data-preorder=\"false\"]:nth-child(12) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"970\" height=\"1621\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "article[data-presentation=\"signature\"][data-collection=\"signature\"][data-preorder=\"false\"]:nth-child(13) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame[width=\"970\"][height=\"1621\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Signature</span>",
+            "target": [
+              "article[data-presentation=\"signature\"][data-collection=\"signature\"][data-preorder=\"false\"]:nth-child(13) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"968\" height=\"1625\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "img[width=\"968\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Love Hurts</span>",
+            "target": [
+              "article[data-presentation=\"love-hurts\"] > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"970\" height=\"1621\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "article[data-preorder=\"true\"][data-presentation=\"signature\"][data-collection=\"signature\"]:nth-child(15) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame[width=\"970\"][height=\"1621\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Signature</span>",
+            "target": [
+              "article[data-preorder=\"true\"][data-presentation=\"signature\"][data-collection=\"signature\"]:nth-child(15) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"970\" height=\"1621\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "article[data-preorder=\"true\"][data-presentation=\"signature\"][data-collection=\"signature\"]:nth-child(16) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame[width=\"970\"][height=\"1621\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Signature</span>",
+            "target": [
+              "article[data-preorder=\"true\"][data-presentation=\"signature\"][data-collection=\"signature\"]:nth-child(16) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          },
+          {
+            "any": [
+              {
+                "id": "color-contrast",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.1pt (16.11px)",
+                  "fontWeight": "bold",
+                  "messageKey": "imgNode",
+                  "expectedContrastRatio": "4.5:1"
+                },
+                "relatedNodes": [
+                  {
+                    "html": "<img loading=\"lazy\" class=\"sr2-c-editorial-card...\" src=\"https://staging-7e48...\" alt=\"\" aria-hidden=\"true\" width=\"970\" height=\"1621\" fetchpriority=\"auto\" decoding=\"async\">",
+                    "target": [
+                      "article[data-preorder=\"true\"][data-presentation=\"signature\"][data-collection=\"signature\"]:nth-child(17) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame[width=\"970\"][height=\"1621\"]"
+                    ]
+                  }
+                ],
+                "impact": "serious",
+                "message": "Element's background color could not be determined because element contains an image node"
+              }
+            ],
+            "all": [],
+            "none": [],
+            "impact": "serious",
+            "html": "<span class=\"sr2-c-editorial-card__inscription\">Signature</span>",
+            "target": [
+              "article[data-preorder=\"true\"][data-presentation=\"signature\"][data-collection=\"signature\"]:nth-child(17) > .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame-label[aria-hidden=\"true\"] > .sr2-c-editorial-card__inscription"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+          }
+        ]
+      }
+    ],
+    "passes": 42,
+    "geometry": {
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": 1
+    }
+  }
+]

@@ -1,0 +1,308 @@
+{
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "auth": "public anonymous",
+  "actualAT": "NOT_TESTED",
+  "time": "2026-09-21T23:34:18.076Z",
+  "profiles": [
+    {
+      "width": 1440,
+      "checks": [
+        {
+          "name": {
+            "role": "NAV",
+            "label": "Primary navigation",
+            "labelledby": null
+          },
+          "open": true,
+          "initialFocus": "<a href=\"https://staging-7e48-skyyrose.wpcomstaging.com/collections/\">Collections</a>",
+          "escapedFocus": [],
+          "closed": true,
+          "restored": true
+        },
+        {
+          "name": {
+            "role": "DIALOG",
+            "label": null,
+            "labelledby": "sr2-search-dialog-title"
+          },
+          "open": true,
+          "initialFocus": "sr2-global-search",
+          "escapedFocus": [],
+          "closed": true,
+          "restored": true
+        },
+        {
+          "name": {
+            "role": "DIALOG",
+            "label": null,
+            "labelledby": "sr2-bag-title"
+          },
+          "open": true,
+          "initialFocus": "<button class=\"sr2-icon-button\" aria-label=\"Close bag\">×</button>",
+          "escapedFocus": [],
+          "closed": true,
+          "restored": true
+        },
+        {
+          "name": {
+            "role": "DIALOG",
+            "label": null,
+            "labelledby": "skyy-ask-dialog-title"
+          },
+          "open": true,
+          "initialFocus": "skyy-ask-input",
+          "escapedFocus": [],
+          "closed": true,
+          "restored": true
+        },
+        {
+          "name": {
+            "role": "DIALOG",
+            "label": null,
+            "labelledby": "sr2-size-guide-title"
+          },
+          "open": true,
+          "initialFocus": "<button type=\"submit\" class=\"sr2-size-guide-dialog__close\" aria-label=\"Close fit and size guide\">×</button>",
+          "escapedFocus": [],
+          "closed": true,
+          "restored": true
+        }
+      ],
+      "faq": [],
+      "contact": [
+        {
+          "tag": "INPUT",
+          "id": "",
+          "type": "text",
+          "labels": [
+            "Website"
+          ],
+          "required": false,
+          "invalid": null,
+          "describedby": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "",
+          "type": "text",
+          "labels": [
+            "Name"
+          ],
+          "required": true,
+          "invalid": null,
+          "describedby": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "",
+          "type": "email",
+          "labels": [
+            "Email"
+          ],
+          "required": true,
+          "invalid": null,
+          "describedby": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "",
+          "type": "select-one",
+          "labels": [
+            "What can we help with?Order supportStyling appointmentPress or collaborationWholesale"
+          ],
+          "required": false,
+          "invalid": null,
+          "describedby": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "id": "",
+          "type": "textarea",
+          "labels": [
+            "Message"
+          ],
+          "required": true,
+          "invalid": null,
+          "describedby": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "",
+          "type": "checkbox",
+          "labels": [
+            "I agree that SkyyRose may use these details to respond to this request. Privacy policy."
+          ],
+          "required": true,
+          "invalid": null,
+          "describedby": null
+        }
+      ],
+      "pdpURL": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-004/",
+      "selects": [
+        {
+          "id": "size",
+          "labels": [
+            "Size"
+          ],
+          "options": [
+            "",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "2XL",
+            "3XL"
+          ]
+        }
+      ],
+      "selected": "S",
+      "gallery": []
+    },
+    {
+      "width": 390,
+      "checks": [
+        {
+          "name": {
+            "role": "NAV",
+            "label": "Primary navigation",
+            "labelledby": null
+          },
+          "open": true,
+          "initialFocus": "<a href=\"https://staging-7e48-skyyrose.wpcomstaging.com/collections/\">Collections</a>",
+          "escapedFocus": [],
+          "closed": true,
+          "restored": true
+        },
+        {
+          "name": "search",
+          "error": "locator.focus: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('a[aria-controls=\"sr2-search-dialog\"], [data-search-open]').filter({ visible: true }).first()\u001b[22m\n"
+        },
+        {
+          "name": {
+            "role": "DIALOG",
+            "label": null,
+            "labelledby": "sr2-bag-title"
+          },
+          "open": true,
+          "initialFocus": "<button class=\"sr2-icon-button\" aria-label=\"Close bag\">×</button>",
+          "escapedFocus": [],
+          "closed": true,
+          "restored": true
+        },
+        {
+          "name": {
+            "role": "DIALOG",
+            "label": null,
+            "labelledby": "skyy-ask-dialog-title"
+          },
+          "open": true,
+          "initialFocus": "skyy-ask-input",
+          "escapedFocus": [],
+          "closed": true,
+          "restored": true
+        },
+        {
+          "name": {
+            "role": "DIALOG",
+            "label": null,
+            "labelledby": "sr2-size-guide-title"
+          },
+          "open": true,
+          "initialFocus": "<button type=\"submit\" class=\"sr2-size-guide-dialog__close\" aria-label=\"Close fit and size guide\">×</button>",
+          "escapedFocus": [],
+          "closed": true,
+          "restored": true
+        }
+      ],
+      "faq": [],
+      "contact": [
+        {
+          "tag": "INPUT",
+          "id": "",
+          "type": "text",
+          "labels": [
+            "Website"
+          ],
+          "required": false,
+          "invalid": null,
+          "describedby": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "",
+          "type": "text",
+          "labels": [
+            "Name"
+          ],
+          "required": true,
+          "invalid": null,
+          "describedby": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "",
+          "type": "email",
+          "labels": [
+            "Email"
+          ],
+          "required": true,
+          "invalid": null,
+          "describedby": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "",
+          "type": "select-one",
+          "labels": [
+            "What can we help with?Order supportStyling appointmentPress or collaborationWholesale"
+          ],
+          "required": false,
+          "invalid": null,
+          "describedby": null
+        },
+        {
+          "tag": "TEXTAREA",
+          "id": "",
+          "type": "textarea",
+          "labels": [
+            "Message"
+          ],
+          "required": true,
+          "invalid": null,
+          "describedby": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "",
+          "type": "checkbox",
+          "labels": [
+            "I agree that SkyyRose may use these details to respond to this request. Privacy policy."
+          ],
+          "required": true,
+          "invalid": null,
+          "describedby": null
+        }
+      ],
+      "pdpURL": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-004/",
+      "selects": [
+        {
+          "id": "size",
+          "labels": [
+            "Size"
+          ],
+          "options": [
+            "",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "2XL",
+            "3XL"
+          ]
+        }
+      ],
+      "selected": "S",
+      "gallery": []
+    }
+  ]
+}

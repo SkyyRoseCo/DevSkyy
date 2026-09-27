@@ -1,0 +1,2673 @@
+{
+  "target": "http://127.0.0.1:18883/",
+  "checkedAt": "2026-09-21T23:19:47.882Z",
+  "checks": [
+    {
+      "film": {
+        "x": 0,
+        "y": 422.34375,
+        "width": 320,
+        "height": 272,
+        "top": 422.34375,
+        "right": 320,
+        "bottom": 694.34375,
+        "left": 0
+      },
+      "copy": {
+        "x": 20,
+        "y": 128,
+        "width": 280,
+        "height": 266.34375,
+        "top": 128,
+        "right": 300,
+        "bottom": 394.34375,
+        "left": 20
+      },
+      "text": "SKYYROSE",
+      "accessible": "SkyyRose",
+      "centerError": 0,
+      "h1": {
+        "x": 70.484375,
+        "y": 159.109375,
+        "width": 179.03125,
+        "height": 32.25,
+        "top": 159.109375,
+        "right": 249.515625,
+        "bottom": 191.359375,
+        "left": 70.484375
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 968.71875,
+        "top": 0,
+        "right": 320,
+        "bottom": 968.71875,
+        "left": 0
+      },
+      "scrollWidth": 320,
+      "width": 320,
+      "actions": [
+        {
+          "text": "Enter the collection→",
+          "href": "#sr2-archive-worlds",
+          "r": {
+            "x": 48.640625,
+            "y": 284.953125,
+            "width": 222.71875,
+            "height": 51,
+            "top": 284.953125,
+            "right": 271.359375,
+            "bottom": 335.953125,
+            "left": 48.640625
+          }
+        },
+        {
+          "text": "Shop the house↗",
+          "href": "http://127.0.0.1:18883/?page_id=5",
+          "r": {
+            "x": 90.703125,
+            "y": 350.34375,
+            "width": 138.578125,
+            "height": 44,
+            "top": 350.34375,
+            "right": 229.28125,
+            "bottom": 394.34375,
+            "left": 90.703125
+          }
+        }
+      ],
+      "chars": [
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "K",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "R",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "O",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "E",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ],
+      "animations": [
+        {
+          "name": "sr2-recovered-type",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "ease",
+              "composite": "auto",
+              "transform": "translateY(18px)",
+              "opacity": "0.75",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "ease",
+              "composite": "auto",
+              "transform": "translateY(0px)",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 1100,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 28,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 56,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 84,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 112,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 140,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 168,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 196,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        }
+      ],
+      "mode": {
+        "width": 320
+      },
+      "errors": [],
+      "pass": true
+    },
+    {
+      "film": {
+        "x": 0,
+        "y": 381.546875,
+        "width": 390,
+        "height": 272,
+        "top": 381.546875,
+        "right": 390,
+        "bottom": 653.546875,
+        "left": 0
+      },
+      "copy": {
+        "x": 20,
+        "y": 128,
+        "width": 350,
+        "height": 225.546875,
+        "top": 128,
+        "right": 370,
+        "bottom": 353.546875,
+        "left": 20
+      },
+      "text": "SKYYROSE",
+      "accessible": "SkyyRose",
+      "centerError": 0,
+      "h1": {
+        "x": 94.984375,
+        "y": 159.1114959716797,
+        "width": 200.03125,
+        "height": 36.03126525878906,
+        "top": 159.1114959716797,
+        "right": 295.015625,
+        "bottom": 195.14276123046875,
+        "left": 94.984375
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 927.921875,
+        "top": 0,
+        "right": 390,
+        "bottom": 927.921875,
+        "left": 0
+      },
+      "scrollWidth": 390,
+      "width": 390,
+      "actions": [
+        {
+          "text": "Enter the collection→",
+          "href": "#sr2-archive-worlds",
+          "r": {
+            "x": 20,
+            "y": 288.734375,
+            "width": 207.90625,
+            "height": 64.8125,
+            "top": 288.734375,
+            "right": 227.90625,
+            "bottom": 353.546875,
+            "left": 20
+          }
+        },
+        {
+          "text": "Shop the house↗",
+          "href": "http://127.0.0.1:18883/?page_id=5",
+          "r": {
+            "x": 242.296875,
+            "y": 294.828125,
+            "width": 127.703125,
+            "height": 52.625,
+            "top": 294.828125,
+            "right": 370,
+            "bottom": 347.453125,
+            "left": 242.296875
+          }
+        }
+      ],
+      "chars": [
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "K",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "R",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "O",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "E",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ],
+      "animations": [
+        {
+          "name": "sr2-recovered-type",
+          "state": "running",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "ease",
+              "composite": "auto",
+              "transform": "translateY(18px)",
+              "opacity": "0.75",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "ease",
+              "composite": "auto",
+              "transform": "translateY(0px)",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 1100,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 28,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 56,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 84,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 112,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 140,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 168,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 196,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        }
+      ],
+      "mode": {
+        "width": 390
+      },
+      "errors": [],
+      "pass": true
+    },
+    {
+      "film": {
+        "x": 0,
+        "y": 405.453125,
+        "width": 768,
+        "height": 272,
+        "top": 405.453125,
+        "right": 768,
+        "bottom": 677.453125,
+        "left": 0
+      },
+      "copy": {
+        "x": 20,
+        "y": 140,
+        "width": 728,
+        "height": 237.453125,
+        "top": 140,
+        "right": 748,
+        "bottom": 377.453125,
+        "left": 20
+      },
+      "text": "SKYYROSE",
+      "accessible": "SkyyRose",
+      "centerError": 0.0078125,
+      "h1": {
+        "x": 234.796875,
+        "y": 175.109375,
+        "width": 298.390625,
+        "height": 53.75,
+        "top": 175.109375,
+        "right": 533.1875,
+        "bottom": 228.859375,
+        "left": 234.796875
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1038.203125,
+        "top": 0,
+        "right": 768,
+        "bottom": 1038.203125,
+        "left": 0
+      },
+      "scrollWidth": 768,
+      "width": 768,
+      "actions": [
+        {
+          "text": "Enter the collection→",
+          "href": "#sr2-archive-worlds",
+          "r": {
+            "x": 189.34375,
+            "y": 326.453125,
+            "width": 230.71875,
+            "height": 51,
+            "top": 326.453125,
+            "right": 420.0625,
+            "bottom": 377.453125,
+            "left": 189.34375
+          }
+        },
+        {
+          "text": "Shop the house↗",
+          "href": "http://127.0.0.1:18883/?page_id=5",
+          "r": {
+            "x": 440.0625,
+            "y": 329.953125,
+            "width": 138.578125,
+            "height": 44,
+            "top": 329.953125,
+            "right": 578.640625,
+            "bottom": 373.953125,
+            "left": 440.0625
+          }
+        }
+      ],
+      "chars": [
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "K",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "R",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "O",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "E",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ],
+      "animations": [
+        {
+          "name": "sr2-recovered-type",
+          "state": "running",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "ease",
+              "composite": "auto",
+              "transform": "translateY(18px)",
+              "opacity": "0.75",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "ease",
+              "composite": "auto",
+              "transform": "translateY(0px)",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 1100,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 28,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 56,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 84,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 112,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 140,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 168,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 196,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        }
+      ],
+      "mode": {
+        "width": 768
+      },
+      "errors": [],
+      "pass": true
+    },
+    {
+      "film": {
+        "x": 0,
+        "y": 116,
+        "width": 432,
+        "height": 404,
+        "top": 116,
+        "right": 432,
+        "bottom": 520,
+        "left": 0
+      },
+      "copy": {
+        "x": 432,
+        "y": 175.78125,
+        "width": 576,
+        "height": 260.4375,
+        "top": 175.78125,
+        "right": 1008,
+        "bottom": 436.21875,
+        "left": 432
+      },
+      "text": "SKYYROSE",
+      "accessible": "SkyyRose",
+      "centerError": 0.0078125,
+      "h1": {
+        "x": 511.90625,
+        "y": 210.890625,
+        "width": 416.171875,
+        "height": 74.984375,
+        "top": 210.890625,
+        "right": 928.078125,
+        "bottom": 285.875,
+        "left": 511.90625
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 640,
+        "top": 0,
+        "right": 1440,
+        "bottom": 640,
+        "left": 0
+      },
+      "scrollWidth": 1440,
+      "width": 1440,
+      "actions": [
+        {
+          "text": "Enter the collection→",
+          "href": "#sr2-archive-worlds",
+          "r": {
+            "x": 525.34375,
+            "y": 385.21875,
+            "width": 230.71875,
+            "height": 51,
+            "top": 385.21875,
+            "right": 756.0625,
+            "bottom": 436.21875,
+            "left": 525.34375
+          }
+        },
+        {
+          "text": "Shop the house↗",
+          "href": "http://127.0.0.1:18883/?page_id=5",
+          "r": {
+            "x": 776.0625,
+            "y": 388.71875,
+            "width": 138.578125,
+            "height": 44,
+            "top": 388.71875,
+            "right": 914.640625,
+            "bottom": 432.71875,
+            "left": 776.0625
+          }
+        }
+      ],
+      "chars": [
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "K",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "R",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "O",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "E",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ],
+      "animations": [
+        {
+          "name": "sr2-recovered-type",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "ease",
+              "composite": "auto",
+              "transform": "translateY(18px)",
+              "opacity": "0.75",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "ease",
+              "composite": "auto",
+              "transform": "translateY(0px)",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 1100,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 28,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 56,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 84,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 112,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 140,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 168,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 196,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        }
+      ],
+      "mode": {
+        "width": 1440
+      },
+      "errors": [],
+      "pass": true,
+      "frameIntervals": [
+        33.40000000000009,
+        33.299999999999955,
+        33.299999999999955,
+        33.40000000000009,
+        33.299999999999955,
+        33.299999999999955,
+        33.40000000000009,
+        33.299999999999955,
+        33.299999999999955,
+        33.40000000000009,
+        33.299999999999955,
+        33.299999999999955,
+        33.299999999999955,
+        33.40000000000009,
+        32.49999999999977,
+        34.20000000000027,
+        33.29999999999973,
+        33.40000000000009,
+        33.30000000000018,
+        33.29999999999973,
+        33.30000000000018,
+        32.69999999999982,
+        34,
+        33.30000000000018,
+        33.40000000000009,
+        33.29999999999973,
+        33.30000000000018,
+        33.40000000000009,
+        33.29999999999973,
+        33.30000000000018,
+        33.40000000000009,
+        33.29999999999973,
+        33.40000000000009,
+        33.30000000000018,
+        32.69999999999982,
+        33.90000000000009,
+        33.30000000000018,
+        33.399999999999636,
+        33.30000000000018,
+        33.40000000000009,
+        33.29999999999973,
+        33.30000000000018,
+        33.30000000000018,
+        33.399999999999636,
+        33.30000000000018,
+        33.40000000000009,
+        33.29999999999973,
+        33.40000000000009,
+        32.70000000000027,
+        33.899999999999636,
+        33,
+        33.70000000000027,
+        33.09999999999991,
+        33.59999999999991,
+        33.20000000000027,
+        33.399999999999636,
+        33.40000000000009,
+        32.90000000000009,
+        33.69999999999982,
+        33.40000000000009,
+        33.30000000000018,
+        33.29999999999973,
+        33,
+        33.600000000000364,
+        33.5,
+        33.19999999999982,
+        33.30000000000018,
+        33.399999999999636,
+        33.30000000000018,
+        33.40000000000009,
+        33.29999999999973,
+        33.30000000000018,
+        33.40000000000009,
+        33.29999999999973,
+        33.40000000000009,
+        33.20000000000027,
+        33.19999999999982,
+        33.5,
+        33.399999999999636,
+        33.30000000000018,
+        33.30000000000018,
+        33.399999999999636,
+        33.30000000000018,
+        33.30000000000018,
+        33.399999999999636,
+        33.30000000000018,
+        33.30000000000018,
+        33.399999999999636,
+        33.30000000000018,
+        33.400000000000546
+      ]
+    },
+    {
+      "film": {
+        "x": 0,
+        "y": 381.546875,
+        "width": 390,
+        "height": 272,
+        "top": 381.546875,
+        "right": 390,
+        "bottom": 653.546875,
+        "left": 0
+      },
+      "copy": {
+        "x": 20,
+        "y": 128,
+        "width": 350,
+        "height": 225.546875,
+        "top": 128,
+        "right": 370,
+        "bottom": 353.546875,
+        "left": 20
+      },
+      "text": "SKYYROSE",
+      "accessible": "SkyyRose",
+      "centerError": 0,
+      "h1": {
+        "x": 95.953125,
+        "y": 159.109375,
+        "width": 198.09375,
+        "height": 36.03125,
+        "top": 159.109375,
+        "right": 294.046875,
+        "bottom": 195.140625,
+        "left": 95.953125
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 927.921875,
+        "top": 0,
+        "right": 390,
+        "bottom": 927.921875,
+        "left": 0
+      },
+      "scrollWidth": 390,
+      "width": 390,
+      "actions": [
+        {
+          "text": "Enter the collection→",
+          "href": "#sr2-archive-worlds",
+          "r": {
+            "x": 20,
+            "y": 288.734375,
+            "width": 207.90625,
+            "height": 64.8125,
+            "top": 288.734375,
+            "right": 227.90625,
+            "bottom": 353.546875,
+            "left": 20
+          }
+        },
+        {
+          "text": "Shop the house↗",
+          "href": "http://127.0.0.1:18883/?page_id=5",
+          "r": {
+            "x": 242.296875,
+            "y": 294.828125,
+            "width": 127.703125,
+            "height": 52.625,
+            "top": 294.828125,
+            "right": 370,
+            "bottom": 347.453125,
+            "left": 242.296875
+          }
+        }
+      ],
+      "chars": [
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "K",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "R",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "O",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "E",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ],
+      "animations": [],
+      "mode": {
+        "width": 390,
+        "reducedMotion": "reduce"
+      },
+      "errors": [],
+      "pass": true
+    },
+    {
+      "film": {
+        "x": 0,
+        "y": 1715.375,
+        "width": 390,
+        "height": 272,
+        "top": 1715.375,
+        "right": 390,
+        "bottom": 1987.375,
+        "left": 0
+      },
+      "copy": {
+        "x": 20,
+        "y": 1461.828125,
+        "width": 350,
+        "height": 225.546875,
+        "top": 1461.828125,
+        "right": 370,
+        "bottom": 1687.375,
+        "left": 20
+      },
+      "text": "SKYYROSE",
+      "accessible": "SkyyRose",
+      "centerError": 0,
+      "h1": {
+        "x": 95.953125,
+        "y": 1492.9375,
+        "width": 198.09375,
+        "height": 36.03125,
+        "top": 1492.9375,
+        "right": 294.046875,
+        "bottom": 1528.96875,
+        "left": 95.953125
+      },
+      "hero": {
+        "x": 0,
+        "y": 1333.828125,
+        "width": 390,
+        "height": 927.921875,
+        "top": 1333.828125,
+        "right": 390,
+        "bottom": 2261.75,
+        "left": 0
+      },
+      "scrollWidth": 390,
+      "width": 390,
+      "actions": [
+        {
+          "text": "Enter the collection→",
+          "href": "#sr2-archive-worlds",
+          "r": {
+            "x": 20,
+            "y": 1622.5625,
+            "width": 207.90625,
+            "height": 64.8125,
+            "top": 1622.5625,
+            "right": 227.90625,
+            "bottom": 1687.375,
+            "left": 20
+          }
+        },
+        {
+          "text": "Shop the house↗",
+          "href": "http://127.0.0.1:18883/?page_id=5",
+          "r": {
+            "x": 242.296875,
+            "y": 1628.65625,
+            "width": 127.703125,
+            "height": 52.625,
+            "top": 1628.65625,
+            "right": 370,
+            "bottom": 1681.28125,
+            "left": 242.296875
+          }
+        }
+      ],
+      "chars": [
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "K",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "R",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "O",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "E",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ],
+      "animations": [],
+      "mode": {
+        "width": 390,
+        "javaScriptEnabled": false
+      },
+      "errors": [],
+      "pass": true
+    },
+    {
+      "film": {
+        "x": 0,
+        "y": 116,
+        "width": 432,
+        "height": 404,
+        "top": 116,
+        "right": 432,
+        "bottom": 520,
+        "left": 0
+      },
+      "copy": {
+        "x": 432,
+        "y": 175.78125,
+        "width": 576,
+        "height": 260.4375,
+        "top": 175.78125,
+        "right": 1008,
+        "bottom": 436.21875,
+        "left": 432
+      },
+      "text": "SKYYROSE",
+      "accessible": "SkyyRose",
+      "centerError": 0,
+      "h1": {
+        "x": 513.921875,
+        "y": 210.890625,
+        "width": 412.15625,
+        "height": 74.984375,
+        "top": 210.890625,
+        "right": 926.078125,
+        "bottom": 285.875,
+        "left": 513.921875
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 640,
+        "top": 0,
+        "right": 1440,
+        "bottom": 640,
+        "left": 0
+      },
+      "scrollWidth": 1440,
+      "width": 1440,
+      "actions": [
+        {
+          "text": "Enter the collection→",
+          "href": "#sr2-archive-worlds",
+          "r": {
+            "x": 525.34375,
+            "y": 385.21875,
+            "width": 230.71875,
+            "height": 51,
+            "top": 385.21875,
+            "right": 756.0625,
+            "bottom": 436.21875,
+            "left": 525.34375
+          }
+        },
+        {
+          "text": "Shop the house↗",
+          "href": "http://127.0.0.1:18883/?page_id=5",
+          "r": {
+            "x": 776.0625,
+            "y": 388.71875,
+            "width": 138.578125,
+            "height": 44,
+            "top": 388.71875,
+            "right": 914.640625,
+            "bottom": 432.71875,
+            "left": 776.0625
+          }
+        }
+      ],
+      "chars": [
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "K",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "R",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "O",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "E",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ],
+      "animations": [],
+      "mode": {
+        "width": 1440,
+        "reducedMotion": "reduce"
+      },
+      "errors": [],
+      "pass": true
+    },
+    {
+      "film": {
+        "x": 0,
+        "y": 891.875,
+        "width": 432,
+        "height": 404,
+        "top": 891.875,
+        "right": 432,
+        "bottom": 1295.875,
+        "left": 0
+      },
+      "copy": {
+        "x": 432,
+        "y": 951.65625,
+        "width": 576,
+        "height": 260.4375,
+        "top": 951.65625,
+        "right": 1008,
+        "bottom": 1212.09375,
+        "left": 432
+      },
+      "text": "SKYYROSE",
+      "accessible": "SkyyRose",
+      "centerError": 0,
+      "h1": {
+        "x": 513.921875,
+        "y": 986.765625,
+        "width": 412.15625,
+        "height": 74.984375,
+        "top": 986.765625,
+        "right": 926.078125,
+        "bottom": 1061.75,
+        "left": 513.921875
+      },
+      "hero": {
+        "x": 0,
+        "y": 775.875,
+        "width": 1440,
+        "height": 640,
+        "top": 775.875,
+        "right": 1440,
+        "bottom": 1415.875,
+        "left": 0
+      },
+      "scrollWidth": 1440,
+      "width": 1440,
+      "actions": [
+        {
+          "text": "Enter the collection→",
+          "href": "#sr2-archive-worlds",
+          "r": {
+            "x": 525.34375,
+            "y": 1161.09375,
+            "width": 230.71875,
+            "height": 51,
+            "top": 1161.09375,
+            "right": 756.0625,
+            "bottom": 1212.09375,
+            "left": 525.34375
+          }
+        },
+        {
+          "text": "Shop the house↗",
+          "href": "http://127.0.0.1:18883/?page_id=5",
+          "r": {
+            "x": 776.0625,
+            "y": 1164.59375,
+            "width": 138.578125,
+            "height": 44,
+            "top": 1164.59375,
+            "right": 914.640625,
+            "bottom": 1208.59375,
+            "left": 776.0625
+          }
+        }
+      ],
+      "chars": [
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "K",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "R",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "O",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "none"
+        },
+        {
+          "text": "E",
+          "opacity": "1",
+          "transform": "none"
+        }
+      ],
+      "animations": [],
+      "mode": {
+        "width": 1440,
+        "javaScriptEnabled": false
+      },
+      "errors": [],
+      "pass": true
+    },
+    {
+      "film": {
+        "x": 0,
+        "y": 703.625,
+        "width": 720,
+        "height": 544,
+        "top": 703.625,
+        "right": 720,
+        "bottom": 1247.625,
+        "left": 0
+      },
+      "copy": {
+        "x": 40,
+        "y": 204,
+        "width": 640,
+        "height": 443.625,
+        "top": 204,
+        "right": 680,
+        "bottom": 647.625,
+        "left": 40
+      },
+      "text": "SKYYROSE",
+      "accessible": "SkyyRose",
+      "centerError": 0.0078125,
+      "h1": {
+        "x": 175.40625,
+        "y": 266.234375,
+        "width": 369.171875,
+        "height": 66.515625,
+        "top": 266.234375,
+        "right": 544.578125,
+        "bottom": 332.75,
+        "left": 175.40625
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 720,
+        "height": 1796.40625,
+        "top": 0,
+        "right": 720,
+        "bottom": 1796.40625,
+        "left": 0
+      },
+      "scrollWidth": 720,
+      "width": 720,
+      "actions": [
+        {
+          "text": "Enter the collection→",
+          "href": "#sr2-archive-worlds",
+          "r": {
+            "x": 40,
+            "y": 519.9375,
+            "width": 380.359375,
+            "height": 127.6875,
+            "top": 519.9375,
+            "right": 420.359375,
+            "bottom": 647.625,
+            "left": 40
+          }
+        },
+        {
+          "text": "Shop the house↗",
+          "href": "http://127.0.0.1:18883/?page_id=5",
+          "r": {
+            "x": 449.15625,
+            "y": 531.625,
+            "width": 230.84375,
+            "height": 104.3125,
+            "top": 531.625,
+            "right": 680,
+            "bottom": 635.9375,
+            "left": 449.15625
+          }
+        }
+      ],
+      "chars": [
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "K",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "Y",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "R",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "O",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "S",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "text": "E",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        }
+      ],
+      "animations": [
+        {
+          "name": "sr2-recovered-type",
+          "state": "running",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "ease",
+              "composite": "auto",
+              "transform": "translateY(18px)",
+              "opacity": "0.75",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "ease",
+              "composite": "auto",
+              "transform": "translateY(0px)",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 1100,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 0,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 28,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 56,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 84,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 112,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 140,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 168,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        },
+        {
+          "name": "sr",
+          "state": "finished",
+          "frames": [
+            {
+              "offset": 0,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "translateY(105%)",
+              "opacity": "0",
+              "computedOffset": 0
+            },
+            {
+              "offset": 1,
+              "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+              "composite": "auto",
+              "transform": "none",
+              "opacity": "1",
+              "computedOffset": 1
+            }
+          ],
+          "timing": {
+            "delay": 196,
+            "direction": "normal",
+            "duration": 640,
+            "easing": "linear",
+            "endDelay": 0,
+            "fill": "both",
+            "iterationStart": 0,
+            "iterations": 1
+          }
+        }
+      ],
+      "mode": {
+        "width": 720,
+        "textZoom": true
+      },
+      "errors": [],
+      "pass": true
+    }
+  ]
+}

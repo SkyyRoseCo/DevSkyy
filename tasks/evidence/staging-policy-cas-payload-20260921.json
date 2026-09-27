@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "target": "staging-only",
+  "site": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "source": "wordpress-theme/skyyrose-flagship-2/inc/presentation-registry.php",
+  "formal_policy_unchanged": true,
+  "operations": [
+    {
+      "slug": "shipping-returns",
+      "id": 9712,
+      "expected_site": "https://staging-7e48-skyyrose.wpcomstaging.com",
+      "expected_status": "publish",
+      "expected_parent": 0,
+      "expected_template": "template-shipping-returns.php",
+      "expected_demo_owned": "",
+      "before_content_sha256": "6d67f8ba309418e658247a1ac5d4192b79bdabe4609a8e8b4d54ce3064a803e0",
+      "action": "preserve_merchant_content",
+      "proposed_content": null,
+      "proposed_content_sha256": null,
+      "reason": "page lacks theme demo-owned marker and contains formal merchant policy; fail closed without overwrite"
+    },
+    {
+      "slug": "returns-exchanges",
+      "id": 10406,
+      "expected_site": "https://staging-7e48-skyyrose.wpcomstaging.com",
+      "expected_status": "publish",
+      "expected_parent": 0,
+      "expected_template": "default",
+      "expected_demo_owned": "1.0.0",
+      "before_content_sha256": "eb19f34fa4408153ee634d7f768778342ee6b71a53c4f0d715b6ee67afe099cc",
+      "action": "update_content",
+      "proposed_content": "<!-- wp:heading --><h2 class=\"wp-block-heading\">Before you send a piece back</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Start with Client Services before shipping anything. Eligible returns must be requested within 30 days of confirmed delivery and meet the policy’s unworn, unwashed, unaltered, tagged, and original-packaging requirements.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class=\"wp-block-heading\">What to include in your request</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Send the order number, the email used at checkout, the piece and size, and a brief reason for the request. Do not email payment-card details.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class=\"wp-block-heading\">Free US size or color exchanges</h2><!-- /wp:heading --><!-- wp:paragraph --><p>US exchanges for a different size or color of the same style are free. Client Services confirms replacement availability, sends a prepaid USPS return label, and the original item must be shipped within 14 days of receiving that label. Once the original is received and inspected, the replacement ships at no additional charge.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class=\"wp-block-heading\">Exceptions and international exchanges</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Final Sale, customized or personalized, and ineligible-condition items cannot be returned or exchanged except where the policy’s damaged, defective, or incorrect-item exception applies. International customers pay return shipping to the US facility; after inspection, an eligible replacement ships at no additional charge.</p><!-- /wp:paragraph -->",
+      "proposed_content_sha256": "d17a5946908975c792792352df8397805886a9d6a3f6912f000b33abe817e6f8",
+      "reason": "theme demo-owned page; update service summary only"
+    }
+  ]
+}

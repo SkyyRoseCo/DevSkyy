@@ -1,0 +1,82 @@
+{
+  "reason": "Founder full-reference redesign, reviewed preserved controls and critical extraction, service-policy consistency. Product/media authority pins unchanged.",
+  "runtime": [
+    {
+      "path": "front-page.php",
+      "before": "3604bf1816e0305fa113613718f4efed0335d677c3f17ce7134492e0e259e0d3",
+      "after": "d06bcd8c0fa142a813b6020992bc76a2dfe84d63e30240f8f6ef876435f5a9d1"
+    },
+    {
+      "path": "inc/global-shell.php",
+      "before": "5b564341263f67b7fbca6c4b75db81545c8ba259719ea93d018abcc11fb65d16",
+      "after": "26eadb2dcf6baacfca5576b5a68dddd1cc47eb4e057fb4287e3235bedfbe2b4f"
+    },
+    {
+      "path": "inc/critical-rendering.php",
+      "before": "37f4729df8a296efd314d9d7fd8e778327c6ee99a4d4d88d2a45632651792c99",
+      "after": "c6c227bd52d4142135686a463e2235601c216e89d748d93943735c0d9dfe3123"
+    },
+    {
+      "path": "inc/presentation-registry.php",
+      "before": "5df3b06c98df51fcc1bd24e6b78e08a666f992448a917a6c182af00a5263500d",
+      "after": "d6da13f00c9c81ba3fc228c5273ff3d671038527fcf8b856e5b878ab763fe61c"
+    },
+    {
+      "path": "template-parts/home/editorial-collection.php",
+      "before": null,
+      "after": "3e50ee82663e270f96d951de49be31860b027d9f5a0366ee5d9df695638ac515"
+    },
+    {
+      "path": "template-parts/home/editorial-hero.php",
+      "before": null,
+      "after": "a64ce5442e8ae800b700ca545068a623481b4117e7e7f55b933e1e56b0c7a92a"
+    },
+    {
+      "path": "template-parts/home/editorial-journal.php",
+      "before": null,
+      "after": "a8daf8b0bb61a899c7db63f53a361e92fc4d0df40c33b80c13a9d0c7791e633a"
+    },
+    {
+      "path": "template-parts/home/editorial-philosophy.php",
+      "before": null,
+      "after": "f6c07de4e120545845d113ee9c77793487fef8ab30966691540fa8bf3600518d"
+    },
+    {
+      "path": "template-parts/home/editorial-product-edit.php",
+      "before": null,
+      "after": "843269ba53b91cb97cd5f01544a5dd7377ca3ac47fc51c5c7253f158e38be5a0"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "tools/v2-source-certification/runtime-php-baseline.json",
+      "before": "85b10d6721599872130b32713f065c649d63c3b5b4c58848b1cfde334edd8ec1",
+      "after": "fd518f0731e7d98789b86545864522fe74ca70aeddd42f545f756da6b0455156"
+    },
+    {
+      "path": "tools/v2-source-certification/package-boundary.json",
+      "before": "d7b8622e5e63ee6363aca45ddcccc117b1fff4149f67f1610ee4c16fbe22c304",
+      "after": "f2a268035be433c464c38a255c968dad6a46fb619a7af623410869cc152a98f2"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/scripts/build-critical-css.mjs",
+      "before": "3d0f84d9a2f7c8ebeddf9a76c08977d18ec17190f91f4394bac2665bd6246131",
+      "after": "976310d7a15b39cf766303861509996b4715cad3f9c02a111d916647290c0f26"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/css/critical/home.contract.json",
+      "before": "866cb8f1c98fce7097f7c41856b5a3b1602eb9c5adf284784f8e8a2601dd5f7f",
+      "after": "4d508dde4ff069dbb9868125afd599891f19e4d55cded004656ab4cef35ce47d"
+    },
+    {
+      "path": "tools/v2-source-certification/runtime-php-baseline.json",
+      "before": "fd518f0731e7d98789b86545864522fe74ca70aeddd42f545f756da6b0455156",
+      "after": "6e249655698cb8e53702171026103b5566d665aedcd5d166a166771d660ca032"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/package.json",
+      "before": "bce159d9953a28fb55baba8080890668d477ef91d3ef28cf146c3d7e381bdd08",
+      "after": "9bde6b78c64d2e772ce63de7b2ec96c1bcacd82f8abf2f5c5a90b41abfcff009"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "skip": {
+    "text": "Skip to content",
+    "href": "#primary",
+    "rect": {
+      "x": 16,
+      "y": 16,
+      "width": 149.484375,
+      "height": 49.59375,
+      "top": 16,
+      "right": 165.484375,
+      "bottom": 65.59375,
+      "left": 16
+    }
+  },
+  "skipTarget": {
+    "id": "primary",
+    "tag": "MAIN"
+  },
+  "film": [
+    {
+      "sku": "SG-005",
+      "visible": true,
+      "motion": "static",
+      "outlineStyle": "solid",
+      "outlineWidth": "2px"
+    },
+    {
+      "sku": "BR-004",
+      "visible": true,
+      "motion": "static",
+      "outlineStyle": "solid",
+      "outlineWidth": "2px"
+    },
+    {
+      "sku": "LH-004",
+      "visible": true,
+      "motion": "static",
+      "outlineStyle": "solid",
+      "outlineWidth": "2px"
+    }
+  ],
+  "escaped": {
+    "toggleFocused": true,
+    "paused": "paused"
+  }
+}

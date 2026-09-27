@@ -1,0 +1,91 @@
+{
+  "site": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "reason": "Founder centered alignment across pages and imagery delivery optimization",
+  "files": [
+    {
+      "path": "template-parts/pages/service.php",
+      "before": "ABSENT",
+      "after": "b9fa3e29d6729812b03768b9da8d1f500e9ce97a991f8ed8498a1a19bb0d1c9e"
+    },
+    {
+      "path": "assets/css/archive-style-inputs.json",
+      "before": "47c5ef45c474ea17c2958943dbb9960bb6ee3256c3f0bd0c09237212e2fb97a8",
+      "after": "365a6ba7051bcb4d337ce5c7e91b955221b21cb1e6382d1f530c4636279724a9"
+    },
+    {
+      "path": "assets/css/archive-theme.json",
+      "before": "397b610a8dd04d9837fd6a0f731e4064ffddb777552dd216786cb2879c28dd3a",
+      "after": "f37d3afe0322c889ea2e84791a40ac2d56477a26ed4b7b2318ebdf1f49064d80"
+    },
+    {
+      "path": "assets/css/critical/home.min.css",
+      "before": "b86562cf237967410e3b0fe958b2f77b0d7ea98ce060a79e326d039d8db87178",
+      "after": "18138ebf851e850fa830b71447c873d7af6a2feda87f8160c2b3a8561341741e"
+    },
+    {
+      "path": "assets/css/home-page.css",
+      "before": "a1c765afb9579bb23356b241d82f99ea1e5564c8672afe4c73bf10b6a9b43f18",
+      "after": "97a9695f5821df79d08578b71bca0207b32a59577eccac4e3105209745046278"
+    },
+    {
+      "path": "assets/css/home-page.min.css",
+      "before": "4f5627f134846460b2b9a0aa9a9eb97fbad1cd22812f0e1fe1f85210aaa9acbd",
+      "after": "e5f099955bc2f3740e1cb7a2f7d3b299caa8b77dbafe653a848bdeb18de38e4c"
+    },
+    {
+      "path": "assets/css/product-page.css",
+      "before": "2a1c4d03fec4d4c6526f3431a28dd0b0843889835e4d7a4a8c2a7978cd7a21e6",
+      "after": "d3e5d3167eb66f8ae543c1951fa815d85ee30a5f9a23d131df3fb2cbf463c784"
+    },
+    {
+      "path": "assets/css/product-page.min.css",
+      "before": "e15493127180cdc5b5b45c03cf0b56d334f4dfee795bd25cade7ce7a774c867a",
+      "after": "5647078719bf4f579c3d7376a6724069a20a5b139dba018985c7ae041b65413b"
+    },
+    {
+      "path": "assets/css/shop-page.css",
+      "before": "52a6823c67a424897dcfc9d3b438af6bcb5424160f7998321ad6cef5586392ff",
+      "after": "9f0f2410fa880e851eef43402ba4ce37e4e038281d3508160e7def1d3e14772d"
+    },
+    {
+      "path": "assets/css/shop-page.min.css",
+      "before": "2bcbd65b5f08fe3668da34f6495b73775cd15304eb8e2139473faea109ec46f6",
+      "after": "2cccb01596610067dc53da5764b0a90ebdabc0622a0a0c87deff862a7c619a3c"
+    },
+    {
+      "path": "assets/css/theme.css",
+      "before": "1c6802bedc4334fd14e55764d94fba7f25ac892ef028ae731b2218c4f8d4b62f",
+      "after": "a415c69562f70b2ca892b892ae829b4b19ee4a52858b59aea8c6d607fd3d7b5e"
+    },
+    {
+      "path": "assets/css/theme.min.css",
+      "before": "1ca4b4230e043f281df5943bf27e9f3b061976bd7cfbe298331b4cf45c865e93",
+      "after": "10460ea9ad7fdd80a88956e8739c7fca01c7a01452d91f97481c74cd340e0061"
+    },
+    {
+      "path": "inc/approved-card-fronts.php",
+      "before": "dfaab5d818bde400f169e292d9763c67dbb89bd2c68de0c54119d0cf49264e03",
+      "after": "b8152869e4b0c4b000441b245bdb42b53abf3a8866ff83743d7dc23f727cf2fa"
+    },
+    {
+      "path": "inc/launch-readiness.php",
+      "before": "0382ea42b50213167e2ae6a362269918d8d9a97caf9ec0640fc251e999cd444e",
+      "after": "5dd0892e606f612881682ca936bdb87f19a825ec5be801786c8e42aa989a7a91"
+    },
+    {
+      "path": "inc/pdp-media-delivery.php",
+      "before": "777d9cd06e2d2692d9bf2d4ae4c721496f5830b420de091a4629d58a1c6f0b2c",
+      "after": "359ec0d85b88371aaca41dd8d253cce184a8f2dc111c9fd29b0744a1317584a8"
+    },
+    {
+      "path": "languages/skyyrose-flagship-2.pot",
+      "before": "3828f6e7e7d5bff97bbdbc0f669b8acf5660e85b2f6373713734b3445ea0b178",
+      "after": "4b488af1d77bc91a8e7d536386de208318899647ecc073da43fd26a29e65b196"
+    },
+    {
+      "path": "page.php",
+      "before": "a3f05485daa0efa68ce22b2f0c6240242d092d18a3ec7142b2dd76ee6abc5023",
+      "after": "7812c3384296c806284960e54adb6af9554e7ced8db598f7af0a747b89242bea"
+    }
+  ]
+}

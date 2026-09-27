@@ -1,0 +1,292 @@
+[
+  {
+    "width": 390,
+    "hero": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 800,
+      "top": 0,
+      "right": 390,
+      "bottom": 800,
+      "left": 0
+    },
+    "controls": [
+      {
+        "id": "skyy-hero-chat",
+        "text": "Ask Skyy",
+        "rect": {
+          "x": 132,
+          "y": 622,
+          "width": 116.203125,
+          "height": 44,
+          "top": 622,
+          "right": 248.203125,
+          "bottom": 666,
+          "left": 132
+        }
+      },
+      {
+        "id": "skyy-hero-dismiss",
+        "text": "Dismiss Skyy",
+        "rect": {
+          "x": 253.796875,
+          "y": 622,
+          "width": 116.203125,
+          "height": 44,
+          "top": 622,
+          "right": 370,
+          "bottom": 666,
+          "left": 253.796875
+        }
+      },
+      {
+        "id": "",
+        "text": "Pause motion",
+        "rect": {
+          "x": 266.234375,
+          "y": 86.390625,
+          "width": 103.765625,
+          "height": 46,
+          "top": 86.390625,
+          "right": 370,
+          "bottom": 132.390625,
+          "left": 266.234375
+        }
+      }
+    ],
+    "targets": [
+      {
+        "id": "",
+        "text": "Enter the collection→",
+        "rect": {
+          "x": 20,
+          "y": 412.65625,
+          "width": 207.90625,
+          "height": 64.8125,
+          "top": 412.65625,
+          "right": 227.90625,
+          "bottom": 477.46875,
+          "left": 20
+        }
+      },
+      {
+        "id": "",
+        "text": "Shop the house↗",
+        "rect": {
+          "x": 242.296875,
+          "y": 418.75,
+          "width": 127.703125,
+          "height": 52.625,
+          "top": 418.75,
+          "right": 370,
+          "bottom": 471.375,
+          "left": 242.296875
+        }
+      },
+      {
+        "id": "",
+        "text": "01Signature",
+        "rect": {
+          "x": 20,
+          "y": 708.03125,
+          "width": 167.796875,
+          "height": 35.1875,
+          "top": 708.03125,
+          "right": 187.796875,
+          "bottom": 743.21875,
+          "left": 20
+        }
+      },
+      {
+        "id": "",
+        "text": "02Black Rose",
+        "rect": {
+          "x": 202.1875,
+          "y": 708.03125,
+          "width": 167.8125,
+          "height": 35.1875,
+          "top": 708.03125,
+          "right": 370,
+          "bottom": 743.21875,
+          "left": 202.1875
+        }
+      },
+      {
+        "id": "",
+        "text": "03Love Hurts",
+        "rect": {
+          "x": 20,
+          "y": 743.21875,
+          "width": 167.796875,
+          "height": 35.1875,
+          "top": 743.21875,
+          "right": 187.796875,
+          "bottom": 778.40625,
+          "left": 20
+        }
+      },
+      {
+        "id": "",
+        "text": "04Kids Capsule",
+        "rect": {
+          "x": 202.1875,
+          "y": 743.21875,
+          "width": 167.8125,
+          "height": 35.1875,
+          "top": 743.21875,
+          "right": 370,
+          "bottom": 778.40625,
+          "left": 202.1875
+        }
+      }
+    ],
+    "collisions": [],
+    "outsideHero": []
+  },
+  {
+    "width": 1440,
+    "hero": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 619.1875,
+      "top": 0,
+      "right": 1440,
+      "bottom": 619.1875,
+      "left": 0
+    },
+    "controls": [
+      {
+        "id": "skyy-hero-chat",
+        "text": "Ask Skyy",
+        "rect": {
+          "x": 1056,
+          "y": 520.78125,
+          "width": 120,
+          "height": 44,
+          "top": 520.78125,
+          "right": 1176,
+          "bottom": 564.78125,
+          "left": 1056
+        }
+      },
+      {
+        "id": "skyy-hero-dismiss",
+        "text": "Dismiss Skyy",
+        "rect": {
+          "x": 1056,
+          "y": 570.375,
+          "width": 120,
+          "height": 44,
+          "top": 570.375,
+          "right": 1176,
+          "bottom": 614.375,
+          "left": 1056
+        }
+      },
+      {
+        "id": "",
+        "text": "Pause motion",
+        "rect": {
+          "x": 1264.234375,
+          "y": 92,
+          "width": 103.765625,
+          "height": 46,
+          "top": 92,
+          "right": 1368,
+          "bottom": 138,
+          "left": 1264.234375
+        }
+      }
+    ],
+    "targets": [
+      {
+        "id": "",
+        "text": "Enter the collection→",
+        "rect": {
+          "x": 149.5,
+          "y": 498.03125,
+          "width": 230.71875,
+          "height": 51,
+          "top": 498.03125,
+          "right": 380.21875,
+          "bottom": 549.03125,
+          "left": 149.5
+        }
+      },
+      {
+        "id": "",
+        "text": "Shop the house↗",
+        "rect": {
+          "x": 400.21875,
+          "y": 501.53125,
+          "width": 138.578125,
+          "height": 44,
+          "top": 501.53125,
+          "right": 538.796875,
+          "bottom": 545.53125,
+          "left": 400.21875
+        }
+      },
+      {
+        "id": "",
+        "text": "01Signature",
+        "rect": {
+          "x": 1208,
+          "y": 390.4375,
+          "width": 160,
+          "height": 39.1875,
+          "top": 390.4375,
+          "right": 1368,
+          "bottom": 429.625,
+          "left": 1208
+        }
+      },
+      {
+        "id": "",
+        "text": "02Black Rose",
+        "rect": {
+          "x": 1208,
+          "y": 429.625,
+          "width": 160,
+          "height": 39.1875,
+          "top": 429.625,
+          "right": 1368,
+          "bottom": 468.8125,
+          "left": 1208
+        }
+      },
+      {
+        "id": "",
+        "text": "03Love Hurts",
+        "rect": {
+          "x": 1208,
+          "y": 468.8125,
+          "width": 160,
+          "height": 39.1875,
+          "top": 468.8125,
+          "right": 1368,
+          "bottom": 508,
+          "left": 1208
+        }
+      },
+      {
+        "id": "",
+        "text": "04Kids Capsule",
+        "rect": {
+          "x": 1208,
+          "y": 508,
+          "width": 160,
+          "height": 39.1875,
+          "top": 508,
+          "right": 1368,
+          "bottom": 547.1875,
+          "left": 1208
+        }
+      }
+    ],
+    "collisions": [],
+    "outsideHero": []
+  }
+]

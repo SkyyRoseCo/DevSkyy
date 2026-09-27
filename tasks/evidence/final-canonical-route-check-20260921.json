@@ -1,0 +1,212 @@
+[
+  {
+    "path": "/",
+    "canonical": {
+      "status": 200,
+      "h1": "Skyy Rose",
+      "fatal": false,
+      "service_part": false
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "Skyy Rose",
+      "fatal": false,
+      "service_part": false
+    }
+  },
+  {
+    "path": "/shop/",
+    "canonical": {
+      "status": 200,
+      "h1": "Shop",
+      "fatal": false,
+      "service_part": false
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "Shop",
+      "fatal": false,
+      "service_part": false
+    }
+  },
+  {
+    "path": "/faq/",
+    "canonical": {
+      "status": 200,
+      "h1": "FAQ",
+      "fatal": false,
+      "service_part": true,
+      "questions": [
+        "How do I choose a size?",
+        "When will a pre-order ship?",
+        "How do I get order help?"
+      ]
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "FAQ",
+      "fatal": false,
+      "service_part": true,
+      "questions": [
+        "How do I choose a size?",
+        "When will a pre-order ship?",
+        "How do I get order help?"
+      ]
+    }
+  },
+  {
+    "path": "/my-account/",
+    "canonical": {
+      "status": 200,
+      "h1": "My Account",
+      "fatal": false,
+      "service_part": true
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "My Account",
+      "fatal": false,
+      "service_part": true
+    }
+  },
+  {
+    "path": "/shipping-returns/",
+    "canonical": {
+      "status": 200,
+      "h1": "Shipping & Returns",
+      "fatal": false,
+      "service_part": true
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "Shipping & Returns",
+      "fatal": false,
+      "service_part": true
+    }
+  },
+  {
+    "path": "/returns-exchanges/",
+    "canonical": {
+      "status": 200,
+      "h1": "Returns + Exchanges",
+      "fatal": false,
+      "service_part": true
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "Returns + Exchanges",
+      "fatal": false,
+      "service_part": true
+    }
+  },
+  {
+    "path": "/size-guide/",
+    "canonical": {
+      "status": 200,
+      "h1": "Size Guide",
+      "fatal": false,
+      "service_part": true
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "Size Guide",
+      "fatal": false,
+      "service_part": true
+    }
+  },
+  {
+    "path": "/contact/",
+    "canonical": {
+      "status": 200,
+      "h1": "Talk to the house.",
+      "fatal": false,
+      "service_part": false
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "Talk to the house.",
+      "fatal": false,
+      "service_part": false
+    }
+  },
+  {
+    "path": "/collections/",
+    "canonical": {
+      "status": 200,
+      "h1": "Every collection opens another world.",
+      "fatal": false,
+      "service_part": false
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "Every collection opens another world.",
+      "fatal": false,
+      "service_part": false
+    }
+  },
+  {
+    "path": "/product/br-003/",
+    "canonical": {
+      "status": 200,
+      "h1": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black)",
+      "fatal": false,
+      "service_part": false,
+      "image": {
+        "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-003-480w.webp",
+        "srcset": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-003-320w.webp 320w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-003-480w.webp 480w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-003-768w.webp 768w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-003-onmodel.webp 1024w",
+        "sizes": "(max-width: 47.99rem) clamp(214px, 34.6667svh, 320px), clamp(299px, 42.6667svh, 470px)"
+      }
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black)",
+      "fatal": false,
+      "service_part": false,
+      "image": {
+        "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-003-480w.webp",
+        "srcset": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-003-320w.webp 320w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-003-480w.webp 480w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-003-768w.webp 768w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-003-onmodel.webp 1024w",
+        "sizes": "(max-width: 47.99rem) clamp(214px, 34.6667svh, 320px), clamp(299px, 42.6667svh, 470px)"
+      }
+    }
+  },
+  {
+    "path": "/product/br-002/",
+    "canonical": {
+      "status": 200,
+      "h1": "BLACK Rose Joggers",
+      "fatal": false,
+      "service_part": false,
+      "image": {
+        "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-002-480w.webp",
+        "srcset": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-002-320w.webp 320w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-002-480w.webp 480w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-002-768w.webp 768w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-002-onmodel.webp 1024w",
+        "sizes": "(max-width: 47.99rem) clamp(214px, 34.6667svh, 320px), clamp(299px, 42.6667svh, 470px)"
+      }
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "BLACK Rose Joggers",
+      "fatal": false,
+      "service_part": false,
+      "image": {
+        "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-002-480w.webp",
+        "srcset": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-002-320w.webp 320w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-002-480w.webp 480w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-002-768w.webp 768w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-002-onmodel.webp 1024w",
+        "sizes": "(max-width: 47.99rem) clamp(214px, 34.6667svh, 320px), clamp(299px, 42.6667svh, 470px)"
+      }
+    }
+  },
+  {
+    "path": "/cookie-policy/",
+    "canonical": {
+      "status": 200,
+      "h1": "Cookie Policy",
+      "fatal": false,
+      "service_part": true
+    },
+    "fresh": {
+      "status": 200,
+      "h1": "Cookie Policy",
+      "fatal": false,
+      "service_part": true
+    }
+  }
+]

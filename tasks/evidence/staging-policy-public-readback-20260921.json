@@ -1,0 +1,62 @@
+{
+  "checked_at_gmt": "2026-09-21T22:21:00+00:00",
+  "scope": "rendered .sr2-page-copy and .sr2-c-service__links",
+  "pages": {
+    "shipping-returns": {
+      "canonical": {
+        "bytes": 119982,
+        "sha256": "020a46ed2939785eed7142c5e21cee88c350c095ac4d948f98fede952ae680fe"
+      },
+      "cachebust": {
+        "bytes": 119948,
+        "sha256": "f860ed8571d5c29cf1e19fab08021ff29c43f3a4e5fc128bbc0cde6eea346485"
+      }
+    },
+    "returns-exchanges": {
+      "canonical": {
+        "bytes": 108696,
+        "sha256": "4689ee33c703023a4bfb62e81936bdf41d1481c0a0006c79105663cf9bcd66ea",
+        "section_counts": {
+          "Before you send a piece back": 1,
+          "What to include in your request": 1,
+          "Free US size or color exchanges": 1,
+          "Exceptions and international exchanges": 1
+        },
+        "stale_phrase_counts": {
+          "reviewed case by case": 0,
+          "replacement is never promised": 0
+        },
+        "service_links": [
+          "https://staging-7e48-skyyrose.wpcomstaging.com/shipping-returns/",
+          "https://staging-7e48-skyyrose.wpcomstaging.com/returns-exchanges/",
+          "https://staging-7e48-skyyrose.wpcomstaging.com/size-guide/",
+          "https://staging-7e48-skyyrose.wpcomstaging.com/faq/",
+          "https://staging-7e48-skyyrose.wpcomstaging.com/contact/"
+        ],
+        "service_links_exact": true
+      },
+      "cachebust": {
+        "bytes": 108662,
+        "sha256": "05c91feb0b573baf7748bcc2697cf72e0a68ffc517522688b6d3d1489d049f9f",
+        "section_counts": {
+          "Before you send a piece back": 1,
+          "What to include in your request": 1,
+          "Free US size or color exchanges": 1,
+          "Exceptions and international exchanges": 1
+        },
+        "stale_phrase_counts": {
+          "reviewed case by case": 0,
+          "replacement is never promised": 0
+        },
+        "service_links": [
+          "https://staging-7e48-skyyrose.wpcomstaging.com/shipping-returns/",
+          "https://staging-7e48-skyyrose.wpcomstaging.com/returns-exchanges/",
+          "https://staging-7e48-skyyrose.wpcomstaging.com/size-guide/",
+          "https://staging-7e48-skyyrose.wpcomstaging.com/faq/",
+          "https://staging-7e48-skyyrose.wpcomstaging.com/contact/"
+        ],
+        "service_links_exact": true
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "target": "staging-only",
+  "site": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "operation": {
+    "slug": "returns-exchanges",
+    "id": 10406,
+    "expected_current_content_sha256": "d17a5946908975c792792352df8397805886a9d6a3f6912f000b33abe817e6f8",
+    "restore_content": "<!-- wp:heading --><h2 class=\"wp-block-heading\">Before you send a piece back</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Start with Client Services before shipping anything. The team confirms eligibility against the policy, order timing, and the condition of the piece, then provides the correct next step.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class=\"wp-block-heading\">What to include in your request</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Send the order number, the email used at checkout, the piece and size, and a brief reason for the request. Do not email payment-card details.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class=\"wp-block-heading\">Exchanges and made-to-order pieces</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Availability, fit, and production windows are reviewed case by case. A replacement is never promised until Client Services confirms the next available option.</p><!-- /wp:paragraph -->",
+    "restore_content_sha256": "eb19f34fa4408153ee634d7f768778342ee6b71a53c4f0d715b6ee67afe099cc",
+    "expected_template": "default",
+    "expected_demo_owned": "1.0.0"
+  }
+}

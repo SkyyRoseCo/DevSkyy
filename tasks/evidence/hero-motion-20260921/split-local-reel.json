@@ -1,0 +1,199 @@
+{
+  "target": "http://127.0.0.1:18883/",
+  "time": "2026-09-21T23:18:10.377Z",
+  "evidence": "REPRODUCED_LOCAL",
+  "profiles": [
+    {
+      "profile": "desktop",
+      "initial": {
+        "motion": "continuous",
+        "loop": "running",
+        "animation": "sr2-editorial-model-loop",
+        "play": "running",
+        "toggleHidden": false,
+        "copyFocusable": false,
+        "visibleCopies": 3
+      },
+      "links": [
+        {
+          "sku": "SG-005",
+          "href": "http://127.0.0.1:18883/?product=the-bridge-series-the-bay-bridge-shirt",
+          "status": 200,
+          "skuInHtml": true
+        },
+        {
+          "sku": "BR-004",
+          "href": "http://127.0.0.1:18883/?product=black-rose-hoodie",
+          "status": 200,
+          "skuInHtml": true
+        },
+        {
+          "sku": "LH-004",
+          "href": "http://127.0.0.1:18883/?product=love-hurts-bomber-jacket",
+          "status": 200,
+          "skuInHtml": true
+        }
+      ],
+      "clickedPause": {
+        "motion": "continuous",
+        "loop": "paused",
+        "animation": "sr2-editorial-model-loop",
+        "play": "paused",
+        "toggleHidden": false,
+        "copyFocusable": false,
+        "visibleCopies": 3
+      },
+      "clickedResume": {
+        "motion": "continuous",
+        "loop": "running",
+        "animation": "sr2-editorial-model-loop",
+        "play": "paused",
+        "toggleHidden": false,
+        "copyFocusable": false,
+        "visibleCopies": 3
+      },
+      "hover": {
+        "motion": "continuous",
+        "loop": "running",
+        "animation": "sr2-editorial-model-loop",
+        "play": "paused",
+        "toggleHidden": false,
+        "copyFocusable": false,
+        "visibleCopies": 3
+      },
+      "focus": {
+        "motion": "static",
+        "loop": "paused",
+        "animation": "none",
+        "play": "running",
+        "toggleHidden": false,
+        "copyFocusable": false,
+        "visibleCopies": 0
+      },
+      "escape": {
+        "motion": "static",
+        "loop": "paused",
+        "animation": "none",
+        "play": "running",
+        "toggleHidden": false,
+        "copyFocusable": false,
+        "visibleCopies": 0,
+        "focus": true
+      },
+      "offscreen": {
+        "motion": "continuous",
+        "loop": "paused",
+        "animation": "sr2-editorial-model-loop",
+        "play": "paused",
+        "toggleHidden": false,
+        "copyFocusable": false,
+        "visibleCopies": 3
+      },
+      "returned": {
+        "motion": "continuous",
+        "loop": "running",
+        "animation": "sr2-editorial-model-loop",
+        "play": "paused",
+        "toggleHidden": false,
+        "copyFocusable": false,
+        "visibleCopies": 3
+      },
+      "hiddenSimulated": {
+        "motion": "continuous",
+        "loop": "paused",
+        "animation": "sr2-editorial-model-loop",
+        "play": "paused",
+        "toggleHidden": false,
+        "copyFocusable": false,
+        "visibleCopies": 3
+      },
+      "persistedEventsSimulated": {
+        "motion": "continuous",
+        "loop": "running",
+        "animation": "sr2-editorial-model-loop",
+        "play": "paused",
+        "toggleHidden": false,
+        "copyFocusable": false,
+        "visibleCopies": 3
+      }
+    },
+    {
+      "profile": "mobile",
+      "initial": {
+        "motion": "static",
+        "loop": "paused",
+        "animation": "none",
+        "play": "running",
+        "toggleHidden": true,
+        "copyFocusable": false,
+        "visibleCopies": 0
+      },
+      "links": [
+        {
+          "sku": "SG-005",
+          "href": "http://127.0.0.1:18883/?product=the-bridge-series-the-bay-bridge-shirt"
+        },
+        {
+          "sku": "BR-004",
+          "href": "http://127.0.0.1:18883/?product=black-rose-hoodie"
+        },
+        {
+          "sku": "LH-004",
+          "href": "http://127.0.0.1:18883/?product=love-hurts-bomber-jacket"
+        }
+      ]
+    },
+    {
+      "profile": "reduced",
+      "initial": {
+        "motion": "static",
+        "loop": "paused",
+        "animation": "none",
+        "play": "running",
+        "toggleHidden": true,
+        "copyFocusable": false,
+        "visibleCopies": 0
+      },
+      "links": [
+        {
+          "sku": "SG-005",
+          "href": "http://127.0.0.1:18883/?product=the-bridge-series-the-bay-bridge-shirt"
+        },
+        {
+          "sku": "BR-004",
+          "href": "http://127.0.0.1:18883/?product=black-rose-hoodie"
+        },
+        {
+          "sku": "LH-004",
+          "href": "http://127.0.0.1:18883/?product=love-hurts-bomber-jacket"
+        }
+      ]
+    },
+    {
+      "profile": "saveData",
+      "initial": {
+        "motion": "static",
+        "loop": "paused",
+        "animation": "none",
+        "play": "paused",
+        "toggleHidden": true,
+        "copyFocusable": false,
+        "visibleCopies": 0
+      },
+      "links": [
+        {
+          "sku": "SG-005",
+          "href": "http://127.0.0.1:18883/?product=the-bridge-series-the-bay-bridge-shirt"
+        },
+        {
+          "sku": "BR-004",
+          "href": "http://127.0.0.1:18883/?product=black-rose-hoodie"
+        },
+        {
+          "sku": "LH-004",
+          "href": "http://127.0.0.1:18883/?product=love-hurts-bomber-jacket"
+        }
+      ]
+    }
+  ]
+}

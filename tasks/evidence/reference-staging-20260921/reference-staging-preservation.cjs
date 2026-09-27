@@ -1,0 +1,17 @@
+const {chromium}=require('/Users/theceo/DevSkyy/node_modules/playwright');
+const fs=require('fs');
+(async()=>{
+ const browser=await chromium.launch({headless:true}); const results={date:new Date().toISOString(),target:'https://staging-7e48-skyyrose.wpcomstaging.com/',candidate:'deployed staging candidate; public browser',authentication:'NOT_APPLICABLE',viewports:[]};
+ for(const width of [390,1440]){
+ const p=await browser.newPage({viewport:{width,height:1000}}); const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(results.target,{waitUntil:'domcontentloaded'});await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(1200);
+ const r={width,errors};r.styles=await p.locator('link[rel="stylesheet"]').evaluateAll(es=>es.map(e=>e.href));
+ r.geometry=await p.locator('main section, .sr2-editorial-worlds, #skyy-hero-chat, [data-recovery-motion-toggle]').evaluateAll(es=>es.map(e=>({tag:e.tagName,class:e.className,id:e.id,rect:e.getBoundingClientRect().toJSON()})));
+ if(true){try{await p.locator('#skyy-hero-chat').click({timeout:4000});r.dialogOpen=await p.locator('#skyy-ask-dialog').evaluate(e=>e.open);await p.keyboard.press('Escape');await p.waitForTimeout(300);r.restoredFocus=await p.evaluate(()=>document.activeElement.id)}catch(e){r.askError=e.message}}
+ const toggle=p.locator('[data-recovery-motion-toggle]'); if(await toggle.isVisible()){await toggle.click();r.pauseLabel=await toggle.textContent();await toggle.click();r.resumeLabel=await toggle.textContent()}
+ console.log(JSON.stringify({width,url:p.url(),ask:r.dialogOpen,askError:r.askError,focus:r.restoredFocus,details:await p.locator(".sr2-editorial-worlds").count()}));r.closedVideos=await p.locator('[data-collection-scene-motion]').evaluateAll(es=>es.map(e=>({paused:e.paused,src:e.getAttribute('src')})));
+ await p.locator('.sr2-editorial-worlds summary').focus();await p.keyboard.press('Enter');r.detailsOpen=await p.locator('.sr2-editorial-worlds').evaluate(e=>e.open);await p.locator('[data-recovery-track]').focus();await p.keyboard.press('End');await p.waitForTimeout(700);r.rail=await p.locator('[data-recovery-track]').evaluate(e=>({width:e.clientWidth,scrollWidth:e.scrollWidth,scroll:e.scrollLeft}));r.counter=await p.locator('[data-recovery-count]').textContent();
+ await p.locator('.sr2-editorial-worlds summary').focus();await p.keyboard.press('Enter');await p.waitForTimeout(250);r.reclosedVideos=await p.locator('[data-collection-scene-motion]').evaluateAll(es=>es.map(e=>({paused:e.paused,state:e.closest('[data-scene-id]').dataset.sceneMotionState})));
+ for(let y=0;y<await p.evaluate(()=>document.documentElement.scrollHeight);y+=650){await p.evaluate(y=>scrollTo({top:y,behavior:'instant'}),y);await p.waitForTimeout(100)}await p.evaluate(()=>scrollTo({top:0,behavior:'instant'}));await p.waitForTimeout(300);
+ r.pageWidth=await p.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));await p.screenshot({path:`/tmp/skyyrose-launch-redteam-20260921/reference-staging-${width}-full.png`,fullPage:true});await p.screenshot({path:`/tmp/skyyrose-launch-redteam-20260921/reference-staging-${width}-top.png`});results.viewports.push(r);await p.close();
+ }await browser.close();fs.writeFileSync('/tmp/skyyrose-launch-redteam-20260921/reference-staging-preservation.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results,null,2));
+})().catch(e=>{console.error(e);process.exit(1)});

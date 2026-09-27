@@ -216,6 +216,12 @@
   color: var(--sr2-immersive-accent);
 }
 
+/* These small Love Hurts utility labels sit on the void; retain crimson at AA contrast. */
+.sr2-immersive--romantic-castle :is(.sr2-immersive__chapter-mark, .sr2-immersive__eyebrow),
+.sr2-immersive--romantic-castle .sr2-immersive__chapter-nav a span {
+  color: #ef5269;
+}
+
 .sr2-immersive__chapter-nav ol {
   display: flex;
   align-items: center;

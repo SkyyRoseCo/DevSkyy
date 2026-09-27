@@ -33,6 +33,7 @@ const normalize = (text) => text.replace(/\s+/g, ' ').trim();
 const excludePatterns = contract.excludeSelectorPatterns.map((pattern) => new RegExp(pattern));
 const baseSelectors = new Set(contract.baseSelectors.map(normalize));
 const keepMedia = new Set(contract.keepMedia.map(normalize));
+const keepKeyframes = new Set(contract.keepKeyframes || []);
 
 function tokenMatches(selector, token) {
   let index = selector.indexOf(token);
@@ -75,12 +76,22 @@ function filterContainer(container, out) {
       if (parts.length === 0) return;
       const clone = node.clone();
       clone.selector = parts.join(',');
+      // Closed overlays occupy no first-view layout. Their full declarations
+      // remain in the external sheet; inline only their hidden-state property.
+      const noScript = node.parent.type === 'atrule' && normalize(node.parent.params || '') === '(scripting: none)';
+      const properties = noScript ? undefined : contract.criticalDeclarations?.[normalize(clone.selector)];
+      if (properties) clone.walkDecls((decl) => { if (!properties.includes(decl.prop)) decl.remove(); });
       clone.raws.before = '\n';
       out.append(clone);
       return;
     }
+    if (node.type === 'atrule' && node.name === 'keyframes' && keepKeyframes.has(node.params)) {
+      out.append(node.clone());
+      return;
+    }
     if (node.type === 'atrule' && node.name === 'font-face') {
-      if (contract.keepFontFaces) out.append(node.clone());
+      const family = node.nodes?.find((decl) => decl.prop === 'font-family')?.value.replace(/^["']|["']$/g, '');
+      if (contract.keepFontFaces && (!contract.fontFamilies || contract.fontFamilies.includes(family))) out.append(node.clone());
       return;
     }
     if (node.type === 'atrule' && node.name === 'media' && keepMedia.has(normalize(node.params))) {
