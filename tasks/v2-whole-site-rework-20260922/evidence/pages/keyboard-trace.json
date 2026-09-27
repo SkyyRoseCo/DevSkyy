@@ -1,0 +1,386 @@
+[
+  {
+    "surface": "checkout",
+    "focusOrder": [
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "billing_first_name",
+        "name": "billing_first_name",
+        "label": "First name *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "372x52"
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "billing_last_name",
+        "name": "billing_last_name",
+        "label": "Last name *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "372x52"
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "billing_country",
+        "name": "billing_country",
+        "label": "Country / Region *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "761x49"
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "billing_address_1",
+        "name": "billing_address_1",
+        "label": "Street address *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "761x52"
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "billing_address_2",
+        "name": "billing_address_2",
+        "label": "Apartment, suite, unit, etc. (optional)",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "761x52"
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "billing_city",
+        "name": "billing_city",
+        "label": "Town / City *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "761x52"
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "billing_state",
+        "name": "billing_state",
+        "label": "State *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "372x49"
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "billing_postcode",
+        "name": "billing_postcode",
+        "label": "ZIP Code *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "372x52"
+      },
+      {
+        "tag": "input",
+        "type": "tel",
+        "id": "billing_phone",
+        "name": "billing_phone",
+        "label": "Phone *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "761x52"
+      },
+      {
+        "tag": "input",
+        "type": "email",
+        "id": "billing_email",
+        "name": "billing_email",
+        "label": "Email address *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "761x52"
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "ship-to-different-address-checkbox",
+        "name": "ship_to_different_address",
+        "label": "Ship to a different address?",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "20x20"
+      },
+      {
+        "tag": "textarea",
+        "type": "",
+        "id": "order_comments",
+        "name": "order_comments",
+        "label": "Order notes (optional)",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "761x77"
+      },
+      {
+        "tag": "input",
+        "type": "radio",
+        "id": "shipping_method_0_flat_rate1",
+        "name": "shipping_method[0]",
+        "label": "Tracked delivery: $12.00",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "20x20"
+      },
+      {
+        "tag": "input",
+        "type": "radio",
+        "id": "payment_method_preview",
+        "name": "payment_method",
+        "label": "Card",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "20x20"
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "terms",
+        "name": "terms",
+        "label": "I have read and agree to the website terms and conditions *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "17x20"
+      },
+      {
+        "tag": "a",
+        "type": "",
+        "id": "",
+        "name": "",
+        "label": "wrapped: I have read and agree to the website terms and conditions *",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "296x40"
+      },
+      {
+        "tag": "button",
+        "type": "submit",
+        "id": "place_order",
+        "name": "woocommerce_checkout_place_order",
+        "label": "text: Place order",
+        "visibleLabel": true,
+        "outline": "none 0px",
+        "boxShadow": true,
+        "size": "372x48"
+      }
+    ],
+    "errorState": {
+      "url": "http://127.0.0.1:8793/tools/v2-theme-preview.php?route=checkout&sr2_preview_submit=1&billing_first_name=&billing_last_name=&billing_country=&billing_address_1=&billing_address_2=&billing_city=&billing_state=&billing_postcode=&billing_phone=&billing_email=&order_comments=&shipping_method%5B0%5D=flat_rate%3A1&payment_method=preview&woocommerce_checkout_place_order=Place+order",
+      "notices": [
+        "Billing First name is a required field.",
+        "Billing Last name is a required field.",
+        "Billing Country / Region is a required field.",
+        "Billing Street address is a required field.",
+        "Billing Town / City is a required field.",
+        "Billing State is a required field.",
+        "Billing ZIP Code is a required field.",
+        "Billing Phone is a required field.",
+        "Billing Email address is a required field."
+      ],
+      "invalidRows": [
+        "billing_first_name_field",
+        "billing_last_name_field",
+        "billing_country_field",
+        "billing_address_1_field",
+        "billing_city_field",
+        "billing_state_field",
+        "billing_postcode_field",
+        "billing_phone_field",
+        "billing_email_field"
+      ],
+      "ariaInvalid": [
+        "billing_first_name",
+        "billing_last_name",
+        "billing_country",
+        "billing_address_1",
+        "billing_city",
+        "billing_state",
+        "billing_postcode",
+        "billing_phone",
+        "billing_email"
+      ]
+    },
+    "pageErrors": []
+  },
+  {
+    "surface": "account-login",
+    "focusOrder": [
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "username",
+        "name": "username",
+        "label": "Username or email address *",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "512x52"
+      },
+      {
+        "tag": "input",
+        "type": "password",
+        "id": "password",
+        "name": "password",
+        "label": "Password *",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "512x52"
+      },
+      {
+        "tag": "button",
+        "type": "button",
+        "id": "",
+        "name": "",
+        "label": "aria-label: Show password",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "44x44"
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "rememberme",
+        "name": "rememberme",
+        "label": "Remember me",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "20x20"
+      },
+      {
+        "tag": "button",
+        "type": "submit",
+        "id": "",
+        "name": "login",
+        "label": "text: Log in",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "82x48"
+      },
+      {
+        "tag": "a",
+        "type": "",
+        "id": "",
+        "name": "",
+        "label": "text: Lost your password?",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "149x21"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "surface": "contact",
+    "focusOrder": [
+      {
+        "tag": "input",
+        "type": "text",
+        "id": "sr2-contact-name",
+        "name": "contact_name",
+        "label": "Name",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "312x52"
+      },
+      {
+        "tag": "input",
+        "type": "email",
+        "id": "sr2-contact-email",
+        "name": "contact_email",
+        "label": "Email",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "312x52"
+      },
+      {
+        "tag": "select",
+        "type": "",
+        "id": "sr2-contact-subject",
+        "name": "contact_subject",
+        "label": "What can we help with?",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "640x49"
+      },
+      {
+        "tag": "textarea",
+        "type": "",
+        "id": "sr2-contact-message",
+        "name": "contact_message",
+        "label": "Message",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "640x180"
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "id": "",
+        "name": "contact_privacy",
+        "label": "I agree that SkyyRose may use these details to respond to this request. Privacy policy.",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "20x20"
+      },
+      {
+        "tag": "a",
+        "type": "",
+        "id": "",
+        "name": "",
+        "label": "wrapped: I agree that SkyyRose may use these details to respond to th",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "87x18"
+      },
+      {
+        "tag": "button",
+        "type": "submit",
+        "id": "",
+        "name": "",
+        "label": "text: Send to the house",
+        "visibleLabel": true,
+        "outline": "solid 2px",
+        "boxShadow": true,
+        "size": "179x48"
+      }
+    ],
+    "pageErrors": []
+  }
+]

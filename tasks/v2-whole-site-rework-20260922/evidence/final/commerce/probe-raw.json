@@ -1,0 +1,4161 @@
+[
+ {
+  "route": "shop",
+  "sku": null,
+  "name": "shop",
+  "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=shop",
+  "captures": [
+   "shop-1440.png",
+   "shop-390.png",
+   "shop-390-reduced.png",
+   "shop-1440-nojs.png"
+  ],
+  "http_status": 200,
+  "focus_order": [
+   {
+    "tag": "a",
+    "class": "sr2-skip",
+    "text": "Skip to content",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__brand",
+    "text": "SkyyRose home",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Collections",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Journal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "About",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-header__direct sr2-house-header__search",
+    "text": "Search",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__bag",
+    "text": "Bag 0",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "sr2-header__menu",
+    "text": "Open site menu",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "All pieces",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Signature",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Black Rose",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Love Hurts",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Kids Capsule",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   }
+  ],
+  "skip_link_first": true,
+  "skip_link_activation": {
+   "hash": "#primary",
+   "active": "body",
+   "primaryTop": 0
+  },
+  "probe_1440": {
+   "title": "SkyyRose \u2014 Shop",
+   "h1": "Shop",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 2118,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 13,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "shop": {
+   "cards": [
+    {
+     "sku": "SG-005",
+     "collection": "signature",
+     "eyebrow": "Signature",
+     "title": "Bay Bridge Shirt",
+     "price": "$128.00",
+     "availability": "Available for preorder",
+     "frame": "archive",
+     "frameImgs": 1,
+     "img": {
+      "currentSrc": "http://127.0.0.1:8790/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/sg-005-320w.webp",
+      "alt": "The Bridge Series 'The Bay Bridge' Shirt \u2014 front on model",
+      "complete": true,
+      "naturalWidth": 309,
+      "rendered": [
+       285,
+       427
+      ]
+     },
+     "actions": []
+    },
+    {
+     "sku": "BR-004",
+     "collection": "black-rose",
+     "eyebrow": "Black Rose",
+     "title": "Black Rose Hoodie",
+     "price": "$128.00",
+     "availability": "Available for preorder",
+     "frame": "archive",
+     "frameImgs": 1,
+     "img": {
+      "currentSrc": "http://127.0.0.1:8790/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/br-004-320w.webp",
+      "alt": "BLACK Rose Hoodie \u2014 front on model",
+      "complete": true,
+      "naturalWidth": 309,
+      "rendered": [
+       285,
+       427
+      ]
+     },
+     "actions": []
+    },
+    {
+     "sku": "LH-004",
+     "collection": "love-hurts",
+     "eyebrow": "Love Hurts",
+     "title": "Love Hurts Bomber Jacket",
+     "price": "$128.00",
+     "availability": "Available for preorder",
+     "frame": "archive",
+     "frameImgs": 1,
+     "img": {
+      "currentSrc": "http://127.0.0.1:8790/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/lh-004-320w.webp",
+      "alt": "Love Hurts Bomber Jacket \u2014 front on model",
+      "complete": true,
+      "naturalWidth": 309,
+      "rendered": [
+       285,
+       427
+      ]
+     },
+     "actions": []
+    },
+    {
+     "sku": "KIDS-001",
+     "collection": "kids-capsule",
+     "eyebrow": "Kids Capsule",
+     "title": "Kids Colorblock Hoodie Set \u2014 Red/Black",
+     "price": "$128.00",
+     "availability": "Available for preorder",
+     "frame": "archive",
+     "frameImgs": 1,
+     "img": {
+      "currentSrc": "http://127.0.0.1:8790/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-320w.webp",
+      "alt": "Kids Colorblock Hoodie Set \u2014 Red/Black \u2014 front on model",
+      "complete": true,
+      "naturalWidth": 309,
+      "rendered": [
+       285,
+       427
+      ]
+     },
+     "actions": []
+    },
+    {
+     "sku": "KIDS-002",
+     "collection": "kids-capsule",
+     "eyebrow": "Kids Capsule",
+     "title": "Kids Colorblock Hoodie Set \u2014 Purple/Black",
+     "price": "$128.00",
+     "availability": "Available for preorder",
+     "frame": "archive",
+     "frameImgs": 1,
+     "img": {
+      "currentSrc": "http://127.0.0.1:8790/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-320w.webp",
+      "alt": "Kids Colorblock Hoodie Set \u2014 Purple/Black \u2014 front on model",
+      "complete": true,
+      "naturalWidth": 309,
+      "rendered": [
+       285,
+       427
+      ]
+     },
+     "actions": []
+    }
+   ],
+   "cardCount": 5,
+   "resultCount": "Showing all 5 results",
+   "ordering": {
+    "method": "get",
+    "action": null,
+    "select": true,
+    "submit": true,
+    "noscript": false
+   },
+   "filters": {
+    "method": "get",
+    "action": "/tools/v2-theme-preview.php?route=shop",
+    "controls": 5,
+    "submit": true
+   },
+   "emptyStateText": null,
+   "pagination": false,
+   "shopEyebrow": "The House Edit"
+  },
+  "console": [],
+  "failed_requests": [],
+  "probe_390": {
+   "title": "SkyyRose \u2014 Shop",
+   "h1": "Shop",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 4532,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 13,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "shop_390": {
+   "cards": [
+    {
+     "sku": "SG-005",
+     "collection": "signature",
+     "eyebrow": "Signature",
+     "title": "Bay Bridge Shirt",
+     "price": "$128.00",
+     "availability": "Available for preorder",
+     "frame": "archive",
+     "frameImgs": 1,
+     "img": {
+      "currentSrc": "http://127.0.0.1:8790/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/sg-005-768w.webp",
+      "alt": "The Bridge Series 'The Bay Bridge' Shirt \u2014 front on model",
+      "complete": true,
+      "naturalWidth": 358,
+      "rendered": [
+       329,
+       494
+      ]
+     },
+     "actions": []
+    },
+    {
+     "sku": "BR-004",
+     "collection": "black-rose",
+     "eyebrow": "Black Rose",
+     "title": "Black Rose Hoodie",
+     "price": "$128.00",
+     "availability": "Available for preorder",
+     "frame": "archive",
+     "frameImgs": 1,
+     "img": {
+      "currentSrc": "http://127.0.0.1:8790/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/br-004-768w.webp",
+      "alt": "BLACK Rose Hoodie \u2014 front on model",
+      "complete": true,
+      "naturalWidth": 358,
+      "rendered": [
+       329,
+       494
+      ]
+     },
+     "actions": []
+    },
+    {
+     "sku": "LH-004",
+     "collection": "love-hurts",
+     "eyebrow": "Love Hurts",
+     "title": "Love Hurts Bomber Jacket",
+     "price": "$128.00",
+     "availability": "Available for preorder",
+     "frame": "archive",
+     "frameImgs": 1,
+     "img": {
+      "currentSrc": "http://127.0.0.1:8790/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/lh-004-768w.webp",
+      "alt": "Love Hurts Bomber Jacket \u2014 front on model",
+      "complete": true,
+      "naturalWidth": 358,
+      "rendered": [
+       329,
+       494
+      ]
+     },
+     "actions": []
+    },
+    {
+     "sku": "KIDS-001",
+     "collection": "kids-capsule",
+     "eyebrow": "Kids Capsule",
+     "title": "Kids Colorblock Hoodie Set \u2014 Red/Black",
+     "price": "$128.00",
+     "availability": "Available for preorder",
+     "frame": "archive",
+     "frameImgs": 1,
+     "img": {
+      "currentSrc": "http://127.0.0.1:8790/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-768w.webp",
+      "alt": "Kids Colorblock Hoodie Set \u2014 Red/Black \u2014 front on model",
+      "complete": true,
+      "naturalWidth": 358,
+      "rendered": [
+       329,
+       494
+      ]
+     },
+     "actions": []
+    },
+    {
+     "sku": "KIDS-002",
+     "collection": "kids-capsule",
+     "eyebrow": "Kids Capsule",
+     "title": "Kids Colorblock Hoodie Set \u2014 Purple/Black",
+     "price": "$128.00",
+     "availability": "Available for preorder",
+     "frame": "archive",
+     "frameImgs": 1,
+     "img": {
+      "currentSrc": "http://127.0.0.1:8790/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp",
+      "alt": "Kids Colorblock Hoodie Set \u2014 Purple/Black \u2014 front on model",
+      "complete": true,
+      "naturalWidth": 358,
+      "rendered": [
+       329,
+       494
+      ]
+     },
+     "actions": []
+    }
+   ],
+   "cardCount": 5,
+   "resultCount": "Showing all 5 results",
+   "ordering": {
+    "method": "get",
+    "action": null,
+    "select": true,
+    "submit": true,
+    "noscript": false
+   },
+   "filters": {
+    "method": "get",
+    "action": "/tools/v2-theme-preview.php?route=shop",
+    "controls": 5,
+    "submit": true
+   },
+   "emptyStateText": null,
+   "pagination": false,
+   "shopEyebrow": "The House Edit"
+  },
+  "console_390": [],
+  "failed_390": [],
+  "probe_390_reduced": {
+   "title": "SkyyRose \u2014 Shop",
+   "h1": "Shop",
+   "htmlClass": "sr2-motion-ready sr2-motion-reduced",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 4532,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 13,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [],
+   "dock": false,
+   "animations": 0
+  },
+  "console_390_reduced": [],
+  "nojs": {
+   "frame1": "689fc6acf3b2",
+   "frame2": "63e5b52e60db",
+   "framesDiffer": true,
+   "scrollY": 1967,
+   "scrollHeight": 2867,
+   "images": {
+    "total": 12,
+    "loaded": 11,
+    "broken": [],
+    "pending": 0
+   },
+   "productImgsVisible": [
+    {
+     "src": "sg-005-320w.webp",
+     "w": 285,
+     "h": 427,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    },
+    {
+     "src": "br-004-320w.webp",
+     "w": 285,
+     "h": 427,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    },
+    {
+     "src": "lh-004-320w.webp",
+     "w": 285,
+     "h": 427,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    },
+    {
+     "src": "kids-001-320w.webp",
+     "w": 285,
+     "h": 427,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    },
+    {
+     "src": "kids-002-320w.webp",
+     "w": 285,
+     "h": 427,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    }
+   ],
+   "revealHidden": 0,
+   "revealTotal": 0,
+   "motionReady": false,
+   "forms": [
+    {
+     "class": "woocommerce-ordering",
+     "method": "get",
+     "action": null,
+     "selects": [
+      "orderby"
+     ],
+     "submit": [
+      "button[type=submit] Sort"
+     ],
+     "noscript": false
+    },
+    {
+     "class": "sr2-shop-filters__form",
+     "method": "get",
+     "action": "/tools/v2-theme-preview.php?route=shop",
+     "selects": [
+      "product_cat",
+      "stock_status"
+     ],
+     "submit": [
+      "button[type=submit] Apply filters"
+     ],
+     "noscript": false
+    },
+    {
+     "class": "sr2-search-dialog__form",
+     "method": "get",
+     "action": "/tools/v2-theme-preview.php?route=home",
+     "selects": [],
+     "submit": [
+      "button[type=submit] Search"
+     ],
+     "noscript": false
+    }
+   ],
+   "noscriptBlocks": 0,
+   "hiddenByJsHooks": 16,
+   "console": [],
+   "failed": []
+  }
+ },
+ {
+  "route": "product",
+  "sku": "sg-005",
+  "name": "product-sg-005",
+  "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=sg-005",
+  "captures": [
+   "product-sg-005-1440.png",
+   "product-sg-005-390.png",
+   "product-sg-005-390-reduced.png",
+   "product-sg-005-1440-nojs.png"
+  ],
+  "http_status": 200,
+  "focus_order": [
+   {
+    "tag": "a",
+    "class": "sr2-skip",
+    "text": "Skip to content",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__brand",
+    "text": "SkyyRose home",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Collections",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Journal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "About",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-header__direct sr2-house-header__search",
+    "text": "Search",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__bag",
+    "text": "Bag 0",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "sr2-header__menu",
+    "text": "Open site menu",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Signature",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "select",
+    "class": "",
+    "text": "Choose a sizeXSSMLXL2XL",
+    "id": "preview-size",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "",
+    "text": "1",
+    "id": "preview-qty",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   }
+  ],
+  "skip_link_first": true,
+  "skip_link_activation": {
+   "hash": "#primary",
+   "active": "body",
+   "primaryTop": 0
+  },
+  "probe_1440": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Bay Bridge Shirt",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 4286,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 15,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "pdp": {
+   "h1": "Bay Bridge Shirt",
+   "price": "$128.00",
+   "stock": "Available for preorder",
+   "collectionEyebrow": "Signature",
+   "collectionAttr": "signature",
+   "skuMeta": "SG-005",
+   "gallery": {
+    "ariaLabel": "2 published views",
+    "role": "region",
+    "imgCount": 2,
+    "imgs": [
+     {
+      "src": "sg-005-front.webp",
+      "alt": "SkyyRose published product view",
+      "w": 761,
+      "h": 1142,
+      "area": 868759,
+      "complete": true,
+      "naturalWidth": 533
+     },
+     {
+      "src": "sg-005-packshot.webp",
+      "alt": "SkyyRose published product view",
+      "w": 248,
+      "h": 80,
+      "area": 19861,
+      "complete": true,
+      "naturalWidth": 600
+     }
+    ],
+    "dominantShare": 0.98,
+    "sticky": "sticky"
+   },
+   "form": {
+    "method": null,
+    "action": null,
+    "class": "cart variations_form",
+    "sizeOptions": [
+     "Choose a size",
+     "XS",
+     "S",
+     "M",
+     "L",
+     "XL",
+     "2XL"
+    ],
+    "sizeLabel": "Size",
+    "qtyLabel": "Quantity",
+    "atc": {
+     "text": "Secure this piece",
+     "type": "button",
+     "name": null
+    }
+   },
+   "sizeGuide": {
+    "opener": {
+     "tag": "a",
+     "text": "Fit + size guide\u2192",
+     "href": "/tools/v2-theme-preview.php?route=size-guide",
+     "ariaControls": "sr2-size-guide-dialog",
+     "haspopup": "dialog"
+    },
+    "dialog": {
+     "open": false,
+     "labelledby": "sr2-size-guide-title",
+     "title": "Choose the silhouette you want to live in."
+    }
+   },
+   "description": true,
+   "relatedCards": 4,
+   "jsonLd": 0,
+   "keyboardReach": {
+    "sizeSelect": {
+     "stop": 13,
+     "label": "Size"
+    },
+    "addToCart": {
+     "stop": 15,
+     "label": "Secure this piece"
+    },
+    "sizeGuideOpener": {
+     "stop": 16,
+     "label": "Fit + size guide\u2192"
+    },
+    "stops": 16
+   },
+   "sizeGuideInteraction": {
+    "openedViaKeyboard": true,
+    "focusInsideAfterOpen": {
+     "inside": true,
+     "tag": "button",
+     "text": "Close fit and size guide"
+    },
+    "closedViaEscape": true,
+    "focusReturnedToOpener": true,
+    "focusAfterClose": {
+     "tag": "a",
+     "class": "sr2-editorial-link",
+     "text": "Fit + size guide\u2192",
+     "id": null,
+     "visibleIndicator": true,
+     "outline": "solid 2px rgb(245, 245, 240)",
+     "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+     "inViewport": true
+    },
+    "closeButtonWorks": {
+     "closed": true,
+     "focusOnOpener": true
+    }
+   },
+   "urlAfterInteractions": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=sg-005"
+  },
+  "console": [],
+  "failed_requests": [],
+  "probe_390": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Bay Bridge Shirt",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 5880,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 15,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "pdp_390": {
+   "h1": "Bay Bridge Shirt",
+   "price": "$128.00",
+   "stock": "Available for preorder",
+   "collectionEyebrow": "Signature",
+   "collectionAttr": "signature",
+   "skuMeta": "SG-005",
+   "gallery": {
+    "ariaLabel": "2 published views",
+    "role": "region",
+    "imgCount": 2,
+    "imgs": [
+     {
+      "src": "sg-005-front.webp",
+      "alt": "SkyyRose published product view",
+      "w": 358,
+      "h": 537,
+      "area": 192363,
+      "complete": true,
+      "naturalWidth": 533
+     },
+     {
+      "src": "sg-005-packshot.webp",
+      "alt": "SkyyRose published product view",
+      "w": 114,
+      "h": 56,
+      "area": 6384,
+      "complete": true,
+      "naturalWidth": 600
+     }
+    ],
+    "dominantShare": 0.97,
+    "sticky": "static"
+   },
+   "form": {
+    "method": null,
+    "action": null,
+    "class": "cart variations_form",
+    "sizeOptions": [
+     "Choose a size",
+     "XS",
+     "S",
+     "M",
+     "L",
+     "XL",
+     "2XL"
+    ],
+    "sizeLabel": "Size",
+    "qtyLabel": "Quantity",
+    "atc": {
+     "text": "Secure this piece",
+     "type": "button",
+     "name": null
+    }
+   },
+   "sizeGuide": {
+    "opener": {
+     "tag": "a",
+     "text": "Fit + size guide\u2192",
+     "href": "/tools/v2-theme-preview.php?route=size-guide",
+     "ariaControls": "sr2-size-guide-dialog",
+     "haspopup": "dialog"
+    },
+    "dialog": {
+     "open": false,
+     "labelledby": "sr2-size-guide-title",
+     "title": "Choose the silhouette you want to live in."
+    }
+   },
+   "description": true,
+   "relatedCards": 4,
+   "jsonLd": 0
+  },
+  "console_390": [],
+  "failed_390": [],
+  "probe_390_reduced": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Bay Bridge Shirt",
+   "htmlClass": "sr2-motion-ready sr2-motion-reduced",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 5880,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 15,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [],
+   "dock": false,
+   "animations": 0
+  },
+  "console_390_reduced": [],
+  "nojs": {
+   "frame1": "7b4937dacec6",
+   "frame2": "c2808ba08a7a",
+   "framesDiffer": true,
+   "scrollY": 4135,
+   "scrollHeight": 5035,
+   "images": {
+    "total": 14,
+    "loaded": 13,
+    "broken": [],
+    "pending": 0
+   },
+   "productImgsVisible": [
+    {
+     "src": "sg-005-front.webp",
+     "w": 761,
+     "h": 1142,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    },
+    {
+     "src": "sg-005-packshot.webp",
+     "w": 248,
+     "h": 80,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    },
+    {
+     "src": "br-004-480w.webp",
+     "w": 285,
+     "h": 427,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    },
+    {
+     "src": "lh-004-480w.webp",
+     "w": 285,
+     "h": 427,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    },
+    {
+     "src": "kids-001-480w.webp",
+     "w": 285,
+     "h": 427,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    },
+    {
+     "src": "kids-002-480w.webp",
+     "w": 285,
+     "h": 427,
+     "opacity": "1",
+     "visibility": "visible",
+     "clip": "none",
+     "loaded": true
+    }
+   ],
+   "revealHidden": 0,
+   "revealTotal": 0,
+   "motionReady": false,
+   "forms": [
+    {
+     "class": "cart variations_form",
+     "method": null,
+     "action": null,
+     "selects": [
+      "preview-size"
+     ],
+     "submit": [
+      "button[type=button] Secure this piece"
+     ],
+     "noscript": false
+    },
+    {
+     "class": "sr2-search-dialog__form",
+     "method": "get",
+     "action": "/tools/v2-theme-preview.php?route=home",
+     "selects": [],
+     "submit": [
+      "button[type=submit] Search"
+     ],
+     "noscript": false
+    }
+   ],
+   "noscriptBlocks": 0,
+   "hiddenByJsHooks": 15,
+   "console": [],
+   "failed": []
+  }
+ },
+ {
+  "route": "product",
+  "sku": "br-004",
+  "name": "product-br-004",
+  "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=br-004",
+  "captures": [
+   "product-br-004-1440.png",
+   "product-br-004-390.png",
+   "product-br-004-390-reduced.png"
+  ],
+  "http_status": 200,
+  "focus_order": [
+   {
+    "tag": "a",
+    "class": "sr2-skip",
+    "text": "Skip to content",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__brand",
+    "text": "SkyyRose home",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Collections",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Journal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "About",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-header__direct sr2-house-header__search",
+    "text": "Search",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__bag",
+    "text": "Bag 0",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "sr2-header__menu",
+    "text": "Open site menu",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Black Rose",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "select",
+    "class": "",
+    "text": "Choose a sizeXSSMLXL2XL",
+    "id": "preview-size",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "",
+    "text": "1",
+    "id": "preview-qty",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "single_add_to_cart_button button alt",
+    "text": "Secure this piece",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "none",
+    "inViewport": true
+   }
+  ],
+  "skip_link_first": true,
+  "skip_link_activation": {
+   "hash": "#primary",
+   "active": "body",
+   "primaryTop": 0
+  },
+  "probe_1440": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Black Rose Hoodie",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 3660,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 14,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "pdp": {
+   "h1": "Black Rose Hoodie",
+   "price": "$128.00",
+   "stock": "Available for preorder",
+   "collectionEyebrow": "Black Rose",
+   "collectionAttr": "signature",
+   "skuMeta": "BR-004",
+   "gallery": {
+    "ariaLabel": "0 published views",
+    "role": "region",
+    "imgCount": 1,
+    "imgs": [
+     {
+      "src": "br-004-480w.webp",
+      "alt": "BLACK Rose Hoodie \u2014 front on model",
+      "w": 761,
+      "h": 576,
+      "area": 438219,
+      "complete": true,
+      "naturalWidth": 384
+     }
+    ],
+    "dominantShare": 1,
+    "sticky": "sticky"
+   },
+   "form": {
+    "method": null,
+    "action": null,
+    "class": "cart variations_form",
+    "sizeOptions": [
+     "Choose a size",
+     "XS",
+     "S",
+     "M",
+     "L",
+     "XL",
+     "2XL"
+    ],
+    "sizeLabel": "Size",
+    "qtyLabel": "Quantity",
+    "atc": {
+     "text": "Secure this piece",
+     "type": "button",
+     "name": null
+    }
+   },
+   "sizeGuide": {
+    "opener": {
+     "tag": "a",
+     "text": "Fit + size guide\u2192",
+     "href": "/tools/v2-theme-preview.php?route=size-guide",
+     "ariaControls": "sr2-size-guide-dialog",
+     "haspopup": "dialog"
+    },
+    "dialog": {
+     "open": false,
+     "labelledby": "sr2-size-guide-title",
+     "title": "Choose the silhouette you want to live in."
+    }
+   },
+   "description": true,
+   "relatedCards": 4,
+   "jsonLd": 0,
+   "keyboardReach": {
+    "sizeSelect": {
+     "stop": 12,
+     "label": "Size"
+    },
+    "addToCart": {
+     "stop": 14,
+     "label": "Secure this piece"
+    },
+    "sizeGuideOpener": {
+     "stop": 15,
+     "label": "Fit + size guide\u2192"
+    },
+    "stops": 15
+   },
+   "sizeGuideInteraction": {
+    "openedViaKeyboard": true,
+    "focusInsideAfterOpen": {
+     "inside": true,
+     "tag": "button",
+     "text": "Close fit and size guide"
+    },
+    "closedViaEscape": true,
+    "focusReturnedToOpener": true,
+    "focusAfterClose": {
+     "tag": "a",
+     "class": "sr2-editorial-link",
+     "text": "Fit + size guide\u2192",
+     "id": null,
+     "visibleIndicator": true,
+     "outline": "solid 2px rgb(245, 245, 240)",
+     "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+     "inViewport": true
+    },
+    "closeButtonWorks": {
+     "closed": true,
+     "focusOnOpener": true
+    }
+   },
+   "urlAfterInteractions": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=br-004"
+  },
+  "console": [],
+  "failed_requests": [],
+  "probe_390": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Black Rose Hoodie",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 5688,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 14,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "pdp_390": {
+   "h1": "Black Rose Hoodie",
+   "price": "$128.00",
+   "stock": "Available for preorder",
+   "collectionEyebrow": "Black Rose",
+   "collectionAttr": "signature",
+   "skuMeta": "BR-004",
+   "gallery": {
+    "ariaLabel": "0 published views",
+    "role": "region",
+    "imgCount": 1,
+    "imgs": [
+     {
+      "src": "br-004-768w.webp",
+      "alt": "BLACK Rose Hoodie \u2014 front on model",
+      "w": 358,
+      "h": 439,
+      "area": 157117,
+      "complete": true,
+      "naturalWidth": 292
+     }
+    ],
+    "dominantShare": 1,
+    "sticky": "static"
+   },
+   "form": {
+    "method": null,
+    "action": null,
+    "class": "cart variations_form",
+    "sizeOptions": [
+     "Choose a size",
+     "XS",
+     "S",
+     "M",
+     "L",
+     "XL",
+     "2XL"
+    ],
+    "sizeLabel": "Size",
+    "qtyLabel": "Quantity",
+    "atc": {
+     "text": "Secure this piece",
+     "type": "button",
+     "name": null
+    }
+   },
+   "sizeGuide": {
+    "opener": {
+     "tag": "a",
+     "text": "Fit + size guide\u2192",
+     "href": "/tools/v2-theme-preview.php?route=size-guide",
+     "ariaControls": "sr2-size-guide-dialog",
+     "haspopup": "dialog"
+    },
+    "dialog": {
+     "open": false,
+     "labelledby": "sr2-size-guide-title",
+     "title": "Choose the silhouette you want to live in."
+    }
+   },
+   "description": true,
+   "relatedCards": 4,
+   "jsonLd": 0
+  },
+  "console_390": [],
+  "failed_390": [],
+  "probe_390_reduced": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Black Rose Hoodie",
+   "htmlClass": "sr2-motion-ready sr2-motion-reduced",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 5688,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 14,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [],
+   "dock": false,
+   "animations": 0
+  },
+  "console_390_reduced": []
+ },
+ {
+  "route": "product",
+  "sku": "lh-004",
+  "name": "product-lh-004",
+  "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=lh-004",
+  "captures": [
+   "product-lh-004-1440.png",
+   "product-lh-004-390.png",
+   "product-lh-004-390-reduced.png"
+  ],
+  "http_status": 200,
+  "focus_order": [
+   {
+    "tag": "a",
+    "class": "sr2-skip",
+    "text": "Skip to content",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__brand",
+    "text": "SkyyRose home",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Collections",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Journal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "About",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-header__direct sr2-house-header__search",
+    "text": "Search",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__bag",
+    "text": "Bag 0",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "sr2-header__menu",
+    "text": "Open site menu",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Love Hurts",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "select",
+    "class": "",
+    "text": "Choose a sizeXSSMLXL2XL",
+    "id": "preview-size",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "",
+    "text": "1",
+    "id": "preview-qty",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   }
+  ],
+  "skip_link_first": true,
+  "skip_link_activation": {
+   "hash": "#primary",
+   "active": "body",
+   "primaryTop": 0
+  },
+  "probe_1440": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Love Hurts Bomber Jacket",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 4224,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 16,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "pdp": {
+   "h1": "Love Hurts Bomber Jacket",
+   "price": "$128.00",
+   "stock": "Available for preorder",
+   "collectionEyebrow": "Love Hurts",
+   "collectionAttr": "signature",
+   "skuMeta": "LH-004",
+   "gallery": {
+    "ariaLabel": "3 published views",
+    "role": "region",
+    "imgCount": 3,
+    "imgs": [
+     {
+      "src": "lh-004-front.webp",
+      "alt": "SkyyRose published product view",
+      "w": 761,
+      "h": 1142,
+      "area": 868759,
+      "complete": true,
+      "naturalWidth": 533
+     },
+     {
+      "src": "lh-004-back.webp",
+      "alt": "SkyyRose published product view",
+      "w": 248,
+      "h": 80,
+      "area": 19861,
+      "complete": true,
+      "naturalWidth": 600
+     },
+     {
+      "src": "lh-004-packshot.webp",
+      "alt": "SkyyRose published product view",
+      "w": 248,
+      "h": 80,
+      "area": 19861,
+      "complete": true,
+      "naturalWidth": 600
+     }
+    ],
+    "dominantShare": 0.98,
+    "sticky": "sticky"
+   },
+   "form": {
+    "method": null,
+    "action": null,
+    "class": "cart variations_form",
+    "sizeOptions": [
+     "Choose a size",
+     "XS",
+     "S",
+     "M",
+     "L",
+     "XL",
+     "2XL"
+    ],
+    "sizeLabel": "Size",
+    "qtyLabel": "Quantity",
+    "atc": {
+     "text": "Secure this piece",
+     "type": "button",
+     "name": null
+    }
+   },
+   "sizeGuide": {
+    "opener": {
+     "tag": "a",
+     "text": "Fit + size guide\u2192",
+     "href": "/tools/v2-theme-preview.php?route=size-guide",
+     "ariaControls": "sr2-size-guide-dialog",
+     "haspopup": "dialog"
+    },
+    "dialog": {
+     "open": false,
+     "labelledby": "sr2-size-guide-title",
+     "title": "Choose the silhouette you want to live in."
+    }
+   },
+   "description": true,
+   "relatedCards": 4,
+   "jsonLd": 0,
+   "keyboardReach": {
+    "sizeSelect": {
+     "stop": 13,
+     "label": "Size"
+    },
+    "addToCart": {
+     "stop": 15,
+     "label": "Secure this piece"
+    },
+    "sizeGuideOpener": {
+     "stop": 16,
+     "label": "Fit + size guide\u2192"
+    },
+    "stops": 16
+   },
+   "sizeGuideInteraction": {
+    "openedViaKeyboard": true,
+    "focusInsideAfterOpen": {
+     "inside": true,
+     "tag": "button",
+     "text": "Close fit and size guide"
+    },
+    "closedViaEscape": true,
+    "focusReturnedToOpener": true,
+    "focusAfterClose": {
+     "tag": "a",
+     "class": "sr2-editorial-link",
+     "text": "Fit + size guide\u2192",
+     "id": null,
+     "visibleIndicator": true,
+     "outline": "solid 2px rgb(245, 245, 240)",
+     "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+     "inViewport": true
+    },
+    "closeButtonWorks": {
+     "closed": true,
+     "focusOnOpener": true
+    }
+   },
+   "urlAfterInteractions": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=lh-004"
+  },
+  "console": [],
+  "failed_requests": [],
+  "probe_390": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Love Hurts Bomber Jacket",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 5822,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 16,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "pdp_390": {
+   "h1": "Love Hurts Bomber Jacket",
+   "price": "$128.00",
+   "stock": "Available for preorder",
+   "collectionEyebrow": "Love Hurts",
+   "collectionAttr": "signature",
+   "skuMeta": "LH-004",
+   "gallery": {
+    "ariaLabel": "3 published views",
+    "role": "region",
+    "imgCount": 3,
+    "imgs": [
+     {
+      "src": "lh-004-front.webp",
+      "alt": "SkyyRose published product view",
+      "w": 358,
+      "h": 537,
+      "area": 192363,
+      "complete": true,
+      "naturalWidth": 533
+     },
+     {
+      "src": "lh-004-back.webp",
+      "alt": "SkyyRose published product view",
+      "w": 114,
+      "h": 56,
+      "area": 6384,
+      "complete": true,
+      "naturalWidth": 600
+     },
+     {
+      "src": "lh-004-packshot.webp",
+      "alt": "SkyyRose published product view",
+      "w": 114,
+      "h": 56,
+      "area": 6384,
+      "complete": true,
+      "naturalWidth": 600
+     }
+    ],
+    "dominantShare": 0.97,
+    "sticky": "static"
+   },
+   "form": {
+    "method": null,
+    "action": null,
+    "class": "cart variations_form",
+    "sizeOptions": [
+     "Choose a size",
+     "XS",
+     "S",
+     "M",
+     "L",
+     "XL",
+     "2XL"
+    ],
+    "sizeLabel": "Size",
+    "qtyLabel": "Quantity",
+    "atc": {
+     "text": "Secure this piece",
+     "type": "button",
+     "name": null
+    }
+   },
+   "sizeGuide": {
+    "opener": {
+     "tag": "a",
+     "text": "Fit + size guide\u2192",
+     "href": "/tools/v2-theme-preview.php?route=size-guide",
+     "ariaControls": "sr2-size-guide-dialog",
+     "haspopup": "dialog"
+    },
+    "dialog": {
+     "open": false,
+     "labelledby": "sr2-size-guide-title",
+     "title": "Choose the silhouette you want to live in."
+    }
+   },
+   "description": true,
+   "relatedCards": 4,
+   "jsonLd": 0
+  },
+  "console_390": [],
+  "failed_390": [],
+  "probe_390_reduced": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Love Hurts Bomber Jacket",
+   "htmlClass": "sr2-motion-ready sr2-motion-reduced",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 5822,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 16,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [],
+   "dock": false,
+   "animations": 0
+  },
+  "console_390_reduced": []
+ },
+ {
+  "route": "product",
+  "sku": "kids-001",
+  "name": "product-kids-001",
+  "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=kids-001",
+  "captures": [
+   "product-kids-001-1440.png",
+   "product-kids-001-390.png",
+   "product-kids-001-390-reduced.png"
+  ],
+  "http_status": 200,
+  "focus_order": [
+   {
+    "tag": "a",
+    "class": "sr2-skip",
+    "text": "Skip to content",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__brand",
+    "text": "SkyyRose home",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Collections",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Journal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "About",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-header__direct sr2-house-header__search",
+    "text": "Search",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__bag",
+    "text": "Bag 0",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "sr2-header__menu",
+    "text": "Open site menu",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Kids Capsule",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "select",
+    "class": "",
+    "text": "Choose a sizeXSSMLXL2XL",
+    "id": "preview-size",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "",
+    "text": "1",
+    "id": "preview-qty",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   }
+  ],
+  "skip_link_first": true,
+  "skip_link_activation": {
+   "hash": "#primary",
+   "active": "body",
+   "primaryTop": 0
+  },
+  "probe_1440": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Kids Colorblock Hoodie Set \u2014 Red/Black",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 4224,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 16,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "pdp": {
+   "h1": "Kids Colorblock Hoodie Set \u2014 Red/Black",
+   "price": "$128.00",
+   "stock": "Available for preorder",
+   "collectionEyebrow": "Kids Capsule",
+   "collectionAttr": "signature",
+   "skuMeta": "KIDS-001",
+   "gallery": {
+    "ariaLabel": "3 published views",
+    "role": "region",
+    "imgCount": 3,
+    "imgs": [
+     {
+      "src": "kids-001-front.webp",
+      "alt": "SkyyRose published product view",
+      "w": 761,
+      "h": 1142,
+      "area": 868759,
+      "complete": true,
+      "naturalWidth": 533
+     },
+     {
+      "src": "kids-001-back.webp",
+      "alt": "SkyyRose published product view",
+      "w": 248,
+      "h": 80,
+      "area": 19861,
+      "complete": true,
+      "naturalWidth": 597
+     },
+     {
+      "src": "kids-001-packshot.webp",
+      "alt": "SkyyRose published product view",
+      "w": 248,
+      "h": 80,
+      "area": 19861,
+      "complete": true,
+      "naturalWidth": 360
+     }
+    ],
+    "dominantShare": 0.98,
+    "sticky": "sticky"
+   },
+   "form": {
+    "method": null,
+    "action": null,
+    "class": "cart variations_form",
+    "sizeOptions": [
+     "Choose a size",
+     "XS",
+     "S",
+     "M",
+     "L",
+     "XL",
+     "2XL"
+    ],
+    "sizeLabel": "Size",
+    "qtyLabel": "Quantity",
+    "atc": {
+     "text": "Secure this piece",
+     "type": "button",
+     "name": null
+    }
+   },
+   "sizeGuide": {
+    "opener": {
+     "tag": "a",
+     "text": "Fit + size guide\u2192",
+     "href": "/tools/v2-theme-preview.php?route=size-guide",
+     "ariaControls": "sr2-size-guide-dialog",
+     "haspopup": "dialog"
+    },
+    "dialog": {
+     "open": false,
+     "labelledby": "sr2-size-guide-title",
+     "title": "Choose the silhouette you want to live in."
+    }
+   },
+   "description": true,
+   "relatedCards": 4,
+   "jsonLd": 0,
+   "keyboardReach": {
+    "sizeSelect": {
+     "stop": 13,
+     "label": "Size"
+    },
+    "addToCart": {
+     "stop": 15,
+     "label": "Secure this piece"
+    },
+    "sizeGuideOpener": {
+     "stop": 16,
+     "label": "Fit + size guide\u2192"
+    },
+    "stops": 16
+   },
+   "sizeGuideInteraction": {
+    "openedViaKeyboard": true,
+    "focusInsideAfterOpen": {
+     "inside": true,
+     "tag": "button",
+     "text": "Close fit and size guide"
+    },
+    "closedViaEscape": true,
+    "focusReturnedToOpener": true,
+    "focusAfterClose": {
+     "tag": "a",
+     "class": "sr2-editorial-link",
+     "text": "Fit + size guide\u2192",
+     "id": null,
+     "visibleIndicator": true,
+     "outline": "solid 2px rgb(245, 245, 240)",
+     "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+     "inViewport": true
+    },
+    "closeButtonWorks": {
+     "closed": true,
+     "focusOnOpener": true
+    }
+   },
+   "urlAfterInteractions": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=kids-001"
+  },
+  "console": [],
+  "failed_requests": [],
+  "probe_390": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Kids Colorblock Hoodie Set \u2014 Red/Black",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 5901,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 16,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "pdp_390": {
+   "h1": "Kids Colorblock Hoodie Set \u2014 Red/Black",
+   "price": "$128.00",
+   "stock": "Available for preorder",
+   "collectionEyebrow": "Kids Capsule",
+   "collectionAttr": "signature",
+   "skuMeta": "KIDS-001",
+   "gallery": {
+    "ariaLabel": "3 published views",
+    "role": "region",
+    "imgCount": 3,
+    "imgs": [
+     {
+      "src": "kids-001-front.webp",
+      "alt": "SkyyRose published product view",
+      "w": 358,
+      "h": 537,
+      "area": 192363,
+      "complete": true,
+      "naturalWidth": 533
+     },
+     {
+      "src": "kids-001-back.webp",
+      "alt": "SkyyRose published product view",
+      "w": 114,
+      "h": 56,
+      "area": 6384,
+      "complete": true,
+      "naturalWidth": 597
+     },
+     {
+      "src": "kids-001-packshot.webp",
+      "alt": "SkyyRose published product view",
+      "w": 114,
+      "h": 56,
+      "area": 6384,
+      "complete": true,
+      "naturalWidth": 360
+     }
+    ],
+    "dominantShare": 0.97,
+    "sticky": "static"
+   },
+   "form": {
+    "method": null,
+    "action": null,
+    "class": "cart variations_form",
+    "sizeOptions": [
+     "Choose a size",
+     "XS",
+     "S",
+     "M",
+     "L",
+     "XL",
+     "2XL"
+    ],
+    "sizeLabel": "Size",
+    "qtyLabel": "Quantity",
+    "atc": {
+     "text": "Secure this piece",
+     "type": "button",
+     "name": null
+    }
+   },
+   "sizeGuide": {
+    "opener": {
+     "tag": "a",
+     "text": "Fit + size guide\u2192",
+     "href": "/tools/v2-theme-preview.php?route=size-guide",
+     "ariaControls": "sr2-size-guide-dialog",
+     "haspopup": "dialog"
+    },
+    "dialog": {
+     "open": false,
+     "labelledby": "sr2-size-guide-title",
+     "title": "Choose the silhouette you want to live in."
+    }
+   },
+   "description": true,
+   "relatedCards": 4,
+   "jsonLd": 0
+  },
+  "console_390": [],
+  "failed_390": [],
+  "probe_390_reduced": {
+   "title": "SkyyRose \u2014 Product",
+   "h1": "Kids Colorblock Hoodie Set \u2014 Red/Black",
+   "htmlClass": "sr2-motion-ready sr2-motion-reduced",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 5901,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo",
+    "ui-monospace",
+    "Cinzel"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton",
+    "Cinzel"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 16,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [],
+   "dock": false,
+   "animations": 0
+  },
+  "console_390_reduced": []
+ },
+ {
+  "route": "cart",
+  "sku": null,
+  "name": "cart",
+  "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=cart",
+  "captures": [
+   "cart-1440.png",
+   "cart-390.png"
+  ],
+  "http_status": 200,
+  "focus_order": [
+   {
+    "tag": "a",
+    "class": "sr2-skip",
+    "text": "Skip to content",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__brand",
+    "text": "SkyyRose home",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Collections",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Journal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "About",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-header__direct sr2-house-header__search",
+    "text": "Search",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__bag",
+    "text": "Bag 0",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "sr2-header__menu",
+    "text": "Open site menu",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-editorial-link",
+    "text": "Continue shopping\u2192",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Bay Bridge Shirt",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "input-text qty text",
+    "text": "1",
+    "id": "sr2-preview-qty-0",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-cart__remove",
+    "text": "Remove Bay Bridge Shirt from your bag",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   }
+  ],
+  "skip_link_first": true,
+  "skip_link_activation": {
+   "hash": "#primary",
+   "active": "primary",
+   "primaryTop": 0
+  },
+  "probe_1440": {
+   "title": "SkyyRose \u2014 Cart",
+   "h1": "Keep your pieces close.",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 1415,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 10,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "commerce": {
+   "forms": [
+    {
+     "class": "woocommerce-cart-form sr2-cart__items",
+     "method": "get",
+     "action": "/tools/v2-theme-preview.php",
+     "inputs": 3,
+     "hidden": 1,
+     "buttons": [
+      "Apply",
+      "Update bag"
+     ],
+     "nonce": false
+    }
+   ],
+   "wooPresent": {
+    ".woocommerce-cart-form": 1,
+    ".cart_totals": 1,
+    "form.checkout.woocommerce-checkout": 0,
+    "#order_review": 0,
+    ".woocommerce-form-login": 0,
+    ".woocommerce-form-register": 0,
+    ".woocommerce-form-track-order": 0,
+    ".woocommerce-notices-wrapper": 0,
+    ".woocommerce-MyAccount-navigation": 0,
+    ".shop_table": 1,
+    ".sr2-wishlist, [data-wishlist]": 0
+   },
+   "themeControls": 4,
+   "wooButtons": 3,
+   "layoutClass": "sr2-cart__layout",
+   "layoutDisplay": "grid",
+   "layoutCols": "84px 84px 84px 84px 84px 84px 84px 84.0156px 84px 84px 84px 84px",
+   "eyebrow": "Your bag",
+   "lede": null
+  },
+  "console": [],
+  "failed_requests": [],
+  "probe_390": {
+   "title": "SkyyRose \u2014 Cart",
+   "h1": "Keep your pieces close.",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 1764,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 10,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "console_390": [],
+  "failed_390": []
+ },
+ {
+  "route": "checkout",
+  "sku": null,
+  "name": "checkout",
+  "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=checkout",
+  "captures": [
+   "checkout-1440.png",
+   "checkout-390.png"
+  ],
+  "http_status": 200,
+  "focus_order": [
+   {
+    "tag": "a",
+    "class": "sr2-skip",
+    "text": "Skip to content",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__brand",
+    "text": "SkyyRose home",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Collections",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Journal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "About",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-header__direct sr2-house-header__search",
+    "text": "Search",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__bag",
+    "text": "Bag 0",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "sr2-header__menu",
+    "text": "Open site menu",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "input-text",
+    "text": "",
+    "id": "billing_first_name",
+    "visibleIndicator": true,
+    "outline": "none 0px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 2px, rgb(183, 110, 121) 0px 0px ",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "input-text",
+    "text": "",
+    "id": "billing_last_name",
+    "visibleIndicator": true,
+    "outline": "none 0px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 2px, rgb(183, 110, 121) 0px 0px ",
+    "inViewport": true
+   },
+   {
+    "tag": "select",
+    "class": "country_to_state country_select",
+    "text": "Select an option\u2026 United States (US) Canada United Kingdom (",
+    "id": "billing_country",
+    "visibleIndicator": true,
+    "outline": "none 0px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 2px, rgb(183, 110, 121) 0px 0px ",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "input-text",
+    "text": "",
+    "id": "billing_address_1",
+    "visibleIndicator": true,
+    "outline": "none 0px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 2px, rgb(183, 110, 121) 0px 0px ",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "input-text",
+    "text": "",
+    "id": "billing_address_2",
+    "visibleIndicator": true,
+    "outline": "none 0px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 2px, rgb(183, 110, 121) 0px 0px ",
+    "inViewport": true
+   }
+  ],
+  "skip_link_first": true,
+  "skip_link_activation": {
+   "hash": "#primary",
+   "active": "primary",
+   "primaryTop": 0
+  },
+  "probe_1440": {
+   "title": "SkyyRose \u2014 Checkout",
+   "h1": "Your pieces are almost home.",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 1971,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 7,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "commerce": {
+   "forms": [
+    {
+     "class": "checkout woocommerce-checkout sr2-c-checkout",
+     "method": "get",
+     "action": "/tools/v2-theme-preview.php",
+     "inputs": 15,
+     "hidden": 2,
+     "buttons": [
+      "Place order"
+     ],
+     "nonce": false
+    }
+   ],
+   "wooPresent": {
+    ".woocommerce-cart-form": 0,
+    ".cart_totals": 0,
+    "form.checkout.woocommerce-checkout": 1,
+    "#order_review": 1,
+    ".woocommerce-form-login": 0,
+    ".woocommerce-form-register": 0,
+    ".woocommerce-form-track-order": 0,
+    ".woocommerce-notices-wrapper": 0,
+    ".woocommerce-MyAccount-navigation": 0,
+    ".shop_table": 1,
+    ".sr2-wishlist, [data-wishlist]": 0
+   },
+   "themeControls": 4,
+   "wooButtons": 1,
+   "layoutClass": null,
+   "layoutDisplay": null,
+   "layoutCols": null,
+   "eyebrow": "Secure checkout",
+   "lede": null
+  },
+  "console": [],
+  "failed_requests": [],
+  "probe_390": {
+   "title": "SkyyRose \u2014 Checkout",
+   "h1": "Your pieces are almost home.",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 2928,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 7,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "console_390": [],
+  "failed_390": []
+ },
+ {
+  "route": "account",
+  "sku": null,
+  "name": "account",
+  "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=account",
+  "captures": [
+   "account-1440.png",
+   "account-390.png"
+  ],
+  "http_status": 200,
+  "focus_order": [
+   {
+    "tag": "a",
+    "class": "sr2-skip",
+    "text": "Skip to content",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__brand",
+    "text": "SkyyRose home",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Collections",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Journal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "About",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-header__direct sr2-house-header__search",
+    "text": "Search",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__bag",
+    "text": "Bag 0",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "sr2-header__menu",
+    "text": "Open site menu",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "woocommerce-Input woocommerce-Input--text input-text",
+    "text": "",
+    "id": "username",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "woocommerce-Input woocommerce-Input--text input-text",
+    "text": "",
+    "id": "password",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "show-password-input",
+    "text": "Show password",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "woocommerce-form__input woocommerce-form__input-checkbox",
+    "text": "forever",
+    "id": "rememberme",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "woocommerce-button button woocommerce-form-login__submit",
+    "text": "Log in",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   }
+  ],
+  "skip_link_first": true,
+  "skip_link_activation": {
+   "hash": "#primary",
+   "active": "primary",
+   "primaryTop": 0
+  },
+  "probe_1440": {
+   "title": "SkyyRose \u2014 Account",
+   "h1": "My account",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 1239,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 8,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "commerce": {
+   "forms": [
+    {
+     "class": "woocommerce-form woocommerce-form-login login",
+     "method": "get",
+     "action": "/tools/v2-theme-preview.php",
+     "inputs": 3,
+     "hidden": 2,
+     "buttons": [
+      "",
+      "Log in"
+     ],
+     "nonce": false
+    }
+   ],
+   "wooPresent": {
+    ".woocommerce-cart-form": 0,
+    ".cart_totals": 0,
+    "form.checkout.woocommerce-checkout": 0,
+    "#order_review": 0,
+    ".woocommerce-form-login": 1,
+    ".woocommerce-form-register": 0,
+    ".woocommerce-form-track-order": 0,
+    ".woocommerce-notices-wrapper": 0,
+    ".woocommerce-MyAccount-navigation": 0,
+    ".shop_table": 0,
+    ".sr2-wishlist, [data-wishlist]": 0
+   },
+   "themeControls": 4,
+   "wooButtons": 1,
+   "layoutClass": null,
+   "layoutDisplay": null,
+   "layoutCols": null,
+   "eyebrow": "Client account",
+   "lede": null
+  },
+  "console": [],
+  "failed_requests": [],
+  "probe_390": {
+   "title": "SkyyRose \u2014 Account",
+   "h1": "My account",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 1096,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 8,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "console_390": [],
+  "failed_390": []
+ },
+ {
+  "route": "order-tracking",
+  "sku": null,
+  "name": "order-tracking",
+  "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=order-tracking",
+  "captures": [
+   "order-tracking-1440.png",
+   "order-tracking-390.png"
+  ],
+  "http_status": 200,
+  "focus_order": [
+   {
+    "tag": "a",
+    "class": "sr2-skip",
+    "text": "Skip to content",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__brand",
+    "text": "SkyyRose home",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Collections",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Journal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "About",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-header__direct sr2-house-header__search",
+    "text": "Search",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__bag",
+    "text": "Bag 0",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "sr2-header__menu",
+    "text": "Open site menu",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "input-text",
+    "text": "",
+    "id": "orderid",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "input",
+    "class": "input-text",
+    "text": "",
+    "id": "order_email",
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "button",
+    "text": "Track",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-footer__wordmark",
+    "text": "SkyyRose",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": false
+   },
+   {
+    "tag": "summary",
+    "class": "",
+    "text": "Explore",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   }
+  ],
+  "skip_link_first": true,
+  "skip_link_activation": {
+   "hash": "#primary",
+   "active": "primary",
+   "primaryTop": 0
+  },
+  "probe_1440": {
+   "title": "SkyyRose \u2014 Order Tracking",
+   "h1": "Order tracking",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 1235,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 8,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "commerce": {
+   "forms": [
+    {
+     "class": "woocommerce-form woocommerce-form-track-order track_order",
+     "method": "get",
+     "action": "/tools/v2-theme-preview.php",
+     "inputs": 2,
+     "hidden": 1,
+     "buttons": [
+      "Track"
+     ],
+     "nonce": false
+    }
+   ],
+   "wooPresent": {
+    ".woocommerce-cart-form": 0,
+    ".cart_totals": 0,
+    "form.checkout.woocommerce-checkout": 0,
+    "#order_review": 0,
+    ".woocommerce-form-login": 0,
+    ".woocommerce-form-register": 0,
+    ".woocommerce-form-track-order": 1,
+    ".woocommerce-notices-wrapper": 0,
+    ".woocommerce-MyAccount-navigation": 0,
+    ".shop_table": 0,
+    ".sr2-wishlist, [data-wishlist]": 0
+   },
+   "themeControls": 4,
+   "wooButtons": 1,
+   "layoutClass": null,
+   "layoutDisplay": null,
+   "layoutCols": null,
+   "eyebrow": "Client services",
+   "lede": null
+  },
+  "console": [],
+  "failed_requests": [],
+  "probe_390": {
+   "title": "SkyyRose \u2014 Order Tracking",
+   "h1": "Order tracking",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 1120,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 8,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "dock": false
+  },
+  "console_390": [],
+  "failed_390": []
+ },
+ {
+  "route": "wishlist",
+  "sku": null,
+  "name": "wishlist",
+  "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=wishlist",
+  "captures": [
+   "wishlist-1440.png",
+   "wishlist-390.png"
+  ],
+  "http_status": 200,
+  "focus_order": [
+   {
+    "tag": "a",
+    "class": "sr2-skip",
+    "text": "Skip to content",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__brand",
+    "text": "SkyyRose home",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Shop",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Collections",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "Journal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "",
+    "text": "About",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-header__direct sr2-house-header__search",
+    "text": "Search",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-header__bag",
+    "text": "Bag 0",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "button",
+    "class": "sr2-header__menu",
+    "text": "Open site menu",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "a",
+    "class": "sr2-house-footer__wordmark",
+    "text": "SkyyRose",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "summary",
+    "class": "",
+    "text": "Explore",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "summary",
+    "class": "",
+    "text": "Client Services",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "summary",
+    "class": "",
+    "text": "Legal",
+    "id": null,
+    "visibleIndicator": true,
+    "outline": "solid 2px rgb(245, 245, 240)",
+    "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+    "inViewport": true
+   },
+   {
+    "tag": "body",
+    "class": "",
+    "text": "",
+    "visibleIndicator": false
+   }
+  ],
+  "skip_link_first": true,
+  "skip_link_activation": {
+   "hash": "#primary",
+   "active": "primary",
+   "primaryTop": 0
+  },
+  "probe_1440": {
+   "title": "SkyyRose \u2014 Wishlist",
+   "h1": "Wishlist",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 979,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 8,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    ""
+   ],
+   "dock": false
+  },
+  "commerce": {
+   "forms": [],
+   "wooPresent": {
+    ".woocommerce-cart-form": 0,
+    ".cart_totals": 0,
+    "form.checkout.woocommerce-checkout": 0,
+    "#order_review": 0,
+    ".woocommerce-form-login": 0,
+    ".woocommerce-form-register": 0,
+    ".woocommerce-form-track-order": 0,
+    ".woocommerce-notices-wrapper": 0,
+    ".woocommerce-MyAccount-navigation": 0,
+    ".shop_table": 0,
+    ".sr2-wishlist, [data-wishlist]": 0
+   },
+   "themeControls": 4,
+   "wooButtons": 0,
+   "layoutClass": null,
+   "layoutDisplay": null,
+   "layoutCols": null,
+   "eyebrow": "The house",
+   "lede": null
+  },
+  "console": [],
+  "failed_requests": [],
+  "probe_390": {
+   "title": "SkyyRose \u2014 Wishlist",
+   "h1": "Wishlist",
+   "htmlClass": "sr2-motion-ready",
+   "bodyClass": "sr2-preview woocommerce",
+   "scrollHeight": 980,
+   "hOverflow": false,
+   "overflowOffenders": [],
+   "fontFamilies": [
+    "sans-serif",
+    "Anton",
+    "Hanken Grotesk",
+    "Archivo"
+   ],
+   "loadedFaces": [
+    "Archivo",
+    "Hanken Grotesk",
+    "Anton"
+   ],
+   "cinzelOffenders": [],
+   "cutFontHits": [],
+   "crimsonText": [],
+   "lowContrast": [],
+   "lowContrastCount": 0,
+   "skipLink": {
+    "href": "#primary",
+    "text": "Skip to content",
+    "targetExists": true,
+    "targetTag": "main"
+   },
+   "revealUnseen": 0,
+   "revealTotal": 0,
+   "imgs": {
+    "total": 8,
+    "broken": [],
+    "notLoaded": 4
+   },
+   "inlineStyleNonVars": [
+    ""
+   ],
+   "dock": false
+  },
+  "console_390": [],
+  "failed_390": []
+ }
+]

@@ -1,0 +1,701 @@
+{
+  "route": "home",
+  "width": 1440,
+  "reduced": true,
+  "http_status": 200,
+  "loadMs": 113,
+  "headerMascot": {
+    "headerFound": true,
+    "hasMascot": true,
+    "hit": "IMG.sr2-header__brand-mark",
+    "headerImgs": [
+      "skyyrose-logo-still-384w.webp",
+      "",
+      "signature-golden-gate-monuments-v2-1024w.webp",
+      "black-rose-bay-bridge-monuments-v4-1024w.webp",
+      "love-hurts-rose-aisle-monuments-v3-1024w.webp",
+      "kids-capsule-heir-throne-v3-1024w.webp"
+    ]
+  },
+  "visibleAt_ms": 118,
+  "canvasVisibleAt_ms": null,
+  "entryStart_ms": null,
+  "frames": [],
+  "timeline": [
+    {
+      "t": 118,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 1159,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 2211,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 3248,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 4288,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 5325,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 6353,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 7376,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 8406,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 9449,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 10491,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 11534,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 12580,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    },
+    {
+      "t": 13623,
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "canvasVisible": false,
+      "imgVisible": true,
+      "shift": ""
+    }
+  ],
+  "settled": {
+    "ds": {
+      "state": "show",
+      "renderer": "static",
+      "presence": "reduced",
+      "chat": "closed",
+      "location": "hero",
+      "visibility": "visible",
+      "motionPaused": "true"
+    },
+    "canvasHidden": true,
+    "canvasVisible": false,
+    "canvasRect": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0
+    },
+    "imgVisible": true,
+    "imgRect": {
+      "x": 1100,
+      "y": 628,
+      "w": 160,
+      "h": 248
+    },
+    "stageRect": {
+      "x": 1100,
+      "y": 628,
+      "w": 316,
+      "h": 248
+    },
+    "stageVisible": true,
+    "dockRect": {
+      "x": 1100,
+      "y": 628,
+      "w": 316,
+      "h": 248
+    },
+    "dockVisible": true,
+    "inDialog": false,
+    "entryShift": "",
+    "entryProgress": "",
+    "bodyClass": "sr2-preview woocommerce",
+    "status": "Skyy is here, with motion off.",
+    "recallHidden": true
+  },
+  "staticCheck": {
+    "equal": true,
+    "clip": {
+      "x": 1090,
+      "y": 618,
+      "width": 336,
+      "height": 268
+    }
+  },
+  "overlap": {
+    "dockRect": {
+      "x": 1100,
+      "y": 628,
+      "w": 316,
+      "h": 248
+    },
+    "stageRect": {
+      "x": 1100,
+      "y": 628,
+      "w": 316,
+      "h": 248
+    },
+    "characterRect": {
+      "x": 1100,
+      "y": 628,
+      "w": 160,
+      "h": 248
+    },
+    "h1Text": "SKYYROSE",
+    "copyText": "SKYYROSE / OAKLAND, CALIFORNIA SKYYROSE A house built by a father, named after a",
+    "overlaps": {
+      "h1": {
+        "target": {
+          "x": 58,
+          "y": 438,
+          "w": 704,
+          "h": 117
+        },
+        "vsDock": {
+          "w": 0,
+          "h": 0,
+          "area": 0
+        },
+        "vsStage": {
+          "w": 0,
+          "h": 0,
+          "area": 0
+        },
+        "vsCharacter": {
+          "w": 0,
+          "h": 0,
+          "area": 0
+        }
+      },
+      "arrivalCopy": {
+        "target": {
+          "x": 58,
+          "y": 406,
+          "w": 704,
+          "h": 290
+        },
+        "vsDock": {
+          "w": 0,
+          "h": 68,
+          "area": 0
+        },
+        "vsStage": {
+          "w": 0,
+          "h": 68,
+          "area": 0
+        },
+        "vsCharacter": {
+          "w": 0,
+          "h": 68,
+          "area": 0
+        }
+      },
+      "lede": {
+        "target": {
+          "x": 58,
+          "y": 2918,
+          "w": 524,
+          "h": 58
+        },
+        "vsDock": {
+          "w": 0,
+          "h": 0,
+          "area": 0
+        },
+        "vsStage": {
+          "w": 0,
+          "h": 0,
+          "area": 0
+        },
+        "vsCharacter": {
+          "w": 0,
+          "h": 0,
+          "area": 0
+        }
+      }
+    },
+    "scrollY": 0
+  },
+  "dockUi": {
+    "chat": {
+      "tag": "BUTTON",
+      "name": "Ask Skyy",
+      "tabIndex": 0,
+      "hidden": false,
+      "display": "block",
+      "visibility": "visible",
+      "rect": {
+        "x": 1272,
+        "y": 780,
+        "w": 144,
+        "h": 44
+      },
+      "ariaControls": "skyy-ask-dialog",
+      "haspopup": "dialog",
+      "expanded": null
+    },
+    "dismiss": {
+      "tag": "BUTTON",
+      "name": "Dismiss Skyy",
+      "tabIndex": 0,
+      "hidden": false,
+      "display": "block",
+      "visibility": "visible",
+      "rect": {
+        "x": 1272,
+        "y": 832,
+        "w": 144,
+        "h": 44
+      },
+      "ariaControls": null,
+      "haspopup": null,
+      "expanded": null
+    },
+    "motion": {
+      "tag": "BUTTON",
+      "name": "Pause character",
+      "tabIndex": 0,
+      "hidden": true,
+      "display": "none",
+      "visibility": "visible",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "ariaControls": null,
+      "haspopup": null,
+      "expanded": null
+    },
+    "recall": {
+      "tag": "A",
+      "name": "Ask SkyyYour house guide",
+      "tabIndex": 0,
+      "hidden": true,
+      "display": "none",
+      "visibility": "visible",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "ariaControls": "skyy-ask-dialog",
+      "haspopup": "dialog",
+      "expanded": "false"
+    },
+    "dockRole": "region",
+    "dockLabel": "Skyy, your house concierge",
+    "dialogOpen": false
+  },
+  "dialog": {
+    "reachedIn": 55,
+    "tabPath": [
+      "a.",
+      "a.sr2-control",
+      "a.sr2-world-text-link",
+      "a.sr2-editorial-link",
+      "a.sr2-editorial-link",
+      "a.sr2-editorial-journal__media",
+      "a.sr2-editorial-journal__media",
+      "#skyy-hero-chat"
+    ],
+    "afterOpen": {
+      "open": true,
+      "activeInside": true,
+      "active": "input#skyy-ask-input",
+      "stageInDialog": true,
+      "greeting": "SKYY Welcome to SkyyRose. I’m Skyy, your digital house guide. I can help you explore a collection or find a piece by name or SKU.",
+      "dockVisible": false,
+      "titleId": "skyy-ask-dialog-title",
+      "title": "Ask Skyy"
+    },
+    "afterEscape": {
+      "open": false,
+      "active": "button",
+      "returnedToOpener": false
+    }
+  },
+  "assets": [
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+      "status": 200,
+      "size": 8317,
+      "t_ms": 66
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "status": 200,
+      "size": 66239,
+      "t_ms": 68
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/collection-world.css",
+      "status": 200,
+      "size": 9620,
+      "t_ms": 68
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/home-page.css",
+      "status": 200,
+      "size": 15339,
+      "t_ms": 69
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/controls.css",
+      "status": 200,
+      "size": 14479,
+      "t_ms": 69
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/global-shell.css",
+      "status": 200,
+      "size": 29165,
+      "t_ms": 69
+    },
+    {
+      "url": "/tools/v2-theme-preview.php?route=home&skyy=1",
+      "status": 200,
+      "size": 72916,
+      "t_ms": 70
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/visual-recovery.css",
+      "status": 200,
+      "size": 7673,
+      "t_ms": 71
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/hero-commerce-scenes.css",
+      "status": 200,
+      "size": 4906,
+      "t_ms": 71
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/collection-scene-motion.css",
+      "status": 200,
+      "size": 5884,
+      "t_ms": 71
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/search-preview.css",
+      "status": 200,
+      "size": 1420,
+      "t_ms": 71
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/premium-commerce.css",
+      "status": 200,
+      "size": 11055,
+      "t_ms": 71
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/quick-view-commerce.css",
+      "status": 200,
+      "size": 7421,
+      "t_ms": 71
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+      "status": 200,
+      "size": 20357,
+      "t_ms": 71
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+      "status": 200,
+      "size": 108926,
+      "t_ms": 71
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+      "status": 200,
+      "size": 5320,
+      "t_ms": 72
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+      "status": 200,
+      "size": 12513,
+      "t_ms": 72
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+      "status": 200,
+      "size": 4501,
+      "t_ms": 72
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+      "status": 200,
+      "size": 40397,
+      "t_ms": 72
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/premium-commerce.js",
+      "status": 200,
+      "size": 7261,
+      "t_ms": 72
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+      "status": 200,
+      "size": 7717,
+      "t_ms": 72
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/quick-view-commerce.js",
+      "status": 200,
+      "size": 10961,
+      "t_ms": 72
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+      "status": 200,
+      "size": 115506,
+      "t_ms": 93
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+      "status": 200,
+      "size": 181918,
+      "t_ms": 93
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+      "status": 200,
+      "size": 34664,
+      "t_ms": 96
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+      "status": 200,
+      "size": 12004,
+      "t_ms": 96
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+      "status": 200,
+      "size": 34976,
+      "t_ms": 96
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+      "status": 200,
+      "size": 25904,
+      "t_ms": 96
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/js/mascot.js",
+      "status": 200,
+      "size": 20052,
+      "t_ms": 96
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/signature-sg-005-512w.webp",
+      "status": 200,
+      "size": 37318,
+      "t_ms": 111
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/black-rose-br-004-512w.webp",
+      "status": 200,
+      "size": 43610,
+      "t_ms": 111
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/love-hurts-lh-004-512w.webp",
+      "status": 200,
+      "size": 63418,
+      "t_ms": 111
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/kids-capsule-kids-001.webp",
+      "status": 200,
+      "size": 193008,
+      "t_ms": 111
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/signature-lockup.webp",
+      "status": 200,
+      "size": 148060,
+      "t_ms": 111
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/sg-005-320w.webp",
+      "status": 200,
+      "size": 28966,
+      "t_ms": 111
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-lake-merritt-monument-v2-1440w.webp",
+      "status": 200,
+      "size": 156072,
+      "t_ms": 111
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+      "status": 200,
+      "size": 61276,
+      "t_ms": 115
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/black-rose-lockup.webp",
+      "status": 200,
+      "size": 204314,
+      "t_ms": 18938
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/br-004-320w.webp",
+      "status": 200,
+      "size": 29402,
+      "t_ms": 18938
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/love-hurts-lockup.webp",
+      "status": 200,
+      "size": 417228,
+      "t_ms": 19189
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/lh-004-320w.webp",
+      "status": 200,
+      "size": 48906,
+      "t_ms": 19189
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+      "status": 200,
+      "size": 108766,
+      "t_ms": 19487
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-320w.webp",
+      "status": 200,
+      "size": 39284,
+      "t_ms": 19489
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp",
+      "status": 200,
+      "size": 255858,
+      "t_ms": 19805
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/sot/images/about/skyy-rose-founder-hero.webp",
+      "status": 200,
+      "size": 55852,
+      "t_ms": 20139
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/video/skyyrose-tour-around-the-bay-poster.webp",
+      "status": 200,
+      "size": 74612,
+      "t_ms": 20322
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/video/jersey-series-bart-poster.webp",
+      "status": 200,
+      "size": 68592,
+      "t_ms": 20322
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-archive-4-poster.webp",
+      "status": 200,
+      "size": 133642,
+      "t_ms": 20771
+    },
+    {
+      "url": "/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-archive-4-poster.webp",
+      "status": 200,
+      "size": 113872,
+      "t_ms": 20904
+    }
+  ],
+  "console": [],
+  "pageErrors": [],
+  "failed": []
+}

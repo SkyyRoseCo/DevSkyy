@@ -1,0 +1,2171 @@
+{
+  "startedAt": "2026-09-22T20:36:38.601Z",
+  "scenarios": {
+    "about-1440": {
+      "label": "about-1440",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "requests": [
+        "http://127.0.0.1:8794/tools/v2-theme-preview.php?route=about&skyy=1",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/about-archive.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/legacy-world-components.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/content-page.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/controls.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/global-shell.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/visual-recovery.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/search-preview.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/premium-commerce.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/quick-view-commerce.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/about/skyy-rose-founder-hero.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/premium-commerce.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/quick-view-commerce.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/mascot.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-optimized-384w.webm",
+        "https://www.youtube-nocookie.com/embed/Ja11W-g34Zo?rel=0&modestbranding=1",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/about/the-blox-premiere.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+        "https://www.youtube-nocookie.com/s/player/ecb23058/www-player.css",
+        "https://www.youtube-nocookie.com/s/_/ytembeds/_/ss/k=ytembeds.base.tH_9r11EjWM.L.W.O/am=AAAAQA/d=1/br=1/rs=AGKMywGYyjHZrUq9usunHR_UmXaJgKKDTg/m=root,base",
+        "https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2",
+        "https://www.youtube-nocookie.com/s/_/ytembeds/_/js/k=ytembeds.base.en_US.kfhT1FN8EGE.es5.O/am=AAAAQA/d=1/excm=base,root/br=1/rs=AGKMywHJLpeQKx7ZvdZ_dQ3S8IbpW8NLfQ/m=root,base",
+        "https://www.youtube-nocookie.com/s/player/ecb23058/player_embed.vflset/en_US/base.js",
+        "https://www.youtube-nocookie.com/s/_/ytembeds/_/js/k=ytembeds.base.en_US.kfhT1FN8EGE.es5.O/ck=ytembeds.base.tH_9r11EjWM.L.W.O/am=AAAAQA/d=1/exm=base,root/excm=base,root/ed=1/br=1/rs=AGKMywFcXXnbFXQP0-zQnC2NqKPMiayLGg/m=r78Drb",
+        "https://www.google.com/js/th/A8wCpwVMjvlvKctpo1Z5cC5ZcXUboP07o0C6ezrjAFU.js",
+        "https://www.youtube-nocookie.com/s/_/ytembeds/_/js/k=ytembeds.base.en_US.kfhT1FN8EGE.es5.O/ck=ytembeds.base.tH_9r11EjWM.L.W.O/am=AAAAQA/d=1/exm=base,r78Drb,root/excm=base,root/ed=1/br=1/rs=AGKMywFcXXnbFXQP0-zQnC2NqKPMiayLGg/m=cwx9N",
+        "https://i.ytimg.com/vi/Ja11W-g34Zo/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGH8gLygTMA8=&rs=AOn4CLCIkoLL5NQ-qvVdK_CmUcsIhWuF9g",
+        "https://www.youtube-nocookie.com/generate_204?kop06A",
+        "https://jnn-pa.googleapis.com/$rpc/google.internal.waa.v1.Waa/GenerateIT",
+        "https://www.youtube-nocookie.com/youtubei/v1/log_event?alt=json",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-desktop.glb",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+        "blob:http://127.0.0.1:8794/ee7fa5bb-3d4e-4ebf-bf54-4dcd5008f9df",
+        "blob:http://127.0.0.1:8794/2735f3ba-66b4-4b84-8eec-3378b0bd089c",
+        "blob:http://127.0.0.1:8794/0735376f-3c32-481b-98ee-9e85762d1914",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "http://127.0.0.1:8794/tools/v2-theme-preview.php?route=about&skyy=1",
+        "https://www.youtube-nocookie.com/youtubei/v1/log_event?alt=json",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/about-archive.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/legacy-world-components.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/content-page.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/controls.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/global-shell.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/visual-recovery.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/search-preview.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/premium-commerce.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/quick-view-commerce.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/about/skyy-rose-founder-hero.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/premium-commerce.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/quick-view-commerce.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "https://www.youtube-nocookie.com/embed/Ja11W-g34Zo?rel=0&modestbranding=1",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/about/the-blox-premiere.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/mascot.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "https://www.youtube-nocookie.com/s/player/dac2d7b2/www-player.css",
+        "https://www.youtube-nocookie.com/s/_/ytembeds/_/ss/k=ytembeds.base.tH_9r11EjWM.L.W.O/am=AAAAQA/d=1/br=1/rs=AGKMywGYyjHZrUq9usunHR_UmXaJgKKDTg/m=root,base",
+        "https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2",
+        "https://www.youtube-nocookie.com/s/_/ytembeds/_/js/k=ytembeds.base.en_US.kfhT1FN8EGE.es5.O/am=AAAAQA/d=1/excm=base,root/br=1/rs=AGKMywHJLpeQKx7ZvdZ_dQ3S8IbpW8NLfQ/m=root,base",
+        "https://www.youtube-nocookie.com/s/player/dac2d7b2/player_embed.vflset/en_US/base.js",
+        "https://www.youtube-nocookie.com/s/_/ytembeds/_/js/k=ytembeds.base.en_US.kfhT1FN8EGE.es5.O/ck=ytembeds.base.tH_9r11EjWM.L.W.O/am=AAAAQA/d=1/exm=base,root/excm=base,root/ed=1/br=1/rs=AGKMywFcXXnbFXQP0-zQnC2NqKPMiayLGg/m=r78Drb",
+        "https://www.google.com/js/th/A8wCpwVMjvlvKctpo1Z5cC5ZcXUboP07o0C6ezrjAFU.js",
+        "https://www.youtube-nocookie.com/s/_/ytembeds/_/js/k=ytembeds.base.en_US.kfhT1FN8EGE.es5.O/ck=ytembeds.base.tH_9r11EjWM.L.W.O/am=AAAAQA/d=1/exm=base,r78Drb,root/excm=base,root/ed=1/br=1/rs=AGKMywFcXXnbFXQP0-zQnC2NqKPMiayLGg/m=cwx9N",
+        "https://i.ytimg.com/vi/Ja11W-g34Zo/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGH8gLygTMA8=&rs=AOn4CLCIkoLL5NQ-qvVdK_CmUcsIhWuF9g",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-optimized-384w.webm",
+        "https://www.youtube-nocookie.com/generate_204?3TlcHw",
+        "https://jnn-pa.googleapis.com/$rpc/google.internal.waa.v1.Waa/GenerateIT",
+        "https://www.youtube-nocookie.com/youtubei/v1/log_event?alt=json",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-desktop.glb",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+        "blob:http://127.0.0.1:8794/ee6127cc-ff34-4436-abd6-741f600d5e59",
+        "blob:http://127.0.0.1:8794/6ca8fa8f-af7f-4f55-9b1b-ee5b8ccc0a7a",
+        "blob:http://127.0.0.1:8794/7c507920-45ad-497f-a52e-a5c20296899d"
+      ],
+      "loadMs": 51,
+      "mounted": {
+        "ok": true,
+        "ms": 18,
+        "probe": {
+          "stage": {
+            "hidden": false,
+            "parent": "skyy-hero-stage",
+            "state": "show",
+            "presence": "static",
+            "renderer": "static",
+            "visibility": "visible",
+            "shift": "",
+            "rect": {
+              "x": 1100,
+              "y": 628,
+              "w": 316,
+              "h": 248
+            }
+          },
+          "character": {
+            "x": 1100,
+            "y": 628,
+            "w": 160,
+            "h": 248
+          },
+          "portrait": {
+            "complete": false,
+            "naturalWidth": 0,
+            "opacity": "1",
+            "display": "block",
+            "inViewport": true
+          },
+          "canvas": {
+            "hidden": true,
+            "opacity": "0",
+            "display": "none",
+            "x": 0,
+            "w": 0,
+            "h": 0
+          },
+          "dock": {
+            "position": "fixed",
+            "zIndex": "80",
+            "visibility": "visible",
+            "right": 24,
+            "bottom": 24,
+            "x": 1100,
+            "y": 628,
+            "w": 316,
+            "h": 248
+          },
+          "header": {
+            "bottom": 64,
+            "zIndex": "100"
+          },
+          "recall": {
+            "hidden": true,
+            "display": "none",
+            "position": "fixed",
+            "visibility": "visible",
+            "w": 0,
+            "h": 0,
+            "right": 1440,
+            "bottom": 900,
+            "text": "Ask SkyyYour house guide"
+          },
+          "buttons": [
+            {
+              "id": "skyy-motion-toggle",
+              "hidden": true,
+              "w": 0,
+              "h": 0,
+              "font": "\"Hanken Grotesk\"",
+              "size": "12px",
+              "weight": "500",
+              "transform": "uppercase",
+              "border": "rgb(128, 128, 128)"
+            },
+            {
+              "id": "skyy-hero-chat",
+              "hidden": false,
+              "w": 144,
+              "h": 44,
+              "font": "\"Hanken Grotesk\"",
+              "size": "12px",
+              "weight": "500",
+              "transform": "uppercase",
+              "border": "rgb(183, 110, 121)"
+            },
+            {
+              "id": "skyy-hero-dismiss",
+              "hidden": false,
+              "w": 144,
+              "h": 44,
+              "font": "\"Hanken Grotesk\"",
+              "size": "12px",
+              "weight": "500",
+              "transform": "uppercase",
+              "border": "rgb(128, 128, 128)"
+            }
+          ],
+          "dialogOpen": false,
+          "active": "BODY",
+          "session": {
+            "dismissed": null,
+            "entries": null
+          },
+          "rig": null,
+          "events": [
+            {
+              "name": "show",
+              "at": 28
+            }
+          ],
+          "status": "Your house guide."
+        }
+      },
+      "live": {
+        "ok": true,
+        "msAfterLoad": 4614,
+        "probe": {
+          "stage": {
+            "hidden": false,
+            "parent": "skyy-hero-stage",
+            "state": "walking-in",
+            "presence": "live",
+            "renderer": "3d",
+            "visibility": "visible",
+            "rigTier": "desktop",
+            "actionPhase": "walking-in",
+            "shift": "358px",
+            "rect": {
+              "x": 1082,
+              "y": 628,
+              "w": 334,
+              "h": 248
+            }
+          },
+          "character": {
+            "x": 1082,
+            "y": 628,
+            "w": 160,
+            "h": 248
+          },
+          "portrait": {
+            "complete": true,
+            "naturalWidth": 330,
+            "opacity": "0.0532755",
+            "display": "block",
+            "inViewport": true
+          },
+          "canvas": {
+            "hidden": false,
+            "opacity": "0.946724",
+            "display": "block",
+            "x": 1440,
+            "w": 160,
+            "h": 248
+          },
+          "dock": {
+            "position": "fixed",
+            "zIndex": "80",
+            "visibility": "visible",
+            "right": 24,
+            "bottom": 24,
+            "x": 1082,
+            "y": 628,
+            "w": 334,
+            "h": 248
+          },
+          "header": {
+            "bottom": 64,
+            "zIndex": "100"
+          },
+          "recall": {
+            "hidden": true,
+            "display": "none",
+            "position": "fixed",
+            "visibility": "visible",
+            "w": 0,
+            "h": 0,
+            "right": 1440,
+            "bottom": 900,
+            "text": "Ask SkyyYour house guide"
+          },
+          "buttons": [
+            {
+              "id": "skyy-motion-toggle",
+              "hidden": false,
+              "w": 162,
+              "h": 44,
+              "font": "\"Hanken Grotesk\"",
+              "size": "12px",
+              "weight": "500",
+              "transform": "uppercase",
+              "border": "rgb(128, 128, 128)"
+            },
+            {
+              "id": "skyy-hero-chat",
+              "hidden": false,
+              "w": 162,
+              "h": 44,
+              "font": "\"Hanken Grotesk\"",
+              "size": "12px",
+              "weight": "500",
+              "transform": "uppercase",
+              "border": "rgb(183, 110, 121)"
+            },
+            {
+              "id": "skyy-hero-dismiss",
+              "hidden": false,
+              "w": 162,
+              "h": 44,
+              "font": "\"Hanken Grotesk\"",
+              "size": "12px",
+              "weight": "500",
+              "transform": "uppercase",
+              "border": "rgb(128, 128, 128)"
+            }
+          ],
+          "dialogOpen": false,
+          "active": "BODY",
+          "session": {
+            "dismissed": null,
+            "entries": "1"
+          },
+          "rig": {
+            "ready": true,
+            "action": "Skyy_Walk",
+            "tier": "desktop",
+            "render": {
+              "phase": "ready",
+              "frames": 2,
+              "running": true,
+              "visible": true,
+              "paused": false,
+              "tier": "desktop",
+              "entryDistance": 358,
+              "actionPhase": "walking-in",
+              "pendingAction": "skyy_wave"
+            },
+            "failure": null
+          },
+          "events": [
+            {
+              "name": "show",
+              "at": 28
+            },
+            {
+              "name": "show",
+              "at": 47
+            },
+            {
+              "name": "loading",
+              "at": 4531
+            },
+            {
+              "name": "prepare",
+              "at": 4531
+            },
+            {
+              "name": "3d-loading",
+              "at": 4531
+            },
+            {
+              "name": "3d-ready",
+              "at": 4684
+            },
+            {
+              "name": "walking-in",
+              "at": 4684
+            },
+            {
+              "name": "3d-visible",
+              "at": 4689
+            }
+          ],
+          "status": "Your house guide."
+        }
+      },
+      "frames": [
+        {
+          "file": "about-1440-frame-00.png",
+          "at": 40,
+          "action": "Skyy_Walk",
+          "phase": "walking-in",
+          "shift": "358px",
+          "canvasX": 1440,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-01.png",
+          "at": 482,
+          "action": "Skyy_Walk",
+          "phase": "walking-in",
+          "shift": "297.7px",
+          "canvasX": 1380,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-02.png",
+          "at": 1035,
+          "action": "Skyy_Walk",
+          "phase": "walking-in",
+          "shift": "178.4px",
+          "canvasX": 1260,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-03.png",
+          "at": 1536,
+          "action": "Skyy_Walk",
+          "phase": "walking-in",
+          "shift": "79.3px",
+          "canvasX": 1161,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-04.png",
+          "at": 2020,
+          "action": "Skyy_Walk",
+          "phase": "turning",
+          "shift": "21.1px",
+          "canvasX": 1103,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-05.png",
+          "at": 2508,
+          "action": "Skyy_Walk",
+          "phase": "turning",
+          "shift": "0.5px",
+          "canvasX": 1083,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-06.png",
+          "at": 2966,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 1082,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-07.png",
+          "at": 3423,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 1082,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-08.png",
+          "at": 3855,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 1082,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-09.png",
+          "at": 4285,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 1082,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-10.png",
+          "at": 4750,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 1082,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-11.png",
+          "at": 5201,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 1082,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-12.png",
+          "at": 5607,
+          "action": "Skyy_Idle",
+          "phase": "idle",
+          "shift": "0px",
+          "canvasX": 1082,
+          "facing": null
+        },
+        {
+          "file": "about-1440-frame-13.png",
+          "at": 6007,
+          "action": "Skyy_Idle",
+          "phase": "idle",
+          "shift": "0px",
+          "canvasX": 1082,
+          "facing": null
+        }
+      ],
+      "settled": {
+        "ok": true,
+        "events": [
+          {
+            "name": "show",
+            "at": 28
+          },
+          {
+            "name": "show",
+            "at": 47
+          },
+          {
+            "name": "loading",
+            "at": 4531
+          },
+          {
+            "name": "prepare",
+            "at": 4531
+          },
+          {
+            "name": "3d-loading",
+            "at": 4531
+          },
+          {
+            "name": "3d-ready",
+            "at": 4684
+          },
+          {
+            "name": "walking-in",
+            "at": 4684
+          },
+          {
+            "name": "3d-visible",
+            "at": 4689
+          },
+          {
+            "name": "action-complete",
+            "at": 10123
+          },
+          {
+            "name": "idle",
+            "at": 10123
+          }
+        ],
+        "action": "Skyy_Idle",
+        "phase": "idle"
+      },
+      "liveProbe": {
+        "stage": {
+          "hidden": false,
+          "parent": "skyy-hero-stage",
+          "state": "idle",
+          "presence": "live",
+          "renderer": "3d",
+          "visibility": "visible",
+          "rigTier": "desktop",
+          "actionPhase": "idle",
+          "shift": "0px",
+          "rect": {
+            "x": 1082,
+            "y": 628,
+            "w": 334,
+            "h": 248
+          }
+        },
+        "character": {
+          "x": 1082,
+          "y": 628,
+          "w": 160,
+          "h": 248
+        },
+        "portrait": {
+          "complete": true,
+          "naturalWidth": 330,
+          "opacity": "0",
+          "display": "block",
+          "inViewport": true
+        },
+        "canvas": {
+          "hidden": false,
+          "opacity": "1",
+          "display": "block",
+          "x": 1082,
+          "w": 160,
+          "h": 248
+        },
+        "dock": {
+          "position": "fixed",
+          "zIndex": "80",
+          "visibility": "visible",
+          "right": 24,
+          "bottom": 24,
+          "x": 1082,
+          "y": 628,
+          "w": 334,
+          "h": 248
+        },
+        "header": {
+          "bottom": 64,
+          "zIndex": "100"
+        },
+        "recall": {
+          "hidden": true,
+          "display": "none",
+          "position": "fixed",
+          "visibility": "visible",
+          "w": 0,
+          "h": 0,
+          "right": 1440,
+          "bottom": 900,
+          "text": "Ask SkyyYour house guide"
+        },
+        "buttons": [
+          {
+            "id": "skyy-motion-toggle",
+            "hidden": false,
+            "w": 162,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          },
+          {
+            "id": "skyy-hero-chat",
+            "hidden": false,
+            "w": 162,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(183, 110, 121)"
+          },
+          {
+            "id": "skyy-hero-dismiss",
+            "hidden": false,
+            "w": 162,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          }
+        ],
+        "dialogOpen": false,
+        "active": "BODY",
+        "session": {
+          "dismissed": null,
+          "entries": "1"
+        },
+        "rig": {
+          "ready": true,
+          "action": "Skyy_Idle",
+          "tier": "desktop",
+          "render": {
+            "phase": "ready",
+            "frames": 159,
+            "running": true,
+            "visible": true,
+            "paused": false,
+            "tier": "desktop",
+            "entryDistance": 358,
+            "actionPhase": "idle",
+            "pendingAction": null
+          },
+          "failure": null
+        },
+        "events": [
+          {
+            "name": "show",
+            "at": 28
+          },
+          {
+            "name": "show",
+            "at": 47
+          },
+          {
+            "name": "loading",
+            "at": 4531
+          },
+          {
+            "name": "prepare",
+            "at": 4531
+          },
+          {
+            "name": "3d-loading",
+            "at": 4531
+          },
+          {
+            "name": "3d-ready",
+            "at": 4684
+          },
+          {
+            "name": "walking-in",
+            "at": 4684
+          },
+          {
+            "name": "3d-visible",
+            "at": 4689
+          },
+          {
+            "name": "action-complete",
+            "at": 10123
+          },
+          {
+            "name": "idle",
+            "at": 10123
+          }
+        ],
+        "status": "Your house guide."
+      },
+      "modelRequests": [
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-desktop.glb"
+      ],
+      "dialog": {
+        "opened": true,
+        "stageParent": "skyy-dialog-stage",
+        "active": "skyy-ask-input",
+        "state": "walking-in",
+        "closed": true,
+        "focusAfterClose": "skyy-hero-chat",
+        "stageAfterClose": {
+          "hidden": false,
+          "parent": "skyy-hero-stage",
+          "state": "show",
+          "presence": "live",
+          "renderer": "3d",
+          "visibility": "visible",
+          "rigTier": "desktop",
+          "actionPhase": "walking-in",
+          "shift": "305.2px",
+          "rect": {
+            "x": 1082,
+            "y": 628,
+            "w": 334,
+            "h": 248
+          }
+        }
+      },
+      "dismiss": {
+        "ok": true,
+        "stage": {
+          "hidden": true,
+          "parent": "skyy-hero-stage",
+          "state": "hidden",
+          "presence": "live",
+          "renderer": "3d",
+          "visibility": "dismissed",
+          "rigTier": "desktop",
+          "actionPhase": "turning",
+          "shift": "64.2px",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        "recall": {
+          "hidden": false,
+          "display": "flex",
+          "position": "fixed",
+          "visibility": "visible",
+          "w": 126,
+          "h": 44,
+          "right": 24,
+          "bottom": 24,
+          "text": "Ask SkyyYour house guide"
+        },
+        "session": {
+          "dismissed": "1",
+          "entries": "1"
+        },
+        "active": "skyyrose-mascot-recall",
+        "rigRunning": false
+      },
+      "reload": {
+        "stage": {
+          "hidden": true,
+          "parent": "skyy-hero-stage",
+          "state": "hidden",
+          "presence": "static",
+          "renderer": "static",
+          "visibility": "dismissed",
+          "shift": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+          }
+        },
+        "recall": {
+          "hidden": false,
+          "display": "flex",
+          "position": "fixed",
+          "visibility": "visible",
+          "w": 126,
+          "h": 44,
+          "right": 24,
+          "bottom": 24,
+          "text": "Ask SkyyYour house guide"
+        },
+        "session": {
+          "dismissed": "1",
+          "entries": "1"
+        },
+        "modelRequestsAfterReload": 1
+      },
+      "recall": {
+        "opened": true,
+        "session": {
+          "dismissed": null,
+          "entries": "1"
+        },
+        "recallHidden": true,
+        "backInDock": true,
+        "afterClose": {
+          "stage": {
+            "hidden": false,
+            "parent": "skyy-hero-stage",
+            "state": "loading",
+            "presence": "loading",
+            "renderer": "static",
+            "visibility": "visible",
+            "shift": "",
+            "rect": {
+              "x": 1100,
+              "y": 628,
+              "w": 316,
+              "h": 248
+            }
+          },
+          "recall": {
+            "hidden": true,
+            "display": "none",
+            "position": "fixed",
+            "visibility": "visible",
+            "w": 0,
+            "h": 0,
+            "right": 1440,
+            "bottom": 900,
+            "text": "Ask SkyyYour house guide"
+          },
+          "active": "skyy-hero-chat"
+        }
+      },
+      "hiddenTest": {
+        "liveAgain": true,
+        "framesBefore": 35,
+        "framesAfter2sHidden": 35,
+        "runningWhileHidden": false,
+        "renderCallsWhileHidden": 0,
+        "framesAfterResume": 69,
+        "runningAfterResume": true
+      },
+      "pause": {
+        "hidden": false,
+        "text": "Pause character",
+        "pressed": "false"
+      },
+      "finalProbe": {
+        "stage": {
+          "hidden": false,
+          "parent": "skyy-hero-stage",
+          "state": "show",
+          "presence": "live",
+          "renderer": "3d",
+          "visibility": "visible",
+          "rigTier": "desktop",
+          "actionPhase": "gesture",
+          "shift": "0px",
+          "rect": {
+            "x": 1082,
+            "y": 628,
+            "w": 334,
+            "h": 248
+          }
+        },
+        "character": {
+          "x": 1082,
+          "y": 628,
+          "w": 160,
+          "h": 248
+        },
+        "portrait": {
+          "complete": true,
+          "naturalWidth": 330,
+          "opacity": "0",
+          "display": "block",
+          "inViewport": true
+        },
+        "canvas": {
+          "hidden": false,
+          "opacity": "1",
+          "display": "block",
+          "x": 1082,
+          "w": 160,
+          "h": 248
+        },
+        "dock": {
+          "position": "fixed",
+          "zIndex": "80",
+          "visibility": "visible",
+          "right": 24,
+          "bottom": 24,
+          "x": 1082,
+          "y": 628,
+          "w": 334,
+          "h": 248
+        },
+        "header": {
+          "bottom": 64,
+          "zIndex": "100"
+        },
+        "recall": {
+          "hidden": true,
+          "display": "none",
+          "position": "fixed",
+          "visibility": "visible",
+          "w": 0,
+          "h": 0,
+          "right": 1440,
+          "bottom": 900,
+          "text": "Ask SkyyYour house guide"
+        },
+        "buttons": [
+          {
+            "id": "skyy-motion-toggle",
+            "hidden": false,
+            "w": 162,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          },
+          {
+            "id": "skyy-hero-chat",
+            "hidden": false,
+            "w": 162,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(183, 110, 121)"
+          },
+          {
+            "id": "skyy-hero-dismiss",
+            "hidden": false,
+            "w": 162,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(245, 245, 240)"
+          }
+        ],
+        "dialogOpen": false,
+        "active": "BODY",
+        "session": {
+          "dismissed": null,
+          "entries": "1"
+        },
+        "rig": {
+          "ready": true,
+          "action": "Skyy_Wave",
+          "tier": "desktop",
+          "render": {
+            "phase": "ready",
+            "frames": 70,
+            "running": true,
+            "visible": true,
+            "paused": false,
+            "tier": "desktop",
+            "entryDistance": 358,
+            "actionPhase": "gesture",
+            "pendingAction": null
+          },
+          "failure": null
+        },
+        "events": [
+          {
+            "name": "hidden",
+            "at": 21
+          },
+          {
+            "name": "hidden",
+            "at": 24
+          },
+          {
+            "name": "show",
+            "at": 6388
+          },
+          {
+            "name": "loading",
+            "at": 6389
+          },
+          {
+            "name": "prepare",
+            "at": 6389
+          },
+          {
+            "name": "3d-loading",
+            "at": 6389
+          },
+          {
+            "name": "walking-in",
+            "at": 6393
+          },
+          {
+            "name": "loading",
+            "at": 6397
+          },
+          {
+            "name": "prepare",
+            "at": 6397
+          },
+          {
+            "name": "hidden",
+            "at": 6403
+          },
+          {
+            "name": "loading",
+            "at": 6403
+          },
+          {
+            "name": "prepare",
+            "at": 6403
+          },
+          {
+            "name": "3d-ready",
+            "at": 6539
+          },
+          {
+            "name": "walking-in",
+            "at": 6539
+          },
+          {
+            "name": "3d-visible",
+            "at": 6551
+          },
+          {
+            "name": "hidden",
+            "at": 8023
+          },
+          {
+            "name": "show",
+            "at": 10028
+          },
+          {
+            "name": "3d-visible",
+            "at": 10029
+          },
+          {
+            "name": "3d-visible",
+            "at": 10029
+          }
+        ],
+        "status": "Your house guide."
+      }
+    },
+    "home-390": {
+      "label": "home-390",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "requests": [
+        "http://127.0.0.1:8794/tools/v2-theme-preview.php?route=home&skyy=1",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/collection-world.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/home-page.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/controls.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/global-shell.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/visual-recovery.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/hero-commerce-scenes.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/collection-scene-motion.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/search-preview.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/premium-commerce.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/quick-view-commerce.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/premium-commerce.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/quick-view-commerce.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/signature-sg-005-512w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/black-rose-br-004-512w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-640w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/signature-lockup.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/sg-005-768w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-lake-merritt-monument-v2-640w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/black-rose-lockup.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/derived/card-fronts/br-004-768w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/mascot.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-optimized-384w.webm",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-mobile.glb",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+        "blob:http://127.0.0.1:8794/51e84dc5-da55-4c35-a530-1488b87fc7d6",
+        "blob:http://127.0.0.1:8794/3fd5b0fa-cedb-47fa-b32e-52ad9fd34459",
+        "blob:http://127.0.0.1:8794/6b78ad0a-b60e-4097-b482-fa7dcea79de2"
+      ],
+      "mounted": {
+        "stage": {
+          "hidden": false,
+          "parent": "skyy-hero-stage",
+          "state": "show",
+          "presence": "static",
+          "renderer": "static",
+          "visibility": "visible",
+          "shift": "",
+          "rect": {
+            "x": 168,
+            "y": 684,
+            "w": 210,
+            "h": 148
+          }
+        },
+        "character": {
+          "x": 168,
+          "y": 684,
+          "w": 96,
+          "h": 148
+        },
+        "portrait": {
+          "complete": true,
+          "naturalWidth": 330,
+          "opacity": "1",
+          "display": "block",
+          "inViewport": true
+        },
+        "canvas": {
+          "hidden": true,
+          "opacity": "0",
+          "display": "none",
+          "x": 0,
+          "w": 0,
+          "h": 0
+        },
+        "dock": {
+          "position": "fixed",
+          "zIndex": "80",
+          "visibility": "visible",
+          "right": 12,
+          "bottom": 12,
+          "x": 168,
+          "y": 684,
+          "w": 210,
+          "h": 148
+        },
+        "header": {
+          "bottom": 64,
+          "zIndex": "100"
+        },
+        "recall": {
+          "hidden": true,
+          "display": "none",
+          "position": "fixed",
+          "visibility": "visible",
+          "w": 0,
+          "h": 0,
+          "right": 390,
+          "bottom": 844,
+          "text": "Ask SkyyYour house guide"
+        },
+        "buttons": [
+          {
+            "id": "skyy-motion-toggle",
+            "hidden": true,
+            "w": 0,
+            "h": 0,
+            "font": "\"Hanken Grotesk\"",
+            "size": "11px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          },
+          {
+            "id": "skyy-hero-chat",
+            "hidden": false,
+            "w": 106,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "11px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(183, 110, 121)"
+          },
+          {
+            "id": "skyy-hero-dismiss",
+            "hidden": false,
+            "w": 106,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "11px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          }
+        ],
+        "dialogOpen": false,
+        "active": "BODY",
+        "session": {
+          "dismissed": null,
+          "entries": null
+        },
+        "rig": null,
+        "events": [
+          {
+            "name": "show",
+            "at": 97
+          },
+          {
+            "name": "show",
+            "at": 104
+          }
+        ],
+        "status": "Your house guide."
+      },
+      "live": {
+        "ok": true,
+        "msAfterLoad": 4902,
+        "probe": {
+          "stage": {
+            "hidden": false,
+            "parent": "skyy-hero-stage",
+            "state": "walking-in",
+            "presence": "live",
+            "renderer": "3d",
+            "visibility": "visible",
+            "rigTier": "mobile",
+            "actionPhase": "walking-in",
+            "shift": "252px",
+            "rect": {
+              "x": 138,
+              "y": 672,
+              "w": 240,
+              "h": 160
+            }
+          },
+          "character": {
+            "x": 138,
+            "y": 684,
+            "w": 96,
+            "h": 148
+          },
+          "portrait": {
+            "complete": true,
+            "naturalWidth": 330,
+            "opacity": "1",
+            "display": "block",
+            "inViewport": true
+          },
+          "canvas": {
+            "hidden": false,
+            "opacity": "0",
+            "display": "block",
+            "x": 390,
+            "w": 96,
+            "h": 148
+          },
+          "dock": {
+            "position": "fixed",
+            "zIndex": "80",
+            "visibility": "visible",
+            "right": 12,
+            "bottom": 12,
+            "x": 138,
+            "y": 672,
+            "w": 240,
+            "h": 160
+          },
+          "header": {
+            "bottom": 64,
+            "zIndex": "100"
+          },
+          "recall": {
+            "hidden": true,
+            "display": "none",
+            "position": "fixed",
+            "visibility": "visible",
+            "w": 0,
+            "h": 0,
+            "right": 390,
+            "bottom": 844,
+            "text": "Ask SkyyYour house guide"
+          },
+          "buttons": [
+            {
+              "id": "skyy-motion-toggle",
+              "hidden": false,
+              "w": 136,
+              "h": 44,
+              "font": "\"Hanken Grotesk\"",
+              "size": "11px",
+              "weight": "500",
+              "transform": "uppercase",
+              "border": "rgb(128, 128, 128)"
+            },
+            {
+              "id": "skyy-hero-chat",
+              "hidden": false,
+              "w": 136,
+              "h": 44,
+              "font": "\"Hanken Grotesk\"",
+              "size": "11px",
+              "weight": "500",
+              "transform": "uppercase",
+              "border": "rgb(183, 110, 121)"
+            },
+            {
+              "id": "skyy-hero-dismiss",
+              "hidden": false,
+              "w": 136,
+              "h": 44,
+              "font": "\"Hanken Grotesk\"",
+              "size": "11px",
+              "weight": "500",
+              "transform": "uppercase",
+              "border": "rgb(128, 128, 128)"
+            }
+          ],
+          "dialogOpen": false,
+          "active": "BODY",
+          "session": {
+            "dismissed": null,
+            "entries": "1"
+          },
+          "rig": {
+            "ready": true,
+            "action": "Skyy_Walk",
+            "tier": "mobile",
+            "render": {
+              "phase": "ready",
+              "frames": 2,
+              "running": true,
+              "visible": true,
+              "paused": false,
+              "tier": "mobile",
+              "entryDistance": 252,
+              "actionPhase": "walking-in",
+              "pendingAction": "skyy_wave"
+            },
+            "failure": null
+          },
+          "events": [
+            {
+              "name": "show",
+              "at": 97
+            },
+            {
+              "name": "show",
+              "at": 104
+            },
+            {
+              "name": "loading",
+              "at": 4605
+            },
+            {
+              "name": "prepare",
+              "at": 4605
+            },
+            {
+              "name": "3d-loading",
+              "at": 4605
+            },
+            {
+              "name": "3d-ready",
+              "at": 4721
+            },
+            {
+              "name": "walking-in",
+              "at": 4721
+            },
+            {
+              "name": "3d-visible",
+              "at": 4728
+            }
+          ],
+          "status": "Your house guide."
+        }
+      },
+      "frames": [
+        {
+          "file": "home-390-frame-00.png",
+          "at": 109,
+          "action": "Skyy_Walk",
+          "phase": "walking-in",
+          "shift": "177.1px",
+          "canvasX": 315
+        },
+        {
+          "file": "home-390-frame-01.png",
+          "at": 535,
+          "action": "Skyy_Walk",
+          "phase": "walking-in",
+          "shift": "107.9px",
+          "canvasX": 246
+        },
+        {
+          "file": "home-390-frame-02.png",
+          "at": 994,
+          "action": "Skyy_Walk",
+          "phase": "walking-in",
+          "shift": "55.8px",
+          "canvasX": 193
+        },
+        {
+          "file": "home-390-frame-03.png",
+          "at": 1394,
+          "action": "Skyy_Walk",
+          "phase": "turning",
+          "shift": "19.7px",
+          "canvasX": 157
+        },
+        {
+          "file": "home-390-frame-04.png",
+          "at": 1833,
+          "action": "Skyy_Walk",
+          "phase": "turning",
+          "shift": "1.7px",
+          "canvasX": 139
+        },
+        {
+          "file": "home-390-frame-05.png",
+          "at": 2227,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 138
+        },
+        {
+          "file": "home-390-frame-06.png",
+          "at": 2627,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 138
+        },
+        {
+          "file": "home-390-frame-07.png",
+          "at": 3043,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 138
+        },
+        {
+          "file": "home-390-frame-08.png",
+          "at": 3447,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 138
+        },
+        {
+          "file": "home-390-frame-09.png",
+          "at": 3843,
+          "action": "Skyy_Wave",
+          "phase": "gesture",
+          "shift": "0px",
+          "canvasX": 138
+        }
+      ],
+      "settled": {
+        "ok": true,
+        "events": [
+          {
+            "name": "show",
+            "at": 97
+          },
+          {
+            "name": "show",
+            "at": 104
+          },
+          {
+            "name": "loading",
+            "at": 4605
+          },
+          {
+            "name": "prepare",
+            "at": 4605
+          },
+          {
+            "name": "3d-loading",
+            "at": 4605
+          },
+          {
+            "name": "3d-ready",
+            "at": 4721
+          },
+          {
+            "name": "walking-in",
+            "at": 4721
+          },
+          {
+            "name": "3d-visible",
+            "at": 4728
+          },
+          {
+            "name": "action-complete",
+            "at": 9903
+          },
+          {
+            "name": "idle",
+            "at": 9903
+          }
+        ]
+      },
+      "liveProbe": {
+        "stage": {
+          "hidden": false,
+          "parent": "skyy-hero-stage",
+          "state": "idle",
+          "presence": "live",
+          "renderer": "3d",
+          "visibility": "visible",
+          "rigTier": "mobile",
+          "actionPhase": "idle",
+          "shift": "0px",
+          "rect": {
+            "x": 138,
+            "y": 672,
+            "w": 240,
+            "h": 160
+          }
+        },
+        "character": {
+          "x": 138,
+          "y": 684,
+          "w": 96,
+          "h": 148
+        },
+        "portrait": {
+          "complete": true,
+          "naturalWidth": 330,
+          "opacity": "0",
+          "display": "block",
+          "inViewport": true
+        },
+        "canvas": {
+          "hidden": false,
+          "opacity": "1",
+          "display": "block",
+          "x": 138,
+          "w": 96,
+          "h": 148
+        },
+        "dock": {
+          "position": "fixed",
+          "zIndex": "80",
+          "visibility": "visible",
+          "right": 12,
+          "bottom": 12,
+          "x": 138,
+          "y": 672,
+          "w": 240,
+          "h": 160
+        },
+        "header": {
+          "bottom": 64,
+          "zIndex": "100"
+        },
+        "recall": {
+          "hidden": true,
+          "display": "none",
+          "position": "fixed",
+          "visibility": "visible",
+          "w": 0,
+          "h": 0,
+          "right": 390,
+          "bottom": 844,
+          "text": "Ask SkyyYour house guide"
+        },
+        "buttons": [
+          {
+            "id": "skyy-motion-toggle",
+            "hidden": false,
+            "w": 136,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "11px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          },
+          {
+            "id": "skyy-hero-chat",
+            "hidden": false,
+            "w": 136,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "11px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(183, 110, 121)"
+          },
+          {
+            "id": "skyy-hero-dismiss",
+            "hidden": false,
+            "w": 136,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "11px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          }
+        ],
+        "dialogOpen": false,
+        "active": "BODY",
+        "session": {
+          "dismissed": null,
+          "entries": "1"
+        },
+        "rig": {
+          "ready": true,
+          "action": "Skyy_Idle",
+          "tier": "mobile",
+          "render": {
+            "phase": "ready",
+            "frames": 134,
+            "running": true,
+            "visible": true,
+            "paused": false,
+            "tier": "mobile",
+            "entryDistance": 252,
+            "actionPhase": "idle",
+            "pendingAction": null
+          },
+          "failure": null
+        },
+        "events": [
+          {
+            "name": "show",
+            "at": 97
+          },
+          {
+            "name": "show",
+            "at": 104
+          },
+          {
+            "name": "loading",
+            "at": 4605
+          },
+          {
+            "name": "prepare",
+            "at": 4605
+          },
+          {
+            "name": "3d-loading",
+            "at": 4605
+          },
+          {
+            "name": "3d-ready",
+            "at": 4721
+          },
+          {
+            "name": "walking-in",
+            "at": 4721
+          },
+          {
+            "name": "3d-visible",
+            "at": 4728
+          },
+          {
+            "name": "action-complete",
+            "at": 9903
+          },
+          {
+            "name": "idle",
+            "at": 9903
+          }
+        ],
+        "status": "Your house guide."
+      },
+      "modelRequests": [
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-mobile.glb"
+      ],
+      "dialog": {
+        "opened": true,
+        "active": "skyy-ask-input",
+        "closed": true,
+        "focusAfterClose": "skyy-hero-chat"
+      }
+    },
+    "signature-1440-reduced": {
+      "label": "signature-1440-reduced",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "requests": [
+        "http://127.0.0.1:8794/tools/v2-theme-preview.php?route=signature&skyy=1",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/collection-world.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/controls.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/global-shell.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/visual-recovery.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/hero-commerce-scenes.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/collection-scene-motion.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/scene-handoff.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/search-preview.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/premium-commerce.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/quick-view-commerce.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/signature-lockup.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/premium-commerce.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/quick-view-commerce.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-signature-golden-gate.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/branding/hero/signature-golden-gate-yacht-1280w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-signature-oakland-atelier-gpt2.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/mascot.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp"
+      ],
+      "probe": {
+        "stage": {
+          "hidden": false,
+          "parent": "skyy-hero-stage",
+          "state": "show",
+          "presence": "reduced",
+          "renderer": "static",
+          "visibility": "visible",
+          "shift": "",
+          "rect": {
+            "x": 1100,
+            "y": 628,
+            "w": 316,
+            "h": 248
+          }
+        },
+        "character": {
+          "x": 1100,
+          "y": 628,
+          "w": 160,
+          "h": 248
+        },
+        "portrait": {
+          "complete": true,
+          "naturalWidth": 330,
+          "opacity": "1",
+          "display": "block",
+          "inViewport": true
+        },
+        "canvas": {
+          "hidden": true,
+          "opacity": "0",
+          "display": "none",
+          "x": 0,
+          "w": 0,
+          "h": 0
+        },
+        "dock": {
+          "position": "fixed",
+          "zIndex": "80",
+          "visibility": "visible",
+          "right": 24,
+          "bottom": 24,
+          "x": 1100,
+          "y": 628,
+          "w": 316,
+          "h": 248
+        },
+        "header": {
+          "bottom": 64,
+          "zIndex": "100"
+        },
+        "recall": {
+          "hidden": true,
+          "display": "none",
+          "position": "fixed",
+          "visibility": "visible",
+          "w": 0,
+          "h": 0,
+          "right": 1440,
+          "bottom": 900,
+          "text": "Ask SkyyYour house guide"
+        },
+        "buttons": [
+          {
+            "id": "skyy-motion-toggle",
+            "hidden": true,
+            "w": 0,
+            "h": 0,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          },
+          {
+            "id": "skyy-hero-chat",
+            "hidden": false,
+            "w": 144,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(183, 110, 121)"
+          },
+          {
+            "id": "skyy-hero-dismiss",
+            "hidden": false,
+            "w": 144,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          }
+        ],
+        "dialogOpen": false,
+        "active": "BODY",
+        "session": {
+          "dismissed": null,
+          "entries": null
+        },
+        "rig": null,
+        "events": [
+          {
+            "name": "show",
+            "at": 84
+          },
+          {
+            "name": "show",
+            "at": 87
+          }
+        ],
+        "status": "Skyy is here, with motion off."
+      },
+      "modelRequests": [],
+      "threeRequests": []
+    },
+    "signature-1440": {
+      "label": "signature-1440",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedRequests": [],
+      "requests": [
+        "http://127.0.0.1:8794/tools/v2-theme-preview.php?route=signature&skyy=1",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/collection-world.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/controls.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/global-shell.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/visual-recovery.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/hero-commerce-scenes.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/collection-scene-motion.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/scene-handoff.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/search-preview.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/premium-commerce.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/quick-view-commerce.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/signature-lockup.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/premium-commerce.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/quick-view-commerce.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-signature-golden-gate.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/branding/hero/signature-golden-gate-yacht-1280w.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-signature-oakland-atelier-gpt2.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/mascot.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-optimized-384w.webm",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-desktop.glb",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+        "blob:http://127.0.0.1:8794/6b1089f1-24e7-4ff6-a2e8-9f153f1e1214",
+        "blob:http://127.0.0.1:8794/9afc0a9c-4dc2-441c-9624-421e2b64e4e8",
+        "blob:http://127.0.0.1:8794/75002502-6ac5-4829-843c-627090d425f7"
+      ],
+      "live": {
+        "ok": true,
+        "msAfterLoad": 4800
+      },
+      "settled": {
+        "ok": true,
+        "events": [
+          {
+            "name": "show",
+            "at": 84
+          },
+          {
+            "name": "show",
+            "at": 91
+          },
+          {
+            "name": "loading",
+            "at": 4586
+          },
+          {
+            "name": "prepare",
+            "at": 4586
+          },
+          {
+            "name": "3d-loading",
+            "at": 4586
+          },
+          {
+            "name": "3d-ready",
+            "at": 4746
+          },
+          {
+            "name": "walking-in",
+            "at": 4746
+          },
+          {
+            "name": "3d-visible",
+            "at": 4760
+          },
+          {
+            "name": "action-complete",
+            "at": 10235
+          },
+          {
+            "name": "idle",
+            "at": 10235
+          }
+        ]
+      },
+      "probe": {
+        "stage": {
+          "hidden": false,
+          "parent": "skyy-hero-stage",
+          "state": "idle",
+          "presence": "live",
+          "renderer": "3d",
+          "visibility": "visible",
+          "rigTier": "desktop",
+          "actionPhase": "idle",
+          "shift": "0px",
+          "rect": {
+            "x": 1082,
+            "y": 628,
+            "w": 334,
+            "h": 248
+          }
+        },
+        "character": {
+          "x": 1082,
+          "y": 628,
+          "w": 160,
+          "h": 248
+        },
+        "portrait": {
+          "complete": true,
+          "naturalWidth": 330,
+          "opacity": "0",
+          "display": "block",
+          "inViewport": true
+        },
+        "canvas": {
+          "hidden": false,
+          "opacity": "1",
+          "display": "block",
+          "x": 1082,
+          "w": 160,
+          "h": 248
+        },
+        "dock": {
+          "position": "fixed",
+          "zIndex": "80",
+          "visibility": "visible",
+          "right": 24,
+          "bottom": 24,
+          "x": 1082,
+          "y": 628,
+          "w": 334,
+          "h": 248
+        },
+        "header": {
+          "bottom": 64,
+          "zIndex": "100"
+        },
+        "recall": {
+          "hidden": true,
+          "display": "none",
+          "position": "fixed",
+          "visibility": "visible",
+          "w": 0,
+          "h": 0,
+          "right": 1440,
+          "bottom": 900,
+          "text": "Ask SkyyYour house guide"
+        },
+        "buttons": [
+          {
+            "id": "skyy-motion-toggle",
+            "hidden": false,
+            "w": 162,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          },
+          {
+            "id": "skyy-hero-chat",
+            "hidden": false,
+            "w": 162,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(183, 110, 121)"
+          },
+          {
+            "id": "skyy-hero-dismiss",
+            "hidden": false,
+            "w": 162,
+            "h": 44,
+            "font": "\"Hanken Grotesk\"",
+            "size": "12px",
+            "weight": "500",
+            "transform": "uppercase",
+            "border": "rgb(128, 128, 128)"
+          }
+        ],
+        "dialogOpen": false,
+        "active": "BODY",
+        "session": {
+          "dismissed": null,
+          "entries": "1"
+        },
+        "rig": {
+          "ready": true,
+          "action": "Skyy_Idle",
+          "tier": "desktop",
+          "render": {
+            "phase": "ready",
+            "frames": 119,
+            "running": true,
+            "visible": true,
+            "paused": false,
+            "tier": "desktop",
+            "entryDistance": 358,
+            "actionPhase": "idle",
+            "pendingAction": null
+          },
+          "failure": null
+        },
+        "events": [
+          {
+            "name": "show",
+            "at": 84
+          },
+          {
+            "name": "show",
+            "at": 91
+          },
+          {
+            "name": "loading",
+            "at": 4586
+          },
+          {
+            "name": "prepare",
+            "at": 4586
+          },
+          {
+            "name": "3d-loading",
+            "at": 4586
+          },
+          {
+            "name": "3d-ready",
+            "at": 4746
+          },
+          {
+            "name": "walking-in",
+            "at": 4746
+          },
+          {
+            "name": "3d-visible",
+            "at": 4760
+          },
+          {
+            "name": "action-complete",
+            "at": 10235
+          },
+          {
+            "name": "idle",
+            "at": 10235
+          }
+        ],
+        "status": "Your house guide."
+      },
+      "modelRequests": [
+        "http://127.0.0.1:8794/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-desktop.glb"
+      ]
+    }
+  },
+  "finishedAt": "2026-09-22T20:37:36.447Z"
+}

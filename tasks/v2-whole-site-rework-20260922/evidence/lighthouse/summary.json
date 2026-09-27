@@ -1,0 +1,100 @@
+{
+ "scope": "local fixture (tools/v2-theme-preview.php over php -S, source CSS/JS, unminified, no WP/Batcache) \u2014 lab floor, not a production forecast [repro 2026-09-22]",
+ "lighthouse": "13.5.0",
+ "notes": [
+  "best-practices 96 on every run = the fixture's missing /favicon.ico (console 404); the theme's favicon is served by WordPress",
+  "PDP CLS 0.528/0.106 in the first pass was the fixture's dimensionless gallery stub; stub now mirrors core (width/height + Woo link wrapper) \u2192 CLS 0 both form factors"
+ ],
+ "runs": [
+  {
+   "run": "home-desktop",
+   "performance": 98,
+   "accessibility": 100,
+   "best_practices": 96,
+   "lcp": "1.1\u00a0s",
+   "cls": "0",
+   "tbt": "0\u00a0ms"
+  },
+  {
+   "run": "home-mobile",
+   "performance": 86,
+   "accessibility": 100,
+   "best_practices": 96,
+   "lcp": "3.5\u00a0s",
+   "cls": "0",
+   "tbt": "0\u00a0ms"
+  },
+  {
+   "run": "immersive-black-rose-desktop",
+   "performance": 99,
+   "accessibility": 100,
+   "best_practices": 96,
+   "lcp": "0.9\u00a0s",
+   "cls": "0",
+   "tbt": "0\u00a0ms"
+  },
+  {
+   "run": "immersive-black-rose-mobile",
+   "performance": 79,
+   "accessibility": 100,
+   "best_practices": 96,
+   "lcp": "4.4\u00a0s",
+   "cls": "0.069",
+   "tbt": "0\u00a0ms"
+  },
+  {
+   "run": "product-sg-005-desktop",
+   "performance": 99,
+   "accessibility": 100,
+   "best_practices": 96,
+   "lcp": "0.8\u00a0s",
+   "cls": "0",
+   "tbt": "0\u00a0ms"
+  },
+  {
+   "run": "product-sg-005-mobile",
+   "performance": 84,
+   "accessibility": 100,
+   "best_practices": 96,
+   "lcp": "3.8\u00a0s",
+   "cls": "0",
+   "tbt": "0\u00a0ms"
+  },
+  {
+   "run": "shop-desktop",
+   "performance": 99,
+   "accessibility": 100,
+   "best_practices": 96,
+   "lcp": "0.8\u00a0s",
+   "cls": "0.004",
+   "tbt": "0\u00a0ms"
+  },
+  {
+   "run": "shop-mobile",
+   "performance": 78,
+   "accessibility": 100,
+   "best_practices": 96,
+   "lcp": "4.8\u00a0s",
+   "cls": "0.001",
+   "tbt": "0\u00a0ms"
+  },
+  {
+   "run": "signature-desktop",
+   "performance": 99,
+   "accessibility": 100,
+   "best_practices": 96,
+   "lcp": "0.9\u00a0s",
+   "cls": "0",
+   "tbt": "0\u00a0ms"
+  },
+  {
+   "run": "signature-mobile",
+   "performance": 85,
+   "accessibility": 100,
+   "best_practices": 96,
+   "lcp": "4.1\u00a0s",
+   "cls": "0",
+   "tbt": "0\u00a0ms"
+  }
+ ]
+}

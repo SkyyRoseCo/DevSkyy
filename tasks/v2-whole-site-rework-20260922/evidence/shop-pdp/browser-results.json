@@ -1,0 +1,418 @@
+{
+  "captured": "2026-09-22T20:37:54.762Z",
+  "results": [
+    {
+      "route": "route=shop",
+      "width": 1440,
+      "status": 200,
+      "title": "SkyyRose — Shop",
+      "h1": [
+        "Shop"
+      ],
+      "overflow": false,
+      "scrollWidth": 1440,
+      "cards": 5,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": null,
+      "gridColumns": 4,
+      "fonts": [
+        "Archivo",
+        "Anton",
+        "\"Hanken Grotesk\""
+      ],
+      "brokenImages": [
+        "",
+        ""
+      ],
+      "sticky": null,
+      "errors": [],
+      "consoleErrors": [],
+      "failed": [],
+      "bad": []
+    },
+    {
+      "route": "route=product&sku=br-004",
+      "width": 1440,
+      "status": 200,
+      "title": "SkyyRose — Product",
+      "h1": [
+        "Black Rose Hoodie"
+      ],
+      "overflow": false,
+      "scrollWidth": 1440,
+      "cards": 4,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": "black-rose",
+      "gridColumns": 4,
+      "fonts": [
+        "Archivo",
+        "Anton",
+        "\"Hanken Grotesk\"",
+        "Cinzel"
+      ],
+      "brokenImages": [
+        "",
+        ""
+      ],
+      "sticky": "sticky",
+      "errors": [],
+      "consoleErrors": [],
+      "failed": [],
+      "bad": []
+    },
+    {
+      "route": "route=product&sku=sg-005",
+      "width": 1440,
+      "status": 200,
+      "title": "SkyyRose — Product",
+      "h1": [
+        "Bay Bridge Shirt"
+      ],
+      "overflow": false,
+      "scrollWidth": 1440,
+      "cards": 4,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": "signature",
+      "gridColumns": 4,
+      "fonts": [
+        "Archivo",
+        "Anton",
+        "\"Hanken Grotesk\"",
+        "Cinzel"
+      ],
+      "brokenImages": [
+        "",
+        ""
+      ],
+      "sticky": "sticky",
+      "errors": [],
+      "consoleErrors": [],
+      "failed": [],
+      "bad": []
+    },
+    {
+      "route": "route=product&sku=lh-004",
+      "width": 1440,
+      "status": 200,
+      "title": "SkyyRose — Product",
+      "h1": [
+        "Love Hurts Bomber Jacket"
+      ],
+      "overflow": false,
+      "scrollWidth": 1440,
+      "cards": 4,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": "love-hurts",
+      "gridColumns": 4,
+      "fonts": [
+        "Archivo",
+        "Anton",
+        "\"Hanken Grotesk\"",
+        "Cinzel"
+      ],
+      "brokenImages": [
+        "",
+        ""
+      ],
+      "sticky": "sticky",
+      "errors": [],
+      "consoleErrors": [],
+      "failed": [],
+      "bad": []
+    },
+    {
+      "route": "route=product&sku=kids-001",
+      "width": 1440,
+      "status": 200,
+      "title": "SkyyRose — Product",
+      "h1": [
+        "Kids Colorblock Hoodie Set — Red/Black"
+      ],
+      "overflow": false,
+      "scrollWidth": 1440,
+      "cards": 4,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": "kids-capsule",
+      "gridColumns": 4,
+      "fonts": [
+        "Archivo",
+        "Anton",
+        "\"Hanken Grotesk\"",
+        "Cinzel"
+      ],
+      "brokenImages": [
+        "",
+        ""
+      ],
+      "sticky": "sticky",
+      "errors": [],
+      "consoleErrors": [],
+      "failed": [],
+      "bad": []
+    },
+    {
+      "route": "route=product&sku=br-003",
+      "width": 1440,
+      "status": 422,
+      "title": "V2 product fixture media unavailable",
+      "h1": [
+        "V2 product fixture media unavailable"
+      ],
+      "overflow": false,
+      "scrollWidth": 1440,
+      "cards": 0,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": null,
+      "gridColumns": 0,
+      "fonts": [
+        "Georgia"
+      ],
+      "brokenImages": [],
+      "sticky": null,
+      "errors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 422 (Unknown Status Code)"
+      ],
+      "failed": [],
+      "bad": [
+        {
+          "url": "http://127.0.0.1:8792/tools/v2-theme-preview.php?route=product&sku=br-003",
+          "status": 422
+        }
+      ]
+    },
+    {
+      "route": "route=shop",
+      "width": 390,
+      "status": 200,
+      "title": "SkyyRose — Shop",
+      "h1": [
+        "Shop"
+      ],
+      "overflow": false,
+      "scrollWidth": 390,
+      "cards": 5,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": null,
+      "gridColumns": 1,
+      "fonts": [
+        "Archivo",
+        "Anton",
+        "\"Hanken Grotesk\""
+      ],
+      "brokenImages": [
+        "",
+        ""
+      ],
+      "sticky": null,
+      "errors": [],
+      "consoleErrors": [],
+      "failed": [],
+      "bad": []
+    },
+    {
+      "route": "route=product&sku=br-004",
+      "width": 390,
+      "status": 200,
+      "title": "SkyyRose — Product",
+      "h1": [
+        "Black Rose Hoodie"
+      ],
+      "overflow": false,
+      "scrollWidth": 390,
+      "cards": 4,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": "black-rose",
+      "gridColumns": 1,
+      "fonts": [
+        "Archivo",
+        "Anton",
+        "\"Hanken Grotesk\"",
+        "Cinzel"
+      ],
+      "brokenImages": [
+        "",
+        ""
+      ],
+      "sticky": "static",
+      "errors": [],
+      "consoleErrors": [],
+      "failed": [],
+      "bad": []
+    },
+    {
+      "route": "route=product&sku=sg-005",
+      "width": 390,
+      "status": 200,
+      "title": "SkyyRose — Product",
+      "h1": [
+        "Bay Bridge Shirt"
+      ],
+      "overflow": false,
+      "scrollWidth": 390,
+      "cards": 4,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": "signature",
+      "gridColumns": 1,
+      "fonts": [
+        "Archivo",
+        "Anton",
+        "\"Hanken Grotesk\"",
+        "Cinzel"
+      ],
+      "brokenImages": [
+        "",
+        ""
+      ],
+      "sticky": "static",
+      "errors": [],
+      "consoleErrors": [],
+      "failed": [],
+      "bad": []
+    },
+    {
+      "route": "route=product&sku=lh-004",
+      "width": 390,
+      "status": 200,
+      "title": "SkyyRose — Product",
+      "h1": [
+        "Love Hurts Bomber Jacket"
+      ],
+      "overflow": false,
+      "scrollWidth": 390,
+      "cards": 4,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": "love-hurts",
+      "gridColumns": 1,
+      "fonts": [
+        "Archivo",
+        "Anton",
+        "\"Hanken Grotesk\"",
+        "Cinzel"
+      ],
+      "brokenImages": [
+        "",
+        ""
+      ],
+      "sticky": "static",
+      "errors": [],
+      "consoleErrors": [],
+      "failed": [],
+      "bad": []
+    },
+    {
+      "route": "route=product&sku=kids-001",
+      "width": 390,
+      "status": 200,
+      "title": "SkyyRose — Product",
+      "h1": [
+        "Kids Colorblock Hoodie Set — Red/Black"
+      ],
+      "overflow": false,
+      "scrollWidth": 390,
+      "cards": 4,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": "kids-capsule",
+      "gridColumns": 1,
+      "fonts": [
+        "Archivo",
+        "Anton",
+        "\"Hanken Grotesk\"",
+        "Cinzel"
+      ],
+      "brokenImages": [
+        "",
+        ""
+      ],
+      "sticky": "static",
+      "errors": [],
+      "consoleErrors": [],
+      "failed": [],
+      "bad": []
+    },
+    {
+      "route": "route=product&sku=br-003",
+      "width": 390,
+      "status": 422,
+      "title": "V2 product fixture media unavailable",
+      "h1": [
+        "V2 product fixture media unavailable"
+      ],
+      "overflow": false,
+      "scrollWidth": 390,
+      "cards": 0,
+      "framedCards": 0,
+      "frameImgs": 0,
+      "dataCollection": null,
+      "gridColumns": 0,
+      "fonts": [
+        "Georgia"
+      ],
+      "brokenImages": [],
+      "sticky": null,
+      "errors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 422 (Unknown Status Code)"
+      ],
+      "failed": [],
+      "bad": [
+        {
+          "url": "http://127.0.0.1:8792/tools/v2-theme-preview.php?route=product&sku=br-003",
+          "status": 422
+        }
+      ]
+    }
+  ],
+  "journey": {
+    "errors": [],
+    "quickView": {
+      "open": true,
+      "name": "Bay Bridge Shirt",
+      "price": "$128.00",
+      "availability": "Available for preorder",
+      "image": "/wordpress-theme/skyyrose-flagship-2/assets/approved-card-fronts/sg-005-onmodel.webp",
+      "status": "Open the piece to check options and availability.",
+      "activeElement": "Close quick view",
+      "openerExpanded": true
+    },
+    "quickViewClosed": {
+      "open": false,
+      "focusReturned": true
+    },
+    "variation": {
+      "selected": "M"
+    },
+    "buyColumnTabOrder": [
+      "select#preview-size \"Choose a sizeXSSMLXL2XL\"",
+      "input#preview-qty \"1\"",
+      "button.single_add_to_cart_button.button \"Secure this piece\"",
+      "a.sr2-editorial-link \"Fit + size guide→\"",
+      "a.sr2-editorial-link \"Shipping + Returns→\"",
+      "a \"Description\"",
+      "a \"Additional information\"",
+      "a.sr2-c-editorial-card__media \"View Bay Bridge Shirt\"",
+      "a \"Bay Bridge Shirt\""
+    ],
+    "sizeGuide": {
+      "open": true,
+      "activeElement": "Close fit and size guide",
+      "steps": 3
+    },
+    "sizeGuideClosed": {
+      "open": false,
+      "focusReturned": true
+    },
+    "quickViewMobileOpen": true
+  }
+}

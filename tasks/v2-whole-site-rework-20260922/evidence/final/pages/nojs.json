@@ -1,0 +1,191 @@
+[
+  {
+    "route": "about",
+    "http_status": 200,
+    "hashes": [
+      "3628cd9a58bd",
+      "1cceeeff2a5c",
+      "3bfd00fdb094",
+      "3387ee16b5b3",
+      "193c60f5b5a6",
+      "6ed56aaa07b7",
+      "f9c2829f1609",
+      "967ad24f524c",
+      "967ad24f524c",
+      "967ad24f524c",
+      "967ad24f524c",
+      "967ad24f524c"
+    ],
+    "distinctFrames": 8,
+    "scrolled": true,
+    "scrollYs": [
+      0,
+      765,
+      1530,
+      2295,
+      3060,
+      3825,
+      4590,
+      5119,
+      5119,
+      5119,
+      5119,
+      5119
+    ],
+    "bottomY": 5119,
+    "failed": [
+      "404 https://www.youtube-nocookie.com/img/meh7.png"
+    ],
+    "nav": {
+      "navExists": true,
+      "navPosition": "static",
+      "navDisplay": "grid",
+      "navVisibility": "visible",
+      "navOpacity": "1",
+      "navRect": {
+        "x": 58,
+        "y": 53,
+        "w": 1325,
+        "h": 696
+      },
+      "headerPosition": "relative",
+      "headerRect": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 749
+      },
+      "menuDisplay": "inline-flex",
+      "visibleNavLinks": [
+        "Collections",
+        "Shop",
+        "Lookbook",
+        "Pre-Order",
+        "Journal",
+        "About",
+        "Contact",
+        "Search",
+        "Account",
+        "Saved pieces",
+        "Lookbook",
+        "Signature↗",
+        "Black Rose↗",
+        "Love Hurts↗",
+        "Kids Capsule↗"
+      ],
+      "navBeforeMain": true,
+      "mainRect": {
+        "x": 0,
+        "y": 749,
+        "w": 1440,
+        "h": 4921
+      },
+      "docH": 6019,
+      "noscript": 0,
+      "skipHref": "#primary",
+      "h1": "Built by a father. Named for his daughter.",
+      "imgsVisible": 8,
+      "imgsLoaded": 8,
+      "revealBlocks": [
+        {
+          "opacity": "1",
+          "clip": "none",
+          "hasImg": true
+        },
+        {
+          "opacity": "1",
+          "clip": "none",
+          "hasImg": true
+        }
+      ]
+    }
+  },
+  {
+    "route": "lookbook",
+    "http_status": 200,
+    "hashes": [
+      "c93ab170f934",
+      "aaf98a1bfa50",
+      "523e21bd6eef",
+      "47744c7f8bc2",
+      "032d9083d69d",
+      "d76d6e71746a",
+      "48be46209e8e",
+      "c67f2ab1fb88",
+      "6821f0281d3d",
+      "a88c24384987",
+      "aedad82b0688",
+      "0725947c0e8e"
+    ],
+    "distinctFrames": 12,
+    "scrolled": true,
+    "scrollYs": [
+      0,
+      765,
+      1530,
+      2295,
+      3060,
+      3825,
+      4590,
+      5355,
+      6120,
+      6885,
+      7650,
+      8415
+    ],
+    "bottomY": 9180,
+    "failed": [],
+    "nav": {
+      "navExists": true,
+      "navPosition": "static",
+      "navDisplay": "grid",
+      "navVisibility": "visible",
+      "navOpacity": "1",
+      "navRect": {
+        "x": 58,
+        "y": 53,
+        "w": 1325,
+        "h": 696
+      },
+      "headerPosition": "relative",
+      "headerRect": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 749
+      },
+      "menuDisplay": "inline-flex",
+      "visibleNavLinks": [
+        "Collections",
+        "Shop",
+        "Lookbook",
+        "Pre-Order",
+        "Journal",
+        "About",
+        "Contact",
+        "Search",
+        "Account",
+        "Saved pieces",
+        "Lookbook",
+        "Signature↗",
+        "Black Rose↗",
+        "Love Hurts↗",
+        "Kids Capsule↗"
+      ],
+      "navBeforeMain": true,
+      "mainRect": {
+        "x": 0,
+        "y": 749,
+        "w": 1440,
+        "h": 16796
+      },
+      "docH": 17894,
+      "noscript": 0,
+      "skipHref": "#primary",
+      "h1": "Four worlds. One house.",
+      "imgsVisible": 20,
+      "imgsLoaded": 20,
+      "revealBlocks": []
+    }
+  }
+]
