@@ -1,0 +1,1070 @@
+{
+  "schema_version": "1.0",
+  "id": "skyyrose-owner-ratified-context-v1",
+  "brand_id": "skyyrose",
+  "status": "OWNER_RATIFIED_SPECIFICATION_NOT_RUNTIME",
+  "constitution": {
+    "path": "constitution.json",
+    "version": "1.0",
+    "sha256": "764127a25315b6b937e5f7435f9459b3fbe2788525469a43e0a530e134b65311"
+  },
+  "historical_manifest": "../brand-context-investigation-20260923/context-manifest.json",
+  "historical_manifest_status": "PROPOSED_NOT_ADOPTED_UNCHANGED",
+  "decision_record": "owner-decisions.json",
+  "authority": "Explicit owner handoffs supersede conflicting historical expressions within their stated scopes.",
+  "records": [
+    {
+      "id": "A",
+      "rule_reference": "constitution.json#A",
+      "scope": "Master brand",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "A-001",
+      "evidence": [
+        "E03",
+        "E06",
+        "E08"
+      ]
+    },
+    {
+      "id": "D.origin",
+      "rule_reference": "constitution.json#D.origin",
+      "scope": "Master-brand origin",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "D-001",
+      "evidence": [
+        "E03",
+        "E11",
+        "E38"
+      ]
+    },
+    {
+      "id": "D.legacy",
+      "rule_reference": "constitution.json#D.legacy",
+      "scope": "Optional legacy storytelling",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "D-001",
+      "evidence": [
+        "E03",
+        "E11",
+        "E38"
+      ]
+    },
+    {
+      "id": "B",
+      "rule_reference": "constitution.json#B",
+      "scope": "Major collection meaning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        "E03",
+        "E06",
+        "E07",
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 3,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "rule_reference": "constitution.json#C",
+      "scope": "Brand positioning and presentation; canonical product identity",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        "E03",
+        "E38",
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 4,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "G1",
+      "rule_reference": "constitution.json#G1",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "G2",
+      "rule_reference": "constitution.json#G2",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "G3",
+      "rule_reference": "constitution.json#G3",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "G4",
+      "rule_reference": "constitution.json#G4",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "G5",
+      "rule_reference": "constitution.json#G5",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "G6",
+      "rule_reference": "constitution.json#G6",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "G7",
+      "rule_reference": "constitution.json#G7",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "G8",
+      "rule_reference": "constitution.json#G8",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N",
+      "rule_reference": "constitution.json#N",
+      "scope": "Contextual vocabulary versus constitutional authority",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N1",
+      "rule_reference": "constitution.json#N1",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N2",
+      "rule_reference": "constitution.json#N2",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N3",
+      "rule_reference": "constitution.json#N3",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N4",
+      "rule_reference": "constitution.json#N4",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N5",
+      "rule_reference": "constitution.json#N5",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N6",
+      "rule_reference": "constitution.json#N6",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N7",
+      "rule_reference": "constitution.json#N7",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N8",
+      "rule_reference": "constitution.json#N8",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N9",
+      "rule_reference": "constitution.json#N9",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N10",
+      "rule_reference": "constitution.json#N10",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "N6.discovery",
+      "rule_reference": "constitution.json#N6.discovery",
+      "scope": "Local discovery when place meaningfully strengthens the work",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 7,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "rule_reference": "constitution.json#F",
+      "scope": "Creative freedom across domains",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 8,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F1",
+      "rule_reference": "constitution.json#F1",
+      "scope": "Any customer-facing creative representing an actual SkyyRose product",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        "E01",
+        "E17",
+        "E18",
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 9,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "PRODUCT_MODES",
+      "rule_reference": "constitution.json#PRODUCT_MODES",
+      "scope": "Product representation mode and required evidence",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 10,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "FIDELITY_METHOD",
+      "rule_reference": "constitution.json#FIDELITY_METHOD",
+      "scope": "Fidelity-preserving production planning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 11,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "FIDELITY_GATE",
+      "rule_reference": "constitution.json#FIDELITY_GATE",
+      "scope": "Future non-bypassable product verification",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 12,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "rule_reference": "constitution.json#F2",
+      "scope": "Factual/legal/rights",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F3",
+      "rule_reference": "constitution.json#F3",
+      "scope": "Protected assets",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F4",
+      "rule_reference": "constitution.json#F4",
+      "scope": "Constitutional identity",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F5",
+      "rule_reference": "constitution.json#F5",
+      "scope": "Voice",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F6",
+      "rule_reference": "constitution.json#F6",
+      "scope": "Typography",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F7",
+      "rule_reference": "constitution.json#F7",
+      "scope": "Motion",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F8",
+      "rule_reference": "constitution.json#F8",
+      "scope": "Composition",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F9",
+      "rule_reference": "constitution.json#F9",
+      "scope": "Materials/lighting",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F10",
+      "rule_reference": "constitution.json#F10",
+      "scope": "Environment/place",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F11",
+      "rule_reference": "constitution.json#F11",
+      "scope": "Campaign story/metaphor",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F12",
+      "rule_reference": "constitution.json#F12",
+      "scope": "Shopping/interaction model",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F13",
+      "rule_reference": "constitution.json#F13",
+      "scope": "New concepts",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F14",
+      "rule_reference": "constitution.json#F14",
+      "scope": "Cross-domain synthesis",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "F.material_exploration",
+      "rule_reference": "constitution.json#F.material_exploration",
+      "scope": "Environmental material exploration; protected product and asset constraints remain binding",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "M-001",
+      "rule_reference": "constitution.json#M-001",
+      "scope": "Creative lifecycle",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 14,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "M-002",
+      "rule_reference": "constitution.json#M-002",
+      "scope": "Creative lifecycle",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 14,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "M.lifecycle",
+      "rule_reference": "constitution.json#M.lifecycle",
+      "scope": "M1–M9 lifecycle and release criteria",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 14,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ]
+    },
+    {
+      "id": "K1-001",
+      "rule_reference": "constitution.json#K1-001",
+      "scope": "Kids Capsule",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "K1-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "K2-001",
+      "rule_reference": "constitution.json#K2-001",
+      "scope": "Kids Capsule",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "K2-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "K3-001",
+      "rule_reference": "constitution.json#K3-001",
+      "scope": "Kids Capsule",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "K3-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "K4-001",
+      "rule_reference": "constitution.json#K4-001",
+      "scope": "Kids Capsule",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "K4-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "K5-001",
+      "rule_reference": "constitution.json#K5-001",
+      "scope": "Kids Capsule",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "K5-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "P1-001",
+      "rule_reference": "constitution.json#P1-001",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P1-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "P2-001",
+      "rule_reference": "constitution.json#P2-001",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P2-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "P3-001",
+      "rule_reference": "constitution.json#P3-001",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P3-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "P4-001",
+      "rule_reference": "constitution.json#P4-001",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P4-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "P5-001",
+      "rule_reference": "constitution.json#P5-001",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P5-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "P6-001",
+      "rule_reference": "constitution.json#P6-001",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P6-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "P7-001",
+      "rule_reference": "constitution.json#P7-001",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P7-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "P8-001",
+      "rule_reference": "constitution.json#P8-001",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P8-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S1-001",
+      "rule_reference": "constitution.json#S1-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S1-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S2-001",
+      "rule_reference": "constitution.json#S2-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S2-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S3-001",
+      "rule_reference": "constitution.json#S3-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S3-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S4-001",
+      "rule_reference": "constitution.json#S4-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S4-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S5-001",
+      "rule_reference": "constitution.json#S5-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S5-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S6-001",
+      "rule_reference": "constitution.json#S6-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S6-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S7-001",
+      "rule_reference": "constitution.json#S7-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S7-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S8-001",
+      "rule_reference": "constitution.json#S8-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S8-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S9-001",
+      "rule_reference": "constitution.json#S9-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S9-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S10-001",
+      "rule_reference": "constitution.json#S10-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S10-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S11-001",
+      "rule_reference": "constitution.json#S11-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S11-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    },
+    {
+      "id": "S12-001",
+      "rule_reference": "constitution.json#S12-001",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "decision_event": "FINAL-KPS-20260923",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S12-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ]
+    }
+  ],
+  "palette_domains": {
+    "product": [
+      "P2-001",
+      "F1"
+    ],
+    "protected_assets": [
+      "P3-001"
+    ],
+    "interface": [
+      "P6-001"
+    ],
+    "environment": [
+      "P4-001",
+      "P5-001"
+    ],
+    "photographic": [
+      "P1-001",
+      "P5-001"
+    ],
+    "campaign": [
+      "P4-001",
+      "P7-001"
+    ],
+    "lighting": [
+      "P1-001",
+      "P2-001",
+      "P4-001"
+    ],
+    "natural_location": [
+      "P5-001"
+    ]
+  },
+  "product_authority": {
+    "reader": "get_product(sku)",
+    "editable_source": "Unified product registry",
+    "live_commerce": "WooCommerce live session/variation purchasability and transaction state",
+    "founder_authority": "Founder statements authoritative; no third-party re-verification"
+  },
+  "unresolved_constitutional_decisions": [],
+  "runtime_implemented": false,
+  "palette_provenance_rule_ids": [
+    "P8-001"
+  ]
+}

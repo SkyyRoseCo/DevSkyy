@@ -131,3 +131,10 @@ async def resume_creative(operation_id: str) -> dict:
             "status": "error",
             "error": f"Resume failed: {exc}",
         }
+
+
+def run_editorial(*args, **kwargs) -> dict:
+    """Run the bounded local still route; authority is an explicit caller argument."""
+    from .editorial import run_editorial as run
+
+    return run(*args, **kwargs)
