@@ -13,13 +13,15 @@ bundle of inputs the render pipeline can consume directly:
     │   └── back.<ext>           → symlink to real-back photo (until true back-techflat exists)
     ├── logos/
     │   └── <filename>           → symlinks to applied logos for this SKU
+    ├── garment-source/         ← bound complete garments; never isolated logos
+    │   └── front.<ext>          → exact hash-bound physical front source
     └── placement.md             ← generated brief (NOT canonical — re-derive any time)
 
 All asset files are SYMLINKS into the canonical sources
 (``assets/products/references/``, ``assets/images/logos/``) so editing the
 source updates every per-SKU bundle in lockstep. ``placement.md`` is a
-generated derivative of CSV + dossier + logo-registry — re-running the
-scaffolder regenerates it from current canon.
+generated derivative of the one editable logo-registry.json. CSV and dossier
+files are compatibility exports; re-running uses current registry facts.
 
 Idempotent: re-running with no canon changes produces zero diffs. Existing
 symlinks are replaced atomically; orphan symlinks (pointing at files that
@@ -36,6 +38,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -50,14 +53,13 @@ from skyyrose.core.dossier_loader import get_product_with_dossier  # noqa: E402
 from skyyrose.core.paths import (  # noqa: E402
     GOLDEN_DIR,
     THEME_ROOT,
-    WP_LOGOS_DIR,
-    WP_PRODUCTS_DIR,
 )
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger = logging.getLogger(__name__)
 
 from skyyrose.core import paths
+from skyyrose.elite_studio.logo_registry import LogoRegistry
 
 PRODUCT_REFERENCES_DIR = paths.PRODUCT_REFERENCES
 LOGO_REGISTRY_JSON = THEME_ROOT / "data" / "logo-registry.json"
@@ -90,9 +92,7 @@ def _atomic_symlink(target: Path, link: Path, *, dry_run: bool) -> bool:
     """
     if not target.exists():
         raise FileNotFoundError(f"symlink target does not exist: {target}")
-    relative = Path(
-        *[".."] * (len(link.parent.relative_to(_REPO_ROOT).parts))
-    ) / target.relative_to(_REPO_ROOT)
+    relative = Path(os.path.relpath(target, start=link.parent))
     if link.is_symlink() or link.exists():
         if link.is_symlink() and link.readlink() == relative:
             return False
@@ -156,34 +156,14 @@ def _find_real_back_source(sku: str) -> Path | None:
 
 
 def _find_logo_file(logo_id: str, registry: dict, sku: str) -> Path | None:
-    """Resolve a logo_id to a file on disk for a given SKU.
-
-    Two resolution paths:
-    1. ``co_located_per_sku`` logos (sport patches) live at
-       ``products/<sku_folders[sku]>/<filename>`` — NOT in images/logos/.
-       These are SKU-specific, so the resolution needs the SKU's folder
-       mapping from the registry's ``sku_folders`` block.
-    2. Centralized logos live in ``assets/images/logos/`` keyed by
-       ``filename`` (or a logo_id glob fallback).
-    """
-    logo = (registry.get("logos") or {}).get(logo_id, {})
-    filename = logo.get("filename") or logo.get("file") or ""
-
-    if logo.get("co_located_per_sku"):
-        folder = (registry.get("sku_folders") or {}).get(sku)
-        if folder and filename:
-            candidate = WP_PRODUCTS_DIR / folder / filename
-            if candidate.is_file():
-                return candidate
-        # Co-located logo with no folder mapping or missing file — unresolvable.
+    """Use the shared resolver; never glob for unregistered look-alike artwork."""
+    resolver = LogoRegistry(registry)
+    if resolver.reference_kind_for(sku) == "garment":
+        # This artwork exists on a complete garment. A canonical motif file is
+        # not an equivalent standalone reproduction of its SKU-specific artwork.
         return None
-
-    if filename:
-        candidate = WP_LOGOS_DIR / filename
-        if candidate.is_file():
-            return candidate
-    matches = sorted(WP_LOGOS_DIR.glob(f"{logo_id}.*"))
-    return matches[0] if matches else None
+    candidate = resolver.image_path(sku=sku, logo_id=logo_id)
+    return candidate if candidate.is_file() else None
 
 
 def _prune_orphan_symlinks(directory: Path, *, dry_run: bool) -> int:
@@ -252,7 +232,22 @@ def _build_placement_md(sku: str, product: dict, registry: dict) -> str:
             f"**{front_text}** — technique: `{front_text_technique or 'unspecified'}`",
         ]
 
+    resolver = LogoRegistry(registry)
+    if resolver.reference_kind_for(sku) == "garment":
+        source = resolver.primary_reference_for(sku)
+        lines += [
+            "",
+            "## Registered garment source",
+            "Role: complete physical garment, front view; not an isolated logo or techflat.",
+            f"Source: `{source.relative_to(_REPO_ROOT).as_posix()}`",
+            "Use `garment-source/front.*`. No standalone logo is supplied for this artwork.",
+            "Only registered views may be rendered; an absent back source is not permission "
+            "to infer a rear view.",
+        ]
+
     lines += [
+        "",
+        LogoRegistry(registry).prompt_instructions(sku),
         "",
         "## Render scene context (dossier)",
         f"**Pose:** {scene_pose}" if scene_pose else "**Pose:** _not specified_",
@@ -263,11 +258,57 @@ def _build_placement_md(sku: str, product: dict, registry: dict) -> str:
         "",
         "---",
         "_This file is auto-generated from the canonical sources_",
-        "_(catalog CSV + dossier + logo-registry.json) by_",
-        "_`scripts/scaffold_sku_asset_folders.py`. Edit those sources, not this file._",
+        "_in the ONE editable `logo-registry.json` by_",
+        "_`scripts/scaffold_sku_asset_folders.py`. Edit the registry, not this file._",
+        "_CSV and dossier files are generated compatibility exports._",
         "",
     ]
     return "\n".join(lines)
+
+
+def _scaffold_garment_sources(
+    sku: str, sku_dir: Path, registry: dict, result: ScaffoldResult, *, dry_run: bool
+) -> None:
+    """Migrate generated links to explicitly typed, registry-bound garment sources."""
+    resolver = LogoRegistry(registry)
+    front = resolver.primary_reference_for(sku)  # Validates exact front path and hash.
+    sources = registry["products"][sku]["render_sources"]
+    source_dir = sku_dir / "garment-source"
+    if not source_dir.exists():
+        if not dry_run:
+            source_dir.mkdir(parents=True, exist_ok=True)
+        result.created_dirs += 1
+
+    obsolete = list((sku_dir / "techflat").glob("front.*"))
+    obsolete += list((sku_dir / "techflat").glob("back.*"))
+    for placement in resolver.placements_for(sku):
+        filename = resolver.get_logo(placement["logo_id"]).filename
+        obsolete.append(sku_dir / "logos" / filename)
+    desired = {}
+    for view in ("front", "back"):
+        value = sources.get(view)
+        source = front if view == "front" else (_REPO_ROOT / value).resolve() if value else None
+        if source is None:
+            result.missing.append(f"garment-source/{view}")
+        elif not source.is_relative_to(_REPO_ROOT.resolve()) or not source.is_file():
+            raise ValueError(f"{sku}: invalid registered {view} garment source")
+        else:
+            desired[source_dir / f"{view}{source.suffix}"] = source
+        obsolete += [p for p in source_dir.glob(f"{view}.*") if p not in desired]
+
+    for link in dict.fromkeys(obsolete):
+        if link.is_symlink():
+            if not dry_run:
+                link.unlink()
+            result.pruned_symlinks += 1
+        elif link.exists():
+            result.missing.append(f"preserved user file: {link.relative_to(sku_dir)}")
+    for link, source in desired.items():
+        if link.exists() and not link.is_symlink():
+            result.missing.append(f"preserved user file: {link.relative_to(sku_dir)}")
+            continue
+        if _atomic_symlink(source, link, dry_run=dry_run):
+            result.created_symlinks += 1
 
 
 def scaffold_sku(
@@ -290,45 +331,55 @@ def scaffold_sku(
                 d.mkdir(parents=True, exist_ok=True)
             result.created_dirs += 1
 
-    techflat_front = _find_techflat_source(sku)
-    if techflat_front:
-        link = sku_dir / "techflat" / f"front{techflat_front.suffix}"
-        if _atomic_symlink(techflat_front, link, dry_run=dry_run):
-            result.created_symlinks += 1
+    garment_artwork = LogoRegistry(registry).reference_kind_for(sku) == "garment"
+    if garment_artwork:
+        _scaffold_garment_sources(sku, sku_dir, registry, result, dry_run=dry_run)
     else:
-        result.missing.append("techflat/front")
+        techflat_front = _find_techflat_source(sku)
+        if techflat_front:
+            link = sku_dir / "techflat" / f"front{techflat_front.suffix}"
+            if _atomic_symlink(techflat_front, link, dry_run=dry_run):
+                result.created_symlinks += 1
+        else:
+            result.missing.append("techflat/front")
 
-    techflat_back = _find_real_back_source(sku)
-    if techflat_back:
-        link = sku_dir / "techflat" / f"back{techflat_back.suffix}"
-        if _atomic_symlink(techflat_back, link, dry_run=dry_run):
-            result.created_symlinks += 1
-    else:
-        result.missing.append("techflat/back")
+        techflat_back = _find_real_back_source(sku)
+        if techflat_back:
+            link = sku_dir / "techflat" / f"back{techflat_back.suffix}"
+            if _atomic_symlink(techflat_back, link, dry_run=dry_run):
+                result.created_symlinks += 1
+        else:
+            result.missing.append("techflat/back")
 
-    placements = (registry.get("sku_logos") or {}).get(sku, {}).get("placements") or []
-    seen_logo_ids: set[str] = set()
-    for p in placements:
-        logo_id = p.get("logo_id", "")
-        if not logo_id or logo_id in seen_logo_ids:
-            continue
-        seen_logo_ids.add(logo_id)
-        logo_file = _find_logo_file(logo_id, registry, sku)
-        if not logo_file:
-            result.missing.append(f"logo/{logo_id}")
-            continue
-        link = sku_dir / "logos" / logo_file.name
-        if _atomic_symlink(logo_file, link, dry_run=dry_run):
-            result.created_symlinks += 1
+        placements = (registry.get("sku_logos") or {}).get(sku, {}).get("placements") or []
+        seen_logo_ids: set[str] = set()
+        for p in placements:
+            logo_id = p.get("logo_id", "")
+            if not logo_id or logo_id in seen_logo_ids:
+                continue
+            seen_logo_ids.add(logo_id)
+            logo_file = _find_logo_file(logo_id, registry, sku)
+            if not logo_file:
+                result.missing.append(f"logo/{logo_id}")
+                continue
+            link = sku_dir / "logos" / logo_file.name
+            if _atomic_symlink(logo_file, link, dry_run=dry_run):
+                result.created_symlinks += 1
 
-    result.pruned_symlinks += _prune_orphan_symlinks(sku_dir / "techflat", dry_run=dry_run)
-    result.pruned_symlinks += _prune_orphan_symlinks(sku_dir / "logos", dry_run=dry_run)
-    result.pruned_symlinks += _prune_orphan_symlinks(sku_dir / "flatlays", dry_run=dry_run)
+        result.pruned_symlinks += _prune_orphan_symlinks(sku_dir / "techflat", dry_run=dry_run)
+        result.pruned_symlinks += _prune_orphan_symlinks(sku_dir / "logos", dry_run=dry_run)
+        result.pruned_symlinks += _prune_orphan_symlinks(sku_dir / "flatlays", dry_run=dry_run)
 
     placement_md = sku_dir / "placement.md"
     new_content = _build_placement_md(sku, product, registry)
     if placement_md.exists():
         existing = placement_md.read_text(encoding="utf-8")
+        if (
+            garment_artwork
+            and "_This file is auto-generated from the canonical sources_" not in existing
+        ):
+            result.missing.append("preserved user file: placement.md")
+            return result
     else:
         existing = ""
     if existing != new_content:
