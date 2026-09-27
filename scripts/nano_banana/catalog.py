@@ -5,10 +5,11 @@ Single source of truth for all product metadata. No hardcoded catalogs.
 
 from __future__ import annotations
 
-import csv
 import json
 import logging
 from pathlib import Path
+
+from skyyrose.core.catalog_loader import read_catalog_rows
 
 log = logging.getLogger(__name__)
 
@@ -24,34 +25,27 @@ SPECS_JSON = PROJECT_ROOT / "data" / "product-specs.json"
 
 
 def load_catalog() -> dict[str, dict]:
-    """Load product catalog from CSV. Returns dict keyed by SKU."""
+    """Project the canonical catalog reader into Nano Banana's render fields."""
     catalog: dict[str, dict] = {}
-    with CATALOG_CSV.open(newline="", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            sku = row["sku"].strip()
-            if not sku:
-                continue
-            entry: dict = {
-                "name": row["name"].strip(),
-                "collection": row["collection"].strip(),
-                "is_preorder": row["is_preorder"].strip() == "1",
-                "output_slug": row["render_output_slug"].strip() or sku,
-                "is_tech_flat": row["render_is_tech_flat"].strip() == "1",
-                "is_accessory": row["render_is_accessory"].strip() == "1",
-            }
-            if row["render_source_override"].strip():
-                entry["source_override"] = row["render_source_override"].strip()
-            if row["render_back_source_override"].strip():
-                entry["back_source_override"] = row["render_back_source_override"].strip()
-            # Empirically-tuned engine override (F3 finding from 2026-05-05
-            # multi-SKU validator: vision-driven routing produces stochastic
-            # results because Gemini-vision keywords drive route_product().
-            # When the same SKU swings 88 → 30 between gemini-pro and flux-pro,
-            # we pin the winner explicitly. Falls through to vision routing
-            # when empty.
-            if "engine_override" in row and row["engine_override"].strip():
-                entry["engine_override"] = row["engine_override"].strip()
-            catalog[sku] = entry
+    for row in read_catalog_rows(CATALOG_CSV):
+        sku = row["sku"].strip()
+        if not sku:
+            continue
+        entry: dict = {
+            "name": row["name"].strip(),
+            "collection": row["collection"].strip(),
+            "is_preorder": row["is_preorder"].strip() == "1",
+            "output_slug": row["render_output_slug"].strip() or sku,
+            "is_tech_flat": row["render_is_tech_flat"].strip() == "1",
+            "is_accessory": row["render_is_accessory"].strip() == "1",
+        }
+        if row["render_source_override"].strip():
+            entry["source_override"] = row["render_source_override"].strip()
+        if row["render_back_source_override"].strip():
+            entry["back_source_override"] = row["render_back_source_override"].strip()
+        if row.get("engine_override", "").strip():
+            entry["engine_override"] = row["engine_override"].strip()
+        catalog[sku] = entry
     return catalog
 
 
