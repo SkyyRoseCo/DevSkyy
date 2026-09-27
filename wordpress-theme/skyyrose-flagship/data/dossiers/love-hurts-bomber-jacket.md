@@ -10,7 +10,16 @@ reference_image: assets/products/references/lh-004-techflat-front.jpeg
 
 # Love Hurts Bomber Jacket
 
-**Garment type lock:** Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). NOT a satin bomber. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. Satin appearance is required by the later founder review; fiber composition is not established here. NOT a sherpa jacket.
+Fit: The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down).
+Features: Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). Satin appearance is required by the later founder review; fiber composition is not established here. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).
+Color: White/Black
+Available sizes: S | M | L | XL | 2XL | 3XL
+
+## Source correction — 2026-09-11
+
+The earlier “NOT satin” and cotton-blend assertions are superseded by the recorded founder review at `renders/oai/_review/review-state.json`, entries `love-hurts-bomber/ghost.png` (2026-06-10T02:10:51.825Z) and `love-hurts-bomber/ghost-back.png` (2026-06-10T02:10:54.542Z): both flag that the render “doesn't look satin.” `data/render-corrections.json` preserves these comments and identifies their founder-review provenance. This establishes intended satin appearance, consistent with the catalog, not fiber composition or manufacturing certification. The flagged renders remain unapproved; this correction grants no media approval.
 
 ## Branding — exactly what IS on this product
 
@@ -46,7 +55,7 @@ reference_image: assets/products/references/lh-004-techflat-front.jpeg
 - NO greyscale rose rendering anywhere — all rose imagery is canonical Love Hurts multi-color (red + green + brown).
 - NO single-color body — the body is WHITE with BLACK raglan sleeves and BLACK hood (three-color contrast: white body + black sleeves + black hood).
 - NO non-raglan sleeve seam — the sleeves are RAGLAN cut (diagonal seam from underarm to neck), NOT set-in.
-- NO satin or sherpa fabric — this is a cotton-blend bomber/varsity weight, NOT satin (that's br-006) or sherpa.
+- NO sherpa fabric. Preserve the satin appearance requested in the later founder review; do not infer cotton-blend or any fiber composition.
 - NO zipper-front closure — the front is BUTTON or SNAP placket, NOT a zipper.
 - NO solid-color cuffs/hem — the rib-knit cuffs and waistband have a STRIPED accent pattern (white + red + black), NOT solid black or solid white.
 - NO sublimated all-over body pattern — the body is solid white, NOT sublimated.

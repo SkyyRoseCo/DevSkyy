@@ -12,7 +12,11 @@ reference_image: assets/products/references/br-011-design-front.jpeg
 
 # BLACK is Beautiful Jersey Series — 4. The Rose (Hockey)
 
-**Garment type lock:** Hockey-style pullover hoodie with long sleeves and a
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Solid **black** base body fabric with **teal/turquoise (cyan)** accent
+colorway. Mid-weight knit fabric, hockey-jersey-weight. NOT a sherpa jacket
+(distinct from br-006 which is a separate satin bomber).
+Features: Hockey-style pullover hoodie with long sleeves and a
 hood — round-neck pullover construction, hood with **bright teal/turquoise
 inner lining** against a black hood exterior, long sleeves ending in a
 layered striped cuff band, straight hem with a matching layered striped hem
@@ -21,6 +25,8 @@ colorway. Mid-weight knit fabric, hockey-jersey-weight. NOT a basketball
 tank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket
 (distinct from br-006 which is a separate satin bomber). **PRE-ORDER product**
 — design renderings only.
+Color: Black/Teal
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 
@@ -55,7 +61,7 @@ tank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket
   the hood opening at the V): A small black-and-white hockey-style league
   emblem (a stylized shield with hockey stick + puck details, woven flat).
   **Technique:** woven-label. **Color:** black + white.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in, against the
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall, against the
   striped hem band): The Hockey Championship patch (greyscale/silver palette
   patch — see hockey-championship-patch reference). Sewn onto the lower-left
   hip. **Technique:** embroidered-patch.

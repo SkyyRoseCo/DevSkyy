@@ -12,7 +12,11 @@ Authored from canonical product specification. Two-eyes review: Corey confirms e
 
 # Original Label Tee (White)
 
-**Garment type lock:** Classic crew-neck T-shirt, upper body only. NOT a crewneck sweatshirt, NOT a hoodie, NOT a jersey, NOT a long-sleeve. Short sleeves, ribbed crew neckline, no buttons, no hood, no kangaroo pocket. White 100% cotton construction.
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: White 100% cotton construction.
+Features: Classic crew-neck T-shirt, upper body only. NOT a crewneck sweatshirt, NOT a hoodie, NOT a jersey, NOT a long-sleeve. Short sleeves, ribbed crew neckline, no buttons, no hood, no kangaroo pocket. White 100% cotton construction.
+Color: White
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 

@@ -11,7 +11,10 @@ reference_image: assets/products/references/br-008-design-front.jpeg
 
 # BLACK is Beautiful Jersey Series — 1. SF Inspired (Football)
 
-**Garment type lock:** Authentic-style football jersey — V-neck collar opening
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Solid **bright red** base fabric (San Francisco red colorway). Mid-weight
+knit jersey fabric.
+Features: Authentic-style football jersey — V-neck collar opening
 with **black-and-white horizontal striped neckband**, short sleeves with a
 **white triple-stripe band (three thin horizontal white stripes)** at each
 cuff, straight even hem (no drop-tail), no laces, no shoulder-armor seam.
@@ -20,6 +23,8 @@ knit jersey fabric. Pullover construction — NO buttons, NO front placket. NOT
 a t-shirt. NOT a hoodie. NOT a basketball tank. NOT a baseball jersey.
 **PRE-ORDER product** — design renderings only; no real-product photography
 exists yet.
+Color: Red
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 
@@ -46,7 +51,7 @@ exists yet.
   preserved (three roses + thorny vines + cloud at base) but rendered in
   black/white/grey only. **Technique:** sublimated. **Color:** white outline
   + greyscale rose-cluster fill on red ground.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in, near the bottom
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall, near the bottom
   hem on the wearer's left hip): The NFL Authentic Collection patch (yellow
   field + navy "BLACK ROSE / COLLECTION" + NFL shield + white "AUTHENTIC"
   banner + red diamond divider + greyscale rose-cluster + "Property Of /

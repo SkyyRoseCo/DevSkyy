@@ -10,9 +10,16 @@ reference_image: assets/products/references/sg-007-techflat.jpeg
 
 # The Signature Beanie
 
-**Garment type lock:** Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rose graphic embroidered on the front face of the cuff. Mid-weight knit fabric.
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. Mid-weight knit fabric.
+Fit: Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit.
+Features: Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rose graphic embroidered on the front face of the cuff. Mid-weight knit fabric.
+Color: Black
+Available sizes: One Size
 
 ## Branding — exactly what IS on this product
+
+Source reconciliation pending: see `logo-registry.json::gaps::signature-beanie-variant-binding`. Preserve the specific product/variant artwork; the existing text below must not be treated as proof that conflicting references have been resolved.
 
 > Logo art canonical references:
 > - Black Rose three-rose-cluster (greyscale): `data/brand-logos/three-rose-cluster.md`
