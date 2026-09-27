@@ -176,7 +176,7 @@ function skyyrose_home_ticker() {
 		$names[] = $config['label'] ?? ucwords( str_replace( '-', ' ', $slug ) );
 	}
 
-	$mantra = defined( 'SKYYROSE_BRAND_TAGLINE' ) ? SKYYROSE_BRAND_TAGLINE : __( 'Luxury Grows from Concrete.', 'skyyrose' );
+	$mantra = defined( 'SKYYROSE_BRAND_TAGLINE' ) ? SKYYROSE_BRAND_TAGLINE : __( '', 'skyyrose' );
 	$lower  = array(
 		array(
 			'kind' => 'mantra',

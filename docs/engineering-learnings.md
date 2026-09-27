@@ -179,3 +179,109 @@
   - **Still true (the one salvageable sub-claim):** the `try_lftp()` fallback's `mirror --reverse --delete` is unreachable on this host (hardcodes a nonexistent `~/.ssh/skyyrose-deploy` key). But that path is not the reason for deletion — the primary tar+swap path deletes by design.
 - **Junk does NOT self-clean via a normal deploy IF the deploy runs from the same dirty working tree that carries the junk** — but a clean-tree deploy (which the excludes now scrub) drops the ~40 exposed `CLAUDE.local.md`. Since the `tar_excludes`/`RSYNC_EXCLUDES` gap was closed 2026-07-13, any deploy now stops *shipping* them; existing exposed copies persist until a clean-tree deploy overwrites the live dir or they are removed server-side (`rm`, a STOP-AND-SHOW production write).
 - **CONFIRMED 2026-07-27 — the 3 still-untracked `*-v2-avatar.webp` riders are now 404 on production.** `[live]` cache-busted curl of all 17 documented riders: 14 return 200 (the 14 that got `git add -f` tracked in `1dc868199`), but `black-rose-rooftop-garden-v2-avatar.webp`, `love-hurts-cathedral-rose-chamber-v2-avatar.webp`, and `signature-golden-gate-showroom-v2-avatar.webp` all 404 — their `-lookbook.webp` siblings are still 200. `[repo]` confirms they are absent from `git ls-files` AND absent from the main checkout's disk entirely (`find` returns nothing) — exactly the bug-252 failure mode: a clean-tree/CI deploy since these were last live-verified wholesale-replaced the live dir with a source that never had them. They are NOT lost — `[repo]` found byte-identical copies still sitting in a different worktree, `.claude/worktrees/collections-scroll-world/wordpress-theme/skyyrose-flagship/assets/scenes/{black-rose,love-hurts,signature}/`. **Fix (not yet applied — needs a STOP-AND-SHOW production-write confirm):** copy the 3 files from that worktree into the main checkout and `git add -f` them, same treatment as the other 14, so the ls-files completeness gate protects them too; then redeploy. Full JS/CSS bundle content otherwise verified byte-identical between live and repo via SHA-256 (11 JS + 3 CSS enqueued files, all MATCH) — this is the one confirmed drift, not a broader pattern.
+
+## MCP servers — tests under `.venv` don't prove the `.mcp.json` launch command works (2026-09-16, bug-327)
+
+- **Symptom:** after a restart, the `wolf-memory` and `worktree-fleet` servers showed `CONNECTION_CLOSED` even though all 46 of their tests passed.
+- **Cause `[repro]`:** `.mcp.json` launched them with bare `python3`. That resolves to Homebrew `/opt/homebrew/bin/python3` (3.14), which has no `pydantic`/`mcp`, so both crashed on import. pytest ran under `.venv`, so the tests never used the launch command.
+- **Fix:** set `"command": ".venv/bin/python"`. It is relative on purpose so it works on both machines. Like the relative `args`/`PYTHONPATH` already there, it assumes the session starts from the repo root. `[docs]` Claude Code sets `CLAUDE_PROJECT_DIR` only in the server's environment. In a project `.mcp.json`, `${CLAUDE_PROJECT_DIR:-.}` therefore falls back to `.`, which is no stronger than a relative path.
+- **Rule:** check an MCP server with a real stdio `initialize` → `notifications/initialized` → `tools/list` exchange. Spawn it with the exact `command`/`args`/`env` read from `.mcp.json`, not the interpreter pytest used.
+- **Same defect in `devskyy`, fixed 2026-09-17 `[repro]`:** the `devskyy` entry in `.mcp.json` also used bare `python3` and failed the same exchange (`No module named 'dotenv'`). It had only worked on the primary machine because a local-scope `devskyy` entry in `~/.claude.json` overrides it with the absolute `.venv/bin/python`. It is now `.venv/bin/python` too, and the handshake returns 89 tools. All three stdio servers in `.mcp.json` now use the venv interpreter.
+
+---
+
+## 2026-09-21 — CI reality, merge attribution, and two silent-defect classes
+
+### CI: what actually gates, and what doesn't
+
+Re-verified against the workflow file and the GitHub API, because a memory note
+claiming "E2E is non-gating" was stale and would have licensed merging past a red
+browser run.
+
+- **Playwright E2E IS gating.** `.github/workflows/ci.yml` Stage 3 `e2e-tests`
+  carries *"Browser regressions must fail CI now that the suite covers current
+  behavior"*, and `continue-on-error` appears **nowhere** in the file. It also
+  starts late (`needs: [python-tests, frontend-tests]`) and runs 10+ minutes, so a
+  PR sitting at 21/22 green with E2E pending is normal, not stalled.
+- **`main` has NO branch protection.**
+  `gh api repos/SkyyRoseCo/DevSkyy/branches/main/protection` →
+  `required_status_checks` ABSENT, `enforce_admins` false,
+  `required_pull_request_reviews` ABSENT. "Green" is the CI workflow's own
+  conclusion, never a server-enforced gate — **nothing stops a merge with red or
+  pending checks.** Any drive-to-green automation must wait for every job itself;
+  there is no backstop.
+- **A CONFLICTING PR runs almost no CI.** GitHub builds no merge ref for it, so
+  `pull_request`-triggered workflows never fire — only push-triggered ones
+  (CodeQL). The PR looks *stalled* rather than failing. Resolve the conflict
+  first, then checks appear. (Observed on #960.)
+
+### Merge attribution needs a THREE-way diff, not a two-way one
+
+Verifying that a merge kept both sides, I diffed my branch against `origin/main`
+and got 24 "lost" keys. All 24 were **my own changes reflected back** — a two-way
+diff cannot distinguish "they changed it" from "I changed it."
+
+The only correct reference point is the merge base:
+
+```bash
+base=$(git merge-base <mine> origin/main)
+# theirs = keys where origin/main differs from $base
+# ours   = keys where <mine>   differs from $base
+# merged must carry theirs' value for (theirs - ours), ours' for (ours - theirs)
+# and (theirs ∩ ours) is the only set needing human eyes
+```
+
+With the base applied: 7 incoming keys, 24 of ours, **0 overlap, 0 lost**. The
+failure mode is silent — a plausible list of regressions that is really your own
+work. Pairs with the attribution rule in root `CLAUDE.md` §3.
+
+### An untracked binary behind a SOT binding is a latent 404
+
+A theme deploy is an atomic hot-swap that ships only **git-tracked** files.
+`.gitignore:297` blanket-ignores `wordpress-theme/skyyrose-flagship/assets/**/*.webp`,
+so three founder-approved on-model fronts were present on disk, referenced by the
+registry/CSV/`sot.json`, and invisible to every local check — while a clean-tree
+deploy would have 404'd those product cards.
+
+`tests/test_sot_assets_tracked.py` catches this class **because it asks git, not
+the filesystem**. Fix order is non-negotiable: `git add -f` the binaries FIRST,
+repoint bindings SECOND. A repoint ahead of the add re-creates the 404.
+
+Identity of an image asset is established by **content, not filename**: hash the
+file and compare against the approved manifest. Here, `sha256` equality with the
+`FOUNDER_APPROVED_V2_CARD` entries disproved a repo doc
+(`tasks/launch-20260921-image-coverage.md:17`) that called those same files
+ghost/mannequin shots.
+
+### A confidently wrong value hides from the queries built to find gaps
+
+8 Jersey Series SKUs needed a fit statement. Seven had `fit: null` and surfaced
+instantly in a "fit is null" query. The eighth (br-010) held a **mis-extracted
+fabric sentence** — decoration prose with a stray markdown bold marker sitting in
+a sizing field. It passed every structural/completeness check *because it was
+populated*, and would have shipped garment-fabric text into a PDP sizing field.
+
+Origin, for the record: `git log -S'derived_from_dossier' -- scripts skyyrose` is
+**empty**. No code in this repo ever produced those values — they arrived as
+pre-split *data* from a keyword-sentence extractor that was never committed, and
+the old `dossier_loader.py` let them override founder prose under a "takes
+precedence over legacy dossier prose" heading. `test_dossier_founder_prose` now
+forbids exactly that.
+
+Still wrong at time of writing, reported not fixed: `lh-004` (hood-lining
+decoration prose in `fit` — **should be nulled, not kept**, until the founder
+supplies a statement); `br-002`, `sg-007`, `sg-014` (over-broad silhouette
+sentences). **Prefer null over wrong:** null is discoverable, wrong is not.
+
+### A gate that can never be satisfied is a deadlock, not a gate
+
+`.claude/hooks/stop-test-gate.sh` ARMS on "any `*.py` is dirty" but ASSERTS "the
+whole suite is green". Those are different questions. When the red test is not the
+stopping session's to fix — pre-existing, another session's WIP, or needing a
+permission the agent lacks — it re-blocks every Stop forever and the session can
+never end. This is the recurring bug-333 pattern.
+
+Reviewed fix (block once per distinct failure signature + tree state, then report
+`STILL RED — needs a human` and let Stop through; fails closed on an unparseable
+run) is written but **NOT applied** — editing the gate that constrains the agent
+is correctly a human decision.

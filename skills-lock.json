@@ -209,6 +209,24 @@
       "sourceType": "github",
       "computedHash": "b405eee0e0e80fc243f731d9aa368bca307e356db7e6157d27101d369dac6726"
     },
+    "runway-dev": {
+      "source": "runwayml/skills",
+      "sourceType": "github",
+      "skillPath": "skills/runway-dev/SKILL.md",
+      "computedHash": "c01d7cb7ceef2a6e9d469f1b08fc867231d2c1264f00500ead75104ca8c6650d"
+    },
+    "runway-dev-model-routers": {
+      "source": "runwayml/skills",
+      "sourceType": "github",
+      "skillPath": "skills/runway-dev-model-routers/SKILL.md",
+      "computedHash": "d0c522c961d64ff8a9da57d1057a3212212b1fce990eac87bba4cf21c7fb6202"
+    },
+    "runway-dev-models": {
+      "source": "runwayml/skills",
+      "sourceType": "github",
+      "skillPath": "skills/runway-dev-models/SKILL.md",
+      "computedHash": "19d47b4cdb13e79e064e6fb7bca915015b292bc59a332e8d2812631db6525d0b"
+    },
     "shape": {
       "source": "pbakaus/impeccable",
       "sourceType": "github",

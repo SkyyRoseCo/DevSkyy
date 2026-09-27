@@ -41,6 +41,8 @@ from skyyrose.core.asset_manifest import (  # noqa: E402
 )
 from skyyrose.core.catalog_loader import read_catalog_rows  # noqa: E402
 from skyyrose.core.hashing import sha256_of_file  # noqa: E402
+from skyyrose.core.product_registry import PRODUCT_REGISTRY  # noqa: E402
+from skyyrose.elite_studio.logo_registry import RegistryContractError  # noqa: E402
 
 _SOURCE_PHOTO_MANIFEST = _REPO_ROOT / "assets" / "products" / "source-photos" / "manifest.json"
 _SUPPLEMENTAL_SOURCE_ROLES = ("wearer-left", "wearer-right", "founder-four-angle")
@@ -87,8 +89,10 @@ def build() -> AssetManifest:
     catalog = _catalog_rows()
     dossier_index = references.build_dossier_index()
 
-    manifest = AssetManifest()
-    manifest.catalog_sha = sha256_of_file(paths.CATALOG_CSV)
+    manifest = AssetManifest(version=2)
+    manifest.catalog_sha = hash_if_present(paths.CATALOG_CSV)
+    manifest.registry_sha = sha256_of_file(PRODUCT_REGISTRY)
+    manifest.registry_path = to_repo_relative(PRODUCT_REGISTRY)
 
     # Record every asset the renderer ACTUALLY resolves (build_references applies
     # the real-photo / flatlay rescue), not the raw source-map dict — so the
@@ -98,9 +102,11 @@ def build() -> AssetManifest:
     # are each pinned so a change to either is caught.
     for sku, info in catalog.items():
         records: list[AssetRecord] = []
+        resolution_error = None
         try:
             resolved = references.build_references(sku, info["collection"])
-        except references.MissingReferenceError:
+        except (references.MissingReferenceError, RegistryContractError) as exc:
+            resolution_error = f"{type(exc).__name__}: {exc}"
             resolved = []
         seen: set[str] = set()
         for ref in resolved:
@@ -124,6 +130,7 @@ def build() -> AssetManifest:
             collection=info["collection"],
             garment_type=info["garment_type"],
             assets=records,
+            resolution_error=resolution_error,
         )
     return manifest
 
@@ -172,7 +179,11 @@ def main(argv: list[str]) -> int:
     fresh = build()
     if args.check:
         committed = AssetManifest.load()
-        if committed.to_payload()["skus"] != fresh.to_payload()["skus"]:
+        committed_payload = committed.to_payload()
+        fresh_payload = fresh.to_payload()
+        committed_payload.pop("generated_at", None)
+        fresh_payload.pop("generated_at", None)
+        if committed_payload != fresh_payload:
             print(
                 "asset manifest drift: regenerated manifest differs from the committed "
                 "assets/products/manifest.json.\nRun `python scripts/build_asset_manifest.py` "

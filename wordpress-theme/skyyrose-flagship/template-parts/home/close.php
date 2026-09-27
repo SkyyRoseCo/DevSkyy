@@ -36,7 +36,7 @@ defined( 'ABSPATH' ) || exit;
 		<p class="hp-close__eyebrow"><?php esc_html_e( 'Join the Movement', 'skyyrose' ); ?></p>
 		<h2 class="hp-close__statement" id="hp-close-h">
 			<?php esc_html_e( 'For The Real Ones', 'skyyrose' ); ?>
-			<span class="hp-close__script"><?php esc_html_e( 'Luxury grows from concrete.', 'skyyrose' ); ?></span>
+			<span class="hp-close__script"><?php esc_html_e( '', 'skyyrose' ); ?></span>
 		</h2>
 		<p class="hp-close__desc"><?php esc_html_e( 'Early access to drops. Behind-the-scenes from Oakland. Stories that matter. No spam, just substance.', 'skyyrose' ); ?></p>
 
@@ -64,7 +64,7 @@ defined( 'ABSPATH' ) || exit;
 					required>
 				<button class="hp-close__go" type="submit" aria-label="<?php esc_attr_e( 'Join', 'skyyrose' ); ?>">&rarr;</button>
 			</div>
-			<p class="hp-close__status" role="status" aria-live="polite" data-status></p>
+
 			<p class="hp-close__note"><?php esc_html_e( 'Free to join · Unsubscribe anytime · Oakland love only', 'skyyrose' ); ?></p>
 		</form>
 

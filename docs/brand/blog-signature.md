@@ -1,7 +1,7 @@
 # Blog copy: "Not Basics. Blueprints."
 
 Status: draft copy, ready to publish once a blog surface exists (same gap as
-`blog-luxury-grows-from-concrete.md` — no blog template/listing in
+`blog-retired-brand-copy.md` — no blog template/listing in
 `wordpress-theme/skyyrose-flagship/` `[repo]`, unverified this session, carried
 forward rather than re-checked).
 
@@ -34,8 +34,7 @@ everything else grew from it. Before the limited drops and the press features,
 there was a father in Oakland who believed everyday clothes should feel like
 something. Not basics. Blueprints.
 
-"They told me luxury doesn't come from Oakland. I said luxury grows from
-concrete — and I meant that literally. This collection is the concrete.
+"They told me luxury doesn't come from Oakland. I said  — and I meant that literally. This collection is the concrete.
 Everything else grew from here."
 
 The Bay Bridge shows up in this collection because the bridge belongs to

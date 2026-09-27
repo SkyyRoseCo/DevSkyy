@@ -109,14 +109,21 @@ discovery process.
 - You change error handling, try/catch blocks, or validation logic
 - The user says something "doesn't work", "is broken", or "shows wrong X"
 
-**Before fixing:** Read `.wolf/buglog.json` first — the fix may already be
-known.
+**Before fixing:** call the `wolf-memory` MCP tool `bug_search` (or read
+`.wolf/buglog.json` if that server isn't available in this harness) — the fix
+may already be known.
 
-**Before allocating a new ID:** run `python scripts/wolf_bug_id.py` for the next
-free `bug-NNN` ID — do not guess or reuse an ID from memory (past cross-session
-collisions came from manual ID guessing).
+**Preferred path — the `wolf-memory` MCP server:** call `bug_log` directly.
+It allocates the next `bug-NNN` id and appends the entry atomically across
+concurrent sessions (Claude Code, Codex, or a human editing at the same
+time) and bumps an existing near-duplicate instead of creating a new entry,
+per the rule below. `scripts/wolf_bug_id.py --check`/next-id-print remain as
+a CLI fallback for contexts with no MCP client, but manual `Read` + `Edit` of
+`buglog.json` is what caused past cross-session ID collisions from guessing
+— use it only when neither the tool nor the script is reachable.
 
-**After fixing:** ALWAYS append to `.wolf/buglog.json` with this structure:
+**After fixing (manual-edit fallback only):** if you can't use `bug_log`,
+append to `.wolf/buglog.json` with this structure:
 
 ```json
 {

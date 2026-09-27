@@ -4,7 +4,7 @@ Editorial direction for SkyyRose Elite Studio.
 Styling rules, lookbook sequencing, and on-model vs flat-lay recommendations.
 All objects are frozen (immutable).
 
-"Luxury Grows from Concrete."
+""
 """
 
 from __future__ import annotations
@@ -392,5 +392,5 @@ class EditorialDirector:
             ),
         }
         return notes.get(
-            collection.lower(), "SkyyRose brand aesthetic — luxury grows from concrete."
+            collection.lower(), "SkyyRose brand aesthetic — "
         )

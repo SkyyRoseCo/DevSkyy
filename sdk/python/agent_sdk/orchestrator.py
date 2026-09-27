@@ -114,7 +114,7 @@ Brand Context (SkyyRose):
 - Luxury fashion brand
 - Colors: Rose Gold (#B76E79), Dark (#0a0a0a), Gold (#D4AF37)
 - Tone: Elegant, sophisticated, bold
-- Tagline: "Luxury Grows from Concrete."
+- No brand slogan is authorized.
 
 Always maintain brand consistency across all agent interactions.""",
             agents=self.agents,

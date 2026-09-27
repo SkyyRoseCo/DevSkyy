@@ -8,7 +8,7 @@ Uses LLM routing to generate brand-voice captions, hashtag strategies, and campa
 Features:
 - Platform-specific formatting (character limits, hashtag strategies, media recommendations)
 - Campaign generation (multi-product, multi-platform)
-- Brand voice enforcement (SkyyRose luxury fashion, "Luxury Grows from Concrete.", rose gold #B76E79)
+- Brand voice enforcement (SkyyRose luxury fashion, "", rose gold #B76E79)
 - Content types: product_launch, collection_drop, behind_scenes, lifestyle, engagement
 - Scheduling recommendations based on platform best practices
 - 3 collections: Black Rose (gothic luxury), Love Hurts (street passion), Signature (West Coast luxury)
@@ -41,7 +41,7 @@ _MAX_QUEUE_SIZE = 5000
 _MAX_PUBLISHED_SIZE = 10000
 
 BRAND_NAME = "SkyyRose"
-BRAND_TAGLINE = "Luxury Grows from Concrete."
+BRAND_TAGLINE = ""
 BRAND_PRIMARY_COLOR = "#B76E79"  # Rose gold
 BRAND_ORIGIN = "Oakland, CA"
 BRAND_SITE = "skyyrose.co"
@@ -204,7 +204,6 @@ COLLECTIONS: dict[str, dict[str, Any]] = {
             "#BlackRoseCollection",
             "#GothicLuxury",
             "#DarkRomance",
-            "#LuxuryGrowsFromConcrete",
             "#DarkAesthetic",
             "#WearableArt",
             "#LuxuryStreetwear",
@@ -231,7 +230,6 @@ COLLECTIONS: dict[str, dict[str, Any]] = {
             "#SkyyRose",
             "#LoveHurts",
             "#OaklandFashion",
-            "#LuxuryGrowsFromConcrete",
             "#GritAndGrace",
             "#UrbanLuxury",
             "#BayAreaStyle",
@@ -259,7 +257,6 @@ COLLECTIONS: dict[str, dict[str, Any]] = {
             "#SkyyRose",
             "#SignatureCollection",
             "#LuxuryFashion",
-            "#LuxuryGrowsFromConcrete",
             "#BayAreaLuxury",
             "#WestCoastStyle",
             "#CoutureStreetwear",
@@ -600,7 +597,8 @@ class SocialMediaAgent:
             caption_parts.append(f"from the {collection['full_name']}.")
             if short_desc:
                 caption_parts.append(f"\n\n{short_desc[:500]}")
-            caption_parts.append(f"\n\n{BRAND_TAGLINE}")
+            if BRAND_TAGLINE:
+                caption_parts.append(f"\n\n{BRAND_TAGLINE}")
             cta = (
                 CONTENT_TEMPLATES.get(content_type, CONTENT_TEMPLATES[ContentType.PRODUCT_LAUNCH])
                 .get("cta", "")
@@ -616,7 +614,8 @@ class SocialMediaAgent:
             caption_parts.append(f"\n\n{collection['mood']}")
             if short_desc:
                 caption_parts.append(f"\n\n{short_desc[:800]}")
-            caption_parts.append(f'\n\n"{BRAND_TAGLINE}" \u2014 {BRAND_NAME}')
+            if BRAND_TAGLINE:
+                caption_parts.append(f'\n\n"{BRAND_TAGLINE}" \u2014 {BRAND_NAME}')
             cta = (
                 CONTENT_TEMPLATES.get(content_type, CONTENT_TEMPLATES[ContentType.PRODUCT_LAUNCH])
                 .get("cta", "")

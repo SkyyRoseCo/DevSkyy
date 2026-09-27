@@ -787,3 +787,50 @@ Post-deploy verify matrix:
 - [ ] `.exp-name` renders bespoke scripts; both new woff2 200 (`skyyrose-black-rose-script-latin`, `skyyrose-love-hurts-graffiti-latin`)
 - [ ] BR/LH emblems still 200 · KC teaser hero visible · homepage hero un-clipped @1440px · cart shell present
 - [ ] Playwright eyes-on mobile + desktop, console clean
+
+## MCP servers: wolf-memory + worktree-fleet (2026-09-16) — DONE
+
+Spec: `docs/architecture/mcp-worktree-fleet-and-wolf-memory.html` (status: BUILT)
+
+### Wolf Memory server
+- [x] `mcp_servers/_shared.py` — format_response, sqlite locked-transaction ctx manager, logging
+- [x] `mcp_servers/wolf_memory/store.py` — counter seed-from-existing-ids, bug_log/bump/search/cerebrum_append atomic ops
+- [x] `tests/mcp_servers/test_wolf_memory_store.py` + `test_wolf_memory_cerebrum.py` — 21 tests, incl. real cross-process concurrency
+- [x] `mcp_servers/wolf_memory/tools.py` + `server.py` + root `wolf_memory_mcp.py`
+- [x] tests green
+
+### Worktree Fleet server
+- [x] `mcp_servers/worktree_fleet/git_ops.py` — upstream-check as explicit state (never-pushed vs error), unpushed-commit diff, status --porcelain
+- [x] `mcp_servers/worktree_fleet/store.py` — claim/heartbeat/list/release/prune registry
+- [x] `tests/mcp_servers/test_worktree_fleet_git_ops.py` — real tmp git repos (no mocks), 10 tests
+- [x] `tests/mcp_servers/test_worktree_fleet_store.py` — 11 tests
+- [x] `mcp_servers/worktree_fleet/tools.py` + `server.py` + root `worktree_fleet_mcp.py`
+- [x] tests green
+
+### Wire-up
+- [x] `.gitignore` — `.wolf/wolf.lock.db*`, `.wolf/fleet.db*`
+- [x] `.mcp.json` — registered `wolf-memory` + `worktree-fleet`
+- [x] `.wolf/OPENWOLF.md` — Bug Logging section now points at `bug_log`/`bug_search` MCP tools first
+- [x] `pytest tests/mcp_servers/ -v` — 46/46 green (incl. verification-pass regression tests, bug-324/326); `ruff check` clean; `black --check` / `isort --check` clean
+- [x] spec doc updated to BUILT status + deviations documented
+- [x] `.wolf/memory.md` log entries
+
+### Known follow-ups (not done, out of this pass' scope)
+- [ ] Codex-side MCP registration (its config format differs from `.mcp.json`)
+- [ ] Restart this Claude Code session (or run `/mcp`) to actually connect the two new servers — `.mcp.json` changes apply on next connect, not retroactively
+
+---
+
+## 2026-09-17 — Garment GLB web pipeline (founder 6-item 3D brief)
+
+Scope evidence (this session): 33 SKU GLBs in `renders/3d/` (gitignored, Meshy, 1 mesh/1 material, 3×2K JPEG base/MR/normal, ~56K tris, no extensions) `[repo]`; `renders/3d/web/` = manual gltfpack 1.1 `-cc -tc` output, 5 SKUs never packed (br-008, lh-002, sg-013, sg-014, kids-001 at 6.8–8.5MB) `[repo]`; gltfpack 1.2 preserves KHR_materials_sheen + anisotropy through `-cc -tc` `[repro]`; live PDPs have zero 3D markup `[live]`; no founder keep/delete verdict exists for any GLB `[repo]`.
+
+- [ ] WS1 Material extensions — lossless GLB JSON-chunk patch (BIN chunk byte-identical, no Blender round-trip); sheen preset per fabric class derived from registry `garment.materials.specification`; unclassified fabric fails closed; anisotropy supported but off by default (Meshy UV islands give no coherent tangent direction) + br-006 A/B render for founder eye
+- [ ] WS2 Compression — gltfpack wrapper (binary fails closed if absent) + web budget gate (≤3MB, meshopt+basisu+material ext present); deterministic `scripts/build_web_glbs.py` → NEW dir `renders/3d/web-v2/` (never overwrite `web/`); report JSON
+- [ ] WS3 PDP viewer (localhost only) — wire dead `view-3d-model` button (`inc/woocommerce.php:365-373`), additive to gallery, lazy-load on click, self-hosted viewer + meshopt/basis decoders; rebuild .min; Playwright mobile+desktop — engine + placement = founder decision
+- [ ] WS3b GLB triage — full-res GLB beside real front reference per SKU; verdicts exported to committed JSON (deploy gate for WS3)
+- [ ] WS4 Blender headless worker — founder decision (build on `pipelines/clothing_3d` queue/store/storage pattern vs defer)
+- [ ] WS5 CLO3D evaluation — needs: do pattern files exist?
+- [ ] WS6 Kling social loop — brief truncated at "short social l"; paid → STOP-AND-SHOW per call; deferred
+- [ ] Verify: pytest + ruff on new modules; real batch over 33 GLBs; code review (python-reviewer + code-reviewer)
+- STOP-AND-SHOW gates: theme deploy, `_product_3d_model` WC meta writes, GLB upload to media/CDN, any Kling call

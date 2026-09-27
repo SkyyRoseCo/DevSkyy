@@ -1,0 +1,27 @@
+HTTP/2 200 
+server: nginx
+date: Mon, 21 Sep 2026 22:26:37 GMT
+content-type: text/html; charset=UTF-8
+vary: Accept-Encoding
+x-hacker: Want root?  Visit join.a8c.com and mention this header.
+host-header: WordPress.com
+x-xss-protection: 1; mode=block
+permissions-policy: geolocation=(), microphone=(), camera=(), payment=()
+vary: accept, content-type, cookie
+expires: Wed, 11 Jan 1984 05:00:00 GMT
+cache-control: no-cache, must-revalidate, max-age=0, private
+x-robots-tag: noindex, nofollow, noarchive
+x-content-type-options: nosniff
+referrer-policy: strict-origin-when-cross-origin
+x-frame-options: SAMEORIGIN
+content-security-policy: frame-ancestors 'self';
+link: <https://staging-7e48-skyyrose.wpcomstaging.com/wp-json/>; rel="https://api.w.org/"
+link: <https://staging-7e48-skyyrose.wpcomstaging.com/wp-json/wp/v2/pages/9710>; rel="alternate"; title="JSON"; type="application/json"
+link: <https://wp.me/PhmvW9-2wC>; rel=shortlink
+last-modified: Mon, 21 Sep 2026 22:26:37 GMT
+x-nananana: Batcache-Set
+x-ac: 4.sjc _atomic_bur BYPASS
+alt-svc: clear
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+server-timing: a8c-cdn, dc;desc=sjc, cache;desc=BYPASS;dur=1633.0
+

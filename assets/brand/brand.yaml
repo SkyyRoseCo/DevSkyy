@@ -27,8 +27,8 @@ generated_at: "2026-04-17T00:00:00Z"
 # ── Tagline ──────────────────────────────────────────────────────────────────
 
 tagline:
-  # THE tagline. Every surface says this.
-  active: "Luxury Grows from Concrete."
+  # No active tagline: founder retirement, 2026-09-21. Do not invent a replacement.
+  active: ""
 
   # Historical taglines. Enforcement: a CI test asserts none of these appear
   # in any wordpress/**/*.{php,py} or frontend/**/*.{ts,tsx,js,jsx} file.
@@ -36,9 +36,7 @@ tagline:
     - phrase: "Where Love Meets Luxury"
       retired_at: "2026-03"
       reason: |
-        Original marketing tagline. Replaced with "Luxury Grows from Concrete."
-        to align with the brand's Oakland/concrete-luxury positioning. Must
-        never reappear in generated content.
+        Retired marketing tagline. Must never reappear in generated content.
 
 
 # ── Brand identity ──────────────────────────────────────────────────────────
@@ -82,7 +80,7 @@ colors:
 collections:
   black-rose:
     display_name: "BLACK ROSE"
-    tagline: "Luxury Grows from Concrete."
+    tagline: ""
     description: "Gothic luxury — Oakland grit meets dark elegance. The brand's flagship collection: where streetwear toughness meets premium craftsmanship."
     theme: "gothic romance meets Oakland street luxury"
     mood: "dark, powerful, mysterious, luxurious"
@@ -224,8 +222,8 @@ migration:
     - wordpress/page_builders/about_builder.py
     - wordpress/elementor.py
     - wordpress/production_config.py
-    - wordpress/collection_page_manager.py  # uses "Luxury Grows..." — keep, just migrate the source
-    - skyyrose/multi_agent/tools.py          # uses "Luxury Grows..." — keep, just migrate the source
+    - wordpress/collection_page_manager.py  # Retired copy removed.
+    - skyyrose/multi_agent/tools.py          # Retired copy removed.
 
   pending_hardcoded_collection_metadata:
     - wordpress/collection_page_manager.py  # full collection dicts — migrate to inherit from brand.yaml + catalog.yaml

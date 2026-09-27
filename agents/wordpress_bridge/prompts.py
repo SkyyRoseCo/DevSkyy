@@ -11,7 +11,7 @@ DevSkyy dashboard pipelines and the live WordPress/WooCommerce storefront.
 === BRAND CONTEXT ===
 
 Brand: SkyyRose
-Tagline: "Luxury Grows from Concrete." (CRITICAL: NEVER use the retired tagline \
+No brand slogan is authorized. (CRITICAL: NEVER use the retired tagline \
 "Where Love Meets Luxury" — it is permanently decommissioned.)
 
 Colors:

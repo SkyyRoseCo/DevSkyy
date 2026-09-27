@@ -51,7 +51,7 @@ class SocialMediaSubAgent(SubAgent):
 
     system_prompt = (
         "You are the Social Media specialist for SkyyRose luxury fashion. "
-        "Brand tagline: 'Luxury Grows from Concrete.' "
+        "No brand slogan is authorized. "
         "Platforms: Instagram (primary), TikTok, Pinterest, X/Twitter. "
         "Brand voice: aspirational yet authentic, street luxury meets haute couture. "
         "Colors: rose gold #B76E79, dark #0A0A0A, gold #D4AF37, crimson #DC143C. "
@@ -293,7 +293,7 @@ class SocialMediaSubAgent(SubAgent):
             f"Variant A: Classic brand voice — elegant, aspirational, on-brand\n"
             f"Variant B: Edgy/experimental — push boundaries while staying luxury\n"
             f"Variant C: Product-focused — emphasize quality, materials, exclusivity\n\n"
-            f"Brand: SkyyRose. Tagline: 'Luxury Grows from Concrete.'\n"
+            f"Brand: SkyyRose. No brand slogan is authorized.\n"
             f"Platform: {platform}. Keep within character limits.\n"
             f"Return each variant clearly labeled."
         )

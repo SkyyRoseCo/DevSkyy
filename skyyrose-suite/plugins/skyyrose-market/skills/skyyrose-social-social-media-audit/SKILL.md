@@ -24,7 +24,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline is verbatim:** `Luxury Grows from Concrete.` Present in bio, pinned posts, or profile highlights? Note it in the audit. Missing = gap.
+- **Tagline is verbatim:** `` Present in bio, pinned posts, or profile highlights? Note it in the audit. Missing = gap.
 - **Collection voice discipline:** Audit whether collection-specific content uses the correct register. Black Rose = armor. Love Hurts = bloodline. Signature = the standard. Mixed attribution = flagged finding.
 - **The Five visual references:** Audit whether visual direction aligns with Kith · Oaklandish · Culture Kings · Fear of God · Palm Angels. European luxury-house aesthetic in active content = flagged finding.
 - **Product naming:** Are products named by name ("BLACK Rose Crewneck") or by SKU ("br-001") in public posts? SKU-first = customer-facing bug.
@@ -79,7 +79,7 @@ Score each active platform across 6 dimensions. Score: **Strong** / **Needs Work
 
 | Element | What to Evaluate | Strong | Needs Work | Missing |
 |---------|-----------------|--------|------------|---------|
-| **Bio** | States brand identity + tagline + Oakland anchor. "Luxury Grows from Concrete." present or paraphrased. | Specific, benefit-driven, includes tagline verbatim | Bio exists but vague or generic ("Luxury fashion brand") | Empty or no brand language |
+| **Bio** | States brand identity + tagline + Oakland anchor. "" present or paraphrased. | Specific, benefit-driven, includes tagline verbatim | Bio exists but vague or generic ("Luxury fashion brand") | Empty or no brand language |
 | **Profile photo** | Brand logo or Corey — consistent across platforms | High-quality, consistent everywhere | Low-res or inconsistent between platforms | Default avatar |
 | **Link** | Drives to skyyrose.co — product page or homepage with clear navigation | Link-in-bio tool with collection links or direct skyyrose.co URL | Link exists but lands on wrong page (admin, 404, old URL) | No link or broken |
 | **Pinned / Highlights** | Best content or collection intro pinned. Highlight covers: per collection + Behind Studio + Orders | Curated, up to date, covers visible | Exists but disorganized or stale | None |
@@ -89,7 +89,7 @@ Score each active platform across 6 dimensions. Score: **Strong** / **Needs Work
 
 | Element | What to Evaluate | Strong | Needs Work | Missing |
 |---------|-----------------|--------|------------|---------|
-| **Tagline present** | "Luxury Grows from Concrete." verbatim anywhere in profile or pinned posts | In bio or pinned — verbatim | Paraphrased ("Luxury from the streets") | Absent entirely |
+| **Tagline present** | "" verbatim anywhere in profile or pinned posts | In bio or pinned — verbatim | Paraphrased ("Luxury from the streets") | Absent entirely |
 | **Collection voice accuracy** | Black Rose, Love Hurts, Signature content each use correct register | No cross-attribution; each post uses its collection's voice | Occasional voice bleed between collections | Voices mixed or absent |
 | **Visual reference alignment** | Photography and aesthetic aligns with The Five, not European luxury | Matches Kith/Culture Kings/Fear of God energy | Mixed signals — some European luxury-house styling | Clearly off-brand (minimalist white-space European aesthetic) |
 | **Product naming** | Customer-facing posts use product name, not SKU | "BLACK Rose Crewneck" consistently | Mix of names and SKUs | SKU-first throughout ("br-001 is dropping") |
@@ -173,7 +173,7 @@ Tied to the stated goal (brand awareness / sales / community). Brand canon viola
 ## Biggest Opportunities
 
 1. [Specific gap + specific fix, e.g., "Instagram bio uses 'luxury streetwear brand'
-   instead of 'Luxury Grows from Concrete.' — every profile visit misses the brand's
+   instead of '' — every profile visit misses the brand's
    most distinctive line. Fix: rewrite bio to include the tagline verbatim."]
 2. [...]
 3. [...]
@@ -186,7 +186,7 @@ Tied to the stated goal (brand awareness / sales / community). Brand canon viola
 ```
 ## Quick Wins (Fix Today)
 
-1. Rewrite Instagram bio to include "Luxury Grows from Concrete." verbatim
+1. Rewrite Instagram bio to include "" verbatim
 2. Add link-in-bio tool (Linktree or Stan Store) with links to each collection page on skyyrose.co
 3. Pin top-performing product post to top of Instagram grid
 4. Match profile photo across Instagram, TikTok, and X
@@ -346,7 +346,7 @@ python -m skyyrose.elite_studio.ventures.social smoke --sku br-001
 3. Brand canon compliance: two recent Instagram posts use urgency copy ("Last chance — don't miss out!") that violates the founder's stated anti-manipulation canon. Fix: edit or archive those posts; rewrite the approach as stated fact ("Pre-order window closes [date]").
 
 **Quick Wins:**
-1. Complete TikTok bio: "Luxury Grows from Concrete. | Oakland streetwear | skyyrose.co"
+1. Complete TikTok bio: " | Oakland streetwear | skyyrose.co"
 2. Add TikTok link to skyyrose.co
 3. Edit last 2 IG posts to replace urgency copy with stated-fact scarcity
 4. Pin the BLACK Rose Crewneck reveal post to Instagram grid top

@@ -8,6 +8,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: skyyrose-flagship-2\n"
 
+#: inc/seo-indexing.php:196
+msgid ""
+msgstr ""
+
 #: template-collection.php:26
 msgid "%s collection monument scene"
 msgstr ""
@@ -944,14 +948,6 @@ msgstr ""
 msgid "Love Hurts — Full Scene"
 msgstr ""
 
-#: inc/seo-indexing.php:196
-msgid "Luxury Grows from Concrete"
-msgstr ""
-
-#: front-page.php:68
-msgid "Luxury grows from concrete."
-msgstr ""
-
 #: woocommerce/single-product.php:40
 msgid "Made for your order. Estimated fulfillment timing appears before checkout."
 msgstr ""
@@ -1644,7 +1640,7 @@ msgstr ""
 msgid "Skyy, the heir, on her throne"
 msgstr ""
 
-#: functions.php:1315 functions.php:1366 template-parts/commerce/product-card.php:36 template-parts/commerce/product-hero.php:16 woocommerce/single-product.php:18
+#: front-page.php:68 functions.php:254 functions.php:1315 functions.php:1366 template-parts/commerce/product-card.php:36 template-parts/commerce/product-hero.php:16 woocommerce/single-product.php:18
 msgid "SkyyRose"
 msgstr ""
 
@@ -1694,10 +1690,6 @@ msgstr ""
 
 #: inc/presentation-registry.php:82
 msgid "SkyyRose works toward an inclusive shopping experience aligned with WCAG 2.2 Level AA, including keyboard access, readable contrast, meaningful structure, and reduced-motion support."
-msgstr ""
-
-#: functions.php:254
-msgid "SkyyRose | Luxury Grows from Concrete"
 msgstr ""
 
 #: functions.php:511

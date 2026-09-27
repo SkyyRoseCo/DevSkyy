@@ -88,8 +88,8 @@ SKUs appear only in technical fields (`sku`, delivery file names, WC REST payloa
 
 ## Brand Canon — Enforced in Every Output
 
-**Tagline:** `Luxury Grows from Concrete.` — verbatim, period included. Never paraphrased.
-Any variant ("luxury from the streets", "grown from concrete", "Luxury grows from the concrete")
+**Tagline:** `` — verbatim, period included. Never paraphrased.
+Any variant ("luxury from the streets", "grown from concrete", "")
 is a canon violation. Reject it in your own output and flag it in existing copy under review.
 
 **Collections — never cross-attribute voices:**

@@ -31,6 +31,23 @@ and current founder corrections before execution. Never substitute an old
 checkout's CSV/dossiers when its registry is stale. Pass the registry location
 and this authority rule to every delegated agent and workflow.
 
+**A founder statement about a garment goes in the DOSSIER first, never straight
+into a garment field.** `tests/test_dossier_founder_prose.py` pins every
+`garment.{fit,materials,features}.source` to `derived_from_dossier` — a
+test-enforced assertion that nothing in those fields is founder-authored. So when
+he states a fact, add a `**FOUNDER_CONFIRMED:** <his words>` paragraph to that
+SKU's dossier (in its `## Founder-confirmed correction` section, before
+`## Branding`), keep a parenthetical quoting him verbatim, then derive the field
+from it. That makes the existing label true instead of widening the assertion, and
+never relabels a field to claim founder authorship. Gate every write on the text
+being a verbatim substring of that SKU's own dossier; fail closed on a
+half-applied set. Worked example: the 8 jersey fit values, 2026-09-21.
+
+**Prefer `null` over wrong.** A field holding the wrong kind of sentence passes
+every completeness check and is invisible to the gap queries built to find it — a
+null is discoverable, a plausible-but-wrong value is not. (br-010 carried a fabric
+sentence in `fit` for months; the 7 null ones surfaced instantly.)
+
 # OpenWolf
 
 @.wolf/OPENWOLF.md
@@ -264,6 +281,14 @@ shared-worktree discipline). Also: when a check FAILS, diff its _contents_, not
 just its state — a new violation hides as one more line inside an already-red
 check.
 
+**Same rule for merges: use the MERGE BASE, never the other branch.** A two-way
+diff cannot separate "they changed it" from "I changed it" — it returns your own
+work as a list of their regressions, silently and plausibly.
+`base=$(git merge-base <mine> origin/main)`; `theirs` = base→main, `ours` =
+base→mine; the merged tree must carry theirs' value for `theirs - ours` and ours'
+for `ours - theirs`, and only `theirs ∩ ours` needs judgment. **Whenever the
+question is "who did this," a two-point comparison is the wrong instrument.**
+
 ### Think before coding
 
 - **Simplicity first.** Minimum code that solves it. No speculative features, no
@@ -284,6 +309,14 @@ check.
 - Files < 800 lines · functions < 50 lines
 - Immutability: `{...obj, key}`, never `obj.key = val`
 - No hardcoded secrets — env only (`.env`, `.env.wordpress`, `.env.secrets`)
+- **Redacting env data is a WHITELIST, never "names only"** (bug-357). On a
+  malformed env file the KEY side can be the secret — a credentials notebook has
+  lines shaped `<label> = <secret>` and `Name: <secret>`, so `dotenv_values()`
+  returns the secret as the dict key. Print a name only if it matches
+  `^[A-Z][A-Z0-9_]*$`, else a `sha256[:8]`; compare values by hash, never print
+  them. Containment after a leak is **rotation**, not deletion — context re-sends
+  every turn, so rotate then start a fresh session, and check
+  `.wolf/claude-mem-digest.md` (in-repo) and `~/.claude-mem/`.
 - No `TODO` / `FIXME` / `pass` / `raise NotImplementedError` in delivered code
 - **npm, not pnpm, for Vercel deploys** — `ERR_INVALID_THIS` on Node 22+
 - Commits: `<type>: <description>` — feat, fix, refactor, docs, test, chore
@@ -428,7 +461,7 @@ Python API and Dashboard: read `Makefile` / `frontend/package.json`.
 (background) · Silver `#C0C0C0` (Black Rose) · Crimson `#DC143C` (Love Hurts) ·
 Gold `#D4AF37` (Signature).
 
-Tagline "Luxury Grows from Concrete." · Collections: Signature, Black Rose, Love
+No tagline is authorized. · Collections: Signature, Black Rose, Love
 Hurts, Kids Capsule.
 
 **Fonts** — **Archivo** (display/hero, `font-variation-settings 'wdth' 125`) ·
@@ -480,6 +513,25 @@ All targets are STOP-AND-SHOW (§1).
 
 ---
 
+### CI: what gates, and what doesn't (re-verified 2026-09-21)
+
+- **Playwright E2E IS gating.** `ci.yml` Stage 3 says browser regressions must
+  fail CI; `continue-on-error` appears nowhere. It starts late
+  (`needs: [python-tests, frontend-tests]`) and runs 10+ min — a PR at 21/22 green
+  with E2E pending is normal, not stalled. _Any memory claiming "E2E non-gating"
+  is stale._
+- **`main` has NO branch protection** — no required checks, no required reviews,
+  admins not enforced. "Green" is the workflow's own conclusion, never a
+  server-enforced gate, so **nothing stops a merge with red or pending checks.**
+  Drive-to-green automation must wait for every job itself; there is no backstop.
+- **A CONFLICTING PR runs almost no CI** — GitHub builds no merge ref, so
+  `pull_request` workflows never fire (only push-triggered CodeQL). It looks
+  _stalled_, not failing. Fix the conflict, then checks appear.
+- **An untracked binary behind a SOT binding is a latent 404** — deploy is an
+  atomic hot-swap shipping only tracked files, and theme webp is gitignored.
+  `git add -f` the binaries FIRST, repoint bindings SECOND. Establish asset
+  identity by **content hash, not filename**.
+
 ## 8. Learnings
 
 Grep before re-deriving a fix. Engineering → **`docs/engineering-learnings.md`**
@@ -499,9 +551,9 @@ Grep before re-deriving a fix. Engineering → **`docs/engineering-learnings.md`
 ### Recurring issues (synced from `.wolf/buglog.json` — regenerate via `python scripts/wolf_recurring_sync.py`, do not hand-edit)
 - **bug-096** (×30, 2026-05-08): Tripo generate_multiview_image hallucinated brand canon on 30 SKUs (120 renders… → fix: scripts/tripo_dispatch.py — added classify_skus() function that blocks at the d…
 - **bug-172** (×24, 2026-06-30): OpenAI gpt-image-2 images.edit() call returns 400 'The model gpt-image-2 does n… → fix: FIXED 2026-06-30: config.py defines INPUT_FIDELITY_SUPPORTED_MODELS = {gpt-imag…
+- **bug-230** (×8, 2026-09-20): PATTERN: fail-open guards / silent fallbacks — gates that pass when their input… → fix: Rule: every gate fails CLOSED — absent manifest/config/token = block, exception…
 - **bug-263** (×8, 2026-07-31): SIGSEGV (EXC_BAD_ACCESS) 'crashed on child side of fork pre-exec' — 12+ Python… → fix: conftest.py + scripts/ci-local.sh: on darwin set no_proxy='*'/NO_PROXY='*' (set…
-- **bug-230** (×7, 2026-08-01): PATTERN: fail-open guards / silent fallbacks — gates that pass when their input… → fix: Rule: every gate fails CLOSED — absent manifest/config/token = block, exception…
-- **bug-231** (×5, 2026-07-16): PATTERN: test isolation / shared-state pollution — tests failing only in full-s… → fix: Rule: per-test tmp_path (never hardcoded /tmp), monkeypatch.setenv/delenv (neve…
+- **bug-231** (×6, 2026-09-18): PATTERN: test isolation / shared-state pollution — tests failing only in full-s… → fix: Rule: per-test tmp_path (never hardcoded /tmp), monkeypatch.setenv/delenv (neve…
 - **bug-098** (×4, 2026-05-12): DATA-01: /collection-black-rose/, /collection-love-hurts/, /collection-signatur… → fix: Bumped SKYYROSE_SETUP_VERSION constant from '4.0.0' to '4.1.0' in inc/theme-act…
 - **bug-257** (×2, 2026-07-13): Stop-gate: tests/test_asset_manifest.py::test_manifest_exists_and_loads fails i… → fix: Centralized guard in tests/sparse_guard.py: requires_tree(rel) skips ONLY when…
 - **bug-287** (×2, 2026-07-24): Reported a stale repo-side style.min.css as 'a real production stale-serve defe… → fix: Evidence-scope rule in tasks/lessons.md: tag load-bearing claims inline ([repo]…

@@ -35,7 +35,7 @@ allowed-tools: Read Write Edit Glob
 All influencer work must pass these guardrails before any copy is produced. These are non-negotiable.
 
 ### Tagline
-`Luxury Grows from Concrete.` — verbatim, with period. Never paraphrased as "luxury streetwear from Oakland" or any other form.
+`` — verbatim, with period. Never paraphrased as "luxury streetwear from Oakland" or any other form.
 
 ### Collection Voice Isolation
 Each collection has its own emotional register. **Never cross-attribute.**
@@ -170,7 +170,7 @@ Hey [First Name],
 it connects to SkyyRose's lane. Reference Oakland, Bay Area street culture, or craft
 if applicable. Never "love your content!" — name the actual piece.]
 
-I'm Corey, founder of SkyyRose — luxury Oakland streetwear. "Luxury Grows from Concrete."
+I'm Corey, founder of SkyyRose — luxury Oakland streetwear. ""
 [One-sentence product description: what it is, what it's made of, who it's for.]
 
 I think your audience would connect with [Product Name from catalog] — [one specific reason
@@ -371,7 +371,7 @@ SkyyRose's audience for this brief:
 - Aspect ratio: 9:16 (vertical) for all short-form
 - Reel/TikTok duration: 15-30s; YouTube Shorts: 60s max
 - Product must be visible and worn or held in at least one frame
-- Caption must include: @skyyroseco, #SkyyRose, #LuxuryGrowsFromConcrete, FTC disclosure (#ad or #sponsored), unique tracking code
+- Caption must include: @skyyroseco, #SkyyRose, , FTC disclosure (#ad or #sponsored), unique tracking code
 - **Hero lockup rule:** Do NOT type the collection name as live text — use the lockup PNG from the brand asset pack supplied below
 
 ---
@@ -480,7 +480,7 @@ These platform labels **supplement** #ad/#sponsored — they do not replace the 
 
 - Collection lockup PNG (hero overlay, transparent background) — for the title card rule
 - Brand logo PNG (white on transparent)
-- Hashtag reference card (#SkyyRose, #LuxuryGrowsFromConcrete, collection-specific hashtags)
+- Hashtag reference card (#SkyyRose, , collection-specific hashtags)
 - Product photography — hi-res, for reference or B-roll backdrop
 - Font reference card (Archivo for headings — all collections, Hanken Grotesk for body, Anton for UI labels, Cinzel as optional engraved-caps accent) — for captions/graphics if creator designs overlays
 
@@ -719,7 +719,7 @@ Your "December Oakland Fits — waxed canvas week" reel was exactly the kind of 
 story SkyyRose lives in — the way you showed how the canvas aged on the walk from the
 Lake to Fruitvale, that's the lane we're building in.
 
-I'm Corey, founder of SkyyRose — luxury Oakland streetwear. "Luxury Grows from Concrete."
+I'm Corey, founder of SkyyRose — luxury Oakland streetwear. ""
 We just launched the Black Rose Sherpa Jacket: waxed cotton outer, sherpa lining, matte
 black hardware, built for Oakland winter.
 

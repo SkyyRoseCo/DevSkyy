@@ -1,7 +1,7 @@
 # Merchandising and Conversion
 
 > **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> *SkyyRose*
 
 ## Governing principle
 

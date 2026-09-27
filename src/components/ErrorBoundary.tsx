@@ -252,17 +252,7 @@ export const ErrorFallback: React.FC<ErrorFallbackProps> = ({
         </div>
 
         {/* Brand Tagline */}
-        <p
-          style={{
-            fontSize: '14px',
-            color: COLORS.mediumGray,
-            marginTop: '24px',
-            fontStyle: 'italic',
-            fontFamily: 'Georgia, serif',
-          }}
-        >
-          Luxury Grows from Concrete.
-        </p>
+
       </div>
     </div>
   );

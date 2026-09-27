@@ -87,7 +87,7 @@ These files are OFF-LIMITS — do NOT modify them:
 - **TDD guide** — For any PHP function changes
 
 ### 6. Brand Constants (Hardcoded — Never Change)
-- **Tagline**: "Luxury Grows from Concrete." — the ONLY tagline
+No tagline is authorized. Do not restore retired slogans.
 - **RETIRED**: "Where Love Meets Luxury" — NEVER use this
 - **Colors**: Rose Gold `#B76E79`, Dark `#0A0A0A`, Gold `#D4AF37`
 - **Collection accents**: Black Rose `#C0C0C0` (silver), Love Hurts `#DC143C` (crimson), Signature `#D4AF37` (gold)
@@ -237,7 +237,7 @@ The homepage hero is NOT the one in the HTML package. Use this custom design ins
 │          S   K   Y   Y   R   O   S   E                 │
 │          ← single row, wide letter-spacing →            │
 │                                                         │
-│          Luxury Grows from Concrete.                    │
+│                              │
 │                                                         │
 │         [ SHOP NOW ]    [ EXPLORE ]                     │
 │                                                         │
@@ -258,7 +258,7 @@ The homepage hero is NOT the one in the HTML package. Use this custom design ins
   - Rose gold shimmer gradient on the text: `background: linear-gradient(135deg, #B76E79, #D4AF37, #B76E79); -webkit-background-clip: text;`
   - Font size: `clamp(32px, 6vw, 72px)` — scales but stays on ONE LINE
   - `white-space: nowrap` to enforce single row
-- **Tagline**: "Luxury Grows from Concrete." — Hanken Grotesk italic, below brand name
+- **Tagline**: "" — Hanken Grotesk italic, below brand name
 - **CTA buttons**: Two side-by-side — "SHOP NOW" (solid rose gold) + "EXPLORE" (outline)
 - **Background**: Keep the atmospheric particles, grain overlay, and vignette from the package design
 - **Mobile**: Monogram scales down to 200px wide, text shrinks, CTAs stack vertically
@@ -620,7 +620,7 @@ add_action('after_switch_theme', 'skyyrose_create_menus');
 
 **Site-level settings** (via WordPress options or MCP):
 - `blogname` → "SkyyRose — Oakland Luxury Streetwear"
-- `blogdescription` → "Luxury Grows from Concrete. Premium streetwear from Oakland, CA."
+- `blogdescription` → " Premium streetwear from Oakland, CA."
 - Permalink structure → `/%postname%/` (pretty permalinks)
 - Timezone → `America/Los_Angeles`
 - Date format → `F j, Y`
@@ -1131,5 +1131,5 @@ If you find Context7 returned stale/wrong info, note it so we can track reliabil
 - **Update `ralph-tasks.md`** after EVERY iteration
 - **Immersive templates ARE in scope** — you may edit template-immersive-*.php, immersive.js, immersive.css as needed for scene integration
 - **Brand constants**: Rose Gold `#B76E79`, Dark `#0A0A0A`, Silver `#C0C0C0`, Crimson `#DC143C`, Gold `#D4AF37`
-- **Tagline**: "Luxury Grows from Concrete." (NEVER "Where Love Meets Luxury")
+- **Tagline**: "" (NEVER "Where Love Meets Luxury")
 - **API**: Use `index.php?rest_route=` (NOT `/wp-json/`)

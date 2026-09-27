@@ -24,7 +24,7 @@ $allowed_inline = $args['allowed_inline'] ?? array();
 			<?php esc_html_e( 'The Mission', 'skyyrose' ); ?>
 		</p>
 		<h2 class="abt-mission__tagline rv rv-clip-up">
-			<?php echo wp_kses( __( 'Luxury Grows<br>from Concrete.', 'skyyrose' ), $allowed_inline ); ?>
+			<?php echo wp_kses( __( '', 'skyyrose' ), $allowed_inline ); ?>
 		</h2>
 		<p class="abt-mission__sub rv rv-blur">
 			<?php esc_html_e( 'Four Collections, A Bloodline, and the Heir to the Throne.', 'skyyrose' ); ?>

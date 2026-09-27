@@ -1,0 +1,307 @@
+record_version: 1
+recorded_on: "2026-09-26"
+overall_status: RUNWAY_DEV_QUALIFICATION_BLOCKED
+
+target:
+  provider: runway_dev
+  channel: model_router
+  resource_class: GENERATIVE_IMAGE
+  model_allowlist:
+    - gpt_image_2_5_sunburst
+  maximum_router_image_credit_ceiling: 76
+  capacity_fallback_required: false
+  initial_operation: DRY_RUN_ONLY
+
+qualification:
+  identity: VERIFIED_LIVE_DEV_MCP_SCOPE
+  router_config: VERIFIED_LIVE_SAVED_ROUTER
+  router_runtime_binding: BLOCKED
+  pricing: VERIFIED_LIVE_MODEL_CATALOG
+  maximum_exposure: BLOCKED_MULTI_OUTPUT_CAP_SEMANTICS_UNVERIFIED
+  operation_identity: BLOCKED
+  billing_attribution: BLOCKED
+  recovery: BLOCKED
+  privacy: UNKNOWN
+  retention: UNKNOWN
+  egress: BLOCKED
+  cancellation: BLOCKED
+  governor_boundary: BLOCKED
+  application_rate_limit: BLOCKED
+
+authenticated_read_only_evidence:
+  status: VERIFIED_LIVE_DEV_MCP
+  observed_on: "2026-09-26"
+  observed_before_router_creation: true
+  surface: runway-dev-mcp
+  developer_account_id: 255723
+  accessible_project_count: 1
+  project:
+    name: skyyrose.co
+    id: 149ffed4-4b00-44d5-8e69-2536c30db85e
+    returned_by_owned_project_query: true
+    returned_by_accessible_project_query: true
+    saved_model_router_count: 0
+  image_model_catalog:
+    endpoint: /v1/text_to_image
+    model_id: gpt_image_2_5_sunburst
+    display_name: GPT Image 2.5 Sunburst
+    listed_base_price_credits_per_image: 16
+  api_project_credit_balance:
+    credits: 5500
+    observed_through: Runway Dev MCP get_credit_balance
+    point_in_time_only: true
+  local_sdk:
+    package: runwayml
+    version: 5.20.1
+    import_verified_from: /Users/theceo/DevSkyy/.venv
+  effects:
+    read_only: true
+    generation_submitted: false
+    router_or_project_mutated: false
+    credits_spent: 0
+    api_key_value_read_or_recorded: false
+  limits:
+    - Dev MCP authentication establishes read access to this Developer account and API project, not server-side API-key authentication or runtime binding.
+    - The 5500-credit balance is a point-in-time API-project balance; it does not establish invoice identity, spend authorization, or a maximum-exposure policy.
+
+router_configuration_evidence:
+  status: VERIFIED_LIVE_SAVED_ROUTER
+  observed_on: "2026-09-26"
+  observed_through: Runway Dev MCP create_model_router, update_model_router, and get_model_router
+  project_id: 149ffed4-4b00-44d5-8e69-2536c30db85e
+  router:
+    id: 54fdc045-5501-4331-a22b-5b55ad6d349a
+    slug: skyyrose-sunburst-dry-run
+    name: SkyyRose Sunburst Dry-Run
+    description: "Sunburst-only allowlist; capacity fallback off; 76-credit image cap. Router does not enforce dryRun=true or outputCount=1. Runway docs and MCP schema differ on multi-output cap behavior; verify before multi-output. No paid generation authorized."
+    settings_version: 2
+    last_metadata_update: "2026-09-26T12:48:25.773Z"
+    settings:
+      schema_version: 1
+      optimize_for: quality
+      models:
+        mode: allowlist_only
+        ids:
+          - gpt_image_2_5_sunburst
+      fallback:
+        on_capacity: false
+      max_credits_per_generation:
+        image: 76
+  configuration_digest:
+    algorithm: SHA-256
+    canonicalization: UTF-8 JSON with sorted keys and compact separators over projectId and router id, slug, version, and settings
+    value: 78dc9eff3a9dccca340a55f812f17197fa52c306a4f56447f00ab2cdb660dbfe
+  creation_sequence:
+    initial_version: 1
+    initial_default_models_mode: allow_new_except
+    initial_default_excluded_ids: []
+    initial_image_credit_cap: NOT_SET
+    closed_policy_version: 2
+    settings_closed_at: "2026-09-26T12:37:14.650Z"
+    elapsed_from_create_seconds: 9.415
+    call_submitted_by_this_task_during_initial_window: false
+    external_use_during_initial_window: UNKNOWN
+  limits:
+    official_router_guide_cap_semantics: HARD_CEILING_PER_GENERATION
+    live_mcp_schema_cap_semantics: PER_GENERATED_OUTPUT
+    pricing_formula: PER_IMAGE_COST_MULTIPLIED_BY_OUTPUT_COUNT
+    multi_output_cap_semantics: CONFLICTED_UNVERIFIED
+    dry_run_only: NOT_ENFORCED_BY_ROUTER
+    app_runtime_binding: NOT_IMPLEMENTED
+  effects:
+    router_created_and_configured: true
+    dry_run_or_generation_submitted: false
+    project_balance_before: 5500
+    project_balance_after: 5500
+    credits_spent: 0
+
+documentation_evidence:
+  status: VERIFIED_DOCUMENTATION
+  retrieved_on: "2026-09-25"
+  sources:
+    quickstart: https://dev.runwayml.com/quickstart.txt
+    router_configuration: https://docs.dev.runwayml.com/model-routers/configuration/
+    routed_generation: https://docs.dev.runwayml.com/model-routers/generating/
+    models: https://docs.dev.runwayml.com/guides/models/
+    pricing: https://docs.dev.runwayml.com/guides/pricing/
+    api_reference: https://docs.dev.runwayml.com/api/
+    api_reference_markdown: https://docs.dev.runwayml.com/api.md
+    output_formats: https://docs.dev.runwayml.com/assets/outputs/
+    sdk_task_behaviors: https://docs.dev.runwayml.com/api-details/sdks/
+    organization_roles: https://docs.dev.runwayml.com/usage/organizations-and-roles/
+    developer_site_claims: https://dev.runwayml.com/
+    enterprise_third_party_model_faq: https://help.runwayml.com/hc/en-us/articles/51248305153683-Enterprise-FAQ-Third-party-Models-in-Runway
+  findings:
+    model_identifier: gpt_image_2_5_sunburst
+    router_allowlist_mode_is_closed: true
+    router_image_ceiling_is_hard_cap: true
+    router_edits_append_revision: true
+    api_dry_run_supported: true
+    node_sdk_dry_run_supported: false
+    dry_run_generates_or_returns_asset: false
+    dry_run_generation_charge_credits: 0
+    dry_run_consumes_api_request_quota: true
+    get_task_reports_actual_cost_credits: true
+    task_endpoint_returns_provider_task_id: true
+    delete_cancels_pending_running_or_throttled_task: true
+    delete_removes_deleted_task_output_data: true
+    task_output_urls_expire_hours: "24-48"
+    cancel_zero_cost_or_refund_guarantee_documented: false
+    api_idempotency_or_lookup_by_client_operation_id_documented: false
+    developer_site_claims_no_training_and_zero_data_retention_default: true
+    enterprise_third_party_model_no_training_and_dpa_commitments_documented: true
+    sunburst_default_high_quality_2k_credits: 16
+    sunburst_high_quality_4k_credits: 19
+    sunburst_max_quality_4k_credits: 76
+  limits:
+    - The live saved-router configuration is recorded in router_configuration_evidence; it is not bound to this app's runtime.
+    - The Developer organization billing identity, account privacy settings, applicable agreement, and third-party-model data path remain unverified.
+    - Official Router prose describes a hard per-generation cap, while the live MCP schema describes a per-output cap; Sunburst pricing multiplies per-image cost by outputCount. Multi-output enforcement remains unresolved.
+    - The router does not force dryRun=true; the local route is still dry-run-only, but direct API-key holders are outside that application interlock.
+    - Published pricing is not an owner spend authorization.
+    - Public no-training/zero-retention statements do not establish the actual account's terms, plan, or third-party-model data path; no applicable agreement was inspected.
+    - The task DELETE endpoint documents cancellation/deletion, but the reviewed API reference does not promise zero cost or refund after cancellation.
+    - Successful output URLs are ephemeral and deleted-task output data is documented as deletable; prompt/input retention and broader task-data retention remain unspecified here.
+    - Task detail documents actual `cost.credits`, supporting a provider-attested billing method when a task ID is preserved; no live receipt or Governor-operation binding exists.
+    - The reviewed API reference did not document idempotency or lookup by caller operation ID; treat this as unverified, not proof that support is impossible.
+    - Cancellation and task deletion are documented operations, but the reviewed sources do not settle cost/refund behavior after cancellation.
+
+local_implementation:
+  status: BLOCKED
+  route: frontend/app/api/runway-dev/dry-run/route.ts
+  endpoint: POST /api/runway-dev/dry-run
+  provider_call_enabled: false
+  provider_call_block_reasons:
+    - ROUTER_CONFIGURATION_NOT_RUNTIME_BOUND
+    - SCARCE_RESOURCE_GOVERNOR_UNAVAILABLE
+  features:
+    authenticated_dashboard_session: true
+    fixed_synthetic_prompt: true
+    no_references: true
+    one_output: true
+    resolution: 2k
+    maximum_request_body_bytes: 1024
+    caller_model_or_prompt_override: false
+    raw_http_used_only_for_dry_run: true
+    provider_timeout_seconds: 15
+    provider_retry: false
+    shared_user_route_limit: 1 accepted request per 60-second cooldown
+    shared_limit_store: REDIS_URL via BullMQ's existing Redis dependency
+    shared_limit_operation: atomic Redis SET NX with expiry
+    identity_key: HMAC-SHA256 of normalized authenticated email; email is not stored as the Redis key
+    shared_store_failure: fail closed
+  local_configuration_presence_only:
+    checked_on: "2026-09-25"
+    REDIS_URL: present
+    NEXTAUTH_SECRET: present
+    RUNWAYML_API_SECRET: absent
+    RUNWAY_DEV_DRY_RUN_ENABLED: absent
+    RUNWAY_DEV_API_BASE_URL: absent
+    RUNWAY_ROUTER_CONFIG_ID: absent_at_last_check
+    secret_values_read_or_recorded: false
+  router_runtime_binding:
+    status: NOT_IMPLEMENTED
+    router_id_bound_to_route: false
+    configuration_digest_bound_to_route: false
+  verification:
+    last_focused_verification_on: "2026-09-26"
+    frontend_type_check: PASS
+    frontend_lint: PASS_WITH_231_EXISTING_WARNINGS
+    frontend_build: PASS_WITH_LIFECYCLE_SCRIPTS_SKIPPED
+    local_server_unauthenticated_post: PASS_401
+    local_contract_tests: REPRODUCED_LOCAL
+    focused_test_files: 4
+    focused_tests_passed: 26
+    tests_include_runtime_binding_gate_reason: true
+    authorized_route_path_uses_fixtures: true
+    BullMQ_Lua_adapter_executed: false
+    redis_connection_tested: false
+    Runway_Dev_generation_request_sent: false
+    saved_router_read: true
+    saved_router_count_before_creation: 0
+    saved_router_count_current: 1
+    saved_router_settings_version_current: 2
+    runway_dev_mcp_read_only_queries_sent: true
+    paid_generation_sent: false
+
+governor:
+  status: BLOCKED
+  candidate_found_in_current_checkout: false
+  quota_resource_request:
+    resource_class: PROVIDER_API_QUOTA
+    provider: runway_dev
+    operation: router_dry_run
+    monetary_cost_usd: 0
+    scarce_units:
+      api_requests: 1
+  authorization_adapter_present: false
+  audit_binding_present: false
+  authenticated_principal_binding_present: false
+  exact_quota_operation_binding_present: false
+  route_interlock: deny_until_real_governor_adapter_is_wired
+  paid_grant_created: false
+
+account_and_router:
+  developer_account_scope:
+    status: VERIFIED_LIVE_DEV_MCP
+    developer_account_id: 255723
+    project_name: skyyrose.co
+    project_id: 149ffed4-4b00-44d5-8e69-2536c30db85e
+  developer_organization: UNKNOWN
+  billing_identity: UNKNOWN
+  api_credit_pool:
+    status: VERIFIED_LIVE_PROJECT_BALANCE
+    credits: 5500
+    observed_on: "2026-09-26"
+  api_key_scope: UNKNOWN
+  router_config_id: 54fdc045-5501-4331-a22b-5b55ad6d349a
+  router_slug: skyyrose-sunburst-dry-run
+  router_revision: 2
+  router_configuration_digest: 78dc9eff3a9dccca340a55f812f17197fa52c306a4f56447f00ab2cdb660dbfe
+  saved_router_count: 1
+  saved_allowlist:
+    mode: allowlist_only
+    models:
+      - gpt_image_2_5_sunburst
+  saved_capacity_fallback: false
+  saved_image_credit_ceiling: 76_CREDITS; MULTI_OUTPUT_SEMANTICS_UNVERIFIED
+  account_or_router_mutated: true
+
+future_live_operation:
+  status: BLOCKED
+  provider_bound_maximum_credits: 76_CONFIGURED; MULTI_OUTPUT_SEMANTICS_UNVERIFIED
+  reservation_bound_credits: UNKNOWN
+  task_cost_documentation: VERIFIED_DOCUMENTATION; GET_TASK_REPORTS_COST_CREDITS
+  attribution_tier_candidate_if_bound_to_governor_and_live_receipt: TIER_1_PROVIDER_ATTESTED
+  end_to_end_task_linkage: BLOCKED; NO_LIVE_RECEIPT; OPERATION_BINDING_NOT_IMPLEMENTED
+  lost_response_policy: NO_RESUBMISSION; KEEP_RESERVATION; RECONCILIATION_REQUIRED
+  privacy_and_retention: UNKNOWN
+  output_storage_and_deletion: UNKNOWN
+  cancellation_cost: UNKNOWN
+  separate_owner_grant_required: true
+
+external_actions:
+  dev_organization_created: false
+  api_key_created: false
+  router_created_or_changed: true
+  credits_purchased: false
+  Runway_Web_App_or_MCP_used_for_generation: false
+
+direct_provider_bypass_review:
+  status: REPRODUCED_LOCAL
+  searched_repository_paths:
+    - frontend/app
+    - frontend/lib
+    - integrations
+    - pipelines
+    - agents
+    - whole-repository exact API-host/SDK/key-reference search, excluding dependencies and build output
+  Runway_Dev_API_generation_entry_points_found:
+    - frontend/app/api/runway-dev/dry-run/route.ts
+  other_direct_Runway_Dev_API_calls_found: false
+  outside_enforcement_boundary:
+    - Runway Web App
+    - Runway MCP
+    - desktop tools
+    - external scripts or clients
+  account_wide_enforcement_claimed: false

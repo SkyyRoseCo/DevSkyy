@@ -122,7 +122,7 @@ function ParallaxSection() {
   return (
     <motion.section style={{ y, opacity }}>
       <h2>SkyyRose Collection</h2>
-      <p>Luxury Grows from Concrete.</p>
+      <p></p>
     </motion.section>
   );
 }

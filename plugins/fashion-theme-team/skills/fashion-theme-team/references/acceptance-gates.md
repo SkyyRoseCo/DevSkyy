@@ -38,7 +38,7 @@ candidate implements that behavior.
 - Homepage, collection, PDP, cart, checkout, and account routes resolve when in scope.
 - Simple and variable product flows use real WooCommerce behavior.
 - Cart fragments, notices, totals, shipping, taxes, coupons, and account states are exercised when applicable.
-- Product facts, prices, SKUs, inventory, and imagery trace to an approved source of truth.
+- Product facts, prices, SKUs, inventory, and imagery trace to an approved source of truth (SkyyRose: `logo-registry.json`; CSV, dossiers, and image manifests are projections).
 - Applicable classic and block flows, product types, payment failures, orders, and account authorization are exercised.
 - Template override versions, hook contracts, HPOS behavior, and extension absence are checked.
 - Every route has a documented customer job, business objective, complete section

@@ -1,0 +1,135 @@
+{
+  "status": "PASS_DOCUMENT_VALIDATION",
+  "checked_at": "2026-09-23T22:05:48.708417-07:00",
+  "constitutional_completion": "FULLY_RATIFIED",
+  "version": "1.0",
+  "unresolved_constitutional_decisions": [],
+  "checks": {
+    "json_parse": 8,
+    "unique_canonical_rules": 72,
+    "final_KPS_rules": 25,
+    "all_rule_text_matches_owner_sources": true,
+    "source_context_matches_final_KPS_source": true,
+    "superseded_K_rules_absent_from_active_set": true,
+    "active_manifest_and_decision_ids_match": true,
+    "manifest_constitution_digest_matches": true,
+    "palette_authority_domains": 8,
+    "both_source_attachments_byte_identical": true,
+    "source_digests_match": true,
+    "archaeology_files_unchanged": 25,
+    "local_markdown_links_checked": 35,
+    "no_stale_pending_KPS_in_active_docs": true,
+    "palette_provenance_separate_from_eight_domains": true,
+    "independent_review": "PASS after separating palette provenance from eight-domain enumeration; 72 active rules and 25 new K/P/S IDs verified."
+  },
+  "document_fixture_results": [
+    {
+      "id": "DOC-01",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-02",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-03",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-04",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-05",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-06",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-07",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-08",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-09",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-10",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-11",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-12",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-13",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-14",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-15",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-16",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-17",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-18",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-19",
+      "result": "PASS"
+    },
+    {
+      "id": "DOC-20",
+      "result": "PASS"
+    }
+  ],
+  "runtime_acceptance_cases": {
+    "count": 7,
+    "status": "SPECIFIED_NOT_EXECUTED"
+  },
+  "not_run": [
+    "Production Context Resolver / Creative OS runtime tests: runtime not implemented",
+    "Product fidelity execution or media generation: no assets produced",
+    "Publishing/deployment/paid generation: outside scope"
+  ],
+  "limits": [
+    "Document validation is not runtime, creative-fidelity or release verification."
+  ],
+  "artifact_digests": {
+    "CONSTITUTION.md": "4cd2c3d2b8a92b30e6f4e333974c90fefef9a50a5c9f0e6d508221937751a1f2",
+    "CONTEXT-RESOLVER-CREATIVE-OS-SPEC.md": "90de9a3296d94199b00c292707a87ef8d7f76ac7215a1888d0b5e982485dc65c",
+    "OWNER-RATIFICATION-20260923.md": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34",
+    "OWNER-RATIFICATION-KPS-20260923.md": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298",
+    "RATIFICATION-CHANGES.md": "6ead3234cde15f8bc61c261bac0fcb4a26c1af448da7c7a2dea0b40071b7dd50",
+    "RATIFICATION.md": "f2e5a571e8f1c45e2d5df5508730f0259db0a4b8be52ebd2e390b4dab4e248ef",
+    "README.md": "0bf4f37dfe105093913b304fdbace5adb70c94e0c81ebff2ffd9fec3be140f85",
+    "archaeology-snapshot.json": "bfa3f4c7cf95faef54e166a5aeaa462ebb11e812f48cc84d7d0423d4f04d0441",
+    "constitution.json": "764127a25315b6b937e5f7435f9459b3fbe2788525469a43e0a530e134b65311",
+    "context-manifest.json": "ac46f5145f6be30d604481e00c2b1f359a81cdb98b6b6f22d43897096eefa47b",
+    "implementation-contracts.json": "bc3e82d3f92c9633edf72053a3e36a616e23233e19f7fb00787d2fa39281a8c4",
+    "owner-decisions.json": "ecaf8b1afdca86933a31ddb448d7e02a1e15dde0b5d98682e304209efe59d570",
+    "proposals.json": "23e7f96419685fe5d3fa85acbfa279dd501e15bc9edfbb2d0969d10c60df84f6",
+    "validation-fixtures.json": "c05b263fe4dce9b44325f1762c0c6429a577c9e02fb6cc212602467948b11b8a"
+  }
+}

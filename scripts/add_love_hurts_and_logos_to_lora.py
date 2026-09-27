@@ -28,7 +28,7 @@ sys.path.insert(0, str(project_root))
 # SkyyRose Brand DNA (COMPLETE)
 BRAND_DNA = {
     "name": "SkyyRose",
-    "tagline": "Luxury Grows from Concrete.",
+    "tagline": "",
     "trigger_word": "skyyrose",
     "core_values": [
         "authentic luxury",

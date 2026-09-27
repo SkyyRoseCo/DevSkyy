@@ -1,7 +1,7 @@
 # Fashion Theme Brain
 
 > **SKYYROSE LLC · FASHION THEME BRAIN**  
-> _Luxury Grows from Concrete._
+> _SkyyRose_
 
 This directory is the active, governed knowledge layer for the Fashion Theme
 Team. It converts fashion-commerce evidence, platform requirements, page

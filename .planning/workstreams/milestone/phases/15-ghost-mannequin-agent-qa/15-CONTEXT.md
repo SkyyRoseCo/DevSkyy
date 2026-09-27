@@ -106,7 +106,7 @@ The agent must enforce the SkyyRose **96+ replica bar**: per-metric vetoes again
 ### Phase Specification (locked requirements)
 - `.planning/ROADMAP.md` §"Phase 15: Ghost Mannequin Agent + QA" — 5 success criteria + dependency on Phase 14
 - `.planning/REQUIREMENTS.md` §GM-01..06, §QA-01, QA-02, QA-04 — all in scope (QA-03 dropped 2026-04-25)
-- `.planning/PROJECT.md` — milestone v1.2 framing, "Luxury Grows from Concrete" palette canon
+- `.planning/PROJECT.md` — milestone v1.2 framing, "" palette canon
 
 ### Upstream Phases (dependencies)
 - `.planning/phases/14-catalog-foundation/14-01-SUMMARY.md` — `garment_type_lock` column added to `skyyrose-catalog.csv` (column 22), 22-column schema, accessory-row handling

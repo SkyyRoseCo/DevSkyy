@@ -143,7 +143,7 @@ class GenerationResult:
 
 SKYYROSE_BRAND_DNA = {
     "name": "SkyyRose",
-    "tagline": "Luxury Grows from Concrete.",
+    "tagline": "",
     "location": "Oakland, California",
     "aesthetic": "luxury streetwear",
     "colors": {
@@ -296,7 +296,7 @@ class GoogleImagenClient:
         Style: luxury streetwear, premium quality, editorial photography
         Colors: rose gold accents (#B76E79), black foundation (#1A1A1A), white highlights
         Aesthetic: sophisticated, bold, elegant, high-fashion
-        Brand: SkyyRose - "Luxury Grows from Concrete."
+        Brand: SkyyRose""
         """
         return f"{prompt}. {brand_context}"
 
@@ -439,7 +439,7 @@ class GoogleVeoClient:
         Style: Luxury streetwear brand video, editorial quality
         Movement: Smooth camera movements, professional cinematography
         Lighting: High-end fashion lighting, dramatic shadows
-        Brand: SkyyRose - premium streetwear
+        Brand: SkyyRose premium streetwear
         Colors: Rose gold, black, white accents
         Quality: 4K, cinematic, professional
         """
@@ -1000,7 +1000,7 @@ class VisualGenerationRouter:
         SkyyRose luxury streetwear campaign video
         Concept: {concept}
         Collection: {collection} - {collection_style}
-        Brand: "Luxury Grows from Concrete."
+        Brand: ""
         Style: Cinematic, editorial, high-fashion
         Colors: Rose gold, black, dramatic lighting
         Movement: Smooth, professional camera work

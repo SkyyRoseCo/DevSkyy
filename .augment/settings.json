@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "devskyy": {
-      "command": "python3",
+      "command": "/Users/theceo/DevSkyy/.venv/bin/python3",
       "args": ["devskyy_mcp.py"],
       "env": {
         "PYTHONPATH": "."

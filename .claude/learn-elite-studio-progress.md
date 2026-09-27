@@ -117,7 +117,7 @@ Unified router for **14 intents** (CreativeIntent StrEnum: product-render, 3d-mo
 
 ### C6 fashion/ — Fashion Intelligence Core (ALL deterministic frozen-dataclass static data, NO LLM calls)
 - `context.py` — **FashionContextBuilder** (lazy-loads all advisors) → FashionContext (garment/fabric/collection_dna/palette/styling/sizing/rendering_spec/trends). build() or build_from_product_catalog(sku). _infer_garment_type from product name keywords.
-- `knowledge.py` — **FashionKnowledgeBase**: 12 GarmentType + 9 FabricProperties catalogues (frozen). Each fabric has rendering_notes (e.g. sherpa CRITICAL pile texture). Default fabric per garment map. BRAND_TAGLINE="Luxury Grows from Concrete."
+- `knowledge.py` — **FashionKnowledgeBase**: 12 GarmentType + 9 FabricProperties catalogues (frozen). Each fabric has rendering_notes (e.g. sherpa CRITICAL pile texture). Default fabric per garment map. BRAND_TAGLINE=""
 - `qa_rules.py` — **FashionQA**: ~20 QARule (frozen) across fabric/color/styling/photography/brand categories. Indexed by category/garment/collection. Brand hex tolerances (Black #0A0A0A, crimson #DC143C, gold #D4AF37, rose gold #B76E79).
 - `materials.py` — **MaterialsExpert**: per-fabric RenderingSpec (texture_keywords/avoid_keywords/common_ai_errors). build_texture_prompt_segment, validate_texture. Fabric aliases.
 - `colorway.py` — **ColorAdvisor**: ~20 ColorPalette per collection (frozen). validate_color_fidelity (weighted Euclidean RGB ≈ deltaE). get_color_prompt_notes.

@@ -68,7 +68,7 @@ Fonts (Archivo, Hanken Grotesk, Anton, Cinzel, Inter) are for interior copy surf
 
 ### Tagline
 
-**`Luxury Grows from Concrete.`** — with period. Verbatim only. Never paraphrase, never truncate.
+**``** — with period. Verbatim only. Never paraphrase, never truncate.
 
 ### Products by Name, Not SKU
 

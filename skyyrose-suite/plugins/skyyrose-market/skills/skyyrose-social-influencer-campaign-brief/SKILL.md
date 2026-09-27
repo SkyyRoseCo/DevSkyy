@@ -20,7 +20,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline (verbatim):** `Luxury Grows from Concrete.` — period included. Never "luxury from the streets" or any paraphrase.
+No tagline is authorized. Do not restore retired slogans.
 - **Collection voice is isolated:** "Bloodline that raised me" = Love Hurts ONLY. "Armor / concrete answering back" = Black Rose ONLY. "Stay golden" = Signature ONLY. Never cross-attribute.
 - **Products by NAME, not SKU:** Write "Black Rose Crewneck", not "br-001". SKU-first references have caused product conflations.
 - **No urgency-timer manipulation:** Limited availability is stated as fact ("limited to pre-order", "250 made") — never a fake ticking clock.
@@ -103,7 +103,7 @@ is 50 pre-orders attributed to your unique link in the first 72 hours."
 - Video length: [15-30s for Reels/TikTok; 60s max for YouTube Shorts]
 - Aspect ratio: 9:16 (vertical) for all short-form
 - Must include: product visible and worn or held, verbal or text mention of SkyyRose, CTA to skyyrose.co
-- Caption requirements: Tag @skyyroseco, include #SkyyRose #LuxuryGrowsFromConcrete,
+- Caption requirements: Tag @skyyroseco, include #SkyyRose ,
   FTC disclosure (#ad or #sponsored), unique discount/tracking code
 - Hero title rule: Do NOT type the collection name as live text in the video —
   use the official lockup image from the brand (supplied in asset pack below)

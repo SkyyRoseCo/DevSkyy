@@ -1,5 +1,7 @@
 # Pre-commit Configuration - Optimized for Speed and Safety
-# Install: pre-commit install
+# Git hooks: npm ci (the prepare script installs Husky)
+# Do not run pre-commit install or unset core.hooksPath: Husky owns Git hooks.
+# This configuration is available for explicit runs and pre-commit.ci.
 # Update: pre-commit autoupdate
 # Run manually: pre-commit run --all-files
 

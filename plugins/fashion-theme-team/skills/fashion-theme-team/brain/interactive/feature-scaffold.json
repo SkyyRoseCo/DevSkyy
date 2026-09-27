@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$comment": "SkyyRose LLC interactive commerce feature scaffold from current web research.",
   "version": "1.0.0",
-  "brand": {"id":"skyyrose","name":"SkyyRose","tagline":"Luxury Grows from Concrete."},
+  "brand": {"id":"skyyrose","name":"SkyyRose","tagline":"SkyyRose"},
   "research_report": "../research/interactive-commerce-research-2026-08-06.md",
   "commerce_state_contract": "../v2/commerce-state-contract.json",
   "commerce_contract_policy": "All product, variation, media, availability, CTA, cart, checkout, order, service and retention features MUST consume the normalized v2 contract. A feature without an authoritative server response is UNVERIFIED and cannot be release-ready.",

@@ -4,7 +4,7 @@ Moodboard composition for SkyyRose Elite Studio.
 MoodboardComposer assembles structured moodboard specifications combining
 visual references, color stories, texture palettes, and editorial direction.
 
-"Luxury Grows from Concrete."
+""
 """
 
 from __future__ import annotations
@@ -201,7 +201,6 @@ class MoodboardComposer:
         # Brand anchors
         brand_anchors = (
             "SkyyRose rose motif — embroidered, bold",
-            "'Luxury Grows from Concrete.' — brand tagline",
             f"{collection.replace('-', ' ').title()} collection identity",
             "Oakland roots, West Coast prestige",
         )
@@ -220,7 +219,7 @@ class MoodboardComposer:
             f"Location: {locations[0] if locations else 'urban Bay Area'}. "
             f"Lighting: {lighting}. "
             f"Typography: {typography}. "
-            f"Brand: 'Luxury Grows from Concrete.' Oakland streetwear luxury. "
+            f"Brand: '' Oakland streetwear luxury. "
             f"High-end editorial moodboard aesthetic."
         )
 

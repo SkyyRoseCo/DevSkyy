@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-09-24T05:28:31.864372+00:00",
+  "implementation": "skyyrose/core/context_resolver.py",
+  "tests": {
+    "passed": 48,
+    "suites": [
+      "tests/test_context_resolver.py",
+      "tests/test_product_entry_point.py",
+      "tests/test_product_entry_point_guard.py",
+      "tests/test_brand_context_catalog.py"
+    ]
+  },
+  "checks": {
+    "ruff": "PASS",
+    "black": "PASS",
+    "registry_projections": "PASS",
+    "ratified_package_digests_unchanged": true,
+    "cli_status": "READY",
+    "cli_resolution_id": "fe904c29930d836bb5f34a281f9d633006a03c54a4a67a1c79a3862e102c7b19",
+    "release_ready": false,
+    "action_authorized": false
+  },
+  "review": "Independent Python review; reported authority and invalidation issues fixed with regressions",
+  "not_run": {
+    "mypy": "Unavailable in project .venv (No module named mypy)",
+    "live_commerce_and_output_fidelity": "Not part of read-only context resolution"
+  },
+  "files": {
+    "skyyrose/core/context_resolver.py": "88cc0c5dd642e459269ef0d6941eb4c355b0763344450f15761f1b2770fc5583",
+    "tests/test_context_resolver.py": "36b4dbb361e9dd00c53ab0700b9f6b4460d51251bac07c626617e365e4567c7e",
+    "docs/context-resolver.md": "23d20270188c359f271b0322231bfc588291e117e0559b444cbd4975b1e4d2fb",
+    "docs/examples/context-resolver-abstract.json": "a1694376fb02e5b8f3bcb8830c9069219018de60a69e5449e7c8fe5034ce8458"
+  }
+}

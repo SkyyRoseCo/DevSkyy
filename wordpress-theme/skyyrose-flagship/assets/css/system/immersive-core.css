@@ -14,7 +14,7 @@
  *   .scene-lockup      — collection identity image block (scene.php)
  *   .scene-lockup img  — targets .scene-lockup__img (BEM element, only child)
  *   .scene-hairline    — accent rule beneath lockup (scene.php, JS queries)
- *   .scene-tagline     — "Luxury Grows from Concrete." line (scene.php, JS queries)
+ *   .scene-tagline     — "" line (scene.php, JS queries)
  *   .scene-subtitle    — collection name line (scene.php) — in immersive.css
  *   [data-warp]        — opt-in hover-warp target; filter injected via JS (Phase 2)
  *
@@ -103,7 +103,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   5. TAGLINE — "Luxury Grows from Concrete." line; GSAP drives opacity + y
+   5. TAGLINE — "" line; GSAP drives opacity + y
    ═══════════════════════════════════════════════════════════════════ */
 
 .scene-tagline {

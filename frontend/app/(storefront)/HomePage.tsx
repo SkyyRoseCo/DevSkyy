@@ -128,14 +128,7 @@ export default function HomePage({ collections }: HomePageProps) {
                 </motion.h1>
 
                 {/* Tagline */}
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: 0.8 }}
-                  className="text-white/40 text-lg md:text-xl tracking-[0.15em] mb-2 font-body"
-                >
-                  Luxury Grows from Concrete.
-                </motion.p>
+
 
                 {/* Decorative line */}
                 <motion.div
@@ -495,7 +488,7 @@ export default function HomePage({ collections }: HomePageProps) {
                 SKYYROSE
               </h3>
               <p className="text-white/30 text-sm leading-relaxed max-w-sm">
-                Luxury Grows from Concrete.. Three immersive worlds of fashion,
+                Three immersive worlds of fashion,
                 crafted with AI precision and human artistry.
               </p>
             </div>
@@ -541,9 +534,7 @@ export default function HomePage({ collections }: HomePageProps) {
             <p className="text-white/15 text-xs tracking-wider">
               &copy; 2026 SkyyRose LLC. All rights reserved.
             </p>
-            <p className="text-white/10 text-xs tracking-[0.2em] uppercase">
-              Luxury Grows from Concrete.
-            </p>
+
           </div>
         </div>
       </footer>

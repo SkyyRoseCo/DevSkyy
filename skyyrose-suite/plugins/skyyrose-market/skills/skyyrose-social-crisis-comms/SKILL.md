@@ -23,7 +23,7 @@ allowed-tools: Read Write Edit Glob
 ## Brand Canon (non-negotiable)
 
 - **Speed and honesty win.** A fast, direct, imperfect response beats a slow, polished, defensive one. "We're looking into it" with a specific timeline posted within 2 hours is better than a crafted statement posted 12 hours later.
-- **Tagline (exact):** `Luxury Grows from Concrete.` — do not use this in crisis responses. A crisis is not the moment to brandish the tagline. Save it for the resolution and the follow-up.
+- **Tagline (exact):** `` — do not use this in crisis responses. A crisis is not the moment to brandish the tagline. Save it for the resolution and the follow-up.
 - **Corey's voice, always.** Even when legal is involved, the public response must sound like Corey wrote it — direct, specific, no corporate dodge. "We're aware of this. Here's what we know, here's what we're doing, here's when we'll follow up." Not "We apologize for any inconvenience this may have caused."
 - **Never delete negative comments** unless they contain threats, slurs, or personal information. Deleting legitimate complaints is the fastest way to escalate a L1 into a L3.
 - **No hype recovery.** After a crisis resolves, do not immediately pivot to drop announcements or promotional content. Earn back the trust first. The garment is the protagonist — let it recover the ground, not a campaign.

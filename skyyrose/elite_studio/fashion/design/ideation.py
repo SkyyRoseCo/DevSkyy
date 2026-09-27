@@ -4,7 +4,7 @@ Design ideation tools for SkyyRose Elite Studio.
 DesignIdeationAgent generates structured design concepts from briefs,
 using fashion knowledge base, color advisor, and trend advisor.
 
-"Luxury Grows from Concrete."
+""
 """
 
 from __future__ import annotations
@@ -153,7 +153,7 @@ class DesignIdeationAgent:
             f"Primary color {colorway[0]}, secondary {colorway[1]}, accent {colorway[2]}. "
             f"{texture_segment} "
             f"Photography: {photo_style} style. "
-            f"'Luxury Grows from Concrete.' Oakland luxury brand. High-end premium quality."
+            f"'' Oakland luxury brand. High-end premium quality."
         )
 
         return DesignConcept(

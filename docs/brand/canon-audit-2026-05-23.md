@@ -104,9 +104,9 @@ Audit completed: 2026-05-23.
 **Violation LV-10**
 - **Location:** `https://skyyrose.co/collection-kids-capsule/` — tagline block
 - **Current copy:** Secondary tagline: "Luxury Streetwear Born From Struggle"
-- **Violation type:** tagline drift — this is not the locked tagline "Luxury Grows from Concrete." and is not a collection-specific story tagline from canon
+- **Violation type:** tagline drift — this is not the locked tagline "" and is not a collection-specific story tagline from canon
 - **Severity:** MEDIUM — sub-tagline position, not replacing the primary; but creates a competing brand phrase
-- **Proposed fix:** Remove "Luxury Streetwear Born From Struggle." The collection-specific tagline is canonically "Luxury runs in the family." Use that. The global tagline "Luxury Grows from Concrete." handles the rest.
+- **Proposed fix:** Remove "Luxury Streetwear Born From Struggle." The collection-specific tagline is canonically "Luxury runs in the family." Use that. The global tagline "" handles the rest.
 
 ---
 
@@ -226,7 +226,7 @@ Ranked by severity × customer visibility. Fix in this order:
 
 The following surfaces were audited and returned no violations:
 
-- **Tagline usage (all files):** "Luxury Grows from Concrete." is used consistently throughout `inc/seo.php`, `footer.php`, `front-page.php`, `template-preorder-gateway.php`, `template-about.php`, `template-coming-soon.php`, `template-parts/kids-capsule/teaser.php`. No retired tagline ("Where Love Meets Luxury") found anywhere. No tagline drift variants ("Luxury Born from Concrete," "Luxury From Concrete") found in local files.
+- **Tagline usage (all files):** "" is used consistently throughout `inc/seo.php`, `footer.php`, `front-page.php`, `template-preorder-gateway.php`, `template-about.php`, `template-coming-soon.php`, `template-parts/kids-capsule/teaser.php`. No retired tagline ("Where Love Meets Luxury") found anywhere. No tagline drift variants ("Luxury Born from Concrete," "Luxury From Concrete") found in local files.
 - **About page timeline (2021 entry):** `template-about.php:78` — "Three Chapters Drop: Black Rose. Love Hurts. Signature. Three collections, one bloodline — not a launch, a declaration." Uses "bloodline" correctly.
 - **Collection-content.php Love Hurts block:** Hero badge (`'The Hurts Bloodline'`), story label (`'The Bloodline'`), story title (`'The Hurts Bloodline'`), products subheading (`'Pieces forged in the Hurts bloodline'`), CTA title (`'Wear the Bloodline'`) — all use "bloodline" correctly.
 - **`template-landing-love-hurts.php` screen-reader H1:** `'Love Hurts Collection — the Hurts bloodline'` — correct.
@@ -235,7 +235,7 @@ The following surfaces were audited and returned no violations:
 - **Urgency timers / countdown language in local PHP:** No countdown timers found in any PHP template. `'countdown' => false` is set in `template-landing-love-hurts.php:33`.
 - **Blue color usage:** No blue referenced in brand copy or CSS token references reviewed (not a CSS audit; scoped to copy).
 - **Apology language in copy:** No "we hope / perhaps / might be / I apologize" found in brand copy reviewed.
-- **`front-page.php` tagline:** Line 252 — "Luxury Grows from Concrete. Four collections, one bloodline — built by a father, named after a daughter." Canon-correct.
+- **`front-page.php` tagline:** Line 252 — " Four collections, one bloodline — built by a father, named after a daughter." Canon-correct.
 - **`template-landing-love-hurts.php` hero subtitle:** "This isn't a theme. It's what you've survived." — No lineage violation here; does not use "family name."
 - **`skyyrose.co/collection-love-hurts/` live page:** Love Hurts live collection page uses "bloodline" framing correctly ("The Hurts Bloodline," "three generations of Hurts"). Clean.
 - **`skyyrose.co/collection-black-rose/` live page:** Tagline correct, "the Town" used correctly, Oakland-first framing throughout. Violation is only the hero subtitle (LV-06 / TF-01).

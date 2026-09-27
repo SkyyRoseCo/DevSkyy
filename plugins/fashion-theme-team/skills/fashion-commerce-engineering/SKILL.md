@@ -8,6 +8,10 @@ description: Implements catalog truth, WooCommerce templates, product discovery,
 Use for catalog-backed collection, search, PDP, cart, checkout, account, order,
 fit, returns, and service surfaces.
 
+For SkyyRose work, read products through `skyyrose.core.product.get_product`
+and apply the commerce examples in
+[`../fashion-theme-team/references/verified-examples.md`](../fashion-theme-team/references/verified-examples.md#fashion-commerce-engineering).
+
 ## Owners and inputs
 
 Route `catalog-sot-integrator`, `woocommerce-theme-engineer`,

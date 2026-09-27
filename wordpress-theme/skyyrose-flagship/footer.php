@@ -53,7 +53,7 @@ defined( 'ABSPATH' ) || exit;
 							</svg>
 						</button>
 					</div>
-					<p class="footer-newsletter__status" role="status" aria-live="polite"></p>
+
 				</form>
 			</div>
 		</div>
@@ -75,9 +75,7 @@ defined( 'ABSPATH' ) || exit;
 						>
 						<span class="footer-brand__text navbar__gradient-text"><?php esc_html_e( 'SKYY ROSE', 'skyyrose' ); ?></span>
 					</a>
-					<p class="footer-brand__tagline">
-						<?php esc_html_e( 'Luxury Grows from Concrete.', 'skyyrose' ); ?>
-					</p>
+
 					<p class="footer-brand__description">
 						<?php esc_html_e( 'Oakland luxury streetwear. Gender-neutral, limited edition pieces — built by a father, named after a daughter.', 'skyyrose' ); ?>
 					</p>

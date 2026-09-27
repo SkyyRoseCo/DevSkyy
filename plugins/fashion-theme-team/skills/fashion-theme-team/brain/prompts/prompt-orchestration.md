@@ -1,7 +1,7 @@
 # Prompt Engineering, Chaining, and Caching Contract
 
 > **SKYYROSE LLC · FASHION THEME BRAIN**
-> *Luxury Grows from Concrete.*
+> *SkyyRose*
 
 Prompt engineering, prompt chaining, and prompt caching are first-class Fashion
 Theme Team capabilities. They exist to improve one-shot completeness, preserve

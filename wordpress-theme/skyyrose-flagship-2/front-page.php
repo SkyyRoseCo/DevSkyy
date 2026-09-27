@@ -65,7 +65,7 @@ get_header();
 		<div class="sr-house-hero__veil" aria-hidden="true"></div>
 		<div class="sr-house-hero__copy">
 			<p class="sr-house-hero__location"><?php esc_html_e( 'Oakland, California', 'skyyrose-flagship-2' ); ?></p>
-			<h1 id="sr-house-title" data-hero-headline><?php esc_html_e( 'Luxury grows from concrete.', 'skyyrose-flagship-2' ); ?></h1>
+			<h1 id="sr-house-title" data-hero-headline><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-2' ); ?></h1>
 			<p><?php esc_html_e( 'A house built by a father, named after a daughter, and rooted in The Town.', 'skyyrose-flagship-2' ); ?></p>
 			<div class="sr-house-hero__actions">
 				<a class="sr-home__button sr-home__button--solid" href="#collections"><?php esc_html_e( 'Choose your world', 'skyyrose-flagship-2' ); ?></a>

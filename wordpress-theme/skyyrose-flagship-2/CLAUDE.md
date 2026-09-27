@@ -43,22 +43,10 @@ find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l
 
 ## Build commands (run from THIS directory — has its own package.json)
 
-```bash
-cd wordpress-theme/skyyrose-flagship-2
-
-npm ci # install pinned build tools (npm-shrinkwrap.json)
-
-npm run build # full build: registry + assets + i18n
-#  build:registry → python3 scripts/build-product-presentation-registry.py
-#  build:assets   → node scripts/build-assets.mjs   (CSS + JS → .min siblings)
-#  build:i18n     → python3 scripts/build-pot.py
-
-npm run lint:php         # PHP syntax check (all .php, excluding vendor/)
-npm run verify           # full marketplace gate → scripts/verify-marketplace.sh
-npm run verify:workspace # candidate provenance + SOT gap check
-npm run verify:workspace:strict
-npm run package:theme # build + verify → dist/skyyrose-flagship-2.zip
-```
+Scripts live in this directory's `package.json` (`npm run` lists them): `npm ci`
+(pinned via `npm-shrinkwrap.json`), `npm run build` (registry + assets + i18n →
+`.min` siblings), `npm run verify` (full marketplace gate),
+`npm run package:theme` (→ `dist/skyyrose-flagship-2.zip`).
 
 **Parity checks (write nothing, exit 1 on drift):**
 

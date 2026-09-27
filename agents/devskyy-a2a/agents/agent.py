@@ -335,7 +335,7 @@ def brand_check(asset_text: str, collection: str = "") -> dict[str, Any]:
     if _RETIRED_TAGLINE.lower() in asset_text.lower():
         violations.append(
             f"Retired tagline detected: '{_RETIRED_TAGLINE}'. "
-            "Use 'Luxury Grows from Concrete.' instead."
+            "Omit the tagline; no replacement slogan is authorized."
         )
 
     try:
@@ -492,7 +492,7 @@ paid provider APIs (FASHN, Tripo, Meshy, OpenAI, Anthropic) directly — the
 SuperAgents own preflight, retry, and cost gating.
 
 Brand rules (hard-blocks):
-- The only tagline is "Luxury Grows from Concrete."
+- No brand slogan is authorized.
 - "Where Love Meets Luxury" is RETIRED — never emit it; flag if seen.
 - Active collections: Black Rose, Love Hurts, Signature, Kids Capsule.
 - Retired SKUs (reject silently): lh-001, sg-004, sg-008, sg-010,
@@ -600,7 +600,7 @@ def get_agent_card(base_url: str = "http://localhost:8080") -> AgentCard:
                 ),
                 tags=["creative", "brand", "paid"],
                 examples=[
-                    "Check this product copy: 'Luxury Grows from Concrete...'",
+                    "Check this product copy: '..'",
                 ],
             ),
             AgentSkill(

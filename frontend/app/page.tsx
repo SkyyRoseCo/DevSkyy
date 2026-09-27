@@ -5,11 +5,11 @@ import IncentivePopup from '@/components/marketing/IncentivePopup';
 import { getAllEnrichedCollections } from '@/lib/catalog-server';
 
 export const metadata: Metadata = {
-  title: 'SkyyRose | Luxury Grows from Concrete.',
+  title: 'SkyyRose',
   description:
     'Discover luxury fashion reimagined. Three immersive collections: Black Rose, Love Hurts, and Signature. AI-crafted designs, 3D experiences, exclusive pre-orders.',
   openGraph: {
-    title: 'SkyyRose | Luxury Grows from Concrete.',
+    title: 'SkyyRose',
     description:
       'Luxury fashion reimagined through AI and immersive 3D experiences.',
     images: [{ url: '/images/og-homepage.jpg', width: 1200, height: 630 }],

@@ -1,7 +1,7 @@
 # SkyyRose V2 Page + Imagery Plan
 
 > **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> *SkyyRose*
 
 Status: **planned, not implemented**. This is the visual and commerce brief for V2. It does not assert that a page, integration, product, or image exists.
 

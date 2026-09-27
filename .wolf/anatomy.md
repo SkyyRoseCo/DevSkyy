@@ -4011,7 +4011,7 @@
 - `blog-black-rose.md` — Blog copy: "Black Rose Is Not a Theme. It's Armor." (~745 tok)
 - `blog-kids-capsule.md` — Blog copy: "Luxury Runs in the Family." (~722 tok)
 - `blog-love-hurts.md` — Blog copy: "They Called Him Beast. They Were Right." (~717 tok)
-- `blog-luxury-grows-from-concrete.md` — Blog copy: "Luxury Grows from Concrete" (~842 tok)
+- `blog-retired-brand-copy.md` — Blog copy: "" (~842 tok)
 - `blog-signature.md` — Blog copy: "Not Basics. Blueprints." (~722 tok)
 - `canon-audit-2026-05-23.md` — SkyyRose Canon Audit — 2026-05-23 (~5363 tok)
 - `collection-design-proposals.md` — SkyyRose Collection Design Proposals (~8132 tok)
@@ -4035,7 +4035,7 @@
 
 ## docs/campaigns/
 
-- `2026-kids-capsule-report.html` — SkyyRose | Inheritance of Elegance Campaign Report (~1140 tok)
+- `2026-kids-capsule-report.html` — SkyyRoseInheritance of Elegance Campaign Report (~1140 tok)
 - `sot-lookbook.html` — SkyyRose Lookbook (wordpress-theme/skyyrose-flagship / lookbook · 4 collections) (~4514 tok)
 
 ## docs/database/
@@ -4128,9 +4128,9 @@
 
 ## docs/elite-web-builder-package/homepage/
 
-- `about.html` — Our Story — SkyyRose | Luxury Grows from Concrete (~34379 tok)
+- `about.html` — Our Story — SkyyRose (~34379 tok)
 - `index.html` — The Skyy Rose Collection — Oakland Luxury Streetwear (~17938 tok)
-- `skyyrose-homepage-v2.html` — SkyyRose — Luxury Grows from Concrete | Oakland Streetwear (~228350 tok)
+- `skyyrose-homepage-v2.html` — SkyyRose —  | Oakland Streetwear (~228350 tok)
 
 ## docs/elite-web-builder-package/product-pages/
 

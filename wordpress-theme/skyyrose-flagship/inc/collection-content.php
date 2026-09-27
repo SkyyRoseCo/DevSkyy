@@ -222,7 +222,7 @@ function skyyrose_get_collection_content( $slug ) {
 			'story_label'         => __( 'Chapter One', 'skyyrose' ),
 			'story_title'         => __( 'The First Rose', 'skyyrose' ),
 			'story_text_1'        => __( 'I drew the first rose on a night I couldn\'t afford dinner. Broke, a baby on the way, every manufacturer I\'d worked with had scammed me. But I sat there sketching that script logo until 4 AM because something in me knew — if I could get this right, everything changes. Signature is that night made permanent.', 'skyyrose' ),
-			'story_quote'         => __( '"They told me luxury doesn\'t come from Oakland. I said luxury grows from concrete — and I meant that literally. This collection is the concrete. Everything else grew from here."', 'skyyrose' ),
+			'story_quote'         => __( '"They told me luxury doesn\'t come from Oakland. I said  — and I meant that literally. This collection is the concrete. Everything else grew from here."', 'skyyrose' ),
 			'story_text_2'        => __( 'Before Black Rose. Before Love Hurts. Before the press wrote us up or anybody knew the name. There was just a father in Oakland with a daughter\'s name and a refusal to quit. Every piece in Signature carries that original DNA — the gold rose, the hand-drawn script, the silhouettes I sketched when I had nothing but the idea.', 'skyyrose' ),
 			'story_visual_text'   => __( 'SIGNATURE', 'skyyrose' ),
 			'story_visual_label'  => __( 'Est. Oakland, CA', 'skyyrose' ),
@@ -281,7 +281,7 @@ function skyyrose_get_collection_content( $slug ) {
 				),
 				array(
 					'label'  => __( '03 — THE CONCRETE', 'skyyrose' ),
-					'lead'   => __( 'luxury grows from concrete —', 'skyyrose' ),
+					'lead'   => __( ' —', 'skyyrose' ),
 					'accent' => __( 'and I meant that literally.', 'skyyrose' ),
 					'sub'    => __( 'Signature / The Founder', 'skyyrose' ),
 				),

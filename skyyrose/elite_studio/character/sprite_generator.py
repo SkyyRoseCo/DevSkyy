@@ -4,7 +4,7 @@ Web sprite generation for SkyyRose Elite Studio characters.
 Generates structured sprite prompts for web-deployable character animations,
 including the canonical 7-pose SkyyRose mascot sprite sheet.
 
-"Luxury Grows from Concrete."
+""
 """
 
 from __future__ import annotations
@@ -139,7 +139,7 @@ class SpriteGenerator:
                     "Consistent character design — same face, hair, outfit as reference. "
                     "Web sprite quality — clean edges, suitable for animation. "
                     "Exact same scale and anchor point across all poses. "
-                    "SkyyRose brand character, 'Luxury Grows from Concrete.'"
+                    "SkyyRose brand character, ''"
                 )
                 prompts[pose] = prompt
 

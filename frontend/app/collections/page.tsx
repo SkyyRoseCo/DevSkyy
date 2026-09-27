@@ -5,10 +5,10 @@ import { getAllEnrichedCollections } from '@/lib/catalog-server';
 export const metadata: Metadata = {
   title: 'Collections | SkyyRose',
   description:
-    'Discover the SkyyRose luxury fashion collections. Three immersive worlds: Black Rose, Love Hurts, and Signature.',
+    'Discover the SkyyRose luxury fashion collectionsThree immersive worlds: Black Rose, Love Hurts, and Signature.',
   openGraph: {
     title: 'SkyyRose Collections',
-    description: 'Luxury Grows from Concrete. Three immersive worlds await.',
+    description: ' Three immersive worlds await.',
   },
 };
 

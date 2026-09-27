@@ -342,7 +342,7 @@ do_setup_seo() {
     # Site identity
     log_wp "Setting site identity..."
     wp_remote "option update blogname 'SkyyRose — Oakland Luxury Streetwear'"
-    wp_remote "option update blogdescription 'Luxury Grows from Concrete. Premium streetwear from Oakland, CA.'"
+    wp_remote "option update blogdescription ' Premium streetwear from Oakland, CA.'"
     log_success "Site title + tagline set"
 
     # Permalinks

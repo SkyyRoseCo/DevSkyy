@@ -117,7 +117,7 @@ $hp_models  = SKYYROSE_ASSETS_URI . '/models';
 				<span class="hp-letter__postmark" aria-hidden="true">
 					<?php
 					echo wp_kses(
-						__( 'Luxury<br>Grows from<br>Concrete', 'skyyrose' ),
+						__( '', 'skyyrose' ),
 						array( 'br' => array() )
 					);
 					?>

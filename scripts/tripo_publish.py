@@ -24,12 +24,11 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import csv
-import os
-import tempfile
+import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
 TRIPO_OUTPUT = REPO_ROOT / "renders/output/tripo"
 CATALOG_CSV = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
 ASSETS_DIR = REPO_ROOT / "wordpress-theme/skyyrose-flagship/assets/images/products"
@@ -38,8 +37,9 @@ IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp", ".tiff", ".bmp"}
 
 
 def load_catalog() -> list[dict[str, str]]:
-    with CATALOG_CSV.open(newline="", encoding="utf-8") as fh:
-        return list(csv.DictReader(fh))
+    from skyyrose.core.catalog_loader import read_catalog_rows
+
+    return read_catalog_rows(CATALOG_CSV)
 
 
 def catalog_by_sku(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
@@ -188,6 +188,7 @@ def show_manifest(plan: list[dict], dry_run: bool) -> None:
 def execute_plan(plan: list[dict], rows: list[dict[str, str]]) -> int:
     catalog_map = catalog_by_sku(rows)
     errors: list[str] = []
+    successful_changes: dict[str, dict[str, str]] = {}
 
     for entry in plan:
         if entry.get("error") or not entry.get("ops"):
@@ -200,30 +201,26 @@ def execute_plan(plan: list[dict], rows: list[dict[str, str]]) -> int:
                 print(f"  Converting {src.name} → {dst.name}...")
                 convert_to_webp(src, dst)
                 catalog_map[sku][op["catalog_field"]] = op["catalog_value"]
+                successful_changes.setdefault(sku, {})[op["catalog_field"]] = op["catalog_value"]
                 print(f"    OK  ({dst.stat().st_size / 1024:.0f} KB)")
             except Exception as exc:
                 msg = f"{sku}/{op['view']}: {exc}"
                 print(f"    FAILED — {msg}")
                 errors.append(msg)
 
-    # Rewrite catalog CSV atomically
-    print()
-    print("  Updating catalog CSV...")
-    fieldnames = list(rows[0].keys())
-    updated_rows = list(catalog_map.values())
+    if not successful_changes:
+        return len(errors)
 
-    fd, tmp_path = tempfile.mkstemp(dir=CATALOG_CSV.parent, suffix=".csv.tmp")
+    # Commit changed image bindings to the registry; CSV is only an export.
+    from skyyrose.core.product_registry import update_catalog_fields
+
     try:
-        with os.fdopen(fd, "w", newline="", encoding="utf-8") as fh:
-            writer = csv.DictWriter(fh, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(updated_rows)
-        os.replace(tmp_path, CATALOG_CSV)
-        print(f"  Catalog updated: {CATALOG_CSV}")
+        for sku, changes in successful_changes.items():
+            update_catalog_fields(sku, changes)
+        print("  Product registry and catalog export updated.")
     except Exception as exc:
-        os.unlink(tmp_path)
-        errors.append(f"catalog write failed: {exc}")
-        print(f"  FAILED to write catalog — {exc}")
+        errors.append(f"registry update failed: {exc}")
+        print(f"  FAILED to update registry — {exc}")
 
     return len(errors)
 

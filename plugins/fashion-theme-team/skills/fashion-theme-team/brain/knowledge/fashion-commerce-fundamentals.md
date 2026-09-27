@@ -1,7 +1,7 @@
 # Fashion Commerce Fundamentals
 
 > **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> *SkyyRose*
 
 ## Value model
 

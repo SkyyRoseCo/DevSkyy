@@ -15,7 +15,7 @@ Patterns extracted from corrections. Review at session start.
 - Image URLs: append `?v=' . SKYYROSE_VERSION` for CDN cache bust on branding images
 - Cursor disappearing: Jetpack Instant Search overlay (z-index max, opacity 0, pointer-events auto) — fix with `pointer-events: none !important`
 - Customizer DB values override `get_theme_mod()` defaults — hardcode values when Customizer has stale data
-- "Where Love Meets Luxury" is NOT the tagline — "Luxury Grows from Concrete" is the only tagline
+No tagline is authorized. Do not restore retired slogans.
 
 ## Animation System
 - Premium animations: `animations-premium.css` + `premium-interactions.js` loaded globally
@@ -270,3 +270,76 @@ specific falsifiable claim, reproduce the claim before judging the work. I
 re-measured, it was right, and the wrong production change never shipped.
 Related: [[bug-334]], and the same incomplete-enumeration shape as the copy
 claim in the 2026-09-17 entry.
+
+## 2026-09-21 — "names only" is not redaction on a malformed env file (bug-357)
+
+**What I did wrong.** Auditing `.env.secrets`, I printed the key *names* from
+`dotenv_values()`, reasoning that names are safe and only values are secret.
+That dumped ~25 live credentials into the transcript.
+
+**Why the reasoning failed.** The invariant "the key side is not a secret" only
+holds for a *well-formed* env file. `.env.secrets` is a credentials notebook:
+it contains prose and pasted-command lines shaped `<label> = <secret>` and
+`Name: <secret>`, so python-dotenv returns the **secret as the dict key**. A
+names-only print is a values print. I had already recorded that this exact file
+contains prose labels with `=` — the fact was in memory and not applied at the
+moment of printing.
+
+**The rule.** Redaction is a **whitelist, never a blacklist**. When echoing
+anything derived from an env file:
+
+```python
+SAFE_NAME = re.compile(r"^[A-Z][A-Z0-9_]*$")
+label = k if SAFE_NAME.match(k) else f"<redacted:{hashlib.sha256(k.encode()).hexdigest()[:8]}>"
+```
+
+Never iterate `dotenv_values()` keys into stdout unfiltered. This applies to any
+file not *proven* well-formed — and a file you are auditing *because* it is
+malformed is by definition not proven well-formed.
+
+**Blast radius when it happens.** Values reach the model context and the local
+`~/.claude/projects/*/​*.jsonl` transcript. Containment is rotation, not deletion.
+
+## 2026-09-21 — a two-way diff cannot tell you who changed what
+
+**What I did wrong.** Checking whether a merge preserved both sides, I diffed my
+branch against `origin/main` and reported 24 keys "lost." Every one of them was
+**my own change reflected back**: the comparison had no way to separate "they
+changed it" from "I changed it."
+
+**Why it matters.** The output was plausible — a tidy list of named registry keys.
+Had I relayed it, an agent would have chased 24 regressions that never existed.
+This is the second baseline error of the session; the first hashed the empty string
+as a value and invented 5 diverging credentials.
+
+**The rule.** Attribution questions require the **merge base**, never the other
+branch:
+
+```bash
+base=$(git merge-base <mine> origin/main)
+```
+
+`theirs` = base→main, `ours` = base→mine. The merged result must carry theirs'
+value for `theirs - ours` and ours' for `ours - theirs`; only `theirs ∩ ours`
+needs judgment. Same shape as the pristine-tree rule for test attribution in
+`CLAUDE.md` §3 — **whenever the question is "who did this," a two-point comparison
+is the wrong instrument.**
+
+**Also from this session:** assert before you replace. A `python` edit of
+`MEMORY.md` asserted its anchor string was present, failed loudly on a wording
+mismatch, and cost one retry. A blind `str.replace` would have silently no-op'd
+and I would have reported success.
+
+## 2026-09-27 — "identical to main" is not "no consumer here" (bug-360)
+
+After PR #975 merged I deleted 24 untracked resolver copies from the shared
+checkout, having byte-proven each one was superseded by `main`. The tree
+broke: its branch (`feat/single-product-entry-point`) had not merged `main`,
+and a dirty tracked file (`enhancer.py`) imported `context_resolver`. The
+untracked copies were the only thing satisfying that import. The stop-gate
+caught it; all 24 were restored from `origin/main`.
+
+**Rule:** redundancy is relative to a tree. Before deleting from a working
+tree, run the importer census *in that tree* (including dirty tracked files)
+and confirm the tree's own branch contains the replacement. "Merged to main"
+only makes a file redundant in a checkout that has main.

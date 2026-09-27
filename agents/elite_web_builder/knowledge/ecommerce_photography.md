@@ -2,7 +2,7 @@
 
 Source of truth for `ECOMMERCE_PHOTOGRAPHY_SPEC`. The Python class `skyyrose.elite_studio.fashion.photography.PhotographyDirector` holds the canonical style definitions; this doc layers in platform-specific image specs, fabric behavior rules, and commercial composition standards that the Director class does not encode.
 
-> "Luxury Grows from Concrete." Every shot must earn that tagline — the product is hero, the lighting is honest, the retouch is invisible.
+> "" Every shot must earn that tagline — the product is hero, the lighting is honest, the retouch is invisible.
 
 ---
 

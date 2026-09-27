@@ -393,7 +393,7 @@ def create_app() -> gr.Blocks:
         gr.HTML("""
         <div class="skyyrose-header">
             <h1>🌹 SkyyRose 3D Model Studio</h1>
-            <p>Luxury Grows from Concrete. | AI-Powered 3D Generation with 95% Fidelity</p>
+            <p> | AI-Powered 3D Generation with 95% Fidelity</p>
         </div>
         """)
 
@@ -597,7 +597,7 @@ def create_app() -> gr.Blocks:
         gr.HTML("""
         <div style="text-align: center; padding: 20px; color: #666; margin-top: 20px;">
             <p>🌹 <strong>SkyyRose 3D Model Studio</strong> | Powered by AI | 95% Fidelity Standard</p>
-            <p style="font-size: 0.9em;">© 2024 SkyyRose LLC - Luxury Grows from Concrete.</p>
+            <p style="font-size: 0.9em;">© 2024 SkyyRose LLC - </p>
         </div>
         """)
 

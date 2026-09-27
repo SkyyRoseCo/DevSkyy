@@ -20,7 +20,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline (verbatim):** `Luxury Grows from Concrete.` — period included. Never "luxury streetwear from Oakland" as a tagline substitute.
+No tagline is authorized. Do not restore retired slogans.
 - **Lead with the creator's value** — the pitch must answer "what's in it for them" before asking for anything. SkyyRose is the subject of the pitch, but the creator is the audience for it.
 - **Products by NAME, not SKU** — "Black Rose Crewneck", not "br-001". Always identify the product you're proposing by its full name.
 - **No mass-blast identical pitches** — every outreach references something specific the creator actually made.
@@ -83,7 +83,7 @@ Hey [Name],
 
 [Specific post or video title] — [one genuine sentence on why it resonated and why it's relevant to SkyyRose's lane. Reference Oakland, Bay Area street culture, or craft if applicable.]
 
-I'm Corey, founder of SkyyRose — luxury Oakland streetwear. "Luxury Grows from Concrete." We make [one-sentence product description] for [the audience you're describing: Bay Area style-forward people, Black streetwear consumers, etc.].
+I'm Corey, founder of SkyyRose — luxury Oakland streetwear. "" We make [one-sentence product description] for [the audience you're describing: Bay Area style-forward people, Black streetwear consumers, etc.].
 
 I think your audience would connect with [Product Name] — [one specific reason tied to their content and the collection's register, not generic "it's dope"].
 
@@ -230,8 +230,7 @@ Your "Oakland to LA" fit transition reel was clean — the way you documented
 the difference in textures between the two cities is exactly the kind of visual
 storytelling that fits where SkyyRose lives.
 
-I'm Corey, founder of SkyyRose — luxury Oakland streetwear. "Luxury Grows from
-Concrete." We just dropped the Signature Crewneck: heavyweight fleece, tonal
+I'm Corey, founder of SkyyRose — luxury Oakland streetwear. "" We just dropped the Signature Crewneck: heavyweight fleece, tonal
 embroidery, built for the Bay and wearable anywhere. West Coast luxury, no
 European house required.
 

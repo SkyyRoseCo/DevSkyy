@@ -4,7 +4,7 @@ Design tools for SkyyRose Elite Studio Fashion Intelligence.
 Covers design ideation, mockup generation, collection planning,
 tech packs, and moodboard composition.
 
-"Luxury Grows from Concrete."
+""
 """
 
 from __future__ import annotations

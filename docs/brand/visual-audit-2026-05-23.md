@@ -18,7 +18,7 @@ Live capture across 16 routes (108+ screenshots) via `openwolf designqc`. Read-o
 - **What's happening:** Every interior page renders two stacked nav bars:
   - Row 1: SEARCH / ACCOUNT / BAG with `SKYY ROSE` wordmark (wrapped on 2 lines)
   - Row 2: `SKYYROSE | LUXURY STREETWEAR BORN FROM STRUGGLE` + duplicate nav (`SIGNATURE COLLECTION | SKYYROSE`, `LOVE HURTS COLLECTION | SKYYROSE`, `BLACK ROSE COLLECTION | SKYYROSE`, `CONTACT | SKYYROSE`)
-- **Tagline issue:** "LUXURY STREETWEAR BORN FROM STRUGGLE" is tagline drift — not in brand canon. Locked tagline is "Luxury Grows from Concrete."
+- **Tagline issue:** "LUXURY STREETWEAR BORN FROM STRUGGLE" is tagline drift — not in brand canon. Locked tagline is ""
 - **Wordmark issue:** "SKYY ROSE" wraps to 2 lines in the second header, indicating the container is too narrow.
 - **Customer impact:** Every interior page first-fold is a broken-looking double header. Brand looks unprofessional and the second nav redundantly repeats menu options.
 - **Root cause hypothesis:** Either a builder (Elementor / Divi / Beaver) plugin is injecting a second header globally while the theme header is also active, OR `header.php` is being included twice, OR a global Elementor header template is fighting `header.php`.
@@ -45,7 +45,7 @@ Live capture across 16 routes (108+ screenshots) via `openwolf designqc`. Read-o
 
 ### P1-2. Homepage tagline drift: "Three collections, one vision"
 - **Page:** `/` (homepage)
-- **What's happening:** Hero subtitle reads *"Luxury Grows from Concrete. Three collections, one vision — built by a father, named after a daughter."*
+- **What's happening:** Hero subtitle reads *" Three collections, one vision — built by a father, named after a daughter."*
 - **Issue:** Locked canon says "**Four** collections, **one bloodline**" — Kids Capsule is the 4th, and "vision" should be "bloodline."
 - **Source:** `front-page.php:252` already has the canon-correct version, so the live render is either stale, cached, or another source overriding it.
 - **Severity:** Above-fold homepage copy. Three small word changes.
@@ -88,7 +88,7 @@ Live capture across 16 routes (108+ screenshots) via `openwolf designqc`. Read-o
 
 ### P3-1. About page works — minor breadcrumb hygiene
 - **Page:** `/about/`
-- **What's working:** "THE STORY" big serif headline + child wearing rose-embroidered hoodie + "Luxury Grows from Concrete." tagline = strong page.
+- **What's working:** "THE STORY" big serif headline + child wearing rose-embroidered hoodie + "" tagline = strong page.
 - **Minor:** Breadcrumb "ABOUT / SR-001" is cryptic — SR-001 is an internal slug, shouldn't be customer-facing breadcrumb text.
 
 ### P3-2. 404 page rendered content
@@ -175,7 +175,7 @@ Per Corey's request — investigate before fixing to check for common root cause
 **Root cause:** Not duplicate header. WordPress primary navigation menu items have **bloated marketing labels**:
 
 ```html
-<li><a href="/">SkyyRose | Luxury Streetwear Born From Struggle</a></li>
+<li><a href="/">SkyyRoseLuxury Streetwear Born From Struggle</a></li>
 <li><a href="/collection-signature/">SIGNATURE COLLECTION | SKYYROSE</a></li>
 <li><a href="/collection-love-hurts/">LOVE HURTS COLLECTION | SKYYROSE</a></li>
 <li><a href="/collection-black-rose/">BLACK ROSE COLLECTION | SKYYROSE</a></li>
@@ -187,7 +187,7 @@ These long labels wrap onto multiple lines in the nav container, making it LOOK 
 **Evidence:** `header.php` is clean (verified by reading the file) — single nav with `wp_nav_menu(theme_location => 'primary')`. The labels above came from the LIVE HTML curled from `/collection-black-rose/`.
 
 **Fix surface:** WordPress admin — `Appearance → Menus → Primary Menu`. Rename each menu item label:
-- `SkyyRose | Luxury Streetwear Born From Struggle` → `Home` (or remove — the centered SKYY ROSE wordmark already handles home)
+- `SkyyRoseLuxury Streetwear Born From Struggle` → `Home` (or remove — the centered SKYY ROSE wordmark already handles home)
 - `SIGNATURE COLLECTION | SKYYROSE` → `Signature`
 - `LOVE HURTS COLLECTION | SKYYROSE` → `Love Hurts`
 - `BLACK ROSE COLLECTION | SKYYROSE` → `Black Rose`

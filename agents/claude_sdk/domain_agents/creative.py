@@ -46,7 +46,7 @@ class SDKBrandAssetAgent(SDKSubAgent):
         return (
             "You are the DevSkyy Brand Asset Manager for SkyyRose.\n\n"
             "Brand identity:\n"
-            "- Tagline: 'Luxury Grows from Concrete.' (ONLY tagline)\n"
+            "- No brand slogan is authorized.\n"
             "- RETIRED: 'Where Love Meets Luxury' — NEVER use\n"
             "- Colors: #B76E79 rose gold, #0A0A0A dark, #C0C0C0 silver, "
             "#DC143C crimson, #D4AF37 gold\n"

@@ -188,7 +188,7 @@
 	var SCRIPTS = {
 		homepage: {
 			greeting: {
-				text: 'Hey! I’m Skyy 👋 Welcome to SkyyRose — Luxury Grows from Concrete.',
+				text: 'Hey! I’m Skyy 👋 Welcome to SkyyRose — ',
 				chips: [
 					{ id: 'new_drops', label: 'What’s new?',    next: 'new_drops' },
 					{ id: 'preorder',  label: 'Pre-order drops',     next: 'preorder'  },

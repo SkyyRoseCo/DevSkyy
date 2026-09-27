@@ -63,7 +63,7 @@ allowed-tools: Read Write Edit Glob
 | NEVER | Urgency timers or countdown clocks — urgency is in the copy, not a widget |
 | NEVER | European luxury house aesthetics — SkyyRose visual DNA = The Five (Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels) |
 
-**Tagline (verbatim, with period):** "Luxury Grows from Concrete."
+No tagline is authorized. Do not restore retired slogans.
 
 **Collection voice assignments — never mix:**
 - **Black Rose:** armor, concrete, darkness as beauty, silver `#C0C0C0`. Voice: "you already stood up", "concrete answering back"
@@ -147,7 +147,7 @@ My daughter Skyy Rose changed everything. I named this brand after her because s
 
 SkyyRose isn't a brand story written by a marketing team. It's a father's promise to his daughter that where you come from doesn't define where you end up.
 
-Luxury grows from concrete. Every piece we make proves it.
+ Every piece we make proves it.
 
 — Corey
 
