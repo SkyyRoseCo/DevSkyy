@@ -1,0 +1,307 @@
+{
+  "note": "Differences recorded, not reconciled. Version numbers do not establish chronology. Shipping-only additions preserve RC facts.",
+  "rc_version": 14,
+  "main_version": 13,
+  "products": {
+    "br-001": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-002": {
+      "differing_fields": [
+        "images",
+        "catalog",
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-003": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-004": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "dossier",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": [],
+      "dossier_differs": true
+    },
+    "br-005": {
+      "differing_fields": [
+        "images",
+        "catalog",
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-006": {
+      "differing_fields": [
+        "render_policy",
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-007": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-008": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-009": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "dossier",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": [],
+      "dossier_differs": true
+    },
+    "br-010": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-011": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-012": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "lh-002": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "lh-003": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "lh-004": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "dossier",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": [],
+      "dossier_differs": true
+    },
+    "lh-005": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "lh-006": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-001": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-002": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-003": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-005": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-006": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-007": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-009": {
+      "differing_fields": [
+        "render_policy",
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-011": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-012": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-013": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-014": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "sg-015": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "dossier",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": [],
+      "dossier_differs": true
+    },
+    "kids-001": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "kids-002": {
+      "differing_fields": [
+        "images",
+        "catalog",
+        "garment",
+        "merchandising",
+        "merchandising_provenance",
+        "corrections"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-014": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    },
+    "br-015": {
+      "differing_fields": [
+        "garment",
+        "merchandising",
+        "merchandising_provenance"
+      ],
+      "main_corrections_not_identical_in_rc": []
+    }
+  }
+}

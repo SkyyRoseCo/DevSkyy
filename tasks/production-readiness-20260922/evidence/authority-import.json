@@ -1,0 +1,17 @@
+{
+  "source": "origin/main",
+  "revision": "6994d978579500e94e1571a223cc4aab70c60609",
+  "files": [
+    "skyyrose/core/product.py",
+    "skyyrose/core/product_registry.py",
+    "skyyrose/core/dossier_loader.py",
+    "skyyrose/core/sot_images.py",
+    "skyyrose/core/catalog_loader.py",
+    "skyyrose/core/paths.py",
+    "scripts/sync_product_registry.py",
+    "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+    "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+    "SOT.md",
+    "skyyrose/elite_studio/logo_registry.py"
+  ]
+}

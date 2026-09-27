@@ -2,7 +2,7 @@
 sku: sg-013
 name: Mint & Lavender Crewneck
 collection: signature
-logo_reference: data/brand-logos/red-roses-cloud-cluster.md
+logo_reference: data/brand-logos/three-rose-cluster.md
 reference_image: assets/products/references/sg-013-techflat-front.jpeg
 ---
 
@@ -13,7 +13,7 @@ reference_image: assets/products/references/sg-013-techflat-front.jpeg
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:
-> - Canonical rose-cluster art (recolored to lavender / purple per COLORWAY OVERRIDE): `data/brand-logos/red-roses-cloud-cluster.md`
+> - Canonical rose-cluster art (recolored to lavender / purple per COLORWAY OVERRIDE): `data/brand-logos/three-rose-cluster.md`
 > - Product reference techflat (crewneck top + matching pants visible together):
 >   `assets/products/references/sg-013-techflat-front.jpeg`
 >

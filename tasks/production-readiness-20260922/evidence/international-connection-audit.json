@@ -1,0 +1,204 @@
+{
+    "home": "https:\/\/staging-7e48-skyyrose.wpcomstaging.com",
+    "environment": "staging",
+    "registered_shipping_methods": [
+        "flat_rate",
+        "free_shipping",
+        "local_pickup"
+    ],
+    "known_provider_settings": {
+        "woocommerce_shippo_settings": {
+            "configured_option_exists": false
+        },
+        "woocommerce_easypost_settings": {
+            "configured_option_exists": false
+        },
+        "woocommerce_easyship_settings": {
+            "configured_option_exists": false
+        },
+        "woocommerce_shipstation_settings": {
+            "configured_option_exists": false
+        },
+        "woocommerce_ups_settings": {
+            "configured_option_exists": false
+        },
+        "woocommerce_usps_settings": {
+            "configured_option_exists": false
+        },
+        "woocommerce_fedex_settings": {
+            "configured_option_exists": false
+        },
+        "woocommerce_dhl_settings": {
+            "configured_option_exists": false
+        }
+    },
+    "physical_product_measurement_coverage": [
+        {
+            "sku": "lh-005",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-015",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "kids-002",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "kids-001",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-014",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-013",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-012",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-015",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-014",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-009",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-011",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-012",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-005",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-001",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-002",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-003",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-006",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "sg-007",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "lh-006",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-009",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-010",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-011",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "lh-002",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "lh-003",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "lh-004",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-003",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-004",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-005",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-006",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-007",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-008",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-001",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        },
+        {
+            "sku": "br-002",
+            "has_positive_weight": false,
+            "has_positive_dimensions": false
+        }
+    ],
+    "weight_unit": "lbs",
+    "dimension_unit": "in"
+}

@@ -55,7 +55,7 @@ tank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket
   the hood opening at the V): A small black-and-white hockey-style league
   emblem (a stylized shield with hockey stick + puck details, woven flat).
   **Technique:** woven-label. **Color:** black + white.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in, against the
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall, against the
   striped hem band): The Hockey Championship patch (greyscale/silver palette
   patch — see hockey-championship-patch reference). Sewn onto the lower-left
   hip. **Technique:** embroidered-patch.

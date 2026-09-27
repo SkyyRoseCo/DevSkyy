@@ -62,7 +62,11 @@ $css_suffix = ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) && file_exists( $m
 $js_suffix  = ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) && file_exists( $min_js ) && filemtime( $min_js ) >= filemtime( $source_js ) ? '.min' : '';
 
 wp_enqueue_style( 'skyyrose2-immersive', SKYYROSE2_URI . '/assets/css/immersive' . $css_suffix . '.css', array( 'skyyrose2-tokens', 'skyyrose2-theme' ), SKYYROSE2_VERSION );
-wp_enqueue_script( 'skyyrose2-immersive', SKYYROSE2_URI . '/assets/js/immersive' . $js_suffix . '.js', array( 'skyyrose2-theme' ), SKYYROSE2_VERSION, true );
+// World entry is its own renderer request; it cannot wait for mascot interaction.
+// The shared loader stays dormant until immersive.js checks motion/data preferences.
+$engine_asset = '/assets/js/skyy-3d' . $js_suffix . '.js';
+wp_enqueue_script( 'skyyrose2-world-engine', SKYYROSE2_URI . $engine_asset, array( 'skyyrose2-mascot-loader' ), skyyrose2_asset_version( $engine_asset ), true );
+wp_enqueue_script( 'skyyrose2-immersive', SKYYROSE2_URI . '/assets/js/immersive' . $js_suffix . '.js', array( 'skyyrose2-theme', 'skyyrose2-world-engine' ), skyyrose2_asset_version( '/assets/js/immersive' . $js_suffix . '.js' ), true );
 
 $poster_path = SKYYROSE2_DIR . '/assets/sot/' . $poster;
 if ( ! file_exists( $poster_path ) ) {

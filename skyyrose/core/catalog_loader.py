@@ -2,7 +2,7 @@
 
 Single import surface for:
     CATALOG_CSV        — Path to wordpress-theme/.../data/skyyrose-catalog.csv
-    read_catalog_rows  — Raw CSV row iterator (list[dict[str, str]])
+    read_catalog_rows  — Registry-derived commerce rows (list[dict[str, str]])
     bool_col           — "1" / "0" → bool coercion
     int_col            — str → int | None, None if blank or <1
     status_from_row    — Derive pre-order / draft / live / retired from CSV flags
@@ -10,15 +10,16 @@ Single import surface for:
 
 Both nano_banana/catalog.py and skyyrose/elite_studio/catalog.py build
 their higher-level types on top of this module. The PHP loader uses the
-same canonical CSV but cannot share this code — keep the schema and
+same canonical product registry but cannot share this code — keep the schema and
 status-derivation rules documented in both places when they change.
 """
 
 from __future__ import annotations
 
 import csv
-from functools import cache
 from pathlib import Path
+
+from skyyrose.core.product_registry import catalog_rows
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -29,15 +30,14 @@ CATALOG_CSV = (
 PRODUCT_STATUS = {"draft", "pre-order", "live", "retired"}
 
 
-@cache
 def read_catalog_rows(path: Path | None = None) -> list[dict[str, str]]:
-    """Read the canonical catalog CSV into a list of column-name dicts.
+    """Read registry commerce rows; explicit external CSVs are import fixtures.
 
-    Skips blank rows and rows with no SKU.
-
-    Memoized: callers should treat the returned list and its dicts as
-    read-only — mutating them mutates the shared cache.
+    Both the root CSV symlink and the canonical compatibility CSV resolve to
+    the registry. Fresh reads make founder edits visible without process restart.
     """
+    if path is None or Path(path).resolve() == CATALOG_CSV.resolve():
+        return catalog_rows()
     csv_path = path or CATALOG_CSV
     with csv_path.open(newline="", encoding="utf-8") as f:
         rows = []
@@ -47,6 +47,10 @@ def read_catalog_rows(path: Path | None = None) -> list[dict[str, str]]:
                 continue
             rows.append(row)
         return rows
+
+
+# Compatibility for callers that used to explicitly invalidate the CSV cache.
+read_catalog_rows.cache_clear = lambda: None
 
 
 def bool_col(row: dict, key: str) -> bool:
@@ -67,7 +71,7 @@ def int_col(row: dict, key: str) -> int | None:
 
 
 def get_product_with_dossier(sku: str) -> dict:
-    """Return the canonical CSV row for `sku` merged with its parsed dossier.
+    """Return the registry commerce row for `sku` merged with its parsed dossier.
 
     Hard-fails (raises ``DossierMissingError``) if the SKU has no dossier.
     The thin CSV `branding_spec` column is NOT a fallback.

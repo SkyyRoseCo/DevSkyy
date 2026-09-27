@@ -133,14 +133,16 @@ function skyyrose2_marketplace_service_content() {
 			array(
 				array( 'title' => __( 'Order processing', 'skyyrose-flagship-2' ), 'body' => __( 'Your order status appears in your account. Contact Client Services with questions about processing and shipping.', 'skyyrose-flagship-2' ) ),
 				array( 'title' => __( 'Shipping updates', 'skyyrose-flagship-2' ), 'body' => __( 'Tracking is emailed when the carrier accepts the parcel. Carrier scans and delivery estimates remain the carrier’s live authority.', 'skyyrose-flagship-2' ) ),
-				array( 'title' => __( 'Return requests', 'skyyrose-flagship-2' ), 'body' => __( 'Contact Client Services with the order number, item, and reason before sending anything back. Eligibility is confirmed against the policy and item condition.', 'skyyrose-flagship-2' ) ),
+				array( 'title' => __( 'US return requests', 'skyyrose-flagship-2' ), 'body' => __( 'Eligible US returns must be started within 30 days of confirmed delivery. Email Client Services with the order number, item, and reason before sending anything back; on business days, the policy provides a prepaid USPS return label within 24 hours.', 'skyyrose-flagship-2' ) ),
+				array( 'title' => __( 'Return eligibility and refunds', 'skyyrose-flagship-2' ), 'body' => __( 'Items must be unworn, unwashed, unaltered, with tags attached and original packaging. After receipt and inspection, approved refunds return to the original payment method within 5–7 business days. Original outbound shipping is not refunded unless the policy’s damaged, defective, or incorrect-item exception applies.', 'skyyrose-flagship-2' ) ),
 			)
 		),
 		'returns-exchanges' => skyyrose2_marketplace_block_sections(
 			array(
-				array( 'title' => __( 'Before you send a piece back', 'skyyrose-flagship-2' ), 'body' => __( 'Start with Client Services before shipping anything. The team confirms eligibility against the policy, order timing, and the condition of the piece, then provides the correct next step.', 'skyyrose-flagship-2' ) ),
+				array( 'title' => __( 'Before you send a piece back', 'skyyrose-flagship-2' ), 'body' => __( 'Start with Client Services before shipping anything. Eligible returns must be requested within 30 days of confirmed delivery and meet the policy’s unworn, unwashed, unaltered, tagged, and original-packaging requirements.', 'skyyrose-flagship-2' ) ),
 				array( 'title' => __( 'What to include in your request', 'skyyrose-flagship-2' ), 'body' => __( 'Send the order number, the email used at checkout, the piece and size, and a brief reason for the request. Do not email payment-card details.', 'skyyrose-flagship-2' ) ),
-				array( 'title' => __( 'Exchanges and made-to-order pieces', 'skyyrose-flagship-2' ), 'body' => __( 'Availability, fit, and production windows are reviewed case by case. A replacement is never promised until Client Services confirms the next available option.', 'skyyrose-flagship-2' ) ),
+				array( 'title' => __( 'Free US size or color exchanges', 'skyyrose-flagship-2' ), 'body' => __( 'US exchanges for a different size or color of the same style are free. Client Services confirms replacement availability, sends a prepaid USPS return label, and the original item must be shipped within 14 days of receiving that label. Once the original is received and inspected, the replacement ships at no additional charge.', 'skyyrose-flagship-2' ) ),
+				array( 'title' => __( 'Exceptions and international exchanges', 'skyyrose-flagship-2' ), 'body' => __( 'Final Sale, customized or personalized, and ineligible-condition items cannot be returned or exchanged except where the policy’s damaged, defective, or incorrect-item exception applies. International customers pay return shipping to the US facility; after inspection, an eligible replacement ships at no additional charge.', 'skyyrose-flagship-2' ) ),
 			)
 		),
 		'size-guide'       => skyyrose2_marketplace_block_sections(

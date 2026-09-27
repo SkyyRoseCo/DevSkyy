@@ -1,0 +1,145 @@
+{
+    "home": "https:\/\/staging-7e48-skyyrose.wpcomstaging.com",
+    "environment": "staging",
+    "theme": "skyyrose-flagship-2",
+    "php": "8.4.25",
+    "woocommerce": "11.1.2",
+    "gateways": {
+        "bacs": {
+            "enabled": "no",
+            "testmode": "unknown"
+        },
+        "cheque": {
+            "enabled": "no",
+            "testmode": "unknown"
+        },
+        "cod": {
+            "enabled": "no",
+            "testmode": "unknown"
+        },
+        "stripe": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_us_bank_account": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_alipay": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_amazon_pay": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_blik": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_klarna": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_affirm": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_afterpay_clearpay": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_eps": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_bancontact": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_boleto": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_ideal": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_oxxo": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_sepa_debit": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_p24": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_multibanco": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_link": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_wechat_pay": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_cashapp": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_acss_debit": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_bacs_debit": {
+            "enabled": "no",
+            "testmode": "yes"
+        },
+        "stripe_au_becs_debit": {
+            "enabled": "no",
+            "testmode": "yes"
+        }
+    },
+    "shipping": [
+        {
+            "id": 0,
+            "name": "Locations not covered by your other zones",
+            "methods": []
+        },
+        {
+            "id": 1,
+            "name": "United States (US)",
+            "methods": [
+                {
+                    "id": "free_shipping",
+                    "title": "Free standard shipping",
+                    "cost": "",
+                    "minimum": "200"
+                },
+                {
+                    "id": "flat_rate",
+                    "title": "Standard shipping",
+                    "cost": "17",
+                    "minimum": ""
+                },
+                {
+                    "id": "flat_rate",
+                    "title": "Express shipping",
+                    "cost": "22",
+                    "minimum": ""
+                }
+            ]
+        }
+    ],
+    "tax_enabled": "yes",
+    "tax_rate_count": 0,
+    "checkout_page_id": 9452,
+    "cart_page_id": 9451,
+    "currency": "USD"
+}

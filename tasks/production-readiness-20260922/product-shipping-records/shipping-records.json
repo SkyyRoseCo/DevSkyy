@@ -1,0 +1,962 @@
+{
+  "authority": "Generated consumer; edit only canonical registry through its update API",
+  "records": {
+    "br-001": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-002": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-003": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-004": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-005": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-006": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-007": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-008": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-009": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-010": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-011": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-012": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-014": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "br-015": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "kids-001": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "kids-002": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "lh-002": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "lh-003": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "lh-004": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "lh-005": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "lh-006": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-001": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-002": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-003": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-005": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-006": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-007": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-009": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-011": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-012": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-013": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-014": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    },
+    "sg-015": {
+      "shipping": {
+        "item_weight": {
+          "value": null,
+          "unit": "g"
+        },
+        "packed_parcel": {
+          "weight": {
+            "value": null,
+            "unit": "g"
+          },
+          "dimensions": {
+            "length": null,
+            "width": null,
+            "height": null,
+            "unit": "cm"
+          },
+          "packaging_reference": null
+        }
+      },
+      "gaps": [
+        "shipping.item_weight.value",
+        "shipping.packed_parcel.weight.value",
+        "shipping.packed_parcel.dimensions.length",
+        "shipping.packed_parcel.dimensions.width",
+        "shipping.packed_parcel.dimensions.height",
+        "shipping.packed_parcel.packaging_reference"
+      ]
+    }
+  }
+}

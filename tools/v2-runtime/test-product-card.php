@@ -99,9 +99,9 @@ check_card( ! str_contains( $html, 'View piece' ), 'No third duplicate card acti
 $GLOBALS['test_archive'] = true;
 $html = render_card( array( 'product' => $piece, 'index' => 0 ), $previous );
 check_card( str_contains( $html, 'loading="lazy"' ) && str_contains( $html, '<h2 ' ), 'Archive requires explicit image priority and uses h2' );
-check_card( str_contains( $html, 'sizes="(max-width: 47.99em) calc((100vw - 3rem) / 2),' ), 'Main archive default reflects half-width mobile slots' );
+check_card( str_contains( $html, 'sizes="(max-width: 29.99em) calc(100vw - 4rem), (max-width: 47.99em) calc((100vw - clamp(2rem, 8vw, 9rem) - 3rem) / 2),' ), 'Main archive models the actual one-column then two-column mobile card slots' );
 $html = render_card( array( 'product' => $piece, 'variant' => 'feature' ), $previous );
-check_card( str_contains( $html, 'sizes="(max-width: 47.99em) calc(100vw - 2rem),' ), 'Feature variants retain conservative full-width mobile slots' );
+check_card( str_contains( $html, 'sizes="(max-width: 29.99em) calc(100vw - 4rem),' ), 'Archive feature variants use the same actual grid slot sizing' );
 $html = render_card( array( 'product' => $piece, 'sizes' => '(max-width: 900px) 90vw, 600px' ), $previous );
 check_card( str_contains( $html, 'sizes="(max-width: 900px) 90vw, 600px"' ), 'Explicit composition sizes override automatic defaults' );
 foreach ( array( 0 => array( 'eager', 'high' ), 1 => array( 'eager', 'auto' ), 2 => array( 'lazy', 'auto' ) ) as $index => $expected ) {

@@ -1,0 +1,6 @@
+{
+  "all_33_preexisting_product_records_unchanged": true,
+  "baseline_file": "tasks/production-readiness-20260922/evidence/pre-shipping-product-facts.json",
+  "baseline_sha256": "c99c9925ad1991f9878c31705d58e4c29de9f2707a1e5ec5a0c43fa8352ac6de",
+  "method": "Remove only newly added shipping key from each product; compare full records with pre-edit baseline."
+}

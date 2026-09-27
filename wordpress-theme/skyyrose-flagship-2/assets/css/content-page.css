@@ -85,6 +85,7 @@
 .sr2-contact-form label { display: grid; gap: var(--sr2-space-2); color: var(--sr2-muted); font-family: var(--sr2-font-ui); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; }
 .sr2-contact-form input, .sr2-contact-form select, .sr2-contact-form textarea { width: 100%; box-sizing: border-box; padding: .85rem 0; border: 0; border-bottom: 1px solid var(--sr2-line); border-radius: 0; outline: 0; background: transparent; color: var(--sr2-ink); font: inherit; letter-spacing: normal; text-transform: none; }
 .sr2-contact-form input:focus, .sr2-contact-form select:focus, .sr2-contact-form textarea:focus { border-bottom-color: var(--sr2-accent); box-shadow: 0 1px 0 var(--sr2-accent); }
+.sr2-contact-form :is(input, select, textarea):focus-visible { outline: var(--sr2-focus-width) solid var(--sr2-focus-outer); outline-offset: var(--sr2-focus-offset); box-shadow: 0 0 0 var(--sr2-focus-width) var(--sr2-focus-inner); }
 .sr2-contact-form textarea { resize: vertical; }
 @media (max-width: 900px) {
 	.sr2-about-origin, .sr2-contact-grid { grid-template-columns: 1fr; }

@@ -20,6 +20,12 @@ colorway). Mid-weight knit jersey fabric. Pullover construction — NO buttons,
 NO front placket. NOT a t-shirt. NOT a hoodie. NOT a basketball tank. NOT a
 baseball jersey. **PRE-ORDER product** — design renderings only.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** The rose-cluster artwork fills only the **front 3** and the **back 2**. The front 2 and back 3 remain plain white. The founder's recorded review comments are preserved in `data/render-corrections.json` under br-009 and `renders/oai/_review/review-state.json` (front: 2026-06-10T02:03:26.224Z; back: 2026-06-10T02:03:50.416Z). They supersede the older both-digits-fill instruction.
+
+Corrected specifications do not approve the previously flagged renders or authorize paid generation, media promotion, or deployment. Keep the existing candidate-review and execution-approval boundaries.
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:
@@ -40,10 +46,10 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 ### Front
 - **front-chest** (large, ~10in tall, vertically centered): The number
   **"32"** rendered as athletic-block digits with a **black outline edge**
-  and greyscale Black Rose three-rose-cluster art filling the interior of
-  both digits. **Technique:** sublimated. **Color:** black outline +
+  and Black Rose three-rose-cluster art filling the **3 only**; the **2
+  remains plain white**. **Technique:** sublimated. **Color:** black outline +
   greyscale rose-cluster fill on white ground.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in): The NFL
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall): The NFL
   Authentic Collection patch sewn onto the lower-left hip. **Technique:**
   embroidered-patch.
 
@@ -57,7 +63,8 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
   **black twill** on the white body. **Technique:** tackle-twill. **Color:**
   black twill letters on white ground.
 - **back-center** (large, ~12in tall, vertically centered): The number
-  **"32"** rendered identically to the front. **Technique:** sublimated.
+  **"32"** with the rose fill in the **2 only** and the **3 plain white**,
+  reversing the front fill assignment. **Technique:** sublimated.
   **Color:** black outline + greyscale rose-cluster fill.
 
 ### Sleeves
@@ -81,7 +88,7 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 - NO multi-color rendering of the rose-cluster fill — greyscale only.
 - NO red anywhere on this colorway (this is the Last Oakland white away —
   NO 49ers red, NO Giants orange).
-- NO solid-color "32" digits — the digits have black outline + rose fill.
+- NO rose fill in both digits. Front: rose in 3, plain white 2. Back: plain white 3, rose in 2. Preserve the black outline and the specified greyscale rose-cluster fill.
 - NO MLB Authentic Collection patch (baseball series only).
 - NO Hockey Championship patch.
 - NO NBA Authentic Collection patch.

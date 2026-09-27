@@ -51,7 +51,7 @@ renderings only.
   canonical Black Rose three-rose-cluster (greyscale) centered inside the
   circle. **Technique:** sublimated. **Color:** dark grey ring + gold "THE
   BAY" text + greyscale rose-cluster.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in, against the
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall, against the
   fading rose pattern): The NBA Authentic Collection patch sewn onto the
   lower-left hip. **Technique:** embroidered-patch.
 

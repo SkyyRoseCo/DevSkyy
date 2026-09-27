@@ -1,0 +1,26 @@
+[
+  {
+    "engine": "chromium",
+    "width": 390,
+    "errors": [],
+    "checks": [
+      "menu keyboard dismissal",
+      "below-threshold standard shipping",
+      "free shipping at exact $200 threshold",
+      "US checkout shipping"
+    ],
+    "cart100": "YOUR BAG\n\nKeep your pieces close.\nBLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) - M\nEach $100.00\n\nLine subtotal\n$100.00\n\nBLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) - M quantity\nREMOVE\nCode\nAPPLY\nUPDATE BAG\nCart totals\n$100.00\nStandard shipping: $17.00\nExpress shipping: $22.00\n\nShipping to CA.\n\nChange address\n$117.00\nPROCEED TO CHECKOUT",
+    "cart200": "Cart updated.\n\nYOUR BAG\n\nKeep your pieces close.\nBLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) - M\nEach $100.00\n\nLine subtotal\n$200.00\n\nBLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) - M quantity\nREMOVE\nCode\nAPPLY\nUPDATE BAG\nCart totals\n$200.00\nFree standard shipping\nStandard shipping: $17.00\nExpress shipping: $22.00\n\nShipping to CA.\n\nChange address\n$200.00\nPROCEED TO CHECKOUT",
+    "us": "Product\tSubtotal\nBLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) - M  × 2\t$200.00\nSubtotal\t$200.00\nShipment\t\nFree standard shipping\nStandard shipping: $17.00\nExpress shipping: $22.00\n\nTotal\t$200.00\n\nSorry, it seems that there are no available payment methods. Please contact us if you require assistance or wish to make alternate arrangements.\n\nYour personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.\n\nI have read and agree to the website terms and conditions\n \n*\n\nPLACE ORDER",
+    "failure": "page.waitForFunction: Timeout 30000ms exceeded.",
+    "cleanupError": "page.waitForFunction: Timeout 30000ms exceeded."
+  },
+  {
+    "engine": "chromium",
+    "width": 1440,
+    "errors": [],
+    "checks": [],
+    "failure": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://staging-7e48-skyyrose.wpcomstaging.com/\", waiting until \"load\"\u001b[22m\n",
+    "cleanupError": "page.goto: net::ERR_ABORTED at https://staging-7e48-skyyrose.wpcomstaging.com/cart/\nCall log:\n\u001b[2m  - navigating to \"https://staging-7e48-skyyrose.wpcomstaging.com/cart/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  }
+]

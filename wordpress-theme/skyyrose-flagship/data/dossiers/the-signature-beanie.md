@@ -14,6 +14,8 @@ reference_image: assets/products/references/sg-007-techflat.jpeg
 
 ## Branding — exactly what IS on this product
 
+Source reconciliation pending: see `logo-registry.json::gaps::signature-beanie-variant-binding`. Preserve the specific product/variant artwork; the existing text below must not be treated as proof that conflicting references have been resolved.
+
 > Logo art canonical references:
 > - Black Rose three-rose-cluster (greyscale): `data/brand-logos/three-rose-cluster.md`
 > - Red Roses Cloud Cluster (LH multi-color):  `data/brand-logos/red-roses-cloud-cluster.md`

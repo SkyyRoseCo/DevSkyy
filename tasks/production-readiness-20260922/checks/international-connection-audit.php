@@ -1,0 +1,6 @@
+<?php
+if(home_url()!=='https://staging-7e48-skyyrose.wpcomstaging.com'||wp_get_environment_type()!=='staging'){throw new Exception('Wrong environment');}
+$method_ids=array_keys(WC()->shipping()->get_shipping_methods());
+$providers=[];foreach(['woocommerce_shippo_settings','woocommerce_easypost_settings','woocommerce_easyship_settings','woocommerce_shipstation_settings','woocommerce_ups_settings','woocommerce_usps_settings','woocommerce_fedex_settings','woocommerce_dhl_settings'] as $name){$v=get_option($name,null);$providers[$name]=['configured_option_exists'=>is_array($v)&&count($v)>0];}
+$physical=[];foreach(wc_get_products(['limit'=>-1,'status'=>'publish','type'=>['simple','variable']]) as $p){if($p->is_virtual())continue;$physical[]=['sku'=>$p->get_sku(),'has_positive_weight'=>(float)$p->get_weight()>0,'has_positive_dimensions'=>(float)$p->get_length()>0&&(float)$p->get_width()>0&&(float)$p->get_height()>0];}
+echo wp_json_encode(['home'=>home_url(),'environment'=>wp_get_environment_type(),'registered_shipping_methods'=>$method_ids,'known_provider_settings'=>$providers,'physical_product_measurement_coverage'=>$physical,'weight_unit'=>get_option('woocommerce_weight_unit'),'dimension_unit'=>get_option('woocommerce_dimension_unit')],JSON_PRETTY_PRINT);

@@ -62,11 +62,15 @@ $built    = file_get_contents( skyyrose2_critical_css_path() );
 sr2_assert( is_array( $contract ) && ! empty( $contract['budgetBytes'] ), 'contract declares a byte budget' );
 sr2_assert( is_string( $built ) && '' !== trim( $built ), 'built critical CSS exists' );
 sr2_assert( strlen( $built ) <= (int) $contract['budgetBytes'], 'built critical CSS is within budget' );
-foreach ( array( '@font-face', ':root', '.sr2-house-header', '.sr2-header__brand-mark', '.sr2-brand-media', '.sr2-archive-scene', '.sr2-archive-scene__copy', '.sr2-control--primary', '[data-recovery-hero-video]', '.sr2-archive-scene__concierge', '#skyyrose-mascot-recall', '.sr2-house-nav' ) as $needle ) {
+foreach ( array( '@font-face', ':root', '.sr2-house-header', '.sr2-header__brand-mark', '.sr2-brand-media', '.sr2-archive-scene', '.sr2-editorial-hero__copy', '#sr2-archive-title', '.sr2-control--primary', '[data-recovery-hero-video]', '.sr2-archive-scene__concierge', '.sr2-house-nav' ) as $needle ) {
 	sr2_assert( false !== strpos( $built, $needle ), "critical CSS carries first-view structure: {$needle}" );
 }
 sr2_assert( false === strpos( $built, '__SKYYROSE2_ASSETS__/css/' ), 'no relative asset path survives that would resolve against the document' );
 sr2_assert( false === stripos( $built, 'is-open' ) && false === stripos( $built, ':hover' ), 'state-only rules stay in the full stylesheets' );
+sr2_assert( 1 === preg_match( '/@media\s*\(scripting:\s*none\).*?\.sr2-house-nav\{([^}]+)\}/s', $built, $no_script_rules ), 'critical CSS includes the no-script navigation fallback' );
+foreach ( array( 'visibility:visible', 'opacity:1', 'position:static' ) as $declaration ) {
+	sr2_assert( false !== strpos( $no_script_rules[1], $declaration ), 'no-script fallback keeps ' . $declaration );
+}
 
 // Off the front page nothing prints; on the front page the resolved contract prints once.
 ob_start();
@@ -115,10 +119,13 @@ $GLOBALS['sr2_filter_values'] = array();
 
 // The template prints the bootstrap directly after the hero section.
 $front_page = file_get_contents( SKYYROSE2_DIR . '/front-page.php' );
-$hero_end   = strpos( $front_page, '</section>' );
+$hero_start = strpos( $front_page, "get_template_part( 'template-parts/home/editorial-hero'" );
+$hero_end   = false !== $hero_start ? strpos( $front_page, '); ?>', $hero_start ) : false;
 $bootstrap  = strpos( $front_page, 'skyyrose2_print_hero_bootstrap()' );
-sr2_assert( false !== $hero_end && false !== $bootstrap && $bootstrap > $hero_end && $bootstrap - $hero_end < 40, 'bootstrap follows the hero section immediately' );
-sr2_assert( strpos( $front_page, '<section id="sr2-archive-worlds"' ) > $bootstrap, 'bootstrap precedes the second act' );
+sr2_assert( false !== $hero_end && false !== $bootstrap && $bootstrap > $hero_end && $bootstrap - $hero_end < 40, 'bootstrap follows the rendered hero part immediately' );
+sr2_assert( strpos( $front_page, "get_template_part( 'template-parts/home/editorial-collection'" ) > $bootstrap, 'bootstrap precedes the next visual section' );
+$hero_part = file_get_contents( SKYYROSE2_DIR . '/template-parts/home/editorial-hero.php' );
+sr2_assert( false !== strpos( $hero_part, 'data-recovery-hero-video' ) && false !== strpos( $hero_part, 'data-recovery-motion-toggle' ) && false !== strpos( $hero_part, 'id="sr2-archive-title"' ) && false !== strpos( $hero_part, 'aria-label="<?php esc_attr_e( \'SkyyRose\'' ), 'rendered hero retains controller hooks and exposes one accessible wordmark' );
 
 // First-view font preloads: front page only, one record per face, hrefs equal to the inline @font-face URLs.
 sr2_assert( in_array( 'wp_preload_resources:skyyrose2_critical_font_preloads:20', $hooks, true ), 'font preloads register on wp_preload_resources after the route hero preloads' );
@@ -126,11 +133,11 @@ $GLOBALS['sr2_front'] = false;
 sr2_assert( array( array( 'href' => 'x' ) ) === skyyrose2_critical_font_preloads( array( array( 'href' => 'x' ) ) ), 'content routes get no font preloads' );
 $GLOBALS['sr2_front'] = true;
 $preloads = skyyrose2_critical_font_preloads( array() );
-sr2_assert( 4 === count( $preloads ), 'front page preloads the four first-view faces' );
+sr2_assert( 2 === count( $preloads ), 'front page preloads only its two first-view faces' );
 foreach ( $preloads as $record ) {
 	sr2_assert( 'font' === $record['as'] && 'font/woff2' === $record['type'] && 'anonymous' === $record['crossorigin'], 'font preload records are CORS font preloads' );
 	sr2_assert( 1 === preg_match( '#url\\(["\']?' . preg_quote( $record['href'], '#' ) . '["\']?\\)#', $head ), 'preload href matches the inline @font-face URL byte for byte: ' . $record['href'] );
 }
-sr2_assert( 4 === count( skyyrose2_critical_font_preloads( array( $preloads[0] ) ) ), 'an existing href is not preloaded twice' );
+sr2_assert( 2 === count( skyyrose2_critical_font_preloads( array( $preloads[0] ) ) ), 'an existing href is not preloaded twice' );
 
 echo "critical-rendering: OK\n";

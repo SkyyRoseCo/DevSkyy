@@ -1,0 +1,17 @@
+{
+    "home": "https:\/\/staging-7e48-skyyrose.wpcomstaging.com",
+    "environment": "staging",
+    "stripe_enabled": "no",
+    "stripe_testmode": "yes",
+    "test_key_fields_present": {
+        "test_publishable_key": false,
+        "test_secret_key": false,
+        "test_webhook_secret": false
+    },
+    "allowed_countries_mode": "all",
+    "specific_allowed_countries": "",
+    "shipping_countries_mode": "",
+    "specific_shipping_countries": "",
+    "taxes_enabled": "yes",
+    "automated_tax_setting": "no"
+}

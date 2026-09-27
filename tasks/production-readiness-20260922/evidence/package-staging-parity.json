@@ -1,0 +1,22 @@
+{
+  "candidate_sha256": "ea9f7bfa15c4775ae4a9c743b6f4d88bde2a9c4a4deb85f741dbaf95d69a7998",
+  "files": 563,
+  "matching": 560,
+  "mismatches": [
+    {
+      "path": "assets/css/home-page.css",
+      "candidate": "37077ac6794a09ee6e2bc34a864f6a4f62f0f9d828afbb4776425cee1b41cbfb",
+      "staging": "9aa5fd2f372b7a18f6e6f6837c7b8550f6b4ee0d59aac3b7ef1a4fb25b174f36"
+    },
+    {
+      "path": "assets/js/theme.js",
+      "candidate": "cef7bb3bf8059209b650543d992e18f5dcd039a71365bb454321da445d1cab0a",
+      "staging": "f91b07b14481b84415ec80a10f9091eba42567d5d871a5577934d0e07b0727e3"
+    },
+    {
+      "path": "languages/skyyrose-flagship-2.pot",
+      "candidate": "ca076a44f79df28fbf8317f579a7860776cd1013c6829f85e9f6543c9e7d1f32",
+      "staging": "64f8f3ab4632a1011cbf8aafb81f67b2671e82412cfb90f3de35bb2d795659d5"
+    }
+  ]
+}

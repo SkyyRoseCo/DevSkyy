@@ -55,6 +55,15 @@ foreach ( $required as $key ) {
 	skyyrose2_registry_assert( isset( $pages[ $key ] ), "Missing required page definition: {$key}" );
 }
 
+$service_content = skyyrose2_marketplace_service_content();
+skyyrose2_registry_assert( str_contains( $service_content['shipping-returns'], 'within 30 days of confirmed delivery' ), 'Shipping and returns summary must retain the published 30-day US return window.' );
+skyyrose2_registry_assert( str_contains( $service_content['shipping-returns'], 'prepaid USPS return label within 24 hours' ), 'Shipping and returns summary must retain the published prepaid US-label timing.' );
+skyyrose2_registry_assert( str_contains( $service_content['shipping-returns'], 'unworn, unwashed, unaltered, with tags attached and original packaging' ), 'Shipping and returns summary must retain published return eligibility conditions.' );
+skyyrose2_registry_assert( str_contains( $service_content['returns-exchanges'], 'Free US size or color exchanges' ), 'Returns summary must identify the published free US same-style exchange scope.' );
+skyyrose2_registry_assert( str_contains( $service_content['returns-exchanges'], 'within 14 days of receiving that label' ), 'Returns summary must retain the published 14-day exchange-label window.' );
+skyyrose2_registry_assert( str_contains( $service_content['returns-exchanges'], 'Final Sale, customized or personalized, and ineligible-condition items cannot be returned or exchanged' ), 'Returns summary must retain published exchange exceptions.' );
+skyyrose2_registry_assert( ! str_contains( $service_content['returns-exchanges'], 'reviewed case by case' ), 'Returns summary must not contradict the published free US same-style exchange policy.' );
+
 $paths = array();
 foreach ( $pages as $key => $page ) {
 	skyyrose2_registry_assert( ! empty( $page['path'] ), "Page path is empty: {$key}" );

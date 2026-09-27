@@ -46,7 +46,7 @@ exists yet.
   preserved (three roses + thorny vines + cloud at base) but rendered in
   black/white/grey only. **Technique:** sublimated. **Color:** white outline
   + greyscale rose-cluster fill on red ground.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in, near the bottom
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall, near the bottom
   hem on the wearer's left hip): The NFL Authentic Collection patch (yellow
   field + navy "BLACK ROSE / COLLECTION" + NFL shield + white "AUTHENTIC"
   banner + red diamond divider + greyscale rose-cluster + "Property Of /

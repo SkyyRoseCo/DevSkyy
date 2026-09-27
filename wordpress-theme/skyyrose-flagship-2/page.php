@@ -49,8 +49,22 @@ while ( have_posts() ) :
 			<?php
 			$is_account = function_exists( 'is_account_page' ) && is_account_page();
 			$is_service = in_array( $slug, array( 'shipping-returns', 'returns-exchanges', 'size-guide', 'faq' ), true );
+			$managed_content = '';
+			if ( 'faq' === $slug && function_exists( 'skyyrose2_marketplace_pages' ) ) {
+				$marketplace_pages = skyyrose2_marketplace_pages();
+				$managed_content   = isset( $marketplace_pages['faq']['content'] ) ? (string) $marketplace_pages['faq']['content'] : '';
+			}
+			get_template_part(
+				'template-parts/pages/service',
+				null,
+				array(
+					'slug'            => $slug,
+					'is_account'      => $is_account,
+					'is_service'      => $is_service,
+					'managed_content' => $managed_content,
+				)
+			);
 			?>
-			<section class="sr2-generic-page<?php echo $is_account ? ' sr2-c-account' : ( $is_service ? ' sr2-c-service' : '' ); ?>" data-sr2-route="<?php echo esc_attr( $is_account ? 'account' : ( $is_service ? 'service' : 'page' ) ); ?>"><header class="sr2-generic-head"><p class="sr2-eyebrow"><?php echo esc_html( $is_account ? __( 'Client account', 'skyyrose-flagship-2' ) : get_the_title() ); ?></p><h1><?php the_title(); ?></h1></header><div class="sr2-page-copy sr2-page-copy--generic"><?php the_content(); ?></div><?php if ( $is_service ) : ?><nav class="sr2-c-service__links" aria-label="<?php esc_attr_e( 'Client service links', 'skyyrose-flagship-2' ); ?>"><a href="<?php echo esc_url( home_url( '/shipping-returns/' ) ); ?>"><?php esc_html_e( 'Shipping + returns', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/returns-exchanges/' ) ); ?>"><?php esc_html_e( 'Returns + exchanges', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/size-guide/' ) ); ?>"><?php esc_html_e( 'Size guide', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>"><?php esc_html_e( 'FAQ', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact', 'skyyrose-flagship-2' ); ?></a></nav><?php endif; ?></section>
 		<?php endif; ?>
 	</main>
 	<?php

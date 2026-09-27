@@ -1,0 +1,21 @@
+[
+  {
+    "engine": "chromium",
+    "width": 390,
+    "errors": [],
+    "checks": [
+      "menu keyboard dismissal"
+    ],
+    "cart100": "Your bag\nYour cart is currently empty.\n\nRETURN TO SHOP",
+    "failure": "The expression evaluated to a falsy value:\n\n  assert(r.cart100.includes('$100.00'))\n",
+    "cartCleaned": true
+  },
+  {
+    "engine": "chromium",
+    "width": 1440,
+    "errors": [],
+    "checks": [],
+    "failure": "page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://staging-7e48-skyyrose.wpcomstaging.com/\", waiting until \"networkidle\"\u001b[22m\n",
+    "cleanupError": "page.goto: Target page, context or browser has been closed"
+  }
+]

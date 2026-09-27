@@ -551,3 +551,22 @@ SKYYROSE_VARIATION_TEMPLATES;
 	wp_add_inline_script( 'wp-util', $script, 'after' );
 }
 add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_csp_variation_templates', 120 );
+
+/**
+ * Keep the editorial home stylesheet render-blocking when Jetpack Boost has
+ * critical CSS enabled. The split on-model hero relies on its complete layout
+ * before first paint; Other routes retain their existing Boost stylesheet behavior.
+ *
+ * @param string|false $method Requested Boost loading method.
+ * @param string       $handle  Registered style handle.
+ * @param string       $media   Stylesheet media attribute.
+ * @return string|false
+ */
+function skyyrose2_homepage_blocking_boost_styles( $method, $handle, $media ) {
+	if ( ! is_front_page() || 'all' !== $media ) {
+		return $method;
+	}
+
+	return false;
+}
+add_filter( 'jetpack_boost_async_style', 'skyyrose2_homepage_blocking_boost_styles', PHP_INT_MAX, 3 );
