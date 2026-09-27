@@ -13,7 +13,11 @@ reference_image: assets/products/references/br-012-techflat.jpeg
 
 # BLACK is Beautiful Jersey Series — 5. Baseball Classic (Last Oakland)
 
-**Garment type lock:** Authentic-style baseball jersey — V-neck collar opening with gold/yellow piping, button-front placket with gold/yellow piping, short sleeves with gold/yellow cuff piping, straight even hem (no drop-tail). Solid **dark forest green** base fabric. Mid-weight knit jersey. NOT a t-shirt, NOT a hoodie, NOT a basketball tank, NOT a football jersey. **PRE-ORDER product**.
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Solid **dark forest green** base fabric. Mid-weight knit jersey.
+Features: Authentic-style baseball jersey — V-neck collar opening with gold/yellow piping, button-front placket with gold/yellow piping, short sleeves with gold/yellow cuff piping, straight even hem (no drop-tail). Solid **dark forest green** base fabric. Mid-weight knit jersey. NOT a t-shirt, NOT a hoodie, NOT a basketball tank, NOT a football jersey. **PRE-ORDER product**.
+Color: Green/Gold
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giants br-014 / White br-015). Green base + gold/yellow piping is the Oakland palette throughout.
 
@@ -25,7 +29,7 @@ This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giant
 > - SR monogram:                   `data/brand-logos/sr-monogram.md`
 
 ### Front
-- **front-chest** (large, arched, ~9in wide): The phrase **"BLACK IS BEAUTIFUL"**
+- **front-chest** (large, arched, approximately 72% of visible torso width, matching the physical flatlay): The phrase **"BLACK IS BEAUTIFUL"**
   as authentic tackle-twill lettering with a **gold satin-stitch edge**
   surrounding the letter faces. The contrast satin-stitch edge is integral
   to this colorway's look (vs. the Classic black which has no contrast edge).
@@ -36,7 +40,7 @@ This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giant
   - **Satin-stitch edge — gold** around every letter (including the black A).
   - **Technique:** tackle-twill. **Color:** white twill faces (with one black
     "A") + gold satin-stitch edge.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in): The Black Rose
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall): The Black Rose
   MLB Authentic Collection patch (yellow field, navy "BLACK ROSE / COLLECTION",
   MLB-style batter silhouette, white "AUTHENTIC" banner, red diamond divider,
   "Members Only / Yay Area, Ca", SkyyRose script logo, "Made for Kings ang

@@ -17,7 +17,12 @@ founder's 2026-06-09 review-board comments.
 
 # Mint & Lavender Sweatpants
 
-**Garment type lock:** Athletic-cut sweatpants with a tapered jogger leg and
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Mid-weight cotton-fleece fabric.
+Fit: Athletic-cut sweatpants with a tapered jogger leg and
+ribbed ankle cuffs — solid **mint green** body, front and back, all one mint
+color.
+Features: Athletic-cut sweatpants with a tapered jogger leg and
 ribbed ankle cuffs — solid **mint green** body, front and back, all one mint
 color. Small lavender rose-cluster logo on the **wearer's left thigh** (upper
 thigh, below the hip). Elasticated drawstring waistband, side-seam hand
@@ -26,6 +31,8 @@ Hoodie (sg-006) as a matching set. **Sold as the sweatpants SKU only — the
 matching hoodie is sg-006, separate SKU.** NOT shorts. NOT track pants. NOT
 the white chevron windbreaker-set pants (that's sg-015 — a completely
 different product).
+Color: Mint/Lavender
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 

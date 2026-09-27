@@ -15,7 +15,11 @@ extra_references:
 
 # BLACK Rose × Love Hurts Basketball Shorts
 
-**Garment type lock:** Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total.
+Features: Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
+Color: Black
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
 

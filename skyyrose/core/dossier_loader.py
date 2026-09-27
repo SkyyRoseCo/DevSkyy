@@ -1,14 +1,13 @@
 """Per-product design dossier loader — shared by all four catalog readers.
 
-Reads markdown dossiers from
-`wordpress-theme/skyyrose-flagship/data/dossiers/{slug}.md` and parses them
+Reads founder-authored dossier markdown embedded in ``logo-registry.json`` and parses it
 into a structured dict consumed by:
   - skyyrose.core.catalog_loader.get_product_with_dossier()
   - nano_banana.catalog
   - skyyrose.elite_studio.catalog
   - skyyrose.elite_studio.agents.three_d_agent (RAS prompt construction)
 
-Hard-fails on missing dossier (H1 from plan): the canonical CSV's thin
+Hard-fails on missing dossier (H1 from plan): the legacy CSV's thin
 `branding_spec` column is NOT a fallback — adding one is a backdoor that lets
 us forget to author.
 
@@ -21,10 +20,10 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from functools import cache
 from pathlib import Path
 
 from skyyrose.core.catalog_loader import CATALOG_CSV, read_catalog_rows
+from skyyrose.core.product_registry import load_registry
 
 DOSSIERS_DIR = CATALOG_CSV.parent / "dossiers"
 
@@ -180,42 +179,96 @@ def parse_dossier_markdown(text: str) -> Dossier:
     )
 
 
-@cache
+def project_registry_dossier(product: dict) -> Dossier:
+    """Project a registry record, honoring structured founder specifications.
+
+    Source markdown remains preserved in the registry. The effective garment
+    paragraph is shared by readers and generated markdown mirrors; unrelated
+    branding/negative sections are preserved rather than heuristically rewritten.
+    """
+    entry = product.get("dossier", {})
+    content = entry.get("content")
+    slug = entry.get("slug", "")
+    if not isinstance(content, str) or not content.strip():
+        raise DossierMissingError(f"No dossier {slug!r} content in the product registry.")
+    dossier = parse_dossier_markdown(content)
+    if not dossier.slug:
+        dossier.slug = slug
+
+    garment = product.get("garment")
+    if not isinstance(garment, dict):
+        return dossier
+    specifications: dict[str, list[str]] = {}
+    for field_name in ("materials", "fit", "features"):
+        field_value = garment.get(field_name)
+        specification = field_value.get("specification") if isinstance(field_value, dict) else None
+        if isinstance(specification, str) and specification.strip():
+            specifications.setdefault(specification.strip(), []).append(field_name.title())
+    parts = [f"{' / '.join(labels)}: {value}" for value, labels in specifications.items()]
+    color = garment.get("color")
+    if isinstance(color, str) and color.strip():
+        parts.append(f"Color: {color.strip()}")
+    sizes = garment.get("available_sizes")
+    if isinstance(sizes, list) and sizes and all(isinstance(size, str) for size in sizes):
+        parts.append(f"Available sizes: {' | '.join(sizes)}")
+    if not parts:
+        return dossier
+    dossier.garment_type_lock = (
+        "FOUNDER_CONFIRMED structured specifications "
+        "(take precedence over legacy dossier prose):\n" + "\n".join(parts)
+    )
+    replacement = f"**Garment type lock:** {dossier.garment_type_lock}"
+    pattern = r"\*\*Garment type lock:\*\*\s*.+?(?=\n\n|\n##|\Z)"
+    dossier.raw, count = re.subn(pattern, lambda _: replacement, content, count=1, flags=re.DOTALL)
+    if not count:
+        dossier.raw = f"{content.rstrip()}\n\n{replacement}\n"
+    return dossier
+
+
 def load_dossier(slug: str, dossiers_dir: Path | None = None) -> Dossier:
     """Load and parse a dossier by slug. Raises DossierMissingError if absent.
 
-    Memoized: callers should treat the returned Dossier as read-only —
-    mutating fields mutates the shared cache.
+    Default reads use the editable product registry, never generated dossier
+    mirrors. An explicit noncanonical directory supports isolated fixtures.
+    Reload on each call so a founder correction is immediately observable.
     """
-    base = dossiers_dir or DOSSIERS_DIR
-    path = base / f"{slug}.md"
-    if not path.exists():
+    if dossiers_dir is not None and dossiers_dir.resolve() != DOSSIERS_DIR.resolve():
+        path = dossiers_dir / f"{slug}.md"
+        if not path.exists():
+            raise DossierMissingError(f"No fixture dossier at {path}.")
+        text = path.read_text(encoding="utf-8")
+    else:
+        for product in load_registry()["products"].values():
+            entry = product.get("dossier", {})
+            if entry.get("slug") == slug:
+                return project_registry_dossier(product)
         raise DossierMissingError(
-            f"No dossier at {path}. Author the dossier before rendering. "
-            f"CSV branding_spec is not a fallback."
+            f"No dossier {slug!r} in the product registry. "
+            "Author its dossier content before rendering; generated mirrors "
+            "and branding_spec are not fallbacks."
         )
-    dossier = parse_dossier_markdown(path.read_text(encoding="utf-8"))
+    dossier = parse_dossier_markdown(text)
     if not dossier.slug:
         dossier.slug = slug
     return dossier
 
 
 def get_product_with_dossier(sku: str) -> dict:
-    """Return the canonical CSV row for `sku` merged with its parsed dossier.
+    """Return the registry catalog row for `sku` merged with its parsed dossier.
 
     Raises:
-        KeyError if SKU is not in the canonical CSV.
-        DossierMissingError if the SKU's dossier file does not exist.
+        KeyError if SKU is not in the registry catalog.
+        DossierMissingError if the registry dossier content does not exist.
     """
     rows = {row["sku"]: row for row in read_catalog_rows()}
     if sku not in rows:
-        raise KeyError(f"SKU {sku!r} not found in {CATALOG_CSV}")
+        raise KeyError(f"SKU {sku!r} not found in the product registry")
     row = rows[sku]
     slug = (row.get("dossier_slug") or "").strip()
     if not slug:
         raise DossierMissingError(
-            f"SKU {sku!r} has no dossier_slug in {CATALOG_CSV}. "
-            f"Add the dossier_slug column value before loading."
+            f"SKU {sku!r} has no dossier_slug in the product registry. "
+            "Add the product's dossier binding before loading."
         )
     dossier = load_dossier(slug)
     return {**row, "dossier": dossier.to_dict(), "_dossier": dossier}
@@ -226,6 +279,7 @@ __all__ = [
     "Dossier",
     "DossierMissingError",
     "parse_dossier_markdown",
+    "project_registry_dossier",
     "load_dossier",
     "get_product_with_dossier",
 ]
