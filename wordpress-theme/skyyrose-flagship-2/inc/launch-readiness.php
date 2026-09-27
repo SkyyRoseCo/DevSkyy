@@ -92,8 +92,27 @@ function skyyrose2_render_approved_pdp_styling_view( $product ) {
 	if ( ! $front || $front['src'] !== SKYYROSE2_URI . '/' . $entry['src'] ) {
 		return false;
 	}
+	$src = $front['card_src'] ?? $front['src'];
+	$width = (int) ( $front['card_width'] ?? $front['width'] );
+	$height = (int) ( $front['card_height'] ?? $front['height'] );
+	$sizes = function_exists( 'skyyrose2_pdp_gallery_sizes' ) ? skyyrose2_pdp_gallery_sizes( $front['width'], $front['height'] ) : '';
+	return skyyrose2_render_approved_pdp_styling_front( $sku, $front, $src, $width, $height, $sizes );
+}
+
+/** Render an approved original when no integrity-valid derivative is available. */
+function skyyrose2_render_approved_pdp_styling_front( $sku, $front, $src = '', $width = 0, $height = 0, $sizes = '' ) {
+	if ( ! is_array( $front ) || 'FOUNDER_APPROVED_V2_CARD' !== ( $front['scene_status'] ?? '' ) || empty( $front['src'] ) || empty( $front['alt'] ) ) {
+		return false;
+	}
+	$src = $src ?: $front['src'];
+	$width = (int) ( $width ?: $front['width'] );
+	$height = (int) ( $height ?: $front['height'] );
 	echo '<figure class="sr2-pdp-styling-view" data-sr2-approved-styling="' . esc_attr( $sku ) . '">';
-	echo '<img src="' . esc_url( $front['src'] ) . '" width="' . (int) $front['width'] . '" height="' . (int) $front['height'] . '" alt="' . esc_attr( $front['alt'] ) . '" decoding="async" fetchpriority="high">';
+	echo '<img src="' . esc_url( $src ) . '" width="' . $width . '" height="' . $height . '"';
+	if ( ! empty( $front['srcset'] ) && $sizes ) {
+		echo ' srcset="' . esc_attr( $front['srcset'] ) . '" sizes="' . esc_attr( $sizes ) . '"';
+	}
+	echo ' alt="' . esc_attr( $front['alt'] ) . '" decoding="async" fetchpriority="high">';
 	echo '<figcaption>' . esc_html__( 'On-model styling view', 'skyyrose-flagship-2' ) . '</figcaption></figure>';
 	return true;
 }

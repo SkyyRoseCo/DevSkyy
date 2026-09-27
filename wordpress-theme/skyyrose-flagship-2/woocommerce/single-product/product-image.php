@@ -48,9 +48,11 @@ $video_metadata = static function ( $value, $object_id, $key, $single ) use ( $o
 $video_product_metadata = static function ( $value, $instance ) use ( $owner_id ) {
 	return $instance && $instance->get_id() === $owner_id ? array() : $value;
 };
+$approved_primary = skyyrose2_pdp_approved_ghost_front_filter( $product );
 add_filter( 'woocommerce_product_get_image_id', $primary, 20, 2 );
 add_filter( 'woocommerce_product_get_gallery_image_ids', $gallery, 20, 2 );
 add_filter( 'woocommerce_gallery_image_html_attachment_image_params', $attributes, 20, 4 );
+add_filter( 'woocommerce_single_product_image_thumbnail_html', $approved_primary, 30, 2 );
 add_filter( 'get_post_metadata', $video_metadata, 20, 4 );
 add_filter( 'woocommerce_product_get__wc_video_gallery', $video_product_metadata, 20, 2 );
 try {
@@ -58,6 +60,7 @@ try {
 } finally {
 	remove_filter( 'woocommerce_product_get__wc_video_gallery', $video_product_metadata, 20 );
 	remove_filter( 'get_post_metadata', $video_metadata, 20 );
+	remove_filter( 'woocommerce_single_product_image_thumbnail_html', $approved_primary, 30 );
 	remove_filter( 'woocommerce_gallery_image_html_attachment_image_params', $attributes, 20 );
 	remove_filter( 'woocommerce_product_get_gallery_image_ids', $gallery, 20 );
 	remove_filter( 'woocommerce_product_get_image_id', $primary, 20 );

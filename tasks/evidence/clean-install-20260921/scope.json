@@ -1,0 +1,23 @@
+{
+  "task": "clean-install-20260921",
+  "manager": "/root",
+  "executor": "/root/release_install",
+  "reviewer": "/root",
+  "scope": "isolated WordPress 7.1.1 WooCommerce 11.1.1 install of pinned split package; no remote writes",
+  "acceptance": [
+    "exact 558-file reconstruction",
+    "theme activation and real WordPress HTTP smoke",
+    "documented rollback to baseline theme"
+  ],
+  "required_evidence": [
+    "candidate hashes",
+    "install commands and versions",
+    "HTTP smoke",
+    "rollback",
+    "independent_review"
+  ],
+  "authentication": "NOT_APPLICABLE local synthetic DB only",
+  "source_sha256": "e1a35cc901854714f471e1256e6f2aa60a4610788c07f033a65f7cc65f67ce5d",
+  "status": "IN_PROGRESS",
+  "at": "2026-09-21T21:26:37.137464+00:00"
+}

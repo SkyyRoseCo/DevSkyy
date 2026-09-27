@@ -353,7 +353,7 @@ function skyyrose2_seo_breadcrumbs() {
 }
 
 /**
- * Extract visible core Details blocks for honest FAQ schema.
+ * Extract the maintained, visible FAQ for honest FAQ schema.
  *
  * @return array<int,array{question:string,answer:string}>
  */
@@ -362,8 +362,25 @@ function skyyrose2_seo_faq_entries() {
 		return array();
 	}
 	$content = (string) get_post_field( 'post_content', get_queried_object_id() );
+	if ( function_exists( 'skyyrose2_marketplace_pages' ) ) {
+		$pages = skyyrose2_marketplace_pages();
+		if ( ! empty( $pages['faq']['content'] ) ) {
+			$content = (string) $pages['faq']['content'];
+		}
+	}
 	$entries = array();
 	if ( preg_match_all( '#<details[^>]*>\s*<summary[^>]*>(.*?)</summary>(.*?)</details>#is', $content, $matches, PREG_SET_ORDER ) ) {
+		foreach ( $matches as $match ) {
+			$question = skyyrose2_seo_excerpt( $match[1], 240 );
+			$answer   = skyyrose2_seo_excerpt( $match[2], 1000 );
+			if ( $question && $answer ) {
+				$entries[] = array(
+					'question' => $question,
+					'answer'   => $answer,
+				);
+			}
+		}
+	} elseif ( preg_match_all( '#<h2[^>]*>(.*?)</h2>\s*(?:<!--[^>]*-->\s*)*<p[^>]*>(.*?)</p>#is', $content, $matches, PREG_SET_ORDER ) ) {
 		foreach ( $matches as $match ) {
 			$question = skyyrose2_seo_excerpt( $match[1], 240 );
 			$answer   = skyyrose2_seo_excerpt( $match[2], 1000 );

@@ -154,7 +154,7 @@ msgstr ""
 msgid "Across the House"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:148
+#: template-parts/commerce/product-card.php:145
 msgid "Added to your bag."
 msgstr ""
 
@@ -234,7 +234,7 @@ msgstr ""
 msgid "Availability, fit, and production windows are reviewed case by case. A replacement is never promised until Client Services confirms the next available option."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:77 template-parts/home/kids-capsule-reveal.php:55
+#: template-parts/commerce/product-card.php:74 template-parts/home/kids-capsule-reveal.php:55
 msgid "Available"
 msgstr ""
 
@@ -434,11 +434,11 @@ msgstr ""
 msgid "Client Services"
 msgstr ""
 
-#: page.php:53
+#: template-parts/pages/service.php:29
 msgid "Client account"
 msgstr ""
 
-#: page.php:53
+#: template-parts/pages/service.php:42
 msgid "Client service links"
 msgstr ""
 
@@ -506,7 +506,7 @@ msgstr ""
 msgid "Confidence does not arrive borrowed. The first walk belongs to the child wearing it — their pace, their color, their way of taking the room."
 msgstr ""
 
-#: inc/global-shell.php:124 inc/global-shell.php:51 inc/presentation-registry.php:196 inc/presentation-registry.php:239 inc/starter-content.php:27 page.php:53 template-parts/skyy-mascot.php:12
+#: inc/global-shell.php:124 inc/global-shell.php:51 inc/presentation-registry.php:196 inc/presentation-registry.php:239 inc/starter-content.php:27 template-parts/pages/service.php:47 template-parts/skyy-mascot.php:12
 msgid "Contact"
 msgstr ""
 
@@ -722,7 +722,7 @@ msgstr ""
 msgid "Explore worlds"
 msgstr ""
 
-#: inc/global-shell.php:121 inc/presentation-registry.php:248 page.php:43 page.php:53
+#: inc/global-shell.php:121 inc/presentation-registry.php:248 page.php:43 template-parts/pages/service.php:46
 msgid "FAQ"
 msgstr ""
 
@@ -986,7 +986,7 @@ msgstr ""
 msgid "Keep your pieces close."
 msgstr ""
 
-#: front-page.php:72 functions.php:853 inc/global-shell.php:133 inc/launch-readiness.php:219 inc/presentation-registry.php:188 template-immersive-kids-capsule.php:16 template-parts/commerce/search-dialog.php:39
+#: front-page.php:72 functions.php:853 inc/global-shell.php:133 inc/launch-readiness.php:238 inc/presentation-registry.php:188 template-immersive-kids-capsule.php:16 template-parts/commerce/search-dialog.php:39
 msgid "Kids Capsule"
 msgstr ""
 
@@ -1262,7 +1262,7 @@ msgstr ""
 msgid "On backorder"
 msgstr ""
 
-#: inc/launch-readiness.php:97
+#: inc/launch-readiness.php:116
 msgid "On-model styling view"
 msgstr ""
 
@@ -1390,7 +1390,7 @@ msgstr ""
 msgid "Pre-order / Full payment at checkout"
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:92 template-parts/commerce/product-card.php:139 template-parts/commerce/product-hero.php:128
+#: template-parts/commerce/hero-composed-scene.php:92 template-parts/commerce/product-card.php:136 template-parts/commerce/product-hero.php:128
 msgid "Pre-order edition"
 msgstr ""
 
@@ -1434,7 +1434,7 @@ msgstr ""
 msgid "Previous world chapter"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:125
+#: template-parts/commerce/product-card.php:122
 msgid "Price:"
 msgstr ""
 
@@ -1470,7 +1470,7 @@ msgstr ""
 msgid "Product image awaiting founder verification."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:102 template-parts/commerce/product-card.php:99
+#: template-parts/commerce/product-card.php:96 template-parts/commerce/product-card.php:99
 msgid "Product image unavailable"
 msgstr ""
 
@@ -1510,11 +1510,11 @@ msgstr ""
 msgid "Purple Guard · KIDS-002"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:146
+#: template-parts/commerce/product-card.php:143
 msgid "Quick view"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:146
+#: template-parts/commerce/product-card.php:143
 msgid "Quick view %s"
 msgstr ""
 
@@ -1574,7 +1574,7 @@ msgstr ""
 msgid "Returns + Exchanges"
 msgstr ""
 
-#: page.php:53
+#: template-parts/pages/service.php:44
 msgid "Returns + exchanges"
 msgstr ""
 
@@ -1602,7 +1602,7 @@ msgstr ""
 msgid "Royal Procession controls"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:120
+#: template-parts/commerce/product-card.php:117
 msgid "SKU:"
 msgstr ""
 
@@ -1694,7 +1694,7 @@ msgstr ""
 msgid "Shipping + Returns"
 msgstr ""
 
-#: page.php:53
+#: template-parts/pages/service.php:43
 msgid "Shipping + returns"
 msgstr ""
 
@@ -1806,7 +1806,7 @@ msgstr ""
 msgid "Size Guide"
 msgstr ""
 
-#: page.php:53
+#: template-parts/pages/service.php:45
 msgid "Size guide"
 msgstr ""
 
@@ -2262,7 +2262,7 @@ msgstr ""
 msgid "This chapter moved."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:148
+#: template-parts/commerce/product-card.php:145
 msgid "This piece could not be added. Open the product to try again."
 msgstr ""
 
@@ -2306,7 +2306,7 @@ msgstr ""
 msgid "Type at least 2 characters for a preview."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:77
+#: template-parts/commerce/product-card.php:74
 msgid "Unavailable"
 msgstr ""
 
@@ -2354,7 +2354,7 @@ msgstr ""
 msgid "VIII / Continue"
 msgstr ""
 
-#: functions.php:259 functions.php:261 template-parts/commerce/product-card.php:88
+#: functions.php:259 functions.php:261 template-parts/commerce/product-card.php:85
 msgid "View %s"
 msgstr ""
 

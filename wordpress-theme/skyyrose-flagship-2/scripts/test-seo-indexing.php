@@ -18,6 +18,7 @@ $skyyrose2_test_context  = array(
 	'cart'          => false,
 	'checkout'      => false,
 	'account'       => false,
+	'page'          => false,
 	'not_found'     => false,
 	'singular'      => false,
 	'canonical'     => '',
@@ -89,6 +90,29 @@ function is_singular( $post_type = '' ) {
 }
 function is_front_page() {
 	return false;
+}
+function is_page() {
+	global $skyyrose2_test_context;
+	return $skyyrose2_test_context['page'];
+}
+function sanitize_title( $value ) {
+	return strtolower( trim( preg_replace( '/[^a-z0-9]+/i', '-', $value ), '-' ) );
+}
+function get_post_field( $field, $post_id ) {
+	if ( 'post_name' === $field ) {
+		return 'faq';
+	}
+	if ( 'post_content' === $field ) {
+		return '<details><summary>Stale database question?</summary><p>Stale database answer.</p></details>';
+	}
+	return '';
+}
+function skyyrose2_marketplace_pages() {
+	return array(
+		'faq' => array(
+			'content' => '<!-- wp:heading --><h2 class="wp-block-heading">Canonical size question?</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Canonical registry answer.</p><!-- /wp:paragraph -->',
+		),
+	);
 }
 function get_query_var( $key ) {
 	return 0;
@@ -219,6 +243,13 @@ skyyrose2_test_assert( array() === array_values( $collisions ), 'Adapter redecla
 // The active SEO adapter must use the same permitted primary as the PDP.
 function get_bloginfo( $key ) { return 'SkyyRose'; }
 function apply_filters( $name, $value ) { return $value; }
+$skyyrose2_test_context['page'] = true;
+$faq_entries = skyyrose2_seo_faq_entries();
+skyyrose2_test_assert(
+	array( array( 'question' => 'Canonical size question?', 'answer' => 'Canonical registry answer.' ) ) === $faq_entries,
+	'FAQ schema must use the same maintained registry content rendered by the visible FAQ page.'
+);
+$skyyrose2_test_context['page'] = false;
 function wc_get_product( $id ) { return new class {
 	public function get_name() { return 'Test garment'; }
 	public function get_short_description() { return 'Authoritative product copy.'; }

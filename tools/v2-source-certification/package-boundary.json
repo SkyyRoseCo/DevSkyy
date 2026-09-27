@@ -3214,6 +3214,16 @@
       "category": "RUNTIME SOURCE",
       "reason": "V2 canonical navigation, scoped heading and editorial cleanup, approved PDP styling views",
       "release": true
+    },
+    "template-parts/pages/service.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Shared generic, service, FAQ and account page section",
+      "release": true
+    },
+    "scripts/test-page-service-template.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Service-section rendering regression; not PHP runtime",
+      "release": false
     }
   },
   "schema": "skyyrose.v2.package-boundary.v1"
