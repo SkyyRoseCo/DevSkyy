@@ -1,3 +1,65 @@
+## Single product registry — required for SkyyRose work
+
+`logo-registry.json` at the repository root is a symlink to
+`wordpress-theme/skyyrose-flagship/data/logo-registry.json`. This ONE JSON is
+the editable product SOT. Its `products[sku]` records own commerce fields,
+garment color, available sizes and sizing references, fit, materials, features,
+the complete design specification, and image/source bindings. Its logo/placement
+sections own graphics and decoration dimensions. Founder corrections are applied
+here first.
+
+Do not author separate product facts in CSVs, dossier files, prompts, local
+maps, or generated manifests. Those are compatibility projections or consumers.
+**Read through ONE entry point:**
+`from skyyrose.core.product import get_product`. `get_product(sku)` returns the
+complete record in one call — commerce fields, garment facts, the founder's
+design specification, an image for every role, render sources, logos and
+placements, copy, founder-verbatim corrections, authority, and a `gaps` list
+naming anything absent. It fails closed: an unknown SKU raises, and a fact is
+never a silent blank. Non-Python callers use
+`python -m skyyrose.core.product <sku>` for the identical JSON. The narrow
+readers (`product_registry`, `catalog_loader`, `dossier_loader`, `sot_images`,
+`LogoRegistry`) remain for single-field needs but are no longer the default. Use
+the registry update API for catalog writes. Run
+`python scripts/sync_product_registry.py` after direct JSON edits and
+`python scripts/sync_product_registry.py --check` before handoff. CI must fail
+if CSV/dossier projections drift. Actual image binaries retain their existing
+asset paths; the registry owns the references.
+
+When operating in another checkout, verify it has the unified `products` schema
+and current founder corrections before execution. Never substitute an old
+checkout's CSV/dossiers when its registry is stale. Pass the registry location
+and this authority rule to every delegated agent and workflow.
+
+## SkyyRose founder and maker authority — required for all agents
+
+Corey is the founder and maker of the SkyyRose items. His product
+specifications, founder-authored dossiers, supplied artwork identifications, and
+direct corrections are authoritative for those products.
+
+- Accept his statements about his own designs, dimensions, materials, graphics,
+  placements, and collection identities. Record direct confirmation as
+  `FOUNDER_CONFIRMED`.
+- When an older registry, dossier, generated record, or agent assumption
+  conflicts with his latest explicit correction, update the conflicting record
+  within the task scope. Do not require him to prove the correction again or
+  favor stale documentation over his statement.
+- Do not impose additional manufacturer, third-party, photographic, or
+  independent verification requirements on product facts he has supplied. Do not
+  downgrade his specifications to `NOT_MANUFACTURING_VERIFIED` or similar
+  statuses.
+- Preserve his exact dimensions, ranges, artwork, and wording. A documented
+  range or approximate notation is part of his specification, not a reason to
+  question his authority.
+- Verify that agent output and saved records match his instructions. Do not
+  confuse checking our execution with re-verifying the maker's knowledge of his
+  own products.
+- Ask only for a genuinely missing detail needed to carry out the work; do not
+  ask for reconfirmation of a fact he already supplied. Never invent an unstated
+  measurement or alter unrelated product details.
+- Include this instruction in delegated briefs and handoffs for SkyyRose
+  product, catalog, design, rendering, and review work.
+
 # DevSkyy Agent Guidelines
 
 ## Scope and working method
