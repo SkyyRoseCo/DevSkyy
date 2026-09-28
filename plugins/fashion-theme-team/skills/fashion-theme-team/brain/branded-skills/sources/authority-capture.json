@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "captured_at": "2026-08-17T00:35:37+00:00",
+  "captured_at": "2026-09-28T01:47:13+00:00",
   "method": "CA-verified TLS; publisher and final hosts pinned; complete artifact up to 10 MB hashed; publisher identity marker checked",
   "claim_boundary": "Artifact authentication only; every material claim still requires a current claim-specific anchor and applicability check at use time.",
   "requested_count": 18,
@@ -21,9 +21,9 @@
       "host_allowlist": [
         "developer.woocommerce.com"
       ],
-      "captured_bytes": 33169,
+      "captured_bytes": 32731,
       "capture_complete": true,
-      "content_sha256": "062e50d5c68838f362fecf9e2e455df6e7ec675902f31342bba55239481a0349",
+      "content_sha256": "b23cde88bd813606db81baacfe956ef328f342731e906d6812c5ef26919e06b0",
       "identity_markers_verified": true
     },
     {
@@ -40,9 +40,9 @@
       "host_allowlist": [
         "developers.google.com"
       ],
-      "captured_bytes": 188469,
+      "captured_bytes": 190241,
       "capture_complete": true,
-      "content_sha256": "6f4388d09087b7eae9eed971f1cea392e9624fb96ef75b1e800c688149b273fc",
+      "content_sha256": "2a369f6026ad2e15f63cc0c7de0edf6bf063b2392565c347e1e536a390b847f0",
       "identity_markers_verified": true
     },
     {
@@ -69,11 +69,9 @@
       "requested_url": "https://schema.org/docs/documents.html",
       "http_status": 200,
       "final_url": "https://schema.org/docs/documents.html",
-      "content_type": "UNKNOWN_CURL_FALLBACK",
-      "etag": null,
+      "content_type": "text/html",
+      "etag": "\"Z73IVw\"",
       "last_modified": null,
-      "client": "curl-ca-verified-fallback",
-      "primary_client_error": "ValueError: expected publisher/document identity marker absent",
       "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
       "requested_host": "schema.org",
       "final_host": "schema.org",
@@ -82,7 +80,7 @@
       ],
       "captured_bytes": 12509,
       "capture_complete": true,
-      "content_sha256": "25b2303f824ec50a5b4c3eb069e28160e44159a89471d1497dd399a4510b4627",
+      "content_sha256": "0c82cb7ca7d48495eb2a1dc6be080df0fb459df62bf44fbccaa0fd5c0297e8e8",
       "identity_markers_verified": true
     },
     {
@@ -91,24 +89,24 @@
       "http_status": 200,
       "final_url": "https://senders.yahooinc.com/best-practices/",
       "content_type": "text/html; charset=UTF-8",
-      "etag": "W/\"73126-19fa9b6eeb0\"",
-      "last_modified": "Tue, 28 Jul 2026 17:12:46 GMT",
+      "etag": "W/\"73132-1a0c945d0d8\"",
+      "last_modified": "Tue, 22 Sep 2026 13:19:51 GMT",
       "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
       "requested_host": "senders.yahooinc.com",
       "final_host": "senders.yahooinc.com",
       "host_allowlist": [
         "senders.yahooinc.com"
       ],
-      "captured_bytes": 471334,
+      "captured_bytes": 471346,
       "capture_complete": true,
-      "content_sha256": "17d14a32b4d503b132015430ff1fc2fb37c1d9a5f93b30eb9bf93c0052b5ad99",
+      "content_sha256": "feaacd29c41098b215833ef52c3bd01318bb4e014bf9e84c04ad52f45157c31c",
       "identity_markers_verified": true
     },
     {
       "publisher": "Google",
       "requested_url": "https://support.google.com/a/answer/81126",
       "http_status": 200,
-      "final_url": "https://support.google.com/mail/answer/81126?visit_id=639225237298134935-2388223287&rd=1",
+      "final_url": "https://support.google.com/mail/answer/81126?visit_id=639261567970182902-3343943414&rd=1",
       "content_type": "text/html; charset=UTF-8",
       "etag": null,
       "last_modified": null,
@@ -118,9 +116,9 @@
       "host_allowlist": [
         "support.google.com"
       ],
-      "captured_bytes": 1429295,
+      "captured_bytes": 1634740,
       "capture_complete": true,
-      "content_sha256": "ba75827e2dbf154cb168706014f4234e7ecd1209c4a107ddfaff1268f27bb773",
+      "content_sha256": "79c236b0fca7f4d4f7aeb7c12c2e44d8b61e43d90b668e6f920dd4d9f1eae137",
       "identity_markers_verified": true
     },
     {
@@ -137,9 +135,9 @@
       "host_allowlist": [
         "transparency.meta.com"
       ],
-      "captured_bytes": 254791,
+      "captured_bytes": 267844,
       "capture_complete": true,
-      "content_sha256": "655c48454e097f010f9d93934828928f69c199c3d25846dd03ec0d9a9dfe11b4",
+      "content_sha256": "f6a04f5dc3df7d57685e6285064dc13c15f3b979d8b42979978c01b22731e3ab",
       "identity_markers_verified": true
     },
     {
@@ -158,7 +156,7 @@
       ],
       "captured_bytes": 125562,
       "capture_complete": true,
-      "content_sha256": "76683b2eba89d21bea912e71d7e8d8f42fa1ae892f88e86958adfd491eefb8f0",
+      "content_sha256": "08bb90f7f6f193aad32c1f5b3aaca4e552bbf354a680508b7d7635aa7b75a1c9",
       "identity_markers_verified": true
     },
     {
@@ -168,16 +166,16 @@
       "final_url": "https://www.copyright.gov/",
       "content_type": "text/html; charset=UTF-8",
       "etag": null,
-      "last_modified": "Thu, 13 Aug 2026 15:43:58 GMT",
+      "last_modified": "Thu, 24 Sep 2026 15:14:55 GMT",
       "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
       "requested_host": "www.copyright.gov",
       "final_host": "www.copyright.gov",
       "host_allowlist": [
         "www.copyright.gov"
       ],
-      "captured_bytes": 54825,
+      "captured_bytes": 54777,
       "capture_complete": true,
-      "content_sha256": "522c89fe668b5a3544fc0b5774a81e56c3fb565f4a319ce3dbc6aa67b8db2bf5",
+      "content_sha256": "6c18d4caff41ce38851d549b34db1b08adb635997c312cf02c6f8982bd4f32bd",
       "identity_markers_verified": true
     },
     {
@@ -198,7 +196,7 @@
       ],
       "captured_bytes": 54637,
       "capture_complete": true,
-      "content_sha256": "1a7d5c499bb9cecedfd58ae8f2b8563ed22192363b748d9ad3580ac226e48ff9",
+      "content_sha256": "7406129b93b56490fdb654caab67399fa730a84dff0eb8cca38e3abc621db4e8",
       "identity_markers_verified": true
     },
     {
@@ -207,17 +205,17 @@
       "http_status": 200,
       "final_url": "https://www.ftc.gov/business-guidance/advertising-marketing",
       "content_type": "text/html; charset=UTF-8",
-      "etag": "\"1786926720\"",
-      "last_modified": "Mon, 17 Aug 2026 00:32:00 GMT",
+      "etag": "\"1790559695\"",
+      "last_modified": "Mon, 28 Sep 2026 01:41:35 GMT",
       "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
       "requested_host": "www.ftc.gov",
       "final_host": "www.ftc.gov",
       "host_allowlist": [
         "www.ftc.gov"
       ],
-      "captured_bytes": 994994,
+      "captured_bytes": 994221,
       "capture_complete": true,
-      "content_sha256": "882bf541f25c216019eed6b90efd72484ee519152fe7c46924886c0b8995998f",
+      "content_sha256": "4e057c11c1202c19afe3d5104bb199fa612df424f253fcd682dd0b60c82d9872",
       "identity_markers_verified": true
     },
     {
@@ -226,17 +224,17 @@
       "http_status": 200,
       "final_url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
       "content_type": "text/html; charset=UTF-8",
-      "etag": "\"1786926887\"",
-      "last_modified": "Mon, 17 Aug 2026 00:34:47 GMT",
+      "etag": "\"1790559846\"",
+      "last_modified": "Mon, 28 Sep 2026 01:44:06 GMT",
       "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
       "requested_host": "www.ftc.gov",
       "final_host": "www.ftc.gov",
       "host_allowlist": [
         "www.ftc.gov"
       ],
-      "captured_bytes": 1007088,
+      "captured_bytes": 1005391,
       "capture_complete": true,
-      "content_sha256": "0f8b1d940f63e0c6616bab0c23d387f509522ed53a8bf584cf41b8f95c8ebe70",
+      "content_sha256": "8a73e6bee4e1f9f9fe3b92f8e25ce44f106317c647f080b235e5ea5f792312fe",
       "identity_markers_verified": true
     },
     {
@@ -245,17 +243,17 @@
       "http_status": 200,
       "final_url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
       "content_type": "text/html; charset=UTF-8",
-      "etag": "\"1786926774\"",
-      "last_modified": "Mon, 17 Aug 2026 00:32:54 GMT",
+      "etag": "\"1790559954\"",
+      "last_modified": "Mon, 28 Sep 2026 01:45:54 GMT",
       "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
       "requested_host": "www.ftc.gov",
       "final_host": "www.ftc.gov",
       "host_allowlist": [
         "www.ftc.gov"
       ],
-      "captured_bytes": 995707,
+      "captured_bytes": 993802,
       "capture_complete": true,
-      "content_sha256": "d5e7c9fa79480b4989b8227eedeb4a581fdbb9bcbd85daf1fc02416d70a5bfa5",
+      "content_sha256": "73dadf89f811e29af9f18899fc19f96823c1bd0ec7333249cd5f371a0ca88503",
       "identity_markers_verified": true
     },
     {
@@ -264,17 +262,17 @@
       "http_status": 200,
       "final_url": "https://www.ftc.gov/business-guidance/resources/selling-internet-prompt-delivery-rules",
       "content_type": "text/html; charset=UTF-8",
-      "etag": "\"1786926653\"",
-      "last_modified": "Mon, 17 Aug 2026 00:30:53 GMT",
+      "etag": "\"1790559802\"",
+      "last_modified": "Mon, 28 Sep 2026 01:43:22 GMT",
       "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
       "requested_host": "www.ftc.gov",
       "final_host": "www.ftc.gov",
       "host_allowlist": [
         "www.ftc.gov"
       ],
-      "captured_bytes": 993072,
+      "captured_bytes": 991375,
       "capture_complete": true,
-      "content_sha256": "75bc7609cdbc65bd5f65b4d17c51807ff283d6d1d86b2eb2075433c551921594",
+      "content_sha256": "767f91285afdc8d814b120a7172c5dfcf643e766c75f863cf7093f7fc87150aa",
       "identity_markers_verified": true
     },
     {
@@ -293,7 +291,7 @@
       ],
       "captured_bytes": 76270,
       "capture_complete": true,
-      "content_sha256": "f9e7489919df061ae1b71bdb779bd50d358429c9e3e35edfca2b7bd11eebe206",
+      "content_sha256": "988ce3f05adfa0bb3cb28a77591273c38474ab5f271588170cbac98f37a1a9a4",
       "identity_markers_verified": true
     },
     {
@@ -310,9 +308,9 @@
       "host_allowlist": [
         "www.tiktok.com"
       ],
-      "captured_bytes": 2583605,
+      "captured_bytes": 985600,
       "capture_complete": true,
-      "content_sha256": "cbcdac7c0192e057ad88446687a95a37321475729094598d987ec5ea1860f6d3",
+      "content_sha256": "7b43db123928f703636a85c9db2256cc875870fa64477d7830446079dfb4b1a6",
       "identity_markers_verified": true
     },
     {
@@ -329,9 +327,9 @@
       "host_allowlist": [
         "www.uspto.gov"
       ],
-      "captured_bytes": 149345,
+      "captured_bytes": 151468,
       "capture_complete": true,
-      "content_sha256": "b3de0eebea40b62667c80dd24865fd5057c54b9bbea89a8990d0931ee611247c",
+      "content_sha256": "e986e37495034c0c52d041f02d7bc07fcff2840ca98ac36ac61ddcf016acd929",
       "identity_markers_verified": true
     },
     {
