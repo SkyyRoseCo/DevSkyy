@@ -79,7 +79,7 @@ dependencies = [
     # openai 1.x client (verified green). openai 2.x is API-compatible for our usage
     # (Context7-checked, 486 mocked tests pass) but the live imagery path is unverified;
     # lifting this cap is the deliberate 2.x migration, not a routine bump (bug-254).
-    "openai>=1.6,<3",
+    "openai>=1.6,<4",
     "mcp>=1.28.1,<2",  # Fixed: CVE-2025-53365, CVE-2025-53366, CVE-2025-66416
     "claude-agent-sdk>=0.1.0",  # Claude Agent SDK for multi-agent orchestration
 
@@ -190,7 +190,7 @@ api = [
 mcp = [
     "mcp>=1.28.1,<2",
     "fastmcp==3.4.4",  # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
-    "openai>=1.57.2,<3",  # keep in lockstep with the base openai<2 cap (bug-254)
+    "openai>=1.57.2,<4",  # keep in lockstep with the base openai<2 cap (bug-254)
     "anthropic>=0.75.0",
     "google-genai>=1.50.0",
     "fastapi>=0.119.0",
