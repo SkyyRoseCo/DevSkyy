@@ -6,7 +6,7 @@ cd "$ROOT"
 command -v composer > /dev/null
 command -v php > /dev/null
 test -x node_modules/.bin/playwright
-composer install --working-dir=wordpress-theme/skyyrose-flagship --no-interaction --prefer-dist --no-progress
+COMPOSER_ALLOW_SUPERUSER=1 composer install --working-dir=wordpress-theme/skyyrose-flagship --no-interaction --prefer-dist --no-progress
 test -x wordpress-theme/skyyrose-flagship/vendor/bin/phpcbf
 wordpress-theme/skyyrose-flagship/vendor/bin/phpcbf --version
 wordpress-theme/skyyrose-flagship/vendor/bin/phpcs -i
