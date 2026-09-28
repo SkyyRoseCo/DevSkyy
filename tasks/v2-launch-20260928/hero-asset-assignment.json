@@ -1,0 +1,16 @@
+{
+  "asset": "house-monument-20260928",
+  "role": "BRAND_ABSTRACT",
+  "maker_direction": "Translucent SR monogram and rose statue; no product portrait cards",
+  "provider": "built-in imagegen",
+  "board_id": "0cc8c2da-359a-4bb1-8a25-ce888b030f73",
+  "board_item": "house-monument-glass-v2",
+  "source": "tasks/v2-launch-20260928/house-monument-glass-source.png",
+  "source_sha256": "7e54da25a9f4a0cab2efe5ad6acdd9f20d4b33fa85779372c669e664e14a1a6e",
+  "delivery": "wordpress-theme/skyyrose-flagship-2/assets/images/house-monument-20260928.webp",
+  "delivery_sha256": "05e9890ba85971569b7a422b892e3db3d51ae53ac6efb6bdd2d55f85c7859811",
+  "dimensions": [1672, 941],
+  "pages": ["/", "/pre-order/"],
+  "product_authority": false,
+  "visual_review": "Parent inspected generated asset and current desktop/mobile layout previews; live review pending deployment"
+}

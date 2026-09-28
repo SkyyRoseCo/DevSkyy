@@ -172,7 +172,7 @@
   .sr2-house-arrival {
     align-items: start;
     min-height: auto;
-    padding: 0 1.25rem 7rem;
+    padding: var(--sr2-header) 1.25rem 7rem;
   }
   .sr2-house-arrival__art {
     position: relative;
@@ -186,7 +186,7 @@
     object-position: 90% center;
   }
   .sr2-house-arrival__shade {
-    inset: 0 0 auto;
+    inset: var(--sr2-header) 0 auto;
     z-index: 1;
     height: clamp(21rem, 94vw, 26rem);
     background: linear-gradient(0deg, rgba(7, 14, 23, 0.12), transparent 33%);

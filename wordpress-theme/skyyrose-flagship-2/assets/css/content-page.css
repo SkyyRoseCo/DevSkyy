@@ -374,7 +374,7 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
-    padding: 0;
+    padding: var(--sr2-header) 0 0;
     background: var(--sr2-void);
   }
   .sr2-reserve-arrival .sr2-arrival__media {
@@ -388,7 +388,7 @@
     object-position: 90% center;
   }
   .sr2-reserve-arrival .sr2-arrival__veil {
-    inset: 0 0 auto;
+    inset: var(--sr2-header) 0 auto;
     z-index: 1;
     height: clamp(21rem, 94vw, 26rem);
     background: linear-gradient(0deg, rgb(10 10 10 / 0.18), transparent 38%);
