@@ -63,6 +63,23 @@ class TestCollectionSotGenerator:
             for key in ("story", "palette", "fonts", "lockup", "imagery", "logos", "products"):
                 assert key in doc, f"{slug} document missing {key!r}"
 
+    def test_storefront_card_is_not_a_source_view(self):
+        """A card rendition has src metadata; collection SOT projects only source views."""
+        docs = gen.build_documents()
+        images = {
+            product["sku"]: product["images"]
+            for doc in docs.values()
+            for product in doc["products"]
+        }
+        assert len(images) == 33
+        assert all("card_front" not in product_images for product_images in images.values())
+        assert all(
+            set(product_images) <= set(gen.SOURCE_IMAGE_ROLES)
+            and all("path" in entry for entry in product_images.values())
+            for product_images in images.values()
+        )
+        assert images["br-001"]["image"]["path"].endswith("br-001-crewneck.png")
+
     def test_serialize_deterministic_trailing_newline_ascii(self):
         doc = gen.build_documents()["black-rose"]
         a, b = gen.serialize(doc), gen.serialize(doc)
