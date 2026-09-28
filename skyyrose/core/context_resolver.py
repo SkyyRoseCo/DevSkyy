@@ -595,6 +595,50 @@ def resolve_context(request: ResolutionRequest, *, package: Path = PACKAGE) -> R
     )
 
 
+def operative_rules(context: ResolvedContext) -> list[dict[str, Any]]:
+    """Carry selected owner wording and its limits without requiring raw-source access."""
+    records = {rule["id"]: rule for rule in context.applicable_rules}
+    explanations = {item["id"]: item for item in context.rule_explanations}
+    sources = [
+        source
+        for source in context.source_manifest
+        if Path(source["path"]).name == "constitution.json"
+        and source["sha256"] == context.constitution_digest
+    ]
+    if len(sources) != 1:
+        raise SourceIntegrityError("Operative rules require one bound Constitution source")
+    source_path = Path(sources[0]["path"])
+    source_name = (
+        str(source_path.relative_to(REPO_ROOT))
+        if source_path.is_relative_to(REPO_ROOT)
+        else str(source_path)
+    )
+    result = []
+    for rule_id in context.execution_rule_ids:
+        rule = records.get(rule_id)
+        explanation = explanations.get(rule_id)
+        if not rule or not rule.get("rule") or not explanation or not explanation["included"]:
+            raise SourceIntegrityError(f"Missing operative rule or applicability: {rule_id}")
+        result.append(
+            {
+                "id": rule_id,
+                "instruction": rule["rule"],
+                "level": rule["level"],
+                "scope": rule["scope"],
+                "exceptions": rule.get("exceptions", []),
+                "interpretation_limit": rule.get("interpretation_limit"),
+                "applicability": {"applies": True, "reason": explanation["reason"]},
+                "source": {
+                    "path": source_name,
+                    "sha256": context.constitution_digest,
+                    "rule_id": rule_id,
+                    "decision_event": rule["decision_event"],
+                },
+            }
+        )
+    return result
+
+
 def execution_context(context: ResolvedContext) -> dict[str, Any]:
     """Compact CLI/default consumer representation; full model is audit-only."""
     return {
@@ -614,6 +658,7 @@ def execution_context(context: ResolvedContext) -> dict[str, Any]:
             "source": "docs/brand/constitution-v1/constitution.json",
         },
         "rule_ids": context.execution_rule_ids,
+        "rules": operative_rules(context),
         "rule_reasons": {r["id"]: r["reason"] for r in context.rule_explanations if r["included"]},
         "products": context.execution_products,
         "palette_policies": context.palette_policies,

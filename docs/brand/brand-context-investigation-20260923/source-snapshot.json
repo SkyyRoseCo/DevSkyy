@@ -1,0 +1,323 @@
+{
+  "captured_at": "2026-09-23T20:30:40.317940-07:00",
+  "head": "a5c40d311a9d02f43a86ada5db8025d0a80479ab",
+  "branch": "feat/single-product-entry-point",
+  "notes": [
+    "Hashes snapshot current working-tree bytes, not original authorship or release approval.",
+    "External connector observations are indexed by stable URL and date; remote bytes were not downloaded or hashed."
+  ],
+  "sources": [
+    {
+      "evidence_id": "E01",
+      "path": "AGENTS.md",
+      "sha256": "ce40b86b5abf274dc6ab423350883d4f5558edf6486ff54cd6bfc5e5edc87c68",
+      "bytes": 23338,
+      "lines": 303,
+      "git_status": "M AGENTS.md"
+    },
+    {
+      "evidence_id": "E02",
+      "path": "SOT.md",
+      "sha256": "158880236a321329e5d83283852e60c39054d344ae77ad2520ac948cf5d5c07d",
+      "bytes": 21990,
+      "lines": 96,
+      "git_status": "M SOT.md"
+    },
+    {
+      "evidence_id": "E03",
+      "path": "knowledge-base/seed/from-interview.md",
+      "sha256": "66572e3b71f6c0b1154b0329ad68e8fcdddd56213b1a79de192f9acd740e2a3f",
+      "bytes": 12188,
+      "lines": 154,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E04",
+      "path": "assets/brand/brand.yaml",
+      "sha256": "63d4e7680c78d86da1f111e41f606583d0196181e0eb98dad69ce7afdb4e2269",
+      "bytes": 10209,
+      "lines": 236,
+      "git_status": "M assets/brand/brand.yaml"
+    },
+    {
+      "evidence_id": "E05",
+      "path": "tasks/retired-brand-copy-removal-20260921.md",
+      "sha256": "94425b289d9934d093b9eef8b48c4630e74acdf634fe961b49afde89389333b4",
+      "bytes": 4692,
+      "lines": 39,
+      "git_status": "?? tasks/retired-brand-copy-removal-20260921.md"
+    },
+    {
+      "evidence_id": "E06",
+      "path": "docs/brand/corey-questions.md",
+      "sha256": "f62669063c575cce3698e1f671a0b64a2a61c11df9991783390d1177aef5a5d1",
+      "bytes": 4014,
+      "lines": 80,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E07",
+      "path": "docs/brand/collection-stories.md",
+      "sha256": "8eef847decaa331ef33c9048c455321edf8d93efe3bdd0db179fe64f975938ca",
+      "bytes": 17750,
+      "lines": 311,
+      "git_status": "M docs/brand/collection-stories.md"
+    },
+    {
+      "evidence_id": "E08",
+      "path": "docs/brand/visual-references.md",
+      "sha256": "e29765c33c235c4ef6f720f488f4b9f1cadcced0f04a655868d337c15326e5d7",
+      "bytes": 4543,
+      "lines": 69,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E09",
+      "path": "docs/brand/asset-hierarchy.md",
+      "sha256": "d46ed5393e492b26d79a4f4d6a564787342493eacc6c91182a27220cefaa9a31",
+      "bytes": 8462,
+      "lines": 122,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E10",
+      "path": "wordpress-theme/skyyrose-flagship/data/brand/typography.json",
+      "sha256": "5510975f1019784ebed7d04368fea804a816dc152a232c458293a8a686b734f6",
+      "bytes": 1334,
+      "lines": 43,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E11",
+      "path": "wordpress-theme/skyyrose-flagship/data/collections/kids-capsule/identity.json",
+      "sha256": "8eb5e0e6b6624e0ed856168323abb6a45dcb74c4ab950ae77dfb05bacd435c5e",
+      "bytes": 1306,
+      "lines": 49,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E12",
+      "path": "wordpress-theme/skyyrose-flagship/data/collections/signature/identity.json",
+      "sha256": "4b0bedc0018b35cc521dd8dbeb974a7c52a6b0834e5813d5646e6ea72ec865e2",
+      "bytes": 1240,
+      "lines": 35,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E13",
+      "path": "eval/brand.md",
+      "sha256": "de6d807c4d3e94f35fdb8ceb899bfd1b29e0a35be6e08475e9c86cb013bd47cb",
+      "bytes": 5610,
+      "lines": 109,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E14",
+      "path": "eval/design-system.json",
+      "sha256": "4993944aeeca4d91a7587e3d4207a849b69771f66a05737c9e9eab2b0d640093",
+      "bytes": 5946,
+      "lines": 136,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E15",
+      "path": "orchestration/brand_context.py",
+      "sha256": "f10456d5bc6f4d07db440b46d830862793dcf34e2ea1cfbd0a1049d20d8e2ca1",
+      "bytes": 24333,
+      "lines": 695,
+      "git_status": "M orchestration/brand_context.py"
+    },
+    {
+      "evidence_id": "E16",
+      "path": "orchestration/brand_context.py",
+      "sha256": "f10456d5bc6f4d07db440b46d830862793dcf34e2ea1cfbd0a1049d20d8e2ca1",
+      "bytes": 24333,
+      "lines": 695,
+      "git_status": "M orchestration/brand_context.py"
+    },
+    {
+      "evidence_id": "E17",
+      "path": "skyyrose/core/product.py",
+      "sha256": "5d3571dc2504a567efc1270c90435b3d5a50d97cf5e5e056b0c52d2d29f85ddc",
+      "bytes": 13554,
+      "lines": 347,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E18",
+      "path": "skyyrose/core/product_registry.py",
+      "sha256": "c3442ba050cebccc1a2d718c5365139d3d2681fadf9642de8b5f4cea6252508c",
+      "bytes": 7150,
+      "lines": 166,
+      "git_status": "?? skyyrose/core/product_registry.py"
+    },
+    {
+      "evidence_id": "E19",
+      "path": "scripts/sync_product_registry.py",
+      "sha256": "46f14e56c71badc3a6305b425af673e2ede5b0c40cdaabbc5aba96a957628399",
+      "bytes": 864,
+      "lines": 28,
+      "git_status": "?? scripts/sync_product_registry.py"
+    },
+    {
+      "evidence_id": "E20",
+      "path": "scripts/sync_brand_to_php.py",
+      "sha256": "d86e8f91fe36381864c1710ceff6be8fb4758b03a1d28164ce10f5a0f5ab91f1",
+      "bytes": 9212,
+      "lines": 211,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E21",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+      "sha256": "8d46e7cf7f61e13a3eceb199a0a26128aa5af9979fc4414687888145d30ec9e2",
+      "bytes": 3362,
+      "lines": 100,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E22",
+      "path": "design-system/skyyrose-storefront/scripts/sync-theme-assets.mjs",
+      "sha256": "2e5deea258790e19a8b2076cda09f982f8f606b65f67e01b2e45a30a91c933e4",
+      "bytes": 7400,
+      "lines": 158,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E23",
+      "path": "frontend/app/layout.tsx",
+      "sha256": "c1b5120fd392c1733c75cf9fbc1042fc19b349d0455ae2c0948351160df16c19",
+      "bytes": 1499,
+      "lines": 48,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E24",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/immersive.js",
+      "sha256": "99524fe154e4f4d843c3f6ca4cc4ddaaec6db1509b75123e4a4167a951445652",
+      "bytes": 14103,
+      "lines": 446,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E25",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+      "sha256": "00dc823edea9dc88c37a5fd0ebcda13794120b9b8edc07eaeac6883695ffd789",
+      "bytes": 18339,
+      "lines": 522,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E26",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+      "sha256": "6c48478c5721e32cfea4affbd92ef315688ed6d08504b29ad6630874d66a2c1c",
+      "bytes": 3904,
+      "lines": 86,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E27",
+      "path": "docs/brand/immersive-hero-prompts.md",
+      "sha256": "c95089d5a5c4cdf3496da1700f4319c4a3530673db0b2d80ca330303f797f374",
+      "bytes": 7522,
+      "lines": 46,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E28",
+      "path": "docs/design/v2-remodel/reports/cinematic-motion-responsive-contract.md",
+      "sha256": "5b48cbe7c15205d76551b40d85a63a6e2153c7bcc099f7939e4e627b7511b9a1",
+      "bytes": 24716,
+      "lines": 145,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E29",
+      "path": "docs/design/v2-remodel/kids-capsule-reveal/contract.json",
+      "sha256": "04c323dbfe69fb4c890b14c5bcb9ed8ab9c5433005e340e04994fcb5e82653b2",
+      "bytes": 4551,
+      "lines": 111,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E30",
+      "path": "docs/design/v2-remodel/house-of-roses/skyyrose-tour-film-storyboard.md",
+      "sha256": "84569aeff966d99fda015bc13ed01c2009cbf3e1218473ccfdc74136ba2766ff",
+      "bytes": 2276,
+      "lines": 48,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E31",
+      "path": "docs/design/v2-remodel/house-of-roses/bart-film-storyboard.md",
+      "sha256": "790db3ccc7ec3455899fb74e2f527e3f432cd8a08ef95941660308cd2f0ca49d",
+      "bytes": 23808,
+      "lines": 253,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E32",
+      "path": "docs/adr/0002-brand-centroid-global-pending-data.md",
+      "sha256": "38f838e7aff6f99bb59653def5b29572cf9d18b7211632c841daa9da4153387b",
+      "bytes": 2170,
+      "lines": 15,
+      "git_status": ""
+    },
+    {
+      "evidence_id": "E33",
+      "path": "docs/brand/brand-context-investigation-20260923/evidence/runtime-2.json",
+      "sha256": "828311264bb999355a81e2b2c92141d6e5d8baafb69cb3ab8b41cedbab63fcea",
+      "bytes": 6968,
+      "lines": 107,
+      "git_status": "?? docs/brand/brand-context-investigation-20260923/evidence/runtime-2.json"
+    },
+    {
+      "evidence_id": "E34",
+      "path": "docs/brand/brand-context-investigation-20260923/evidence/runtime-3.json",
+      "sha256": "bdf2cb79867541336ef8f885c173d69ae7309052ded56feeda3404ff3848faf7",
+      "bytes": 9247,
+      "lines": 136,
+      "git_status": "?? docs/brand/brand-context-investigation-20260923/evidence/runtime-3.json"
+    },
+    {
+      "evidence_id": "E35",
+      "path": "docs/brand/brand-context-investigation-20260923/evidence/kids-desktop.json",
+      "sha256": "1de8540d02048bea4052b208ae0c4fba07cb716b772b5b7a7e7d39b0e83722d4",
+      "bytes": 4316,
+      "lines": 102,
+      "git_status": "?? docs/brand/brand-context-investigation-20260923/evidence/kids-desktop.json"
+    },
+    {
+      "evidence_id": "E36",
+      "path": "docs/brand/brand-context-investigation-20260923/evidence/kids-mobile.json",
+      "sha256": "c3322707245ecb30fcfebc88c13d472047ab13f3bef534994b966498fcb7dead",
+      "bytes": 950,
+      "lines": 43,
+      "git_status": "?? docs/brand/brand-context-investigation-20260923/evidence/kids-mobile.json"
+    },
+    {
+      "evidence_id": "E41",
+      "path": "docs/brand/brand-context-investigation-20260923/evidence/black-rose-desktop.json",
+      "sha256": "2d71040f25c84ea5bcae613fdb069baee8beabe8e4a9c5d39d694b5c595e52da",
+      "bytes": 10940,
+      "lines": 155,
+      "git_status": "?? docs/brand/brand-context-investigation-20260923/evidence/black-rose-desktop.json"
+    },
+    {
+      "evidence_id": "E42",
+      "path": "docs/brand/brand-context-investigation-20260923/evidence/love-hurts-desktop.json",
+      "sha256": "0ef40b7f3500176ada258745338ef8d71ea34c17fd3b5cae5b35acaf4ed26dd8",
+      "bytes": 8498,
+      "lines": 145,
+      "git_status": "?? docs/brand/brand-context-investigation-20260923/evidence/love-hurts-desktop.json"
+    },
+    {
+      "evidence_id": "E43",
+      "path": "docs/brand/brand-context-investigation-20260923/evidence/signature-desktop.json",
+      "sha256": "5772632c103018f470b78189fea3d23110b74abbf4ef09d740ff58fc7c442743",
+      "bytes": 11885,
+      "lines": 184,
+      "git_status": "?? docs/brand/brand-context-investigation-20260923/evidence/signature-desktop.json"
+    }
+  ]
+}

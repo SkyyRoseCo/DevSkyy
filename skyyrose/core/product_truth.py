@@ -6,6 +6,7 @@ Never modifies the registry or marketing copy. No NLP rewrite of founder facts.
 from __future__ import annotations
 
 import re
+from copy import deepcopy
 from typing import Any
 
 AUTHORITY_STATES = (
@@ -181,6 +182,14 @@ def project_product(record: dict, required_views: list[str], required_details: l
             "No invented views, recoloring, moved marks, merged products or approximation presented as real SKU.",
         ],
         "founder_corrections": record.get("corrections", []),
+        "render_policy": deepcopy(record.get("render_policy", {})),
+        "render_policy_source": {
+            "entry_point": "get_product",
+            "field": "render_policy",
+            "sku": record["sku"],
+            "sources": deepcopy(record.get("provenance", {}).get("sources", {})),
+            "absence_grants_permission": False,
+        },
         "permissions": {"product_mutation": False, "live_commerce_claims": False},
         "unresolved_required_gaps": gaps,
         "conflict_outcomes": [{k: v for k, v in c.items() if k != "value"} for c in conflicts],

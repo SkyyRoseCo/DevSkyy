@@ -1,0 +1,114 @@
+{
+  "status": "DOCUMENTATION_AND_CONTEXT_STRUCTURE_VALIDATED",
+  "date": "2026-09-23",
+  "checks": [
+    {
+      "check": "44 unique evidence IDs and local file existence: PASS",
+      "result": "PASS"
+    },
+    {
+      "check": "17 unique context rules and all consequential fields: PASS",
+      "result": "PASS"
+    },
+    {
+      "check": "Rule/context/example references resolve: PASS",
+      "result": "PASS"
+    },
+    {
+      "check": "Existing source authority separated from proposed invariant ratification: PASS",
+      "result": "PASS"
+    },
+    {
+      "check": "Local evidence line locators bounded to existing files: PASS",
+      "result": "PASS"
+    },
+    {
+      "check": "Retired-copy initial scan",
+      "result": "FAILED_THEN_CORRECTED",
+      "detail": "One historical filename in the new baseline listing reproduced retired copy; redacted using existing fingerprint detector. No original source file altered.",
+      "redacted_lines": 1
+    },
+    {
+      "check": "Final repository retired-copy scan",
+      "result": "PASS",
+      "detail": "0 violating files"
+    },
+    {
+      "check": "All artifact JSON and Markdown links",
+      "result": "PASS"
+    },
+    {
+      "check": "Whitespace in all new text artifacts",
+      "result": "PASS"
+    },
+    {
+      "check": "39 source snapshot hashes rechecked after assembly",
+      "result": "PASS"
+    }
+  ],
+  "product_checks": [
+    {
+      "command": ".venv/bin/python scripts/sync_product_registry.py --check",
+      "result": "PASS",
+      "detail": "CSV and dossier projections match current registry"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/test_product_entry_point.py tests/test_brand_context_catalog.py -q --no-cov",
+      "result": "PASS",
+      "tests": 27,
+      "executed_by": "product_architecture investigation agent"
+    },
+    {
+      "check": "get_all_products and returned image-role file existence",
+      "result": "PASS",
+      "products": 33,
+      "limit": "No pixel approval or live media verification implied"
+    }
+  ],
+  "browser": {
+    "primary_visual_reference": "owner-designated staging",
+    "production_home": "admin-bar session read-only",
+    "staging_home": "admin-bar session read-only",
+    "four_staging_collections": "guest desktop text and screenshots",
+    "kids_mobile": "guest 390x844; width fit and controls observed",
+    "limits": [
+      "not cross-browser certification",
+      "not payment or purchase validation",
+      "not full accessibility or reduced-motion runtime testing",
+      "not frozen deployment parity"
+    ]
+  },
+  "external": {
+    "google_drive": "Selected overview and architect PDF fetched; root brand folder plus bounded 30-item logo metadata listing. Not exhaustive or pixel-verified.",
+    "wordpress": "Authenticated site inventory identified production 238510894 and staging 256563697. Read-only.",
+    "figma": "No usable file URL recovered in bounded brand/design scan; content not inspected."
+  },
+  "not_performed": [
+    "source remediation",
+    "runtime resolver implementation",
+    "generator freshness check",
+    "asset promotion",
+    "provider generation",
+    "deployment",
+    "publication",
+    "remote-main parity",
+    "all-worktree founder-correction parity"
+  ],
+  "review": {
+    "reviewer": "brand_sources independent read-only agent",
+    "finding": "Manifest conflated proposed classification with whether existing source instructions remain binding.",
+    "resolution": "Replaced ambiguous Boolean with independent source-constraint preservation and classification ratification fields."
+  },
+  "capture_hashes": {
+    "evidence/black-rose-desktop.jpg": "f74038f9f1f5c1162d5a7d5d8368a2e2e3f20d275a1292f716abeb502b270d8b",
+    "evidence/black-rose-story.jpg": "a9527c4e9ce7deef7cc5b1b8c514ecff4954f23ded59ba27025533573b296949",
+    "evidence/kids-desktop.jpg": "fa0f58bf2907532b695f34c22dc4cdaea5104bca98b6a3bbf12846468c089840",
+    "evidence/kids-mobile.jpg": "9ebcf03c2409f596b034255666c5a7dc0555ca93c18bb4526be89c45a8758f22",
+    "evidence/love-hurts-desktop.jpg": "a5517b763eef7e51ef8526bb0cdc21a78b3045b2c0a41dfab41fcd518b54fa11",
+    "evidence/love-hurts-story.jpg": "08d8473f0d6368f579726b68dc40a2fb573d12b021482fa327c4f6ef0acf258d",
+    "evidence/runtime-2.jpg": "63a00cb06ac47983d23347477b1bc4064dfcea6294e9c1bf9ddde71c9da2c8ca",
+    "evidence/runtime-3.jpg": "ba1bb1b79235b2688cb45e9d0cb85e9840b25180782c1236152ae7d277a3c823",
+    "evidence/signature-desktop.jpg": "fca84d07dfddbeb375e2d3d5c44a9c5b6c4b9b9ad45b4d18efc000a2b9cae43b",
+    "evidence/signature-story.jpg": "58887486ac1a652c7cae242713d629dcbc9348267fd44c097d278155a48cc4a1"
+  }
+}
