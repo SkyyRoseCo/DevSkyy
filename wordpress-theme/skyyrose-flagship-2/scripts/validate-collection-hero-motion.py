@@ -39,6 +39,14 @@ AI_STATUSES = {
     "blocked_daily_generation_limit",
 }
 
+# Existing checked-in house film, not a collection hero or a new approval.
+# Pin both derivatives and the visible still so a renamed or substituted asset fails.
+JOURNAL_ASSETS = {
+    "skyyrose-tour-around-the-bay.webm": "fd7a29fbf06399057d5cf210a6fd6c2e1c9552e2beb9f1e8743c433b6eebd57d",
+    "skyyrose-tour-around-the-bay.mp4": "5e4ee02fa38feb63e8a7ed4ef937faa212903f0fa58bf65443bb8cd2a18e073a",
+    "skyyrose-tour-around-the-bay-poster.webp": "8963b175358c94f147728b81d1787ec5355655b7fc229fe5e77c4865f3226b9a",
+}
+
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -105,6 +113,73 @@ def validate_ai_assets(slug: str, ai_motion: dict, status: str, max_bytes: int) 
         raise ValueError(f"{slug} candidate lacks internal visual QA")
     if status == "founder_approved" and not ai_motion.get("founder_approved_at"):
         raise ValueError(f"{slug} approved motion lacks founder approval evidence")
+
+
+def validate_home_journal(source: str) -> None:
+    """Allow only the two literal, hash-bound house-film derivatives."""
+    if len(re.findall(r"<\s*video\b", source, re.IGNORECASE)) != 1:
+        raise ValueError("homepage journal must emit exactly one house film")
+    # PHP close tags contain '>', so match the complete closing video instead
+    # of treating this mixed PHP/HTML file as parsed static HTML.
+    film = re.search(r"<video\b.*?</video\s*>", source, re.DOTALL | re.IGNORECASE)
+    if not film:
+        raise ValueError("homepage journal film markup is malformed")
+    compact = re.sub(r"\s+", " ", film.group())
+    video_open = compact.split("<source", 1)[0]
+    if re.search(r"\bsrc\s*=", video_open, re.IGNORECASE):
+        raise ValueError("homepage journal cannot bypass its source bindings")
+    expected_sources = [
+        """<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/"""
+        + name
+        + """' ); ?>" type="video/"""
+        + extension
+        + '">'
+        for name, extension in (
+            ("skyyrose-tour-around-the-bay.webm", "webm"),
+            ("skyyrose-tour-around-the-bay.mp4", "mp4"),
+        )
+    ]
+    sources = re.findall(r"<source\b.*?>(?=<source|</video)", compact, re.IGNORECASE)
+    if sources != expected_sources:
+        raise ValueError("homepage journal film source binding drift")
+    poster = (
+        '<img src="<?php echo esc_url( SKYYROSE2_URI . '
+        "'/assets/video/skyyrose-tour-around-the-bay-poster.webp' ); ?>"
+    )
+    if poster not in re.sub(r"\s+", " ", source):
+        raise ValueError("homepage journal must retain its bound visible poster")
+    for name, digest in JOURNAL_ASSETS.items():
+        validate_asset(
+            {"file": "assets/video/" + name, "sha256": digest}, "homepage journal " + name
+        )
+
+
+def validate_home_collection(source: str) -> None:
+    """The homepage must consume the same collection hero resolver as arrivals."""
+    if not re.search(
+        r"\$chapter_motion\s*=\s*skyyrose2_collection_hero_motion\(\s*\$slug,\s*"
+        r"\$collection\['hero'\]\s*\)", source
+    ):
+        raise ValueError("homepage collection is not bound to its destination hero")
+    if len(re.findall(r"<\s*video\b", source, re.IGNORECASE)) != 1:
+        raise ValueError("homepage collection must emit exactly one video opening tag")
+    videos = re.findall(r"<video\b.*?</video\s*>", source, re.DOTALL | re.IGNORECASE)
+    if len(videos) != 1:
+        raise ValueError("homepage collection must emit one resolved video")
+    compact = re.sub(r"\s+", " ", videos[0])
+    expected = [
+        """<source data-src="<?php echo esc_url( $chapter_motion['"""
+        + extension
+        + """'] ); ?>" type="video/"""
+        + extension
+        + '">'
+        for extension in ("webm", "mp4")
+    ]
+    sources = re.findall(r"<source\b.*?>(?=<source|</video)", compact, re.IGNORECASE)
+    if sources != expected or re.search(
+        r"\bsrc\s*=", compact.split("<source", 1)[0], re.IGNORECASE
+    ):
+        raise ValueError("homepage collection bypasses resolved film sources")
 
 
 def main() -> int:
@@ -176,8 +251,8 @@ def main() -> int:
             "template-parts/collections/arrival.php",
             "skyyrose2_collection_hero_motion(",
         ),
-        "template-parts/home/editorial-hero.php": (
-            "front-page.php",
+        "template-parts/home/editorial-collection.php": (
+            "template-parts/home/editorial-collection.php",
             "skyyrose2_collection_hero_motion(",
         ),
         "page-lookbook.php": ("page-lookbook.php", "skyyrose2_collection_hero_motion("),
@@ -197,6 +272,11 @@ def main() -> int:
             and "data-recovery-hero-video" not in source.lower()
         ):
             continue
+        if relative == "template-parts/home/editorial-journal.php":
+            validate_home_journal(source)
+            continue
+        if relative == "template-parts/home/editorial-collection.php":
+            validate_home_collection(source)
         if relative not in video_emitters:
             raise ValueError(f"unapproved video emitter: {relative}")
         resolver_file, resolver_token = video_emitters[relative]

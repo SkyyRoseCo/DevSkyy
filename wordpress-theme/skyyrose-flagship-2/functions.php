@@ -384,6 +384,12 @@ function skyyrose2_assets() {
 	if ( is_front_page() ) {
 		$page_styles[] = 'collection-world';
 		$page_styles[] = 'home-page';
+		$page_styles[] = 'home-experience';
+		$page_styles[] = 'home-art-direction';
+		$home_experience = '/assets/js/home-experience' . $suffix . '.js';
+		wp_enqueue_script( 'skyyrose2-home-experience', SKYYROSE2_URI . $home_experience, array(), skyyrose2_asset_version( $home_experience ), true );
+		$house_motion = '/assets/js/house-motion' . $suffix . '.js';
+		wp_enqueue_script( 'skyyrose2-house-motion', SKYYROSE2_URI . $house_motion, array(), skyyrose2_asset_version( $house_motion ), true );
 	}
 	if ( function_exists( 'is_product' ) && is_product() ) {
 		$page_styles[] = 'product-page';
@@ -504,7 +510,7 @@ JS
 		wp_enqueue_script( 'wc-add-to-cart' );
 		wp_enqueue_script( 'wc-cart-fragments' );
 	}
-	if ( ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
+	if ( ! is_front_page() && ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
 		wp_enqueue_style( 'skyyrose2-mascot', SKYYROSE2_URI . $mascot_style, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $mascot_style ) );
 		wp_enqueue_script( 'skyyrose2-mascot-loader', SKYYROSE2_URI . $loader_script, array(), skyyrose2_asset_version( $loader_script ), true );
 		wp_localize_script(
