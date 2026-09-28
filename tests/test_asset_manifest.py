@@ -54,7 +54,11 @@ def test_committed_manifest_matches_regenerated_tree():
     builder = _load_builder()
     fresh = builder.build()
     committed = AssetManifest.load()
-    assert committed.to_payload()["skus"] == fresh.to_payload()["skus"], (
+    committed_payload = committed.to_payload()
+    fresh_payload = fresh.to_payload()
+    committed_payload.pop("generated_at", None)
+    fresh_payload.pop("generated_at", None)
+    assert committed_payload == fresh_payload, (
         "asset manifest is stale — a source file changed without regeneration. "
         "Run `python scripts/build_asset_manifest.py` and commit."
     )
@@ -62,8 +66,13 @@ def test_committed_manifest_matches_regenerated_tree():
 
 @requires_asset_tree
 def test_every_pinned_asset_exists_and_hash_matches():
-    """verify() over the whole committed manifest must report zero drift."""
-    drift = AssetManifest.load().verify()
+    """Pinned files stay valid; deliberately blocked SKUs remain blocked."""
+    manifest = AssetManifest.load()
+    findings = manifest.verify()
+    assert {d.sku for d in findings if d.kind == "resolution_error"} == {
+        sku for sku, entry in manifest.skus.items() if entry.resolution_error
+    }
+    drift = [d for d in findings if d.kind != "resolution_error"]
     assert not drift, "asset drift: " + "; ".join(
         f"{d.sku}/{d.role}:{d.kind}:{d.path}" for d in drift
     )
@@ -166,3 +175,90 @@ def test_corrupt_manifest_raises_actionable_error(tmp_path):
     bad.write_text("{ not valid json", encoding="utf-8")
     with pytest.raises(ValueError, match="corrupt"):
         AssetManifest.load(bad)
+
+
+def test_registry_contract_failure_serializes_and_blocks_verification(tmp_path, monkeypatch):
+    from skyyrose.elite_studio.logo_registry import RegistryContractError
+
+    builder = _load_builder()
+    registry = tmp_path / "registry.json"
+    registry.write_text('{"authority":"fixture"}')
+    monkeypatch.setattr(builder, "PRODUCT_REGISTRY", registry)
+    monkeypatch.setattr(
+        builder,
+        "_catalog_rows",
+        lambda: {"sg-002": {"name": "Bridge", "collection": "signature", "garment_type": "shirt"}},
+    )
+    monkeypatch.setattr(builder.references, "build_dossier_index", dict)
+    monkeypatch.setattr(builder, "_supplemental_source_records", lambda sku: [])
+
+    def blocked(*args):
+        raise RegistryContractError("sg-002: exact Bridge artwork binding is UNBOUND")
+
+    monkeypatch.setattr(builder.references, "build_references", blocked)
+    first, second = builder.build(), builder.build()
+    assert first.to_payload() == second.to_payload()
+    assert first.skus["sg-002"].assets == []
+    path = first.save(tmp_path / "manifest.json")
+    restored = AssetManifest.load(path)
+    findings = restored.verify(["sg-002"])
+    assert len(findings) == 1
+    assert findings[0].kind == "resolution_error"
+    assert "RegistryContractError" in findings[0].detail
+    assert "UNBOUND" in findings[0].detail
+    assert restored.to_payload() == first.to_payload()
+
+
+def test_registry_hash_changes_invalidate_manifest_and_check(tmp_path, monkeypatch):
+    import json
+
+    from skyyrose.core.hashing import sha256_of_file
+
+    builder = _load_builder()
+    registry = tmp_path / "registry.json"
+    registry.write_text('{"logo":{"width":3,"height":4}}')
+    monkeypatch.setattr(builder, "PRODUCT_REGISTRY", registry)
+    monkeypatch.setattr(builder, "_catalog_rows", dict)
+    monkeypatch.setattr(builder.references, "build_dossier_index", dict)
+    original = builder.build()
+    assert original.registry_sha == sha256_of_file(registry)
+    assert original.verify() == []
+    original_path = original.save(tmp_path / "manifest.json")
+    restored = AssetManifest.load(original_path)
+    monkeypatch.setattr(builder.AssetManifest, "load", lambda: restored)
+    assert builder.main(["build_asset_manifest.py", "--check"]) == 0
+    raw = json.loads(registry.read_text())
+    raw["logo"]["width"] = 3.25  # isolated hypothetical amendment, never founder data
+    registry.write_text(json.dumps(raw))
+    assert builder.build().registry_sha != original.registry_sha
+    findings = restored.verify()
+    assert len(findings) == 1 and findings[0].role == "registry"
+    assert findings[0].kind == "hash_mismatch"
+    assert builder.main(["build_asset_manifest.py", "--check"]) == 1
+
+
+def test_legacy_manifest_payload_remains_readable(tmp_path):
+    import json
+
+    payload = {
+        "version": 1,
+        "generated_at": "",
+        "catalog_sha": None,
+        "skus": {
+            "x-001": {
+                "sku": "x-001",
+                "name": "X",
+                "collection": "test",
+                "garment_type": "tee",
+                "assets": [],
+            }
+        },
+    }
+    path = tmp_path / "legacy.json"
+    path.write_text(json.dumps(payload))
+    assert AssetManifest.load(path).to_payload() == payload
+
+
+def test_version_two_requires_registry_hash():
+    findings = AssetManifest(version=2).verify()
+    assert len(findings) == 1 and findings[0].kind == "registry_unpinned"
