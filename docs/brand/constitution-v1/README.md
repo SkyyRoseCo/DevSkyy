@@ -28,11 +28,12 @@ preserved as superseded history.
 
 ## Authority and provenance
 
-The [archaeology](../brand-context-investigation-20260923/README.md) is
-unchanged. [Its baseline digests](archaeology-snapshot.json) preserve all 25
-original files. [The old proposal packet](RATIFICATION.md) and
-[proposal JSON](proposals.json) remain historical; they do not override final
-owner wording. G8 now means Creative Evolution, not the old hierarchy proposal.
+The historical archaeology package is retained separately as local evidence and
+is not included in this scoped delivery.
+[Its baseline digests](archaeology-snapshot.json) record all 25 original files.
+[The old proposal packet](RATIFICATION.md) and [proposal JSON](proposals.json)
+remain historical; they do not override final owner wording. G8 now means
+Creative Evolution, not the old hierarchy proposal.
 
 Only explicitly owner-ratified rules are canonical in this package. Engineering
 choices in the implementation specification are proposed contracts, not new
@@ -55,7 +56,10 @@ remains historical and unadopted, not an unresolved constitutional decision. See
 [ratification changes and contradictions](RATIFICATION-CHANGES.md) and
 [document fixtures](validation-fixtures.json).
 
-This delivery does not implement a production resolver, Creative OS runtime,
-consumer migration, catalog migration, injector change, staging deployment,
-publication or paid generation. The specification describes future gates; it
-does not claim they have run.
+This constitution package records owner decisions and implementation
+specifications. The accompanying [context resolver](../../context-resolver.md)
+and [creative job workflow](../../creative-job-workflow.md) implement source
+resolution, job contracts, and an opt-in creative-brief consumer. Their
+documentation defines the tested runtime boundaries. Neither this package nor
+those implementations establishes deployment, publication, paid generation, or
+final visual approval.

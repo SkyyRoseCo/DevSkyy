@@ -101,10 +101,9 @@ derivatives and Bay Area discovery territory. It does not prescribe a landmark.
 Audit retains raw assembled products, relevant raw registry/dossier records,
 marketing evidence, conflicting values, all considered rules,
 inclusion/exclusion reasons, source hashes, complete decisions and context. Use
-[the hardened pilot](../.artifacts/context-resolver-hardening-v1/execution-bundle.json)
-and
-[its audit bundle](../.artifacts/context-resolver-hardening-v1/audit-bundle.json)
-to compare representations.
+the normal and `--audit` CLI examples above to compare representations.
+Historical pilot bundles under `.artifacts/context-resolver-hardening-v1/` are
+local evidence and are not included in this scoped delivery.
 
 Every call hashes current inputs, reader references, selected policies, taxonomy
 and implementations. Product inputs are checked before and after reading;
