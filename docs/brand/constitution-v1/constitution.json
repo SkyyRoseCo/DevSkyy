@@ -1,0 +1,1593 @@
+{
+  "version": "1.0",
+  "status": "FULLY_RATIFIED",
+  "owner": "Corey Foster",
+  "rules": [
+    {
+      "id": "A",
+      "rule": "SkyyRose is authentically rooted in its Oakland origin, founder authorship and lived history. Future work must not fictionalize, erase, contradict or replace that origin.",
+      "level": "L1",
+      "scope": "Master brand",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        "E03",
+        "E06",
+        "E08"
+      ],
+      "decision_event": "A-001",
+      "exceptions": [],
+      "interpretation_limit": "No requirement to depict Oakland in every campaign.",
+      "supersedes": []
+    },
+    {
+      "id": "D.origin",
+      "rule": "SkyyRose preserves its authentic founder-and-family origin.",
+      "level": "L1",
+      "scope": "Master-brand origin",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        "E03",
+        "E11",
+        "E38"
+      ],
+      "decision_event": "D-001",
+      "exceptions": [],
+      "supersedes": [],
+      "wording_note": "Clause separated from the approved combined sentence; no new obligation introduced."
+    },
+    {
+      "id": "D.legacy",
+      "rule": "Legacy may inform storytelling without requiring family imagery in every campaign.",
+      "level": "L2",
+      "scope": "Optional legacy storytelling",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        "E03",
+        "E11",
+        "E38"
+      ],
+      "decision_event": "D-001",
+      "exceptions": [],
+      "supersedes": [],
+      "wording_note": "Clause separated from the approved combined sentence; no new obligation introduced."
+    },
+    {
+      "id": "B",
+      "rule": "Every major SkyyRose collection must have authentic authored meaning grounded in the brand's lived identity, perspective, values, history, or evolving story. Autobiography is a major source of that meaning but is not the only permissible source. A collection must not be reduced to an arbitrary aesthetic, trend, or visual concept without an authentic underlying reason for its existence.",
+      "level": "L1",
+      "scope": "Major collection meaning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        "E03",
+        "E06",
+        "E07",
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 3,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:B",
+        "B-001",
+        "B-002"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": [
+        "Every individual asset need not explain the entire meaning; no mandatory narrative density."
+      ]
+    },
+    {
+      "id": "C",
+      "rule": "SkyyRose is fundamentally gender-neutral in brand positioning and presentation and is not defined by conventional men's/women's categories. Individual products, people, styling, campaigns, or stories may use gender-specific context when intentionally appropriate, but that context must not silently redefine the brand or canonical product identity.",
+      "level": "L1",
+      "scope": "Brand positioning and presentation; canonical product identity",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        "E03",
+        "E38",
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 4,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:C"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "G1",
+      "rule": "SkyyRose favors specific, authored, context-rich expression over generic luxury conventions. Minimal, restrained, or abstract executions are valid, but they should remain deliberate and meaningfully connected to the collection, product, brand, place, story, or applicable creative context rather than becoming interchangeable with another luxury label.",
+      "level": "L2",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:G1"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "G2",
+      "rule": "Major SkyyRose collections should have a coherent authored narrative context rooted in their underlying meaning, but individual executions do not need to tell the entire story. When narrative devices are used—story, atmosphere, symbolism, place, character, sequence, or environmental interaction—they should serve the collection, product, or meaning rather than exist as disconnected spectacle.",
+      "level": "L2",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:G2"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "G3",
+      "rule": "SkyyRose may express collection identity through environments, spatial storytelling, materials, light, place, symbols, character, or other world-building devices when they meaningfully support the collection. The durable principle is intentional, authored contextualization—not a requirement for literal rooms, 3D scenes, monuments, bridges, thrones, or any particular environment.",
+      "level": "L2",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:G3"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "G4",
+      "rule": "SkyyRose may separate storytelling from transactional presentation, but the two should remain meaningfully connected. Editorial, cinematic, spatial, symbolic, or environmental experiences should provide an understandable route toward the relevant collection or products when used in a commerce context. Product identity, price, availability, selection, and purchase state remain factual commerce concerns and must not be obscured, fictionalized, or subordinated to storytelling.",
+      "level": "L2",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:G4"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "G5",
+      "rule": "SkyyRose treats atmosphere, wonder, emotional impact, and spectacle as legitimate creative purposes. Immersive techniques—including animation, 3D, spatial interaction, cinematic transitions, environmental storytelling, and emerging media—do not need to function solely as transactional utilities. However, experiences introducing substantial complexity, interaction cost, performance cost, or technical overhead should earn that complexity through an intentional role in storytelling, emotional impact, product discovery, exploration, brand experience, or another defined purpose. Technical sophistication alone is insufficient justification.",
+      "level": "L2",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:G5"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "G6",
+      "rule": "SkyyRose may use mystery, exploration, unconventional navigation, delayed revelation, or intentional creative friction when those choices meaningfully serve the experience. Creative work does not need to behave like conventional ecommerce. However, users must not become unintentionally trapped, lose essential orientation, or lose access to critical product and commerce actions. Essential controls and appropriate accessibility, preference, device, and capability fallbacks should remain understandable and recoverable.",
+      "level": "L2",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:G6"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "G7",
+      "rule": "SkyyRose uses cinematic thinking as a compositional, narrative, and experiential discipline rather than as a mandatory visual effect. Cinematic expression may emerge through framing, sequencing, pacing, scale, tension, reveal, atmosphere, sound, silence, movement, stillness, place, character, product focus, interaction, or spatial experience. No particular grading, darkness, camera movement, film grain, transition style, aspect ratio, 3D technique, or visual effect is inherently required.\nSkyyRose should actively explore new forms of fashion shopping, product discovery, storytelling, and interaction that give customers experiences beyond conventional ecommerce patterns. Innovation should create meaningful discovery, emotion, participation, understanding, surprise, or connection between customer, collection, story and product rather than novelty for novelty's sake.\n3D rooms, cinematic scrolling, environmental discovery, interactive worlds, spatial commerce, game-like exploration, adaptive storytelling and emerging technologies are creative territories—not permanent templates. Future work should be free to invent materially different shopping experiences when they preserve product truth, brand identity, recoverable control, accessibility and commerce integrity.\nA still, bright, minimal, physical, conversational, spatial, playful, documentary, photographic, or yet-uninvented experience may be as authentically SkyyRose as today's animated cinematic environments when it carries intentional direction, authored meaning and compelling customer experience.",
+      "level": "L2",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:G7"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "G8",
+      "rule": "SkyyRose is expected to evolve creatively rather than repeatedly reproduce previously successful executions. Major campaigns, collection experiences, and significant creative initiatives should introduce materially new creative territory through one or more dimensions such as visual direction, materials, environments, storytelling mechanisms, interaction models, media, technology, composition, product discovery, or shopping experience.\nInnovation may combine multiple dimensions when the result is coherent. Existing motifs, technologies, materials, environments, or interaction patterns may be reused when contextually meaningful, but previous success alone is insufficient justification for repetition.\nSkyyRose should not optimize itself into sameness. Historical repetition and short-term performance are evidence, not permanent creative boundaries. Performance evidence may inform future decisions but may not automatically redefine Brand DNA, eliminate meaningful experimentation, or permanently narrow creative territory.",
+      "level": "L2",
+      "scope": "Durable expression grammar",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 5,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:G8"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N",
+      "rule": "Historical use, current deployment, frequency, or previous creative success does not by itself establish Brand DNA. Visual devices, materials, environments, technologies, compositions, interaction patterns, typography implementations, architectural motifs, or campaign mechanisms remain contextual unless explicitly ratified at a higher constitutional level. Prior success creates evidence, not an obligation to repeat.",
+      "level": "GOVERNANCE",
+      "scope": "Contextual vocabulary versus constitutional authority",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:N"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N1",
+      "rule": "Dark / black environments.\n\nAvailable, not mandatory.",
+      "level": "CONTEXTUAL",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N2",
+      "rule": "Chrome, metallic, silver, gold, rose-gold and reflective environmental material systems.\n\nProtected asset treatments remain protected where applicable; environmental materials may evolve.",
+      "level": "CONTEXTUAL",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N3",
+      "rule": "Monuments, pedestals, statues, oversized marks and sculptural environmental objects.\n\nAvailable vocabulary, not required composition.",
+      "level": "CONTEXTUAL",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N4",
+      "rule": "Thrones, royal rooms and procession structures.\n\nScoped creative devices, not master-brand requirements.",
+      "level": "CONTEXTUAL",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N5",
+      "rule": "Cathedrals, vaults, grand halls and similar architecture.\n\nScoped creative devices requiring appropriate contextual authority.",
+      "level": "CONTEXTUAL",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N6",
+      "rule": "Specific bridges, skylines, streets, landmarks or geographic depictions.\n\nOakland origin is constitutional.\n\nNo individual landmark is.",
+      "level": "CONTEXTUAL",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N7",
+      "rule": "3D rooms, WebGL, spatial scenes, game-like interfaces or current immersive technologies.\n\nExperiential innovation is durable.\n\nIndividual technology is replaceable.",
+      "level": "CONTEXTUAL",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N8",
+      "rule": "Current transition language, scroll behavior, camera movement, easing curves, durations, reveal sequences or motion technologies.",
+      "level": "CONTEXTUAL",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N9",
+      "rule": "Current exact typography implementation.\n\n`typography.json` remains authoritative for the existing storefront until intentionally changed, but today's fonts are not eternal Brand DNA.",
+      "level": "CONTEXTUAL",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N10",
+      "rule": "Current hero composition, centered emblem, oversized wordmark, character placement, product-grid structure, or world→product sequence.\n\nPreserve underlying grammar, not composition formulas.\n\n---",
+      "level": "CONTEXTUAL",
+      "scope": "Non-invariant creative vocabulary",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 6,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "N6.discovery",
+      "rule": "Oakland and the broader Bay Area are important creative territories that future systems should actively consider when place, geography, architecture, infrastructure, culture, movement, landscape, or local storytelling can meaningfully strengthen the work.\nCreative systems should look beyond previously used landmarks and investigate relevant Bay Area-specific features, architecture, bridges, streets, neighborhoods, landscapes, transit forms, industrial environments, waterfronts, cultural locations, natural geography, and other locally grounded visual or narrative material when appropriate.\nNo individual bridge, skyline, landmark, neighborhood or location becomes mandatory through repetition. Bay Area specificity should expand creative territory rather than collapse it into repeated Bay Bridge, Golden Gate or skyline imagery.\nGeographic references must remain truthful and may not rewrite origin, product story, partnership status or historical meaning.",
+      "level": "L2",
+      "scope": "Local discovery when place meaningfully strengthens the work",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 7,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F",
+      "rule": "SkyyRose protects identity, product truth, factual truth, rights, and approved asset integrity while deliberately maintaining broad creative freedom in how those truths are expressed. Creative systems should not seek safety by repeatedly reproducing prior aesthetics. Within resolved constitutional and factual boundaries, they are expected to explore materially different visual, narrative, material, spatial, technological and experiential directions.\nFreedom in one domain never overrides a protected constraint in another.",
+      "level": "GOVERNANCE",
+      "scope": "Creative freedom across domains",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 8,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:F"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F1",
+      "rule": "When a visualization, image, photograph, generated image, video, film, commercial, 3D asset, render, advertisement, product scene, virtual experience, interactive experience, ecommerce asset, or other customer-facing creative represents an actual SkyyRose product, that product must be a faithful replica of the authoritative real product. Creative freedom applies to the world around the product, not the identity of the product itself.\nPreserve all visually applicable authoritative characteristics including silhouette, proportions, construction, cut, garment geometry, approved colorway, materials as represented, graphics, artwork, logos, placements, dimensions, trims, relevant stitching/construction details, front/back distinctions, and other SKU-specific characteristics supported by authoritative evidence.\nDo not improve, reinterpret, stylize, simplify, hallucinate, substitute, recolor, resize graphics, move logos, invent garment details, merge products, or generate an approximation and present it as the real product.",
+      "level": "HARD_REQUIREMENT",
+      "scope": "Any customer-facing creative representing an actual SkyyRose product",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        "E01",
+        "E17",
+        "E18",
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 9,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "Any weaker previous F1 proposal"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": [
+        "Zero tolerance for close-enough real-SKU imagery."
+      ]
+    },
+    {
+      "id": "PRODUCT_MODES",
+      "rule": "Establish:\n\n```text id=\"0dsh4p\"\nEXACT_PRODUCT\nReal SKU represented.\nStrict fidelity gate.\n\nPRODUCT_CONCEPT\nProposal / nonexistent or future product.\nMust be clearly labeled internally.\nCannot masquerade as existing product truth.\n\nBRAND_ABSTRACT\nNo real product represented.\nBroad creative freedom.\n```\n\nIf authoritative evidence is insufficient for an exact required view:\n\n**BLOCKED — insufficient authoritative product evidence.**\n\nDo not invent the missing view.\n\n---",
+      "level": "GOVERNANCE",
+      "scope": "Product representation mode and required evidence",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 10,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "FIDELITY_METHOD",
+      "rule": "When unconstrained regeneration cannot reliably preserve exact product fidelity, prefer fidelity-preserving production techniques such as approved source photography, compositing, validated product photography, validated 3D assets, product scans, controlled rendering, or another method capable of preserving the real product.",
+      "level": "GOVERNANCE",
+      "scope": "Fidelity-preserving production planning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 11,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "FIDELITY_GATE",
+      "rule": "Specify as a non-bypassable future Creative OS verification stage:\n\n```text id=\"3by3wl\"\nResolve SKU\n    ↓\nget_product(sku)\n    ↓\nResolve required authoritative views\n    ↓\nLoad authoritative references\n    ↓\nProduce / composite / render\n    ↓\nPRODUCT FIDELITY GATE\n    │\n    ├── silhouette\n    ├── proportions\n    ├── construction\n    ├── colorway\n    ├── artwork\n    ├── logo\n    ├── placement\n    ├── material appearance\n    ├── front/back\n    └── relevant detail\n    ↓\nPASS / FAIL / BLOCKED\n```\n\nFAIL requires remediation.\n\nBLOCKED prevents release-ready status.\n\n---",
+      "level": "HARD_REQUIREMENT",
+      "scope": "Future non-bypassable product verification",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 12,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F2",
+      "rule": "Factual/legal/rights: NONE",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Factual/legal/rights",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F3",
+      "rule": "Protected assets: LOW / governed by asset-use permission",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Protected assets",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F4",
+      "rule": "Constitutional identity: LOW",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Constitutional identity",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F5",
+      "rule": "Voice: MODERATE",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Voice",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F6",
+      "rule": "Typography: MODERATE, subject to applicable current implementation authority",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Typography",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F7",
+      "rule": "Motion: HIGH",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Motion",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F8",
+      "rule": "Composition: HIGH",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Composition",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F9",
+      "rule": "Materials/lighting: HIGH",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Materials/lighting",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F10",
+      "rule": "Environment/place: HIGH",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Environment/place",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F11",
+      "rule": "Campaign story/metaphor: HIGH",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Campaign story/metaphor",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F12",
+      "rule": "Shopping/interaction model: HIGH",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Shopping/interaction model",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F13",
+      "rule": "New concepts: OPEN at proposal stage",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "New concepts",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F14",
+      "rule": "Cross-domain synthesis: HIGH when ideas form a coherent concept rather than feature stacking",
+      "level": "FREEDOM_DOMAIN",
+      "scope": "Cross-domain synthesis",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "F.material_exploration",
+      "rule": "Material exploration should actively move beyond repeatedly defaulting to chrome/marble/black when the applicable context permits.",
+      "level": "L2",
+      "scope": "Environmental material exploration; protected product and asset constraints remain binding",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 13,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "M-001",
+      "rule": "Creative freedom does not automatically decrease as work moves toward release; uncertainty does. Early modes permit unresolved hypotheses, experimental concepts and clearly labeled proposals. As work advances toward customer-facing use, applicable brand, product, factual, rights, technical, accessibility, commerce and approval requirements must progressively resolve into verified truth.\nAn innovative idea should not be made conventional merely because it reaches production.",
+      "level": "GOVERNANCE",
+      "scope": "Creative lifecycle",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 14,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [
+        "proposal:M"
+      ],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "M-002",
+      "rule": "Product fidelity cannot intentionally be deferred as unresolved debt into release production. If a real product will appear in final work, the production path must have a credible fidelity-preserving method before full production approval.",
+      "level": "GOVERNANCE",
+      "scope": "Creative lifecycle",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 14,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "M.lifecycle",
+      "rule": "Lifecycle:\n\n```text id=\"iyfytx\"\nM1 Research\nM2 Creative Exploration\nM3 Prototype\nM4 Candidate / A-B-n\nM5 Production\nM6 Release Candidate\nM7 Release / Publication\nM8 Measurement & Learning\nM9 Archive / Provenance\n```\n\nA prototype may use an obvious non-product placeholder when exact product rendering is not yet possible.\n\nIt may not use an inaccurate product representation that could be mistaken for the actual SKU.\n\nRelease Candidate requires applicable:\n\n- Constitution PASS\n- Product Fidelity PASS\n- Factual Claims PASS\n- Rights/Approvals PASS\n- Channel Requirements PASS\n- Creative QA PASS\n- Technical QA PASS\n- Accessibility PASS where applicable\n- Commerce Integrity PASS where applicable\n- novelty/saturation recorded\n- experiment evidence recorded where applicable\n\nPublication/deployment/ad spend remain separate consequential actions requiring appropriate authority.\n\n---",
+      "level": "GOVERNANCE",
+      "scope": "M1–M9 lifecycle and release criteria",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-20260923.md",
+          "section": 14,
+          "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34"
+        }
+      ],
+      "exceptions": [],
+      "supersedes": [],
+      "decision_event": "FINAL-20260923",
+      "interpretation_limits": []
+    },
+    {
+      "id": "K1-001",
+      "title": "Heir / Next Generation",
+      "rule": "Kids Capsule expresses heir, continuation, inheritance, imagination, possibility, and the next generation of SkyyRose. These underlying ideas are durable Kids context. Specific devices such as the current throne, royal room, mascot treatment, procession, playroom, character style, or individual scene are creative expressions rather than permanent constitutional requirements.",
+      "level": "L3",
+      "scope": "Kids Capsule",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "K1-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [
+        "K1"
+      ],
+      "source_context": "> **Kids Capsule expresses heir, continuation, inheritance, imagination, possibility, and the next generation of SkyyRose. These underlying ideas are durable Kids context. Specific devices such as the current throne, royal room, mascot treatment, procession, playroom, character style, or individual scene are creative expressions rather than permanent constitutional requirements.**\n\nThis is the durable meaning.\n\nDo not reduce Kids to:\n\n> throne + gold room + mascot\n\nFuture Kids worlds may look materially different while remaining faithful to heir / continuation / next-generation meaning."
+    },
+    {
+      "id": "K2-001",
+      "title": "Independent Creative Language",
+      "rule": "Kids may develop a materially distinct creative language from the adult SkyyRose collections. It may be more playful, colorful, imaginative, character-driven, tactile, game-like, exploratory, fantastical, interactive, surprising, or technologically experimental while remaining connected to the master Brand Constitution.\n\nKids should not simply be adult SkyyRose made smaller.",
+      "level": "L3",
+      "scope": "Kids Capsule",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "K2-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [
+        "K2"
+      ],
+      "source_context": "> **Kids may develop a materially distinct creative language from the adult SkyyRose collections. It may be more playful, colorful, imaginative, character-driven, tactile, game-like, exploratory, fantastical, interactive, surprising, or technologically experimental while remaining connected to the master Brand Constitution.**\n\nHard rule:\n\n> **Kids should not simply be adult SkyyRose made smaller.**\n\nThe system should treat Kids as its own contextual world, not as a scaled-down version of Black Rose, Love Hurts, or Signature."
+    },
+    {
+      "id": "K3-001",
+      "title": "Kids as Experiential Innovation Territory",
+      "rule": "Kids is a priority territory for exploring new forms of shopping, product discovery, play, storytelling, interaction, character agency, spatial experience, physical/digital combinations, game mechanics, adaptive journeys, and emerging technologies when those approaches are appropriate to the job.",
+      "level": "L3",
+      "scope": "Kids Capsule",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "K3-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [
+        "K3"
+      ],
+      "source_context": "> **Kids is a priority territory for exploring new forms of shopping, product discovery, play, storytelling, interaction, character agency, spatial experience, physical/digital combinations, game mechanics, adaptive journeys, and emerging technologies when those approaches are appropriate to the job.**\n\nThe objective is not:\n\n> make it look more childish.\n\nThe objective is:\n\n> create memorable ways for children and their purchasers to discover and experience the collection.\n\nPossible future approaches may include:\n\n- interactive rooms;\n- exploratory worlds;\n- object discovery;\n- story choices;\n- character-led journeys;\n- mini-games;\n- collectible systems;\n- augmented physical/digital experiences;\n- spatial product discovery;\n- conversational or adaptive experiences;\n- future interaction models not yet defined.\n\nNo one mechanism becomes permanent merely because it succeeds."
+    },
+    {
+      "id": "K4-001",
+      "title": "Kids Product Fidelity",
+      "rule": "Creative freedom around Kids never reduces product fidelity requirements. Any actual SkyyRose Kids Capsule product represented visually must remain an exact, verifiable representation of the real product.",
+      "level": "HARD_REQUIREMENT",
+      "scope": "Kids Capsule",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "K4-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [
+        "K4"
+      ],
+      "source_context": "> **Creative freedom around Kids never reduces product fidelity requirements. Any actual SkyyRose Kids Capsule product represented visually must remain an exact, verifiable representation of the real product.**\n\nThe Kids world may be fantastical.\n\nThe garment may not be fictionalized."
+    },
+    {
+      "id": "K5-001",
+      "title": "Character and World Separation",
+      "rule": "Characters, mascots, rooms, environments, and narrative objects belong to contextual creative expression unless separately ratified. Their existence does not grant authority to redesign products, logos, collection marks, origin history, or other protected truth.",
+      "level": "L3",
+      "scope": "Kids Capsule",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "K5-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "Recommended additional rule:\n\n> **Characters, mascots, rooms, environments, and narrative objects belong to contextual creative expression unless separately ratified. Their existence does not grant authority to redesign products, logos, collection marks, origin history, or other protected truth.**\n\nThis prevents a powerful character/world system from slowly becoming the authority for the whole brand."
+    },
+    {
+      "id": "P1-001",
+      "title": "Color Authority Is Domain-Specific",
+      "rule": "SkyyRose does not use one universal color authority for every visual domain. Product color, protected brand/collection asset color, interface color, environmental color, photographic color, campaign palette, lighting color, and natural-location color are separate scopes.",
+      "level": "GOVERNANCE",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P1-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **SkyyRose does not use one universal color authority for every visual domain. Product color, protected brand/collection asset color, interface color, environmental color, photographic color, campaign palette, lighting color, and natural-location color are separate scopes.**\n\nNever infer permission across those scopes automatically."
+    },
+    {
+      "id": "P2-001",
+      "title": "Product Color Is Locked",
+      "rule": "Actual SkyyRose product colorways must reproduce the authoritative real product exactly. Campaign palette, lighting, environmental art direction, interface colors, or atmospheric effects may not silently recolor the product.",
+      "level": "HARD_REQUIREMENT",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P2-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Actual SkyyRose product colorways must reproduce the authoritative real product exactly. Campaign palette, lighting, environmental art direction, interface colors, or atmospheric effects may not silently recolor the product.**\n\nExample:\n\n```text\nBlue sky                 allowed\nBlue environmental light context-dependent\nBlue interface status    allowed when appropriate\n\nActual black garment\nrendered as blue          NOT allowed\n```\n\nThe Exact Product Fidelity Gate remains controlling."
+    },
+    {
+      "id": "P3-001",
+      "title": "Protected Marks and Artwork",
+      "rule": "Approved logos, collection marks, artwork, garment graphics, and protected assets retain their governed color and material treatments where applicable. Environmental palette freedom does not automatically authorize recoloring protected marks.",
+      "level": "GOVERNANCE",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P3-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Approved logos, collection marks, artwork, garment graphics, and protected assets retain their governed color and material treatments where applicable. Environmental palette freedom does not automatically authorize recoloring protected marks.**\n\nAsset permissions remain scoped by actual approval."
+    },
+    {
+      "id": "P4-001",
+      "title": "Environmental and Campaign Palette Freedom",
+      "rule": "Environmental, editorial, cinematic, and campaign palettes may explore broadly—including palettes outside historically dominant dark, black, metallic, crimson, gold, silver, or rose-gold treatments—when the palette meaningfully supports the collection, concept, location, material system, narrative, channel, or experience.",
+      "level": "GOVERNANCE",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P4-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Environmental, editorial, cinematic, and campaign palettes may explore broadly—including palettes outside historically dominant dark, black, metallic, crimson, gold, silver, or rose-gold treatments—when the palette meaningfully supports the collection, concept, location, material system, narrative, channel, or experience.**\n\nThis is important for creative evolution.\n\nThe Creative OS should not default to:\n\n> black + chrome + dramatic red/gold\n\nsimply because those treatments dominate recent work."
+    },
+    {
+      "id": "P5-001",
+      "title": "Natural Color Is Not Brand Recoloring",
+      "rule": "Truthful natural colors appearing through skies, water, vegetation, architecture, streets, people, materials, documentary photography, Bay Area locations, or other real-world environments do not automatically establish or violate a master-brand palette rule.",
+      "level": "GOVERNANCE",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P5-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Truthful natural colors appearing through skies, water, vegetation, architecture, streets, people, materials, documentary photography, Bay Area locations, or other real-world environments do not automatically establish or violate a master-brand palette rule.**\n\nThis directly protects the Bay Area discovery principle.\n\nA blue-gray sky does not mean:\n\n> blue is now a master SkyyRose brand color.\n\nLikewise, a historical ban cannot automatically erase truthful natural color from a location."
+    },
+    {
+      "id": "P6-001",
+      "title": "Accessible Interface Color",
+      "rule": "Interface colors may adapt as necessary for accessibility, contrast, semantic state, readability, interaction feedback, and usability without redefining product color or master-brand identity.",
+      "level": "GOVERNANCE",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P6-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Interface colors may adapt as necessary for accessibility, contrast, semantic state, readability, interaction feedback, and usability without redefining product color or master-brand identity.**\n\nUI red, blue, green, warning yellow, focus rings, and similar semantic colors should not accidentally become apparel or campaign authority."
+    },
+    {
+      "id": "P7-001",
+      "title": "Palette as Innovation Dimension",
+      "rule": "Palette may itself be a deliberate dimension of creative evolution. Major campaigns should not be forced into historically dominant dark or metallic treatments solely for recognition.",
+      "level": "GOVERNANCE",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P7-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Palette may itself be a deliberate dimension of creative evolution. Major campaigns should not be forced into historically dominant dark or metallic treatments solely for recognition.**\n\nThe system should be able to explore:\n\n- high-key light;\n- daylight;\n- natural color;\n- muted documentary palettes;\n- vivid color;\n- monochrome;\n- unexpected material palettes;\n- neutral architectural tones;\n- seasonal palettes;\n- Bay Area environmental color;\n- collection-specific systems;\n- future directions not currently represented.\n\nAlways subject to protected truth."
+    },
+    {
+      "id": "P8-001",
+      "title": "Palette Provenance",
+      "rule": "When a palette is materially consequential to a campaign or collection, record whether its authority comes from product truth, protected brand assets, collection context, campaign art direction, environment, accessibility requirements, or creative proposal.",
+      "level": "GOVERNANCE",
+      "scope": "Domain-specific palette authority",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "P8-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "Recommended addition:\n\n> **When a palette is materially consequential to a campaign or collection, record whether its authority comes from product truth, protected brand assets, collection context, campaign art direction, environment, accessibility requirements, or creative proposal.**\n\nThis makes future conflicts much easier to resolve."
+    },
+    {
+      "id": "S1-001",
+      "title": "Creative Saturation Awareness",
+      "rule": "Before major creative production, review recent and relevant SkyyRose work for repeated visual devices, materials, environments, locations, compositions, motifs, technologies, narrative structures, camera languages, interactions, shopping mechanics, and campaign patterns.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S1-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Before major creative production, review recent and relevant SkyyRose work for repeated visual devices, materials, environments, locations, compositions, motifs, technologies, narrative structures, camera languages, interactions, shopping mechanics, and campaign patterns.**\n\nThis is awareness, not prohibition.\n\nThe purpose is to know when repetition is intentional versus automatic."
+    },
+    {
+      "id": "S2-001",
+      "title": "Material Novelty Requirement",
+      "rule": "Major campaigns, collection experiences, commercials, short films, significant web experiences, and other major creative initiatives should introduce materially new creative territory through one or more meaningful dimensions.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S2-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Major campaigns, collection experiences, commercials, short films, significant web experiences, and other major creative initiatives should introduce materially new creative territory through one or more meaningful dimensions.**\n\nNovelty dimensions may include:\n\n```text\nvisual direction\nmaterial language\npalette\nenvironment\nlocation\narchitecture\ncomposition\ncamera language\nstory structure\ncharacter\nsound\nmedia\nmotion\ntechnology\ninteraction\nproduct discovery\nshopping mechanic\nphysical/digital relationship\nchannel behavior\n```\n\nMultiple dimensions may be combined."
+    },
+    {
+      "id": "S3-001",
+      "title": "Difference Must Be Meaningful",
+      "rule": "Novelty cannot be satisfied by cosmetic variation alone. The creative system must be able to state what is materially different from recent work and why that difference matters to the intended customer, collection, narrative, shopping experience, or campaign objective.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S3-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Novelty cannot be satisfied by cosmetic variation alone. The creative system must be able to state what is materially different from recent work and why that difference matters to the intended customer, collection, narrative, shopping experience, or campaign objective.**\n\nExamples that do **not** automatically qualify:\n\n- chrome → brushed chrome;\n- dark room → slightly different dark room;\n- same monument → different camera angle;\n- same campaign structure → different text;\n- same shopping mechanic → different animation."
+    },
+    {
+      "id": "S4-001",
+      "title": "Creative A/B/n Hypotheses",
+      "rule": "Major creative initiatives should explore multiple materially distinct hypotheses before expensive final production when practical.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S4-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Major creative initiatives should explore multiple materially distinct hypotheses before expensive final production when practical.**\n\nPrefer A/B/n over token variation.\n\nEach direction should describe:\n\n- hypothesis;\n- underlying meaning;\n- visual direction;\n- material language;\n- environment/location;\n- narrative approach;\n- product role;\n- interaction/shopping idea;\n- novelty relative to recent work;\n- execution approach;\n- risk;\n- expected learning."
+    },
+    {
+      "id": "S5-001",
+      "title": "Experiment Classes",
+      "rule": "Maintain four distinct experiment types.\n\n### Creative Direction\n\nQuestion:\n\n> Which conceptual direction or world best expresses the intended meaning?\n\n### Experience\n\nQuestion:\n\n> Which interaction, navigation, product-discovery, or shopping model creates the strongest customer experience?\n\n### Execution\n\nQuestion:\n\n> Which composition, copy, edit, format, hook, sequence, framing, or production execution works best?\n\n### Market\n\nQuestion:\n\n> Which released version best produces the intended customer or business outcome?\n\nDo not collapse these into one generic “A/B test.”",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S5-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "Maintain four distinct experiment types.\n\n### Creative Direction\n\nQuestion:\n\n> Which conceptual direction or world best expresses the intended meaning?\n\n### Experience\n\nQuestion:\n\n> Which interaction, navigation, product-discovery, or shopping model creates the strongest customer experience?\n\n### Execution\n\nQuestion:\n\n> Which composition, copy, edit, format, hook, sequence, framing, or production execution works best?\n\n### Market\n\nQuestion:\n\n> Which released version best produces the intended customer or business outcome?\n\nDo not collapse these into one generic “A/B test.”"
+    },
+    {
+      "id": "S6-001",
+      "title": "Synthesis Is Allowed",
+      "rule": "Experimentation is not winner-takes-all. Strong elements from multiple directions may be deliberately combined when their synthesis produces a coherent concept stronger than the individual candidates.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S6-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Experimentation is not winner-takes-all. Strong elements from multiple directions may be deliberately combined when their synthesis produces a coherent concept stronger than the individual candidates.**\n\nExample:\n\n```text\nA\nstrongest material system\n\nB\nstrongest narrative\n\nC\nstrongest shopping mechanic\n\n        ↓\n\nD\nA materials\n+\nB narrative\n+\nC interaction\n\n        ↓\n\nnew prototype\n```\n\nThe synthesis must itself be tested.\n\nDo not feature-stack unrelated ideas merely to appear innovative."
+    },
+    {
+      "id": "S7-001",
+      "title": "Performance Does Not Rewrite Brand DNA",
+      "rule": "Advertising, engagement, conversion, commerce, audience, or creative performance may inform future execution, channel strategy, and hypothesis selection, but performance alone may not automatically redefine Brand Constitution, product truth, or permanent creative boundaries.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S7-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Advertising, engagement, conversion, commerce, audience, or creative performance may inform future execution, channel strategy, and hypothesis selection, but performance alone may not automatically redefine Brand Constitution, product truth, or permanent creative boundaries.**\n\nA high-performing generic execution means:\n\n> it performed well in that tested context.\n\nIt does not mean:\n\n> generic execution is now SkyyRose identity."
+    },
+    {
+      "id": "S8-001",
+      "title": "Never Optimize Into Sameness",
+      "rule": "SkyyRose must not optimize itself into creative sameness. Historical success, recent creative similarity, and short-term performance are evidence rather than permanent creative limits. Future work should continue testing materially new territory.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S8-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **SkyyRose must not optimize itself into creative sameness. Historical success, recent creative similarity, and short-term performance are evidence rather than permanent creative limits. Future work should continue testing materially new territory.**\n\nThe system should optimize:\n\n```text\nRECOGNIZABLE IDENTITY\n        +\nMEANINGFUL NOVELTY\n        +\nCUSTOMER EXPERIENCE\n        +\nPRODUCT TRUTH\n```\n\nnot simply visual similarity to previous campaigns."
+    },
+    {
+      "id": "S9-001",
+      "title": "Novelty and Brand Compliance Are Independent Axes",
+      "rule": "A creative direction should be evaluated separately for constitutional compliance and meaningful novelty. High similarity to prior SkyyRose work is not proof of brand correctness, and high novelty is not proof of brand violation.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S9-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "Recommended hard rule:\n\n> **A creative direction should be evaluated separately for constitutional compliance and meaningful novelty. High similarity to prior SkyyRose work is not proof of brand correctness, and high novelty is not proof of brand violation.**\n\nConceptually:\n\n```text\n                NOVELTY\n                  ↑\n                  │\n       innovative │ innovative\n       but wrong  │ + on-brand\n                  │\n─────────────── BRAND COMPLIANCE ───────→\n                  │\n       repetitive │ familiar\n       + wrong    │ + on-brand\n                  │\n```\n\nDesired major creative work generally aims toward:\n\n> **on-brand + materially new**"
+    },
+    {
+      "id": "S10-001",
+      "title": "Creative Difference Map",
+      "rule": "For major concepts, record a concise difference map against relevant recent work.\n\nExample:\n\n```text\nenvironment       NEW\nmaterials         NEW\npalette           EVOLVED\ninteraction       NEW\nstory structure   NEW\ncamera language   EXISTING\ntypography        EXISTING\nproduct framing   EXISTING\nshopping model    NEW\n```\n\nIf nearly every material dimension is unchanged, the system should challenge whether the direction genuinely satisfies Creative Evolution.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S10-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "For major concepts, record a concise difference map against relevant recent work.\n\nExample:\n\n```text\nenvironment       NEW\nmaterials         NEW\npalette           EVOLVED\ninteraction       NEW\nstory structure   NEW\ncamera language   EXISTING\ntypography        EXISTING\nproduct framing   EXISTING\nshopping model    NEW\n```\n\nIf nearly every material dimension is unchanged, the system should challenge whether the direction genuinely satisfies Creative Evolution."
+    },
+    {
+      "id": "S11-001",
+      "title": "Campaign Learning Archive",
+      "rule": "Every significant campaign, film, commercial, interactive experience, or launch should leave behind structured learning.\n\nRecord where applicable:\n\n```text\ncampaign / initiative\nconstitution version\ncontext bundle version\ncollection\nproducts / SKUs\ncontent intents\ndirections tested\nhypotheses\nselected direction\nsynthesized elements\ncreative devices used\nmaterials\npalette\nlocations\ncamera language\ninteraction model\nshopping mechanic\nproduction methods\nchannels\nmarket results\ncreative learning\nexperience learning\nchannel learning\nfailures\nsaturation update\n```\n\nThis becomes Creative OS institutional memory.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S11-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "Every significant campaign, film, commercial, interactive experience, or launch should leave behind structured learning.\n\nRecord where applicable:\n\n```text\ncampaign / initiative\nconstitution version\ncontext bundle version\ncollection\nproducts / SKUs\ncontent intents\ndirections tested\nhypotheses\nselected direction\nsynthesized elements\ncreative devices used\nmaterials\npalette\nlocations\ncamera language\ninteraction model\nshopping mechanic\nproduction methods\nchannels\nmarket results\ncreative learning\nexperience learning\nchannel learning\nfailures\nsaturation update\n```\n\nThis becomes Creative OS institutional memory."
+    },
+    {
+      "id": "S12-001",
+      "title": "Learning Does Not Become Constitution Automatically",
+      "rule": "Campaign and experiment learning belongs to contextual knowledge unless explicitly ratified into the Constitution by the owner.",
+      "level": "GOVERNANCE",
+      "scope": "Creative saturation, novelty, experimentation and contextual learning",
+      "status": "OWNER_RATIFIED",
+      "owner": "Corey Foster",
+      "approval_date": "2026-09-23",
+      "evidence": [
+        {
+          "source": "OWNER-RATIFICATION-KPS-20260923.md",
+          "heading": "S12-001",
+          "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298"
+        }
+      ],
+      "decision_event": "FINAL-KPS-20260923",
+      "exceptions": [],
+      "supersedes": [],
+      "source_context": "> **Campaign and experiment learning belongs to contextual knowledge unless explicitly ratified into the Constitution by the owner.**\n\nThe learning loop is:\n\n```text\nCREATE\n  ↓\nTEST\n  ↓\nLEARN\n  ↓\nCONTEXTUAL KNOWLEDGE\n  ↓\nNEXT CREATIVE\n```\n\nnot:\n\n```text\nCREATE\n  ↓\nTEST\n  ↓\nWINNER BECOMES BRAND DNA\n```"
+    }
+  ],
+  "existing_resolved_boundaries": [
+    {
+      "id": "CF1",
+      "rule": "Founder product facts remain authoritative.",
+      "evidence": [
+        "E01",
+        "E02"
+      ],
+      "status": "EXISTING_RESOLVED_NOT_NEW_RATIFICATION"
+    },
+    {
+      "id": "CF2",
+      "rule": "No active tagline; no invented replacement.",
+      "evidence": [
+        "E04",
+        "E05"
+      ],
+      "status": "EXISTING_RESOLVED_NOT_NEW_RATIFICATION"
+    },
+    {
+      "id": "CF3",
+      "rule": "Preserve the recorded Signature origin decision.",
+      "evidence": [
+        "E06"
+      ],
+      "status": "EXISTING_RESOLVED_NOT_NEW_RATIFICATION"
+    },
+    {
+      "id": "CF4",
+      "rule": "Resolve desired product facts through get_product(sku) and the unified registry. WooCommerce retains live session/variation purchasability and transaction state. Copy no product values into the Constitution.",
+      "evidence": [
+        "E01",
+        "E02",
+        "E17",
+        "E18"
+      ],
+      "status": "EXISTING_RESOLVED_NOT_NEW_RATIFICATION"
+    },
+    {
+      "id": "CF5",
+      "rule": "Current website font-source ownership remains typography.json.",
+      "evidence": [
+        "E02",
+        "E10"
+      ],
+      "status": "EXISTING_RESOLVED_NOT_NEW_RATIFICATION"
+    }
+  ],
+  "unresolved_decision_ids": [],
+  "evidence_package": "../brand-context-investigation-20260923/",
+  "decision_record": "owner-decisions.json",
+  "supersedes": [],
+  "limits": [
+    "Constitution v1 is fully owner-ratified.",
+    "Source_context retains owner boundaries, examples and supporting operating instructions; illustrative examples are not claims of executed work.",
+    "Implementation contracts are design specifications, not an implemented runtime.",
+    "No production resolver, consumer migration, injector change, publishing, deployment or spend is authorized by this documentation task."
+  ],
+  "source_handoff": {
+    "kind": "EXPLICIT_OWNER_FINAL_HANDOFF",
+    "path": "OWNER-RATIFICATION-20260923.md",
+    "sha256": "80a25f11846136986f15656c2a150209b8b3714b1e28fd2e591b513f8ab1de34",
+    "original_attachment": "/Users/theceo/.codex/attachments/6c84344a-1375-4d72-a33b-38ada8475001/Pasted text.txt"
+  },
+  "final_ratification_source": {
+    "kind": "EXPLICIT_OWNER_FINAL_HANDOFF",
+    "path": "OWNER-RATIFICATION-KPS-20260923.md",
+    "sha256": "7be3eb4dadd891320006a29c046d6ba8914b44e781a3c66d7141980d44c62298",
+    "original_attachment": "/Users/theceo/.codex/attachments/51f1677a-2aba-48bb-abb7-f3a7b31c8e9d/Pasted text.txt"
+  },
+  "approval_date": "2026-09-23",
+  "superseded_rule_aliases": {
+    "K1": "K1-001",
+    "K2": "K2-001",
+    "K3": "K3-001",
+    "K4": "K4-001"
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "schema_version": "1.0",
+  "status": "DESIGN_SPECIFICATION_NOT_IMPLEMENTED",
+  "authority": "constitution.json",
+  "specification": "CONTEXT-RESOLVER-CREATIVE-OS-SPEC.md",
+  "not_new_brand_ratification": true,
+  "representation_modes": [
+    "EXACT_PRODUCT",
+    "PRODUCT_CONCEPT",
+    "BRAND_ABSTRACT"
+  ],
+  "lifecycle_stages": {
+    "M1": "RESEARCH",
+    "M2": "CREATIVE_EXPLORATION",
+    "M3": "PROTOTYPE",
+    "M4": "CANDIDATE_ABN",
+    "M5": "PRODUCTION",
+    "M6": "RELEASE_CANDIDATE",
+    "M7": "RELEASE_PUBLICATION",
+    "M8": "MEASUREMENT_LEARNING",
+    "M9": "ARCHIVE_PROVENANCE"
+  },
+  "gate_results": [
+    "PASS",
+    "FAIL",
+    "BLOCKED"
+  ],
+  "inapplicable_gate": {
+    "applicable": false,
+    "reason": "Required nonempty explanation",
+    "result": null
+  },
+  "resolution_states": [
+    "READY",
+    "READY_WITH_NONBLOCKING_GAPS",
+    "BLOCKED"
+  ],
+  "contracts": {
+    "resolution_request": {
+      "required": [
+        "job_id",
+        "brand",
+        "objective",
+        "collection_context",
+        "campaign_brief",
+        "lifecycle_stage",
+        "channel",
+        "intended_use",
+        "audience",
+        "representation_mode",
+        "products",
+        "decisions",
+        "constraints"
+      ],
+      "product_item_required": [
+        "sku",
+        "required_views",
+        "required_details"
+      ]
+    },
+    "resolved_context": {
+      "required": [
+        "resolution_id",
+        "request_digest",
+        "constitution_version",
+        "constitution_digest",
+        "selected_rule_ids",
+        "applicable_context",
+        "source_manifest",
+        "field_authority",
+        "protected_constraints",
+        "creative_freedoms",
+        "conflicts",
+        "gaps",
+        "status",
+        "decision_lineage"
+      ]
+    },
+    "job_contract": {
+      "required": [
+        "job_id",
+        "version",
+        "resolved_context_digest",
+        "brief_digest",
+        "purpose",
+        "audience_assumptions",
+        "deliverables",
+        "experience_outcome",
+        "authored_meaning",
+        "representation_mode",
+        "product_bindings",
+        "production_method",
+        "success_evidence",
+        "applicable_requirements",
+        "approval_requirements",
+        "novelty_dimensions",
+        "open_issues"
+      ]
+    },
+    "gate_record": {
+      "required": [
+        "gate_id",
+        "applicable",
+        "applicability_reason",
+        "artifact_digest",
+        "input_digests",
+        "requirement_ids",
+        "scope",
+        "method",
+        "reviewer",
+        "timestamp",
+        "observations",
+        "evidence",
+        "result",
+        "criteria"
+      ]
+    },
+    "authorization": {
+      "required": [
+        "action",
+        "actor",
+        "scope",
+        "artifact_version",
+        "timestamp",
+        "conditions"
+      ],
+      "conditional": [
+        "environment_or_account for external action",
+        "budget for spending",
+        "expiry when specified"
+      ]
+    },
+    "creative_direction": {
+      "required": [
+        "hypothesis",
+        "underlying_meaning",
+        "visual_direction",
+        "material_language",
+        "environment_location",
+        "narrative_approach",
+        "product_role",
+        "interaction_shopping_idea",
+        "novelty_relative_to_recent_work",
+        "execution_approach",
+        "risk",
+        "expected_learning"
+      ],
+      "applicability": "Major initiatives before expensive final production when practical; no fixed candidate quota"
+    },
+    "difference_map": {
+      "required": [
+        "baseline_work_references",
+        "dimensions",
+        "material_difference_rationale",
+        "constitutional_compliance_assessment",
+        "meaningful_novelty_assessment"
+      ],
+      "separate_axes": true,
+      "dimension_record": [
+        "dimension",
+        "difference",
+        "evidence",
+        "customer_or_objective_relevance"
+      ]
+    },
+    "synthesis": {
+      "required": [
+        "new_candidate_id",
+        "contributing_candidates",
+        "selected_elements",
+        "coherence_rationale",
+        "test_evidence"
+      ],
+      "inherits_prior_pass": false
+    },
+    "palette_provenance": {
+      "required": [
+        "domain",
+        "authority_source",
+        "permissions",
+        "purpose",
+        "protected_color_checks"
+      ],
+      "applicability": "Materially consequential campaign or collection palette"
+    },
+    "campaign_learning_archive": {
+      "fields_where_applicable": [
+        "campaign_initiative",
+        "constitution_version",
+        "context_bundle_version",
+        "collection",
+        "products_skus",
+        "content_intents",
+        "directions_tested",
+        "hypotheses",
+        "selected_direction",
+        "synthesized_elements",
+        "creative_devices_used",
+        "materials",
+        "palette",
+        "locations",
+        "camera_language",
+        "interaction_model",
+        "shopping_mechanic",
+        "production_methods",
+        "channels",
+        "market_results",
+        "creative_learning",
+        "experience_learning",
+        "channel_learning",
+        "failures",
+        "saturation_update"
+      ],
+      "authority": "CONTEXTUAL_KNOWLEDGE",
+      "constitutional_promotion": "EXPLICIT_OWNER_RATIFICATION_REQUIRED"
+    }
+  },
+  "fidelity_criteria": [
+    "silhouette",
+    "proportions",
+    "construction_cut_geometry",
+    "colorway",
+    "artwork",
+    "logo",
+    "placement",
+    "dimensions",
+    "material_appearance",
+    "front_back",
+    "trims_stitching_relevant_detail"
+  ],
+  "release_candidate_gates": [
+    "CONSTITUTION",
+    "PRODUCT_FIDELITY",
+    "FACTUAL_CLAIMS",
+    "RIGHTS_APPROVALS",
+    "CHANNEL",
+    "CREATIVE_QA",
+    "TECHNICAL_QA",
+    "ACCESSIBILITY",
+    "COMMERCE_INTEGRITY"
+  ],
+  "release_candidate_records": [
+    "novelty_saturation",
+    "experiment_evidence_when_applicable"
+  ],
+  "invariants": [
+    "All applicable gates must PASS; no averaging can override FAIL/BLOCKED.",
+    "Inapplicable gates require reason and null result.",
+    "Real SKU depiction invokes EXACT_PRODUCT regardless of medium or evasive mode label.",
+    "Missing required authoritative view blocks exact depiction.",
+    "Full production approval requires credible fidelity-preserving method.",
+    "Verification PASS does not authorize publication, deployment or spending.",
+    "Artifact/input changes invalidate dependent prior checks.",
+    "Source snapshots are immutable evidence, not competing editable truth.",
+    "Founder facts require no third-party reconfirmation.",
+    "Color permissions do not transfer automatically across eight palette domains.",
+    "Constitutional compliance and meaningful novelty are evaluated independently.",
+    "Synthesized candidates require their own tests.",
+    "Campaign learning does not automatically change constitutional rules."
+  ],
+  "unresolved_owner_decisions": [],
+  "ratified_context_manifest": "context-manifest.json",
+  "palette_domains": [
+    "PRODUCT",
+    "PROTECTED_ASSET",
+    "INTERFACE",
+    "ENVIRONMENT",
+    "PHOTOGRAPHIC",
+    "CAMPAIGN",
+    "LIGHTING",
+    "NATURAL_LOCATION"
+  ],
+  "experiment_classes": [
+    "CREATIVE_DIRECTION",
+    "EXPERIENCE",
+    "EXECUTION",
+    "MARKET"
+  ]
+}
