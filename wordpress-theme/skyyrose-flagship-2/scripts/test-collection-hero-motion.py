@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Regression tests for the homepage emitter approval boundaries."""
+
 import importlib.util
 import unittest
 from pathlib import Path
@@ -18,31 +19,22 @@ class HomepageEmitterTests(unittest.TestCase):
         cls.journal = (home / "editorial-journal.php").read_text()
         cls.collection = (home / "editorial-collection.php").read_text()
 
-    def test_existing_journal_assets_are_hash_bound(self):
+    def test_journal_gallery_is_registry_source_bound(self):
         validator.validate_home_journal(self.journal)
 
-    def test_replaced_film_fails(self):
-        changed = self.journal.replace("skyyrose-tour-around-the-bay.mp4", "other.mp4")
-        with self.assertRaisesRegex(ValueError, "source binding drift"):
-            validator.validate_home_journal(changed)
-
-    def test_extra_video_fails(self):
-        with self.assertRaisesRegex(ValueError, "exactly one"):
-            validator.validate_home_journal(self.journal + "<VIDEO src='other.mp4'></VIDEO>")
-
-    def test_direct_video_source_fails(self):
-        with self.assertRaisesRegex(ValueError, "bypass"):
+    def test_rejected_film_fails(self):
+        with self.assertRaisesRegex(ValueError, "rejected jersey film"):
             validator.validate_home_journal(
-                self.journal.replace("<video ", "<video src='other.mp4' ", 1)
+                self.journal + '<video src="skyyrose-tour-around-the-bay.mp4"></video>'
             )
 
-    def test_poster_removed_fails(self):
-        with self.assertRaisesRegex(ValueError, "visible poster"):
+    def test_gallery_removed_fails(self):
+        with self.assertRaisesRegex(ValueError, "source-bound jersey gallery"):
             validator.validate_home_journal(
-                self.journal.replace("skyyrose-tour-around-the-bay-poster.webp", "other.webp")
+                self.journal.replace("template-parts/commerce/jersey-gallery", "other")
             )
 
-    def test_asset_bytes_changed_fails(self):
+    def test_card_bytes_changed_fails(self):
         with patch.object(validator, "sha256", return_value="wrong"):
             with self.assertRaisesRegex(ValueError, "hash drift"):
                 validator.validate_home_journal(self.journal)

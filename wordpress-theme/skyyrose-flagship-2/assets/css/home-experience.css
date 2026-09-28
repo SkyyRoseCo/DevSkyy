@@ -1,4 +1,4 @@
-/* Homepage collection and Jersey film surfaces remain visible without JavaScript. */
+/* Homepage collection motion and Jersey product fronts remain visible without JavaScript. */
 .sr2-home-motion {
   position: relative;
   overflow: hidden;
@@ -46,14 +46,88 @@
   background: #111210;
 }
 .sr2-jersey-experience__screen {
+  position: relative;
   min-width: 0;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 2 / 3;
+  background: #08090a;
 }
-.sr2-jersey-experience__screen > img {
+.sr2-jersey-experience__rail {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  list-style: none;
+}
+.sr2-jersey-experience__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+.sr2-jersey-experience__slide > a {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  color: #fff;
+}
+.sr2-jersey-experience__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.sr2-jersey-experience__slide > a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -6px;
+}
+.sr2-jersey-experience__label {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  padding: 0.8rem 1rem;
+  background: rgb(12 12 12 / 82%);
+  font: 500 0.8rem/1.4 var(--sr2-font-body);
+}
+.sr2-jersey-experience__controls {
+  position: absolute;
+  z-index: 2;
+  right: 1rem;
+  bottom: 4.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.3rem;
+  background: rgb(12 12 12 / 85%);
+  color: #fff;
+}
+.sr2-jersey-experience__controls[hidden] {
+  display: none;
+}
+.sr2-jersey-experience__controls button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(255 255 255 / 65%);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.sr2-jersey-experience__controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.sr2-jersey-experience__controls button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+.sr2-jersey-experience__controls output {
+  min-width: 4.5rem;
+  text-align: center;
+  font: 500 0.75rem/1.2 var(--sr2-font-body);
 }
 .sr2-jersey-experience__stamp {
   position: absolute;
@@ -89,7 +163,7 @@
     grid-template-columns: minmax(0, 1fr);
   }
   .sr2-jersey-experience__screen {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 2 / 3;
   }
 }
 @media (prefers-reduced-motion: reduce) {

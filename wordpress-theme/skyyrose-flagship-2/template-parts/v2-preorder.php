@@ -11,51 +11,66 @@ defined( 'ABSPATH' ) || exit;
 $sr2_reserve_principles = array(
 	array(
 		'number' => '01',
-		'title'  => 'Choose with the details open',
-		'copy'   => 'Each piece links to its product page for size, price, availability, and order terms.',
+		'title'  => 'Find your piece',
+		'copy'   => 'Explore the collection below. Each garment opens to its own product page.',
 	),
 	array(
 		'number' => '02',
-		'title'  => 'Full payment at checkout',
-		'copy'   => 'Pre-orders require full payment at checkout. The pre-order label does not reserve stock or establish a shipping date. Contact Client Services for shipping estimates before ordering.',
+		'title'  => 'Review the details',
+		'copy'   => 'Choose a size where offered and review the current price, availability, and any delivery information on the product page.',
 	),
 	array(
 		'number' => '03',
-		'title'  => 'Keep the receipt',
-		'copy'   => 'Order confirmation and account history remain the source for purchase status and any updates the store publishes.',
+		'title'  => 'Confirm at checkout',
+		'copy'   => 'The bag and checkout show your final order details before payment. Your confirmation records the purchase.',
 	),
 );
-$sr2_reserve_products   = skyyrose2_get_products( 12, 'pre-order' );
+$sr2_reserve_products   = skyyrose2_get_products( 100, 'pre-order' );
 $sr2_reserve_worlds     = skyyrose2_collections();
-$sr2_reserve_salon      = 'images/preorder/responsive/black-rose-salon';
+$sr2_reserve_monument   = SKYYROSE2_URI . '/assets/images/house-monument-20260928.webp';
+$sr2_reserve_edits      = array();
+foreach ( $sr2_reserve_products as $sr2_reserve_product ) {
+	$sr2_reserve_record = skyyrose2_product_presentation( $sr2_reserve_product );
+	$sr2_reserve_slug   = sanitize_title( $sr2_reserve_record['collection'] ?? '' );
+	$sr2_reserve_name   = $sr2_reserve_worlds[ $sr2_reserve_slug ]['name'] ?? __( 'SkyyRose', 'skyyrose-flagship-2' );
+	if ( 'jersey-series' === ( $sr2_reserve_record['presentation'] ?? '' ) ) {
+		$sr2_reserve_slug = 'jersey-series';
+		$sr2_reserve_name = __( 'Jersey Series', 'skyyrose-flagship-2' );
+	}
+	if ( ! isset( $sr2_reserve_edits[ $sr2_reserve_slug ] ) ) {
+		$sr2_reserve_edits[ $sr2_reserve_slug ] = array(
+			'name'     => $sr2_reserve_name,
+			'products' => array(),
+		);
+	}
+	$sr2_reserve_edits[ $sr2_reserve_slug ]['products'][] = $sr2_reserve_product;
+}
 ?>
 
-<section class="sr2-arrival sr2-reserve-arrival" data-collection="black-rose" aria-labelledby="sr2-page-title">
-	<div class="sr2-arrival__media" style="--sr2-focal: 50% 60%;">
-		<picture>
-			<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $sr2_reserve_salon . '-640w.webp' ) ); ?>">
-			<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $sr2_reserve_salon . '-1024w.webp' ) ); ?>">
-			<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $sr2_reserve_salon . '-1440w.webp' ) ); ?>" alt="Black Rose pieces displayed in the SkyyRose pre-order salon" width="1440" height="960" fetchpriority="high" decoding="async">
-		</picture>
+<section class="sr2-arrival sr2-reserve-arrival" aria-labelledby="sr2-page-title">
+	<div class="sr2-arrival__media">
+		<img src="<?php echo esc_url( $sr2_reserve_monument ); ?>" alt="SkyyRose rose monument overlooking the Bay Bridge at dusk" width="1672" height="941" fetchpriority="high" decoding="async">
 	</div>
 	<div class="sr2-arrival__veil" aria-hidden="true"></div>
 	<div class="sr2-arrival__copy">
-		<p class="sr2-eyebrow">The Pre-Order Collection</p>
-		<h1 id="sr2-page-title" class="sr2-title-display">The piece is the invitation.</h1>
-		<p class="sr2-lede">Enter through the Black Rose salon, then select the piece with the product facts in front of you. Review size, price, and availability before ordering.</p>
+		<p class="sr2-eyebrow">SkyyRose / Pre-Order</p>
+		<h1 id="sr2-page-title" class="sr2-title-display">Made for the moment ahead.</h1>
+		<p class="sr2-lede">A first look at what is coming to the house. Discover the pieces, then make your choice with current product details in view.</p>
 		<div class="sr2-arrival__actions">
-			<a class="sr2-control sr2-control--primary" href="#reserve">View pieces</a>
-			<a class="sr2-editorial-link" href="<?php echo esc_url( skyyrose2_collection_url( 'black-rose' ) ); ?>">Enter Black Rose<span aria-hidden="true">→</span></a>
+			<a class="sr2-control sr2-control--primary" href="#reserve">Explore the pieces</a>
+			<a class="sr2-editorial-link" href="#reserve-process">How pre-order works<span aria-hidden="true">→</span></a>
 		</div>
 	</div>
+	<p class="sr2-reserve-arrival__index" aria-hidden="true">The SkyyRose collection <span>↓</span></p>
 </section>
 
-<section class="sr2-band sr2-reserve-principles" aria-labelledby="sr2-reserve-principles-title">
+<section id="reserve-process" class="sr2-band sr2-reserve-principles" aria-labelledby="sr2-reserve-principles-title">
 	<div class="sr2-band__head">
 		<div>
-			<p class="sr2-eyebrow">Before the order</p>
-			<h2 id="sr2-reserve-principles-title" class="sr2-title-chapter">Clear terms belong beside the feeling.</h2>
+			<p class="sr2-eyebrow">The experience</p>
+			<h2 id="sr2-reserve-principles-title" class="sr2-title-chapter">From first look to yours.</h2>
 		</div>
+		<p class="sr2-reserve-principles__intro">Each piece has its own product details and live purchase options. Delivery timing is shown on each product page when available.</p>
 	</div>
 	<ol class="sr2-reserve-principles__list">
 		<?php foreach ( $sr2_reserve_principles as $sr2_principle ) : ?>
@@ -72,32 +87,49 @@ $sr2_reserve_salon      = 'images/preorder/responsive/black-rose-salon';
 	<div class="sr2-band__head">
 		<div>
 			<p class="sr2-eyebrow">Browse the collection</p>
-			<h2 id="sr2-reserve-products-title" class="sr2-title-chapter">Future pieces. Present choice.</h2>
-			<p class="sr2-lede">Review each product for current price and availability.</p>
+			<h2 id="sr2-reserve-products-title" class="sr2-title-chapter">Choose your place in the story.</h2>
+			<p class="sr2-lede">Explore the edit, then open a piece to select available options and review its current order details.</p>
 		</div>
 	</div>
 	<?php if ( $sr2_reserve_products ) : ?>
-		<div class="sr2-garment-grid">
-			<?php foreach ( $sr2_reserve_products as $sr2_reserve_index => $sr2_reserve_product ) : ?>
-				<?php
-				get_template_part(
-					'template-parts/commerce/product-card',
-					null,
-					array(
-						'product'        => $sr2_reserve_product,
-						'index'          => $sr2_reserve_index,
-						'heading_level'  => 3,
-						'variant'        => 'standard',
-						'media_priority' => 'lazy',
-						'frame'          => false,
-						'sizes'          => '(max-width: 47.99em) calc((100vw - 3rem) / 2), (max-width: 74.99em) calc((100vw - 5rem) / 3), 360px',
-					)
-				);
-				?>
+		<nav class="sr2-reserve-nav" aria-label="Browse pre-order collections">
+			<?php foreach ( $sr2_reserve_edits as $sr2_reserve_slug => $sr2_reserve_edit ) : ?>
+				<a href="#reserve-<?php echo esc_attr( $sr2_reserve_slug ); ?>"><?php echo esc_html( $sr2_reserve_edit['name'] ); ?><span aria-hidden="true"> ↗</span></a>
 			<?php endforeach; ?>
-		</div>
+		</nav>
+		<?php
+		$sr2_reserve_index      = 0;
+		$sr2_reserve_edit_index = 0; foreach ( $sr2_reserve_edits as $sr2_reserve_slug => $sr2_reserve_edit ) :
+			?>
+		<section id="reserve-<?php echo esc_attr( $sr2_reserve_slug ); ?>" class="sr2-reserve-edit" aria-labelledby="reserve-<?php echo esc_attr( $sr2_reserve_slug ); ?>-title">
+			<div class="sr2-reserve-edit__head">
+				<p class="sr2-eyebrow">The collection / <?php echo esc_html( sprintf( '%02d', ++$sr2_reserve_edit_index ) ); ?></p>
+				<h3 id="reserve-<?php echo esc_attr( $sr2_reserve_slug ); ?>-title" class="sr2-title-editorial"><?php echo esc_html( $sr2_reserve_edit['name'] ); ?></h3>
+			</div>
+			<div class="sr2-garment-grid">
+					<?php foreach ( $sr2_reserve_edit['products'] as $sr2_reserve_product ) : ?>
+						<?php
+						get_template_part(
+							'template-parts/commerce/product-card',
+							null,
+							array(
+								'product'        => $sr2_reserve_product,
+								'index'          => $sr2_reserve_index,
+								'heading_level'  => 4,
+								'variant'        => 0 === $sr2_reserve_index ? 'feature' : 'standard',
+								'media_priority' => 'lazy',
+								'frame'          => false,
+								'sizes'          => '(max-width: 47.99em) calc(100vw - 2rem), (max-width: 74.99em) calc((100vw - 5rem) / 2), 480px',
+							)
+						);
+						?>
+						<?php ++$sr2_reserve_index; ?>
+			<?php endforeach; ?>
+			</div>
+		</section>
+				<?php endforeach; ?>
 	<?php else : ?>
-		<p class="sr2-empty">Next pieces entering the world soon.</p>
+		<p class="sr2-empty">No pieces are available to pre-order right now. Explore the collections to discover the house.</p>
 	<?php endif; ?>
 </section>
 

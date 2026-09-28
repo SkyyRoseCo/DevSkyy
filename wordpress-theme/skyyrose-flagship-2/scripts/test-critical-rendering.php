@@ -62,7 +62,7 @@ $built    = file_get_contents( skyyrose2_critical_css_path() );
 sr2_assert( is_array( $contract ) && ! empty( $contract['budgetBytes'] ), 'contract declares a byte budget' );
 sr2_assert( is_string( $built ) && '' !== trim( $built ), 'built critical CSS exists' );
 sr2_assert( strlen( $built ) <= (int) $contract['budgetBytes'], 'built critical CSS is within budget' );
-foreach ( array( '@font-face', ':root', '.sr2-house-header', '.sr2-header__brand-mark', '.sr2-brand-media', '.sr2-house-arrival', '.sr2-house-arrival__copy', '#sr2-archive-title', '.sr2-control--primary', '.sr2-house-arrival__art', '.sr2-house-arrival__portraits', '.sr2-house-nav' ) as $needle ) {
+foreach ( array( '@font-face', ':root', '.sr2-house-header', '.sr2-header__brand-mark', '.sr2-brand-media', '.sr2-house-arrival', '.sr2-house-arrival__copy', '#sr2-archive-title', '.sr2-control--primary', '.sr2-house-arrival__art', '.sr2-house-nav' ) as $needle ) {
 	sr2_assert( false !== strpos( $built, $needle ), "critical CSS carries first-view structure: {$needle}" );
 }
 sr2_assert( false === strpos( $built, '__SKYYROSE2_ASSETS__/css/' ), 'no relative asset path survives that would resolve against the document' );
@@ -120,7 +120,7 @@ $GLOBALS['sr2_filter_values'] = array();
 // The template prints the bootstrap directly after the hero section.
 $front_page = file_get_contents( SKYYROSE2_DIR . '/front-page.php' );
 $hero_start = strpos( $front_page, "'template-parts/home/editorial-hero'" );
-$bootstrap = strpos( $front_page, 'skyyrose2_print_hero_bootstrap()' );
+$bootstrap  = strpos( $front_page, 'skyyrose2_print_hero_bootstrap()' );
 sr2_assert( false !== $hero_start && false !== $bootstrap && $bootstrap > $hero_start, 'bootstrap follows the rendered hero part' );
 
 $hero_part = file_get_contents( SKYYROSE2_DIR . '/template-parts/home/editorial-hero.php' );
@@ -131,7 +131,7 @@ sr2_assert( in_array( 'wp_preload_resources:skyyrose2_critical_font_preloads:20'
 $GLOBALS['sr2_front'] = false;
 sr2_assert( array( array( 'href' => 'x' ) ) === skyyrose2_critical_font_preloads( array( array( 'href' => 'x' ) ) ), 'content routes get no font preloads' );
 $GLOBALS['sr2_front'] = true;
-$preloads = skyyrose2_critical_font_preloads( array() );
+$preloads             = skyyrose2_critical_font_preloads( array() );
 sr2_assert( 2 === count( $preloads ), 'front page preloads only its two first-view faces' );
 sr2_assert( in_array( SKYYROSE2_URI . '/assets/derived/fonts/archivo-normal-width.woff2', array_column( $preloads, 'href' ), true ), 'the current Archivo headline face is preloaded' );
 sr2_assert( ! in_array( SKYYROSE2_URI . '/assets/sot/fonts/cinzel-latin.woff2', array_column( $preloads, 'href' ), true ), 'the former Cinzel headline face does not compete for first-view bandwidth' );

@@ -39,13 +39,11 @@ AI_STATUSES = {
     "blocked_daily_generation_limit",
 }
 
-# Existing checked-in house film, not a collection hero or a new approval.
-# Pin both derivatives and the visible still so a renamed or substituted asset fails.
-JOURNAL_ASSETS = {
-    "skyyrose-tour-around-the-bay.webm": "fd7a29fbf06399057d5cf210a6fd6c2e1c9552e2beb9f1e8743c433b6eebd57d",
-    "skyyrose-tour-around-the-bay.mp4": "5e4ee02fa38feb63e8a7ed4ef937faa212903f0fa58bf65443bb8cd2a18e073a",
-    "skyyrose-tour-around-the-bay-poster.webp": "8963b175358c94f147728b81d1787ec5355655b7fc229fe5e77c4865f3226b9a",
-}
+# Jersey gallery sources are projected from the single product registry.
+REGISTRY = THEME.parents[1] / "logo-registry.json"
+CARD_FRONTS = THEME / "data/approved-card-fronts.json"
+GALLERY = THEME / "template-parts/commerce/jersey-gallery.php"
+JERSEY_SKUS = {"br-003", "br-008", "br-009", "br-010", "br-011", "br-012", "br-014", "br-015"}
 
 
 def sha256(path: Path) -> str:
@@ -116,49 +114,65 @@ def validate_ai_assets(slug: str, ai_motion: dict, status: str, max_bytes: int) 
 
 
 def validate_home_journal(source: str) -> None:
-    """Allow only the two literal, hash-bound house-film derivatives."""
-    if len(re.findall(r"<\s*video\b", source, re.IGNORECASE)) != 1:
-        raise ValueError("homepage journal must emit exactly one house film")
-    # PHP close tags contain '>', so match the complete closing video instead
-    # of treating this mixed PHP/HTML file as parsed static HTML.
-    film = re.search(r"<video\b.*?</video\s*>", source, re.DOTALL | re.IGNORECASE)
-    if not film:
-        raise ValueError("homepage journal film markup is malformed")
-    compact = re.sub(r"\s+", " ", film.group())
-    video_open = compact.split("<source", 1)[0]
-    if re.search(r"\bsrc\s*=", video_open, re.IGNORECASE):
-        raise ValueError("homepage journal cannot bypass its source bindings")
-    expected_sources = [
-        """<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/"""
-        + name
-        + """' ); ?>" type="video/"""
-        + extension
-        + '">'
-        for name, extension in (
-            ("skyyrose-tour-around-the-bay.webm", "webm"),
-            ("skyyrose-tour-around-the-bay.mp4", "mp4"),
+    """Jersey reveal uses exact registry-bound fronts; old film cannot return."""
+    gallery = GALLERY.read_text(encoding="utf-8")
+    if "skyyrose-tour-around-the-bay" in source or re.search(r"<\s*video\b", source, re.I):
+        raise ValueError("homepage journal must not serve the rejected jersey film")
+    if "get_template_part( 'template-parts/commerce/jersey-gallery' )" not in source:
+        raise ValueError("homepage journal must include source-bound jersey gallery")
+    for marker in (
+        "skyyrose2_presentation_registry()",
+        "skyyrose2_get_products_by_skus(",
+        "skyyrose2_approved_card_front( $jersey )",
+        "$jersey->get_permalink()",
+        "data-jersey-rail",
+        "data-jersey-prev",
+        "data-jersey-next",
+    ):
+        if marker not in gallery:
+            raise ValueError(f"jersey gallery lacks {marker}")
+    if re.search(r"<\s*video\b", gallery, re.I) or "skyyrose-tour-around-the-bay" in gallery:
+        raise ValueError("jersey gallery must not reintroduce rejected film")
+
+    registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    projected = json.loads(CARD_FRONTS.read_text(encoding="utf-8"))
+    patch = registry["jersey_patch_standard"]
+    if (
+        patch["status"] != "FOUNDER_CONFIRMED"
+        or (patch["width_inches"], patch["height_inches"]) != (3, 4)
+        or set(patch["skus"]) != JERSEY_SKUS
+    ):
+        raise ValueError("founder jersey patch contract drift")
+    if set(projected["products"]) != set(registry["products"]):
+        raise ValueError("card front projection SKU drift")
+    for sku, product in registry["products"].items():
+        front = product["images"]["card_front"]
+        if projected["products"][sku] != front:
+            raise ValueError(f"{sku} card front differs from product registry")
+        path = validate_asset(
+            {"file": front["src"], "sha256": front["sha256"]}, f"{sku} card front"
         )
-    ]
-    sources = re.findall(r"<source\b.*?>(?=<source|</video)", compact, re.IGNORECASE)
-    if sources != expected_sources:
-        raise ValueError("homepage journal film source binding drift")
-    poster = (
-        '<img src="<?php echo esc_url( SKYYROSE2_URI . '
-        "'/assets/video/skyyrose-tour-around-the-bay-poster.webp' ); ?>"
-    )
-    if poster not in re.sub(r"\s+", " ", source):
-        raise ValueError("homepage journal must retain its bound visible poster")
-    for name, digest in JOURNAL_ASSETS.items():
-        validate_asset(
-            {"file": "assets/video/" + name, "sha256": digest}, "homepage journal " + name
-        )
+        if not path.name.startswith(sku + "-"):
+            raise ValueError(f"{sku} card front filename disagrees with SKU")
+    for sku in JERSEY_SKUS:
+        sizing = registry["sku_logos"][sku]["decoration_sizing"]
+        patches = [item for item in sizing["items"] if item["kind"] == "patch"]
+        if len(patches) != 1 or patches[0]["dimension_inches"] != {
+            "width": 3,
+            "height": 4,
+            "orientation": "portrait",
+        }:
+            raise ValueError(f"{sku} patch sizing drift")
+        if not any("card" in item["logo_id"] for item in registry["sku_logos"][sku]["placements"]):
+            raise ValueError(f"{sku} patch artwork binding missing")
 
 
 def validate_home_collection(source: str) -> None:
     """The homepage must consume the same collection hero resolver as arrivals."""
     if not re.search(
         r"\$chapter_motion\s*=\s*skyyrose2_collection_hero_motion\(\s*\$slug,\s*"
-        r"\$collection\['hero'\]\s*\)", source
+        r"\$collection\['hero'\]\s*\)",
+        source,
     ):
         raise ValueError("homepage collection is not bound to its destination hero")
     if len(re.findall(r"<\s*video\b", source, re.IGNORECASE)) != 1:

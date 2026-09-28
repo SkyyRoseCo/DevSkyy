@@ -22,9 +22,9 @@ function skyyrose2_pdp_media_context( $product ) {
 /** Capture before Woo's temporary gallery getters run; callers restore in finally. */
 function skyyrose2_pdp_capture_media_context( $product ) {
 	return array(
-		'product_id' => $product->get_id(),
-		'product' => $product,
-		'media' => skyyrose2_product_commerce_media( $product ),
+		'product_id'   => $product->get_id(),
+		'product'      => $product,
+		'media'        => skyyrose2_product_commerce_media( $product ),
 		'original_ids' => array_values( array_unique( array_filter( array_map( 'intval', array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() ) ) ) ) ),
 	);
 }
@@ -35,10 +35,10 @@ function skyyrose2_pdp_gallery_attributes( $attributes, $attachment_id, $main_im
 	if ( ! $context || ! in_array( (int) $attachment_id, array_map( 'intval', $context['media']['ids'] ), true ) ) {
 		return $attributes;
 	}
-	$attributes['loading'] = $main_image ? 'eager' : 'lazy';
+	$attributes['loading']       = $main_image ? 'eager' : 'lazy';
 	$attributes['fetchpriority'] = $main_image ? 'high' : 'auto';
-	$attributes['decoding'] = 'async';
-	$delivery = skyyrose2_pdp_media_delivery( $product, (int) $attachment_id );
+	$attributes['decoding']      = 'async';
+	$delivery                    = skyyrose2_pdp_media_delivery( $product, (int) $attachment_id );
 	if ( $delivery ) {
 		foreach ( array( 'src', 'srcset', 'sizes' ) as $key ) {
 			$attributes[ $key ] = $delivery[ $key ];
@@ -49,7 +49,7 @@ function skyyrose2_pdp_gallery_attributes( $attributes, $attachment_id, $main_im
 
 /** Source-size hint for the PDP's contain-fit gallery at its real height. */
 function skyyrose2_pdp_gallery_sizes( $width, $height ) {
-	$width = (int) $width;
+	$width  = (int) $width;
 	$height = (int) $height;
 	if ( $width < 1 || $height < 1 ) {
 		return '';
@@ -70,7 +70,7 @@ function skyyrose2_pdp_approved_ghost_front( $attachment_id, $product ) {
 	if ( ! $sku || (int) $attachment_id !== (int) $product->get_image_id() ) {
 		return array();
 	}
-	$attachment_url = (string) wp_get_attachment_url( $attachment_id );
+	$attachment_url  = (string) wp_get_attachment_url( $attachment_id );
 	$attachment_path = (string) parse_url( $attachment_url, PHP_URL_PATH );
 	if ( ! $attachment_path || basename( $attachment_path ) !== $sku . '-ghost-front.webp' ) {
 		return array();
@@ -79,22 +79,30 @@ function skyyrose2_pdp_approved_ghost_front( $attachment_id, $product ) {
 	if ( empty( $front['src'] ) || empty( $front['path'] ) || empty( $front['sha256'] ) || 'FOUNDER_APPROVED_V2_CARD' !== ( $front['scene_status'] ?? '' ) ) {
 		return array();
 	}
-	$root = realpath( SKYYROSE2_DIR . '/assets' );
-	$file = realpath( SKYYROSE2_DIR . '/' . $front['path'] );
+	$root        = realpath( SKYYROSE2_DIR . '/assets' );
+	$file        = realpath( SKYYROSE2_DIR . '/' . $front['path'] );
 	$actual_hash = $file && is_file( $file ) && is_readable( $file ) ? hash_file( 'sha256', $file ) : false;
 	if ( ! $root || ! $file || 0 !== strpos( $file, $root . DIRECTORY_SEPARATOR ) || ! is_string( $actual_hash ) || ! hash_equals( $front['sha256'], $actual_hash ) ) {
 		return array();
 	}
-	$src = $front['card_src'] ?? $front['src'];
-	$width = (int) ( $front['card_width'] ?? $front['width'] ?? 0 );
-	$height = (int) ( $front['card_height'] ?? $front['height'] ?? 0 );
-	$full_width = (int) ( $front['width'] ?? 0 );
+	$src         = $front['card_src'] ?? $front['src'];
+	$width       = (int) ( $front['card_width'] ?? $front['width'] ?? 0 );
+	$height      = (int) ( $front['card_height'] ?? $front['height'] ?? 0 );
+	$full_width  = (int) ( $front['width'] ?? 0 );
 	$full_height = (int) ( $front['height'] ?? 0 );
-	$sizes = skyyrose2_pdp_gallery_sizes( $full_width, $full_height );
+	$sizes       = skyyrose2_pdp_gallery_sizes( $full_width, $full_height );
 	if ( ! $width || ! $height || ! $full_width || ! $full_height || ! $sizes ) {
 		return array();
 	}
-	return array_merge( $front, array( 'pdp_src' => $src, 'pdp_width' => $width, 'pdp_height' => $height, 'pdp_sizes' => $sizes ) );
+	return array_merge(
+		$front,
+		array(
+			'pdp_src'    => $src,
+			'pdp_width'  => $width,
+			'pdp_height' => $height,
+			'pdp_sizes'  => $sizes,
+		)
+	);
 }
 
 /** Replace only a matching ghost primary frame with its approved model front. */
@@ -111,15 +119,43 @@ function skyyrose2_pdp_approved_ghost_front_markup( $front ) {
 	if ( ! is_array( $front ) || empty( $front['src'] ) || empty( $front['pdp_src'] ) || empty( $front['alt'] ) || empty( $front['pdp_width'] ) || empty( $front['pdp_height'] ) || empty( $front['width'] ) || empty( $front['height'] ) || empty( $front['pdp_sizes'] ) ) {
 		return '';
 	}
-	$src = $front['pdp_src'];
-	$width = $front['pdp_width'];
-	$height = $front['pdp_height'];
-	$full_width = (int) $front['width'];
+	$src         = $front['pdp_src'];
+	$width       = $front['pdp_width'];
+	$height      = $front['pdp_height'];
+	$full_width  = (int) $front['width'];
 	$full_height = (int) $front['height'];
-	$alt = esc_attr( $front['alt'] );
-	$full = esc_url( $front['src'] );
-	$responsive = ! empty( $front['srcset'] ) ? ' srcset="' . esc_attr( $front['srcset'] ) . '" sizes="' . esc_attr( $front['pdp_sizes'] ) . '"' : '';
+	$alt         = esc_attr( $front['alt'] );
+	$full        = esc_url( $front['src'] );
+	$responsive  = ! empty( $front['srcset'] ) ? ' srcset="' . esc_attr( $front['srcset'] ) . '" sizes="' . esc_attr( $front['pdp_sizes'] ) . '"' : '';
 	return '<div data-thumb="' . esc_url( $src ) . '" data-thumb-alt="' . $alt . '" class="woocommerce-product-gallery__image"><a href="' . $full . '"><img width="' . $width . '" height="' . $height . '" src="' . esc_url( $src ) . '" class="wp-post-image" alt="' . $alt . '"' . $responsive . ' data-src="' . $full . '" data-large_image="' . $full . '" data-large_image_width="' . $full_width . '" data-large_image_height="' . $full_height . '" loading="eager" fetchpriority="high" decoding="async"></a></div>';
+}
+
+/** Build the first native PDP frame from the same exact front as product cards. */
+function skyyrose2_pdp_card_front_markup( $front ) {
+	if ( ! is_array( $front ) || empty( $front['src'] ) ) {
+		return '';
+	}
+	$front['pdp_src']    = $front['src'];
+	$front['pdp_width']  = (int) $front['width'];
+	$front['pdp_height'] = (int) $front['height'];
+	$front['pdp_sizes']  = skyyrose2_pdp_gallery_sizes( $front['width'], $front['height'] );
+	return skyyrose2_pdp_approved_ghost_front_markup( $front );
+}
+
+/** Replace only the first native gallery frame; keep native hooks and later views. */
+function skyyrose2_pdp_card_front_filter( $front ) {
+	$rendered = false;
+	return static function ( $html ) use ( $front, &$rendered ) {
+		if ( $rendered || ! $front ) {
+			return $html;
+		}
+		$replacement = skyyrose2_pdp_card_front_markup( $front );
+		if ( $replacement ) {
+			$rendered = true;
+			return $replacement;
+		}
+		return $html;
+	};
 }
 
 /** The first native gallery image receives the same primary substitution. */
@@ -151,26 +187,26 @@ function skyyrose2_pdp_variation_image_from_approved_front( $image, $front ) {
 	if ( ! is_array( $image ) || ! is_array( $front ) ) {
 		return $image;
 	}
-	$image['src'] = $front['pdp_src'];
+	$image['src']   = $front['pdp_src'];
 	$image['src_w'] = $front['pdp_width'];
 	$image['src_h'] = $front['pdp_height'];
 	if ( ! empty( $front['srcset'] ) ) {
 		$image['srcset'] = $front['srcset'];
-		$image['sizes'] = $front['pdp_sizes'];
+		$image['sizes']  = $front['pdp_sizes'];
 	} else {
 		$image['srcset'] = '';
-		$image['sizes'] = '';
+		$image['sizes']  = '';
 	}
-	$image['full_src'] = $front['src'];
-	$image['full_src_w'] = (int) $front['width'];
-	$image['full_src_h'] = (int) $front['height'];
-	$image['gallery_thumbnail_src'] = $front['pdp_src'];
+	$image['full_src']                = $front['src'];
+	$image['full_src_w']              = (int) $front['width'];
+	$image['full_src_h']              = (int) $front['height'];
+	$image['gallery_thumbnail_src']   = $front['pdp_src'];
 	$image['gallery_thumbnail_src_w'] = $front['pdp_width'];
 	$image['gallery_thumbnail_src_h'] = $front['pdp_height'];
-	$image['thumb_src'] = $front['pdp_src'];
-	$image['thumb_src_w'] = $front['pdp_width'];
-	$image['thumb_src_h'] = $front['pdp_height'];
-	$image['alt'] = $front['alt'];
+	$image['thumb_src']               = $front['pdp_src'];
+	$image['thumb_src_w']             = $front['pdp_width'];
+	$image['thumb_src_h']             = $front['pdp_height'];
+	$image['alt']                     = $front['alt'];
 	return $image;
 }
 
@@ -202,53 +238,53 @@ function skyyrose2_pdp_media_delivery( $product, $attachment_id ) {
 		return array();
 	}
 	$context = skyyrose2_pdp_media_context( $product );
-	$media = $context ? $context['media'] : skyyrose2_product_commerce_media( $product );
+	$media   = $context ? $context['media'] : skyyrose2_product_commerce_media( $product );
 	if ( ! in_array( $media['state'] ?? '', array( 'commerce', 'editorial' ), true ) || ! in_array( (int) $attachment_id, array_map( 'intval', $media['ids'] ?? array() ), true ) ) {
 		return array();
 	}
 	static $accepted = null;
-	static $derived = null;
+	static $derived  = null;
 	if ( null === $accepted ) {
 		$accepted_path = SKYYROSE2_DIR . '/data/approved-card-fronts.json';
 		$derived_path  = SKYYROSE2_DIR . '/assets/derived/card-fronts/manifest.json';
-		$accepted = is_readable( $accepted_path ) ? json_decode( file_get_contents( $accepted_path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$derived  = is_readable( $derived_path ) ? json_decode( file_get_contents( $derived_path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$accepted      = is_readable( $accepted_path ) ? json_decode( file_get_contents( $accepted_path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$derived       = is_readable( $derived_path ) ? json_decode( file_get_contents( $derived_path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	}
-	$sku = strtolower( trim( (string) $product->get_sku() ) );
-	$front = $accepted['products'][ $sku ] ?? array();
+	$sku    = strtolower( trim( (string) $product->get_sku() ) );
+	$front  = $accepted['products'][ $sku ] ?? array();
 	$record = $derived['products'][ $sku ] ?? array();
 	if ( ! is_array( $front ) || ! is_array( $record ) ) {
 		return array();
 	}
 	$hash = $front['sha256'] ?? '';
-	if ( 1 !== ( $accepted['schema_version'] ?? null ) || 'skyyrose.card-renditions.v1' !== ( $derived['schema'] ?? '' ) || 'FOUNDER_APPROVED_V2_CARD' !== ( $front['scene_status'] ?? '' ) || ! is_string( $hash ) || ! preg_match( '/^[a-f0-9]{64}$/D', $hash ) || ! preg_match( '/^[a-z0-9-]+$/D', $sku ) || ! is_array( $record['renditions'] ?? null ) || ( $record['source_sha256'] ?? '' ) !== $hash || ( $record['source'] ?? '' ) !== ( $front['src'] ?? '' ) ) {
+	if ( 1 !== ( $accepted['schema_version'] ?? null ) || 'skyyrose.card-renditions.v1' !== ( $derived['schema'] ?? '' ) || 'FOUNDER_APPROVED_V2_CARD' !== ( $front['scene_status'] ?? '' ) || 'BLOCKED_PRODUCT_MISMATCH' === ( $front['current_fidelity_status'] ?? '' ) || ! is_string( $hash ) || ! preg_match( '/^[a-f0-9]{64}$/D', $hash ) || ! preg_match( '/^[a-z0-9-]+$/D', $sku ) || ! is_array( $record['renditions'] ?? null ) || ( $record['source_sha256'] ?? '' ) !== $hash || ( $record['source'] ?? '' ) !== ( $front['src'] ?? '' ) ) {
 		return array();
 	}
 	// Unfiltered local attachment metadata avoids trusting an offload URL as proof.
 	if ( skyyrose2_pdp_delivery_file_hash( get_attached_file( $attachment_id, true ) ) !== $hash ) {
 		return array();
 	}
-	$width = (int) ( $front['width'] ?? 0 );
+	$width  = (int) ( $front['width'] ?? 0 );
 	$height = (int) ( $front['height'] ?? 0 );
 	if ( $width < 1 || $height < 1 ) {
 		return array();
 	}
 	$srcset = array();
 	$result = array();
-	$root = realpath( SKYYROSE2_DIR . '/assets/derived/card-fronts' );
+	$root   = realpath( SKYYROSE2_DIR . '/assets/derived/card-fronts' );
 	foreach ( $record['renditions'] as $rendition ) {
 		if ( ! is_array( $rendition ) ) {
 			continue;
 		}
-		$rw = (int) ( $rendition['width'] ?? 0 );
-		$rh = (int) ( $rendition['height'] ?? 0 );
+		$rw    = (int) ( $rendition['width'] ?? 0 );
+		$rh    = (int) ( $rendition['height'] ?? 0 );
 		$rhash = $rendition['sha256'] ?? '';
 		if ( ! is_string( $rhash ) || ! preg_match( '/^[a-f0-9]{64}$/D', $rhash ) ) {
 			continue;
 		}
 		$relative = 'assets/derived/card-fronts/' . $sku . '-' . $rw . 'w.webp';
-		$file = SKYYROSE2_DIR . '/' . $relative;
-		$local = realpath( $file );
+		$file     = SKYYROSE2_DIR . '/' . $relative;
+		$local    = realpath( $file );
 		if ( ! in_array( $rw, array( 320, 480, 768 ), true ) || $rh !== (int) round( $height * $rw / $width ) || ( $rendition['src'] ?? '' ) !== $relative || ! $root || ! $local || 0 !== strpos( $local, $root . DIRECTORY_SEPARATOR ) || is_link( $file ) || skyyrose2_pdp_delivery_file_hash( $file ) !== ( $rendition['sha256'] ?? '' ) ) {
 			continue;
 		}
@@ -256,10 +292,14 @@ function skyyrose2_pdp_media_delivery( $product, $attachment_id ) {
 		if ( ! $dimensions || $rw !== $dimensions[0] || $rh !== $dimensions[1] ) {
 			continue;
 		}
-		$url = SKYYROSE2_URI . '/' . $relative;
+		$url           = SKYYROSE2_URI . '/' . $relative;
 		$srcset[ $rw ] = $url . ' ' . $rw . 'w';
 		if ( 480 === $rw ) {
-			$result = array( 'src' => $url, 'width' => $rw, 'height' => $rh );
+			$result = array(
+				'src'    => $url,
+				'width'  => $rw,
+				'height' => $rh,
+			);
 		}
 	}
 	if ( ! $result || ! $srcset ) {
@@ -283,25 +323,25 @@ function skyyrose2_pdp_variation_delivery( $data, $product, $variation ) {
 	// this filter runs, including the native AJAX get_variation path.
 	$GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_media_context( $product ) ?: skyyrose2_pdp_capture_media_context( $product );
 	try {
-		$context = skyyrose2_pdp_media_context( $product );
+		$context   = skyyrose2_pdp_media_context( $product );
 		$permitted = array_map( 'intval', $context['media']['ids'] );
 		if ( ! $permitted || 'rejected' === $context['media']['state'] ) {
-			$data['image'] = array();
-			$data['image_id'] = 0;
-			$data['gallery_image_ids'] = array();
+			$data['image']               = array();
+			$data['image_id']            = 0;
+			$data['gallery_image_ids']   = array();
 			$data['gallery_images_html'] = '';
 			return $data;
 		}
 		$image_id = (int) ( $data['image_id'] ?? 0 );
 		if ( $image_id && ! in_array( $image_id, $permitted, true ) ) {
-			$data['image'] = array();
+			$data['image']    = array();
 			$data['image_id'] = 0;
-			$image_id = 0;
+			$image_id         = 0;
 		}
 		$approved_front_variation = false;
 		if ( $image_id && ! empty( $data['image'] ) ) {
-			$original_image = $data['image'];
-			$data['image'] = skyyrose2_pdp_approved_ghost_front_variation_image( $data['image'], $image_id, $product );
+			$original_image           = $data['image'];
+			$data['image']            = skyyrose2_pdp_approved_ghost_front_variation_image( $data['image'], $image_id, $product );
 			$approved_front_variation = $original_image !== $data['image'];
 		}
 		$candidates = array_values( array_unique( array_map( 'intval', $data['gallery_image_ids'] ?? array() ) ) );

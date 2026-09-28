@@ -77,6 +77,56 @@ def test_every_registry_sku_resolves(records: dict[str, dict]) -> None:
     assert len(records) >= 33, f"expected at least 33 SKUs, got {len(records)}"
 
 
+def test_card_front_binding_comes_from_single_registry(records: dict[str, dict]) -> None:
+    from skyyrose.core.product_registry import load_registry
+
+    products = load_registry()["products"]
+    for sku, record in records.items():
+        source = products[sku]["images"]["card_front"]
+        card = record["images"]["card_front"]
+        assert card["path"] == source["src"]
+        assert card["sha256"] == source["sha256"]
+        assert card["source_key"] == "images.card_front"
+
+
+@pytest.mark.parametrize(
+    "unsafe",
+    (
+        "/tmp/external.webp",
+        "assets/../external.webp",
+        "assets//card-scenes/front.webp",
+        "assets/card-scenes/./front.webp",
+        "other/front.webp",
+        "assets\\card-scenes\\front.webp",
+    ),
+)
+def test_card_front_rejects_unsafe_path(tmp_path, monkeypatch, unsafe: str) -> None:
+    from skyyrose.core import product
+
+    monkeypatch.setattr(product, "REPO_ROOT", tmp_path)
+    with pytest.raises(ValueError, match="card front"):
+        product._images_for(
+            {"images": {"card_front": {"src": unsafe, "sha256": "a" * 64}}},
+            "br-test",
+        )
+
+
+def test_card_front_rejects_symlink_escape(tmp_path, monkeypatch) -> None:
+    from skyyrose.core import product
+
+    assets = tmp_path / "wordpress-theme/skyyrose-flagship-2/assets"
+    assets.mkdir(parents=True)
+    external = tmp_path / "outside.webp"
+    external.write_bytes(b"image")
+    (assets / "outside.webp").symlink_to(external)
+    monkeypatch.setattr(product, "REPO_ROOT", tmp_path)
+    with pytest.raises(ValueError, match="escapes"):
+        product._images_for(
+            {"images": {"card_front": {"src": "assets/outside.webp", "sha256": "a" * 64}}},
+            "br-test",
+        )
+
+
 def test_every_record_carries_every_section(records: dict[str, dict]) -> None:
     for sku, record in records.items():
         missing = [key for key in REQUIRED_SECTIONS if key not in record]
