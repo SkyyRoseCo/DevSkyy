@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Love Hurts — Reel</title>
+    <link rel="stylesheet" href="lh.css" />
+    <style>
+      body {
+        background: var(--lh-black);
+      }
+      .backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+      }
+      .backdrop img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 45%;
+      }
+      .backdrop::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(10, 10, 10, 0.5), rgba(10, 10, 10, 0.82));
+      }
+
+      .head {
+        padding: 104px var(--lh-gutter) 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .head h1 {
+        margin: 0;
+        width: min(440px, 72vw);
+      }
+      .head p {
+        margin: 0;
+        max-width: 40ch;
+        color: var(--lh-muted);
+      }
+
+      .reel {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 12px var(--lh-gutter) 40px;
+        scrollbar-color: var(--lh-crimson-deep) transparent;
+      }
+      .reel:focus-visible {
+        outline-offset: -4px;
+      }
+      .frame {
+        flex: 0 0 auto;
+        width: min(420px, 78vw);
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .frame {
+        --focus-vh: 62svh;
+      }
+      .frame .lh-focus {
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+      }
+      .frame__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .frame__name {
+        font-size: 1.2rem;
+        margin: 0;
+      }
+      .frame__price {
+        font-family: var(--lh-display);
+        font-variation-settings: 'wdth' 125;
+        font-weight: 700;
+      }
+      .card {
+        flex: 0 0 auto;
+        width: min(360px, 70vw);
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 32px;
+        border: 1px solid rgba(220, 20, 60, 0.45);
+        background: rgba(10, 10, 10, 0.6);
+      }
+      .card p {
+        font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+        margin: 0 0 16px;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        padding: 0 var(--lh-gutter) 72px;
+      }
+      .controls button {
+        font-family: var(--lh-caps);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        color: var(--lh-text);
+        background: transparent;
+        border: 1px solid var(--lh-crimson);
+        padding: 12px 18px;
+        cursor: pointer;
+      }
+
+      .lh-footer {
+        background: var(--lh-black);
+      }
+
+      @media (max-width: 700px) {
+        .reel {
+          flex-direction: column;
+          overflow-x: visible;
+          scroll-snap-type: none;
+        }
+        .frame,
+        .card {
+          width: 100%;
+        }
+        .controls {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="backdrop" aria-hidden="true">
+      <img src="../../wordpress-theme/skyyrose-flagship/assets/branding/hero/beauty-and-beast-1680w.webp" alt="" />
+    </div>
+    <a class="lh-skip" href="#reel">Skip to the pieces</a>
+    <header class="lh-topbar">
+      <span class="lh-caps">SkyyRose</span>
+      <span class="lh-caps lh-muted">Collection 03 — The Grief</span>
+    </header>
+    <main>
+      <section class="head" aria-labelledby="t">
+        <h1 id="t">
+          <img
+            src="../../wordpress-theme/skyyrose-flagship/assets/images/hero-overlays/lh-logo-combined.webp"
+            alt="Love Hurts"
+            width="1600"
+            height="900"
+          />
+        </h1>
+        <p>They called me Beast. They were right. Five pieces — scroll sideways through the room.</p>
+      </section>
+      <div class="reel" id="reel" tabindex="0" role="region" aria-label="Love Hurts pieces"></div>
+      <div class="controls">
+        <button type="button" data-dir="-1" aria-controls="reel">← Back</button>
+        <button type="button" data-dir="1" aria-controls="reel">Next →</button>
+      </div>
+    </main>
+    <footer class="lh-footer">
+      <span class="lh-caps">Hurts is the bloodline that raised me.</span>
+      <div id="proto-nav"></div>
+    </footer>
+    <script src="products.js"></script>
+    <script src="lh.js"></script>
+    <script>
+      (function () {
+        var K = window.LHKit,
+          P = window.LH.products,
+          reel = document.getElementById('reel');
+        var lines = {
+          1: ['“Love hurts, baby. That’s how you know it’s real.”', 'The grandmother'],
+          3: ['This isn’t a theme. It’s a family name.', 'Collection 03'],
+        };
+        P.forEach(function (p, i) {
+          reel.appendChild(
+            K.el('article', { class: 'frame', 'aria-label': p.name }, [
+              K.focus(p),
+              K.el('div', { class: 'frame__row' }, [
+                K.el('h2', { class: 'frame__name lh-display' }, [p.name]),
+                K.el('span', { class: 'frame__price' }, [K.price(p)]),
+              ]),
+              K.el('div', { class: 'frame__row' }, [
+                K.el('span', { class: 'lh-caps lh-muted' }, [p.color + ' · ' + K.sizes(p)]),
+                p.preorder ? K.el('span', { class: 'lh-status' }, ['Pre-Order']) : null,
+              ]),
+              K.viewLink(p),
+            ])
+          );
+          if (lines[i]) {
+            reel.appendChild(
+              K.el('aside', { class: 'card' }, [
+                K.el('p', { class: 'lh-script' }, [lines[i][0]]),
+                K.el('span', { class: 'lh-caps lh-muted' }, [lines[i][1]]),
+              ])
+            );
+          }
+        });
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        document.querySelectorAll('.controls button').forEach(function (b) {
+          b.addEventListener('click', function () {
+            reel.scrollBy({
+              left: Number(b.dataset.dir) * Math.round(reel.clientWidth * 0.8),
+              behavior: reduce ? 'auto' : 'smooth',
+            });
+          });
+        });
+        document.getElementById('proto-nav').appendChild(K.protoNav('05-reel.html'));
+      })();
+    </script>
+  </body>
+</html>

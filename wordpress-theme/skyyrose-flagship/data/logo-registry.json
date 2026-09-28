@@ -2942,8 +2942,8 @@
         "badge": "",
         "image": "assets/images/products/lh-002-joggers.jpeg",
         "front_model_image": "assets/images/products/lh-002-onmodel.webp",
-        "back_image": "assets/images/products/love-hurts-joggers-back-model.webp",
-        "back_model_image": "assets/images/products/love-hurts-joggers-back-model.webp",
+        "back_image": "",
+        "back_model_image": "",
         "sizes": "S|M|L|XL|2XL|3XL",
         "color": "Black",
         "edition_size": "250",
@@ -2999,14 +2999,6 @@
         "front_model_image": {
           "path": "assets/images/products/lh-002-onmodel.webp",
           "resolved": "images/products/lh-002-onmodel.webp"
-        },
-        "back_image": {
-          "path": "assets/images/products/love-hurts-joggers-back-model.webp",
-          "resolved": "images/products/love-hurts-joggers-back-model.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/love-hurts-joggers-back-model.webp",
-          "resolved": "images/products/love-hurts-joggers-back-model.webp"
         }
       },
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
@@ -3233,7 +3225,7 @@
         "badge": "Pre-Order",
         "image": "assets/images/products/lh-005-fannie.jpeg",
         "front_model_image": "assets/images/products/lh-005-onmodel.webp",
-        "back_image": "",
+        "back_image": "assets/images/products/lh-005-fannie-back.jpeg",
         "back_model_image": "assets/images/products/the-fannie-back-model.webp",
         "sizes": "One Size",
         "color": "Black",
@@ -3289,6 +3281,9 @@
         "back_model_image": {
           "path": "assets/images/products/the-fannie-back-model.webp",
           "resolved": "images/products/the-fannie-back-model.webp"
+        },
+        "back_image": {
+          "path": "assets/images/products/lh-005-fannie-back.jpeg"
         }
       },
       "corrections": [

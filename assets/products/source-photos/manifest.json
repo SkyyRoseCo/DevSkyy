@@ -66,13 +66,13 @@
   ],
   "summary": {
     "total_active_skus": 33,
-    "compositor_ready": 12,
-    "compositor_blocked": 21,
+    "compositor_ready": 13,
+    "compositor_blocked": 20,
     "full_required_coverage": 0,
     "by_source_type": {
-      "photography": 12,
+      "photography": 13,
       "techflat": 0,
-      "missing": 21
+      "missing": 20
     }
   },
   "skus": {
@@ -494,17 +494,18 @@
         "in-context"
       ],
       "present_angles": [
-        "front"
+        "front",
+        "back"
       ],
       "missing_angles": [
-        "back",
         "in-context"
       ],
       "photo_paths": {
+        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-fannie-back.jpeg",
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-fannie.jpeg"
       },
-      "has_minimum_for_compositor": false,
-      "source_type": "missing"
+      "has_minimum_for_compositor": true,
+      "source_type": "photography"
     },
     "lh-006": {
       "sku": "lh-006",
