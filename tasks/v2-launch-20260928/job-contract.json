@@ -1,0 +1,64 @@
+{
+  "job_id": "v2-launch-20260928",
+  "manager": "root",
+  "started_at": "2026-09-28T19:09:06Z",
+  "requested_target_at": "2026-09-28T21:09:06Z",
+  "objective": "Finish V2 high-end ecommerce, correct rendered product media, create translucent SR rose monument hero, complete preorder gateway, verify and launch.",
+  "authority": {
+    "product_registry": "logo-registry.json",
+    "resolved_registry": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+    "maker": "Corey",
+    "latest_product_instruction": "All jerseys have the patch.",
+    "product_instruction_status": "FOUNDER_CONFIRMED",
+    "latest_art_direction": "The SR rose statue needs a more transparent look.",
+    "deployment_request": "Complete V2 and launch within two hours",
+    "rule": "Product facts and bindings belong only in unified registry; projections are generated consumers. Founder facts do not establish image fidelity or deployed bytes."
+  },
+  "context_resolver": {
+    "source": "docs/brand/constitution-v1/CONTEXT-RESOLVER-CREATIVE-OS-SPEC.md",
+    "runtime_status": "DESIGN_ONLY",
+    "application": "Manual job contract, source resolution and separate creative/product/integration verification; no claim an automated resolver ran."
+  },
+  "representations": {
+    "hero": "BRAND_ABSTRACT",
+    "product_cards_and_preorder": "EXACT_PRODUCT"
+  },
+  "creative_board_id": "0cc8c2da-359a-4bb1-8a25-ce888b030f73",
+  "roster": [
+    {
+      "agent": "catalog_v2",
+      "model": "gpt-6-sol",
+      "scope": "registry, product media, jersey reveal"
+    },
+    {
+      "agent": "preorder_v2",
+      "model": "gpt-6-sol",
+      "scope": "preorder gateway and assets"
+    },
+    {
+      "agent": "launch_discovery",
+      "model": "gpt-6-luna",
+      "scope": "read-only OS, brand references and deployment discovery"
+    },
+    {
+      "agent": "e2e_launch",
+      "model": "gpt-6-sol",
+      "scope": "runtime fixture, E2E and launch checks"
+    },
+    {
+      "agent": "hero_monument",
+      "model": "gpt-6-luna",
+      "scope": "responsive hero implementation"
+    }
+  ],
+  "verification": {
+    "source_registry": "PASS_SYNC_CHECK",
+    "product_fidelity": "BLOCKED_THREE_FRONTS_AND_BACKGROUND_REPLACEMENT",
+    "creative_qa": "GLASS_MONUMENT_REVIEWED",
+    "local_runtime": "PASS_FULL_THEME_SUITE_42_REGISTRY_TESTS_54_UNIT_TESTS_MYPY_1666_FILES",
+    "staging_commerce": "PASS_TO_CHECKOUT_DESKTOP_AND_MOBILE_1acde81ed",
+    "production_cutover": "NOT_EXECUTED",
+    "canonical_staging": "PASS_SIX_ROUTE_VIEWPORT_STATES_AFTER_EDGE_CACHE_SETTLED"
+  },
+  "current_staging_candidate": "1acde81ed"
+}

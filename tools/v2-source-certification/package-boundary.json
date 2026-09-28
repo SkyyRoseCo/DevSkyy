@@ -305,6 +305,26 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/home-art-direction.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Homepage typography and responsive glass monument framing.",
+      "release": true
+    },
+    "assets/css/home-art-direction.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Compiled homepage art direction stylesheet.",
+      "release": true
+    },
+    "assets/css/home-experience.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Collection motion and product-linked Jersey gallery styles.",
+      "release": true
+    },
+    "assets/css/home-experience.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Compiled collection motion and Jersey gallery styles.",
+      "release": true
+    },
     "assets/css/home-page.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
@@ -1010,6 +1030,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/images/house-monument-20260928.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Garment-free translucent SR and rose artwork for homepage and pre-order arrival.",
+      "release": true
+    },
+    "assets/images/house-oakland-atelier-20260928.webp": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded house hero retained as historical artwork; no runtime references.",
+      "release": false
+    },
     "assets/images/skyy-runtime-poster.webp": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -1033,6 +1063,26 @@
     "assets/js/collection-scene-motion.min.js": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/home-experience.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Collection video controls and manual Jersey gallery navigation.",
+      "release": true
+    },
+    "assets/js/home-experience.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Compiled collection motion and Jersey gallery controller.",
+      "release": true
+    },
+    "assets/js/house-motion.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Homepage atmosphere motion controls and reduced-motion support.",
+      "release": true
+    },
+    "assets/js/house-motion.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Compiled homepage atmosphere controller.",
       "release": true
     },
     "assets/js/house-of-roses-motion.js": {
@@ -2975,6 +3025,11 @@
       "reason": "Internal generation/review workflow; not canonical asset build",
       "release": false
     },
+    "scripts/test-collection-hero-motion.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Regression tests for collection motion source validation; not runtime.",
+      "release": false
+    },
     "scripts/test-critical-rendering.php": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
@@ -3163,6 +3218,11 @@
     "template-parts/commerce/hero-composed-scene.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/commerce/jersey-gallery.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Eight SKU-bound Jersey fronts with native product links and accessible controls.",
       "release": true
     },
     "template-parts/commerce/product-card.php": {
