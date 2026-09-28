@@ -24,6 +24,10 @@ PRODUCT_REGISTRY = (
 FRONTEND_CATALOG_REPLICA = (
     Path(__file__).resolve().parents[2] / "frontend/data/skyyrose-catalog.csv"
 )
+V2_CARD_FRONT_PROJECTION = (
+    Path(__file__).resolve().parents[2]
+    / "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json"
+)
 # The real registry file, fixed at import. The replica belongs to it alone: a
 # caller (or test) that points PRODUCT_REGISTRY at a copy must never rewrite the
 # tracked dashboard replica from that copy.
@@ -370,6 +374,26 @@ def _compatibility_outputs(raw: dict[str, Any], target: Path) -> dict[Path, str]
     outputs = {target.parent / "skyyrose-catalog.csv": stream.getvalue()}
     if target == _CANONICAL_REGISTRY:
         outputs[FRONTEND_CATALOG_REPLICA] = stream.getvalue()
+        card_manifest = raw.get("storefront_card_manifest")
+        if card_manifest is not None:
+            if not isinstance(card_manifest, dict):
+                raise ValueError("Storefront card metadata must be an object")
+            card_fronts = {}
+            for sku, product in raw["products"].items():
+                front = product.get("images", {}).get("card_front")
+                if not isinstance(front, dict):
+                    raise ValueError(f"Missing registry-owned card front for {sku}")
+                card_fronts[sku] = front
+            projection = {
+                "schema_version": card_manifest["schema_version"],
+                "authorization": card_manifest["authorization"],
+                "products": card_fronts,
+            }
+            if "card_treatment_approval" in card_manifest:
+                projection["card_treatment_approval"] = card_manifest["card_treatment_approval"]
+            outputs[V2_CARD_FRONT_PROJECTION] = (
+                json.dumps(projection, ensure_ascii=False, indent=2) + "\n"
+            )
     for product in raw["products"].values():
         dossier = product["dossier"]
         slug = dossier["slug"]

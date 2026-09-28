@@ -113,6 +113,10 @@ check_gallery( 33 === count( $manifest['products'] ?? array() ), 'The approved-f
 foreach ( $manifest['products'] as $approved_sku => $approved_record ) {
 	$approved_product = new WC_Product( 800 + count( $GLOBALS['files'] ), $approved_sku, 800 + count( $GLOBALS['files'] ) );
 	$approved_front = skyyrose2_approved_card_front( $approved_product );
+	if ( 'BLOCKED_PRODUCT_MISMATCH' === ( $approved_record['current_fidelity_status'] ?? '' ) ) {
+		check_gallery( ! $approved_front, 'Known product mismatch must not resolve as an approved front: ' . $approved_sku . '.' );
+		continue;
+	}
 	check_gallery( 'FOUNDER_APPROVED_V2_CARD' === ( $approved_front['scene_status'] ?? '' ) && str_ends_with( strtolower( $approved_front['alt'] ?? '' ), 'front on model' ), 'Every published SKU must resolve its founder-approved on-model front: ' . $approved_sku . '.' );
 	check_gallery( ( $approved_record['sha256'] ?? '' ) === ( $approved_front['sha256'] ?? '' ), 'Approved-front source hash must stay bound for ' . $approved_sku . '.' );
 }
@@ -124,7 +128,8 @@ $GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_capture_media_context($p
 $permission_calls = $GLOBALS['permission_calls'];
 $default = wc_get_product_gallery_html($parent);
 check_gallery(str_contains($default, 'sg-005-480w.webp'), 'Native default HTML must use same-source delivery.');
-check_gallery(str_contains($default, 'href="https://uploads.invalid/77-full.webp"') && str_contains($default, 'data-thumb="https://uploads.invalid/77-thumb.webp"'), 'Original lightbox and thumbnail references must remain native.');
+check_gallery(str_contains($default, 'href="' . SKYYROSE2_URI . '/' . $manifest['products']['sg-005']['src'] . '"') && !str_contains($default, 'href="https://uploads.invalid/77-full.webp"'), 'The first lightbox must use the exact source-bound SG-005 front.');
+check_gallery(str_contains($default, 'href="https://uploads.invalid/78-full.webp"') && str_contains($default, 'data-thumb="https://uploads.invalid/78-thumb.webp"'), 'Secondary lightbox and thumbnail references must remain native.');
 check_gallery($GLOBALS['product'] === 'previous-global', 'Native product global was not restored.');
 $ordered = wc_get_product_gallery_html($parent, array(78, 999, 77));
 check_gallery(!str_contains($ordered, '999-') && strpos($ordered, 'data-test-attachment="78"') < strpos($ordered, 'data-test-attachment="77"'), 'Variation candidate intersection must preserve permitted order and exclude injected ID.');
@@ -176,7 +181,7 @@ $GLOBALS['skyyrose2_pdp_media_context']['media'] = array('state' => 'editorial',
 $editorial_default = wc_get_product_gallery_html($parent);
 check_gallery(strpos($editorial_default, 'data-test-attachment="78"') < strpos($editorial_default, 'data-test-attachment="77"'), 'Default raw [77,78] must render canonical editorial [78,77].');
 $editorial_variation = wc_get_product_gallery_html($parent, array(77));
-check_gallery(str_contains($editorial_variation, 'data-test-attachment="77"') && !str_contains($editorial_variation, 'data-test-attachment="78"'), 'An explicit permitted variation [77] must not be replaced by the editorial default.');
+check_gallery(str_contains($editorial_variation, 'href="' . SKYYROSE2_URI . '/' . $manifest['products']['sg-005']['src'] . '"') && !str_contains($editorial_variation, 'data-test-attachment="78"'), 'An explicit permitted variation [77] must retain its single frame, with the canonical SG-005 front.');
 check_gallery($GLOBALS['permission_calls'] === $permission_calls, 'Editorial mapping must not resolve authority under overrides.');
 $GLOBALS['skyyrose2_pdp_media_context'] = $original_context;
 
@@ -202,7 +207,8 @@ check_gallery($GLOBALS['product'] === 'previous-global', 'Exception leaked nativ
 
 $rejected = new WC_Product(102, 'br-003', 79, array(), 'rejected');
 $GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_capture_media_context($rejected);
-check_gallery('' === wc_get_product_gallery_html($rejected) && '' === wc_get_product_gallery_html($rejected, array(77)), 'Rejected default and variation galleries must stay empty.');
+$rejected_front = SKYYROSE2_URI . '/' . $manifest['products']['br-003']['src'];
+check_gallery(str_contains(wc_get_product_gallery_html($rejected), $rejected_front) && str_contains(wc_get_product_gallery_html($rejected, array(77)), $rejected_front), 'Rejected Woo attachments must fall back to the exact source-bound BR-003 front.');
 unset($GLOBALS['skyyrose2_pdp_media_context']);
 $GLOBALS['is_product'] = false;
 $GLOBALS['ajax'] = true;

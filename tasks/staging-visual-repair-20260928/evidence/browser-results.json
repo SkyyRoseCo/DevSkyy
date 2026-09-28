@@ -1,0 +1,45 @@
+{
+  "scope": "isolated local WordPress 7.1 / WooCommerce 11.1.0 candidate fixture; not authenticated staging",
+  "candidate_commit": "4730093",
+  "desktop": {
+    "viewport": "1440x1000",
+    "hero": "flagship-house-runway-gpt2.webp",
+    "titleText": "SKYYROSE",
+    "titleClipped": false,
+    "filmReady": true,
+    "videoCurrentTime": 4.867249,
+    "videoPaused": false,
+    "videoFormat": "skyyrose-tour-around-the-bay.webm",
+    "mascotRenderer": "3d",
+    "mascotActionPhase": "idle",
+    "mascotRigTier": "desktop",
+    "horizontalOverflow": 0,
+    "errors": []
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "hero": "flagship-house-runway-gpt2.webp",
+    "titleText": "SKYYROSE",
+    "titleClipped": false,
+    "filmReady": true,
+    "videoCurrentTime": 5.272893,
+    "videoPaused": false,
+    "videoFormat": "skyyrose-tour-around-the-bay.webm",
+    "mascotRenderer": "3d",
+    "mascotActionPhase": "idle",
+    "mascotRigTier": "mobile",
+    "horizontalOverflow": 0,
+    "errors": []
+  },
+  "reducedMotion": {
+    "viewport": "1440x1000",
+    "filmReady": false,
+    "videoCurrentTime": 0,
+    "videoPaused": true,
+    "videoCurrentSrc": "",
+    "videoDisplay": "none",
+    "mascotRenderer": "static",
+    "horizontalOverflow": 0,
+    "errors": []
+  }
+}
