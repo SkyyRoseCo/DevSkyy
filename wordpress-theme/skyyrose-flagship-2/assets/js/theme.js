@@ -806,4 +806,34 @@
     window.addEventListener('pageshow', () => { observer?.observe(heroModelLoop); syncModelLoop(); }, { passive: true });
     syncModelLoop();
   }
+
+  // Jersey Series motion is progressive: the approved poster remains the
+  // truth-preserving fallback for reduced-motion, Save-Data, and failed media.
+  document.querySelectorAll('[data-home-journal-film]').forEach((film) => {
+    const video = film.querySelector('video');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!video || reduceMotion.matches || navigator.connection?.saveData) return;
+    let loaded = false;
+    const load = () => {
+      if (loaded) return;
+      loaded = true;
+      video.querySelectorAll('source[data-src]').forEach((source) => {
+        source.src = source.dataset.src;
+        delete source.dataset.src;
+      });
+      video.load();
+    };
+    video.addEventListener('canplay', () => { film.dataset.filmReady = 'true'; }, { once: true });
+    video.addEventListener('error', () => { delete film.dataset.filmReady; });
+    const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+      const visible = entries[0]?.isIntersecting;
+      if (visible) {
+        load();
+        video.play().catch(() => {});
+      } else video.pause();
+    }, { rootMargin: '160px', threshold: 0.15 }) : null;
+    if (observer) observer.observe(film);
+    else load();
+    window.addEventListener('pagehide', () => observer?.disconnect(), { once: true });
+  });
 })();

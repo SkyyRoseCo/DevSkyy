@@ -1,5 +1,10 @@
 <?php
-/** Homepage journal band: two house films at their native 16:9, routing into the Lookbook and Journal. */
+/**
+ * Homepage journal band: two house films at their native 16:9.
+ *
+ * @package SkyyRoseFlagship2
+ */
+
 defined( 'ABSPATH' ) || exit;
 
 $lookbook = get_page_by_path( 'lookbook' );
@@ -16,6 +21,6 @@ $lookbook = $lookbook ? get_permalink( $lookbook ) : skyyrose2_marketplace_page_
 	</div>
 	<div class="sr2-editorial-journal__grid">
 		<a class="sr2-editorial-journal__media sr2-image-reveal" href="<?php echo esc_url( $lookbook ); ?>"><img src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay-poster.webp' ); ?>" width="1280" height="720" alt="" loading="lazy" decoding="async"><span><span><small><?php esc_html_e( 'Lookbook', 'skyyrose-flagship-2' ); ?></small><b><?php esc_html_e( 'Open the lookbook', 'skyyrose-flagship-2' ); ?></b></span><i aria-hidden="true">↗</i></span></a>
-		<a class="sr2-editorial-journal__media sr2-image-reveal" href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'journal' ) ); ?>"><img src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/jersey-series-bart-poster.webp' ); ?>" width="1280" height="720" alt="" loading="lazy" decoding="async"><span><span><small><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></small><b><?php esc_html_e( 'Read the journal', 'skyyrose-flagship-2' ); ?></b></span><i aria-hidden="true">→</i></span></a>
+		<a class="sr2-editorial-journal__media sr2-image-reveal" href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'journal' ) ); ?>" data-home-journal-film><img src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay-poster.webp' ); ?>" width="1280" height="720" alt="" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay-poster.webp' ); ?>" aria-hidden="true"><source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.webm' ); ?>" type="video/webm"><source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.mp4' ); ?>" type="video/mp4"></video><span><span><small><?php esc_html_e( 'Jersey Series', 'skyyrose-flagship-2' ); ?></small><b><?php esc_html_e( 'Tour Around the Bay', 'skyyrose-flagship-2' ); ?></b></span><i aria-hidden="true">→</i></span></a>
 	</div>
 </section>
