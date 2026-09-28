@@ -1,0 +1,28 @@
+{
+  "candidate": "fa543dca5",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "asset_matches": {
+    "assets/css/home-art-direction.min.css": true,
+    "assets/js/home-experience.min.js": true,
+    "assets/images/house-oakland-atelier-20260928.webp": true
+  },
+  "desktop": {
+    "viewport": "1440x1000",
+    "horizontal_overflow": 0,
+    "mascot_present": false,
+    "black_rose_playing": true,
+    "jersey_playing": true,
+    "jersey_poster_loaded": true
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "horizontal_overflow": 0,
+    "mascot_present": false
+  },
+  "reduced_motion": {
+    "hero_animation": "none",
+    "hero_state": "paused",
+    "all_5_home_videos_unloaded_and_paused": true
+  },
+  "founder_acceptance": "PENDING"
+}

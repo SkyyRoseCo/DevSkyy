@@ -30,3 +30,13 @@ Full V2 verification progressed through marketplace, performance, critical rende
 at the unrelated native PDP gallery test because the pinned WordPress/WooCommerce
 fixture is not provisioned locally. This is an explicit incomplete full-suite
 boundary, not a passing full release check.
+
+## Live staging result
+
+Candidate fa543dca5 deployed successfully. Live desktop/mobile screenshots and
+live-evidence.json record current checks. Black Rose uses its approved film,
+Jersey poster and playback work, and homepage mascot is absent. Reduced motion
+leaves the hero still and all five section videos unloaded/paused. Three served
+asset hashes match the candidate. Production unchanged; founder visual acceptance
+is pending. The optional Scrapling check was unavailable; direct browser checks
+were performed and are separately scoped.
