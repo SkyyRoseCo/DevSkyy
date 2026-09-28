@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>MCP Servers: Worktree Fleet + Wolf Memory</title>
+    <style>
+      body {
+        font:
+          15px/1.55 -apple-system,
+          'Hanken Grotesk',
+          sans-serif;
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem 6rem;
+        color: #1a1a1a;
+        background: #fff;
+      }
+      h1 {
+        font-size: 1.7rem;
+        margin-bottom: 0.2rem;
+      }
+      h2 {
+        font-size: 1.25rem;
+        margin-top: 2.8rem;
+        border-bottom: 2px solid #0a0a0a;
+        padding-bottom: 0.3rem;
+      }
+      h3 {
+        font-size: 1.02rem;
+        margin-top: 1.8rem;
+        color: #b76e79;
+      }
+      .meta {
+        color: #666;
+        font-size: 0.88rem;
+        margin-bottom: 1.5rem;
+      }
+      .status {
+        display: inline-block;
+        background: #fff3cd;
+        color: #7a5c00;
+        padding: 0.15rem 0.6rem;
+        border-radius: 3px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+      code,
+      pre {
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 0.86em;
+      }
+      code {
+        background: #f2f2f2;
+        padding: 0.1rem 0.35rem;
+        border-radius: 3px;
+      }
+      pre {
+        background: #0a0a0a;
+        color: #e8e8e8;
+        padding: 1rem 1.2rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        line-height: 1.5;
+      }
+      pre code {
+        background: none;
+        padding: 0;
+        color: inherit;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0 1.5rem;
+        font-size: 0.87rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.5rem 0.6rem;
+        border-bottom: 1px solid #e2e2e2;
+        vertical-align: top;
+      }
+      th {
+        background: #f7f7f7;
+        font-weight: 600;
+      }
+      .evidence {
+        border-left: 3px solid #b76e79;
+        padding: 0.6rem 1rem;
+        background: #fdf7f8;
+        margin: 1rem 0;
+        font-size: 0.92rem;
+      }
+      .nongoal {
+        border-left: 3px solid #999;
+        padding: 0.6rem 1rem;
+        background: #f5f5f5;
+        margin: 1rem 0;
+        font-size: 0.92rem;
+      }
+      .open-q {
+        border-left: 3px solid #dc143c;
+        padding: 0.6rem 1rem;
+        background: #fdf2f3;
+        margin: 1rem 0;
+        font-size: 0.92rem;
+      }
+      ul {
+        padding-left: 1.3rem;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+      }
+      nav a {
+        text-decoration: none;
+        color: #0a0a0a;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+      .tag {
+        font-size: 0.72rem;
+        background: #eee;
+        padding: 0.1rem 0.4rem;
+        border-radius: 3px;
+        color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>MCP Servers: Worktree Fleet + Wolf Memory</h1>
+    <div class="meta">
+      DevSkyy · 2026-09-16 ·
+      <span class="status" style="background: #d4edda; color: #155724">
+        BUILT — 46/46 tests green, registered in .mcp.json
+      </span>
+      · scope: single machine (theceo), Claude Code + Codex as co-tenants of this repo
+    </div>
+
+    <div class="evidence">
+      <strong>Deviations from the original spec, decided during implementation:</strong>
+      <ul>
+        <li>
+          Skipped reusing
+          <code>mcp_tools.security.secure_tool</code>
+          and
+          <code>mcp_tools.api_client._format_response</code>
+          — both transitively import
+          <code>mcp_tools.server</code>
+          , which constructs the
+          <code>devskyy</code>
+          FastMCP app as an import side effect. That breaks the "zero backend coupling" property these servers exist
+          for, and rate-limiting/dedup target a different threat model (public API abuse) than what these internal,
+          trusted-agent tools need.
+          <code>mcp_servers/_shared.py</code>
+          reimplements the response formatter locally instead; only
+          <code>mcp_tools.types.BaseAgentInput</code>
+          -equivalent shapes were kept, hand-written (pure pydantic, zero side effects either way).
+        </li>
+        <li>
+          Both founder-decision open questions were resolved with the spec's own recommendation, per instruction to
+          proceed: branch/no-DB-row conflicts adopt silently;
+          <code>bug_bump</code>
+          only surfaces the
+          <code>_recurring_sync_needed</code>
+          flag rather than auto-triggering
+          <code>wolf_recurring_sync.py</code>
+          itself.
+        </li>
+        <li>
+          A real SQLite WAL-mode first-touch race under concurrent process startup was caught by the cross-process test
+          suite (not anticipated in the spec) — fixed by checking the current journal mode before attempting to change
+          it, with a small bounded retry for the rare first-time transition.
+        </li>
+      </ul>
+    </div>
+
+    <p>
+      Two standalone MCP servers, ranked #1 and #2 out of a longer list because usage data (not recall) showed they're
+      the only candidates that clear all three bars: a consumer other than this Claude Code session needs them, they
+      need atomicity that file access alone can't give, and a founder-mandated policy needs to become an enforced gate
+      instead of prose.
+    </p>
+
+    <nav>
+      <ul>
+        <li><a href="#foundations">Shared foundations</a></li>
+        <li><a href="#worktree-fleet">1. Worktree Fleet server</a></li>
+        <li><a href="#wolf-memory">2. Wolf Memory server</a></li>
+        <li><a href="#build-order">Build order</a></li>
+      </ul>
+    </nav>
+
+    <h2 id="foundations">Shared foundations</h2>
+
+    <p>
+      Both servers are
+      <strong>standalone FastMCP processes</strong>
+      , not new tool modules bolted onto
+      <code>mcp_tools/</code>
+      (the existing
+      <code>devskyy</code>
+      monolith). Reasons this repo already gave us:
+    </p>
+    <ul>
+      <li>
+        <strong>Second consumer is real, not hypothetical.</strong>
+        This session is running on branch
+        <code>codex/v2-open-seo-security-audit</code>
+        — Codex already works in this repo alongside Claude Code. Codex has its own MCP client config; a server coupled
+        to
+        <code>devskyy_mcp.py</code>
+        's FastAPI backend URL / API key plumbing isn't something Codex can trivially point at. A small standalone
+        server with no backend dependency is.
+      </li>
+      <li>
+        <strong>Zero backend coupling.</strong>
+        Most
+        <code>mcp_tools/</code>
+        modules call
+        <code>_make_api_request</code>
+        against
+        <code>DEVSKYY_API_URL</code>
+        . These two servers touch only local files (
+        <code>git</code>
+        ,
+        <code>.wolf/*</code>
+        ) — they should work with the FastAPI backend down.
+      </li>
+      <li>
+        <strong>Convention match.</strong>
+        Reuse what already works:
+        <code>BaseAgentInput</code>
+        (pydantic,
+        <code>extra="forbid"</code>
+        ,
+        <code>response_format</code>
+        field) from
+        <code>mcp_tools/types.py</code>
+        , the
+        <code>secure_tool</code>
+        decorator from
+        <code>mcp_tools/security.py</code>
+        , and the confirm-gated-mutation pattern already proven in
+        <code>wc_update_product</code>
+        . Each server still creates its
+        <em>own</em>
+        <code>FastMCP(...)</code>
+        instance — importing types/security helpers is fine (pydantic-only deps), importing
+        <code>mcp_tools.server</code>
+        is not (pulls in the backend config).
+      </li>
+      <li>
+        <strong>bug-263 applies verbatim.</strong>
+        Both entrypoints shell out via
+        <code>subprocess</code>
+        (
+        <code>git worktree …</code>
+        ) and both are long-running stdio processes on darwin — the exact conditions that caused the SIGSEGV pattern
+        logged 8× in
+        <code>.wolf/buglog.json</code>
+        . Both entrypoints open with the same guard
+        <code>devskyy_mcp.py</code>
+        uses:
+        <pre><code>if sys.platform == "darwin":
+    os.environ.setdefault("no_proxy", "*")
+    os.environ.setdefault("NO_PROXY", "*")</code></pre>
+        before any other import.
+      </li>
+      <li>
+        <strong>The concurrency model, stated once because it drives every design choice below:</strong>
+        stdio-transport MCP servers are
+        <em>one subprocess per connecting client</em>
+        . Two Claude Code sessions (or Claude Code + Codex) each spawn their own process — there is no shared memory
+        between them. So "atomic" cannot mean an in-process lock; it has to mean a lock that lives in the shared
+        <em>file</em>
+        both processes touch. Both servers use a small SQLite file opened in WAL mode, with every mutation wrapped in
+        <code>BEGIN IMMEDIATE</code>
+        to take the write lock up front (SQLite's default deferred locking still races under concurrent writers —
+        <code>BEGIN IMMEDIATE</code>
+        closes that gap). SQLite is used as a
+        <strong>lock + counter</strong>
+        , never as a second data store — the human-readable, git-tracked files (
+        <code>.wolf/buglog.json</code>
+        ,
+        <code>.wolf/cerebrum.md</code>
+        ) stay the sole data SOT, matching the "never fork a SOT" principle this repo already applies to product data.
+      </li>
+    </ul>
+
+    <div class="nongoal">
+      <strong>Explicit non-goal:</strong>
+      this design is single-machine. Memory already records a two-machine setup (theceo + coreyfoster). A SQLite file is
+      not safe to share over a synced folder (iCloud/Dropbox) — two machines writing the same SQLite file over a syncing
+      filesystem is a corruption risk, not a coordination mechanism. Cross-machine dedup is out of scope here; it would
+      need a tiny shared HTTP endpoint, which is a bigger, separate proposal.
+    </div>
+
+    <h2 id="worktree-fleet">1. Worktree Fleet server</h2>
+
+    <div class="evidence">
+      <strong>Evidence, not opinion:</strong>
+      <code>git worktree</code>
+      was invoked 233×/30 days — the single heaviest non-file-read Bash command in this session's history (
+      <code>rtk discover</code>
+      ). 32×
+      <code>rmdir</code>
+      against
+      <code>.codex/worktrees/*</code>
+      shows a second tool cleaning up the same kind of state. Memory holds
+      <em>three separate</em>
+      stranded-worktree incidents (2026-06-09, 2026-06-18, 2026-09-10 — the last one needed 44 worktrees manually
+      reaped, some requiring "wip: snapshot" commits to avoid losing dirty work).
+      <code>git worktree list</code>
+      alone doesn't tell you who owns a worktree, why it exists, or whether its work already made it to a branch —
+      that's exactly the information every past sweep had to reconstruct by hand.
+    </div>
+
+    <h3>Data model</h3>
+    <p>
+      SQLite file:
+      <code>.wolf/fleet.db</code>
+      (add to
+      <code>.gitignore</code>
+      — machine-local, ephemeral coordination state, not portable across the dual-machine setup).
+    </p>
+    <pre><code>CREATE TABLE worktrees (
+  path         TEXT PRIMARY KEY,
+  branch       TEXT NOT NULL,
+  repo_root    TEXT NOT NULL,
+  owner        TEXT NOT NULL,   -- caller-supplied agent/session id, e.g. "claude:37b5c934"
+  purpose      TEXT,
+  status       TEXT NOT NULL DEFAULT 'active'
+               CHECK (status IN ('active','ready_to_merge','merged','abandoned')),
+  pushed       INTEGER NOT NULL DEFAULT 0,
+  created_at   TEXT NOT NULL,
+  last_seen_at TEXT NOT NULL,
+  closed_at    TEXT
+);</code></pre>
+    <p>
+      <strong>Identity note:</strong>
+      MCP over stdio gives the server no reliable notion of "which agent is calling" beyond what the client declares.
+      <code>owner</code>
+      is a required parameter, not something the server infers — every tool call must pass a session/agent id the caller
+      controls (Claude Code sessions already have one; a Codex call would pass its own).
+    </p>
+
+    <h3>Tool surface</h3>
+    <table>
+      <tr>
+        <th>Tool</th>
+        <th>Params</th>
+        <th>Behavior</th>
+      </tr>
+      <tr>
+        <td><code>worktree_claim</code></td>
+        <td>branch, purpose, owner, base_ref="main"</td>
+        <td>
+          Fails if
+          <code>branch</code>
+          already has a live registry row owned by someone else. Otherwise runs
+          <code>git worktree add</code>
+          , inserts the row inside
+          <code>BEGIN IMMEDIATE</code>
+          . This is the actual race fix: two sessions requesting the same branch name at the same instant — only one
+          wins the insert.
+        </td>
+      </tr>
+      <tr>
+        <td><code>worktree_heartbeat</code></td>
+        <td>path</td>
+        <td>
+          Bumps
+          <code>last_seen_at</code>
+          . Lets
+          <code>worktree_list</code>
+          distinguish "actively worked" from "opened three weeks ago and forgotten."
+        </td>
+      </tr>
+      <tr>
+        <td><code>worktree_list</code></td>
+        <td>status?, owner?</td>
+        <td>
+          Registry rows joined against live
+          <code>git worktree list --porcelain</code>
+          . Flags drift both directions: DB rows with no matching git worktree (already removed outside the tool), and
+          git worktrees with no DB row (created manually, unregistered). This is the manifest every past sweep built by
+          hand.
+        </td>
+      </tr>
+      <tr>
+        <td><code>worktree_release</code></td>
+        <td>path, verify_pushed=true, force=false</td>
+        <td>
+          <strong>Fail-closed by default.</strong>
+          Refuses unless
+          <code>git log @{u}..</code>
+          is empty and
+          <code>git status --porcelain</code>
+          is clean, and says exactly what's unpushed/dirty when it refuses.
+          <code>force=true</code>
+          bypasses the check — the tool's own description states this is a data-loss-risk override the calling agent
+          must already have explicit human confirmation for, mirroring the
+          <code>confirm: bool</code>
+          gate already used on
+          <code>wc_update_product</code>
+          . The tool cannot itself pause for a human mid-call; the STOP-AND-SHOW happens one level up, before the agent
+          ever sets
+          <code>force=true</code>
+          .
+        </td>
+      </tr>
+      <tr>
+        <td><code>worktree_prune</code></td>
+        <td>dry_run=true, ttl_hours=24</td>
+        <td>
+          Actually removes only rows already
+          <code>ready_to_merge</code>
+          /
+          <code>merged</code>
+          past the TTL. Anything that looks abandoned (no heartbeat, dirty or unpushed) is only
+          <em>reported</em>
+          , never auto-deleted — this is the direct fix for "stranded commits ≠ stranded work."
+        </td>
+      </tr>
+    </table>
+
+    <h3>Files</h3>
+    <table>
+      <tr>
+        <th>Path</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td><code>mcp_servers/worktree_fleet/server.py</code></td>
+        <td>
+          Own
+          <code>FastMCP("worktree-fleet")</code>
+          instance, darwin fork-safety preamble, stdio entrypoint (mirrors
+          <code>devskyy_mcp.py</code>
+          minus the API-key bootstrap).
+        </td>
+      </tr>
+      <tr>
+        <td><code>mcp_servers/worktree_fleet/store.py</code></td>
+        <td>
+          SQLite schema +
+          <code>BEGIN IMMEDIATE</code>
+          -wrapped operations. No git calls here.
+        </td>
+      </tr>
+      <tr>
+        <td><code>mcp_servers/worktree_fleet/tools.py</code></td>
+        <td>
+          The five
+          <code>@mcp.tool()</code>
+          functions,
+          <code>subprocess.run(["git", "worktree", …])</code>
+          calls, Pydantic input models extending
+          <code>BaseAgentInput</code>
+          .
+        </td>
+      </tr>
+      <tr>
+        <td><code>tests/mcp_servers/test_worktree_fleet.py</code></td>
+        <td>
+          Per-test
+          <code>tmp_path</code>
+          repo +
+          <code>tmp_path</code>
+          SQLite file (bug-231 discipline — never a real
+          <code>.wolf/fleet.db</code>
+          in tests).
+        </td>
+      </tr>
+    </table>
+
+    <div class="open-q">
+      <strong>Needs a founder call before build:</strong>
+      what should
+      <code>worktree_claim</code>
+      do when the branch already exists in git (pushed by a prior session) but has no registry row — adopt it silently,
+      or refuse and ask which agent should own it? Recommend: adopt with
+      <code>owner</code>
+      set to whoever's claiming it now, logged as an adoption event, since refusing here would just recreate the
+      manual-reconciliation problem the tool exists to remove.
+    </div>
+
+    <h2 id="wolf-memory">2. Wolf Memory / Bug-Log server</h2>
+
+    <div class="evidence">
+      <strong>Evidence:</strong>
+      <code>.wolf/buglog.json</code>
+      shows real recurring cost — bug-096 ×30, bug-172 ×24, bug-263 ×8, bug-230 ×7, bug-231 ×5 — and
+      <code>OPENWOLF.md</code>
+      states outright: "past cross-session collisions came from manual ID guessing," which is exactly the TOCTOU race
+      you get from "scan the JSON for the max id, add one" under concurrent writers. Separately:
+      <code>buglog.json</code>
+      is 337KB and
+      <code>memory.md</code>
+      is 534KB — every current workflow that "reads buglog.json first" or appends to it is a full-file round trip at
+      that size, which is itself a token cost this server removes by exposing scoped operations instead.
+    </div>
+
+    <h3>Data model</h3>
+    <p>
+      <code>.wolf/buglog.json</code>
+      stays the
+      <strong>sole data SOT</strong>
+      — same schema OPENWOLF.md already mandates (
+      <code>id</code>
+      ,
+      <code>timestamp</code>
+      ,
+      <code>error_message</code>
+      ,
+      <code>file</code>
+      ,
+      <code>root_cause</code>
+      ,
+      <code>fix</code>
+      ,
+      <code>tags</code>
+      ,
+      <code>related_bugs</code>
+      ,
+      <code>occurrences</code>
+      ,
+      <code>last_seen</code>
+      ), still git-tracked, still human-diffable in PRs.
+      <code>cerebrum.md</code>
+      and
+      <code>memory.md</code>
+      stay Markdown, edited by structured append, not rewrite.
+    </p>
+    <p>
+      New:
+      <code>.wolf/wolf.lock.db</code>
+      (gitignored) — a single-row SQLite counter table, used purely as an atomic sequence + write-mutex for the JSON
+      file. It holds no bug data.
+    </p>
+    <pre><code>CREATE TABLE counters (name TEXT PRIMARY KEY, value INTEGER NOT NULL);
+-- one row: ('bug', &lt;last allocated N&gt;)</code></pre>
+
+    <h3>Tool surface</h3>
+    <table>
+      <tr>
+        <th>Tool</th>
+        <th>Params</th>
+        <th>Behavior</th>
+      </tr>
+      <tr>
+        <td><code>bug_next_id</code></td>
+        <td>—</td>
+        <td>
+          <code>BEGIN IMMEDIATE</code>
+          →
+          <code>UPDATE counters SET value = value + 1 WHERE name='bug' RETURNING value</code>
+          → format
+          <code>bug-NNN</code>
+          . Replaces
+          <code>scripts/wolf_bug_id.py</code>
+          's scan-and-guess with a real atomic increment. Existing script can become a thin CLI wrapper around this tool
+          instead of being deleted outright.
+        </td>
+      </tr>
+      <tr>
+        <td><code>bug_log</code></td>
+        <td>error_message, file, root_cause, fix, tags[], related_bugs[]=[]</td>
+        <td>
+          First checks for a near-duplicate (same
+          <code>file</code>
+          + substring match on
+          <code>error_message</code>
+          ); if found, calls the same path as
+          <code>bug_bump</code>
+          instead of creating a new id — this is the "bump occurrences, never duplicate" rule from OPENWOLF.md, enforced
+          instead of hoped for. Otherwise allocates via
+          <code>bug_next_id</code>
+          and appends atomically: read-modify-write of
+          <code>buglog.json</code>
+          happens inside the same SQLite transaction that holds the lock, so two concurrent
+          <code>bug_log</code>
+          calls can't interleave and corrupt the JSON array.
+        </td>
+      </tr>
+      <tr>
+        <td><code>bug_search</code></td>
+        <td>query, tags?=[], min_occurrences?</td>
+        <td>
+          Grep-equivalent scoped search over
+          <code>buglog.json</code>
+          — the "read buglog before fixing" step every session is supposed to do manually, as one call instead of a
+          full-file read.
+        </td>
+      </tr>
+      <tr>
+        <td><code>bug_bump</code></td>
+        <td>id</td>
+        <td>
+          Increments
+          <code>occurrences</code>
+          , updates
+          <code>last_seen</code>
+          . When the result crosses
+          <code>occurrences >= 2</code>
+          , the tool's return value explicitly flags that
+          <code>scripts/wolf_recurring_sync.py</code>
+          needs a run — today that's a rule the agent has to remember; this makes it a returned fact instead.
+        </td>
+      </tr>
+      <tr>
+        <td><code>cerebrum_append</code></td>
+        <td>section (enum: preferences / learnings / do_not_repeat / decision_log), entry</td>
+        <td>
+          Structured append under the matching
+          <code>##</code>
+          heading in
+          <code>cerebrum.md</code>
+          . The enum makes misfiling (wrong section) structurally impossible instead of relying on the agent picking the
+          right heading by hand.
+        </td>
+      </tr>
+    </table>
+
+    <h3>Files</h3>
+    <table>
+      <tr>
+        <th>Path</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td><code>mcp_servers/wolf_memory/server.py</code></td>
+        <td>
+          Own
+          <code>FastMCP("wolf-memory")</code>
+          instance, same darwin preamble even though this server doesn't shell out — kept for consistency and because
+          <code>python-dotenv</code>
+          /
+          <code>pydantic</code>
+          imports can still touch Network.framework indirectly on darwin.
+        </td>
+      </tr>
+      <tr>
+        <td><code>mcp_servers/wolf_memory/store.py</code></td>
+        <td>SQLite counter/lock + the JSON/Markdown read-modify-write helpers.</td>
+      </tr>
+      <tr>
+        <td><code>mcp_servers/wolf_memory/tools.py</code></td>
+        <td>
+          The five
+          <code>@mcp.tool()</code>
+          functions.
+        </td>
+      </tr>
+      <tr>
+        <td><code>tests/mcp_servers/test_wolf_memory.py</code></td>
+        <td>
+          <code>tmp_path</code>
+          -scoped copies of a fixture
+          <code>buglog.json</code>
+          /
+          <code>cerebrum.md</code>
+          — never the real 337KB/534KB files in a test.
+        </td>
+      </tr>
+    </table>
+
+    <div class="open-q">
+      <strong>Needs a founder call before build:</strong>
+      should
+      <code>bug_log</code>
+      also fire the existing Stop-hook's
+      <code>wolf_recurring_sync.py</code>
+      automatically at
+      <code>occurrences==2</code>
+      , or only surface the flag and let the existing per-turn Stop hook (already documented as a backstop in CLAUDE.md)
+      catch it? Recommend leaving the Stop hook as the actual trigger and having this tool just make the crossing
+      visible in its return value — avoids two code paths that can both decide to run the sync script.
+    </div>
+
+    <h2 id="build-order">Build order</h2>
+    <ol>
+      <li>
+        Wolf Memory first — smaller surface (no
+        <code>git</code>
+        subprocess calls, no destructive-op design), and it directly de-races a bug that's already bitten this project
+        by name.
+      </li>
+      <li>
+        Worktree Fleet second — same store/lock pattern, reused; the new work is the git-command layer and the
+        fail-closed
+        <code>worktree_release</code>
+        checks.
+      </li>
+      <li>
+        Register both in
+        <code>.mcp.json</code>
+        once tests are green; note the Codex-side config separately since its MCP registration format differs from
+        Claude Code's.
+      </li>
+    </ol>
+    <p>
+      <strong>Status: done.</strong>
+      The verification pass added file-reconciled id allocation and a fail-closed write guard that refuses to re-encode
+      a
+      <code>buglog.json</code>
+      not in native format (bug-324, bug-326). Both servers built TDD (RED → GREEN), 46 tests in
+      <code>tests/mcp_servers/</code>
+      , registered in
+      <code>.mcp.json</code>
+      as
+      <code>wolf-memory</code>
+      and
+      <code>worktree-fleet</code>
+      . Codex-side registration is still open — its MCP config format differs from Claude Code's
+      <code>.mcp.json</code>
+      and wasn't set up in this pass.
+    </p>
+  </body>
+</html>
