@@ -1,0 +1,408 @@
+[
+  {
+    "candidate": "1acde81ed",
+    "viewport": {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    "localMonumentSha256": "05e9890ba85971569b7a422b892e3db3d51ae53ac6efb6bdd2d55f85c7859811",
+    "css": {
+      "home-art-direction.min.css": {
+        "http": 200,
+        "localSha256": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6",
+        "servedSha256": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6",
+        "byteMatch": true
+      },
+      "content-page.min.css": {
+        "http": 200,
+        "localSha256": "42dd33dc4bbcb5b595ca096fd8f3ab626c260c88066c028f996e6f594f70fa4e",
+        "servedSha256": "42dd33dc4bbcb5b595ca096fd8f3ab626c260c88066c028f996e6f594f70fa4e",
+        "byteMatch": true
+      }
+    },
+    "responses": {
+      "homepage": 200,
+      "preorder": 200,
+      "product": 200,
+      "cart": 200,
+      "checkout": 200
+    },
+    "pageErrors": [],
+    "requestFailures": [],
+    "brokenImages": {
+      "homepageTop": [],
+      "jersey": [],
+      "preorderTop": [],
+      "product": [],
+      "cart": [],
+      "checkout": []
+    },
+    "overflow": {
+      "homepage": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "overflowPx": 0
+      },
+      "preorder": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "overflowPx": 0
+      },
+      "product": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "overflowPx": 0
+      },
+      "cart": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "overflowPx": 0
+      },
+      "checkout": {
+        "viewport": 1440,
+        "scrollWidth": 1440,
+        "overflowPx": 0
+      }
+    },
+    "mascotCount": {
+      "homepage": 0,
+      "preorder": 0,
+      "product": 0,
+      "cart": 0,
+      "checkout": 0
+    },
+    "homepage": {
+      "heroSrc": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/images/house-monument-20260928.webp",
+      "heroSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "heroHttp": 200,
+      "servedMonumentSha256": "05e9890ba85971569b7a422b892e3db3d51ae53ac6efb6bdd2d55f85c7859811",
+      "monumentByteMatch": true,
+      "heading": "Rooted in the Town.\nMade to be felt.",
+      "framing": {
+        "header": {
+          "top": 0,
+          "bottom": 64,
+          "left": 0,
+          "right": 1440,
+          "width": 1440,
+          "height": 64
+        },
+        "arrival": {
+          "top": 0,
+          "bottom": 846,
+          "left": 0,
+          "right": 1440,
+          "width": 1440,
+          "height": 846
+        },
+        "art": {
+          "top": 0,
+          "bottom": 846,
+          "left": 0,
+          "right": 1440,
+          "width": 1440,
+          "height": 846
+        },
+        "image": {
+          "top": 0,
+          "bottom": 846,
+          "left": 0,
+          "right": 1440,
+          "width": 1440,
+          "height": 846
+        },
+        "objectFit": "cover",
+        "objectPosition": "50% 50%"
+      },
+      "jerseySlides": 8,
+      "firstJerseyLink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003/",
+      "firstJerseyImage": {
+        "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-003-onmodel.webp",
+        "width": 864
+      },
+      "jerseyControlsVisible": true,
+      "jerseyPositionBefore": "1 / 8",
+      "jerseyPositionAfter": "2 / 8"
+    },
+    "preorder": {
+      "heroSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "heroSrc": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/images/house-monument-20260928.webp",
+      "heading": "Made for the moment ahead.",
+      "framing": {
+        "header": {
+          "top": 0,
+          "bottom": 64,
+          "left": 0,
+          "right": 1440,
+          "width": 1440,
+          "height": 64
+        },
+        "arrival": {
+          "top": 0,
+          "bottom": 900,
+          "left": 0,
+          "right": 1440,
+          "width": 1440,
+          "height": 900
+        },
+        "media": {
+          "top": 0,
+          "bottom": 900,
+          "left": 0,
+          "right": 1440,
+          "width": 1440,
+          "height": 900
+        },
+        "image": {
+          "top": 0,
+          "bottom": 900,
+          "left": 0,
+          "right": 1440,
+          "width": 1440,
+          "height": 900
+        },
+        "objectFit": "cover",
+        "objectPosition": "65% 50%"
+      },
+      "processVisible": true,
+      "productCards": 15,
+      "firstCard": "01\n\nLOVE HURTS\n\nSKU:\nLH-005\n\nThe Fannie\n\nPrice:\n$45.00\n\nAVAILABLE\n\nPRE-ORDER EDITION\n\nQUICK VIEW\nADD TO CART",
+      "firstCardLink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/the-fannie/",
+      "firstCardPdpHttp": 200,
+      "firstCardPdpHeading": "The Fannie",
+      "firstCardName": "The Fannie",
+      "firstCardConsistent": true
+    },
+    "product": {
+      "title": "BLACK Rose Hoodie",
+      "heading": "BLACK Rose Hoodie",
+      "variationId": "10507",
+      "beforeReadyState": "resolving",
+      "readyState": "valid",
+      "addNotice": "“BLACK Rose Hoodie” has been added to your cart.\nVIEW CART",
+      "cartCookiePresent": true
+    },
+    "cart": {
+      "lines": 1,
+      "text": "YOUR BAG\n\nKeep your pieces close.\nCONTINUE SHOPPING\n→\nBLACK Rose Hoodie - M\nEach $40.00\n\nLine subtotal\n$40.00\n\nBLACK Rose Hoodie - M quantity\nRemove\nCode\nAPPLY\nUPDATE BAG\nCart totals\nSubtotal\t$40.00\nShipment\t\nStandard shipping: $17.00\nExpress shipping: $22.00\n\nShipping to CA.\n\nChange address\n\nTotal\t$57.00\nPROCEED TO CHECKOUT"
+    },
+    "checkout": {
+      "lines": 1,
+      "paymentMethods": [],
+      "totalText": "Product\tSubtotal\nBLACK Rose Hoodie - M  × 1\t$40.00\nSubtotal\t$40.00\nShipment\t\nStandard shipping: $17.00\nExpress shipping: $22.00\n\nTotal\t$57.00\n",
+      "placeOrderVisible": true
+    },
+    "mobileHeroClearance": true,
+    "status": "PASS_TO_CHECKOUT"
+  },
+  {
+    "candidate": "1acde81ed",
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "localMonumentSha256": "05e9890ba85971569b7a422b892e3db3d51ae53ac6efb6bdd2d55f85c7859811",
+    "css": {
+      "home-art-direction.min.css": {
+        "http": 200,
+        "localSha256": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6",
+        "servedSha256": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6",
+        "byteMatch": true
+      },
+      "content-page.min.css": {
+        "http": 200,
+        "localSha256": "42dd33dc4bbcb5b595ca096fd8f3ab626c260c88066c028f996e6f594f70fa4e",
+        "servedSha256": "42dd33dc4bbcb5b595ca096fd8f3ab626c260c88066c028f996e6f594f70fa4e",
+        "byteMatch": true
+      }
+    },
+    "responses": {
+      "homepage": 200,
+      "preorder": 200,
+      "product": 200,
+      "cart": 200,
+      "checkout": 200
+    },
+    "pageErrors": [],
+    "requestFailures": [],
+    "brokenImages": {
+      "homepageTop": [],
+      "jersey": [],
+      "preorderTop": [],
+      "product": [],
+      "cart": [],
+      "checkout": []
+    },
+    "overflow": {
+      "homepage": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "overflowPx": 0
+      },
+      "preorder": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "overflowPx": 0
+      },
+      "product": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "overflowPx": 0
+      },
+      "cart": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "overflowPx": 0
+      },
+      "checkout": {
+        "viewport": 390,
+        "scrollWidth": 390,
+        "overflowPx": 0
+      }
+    },
+    "mascotCount": {
+      "homepage": 0,
+      "preorder": 0,
+      "product": 0,
+      "cart": 0,
+      "checkout": 0
+    },
+    "homepage": {
+      "heroSrc": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/images/house-monument-20260928.webp",
+      "heroSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "heroHttp": 200,
+      "servedMonumentSha256": "05e9890ba85971569b7a422b892e3db3d51ae53ac6efb6bdd2d55f85c7859811",
+      "monumentByteMatch": true,
+      "heading": "Rooted in the Town.\nMade to be felt.",
+      "framing": {
+        "header": {
+          "top": 0,
+          "bottom": 64,
+          "left": 0,
+          "right": 390,
+          "width": 390,
+          "height": 64
+        },
+        "arrival": {
+          "top": 0,
+          "bottom": 1004.3125,
+          "left": 0,
+          "right": 390,
+          "width": 390,
+          "height": 1004.3125
+        },
+        "art": {
+          "top": 64,
+          "bottom": 430.59375,
+          "left": 0,
+          "right": 390,
+          "width": 390,
+          "height": 366.59375
+        },
+        "image": {
+          "top": 64,
+          "bottom": 430.59375,
+          "left": 0,
+          "right": 390,
+          "width": 390,
+          "height": 366.59375
+        },
+        "objectFit": "cover",
+        "objectPosition": "90% 50%"
+      },
+      "jerseySlides": 8,
+      "firstJerseyLink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003/",
+      "firstJerseyImage": {
+        "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-003-480w.webp",
+        "width": 389
+      },
+      "jerseyControlsVisible": true,
+      "jerseyPositionBefore": "1 / 8",
+      "jerseyPositionAfter": "2 / 8"
+    },
+    "preorder": {
+      "heroSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "heroSrc": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/images/house-monument-20260928.webp",
+      "heading": "Made for the moment ahead.",
+      "framing": {
+        "header": {
+          "top": 0,
+          "bottom": 64,
+          "left": 0,
+          "right": 390,
+          "width": 390,
+          "height": 64
+        },
+        "arrival": {
+          "top": 0,
+          "bottom": 879.796875,
+          "left": 0,
+          "right": 390,
+          "width": 390,
+          "height": 879.796875
+        },
+        "media": {
+          "top": 64,
+          "bottom": 430.59375,
+          "left": 0,
+          "right": 390,
+          "width": 390,
+          "height": 366.59375
+        },
+        "image": {
+          "top": 64,
+          "bottom": 430.59375,
+          "left": 0,
+          "right": 390,
+          "width": 390,
+          "height": 366.59375
+        },
+        "objectFit": "cover",
+        "objectPosition": "90% 50%"
+      },
+      "processVisible": true,
+      "productCards": 15,
+      "firstCard": "01\n\nLOVE HURTS\n\nSKU:\nLH-005\n\nThe Fannie\n\nPrice:\n$45.00\n\nAVAILABLE\n\nPRE-ORDER EDITION\n\nQUICK VIEW\nADD TO CART",
+      "firstCardLink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/the-fannie/",
+      "firstCardPdpHttp": 200,
+      "firstCardPdpHeading": "The Fannie",
+      "firstCardName": "The Fannie",
+      "firstCardConsistent": true
+    },
+    "product": {
+      "title": "BLACK Rose Hoodie",
+      "heading": "BLACK Rose Hoodie",
+      "variationId": "10507",
+      "beforeReadyState": "resolving",
+      "readyState": "valid",
+      "addNotice": "“BLACK Rose Hoodie” has been added to your cart.\nVIEW CART",
+      "cartCookiePresent": true
+    },
+    "cart": {
+      "lines": 1,
+      "text": "YOUR BAG\n\nKeep your pieces close.\nCONTINUE SHOPPING\n→\nBLACK Rose Hoodie - M\nEach $40.00\n\nLine subtotal\n$40.00\n\nBLACK Rose Hoodie - M quantity\nRemove\nCode\nAPPLY\nUPDATE BAG\nCart totals\n$40.00\nStandard shipping: $17.00\nExpress shipping: $22.00\n\nShipping to CA.\n\nChange address\n$57.00\nPROCEED TO CHECKOUT"
+    },
+    "checkout": {
+      "lines": 1,
+      "paymentMethods": [],
+      "totalText": "Product\tSubtotal\nBLACK Rose Hoodie - M  × 1\t$40.00\nSubtotal\t$40.00\nShipment\t\nStandard shipping: $17.00\nExpress shipping: $22.00\n\nTotal\t$57.00\n",
+      "placeOrderVisible": true
+    },
+    "mobileHeroClearance": true,
+    "status": "PASS_TO_CHECKOUT"
+  }
+]

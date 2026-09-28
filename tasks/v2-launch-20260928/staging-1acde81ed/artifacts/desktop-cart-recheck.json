@@ -1,0 +1,46 @@
+{
+  "candidate": "1acde81ed",
+  "viewport": "desktop",
+  "pageErrors": [],
+  "responses": {
+    "product": 200,
+    "cart": 200,
+    "checkout": 200
+  },
+  "variationId": "10507",
+  "beforeWaitState": "resolving",
+  "readyState": "valid",
+  "buttonBeforeClick": {
+    "disabled": false,
+    "classes": "single_add_to_cart_button button alt",
+    "busy": null
+  },
+  "afterAddUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-004/",
+  "notices": [
+    "“BLACK Rose Hoodie” has been added to your cart.\nVIEW CART"
+  ],
+  "cookieNames": [
+    "sbjs_migrations",
+    "sbjs_current_add",
+    "sbjs_first_add",
+    "sbjs_current",
+    "sbjs_first",
+    "sbjs_udata",
+    "tk_or",
+    "tk_r3d",
+    "tk_lr",
+    "tk_ai",
+    "commercekit-nonce-value",
+    "commercekit-nonce-state",
+    "woocommerce_items_in_cart",
+    "woocommerce_cart_hash",
+    "wp_woocommerce_session_bd2e7d0e1c53795bd6380f8f5c7810e9",
+    "sbjs_session",
+    "tk_qs"
+  ],
+  "cartUrl": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/?cartrecheck=1acde81ed-1790628146814",
+  "cartLines": 1,
+  "cartText": "YOUR BAG\n\nKeep your pieces close.\nCONTINUE SHOPPING\n→\nBLACK Rose Hoodie - M\nEach $40.00\n\nLine subtotal\n$40.00\n\nBLACK Rose Hoodie - M quantity\nRemove\nCode\nAPPLY\nUPDATE BAG\nCart totals\nSubtotal\t$40.00\nShipment\t\nStandard shipping: $17.00\nExpress shipping: $22.00\n\nShipping to CA.\n\nChange address\n\nTotal\t$57.00\nPROCEED TO CHECKOUT",
+  "checkoutLines": 1,
+  "total": "Product\tSubtotal\nBLACK Rose Hoodie - M  × 1\t$40.00\nSubtotal\t$40.00\nShipment\t\nStandard shipping: $17.00\nExpress shipping: $22.00\n\nTotal\t$57.00\n"
+}
