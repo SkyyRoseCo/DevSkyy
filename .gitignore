@@ -505,3 +505,6 @@ tasks/wp-commercial-theme/shots/
 
 # Runtime coordination for the editable product registry.
 wordpress-theme/skyyrose-flagship/data/logo-registry.json.lock
+
+# Required plugin reference captures are distribution assets, not QA output.
+!plugins/fashion-theme-team/skills/fashion-theme-team/brain/visuals/*.png
