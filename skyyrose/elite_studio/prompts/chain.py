@@ -11,8 +11,11 @@ Takes a raw human prompt and runs it through 5 stages:
 
 from __future__ import annotations
 
+import json
+import re
 from datetime import UTC, datetime
 
+from skyyrose.core.product import get_product
 from skyyrose.elite_studio.prompts.analyzer import (
     _COLLECTIONS,
     _SKU_PREFIXES,
@@ -140,6 +143,82 @@ def _detect_collection_from_name(text: str) -> str | None:
     return None
 
 
+IMAGERY_STANDARD = "/Users/theceo/.codex/creative-standards/imagery-prompting.md"
+_SKU_PATTERN = re.compile(r"\b(?:br|lh|sg|kids)-\d{3}\b", re.I)
+
+
+def product_skus(prompt: str, sku: str | None = None) -> tuple[str, ...]:
+    """Bind exact SKU identifiers, never infer a SKU from a garment category."""
+    found = tuple(dict.fromkeys(m.lower() for m in _SKU_PATTERN.findall(prompt)))
+    if sku:
+        sku = sku.strip().lower()
+        if found and any(value != sku for value in found):
+            raise ValueError("Explicit SKU conflicts with prompt SKU")
+        return (sku,)
+    return found
+
+
+def _product_brief(prompt: str, skus: tuple[str, ...], views: tuple[str, ...]) -> dict:
+    """Deterministic registry projection, not a second editable product store."""
+    constraints, references, gaps = {}, {}, []
+    for sku in skus:
+        record = get_product(sku)  # unknown products fail closed
+        constraints[sku] = {
+            key: record.get(key)
+            for key in (
+                "sku",
+                "name",
+                "collection",
+                "garment",
+                "dossier",
+                "logos",
+                "corrections",
+                "authority",
+            )
+        }
+        references[sku] = {
+            "images": record.get("images", {}),
+            "render_sources": record.get("render_sources", {}),
+        }
+        gaps.extend(f"{sku}.{gap}" for gap in record.get("gaps", []))
+        for key in ("color", "fit", "materials", "features"):
+            value = record.get("garment", {}).get(key)
+            if not value or (isinstance(value, dict) and not value.get("specification")):
+                gaps.append(f"{sku}.garment.{key}")
+        if not views:
+            gaps.append(f"{sku}.required_views")
+        for view in views:
+            # Render sources bind the physical design to front/back. A generic
+            # supplemental reference or a different view cannot fill a missing view.
+            if view not in ("front", "back") or not record.get("render_sources", {}).get(view):
+                gaps.append(f"{sku}.render_sources.{view}")
+    if not skus:
+        gaps.append("product.sku")
+    return {
+        "brand": BRAND_NAME,
+        "product_constraints": constraints,
+        "bound_references": references,
+        "creative_direction": prompt,
+        "required_views": list(views),
+        "gaps": sorted(set(gaps)),
+        "brief_status": "incomplete" if gaps else "grounded",
+        "imagery_standard": IMAGERY_STANDARD,
+        "provider_controls": {
+            "seed": "not applicable: no provider selected",
+            "negative_prompt": "not applicable: exclusions are prompt text",
+        },
+        "rules": [
+            "Product constraints govern over creative direction; creative prose is not product authority.",
+            "Corey is the founder and maker. Preserve FOUNDER_CONFIRMED wording, dimensions, ranges, materials, artwork and placements exactly.",
+            "Preserve correction provenance; AGENT_ADDED is not founder confirmation.",
+            "Do not invent missing facts, views, fabric properties, measurements or construction.",
+            "Do not infer fiber composition or dimensions from pixels.",
+            "For scenes, make action, drape, light, contact shadows, scale, perspective and occlusion one photographic event; reject pasted-on subjects.",
+            "A brief is not generation, spending, publishing or founder approval.",
+        ],
+    }
+
+
 class PromptChain:
     """Multi-step prompt refinement pipeline with SkyyRose brand DNA injection."""
 
@@ -153,6 +232,10 @@ class PromptChain:
         intent: str | None = None,
         fashion_context: dict | None = None,
         brand_context: dict | None = None,
+        *,
+        sku: str | None = None,
+        required_views: tuple[str, ...] = (),
+        new_design: bool = False,
     ) -> dict:
         """Run the full 5-stage enhancement chain.
 
@@ -166,6 +249,24 @@ class PromptChain:
         if resolved_intent == "unknown":
             resolved_intent = "product-render"
             context_added.append("defaulted intent to product-render")
+
+        skus = product_skus(prompt, sku)
+        if skus or not new_design:
+            brief = _product_brief(prompt, skus, required_views)
+            # Optional contexts describe creative intent only, never product facts.
+            brief["creative_context"] = {"fashion": fashion_context, "brand": brand_context}
+            return {
+                "enhanced": json.dumps(brief, ensure_ascii=False, indent=2),
+                "intent": resolved_intent,
+                "context_added": [
+                    "bound product facts and references through get_product",
+                    "listed missing facts and view bindings",
+                ],
+                "template_used": "registry-grounded-brief",
+                **brief,
+            }
+        if resolved_intent != "design-ideation":
+            raise ValueError("Generic garment defaults require explicit new-design ideation")
 
         # Pre-compute shared detections (avoid redundant calls across stages)
         garment = _detect_garment_type(prompt)
@@ -197,7 +298,7 @@ class PromptChain:
         template_name = template.name if template else "freeform"
 
         return {
-            "enhanced": optimized,
+            "enhanced": f"NEW DESIGN IDEATION — proposed defaults, not existing product facts.\nImagery standard: {IMAGERY_STANDARD}\nProvider controls: seed and negative_prompt not applicable; no provider selected.\n{optimized}",
             "intent": resolved_intent,
             "context_added": context_added,
             "template_used": template_name,

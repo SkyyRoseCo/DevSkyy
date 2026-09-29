@@ -11,6 +11,8 @@ Handles batch processing, rate limiting, and result reporting.
 
 from __future__ import annotations
 
+import asyncio
+import inspect
 import json
 import re
 import time
@@ -213,12 +215,34 @@ class Coordinator:
         qc_result = self.quality.verify(
             image_path=gen_result.output_path,
             expected_spec=vision_result.unified_spec,
+            sku=sku,
+            view=view,
         )
+
+        if inspect.isawaitable(qc_result):
+            qc_result = asyncio.run(qc_result)
 
         if qc_result.success:
             self.log.ok(f"{qc_result.overall_status} ({qc_result.recommendation})")
         else:
-            self.log.info(f"QC skipped ({qc_result.error})")
+            self.log.info(f"QC blocked ({qc_result.error})")
+
+        if not (
+            qc_result.success
+            and qc_result.overall_status == "pass"
+            and qc_result.recommendation == "approve"
+        ):
+            return ProductionResult(
+                sku=sku,
+                view=view,
+                status="error",
+                step="quality",
+                error=qc_result.error or "Quality gate did not approve candidate",
+                output_path=gen_result.output_path,
+                vision=vision_result,
+                generation=gen_result,
+                quality=qc_result,
+            )
 
         # Step 4: Scene Compositing (optional) — budget-gated paid dispatch
         comp_result = None
