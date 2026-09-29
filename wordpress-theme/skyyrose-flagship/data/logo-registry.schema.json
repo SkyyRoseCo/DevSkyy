@@ -202,7 +202,10 @@
           "properties": {
             "reference": { "type": "string" },
             "front": { "type": ["string", "null"] },
-            "back": { "type": ["string", "null"] }
+            "back": { "type": ["string", "null"] },
+            "techflat_sheet": { "type": "string", "description": "Original repository design sheet; separate from final imagery approval." },
+            "techflat_front": { "type": "string", "description": "Inspected front design view or exact crop of its sheet." },
+            "techflat_back": { "type": "string", "description": "Inspected rear design view or exact crop of its sheet." }
           },
           "additionalProperties": false
         },

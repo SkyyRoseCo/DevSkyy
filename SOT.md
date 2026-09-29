@@ -94,3 +94,21 @@ The check must match the _kind_ of claim (full matrix in `CLAUDE.md` →
 
 _Root SOT registry. Symlinks point at each canonical location — there is exactly
 one copy of each truth._
+
+## Canonical product technical views
+
+All agents, pipelines, and workflows resolve product records through
+`from skyyrose.core.product import get_product` (or `python -m skyyrose.core.product <sku>`).
+The editable source remains root `logo-registry.json`, a symlink to
+`wordpress-theme/skyyrose-flagship/data/logo-registry.json`.
+
+`get_product(sku)["render_sources"]` exposes `techflat_sheet`, `techflat_front`,
+and `techflat_back` when located. These are repository-relative original drawings
+and inspected view crops. `front` and `back` are the effective render inputs and
+may intentionally retain authoritative product photos. Missing technical views
+must remain missing; never infer a back from half of a front or select a beanie
+variant without its identity. Set SKUs require all pieces in each view.
+
+Technical sheet mappings do not supersede later founder corrections or turn a
+historical drawing into final artwork approval. Never use audit receipts, filename
+guesses, generated CSVs, or a parallel map as an editable product authority.
