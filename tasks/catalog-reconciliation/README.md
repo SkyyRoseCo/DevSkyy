@@ -86,3 +86,18 @@ Every row is derived from the current registry snapshot. Full paths, file hashes
 ## Evidence
 
 `overview-before-1.jpg` through `overview-before-6.jpg` show bindings before corrections. `reference-candidates-1.jpg`, `reference-candidates-2.jpg`, and `fallback-review.jpg` capture reviewed candidate/fallback pixels. The screenshots are contact sheets for triage only, not new product assets. inventory.json contains the registry hashes and exact original image paths/hashes for each correction.
+
+## Full-resolution rear review — second pass
+
+Supersedes the overview-only suspicions above. Reviewed six flagged/fallback image files at original-detail request and four source candidates (large images may be resized by the display tool). Evidence: rear-review.json.
+
+- sg-007: cleared the decorated-face rear binding; back now explicitly absent.
+- sg-009: cleared the open-lining rear binding; the existing exterior-back image now resolves through the explicit fallback. This does not certify all garment details.
+- sg-001: the image shows a rear-style welt pocket; do not call it a front view. The pocket conflicts with dossier prose and needs source reconciliation. Product facts and the current binding were retained.
+- sg-003: rear identity remains unresolved; retained binding, no render-source promotion.
+- lh-004: retained composite because the rear artwork panel is visibly included. A dedicated back-only image remains desirable.
+- Four Signature reference candidates inspected; no candidate promoted past unresolved identity/artwork issues.
+
+Current missing storefront back count: 7. Explicit back fallbacks: sg-009 and sg-011. Missing render slots remain 16. No binaries, founder facts, dossiers, corrections, or render sources changed.
+
+All 27 catalog consistency checks and 46 focused tests pass. Earlier frontend environment failures remain unresolved and this is not a full frontend build or deployment acceptance.

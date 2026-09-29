@@ -3957,7 +3957,7 @@
         "image": "assets/images/products/sg-007-signature-beanie.png",
         "front_model_image": "assets/images/products/sg-007-onmodel.webp",
         "back_image": "",
-        "back_model_image": "assets/images/products/signature-beanie-back-model.webp",
+        "back_model_image": "",
         "sizes": "One Size",
         "color": "Black",
         "edition_size": "250",
@@ -4008,10 +4008,6 @@
         "front_model_image": {
           "path": "assets/images/products/sg-007-signature-beanie.webp",
           "resolved": "images/products/sg-007-signature-beanie.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/signature-beanie-back-model.webp",
-          "resolved": "images/products/signature-beanie-back-model.webp"
         }
       },
       "corrections": [
@@ -4053,7 +4049,7 @@
         "image": "assets/images/products/sg-009-sherpa-jacket.jpeg",
         "front_model_image": "assets/images/products/sg-009-onmodel.webp",
         "back_image": "assets/images/products/the-sherpa-jacket-back-model.webp",
-        "back_model_image": "assets/images/products/signature-sherpa-jacket-back-model.webp",
+        "back_model_image": "",
         "sizes": "S|M|L|XL|2XL|3XL",
         "color": "Black",
         "edition_size": "250",
@@ -4113,10 +4109,6 @@
         "back_image": {
           "path": "assets/images/products/the-sherpa-jacket-back-model.webp",
           "resolved": "images/products/the-sherpa-jacket-back-model.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/signature-sherpa-jacket-back-model.webp",
-          "resolved": "images/products/signature-sherpa-jacket-back-model.webp"
         }
       },
       "corrections": [
