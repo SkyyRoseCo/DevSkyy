@@ -20,6 +20,8 @@ joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
 
 ## Founder-confirmed correction
 
+**FOUNDER_CONFIRMED:** Mesh. (Corey, 2026-09-29, verbatim: "the shorts are mesh")
+
 **FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
 
 **Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
