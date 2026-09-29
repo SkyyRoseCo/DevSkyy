@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Focal Points — Plan</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --fg: #f5f5f5;
+        --muted: #b3b3b3;
+        --line: #3a2a2d;
+        --accent: #dc143c;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          16px/1.6 'Hanken Grotesk',
+          system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 48px 16px 96px;
+      }
+      h1 {
+        font-size: 2rem;
+        margin: 0 0 8px;
+      }
+      h2 {
+        font-size: 1.25rem;
+        margin: 48px 0 12px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 8px;
+      }
+      p,
+      li {
+        color: var(--fg);
+      }
+      .muted {
+        color: var(--muted);
+      }
+      code {
+        font-family: ui-monospace, Menlo, monospace;
+        font-size: 0.9em;
+        background: #1a1012;
+        padding: 1px 5px;
+        border-radius: 3px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .done {
+        color: #7ed49a;
+      }
+      .todo {
+        color: var(--muted);
+      }
+      .stop {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .wrap {
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Product focal points — every SKU, every image</h1>
+      <p class="muted">
+        2026-09-27 · branch
+        <code>fix/lh-imagery-bindings</code>
+        · founder direction: the styling pieces (e.g. the Love Hurts script hoodie) stay for branding; the item for sale
+        must be the focal point.
+      </p>
+
+      <section id="goal">
+        <h2>1. Goal and rule</h2>
+        <p>
+          On every selling surface — collection pages, product cards, product pages, lookbooks, feeds — the first thing
+          the eye lands on is the SKU being sold. Styled context (other garments, the room, the model) stays, but
+          second.
+        </p>
+        <ul>
+          <li>
+            <strong>First view:</strong>
+            the on-model image cropped to the item for sale (its
+            <em>focus box</em>
+            ).
+          </li>
+          <li>
+            <strong>Second:</strong>
+            real photographs and packshots (back, flat, detail).
+          </li>
+          <li>
+            <strong>Context:</strong>
+            the full styled frame, shown small ("In the room") or as an alternate view.
+          </li>
+          <li>
+            <strong>Never upscale</strong>
+            a crop past 1.75× its native pixels. Where the crop is too small, the fix is a better source image, not a
+            bigger display.
+          </li>
+        </ul>
+      </section>
+
+      <section id="data">
+        <h2>2. Where the focus box lives</h2>
+        <p>The registry owns image bindings, so it owns the box. One new optional field per image binding:</p>
+        <p>
+          <code>
+            products[sku].images[role].focus = { "x": 0.30, "y": 0.46, "w": 0.38, "h": 0.50, "checked": "2026-09-27" }
+          </code>
+        </p>
+        <ul>
+          <li>
+            Fractions of the frame, so the box survives format siblings (webp/avif/png of the same image) and resizing.
+          </li>
+          <li>
+            Written through a new registry update function
+            <code>update_image_focus(sku, role, box)</code>
+            beside
+            <code>update_catalog_fields</code>
+            in
+            <code>skyyrose/core/product_registry.py</code>
+            : same lock, same validation style (0 ≤ x, y; x + w ≤ 1; y + h ≤ 1; w, h &gt; 0).
+          </li>
+          <li>
+            Projected by
+            <code>get_product()</code>
+            ,
+            <code>data/sot-images.json</code>
+            (
+            <code>python -m skyyrose.core.sot_images</code>
+            ) and the V2 presentation registry, so PHP and JS consumers read it without a second list.
+          </li>
+          <li>
+            If an image is re-bound, its box is dropped in the same write — a box describes one image, never a role.
+          </li>
+        </ul>
+      </section>
+
+      <section id="gate">
+        <h2>3. How a box is verified</h2>
+        <ul>
+          <li>
+            Each box is checked by cropping the actual image to it and looking at the crop: the whole item for sale is
+            inside, and no other product competes. This check can fail, and a failed crop is re-drawn, not accepted.
+          </li>
+          <li>
+            Test (new, in
+            <code>tests/</code>
+            ): every published SKU's
+            <code>front</code>
+            binding has a focus box; every box is inside the frame; the box's native pixel width is reported, and a crop
+            under 400 px wide is listed as
+            <em>low-res</em>
+            , not hidden.
+          </li>
+        </ul>
+      </section>
+
+      <section id="status">
+        <h2>4. Status by SKU (33 published)</h2>
+        <p class="muted">
+          Front-image size from the registry-bound file in this branch. Love Hurts boxes are drawn and crop-checked
+          (they live in
+          <code>_prototype/love-hurts/build_data.py</code>
+          until the registry field exists). Missing roles are the registry's own
+          <code>gaps</code>
+          list.
+        </p>
+        <div class="wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Collection</th>
+                <th>SKUs</th>
+                <th>Front size</th>
+                <th>Focus box</th>
+                <th>Missing image roles</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Love Hurts</td>
+                <td>lh-002, lh-003, lh-004, lh-005, lh-006</td>
+                <td>1024×1536</td>
+                <td class="done">Drawn + crop-checked (5/5)</td>
+                <td>lh-002: back, back packshot (awaiting a verified black back shot)</td>
+              </tr>
+              <tr>
+                <td>Black Rose</td>
+                <td>br-001 … br-012, br-014, br-015 (14)</td>
+                <td>1024×1536; br-002, br-005, br-012 1024×1024</td>
+                <td class="todo">To draw</td>
+                <td>br-008, br-009, br-010: back + back packshot · br-001, br-014, br-015: back packshot</td>
+              </tr>
+              <tr>
+                <td>Signature</td>
+                <td>sg-001 … sg-015 (12)</td>
+                <td>1024×1536; sg-001, sg-002 886×886; sg-007 2048×2048</td>
+                <td class="todo">To draw</td>
+                <td>sg-002, sg-003, sg-005, sg-007, sg-013, sg-014, sg-015: back packshot</td>
+              </tr>
+              <tr>
+                <td>Kids Capsule</td>
+                <td>kids-001, kids-002</td>
+                <td>1024×1536; kids-002 1024×1024</td>
+                <td class="todo">To draw</td>
+                <td>kids-001, kids-002: back packshot</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="phases">
+        <h2>5. Phases</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Work</th>
+              <th>Cost / gate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>
+                Add
+                <code>focus</code>
+                to the registry schema,
+                <code>update_image_focus()</code>
+                , projections, and the coverage test (red until phase 2 fills it).
+              </td>
+              <td>Code only</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>
+                Draw and crop-check boxes for the remaining 28 front images (Black Rose, Signature, Kids), then move the
+                5 Love Hurts boxes from the prototype into the registry.
+              </td>
+              <td>Code only · eyes-on per image</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>
+                Theme consumers: product cards and PDP galleries lead with the focus crop, full frame second;
+                <code>srcset</code>
+                never serves a crop above 1.75× native. Both themes' build steps rebuild
+                <code>.min</code>
+                .
+              </td>
+              <td>
+                Code only; deploy is
+                <span class="stop">STOP-AND-SHOW</span>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>
+                Resolution: every 1024×1536 render yields a 300–450 px crop for small items (shorts, bags).
+                Product-centred higher-resolution sources — real photography, or new OAI gpt-image-2 renders framed on
+                the item — replace the soft crops.
+              </td>
+              <td>
+                Renders are paid:
+                <span class="stop">STOP-AND-SHOW</span>
+                manifest + cost per call
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Live catalog: WooCommerce galleries follow the registry (see §6).</td>
+              <td>
+                <span class="stop">STOP-AND-SHOW</span>
+                per write
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="live">
+        <h2>6. Live fixes found on the way (not executed)</h2>
+        <ul>
+          <li>
+            <strong>lh-002 (Love Hurts Joggers, Black):</strong>
+            the live product page serves
+            <code>love-hurts-joggers-back-model.webp</code>
+            , a picture of the
+            <em>white</em>
+            joggers, as its back view — byte-identical to the file the registry had bound (sha256
+            <code>dbe22667ab46f7af…</code>
+            , checked 2026-09-27). The registry binding is removed on this branch (bug-361). Removing it from the
+            WooCommerce gallery is a live write.
+          </li>
+          <li>
+            <strong>lh-005 (The Fannie):</strong>
+            the real back photograph (
+            <code>assets/products/source-photos/love-hurts/lh-001-fannie-back.jpeg</code>
+            , same 886×886 set as the front packshot) is now bound as
+            <code>back_packshot</code>
+            via
+            <code>assets/images/products/lh-005-fannie-back.jpeg</code>
+            . The live product has no back view; adding it is a Media Library upload plus a WooCommerce write.
+          </li>
+          <li>
+            <strong>lh-002 back shot:</strong>
+            one candidate exists —
+            <code>datasets/skyyrose_lora_v5/images/lh-002-lh-002-back-model.jpg</code>
+            , a real person in black joggers with white side panels and ankle zips. It carries no provenance, so it is
+            bound only after the founder confirms it shows his pair.
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

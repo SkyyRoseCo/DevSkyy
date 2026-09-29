@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Love Hurts — Prototypes</title>
+    <link rel="stylesheet" href="lh.css" />
+    <style>
+      .wrap {
+        padding: 72px var(--lh-gutter);
+      }
+      h1 {
+        margin: 0 0 12px;
+        width: min(380px, 70vw);
+      }
+      .lede {
+        max-width: 64ch;
+        color: var(--lh-muted);
+        margin: 0 0 48px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 24px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .grid a {
+        display: block;
+        text-decoration: none;
+      }
+      .grid a {
+        --focus-vh: 420px;
+      }
+      .grid h2 {
+        font-size: 1.1rem;
+        margin: 14px 0 6px;
+      }
+      .grid p {
+        margin: 0;
+        color: var(--lh-muted);
+        font-size: 0.95rem;
+      }
+      .notes {
+        margin-top: 64px;
+        max-width: 80ch;
+      }
+      .notes h2 {
+        font-size: 1.2rem;
+        margin: 0 0 12px;
+      }
+      .notes li {
+        color: var(--lh-muted);
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>
+        <img
+          src="../../wordpress-theme/skyyrose-flagship/assets/images/hero-overlays/lh-logo-combined.webp"
+          alt="Love Hurts"
+          width="1600"
+          height="900"
+        />
+      </h1>
+      <p class="lede">
+        Five directions for the Love Hurts collection page, built only from real assets: registry product facts,
+        eye-checked garment imagery, the canon lockup, the self-hosted brand fonts and the collection’s own backdrops.
+      </p>
+      <ul class="grid" id="grid"></ul>
+      <section class="notes" aria-labelledby="notes-t">
+        <h2 id="notes-t" class="lh-display">Withheld imagery</h2>
+        <ul id="withheld"></ul>
+      </section>
+    </main>
+    <script src="products.js"></script>
+    <script src="lh.js"></script>
+    <script>
+      (function () {
+        var K = window.LHKit,
+          P = window.LH.products;
+        var variants = [
+          [
+            '01-rose-under-glass.html',
+            '01 — Rose under glass',
+            'Cinematic chapters over the Beauty-and-Beast room.',
+            0,
+          ],
+          ['02-lookbook.html', '02 — Lookbook', 'Magazine spreads; front beside back or the drawing.', 3],
+          ['03-front-and-back.html', '03 — Front & back', 'Each piece turns around: front, back, drawing.', 2],
+          [
+            '04-makers-table.html',
+            '04 — The maker’s table',
+            'Real photographs and drawings first; the room comes second.',
+            2,
+          ],
+          ['05-reel.html', '05 — Reel', 'A sideways walk through the room; stacks on phones.', 4],
+        ];
+        var grid = document.getElementById('grid');
+        variants.forEach(function (v) {
+          var p = P[v[3]];
+          grid.appendChild(
+            K.el('li', {}, [
+              K.el('a', { href: v[0] }, [
+                K.focus(p, { 'aria-hidden': 'true' }),
+                K.el('h2', { class: 'lh-display' }, [v[1]]),
+                K.el('p', {}, [v[2]]),
+              ]),
+            ])
+          );
+        });
+        var w = document.getElementById('withheld');
+        Object.keys(window.LH.withheld).forEach(function (k) {
+          w.appendChild(K.el('li', {}, [K.el('strong', {}, [k + ': ']), window.LH.withheld[k]]));
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -22,7 +22,6 @@ can stand in temporarily — but real photography is the durable fix.
 | `kids-001` | Kids Colorblock Hoodie Set — Red/Black | hoodie | back, three-quarter, detail-hood, detail-pocket |
 | `kids-002` | Kids Colorblock Hoodie Set — Purple/Black | hoodie | back, three-quarter, detail-hood, detail-pocket |
 | `lh-002` | Love Hurts Joggers (Black) | joggers | back, side, detail-pocket |
-| `lh-005` | The Fannie | accessory | back, in-context |
 | `lh-006` | Love Hurts Joggers (White) | joggers | back, side, detail-pocket |
 | `sg-002` | The Bridge Series 'Stay Golden' Shirt | tee | back, three-quarter, detail-graphic |
 | `sg-003` | The Bridge Series 'Stay Golden' Shorts | shorts | back, side, detail-pocket |
@@ -49,6 +48,7 @@ next sourcing pass; not launch-blocking.
 | `br-014` | BLACK is Beautiful Jersey Series: 0. Baseball Classic (Giants) | jersey | three-quarter, detail-patch, detail-stitching |
 | `lh-003` | Love Hurts Basketball Shorts | shorts | detail-pocket |
 | `lh-004` | Love Hurts Bomber Jacket | jacket | three-quarter, detail-hood, detail-pocket |
+| `lh-005` | The Fannie | accessory | in-context |
 | `sg-001` | The Bridge Series 'The Bay Bridge' Shorts | shorts | side, detail-pocket |
 | `sg-011` | Original Label Tee (White) | tee | three-quarter, detail-graphic |
 | `sg-013` | Mint & Lavender Crewneck | crewneck | three-quarter, detail-graphic |

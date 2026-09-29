@@ -855,14 +855,6 @@
             "front_model_image": {
               "path": "assets/images/products/lh-002-onmodel.webp",
               "resolved": "images/products/lh-002-onmodel.webp"
-            },
-            "back_image": {
-              "path": "assets/images/products/love-hurts-joggers-back-model.webp",
-              "resolved": "images/products/love-hurts-joggers-back-model.webp"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/love-hurts-joggers-back-model.webp",
-              "resolved": "images/products/love-hurts-joggers-back-model.webp"
             }
           },
           "dossier": "data/dossiers/love-hurts-joggers.md",
@@ -940,6 +932,10 @@
             "back_model_image": {
               "path": "assets/images/products/the-fannie-back-model.webp",
               "resolved": "images/products/the-fannie-back-model.webp"
+            },
+            "back_image": {
+              "path": "assets/images/products/lh-005-fannie-back.jpeg",
+              "resolved": "images/products/lh-005-fannie-back.jpeg"
             }
           },
           "dossier": "data/dossiers/the-fannie.md",

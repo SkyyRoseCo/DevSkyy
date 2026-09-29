@@ -6,15 +6,15 @@ Scans `assets/products/source-photos/` and `wordpress-theme/skyyrose-flagship/as
 ## Summary
 
 - Total active SKUs: **33**
-- Compositor-ready (front+back present): **12**
-- Compositor-blocked: **21**
+- Compositor-ready (front+back present): **13**
+- Compositor-blocked: **20**
 - Full required-angle coverage: **0**
 
 ### By source type
 
-- Photography: **12**
+- Photography: **13**
 - Techflat stand-in: **0**
-- Missing: **21**
+- Missing: **20**
 
 ## Per-SKU Coverage
 
@@ -39,7 +39,7 @@ Scans `assets/products/source-photos/` and `wordpress-theme/skyyrose-flagship/as
 | `lh-002` | Love Hurts Joggers (Black) | joggers | 4 | 1 | 3 | ✗ | missing |
 | `lh-003` | Love Hurts Basketball Shorts | shorts | 4 | 3 | 1 | ✓ | photography |
 | `lh-004` | Love Hurts Bomber Jacket | jacket | 5 | 2 | 3 | ✓ | photography |
-| `lh-005` | The Fannie | accessory | 3 | 1 | 2 | ✗ | missing |
+| `lh-005` | The Fannie | accessory | 3 | 2 | 1 | ✓ | photography |
 | `lh-006` | Love Hurts Joggers (White) | joggers | 4 | 1 | 3 | ✗ | missing |
 | `sg-001` | The Bridge Series 'The Bay Bridge' Shorts | shorts | 4 | 2 | 2 | ✓ | photography |
 | `sg-002` | The Bridge Series 'Stay Golden' Shirt | tee | 4 | 1 | 3 | ✗ | missing |

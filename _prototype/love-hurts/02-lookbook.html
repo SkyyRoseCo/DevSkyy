@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Love Hurts — Lookbook</title>
+    <link rel="stylesheet" href="lh.css" />
+    <style>
+      .cover {
+        min-height: 100svh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .cover__img {
+        position: relative;
+        overflow: hidden;
+      }
+      .cover__img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 25%;
+      }
+      .cover__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 96px var(--lh-gutter) 48px;
+        background: var(--lh-black);
+      }
+      .cover__issue {
+        display: flex;
+        justify-content: space-between;
+      }
+      .cover h1 {
+        font-size: clamp(3.4rem, 9vw, 9rem);
+        margin: 0;
+      }
+      .cover h1 span {
+        display: block;
+        color: var(--lh-crimson);
+      }
+      .cover__dek {
+        max-width: 44ch;
+        margin: 24px 0 0;
+        color: var(--lh-muted);
+      }
+
+      .spread {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 24px;
+        padding: 14vh var(--lh-gutter);
+        align-items: end;
+        border-top: 1px solid rgba(220, 20, 60, 0.25);
+      }
+      .spread__big {
+        grid-column: 1 / span 7;
+      }
+      .spread__small {
+        grid-column: 9 / span 4;
+      }
+      .spread--flip .spread__big {
+        grid-column: 6 / span 7;
+        grid-row: 1;
+      }
+      .spread--flip .spread__small {
+        grid-column: 1 / span 4;
+        grid-row: 1;
+      }
+      .spread figure {
+        margin: 0;
+      }
+      .spread__big {
+        --focus-vh: 82svh;
+      }
+      .spread__big .lh-focus {
+        margin: 0 auto;
+      }
+      .spread__big figcaption {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .spread__small figure > img {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        background: #111;
+      }
+      .spread figcaption {
+        margin-top: 12px;
+      }
+      .spread__num {
+        font-size: clamp(6rem, 16vw, 15rem);
+        color: transparent;
+        -webkit-text-stroke: 1px var(--lh-crimson);
+        margin: 0 0 -0.12em;
+      }
+      .spread__name {
+        font-size: clamp(1.8rem, 3.4vw, 3rem);
+        margin: 18px 0 14px;
+      }
+      .spread__copy {
+        margin: 0 0 20px;
+      }
+      .spread__meta {
+        display: flex;
+        gap: 24px;
+        align-items: baseline;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+      }
+      .spread__price {
+        font-family: var(--lh-display);
+        font-variation-settings: 'wdth' 125;
+        font-weight: 700;
+        font-size: 1.4rem;
+      }
+      .spread__quote {
+        font-size: clamp(1.6rem, 3vw, 2.6rem);
+        color: var(--lh-text);
+        margin: 0 0 16px;
+      }
+
+      .pull {
+        padding: 16vh var(--lh-gutter);
+        text-align: center;
+      }
+      .pull p {
+        font-size: clamp(2.4rem, 7vw, 6.4rem);
+        margin: 0;
+      }
+
+      @media (max-width: 860px) {
+        .cover {
+          grid-template-columns: 1fr;
+        }
+        .cover__img {
+          aspect-ratio: 2 / 3;
+        }
+        .spread,
+        .spread--flip {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 72px var(--lh-gutter);
+        }
+        .spread__big,
+        .spread__small,
+        .spread--flip .spread__big,
+        .spread--flip .spread__small {
+          grid-column: 1;
+          grid-row: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="lh-skip" href="#main">Skip to the collection</a>
+    <main id="main">
+      <section class="cover" aria-label="Cover">
+        <div class="cover__img"><img id="cover-img" alt="" fetchpriority="high" /></div>
+        <div class="cover__text">
+          <div class="cover__issue">
+            <span class="lh-caps">SkyyRose</span>
+            <span class="lh-caps lh-muted">Collection 03 — The Grief</span>
+          </div>
+          <div>
+            <h1 class="lh-display">
+              This isn’t a theme.
+              <span>It’s a family name.</span>
+            </h1>
+            <p class="cover__dek">
+              “Hurts” is the bloodline that raised the founder. Five pieces for the people who kept loving when love
+              didn’t love them back.
+            </p>
+          </div>
+          <span class="lh-caps lh-muted">Scroll the book ↓</span>
+        </div>
+      </section>
+      <div id="spreads"></div>
+      <section class="pull" aria-label="Closing line">
+        <p class="lh-script lh-reveal">
+          Wear your heart.
+          <br />
+          Own your scars.
+        </p>
+      </section>
+    </main>
+    <footer class="lh-footer">
+      <span class="lh-caps">Hurts is the bloodline that raised me.</span>
+      <div id="proto-nav"></div>
+    </footer>
+    <script src="products.js"></script>
+    <script src="lh.js"></script>
+    <script>
+      (function () {
+        var K = window.LHKit,
+          P = window.LH.products;
+        var lh004 = P.filter(function (p) {
+          return p.sku === 'lh-004';
+        })[0];
+        var cover = document.getElementById('cover-img');
+        cover.src = lh004.images.front;
+        cover.alt = K.alt(lh004, 'front');
+
+        var captions = {
+          'lh-002': 'They called me Beast. They were right.',
+          'lh-005': 'Love hurts, baby. That’s how you know it’s real.',
+        };
+
+        function second(p) {
+          if (p.images.back) return K.img(p, 'back');
+          if (p.reference)
+            return K.el('img', { src: p.reference, alt: p.name + ' — technical drawing', loading: 'lazy' });
+          return null;
+        }
+
+        P.forEach(function (p, i) {
+          var num = String(i + 1).padStart(2, '0');
+          var side = second(p);
+          var text = K.el('div', { class: 'lh-reveal' }, [
+            K.el('p', { class: 'spread__num lh-display', 'aria-hidden': 'true' }, [num]),
+            captions[p.sku] ? K.el('p', { class: 'spread__quote lh-script' }, [captions[p.sku]]) : null,
+            K.el('h2', { class: 'spread__name lh-display' }, [p.name]),
+            K.el('p', { class: 'spread__copy lh-muted' }, [K.copy(p)]),
+            K.el('div', { class: 'spread__meta' }, [
+              K.el('span', { class: 'spread__price' }, [K.price(p)]),
+              K.el('span', { class: 'lh-caps lh-muted' }, [p.color + ' · ' + K.sizes(p)]),
+              p.preorder ? K.el('span', { class: 'lh-status' }, ['Pre-Order']) : null,
+            ]),
+            K.viewLink(p),
+          ]);
+          var small = K.el('div', { class: 'spread__small' }, [
+            side
+              ? K.el('figure', {}, [
+                  side,
+                  K.el('figcaption', { class: 'lh-caps lh-muted' }, [p.images.back ? 'Back' : 'The drawing']),
+                ])
+              : null,
+            text,
+          ]);
+          var big = K.el('figure', { class: 'spread__big' }, [
+            K.focus(p),
+            K.el('figcaption', {}, [K.el('span', { class: 'lh-caps lh-muted' }, [num + ' — ' + p.name]), K.context(p)]),
+          ]);
+          document
+            .getElementById('spreads')
+            .appendChild(
+              K.el('section', { class: 'spread' + (i % 2 ? ' spread--flip' : ''), 'aria-label': p.name }, [big, small])
+            );
+        });
+        document.getElementById('proto-nav').appendChild(K.protoNav('02-lookbook.html'));
+        K.reveal();
+      })();
+    </script>
+  </body>
+</html>

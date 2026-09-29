@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Love Hurts — The Maker's Table</title>
+    <link rel="stylesheet" href="lh.css" />
+    <style>
+      .open {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100svh;
+      }
+      .open__photo {
+        position: relative;
+        overflow: hidden;
+      }
+      .open__photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 60%;
+        filter: saturate(0.9) contrast(1.05);
+      }
+      .open__photo figcaption {
+        position: absolute;
+        left: 20px;
+        bottom: 16px;
+        background: rgba(10, 10, 10, 0.75);
+        padding: 8px 12px;
+      }
+      .open__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 24px;
+        padding: 96px var(--lh-gutter);
+      }
+      .open__text h1 {
+        font-size: clamp(2.6rem, 6vw, 6rem);
+        margin: 0;
+      }
+      .open__text h1 em {
+        font-style: normal;
+        color: var(--lh-crimson);
+      }
+      .open__text p {
+        max-width: 48ch;
+        margin: 0;
+      }
+
+      .row {
+        padding: 12vh var(--lh-gutter);
+        border-top: 1px solid rgba(220, 20, 60, 0.25);
+      }
+      .row__head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .row__head h2 {
+        font-size: clamp(1.8rem, 3.6vw, 3.2rem);
+        margin: 0;
+      }
+      .row__pair {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: clamp(16px, 3vw, 48px);
+        align-items: center;
+      }
+      .row__pair figure {
+        margin: 0;
+      }
+      .row__pair .draw {
+        background: #ededed;
+        padding: 24px;
+        aspect-ratio: 4 / 5;
+        display: grid;
+        place-items: center;
+      }
+      .row__pair .draw img {
+        max-height: 100%;
+        object-fit: contain;
+      }
+      .row__pair .made > img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        object-position: 50% 30%;
+      }
+      .row__pair .made {
+        --focus-vh: 70svh;
+      }
+      .row__pair .made .lh-focus {
+        margin: 0 auto;
+      }
+      .row__pair figcaption {
+        margin-top: 12px;
+      }
+      .arrow {
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        color: var(--lh-crimson);
+      }
+      .row__foot {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      .row__price {
+        font-family: var(--lh-display);
+        font-variation-settings: 'wdth' 125;
+        font-weight: 700;
+        font-size: 1.4rem;
+      }
+      .row__copy {
+        max-width: 70ch;
+        margin: 24px 0 0;
+        color: var(--lh-muted);
+      }
+
+      .single {
+        display: grid;
+        grid-template-columns: minmax(0, 520px) 1fr;
+        gap: clamp(24px, 5vw, 72px);
+        align-items: center;
+      }
+      .single {
+        --focus-vh: 72svh;
+      }
+
+      .coda {
+        padding: 16vh var(--lh-gutter);
+        text-align: center;
+      }
+      .coda p {
+        font-size: clamp(1.8rem, 5vw, 4.4rem);
+        margin: 0 auto;
+        max-width: 18ch;
+      }
+
+      @media (max-width: 860px) {
+        .open {
+          grid-template-columns: 1fr;
+        }
+        .open__photo {
+          aspect-ratio: 3 / 4;
+        }
+        .row {
+          padding: 64px var(--lh-gutter);
+        }
+        .row__pair {
+          grid-template-columns: 1fr;
+        }
+        .arrow {
+          transform: rotate(90deg);
+          justify-self: center;
+        }
+        .single {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="lh-skip" href="#main">Skip to the pieces</a>
+    <main id="main">
+      <section class="open" aria-labelledby="open-title">
+        <figure class="open__photo" style="margin: 0">
+          <img
+            id="real-shorts"
+            alt="Love Hurts Basketball Shorts laid flat on a couch, back view — a real photograph"
+          />
+          <figcaption class="lh-caps">A real photograph, not a render.</figcaption>
+        </figure>
+        <div class="open__text">
+          <span class="lh-caps lh-muted">Collection 03 — The Grief</span>
+          <h1 id="open-title" class="lh-display">
+            From the drawing
+            <em>to the thing you wear.</em>
+          </h1>
+          <p>
+            Before the castle and the candles, there’s the drawing and the garment. This is the Love Hurts collection
+            shown the honest way: technical drawings beside the finished pieces.
+          </p>
+          <p class="lh-script" style="font-size: clamp(1.6rem, 3vw, 2.4rem); margin: 0">
+            Hurts is the bloodline that raised me.
+          </p>
+        </div>
+      </section>
+      <div id="rows"></div>
+      <section class="coda" aria-label="Closing">
+        <p class="lh-display lh-reveal">Love hurts, baby. That’s how you know it’s real.</p>
+      </section>
+    </main>
+    <footer class="lh-footer">
+      <span class="lh-caps lh-muted">She wasn’t being poetic. She was teaching survival.</span>
+      <div id="proto-nav"></div>
+    </footer>
+    <script src="products.js"></script>
+    <script src="lh.js"></script>
+    <script>
+      (function () {
+        var K = window.LHKit,
+          P = window.LH.products;
+        var bySku = {};
+        P.forEach(function (p) {
+          bySku[p.sku] = p;
+        });
+        var real = document.getElementById('real-shorts');
+        real.src = bySku['lh-003'].images.back_packshot;
+
+        function head(p) {
+          return K.el('div', { class: 'row__head' }, [
+            K.el('h2', { class: 'lh-display' }, [p.name]),
+            K.el('span', { class: 'lh-caps lh-muted' }, [p.color + ' · ' + K.sizes(p)]),
+          ]);
+        }
+        function foot(p) {
+          return K.el('div', { class: 'row__foot' }, [
+            K.el('span', { class: 'row__price' }, [K.price(p)]),
+            p.preorder ? K.el('span', { class: 'lh-status' }, ['Pre-Order']) : null,
+            K.viewLink(p),
+          ]);
+        }
+
+        P.forEach(function (p) {
+          var row;
+          if (p.reference) {
+            /* lh-004's drawing is the back, so pair it with the back photograph. */
+            var madeRole = p.sku === 'lh-004' ? 'back' : 'front';
+            row = K.el('section', { class: 'row', 'aria-label': p.name }, [
+              head(p),
+              K.el('div', { class: 'row__pair lh-reveal' }, [
+                K.el('figure', {}, [
+                  K.el('div', { class: 'draw' }, [
+                    K.el('img', { src: p.reference, alt: p.name + ' — technical drawing', loading: 'lazy' }),
+                  ]),
+                  K.el('figcaption', { class: 'lh-caps lh-muted' }, ['The drawing']),
+                ]),
+                K.el('span', { class: 'arrow lh-display', 'aria-hidden': 'true' }, ['→']),
+                K.el('figure', { class: 'made' }, [
+                  madeRole === 'back' ? K.img(p, 'back') : K.focus(p),
+                  K.el('figcaption', { class: 'lh-caps lh-muted' }, [
+                    madeRole === 'back' ? 'The back, photographed' : 'Rendered on a model, cropped to the piece',
+                  ]),
+                ]),
+              ]),
+              K.el('p', { class: 'row__copy' }, [K.copy(p)]),
+              foot(p),
+            ]);
+          } else {
+            row = K.el('section', { class: 'row', 'aria-label': p.name }, [
+              head(p),
+              K.el('div', { class: 'single lh-reveal' }, [
+                K.el('figure', { style: 'margin:0' }, [
+                  K.focus(p),
+                  K.el('figcaption', { class: 'lh-caps lh-muted', style: 'margin-top:12px' }, [
+                    'Rendered on a model, cropped to the piece',
+                  ]),
+                ]),
+                K.el('div', {}, [
+                  K.el('p', {}, [K.copy(p)]),
+                  K.el('p', { class: 'lh-muted' }, [p.branding]),
+                  p.images.back_packshot
+                    ? K.el('figure', { style: 'margin:24px 0' }, [
+                        K.img(p, 'back_packshot', { style: 'max-width:360px' }),
+                        K.el('figcaption', { class: 'lh-caps lh-muted', style: 'margin-top:10px' }, [
+                          'The back, photographed',
+                        ]),
+                      ])
+                    : null,
+                  foot(p),
+                ]),
+              ]),
+            ]);
+          }
+          document.getElementById('rows').appendChild(row);
+        });
+        document.getElementById('proto-nav').appendChild(K.protoNav('04-makers-table.html'));
+        K.reveal();
+      })();
+    </script>
+  </body>
+</html>
