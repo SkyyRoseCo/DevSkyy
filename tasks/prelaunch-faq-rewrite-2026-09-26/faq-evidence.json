@@ -1,0 +1,551 @@
+{
+  "page_id": 9711,
+  "route": "/faq/",
+  "generated": "2026-09-26",
+  "parse_check": {
+    "branch": "details",
+    "entries": 22,
+    "mis_parses": 0
+  },
+  "entries": [
+    {
+      "category": "Orders and pre-orders",
+      "question": "How do pre-orders work?",
+      "answer_text": "A pre-order is charged in full at checkout, not when it ships. Pre-order pieces ship separately from any in-stock pieces in the same order, so you may get more than one shipment and tracking number. Full terms are in our Shipping Policy.",
+      "answer_html": "A pre-order is charged in full at checkout, not when it ships. Pre-order pieces ship separately from any in-stock pieces in the same order, so you may get more than one shipment and tracking number. Full terms are in our <a href=\"/shipping-returns/\">Shipping Policy</a>.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Your card is charged in full at the time of pre-order, not at the time of shipment."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Pre-order items ship separately from any in-stock items included in the same order. You may receive multiple shipments and tracking numbers for a single order containing both in-stock and pre-order items."
+        }
+      ]
+    },
+    {
+      "category": "Orders and pre-orders",
+      "question": "When will my pre-order ship?",
+      "answer_text": "Each pre-order piece has its own estimated ship date rather than a fixed window after a collection launch, and that date is an estimate that can change. For the current estimate on a piece, ask us through the Contact page before you order. We email you a tracking number when it ships.",
+      "answer_html": "Each pre-order piece has its own estimated ship date rather than a fixed window after a collection launch, and that date is an estimate that can change. For the current estimate on a piece, ask us through the <a href=\"/contact/\">Contact page</a> before you order. We email you a tracking number when it ships.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "The estimated ship date for each pre-order item is displayed on the product page at the time of purchase. These dates are estimates and may be subject to change due to production, supply chain, or logistics factors."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "You will receive an email notification when your pre-order item has been dispatched, including a tracking number."
+        }
+      ]
+    },
+    {
+      "category": "Orders and pre-orders",
+      "question": "Can I cancel a pre-order?",
+      "answer_text": "You can cancel a pre-order for a full refund up to 48 hours before its estimated ship date by contacting us with your order number. After that, the order can’t be cancelled, and our standard return policy applies once it’s delivered.",
+      "answer_html": "You can cancel a pre-order for a full refund up to 48 hours before its estimated ship date by contacting us with your order number. After that, the order can’t be cancelled, and our standard <a href=\"/refund-policy/\">return policy</a> applies once it’s delivered.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "You may cancel a pre-order for a full refund up to 48 hours before the estimated ship date shown in your order confirmation."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Once the 48-hour pre-cancellation window has passed, your order enters production or fulfillment and can no longer be cancelled before shipment. After your pre-order is delivered, the standard return policy set out in this document applies in full."
+        }
+      ]
+    },
+    {
+      "category": "Orders and pre-orders",
+      "question": "How long does it take to process my order?",
+      "answer_text": "Orders are processed within 1–3 business days after payment is confirmed. During new collection drops and major holidays, processing can take up to 5 business days. Carrier transit time comes after processing; see our Shipping Policy.",
+      "answer_html": "Orders are processed within 1–3 business days after payment is confirmed. During new collection drops and major holidays, processing can take up to 5 business days. Carrier transit time comes after processing; see our <a href=\"/shipping-returns/\">Shipping Policy</a>.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "All orders are processed within 1–3 business days (Monday through Friday, excluding US federal holidays) from the date payment is confirmed. During new collection drops or major holiday periods (e.g., Black Friday/Cyber Monday, Christmas), processing may extend to up to 5 business days due to elevated order volume."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Processing time is separate from and in addition to the carrier transit times listed in the sections below."
+        }
+      ]
+    },
+    {
+      "category": "Orders and pre-orders",
+      "question": "What payment methods do you accept?",
+      "answer_text": "We accept payment through Stripe and PayPal, and all prices are charged in US dollars. See our Terms of Service for the full order terms.",
+      "answer_html": "We accept payment through Stripe and PayPal, and all prices are charged in US dollars. See our <a href=\"/terms-of-service/\">Terms of Service</a> for the full order terms.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "9718 /terms-of-service/ (Terms of Service)",
+          "quote": "All prices on the Site are displayed and charged in US Dollars (USD). We accept payment via Stripe and PayPal."
+        }
+      ]
+    },
+    {
+      "category": "Sizing and fit",
+      "question": "What sizes do you carry?",
+      "answer_text": "Most adult pieces come in S–3XL. A few run differently: The Bridge Series 'Stay Golden' Shirt comes in XS–2XL, The Bridge Series 'The Bay Bridge' Shirt comes in S–2XL, and The Fannie and The Signature Beanie are One Size. The sizes for each piece are listed on its product page, and our Size Guide explains how to choose.",
+      "answer_html": "Most adult pieces come in S–3XL. A few run differently: The Bridge Series 'Stay Golden' Shirt comes in XS–2XL, The Bridge Series 'The Bay Bridge' Shirt comes in S–2XL, and The Fannie and The Signature Beanie are One Size. The sizes for each piece are listed on its product page, and our <a href=\"/size-guide/\">Size Guide</a> explains how to choose.",
+      "sources": [
+        {
+          "kind": "registry",
+          "ref": "aggregate: products[*].catalog.sizes where catalog.published == '1'",
+          "quote": "27 of 29 published adult sized SKUs = S|M|L|XL|2XL|3XL; 2T|3T|4T|5|6|7: kids-001, kids-002; One Size: lh-005, sg-007; S|M|L|XL|2XL: sg-005; XS|S|M|L|XL|2XL: sg-002"
+        },
+        {
+          "kind": "registry",
+          "ref": "products[sg-002].catalog.sizes",
+          "quote": "XS|S|M|L|XL|2XL"
+        },
+        {
+          "kind": "registry",
+          "ref": "products[sg-005].catalog.sizes",
+          "quote": "S|M|L|XL|2XL"
+        },
+        {
+          "kind": "registry",
+          "ref": "products[lh-005].catalog.sizes",
+          "quote": "One Size"
+        },
+        {
+          "kind": "registry",
+          "ref": "products[sg-007].catalog.sizes",
+          "quote": "One Size"
+        }
+      ]
+    },
+    {
+      "category": "Sizing and fit",
+      "question": "What sizes does the Kids Capsule come in?",
+      "answer_text": "The Kids Colorblock Hoodie Set, in Red/Black and Purple/Black, comes in 2T, 3T, 4T, 5, 6, and 7. Our Size Guide explains how to compare against a piece your child already wears.",
+      "answer_html": "The Kids Colorblock Hoodie Set, in Red/Black and Purple/Black, comes in 2T, 3T, 4T, 5, 6, and 7. Our <a href=\"/size-guide/\">Size Guide</a> explains how to compare against a piece your child already wears.",
+      "sources": [
+        {
+          "kind": "registry",
+          "ref": "products[kids-001].catalog.sizes",
+          "quote": "2T|3T|4T|5|6|7"
+        },
+        {
+          "kind": "registry",
+          "ref": "products[kids-002].catalog.sizes",
+          "quote": "2T|3T|4T|5|6|7"
+        }
+      ]
+    },
+    {
+      "category": "Sizing and fit",
+      "question": "How do I choose my size?",
+      "answer_text": "Our Size Guide shows you how to lay a similar piece you already own flat and compare it. If you’re between sizes or unsure, send us your question through the Contact page before you order.",
+      "answer_html": "Our <a href=\"/size-guide/\">Size Guide</a> shows you how to lay a similar piece you already own flat and compare it. If you’re between sizes or unsure, send us your question through the <a href=\"/contact/\">Contact page</a> before you order.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "10409 /size-guide/ (Size Guide)",
+          "quote": "Lay a similar garment flat without stretching it."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10409 /size-guide/ (Size Guide)",
+          "quote": "Client Services can help compare measurements before purchase."
+        }
+      ]
+    },
+    {
+      "category": "Shipping",
+      "question": "Where do you ship?",
+      "answer_text": "We ship across the United States, including Alaska and Hawaii, and to 40+ countries. International shipping is calculated at checkout from your destination and the size and weight of your order, and you’ll see the exact cost before you pay. Details are in our Shipping Policy.",
+      "answer_html": "We ship across the United States, including Alaska and Hawaii, and to 40+ countries. International shipping is calculated at checkout from your destination and the size and weight of your order, and you’ll see the exact cost before you pay. Details are in our <a href=\"/shipping-returns/\">Shipping Policy</a>.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "orders delivered within the contiguous United States, Alaska, and Hawaii"
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "SkyyRose ships to 40+ countries worldwide. Shipping rates for international orders are calculated dynamically at checkout based on the destination country and the total weight and dimensions of your order. You will see the exact shipping cost before completing your purchase."
+        }
+      ]
+    },
+    {
+      "category": "Shipping",
+      "question": "How much does US shipping cost?",
+      "answer_text": "Standard shipping (5–7 business days) is $17 and Express shipping (2–3 business days) is $22. Standard shipping is free on orders of $200.00 or more before taxes. Delivery estimates start once your order ships; see our Shipping Policy for details.",
+      "answer_html": "Standard shipping (5–7 business days) is $17 and Express shipping (2–3 business days) is $22. Standard shipping is free on orders of $200.00 or more before taxes. Delivery estimates start once your order ships; see our <a href=\"/shipping-returns/\">Shipping Policy</a> for details.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Standard Shipping 5–7 business days $17"
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Express Shipping 2–3 business days $22"
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Free Standard Shipping 5–7 business days Free on orders $200.00 or more (before taxes)"
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Delivery time estimates begin on the day of shipment (after processing) and are provided by the carrier."
+        }
+      ]
+    },
+    {
+      "category": "Shipping",
+      "question": "Will I pay customs or import duties?",
+      "answer_text": "Orders shipped outside the US may be charged import duties, customs fees, or taxes by the destination country. Those charges are the recipient’s responsibility and are not included in the shipping cost shown at checkout, as set out in our Shipping Policy.",
+      "answer_html": "Orders shipped outside the US may be charged import duties, customs fees, or taxes by the destination country. Those charges are the recipient’s responsibility and are not included in the shipping cost shown at checkout, as set out in our <a href=\"/shipping-returns/\">Shipping Policy</a>.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "When an order is shipped to a destination outside the United States, it may be subject to import duties, customs fees, value-added tax (VAT), goods and services tax (GST), or other charges levied by the destination country. These charges are the sole responsibility of the recipient."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "These amounts are not included in the shipping cost displayed at checkout or charged at the time of purchase."
+        }
+      ]
+    },
+    {
+      "category": "Shipping",
+      "question": "How do I track my order?",
+      "answer_text": "When your order ships, you’ll get a confirmation email with your tracking number and a link to the carrier’s tracking page. You can also sign in to your account and check the order status under My Orders. Our Shipping Policy covers tracking in full.",
+      "answer_html": "When your order ships, you’ll get a confirmation email with your tracking number and a link to the carrier’s tracking page. You can also sign in to your account and check the order status under My Orders. Our <a href=\"/shipping-returns/\">Shipping Policy</a> covers tracking in full.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Once your order has been shipped, you will receive a shipping confirmation email containing your tracking number and a direct link to the carrier’s tracking portal."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Log in to your account on skyyrose.co and view the order status under My Orders."
+        }
+      ]
+    },
+    {
+      "category": "Shipping",
+      "question": "What if my package is lost, or marked delivered but not received?",
+      "answer_text": "Check your shipping address and every spot a carrier might leave it. If it still hasn’t turned up, contact us with your order number and tracking number. For a package marked Delivered, reach out within 7 days of that date so we can start a carrier claim.",
+      "answer_html": "Check your shipping address and every spot a carrier might leave it. If it still hasn’t turned up, <a href=\"/contact/\">contact us</a> with your order number and tracking number. For a package marked Delivered, reach out within 7 days of that date so we can start a carrier claim.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Verify the shipping address on your order confirmation matches your intended delivery address."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "Contact us at support@skyyrose.co with your order number and tracking number. We will open an investigation with the carrier on your behalf."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "contact us at support@skyyrose.co within 7 days of the marked delivery date so we can initiate a carrier claim."
+        }
+      ]
+    },
+    {
+      "category": "Returns and exchanges",
+      "question": "What is your return policy?",
+      "answer_text": "You can return eligible pieces within 30 days of confirmed delivery. They must be unworn, unwashed, and unaltered, with all original tags attached, in their original packaging. Read our full return policy before you send anything back.",
+      "answer_html": "You can return eligible pieces within 30 days of confirmed delivery. They must be unworn, unwashed, and unaltered, with all original tags attached, in their original packaging. Read our full <a href=\"/refund-policy/\">return policy</a> before you send anything back.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "We accept returns on eligible items within 30 days of the confirmed delivery date shown in your shipping confirmation."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10406 /returns-exchanges/ (Returns + Exchanges)",
+          "quote": "Eligible returns must be requested within 30 days of confirmed delivery and meet the policy’s unworn, unwashed, unaltered, tagged, and original-packaging requirements."
+        }
+      ]
+    },
+    {
+      "category": "Returns and exchanges",
+      "question": "How do I start a return?",
+      "answer_text": "Contact us through the Contact page before you ship anything. Include your order number, the email used at checkout, the piece and size, and a brief reason, but never payment-card details. For US orders, we send you a prepaid USPS return label.",
+      "answer_html": "Contact us through the <a href=\"/contact/\">Contact page</a> before you ship anything. Include your order number, the email used at checkout, the piece and size, and a brief reason, but never payment-card details. For US orders, we send you a prepaid USPS return label.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "10406 /returns-exchanges/ (Returns + Exchanges)",
+          "quote": "Start with Client Services before shipping anything."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10406 /returns-exchanges/ (Returns + Exchanges)",
+          "quote": "Send the order number, the email used at checkout, the piece and size, and a brief reason for the request. Do not email payment-card details."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "with a prepaid USPS return shipping label attached"
+        }
+      ]
+    },
+    {
+      "category": "Returns and exchanges",
+      "question": "Can I exchange for a different size or color?",
+      "answer_text": "US exchanges for a different size or color of the same style are free: we confirm the replacement is available and send a prepaid USPS label, and you ship the original back within 14 days of receiving it. International customers pay return shipping to our US facility, and the replacement ships at no additional charge after inspection. The full steps are on Returns and Exchanges.",
+      "answer_html": "US exchanges for a different size or color of the same style are free: we confirm the replacement is available and send a prepaid USPS label, and you ship the original back within 14 days of receiving it. International customers pay return shipping to our US facility, and the replacement ships at no additional charge after inspection. The full steps are on <a href=\"/returns-exchanges/\">Returns and Exchanges</a>.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "10406 /returns-exchanges/ (Returns + Exchanges)",
+          "quote": "US exchanges for a different size or color of the same style are free. Client Services confirms replacement availability, sends a prepaid USPS return label, and the original item must be shipped within 14 days of receiving that label."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10406 /returns-exchanges/ (Returns + Exchanges)",
+          "quote": "International customers pay return shipping to the US facility; after inspection, an eligible replacement ships at no additional charge."
+        }
+      ]
+    },
+    {
+      "category": "Returns and exchanges",
+      "question": "When will I get my refund?",
+      "answer_text": "Approved refunds go back to your original payment method within 5–7 business days of when we receive and inspect your return. Your bank may take longer to post it, so allow up to 10 business days in total. Original shipping costs are not refunded unless the item arrived damaged, defective, or incorrect; see our return policy.",
+      "answer_html": "Approved refunds go back to your original payment method within 5–7 business days of when we receive and inspect your return. Your bank may take longer to post it, so allow up to 10 business days in total. Original shipping costs are not refunded unless the item arrived damaged, defective, or incorrect; see our <a href=\"/refund-policy/\">return policy</a>.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Approved refunds are issued to the original payment method used at checkout within 5–7 business days of our receipt and inspection of the returned item."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "please allow up to 10 business days total before contacting us."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Original outbound shipping costs are non-refundable, except in cases where the item arrived damaged, defective, or materially different from what was ordered"
+        }
+      ]
+    },
+    {
+      "category": "Returns and exchanges",
+      "question": "What can’t be returned?",
+      "answer_text": "Final Sale items, pieces that have been worn, washed, or altered, items without their original tags, gift cards, and customized or personalized pieces can’t be returned or exchanged, unless they arrive damaged, defective, or incorrect. The full list is in our return policy.",
+      "answer_html": "Final Sale items, pieces that have been worn, washed, or altered, items without their original tags, gift cards, and customized or personalized pieces can’t be returned or exchanged, unless they arrive damaged, defective, or incorrect. The full list is in our <a href=\"/refund-policy/\">return policy</a>.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "The following items are not eligible for return or exchange under any circumstances, unless they arrive damaged, defective, or incorrect"
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Final Sale items — any item marked"
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Gift cards — digital and physical gift cards are non-refundable"
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Customized or personalized pieces"
+        }
+      ]
+    },
+    {
+      "category": "Returns and exchanges",
+      "question": "My order arrived damaged, defective, or wrong. What do I do?",
+      "answer_text": "Contact us within 7 days of confirmed delivery with your order number and clear photos of the issue. We’ll make it right at no cost to you, with a replacement or a full refund that includes original shipping.",
+      "answer_html": "<a href=\"/contact/\">Contact us</a> within 7 days of confirmed delivery with your order number and clear photos of the issue. We’ll make it right at no cost to you, with a replacement or a full refund that includes original shipping.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "we will make it right at no cost to you."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Contact us at support@skyyrose.co within 7 days of the confirmed delivery date."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Include your order number and clear photographs showing the damage, defect, or incorrect item"
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Full refund — including original outbound shipping costs"
+        }
+      ]
+    },
+    {
+      "category": "Returns and exchanges",
+      "question": "How do international returns work?",
+      "answer_text": "International returns follow the same 30-day eligibility rules. You arrange and pay for return shipping to our US facility, and we recommend a tracked, insured service. Refunds exclude original shipping, and duties or taxes paid on delivery are generally not refundable by SkyyRose; see our return policy.",
+      "answer_html": "International returns follow the same 30-day eligibility rules. You arrange and pay for return shipping to our US facility, and we recommend a tracked, insured service. Refunds exclude original shipping, and duties or taxes paid on delivery are generally not refundable by SkyyRose; see our <a href=\"/refund-policy/\">return policy</a>.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "International customers who wish to return an item must follow the same eligibility and process requirements described in Sections 2 and 3"
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "International customers are responsible for arranging and paying for return shipping to our US facility. We recommend using a tracked, insured service."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "(excluding original shipping costs and any duties or taxes collected at destination)"
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Original outbound duties, import taxes, and customs fees paid at time of delivery are generally not refundable by SkyyRose."
+        }
+      ]
+    },
+    {
+      "category": "The collections",
+      "question": "What collections does SkyyRose make?",
+      "answer_text": "Four: Signature, Black Rose, Love Hurts, and the Kids Capsule. Each is its own chapter of one Oakland-rooted house: Luxury Grows from Concrete.",
+      "answer_html": "Four: Signature, Black Rose, Love Hurts, and the Kids Capsule. Each is its own chapter of one Oakland-rooted house: Luxury Grows from Concrete.",
+      "sources": [
+        {
+          "kind": "registry",
+          "ref": "aggregate: products[*].collection where catalog.published == '1'",
+          "quote": "black-rose, kids-capsule, love-hurts, signature"
+        },
+        {
+          "kind": "brand_canon",
+          "ref": "CLAUDE.md §6 Brand",
+          "quote": "Tagline \"Luxury Grows from Concrete.\""
+        },
+        {
+          "kind": "policy_page",
+          "ref": "9712 /shipping-returns/ (Shipping Policy)",
+          "quote": "SkyyRose LLC · skyyrose.co · Oakland, California"
+        }
+      ]
+    },
+    {
+      "category": "Contact",
+      "question": "How do I reach SkyyRose?",
+      "answer_text": "Send us a message through the Contact page. If it’s about an order, include your order number, and never send payment-card details by email.",
+      "answer_html": "Send us a message through the <a href=\"/contact/\">Contact page</a>. If it’s about an order, include your order number, and never send payment-card details by email.",
+      "sources": [
+        {
+          "kind": "policy_page",
+          "ref": "10146 /refund-policy/ (Refund & Return Policy)",
+          "quote": "Include your order number in all correspondence to help us assist you quickly."
+        },
+        {
+          "kind": "policy_page",
+          "ref": "10406 /returns-exchanges/ (Returns + Exchanges)",
+          "quote": "Do not email payment-card details."
+        }
+      ]
+    }
+  ],
+  "founder_decisions": [
+    {
+      "id": "FD-1",
+      "topic": "Responsibly sourced fabrics / fair-trade certified facilities",
+      "detail": "The current FAQ says each collection “uses responsibly sourced fabrics and partners with fair-trade certified facilities.” It is left out of the new FAQ and is not described as false. Supply the wording you want published, and any certification or supplier evidence you want referenced, if you want a sourcing answer."
+    },
+    {
+      "id": "FD-2",
+      "topic": "Public customer-service email",
+      "detail": "The published policies (9712, 10146, 9718) use support@skyyrose.co. The rendered staging /contact/ page shows corey@skyyrose.co, because the V2 template contact.php prints get_option('admin_email'). Page 9457's stored post_content also lists corey@skyyrose.co. The new FAQ hard-codes no address and links to /contact/. Decide which address customers should see."
+    },
+    {
+      "id": "FD-3",
+      "topic": "“Gender-neutral” claim",
+      "detail": "The current FAQ says all collections are gender-neutral. No registry field or policy page states this, so it is left out. Confirm the wording if you want it published."
+    },
+    {
+      "id": "FD-4",
+      "topic": "Pre-order ship-date display",
+      "detail": "The Shipping Policy (9712 §6) and the Terms of Service (9718 §7) say each pre-order's estimated ship date is displayed on the product page. The rendered staging PDP for br-006 instead says “This label does not reserve stock or defer payment. Contact Client Services for shipping estimates before ordering” (from v2-preorder.php), and it shows no date. The FAQ states only what both sides agree on (each item has its own estimate, which can change) and routes people to Contact. Decide whether PDPs will show a date or the policy wording changes."
+    },
+    {
+      "id": "FD-5",
+      "topic": "Size charts and care instructions",
+      "detail": "The registry has garment_size_chart = null for 33 of 33 products, fit specifications for 8 of 33, and no care instructions. The Size Guide page (10409) says to compare against “the measurements published for the piece”, but no measurements are published. The FAQ promises no measurements and no care answer. Supply size charts and care instructions if you want them in the FAQ."
+    }
+  ],
+  "removed_claims": [
+    {
+      "old": "Pre-orders ship within 4–6 weeks of the collection launch date.",
+      "reason": "This contradicts the Shipping Policy (9712 §6): each pre-order item has its own estimated ship date, payment is taken in full, and pre-order items ship separately from in-stock items. It was replaced with the policy's own terms."
+    },
+    {
+      "old": "All SKYYROSE collections are gender-neutral and available in sizes XS through 3XL.",
+      "reason": "The size range is false per the registry. Only sg-002 offers XS, and sg-002 stops at 2XL. Most adult pieces are S–3XL, sg-005 is S–2XL, lh-005 and sg-007 are One Size, and Kids is 2T–7. “Gender-neutral” has no source (FD-3)."
+    },
+    {
+      "old": "Refer to our size guide on each product page for detailed measurements.",
+      "reason": "The registry holds no garment size charts, so no detailed measurements are published (FD-5)."
+    },
+    {
+      "old": "Yes. We ship worldwide.",
+      "reason": "This contradicts the Shipping Policy, which says “SkyyRose ships to 40+ countries” and reserves the right to restrict destinations."
+    },
+    {
+      "old": "We accept returns within 30 days of delivery for unworn items in original packaging. See our Shipping & Returns page for full details.",
+      "reason": "This was incomplete: it left out the unwashed, unaltered and tags-attached conditions, and it pointed to the Shipping page instead of the Refund & Return Policy. It was rewritten from 10146 §2 and 10406."
+    },
+    {
+      "old": "Each collection uses responsibly sourced fabrics and partners with fair-trade certified facilities. / We prioritize ethical manufacturing and sustainable materials wherever possible.",
+      "reason": "This is an open founder decision (FD-1). It is left out and is not described as false."
+    },
+    {
+      "old": "Email us at support@skyyrose.co or use our Contact page.",
+      "reason": "The address is not hard-coded, because three different addresses are in use (FD-2). The FAQ links to /contact/."
+    },
+    {
+      "old": "We respond within 24 hours.",
+      "reason": "Founder directive: no response-time promise anywhere in the FAQ. The policy-page reply windows are also left out: the 24-hour label reply, the 2-business-day damage response and the 2-business-day refund follow-up."
+    }
+  ],
+  "policy_contradictions": [
+    "Reply-time promises disagree. 9712 §9 says “We aim to respond to all inquiries within 1–2 business days.” 10146 §11 says “within 1 business day and within 24 hours for return label requests.” Page 9457's stored post_content says “Responses within 24 hours.” That last one is not rendered on staging, where the V2 contact.php template serves /contact/.",
+    "The pre-order cancellation anchor differs. 10146 §8 says the cancellation window runs to the “estimated ship date shown in your order confirmation.” 9718 §7 says it runs to the “estimated ship date shown on the product page at the time of purchase.”",
+    "Pre-order ship date. 9712 §6 and 9718 §7 say the estimated ship date is displayed on the product page. The V2 theme copy (v2-preorder.php, rendered on the staging br-006 PDP and /pre-order/) says the label does not establish a shipping date and tells customers to contact Client Services for estimates.",
+    "Size Guide 10409 refers to “the measurements published for the piece,” but the registry has no garment size chart for any product.",
+    "Customer email: policies use support@skyyrose.co. The rendered /contact/ uses admin_email (corey@skyyrose.co), and 9457 post_content uses corey@skyyrose.co."
+  ],
+  "out_of_scope_findings": [
+    "Page 9335 (/pre-order/) stored post_content, read through REST, holds a legacy gateway. It has phantom SKUs that are not in the registry (SR-BR-THORN-H, SR-LH-HB-H, SR-SG-FND-B …), “up to 20% off retail”, XXL and 28–36 waist sizes, and “380gsm”/“450gsm” claims. On staging this content is NOT rendered, because /pre-order/ serves the V2 template instead. It would surface on any theme that renders post_content.",
+    "Staging WooCommerce names br-006 “BLACK Rose Sherpa Jacket”, while the registry catalog.name is “The Bomber Sherpa”. This is catalog drift, reported only.",
+    "Staging /faq/ currently emits no FAQPage JSON-LD. The old markup uses h3 questions, which neither extractor branch matches, and staging may also be suppressed by skyyrose2_seo_is_nonproduction_request()."
+  ]
+}

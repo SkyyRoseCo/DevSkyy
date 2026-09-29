@@ -1,0 +1,30 @@
+{
+  "captured": "2026-09-26",
+  "site": "staging-7e48-skyyrose.wpcomstaging.com (wpcom site 256563697)",
+  "source": "wpcom-mcp-content-authoring get, context=edit",
+  "records": {
+    "product_9879_lh-006": {
+      "slug": "lh-006",
+      "status": "publish",
+      "modified": "2026-09-05T07:42:15",
+      "excerpt": "Oakland luxury meets everyday utility. The essential Love Hurts fanny pack with premium embroidery."
+    },
+    "page_9457_contact": {
+      "slug": "contact",
+      "status": "publish",
+      "modified": "2026-04-03T20:42:43",
+      "template": "template-contact.php",
+      "excerpt": ""
+    },
+    "page_9335_pre-order": {
+      "slug": "pre-order",
+      "status": "publish",
+      "parent": 0,
+      "menu_order": 0,
+      "modified": "2026-03-12T17:29:28",
+      "template": "template-preorder-gateway.php",
+      "excerpt": "",
+      "note": "post_content is the 47KB V3.2 legacy shell (CSS + JS catalog); not rendered by V2 (page.php routes slug pre-order to template-parts/v2-preorder)."
+    }
+  }
+}
