@@ -17,6 +17,10 @@ inherits_from: black-is-beautiful-jersey-series-0-baseball-classic
 
 **Garment type lock:** Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid BLACK base fabric with **bright orange** piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. **Black** buttons on the placket (matching the body, no contrast). NO player number on front. NO player number on back. NO player name on back. NO pinstripes. Mid-weight knit jersey. This is the GIANTS colorway (separate SKU from the Classic black-with-white-piping br-003).
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** True to size, relaxed through the body. (Founder statement, 2026-09-21, verbatim: "all jerseys true to size, relaxed through the body".)
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:

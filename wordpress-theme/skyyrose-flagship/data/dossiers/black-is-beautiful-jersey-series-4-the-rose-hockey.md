@@ -22,6 +22,10 @@ tank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket
 (distinct from br-006 which is a separate satin bomber). **PRE-ORDER product**
 — design renderings only.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** True to size, relaxed through the body. (Founder statement, 2026-09-21, verbatim: "all jerseys true to size, relaxed through the body".)
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:

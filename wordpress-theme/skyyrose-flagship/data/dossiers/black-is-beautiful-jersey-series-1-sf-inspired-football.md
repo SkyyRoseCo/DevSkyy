@@ -21,6 +21,10 @@ a t-shirt. NOT a hoodie. NOT a basketball tank. NOT a baseball jersey.
 **PRE-ORDER product** — design renderings only; no real-product photography
 exists yet.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** True to size, relaxed through the body. (Founder statement, 2026-09-21, verbatim: "all jerseys true to size, relaxed through the body".)
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:

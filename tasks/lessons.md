@@ -270,3 +270,46 @@ specific falsifiable claim, reproduce the claim before judging the work. I
 re-measured, it was right, and the wrong production change never shipped.
 Related: [[bug-334]], and the same incomplete-enumeration shape as the copy
 claim in the 2026-09-17 entry.
+
+## 2026-09-21 — "names only" is not redaction on a malformed env file (bug-357)
+
+Auditing `.env.secrets`, I printed the key *names* from `dotenv_values()`,
+reasoning that names are safe and only values are secret. That dumped ~46
+prose-parsed entries — roughly 30 live credentials — into the transcript.
+
+The invariant "the key side is not a secret" holds only for a *well-formed* env
+file. A credentials notebook contains lines shaped `<label> = <secret>` and
+`Name: <secret>`, so python-dotenv returns the **secret as the dict key**. A file
+you are auditing *because* it is malformed is by definition not proven
+well-formed.
+
+**Redaction is a whitelist, never a blacklist:**
+
+```python
+SAFE_NAME = re.compile(r"^[A-Z][A-Z0-9_]*$")
+label = k if SAFE_NAME.match(k) else f"<redacted:{sha256(k.encode()).hexdigest()[:8]}>"
+```
+
+Never iterate `dotenv_values()` keys into stdout unfiltered; compare values by
+hash. Containment is **rotation**, not deletion — the context re-sends every turn,
+so rotate and start a fresh session. Check the claude-mem path too: it ingests
+transcripts, and `.wolf/claude-mem-digest.md` lives **in the repo**.
+
+## 2026-09-21 — a two-way diff cannot tell you who changed what
+
+Checking whether a merge preserved both sides, I diffed my branch against
+`origin/main` and reported 24 keys "lost." Every one was **my own change
+reflected back**: the comparison had no way to separate "they changed it" from "I
+changed it." The output was plausible — a tidy list of named registry keys — and
+had I relayed it, an agent would have chased 24 regressions that never existed.
+
+Attribution questions require the **merge base**, never the other branch:
+`base=$(git merge-base <mine> origin/main)`. `theirs` = base to main, `ours` =
+base to mine; the merged result must carry theirs' value for `theirs - ours` and
+ours' for `ours - theirs`; only the intersection needs judgment. Same shape as the
+pristine-tree rule for test attribution — **whenever the question is "who did
+this," a two-point comparison is the wrong instrument.**
+
+**Also:** assert before you replace. A `python` edit of `MEMORY.md` asserted its
+anchor string was present, failed loudly on a wording mismatch, and cost one
+retry. A blind `str.replace` would have silently no-op'd and reported success.

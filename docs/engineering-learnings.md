@@ -244,3 +244,101 @@ not by inspection: truncate the input and confirm the gate goes red
 (`[empty] exit=1 … expected at least 14`, `[shrunk to 3] exit=1`). Prefer a
 declared registry over list-to-list parity for exactly this reason — the
 registry is still there to compare against after either consumer moves.
+
+---
+
+## 2026-09-21 — CI reality, merge attribution, and two silent-defect classes
+
+### CI: what actually gates, and what doesn't
+
+Re-verified against the workflow file and the GitHub API, because a memory note
+claiming "E2E is non-gating" was stale and would have licensed merging past a red
+browser run.
+
+- **Playwright E2E IS gating.** `.github/workflows/ci.yml` Stage 3 `e2e-tests`
+  carries *"Browser regressions must fail CI now that the suite covers current
+  behavior"*, and `continue-on-error` appears **nowhere** in the file. It also
+  starts late (`needs: [python-tests, frontend-tests]`) and runs 10+ minutes, so a
+  PR sitting at 21/22 green with E2E pending is normal, not stalled.
+- **`main` has NO branch protection.**
+  `gh api repos/SkyyRoseCo/DevSkyy/branches/main/protection` →
+  `required_status_checks` ABSENT, `enforce_admins` false,
+  `required_pull_request_reviews` ABSENT. "Green" is the CI workflow's own
+  conclusion, never a server-enforced gate — **nothing stops a merge with red or
+  pending checks.** Any drive-to-green automation must wait for every job itself;
+  there is no backstop.
+- **A CONFLICTING PR runs almost no CI.** GitHub builds no merge ref for it, so
+  `pull_request`-triggered workflows never fire — only push-triggered ones
+  (CodeQL). The PR looks *stalled* rather than failing. Resolve the conflict
+  first, then checks appear. (Observed on #960.)
+
+### Merge attribution needs a THREE-way diff, not a two-way one
+
+Verifying that a merge kept both sides, I diffed my branch against `origin/main`
+and got 24 "lost" keys. All 24 were **my own changes reflected back** — a two-way
+diff cannot distinguish "they changed it" from "I changed it."
+
+The only correct reference point is the merge base:
+
+```bash
+base=$(git merge-base <mine> origin/main)
+# theirs = keys where origin/main differs from $base
+# ours   = keys where <mine>   differs from $base
+# merged must carry theirs' value for (theirs - ours), ours' for (ours - theirs)
+# and (theirs n ours) is the only set needing human eyes
+```
+
+With the base applied: 7 incoming keys, 24 of ours, **0 overlap, 0 lost**. The
+failure mode is silent — a plausible list of regressions that is really your own
+work. Pairs with the attribution rule in root `CLAUDE.md` section 3.
+
+### An untracked binary behind a SOT binding is a latent 404
+
+A theme deploy is an atomic hot-swap that ships only **git-tracked** files.
+`.gitignore:297` blanket-ignores `wordpress-theme/skyyrose-flagship/assets/**/*.webp`,
+so three founder-approved on-model fronts were present on disk, referenced by the
+registry/CSV/`sot.json`, and invisible to every local check — while a clean-tree
+deploy would have 404'd those product cards.
+
+`tests/test_sot_assets_tracked.py` catches this class **because it asks git, not
+the filesystem**. Fix order is non-negotiable: `git add -f` the binaries FIRST,
+repoint bindings SECOND. A repoint ahead of the add re-creates the 404.
+
+Identity of an image asset is established by **content, not filename**: hash the
+file and compare against the approved manifest. Here, `sha256` equality with the
+`FOUNDER_APPROVED_V2_CARD` entries disproved a repo doc
+(`tasks/launch-20260921-image-coverage.md:17`) that called those same files
+ghost/mannequin shots.
+
+### A confidently wrong value hides from the queries built to find gaps
+
+8 Jersey Series SKUs needed a fit statement. Seven had `fit: null` and surfaced
+instantly in a "fit is null" query. The eighth (br-010) held a **mis-extracted
+fabric sentence** — decoration prose with a stray markdown bold marker sitting in
+a sizing field. It passed every structural/completeness check *because it was
+populated*, and would have shipped garment-fabric text into a PDP sizing field.
+
+Origin, for the record: `git log -S'derived_from_dossier' -- scripts skyyrose` is
+**empty**. No code in this repo ever produced those values — they arrived as
+pre-split *data* from a keyword-sentence extractor that was never committed, and
+the old `dossier_loader.py` let them override founder prose under a "takes
+precedence over legacy dossier prose" heading. `test_dossier_founder_prose` now
+forbids exactly that.
+
+Still wrong at time of writing, reported not fixed: `lh-004` (hood-lining
+decoration prose in `fit` — **should be nulled, not kept**, until the founder
+supplies a statement); `br-002`, `sg-007`, `sg-014` (over-broad silhouette
+sentences). **Prefer null over wrong:** null is discoverable, wrong is not.
+
+### A gate that can never be satisfied is a deadlock, not a gate
+
+`.claude/hooks/stop-test-gate.sh` ARMS on "any `*.py` is dirty" but ASSERTS "the
+whole suite is green". Those are different questions. When the red test is not the
+stopping session's to fix — pre-existing, another session's WIP, or needing a
+permission the agent lacks — it re-blocks every Stop forever and the session can
+never end. This is the recurring bug-333 pattern.
+
+Reviewed fix (block once per distinct failure signature + tree state, then report
+`STILL RED — needs a human` and let Stop through; fails closed on an unparseable
+run) is written but **NOT applied** — editing the gate that constrains the agent
+is correctly a human decision.
