@@ -67,7 +67,7 @@ dependencies = [
 
     # HTTP
     "httpx>=0.25",
-    "aiohttp>=3.9",
+    "aiohttp>=3.12.14",
     "requests>=2.31",
 
     # GraphQL
@@ -213,7 +213,7 @@ mcp = [
     "backoff==2.2.1",
     "ratelimit==2.2.1",
     "boto3>=1.43.0",  # integrations/cloudflare_r2_manager.py — was undeclared, install -e .[all] never pulled it
-    "cryptography==49.0.0",
+    "cryptography==50.0.0",
     "pyjwt==2.13.0",
     "sqlalchemy==2.0.51",
     "aiosqlite==0.22.1",
