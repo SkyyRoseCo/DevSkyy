@@ -282,7 +282,84 @@
           ]
         },
 
-        "asset_reconciliation": {
+        "asset_library": {
+        "type": "object",
+        "required": [
+          "directory",
+          "sources"
+        ],
+        "properties": {
+          "directory": {
+            "type": "string",
+            "pattern": "^assets/products/catalog/(signature|black-rose|love-hurts|kids-capsule)/[a-z]+-[0-9]{3}$"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "kind",
+                "view",
+                "sha256",
+                "verification"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "kind": {
+                  "enum": [
+                    "flatlay",
+                    "packshot",
+                    "detail"
+                  ]
+                },
+                "view": {
+                  "enum": [
+                    "front",
+                    "back",
+                    "angled",
+                    "interior",
+                    "detail"
+                  ]
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "verification": {
+                  "const": "VISUALLY_REVIEWED_PRODUCT_IDENTITY"
+                },
+                "source_location": {
+                  "enum": [
+                    "worktree",
+                    "main-checkout"
+                  ]
+                },
+                "source_path": {
+                  "type": "string"
+                },
+                "review_note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "asset_reconciliation": {
           "type": "object",
           "description": "Legacy migration record. Not authored; retire once the asset tree is settled."
         },
@@ -372,6 +449,7 @@
         "fit": { "$ref": "#/$defs/sourcedSpec" },
         "materials": { "$ref": "#/$defs/sourcedSpec" },
         "features": { "$ref": "#/$defs/sourcedSpec" },
+        "care_instructions": { "$ref": "#/$defs/sourcedSpec" },
         "sizing_references": {
           "type": "object",
           "properties": {

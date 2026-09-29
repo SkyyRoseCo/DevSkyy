@@ -324,6 +324,7 @@ def get_product(sku: str) -> dict[str, Any]:
     Sections: ``catalog`` (commerce), ``garment`` (color, sizes, fit, materials,
     features, sizing references), ``dossier`` (the founder's design
     specification), ``images`` (every role, resolved), ``render_sources``,
+    ``asset_library`` (collection/SKU directory and reviewed source-photo bindings),
     ``logos`` (graphics, placements, decoration dimensions), ``content``
     (marketing copy and SEO), ``alt_text``, ``corrections`` (render corrections,
     each naming its author), ``render_policy`` (founder keep decisions),
@@ -361,6 +362,7 @@ def get_product(sku: str) -> dict[str, Any]:
         "catalog_row": {k: v for k, v in merged.items() if k not in ("dossier", "_dossier")},
         "images": images,
         "render_sources": product.get("render_sources", {}),
+        "asset_library": product.get("asset_library", {}),
         "logos": _logos_for(sku),
         "content": content,
         "alt_text": alt_text,

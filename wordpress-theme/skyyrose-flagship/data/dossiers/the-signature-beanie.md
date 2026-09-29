@@ -14,6 +14,11 @@ reference_image: assets/products/references/sg-007-techflat.jpeg
 
 ## Founder-confirmed correction
 
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
+
 **FOUNDER_CONFIRMED:** logo Is a patch not directly on beanie
 
 (Founder review recorded 2026-06-09: "logo Is a patch not directly on beanie"; preserved in this product's corrections. The existing sku_logos placement specifies silicone_patch, slightly_off_left.)

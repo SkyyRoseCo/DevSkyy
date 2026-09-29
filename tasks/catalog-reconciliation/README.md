@@ -101,3 +101,7 @@ Supersedes the overview-only suspicions above. Reviewed six flagged/fallback ima
 Current missing storefront back count: 7. Explicit back fallbacks: sg-009 and sg-011. Missing render slots remain 16. No binaries, founder facts, dossiers, corrections, or render sources changed.
 
 All 27 catalog consistency checks and 46 focused tests pass. Earlier frontend environment failures remain unresolved and this is not a full frontend build or deployment acceptance.
+
+## Image library, fit/care and material review (2026-09-29)
+
+See [image-library/README.md](image-library/README.md) and [the all-33 material review](image-library/material-review/REVIEW.md). Current intake: 92 reviewed photo/detail bindings across 27 products; all 33 collection/SKU folders; 270 standardized 2400-square exports. Material hypotheses remain outside the authoritative product fields pending founder confirmation. Fit is updated for all 33; basic garment care for 32, with the Fannie accessory-care exception awaiting confirmation.

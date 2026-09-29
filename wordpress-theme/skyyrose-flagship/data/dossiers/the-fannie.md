@@ -12,6 +12,12 @@ extra_references:
 
 **Garment type lock:** A **black PU/faux-leather fanny pack (waist-belt bag / cross-body sling)** — small rectangular bag body in pebbled-textured black faux-leather, single front-pocket with a horizontal zipper closure, **adjustable black nylon webbing strap** with a **plastic quick-release buckle** (clip-on/clip-off side-release buckle), worn at the waist or across the chest. NOT a backpack. NOT a tote bag. NOT a duffel. NOT a wristlet. NOT a leather handbag. **A small accessory product** — distinct from the apparel pieces in the Love Hurts collection.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — pending founder confirmation:** The general garment wash/tumble-dry template has not been applied to this bag. Proposed accessory care is gentle wipe-clean and air-dry; confirm before publishing.
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:
