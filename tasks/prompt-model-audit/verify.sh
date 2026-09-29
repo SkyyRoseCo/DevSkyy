@@ -6,6 +6,7 @@ cd "$repo_root"
 export PYTHONPATH="$repo_root/tasks/prompt-model-audit:$repo_root"
 .venv/bin/python -m pytest -p offline_guard -o addopts='' -q --disable-warnings \
   tests/test_product_readiness.py tests/test_product_entry_point.py \
+  skyyrose/elite_studio/tests/test_logo_registry.py \
   tests/test_product_consumer_contracts.py tests/pipelines/test_oai_render_hardening.py \
   tests/elite_studio/platform/test_catalog_source.py \
   skyyrose/elite_studio/tests/test_dual_vision_gate.py \

@@ -96,3 +96,26 @@ not run. Data readiness and byte hashes do not prove visual fidelity or
 approval. Existing visual QA and authorization gates remain necessary. Full
 per-image alt-text coverage, size-chart completeness, broader consumer migration
 and provider redesign are outside these four follow-ups.
+
+## CI integration repairs
+
+The first PR run caught registered Kids joggers component IDs being treated as
+sale SKUs by the stricter correction reader. Pair planning now carries the
+registry-declared parent SKU for correction lookup, while retaining component
+source images/placements. Unknown unregistered products still fail. The full
+logo-registry suite (including both real Kids pairs) is now in the bounded
+verification script; the targeted regression run passed 123 tests.
+
+V2 source certification pins `core/product.py`. Its pin was reconciled only
+after `build-product-presentation-registry.py --check` confirmed all 33
+generated records are unchanged and all four source-input reconciliation tests
+passed. No product/media receipt or generated output was changed.
+
+CI uses isort 9.0.2 while the project environment had 7.0.0; the unaffected
+model import layout was restored to the CI-compatible upstream form. The
+production npm audit also found high-severity `fast-uri` advisories in the
+existing lockfile. A lockfile-only targeted update changed its three entries
+(3.1.6 to 3.1.8 and two 4.1.3 to 4.2.1), preserving requested dependency ranges.
+The production high- severity audit passed afterward; seven moderate findings
+remain. The shared node_modules symlink was not modified by this lockfile-only
+operation; hosted CI performs a fresh installation of the updated lockfile.

@@ -422,6 +422,7 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
                 {
                     "name": mname,
                     "sku": member,
+                    "product_sku": component["parent_sku"] if component else member,
                     "reference_labels": [r.label for r in refs],
                     "dossier_text": dossier_text,
                     "is_patch": references.requires_patch(member),

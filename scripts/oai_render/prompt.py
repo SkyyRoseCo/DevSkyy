@@ -541,7 +541,7 @@ def build_pair_prompt(
     parts.append("")
 
     for g in garments:
-        parts.extend(_corrections_block(g["sku"]))
+        parts.extend(_corrections_block(g.get("product_sku", g["sku"])))
         parts.append(
             LogoRegistry.load().prompt_instructions(
                 g["sku"], require_sizing=bool(g.get("is_patch"))
