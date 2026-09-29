@@ -3872,6 +3872,8 @@
 - `DATABASE_INTEGRATION_VALIDATION_REPORT.md` — Database Integration Validation Report (~6891 tok)
 - `DEBUG_3D_GENERATION_ISSUES.md` — 3D Model Generation - Debugging Results (~1225 tok)
 - `DEPENDENCIES.md` — Dependencies Reference (~2331 tok)
+- `context-resolver.md` — Context Resolver — hardened production contract v1 (~1816 tok)
+- `creative-job-workflow.md` — Hardened creative job workflow (~1223 tok)
 - `dependency-env-audit.md` — Dependency + Environment Audit (~285 tok)
 - `DEPLOY_HF_SPACES_QUICKSTART.md` — HuggingFace Spaces Deployment - Quick Start (~797 tok)
 - `DEPLOY_NOW.md` — 🚀 Deploy DevSkyy to Vercel - Quick Reference Card (~725 tok)
@@ -4026,6 +4028,14 @@
 - `visual-audit-2026-05-23.md` — SkyyRose.co Visual Audit — 2026-05-23 (~3860 tok)
 - `visual-references.md` — SkyyRose Visual Reference Set — Canonical (~1130 tok)
 
+## docs/brand/constitution-v1/
+
+- `CONSTITUTION.md` — SkyyRose Brand Constitution v1 (~2619 tok)
+- `README.md` — SkyyRose Brand Constitution v1 (~797 tok)
+- `constitution.json` (~20078 tok)
+- `context-manifest.json` (~8105 tok)
+- `owner-decisions.json` (~9653 tok)
+
 ## docs/brand/design-mockups/
 
 - `collection-designs.html` — SkyyRose — Collection Design Mockups (2026-05-24) (~11152 tok)
@@ -4040,6 +4050,12 @@
 
 - `2026-kids-capsule-report.html` — SkyyRose | Inheritance of Elegance Campaign Report (~1140 tok)
 - `sot-lookbook.html` — SkyyRose Lookbook (wordpress-theme/skyyrose-flagship / lookbook · 4 collections) (~4514 tok)
+
+## docs/creative-os/
+
+- `PILOT.md` — Internal front-source composite pilot (~707 tok)
+- `README.md` — Creative OS v1: bounded local editorial route (~1386 tok)
+- `source-review.json` (~239 tok)
 
 ## docs/database/
 
@@ -4162,6 +4178,10 @@
 ## docs/elite-web-builder-package/wordpress-theme/skyyrose-flagship/woocommerce/
 
 - `single-product.php` — SkyyRose Single Product Page (~4653 tok)
+
+## docs/examples/
+
+- `context-resolver-abstract.json` (~281 tok)
 
 ## docs/guides/
 
@@ -8638,6 +8658,7 @@
 - `__init__.py` (~0 tok)
 - `3D_GENERATION_STATUS.md` — 3D Generation Status - READY (API Key Required) (~1003 tok)
 - `add_love_hurts_and_logos_to_lora.py` — luxury_post_process, upscale_with_lanczos, detect_garment_type, generate_training_caption + 2 more (~4004 tok)
+- `run_creative_os_pilot.py` — Reproducible local prototype assets and entry point for the adopted internal pilot (~3119 tok)
   - fn `luxury_post_process` L75-94 (~178 tok)
   - fn `upscale_with_lanczos` L95-115 (~224 tok)
   - fn `detect_garment_type` L116-182 (~738 tok)
@@ -9243,6 +9264,20 @@
 
 - `2026-09-12-brand-story-storyboard-line-introduction-workflows.md` — deep-research report: brand-story frameworks/tests, storyboard + AI pipeline, collection-launch/drop model, AI disclosure law, SkyyRose applied section; 130 cited sources (~17770 tok)
 - `2026-09-12-brand-story-ledgers/` — three exa agent reports with full URL ledgers backing the report above; provenance evidence, not prose to read (~34497 tok)
+
+## skyyrose/core/
+
+- `content_intent.py` — Validated artifact intent, shot functions and coverage planning (no channel specs) (~3762 tok)
+- `context_resolver.py` — Read-only, content-addressed SkyyRose context resolution; never release approval (~7330 tok)
+- `creative_job.py` — Content-bound creative job contracts and verification records (no release actions) (~5054 tok)
+- `execution_policy.py` — Explainable job-scoped rule selection and lifecycle ceilings; no owner-rule mutation (~904 tok)
+- `product_truth.py` — Field-owned execution facts; raw product evidence remains in the audit bundle (~2060 tok)
+
+## skyyrose/elite_studio/creative/
+
+- `editorial.py` — Bounded local editorial route for the existing Creative Operations Hub (~3838 tok)
+- `local_composite.py` — Source-locked local composition with scoped grants and independent pixel checks (~4196 tok)
+- `skyyrose_adapter.py` — SkyyRose adapter; canonical product reads remain in the Context Resolver (~748 tok)
 
 ## tests/mcp_servers/
 

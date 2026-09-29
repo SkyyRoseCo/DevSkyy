@@ -15,6 +15,7 @@ from skyyrose.core.context_resolver import (
     ResolutionRequest,
     ResolvedContext,
     SourceReference,
+    operative_rules,
     resolve_context,
 )
 from skyyrose.core.execution_policy import LOCAL_TERRITORY, LifecycleStatus
@@ -424,6 +425,7 @@ def execution_bundle(job: JobContract) -> dict:
         "intent": request["content_intent"],
         "brand": {
             "required_rules": job.context.execution_rule_ids,
+            "rules": operative_rules(job.context),
             "constitution_version": job.context.constitution_version,
             "constitution_sha256": job.context.constitution_digest,
             "rule_source": "docs/brand/constitution-v1/constitution.json",

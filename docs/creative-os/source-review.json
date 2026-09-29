@@ -1,0 +1,12 @@
+{
+  "sku": "br-001",
+  "role": "packshot",
+  "observed_view": "front",
+  "source_sha256": "c9cd0614f52f8c9a6f8bcfb098acd89bcca15ea612cb62a48bba5d48697123c2",
+  "status": "PASS",
+  "reviewer": "Codex coordinator and independent product_architecture agent, 2026-09-24",
+  "method": "Viewed complete canonical packshot; compared visible front, black body, white neckline/cuffs/hem and rose/cloud artwork with canonical specifications. Traced registry image/render binding and repository source provenance.",
+  "provenance": "get_product images.packshot and render_sources.reference; assets/products/manifest.json matching SHA; canonical photo introduced at ae9180a7792580d7c8f0ad29c2970ddaab83e08a",
+  "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+  "limitations": "Agent source-selection review, not new owner approval or physical measurement. No packshot-specific historical ad approval claimed. Internal compositing authorized by current owner handoff."
+}

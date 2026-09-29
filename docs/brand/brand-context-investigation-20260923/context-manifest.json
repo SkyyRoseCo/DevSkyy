@@ -1,0 +1,780 @@
+{
+  "schema_version": "0.1.0",
+  "id": "skyyrose-brand-context-review-20260923",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "brand_id": "skyyrose",
+  "purpose": "Field-scoped context assembly specification; no runtime installed and no canonical sources replaced",
+  "last_validation": "2026-09-23",
+  "evidence_index": "evidence.json",
+  "source_snapshot": "source-snapshot.json",
+  "report": "REPORT.md",
+  "authority_classes": [
+    "CANONICAL",
+    "AUTHORITATIVE",
+    "DERIVED",
+    "IMPLEMENTATION",
+    "REFERENCE",
+    "EXPERIMENTAL",
+    "LEGACY",
+    "UNKNOWN"
+  ],
+  "levels": {
+    "1": "brand invariant candidate",
+    "2": "brand grammar",
+    "3": "context system",
+    "4": "implementation"
+  },
+  "source_owners": [
+    {
+      "id": "founder",
+      "domain": "current founder facts and decisions",
+      "source": "current owner instructions plus applicable recorded decisions",
+      "class": "AUTHORITATIVE",
+      "rule": "Latest explicit correction within its subject supersedes stale derivatives; no maker re-verification"
+    },
+    {
+      "id": "product",
+      "domain": "product desired facts",
+      "source": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+      "root_alias": "logo-registry.json",
+      "pointer": "products",
+      "class": "CANONICAL",
+      "reader": "skyyrose.core.product.get_product",
+      "cli": ".venv/bin/python -m skyyrose.core.product <sku>",
+      "projections": [
+        "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+        "wordpress-theme/skyyrose-flagship/data/dossiers/"
+      ],
+      "do_not_copy_into_context": true
+    },
+    {
+      "id": "brand_identity",
+      "domain": "structured identity and current tagline state",
+      "source": "assets/brand/brand.yaml",
+      "reader": "skyyrose.elite_studio.brand.BrandConfig.load",
+      "class": "CANONICAL",
+      "excludes": ["typography", "collection_metadata"]
+    },
+    {
+      "id": "type",
+      "domain": "current font roles",
+      "source": "wordpress-theme/skyyrose-flagship/data/brand/typography.json",
+      "class": "CANONICAL"
+    },
+    {
+      "id": "collections",
+      "domain": "collection identity",
+      "source_pattern": "wordpress-theme/skyyrose-flagship/data/collections/{collection}/identity.json",
+      "class": "CANONICAL",
+      "nested_status_required": true
+    },
+    {
+      "id": "commerce_runtime",
+      "domain": "session/selected variation/current purchasability/totals",
+      "source": "current intended WooCommerce site/session",
+      "class": "AUTHORITATIVE",
+      "rule": "Live mismatch with registry is drift; does not authorize changing intended catalog"
+    },
+    {
+      "id": "visual_assets",
+      "domain": "nonproduct asset identity",
+      "source": "visual-manifest.json",
+      "class": "CANONICAL",
+      "rule": "Follow pointer and candidate-bound use/approval records; asset identity alone is insufficient for release"
+    }
+  ],
+  "rules": [
+    {
+      "id": "identity.origin",
+      "value": "Preserve Oakland-specific founder authorship; do not fictionalize origin.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["brand:skyyrose"],
+      "proposed_level": 1,
+      "authority": "AUTHORITATIVE",
+      "provenance": ["E03", "E06", "E08"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "LOW",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "identity.memoir",
+      "value": "Collections express autobiography, not arbitrary mood labels.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["brand:skyyrose"],
+      "proposed_level": 1,
+      "authority": "AUTHORITATIVE",
+      "provenance": ["E03", "E06"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "LOW",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "identity.inclusive",
+      "value": "Preserve gender-neutral presentation while retaining exact factual product records.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["brand:skyyrose"],
+      "proposed_level": 1,
+      "authority": "AUTHORITATIVE",
+      "provenance": ["E03", "E38"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "LOW",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "identity.family",
+      "value": "Preserve recorded founder/daughter relationship; no requirement to depict family in every asset.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["brand:skyyrose"],
+      "proposed_level": 1,
+      "authority": "AUTHORITATIVE",
+      "provenance": ["E03", "E11", "E38"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "LOW",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "policy.tagline",
+      "value": {
+        "source": "assets/brand/brand.yaml",
+        "pointer": "tagline.active",
+        "expected_state": "explicit_empty",
+        "missing_is_not_empty": true
+      },
+      "status": "EXISTING_SOURCE_POLICY",
+      "scope": ["brand:skyyrose"],
+      "proposed_level": null,
+      "authority": "CANONICAL",
+      "provenance": ["E04", "E05"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "NONE",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "policy.product",
+      "value": "Resolve exact product record and task-required fields; never modify facts through creative overrides.",
+      "status": "EXISTING_SOURCE_POLICY",
+      "scope": ["all_sku_jobs"],
+      "proposed_level": null,
+      "authority": "CANONICAL",
+      "provenance": ["E01", "E02", "E17", "E18"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "NONE",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "policy.assets",
+      "value": "Preserve SKU/view/placement/hash/use restrictions; filename or deployment does not approve a new use.",
+      "status": "EXISTING_SOURCE_POLICY",
+      "scope": ["image", "video", "3d", "web", "ads"],
+      "proposed_level": null,
+      "authority": "CANONICAL",
+      "provenance": ["E09", "E17", "E30"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "NONE",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "grammar.narrative",
+      "value": "Use meaningful progression and contextual product discovery; still, film and spatial treatments are possible.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["creative", "editorial", "collection"],
+      "proposed_level": 2,
+      "authority": "AUTHORITATIVE",
+      "provenance": ["E03", "E08", "E24", "E30"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "HIGH",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "grammar.voice",
+      "value": "Use specific direct language; contextual emotional register may vary without adding product or history claims.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["copy"],
+      "proposed_level": 2,
+      "authority": "AUTHORITATIVE",
+      "provenance": ["E03", "E07", "E13"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "MODERATE",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "grammar.access",
+      "value": "Keep meaningful product routes and content available beneath optional effects; preserve user control.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["web", "motion", "3d"],
+      "proposed_level": 2,
+      "authority": "IMPLEMENTATION",
+      "provenance": ["E24", "E25", "E26", "E30"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "MODERATE",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "implementation.type",
+      "value": {
+        "source": "wordpress-theme/skyyrose-flagship/data/brand/typography.json",
+        "resolve": "role-specific; collection artwork distinct from UI font"
+      },
+      "status": "EXISTING_SOURCE_POLICY",
+      "scope": ["storefront"],
+      "proposed_level": 4,
+      "authority": "CANONICAL",
+      "provenance": ["E10", "E21"],
+      "confidence": "high",
+      "exceptions": [
+        "dashboard_has_separate_scope",
+        "new_campaign_type_requires_applicable_brief"
+      ],
+      "freedom_level": "LOW",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "implementation.palette",
+      "value": "Resolve brand, collection, UI semantic and product colors in separate namespaces.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["storefront", "creative"],
+      "proposed_level": 4,
+      "authority": "CANONICAL",
+      "provenance": ["E02", "E04", "E21"],
+      "confidence": "high",
+      "exceptions": [
+        "existing_no_blue_policy_not_silently_relaxed",
+        "contrast_adjustment_never_changes_product_color"
+      ],
+      "freedom_level": "MODERATE",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "context.kids",
+      "value": "Preserve heir/next-generation context; throne/playroom/cartoon treatment is not master DNA or automatically required.",
+      "status": "CONFLICTED_SCOPE",
+      "scope": ["collection:kids-capsule"],
+      "proposed_level": 3,
+      "authority": "CANONICAL",
+      "provenance": ["E11", "E27", "E29", "E35", "E36"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "HIGH",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "context.signature",
+      "value": "Preserve origin story and recorded Oakland/Bay Bridge clarification; a scenic location cannot rename or redraw a product.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["collection:signature"],
+      "proposed_level": 3,
+      "authority": "AUTHORITATIVE",
+      "provenance": ["E06", "E12", "E34"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "HIGH",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "campaign.train",
+      "value": "Current fictional house train is Jersey-specific local previsualization with release blockers; no transit partnership claim.",
+      "status": "EXISTING_SOURCE_POLICY",
+      "scope": ["campaign:town-line"],
+      "proposed_level": 3,
+      "authority": "EXPERIMENTAL",
+      "provenance": ["E30", "E31"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "HIGH",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "quality.centroid",
+      "value": "Visual similarity is diagnostic evidence, never authority for brand identity or product correctness.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["quality", "generation"],
+      "proposed_level": null,
+      "authority": "IMPLEMENTATION",
+      "provenance": ["E32"],
+      "confidence": "high",
+      "exceptions": [],
+      "freedom_level": "NONE",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Existing applicable source instructions remain binding independently of proposed level or generalization.",
+        "proposed_interpretation_is_ratified": false
+      }
+    },
+    {
+      "id": "grammar.spatial_identity",
+      "value": "Current staging turns collection marks, materials, light and narrative focal points into coherent environments connected to product discovery.",
+      "status": "PROPOSED_CLASSIFICATION",
+      "scope": ["creative", "collection", "web"],
+      "proposed_level": 2,
+      "authority": "IMPLEMENTATION",
+      "provenance": ["E34", "E35", "E41", "E42", "E43", "E44"],
+      "confidence": "high",
+      "exceptions": [
+        "No requirement that every future campaign use 3D, monument, throne, bridge or cathedral."
+      ],
+      "freedom_level": "HIGH",
+      "last_validation": "2026-09-23",
+      "approval": {
+        "classification_ratified": false,
+        "source_constraints": "Owner-designated staging reference informs current expression; future uses preserve source and approval constraints."
+      }
+    }
+  ],
+  "contexts": [
+    {
+      "id": "collection:black-rose",
+      "source_owner": "collections",
+      "source_key": "black-rose",
+      "product_owner": "product",
+      "inherit": [
+        "identity.origin",
+        "identity.memoir",
+        "identity.inclusive",
+        "policy.product"
+      ],
+      "devices_not_invariants": [
+        "cathedral",
+        "silver monument",
+        "night bridge"
+      ],
+      "status": "SOURCE_REFERENCED",
+      "provenance": ["E07", "E08", "E21", "E27"]
+    },
+    {
+      "id": "collection:love-hurts",
+      "source_owner": "collections",
+      "source_key": "love-hurts",
+      "product_owner": "product",
+      "inherit": [
+        "identity.origin",
+        "identity.memoir",
+        "identity.inclusive",
+        "policy.product"
+      ],
+      "devices_not_invariants": ["enchanted rose dome", "aisle", "cathedral"],
+      "status": "SOURCE_REFERENCED",
+      "provenance": ["E06", "E07", "E21", "E27"]
+    },
+    {
+      "id": "collection:signature",
+      "source_owner": "collections",
+      "source_key": "signature",
+      "product_owner": "product",
+      "inherit": ["context.signature", "policy.product"],
+      "devices_not_invariants": ["golden-hour bridge", "gold monument"],
+      "status": "SOURCE_REFERENCED",
+      "provenance": ["E06", "E12"]
+    },
+    {
+      "id": "collection:kids-capsule",
+      "source_owner": "collections",
+      "source_key": "kids-capsule",
+      "aliases": ["kids", "kids_capsule", "KIDS_CAPSULE"],
+      "product_owner": "product",
+      "inherit": ["context.kids", "policy.product"],
+      "devices_not_invariants": [
+        "throne",
+        "closet",
+        "toys",
+        "three-part procession"
+      ],
+      "status": "SOURCE_REFERENCED_WITH_CONFLICT",
+      "provenance": ["E11", "E27", "E29", "E35"]
+    },
+    {
+      "id": "campaign:town-line",
+      "source": "docs/design/v2-remodel/house-of-roses/skyyrose-tour-film-storyboard.md",
+      "status": "LOCAL_PREVIS_RELEASE_BLOCKED",
+      "inherit": ["campaign.train"],
+      "provenance": ["E30", "E31"]
+    }
+  ],
+  "channel_adapters": [
+    {
+      "id": "ecommerce",
+      "required": [
+        "current_site",
+        "sku",
+        "current_variant_state",
+        "policy.product",
+        "implementation.type",
+        "grammar.access"
+      ],
+      "status": "PROPOSED"
+    },
+    {
+      "id": "advertising",
+      "required": [
+        "offer_as_of",
+        "claim_evidence",
+        "intended_usage",
+        "asset_approval",
+        "audience_assumptions"
+      ],
+      "status": "PROPOSED",
+      "note": "No audience-performance research or current placement specs established"
+    },
+    {
+      "id": "social",
+      "required": [
+        "platform",
+        "placement",
+        "campaign_id",
+        "sku_if_depicted",
+        "current_platform_spec_check"
+      ],
+      "status": "PROPOSED"
+    },
+    {
+      "id": "image",
+      "required": [
+        "sku_if_depicted",
+        "view",
+        "asset_identity",
+        "product_locks",
+        "environment_scope"
+      ],
+      "status": "PROPOSED"
+    },
+    {
+      "id": "video",
+      "required": [
+        "image_requirements",
+        "continuity",
+        "motion_scope",
+        "audio_rights_if_used",
+        "usage_approval"
+      ],
+      "status": "PROPOSED"
+    },
+    {
+      "id": "3d",
+      "required": [
+        "sku_if_depicted",
+        "geometry_material_graphics_locks",
+        "camera_as_implementation",
+        "fallback_for_interactive_use"
+      ],
+      "status": "PROPOSED"
+    },
+    {
+      "id": "copywriting",
+      "required": [
+        "voice_scope",
+        "claim_sources",
+        "retired_copy_exclusion",
+        "product_reader_if_sku"
+      ],
+      "status": "PROPOSED"
+    },
+    {
+      "id": "physical_or_new_channel",
+      "required": ["specific_job_brief", "scope_decision"],
+      "status": "UNKNOWN_NOT_INFERRED"
+    }
+  ],
+  "resolution": {
+    "inputs": [
+      "brand_id",
+      "job_id",
+      "collection",
+      "channel",
+      "campaign_id",
+      "skus",
+      "required_fields",
+      "required_media_roles",
+      "intended_use",
+      "mode"
+    ],
+    "modes": ["research", "preview", "release"],
+    "selection_order": [
+      "core_identity_and_current_policy",
+      "applicable_expression_grammar",
+      "selected_collection",
+      "channel_adapter",
+      "explicit_campaign_version",
+      "implementation_adapter"
+    ],
+    "parallel_truth_plane": "Product facts resolve independently from get_product and cannot be overridden by downstream layers",
+    "precedence": "Field owner, latest explicit applicable owner decision, scope and source status. Never newest file, frequency, live presence or last-write-wins alone.",
+    "protected_overrides": "Reject downstream edits to SKU, factual fields, exact artwork, price, claims or founder narrative.",
+    "missing": "Return named gaps. Empty tagline is explicit state; missing source never defaults to empty or generic brand.",
+    "conflicts": "Carry conflict IDs; block required unresolved conflict in release. Preview may carry labeled alternative proposals.",
+    "cache": "Actual dependency digests plus rule/schema versions, selected contexts, approval records and product references; no CSV-only mtime.",
+    "output": [
+      "bundle_id",
+      "mode",
+      "status",
+      "selected_rule_ids",
+      "source_digests",
+      "product_references",
+      "approval_references",
+      "exclusions",
+      "gaps",
+      "conflicts",
+      "as_of"
+    ],
+    "release_authorization": "This package grants none; existing scoped authorization must be established for each consequential action."
+  },
+  "conflicts": [
+    {
+      "id": "C01",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C02",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C03",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C04",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C05",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C06",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C07",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C08",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C09",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C10",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C11",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C12",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C13",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    },
+    {
+      "id": "C14",
+      "detail": "REPORT.md#4-brand-conflict-register",
+      "resolved_in_runtime": false
+    }
+  ],
+  "examples": [
+    {
+      "id": "kids-instagram-preview",
+      "kind": "ILLUSTRATIVE_NOT_EXECUTED_PROVIDER_JOB",
+      "request": {
+        "brand_id": "skyyrose",
+        "collection": "kids-capsule",
+        "channel": "social",
+        "platform": "instagram",
+        "skus": ["kids-001"],
+        "mode": "preview"
+      },
+      "selected_rules": [
+        "identity.origin",
+        "identity.memoir",
+        "identity.inclusive",
+        "identity.family",
+        "policy.tagline",
+        "policy.product",
+        "policy.assets",
+        "grammar.voice",
+        "context.kids"
+      ],
+      "product_resolution": "Call get_product('kids-001'); retain exact facts and gaps, do not copy into manifest.",
+      "expected_status": "PREVIEW_WITH_GAPS",
+      "unresolved": [
+        "campaign_id",
+        "specific_placement",
+        "approved_environment_scope",
+        "required_view_and_asset_approval"
+      ],
+      "excluded": [
+        "automatic_throne_requirement",
+        "black_rose_cathedral",
+        "legacy_Drive_prices"
+      ]
+    },
+    {
+      "id": "incorrect-palette-overrides-product",
+      "kind": "ILLUSTRATIVE_NEGATIVE",
+      "request": "Recolor garment to match campaign accent",
+      "expected": "REJECT",
+      "reason": "policy.product NONE overrides creative environment freedom"
+    },
+    {
+      "id": "incorrect-missing-back-view",
+      "kind": "ILLUSTRATIVE_NEGATIVE",
+      "request": "Invent back artwork when requested view is missing",
+      "expected": "BLOCK_REQUIRED_MEDIA",
+      "reason": "Missing fact/view is never creative freedom"
+    },
+    {
+      "id": "incorrect-live-equals-approved",
+      "kind": "ILLUSTRATIVE_NEGATIVE",
+      "request": "Reuse deployed Kids image in new ad because it is online",
+      "expected": "REQUIRE_INTENDED_USE_EVIDENCE",
+      "reason": "Live expression does not establish new usage permission"
+    }
+  ],
+  "decision_log": [
+    {
+      "id": "D01",
+      "decision": "Do not modify existing canonical systems during this investigation",
+      "status": "USER_INSTRUCTION",
+      "evidence": "attached user request"
+    },
+    {
+      "id": "D02",
+      "decision": "Preserve explicit no-active-tagline policy",
+      "status": "EXISTING_OWNER_POLICY",
+      "provenance": ["E04", "E05"]
+    },
+    {
+      "id": "D03",
+      "decision": "Treat invariant promotion/freedom taxonomy as review proposal",
+      "status": "INVESTIGATOR_PROPOSAL",
+      "provenance": ["E03", "E08", "E21", "E33", "E34"]
+    },
+    {
+      "id": "D04",
+      "decision": "No mutation or release authority inferred from source/runtime presence",
+      "status": "USER_INSTRUCTION",
+      "evidence": "attached user request"
+    },
+    {
+      "id": "D05",
+      "decision": "Prioritize staging as current brand visual reference; compare production for drift.",
+      "status": "CURRENT_OWNER_DIRECTION",
+      "provenance": ["E44"]
+    }
+  ],
+  "adoption": {
+    "approved": false,
+    "runtime_migrated": false,
+    "canonical_assets_modified": false,
+    "next_gate": "Owner review of proposed cross-channel classifications; separately scoped remediation of stale consumers"
+  },
+  "primary_visual_reference": {
+    "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+    "status": "OWNER_DESIGNATED_CURRENT_EXPRESSION_REFERENCE",
+    "provenance": ["E44", "E34", "E35", "E36", "E41", "E42", "E43"],
+    "limits": "Prioritizes visual investigation; does not turn all devices into invariants or authorize publication."
+  }
+}

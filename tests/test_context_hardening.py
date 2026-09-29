@@ -38,19 +38,7 @@ def test_A_presence_absence_contradiction():
         ResolutionRequest.model_validate(data)
 
 
-def test_B_C_authority_over_stale_copy_real_product(monkeypatch):
-    from skyyrose.core import context_resolver
-
-    original = get_product
-
-    # The registry nulls stale copy once it is corrected, so the stale
-    # pre-order claim is injected rather than assumed to still be live data.
-    def with_stale_copy(sku):
-        record = original(sku)
-        record["content"]["seo_meta"] = {"value": "Gothic luxury. Pre-order now."}
-        return record
-
-    monkeypatch.setattr(context_resolver, "get_product", with_stale_copy)
+def test_B_C_current_truth_and_present_conflicts_real_product():
     context = resolve_context(ResolutionRequest.model_validate(payload(exact=True)))
     assert context.status == "PLANNING_READY"
     truth = context.execution_products[0]
@@ -60,9 +48,9 @@ def test_B_C_authority_over_stale_copy_real_product(monkeypatch):
         c["field"] == "front_treatment" and c["status"] == "SUPERSEDED"
         for c in context.product_conflicts
     )
-    assert any(
-        c["field"] == "preorder" and c["status"] == "STALE" for c in context.product_conflicts
-    )
+    # The unified reader no longer loads historical preorder marketing copy.
+    # A current false flag alone is not evidence of a historical conflict.
+    assert not any(c["field"] == "preorder" for c in context.product_conflicts)
     # Stale claims stay in raw audit; legitimate back embroidery is not globally rewritten.
     assert "embroider" in json.dumps(context.products).lower()
     assert "embroider" not in json.dumps(truth).lower()
@@ -197,3 +185,33 @@ def test_compact_cli_defaults_to_execution_and_audit_is_explicit():
     assert "applicable_rules" not in compact_data and "applicable_rules" in audit_data
     assert compact_data["status"] == "PLANNING_READY"
     assert len(compact.stdout) < len(audit.stdout)
+
+
+def test_B_C_historical_copy_preserves_current_truth_and_conflict_provenance():
+    """Reproduce genuine historical copy without reintroducing the retired reader."""
+    fixture = json.loads(
+        (REPO_ROOT / "tests/fixtures/context_resolver/br-001-historical-copy.json").read_text()
+    )
+    raw = get_product(fixture["sku"])
+    source = f"git:{fixture['revision']}:{fixture['source_path']}"
+    raw["content"] = {
+        field: {"value": value, "source": source, "enriched": True}
+        for field, value in fixture["content"].items()
+        if field not in ("name", "collection")
+    }
+    result = project_product(raw, ["front"], ["front_treatment", "preorder"])
+    execution = result["execution"]
+    assert execution["facts"]["front_treatment"]["value"] == "embossed"
+    assert execution["facts"]["preorder"]["value"] is False
+    assert execution["facts"]["preorder"]["authority"] == "REGISTRY_DESIRED_STATE_NOT_LIVE_COMMERCE"
+    assert any(
+        c["field"] == "front_treatment" and c["status"] == "SUPERSEDED" for c in result["conflicts"]
+    )
+    assert any(c["field"] == "preorder" and c["status"] == "STALE" for c in result["conflicts"])
+    assert all(
+        c["source"].startswith("content.") for c in result["conflicts"] if c["field"] == "preorder"
+    )
+    assert source == raw["content"]["description"]["source"]
+    assert "pre-order" in raw["content"]["description"]["value"].lower()
+    assert "pre-order" not in json.dumps(execution).lower()
+    assert "embroider" not in json.dumps(execution).lower()
