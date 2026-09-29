@@ -734,18 +734,18 @@ def test_render_sku_needs_review_quarantines_without_retry(_tmp_output):
 
 # ── Founder review corrections (registry products[sku].corrections) ─────────
 def _write_corrections(tmp_path: Path, monkeypatch, corrections: dict) -> None:
-    registry = {
-        "products": {
-            sku: {
-                "catalog": {"sku": sku},
-                "corrections": [
-                    {"text": line, "authority": "FOUNDER_VERBATIM", "captured": "2026-06-09"}
-                    for line in lines
-                ],
-            }
-            for sku, lines in corrections.items()
-        }
-    }
+    import copy
+
+    from skyyrose.core.product_registry import load_registry
+
+    registry = copy.deepcopy(load_registry())
+    for product in registry["products"].values():
+        product["corrections"] = []
+    for sku, lines in corrections.items():
+        registry["products"][sku]["corrections"] = [
+            {"text": line, "authority": "FOUNDER_VERBATIM", "captured": "2026-06-09"}
+            for line in lines
+        ]
     path = tmp_path / "logo-registry.json"
     path.write_text(json.dumps(registry))
     monkeypatch.setattr("skyyrose.core.product_registry.PRODUCT_REGISTRY", path)
@@ -807,6 +807,13 @@ def test_agent_added_corrections_never_appear_as_founder_words(tmp_path: Path, m
             }
         }
     }
+    import copy
+
+    from skyyrose.core.product_registry import load_registry
+
+    full = copy.deepcopy(load_registry())
+    full["products"]["br-004"]["corrections"] = registry["products"]["br-004"]["corrections"]
+    registry = full
     path = tmp_path / "logo-registry.json"
     path.write_text(json.dumps(registry))
     monkeypatch.setattr("skyyrose.core.product_registry.PRODUCT_REGISTRY", path)

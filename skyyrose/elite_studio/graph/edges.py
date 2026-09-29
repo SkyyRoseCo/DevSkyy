@@ -69,6 +69,10 @@ def after_quality(state: EliteStudioState) -> str:
         return GENERATOR
 
     # Check if compositor is enabled
+    qc = state.get("quality_result")
+    if not (qc and qc.success and qc.overall_status == "pass" and qc.recommendation == "approve"):
+        return FINALIZE  # finalize preserves failed QA, never promotes it
+
     if state.get("enable_compositor", False):
         return COMPOSITOR
 
@@ -112,6 +116,10 @@ def after_quality_v2(state: EliteStudioState) -> str:
         return GENERATOR
 
     # --- Rule 3: Compositor enabled ---
+    qc = state.get("quality_result")
+    if not (qc and qc.success and qc.overall_status == "pass" and qc.recommendation == "approve"):
+        return FINALIZE  # finalize preserves failed QA, never promotes it
+
     if state.get("enable_compositor", False):
         return COMPOSITOR
 
@@ -130,6 +138,10 @@ def after_human_review(state: EliteStudioState) -> str:
 
     if decision and decision.decision == "reject" and retry_count < max_retries:
         return GENERATOR
+
+    qc = state.get("quality_result")
+    if not (qc and qc.success and qc.overall_status == "pass" and qc.recommendation == "approve"):
+        return FINALIZE  # finalize preserves failed QA, never promotes it
 
     if state.get("enable_compositor", False):
         return COMPOSITOR
