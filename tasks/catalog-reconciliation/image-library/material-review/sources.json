@@ -19,11 +19,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Heavyweight cotton-blend fleece, relaxed fit through the thigh.",
     "source_sha256": "f7596bbcee6a189aac561b60261bb313ff063cc62722a8f13fe721f0ac7a9928",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED_WITH_EXPRESSED_UNCERTAINTY",
     "visual_observation": "Smooth face and draping folds with elastic/ribbed ends; looks related to BR-001.",
     "candidate_material": "Polyester or cotton/poly knit jogger fabric; brushed reverse unresolved.",
     "confidence": "Medium",
-    "confirmation_needed": "Whether this is your heavy polyester, plus actual weight and backing."
+    "confirmation_needed": "Whether this is your heavy polyester, plus actual weight and backing.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "i believe the joggers are a blened poly and cotton.",
+      "registry_field": "garment.materials",
+      "specification": "Polyester and cotton blend — founder believes this composition; blend percentages unspecified."
+    }
   },
   {
     "sku": "br-003",
@@ -32,11 +38,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Solid BLACK base fabric. Mid-weight knit jersey fabric.",
     "source_sha256": "40fa10ff6fc8275238f2818d8d5e9683d0b2a9bc3eb48693cd93bef77eebde0c",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Fine, smooth sports-jersey face; bound placket and cuffs.",
     "candidate_material": "Polyester performance jersey is plausible; exact knit construction unresolved.",
     "confidence": "Medium",
-    "confirmation_needed": "Polyester versus blend; no percentage or weight inferred."
+    "confirmation_needed": "Polyester versus blend; no percentage or weight inferred.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the jerseys are the same fabric as a professional teams jersey",
+      "registry_field": "garment.materials",
+      "specification": "The same fabric as an authentic professional baseball team jersey."
+    }
   },
   {
     "sku": "br-004",
@@ -84,11 +96,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total.",
     "source_sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Open perforations visible across athletic shorts and contrasting panels.",
     "candidate_material": "Polyester athletic mesh is the leading candidate.",
     "confidence": "High construction / medium fiber",
-    "confirmation_needed": "Polyester composition, lining and weight."
+    "confirmation_needed": "Polyester composition, lining and weight.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the shorts are mesh",
+      "registry_field": "garment.materials",
+      "specification": "Mesh."
+    }
   },
   {
     "sku": "br-008",
@@ -97,11 +115,17 @@
     "source_type": "existing reference; construction inference limited",
     "existing_materials": "Solid **bright red** base fabric (San Francisco red colorway). Mid-weight\nknit jersey fabric.",
     "source_sha256": "e62155dc5c26b179691f8a0b184f8e33791e4da819c304334dbf132824124521",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Technical drawing only: football-jersey silhouette and trims; no real textile surface.",
     "candidate_material": "Polyester sports jersey/mesh is a product-type hypothesis only.",
     "confidence": "Low",
-    "confirmation_needed": "All material details; cannot justify textile composition from the illustration."
+    "confirmation_needed": "All material details; cannot justify textile composition from the illustration.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the jerseys are the same fabric as a professional teams jersey",
+      "registry_field": "garment.materials",
+      "specification": "The same fabric as an authentic professional football team jersey."
+    }
   },
   {
     "sku": "br-009",
@@ -110,11 +134,17 @@
     "source_type": "existing reference; construction inference limited",
     "existing_materials": "Solid **white** base fabric (Last Oakland Raiders-inspired road/away\ncolorway). Mid-weight knit jersey fabric.",
     "source_sha256": "0aa327d1874a5bf08e665d81ea6b1b9cb0cf1203372433cab68c91919b77c673",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Technical drawing only: football jersey with bound V-neck and sleeves.",
     "candidate_material": "Polyester sports jersey/mesh is a product-type hypothesis only.",
     "confidence": "Low",
-    "confirmation_needed": "All material details; drawing provides no weave or fiber evidence."
+    "confirmation_needed": "All material details; drawing provides no weave or fiber evidence.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the jerseys are the same fabric as a professional teams jersey",
+      "registry_field": "garment.materials",
+      "specification": "The same fabric as an authentic professional football team jersey."
+    }
   },
   {
     "sku": "br-010",
@@ -123,11 +153,17 @@
     "source_type": "existing reference; construction inference limited",
     "existing_materials": "**White base body fabric with a sublimated all-over\nrose-cluster pattern fading from clean white at the upper-chest into greyscale\nsilhouettes at the lower hem** — the bottom third of the jersey is a layered\ngrey-on-white rose-cluster pattern that wraps front and back continuously. Mid-weight tank fabric.",
     "source_sha256": "e370a22db66a7e7a14d1be473f8774cd059e3be792e42275bf7a00418c500899",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Basketball-jersey illustration; visible design does not resolve actual texture.",
     "candidate_material": "Polyester basketball mesh/interlock is a product-type hypothesis only.",
     "confidence": "Low",
-    "confirmation_needed": "Mesh versus closed knit, fiber and weight."
+    "confirmation_needed": "Mesh versus closed knit, fiber and weight.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the jerseys are the same fabric as a professional teams jersey",
+      "registry_field": "garment.materials",
+      "specification": "The same fabric as an authentic professional basketball team jersey."
+    }
   },
   {
     "sku": "br-011",
@@ -136,11 +172,17 @@
     "source_type": "existing reference; construction inference limited",
     "existing_materials": "Solid **black** base body fabric with **teal/turquoise (cyan)** accent\ncolorway. Mid-weight knit fabric, hockey-jersey-weight. NOT a sherpa jacket\n(distinct from br-006 which is a separate satin bomber).",
     "source_sha256": "0e9548b3cadcf39aae24dac098ea56a91b5943bad82fd4577c61cff4df93331d",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Hockey-style technical drawing; no photographed fabric surface.",
     "candidate_material": "Polyester hockey jersey knit is a product-type hypothesis only.",
     "confidence": "Low",
-    "confirmation_needed": "Heavy polyester versus lighter jersey; exact knit and lining."
+    "confirmation_needed": "Heavy polyester versus lighter jersey; exact knit and lining.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the jerseys are the same fabric as a professional teams jersey",
+      "registry_field": "garment.materials",
+      "specification": "The same fabric as an authentic professional hockey team jersey."
+    }
   },
   {
     "sku": "br-012",
@@ -149,11 +191,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Solid **dark forest green** base fabric. Mid-weight knit jersey.",
     "source_sha256": "da41030af207d29cb5dbda46fe0bc60328bb689d500b807ab463ced399f37fd1",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Smooth fine sports knit with slight sheen and flexible drape.",
     "candidate_material": "Polyester performance jersey is plausible.",
     "confidence": "Medium",
-    "confirmation_needed": "Fiber/blend and whether fabric matches BR-003/014/015."
+    "confirmation_needed": "Fiber/blend and whether fabric matches BR-003/014/015.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the jerseys are the same fabric as a professional teams jersey",
+      "registry_field": "garment.materials",
+      "specification": "The same fabric as an authentic professional baseball team jersey."
+    }
   },
   {
     "sku": "br-014",
@@ -162,11 +210,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Solid BLACK base fabric with **bright orange** piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. Mid-weight knit jersey.",
     "source_sha256": "aed53e3a9a181c8e9a1c3909e8a50f410a249a8f93a5bc01271301add88ca890",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Matte-to-slightly lustrous sports-jersey face and bound edges.",
     "candidate_material": "Polyester performance jersey is plausible.",
     "confidence": "Medium",
-    "confirmation_needed": "Fiber/blend and whether fabric matches the other baseball jerseys."
+    "confirmation_needed": "Fiber/blend and whether fabric matches the other baseball jerseys.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the jerseys are the same fabric as a professional teams jersey",
+      "registry_field": "garment.materials",
+      "specification": "The same fabric as an authentic professional baseball team jersey."
+    }
   },
   {
     "sku": "br-015",
@@ -175,11 +229,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Solid **white** base fabric with **black** piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. Mid-weight knit jersey.",
     "source_sha256": "0ce949e7cb59b028113acfdd61b5d1775fa7db85e5fa33fcdb893a1a7d724df9",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Smooth fine white knit; folds and piping are visible, reverse is not.",
     "candidate_material": "Polyester performance jersey is plausible.",
     "confidence": "Medium",
-    "confirmation_needed": "Fiber/blend and weight; whiteness does not establish cotton."
+    "confirmation_needed": "Fiber/blend and weight; whiteness does not establish cotton.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the jerseys are the same fabric as a professional teams jersey",
+      "registry_field": "garment.materials",
+      "specification": "The same fabric as an authentic professional baseball team jersey."
+    }
   },
   {
     "sku": "kids-001",
@@ -188,11 +248,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Mid-weight cotton-fleece fabric.",
     "source_sha256": "4bf376ffde9e4b47a1bec1b0f20c236688602ca8e641d13903b1eac030ec3393",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Soft matte colorblock knit with ribbed hems and jogger cuffs; inside not shown.",
     "candidate_material": "Sweatshirt knit, cotton/poly or polyester; fleece backing unverified visually.",
     "confidence": "Medium construction / low fiber",
-    "confirmation_needed": "Whether heavy polyester; same fabric across hoodie/pants and panels."
+    "confirmation_needed": "Whether heavy polyester; same fabric across hoodie/pants and panels.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the kids and signature outfits are cotton",
+      "registry_field": "garment.materials",
+      "specification": "Cotton."
+    }
   },
   {
     "sku": "kids-002",
@@ -201,11 +267,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Mid-weight cotton-fleece fabric.",
     "source_sha256": "60bbe03fc4cbae36756baad210d13dc88969fe222ce972f4a38126d3fd89609a",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Matte colorblock sweatshirt face and ribbing; reverse not exposed.",
     "candidate_material": "Sweatshirt knit, cotton/poly or polyester; fleece backing unverified visually.",
     "confidence": "Medium construction / low fiber",
-    "confirmation_needed": "Whether identical composition to Kids-001 and whether heavy polyester."
+    "confirmation_needed": "Whether identical composition to Kids-001 and whether heavy polyester.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the kids and signature outfits are cotton",
+      "registry_field": "garment.materials",
+      "specification": "Cotton."
+    }
   },
   {
     "sku": "lh-002",
@@ -214,11 +286,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Mid-weight cotton-fleece fabric. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique.",
     "source_sha256": "4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED_WITH_EXPRESSED_UNCERTAINTY",
     "visual_observation": "Smooth, slightly reflective jogger face and flexible side panels.",
     "candidate_material": "Polyester or polyester-blend sports knit is plausible.",
     "confidence": "Medium",
-    "confirmation_needed": "Existing cotton-fleece wording versus polyester; inside surface and weight."
+    "confirmation_needed": "Existing cotton-fleece wording versus polyester; inside surface and weight.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "i believe the joggers are a blened poly and cotton.",
+      "registry_field": "garment.materials",
+      "specification": "Polyester and cotton blend — founder believes this composition; blend percentages unspecified."
+    }
   },
   {
     "sku": "lh-003",
@@ -227,11 +305,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Knee-length athletic basketball shorts — **white mesh\nbody fabric** with **all-over sublimated red-roses-cluster pattern** repeating\nacross the entire body, **black ribbed elasticated waistband** with **white flat\ndrawstring**, **exactly four zippered pockets** (**two side hand pockets + two\nrear pockets**), **black ribbed-binding hem with red contrast piping** along the\nleg openings.",
     "source_sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Open mesh texture visible on the patterned shorts and contrasting trim panels.",
     "candidate_material": "Polyester athletic mesh is the leading candidate.",
     "confidence": "High construction / medium fiber",
-    "confirmation_needed": "Fiber percentage, lining and weight."
+    "confirmation_needed": "Fiber percentage, lining and weight.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the shorts are mesh",
+      "registry_field": "garment.materials",
+      "specification": "Mesh."
+    }
   },
   {
     "sku": "lh-004",
@@ -266,11 +350,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Mid-weight cotton-fleece fabric. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique.",
     "source_sha256": "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED_WITH_EXPRESSED_UNCERTAINTY",
     "visual_observation": "Smooth white jogger face with slight sheen and narrow folds.",
     "candidate_material": "Polyester or polyester-blend sports knit is plausible.",
     "confidence": "Medium",
-    "confirmation_needed": "Whether same fabric as LH-002; fleece versus smooth reverse and weight."
+    "confirmation_needed": "Whether same fabric as LH-002; fleece versus smooth reverse and weight.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "i believe the joggers are a blened poly and cotton.",
+      "registry_field": "garment.materials",
+      "specification": "Polyester and cotton blend — founder believes this composition; blend percentages unspecified."
+    }
   },
   {
     "sku": "sg-001",
@@ -279,11 +369,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**.",
     "source_sha256": "8cceec8f0719b92d01ea9b0711839d7120cd45db048d3bcfe988ccc7be91ef34",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Mesh perforations remain visible through the bridge print.",
     "candidate_material": "Polyester athletic mesh is the leading candidate.",
     "confidence": "High construction / medium fiber",
-    "confirmation_needed": "Fiber content, lining and weight."
+    "confirmation_needed": "Fiber content, lining and weight.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the shorts are mesh",
+      "registry_field": "garment.materials",
+      "specification": "Mesh."
+    }
   },
   {
     "sku": "sg-002",
@@ -305,11 +401,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Golden Gate Bridge at night**.",
     "source_sha256": "5148de48a616ab9d9fb334bf8b0ed8357259339fd45658f90c4ef640e581a71d",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Open athletic mesh visible through the photographic print.",
     "candidate_material": "Polyester athletic mesh is the leading candidate.",
     "confidence": "High construction / medium fiber",
-    "confirmation_needed": "Fiber content, lining and whether same mesh as SG-001."
+    "confirmation_needed": "Fiber content, lining and whether same mesh as SG-001.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the shorts are mesh",
+      "registry_field": "garment.materials",
+      "specification": "Mesh."
+    }
   },
   {
     "sku": "sg-005",
@@ -331,11 +433,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Mid-weight cotton-fleece fabric.",
     "source_sha256": "e8206150cce1d7fea64fb9c509a9c98d642e087ea915363b87603a5d6d34b196",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Matte sweatshirt face with ribbed cuffs/hem and a structured hood.",
     "candidate_material": "Sweatshirt knit; cotton/poly, cotton or polyester all remain possible.",
     "confidence": "Medium construction / low fiber",
-    "confirmation_needed": "Backing, fiber and whether heavy polyester; exterior does not prove fleece."
+    "confirmation_needed": "Backing, fiber and whether heavy polyester; exterior does not prove fleece.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the kids and signature outfits are cotton",
+      "registry_field": "garment.materials",
+      "specification": "Cotton."
+    }
   },
   {
     "sku": "sg-007",
@@ -396,11 +504,17 @@
     "source_type": "physical set photo; crewneck visible, partly overlapped by pants",
     "existing_materials": "Crew-neck pullover sweatshirt — solid **mint green / seafoam-green** body fabric throughout (front, back, sleeves) with **NO hood, NO zipper, NO color-blocking, NO chevron stripes, NO contrast panels**. Mid-weight cotton-fleece fabric.",
     "source_sha256": "ad26b94284690685af52307d8bdc72d7187e9177586282275279b577179396f5",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Physical set photo shows matte knit face and ribbed neckline, cuffs and hem.",
     "candidate_material": "Sweatshirt knit; cotton/poly or polyester plausible; reverse not visible.",
     "confidence": "Medium construction / low fiber",
-    "confirmation_needed": "Whether shares fabric with SG-006/014 and whether heavy polyester."
+    "confirmation_needed": "Whether shares fabric with SG-006/014 and whether heavy polyester.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the kids and signature outfits are cotton",
+      "registry_field": "garment.materials",
+      "specification": "Cotton."
+    }
   },
   {
     "sku": "sg-014",
@@ -409,11 +523,17 @@
     "source_type": "reviewed source photo",
     "existing_materials": "Mid-weight cotton-fleece fabric.",
     "source_sha256": "1cc5ced83992c4c11ca39b36613f1bcddc44fd02c2b6ba9e648f591ba947eae4",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Matte jogger face with broad folds, elastic waist and cuffs.",
     "candidate_material": "Sweatshirt/jogger knit; cotton/poly or polyester plausible.",
     "confidence": "Medium construction / low fiber",
-    "confirmation_needed": "Fiber, backing and whether same as SG-006/013."
+    "confirmation_needed": "Fiber, backing and whether same as SG-006/013.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "the kids and signature outfits are cotton",
+      "registry_field": "garment.materials",
+      "specification": "Cotton."
+    }
   },
   {
     "sku": "sg-015",
@@ -422,10 +542,16 @@
     "source_type": "existing reference; construction inference limited",
     "existing_materials": "Two-piece matching set sold as a single SKU — **lightweight nylon zip-front hooded windbreaker JACKET + matching nylon track-style PANTS**. Both pieces are constructed from smooth lightweight **nylon windbreaker fabric** (NOT cotton-fleece — this is the lighter water-resistant sibling of the Mint & Lavender Hoodie set). NOT cotton-fleece (this is the windbreaker variant, not the cousin sg-006 fleece hoodie + sg-014 fleece pants). NOT a fleece hoodie (different fabric, different weight, different construction).",
     "source_sha256": "cb76c6e4dd3f6667cd24b89d4e4f1af4366cfd021a4d654a9657d95609f64435",
-    "status": "PENDING_FOUNDER_CONFIRMATION",
+    "status": "FOUNDER_CONFIRMED",
     "visual_observation": "Technical drawing only; no photographed shell texture or reverse.",
     "candidate_material": "Light woven windbreaker shell; nylon or polyester plausible by garment type only.",
     "confidence": "Low",
-    "confirmation_needed": "Existing nylon wording cannot be newly justified from this drawing; confirm shell fiber and lining."
+    "confirmation_needed": "Existing nylon wording cannot be newly justified from this drawing; confirm shell fiber and lining.",
+    "founder_confirmation": {
+      "date": "2026-09-29",
+      "verbatim": "SG-015-windbreaker material and those as well are made out of the same materials authentic jersey in the specified sport comes in",
+      "registry_field": "garment.materials",
+      "specification": "Windbreaker fabric."
+    }
   }
 ]

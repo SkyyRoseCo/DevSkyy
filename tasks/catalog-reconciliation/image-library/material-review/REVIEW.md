@@ -1,6 +1,6 @@
-# All-33 material review — awaiting Corey’s confirmation
+# All-33 material review — founder response recorded
 
-**Status: visual proposals only; no material fields were changed.** Existing maker specifications remain authoritative. This review uses the assistant’s direct image inspection of repository photos and drawings; it is not a laboratory fiber test or a claim of a separate paid model run.
+**Status: founder response recorded for 21 products on 2026-09-29.** The table below preserves the original visual proposals as historical review evidence. Current material facts come from the product registry via `get_product`; the founder response below supersedes the corresponding proposals. This review uses the assistant’s direct image inspection of repository photos and drawings; it is not a laboratory fiber test or a claim of a separate paid model run.
 
 Confidence describes visual construction evidence, not certified composition. No percentages, GSM, hidden lining, waterproofing or durability claims are inferred. Five products have drawing-only evidence in this review: BR-008, BR-009, BR-010, BR-011 and SG-015.
 
@@ -40,15 +40,14 @@ Confidence describes visual construction evidence, not certified composition. No
 | **sg-014** Mint & Lavender Sweatpants | [Matte jogger face with broad folds, elastic waist and cuffs.](../../../../skyyrose/elite_studio/assets/golden/sg-014/reference.jpg) | Sweatshirt/jogger knit; cotton/poly or polyester plausible. | **Medium construction / low fiber**. Fiber, backing and whether same as SG-006/013. |
 | **sg-015** The Windbreaker Set | [Technical drawing only; no photographed shell texture or reverse.](../../../../assets/products/techflats/split/catalog/sg-015-techflat-front.png) | Light woven windbreaker shell; nylon or polyester plausible by garment type only. | **Low**. Existing nylon wording cannot be newly justified from this drawing; confirm shell fiber and lining. |
 
-## Fastest confirmation route
+## Founder response applied on 2026-09-29
 
-Confirm or correct these groups, listing exceptions by SKU:
+- **Eight jerseys:** BR-003/008/009/010/011/012/014/015 use the same fabric as an authentic professional team jersey for the specified sport (baseball, football, basketball or hockey). No fiber percentages or weights were inferred.
+- **Four shorts:** BR-007, LH-003, SG-001 and SG-003 are mesh. Mesh does not itself specify a fiber.
+- **Three joggers:** BR-002, LH-002 and LH-006 are recorded as a polyester/cotton blend with the founder's “i believe” uncertainty preserved. No blend ratio was inferred.
+- **Kids and Mint & Lavender outfits:** Kids-001/002 and SG-006/013/014 are cotton. The specific Signature cotton statement applies to SG-014 over the general jogger statement; “cotton” has not been expanded to “100% cotton”.
+- **SG-015:** windbreaker fabric. Earlier nylon and water-resistance wording was removed; these properties were not supplied in the founder response.
 
-- **Mesh shorts:** BR-007, LH-003, SG-001, SG-003 — proposed polyester mesh.
-- **Baseball jerseys:** BR-003, BR-012, BR-014, BR-015 — proposed polyester sports jersey.
-- **Smooth black set and Love Hurts joggers:** BR-001, BR-002, LH-002, LH-006 — strong candidates to clarify against the current cotton/fleece wording.
-- **Sweatshirt sets:** Kids-001/002 and SG-006/013/014 — fiber and reverse texture still need your identification.
-- **Satin/sherpa shells:** BR-006, LH-004, SG-009 — distinguish shell fiber from satin finish and sherpa lining.
-- **Drawing-only products:** BR-008/009/010/011 and SG-015 — your material identification is needed.
+The exact founder message and before/after record are in [founder-materials-change.json](../founder-materials-change.json), a provenance record of registry changes rather than a competing product authority. `sources.json` retains the visual hypotheses and links each answered product to its founder response.
 
-Care: the low-heat garment template is populated for 32 products. The Fannie is held out of that template; proposed wipe-clean and air-dry instructions await your confirmation.
+The remaining material proposals and The Fannie care question remain unresolved. Garment fit and low-heat care guidance remain as previously recorded.

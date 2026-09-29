@@ -10,9 +10,11 @@ reference_image: assets/products/references/lh-002-techflat-front.jpeg
 
 # Love Hurts Joggers (Black)
 
-**Garment type lock:** Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **BLACK body** with **WHITE contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). White flat drawstring. NOT pants. NOT shorts. NOT a track short. NOT a basketball jogger. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The white-base mirror colorway is a separate SKU (`lh-006`).
+**Garment type lock:** Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Polyester and cotton blend — founder believes this composition; blend percentages unspecified. **BLACK body** with **WHITE contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). White flat drawstring. NOT pants. NOT shorts. NOT a track short. NOT a basketball jogger. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The white-base mirror colorway is a separate SKU (`lh-006`).
 
 ## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** Polyester and cotton blend — founder believes this composition; blend percentages unspecified. (Corey, 2026-09-29, verbatim: "i believe the joggers are a blened poly and cotton.")
 
 **FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
 
@@ -26,7 +28,7 @@ reference_image: assets/products/references/lh-002-techflat-front.jpeg
 > - Product techflat: `assets/products/references/lh-002-techflat-front.jpeg`
 
 ### Front
-- **front-body** (entire front body — solid black field): Solid black, cotton-fleece. **Technique:** stitched. **Color:** black.
+- **front-body** (entire front body — solid black field): Solid black, polyester/cotton blend (composition stated with founder uncertainty). **Technique:** stitched. **Color:** black.
 - **front-left-pocket** (vertical slash pocket at the left side of the upper hip): Slash-style hand pocket at the front left side, with vertical welt opening. **Technique:** stitched (sewn-on welt edges). **Color:** body-matching black.
 - **front-right-pocket** (vertical slash pocket at the right side of the upper hip): Slash-style hand pocket at the front right side, with vertical welt opening. **Technique:** stitched (sewn-on welt edges). **Color:** body-matching black.
 - **left-thigh** (centered on the wearer's left thigh, just below the hip): **Heart-rose-composite logo** — the Love Hurts heart-and-thorns lockup with roses emerging from the top, rendered embroidered on the black body fabric. **Technique:** embroidered. **Color:** red roses + green thorns + crimson heart, on black body.
