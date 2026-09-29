@@ -1,0 +1,59 @@
+{
+  "scope": "Existing rear-role review; no product-fact changes, generation, or deployment. Offline; authentication not applicable.",
+  "observations": [
+    {
+      "sku": "sg-001",
+      "path": "assets/images/products/bridge-bay-bridge-shorts-back-model.webp",
+      "sha256": "aa9e2236f29b24c65598038f77c73c8d651bb8bec563391250790edeaa3d688b",
+      "decision": "HOLD",
+      "observation": "Rear-style welt pocket visible; conflicts with dossier no-back-pocket statement. Do not reclassify as front or alter founder facts."
+    },
+    {
+      "sku": "sg-003",
+      "path": "assets/images/products/bridge-stay-golden-shorts-back-model.webp",
+      "sha256": "aff15b6f2bc2bb17811b125f555702fdf00ecd33434e6ef3cda59016bfc98991",
+      "decision": "HOLD",
+      "observation": "Rose graphic visible; rear identity not conclusively established. No new render-source promotion."
+    },
+    {
+      "sku": "sg-007",
+      "path": "assets/images/products/signature-beanie-back-model.webp",
+      "sha256": "d26b90f648aa7a394fb7363e051bf166bd386889cfd46bcd555efa411bfccb0d",
+      "decision": "CLEAR",
+      "observation": "Decorated cuff face does not represent dossier clean back."
+    },
+    {
+      "sku": "sg-009",
+      "path": "assets/images/products/signature-sherpa-jacket-back-model.webp",
+      "sha256": "ce3abe659db2e795bb54990758bdcf92ab7cc7cd555322440b83a0e3f5474b62",
+      "decision": "CLEAR",
+      "observation": "Open lining view is not exterior back."
+    },
+    {
+      "sku": "sg-009",
+      "path": "assets/images/products/the-sherpa-jacket-back-model.webp",
+      "sha256": "4c16fea9870d524bc47ff5846e4893164ff9e29f03ff1d68bab0eadf787f0468",
+      "decision": "RETAIN_FALLBACK",
+      "observation": "Existing exterior-back view, black undecorated shell. Role review only, not founder acceptance or manufacturing proof."
+    },
+    {
+      "sku": "lh-004",
+      "path": "assets/images/products/lh-004-bomber-back.png",
+      "sha256": "e170a556f4ee444f273c4aacd2bfce569d0c87263397826b6e757db6402888f1",
+      "decision": "RETAIN_COMPOSITE",
+      "observation": "Composite includes visible rear heart-and-roses panel; not a standalone rear view."
+    }
+  ],
+  "candidates": {
+    "assets/products/techflats/split/signature/sg-bridge-tee-golden-back.jpeg": "Rear SR visible; exact secondary SR binding remains unresolved. Not promoted.",
+    "assets/products/techflats/split/signature/sg-shorts-bay-v2-back.jpeg": "Design illustration; not established as current physical rear authority. Not promoted.",
+    "assets/products/techflats/split/signature/sg-shorts-golden-v2-back.jpeg": "Design illustration; not established as current physical rear authority. Not promoted.",
+    "assets/products/references/sg-015-windbreaker-set-techflat.jpeg": "Full set front/back plate exists. Retained existing reference; no new view-specific binding or exact-artwork approval."
+  },
+  "candidate_sha256": {
+    "assets/products/techflats/split/signature/sg-bridge-tee-golden-back.jpeg": "1bc4a6deb13b59b68a251646b876f8165c095ec6dae5a56aaf03dd96a6cd3f3b",
+    "assets/products/techflats/split/signature/sg-shorts-bay-v2-back.jpeg": "7b5debeb17d30a73efd9a039aac9021e82a8ae3e38faa1413eefba12109013e6",
+    "assets/products/techflats/split/signature/sg-shorts-golden-v2-back.jpeg": "f5d7de2eaf823220202f8bff2c82852a6035102fc96aa22732234c82bda052bc",
+    "assets/products/references/sg-015-windbreaker-set-techflat.jpeg": "f05187dff58eaa626c68442636a0ef9648dc31d619609c927b79e2890dcf8db4"
+  }
+}

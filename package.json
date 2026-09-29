@@ -294,6 +294,12 @@
     },
     "eslint": {
       "ajv": "^6.14.0"
+    },
+    "@fastify/ajv-compiler": {
+      "fast-uri": ">=4.2.1"
+    },
+    "fast-json-stringify": {
+      "fast-uri": ">=4.2.1"
     }
   }
 }

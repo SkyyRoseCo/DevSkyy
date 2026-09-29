@@ -124,8 +124,8 @@ class TestQualityNodePrerequisites:
 
 
 class TestQualityNodeHighConfidence:
-    def test_high_confidence_skips_llm(self):
-        """When classifier.confidence >= 0.8, LLM QC should NOT be called."""
+    def test_high_confidence_requires_dual_vision(self):
+        """A classifier cannot supply exact product fidelity evidence."""
         state = _make_state()
 
         mock_classifier = MagicMock()
@@ -137,8 +137,16 @@ class TestQualityNodeHighConfidence:
             ),
             patch("skyyrose.elite_studio.graph.nodes.QualityAgent") as mock_llm_cls,
         ):
+            mock_llm_cls.return_value.verify = AsyncMock(
+                return_value=QualityVerification(
+                    success=True,
+                    provider="dual_vision",
+                    overall_status="pass",
+                    recommendation="approve",
+                )
+            )
             result = quality_node(state)
-            mock_llm_cls.assert_not_called()
+            mock_llm_cls.return_value.verify.assert_called_once()
 
         assert "classifier_result" in result
         assert result["classifier_result"].confidence >= 0.8
@@ -152,8 +160,16 @@ class TestQualityNodeHighConfidence:
             patch(
                 "skyyrose.elite_studio.graph.nodes.QualityClassifier", return_value=mock_classifier
             ),
-            patch("skyyrose.elite_studio.graph.nodes.QualityAgent"),
+            patch("skyyrose.elite_studio.graph.nodes.QualityAgent") as mock_llm_cls,
         ):
+            mock_llm_cls.return_value.verify = AsyncMock(
+                return_value=QualityVerification(
+                    success=True,
+                    provider="dual_vision",
+                    overall_status="pass",
+                    recommendation="approve",
+                )
+            )
             result = quality_node(state)
 
         qc = result.get("quality_result")
@@ -170,8 +186,16 @@ class TestQualityNodeHighConfidence:
             patch(
                 "skyyrose.elite_studio.graph.nodes.QualityClassifier", return_value=mock_classifier
             ),
-            patch("skyyrose.elite_studio.graph.nodes.QualityAgent"),
+            patch("skyyrose.elite_studio.graph.nodes.QualityAgent") as mock_llm_cls,
         ):
+            mock_llm_cls.return_value.verify = AsyncMock(
+                return_value=QualityVerification(
+                    success=True,
+                    provider="dual_vision",
+                    overall_status="pass",
+                    recommendation="approve",
+                )
+            )
             result = quality_node(state)
 
         qc = result.get("quality_result")
@@ -189,8 +213,16 @@ class TestQualityNodeHighConfidence:
             patch(
                 "skyyrose.elite_studio.graph.nodes.QualityClassifier", return_value=mock_classifier
             ),
-            patch("skyyrose.elite_studio.graph.nodes.QualityAgent"),
+            patch("skyyrose.elite_studio.graph.nodes.QualityAgent") as mock_llm_cls,
         ):
+            mock_llm_cls.return_value.verify = AsyncMock(
+                return_value=QualityVerification(
+                    success=True,
+                    provider="dual_vision",
+                    overall_status="pass",
+                    recommendation="approve",
+                )
+            )
             result = quality_node(state)
 
         assert result["classifier_result"] == expected_classifier
@@ -266,8 +298,13 @@ class TestQualityNodeLowConfidence:
             patch(
                 "skyyrose.elite_studio.graph.nodes.QualityClassifier", return_value=mock_classifier
             ),
-            patch("skyyrose.elite_studio.graph.nodes.QualityAgent"),
+            patch("skyyrose.elite_studio.graph.nodes.QualityAgent") as mock_qa,
         ):
+            mock_qa.return_value.verify = AsyncMock(
+                return_value=QualityVerification(
+                    success=False, overall_status="fail", recommendation="manual_review"
+                )
+            )
             result = quality_node(state)
 
         assert "quality" in result.get("stage_timings", {})

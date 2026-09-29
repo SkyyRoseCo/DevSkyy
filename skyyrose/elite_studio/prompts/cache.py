@@ -343,6 +343,8 @@ class PromptCache:
                 "context_added": list(enhanced.context_added),
                 "cache_key": enhanced.cache_key,
                 "template_used": enhanced.template_used,
+                "brief_status": enhanced.brief_status,
+                "gaps": list(enhanced.gaps),
                 "cached_at": time.time(),
             }
         )
@@ -361,4 +363,6 @@ class PromptCache:
             context_added=tuple(data.get("context_added", [])),
             cache_key=data.get("cache_key", ""),
             template_used=data.get("template_used", ""),
+            brief_status=data.get("brief_status", "unverified"),
+            gaps=tuple(data.get("gaps", [])),
         )

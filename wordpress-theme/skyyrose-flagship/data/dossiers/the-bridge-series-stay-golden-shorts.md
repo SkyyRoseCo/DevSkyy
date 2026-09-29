@@ -10,6 +10,12 @@ reference_image: assets/products/source-photos/signature/sg-003-stay-golden-shor
 
 **Garment type lock:** Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Golden Gate Bridge at night**. The photo print shows the iconic Golden Gate Bridge illuminated against a deep purple-violet/navy night sky, with golden city-light reflections rippling vertically across the dark water at the lower portion. Standard basketball-shorts construction: purple elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. "Stay Golden" refers to the **Golden Gate Bridge lit gold against the night sky** (this is the NIGHT variant — carries a purple rose; the daytime Bay Bridge variant sg-001 carries a blue rose). NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT the Bay Bridge Shorts (that's sg-001 — daytime SF-Oakland Bay Bridge, separate SKU).
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
 ## Branding — exactly what IS on this product
 
 Exact SKU artwork and front placement are bound in `logo-registry.json::sku_logos::sg-003::render_reference` to `assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png`. The existing physical-authority record and its current file hash agree. Use the complete garment pixels for artwork, position and relative scale; no generic cluster recoloring.

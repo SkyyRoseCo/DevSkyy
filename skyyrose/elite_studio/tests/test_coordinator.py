@@ -78,8 +78,10 @@ class TestCoordinatorProduce:
         assert result.status == "error"
         assert result.step == "generation"
 
-    def test_qc_failure_still_success(self, coordinator, mock_vision, mock_generator, mock_quality):
-        """QC failure doesn't fail the whole production — image was still generated."""
+    def test_qc_failure_blocks_production(
+        self, coordinator, mock_vision, mock_generator, mock_quality
+    ):
+        """A generated file is retained, but missing QC cannot approve production."""
         mock_vision.analyze.return_value = make_synthesized_vision(
             providers_used=("gemini",),
         )
@@ -92,7 +94,9 @@ class TestCoordinatorProduce:
         )
 
         result = coordinator.produce("br-001")
-        assert result.status == "success"
+        assert result.status == "error"
+        assert result.step == "quality"
+        assert result.output_path
         assert not result.quality.success
 
     def test_generator_receives_spec(self, coordinator, mock_vision, mock_generator, mock_quality):

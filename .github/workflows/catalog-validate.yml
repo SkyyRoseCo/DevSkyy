@@ -21,6 +21,8 @@ on:
       - "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json"
       - "frontend/data/skyyrose-catalog.csv"
       - "tests/test_product_entry_point.py"
+      - "tests/test_product_readiness.py"
+      - "tests/test_product_consumer_contracts.py"
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
@@ -29,6 +31,9 @@ on:
       - "tests/test_registry_php_parity.py"
       - "tests/test_bridge_asset_readiness.py"
       - "scripts/scaffold_sku_asset_folders.py"
+      - "scripts/build_product_asset_library.py"
+      - "tests/test_product_asset_library.py"
+      - "assets/products/catalog/**"
       - "wordpress-theme/skyyrose-flagship/inc/product-catalog.php"
       - "scripts/oai_render/**"
       - "skyyrose/elite_studio/tests/test_logo_registry.py"
@@ -56,6 +61,8 @@ on:
       - "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json"
       - "frontend/data/skyyrose-catalog.csv"
       - "tests/test_product_entry_point.py"
+      - "tests/test_product_readiness.py"
+      - "tests/test_product_consumer_contracts.py"
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
@@ -64,6 +71,9 @@ on:
       - "tests/test_registry_php_parity.py"
       - "tests/test_bridge_asset_readiness.py"
       - "scripts/scaffold_sku_asset_folders.py"
+      - "scripts/build_product_asset_library.py"
+      - "tests/test_product_asset_library.py"
+      - "assets/products/catalog/**"
       - "wordpress-theme/skyyrose-flagship/inc/product-catalog.php"
       - "scripts/oai_render/**"
       - "skyyrose/elite_studio/tests/test_logo_registry.py"
@@ -100,7 +110,7 @@ jobs:
           # without pytest-asyncio pytest errors "Unknown config option").
           # No project/base install — `.[dev]` pulls the heavy provider stack, was
           # timing out, and silently fell back to a pytest-only env that failed.
-          pip install pytest pytest-asyncio pytest-timeout jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
+          pip install pytest pytest-asyncio pytest-timeout Pillow PyYAML jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
 
       - name: Run catalog consistency validator
         run: |
@@ -144,7 +154,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}
 
       - name: Verify the single product entry point (all SKUs resolve or declare gaps)
-        run: pytest tests/test_product_entry_point.py -v --tb=short
+        run: pytest tests/test_product_entry_point.py tests/test_product_readiness.py -v --tb=short
         env:
           PYTHONPATH: ${{ github.workspace }}
 
@@ -154,7 +164,7 @@ jobs:
                  tests/test_collection_sot_guard.py tests/test_lookbook_sot_guard.py \
                  tests/test_unified_product_registry.py tests/test_registry_product_readers.py \
                  tests/test_registry_php_parity.py \
-                 tests/test_bridge_asset_readiness.py \
+                 tests/test_bridge_asset_readiness.py tests/test_product_asset_library.py \
                  skyyrose/elite_studio/tests/test_logo_registry.py -v --tb=short
         env:
           PYTHONPATH: ${{ github.workspace }}

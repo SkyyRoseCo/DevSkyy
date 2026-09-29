@@ -66,7 +66,10 @@ __all__ = [
     "gap_report",
     "get_all_products",
     "get_product",
+    "gap_categories",
+    "product_readiness",
     "provenance",
+    "render_reference",
 ]
 
 IMAGE_ROLES: tuple[Role, ...] = ("front", "back", "packshot", "back_packshot")
@@ -237,12 +240,91 @@ def _corrections_for(product: dict[str, Any]) -> list[dict[str, str]]:
     return [dict(line) for line in product.get("corrections") or []]
 
 
+# Requirements concern data readiness, never provider authorization or asset QA.
+GARMENT_SPEC_FIELDS = ("color", "fit", "materials", "features")
+RENDER_VIEWS = ("front", "back")
+OPERATION_FIELDS = {
+    "render": tuple(f"garment.{field}" for field in GARMENT_SPEC_FIELDS),
+    "seo": ("content.seo_meta",),
+    "alt-text": ("content.alt_text",),
+}
+
+
+def _present(value: Any) -> bool:
+    if isinstance(value, str):
+        return bool(value.strip())
+    return bool(value)
+
+
+def gap_categories(record: dict[str, Any]) -> dict[str, list[str]]:
+    """Classify legacy gaps and discover missing specifications/view bindings.
+
+    Accepts the complete get_product projection; does not infer or mutate facts.
+    Render sources are explicit bindings, independent of storefront fallbacks.
+    """
+    gaps = list(record.get("gaps", []))
+    for field in GARMENT_SPEC_FIELDS:
+        value = (record.get("garment") or {}).get(field)
+        if isinstance(value, dict):
+            value = value.get("specification")
+        if not _present(value):
+            gaps.append(f"garment.{field}")
+    for view in RENDER_VIEWS:
+        if not _present((record.get("render_sources") or {}).get(view)):
+            gaps.append(f"render_sources.{view}")
+    for field in CONTENT_FIELDS:
+        value = (record.get("content") or {}).get(field)
+        if not value or not _present(value.get("value")):
+            gaps.append(f"content.{field}")
+    if not any(_present(value) for value in (record.get("alt_text") or {}).values()):
+        gaps.append("content.alt_text")
+    categories: dict[str, list[str]] = {}
+    for gap in dict.fromkeys(gaps):
+        categories.setdefault(gap.split(".", 1)[0], []).append(gap)
+    return categories
+
+
+def product_readiness(
+    record: dict[str, Any], operation: str = "render", *, required_views: tuple[str, ...] = ()
+) -> dict[str, Any]:
+    """Check explicit operation requirements on a get_product snapshot.
+
+    SEO/alt-text check existing deliverable completeness, not ability to draft it.
+    Render readiness checks bindings only; binary and fidelity QA remain separate.
+    Unknown operations/views raise. No required render view fails closed.
+    """
+    if operation not in OPERATION_FIELDS:
+        raise ValueError(f"Unknown product readiness operation: {operation!r}")
+    if any(view not in RENDER_VIEWS for view in required_views):
+        raise ValueError("Required views must be front or back")
+    categories = gap_categories(record)
+    gaps = list(dict.fromkeys(gap for group in categories.values() for gap in group))
+    required = list(OPERATION_FIELDS[operation])
+    if operation == "render":
+        required.extend(f"render_sources.{view}" for view in dict.fromkeys(required_views))
+        if not required_views:
+            required.append("required_views")
+            gaps.append("required_views")
+    blocking = [field for field in required if field in gaps]
+    return {
+        "operation": operation,
+        "required_fields": required,
+        "required_views": list(required_views) if operation == "render" else [],
+        "ready": not blocking,
+        "blocking_gaps": blocking,
+        "optional_gaps": [gap for gap in gaps if gap not in blocking],
+        "gaps": gaps,
+        "gap_categories": categories,
+    }
+
+
 def get_product(sku: str) -> dict[str, Any]:
     """Everything known about ``sku``, in one verified record.
 
     Sections: ``catalog`` (commerce), ``garment`` (color, sizes, fit, materials,
     features, sizing references), ``dossier`` (the founder's design
     specification), ``images`` (every role, resolved), ``render_sources``,
+    ``asset_library`` (collection/SKU directory and reviewed source-photo bindings),
     ``logos`` (graphics, placements, decoration dimensions), ``content``
     (marketing copy and SEO), ``alt_text``, ``corrections`` (render corrections,
     each naming its author), ``render_policy`` (founder keep decisions),
@@ -268,7 +350,7 @@ def get_product(sku: str) -> dict[str, Any]:
         product_registry.validate_merchandising(merchandising)
     merchandising_gaps = [] if merchandising is not None else ["merchandising"]
 
-    return {
+    record = {
         "sku": sku,
         "name": catalog.get("name"),
         "collection": catalog.get("collection"),
@@ -276,9 +358,11 @@ def get_product(sku: str) -> dict[str, Any]:
         "garment": product.get("garment", {}),
         "merchandising": merchandising,
         "merchandising_provenance": product.get("merchandising_provenance"),
-        "dossier": merged["dossier"],
+        "dossier": {**merged["dossier"], "full_text": merged["_dossier"].raw},
+        "catalog_row": {k: v for k, v in merged.items() if k not in ("dossier", "_dossier")},
         "images": images,
         "render_sources": product.get("render_sources", {}),
+        "asset_library": product.get("asset_library", {}),
         "logos": _logos_for(sku),
         "content": content,
         "alt_text": alt_text,
@@ -289,6 +373,41 @@ def get_product(sku: str) -> dict[str, Any]:
         "authority": product.get("authority"),
         "gaps": image_gaps + content_gaps + merchandising_gaps,
         "provenance": provenance(),
+    }
+
+    record["gap_categories"] = gap_categories(record)
+    record["gaps"] = list(
+        dict.fromkeys(
+            record["gaps"] + [gap for group in record["gap_categories"].values() for gap in group]
+        )
+    )
+    return record
+
+
+def render_reference(record: dict[str, Any], view: str) -> dict[str, Any]:
+    """Resolve exactly one registry-bound view before any provider dispatch.
+
+    Never guesses filenames, crosses views, or accepts paths outside this checkout.
+    The digest proves bytes read, not visual approval or generation authority.
+    """
+    if view not in RENDER_VIEWS:
+        raise ValueError("Reference view must be front or back")
+    binding = (record.get("render_sources") or {}).get(view)
+    if not isinstance(binding, str) or not binding.strip():
+        raise ValueError(f"{record['sku']}: missing render_sources.{view}")
+    path = (REPO_ROOT / binding).resolve()
+    if not path.is_relative_to(REPO_ROOT.resolve()):
+        raise ValueError("Render reference must remain inside the repository")
+    data = path.read_bytes()
+    if not data:
+        raise ValueError(f"Empty reference: {binding}")
+    return {
+        "sku": record["sku"],
+        "view": view,
+        "path": str(path),
+        "binding": f"products.{record['sku']}.render_sources.{view}",
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "provenance": record.get("provenance"),
     }
 
 

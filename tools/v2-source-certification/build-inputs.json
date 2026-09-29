@@ -8,7 +8,7 @@
   ],
   "catalog_authority": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
   "catalog_sha256": "a240226b133f90a6c400329d5db89b1c31a34fab01426928e0a18706c994cfb7",
-  "current_registry_sha256": "4bd403a92525048dc55367582861436f7082e15001c5c7812f18b2aa70d113e1",
+  "current_registry_sha256": "c9382a9cd9c055b74f41cec4c31d614322eae7244ca7ee409572070c6a7e2ba0",
   "garment_source": "skyyrose.core.product.get_product#catalog.garment_type_lock",
   "generated_policy": "tools/v2-source-certification/generated-outputs.json",
   "generator": "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py",
@@ -69,9 +69,9 @@
     "wordpress-theme/skyyrose-flagship-2/scripts/build-pot.py": "7c9a40faad581e718676d4ea00455bf94a373662a25594aa2d029ae04dd88d51",
     "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py": "b16bfd6a65f58f61947b3afbaadd67544c2297c467f480f4da1d2c34d50ce5f4",
     "wordpress-theme/skyyrose-flagship-2/scripts/verify-marketplace.sh": "8c50abb06cb744d895efef67323be14010271f5951050b3de58e64a506e86bc6",
-    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "4bd403a92525048dc55367582861436f7082e15001c5c7812f18b2aa70d113e1",
-    "skyyrose/core/product.py": "545da7427c92f042f1c8c95523049c0671eacdd3de77ae1656ccf32ac215d364",
-    "skyyrose/core/product_registry.py": "c5819df0e350be6d77a7901201dbb38617d46d22ec049747996243a5d54612c1"
+    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "c9382a9cd9c055b74f41cec4c31d614322eae7244ca7ee409572070c6a7e2ba0",
+    "skyyrose/core/product.py": "0934c000ec3a94b12847c5ebb32eca018769f867d5cb9a2e7588f139559e98bb",
+    "skyyrose/core/product_registry.py": "049e493b5a3056927aa2d171a15f82c6c67d5dca57e74d3073649a79c584f529"
   },
   "node": "22.23.2",
   "npm": "10.9.8",

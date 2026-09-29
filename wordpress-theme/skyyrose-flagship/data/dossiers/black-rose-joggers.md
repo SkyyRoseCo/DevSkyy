@@ -11,6 +11,12 @@ extra_logos:
 
 **Garment type lock:** Black jogger sweatpants — lower body only, elasticated waist with drawstring, tapered leg, ribbed ankle cuffs, side hand pockets, back pockets. **White ribbed waistband** at the top, **white ribbed ankle cuffs** at the bottom (contrast white trim against the black body — same pattern as the matching Black Rose Crewneck). NOT shorts. NOT straight-leg sweatpants. NOT cargo pants. NOT track pants with side stripes. NOT leggings. Heavyweight cotton-blend fleece, relaxed fit through the thigh.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:

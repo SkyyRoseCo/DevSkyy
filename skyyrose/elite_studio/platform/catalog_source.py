@@ -2,7 +2,7 @@
 
 The protocol generalizes ground-truth resolution so tenant #2 implements its
 own source without touching the platform core. SkyyRose's source resolves the
-LOCKED canonical sources only (CSV + dossier + golden); DossierMissingError
+single editable registry plus separately managed golden evaluation references; DossierMissingError
 propagates (no silent fallback).
 """
 
@@ -18,7 +18,7 @@ from skyyrose.elite_studio.quality.visual_regression import CANONICAL_ANGLES
 
 @dataclass(frozen=True)
 class ProductRecord:
-    """A resolved product: CSV row + parsed dossier + ground-truth refs."""
+    """A resolved product: registry projection + parsed dossier + complete product record."""
 
     sku: str
     name: str
@@ -26,6 +26,7 @@ class ProductRecord:
     garment_type_lock: str
     dossier: dict  # full dossier.to_dict()
     row: dict = field(default_factory=dict, repr=False)
+    product: dict = field(default_factory=dict, repr=False)
 
 
 @runtime_checkable
@@ -37,15 +38,15 @@ class CatalogSource(Protocol):
 
 
 class SkyyRoseCatalogSource:
-    """Tenant #1 source — reads catalog CSV + dossier + golden references."""
+    """Tenant #1 source — reads the unified product registry; golden references are evaluation fixtures."""
 
     def __init__(self, reference_root: Path | None = None) -> None:
         self._reference_root = Path(reference_root or GOLDEN_DIR)
 
     def get(self, sku: str) -> ProductRecord:
-        from skyyrose.core.dossier_loader import get_product_with_dossier
+        from skyyrose.core.product import get_product
 
-        merged = get_product_with_dossier(sku)  # raises KeyError / DossierMissingError
+        merged = get_product(sku)  # raises KeyError / DossierMissingError
         dossier = merged["dossier"]
         return ProductRecord(
             sku=sku,
@@ -53,7 +54,8 @@ class SkyyRoseCatalogSource:
             collection=dossier.get("collection", ""),
             garment_type_lock=dossier.get("garment_type_lock", ""),
             dossier=dossier,
-            row={k: v for k, v in merged.items() if k not in ("dossier", "_dossier")},
+            row=merged["catalog_row"],
+            product=merged,
         )
 
     def references(self, sku: str) -> dict[str, Path]:

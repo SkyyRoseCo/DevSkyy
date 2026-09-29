@@ -3,7 +3,17 @@
 import base64
 from unittest.mock import MagicMock, patch
 
+import pytest
+
 from skyyrose.elite_studio import gemini_rest
+
+
+@pytest.fixture(autouse=True)
+def offline_keyset(monkeypatch):
+    # Transport tests must not depend on developer credentials. _KEYS is
+    # intentionally frozen at import, so mocking _get_active_key alone is insufficient.
+    monkeypatch.setattr(gemini_rest, "_KEYS", ["offline-fixture-key"])
+    monkeypatch.setattr(gemini_rest, "_KEY_INDEX", 0)
 
 
 class TestGetKey:
