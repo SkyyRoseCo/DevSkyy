@@ -131,7 +131,11 @@ from llm.model_ids import (  # noqa: E402, F401  -- re-exported for legacy impor
     COMPOSITOR_QA_MODEL,
 )
 from llm.model_ids import GEMINI_FLASH_IMAGE_MODEL as GEMINI_IMAGE_GEN_MODEL  # noqa: E402, F401
-from llm.model_ids import GEMINI_VISION_MODEL, OPENAI_IMAGE_MODEL, OPENAI_VISION_MODEL
+from llm.model_ids import (  # noqa: E402, F401  -- re-exported for legacy importers
+    GEMINI_VISION_MODEL,
+    OPENAI_IMAGE_MODEL,
+    OPENAI_VISION_MODEL,
+)
 
 # Local-only back-compat aliases — these names exist only here, not in
 # llm/model_ids.py, because they're skyyrose-specific re-spellings.
@@ -251,12 +255,12 @@ def get_anthropic_client():
 
 
 def validate_catalog_readers(*, raise_on_mismatch: bool = False) -> dict[str, str]:
-    """Verify every catalog reader in the project resolves to the canonical CSV.
+    """Verify legacy catalog projection paths agree (not product authority).
 
-    Per MEMORY.md, four reader paths exist (Python: core.catalog_loader,
-    elite_studio.catalog, scripts.nano_banana.catalog; PHP: skyyrose_get_product_catalog).
-    All MUST resolve to wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv.
-    This function imports each Python reader and asserts they expose the same path.
+    Complete reads use core.product.get_product from the editable registry.
+    Python readers retain CSV path constants for compatibility; this check
+    compares those paths and the PHP projection consumer. Registry/export
+    content parity is separately enforced by sync_product_registry.py --check.
 
     Returns:
         Mapping reader_name -> resolved CSV path string. The PHP reader is

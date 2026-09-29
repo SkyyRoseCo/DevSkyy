@@ -37,6 +37,8 @@ class EnhancedPrompt:
     template_used: str
     brief_status: str = "unverified"
     gaps: tuple[str, ...] = ()
+    blocking_gaps: tuple[str, ...] = ()
+    optional_gaps: tuple[str, ...] = ()
 
 
 class PromptEnhancer:
@@ -69,6 +71,7 @@ class PromptEnhancer:
         sku: str | None = None,
         required_views: tuple[str, ...] = (),
         new_design: bool = False,
+        operation: str = "render",
     ) -> EnhancedPrompt:
         """Enhance a raw prompt into an expert-level agent brief.
 
@@ -93,7 +96,13 @@ class PromptEnhancer:
         ctx_digest = _context_digest(
             fashion_context,
             brand_context,
-            {"version": 2, "sku": sku, "views": required_views, "new_design": new_design},
+            {
+                "version": 3,
+                "operation": operation,
+                "sku": sku,
+                "views": required_views,
+                "new_design": new_design,
+            },
         )
         grounded = bool(product_skus(prompt, sku)) or not new_design
         cache_key = _prompt_hash(prompt, resolved_intent, ctx_digest)
@@ -116,6 +125,7 @@ class PromptEnhancer:
             sku=sku,
             required_views=required_views,
             new_design=new_design,
+            operation=operation,
         )
 
         # Score the enhanced prompt
@@ -132,6 +142,8 @@ class PromptEnhancer:
             template_used=chain_result["template_used"],
             brief_status=chain_result.get("brief_status", "ideation"),
             gaps=tuple(chain_result.get("gaps", [])),
+            blocking_gaps=tuple(chain_result.get("blocking_gaps", [])),
+            optional_gaps=tuple(chain_result.get("optional_gaps", [])),
         )
 
         # Store in cache

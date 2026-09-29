@@ -5,6 +5,12 @@ repo_root="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$repo_root"
 export PYTHONPATH="$repo_root/tasks/prompt-model-audit:$repo_root"
 .venv/bin/python -m pytest -p offline_guard -o addopts='' -q --disable-warnings \
+  tests/test_product_readiness.py tests/test_product_entry_point.py \
+  tests/test_product_consumer_contracts.py tests/pipelines/test_oai_render_hardening.py \
+  tests/elite_studio/platform/test_catalog_source.py \
+  skyyrose/elite_studio/tests/test_dual_vision_gate.py \
+  skyyrose/elite_studio/tests/test_three_d_agent.py \
+  skyyrose/elite_studio/tests/test_ghost_mannequin_preflight.py \
   tests/test_prompt_model_contracts.py tests/test_openai_settings_contract.py \
   tests/test_prompt_intelligence.py tests/test_llm.py tests/test_creative_job.py \
   tests/test_context_resolver.py skyyrose/elite_studio/tests/test_ghost_mannequin_qa.py \

@@ -60,7 +60,7 @@ def _make_flux_result(
 def _fake_product_with_dossier(sku: str = "br-001") -> dict:
     """Return a deterministic fake product+dossier payload for unit tests.
 
-    Mirrors the shape returned by skyyrose.core.dossier_loader.get_product_with_dossier
+    Mirrors the shape returned by skyyrose.core.product.get_product
     without touching the canonical CSV or filesystem.
     """
     return {
@@ -68,6 +68,8 @@ def _fake_product_with_dossier(sku: str = "br-001") -> dict:
         "name": "Test Product",
         "collection": "black-rose",
         "dossier_slug": "test-product",
+        "corrections": [{"text": "exact founder correction", "authority": "FOUNDER_CONFIRMED"}],
+        "provenance": {"fixture": True},
         "dossier": {
             "sku": sku,
             "name": "Test Product",
@@ -85,7 +87,7 @@ def _fake_product_with_dossier(sku: str = "br-001") -> dict:
 def _patch_dossier_loader():
     """Patch the lazy-imported dossier loader inside generate_replica."""
     return patch(
-        "skyyrose.core.dossier_loader.get_product_with_dossier",
+        "skyyrose.core.product.get_product",
         return_value=_fake_product_with_dossier(),
     )
 
@@ -130,7 +132,7 @@ async def test_generate_replica_success(mock_three_d_agent, sample_sku):
             "skyyrose.elite_studio.synthesis.render",
             new_callable=AsyncMock,
             return_value=flux_result,
-        ),
+        ) as render_mock,
         patch(
             "skyyrose.elite_studio.agents.three_d_agent.CreativeAgent.execute",
             new_callable=AsyncMock,
@@ -151,6 +153,13 @@ async def test_generate_replica_success(mock_three_d_agent, sample_sku):
     ):
         result = await mock_three_d_agent.generate_replica(sample_sku, "path/to/techflat.png")
 
+    from skyyrose.elite_studio.synthesis.prompts.base_prompts import build_base_prompt
+
+    delivered = render_mock.call_args.kwargs["dossier"]
+    assert delivered["product_corrections"] == _fake_product_with_dossier()["corrections"]
+    assert "exact founder correction" in build_base_prompt(delivered)
+    assert "FOUNDER_CONFIRMED" in build_base_prompt(delivered)
+    assert result["reference_evidence"]["view"] == "front"
     assert result["success"] is True
     assert "glb_path" in result
     assert "renders" in result
@@ -266,3 +275,15 @@ async def test_none_synth_result_returns_error(mock_three_d_agent):
 
     assert result["success"] is False
     assert "Synthesis" in result["error"]
+
+
+@pytest.fixture(autouse=True)
+def reference_fixture(monkeypatch):
+    monkeypatch.setattr(
+        "skyyrose.core.product.render_reference",
+        lambda record, view: {
+            "path": str(Path("path/to/techflat.png").resolve()),
+            "view": view,
+            "sku": record["sku"],
+        },
+    )

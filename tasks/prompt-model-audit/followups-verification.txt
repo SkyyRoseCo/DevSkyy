@@ -1,0 +1,39 @@
+........................................................................ [ 18%]
+........................................................................ [ 37%]
+........................................................................ [ 56%]
+........................................................................ [ 75%]
+........................................................................ [ 93%]
+........................                                                 [100%]
+384 passed in 7.63s
+..................................                                       [100%]
+34 passed, 6 warnings in 0.05s
+
+> devskyy@3.2.0 test
+> vitest run --config config/testing/vitest.config.ts src/services/__tests__/OpenAIService.test.ts src/services/__tests__/openai-sdk-compatibility.test.ts
+
+(node:39352) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+ RUN  v4.1.11 /Users/theceo/.codex/worktrees/58cc/DevSkyy
+
+(node:39379) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+ Test Files  2 passed (2)
+      Tests  27 passed (27)
+   Start at  17:26:44
+   Duration  221ms (transform 68ms, setup 49ms, import 98ms, tests 35ms, environment 0ms)
+
+
+> devskyy@3.2.0 type-check
+> tsc --project config/typescript/tsconfig.json --noEmit
+
+(node:39879) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Checking formatting...
+All matched files use Prettier code style!
+PASS: CSV and all product dossiers match the registry

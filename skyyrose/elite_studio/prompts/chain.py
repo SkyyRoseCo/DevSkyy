@@ -15,7 +15,7 @@ import json
 import re
 from datetime import UTC, datetime
 
-from skyyrose.core.product import get_product
+from skyyrose.core.product import get_product, product_readiness
 from skyyrose.elite_studio.prompts.analyzer import (
     _COLLECTIONS,
     _SKU_PREFIXES,
@@ -158,9 +158,12 @@ def product_skus(prompt: str, sku: str | None = None) -> tuple[str, ...]:
     return found
 
 
-def _product_brief(prompt: str, skus: tuple[str, ...], views: tuple[str, ...]) -> dict:
+def _product_brief(
+    prompt: str, skus: tuple[str, ...], views: tuple[str, ...], operation: str = "render"
+) -> dict:
     """Deterministic registry projection, not a second editable product store."""
     constraints, references, gaps = {}, {}, []
+    readiness, blocking = {}, []
     for sku in skus:
         record = get_product(sku)  # unknown products fail closed
         constraints[sku] = {
@@ -180,20 +183,12 @@ def _product_brief(prompt: str, skus: tuple[str, ...], views: tuple[str, ...]) -
             "images": record.get("images", {}),
             "render_sources": record.get("render_sources", {}),
         }
-        gaps.extend(f"{sku}.{gap}" for gap in record.get("gaps", []))
-        for key in ("color", "fit", "materials", "features"):
-            value = record.get("garment", {}).get(key)
-            if not value or (isinstance(value, dict) and not value.get("specification")):
-                gaps.append(f"{sku}.garment.{key}")
-        if not views:
-            gaps.append(f"{sku}.required_views")
-        for view in views:
-            # Render sources bind the physical design to front/back. A generic
-            # supplemental reference or a different view cannot fill a missing view.
-            if view not in ("front", "back") or not record.get("render_sources", {}).get(view):
-                gaps.append(f"{sku}.render_sources.{view}")
+        readiness[sku] = product_readiness(record, operation, required_views=views)
+        gaps.extend(f"{sku}.{gap}" for gap in readiness[sku]["gaps"])
+        blocking.extend(f"{sku}.{gap}" for gap in readiness[sku]["blocking_gaps"])
     if not skus:
         gaps.append("product.sku")
+        blocking.append("product.sku")
     return {
         "brand": BRAND_NAME,
         "product_constraints": constraints,
@@ -201,7 +196,11 @@ def _product_brief(prompt: str, skus: tuple[str, ...], views: tuple[str, ...]) -
         "creative_direction": prompt,
         "required_views": list(views),
         "gaps": sorted(set(gaps)),
-        "brief_status": "incomplete" if gaps else "grounded",
+        "brief_status": "incomplete" if blocking else "grounded",
+        "readiness": readiness,
+        "operation": operation,
+        "blocking_gaps": sorted(set(blocking)),
+        "optional_gaps": sorted(set(gaps) - set(blocking)),
         "imagery_standard": IMAGERY_STANDARD,
         "provider_controls": {
             "seed": "not applicable: no provider selected",
@@ -236,6 +235,7 @@ class PromptChain:
         sku: str | None = None,
         required_views: tuple[str, ...] = (),
         new_design: bool = False,
+        operation: str = "render",
     ) -> dict:
         """Run the full 5-stage enhancement chain.
 
@@ -252,7 +252,7 @@ class PromptChain:
 
         skus = product_skus(prompt, sku)
         if skus or not new_design:
-            brief = _product_brief(prompt, skus, required_views)
+            brief = _product_brief(prompt, skus, required_views, operation)
             # Optional contexts describe creative intent only, never product facts.
             brief["creative_context"] = {"fashion": fashion_context, "brand": brand_context}
             return {

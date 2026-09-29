@@ -175,3 +175,13 @@ this checkout, so Git did not execute the pre-commit hook. The bounded
 verification script and changed-Python style checks were run explicitly and
 passed before documentation handoff; whole-project mypy and the hook-only
 fast-unit suite were not run. No hook configuration was changed.
+
+## Subsequent local product-truth follow-up
+
+Follow-up 1 adds central gap categories and operation-specific brief readiness.
+See [READINESS-IMPLEMENTATION.md](READINESS-IMPLEMENTATION.md) for its scope,
+explicit requirements, 361-test offline verification and remaining limitations.
+The original verification counts above describe the parent implementation.
+
+All four product-truth follow-ups are now covered by
+[FOLLOWUPS-IMPLEMENTATION.md](FOLLOWUPS-IMPLEMENTATION.md).

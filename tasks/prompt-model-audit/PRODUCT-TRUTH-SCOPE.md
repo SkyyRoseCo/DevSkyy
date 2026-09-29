@@ -45,7 +45,7 @@ passed: `CSV and all product dossiers match the registry`.
 
 ## Follow-up scope
 
-### 1. Central gaps and task-specific readiness
+### 1. Central gaps and task-specific readiness — implemented locally
 
 `skyyrose/core/product.py:290` combines image, content and merchandising gaps
 but omits missing garment specifications and render-source views. The new brief
@@ -63,7 +63,7 @@ Acceptance: independently remove fit, front reference, SEO copy and alt text in
 fixtures. All absences appear centrally; only relevant requirements block the
 selected operation. Unknown SKU/missing required view remain fail-closed.
 
-### 2. Replace legacy vision filename guessing
+### 2. Replace legacy vision filename guessing — implemented
 
 `skyyrose/elite_studio/agents/vision_agent.py:39–66` checks catalog sources,
 then guesses SKU filenames and eventually returns a presumed JPG path. This is
@@ -74,7 +74,7 @@ caller/test migration. Acceptance: similarly named unrelated files cannot be
 selected; back cannot use front; absent bindings stop before dispatch;
 provenance identifies the exact binding.
 
-### 3. Migrate complete-product consumers selectively
+### 3. Migrate complete-product consumers selectively — implemented
 
 Candidate consumers: `scripts/oai_render/lookbook.py:48,136`,
 `scripts/oai_render/prompt.py:15–17`,
@@ -92,7 +92,7 @@ Acceptance: fixture corrections and changed references reach serialized
 requests; unknown SKU/missing dossier fail; no stale file/CSV fallback; no
 provider calls.
 
-### 4. Update remaining authority terminology and validation
+### 4. Update remaining authority terminology and validation — implemented
 
 `skyyrose/elite_studio/config.py:253–263`, `catalog.py:1` and `utils.py:123`
 retain older CSV terminology. Describe projections accurately and distinguish
@@ -114,4 +114,14 @@ Back bindings are absent for `br-004`, `br-005`, `lh-002`, `lh-005`, `lh-006`,
 Repair only from approved sources and current founder statements. Follow the
 applicable dossier/registry write contract and regenerate projections. Do not
 invent measurements, demand reconfirmation of supplied facts, or author a new
-parallel product-truth manifest. These follow-ups are scoped, not implemented.
+parallel product-truth manifest. All four follow-ups are implemented. The
+baseline observations above remain historical. See
+[FOLLOWUPS-IMPLEMENTATION.md](FOLLOWUPS-IMPLEMENTATION.md) for final behavior
+and checks.
+
+## Follow-up 1 delivery
+
+See [READINESS-IMPLEMENTATION.md](READINESS-IMPLEMENTATION.md) for the additive
+central report, explicit operation requirements, offline tests and limitations.
+The observations above describe the baseline; no missing product facts or asset
+bindings were filled in as part of this implementation.
