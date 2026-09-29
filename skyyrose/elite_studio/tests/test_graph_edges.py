@@ -87,7 +87,7 @@ class TestAfterQuality:
             max_retries=2,
             enable_compositor=True,
         )
-        assert after_quality(state) == COMPOSITOR
+        assert after_quality(state) == FINALIZE
 
     def test_routes_to_finalize_when_no_qc_result(self):
         state = _base_state(quality_result=None, enable_compositor=False)

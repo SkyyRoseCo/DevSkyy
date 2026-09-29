@@ -12,8 +12,8 @@ import logging
 import re
 from pathlib import Path
 
-from skyyrose.core.dossier_loader import DOSSIERS_DIR, load_dossier
-from skyyrose.core.product_registry import load_registry
+from skyyrose.core.dossier_loader import DOSSIERS_DIR, DossierMissingError
+from skyyrose.core.product import all_skus, get_product
 from skyyrose.elite_studio.logo_registry import LogoRegistry
 
 log = logging.getLogger(__name__)
@@ -252,7 +252,12 @@ def read_dossier(dossier_path: Path | None) -> str | None:
         return None
     if dossier_path.parent.resolve() == DOSSIERS_DIR.resolve():
         # Canonical paths are logical identifiers; mirrors may be stale or absent.
-        raw = load_dossier(dossier_path.stem).raw
+        for sku in all_skus():
+            record = get_product(sku)
+            if record["dossier"]["slug"] == dossier_path.stem:
+                # Founder prose must not pass through composition filters or truncation.
+                return record["dossier"]["full_text"]
+        raise DossierMissingError(f"No registry dossier for {dossier_path.stem!r}")
     else:
         try:
             raw = dossier_path.read_text(encoding="utf-8")
@@ -308,11 +313,7 @@ def corrections_for(sku: str) -> list[dict[str, str]]:
     without the product's corrections would repeat a render the founder
     already rejected.
     """
-    product = load_registry()["products"].get(sku) or {}
-    return [
-        {"text": entry["text"], "authority": entry["authority"]}
-        for entry in product.get("corrections") or []
-    ]
+    return [dict(entry) for entry in get_product(sku)["corrections"]]
 
 
 _FOUNDER_HEADER = (
@@ -334,14 +335,15 @@ def _corrections_block(sku: str) -> list[str]:
     The founder's own comments and agent-added lines go under separate headers,
     so the model is never told the founder wrote something he did not.
     """
-    sections = {"FOUNDER_VERBATIM": [], "AGENT_ADDED": []}
+    sections = {"FOUNDER_VERBATIM": [], "FOUNDER_CONFIRMED": [], "AGENT_ADDED": []}
     for entry in corrections_for(sku):
-        line = sanitize_injected_text(entry["text"], source=f"corrections:{sku}")
+        line = entry["text"]
         if line:
             sections[entry["authority"]].append(line)
     block: list[str] = []
     for authority, header in (
         ("FOUNDER_VERBATIM", _FOUNDER_HEADER),
+        ("FOUNDER_CONFIRMED", _FOUNDER_HEADER),
         ("AGENT_ADDED", _AGENT_HEADER),
     ):
         if sections[authority]:
@@ -539,7 +541,7 @@ def build_pair_prompt(
     parts.append("")
 
     for g in garments:
-        parts.extend(_corrections_block(g["sku"]))
+        parts.extend(_corrections_block(g.get("product_sku", g["sku"])))
         parts.append(
             LogoRegistry.load().prompt_instructions(
                 g["sku"], require_sizing=bool(g.get("is_patch"))

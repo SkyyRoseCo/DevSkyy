@@ -21,6 +21,8 @@ on:
       - "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json"
       - "frontend/data/skyyrose-catalog.csv"
       - "tests/test_product_entry_point.py"
+      - "tests/test_product_readiness.py"
+      - "tests/test_product_consumer_contracts.py"
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
@@ -56,6 +58,8 @@ on:
       - "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json"
       - "frontend/data/skyyrose-catalog.csv"
       - "tests/test_product_entry_point.py"
+      - "tests/test_product_readiness.py"
+      - "tests/test_product_consumer_contracts.py"
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
@@ -100,7 +104,7 @@ jobs:
           # without pytest-asyncio pytest errors "Unknown config option").
           # No project/base install — `.[dev]` pulls the heavy provider stack, was
           # timing out, and silently fell back to a pytest-only env that failed.
-          pip install pytest pytest-asyncio pytest-timeout jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
+          pip install pytest pytest-asyncio pytest-timeout PyYAML jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
 
       - name: Run catalog consistency validator
         run: |
@@ -144,7 +148,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}
 
       - name: Verify the single product entry point (all SKUs resolve or declare gaps)
-        run: pytest tests/test_product_entry_point.py -v --tb=short
+        run: pytest tests/test_product_entry_point.py tests/test_product_readiness.py -v --tb=short
         env:
           PYTHONPATH: ${{ github.workspace }}
 

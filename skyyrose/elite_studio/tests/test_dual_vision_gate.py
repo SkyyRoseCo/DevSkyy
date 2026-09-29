@@ -1,4 +1,4 @@
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, patch
 
 import pytest
 
@@ -83,16 +83,28 @@ async def test_analyze_wraps_verify_reference(tmp_path):
     with (
         patch.object(gate, "_call_openai", return_value="YES: sg-013 mint crewneck confirmed"),
         patch.object(gate, "_call_gemini", return_value="YES: confirmed crewneck"),
-        patch("skyyrose.elite_studio.agents.vision_agent._reference_path", return_value=str(img)),
-        patch("skyyrose.elite_studio.catalog.Catalog.load") as mock_load,
     ):
-        mock_product = MagicMock()
-        mock_product.name = "Mint & Lavender Crewneck"
-        mock_product.branding_summary = "SR monogram"
-        mock_load.return_value.require.return_value = mock_product
-
         from skyyrose.elite_studio.models import SynthesizedVision
 
         result = await gate.analyze("sg-013", "front")
     assert isinstance(result, SynthesizedVision)
     assert result.success
+
+
+@pytest.fixture(autouse=True)
+def bound_reference(monkeypatch, tmp_path):
+    from skyyrose.core import product
+
+    monkeypatch.setattr(product, "REPO_ROOT", tmp_path)
+
+    def record(sku):
+        path = "ref.jpg" if sku == "sg-013" else "test.jpg"
+        return {
+            "sku": sku,
+            "name": "Fixture garment",
+            "dossier": {"branding_block": "Fixture"},
+            "render_sources": {"front": path},
+            "provenance": {"fixture": True},
+        }
+
+    monkeypatch.setattr("skyyrose.elite_studio.agents.vision_agent.get_product", record)

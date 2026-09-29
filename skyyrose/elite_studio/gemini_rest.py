@@ -114,7 +114,9 @@ def _endpoint(model: str, method: str = "generateContent") -> str:
     return f"{_API_BASE}/models/{model}:{method}"
 
 
-def _post_with_retry(model: str, method: str, payload: dict) -> dict[str, Any]:
+def _post_with_retry(
+    model: str, method: str, payload: dict, *, attempt_limit: int | None = None
+) -> dict[str, Any]:
     """Post to Gemini with key rotation on 429/5xx and OpenTelemetry tracing.
 
     Auth: x-goog-api-key header. Fail-fast on 400/401/403/404; otherwise rotate
@@ -129,7 +131,9 @@ def _post_with_retry(model: str, method: str, payload: dict) -> dict[str, Any]:
             return {"success": False, "error": "No Gemini API keys configured"}
 
         url = _endpoint(model, method)
-        max_attempts = len(_KEYS)
+        max_attempts = len(_KEYS) if attempt_limit is None else min(len(_KEYS), attempt_limit)
+        if max_attempts < 1:
+            raise ValueError("attempt_limit must be positive")
 
         for attempt in range(max_attempts):
             key = _get_active_key()
@@ -207,30 +211,45 @@ def analyze_vision(
     prompt: str,
     image_b64: str,
     mime_type: str = "image/jpeg",
+    *,
+    reference_images: list[dict[str, str]] | None = None,
+    response_schema: dict | None = None,
+    max_output_tokens: int = 2400,
 ) -> dict[str, Any]:
-    """Analyze image with vision model."""
-    payload = {
-        "contents": [
-            {
-                "parts": [
-                    {"text": prompt},
-                    {
-                        "inline_data": {
-                            "mime_type": mime_type,
-                            "data": image_b64,
-                        }
-                    },
-                ]
-            }
-        ]
-    }
-    result = _post_with_retry(model, "generateContent", payload)
+    """Analyze a candidate, optionally preceded by labeled authoritative references.
 
+    Structured QA uses one transport attempt; no account-key rotation retries.
+    Other vision callers retain their existing retry policy and input signature.
+    """
+    parts: list[dict[str, Any]] = [{"text": prompt}]
+    for index, reference in enumerate(reference_images or []):
+        parts.extend(
+            [{"text": f"A{index + 1}: authoritative reference"}, {"inline_data": reference}]
+        )
+    if reference_images:
+        parts.append({"text": "B: candidate"})
+    parts.append({"inline_data": {"mime_type": mime_type, "data": image_b64}})
+    payload = {"contents": [{"parts": parts}]}
+    if response_schema is not None:
+        payload["generationConfig"] = {
+            "responseMimeType": "application/json",
+            "responseJsonSchema": response_schema,
+            "maxOutputTokens": max_output_tokens,
+        }
+        result = _post_with_retry(model, "generateContent", payload, attempt_limit=1)
+    else:
+        result = _post_with_retry(model, "generateContent", payload)
     if not result["success"]:
         return result
-
     try:
-        text = result["data"]["candidates"][0]["content"]["parts"][0]["text"]
+        candidate = result["data"]["candidates"][0]
+        if response_schema is not None and candidate.get("finishReason") != "STOP":
+            return {"success": False, "error": "Incomplete or blocked structured vision response"}
+        text = "".join(
+            p.get("text", "") for p in candidate["content"]["parts"] if not p.get("thought")
+        )
+        if not text:
+            return {"success": False, "error": "Empty vision response"}
         return {"success": True, "text": text}
     except Exception as exc:
         return {"success": False, "error": _scrub(str(exc))}
