@@ -22,6 +22,11 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 
 ## Founder-confirmed correction
 
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
+
 **FOUNDER_CONFIRMED:** The rose-cluster artwork fills only the **front 3** and the **back 2**. The front 2 and back 3 remain plain white. The founder's recorded review comments are preserved in `data/render-corrections.json` under br-009 and `renders/oai/_review/review-state.json` (front: 2026-06-10T02:03:26.224Z; back: 2026-06-10T02:03:50.416Z). They supersede the older both-digits-fill instruction.
 
 Corrected specifications do not approve the previously flagged renders or authorize paid generation, media promotion, or deployment. Keep the existing candidate-review and execution-approval boundaries.

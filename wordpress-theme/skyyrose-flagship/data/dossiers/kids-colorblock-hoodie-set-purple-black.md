@@ -14,6 +14,12 @@ extra_references:
 
 > **Note on catalog name:** The catalog lists this SKU as "Purple/Black," but the techflat + real-product photo confirm the **pants are deep purple, NOT black**. Render purple pants to match the actual product. The "Black" in the SKU name appears to refer to the dark-purple tones reading visually as a near-black neutral, NOT to a literal black pant.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:

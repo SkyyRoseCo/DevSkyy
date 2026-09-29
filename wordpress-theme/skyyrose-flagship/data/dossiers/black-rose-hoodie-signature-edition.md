@@ -10,6 +10,12 @@ reference_image: assets/products/references/br-005-signature-hoodie-real.jpeg
 
 **Garment type lock:** Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The "Signature Edition" identity comes from the elevated branding placement (chest + hip), the white drawstrings, and the sublimated-rose-print inner hood lining.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical reference:

@@ -10,6 +10,12 @@ reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
 
 **Garment type lock:** Black pullover hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (all tonal black, no contrast white trim — distinct from the matching Black Rose Crewneck/Joggers set which use white ribbing). NOT a zip-up. NOT a half-zip. NOT a crewneck. NOT a t-shirt. Heavyweight cotton fleece.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical reference:
