@@ -1,0 +1,24 @@
+COMMAND: ['.venv/bin/python', '-m', 'pytest', 'tools/3d-commerce/test_theme_mount_browser.py', '-m', 'integration', '-o', 'addopts=', '--timeout=40', '--junitxml=tasks/integration-release-20261001/evidence/browser/theme-repeat-2-junit.xml', '-v']
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/theceo/.codex/worktrees/4035/DevSkyy/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/theceo/.codex/worktrees/4035/DevSkyy
+configfile: pyproject.toml
+plugins: anyio-4.12.1, mock-3.15.1, xdist-3.8.0, timeout-2.4.0, asyncio-1.4.0, langsmith-0.10.6, cov-7.0.0
+timeout: 40.0s
+timeout method: signal
+timeout func_only: False
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+tools/3d-commerce/test_theme_mount_browser.py::test_native_selection_mount_keyboard_and_fresh_reopen[desktop] PASSED [ 16%]
+tools/3d-commerce/test_theme_mount_browser.py::test_native_selection_mount_keyboard_and_fresh_reopen[mobile] PASSED [ 33%]
+tools/3d-commerce/test_theme_mount_browser.py::test_real_context_loss_retry_fresh_endpoint_and_native_unavailable PASSED [ 50%]
+tools/3d-commerce/test_theme_mount_browser.py::test_asset_failure_retry_and_native_link PASSED [ 66%]
+tools/3d-commerce/test_theme_mount_browser.py::test_selection_and_dom_removal_release_parsed_resources PASSED [ 83%]
+tools/3d-commerce/test_theme_mount_browser.py::test_page_transition_restoration_mounts_one_controller PASSED [100%]
+
+- generated xml file: /Users/theceo/.codex/worktrees/4035/DevSkyy/tasks/integration-release-20261001/evidence/browser/theme-repeat-2-junit.xml -
+============================== 6 passed in 6.73s ===============================
+
+EXIT: 0

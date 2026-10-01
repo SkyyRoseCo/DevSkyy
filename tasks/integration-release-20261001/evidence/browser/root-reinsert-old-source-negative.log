@@ -1,0 +1,39 @@
+EXPECTED REGRESSION FAILURE against source SHA256 8d57161037ea1f50315d38733c47004cccd351948702851cd7d1769d7640f479
+Traceback (most recent call last):
+  File "<stdin>", line 14, in <module>
+  File "/Users/theceo/.codex/worktrees/4035/DevSkyy/tools/3d-commerce/test_theme_mount_browser.py", line 460, in test_removed_root_reinserted_restores_one_live_controller
+    state(page, "idle")
+    ~~~~~^^^^^^^^^^^^^^
+  File "/Users/theceo/.codex/worktrees/4035/DevSkyy/tools/3d-commerce/test_theme_mount_browser.py", line 216, in state
+    expect(page.locator("#viewer")).to_have_attribute("data-viewer-state", expected)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/theceo/.codex/worktrees/4035/DevSkyy/.venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 19408, in to_have_attribute
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.to_have_attribute(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            name=name, value=value, ignoreCase=ignore_case, timeout=timeout
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/theceo/.codex/worktrees/4035/DevSkyy/.venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/theceo/.codex/worktrees/4035/DevSkyy/.venv/lib/python3.13/site-packages/playwright/_impl/_assertions.py", line 266, in to_have_attribute
+    await self._expect_impl(
+    ...<7 lines>...
+    )
+  File "/Users/theceo/.codex/worktrees/4035/DevSkyy/.venv/lib/python3.13/site-packages/playwright/_impl/_assertions.py", line 85, in _expect_impl
+    raise AssertionError(
+        f"{out_message}\nActual value: {actual}{error_message} {format_call_log(result.get('log'))}"
+    )
+AssertionError: Locator expected to have attribute 'idle'
+Actual value: disposed 
+Call log:
+  - Expect "to_have_attribute" with timeout 5000ms
+  - waiting for locator("#viewer")
+    9 × locator resolved to <section id="viewer" data-product-glb="" aria-label="Product view" data-viewer-state="disposed" data-config="{"sku": "fixture-native", "productId": 501, "registrySha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "manifest": {"schema": "skyyrose.accepted-glb-runtime.v1", "registry_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "publication_authorized": true, "entries": [{"sku": "fixture-native", "native_sku": "fixture-native-m", "product_id": 501, "v…>…</section>
+      - unexpected value "disposed"
+

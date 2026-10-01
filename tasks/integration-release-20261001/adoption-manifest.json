@@ -210,7 +210,7 @@
     "paths": 3,
     "typescript_review": "bounded closure PASS",
     "security_review": "ownerAPPROVE",
-    "browser": "ownerpending"
+    "browser": "Actual local SDK timeout+retryPASS; retry precedes firstcallback release; deterministiclateappcontinuation onlyunitqualified; lateSDK completion/cookieordering unqualified"
   },
   "tests": {
     "locked_python": {

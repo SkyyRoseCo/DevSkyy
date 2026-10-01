@@ -1,0 +1,15 @@
+test_actual_pure_copy_node_has_no_retired_copy_or_keyword (test_brand_consumer_patch.BrandConsumerPatchTests.test_actual_pure_copy_node_has_no_retired_copy_or_keyword) ... skipped 'Deferred to Stream3: nodes.py authoritative get_product direct-copy correction is separately owned; assertions remain for corrected-source rerun'
+test_all_owned_sources_have_no_retired_phrase_or_compact_hashtag (test_brand_consumer_patch.BrandConsumerPatchTests.test_all_owned_sources_have_no_retired_phrase_or_compact_hashtag) ... ok
+test_brand_injection_has_identity_without_dangling_tagline (test_brand_consumer_patch.BrandConsumerPatchTests.test_brand_injection_has_identity_without_dangling_tagline) ... ok
+test_existing_planning_constructors_omit_retired_brand_anchor (test_brand_consumer_patch.BrandConsumerPatchTests.test_existing_planning_constructors_omit_retired_brand_anchor) ... ok
+test_governor_compatibility_denies_caller_approval_without_provider_imports (test_brand_consumer_patch.BrandConsumerPatchTests.test_governor_compatibility_denies_caller_approval_without_provider_imports) ... ok
+test_known_collection_context_preserves_distinct_collection_taglines (test_brand_consumer_patch.BrandConsumerPatchTests.test_known_collection_context_preserves_distinct_collection_taglines) ... ok
+test_native_config_and_consumer_constants_without_env_or_repo_cwd (test_brand_consumer_patch.BrandConsumerPatchTests.test_native_config_and_consumer_constants_without_env_or_repo_cwd) ... ok
+test_network_denial_is_effective (test_brand_consumer_patch.BrandConsumerPatchTests.test_network_denial_is_effective) ... ok
+test_training_examples_preserve_product_features_and_only_remove_retired_copy (test_brand_consumer_patch.BrandConsumerPatchTests.test_training_examples_preserve_product_features_and_only_remove_retired_copy) ... ok
+test_unknown_collection_context_omits_tagline_clause (test_brand_consumer_patch.BrandConsumerPatchTests.test_unknown_collection_context_omits_tagline_clause) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.815s
+
+OK (skipped=1)
