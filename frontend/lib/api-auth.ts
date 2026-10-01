@@ -18,7 +18,7 @@
  * without also migrating lib/auth.ts.
  */
 
-import { getServerSession } from 'next-auth';
+import { getServerSession, type Session } from 'next-auth';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -42,10 +42,21 @@ type RouteHandler<C> = (request: NextRequest, context: C) => Promise<Response> |
  */
 export function withAuth<C>(handler: RouteHandler<C>): RouteHandler<C> {
   return async (request: NextRequest, context: C) => {
-    const session = await getServerSession(authOptions);
+    let session: Session | null;
+    try {
+      session = await getServerSession(authOptions);
+    } catch {
+      return NextResponse.json(
+        { success: false, error: 'Authentication unavailable' },
+        { status: 503, headers: { 'Cache-Control': 'private, no-store', Pragma: 'no-cache', Vary: 'Cookie' } }
+      );
+    }
 
     if (!session) {
-      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized' },
+        { status: 401, headers: { 'Cache-Control': 'private, no-store', Pragma: 'no-cache', Vary: 'Cookie' } }
+      );
     }
 
     return handler(request, context);

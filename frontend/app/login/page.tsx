@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -39,7 +40,7 @@ const LoginFormSchema = z.object({
     .min(1, 'Email is required')
     .email('Please enter a valid email address')
     .max(254, 'Email is too long')
-    .transform((val) => val.toLowerCase().trim()),
+    .transform(val => val.toLowerCase().trim()),
   password: z
     .string()
     .min(1, 'Password is required')
@@ -65,7 +66,7 @@ type LoginResponse = z.infer<typeof LoginResponseSchema>;
 function generateNonce(): string {
   const array = new Uint8Array(16);
   crypto.getRandomValues(array);
-  return Array.from(array, (byte) => byte.toString(16).padStart(2, '0')).join('');
+  return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
 }
 
 function setSecureCookie(name: string, value: string, maxAge: number): void {
@@ -147,7 +148,7 @@ export default function LoginPage() {
 
     if (!result.success) {
       const errors: Record<string, string> = {};
-      result.error.issues.forEach((issue) => {
+      result.error.issues.forEach(issue => {
         const field = issue.path[0] as string;
         if (!errors[field]) {
           errors[field] = issue.message;
@@ -227,6 +228,16 @@ export default function LoginPage() {
       }
 
       const data = parseResult.data;
+      // Gated dashboard routes use NextAuth's server session, not the legacy
+      // bearer cookie. Establish it before publishing legacy client tokens.
+      const sessionResult = await signIn('credentials', {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      });
+      if (!sessionResult?.ok) {
+        throw new Error('Unable to establish dashboard session. Please sign in again.');
+      }
       recordLoginAttempt(true);
 
       // Store tokens securely
@@ -256,144 +267,142 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-4">
-      <Card className="w-full max-w-md bg-gray-800/50 border-gray-700 backdrop-blur-sm">
-        <CardHeader className="space-y-1 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-rose-400 to-rose-600 flex items-center justify-center">
-              <span className="text-white font-bold text-xl">DS</span>
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-4'>
+      <Card className='w-full max-w-md bg-gray-800/50 border-gray-700 backdrop-blur-sm'>
+        <CardHeader className='space-y-1 text-center'>
+          <div className='flex justify-center mb-4'>
+            <div className='h-12 w-12 rounded-xl bg-gradient-to-br from-rose-400 to-rose-600 flex items-center justify-center'>
+              <span className='text-white font-bold text-xl'>DS</span>
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold text-white">Welcome back</CardTitle>
-          <CardDescription className="text-gray-400">
-            Sign in to your DevSkyy account
-          </CardDescription>
+          <CardTitle className='text-2xl font-bold text-white'>Welcome back</CardTitle>
+          <CardDescription className='text-gray-400'>Sign in to your DevSkyy account</CardDescription>
         </CardHeader>
-        <form onSubmit={handleSubmit} noValidate>
-          <input type="hidden" name="_csrf" value={nonce} />
-          <CardContent className="space-y-4">
+        <form method='post' onSubmit={handleSubmit} noValidate>
+          <input type='hidden' name='_csrf' value={nonce} />
+          <CardContent className='space-y-4'>
             {error && (
-              <Alert variant="destructive" className="bg-red-900/50 border-red-800" data-testid="error-message">
-                <AlertDescription className="flex items-center gap-2">
-                  <Shield className="h-4 w-4" />
+              <Alert variant='destructive' className='bg-red-900/50 border-red-800' data-testid='error-message'>
+                <AlertDescription className='flex items-center gap-2'>
+                  <Shield className='h-4 w-4' />
                   {error}
                 </AlertDescription>
               </Alert>
             )}
 
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-gray-200">
+            <div className='space-y-2'>
+              <Label htmlFor='email' className='text-gray-200'>
                 Email
               </Label>
               <Input
-                id="email"
-                name="username"
-                type="email"
-                placeholder="you@example.com"
+                id='email'
+                name='username'
+                type='email'
+                placeholder='you@example.com'
                 value={email}
-                onChange={(e) => {
+                onChange={e => {
                   setEmail(e.target.value);
                   if (fieldErrors.email) {
-                    setFieldErrors((prev) => ({ ...prev, email: '' }));
+                    setFieldErrors(prev => ({ ...prev, email: '' }));
                   }
                 }}
                 required
                 disabled={isLoading}
-                autoComplete="email"
+                autoComplete='email'
                 autoFocus
                 aria-invalid={!!fieldErrors.email}
                 aria-describedby={fieldErrors.email ? 'email-error' : undefined}
                 className={`bg-gray-700/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-rose-500 focus:ring-rose-500 ${
                   fieldErrors.email ? 'border-red-500' : ''
                 }`}
-                data-testid="username"
+                data-testid='username'
               />
               {fieldErrors.email && (
-                <p id="email-error" className="text-sm text-red-400">
+                <p id='email-error' className='text-sm text-red-400'>
                   {fieldErrors.email}
                 </p>
               )}
             </div>
 
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="password" className="text-gray-200">
+            <div className='space-y-2'>
+              <div className='flex items-center justify-between'>
+                <Label htmlFor='password' className='text-gray-200'>
                   Password
                 </Label>
                 <a
-                  href="/forgot-password"
-                  className="text-sm text-rose-400 hover:text-rose-300"
-                  data-testid="forgot-password"
+                  href='/forgot-password'
+                  className='text-sm text-rose-400 hover:text-rose-300'
+                  data-testid='forgot-password'
                 >
                   Forgot password?
                 </a>
               </div>
-              <div className="relative">
+              <div className='relative'>
                 <Input
-                  id="password"
-                  name="password"
+                  id='password'
+                  name='password'
                   type={showPassword ? 'text' : 'password'}
-                  placeholder="Enter your password"
+                  placeholder='Enter your password'
                   value={password}
-                  onChange={(e) => {
+                  onChange={e => {
                     setPassword(e.target.value);
                     if (fieldErrors.password) {
-                      setFieldErrors((prev) => ({ ...prev, password: '' }));
+                      setFieldErrors(prev => ({ ...prev, password: '' }));
                     }
                   }}
                   required
                   disabled={isLoading}
-                  autoComplete="current-password"
+                  autoComplete='current-password'
                   aria-invalid={!!fieldErrors.password}
                   aria-describedby={fieldErrors.password ? 'password-error' : undefined}
                   className={`bg-gray-700/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-rose-500 focus:ring-rose-500 pr-10 ${
                     fieldErrors.password ? 'border-red-500' : ''
                   }`}
-                  data-testid="password"
+                  data-testid='password'
                 />
                 <button
-                  type="button"
+                  type='button'
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-300"
+                  className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-300'
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                   tabIndex={-1}
                 >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  {showPassword ? <EyeOff className='h-4 w-4' /> : <Eye className='h-4 w-4' />}
                 </button>
               </div>
               {fieldErrors.password && (
-                <p id="password-error" className="text-sm text-red-400">
+                <p id='password-error' className='text-sm text-red-400'>
                   {fieldErrors.password}
                 </p>
               )}
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className='flex items-center space-x-2'>
               <input
-                type="checkbox"
-                id="remember"
-                name="remember"
+                type='checkbox'
+                id='remember'
+                name='remember'
                 checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-600 bg-gray-700 text-rose-500 focus:ring-rose-500"
-                data-testid="remember-me"
+                onChange={e => setRememberMe(e.target.checked)}
+                className='h-4 w-4 rounded border-gray-600 bg-gray-700 text-rose-500 focus:ring-rose-500'
+                data-testid='remember-me'
               />
-              <Label htmlFor="remember" className="text-sm text-gray-400">
+              <Label htmlFor='remember' className='text-sm text-gray-400'>
                 Remember me for 30 days
               </Label>
             </div>
           </CardContent>
 
-          <CardFooter className="flex flex-col space-y-4">
+          <CardFooter className='flex flex-col space-y-4'>
             <Button
-              type="submit"
+              type='submit'
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-medium"
-              data-testid="login-submit"
+              className='w-full bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-medium'
+              data-testid='login-submit'
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className='mr-2 h-4 w-4 animate-spin' />
                   Signing in...
                 </>
               ) : (
@@ -401,7 +410,7 @@ export default function LoginPage() {
               )}
             </Button>
 
-            <p className="text-center text-sm text-gray-400">
+            <p className='text-center text-sm text-gray-400'>
               Need owner access? Accounts are provisioned securely by the platform owner.
             </p>
           </CardFooter>
