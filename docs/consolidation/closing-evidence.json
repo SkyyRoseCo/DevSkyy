@@ -1,0 +1,1531 @@
+{
+  "architect_edit": {
+    "operation": "preserve and exclude from stream5 commits",
+    "owner": "coordinator",
+    "path": "/Users/theceo/.codex/worktrees/a924/DevSkyy/.codex/agents/architect.toml",
+    "sha256": "e8505c708d54deaaf5c642ebc44f985c3a791c96ed81967be2db7d1803c17573"
+  },
+  "authentication": {
+    "account": "SkyyRoseLLC",
+    "scope": "authenticated read-only commit/account metadata only",
+    "system": "GitHub"
+  },
+  "bug_identity_check": {
+    "actual_conflicts": [],
+    "committed_views": [
+      {
+        "identities": [],
+        "owner": "published main",
+        "sha": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+        "status": "read"
+      },
+      {
+        "identities": [],
+        "owner": "stream 1",
+        "sha": "f32c1284315afb8b15f0e59df6da0ddff323ccfa",
+        "status": "read"
+      },
+      {
+        "identities": [],
+        "owner": "stream 2",
+        "sha": "f16f179cf2b73fa817691f72b15906309c628153",
+        "status": "read"
+      },
+      {
+        "identities": [],
+        "owner": "stream 3",
+        "sha": "3ae8e8b51064c2db96ed367e10158dd307010f23",
+        "status": "read"
+      },
+      {
+        "identities": [],
+        "owner": "stream 4",
+        "sha": "e1b75139a7d7d4379987c2b8fe2a2e2349c4d49d",
+        "status": "read"
+      },
+      {
+        "identities": [
+          {
+            "error_message": "UP035 Import from collections.abc instead: Iterator",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Imported Iterator from collections.abc; Ruff passed",
+            "id": "bug-377",
+            "root_cause": "New inventory used deprecated typing import under configured Ruff rules"
+          },
+          {
+            "error_message": "Known credential configuration exclusions bypassed by case variants",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Compare casefolded path; case-variant regression fixtures added",
+            "id": "bug-378",
+            "root_cause": "Exact known-store path set was case-sensitive on macOS"
+          },
+          {
+            "error_message": "Exact repository root with trailing whitespace rejected as not top-level",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Remove only Git terminal newline; real newline-root Git fixture passes",
+            "id": "bug-379",
+            "root_cause": "strip() removed valid pathname characters from Git output"
+          },
+          {
+            "error_message": "Default metadata inventory invoked Git status clean filter on tracked synthetic .env",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Removed status/diff; dirty UNKNOWN; index metadata only; real Git filter positive-control test",
+            "id": "bug-380",
+            "root_cause": "Git status is content-aware despite metadata-only scanner policy"
+          },
+          {
+            "error_message": "Nested agent config stores bypassed sensitive path exclusion",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Casefolded adjacent component matching at all depths; nested fixtures deny content/OID output",
+            "id": "bug-381",
+            "root_cause": "Known-store exclusions were rooted at repository top level"
+          },
+          {
+            "error_message": "B905 zip() without an explicit strict= parameter",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Explicit strict=False; configured Ruff checks passed",
+            "id": "bug-382",
+            "root_cause": "Adjacent component matching intentionally zips unequal-length sequences"
+          }
+        ],
+        "owner": "stream 5",
+        "sha": "75d9db6eed07367cbdc9976b2b64070572dafd11",
+        "status": "read"
+      }
+    ],
+    "disposition": "Keep unpublished bug-377 through bug-382 unchanged; recheck published and peer identities before any later session-note integration; no shared/published IDs rewritten",
+    "working_views": [
+      {
+        "head": "f32c1284315afb8b15f0e59df6da0ddff323ccfa",
+        "status": "no_registered_worktree_at_supplied_head",
+        "stream": 1
+      },
+      {
+        "artifact_sha256": "6c6b3e52b3e9c81581f9ba2f58d81a537321a49d62f3dab28454daab79d2094b",
+        "branch": "refs/heads/codex/preorder-order-promises-20261001",
+        "identities": [],
+        "observed_head": "f16f179cf2b73fa817691f72b15906309c628153",
+        "status": "read",
+        "stream": 2,
+        "timestamp_utc": "2026-10-01T09:39:28.142200+00:00",
+        "worktree": "/Users/theceo/.codex/worktrees/56b5/DevSkyy"
+      },
+      {
+        "artifact_sha256": "6c6b3e52b3e9c81581f9ba2f58d81a537321a49d62f3dab28454daab79d2094b",
+        "branch": "refs/heads/codex/governor-analytics-local-acceptance",
+        "identities": [],
+        "observed_head": "3ae8e8b51064c2db96ed367e10158dd307010f23",
+        "status": "read",
+        "stream": 3,
+        "timestamp_utc": "2026-10-01T09:39:28.143799+00:00",
+        "worktree": "/Users/theceo/.codex/worktrees/b5f2/DevSkyy"
+      },
+      {
+        "artifact_sha256": "6c6b3e52b3e9c81581f9ba2f58d81a537321a49d62f3dab28454daab79d2094b",
+        "branch": "refs/heads/codex/3d-commerce-local-20261001",
+        "identities": [],
+        "observed_head": "e1b75139a7d7d4379987c2b8fe2a2e2349c4d49d",
+        "status": "read",
+        "stream": 4,
+        "timestamp_utc": "2026-10-01T09:39:28.145273+00:00",
+        "worktree": "/Users/theceo/.codex/worktrees/2610/DevSkyy"
+      },
+      {
+        "artifact_sha256": "4c705877ad3a61bbaf1e9ab77a468d3a300dc154a65e74c639c78eaf8a5e04b3",
+        "branch": "refs/heads/codex/consolidation-inventory-20261001",
+        "identities": [
+          {
+            "error_message": "UP035 Import from collections.abc instead: Iterator",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Imported Iterator from collections.abc; Ruff passed",
+            "id": "bug-377",
+            "root_cause": "New inventory used deprecated typing import under configured Ruff rules"
+          },
+          {
+            "error_message": "Known credential configuration exclusions bypassed by case variants",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Compare casefolded path; case-variant regression fixtures added",
+            "id": "bug-378",
+            "root_cause": "Exact known-store path set was case-sensitive on macOS"
+          },
+          {
+            "error_message": "Exact repository root with trailing whitespace rejected as not top-level",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Remove only Git terminal newline; real newline-root Git fixture passes",
+            "id": "bug-379",
+            "root_cause": "strip() removed valid pathname characters from Git output"
+          },
+          {
+            "error_message": "Default metadata inventory invoked Git status clean filter on tracked synthetic .env",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Removed status/diff; dirty UNKNOWN; index metadata only; real Git filter positive-control test",
+            "id": "bug-380",
+            "root_cause": "Git status is content-aware despite metadata-only scanner policy"
+          },
+          {
+            "error_message": "Nested agent config stores bypassed sensitive path exclusion",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Casefolded adjacent component matching at all depths; nested fixtures deny content/OID output",
+            "id": "bug-381",
+            "root_cause": "Known-store exclusions were rooted at repository top level"
+          },
+          {
+            "error_message": "B905 zip() without an explicit strict= parameter",
+            "file": "scripts/repository_inventory.py",
+            "fix": "Explicit strict=False; configured Ruff checks passed",
+            "id": "bug-382",
+            "root_cause": "Adjacent component matching intentionally zips unequal-length sequences"
+          }
+        ],
+        "observed_head": "75d9db6eed07367cbdc9976b2b64070572dafd11",
+        "status": "read",
+        "stream": 5,
+        "timestamp_utc": "2026-10-01T09:39:28.146642+00:00",
+        "worktree": "/Users/theceo/.codex/worktrees/a924/DevSkyy"
+      },
+      {
+        "artifact_sha256": "6c6b3e52b3e9c81581f9ba2f58d81a537321a49d62f3dab28454daab79d2094b",
+        "branch": "refs/heads/codex/v2-launch-local-20261001",
+        "identities": [],
+        "observed_head": "226cef2011ffa97b8bd064b6c7d036213da62d88",
+        "relationship": "registered branch contains supplied head; current tip differs",
+        "status": "read",
+        "stream": 1,
+        "supplied_head": "f32c1284315afb8b15f0e59df6da0ddff323ccfa",
+        "timestamp_utc": "2026-10-01T09:40:23.852545+00:00",
+        "worktree": "/Users/theceo/.codex/worktrees/58b5/DevSkyy"
+      }
+    ]
+  },
+  "capture_utc": "2026-10-01T09:41:34.795600+00:00",
+  "cli_or_fixtures_changed": false,
+  "code_artifact_sha256": {
+    "scripts/repository_inventory.py": "fd9ba6c77d1e22dda387c99e24d83dc288621193f0320f2faef15b3cd0e8fe1a",
+    "tests/scripts/test_repository_inventory.py": "01f43be03f8e40eedd88e3efc19cdd8ad69fba44f6899e5171df398bfd36208a"
+  },
+  "coordinator_protected_paths": [
+    ".codex/agents/architect.toml",
+    ".github/workflows/",
+    "scripts/deploy-theme.sh",
+    "Dockerfile",
+    "Dockerfile.api",
+    "fly.toml"
+  ],
+  "dependency_integration_owner": "stream 1",
+  "dependency_sets": [
+    {
+      "available_commits": [
+        "f32c1284315afb8b15f0e59df6da0ddff323ccfa",
+        "524d6cd91f0ad9f16dcece58c7b7b709fcad6700"
+      ],
+      "changed_paths_from_frozen_base": [
+        ".wolf/anatomy.md",
+        ".wolf/memory.md",
+        "assets/brand/brand.yaml",
+        "assets/products/manifest.json",
+        "frontend/data/skyyrose-catalog.csv",
+        "scripts/sync_brand_to_php.py",
+        "skyyrose/core/product.py",
+        "skyyrose/core/product_registry.py",
+        "skyyrose/elite_studio/brand.py",
+        "skyyrose/elite_studio/tests/test_brand.py",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/build_faq.py",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/faq-block-markup.html",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/faq-evidence.json",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/faq-review.html",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/faq_content.py",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/policy-source-snapshot.json",
+        "tasks/v2-launch-local-20261001/README.md",
+        "tasks/v2-launch-local-20261001/evidence/acceptance-ledger.json",
+        "tasks/v2-launch-local-20261001/evidence/architect-review.json",
+        "tasks/v2-launch-local-20261001/evidence/asset-manifest.log",
+        "tasks/v2-launch-local-20261001/evidence/authority-preservation.json",
+        "tasks/v2-launch-local-20261001/evidence/brand-enforcement.log",
+        "tasks/v2-launch-local-20261001/evidence/copy-corrections.json",
+        "tasks/v2-launch-local-20261001/evidence/final-source-followup.json",
+        "tasks/v2-launch-local-20261001/evidence/handoff-checks.json",
+        "tasks/v2-launch-local-20261001/evidence/local-black-rose-mobile.jpg",
+        "tasks/v2-launch-local-20261001/evidence/local-checks.json",
+        "tasks/v2-launch-local-20261001/evidence/local-home-desktop.jpg",
+        "tasks/v2-launch-local-20261001/evidence/local-home-mobile.jpg",
+        "tasks/v2-launch-local-20261001/evidence/product-truth-matrix.json",
+        "tasks/v2-launch-local-20261001/evidence/public-route-inventory.json",
+        "tasks/v2-launch-local-20261001/evidence/python-black.log",
+        "tasks/v2-launch-local-20261001/evidence/python-faq-regression.log",
+        "tasks/v2-launch-local-20261001/evidence/python-isort.log",
+        "tasks/v2-launch-local-20261001/evidence/python-regression.log",
+        "tasks/v2-launch-local-20261001/evidence/python-ruff.log",
+        "tasks/v2-launch-local-20261001/evidence/registry-presentation-rebuild.log",
+        "tasks/v2-launch-local-20261001/evidence/registry-sync.log",
+        "tasks/v2-launch-local-20261001/evidence/remote-inspection.json",
+        "tasks/v2-launch-local-20261001/evidence/retired-tagline-findings.json",
+        "tasks/v2-launch-local-20261001/evidence/runtime-js.log",
+        "tasks/v2-launch-local-20261001/evidence/source-certification-request.json",
+        "tasks/v2-launch-local-20261001/evidence/staging-br001-desktop.jpg",
+        "tasks/v2-launch-local-20261001/evidence/staging-br001-mobile.jpg",
+        "tasks/v2-launch-local-20261001/evidence/staging-runtime.json",
+        "tasks/v2-launch-local-20261001/evidence/staging-source-mapping.json",
+        "tasks/v2-launch-local-20261001/evidence/test-cart-contract.log",
+        "tasks/v2-launch-local-20261001/evidence/test-checkout-truth.log",
+        "tasks/v2-launch-local-20261001/evidence/test-collection-routes.log",
+        "tasks/v2-launch-local-20261001/evidence/test-commerce-page-assets.log",
+        "tasks/v2-launch-local-20261001/evidence/test-critical-rendering.log",
+        "tasks/v2-launch-local-20261001/evidence/test-global-shell-contract.log",
+        "tasks/v2-launch-local-20261001/evidence/test-home-labels.log",
+        "tasks/v2-launch-local-20261001/evidence/test-launch-readiness.log",
+        "tasks/v2-launch-local-20261001/evidence/test-pdp-approved-fronts.log",
+        "tasks/v2-launch-local-20261001/evidence/test-pdp-delivery.log",
+        "tasks/v2-launch-local-20261001/evidence/test-pdp-gallery.log",
+        "tasks/v2-launch-local-20261001/evidence/test-pdp-summary.log",
+        "tasks/v2-launch-local-20261001/evidence/test-performance.log",
+        "tasks/v2-launch-local-20261001/evidence/test-prelaunch-safety.log",
+        "tasks/v2-launch-local-20261001/evidence/test-product-card.log",
+        "tasks/v2-launch-local-20261001/evidence/test-product-media.log",
+        "tasks/v2-launch-local-20261001/evidence/test-seo-indexing.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-build.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-check-approved-scenes.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-check-assets.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-check-card-renditions.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-check-font-delivery.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-check-frame-delivery.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-check-i18n.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-check-registry.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-check-scene-posters.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-check-tokens.log",
+        "tasks/v2-launch-local-20261001/evidence/v2-lint-php.log",
+        "tasks/v2-launch-local-20261001/run_local_checks.py",
+        "tests/test_brand_php_generation.py",
+        "tests/test_collection_sot_guard.py",
+        "tests/test_faq_candidate.py",
+        "tests/test_product_entry_point.py",
+        "tests/test_registry_organization.py",
+        "tests/test_storefront_card_migration.py",
+        "tests/test_unified_product_registry.py",
+        "tools/v2-runtime/test-commerce-page-assets.php",
+        "tools/v2-runtime/test-home-experience.cjs",
+        "tools/v2-runtime/test-pdp-approved-fronts.php",
+        "tools/v2-runtime/test-pdp-gallery.php",
+        "tools/v2-runtime/test-skyy-concierge.cjs",
+        "tools/v2-theme-preview.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/content-page.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/content-page.min.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/critical/home.contract.json",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/critical/home.min.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/home-art-direction.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/home-art-direction.min.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/home-experience.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/home-experience.min.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/home-page.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/home-page.min.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/images/house-monument-20260928.webp",
+        "wordpress-theme/skyyrose-flagship-2/assets/images/house-oakland-atelier-20260928.webp",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/home-experience.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/home-experience.min.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/house-motion.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/house-motion.min.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.min.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+        "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+        "wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json",
+        "wordpress-theme/skyyrose-flagship-2/footer.php",
+        "wordpress-theme/skyyrose-flagship-2/front-page.php",
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/inc/approved-card-fronts.php",
+        "wordpress-theme/skyyrose-flagship-2/inc/pdp-media-delivery.php",
+        "wordpress-theme/skyyrose-flagship-2/inc/performance.php",
+        "wordpress-theme/skyyrose-flagship-2/languages/skyyrose-flagship-2.pot",
+        "wordpress-theme/skyyrose-flagship-2/npm-shrinkwrap.json",
+        "wordpress-theme/skyyrose-flagship-2/package.json",
+        "wordpress-theme/skyyrose-flagship-2/scripts/build-critical-css.mjs",
+        "wordpress-theme/skyyrose-flagship-2/scripts/test-collection-hero-motion.py",
+        "wordpress-theme/skyyrose-flagship-2/scripts/test-critical-rendering.php",
+        "wordpress-theme/skyyrose-flagship-2/scripts/test-performance.php",
+        "wordpress-theme/skyyrose-flagship-2/scripts/validate-collection-hero-motion.py",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/jersey-gallery.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/home/editorial-collection.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/home/editorial-film.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/home/editorial-hero.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/home/editorial-journal.php",
+        "wordpress-theme/skyyrose-flagship-2/woocommerce/single-product/product-image.php",
+        "wordpress-theme/skyyrose-flagship/data/build-collection-sot.py",
+        "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+        "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json",
+        "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+      ],
+      "commit_subjects": {
+        "524d6cd91f0ad9f16dcece58c7b7b709fcad6700": "style(faq): sort source builder imports",
+        "f32c1284315afb8b15f0e59df6da0ddff323ccfa": "docs(theme): preserve local launch evidence and blocked gates"
+      },
+      "dependencies": ["524d6cd91f0ad9f16dcece58c7b7b709fcad6700"],
+      "head": "f32c1284315afb8b15f0e59df6da0ddff323ccfa",
+      "note": "Owner boundaries supplied by coordinator plus paths observed in local commit metadata; no runtime or integration acceptance",
+      "owner": "storefront/brand; dependency integration",
+      "protected_path_observations": [
+        {
+          "path": "logo-registry.json",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship/data/dossiers/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "frontend/data/skyyrose-catalog.csv",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "assets/brand/brand.yaml",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "assets/products/manifest.json",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "scripts/sync_brand_to_php.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "skyyrose/core/product.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "skyyrose/core/product_registry.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/functions.php",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/package.json",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/npm-shrinkwrap.json",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/data/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "tasks/v2-launch-local-20261001/",
+          "state": "tracked_at_supplied_head"
+        }
+      ],
+      "protected_paths": [
+        "logo-registry.json",
+        "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+        "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json",
+        "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+        "wordpress-theme/skyyrose-flagship/data/dossiers/",
+        "frontend/data/skyyrose-catalog.csv",
+        "assets/brand/brand.yaml",
+        "assets/products/manifest.json",
+        "scripts/sync_brand_to_php.py",
+        "skyyrose/core/product.py",
+        "skyyrose/core/product_registry.py",
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/package.json",
+        "wordpress-theme/skyyrose-flagship-2/npm-shrinkwrap.json",
+        "wordpress-theme/skyyrose-flagship-2/assets/",
+        "wordpress-theme/skyyrose-flagship-2/data/",
+        "tasks/v2-launch-local-20261001/"
+      ],
+      "stream": 1,
+      "supplied_roles": {
+        "canonical_tooling_commit": null,
+        "dependency_commits": [],
+        "head": "f32c1284315afb8b15f0e59df6da0ddff323ccfa",
+        "source_commit": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700"
+      }
+    },
+    {
+      "available_commits": ["f16f179cf2b73fa817691f72b15906309c628153"],
+      "changed_paths_from_frozen_base": [
+        ".wolf/memory.md",
+        "tasks/preorder-correctness-20261001/README.md",
+        "tasks/preorder-correctness-20261001/acceptance-ledger.json",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt",
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/fixture-guard.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/local-checks.json",
+        "tasks/preorder-correctness-20261001/evidence/local-environment.json",
+        "tasks/preorder-correctness-20261001/evidence/phpcs.txt",
+        "tasks/preorder-correctness-20261001/evidence/staging-readonly.json",
+        "tasks/preorder-correctness-20261001/evidence/sync-compatibility.txt",
+        "tasks/preorder-correctness-20261001/evidence/sync-cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/sync-hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/woocommerce-disabled.txt",
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh"
+      ],
+      "commit_subjects": {
+        "f16f179cf2b73fa817691f72b15906309c628153": "feat(preorder): preserve V2 order promises through WooCommerce CRUD"
+      },
+      "dependencies": [],
+      "head": "f16f179cf2b73fa817691f72b15906309c628153",
+      "note": "Owner boundaries supplied by coordinator plus paths observed in local commit metadata; no runtime or integration acceptance",
+      "owner": "preorder/order-domain",
+      "protected_path_observations": [
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "tasks/preorder-correctness-20261001/",
+          "state": "tracked_at_supplied_head"
+        }
+      ],
+      "protected_paths": [
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh",
+        "tasks/preorder-correctness-20261001/"
+      ],
+      "stream": 2,
+      "supplied_roles": {
+        "canonical_tooling_commit": null,
+        "dependency_commits": [],
+        "head": "f16f179cf2b73fa817691f72b15906309c628153",
+        "source_commit": null
+      }
+    },
+    {
+      "available_commits": [
+        "3ae8e8b51064c2db96ed367e10158dd307010f23",
+        "9d6319a2c30551f8533fcb5d997d3b1e5ae4e863",
+        "3a93058112fa96bf64b337f45b0a414aece9e28b",
+        "2e41f6c93ff0ed9c44cbb219f0b4302a2b419594"
+      ],
+      "changed_paths_from_frozen_base": [
+        ".wolf/anatomy.md",
+        ".wolf/memory.md",
+        "frontend/app/admin/governor/page.tsx",
+        "frontend/app/api/governor/report/route.ts",
+        "frontend/app/login/page.tsx",
+        "frontend/components/console/TopBar.tsx",
+        "frontend/components/console/nav-config.ts",
+        "frontend/lib/api-auth.ts",
+        "frontend/lib/governor/report-client.ts",
+        "frontend/lib/governor/server.ts",
+        "frontend/tests/governor-owner-report.test.ts",
+        "frontend/tests/governor-report-route.test.ts",
+        "skyyrose/elite_studio/creative/checkpointer.py",
+        "skyyrose/elite_studio/creative/runway_quota.py",
+        "tasks/governor-analytics-20261001/README.md",
+        "tasks/governor-analytics-20261001/acceptance-ledger.json",
+        "tasks/governor-analytics-20261001/defects.md",
+        "tasks/governor-analytics-20261001/verification/artifact-manifest.json",
+        "tasks/governor-analytics-20261001/verification/auth-recheck.txt",
+        "tasks/governor-analytics-20261001/verification/browser-final.txt",
+        "tasks/governor-analytics-20261001/verification/browser-smoke.cjs",
+        "tasks/governor-analytics-20261001/verification/browser-smoke.json",
+        "tasks/governor-analytics-20261001/verification/build-final.txt",
+        "tasks/governor-analytics-20261001/verification/checks.json",
+        "tasks/governor-analytics-20261001/verification/dependency-audit.json",
+        "tasks/governor-analytics-20261001/verification/external-readonly.json",
+        "tasks/governor-analytics-20261001/verification/fly-readonly.json",
+        "tasks/governor-analytics-20261001/verification/formatter-ownership.txt",
+        "tasks/governor-analytics-20261001/verification/freshness.txt",
+        "tasks/governor-analytics-20261001/verification/frontend-final.txt",
+        "tasks/governor-analytics-20261001/verification/governor-desktop.png",
+        "tasks/governor-analytics-20261001/verification/governor-mobile.png",
+        "tasks/governor-analytics-20261001/verification/lint-final.txt",
+        "tasks/governor-analytics-20261001/verification/lint-staged-range.txt",
+        "tasks/governor-analytics-20261001/verification/local-backend.cjs",
+        "tasks/governor-analytics-20261001/verification/mypy-repository.txt",
+        "tasks/governor-analytics-20261001/verification/provider-identity-redacted.json",
+        "tasks/governor-analytics-20261001/verification/python-acceptance.txt",
+        "tasks/governor-analytics-20261001/verification/recovery.json",
+        "tasks/governor-analytics-20261001/verification/registry-check.txt",
+        "tasks/governor-analytics-20261001/verification/typecheck-final.txt",
+        "tasks/governor-analytics-20261001/verification/unit-gate.txt",
+        "tests/api/analytics/test_storefront_ingest.py",
+        "tests/test_creative_checkpointer.py",
+        "tests/test_runway_quota_governor.py"
+      ],
+      "commit_subjects": {
+        "2e41f6c93ff0ed9c44cbb219f0b4302a2b419594": "feat(governor): add owner-only read-only accounting dashboard",
+        "3a93058112fa96bf64b337f45b0a414aece9e28b": "fix(governor): recover quota simulation with provider execution denied",
+        "3ae8e8b51064c2db96ed367e10158dd307010f23": "docs(governor): record local acceptance and unresolved runtime gates",
+        "9d6319a2c30551f8533fcb5d997d3b1e5ae4e863": "fix(governor): close unpublished checkpoint pools on failure"
+      },
+      "dependencies": [
+        "9d6319a2c30551f8533fcb5d997d3b1e5ae4e863",
+        "3a93058112fa96bf64b337f45b0a414aece9e28b",
+        "2e41f6c93ff0ed9c44cbb219f0b4302a2b419594"
+      ],
+      "head": "3ae8e8b51064c2db96ed367e10158dd307010f23",
+      "note": "Owner boundaries supplied by coordinator plus paths observed in local commit metadata; no runtime or integration acceptance",
+      "owner": "Governor/auth/provider grants; analytics/Fly",
+      "protected_path_observations": [
+        {
+          "path": "frontend/app/admin/governor/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "frontend/app/api/governor/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "frontend/lib/api-auth.ts",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "frontend/lib/governor/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "skyyrose/elite_studio/creative/checkpointer.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "skyyrose/elite_studio/creative/runway_quota.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "api/v1/analytics/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "alembic-analytics.ini",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "alembic/storefront_migrations/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "tasks/governor-analytics-20261001/",
+          "state": "tracked_at_supplied_head"
+        }
+      ],
+      "protected_paths": [
+        "frontend/app/admin/governor/",
+        "frontend/app/api/governor/",
+        "frontend/lib/api-auth.ts",
+        "frontend/lib/governor/",
+        "skyyrose/elite_studio/creative/checkpointer.py",
+        "skyyrose/elite_studio/creative/runway_quota.py",
+        "api/v1/analytics/",
+        "alembic-analytics.ini",
+        "alembic/storefront_migrations/",
+        "tasks/governor-analytics-20261001/"
+      ],
+      "stream": 3,
+      "supplied_roles": {
+        "canonical_tooling_commit": null,
+        "dependency_commits": [
+          "9d6319a2c30551f8533fcb5d997d3b1e5ae4e863",
+          "3a93058112fa96bf64b337f45b0a414aece9e28b",
+          "2e41f6c93ff0ed9c44cbb219f0b4302a2b419594"
+        ],
+        "head": "3ae8e8b51064c2db96ed367e10158dd307010f23",
+        "source_commit": null
+      }
+    },
+    {
+      "available_commits": [
+        "e1b75139a7d7d4379987c2b8fe2a2e2349c4d49d",
+        "0513dbb2f091f0bca4009c9be1d389a9dc67f706",
+        "acd5d1c22e3fc2e347d7a204016ca7f8feac1da1",
+        "221ba974ac9e920a3e4d329069bbeb8cbf0b1955",
+        "487455d7f799153f0fb5e31c72ceeb9116031ed3"
+      ],
+      "changed_paths_from_frozen_base": [
+        ".wolf/anatomy.md",
+        ".wolf/memory.md",
+        "scripts/glb_publish_manifest.py",
+        "skyyrose/elite_studio/creative/local_composite.py",
+        "skyyrose/elite_studio/pipeline3d/glb_container.py",
+        "skyyrose/elite_studio/pipeline3d/webgl_qc.py",
+        "tasks/3d-commerce-20261001/README.md",
+        "tasks/3d-commerce-20261001/acceptance-ledger.json",
+        "tasks/3d-commerce-20261001/asset-viewer-contract.md",
+        "tasks/3d-commerce-20261001/evidence/black.txt",
+        "tasks/3d-commerce-20261001/evidence/composite-resize-original.patch",
+        "tasks/3d-commerce-20261001/evidence/composite-tests.txt",
+        "tasks/3d-commerce-20261001/evidence/composite-tests.xml",
+        "tasks/3d-commerce-20261001/evidence/errors.json",
+        "tasks/3d-commerce-20261001/evidence/glb-render-result.json",
+        "tasks/3d-commerce-20261001/evidence/glb-render-run.txt",
+        "tasks/3d-commerce-20261001/evidence/glb-renders/br-001-pdp-initial.png",
+        "tasks/3d-commerce-20261001/evidence/glb-renders/br-001-raking.png",
+        "tasks/3d-commerce-20261001/evidence/glb-renders/kids-001-pdp-initial.png",
+        "tasks/3d-commerce-20261001/evidence/glb-renders/kids-001-raking.png",
+        "tasks/3d-commerce-20261001/evidence/glb-renders/lh-004-pdp-initial.png",
+        "tasks/3d-commerce-20261001/evidence/glb-renders/lh-004-raking.png",
+        "tasks/3d-commerce-20261001/evidence/glb-tests.txt",
+        "tasks/3d-commerce-20261001/evidence/independent-review.md",
+        "tasks/3d-commerce-20261001/evidence/library-local-binding.json",
+        "tasks/3d-commerce-20261001/evidence/mypy.txt",
+        "tasks/3d-commerce-20261001/evidence/pr-980.json",
+        "tasks/3d-commerce-20261001/evidence/pr-987.json",
+        "tasks/3d-commerce-20261001/evidence/pr-998.json",
+        "tasks/3d-commerce-20261001/evidence/pr-status-refresh.py",
+        "tasks/3d-commerce-20261001/evidence/pr-status.json",
+        "tasks/3d-commerce-20261001/evidence/product-glb-inputs.json",
+        "tasks/3d-commerce-20261001/evidence/product-registry.json",
+        "tasks/3d-commerce-20261001/evidence/registry-check.txt",
+        "tasks/3d-commerce-20261001/evidence/render_local_assets.py",
+        "tasks/3d-commerce-20261001/evidence/repaired-offline-suite.json",
+        "tasks/3d-commerce-20261001/evidence/repaired-offline-suite.log",
+        "tasks/3d-commerce-20261001/evidence/repaired-offline-suite.xml",
+        "tasks/3d-commerce-20261001/evidence/ruff.txt",
+        "tasks/3d-commerce-20261001/evidence/run_offline_suite.py",
+        "tasks/3d-commerce-20261001/evidence/source-certification-tests.txt",
+        "tasks/3d-commerce-20261001/evidence/source-input-hashes.json",
+        "tasks/3d-commerce-20261001/evidence/verification.json",
+        "tasks/3d-commerce-20261001/evidence/world-os-recovery.json",
+        "tests/elite_studio/pipeline3d/test_webgl_qc.py",
+        "tests/test_glb_publish_manifest.py",
+        "tests/test_local_composite.py",
+        "tools/v2-source-certification/build-inputs.json",
+        "tools/v2-source-certification/inputs.py",
+        "tools/v2-source-certification/test_inputs.py"
+      ],
+      "commit_subjects": {
+        "0513dbb2f091f0bca4009c9be1d389a9dc67f706": "fix(creative): reject composite resize that loses protected interior",
+        "221ba974ac9e920a3e4d329069bbeb8cbf0b1955": "fix(certification): enforce current product registry identity",
+        "487455d7f799153f0fb5e31c72ceeb9116031ed3": "fix(3d): record effective QC render dimensions",
+        "acd5d1c22e3fc2e347d7a204016ca7f8feac1da1": "fix(3d): bind offline QC and candidates to validated GLB bytes",
+        "e1b75139a7d7d4379987c2b8fe2a2e2349c4d49d": "docs(3d): record local repair evidence and remaining acceptance gates"
+      },
+      "dependencies": [
+        "0513dbb2f091f0bca4009c9be1d389a9dc67f706",
+        "acd5d1c22e3fc2e347d7a204016ca7f8feac1da1",
+        "221ba974ac9e920a3e4d329069bbeb8cbf0b1955",
+        "487455d7f799153f0fb5e31c72ceeb9116031ed3"
+      ],
+      "head": "e1b75139a7d7d4379987c2b8fe2a2e2349c4d49d",
+      "note": "Owner boundaries supplied by coordinator plus paths observed in local commit metadata; no runtime or integration acceptance",
+      "owner": "composite verifier; GLB/QC/viewer; asset contract",
+      "protected_path_observations": [
+        {
+          "path": "scripts/glb_publish_manifest.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "skyyrose/elite_studio/creative/local_composite.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "skyyrose/elite_studio/pipeline3d/glb_container.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "skyyrose/elite_studio/pipeline3d/webgl_qc.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "tools/v2-source-certification/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "renders/3d/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship/assets/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "tasks/3d-commerce-20261001/",
+          "state": "tracked_at_supplied_head"
+        }
+      ],
+      "protected_paths": [
+        "scripts/glb_publish_manifest.py",
+        "skyyrose/elite_studio/creative/local_composite.py",
+        "skyyrose/elite_studio/pipeline3d/glb_container.py",
+        "skyyrose/elite_studio/pipeline3d/webgl_qc.py",
+        "tools/v2-source-certification/",
+        "renders/3d/",
+        "wordpress-theme/skyyrose-flagship/assets/",
+        "tasks/3d-commerce-20261001/"
+      ],
+      "stream": 4,
+      "supplied_roles": {
+        "canonical_tooling_commit": null,
+        "dependency_commits": [
+          "0513dbb2f091f0bca4009c9be1d389a9dc67f706",
+          "acd5d1c22e3fc2e347d7a204016ca7f8feac1da1",
+          "221ba974ac9e920a3e4d329069bbeb8cbf0b1955",
+          "487455d7f799153f0fb5e31c72ceeb9116031ed3"
+        ],
+        "head": "e1b75139a7d7d4379987c2b8fe2a2e2349c4d49d",
+        "source_commit": null
+      }
+    },
+    {
+      "available_commits": [
+        "75d9db6eed07367cbdc9976b2b64070572dafd11",
+        "4b5763ce5b3d0768f7f39d182ccd62c2b838b158"
+      ],
+      "changed_paths_from_frozen_base": [
+        ".wolf/anatomy.md",
+        ".wolf/buglog.json",
+        ".wolf/memory.md",
+        "docs/consolidation/README.md",
+        "docs/consolidation/evidence.json",
+        "scripts/repository_inventory.py",
+        "tests/scripts/test_repository_inventory.py"
+      ],
+      "commit_subjects": {
+        "4b5763ce5b3d0768f7f39d182ccd62c2b838b158": "feat(tooling): add safe repository inventory and reference evidence",
+        "75d9db6eed07367cbdc9976b2b64070572dafd11": "docs(consolidation): bind local acceptance and session receipts"
+      },
+      "dependencies": ["4b5763ce5b3d0768f7f39d182ccd62c2b838b158"],
+      "head": "75d9db6eed07367cbdc9976b2b64070572dafd11",
+      "note": "Owner boundaries supplied by coordinator plus paths observed in local commit metadata; no runtime or integration acceptance",
+      "owner": "inventory/reference/preservation tooling",
+      "protected_path_observations": [
+        {
+          "path": "scripts/repository_inventory.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "tests/scripts/test_repository_inventory.py",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": "docs/consolidation/",
+          "state": "tracked_at_supplied_head"
+        },
+        {
+          "path": ".artifacts/consolidation-20261001/",
+          "state": "local_ignored_evidence_not_in_git"
+        },
+        {
+          "path": ".artifacts/consolidation-closing-20261001/",
+          "state": "local_ignored_evidence_not_in_git"
+        }
+      ],
+      "protected_paths": [
+        "scripts/repository_inventory.py",
+        "tests/scripts/test_repository_inventory.py",
+        "docs/consolidation/",
+        ".artifacts/consolidation-20261001/",
+        ".artifacts/consolidation-closing-20261001/"
+      ],
+      "stream": 5,
+      "supplied_roles": {
+        "canonical_tooling_commit": "4b5763ce5b3d0768f7f39d182ccd62c2b838b158",
+        "dependency_commits": [],
+        "head": "75d9db6eed07367cbdc9976b2b64070572dafd11",
+        "source_commit": null
+      }
+    }
+  ],
+  "disruptive_operations": [],
+  "document_artifact_sha256": {
+    "docs/consolidation/COORDINATOR-HANDOFF.md": "6536cc073a528e8c2abcd4c324d8c8e87b991a7a5d4b4a370d81851a5c39a9ca",
+    "docs/consolidation/README.md": "c496cea30e6dacd3610afdc4d384467109d585abab99ab0efd3733d192aace30",
+    "docs/consolidation/evidence.json": "1c3e63aea085b24b5a4aaad2d5ee915e6cbd2ff99b0626180dba2c2b8883d04d"
+  },
+  "document_validation": {
+    "application_test_rerun": "NOT APPLICABLE: CLI and fixtures unchanged; exact20-test source hashes preserved",
+    "authentication": "not applicable; offline Git objects and local receipts only",
+    "checked_at_utc": "2026-10-01T09:47:33.083613+00:00",
+    "observed_checks": [
+      "JSON parsed",
+      "five supplied dependency sets and all14 local commit objects matched",
+      "code/test SHA256 matched working files and canonical implementation Git blobs",
+      "13 original raw hashes plus delivery binding and22 preservation entries matched",
+      "committed bug identities matched exact Git objects; captured peer working views showed no conflicting identity",
+      "relative document links resolved",
+      "empty operations/889 candidate groups/zero measured removal/blocked overall preserved",
+      "coordinator architect edit hash unchanged and unstaged",
+      "Prettier3.9.6 with this worktree config formatted owned documents",
+      "git diff --check passed"
+    ],
+    "repaired_check_failures": [
+      "Final Prettier check required formatting newly added JSON validation fields; corrected using the same worktree configuration"
+    ],
+    "reproduction": "python3 .artifacts/consolidation-closing-20261001/verify_closing_packet.py; git diff --check",
+    "status": "PASS"
+  },
+  "duplicate_disposition": "candidates only; not unused files or approved deletions",
+  "duplicate_groups": 889,
+  "excluded_work": [
+    "Full23-PR salvage audit",
+    "Resolve all seven API300-file truncations",
+    "Cross-branch/domain integration",
+    "Any relocation/delete/archive transfer",
+    "Any release/runtime/provider/commerce operation"
+  ],
+  "implementation_commit": "4b5763ce5b3d0768f7f39d182ccd62c2b838b158",
+  "integration_authority": "none; metadata availability does not authorize cherry-picking whole branches",
+  "measured_removal_benefit_bytes": 0,
+  "original_23_pr_limitations": "historical captured inventory only; full salvage and all seven300-file truncations outside closing scope",
+  "original_delivery_receipt_binding": "delivery.json hash of evidence.json matches exact 75d9db6... Git blob; original receipt preserved",
+  "original_raw_artifact_validation": "PASS: all13 original manifest hashes/sizes match; delivery.json separately bound to75d9db6 ledger; all14 preserved in place",
+  "published_main": {
+    "date": "2026-10-01T04:03:21Z",
+    "sha": "7892b797d838e67e62c862a6698a5b42b6dccaee"
+  },
+  "raw_preservation_inventory": [
+    {
+      "bytes": 32,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/captured-at.txt",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "dcac29961ccc5ec8d3ca51049a7e996335d438031091627ae63721b67c2ba700"
+    },
+    {
+      "bytes": 631,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/delivery.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "f952ffc81179b952510cb78858fa5d9db7978c050e1030b485be9edb7f5449b0"
+    },
+    {
+      "bytes": 21200588,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/inventory-final.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "d06b790062f77793ee9ad21c573ccb89d73d3d52988300323c40b304ce86802a"
+    },
+    {
+      "bytes": 21077048,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/inventory.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "cefc6f3ece693e2c1e444ccdf10034e5f2835d367c1fb5b0741f31525f677896"
+    },
+    {
+      "bytes": 633,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/main-protection.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "0a66cd538fcdce643916a2b5090bf07ece662bcaea9095f789fcd112856270bd"
+    },
+    {
+      "bytes": 81,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/main.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "ea057535bec32a246a0aa44a3c1b395222aad9028a6da28b5577f624cf7ac29f"
+    },
+    {
+      "bytes": 16655,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/open-prs.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "a7866919193ee5198e135ac56189f43d0a88825df7fd4cfdef5763e92496822c"
+    },
+    {
+      "bytes": 451087,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/pr-comparisons.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "3917d3d845112f48858fc9dca70f9684bd3581319eeee1f97c68ccf3b6b0907c"
+    },
+    {
+      "bytes": 10858,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/pr897-checks.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "e5595c1c555e4d9d8722b8b289e234c0b8bf94157e42b472783b824981c28fd6"
+    },
+    {
+      "bytes": 4873,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/pr897-proposal.md",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "357d788ba67e790553483e9a79dc8b326c3dfe3f8d0680d4322057127267d87e"
+    },
+    {
+      "bytes": 110338,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/pr897-review-comments.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "15616ba0dbcb373ac94bea627824c8e52ecf09cb57ff08dcadbda5e08dddd432"
+    },
+    {
+      "bytes": 73536,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/pr897.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "ea3f3d2e8d03a60a73ea8272a223538ab3d2103d8e1743d2e7422da4f140858b"
+    },
+    {
+      "bytes": 475,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/rulesets.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "248b44ad8d55d63705d1a91efdfa06f3cb5c30d019cb0a6b1318d7bd9a7a9c24"
+    },
+    {
+      "bytes": 3304,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-20261001/tests.txt",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "2efac54a936a2fd140511ae53e43e32e7bc01b6b216ac20b72068753f5376af8"
+    },
+    {
+      "bytes": 255,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-closing-20261001/architect-edit-preservation.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "40b261c9ca4e571c3b18370e3adef25dd4b4293aece48325960cabf48cef62c3"
+    },
+    {
+      "bytes": 2981,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-closing-20261001/bug-identities.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "f5e1b04f8088a39d977404a108776f3864f0ccb49b9d8eea306cad015ad1b544"
+    },
+    {
+      "bytes": 33,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-closing-20261001/captured-at.txt",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "1282201c87ae1badadc030e333828ba7f39d19158bc3eaeb7e877ce7021cda88"
+    },
+    {
+      "bytes": 20558,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-closing-20261001/dependency-sets.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "4cdf8b498d2a821643daa5728fe54c3d4b53ca82bb76a32578f88b3cbfde47ea"
+    },
+    {
+      "bytes": 4520,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-closing-20261001/peer-working-bug-identities.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "489ea08ccc7c63bd615fbbbb44a21ec6f763107e228e3887dac1a70d40f94dab"
+    },
+    {
+      "bytes": 81,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-closing-20261001/published-main.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "ea057535bec32a246a0aa44a3c1b395222aad9028a6da28b5577f624cf7ac29f"
+    },
+    {
+      "bytes": 7926,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-closing-20261001/retention-candidates.json",
+      "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+      "sha256": "0ee60a403d54b6c11192d322111ee434a90de36461a94523157d90ac2fd12711"
+    },
+    {
+      "bytes": 4161,
+      "git_alone_can_restore": false,
+      "git_ignored": true,
+      "git_tracked": false,
+      "path": ".artifacts/consolidation-closing-20261001/verify_closing_packet.py",
+      "preservation_disposition": "retain in place; offline validation source outside Git recovery",
+      "sha256": "e6601130b16e2afde9b0f1d7a05afd2e9c8a4d4dc704e86928ca1c8552dd0443"
+    }
+  ],
+  "reference_coverage": {
+    "candidates": [
+      "logo-registry.json",
+      "scripts/repository_inventory.py",
+      "scripts/scan_product_inventory.py",
+      "wordpress-theme/skyyrose-flagship-2/functions.php"
+    ],
+    "coverage_complete": false,
+    "edges": 332,
+    "runtime_acceptance": "NOT RUN",
+    "scanned_files": 5465,
+    "skipped_counts": {
+      "file_budget": 1,
+      "generated_or_dependency": 407,
+      "not_present_regular": 543,
+      "not_tracked": 29677,
+      "sensitive": 179,
+      "total_budget": 1551,
+      "unsupported_format": 3618
+    }
+  },
+  "reference_scan_identity": {
+    "artifact": ".artifacts/consolidation-20261001/inventory-final.json",
+    "sha256": "d06b790062f77793ee9ad21c573ccb89d73d3d52988300323c40b304ce86802a",
+    "source_snapshot_sha": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+    "working_census": "non-atomic precommit local metadata axis; never relabeled as final HEAD or runtime"
+  },
+  "remaining_holds": [
+    "Dynamic/runtime consumer proof by domain owner",
+    "Unique editable source and public-route preservation",
+    "Materialized separately authorized restore destination and verified recovery rehearsal",
+    "Measured benefit and specific operation approval"
+  ],
+  "retention_review_targets": [
+    {
+      "coverage_complete": false,
+      "disposition": "retain; evidence review only; no relocation/deletion candidate",
+      "example_locations": [
+        {
+          "layer": "documentation",
+          "line": 22,
+          "match": "exact_literal",
+          "source": ".claude/agents/fashion-design-system-engineer.md",
+          "target": "logo-registry.json"
+        },
+        {
+          "layer": "documentation",
+          "line": 27,
+          "match": "exact_literal",
+          "source": ".claude/commands/sync-catalog.md",
+          "target": "logo-registry.json"
+        },
+        {
+          "layer": "documentation",
+          "line": 55,
+          "match": "exact_literal",
+          "source": ".claude/commands/sync-catalog.md",
+          "target": "logo-registry.json"
+        },
+        {
+          "layer": "documentation",
+          "line": 63,
+          "match": "exact_literal",
+          "source": ".claude/commands/sync-catalog.md",
+          "target": "logo-registry.json"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 6,
+          "match": "exact_literal",
+          "source": ".claude/hooks/canon-prefetch.sh",
+          "target": "logo-registry.json"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 67,
+          "match": "exact_literal",
+          "source": ".claude/hooks/canon-prefetch.sh",
+          "target": "logo-registry.json"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 75,
+          "match": "exact_literal",
+          "source": ".claude/hooks/canon-prefetch.sh",
+          "target": "logo-registry.json"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 32,
+          "match": "exact_literal",
+          "source": ".claude/hooks/catalog-drift-guard.sh",
+          "target": "logo-registry.json"
+        }
+      ],
+      "layers": {
+        "build_or_configuration": 2,
+        "documentation": 154,
+        "source_runtime_unverified": 130,
+        "test_or_fixture": 8
+      },
+      "literal_edges": 294,
+      "next_decisive_action": "owner supplies authoritative read/update/sync and target deployment consumer map; retain source",
+      "owner": "stream1 registry/brand integration",
+      "path": "logo-registry.json",
+      "proposed_operation": "none",
+      "restore_prerequisites": [
+        "separately authorized/access-checked destination",
+        "verified copy of exact source+unique originals, with content identities and stable public-route treatment where applicable",
+        "isolated restore rehearsal proving equivalence before an operation is approved"
+      ],
+      "restore_state": "NOT RUN; no destination populated or certified",
+      "snapshot_record": {
+        "category": "source_or_text",
+        "git_mode": "120000",
+        "git_oid": "57afca413d85247a8d411d1d373d9c06863bd101",
+        "kind": "blob",
+        "path": "logo-registry.json",
+        "size_bytes": 57,
+        "source_commit": "7892b797d838e67e62c862a6698a5b42b6dccaee"
+      },
+      "source_anchors": [
+        "skyyrose/core/product_registry.py:17",
+        "skyyrose/core/product.py:get_product"
+      ],
+      "unique_source_preservation": [
+        "root symlink to canonical registry",
+        "founder-confirmed records, logos, placements, correction history",
+        "original artwork/media paths and generated consumer projections"
+      ],
+      "unresolved_consumers": [
+        "indirect get_product/narrow-reader consumers",
+        "generated CSV/dossier/PHP/frontend projections",
+        "deployment/CMS/external image/source bindings"
+      ]
+    },
+    {
+      "coverage_complete": false,
+      "disposition": "retain; evidence review only; no relocation/deletion candidate",
+      "example_locations": [
+        {
+          "layer": "documentation",
+          "line": 9279,
+          "match": "exact_literal",
+          "source": ".wolf/anatomy.md",
+          "target": "scripts/repository_inventory.py"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 6556,
+          "match": "exact_literal",
+          "source": ".wolf/buglog.json",
+          "target": "scripts/repository_inventory.py"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 6571,
+          "match": "exact_literal",
+          "source": ".wolf/buglog.json",
+          "target": "scripts/repository_inventory.py"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 6586,
+          "match": "exact_literal",
+          "source": ".wolf/buglog.json",
+          "target": "scripts/repository_inventory.py"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 6601,
+          "match": "exact_literal",
+          "source": ".wolf/buglog.json",
+          "target": "scripts/repository_inventory.py"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 6617,
+          "match": "exact_literal",
+          "source": ".wolf/buglog.json",
+          "target": "scripts/repository_inventory.py"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 6632,
+          "match": "exact_literal",
+          "source": ".wolf/buglog.json",
+          "target": "scripts/repository_inventory.py"
+        },
+        {
+          "layer": "documentation",
+          "line": 3287,
+          "match": "exact_literal",
+          "source": ".wolf/memory.md",
+          "target": "scripts/repository_inventory.py"
+        }
+      ],
+      "layers": {
+        "documentation": 13,
+        "source_runtime_unverified": 6
+      },
+      "literal_edges": 19,
+      "next_decisive_action": "retain new utility; future packaging change needs its own scoped consumer evidence",
+      "owner": "stream5 inventory/reference tooling",
+      "path": "scripts/repository_inventory.py",
+      "proposed_operation": "none",
+      "restore_prerequisites": [
+        "separately authorized/access-checked destination",
+        "verified copy of exact source+unique originals, with content identities and stable public-route treatment where applicable",
+        "isolated restore rehearsal proving equivalence before an operation is approved"
+      ],
+      "restore_state": "NOT RUN; no destination populated or certified",
+      "snapshot_record": {
+        "git_mode": "100644",
+        "git_oid": "997276e66f0d6ac7ad16bc4b18079743d696edca",
+        "kind": "blob",
+        "note": "new implementation; absent from frozen census",
+        "sha256": "fd9ba6c77d1e22dda387c99e24d83dc288621193f0320f2faef15b3cd0e8fe1a",
+        "size_bytes": 20852,
+        "source_commit": "4b5763ce5b3d0768f7f39d182ccd62c2b838b158"
+      },
+      "source_anchors": [
+        "tests/scripts/test_repository_inventory.py:import repository_inventory",
+        "docs/consolidation/README.md:Reproduce"
+      ],
+      "unique_source_preservation": [
+        "canonical implementation Git object",
+        "fixtures and hash-bound receipts",
+        "ignored raw captures preserved separately from Git"
+      ],
+      "unresolved_consumers": [
+        "static Docker source inclusion versus actual operational invocation",
+        "unsupported import/path aliases and external scheduling"
+      ]
+    },
+    {
+      "coverage_complete": false,
+      "disposition": "retain; evidence review only; no relocation/deletion candidate",
+      "example_locations": [
+        {
+          "layer": "documentation",
+          "line": 74,
+          "match": "exact_literal",
+          "source": "docs/consolidation/README.md",
+          "target": "scripts/scan_product_inventory.py"
+        },
+        {
+          "layer": "documentation",
+          "line": 612,
+          "match": "exact_literal",
+          "source": "docs/consolidation/evidence.json",
+          "target": "scripts/scan_product_inventory.py"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 35,
+          "match": "exact_literal",
+          "source": "scripts/process_all_products.py",
+          "target": "scripts/scan_product_inventory.py"
+        }
+      ],
+      "external_input_literals": [
+        "<operator-home>/Desktop/_Signature Collection_",
+        "<operator-home>/Desktop/BLACK_Rose_Extracted",
+        "<operator-home>/Desktop/Love_Hurts_Extracted",
+        "<operator-home>/Desktop/Signature_Collection_Extracted"
+      ],
+      "external_inputs_observed": "source literals only; existence/content not inspected; no catalog authority assigned",
+      "layers": {
+        "documentation": 2,
+        "source_runtime_unverified": 1
+      },
+      "literal_edges": 3,
+      "next_decisive_action": "owner classifies workflow purpose, invocation/output schema, unique inputs and restore requirements; retain until resolved",
+      "owner": "stream1 product-workflow owner",
+      "path": "scripts/scan_product_inventory.py",
+      "proposed_operation": "none",
+      "restore_prerequisites": [
+        "separately authorized/access-checked destination",
+        "verified copy of exact source+unique originals, with content identities and stable public-route treatment where applicable",
+        "isolated restore rehearsal proving equivalence before an operation is approved"
+      ],
+      "restore_state": "NOT RUN; no destination populated or certified",
+      "snapshot_record": {
+        "category": "source_or_text",
+        "git_mode": "100644",
+        "git_oid": "8eb14018ca0e19841b98eb23b1493cae14219fcb",
+        "kind": "blob",
+        "path": "scripts/scan_product_inventory.py",
+        "size_bytes": 4052,
+        "source_commit": "7892b797d838e67e62c862a6698a5b42b6dccaee"
+      },
+      "source_anchors": [
+        "scripts/scan_product_inventory.py:75",
+        "scripts/scan_product_inventory.py:main",
+        "scripts/process_all_products.py:35"
+      ],
+      "unique_source_preservation": [
+        "scanner and scripts/process_all_products.py consumer",
+        "datasets/product_inventory.json if populated",
+        "external image originals and derivatives pending ownership classification"
+      ],
+      "unresolved_consumers": [
+        "current manual/scheduled invocation",
+        "datasets/product_inventory.json producer/consumer compatibility",
+        "external Desktop originals and downstream conversions/exports"
+      ]
+    },
+    {
+      "coverage_complete": false,
+      "disposition": "retain; evidence review only; no relocation/deletion candidate",
+      "example_locations": [
+        {
+          "layer": "source_runtime_unverified",
+          "line": 50,
+          "match": "exact_literal",
+          "source": ".fashion-theme/catalog-binding.json",
+          "target": "wordpress-theme/skyyrose-flagship-2/functions.php"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 11,
+          "match": "exact_literal",
+          "source": ".fashion-theme/ownership-map.json",
+          "target": "wordpress-theme/skyyrose-flagship-2/functions.php"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 124,
+          "match": "exact_literal",
+          "source": ".fashion-theme/promotion-manifest.json",
+          "target": "wordpress-theme/skyyrose-flagship-2/functions.php"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 196,
+          "match": "exact_literal",
+          "source": ".fashion-theme/v2-remodel-ledger.json",
+          "target": "wordpress-theme/skyyrose-flagship-2/functions.php"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 462,
+          "match": "exact_literal",
+          "source": ".fashion-theme/v2-remodel-ledger.json",
+          "target": "wordpress-theme/skyyrose-flagship-2/functions.php"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 510,
+          "match": "exact_literal",
+          "source": ".fashion-theme/v2-remodel-ledger.json",
+          "target": "wordpress-theme/skyyrose-flagship-2/functions.php"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 570,
+          "match": "exact_literal",
+          "source": ".fashion-theme/v2-remodel-ledger.json",
+          "target": "wordpress-theme/skyyrose-flagship-2/functions.php"
+        },
+        {
+          "layer": "source_runtime_unverified",
+          "line": 613,
+          "match": "exact_literal",
+          "source": ".fashion-theme/v2-remodel-ledger.json",
+          "target": "wordpress-theme/skyyrose-flagship-2/functions.php"
+        }
+      ],
+      "layers": {
+        "documentation": 6,
+        "source_runtime_unverified": 10
+      },
+      "literal_edges": 16,
+      "next_decisive_action": "owner supplies actual target/module/build/route contract before any proposed layout operation",
+      "owner": "stream1 bootstrap/build; stream2 preorder and stream3 analytics boundary owners",
+      "path": "wordpress-theme/skyyrose-flagship-2/functions.php",
+      "proposed_operation": "none",
+      "restore_prerequisites": [
+        "separately authorized/access-checked destination",
+        "verified copy of exact source+unique originals, with content identities and stable public-route treatment where applicable",
+        "isolated restore rehearsal proving equivalence before an operation is approved"
+      ],
+      "restore_state": "NOT RUN; no destination populated or certified",
+      "snapshot_record": {
+        "category": "source_or_text",
+        "git_mode": "100644",
+        "git_oid": "4faca9de32838d9f52cd879fd845c5e3344212dd",
+        "kind": "blob",
+        "path": "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "size_bytes": 91072,
+        "source_commit": "7892b797d838e67e62c862a6698a5b42b6dccaee"
+      },
+      "source_anchors": [
+        "wordpress-theme/skyyrose-flagship-2/functions.php:11-29"
+      ],
+      "unique_source_preservation": [
+        "bootstrap plus required inc modules",
+        "source and tracked minified/package outputs",
+        "public URLs and existing order/analytics integration"
+      ],
+      "unresolved_consumers": [
+        "WordPress active theme identity/configuration",
+        "runtime get_template_directory/URI resolution and required modules",
+        "plugin/commerce hooks, generated asset URLs and public route delivery"
+      ]
+    }
+  ],
+  "reviewed_candidate_sha": "75d9db6eed07367cbdc9976b2b64070572dafd11",
+  "schema_version": 1,
+  "shared_protection_notes": [
+    "Stream1 is canonical owner of shared V2 bootstrap/build/package outputs and registry writes. Stream4 technical source/3D acceptance and stream2 order hooks remain protected at their boundaries.",
+    "Protected paths describe retention and ownership interfaces, not edit/merge/move authority.",
+    "Exact changed paths from each supplied head are included for preservation; their domain checks were not rerun or borrowed."
+  ],
+  "source_snapshot_sha": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+  "source_test_evidence": "20-test exact-source transcript preserved; no code changes, no new suite rerun required",
+  "states": {
+    "LOCAL_CODE_COMPLETE": "PASS",
+    "MERGED": "NOT RUN",
+    "OVERALL_CONSOLIDATION": "BLOCKED",
+    "RELEASED": "NOT RUN",
+    "RUNTIME_ACCEPTED": "NOT RUN"
+  },
+  "superseding_identity_checkpoint": {
+    "receipt": "docs/consolidation/identity-correction.json",
+    "scope": "Historical bug identity snapshots and original dependency sets retained; use superseding receipt for later current session-note integration",
+    "correction": "Stream 5 UP035 id bug-377 renamed bug-383; latest peer bug-377 preorder shipping identity preserved",
+    "receipt_sha256": "eefec70e690177c396221a49d5fe86dc552ef18197610084c4ee01801c742795"
+  },
+  "rolling_coordination_checkpoint": {
+    "receipt": "docs/consolidation/rolling-coordination.json",
+    "sha256": "6e40c90eb78517aa702b505a96d333fdb0ed93823ed09175bda60c4a9029058d",
+    "scope": "Supersedes current cross-stream identity uniqueness/copy status only; historical arrays and supplied dependency sets unchanged"
+  }
+}

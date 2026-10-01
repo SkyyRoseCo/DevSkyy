@@ -158,9 +158,27 @@ directory named archive grants no permission. Preservation is the default.
 
 ## Acceptance state
 
-Safe local tooling can become LOCAL CODE COMPLETE after its applicable tests and
-independent reviews pass. Overall consolidation remains BLOCKED: artifact
+Safe local tooling is LOCAL CODE COMPLETE: its 20-test receipt, scoped checks
+and independent reviews pass. Overall consolidation remains BLOCKED: artifact
 ownership, complete runtime consumer evidence, disruptive-batch approval,
 materialized restore tests, and measured reduction do not yet exist. MERGED,
 RUNTIME ACCEPTED and RELEASED remain NOT RUN under current authority. The
 machine ledger names the exact remaining owner/action for each requirement.
+
+The documentation-only closing preservation and owner handoff is in
+[`COORDINATOR-HANDOFF.md`](COORDINATOR-HANDOFF.md), with exact dependency,
+bug-identity, raw-artifact and retention-target evidence in
+[`closing-evidence.json`](closing-evidence.json). It does not expand integration
+or disruptive-operation authority.
+
+The later shared-ledger collision and stream 5's `bug-377` → `bug-383`
+correction are recorded in
+[`identity-correction.json`](identity-correction.json). It supersedes the
+historical no-conflict disposition for current note integration; the original
+dependency sets and raw evidence remain intact.
+
+The current rolling checkpoint is
+[`rolling-coordination.json`](rolling-coordination.json). It records later peer
+ID collisions, integration ownership of the pending final mapping, exact adopted
+tooling hashes and local evidence-copy verification. Historical receipts remain
+intact; source adoption does not certify removal or restore readiness.
