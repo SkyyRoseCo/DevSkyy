@@ -143,6 +143,24 @@ def test_nested_model_copy_cannot_claim_product_generation(harness):
     assert ledger.checkpoint() == before
 
 
+@pytest.mark.parametrize("length", [121, 128])
+def test_task_prefix_bound_rejects_long_operation_before_reservation(harness, length):
+    governor, ledger, request, _, checkpoints = harness
+    before = ledger.checkpoint()
+    with pytest.raises(ValidationError):
+        governor.simulate(request.model_copy(update={"operation_id": "x" * length}))
+    assert ledger.checkpoint() == before
+    assert checkpoints == []
+
+
+def test_largest_operation_identity_fits_stable_fixture_task(harness):
+    governor, ledger, request, _, _ = harness
+    request = request.model_copy(update={"operation_id": "x" * 120})
+    assert governor.simulate(request)["provider_api_calls"] == 0
+    assert len(ledger.operation(request.operation_id)["provider_operation_id"]) == 128
+    assert governor.recover_fixture(request)["provider_api_calls"] == 0
+
+
 @pytest.mark.parametrize("mutation", ["changed", "escape", "oversized"])
 def test_bounded_evidence_rejects_changed_bytes_symlink_escape_and_size(
     harness, tmp_path, mutation

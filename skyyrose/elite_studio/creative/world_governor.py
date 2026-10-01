@@ -75,7 +75,8 @@ class WorldContext(Record):
 
 
 class WorldFixtureRequest(Record):
-    operation_id: str
+    # Leave room for the stable fixture- task prefix within ledger's 128 limit.
+    operation_id: str = Field(max_length=120)
     grant_id: str
     context: WorldContext
     context_digest: str = Field(pattern=r"^[a-f0-9]{64}$")
