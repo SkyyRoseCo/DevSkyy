@@ -1,12 +1,7 @@
-import { Agent } from '@openai/agents';
+import { Agent, OpenAIProvider, Runner } from '@openai/agents';
+import OpenAI from 'openai';
 
-import type {
-  ChannelDraft,
-  LaunchBrief,
-  LaunchTask,
-  OwnerChecklist,
-  ReadinessCheck,
-} from './types';
+import type { ChannelDraft, LaunchBrief, LaunchTask, OwnerChecklist, ReadinessCheck } from './types';
 
 const LAUNCH_DESK_INSTRUCTIONS = `
 You are Launch Desk, a rigorous release-planning partner for engineering teams.
@@ -42,14 +37,56 @@ Rules:
 - Keep the response skimmable and specific.
 `;
 
+export function launchDeskModel(): string {
+  return 'gpt-6-sol';
+}
+
+const LAUNCH_DESK_MODEL_SETTINGS = {
+  toolChoice: 'none' as const,
+  maxTokens: 4096,
+  retry: { maxRetries: 0 },
+  store: false,
+  truncation: 'disabled' as const,
+  providerData: { service_tier: 'default' },
+};
+
+export function launchDeskExecutionConfig(): string {
+  return JSON.stringify({
+    instructions: LAUNCH_DESK_INSTRUCTIONS,
+    model: launchDeskModel(),
+    modelSettings: LAUNCH_DESK_MODEL_SETTINGS,
+    sdk: '@openai/agents@0.16.0',
+    baseURL: 'https://api.openai.com/v1',
+    maxTurns: 1,
+    timeoutMs: 90_000,
+    maxRetries: 0,
+    tracingEnabled: process.env.OPENAI_AGENTS_TRACING_ENABLED === 'true',
+  });
+}
+
+export function createLaunchDeskRunner(): Runner {
+  return new Runner({
+    modelProvider: new OpenAIProvider({
+      openAIClient: new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+        baseURL: 'https://api.openai.com/v1',
+        maxRetries: 0,
+        timeout: 90_000,
+      }),
+      useResponses: true,
+    }),
+    tracingDisabled: process.env.OPENAI_AGENTS_TRACING_ENABLED !== 'true',
+    traceIncludeSensitiveData: false,
+    workflowName: 'Launch Desk planning workflow',
+  });
+}
+
 export function createLaunchDeskAgent(): Agent {
   return new Agent({
     name: 'Launch Desk',
     instructions: LAUNCH_DESK_INSTRUCTIONS,
-    model: process.env.OPENAI_MODEL || 'gpt-5.6',
-    modelSettings: {
-      toolChoice: 'none',
-    },
+    model: launchDeskModel(),
+    modelSettings: LAUNCH_DESK_MODEL_SETTINGS,
   });
 }
 
@@ -60,7 +97,7 @@ export function formatLaunchPrompt(
     readiness: ReadinessCheck[];
     ownerChecklists: OwnerChecklist[];
     channelDrafts: ChannelDraft[];
-  },
+  }
 ): string {
   return [
     'Create a release plan from this validated launch context and deterministic tool evidence.',
