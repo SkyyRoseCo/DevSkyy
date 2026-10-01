@@ -198,9 +198,9 @@ def test_oversized_png_header_is_normalized_as_receipt_error(local_run, monkeypa
         b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr) + chunk(b"IEND", b"")
     )
     # Preserve source hash during fresh job rebuild to reach image preflight itself.
-    import skyyrose.elite_studio.creative.receipt_reader as reader
-
-    monkeypatch.setattr(reader, "build_job", lambda *a, **k: job)
+    monkeypatch.setattr(
+        "skyyrose.elite_studio.creative.receipt_reader.build_job", lambda *a, **k: job
+    )
     with pytest.raises(ReceiptError) as caught:
         read_receipt_run(REPO_ROOT, run)
     assert isinstance(caught.value.__cause__, Image.DecompressionBombError)
