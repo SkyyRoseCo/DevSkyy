@@ -52,9 +52,10 @@ def upgrade() -> None:
 
             IF EXISTS (
                 SELECT 1 FROM pg_catalog.pg_tables
-                 WHERE tablename = 'analytics_events'
+                 WHERE schemaname = 'public'
+                   AND tablename = 'analytics_events'
             ) THEN
-                RAISE EXCEPTION 'analytics_events already exists; inspect it before adopting this migration';
+                RAISE EXCEPTION 'public.analytics_events already exists; inspect it before adopting this migration';
             END IF;
         END;
         $validate_legacy_users$;

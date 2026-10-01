@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import importlib.util
 import re
+import sqlite3
+from contextlib import closing
 from datetime import UTC, datetime, timedelta
 from io import StringIO
 from pathlib import Path
@@ -47,6 +49,19 @@ def test_legacy_postgresql_schema_matches_isolated_analytics_migration(monkeypat
     monkeypatch.setattr(migration, "op", Operations(context))
     migration.upgrade()
     emitted = output.getvalue()
+    # Exercise the emitted catalog predicate against a synthetic schema catalog.
+    # An unrelated tenant/archive table must not block creation in public.
+    catalog_guard = re.search(
+        r"SELECT 1 FROM pg_catalog\.pg_tables\s+WHERE[^;]+?(?=\s*\) THEN)", emitted
+    )
+    assert catalog_guard is not None
+    with closing(sqlite3.connect(":memory:")) as catalog:
+        catalog.execute("ATTACH DATABASE ':memory:' AS pg_catalog")
+        catalog.execute("CREATE TABLE pg_catalog.pg_tables (schemaname TEXT, tablename TEXT)")
+        catalog.execute("INSERT INTO pg_catalog.pg_tables VALUES ('archive', 'analytics_events')")
+        assert catalog.execute(catalog_guard.group()).fetchone() is None
+        catalog.execute("INSERT INTO pg_catalog.pg_tables VALUES ('public', 'analytics_events')")
+        assert catalog.execute(catalog_guard.group()).fetchone() == (1,)
     migration_table = re.search(r"CREATE TABLE public\.analytics_events \(.*?\n\);", emitted, re.S)
     assert migration_table is not None
     table = StorefrontAnalyticsEvent.__table__

@@ -68,13 +68,6 @@ def create_reporting_app(
             raise HTTPException(503, "Reporting configuration unavailable")
         if request.query_params:
             raise HTTPException(400, "Report query controls are unsupported")
-        try:
-            identifier(job_id)
-            identifier(grant_id)
-        except LedgerError:
-            raise HTTPException(404, "Report scope unavailable") from None
-        if (job_id, grant_id) not in config.allowed_scopes:
-            raise HTTPException(403, "Report scope denied")
         timestamp = request.headers.get("X-Report-Timestamp", "")
         signature = request.headers.get("X-Report-Signature", "")
         site = request.headers.get("X-Report-Site", "")
@@ -97,6 +90,13 @@ def create_reporting_app(
             )
         ):
             raise HTTPException(401, "Read-only report authentication required")
+        try:
+            identifier(job_id)
+            identifier(grant_id)
+        except LedgerError:
+            raise HTTPException(404, "Report scope unavailable") from None
+        if (job_id, grant_id) not in config.allowed_scopes:
+            raise HTTPException(403, "Report scope denied")
         try:
             reader = ReadOnlyLedger(
                 config.database,
