@@ -180,6 +180,16 @@ export default function LoginPage() {
     }
 
     setIsLoading(true);
+    const controller = new AbortController();
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const deadline = new Promise<never>((_, reject) => {
+      timeoutId = setTimeout(() => {
+        controller.abort();
+        const timeoutError = new Error('Login deadline exceeded');
+        timeoutError.name = 'AbortError';
+        reject(timeoutError);
+      }, 30000);
+    });
 
     try {
       const requestBody = new URLSearchParams();
@@ -187,22 +197,20 @@ export default function LoginPage() {
       requestBody.append('password', formData.password);
       requestBody.append('grant_type', 'password');
 
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
-
-      const response = await fetch(`${API_URL}/api/v1/auth/token`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'X-Request-ID': crypto.randomUUID(),
-          'X-CSRF-Token': nonce,
-        },
-        body: requestBody.toString(),
-        signal: controller.signal,
-        credentials: 'include',
-      });
-
-      clearTimeout(timeoutId);
+      const response = await Promise.race([
+        fetch(`${API_URL}/api/v1/auth/token`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-Request-ID': crypto.randomUUID(),
+            'X-CSRF-Token': nonce,
+          },
+          body: requestBody.toString(),
+          signal: controller.signal,
+          credentials: 'include',
+        }),
+        deadline,
+      ]);
 
       if (!response.ok) {
         recordLoginAttempt(false);
@@ -220,7 +228,7 @@ export default function LoginPage() {
         }
       }
 
-      const rawData = await response.json();
+      const rawData = await Promise.race([response.json(), deadline]);
       const parseResult = LoginResponseSchema.safeParse(rawData);
 
       if (!parseResult.success) {
@@ -230,11 +238,14 @@ export default function LoginPage() {
       const data = parseResult.data;
       // Gated dashboard routes use NextAuth's server session, not the legacy
       // bearer cookie. Establish it before publishing legacy client tokens.
-      const sessionResult = await signIn('credentials', {
-        email: formData.email,
-        password: formData.password,
-        redirect: false,
-      });
+      const sessionResult = await Promise.race([
+        signIn('credentials', {
+          email: formData.email,
+          password: formData.password,
+          redirect: false,
+        }),
+        deadline,
+      ]);
       if (!sessionResult?.ok) {
         throw new Error('Unable to establish dashboard session. Please sign in again.');
       }
@@ -262,6 +273,7 @@ export default function LoginPage() {
         setError(err instanceof Error ? err.message : 'Login failed. Please try again.');
       }
     } finally {
+      clearTimeout(timeoutId);
       setIsLoading(false);
     }
   };

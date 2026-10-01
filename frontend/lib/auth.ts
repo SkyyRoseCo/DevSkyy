@@ -26,25 +26,38 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
+        const controller = new AbortController();
+        let timeoutId: ReturnType<typeof setTimeout> | undefined;
+        const deadline = new Promise<never>((_, reject) => {
+          timeoutId = setTimeout(() => {
+            controller.abort();
+            reject(new Error('Authentication deadline exceeded'));
+          }, 10000);
+        });
+
         try {
           const body = new URLSearchParams();
           body.append('username', credentials.email);
           body.append('password', credentials.password);
           body.append('grant_type', 'password');
 
-          const response = await fetch(`${API_URL}/api/v1/auth/token`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: body.toString(),
-          });
+          const response = await Promise.race([
+            fetch(`${API_URL}/api/v1/auth/token`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: body.toString(),
+              signal: controller.signal,
+            }),
+            deadline,
+          ]);
 
           if (!response.ok) {
             return null;
           }
 
-          const data = await response.json();
+          const data = await Promise.race([response.json(), deadline]);
 
           if (!data.access_token) {
             return null;
@@ -59,6 +72,8 @@ export const authOptions: NextAuthOptions = {
           };
         } catch {
           return null;
+        } finally {
+          clearTimeout(timeoutId);
         }
       },
     }),
