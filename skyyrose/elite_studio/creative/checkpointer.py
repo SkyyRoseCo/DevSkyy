@@ -34,6 +34,51 @@ _checkpointer: AsyncPostgresSaver | None = None
 # Lock guards init so concurrent first-time callers don't double-create
 # the pool or hand out a not-yet-setup() saver.
 _init_lock = asyncio.Lock()
+_POOL_CLEANUP_TIMEOUT_SECONDS = 5.0
+_cleanup_tasks: set[asyncio.Task] = set()
+
+
+async def _close_unpublished_pool(pool) -> None:
+    """Drain one owned close task despite repeated caller cancellation.
+
+    A fixed deadline bounds initialization failure recovery. Timed-out cleanup
+    is explicitly incomplete; keep its task referenced until it terminates.
+    """
+    cleanup = asyncio.create_task(pool.close())
+    _cleanup_tasks.add(cleanup)
+
+    def completed(task: asyncio.Task) -> None:
+        _cleanup_tasks.discard(task)
+        if not task.cancelled():
+            task.exception()  # Retrieve failures even after a cleanup timeout.
+
+    cleanup.add_done_callback(completed)
+    deadline = asyncio.get_running_loop().time() + _POOL_CLEANUP_TIMEOUT_SECONDS
+    while not cleanup.done():
+        remaining = deadline - asyncio.get_running_loop().time()
+        if remaining <= 0:
+            cleanup.cancel()
+            logger.error("creative_checkpointer_cleanup_timeout")
+            return
+        try:
+            await asyncio.wait_for(asyncio.shield(cleanup), remaining)
+        except asyncio.CancelledError:
+            # The initializer still propagates its original failure after
+            # cleanup. Additional cancellation cannot abandon this pool.
+            continue
+        except TimeoutError:
+            cleanup.cancel()
+            logger.error("creative_checkpointer_cleanup_timeout")
+            return
+        except Exception:
+            break
+    try:
+        cleanup.result()
+    except (Exception, asyncio.CancelledError) as cleanup_error:
+        logger.error(
+            "creative_checkpointer_cleanup_failed",
+            extra={"error_type": type(cleanup_error).__name__},
+        )
 
 
 def _normalize_pg_url(url: str) -> str | None:
@@ -117,11 +162,16 @@ async def get_checkpointer() -> AsyncPostgresSaver | None:
             kwargs={"autocommit": True, "prepare_threshold": 0},
             open=False,
         )
-        await pool.open()
-        saver = AsyncPostgresSaver(pool)
-        # Run setup() BEFORE publishing the saver so concurrent fast-path
-        # readers never see a half-initialised checkpointer.
-        await saver.setup()
+        try:
+            await pool.open()
+            saver = AsyncPostgresSaver(pool)
+            # Publish only after setup, and retain local ownership until then.
+            await saver.setup()
+        except BaseException:
+            # Cancellation is also an initialization failure. The unpublished
+            # pool is otherwise unreachable by the normal shutdown hook.
+            await _close_unpublished_pool(pool)
+            raise
         _pool = pool
         _checkpointer = saver
         logger.info("creative_checkpointer_ready", extra={"pool_size": pool_size})
