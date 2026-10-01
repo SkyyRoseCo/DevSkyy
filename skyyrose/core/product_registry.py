@@ -80,28 +80,55 @@ def import_storefront_card_projection(projection: Path, path: Path | None = None
     scoped approval metadata is retained verbatim. An existing canonical binding
     cannot be overwritten by an older projection.
     """
+    from jsonschema import Draft202012Validator, ValidationError
+
+    schema = json.loads(_CANONICAL_REGISTRY.with_name("logo-registry.schema.json").read_text())
+    binding_validator = Draft202012Validator(schema["$defs"]["cardFrontBinding"])
+    metadata_validator = Draft202012Validator(schema["properties"]["storefront_card_manifest"])
     target = _registry_target(path)
-    raw = load_registry(target)
-    cards = json.loads(projection.read_text(encoding="utf-8"))
-    if cards.get("schema_version") != 1 or not isinstance(cards.get("authorization"), str):
-        raise ValueError("Invalid storefront card projection metadata")
-    records = cards.get("products")
-    if not isinstance(records, dict) or set(records) != set(raw["products"]):
-        raise ValueError("Storefront card projection must cover the exact registry SKU set")
-    for sku, record in records.items():
-        if not isinstance(record, dict) or not record.get("src") or not record.get("sha256"):
-            raise ValueError(f"Invalid storefront card binding: {sku}")
-        existing = raw["products"][sku].get("images", {}).get("card_front")
-        if existing is not None and existing != record:
-            raise ValueError(f"Canonical card binding conflicts with projection: {sku}")
-    metadata = {key: value for key, value in cards.items() if key != "products"}
-    if raw.get("storefront_card_manifest", metadata) != metadata:
-        raise ValueError("Canonical card metadata conflicts with projection")
-    for sku, record in records.items():
-        raw["products"][sku].setdefault("images", {})["card_front"] = record
-    raw["storefront_card_manifest"] = metadata
-    _atomic_write(target, json.dumps(raw, ensure_ascii=False, indent=2) + "\n")
-    export_compatibility(target)
+    with target.with_suffix(".json.lock").open("a") as lock:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+        raw = load_registry(target)
+        cards = json.loads(projection.read_text(encoding="utf-8"))
+        if not isinstance(cards, dict):
+            raise ValueError("Invalid storefront card projection metadata")
+        records = cards.get("products")
+        if not isinstance(records, dict) or set(records) != set(raw["products"]):
+            raise ValueError("Storefront card projection must cover the exact registry SKU set")
+        metadata = {key: value for key, value in cards.items() if key != "products"}
+        try:
+            metadata_validator.validate(metadata)
+            for record in records.values():
+                binding_validator.validate(record)
+        except ValidationError as error:
+            raise ValueError("Invalid storefront card projection: " + error.message) from error
+        for sku, record in records.items():
+            existing = raw["products"][sku].get("images", {}).get("card_front")
+            if existing is not None and existing != record:
+                raise ValueError(f"Canonical card binding conflicts with projection: {sku}")
+        if raw.get("storefront_card_manifest", metadata) != metadata:
+            raise ValueError("Canonical card metadata conflicts with projection")
+        for sku, record in records.items():
+            raw["products"][sku].setdefault("images", {})["card_front"] = record
+        raw["storefront_card_manifest"] = metadata
+        outputs = _compatibility_outputs(raw, target)
+        previous = {p: p.read_text() if p.exists() else None for p in outputs}
+        touched = []
+        try:
+            for destination, content in outputs.items():
+                if previous[destination] != content:
+                    destination.parent.mkdir(parents=True, exist_ok=True)
+                    _atomic_write(destination, content)
+                    touched.append(destination)
+            # Commit authority last, under the same lock as catalog writers.
+            _atomic_write(target, json.dumps(raw, ensure_ascii=False, indent=2) + "\n")
+        except BaseException:
+            for destination in reversed(touched):
+                if previous[destination] is None:
+                    destination.unlink(missing_ok=True)
+                else:
+                    _atomic_write(destination, previous[destination])
+            raise
 
 
 def _catalog_projection(product: dict[str, Any], columns: list[str]) -> dict[str, str]:
