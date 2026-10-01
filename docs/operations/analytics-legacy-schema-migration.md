@@ -16,10 +16,11 @@ migration does not modify existing tables, install extensions, convert user IDs,
 or create synthetic activity.
 
 The revision refuses to proceed unless `public.users.id` is the sole
-`VARCHAR(36)` primary key and `analytics_events` is absent in all schemas.
-Alembic records this revision in `public.skyyrose_analytics_version`, leaving
-the unrelated historical Alembic state untouched. If the schema differs, stop
-and prepare a separately reviewed migration for that schema profile.
+`VARCHAR(36)` primary key and `public.analytics_events` is absent. An
+`analytics_events` table in another schema does not block this revision. Alembic
+records this revision in `public.skyyrose_analytics_version`, leaving the
+unrelated historical Alembic state untouched. If the schema differs, stop and
+prepare a separately reviewed migration for that schema profile.
 
 The application and this migration share the database URL normalizer. A Postgres
 URL containing `channel_binding=require` selects SQLAlchemy's async psycopg
