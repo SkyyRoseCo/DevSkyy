@@ -5,12 +5,12 @@
   "scope": "local retained observations; individual reports define execution/approval limits",
   "files": {
     "README.md": {
-      "bytes": 10623,
-      "sha256": "1c0c5b5b2e7a118e471a6fdba6bd7e3027e0a77aa929edeb0aa1054a50d0e474"
+      "bytes": 11401,
+      "sha256": "bd9aff63c13fc3a5f8a42cc06414d6eee3af48c5fec49e20fe0cb886289f4af4"
     },
     "adoption-manifest.json": {
-      "bytes": 11370,
-      "sha256": "22913bc44fea55b98d7df0223d0768a0ecc8f03f919a95d55dedf9c9c284c4a1"
+      "bytes": 11750,
+      "sha256": "32aa401d4f106c5090eb42fa70a83a465a21d652d7c6fe06238a1f9d7b6cba18"
     },
     "evidence/brand-contract.txt": {
       "bytes": 99,
@@ -464,6 +464,10 @@
       "bytes": 183,
       "sha256": "86d08b8cea0f6df9f1b99c88685c48fd5d05f249da9a32157639e4c5400a89a6"
     },
+    "evidence/delivery-status.json": {
+      "bytes": 1246,
+      "sha256": "c1a7c292efe30e24cdb52bc9ecd5fdbc88afbac6804dc72b16227f597b4de267"
+    },
     "evidence/dependencies/README.md": {
       "bytes": 2326,
       "sha256": "6c6f0fbc8fb34b28449b6c6ada17541e9fdffb73e828460d58507f82738448a1"
@@ -603,6 +607,26 @@
     "evidence/github-auth-status.txt": {
       "bytes": 240,
       "sha256": "fded77f1c42b9be33f4f95790c7275f248d563ac9c0320128e48405f56aa4777"
+    },
+    "evidence/github-checks-current.json": {
+      "bytes": 3200,
+      "sha256": "7c5f3b5c49635436c2e7f8639befca75a99a4cec1817ffd8784c0535790cd569"
+    },
+    "evidence/github-checks-initial.json": {
+      "bytes": 3228,
+      "sha256": "44a22d79eed93b57edf35b0afddec28da149b6ba653dfb266405c3fbc20a1fdf"
+    },
+    "evidence/github-draft-release.json": {
+      "bytes": 1386,
+      "sha256": "61fd1c1169a7221580485e2f83f24897fa74c9261d62899f2f65c0afceaa30b9"
+    },
+    "evidence/github-pr-initial.json": {
+      "bytes": 6241,
+      "sha256": "91639862ab99768fca9e2e8a6382fee3ca02bdae70cc879d70ce3e6afc8772eb"
+    },
+    "evidence/github-push-observation.json": {
+      "bytes": 421,
+      "sha256": "10ed54ff46916d6f34186360d5f6dc59784360f6f287d698c1f6bdf6df968fef"
     },
     "evidence/github-target.json": {
       "bytes": 120,

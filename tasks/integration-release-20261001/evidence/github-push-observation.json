@@ -1,0 +1,13 @@
+{
+  "branch": "codex/integration-release-20261001",
+  "push": "SUCCESS",
+  "reviewed_head": "e8ba76ff5d96c877e99ebe1867e2712c3ab311db",
+  "remote_default_branch_dependabot_observation": {
+    "total": 312,
+    "critical": 14,
+    "high": 108,
+    "moderate": 161,
+    "low": 29,
+    "scope": "Defaultbranch GitHubpushmessage; distinctfrom exactcandidate root/frontend npm audits; notclosed bythisscopedremediation"
+  }
+}

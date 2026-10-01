@@ -1,0 +1,28 @@
+{
+  "observed_utc": "2026-10-01T13:03:41.719421+00:00",
+  "reviewed_delivery_head": "e8ba76ff5d96c877e99ebe1867e2712c3ab311db",
+  "package_source_revision": "5950592d922706dd67fc0320e8c5f3dc005a47b7",
+  "pr_url": "https://github.com/SkyyRoseCo/DevSkyy/pull/1000",
+  "pr_is_draft": true,
+  "release_url": "https://github.com/SkyyRoseCo/DevSkyy/releases/tag/untagged-65300f468aa14dfce74b",
+  "release_is_draft": true,
+  "github_release_assets_server_digest_match": true,
+  "status": {
+    "LOCAL_CODE_COMPLETE": "PASS boundedimplementation",
+    "INTEGRATION_ACCEPTED": "PASS reviewedlocalcontracts/cleanpackage/isolatedinstalledZIP",
+    "RUNTIME_ACCEPTED": "LOCAL_ONLY; intendedhostedproduction notqualified",
+    "RELEASED": "DRAFT_CANDIDATE_DELIVERED; no productionrelease/activation"
+  },
+  "ci": "ordinaryGitHubchecks inprogress; providerbackedadvisory/automaticagentsSKIPPED; noCIgreenclaim",
+  "production": "BLOCKED onexplicitinventory/policy/asset/Governorqualification/targetrollbackgates",
+  "actions_not_performed": [
+    "merge",
+    "productionupload/activation",
+    "migrationreplay",
+    "realorder/payment",
+    "paidprovider call",
+    "secrets/billing modification",
+    "destructiveconsolidation",
+    "rollbackrestore"
+  ]
+}

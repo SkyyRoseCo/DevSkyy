@@ -301,5 +301,14 @@
     "scope": "Skipprovider-backedadvisory reviewer on draft; normalcode/security/catalog jobs unchanged",
     "yaml_parse": "PASS",
     "independent_review": "PASS"
+  },
+  "publication": {
+    "reviewed_head": "e8ba76ff5d96c877e99ebe1867e2712c3ab311db",
+    "pr_url": "https://github.com/SkyyRoseCo/DevSkyy/pull/1000",
+    "pr_is_draft": true,
+    "release_url": "https://github.com/SkyyRoseCo/DevSkyy/releases/tag/untagged-65300f468aa14dfce74b",
+    "release_is_draft": true,
+    "server_asset_digests_verified": true,
+    "production": "HELD"
   }
 }
