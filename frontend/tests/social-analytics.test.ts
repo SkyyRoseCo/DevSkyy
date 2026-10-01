@@ -164,6 +164,25 @@ describe('social analytics evidence contract', () => {
     expect(data.platforms.facebook).toMatchObject({ status: 'error', posts: null, likes: null });
     expect(data.total_posts).toBeNull();
   });
+  it('sends Meta tokens only in Authorization headers, never request URLs or report bodies', async () => {
+    connectionMock.mockImplementation(platform => ({ connected: platform === 'instagram' || platform === 'facebook' }));
+    vi.stubEnv('INSTAGRAM_BUSINESS_ACCOUNT_ID', 'fixture-account');
+    vi.stubEnv('FACEBOOK_PAGE_ID', 'fixture-page');
+    tokenMock.mockReturnValue('fixture-secret-token-with-special&characters');
+    fetchMock.mockResolvedValue(Response.json({ data: [] }));
+    const body = await (await GET(request(), undefined)).json();
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    for (const [input, init] of fetchMock.mock.calls) {
+      const url = new URL(String(input));
+      expect(url.origin).toBe('https://graph.facebook.com');
+      expect(url.searchParams.has('access_token')).toBe(false);
+      expect(String(input)).not.toContain('fixture-secret');
+      expect(new Headers(init?.headers).get('Authorization')).toBe(
+        'Bearer fixture-secret-token-with-special&characters'
+      );
+    }
+    expect(JSON.stringify(body)).not.toContain('fixture-secret');
+  });
   it('marks connected API errors unknown and excludes them from totals', async () => {
     connectionMock.mockImplementation(platform => ({ connected: platform === 'tiktok' }));
     fetchMock.mockResolvedValue(Response.json({ error: 'access denied' }, { status: 403 }));

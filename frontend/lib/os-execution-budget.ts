@@ -22,6 +22,7 @@ type BudgetCode =
   | 'REPLAY'
   | 'OPERATION_LIMIT'
   | 'SPENDING_LIMIT'
+  | 'RECEIPT_CONFLICT'
   | 'LEDGER_UNAVAILABLE'
   | 'OWNER_SCOPE';
 
@@ -138,8 +139,10 @@ local receipt = redis.call('HGET', KEYS[1], 'operation:' .. ARGV[1])
 if not receipt then return 0 end
 local operation = cjson.decode(receipt)
 if operation.traceId ~= ARGV[2] then return 0 end
-redis.call('HSET', KEYS[1], 'provider_response:' .. ARGV[1], ARGV[3])
-return 1
+local field = 'provider_response:' .. ARGV[1]
+if redis.call('HSETNX', KEYS[1], field, ARGV[3]) == 1 then return 1 end
+if redis.call('HGET', KEYS[1], field) == ARGV[3] then return 1 end
+return -1
 `;
 
 function persistentLedger(env: BudgetEnvironment): BudgetLedger {
@@ -221,16 +224,18 @@ export async function reserveExecution(
     reservedUsdMicros: policy.reservationUsdMicros,
     async recordProviderResponse(responseId: string) {
       if (!/^resp_[A-Za-z0-9_-]{1,180}$/.test(responseId)) throw new ExecutionBudgetError('LEDGER_UNAVAILABLE');
+      let recorded: unknown;
       try {
-        const recorded = await ledger.eval(
+        recorded = await ledger.eval(
           RECORD_PROVIDER_RESPONSE_LUA,
           [`os-execution-budget:v1:${policy.id}`],
           [request.operationId, request.traceId, responseId]
         );
-        if (recorded !== 1) throw new Error('Receipt unavailable');
       } catch {
         throw new ExecutionBudgetError('LEDGER_UNAVAILABLE');
       }
+      if (recorded === -1) throw new ExecutionBudgetError('RECEIPT_CONFLICT');
+      if (recorded !== 1) throw new ExecutionBudgetError('LEDGER_UNAVAILABLE');
     },
   };
 }

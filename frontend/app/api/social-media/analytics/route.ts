@@ -62,10 +62,12 @@ async function instagram(): Promise<PlatformAnalytics> {
   if (!token || !account) return unavailable('disconnected', 'Instagram account is not configured.');
   const [mediaPayload, insightPayload] = await Promise.all([
     platformFetch(
-      `https://graph.facebook.com/${META_GRAPH_VERSION}/${account}/media?fields=like_count,comments_count&limit=50&access_token=${token}`
+      `https://graph.facebook.com/${META_GRAPH_VERSION}/${account}/media?fields=like_count,comments_count&limit=50`,
+      { headers: { Authorization: `Bearer ${token}` } }
     ),
     platformFetch(
-      `https://graph.facebook.com/${META_GRAPH_VERSION}/${account}/insights?metric=reach&period=day&metric_type=time_series&access_token=${token}`
+      `https://graph.facebook.com/${META_GRAPH_VERSION}/${account}/insights?metric=reach&period=day&metric_type=time_series`,
+      { headers: { Authorization: `Bearer ${token}` } }
     ).catch(() => null),
   ]);
   const media = z.object({ data: z.array(z.object({ like_count: value, comments_count: value })) }).parse(mediaPayload);
@@ -171,7 +173,8 @@ async function facebook(): Promise<PlatformAnalytics> {
   const page = process.env.FACEBOOK_PAGE_ID;
   if (!token || !page) return unavailable('disconnected', 'Facebook page is not configured.');
   const payload = await platformFetch(
-    `https://graph.facebook.com/${META_GRAPH_VERSION}/${page}/posts?fields=reactions.type(LIKE).limit(0).summary(true),comments.limit(0).summary(true),shares&limit=50&access_token=${token}`
+    `https://graph.facebook.com/${META_GRAPH_VERSION}/${page}/posts?fields=reactions.type(LIKE).limit(0).summary(true),comments.limit(0).summary(true),shares&limit=50`,
+    { headers: { Authorization: `Bearer ${token}` } }
   );
   const data = z
     .object({
