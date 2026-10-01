@@ -1,7 +1,7 @@
 """Registry migration preserves facts and rejection metadata; no visual approval."""
 
-import json
 import fcntl
+import json
 from pathlib import Path
 
 import pytest
