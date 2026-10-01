@@ -28,11 +28,11 @@ and its fixtures are local, synthetic, and read-only with respect to paid
 providers. It is not a complete live provider gateway, does not demonstrate paid
 execution, and does not establish release approval.
 
-Fresh integration evidence reports **339 Python tests passed**, including the
+The earlier integration tree had **339 Python tests pass**, including the
 concurrent report-write regression and coverage for the context resolver,
 Creative Job, reporting, local composite, spend ledger, database fail-loud
-behavior, and `tests/api/analytics`. Treat this as candidate test evidence; it
-does not imply deployment or production acceptance.
+behavior, and `tests/api/analytics`. These results do not establish final CI on
+the later PR head; focused follow-up results are listed below.
 
 ## Neon analytics migration
 
@@ -64,7 +64,7 @@ authenticated production metadata, and production application flows. This record
 documents maintenance evidence; it does not authorize deployment, publication,
 or additional provider execution.
 
-## Final local verification
+## Prior integration tree verification
 
 The integration checkout is based on `origin/main` at
 `3e720a4903a7e4f09813d71741d0a3b1f2be5556`. It includes the isolated analytics
@@ -106,3 +106,54 @@ all 690 tests and coverage thresholds; the frontend suite passed all 270 tests.
 Both packages passed type checking and builds. Resolve the final GitHub CI state
 before treating the PR as green. The frontend build also retains its existing
 Turbopack file-tracing warning.
+
+## Current PR head follow-up
+
+The current committed head is `846c69e0af4d9143332e49582d07d8265d52dc50`.
+Subsequent focused fixes add these verified candidate checks:
+
+- `5487ccad0`: backend webhook 503 handling, ledger schema, and SQLite
+  initialization; **126 tests passed**.
+- `5fec7ceb6`: Meta request headers and immutable receipts; **51 tests passed**,
+  including execution against the actual Lua-backed `fakeredis` path.
+- `9a6c0835e`: bound relay coverage; **39 checks passed**. Two legacy-visitor
+  metric checks correctly report unavailable and must not be presented as
+  measured traffic.
+- `ff60ac324`: tailored Copilot review instructions and MCP context. GitHub
+  repository settings confirmed the save; built-in GitHub and Playwright MCP
+  remain enabled, and Context7 exposes only `resolve-library-id` and
+  `query-docs`, both marked read-only.
+- `846c69e0a`: bounds and reaps independent database workers. The earlier
+  analytics CI failure exposed four webhook fixture failures and an outer
+  subprocess timeout (10 seconds) shorter than the inner worker timeout (30
+  seconds). The fixture issue is fixed; the worker timeout is now bounded at 60
+  seconds with cleanup, while assertions remain intact. The normal focused
+  analytics run passed **46 tests**.
+
+These focused results do not replace the final CI and review gate for the
+current head; that gate remains pending. Do not claim merge or live analytics
+acceptance from these checks.
+
+## Public theme version observation
+
+A read-only inspection of the public site's `skyyrose-flagship/style.css`
+reports SkyyRose Flagship2 version `2.3.1`, while the repository's
+`wordpress-theme/skyyrose-flagship-2/` package metadata reports `2.5.0`. This is
+a public metadata observation, not evidence of the deployed source tree or a
+completed release. No staging or production files were changed.
+
+The focused analytics source port for `wordpress-theme/skyyrose-flagship-2/` has
+passed bounded source qualification: 29 source/minified collector checks, 36
+relay checks, 13 bootstrap checks, five generator-guard checks, and two Chromium
+V2 checks. Native asset and POT checks, the canonical 33-product registry check,
+existing shell/card/prelaunch runtime checks, and source integrity also passed
+with pinned Node 22.23.2/npm 10.9.8. Standalone V2 bootstrap, relay, and card
+checks confirmed no sibling V1 dependency. No source certification or digest
+changed. Independent PHP and JavaScript reviews approved; the final Python
+`TOKEN_PARSE` rerun passed all five guard tests and projection parity.
+
+The combined V1 and V2 unit/relay/bootstrap/parity and browser commands passed
+against the final source tree. The aggregate GitHub CI/review gate remains
+pending. Focused V2 checks do not establish deployment or live analytics
+acceptance. No staging or production files were changed. The already-completed
+Neon migration remains in place; do not rerun it.
