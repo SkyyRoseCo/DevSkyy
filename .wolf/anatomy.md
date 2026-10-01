@@ -9279,3 +9279,7 @@
 - `tasks/prelaunch-faq-rewrite-2026-09-26/` — Maintained unpublished FAQ candidate and refreshed public-source snapshots, reconciled against canonical product and brand data. (~6500 tok)
 - `tests/test_storefront_card_migration.py` — Schema-invalid input, writer-lock, authority preservation and projection/commit rollback regressions. (~1800 tok)
 - `tests/test_brand_php_generation.py`, `tests/test_faq_candidate.py` — Explicit no-tagline output and FAQ failure/parse tests. (~600 tok)
+
+## Closing local commerce evidence
+- `wordpress-theme/skyyrose-flagship-2/tests/commerce/bootstrap.php` — Full active theme hooks and canonical-SKU synthetic variation classification test; offline loopback only (~1100 tok).
+- `tasks/v2-launch-local-20261001/evidence/closing/` — Closing phase raw native WP/Woo tests, screenshots, source provenance, and remaining owners.

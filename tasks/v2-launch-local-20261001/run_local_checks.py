@@ -16,15 +16,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 THEME = ROOT / "wordpress-theme/skyyrose-flagship-2"
-EVIDENCE = HERE / "evidence"
+EVIDENCE = Path(os.environ.get("STREAM1_EVIDENCE_DIR", str(HERE / "evidence")))
 PYTHON = ROOT / ".venv/bin/python"
 NODE = Path("/Users/theceo/.hermes/node/bin/node")
 NPM = Path("/Users/theceo/.hermes/node/lib/node_modules/npm/bin/npm-cli.js")
 
 
 def main() -> int:
-    EVIDENCE.mkdir(exist_ok=True)
+    EVIDENCE.mkdir(parents=True, exist_ok=True)
     sha = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    source_status_before = subprocess.check_output(
+        ["git", "status", "--porcelain", "--untracked-files=no"], cwd=ROOT, text=True
+    )
     env = dict(os.environ)
     env["PATH"] = ":".join(
         ["/tmp/stream1-v2-venv/bin", str(NODE.parent), "/opt/homebrew/bin", "/usr/bin", "/bin"]
@@ -100,6 +103,8 @@ def main() -> int:
         "check:scene-posters",
         "lint:php",
         "build",
+        "verify",
+        "package:theme",
     ):
         checks.append(
             (
@@ -184,7 +189,21 @@ def main() -> int:
         )
         print(requirement + ": " + status, flush=True)
     (EVIDENCE / "local-checks.json").write_text(
-        json.dumps({"tested_sha": sha, "checks": results}, indent=2) + "\n"
+        json.dumps(
+            {
+                "tested_sha": sha,
+                "ending_sha": subprocess.check_output(
+                    ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+                ).strip(),
+                "tracked_status_before": source_status_before,
+                "tracked_status_after": subprocess.check_output(
+                    ["git", "status", "--porcelain", "--untracked-files=no"], cwd=ROOT, text=True
+                ),
+                "checks": results,
+            },
+            indent=2,
+        )
+        + "\n"
     )
     return 0 if all(row["status"] == "PASS" for row in results) else 1
 

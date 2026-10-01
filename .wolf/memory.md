@@ -3287,3 +3287,5 @@ User authorized "do it" for Kids-first timed boards and parallel collection arc 
 
 | 2026-10-01 | Stream1 local V2/FAQ integration on frozen7892; exact product facts preserved, canonical card migration and no-tagline loader repaired; sourcecert and broader brand-consumer cleanup held; staging inspected read-only191code/data hashes | tasks/v2-launch-local-20261001/ | local candidate; E2E BLOCKED | ~30k |
 | 00:16 | Stream 2 local preorder module and 3-mode native Woo matrix; architect review fixes payment retry; read-only staging module absent | tasks/preorder-correctness-20261001, V2 inc/woocommerce-compat.php | local gates PASS; inventory/bootstrap/runtime/release BLOCKED or NOT RUN | ~session |
+
+| 02:53 | Stream1 closing: consumed canonical stream2 + four stream4 commits once; actual WP7.1.2/Woo11.1.2 isolated full-theme bootstrap, 3-mode commerce matrix, variation display and native cart promise recovery verified; certification owner pending | V2 functions, commerce/bootstrap.php, task evidence/closing | local only; reservation/policy/media/release holds retained | ~600 |
