@@ -3,7 +3,7 @@
 # Minimal requirements for Vercel serverless functions
 
 # Core Framework
-fastapi==0.138.1
+fastapi==0.141.1
 pydantic>=2.0.0,<3.0.0
 
 # HTTP Client (for external API calls)
