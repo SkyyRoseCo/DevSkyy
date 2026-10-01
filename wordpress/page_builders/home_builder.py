@@ -137,7 +137,7 @@ class HomePageBuilder(ElementorBuilder):
 
         widgets.append(
             self.text(
-                "Where love meets luxury across three distinct experiences",
+                "Explore three distinct collection experiences",
                 align="center",
             )
         )

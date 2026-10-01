@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 THEME = ROOT / "wordpress-theme/skyyrose-flagship-2"
-EVIDENCE = Path(os.environ.get("STREAM1_EVIDENCE_DIR", str(HERE / "evidence")))
+EVIDENCE = Path(os.environ.get("STREAM1_EVIDENCE_DIR", str(HERE / "evidence"))).resolve()
 PYTHON = ROOT / ".venv/bin/python"
 NODE = Path("/Users/theceo/.hermes/node/bin/node")
 NPM = Path("/Users/theceo/.hermes/node/lib/node_modules/npm/bin/npm-cli.js")
