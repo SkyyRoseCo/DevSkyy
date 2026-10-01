@@ -5,7 +5,16 @@ defined( 'ABSPATH' ) || exit;
 /** Render maintained menu content with a working fresh-install fallback. */
 function skyyrose2_shell_links( $location, $links, $class = '' ) {
 	if ( has_nav_menu( $location ) ) {
-		$menu = wp_nav_menu( array( 'theme_location' => $location, 'container' => false, 'menu_class' => 'sr2-shell-links ' . $class, 'depth' => 2, 'fallback_cb' => false, 'echo' => false ) );
+		$menu = wp_nav_menu(
+			array(
+				'theme_location' => $location,
+				'container'      => false,
+				'menu_class'     => 'sr2-shell-links ' . $class,
+				'depth'          => 2,
+				'fallback_cb'    => false,
+				'echo'           => false,
+			)
+		);
 		if ( is_string( $menu ) && '' !== $menu ) {
 			foreach ( $links as $label => $url ) {
 				if ( function_exists( 'skyyrose2_canonical_collection_menu_links' ) ) {
@@ -43,12 +52,12 @@ function skyyrose2_shell_links( $location, $links, $class = '' ) {
 function skyyrose2_house_links() {
 	return array(
 		__( 'Collections', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'collections' ),
-		__( 'Shop', 'skyyrose-flagship-2' ) => skyyrose2_shop_url(),
-		__( 'Lookbook', 'skyyrose-flagship-2' ) => home_url( '/lookbook/' ),
-		__( 'Pre-Order', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'pre-order' ),
-		__( 'Journal', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'journal' ),
-		__( 'About', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'about' ),
-		__( 'Contact', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'contact' ),
+		__( 'Shop', 'skyyrose-flagship-2' )        => skyyrose2_shop_url(),
+		__( 'Lookbook', 'skyyrose-flagship-2' )    => home_url( '/lookbook/' ),
+		__( 'Pre-Order', 'skyyrose-flagship-2' )   => skyyrose2_marketplace_page_url( 'pre-order' ),
+		__( 'Journal', 'skyyrose-flagship-2' )     => skyyrose2_marketplace_page_url( 'journal' ),
+		__( 'About', 'skyyrose-flagship-2' )       => skyyrose2_marketplace_page_url( 'about' ),
+		__( 'Contact', 'skyyrose-flagship-2' )     => skyyrose2_marketplace_page_url( 'contact' ),
 	);
 }
 
@@ -124,19 +133,41 @@ function skyyrose2_bag_shell() {
 /** House directory, client-service ledger, then legal colophon. */
 function skyyrose2_footer() {
 	$services = array(
-		__( 'FAQ', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'faq' ),
+		__( 'FAQ', 'skyyrose-flagship-2' )                => skyyrose2_marketplace_page_url( 'faq' ),
 		__( 'Shipping + Returns', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'shipping-returns' ),
-		__( 'Size Guide', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'size-guide' ),
-		__( 'Contact', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'contact' ),
-		__( 'Account', 'skyyrose-flagship-2' ) => function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'myaccount' ) : home_url( '/my-account/' ),
+		__( 'Size Guide', 'skyyrose-flagship-2' )         => skyyrose2_marketplace_page_url( 'size-guide' ),
+		__( 'Contact', 'skyyrose-flagship-2' )            => skyyrose2_marketplace_page_url( 'contact' ),
+		__( 'Account', 'skyyrose-flagship-2' )            => function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'myaccount' ) : home_url( '/my-account/' ),
 	);
 	?>
 	<footer class="sr2-footer sr2-house-footer">
 		<div class="sr2-house-footer__identity"><span aria-hidden="true"></span><a class="sr2-house-footer__wordmark" href="<?php echo esc_url( home_url( '/' ) ); ?>"><span class="sr2-brand-media sr2-house-footer__animated-mark" aria-hidden="true"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-still-384w.webp' ) ); ?>" data-brand-video="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-optimized-384w.webm' ) ); ?>" data-brand-animation="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-animated-384w.webp' ) ); ?>" data-brand-animation-mode="viewport" width="384" height="216" loading="lazy" decoding="async" alt=""></span><span><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-2' ); ?></span></a></div>
 		<div class="sr2-house-footer__disclosures">
 			<details><summary><?php esc_html_e( 'Explore', 'skyyrose-flagship-2' ); ?></summary><nav aria-label="<?php esc_attr_e( 'Explore SkyyRose', 'skyyrose-flagship-2' ); ?>"><?php skyyrose2_shell_links( 'footer-house', skyyrose2_house_links(), 'sr2-house-footer__routes' ); ?></nav></details>
-			<details><summary><?php esc_html_e( 'Client Services', 'skyyrose-flagship-2' ); ?></summary><nav aria-label="<?php esc_attr_e( 'Client Services', 'skyyrose-flagship-2' ); ?>"><?php skyyrose2_shell_links( 'footer-services', $services ); ?></nav><?php if ( has_nav_menu( 'footer' ) ) : ?><nav class="sr2-house-footer__legacy" aria-label="<?php esc_attr_e( 'More from the house', 'skyyrose-flagship-2' ); ?>"><?php skyyrose2_shell_links( 'footer', array( __( 'Kids Capsule', 'skyyrose-flagship-2' ) => home_url( '/collections/kids-capsule/' ), __( 'Pre-Order', 'skyyrose-flagship-2' ) => home_url( '/pre-order/' ) ) ); ?></nav><?php endif; ?></details>
-			<details><summary><?php esc_html_e( 'Legal', 'skyyrose-flagship-2' ); ?></summary><nav aria-label="<?php esc_attr_e( 'Legal', 'skyyrose-flagship-2' ); ?>"><?php foreach ( array( 'privacy-policy' => __( 'Privacy', 'skyyrose-flagship-2' ), 'terms-of-service' => __( 'Terms', 'skyyrose-flagship-2' ), 'accessibility' => __( 'Accessibility', 'skyyrose-flagship-2' ) ) as $slug => $label ) : ?><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( $slug ) ); ?>"><?php echo esc_html( $label ); ?></a><?php endforeach; ?></nav></details>
+			<details><summary><?php esc_html_e( 'Client Services', 'skyyrose-flagship-2' ); ?></summary><nav aria-label="<?php esc_attr_e( 'Client Services', 'skyyrose-flagship-2' ); ?>"><?php skyyrose2_shell_links( 'footer-services', $services ); ?></nav>
+			<?php
+			if ( has_nav_menu( 'footer' ) ) :
+				?>
+				<nav class="sr2-house-footer__legacy" aria-label="<?php esc_attr_e( 'More from the house', 'skyyrose-flagship-2' ); ?>">
+				<?php
+				skyyrose2_shell_links(
+					'footer',
+					array(
+						__( 'Kids Capsule', 'skyyrose-flagship-2' ) => home_url( '/collections/kids-capsule/' ),
+						__( 'Pre-Order', 'skyyrose-flagship-2' ) => home_url( '/pre-order/' ),
+					)
+				);
+				?>
+				</nav><?php endif; ?></details>
+			<details><summary><?php esc_html_e( 'Legal', 'skyyrose-flagship-2' ); ?></summary><nav aria-label="<?php esc_attr_e( 'Legal', 'skyyrose-flagship-2' ); ?>">
+			<?php
+			foreach ( array(
+				'privacy-policy'   => __( 'Privacy', 'skyyrose-flagship-2' ),
+				'terms-of-service' => __( 'Terms', 'skyyrose-flagship-2' ),
+				'accessibility'    => __( 'Accessibility', 'skyyrose-flagship-2' ),
+			) as $slug => $label ) :
+				?>
+					<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( $slug ) ); ?>"><?php echo esc_html( $label ); ?></a><?php endforeach; ?><a href="#skyyrose-cookie-consent" data-cookie-consent-settings><?php esc_html_e( 'Cookie settings', 'skyyrose-flagship-2' ); ?></a></nav></details>
 		</div>
 		<p class="sr2-house-footer__copyright">© <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php esc_html_e( 'The Skyy Rose Collection LLC', 'skyyrose-flagship-2' ); ?></p>
 	</footer>

@@ -1,0 +1,193 @@
+/* ==========================================================================
+   Cookie Consent Banner
+   Dark glass bar — fixed to viewport bottom, above mobile nav.
+
+   Bottom-chrome stacking/clearance contract (audit D5):
+     .mobile-nav (z 9000, var(--skyyrose-mobile-nav-h) band, ≤768px)
+     < .skyyrose-mascot (z 9990, mascot.css)
+     < .cookie-consent (z 9998).
+   While the banner is visible, template-parts/cookie-consent.php puts
+   .skyyrose-consent-open on <html>; that class defines
+   --skyyrose-consent-clearance below, and every fixed bottom widget adds the
+   var to its bottom offset so the banner never covers it. The var collapses
+   to 0 the moment consent is resolved.
+   ========================================================================== */
+
+.skyyrose-consent-open {
+  --skyyrose-consent-clearance: 76px;
+}
+
+@media (max-width: 768px) {
+  .skyyrose-consent-open {
+    --skyyrose-consent-clearance: 120px;
+  }
+}
+
+.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 28px;
+  background: var(--glass-bg-dark, rgba(10, 10, 10, 0.98));
+  backdrop-filter: var(--glass-blur, blur(24px) saturate(1.4));
+  -webkit-backdrop-filter: var(--glass-blur, blur(24px) saturate(1.4));
+  border-top: 1px solid var(--color-border-hover, rgba(183, 110, 121, 0.3));
+  box-shadow: 0 -12px 48px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cookie-consent--hidden {
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The server renders the banner with [hidden] so the pre-CSS state is
+   invisible (lets this sheet load deferred). The UA's [hidden]→display:none
+   would be OVERRIDDEN by .cookie-consent's author-origin display:flex once
+   this sheet arrives — this rule restores the contract. JS removes the
+   attribute when consent is actually pending. */
+.cookie-consent[hidden] {
+  display: none;
+}
+
+/* ---- Message ---- */
+
+.cookie-consent__message {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-text-secondary, rgba(255, 255, 255, 0.85));
+}
+
+.cookie-consent__link {
+  color: var(--color-rose-gold, #b76e79);
+  text-decoration: underline;
+  text-decoration-color: rgba(183, 110, 121, 0.35);
+  text-underline-offset: 3px;
+  transition:
+    text-decoration-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.cookie-consent__link:hover,
+.cookie-consent__link:focus-visible {
+  text-decoration-color: var(--color-rose-gold, #b76e79);
+  color: var(--color-gold, #d4af37);
+}
+
+/* ---- Buttons ---- */
+
+.cookie-consent__actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.cookie-consent__btn {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 10px 22px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+  line-height: 1;
+}
+
+.cookie-consent__btn:focus-visible {
+  outline: 2px solid var(--color-gold, #d4af37);
+  outline-offset: 2px;
+}
+
+.cookie-consent__btn--accept {
+  background: var(--color-rose-gold, #b76e79);
+  color: var(
+    --color-page-bg,
+    #0a0a0a
+  ); /* dark ink on rose gold = 5.2:1; white was 3.8:1 — matches the hover treatment */
+  border: 1px solid var(--color-rose-gold, #b76e79);
+}
+
+.cookie-consent__btn--accept:hover {
+  background: var(--color-gold, #d4af37);
+  border-color: var(--color-gold, #d4af37);
+  color: var(--color-page-bg, #0a0a0a);
+}
+
+.cookie-consent__btn--decline {
+  background: transparent;
+  color: var(--color-text-secondary, rgba(255, 255, 255, 0.85));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.cookie-consent__btn--decline:hover {
+  color: var(--color-text-primary, #fff);
+  border-color: var(--color-rose-gold, #b76e79);
+}
+
+/* ---- Responsive ----
+   Breakpoint matches .mobile-nav's 768px (mobile-bottom-nav.css) so the
+   banner offsets above the nav band on every viewport where the nav shows
+   (599px previously left 600-768px with the banner covering the nav).
+   Compact metrics: the banner + nav together were eating ~30% of a 390px
+   viewport (audit D5) — tighter type/padding keeps it under ~120px. */
+
+@media (max-width: 768px) {
+  .cookie-consent {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 14px;
+    bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Kept intentionally small: the message paragraph must never be the
+	   largest contentful element on text-light pages (Wave 4 — it became
+	   the mobile LCP on faq/shipping-returns/kids at 12px). */
+  .cookie-consent__message {
+    font-size: 11px;
+    line-height: 1.4;
+    max-width: 46ch;
+  }
+
+  /* Wave 7 — LCP candidacy cap, second layer: each sentence becomes its own
+	   block on mobile, so LCP sees two ~5,000px² text candidates instead of
+	   one 9,796px² paragraph (round 6: that was within 7% of the smallest
+	   real-content mobile LCP, the kids-capsule wordmark at 10,516px², and on
+	   one shop run the banner WAS the LCP). Desktop keeps inline flow — every
+	   desktop LCP is real content by a wide margin, and the single-row banner
+	   layout must not grow. Pairs with the sentence markup split in
+	   template-parts/cookie-consent.php. */
+  .cookie-consent__msg-line {
+    display: block;
+  }
+
+  .cookie-consent__btn {
+    flex: 1;
+    text-align: center;
+    padding: 9px 16px;
+  }
+}
+
+/* ---- Reduced motion ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .cookie-consent {
+    transition: none;
+  }
+}

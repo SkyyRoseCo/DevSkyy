@@ -26,6 +26,7 @@ require_once SKYYROSE2_DIR . '/inc/collection-presentation.php';
 require_once SKYYROSE2_DIR . '/inc/shop-archive.php';
 require_once SKYYROSE2_DIR . '/inc/quick-view-commerce.php';
 require_once SKYYROSE2_DIR . '/inc/critical-rendering.php';
+require_once SKYYROSE2_DIR . '/inc/analytics.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
@@ -104,9 +105,9 @@ function skyyrose2_founder_scene_placeholders() {
 
 	$placeholders = array();
 	foreach ( $decoded['scene_placeholders'] as $scene_id => $placeholder ) {
-		$asset = ltrim( (string) ( $placeholder['asset'] ?? '' ), '/' );
-		$hash  = (string) ( $placeholder['sha256'] ?? '' );
-		$file  = $asset ? SKYYROSE2_DIR . '/assets/scroll-world/' . $asset : '';
+		$asset       = ltrim( (string) ( $placeholder['asset'] ?? '' ), '/' );
+		$hash        = (string) ( $placeholder['sha256'] ?? '' );
+		$file        = $asset ? SKYYROSE2_DIR . '/assets/scroll-world/' . $asset : '';
 		$actual_hash = $file && is_file( $file ) ? hash_file( 'sha256', $file ) : '';
 		if (
 			'FOUNDER_SELECTED_PLACEHOLDER' !== ( $placeholder['state'] ?? '' ) ||
@@ -159,22 +160,23 @@ function skyyrose2_collection_commerce_scenes( $collection ) {
 			return array();
 		}
 
-		$scene_key   = sanitize_key( strtolower( (string) $chapter['scene_id'] ) );
-		$placeholder = $placeholders[ $scene_key ] ?? array();
+		$scene_key       = sanitize_key( strtolower( (string) $chapter['scene_id'] ) );
+		$placeholder     = $placeholders[ $scene_key ] ?? array();
 		$use_placeholder = ! empty( $placeholder ) && $collection === sanitize_title( $placeholder['collection'] ?? '' );
 
-		$chapter['image']  = $use_placeholder ? $placeholder['asset'] : $chapter['plate_asset'];
-		$chapter['source'] = 'scroll-world';
-		$chapter['width']  = absint( $use_placeholder ? ( $placeholder['dimensions'][0] ?? 1672 ) : ( $chapter['plate_dimensions'][0] ?? 1672 ) );
-		$chapter['height'] = absint( $use_placeholder ? ( $placeholder['dimensions'][1] ?? 941 ) : ( $chapter['plate_dimensions'][1] ?? 941 ) );
-		$chapter['placeholder_active'] = $use_placeholder;
-		$chapter['placeholder_state']  = $use_placeholder ? (string) $placeholder['state'] : '';
-		$chapter['placeholder_role']   = $use_placeholder ? (string) ( $placeholder['role'] ?? '' ) : '';
+		$chapter['image']                                 = $use_placeholder ? $placeholder['asset'] : $chapter['plate_asset'];
+		$chapter['source']                                = 'scroll-world';
+		$chapter['width']                                 = absint( $use_placeholder ? ( $placeholder['dimensions'][0] ?? 1672 ) : ( $chapter['plate_dimensions'][0] ?? 1672 ) );
+		$chapter['height']                                = absint( $use_placeholder ? ( $placeholder['dimensions'][1] ?? 941 ) : ( $chapter['plate_dimensions'][1] ?? 941 ) );
+		$chapter['placeholder_active']                    = $use_placeholder;
+		$chapter['placeholder_state']                     = $use_placeholder ? (string) $placeholder['state'] : '';
+		$chapter['placeholder_role']                      = $use_placeholder ? (string) ( $placeholder['role'] ?? '' ) : '';
 		$chapter['suppress_model_layers_for_placeholder'] = $use_placeholder && ! empty( $placeholder['suppress_model_layers'] );
 		$chapter = skyyrose2_apply_hero_commerce_scene( $chapter, $collection );
 		$chapter = skyyrose2_apply_collection_scene_motion( $chapter, $collection );
-		if ( ! skyyrose2_approved_scroll_world_scene( $chapter, $collection ) ) { continue; }
-		$scenes[]          = $chapter;
+		if ( ! skyyrose2_approved_scroll_world_scene( $chapter, $collection ) ) {
+			continue; }
+		$scenes[] = $chapter;
 	}
 
 	return $scenes;
@@ -184,16 +186,23 @@ function skyyrose2_collection_commerce_scenes( $collection ) {
 function skyyrose2_approved_scroll_world_scene( $scene, $collection ) {
 	static $approved = null;
 	if ( null === $approved ) {
-		$path = SKYYROSE2_DIR . '/data/approved-scroll-world-scenes.json';
-		$decoded = is_readable( $path ) ? json_decode( file_get_contents( $path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$path     = SKYYROSE2_DIR . '/data/approved-scroll-world-scenes.json';
+		$decoded  = is_readable( $path ) ? json_decode( file_get_contents( $path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 		$approved = is_array( $decoded ) && 1 === ( $decoded['schema_version'] ?? 0 ) ? ( $decoded['scenes'] ?? array() ) : array();
 	}
 	$record = $approved[ $scene['scene_id'] ?? '' ] ?? array();
-	if ( 'APPROVED FINAL — IMPLEMENT' !== ( $record['approval_status'] ?? '' ) || $collection !== ( $record['collection'] ?? '' ) || ! empty( $scene['model_layers'] ) || ! empty( $scene['hero_composition']['variants'] ) ) { return false; }
+	if ( 'APPROVED FINAL — IMPLEMENT' !== ( $record['approval_status'] ?? '' ) || $collection !== ( $record['collection'] ?? '' ) || ! empty( $scene['model_layers'] ) || ! empty( $scene['hero_composition']['variants'] ) ) {
+		return false; }
 	$assets = array();
-	foreach ( $record['required_runtime_assets'] ?? array() as $asset ) { $assets[ $asset['role'] ] = $asset['path']; }
-	foreach ( array( 'poster' => $scene['image'] ?? '', 'desktop' => $scene['scene_motion']['desktop'] ?? '', 'mobile' => $scene['scene_motion']['mobile'] ?? '' ) as $role => $path ) {
-		if ( ! $path || ( 'assets/scroll-world/' . $path ) !== ( $assets[ $role ] ?? '' ) ) { return false; }
+	foreach ( $record['required_runtime_assets'] ?? array() as $asset ) {
+		$assets[ $asset['role'] ] = $asset['path']; }
+	foreach ( array(
+		'poster'  => $scene['image'] ?? '',
+		'desktop' => $scene['scene_motion']['desktop'] ?? '',
+		'mobile'  => $scene['scene_motion']['mobile'] ?? '',
+	) as $role => $path ) {
+		if ( ! $path || ( 'assets/scroll-world/' . $path ) !== ( $assets[ $role ] ?? '' ) ) {
+			return false; }
 	}
 	return array_values( $scene['product_bindings'] ?? array() ) === array_values( $record['cta']['product_bindings'] ?? array() );
 }
@@ -273,15 +282,23 @@ function skyyrose2_setup() {
 		'html5',
 		array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' )
 	);
-	add_theme_support( 'custom-logo', array( 'height' => 80, 'width' => 320, 'flex-height' => true, 'flex-width' => true ) );
+	add_theme_support(
+		'custom-logo',
+		array(
+			'height'      => 80,
+			'width'       => 320,
+			'flex-height' => true,
+			'flex-width'  => true,
+		)
+	);
 	add_theme_support( 'woocommerce' );
 	add_theme_support( 'wc-product-gallery-zoom' );
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-slider' );
 	register_nav_menus(
 		array(
-			'primary' => __( 'Primary Menu', 'skyyrose-flagship-2' ),
-			'footer'  => __( 'Footer Client Services', 'skyyrose-flagship-2' ),
+			'primary'      => __( 'Primary Menu', 'skyyrose-flagship-2' ),
+			'footer'       => __( 'Footer Client Services', 'skyyrose-flagship-2' ),
 			'footer-house' => __( 'Footer House Directory', 'skyyrose-flagship-2' ),
 		)
 	);
@@ -345,28 +362,28 @@ function skyyrose2_asset_version( $relative_path ) {
 	// when the file is actually replaced.
 	$size = filesize( $path );
 	if ( false !== $size && $size > 262144 ) {
-		$mtime = filemtime( $path );
+		$mtime                      = filemtime( $path );
 		$versions[ $relative_path ] = $mtime ? SKYYROSE2_VERSION . '-' . substr( sha1( $mtime . ':' . $size ), 0, 12 ) : SKYYROSE2_VERSION;
 		return $versions[ $relative_path ];
 	}
 
-	$hash = hash_file( 'sha256', $path );
+	$hash                       = hash_file( 'sha256', $path );
 	$versions[ $relative_path ] = $hash ? SKYYROSE2_VERSION . '-' . substr( $hash, 0, 12 ) : SKYYROSE2_VERSION;
 
 	return $versions[ $relative_path ];
 }
 
 function skyyrose2_assets() {
-	$suffix = skyyrose2_asset_suffix();
-	$collection_slug = skyyrose2_collection_page_slug();
+	$suffix                  = skyyrose2_asset_suffix();
+	$collection_slug         = skyyrose2_collection_page_slug();
 	$is_editorial_collection = skyyrose2_collection_world_enabled( $collection_slug );
-	$tokens_asset = '/assets/css/design-tokens' . $suffix . '.css';
-	$theme_asset  = '/assets/css/theme' . $suffix . '.css';
-	$theme_script = '/assets/js/theme' . $suffix . '.js';
-	$mascot_style = '/assets/css/mascot' . $suffix . '.css';
-	$loader_script = '/assets/js/mascot-loader' . $suffix . '.js';
-	$mascot_script = '/assets/js/mascot' . $suffix . '.js';
-	$three_script  = '/assets/js/skyy-3d' . $suffix . '.js';
+	$tokens_asset            = '/assets/css/design-tokens' . $suffix . '.css';
+	$theme_asset             = '/assets/css/theme' . $suffix . '.css';
+	$theme_script            = '/assets/js/theme' . $suffix . '.js';
+	$mascot_style            = '/assets/css/mascot' . $suffix . '.css';
+	$loader_script           = '/assets/js/mascot-loader' . $suffix . '.js';
+	$mascot_script           = '/assets/js/mascot' . $suffix . '.js';
+	$three_script            = '/assets/js/skyy-3d' . $suffix . '.js';
 
 	wp_enqueue_style( 'skyyrose2-tokens', SKYYROSE2_URI . $tokens_asset, array(), skyyrose2_asset_version( $tokens_asset ) );
 	wp_enqueue_style( 'skyyrose2-theme', SKYYROSE2_URI . $theme_asset, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $theme_asset ) );
@@ -374,7 +391,7 @@ function skyyrose2_assets() {
 	$page_styles = array();
 	if ( is_page( 'about' ) ) {
 		$page_styles[] = 'about-archive';
-		$about_script = '/assets/js/about-archive' . $suffix . '.js';
+		$about_script  = '/assets/js/about-archive' . $suffix . '.js';
 		wp_enqueue_script( 'skyyrose2-about-archive', SKYYROSE2_URI . $about_script, array(), skyyrose2_asset_version( $about_script ), true );
 	}
 	if ( ! is_front_page() && ! $is_editorial_collection && ! ( function_exists( 'is_product' ) && is_product() ) && ! ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) && ! ( function_exists( 'is_cart' ) && ( is_cart() || is_checkout() ) ) ) {
@@ -427,7 +444,8 @@ function skyyrose2_assets() {
 			wp_enqueue_style( 'skyyrose2-scene-handoff', SKYYROSE2_URI . $handoff_style, array( 'skyyrose2-collection-world' ), skyyrose2_asset_version( $handoff_style ) );
 		}
 	}
-	if ( class_exists( 'WooCommerce' ) && ! is_checkout() ) { wp_enqueue_script( 'wc-cart-fragments' ); }
+	if ( class_exists( 'WooCommerce' ) && ! is_checkout() ) {
+		wp_enqueue_script( 'wc-cart-fragments' ); }
 	wp_enqueue_script( 'skyyrose2-theme', SKYYROSE2_URI . $theme_script, class_exists( 'WooCommerce' ) && ! is_checkout() ? array( 'wc-cart-fragments', 'wc-add-to-cart' ) : array(), skyyrose2_asset_version( $theme_script ), true );
 	// Search previews enhance the native GET form using current server results.
 	if ( ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
@@ -449,8 +467,8 @@ function skyyrose2_assets() {
 	}
 	if ( ( ! $is_editorial_collection && ( $collection_slug || is_page_template( 'template-collection.php' ) ) ) || is_page_template( array( 'template-immersive-black-rose.php', 'template-immersive-love-hurts.php', 'template-immersive-signature.php' ) ) ) {
 		$scene_base_style = '/assets/css/hero-commerce-scenes' . $suffix . '.css';
-		$scene_style = '/assets/css/collection-scene-motion' . $suffix . '.css';
-		$scene_script = '/assets/js/collection-scene-motion' . $suffix . '.js';
+		$scene_style      = '/assets/css/collection-scene-motion' . $suffix . '.css';
+		$scene_script     = '/assets/js/collection-scene-motion' . $suffix . '.js';
 		wp_enqueue_style( 'skyyrose2-hero-commerce-scenes', SKYYROSE2_URI . $scene_base_style, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $scene_base_style ) );
 		wp_enqueue_style( 'skyyrose2-collection-scene-motion', SKYYROSE2_URI . $scene_style, array( 'skyyrose2-hero-commerce-scenes' ), skyyrose2_asset_version( $scene_style ) );
 		wp_enqueue_script( 'skyyrose2-collection-scene-motion', SKYYROSE2_URI . $scene_script, array(), skyyrose2_asset_version( $scene_script ), true );
@@ -458,7 +476,9 @@ function skyyrose2_assets() {
 	// The event-only watchdog restores approved stills if this one external
 	// controller fails. WordPress's inline-script API retains the CSP nonce hook.
 	if ( wp_script_is( 'skyyrose2-collection-scene-motion', 'enqueued' ) ) {
-		wp_add_inline_script( 'skyyrose2-collection-scene-motion', <<<'JS'
+		wp_add_inline_script(
+			'skyyrose2-collection-scene-motion',
+			<<<'JS'
 (function () {
   var controllerId = 'skyyrose2-collection-scene-motion-js';
   function restore() {
@@ -487,7 +507,9 @@ function skyyrose2_assets() {
   document.addEventListener('error', failed, true);
 })();
 JS
-		, 'before' );
+			,
+			'before'
+		);
 	}
 	// Editorial collection and reservation pages render native Woo loop actions
 	// outside WooCommerce's archive template. Load the same client runtime here
@@ -533,29 +555,72 @@ add_action( 'wp_enqueue_scripts', 'skyyrose2_assets' );
 /** Read-only concierge destinations and product discovery; Woo owns all sale facts. */
 function skyyrose2_concierge_guide() {
 	$contact = skyyrose2_marketplace_page_url( 'contact' );
-	$shop = skyyrose2_shop_url();
-	$guide = array(
-		'greeting' => __( 'Welcome to SkyyRose. I’m Skyy, your digital house guide. This house is a father’s promise to his daughter, rooted in Oakland. I can help you explore a collection or find a piece by name or SKU.', 'skyyrose-flagship-2' ),
-		'pages' => array(
-			'shop' => array( 'label' => __( 'Shop the house', 'skyyrose-flagship-2' ), 'url' => $shop ),
-			'contact' => array( 'label' => __( 'Contact the house', 'skyyrose-flagship-2' ), 'url' => $contact ),
+	$shop    = skyyrose2_shop_url();
+	$guide   = array(
+		'greeting'    => __( 'Welcome to SkyyRose. I’m Skyy, your digital house guide. This house is a father’s promise to his daughter, rooted in Oakland. I can help you explore a collection or find a piece by name or SKU.', 'skyyrose-flagship-2' ),
+		'pages'       => array(
+			'shop'    => array(
+				'label' => __( 'Shop the house', 'skyyrose-flagship-2' ),
+				'url'   => $shop,
+			),
+			'contact' => array(
+				'label' => __( 'Contact the house', 'skyyrose-flagship-2' ),
+				'url'   => $contact,
+			),
 		),
-		'intents' => array(
-			array( 'id' => 'sizing', 'patterns' => array( 'size', 'sizing', 'fit', 'measurements' ), 'answer' => __( 'Open the piece you’re considering to see its current size options and product details. If you need fit advice, contact the house with the product name or SKU.', 'skyyrose-flagship-2' ), 'link' => $contact, 'label' => __( 'Ask about fit', 'skyyrose-flagship-2' ) ),
-			array( 'id' => 'shipping', 'patterns' => array( 'shipping', 'delivery', 'returns', 'order' ), 'answer' => __( 'Shipping and purchase details depend on your order. Please contact the house for help with delivery, returns or an existing order.', 'skyyrose-flagship-2' ), 'link' => $contact, 'label' => __( 'Contact the house', 'skyyrose-flagship-2' ) ),
-			array( 'id' => 'legacy', 'patterns' => array( 'skyy', 'daughter', 'father', 'heir', 'story' ), 'answer' => __( 'SkyyRose is named after Skyy Rose, the founder’s daughter. The Heir carries that story forward: family, inheritance and a future built with care.', 'skyyrose-flagship-2' ), 'link' => skyyrose2_collection_url( 'kids-capsule' ), 'label' => __( 'Explore The Heir', 'skyyrose-flagship-2' ) ),
+		'intents'     => array(
+			array(
+				'id'       => 'sizing',
+				'patterns' => array( 'size', 'sizing', 'fit', 'measurements' ),
+				'answer'   => __( 'Open the piece you’re considering to see its current size options and product details. If you need fit advice, contact the house with the product name or SKU.', 'skyyrose-flagship-2' ),
+				'link'     => $contact,
+				'label'    => __( 'Ask about fit', 'skyyrose-flagship-2' ),
+			),
+			array(
+				'id'       => 'shipping',
+				'patterns' => array( 'shipping', 'delivery', 'returns', 'order' ),
+				'answer'   => __( 'Shipping and purchase details depend on your order. Please contact the house for help with delivery, returns or an existing order.', 'skyyrose-flagship-2' ),
+				'link'     => $contact,
+				'label'    => __( 'Contact the house', 'skyyrose-flagship-2' ),
+			),
+			array(
+				'id'       => 'legacy',
+				'patterns' => array( 'skyy', 'daughter', 'father', 'heir', 'story' ),
+				'answer'   => __( 'SkyyRose is named after Skyy Rose, the founder’s daughter. The Heir carries that story forward: family, inheritance and a future built with care.', 'skyyrose-flagship-2' ),
+				'link'     => skyyrose2_collection_url( 'kids-capsule' ),
+				'label'    => __( 'Explore The Heir', 'skyyrose-flagship-2' ),
+			),
 		),
-		'products' => array(),
+		'products'    => array(),
 		'suggestions' => array( 'signature', 'black-rose', 'love-hurts', 'legacy', 'sizing' ),
 	);
 	foreach ( skyyrose2_collections() as $slug => $collection ) {
-		$guide['intents'][] = array( 'id' => $slug, 'patterns' => array( $collection['name'], str_replace( '-', ' ', $slug ) ), 'answer' => $collection['headline'], 'link' => skyyrose2_collection_url( $slug ), 'label' => sprintf( __( 'Explore %s', 'skyyrose-flagship-2' ), $collection['name'] ) );
+		$guide['intents'][] = array(
+			'id'       => $slug,
+			'patterns' => array( $collection['name'], str_replace( '-', ' ', $slug ) ),
+			'answer'   => $collection['headline'],
+			'link'     => skyyrose2_collection_url( $slug ),
+			'label'    => sprintf( __( 'Explore %s', 'skyyrose-flagship-2' ), $collection['name'] ),
+		);
 	}
 	if ( function_exists( 'wc_get_products' ) ) {
-		foreach ( wc_get_products( array( 'status' => 'publish', 'limit' => 100, 'orderby' => 'title', 'order' => 'ASC' ) ) as $item ) {
-			if ( ! $item->is_visible() || post_password_required( $item->get_id() ) ) { continue; }
-			$record = skyyrose2_product_presentation( $item );
-			$guide['products'][] = array( 'name' => wp_strip_all_tags( $item->get_name() ), 'sku' => $item->get_sku(), 'url' => $item->get_permalink(), 'collection' => str_replace( '-', ' ', $record['collection'] ?? '' ) );
+		foreach ( wc_get_products(
+			array(
+				'status'  => 'publish',
+				'limit'   => 100,
+				'orderby' => 'title',
+				'order'   => 'ASC',
+			)
+		) as $item ) {
+			if ( ! $item->is_visible() || post_password_required( $item->get_id() ) ) {
+				continue; }
+			$record              = skyyrose2_product_presentation( $item );
+			$guide['products'][] = array(
+				'name'       => wp_strip_all_tags( $item->get_name() ),
+				'sku'        => $item->get_sku(),
+				'url'        => $item->get_permalink(),
+				'collection' => str_replace( '-', ' ', $record['collection'] ?? '' ),
+			);
 		}
 	}
 	return $guide;
@@ -581,7 +646,7 @@ function skyyrose2_seo_context() {
 		if ( $product ) {
 			$context['title']       = $product->get_name() . ' | ' . get_bloginfo( 'name' );
 			$context['description'] = wp_strip_all_tags( $product->get_short_description() ?: $product->get_name() . ' · ' . __( 'SkyyRose collection piece.', 'skyyrose-flagship-2' ) );
-			$media                 = skyyrose2_product_commerce_media( $product );
+			$media                  = skyyrose2_product_commerce_media( $product );
 			$context['image']       = ! empty( $media['ids'] ) ? wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '';
 			$context['type']        = 'product';
 		}
@@ -594,7 +659,7 @@ function skyyrose2_seo_context() {
 		$page_slug = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
 		$worlds    = skyyrose2_collections();
 		if ( isset( $worlds[ $page_slug ] ) ) {
-			$world             = $worlds[ $page_slug ];
+			$world                  = $worlds[ $page_slug ];
 			$context['title']       = $world['name'] . ' | SkyyRose';
 			$context['description'] = wp_strip_all_tags( $world['line'] . ' ' . $world['manifesto'] );
 			$context['image']       = skyyrose2_sot_asset_uri( $world['hero'] );
@@ -625,7 +690,10 @@ function skyyrose2_seo_head() {
 	<meta property="og:title" content="<?php echo esc_attr( $context['title'] ); ?>">
 	<meta property="og:description" content="<?php echo esc_attr( $context['description'] ); ?>">
 	<meta property="og:url" content="<?php echo esc_url( is_singular() ? get_permalink() : home_url( add_query_arg( array(), $GLOBALS['wp']->request ?? '' ) ) ); ?>">
-	<?php if ( ! empty( $context['image'] ) ) : ?><meta property="og:image" content="<?php echo esc_url( $context['image'] ); ?>"><?php endif; ?>
+	<?php
+	if ( ! empty( $context['image'] ) ) :
+		?>
+		<meta property="og:image" content="<?php echo esc_url( $context['image'] ); ?>"><?php endif; ?>
 	<meta name="twitter:card" content="<?php echo empty( $context['image'] ) ? 'summary' : 'summary_large_image'; ?>">
 	<?php
 }
@@ -652,8 +720,14 @@ function skyyrose2_schema_head() {
 			'dateModified'     => get_the_modified_date( DATE_W3C ),
 			'mainEntityOfPage' => get_permalink(),
 			'image'            => get_the_post_thumbnail_url( get_queried_object_id(), 'full' ) ?: null,
-			'author'           => array( '@type' => 'Person', 'name' => get_the_author() ),
-			'publisher'        => array( '@type' => 'Organization', 'name' => get_bloginfo( 'name' ) ),
+			'author'           => array(
+				'@type' => 'Person',
+				'name'  => get_the_author(),
+			),
+			'publisher'        => array(
+				'@type' => 'Organization',
+				'name'  => get_bloginfo( 'name' ),
+			),
 		);
 	}
 	if ( $schema ) {
@@ -665,7 +739,9 @@ add_action( 'wp_head', 'skyyrose2_schema_head', 5 );
 /** Keep the visible bag count synchronized with WooCommerce add-to-cart fragments. */
 function skyyrose2_cart_fragment( $fragments ) {
 	ob_start();
-	?><span class="sr2-header__bag-count" aria-live="polite" aria-atomic="true" aria-label="<?php echo esc_attr( sprintf( __( '%d items in bag', 'skyyrose-flagship-2' ), skyyrose2_cart_count() ) ); ?>"><?php echo esc_html( skyyrose2_cart_count() ); ?></span><?php
+	?>
+	<span class="sr2-header__bag-count" aria-live="polite" aria-atomic="true" aria-label="<?php echo esc_attr( sprintf( __( '%d items in bag', 'skyyrose-flagship-2' ), skyyrose2_cart_count() ) ); ?>"><?php echo esc_html( skyyrose2_cart_count() ); ?></span>
+	<?php
 	$fragments['.sr2-header__bag-count'] = ob_get_clean();
 	return $fragments;
 }
@@ -747,163 +823,212 @@ add_action( 'init', 'skyyrose2_contact_form_submit' );
 function skyyrose2_collections() {
 	return array(
 		'signature'    => array(
-			'name'       => __( 'Signature', 'skyyrose-flagship-2' ),
-			'kicker'     => __( 'The House, Signed', 'skyyrose-flagship-2' ),
-			'headline'   => __( 'The Bay is where the signature begins.', 'skyyrose-flagship-2' ),
-			'line'       => __( 'A bronze signature answers the SR monogram across Golden Gate light. Oakland made the name; the water carries it forward.', 'skyyrose-flagship-2' ),
-			'manifesto'  => __( 'Signature is the first promise of the house: build something worthy of a daughter, rooted in The Town, and finished with enough intention to travel far beyond it.', 'skyyrose-flagship-2' ),
-			'world_heading' => __( 'Cross the water. Find the origin.', 'skyyrose-flagship-2' ),
-			'world_intro' => __( 'Follow the two monuments from Golden Gate light back to Oakland—where a private mark became a house code.', 'skyyrose-flagship-2' ),
-			'shop_kicker' => __( 'The Signature Edit', 'skyyrose-flagship-2' ),
-			'shop_heading' => __( 'Carry the first mark forward.', 'skyyrose-flagship-2' ),
-			'shop_intro' => __( 'The monument sets the mood. The clothes are gender-neutral by design: choose the shape, size, and story that feel like yours. Each published piece below holds the live product, price, and availability decision.', 'skyyrose-flagship-2' ),
-			'card_story' => __( 'Oakland origin, carried without a label. The first mark is made for the person who reaches for it.', 'skyyrose-flagship-2' ),
-			'hero_cta' => __( 'Shop Signature', 'skyyrose-flagship-2' ),
-			'world_cta' => __( 'Cross into the story', 'skyyrose-flagship-2' ),
+			'name'             => __( 'Signature', 'skyyrose-flagship-2' ),
+			'kicker'           => __( 'The House, Signed', 'skyyrose-flagship-2' ),
+			'headline'         => __( 'The Bay is where the signature begins.', 'skyyrose-flagship-2' ),
+			'line'             => __( 'A bronze signature answers the SR monogram across Golden Gate light. Oakland made the name; the water carries it forward.', 'skyyrose-flagship-2' ),
+			'manifesto'        => __( 'Signature is the first promise of the house: build something worthy of a daughter, rooted in The Town, and finished with enough intention to travel far beyond it.', 'skyyrose-flagship-2' ),
+			'world_heading'    => __( 'Cross the water. Find the origin.', 'skyyrose-flagship-2' ),
+			'world_intro'      => __( 'Follow the two monuments from Golden Gate light back to Oakland—where a private mark became a house code.', 'skyyrose-flagship-2' ),
+			'shop_kicker'      => __( 'The Signature Edit', 'skyyrose-flagship-2' ),
+			'shop_heading'     => __( 'Carry the first mark forward.', 'skyyrose-flagship-2' ),
+			'shop_intro'       => __( 'The monument sets the mood. The clothes are gender-neutral by design: choose the shape, size, and story that feel like yours. Each published piece below holds the live product, price, and availability decision.', 'skyyrose-flagship-2' ),
+			'card_story'       => __( 'Oakland origin, carried without a label. The first mark is made for the person who reaches for it.', 'skyyrose-flagship-2' ),
+			'hero_cta'         => __( 'Shop Signature', 'skyyrose-flagship-2' ),
+			'world_cta'        => __( 'Cross into the story', 'skyyrose-flagship-2' ),
 			'invitation_title' => __( 'Make the origin yours.', 'skyyrose-flagship-2' ),
-			'invitation' => __( 'Choose the piece that carries your name with the same calm certainty.', 'skyyrose-flagship-2' ),
-			'invitation_cta' => __( 'Choose Signature', 'skyyrose-flagship-2' ),
-			'hero'       => 'images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp',
-			'hero_tablet' => 'images/hero/responsive/signature-golden-gate-monuments-v2-1024w.webp',
-			'hero_mobile' => 'images/hero/responsive/signature-golden-gate-monuments-v2-640w.webp',
-			'portrait'   => 'scene-1-signature.webp',
-			'portrait_source' => 'scroll-world',
-			'lockup'     => 'images/lockups/signature-lockup.webp',
-			'artifact'   => 'images/logos/sr-monogram-rose-gold.webp',
-			'portal_statue' => array(
+			'invitation'       => __( 'Choose the piece that carries your name with the same calm certainty.', 'skyyrose-flagship-2' ),
+			'invitation_cta'   => __( 'Choose Signature', 'skyyrose-flagship-2' ),
+			'hero'             => 'images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp',
+			'hero_tablet'      => 'images/hero/responsive/signature-golden-gate-monuments-v2-1024w.webp',
+			'hero_mobile'      => 'images/hero/responsive/signature-golden-gate-monuments-v2-640w.webp',
+			'portrait'         => 'scene-1-signature.webp',
+			'portrait_source'  => 'scroll-world',
+			'lockup'           => 'images/lockups/signature-lockup.webp',
+			'artifact'         => 'images/logos/sr-monogram-rose-gold.webp',
+			'portal_statue'    => array(
 				'src'    => 'images/product-card-portals/signature-portal-statue-970w.webp',
 				'small'  => 'images/product-card-portals/signature-portal-statue-640w.webp',
 				'width'  => 970,
 				'height' => 1621,
 			),
-			'atmosphere' => 'images/logos/rose-gold-rose.webp',
-			'lookbook'   => 'images/lookbook/lb-rose-hoodie-beanie-960w.webp',
-			'lookbook_mobile' => 'images/lookbook/lb-rose-hoodie-beanie-480w.webp',
-			'world'      => array(
-				array( 'image' => 'images/immersive/scene-signature-golden-gate.webp', 'label' => __( 'Golden Gate Salon', 'skyyrose-flagship-2' ), 'copy' => __( 'Gold light turns the bridge into a threshold: one side holds the signature, the other holds the rose.', 'skyyrose-flagship-2' ) ),
-				array( 'image' => 'branding/hero/signature-golden-gate-yacht-1280w.webp', 'label' => __( 'Bay Atelier', 'skyyrose-flagship-2' ), 'copy' => __( 'The water is not a backdrop. It is the distance the house was built to cross.', 'skyyrose-flagship-2' ) ),
-				array( 'image' => 'images/immersive/scene-signature-oakland-atelier-gpt2.webp', 'label' => __( 'The First Atelier', 'skyyrose-flagship-2' ), 'copy' => __( 'Back in Oakland, the polish has a source: work, faith, and the decision to make a name mean something.', 'skyyrose-flagship-2' ) ),
+			'atmosphere'       => 'images/logos/rose-gold-rose.webp',
+			'lookbook'         => 'images/lookbook/lb-rose-hoodie-beanie-960w.webp',
+			'lookbook_mobile'  => 'images/lookbook/lb-rose-hoodie-beanie-480w.webp',
+			'world'            => array(
+				array(
+					'image' => 'images/immersive/scene-signature-golden-gate.webp',
+					'label' => __( 'Golden Gate Salon', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'Gold light turns the bridge into a threshold: one side holds the signature, the other holds the rose.', 'skyyrose-flagship-2' ),
+				),
+				array(
+					'image' => 'branding/hero/signature-golden-gate-yacht-1280w.webp',
+					'label' => __( 'Bay Atelier', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'The water is not a backdrop. It is the distance the house was built to cross.', 'skyyrose-flagship-2' ),
+				),
+				array(
+					'image' => 'images/immersive/scene-signature-oakland-atelier-gpt2.webp',
+					'label' => __( 'The First Atelier', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'Back in Oakland, the polish has a source: work, faith, and the decision to make a name mean something.', 'skyyrose-flagship-2' ),
+				),
 			),
 		),
 		'black-rose'   => array(
-			'name'       => __( 'Black Rose', 'skyyrose-flagship-2' ),
-			'kicker'     => __( 'Beauty Without Permission', 'skyyrose-flagship-2' ),
-			'headline'   => __( 'Bloom under a Bay Bridge moon.', 'skyyrose-flagship-2' ),
-			'line'       => __( 'The Black Rose name holds one side of the room. Its star-and-rose monument holds the other. Between them: the Bay after dark.', 'skyyrose-flagship-2' ),
-			'manifesto'  => __( 'Black is not absence. It is depth, protection, and elegance with its guard up. The rose survives because it knows its own value—and never asks a shadow for permission to bloom.', 'skyyrose-flagship-2' ),
-			'world_heading' => __( 'Enter after dark.', 'skyyrose-flagship-2' ),
-			'world_intro' => __( 'Move from the monument room into a moonlit Oakland court, where every black surface keeps its own light.', 'skyyrose-flagship-2' ),
-			'shop_kicker' => __( 'Black Rose / Night Edition', 'skyyrose-flagship-2' ),
-			'shop_heading' => __( 'Wear the protection beautifully.', 'skyyrose-flagship-2' ),
-			'shop_intro' => __( 'The world is the armor. These pieces are designed gender-neutral, with room for each wearer to make the silhouette their own. WooCommerce remains the authority for each current piece, its price, size, and availability.', 'skyyrose-flagship-2' ),
-			'card_story' => __( 'Protection, polish, and enough room to define the fit yourself. The rose does not ask permission to take up space.', 'skyyrose-flagship-2' ),
-			'hero_cta' => __( 'Shop Black Rose', 'skyyrose-flagship-2' ),
-			'world_cta' => __( 'Enter the moon court', 'skyyrose-flagship-2' ),
+			'name'             => __( 'Black Rose', 'skyyrose-flagship-2' ),
+			'kicker'           => __( 'Beauty Without Permission', 'skyyrose-flagship-2' ),
+			'headline'         => __( 'Bloom under a Bay Bridge moon.', 'skyyrose-flagship-2' ),
+			'line'             => __( 'The Black Rose name holds one side of the room. Its star-and-rose monument holds the other. Between them: the Bay after dark.', 'skyyrose-flagship-2' ),
+			'manifesto'        => __( 'Black is not absence. It is depth, protection, and elegance with its guard up. The rose survives because it knows its own value—and never asks a shadow for permission to bloom.', 'skyyrose-flagship-2' ),
+			'world_heading'    => __( 'Enter after dark.', 'skyyrose-flagship-2' ),
+			'world_intro'      => __( 'Move from the monument room into a moonlit Oakland court, where every black surface keeps its own light.', 'skyyrose-flagship-2' ),
+			'shop_kicker'      => __( 'Black Rose / Night Edition', 'skyyrose-flagship-2' ),
+			'shop_heading'     => __( 'Wear the protection beautifully.', 'skyyrose-flagship-2' ),
+			'shop_intro'       => __( 'The world is the armor. These pieces are designed gender-neutral, with room for each wearer to make the silhouette their own. WooCommerce remains the authority for each current piece, its price, size, and availability.', 'skyyrose-flagship-2' ),
+			'card_story'       => __( 'Protection, polish, and enough room to define the fit yourself. The rose does not ask permission to take up space.', 'skyyrose-flagship-2' ),
+			'hero_cta'         => __( 'Shop Black Rose', 'skyyrose-flagship-2' ),
+			'world_cta'        => __( 'Enter the moon court', 'skyyrose-flagship-2' ),
 			'invitation_title' => __( 'Keep your light protected.', 'skyyrose-flagship-2' ),
-			'invitation' => __( 'Choose the piece that lets you show up fully without giving the room all of you.', 'skyyrose-flagship-2' ),
-			'invitation_cta' => __( 'Choose Black Rose', 'skyyrose-flagship-2' ),
+			'invitation'       => __( 'Choose the piece that lets you show up fully without giving the room all of you.', 'skyyrose-flagship-2' ),
+			'invitation_cta'   => __( 'Choose Black Rose', 'skyyrose-flagship-2' ),
 			// Founder-directed Bay Bridge two-monument salon. Lake Merritt remains an approved alternate.
-			'hero'       => 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp',
-			'hero_tablet' => 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp',
-			'hero_mobile' => 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp',
-			'portrait'   => 'scene-2-black-rose.webp',
-			'portrait_source' => 'scroll-world',
-			'lockup'     => 'images/lockups/black-rose-lockup.webp',
-			'artifact'   => 'images/lockups/black-rose-star-graphic.webp',
-			'portal_statue' => array(
+			'hero'             => 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp',
+			'hero_tablet'      => 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp',
+			'hero_mobile'      => 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp',
+			'portrait'         => 'scene-2-black-rose.webp',
+			'portrait_source'  => 'scroll-world',
+			'lockup'           => 'images/lockups/black-rose-lockup.webp',
+			'artifact'         => 'images/lockups/black-rose-star-graphic.webp',
+			'portal_statue'    => array(
 				'src'    => 'images/product-card-portals/black-rose-portal-statue-970w.webp',
 				'small'  => 'images/product-card-portals/black-rose-portal-statue-640w.webp',
 				'width'  => 971,
 				'height' => 1619,
 			),
-			'atmosphere' => 'images/logos/black-roses-cloud-cluster.webp',
-			'lookbook'   => 'images/lookbook/lb-black-rose-football-960w.webp',
-			'lookbook_mobile' => 'images/lookbook/lb-black-rose-football-480w.webp',
-			'world'      => array(
-				array( 'image' => 'scene-2-black-rose.webp', 'source' => 'scroll-world', 'label' => __( 'Forbidden Garden', 'skyyrose-flagship-2' ), 'copy' => __( 'The flower appears where it was never expected to. That is the point.', 'skyyrose-flagship-2' ) ),
-				array( 'image' => 'branding/hero/forbidden-midnight-1280w.webp', 'label' => __( 'Midnight House', 'skyyrose-flagship-2' ), 'copy' => __( 'Concrete, chrome, black petals: a house built for quiet strength, not quietness.', 'skyyrose-flagship-2' ) ),
-				array( 'image' => 'images/immersive/scene-black-rose-moon-court-gpt2.webp', 'label' => __( 'The Silver Moon Court', 'skyyrose-flagship-2' ), 'copy' => __( 'Under a hard moon, beauty is neither hidden nor explained. It simply holds the court.', 'skyyrose-flagship-2' ) ),
+			'atmosphere'       => 'images/logos/black-roses-cloud-cluster.webp',
+			'lookbook'         => 'images/lookbook/lb-black-rose-football-960w.webp',
+			'lookbook_mobile'  => 'images/lookbook/lb-black-rose-football-480w.webp',
+			'world'            => array(
+				array(
+					'image'  => 'scene-2-black-rose.webp',
+					'source' => 'scroll-world',
+					'label'  => __( 'Forbidden Garden', 'skyyrose-flagship-2' ),
+					'copy'   => __( 'The flower appears where it was never expected to. That is the point.', 'skyyrose-flagship-2' ),
+				),
+				array(
+					'image' => 'branding/hero/forbidden-midnight-1280w.webp',
+					'label' => __( 'Midnight House', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'Concrete, chrome, black petals: a house built for quiet strength, not quietness.', 'skyyrose-flagship-2' ),
+				),
+				array(
+					'image' => 'images/immersive/scene-black-rose-moon-court-gpt2.webp',
+					'label' => __( 'The Silver Moon Court', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'Under a hard moon, beauty is neither hidden nor explained. It simply holds the court.', 'skyyrose-flagship-2' ),
+				),
 			),
 		),
 		'love-hurts'   => array(
-			'name'       => __( 'Love Hurts', 'skyyrose-flagship-2' ),
-			'kicker'     => __( 'The Beast Speaks', 'skyyrose-flagship-2' ),
-			'headline'   => __( 'Every wound protects a rose.', 'skyyrose-flagship-2' ),
-			'line'       => __( 'Love Hurts stands in scarlet script opposite the cracked-heart star. Down the aisle, the Beast faces the rose he could not forget.', 'skyyrose-flagship-2' ),
-			'manifesto'  => __( 'Love Hurts is the part of the story told from the other side of the door: not a fairytale ending, but the distance between damage and devotion. What cracked still protects what mattered.', 'skyyrose-flagship-2' ),
-			'world_heading' => __( 'Walk the aisle without looking away.', 'skyyrose-flagship-2' ),
-			'world_intro' => __( 'Crimson glass, black thorns, a back-turned Beast, and one rose under glass. This is the story before the ending.', 'skyyrose-flagship-2' ),
-			'shop_kicker' => __( 'Love Hurts / The Rose Remains', 'skyyrose-flagship-2' ),
-			'shop_heading' => __( 'Take the mark with you.', 'skyyrose-flagship-2' ),
-			'shop_intro' => __( 'The story is a frame, never a substitute for the garment. Love Hurts is gender-neutral by design—softness, armor, and fit are yours to define. Current details, sizes, prices, and availability are shown on every published piece.', 'skyyrose-flagship-2' ),
-			'card_story' => __( 'Softness and armor live in the same piece. Wear the story your own way; the rose belongs to no one type of body.', 'skyyrose-flagship-2' ),
-			'hero_cta' => __( 'Shop Love Hurts', 'skyyrose-flagship-2' ),
-			'world_cta' => __( 'Walk the aisle', 'skyyrose-flagship-2' ),
+			'name'             => __( 'Love Hurts', 'skyyrose-flagship-2' ),
+			'kicker'           => __( 'The Beast Speaks', 'skyyrose-flagship-2' ),
+			'headline'         => __( 'Every wound protects a rose.', 'skyyrose-flagship-2' ),
+			'line'             => __( 'Love Hurts stands in scarlet script opposite the cracked-heart star. Down the aisle, the Beast faces the rose he could not forget.', 'skyyrose-flagship-2' ),
+			'manifesto'        => __( 'Love Hurts is the part of the story told from the other side of the door: not a fairytale ending, but the distance between damage and devotion. What cracked still protects what mattered.', 'skyyrose-flagship-2' ),
+			'world_heading'    => __( 'Walk the aisle without looking away.', 'skyyrose-flagship-2' ),
+			'world_intro'      => __( 'Crimson glass, black thorns, a back-turned Beast, and one rose under glass. This is the story before the ending.', 'skyyrose-flagship-2' ),
+			'shop_kicker'      => __( 'Love Hurts / The Rose Remains', 'skyyrose-flagship-2' ),
+			'shop_heading'     => __( 'Take the mark with you.', 'skyyrose-flagship-2' ),
+			'shop_intro'       => __( 'The story is a frame, never a substitute for the garment. Love Hurts is gender-neutral by design—softness, armor, and fit are yours to define. Current details, sizes, prices, and availability are shown on every published piece.', 'skyyrose-flagship-2' ),
+			'card_story'       => __( 'Softness and armor live in the same piece. Wear the story your own way; the rose belongs to no one type of body.', 'skyyrose-flagship-2' ),
+			'hero_cta'         => __( 'Shop Love Hurts', 'skyyrose-flagship-2' ),
+			'world_cta'        => __( 'Walk the aisle', 'skyyrose-flagship-2' ),
 			'invitation_title' => __( 'Keep what mattered.', 'skyyrose-flagship-2' ),
-			'invitation' => __( 'Choose the piece that holds the tenderness and the edge in the same hand.', 'skyyrose-flagship-2' ),
-			'invitation_cta' => __( 'Choose Love Hurts', 'skyyrose-flagship-2' ),
+			'invitation'       => __( 'Choose the piece that holds the tenderness and the edge in the same hand.', 'skyyrose-flagship-2' ),
+			'invitation_cta'   => __( 'Choose Love Hurts', 'skyyrose-flagship-2' ),
 			// Founder-directed cathedral monuments. V1 Beauty and the Beast remains a world chapter below.
-			'hero'       => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp',
-			'hero_tablet' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1024w.webp',
-			'hero_mobile' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-640w.webp',
-			'portrait'   => 'scene-3-love-hurts.webp',
-			'portrait_source' => 'scroll-world',
-			'lockup'     => 'images/lockups/love-hurts-lockup.webp',
-			'artifact'   => 'images/lockups/love-hurts-star-heart-graphic.webp',
-			'portal_statue' => array(
+			'hero'             => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp',
+			'hero_tablet'      => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1024w.webp',
+			'hero_mobile'      => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-640w.webp',
+			'portrait'         => 'scene-3-love-hurts.webp',
+			'portrait_source'  => 'scroll-world',
+			'lockup'           => 'images/lockups/love-hurts-lockup.webp',
+			'artifact'         => 'images/lockups/love-hurts-star-heart-graphic.webp',
+			'portal_statue'    => array(
 				'src'    => 'images/product-card-portals/love-hurts-portal-statue-970w.webp',
 				'small'  => 'images/product-card-portals/love-hurts-portal-statue-640w.webp',
 				'width'  => 968,
 				'height' => 1625,
 			),
-			'atmosphere' => 'images/logos/heart-rose-composite.webp',
+			'atmosphere'       => 'images/logos/heart-rose-composite.webp',
 			// V1's original 960px editorial frame is the visual baseline V2 must exceed.
-			'lookbook'   => 'images/lookbook/lb-love-hurts-varsity-960w.webp',
-			'lookbook_mobile' => 'images/lookbook/lb-love-hurts-varsity-480w.webp',
-			'world'      => array(
-				array( 'image' => 'images/immersive/scene-love-hurts-cathedral.webp', 'label' => __( 'Cathedral of Thorns', 'skyyrose-flagship-2' ), 'copy' => __( 'The room makes space for rage, reverence, and a red rose no one gets to touch.', 'skyyrose-flagship-2' ) ),
-				array( 'image' => 'branding/hero/beauty-and-beast-1280w.webp', 'label' => __( 'The Beast’s Chamber', 'skyyrose-flagship-2' ), 'copy' => __( 'He faces the chamber with his back to us. The rose—not a throne—holds the room.', 'skyyrose-flagship-2' ) ),
-				array( 'image' => 'images/immersive/scene-love-hurts-cracked-rose-gpt2.webp', 'label' => __( 'The Protected Wound', 'skyyrose-flagship-2' ), 'copy' => __( 'A cracked heart is not empty. It is evidence that something stayed worth guarding.', 'skyyrose-flagship-2' ) ),
+			'lookbook'         => 'images/lookbook/lb-love-hurts-varsity-960w.webp',
+			'lookbook_mobile'  => 'images/lookbook/lb-love-hurts-varsity-480w.webp',
+			'world'            => array(
+				array(
+					'image' => 'images/immersive/scene-love-hurts-cathedral.webp',
+					'label' => __( 'Cathedral of Thorns', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'The room makes space for rage, reverence, and a red rose no one gets to touch.', 'skyyrose-flagship-2' ),
+				),
+				array(
+					'image' => 'branding/hero/beauty-and-beast-1280w.webp',
+					'label' => __( 'The Beast’s Chamber', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'He faces the chamber with his back to us. The rose—not a throne—holds the room.', 'skyyrose-flagship-2' ),
+				),
+				array(
+					'image' => 'images/immersive/scene-love-hurts-cracked-rose-gpt2.webp',
+					'label' => __( 'The Protected Wound', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'A cracked heart is not empty. It is evidence that something stayed worth guarding.', 'skyyrose-flagship-2' ),
+				),
 			),
 		),
 		'kids-capsule' => array(
-			'name'       => __( 'Kids Capsule', 'skyyrose-flagship-2' ),
-			'kicker'     => __( 'The Heir', 'skyyrose-flagship-2' ),
-			'headline'   => __( 'The throne is already hers.', 'skyyrose-flagship-2' ),
-			'line'       => __( 'The Skyy mascot sits front and center, not waiting to inherit the house—already imagining what she will build inside it.', 'skyyrose-flagship-2' ),
-			'manifesto'  => __( 'Kids Capsule is not a smaller version of the house. It is the first room built for the next generation: confidence, imagination, and enough space to picture themselves at the center of the story.', 'skyyrose-flagship-2' ),
-			'world_heading' => __( 'Enter the heir’s room.', 'skyyrose-flagship-2' ),
-			'world_intro' => __( 'The throne comes first. Then the playroom, the runway, and every big idea still waiting for its name.', 'skyyrose-flagship-2' ),
-			'shop_kicker' => __( 'Kids Capsule / The Heir Edit', 'skyyrose-flagship-2' ),
-			'shop_heading' => __( 'Dress the next chapter.', 'skyyrose-flagship-2' ),
-			'shop_intro' => __( 'Explore the published Kids Capsule pieces below. Built for expression without a script, every piece makes room for play, confidence, and personality. Product pages provide the current price, availability, size, and care information.', 'skyyrose-flagship-2' ),
-			'card_story' => __( 'Built for imagination before anyone hands out roles. The next chapter belongs to whoever is ready to write it.', 'skyyrose-flagship-2' ),
-			'hero_cta' => __( 'Shop Kids Capsule', 'skyyrose-flagship-2' ),
-			'world_cta' => __( 'Enter her world', 'skyyrose-flagship-2' ),
+			'name'             => __( 'Kids Capsule', 'skyyrose-flagship-2' ),
+			'kicker'           => __( 'The Heir', 'skyyrose-flagship-2' ),
+			'headline'         => __( 'The throne is already hers.', 'skyyrose-flagship-2' ),
+			'line'             => __( 'The Skyy mascot sits front and center, not waiting to inherit the house—already imagining what she will build inside it.', 'skyyrose-flagship-2' ),
+			'manifesto'        => __( 'Kids Capsule is not a smaller version of the house. It is the first room built for the next generation: confidence, imagination, and enough space to picture themselves at the center of the story.', 'skyyrose-flagship-2' ),
+			'world_heading'    => __( 'Enter the heir’s room.', 'skyyrose-flagship-2' ),
+			'world_intro'      => __( 'The throne comes first. Then the playroom, the runway, and every big idea still waiting for its name.', 'skyyrose-flagship-2' ),
+			'shop_kicker'      => __( 'Kids Capsule / The Heir Edit', 'skyyrose-flagship-2' ),
+			'shop_heading'     => __( 'Dress the next chapter.', 'skyyrose-flagship-2' ),
+			'shop_intro'       => __( 'Explore the published Kids Capsule pieces below. Built for expression without a script, every piece makes room for play, confidence, and personality. Product pages provide the current price, availability, size, and care information.', 'skyyrose-flagship-2' ),
+			'card_story'       => __( 'Built for imagination before anyone hands out roles. The next chapter belongs to whoever is ready to write it.', 'skyyrose-flagship-2' ),
+			'hero_cta'         => __( 'Shop Kids Capsule', 'skyyrose-flagship-2' ),
+			'world_cta'        => __( 'Enter her world', 'skyyrose-flagship-2' ),
 			'invitation_title' => __( 'Give imagination a place at the table.', 'skyyrose-flagship-2' ),
-			'invitation' => __( 'Choose the piece that lets the next generation arrive as themselves—before anyone tells them to play small.', 'skyyrose-flagship-2' ),
-			'invitation_cta' => __( 'Choose Kids Capsule', 'skyyrose-flagship-2' ),
-			'hero'       => 'images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp',
-			'hero_tablet' => 'images/hero/responsive/kids-capsule-heir-throne-v3-1024w.webp',
-			'hero_mobile' => 'images/hero/responsive/kids-capsule-heir-throne-v3-640w.webp',
-			'portrait'   => 'scene-4-kids-capsule.webp',
-			'portrait_source' => 'scroll-world',
-			'lockup'     => 'images/logos/sr-monogram-rose-gold.webp',
-			'artifact'   => 'images/mascot/skyy-canonical-v2.png',
-			'portal_statue' => array(
+			'invitation'       => __( 'Choose the piece that lets the next generation arrive as themselves—before anyone tells them to play small.', 'skyyrose-flagship-2' ),
+			'invitation_cta'   => __( 'Choose Kids Capsule', 'skyyrose-flagship-2' ),
+			'hero'             => 'images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp',
+			'hero_tablet'      => 'images/hero/responsive/kids-capsule-heir-throne-v3-1024w.webp',
+			'hero_mobile'      => 'images/hero/responsive/kids-capsule-heir-throne-v3-640w.webp',
+			'portrait'         => 'scene-4-kids-capsule.webp',
+			'portrait_source'  => 'scroll-world',
+			'lockup'           => 'images/logos/sr-monogram-rose-gold.webp',
+			'artifact'         => 'images/mascot/skyy-canonical-v2.png',
+			'portal_statue'    => array(
 				'src'    => 'images/product-card-portals/kids-capsule-portal-statue-970w.webp',
 				'small'  => 'images/product-card-portals/kids-capsule-portal-statue-640w.webp',
 				'width'  => 971,
 				'height' => 1619,
 			),
-			'atmosphere' => 'images/logos/sr-monogram-rose-gold.webp',
+			'atmosphere'       => 'images/logos/sr-monogram-rose-gold.webp',
 			// Preserve V1's full editorial frame for an honest Kids Capsule baseline.
-			'lookbook'   => 'images/lookbook/lb-kid-black-rose-960w.webp',
-			'lookbook_mobile' => 'images/lookbook/lb-kid-black-rose-480w.webp',
-			'world'      => array(
-				array( 'image' => 'images/immersive/scene-kids-capsule-playroom.webp', 'label' => __( 'After-Dark Playroom', 'skyyrose-flagship-2' ), 'copy' => __( 'A room where imagination is treated like an heirloom, not an interruption.', 'skyyrose-flagship-2' ) ),
-				array( 'image' => 'images/immersive/scene-kids-capsule-runway.webp', 'label' => __( 'First Runway', 'skyyrose-flagship-2' ), 'copy' => __( 'No borrowed confidence. Just the first walk into a story that already has room for them.', 'skyyrose-flagship-2' ) ),
-				array( 'image' => 'images/immersive/scene-kids-capsule-heir-runway-gpt2.webp', 'label' => __( 'The Heir’s Salon', 'skyyrose-flagship-2' ), 'copy' => __( 'The house does not hand down a script. It hands down the room to write one.', 'skyyrose-flagship-2' ) ),
+			'lookbook'         => 'images/lookbook/lb-kid-black-rose-960w.webp',
+			'lookbook_mobile'  => 'images/lookbook/lb-kid-black-rose-480w.webp',
+			'world'            => array(
+				array(
+					'image' => 'images/immersive/scene-kids-capsule-playroom.webp',
+					'label' => __( 'After-Dark Playroom', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'A room where imagination is treated like an heirloom, not an interruption.', 'skyyrose-flagship-2' ),
+				),
+				array(
+					'image' => 'images/immersive/scene-kids-capsule-runway.webp',
+					'label' => __( 'First Runway', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'No borrowed confidence. Just the first walk into a story that already has room for them.', 'skyyrose-flagship-2' ),
+				),
+				array(
+					'image' => 'images/immersive/scene-kids-capsule-heir-runway-gpt2.webp',
+					'label' => __( 'The Heir’s Salon', 'skyyrose-flagship-2' ),
+					'copy'  => __( 'The house does not hand down a script. It hands down the room to write one.', 'skyyrose-flagship-2' ),
+				),
 			),
 		),
 	);
@@ -924,14 +1049,14 @@ function skyyrose2_collection_hero_motion( $slug, $responsive_hero ) {
 		$manifest = is_array( $decoded ) && 'skyyrose.v2.collection-hero-motion.v1' === ( $decoded['schema'] ?? '' ) ? $decoded : array();
 	}
 
-	$slug       = sanitize_title( $slug );
-	$collection = isset( $manifest['collections'][ $slug ] ) && is_array( $manifest['collections'][ $slug ] ) ? $manifest['collections'][ $slug ] : array();
-	$source     = isset( $collection['source'] ) && is_array( $collection['source'] ) ? $collection['source'] : array();
-	$ai_motion  = isset( $collection['ai_motion'] ) && is_array( $collection['ai_motion'] ) ? $collection['ai_motion'] : array();
-	$expected_source = preg_replace( '#^images/hero/responsive/(.+)-1440w\.webp$#', 'assets/sot/images/hero/$1.webp', (string) $responsive_hero );
-	$source_file     = isset( $source['file'] ) ? (string) $source['file'] : '';
-	$source_hash     = isset( $source['sha256'] ) ? (string) $source['sha256'] : '';
-	$source_path     = $source_file ? SKYYROSE2_DIR . '/' . $source_file : '';
+	$slug               = sanitize_title( $slug );
+	$collection         = isset( $manifest['collections'][ $slug ] ) && is_array( $manifest['collections'][ $slug ] ) ? $manifest['collections'][ $slug ] : array();
+	$source             = isset( $collection['source'] ) && is_array( $collection['source'] ) ? $collection['source'] : array();
+	$ai_motion          = isset( $collection['ai_motion'] ) && is_array( $collection['ai_motion'] ) ? $collection['ai_motion'] : array();
+	$expected_source    = preg_replace( '#^images/hero/responsive/(.+)-1440w\.webp$#', 'assets/sot/images/hero/$1.webp', (string) $responsive_hero );
+	$source_file        = isset( $source['file'] ) ? (string) $source['file'] : '';
+	$source_hash        = isset( $source['sha256'] ) ? (string) $source['sha256'] : '';
+	$source_path        = $source_file ? SKYYROSE2_DIR . '/' . $source_file : '';
 	$actual_source_hash = $source_path && is_file( $source_path ) ? hash_file( 'sha256', $source_path ) : '';
 	if (
 		'founder_approved' !== ( $ai_motion['status'] ?? '' ) ||
@@ -945,15 +1070,15 @@ function skyyrose2_collection_hero_motion( $slug, $responsive_hero ) {
 		return array();
 	}
 
-	$max_bytes = isset( $manifest['runtime']['performance']['max_web_asset_bytes'] ) ? absint( $manifest['runtime']['performance']['max_web_asset_bytes'] ) : 0;
-	$web       = isset( $ai_motion['web'] ) && is_array( $ai_motion['web'] ) ? $ai_motion['web'] : array();
+	$max_bytes     = isset( $manifest['runtime']['performance']['max_web_asset_bytes'] ) ? absint( $manifest['runtime']['performance']['max_web_asset_bytes'] ) : 0;
+	$web           = isset( $ai_motion['web'] ) && is_array( $ai_motion['web'] ) ? $ai_motion['web'] : array();
 	$approved_root = 'assets/video/collection-heroes/approved/' . $slug . '/';
 	$motion        = array();
 	foreach ( $web as $asset ) {
-		$file = isset( $asset['file'] ) ? ltrim( (string) $asset['file'], '/' ) : '';
-		$hash = isset( $asset['sha256'] ) ? (string) $asset['sha256'] : '';
-		$path = $file ? SKYYROSE2_DIR . '/' . $file : '';
-		$extension = strtolower( pathinfo( $file, PATHINFO_EXTENSION ) );
+		$file        = isset( $asset['file'] ) ? ltrim( (string) $asset['file'], '/' ) : '';
+		$hash        = isset( $asset['sha256'] ) ? (string) $asset['sha256'] : '';
+		$path        = $file ? SKYYROSE2_DIR . '/' . $file : '';
+		$extension   = strtolower( pathinfo( $file, PATHINFO_EXTENSION ) );
 		$actual_hash = $path && is_file( $path ) ? hash_file( 'sha256', $path ) : '';
 		if (
 			! in_array( $extension, array( 'mp4', 'webm' ), true ) ||
@@ -1035,7 +1160,7 @@ function skyyrose2_header_world_frames() {
 			'love-hurts'   => __( 'Love Hurts graffiti and cracked-heart monuments', 'skyyrose-flagship-2' ),
 			'kids-capsule' => __( 'Skyy, the heir, on her throne', 'skyyrose-flagship-2' ),
 		);
-		$frames[] = array(
+		$frames[]        = array(
 			'collection' => $slug,
 			'name'       => $collection['name'],
 			'label'      => isset( $combined_labels[ $slug ] ) ? $combined_labels[ $slug ] : $collection['name'],
@@ -1186,7 +1311,7 @@ function skyyrose2_registry_reconciliation_report() {
 		}
 	}
 
-	$registry_skus = array_fill_keys( array_map( 'sanitize_key', array_keys( $records ) ), true );
+	$registry_skus     = array_fill_keys( array_map( 'sanitize_key', array_keys( $records ) ), true );
 	$report['missing'] = array_values( array_diff( array_keys( $live ), array_keys( $registry_skus ) ) );
 	$report['extra']   = array_values( array_diff( array_keys( $registry_skus ), array_keys( $live ) ) );
 	sort( $report['missing'] );
@@ -1423,7 +1548,7 @@ function skyyrose2_product_view_image_ids( $product ) {
 		$ids = array_merge( $ids, array_map( 'absint', (array) $product->get_gallery_image_ids() ) );
 	}
 
-	$ids = array_values( array_unique( array_filter( $ids ) ) );
+	$ids     = array_values( array_unique( array_filter( $ids ) ) );
 	$primary = $ids ? array_shift( $ids ) : 0;
 	$views   = $primary ? array( $primary ) : array();
 	foreach ( $ids as $id ) {
@@ -1562,7 +1687,10 @@ function skyyrose2_product_verified_card_media( $product ) {
 
 /** Resolve PDP commerce attachments without promoting opening-media states. */
 function skyyrose2_product_commerce_media( $product ) {
-	$empty = array( 'state' => 'missing', 'ids' => array() );
+	$empty = array(
+		'state' => 'missing',
+		'ids'   => array(),
+	);
 	if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
 		return $empty;
 	}
@@ -1570,24 +1698,33 @@ function skyyrose2_product_commerce_media( $product ) {
 	if ( empty( $manifest['products'] ) ) {
 		return $empty;
 	}
-	$sku = sanitize_key( $product->get_sku() );
+	$sku    = sanitize_key( $product->get_sku() );
 	$record = $manifest['products'][ $sku ] ?? array();
 	// A Woo assignment is not permission to reuse explicitly rejected imagery.
 	if ( 'REJECTED_AUTHENTICITY' === ( $record['status'] ?? '' ) ) {
-		return array( 'state' => 'rejected', 'ids' => array() );
+		return array(
+			'state' => 'rejected',
+			'ids'   => array(),
+		);
 	}
-	$editorial = skyyrose2_product_verified_card_media( $product );
-	$valid = static function ( $id ) {
+	$editorial     = skyyrose2_product_verified_card_media( $product );
+	$valid         = static function ( $id ) {
 		$metadata = $id ? wp_get_attachment_metadata( $id ) : array();
 		return $id && wp_attachment_is_image( $id ) && wp_get_attachment_url( $id ) && ! empty( $metadata['width'] ) && ! empty( $metadata['height'] );
 	};
 	$editorial_ids = array_values( array_unique( array_filter( array_map( 'absint', array_column( $editorial, 'id' ) ), $valid ) ) );
 	if ( $editorial_ids ) {
-		return array( 'state' => 'editorial', 'ids' => $editorial_ids );
+		return array(
+			'state' => 'editorial',
+			'ids'   => $editorial_ids,
+		);
 	}
 	$ids = array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() );
 	$ids = array_values( array_unique( array_filter( array_map( 'absint', $ids ), $valid ) ) );
-	return array( 'state' => $ids ? 'commerce' : 'missing', 'ids' => $ids );
+	return array(
+		'state' => $ids ? 'commerce' : 'missing',
+		'ids'   => $ids,
+	);
 }
 
 /** Keep Product schema imagery aligned with the PDP's permitted primary. */
@@ -1606,9 +1743,9 @@ add_filter( 'woocommerce_structured_data_product', 'skyyrose2_product_commerce_s
 function skyyrose2_product_commerce_variation_image( $data, $product, $variation ) {
 	$media = skyyrose2_product_commerce_media( $product );
 	if ( 'rejected' === $media['state'] ) {
-		$data['image'] = array();
-		$data['image_id'] = 0;
-		$data['gallery_image_ids'] = array();
+		$data['image']               = array();
+		$data['image_id']            = 0;
+		$data['gallery_image_ids']   = array();
 		$data['gallery_images_html'] = '';
 	}
 	return $data;
@@ -1649,7 +1786,7 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 
 	$registry = skyyrose2_presentation_registry();
 	$series   = isset( $registry['products'] ) && is_array( $registry['products'] ) ? $registry['products'] : array();
-	$pieces = array();
+	$pieces   = array();
 
 	foreach ( $series as $sku => $chapter_data ) {
 		if ( 'jersey-series' !== ( $chapter_data['presentation'] ?? '' ) ) {
@@ -1726,7 +1863,7 @@ function skyyrose2_collection_page_slug() {
 	if ( ! is_page() ) {
 		return '';
 	}
-	$id = get_queried_object_id();
+	$id   = get_queried_object_id();
 	$slug = sanitize_title( get_post_field( 'post_name', $id ) );
 	if ( ! array_key_exists( $slug, skyyrose2_collections() ) ) {
 		return '';
@@ -1763,8 +1900,16 @@ function skyyrose2_product_media_fallback( $product ) {
 	}
 
 	$fallbacks = array(
-		'kids-001' => array( 'path' => 'images/products/kids-001-product-proof-400.webp', 'width' => 400, 'height' => 600 ),
-		'kids-002' => array( 'path' => 'images/products/kids-002-product-proof-400.webp', 'width' => 400, 'height' => 400 ),
+		'kids-001' => array(
+			'path'   => 'images/products/kids-001-product-proof-400.webp',
+			'width'  => 400,
+			'height' => 600,
+		),
+		'kids-002' => array(
+			'path'   => 'images/products/kids-002-product-proof-400.webp',
+			'width'  => 400,
+			'height' => 400,
+		),
 	);
 	$sku       = sanitize_key( $product->get_sku() );
 	$fallback  = $fallbacks[ $sku ] ?? null;
