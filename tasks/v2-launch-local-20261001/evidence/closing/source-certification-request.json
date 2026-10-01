@@ -1,0 +1,73 @@
+{
+  "source_sha": "9e4101e8bde89f2efe6828519393221d9b81c639",
+  "owner": "stream4",
+  "request": "Review exact integrated source, reconcile registry authority binding, certification hashes, package boundary and PHP baseline; preserve asset approvals and all release holds. Return reviewed scoped local commit.",
+  "changed_existing_input_hashes": {
+    "wordpress-theme/skyyrose-flagship-2/assets/css/critical/home.contract.json": "b92a0b4c5d758bb425cf75814af5ec851b95ba8b906f5d52650f841a40459a0b",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js": "18122820d55ebd02535cfb0b0dee1abd06dd652001c210b5b65f83adee83c5c7",
+    "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json": "cf84c4ff7e864286f68e1b07cf5ad2da9dafd097b8f507acf138494b0b1959b3",
+    "wordpress-theme/skyyrose-flagship-2/npm-shrinkwrap.json": "4f55e1943069d260cf191330777a677d68808a145dabfd1c928d1992e78cdb87",
+    "wordpress-theme/skyyrose-flagship-2/package.json": "1f489177682336cb338307db2379a4926e3c6a9dfc839f67754745b8b4ae6b44",
+    "wordpress-theme/skyyrose-flagship-2/scripts/build-critical-css.mjs": "8b4f9335530107292d37d7162a94397ad19a2800d8262e5a9e78bfabe51d58b7",
+    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+    "skyyrose/core/product.py": "30a44e37e1ed38950b9dbe398f0396f0293335bf4cc51e7767dcd401b28327d2",
+    "skyyrose/core/product_registry.py": "7f6ad89adb4c8f2e75041720ab8f580eb723af8ec35bd097593bff557a4e2639"
+  },
+  "new_theme_files": {
+    "inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+    "tests/commerce/bootstrap.php": "6f9d220bba62e198aa6d8285c9b47a3f9a9971924f40e702ea8a12947f82ffca",
+    "tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+    "tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+  },
+  "package_classification_recommendation": {
+    "inc/woocommerce-compat.php": "RUNTIME SOURCE; release true",
+    "tests/commerce/": "AUTHORING ONLY; release false"
+  },
+  "canonical_registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+  "dependencies": [
+    {
+      "original": "f16f179cf2b73fa817691f72b15906309c628153",
+      "adopted": "6d26a32ed"
+    },
+    {
+      "original": "0513dbb2f091f0bca4009c9be1d389a9dc67f706",
+      "adopted": "c7abc43e8"
+    },
+    {
+      "original": "acd5d1c22e3fc2e347d7a204016ca7f8feac1da1",
+      "adopted": "2e37db914"
+    },
+    {
+      "original": "221ba974ac9e920a3e4d329069bbeb8cbf0b1955",
+      "adopted": "ba19dedec"
+    },
+    {
+      "original": "487455d7f799153f0fb5e31c72ceeb9116031ed3",
+      "adopted": "226cef201"
+    }
+  ],
+  "authority": "FOUNDER_CONFIRMED facts preserved; no approval-state, imagery, date, stock, pricing or policy edits",
+  "toolchain": {
+    "Python": "3.12.12",
+    "Pillow": "12.3.0",
+    "Node": "22.23.2",
+    "npm": "10.9.8"
+  },
+  "observed_commerce_fixture": {
+    "WordPress": "7.1.2",
+    "WooCommerce": "11.1.2",
+    "PHP": "8.5.6",
+    "database": "isolated SQLite 2.2.23; not deployed"
+  },
+  "certified_native_gallery_fixture": "Original separately pinned WP7.1/Woo11.1.0 fixture retained; not equivalent to updated local commerce runtime",
+  "supersedes_source_sha": "c98a31167237f422c18c0431635d2ae04f25439b",
+  "subsequent_source_change": "New fixture WPCS fixed; scene hotspot labels neutral; translation rebuilt; isolated scene render regression added. Full source certification must review current PHP/runtime hashes.",
+  "runtime_review_hashes": {
+    "functions.php": "0a308706c01344bc26212b100a7560eb4cccd3f790e12a9145600f92431ed35b",
+    "template-parts/commerce/product-card.php": "25f7057b0ce38ea1e5267ae1b2cba63271e0d9116c8d939502a0e781898c9422",
+    "template-parts/commerce/product-hero.php": "365cf2c07db3316f32c6b454f34a5a9a490d9abd68b7a188801dbe5cf5f29928",
+    "template-parts/commerce/hero-composed-scene.php": "6b27d6adbc67ad4b9e41ada7ee6ee3b471e0fff6489e1b07709dbcef5e54602e",
+    "inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+    "languages/skyyrose-flagship-2.pot": "bcaa4c99a4e7d1c6b80e8c997afc4d0ef253d54983bc7493217adacc66388e5a"
+  }
+}
