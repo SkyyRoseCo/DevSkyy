@@ -47,6 +47,17 @@ def test_exports_cannot_override_authority(registry):
     assert export_compatibility(registry, check=True) == []
 
 
+def test_v2_card_front_manifest_is_projected_from_product_registry():
+    from skyyrose.core.product_registry import V2_CARD_FRONT_PROJECTION
+
+    raw = load_registry()
+    manifest = json.loads(V2_CARD_FRONT_PROJECTION.read_text())
+    assert set(manifest["products"]) == set(raw["products"])
+    for sku, product in raw["products"].items():
+        assert manifest["products"][sku] == product["images"]["card_front"]
+    assert str(V2_CARD_FRONT_PROJECTION) not in export_compatibility(check=True)
+
+
 def test_product_update_changes_image_binding_and_preserves_other_fields(registry):
     update_catalog_fields("br-test", {"front_model_image": "assets/images/new.webp"}, registry)
     product = load_registry(registry)["products"]["br-test"]

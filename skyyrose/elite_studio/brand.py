@@ -5,8 +5,8 @@ Reads `assets/brand/brand.yaml` and exposes a typed API:
     from skyyrose.elite_studio.brand import BrandConfig
 
     brand = BrandConfig.load()
-    print(brand.tagline_active)        # "Luxury Grows from Concrete."
-    print(brand.retired_taglines)      # ("Where Love Meets Luxury",)
+    print(brand.tagline_active)        # "" (owner-ratified: no active tagline)
+    print(brand.retired_taglines)      # historical phrases, never active copy
     print(brand.collection("black-rose").palette["primary"])  # "#0A0A0A"
 
 Used by:
@@ -32,7 +32,7 @@ except ImportError as _e:  # pragma: no cover
         "PyYAML is required to load brand.yaml. Install with `pip install pyyaml`."
     ) from _e
 
-from .validation import validate_hex_color, validate_not_empty
+from .validation import validate_hex_color
 
 _ENV_BRAND_PATH = "SKYYROSE_BRAND_PATH"
 
@@ -88,8 +88,12 @@ class BrandConfig:
     @classmethod
     def _from_dict(cls, data: dict) -> BrandConfig:
         tagline_block = data.get("tagline") or {}
-        active = str(tagline_block.get("active") or "")
-        validate_not_empty(active, "tagline.active")
+        if "active" not in tagline_block:
+            raise ValueError("tagline.active must be explicit, including no active tagline")
+        value = tagline_block["active"]
+        if value is not None and not isinstance(value, str):
+            raise ValueError("tagline.active must be a string or null")
+        active = value or ""
 
         retired_raw = tagline_block.get("retired") or []
         retired: list[str] = []
@@ -98,6 +102,8 @@ class BrandConfig:
                 retired.append(str(entry["phrase"]))
             elif isinstance(entry, str):
                 retired.append(entry)
+        if active and active in retired:
+            raise ValueError("tagline.active cannot be a retired tagline")
 
         # Validate hex colors in palettes (fail loud on malformed brand data)
         colors = dict(data.get("colors") or {})

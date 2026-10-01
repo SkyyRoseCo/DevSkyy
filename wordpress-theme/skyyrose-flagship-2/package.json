@@ -57,6 +57,7 @@
   },
   "devDependencies": {
     "clean-css": "5.3.3",
+    "jsdom": "30.0.1",
     "postcss": "8.5.28",
     "terser": "5.36.0"
   }

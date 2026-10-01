@@ -51,7 +51,7 @@ import json
 import sys
 from datetime import UTC, datetime
 from functools import lru_cache
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 from skyyrose.core import product_registry
@@ -123,6 +123,30 @@ def all_skus() -> list[str]:
     return sorted(load_registry()["products"])
 
 
+def _validated_card_path(value: Any, sku: str) -> str:
+    """Accept only an existing theme asset under the V2 assets root."""
+    if not isinstance(value, str) or not value or "\\" in value:
+        raise ValueError(f"{sku} card front has an invalid path")
+    relative = PurePosixPath(value)
+    if (
+        relative.is_absolute()
+        or relative.as_posix() != value
+        or len(relative.parts) < 2
+        or relative.parts[0] != "assets"
+        or any(part in {".", ".."} for part in value.split("/"))
+    ):
+        raise ValueError(f"{sku} card front must be a normalized theme-assets path")
+    assets_root = (REPO_ROOT / "wordpress-theme/skyyrose-flagship-2/assets").resolve()
+    try:
+        asset = (assets_root / Path(*relative.parts[1:])).resolve(strict=True)
+        asset.relative_to(assets_root)
+    except (OSError, RuntimeError, ValueError) as error:
+        raise ValueError(f"{sku} card front escapes or is missing from theme assets") from error
+    if not asset.is_file():
+        raise ValueError(f"{sku} card front is not a file")
+    return value
+
+
 def _images_for(product: dict[str, Any], sku: str) -> tuple[dict[str, Any], list[str]]:
     """Resolved image per role, plus gaps for roles with no asset of their own.
 
@@ -157,6 +181,25 @@ def _images_for(product: dict[str, Any], sku: str) -> tuple[dict[str, Any], list
         }
         if key != keys[0]:
             gaps.append(f"images.{role}.fallback")
+    card = images.get("card_front")
+    if isinstance(card, dict) and card.get("src") and card.get("sha256"):
+        resolved["card_front"] = {
+            "path": _validated_card_path(card["src"], sku),
+            "sha256": card["sha256"],
+            "source_sha256": card.get("source_sha256"),
+            "scene_status": card.get("scene_status"),
+            "current_fidelity_status": card.get(
+                "current_fidelity_status", "EXISTING_SCOPED_APPROVAL_RETAINED"
+            ),
+            "current_fidelity_note": card.get("current_fidelity_note"),
+            "alt": card.get("alt"),
+            "width": card.get("width"),
+            "height": card.get("height"),
+            "source_key": "images.card_front",
+        }
+    else:
+        resolved["card_front"] = None
+        gaps.append("images.card_front")
     return resolved, gaps
 
 

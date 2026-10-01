@@ -11,6 +11,11 @@ define( 'SKYYROSE2_VERSION', '2.5.0' );
 define( 'SKYYROSE2_DIR', get_template_directory() );
 define( 'SKYYROSE2_URI', get_template_directory_uri() );
 
+/** Keep the mascot off all storefront routes until its arm rig is repaired. */
+function skyyrose2_mascot_enabled() {
+	return false;
+}
+
 /* Fresh-install, demo-import, and editor integration. */
 require_once SKYYROSE2_DIR . '/inc/marketplace.php';
 require_once SKYYROSE2_DIR . '/inc/performance.php';
@@ -399,8 +404,14 @@ function skyyrose2_assets() {
 		$page_styles[] = 'content-page';
 	}
 	if ( is_front_page() ) {
-		$page_styles[] = 'collection-world';
-		$page_styles[] = 'home-page';
+		$page_styles[]   = 'collection-world';
+		$page_styles[]   = 'home-page';
+		$page_styles[]   = 'home-experience';
+		$page_styles[]   = 'home-art-direction';
+		$home_experience = '/assets/js/home-experience' . $suffix . '.js';
+		wp_enqueue_script( 'skyyrose2-home-experience', SKYYROSE2_URI . $home_experience, array(), skyyrose2_asset_version( $home_experience ), true );
+		$house_motion = '/assets/js/house-motion' . $suffix . '.js';
+		wp_enqueue_script( 'skyyrose2-house-motion', SKYYROSE2_URI . $house_motion, array(), skyyrose2_asset_version( $house_motion ), true );
 	}
 	if ( function_exists( 'is_product' ) && is_product() ) {
 		$page_styles[] = 'product-page';
@@ -516,9 +527,11 @@ JS
 	// so an eligible simple product gets the normal AJAX confirmation, fragments,
 	// and updated bag count; the anchor URL remains the no-JS cart fallback.
 	if (
-		function_exists( 'is_woocommerce' ) &&
+		class_exists( 'WooCommerce' ) &&
 		(
-			$collection_slug || is_page_template( 'template-collection.php' ) ||
+			$collection_slug ||
+			( function_exists( 'is_page' ) && is_page( array( 'pre-order', 'preorder' ) ) ) ||
+			is_page_template( 'template-collection.php' ) ||
 			is_page_template( 'template-preorder.php' ) ||
 			is_page_template( 'template-parts/v2-preorder.php' )
 		)
@@ -526,7 +539,7 @@ JS
 		wp_enqueue_script( 'wc-add-to-cart' );
 		wp_enqueue_script( 'wc-cart-fragments' );
 	}
-	if ( ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
+	if ( skyyrose2_mascot_enabled() && ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
 		wp_enqueue_style( 'skyyrose2-mascot', SKYYROSE2_URI . $mascot_style, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $mascot_style ) );
 		wp_enqueue_script( 'skyyrose2-mascot-loader', SKYYROSE2_URI . $loader_script, array(), skyyrose2_asset_version( $loader_script ), true );
 		wp_localize_script(
@@ -1819,29 +1832,9 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 		<div class="sr2-jersey-reveal__head">
 			<p class="sr2-eyebrow"><?php esc_html_e( 'Jersey Series / The Town Line', 'skyyrose-flagship-2' ); ?></p>
 			<h2 id="sr2-jersey-series-title"><?php esc_html_e( 'Every number carries the tour.', 'skyyrose-flagship-2' ); ?></h2>
-			<p><?php esc_html_e( 'Oakland is the origin. San Francisco, The Bay, and San Jose become chapters on The Town Line: SkyyRose’s fictional house journey. Every price, size, and availability decision stays on the live product page.', 'skyyrose-flagship-2' ); ?></p>
+			<p><?php esc_html_e( 'Eight perspectives on the Bay. Discover the Jersey Series, then open a piece to explore its details and available sizes.', 'skyyrose-flagship-2' ); ?></p>
 		</div>
-		<div class="sr2-house-film" data-house-film data-house-film-scroll-world data-scroll-world-pinned data-media-status="founder-review-candidate">
-			<div class="sr2-house-film__stage" data-scroll-world-stage>
-				<div class="sr2-house-film__media">
-				<video width="1672" height="941" muted playsinline preload="none" poster="<?php echo esc_url( SKYYROSE2_URI . '/assets/sot/images/hero/jersey-series-town-line-train-v1.webp' ); ?>" data-house-film-video aria-label="<?php esc_attr_e( 'The Town Line Jersey Series previsualization', 'skyyrose-flagship-2' ); ?>">
-					<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.webm' ); ?>" type="video/webm">
-					<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.mp4' ); ?>" type="video/mp4">
-				</video>
-				<div class="sr2-house-film__controls">
-					<button type="button" data-house-film-toggle><?php esc_html_e( 'Play film', 'skyyrose-flagship-2' ); ?></button>
-					<button type="button" data-house-film-sound hidden><?php esc_html_e( 'Turn sound on', 'skyyrose-flagship-2' ); ?></button>
-					<span class="screen-reader-text" aria-live="polite" data-house-film-status></span>
-				</div>
-				</div>
-				<nav class="sr2-house-film__chapters" aria-label="<?php esc_attr_e( 'Jersey Series film chapters', 'skyyrose-flagship-2' ); ?>">
-					<?php foreach ( $pieces as $piece_index => $piece ) : ?>
-						<a href="<?php echo esc_url( get_permalink( $piece['product']->get_id() ) ); ?>" data-house-film-chapter data-start="<?php echo esc_attr( (string) ( $piece_index * 2.6 ) ); ?>"><span><?php echo esc_html( strtoupper( $piece['sku'] ) ); ?></span><strong><?php echo esc_html( $piece['chapter'] ); ?></strong></a>
-					<?php endforeach; ?>
-				</nav>
-			</div>
-			<p class="sr2-house-film__transcript"><?php esc_html_e( 'Visual transcript: a fictional SkyyRose Town Line train moves through Oakland’s Black, White, and two Last Oakland jerseys; San Francisco’s football, Giants, and basketball looks; then San Jose hockey. This previsualization is not product-media approval.', 'skyyrose-flagship-2' ); ?></p>
-		</div>
+		<?php get_template_part( 'template-parts/commerce/jersey-gallery' ); ?>
 		<?php if ( $show_product_grid ) : ?>
 			<div class="sr2-jersey-reveal__grid">
 				<?php foreach ( $pieces as $piece_index => $piece ) : ?>

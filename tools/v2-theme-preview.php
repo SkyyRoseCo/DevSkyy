@@ -275,7 +275,7 @@ function wp_head() {
 	// page-lookbook.php enqueues its own sheets in this order (collection-world, premium-commerce, hero-commerce-scenes, collection-scene-motion, lookbook).
 	if ( 'lookbook' === $route ) { array_push( $page_sheets, 'collection-world', 'lookbook' ); }
 	if ( ! in_array( $route, array_merge( array( 'home', 'shop', 'product', 'cart', 'checkout' ), $collection_routes ), true ) && 0 !== strpos( $route, 'immersive-' ) ) { array_push( $page_sheets, 'legacy-world-components', 'content-page' ); }
-	if ( 'home' === $route ) { array_push( $page_sheets, 'collection-world', 'home-page' ); }
+	if ( 'home' === $route ) { array_push( $page_sheets, 'collection-world', 'home-page', 'home-experience', 'home-art-direction' ); }
 	if ( 'product' === $route ) { $page_sheets[] = 'product-page'; }
 	if ( 'shop' === $route ) { $page_sheets[] = 'shop-page'; }
 	if ( in_array( $route, $collection_routes, true ) ) { $page_sheets[] = 'collection-world'; }
@@ -326,6 +326,9 @@ function wp_footer() {
 	$immersive_js = 0 === strpos( $route, 'immersive-' ) ? '<script src="/wordpress-theme/skyyrose-flagship-2/assets/js/immersive.js" defer></script>' : '';
 	$commerce_js  = 'checkout' === $route ? '' : '<script src="/wordpress-theme/skyyrose-flagship-2/assets/js/premium-commerce.js" defer></script>';
 	$commerce_js .= in_array( $route, array( 'cart', 'checkout', 'account' ), true ) ? '' : '<script src="/wordpress-theme/skyyrose-flagship-2/assets/js/quick-view-commerce.js" defer></script>';
+	if ( 'home' === $route ) {
+		$commerce_js .= '<script src="/wordpress-theme/skyyrose-flagship-2/assets/js/home-experience.js" defer></script><script src="/wordpress-theme/skyyrose-flagship-2/assets/js/house-motion.js" defer></script>';
+	}
 	echo '<script src="/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js" defer></script><script src="/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js" defer></script><script src="/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js" defer></script>' . $commerce_js . $immersive_js . sr2_preview_skyy_footer();
 }
 function get_header() { require get_template_directory() . '/header.php'; }
@@ -510,8 +513,8 @@ function sr2_preview_catalog_row( $sku ) {
 		$path = dirname( __DIR__ ) . '/wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv';
 		$handle = is_readable( $path ) ? fopen( $path, 'r' ) : false;
 		if ( $handle ) {
-			$header = fgetcsv( $handle );
-			while ( $header && false !== ( $line = fgetcsv( $handle ) ) ) {
+			$header = fgetcsv( $handle, 0, ',', '"', '\\' );
+			while ( $header && false !== ( $line = fgetcsv( $handle, 0, ',', '"', '\\' ) ) ) {
 				if ( count( $line ) === count( $header ) ) { $row = array_combine( $header, $line ); $rows[ strtolower( $row['sku'] ) ] = $row; }
 			}
 			fclose( $handle );

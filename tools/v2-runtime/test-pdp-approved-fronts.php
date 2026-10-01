@@ -29,20 +29,26 @@ function check_approved_front( $condition, $message ) {
 }
 
 $manifest = json_decode( file_get_contents( SKYYROSE2_DIR . '/data/approved-card-fronts.json' ), true, 512, JSON_THROW_ON_ERROR );
-check_approved_front( 33 === count( $manifest['products'] ?? array() ), 'Expected 33 approved product fronts.' );
+check_approved_front( 33 === count( $manifest['products'] ?? array() ), 'Expected 33 source-bound product fronts.' );
 foreach ( $manifest['products'] as $sku => $record ) {
 	$id = 1000 + count( $GLOBALS['test_attachment_urls'] ?? array() );
 	$product = new WC_Product( $sku, $id );
 	$front = skyyrose2_approved_card_front( $product );
+	if ( 'BLOCKED_PRODUCT_MISMATCH' === ( $record['current_fidelity_status'] ?? '' ) ) {
+		check_approved_front( ! $front, 'Known wrong front must remain blocked for ' . $sku . '.' );
+		continue;
+	}
 	check_approved_front( 'FOUNDER_APPROVED_V2_CARD' === ( $front['scene_status'] ?? '' ), 'Approval status missing for ' . $sku . '.' );
 	check_approved_front( ( $record['sha256'] ?? '' ) === ( $front['sha256'] ?? '' ), 'Front source hash mismatch for ' . $sku . '.' );
 	check_approved_front( SKYYROSE2_URI . '/' . $record['src'] === ( $front['src'] ?? '' ), 'Resolver must retain the absolute approved original URL for ' . $sku . '.' );
 	check_approved_front( str_ends_with( strtolower( $front['alt'] ?? '' ), 'front on model' ), 'Front alt text does not identify the model-front view for ' . $sku . '.' );
+	$pdp_markup = skyyrose2_pdp_card_front_markup( $front );
+	check_approved_front( str_contains( $pdp_markup, 'src="' . $front['src'] . '"' ) && str_contains( $pdp_markup, 'data-large_image="' . $front['src'] . '"' ), 'PDP first frame must match card source for ' . $sku . '.' );
 }
 $rendition_manifest = json_decode( file_get_contents( SKYYROSE2_DIR . '/assets/derived/card-fronts/manifest.json' ), true, 512, JSON_THROW_ON_ERROR );
-$integrity_product = new WC_Product( 'br-001', 9001 );
+$integrity_product = new WC_Product( 'br-002', 9001 );
 $integrity_front = skyyrose2_approved_card_front( $integrity_product );
-$tampered_delivery = $rendition_manifest['products']['br-001'];
+$tampered_delivery = $rendition_manifest['products']['br-002'];
 foreach ( $tampered_delivery['renditions'] as &$candidate ) {
 	if ( 480 === (int) $candidate['width'] ) {
 		$candidate['sha256'] = str_repeat( '0', 64 );
@@ -51,10 +57,10 @@ foreach ( $tampered_delivery['renditions'] as &$candidate ) {
 unset( $candidate );
 $integrity_source = $integrity_front;
 unset( $integrity_source['card_src'], $integrity_source['card_width'], $integrity_source['card_height'], $integrity_source['srcset'], $integrity_source['sizes'] );
-$filtered_delivery = skyyrose2_approved_card_front_renditions( 'br-001', $integrity_source, $tampered_delivery, $integrity_front['src'] );
+$filtered_delivery = skyyrose2_approved_card_front_renditions( 'br-002', $integrity_source, $tampered_delivery, $integrity_front['src'] );
 $integrity_fallback_src = $filtered_delivery['card_src'] ?? $integrity_front['src'];
 check_approved_front( $integrity_fallback_src === $integrity_front['src'] && ! isset( $filtered_delivery['card_src'] ), 'A wrong-hash 480w file must never become the displayed fallback source.' );
-check_approved_front( ! str_contains( $filtered_delivery['srcset'] ?? '', 'br-001-480w.webp' ) && str_contains( $filtered_delivery['srcset'] ?? '', 'https://theme.invalid/assets/derived/card-fronts/br-001-320w.webp 320w' ) && str_contains( $filtered_delivery['srcset'] ?? '', 'https://theme.invalid/assets/derived/card-fronts/br-001-768w.webp 768w' ) && str_contains( $filtered_delivery['srcset'] ?? '', $integrity_front['src'] . ' 1024w' ), 'A wrong-hash rendition must be excluded while valid absolute sizes and the absolute original remain available.' );
+check_approved_front( ! str_contains( $filtered_delivery['srcset'] ?? '', 'br-002-480w.webp' ) && str_contains( $filtered_delivery['srcset'] ?? '', 'https://theme.invalid/assets/derived/card-fronts/br-002-320w.webp 320w' ) && str_contains( $filtered_delivery['srcset'] ?? '', 'https://theme.invalid/assets/derived/card-fronts/br-002-768w.webp 768w' ) && str_contains( $filtered_delivery['srcset'] ?? '', $integrity_front['src'] . ' 1024w' ), 'A wrong-hash rendition must be excluded while valid absolute sizes and the absolute original remain available.' );
 $expected = array( 'br-002', 'br-005', 'kids-002', 'lh-003', 'sg-014' );
 $ghost_failures = array();
 foreach ( $expected as $sku ) {
@@ -73,7 +79,7 @@ foreach ( $expected as $sku ) {
 sort( $ghost_failures );
 sort( $expected );
 check_approved_front( $ghost_failures === $expected, 'The exact five PDP ghost-primary products must be covered.' );
-$fallback_products = array( 'br-001', 'br-003', 'br-004', 'br-007', 'br-011' );
+$fallback_products = array( 'br-003', 'br-011' );
 foreach ( $fallback_products as $sku ) {
 	$product = new WC_Product( $sku, 3000 + count( $fallback_products ) );
 	$front = skyyrose2_approved_card_front( $product );
@@ -105,4 +111,4 @@ check_approved_front( '<div>original ghost</div>' === skyyrose2_pdp_approved_gho
 $non_ghost = new WC_Product( 'br-002', 2001 );
 $GLOBALS['test_attachment_urls'][2001] = 'https://uploads.invalid/br-002-onmodel.webp';
 check_approved_front( '<div>existing view</div>' === skyyrose2_pdp_approved_ghost_front_html( '<div>existing view</div>', 2001, $non_ghost ), 'A non-ghost native view must remain unchanged.' );
-echo "PASS: 33 approved fronts hash-verified; exact five ghost primaries replaced; five approved PDP fallbacks use same-source responsive derivatives; mismatched SKUs and model views preserved.\n";
+echo "PASS: 30 active fronts hash-verified; three founder-conflicting fronts blocked; exact five ghost primaries replaced; two approved PDP fallbacks use same-source responsive derivatives; mismatched SKUs and model views preserved.\n";

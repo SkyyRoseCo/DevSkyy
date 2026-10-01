@@ -24,6 +24,10 @@ PRODUCT_REGISTRY = (
 FRONTEND_CATALOG_REPLICA = (
     Path(__file__).resolve().parents[2] / "frontend/data/skyyrose-catalog.csv"
 )
+V2_CARD_FRONT_PROJECTION = (
+    Path(__file__).resolve().parents[2]
+    / "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json"
+)
 # The real registry file, fixed at import. The replica belongs to it alone: a
 # caller (or test) that points PRODUCT_REGISTRY at a copy must never rewrite the
 # tracked dashboard replica from that copy.
@@ -67,6 +71,37 @@ def load_registry(path: Path | None = None) -> dict[str, Any]:
 def catalog_rows(path: Path | None = None) -> list[dict[str, str]]:
     raw = load_registry(path)
     return [_catalog_projection(p, raw["catalog_columns"]) for p in raw["products"].values()]
+
+
+def import_storefront_card_projection(projection: Path, path: Path | None = None) -> None:
+    """Move existing card bindings into the registry without changing product facts.
+
+    This is a source migration, not a visual approval. All existing rejection and
+    scoped approval metadata is retained verbatim. An existing canonical binding
+    cannot be overwritten by an older projection.
+    """
+    target = _registry_target(path)
+    raw = load_registry(target)
+    cards = json.loads(projection.read_text(encoding="utf-8"))
+    if cards.get("schema_version") != 1 or not isinstance(cards.get("authorization"), str):
+        raise ValueError("Invalid storefront card projection metadata")
+    records = cards.get("products")
+    if not isinstance(records, dict) or set(records) != set(raw["products"]):
+        raise ValueError("Storefront card projection must cover the exact registry SKU set")
+    for sku, record in records.items():
+        if not isinstance(record, dict) or not record.get("src") or not record.get("sha256"):
+            raise ValueError(f"Invalid storefront card binding: {sku}")
+        existing = raw["products"][sku].get("images", {}).get("card_front")
+        if existing is not None and existing != record:
+            raise ValueError(f"Canonical card binding conflicts with projection: {sku}")
+    metadata = {key: value for key, value in cards.items() if key != "products"}
+    if raw.get("storefront_card_manifest", metadata) != metadata:
+        raise ValueError("Canonical card metadata conflicts with projection")
+    for sku, record in records.items():
+        raw["products"][sku].setdefault("images", {})["card_front"] = record
+    raw["storefront_card_manifest"] = metadata
+    _atomic_write(target, json.dumps(raw, ensure_ascii=False, indent=2) + "\n")
+    export_compatibility(target)
 
 
 def _catalog_projection(product: dict[str, Any], columns: list[str]) -> dict[str, str]:
@@ -371,6 +406,26 @@ def _compatibility_outputs(raw: dict[str, Any], target: Path) -> dict[Path, str]
     outputs = {target.parent / "skyyrose-catalog.csv": stream.getvalue()}
     if target == _CANONICAL_REGISTRY:
         outputs[FRONTEND_CATALOG_REPLICA] = stream.getvalue()
+        card_manifest = raw.get("storefront_card_manifest")
+        if card_manifest is not None:
+            if not isinstance(card_manifest, dict):
+                raise ValueError("Storefront card metadata must be an object")
+            card_fronts = {}
+            for sku, product in raw["products"].items():
+                front = product.get("images", {}).get("card_front")
+                if not isinstance(front, dict):
+                    raise ValueError(f"Missing registry-owned card front for {sku}")
+                card_fronts[sku] = front
+            projection = {
+                "schema_version": card_manifest["schema_version"],
+                "authorization": card_manifest["authorization"],
+                "products": card_fronts,
+            }
+            if "card_treatment_approval" in card_manifest:
+                projection["card_treatment_approval"] = card_manifest["card_treatment_approval"]
+            outputs[V2_CARD_FRONT_PROJECTION] = (
+                json.dumps(projection, ensure_ascii=False, indent=2) + "\n"
+            )
     for product in raw["products"].values():
         dossier = product["dossier"]
         slug = dossier["slug"]
