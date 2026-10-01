@@ -197,8 +197,8 @@
     "demo:showroom": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=showroom",
     "demo:runway": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=runway",
     "test:collections": "vitest run --config config/testing/vitest.config.ts src/collections",
-    "test:theme-analytics": "node --test wordpress-theme/skyyrose-flagship/tests/analytics/consent.test.cjs && php wordpress-theme/skyyrose-flagship/tests/analytics/relay.php && php wordpress-theme/skyyrose-flagship/tests/analytics/cache-version.php && php wordpress-theme/skyyrose-flagship/tests/analytics/cache-version.php debug && php wordpress-theme/skyyrose-flagship/tests/analytics/summary.php",
-    "test:theme-analytics:browser": "node --test wordpress-theme/skyyrose-flagship/tests/analytics/browser-consent.test.cjs"
+    "test:theme-analytics": "node --test wordpress-theme/skyyrose-flagship/tests/analytics/consent.test.cjs && php wordpress-theme/skyyrose-flagship/tests/analytics/relay.php && php wordpress-theme/skyyrose-flagship/tests/analytics/cache-version.php && php wordpress-theme/skyyrose-flagship/tests/analytics/cache-version.php debug && php wordpress-theme/skyyrose-flagship/tests/analytics/summary.php && python3 wordpress-theme/skyyrose-flagship-2/scripts/sync-analytics.py --check && python3 wordpress-theme/skyyrose-flagship-2/tests/analytics/test_sync_analytics.py && node --test wordpress-theme/skyyrose-flagship-2/tests/analytics/consent.test.cjs && php wordpress-theme/skyyrose-flagship-2/tests/analytics/relay.php && php wordpress-theme/skyyrose-flagship-2/tests/analytics/bootstrap.php",
+    "test:theme-analytics:browser": "node --test wordpress-theme/skyyrose-flagship/tests/analytics/browser-consent.test.cjs && node --test wordpress-theme/skyyrose-flagship-2/tests/analytics/browser-consent.test.cjs"
   },
   "repository": {
     "type": "git",
