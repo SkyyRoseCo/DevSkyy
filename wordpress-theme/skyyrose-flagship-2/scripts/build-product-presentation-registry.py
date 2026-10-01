@@ -41,13 +41,15 @@ def build_registry() -> dict[str, object]:
     for sku, product in manifest["products"].items():
         current_record = get_product(sku)
         current = current_record["catalog"]
-        # Approval bindings remain editable only in the product registry. This is
-        # a projection, never a candidate/heuristic promotion path.
+        # Current registry bytes identify this projection, not an asset approval.
+        # Real assets stay held until an approval contract binds the approved
+        # founder facts without a circular whole-registry self-hash. Never stamp
+        # an old binding with a new digest and imply that it was reapproved.
         binding = current_record["asset_library"].get("accepted_glb_runtime")
         if binding is not None:
-            if not isinstance(binding, dict) or binding.get("sku") != sku:
-                raise ValueError(f"Invalid accepted GLB registry binding for {sku}")
-            accepted_glbs.append({**binding, "registry_sha256": registry_digest})
+            raise ValueError(
+                f"Accepted GLB binding for {sku} requires a reviewed product-source approval contract"
+            )
         collection = current["collection"]
         if not sku or sku in products:
             raise ValueError(f"Product SOT contains an empty or duplicate SKU: {sku!r}")
