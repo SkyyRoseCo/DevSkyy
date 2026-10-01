@@ -612,7 +612,6 @@ def test_report_auth_route_timestamp_site_and_mode_negatives(accounting, failure
         headers["X-Report-Signature"] = "0" * 64
     elif failure == "wrong-route":
         path = path.replace("fixture-grant", "different-grant")
-        expected = 403
     else:
         path += "?evidence_mode=AUTHENTICATED&owner_accepted=true"
         expected = 400
@@ -675,3 +674,35 @@ assert "skyyrose.elite_studio.creative.runway_paid_transport" not in sys.modules
         timeout=20,
     )
     assert result.returncode == 0, result.stderr
+
+
+@pytest.mark.parametrize("headers_mode", ["missing", "invalid"])
+def test_unauthenticated_report_cannot_discover_allowed_scopes(
+    accounting, monkeypatch, headers_mode
+):
+    client, allowed, headers, _ = report_client(accounting)
+    monkeypatch.setattr(
+        ReadOnlyLedger, "__init__", lambda *a, **k: pytest.fail("Unauthenticated ledger read")
+    )
+    headers = {} if headers_mode == "missing" else {**headers, "X-Report-Signature": "0" * 64}
+    known = client.get(allowed, headers=headers)
+    unknown = client.get(allowed.replace("fixture-grant", "unknown-grant"), headers=headers)
+    assert known.status_code == unknown.status_code == 401
+    assert known.json() == unknown.json()
+
+
+def test_authenticated_report_still_denies_ungranted_scope(accounting, monkeypatch):
+    client, path, headers, config = report_client(accounting)
+    path = path.replace("fixture-grant", "unknown-grant")
+    headers["X-Report-Signature"] = report_signature(
+        config.authentication_key,
+        timestamp=headers["X-Report-Timestamp"],
+        path=path,
+        site_id=config.site_id,
+    )
+    monkeypatch.setattr(
+        ReadOnlyLedger, "__init__", lambda *a, **k: pytest.fail("Unauthorized ledger read")
+    )
+    response = client.get(path, headers=headers)
+    assert response.status_code == 403
+    assert response.json() == {"detail": "Report scope denied"}
