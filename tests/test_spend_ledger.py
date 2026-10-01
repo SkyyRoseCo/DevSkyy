@@ -50,7 +50,7 @@ def reserve(ledger, operation_id="op1", **changes):
         stage="PROBE",
         maximum={"usd": "2", "renders": "1"},
         reason="Synthetic probe",
-        contract_digest="synthetic-contract-sha",
+        contract_digest="a" * 64,
         metadata={"contract": {"version": 1}},
     )
     return ledger.reserve(operation_id, **(defaults | changes))
@@ -372,7 +372,7 @@ def test_explicit_signed_override_needs_new_grant_and_preserves_stop(setup):
 def test_provider_identity_cannot_change_during_recovery(setup):
     ledger, *_ = setup
     reserve(ledger)
-    with pytest.raises(LedgerError, match="nonempty"):
+    with pytest.raises(LedgerError, match="bounded report identity"):
         ledger.mark_submitted("op1", provider_operation_id="")
     ledger.mark_submitted("op1")
     ledger.record_outcome("op1", "PROVIDER_RUNNING", provider_operation_id="provider-original")
@@ -425,3 +425,44 @@ def test_identical_review_replay_can_add_missing_stop(setup):
     assert ledger.report("g1")["stop_reason"] == "Goal answered"
     with pytest.raises(SpendDenied):
         reserve(ledger, "op2")
+
+
+@pytest.mark.parametrize(
+    "changes",
+    [
+        {"contract_digest": "synthetic-contract-sha"},
+        {"contract_digest": "A" * 64},
+        {"grant_id": "bad/grant"},
+        {"job_id": "bad job"},
+        {"parent_operation_id": "bad/parent"},
+    ],
+)
+def test_reservation_rejects_unreportable_schema_before_append(setup, changes):
+    ledger, *_ = setup
+    before = ledger.checkpoint()
+    with pytest.raises(LedgerError):
+        reserve(ledger, **changes)
+    assert ledger.checkpoint() == before
+
+
+def test_operation_and_provider_id_report_constraints_are_enforced(setup):
+    ledger, authority, _, _, key = setup
+    before = ledger.checkpoint()
+    with pytest.raises(LedgerError):
+        reserve(ledger, "bad/operation")
+    assert ledger.checkpoint() == before
+    reserve(ledger)
+    with pytest.raises(LedgerError):
+        ledger.mark_submitted("op1", "https://provider/private")
+    ledger.mark_submitted("op1")
+    before = ledger.checkpoint()
+    with pytest.raises(LedgerError):
+        ledger.record_outcome("op1", "COMPLETED", provider_operation_id="bad task")
+    assert ledger.checkpoint() == before
+    ledger.record_outcome("op1", "COMPLETED", provider_operation_id="valid-task")
+    from skyyrose.elite_studio.creative.governor_reporting import ReadOnlyLedger
+
+    report = ReadOnlyLedger(
+        ledger.database, authority.public_key, key, minimum_checkpoint=ledger.checkpoint()
+    ).report(job_id="job", grant_id="g1")
+    assert report["operations"][0]["contract_id"] == "a" * 64

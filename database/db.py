@@ -462,6 +462,16 @@ class DatabaseManager:
         # Create tables
         async with self._engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
+            if is_sqlite:
+                # SQLite development has no PostgreSQL migration runner. Create
+                # only the isolated event table, never its reference-only users anchor.
+                from api.v1.analytics.event_store import StorefrontAnalyticsEvent
+
+                await conn.run_sync(
+                    lambda connection: StorefrontAnalyticsEvent.__table__.create(
+                        connection, checkfirst=True
+                    )
+                )
 
         # Never log URL userinfo or query parameters: both can hold credentials.
         logger.info(

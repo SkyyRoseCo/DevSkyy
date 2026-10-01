@@ -117,3 +117,36 @@ class TestAsyncDatabaseUrlNormalization:
             _normalize_async_url("sqlite+aiosqlite:///./devskyy.db")
             == "sqlite+aiosqlite:///./devskyy.db"
         )
+
+
+async def test_sqlite_startup_provisions_isolated_analytics_and_preserves_users(monkeypatch):
+    from sqlalchemy import inspect, select
+
+    from api.v1.analytics.event_store import StorefrontAnalyticsEvent
+
+    monkeypatch.setenv("ENVIRONMENT", "development")
+    manager = DatabaseManager()
+    await manager.initialize(DatabaseConfig(url="sqlite+aiosqlite:///:memory:"))
+    try:
+        async with manager._engine.begin() as connection:
+            tables = await connection.run_sync(lambda c: inspect(c).get_table_names())
+            columns = await connection.run_sync(lambda c: inspect(c).get_columns("users"))
+        assert "analytics_events" in tables
+        assert {c["name"] for c in columns} >= {"id", "email", "username"}
+        async with manager._session_factory() as session:
+            row = StorefrontAnalyticsEvent(
+                event_type="test", event_name="fixture", source="synthetic"
+            )
+            session.add(row)
+            await session.commit()
+            assert (
+                await session.execute(select(StorefrontAnalyticsEvent))
+            ).scalar_one().id == row.id
+        # Repeated startup is idempotent and leaves the persisted event accessible.
+        await manager.initialize(DatabaseConfig(url="sqlite+aiosqlite:///:memory:"))
+        async with manager._session_factory() as session:
+            assert (
+                await session.execute(select(StorefrontAnalyticsEvent))
+            ).scalar_one().event_name == "fixture"
+    finally:
+        await manager.close()

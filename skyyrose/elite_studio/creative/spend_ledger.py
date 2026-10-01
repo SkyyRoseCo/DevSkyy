@@ -13,6 +13,7 @@ import base64
 import hashlib
 import hmac
 import json
+import re
 import sqlite3
 from collections.abc import Callable, Iterator, Mapping
 from contextlib import closing, contextmanager
@@ -52,6 +53,17 @@ class LedgerError(ValueError):
 
 class SpendDenied(LedgerError):
     """No new paid action is authorized."""
+
+
+IDENTIFIER_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$")
+DIGEST_PATTERN = re.compile(r"^[0-9a-f]{64}$")
+
+
+def identifier(value: object) -> str:
+    """Validate the identity shared by durable records and safe reports."""
+    if not isinstance(value, str) or not IDENTIFIER_PATTERN.fullmatch(value):
+        raise LedgerError("Invalid bounded report identity")
+    return value
 
 
 def _json(value: object) -> str:
@@ -242,6 +254,8 @@ class SpendLedger:
             for k in ("grant_id", "job_id", "issued_by")
         ):
             raise LedgerError("Invalid immutable grant schema")
+        identifier(value["grant_id"])
+        identifier(value["job_id"])
         for key in ("providers", "purposes"):
             if (
                 not value[key]
@@ -464,6 +478,12 @@ class SpendLedger:
         )
         if not all(isinstance(value, str) and value.strip() for value in strings):
             raise SpendDenied("Operation scope, reason and immutable contract required")
+        for value in (operation_id, grant_id, job_id):
+            identifier(value)
+        if parent_operation_id is not None:
+            identifier(parent_operation_id)
+        if not DIGEST_PATTERN.fullmatch(contract_digest):
+            raise SpendDenied("Contract digest must be lowercase SHA-256 hexadecimal")
         maximum = _usage(maximum, self.supported_units)
         if not any(Decimal(value) > 0 for value in maximum.values()):
             raise SpendDenied("Paid reservation must declare nonzero bounded usage")
@@ -552,10 +572,8 @@ class SpendLedger:
 
     def mark_submitted(self, operation_id: str, provider_operation_id: str | None = None) -> dict:
         """Commit SUBMITTED before external invocation. Repeat invocation is denied."""
-        if provider_operation_id is not None and (
-            not isinstance(provider_operation_id, str) or not provider_operation_id.strip()
-        ):
-            raise LedgerError("Provider operation ID must be nonempty when known")
+        if provider_operation_id is not None:
+            identifier(provider_operation_id)
         with self._transaction() as (connection, state):
             operation = state["operations"][operation_id]
             self._active(state, operation["grant_id"], operation["job_id"])
@@ -586,10 +604,8 @@ class SpendLedger:
         evidence: dict | None = None,
     ) -> dict:
         """Failure/cancellation remains billable until authoritative reconciliation."""
-        if provider_operation_id is not None and (
-            not isinstance(provider_operation_id, str) or not provider_operation_id.strip()
-        ):
-            raise LedgerError("Provider operation ID must be nonempty when known")
+        if provider_operation_id is not None:
+            identifier(provider_operation_id)
         if outcome not in TERMINAL | {"PROVIDER_RUNNING", "RECONCILIATION_REQUIRED"}:
             raise LedgerError("Unsupported provider outcome")
         with self._transaction() as (connection, state):

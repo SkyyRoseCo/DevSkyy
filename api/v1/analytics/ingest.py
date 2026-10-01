@@ -318,6 +318,9 @@ async def capture_paid_order(
     The unsigned source header constrains identity; signature verification proves
     the configured webhook secret. Live account/secret qualification is separate.
     """
+    paid_at = order.get("date_paid_gmt")
+    if order.get("status") not in {"processing", "completed"} or not paid_at:
+        return {"status": "skipped", "reason": "no_verified_paid_order"}
     try:
         settings = get_analytics_settings()
     except HTTPException:
@@ -327,9 +330,6 @@ async def capture_paid_order(
         return {"status": "unavailable", "reason": "analytics_site_url_not_configured"}
     if canonical_site_origin(source_url or "") != intended:
         return {"status": "unavailable", "reason": "webhook_site_mismatch"}
-    paid_at = order.get("date_paid_gmt")
-    if order.get("status") not in {"processing", "completed"} or not paid_at:
-        return {"status": "skipped", "reason": "no_verified_paid_order"}
     try:
         order_id = order["id"]
         if isinstance(order_id, bool) or not isinstance(order_id, int) or order_id <= 0:
