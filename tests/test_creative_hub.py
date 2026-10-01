@@ -94,65 +94,22 @@ class TestCreativeOperationState:
 
 
 class TestEntryNode:
-    def test_valid_intent_passes(self):
+    @pytest.mark.parametrize(
+        "intent,params",
+        [
+            ("design-ideation", {"approved": True}),
+            ("not-a-real-intent", {}),
+            ("product-render", {"spend_authorized": True}),
+            ("design-ideation", {"governor_context": {"authorized": True}}),
+        ],
+    )
+    def test_entry_denies_caller_authority(self, intent, params):
         from skyyrose.elite_studio.creative.nodes import entry_node
 
-        state = {
-            "intent": "design-ideation",
-            "sku": "",
-            "params": {"garment_type": "hoodie", "collection": "black-rose"},
-            "stage_timings": {},
-            "status": "running",
-        }
-        result = entry_node(state)
-        assert result.get("status") != "error"
-        assert "stage_timings" in result
-        assert "entry" in result["stage_timings"]
-
-    def test_invalid_intent_sets_error(self):
-        from skyyrose.elite_studio.creative.nodes import entry_node
-
-        state = {
-            "intent": "not-a-real-intent",
-            "sku": "",
-            "params": {},
-            "stage_timings": {},
-            "status": "running",
-        }
-        result = entry_node(state)
+        result = entry_node({"intent": intent, "sku": "synthetic", "params": params})
         assert result["status"] == "error"
-        assert "Unknown intent" in result["error"]
-
-    def test_entry_node_builds_fashion_context_for_sku(self):
-        from skyyrose.elite_studio.creative.nodes import entry_node
-
-        state = {
-            "intent": "product-render",
-            "sku": "br-001",
-            "params": {},
-            "stage_timings": {},
-            "status": "running",
-        }
-        result = entry_node(state)
-        # Should not be an error — context build may succeed or warn
-        assert "stage_timings" in result
-
-    def test_entry_node_builds_fashion_context_from_params(self):
-        from skyyrose.elite_studio.creative.nodes import entry_node
-
-        state = {
-            "intent": "design-ideation",
-            "sku": "",
-            "params": {"garment_type": "jersey", "collection": "black-rose"},
-            "stage_timings": {},
-            "status": "running",
-        }
-        result = entry_node(state)
-        assert result.get("status") != "error"
-        if result.get("fashion_context"):
-            ctx = result["fashion_context"]
-            assert "garment_type" in ctx
-            assert "color_palette" in ctx
+        assert result["error_code"] == "PAID_GOVERNOR_REQUIRED"
+        assert result["provider_called"] is False
 
 
 # ---------------------------------------------------------------------------
@@ -293,49 +250,13 @@ class TestProductCopyNode:
 
 
 class TestDesignIdeationNode:
-    def test_generates_design_concept(self):
+    @pytest.mark.parametrize("params", [{}, {"approved": True}])
+    def test_unqualified_design_path_denied(self, params):
         from skyyrose.elite_studio.creative.nodes import design_ideation_node
 
-        state = {
-            "intent": "design-ideation",
-            "sku": "",
-            "params": {
-                "collection": "black-rose",
-                "garment_type": "hoodie",
-                "design_intent": "Gothic luxury hoodie",
-                "target_price_usd": 65.0,
-            },
-            "fashion_context": None,
-            "stage_timings": {},
-        }
-        result = design_ideation_node(state)
-        assert result.get("design_result") is not None
-        design = result["design_result"]
-        assert design["success"] is True
-        assert design["concept_id"] != ""
-        assert len(design["generation_prompt"]) > 20
-
-    def test_design_contains_collection_dna(self):
-        from skyyrose.elite_studio.creative.nodes import design_ideation_node
-
-        state = {
-            "intent": "design-ideation",
-            "sku": "",
-            "params": {
-                "collection": "love-hurts",
-                "garment_type": "joggers",
-                "design_intent": "Crimson passion joggers",
-                "target_price_usd": 95.0,
-            },
-            "fashion_context": None,
-            "stage_timings": {},
-        }
-        result = design_ideation_node(state)
-        design = result.get("design_result", {})
-        assert design.get("success") is True
-        # Colorway should include crimson or love hurts colors
-        colorway = design.get("colorway_hex", [])
-        assert len(colorway) >= 1
+        result = design_ideation_node({"intent": "design-ideation", "params": params})
+        assert result["error_code"] == "PAID_GOVERNOR_REQUIRED"
+        assert result["provider_called"] is False
 
 
 # ---------------------------------------------------------------------------
@@ -344,27 +265,12 @@ class TestDesignIdeationNode:
 
 
 class TestCollectionPlanNode:
-    def test_generates_collection_plan(self):
+    def test_unqualified_collection_path_denied(self):
         from skyyrose.elite_studio.creative.nodes import collection_plan_node
 
-        state = {
-            "intent": "collection-plan",
-            "sku": "",
-            "params": {
-                "collection": "signature",
-                "season": "FW26",
-                "theme": "West Coast elevation",
-            },
-            "fashion_context": None,
-            "stage_timings": {},
-        }
-        result = collection_plan_node(state)
-        assert result.get("collection_plan_result") is not None
-        plan = result["collection_plan_result"]
-        assert plan["success"] is True
-        assert plan["collection"] == "signature"
-        assert len(plan["hero_pieces"]) > 0
-        assert len(plan["launch_sequence"]) > 0
+        result = collection_plan_node({"intent": "collection-plan", "params": {"approved": True}})
+        assert result["error_code"] == "PAID_GOVERNOR_REQUIRED"
+        assert result["provider_called"] is False
 
 
 # ---------------------------------------------------------------------------
