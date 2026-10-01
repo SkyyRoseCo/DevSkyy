@@ -17,25 +17,28 @@ production scope is the V2 WordPress storefront with native WooCommerce and
 existing approved media. Production acceptance remains a separate gate from
 source checks, CI, packaging, and staging qualification.
 
-| Surface                                                             | Implementation                                        | Verified state at the documented snapshot                                      |
-| ------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------ |
-| [Customer site](https://skyyrose.co)                                | WordPress.com, WooCommerce, `skyyrose-flagship` V1    | V1 remains active; scoped V2 cutover has not been dispatched                   |
-| [Existing staging](https://staging-7e48-skyyrose.wpcomstaging.com/) | `wordpress-theme/skyyrose-flagship-2/`, version 2.5.0 | Reviewed V2 ZIP installed; all 599 installed file hashes matched               |
-| Agent dashboard                                                     | Next.js 16, React 19, `frontend/`                     | Integrated source; dashboard/Fly deployment is outside this storefront cutover |
-| API and creative operations                                         | FastAPI, Python, `main_enterprise.py`, `skyyrose/`    | Integrated source; API/Governor/provider execution is outside this cutover     |
+| Surface                                                             | Implementation                                        | Verified state at the documented snapshot                                                                               |
+| ------------------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [Customer site](https://skyyrose.co)                                | WordPress.com, WooCommerce, `skyyrose-flagship` V1    | V1 remains active; inactive V2 install command returned exit 0, with actual readback pending and subsequent writes held |
+| [Existing staging](https://staging-7e48-skyyrose.wpcomstaging.com/) | `wordpress-theme/skyyrose-flagship-2/`, version 2.5.0 | Reviewed V2 ZIP installed; all 599 installed file hashes matched                                                        |
+| Agent dashboard                                                     | Next.js 16, React 19, `frontend/`                     | Integrated source; dashboard/Fly deployment is outside this storefront cutover                                          |
+| API and creative operations                                         | FastAPI, Python, `main_enterprise.py`, `skyyrose/`    | Integrated source; API/Governor/provider execution is outside this cutover                                              |
 
 The final procedure and acceptance-source review passed. Exact-head CI has **21
 mandatory successful checks and six intentional skips**; the single targeted
 Playwright retry passed all **62 tests** (31 Chromium, 31 mobile), with no
 failed, skipped, or flaky tests. Final combined review passed and the
-coordinator issued `CLEAR_TO_EXECUTE_SCOPED_CUTOVER`. This is pre-execution
-clearance: immediate precondition guards must pass before each mutation. At the
-16:09 UTC snapshot, production remains V1, application has not been dispatched,
-and no `DEPLOYED` or `PRODUCTION_ACCEPTED` result exists. Read
+coordinator issued `CLEAR_TO_EXECUTE_SCOPED_CUTOVER`, conditional on immediate
+precondition guards. At the **16:11 UTC snapshot**, scoped execution has begun:
+the inactive V2 installation command returned exit 0, but actual installed-file
+and V1-preservation readbacks remain pending. Production remains on V1;
+subsequent writes are held while outcome verification and precondition
+classification are reviewed. No page, MU, or activation writes, `DEPLOYED`, or
+`PRODUCTION_ACCEPTED` result is recorded. Read
 [current production status](docs/PRODUCTION_STATUS.md) for dated evidence
 identities, scope, and remaining gates, and the [runbook](docs/RUNBOOK.md) for
-the ordered operator procedure. Source CI and execution clearance are separate
-from production acceptance.
+the ordered operator procedure. Source CI, conditional execution clearance,
+command completion, and production acceptance are separate states.
 
 ## Local setup
 

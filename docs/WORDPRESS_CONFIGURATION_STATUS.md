@@ -12,11 +12,11 @@ runtime.
 
 ## Targets and theme state
 
-| Target                                                             | Captured state                                                                            | Boundary                                                     |
-| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| Production `https://skyyrose.co`                                   | Active stylesheet `skyyrose-flagship` V1                                                  | V2 cutover not dispatched at the current snapshot            |
-| Existing staging `https://staging-7e48-skyyrose.wpcomstaging.com/` | Active `skyyrose-flagship-2` V2 2.5.0; reviewed ZIP installed and 599 file hashes matched | Staging qualification is separate from production acceptance |
-| Platform versions                                                  | WordPress 7.1.2, WooCommerce 11.1.2, PHP 8.4.26                                           | Authenticated captured versions; recheck for hosting drift   |
+| Target                                                             | Captured state                                                                            | Boundary                                                                                                                  |
+| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Production `https://skyyrose.co`                                   | Active stylesheet `skyyrose-flagship` V1                                                  | Captured pre-activation V1 baseline; current cutover progress is recorded in [PRODUCTION_STATUS.md](PRODUCTION_STATUS.md) |
+| Existing staging `https://staging-7e48-skyyrose.wpcomstaging.com/` | Active `skyyrose-flagship-2` V2 2.5.0; reviewed ZIP installed and 599 file hashes matched | Staging qualification is separate from production acceptance                                                              |
+| Platform versions                                                  | WordPress 7.1.2, WooCommerce 11.1.2, PHP 8.4.26                                           | Authenticated captured versions; recheck for hosting drift                                                                |
 
 WordPress.com provides the native hosting/cache layer. Site identity comes from
 actual authenticated target/readback evidence; an available credential or public

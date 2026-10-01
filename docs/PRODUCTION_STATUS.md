@@ -1,6 +1,6 @@
 # Current production status and release boundaries
 
-**Last updated:** 2026-10-01. **Evidence snapshot:** 2026-10-01 16:09 UTC,
+**Last updated:** 2026-10-01. **Evidence snapshot:** 2026-10-01 16:11 UTC,
 recorded from the latest coordinator update. **Operational source:**
 `a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
@@ -12,17 +12,17 @@ the frozen operational source and does not rebuild the approved package.
 
 ## What is established
 
-| Gate or surface                 | Observed result                                                                                           | Evidence limit                                                                                                                                      |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Five workstreams                | Scoped source adopted and integrated                                                                      | The adoption manifest includes open inventory, asset/device, policy, and Governor runtime holds                                                     |
-| Functional source               | Frozen at `299f694702ac2dcc61a0f30aa34e4b3ef12f9118`                                                      | Local tests are bounded integration evidence                                                                                                        |
-| Clean V2 package                | Source `5950592d922706dd67fc0320e8c5f3dc005a47b7`; repeat bytes and installed-file checks passed          | Packaging does not establish live production behavior                                                                                               |
-| Existing staging                | V2 2.5.0 installed; all 599 reviewed file hashes matched                                                  | Staging has 220 product/variation records; it cannot establish parity with production's 33 simple products                                          |
-| Production                      | `https://skyyrose.co`, active V1 `skyyrose-flagship`                                                      | V2 cutover has not been dispatched                                                                                                                  |
-| Procedure and acceptance inputs | Independent source/freeze review passed; 30 offline tests and Ruff/Black/mypy passed independently        | Offline/localhost checks have no authenticated production acceptance scope                                                                          |
-| Exact operational-head CI       | `CI_PASS`: 21 mandatory successful checks, 6 intentional skips, no pending/failure/cancellation           | Single targeted Playwright retry: 62 passed (31 Chromium, 31 mobile), 0 failed/skipped/flaky; source CI is separate from production acceptance      |
-| Execution clearance             | `FINAL_COMBINED_CLEARANCE_PASS`, architect PASS, and coordinator `CLEAR_TO_EXECUTE_SCOPED_CUTOVER` issued | Pre-execution clearance only; immediate target/preimage/ownership guards must pass before each mutation. Application not dispatched at the snapshot |
-| Production V2 acceptance        | Not executed                                                                                              | Requires actual installation, V1 Search checkpoint, V2 deployment/readback, six browser profiles, and independent actual-evidence review            |
+| Gate or surface                 | Observed result                                                                                           | Evidence limit                                                                                                                                     |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Five workstreams                | Scoped source adopted and integrated                                                                      | The adoption manifest includes open inventory, asset/device, policy, and Governor runtime holds                                                    |
+| Functional source               | Frozen at `299f694702ac2dcc61a0f30aa34e4b3ef12f9118`                                                      | Local tests are bounded integration evidence                                                                                                       |
+| Clean V2 package                | Source `5950592d922706dd67fc0320e8c5f3dc005a47b7`; repeat bytes and installed-file checks passed          | Packaging does not establish live production behavior                                                                                              |
+| Existing staging                | V2 2.5.0 installed; all 599 reviewed file hashes matched                                                  | Staging has 220 product/variation records; it cannot establish parity with production's 33 simple products                                         |
+| Production                      | `https://skyyrose.co`, active V1 `skyyrose-flagship`                                                      | Inactive V2 install command has run; actual installed-file/V1-preservation readback pending. No V2 activation or `DEPLOYED` receipt                |
+| Procedure and acceptance inputs | Independent source/freeze review passed; 30 offline tests and Ruff/Black/mypy passed independently        | Offline/localhost checks have no authenticated production acceptance scope                                                                         |
+| Exact operational-head CI       | `CI_PASS`: 21 mandatory successful checks, 6 intentional skips, no pending/failure/cancellation           | Single targeted Playwright retry: 62 passed (31 Chromium, 31 mobile), 0 failed/skipped/flaky; source CI is separate from production acceptance     |
+| Execution clearance             | `FINAL_COMBINED_CLEARANCE_PASS`, architect PASS, and coordinator `CLEAR_TO_EXECUTE_SCOPED_CUTOVER` issued | Conditional immediate guards remain required. Inactive installation begun; all subsequent mutations held for read-only outcome/precondition review |
+| Production V2 acceptance        | Not executed                                                                                              | No `DEPLOYED` or `PRODUCTION_ACCEPTED`; actual installation/readback, V1 Search checkpoint, activation, and six-profile acceptance remain required |
 
 The cancelled Playwright job is `110435542010` in CI run `36880002499` on exact
 `a662e707…`. Its preserved complete log records about 16 minutes in checkout, 3
@@ -58,14 +58,28 @@ actual target identity. The coordinator's durable
 acceptance/procedure conditions and sends the sole writer the reviewed execution
 signal within the existing human scope.
 
-This is **pre-execution clearance**. Immediate authenticated target, source,
-artifact, option/page preimage, native configuration, and ownership guards must
-pass before each mutation. At the **16:09 UTC snapshot**, production remains V1,
-application has not been dispatched, and neither `DEPLOYED` nor
-`PRODUCTION_ACCEPTED` has been established. Any changed or unknown precondition
-stops mutation for read-only reconciliation under the reviewed stop/recovery
-rules. Source CI and the execution signal are separate from actual production
-browser acceptance.
+The receipt supplies **conditional scoped execution clearance**, not proof of
+installation or live V2 acceptance. Immediate authenticated target, source,
+artifact, option/page preimage, native configuration, and ownership guards
+remain required before each mutation.
+
+At **16:10:54 UTC**, integration reported that the first inactive V2 ZIP
+installation had been dispatched under that clearance before the coordinator's
+hold message arrived. The command returned **exit 0**. At the **16:11 UTC
+snapshot**, actual verification of all 599 installed file hashes and
+preservation of active V1 remains pending. Command completion does not establish
+an accepted installation. Outcome verification and read-only precondition
+classification are under review; **all subsequent mutations are held**. No page,
+MU, or activation writes have been reported. V1 remains active, and neither
+`DEPLOYED` nor `PRODUCTION_ACCEPTED` is established.
+
+The original `production-inactive-v2-install-intent.json` and
+`production-inactive-v2-install-attempt.json` are retained in the production
+final pass evidence folder without rewriting earlier records. Any changed or
+unknown precondition stops the next mutation for read-only reconciliation under
+the reviewed stop/recovery rules. Source CI, conditional clearance, command
+outcome, verified installation, deployment, and actual production browser
+acceptance remain separate evidence states.
 
 The authenticated target snapshots report WordPress **7.1.2**, WooCommerce
 **11.1.2**, and PHP **8.4.26** on production and existing staging. These are
@@ -90,6 +104,8 @@ them with the site identity immediately before execution.
 | Procedure/source review receipt                 | `cd7d6b16d322dd2ab7ecec19be9f2ff3fff72663aa5a4876be56b5a67647e2ff` |
 | Final exact-head CI receipt                     | `23c467bf8dbde980ab3c22f95f84d324cbdf72acac3368bed37c031289d5eeb4` |
 | Scoped pre-execution clearance receipt          | `4f90c881ea90674736aa8828e50a34f27f1c604903f9ac6b32d19803149ba286` |
+| Inactive V2 installation intent                 | `db924ba569058bb1a2f961756229e919c521270d2c701f9a8ee03f0cdf94c9a6` |
+| Inactive V2 command-attempt receipt             | `317bcbe7625e1a6c9a32dcf790167585f3a1802d82da5ca269b686ea3abc5f9a` |
 
 The Search extension is a separate artifact; it does not change the V2 ZIP.
 Recomputing hashes of changed files cannot approve a successor. Match the
