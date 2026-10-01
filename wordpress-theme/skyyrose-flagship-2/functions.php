@@ -1388,13 +1388,14 @@ function skyyrose2_is_transaction_preorder_product( $product ) {
 
 /**
  * Let WooCommerce render and clear the selected option's status natively.
+ *
  * @param array      $data Native variation response.
- * @param WC_Product $parent Parent product.
+ * @param WC_Product $parent_product Parent product.
  * @param WC_Product $variation Selected variation.
  * @return array
  */
-function skyyrose2_preorder_variation_display( $data, $parent, $variation ) {
-	$label = skyyrose2_is_transaction_preorder_product( $variation ) ? __( 'Pre-order option. Full payment at checkout.', 'skyyrose-flagship-2' ) : __( 'Standard order option.', 'skyyrose-flagship-2' );
+function skyyrose2_preorder_variation_display( $data, $parent_product, $variation ) {
+	$label                     = skyyrose2_is_transaction_preorder_product( $variation ) ? __( 'Pre-order option. Full payment at checkout.', 'skyyrose-flagship-2' ) : __( 'Standard order option.', 'skyyrose-flagship-2' );
 	$data['availability_html'] = ( $data['availability_html'] ?? '' ) . '<p class="sr2-variation-order-status" role="status">' . esc_html( $label ) . '</p>';
 	return $data;
 }
