@@ -1,165 +1,171 @@
 # DevSkyy
 
-**AI-driven luxury fashion e-commerce platform for the SkyyRose brand.**
+**AI-driven luxury fashion commerce and creative operations for SkyyRose.**
 
-[![CI](https://github.com/The-Skyy-Rose-Collection-LLC/DevSkyy/actions/workflows/ci.yml/badge.svg)](https://github.com/The-Skyy-Rose-Collection-LLC/DevSkyy/actions)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![TypeScript 5.0+](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/SkyyRoseCo/DevSkyy/actions/workflows/ci.yml/badge.svg)](https://github.com/SkyyRoseCo/DevSkyy/actions)
+[![Python 3.12–3.14](https://img.shields.io/badge/python-3.12%E2%80%933.14-blue.svg)](https://www.python.org/downloads/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Luxury Grows from Concrete.** — [skyyrose.co](https://skyyrose.co)
+**Last updated:** 2026-10-01. Source baseline:
+`a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
----
+## Current release state
 
-## Production
+The five workstreams are integrated into a frozen candidate. The current
+production scope is the V2 WordPress storefront with native WooCommerce and
+existing approved media. Production acceptance remains a separate gate from
+source checks, CI, packaging, and staging qualification.
 
-| Surface             | URL                                                  | Stack                                             |
-| ------------------- | ---------------------------------------------------- | ------------------------------------------------- |
-| **Customer site**   | [skyyrose.co](https://skyyrose.co)                   | WordPress · WooCommerce · SkyyRose Flagship theme |
-| **Agent dashboard** | [devskyy.app](https://devskyy.app)                   | Next.js 16 · React 19 · Vercel                    |
-| **API**             | [api.devskyy.app](https://api.devskyy.app)           | FastAPI · Python 3.11+ · Docker                   |
-| **API Docs**        | [api.devskyy.app/docs](https://api.devskyy.app/docs) | OpenAPI                                           |
+| Surface                                                             | Implementation                                        | Verified state at the documented snapshot                                      |
+| ------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [Customer site](https://skyyrose.co)                                | WordPress.com, WooCommerce, `skyyrose-flagship` V1    | V1 remains active; scoped V2 cutover has not been dispatched                   |
+| [Existing staging](https://staging-7e48-skyyrose.wpcomstaging.com/) | `wordpress-theme/skyyrose-flagship-2/`, version 2.5.0 | Reviewed V2 ZIP installed; all 599 installed file hashes matched               |
+| Agent dashboard                                                     | Next.js 16, React 19, `frontend/`                     | Integrated source; dashboard/Fly deployment is outside this storefront cutover |
+| API and creative operations                                         | FastAPI, Python, `main_enterprise.py`, `skyyrose/`    | Integrated source; API/Governor/provider execution is outside this cutover     |
 
----
+The final procedure and acceptance-source review passed. Exact-head CI is not
+cleared: the first mandatory Playwright attempt was cancelled during dependency
+installation before tests started. One independently reviewed targeted retry on
+the same frozen head is running; its tests remain pending in the 15:46 UTC
+identity receipt. Clearance has not been issued and production browser
+acceptance has not executed. Read
+[current production status](docs/PRODUCTION_STATUS.md) for dated evidence
+identities, scope, and remaining gates, and the [runbook](docs/RUNBOOK.md) for
+the ordered operator procedure. A CI badge is not an acceptance receipt.
 
-## Quick Start
+## Local setup
 
-```bash
-# Install
-make install                         # Python API + dev tooling
-cd frontend && npm install           # Next.js dashboard
-
-# Run locally (pick one approach)
-# A) Native (two terminals):
-uvicorn main_enterprise:app --reload --port 8000    # API
-cd frontend && npm run dev                          # Dashboard
-
-# B) Full stack via Docker (API + deps in containers):
-docker-compose up -d
-
-
-# Test
-make test-fast                       # Unit tests
-make ci                              # Full CI (lint + type + test)
-```
-
-See [docs/RUNBOOK.md](docs/RUNBOOK.md) for deployment and
-[docs/AGENTS.md](docs/AGENTS.md) for agent orchestration.
-
----
-
-## Architecture
-
-8-layer platform with one-way dependency flow:
-
-```
-api/ · frontend/           ← Presentation (FastAPI + Next.js)
-    ↑
-agents/ · agent_sdk/       ← AI agents (Claude Agent SDK + 6 SuperAgents)
-    ↑
-orchestration/ · services/ ← Business logic (RAG, LangGraph, 3D pipelines)
-    ↑
-llm/ · integrations/       ← LLM providers (6) + third-party APIs
-    ↑
-database/ · security/      ← Persistence (Postgres + Alembic) + AES-256-GCM
-    ↑
-core/                      ← Foundation (auth, cache, events, errors, runtime)
-```
-
-**Dependency rule:**
-`core → security → database/llm → orchestration/services → agents → api`
-
-### Key Capabilities
-
-- **Multi-agent orchestration** — 6 Super Agents (Commerce, Creative, Marketing,
-  Support, Operations, Analytics)
-- **6 LLM providers** — OpenAI, Anthropic, Google, Mistral, Cohere, Groq with
-  tournament routing
-- **Three.js 3D experiences** — per-collection immersive scenes (Black Rose,
-  Love Hurts, Signature)
-- **WordPress/WooCommerce** — REST API sync, Elementor templates, 30+ products
-  across 4 collections
-- **Enterprise security** — JWT/OAuth2, AES-256-GCM, Argon2id, rate limiting,
-  circuit breakers
-- **Production observability** — Prometheus, Sentry, correlation IDs, structured
-  logging
-
----
-
-## Repository Structure
-
-| Group           | Directories                                                   | Purpose                                   |
-| --------------- | ------------------------------------------------------------- | ----------------------------------------- |
-| **API**         | `api/` `core/` `security/` `database/` `alembic/`             | FastAPI app, auth, migrations, foundation |
-| **Agents**      | `agents/` `agent_sdk/` `adk/` `prompts/` `llm/`               | AI agents, prompts, LLM routing           |
-| **Services**    | `services/` `orchestration/` `pipelines/` `imagery/` `ai_3d/` | Business logic, RAG, 3D generation        |
-| **Integration** | `mcp_servers/` `mcp_tools/` `integrations/` `sync/`           | MCP, third-party APIs, WordPress sync     |
-| **Frontend**    | `frontend/` `src/` `public/` `__mocks__/`                     | Next.js dashboard, 3D collections         |
-| **WordPress**   | `wordpress-theme/skyyrose-flagship/` `wordpress/`             | Production WP theme + deployment tools    |
-| **Content**     | `assets/` `data/` `datasets/` `models/` `hf-spaces/`          | Imagery, catalogs, ML models, HF spaces   |
-| **DevOps**      | `monitoring/` `scripts/` `tests/` `cli/` `tools/` `config/`   | Observability, tests, CLI tools           |
-| **Docs**        | `docs/` `archive/` `examples/` `tasks/`                       | Documentation, historical refs, examples  |
-
-Entry points at root: `main_enterprise.py` (API), `devskyy_mcp.py` (MCP server),
-`conftest.py` (pytest).
-
----
-
-## Workspaces
-
-Each workspace is isolated with its own dependencies:
-
-| Workspace      | Runtime           | Install                      | Dev                                 |
-| -------------- | ----------------- | ---------------------------- | ----------------------------------- |
-| **Python API** | Python 3.11+      | `make install`               | `make dev`                          |
-| **Dashboard**  | Node.js 22, npm   | `cd frontend && npm install` | `npm run dev`                       |
-| **WordPress**  | PHP 8.2, SFTP     | See `.env.wordpress`         | `bash scripts/deploy-theme.sh`      |
-| **Imagery**    | Python (isolated) | `.venv-imagery/`             | `pip install rembg`                 |
-| **ADK Agents** | Python (isolated) | `.venv-agents/`              | Numpy conflicts — use separate venv |
-
----
-
-## Development
+Run from the repository root. Python's supported range is **3.12–3.14**, as
+declared in [pyproject.toml](pyproject.toml). Root tooling requires Node.js 22+
+and npm 10+ (`.nvmrc` pins 22.19.0); V2 requires Node.js 22+ and npm 9+. Each
+JavaScript workspace has its own manifest and lockfile.
 
 ```bash
-# Format & lint (Python)
-make format                          # isort + ruff --fix + black
-make lint                            # ruff check + black --check
-make ci                              # Full pipeline
+# Python API and local test tooling, using the committed lockfile
+uv sync --locked --extra dev --python 3.13
 
-# Type check
-mypy .                               # 904 files, 0 issues target
-
-# Coverage target: 85%+
-pytest tests/ --cov --cov-report=html
+# Independent JavaScript workspaces
+npm ci
+(cd frontend && npm ci)
+(cd wordpress-theme/skyyrose-flagship-2 && npm ci)
 ```
 
-**Conventions:** files <800 lines · functions <50 lines · immutability ·
-Zod/Pydantic validation at boundaries · conventional commits (`feat:` `fix:`
-`refactor:` `docs:` `test:` `chore:`).
+Configure the environment for the service being run using
+[.env.example](.env.example) and the relevant package documentation. Keep
+credentials in local environment files or the intended host's secret store.
+Installing dependencies does not authorize provider calls or deployment.
 
-See [CLAUDE.md](CLAUDE.md) for the full engineering protocol and [docs/](docs/)
-for detailed guides.
-
----
-
-## Deployment
+Start the API and dashboard in separate terminals:
 
 ```bash
-# WordPress theme (skyyrose.co)
-bash scripts/deploy-theme.sh
-
-# Frontend (Vercel — devskyy.app)
-cd frontend && git push origin main  # auto-deploys
-
-# API (Docker)
-docker-compose up -d
+uv run --locked --extra dev python -m uvicorn main_enterprise:app --reload --port 8000
 ```
 
-Full procedures in [docs/RUNBOOK.md](docs/RUNBOOK.md).
+```bash
+cd frontend
+npm run dev
+```
 
----
+For a local container stack, use the configured Compose workflow in
+[docs/DOCKER.md](docs/DOCKER.md). `make install` installs the base Python
+package; `make dev` installs development dependencies and root npm dependencies.
+Neither starts the API.
+
+## Architecture and ownership
+
+| Area                 | Entry points and directories                                                                                | Responsibility                                                                                  |
+| -------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Python API           | [main_enterprise.py](main_enterprise.py), `api/`, `security/`, `database/`                                  | Authenticated API, persistence, integrations, and operational endpoints                         |
+| Agents and workflows | `agents/`, `orchestration/`, `services/`, `skyyrose/elite_studio/`                                          | Agent execution, creative workflow state, governance, and provider adapters                     |
+| Dashboard            | [frontend/package.json](frontend/package.json), `frontend/app/`, `frontend/components/`, `frontend/lib/`    | Next.js application, owner reports, and operator interfaces                                     |
+| Shared TypeScript    | [package.json](package.json), `src/`                                                                        | Services, commerce utilities, collection experiences, and tests                                 |
+| Production V1 theme  | [wordpress-theme/skyyrose-flagship/](wordpress-theme/skyyrose-flagship/)                                    | Currently active WordPress/WooCommerce theme and canonical product registry location            |
+| V2 theme candidate   | [wordpress-theme/skyyrose-flagship-2/](wordpress-theme/skyyrose-flagship-2/)                                | Storefront templates, native commerce adapters, consent, deterministic build, and packaging     |
+| Release operations   | `tools/production-runtime/`, `tasks/integration-release-20261001/`, `tasks/production-final-pass-20261001/` | Scoped operational source, integration record, guarded page/MU operations, and release evidence |
+
+These are independently validated surfaces. A successful root TypeScript test
+does not validate the dashboard or either theme, and a storefront deployment
+does not deploy the API or Governor. See the
+[WordPress codemap](docs/CODEMAPS/wordpress.md) and
+[integration adoption manifest](tasks/integration-release-20261001/adoption-manifest.json)
+for concrete source relationships and adopted work.
+
+## Product authority
+
+The one editable product source is [logo-registry.json](logo-registry.json), a
+symlink to
+[wordpress-theme/skyyrose-flagship/data/logo-registry.json](wordpress-theme/skyyrose-flagship/data/logo-registry.json).
+Its unified `products[sku]` records own commerce facts, garment specifications,
+copy, source/image bindings, and founder corrections. CSVs, dossiers, asset
+manifests, and V2 presentation data are compatibility projections or consumers.
+
+Read a complete product through the single entry point:
+
+```python
+from skyyrose.core.product import get_product
+
+product = get_product("br-001")
+gaps = product["gaps"]
+```
+
+Non-Python consumers can use the identical JSON interface:
+
+```bash
+uv run --locked python -m skyyrose.core.product br-001
+uv run --locked python scripts/sync_product_registry.py --check
+```
+
+Unknown SKUs raise; absent facts are named in `gaps`. Corey is the founder and
+maker: his latest direct specifications are authoritative and recorded as
+`FOUNDER_CONFIRMED`. Preserve his exact wording, dimensions, ranges, artwork,
+and placements. Apply scoped corrections to the registry first, using its update
+API; after direct registry edits regenerate projections with
+`scripts/sync_product_registry.py`. Do not create independent product fact maps.
+See [SOT.md](SOT.md) and [the product reader](skyyrose/core/product.py).
+
+## Validation
+
+Run checks in the workspace that owns the change. The commands below are
+interfaces verified from the manifests; they are not claims that a fresh full
+suite passed in this documentation update.
+
+| Directory                              | Checks                                                                                                 |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Repository root, Python                | `uv run --locked --extra dev python -m pytest tests/ -v`; configured Ruff, Black, and mypy checks      |
+| Repository root, TypeScript            | `npm run lint`, `npm run type-check`, `npm test`, `npm run build`                                      |
+| `frontend/`                            | `npm run lint`, `npm run type-check`, `npm test`, `npm run build`, `npm run test:e2e`                  |
+| `wordpress-theme/`, V1                 | `npm run verify:full`                                                                                  |
+| `wordpress-theme/skyyrose-flagship-2/` | `npm run build`, `npm run check:assets`, `npm run lint:php`, `npm run verify`, `npm run package:theme` |
+
+`make test-fast` stops on the first failure and inherits pytest's configured
+marker exclusions. `make ci` checks root Python and TypeScript, with
+non-blocking legacy mypy/TypeScript-test paths; it does not run all
+dashboard/theme checks or replace mandatory exact-head CI. Use direct checks and
+the release's explicit gate list when determining acceptance.
+
+Edit theme source and rebuild affected tracked `.min.css`/`.min.js` outputs in
+the correct package. New source, registry, certification, or artifact bytes
+invalidate the corresponding frozen evidence and require review again.
+
+## Deployment and documentation
+
+The current storefront cutover uses an exact reviewed ZIP, a separately hashed
+Search privacy MU extension, and ten owned new pages. Use the
+[runbook](docs/RUNBOOK.md), [production status](docs/PRODUCTION_STATUS.md), and
+[WordPress configuration record](docs/WORDPRESS_CONFIGURATION_STATUS.md).
+Production requires explicit scope authorization, exact-head CI, reviewed
+operation/evidence bindings, actual target readback, browser acceptance, and
+independent review. Local setup commands and public HTTP responses do not supply
+those gates.
+
+Additional references: [repository agent instructions](AGENTS.md),
+[Docker operations](docs/DOCKER.md), [security guidance](docs/SECURITY.md), and
+[documentation directory](docs/).
 
 ## License
 
-MIT © The Skyy Rose Collection LLC
+The platform is [MIT licensed](LICENSE). The V2 WordPress package declares
+`GPL-2.0-or-later` in its
+[manifest](wordpress-theme/skyyrose-flagship-2/package.json); follow the
+applicable package and asset licensing terms.
