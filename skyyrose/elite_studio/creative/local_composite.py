@@ -326,20 +326,36 @@ def verify_composite(
         ("unprotected_background", all_alpha == 0),
     ):
         count = int(region.sum())
-        maximum = int(error[region].max()) if count else 0
+        required = name == "opaque_interior"
+        maximum = int(error[region].max()) if count else None
         criteria[name] = {
-            "applicable": bool(count),
+            "required": required,
+            "applicable": required or bool(count),
             "reason": (
-                "Pixels in declared alpha region" if count else "No pixels in this alpha class"
+                "Pixels in declared alpha region"
+                if count
+                else (
+                    "Required opaque region absent after transform"
+                    if required
+                    else "Optional alpha class has no pixels"
+                )
             ),
             "pixel_count": count,
             "max_channel_error": maximum,
-            "result": "PASS" if count and maximum == 0 else "FAIL" if count else "NOT RUN",
+            "result": (
+                "PASS"
+                if count and maximum == 0
+                else "FAIL" if count or required else "NOT APPLICABLE"
+            ),
         }
     passed = (
         identity_ok
         and hash_ok
-        and all(item["max_channel_error"] == 0 for item in criteria.values())
+        and criteria["opaque_interior"]["result"] == "PASS"
+        and all(
+            item["result"] == "PASS" if item["applicable"] else item["result"] == "NOT APPLICABLE"
+            for item in criteria.values()
+        )
     )
     return {
         **implementation_evidence,
@@ -379,6 +395,8 @@ def compose(
     size = tuple(metadata["transform"]["resized_dimensions"])
     layer = source.resize(size, Image.Resampling.BICUBIC)
     alpha = mask.resize(size, Image.Resampling.BICUBIC)
+    if alpha.getbbox() is None or alpha.getextrema()[1] != 255:
+        raise CompositeError("Resized mask must retain a nonempty opaque protected interior")
     result = background.copy()
     result.paste(layer, (request.placement.x, request.placement.y), alpha)
     png_info = PngImagePlugin.PngInfo()

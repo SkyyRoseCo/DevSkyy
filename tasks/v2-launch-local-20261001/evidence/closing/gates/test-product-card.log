@@ -1,0 +1,13 @@
+
+Fatal error: Uncaught Error: Call to undefined function skyyrose2_is_transaction_preorder_product() in /Users/theceo/.codex/worktrees/58b5/DevSkyy/wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php:82
+Stack trace:
+#0 /Users/theceo/.codex/worktrees/58b5/DevSkyy/tools/v2-runtime/test-product-card.php(63): include()
+#1 /Users/theceo/.codex/worktrees/58b5/DevSkyy/tools/v2-runtime/test-product-card.php(85): render_card(Array, Object(WC_Product))
+#2 {main}
+  thrown in /Users/theceo/.codex/worktrees/58b5/DevSkyy/wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php on line 82
+PHP Fatal error:  Uncaught Error: Call to undefined function skyyrose2_is_transaction_preorder_product() in /Users/theceo/.codex/worktrees/58b5/DevSkyy/wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php:82
+Stack trace:
+#0 /Users/theceo/.codex/worktrees/58b5/DevSkyy/tools/v2-runtime/test-product-card.php(63): include()
+#1 /Users/theceo/.codex/worktrees/58b5/DevSkyy/tools/v2-runtime/test-product-card.php(85): render_card(Array, Object(WC_Product))
+#2 {main}
+  thrown in /Users/theceo/.codex/worktrees/58b5/DevSkyy/wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php on line 82

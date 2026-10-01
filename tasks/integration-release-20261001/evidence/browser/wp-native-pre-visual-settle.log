@@ -1,0 +1,4 @@
+(node:69684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"scenario": "wp-native-desktop", "result": "PASS", "M_availability": "Standard order option."}
+{"scenario": "wp-native-mobile", "result": "PASS", "M_availability": "Standard order option."}

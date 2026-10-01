@@ -1,0 +1,13 @@
+{
+  "observed_utc": "2026-10-01T14:50:12.998390+00:00",
+  "status": "DISPATCH_PENDING",
+  "home": "https://skyyrose.co",
+  "stylesheet": "skyyrose-flagship",
+  "source_sha256": "e9a0473b9e925e1bcf1f4bb05bacbd4fc0e290a50e8d8885ad999caee28ec521",
+  "owned_paths": [
+    "/srv/htdocs/wp-content/mu-plugins/.skyyrose-fs-proof-20261001-7df530cc.anchor",
+    "/srv/htdocs/wp-content/mu-plugins/.skyyrose-fs-proof-20261001-7df530cc.linked"
+  ],
+  "scope": "exclusive non-PHP filesystem readiness proof only; reviewed single/cooperating writer; no blind retry",
+  "independent_review": "Astra CLEAR_TO_RUN_BOUNDED_READINESS_PROBE exactsourcee9a0473"
+}

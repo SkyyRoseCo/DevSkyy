@@ -1,0 +1,141 @@
+{
+  "schema": 1,
+  "frozen_utc": "2026-10-01T14:53:23.066015+00:00",
+  "integration_parent": "c921172bd3405654ba7a664eaf10142f50400dfe",
+  "commit_binding": "Exact operational commit is the commit containing this manifest; independent clearance receipt records its SHA externally.",
+  "scope": [
+    "V2 storefront",
+    "native WooCommerce over unchanged33publishedsimple products/currentIDs/prices/full-payment/unmanagedquantities/nullshippingdate",
+    "existing approved media",
+    "Search privacy MU extension",
+    "ten NEW routing pages"
+  ],
+  "excluded": [
+    "product/variation/price/stock/date/order edits",
+    "inventory allocation expansion",
+    "Governor/API/frontend service deployments",
+    "GLB/mascot activation",
+    "paid providers/generation",
+    "actualorders/payments/accounts",
+    "stagingdatabase synchronization/demoimporter",
+    "backup pruning"
+  ],
+  "authority": "Existing explicit authenticated corrections and gated production delivery; current coordinator SCOPED-CLEARANCE.md narrows scope. Final independent CLEAR_TO_DEPLOY still pending.",
+  "registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+  "theme": {
+    "zip_sha256": "47c485f0001434b7dd52f572812df02e3e103631902a16e86f92ffea407b5a16",
+    "bytes": 176928301,
+    "files": 599,
+    "functional_source": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+    "package_source": "5950592d922706dd67fc0320e8c5f3dc005a47b7",
+    "release_manifest_sha256": "4bd9049668bce40ac46729d40bb3f46dedec82c852ee2e7a462b798943fdc9ef",
+    "unchanged": "Only theme test fixture differs from package-source; runtime source and77certification pins unchanged. Historical release-manifest authorizationfalse preserved."
+  },
+  "sources": {
+    "tools/production-runtime/search-tracking-privacy.php": "afc2f6d8a4ae6280de28b6c1306564cc86053acc713c52e5ab0b5717b3ef58f2",
+    "tools/production-runtime/publish-search-privacy.php": "45ed4f3810eaeac30827a19d0b3f86a2cb38448cfd74d28fbdcff286e066b500",
+    "tools/production-runtime/test-publish-search-privacy.php": "71da1220d3f183fb92a15326a17617e8ca1bcb3b9be544c690c38f07f1bfeeb3",
+    "tools/production-runtime/test-search-tracking-privacy.php": "30c90dc136d39ba7b000438f774890a3ab16c6d6860b1f0e1358b878246dd071",
+    "tools/production-runtime/test-search-tracking-wordpress.php": "ac0a1fc39aa3a42ec19d7e17d68d9f1ccce468a382778167e3ce6c8724ecad4b",
+    "tasks/production-final-pass-20261001/plan_v2_pages.py": "fd76ad05d3970fbacef5f8cbb8088ddbfc20aa8a87887bad6a753c7f6ba40360",
+    "tasks/production-final-pass-20261001/apply_v2_pages.php": "df7e8a3c87504b406124fca933df516c01c28e55720e745617ffe467ed030078",
+    "tasks/production-final-pass-20261001/test_v2_pages.php": "3842bc26a8270367903a4c8a9e8fb203cc77c75def18e634fedd1764982671f4",
+    "tasks/production-final-pass-20261001/test_v2_page_plan.py": "b7269804cb054a1ee070295187023dafd44aabf38c24a8c18084bd19bec94db6"
+  },
+  "evidence": {
+    "tasks/production-final-pass-20261001/evidence/cutover-source-validation.json": "54f14d6ab6ce01efc37963c4c3bfdee9c75fe0c8305d340c9e42711260608888",
+    "tasks/production-final-pass-20261001/evidence/cutover-source-check-1.log": "a31b9572a073fcd416bd05b6dc580cb4e9f4c9f2f030c92a60680fd2cd5935a8",
+    "tasks/production-final-pass-20261001/evidence/cutover-source-check-2.log": "511fb971caf59261241ec2a3919d9d10c7dcb9ec044ee07d50b2db465184f057",
+    "tasks/production-final-pass-20261001/evidence/cutover-source-check-3.log": "b44e5910c6cefa6313509f7b99c262053b2f4f3ae23c461f7a0bc46ab7d38d86",
+    "tasks/production-final-pass-20261001/evidence/cutover-source-check-4.log": "d8ca8730b40cfd4a30709aa93fb7b1ab3fbded2fe93707fc1d3fd3ea9ed9dfd4",
+    "tasks/production-final-pass-20261001/evidence/search-core-target-php84.log": "848dc1b99a0286703e88b2633e30f6adb39b437a83085c15e830e33aa6cd6694",
+    "tasks/production-final-pass-20261001/evidence/mu-filesystem-probe-v2-intent.json": "d28ddf408a7a3a6d42e3338248bcbe24313a16e2de8ba979b0c999159dfb37f2",
+    "tasks/production-final-pass-20261001/evidence/mu-filesystem-probe-v2-execution.json": "d45c84dae43db77427a91c35dfca5927ff86b231654fd0e4e5e2d4338c7b4b10",
+    "tasks/production-final-pass-20261001/evidence/mu-filesystem-probe-v2-execution.log": "32fb275f2e907506214a4af909c340e7a5218a0316874bdef0fbed1dbaf16b63",
+    "tasks/production-final-pass-20261001/evidence/production-rollback-current-revalidation.json": "15818c399965b947c46706fd84e72cbdbb5e1a7221a7312ad70b14e78fd0bac4",
+    "tasks/production-final-pass-20261001/evidence/production-preactivation-preimages.json": "3bbb8293ecaf698b541dbba94084a7bd073859969276e624bbfd2246860d7003",
+    "tasks/production-final-pass-20261001/evidence/production-page-preimages.json": "c7de99485f024b3f894d79bb4e748a7175658d998b29826b85d5da5e0ce45c2c",
+    "tasks/production-final-pass-20261001/evidence/production-v2-page-plan-final.json": "dc7ca358d530cc44aeea75771236573e48088cd7f99b545941b3b05cbbd7b44e",
+    "tasks/production-final-pass-20261001/evidence/production-trash-retention-readonly.json": "9f7699fee14a14608e208e3d7f79f8111d6a16a055c54a74f9def8fef2d48d10",
+    "tasks/production-final-pass-20261001/evidence/ci-head-receipt.json": "fac54c498a4bad466ccaf634242e8dfa38f26ffb4be77aba07fbb5fa1cfc8e39"
+  },
+  "operational_bundle": {
+    "path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/production-final-pass-20261001/operations/production-cutover-source-receipts-20261001.zip",
+    "sha256": "b019a8589a1a94f3cb5f3fd510ae2e8013bd2390350efd6ec33ef88c65ce0956",
+    "bytes": 674407,
+    "members": 222,
+    "scope": "frozen operational source and saved receipts before production cutover; browser PNG/HTML omitted; current V2 acceptance harness excluded while review pending",
+    "omissions": [
+      "all HTML including original dynamic cart-key captures",
+      "all PNG/browser screenshots retained locally",
+      "__pycache__",
+      "coordinator-owned readiness packet/AGENTS.md",
+      "production-v2-acceptance under active review"
+    ]
+  },
+  "target": {
+    "home": "https://skyyrose.co",
+    "before_stylesheet": "skyyrose-flagship",
+    "after_stylesheet": "skyyrose-flagship-2",
+    "wordpress": "7.1.2",
+    "php": "8.4.26",
+    "woocommerce": "11.1.2",
+    "jetpack": "16.3-a.7",
+    "search_active": true,
+    "stats_active": false,
+    "woocommerce_analytics_active": false,
+    "attribution": "no",
+    "trash_days": 30,
+    "mu_final": "/srv/htdocs/wp-content/mu-plugins/skyyrose-search-tracking-privacy.php",
+    "mu_preimage": "ABSENT",
+    "woocommerce_page_ids": {
+      "cart": 9451,
+      "checkout": 9452,
+      "shop": 9836,
+      "myaccount": 9710
+    }
+  },
+  "operations": {
+    "search_operation_id": "production-search-privacy-20261001",
+    "page_operation_id": "production-v2-pages-20261001",
+    "page_plan_sha256": "dc7ca358d530cc44aeea75771236573e48088cd7f99b545941b3b05cbbd7b44e",
+    "page_count": 10,
+    "existing_pages_preserved": 6,
+    "sequence": [
+      "Upload immutable artifacts to exclusive owned temporary directory and verify hashes",
+      "Install exact ZIP over inactive V2; verify all599filehashes; keep V1 active",
+      "Prepare ten marked drafts with exactsource/preimage guards and durablejournal",
+      "Publish Search MU atomically with inode-boundownership and durable externalintent",
+      "Guard all10activationpreimages then switchtheme toV2; captureafterstate",
+      "Publish ten owned draftpages underactiveV2; record returnedIDs/readback",
+      "Clear object/globaledgecache viaauthenticatedhostingcontrols and retain specificconfirmation",
+      "Verify V2installedbytes/nativeIDs/productconfiguration/routecontent and desktopmobilecommerce/consent/actualSearch",
+      "On gatingfailure use reviewedownedpage/MU recovery and restoreactiveV1/configpreimages; never blindretryunknown"
+    ]
+  },
+  "rollback": {
+    "current_receipt_sha256": "15818c399965b947c46706fd84e72cbdbb5e1a7221a7312ad70b14e78fd0bac4",
+    "retained_archives": "Both currentmaps verified79activeV1/609inactiveV2 with localrestoration evidence; no remote restore performed",
+    "page_recovery": "trash only owned unchangednewpages, positive retentionguard; merchantchangespreserved; unknownread-onlyreconcile",
+    "mu_recovery": "retainedinodeanchor dev/inode/hash; cooperatingwriter lock; same-byteforeignwinnerpreserved",
+    "limits": [
+      "Sequential WPCRUD and snapshotguards do not atomically prevent noncooperating DBedits",
+      "POSIXunlink check-to-unlink against noncooperatingfilesystemwriter excluded",
+      "Unknowntransportoutcomes require read-onlyreconciliation before any new write"
+    ]
+  },
+  "reviews": {
+    "python_planner": "APPROVE fd76.../b726...15tests",
+    "security": "APPROVE df7.../3842...retentionfix; publisher45ed/MUafc sourcePASS",
+    "independent_astra": "ComponentSOURCE/offline/readiness/rollbackevidencePASS; final combinedmanifest/commitdecisionPENDING"
+  },
+  "status": {
+    "LOCAL_CODE_COMPLETE": true,
+    "INTEGRATION_ACCEPTED": "c92121SUCCESS6SKIPPED; new operationalcommit focusedchecksPASS, exact-headCIpendingpush",
+    "RUNTIME_ACCEPTED": "Staging qualified; productionV2notyetdeployed",
+    "CLEAR_TO_DEPLOY": false,
+    "DEPLOYED": false,
+    "PRODUCTION_ACCEPTED": false,
+    "RELEASED": false
+  }
+}

@@ -1,0 +1,176 @@
+
+> devskyy-dashboard@1.0.0 prebuild
+> node scripts/sync-scene-authority.mjs
+
+scene-authority: projection synchronized
+
+> devskyy-dashboard@1.0.0 build
+> next build --webpack
+
+▲ Next.js 16.3.8 (webpack)
+(node:14336) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✓ Running next.config.ts took 10ms
+- Cache Components enabled
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+(node:14412) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14934) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+warn - The class `duration-[600ms]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `duration-&lsqb;600ms&rsqb;` to silence this warning.
+
+warn - The class `duration-[800ms]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `duration-&lsqb;800ms&rsqb;` to silence this warning.
+✓ Compiled successfully in 7.3s
+  Running TypeScript ...
+  Finished TypeScript in 7.3s ...
+  Collecting page data using 9 workers ...
+(node:15429) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15428) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15427) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15422) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15426) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15421) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15423) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15425) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  Generating static pages using 9 workers (0/90) ...
+  Generating static pages using 9 workers (22/90) 
+  Generating static pages using 9 workers (44/90) 
+  Generating static pages using 9 workers (67/90) 
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+✓ Generating static pages using 9 workers (90/90) in 894ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ◐ /admin
+├ ○ /admin/3d-pipeline
+├ ○ /admin/agents
+├ ○ /admin/assets
+├ ○ /admin/autonomous
+├ ○ /admin/catalog
+├ ○ /admin/catalog-search
+├ ◐ /admin/collections
+├ ○ /admin/competitors
+├ ○ /admin/conversion
+├ ◐ /admin/customers
+├ ○ /admin/elite-studio
+├ ○ /admin/elite-studio/characters
+├ ○ /admin/elite-studio/design
+├ ○ /admin/elite-studio/operations
+├   /admin/elite-studio/operations/[id]
+│ └ ◐ /admin/elite-studio/operations/[id]
+├ ○ /admin/experience
+├ ◐ /admin/governor
+├ ○ /admin/hub
+├ ○ /admin/huggingface
+├ ○ /admin/imagery
+├ ○ /admin/jobs
+├ ○ /admin/journey-analytics
+├ ○ /admin/launch-desk
+├ ○ /admin/mascot
+├ ○ /admin/mcp
+├ ○ /admin/monitoring
+├ ◐ /admin/orders
+├ ○ /admin/pipeline
+├ ○ /admin/pricing
+├ ◐ /admin/products
+├ ○ /admin/qa
+├ ○ /admin/renders/review
+├ ○ /admin/round-table
+├ ○ /admin/scene-authority
+├ ○ /admin/settings
+├ ○ /admin/social-media
+├ ○ /admin/tasks
+├ ○ /admin/vercel
+├ ○ /admin/web-extraction
+├ ○ /admin/wordpress
+├ ƒ /api/auth/[...nextauth]
+├ ƒ /api/catalog
+├ ƒ /api/catalog/[sku]
+├ ƒ /api/catalog/summary
+├ ƒ /api/checkout
+├ ƒ /api/console/orders-count
+├ ƒ /api/conversion
+├ ƒ /api/governor/report
+├ ƒ /api/health
+├ ƒ /api/huggingface
+├ ƒ /api/imagery
+├ ƒ /api/jobs
+├ ƒ /api/launch-desk
+├ ƒ /api/mascot
+├ ƒ /api/mcp
+├ ƒ /api/monitoring/health
+├ ƒ /api/monitoring/metrics
+├ ƒ /api/pipeline-status
+├ ƒ /api/pipeline/meshy
+├ ƒ /api/pipeline/tripo
+├ ƒ /api/products
+├ ƒ /api/renders
+├ ƒ /api/renders/image
+├ ƒ /api/renders/review
+├ ƒ /api/scene-authority
+├ ƒ /api/scene-authority/[sceneId]
+├ ƒ /api/settings
+├ ƒ /api/social-media
+├ ƒ /api/social-media/analytics
+├ ƒ /api/social-media/generate
+├ ƒ /api/social-media/publish
+├ ƒ /api/social-media/schedule
+├ ƒ /api/v1/3d/generate/image
+├ ƒ /api/v1/3d/generate/text
+├ ƒ /api/v1/3d/jobs
+├ ƒ /api/v1/3d/providers
+├ ƒ /api/v1/3d/status
+├ ƒ /api/webhooks/woocommerce
+├ ƒ /api/wordpress/proxy
+├ ƒ /api/wordpress/proxy/upload
+├ ○ /checkout
+├ ○ /collections
+├   /collections/[slug]
+│ ├ ◐ /collections/[slug]
+│ ├ ○ /collections/black-rose
+│ ├ ○ /collections/love-hurts
+│ └ ◐ [+2 more paths]
+├ ○ /login
+└ ○ /pre-order
+
+
+○  (Static)             prerendered as static content
+◐  (Partial Prerender)  prerendered as static HTML with dynamic server-streamed content
+ƒ  (Dynamic)            server-rendered on demand
+

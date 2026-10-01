@@ -91,7 +91,7 @@ $po_ver    = isset( $args['version'] ) ? (string) $args['version'] : SKYYROSE_VE
 			</picture>
 
 			<p class="po-hero__body">
-				<?php esc_html_e( 'Secure your pieces before they drop. Luxury Grows from Concrete.', 'skyyrose' ); ?>
+				<?php esc_html_e( 'Secure your pieces before they drop.', 'skyyrose' ); ?>
 			</p>
 
 			<div class="po-hero__actions">

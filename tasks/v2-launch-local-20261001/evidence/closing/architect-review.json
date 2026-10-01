@@ -1,0 +1,29 @@
+{
+  "role": "architect; read-only",
+  "requested_runtime_model": "gpt-6-astra",
+  "requested_reasoning_effort": "high",
+  "reviewed_source_sha": "9e4101e8bde89f2efe6828519393221d9b81c639",
+  "evidence_only_head_at_review": "80ca7c57a2e6121d6c74f2d40833747a95b0a52f",
+  "verdict": "PASS corrected local owned integration; overall certification and launch qualification BLOCKED",
+  "closed_findings": [
+    "scene hotspot neutral visible/accessibility labels",
+    "new fixture WPCS errors"
+  ],
+  "independent_checks": [
+    "42 ledger hashes match files",
+    "35 wrapper checks:30PASS5FAIL, matching source start/end and held tracked status",
+    "3storage modes56PASS assertions each",
+    "clean checkout exact9e source and emptyGitstatus",
+    "clean package attempt refuses old home.contract input pin",
+    "new fixtures PHP syntax",
+    "registry unchanged db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757"
+  ],
+  "remaining": [
+    "Scoped handoff evidence commit required",
+    "stream4 exact9e certification required; prior524overlay insufficient",
+    "broad brand guard remains failed",
+    "inventory reservation/concurrency/restoration holds",
+    "hosted/runtime/visual/release acceptance holds"
+  ],
+  "review_scope": "Targeted source/diffs, hash checks, clean-checkout identity and PHP syntax; no edits, mutating commerce runs, or external contact"
+}

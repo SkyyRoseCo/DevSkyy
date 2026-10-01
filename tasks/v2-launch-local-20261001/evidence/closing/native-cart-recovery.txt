@@ -1,0 +1,54 @@
+- link "Skip to content":
+  - /url: "#primary"
+- banner:
+  - link "SkyyRose home":
+    - /url: http://127.0.0.1:18362/
+  - link "Bag 1 items in bag":
+    - /url: http://127.0.0.1:18362/?page_id=6
+    - text: Bag
+    - generic "1 items in bag": ( 1 )
+  - button "Open site menu"
+- main:
+  - heading "Your cart is currently empty!" [level=2]
+  - separator: ···
+  - heading "New in store" [level=2]
+  - list:
+    - link "Synthetic classification fixture preorder":
+      - /url: http://127.0.0.1:18362/?product=synthetic-classification-fixture-preorder-2
+      - generic: Synthetic classification fixture preorder
+    - generic: $80.00
+    - link "Select options for “Synthetic classification fixture preorder”":
+      - /url: http://127.0.0.1:18362/?product=synthetic-classification-fixture-preorder-2
+      - text: Select options
+    - link "Synthetic classification fixture regular":
+      - /url: http://127.0.0.1:18362/?product=synthetic-classification-fixture-regular-3
+      - generic: Synthetic classification fixture regular
+    - generic: $80.00
+    - link "Select options for “Synthetic classification fixture regular”":
+      - /url: http://127.0.0.1:18362/?product=synthetic-classification-fixture-regular-3
+      - text: Select options
+    - link "Synthetic classification fixture preorder":
+      - /url: http://127.0.0.1:18362/?product=synthetic-classification-fixture-preorder
+      - generic: Synthetic classification fixture preorder
+    - generic: $80.00
+    - link "Select options for “Synthetic classification fixture preorder”":
+      - /url: http://127.0.0.1:18362/?product=synthetic-classification-fixture-preorder
+      - text: Select options
+    - link "Synthetic classification fixture regular":
+      - /url: http://127.0.0.1:18362/?product=synthetic-classification-fixture-regular-2
+      - generic: Synthetic classification fixture regular
+    - generic: $80.00
+    - link "Select options for “Synthetic classification fixture regular”":
+      - /url: http://127.0.0.1:18362/?product=synthetic-classification-fixture-regular-2
+      - text: Select options
+- contentinfo:
+  - link "SkyyRose":
+    - /url: http://127.0.0.1:18362/
+    - generic: SkyyRose
+  - generic "Explore"
+  - generic "Client Services"
+  - generic "Legal"
+  - paragraph: © 2026 The Skyy Rose Collection LLC
+- paragraph: Notifications
+- generic: Synthetic classification fixture regular has been removed from your cart.
+- status

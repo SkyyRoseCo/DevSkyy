@@ -1,0 +1,123 @@
+- link "Skip to content":
+  - /url: "#primary"
+- banner:
+  - link "SkyyRose home":
+    - /url: http://127.0.0.1:18362/
+  - navigation "Editorial navigation":
+    - list:
+      - link "Shop":
+        - /url: http://127.0.0.1:18362/?page_id=5
+      - link "Collections":
+        - /url: http://127.0.0.1:18362/collections/
+      - link "Journal":
+        - /url: http://127.0.0.1:18362/journal/
+      - link "About":
+        - /url: http://127.0.0.1:18362/about/
+  - link "Search":
+    - /url: http://127.0.0.1:18362/?s=
+    - generic: Search
+  - link "Bag 0 items in bag":
+    - /url: http://127.0.0.1:18362/?page_id=6
+    - text: Bag
+    - generic "0 items in bag": ( 0 )
+  - button "Open site menu":
+    - generic: Menu
+- main:
+  - navigation "Breadcrumb":
+    - link "Shop":
+      - /url: http://127.0.0.1:18362/?page_id=5
+    - generic: /
+    - link "Black Rose":
+      - /url: http://127.0.0.1:18362/collections/black-rose/
+    - generic: /
+    - generic: Synthetic classification fixture regular
+  - region "Synthetic classification fixture regular purchase details":
+    - region "0 published views":
+      - status: Product imagery is currently unavailable.
+    - paragraph: Black Rose
+    - heading "Synthetic classification fixture regular" [level=1]
+    - paragraph:
+      - generic: $80.00
+    - text: Size
+    - combobox "Size":
+      - option "Choose an option"
+      - option "S"
+      - option "M" [selected]
+    - link "Clear options":
+      - /url: "#"
+      - text: Clear
+    - alert
+    - alert:
+      - status: Standard order option.
+    - generic: Synthetic classification fixture regular quantity
+    - spinbutton "Product quantity": "1"
+    - button "Add to cart"
+    - generic: "SKU: synthetic-regular-explicit-zero-193"
+    - text: "Category:"
+    - link "Uncategorized":
+      - /url: http://127.0.0.1:18362/?product_cat=uncategorized
+    - status: Selection confirmed. Current price and availability are shown above.
+    - navigation "Product support":
+      - link "Fit + size guide":
+        - /url: http://127.0.0.1:18362/size-guide/
+        - text: Fit + size guide
+        - generic: →
+      - link "Shipping + Returns":
+        - /url: http://127.0.0.1:18362/shipping-returns/
+        - text: Shipping + Returns
+        - generic: →
+    - note:
+      - strong: Review order options
+      - paragraph: Choose a size to see whether that option is a pre-order. Full payment is due at checkout. Contact Client Services for shipping estimates before ordering.
+    - complementary:
+      - generic: Beauty Without Permission
+      - paragraph: Protection, polish, and enough room to define the fit yourself. The rose does not ask permission to take up space.
+    - tablist:
+      - tab "Reviews (0)" [selected]
+    - tabpanel "Reviews (0)":
+      - heading "Reviews" [level=2]
+      - paragraph: There are no reviews yet.
+      - heading "Be the first to review “Synthetic classification fixture regular”" [level=3]: Be the first to review “Synthetic classification fixture regular”
+      - paragraph:
+        - text: Your email address will not be published.
+        - generic: Required fields are marked *
+      - generic: Your rating *
+      - paragraph:
+        - group "Your rating *":
+          - radio " 1 of 5 stars"
+          - radio " 2 of 5 stars"
+          - radio " 3 of 5 stars"
+          - radio " 4 of 5 stars"
+          - radio " 5 of 5 stars"
+      - paragraph:
+        - generic: Your review *
+        - textbox "Your review *"
+      - paragraph:
+        - generic: Name *
+        - textbox "Name *"
+      - paragraph:
+        - generic: Email *
+        - textbox "Email *"
+      - paragraph:
+        - checkbox "Save my name, email, and website in this browser for the next time I comment."
+        - text: Save my name, email, and website in this browser for the next time I comment.
+      - paragraph:
+        - button "Submit"
+  - region "Bloom under a Bay Bridge moon.":
+    - figure
+    - paragraph: 02 / Black Rose
+    - heading "Bloom under a Bay Bridge moon." [level=2]
+    - paragraph: Black is not absence. It is depth, protection, and elegance with its guard up. The rose survives because it knows its own value—and never asks a shadow for permission to bloom.
+    - link "Enter Black Rose":
+      - /url: http://127.0.0.1:18362/collections/black-rose/
+      - text: Enter Black Rose
+      - generic: →
+- contentinfo:
+  - link "SkyyRose":
+    - /url: http://127.0.0.1:18362/
+    - generic: SkyyRose
+  - generic "Explore"
+  - generic "Client Services"
+  - generic "Legal"
+  - paragraph: © 2026 The Skyy Rose Collection LLC
+- status

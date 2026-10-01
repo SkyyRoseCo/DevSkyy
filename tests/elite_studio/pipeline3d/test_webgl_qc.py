@@ -15,6 +15,12 @@ from pathlib import Path
 import pytest
 
 from skyyrose.core.paths import REPO_ROOT
+from skyyrose.elite_studio.pipeline3d.glb_container import (
+    GlbFormatError,
+    read_glb,
+    require_embedded_resources,
+    write_glb,
+)
 from skyyrose.elite_studio.pipeline3d.webgl_qc import (
     _HARNESS_TEMPLATE,
     ANGLES,
@@ -27,13 +33,91 @@ from skyyrose.elite_studio.pipeline3d.webgl_qc import (
     RenderTarget,
     ThreeLibNotFoundError,
     WebGlQcError,
+    _offline_request_allowed,
+    _restrict_requests,
     build_serve_root,
     diff_images,
     diff_report,
+    render,
     resolve_three_lib,
 )
 
 PRODUCTION_VIEWER = REPO_ROOT / "wordpress-theme/skyyrose-flagship/assets/js/product-3d-viewer.js"
+
+
+class TestOfflineBoundary:
+    @pytest.mark.parametrize("kind", ["buffers", "images"])
+    @pytest.mark.parametrize(
+        "uri",
+        ["https://example.invalid/a", "a.bin", "../a.png", "data:image/png;base64,AA==", "", None],
+    )
+    def test_uri_resources_rejected_before_browser(self, tmp_path, kind, uri, monkeypatch):
+        path = tmp_path / "external.glb"
+        path.write_bytes(write_glb({"asset": {"version": "2.0"}, kind: [{"uri": uri}]}, b""))
+        monkeypatch.setattr(
+            "skyyrose.elite_studio.pipeline3d.webgl_qc.resolve_three_lib",
+            lambda *_: pytest.fail("external GLB passed preflight"),
+        )
+        with pytest.raises(WebGlQcError, match="embedded resources required"):
+            render([RenderTarget("external", path)], tmp_path / "output")
+        assert not (tmp_path / "output").exists()
+
+    def test_embedded_resources_allowed(self):
+        require_embedded_resources(
+            {"buffers": [{"byteLength": 4}], "images": [{"bufferView": 0, "mimeType": "image/png"}]}
+        )
+
+    @pytest.mark.parametrize("document", [{"buffers": {}}, {"images": [None]}])
+    def test_malformed_resource_arrays_rejected(self, document):
+        with pytest.raises(GlbFormatError):
+            require_embedded_resources(document)
+
+    @pytest.mark.parametrize(
+        "url", ["http://127.0.0.1:8123/harness.html", "blob:http://127.0.0.1:8123/id"]
+    )
+    def test_exact_loopback_origin_allowed(self, url):
+        assert _offline_request_allowed(url, 8123)
+
+    @pytest.mark.parametrize(
+        "url",
+        [
+            "https://example.invalid/a",
+            "http://127.0.0.1:8124/a",
+            "http://localhost:8123/a",
+            "http://user@127.0.0.1:8123/a",
+            "http://127.0.0.1:bad/a",
+            "file:///tmp/a",
+            "blob:https://example.invalid/id",
+            "data:text/html,hi",
+        ],
+    )
+    def test_other_origins_denied(self, url):
+        assert not _offline_request_allowed(url, 8123)
+
+    def test_route_aborts_external_and_continues_local(self):
+        from types import SimpleNamespace
+
+        actions = []
+
+        class Context:
+            def route(self, pattern, callback):
+                assert pattern == "**/*"
+                self.callback = callback
+
+        context = Context()
+        blocked = []
+        _restrict_requests(context, 8123, blocked)
+        for url in ["http://127.0.0.1:8123/asset.glb", "https://example.invalid/a"]:
+            context.callback(
+                SimpleNamespace(
+                    request=SimpleNamespace(url=url),
+                    continue_=lambda: actions.append("continue"),
+                    abort=lambda reason: actions.append(reason),
+                )
+            )
+        assert actions == ["continue", "blockedbyclient"]
+        assert blocked == ["https://example.invalid/a"]
+
 
 # Each entry: parity key -> pattern whose first group is the production value.
 _PARITY_PATTERNS = {
@@ -88,6 +172,11 @@ def _report(tmp_path: Path, labels: tuple[str, ...], angle: str = "front") -> Re
 
 
 class TestProductionParity:
+    def test_report_records_effective_render_size(self):
+        report = RenderReport(images=(), render_size=512)
+        assert report.as_dict()["parity"]["size"] == 512
+        assert VIEWER_PARITY["size"] == 1024
+
     def test_production_viewer_exists(self) -> None:
         # Fails closed: if the viewer moves, the parity gate must break loudly rather
         # than quietly stop checking anything.
@@ -142,7 +231,7 @@ class TestHarnessTemplate:
     def test_build_serve_root_injects_parity_and_angles(self, tmp_path: Path) -> None:
         lib = _fake_three_lib(tmp_path / "lib")
         glb = tmp_path / "src.glb"
-        glb.write_bytes(b"glTF-stub")
+        glb.write_bytes(write_glb({"asset": {"version": "2.0"}}, b""))
         serve = build_serve_root(
             [RenderTarget("base", glb)], tmp_path / "serve", three_lib=lib, size=512
         )
@@ -153,7 +242,25 @@ class TestHarnessTemplate:
         assert '"size": 512' in html
         assert json.dumps({k: dict(v) for k, v in ANGLES.items()}) in html
         assert (serve / THREE_LIB_DIR_NAME).is_symlink()
-        assert (serve / "base.glb").resolve() == glb.resolve()
+        assert not (serve / "base.glb").is_symlink()
+        assert (serve / "base.glb").read_bytes() == glb.read_bytes()
+
+    def test_frozen_payload_cannot_be_swapped_after_preflight(self, tmp_path):
+        lib = _fake_three_lib(tmp_path / "lib")
+        source = tmp_path / "mutable.glb"
+        checked = write_glb({"asset": {"version": "2.0"}}, b"")
+        source.write_bytes(checked)
+        require_embedded_resources(read_glb(checked).document)
+        source.write_bytes(write_glb({"images": [{"uri": "relative.png"}]}, b""))
+        serve = build_serve_root(
+            [RenderTarget("base", source)],
+            tmp_path / "serve",
+            three_lib=lib,
+            glb_payloads={"base": checked},
+        )
+        assert (serve / "base.glb").read_bytes() == checked
+        assert not (serve / "base.glb").is_symlink()
+        require_embedded_resources(read_glb((serve / "base.glb").read_bytes()).document)
 
     def test_build_serve_root_fails_closed_on_missing_glb(self, tmp_path: Path) -> None:
         lib = _fake_three_lib(tmp_path / "lib")

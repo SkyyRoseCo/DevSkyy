@@ -102,7 +102,7 @@ $faq_categories = array(
 		'items' => array(
 			array(
 				'q' => __( 'Who is behind SkyyRose?', 'skyyrose' ),
-				'a' => __( 'SkyyRose was founded by Corey Foster in Oakland, California. The brand is named after his daughter, Skyy Rose. What started as a father\'s promise became a luxury streetwear label built on authenticity, uncompromising craft, and the belief that luxury grows from concrete.', 'skyyrose' ),
+				'a' => __( 'SkyyRose was founded by Corey Foster in Oakland, California. The brand is named after his daughter, Skyy Rose. What started as a father\'s promise became a luxury streetwear label built on authenticity, uncompromising craft.', 'skyyrose' ),
 			),
 			array(
 				'q' => __( 'Where are your pieces made?', 'skyyrose' ),

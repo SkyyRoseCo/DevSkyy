@@ -1,0 +1,23 @@
+{
+  "package_source_revision": "5950592d922706dd67fc0320e8c5f3dc005a47b7",
+  "source_clean": true,
+  "zip_sha256": "47c485f0001434b7dd52f572812df02e3e103631902a16e86f92ffea407b5a16",
+  "zip_bytes": 176928301,
+  "members": 599,
+  "all_zip_extracted_source_hashes_match": true,
+  "archive_path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/release/skyyrose-flagship-2.zip",
+  "clean_checkout": "/tmp/devskyy-integration-package-5950592d",
+  "installed_runtime": {
+    "fixture": "isolatedWP7.1.2/Woo11.1.2/PHP8.5.6/SQLite",
+    "actual_directory": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/package-installed/skyyrose-flagship-2",
+    "resolver_assertions": 12,
+    "native_adapter_assertions": 18,
+    "native_hooks": 14,
+    "all_logs_complete": true,
+    "accepted_assets": 0,
+    "payments_or_live_webhooks": false
+  },
+  "deployment": "HELD",
+  "repeat_package_identical": true,
+  "release_manifest_sha256": "4bd9049668bce40ac46729d40bb3f46dedec82c852ee2e7a462b798943fdc9ef"
+}

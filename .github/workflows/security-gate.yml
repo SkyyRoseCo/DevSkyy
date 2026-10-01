@@ -154,9 +154,10 @@ jobs:
           echo "| 📜 License | ${{ needs.license-check.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          if [[ "${{ needs.secrets-scan.result }}" == "failure" ]] || \
-             [[ "${{ needs.license-check.result }}" == "failure" ]]; then
-            echo "⚠️ **Some security checks failed. Review before merging.**" >> $GITHUB_STEP_SUMMARY
+          if [[ "${{ needs.secrets-scan.result }}" != "success" ]] || \
+             [[ "${{ needs.license-check.result }}" != "success" ]]; then
+            echo "⚠️ **Security checks are incomplete or failed. Review before merging.**" >> $GITHUB_STEP_SUMMARY
+            exit 1
           else
             echo "✅ **All security checks passed.**" >> $GITHUB_STEP_SUMMARY
           fi

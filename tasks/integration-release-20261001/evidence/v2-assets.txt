@@ -1,0 +1,6 @@
+
+> skyyrose-flagship-2-theme@2.5.0 build:assets
+> node scripts/build-assets.mjs && node scripts/build-critical-css.mjs
+
+Built 25 CSS and 17 JS assets.
+Built assets/css/critical/home.min.css: 13580 bytes (budget 16384).

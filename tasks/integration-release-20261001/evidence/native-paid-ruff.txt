@@ -1,0 +1,17 @@
+[1m[91mF811 [0m[1mRedefinition of unused `harness` from line 15[0m
+  [1m[94m-->[0m tests/api/analytics/test_native_woocommerce_order.py:18:69
+   [1m[94m|[0m
+[1m[94m18 |[0m async def test_native_preorder_money_privacy_and_duplicate_identity(harness):
+   [1m[94m|[0m                                                                     [1m[91m^^^^^^^[0m [1m[91m`harness` redefined here[0m
+[1m[94m19 |[0m     artifact = os.environ.get("SKYYROSE_SYNTHETIC_NATIVE_ORDER")
+[1m[94m20 |[0m     if not artifact:
+   [1m[94m|[0m
+  [1m[94m:::[0m tests/api/analytics/test_native_woocommerce_order.py:15:56
+   [1m[94m|[0m
+[1m[94m14 |[0m from api.v1.analytics.event_store import StorefrontAnalyticsEvent, scoped_event_id
+[1m[94m15 |[0m from tests.api.analytics.test_storefront_ingest import harness, summary, webhook  # noqa: F401
+   [1m[94m|[0m                                                        [1m[33m-------[0m [1m[33mprevious definition of `harness` here[0m
+   [1m[94m|[0m
+[1m[96mhelp[0m: [1mRemove definition: `harness`[0m
+
+Found 1 error.

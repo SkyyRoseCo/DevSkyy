@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Real V2 init - synthetic local acceptance only</title>
+<style>body{font:18px system-ui;margin:16px}button,a,select{padding:12px;min-height:24px}
+[hidden]{display:none!important}[data-viewer-stage]{height:360px;width:100%;touch-action:none}
+[data-viewer-stage]>div{height:100%;width:100%}canvas{display:block;width:100%;height:100%}
+:focus-visible{outline:3px solid #124faa;outline-offset:2px}</style>
+</head><body><main class="summary"><h1>Synthetic local V2 init fixture</h1>
+<p>Real theme modules; synthetic native identity and triangle. Authentication not applicable.</p>
+<form class="variations_form"><label for="size">Size</label>
+<select id="size" name="attribute_pa_size"><option value="">Choose size</option>
+<option value="s">Small</option><option value="m">Medium</option></select>
+<input type="hidden" name="variation_id" value="512" style="">
+<button type="button" id="native-cart">Add to cart fixture control</button></form>
+</main>
+<script>
+window.fixtureMetrics={posts:[],cart:0};
+const realFetch=window.fetch;
+window.fetch=(url,options)=>{
+ if(String(url).includes('native-resolve'))window.fixtureMetrics.posts.push(JSON.parse(options.body));
+ return realFetch(url,options);
+};
+document.querySelector('#size').addEventListener('change',event=>{
+ document.querySelector('[name="variation_id"]').value=({s:511,m:512})[event.target.value]||0;
+});
+document.querySelector('#native-cart').addEventListener('click',()=>window.fixtureMetrics.cart++);
+</script><script type="module">
+await import('/theme/product-glb-init.mjs');window.fixtureReady=true;
+</script></body></html>

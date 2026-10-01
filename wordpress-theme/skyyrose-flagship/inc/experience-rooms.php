@@ -48,7 +48,7 @@ function skyyrose_get_experience_config( $slug ) {
 			return array(
 				'collection_name' => __( 'Black Rose Collection', 'skyyrose' ),
 				'world_name'      => __( 'The Bay Bridge', 'skyyrose' ),
-				'tagline'         => __( 'Luxury Grows from Concrete.', 'skyyrose' ),
+				'tagline'         => defined( 'SKYYROSE_BRAND_TAGLINE' ) ? SKYYROSE_BRAND_TAGLINE : '',
 				'accent_color'    => SKYYROSE_COLOR_SILVER,
 				'rooms'           => skyyrose_experience_filter_rooms(
 					array(

@@ -1,0 +1,881 @@
+{
+  "schema_version": 1,
+  "capture_utc": "2026-10-01T12:28:06.806416+00:00",
+  "source_receipt_commit": "58bda7e5c216e58daf64024439f5e573d14f056e",
+  "canonical_implementation_commit": "4b5763ce5b3d0768f7f39d182ccd62c2b838b158",
+  "authentication": {
+    "GitHub": "read-only main metadata as SkyyRoseLLC",
+    "local_checks": "authentication not applicable"
+  },
+  "historical_identity_receipt": "docs/consolidation/identity-correction.json",
+  "historical_disposition": "Preserve stream5 bug-383 and378\u2013382 as historical owner records; do not rename or cherry-pick whole session ledgers; previous no-conflict observations apply only to recorded snapshots",
+  "current_identity_conflicts": [
+    {
+      "id": "bug-377",
+      "identities": [
+        {
+          "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+          "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping",
+          "observations": [
+            {
+              "owner": "stream 1",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 1",
+              "axis": "working"
+            },
+            {
+              "owner": "stream 2",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 2",
+              "axis": "working"
+            },
+            {
+              "owner": "integration",
+              "axis": "committed"
+            },
+            {
+              "owner": "integration",
+              "axis": "working"
+            }
+          ]
+        },
+        {
+          "file": "tools/3d-commerce/three-renderer.mjs",
+          "error_message": "Accepted multi-scene GLB resources outside the default displayed scene were not disposed",
+          "observations": [
+            {
+              "owner": "stream 4",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 4",
+              "axis": "working"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bug-378",
+      "identities": [
+        {
+          "file": "tasks/3d-commerce-20261001/evidence/run_source_certification.py",
+          "error_message": "Exact-source report overlay_sha256 could identify mutable source bytes not copied/executed bytes",
+          "observations": [
+            {
+              "owner": "stream 4",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 4",
+              "axis": "working"
+            }
+          ]
+        },
+        {
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Known credential configuration exclusions bypassed by case variants",
+          "observations": [
+            {
+              "owner": "stream 5",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 5",
+              "axis": "working"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bug-379",
+      "identities": [
+        {
+          "file": "tools/3d-commerce/viewer.mjs",
+          "error_message": "GLB preflight accepted empty/null URI fields and undeclared nested extensions",
+          "observations": [
+            {
+              "owner": "stream 4",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 4",
+              "axis": "working"
+            }
+          ]
+        },
+        {
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Exact repository root with trailing whitespace rejected as not top-level",
+          "observations": [
+            {
+              "owner": "stream 5",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 5",
+              "axis": "working"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bug-380",
+      "identities": [
+        {
+          "file": "tools/3d-commerce/test-native-product-link.php",
+          "error_message": "SQLite database is locked during synthetic WooCommerce publish/draft test transitions",
+          "observations": [
+            {
+              "owner": "stream 4",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 4",
+              "axis": "working"
+            }
+          ]
+        },
+        {
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Default metadata inventory invoked Git status clean filter on tracked synthetic .env",
+          "observations": [
+            {
+              "owner": "stream 5",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 5",
+              "axis": "working"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bug-381",
+      "identities": [
+        {
+          "file": "tools/3d-commerce/test-native-product-link.php",
+          "error_message": "WP shutdown cron HTTP attempt made fixture process fail after assertion output",
+          "observations": [
+            {
+              "owner": "stream 4",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 4",
+              "axis": "working"
+            }
+          ]
+        },
+        {
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Nested agent config stores bypassed sensitive path exclusion",
+          "observations": [
+            {
+              "owner": "stream 5",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 5",
+              "axis": "working"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bug-382",
+      "identities": [
+        {
+          "file": "tasks/3d-commerce-20261001/README.md",
+          "error_message": "Default python3 has no modules ruff, black or mypy",
+          "observations": [
+            {
+              "owner": "stream 4",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 4",
+              "axis": "working"
+            }
+          ]
+        },
+        {
+          "file": "scripts/repository_inventory.py",
+          "error_message": "B905 zip() without an explicit strict= parameter",
+          "observations": [
+            {
+              "owner": "stream 5",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 5",
+              "axis": "working"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bug-383",
+      "identities": [
+        {
+          "file": "tasks/3d-commerce-20261001/evidence/viewer-contract.log",
+          "error_message": "git diff --cached --check reported trailing whitespace in retained Node empty-URI test names",
+          "observations": [
+            {
+              "owner": "stream 4",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 4",
+              "axis": "working"
+            }
+          ]
+        },
+        {
+          "file": "scripts/repository_inventory.py",
+          "error_message": "UP035 Import from collections.abc instead: Iterator",
+          "observations": [
+            {
+              "owner": "stream 5",
+              "axis": "committed"
+            },
+            {
+              "owner": "stream 5",
+              "axis": "working"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "identity_resolution": {
+    "status": "PENDING_COORDINATED_MAPPING",
+    "owner": "principal integration lead",
+    "integration_id_385": "allocated by integration lead; stream5 must not allocate",
+    "stream5_ledger_changes": false,
+    "published_identity_changes": false,
+    "rule": "published identities retain meaning; integration owner assigns reviewed selective final mapping; owners apply only explicitly assigned changes"
+  },
+  "integration_tooling": {
+    "observed_head": "c4d971022aee75b6ea58b13b44cdc9d91aeb81e9",
+    "code_test_hashes": [
+      {
+        "path": "scripts/repository_inventory.py",
+        "canonical_sha256": "fd9ba6c77d1e22dda387c99e24d83dc288621193f0320f2faef15b3cd0e8fe1a",
+        "integration_working_sha256": "fd9ba6c77d1e22dda387c99e24d83dc288621193f0320f2faef15b3cd0e8fe1a",
+        "observation": "exact bytes adopted; no duplicate implementation or rerun required"
+      },
+      {
+        "path": "tests/scripts/test_repository_inventory.py",
+        "canonical_sha256": "01f43be03f8e40eedd88e3efc19cdd8ad69fba44f6899e5171df398bfd36208a",
+        "integration_working_sha256": "01f43be03f8e40eedd88e3efc19cdd8ad69fba44f6899e5171df398bfd36208a",
+        "observation": "exact bytes adopted; no duplicate implementation or rerun required"
+      }
+    ],
+    "status": "EXACT_CANONICAL_BYTES_OBSERVED",
+    "runtime_acceptance": "not established by source adoption",
+    "selected_dependency_manifest": "AWAITING integration owner actual adoption/path manifest; observed peer heads are not selected dependency assertions"
+  },
+  "local_raw_preservation": {
+    "original_count": 22,
+    "all_hashes_verified": true,
+    "files": [
+      {
+        "bytes": 32,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/captured-at.txt",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "dcac29961ccc5ec8d3ca51049a7e996335d438031091627ae63721b67c2ba700"
+      },
+      {
+        "bytes": 631,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/delivery.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "f952ffc81179b952510cb78858fa5d9db7978c050e1030b485be9edb7f5449b0"
+      },
+      {
+        "bytes": 21200588,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/inventory-final.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "d06b790062f77793ee9ad21c573ccb89d73d3d52988300323c40b304ce86802a"
+      },
+      {
+        "bytes": 21077048,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/inventory.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "cefc6f3ece693e2c1e444ccdf10034e5f2835d367c1fb5b0741f31525f677896"
+      },
+      {
+        "bytes": 633,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/main-protection.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "0a66cd538fcdce643916a2b5090bf07ece662bcaea9095f789fcd112856270bd"
+      },
+      {
+        "bytes": 81,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/main.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "ea057535bec32a246a0aa44a3c1b395222aad9028a6da28b5577f624cf7ac29f"
+      },
+      {
+        "bytes": 16655,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/open-prs.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "a7866919193ee5198e135ac56189f43d0a88825df7fd4cfdef5763e92496822c"
+      },
+      {
+        "bytes": 451087,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/pr-comparisons.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "3917d3d845112f48858fc9dca70f9684bd3581319eeee1f97c68ccf3b6b0907c"
+      },
+      {
+        "bytes": 10858,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/pr897-checks.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "e5595c1c555e4d9d8722b8b289e234c0b8bf94157e42b472783b824981c28fd6"
+      },
+      {
+        "bytes": 4873,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/pr897-proposal.md",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "357d788ba67e790553483e9a79dc8b326c3dfe3f8d0680d4322057127267d87e"
+      },
+      {
+        "bytes": 110338,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/pr897-review-comments.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "15616ba0dbcb373ac94bea627824c8e52ecf09cb57ff08dcadbda5e08dddd432"
+      },
+      {
+        "bytes": 73536,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/pr897.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "ea3f3d2e8d03a60a73ea8272a223538ab3d2103d8e1743d2e7422da4f140858b"
+      },
+      {
+        "bytes": 475,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/rulesets.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "248b44ad8d55d63705d1a91efdfa06f3cb5c30d019cb0a6b1318d7bd9a7a9c24"
+      },
+      {
+        "bytes": 3304,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-20261001/tests.txt",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "2efac54a936a2fd140511ae53e43e32e7bc01b6b216ac20b72068753f5376af8"
+      },
+      {
+        "bytes": 255,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-closing-20261001/architect-edit-preservation.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "40b261c9ca4e571c3b18370e3adef25dd4b4293aece48325960cabf48cef62c3"
+      },
+      {
+        "bytes": 2981,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-closing-20261001/bug-identities.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "f5e1b04f8088a39d977404a108776f3864f0ccb49b9d8eea306cad015ad1b544"
+      },
+      {
+        "bytes": 33,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-closing-20261001/captured-at.txt",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "1282201c87ae1badadc030e333828ba7f39d19158bc3eaeb7e877ce7021cda88"
+      },
+      {
+        "bytes": 20558,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-closing-20261001/dependency-sets.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "4cdf8b498d2a821643daa5728fe54c3d4b53ca82bb76a32578f88b3cbfde47ea"
+      },
+      {
+        "bytes": 4520,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-closing-20261001/peer-working-bug-identities.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "489ea08ccc7c63bd615fbbbb44a21ec6f763107e228e3887dac1a70d40f94dab"
+      },
+      {
+        "bytes": 81,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-closing-20261001/published-main.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "ea057535bec32a246a0aa44a3c1b395222aad9028a6da28b5577f624cf7ac29f"
+      },
+      {
+        "bytes": 7926,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-closing-20261001/retention-candidates.json",
+        "preservation_disposition": "retain in place; external copy/transfer/removal not authorized",
+        "sha256": "0ee60a403d54b6c11192d322111ee434a90de36461a94523157d90ac2fd12711"
+      },
+      {
+        "bytes": 4161,
+        "git_alone_can_restore": false,
+        "git_ignored": true,
+        "git_tracked": false,
+        "path": ".artifacts/consolidation-closing-20261001/verify_closing_packet.py",
+        "preservation_disposition": "retain in place; offline validation source outside Git recovery",
+        "sha256": "e6601130b16e2afde9b0f1d7a05afd2e9c8a4d4dc704e86928ca1c8552dd0443"
+      }
+    ],
+    "disposition": "retain all originals in place; local copies do not authorize source removal"
+  },
+  "raw_copy_verification": {
+    "status": "PASS_LOCAL_COPY_HASH_VERIFICATION",
+    "destination": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/consolidation",
+    "copy_owner": "principal integration lead",
+    "scope": "22 raw files with original relative paths; independent read-only hash verification after copy",
+    "full_validator_dependencies": [
+      "Versioned docs/consolidation receipts exported at58bda7e5c216e58daf64024439f5e573d14f056e",
+      "Canonical CLI and fixture exports at4b5763ce5b3d0768f7f39d182ccd62c2b838b158",
+      "Historical local Git objects; preserved original architect absolute path"
+    ],
+    "restoration_status": "NOT REHEARSED; raw copy hashes alone are not independent restore proof",
+    "verified_at_utc": "2026-10-01T12:29:31.969595+00:00",
+    "raw_files": 22,
+    "raw_bytes": 42990654,
+    "integration_copy_receipt": "/Users/theceo/.codex/worktrees/4035/DevSkyy/tasks/integration-release-20261001/evidence/consolidation-preservation.json",
+    "integration_copy_receipt_sha256": "a0838309c3aae2c66916d7baec5ccccfec767befbbe7b5e478cd8faec5014ace",
+    "receipt_semantics": "All22 exact original/copy paths, sizes and hashes match historical source manifest; no extra or missing records",
+    "originals_retained": true,
+    "copied_historical_validator": {
+      "status": "PASS",
+      "command": "python3 .artifacts/consolidation-closing-20261001/verify_closing_packet.py",
+      "cwd": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/consolidation",
+      "limits": "Requires local historical Git objects and retained original architect absolute path; validates historical snapshots, not current cross-stream IDs or isolated restoration"
+    },
+    "support_exports": [
+      {
+        "path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/consolidation/docs/consolidation/README.md",
+        "source_commit": "58bda7e5c216e58daf64024439f5e573d14f056e",
+        "source_path": "docs/consolidation/README.md",
+        "bytes": 11417,
+        "sha256": "81051803eb10b23b5c3ffa02f11163234dfce3c45c2137fa4a587301518b5be0"
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/consolidation/docs/consolidation/evidence.json",
+        "source_commit": "58bda7e5c216e58daf64024439f5e573d14f056e",
+        "source_path": "docs/consolidation/evidence.json",
+        "bytes": 31550,
+        "sha256": "1c3e63aea085b24b5a4aaad2d5ee915e6cbd2ff99b0626180dba2c2b8883d04d"
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/consolidation/docs/consolidation/closing-evidence.json",
+        "source_commit": "58bda7e5c216e58daf64024439f5e573d14f056e",
+        "source_path": "docs/consolidation/closing-evidence.json",
+        "bytes": 69606,
+        "sha256": "c116f12a14c12c046e5678fcfc020d17fbf3fa01468790a320fc1dab62116f94"
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/consolidation/docs/consolidation/COORDINATOR-HANDOFF.md",
+        "source_commit": "58bda7e5c216e58daf64024439f5e573d14f056e",
+        "source_path": "docs/consolidation/COORDINATOR-HANDOFF.md",
+        "bytes": 13106,
+        "sha256": "3c0a7c188733d80fed0063226cddc719747cf3f3077d38a28758bb09b97c0074"
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/consolidation/docs/consolidation/identity-correction.json",
+        "source_commit": "58bda7e5c216e58daf64024439f5e573d14f056e",
+        "source_path": "docs/consolidation/identity-correction.json",
+        "bytes": 20204,
+        "sha256": "eefec70e690177c396221a49d5fe86dc552ef18197610084c4ee01801c742795"
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/consolidation/scripts/repository_inventory.py",
+        "source_commit": "4b5763ce5b3d0768f7f39d182ccd62c2b838b158",
+        "source_path": "scripts/repository_inventory.py",
+        "bytes": 20852,
+        "sha256": "fd9ba6c77d1e22dda387c99e24d83dc288621193f0320f2faef15b3cd0e8fe1a"
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/consolidation/tests/scripts/test_repository_inventory.py",
+        "source_commit": "4b5763ce5b3d0768f7f39d182ccd62c2b838b158",
+        "source_path": "tests/scripts/test_repository_inventory.py",
+        "bytes": 14191,
+        "sha256": "01f43be03f8e40eedd88e3efc19cdd8ad69fba44f6899e5171df398bfd36208a"
+      }
+    ]
+  },
+  "consumer_recovery_scope": {
+    "retention_targets": [
+      "logo-registry.json",
+      "wordpress-theme/skyyrose-flagship-2/functions.php",
+      "scripts/scan_product_inventory.py",
+      "scripts/repository_inventory.py"
+    ],
+    "dynamic_consumer_proof": "partial; unresolved dependencies and owner actions retained in COORDINATOR-HANDOFF.md",
+    "unique_source_policy": "retain canonical registry/artwork and all unique editable originals; external Desktop originals not inspected",
+    "restore_prerequisites": [
+      "specific operation and owner-approved consumer map",
+      "materialized local destination with exact hash manifest",
+      "isolated restore rehearsal covering unique originals and applicable consumer/route acceptance",
+      "specific scoped removal authorization"
+    ],
+    "disruptive_operations": [],
+    "removed_bytes": 0,
+    "duplicate_groups": 889,
+    "physical_consolidation_status": "BLOCKED"
+  },
+  "coordinator_edits": {
+    "AGENTS.md": "501d233783165741dba3ce340fab32b86a0608b402d3b922f4ba69cf0b264456",
+    ".codex/agents/architect.toml": "e8505c708d54deaaf5c642ebc44f985c3a791c96ed81967be2db7d1803c17573"
+  },
+  "validation": {
+    "status": "PASS_LOCAL_EVIDENCE_CHECKS",
+    "checked_at_utc": "2026-10-01T12:29:32.074006+00:00",
+    "code_or_fixtures_changed": false,
+    "tests_rerun": false,
+    "checks": [
+      "All22 source raw hashes/sizes unchanged",
+      "All22 integration raw copies equal originals and manifest, total42,990,654bytes",
+      "Integration preservation receipt exact path/hash/count semantics verified",
+      "Seven support exports equal exact historical Git versions",
+      "Copied historical validator PASS with stated context dependencies",
+      "Integration CLI/fixture working hashes equal canonical implementation",
+      "Published/current peer identity union captured; exact7-ID conflict matrix retained, no independent remapping",
+      "Coordinator AGENTS and architect edits preserved; no ledger or integration file edits"
+    ],
+    "document_checks": "PASS: JSON/source identity and historical invariants, exact collision matrix, all original/copy/support/receipt hashes, links, Prettier and git diff --check",
+    "overall_consolidation": "BLOCKED",
+    "restoration_rehearsal": "NOT RUN",
+    "physical_removed_bytes": 0,
+    "document_checked_at_utc": "2026-10-01T12:30:28.769694+00:00"
+  },
+  "current_peer_head_observations": [
+    {
+      "owner": "published main",
+      "head": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "id_count": 341,
+      "maximum_numeric_id": 376,
+      "identities_from_377": []
+    },
+    {
+      "owner": "stream 1",
+      "worktree": "/Users/theceo/.codex/worktrees/58b5/DevSkyy",
+      "head": "854dc6a5c102928e6469391ae71d86d4dbe5861a",
+      "committed_ledger_sha256": "8bde1b3eb469152f38eac131a33b361ac2c313d79b051bb7c0ece5f186b7d725",
+      "working_ledger_sha256": "8bde1b3eb469152f38eac131a33b361ac2c313d79b051bb7c0ece5f186b7d725",
+      "committed_id_count": 342,
+      "working_id_count": 342,
+      "maximum_numeric_id": 377,
+      "committed_identities_from_377": [
+        {
+          "id": "bug-377",
+          "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+          "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping"
+        }
+      ],
+      "working_identities_from_377": [
+        {
+          "id": "bug-377",
+          "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+          "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping"
+        }
+      ]
+    },
+    {
+      "owner": "stream 2",
+      "worktree": "/Users/theceo/.codex/worktrees/56b5/DevSkyy",
+      "head": "48dca7136bb034727708281c4f1246dd66e4ed5d",
+      "committed_ledger_sha256": "8bde1b3eb469152f38eac131a33b361ac2c313d79b051bb7c0ece5f186b7d725",
+      "working_ledger_sha256": "8bde1b3eb469152f38eac131a33b361ac2c313d79b051bb7c0ece5f186b7d725",
+      "committed_id_count": 342,
+      "working_id_count": 342,
+      "maximum_numeric_id": 377,
+      "committed_identities_from_377": [
+        {
+          "id": "bug-377",
+          "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+          "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping"
+        }
+      ],
+      "working_identities_from_377": [
+        {
+          "id": "bug-377",
+          "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+          "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping"
+        }
+      ]
+    },
+    {
+      "owner": "stream 3",
+      "worktree": "/Users/theceo/.codex/worktrees/b5f2/DevSkyy",
+      "head": "e728e3b93fa1944a08a65d7a8605c3a3d31e5985",
+      "committed_ledger_sha256": "6c6b3e52b3e9c81581f9ba2f58d81a537321a49d62f3dab28454daab79d2094b",
+      "working_ledger_sha256": "6c6b3e52b3e9c81581f9ba2f58d81a537321a49d62f3dab28454daab79d2094b",
+      "committed_id_count": 341,
+      "working_id_count": 341,
+      "maximum_numeric_id": 376,
+      "committed_identities_from_377": [],
+      "working_identities_from_377": []
+    },
+    {
+      "owner": "stream 4",
+      "worktree": "/Users/theceo/.codex/worktrees/2610/DevSkyy",
+      "head": "ebe3553a985c9d053d1ae0fb2672efc2ad9b20e4",
+      "committed_ledger_sha256": "0539f7f2784fe2cb74b1916a1ef25b0ed9c2e07efa01a81afbf8be2aa8aa0668",
+      "working_ledger_sha256": "0539f7f2784fe2cb74b1916a1ef25b0ed9c2e07efa01a81afbf8be2aa8aa0668",
+      "committed_id_count": 349,
+      "working_id_count": 349,
+      "maximum_numeric_id": 384,
+      "committed_identities_from_377": [
+        {
+          "id": "bug-377",
+          "file": "tools/3d-commerce/three-renderer.mjs",
+          "error_message": "Accepted multi-scene GLB resources outside the default displayed scene were not disposed"
+        },
+        {
+          "id": "bug-378",
+          "file": "tasks/3d-commerce-20261001/evidence/run_source_certification.py",
+          "error_message": "Exact-source report overlay_sha256 could identify mutable source bytes not copied/executed bytes"
+        },
+        {
+          "id": "bug-379",
+          "file": "tools/3d-commerce/viewer.mjs",
+          "error_message": "GLB preflight accepted empty/null URI fields and undeclared nested extensions"
+        },
+        {
+          "id": "bug-380",
+          "file": "tools/3d-commerce/test-native-product-link.php",
+          "error_message": "SQLite database is locked during synthetic WooCommerce publish/draft test transitions"
+        },
+        {
+          "id": "bug-381",
+          "file": "tools/3d-commerce/test-native-product-link.php",
+          "error_message": "WP shutdown cron HTTP attempt made fixture process fail after assertion output"
+        },
+        {
+          "id": "bug-382",
+          "file": "tasks/3d-commerce-20261001/README.md",
+          "error_message": "Default python3 has no modules ruff, black or mypy"
+        },
+        {
+          "id": "bug-383",
+          "file": "tasks/3d-commerce-20261001/evidence/viewer-contract.log",
+          "error_message": "git diff --cached --check reported trailing whitespace in retained Node empty-URI test names"
+        },
+        {
+          "id": "bug-384",
+          "file": "tasks/3d-commerce-20261001/acceptance-ledger.json",
+          "error_message": "R13/R16/R17 ledger artifact hashes drifted after README log-normalization disclosure edit"
+        }
+      ],
+      "working_identities_from_377": [
+        {
+          "id": "bug-377",
+          "file": "tools/3d-commerce/three-renderer.mjs",
+          "error_message": "Accepted multi-scene GLB resources outside the default displayed scene were not disposed"
+        },
+        {
+          "id": "bug-378",
+          "file": "tasks/3d-commerce-20261001/evidence/run_source_certification.py",
+          "error_message": "Exact-source report overlay_sha256 could identify mutable source bytes not copied/executed bytes"
+        },
+        {
+          "id": "bug-379",
+          "file": "tools/3d-commerce/viewer.mjs",
+          "error_message": "GLB preflight accepted empty/null URI fields and undeclared nested extensions"
+        },
+        {
+          "id": "bug-380",
+          "file": "tools/3d-commerce/test-native-product-link.php",
+          "error_message": "SQLite database is locked during synthetic WooCommerce publish/draft test transitions"
+        },
+        {
+          "id": "bug-381",
+          "file": "tools/3d-commerce/test-native-product-link.php",
+          "error_message": "WP shutdown cron HTTP attempt made fixture process fail after assertion output"
+        },
+        {
+          "id": "bug-382",
+          "file": "tasks/3d-commerce-20261001/README.md",
+          "error_message": "Default python3 has no modules ruff, black or mypy"
+        },
+        {
+          "id": "bug-383",
+          "file": "tasks/3d-commerce-20261001/evidence/viewer-contract.log",
+          "error_message": "git diff --cached --check reported trailing whitespace in retained Node empty-URI test names"
+        },
+        {
+          "id": "bug-384",
+          "file": "tasks/3d-commerce-20261001/acceptance-ledger.json",
+          "error_message": "R13/R16/R17 ledger artifact hashes drifted after README log-normalization disclosure edit"
+        }
+      ]
+    },
+    {
+      "owner": "stream 5",
+      "worktree": "/Users/theceo/.codex/worktrees/a924/DevSkyy",
+      "head": "58bda7e5c216e58daf64024439f5e573d14f056e",
+      "committed_ledger_sha256": "49ba4621cc709367dd72ffc4d7b52638971eebfe2540f7d832ff3c08f4cf5597",
+      "working_ledger_sha256": "49ba4621cc709367dd72ffc4d7b52638971eebfe2540f7d832ff3c08f4cf5597",
+      "committed_id_count": 347,
+      "working_id_count": 347,
+      "maximum_numeric_id": 383,
+      "committed_identities_from_377": [
+        {
+          "id": "bug-383",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "UP035 Import from collections.abc instead: Iterator"
+        },
+        {
+          "id": "bug-378",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Known credential configuration exclusions bypassed by case variants"
+        },
+        {
+          "id": "bug-379",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Exact repository root with trailing whitespace rejected as not top-level"
+        },
+        {
+          "id": "bug-380",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Default metadata inventory invoked Git status clean filter on tracked synthetic .env"
+        },
+        {
+          "id": "bug-381",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Nested agent config stores bypassed sensitive path exclusion"
+        },
+        {
+          "id": "bug-382",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "B905 zip() without an explicit strict= parameter"
+        }
+      ],
+      "working_identities_from_377": [
+        {
+          "id": "bug-383",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "UP035 Import from collections.abc instead: Iterator"
+        },
+        {
+          "id": "bug-378",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Known credential configuration exclusions bypassed by case variants"
+        },
+        {
+          "id": "bug-379",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Exact repository root with trailing whitespace rejected as not top-level"
+        },
+        {
+          "id": "bug-380",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Default metadata inventory invoked Git status clean filter on tracked synthetic .env"
+        },
+        {
+          "id": "bug-381",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "Nested agent config stores bypassed sensitive path exclusion"
+        },
+        {
+          "id": "bug-382",
+          "file": "scripts/repository_inventory.py",
+          "error_message": "B905 zip() without an explicit strict= parameter"
+        }
+      ]
+    },
+    {
+      "owner": "integration",
+      "worktree": "/Users/theceo/.codex/worktrees/4035/DevSkyy",
+      "head": "c4d971022aee75b6ea58b13b44cdc9d91aeb81e9",
+      "committed_ledger_sha256": "8bde1b3eb469152f38eac131a33b361ac2c313d79b051bb7c0ece5f186b7d725",
+      "working_ledger_sha256": "c7fa7c2daef22d2d997df877ee199e3c0e9b93a90932510697c3e556a1020787",
+      "committed_id_count": 342,
+      "working_id_count": 343,
+      "maximum_numeric_id": 385,
+      "committed_identities_from_377": [
+        {
+          "id": "bug-377",
+          "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+          "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping"
+        }
+      ],
+      "working_identities_from_377": [
+        {
+          "id": "bug-377",
+          "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+          "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping"
+        },
+        {
+          "id": "bug-385",
+          "file": "tasks/integration-release-20261001/evidence/native-activation.txt",
+          "error_message": "Error establishing a database connection in integration fixture while copy still running"
+        }
+      ]
+    }
+  ]
+}

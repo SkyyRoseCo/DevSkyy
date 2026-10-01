@@ -134,9 +134,6 @@ export default function EliteStudioPage() {
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
             Elite <span className="bg-gradient-to-r from-[#B76E79] to-[#D4AF37] bg-clip-text text-transparent">Studio</span>
           </h1>
-          <p className="text-gray-400 mt-2 text-lg font-medium">
-            Luxury Grows from Concrete.
-          </p>
         </div>
         <Badge variant="outline" className="border-[#B76E79]/50 bg-[#B76E79]/5 text-[#B76E79] backdrop-blur-sm px-4 py-1">
           <Activity className="h-3 w-3 mr-2 animate-pulse" aria-hidden="true" />

@@ -319,6 +319,41 @@ async def test_verified_paid_order_is_durable_deduplicated_and_synthetic(harness
     assert row.properties["payment_provenance"] == "wc_hmac_verified_date_paid_gmt"
 
 
+async def test_preorder_snapshot_and_private_fields_cannot_change_purchase_identity(harness):
+    """Stream 2's WC promise remains order metadata, never analytics content."""
+    from api.v1.analytics.event_store import scoped_event_id
+
+    client, sessions, _ = harness
+    order = paid_order(
+        customer_note="PRIVATE_CUSTOMER_NOTE",
+        shipping={"address_1": "PRIVATE_ADDRESS"},
+        meta_data=[
+            {"key": "_skyyrose_preorder_schema", "value": "skyyrose.preorder-commercial-promise"},
+            {"key": "_skyyrose_preorder_schema_version", "value": 2},
+            {"key": "_skyyrose_preorder_snapshot", "value": {"promise": "PRIVATE_PROMISE"}},
+        ],
+        line_items=[{"meta_data": [{"key": "secret", "value": "PRIVATE_ITEM_METADATA"}]}],
+    )
+    assert (await webhook(client, order)).json()["analytics"]["accepted"] == 1
+    order["meta_data"][2]["value"] = {"promise": "PRIVATE_CHANGED_PROMISE"}
+    order["customer_note"] = "PRIVATE_CHANGED_NOTE"
+    assert (await webhook(client, order)).json()["analytics"]["duplicates"] == 1
+    async with sessions() as db:
+        row = (await db.execute(select(StorefrontAnalyticsEvent))).scalar_one()
+    assert row.id == scoped_event_id("synthetic-site", "test", "paid_order:123")
+    projected = json.dumps(
+        {"properties": row.properties, "summary": (await summary(client)).json()}
+    )
+    assert "PRIVATE_" not in projected
+    assert "preorder" not in projected
+    order["total"] = "123.46"
+    response = await webhook(client, order)
+    assert response.status_code == 503
+    assert response.json()["detail"]["analytics"]["reason"] == "paid_order_identity_changed"
+    async with sessions() as db:
+        assert (await db.execute(select(func.count(StorefrontAnalyticsEvent.id)))).scalar() == 1
+
+
 async def test_wc_signature_site_payment_and_amount_cannot_be_forged(harness):
     client, sessions, _ = harness
     assert (await webhook(client, paid_order(), secret="forged")).status_code == 401
@@ -432,3 +467,25 @@ async def test_irrelevant_order_stays_skipped_without_analytics_configuration(ha
     result = await webhook(client, paid_order(status="pending"))
     assert result.status_code == 200
     assert result.json()["analytics"]["status"] == "skipped"
+
+
+async def test_duplicate_ids_inside_batch_are_counted_once(harness):
+    """LOCAL SYNTHETIC: identical duplicates within one signed request."""
+    client, sessions, _ = harness
+    data = envelope()
+    data["events"].append(dict(data["events"][0]))
+    result = await ingest(client, data)
+    assert result.status_code == 200
+    assert result.json()["accepted"] == result.json()["duplicates"] == 1
+    async with sessions() as db:
+        assert (await db.execute(select(func.count(StorefrontAnalyticsEvent.id)))).scalar() == 1
+
+
+async def test_conflicting_duplicate_ids_inside_batch_roll_back_all_rows(harness):
+    client, sessions, _ = harness
+    data = envelope()
+    changed = dict(data["events"][0], target="/synthetic-changed-target")
+    data["events"].extend([changed, envelope()["events"][0]])
+    assert (await ingest(client, data)).status_code == 409
+    async with sessions() as db:
+        assert (await db.execute(select(func.count(StorefrontAnalyticsEvent.id)))).scalar() == 0

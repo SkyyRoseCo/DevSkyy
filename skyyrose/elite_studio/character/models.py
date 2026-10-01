@@ -4,7 +4,6 @@ Character system data models for SkyyRose Elite Studio.
 Frozen dataclasses for character specs, sheets, and poses.
 All objects are immutable.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

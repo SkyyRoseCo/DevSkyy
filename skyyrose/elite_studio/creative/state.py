@@ -4,7 +4,6 @@ CreativeOperationState — shared state for the Creative Operations Hub graph.
 Handles all 14 creative intents with unified state structure.
 Each node populates its result field and sets status/error accordingly.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

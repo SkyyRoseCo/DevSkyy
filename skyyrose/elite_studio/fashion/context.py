@@ -4,7 +4,6 @@ Fashion context builder for SkyyRose Elite Studio.
 Assembles a complete FashionContext from SKU, garment type, collection,
 and season. Loads product data from the product catalog CSV.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations
@@ -210,10 +209,12 @@ class FashionContextBuilder:
         from .knowledge import BRAND_TAGLINE
 
         dna_data = COLLECTION_DNA.get(collection.lower(), {})
+        tagline = dna_data.get("tagline", BRAND_TAGLINE)
+        tagline_note = f"Tagline: {tagline}" if tagline else ""
         collection_dna = (
             f"{dna_data.get('name', collection)}: {dna_data.get('aesthetic', '')}. "
             f"Mood: {dna_data.get('mood', '')}. "
-            f"Tagline: {dna_data.get('tagline', BRAND_TAGLINE)}"
+            f"{tagline_note}"
         ).strip()
 
         # Sizing

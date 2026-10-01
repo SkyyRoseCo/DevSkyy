@@ -1,0 +1,22 @@
+
+> skyyrose-flagship-2-theme@2.5.0 check:scene-posters
+> node ../../tools/v2-runtime/build-scene-posters.cjs --check
+
+{
+  "status": "PASS_REPRODUCIBLE_SCENE_POSTERS",
+  "tool_version": "1.6.0\nlibsharpyuv: 0.4.2",
+  "outputs": [
+    {
+      "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp",
+      "bytes": 69660,
+      "sha256": "fe92f8838cb20f911e95afc2f1ab75ad1bc94601d3a00b0db7bf9c9165abd1a4"
+    },
+    {
+      "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp",
+      "bytes": 156866,
+      "sha256": "2cbf726ea73c1c0a3eead460228b302d07f6ea51ebd3e5a70c9380515e25b9d8"
+    }
+  ]
+}
+(node:36082) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

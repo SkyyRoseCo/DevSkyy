@@ -1,0 +1,23 @@
+{
+  "baseline_ref": "226cef2011ffa97b8bd064b6c7d036213da62d88",
+  "baseline_totals": {
+    "errors": 45,
+    "warnings": 14,
+    "fixable": 8
+  },
+  "current_totals": {
+    "errors": 43,
+    "warnings": 14,
+    "fixable": 8
+  },
+  "introduced_fingerprints": [],
+  "removed_fingerprints": [
+    {
+      "file": "hero-composed-scene.php",
+      "source": "WordPress.WP.I18n.MissingTranslatorsComment",
+      "message": "A function call to __() with texts containing placeholders was found, but was not accompanied by a \"translators:\" comment on the line above to clarify the meaning of the placeholders.",
+      "count": 2
+    }
+  ],
+  "scope": "four touched runtime files; unchanged baseline violations retained; standalone fixtures checked separately"
+}

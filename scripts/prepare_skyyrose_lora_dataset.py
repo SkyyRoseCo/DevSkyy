@@ -21,7 +21,7 @@ project_root = Path(__file__).parent.parent
 # SkyyRose Brand DNA (COMPLETE)
 BRAND_DNA = {
     "name": "SkyyRose",
-    "tagline": "Luxury Grows from Concrete.",
+    "tagline": "",
     "trigger_word": "skyyrose",
     "core_values": [
         "authentic luxury",

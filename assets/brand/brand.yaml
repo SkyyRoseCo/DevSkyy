@@ -27,12 +27,15 @@ generated_at: "2026-04-17T00:00:00Z"
 # ── Tagline ──────────────────────────────────────────────────────────────────
 
 tagline:
-  # THE tagline. Every surface says this.
-  active: "Luxury Grows from Concrete."
+  # Constitution v1, owner-ratified 2026-09-23: no active tagline.
+  active: ""
 
   # Historical taglines. Enforcement: a CI test asserts none of these appear
   # in any wordpress/**/*.{php,py} or frontend/**/*.{ts,tsx,js,jsx} file.
   retired:
+    - phrase: "Luxury Grows from Concrete."
+      retired_at: "2026-09-23"
+      reason: "Constitution v1: no active tagline; no invented replacement."
     - phrase: "Where Love Meets Luxury"
       retired_at: "2026-03"
       reason: |
@@ -82,7 +85,7 @@ colors:
 collections:
   black-rose:
     display_name: "BLACK ROSE"
-    tagline: "Luxury Grows from Concrete."
+    tagline: ""
     description: "Gothic luxury — Oakland grit meets dark elegance. The brand's flagship collection: where streetwear toughness meets premium craftsmanship."
     theme: "gothic romance meets Oakland street luxury"
     mood: "dark, powerful, mysterious, luxurious"

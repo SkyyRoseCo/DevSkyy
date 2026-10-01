@@ -1,0 +1,19 @@
+{
+  "tested_source_sha": "6f796ef1f528b4a695ef510b912808484ce5cc8d",
+  "prior_tested_source_sha": "9e4101e8bde89f2efe6828519393221d9b81c639",
+  "theme_diff": [
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-bootstrap.php"
+  ],
+  "production_runtime_byte_identical": true,
+  "stream2_successor": "48dca7136bb034727708281c4f1246dd66e4ed5d",
+  "adopted_as": "6f796ef1f528b4a695ef510b912808484ce5cc8d",
+  "successor_files_exact": true,
+  "registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+  "clean_checkout": {
+    "head": "6f796ef1f528b4a695ef510b912808484ce5cc8d",
+    "status": "",
+    "package": "BLOCKED old first input pin; noZIP"
+  },
+  "browser_evidence": "Earlier native9e runtime evidence remains applicable to identical successor production runtime; new fixture does not grant hosted acceptance"
+}

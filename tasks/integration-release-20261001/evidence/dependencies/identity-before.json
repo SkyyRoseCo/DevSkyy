@@ -1,0 +1,15 @@
+{
+  "head": "c4d971022aee75b6ea58b13b44cdc9d91aeb81e9",
+  "branch": "codex/integration-release-20261001",
+  "dirty_before": " M ../.codex/agents/architect.toml\n M ../AGENTS.md\n M package-lock.json\n?? ../tasks/integration-release-20261001/\n",
+  "node": "v22.23.2",
+  "npm": "10.9.8",
+  "sha256_before": {
+    "frontend/package.json": "0e2491765833b6324abe9d8bae6b7c30bf177512034e43fbdb220e68fc1de47d",
+    "frontend/package-lock.json": "31e5de9c4899b05d70c9cadee4921e38722e4b1f4534a8afc9b6f13f7be364dc",
+    "package.json": "d34cc4c050e5c412d48d71e644f926181c3859430508c07eb54adfcd1fe89443",
+    "package-lock.json": "20af3ae2ab7c3e74f40355773046033c4246999da727adada706b3d1e9725f7f"
+  },
+  "initial_dirty_before_dependency_commands": " M .codex/agents/architect.toml\n",
+  "capture_note": "Initial manifests/locks were clean per initial git status. Baseline hashes reconstructed from that HEAD; first unchanged npm package-lock-only invocation normalized optional libc metadata, which was restored from HEAD before final validation."
+}

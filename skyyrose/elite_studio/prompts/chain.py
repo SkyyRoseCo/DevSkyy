@@ -406,8 +406,9 @@ class PromptChain:
                 parts.append(brand_note)
                 added.append("injected custom brand context")
         else:
+            brand_identity = f"{BRAND_NAME} — {BRAND_TAGLINE}" if BRAND_TAGLINE else BRAND_NAME
             parts.append(
-                f"Brand: {BRAND_NAME} — {BRAND_TAGLINE} "
+                f"Brand: {brand_identity}. "
                 f"Oakland luxury streetwear. Rose gold accent: {BRAND_COLORS['rose_gold']}"
             )
             added.append("injected SkyyRose brand identity")

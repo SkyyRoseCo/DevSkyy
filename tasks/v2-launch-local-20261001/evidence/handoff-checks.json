@@ -1,0 +1,13 @@
+{
+  "timestamp_utc": "2026-10-01T07:30:18.305455+00:00",
+  "final_source_candidate": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+  "artifact_reference_check": "PASS: every acceptance-ledger artifact exists, is committed and matches its recorded SHA-256",
+  "handoff_diff_scope": "PASS: evidence and repository session notes only",
+  "diff_whitespace_check": {
+    "unfiltered_status": "FAIL",
+    "reason": "Two trailing-whitespace lines in verbatim pytest failure output in brand-enforcement.log. Raw evidence was retained byte-for-byte; code/document diff excluding raw log files passes.",
+    "source_and_document_status": "PASS"
+  },
+  "temporary_local_preview_server": "STOPPED after captures",
+  "authentication": "NOT APPLICABLE: offline handoff checks"
+}

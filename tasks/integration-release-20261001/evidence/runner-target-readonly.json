@@ -1,0 +1,39 @@
+[
+  {
+    "id": "docker_info",
+    "status": "TIMEOUT",
+    "timeout_seconds": 12
+  },
+  {
+    "id": "fly_apps",
+    "exit_code": 0,
+    "stderr": "",
+    "apps": [
+      {
+        "id": "devskyy-api",
+        "status": "deployed",
+        "deployed": true,
+        "organization_slug": "personal"
+      },
+      {
+        "id": "devskyy-backend",
+        "status": "deployed",
+        "deployed": true,
+        "organization_slug": "personal"
+      },
+      {
+        "id": "devskyy-mz1-ow",
+        "status": "pending",
+        "deployed": false,
+        "organization_slug": "personal"
+      },
+      {
+        "id": "devskyy-runway-governor-staging",
+        "status": "suspended",
+        "deployed": true,
+        "organization_slug": "personal"
+      }
+    ],
+    "account_identity": "Authenticated CLI; personal organization display name redacted"
+  }
+]

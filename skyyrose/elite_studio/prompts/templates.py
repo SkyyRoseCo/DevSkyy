@@ -9,12 +9,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from skyyrose.elite_studio.brand import BrandConfig
+
 # ---------------------------------------------------------------------------
 # SkyyRose brand constants for template injection
 # ---------------------------------------------------------------------------
 
 BRAND_NAME = "SkyyRose"
-BRAND_TAGLINE = "Luxury Grows from Concrete."
+BRAND_TAGLINE = BrandConfig.load().tagline_active
 BRAND_FOUNDER = "Corey Foster"
 BRAND_LOCATION = "Oakland, California"
 

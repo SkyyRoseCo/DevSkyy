@@ -46,6 +46,35 @@ def test_registry_matches_its_schema(registry: dict) -> None:
     )
 
 
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("src", "assets/../private/front.webp"),
+        ("width", 0),
+        ("sha256", "not-a-sha256"),
+        ("current_fidelity_status", "UNREVIEWED"),
+        ("unexpected", "stray rendition data"),
+    ],
+)
+def test_schema_rejects_invalid_card_front(registry: dict, field: str, value: object) -> None:
+    candidate = deepcopy(registry)
+    candidate["products"]["br-003"]["images"]["card_front"][field] = value
+    assert check_schema(candidate), f"Invalid card front {field} passed schema validation"
+
+
+def test_schema_requires_blocked_card_reason(registry: dict) -> None:
+    candidate = deepcopy(registry)
+    del candidate["products"]["br-001"]["images"]["card_front"]["current_fidelity_note"]
+    assert check_schema(candidate)
+
+
+@pytest.mark.parametrize("field,value", [("schema_version", 2), ("authorization", "")])
+def test_schema_rejects_invalid_card_manifest(registry: dict, field: str, value: object) -> None:
+    candidate = deepcopy(registry)
+    candidate["storefront_card_manifest"][field] = value
+    assert check_schema(candidate), f"Invalid card manifest {field} passed schema validation"
+
+
 def test_registry_is_internally_consistent(registry: dict) -> None:
     """catalog.sku matches its key, catalog_columns is satisfied, images exist on disk."""
     findings = check_consistency(registry)

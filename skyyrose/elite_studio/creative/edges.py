@@ -3,7 +3,6 @@ Creative Operations Hub routing edges.
 
 Routing logic for the unified creative operations LangGraph.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

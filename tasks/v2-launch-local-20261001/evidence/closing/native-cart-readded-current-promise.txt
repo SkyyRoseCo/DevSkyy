@@ -1,0 +1,70 @@
+- link "Skip to content":
+  - /url: "#primary"
+- banner:
+  - link "SkyyRose home":
+    - /url: http://127.0.0.1:18362/
+  - navigation "Editorial navigation":
+    - list:
+      - link "Shop":
+        - /url: http://127.0.0.1:18362/?page_id=5
+      - link "Collections":
+        - /url: http://127.0.0.1:18362/collections/
+      - link "Journal":
+        - /url: http://127.0.0.1:18362/journal/
+      - link "About":
+        - /url: http://127.0.0.1:18362/about/
+  - link "Search":
+    - /url: http://127.0.0.1:18362/?s=
+    - generic: Search
+  - link "Bag 1 items in bag":
+    - /url: http://127.0.0.1:18362/?page_id=6
+    - text: Bag
+    - generic "1 items in bag": ( 1 )
+  - button "Open site menu":
+    - generic: Menu
+- main:
+  - table "Products in cart":
+    - caption:
+      - heading "Products in cart" [level=2]
+    - rowgroup:
+      - row "Details Total":
+        - columnheader: Product
+        - columnheader "Details":
+          - generic: Details
+        - columnheader "Total"
+    - rowgroup:
+      - row "Synthetic classification fixture regular $80.00":
+        - cell:
+          - link:
+            - /url: http://127.0.0.1:18362/?product=synthetic-classification-fixture-regular-3&attribute_size=S
+        - rowheader "Synthetic classification fixture regular":
+          - link "Synthetic classification fixture regular":
+            - /url: http://127.0.0.1:18362/?product=synthetic-classification-fixture-regular-3&attribute_size=S
+          - generic: $80.00
+          - generic: "Pre-Order: Yes /"
+          - generic: "Expected ship date: 2027-02-20"
+          - generic: "Size: S"
+          - button "Reduce quantity of Synthetic classification fixture regular" [disabled]: −
+          - spinbutton "Quantity of Synthetic classification fixture regular in your cart.": "1"
+          - button "Increase quantity of Synthetic classification fixture regular": +
+          - button "Remove Synthetic classification fixture regular from cart":
+        - cell "$80.00":
+          - generic: $80.00
+  - heading "Cart totals" [level=2]
+  - heading "Add coupons" [level=2]:
+    - button "Add coupons":
+      - text: Add coupons
+  - generic: Estimated total
+  - generic: $80.00
+  - link "Proceed to Checkout":
+    - /url: http://127.0.0.1:18362/?page_id=7
+    - generic: Proceed to Checkout
+- contentinfo:
+  - link "SkyyRose":
+    - /url: http://127.0.0.1:18362/
+    - generic: SkyyRose
+  - generic "Explore"
+  - generic "Client Services"
+  - generic "Legal"
+  - paragraph: © 2026 The Skyy Rose Collection LLC
+- status

@@ -315,6 +315,26 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/home-art-direction.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Homepage type, hero layout and reduced-motion atmosphere rules; enqueued by functions.php on front page and used by critical home contract.",
+      "release": true
+    },
+    "assets/css/home-art-direction.min.css": {
+      "category": "GENERATED OUTPUT",
+      "reason": "Deterministic minified runtime derivative of assets/css/home-art-direction.css",
+      "release": true
+    },
+    "assets/css/home-experience.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Still-visible collection films and manual Jersey rail; enqueued by functions.php on front page.",
+      "release": true
+    },
+    "assets/css/home-experience.min.css": {
+      "category": "GENERATED OUTPUT",
+      "reason": "Deterministic minified runtime derivative of assets/css/home-experience.css",
+      "release": true
+    },
     "assets/css/home-page.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
@@ -373,6 +393,16 @@
     "assets/css/premium-commerce.min.css": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/product-glb.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
+      "release": true
+    },
+    "assets/css/product-glb.min.css": {
+      "category": "GENERATED OUTPUT",
+      "reason": "Deterministic minified runtime derivative of assets/css/product-glb.css; exact owning CleanCSS parity reviewed.",
       "release": true
     },
     "assets/css/product-page.css": {
@@ -1020,6 +1050,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/images/house-monument-20260928.webp": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Existing source bytes used by homepage hero and preload; classification conveys package inclusion only.",
+      "release": true
+    },
+    "assets/images/house-oakland-atelier-20260928.webp": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Existing house source bytes used by retained content-page art direction; package inclusion only.",
+      "release": true
+    },
     "assets/images/skyy-runtime-poster.webp": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -1053,6 +1093,26 @@
     "assets/js/experience-analyzer.min.js": {
       "category": "RUNTIME SOURCE",
       "reason": "Standalone consent UI and durable analytics transport",
+      "release": true
+    },
+    "assets/js/home-experience.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Visibility/preference-gated local films and manual Jersey navigation; enqueued by front-page assets.",
+      "release": true
+    },
+    "assets/js/home-experience.min.js": {
+      "category": "GENERATED OUTPUT",
+      "reason": "Deterministic minified runtime derivative of assets/js/home-experience.js",
+      "release": true
+    },
+    "assets/js/house-motion.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Homepage atmosphere pause/preference/visibility controls; enqueued by front-page assets.",
+      "release": true
+    },
+    "assets/js/house-motion.min.js": {
+      "category": "GENERATED OUTPUT",
+      "reason": "Deterministic minified runtime derivative of assets/js/house-motion.js",
       "release": true
     },
     "assets/js/house-of-roses-motion.js": {
@@ -1153,6 +1213,21 @@
     "assets/js/premium-commerce.min.js": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/product-glb-init.mjs": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
+      "release": true
+    },
+    "assets/js/product-glb-three.mjs": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
+      "release": true
+    },
+    "assets/js/product-glb-viewer.mjs": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
       "release": true
     },
     "assets/js/quick-view-commerce.js": {
@@ -2805,6 +2880,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "inc/product-glb-links.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
+      "release": true
+    },
+    "inc/product-glb.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
+      "release": true
+    },
     "inc/quick-view-commerce.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -2828,6 +2913,11 @@
     "inc/starter-content.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/woocommerce-compat.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
       "release": true
     },
     "index.php": {
@@ -3008,6 +3098,11 @@
     "scripts/sync-analytics.py": {
       "category": "AUTHORING ONLY",
       "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
+    "scripts/test-collection-hero-motion.py": {
+      "category": "AUTHORING / TEST",
+      "reason": "Offline motion-binding regression; excluded from runtime package.",
       "release": false
     },
     "scripts/test-critical-rendering.php": {
@@ -3200,6 +3295,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "template-parts/commerce/jersey-gallery.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Registry-derived series cast, approved-card resolver with mismatch rejection, native product permalinks; called by home journal and series renderer.",
+      "release": true
+    },
     "template-parts/commerce/product-card.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -3353,6 +3453,31 @@
     "tests/analytics/test_sync_analytics.py": {
       "category": "AUTHORING ONLY",
       "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
+    "tests/commerce/bootstrap.php": {
+      "category": "AUTHORING / TEST",
+      "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
+      "release": false
+    },
+    "tests/commerce/preorder.php": {
+      "category": "AUTHORING / TEST",
+      "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
+      "release": false
+    },
+    "tests/commerce/run-local-matrix.sh": {
+      "category": "AUTHORING / TEST",
+      "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
+      "release": false
+    },
+    "tests/commerce/verify-bootstrap.php": {
+      "category": "AUTHORING / TEST",
+      "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
+      "release": false
+    },
+    "tests/commerce/verify-glb-runtime.php": {
+      "category": "AUTHORING / TEST",
+      "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
       "release": false
     },
     "theme.json": {

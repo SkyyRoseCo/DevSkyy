@@ -1,0 +1,173 @@
+/* Homepage collection motion and Jersey product fronts remain visible without JavaScript. */
+.sr2-home-motion {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.sr2-home-motion > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms ease;
+}
+.sr2-home-motion.is-playing > video {
+  opacity: 1;
+}
+.sr2-home-motion__toggle {
+  position: absolute;
+  z-index: 3;
+  right: 1rem;
+  bottom: 1rem;
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgb(255 255 255 / 65%);
+  border-radius: 0;
+  background: rgb(12 12 12 / 85%);
+  color: #fff;
+  font: 500 0.8rem/1.2 var(--sr2-font-body);
+  cursor: pointer;
+}
+.sr2-home-motion__toggle[hidden] {
+  display: none;
+}
+.sr2-home-motion__toggle:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -6px;
+}
+.sr2-jersey-experience {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(17rem, 1fr);
+  border-top: 1px solid rgb(255 255 255 / 20%);
+  border-bottom: 1px solid rgb(255 255 255 / 20%);
+  background: #111210;
+}
+.sr2-jersey-experience__screen {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 2 / 3;
+  background: #08090a;
+}
+.sr2-jersey-experience__rail {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  list-style: none;
+}
+.sr2-jersey-experience__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+.sr2-jersey-experience__slide > a {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+.sr2-jersey-experience__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.sr2-jersey-experience__slide > a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -6px;
+}
+.sr2-jersey-experience__label {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  padding: 0.8rem 1rem;
+  background: rgb(12 12 12 / 82%);
+  font: 500 0.8rem/1.4 var(--sr2-font-body);
+}
+.sr2-jersey-experience__controls {
+  position: absolute;
+  z-index: 2;
+  right: 1rem;
+  bottom: 4.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.3rem;
+  background: rgb(12 12 12 / 85%);
+  color: #fff;
+}
+.sr2-jersey-experience__controls[hidden] {
+  display: none;
+}
+.sr2-jersey-experience__controls button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(255 255 255 / 65%);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.sr2-jersey-experience__controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.sr2-jersey-experience__controls button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+.sr2-jersey-experience__controls output {
+  min-width: 4.5rem;
+  text-align: center;
+  font: 500 0.75rem/1.2 var(--sr2-font-body);
+}
+.sr2-jersey-experience__stamp {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 2;
+  padding: 0.55rem 0.75rem;
+  background: rgb(12 12 12 / 80%);
+  color: #fff;
+  font: 500 0.65rem/1.3 var(--sr2-font-body);
+  letter-spacing: 0.15em;
+}
+.sr2-jersey-experience__story {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 4rem);
+  color: #f8f4ed;
+}
+.sr2-jersey-experience__story h3 {
+  margin: 0;
+  font: 500 clamp(2.2rem, 4vw, 4.75rem)/0.98 var(--sr2-font-display);
+  letter-spacing: -0.04em;
+  max-width: 10ch;
+}
+.sr2-jersey-experience__story p {
+  margin: 0;
+}
+@media (max-width: 47.99em) {
+  .sr2-jersey-experience {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sr2-jersey-experience__screen {
+    aspect-ratio: 2 / 3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sr2-home-motion > video {
+    transition: none;
+  }
+}

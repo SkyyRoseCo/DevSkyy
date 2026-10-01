@@ -12,6 +12,7 @@ export const CONSOLE_NAV_ITEMS: ConsoleNavItem[] = [
   { id: 'collections', href: '/admin/collections', label: 'Collections' },
   { id: 'scene-authority', href: '/admin/scene-authority', label: 'Scene Authority' },
   { id: 'agents', href: '/admin/agents', label: 'Agent OS' },
+  { id: 'governor', href: '/admin/governor', label: 'Governor' },
   { id: 'web-extraction', href: '/admin/web-extraction', label: 'Web Extract' },
   { id: 'customers', href: '/admin/customers', label: 'Customers' },
   { id: 'settings', href: '/admin/settings', label: 'Settings' },

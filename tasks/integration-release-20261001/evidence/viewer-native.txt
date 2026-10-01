@@ -1,0 +1,19 @@
+PASS: simple native identity and permalink
+PASS: unknown native ID
+PASS: unknown canonical SKU
+PASS: non-full registry digest
+PASS: wrong collection
+PASS: unpublished parent
+PASS: sold-out native stock
+PASS: zero preorder availability
+PASS: stale owner promise
+PASS: exact selected variation and native selected URL
+PASS: foreign-parent variation
+PASS: variable product without selection
+PASS: missing variation attribute
+PASS: wrong exact variation attribute
+PASS: invalid wildcard choice
+PASS: valid native wildcard choice
+PASS: wildcard selection persists in native product URL
+PASS: inactive variation
+PASS 18 assertions; synthetic products only, no cart/order/payment calls.

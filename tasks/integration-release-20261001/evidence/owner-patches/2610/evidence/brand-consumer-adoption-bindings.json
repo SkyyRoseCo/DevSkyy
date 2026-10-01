@@ -1,0 +1,426 @@
+{
+  "patch_base_source": "f3e2b91cad3a17f25aabde6932cfbfb593f0b694",
+  "adoption_source": "c4d971022aee75b6ea58b13b44cdc9d91aeb81e9",
+  "bindings": [
+    {
+      "path": "scripts/add_love_hurts_and_logos_to_lora.py",
+      "source_sha256": "108672eded0cd2aec60c7935b1febea71c6acb7eb95764aca83bd4975eeefef9",
+      "corrected_sha256": "13fe8c41d4ac552b5ff19d40fde8826a188513dc034e619a08991a518e4f7217",
+      "original_patch_base_binding": {
+        "path": "scripts/add_love_hurts_and_logos_to_lora.py",
+        "source_sha256": "108672eded0cd2aec60c7935b1febea71c6acb7eb95764aca83bd4975eeefef9",
+        "corrected_sha256": "13fe8c41d4ac552b5ff19d40fde8826a188513dc034e619a08991a518e4f7217"
+      }
+    },
+    {
+      "path": "scripts/enhance_assets_huggingface.py",
+      "source_sha256": "b5f9bd3e4605936e31f4ec01de72e5d00067cd4bf8dea08ef7dc77c66c86c814",
+      "corrected_sha256": "85d74df64a8eceb75c9b2128ac89ae9212f105644d7ac39c499f051de922660c",
+      "original_patch_base_binding": {
+        "path": "scripts/enhance_assets_huggingface.py",
+        "source_sha256": "b5f9bd3e4605936e31f4ec01de72e5d00067cd4bf8dea08ef7dc77c66c86c814",
+        "corrected_sha256": "85d74df64a8eceb75c9b2128ac89ae9212f105644d7ac39c499f051de922660c"
+      }
+    },
+    {
+      "path": "scripts/enhance_product_images.py",
+      "source_sha256": "1b9b98abe7456e112c8ca051bf4ccc284bfe75d8a0b051a7e9914065c1e9f7dd",
+      "corrected_sha256": "c1204ce4fb9828007adb3e79319f0261fdeb09b2af1201c91f64feeba337e0db",
+      "original_patch_base_binding": {
+        "path": "scripts/enhance_product_images.py",
+        "source_sha256": "1b9b98abe7456e112c8ca051bf4ccc284bfe75d8a0b051a7e9914065c1e9f7dd",
+        "corrected_sha256": "c1204ce4fb9828007adb3e79319f0261fdeb09b2af1201c91f64feeba337e0db"
+      }
+    },
+    {
+      "path": "scripts/enhance_with_ai_pipeline.py",
+      "source_sha256": "3bfa3d244f8346874380383cf545adc386066d544df9a53be6efc862891b56f2",
+      "corrected_sha256": "dd63df683cc8f79cf36ff1e40199ebd38d657bff2b4e177452ca03fe432cc299",
+      "original_patch_base_binding": {
+        "path": "scripts/enhance_with_ai_pipeline.py",
+        "source_sha256": "3bfa3d244f8346874380383cf545adc386066d544df9a53be6efc862891b56f2",
+        "corrected_sha256": "dd63df683cc8f79cf36ff1e40199ebd38d657bff2b4e177452ca03fe432cc299"
+      }
+    },
+    {
+      "path": "scripts/expand_brand_voice_dataset.py",
+      "source_sha256": "b04d64744e4986184d883fa73627269b8c795b304fc3bb2c86226bc6afbbef05",
+      "corrected_sha256": "d57b64e423e3e535e4aed2f8eb1b54b6b1ffda9d4a490ff4685fa107da78b0e5",
+      "original_patch_base_binding": {
+        "path": "scripts/expand_brand_voice_dataset.py",
+        "source_sha256": "b04d64744e4986184d883fa73627269b8c795b304fc3bb2c86226bc6afbbef05",
+        "corrected_sha256": "d57b64e423e3e535e4aed2f8eb1b54b6b1ffda9d4a490ff4685fa107da78b0e5"
+      }
+    },
+    {
+      "path": "scripts/nano_banana/prompts.py",
+      "source_sha256": "5e83402c67f7a422ca675b3cf2b7f4e5b73f4a5a1212f4d38433437fe604e331",
+      "corrected_sha256": "f9347c471df41eeef2b8e291649c7cc6d04e4fc65c304900b6adc10cda5b7280",
+      "original_patch_base_binding": {
+        "path": "scripts/nano_banana/prompts.py",
+        "source_sha256": "5e83402c67f7a422ca675b3cf2b7f4e5b73f4a5a1212f4d38433437fe604e331",
+        "corrected_sha256": "f9347c471df41eeef2b8e291649c7cc6d04e4fc65c304900b6adc10cda5b7280"
+      }
+    },
+    {
+      "path": "scripts/oai_render/scene_schema.py",
+      "source_sha256": "e55bc27f0d6cd9c83174b63dc41a6f31da4977d002cd6cee3139d8a499b8cbf7",
+      "corrected_sha256": "bc2c01a3eed4b60e45646e0517ae1fca87ccbb35418330eb26128377e08b7bc2",
+      "original_patch_base_binding": {
+        "path": "scripts/oai_render/scene_schema.py",
+        "source_sha256": "e55bc27f0d6cd9c83174b63dc41a6f31da4977d002cd6cee3139d8a499b8cbf7",
+        "corrected_sha256": "bc2c01a3eed4b60e45646e0517ae1fca87ccbb35418330eb26128377e08b7bc2"
+      }
+    },
+    {
+      "path": "scripts/prepare_skyyrose_lora_dataset.py",
+      "source_sha256": "d694709349852e6a7baa5171deed62b3b11a1c9be2d55247b7b0c385cbad1be8",
+      "corrected_sha256": "d6ff46b5be3f90c1ebd3a0cb2246f557e9e67a8742343d222fa2ca47170c7765",
+      "original_patch_base_binding": {
+        "path": "scripts/prepare_skyyrose_lora_dataset.py",
+        "source_sha256": "d694709349852e6a7baa5171deed62b3b11a1c9be2d55247b7b0c385cbad1be8",
+        "corrected_sha256": "d6ff46b5be3f90c1ebd3a0cb2246f557e9e67a8742343d222fa2ca47170c7765"
+      }
+    },
+    {
+      "path": "scripts/train_lora_from_products.py",
+      "source_sha256": "ffb675108b328d4bd233945410eb883ad8fe6a3bee3f8cffdfe4a5d095ac0e1e",
+      "corrected_sha256": "e4e0d4d178d91c5f763de42f6807950de3e8ebe52ebb9d0a3657791604003487",
+      "original_patch_base_binding": {
+        "path": "scripts/train_lora_from_products.py",
+        "source_sha256": "ffb675108b328d4bd233945410eb883ad8fe6a3bee3f8cffdfe4a5d095ac0e1e",
+        "corrected_sha256": "e4e0d4d178d91c5f763de42f6807950de3e8ebe52ebb9d0a3657791604003487"
+      }
+    },
+    {
+      "path": "scripts/training/finetune_pipeline.py",
+      "source_sha256": "6c791215777c31964937673552e5082eb9afd07f3f04c4e5595af19338c3ab37",
+      "corrected_sha256": "c780db7dbf768eabeb16f2f9169cd98c02f4fe89e0520559f628a979cedf4e0e",
+      "original_patch_base_binding": {
+        "path": "scripts/training/finetune_pipeline.py",
+        "source_sha256": "6c791215777c31964937673552e5082eb9afd07f3f04c4e5595af19338c3ab37",
+        "corrected_sha256": "c780db7dbf768eabeb16f2f9169cd98c02f4fe89e0520559f628a979cedf4e0e"
+      }
+    },
+    {
+      "path": "scripts/validate_3d_assets.py",
+      "source_sha256": "3b189d749d580dc2f10731c0943d9dd729cf52b32b14ef9dd41aeef1f0f163fd",
+      "corrected_sha256": "1c1843924fbdedeb607f362db572f82c6b7318be454ed0859d1c6643954eff4a",
+      "original_patch_base_binding": {
+        "path": "scripts/validate_3d_assets.py",
+        "source_sha256": "3b189d749d580dc2f10731c0943d9dd729cf52b32b14ef9dd41aeef1f0f163fd",
+        "corrected_sha256": "1c1843924fbdedeb607f362db572f82c6b7318be454ed0859d1c6643954eff4a"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/agents/tripo_agent.py",
+      "source_sha256": "213f204c12942ef9e384fdb91298a1ed572f7f8456a3e01060822715549381b0",
+      "corrected_sha256": "63a35a33f38f33e75ea6cbbf1134a9d31294fa72fed7d329b6c892ca39609049",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/agents/tripo_agent.py",
+        "source_sha256": "213f204c12942ef9e384fdb91298a1ed572f7f8456a3e01060822715549381b0",
+        "corrected_sha256": "63a35a33f38f33e75ea6cbbf1134a9d31294fa72fed7d329b6c892ca39609049"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/character/__init__.py",
+      "source_sha256": "a303bec157d3ed2501bba7d56de882e20c7d2b8cd0cd815e8b78e2b890773c02",
+      "corrected_sha256": "0958c69e0f6a69e97ec1c4b8887e2b1cabe917567136724bc4a4f053eb1b4da3",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/character/__init__.py",
+        "source_sha256": "a303bec157d3ed2501bba7d56de882e20c7d2b8cd0cd815e8b78e2b890773c02",
+        "corrected_sha256": "0958c69e0f6a69e97ec1c4b8887e2b1cabe917567136724bc4a4f053eb1b4da3"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/character/agent.py",
+      "source_sha256": "2a37fcf648218b3a45bc81c0d1a6261f65d85197b91f2f233cca8f0db11d6477",
+      "corrected_sha256": "9869667a077846124dd7ebc5b1c5f7ba31b7156bb49633dc5e07f1c274353d00",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/character/agent.py",
+        "source_sha256": "2a37fcf648218b3a45bc81c0d1a6261f65d85197b91f2f233cca8f0db11d6477",
+        "corrected_sha256": "9869667a077846124dd7ebc5b1c5f7ba31b7156bb49633dc5e07f1c274353d00"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/character/consistency.py",
+      "source_sha256": "4c725d540381bc889de96681e9f6e68f71ba2bbe3d626d6710b57400256b9650",
+      "corrected_sha256": "a583e5c2d2fe634b5beadd677d8a1d3e22be75da192ee8d514c834038b2f64a3",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/character/consistency.py",
+        "source_sha256": "4c725d540381bc889de96681e9f6e68f71ba2bbe3d626d6710b57400256b9650",
+        "corrected_sha256": "a583e5c2d2fe634b5beadd677d8a1d3e22be75da192ee8d514c834038b2f64a3"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/character/models.py",
+      "source_sha256": "f57ba8b9784d71ab55a86e478073f44676577edb2a8f9ddc4915dc0d7480ac5a",
+      "corrected_sha256": "5dfa00e9ba6fcb925e78796f2101dfa1868be76bf9cd8d2bd97d87d8434ffcaa",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/character/models.py",
+        "source_sha256": "f57ba8b9784d71ab55a86e478073f44676577edb2a8f9ddc4915dc0d7480ac5a",
+        "corrected_sha256": "5dfa00e9ba6fcb925e78796f2101dfa1868be76bf9cd8d2bd97d87d8434ffcaa"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/character/sprite_generator.py",
+      "source_sha256": "c7ce3c2215c35d697a416f1822dc8269cb56a4754780b5d0f27007675af52806",
+      "corrected_sha256": "6fd75c80c4b15e28f37f1cd64f006212894941a35c589c57010616cdf62ca42a",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/character/sprite_generator.py",
+        "source_sha256": "c7ce3c2215c35d697a416f1822dc8269cb56a4754780b5d0f27007675af52806",
+        "corrected_sha256": "6fd75c80c4b15e28f37f1cd64f006212894941a35c589c57010616cdf62ca42a"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/creative/__init__.py",
+      "source_sha256": "9b2cb6bab9b8cec80fdb71425a419ce79fa64e44a497c3f5a71e863b882a4d4e",
+      "corrected_sha256": "806944132ae223e8b50039c2c2fe9ade8bef4814ffef07d381be8305dceadbce",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/creative/__init__.py",
+        "source_sha256": "9b2cb6bab9b8cec80fdb71425a419ce79fa64e44a497c3f5a71e863b882a4d4e",
+        "corrected_sha256": "806944132ae223e8b50039c2c2fe9ade8bef4814ffef07d381be8305dceadbce"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/creative/checkpointer.py",
+      "source_sha256": "a1d4a398b087437ade94438f4914b493f0281504856da6ee773a8244a3077e71",
+      "corrected_sha256": "b3b261c023869394ec774d21bb8baa2508a1ae99cdc71b635fd874de8f22984d",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/creative/checkpointer.py",
+        "source_sha256": "f2c340c1c2234935819bccf763fd0a6378f9c089a43b25c83ba97b673b78e091",
+        "corrected_sha256": "206353989e82e5efb3e777277cf3054aa6b4129b6fc0331a8233a1fd4857b7ff"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/creative/edges.py",
+      "source_sha256": "ebf7a75f88a2f853e11a2195adc788b44d4e4c572c784396e12c1f8837e9be3f",
+      "corrected_sha256": "757f8195dfdf1ee731492d95723ec17a8f73ee4066eb846105728e195c723c5b",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/creative/edges.py",
+        "source_sha256": "ebf7a75f88a2f853e11a2195adc788b44d4e4c572c784396e12c1f8837e9be3f",
+        "corrected_sha256": "757f8195dfdf1ee731492d95723ec17a8f73ee4066eb846105728e195c723c5b"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/creative/router.py",
+      "source_sha256": "af54292ebd537a677a53114b278376da8b7e607b14cfd94be6a55f65b14790dd",
+      "corrected_sha256": "970be0b995cafd842f5cc3d25b20f8c048611d2c38e35af3a05ae6d5138a017f",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/creative/router.py",
+        "source_sha256": "af54292ebd537a677a53114b278376da8b7e607b14cfd94be6a55f65b14790dd",
+        "corrected_sha256": "970be0b995cafd842f5cc3d25b20f8c048611d2c38e35af3a05ae6d5138a017f"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/creative/state.py",
+      "source_sha256": "802921127766dfb875440621a2523891f24e98745edd72c6323403ca1462b050",
+      "corrected_sha256": "4a5d6842810ddba79879539604cab11317f11af4f0763864dae7b5b355d63d3e",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/creative/state.py",
+        "source_sha256": "802921127766dfb875440621a2523891f24e98745edd72c6323403ca1462b050",
+        "corrected_sha256": "4a5d6842810ddba79879539604cab11317f11af4f0763864dae7b5b355d63d3e"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/__init__.py",
+      "source_sha256": "1d53c3faa6e164e9410f2d7039ffab607b8071abc932b1833298aa2371919033",
+      "corrected_sha256": "60c6d3097f5ca2d837aba66b28ade48cf4e8ae5129a3093567c8682670811640",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/__init__.py",
+        "source_sha256": "1d53c3faa6e164e9410f2d7039ffab607b8071abc932b1833298aa2371919033",
+        "corrected_sha256": "60c6d3097f5ca2d837aba66b28ade48cf4e8ae5129a3093567c8682670811640"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/colorway.py",
+      "source_sha256": "9af1874377c2fcfe5ba5a73fa7ca0136b5c7d6a6cdd78dfd7ebd58859372791a",
+      "corrected_sha256": "576ac8c4c79b8201534ed3b94f6765abf70343880e3e15eb1ad4b19fcf9a6275",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/colorway.py",
+        "source_sha256": "9af1874377c2fcfe5ba5a73fa7ca0136b5c7d6a6cdd78dfd7ebd58859372791a",
+        "corrected_sha256": "576ac8c4c79b8201534ed3b94f6765abf70343880e3e15eb1ad4b19fcf9a6275"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/context.py",
+      "source_sha256": "164def55a0bd17192fee6f9d0c89d16b02041aca0195a8a76b26d4c223272610",
+      "corrected_sha256": "ef810cb22a7276cd02dae7c36c2dcf411e97f21c62e615961a87a6521e086b70",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/context.py",
+        "source_sha256": "164def55a0bd17192fee6f9d0c89d16b02041aca0195a8a76b26d4c223272610",
+        "corrected_sha256": "ef810cb22a7276cd02dae7c36c2dcf411e97f21c62e615961a87a6521e086b70"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/design/__init__.py",
+      "source_sha256": "9611a2ab1d485e125f61bb2df394e348c15469d9f1e8b286ffc298c2d506ff94",
+      "corrected_sha256": "da73f8c5afcfdbf41928595f1fba076f599d8303615324bfcba0f198bcaf3b7b",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/design/__init__.py",
+        "source_sha256": "9611a2ab1d485e125f61bb2df394e348c15469d9f1e8b286ffc298c2d506ff94",
+        "corrected_sha256": "da73f8c5afcfdbf41928595f1fba076f599d8303615324bfcba0f198bcaf3b7b"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/design/collection_planner.py",
+      "source_sha256": "0242ff1f742e8416af956f3bcbf60f0bf5b61bbd76abc0538eeb73715d6cd5e8",
+      "corrected_sha256": "dc02fdacaeac2a3c0454df1fc7a0b0a672c778a193da8166378954b8fbe6d5a4",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/design/collection_planner.py",
+        "source_sha256": "0242ff1f742e8416af956f3bcbf60f0bf5b61bbd76abc0538eeb73715d6cd5e8",
+        "corrected_sha256": "dc02fdacaeac2a3c0454df1fc7a0b0a672c778a193da8166378954b8fbe6d5a4"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/design/ideation.py",
+      "source_sha256": "97d4f8f0ecd6a99c20af761faf7f87288aad9d120b65d72086474fd9c31b2f38",
+      "corrected_sha256": "a76c007fe3842915bd2e9021929c6911f899732c9c34b32e29b6facb5d79db04",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/design/ideation.py",
+        "source_sha256": "97d4f8f0ecd6a99c20af761faf7f87288aad9d120b65d72086474fd9c31b2f38",
+        "corrected_sha256": "a76c007fe3842915bd2e9021929c6911f899732c9c34b32e29b6facb5d79db04"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/design/mockup.py",
+      "source_sha256": "204394e26e246f72415ef45b51896215b389fb3eb8a106191bb2ce1943010e0e",
+      "corrected_sha256": "3002042379d7d26d1b7530ccd5049317beec1d9f3bf3c2c8e2c67992e0196334",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/design/mockup.py",
+        "source_sha256": "204394e26e246f72415ef45b51896215b389fb3eb8a106191bb2ce1943010e0e",
+        "corrected_sha256": "3002042379d7d26d1b7530ccd5049317beec1d9f3bf3c2c8e2c67992e0196334"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/design/moodboard.py",
+      "source_sha256": "2fa47cb8bd243b132a32a4a4d74e64bf92981190da846cffcdb4af1b3b07b541",
+      "corrected_sha256": "7f38b24ae34d0009eb8bb368ff9a46afa33ffa55cfe320958c3a392e6083aab2",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/design/moodboard.py",
+        "source_sha256": "2fa47cb8bd243b132a32a4a4d74e64bf92981190da846cffcdb4af1b3b07b541",
+        "corrected_sha256": "7f38b24ae34d0009eb8bb368ff9a46afa33ffa55cfe320958c3a392e6083aab2"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/design/tech_pack.py",
+      "source_sha256": "c99f2c8a27a9478cc8af10b2ddea6d1409746be4224cdf6cc132f01ce802dd71",
+      "corrected_sha256": "e2c647918676e6540c0df36a8fed0a87d2b66a23c2781565f9075bba2d26acab",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/design/tech_pack.py",
+        "source_sha256": "c99f2c8a27a9478cc8af10b2ddea6d1409746be4224cdf6cc132f01ce802dd71",
+        "corrected_sha256": "e2c647918676e6540c0df36a8fed0a87d2b66a23c2781565f9075bba2d26acab"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/editorial.py",
+      "source_sha256": "0d854a8ed66ac986678f4b3c10b439e19d8f1d77974ac5058752fe9c26c42873",
+      "corrected_sha256": "843f1567829bbf2a3e4627275912cceb5225d70fd1c3daf5a80eb8a9c70c9318",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/editorial.py",
+        "source_sha256": "0d854a8ed66ac986678f4b3c10b439e19d8f1d77974ac5058752fe9c26c42873",
+        "corrected_sha256": "843f1567829bbf2a3e4627275912cceb5225d70fd1c3daf5a80eb8a9c70c9318"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/knowledge.py",
+      "source_sha256": "4eae3a8c96c8029f43561efe1e9d2b2779b349eb46485b53bccf0123f4a31298",
+      "corrected_sha256": "8d642d4537a8204a9c31ff06849e5c74be42183b486f1d9136e17ef1f282dd09",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/knowledge.py",
+        "source_sha256": "4eae3a8c96c8029f43561efe1e9d2b2779b349eb46485b53bccf0123f4a31298",
+        "corrected_sha256": "8d642d4537a8204a9c31ff06849e5c74be42183b486f1d9136e17ef1f282dd09"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/materials.py",
+      "source_sha256": "86b864ccbc4c39446cf6349afd9bb4c7fcac51e9294b81b41ee34f9e1ab89674",
+      "corrected_sha256": "88eb5d43716b40b8bd547e9ae2a2ca4d264a7564cef67e83eff2537f0554bff1",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/materials.py",
+        "source_sha256": "86b864ccbc4c39446cf6349afd9bb4c7fcac51e9294b81b41ee34f9e1ab89674",
+        "corrected_sha256": "88eb5d43716b40b8bd547e9ae2a2ca4d264a7564cef67e83eff2537f0554bff1"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/photography.py",
+      "source_sha256": "d4ab7fcf74456e3a76d7711e2846019060d6f8525f90ac2a5eb933556dadb5c1",
+      "corrected_sha256": "00e7d2533a36a0dd93a34de1347e7226b55ad63dd8acf38fb60ad5b26ae73fc7",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/photography.py",
+        "source_sha256": "d4ab7fcf74456e3a76d7711e2846019060d6f8525f90ac2a5eb933556dadb5c1",
+        "corrected_sha256": "00e7d2533a36a0dd93a34de1347e7226b55ad63dd8acf38fb60ad5b26ae73fc7"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/qa_rules.py",
+      "source_sha256": "bd50c1d404f85e810dbdb7d1aa53f5e21f1a815f6e165569e9f55644f1cb440c",
+      "corrected_sha256": "15efb61618360ca96bb0d145fe940bf94caca2d97d9ccab1b959b15b34ff02c7",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/qa_rules.py",
+        "source_sha256": "bd50c1d404f85e810dbdb7d1aa53f5e21f1a815f6e165569e9f55644f1cb440c",
+        "corrected_sha256": "15efb61618360ca96bb0d145fe940bf94caca2d97d9ccab1b959b15b34ff02c7"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/sizing.py",
+      "source_sha256": "85ae63e2b5ae19a3abd96d5aa3c410d2c407861c866962cace1a506a69f78c25",
+      "corrected_sha256": "a18e889de23804248eff8351d04c442a194e39fa66d7619eca598f29da83a700",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/sizing.py",
+        "source_sha256": "85ae63e2b5ae19a3abd96d5aa3c410d2c407861c866962cace1a506a69f78c25",
+        "corrected_sha256": "a18e889de23804248eff8351d04c442a194e39fa66d7619eca598f29da83a700"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/fashion/trends.py",
+      "source_sha256": "29292c59d244c54182e4bbbee2156345626b6dd5408c3ffa4b2f1b6ce6b494fc",
+      "corrected_sha256": "8b0b64a8a861318b7c44b54915892a94d7ed5114bf15342105889e90f7b25be1",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/fashion/trends.py",
+        "source_sha256": "29292c59d244c54182e4bbbee2156345626b6dd5408c3ffa4b2f1b6ce6b494fc",
+        "corrected_sha256": "8b0b64a8a861318b7c44b54915892a94d7ed5114bf15342105889e90f7b25be1"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/prompts/chain.py",
+      "source_sha256": "e36538ac362a3a05c04a3e66da3424ff763135b61239217b4535d96b0c2af9b8",
+      "corrected_sha256": "431174dab6ee35ffc36199572dcbe1fe333bb540fab85e115e135e32cb5d098b",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/prompts/chain.py",
+        "source_sha256": "e36538ac362a3a05c04a3e66da3424ff763135b61239217b4535d96b0c2af9b8",
+        "corrected_sha256": "431174dab6ee35ffc36199572dcbe1fe333bb540fab85e115e135e32cb5d098b"
+      }
+    },
+    {
+      "path": "skyyrose/elite_studio/prompts/templates.py",
+      "source_sha256": "277d138048012a0c9d7a3213b0d03bf5cc000d7a1a13c0d06cb5fe5d1f968a8a",
+      "corrected_sha256": "a5e03c08be7a882b722d9530021b42724294630f4da0ed35eef3d93cc440107e",
+      "original_patch_base_binding": {
+        "path": "skyyrose/elite_studio/prompts/templates.py",
+        "source_sha256": "277d138048012a0c9d7a3213b0d03bf5cc000d7a1a13c0d06cb5fe5d1f968a8a",
+        "corrected_sha256": "a5e03c08be7a882b722d9530021b42724294630f4da0ed35eef3d93cc440107e"
+      }
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/js/mascot.js",
+      "source_sha256": "266413e416bb88bbaf1a61a329e473b8ae405a2bf4a08dece71c885e881ef4fa",
+      "corrected_sha256": "b90bb888f505ad4f019fafe846fa1b34a9d13bc3b468df38cfccb3b2e09f30f1",
+      "original_patch_base_binding": {
+        "path": "wordpress-theme/skyyrose-flagship/assets/js/mascot.js",
+        "source_sha256": "266413e416bb88bbaf1a61a329e473b8ae405a2bf4a08dece71c885e881ef4fa",
+        "corrected_sha256": "b90bb888f505ad4f019fafe846fa1b34a9d13bc3b468df38cfccb3b2e09f30f1"
+      }
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/js/mascot.min.js",
+      "source_sha256": "389e5e748de5914675c24632c4dbeb464b1c7644462cd1a2075bc014afbdea9b",
+      "corrected_sha256": "c1d6f0c487b1385f63fc3fdfda8731e2182dd221c25aec73a3b0b3e8051ea333",
+      "original_patch_base_binding": {
+        "path": "wordpress-theme/skyyrose-flagship/assets/js/mascot.min.js",
+        "source_sha256": "389e5e748de5914675c24632c4dbeb464b1c7644462cd1a2075bc014afbdea9b",
+        "corrected_sha256": "c1d6f0c487b1385f63fc3fdfda8731e2182dd221c25aec73a3b0b3e8051ea333"
+      }
+    }
+  ]
+}

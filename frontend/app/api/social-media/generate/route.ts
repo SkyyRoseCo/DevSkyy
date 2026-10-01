@@ -80,13 +80,13 @@ function generateFromTemplate(
   const collectionLabel = product.collection.replace(/-/g, ' ');
   const collectionTag = `#${product.collection.replace(/-/g, '')}`;
 
-  const baseHashtags = ['#SkyyRose', '#LuxuryGrowsFromConcrete', '#LuxuryStreetwear', collectionTag];
+  const baseHashtags = ['#SkyyRose', '#LuxuryStreetwear', collectionTag];
 
   const templates: Record<string, Record<string, string>> = {
     product_launch: {
-      instagram: `Introducing ${product.label} from the ${collectionLabel} collection.\n\nLuxury Grows from Concrete. -- this piece was crafted for those who dare to stand out. Every stitch tells a story of bold elegance.\n\nAvailable now at skyyrose.co\n\n${baseHashtags.join(' ')} #NewDrop #FashionForward`,
+      instagram: `Introducing ${product.label} from the ${collectionLabel} collection.\n\nAvailable now at skyyrose.co\n\n${baseHashtags.join(' ')} #NewDrop #FashionForward`,
       tiktok: `${product.label} just dropped and it's giving EVERYTHING. ${collectionLabel} collection hits different. Link in bio ${baseHashtags.slice(0, 3).join(' ')} #NewDrop`,
-      twitter: `${product.label} is here. ${collectionLabel} collection. Luxury Grows from Concrete.\n\nskyyrose.co ${baseHashtags.slice(0, 2).join(' ')}`,
+      twitter: `${product.label} is here. ${collectionLabel} collection.\n\nskyyrose.co ${baseHashtags.slice(0, 2).join(' ')}`,
       facebook: `We're thrilled to introduce the ${product.label} from our ${collectionLabel} collection.\n\nWhich piece speaks to you? Drop a comment below and let us know.\n\nShop now: skyyrose.co\n\n${baseHashtags.slice(0, 3).join(' ')}`,
     },
     collection_drop: {
@@ -136,7 +136,7 @@ async function generateWithLlm(
     COLLECTION_DESCRIPTIONS[product.collection] ?? `The ${product.collection} collection by SkyyRose.`;
 
   const systemPrompt = `You are the social media voice of SkyyRose, a luxury streetwear fashion brand.
-Brand tagline: "Luxury Grows from Concrete."
+No active brand tagline. Do not invent a replacement or reuse retired slogans.
 Brand color: Rose Gold (#B76E79)
 Tone: Confident, aspirational, emotionally resonant, culturally aware. Never generic or salesy.
 The brand bridges high fashion and streetwear with deep emotional storytelling.
@@ -173,14 +173,14 @@ Return JSON only: { "caption": "...", "hashtags": ["#...", ...] }`;
     // Fallback: treat the whole response as caption
     return {
       caption: text,
-      hashtags: ['#SkyyRose', '#WhereLoveMeetsLuxury'],
+      hashtags: ['#SkyyRose'],
     };
   }
 
   const parsed = JSON.parse(jsonMatch[0]) as { caption: string; hashtags: string[] };
   return {
     caption: parsed.caption ?? text,
-    hashtags: Array.isArray(parsed.hashtags) ? parsed.hashtags : ['#SkyyRose', '#WhereLoveMeetsLuxury'],
+    hashtags: Array.isArray(parsed.hashtags) ? parsed.hashtags : ['#SkyyRose'],
   };
 }
 

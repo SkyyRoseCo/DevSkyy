@@ -272,3 +272,202 @@ def test_historical_producer_revalidated_by_current_verifier_without_execution(
         ]
         == "FAIL"
     )
+
+
+def resized_mask_fixture(root, loss):
+    """Original masks satisfy the contract; only their resize loses protection."""
+    if loss == "opaque_interior":
+        size, scale = 32, 0.125
+        mask = Image.new("L", (size, size), 0)
+        ImageDraw.Draw(mask).rectangle((12, 12, 19, 19), fill=255)
+    else:
+        assert loss == "entire_layer"
+        size, scale = 256, 0.015625
+        mask = Image.new("L", (size, size), 0)
+        mask.putpixel((128, 128), 255)
+    assert mask.getextrema()[1] == 255
+    resized = mask.resize((4, 4), Image.Resampling.BICUBIC)
+    assert resized.getextrema()[1] < 255
+    assert (resized.getbbox() is None) == (loss == "entire_layer")
+    request = CompositeRequest(
+        "resize-loss-job",
+        asset(root, "source.png", Image.new("RGB", (size, size), (220, 40, 30))),
+        asset(root, "mask.png", mask),
+        asset(root, "background.png", Image.new("RGB", (12, 12), (20, 80, 160))),
+        Placement(3, 4, scale),
+        "outputs/resize-loss.png",
+    )
+    grant = LocalCompositeGrant(
+        request.job_id, request.source.sha256, "outputs", "owner-request:offline-regression"
+    )
+    return request, grant
+
+
+def receipt_for_resized_fixture(root, request, grant, *, historical=False, background_only=False):
+    """Build a self-consistent receipt without invoking the guarded producer.
+
+    Historical implementation bytes are deliberately inert data. Identity helpers
+    bind the receipt; fixture PNG construction never calls implementation code.
+    """
+    from dataclasses import asdict
+
+    from skyyrose.elite_studio.creative import local_composite
+
+    producer = None
+    producer_digest = local_composite._implementation_digest()
+    if historical:
+        snapshot = root / "inert-historical-producer.py"
+        snapshot.write_text('raise RuntimeError("historical code must never execute")\n')
+        producer_digest = hashlib.sha256(snapshot.read_bytes()).hexdigest()
+        producer = AssetRef(snapshot.name, producer_digest)
+    _, _, _, metadata = local_composite._inputs(request, root)
+    with Image.open(root / request.background.path) as image:
+        output = image.copy()
+    if not background_only:
+        dimensions = tuple(metadata["transform"]["resized_dimensions"])
+        with Image.open(root / request.source.path) as source:
+            layer = source.resize(dimensions, Image.Resampling.BICUBIC)
+        with Image.open(root / request.mask.path) as mask:
+            alpha = mask.resize(dimensions, Image.Resampling.BICUBIC)
+        output.paste(layer, (request.placement.x, request.placement.y), alpha)
+    path = root / request.output_path
+    path.parent.mkdir(parents=True)
+    png = PngImagePlugin.PngInfo()
+    png.add(b"sRGB", b"\x00")
+    output.save(path, format="PNG", pnginfo=png, icc_profile=None)
+    manifest = {
+        "version": "1.0",
+        "job_id": request.job_id,
+        "request": asdict(request),
+        "request_identity": local_composite._request_identity(request, metadata, producer_digest),
+        "inputs": metadata,
+        "authority": asdict(grant),
+        "output_path": request.output_path,
+        "output_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "output_dimensions": list(output.size),
+        "output_format": "PNG",
+        "publication_authorized": False,
+        "provider_authorized": False,
+    }
+    return manifest, producer
+
+
+@pytest.mark.parametrize("loss", ["opaque_interior", "entire_layer"])
+def test_resized_mask_loss_blocks_before_artifact_reservation(tmp_path, loss):
+    request, grant = resized_mask_fixture(tmp_path, loss)
+    with pytest.raises(CompositeError, match="opaque protected interior"):
+        compose(request, root=tmp_path, grant=grant)
+    path = tmp_path / request.output_path
+    assert not path.exists()
+    assert not path.with_suffix(".png.manifest.json").exists()
+
+
+@pytest.mark.parametrize("loss", ["opaque_interior", "entire_layer"])
+@pytest.mark.parametrize("historical", [False, True])
+def test_resized_mask_loss_is_required_verifier_failure(tmp_path, loss, historical):
+    request, grant = resized_mask_fixture(tmp_path, loss)
+    manifest, producer = receipt_for_resized_fixture(
+        tmp_path, request, grant, historical=historical
+    )
+    path = tmp_path / request.output_path
+    before = path.read_bytes()
+    result = verify_composite(request, manifest, root=tmp_path, producer_implementation=producer)
+    assert result["request_identity"] == "PASS"
+    assert result["artifact_identity"] == "PASS"
+    assert result["status"] == "FAIL"
+    interior = result["criteria"]["opaque_interior"]
+    assert interior["pixel_count"] == 0
+    assert interior["max_channel_error"] is None
+    assert interior["required"] is True
+    assert interior["applicable"] is True
+    assert interior["result"] == "FAIL"
+    assert interior["reason"]
+    assert path.read_bytes() == before
+    if historical:
+        assert result["verification_mode"] == "CURRENT_VERIFIER_HISTORICAL_PRODUCER"
+
+
+def test_resized_mask_forged_background_receipt_cannot_certify_empty_layer(tmp_path):
+    request, grant = resized_mask_fixture(tmp_path, "entire_layer")
+    manifest, _ = receipt_for_resized_fixture(tmp_path, request, grant, background_only=True)
+    with Image.open(tmp_path / request.output_path) as output:
+        with Image.open(tmp_path / request.background.path) as background:
+            assert output.tobytes() == background.tobytes()
+    result = verify_composite(request, manifest, root=tmp_path)
+    assert result["request_identity"] == "PASS"
+    assert result["artifact_identity"] == "PASS"
+    assert result["status"] == "FAIL"
+    assert result["criteria"]["opaque_interior"]["result"] == "FAIL"
+    assert result["criteria"]["opaque_interior"]["pixel_count"] == 0
+
+
+@pytest.mark.parametrize("full_canvas", [False, True])
+def test_resized_mask_absent_optional_regions_are_not_applicable(fixture, full_canvas):
+    root, request, grant = fixture
+    request = replace(request, mask=asset(root, "opaque-mask.png", Image.new("L", (24, 24), 255)))
+    if full_canvas:
+        request = replace(
+            request,
+            background=asset(root, "full-canvas.png", Image.new("RGB", (24, 24), "blue")),
+            placement=Placement(0, 0),
+        )
+    manifest = compose(request, root=root, grant=grant)
+    result = verify_composite(request, manifest, root=root)
+    assert result["status"] == "PASS"
+    assert result["criteria"]["opaque_interior"]["result"] == "PASS"
+    optional = ["antialiased_boundary"]
+    if full_canvas:
+        optional.append("unprotected_background")
+    for name in optional:
+        criterion = result["criteria"][name]
+        assert criterion["pixel_count"] == 0
+        assert criterion["max_channel_error"] is None
+        assert criterion["required"] is False
+        assert criterion["applicable"] is False
+        assert criterion["result"] == "NOT APPLICABLE"
+        assert criterion["reason"]
+
+
+@pytest.mark.parametrize("size,scale", [(1, 1.0), (16, 0.0625), (16, 0.5), (16, 1.5)])
+def test_resized_mask_valid_small_downscale_and_upscale_still_pass(tmp_path, size, scale):
+    target = round(size * scale)
+    request = CompositeRequest(
+        "valid-resize-job",
+        asset(tmp_path, "source.png", Image.new("RGB", (size, size), (220, 40, 30))),
+        asset(tmp_path, "mask.png", Image.new("L", (size, size), 255)),
+        asset(tmp_path, "background.png", Image.new("RGB", (target, target), (20, 80, 160))),
+        Placement(0, 0, scale),
+        "outputs/valid-resize.png",
+    )
+    grant = LocalCompositeGrant(
+        request.job_id, request.source.sha256, "outputs", "owner-request:offline-regression"
+    )
+    manifest = compose(request, root=tmp_path, grant=grant)
+    result = verify_composite(request, manifest, root=tmp_path)
+    assert result["status"] == "PASS"
+    assert result["criteria"]["opaque_interior"]["pixel_count"] == target * target
+    assert result["criteria"]["opaque_interior"]["result"] == "PASS"
+    with Image.open(tmp_path / request.output_path) as output:
+        assert output.size == (target, target)
+        assert output.getextrema() == ((220, 220), (40, 40), (30, 30))
+
+
+def test_resized_mask_guard_keeps_pixel_and_receipt_identity_checks(fixture):
+    root, request, grant = fixture
+    request = replace(request, placement=Placement(3, 4, 0.5))
+    manifest = compose(request, root=root, grant=grant)
+    path = root / request.output_path
+    with Image.open(root / request.background.path) as background:
+        png = PngImagePlugin.PngInfo()
+        png.add(b"sRGB", b"\x00")
+        background.save(path, pnginfo=png, icc_profile=None)
+    changed = dict(manifest, output_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+    result = verify_composite(request, changed, root=root)
+    assert result["request_identity"] == "PASS"
+    assert result["artifact_identity"] == "PASS"
+    assert result["status"] == "FAIL"
+    assert result["criteria"]["opaque_interior"]["pixel_count"] > 0
+    assert result["criteria"]["opaque_interior"]["result"] == "FAIL"
+    result = verify_composite(request, dict(changed, request_identity="0" * 64), root=root)
+    assert result["request_identity"] == "FAIL"
+    assert result["status"] == "FAIL"

@@ -51,7 +51,7 @@ def main():
             if any(x in Path(relative).parts for x in (".git", "node_modules", "qa", "scripts")):
                 raise ValueError(f"Internal file in package: {relative}")
             content = path.read_bytes()
-            if path.suffix in {".php", ".css", ".js", ".json", ".html"}:
+            if path.suffix in {".php", ".css", ".js", ".mjs", ".json", ".html"}:
                 if re.search(rb"""(?:["'\s])/(?:Users|home)/""", content):
                     raise ValueError(f"Workstation path in package: {relative}")
             entry = zipfile.ZipInfo("skyyrose-flagship-2/" + relative, (1980, 1, 1, 0, 0, 0))

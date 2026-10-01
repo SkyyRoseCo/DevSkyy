@@ -1,0 +1,689 @@
+{
+  "acceptance_ledger": [
+    {
+      "environment_configuration": {
+        "authentication": "not applicable for CLI/tests; read-only GitHub as SkyyRoseLLC for proposal/PR discovery",
+        "git": "git version 2.50.1 (Apple Git-155)",
+        "platform": "Darwin",
+        "python": "3.14.7",
+        "scope": "LOCAL macOS; real isolated Git/filesystem fixtures"
+      },
+      "evidence_location": ".artifacts/consolidation-20261001/pr897.json and pr-comparisons.json",
+      "expected_behavior": "Reconcile #897 full proposal and review anchors against frozen current main",
+      "layer": "discovery",
+      "observed_result": "Authenticated captures and comparison: unique 109-line proposal, OPEN/MERGEABLE; 3 ahead/99 behind; no migration established",
+      "remaining_action_owner": "coordinator retains proposal integration/review-thread decisions",
+      "reproduction": "gh pr view 897 --repo SkyyRoseCo/DevSkyy; gh api repos/SkyyRoseCo/DevSkyy/compare/BASE...HEAD",
+      "requirement_id": "C1",
+      "status": "PASS",
+      "tested_sha_or_artifact_hash": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "timestamp_utc": "2026-10-01T07:18:08.396431+00:00"
+    },
+    {
+      "environment_configuration": {
+        "authentication": "not applicable for CLI/tests; read-only GitHub as SkyyRoseLLC for proposal/PR discovery",
+        "git": "git version 2.50.1 (Apple Git-155)",
+        "platform": "Darwin",
+        "python": "3.14.7",
+        "scope": "LOCAL macOS; real isolated Git/filesystem fixtures"
+      },
+      "evidence_location": ".artifacts/consolidation-20261001/inventory-final.json",
+      "expected_behavior": "Classified Git/checkout metadata, modes, sizes, duplicates and explicit unresolved ownership",
+      "layer": "local",
+      "observed_result": "Frozen-base full Git census and Git-enumerated checkout census produced; nested/submodule contents excluded",
+      "remaining_action_owner": "domain owners certify source/media purposes and any external assets",
+      "reproduction": "python3 scripts/repository_inventory.py --snapshot 7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "requirement_id": "C2",
+      "status": "PASS",
+      "tested_sha_or_artifact_hash": "fd9ba6c77d1e22dda387c99e24d83dc288621193f0320f2faef15b3cd0e8fe1a",
+      "timestamp_utc": "2026-10-01T07:18:08.396431+00:00"
+    },
+    {
+      "environment_configuration": {
+        "authentication": "not applicable for CLI/tests; read-only GitHub as SkyyRoseLLC for proposal/PR discovery",
+        "git": "git version 2.50.1 (Apple Git-155)",
+        "platform": "Darwin",
+        "python": "3.14.7",
+        "scope": "LOCAL macOS; real isolated Git/filesystem fixtures"
+      },
+      "evidence_location": ".artifacts/consolidation-20261001/inventory-final.json",
+      "expected_behavior": "Complete consumers for any disruptive candidate",
+      "layer": "integration",
+      "observed_result": "Bounded targeted literal graph produced with explicit skipped paths; dynamic/relative/CMS/runtime consumers unverified",
+      "remaining_action_owner": "domain owners and coordinator: complete per-candidate runtime evidence before approving moves",
+      "reproduction": "python3 scripts/repository_inventory.py --candidate PATH --require-complete-references",
+      "requirement_id": "C3",
+      "status": "BLOCKED",
+      "tested_sha_or_artifact_hash": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "timestamp_utc": "2026-10-01T07:18:08.396431+00:00"
+    },
+    {
+      "environment_configuration": {
+        "authentication": "not applicable for CLI/tests; read-only GitHub as SkyyRoseLLC for proposal/PR discovery",
+        "git": "git version 2.50.1 (Apple Git-155)",
+        "platform": "Darwin",
+        "python": "3.14.7",
+        "scope": "LOCAL macOS; real isolated Git/filesystem fixtures"
+      },
+      "evidence_location": "docs/consolidation/evidence.json",
+      "expected_behavior": "Specifically approved disruptive batches with old/new hashes, ownership and tested restore",
+      "layer": "authorization",
+      "observed_result": "No batch approved; empty operation manifest; no artifact moved/deleted",
+      "remaining_action_owner": "human approval only after owners supply concrete reversible batch",
+      "reproduction": "Review disruptive_operations in this ledger",
+      "requirement_id": "C4",
+      "status": "BLOCKED",
+      "tested_sha_or_artifact_hash": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "timestamp_utc": "2026-10-01T07:18:08.396431+00:00"
+    },
+    {
+      "environment_configuration": {
+        "authentication": "not applicable for CLI/tests; read-only GitHub as SkyyRoseLLC for proposal/PR discovery",
+        "git": "git version 2.50.1 (Apple Git-155)",
+        "platform": "Darwin",
+        "python": "3.14.7",
+        "scope": "LOCAL macOS; real isolated Git/filesystem fixtures"
+      },
+      "evidence_location": ".artifacts/consolidation-20261001/tests.txt",
+      "expected_behavior": "Safe inventory/reference tooling with boundary regressions",
+      "layer": "local",
+      "observed_result": "20 exact-source hermetic tests, Ruff, Black, isort, focused mypy and independent reviews passed",
+      "remaining_action_owner": "stream 5: local scoped commit only; no publication authority",
+      "reproduction": "python3 -m unittest discover -s tests/scripts -p test_repository_inventory.py -v",
+      "requirement_id": "C5",
+      "status": "PASS",
+      "tested_sha_or_artifact_hash": "fd9ba6c77d1e22dda387c99e24d83dc288621193f0320f2faef15b3cd0e8fe1a",
+      "timestamp_utc": "2026-10-01T07:18:08.396431+00:00"
+    },
+    {
+      "environment_configuration": {
+        "authentication": "not applicable for CLI/tests; read-only GitHub as SkyyRoseLLC for proposal/PR discovery",
+        "git": "git version 2.50.1 (Apple Git-155)",
+        "platform": "Darwin",
+        "python": "3.14.7",
+        "scope": "LOCAL macOS; real isolated Git/filesystem fixtures"
+      },
+      "evidence_location": "docs/consolidation/evidence.json",
+      "expected_behavior": "Dependency-complete approved operations and real restore rehearsal",
+      "layer": "migration",
+      "observed_result": "No disruptive operations permitted or executed",
+      "remaining_action_owner": "coordinator and human scope approval",
+      "reproduction": "Requires approved operation manifest and isolated restore fixture",
+      "requirement_id": "C6",
+      "status": "NOT RUN",
+      "tested_sha_or_artifact_hash": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "timestamp_utc": "2026-10-01T07:18:08.396431+00:00"
+    },
+    {
+      "environment_configuration": {
+        "authentication": "not applicable for CLI/tests; read-only GitHub as SkyyRoseLLC for proposal/PR discovery",
+        "git": "git version 2.50.1 (Apple Git-155)",
+        "platform": "Darwin",
+        "python": "3.14.7",
+        "scope": "LOCAL macOS; real isolated Git/filesystem fixtures"
+      },
+      "evidence_location": "docs/consolidation/README.md",
+      "expected_behavior": "Reproducible affected application builds/routes and measured reduction",
+      "layer": "integration",
+      "observed_result": "CLI local positive/invalid/boundary/safety tests pass; no application paths changed; savings zero; domain/runtime/container suites not run",
+      "remaining_action_owner": "streams 1-4; no existing domain evidence borrowed",
+      "reproduction": "Domain owner builds/routes after separately approved affected batches",
+      "requirement_id": "C7",
+      "status": "NOT RUN",
+      "tested_sha_or_artifact_hash": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "timestamp_utc": "2026-10-01T07:18:08.396431+00:00"
+    },
+    {
+      "environment_configuration": {
+        "authentication": "not applicable for CLI/tests; read-only GitHub as SkyyRoseLLC for proposal/PR discovery",
+        "git": "git version 2.50.1 (Apple Git-155)",
+        "platform": "Darwin",
+        "python": "3.14.7",
+        "scope": "LOCAL macOS; real isolated Git/filesystem fixtures"
+      },
+      "evidence_location": "docs/consolidation/README.md",
+      "expected_behavior": "Integrated exact commits, target runtime acceptance, authorized release and recovery",
+      "layer": "release",
+      "observed_result": "Push/merge/deployment held; no resulting deployed artifact",
+      "remaining_action_owner": "coordinator and human release authorization",
+      "reproduction": "Requires separate authorized integration/release and exact-head gates",
+      "requirement_id": "C8",
+      "status": "NOT RUN",
+      "tested_sha_or_artifact_hash": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "timestamp_utc": "2026-10-01T07:18:08.396431+00:00"
+    },
+    {
+      "environment_configuration": {
+        "authentication": "not applicable for CLI/tests; read-only GitHub as SkyyRoseLLC for proposal/PR discovery",
+        "git": "git version 2.50.1 (Apple Git-155)",
+        "platform": "Darwin",
+        "python": "3.14.7",
+        "scope": "LOCAL macOS; real isolated Git/filesystem fixtures"
+      },
+      "evidence_location": "local terminal receipt; source diff",
+      "expected_behavior": "Registry/projection authority preserved",
+      "layer": "local",
+      "observed_result": "sync_product_registry.py --check passed; registry/projections unchanged",
+      "remaining_action_owner": "stream 1 retains registry ownership",
+      "reproduction": "python3 scripts/sync_product_registry.py --check",
+      "requirement_id": "L1",
+      "status": "PASS",
+      "tested_sha_or_artifact_hash": "fd9ba6c77d1e22dda387c99e24d83dc288621193f0320f2faef15b3cd0e8fe1a",
+      "timestamp_utc": "2026-10-01T07:18:08.396431+00:00"
+    }
+  ],
+  "base_sha": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+  "branch": "codex/consolidation-inventory-20261001",
+  "captured_at_utc": "2026-10-01T07:18:08.396431+00:00",
+  "checkout_summary": {
+    "apparent_bytes_by_category": {
+      "ignored": 1108431434,
+      "tracked": 1663225636,
+      "untracked": 0
+    },
+    "category_counts": {
+      "ignored": 29826,
+      "tracked": 11615
+    },
+    "checkout_evidence": {
+      "branch": "codex/consolidation-inventory-20261001",
+      "dirty": null,
+      "dirty_evidence": "UNKNOWN: working contents not compared; Git status/filter execution prohibited",
+      "head": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "index_changed_from_head": true,
+      "untracked_paths_present": false
+    },
+    "note": "non-atomic session census; not physical disk usage; output capture written outside repository"
+  },
+  "code_artifact_sha256": {
+    "scripts/repository_inventory.py": "fd9ba6c77d1e22dda387c99e24d83dc288621193f0320f2faef15b3cd0e8fe1a",
+    "tests/scripts/test_repository_inventory.py": "01f43be03f8e40eedd88e3efc19cdd8ad69fba44f6899e5171df398bfd36208a"
+  },
+  "disruptive_operations": [],
+  "environment": {
+    "authentication": "not applicable for CLI/tests; read-only GitHub as SkyyRoseLLC for proposal/PR discovery",
+    "git": "git version 2.50.1 (Apple Git-155)",
+    "platform": "Darwin",
+    "python": "3.14.7",
+    "scope": "LOCAL macOS; real isolated Git/filesystem fixtures"
+  },
+  "limitations": [
+    "Current named Production OS file locator not found in checkout; supplied assignment and AGENTS verified",
+    "PR owner classification and complete review-thread disposition remain unresolved",
+    "Full per-candidate dynamic/runtime consumers and physical storage savings unmeasured",
+    "No authorized disruptive scope or materialized archive/restore destination",
+    "Initial inventory.json is an earlier iteration; inventory-final.json and current code hashes are the final local receipt"
+  ],
+  "local_checks": {
+    "automatic_commit_hooks": "NOT RUN: configured core.hooksPath=.husky/_, runtime directory absent; relevant checks run explicitly; no bypass or hook configuration edit",
+    "black": "PASS",
+    "diff_check": "PASS",
+    "document_formatter": "PASS: existing primary Prettier3.9.6 with candidate .prettierrc.js/.prettierignore",
+    "independent_reviews": "Architect no blocking findings; code reviewer material findings closed; final Ruff suggestion satisfied",
+    "isort": "PASS",
+    "mypy": "PASS: --follow-imports=skip scripts/repository_inventory.py",
+    "registry_sync": "PASS; no product changes",
+    "ruff": "PASS",
+    "unittest": "PASS: 20 tests on exact source"
+  },
+  "measured_reduction_bytes": 0,
+  "pr897_checks": {
+    "conclusion_counts": {
+      "SKIPPED": 14,
+      "SUCCESS": 23
+    },
+    "head": "ffb59a068c5e04367884dfe90a0cb0892bc61b19",
+    "note": "Observed only; does not validate this branch or imply merge authority"
+  },
+  "pr_comparisons": [
+    {
+      "ahead_by": 10,
+      "behind_by": 50,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 94,
+      "files_coverage": "API_list",
+      "headRefName": "codex/staging-visuals",
+      "headRefOid": "6d2b57508332938d55338f7fbe439675e7a18c94",
+      "merge_base": "8a13099798c6b50d3f65bca93baba060b0a82a35",
+      "number": 983,
+      "title": "feat(theme): add glass house hero, unified product media and preorder",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/983"
+    },
+    {
+      "ahead_by": 1,
+      "behind_by": 50,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 8,
+      "files_coverage": "API_list",
+      "headRefName": "docs/prelaunch-faq-rewrite",
+      "headRefOid": "6802859b2c04dc5137a07f79201498d47502a452",
+      "merge_base": "8a13099798c6b50d3f65bca93baba060b0a82a35",
+      "number": 981,
+      "title": "docs(tasks): add the prelaunch FAQ rewrite and prelaunch-fixes artifacts",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/981"
+    },
+    {
+      "ahead_by": 1,
+      "behind_by": 50,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 46,
+      "files_coverage": "API_list",
+      "headRefName": "feat/creative-os-pilot",
+      "headRefOid": "f4994aa463cc6958b541af4f1a78a026637a5e5e",
+      "merge_base": "8a13099798c6b50d3f65bca93baba060b0a82a35",
+      "number": 980,
+      "title": "feat(creative-os): add the Creative OS pilot on top of the context resolver",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/980"
+    },
+    {
+      "ahead_by": 1,
+      "behind_by": 50,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 14,
+      "files_coverage": "API_list",
+      "headRefName": "feat/dashboard-fly-migration",
+      "headRefOid": "0560f2606f3f39af26dd51666db81b10abd28857",
+      "merge_base": "8a13099798c6b50d3f65bca93baba060b0a82a35",
+      "number": 979,
+      "title": "feat(frontend): host the devskyy.app dashboard on Fly instead of Vercel",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/979"
+    },
+    {
+      "ahead_by": 1,
+      "behind_by": 57,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 23,
+      "files_coverage": "API_list",
+      "headRefName": "fix/lh-imagery-bindings",
+      "headRefOid": "8b914d38c0db8ee8ea859349da2ecf8ecb9f5a53",
+      "merge_base": "21d1122997612cf3f5ad1b6fcb07cd6fa6610db8",
+      "number": 978,
+      "title": "fix(sot): unbind white-joggers back from lh-002; bind real Fannie back photo",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/978"
+    },
+    {
+      "ahead_by": 3,
+      "behind_by": 70,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 8,
+      "files_coverage": "API_list",
+      "headRefName": "codex/v2-home-layout-repair-20260922",
+      "headRefOid": "274a4899629ada4be4f3c7f7f8de518982ed4b79",
+      "merge_base": "6994d978579500e94e1571a223cc4aab70c60609",
+      "number": 970,
+      "title": "fix(theme): preserve homepage portrait and editorial artwork",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/970"
+    },
+    {
+      "ahead_by": 7,
+      "behind_by": 58,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 17,
+      "files_coverage": "API_list",
+      "headRefName": "feat/registry-garment-detail",
+      "headRefOid": "47ad026fda479b4ecb313f18f86a1db34940c9b0",
+      "merge_base": "7548f48a5131cd210a0c9f98c3b7486600c51575",
+      "number": 960,
+      "title": "feat(registry): record the founder's jersey fit statement and narrow 8 materials fields",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/960"
+    },
+    {
+      "ahead_by": 54,
+      "behind_by": 193,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 300,
+      "files_coverage": "possibly_truncated",
+      "headRefName": "feat/glb-qc-renderer",
+      "headRefOid": "8744117358f66dafc042752b15f666616f7b751f",
+      "merge_base": "f1457d4cd958b42ee789cd9ef3dcda98a4e0c33f",
+      "number": 951,
+      "title": "feat(3d): GLB QC renderer that renders in the production viewer",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/951"
+    },
+    {
+      "ahead_by": 47,
+      "behind_by": 193,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 300,
+      "files_coverage": "possibly_truncated",
+      "headRefName": "codex/v2-open-seo-security-audit",
+      "headRefOid": "1ce74222cb71ab3e35bd2a0e6932b63e36a604de",
+      "merge_base": "f1457d4cd958b42ee789cd9ef3dcda98a4e0c33f",
+      "number": 950,
+      "title": "fix(security,build): fail-closed paid-dispatch gate + formatter-ignore coverage (v2 audit branch)",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/950"
+    },
+    {
+      "ahead_by": 79,
+      "behind_by": 160,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 300,
+      "files_coverage": "possibly_truncated",
+      "headRefName": "codex/v2-shop-the-look-20260910",
+      "headRefOid": "2c7644772be1d19c9218ebfb2b980350033b83f7",
+      "merge_base": "4da200886c73252c5271f5bf89de61c5c32ba062",
+      "number": 923,
+      "title": "feat(v2): preserve scene commerce and certify storefront source",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/923"
+    },
+    {
+      "ahead_by": 3,
+      "behind_by": 160,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 10,
+      "files_coverage": "API_list",
+      "headRefName": "codex/complete-v2-digital-experience",
+      "headRefOid": "0feda3df9fcdd4c825ccdd58e56fe8a57dcf249f",
+      "merge_base": "4da200886c73252c5271f5bf89de61c5c32ba062",
+      "number": 922,
+      "title": "Add image transparency verifier and portable file-size checks; polish V2/marketplace gates and update home CSS tokens/layout",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/922"
+    },
+    {
+      "ahead_by": 71,
+      "behind_by": 160,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 300,
+      "files_coverage": "possibly_truncated",
+      "headRefName": "codex/v2-completion-pr-20260906",
+      "headRefOid": "4ad080c9ace9a0250172ffc8e4bb5b584948b087",
+      "merge_base": "4da200886c73252c5271f5bf89de61c5c32ba062",
+      "number": 918,
+      "title": "feat(theme): integrate certified V2 cinematic commerce and responsive completion",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/918"
+    },
+    {
+      "ahead_by": 3,
+      "behind_by": 192,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 2,
+      "files_coverage": "API_list",
+      "headRefName": "codex/skip-bot-claude-review",
+      "headRefOid": "84f3a1af501be7c14c6c9f38e437a54b0082be5e",
+      "merge_base": "978221a60839f60221b0e341468afd98d844f7ff",
+      "number": 914,
+      "title": "fix(ci): skip Claude review for Dependabot PRs",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/914"
+    },
+    {
+      "ahead_by": 97,
+      "behind_by": 202,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 300,
+      "files_coverage": "possibly_truncated",
+      "headRefName": "codex/add-necessary-files-to-flagship-2-folder",
+      "headRefOid": "3b952021212b432fcec816a542c18d75b46dbe53",
+      "merge_base": "f97383524206825e9f0bd24042e7990be43aee27",
+      "number": 910,
+      "title": "Modularize commerce logic into inc/ product files and update verification scripts",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/910"
+    },
+    {
+      "ahead_by": 97,
+      "behind_by": 202,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 300,
+      "files_coverage": "possibly_truncated",
+      "headRefName": "codex/handoff-cloud-project-completion",
+      "headRefOid": "f1c46a336ebd19d679b898002eb13f226afbcf0a",
+      "merge_base": "f97383524206825e9f0bd24042e7990be43aee27",
+      "number": 909,
+      "title": "fix(config): load .env.secrets and add regression tests for loader order",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/909"
+    },
+    {
+      "ahead_by": 3,
+      "behind_by": 99,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 1,
+      "files_coverage": "API_list",
+      "headRefName": "chore/monorepo-consolidation-v1",
+      "headRefOid": "ffb59a068c5e04367884dfe90a0cb0892bc61b19",
+      "merge_base": "4d6c5333f6bdc9a133464f54843b585dbcb77413",
+      "number": 897,
+      "title": "docs: make historical consolidation inventory reproducible",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/897"
+    },
+    {
+      "ahead_by": 7,
+      "behind_by": 199,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 1,
+      "files_coverage": "API_list",
+      "headRefName": "codex/repair-sg012-asset-authority",
+      "headRefOid": "4b89f5a0ea41bcddf9f7fefa3b8d96e8c2aaa502",
+      "merge_base": "4d3f97ab8d19042e49efa8ba6ea23788eb0deac2",
+      "number": 894,
+      "title": "test(ci): validate hosted Python remediation stack",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/894"
+    },
+    {
+      "ahead_by": 7,
+      "behind_by": 199,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 1,
+      "files_coverage": "API_list",
+      "headRefName": "codex/repair-sg012-asset-authority",
+      "headRefOid": "4b89f5a0ea41bcddf9f7fefa3b8d96e8c2aaa502",
+      "merge_base": "4d3f97ab8d19042e49efa8ba6ea23788eb0deac2",
+      "number": 893,
+      "title": "fix(assets): restore SG-012 source authority",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/893"
+    },
+    {
+      "ahead_by": 10,
+      "behind_by": 141,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 2,
+      "files_coverage": "API_list",
+      "headRefName": "codex/staging-deploy-safety",
+      "headRefOid": "b11a481349e468a44cedabbe4a7b25e7baca9182",
+      "merge_base": "20dec13d26ede12b9c5519d848506b49f5ac8d79",
+      "number": 890,
+      "title": "feat(deploy): fail closed for staging theme releases",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/890"
+    },
+    {
+      "ahead_by": 97,
+      "behind_by": 202,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 300,
+      "files_coverage": "possibly_truncated",
+      "headRefName": "codex/v2-compatible-infrastructure",
+      "headRefOid": "6286f60e294d8d9021121122dbb604280ef41660",
+      "merge_base": "f97383524206825e9f0bd24042e7990be43aee27",
+      "number": 888,
+      "title": "feat(theme): integrate V2 storefront and compatible infrastructure",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/888"
+    },
+    {
+      "ahead_by": 4,
+      "behind_by": 202,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 7,
+      "files_coverage": "API_list",
+      "headRefName": "codex/preorder-order-snapshot",
+      "headRefOid": "e3d28fd7d38d9a53aabb8ad47f4bc57bdf1acca8",
+      "merge_base": "f97383524206825e9f0bd24042e7990be43aee27",
+      "number": 886,
+      "title": "feat(theme): snapshot preorder promises in checkout",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/886"
+    },
+    {
+      "ahead_by": 41,
+      "behind_by": 300,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 43,
+      "files_coverage": "API_list",
+      "headRefName": "worktree-collections-scroll-world",
+      "headRefOid": "8045ee104d0fde0b0c5ddd8b12a5cc41464288b5",
+      "merge_base": "5ee6d4a309c3a562378d6838e1cfe8d44895711d",
+      "number": 833,
+      "title": "feat(scroll-world): collections scroll-world build + KC journey-to-throne registry",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/833"
+    },
+    {
+      "ahead_by": 7,
+      "behind_by": 300,
+      "classification": "unique_delta_requires_owner_review",
+      "compare_status": "diverged",
+      "file_count_returned": 52,
+      "files_coverage": "API_list",
+      "headRefName": "feat/3d-qa-scorer",
+      "headRefOid": "1527898531b3327f893c636ea3f7a4f8418aa9ac",
+      "merge_base": "5ee6d4a309c3a562378d6838e1cfe8d44895711d",
+      "number": 828,
+      "title": "feat(3d): 3D fidelity scorer + QA review UI wiring + Tripo multi-account",
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/828"
+    }
+  ],
+  "raw_artifacts": {
+    "captured-at.txt": {
+      "bytes": 32,
+      "location": ".artifacts/consolidation-20261001/captured-at.txt",
+      "sha256": "dcac29961ccc5ec8d3ca51049a7e996335d438031091627ae63721b67c2ba700"
+    },
+    "inventory-final.json": {
+      "bytes": 21200588,
+      "location": ".artifacts/consolidation-20261001/inventory-final.json",
+      "sha256": "d06b790062f77793ee9ad21c573ccb89d73d3d52988300323c40b304ce86802a"
+    },
+    "inventory.json": {
+      "bytes": 21077048,
+      "location": ".artifacts/consolidation-20261001/inventory.json",
+      "sha256": "cefc6f3ece693e2c1e444ccdf10034e5f2835d367c1fb5b0741f31525f677896"
+    },
+    "main-protection.json": {
+      "bytes": 633,
+      "location": ".artifacts/consolidation-20261001/main-protection.json",
+      "sha256": "0a66cd538fcdce643916a2b5090bf07ece662bcaea9095f789fcd112856270bd"
+    },
+    "main.json": {
+      "bytes": 81,
+      "location": ".artifacts/consolidation-20261001/main.json",
+      "sha256": "ea057535bec32a246a0aa44a3c1b395222aad9028a6da28b5577f624cf7ac29f"
+    },
+    "open-prs.json": {
+      "bytes": 16655,
+      "location": ".artifacts/consolidation-20261001/open-prs.json",
+      "sha256": "a7866919193ee5198e135ac56189f43d0a88825df7fd4cfdef5763e92496822c"
+    },
+    "pr-comparisons.json": {
+      "bytes": 451087,
+      "location": ".artifacts/consolidation-20261001/pr-comparisons.json",
+      "sha256": "3917d3d845112f48858fc9dca70f9684bd3581319eeee1f97c68ccf3b6b0907c"
+    },
+    "pr897-checks.json": {
+      "bytes": 10858,
+      "location": ".artifacts/consolidation-20261001/pr897-checks.json",
+      "sha256": "e5595c1c555e4d9d8722b8b289e234c0b8bf94157e42b472783b824981c28fd6"
+    },
+    "pr897-proposal.md": {
+      "bytes": 4873,
+      "location": ".artifacts/consolidation-20261001/pr897-proposal.md",
+      "sha256": "357d788ba67e790553483e9a79dc8b326c3dfe3f8d0680d4322057127267d87e"
+    },
+    "pr897-review-comments.json": {
+      "bytes": 110338,
+      "location": ".artifacts/consolidation-20261001/pr897-review-comments.json",
+      "sha256": "15616ba0dbcb373ac94bea627824c8e52ecf09cb57ff08dcadbda5e08dddd432"
+    },
+    "pr897.json": {
+      "bytes": 73536,
+      "location": ".artifacts/consolidation-20261001/pr897.json",
+      "sha256": "ea3f3d2e8d03a60a73ea8272a223538ab3d2103d8e1743d2e7422da4f140858b"
+    },
+    "rulesets.json": {
+      "bytes": 475,
+      "location": ".artifacts/consolidation-20261001/rulesets.json",
+      "sha256": "248b44ad8d55d63705d1a91efdfa06f3cb5c30d019cb0a6b1318d7bd9a7a9c24"
+    },
+    "tests.txt": {
+      "bytes": 3304,
+      "location": ".artifacts/consolidation-20261001/tests.txt",
+      "sha256": "2efac54a936a2fd140511ae53e43e32e7bc01b6b216ac20b72068753f5376af8"
+    }
+  },
+  "reference_summary": {
+    "candidates": [
+      "logo-registry.json",
+      "scripts/repository_inventory.py",
+      "scripts/scan_product_inventory.py",
+      "wordpress-theme/skyyrose-flagship-2/functions.php"
+    ],
+    "coverage_complete": false,
+    "edges": 332,
+    "runtime_acceptance": "NOT RUN",
+    "scanned_files": 5465,
+    "skipped_counts": {
+      "file_budget": 1,
+      "generated_or_dependency": 407,
+      "not_present_regular": 543,
+      "not_tracked": 29677,
+      "sensitive": 179,
+      "total_budget": 1551,
+      "unsupported_format": 3618
+    }
+  },
+  "repaired_failures": [
+    "UP035 Iterator import corrected",
+    "B905 adjacent zip strict=False",
+    "case variants and nested agent configuration exclusions",
+    "Git root trailing whitespace preservation",
+    "Git status clean-filter content access eliminated",
+    "worktree formatter plugins unavailable: used existing installed tool with candidate config; no dependencies changed"
+  ],
+  "schema_version": 1,
+  "snapshot_summary": {
+    "blob_entries": 11605,
+    "classifications": {
+      "archive_or_prototype": 366,
+      "configuration_or_build": 134,
+      "dependencies": 237,
+      "documentation": 1918,
+      "generated_candidate": 170,
+      "media_ownership_unresolved": 3262,
+      "package_manifest_or_lock": 38,
+      "package_or_archive": 2,
+      "sensitive": 30,
+      "source_or_text": 3818,
+      "tests_or_fixtures": 926,
+      "unclassified": 710
+    },
+    "duplicate_candidate_groups": 889,
+    "duplicate_coverage": "regular Git blobs only; sensitive paths and symlinks excluded",
+    "gitlink_entries": 6,
+    "logical_blob_bytes": 1663146424,
+    "repeated_logical_bytes": 150133967,
+    "sha": "7892b797d838e67e62c862a6698a5b42b6dccaee"
+  },
+  "states": {
+    "LOCAL_CODE_COMPLETE": "PASS",
+    "MERGED": "NOT RUN",
+    "OVERALL_CONSOLIDATION": "BLOCKED",
+    "RELEASED": "NOT RUN",
+    "RUNTIME_ACCEPTED": "NOT RUN"
+  }
+}

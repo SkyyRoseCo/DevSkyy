@@ -1,0 +1,330 @@
+
+> devskyy-dashboard@1.0.0 lint
+> eslint .
+
+(node:14294) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/.claude/skills/run-devskyy-dashboard/driver.mjs[24m[0m
+[0m   [2m19:17[22m  [33mwarning[39m  'writeFile' is defined but never used                                              [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m   [2m76:3[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m102:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/admin/3d-pipeline/page.tsx[24m[0m
+[0m  [2m13:3[22m  [33mwarning[39m  'Upload' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/admin/assets/page.tsx[24m[0m
+[0m   [2m88:5[22m   [33mwarning[39m  'deleteAsset' is assigned a value but never used                                                                                                                                                                                                                                         [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m644:19[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [2m@next/next/no-img-element[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/admin/experience/page.tsx[24m[0m
+[0m  [2m37:3[22m  [33mwarning[39m  'ResponsiveContainer' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/admin/imagery/page.tsx[24m[0m
+[0m  [2m603:44[22m  [33mwarning[39m  'label' is assigned a value but never used                                                                                                                                                                                                                                               [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m622:15[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [2m@next/next/no-img-element[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/admin/pipeline/page.tsx[24m[0m
+[0m  [2m39:10[22m  [33mwarning[39m  'status' is assigned a value but never used       [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m47:42[22m  [33mwarning[39m  'isConnected' is assigned a value but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/admin/round-table/page.tsx[24m[0m
+[0m  [2m13:3[22m  [33mwarning[39m  'Zap' is defined but never used           [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m19:3[22m  [33mwarning[39m  'CheckCircle2' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m20:3[22m  [33mwarning[39m  'XCircle' is defined but never used       [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/admin/tasks/page.tsx[24m[0m
+[0m  [2m13:40[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/admin/vercel/page.tsx[24m[0m
+[0m  [2m13:3[22m   [33mwarning[39m  'Globe' is defined but never used                   [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m25:54[22m  [33mwarning[39m  Unexpected any. Specify a different type            [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m26:50[22m  [33mwarning[39m  Unexpected any. Specify a different type            [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m27:44[22m  [33mwarning[39m  Unexpected any. Specify a different type            [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m28:42[22m  [33mwarning[39m  Unexpected any. Specify a different type            [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m29:36[22m  [33mwarning[39m  Unexpected any. Specify a different type            [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m41:36[22m  [33mwarning[39m  Unexpected any. Specify a different type            [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m81:9[22m   [33mwarning[39m  'getStateColor' is assigned a value but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/admin/wordpress/page.tsx[24m[0m
+[0m   [2m30:3[22m   [33mwarning[39m  'UsersSkeleton' is defined but never used                                                                                                                                                                                                                                                [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m   [2m44:3[22m   [33mwarning[39m  'Edit' is defined but never used                                                                                                                                                                                                                                                         [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m116:6[22m   [33mwarning[39m  React Hook useEffect has a missing dependency: 'testConnection'. Either include it or remove the dependency array                                                                                                                                                                        [2mreact-hooks/exhaustive-deps[22m[0m
+[0m  [2m584:25[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [2m@next/next/no-img-element[22m[0m
+[0m  [2m742:27[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [2m@next/next/no-img-element[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/api/checkout/route.ts[24m[0m
+[0m  [2m9:3[22m  [33mwarning[39m  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-require-imports')[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/api/settings/route.ts[24m[0m
+[0m  [2m14:14[22m  [33mwarning[39m  'error' is defined but never used                                          [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m64:27[22m  [33mwarning[39m  'request' is defined but never used. Allowed unused args must match /^_/u  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/api/social-media/generate/route.ts[24m[0m
+[0m  [2m237:16[22m  [33mwarning[39m  'llmError' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/api/social-media/publish/route.ts[24m[0m
+[0m  [2m252:9[22m  [33mwarning[39m  'accessToken' is assigned a value but never used   [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m253:9[22m  [33mwarning[39m  'accessSecret' is assigned a value but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/api/social-media/route.ts[24m[0m
+[0m  [2m46:12[22m  [33mwarning[39m  'error' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/collections/[slug]/page.tsx[24m[0m
+[0m  [2m20:9[22m  [33mwarning[39m  'totalProducts' is assigned a value but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/login/page.tsx[24m[0m
+[0m  [2m60:6[22m  [33mwarning[39m  'LoginResponse' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/app/pre-order/PreOrderPage.tsx[24m[0m
+[0m  [2m15:3[22m   [33mwarning[39m  'Sparkles' is defined but never used            [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m27:71[22m  [33mwarning[39m  'itemCount' is assigned a value but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/3d/RotatingCollectionLogo.tsx[24m[0m
+[0m  [2m6:15[22m  [33mwarning[39m  'Mesh' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/admin/WordPressSyncPanel.tsx[24m[0m
+[0m  [2m11:11[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/admin/assets/AssetCard.tsx[24m[0m
+[0m  [2m35:11[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [2m@next/next/no-img-element[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/admin/assets/AssetPreviewModal.tsx[24m[0m
+[0m  [2m26:13[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [2m@next/next/no-img-element[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/admin/assets/AssetRow.tsx[24m[0m
+[0m  [2m28:15[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [2m@next/next/no-img-element[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/admin/pipeline/JobCard.tsx[24m[0m
+[0m  [2m2:36[22m  [33mwarning[39m  'Circle' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/admin/pipeline/QueueStatCard.tsx[24m[0m
+[0m  [2m2:22[22m  [33mwarning[39m  'Loader2' is defined but never used       [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m2:31[22m  [33mwarning[39m  'CheckCircle2' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m2:45[22m  [33mwarning[39m  'XCircle' is defined but never used       [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m2:54[22m  [33mwarning[39m  'Clock' is defined but never used         [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m2:61[22m  [33mwarning[39m  'Activity' is defined but never used      [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/admin/qa/ReviewDetail.tsx[24m[0m
+[0m   [2m4:10[22m  [33mwarning[39m  'Badge' is defined but never used                                                                                                                                                                                                                                                        [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m98:29[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [2m@next/next/no-img-element[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/admin/qa/ReviewListItem.tsx[24m[0m
+[0m  [2m32:17[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  [2m@next/next/no-img-element[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/dashboard/StatsCard.tsx[24m[0m
+[0m  [2m3:10[22m  [33mwarning[39m  'Card' is defined but never used         [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m3:16[22m  [33mwarning[39m  'CardContent' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m3:29[22m  [33mwarning[39m  'CardHeader' is defined but never used   [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m3:41[22m  [33mwarning[39m  'CardTitle' is defined but never used    [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/dashboard/analytics-charts.tsx[24m[0m
+[0m   [2m13:3[22m  [33mwarning[39m  'RadialBar' is defined but never used            [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m   [2m14:3[22m  [33mwarning[39m  'RadialBarChart' is defined but never used       [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m239:9[22m  [33mwarning[39m  'radialData' is assigned a value but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/dashboard/aurora-analytics.tsx[24m[0m
+[0m  [2m21:3[22m  [33mwarning[39m  'ArrowDown' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/dashboard/personalization-analytics.tsx[24m[0m
+[0m  [2m15:3[22m  [33mwarning[39m  'Users' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m17:3[22m  [33mwarning[39m  'Eye' is defined but never used    [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/dashboard/pulse-analytics.tsx[24m[0m
+[0m  [2m21:3[22m  [33mwarning[39m  'Users' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/marketing/IncentivePopup.tsx[24m[0m
+[0m  [2m6:8[22m  [33mwarning[39m  'Link' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/mascot/MascotBubble.tsx[24m[0m
+[0m  [2m143:6[22m  [33mwarning[39m  React Hook useEffect has missing dependencies: 'context.greeting' and 'state'. Either include them or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/components/three-viewer.tsx[24m[0m
+[0m   [2m25:3[22m   [33mwarning[39m  'ZoomIn' is defined but never used        [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m   [2m26:3[22m   [33mwarning[39m  'ZoomOut' is defined but never used       [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m192:30[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m203:16[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m205:25[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m235:16[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m241:25[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m288:16[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m292:16[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/e2e/auth.setup.ts[24m[0m
+[0m   [2m13:25[22m  [33mwarning[39m  'expect' is defined but never used                                                 [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m   [2m26:3[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m45:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m61:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m64:12[22m  [33mwarning[39m  'error' is defined but never used                                                  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m   [2m65:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m88:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m90:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m92:12[22m  [33mwarning[39m  'error' is defined but never used                                                  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m   [2m93:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m106:3[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m112:3[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m130:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m146:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m149:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/e2e/login-dashboard.spec.ts[24m[0m
+[0m  [2m259:5[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m304:7[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m409:7[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m476:7[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m502:5[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m548:5[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m549:5[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m585:3[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/lib/animations/luxury-transitions.ts[24m[0m
+[0m  [2m411:19[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/lib/autonomous/round-table-auto-trigger.ts[24m[0m
+[0m  [2m13:29[22m  [33mwarning[39m  Unexpected any. Specify a different type                                           [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m32:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m42:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m47:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/lib/autonomous/self-healing-service.ts[24m[0m
+[0m   [2m54:7[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m153:9[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m186:5[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/lib/queue/worker.ts[24m[0m
+[0m  [2m136:9[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m139:11[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m159:3[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/lib/vercel/deployment-manager.ts[24m[0m
+[0m   [2m26:16[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m   [2m34:12[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m   [2m93:17[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m156:59[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m177:17[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m208:19[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m336:69[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m346:66[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m366:67[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m391:15[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m403:60[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m414:15[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m435:17[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m471:28[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m481:28[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m489:66[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m489:80[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m514:46[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/lib/wordpress/operations-manager.ts[24m[0m
+[0m   [2m28:25[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m   [2m57:25[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m   [2m65:25[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m   [2m88:25[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m101:25[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m138:50[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m142:38[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m146:71[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m150:56[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m164:15[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m173:50[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m177:38[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m181:71[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m185:56[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m197:15[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m206:62[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m210:42[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m214:83[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m218:60[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m230:15[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m239:47[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m243:37[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m247:68[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m251:55[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m262:15[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m271:78[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m296:86[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m306:39[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m310:74[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m314:57[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m327:15[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m336:106[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m340:38[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m344:71[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m348:75[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m361:15[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m366:35[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m374:59[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m378:41[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m382:80[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m386:59[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m400:15[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m409:48[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m413:35[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m425:15[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m430:125[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m438:44[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m442:34[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m462:34[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m466:14[22m   [33mwarning[39m  'error' is defined but never used         [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m481:31[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m485:35[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m494:32[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m498:44[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m502:89[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m515:15[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m524:35[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m528:45[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m532:39[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m536:81[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m544:66[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m544:80[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m548:46[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m569:78[22m   [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/lib/wordpress/proxy-client.ts[24m[0m
+[0m  [2m15:12[22m  [33mwarning[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/lib/wordpress/sync-service.ts[24m[0m
+[0m   [2m50:24[22m  [33mwarning[39m  Unexpected any. Specify a different type                                    [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m161:23[22m  [33mwarning[39m  'resultId' is defined but never used. Allowed unused args must match /^_/u  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/scripts/deploy.ts[24m[0m
+[0m   [2m34:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m51:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m52:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m63:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m68:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m69:14[22m  [33mwarning[39m  'error' is defined but never used                                                  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m   [2m85:11[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m   [2m91:14[22m  [33mwarning[39m  'error' is defined but never used                                                  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m100:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m106:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m108:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m116:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m119:15[22m  [33mwarning[39m  'stdout' is assigned a value but never used                                        [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m127:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m128:21[22m  [33mwarning[39m  Unexpected any. Specify a different type                                           [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m137:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m143:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m145:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m177:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m180:21[22m  [33mwarning[39m  Unexpected any. Specify a different type                                           [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m192:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m210:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m219:11[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m222:16[22m  [33mwarning[39m  'error' is defined but never used                                                  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m236:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m244:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m249:9[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m252:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m277:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m287:5[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m293:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m294:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m298:7[22m   [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m  [2m299:21[22m  [33mwarning[39m  Unexpected any. Specify a different type                                           [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[33m[1m✖ 228 problems (0 errors, 228 warnings)[22m[39m[0m
+[0m[33m[1m[22m[39m[33m[1m  0 errors and 1 warning potentially fixable with the `--fix` option.[22m[39m[0m
+[0m[33m[1m[22m[39m[0m

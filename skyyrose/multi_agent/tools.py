@@ -14,7 +14,7 @@ from typing import Any
 
 from claude_agent_sdk import create_sdk_mcp_server, tool
 
-from .config import ASSETS_DIR, PRODUCT_DATA_DIR, REPO_DIR, THEME_DIR
+from .config import ASSETS_DIR, REPO_DIR, THEME_DIR
 
 # ---------------------------------------------------------------------------
 # Product Catalog Tools
@@ -216,8 +216,8 @@ async def get_brand_guidelines(args: dict[str, Any]) -> dict[str, Any]:
     """Return canonical brand guidelines."""
     guidelines = {
         "brand": "SkyyRose",
-        "tagline": "Luxury Grows from Concrete.",
-        "retired_taglines": ["Where Love Meets Luxury"],
+        "tagline": "",
+        "retired_taglines": ["Luxury Grows from Concrete.", "Where Love Meets Luxury"],
         "founder": "Corey Foster",
         "colors": {
             "rose_gold": "#B76E79",
@@ -263,15 +263,16 @@ async def get_brand_guidelines(args: dict[str, Any]) -> dict[str, Any]:
     {"sku": str, "style": str},
 )
 async def generate_product_copy(args: dict[str, Any]) -> dict[str, Any]:
-    """Generate product copy placeholder — the subagent will use its LLM for actual copy."""
+    """Return canonical SKU context for a separately governed copy task."""
     sku = args["sku"]
     style = args.get("style", "editorial")
 
-    # Load product data
-    override_path = PRODUCT_DATA_DIR / "prompts" / "overrides" / f"{sku}.json"
-    product_info = {}
-    if override_path.exists():
-        product_info = json.loads(override_path.read_text())
+    from skyyrose.core.product import get_product
+
+    try:
+        product_info = get_product(sku)
+    except (KeyError, ValueError, FileNotFoundError) as exc:
+        return _text(json.dumps({"success": False, "sku": sku, "error": str(exc)}))
 
     return _text(
         json.dumps(
@@ -280,7 +281,8 @@ async def generate_product_copy(args: dict[str, Any]) -> dict[str, Any]:
                 "style": style,
                 "product_data": product_info,
                 "instruction": (
-                    "Use the brand guidelines and product data to write copy. "
+                    "Use the brand guidelines and complete registry record to write copy. "
+                    "Preserve Corey's FOUNDER_CONFIRMED facts exactly; report missing facts as gaps. "
                     f"Style: {style}. Voice: luxury, authentic, aspirational."
                 ),
             },

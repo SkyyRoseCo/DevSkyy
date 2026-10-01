@@ -1,0 +1,161 @@
+{
+  "schema": 1,
+  "home": "https://skyyrose.co",
+  "operation": "production-v2-pages-20261001",
+  "source_sha": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+  "zip_sha256": "47c485f0001434b7dd52f572812df02e3e103631902a16e86f92ffea407b5a16",
+  "worlds_body_sha256": "2a62b0f0f49633e63dd37c40d5075d9a54047b5c9c63c0c438e72cad194d5ab5",
+  "existing_guards": {
+    "collections": {
+      "ID": 9327,
+      "path": "collections",
+      "post_type": "page",
+      "post_status": "publish",
+      "snapshot_sha256": "f414311bd9af7717b5977d6f54e92e31e026a62450329969287a6a091ed1f0d1",
+      "template_values": [
+        "skyyrose-canvas.php"
+      ]
+    },
+    "pre-order": {
+      "ID": 9335,
+      "path": "pre-order",
+      "post_type": "page",
+      "post_status": "publish",
+      "snapshot_sha256": "dc4fca15a966878351687a322e79417ba4377d729acba6dbe531eb9f0b5348be",
+      "template_values": [
+        "template-preorder-gateway.php"
+      ]
+    },
+    "contact": {
+      "ID": 9457,
+      "path": "contact",
+      "post_type": "page",
+      "post_status": "publish",
+      "snapshot_sha256": "a1f13428080ea4c8552a97e8b69e3f65571d1a6d4f4480f6b0e98a4a6353e8d8",
+      "template_values": [
+        "template-contact.php"
+      ]
+    },
+    "shipping-returns": {
+      "ID": 9712,
+      "path": "shipping-returns",
+      "post_type": "page",
+      "post_status": "publish",
+      "snapshot_sha256": "ae60ca4c2368370b94423e147af4c0ad8cd8a455d08c834ce83fe209149c4712",
+      "template_values": [
+        "template-shipping-returns.php"
+      ]
+    },
+    "cart": {
+      "ID": 9451,
+      "path": "cart",
+      "post_type": "page",
+      "post_status": "publish",
+      "snapshot_sha256": "ba485ef47899e6ef2f47502c88245da7afb69169b636f885bc6034e81a10650e",
+      "template_values": [
+        "skyyrose-canvas"
+      ]
+    },
+    "checkout": {
+      "ID": 9452,
+      "path": "checkout",
+      "post_type": "page",
+      "post_status": "publish",
+      "snapshot_sha256": "5021aed3e6dfd5f428e5680da49583c571790440b7844ee0127e1a1f559c2980",
+      "template_values": [
+        "skyyrose-canvas"
+      ]
+    }
+  },
+  "source_hashes": {
+    "inc/presentation-registry.php": "d6da13f00c9c81ba3fc228c5273ff3d671038527fcf8b856e5b878ab763fe61c",
+    "template-collection.php": "fc93576d67d38ef8952b99f13559efff45114a3a018e019e6f03f91552f44449",
+    "page.php": "d24a57c72688d8cd140c80956bd451add5d9fb54fff79bab31a994507e9f8500",
+    "template-immersive-signature.php": "830c1564595809bf0f46007b5080591c35fcdaf2d30c65a17d0d589ff46ec74d",
+    "template-immersive-black-rose.php": "07110e77e0a141d69bfe8dc3394f7e70ae125e2f9178c5ed59ca93624857d127",
+    "template-immersive-love-hurts.php": "5322f54376807cb06d0173e5619e31b82584a06294bf79610b3458f1d232dbb3",
+    "template-immersive-kids-capsule.php": "4c724fef4f889205e2ca43a37a333f6ff3b1af0f9cfcb8880d84ad4b9c2811bb"
+  },
+  "changes": [
+    {
+      "path": "collections/signature",
+      "title": "Signature",
+      "template": "template-collection.php",
+      "content": "",
+      "parent_path": "collections",
+      "before": null
+    },
+    {
+      "path": "collections/black-rose",
+      "title": "Black Rose",
+      "template": "template-collection.php",
+      "content": "",
+      "parent_path": "collections",
+      "before": null
+    },
+    {
+      "path": "collections/love-hurts",
+      "title": "Love Hurts",
+      "template": "template-collection.php",
+      "content": "",
+      "parent_path": "collections",
+      "before": null
+    },
+    {
+      "path": "collections/kids-capsule",
+      "title": "Kids Capsule",
+      "template": "template-collection.php",
+      "content": "",
+      "parent_path": "collections",
+      "before": null
+    },
+    {
+      "path": "worlds",
+      "title": "Worlds",
+      "template": "default",
+      "content": "<ul><li><a href=\"https://skyyrose.co/worlds/signature/\">Signature — Full Scene</a></li><li><a href=\"https://skyyrose.co/worlds/black-rose/\">Black Rose — Full Scene</a></li><li><a href=\"https://skyyrose.co/worlds/love-hurts/\">Love Hurts — Full Scene</a></li><li><a href=\"https://skyyrose.co/worlds/kids-capsule/\">Kids Capsule — Full Scene</a></li></ul>",
+      "parent_path": "",
+      "before": null
+    },
+    {
+      "path": "worlds/signature",
+      "title": "Signature — Full Scene",
+      "template": "template-immersive-signature.php",
+      "content": "",
+      "parent_path": "worlds",
+      "before": null
+    },
+    {
+      "path": "worlds/black-rose",
+      "title": "Black Rose — Full Scene",
+      "template": "template-immersive-black-rose.php",
+      "content": "",
+      "parent_path": "worlds",
+      "before": null
+    },
+    {
+      "path": "worlds/love-hurts",
+      "title": "Love Hurts — Full Scene",
+      "template": "template-immersive-love-hurts.php",
+      "content": "",
+      "parent_path": "worlds",
+      "before": null
+    },
+    {
+      "path": "worlds/kids-capsule",
+      "title": "Kids Capsule — Full Scene",
+      "template": "template-immersive-kids-capsule.php",
+      "content": "",
+      "parent_path": "worlds",
+      "before": null
+    },
+    {
+      "path": "size-guide",
+      "title": "Size Guide",
+      "template": "default",
+      "content": "<!-- wp:heading --><h2 class=\"wp-block-heading\">Measure a piece you own</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Lay a similar garment flat without stretching it. Compare chest, body length, waist, rise, and inseam with the measurements published for the piece.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class=\"wp-block-heading\">Between sizes</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Choose based on the silhouette you want and the product-specific fit note. Client Services can help compare measurements before purchase.</p><!-- /wp:paragraph -->",
+      "parent_path": "",
+      "before": null
+    }
+  ]
+}

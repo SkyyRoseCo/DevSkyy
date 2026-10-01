@@ -110,7 +110,7 @@ function skyyrose_get_collections_world_config() {
 					'scroll'  => 1.6,
 					'linger'  => 0.4,
 					'eyebrow' => __( 'The Signature', 'skyyrose' ),
-					'title'   => __( 'Luxury Grows from Concrete.', 'skyyrose' ),
+					'title'   => __( 'Signature', 'skyyrose' ),
 					'body'    => __( 'Oakland-born luxury, cut in gold and earned on the block.', 'skyyrose' ),
 					'tags'    => array( __( 'Signature', 'skyyrose' ), __( 'Gold', 'skyyrose' ) ),
 					'cta'     => array(

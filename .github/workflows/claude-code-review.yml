@@ -16,6 +16,7 @@ jobs:
     # active for dependency PRs while limiting this advisory reviewer to humans.
     if: >-
       !endsWith(github.actor, '[bot]') &&
+      !github.event.pull_request.draft &&
       github.event.pull_request.user.type != 'Bot'
     # Optional: Filter by PR author
     # if: |

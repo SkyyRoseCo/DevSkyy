@@ -1,0 +1,626 @@
+{
+  "base_sha": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+  "branch": "codex/preorder-order-promises-20261001",
+  "recorded_at_utc": "2026-10-01T09:48:11.688263+00:00",
+  "local_matrix": [
+    {
+      "mode": "cpt",
+      "assertions": 86,
+      "evidence": "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+      "sha256": "943d6889ded8c93e2c388ee24fe1f2fcbb9a13a7d41b7eb849dd04a2aaf61e3d"
+    },
+    {
+      "mode": "hpos",
+      "assertions": 86,
+      "evidence": "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+      "sha256": "a73efc03d10fdfdffa1e0fa62f50e50f8cc83f8c63a24ad12ccbc94c99e16c3e"
+    },
+    {
+      "mode": "compatibility",
+      "assertions": 86,
+      "evidence": "tasks/preorder-correctness-20261001/evidence/compatibility.txt",
+      "sha256": "a73efc03d10fdfdffa1e0fa62f50e50f8cc83f8c63a24ad12ccbc94c99e16c3e"
+    }
+  ],
+  "implementation_local_gates": "PASS",
+  "overall_states": {
+    "CODE COMPLETE": "BLOCKED",
+    "MERGED": "NOT RUN",
+    "RUNTIME ACCEPTED": "BLOCKED",
+    "RELEASED": "NOT RUN"
+  },
+  "evidence_scope": "Artifact-bound local module integration. No push/merge/deployment/live mutation/payment/provider calls.",
+  "requirements": [
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R01-simple-variation",
+      "expected_behavior": "Capture native identity for simple and selected variations",
+      "observed_result": "Direct additions and persisted IDs/attributes passed, including wildcard selection.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R02-allocation-boundaries",
+      "expected_behavior": "Allow normal allocations; reject zero/insufficient/exhausted/malformed",
+      "observed_result": "Parent pools, explicit variation zero, missing legacy cap and malformed cap checked.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R03-tampered-quantity-price",
+      "expected_behavior": "Reject invalid quantities and caller price/promise authority",
+      "observed_result": "Direct fractional/zero plus request negative/NaN-equivalent invalid string/INF blocked. Supplied snapshot replaced. No price field.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R04-cart-quantity",
+      "expected_behavior": "Revalidate and store replacement without counting old line twice",
+      "observed_result": "Native update validation, set_quantity replacement, over-limit rejection and zero removal passed.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R05-session-restoration",
+      "expected_behavior": "Restore accepted snapshot exactly and handle legacy absent snapshot",
+      "observed_result": "Native WC_Cart_Session serialized/restored snapshot; legacy preorder cart requires fresh review/add.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R06-precheckout-edit",
+      "expected_behavior": "Expose stale promise without silent mutation",
+      "observed_result": "Cart retained original date and emitted classic/structured Store API errors after metadata edit.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R07-after-order-edit",
+      "expected_behavior": "Preserve permanent order promise",
+      "observed_result": "Persist/reload order item after product date edit and repeated callback; exact metadata unchanged.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R08-native-price-discount",
+      "expected_behavior": "Keep native prices/discounts and persisted totals",
+      "observed_result": "Native price changed 80 to 95; stored total 95. Native coupon produced stored total 90. No client totals consumed.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R09-checkout-order-boundary",
+      "expected_behavior": "Both classic and Store API persist recorded snapshot",
+      "observed_result": "Actual WC_Checkout set_data_from_cart and Store API OrderController create_order_from_cart exercised real CRUD storage.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R10-payment-retry",
+      "expected_behavior": "Validate existing order independently of current cart",
+      "observed_result": "Empty cart insufficient allocation blocked; unrelated invalid cart did not block valid order; classic adapter emitted notices.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R11-historical-orders",
+      "expected_behavior": "Never fabricate absent/future historical promises",
+      "observed_result": "No-snapshot status legacy_unknown; v1 recorded read; future schema retained; persisted historical item never backfilled.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R12-referral",
+      "expected_behavior": "Preserve attribution through native order lifecycle using CRUD",
+      "observed_result": "Real cart coupon persisted then creation hook recorded minimal IDs; processed hook retained attribution; self-referral rejected. No reward payout added.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R13-storage-matrix",
+      "expected_behavior": "Use supported order stores and compatibility sync",
+      "observed_result": "Actual CPT/OrdersTableDataStore classes asserted in all three real local storage runs. SQLite translation layer limits production-db claim.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R14-failure-cancel-refund-local",
+      "expected_behavior": "No custom counter mutation on local failed/cancelled/refunded order",
+      "observed_result": "Real local failure/cancellation and non-payment refund left custom availability unchanged; native stock-managed policy not qualified.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R15-display",
+      "expected_behavior": "Expose recorded promise to native cart/order metadata consumers",
+      "observed_result": "wc_get_formatted_cart_item_data and get_formatted_meta_data produced original promise. Browser/email delivery not exercised.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/woocommerce-disabled.txt",
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R16-permission-denial",
+      "expected_behavior": "Preserve earlier validation denial and safe no-Woo module inclusion",
+      "observed_result": "Prior false validation stayed false; actual WordPress with Woo plugin skipped loaded module safely.",
+      "status": "PASS"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "Corey inventory decision; stream 2 implementation",
+      "requirement_id": "R17-concurrent-last-allocation",
+      "expected_behavior": "One authoritative atomic inventory reservation across independent carts",
+      "observed_result": "Diagnostic confirms both independent carts can validate last custom allocation; module deliberately does not reserve or decrement. Required concurrent-checkout gate remains open.",
+      "status": "BLOCKED"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "Corey inventory decision; stream 2 / stream 3",
+      "requirement_id": "R18-duplicate-submit-webhook",
+      "expected_behavior": "Exactly-once approved allocation/payout across duplicate concurrent events",
+      "observed_result": "Repeated snapshot/referral callbacks preserve metadata; no decrement/payout implemented. Duplicate real checkout/payment/webhook allocation semantics remain undecided.",
+      "status": "BLOCKED"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "Corey inventory decision; stream 2",
+      "requirement_id": "R19-abandonment-restoration",
+      "expected_behavior": "Approved reservation expiry/release/refund policy",
+      "observed_result": "Cart/session emptying and local lifecycle tests made no custom writes. Reservation expiry, stock-managed failure/refund restore not qualified.",
+      "status": "BLOCKED"
+    },
+    {
+      "layer": "local integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 2",
+      "requirement_id": "R20-local-native-tax-shipping",
+      "expected_behavior": "Native physical simple/variation prices, coupon, shipping and tax preserved in cart and persisted order",
+      "observed_result": "Enabled and native control: subtotal150, discount15, merchandise135, shipping10, item tax13.5, shipping tax1, total159.5. Native rate/destination, selected variation and snapshot boundaries passed in all three modes.",
+      "status": "PASS"
+    },
+    {
+      "layer": "target integration",
+      "environment": "Intended combined V2 target configuration; not executed",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {},
+      "reproduction": "NOT RUN: actual combined candidate and separately scoped target sandbox exercise required",
+      "evidence_locations": [],
+      "owner": "stream 1 sandbox integration",
+      "requirement_id": "R20-target-native-tax-shipping",
+      "expected_behavior": "Qualify intended target tax/shipping configuration through combined storefront and stored order",
+      "observed_result": "The bounded synthetic fixture establishes local arithmetic only; actual target configuration/checkout/payment not run.",
+      "status": "NOT RUN"
+    },
+    {
+      "layer": "repository integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 1",
+      "requirement_id": "R21-v2-bootstrap",
+      "expected_behavior": "Exact integrated V2 head loads module once",
+      "observed_result": "Owned module delivered; shared functions.php remains unchanged; coordinator relayed include to stream 1.",
+      "status": "BLOCKED"
+    },
+    {
+      "layer": "commercial contract",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "Corey / stream 1",
+      "requirement_id": "R22-commercial-owner-decisions",
+      "expected_behavior": "Agreed complete customer promise/policy fields and acknowledgement semantics",
+      "observed_result": "Recorded full-payment, estimated-date and 48-hour cancellation source terms reused. V2 null-date copy conflicts with estimate-dependent cutoff; controlling approved version, missing-date/changed-date handling and acknowledgement fields remain unresolved. See DECISION-PACKET.md.",
+      "status": "BLOCKED"
+    },
+    {
+      "layer": "staging runtime",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/staging-readonly.json"
+      ],
+      "owner": "coordinator deployment/sandbox scope",
+      "requirement_id": "R23-target-runtime",
+      "expected_behavior": "Authenticated staging identity/deployed artifact and candidate order test",
+      "observed_result": "Read-only staging verified V2 2.5.1, WP7.1.2, Woo11.1.2, HPOS. New module and V1 snapshot/referral functions absent. Candidate deployment/sandbox order not authorized.",
+      "status": "BLOCKED"
+    },
+    {
+      "layer": "quality",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 1 acceptance",
+      "requirement_id": "R24-ui-quality",
+      "expected_behavior": "Desktop/mobile/accessibility/performance and visible failure recovery",
+      "observed_result": "Native formatted metadata checked locally; candidate browser checkout/screenshots/a11y/performance not run.",
+      "status": "NOT RUN"
+    },
+    {
+      "layer": "cross-stream integration",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "stream 3 and stream 1",
+      "requirement_id": "R25-analytics-purchase",
+      "expected_behavior": "One accurate native lifecycle purchase without snapshot leakage",
+      "observed_result": "Existing source contract scoped_event_id(site_id, environment, paid_order:<native ID>) documented with paid status/date and HMAC provenance; no extra hook/counter/payload. Combined-head execution pending.",
+      "status": "BLOCKED"
+    },
+    {
+      "layer": "release",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "coordinator",
+      "requirement_id": "R26-pr-merge",
+      "expected_behavior": "Exact reviewed hosted checks and authorized merge",
+      "observed_result": "Refreshed #886 metadata/source but no PR mutation, push or merge authorized.",
+      "status": "NOT RUN"
+    },
+    {
+      "layer": "release",
+      "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+      },
+      "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
+      "evidence_locations": [
+        "tasks/preorder-correctness-20261001/evidence/cpt.txt",
+        "tasks/preorder-correctness-20261001/evidence/hpos.txt",
+        "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
+      ],
+      "owner": "coordinator",
+      "requirement_id": "R27-release-rollback",
+      "expected_behavior": "Approved deployment, artifact mapping, smoke and rollback proof",
+      "observed_result": "Scoped local revert documented; historical metadata preserved. No candidate deployment/operational rollback ran.",
+      "status": "NOT RUN"
+    }
+  ],
+  "supersedes_test_evidence_dependency": "f16f179cf2b73fa817691f72b15906309c628153",
+  "module_unchanged": true,
+  "closing_scope": "Bounded local tax/shipping fixture, integration contract and owner decision packet; R21/R25 unearned.",
+  "closing_artifacts": {
+    "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-bootstrap.php": "da2e5de25da87773cfc08de7e014c7417edcac3bd5cb137eb5184c584d95adb4",
+    "tasks/preorder-correctness-20261001/INTEGRATION-CONTRACT.md": "3666d0f2d0931a79fcb379328f9737872e830bb20f90714e99e3336ebeebc6ad",
+    "tasks/preorder-correctness-20261001/DECISION-PACKET.md": "14e84a9ecc61621e0ee7c04efe5df5ae27763a9f11225815fd4759e252acadc1"
+  },
+  "closing_static_gates": "tasks/preorder-correctness-20261001/evidence/closing-static-gates.json"
+}

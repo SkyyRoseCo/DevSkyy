@@ -1,0 +1,16 @@
+
+> skyyrose-flagship-2-theme@2.5.0 check:approved-scenes
+> node ../../tools/v2-runtime/check-approved-scroll-world-scenes.cjs
+
+{
+  "status": "PASS_APPROVED_SCENE_SELECTION",
+  "scenes": 9,
+  "runtime_media_assets": 27,
+  "media_bytes": 42425297,
+  "supporting_derivatives": 2,
+  "supporting_derivative_bytes": 226526,
+  "resolved_selection_checked": false,
+  "browser_visual_qa": "NOT_PERFORMED_BY_THIS_GUARD"
+}
+(node:24880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

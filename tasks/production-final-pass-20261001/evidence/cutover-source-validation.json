@@ -1,0 +1,80 @@
+{
+  "scope": "offline regression suites + authenticatedtargetPHP8.4syntax only; no WP/database/theme/page installation",
+  "runs": [
+    {
+      "command": [
+        "php",
+        "tasks/production-final-pass-20261001/test_v2_pages.php"
+      ],
+      "exit_code": 0,
+      "log": "tasks/production-final-pass-20261001/evidence/cutover-source-check-1.log",
+      "sha256": "a31b9572a073fcd416bd05b6dc580cb4e9f4c9f2f030c92a60680fd2cd5935a8"
+    },
+    {
+      "command": [
+        ".venv-integration-locked/bin/python",
+        "-m",
+        "pytest",
+        "tasks/production-final-pass-20261001/test_v2_page_plan.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log": "tasks/production-final-pass-20261001/evidence/cutover-source-check-2.log",
+      "sha256": "511fb971caf59261241ec2a3919d9d10c7dcb9ec044ee07d50b2db465184f057"
+    },
+    {
+      "command": [
+        "php",
+        "tools/production-runtime/test-publish-search-privacy.php"
+      ],
+      "exit_code": 0,
+      "log": "tasks/production-final-pass-20261001/evidence/cutover-source-check-3.log",
+      "sha256": "b44e5910c6cefa6313509f7b99c262053b2f4f3ae23c461f7a0bc46ab7d38d86"
+    },
+    {
+      "command": [
+        "php",
+        "tools/production-runtime/test-search-tracking-wordpress.php"
+      ],
+      "exit_code": 0,
+      "log": "tasks/production-final-pass-20261001/evidence/cutover-source-check-4.log",
+      "sha256": "d8ca8730b40cfd4a30709aa93fb7b1ab3fbded2fe93707fc1d3fd3ea9ed9dfd4"
+    },
+    {
+      "command": [
+        "ssh",
+        "skyyrose-wp",
+        "php -l (stdin exactsource)"
+      ],
+      "file": "tools/production-runtime/search-tracking-privacy.php",
+      "source_sha256": "afc2f6d8a4ae6280de28b6c1306564cc86053acc713c52e5ab0b5717b3ef58f2",
+      "exit_code": 0,
+      "stdout": "No syntax errors detected in Standard input code\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ssh",
+        "skyyrose-wp",
+        "php -l (stdin exactsource)"
+      ],
+      "file": "tools/production-runtime/publish-search-privacy.php",
+      "source_sha256": "45ed4f3810eaeac30827a19d0b3f86a2cb38448cfd74d28fbdcff286e066b500",
+      "exit_code": 0,
+      "stdout": "No syntax errors detected in Standard input code\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ssh",
+        "skyyrose-wp",
+        "php -l (stdin exactsource)"
+      ],
+      "file": "tasks/production-final-pass-20261001/apply_v2_pages.php",
+      "source_sha256": "df7e8a3c87504b406124fca933df516c01c28e55720e745617ffe467ed030078",
+      "exit_code": 0,
+      "stdout": "No syntax errors detected in Standard input code\n",
+      "stderr": ""
+    }
+  ]
+}

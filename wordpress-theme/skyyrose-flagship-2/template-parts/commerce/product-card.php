@@ -79,7 +79,7 @@ try {
 	$native_stock_label = trim( wp_strip_all_tags( $stock_html ) );
 	$stock_label        = '' !== $native_stock_label ? $native_stock_label : ( $card_product->is_in_stock() ? __( 'Available', 'skyyrose-flagship-2' ) : __( 'Unavailable', 'skyyrose-flagship-2' ) );
 	$quick_view_excerpt = wp_trim_words( wp_strip_all_tags( $card_product->get_short_description() ), 26, '…' );
-	$is_preorder        = function_exists( 'skyyrose2_is_preorder_product' ) && skyyrose2_is_preorder_product( $card_product );
+	$is_preorder        = skyyrose2_is_transaction_preorder_product( $card_product );
 	$image_attrs        = array(
 		'class'         => 'sr2-c-editorial-card__product-image',
 		'loading'       => $loading,
@@ -140,7 +140,7 @@ else :
 			</div>
 		</div>
 		<?php if ( $is_preorder ) : ?>
-			<p class="sr2-c-editorial-card__edition"><?php esc_html_e( 'Pre-order edition', 'skyyrose-flagship-2' ); ?></p>
+			<p class="sr2-c-editorial-card__edition"><?php echo esc_html( $card_product->is_type( 'variable' ) ? __( 'Review order options', 'skyyrose-flagship-2' ) : __( 'Pre-order edition', 'skyyrose-flagship-2' ) ); ?></p>
 		<?php endif; ?>
 		<div class="sr2-c-editorial-card__actions">
 			<a class="sr2-c-editorial-card__quick-view" href="<?php echo esc_url( $product_url ); ?>" data-quick-view aria-haspopup="dialog" aria-controls="sr2-quick-view-dialog" aria-expanded="false" data-quick-view-name="<?php echo esc_attr( $product_name ); ?>" data-quick-view-collection="<?php echo esc_attr( $collection_name ); ?>" data-quick-view-price="<?php echo esc_attr( wp_strip_all_tags( $price_html ) ); ?>" data-quick-view-availability="<?php echo esc_attr( $stock_label ); ?>" data-quick-view-excerpt="<?php echo esc_attr( $quick_view_excerpt ); ?>" data-quick-view-image="<?php echo esc_url( $quick_view_image ); ?>" data-quick-view-url="<?php echo esc_url( $product_url ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Quick view %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>"><?php esc_html_e( 'Quick view', 'skyyrose-flagship-2' ); ?></a>

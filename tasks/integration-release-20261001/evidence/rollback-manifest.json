@@ -1,0 +1,12 @@
+{
+  "scope": "authenticated readonly activeproductiontheme backup; target remained unchanged",
+  "target": "https://skyyrose.co",
+  "active_theme": "skyyrose-flagship",
+  "archive_path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/integration-release-20261001/rollback/production-active-v1.tar.gz",
+  "bytes": 12873000,
+  "sha256": "6cadb3766046aa8f7d1ddf994682b5c43a2ce4726fc846ebb5df5c74cd13a1b4",
+  "members": 100,
+  "style_sha256": "9756c15183cab5d4b625b16e0d7cbd56bcd17f58230d1931d3ede4b0ca488132",
+  "isolated_restore": "NOT RUN",
+  "deploy_or_cutover": "NOT RUN"
+}

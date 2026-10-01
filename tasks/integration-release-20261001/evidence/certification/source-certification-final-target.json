@@ -1,0 +1,21 @@
+{
+  "schema": "skyyrose.source-certification-exact-export.v1",
+  "timestamp_utc": "2026-10-01T12:48:21.407357+00:00",
+  "source_revision": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+  "scope": "Reviewed immutable final source + owned certification overlay; declared byte pins and existing guard/fixture/i18n regressions only. Independent immutable-source tests run separately in the Git checkout.",
+  "export": "/var/folders/bz/k0nc044d1fz2rs3kz_gyv99m0000gn/T/stream4-cert-299f694-rnigj6zu",
+  "exit_code": 0,
+  "input_count": 77,
+  "input_hash_failures": [],
+  "overlay_sha256": {
+    "inputs.py": "dcd226cd496b4c07168b49f4c83db92c209d3214b79e989c3c93664dc83614af",
+    "test_inputs.py": "ed6128081e0df64bac07741177a562a79e1c51b96d3c1903e2bc35a21621e395",
+    "build-inputs.json": "9e1fc7363d107bfec5fca46880574a6b239d7d93a7c1f72d5b298675f34fea28",
+    "generated-outputs.json": "352c9c067124a911eb29129462f12f19aaca16b04ce58c6f9351d6edd392371a",
+    "package-boundary.json": "ba71477cfe8859f972f59128d9a09561a9d703ab13b53814c657965d5a1b5e86",
+    "runtime-php-baseline.json": "d5255026e2ed03a2d80837cf481f9ce46f1408578304edc9d6c89d3bc729e6ff"
+  },
+  "authentication": "NOT APPLICABLE \u2014 offline export and tests; native downloads mocked by tests",
+  "full_theme_build": "NOT RUN \u2014 stream1 owns exact toolchain/build/package",
+  "publication_authorized": false
+}

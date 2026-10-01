@@ -94,65 +94,22 @@ class TestCreativeOperationState:
 
 
 class TestEntryNode:
-    def test_valid_intent_passes(self):
+    @pytest.mark.parametrize(
+        "intent,params",
+        [
+            ("design-ideation", {"approved": True}),
+            ("not-a-real-intent", {}),
+            ("product-render", {"spend_authorized": True}),
+            ("design-ideation", {"governor_context": {"authorized": True}}),
+        ],
+    )
+    def test_entry_denies_caller_authority(self, intent, params):
         from skyyrose.elite_studio.creative.nodes import entry_node
 
-        state = {
-            "intent": "design-ideation",
-            "sku": "",
-            "params": {"garment_type": "hoodie", "collection": "black-rose"},
-            "stage_timings": {},
-            "status": "running",
-        }
-        result = entry_node(state)
-        assert result.get("status") != "error"
-        assert "stage_timings" in result
-        assert "entry" in result["stage_timings"]
-
-    def test_invalid_intent_sets_error(self):
-        from skyyrose.elite_studio.creative.nodes import entry_node
-
-        state = {
-            "intent": "not-a-real-intent",
-            "sku": "",
-            "params": {},
-            "stage_timings": {},
-            "status": "running",
-        }
-        result = entry_node(state)
+        result = entry_node({"intent": intent, "sku": "synthetic", "params": params})
         assert result["status"] == "error"
-        assert "Unknown intent" in result["error"]
-
-    def test_entry_node_builds_fashion_context_for_sku(self):
-        from skyyrose.elite_studio.creative.nodes import entry_node
-
-        state = {
-            "intent": "product-render",
-            "sku": "br-001",
-            "params": {},
-            "stage_timings": {},
-            "status": "running",
-        }
-        result = entry_node(state)
-        # Should not be an error — context build may succeed or warn
-        assert "stage_timings" in result
-
-    def test_entry_node_builds_fashion_context_from_params(self):
-        from skyyrose.elite_studio.creative.nodes import entry_node
-
-        state = {
-            "intent": "design-ideation",
-            "sku": "",
-            "params": {"garment_type": "jersey", "collection": "black-rose"},
-            "stage_timings": {},
-            "status": "running",
-        }
-        result = entry_node(state)
-        assert result.get("status") != "error"
-        if result.get("fashion_context"):
-            ctx = result["fashion_context"]
-            assert "garment_type" in ctx
-            assert "color_palette" in ctx
+        assert result["error_code"] == "PAID_GOVERNOR_REQUIRED"
+        assert result["provider_called"] is False
 
 
 # ---------------------------------------------------------------------------
@@ -231,60 +188,70 @@ class TestRouteIntent:
 
 
 class TestProductCopyNode:
-    def test_generates_copy_for_known_sku(self):
+    def test_canonical_copy_ignores_caller_facts_and_calls_no_provider(self, monkeypatch):
+        import socket
+
+        from skyyrose.core.product import get_product
         from skyyrose.elite_studio.creative.nodes import product_copy_node
 
-        state = {
-            "intent": "product-copy",
-            "sku": "br-001",
-            "params": {
-                "product_name": "BLACK Rose Crewneck",
-                "garment_type": "crewneck",
-                "collection": "black-rose",
-                "price": 35,
-            },
-            "fashion_context": {
-                "garment_type": "crewneck",
-                "collection_dna": "Black Rose: gothic luxury",
-                "fabric": "french terry",
-                "size_range": "S-3XL",
-                "color_palette": ["#0A0A0A", "#C0C0C0", "#B76E79"],
-            },
-            "stage_timings": {},
-        }
-        result = product_copy_node(state)
-        assert result.get("copy_result") is not None
+        def deny_network(*args, **kwargs):
+            pytest.fail("Local copy must not call a provider or network")
+
+        monkeypatch.setattr(socket, "create_connection", deny_network)
+        monkeypatch.setattr(socket.socket, "connect", deny_network)
+        canonical = get_product("br-001")
+        result = product_copy_node(
+            {
+                "sku": "br-001",
+                "params": {"product_name": "Invented", "price": 999, "is_preorder": True},
+                "fashion_context": {"fabric": "invented silk", "size_range": "S–3XL"},
+                "stage_timings": {"prior": 1.0},
+            }
+        )
         copy = result["copy_result"]
         assert copy["success"] is True
-        assert "SkyyRose" in copy["short_description"] or "BLACK Rose" in copy["short_description"]
-        assert len(copy["meta_title"]) <= 70
-        assert len(copy["meta_description"]) <= 160
-        assert len(copy["keywords"]) > 0
+        assert copy["product_name"] == canonical["name"]
+        assert copy["price"] == canonical["catalog"]["price"]
+        assert copy["short_description"] == canonical["content"]["short_description"]["value"]
+        assert copy["long_description"] == canonical["content"]["description"]["value"]
+        assert copy["authority"] == canonical["authority"]
+        assert copy["provenance"]["sources"] == canonical["provenance"]["sources"]
+        assert result["stage_timings"]["prior"] == 1.0
 
-    def test_copy_includes_brand_tagline(self):
+    def test_missing_seo_is_explicit_without_shipping_or_keyword_fallback(self):
         from skyyrose.elite_studio.creative.nodes import product_copy_node
 
-        state = {
-            "intent": "product-copy",
-            "sku": "sg-007",
-            "params": {"product_name": "Signature Beanie", "collection": "signature"},
-            "fashion_context": {
-                "collection_dna": "Signature: West Coast prestige",
-                "fabric": "knit",
-                "size_range": "One Size",
-                "color_palette": ["#0A0A0A", "#D4AF37", "#B76E79"],
-            },
-            "stage_timings": {},
-        }
-        result = product_copy_node(state)
-        copy = result.get("copy_result", {})
-        assert copy.get("success") is True
-        combined = (
-            copy.get("short_description", "")
-            + copy.get("long_description", "")
-            + " ".join(copy.get("keywords", []))
-        )
-        assert "SkyyRose" in combined or "Luxury" in combined
+        copy = product_copy_node({"sku": "sg-007"})["copy_result"]
+        assert copy["success"] is True
+        assert copy["meta_description"] is None
+        assert copy["keywords"] == []
+        assert "content.seo_meta" in copy["gaps"]
+        assert "copy.keywords" in copy["gaps"]
+        assert "Free shipping" not in str(copy)
+        assert "Luxury Grows from Concrete" not in str(copy)
+        assert "Where Love Meets Luxury" not in str(copy)
+
+    @pytest.mark.parametrize("sku", ["", None, "unknown-sku"])
+    def test_missing_or_unknown_sku_fails_closed(self, sku):
+        from skyyrose.elite_studio.creative.nodes import product_copy_node
+
+        result = product_copy_node({"sku": sku, "params": {"product_name": "Invented"}})
+        assert result["status"] == "error"
+        assert result["copy_result"]["success"] is False
+        assert "short_description" not in result["copy_result"]
+
+    @pytest.mark.parametrize("field", ["short_description", "description"])
+    def test_missing_authored_copy_fails_closed(self, monkeypatch, field):
+        from skyyrose.core.product import get_product
+        from skyyrose.elite_studio.creative import nodes
+
+        canonical = get_product("br-001")
+        canonical["content"][field] = None
+        monkeypatch.setattr(nodes, "get_product", lambda sku: canonical)
+        result = nodes.product_copy_node({"sku": "br-001"})
+        assert result["status"] == "error"
+        assert result["copy_result"]["success"] is False
+        assert f"content.{field}" in result["error"]
 
 
 # ---------------------------------------------------------------------------
@@ -293,49 +260,13 @@ class TestProductCopyNode:
 
 
 class TestDesignIdeationNode:
-    def test_generates_design_concept(self):
+    @pytest.mark.parametrize("params", [{}, {"approved": True}])
+    def test_unqualified_design_path_denied(self, params):
         from skyyrose.elite_studio.creative.nodes import design_ideation_node
 
-        state = {
-            "intent": "design-ideation",
-            "sku": "",
-            "params": {
-                "collection": "black-rose",
-                "garment_type": "hoodie",
-                "design_intent": "Gothic luxury hoodie",
-                "target_price_usd": 65.0,
-            },
-            "fashion_context": None,
-            "stage_timings": {},
-        }
-        result = design_ideation_node(state)
-        assert result.get("design_result") is not None
-        design = result["design_result"]
-        assert design["success"] is True
-        assert design["concept_id"] != ""
-        assert len(design["generation_prompt"]) > 20
-
-    def test_design_contains_collection_dna(self):
-        from skyyrose.elite_studio.creative.nodes import design_ideation_node
-
-        state = {
-            "intent": "design-ideation",
-            "sku": "",
-            "params": {
-                "collection": "love-hurts",
-                "garment_type": "joggers",
-                "design_intent": "Crimson passion joggers",
-                "target_price_usd": 95.0,
-            },
-            "fashion_context": None,
-            "stage_timings": {},
-        }
-        result = design_ideation_node(state)
-        design = result.get("design_result", {})
-        assert design.get("success") is True
-        # Colorway should include crimson or love hurts colors
-        colorway = design.get("colorway_hex", [])
-        assert len(colorway) >= 1
+        result = design_ideation_node({"intent": "design-ideation", "params": params})
+        assert result["error_code"] == "PAID_GOVERNOR_REQUIRED"
+        assert result["provider_called"] is False
 
 
 # ---------------------------------------------------------------------------
@@ -344,27 +275,12 @@ class TestDesignIdeationNode:
 
 
 class TestCollectionPlanNode:
-    def test_generates_collection_plan(self):
+    def test_unqualified_collection_path_denied(self):
         from skyyrose.elite_studio.creative.nodes import collection_plan_node
 
-        state = {
-            "intent": "collection-plan",
-            "sku": "",
-            "params": {
-                "collection": "signature",
-                "season": "FW26",
-                "theme": "West Coast elevation",
-            },
-            "fashion_context": None,
-            "stage_timings": {},
-        }
-        result = collection_plan_node(state)
-        assert result.get("collection_plan_result") is not None
-        plan = result["collection_plan_result"]
-        assert plan["success"] is True
-        assert plan["collection"] == "signature"
-        assert len(plan["hero_pieces"]) > 0
-        assert len(plan["launch_sequence"]) > 0
+        result = collection_plan_node({"intent": "collection-plan", "params": {"approved": True}})
+        assert result["error_code"] == "PAID_GOVERNOR_REQUIRED"
+        assert result["provider_called"] is False
 
 
 # ---------------------------------------------------------------------------

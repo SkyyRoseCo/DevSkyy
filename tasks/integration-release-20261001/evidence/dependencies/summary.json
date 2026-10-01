@@ -1,0 +1,56 @@
+{
+  "scope": "LOCAL_DEPENDENCY_REMEDIATION_ONLY",
+  "frontend_before": {
+    "info": 0,
+    "low": 8,
+    "moderate": 30,
+    "high": 2,
+    "critical": 1,
+    "total": 41
+  },
+  "frontend_after": {
+    "info": 0,
+    "low": 8,
+    "moderate": 23,
+    "high": 0,
+    "critical": 0,
+    "total": 31
+  },
+  "frontend_installed_after": {
+    "info": 0,
+    "low": 8,
+    "moderate": 23,
+    "high": 0,
+    "critical": 0,
+    "total": 31
+  },
+  "root_unchanged": {
+    "info": 0,
+    "low": 1,
+    "moderate": 8,
+    "high": 0,
+    "critical": 0,
+    "total": 9
+  },
+  "exact_patches": {
+    "browserslist": "4.28.1 -> 4.28.7",
+    "tar": "7.5.11 -> 7.5.21",
+    "smol-toml": "1.5.2 -> 1.7.1"
+  },
+  "validation": {
+    "npm_ci": "PASS --ignore-scripts --no-audit;1143 packages installed locally",
+    "tests": "PASS26files320tests",
+    "typecheck": "PASS",
+    "lint": "PASS0errors228warnings",
+    "scene_projection_readonly": "PASS",
+    "production_build": "PASS NEXT_TELEMETRY_DISABLED=1 npm exec -- next build --webpack",
+    "diff_check": "PASS"
+  },
+  "limits": [
+    "31 lower severity frontend findings remain (8low23moderate).",
+    "Root retains9 lower severity findings(1low8moderate).",
+    "No browser E2E or live commerce/deployment/provider qualification asserted.",
+    "Build bypassed mutating prebuild; ran read-only scene authority check separately.",
+    "No npm audit fix or Vercel major downgrade. Existing other overrides retained."
+  ]
+}

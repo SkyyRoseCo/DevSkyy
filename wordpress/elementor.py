@@ -29,6 +29,8 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
+from skyyrose.elite_studio.brand import BrandConfig
+
 logger = logging.getLogger(__name__)
 
 
@@ -181,7 +183,7 @@ class BrandImagery:
 class BrandVoice:
     """Brand voice and copy guidelines."""
 
-    tagline: str = "Luxury Grows from Concrete."
+    tagline: str = field(default_factory=lambda: BrandConfig.load().tagline_active)
     tone: str = "sophisticated, elevated, authentic"
     cta_primary: str = "Shop Now"
     cta_secondary: str = "Discover More"
@@ -442,7 +444,7 @@ class ElementorBuilder:
         # Generate home page
         template = builder.generate_home_page(
             hero_title="SkyyRose",
-            hero_subtitle="Luxury Grows from Concrete.",
+            hero_subtitle=BrandConfig.load().tagline_active,
             collections=["BLACK_ROSE", "LOVE_HURTS", "SIGNATURE"],
         )
 

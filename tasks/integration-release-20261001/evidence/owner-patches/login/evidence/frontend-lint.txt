@@ -1,0 +1,328 @@
+> devskyy-dashboard@1.0.0 lint
+> eslint .
+
+(node:7545) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/.claude/skills/run-devskyy-dashboard/driver.mjs
+   19:17  warning  'writeFile' is defined but never used                                              @typescript-eslint/no-unused-vars
+   76:3   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  102:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/admin/3d-pipeline/page.tsx
+  13:3  warning  'Upload' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/admin/assets/page.tsx
+   88:5   warning  'deleteAsset' is assigned a value but never used                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+  644:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/admin/experience/page.tsx
+  37:3  warning  'ResponsiveContainer' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/admin/imagery/page.tsx
+  603:44  warning  'label' is assigned a value but never used                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  622:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/admin/pipeline/page.tsx
+  39:10  warning  'status' is assigned a value but never used       @typescript-eslint/no-unused-vars
+  47:42  warning  'isConnected' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/admin/round-table/page.tsx
+  13:3  warning  'Zap' is defined but never used           @typescript-eslint/no-unused-vars
+  19:3  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+  20:3  warning  'XCircle' is defined but never used       @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/admin/tasks/page.tsx
+  13:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/admin/vercel/page.tsx
+  13:3   warning  'Globe' is defined but never used                   @typescript-eslint/no-unused-vars
+  25:54  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  26:50  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  27:44  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  28:42  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  29:36  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  41:36  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+  81:9   warning  'getStateColor' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/admin/wordpress/page.tsx
+   30:3   warning  'UsersSkeleton' is defined but never used                                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+   44:3   warning  'Edit' is defined but never used                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+  116:6   warning  React Hook useEffect has a missing dependency: 'testConnection'. Either include it or remove the dependency array                                                                                                                                                                        react-hooks/exhaustive-deps
+  584:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  742:27  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/api/checkout/route.ts
+  9:3  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-require-imports')
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/api/settings/route.ts
+  14:14  warning  'error' is defined but never used                                          @typescript-eslint/no-unused-vars
+  64:27  warning  'request' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/api/social-media/generate/route.ts
+  237:16  warning  'llmError' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/api/social-media/publish/route.ts
+  252:9  warning  'accessToken' is assigned a value but never used   @typescript-eslint/no-unused-vars
+  253:9  warning  'accessSecret' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/api/social-media/route.ts
+  46:12  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/collections/[slug]/page.tsx
+  20:9  warning  'totalProducts' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/login/page.tsx
+  60:6  warning  'LoginResponse' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/app/pre-order/PreOrderPage.tsx
+  15:3   warning  'Sparkles' is defined but never used            @typescript-eslint/no-unused-vars
+  27:71  warning  'itemCount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/3d/RotatingCollectionLogo.tsx
+  6:15  warning  'Mesh' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/admin/WordPressSyncPanel.tsx
+  11:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/admin/assets/AssetCard.tsx
+  35:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/admin/assets/AssetPreviewModal.tsx
+  26:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/admin/assets/AssetRow.tsx
+  28:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/admin/pipeline/JobCard.tsx
+  2:36  warning  'Circle' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/admin/pipeline/QueueStatCard.tsx
+  2:22  warning  'Loader2' is defined but never used       @typescript-eslint/no-unused-vars
+  2:31  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+  2:45  warning  'XCircle' is defined but never used       @typescript-eslint/no-unused-vars
+  2:54  warning  'Clock' is defined but never used         @typescript-eslint/no-unused-vars
+  2:61  warning  'Activity' is defined but never used      @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/admin/qa/ReviewDetail.tsx
+   4:10  warning  'Badge' is defined but never used                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+  98:29  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/admin/qa/ReviewListItem.tsx
+  32:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/dashboard/StatsCard.tsx
+  3:10  warning  'Card' is defined but never used         @typescript-eslint/no-unused-vars
+  3:16  warning  'CardContent' is defined but never used  @typescript-eslint/no-unused-vars
+  3:29  warning  'CardHeader' is defined but never used   @typescript-eslint/no-unused-vars
+  3:41  warning  'CardTitle' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/dashboard/analytics-charts.tsx
+   13:3  warning  'RadialBar' is defined but never used            @typescript-eslint/no-unused-vars
+   14:3  warning  'RadialBarChart' is defined but never used       @typescript-eslint/no-unused-vars
+  239:9  warning  'radialData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/dashboard/aurora-analytics.tsx
+  21:3  warning  'ArrowDown' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/dashboard/personalization-analytics.tsx
+  15:3  warning  'Users' is defined but never used  @typescript-eslint/no-unused-vars
+  17:3  warning  'Eye' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/dashboard/pulse-analytics.tsx
+  21:3  warning  'Users' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/marketing/IncentivePopup.tsx
+  6:8  warning  'Link' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/mascot/MascotBubble.tsx
+  143:6  warning  React Hook useEffect has missing dependencies: 'context.greeting' and 'state'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/components/three-viewer.tsx
+   25:3   warning  'ZoomIn' is defined but never used        @typescript-eslint/no-unused-vars
+   26:3   warning  'ZoomOut' is defined but never used       @typescript-eslint/no-unused-vars
+  192:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  203:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  205:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  235:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  241:25  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  288:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  292:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/e2e/auth.setup.ts
+   13:25  warning  'expect' is defined but never used                                                 @typescript-eslint/no-unused-vars
+   26:3   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   45:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   61:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   64:12  warning  'error' is defined but never used                                                  @typescript-eslint/no-unused-vars
+   65:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   88:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   90:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   92:12  warning  'error' is defined but never used                                                  @typescript-eslint/no-unused-vars
+   93:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  106:3   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  112:3   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  130:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  146:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  149:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/e2e/login-dashboard.spec.ts
+  259:5  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  304:7  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  409:7  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  476:7  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  502:5  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  548:5  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  549:5  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  585:3  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/lib/animations/luxury-transitions.ts
+  411:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/lib/autonomous/round-table-auto-trigger.ts
+  13:29  warning  Unexpected any. Specify a different type                                           @typescript-eslint/no-explicit-any
+  32:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  42:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  47:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/lib/autonomous/self-healing-service.ts
+   54:7  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  153:9  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  186:5  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/lib/queue/worker.ts
+  136:9   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  139:11  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  159:3   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/lib/vercel/deployment-manager.ts
+   26:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   34:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   93:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  156:59  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  177:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  208:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  336:69  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  346:66  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  366:67  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  391:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  403:60  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  414:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  435:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  471:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  481:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  489:66  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  489:80  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  514:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/lib/wordpress/operations-manager.ts
+   28:25   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   57:25   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   65:25   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   88:25   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  101:25   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  138:50   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  142:38   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  146:71   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  150:56   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  164:15   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  173:50   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  177:38   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  181:71   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  185:56   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  197:15   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  206:62   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  210:42   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  214:83   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  218:60   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  230:15   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  239:47   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  243:37   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  247:68   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  251:55   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  262:15   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  271:78   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  296:86   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  306:39   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  310:74   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  314:57   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  327:15   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  336:106  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  340:38   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  344:71   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  348:75   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  361:15   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  366:35   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  374:59   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  378:41   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  382:80   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  386:59   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  400:15   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  409:48   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  413:35   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  425:15   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  430:125  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  438:44   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  442:34   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  462:34   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  466:14   warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  481:31   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  485:35   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  494:32   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  498:44   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  502:89   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  515:15   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  524:35   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  528:45   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  532:39   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  536:81   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  544:66   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  544:80   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  548:46   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  569:78   warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/lib/wordpress/proxy-client.ts
+  15:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/lib/wordpress/sync-service.ts
+   50:24  warning  Unexpected any. Specify a different type                                    @typescript-eslint/no-explicit-any
+  161:23  warning  'resultId' is defined but never used. Allowed unused args must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/theceo/.codex/worktrees/b5f2/DevSkyy/frontend/scripts/deploy.ts
+   34:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   51:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   52:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   63:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   68:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   69:14  warning  'error' is defined but never used                                                  @typescript-eslint/no-unused-vars
+   85:11  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+   91:14  warning  'error' is defined but never used                                                  @typescript-eslint/no-unused-vars
+  100:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  106:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  108:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  116:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  119:15  warning  'stdout' is assigned a value but never used                                        @typescript-eslint/no-unused-vars
+  127:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  128:21  warning  Unexpected any. Specify a different type                                           @typescript-eslint/no-explicit-any
+  137:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  143:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  145:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  177:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  180:21  warning  Unexpected any. Specify a different type                                           @typescript-eslint/no-explicit-any
+  192:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  210:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  219:11  warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  222:16  warning  'error' is defined but never used                                                  @typescript-eslint/no-unused-vars
+  236:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  244:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  249:9   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  252:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  277:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  287:5   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  293:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  294:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  298:7   warning  Unexpected console statement. Only these console methods are allowed: warn, error  no-console
+  299:21  warning  Unexpected any. Specify a different type                                           @typescript-eslint/no-explicit-any
+
+✖ 228 problems (0 errors, 228 warnings)
+  0 errors and 1 warning potentially fixable with the `--fix` option.

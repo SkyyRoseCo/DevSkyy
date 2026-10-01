@@ -6548,5 +6548,62 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-23T13:46:47.434298+00:00"
+  },
+  {
+    "id": "bug-377",
+    "timestamp": "2026-10-01T09:48:43.673205+00:00",
+    "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping",
+    "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+    "root_cause": "Several native carts in a single fixture process retained session callbacks; inactive nonshippable carts cleared active chosen_shipping_methods after totals. Order helper also omitted customer address, and strict shipping instance comparison ignored native stored string representation.",
+    "fix": "Terminal case detaches prior cart/session callbacks and constructs a fresh native cart; enables shipping before initial construction; reuses matched synthetic zone/native rate; copies native customer addresses and selects returned rate; compares numeric instance identity. Enabled/control cart and reloaded order pass86 assertions in CPT/HPOS/sync.",
+    "tags": [
+      "fixture",
+      "woocommerce",
+      "shipping",
+      "tax",
+      "session"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-01T09:48:43.673205+00:00"
+  },
+  {
+    "id": "bug-385",
+    "timestamp": "2026-10-01T12:26:27.616410+00:00",
+    "error_message": "Error establishing a database connection in integration fixture while copy still running",
+    "file": "tasks/integration-release-20261001/evidence/native-activation.txt",
+    "root_cause": "Dependent WP commands started before yielded fixture-copy session completed.",
+    "fix": "Awaited fixture-copy completion, verified own SQLite paths then reran activation/hooks/matrix successfully.",
+    "tags": [
+      "integration",
+      "fixture",
+      "orchestration"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-01T12:26:27.616410+00:00"
+  },
+  {
+    "id": "bug-386",
+    "timestamp": "2026-10-01T12:45:59.982960+00:00",
+    "error_message": "Integration viewer root lifecycle, login deadline and future approval rebinding review findings",
+    "file": "tasks/integration-release-20261001/adoption-manifest.json",
+    "root_cause": "Disposed controllers retained root keys; login lacked a full session-establishment deadline; builder would restamp an old approval with new registry digest.",
+    "fix": "Committed Map eviction and7browserregressions incl historicalnegative; reviewed30s/10s login deadlines+9tests; reject any future acceptedGLBbinding until reviewed sourceapproval contract,3regressions. Retained harness failures and pending source certification separately.",
+    "tags": [
+      "integration",
+      "viewer",
+      "auth",
+      "approval"
+    ],
+    "related_bugs": [
+      "bug-385"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-01T12:45:59.982960+00:00",
+    "integration_execution_notes": [
+      "Certification receipt copy rejected stale locator during owner historical/final filename separation; refreshed final review and verified all4correct hashes without adopting invalid receipt.",
+      "Initial clean package correctly stopped at unset V2_WP_FIXTURE; copied7immutable source files after matching every nativegalleryhash, thenreran exact packagecommand withisolatedpinnedfixture."
+    ]
   }
 ]

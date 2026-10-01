@@ -4,7 +4,6 @@ Photography direction standards for SkyyRose Elite Studio.
 Defines per-style photography standards and garment-specific recommendations
 aligned with SkyyRose luxury brand aesthetics.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

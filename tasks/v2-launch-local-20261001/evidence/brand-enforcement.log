@@ -1,0 +1,71 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_retired_taglines_do_not_appear_as_actual_usage ______________
+skyyrose/elite_studio/tests/test_brand_enforcement.py:138: in test_retired_taglines_do_not_appear_as_actual_usage
+    pytest.fail(msg)
+E   Failed: Retired tagline(s) used as actual content (must be migrated):
+E     frontend/DEPLOYMENT.md:321  — 'Luxury Grows from Concrete.'
+E       description: 'Luxury Grows from Concrete.',
+E     frontend/app/(storefront)/HomePage.tsx:137  — 'Luxury Grows from Concrete.'
+E       Luxury Grows from Concrete.
+E     frontend/app/(storefront)/HomePage.tsx:498  — 'Luxury Grows from Concrete.'
+E       Luxury Grows from Concrete.. Three immersive worlds of fashion,
+E     frontend/app/(storefront)/HomePage.tsx:545  — 'Luxury Grows from Concrete.'
+E       Luxury Grows from Concrete.
+E     frontend/app/admin/elite-studio/design/page.tsx:378  — 'Luxury Grows from Concrete.'
+E       Describe your vision. Luxury Grows from Concrete.
+E     frontend/app/admin/elite-studio/layout.tsx:64  — 'Luxury Grows from Concrete.'
+E       <p className="text-xs text-gray-500">Luxury Grows from Concrete.</p>
+E     frontend/app/admin/elite-studio/page.tsx:138  — 'Luxury Grows from Concrete.'
+E       Luxury Grows from Concrete.
+E     frontend/app/api/social-media/generate/route.ts:87  — 'Luxury Grows from Concrete.'
+E       instagram: `Introducing ${product.label} from the ${collectionLabel} collection.\n\nLuxury Grows from Concrete. -- this 
+E     frontend/app/api/social-media/generate/route.ts:89  — 'Luxury Grows from Concrete.'
+E       twitter: `${product.label} is here. ${collectionLabel} collection. Luxury Grows from Concrete.\n\nskyyrose.co ${baseHash
+E     frontend/app/api/social-media/generate/route.ts:139  — 'Luxury Grows from Concrete.'
+E       Brand tagline: "Luxury Grows from Concrete."
+E     frontend/app/collections/CollectionsLanding.tsx:182  — 'Luxury Grows from Concrete.'
+E       Luxury Grows from Concrete.
+E     frontend/app/collections/[slug]/CollectionExperience.tsx:203  — 'Luxury Grows from Concrete.'
+E       SkyyRose &mdash; Luxury Grows from Concrete.
+E     frontend/app/collections/layout.tsx:15  — 'Luxury Grows from Concrete.'
+E       'Luxury Grows from Concrete.. Explore our immersive fashion collections.',
+E     frontend/app/collections/page.tsx:11  — 'Luxury Grows from Concrete.'
+E       description: 'Luxury Grows from Concrete. Three immersive worlds await.',
+E     frontend/app/page.tsx:8  — 'Luxury Grows from Concrete.'
+E       title: 'SkyyRose | Luxury Grows from Concrete.',
+E     frontend/app/page.tsx:12  — 'Luxury Grows from Concrete.'
+E       title: 'SkyyRose | Luxury Grows from Concrete.',
+E     frontend/app/pre-order/PreOrderPage.tsx:319  — 'Luxury Grows from Concrete.'
+E       Luxury Grows from Concrete.
+E     frontend/lib/collections.ts:138  — 'Luxury Grows from Concrete.'
+E       tagline: 'Luxury Grows from Concrete.',
+E     scripts/add_love_hurts_and_logos_to_lora.py:31  — 'Luxury Grows from Concrete.'
+E       "tagline": "Luxury Grows from Concrete.",
+E     scripts/deploy_to_skyyrose.py:93  — 'Luxury Grows from Concrete.'
+E       "content": "<h1>SkyyRose - Luxury Grows from Concrete.</h1><p>Immersive 3D collection experiences</p>",
+E     scripts/deploy_to_skyyrose.py:128  — 'Luxury Grows from Concrete.'
+E       "content": "<h1>About SkyyRose</h1><p>Luxury Grows from Concrete.</p>",
+E     scripts/enhance_assets_huggingface.py:91  — 'Luxury Grows from Concrete.'
+E       ║     Luxury Grows from Concrete.                                                  ║
+E     scripts/enhance_product_images.py:853  — 'Luxury Grows from Concrete.'
+E       Luxury Grows from Concrete.
+E     scripts/enhance_with_ai_pipeline.py:148  — 'Luxury Grows from Concrete.'
+E       "tagline": "Luxury Grows from Concrete.",
+E     scripts/expand_brand_voice_dataset.py:35  — 'Luxury Grows from Concrete.'
+E       - Tagline: "Luxury Grows from Concrete."
+E     scripts/expand_brand_voice_dataset.py:215  — 'Luxury Grows from Concrete.'
+E       "Describe what 'Luxury Grows from Concrete.' means.",
+E     scripts/extract_and_deploy_skyyrose.py:181  — 'Luxury Grows from Concrete.'
+E       title="SkyyRose - Luxury Grows from Concrete.",
+E     scripts/gradio_3d_app.py:396  — 'Luxury Grows from Concrete.'
+E       <p>Luxury Grows from Concrete. | AI-Powered 3D Generation with 95% Fidelity</p>
+E     scripts/gradio_3d_app.py:600  — 'Luxury Grows from Concrete.'
+E       <p style="font-size: 0.9em;">© 2024 SkyyRose LLC - Luxury Grows from Concrete.</p>
+E     scripts/oai_render/scene_schema.py:136  — 'Luxury Grows from Concrete.'
+E       "brand": "SkyyRose — Luxury Grows from Concrete.",
+E     ... 95 more
+E   
+E   Replace with BrandConfig.load().tagline_active, or if this is an enforcement mention (instruction to NOT use the phrase), include one of the enforcement keywords (retired, NEVER, do not use, etc.) on the same line.
+=========================== short test summary info ============================
+FAILED skyyrose/elite_studio/tests/test_brand_enforcement.py::test_retired_taglines_do_not_appear_as_actual_usage

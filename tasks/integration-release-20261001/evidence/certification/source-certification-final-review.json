@@ -1,0 +1,243 @@
+{
+  "schema": "skyyrose.final-source-semantic-review.v1",
+  "source_revision": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+  "reviewed_from": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+  "theme_matches_guard_freeze": "3b570b35e370977105f719c445992ccf3f6d04f2",
+  "files": [
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/css/product-glb.css",
+      "sha256": "eff5d75c4edf324669c47dfb5d356742bbc43f2513d4b4d7f5d8af394e6c0b7f",
+      "review": "Optional square viewer stage, hidden-state sizing, touch-action on stage only and focus-visible outline; no empty mount styling activation."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/css/product-glb.min.css",
+      "sha256": "499e6070b00e3816276853f2a8e8e21d612253806eaee8436bb4ef9579667915",
+      "review": "Exact immutable CSS source/min parity reproduced using owning CleanCSS5.3.3 specialComments0 options."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-init.mjs",
+      "sha256": "e066c8c5458fb1db9bb61c4d84b60fd0a7996e96ce354a11f7d4fb00bd247f1a",
+      "review": "Native Woo selection refresh/abort/generation guard, identity/attribute equality, same-origin POST no-store, permanent native fallback; disposal releases removed roots and pagehide, pageshow remount. Actual BFCache restoration remains unproven."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-three.mjs",
+      "sha256": "029fa2357b57603c0286446098e1598f07f6fb27b6e6460e9020cd9396bd6842",
+      "review": "Exact bytes of previously reviewed all-scene/shared-resource/skeleton-safe demand renderer; local vendored Three imports only; lifecycle and decoded-image cleanup reviewed."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-viewer.mjs",
+      "sha256": "2cd7fe6561028de194a479c21351f77f44f3ff6d7856335548f13f9bbc96bc29",
+      "review": "Exact bytes of reviewed retained-byte stream/hash/length/resource-URL/extension rejection and native identity/open-retry resolver, permanent fallback, keyboard/touch/context-loss/cancellation/disposal contract."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/functions.php",
+      "sha256": "cab7d736d6a35546afb70cadaa661c00153843adf4e6c72a1c09b7c8efd9d788",
+      "review": "Prior transaction-consistent preorder display unchanged; adds compatibility, native-link and optional-GLB includes once. Summary hook registration remains native; no asset approval or transaction mutation added by viewer.",
+      "prior_review_bytes_identical": false
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/inc/product-glb-links.php",
+      "sha256": "5e6896e6f07f51b1c072826b7b24068a398a16ca5ce4900d2da191258c9f5746",
+      "review": "Exact bytes of previously reviewed server-owned canonical SKU/native product/variation/attributes, collection/preorder promise validator; URL derives native permalink. No cart/stock/order/payment mutation."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/inc/product-glb.php",
+      "sha256": "b99338b2a87155b59d39da7dee23ff1e94d122a00a53ee8d49bfc38856ac7a67",
+      "review": "Public read-only POST resolver owns canonical lookup, rejects changed native selection and sends no-store; manifest requires full current digest and explicit flags; absent accepted manifest renders nothing and enqueues no viewer/style."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php",
+      "sha256": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+      "review": "Previously reviewed transaction module exact bytes; native descriptive metadata/hooks, no price override/reservation/custom allocation decrement. Runtime/transaction acceptance remains owner scope.",
+      "prior_review_bytes_identical": true
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/languages/skyyrose-flagship-2.pot",
+      "sha256": "bcaa4c99a4e7d1c6b80e8c997afc4d0ef253d54983bc7493217adacc66388e5a",
+      "review": "Prior reviewed i18n dictionary exact bytes; owning build must regenerate finalnew viewer strings before release.",
+      "prior_review_bytes_identical": true
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py",
+      "sha256": "c0563e46dfddef92706e4aadcd25a41d1da09ef287d3c3a81353b400a0996537",
+      "review": "Current full registry SHA identifies projection only. Any nonNone acceptance binding raises until reviewed product-source approval contract exists. Current33products contain no bindings, so entriesempty/publicationfalse; historical product_sot_hash remains media-only."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/hero-composed-scene.php",
+      "sha256": "6b27d6adbc67ad4b9e41ada7ee6ee3b471e0fff6489e1b07709dbcef5e54602e",
+      "review": "Prior reviewed exact bytes: native permanent product links and escaping; transaction-consistent simple preorder note, no unconditional variable-parent promise.",
+      "prior_review_bytes_identical": true
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php",
+      "sha256": "25f7057b0ce38ea1e5267ae1b2cba63271e0d9116c8d939502a0e781898c9422",
+      "review": "Prior reviewed exact bytes: variable parents reviewoptions, transaction-consistent classification and native links.",
+      "prior_review_bytes_identical": true
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-hero.php",
+      "sha256": "365cf2c07db3316f32c6b454f34a5a9a490d9abd68b7a188801dbe5cf5f29928",
+      "review": "Prior reviewed exact bytes: variable option-dependent note/simple transactionalpreorder; native purchase flow retained.",
+      "prior_review_bytes_identical": true
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/tests/commerce/bootstrap.php",
+      "sha256": "6f9d220bba62e198aa6d8285c9b47a3f9a9971924f40e702ea8a12947f82ffca",
+      "review": "Prior reviewed exact fixture-only full-bootstrap/hook/native variation display assertions, loopback+Woo version restrictions; excludedrelease, not executed by this semanticreview.",
+      "prior_review_bytes_identical": true
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+      "sha256": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+      "review": "Fixture-only added native tax/shipping/selectedvariation/control-hook money equality cases and synthetic customer data; owner scope, excludedrelease; no realtransaction execution by this stream.",
+      "prior_review_bytes_identical": false
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh",
+      "sha256": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202",
+      "review": "Prior exactbytes: loopback fixture-only CPT/HPOS/compatibility matrix; changes syntheticfixture records/settings, excludedrelease.",
+      "prior_review_bytes_identical": true
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-bootstrap.php",
+      "sha256": "da2e5de25da87773cfc08de7e014c7417edcac3bd5cb137eb5184c584d95adb4",
+      "review": "Read-only owner bootstrap/hook/hashcheck with WPCLI/activeV2/Woo11.1.2 constraints; no module reinclusion or transaction acceptance, excludedrelease."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-glb-runtime.php",
+      "sha256": "682d3f729ef4dcdaa7a0394ea0e0ec4ad2e5c899f49378816cba95c1226d6f50",
+      "review": "LoopbackactiveV2/Woo11.1.2 syntheticresolver test, rejects unknown/negative/draft/unavailable native identity, ignoresclientID; zeroacceptedassets produces emptymount; syntheticrecordcleanup, excludedrelease."
+    }
+  ],
+  "package_guard": {
+    "path": "tools/v2-source-certification/package.py",
+    "sha256": "381d41a5fa445bf6ce110e17f99f5dbc8dc5ac210b3c406b279f55cc4b0973b4",
+    "review": "Adds .mjs to existing workstation-path textscan; no packageallowlist widening."
+  },
+  "registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+  "current_accepted_binding_count": 0,
+  "publication_authorized": false,
+  "asset_approval_contract": "UNSUPPORTED_HELD: any canonical acceptancebinding rejected, no automaticcurrentdigest substitution.",
+  "vendor_dependency_review": "GLTFLoader and BufferGeometryUtils import local Three module; DRACO absent from accepted format permits no decoderload. Existing five vendored files remain runtimeclassified and will be pinned. Existing MIT source license does not establish productassetlicense.",
+  "certification_status": "PASS_BOUND_SOURCE_REVIEW_77_PINS_22_GUARDS_5_IMMUTABLE_TESTS",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "holds": [
+    "No acceptedasset or founder visualapproval claim",
+    "No actual BFCache restoration/realdevicebudget claim",
+    "Full pinnedtoolchainbuild/package and productiontarget acceptance owned separately"
+  ],
+  "metadata_changes": {
+    "changed_existing_source_pins": [
+      "tools/v2-source-certification/package.py",
+      "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py"
+    ],
+    "added_source_pins": [
+      "wordpress-theme/skyyrose-flagship-2/assets/css/product-glb.css",
+      "wordpress-theme/skyyrose-flagship-2/assets/css/product-glb.min.css",
+      "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-init.mjs",
+      "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-three.mjs",
+      "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-viewer.mjs",
+      "wordpress-theme/skyyrose-flagship-2/functions.php",
+      "wordpress-theme/skyyrose-flagship-2/inc/product-glb-links.php",
+      "wordpress-theme/skyyrose-flagship-2/inc/product-glb.php",
+      "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php",
+      "tests/test_glb_projection_approval.py",
+      "wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-glb-runtime.php"
+    ],
+    "final_input_count": 77,
+    "new_package_entries": [
+      "assets/css/product-glb.css",
+      "assets/css/product-glb.min.css",
+      "assets/js/product-glb-init.mjs",
+      "assets/js/product-glb-three.mjs",
+      "assets/js/product-glb-viewer.mjs",
+      "inc/product-glb-links.php",
+      "inc/product-glb.php",
+      "inc/woocommerce-compat.php",
+      "tests/commerce/bootstrap.php",
+      "tests/commerce/preorder.php",
+      "tests/commerce/run-local-matrix.sh",
+      "tests/commerce/verify-bootstrap.php",
+      "tests/commerce/verify-glb-runtime.php"
+    ],
+    "package_source_count": 705,
+    "runtime_php_rebound": [
+      "functions.php",
+      "template-parts/commerce/hero-composed-scene.php",
+      "template-parts/commerce/product-card.php",
+      "template-parts/commerce/product-hero.php",
+      "inc/woocommerce-compat.php",
+      "inc/product-glb-links.php",
+      "inc/product-glb.php"
+    ],
+    "historical_hashes_and_approval_states": "Preserved; no factual/media/asset approval changes.",
+    "reverified_existing_dependency_pins": [
+      "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+      "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+      "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+      "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/LICENSE",
+      "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js"
+    ]
+  },
+  "overlay_sha256": "9a37cc1770f66f66ae747e9e4f9e9a8506dbdf204112d2715499a96b0a789807",
+  "overlay_bindings": [
+    {
+      "path": "tools/v2-source-certification/build-inputs.json",
+      "source_sha256": "37bc8d20f7d3410b5b2b7756b4eadad79f3951d5f90c28b506ed673665800f63",
+      "overlay_sha256": "9e1fc7363d107bfec5fca46880574a6b239d7d93a7c1f72d5b298675f34fea28",
+      "new_file": false
+    },
+    {
+      "path": "tools/v2-source-certification/package-boundary.json",
+      "source_sha256": "c1e5eb65ffb4a574482ee7214176e8e817a92028dbf6b02fef900b37f9396487",
+      "overlay_sha256": "ba71477cfe8859f972f59128d9a09561a9d703ab13b53814c657965d5a1b5e86",
+      "new_file": false
+    },
+    {
+      "path": "tools/v2-source-certification/generated-outputs.json",
+      "source_sha256": "78ac1967390fc76c3c58adb571eaa8adf59826009f3238843f33429d591d1bed",
+      "overlay_sha256": "352c9c067124a911eb29129462f12f19aaca16b04ce58c6f9351d6edd392371a",
+      "new_file": false
+    },
+    {
+      "path": "tools/v2-source-certification/runtime-php-baseline.json",
+      "source_sha256": "08df4e075b5e86aa4fb7c6eefb7b121df0dbeaa397b0f7738a85ca244a5442df",
+      "overlay_sha256": "d5255026e2ed03a2d80837cf481f9ce46f1408578304edc9d6c89d3bc729e6ff",
+      "new_file": false
+    },
+    {
+      "path": "tools/v2-source-certification/test_reviewed_source.py",
+      "source_sha256": null,
+      "overlay_sha256": "4ac7437cd77c47817044e0db5de44077f8c2df31618413dd9472d755b8d04e0b",
+      "new_file": true
+    }
+  ],
+  "adoption_delta_note": "Incremental metadata changes are relative to previously reviewed524d overlay. Integration299metadata was not updated to that overlay: this scoped patch recomputes exact final77pins/census and carries only reviewed metadata/test changes; no old88986cc wholesale commit adoption.",
+  "validation": {
+    "source_export": "source-certification-final-target.json",
+    "immutable_tests": "source-certification-final-immutable-tests.log",
+    "projection": "source-certification-projection.json",
+    "counts": {
+      "input_pins": 77,
+      "guard_tests": 22,
+      "immutable_source_tests": 5,
+      "theme_census": 705,
+      "accepted_assets": 0
+    },
+    "publication_authorized": false,
+    "architect_review": "PASS boundedsemantic/metadata/sourceexport scope; no duplicate tests",
+    "python_review": "PASS copiedexport pins/hashes/holds; lint lambda default fixed, no remainingfindings",
+    "full_toolchain_build": "NOT_RUN_HERE; integrationowner owns pinnedbuild/package/ZIP-installednativefixture"
+  },
+  "evidence_sha256": {
+    "source-certification-final-target.json": "8b3e18a3ca346b480f1b343507f302b08438b2011a4bfd7a80a086a7dd0ef3d0",
+    "source-certification-final-target.log": "37811909c98b1db509f705dcd5ad69e7b304595910de2f586264d6b9e071195c",
+    "source-certification-final-immutable-tests.log": "6a15316ed5f49189c52bac32095aab4f8b72391f0baceb1123a8f2a5c24b7ec7",
+    "source-certification-projection.json": "feeb1581514eba9666935f3d5d35695367dcd38db0d442514b1e263fc408e6a0"
+  },
+  "evidence_preservation": "Earlier524d source-certification-target.json/log restoredbyte-identical to committed historicalreceipt; final299files use final-target filenames.",
+  "qualification_source_sha256": {
+    "tools/v2-source-certification/test_reviewed_source.py": "4ac7437cd77c47817044e0db5de44077f8c2df31618413dd9472d755b8d04e0b",
+    "tasks/3d-commerce-20261001/evidence/run_source_certification.py": "326320b9e6f078d80c8107a5fb579a20d48328169dd156d8bcbfff9f8d33e033"
+  }
+}

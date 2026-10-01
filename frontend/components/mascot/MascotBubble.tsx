@@ -69,7 +69,7 @@ function getCollectionFromPath(pathname: string): string {
 const MASCOT_RESPONSES: Record<string, string> = {
   'show me the collections': "We have three collections: BLACK Rose (gothic luxury), Love Hurts (Oakland soul), and Signature (rose gold essentials). Each tells a unique story!",
   'how do pre-orders work?': "Pre-orders lock in your exclusive early-adopter pricing with up to 25% off retail. Limited numbered pieces — once they're claimed, they're gone!",
-  'tell me about skyyrose': "SkyyRose is where love meets luxury. Born in Oakland, we craft premium streetwear that tells stories through gothic romance, Bay Area grit, and timeless elegance.",
+  'tell me about skyyrose': "Born in Oakland, SkyyRose crafts premium streetwear that tells stories through gothic romance, Bay Area grit, and timeless elegance.",
   'how do i pre-order?': "Head to the Pre-Order page and pick your favorites! Each piece comes with exclusive packaging, a signed certificate, and lifetime Inner Circle membership.",
 };
 

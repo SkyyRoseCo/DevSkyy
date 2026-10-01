@@ -1,0 +1,996 @@
+diff --git a/frontend/DEPLOYMENT.md b/frontend/DEPLOYMENT.md
+index 1ce947288..bf387e89d 100644
+--- a/frontend/DEPLOYMENT.md
++++ b/frontend/DEPLOYMENT.md
+@@ -318,7 +318,7 @@ const results = await wp.search('black rose', {
+ // Update settings
+ await wp.updateSettings({
+   title: 'SkyyRose Luxury Fashion',
+-  description: 'Luxury Grows from Concrete.',
++  description: '',
+   posts_per_page: 12
+ })
+ ```
+diff --git a/frontend/app/(storefront)/HomePage.tsx b/frontend/app/(storefront)/HomePage.tsx
+index dc08c669e..cbe746388 100644
+--- a/frontend/app/(storefront)/HomePage.tsx
++++ b/frontend/app/(storefront)/HomePage.tsx
+@@ -127,16 +127,6 @@ export default function HomePage({ collections }: HomePageProps) {
+                   SKYYROSE
+                 </motion.h1>
+ 
+-                {/* Tagline */}
+-                <motion.p
+-                  initial={{ opacity: 0, y: 20 }}
+-                  animate={{ opacity: 1, y: 0 }}
+-                  transition={{ delay: 1, duration: 0.8 }}
+-                  className="text-white/40 text-lg md:text-xl tracking-[0.15em] mb-2 font-body"
+-                >
+-                  Luxury Grows from Concrete.
+-                </motion.p>
+-
+                 {/* Decorative line */}
+                 <motion.div
+                   initial={{ scaleX: 0 }}
+@@ -274,12 +264,14 @@ export default function HomePage({ collections }: HomePageProps) {
+                     {/* Hover overlay */}
+                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-end">
+                       <div className="p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+-                        <p
+-                          className="text-xs tracking-[0.2em] uppercase mb-1"
+-                          style={{ color: collection.accentColor }}
+-                        >
+-                          {collection.tagline}
+-                        </p>
++                        {collection.tagline && (
++                          <p
++                            className="text-xs tracking-[0.2em] uppercase mb-1"
++                            style={{ color: collection.accentColor }}
++                          >
++                            {collection.tagline}
++                          </p>
++                        )}
+                         <h3 className="text-xl font-display text-white">
+                           {collection.name}
+                         </h3>
+@@ -369,12 +361,14 @@ export default function HomePage({ collections }: HomePageProps) {
+ 
+                   {/* Collection Info */}
+                   <div className="flex-1 w-full">
+-                    <p
+-                      className="text-xs tracking-[0.3em] uppercase mb-3"
+-                      style={{ color: collection.accentColor }}
+-                    >
+-                      {collection.tagline}
+-                    </p>
++                    {collection.tagline && (
++                      <p
++                        className="text-xs tracking-[0.3em] uppercase mb-3"
++                        style={{ color: collection.accentColor }}
++                      >
++                        {collection.tagline}
++                      </p>
++                    )}
+                     <h3 className="text-3xl md:text-4xl font-display text-white mb-4">
+                       {collection.name}
+                     </h3>
+@@ -495,7 +489,7 @@ export default function HomePage({ collections }: HomePageProps) {
+                 SKYYROSE
+               </h3>
+               <p className="text-white/30 text-sm leading-relaxed max-w-sm">
+-                Luxury Grows from Concrete.. Three immersive worlds of fashion,
++                Three immersive worlds of fashion,
+                 crafted with AI precision and human artistry.
+               </p>
+             </div>
+@@ -541,9 +535,6 @@ export default function HomePage({ collections }: HomePageProps) {
+             <p className="text-white/15 text-xs tracking-wider">
+               &copy; 2026 SkyyRose LLC. All rights reserved.
+             </p>
+-            <p className="text-white/10 text-xs tracking-[0.2em] uppercase">
+-              Luxury Grows from Concrete.
+-            </p>
+           </div>
+         </div>
+       </footer>
+diff --git a/frontend/app/admin/elite-studio/design/page.tsx b/frontend/app/admin/elite-studio/design/page.tsx
+index 43929314c..e00856364 100644
+--- a/frontend/app/admin/elite-studio/design/page.tsx
++++ b/frontend/app/admin/elite-studio/design/page.tsx
+@@ -375,7 +375,7 @@ export default function DesignCoPilotPage() {
+               <div>
+                 <CardTitle className="text-white text-base">Design Studio</CardTitle>
+                 <CardDescription className="text-gray-500 text-xs">
+-                  Describe your vision. Luxury Grows from Concrete.
++                  Describe your vision.
+                 </CardDescription>
+               </div>
+             </div>
+diff --git a/frontend/app/admin/elite-studio/layout.tsx b/frontend/app/admin/elite-studio/layout.tsx
+index 2ef1bb631..f6cecd918 100644
+--- a/frontend/app/admin/elite-studio/layout.tsx
++++ b/frontend/app/admin/elite-studio/layout.tsx
+@@ -61,7 +61,6 @@ export default function EliteStudioLayout({ children }: { children: React.ReactN
+           </div>
+           <div>
+             <h2 className="text-lg font-bold text-white">Elite Studio</h2>
+-            <p className="text-xs text-gray-500">Luxury Grows from Concrete.</p>
+           </div>
+         </div>
+ 
+diff --git a/frontend/app/admin/elite-studio/page.tsx b/frontend/app/admin/elite-studio/page.tsx
+index 7b3d84436..17dd247d3 100644
+--- a/frontend/app/admin/elite-studio/page.tsx
++++ b/frontend/app/admin/elite-studio/page.tsx
+@@ -134,9 +134,6 @@ export default function EliteStudioPage() {
+           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+             Elite <span className="bg-gradient-to-r from-[#B76E79] to-[#D4AF37] bg-clip-text text-transparent">Studio</span>
+           </h1>
+-          <p className="text-gray-400 mt-2 text-lg font-medium">
+-            Luxury Grows from Concrete.
+-          </p>
+         </div>
+         <Badge variant="outline" className="border-[#B76E79]/50 bg-[#B76E79]/5 text-[#B76E79] backdrop-blur-sm px-4 py-1">
+           <Activity className="h-3 w-3 mr-2 animate-pulse" aria-hidden="true" />
+diff --git a/frontend/app/api/social-media/generate/route.ts b/frontend/app/api/social-media/generate/route.ts
+index 588d4859f..8fe8dfdbe 100644
+--- a/frontend/app/api/social-media/generate/route.ts
++++ b/frontend/app/api/social-media/generate/route.ts
+@@ -80,13 +80,13 @@ function generateFromTemplate(
+   const collectionLabel = product.collection.replace(/-/g, ' ');
+   const collectionTag = `#${product.collection.replace(/-/g, '')}`;
+ 
+-  const baseHashtags = ['#SkyyRose', '#LuxuryGrowsFromConcrete', '#LuxuryStreetwear', collectionTag];
++  const baseHashtags = ['#SkyyRose', '#LuxuryStreetwear', collectionTag];
+ 
+   const templates: Record<string, Record<string, string>> = {
+     product_launch: {
+-      instagram: `Introducing ${product.label} from the ${collectionLabel} collection.\n\nLuxury Grows from Concrete. -- this piece was crafted for those who dare to stand out. Every stitch tells a story of bold elegance.\n\nAvailable now at skyyrose.co\n\n${baseHashtags.join(' ')} #NewDrop #FashionForward`,
++      instagram: `Introducing ${product.label} from the ${collectionLabel} collection.\n\nAvailable now at skyyrose.co\n\n${baseHashtags.join(' ')} #NewDrop #FashionForward`,
+       tiktok: `${product.label} just dropped and it's giving EVERYTHING. ${collectionLabel} collection hits different. Link in bio ${baseHashtags.slice(0, 3).join(' ')} #NewDrop`,
+-      twitter: `${product.label} is here. ${collectionLabel} collection. Luxury Grows from Concrete.\n\nskyyrose.co ${baseHashtags.slice(0, 2).join(' ')}`,
++      twitter: `${product.label} is here. ${collectionLabel} collection.\n\nskyyrose.co ${baseHashtags.slice(0, 2).join(' ')}`,
+       facebook: `We're thrilled to introduce the ${product.label} from our ${collectionLabel} collection.\n\nWhich piece speaks to you? Drop a comment below and let us know.\n\nShop now: skyyrose.co\n\n${baseHashtags.slice(0, 3).join(' ')}`,
+     },
+     collection_drop: {
+@@ -136,7 +136,7 @@ async function generateWithLlm(
+     COLLECTION_DESCRIPTIONS[product.collection] ?? `The ${product.collection} collection by SkyyRose.`;
+ 
+   const systemPrompt = `You are the social media voice of SkyyRose, a luxury streetwear fashion brand.
+-Brand tagline: "Luxury Grows from Concrete."
++No active brand tagline. Do not invent a replacement or reuse retired slogans.
+ Brand color: Rose Gold (#B76E79)
+ Tone: Confident, aspirational, emotionally resonant, culturally aware. Never generic or salesy.
+ The brand bridges high fashion and streetwear with deep emotional storytelling.
+@@ -173,14 +173,14 @@ Return JSON only: { "caption": "...", "hashtags": ["#...", ...] }`;
+     // Fallback: treat the whole response as caption
+     return {
+       caption: text,
+-      hashtags: ['#SkyyRose', '#WhereLoveMeetsLuxury'],
++      hashtags: ['#SkyyRose'],
+     };
+   }
+ 
+   const parsed = JSON.parse(jsonMatch[0]) as { caption: string; hashtags: string[] };
+   return {
+     caption: parsed.caption ?? text,
+-    hashtags: Array.isArray(parsed.hashtags) ? parsed.hashtags : ['#SkyyRose', '#WhereLoveMeetsLuxury'],
++    hashtags: Array.isArray(parsed.hashtags) ? parsed.hashtags : ['#SkyyRose'],
+   };
+ }
+ 
+diff --git a/frontend/app/collections/CollectionsLanding.tsx b/frontend/app/collections/CollectionsLanding.tsx
+index ca1e55542..94679924e 100644
+--- a/frontend/app/collections/CollectionsLanding.tsx
++++ b/frontend/app/collections/CollectionsLanding.tsx
+@@ -94,12 +94,14 @@ export default function CollectionsLanding({ collections }: { collections: Colle
+                 {/* Content overlay */}
+                 <div className="absolute inset-0 flex items-end p-6 md:p-12">
+                   <div className="flex-1">
+-                    <p
+-                      className="text-xs tracking-[0.3em] uppercase mb-2"
+-                      style={{ color: collection.accentColor }}
+-                    >
+-                      {collection.tagline}
+-                    </p>
++                    {collection.tagline && (
++                      <p
++                        className="text-xs tracking-[0.3em] uppercase mb-2"
++                        style={{ color: collection.accentColor }}
++                      >
++                        {collection.tagline}
++                      </p>
++                    )}
+                     <h2 className="text-3xl md:text-5xl font-display text-white mb-3 group-hover:tracking-wider transition-all duration-700">
+                       {collection.name}
+                     </h2>
+@@ -178,9 +180,6 @@ export default function CollectionsLanding({ collections }: { collections: Colle
+ 
+       {/* Brand Footer */}
+       <footer className="border-t border-white/5 py-12 px-4 text-center pb-24">
+-        <p className="text-white/20 text-xs tracking-[0.2em] uppercase">
+-          Luxury Grows from Concrete.
+-        </p>
+         <p className="text-white/10 text-xs mt-2 tracking-wider">
+           SkyyRose LLC &copy; 2026
+         </p>
+diff --git a/frontend/app/collections/[slug]/CollectionExperience.tsx b/frontend/app/collections/[slug]/CollectionExperience.tsx
+index 45a855d5a..fcf718412 100644
+--- a/frontend/app/collections/[slug]/CollectionExperience.tsx
++++ b/frontend/app/collections/[slug]/CollectionExperience.tsx
+@@ -134,12 +134,14 @@ export default function CollectionExperience({
+           viewport={{ once: true }}
+           className="max-w-2xl mx-auto"
+         >
+-          <p
+-            className="text-xs tracking-[0.3em] uppercase mb-4"
+-            style={{ color: collection.accentColor }}
+-          >
+-            {collection.tagline}
+-          </p>
++          {collection.tagline && (
++            <p
++              className="text-xs tracking-[0.3em] uppercase mb-4"
++              style={{ color: collection.accentColor }}
++            >
++              {collection.tagline}
++            </p>
++          )}
+           <h2 className="text-3xl md:text-4xl font-display text-white mb-6">
+             {collection.name}
+           </h2>
+@@ -200,7 +202,7 @@ export default function CollectionExperience({
+           {collection.name} Collection
+         </p>
+         <p className="text-white/10 text-xs mt-2 tracking-wider">
+-          SkyyRose &mdash; Luxury Grows from Concrete.
++          SkyyRose
+         </p>
+       </footer>
+ 
+diff --git a/frontend/app/collections/layout.tsx b/frontend/app/collections/layout.tsx
+index 9f8c34b44..cfe3dcb90 100644
+--- a/frontend/app/collections/layout.tsx
++++ b/frontend/app/collections/layout.tsx
+@@ -12,7 +12,7 @@ export const metadata: Metadata = {
+   openGraph: {
+     title: 'SkyyRose Collections',
+     description:
+-      'Luxury Grows from Concrete.. Explore our immersive fashion collections.',
++      'Explore our immersive fashion collections.',
+     siteName: 'SkyyRose',
+     type: 'website',
+   },
+diff --git a/frontend/app/collections/page.tsx b/frontend/app/collections/page.tsx
+index ade063aa8..8a474afe5 100644
+--- a/frontend/app/collections/page.tsx
++++ b/frontend/app/collections/page.tsx
+@@ -8,7 +8,7 @@ export const metadata: Metadata = {
+     'Discover the SkyyRose luxury fashion collections. Three immersive worlds: Black Rose, Love Hurts, and Signature.',
+   openGraph: {
+     title: 'SkyyRose Collections',
+-    description: 'Luxury Grows from Concrete. Three immersive worlds await.',
++    description: 'Three immersive worlds await.',
+   },
+ };
+ 
+diff --git a/frontend/app/page.tsx b/frontend/app/page.tsx
+index 58888719e..3b152cb84 100644
+--- a/frontend/app/page.tsx
++++ b/frontend/app/page.tsx
+@@ -5,11 +5,11 @@ import IncentivePopup from '@/components/marketing/IncentivePopup';
+ import { getAllEnrichedCollections } from '@/lib/catalog-server';
+ 
+ export const metadata: Metadata = {
+-  title: 'SkyyRose | Luxury Grows from Concrete.',
++  title: 'SkyyRose',
+   description:
+     'Discover luxury fashion reimagined. Three immersive collections: Black Rose, Love Hurts, and Signature. AI-crafted designs, 3D experiences, exclusive pre-orders.',
+   openGraph: {
+-    title: 'SkyyRose | Luxury Grows from Concrete.',
++    title: 'SkyyRose',
+     description:
+       'Luxury fashion reimagined through AI and immersive 3D experiences.',
+     images: [{ url: '/images/og-homepage.jpg', width: 1200, height: 630 }],
+diff --git a/frontend/app/pre-order/PreOrderPage.tsx b/frontend/app/pre-order/PreOrderPage.tsx
+index 9a14fe702..25de76147 100644
+--- a/frontend/app/pre-order/PreOrderPage.tsx
++++ b/frontend/app/pre-order/PreOrderPage.tsx
+@@ -315,9 +315,6 @@ export default function PreOrderPage({ collections }: PreOrderPageProps) {
+ 
+       {/* Footer */}
+       <footer className="border-t border-white/5 py-12 px-4 text-center pb-24">
+-        <p className="text-white/20 text-xs tracking-[0.2em] uppercase">
+-          Luxury Grows from Concrete.
+-        </p>
+         <p className="text-white/10 text-xs mt-2 tracking-wider">
+           SkyyRose LLC &copy; 2026
+         </p>
+@@ -350,12 +347,14 @@ function CollectionSection({
+           style={{ backgroundColor: collection.accentColor }}
+         />
+         <div>
+-          <p
+-            className="text-xs tracking-[0.2em] uppercase"
+-            style={{ color: collection.accentColor }}
+-          >
+-            {collection.tagline}
+-          </p>
++          {collection.tagline && (
++            <p
++              className="text-xs tracking-[0.2em] uppercase"
++              style={{ color: collection.accentColor }}
++            >
++              {collection.tagline}
++            </p>
++          )}
+           <h2 className="text-2xl md:text-3xl font-display text-white">
+             {collection.name} Collection
+           </h2>
+diff --git a/frontend/components/collections/CollectionHero.tsx b/frontend/components/collections/CollectionHero.tsx
+index 0ea885b75..a1138e9c7 100644
+--- a/frontend/components/collections/CollectionHero.tsx
++++ b/frontend/components/collections/CollectionHero.tsx
+@@ -135,15 +135,17 @@ export default function CollectionHero({
+               >
+                 {collection.name}
+               </motion.h1>
+-              <motion.p
+-                initial={{ opacity: 0 }}
+-                animate={{ opacity: 1 }}
+-                transition={{ duration: 0.8, delay: 0.8 }}
+-                className="text-lg md:text-xl tracking-[0.15em] uppercase"
+-                style={{ color: collection.accentColor }}
+-              >
+-                {collection.tagline}
+-              </motion.p>
++              {collection.tagline && (
++                <motion.p
++                  initial={{ opacity: 0 }}
++                  animate={{ opacity: 1 }}
++                  transition={{ duration: 0.8, delay: 0.8 }}
++                  className="text-lg md:text-xl tracking-[0.15em] uppercase"
++                  style={{ color: collection.accentColor }}
++                >
++                  {collection.tagline}
++                </motion.p>
++              )}
+             </div>
+           </motion.div>
+         )}
+diff --git a/frontend/components/mascot/MascotBubble.tsx b/frontend/components/mascot/MascotBubble.tsx
+index 4a47c65b3..027b0cee1 100644
+--- a/frontend/components/mascot/MascotBubble.tsx
++++ b/frontend/components/mascot/MascotBubble.tsx
+@@ -69,7 +69,7 @@ function getCollectionFromPath(pathname: string): string {
+ const MASCOT_RESPONSES: Record<string, string> = {
+   'show me the collections': "We have three collections: BLACK Rose (gothic luxury), Love Hurts (Oakland soul), and Signature (rose gold essentials). Each tells a unique story!",
+   'how do pre-orders work?': "Pre-orders lock in your exclusive early-adopter pricing with up to 25% off retail. Limited numbered pieces — once they're claimed, they're gone!",
+-  'tell me about skyyrose': "SkyyRose is where love meets luxury. Born in Oakland, we craft premium streetwear that tells stories through gothic romance, Bay Area grit, and timeless elegance.",
++  'tell me about skyyrose': "Born in Oakland, SkyyRose crafts premium streetwear that tells stories through gothic romance, Bay Area grit, and timeless elegance.",
+   'how do i pre-order?': "Head to the Pre-Order page and pick your favorites! Each piece comes with exclusive packaging, a signed certificate, and lifetime Inner Circle membership.",
+ };
+ 
+diff --git a/frontend/lib/collections.ts b/frontend/lib/collections.ts
+index ff47f0d2a..c421247ee 100644
+--- a/frontend/lib/collections.ts
++++ b/frontend/lib/collections.ts
+@@ -135,7 +135,7 @@ export const COLLECTIONS: Record<CollectionSlug, CollectionConfig> = {
+   'kids-capsule': {
+     slug: 'kids-capsule',
+     name: 'Kids Capsule',
+-    tagline: 'Luxury Grows from Concrete.',
++    tagline: '',
+     description:
+       'Bold colorblock hoodie and jogger sets designed for young ones who wear luxury from the start. Limited edition drops in sizes 2T–7.',
+     accentColor: '#B76E79',
+diff --git a/frontend/tests/brand-consumers.test.ts b/frontend/tests/brand-consumers.test.ts
+new file mode 100644
+index 000000000..56cfd57ac
+--- /dev/null
++++ b/frontend/tests/brand-consumers.test.ts
+@@ -0,0 +1,109 @@
++import { beforeEach, describe, expect, it, vi } from 'vitest';
++import { NextRequest } from 'next/server';
++import fs from 'node:fs';
++import path from 'node:path';
++
++const { session, catalog, llmKey, generateText } = vi.hoisted(() => ({
++  session: vi.fn(),
++  catalog: vi.fn(),
++  llmKey: vi.fn(),
++  generateText: vi.fn(),
++}));
++vi.mock('next-auth', () => ({ getServerSession: session }));
++vi.mock('@/lib/auth', () => ({ authOptions: {} }));
++vi.mock('@/lib/catalog', () => ({ getProduct: catalog }));
++vi.mock('@/lib/social-media/config', () => ({ hasLlmKey: llmKey }));
++vi.mock('ai', () => ({ generateText }));
++vi.mock('@ai-sdk/anthropic', () => ({ anthropic: vi.fn(() => 'offline-mock') }));
++
++import { POST } from '@/app/api/social-media/generate/route';
++
++const retired = /luxury\s*grows\s*from\s*concrete|where\s*love\s*meets\s*luxury/i;
++const platforms = ['instagram', 'tiktok', 'twitter', 'facebook'];
++const contentTypes = ['product_launch', 'collection_drop', 'lifestyle'];
++
++async function post(platform = 'instagram', content_type = 'product_launch') {
++  const response = await POST(
++    new NextRequest('http://localhost/api/social-media/generate', {
++      method: 'POST',
++      headers: { 'content-type': 'application/json' },
++      body: JSON.stringify({ product_sku: 'fixture-sku', platform, content_type }),
++    }),
++    undefined
++  );
++  return { response, body: await response.json() };
++}
++
++describe('retired brand consumers', () => {
++  beforeEach(() => {
++    session.mockReset().mockResolvedValue({ user: { email: 'offline@example.invalid' } });
++    catalog.mockReset().mockReturnValue({ name: 'Canonical fixture name', collection: 'black-rose' });
++    llmKey.mockReset().mockReturnValue(false);
++    generateText.mockReset();
++  });
++
++  it.each(platforms.flatMap(platform => contentTypes.map(type => [platform, type])))(
++    'omits retired text and hashtags from %s %s templates',
++    async (platform, type) => {
++      const { response, body } = await post(platform, type);
++      expect(response.status).toBe(200);
++      expect(body.post.caption).toContain('Canonical fixture name');
++      expect(JSON.stringify(body.post)).not.toMatch(retired);
++      expect(body.llm_generated).toBe(false);
++      expect(generateText).not.toHaveBeenCalled();
++    }
++  );
++
++  it.each(['plain caption', '{"caption":"Canonical draft","hashtags":null}'])(
++    'uses no retired hashtag in offline mocked LLM response fallback: %s',
++    async text => {
++      llmKey.mockReturnValue(true);
++      generateText.mockResolvedValue({ text });
++      const { body } = await post();
++      expect(body.post.hashtags).toEqual(['#SkyyRose']);
++      expect(JSON.stringify(body.post)).not.toMatch(retired);
++      const request = generateText.mock.calls[0][0];
++      expect(request.system).toContain('No active brand tagline');
++      expect(request.system).not.toMatch(retired);
++    }
++  );
++
++  it('falls back locally after a mocked provider error without retired text', async () => {
++    llmKey.mockReturnValue(true);
++    generateText.mockRejectedValue(new Error('offline mocked failure'));
++    const { body } = await post();
++    expect(body.llm_generated).toBe(false);
++    expect(JSON.stringify(body.post)).not.toMatch(retired);
++  });
++
++  it('retains authentication and unknown-SKU denial', async () => {
++    session.mockResolvedValue(null);
++    expect((await post()).response.status).toBe(401);
++    expect(catalog).not.toHaveBeenCalled();
++    session.mockResolvedValue({ user: { email: 'offline@example.invalid' } });
++    catalog.mockReturnValue(undefined);
++    expect((await post()).response.status).toBe(404);
++    expect(generateText).not.toHaveBeenCalled();
++  });
++
++  it('removes retired UI, metadata and collection defaults from the assigned files', () => {
++    const files = [
++      'app/(storefront)/HomePage.tsx',
++      'app/admin/elite-studio/design/page.tsx',
++      'app/admin/elite-studio/layout.tsx',
++      'app/admin/elite-studio/page.tsx',
++      'app/collections/CollectionsLanding.tsx',
++      'app/collections/[slug]/CollectionExperience.tsx',
++      'app/collections/layout.tsx',
++      'app/collections/page.tsx',
++      'app/page.tsx',
++      'app/pre-order/PreOrderPage.tsx',
++      'components/mascot/MascotBubble.tsx',
++      'lib/collections.ts',
++      'DEPLOYMENT.md',
++    ];
++    for (const file of files) {
++      expect(fs.readFileSync(path.join(process.cwd(), file), 'utf8'), file).not.toMatch(retired);
++    }
++  });
++});
+diff --git a/skyyrose/elite_studio/creative/nodes.py b/skyyrose/elite_studio/creative/nodes.py
+index bdaeae12a..fe3c87b6a 100644
+--- a/skyyrose/elite_studio/creative/nodes.py
++++ b/skyyrose/elite_studio/creative/nodes.py
+@@ -4,8 +4,6 @@ Creative Operations Hub node functions.
+ Each node reads from CreativeOperationState, executes a specific creative
+ intent, and returns an updated state dict. Legacy provider paths fail closed before imports. Local copy and finalization
+ remain available to direct callers.
+-
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+@@ -13,6 +11,8 @@ from __future__ import annotations
+ import logging
+ import time
+ 
++from skyyrose.core.product import get_product
++
+ logger = logging.getLogger(__name__)
+ 
+ 
+@@ -50,81 +50,63 @@ def social_pack_node(state: dict) -> dict:
+ 
+ 
+ def product_copy_node(state: dict) -> dict:
+-    """Generate SEO-optimized product copy using LLM."""
++    """Return existing SKU copy from the registry without generation or fallback facts.
++
++    This is an existing-product reader, not a new-design ideation route. Missing
++    authored descriptions fail closed. Missing SEO stays absent and named in gaps.
++    Caller params and fashion_context never override the founder's record.
++    """
+     start = time.monotonic()
+-    params = state.get("params", {})
+     sku = state.get("sku", "")
+-    fashion_context = state.get("fashion_context") or {}
+-
+     try:
+-        garment_type = params.get("garment_type") or fashion_context.get("garment_type", "product")
+-        collection = params.get("collection") or _extract_collection(fashion_context)
+-        product_name = params.get("product_name", f"SkyyRose {garment_type.title()}")
+-        price = params.get("price", 0)
+-
+-        collection_display = collection.replace("-", " ").title() if collection else "SkyyRose"
+-        dna = fashion_context.get("collection_dna", "Luxury Grows from Concrete.")
+-        _ = fashion_context.get("color_palette", [])
+-
+-        short_description = (
+-            f"Elevate your look with the {product_name}. "
+-            f"{collection_display} collection — {dna.split('.')[0] if dna else 'luxury streetwear'}. "
+-            f"'Luxury Grows from Concrete.' "
+-        )
+-
+-        long_description = (
+-            f"The {product_name} is the cornerstone of SkyyRose's {collection_display} collection. "
+-            f"Crafted with premium {fashion_context.get('fabric', 'materials')}, "
+-            f"this piece embodies the SkyyRose ethos: luxury grown from Oakland's concrete foundations. "
+-            f"{dna} "
+-            f"Available in sizes {fashion_context.get('size_range', 'S–3XL')}. "
+-            f"{'Pre-order now — limited edition.' if params.get('is_preorder') else 'Shop now.'}"
+-        )
+-
+-        meta_title = f"{product_name} — SkyyRose {collection_display} | Luxury Streetwear"
+-        meta_description = (
+-            f"Shop the {product_name} from SkyyRose's {collection_display} collection. "
+-            f"Premium luxury streetwear from Oakland. "
+-            f"{'Pre-order available.' if params.get('is_preorder') else 'Free shipping on orders $100+.'}"
+-        )
+-
+-        keywords = [
+-            "SkyyRose",
+-            "luxury streetwear",
+-            f"{collection_display} collection",
+-            garment_type,
+-            "Oakland fashion",
+-            "premium streetwear",
+-            "Luxury Grows from Concrete",
++        if not isinstance(sku, str) or not sku.strip():
++            raise ValueError("An existing product SKU is required")
++        product = get_product(sku)
++        content = product["content"]
++        required = ("short_description", "description")
++        missing = [
++            f"content.{field}"
++            for field in required
++            if not content.get(field) or not content[field].get("value")
+         ]
+-        if sku:
+-            keywords.append(sku)
++        if missing:
++            raise ValueError(f"Authoritative product copy is absent: {', '.join(missing)}")
++        if not product.get("name") or product["catalog"].get("price") is None:
++            raise ValueError("Authoritative product name or price is absent")
+ 
++        seo = content.get("seo_meta")
+         copy_result = {
+             "success": True,
+-            "sku": sku,
+-            "product_name": product_name,
+-            "short_description": short_description.strip(),
+-            "long_description": long_description.strip(),
+-            "meta_title": meta_title[:70],
+-            "meta_description": meta_description[:160],
+-            "keywords": keywords,
+-            "price": price,
++            "sku": product["sku"],
++            "product_name": product["name"],
++            "short_description": content["short_description"]["value"],
++            "long_description": content["description"]["value"],
++            "meta_title": product["name"],
++            "meta_description": seo["value"] if seo else None,
++            "keywords": [],
++            "price": product["catalog"]["price"],
++            "gaps": list(dict.fromkeys([*product["gaps"], "copy.keywords"])),
++            "content_sources": content,
++            "authority": product["authority"],
++            "provenance": product["provenance"],
+         }
+-        elapsed = time.monotonic() - start
+         return {
+             "copy_result": copy_result,
+-            "stage_timings": {**state.get("stage_timings", {}), "product_copy": elapsed},
++            "stage_timings": {
++                **state.get("stage_timings", {}),
++                "product_copy": time.monotonic() - start,
++            },
+         }
+-
+     except Exception as exc:
+         logger.exception("product_copy_node failed: %s", exc)
+-        elapsed = time.monotonic() - start
+         return {
+             "copy_result": {"success": False, "error": str(exc)},
+             "status": "error",
+             "error": f"product_copy failed: {exc}",
+-            "stage_timings": {**state.get("stage_timings", {}), "product_copy": elapsed},
++            "stage_timings": {
++                **state.get("stage_timings", {}),
++                "product_copy": time.monotonic() - start,
++            },
+         }
+ 
+ 
+@@ -159,22 +141,3 @@ def finalize_node(state: dict) -> dict:
+         return {}  # preserve error state as-is
+ 
+     return {"status": "success"}
+-
+-
+-# ---------------------------------------------------------------------------
+-# Helpers
+-# ---------------------------------------------------------------------------
+-
+-
+-def _extract_collection(fashion_context: dict) -> str:
+-    """Extract collection slug from fashion context data."""
+-    dna = fashion_context.get("collection_dna", "")
+-    if "Black Rose" in dna:
+-        return "black-rose"
+-    if "Love Hurts" in dna:
+-        return "love-hurts"
+-    if "Signature" in dna:
+-        return "signature"
+-    if "Kids Capsule" in dna:
+-        return "kids-capsule"
+-    return ""
+diff --git a/skyyrose/multi_agent/agents.py b/skyyrose/multi_agent/agents.py
+index 6fe22a3a2..5408932ed 100644
+--- a/skyyrose/multi_agent/agents.py
++++ b/skyyrose/multi_agent/agents.py
+@@ -28,8 +28,7 @@ specializing in streetwear-meets-high-fashion editorial content.
+ 
+ BRAND IDENTITY:
+ - Brand: SkyyRose
+-- Tagline: "Luxury Grows from Concrete."
+-- NEVER use: "Where Love Meets Luxury" (retired)
++- No active brand tagline. Do not invent a replacement or reuse retired slogans.
+ - Founder: Corey Foster
+ - Colors: Rose Gold (#B76E79), Dark (#0A0A0A), Gold (#D4AF37), Silver (#C0C0C0), Crimson (#DC143C)
+ 
+@@ -47,8 +46,17 @@ VOICE RULES:
+ - Use sensory language: textures, temperatures, weight, movement
+ 
+ Use the get_brand_guidelines and get_product_catalog tools to ground your copy in real data.
+-Use generate_product_copy to get product specs before writing.""",
+-    tools=["Read", "Glob", "Grep"],
++Use generate_product_copy to read the complete get_product record before writing.
++Corey is the founder and maker; preserve his latest FOUNDER_CONFIRMED facts exactly.
++Do not invent absent facts; report the record's gaps.""",
++    tools=[
++        "Read",
++        "Glob",
++        "Grep",
++        "mcp__skyyrose-tools__get_brand_guidelines",
++        "mcp__skyyrose-tools__generate_product_copy",
++        "mcp__skyyrose-tools__get_product_catalog",
++    ],
+     model="sonnet",
+ )
+ 
+@@ -100,15 +108,14 @@ PRODUCT_ANALYST = AgentDefinition(
+     ),
+     prompt="""You are a product catalog analyst for SkyyRose luxury fashion.
+ 
+-CANONICAL SOURCES (the only valid product references):
+-- Catalog CSV: wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+-- Per-SKU dossiers: wordpress-theme/skyyrose-flagship/data/dossiers/*.md
+-All product facts — SKU, name, collection, price, pre-order flag, image
+-filenames, branding spec — resolve through these. Do NOT consult any
+-other product-data file (overrides/, manifests, hardcoded SKU lists).
++CANONICAL SOURCE:
++- The sole editable product registry is wordpress-theme/skyyrose-flagship/data/logo-registry.json.
++- Read the complete SKU record through skyyrose.core.product.get_product.
++- CSVs and dossiers are compatibility projections, not separate authorities.
++- Corey is the founder and maker. Preserve his latest FOUNDER_CONFIRMED facts exactly.
++- Report missing facts as gaps; never invent materials, sizes, measurements or artwork.
+ 
+-Use the get_product_catalog tool (reads the CSV) and get_product_overrides
+-tool (reads the per-SKU dossier) for all product lookups. Call
++Use generate_product_copy to read the complete get_product record for each SKU. Call
+ list_product_images for image-on-disk inventory and elite_studio_status
+ for render-pipeline state.
+ 
+@@ -120,8 +127,15 @@ YOUR ANALYSIS AREAS:
+ 5. WooCommerce readiness — CSV import data quality
+ 
+ Never inline product data into responses. Quote SKUs by name AND ID and
+-cite the CSV row or dossier path you read it from.""",
+-    tools=["Read", "Glob", "Grep"],
++cite the registry provenance supplied by get_product.""",
++    tools=[
++        "Read",
++        "Glob",
++        "Grep",
++        "mcp__skyyrose-tools__generate_product_copy",
++        "mcp__skyyrose-tools__list_product_images",
++        "mcp__skyyrose-tools__elite_studio_status",
++    ],
+     model="sonnet",
+ )
+ 
+diff --git a/skyyrose/multi_agent/orchestrator.py b/skyyrose/multi_agent/orchestrator.py
+index 81d91bc3d..280ede0f9 100644
+--- a/skyyrose/multi_agent/orchestrator.py
++++ b/skyyrose/multi_agent/orchestrator.py
+@@ -73,9 +73,8 @@ CUSTOM TOOLS AVAILABLE:
+ - git_status_summary — Git branch and changes
+ 
+ RULES:
+-- Tagline: "Luxury Grows from Concrete." — ONLY tagline
++- No active brand tagline. Do not invent a replacement or reuse retired slogans.
+ - Brand colors: Rose Gold #B76E79, Dark #0A0A0A, Gold #D4AF37
+-- Never use "Where Love Meets Luxury" — that's dead
+ - Be concise, professional, and actionable in your summaries"""
+ 
+ 
+diff --git a/skyyrose/multi_agent/tools.py b/skyyrose/multi_agent/tools.py
+index 56bc26556..45f88d6ff 100644
+--- a/skyyrose/multi_agent/tools.py
++++ b/skyyrose/multi_agent/tools.py
+@@ -14,7 +14,7 @@ from typing import Any
+ 
+ from claude_agent_sdk import create_sdk_mcp_server, tool
+ 
+-from .config import ASSETS_DIR, PRODUCT_DATA_DIR, REPO_DIR, THEME_DIR
++from .config import ASSETS_DIR, REPO_DIR, THEME_DIR
+ 
+ # ---------------------------------------------------------------------------
+ # Product Catalog Tools
+@@ -216,8 +216,8 @@ async def get_brand_guidelines(args: dict[str, Any]) -> dict[str, Any]:
+     """Return canonical brand guidelines."""
+     guidelines = {
+         "brand": "SkyyRose",
+-        "tagline": "Luxury Grows from Concrete.",
+-        "retired_taglines": ["Where Love Meets Luxury"],
++        "tagline": "",
++        "retired_taglines": ["Luxury Grows from Concrete.", "Where Love Meets Luxury"],
+         "founder": "Corey Foster",
+         "colors": {
+             "rose_gold": "#B76E79",
+@@ -263,15 +263,16 @@ async def get_brand_guidelines(args: dict[str, Any]) -> dict[str, Any]:
+     {"sku": str, "style": str},
+ )
+ async def generate_product_copy(args: dict[str, Any]) -> dict[str, Any]:
+-    """Generate product copy placeholder — the subagent will use its LLM for actual copy."""
++    """Return canonical SKU context for a separately governed copy task."""
+     sku = args["sku"]
+     style = args.get("style", "editorial")
+ 
+-    # Load product data
+-    override_path = PRODUCT_DATA_DIR / "prompts" / "overrides" / f"{sku}.json"
+-    product_info = {}
+-    if override_path.exists():
+-        product_info = json.loads(override_path.read_text())
++    from skyyrose.core.product import get_product
++
++    try:
++        product_info = get_product(sku)
++    except (KeyError, ValueError, FileNotFoundError) as exc:
++        return _text(json.dumps({"success": False, "sku": sku, "error": str(exc)}))
+ 
+     return _text(
+         json.dumps(
+@@ -280,7 +281,8 @@ async def generate_product_copy(args: dict[str, Any]) -> dict[str, Any]:
+                 "style": style,
+                 "product_data": product_info,
+                 "instruction": (
+-                    "Use the brand guidelines and product data to write copy. "
++                    "Use the brand guidelines and complete registry record to write copy. "
++                    "Preserve Corey's FOUNDER_CONFIRMED facts exactly; report missing facts as gaps. "
+                     f"Style: {style}. Voice: luxury, authentic, aspirational."
+                 ),
+             },
+diff --git a/tests/test_creative_hub.py b/tests/test_creative_hub.py
+index 0ec52d83b..18e09d9f9 100644
+--- a/tests/test_creative_hub.py
++++ b/tests/test_creative_hub.py
+@@ -188,60 +188,70 @@ class TestRouteIntent:
+ 
+ 
+ class TestProductCopyNode:
+-    def test_generates_copy_for_known_sku(self):
++    def test_canonical_copy_ignores_caller_facts_and_calls_no_provider(self, monkeypatch):
++        import socket
++
++        from skyyrose.core.product import get_product
+         from skyyrose.elite_studio.creative.nodes import product_copy_node
+ 
+-        state = {
+-            "intent": "product-copy",
+-            "sku": "br-001",
+-            "params": {
+-                "product_name": "BLACK Rose Crewneck",
+-                "garment_type": "crewneck",
+-                "collection": "black-rose",
+-                "price": 35,
+-            },
+-            "fashion_context": {
+-                "garment_type": "crewneck",
+-                "collection_dna": "Black Rose: gothic luxury",
+-                "fabric": "french terry",
+-                "size_range": "S-3XL",
+-                "color_palette": ["#0A0A0A", "#C0C0C0", "#B76E79"],
+-            },
+-            "stage_timings": {},
+-        }
+-        result = product_copy_node(state)
+-        assert result.get("copy_result") is not None
++        def deny_network(*args, **kwargs):
++            pytest.fail("Local copy must not call a provider or network")
++
++        monkeypatch.setattr(socket, "create_connection", deny_network)
++        monkeypatch.setattr(socket.socket, "connect", deny_network)
++        canonical = get_product("br-001")
++        result = product_copy_node(
++            {
++                "sku": "br-001",
++                "params": {"product_name": "Invented", "price": 999, "is_preorder": True},
++                "fashion_context": {"fabric": "invented silk", "size_range": "S–3XL"},
++                "stage_timings": {"prior": 1.0},
++            }
++        )
+         copy = result["copy_result"]
+         assert copy["success"] is True
+-        assert "SkyyRose" in copy["short_description"] or "BLACK Rose" in copy["short_description"]
+-        assert len(copy["meta_title"]) <= 70
+-        assert len(copy["meta_description"]) <= 160
+-        assert len(copy["keywords"]) > 0
++        assert copy["product_name"] == canonical["name"]
++        assert copy["price"] == canonical["catalog"]["price"]
++        assert copy["short_description"] == canonical["content"]["short_description"]["value"]
++        assert copy["long_description"] == canonical["content"]["description"]["value"]
++        assert copy["authority"] == canonical["authority"]
++        assert copy["provenance"]["sources"] == canonical["provenance"]["sources"]
++        assert result["stage_timings"]["prior"] == 1.0
++
++    def test_missing_seo_is_explicit_without_shipping_or_keyword_fallback(self):
++        from skyyrose.elite_studio.creative.nodes import product_copy_node
+ 
+-    def test_copy_includes_brand_tagline(self):
++        copy = product_copy_node({"sku": "sg-007"})["copy_result"]
++        assert copy["success"] is True
++        assert copy["meta_description"] is None
++        assert copy["keywords"] == []
++        assert "content.seo_meta" in copy["gaps"]
++        assert "copy.keywords" in copy["gaps"]
++        assert "Free shipping" not in str(copy)
++        assert "Luxury Grows from Concrete" not in str(copy)
++        assert "Where Love Meets Luxury" not in str(copy)
++
++    @pytest.mark.parametrize("sku", ["", None, "unknown-sku"])
++    def test_missing_or_unknown_sku_fails_closed(self, sku):
+         from skyyrose.elite_studio.creative.nodes import product_copy_node
+ 
+-        state = {
+-            "intent": "product-copy",
+-            "sku": "sg-007",
+-            "params": {"product_name": "Signature Beanie", "collection": "signature"},
+-            "fashion_context": {
+-                "collection_dna": "Signature: West Coast prestige",
+-                "fabric": "knit",
+-                "size_range": "One Size",
+-                "color_palette": ["#0A0A0A", "#D4AF37", "#B76E79"],
+-            },
+-            "stage_timings": {},
+-        }
+-        result = product_copy_node(state)
+-        copy = result.get("copy_result", {})
+-        assert copy.get("success") is True
+-        combined = (
+-            copy.get("short_description", "")
+-            + copy.get("long_description", "")
+-            + " ".join(copy.get("keywords", []))
+-        )
+-        assert "SkyyRose" in combined or "Luxury" in combined
++        result = product_copy_node({"sku": sku, "params": {"product_name": "Invented"}})
++        assert result["status"] == "error"
++        assert result["copy_result"]["success"] is False
++        assert "short_description" not in result["copy_result"]
++
++    @pytest.mark.parametrize("field", ["short_description", "description"])
++    def test_missing_authored_copy_fails_closed(self, monkeypatch, field):
++        from skyyrose.core.product import get_product
++        from skyyrose.elite_studio.creative import nodes
++
++        canonical = get_product("br-001")
++        canonical["content"][field] = None
++        monkeypatch.setattr(nodes, "get_product", lambda sku: canonical)
++        result = nodes.product_copy_node({"sku": "br-001"})
++        assert result["status"] == "error"
++        assert result["copy_result"]["success"] is False
++        assert f"content.{field}" in result["error"]
+ 
+ 
+ # ---------------------------------------------------------------------------
+diff --git a/tests/test_stream3_brand_consumers.py b/tests/test_stream3_brand_consumers.py
+new file mode 100644
+index 000000000..4e1d09e65
+--- /dev/null
++++ b/tests/test_stream3_brand_consumers.py
+@@ -0,0 +1,53 @@
++"""Offline output contracts for the bounded stream 3 consumer correction."""
++
++import json
++
++import pytest
++
++from skyyrose.core.product import get_product
++from skyyrose.multi_agent.agents import BRAND_WRITER, PRODUCT_ANALYST
++from skyyrose.multi_agent.orchestrator import ORCHESTRATOR_SYSTEM_PROMPT
++from skyyrose.multi_agent.tools import generate_product_copy, get_brand_guidelines
++
++
++@pytest.mark.asyncio
++async def test_brand_guidelines_has_no_active_tagline():
++    result = await get_brand_guidelines.handler({})
++    guidelines = json.loads(result["content"][0]["text"])
++    assert guidelines["tagline"] == ""
++    assert guidelines["retired_taglines"] == [
++        "Luxury Grows from Concrete.",
++        "Where Love Meets Luxury",
++    ]
++    for prompt in (BRAND_WRITER.prompt, ORCHESTRATOR_SYSTEM_PROMPT):
++        assert "No active brand tagline" in prompt
++        assert "Luxury Grows from Concrete" not in prompt
++        assert "Where Love Meets Luxury" not in prompt
++
++
++@pytest.mark.asyncio
++async def test_copy_support_returns_complete_registry_record():
++    result = await generate_product_copy.handler({"sku": "br-001"})
++    payload = json.loads(result["content"][0]["text"])
++    expected = get_product("br-001")
++    actual = payload["product_data"]
++    for field in ("sku", "catalog", "garment", "dossier", "content", "authority", "gaps"):
++        assert actual[field] == expected[field]
++    assert "FOUNDER_CONFIRMED" in payload["instruction"]
++    assert "get_product" in PRODUCT_ANALYST.prompt
++    assert "cite the registry provenance" in PRODUCT_ANALYST.prompt
++
++
++@pytest.mark.asyncio
++async def test_copy_support_unknown_sku_reports_failure_without_empty_specs():
++    result = await generate_product_copy.handler({"sku": "unknown-sku"})
++    payload = json.loads(result["content"][0]["text"])
++    assert payload["success"] is False
++    assert "product_data" not in payload
++
++
++def test_canonical_copy_reader_is_allowed_for_nested_agents():
++    for agent in (BRAND_WRITER, PRODUCT_ANALYST):
++        assert "mcp__skyyrose-tools__generate_product_copy" in agent.tools
++        assert "mcp__skyyrose-tools__elite_studio_produce" not in agent.tools
++    assert "mcp__skyyrose-tools__get_brand_guidelines" in BRAND_WRITER.tools

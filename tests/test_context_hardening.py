@@ -43,11 +43,11 @@ def test_B_C_authority_over_stale_copy_real_product(monkeypatch):
 
     original = get_product
 
-    # The registry nulls stale copy once it is corrected, so the stale
-    # pre-order claim is injected rather than assumed to still be live data.
+    # Corrected registry copy must stay current. Inject both historical claims
+    # explicitly so this regression does not depend on live stale product copy.
     def with_stale_copy(sku):
         record = original(sku)
-        record["content"]["seo_meta"] = {"value": "Gothic luxury. Pre-order now."}
+        record["content"]["seo_meta"] = {"value": "Embroidered front roses. Pre-order now."}
         return record
 
     monkeypatch.setattr(context_resolver, "get_product", with_stale_copy)

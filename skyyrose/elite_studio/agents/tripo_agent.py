@@ -43,7 +43,6 @@ That two-step pattern needs a separate method on this agent (not yet
 implemented). The hardcoded ``_MULTIVIEW_TEMPLATE`` constant below is the
 single template this agent currently supports.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

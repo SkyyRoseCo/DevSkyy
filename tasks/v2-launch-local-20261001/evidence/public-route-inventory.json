@@ -1,0 +1,310 @@
+[
+  {
+    "route": "/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+    "timestamp_utc": "2026-10-01T07:18:59.113179+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+    "body_sha256": "0bd348d88e9224a30ff88144a5c5480959d60c28979d622227222cc3c60b76cb",
+    "bytes": 194993,
+    "response_seconds": 1.959,
+    "cache_control": "max-age=300, must-revalidate",
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/shop/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/shop/",
+    "timestamp_utc": "2026-10-01T07:18:59.113367+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/shop/",
+    "body_sha256": "03797b70add0b09ebbb47b59dee623e5a62ef63db3ca74e830560ea4817c37c3",
+    "bytes": 173292,
+    "response_seconds": 1.855,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/collections/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/",
+    "timestamp_utc": "2026-10-01T07:18:59.113446+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/",
+    "body_sha256": "6a96fa7ce37e2b5801c8b3865c573cbce2c905b706b1229180e61d88d0476ee0",
+    "bytes": 100704,
+    "response_seconds": 1.843,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/collections/black-rose/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+    "timestamp_utc": "2026-10-01T07:18:59.113487+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+    "body_sha256": "15b63bf5773aaabde75fa2b6e547e3baf11c4beb2d95b7c7781ff7a91eaf54c5",
+    "bytes": 134056,
+    "response_seconds": 1.844,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/collections/love-hurts/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+    "timestamp_utc": "2026-10-01T07:19:00.956731+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+    "body_sha256": "150f5a756fb5fe9bc0497eacf660c8bfa0f390a38f1dea37c50595042600da81",
+    "bytes": 123939,
+    "response_seconds": 1.696,
+    "cache_control": "max-age=300, must-revalidate",
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/collections/signature/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+    "timestamp_utc": "2026-10-01T07:19:00.957688+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+    "body_sha256": "ddd2a736ecdbc137aafdc57fab2c1fe77ff791b1051ee430d32cde90d545975c",
+    "bytes": 160271,
+    "response_seconds": 2.096,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/collections/kids-capsule/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/kids-capsule/",
+    "timestamp_utc": "2026-10-01T07:19:00.968329+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/kids-capsule/",
+    "body_sha256": "57ba063ec9938a1681950214be4ef42ad1c74c24a0fe169fcb6a7e79d7e6c4ef",
+    "bytes": 98004,
+    "response_seconds": 1.543,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/product/br-001/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-001/",
+    "timestamp_utc": "2026-10-01T07:19:01.072295+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-001/",
+    "body_sha256": "2fd29f465cf3beb3001b901768bbcf62d51c5816b18582bde0ddde40461ea08a",
+    "bytes": 114422,
+    "response_seconds": 1.786,
+    "cache_control": "max-age=300, must-revalidate",
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ],
+    "imagery_unavailable": true,
+    "published_views_zero": true,
+    "embroidery_copy_present": true
+  },
+  {
+    "route": "/pre-order/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/pre-order/",
+    "timestamp_utc": "2026-10-01T07:19:02.512039+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/pre-order/",
+    "body_sha256": "8644c8f3d647575936a8fdabc567d7c5e781a28217fc6f1f2361b4a2be2d086d",
+    "bytes": 204177,
+    "response_seconds": 1.762,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/faq/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/faq/",
+    "timestamp_utc": "2026-10-01T07:19:02.652772+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/faq/",
+    "body_sha256": "0bfcbfa2b047f064a3146c999acd052051b0a6d9f76990eac6ebe2498e1e02af",
+    "bytes": 106721,
+    "response_seconds": 1.732,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/shipping-returns/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/shipping-returns/",
+    "timestamp_utc": "2026-10-01T07:19:02.858680+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/shipping-returns/",
+    "body_sha256": "e0edcd1af970425cf5566965bace8d6b2acfdb9fbe0cdc1315cbf2fc7d51cb33",
+    "bytes": 109021,
+    "response_seconds": 1.752,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/refund-policy/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/refund-policy/",
+    "timestamp_utc": "2026-10-01T07:19:03.054371+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/refund-policy/",
+    "body_sha256": "e4b1e8c2b4f80c9a07f2a02bdf7885c64ac309791ba493fcb99151b99c982c15",
+    "bytes": 111115,
+    "response_seconds": 1.6,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/returns-exchanges/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/returns-exchanges/",
+    "timestamp_utc": "2026-10-01T07:19:04.274307+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/returns-exchanges/",
+    "body_sha256": "0a27488e177ff0f36536acdb5d569e2dba86c704bb4e150f1399b590144f6b25",
+    "bytes": 97712,
+    "response_seconds": 1.716,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/size-guide/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/size-guide/",
+    "timestamp_utc": "2026-10-01T07:19:04.385150+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/size-guide/",
+    "body_sha256": "1cd6019fc38f041319982d62a746bc38a9a2ee36d7091642d15fd718a36222da",
+    "bytes": 96609,
+    "response_seconds": 1.796,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/contact/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/contact/",
+    "timestamp_utc": "2026-10-01T07:19:04.611266+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/contact/",
+    "body_sha256": "6f97365ac852ebb46644b3f92990f3808bec1e37e994c1e1f38c23c4e6773667",
+    "bytes": 95068,
+    "response_seconds": 1.697,
+    "cache_control": null,
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/cart/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+    "timestamp_utc": "2026-10-01T07:19:04.654969+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+    "body_sha256": "88820245369f18b3d99cba62b5f524b03276f57a67b335041109123a71358f15",
+    "bytes": 151514,
+    "response_seconds": 1.774,
+    "cache_control": "no-cache, must-revalidate, max-age=0, private",
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/checkout/",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+    "timestamp_utc": "2026-10-01T07:19:05.990433+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+    "body_sha256": "c38dcd5965ac8f5c10fc4b33fe93da727c2747e398e110bc4d0bd9a4eb77c1c9",
+    "bytes": 151590,
+    "response_seconds": 2.636,
+    "cache_control": "no-cache, must-revalidate, max-age=0, private",
+    "x_robots_tag": "noindex, nofollow, noarchive",
+    "age": null,
+    "meta_robots": [
+      "max-image-preview:large, noindex, nofollow"
+    ]
+  },
+  {
+    "route": "/robots.txt",
+    "requested_url": "https://staging-7e48-skyyrose.wpcomstaging.com/robots.txt",
+    "timestamp_utc": "2026-10-01T07:19:06.181616+00:00",
+    "scope": "public read-only GET; no account/cart/order/payment mutation",
+    "status": 200,
+    "final_url": "https://staging-7e48-skyyrose.wpcomstaging.com/robots.txt",
+    "body_sha256": "5f14d49b4a49b716345f2831467b63c83e1a73f7935548c25ecf1fe692d831a9",
+    "bytes": 331,
+    "response_seconds": 0.081,
+    "cache_control": null,
+    "x_robots_tag": null,
+    "age": null,
+    "meta_robots": [],
+    "robots_text": "# Staging QA crawl access. HTML and HTTP noindex protections remain active.\nUser-agent: *\nAllow: /\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\nDisallow: /wp-login.php\nDisallow: /wp-json/\nDisallow: /xmlrpc.php\nDisallow: /cart/\nDisallow: /checkout/\nDisallow: /my-account/\nDisallow: /*?add-to-cart=\nDisallow: /*&add-to-cart=\n"
+  }
+]

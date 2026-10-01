@@ -102,7 +102,7 @@ def print_banner() -> None:
     """Print CLI banner."""
     print("╔══════════════════════════════════════════════════════════════╗")
     print("║   SkyyRose LoRA Training - Product-to-Model Pipeline        ║")
-    print("║   Luxury Grows from Concrete. meets Machine Learning            ║")
+    print("║   SkyyRose model training            ║")
     print("╚══════════════════════════════════════════════════════════════╝")
     print()
 

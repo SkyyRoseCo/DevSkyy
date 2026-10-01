@@ -4,7 +4,6 @@ Tech pack generation for SkyyRose Elite Studio.
 TechPackGenerator produces structured technical specification documents
 for garment production and manufacturing reference.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

@@ -9273,3 +9273,50 @@
 - `contact.php` — Contact page composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
 - `journal-entry.php` — Single journal entry composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
 
+
+## Stream1 local launch evidence 2026-10-01
+- `tasks/v2-launch-local-20261001/` — Local check runner, acceptance ledger, source/deployed mapping and bounded browser evidence. No release authority. (~2500 tok excluding logs)
+- `tasks/prelaunch-faq-rewrite-2026-09-26/` — Maintained unpublished FAQ candidate and refreshed public-source snapshots, reconciled against canonical product and brand data. (~6500 tok)
+- `tests/test_storefront_card_migration.py` — Schema-invalid input, writer-lock, authority preservation and projection/commit rollback regressions. (~1800 tok)
+- `tests/test_brand_php_generation.py`, `tests/test_faq_candidate.py` — Explicit no-tagline output and FAQ failure/parse tests. (~600 tok)
+
+## Closing local commerce evidence
+- `wordpress-theme/skyyrose-flagship-2/tests/commerce/bootstrap.php` — Full active theme hooks and canonical-SKU synthetic variation classification test; offline loopback only (~1100 tok).
+- `tasks/v2-launch-local-20261001/evidence/closing/` — Closing phase raw native WP/Woo tests, screenshots, source provenance, and remaining owners.
+
+- `tools/v2-runtime/test-hero-order-labels.php` — Isolated real partial label regression for regular/variable/simplepreorder; simulated media guard, no approval claim (~1000 tok).
+- `tasks/v2-launch-local-20261001/classify_brand_consumers.py` — Read-only exact-line classification of broad brand enforcement findings and owners (~850 tok).
+- `tasks/v2-launch-local-20261001/CLOSING.md` — Closing integration outcome, reproducible remaining local failures, consolidated founder/owner holds.
+## Preorder stream 2 closing artifacts (2026-10-01)
+
+- `tasks/preorder-correctness-20261001/INTEGRATION-CONTRACT.md` — Exact bootstrap, callback, metadata and existing paid-order event handoff (~1500 tok).
+- `tasks/preorder-correctness-20261001/DECISION-PACKET.md` — Recorded policy conflict, missing machine fields and bounded inventory owner choices (~1300 tok).
+- `wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-bootstrap.php` — Read-only combined V2 hash and hook registration gate; never loads module itself (~700 tok).
+- `tasks/preorder-correctness-20261001/evidence/architect-closing-review.md` — Recorded bounded independent review, artifact/count verification and remaining gates (~350 tok).
+
+- `tasks/v2-launch-local-20261001/evidence/closing/successor-*.json` and successor gate/matrix logs — Exact6f source, 43-row acceptance ledger, independent architect review and byte-preservation proof; historical9e logs retained (~1800 tok excluding raw logs).
+
+## Integration release 20261001
+- `tasks/integration-release-20261001/` — current assembled source/dependency/test/release evidence; separates local and held runtime gates.
+- `wordpress-theme/skyyrose-flagship-2/inc/product-glb.php` — registry-projected accepted asset gate, native read-only selection route, optional PDP mount.
+- `wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-init.mjs` — selected variation disposal/remount and current native resolver.
+
+## Integration release 2026-10-01
+- tasks/integration-release-20261001/README.md — Combinedcandidate scope, actualchecks, productionholds and reproductioncommands (~2500tokens).
+- tasks/integration-release-20261001/adoption-manifest.json — Owner/source/adoptedcommits and exactshared ownership (~2500tokens).
+- tasks/integration-release-20261001/evidence-index.json — Retainedartifact bytes/hashes; executionclaims remain inindividualreports (~12000tokens).
+- wordpress-theme/skyyrose-flagship-2/inc/product-glb.php — Optional dormantproduct-view mount/server-ownedreadonlynativeidentityroute (~1500tokens).
+- wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-init.mjs — Nativeoptioncontroller lifecycle and freshresolver requests (~1200tokens).
+- tests/test_glb_projection_approval.py — Offline current/staleapprovalprojection3caseregression (~700tokens).
+
+- tasks/production-final-pass-20261001/README.md — Current scoped production final pass, authenticated targets, CI, rollback and skill examples; ~1700 tokens.
+- tasks/production-final-pass-20261001/evidence/ — Target configuration snapshots, canonical correction plans, CI and staging backup/install receipts; generated task evidence.
+
+- `tasks/production-final-pass-20261001/verify_metadata_readback.py`: Read-only authenticated staging product-config comparison; verifies exactly45canonical metadata changes across220captured product/variationrecords. ~900 tokens.
+
+- tasks/production-final-pass-20261001/evidence/staging-hosting-edge-cache-clear.json — Authenticated live staging hosting clear receipt and explicit evidence limits; CLI failures preserved. ~400 tokens.
+
+- tools/production-runtime/search-tracking-privacy.php — Separately hashed public Search tracking suppression; preserves native Search and approved theme ZIP.
+- tools/production-runtime/test-search-tracking-wordpress.php — Captured actual WordPress7.1.2 hook/dependency regression with explicitly stubbed environment/rendering.
+- tasks/production-final-pass-20261001/evidence/production-page-preimages.json — Authenticated all-status route inventory and six unchanged merchant page snapshots; no customer/order records.
+- tasks/production-final-pass-20261001/evidence/production-preactivation-preimages.json — Current target, MU directory and module/activation option observations; no mutations.

@@ -262,7 +262,9 @@ class TestRosieMascot:
         )
         assert "skyyrose" in all_prompts.lower() or "SkyyRose" in all_prompts
 
-    def test_rosie_tagline_present(self):
+    def test_rosie_prompts_exclude_retired_taglines(self):
+        from skyyrose.elite_studio.brand import BrandConfig
+
         sheet = self.agent.create_skyyrose_rosie()
         all_prompts = " ".join(
             [
@@ -271,7 +273,7 @@ class TestRosieMascot:
                 sheet.expression_grid_prompt,
             ]
         )
-        assert "Luxury Grows from Concrete" in all_prompts
+        assert all(tagline not in all_prompts for tagline in BrandConfig.load().retired_taglines)
 
     def test_rosie_is_young_black_girl(self):
         sheet = self.agent.create_skyyrose_rosie()
@@ -430,10 +432,12 @@ class TestSpriteGenerator:
         assert set(result.sprite_prompts.keys()) == expected_poses
 
     def test_rosie_sprites_contain_brand_dna(self):
+        from skyyrose.elite_studio.brand import BrandConfig
+
         result = self.generator.generate_skyyrose_mascot_sprites()
         all_prompts = " ".join(result.sprite_prompts.values())
         assert "SkyyRose" in all_prompts or "skyyrose" in all_prompts.lower()
-        assert "Luxury Grows from Concrete" in all_prompts
+        assert all(tagline not in all_prompts for tagline in BrandConfig.load().retired_taglines)
 
     def test_rosie_sprite_css_hint_mentions_walk(self):
         result = self.generator.generate_skyyrose_mascot_sprites()

@@ -1,0 +1,79 @@
+[
+  {
+    "command": [
+      "php",
+      "-l",
+      "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php"
+    ],
+    "exit_code": 0,
+    "stdout": "No syntax errors detected in wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php\n",
+    "stderr": "",
+    "time_utc": "2026-10-01T07:17:22.803948+00:00"
+  },
+  {
+    "command": [
+      "php",
+      "-l",
+      "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php"
+    ],
+    "exit_code": 0,
+    "stdout": "No syntax errors detected in wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php\n",
+    "stderr": "",
+    "time_utc": "2026-10-01T07:17:22.963230+00:00"
+  },
+  {
+    "command": [
+      "bash",
+      "-n",
+      "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "time_utc": "2026-10-01T07:17:22.972958+00:00"
+  },
+  {
+    "command": [
+      "/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/vendor/bin/phpcs",
+      "--standard=wordpress-theme/skyyrose-flagship-2/phpcs.xml",
+      "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php",
+      "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php"
+    ],
+    "exit_code": 0,
+    "stdout": ".. 2 / 2 (100%)\n\n\nTime: 1.77 secs; Memory: 20MB\n\n",
+    "stderr": "",
+    "time_utc": "2026-10-01T07:17:25.046623+00:00"
+  },
+  {
+    "command": [
+      "php",
+      "tools/v2-runtime/test-checkout-truth.php"
+    ],
+    "exit_code": 0,
+    "stdout": "PASS seven order states, native gateway hooks once, no duplicate details or charge assurance\n",
+    "stderr": "",
+    "time_utc": "2026-10-01T07:17:25.195501+00:00"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/sync_product_registry.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "PASS: CSV and all product dossiers match the registry\n",
+    "stderr": "",
+    "time_utc": "2026-10-01T07:17:25.412081+00:00"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "time_utc": "2026-10-01T07:17:25.595305+00:00"
+  }
+]

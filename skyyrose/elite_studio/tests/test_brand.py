@@ -67,13 +67,32 @@ def test_loads_retired_taglines_as_phrase_list(brand: BrandConfig) -> None:
     assert brand.retired_taglines == ("Where Love Meets Luxury",)
 
 
-def test_missing_active_tagline_raises(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_explicit_no_active_tagline_loads(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     bad = FIXTURE_YAML.replace('active: "Luxury Grows from Concrete."', 'active: ""')
     p = tmp_path / "brand.yaml"
     p.write_text(textwrap.dedent(bad).lstrip("\n"))
     monkeypatch.setenv("SKYYROSE_BRAND_PATH", str(p))
-    with pytest.raises(ValueError, match="non-empty"):
-        BrandConfig.load()
+    assert BrandConfig.load().tagline_active == ""
+
+
+@pytest.mark.parametrize("value", [None, ""])
+def test_no_active_tagline_is_explicit(value: str | None) -> None:
+    assert BrandConfig._from_dict({"tagline": {"active": value}}).tagline_active == ""
+
+
+def test_missing_active_tagline_raises() -> None:
+    with pytest.raises(ValueError, match="explicit"):
+        BrandConfig._from_dict({})
+
+
+def test_retired_active_tagline_raises() -> None:
+    with pytest.raises(ValueError, match="retired"):
+        BrandConfig._from_dict({"tagline": {"active": "old", "retired": ["old"]}})
+
+
+def test_non_string_active_tagline_raises() -> None:
+    with pytest.raises(ValueError, match="string"):
+        BrandConfig._from_dict({"tagline": {"active": False}})
 
 
 def test_invalid_hex_color_in_palette_raises(
@@ -112,9 +131,8 @@ def test_live_brand_yaml_loads_clean() -> None:
     """Sanity: the committed assets/brand/brand.yaml must load without errors."""
     repo_root = Path(__file__).resolve().parents[3]
     live = repo_root / "assets" / "brand" / "brand.yaml"
-    if not live.is_file():
-        pytest.skip("Live brand.yaml not present in test environment")
     brand = BrandConfig.load(path=live)
-    assert brand.tagline_active == "Luxury Grows from Concrete."
+    assert brand.tagline_active == ""
+    assert "Luxury Grows from Concrete." in brand.retired_taglines
     assert "Where Love Meets Luxury" in brand.retired_taglines
     assert "black-rose" in brand.collections

@@ -127,16 +127,6 @@ export default function HomePage({ collections }: HomePageProps) {
                   SKYYROSE
                 </motion.h1>
 
-                {/* Tagline */}
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: 0.8 }}
-                  className="text-white/40 text-lg md:text-xl tracking-[0.15em] mb-2 font-body"
-                >
-                  Luxury Grows from Concrete.
-                </motion.p>
-
                 {/* Decorative line */}
                 <motion.div
                   initial={{ scaleX: 0 }}
@@ -274,12 +264,14 @@ export default function HomePage({ collections }: HomePageProps) {
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-end">
                       <div className="p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                        <p
-                          className="text-xs tracking-[0.2em] uppercase mb-1"
-                          style={{ color: collection.accentColor }}
-                        >
-                          {collection.tagline}
-                        </p>
+                        {collection.tagline && (
+                          <p
+                            className="text-xs tracking-[0.2em] uppercase mb-1"
+                            style={{ color: collection.accentColor }}
+                          >
+                            {collection.tagline}
+                          </p>
+                        )}
                         <h3 className="text-xl font-display text-white">
                           {collection.name}
                         </h3>
@@ -369,12 +361,14 @@ export default function HomePage({ collections }: HomePageProps) {
 
                   {/* Collection Info */}
                   <div className="flex-1 w-full">
-                    <p
-                      className="text-xs tracking-[0.3em] uppercase mb-3"
-                      style={{ color: collection.accentColor }}
-                    >
-                      {collection.tagline}
-                    </p>
+                    {collection.tagline && (
+                      <p
+                        className="text-xs tracking-[0.3em] uppercase mb-3"
+                        style={{ color: collection.accentColor }}
+                      >
+                        {collection.tagline}
+                      </p>
+                    )}
                     <h3 className="text-3xl md:text-4xl font-display text-white mb-4">
                       {collection.name}
                     </h3>
@@ -495,7 +489,7 @@ export default function HomePage({ collections }: HomePageProps) {
                 SKYYROSE
               </h3>
               <p className="text-white/30 text-sm leading-relaxed max-w-sm">
-                Luxury Grows from Concrete.. Three immersive worlds of fashion,
+                Three immersive worlds of fashion,
                 crafted with AI precision and human artistry.
               </p>
             </div>
@@ -540,9 +534,6 @@ export default function HomePage({ collections }: HomePageProps) {
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/15 text-xs tracking-wider">
               &copy; 2026 SkyyRose LLC. All rights reserved.
-            </p>
-            <p className="text-white/10 text-xs tracking-[0.2em] uppercase">
-              Luxury Grows from Concrete.
             </p>
           </div>
         </div>

@@ -174,15 +174,18 @@ def main(argv: list[str] | None = None) -> int:
         "--check", action="store_true", help="Exit 1 without writing if output would change"
     )
     args = parser.parse_args(argv)
+    output_label = (
+        args.output.relative_to(_REPO_ROOT)
+        if args.output.is_relative_to(_REPO_ROOT)
+        else args.output
+    )
 
     brand = BrandConfig.load()
     content = build_php(brand)
 
     if args.check:
         if not args.output.is_file():
-            print(
-                f"ERROR: {args.output.relative_to(_REPO_ROOT)} missing — run without --check to create"
-            )
+            print(f"ERROR: {output_label} missing — run without --check to create")
             return 1
         current = args.output.read_text()
 
@@ -193,16 +196,15 @@ def main(argv: list[str] | None = None) -> int:
             )
 
         if _strip_ts(current) == _strip_ts(content):
-            print(f"OK: {args.output.relative_to(_REPO_ROOT)} is in sync with brand.yaml")
+            print(f"OK: {output_label} is in sync with brand.yaml")
             return 0
-        print(f"DIFF: {args.output.relative_to(_REPO_ROOT)} would change — re-run without --check")
+        print(f"DIFF: {output_label} would change — re-run without --check")
         return 1
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(content)
     print(
-        f"Wrote {args.output.relative_to(_REPO_ROOT)} "
-        f"({len(content):,} bytes, {len(brand.collections)} collections)"
+        f"Wrote {output_label} " f"({len(content):,} bytes, {len(brand.collections)} collections)"
     )
     return 0
 
