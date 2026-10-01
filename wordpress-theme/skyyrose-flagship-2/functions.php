@@ -32,6 +32,7 @@ require_once SKYYROSE2_DIR . '/inc/shop-archive.php';
 require_once SKYYROSE2_DIR . '/inc/quick-view-commerce.php';
 require_once SKYYROSE2_DIR . '/inc/critical-rendering.php';
 require_once SKYYROSE2_DIR . '/inc/analytics.php';
+require_once SKYYROSE2_DIR . '/inc/woocommerce-compat.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
@@ -262,7 +263,7 @@ function skyyrose2_resolve_commerce_scene_products( $scene, $collection ) {
 function skyyrose2_scene_product_action_label( $product, $preorder_requested = false ) {
 	$name         = $product->get_name();
 	$presentation = skyyrose2_product_presentation( $product );
-	$is_preorder  = $preorder_requested && ! empty( $presentation['is_preorder'] );
+	$is_preorder  = $preorder_requested && skyyrose2_is_transaction_preorder_product( $product );
 
 	if ( ! $product->is_purchasable() || ! $product->is_in_stock() ) {
 		return sprintf( __( 'View %s — currently unavailable', 'skyyrose-flagship-2' ), $name );
@@ -1363,6 +1364,43 @@ function skyyrose2_is_preorder_product( $product ) {
 }
 
 /**
+ * Classify one display identity using the transaction module's metadata rule.
+ * The registry-only helper remains unchanged for its transaction fallback.
+ * Variable parents describe browse state; their selected option is resolved by WC.
+ *
+ * @param WC_Product $product Native parent, simple product, or selected variation.
+ * @return bool
+ */
+function skyyrose2_is_transaction_preorder_product( $product ) {
+	if ( ! $product || ! method_exists( $product, 'meta_exists' ) ) {
+		return skyyrose2_is_preorder_product( $product );
+	}
+	$parent = $product;
+	if ( $product->is_type( 'variation' ) ) {
+		$parent = wc_get_product( $product->get_parent_id() );
+		if ( ! $parent ) {
+			return false;
+		}
+	}
+	$value = $product->meta_exists( '_is_preorder' ) ? $product->get_meta( '_is_preorder', true ) : $parent->get_meta( '_is_preorder', true );
+	return '1' === (string) $value || skyyrose2_is_preorder_product( $parent );
+}
+
+/**
+ * Let WooCommerce render and clear the selected option's status natively.
+ * @param array      $data Native variation response.
+ * @param WC_Product $parent Parent product.
+ * @param WC_Product $variation Selected variation.
+ * @return array
+ */
+function skyyrose2_preorder_variation_display( $data, $parent, $variation ) {
+	$label = skyyrose2_is_transaction_preorder_product( $variation ) ? __( 'Pre-order option. Full payment at checkout.', 'skyyrose-flagship-2' ) : __( 'Standard order option.', 'skyyrose-flagship-2' );
+	$data['availability_html'] = ( $data['availability_html'] ?? '' ) . '<p class="sr2-variation-order-status" role="status">' . esc_html( $label ) . '</p>';
+	return $data;
+}
+add_filter( 'woocommerce_available_variation', 'skyyrose2_preorder_variation_display', 10, 3 );
+
+/**
  * Query published products for reusable marketplace sections.
  *
  * @param int    $limit Product limit.
@@ -1402,7 +1440,7 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 		if ( $collection && 'pre-order' !== $collection && sanitize_title( $presentation['collection'] ?? '' ) !== sanitize_title( $collection ) ) {
 			continue;
 		}
-		if ( 'pre-order' === $collection && empty( $presentation['is_preorder'] ) ) {
+		if ( 'pre-order' === $collection && ! skyyrose2_is_transaction_preorder_product( $product ) ) {
 			continue;
 		}
 		if ( 'black-rose' === $collection && 'jersey-series' === ( $presentation['presentation'] ?? '' ) ) {
