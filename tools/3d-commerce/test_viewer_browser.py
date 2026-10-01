@@ -18,7 +18,7 @@ REGISTRY = "a" * 64
 EVIDENCE = ROOT / "tasks/3d-commerce-20261001/evidence"
 
 
-def glb(uri=False):
+def glb(uri=False, multi_scene=False):
     binary = struct.pack("<9f", -1, -1, 0, 1, -1, 0, 0, 1, 0)
     doc = {
         "asset": {"version": "2.0"},
@@ -42,6 +42,15 @@ def glb(uri=False):
         "scenes": [{"nodes": [0]}],
         "scene": 0,
     }
+    if multi_scene:
+        binary += binary
+        doc["buffers"][0]["byteLength"] = len(binary)
+        doc["bufferViews"].append({"buffer": 0, "byteOffset": 36, "byteLength": 36})
+        doc["accessors"].append({**doc["accessors"][0], "bufferView": 1})
+        doc["materials"].append({"doubleSided": True})
+        doc["meshes"].append({"primitives": [{"attributes": {"POSITION": 1}, "material": 1}]})
+        doc["nodes"].append({"mesh": 1})
+        doc["scenes"].append({"nodes": [1]})
     if uri:
         doc["buffers"][0]["uri"] = "https://example.invalid/unbound.bin"
     raw = json.dumps(doc, separators=(",", ":")).encode()
@@ -56,7 +65,7 @@ def glb(uri=False):
 
 
 def fixture(mode, port):
-    payload = glb(mode == "uri")
+    payload = glb(mode == "uri", mode == "multi-scene")
     products = [
         {
             "sku": sku,
@@ -110,6 +119,24 @@ def fixture(mode, port):
 import {{createViewer}} from '/viewer.mjs'; import {{createThreeRenderer}} from '/three-renderer.mjs';
 const mode={json.dumps(mode)}; const products={json.dumps(products)}; const manifest={json.dumps(manifest)};
 window.metrics={{created:0,disposed:0,resolved:0}};
+if(mode==='multi-scene'){{
+ const THREE=await import('/vendor/three.module.min.js');
+ const {{GLTFLoader}}=await import('/vendor/GLTFLoader.js');
+ window.resources={{parsed:[],disposed:[]}};
+ for(const type of [THREE.BufferGeometry,THREE.Material]){{
+  const original=type.prototype.dispose;
+  type.prototype.dispose=function(){{window.resources.disposed.push(this.uuid);return original.call(this);}};
+ }}
+ const parse=GLTFLoader.prototype.parseAsync;
+ GLTFLoader.prototype.parseAsync=async function(...args){{
+  const gltf=await parse.apply(this,args);
+  for(const scene of gltf.scenes)scene.traverse(o=>{{
+   if(o.geometry)window.resources.parsed.push(o.geometry.uuid);
+   for(const material of [].concat(o.material||[]))window.resources.parsed.push(material.uuid);
+  }});
+  return gltf;
+ }};
+}}
 window.products=products;
 window.resolveProduct=async p=>{{window.metrics.resolved++; if(mode==='selection-delay')await new Promise(r=>setTimeout(r,300)); return {{...p,registry_sha256:'{REGISTRY}',available:mode!=='unavailable',...(mode==='native-stale'?{{variation_id:5}}:{{}})}};}};
 const factory=async args=>{{
@@ -145,7 +172,7 @@ def server():
                 data, mime = (VENDOR / request.path[8:]).read_bytes(), "text/javascript"
             elif request.path == "/asset.glb":
                 self.server.asset_requests += 1
-                data, mime = glb(mode == "uri"), "model/gltf-binary"
+                data, mime = glb(mode == "uri", mode == "multi-scene"), "model/gltf-binary"
                 if mode == "byte-swap":
                     data = data[:-1] + bytes([data[-1] ^ 1])
                 if mode == "network-error":
@@ -245,6 +272,22 @@ def test_failures_keep_native_fallback(browser, server, mode):
         assert page.locator("canvas").count() == 0
         page.get_by_role("link", name="Product A details").click()
         assert page.locator("body").inner_text() == "Native product fallback fixture"
+        assert not denied
+    finally:
+        context.close()
+
+
+def test_all_parsed_scenes_are_disposed(browser, server):
+    context, page, denied = start(browser, server, "multi-scene")
+    try:
+        page.get_by_role("button", name="View A in 3D").click()
+        state(page, "ready")
+        parsed = page.evaluate("window.resources.parsed")
+        assert len(set(parsed)) == 4  # Distinct geometry/material in each actual loader scene.
+        page.get_by_role("button", name="Back to products").click()
+        disposed = page.evaluate("window.resources.disposed")
+        assert all(disposed.count(resource) == 1 for resource in set(parsed))
+        assert page.locator("canvas").count() == 0
         assert not denied
     finally:
         context.close()

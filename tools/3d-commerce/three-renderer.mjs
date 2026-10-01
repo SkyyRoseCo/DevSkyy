@@ -1,3 +1,36 @@
+/** Release every parsed scene, including resources outside the displayed root. */
+export function disposeParsedScenes(gltf) {
+  const resources = new Set();
+  const skeletons = new Set();
+  const images = new Set();
+  for (const root of new Set([...(gltf?.scenes || []), gltf?.scene].filter(Boolean))) {
+    root.traverse(object => {
+      if (object.geometry) resources.add(object.geometry);
+      if (object.skeleton) skeletons.add(object.skeleton);
+      for (const material of [].concat(object.material || [])) {
+        resources.add(material);
+        for (const value of Object.values(material)) if (value?.isTexture) resources.add(value);
+      }
+    });
+  }
+  // Skeleton.dispose owns its bone texture; shared bone textures are released once.
+  const boneTextures = new Set();
+  for (const skeleton of skeletons) {
+    if (skeleton.boneTexture) boneTextures.add(skeleton.boneTexture);
+    skeleton.boneTexture = null;
+    skeleton.dispose();
+  }
+  for (const texture of boneTextures) resources.add(texture);
+  for (const resource of resources) {
+    const data = resource.source?.data;
+    if (data?.close && !images.has(data)) {
+      images.add(data);
+      data.close();
+    }
+    resource.dispose();
+  }
+}
+
 /** Demand-rendered Three r170 adapter. Parse verified bytes; never refetch a GLB URL. */
 export async function createThreeRenderer({ mount, bytes, onContextLost }, vendorBase) {
   const [THREE, { GLTFLoader }] = await Promise.all([
@@ -7,9 +40,9 @@ export async function createThreeRenderer({ mount, bytes, onContextLost }, vendo
   if (THREE.REVISION !== '170') throw new Error('Unqualified Three revision');
   let renderer;
   let scene;
+  let parsed;
   let observer;
   let disposed = false;
-  const resources = new Set();
   const contextLost = event => {
     event.preventDefault();
     onContextLost();
@@ -19,23 +52,14 @@ export async function createThreeRenderer({ mount, bytes, onContextLost }, vendo
     disposed = true;
     observer?.disconnect();
     renderer?.domElement.removeEventListener('webglcontextlost', contextLost);
-    scene?.traverse(object => {
-      if (object.geometry) resources.add(object.geometry);
-      for (const material of [].concat(object.material || [])) {
-        resources.add(material);
-        for (const value of Object.values(material)) if (value?.isTexture) resources.add(value);
-      }
-    });
-    for (const resource of resources) {
-      resource.source?.data?.close?.();
-      resource.dispose();
-    }
+    disposeParsedScenes(parsed);
     renderer?.dispose();
     renderer?.forceContextLoss();
     renderer?.domElement.remove();
   };
   try {
     const gltf = await new GLTFLoader().parseAsync(bytes, '');
+    parsed = gltf;
     scene = new THREE.Scene();
     scene.add(gltf.scene);
     const bounds = new THREE.Box3().setFromObject(gltf.scene);

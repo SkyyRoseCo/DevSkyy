@@ -1,6 +1,45 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { acceptedBinding, validateEmbeddedGLB } from './viewer.mjs';
+import { disposeParsedScenes } from './three-renderer.mjs';
+
+test('dispose all parsed scenes, shared resources, skeleton bone textures and decoded images once', () => {
+  const calls = [];
+  const resource = name => ({ dispose: () => calls.push(name) });
+  const image = { close: () => calls.push('decoded-image') };
+  const texture = { ...resource('texture'), isTexture: true, source: { data: image } };
+  const otherTexture = { ...resource('other-texture'), isTexture: true, source: { data: image } };
+  const boneTexture = resource('bone-texture');
+  const skeleton = { boneTexture, dispose: () => calls.push('skeleton') };
+  const first = {
+    geometry: resource('default-geometry'),
+    material: { ...resource('default-material'), map: texture },
+    skeleton,
+  };
+  const second = {
+    geometry: resource('other-geometry'),
+    material: { ...resource('other-material'), map: texture, normalMap: otherTexture },
+    skeleton,
+  };
+  const root = objects => ({ traverse: visit => objects.forEach(visit) });
+  const scene = root([first]);
+  disposeParsedScenes({ scene, scenes: [scene, root([first, second])] });
+  assert.deepEqual(
+    calls.sort(),
+    [
+      'default-geometry',
+      'default-material',
+      'other-geometry',
+      'other-material',
+      'texture',
+      'other-texture',
+      'bone-texture',
+      'skeleton',
+      'decoded-image',
+    ].sort()
+  );
+  assert.equal(skeleton.boneTexture, null);
+});
 
 function glb(document) {
   const json = new TextEncoder().encode(JSON.stringify(document));
