@@ -1,6 +1,6 @@
 # Current production status and release boundaries
 
-**Last updated:** 2026-10-01. **Evidence snapshot:** 2026-10-01 15:46 UTC,
+**Last updated:** 2026-10-01. **Evidence snapshot:** 2026-10-01 16:09 UTC,
 recorded from the latest coordinator update. **Operational source:**
 `a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
@@ -12,17 +12,17 @@ the frozen operational source and does not rebuild the approved package.
 
 ## What is established
 
-| Gate or surface                 | Observed result                                                                                    | Evidence limit                                                                                                                                                          |
-| ------------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Five workstreams                | Scoped source adopted and integrated                                                               | The adoption manifest includes open inventory, asset/device, policy, and Governor runtime holds                                                                         |
-| Functional source               | Frozen at `299f694702ac2dcc61a0f30aa34e4b3ef12f9118`                                               | Local tests are bounded integration evidence                                                                                                                            |
-| Clean V2 package                | Source `5950592d922706dd67fc0320e8c5f3dc005a47b7`; repeat bytes and installed-file checks passed   | Packaging does not establish live production behavior                                                                                                                   |
-| Existing staging                | V2 2.5.0 installed; all 599 reviewed file hashes matched                                           | Staging has 220 product/variation records; it cannot establish parity with production's 33 simple products                                                              |
-| Production                      | `https://skyyrose.co`, active V1 `skyyrose-flagship`                                               | V2 cutover has not been dispatched                                                                                                                                      |
-| Procedure and acceptance inputs | Independent source/freeze review passed; 30 offline tests and Ruff/Black/mypy passed independently | Offline/localhost checks have no authenticated production acceptance scope                                                                                              |
-| Exact operational-head CI       | Current retry snapshot: 20 successful checks, 5 intentional skips, 1 in-progress Playwright job    | Prior completed attempt: 20 successful checks, 6 intentional skips, 1 cancelled Playwright job; original log preserved. Retry tests pending; no final `CI_PASS` receipt |
-| Execution clearance             | Not issued                                                                                         | Requires the exact-head mandatory CI result and independent combined review                                                                                             |
-| Production V2 acceptance        | Not executed                                                                                       | Requires actual installation, V1 Search checkpoint, V2 deployment/readback, six browser profiles, and independent actual-evidence review                                |
+| Gate or surface                 | Observed result                                                                                           | Evidence limit                                                                                                                                      |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Five workstreams                | Scoped source adopted and integrated                                                                      | The adoption manifest includes open inventory, asset/device, policy, and Governor runtime holds                                                     |
+| Functional source               | Frozen at `299f694702ac2dcc61a0f30aa34e4b3ef12f9118`                                                      | Local tests are bounded integration evidence                                                                                                        |
+| Clean V2 package                | Source `5950592d922706dd67fc0320e8c5f3dc005a47b7`; repeat bytes and installed-file checks passed          | Packaging does not establish live production behavior                                                                                               |
+| Existing staging                | V2 2.5.0 installed; all 599 reviewed file hashes matched                                                  | Staging has 220 product/variation records; it cannot establish parity with production's 33 simple products                                          |
+| Production                      | `https://skyyrose.co`, active V1 `skyyrose-flagship`                                                      | V2 cutover has not been dispatched                                                                                                                  |
+| Procedure and acceptance inputs | Independent source/freeze review passed; 30 offline tests and Ruff/Black/mypy passed independently        | Offline/localhost checks have no authenticated production acceptance scope                                                                          |
+| Exact operational-head CI       | `CI_PASS`: 21 mandatory successful checks, 6 intentional skips, no pending/failure/cancellation           | Single targeted Playwright retry: 62 passed (31 Chromium, 31 mobile), 0 failed/skipped/flaky; source CI is separate from production acceptance      |
+| Execution clearance             | `FINAL_COMBINED_CLEARANCE_PASS`, architect PASS, and coordinator `CLEAR_TO_EXECUTE_SCOPED_CUTOVER` issued | Pre-execution clearance only; immediate target/preimage/ownership guards must pass before each mutation. Application not dispatched at the snapshot |
+| Production V2 acceptance        | Not executed                                                                                              | Requires actual installation, V1 Search checkpoint, V2 deployment/readback, six browser profiles, and independent actual-evidence review            |
 
 The cancelled Playwright job is `110435542010` in CI run `36880002499` on exact
 `a662e707…`. Its preserved complete log records about 16 minutes in checkout, 3
@@ -32,14 +32,40 @@ Playwright tests started in that attempt.
 
 Astra recorded `ONE_BOUNDED_TARGETED_RETRY_REVIEW_PASS` after the complete log
 review. Integration dispatched exactly one targeted retry on the same frozen
-head and workflow run. The 15:46:10 UTC authenticated identity receipt confirms
-successor job `110451737866`, run attempt 2, started at 15:45:10 UTC and in
-progress at checkout; its Playwright test step remains pending. The latest
-coordinator CI snapshot reports 20 SUCCESS / 5 SKIP / 1 IN_PROGRESS; the
-deployment-production skip is not materialized in that snapshot. The previous
-completed result remains 20 SUCCESS / 6 intentional SKIP / 1 CANCELLED. Dispatch
-is not a test result or execution clearance. No source/workflow change or
-storefront application was dispatched. PR #1000 remains draft.
+head and workflow run. Successor job `110451737866`, run attempt 2, started at
+15:45:10 UTC and completed successfully at 15:59:04 UTC. The actual Playwright
+test step ran from 15:56:46 to 15:58:50 UTC: **62 passed** (31 Chromium and 31
+mobile), with **0 failed, skipped, or flaky tests**.
+
+The final authenticated Code Review receipt records **21 mandatory SUCCESS / 6
+intentional SKIP**, with no pending, failed, cancelled, or unexpected skipped
+checks. The original 20 SUCCESS / 6 intentional SKIP / 1 CANCELLED attempt and
+its full log remain preserved. GitHub inherited the earlier successful same-head
+upstream results for attempt 2; this does not claim every upstream suite ran
+again. No workflow, source, dependencies, browser selection, timeout, or test
+changes were made, and no fetch-depth contingency was needed.
+
+GitHub's actual tested checkout was merge commit
+`30fdd5940fb7ce4951b8c95c63f2784dc930a3a6`, with parents `7892b797…` and
+`a662e707…`. Authenticated tree readback establishes that its tree
+`40cad1a67e8efa99ddc0843dbf6ceffb53f55e49` equals the frozen operational `a662`
+tree. PR #1000 remains open, draft, and unmerged at the same head.
+
+Astra issued `FINAL_COMBINED_CLEARANCE_PASS`, with architect PASS, after review
+of the final CI receipt, combined 12 evidence bindings, adoption record, and
+actual target identity. The coordinator's durable
+`CLEAR_TO_EXECUTE_SCOPED_CUTOVER` receipt closes both the CI and
+acceptance/procedure conditions and sends the sole writer the reviewed execution
+signal within the existing human scope.
+
+This is **pre-execution clearance**. Immediate authenticated target, source,
+artifact, option/page preimage, native configuration, and ownership guards must
+pass before each mutation. At the **16:09 UTC snapshot**, production remains V1,
+application has not been dispatched, and neither `DEPLOYED` nor
+`PRODUCTION_ACCEPTED` has been established. Any changed or unknown precondition
+stops mutation for read-only reconciliation under the reviewed stop/recovery
+rules. Source CI and the execution signal are separate from actual production
+browser acceptance.
 
 The authenticated target snapshots report WordPress **7.1.2**, WooCommerce
 **11.1.2**, and PHP **8.4.26** on production and existing staging. These are
@@ -62,6 +88,8 @@ them with the site identity immediately before execution.
 | Final V2 acceptance harness                     | `0573e738c95a18528bce4e3dd6631c5a5f2c78e9b9fcd2ee083e21ef6807497d` |
 | Combined release evidence manifest: 12 bindings | `ef053fa175b69913469c33a259c91afb61eff811e004eff4e09457145e20e2a2` |
 | Procedure/source review receipt                 | `cd7d6b16d322dd2ab7ecec19be9f2ff3fff72663aa5a4876be56b5a67647e2ff` |
+| Final exact-head CI receipt                     | `23c467bf8dbde980ab3c22f95f84d324cbdf72acac3368bed37c031289d5eeb4` |
+| Scoped pre-execution clearance receipt          | `4f90c881ea90674736aa8828e50a34f27f1c604903f9ac6b32d19803149ba286` |
 
 The Search extension is a separate artifact; it does not change the V2 ZIP.
 Recomputing hashes of changed files cannot approve a successor. Match the
@@ -94,13 +122,16 @@ latest maker specifications remain `FOUNDER_CONFIRMED`; missing facts remain
 gaps. Native production configuration snapshots bind the acceptance tests to
 existing store records and do not become an alternative product source.
 
-## Required next states
+## Execution and acceptance order
 
-The reviewed [runbook](RUNBOOK.md) preserves this order:
+The reviewed [runbook](RUNBOOK.md) preserves this order. The first clearance
+state is complete at this snapshot; runtime states still require actual
+evidence:
 
-1. Record successful mandatory CI on exact `a662e707…`, intentional skips, and
-   independent combined evidence review. The coordinator then records
-   `CLEAR_TO_EXECUTE_SCOPED_CUTOVER`.
+1. `CI_PASS` and `CLEAR_TO_EXECUTE_SCOPED_CUTOVER` are recorded for exact
+   `a662e707…`. The sole writer must refresh immediate target/preimage/ownership
+   guards before each mutation; clearance does not override a failed or unknown
+   guard.
 2. Install exact V2 while inactive and prepare only the ten owned drafts.
    Install the Search privacy MU extension and record actual object/global edge
    cache clearing. With V1 still active, require actual desktop and mobile
@@ -147,6 +178,7 @@ documentation**. On the current operator machine the packet is at
 with execution/readback records in
 `/Users/theceo/.codex/worktrees/4035/DevSkyy/tasks/production-final-pass-20261001/`.
 The final-clearance packet contains
+`clear-to-execute-scoped-cutover-a662e707d.json`, `ci-pass-a662e707d.json`,
 `ci-e2e-targeted-retry-dispatch-110435542010.json`,
 `ci-e2e-targeted-retry-identity-110451737866.json`,
 `acceptance-review-pass-receipt.json`,

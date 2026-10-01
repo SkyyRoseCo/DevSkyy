@@ -24,15 +24,18 @@ source checks, CI, packaging, and staging qualification.
 | Agent dashboard                                                     | Next.js 16, React 19, `frontend/`                     | Integrated source; dashboard/Fly deployment is outside this storefront cutover |
 | API and creative operations                                         | FastAPI, Python, `main_enterprise.py`, `skyyrose/`    | Integrated source; API/Governor/provider execution is outside this cutover     |
 
-The final procedure and acceptance-source review passed. Exact-head CI is not
-cleared: the first mandatory Playwright attempt was cancelled during dependency
-installation before tests started. One independently reviewed targeted retry on
-the same frozen head is running; its tests remain pending in the 15:46 UTC
-identity receipt. Clearance has not been issued and production browser
-acceptance has not executed. Read
+The final procedure and acceptance-source review passed. Exact-head CI has **21
+mandatory successful checks and six intentional skips**; the single targeted
+Playwright retry passed all **62 tests** (31 Chromium, 31 mobile), with no
+failed, skipped, or flaky tests. Final combined review passed and the
+coordinator issued `CLEAR_TO_EXECUTE_SCOPED_CUTOVER`. This is pre-execution
+clearance: immediate precondition guards must pass before each mutation. At the
+16:09 UTC snapshot, production remains V1, application has not been dispatched,
+and no `DEPLOYED` or `PRODUCTION_ACCEPTED` result exists. Read
 [current production status](docs/PRODUCTION_STATUS.md) for dated evidence
 identities, scope, and remaining gates, and the [runbook](docs/RUNBOOK.md) for
-the ordered operator procedure. A CI badge is not an acceptance receipt.
+the ordered operator procedure. Source CI and execution clearance are separate
+from production acceptance.
 
 ## Local setup
 
