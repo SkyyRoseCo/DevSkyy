@@ -16,10 +16,11 @@
     </testsuites>
     <coverage>
         <include>
-            <!-- Only the three pure-PHP modules loaded by tests/bootstrap.php -->
+            <!-- Pure-PHP modules loaded by tests/bootstrap.php. -->
             <file>inc/brand-colors.php</file>
             <file>inc/collections-config.php</file>
             <file>inc/product-catalog.php</file>
+            <file>inc/woocommerce-preorder.php</file>
         </include>
         <report>
             <html outputDirectory="tests/coverage/html" lowUpperBound="50" highLowerBound="85"/>

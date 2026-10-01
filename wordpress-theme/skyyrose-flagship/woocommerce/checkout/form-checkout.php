@@ -573,18 +573,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 								<span class="skyy-checkout__sidebar-item-name">
 									<?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ); ?>
 								</span>
-								<?php if ( ! empty( $cart_item['variation'] ) ) : ?>
-									<span class="skyy-checkout__sidebar-item-meta">
-										<?php
-										$meta_parts = array();
-										foreach ( $cart_item['variation'] as $attr => $val ) {
-											if ( $val ) {
-												$meta_parts[] = ucfirst( $val );
-											}
-										}
-										echo esc_html( implode( ' / ', $meta_parts ) );
-										?>
-									</span>
+								<?php $formatted_item_data = wc_get_formatted_cart_item_data( $cart_item ); ?>
+								<?php if ( $formatted_item_data ) : ?>
+									<div class="skyy-checkout__sidebar-item-meta">
+										<?php echo wp_kses_post( $formatted_item_data ); ?>
+									</div>
 								<?php endif; ?>
 							</div>
 							<span class="skyy-checkout__sidebar-item-price">
