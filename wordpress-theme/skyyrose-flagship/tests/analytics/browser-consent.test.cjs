@@ -7,7 +7,7 @@ const { execFileSync } = require('node:child_process');
 const { chromium } = require('playwright');
 const theme = path.resolve(__dirname, '../..');
 const banner = execFileSync(
-  'php',
+  process.env.PHP_BIN || 'php',
   [
     '-r',
     `define('ABSPATH', '${theme}'); function home_url($p) {return $p;} function esc_url($v) {return $v;} function esc_attr_e($v,$d) {echo $v;} function esc_html_e($v,$d) {echo $v;} function esc_html__($v,$d) {return $v;} include '${theme}/template-parts/cookie-consent.php';`,

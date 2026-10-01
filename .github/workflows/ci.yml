@@ -428,6 +428,15 @@ jobs:
       - name: Run root unit tests
         run: npm test
 
+      - name: Test theme consent, relay, and asset cache versions
+        run: npm run test:theme-analytics
+
+      - name: Install Chromium for theme consent browser tests
+        run: ./node_modules/.bin/playwright install --with-deps chromium
+
+      - name: Test theme consent in desktop and mobile browsers
+        run: npm run test:theme-analytics:browser
+
       - name: Upload test results
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
