@@ -201,7 +201,8 @@ const fetchers: Record<PlatformId, () => Promise<PlatformAnalytics>> = { instagr
 
 async function readPlatform(platform: PlatformId, dryRun: boolean): Promise<PlatformAnalytics> {
   if (dryRun) return unavailable('unavailable', 'Dry-run collects no platform measurements.');
-  if (!getPlatformConnection(platform).connected)
+  // X analytics uses app-only credentials, unlike the publishing connection.
+  if (platform !== 'twitter' && !getPlatformConnection(platform).connected)
     return unavailable('disconnected', 'Platform account is not configured.');
   try {
     return await fetchers[platform]();
