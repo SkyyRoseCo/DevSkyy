@@ -5,7 +5,7 @@ const theme = path.resolve(__dirname, '../..');
 
 module.exports = () =>
   execFileSync(
-    process.env.PHP_BIN || '/opt/homebrew/bin/php',
+    process.env.PHP_BIN || 'php',
     [
       '-r',
       `

@@ -196,7 +196,9 @@
     "demo:love-hurts": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=love_hurts",
     "demo:showroom": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=showroom",
     "demo:runway": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=runway",
-    "test:collections": "vitest run --config config/testing/vitest.config.ts src/collections"
+    "test:collections": "vitest run --config config/testing/vitest.config.ts src/collections",
+    "test:theme-analytics": "node --test wordpress-theme/skyyrose-flagship/tests/analytics/consent.test.cjs && php wordpress-theme/skyyrose-flagship/tests/analytics/relay.php && php wordpress-theme/skyyrose-flagship/tests/analytics/cache-version.php && php wordpress-theme/skyyrose-flagship/tests/analytics/cache-version.php debug",
+    "test:theme-analytics:browser": "node --test wordpress-theme/skyyrose-flagship/tests/analytics/browser-consent.test.cjs"
   },
   "repository": {
     "type": "git",
