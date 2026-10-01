@@ -36,7 +36,7 @@ Logs preserve failed inspection/harness attempts; those are not counted as succe
 
 ## Build and release gates
 
-Owner semantic certification is being reconciled against the frozen source. Clean committed build/verification/package and exact ZIP identity follow that review; their final receipt is recorded separately and must not be inferred from the table above.
+Owner semantic certification passed against the frozen source:19changed theme paths,77input pins and705census paths/599release paths. Integration independently matched the reviewed hashes and ran27source/negative guards. The pinned build passed; generated projection and translations were reviewed and committed in5788e2e33. Clean committed verification/package and exact ZIP identity are recorded separately and must not be inferred from these checks.
 
 Production holds:
 

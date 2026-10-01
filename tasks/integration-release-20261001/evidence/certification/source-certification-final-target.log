@@ -1,0 +1,28 @@
+PASS 7 native fixture hashes; WordPress 7.1 / WooCommerce 11.1.0
+test_escaped_quotes_and_backslashes_remain_literal_messages (test_i18n.TranslationTests.test_escaped_quotes_and_backslashes_remain_literal_messages) ... ok
+test_excludes_fixtures_and_parses_double_quotes (test_i18n.TranslationTests.test_excludes_fixtures_and_parses_double_quotes) ... ok
+test_runtime_plural_is_retained (test_i18n.TranslationTests.test_runtime_plural_is_retained) ... ok
+test_unterminated_escape_runs_do_not_backtrack_exponentially (test_i18n.TranslationTests.test_unterminated_escape_runs_do_not_backtrack_exponentially) ... ok
+test_alternate_authority_and_reader_fail_closed (test_inputs.RegistryAuthorityTests.test_alternate_authority_and_reader_fail_closed) ... ok
+test_changed_current_commerce_requires_receipt_reconciliation (test_inputs.RegistryAuthorityTests.test_changed_current_commerce_requires_receipt_reconciliation) ... ok
+test_current_registry_supplies_every_garment_type (test_inputs.RegistryAuthorityTests.test_current_registry_supplies_every_garment_type) ... ok
+test_exact_current_registry_contract (test_inputs.RegistryAuthorityTests.test_exact_current_registry_contract) ... ok
+test_founder_garment_correction_overrides_historical_receipt (test_inputs.RegistryAuthorityTests.test_founder_garment_correction_overrides_historical_receipt) ... ok
+test_missing_input_pin_fails_even_with_current_sidecar_identity (test_inputs.RegistryAuthorityTests.test_missing_input_pin_fails_even_with_current_sidecar_identity) ... ok
+test_missing_receipt_product_fails_closed (test_inputs.RegistryAuthorityTests.test_missing_receipt_product_fails_closed) ... ok
+test_registry_drift_during_product_reads_is_rejected (test_inputs.RegistryAuthorityTests.test_registry_drift_during_product_reads_is_rejected) ... ok
+test_stale_sidecar_identity_fails_even_with_current_input_pin (test_inputs.RegistryAuthorityTests.test_stale_sidecar_identity_fails_even_with_current_input_pin) ... ok
+test_exact_hash_and_dimensions (test_integrity.AssetBoundaryTests.test_exact_hash_and_dimensions) ... ok
+test_rejects_changed_pixels (test_integrity.AssetBoundaryTests.test_rejects_changed_pixels) ... ok
+test_rejects_symlink (test_integrity.AssetBoundaryTests.test_rejects_symlink) ... ok
+test_rejects_traversal (test_integrity.AssetBoundaryTests.test_rejects_traversal) ... ok
+test_rejects_wrong_dimensions (test_integrity.AssetBoundaryTests.test_rejects_wrong_dimensions) ... ok
+test_changed_bytes_do_not_create_partial_fixture (test_native_fixture.NativeFixtureTests.test_changed_bytes_do_not_create_partial_fixture) ... ok
+test_does_not_overwrite_existing_destination (test_native_fixture.NativeFixtureTests.test_does_not_overwrite_existing_destination) ... ok
+test_fetches_and_writes_only_exact_pinned_files (test_native_fixture.NativeFixtureTests.test_fetches_and_writes_only_exact_pinned_files) ... ok
+test_rejects_extra_manifest_path_before_network (test_native_fixture.NativeFixtureTests.test_rejects_extra_manifest_path_before_network) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 1.605s
+
+OK

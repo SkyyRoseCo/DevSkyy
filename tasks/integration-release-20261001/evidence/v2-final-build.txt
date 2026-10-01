@@ -1,0 +1,97 @@
+
+> skyyrose-flagship-2-theme@2.5.0 build
+> npm run check:source-integrity && npm run build:scene-posters && npm run check:approved-scenes && npm run build:tokens && npm run build:registry && npm run build:card-renditions && npm run build:font-delivery && npm run build:frame-delivery && npm run build:assets && npm run build:archive-theme && npm run build:i18n
+
+
+> skyyrose-flagship-2-theme@2.5.0 check:source-integrity
+> python3 ../../tools/v2-source-certification/check-integrity.py
+
+PASS 33 front hashes/dimensions; media states 16/9/5/3; 18 motion variant hashes
+
+> skyyrose-flagship-2-theme@2.5.0 build:scene-posters
+> node ../../tools/v2-runtime/build-scene-posters.cjs --write
+
+{
+  "status": "BUILT_SCENE_POSTERS",
+  "tool_version": "1.6.0\nlibsharpyuv: 0.4.2",
+  "outputs": [
+    {
+      "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp",
+      "bytes": 69660,
+      "sha256": "fe92f8838cb20f911e95afc2f1ab75ad1bc94601d3a00b0db7bf9c9165abd1a4"
+    },
+    {
+      "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp",
+      "bytes": 156866,
+      "sha256": "2cbf726ea73c1c0a3eead460228b302d07f6ea51ebd3e5a70c9380515e25b9d8"
+    }
+  ]
+}
+(node:27298) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.0 check:approved-scenes
+> node ../../tools/v2-runtime/check-approved-scroll-world-scenes.cjs
+
+{
+  "status": "PASS_APPROVED_SCENE_SELECTION",
+  "scenes": 9,
+  "runtime_media_assets": 27,
+  "media_bytes": 42425297,
+  "supporting_derivatives": 2,
+  "supporting_derivative_bytes": 226526,
+  "resolved_selection_checked": false,
+  "browser_visual_qa": "NOT_PERFORMED_BY_THIS_GUARD"
+}
+(node:27402) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.0 build:tokens
+> node ../../tools/v2-runtime/sync-token-contract.cjs --write
+
+PASS runtime/editor colors, layout, type roles, spacing, controls, focus, motion and layer contract
+(node:27440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.0 build:registry
+> python3 scripts/build-product-presentation-registry.py
+
+Wrote /Users/theceo/.codex/worktrees/4035/DevSkyy/wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json (33 SKUs).
+
+> skyyrose-flagship-2-theme@2.5.0 build:card-renditions
+> python3 ../../tools/v2-runtime/build-card-renditions.py
+
+Built responsive copies of 33 approved card fronts; originals unchanged
+
+> skyyrose-flagship-2-theme@2.5.0 build:font-delivery
+> python3 ../../tools/v2-runtime/build-font-delivery.py
+
+Built Archivo default-width delivery; full weights and source preserved
+
+> skyyrose-flagship-2-theme@2.5.0 build:frame-delivery
+> python3 ../../tools/v2-runtime/build-frame-delivery.py
+
+Built 4 frame copies; originals unchanged
+
+> skyyrose-flagship-2-theme@2.5.0 build:assets
+> node scripts/build-assets.mjs && node scripts/build-critical-css.mjs
+
+Built 25 CSS and 17 JS assets.
+Built assets/css/critical/home.min.css: 13580 bytes (budget 16384).
+
+> skyyrose-flagship-2-theme@2.5.0 build:archive-theme
+> node ../../tools/v2-runtime/build-archive-style-bundle.cjs
+
+archive-style-bundle: Shop inline total 99059 B is within 941 B of the 100000 B allowance
+{
+  file: [32m'archive-theme.min.css'[39m,
+  sha256: [32m'ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a'[39m,
+  bytes: [33m26637[39m
+}
+(node:28365) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.0 build:i18n
+> python3 scripts/build-pot.py
+
+Wrote /Users/theceo/.codex/worktrees/4035/DevSkyy/wordpress-theme/skyyrose-flagship-2/languages/skyyrose-flagship-2.pot (640 singular messages, 1 plural records).

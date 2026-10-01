@@ -1,0 +1,565 @@
+diff --git a/tools/v2-source-certification/build-inputs.json b/tools/v2-source-certification/build-inputs.json
+--- a/tools/v2-source-certification/build-inputs.json
++++ b/tools/v2-source-certification/build-inputs.json
+@@ -8,11 +8,15 @@
+   ],
+   "catalog_authority": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+   "catalog_sha256": "a240226b133f90a6c400329d5db89b1c31a34fab01426928e0a18706c994cfb7",
+-  "current_registry_sha256": "351a6bbe80face1735c5b73ae9ed472feed11fa19cf67dfb3954a757ca2a4c48",
++  "current_registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+   "garment_source": "skyyrose.core.product.get_product#catalog.garment_type_lock",
+   "generated_policy": "tools/v2-source-certification/generated-outputs.json",
+   "generator": "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py",
++  "glb_runtime_acceptance": "UNSUPPORTED_HELD: any nonNone canonical accepted_glb_runtime requires a reviewed product-source approval contract; current full registry digest is identity only.",
+   "input_hashes": {
++    "skyyrose/core/product.py": "30a44e37e1ed38950b9dbe398f0396f0293335bf4cc51e7767dcd401b28327d2",
++    "skyyrose/core/product_registry.py": "7f6ad89adb4c8f2e75041720ab8f580eb723af8ec35bd097593bff557a4e2639",
++    "tests/test_glb_projection_approval.py": "425615fc2c6b7e999a6ed80be8be2bb96458709ff05e41b81170231611444ace",
+     "tools/v2-runtime/build-archive-style-bundle.cjs": "220c3528f2fd97670b43d51cc8594e3f742ea8f382264101adff1f1f5c1398d2",
+     "tools/v2-runtime/build-card-renditions.py": "b86bd22d62c6f8ac4bcc03d5537366e3344b34bc243a2d1b7a2e22ad62450280",
+     "tools/v2-runtime/build-font-delivery.py": "c1b50124906d0bc60118131876859b451c18c8ac5c01021f4b1a46d21a6b3570",
+@@ -27,23 +31,34 @@
+     "tools/v2-source-certification/check-current-scenes.py": "9e83e63fd2dad8ee78c6f84b9df352a9716f435bbd182f54369c1d1e9f62766b",
+     "tools/v2-source-certification/check-integrity.py": "2a7e1ddc4635879a8e44fddb023718992a84e3b18c26dc0e1674576486a09970",
+     "tools/v2-source-certification/current-scenes.json": "b5e9da83b64036457bf125bfa70f31a3d0a13a1df4bf8f303bd2292fa5d75503",
+-    "tools/v2-source-certification/generated-outputs.json": "78ac1967390fc76c3c58adb571eaa8adf59826009f3238843f33429d591d1bed",
++    "tools/v2-source-certification/generated-outputs.json": "352c9c067124a911eb29129462f12f19aaca16b04ce58c6f9351d6edd392371a",
+     "tools/v2-source-certification/inputs.py": "dcd226cd496b4c07168b49f4c83db92c209d3214b79e989c3c93664dc83614af",
+     "tools/v2-source-certification/inputs/woocommerce-product-sync.json": "853eb09d0b0decacfc3215efac406e92bbe70360bcddb84ebd1d62e7fbdea602",
+-    "tools/v2-source-certification/package-boundary.json": "c1e5eb65ffb4a574482ee7214176e8e817a92028dbf6b02fef900b37f9396487",
+-    "tools/v2-source-certification/package.py": "6f57f657bc035d57eb9197624519a7548464a016be60deb476afa6e4fec39558",
++    "tools/v2-source-certification/package-boundary.json": "ba71477cfe8859f972f59128d9a09561a9d703ab13b53814c657965d5a1b5e86",
++    "tools/v2-source-certification/package.py": "381d41a5fa445bf6ce110e17f99f5dbc8dc5ac210b3c406b279f55cc4b0973b4",
+     "tools/v2-source-certification/requirements.txt": "82fb50cf408a3daf962646f5fe9b95bd254471bb12144c70e656d4ce3332b647",
+-    "tools/v2-source-certification/runtime-php-baseline.json": "08df4e075b5e86aa4fb7c6eefb7b121df0dbeaa397b0f7738a85ca244a5442df",
+-    "wordpress-theme/skyyrose-flagship-2/assets/css/critical/home.contract.json": "e636ec832079cb3cc790a373c31fbba3a8d7e4b221bfb984d766ec9e82cc1d67",
++    "tools/v2-source-certification/runtime-php-baseline.json": "d5255026e2ed03a2d80837cf481f9ce46f1408578304edc9d6c89d3bc729e6ff",
++    "wordpress-theme/skyyrose-flagship-2/assets/css/critical/home.contract.json": "b92a0b4c5d758bb425cf75814af5ec851b95ba8b906f5d52650f841a40459a0b",
++    "wordpress-theme/skyyrose-flagship-2/assets/css/home-art-direction.css": "5b05ce9d67a4ace2937aadfc028faf7cbb948c5127a73a1d9d755cff4c27ab49",
++    "wordpress-theme/skyyrose-flagship-2/assets/css/home-experience.css": "113b25b40e3828bb7b50039b99f217ca6de32deb6c929ab504517cac49d447de",
++    "wordpress-theme/skyyrose-flagship-2/assets/css/product-glb.css": "eff5d75c4edf324669c47dfb5d356742bbc43f2513d4b4d7f5d8af394e6c0b7f",
++    "wordpress-theme/skyyrose-flagship-2/assets/css/product-glb.min.css": "499e6070b00e3816276853f2a8e8e21d612253806eaee8436bb4ef9579667915",
+     "wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/inter-fallback-latin.woff2": "9561a48d0deadad8b3b17f0f9a2b384c14baedb0c6d3e53738a91c0641b2471e",
++    "wordpress-theme/skyyrose-flagship-2/assets/images/house-monument-20260928.webp": "05e9890ba85971569b7a422b892e3db3d51ae53ac6efb6bdd2d55f85c7859811",
++    "wordpress-theme/skyyrose-flagship-2/assets/images/house-oakland-atelier-20260928.webp": "8c9703e6b0d3218dece581fecececefc0b5d9462fd18780639ffb1aad84da0f9",
+     "wordpress-theme/skyyrose-flagship-2/assets/js/collection-scene-motion.js": "de6e0500f53b8b368c316fa0b43b72625eca35768b9a0acb69b694e3b5c5981a",
++    "wordpress-theme/skyyrose-flagship-2/assets/js/home-experience.js": "377edb0a6eb73bca86de7e0c4b28e5061218b4179f3858570bfacba64fa71506",
++    "wordpress-theme/skyyrose-flagship-2/assets/js/house-motion.js": "70f99397da5053dc29a592240f117c908a4b4fdcdeada555512a14f751724825",
+     "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js": "b9ea77ef3aacbf82d386c33311067e6ea4a3aac4190b32e001bdd11d063fb6ae",
+     "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js": "5250b9d5985899c458aae86b8636add0e98801b5dc330e0ab6f9e37977819481",
+     "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js": "d6b517ee599c974f9b3648b11621dc23d41de24adcac3c826b3985a9313f6b84",
+     "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/LICENSE": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+     "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+-    "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js": "54fb02117e03aa1c302d333ca3f6e1441ff4569b40cb4c4836bbbb7d6462799a",
+-    "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json": "c9a35409c5af2fac958bc429c798f6ff23fee5a4e03db2e41dd604a1b96d841c",
++    "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-init.mjs": "e066c8c5458fb1db9bb61c4d84b60fd0a7996e96ce354a11f7d4fb00bd247f1a",
++    "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-three.mjs": "029fa2357b57603c0286446098e1598f07f6fb27b6e6460e9020cd9396bd6842",
++    "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-viewer.mjs": "2cd7fe6561028de194a479c21351f77f44f3ff6d7856335548f13f9bbc96bc29",
++    "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js": "18122820d55ebd02535cfb0b0dee1abd06dd652001c210b5b65f83adee83c5c7",
++    "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json": "cf84c4ff7e864286f68e1b07cf5ad2da9dafd097b8f507acf138494b0b1959b3",
+     "wordpress-theme/skyyrose-flagship-2/data/approved-scroll-world-scenes.json": "20b1532710f93c98b8c8161853d44caadd3c6c4eecbcdc81ce3bc5c6d5c4fd42",
+     "wordpress-theme/skyyrose-flagship-2/data/brand-asset-transparency.json": "3c63506d22cc6d1fecde98ef72390cc10610d50d2c172c4e72b9816bd80ded0c",
+     "wordpress-theme/skyyrose-flagship-2/data/collection-hero-motion.json": "c6d99877bff4f1d97303cd56cf96f91cd3492e2ca6e5c220ecba375e4b9437cf",
+@@ -62,16 +77,20 @@
+     "wordpress-theme/skyyrose-flagship-2/data/scene-hotspots.json": "074f738fedc5e6fbad19d25af423cb7e4a87c69492bb4be80903717fbb846f2b",
+     "wordpress-theme/skyyrose-flagship-2/data/scene-narrative-blueprints.json": "1f4bfa4d778e1383a2d04d3a9406b3b251de9e06acfd341a5885bc95b0a0f240",
+     "wordpress-theme/skyyrose-flagship-2/data/scene-production-contract.json": "ef898dfd28ffc7bb9dd455a0366b1381ad170a2a40bbd3819943ccaf8179707e",
+-    "wordpress-theme/skyyrose-flagship-2/npm-shrinkwrap.json": "d100a336592834b98b487de2681504d670e9f001497b198fec7b10c8a0fd5733",
+-    "wordpress-theme/skyyrose-flagship-2/package.json": "5905886312ef915b6283df872ea946c8b73c94e75f6e4e2b81f4477784d60331",
++    "wordpress-theme/skyyrose-flagship-2/functions.php": "cab7d736d6a35546afb70cadaa661c00153843adf4e6c72a1c09b7c8efd9d788",
++    "wordpress-theme/skyyrose-flagship-2/inc/product-glb-links.php": "5e6896e6f07f51b1c072826b7b24068a398a16ca5ce4900d2da191258c9f5746",
++    "wordpress-theme/skyyrose-flagship-2/inc/product-glb.php": "b99338b2a87155b59d39da7dee23ff1e94d122a00a53ee8d49bfc38856ac7a67",
++    "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
++    "wordpress-theme/skyyrose-flagship-2/npm-shrinkwrap.json": "4f55e1943069d260cf191330777a677d68808a145dabfd1c928d1992e78cdb87",
++    "wordpress-theme/skyyrose-flagship-2/package.json": "1f489177682336cb338307db2379a4926e3c6a9dfc839f67754745b8b4ae6b44",
+     "wordpress-theme/skyyrose-flagship-2/scripts/build-assets.mjs": "823433d5218f0a21aeecf06f49e233946d80f4e1655f19ba282d6452c0b15533",
+-    "wordpress-theme/skyyrose-flagship-2/scripts/build-critical-css.mjs": "76b0c2b77f124847212e9a26f0973ec1ab9e1604609a258aa61e9d64859f220c",
++    "wordpress-theme/skyyrose-flagship-2/scripts/build-critical-css.mjs": "8b4f9335530107292d37d7162a94397ad19a2800d8262e5a9e78bfabe51d58b7",
+     "wordpress-theme/skyyrose-flagship-2/scripts/build-pot.py": "7c9a40faad581e718676d4ea00455bf94a373662a25594aa2d029ae04dd88d51",
+-    "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py": "b16bfd6a65f58f61947b3afbaadd67544c2297c467f480f4da1d2c34d50ce5f4",
++    "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py": "c0563e46dfddef92706e4aadcd25a41d1da09ef287d3c3a81353b400a0996537",
+     "wordpress-theme/skyyrose-flagship-2/scripts/verify-marketplace.sh": "8c50abb06cb744d895efef67323be14010271f5951050b3de58e64a506e86bc6",
+-    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "351a6bbe80face1735c5b73ae9ed472feed11fa19cf67dfb3954a757ca2a4c48",
+-    "skyyrose/core/product.py": "0934c000ec3a94b12847c5ebb32eca018769f867d5cb9a2e7588f139559e98bb",
+-    "skyyrose/core/product_registry.py": "049e493b5a3056927aa2d171a15f82c6c67d5dca57e74d3073649a79c584f529"
++    "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/jersey-gallery.php": "806265cbaffa0818e91dd6832122e7eb3e5a89f928a381e85f6bedbfc54c601e",
++    "wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-glb-runtime.php": "682d3f729ef4dcdaa7a0394ea0e0ec4ad2e5c899f49378816cba95c1226d6f50",
++    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757"
+   },
+   "node": "22.23.2",
+   "npm": "10.9.8",
+@@ -80,6 +99,7 @@
+   "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+   "python": "3.12.12",
+   "python_requirements": "tools/v2-source-certification/requirements.txt",
++  "reviewed_source_revision": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+   "schema": "skyyrose.v2.build-inputs.v1",
+   "system_tools": [
+     "PHP CLI >= 8.3 (CI distro package)",
+diff --git a/tools/v2-source-certification/package-boundary.json b/tools/v2-source-certification/package-boundary.json
+--- a/tools/v2-source-certification/package-boundary.json
++++ b/tools/v2-source-certification/package-boundary.json
+@@ -315,6 +315,26 @@
+       "reason": "Runtime theme file or preserved asset fallback",
+       "release": true
+     },
++    "assets/css/home-art-direction.css": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Homepage type, hero layout and reduced-motion atmosphere rules; enqueued by functions.php on front page and used by critical home contract.",
++      "release": true
++    },
++    "assets/css/home-art-direction.min.css": {
++      "category": "GENERATED OUTPUT",
++      "reason": "Deterministic minified runtime derivative of assets/css/home-art-direction.css",
++      "release": true
++    },
++    "assets/css/home-experience.css": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Still-visible collection films and manual Jersey rail; enqueued by functions.php on front page.",
++      "release": true
++    },
++    "assets/css/home-experience.min.css": {
++      "category": "GENERATED OUTPUT",
++      "reason": "Deterministic minified runtime derivative of assets/css/home-experience.css",
++      "release": true
++    },
+     "assets/css/home-page.css": {
+       "category": "RUNTIME SOURCE",
+       "reason": "Phase3B reviewed page implementation",
+@@ -375,6 +395,16 @@
+       "reason": "Runtime theme file or preserved asset fallback",
+       "release": true
+     },
++    "assets/css/product-glb.css": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
++      "release": true
++    },
++    "assets/css/product-glb.min.css": {
++      "category": "GENERATED OUTPUT",
++      "reason": "Deterministic minified runtime derivative of assets/css/product-glb.css; exact owning CleanCSS parity reviewed.",
++      "release": true
++    },
+     "assets/css/product-page.css": {
+       "category": "RUNTIME SOURCE",
+       "reason": "Phase3B reviewed page implementation",
+@@ -1020,6 +1050,16 @@
+       "reason": "Runtime theme file or preserved asset fallback",
+       "release": true
+     },
++    "assets/images/house-monument-20260928.webp": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Existing source bytes used by homepage hero and preload; classification conveys package inclusion only.",
++      "release": true
++    },
++    "assets/images/house-oakland-atelier-20260928.webp": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Existing house source bytes used by retained content-page art direction; package inclusion only.",
++      "release": true
++    },
+     "assets/images/skyy-runtime-poster.webp": {
+       "category": "RUNTIME MEDIA",
+       "reason": "Runtime theme file or preserved asset fallback",
+@@ -1055,6 +1095,26 @@
+       "reason": "Standalone consent UI and durable analytics transport",
+       "release": true
+     },
++    "assets/js/home-experience.js": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Visibility/preference-gated local films and manual Jersey navigation; enqueued by front-page assets.",
++      "release": true
++    },
++    "assets/js/home-experience.min.js": {
++      "category": "GENERATED OUTPUT",
++      "reason": "Deterministic minified runtime derivative of assets/js/home-experience.js",
++      "release": true
++    },
++    "assets/js/house-motion.js": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Homepage atmosphere pause/preference/visibility controls; enqueued by front-page assets.",
++      "release": true
++    },
++    "assets/js/house-motion.min.js": {
++      "category": "GENERATED OUTPUT",
++      "reason": "Deterministic minified runtime derivative of assets/js/house-motion.js",
++      "release": true
++    },
+     "assets/js/house-of-roses-motion.js": {
+       "category": "RUNTIME SOURCE",
+       "reason": "Runtime theme file or preserved asset fallback",
+@@ -1153,6 +1213,21 @@
+     "assets/js/premium-commerce.min.js": {
+       "category": "GENERATED RUNTIME OUTPUT",
+       "reason": "Runtime theme file or preserved asset fallback",
++      "release": true
++    },
++    "assets/js/product-glb-init.mjs": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
++      "release": true
++    },
++    "assets/js/product-glb-three.mjs": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
++      "release": true
++    },
++    "assets/js/product-glb-viewer.mjs": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
+       "release": true
+     },
+     "assets/js/quick-view-commerce.js": {
+@@ -2805,6 +2880,16 @@
+       "reason": "Runtime theme file or preserved asset fallback",
+       "release": true
+     },
++    "inc/product-glb-links.php": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
++      "release": true
++    },
++    "inc/product-glb.php": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
++      "release": true
++    },
+     "inc/quick-view-commerce.php": {
+       "category": "RUNTIME SOURCE",
+       "reason": "Runtime theme file or preserved asset fallback",
+@@ -2828,6 +2913,11 @@
+     "inc/starter-content.php": {
+       "category": "RUNTIME SOURCE",
+       "reason": "Runtime theme file or preserved asset fallback",
++      "release": true
++    },
++    "inc/woocommerce-compat.php": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Reviewed optional native-identity GLB runtime or transaction compatibility source; empty accepted assets stay dormant.",
+       "release": true
+     },
+     "index.php": {
+@@ -3010,6 +3100,11 @@
+       "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+       "release": false
+     },
++    "scripts/test-collection-hero-motion.py": {
++      "category": "AUTHORING / TEST",
++      "reason": "Offline motion-binding regression; excluded from runtime package.",
++      "release": false
++    },
+     "scripts/test-critical-rendering.php": {
+       "category": "BUILD TOOLING",
+       "reason": "Build/test/package entry point; not PHP runtime",
+@@ -3200,6 +3295,11 @@
+       "reason": "Runtime theme file or preserved asset fallback",
+       "release": true
+     },
++    "template-parts/commerce/jersey-gallery.php": {
++      "category": "RUNTIME SOURCE",
++      "reason": "Registry-derived series cast, approved-card resolver with mismatch rejection, native product permalinks; called by home journal and series renderer.",
++      "release": true
++    },
+     "template-parts/commerce/product-card.php": {
+       "category": "RUNTIME SOURCE",
+       "reason": "Runtime theme file or preserved asset fallback",
+@@ -3353,6 +3453,31 @@
+     "tests/analytics/test_sync_analytics.py": {
+       "category": "AUTHORING ONLY",
+       "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
++      "release": false
++    },
++    "tests/commerce/bootstrap.php": {
++      "category": "AUTHORING / TEST",
++      "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
++      "release": false
++    },
++    "tests/commerce/preorder.php": {
++      "category": "AUTHORING / TEST",
++      "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
++      "release": false
++    },
++    "tests/commerce/run-local-matrix.sh": {
++      "category": "AUTHORING / TEST",
++      "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
++      "release": false
++    },
++    "tests/commerce/verify-bootstrap.php": {
++      "category": "AUTHORING / TEST",
++      "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
++      "release": false
++    },
++    "tests/commerce/verify-glb-runtime.php": {
++      "category": "AUTHORING / TEST",
++      "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
+       "release": false
+     },
+     "theme.json": {
+diff --git a/tools/v2-source-certification/generated-outputs.json b/tools/v2-source-certification/generated-outputs.json
+--- a/tools/v2-source-certification/generated-outputs.json
++++ b/tools/v2-source-certification/generated-outputs.json
+@@ -971,7 +971,7 @@
+     "generator": "scripts/build-product-presentation-registry.py",
+     "normalization": "Sorted JSON keys, indent 2, trailing LF",
+     "released": true,
+-    "source": "tools/v2-source-certification/inputs/product-sot.json + canonical CSV garment_type_lock",
++    "source": "tools/v2-source-certification/inputs/product-sot.json (historical media only) + wordpress-theme/skyyrose-flagship/data/logo-registry.json via get_product",
+     "tool": "Python 3.12.12 standard library",
+     "tracked": true
+   },
+@@ -1247,5 +1247,45 @@
+     "source": "assets/css/lookbook.css",
+     "tool": "clean-css 5.3.3",
+     "tracked": true
++  },
++  "assets/css/home-art-direction.min.css": {
++    "generator": "scripts/build-assets.mjs",
++    "normalization": "No trailing newline; pinned minifier settings",
++    "released": true,
++    "source": "assets/css/home-art-direction.css",
++    "tool": "clean-css 5.3.3",
++    "tracked": true
++  },
++  "assets/css/home-experience.min.css": {
++    "generator": "scripts/build-assets.mjs",
++    "normalization": "No trailing newline; pinned minifier settings",
++    "released": true,
++    "source": "assets/css/home-experience.css",
++    "tool": "clean-css 5.3.3",
++    "tracked": true
++  },
++  "assets/js/home-experience.min.js": {
++    "generator": "scripts/build-assets.mjs",
++    "normalization": "No trailing newline; pinned minifier settings",
++    "released": true,
++    "source": "assets/js/home-experience.js",
++    "tool": "terser 5.36.0",
++    "tracked": true
++  },
++  "assets/js/house-motion.min.js": {
++    "generator": "scripts/build-assets.mjs",
++    "normalization": "No trailing newline; pinned minifier settings",
++    "released": true,
++    "source": "assets/js/house-motion.js",
++    "tool": "terser 5.36.0",
++    "tracked": true
++  },
++  "assets/css/product-glb.min.css": {
++    "generator": "scripts/build-assets.mjs",
++    "normalization": "No trailing newline; pinned minifier settings",
++    "released": true,
++    "source": "assets/css/product-glb.css",
++    "tool": "clean-css 5.3.3",
++    "tracked": true
+   }
+ }
+diff --git a/tools/v2-source-certification/runtime-php-baseline.json b/tools/v2-source-certification/runtime-php-baseline.json
+--- a/tools/v2-source-certification/runtime-php-baseline.json
++++ b/tools/v2-source-certification/runtime-php-baseline.json
+@@ -1,12 +1,12 @@
+ {
+   "404.php": "64351a69e99da8f513ed841e61fac6a811de0408b8d6fa71cbba247b58aac910",
+   "archive.php": "0bd7bb865569ad446863504a349be599023013a8f8963ef4d83e7a4b210eadb7",
+-  "footer.php": "0c5d72a8fb11b72f428f9d475e9cbf204b59cac249386490c16ae7a14f37e297",
+-  "front-page.php": "76b502c07294e5044de4e139ac0cdc8a76573a0433cebdd8b61e25103afe5dcd",
+-  "functions.php": "40b14fd7cbeca559b56b144593f15cf24576e250ffd6d65ef409613f1b2d0b67",
++  "footer.php": "3a21b807edb38de607a4e7cfbd7c272313e1bafff3e6839350aebc3cac4e04a4",
++  "front-page.php": "45d9a5289ec39a25e9174d20c7fb99b39d44c9477229ab9d2b1ae2413635c8d0",
++  "functions.php": "cab7d736d6a35546afb70cadaa661c00153843adf4e6c72a1c09b7c8efd9d788",
+   "header.php": "63b7431b0bbe2ceec6f28e4c166bd5912d9f783263dbb7c96a3a2bbe19df5821",
+   "home.php": "79aff184c16b280913542d30a3dab0bc01711a09825939d72bf00fbd938b8c5a",
+-  "inc/approved-card-fronts.php": "b8152869e4b0c4b000441b245bdb42b53abf3a8866ff83743d7dc23f727cf2fa",
++  "inc/approved-card-fronts.php": "3ab36c2b2f0169a4b71d1f66ef38357474f278f5cb00dcae5e9ff230ad84ca4a",
+   "inc/archive-style-bundle.php": "dca48094cf98e19ae099afa4695f078fa7814706a17f6cbeb54c057068d3d16a",
+   "inc/collection-presentation.php": "e04e8126763cdeac4ea665a1afe3ad379d6c64ef25dd86b67e048d4c0ac6ba6f",
+   "inc/critical-rendering.php": "2504097b24dda12f84cbc9e93bf5da1f090e1a319ba710f7ef5e29f666e336e7",
+@@ -16,19 +16,22 @@
+   "inc/hero-commerce-scenes.php": "83be0a11c1935b73114ef6cbb41038a90a2a3501ebc29fc7d81087d255996cc6",
+   "inc/launch-readiness.php": "5ce5a813ad166303b4b26d9f7dd54c7324904d3e5cbc94b59f220647181215a4",
+   "inc/marketplace.php": "4a9f5f917fb09d4dee0be3212058a5a2be290f8de34cff360f89c328c2cc8ff3",
+-  "inc/pdp-media-delivery.php": "359ec0d85b88371aaca41dd8d253cce184a8f2dc111c9fd29b0744a1317584a8",
+-  "inc/performance.php": "13e596bde76031a6ae5e16e16c95d94c4056b69d152a3b33b3c44bbf9da40797",
++  "inc/pdp-media-delivery.php": "c4abae8ef6ee3994c5b2f18a1b1ae6b419dc573cfa5a840b5ba00f7424bedc7c",
++  "inc/performance.php": "e32e4ffd5f68a7efbe00be7a2f928ee9b92ae54f2bc8b8d029b74b396694c996",
+   "inc/presentation-registry.php": "d6da13f00c9c81ba3fc228c5273ff3d671038527fcf8b856e5b878ab763fe61c",
++  "inc/product-glb-links.php": "5e6896e6f07f51b1c072826b7b24068a398a16ca5ce4900d2da191258c9f5746",
++  "inc/product-glb.php": "b99338b2a87155b59d39da7dee23ff1e94d122a00a53ee8d49bfc38856ac7a67",
+   "inc/quick-view-commerce.php": "f4c7357c74935b3b266a923f7e040743e6b2629b737679fe5b4873469725f89c",
+   "inc/security.php": "bd9f8df3fde21b60b23a3892c5f672191086fa55a78ace52c551ce41cbaf03f6",
+   "inc/seo-indexing.php": "fe0fc6eeb1e38e2f8b93ab561536921eb041f0d5d40b1186d1b4cc8bfb81b05b",
+   "inc/shop-archive.php": "bf3e5f05a70be2adbdba23b2020311c1a49371dabeb2c1108a5392b5b039b5d4",
+   "inc/starter-content.php": "df6cd629d08e4aa9d328d6c05efb66c28904f2df2aa70e8d2a1db93ba8e9081b",
++  "inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+   "index.php": "95ad909ab629e5ac87a40d141c5bfada7aa6b101a6d246e58e8f09c582950975",
+   "page-lookbook.php": "3e7834ec1568e2d4c3ef336ab7eed1124f91e74548651b59499e02e7897546e3",
+   "page-wishlist.php": "35546cf00193c5435aac6dd217dd5b8e43bc79f42c4b81edef419858ae702a26",
+   "page.php": "d24a57c72688d8cd140c80956bd451add5d9fb54fff79bab31a994507e9f8500",
+-  "scripts/test-performance.php": "11784d036c9a06f23162e1195880501644fbd3db6778391130e388ef22e6fef4",
++  "scripts/test-performance.php": "c7d8856b60248abbbf266e409a82f347dc04106bff3bad1511213faeb901727c",
+   "scripts/test-seo-indexing.php": "bcf214f2e8d061f32d82bb5d563dcc25c7a33007db222f974eb4fb7e0adc4187",
+   "search.php": "83654180446c10167bfd04ef17dc80496d73eefa5d772cdf375362ce45affb20",
+   "single.php": "d8e866dbd1d8c5781a4bcf49351c900e63898408b6c70fe857b9906d8078951e",
+@@ -45,17 +48,18 @@
+   "template-parts/collections/scroll-world.php": "28b89d1fbcd7a9b3a3b6172301f568cde2d694329455bf6f99d8d9dcc50949db",
+   "template-parts/collections/story.php": "a81db476080e7f16a2e4160c6fd0d6c78f63cc0125a1c3649a1e7ef3f51bea14",
+   "template-parts/collections/world.php": "c9836d1c9725bd8adc2d8337728b6fddfb4b58a7bd29a8cb5c6b9fa3f0bd7962",
+-  "template-parts/commerce/hero-composed-scene.php": "a0af556b79dd3507a921aaf2fc6d6a7888500e40da5bf989e5d8a357cb41fd02",
+-  "template-parts/commerce/product-card.php": "3b2100f09f5120158d4a01f18fda4a9c971b33d919865696c9486bb64dbca4b4",
+-  "template-parts/commerce/product-hero.php": "b20abda3349f1b622a459a2f4f4f8cad57a966752a154f2ddffaeec8a164b520",
++  "template-parts/commerce/hero-composed-scene.php": "6b27d6adbc67ad4b9e41ada7ee6ee3b471e0fff6489e1b07709dbcef5e54602e",
++  "template-parts/commerce/jersey-gallery.php": "806265cbaffa0818e91dd6832122e7eb3e5a89f928a381e85f6bedbfc54c601e",
++  "template-parts/commerce/product-card.php": "25f7057b0ce38ea1e5267ae1b2cba63271e0d9116c8d939502a0e781898c9422",
++  "template-parts/commerce/product-hero.php": "365cf2c07db3316f32c6b454f34a5a9a490d9abd68b7a188801dbe5cf5f29928",
+   "template-parts/commerce/quick-view.php": "7374453ebe6177ff277b77f82d14d5a9eb7c3e36c74d4cf002cae227184408fa",
+   "template-parts/commerce/search-dialog.php": "2c8f7dc07ab0865c8b8b8eb7eeaa46f4a9ccefc34fc1704f191f1d5df3f63a00",
+   "template-parts/commerce/size-guide-dialog.php": "22d0ed54a8e042663ecc2e12958ab4a377d1d523fdcb498cbeb93d8311fd65aa",
+   "template-parts/commerce/town-line.php": "95949afc9efed8dfdbd2066c98cbabbf063be01e5ff1673a6de0a52492794fb4",
+-  "template-parts/home/editorial-collection.php": "72f00945ff87bb755c3f7f6883ad7c1f6e6f306795c52a36a9b6737f5a537b12",
+-  "template-parts/home/editorial-film.php": "891c0aa25ed392bbb2162344792f6233db9945e7c1c86c1069ada9aa9687ead3",
+-  "template-parts/home/editorial-hero.php": "4655bcb9573b2507a063fcda4ba0e160d81d3284e70e1d31bc9a30bc172b7f3d",
+-  "template-parts/home/editorial-journal.php": "3d8507eb2483a714c338fc37c053bdcf960a09e3c17d645bbd2f7d6c7c21eeff",
++  "template-parts/home/editorial-collection.php": "248f2a752611cf463b8a0e2cc52d23ce8cd587a9313904475dcd2e51fdee11c2",
++  "template-parts/home/editorial-film.php": "926c6637087773f1090466b4e95c742e0cfa113c93b90446558f7fec7d5e0fda",
++  "template-parts/home/editorial-hero.php": "f15b876e6a34ef6da5a91c5006057175eebefb576ce3371980db4874bf7ed7b9",
++  "template-parts/home/editorial-journal.php": "179725797ee2e2243738415da03899754ea7226a8f937bc6d866258557823ace",
+   "template-parts/home/editorial-philosophy.php": "46fc7509eda5ec03a77338802ffa405ab369980f08f07859164fabd570c97f73",
+   "template-parts/home/kids-capsule-reveal.php": "3d4bbdf3ec3d742e1dbcf5a379bc30712eec99181d89c1b96ac945403d57044d",
+   "template-parts/home/living-archive-worlds.php": "8df1b5628510b29bd563d9a2122695988a13d4787e8ab9a4f11f6942dc0c7bde",
+@@ -75,5 +79,5 @@
+   "woocommerce/content-product.php": "f688cb49bd64059be36508553f317de80da25e85be3186e6f6349144a497a34b",
+   "woocommerce/notices/error.php": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab",
+   "woocommerce/single-product.php": "9beae21a0a22d417490a0d225de26a2fd3156baa11acd0e0c8a9bd0b3fcfc6b6",
+-  "woocommerce/single-product/product-image.php": "7185622650ec585926b191d110f7b02050c588d901cbb4e97989a757127d0405"
++  "woocommerce/single-product/product-image.php": "9216992035cd204891b7cf68afaac48f2042a7f08214bbecf9bcc0c402baabea"
+ }
+diff --git a/tools/v2-source-certification/test_reviewed_source.py b/tools/v2-source-certification/test_reviewed_source.py
+new file mode 100644
+--- /dev/null
++++ b/tools/v2-source-certification/test_reviewed_source.py
+@@ -0,0 +1,127 @@
++"""Immutable source bytes + owned overlay, never a blanket hash reblessing."""
++
++import hashlib
++import json
++import subprocess
++import unittest
++from pathlib import Path
++
++HERE = Path(__file__).resolve().parent
++ROOT = HERE.parents[1]
++SOURCE = "299f694702ac2dcc61a0f30aa34e4b3ef12f9118"
++THEME = "wordpress-theme/skyyrose-flagship-2/"
++OVERLAY = {
++    "tools/v2-source-certification/inputs.py",
++    "tools/v2-source-certification/package-boundary.json",
++    "tools/v2-source-certification/generated-outputs.json",
++    "tools/v2-source-certification/runtime-php-baseline.json",
++}
++
++
++def source_bytes(relative):
++    return subprocess.check_output(["git", "show", SOURCE + ":" + relative], cwd=ROOT)
++
++
++def verify_pins(contract, reader):
++    for relative, expected in contract["input_hashes"].items():
++        if hashlib.sha256(reader(relative)).hexdigest() != expected:
++            raise ValueError("Unreviewed source drift: " + relative)
++
++
++class ReviewedSourceTests(unittest.TestCase):
++    def setUp(self):
++        self.contract = json.loads((HERE / "build-inputs.json").read_text())
++
++    def combined_bytes(self, relative):
++        return (ROOT / relative).read_bytes() if relative in OVERLAY else source_bytes(relative)
++
++    def test_exact_reviewed_source_and_guarded_overlay(self):
++        self.assertEqual(self.contract["reviewed_source_revision"], SOURCE)
++        verify_pins(self.contract, self.combined_bytes)
++
++    def test_changed_hash_is_not_blessed(self):
++        for target in (
++            THEME + "assets/js/home-experience.js",
++            THEME + "assets/js/product-glb-init.mjs",
++            THEME + "inc/product-glb.php",
++            THEME + "scripts/build-product-presentation-registry.py",
++        ):
++            with (
++                self.subTest(target=target),
++                self.assertRaisesRegex(ValueError, "Unreviewed source drift"),
++            ):
++                verify_pins(
++                    self.contract,
++                    lambda p, target=target: self.combined_bytes(p)
++                    + (b"changed" if p == target else b""),
++                )
++
++    def test_package_census_and_generated_provenance(self):
++        files = subprocess.check_output(
++            ["git", "ls-tree", "-r", "--name-only", SOURCE, "--", THEME], cwd=ROOT, text=True
++        ).splitlines()
++        boundary = json.loads((HERE / "package-boundary.json").read_text())["files"]
++        self.assertEqual({p[len(THEME) :] for p in files}, set(boundary))
++        self.assertIs(boundary["scripts/test-collection-hero-motion.py"]["release"], False)
++        for relative in (
++            "assets/js/product-glb-init.mjs",
++            "assets/js/product-glb-viewer.mjs",
++            "assets/js/product-glb-three.mjs",
++            "assets/css/product-glb.css",
++            "assets/css/product-glb.min.css",
++            "inc/product-glb.php",
++            "inc/product-glb-links.php",
++            "inc/woocommerce-compat.php",
++        ):
++            self.assertIs(boundary[relative]["release"], True, relative)
++        for relative in (
++            "tests/commerce/bootstrap.php",
++            "tests/commerce/preorder.php",
++            "tests/commerce/run-local-matrix.sh",
++            "tests/commerce/verify-bootstrap.php",
++            "tests/commerce/verify-glb-runtime.php",
++        ):
++            self.assertIs(boundary[relative]["release"], False, relative)
++        generated = json.loads((HERE / "generated-outputs.json").read_text())
++        for stem in (
++            "css/home-art-direction",
++            "css/home-experience",
++            "js/home-experience",
++            "js/house-motion",
++            "css/product-glb",
++        ):
++            extension = stem.split("/")[0]
++            self.assertEqual(
++                generated[f"assets/{stem}.min.{extension}"]["source"], f"assets/{stem}.{extension}"
++            )
++
++    def test_reviewed_php_bytes(self):
++        baseline = json.loads((HERE / "runtime-php-baseline.json").read_text())
++        for relative, digest in baseline.items():
++            self.assertEqual(
++                hashlib.sha256(source_bytes(THEME + relative)).hexdigest(), digest, relative
++            )
++
++    def test_product_blocks_and_historical_approvals_retained(self):
++        registry = json.loads(
++            source_bytes("wordpress-theme/skyyrose-flagship/data/logo-registry.json")
++        )
++        fronts = json.loads(source_bytes(THEME + "data/approved-card-fronts.json"))
++        for sku in ("br-001", "br-004", "br-007"):
++            self.assertEqual(
++                fronts["products"][sku]["current_fidelity_status"], "BLOCKED_PRODUCT_MISMATCH"
++            )
++        for sku, binding in fronts["products"].items():
++            self.assertEqual(binding, registry["products"][sku]["images"]["card_front"])
++        self.assertEqual(len(fronts["products"]), 33)
++        self.assertTrue(
++            all(
++                "accepted_glb_runtime" not in product.get("asset_library", {})
++                for product in registry["products"].values()
++            ),
++            "A newly accepted asset requires a separate reviewed approval contract",
++        )
++
++
++if __name__ == "__main__":
++    unittest.main()

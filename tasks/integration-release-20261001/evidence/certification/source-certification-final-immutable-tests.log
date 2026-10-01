@@ -1,0 +1,10 @@
+test_changed_hash_is_not_blessed (test_reviewed_source.ReviewedSourceTests.test_changed_hash_is_not_blessed) ... ok
+test_exact_reviewed_source_and_guarded_overlay (test_reviewed_source.ReviewedSourceTests.test_exact_reviewed_source_and_guarded_overlay) ... ok
+test_package_census_and_generated_provenance (test_reviewed_source.ReviewedSourceTests.test_package_census_and_generated_provenance) ... ok
+test_product_blocks_and_historical_approvals_retained (test_reviewed_source.ReviewedSourceTests.test_product_blocks_and_historical_approvals_retained) ... ok
+test_reviewed_php_bytes (test_reviewed_source.ReviewedSourceTests.test_reviewed_php_bytes) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 7.443s
+
+OK

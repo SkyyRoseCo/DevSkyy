@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "source_revision": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+  "overlay_report": "source-certification-final-target.json",
+  "export": "/var/folders/bz/k0nc044d1fz2rs3kz_gyv99m0000gn/T/stream4-cert-299f694-rnigj6zu",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "network": "DENIED by socket/HTTP audit before source imports",
+  "command": "Actual frozen builder via runpy in exact export; output written only inside export",
+  "exit_code": 0,
+  "product_count": 33,
+  "registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+  "glb_entries": 0,
+  "publication_authorized": false,
+  "output_sha256": "8e05fb50b457663bf98126823eac2cea513cdef908b71e40804fcb2fcd0502ee",
+  "scope": "Projection behavior only; no full pinned-toolchain build or asset/production acceptance."
+}

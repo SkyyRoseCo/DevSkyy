@@ -267,5 +267,20 @@
       ],
       "real_payments": false
     }
+  },
+  "certification": {
+    "functional_source_revision": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+    "overlay_sha256": "9a37cc1770f66f66ae747e9e4f9e9a8506dbdf204112d2715499a96b0a789807",
+    "metadata_commit": "50255ef5ea47e2c38cd5777083544fbec54b08c2",
+    "generated_commit": "5788e2e33d0db05de6bc4f97cd7adc8083bc9bce",
+    "input_pins": 77,
+    "theme_census": 705,
+    "release_paths": 599,
+    "owner_guard_tests": 22,
+    "owner_immutable_source_tests": 5,
+    "integration_guard_tests": 27,
+    "pinned_build": "PASS",
+    "projection_sha256": "8e05fb50b457663bf98126823eac2cea513cdef908b71e40804fcb2fcd0502ee",
+    "clean_package": "pending"
   }
 }
