@@ -254,22 +254,81 @@ function skyyrose_see_parse_api_response( $response ): ?array {
  *--------------------------------------------------------------*/
 
 /**
- * Relay analytics events to the FastAPI backend for ML processing.
+ * Resolve a private, explicit site/environment analytics binding.
+ * Nothing from this binding is localized into browser scripts.
  *
- * @param array $events Sanitized event array.
+ * @return array|null Binding, or null while configuration is incomplete.
  */
-function skyyrose_see_relay_analytics( array $events ): void {
-	if ( ! skyyrose_see_fastapi_is_available() ) {
-		return;
+function skyyrose_see_analytics_binding(): ?array {
+	$binding = array();
+	foreach ( array( 'site_id', 'environment', 'secret' ) as $key ) {
+		$name            = 'SKYYROSE_ANALYTICS_' . strtoupper( $key );
+		$binding[ $key ] = defined( $name ) ? constant( $name ) : getenv( $name );
 	}
-	skyyrose_see_fastapi_post(
-		'/api/v1/analytics/ingest',
+	if ( ! is_string( $binding['site_id'] ) || ! preg_match( '/^[A-Za-z0-9_-]{1,80}$/', $binding['site_id'] )
+		|| ! in_array( $binding['environment'], array( 'staging', 'production', 'test' ), true )
+		|| ! is_string( $binding['secret'] ) || strlen( $binding['secret'] ) < 32 ) {
+		return null;
+	}
+	return $binding;
+}
+
+/**
+ * Sign exact JSON bytes and await a durable backend acknowledgement.
+ *
+ * @param array $events Validated versioned events.
+ * @return array|null Validated durable acknowledgement, or null on failure.
+ */
+function skyyrose_see_relay_analytics( array $events ): ?array {
+	$binding = skyyrose_see_analytics_binding();
+	$url     = skyyrose_see_get_fastapi_url() . '/api/v1/analytics/ingest';
+	if ( null === $binding || ! $events || ! skyyrose_see_is_safe_url( $url ) ) {
+		return null;
+	}
+	// HMAC credentials must never traverse HTTP outside a local test fixture.
+	if ( 'https' !== wp_parse_url( $url, PHP_URL_SCHEME ) && 'local' !== wp_get_environment_type() ) {
+		return null;
+	}
+	$body = wp_json_encode(
 		array(
-			'source' => 'skyyrose-theme',
-			'events' => $events,
-		),
-		true
-	); // Non-blocking.
+			'schema_version' => 1,
+			'site_id'        => $binding['site_id'],
+			'environment'    => $binding['environment'],
+			'consent'        => 'accepted',
+			'sent_at'        => gmdate( 'Y-m-d\TH:i:s\Z' ),
+			'events'         => $events,
+		)
+	);
+	if ( ! is_string( $body ) || strlen( $body ) > 65536 ) {
+		return null; }
+	$timestamp = (string) time();
+	$response  = wp_remote_post(
+		$url,
+		array(
+			'timeout'     => 10,
+			'blocking'    => true,
+			'redirection' => 0,
+			'sslverify'   => true,
+			'headers'     => array(
+				'Content-Type'                   => 'application/json',
+				'X-SkyyRose-Analytics-Timestamp' => $timestamp,
+				'X-SkyyRose-Analytics-Signature' => hash_hmac( 'sha256', $timestamp . '.' . $body, $binding['secret'] ),
+			),
+			'body'        => $body,
+		)
+	);
+	if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+		return null;
+	}
+	$ack = skyyrose_see_parse_api_response( $response );
+	$ids = array_column( $events, 'event_id' );
+	if ( ! is_array( $ack ) || 'accepted' !== ( $ack['status'] ?? '' )
+		|| ( $ack['site_id'] ?? '' ) !== $binding['site_id'] || ( $ack['environment'] ?? '' ) !== $binding['environment']
+		|| ( $ack['event_ids'] ?? null ) !== $ids || ! is_int( $ack['accepted'] ?? null ) || ! is_int( $ack['duplicates'] ?? null )
+		|| $ack['accepted'] < 0 || $ack['duplicates'] < 0 || count( $events ) !== $ack['accepted'] + $ack['duplicates'] ) {
+		return null;
+	}
+	return $ack;
 }
 
 /**

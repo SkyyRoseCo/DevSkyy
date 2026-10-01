@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 add_action( 'rest_api_init', 'skyyrose_see_register_rest_routes' );
 
 /**
- * Shared ingest key for the public analytics route (launch spec C5).
+ * Public anti-spam token retained for compatibility with cached theme pages.
  *
  * Not a secret in the auth sense — it ships in page HTML via an inline
  * script — but it removes the bare __return_true from a write route
@@ -38,13 +38,16 @@ function skyyrose_see_analytics_key(): string {
 }
 
 /**
- * Permission check for POST /analytics/events — shared-key match.
+ * Require explicit consent in both the request and first-party consent cookie.
  *
  * @since 1.10.2
  * @param WP_REST_Request $request Request object.
  * @return true|WP_Error
  */
 function skyyrose_see_rest_events_permission( WP_REST_Request $request ) {
+	if ( 'accepted' !== sanitize_text_field( wp_unslash( $_COOKIE['skyyrose_cookie_consent'] ?? '' ) ) || 'accepted' !== $request->get_param( 'consent' ) ) {
+		return new WP_Error( 'analytics_consent_required', esc_html__( 'Analytics consent is required.', 'skyyrose' ), array( 'status' => 403 ) );
+	}
 	$provided = (string) $request->get_param( 'k' );
 	if ( '' !== $provided && hash_equals( skyyrose_see_analytics_key(), $provided ) ) {
 		return true;
@@ -73,22 +76,25 @@ function skyyrose_see_register_rest_routes(): void {
 				'callback'            => 'skyyrose_see_rest_receive_events',
 				'permission_callback' => 'skyyrose_see_rest_events_permission',
 				'args'                => array(
-					'events'      => array(
+					'events'         => array(
 						'required'          => true,
 						'validate_callback' => function ( $param ) {
-							return is_array( $param );
+							return is_array( $param ) && count( $param ) >= 1 && count( $param ) <= 50;
 						},
 						'sanitize_callback' => function ( $param ) {
-							return array_slice( (array) $param, 0, 50 );
+							return $param;
 						},
 					),
-					'visitorHash' => array(
-						'default'           => '',
-						'sanitize_callback' => function ( $param ) {
-							// Enforce the anonymous-hash invariant this file claims
-							// (hex, 8-64 chars) rather than accepting arbitrary text.
-							$hash = sanitize_text_field( (string) $param );
-							return preg_match( '/^[a-f0-9]{8,64}$/', $hash ) ? $hash : '';
+					'consent'        => array(
+						'required'          => true,
+						'validate_callback' => function ( $param ) {
+							return 'accepted' === $param;
+						},
+					),
+					'schema_version' => array(
+						'required'          => true,
+						'validate_callback' => function ( $param ) {
+							return 1 === $param;
 						},
 					),
 				),
@@ -126,7 +132,7 @@ function skyyrose_see_register_rest_routes(): void {
 			array(
 				'methods'             => WP_REST_Server::READABLE,
 				'callback'            => 'skyyrose_see_rest_get_recommendations',
-				'permission_callback' => '__return_true',
+				'permission_callback' => 'skyyrose_see_rest_consent_permission',
 				'args'                => array(
 					'hash'       => array(
 						'required'          => true,
@@ -236,74 +242,150 @@ function skyyrose_see_rest_admin_check(): bool {
  * Receive and store behavioral events.
  */
 function skyyrose_see_rest_receive_events( WP_REST_Request $request ): WP_REST_Response {
-	// Rate limiting: 10 requests per minute per IP. REMOTE_ADDR only — sites
-	// behind a reverse proxy should add an X-Forwarded-For allowlist before
-	// trusting that header.
+	// Repeat consent at the mutation boundary, including direct internal calls.
+	if ( 'accepted' !== sanitize_text_field( wp_unslash( $_COOKIE['skyyrose_cookie_consent'] ?? '' ) ) || 'accepted' !== $request->get_param( 'consent' ) ) {
+		return new WP_REST_Response(
+			array(
+				'status' => 'rejected',
+				'error'  => 'consent_required',
+			),
+			403
+		);
+	}
 	$ip         = sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0' ) );
 	$rate_key   = 'skyyrose_see_rate_' . md5( $ip );
 	$rate_count = (int) get_transient( $rate_key );
-
 	if ( $rate_count >= 10 ) {
-		return new WP_REST_Response( array( 'error' => 'Rate limited' ), 429 );
-	}
-
-	set_transient( $rate_key, $rate_count + 1, MINUTE_IN_SECONDS );
-
-	$events       = $request->get_param( 'events' );
-	$visitor_hash = $request->get_param( 'visitorHash' );
-
-	// Guard: experience-analyzer.php defines skyyrose_see_store_events() but is
-	// loaded inside a WooCommerce-gated block in functions.php. When WooCommerce
-	// is inactive the function is undefined and calling it would produce a fatal
-	// error that WordPress translates into a 404 rest_no_route response.
-	if ( ! function_exists( 'skyyrose_see_store_events' ) ) {
 		return new WP_REST_Response(
 			array(
-				'stored' => 0,
-				'note'   => 'analytics_unavailable',
+				'status' => 'unavailable',
+				'error'  => 'rate_limited',
 			),
-			200
+			429
 		);
 	}
-
-	$stored = skyyrose_see_store_events( $events, $visitor_hash );
-
-	// Relay to FastAPI backend (non-blocking). Sanitize first: store_events()
-	// sanitizes into local copies, but the raw request array would otherwise be
-	// piped verbatim from this public __return_true endpoint to the backend.
-	// Defense in depth — the backend must still validate independently.
-	if ( function_exists( 'skyyrose_see_relay_analytics' ) ) {
-		skyyrose_see_relay_analytics( skyyrose_see_sanitize_events( (array) $events ) );
+	set_transient( $rate_key, $rate_count + 1, MINUTE_IN_SECONDS );
+	$raw = $request->get_param( 'events' );
+	if ( 1 !== $request->get_param( 'schema_version' ) || ! is_array( $raw ) || count( $raw ) < 1 || count( $raw ) > 50 ) {
+		return new WP_REST_Response(
+			array(
+				'status' => 'rejected',
+				'error'  => 'invalid_events',
+			),
+			422
+		);
 	}
-
-	return new WP_REST_Response( array( 'stored' => $stored ), 200 );
+	$events = skyyrose_see_sanitize_events( $raw );
+	if ( count( $events ) !== count( $raw ) ) {
+		return new WP_REST_Response(
+			array(
+				'status' => 'rejected',
+				'error'  => 'invalid_events',
+			),
+			422
+		);
+	}
+	$ack = function_exists( 'skyyrose_see_relay_analytics' ) ? skyyrose_see_relay_analytics( $events ) : null;
+	if ( null === $ack ) {
+		return new WP_REST_Response(
+			array(
+				'status' => 'unavailable',
+				'error'  => 'analytics_unavailable',
+			),
+			503
+		);
+	}
+	// Existing WP counters are an engagement projection, separate from the
+	// durable backend ledger. Duplicate-only retries never inflate this view.
+	$projection = array();
+	if ( 0 === $ack['duplicates'] && function_exists( 'skyyrose_see_store_events' ) ) {
+		foreach ( $events as $event ) {
+			$projection[] = array(
+				'type'       => 'engagement_' . $event['event_type'],
+				'target'     => $event['target'] ?? '',
+				'pageType'   => $event['page_type'],
+				'collection' => $event['collection'] ?? '',
+				'value'      => 0,
+				'ts'         => strtotime( $event['occurred_at'] ) * 1000,
+			);
+		}
+	}
+	$ack['engagement_projection_stored'] = $projection ? skyyrose_see_store_events( $projection, '' ) : 0;
+	return new WP_REST_Response( $ack, 200 );
 }
 
 /**
- * Sanitize a raw behavioral-events array down to a known field allowlist before
- * it leaves the site for the backend relay. Mirrors the per-field sanitization
- * in skyyrose_see_store_events() so attacker JSON from the public analytics
- * endpoint never reaches the FastAPI relay verbatim.
+ * Public personalization reads still require an explicit first-party choice.
  *
- * @param array $events Raw events array from the request.
- * @return array Sanitized events (max 50, known keys only).
+ * @return true|WP_Error Permission result.
+ */
+function skyyrose_see_rest_consent_permission() {
+	return 'accepted' === sanitize_text_field( wp_unslash( $_COOKIE['skyyrose_cookie_consent'] ?? '' ) )
+		? true : new WP_Error( 'consent_required', esc_html__( 'Consent is required.', 'skyyrose' ), array( 'status' => 403 ) );
+}
+
+/**
+ * Validate the versioned relay fields without silently changing event identity.
+ * A single invalid event rejects its whole batch; the backend validates again.
+ *
+ * @param array $events Browser event batch.
+ * @return array Validated events, or empty on any invalid field.
  */
 function skyyrose_see_sanitize_events( array $events ): array {
-	$clean = array();
-	foreach ( array_slice( $events, 0, 50 ) as $event ) {
-		if ( ! is_array( $event ) || empty( $event['type'] ) || ! is_string( $event['type'] ) ) {
-			continue;
+	$types      = array( 'page_view', 'collection_view', 'product_view', 'product_click', 'add_to_cart', 'remove_from_cart', 'begin_checkout', 'lookbook_view', 'hotspot_click', 'search', 'size_guide_open', 'newsletter_signup', 'scroll_depth', 'next_world' );
+	$pages      = array( 'home', 'collection', 'product', 'shop', 'cart', 'checkout', 'lookbook', 'immersive', 'search', 'other' );
+	$keys       = array( 'event_id', 'session_id', 'event_type', 'occurred_at', 'page_type', 'collection', 'target', 'value', 'properties', 'synthetic' );
+	$properties = array( 'action', 'depth', 'sku', 'product_id', 'quantity', 'position', 'scene', 'direction', 'source', 'variant', 'route', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content' );
+	$ids        = array();
+	foreach ( $events as $event ) {
+		if ( ! is_array( $event ) || array_diff( array_keys( $event ), $keys ) ) {
+			return array();
 		}
-		$clean[] = array(
-			'type'       => sanitize_text_field( $event['type'] ),
-			'target'     => sanitize_text_field( $event['target'] ?? '' ),
-			'pageType'   => sanitize_text_field( $event['pageType'] ?? '' ),
-			'collection' => sanitize_text_field( $event['collection'] ?? '' ),
-			'value'      => floatval( $event['value'] ?? 0 ),
-			'ts'         => is_numeric( $event['ts'] ?? null ) ? floatval( $event['ts'] ) : 0,
-		);
+		foreach ( array( 'event_id', 'session_id', 'event_type', 'occurred_at', 'page_type' ) as $required ) {
+			if ( ! isset( $event[ $required ] ) || ! is_string( $event[ $required ] ) ) {
+				return array();
+			}
+		}
+		if ( ! preg_match( '/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/', $event['event_id'] )
+			|| isset( $ids[ $event['event_id'] ] )
+			|| ! preg_match( '/^[A-Za-z0-9_-]{16,100}$/', $event['session_id'] )
+			|| ! in_array( $event['event_type'], $types, true )
+			|| ! in_array( $event['page_type'], $pages, true )
+			|| ! preg_match( '/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z$/', $event['occurred_at'] )
+			|| false === strtotime( $event['occurred_at'] )
+			|| gmdate( 'Y-m-d\TH:i:s', strtotime( $event['occurred_at'] ) ) !== substr( $event['occurred_at'], 0, 19 )
+			|| strtotime( $event['occurred_at'] ) < time() - DAY_IN_SECONDS
+			|| strtotime( $event['occurred_at'] ) > time() + 60 ) {
+			return array();
+		}
+		$ids[ $event['event_id'] ] = true;
+		foreach ( array( 'collection', 'target' ) as $key ) {
+			if ( isset( $event[ $key ] ) && ( ! is_string( $event[ $key ] ) || ! preg_match( '/^[A-Za-z0-9_\/.-]{1,160}$/', $event[ $key ] ) || ( 'collection' === $key && strlen( $event[ $key ] ) > 100 ) ) ) {
+				return array();
+			}
+		}
+		if ( isset( $event['value'] ) && ( ( ! is_int( $event['value'] ) && ! is_float( $event['value'] ) ) || ! is_finite( (float) $event['value'] ) || $event['value'] < 0 || $event['value'] > 1000000 ) ) {
+			return array();
+		}
+		if ( array_key_exists( 'synthetic', $event ) && ! is_bool( $event['synthetic'] ) ) {
+			return array();
+		}
+		if ( array_key_exists( 'properties', $event ) ) {
+			if ( ! is_array( $event['properties'] ) || array_diff( array_keys( $event['properties'] ), $properties ) ) {
+				return array();
+			}
+			foreach ( $event['properties'] as $value ) {
+				if ( is_string( $value ) ) {
+					if ( ! preg_match( '/^[A-Za-z0-9_\/.-]{1,160}$/', $value ) ) {
+						return array();
+					}
+				} elseif ( ( ! is_int( $value ) && ! is_float( $value ) ) || ! is_finite( (float) $value ) || $value < 0 || $value > 1000000 ) {
+					return array();
+				}
+			}
+		}
 	}
-	return $clean;
+	return array_values( $events );
 }
 
 /**
@@ -327,6 +409,9 @@ function skyyrose_see_rest_get_summary( WP_REST_Request $request ): WP_REST_Resp
  * Get personalized product recommendations.
  */
 function skyyrose_see_rest_get_recommendations( WP_REST_Request $request ): WP_REST_Response {
+	if ( true !== skyyrose_see_rest_consent_permission() ) {
+		return new WP_REST_Response( array( 'error' => 'consent_required' ), 403 );
+	}
 	// Rate limit: 30/min per IP. This public endpoint triggers an upstream ML
 	// call and writes a transient per request — without a throttle a single
 	// client drives unbounded backend load and cache growth.
