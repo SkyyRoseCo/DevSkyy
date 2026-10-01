@@ -432,3 +432,25 @@ async def test_irrelevant_order_stays_skipped_without_analytics_configuration(ha
     result = await webhook(client, paid_order(status="pending"))
     assert result.status_code == 200
     assert result.json()["analytics"]["status"] == "skipped"
+
+
+async def test_duplicate_ids_inside_batch_are_counted_once(harness):
+    """LOCAL SYNTHETIC: identical duplicates within one signed request."""
+    client, sessions, _ = harness
+    data = envelope()
+    data["events"].append(dict(data["events"][0]))
+    result = await ingest(client, data)
+    assert result.status_code == 200
+    assert result.json()["accepted"] == result.json()["duplicates"] == 1
+    async with sessions() as db:
+        assert (await db.execute(select(func.count(StorefrontAnalyticsEvent.id)))).scalar() == 1
+
+
+async def test_conflicting_duplicate_ids_inside_batch_roll_back_all_rows(harness):
+    client, sessions, _ = harness
+    data = envelope()
+    changed = dict(data["events"][0], target="/synthetic-changed-target")
+    data["events"].extend([changed, envelope()["events"][0]])
+    assert (await ingest(client, data)).status_code == 409
+    async with sessions() as db:
+        assert (await db.execute(select(func.count(StorefrontAnalyticsEvent.id)))).scalar() == 0
