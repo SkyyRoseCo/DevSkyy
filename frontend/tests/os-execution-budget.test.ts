@@ -139,4 +139,31 @@ describe('OS persistent reservation adapter (synthetic ledger; no authenticated 
     });
     expect(evalMock).toHaveBeenCalledTimes(2);
   });
+  it('accepts an idempotent receipt retry without making a second reservation', async () => {
+    const evalMock = vi.fn().mockResolvedValueOnce(['RESERVED', '1', '20925168']).mockResolvedValue(1);
+    const reservation = await reserveExecution(request(), { env, ledger: { eval: evalMock } });
+    await reservation.recordProviderResponse('resp_first');
+    await reservation.recordProviderResponse('resp_first');
+    expect(evalMock).toHaveBeenCalledTimes(3);
+    expect(evalMock.mock.calls[2]).toEqual(evalMock.mock.calls[1]);
+  });
+  it('rejects a conflicting receipt without retrying or refunding its reservation', async () => {
+    const evalMock = vi
+      .fn()
+      .mockResolvedValueOnce(['RESERVED', '1', '20925168'])
+      .mockResolvedValueOnce(1)
+      .mockResolvedValueOnce(-1);
+    const reservation = await reserveExecution(request(), { env, ledger: { eval: evalMock } });
+    await reservation.recordProviderResponse('resp_first');
+    await expect(reservation.recordProviderResponse('resp_other')).rejects.toMatchObject({ code: 'RECEIPT_CONFLICT' });
+    expect(evalMock).toHaveBeenCalledTimes(3);
+  });
+  it.each([0, null, '1'])('fails closed on an invalid or unbound receipt acknowledgement %s', async result => {
+    const evalMock = vi.fn().mockResolvedValueOnce(['RESERVED', '1', '20925168']).mockResolvedValueOnce(result);
+    const reservation = await reserveExecution(request(), { env, ledger: { eval: evalMock } });
+    await expect(reservation.recordProviderResponse('resp_first')).rejects.toMatchObject({
+      code: 'LEDGER_UNAVAILABLE',
+    });
+    expect(evalMock).toHaveBeenCalledTimes(2);
+  });
 });
