@@ -14,7 +14,6 @@ from urllib.parse import urlsplit
 
 import pytest
 from playwright.sync_api import expect, sync_playwright
-
 from test_viewer_browser import glb
 
 ROOT = Path(__file__).resolve().parents[2]

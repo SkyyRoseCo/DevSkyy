@@ -486,8 +486,10 @@ class TestBrandDNAPresence:
         assert BRAND_COLORS["silver"] == "#C0C0C0"
 
     def test_brand_name_and_tagline(self):
+        from skyyrose.elite_studio.brand import BrandConfig
+
         assert BRAND_NAME == "SkyyRose"
-        assert BRAND_TAGLINE == "Luxury Grows from Concrete."
+        assert BRAND_TAGLINE == BrandConfig.load().tagline_active == ""
 
     def test_enhancement_injects_brand_for_black_rose(self):
         chain = PromptChain()

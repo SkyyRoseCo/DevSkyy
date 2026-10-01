@@ -67,10 +67,13 @@ class TestFashionKnowledgeBase:
         with pytest.raises((AttributeError, TypeError)):
             garment.name = "modified"  # type: ignore[misc]
 
-    def test_brand_tagline_present(self):
+    def test_brand_tagline_matches_active_configuration(self):
+        from skyyrose.elite_studio.brand import BrandConfig
         from skyyrose.elite_studio.fashion.knowledge import BRAND_TAGLINE
 
-        assert "Luxury Grows from Concrete" in BRAND_TAGLINE
+        brand = BrandConfig.load()
+        assert BRAND_TAGLINE == brand.tagline_active == ""
+        assert BRAND_TAGLINE not in brand.retired_taglines
 
 
 # ---------------------------------------------------------------------------

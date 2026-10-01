@@ -14,14 +14,13 @@ from pathlib import Path
 
 import pytest
 
+from skyyrose.core.paths import REPO_ROOT
 from skyyrose.elite_studio.pipeline3d.glb_container import (
     GlbFormatError,
     read_glb,
     require_embedded_resources,
     write_glb,
 )
-
-from skyyrose.core.paths import REPO_ROOT
 from skyyrose.elite_studio.pipeline3d.webgl_qc import (
     _HARNESS_TEMPLATE,
     ANGLES,
@@ -34,13 +33,13 @@ from skyyrose.elite_studio.pipeline3d.webgl_qc import (
     RenderTarget,
     ThreeLibNotFoundError,
     WebGlQcError,
+    _offline_request_allowed,
+    _restrict_requests,
     build_serve_root,
     diff_images,
     diff_report,
-    resolve_three_lib,
     render,
-    _offline_request_allowed,
-    _restrict_requests,
+    resolve_three_lib,
 )
 
 PRODUCTION_VIEWER = REPO_ROOT / "wordpress-theme/skyyrose-flagship/assets/js/product-3d-viewer.js"
