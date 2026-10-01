@@ -22,41 +22,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 // ---------------------------------------------------------------------------
 
 /**
- * Get or create a persistent visitor hash stored in a first-party cookie.
+ * Read a previously consented visitor cookie without creating one.
  *
  * The hash is 16 hex characters (64-bit) — enough to uniquely identify a
  * browser session without storing any personally identifiable information.
- * Cookie lifespan: 90 days, renewed on each visit.
+ * Identifier creation is performed by consent-gated JavaScript only.
  *
  * @return string Hex visitor hash.
  */
 function skyyrose_see_get_visitor_hash(): string {
-	$cookie_name = 'skyy_visitor';
-
-	if ( ! empty( $_COOKIE[ $cookie_name ] ) ) {
-		$candidate = sanitize_text_field( wp_unslash( $_COOKIE[ $cookie_name ] ) );
-		if ( preg_match( '/^[a-f0-9]{16,64}$/', $candidate ) ) {
-			return $candidate;
-		}
+	// A server-rendered page must never mint an identifier before consent.
+	if ( 'accepted' !== sanitize_text_field( wp_unslash( $_COOKIE['skyyrose_cookie_consent'] ?? '' ) ) ) {
+		return '';
 	}
-
-	$hash    = bin2hex( random_bytes( 8 ) );
-	$expires = time() + ( 90 * DAY_IN_SECONDS );
-
-	// phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.cookies_setcookie
-	setcookie(
-		$cookie_name,
-		$hash,
-		array(
-			'expires'  => $expires,
-			'path'     => '/',
-			'secure'   => is_ssl(),
-			'httponly' => false, // JS must read it to pass to the REST endpoint.
-			'samesite' => 'Lax',
-		)
-	);
-
-	return $hash;
+	$candidate = sanitize_text_field( wp_unslash( $_COOKIE['skyy_visitor'] ?? '' ) );
+	return preg_match( '/^[a-f0-9]{16,64}$/', $candidate ) ? $candidate : '';
 }
 
 // ---------------------------------------------------------------------------
@@ -93,11 +73,10 @@ function skyyrose_pg_localize_personalization(): void {
 		'skyyrose-personalization',
 		'SkyyCurated',
 		array(
-			'visitorHash' => skyyrose_see_get_visitor_hash(),
-			'collection'  => $collection,
-			'restBase'    => '/?rest_route=/skyyrose/v1',
-			'restNonce'   => wp_create_nonce( 'wp_rest' ),
-			'limit'       => 4,
+			'collection' => $collection,
+			'restBase'   => '/?rest_route=/skyyrose/v1',
+			'restNonce'  => wp_create_nonce( 'wp_rest' ),
+			'limit'      => 4,
 		)
 	);
 }

@@ -85,6 +85,7 @@ $image_priority = ! empty( $args['image_priority'] );
 ?>
 <div class="holo holo--<?php echo esc_attr( $collection ); ?>" 
 	data-sku="<?php echo esc_attr( $sku ); ?>"
+	data-collection="<?php echo esc_attr( $collection ); ?>"
 	data-garment-lock="<?php echo esc_attr( $garment_lock ); ?>"
 	style="--holo-delay: <?php echo esc_attr( (string) ( $index * 80 ) ); ?>ms">
 
