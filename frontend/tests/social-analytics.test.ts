@@ -21,6 +21,7 @@ import {
 const fetchMock = vi.fn<typeof fetch>();
 beforeEach(() => {
   vi.unstubAllEnvs();
+  for (const key of ['TWITTER_API_KEY', 'TWITTER_API_SECRET', 'TWITTER_USER_ID']) vi.stubEnv(key, '');
   vi.stubGlobal('fetch', fetchMock);
   fetchMock.mockReset();
   sessionMock.mockReset().mockResolvedValue({ user: { email: 'operator@example.test' } });
@@ -207,6 +208,33 @@ describe('social analytics evidence contract', () => {
     expect(data.platforms.tiktok.shares).toBeNull();
     expect(platformEngagement(data.platforms.tiktok)).toBeNull();
   });
+  it('reads X with app-only credentials even when the publishing connection is disconnected', async () => {
+    vi.stubEnv('TWITTER_API_KEY', 'fixture-key');
+    vi.stubEnv('TWITTER_API_SECRET', 'fixture-secret');
+    vi.stubEnv('TWITTER_USER_ID', 'fixture-user');
+    vi.stubEnv('TWITTER_ACCESS_TOKEN', '');
+    vi.stubEnv('TWITTER_ACCESS_SECRET', '');
+    fetchMock.mockResolvedValueOnce(Response.json({ access_token: 'fixture-app-token' }));
+    fetchMock.mockResolvedValueOnce(Response.json({ meta: { result_count: 0 } }));
+    const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+    expect(data.platforms.twitter.status).toBe('observed');
+    expect(data.platforms.twitter.posts).toBe(0);
+    expect(data.platforms.instagram.status).toBe('disconnected');
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock.mock.calls[1][1]?.headers).toEqual({ Authorization: 'Bearer fixture-app-token' });
+  });
+  it.each(['TWITTER_API_KEY', 'TWITTER_API_SECRET', 'TWITTER_USER_ID'])(
+    'does not call X when app-only credential %s is absent',
+    async missing => {
+      vi.stubEnv('TWITTER_API_KEY', 'fixture-key');
+      vi.stubEnv('TWITTER_API_SECRET', 'fixture-secret');
+      vi.stubEnv('TWITTER_USER_ID', 'fixture-user');
+      vi.stubEnv(missing, '');
+      const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+      expect(data.platforms.twitter.status).toBe('disconnected');
+      expect(fetchMock).not.toHaveBeenCalled();
+    }
+  );
   it('shows totals as measured zero only when every platform returned an observed empty sample', async () => {
     connectionMock.mockReturnValue({ connected: true });
     vi.stubEnv('INSTAGRAM_BUSINESS_ACCOUNT_ID', 'fixture-account');
