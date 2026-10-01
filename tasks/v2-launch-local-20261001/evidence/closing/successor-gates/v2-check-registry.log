@@ -1,0 +1,19 @@
+
+> skyyrose-flagship-2-theme@2.5.0 check:registry
+> python3 scripts/build-product-presentation-registry.py --check
+
+Traceback (most recent call last):
+  File "/Users/theceo/.codex/worktrees/58b5/DevSkyy/wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py", line 116, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/theceo/.codex/worktrees/58b5/DevSkyy/wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py", line 98, in main
+    artifact = build_registry()
+               ^^^^^^^^^^^^^^^^
+  File "/Users/theceo/.codex/worktrees/58b5/DevSkyy/wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py", line 31, in build_registry
+    manifest, expected = load_product_sot()
+                         ^^^^^^^^^^^^^^^^^^
+  File "/Users/theceo/.codex/worktrees/58b5/DevSkyy/tools/v2-source-certification/inputs.py", line 36, in load_product_sot
+    verify_registry_binding(contract)
+  File "/Users/theceo/.codex/worktrees/58b5/DevSkyy/tools/v2-source-certification/inputs.py", line 26, in verify_registry_binding
+    raise ValueError("Current registry hash requires contract reconciliation")
+ValueError: Current registry hash requires contract reconciliation

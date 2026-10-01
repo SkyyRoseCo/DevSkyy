@@ -1,0 +1,18 @@
+
+> skyyrose-flagship-2-theme@2.5.0 package:theme
+> bash scripts/package-theme.sh
+
+
+> skyyrose-flagship-2-theme@2.5.0 build
+> npm run check:source-integrity && npm run build:scene-posters && npm run check:approved-scenes && npm run build:tokens && npm run build:registry && npm run build:card-renditions && npm run build:font-delivery && npm run build:frame-delivery && npm run build:assets && npm run build:archive-theme && npm run build:i18n
+
+
+> skyyrose-flagship-2-theme@2.5.0 check:source-integrity
+> python3 ../../tools/v2-source-certification/check-integrity.py
+
+Traceback (most recent call last):
+  File "/Users/theceo/.codex/worktrees/58b5/DevSkyy/wordpress-theme/skyyrose-flagship-2/../../tools/v2-source-certification/check-integrity.py", line 67, in <module>
+    main()
+  File "/Users/theceo/.codex/worktrees/58b5/DevSkyy/wordpress-theme/skyyrose-flagship-2/../../tools/v2-source-certification/check-integrity.py", line 40, in main
+    raise ValueError(f"Build input changed without reconciliation: {relative}")
+ValueError: Build input changed without reconciliation: wordpress-theme/skyyrose-flagship-2/assets/css/critical/home.contract.json

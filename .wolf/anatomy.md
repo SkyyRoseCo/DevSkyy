@@ -9293,3 +9293,5 @@
 - `tasks/preorder-correctness-20261001/DECISION-PACKET.md` — Recorded policy conflict, missing machine fields and bounded inventory owner choices (~1300 tok).
 - `wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-bootstrap.php` — Read-only combined V2 hash and hook registration gate; never loads module itself (~700 tok).
 - `tasks/preorder-correctness-20261001/evidence/architect-closing-review.md` — Recorded bounded independent review, artifact/count verification and remaining gates (~350 tok).
+
+- `tasks/v2-launch-local-20261001/evidence/closing/successor-*.json` and successor gate/matrix logs — Exact6f source, 43-row acceptance ledger, independent architect review and byte-preservation proof; historical9e logs retained (~1800 tok excluding raw logs).

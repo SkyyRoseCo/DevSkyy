@@ -1,0 +1,13 @@
+PASS Known wrong privacy assignment resolves to published policy
+PASS Custom privacy assignment is preserved
+PASS Draft policy is never exposed
+PASS Password-protected policy is never exposed
+PASS Only stock sample is excluded; previous exclusions preserved
+PASS Product queries remain untouched
+PASS Admin queries remain untouched
+PASS Every retired V2 page route has one canonical destination
+PASS Retired internal menu links resolve to their canonical collection
+PASS Draft canonical targets leave legacy internal links untouched
+PASS Footer restores the canonical Kids Capsule collection link
+PASS Retired aliases preserve UTM attribution on staging redirects
+PASS Draft canonical targets fail closed without a redirect

@@ -1,5 +1,5 @@
 {
-  "source_sha": "9e4101e8bde89f2efe6828519393221d9b81c639",
+  "source_sha": "6f796ef1f528b4a695ef510b912808484ce5cc8d",
   "owner": "stream4",
   "request": "Review exact integrated source, reconcile registry authority binding, certification hashes, package boundary and PHP baseline; preserve asset approvals and all release holds. Return reviewed scoped local commit.",
   "changed_existing_input_hashes": {
@@ -16,8 +16,9 @@
   "new_theme_files": {
     "inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
     "tests/commerce/bootstrap.php": "6f9d220bba62e198aa6d8285c9b47a3f9a9971924f40e702ea8a12947f82ffca",
-    "tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
-    "tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
+    "tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+    "tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202",
+    "tests/commerce/verify-bootstrap.php": "da2e5de25da87773cfc08de7e014c7417edcac3bd5cb137eb5184c584d95adb4"
   },
   "package_classification_recommendation": {
     "inc/woocommerce-compat.php": "RUNTIME SOURCE; release true",
@@ -44,6 +45,11 @@
     {
       "original": "487455d7f799153f0fb5e31c72ceeb9116031ed3",
       "adopted": "226cef201"
+    },
+    {
+      "original": "48dca7136bb034727708281c4f1246dd66e4ed5d",
+      "adopted": "6f796ef1f528b4a695ef510b912808484ce5cc8d",
+      "scope": "reviewed fixture successor; no production module changes"
     }
   ],
   "authority": "FOUNDER_CONFIRMED facts preserved; no approval-state, imagery, date, stock, pricing or policy edits",
@@ -60,8 +66,8 @@
     "database": "isolated SQLite 2.2.23; not deployed"
   },
   "certified_native_gallery_fixture": "Original separately pinned WP7.1/Woo11.1.0 fixture retained; not equivalent to updated local commerce runtime",
-  "supersedes_source_sha": "c98a31167237f422c18c0431635d2ae04f25439b",
-  "subsequent_source_change": "New fixture WPCS fixed; scene hotspot labels neutral; translation rebuilt; isolated scene render regression added. Full source certification must review current PHP/runtime hashes.",
+  "supersedes_source_sha": "9e4101e8bde89f2efe6828519393221d9b81c639",
+  "subsequent_source_change": "Adopted stream2 reviewed successor48dca7136 as6f796ef1f: production module unchanged, native tax/shipping fixtures and full14hook bootstrap verifier added; authoring package census review must include new verify-bootstrap.php.",
   "runtime_review_hashes": {
     "functions.php": "0a308706c01344bc26212b100a7560eb4cccd3f790e12a9145600f92431ed35b",
     "template-parts/commerce/product-card.php": "25f7057b0ce38ea1e5267ae1b2cba63271e0d9116c8d939502a0e781898c9422",
