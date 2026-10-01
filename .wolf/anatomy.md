@@ -9308,3 +9308,15 @@
 - wordpress-theme/skyyrose-flagship-2/inc/product-glb.php — Optional dormantproduct-view mount/server-ownedreadonlynativeidentityroute (~1500tokens).
 - wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-init.mjs — Nativeoptioncontroller lifecycle and freshresolver requests (~1200tokens).
 - tests/test_glb_projection_approval.py — Offline current/staleapprovalprojection3caseregression (~700tokens).
+
+- tasks/production-final-pass-20261001/README.md — Current scoped production final pass, authenticated targets, CI, rollback and skill examples; ~1700 tokens.
+- tasks/production-final-pass-20261001/evidence/ — Target configuration snapshots, canonical correction plans, CI and staging backup/install receipts; generated task evidence.
+
+- `tasks/production-final-pass-20261001/verify_metadata_readback.py`: Read-only authenticated staging product-config comparison; verifies exactly45canonical metadata changes across220captured product/variationrecords. ~900 tokens.
+
+- tasks/production-final-pass-20261001/evidence/staging-hosting-edge-cache-clear.json — Authenticated live staging hosting clear receipt and explicit evidence limits; CLI failures preserved. ~400 tokens.
+
+- tools/production-runtime/search-tracking-privacy.php — Separately hashed public Search tracking suppression; preserves native Search and approved theme ZIP.
+- tools/production-runtime/test-search-tracking-wordpress.php — Captured actual WordPress7.1.2 hook/dependency regression with explicitly stubbed environment/rendering.
+- tasks/production-final-pass-20261001/evidence/production-page-preimages.json — Authenticated all-status route inventory and six unchanged merchant page snapshots; no customer/order records.
+- tasks/production-final-pass-20261001/evidence/production-preactivation-preimages.json — Current target, MU directory and module/activation option observations; no mutations.

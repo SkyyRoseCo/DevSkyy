@@ -1,0 +1,8 @@
+Target PHP 8.4.26
+PASS actual core scenario: production-v1
+PASS actual core scenario: production-v2
+PASS actual core scenario: staging-v2
+PASS actual core scenario: inactive
+PASS actual core scenario: wrong-target
+PASS actual core scenario: admin
+PASS 88 assertions; actual captured WordPress 7.1.2 hook/dependency classes; environment/render stubs; offline authentication not applicable

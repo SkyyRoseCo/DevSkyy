@@ -1,0 +1,192 @@
+{
+  "home": "https://skyyrose.co",
+  "stylesheet": "skyyrose-flagship",
+  "wordpress": "7.1.2",
+  "php": "8.4.26",
+  "woo": "11.1.2",
+  "jetpack": "16.3-a.7",
+  "mu_dir": "/srv/htdocs/wp-content/mu-plugins",
+  "mu_exists": true,
+  "mu_writable": true,
+  "mu_symlink": false,
+  "mu_realpath": "/srv/htdocs/wp-content/mu-plugins",
+  "mu_files": {
+    "index.php": {
+      "sha256": "bdc22943708ca92a676966243848615153c592c5b0ffcb0f2b39dc0c191bcb17",
+      "bytes": 26,
+      "symlink": false
+    },
+    "skyyrose-ally-ajax-guard.php": {
+      "sha256": "61cd70e57edb7a1d040ed1c6f3961ef4cbc4dbd1cd6fcad5d10d196ac21379b9",
+      "bytes": 1566,
+      "symlink": false
+    },
+    "skyyrose-anon-cache-guard.php": {
+      "sha256": "039311c2cc973f6b6b24c7f353755df259fca583cfb7d0cdc9eef54db44f1474",
+      "bytes": 4072,
+      "symlink": false
+    },
+    "woocommerce-fraud-protection-loader.php": {
+      "sha256": "a892d7019d0ed5022d29eb2e4b25f7a2fe38ad4650088bb0e1619b42343cb1d3",
+      "bytes": 1888,
+      "symlink": true
+    },
+    "wpcomsh-loader.php": {
+      "sha256": "b349a1e8510fbcccec6df09c7dea57fe680ca4ed0ea037a1d1b2c44ac724a4c0",
+      "bytes": 885,
+      "symlink": true
+    }
+  },
+  "options": {
+    "stylesheet": {
+      "value": "skyyrose-flagship",
+      "sha256": "c171844f72259fc2995fa687b29a91494e1dafc16625c7fcb827d1b4f83ad6c3"
+    },
+    "template": {
+      "value": "skyyrose-flagship",
+      "sha256": "c171844f72259fc2995fa687b29a91494e1dafc16625c7fcb827d1b4f83ad6c3"
+    },
+    "current_theme": {
+      "value": "THE FLAGSHIP",
+      "sha256": "13d09a62e059e0d787abce4b8ab69f20ed8c63d6866adaa70373a9a37f37b4bd"
+    },
+    "theme_mods_skyyrose-flagship": {
+      "value": {
+        "0": false,
+        "nav_menu_locations": {
+          "primary": 139,
+          "footer-shop": 106,
+          "footer-help": 107,
+          "footer-legal": 108,
+          "mobile": 141,
+          "footer": 140,
+          "collection": 0,
+          "experiences": 143,
+          "top-bar": 143
+        },
+        "custom_css_post_id": 9767,
+        "sidebars_widgets": {
+          "time": 1771045052,
+          "data": {
+            "wp_inactive_widgets": [
+              "woocommerce_layered_nav-2",
+              "block-2",
+              "block-3",
+              "block-4",
+              "block-5",
+              "block-6",
+              "text-2",
+              "archives-1",
+              "categories-2",
+              "tag_cloud-1",
+              "recent-posts-1",
+              "meta-1",
+              "tag_cloud-2",
+              "text-3",
+              "text-4",
+              "text-5",
+              "custom_html-1",
+              "text-6",
+              "text-7",
+              "text-8",
+              "text-9",
+              "custom_html-2",
+              "custom_html-3",
+              "custom_html-4",
+              "custom_html-5",
+              "text-10",
+              "text-11",
+              "text-12",
+              "text-13",
+              "text-14",
+              "text-15",
+              "text-16"
+            ],
+            "jetpack-instant-search-side-bar": [],
+            "sidebar-1": [],
+            "footer-1": [],
+            "footer-2": [],
+            "footer-3": [],
+            "footer-4": [],
+            "shop-sidebar": []
+          }
+        },
+        "skyyrose_brand_logo": "https://skyyrose.co/wp-content/uploads/2026/02/Photoroom_20260201_143638.webp",
+        "skyyrose_mascot_enabled": "1"
+      },
+      "sha256": "8690d962167d4edbed647d05186078eb6fb8a96b85439598e89d9c51bb8cb1b1"
+    },
+    "theme_mods_skyyrose-flagship-2": {
+      "value": "__ABSENT__",
+      "sha256": "d894ce3161e6b0fc9132e6f5c2c3bdb66a4030af532d120728f4b496a6cc0e58"
+    },
+    "sidebars_widgets": {
+      "value": {
+        "wp_inactive_widgets": [
+          "woocommerce_layered_nav-2",
+          "block-2",
+          "block-3",
+          "block-4",
+          "block-5",
+          "block-6",
+          "text-2",
+          "archives-1",
+          "categories-2",
+          "tag_cloud-1",
+          "recent-posts-1",
+          "meta-1",
+          "tag_cloud-2",
+          "text-3",
+          "text-4",
+          "text-5",
+          "custom_html-1",
+          "text-6",
+          "text-7",
+          "text-8",
+          "text-9",
+          "custom_html-2",
+          "custom_html-3",
+          "custom_html-4",
+          "custom_html-5",
+          "text-10",
+          "text-11",
+          "text-12",
+          "text-13",
+          "text-14",
+          "text-15",
+          "text-16"
+        ],
+        "jetpack-instant-search-side-bar": [],
+        "sidebar-1": [],
+        "footer-1": [],
+        "footer-2": [],
+        "footer-3": [],
+        "footer-4": [],
+        "shop-sidebar": [],
+        "array_version": 3
+      },
+      "sha256": "4aa9e9dd50c5f1d795c9236218a49f330225ad64ca4d00cc78545c0d999a08f1"
+    },
+    "woocommerce_cart_page_id": {
+      "value": "9451",
+      "sha256": "c35dc9f01ffdba4942aae5081a6016aa392814444080437a917a5761742b098d"
+    },
+    "woocommerce_checkout_page_id": {
+      "value": "9452",
+      "sha256": "33b8e30a844e9747f521d476597590de558e635d25de992d919a7d2e4f95667f"
+    },
+    "woocommerce_shop_page_id": {
+      "value": "9836",
+      "sha256": "1dcb7c9e9b935ea3944f8a4c5da858d1bd73bdb2e91cfeacc424de73fef20097"
+    },
+    "woocommerce_myaccount_page_id": {
+      "value": "9710",
+      "sha256": "3e4b938f9afbe2e4cf9b41b865052886db45a6c67c2e7b13e8c72ef760696687"
+    }
+  },
+  "search_active": true,
+  "stats_active": false,
+  "woocommerce_analytics_active": false,
+  "attribution": "no",
+  "observed_utc": "2026-10-01T14:41:31.119119+00:00"
+}

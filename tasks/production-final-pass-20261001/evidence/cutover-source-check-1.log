@@ -1,0 +1,2 @@
+PASS: zero-retention subprocess 6 assertions; prepare/publish/rollback refused before any WordPress mutation; ten-page set retained; readonly observation available.
+PASS: 108 assertions; guarded draft/publish, preserved existing pages, read-only reconcile, safe trash rollback, target/source/duplicate/copy/durability/unknown/foreign-edit refusals (offline WP model).

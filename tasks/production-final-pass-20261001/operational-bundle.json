@@ -1,0 +1,14 @@
+{
+  "path": "/Users/theceo/.codex/worktrees/4035/DevSkyy/.artifacts/production-final-pass-20261001/operations/production-cutover-source-receipts-20261001.zip",
+  "sha256": "b019a8589a1a94f3cb5f3fd510ae2e8013bd2390350efd6ec33ef88c65ce0956",
+  "bytes": 674407,
+  "members": 222,
+  "scope": "frozen operational source and saved receipts before production cutover; browser PNG/HTML omitted; current V2 acceptance harness excluded while review pending",
+  "omissions": [
+    "all HTML including original dynamic cart-key captures",
+    "all PNG/browser screenshots retained locally",
+    "__pycache__",
+    "coordinator-owned readiness packet/AGENTS.md",
+    "production-v2-acceptance under active review"
+  ]
+}

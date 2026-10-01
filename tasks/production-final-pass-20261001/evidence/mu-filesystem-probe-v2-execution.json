@@ -1,0 +1,19 @@
+{
+  "completed_utc": "2026-10-01T14:50:22.230763+00:00",
+  "source_sha256": "e9a0473b9e925e1bcf1f4bb05bacbd4fc0e290a50e8d8885ad999caee28ec521",
+  "intent_sha256": "d28ddf408a7a3a6d42e3338248bcbe24313a16e2de8ba979b0c999159dfb37f2",
+  "exit_code": 0,
+  "scope": "exclusive non-PHP filesystem readiness proof only; reviewed single/cooperating writer; no blind retry",
+  "output": {
+    "home": "https://skyyrose.co",
+    "stylesheet": "skyyrose-flagship",
+    "php": "8.4.26",
+    "mu_directory_fsync": true,
+    "exclusive_hardlink": true,
+    "same_inode": true,
+    "destination_no_clobber": true,
+    "cleanup_verified": true,
+    "probe_sha256": "63d4b8a3ee738228eff47020f068ba9cf0f70d9e6fae4cdd474bb165efb12f67",
+    "scope": "exclusive owned non-PHP temporary files only"
+  }
+}
