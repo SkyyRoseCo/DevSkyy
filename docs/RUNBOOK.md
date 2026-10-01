@@ -4,10 +4,11 @@
 `a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
 Use [PRODUCTION_STATUS.md](PRODUCTION_STATUS.md) for the dated live-target/CI
-snapshot and literal artifact/receipt identities. Production is currently V1;
-existing staging has the reviewed V2 package. The current operation is a scoped
-WordPress storefront cutover. API, dashboard, Fly, Governor, paid providers,
-GLBs, and mascot deployment are outside this runbook's active release scope.
+snapshot, current holds, and literal artifact/receipt identities. This procedure
+moves the captured V1 baseline to the reviewed V2 candidate within a scoped
+WordPress storefront cutover. Staging qualification remains separate from
+production acceptance. API, dashboard, Fly, Governor, paid providers, GLBs, and
+mascot deployment are outside this runbook's release scope.
 
 ## Before application
 

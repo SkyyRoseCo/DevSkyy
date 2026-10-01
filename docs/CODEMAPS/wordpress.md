@@ -5,10 +5,11 @@
 `functions.php`, V2 `inc/marketplace.php`, `inc/woocommerce-compat.php`.
 
 This focused map is derived from the current theme bootstrap, source tree,
-package manifests, and production cutover sources. Production currently runs V1;
-existing staging runs the reviewed V2 candidate. Use
-[production status](../PRODUCTION_STATUS.md) for dated actual target evidence.
-This update does not revalidate the entire codemap library.
+package manifests, and production cutover sources. It describes the original V1
+theme and reviewed V2 candidate; use
+[production status](../PRODUCTION_STATUS.md) for dated actual target state and
+staging qualification. This update does not revalidate the entire codemap
+library.
 
 ## Architecture and authority
 
@@ -43,7 +44,7 @@ the owner of actual store configuration and transactional behavior.
 
 | Source                                                                                                                                                                                                                                                                  | Purpose and relationships                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| [V1 functions.php](../../wordpress-theme/skyyrose-flagship/functions.php)                                                                                                                                                                                               | Original currently active theme; loads its `inc/` modules and native hooks                                                      |
+| [V1 functions.php](../../wordpress-theme/skyyrose-flagship/functions.php)                                                                                                                                                                                               | Original theme and captured V1 baseline; loads its `inc/` modules and native hooks                                              |
 | [V1 product-catalog.php](../../wordpress-theme/skyyrose-flagship/inc/product-catalog.php)                                                                                                                                                                               | Compatibility catalog consumer; authored corrections originate in the unified registry                                          |
 | [V2 functions.php](../../wordpress-theme/skyyrose-flagship-2/functions.php)                                                                                                                                                                                             | Theme 2.5.0 bootstrap; loads marketplace, delivery, commerce, analytics, GLB modules; mascot enablement currently returns false |
 | [V2 marketplace.php](../../wordpress-theme/skyyrose-flagship-2/inc/marketplace.php)                                                                                                                                                                                     | Theme setup, page resolution, editor/fresh-install integration; shared production cutover uses guarded owned-page operations    |

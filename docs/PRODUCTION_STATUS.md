@@ -1,8 +1,8 @@
 # Current production status and release boundaries
 
-**Last updated:** 2026-10-01. **Evidence snapshot:** 2026-10-01 16:11 UTC,
-recorded from the latest coordinator update. **Operational source:**
-`a662e707d698a687d7d1d2efed3975b9aa7325b9`.
+**Last updated:** 2026-10-01. **Evidence snapshot:** 2026-10-01 16:37:50 UTC,
+recorded from actual operation receipts and the latest coordinator update.
+**Operational source:** `a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
 This is a dated operator snapshot of the integrated release. It supplements the
 retained task records; it does not change their historical states or authorize
@@ -12,17 +12,18 @@ the frozen operational source and does not rebuild the approved package.
 
 ## What is established
 
-| Gate or surface                 | Observed result                                                                                           | Evidence limit                                                                                                                                     |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Five workstreams                | Scoped source adopted and integrated                                                                      | The adoption manifest includes open inventory, asset/device, policy, and Governor runtime holds                                                    |
-| Functional source               | Frozen at `299f694702ac2dcc61a0f30aa34e4b3ef12f9118`                                                      | Local tests are bounded integration evidence                                                                                                       |
-| Clean V2 package                | Source `5950592d922706dd67fc0320e8c5f3dc005a47b7`; repeat bytes and installed-file checks passed          | Packaging does not establish live production behavior                                                                                              |
-| Existing staging                | V2 2.5.0 installed; all 599 reviewed file hashes matched                                                  | Staging has 220 product/variation records; it cannot establish parity with production's 33 simple products                                         |
-| Production                      | `https://skyyrose.co`, active V1 `skyyrose-flagship`                                                      | Inactive V2 install command has run; actual installed-file/V1-preservation readback pending. No V2 activation or `DEPLOYED` receipt                |
-| Procedure and acceptance inputs | Independent source/freeze review passed; 30 offline tests and Ruff/Black/mypy passed independently        | Offline/localhost checks have no authenticated production acceptance scope                                                                         |
-| Exact operational-head CI       | `CI_PASS`: 21 mandatory successful checks, 6 intentional skips, no pending/failure/cancellation           | Single targeted Playwright retry: 62 passed (31 Chromium, 31 mobile), 0 failed/skipped/flaky; source CI is separate from production acceptance     |
-| Execution clearance             | `FINAL_COMBINED_CLEARANCE_PASS`, architect PASS, and coordinator `CLEAR_TO_EXECUTE_SCOPED_CUTOVER` issued | Conditional immediate guards remain required. Inactive installation begun; all subsequent mutations held for read-only outcome/precondition review |
-| Production V2 acceptance        | Not executed                                                                                              | No `DEPLOYED` or `PRODUCTION_ACCEPTED`; actual installation/readback, V1 Search checkpoint, activation, and six-profile acceptance remain required |
+| Gate or surface                 | Observed result                                                                                                                 | Evidence limit                                                                                                                                                                          |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Five workstreams                | Scoped source adopted and integrated                                                                                            | The adoption manifest includes open inventory, asset/device, policy, and Governor runtime holds                                                                                         |
+| Functional source               | Frozen at `299f694702ac2dcc61a0f30aa34e4b3ef12f9118`                                                                            | Local tests are bounded integration evidence                                                                                                                                            |
+| Clean V2 package                | Source `5950592d922706dd67fc0320e8c5f3dc005a47b7`; repeat bytes and installed-file checks passed                                | Packaging does not establish live production behavior                                                                                                                                   |
+| Existing staging                | V2 2.5.0 installed; all 599 reviewed file hashes matched                                                                        | Staging has 220 product/variation records; it cannot establish parity with production's 33 simple products                                                                              |
+| Production                      | `https://skyyrose.co`, active V1 `skyyrose-flagship`; exact inactive V2 installation and V1 preservation independently verified | All 599 installed V2 hashes matched. Ten owned pages remain drafts; Search MU installed and actual hosting caches cleared. No V2 activation or `DEPLOYED`                               |
+| Procedure and acceptance inputs | Independent source/freeze review passed; 30 offline tests and Ruff/Black/mypy passed independently                              | Offline/localhost checks have no authenticated production acceptance scope                                                                                                              |
+| Exact operational-head CI       | `CI_PASS`: 21 mandatory successful checks, 6 intentional skips, no pending/failure/cancellation                                 | Single targeted Playwright retry: 62 passed (31 Chromium, 31 mobile), 0 failed/skipped/flaky; source CI is separate from production acceptance                                          |
+| Execution clearance             | `FINAL_COMBINED_CLEARANCE_PASS`, architect PASS, and coordinator `CLEAR_TO_EXECUTE_SCOPED_CUTOVER` issued                       | Initial precondition-classification hold released after independent readback review. Immediate guards still apply; the failed V1 Search checkpoint now holds all next production writes |
+| V1 Search checkpoint            | Desktop and mobile failed while awaiting a Search response for 25 seconds                                                       | Read-only diagnosis verified a test-query/matcher encoding mismatch. Search returned HTTP 200 results; corrected harness review/refreeze and both profiles pending, not a runtime PASS  |
+| Production V2 acceptance        | Not executed                                                                                                                    | No `DEPLOYED` or `PRODUCTION_ACCEPTED`; reviewed correction and full two-profile V1 Search rerun, activation, and six-profile V2 acceptance remain required                             |
 
 The cancelled Playwright job is `110435542010` in CI run `36880002499` on exact
 `a662e707…`. Its preserved complete log records about 16 minutes in checkout, 3
@@ -63,23 +64,53 @@ installation or live V2 acceptance. Immediate authenticated target, source,
 artifact, option/page preimage, native configuration, and ownership guards
 remain required before each mutation.
 
-At **16:10:54 UTC**, integration reported that the first inactive V2 ZIP
-installation had been dispatched under that clearance before the coordinator's
-hold message arrived. The command returned **exit 0**. At the **16:11 UTC
-snapshot**, actual verification of all 599 installed file hashes and
-preservation of active V1 remains pending. Command completion does not establish
-an accepted installation. Outcome verification and read-only precondition
-classification are under review; **all subsequent mutations are held**. No page,
-MU, or activation writes have been reported. V1 remains active, and neither
-`DEPLOYED` nor `PRODUCTION_ACCEPTED` is established.
+The inactive installation command returned exit 0 under the reviewed clearance.
+Subsequent readback and independent review established all **599 exact installed
+V2 files** and preservation of active V1, its file/option baseline, and native
+products/prices. The coordinator released the initial
+precondition-classification hold at **16:27:08 UTC**. The original intent,
+attempt, and initially held readback remain immutable; the later hold-release
+receipt supplies the reviewed outcome.
 
-The original `production-inactive-v2-install-intent.json` and
-`production-inactive-v2-install-attempt.json` are retained in the production
-final pass evidence folder without rewriting earlier records. Any changed or
-unknown precondition stops the next mutation for read-only reconciliation under
-the reviewed stop/recovery rules. Source CI, conditional clearance, command
-outcome, verified installation, deployment, and actual production browser
-acceptance remain separate evidence states.
+The sole writer prepared **ten owned draft pages, IDs 10427–10436**. Read-only
+MU ownership and draft-page readbacks passed. The first MU command's ambiguous
+CLI warning is retained without a retry; its precise cause remains **UNKNOWN**.
+Fresh bootstrap checks were clean, and the later ownership/readback evidence
+establishes the installed reviewed extension without rewriting that attempt.
+
+At **16:33:58 UTC**, the authenticated hosting account `skyyroseco`, Production
+`skyyrose.co`, separately confirmed **"Object cache cleared."** and **"Global
+edge cache cleared."** Post-cache readback and the **16:34:25 UTC**
+`MU_INSTALLED_CACHE_CLEARED` signal bind the installed MU, draft ownership,
+cache clear, and still-active V1. These receipts establish installation and
+cache clearing, not public runtime acceptance.
+
+The frozen **`checkpoint-v1-live-20261001t1634`** failed in both desktop and
+mobile profiles between **16:34:41 and 16:35:41 UTC**, each timing out after
+**25 seconds** while awaiting a Search response. Its initial normal-home
+observations found no tracking handles or owned visitor/session identifiers;
+that narrow observation does not establish the complete privacy or Search gate.
+The failed results, per-profile receipts, and evidence manifest are preserved.
+
+The **16:37:50 UTC** read-only diagnostic verified a **test-query/matcher
+encoding mismatch**: both `+` and `%20` query forms returned Search API HTTP
+200, 27 total results and 10 result rows, with no JavaScript errors. The
+observed response query encoding did not satisfy the frozen predicate; `%20`
+navigation displayed the intended `Black Rose` input. This explains the
+checkpoint timeout without establishing a production Search outage or a
+checkpoint PASS. A local harness correction, independent review/refreeze, and a
+full desktop/mobile rerun remain pending. The timeout, privacy, product-click,
+empty-result, and native-form gates must be preserved; no application, MU,
+package, or operational-head change is part of that correction.
+
+At this snapshot, **all next production writes are held**. V1 remains active;
+the ten owned pages remain drafts. No V2 activation, `DEPLOYED`, or
+`PRODUCTION_ACCEPTED` is established. Source CI and conditional execution
+clearance remain separate valid receipts, but neither overrides the failed
+runtime checkpoint. Any changed or unknown precondition also stops the next
+mutation for read-only reconciliation under the reviewed stop/recovery rules.
+Never blindly retry an uncertain mutation or substitute diagnostic results for
+required acceptance evidence.
 
 The authenticated target snapshots report WordPress **7.1.2**, WooCommerce
 **11.1.2**, and PHP **8.4.26** on production and existing staging. These are
@@ -106,6 +137,16 @@ them with the site identity immediately before execution.
 | Scoped pre-execution clearance receipt          | `4f90c881ea90674736aa8828e50a34f27f1c604903f9ac6b32d19803149ba286` |
 | Inactive V2 installation intent                 | `db924ba569058bb1a2f961756229e919c521270d2c701f9a8ee03f0cdf94c9a6` |
 | Inactive V2 command-attempt receipt             | `317bcbe7625e1a6c9a32dcf790167585f3a1802d82da5ca269b686ea3abc5f9a` |
+| Inactive V2 installed-file readback             | `e7aa2feeee905f9ddcc861715d436a38c5a2b09ad9346ea8a268ff16e731d68d` |
+| Initial precondition hold-release receipt       | `ae25567c5c50f1b1e6c1c1565a1083298fc273fa44c675305ea353d076ab3f2c` |
+| MU installed ownership readback                 | `0cf5882765f84601b26654bdbfad25e4d6d682e6e3680378be8f390953eaa449` |
+| Ten-draft readback and warning trace            | `39ef314f8a1aa0487dff7107826e297ca24597a0f79d60be681a94cb446afba0` |
+| Authenticated hosting cache-clear receipt       | `b2f1ca21cd5dd89f3eaaa4f6d0c769a1c5e98241e4bbff429047974bb6480330` |
+| Post-cache MU readback                          | `92b5f00ef60b281ef26a99dc3340b8a271182181fac84a43ce7e6c2011137bcb` |
+| Installed MU/cache-cleared checkpoint signal    | `8ef3f92ae55f1890459fdf041741dda5a9b48db3ffcab9d61895a126fa7c2b76` |
+| Failed desktop/mobile V1 checkpoint results     | `3fe1b7e41d47af56a36d2806ffb77910cd1bd19f2b90e5f5db12ffd0cfc7d632` |
+| Failed V1 checkpoint evidence manifest          | `2268ca39ac746befa045d321f5442e3581a5f081c35a94f405d910c4a9cac1c2` |
+| Read-only Search encoding diagnostic            | `5759ca5b0c911f4a457c7d3c4e43094481bfdc638f655667702d6f86ac1a8534` |
 
 The Search extension is a separate artifact; it does not change the V2 ZIP.
 Recomputing hashes of changed files cannot approve a successor. Match the
@@ -140,9 +181,10 @@ existing store records and do not become an alternative product source.
 
 ## Execution and acceptance order
 
-The reviewed [runbook](RUNBOOK.md) preserves this order. The first clearance
-state is complete at this snapshot; runtime states still require actual
-evidence:
+The reviewed [runbook](RUNBOOK.md) preserves this order. Source clearance,
+inactive installation, draft preparation, and MU/cache readback are recorded at
+this snapshot. The V1 Search checkpoint must pass before activation; later
+runtime states still require actual evidence:
 
 1. `CI_PASS` and `CLEAR_TO_EXECUTE_SCOPED_CUTOVER` are recorded for exact
    `a662e707…`. The sole writer must refresh immediate target/preimage/ownership
@@ -192,16 +234,25 @@ release packet. They are **not assumed to be committed with this
 documentation**. On the current operator machine the packet is at
 `/Users/theceo/.codex/worktrees/4035/DevSkyy/tasks/production-readiness-redteam-20261001/final-clearance/`,
 with execution/readback records in
-`/Users/theceo/.codex/worktrees/4035/DevSkyy/tasks/production-final-pass-20261001/`.
+`/Users/theceo/.codex/worktrees/4035/DevSkyy/tasks/production-final-pass-20261001/evidence/`.
 The final-clearance packet contains
-`clear-to-execute-scoped-cutover-a662e707d.json`, `ci-pass-a662e707d.json`,
+`clear-to-execute-scoped-cutover-a662e707d.json`,
+`precondition-hold-release-a662e707d.json`, `ci-pass-a662e707d.json`,
 `ci-e2e-targeted-retry-dispatch-110435542010.json`,
 `ci-e2e-targeted-retry-identity-110451737866.json`,
 `acceptance-review-pass-receipt.json`,
 `combined-release-evidence-manifest.json`, `acceptance-procedure.md`, and
-`frozen-acceptance/acceptance-freeze-manifest.json`. Obtain the current packet
-from the coordinator and verify its pinned identities before execution; an
-unavailable receipt is an explicit gate gap.
+`frozen-acceptance/acceptance-freeze-manifest.json`. The failed V1 checkpoint is
+under
+`frozen-acceptance/evidence/production-v2-acceptance/checkpoint-v1-live-20261001t1634/`,
+including `results.json`, `evidence-manifest.json`, and desktop/mobile receipts.
+The execution evidence folder contains the installation, draft/MU readbacks,
+`production-mu-hosting-cache-clear.json`,
+`production-mu-installed-cache-cleared-signal.json`, and
+`production-search-query-encoding-diagnostic.json`.
+
+Obtain the current packet from the coordinator and verify its pinned identities
+before execution; an unavailable receipt is an explicit gate gap.
 
 The candidate manifest and adoption manifest preserve earlier pending statuses.
 Their historical success or hold fields must be read with the later dated
