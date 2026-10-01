@@ -9273,3 +9273,9 @@
 - `contact.php` — Contact page composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
 - `journal-entry.php` — Single journal entry composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
 
+
+## Stream1 local launch evidence 2026-10-01
+- `tasks/v2-launch-local-20261001/` — Local check runner, acceptance ledger, source/deployed mapping and bounded browser evidence. No release authority. (~2500 tok excluding logs)
+- `tasks/prelaunch-faq-rewrite-2026-09-26/` — Maintained unpublished FAQ candidate and refreshed public-source snapshots, reconciled against canonical product and brand data. (~6500 tok)
+- `tests/test_storefront_card_migration.py` — Schema-invalid input, writer-lock, authority preservation and projection/commit rollback regressions. (~1800 tok)
+- `tests/test_brand_php_generation.py`, `tests/test_faq_candidate.py` — Explicit no-tagline output and FAQ failure/parse tests. (~600 tok)

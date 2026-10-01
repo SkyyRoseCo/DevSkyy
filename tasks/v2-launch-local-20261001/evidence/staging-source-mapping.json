@@ -1,0 +1,2807 @@
+{
+  "retrieved_at_utc": "2026-10-01T07:16:02.544184+00:00",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "authentication": "existing SSH BatchMode; wp option home identity confirmed before inspection",
+  "source_refs": {
+    "local_source": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+    "frozen_base": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+    "launch_pr": "6d2b57508332938d55338f7fbe439675e7a18c94"
+  },
+  "scope": "PHP/CSS/JS/JSON only; fonts/images/videos/GLB and plugin runtime sources are not covered; no single deployed commit is inferred",
+  "summary": {
+    "local_source": 177,
+    "frozen_base": 148,
+    "launch_pr": 180,
+    "unmatched": 11
+  },
+  "files": [
+    {
+      "path": "404.php",
+      "deployed_sha256": "64351a69e99da8f513ed841e61fac6a811de0408b8d6fa71cbba247b58aac910",
+      "source_hashes": {
+        "local_source": "64351a69e99da8f513ed841e61fac6a811de0408b8d6fa71cbba247b58aac910",
+        "frozen_base": "64351a69e99da8f513ed841e61fac6a811de0408b8d6fa71cbba247b58aac910",
+        "launch_pr": "64351a69e99da8f513ed841e61fac6a811de0408b8d6fa71cbba247b58aac910"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "archive.php",
+      "deployed_sha256": "0bd7bb865569ad446863504a349be599023013a8f8963ef4d83e7a4b210eadb7",
+      "source_hashes": {
+        "local_source": "0bd7bb865569ad446863504a349be599023013a8f8963ef4d83e7a4b210eadb7",
+        "frozen_base": "0bd7bb865569ad446863504a349be599023013a8f8963ef4d83e7a4b210eadb7",
+        "launch_pr": "0bd7bb865569ad446863504a349be599023013a8f8963ef4d83e7a4b210eadb7"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/about-archive.css",
+      "deployed_sha256": "ddb4a151fb0c5010476d62b202f0050a6229fb0e077dc8abea12f67728a8b408",
+      "source_hashes": {
+        "local_source": "ddb4a151fb0c5010476d62b202f0050a6229fb0e077dc8abea12f67728a8b408",
+        "frozen_base": "ddb4a151fb0c5010476d62b202f0050a6229fb0e077dc8abea12f67728a8b408",
+        "launch_pr": "ddb4a151fb0c5010476d62b202f0050a6229fb0e077dc8abea12f67728a8b408"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/about-archive.min.css",
+      "deployed_sha256": "146c48137f6998015956c8f6d113600fd2ae1a0f00965f665b7b72a9c7479cb9",
+      "source_hashes": {
+        "local_source": "146c48137f6998015956c8f6d113600fd2ae1a0f00965f665b7b72a9c7479cb9",
+        "frozen_base": "146c48137f6998015956c8f6d113600fd2ae1a0f00965f665b7b72a9c7479cb9",
+        "launch_pr": "146c48137f6998015956c8f6d113600fd2ae1a0f00965f665b7b72a9c7479cb9"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/archive-style-inputs.json",
+      "deployed_sha256": "2ee7fffad85a9d8514744bb04794438cea3501bc9e5a4bc41e51b2c804d236e0",
+      "source_hashes": {
+        "local_source": "2ee7fffad85a9d8514744bb04794438cea3501bc9e5a4bc41e51b2c804d236e0",
+        "frozen_base": "2ee7fffad85a9d8514744bb04794438cea3501bc9e5a4bc41e51b2c804d236e0",
+        "launch_pr": "2ee7fffad85a9d8514744bb04794438cea3501bc9e5a4bc41e51b2c804d236e0"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/archive-theme.json",
+      "deployed_sha256": "c7093b25793dce2c2a5b88000eb62a3917bcee3f2f9a16ce8688e9986f75fa72",
+      "source_hashes": {
+        "local_source": "c7093b25793dce2c2a5b88000eb62a3917bcee3f2f9a16ce8688e9986f75fa72",
+        "frozen_base": "c7093b25793dce2c2a5b88000eb62a3917bcee3f2f9a16ce8688e9986f75fa72",
+        "launch_pr": "c7093b25793dce2c2a5b88000eb62a3917bcee3f2f9a16ce8688e9986f75fa72"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/archive-theme.min.css",
+      "deployed_sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a",
+      "source_hashes": {
+        "local_source": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a",
+        "frozen_base": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a",
+        "launch_pr": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/collection-scene-motion.css",
+      "deployed_sha256": "63e2960baaea6d46f62842db69de764184d2e834b278d94f10d1a617663e1cf0",
+      "source_hashes": {
+        "local_source": "63e2960baaea6d46f62842db69de764184d2e834b278d94f10d1a617663e1cf0",
+        "frozen_base": "63e2960baaea6d46f62842db69de764184d2e834b278d94f10d1a617663e1cf0",
+        "launch_pr": "63e2960baaea6d46f62842db69de764184d2e834b278d94f10d1a617663e1cf0"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/collection-scene-motion.min.css",
+      "deployed_sha256": "96ad72035cdb4b7078f94c837f93ee019c0d47f80d828ee78ba3f902dd3b8033",
+      "source_hashes": {
+        "local_source": "96ad72035cdb4b7078f94c837f93ee019c0d47f80d828ee78ba3f902dd3b8033",
+        "frozen_base": "96ad72035cdb4b7078f94c837f93ee019c0d47f80d828ee78ba3f902dd3b8033",
+        "launch_pr": "96ad72035cdb4b7078f94c837f93ee019c0d47f80d828ee78ba3f902dd3b8033"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/collection-world.css",
+      "deployed_sha256": "6a35ff0c9af2ba14343065b155e1cd258229b7c5bce261a240078f80ba3b9366",
+      "source_hashes": {
+        "local_source": "8a4432550827136309325539225ece20d702fd05f8d97f9c04d5fc15dc2bbeb9",
+        "frozen_base": "8a4432550827136309325539225ece20d702fd05f8d97f9c04d5fc15dc2bbeb9",
+        "launch_pr": "8a4432550827136309325539225ece20d702fd05f8d97f9c04d5fc15dc2bbeb9"
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "assets/css/collection-world.min.css",
+      "deployed_sha256": "a73c12bca1b73a3f09bae810b8cc2f332fa1c8c94e35a951329f6d1d215b20c2",
+      "source_hashes": {
+        "local_source": "9e22aab23d6a615352e0ea478799208c6de95e40ee3617b0416e32caf07f94ea",
+        "frozen_base": "9e22aab23d6a615352e0ea478799208c6de95e40ee3617b0416e32caf07f94ea",
+        "launch_pr": "9e22aab23d6a615352e0ea478799208c6de95e40ee3617b0416e32caf07f94ea"
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "assets/css/content-page.css",
+      "deployed_sha256": "887d24a7dcba56ed5912cb15e33e82db4460d7ae2045c83705c6dcd10e4222c6",
+      "source_hashes": {
+        "local_source": "887d24a7dcba56ed5912cb15e33e82db4460d7ae2045c83705c6dcd10e4222c6",
+        "frozen_base": "6087acd1c50dd61a8b0d467cf5d4ba1156b9a15dc21c34e25d1ac1ec27f18fa2",
+        "launch_pr": "887d24a7dcba56ed5912cb15e33e82db4460d7ae2045c83705c6dcd10e4222c6"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/content-page.min.css",
+      "deployed_sha256": "42dd33dc4bbcb5b595ca096fd8f3ab626c260c88066c028f996e6f594f70fa4e",
+      "source_hashes": {
+        "local_source": "42dd33dc4bbcb5b595ca096fd8f3ab626c260c88066c028f996e6f594f70fa4e",
+        "frozen_base": "29f3a2c70bcb7b46aa9a6da28836c38e09c907372db91bef630351ec76260dd4",
+        "launch_pr": "42dd33dc4bbcb5b595ca096fd8f3ab626c260c88066c028f996e6f594f70fa4e"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/controls.css",
+      "deployed_sha256": "8808bc48ed65e97ebd30de0abbb663cef8710a50b0db7b425321ac37b2ded4f4",
+      "source_hashes": {
+        "local_source": "8808bc48ed65e97ebd30de0abbb663cef8710a50b0db7b425321ac37b2ded4f4",
+        "frozen_base": "8808bc48ed65e97ebd30de0abbb663cef8710a50b0db7b425321ac37b2ded4f4",
+        "launch_pr": "8808bc48ed65e97ebd30de0abbb663cef8710a50b0db7b425321ac37b2ded4f4"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/controls.min.css",
+      "deployed_sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae",
+      "source_hashes": {
+        "local_source": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae",
+        "frozen_base": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae",
+        "launch_pr": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/critical/home.contract.json",
+      "deployed_sha256": "b92a0b4c5d758bb425cf75814af5ec851b95ba8b906f5d52650f841a40459a0b",
+      "source_hashes": {
+        "local_source": "b92a0b4c5d758bb425cf75814af5ec851b95ba8b906f5d52650f841a40459a0b",
+        "frozen_base": "e636ec832079cb3cc790a373c31fbba3a8d7e4b221bfb984d766ec9e82cc1d67",
+        "launch_pr": "b92a0b4c5d758bb425cf75814af5ec851b95ba8b906f5d52650f841a40459a0b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/critical/home.min.css",
+      "deployed_sha256": "26184bb56cf8c4c1518aaa7386a8cd15a042990c24dedc03cb06d7fe71778072",
+      "source_hashes": {
+        "local_source": "26184bb56cf8c4c1518aaa7386a8cd15a042990c24dedc03cb06d7fe71778072",
+        "frozen_base": "71c29fbaa5f8c45d5bbfe745fab6373d02a4613039a3163647eb62c2822dc1bf",
+        "launch_pr": "26184bb56cf8c4c1518aaa7386a8cd15a042990c24dedc03cb06d7fe71778072"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/design-tokens.css",
+      "deployed_sha256": "508d98241ce8f190339d1c52cfff5becd4d0dc76245dcc631ca3e1d76652981a",
+      "source_hashes": {
+        "local_source": "508d98241ce8f190339d1c52cfff5becd4d0dc76245dcc631ca3e1d76652981a",
+        "frozen_base": "508d98241ce8f190339d1c52cfff5becd4d0dc76245dcc631ca3e1d76652981a",
+        "launch_pr": "508d98241ce8f190339d1c52cfff5becd4d0dc76245dcc631ca3e1d76652981a"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/design-tokens.min.css",
+      "deployed_sha256": "42f7b19ea68394cb67e9c14a76d7530adcc1277f429eb126970aebea074a040f",
+      "source_hashes": {
+        "local_source": "42f7b19ea68394cb67e9c14a76d7530adcc1277f429eb126970aebea074a040f",
+        "frozen_base": "42f7b19ea68394cb67e9c14a76d7530adcc1277f429eb126970aebea074a040f",
+        "launch_pr": "42f7b19ea68394cb67e9c14a76d7530adcc1277f429eb126970aebea074a040f"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/global-shell.css",
+      "deployed_sha256": "458fabe99c650c561b47dce6b59fa49380671b313427d553b017f9770e7ce089",
+      "source_hashes": {
+        "local_source": "458fabe99c650c561b47dce6b59fa49380671b313427d553b017f9770e7ce089",
+        "frozen_base": "458fabe99c650c561b47dce6b59fa49380671b313427d553b017f9770e7ce089",
+        "launch_pr": "458fabe99c650c561b47dce6b59fa49380671b313427d553b017f9770e7ce089"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/global-shell.min.css",
+      "deployed_sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b",
+      "source_hashes": {
+        "local_source": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b",
+        "frozen_base": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b",
+        "launch_pr": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/hero-commerce-scenes.css",
+      "deployed_sha256": "edfe3b0bc1767dbf9dc349aabc0575b05ea4326659f800655f09b13ed39a6f8b",
+      "source_hashes": {
+        "local_source": "edfe3b0bc1767dbf9dc349aabc0575b05ea4326659f800655f09b13ed39a6f8b",
+        "frozen_base": "edfe3b0bc1767dbf9dc349aabc0575b05ea4326659f800655f09b13ed39a6f8b",
+        "launch_pr": "edfe3b0bc1767dbf9dc349aabc0575b05ea4326659f800655f09b13ed39a6f8b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/hero-commerce-scenes.min.css",
+      "deployed_sha256": "87abb90de0ddc9a4cae73a300a817300ecc9c1cde492df4eba49a11095226fdb",
+      "source_hashes": {
+        "local_source": "87abb90de0ddc9a4cae73a300a817300ecc9c1cde492df4eba49a11095226fdb",
+        "frozen_base": "87abb90de0ddc9a4cae73a300a817300ecc9c1cde492df4eba49a11095226fdb",
+        "launch_pr": "87abb90de0ddc9a4cae73a300a817300ecc9c1cde492df4eba49a11095226fdb"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/home-art-direction.css",
+      "deployed_sha256": "5b05ce9d67a4ace2937aadfc028faf7cbb948c5127a73a1d9d755cff4c27ab49",
+      "source_hashes": {
+        "local_source": "5b05ce9d67a4ace2937aadfc028faf7cbb948c5127a73a1d9d755cff4c27ab49",
+        "frozen_base": null,
+        "launch_pr": "5b05ce9d67a4ace2937aadfc028faf7cbb948c5127a73a1d9d755cff4c27ab49"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/home-art-direction.min.css",
+      "deployed_sha256": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6",
+      "source_hashes": {
+        "local_source": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6",
+        "frozen_base": null,
+        "launch_pr": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/home-experience.css",
+      "deployed_sha256": "113b25b40e3828bb7b50039b99f217ca6de32deb6c929ab504517cac49d447de",
+      "source_hashes": {
+        "local_source": "113b25b40e3828bb7b50039b99f217ca6de32deb6c929ab504517cac49d447de",
+        "frozen_base": null,
+        "launch_pr": "113b25b40e3828bb7b50039b99f217ca6de32deb6c929ab504517cac49d447de"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/home-experience.min.css",
+      "deployed_sha256": "79c2c386597fe9493ca66e2bc4e2c34911293b190a2e1540935eacefb8c8c5d9",
+      "source_hashes": {
+        "local_source": "79c2c386597fe9493ca66e2bc4e2c34911293b190a2e1540935eacefb8c8c5d9",
+        "frozen_base": null,
+        "launch_pr": "79c2c386597fe9493ca66e2bc4e2c34911293b190a2e1540935eacefb8c8c5d9"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/home-page.css",
+      "deployed_sha256": "48aeca3a8efbd250c038bd1f47ec6542f785d22295acee34a788af6aa749d625",
+      "source_hashes": {
+        "local_source": "48aeca3a8efbd250c038bd1f47ec6542f785d22295acee34a788af6aa749d625",
+        "frozen_base": "f92fdb8a66072724ee60470317c6e0b86bb6e8acaf2842b69032521fa428a372",
+        "launch_pr": "48aeca3a8efbd250c038bd1f47ec6542f785d22295acee34a788af6aa749d625"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/home-page.min.css",
+      "deployed_sha256": "e2f0dd42494a02b552a8716c8a6b3320ecf3ee8f48ee690e28ae1b46dde2b3f7",
+      "source_hashes": {
+        "local_source": "e2f0dd42494a02b552a8716c8a6b3320ecf3ee8f48ee690e28ae1b46dde2b3f7",
+        "frozen_base": "371e22917c7cc34a97cf9c0913f4e81866c2c97ee1cda66aeafc3edc9a9d27b1",
+        "launch_pr": "e2f0dd42494a02b552a8716c8a6b3320ecf3ee8f48ee690e28ae1b46dde2b3f7"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/immersive.css",
+      "deployed_sha256": "e41d5d02789476bbe709c84d2409c01429fd5dcc2c7533c82a4b841116137530",
+      "source_hashes": {
+        "local_source": "e41d5d02789476bbe709c84d2409c01429fd5dcc2c7533c82a4b841116137530",
+        "frozen_base": "e41d5d02789476bbe709c84d2409c01429fd5dcc2c7533c82a4b841116137530",
+        "launch_pr": "e41d5d02789476bbe709c84d2409c01429fd5dcc2c7533c82a4b841116137530"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/immersive.min.css",
+      "deployed_sha256": "390a38490d6ea890b910fccc73434a24c336389cda682deda6ddda5e468d146d",
+      "source_hashes": {
+        "local_source": "390a38490d6ea890b910fccc73434a24c336389cda682deda6ddda5e468d146d",
+        "frozen_base": "390a38490d6ea890b910fccc73434a24c336389cda682deda6ddda5e468d146d",
+        "launch_pr": "390a38490d6ea890b910fccc73434a24c336389cda682deda6ddda5e468d146d"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/legacy-world-components.css",
+      "deployed_sha256": "581bea768d40b7b1a65e05cd1f38aabcd10d54d3185d6dcb9af3bed912e59247",
+      "source_hashes": {
+        "local_source": "581bea768d40b7b1a65e05cd1f38aabcd10d54d3185d6dcb9af3bed912e59247",
+        "frozen_base": "581bea768d40b7b1a65e05cd1f38aabcd10d54d3185d6dcb9af3bed912e59247",
+        "launch_pr": "581bea768d40b7b1a65e05cd1f38aabcd10d54d3185d6dcb9af3bed912e59247"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/legacy-world-components.min.css",
+      "deployed_sha256": "410ace7f1cebec1f4e3cbd1ad0d9f6247d39259cb43faa0c539d49d35ae7e302",
+      "source_hashes": {
+        "local_source": "410ace7f1cebec1f4e3cbd1ad0d9f6247d39259cb43faa0c539d49d35ae7e302",
+        "frozen_base": "410ace7f1cebec1f4e3cbd1ad0d9f6247d39259cb43faa0c539d49d35ae7e302",
+        "launch_pr": "410ace7f1cebec1f4e3cbd1ad0d9f6247d39259cb43faa0c539d49d35ae7e302"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/lookbook.css",
+      "deployed_sha256": "34610a503fce9eb76f389301f2bd42ea680965742d499511e80c688f9abf5e3b",
+      "source_hashes": {
+        "local_source": "34610a503fce9eb76f389301f2bd42ea680965742d499511e80c688f9abf5e3b",
+        "frozen_base": "34610a503fce9eb76f389301f2bd42ea680965742d499511e80c688f9abf5e3b",
+        "launch_pr": "34610a503fce9eb76f389301f2bd42ea680965742d499511e80c688f9abf5e3b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/lookbook.min.css",
+      "deployed_sha256": "25a23fab335f589f254637a5f86d41e4787635b6bdac10be6658fa08618c82b5",
+      "source_hashes": {
+        "local_source": "25a23fab335f589f254637a5f86d41e4787635b6bdac10be6658fa08618c82b5",
+        "frozen_base": "25a23fab335f589f254637a5f86d41e4787635b6bdac10be6658fa08618c82b5",
+        "launch_pr": "25a23fab335f589f254637a5f86d41e4787635b6bdac10be6658fa08618c82b5"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/mascot.css",
+      "deployed_sha256": "ea9a84f83a4bfc092d14649084d43154a9d47c590fc27bee4820dea7c83878a8",
+      "source_hashes": {
+        "local_source": "ea9a84f83a4bfc092d14649084d43154a9d47c590fc27bee4820dea7c83878a8",
+        "frozen_base": "ea9a84f83a4bfc092d14649084d43154a9d47c590fc27bee4820dea7c83878a8",
+        "launch_pr": "ea9a84f83a4bfc092d14649084d43154a9d47c590fc27bee4820dea7c83878a8"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/mascot.min.css",
+      "deployed_sha256": "efb43ec6bb085e2f4ce8983e4d99dadda8b79e6082bda275a71d8a2686921014",
+      "source_hashes": {
+        "local_source": "efb43ec6bb085e2f4ce8983e4d99dadda8b79e6082bda275a71d8a2686921014",
+        "frozen_base": "efb43ec6bb085e2f4ce8983e4d99dadda8b79e6082bda275a71d8a2686921014",
+        "launch_pr": "efb43ec6bb085e2f4ce8983e4d99dadda8b79e6082bda275a71d8a2686921014"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/premium-commerce.css",
+      "deployed_sha256": "2431f8ec787cf370a82869373a9ffb1a792a559b961f01767247bf2a9f90e0a0",
+      "source_hashes": {
+        "local_source": "2431f8ec787cf370a82869373a9ffb1a792a559b961f01767247bf2a9f90e0a0",
+        "frozen_base": "2431f8ec787cf370a82869373a9ffb1a792a559b961f01767247bf2a9f90e0a0",
+        "launch_pr": "2431f8ec787cf370a82869373a9ffb1a792a559b961f01767247bf2a9f90e0a0"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/premium-commerce.min.css",
+      "deployed_sha256": "8e0c34ac5644412a2b5cb227e751379907f850fc8e49fe6137c19eae2518176f",
+      "source_hashes": {
+        "local_source": "8e0c34ac5644412a2b5cb227e751379907f850fc8e49fe6137c19eae2518176f",
+        "frozen_base": "8e0c34ac5644412a2b5cb227e751379907f850fc8e49fe6137c19eae2518176f",
+        "launch_pr": "8e0c34ac5644412a2b5cb227e751379907f850fc8e49fe6137c19eae2518176f"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/product-page.css",
+      "deployed_sha256": "81071fab3523fcfc283afbb6565e94928f2548692a7cde611e8b7cc8fc144bb4",
+      "source_hashes": {
+        "local_source": "81071fab3523fcfc283afbb6565e94928f2548692a7cde611e8b7cc8fc144bb4",
+        "frozen_base": "81071fab3523fcfc283afbb6565e94928f2548692a7cde611e8b7cc8fc144bb4",
+        "launch_pr": "81071fab3523fcfc283afbb6565e94928f2548692a7cde611e8b7cc8fc144bb4"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/product-page.min.css",
+      "deployed_sha256": "6a4fd7f46d304fba6b0ca781071d924dfddbc67aa7bd0c06ea7347b91d84150d",
+      "source_hashes": {
+        "local_source": "6a4fd7f46d304fba6b0ca781071d924dfddbc67aa7bd0c06ea7347b91d84150d",
+        "frozen_base": "6a4fd7f46d304fba6b0ca781071d924dfddbc67aa7bd0c06ea7347b91d84150d",
+        "launch_pr": "6a4fd7f46d304fba6b0ca781071d924dfddbc67aa7bd0c06ea7347b91d84150d"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/quick-view-commerce.css",
+      "deployed_sha256": "bd96e318ddf6ece5b38c1dd718221638090679cbfb5170663ac2bd4ee46597fc",
+      "source_hashes": {
+        "local_source": "bd96e318ddf6ece5b38c1dd718221638090679cbfb5170663ac2bd4ee46597fc",
+        "frozen_base": "bd96e318ddf6ece5b38c1dd718221638090679cbfb5170663ac2bd4ee46597fc",
+        "launch_pr": "bd96e318ddf6ece5b38c1dd718221638090679cbfb5170663ac2bd4ee46597fc"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/quick-view-commerce.min.css",
+      "deployed_sha256": "d2acd258b12e5f24aeb531f72f197679865fed1c2ca0261e137e681adb16800b",
+      "source_hashes": {
+        "local_source": "d2acd258b12e5f24aeb531f72f197679865fed1c2ca0261e137e681adb16800b",
+        "frozen_base": "d2acd258b12e5f24aeb531f72f197679865fed1c2ca0261e137e681adb16800b",
+        "launch_pr": "d2acd258b12e5f24aeb531f72f197679865fed1c2ca0261e137e681adb16800b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/scene-handoff.css",
+      "deployed_sha256": "8956f24b8ae88d9b14fee0eada4420d1927b9b48bc93167c90dbfd883bddcb3f",
+      "source_hashes": {
+        "local_source": "8956f24b8ae88d9b14fee0eada4420d1927b9b48bc93167c90dbfd883bddcb3f",
+        "frozen_base": "8956f24b8ae88d9b14fee0eada4420d1927b9b48bc93167c90dbfd883bddcb3f",
+        "launch_pr": "8956f24b8ae88d9b14fee0eada4420d1927b9b48bc93167c90dbfd883bddcb3f"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/scene-handoff.min.css",
+      "deployed_sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255",
+      "source_hashes": {
+        "local_source": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255",
+        "frozen_base": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255",
+        "launch_pr": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/search-preview.css",
+      "deployed_sha256": "bde18bf9c770052a340583928f6f8fd383f40421a31e6d91ae0af715ac00591b",
+      "source_hashes": {
+        "local_source": "bde18bf9c770052a340583928f6f8fd383f40421a31e6d91ae0af715ac00591b",
+        "frozen_base": "bde18bf9c770052a340583928f6f8fd383f40421a31e6d91ae0af715ac00591b",
+        "launch_pr": "bde18bf9c770052a340583928f6f8fd383f40421a31e6d91ae0af715ac00591b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/search-preview.min.css",
+      "deployed_sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac",
+      "source_hashes": {
+        "local_source": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac",
+        "frozen_base": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac",
+        "launch_pr": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/shop-page.css",
+      "deployed_sha256": "ca48370cfed9c817ea34d0f4a21ae4b2a4683f74cb1e35cc96f09ce45ac3ce5a",
+      "source_hashes": {
+        "local_source": "ca48370cfed9c817ea34d0f4a21ae4b2a4683f74cb1e35cc96f09ce45ac3ce5a",
+        "frozen_base": "ca48370cfed9c817ea34d0f4a21ae4b2a4683f74cb1e35cc96f09ce45ac3ce5a",
+        "launch_pr": "ca48370cfed9c817ea34d0f4a21ae4b2a4683f74cb1e35cc96f09ce45ac3ce5a"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/shop-page.min.css",
+      "deployed_sha256": "279a7e4fe988b7831eea95091877463a05f51d57775ee8184355d7ce21b9f9ae",
+      "source_hashes": {
+        "local_source": "279a7e4fe988b7831eea95091877463a05f51d57775ee8184355d7ce21b9f9ae",
+        "frozen_base": "279a7e4fe988b7831eea95091877463a05f51d57775ee8184355d7ce21b9f9ae",
+        "launch_pr": "279a7e4fe988b7831eea95091877463a05f51d57775ee8184355d7ce21b9f9ae"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/theme.css",
+      "deployed_sha256": "316b810daae6e0b4d31acd9e2dee117d792765c6cb7d2359e99c33926693b346",
+      "source_hashes": {
+        "local_source": "316b810daae6e0b4d31acd9e2dee117d792765c6cb7d2359e99c33926693b346",
+        "frozen_base": "316b810daae6e0b4d31acd9e2dee117d792765c6cb7d2359e99c33926693b346",
+        "launch_pr": "316b810daae6e0b4d31acd9e2dee117d792765c6cb7d2359e99c33926693b346"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/theme.min.css",
+      "deployed_sha256": "c331896bb1e1e1225ba77697283992b720e2776cddf6d8078412f67b85a1201d",
+      "source_hashes": {
+        "local_source": "c331896bb1e1e1225ba77697283992b720e2776cddf6d8078412f67b85a1201d",
+        "frozen_base": "c331896bb1e1e1225ba77697283992b720e2776cddf6d8078412f67b85a1201d",
+        "launch_pr": "c331896bb1e1e1225ba77697283992b720e2776cddf6d8078412f67b85a1201d"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/visual-recovery.css",
+      "deployed_sha256": "9ef48e21019170ecc45e7868f495a2d3682d9d5ab145120b7ba68b4014c3faee",
+      "source_hashes": {
+        "local_source": "9ef48e21019170ecc45e7868f495a2d3682d9d5ab145120b7ba68b4014c3faee",
+        "frozen_base": "9ef48e21019170ecc45e7868f495a2d3682d9d5ab145120b7ba68b4014c3faee",
+        "launch_pr": "9ef48e21019170ecc45e7868f495a2d3682d9d5ab145120b7ba68b4014c3faee"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/css/visual-recovery.min.css",
+      "deployed_sha256": "49a038720af87a2353eec0e97a823e591d5fdbdb1a0b6b2a769320b9d13edc35",
+      "source_hashes": {
+        "local_source": "49a038720af87a2353eec0e97a823e591d5fdbdb1a0b6b2a769320b9d13edc35",
+        "frozen_base": "49a038720af87a2353eec0e97a823e591d5fdbdb1a0b6b2a769320b9d13edc35",
+        "launch_pr": "49a038720af87a2353eec0e97a823e591d5fdbdb1a0b6b2a769320b9d13edc35"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/derived/card-frames/manifest.json",
+      "deployed_sha256": "d0f94db683dfc01d877d2c4254295ed8aa98ef4b12ede6a784e8fc220b72dafe",
+      "source_hashes": {
+        "local_source": "d0f94db683dfc01d877d2c4254295ed8aa98ef4b12ede6a784e8fc220b72dafe",
+        "frozen_base": "d0f94db683dfc01d877d2c4254295ed8aa98ef4b12ede6a784e8fc220b72dafe",
+        "launch_pr": "d0f94db683dfc01d877d2c4254295ed8aa98ef4b12ede6a784e8fc220b72dafe"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/derived/card-fronts/manifest.json",
+      "deployed_sha256": "bd176a5b910a9c0d37281a8e23e1222992aeabc6acb8eaa4877a54a30cadf64c",
+      "source_hashes": {
+        "local_source": "bd176a5b910a9c0d37281a8e23e1222992aeabc6acb8eaa4877a54a30cadf64c",
+        "frozen_base": "bd176a5b910a9c0d37281a8e23e1222992aeabc6acb8eaa4877a54a30cadf64c",
+        "launch_pr": "bd176a5b910a9c0d37281a8e23e1222992aeabc6acb8eaa4877a54a30cadf64c"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/derived/fonts/manifest.json",
+      "deployed_sha256": "4bc28ef2891a41eb4f7edf37c7177fc2192e2797808467a9dea1d810042d6b58",
+      "source_hashes": {
+        "local_source": "4bc28ef2891a41eb4f7edf37c7177fc2192e2797808467a9dea1d810042d6b58",
+        "frozen_base": "4bc28ef2891a41eb4f7edf37c7177fc2192e2797808467a9dea1d810042d6b58",
+        "launch_pr": "4bc28ef2891a41eb4f7edf37c7177fc2192e2797808467a9dea1d810042d6b58"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/about-archive.js",
+      "deployed_sha256": "f92e60cd405a20a30599bc1aa58a45561b3e62ef37ac83e623ec5e8e9d4d9d42",
+      "source_hashes": {
+        "local_source": "f92e60cd405a20a30599bc1aa58a45561b3e62ef37ac83e623ec5e8e9d4d9d42",
+        "frozen_base": "f92e60cd405a20a30599bc1aa58a45561b3e62ef37ac83e623ec5e8e9d4d9d42",
+        "launch_pr": "f92e60cd405a20a30599bc1aa58a45561b3e62ef37ac83e623ec5e8e9d4d9d42"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/about-archive.min.js",
+      "deployed_sha256": "32abadb6d96d55cbf5b9aa95316a0b025bcee6978a162f37855f2291d5202016",
+      "source_hashes": {
+        "local_source": "32abadb6d96d55cbf5b9aa95316a0b025bcee6978a162f37855f2291d5202016",
+        "frozen_base": "32abadb6d96d55cbf5b9aa95316a0b025bcee6978a162f37855f2291d5202016",
+        "launch_pr": "32abadb6d96d55cbf5b9aa95316a0b025bcee6978a162f37855f2291d5202016"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/collection-scene-motion.js",
+      "deployed_sha256": "de6e0500f53b8b368c316fa0b43b72625eca35768b9a0acb69b694e3b5c5981a",
+      "source_hashes": {
+        "local_source": "de6e0500f53b8b368c316fa0b43b72625eca35768b9a0acb69b694e3b5c5981a",
+        "frozen_base": "de6e0500f53b8b368c316fa0b43b72625eca35768b9a0acb69b694e3b5c5981a",
+        "launch_pr": "de6e0500f53b8b368c316fa0b43b72625eca35768b9a0acb69b694e3b5c5981a"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/collection-scene-motion.min.js",
+      "deployed_sha256": "737430c70e309744bbe331b3a708149090f11b5c7758208b427fc8df7245bccb",
+      "source_hashes": {
+        "local_source": "737430c70e309744bbe331b3a708149090f11b5c7758208b427fc8df7245bccb",
+        "frozen_base": "737430c70e309744bbe331b3a708149090f11b5c7758208b427fc8df7245bccb",
+        "launch_pr": "737430c70e309744bbe331b3a708149090f11b5c7758208b427fc8df7245bccb"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/home-experience.js",
+      "deployed_sha256": "377edb0a6eb73bca86de7e0c4b28e5061218b4179f3858570bfacba64fa71506",
+      "source_hashes": {
+        "local_source": "377edb0a6eb73bca86de7e0c4b28e5061218b4179f3858570bfacba64fa71506",
+        "frozen_base": null,
+        "launch_pr": "377edb0a6eb73bca86de7e0c4b28e5061218b4179f3858570bfacba64fa71506"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/home-experience.min.js",
+      "deployed_sha256": "35404dbf717c5700351cad84342d76a654a75ee88f4919926c8f7c8dcbf24ec4",
+      "source_hashes": {
+        "local_source": "35404dbf717c5700351cad84342d76a654a75ee88f4919926c8f7c8dcbf24ec4",
+        "frozen_base": null,
+        "launch_pr": "35404dbf717c5700351cad84342d76a654a75ee88f4919926c8f7c8dcbf24ec4"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/house-motion.js",
+      "deployed_sha256": "70f99397da5053dc29a592240f117c908a4b4fdcdeada555512a14f751724825",
+      "source_hashes": {
+        "local_source": "70f99397da5053dc29a592240f117c908a4b4fdcdeada555512a14f751724825",
+        "frozen_base": null,
+        "launch_pr": "70f99397da5053dc29a592240f117c908a4b4fdcdeada555512a14f751724825"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/house-motion.min.js",
+      "deployed_sha256": "4f67df76e97daaf9c53f5538b5fb16236920a8fe00ad66d84d5564fb668bb63c",
+      "source_hashes": {
+        "local_source": "4f67df76e97daaf9c53f5538b5fb16236920a8fe00ad66d84d5564fb668bb63c",
+        "frozen_base": null,
+        "launch_pr": "4f67df76e97daaf9c53f5538b5fb16236920a8fe00ad66d84d5564fb668bb63c"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/house-of-roses-motion.js",
+      "deployed_sha256": "3dd6aebd9e15301a4238621392ae99d7db6eab7180c13d4116695dddf9f1d942",
+      "source_hashes": {
+        "local_source": "3dd6aebd9e15301a4238621392ae99d7db6eab7180c13d4116695dddf9f1d942",
+        "frozen_base": "3dd6aebd9e15301a4238621392ae99d7db6eab7180c13d4116695dddf9f1d942",
+        "launch_pr": "3dd6aebd9e15301a4238621392ae99d7db6eab7180c13d4116695dddf9f1d942"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/house-of-roses-motion.min.js",
+      "deployed_sha256": "18db5135412fdeb75d165377146593bbafc3c246fccaf70f47c02cc06418b7a0",
+      "source_hashes": {
+        "local_source": "18db5135412fdeb75d165377146593bbafc3c246fccaf70f47c02cc06418b7a0",
+        "frozen_base": "18db5135412fdeb75d165377146593bbafc3c246fccaf70f47c02cc06418b7a0",
+        "launch_pr": "18db5135412fdeb75d165377146593bbafc3c246fccaf70f47c02cc06418b7a0"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/immersive.js",
+      "deployed_sha256": "5b3614caf69fa31c5663777b0c1bb3aa681f4feb3260243db96e92a15d61a09f",
+      "source_hashes": {
+        "local_source": "5b3614caf69fa31c5663777b0c1bb3aa681f4feb3260243db96e92a15d61a09f",
+        "frozen_base": "5b3614caf69fa31c5663777b0c1bb3aa681f4feb3260243db96e92a15d61a09f",
+        "launch_pr": "5b3614caf69fa31c5663777b0c1bb3aa681f4feb3260243db96e92a15d61a09f"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/immersive.min.js",
+      "deployed_sha256": "6adc1ab8faaadc7e7e27cf776cf94b5f6d2be72b777f66760566cbe7e652f291",
+      "source_hashes": {
+        "local_source": "6adc1ab8faaadc7e7e27cf776cf94b5f6d2be72b777f66760566cbe7e652f291",
+        "frozen_base": "6adc1ab8faaadc7e7e27cf776cf94b5f6d2be72b777f66760566cbe7e652f291",
+        "launch_pr": "6adc1ab8faaadc7e7e27cf776cf94b5f6d2be72b777f66760566cbe7e652f291"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/kids-capsule-reveal.js",
+      "deployed_sha256": "1c5c613b848cb48c32f19b47a34eaf262cbbf2edd3eaef34999d6b345ac31154",
+      "source_hashes": {
+        "local_source": "1c5c613b848cb48c32f19b47a34eaf262cbbf2edd3eaef34999d6b345ac31154",
+        "frozen_base": "1c5c613b848cb48c32f19b47a34eaf262cbbf2edd3eaef34999d6b345ac31154",
+        "launch_pr": "1c5c613b848cb48c32f19b47a34eaf262cbbf2edd3eaef34999d6b345ac31154"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/kids-capsule-reveal.min.js",
+      "deployed_sha256": "2e9f4da8569ed54e0970714a082ce59fcf180a646ddf8d4f96acf2a9d592e7fa",
+      "source_hashes": {
+        "local_source": "2e9f4da8569ed54e0970714a082ce59fcf180a646ddf8d4f96acf2a9d592e7fa",
+        "frozen_base": "2e9f4da8569ed54e0970714a082ce59fcf180a646ddf8d4f96acf2a9d592e7fa",
+        "launch_pr": "2e9f4da8569ed54e0970714a082ce59fcf180a646ddf8d4f96acf2a9d592e7fa"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/lib/draco/draco_decoder.js",
+      "deployed_sha256": "30e4d486fa020737af10e3c56197693e5b904bdc05b8bfa5d7b06751dec6da04",
+      "source_hashes": {
+        "local_source": "30e4d486fa020737af10e3c56197693e5b904bdc05b8bfa5d7b06751dec6da04",
+        "frozen_base": "30e4d486fa020737af10e3c56197693e5b904bdc05b8bfa5d7b06751dec6da04",
+        "launch_pr": "30e4d486fa020737af10e3c56197693e5b904bdc05b8bfa5d7b06751dec6da04"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/lib/draco/draco_wasm_wrapper.js",
+      "deployed_sha256": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8",
+      "source_hashes": {
+        "local_source": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8",
+        "frozen_base": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8",
+        "launch_pr": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/lib/three-r170/BufferGeometryUtils.js",
+      "deployed_sha256": "b9ea77ef3aacbf82d386c33311067e6ea4a3aac4190b32e001bdd11d063fb6ae",
+      "source_hashes": {
+        "local_source": "b9ea77ef3aacbf82d386c33311067e6ea4a3aac4190b32e001bdd11d063fb6ae",
+        "frozen_base": "b9ea77ef3aacbf82d386c33311067e6ea4a3aac4190b32e001bdd11d063fb6ae",
+        "launch_pr": "b9ea77ef3aacbf82d386c33311067e6ea4a3aac4190b32e001bdd11d063fb6ae"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/lib/three-r170/DRACOLoader.js",
+      "deployed_sha256": "5250b9d5985899c458aae86b8636add0e98801b5dc330e0ab6f9e37977819481",
+      "source_hashes": {
+        "local_source": "5250b9d5985899c458aae86b8636add0e98801b5dc330e0ab6f9e37977819481",
+        "frozen_base": "5250b9d5985899c458aae86b8636add0e98801b5dc330e0ab6f9e37977819481",
+        "launch_pr": "5250b9d5985899c458aae86b8636add0e98801b5dc330e0ab6f9e37977819481"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/lib/three-r170/GLTFLoader.js",
+      "deployed_sha256": "d6b517ee599c974f9b3648b11621dc23d41de24adcac3c826b3985a9313f6b84",
+      "source_hashes": {
+        "local_source": "d6b517ee599c974f9b3648b11621dc23d41de24adcac3c826b3985a9313f6b84",
+        "frozen_base": "d6b517ee599c974f9b3648b11621dc23d41de24adcac3c826b3985a9313f6b84",
+        "launch_pr": "d6b517ee599c974f9b3648b11621dc23d41de24adcac3c826b3985a9313f6b84"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/lib/three-r170/three.module.min.js",
+      "deployed_sha256": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+      "source_hashes": {
+        "local_source": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+        "frozen_base": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+        "launch_pr": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/mascot-loader.js",
+      "deployed_sha256": "3daef850319e984058b8beb75021ef2cbad143f4974c42fd5eca4ec90b9fb5ab",
+      "source_hashes": {
+        "local_source": "3daef850319e984058b8beb75021ef2cbad143f4974c42fd5eca4ec90b9fb5ab",
+        "frozen_base": "3daef850319e984058b8beb75021ef2cbad143f4974c42fd5eca4ec90b9fb5ab",
+        "launch_pr": "3daef850319e984058b8beb75021ef2cbad143f4974c42fd5eca4ec90b9fb5ab"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/mascot-loader.min.js",
+      "deployed_sha256": "a45685dd734792bee911c6af36217ea2e9e4daea41abdb708bf561dd23603572",
+      "source_hashes": {
+        "local_source": "a45685dd734792bee911c6af36217ea2e9e4daea41abdb708bf561dd23603572",
+        "frozen_base": "a45685dd734792bee911c6af36217ea2e9e4daea41abdb708bf561dd23603572",
+        "launch_pr": "a45685dd734792bee911c6af36217ea2e9e4daea41abdb708bf561dd23603572"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/mascot.js",
+      "deployed_sha256": "3d9c0e3210984b86a544a2a2df2d0f1e6fe621f24d1c23802128638b9e0e2cfd",
+      "source_hashes": {
+        "local_source": "3d9c0e3210984b86a544a2a2df2d0f1e6fe621f24d1c23802128638b9e0e2cfd",
+        "frozen_base": "3d9c0e3210984b86a544a2a2df2d0f1e6fe621f24d1c23802128638b9e0e2cfd",
+        "launch_pr": "3d9c0e3210984b86a544a2a2df2d0f1e6fe621f24d1c23802128638b9e0e2cfd"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/mascot.min.js",
+      "deployed_sha256": "fde4fc3a4e233869302ca144b5afb1d018a0f35989903bf8d5b7c2903c3c3fc5",
+      "source_hashes": {
+        "local_source": "fde4fc3a4e233869302ca144b5afb1d018a0f35989903bf8d5b7c2903c3c3fc5",
+        "frozen_base": "fde4fc3a4e233869302ca144b5afb1d018a0f35989903bf8d5b7c2903c3c3fc5",
+        "launch_pr": "fde4fc3a4e233869302ca144b5afb1d018a0f35989903bf8d5b7c2903c3c3fc5"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/premium-commerce.js",
+      "deployed_sha256": "767e4593beb547f97183aceba32258dceff088fe1382269d337fb8933f6e3088",
+      "source_hashes": {
+        "local_source": "767e4593beb547f97183aceba32258dceff088fe1382269d337fb8933f6e3088",
+        "frozen_base": "767e4593beb547f97183aceba32258dceff088fe1382269d337fb8933f6e3088",
+        "launch_pr": "767e4593beb547f97183aceba32258dceff088fe1382269d337fb8933f6e3088"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/premium-commerce.min.js",
+      "deployed_sha256": "145d8a7d6c9a67564d1a9e69e62541c2056d07a1b5abae710791bdbfe253fe36",
+      "source_hashes": {
+        "local_source": "145d8a7d6c9a67564d1a9e69e62541c2056d07a1b5abae710791bdbfe253fe36",
+        "frozen_base": "145d8a7d6c9a67564d1a9e69e62541c2056d07a1b5abae710791bdbfe253fe36",
+        "launch_pr": "145d8a7d6c9a67564d1a9e69e62541c2056d07a1b5abae710791bdbfe253fe36"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/quick-view-commerce.js",
+      "deployed_sha256": "e982febfcb73e61810f2b6124da4a0e59b5145c303d9d500dfa60954e12fc2eb",
+      "source_hashes": {
+        "local_source": "e982febfcb73e61810f2b6124da4a0e59b5145c303d9d500dfa60954e12fc2eb",
+        "frozen_base": "e982febfcb73e61810f2b6124da4a0e59b5145c303d9d500dfa60954e12fc2eb",
+        "launch_pr": "e982febfcb73e61810f2b6124da4a0e59b5145c303d9d500dfa60954e12fc2eb"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/quick-view-commerce.min.js",
+      "deployed_sha256": "330e2a516e0252392e91eb4cd61063086b71d81cb8faeba54eaa07ad67843672",
+      "source_hashes": {
+        "local_source": "330e2a516e0252392e91eb4cd61063086b71d81cb8faeba54eaa07ad67843672",
+        "frozen_base": "330e2a516e0252392e91eb4cd61063086b71d81cb8faeba54eaa07ad67843672",
+        "launch_pr": "330e2a516e0252392e91eb4cd61063086b71d81cb8faeba54eaa07ad67843672"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/scene-handoff.js",
+      "deployed_sha256": "36922b109c9697f5fbfc91620da1bdd8980ef31f81c8dc55a35cf9f17c0cd679",
+      "source_hashes": {
+        "local_source": "36922b109c9697f5fbfc91620da1bdd8980ef31f81c8dc55a35cf9f17c0cd679",
+        "frozen_base": "36922b109c9697f5fbfc91620da1bdd8980ef31f81c8dc55a35cf9f17c0cd679",
+        "launch_pr": "36922b109c9697f5fbfc91620da1bdd8980ef31f81c8dc55a35cf9f17c0cd679"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/scene-handoff.min.js",
+      "deployed_sha256": "88a023379863ec4d8537f5c47916cf480faedacb227a44e55a8676460926fce6",
+      "source_hashes": {
+        "local_source": "88a023379863ec4d8537f5c47916cf480faedacb227a44e55a8676460926fce6",
+        "frozen_base": "88a023379863ec4d8537f5c47916cf480faedacb227a44e55a8676460926fce6",
+        "launch_pr": "88a023379863ec4d8537f5c47916cf480faedacb227a44e55a8676460926fce6"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/search-preview.js",
+      "deployed_sha256": "3c332eac383ea0ae883c0a6989c1dbfd68e7cabe54056eb8a665509dd5431bd2",
+      "source_hashes": {
+        "local_source": "3c332eac383ea0ae883c0a6989c1dbfd68e7cabe54056eb8a665509dd5431bd2",
+        "frozen_base": "3c332eac383ea0ae883c0a6989c1dbfd68e7cabe54056eb8a665509dd5431bd2",
+        "launch_pr": "3c332eac383ea0ae883c0a6989c1dbfd68e7cabe54056eb8a665509dd5431bd2"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/search-preview.min.js",
+      "deployed_sha256": "7e8243b34030c31ea3ac9e5df94ca09627f72b15eaea13f1c872a8ac599c5340",
+      "source_hashes": {
+        "local_source": "7e8243b34030c31ea3ac9e5df94ca09627f72b15eaea13f1c872a8ac599c5340",
+        "frozen_base": "7e8243b34030c31ea3ac9e5df94ca09627f72b15eaea13f1c872a8ac599c5340",
+        "launch_pr": "7e8243b34030c31ea3ac9e5df94ca09627f72b15eaea13f1c872a8ac599c5340"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/skyy-3d.js",
+      "deployed_sha256": "0ff0cfe671d6747fca09bd98b94c00d9f0938901950b236578c17dddc0770e46",
+      "source_hashes": {
+        "local_source": "0ff0cfe671d6747fca09bd98b94c00d9f0938901950b236578c17dddc0770e46",
+        "frozen_base": "f0c37772d7019b9928dc4a4833b29c3e9cbe5b7ff00692c6864c58fa8be14dc3",
+        "launch_pr": "0ff0cfe671d6747fca09bd98b94c00d9f0938901950b236578c17dddc0770e46"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/skyy-3d.min.js",
+      "deployed_sha256": "6c6a73760ad667390bd50ca1fc7932f0075042f02dc2f83c58a1939d4500cf85",
+      "source_hashes": {
+        "local_source": "6c6a73760ad667390bd50ca1fc7932f0075042f02dc2f83c58a1939d4500cf85",
+        "frozen_base": "0dc966b100e086ad0a7a07110eea8624a3efb1deb20dbcb904fe9e6fd2ca7329",
+        "launch_pr": "6c6a73760ad667390bd50ca1fc7932f0075042f02dc2f83c58a1939d4500cf85"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/theme.js",
+      "deployed_sha256": "18122820d55ebd02535cfb0b0dee1abd06dd652001c210b5b65f83adee83c5c7",
+      "source_hashes": {
+        "local_source": "18122820d55ebd02535cfb0b0dee1abd06dd652001c210b5b65f83adee83c5c7",
+        "frozen_base": "54fb02117e03aa1c302d333ca3f6e1441ff4569b40cb4c4836bbbb7d6462799a",
+        "launch_pr": "18122820d55ebd02535cfb0b0dee1abd06dd652001c210b5b65f83adee83c5c7"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/theme.min.js",
+      "deployed_sha256": "1fb2ca77065c5bf41adacfea5ae067c8fda035b1434e765b0e9168ff03326ae5",
+      "source_hashes": {
+        "local_source": "1fb2ca77065c5bf41adacfea5ae067c8fda035b1434e765b0e9168ff03326ae5",
+        "frozen_base": "1fb2ca77065c5bf41adacfea5ae067c8fda035b1434e765b0e9168ff03326ae5",
+        "launch_pr": "1fb2ca77065c5bf41adacfea5ae067c8fda035b1434e765b0e9168ff03326ae5"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/visual-recovery.js",
+      "deployed_sha256": "9bf9edbbe75fd2fd4c3315aaeedfc3a456e7f4f7dc18f1eed505e9daaafebe4b",
+      "source_hashes": {
+        "local_source": "9bf9edbbe75fd2fd4c3315aaeedfc3a456e7f4f7dc18f1eed505e9daaafebe4b",
+        "frozen_base": "9bf9edbbe75fd2fd4c3315aaeedfc3a456e7f4f7dc18f1eed505e9daaafebe4b",
+        "launch_pr": "9bf9edbbe75fd2fd4c3315aaeedfc3a456e7f4f7dc18f1eed505e9daaafebe4b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/js/visual-recovery.min.js",
+      "deployed_sha256": "84a732112d86ebf916ea9eaa83aa6baafcde10d11bdc4003ace18a7f6d8c4d56",
+      "source_hashes": {
+        "local_source": "84a732112d86ebf916ea9eaa83aa6baafcde10d11bdc4003ace18a7f6d8c4d56",
+        "frozen_base": "84a732112d86ebf916ea9eaa83aa6baafcde10d11bdc4003ace18a7f6d8c4d56",
+        "launch_pr": "84a732112d86ebf916ea9eaa83aa6baafcde10d11bdc4003ace18a7f6d8c4d56"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/sot/images/products/replica-v1/manifest.json",
+      "deployed_sha256": "3930eff3c4c61e3c6cf856e7c431c7adeac831473bf8f6f9e475c9be5a6665c8",
+      "source_hashes": {
+        "local_source": "3930eff3c4c61e3c6cf856e7c431c7adeac831473bf8f6f9e475c9be5a6665c8",
+        "frozen_base": "3930eff3c4c61e3c6cf856e7c431c7adeac831473bf8f6f9e475c9be5a6665c8",
+        "launch_pr": "3930eff3c4c61e3c6cf856e7c431c7adeac831473bf8f6f9e475c9be5a6665c8"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/black-rose/qa/metadata-v2.json",
+      "deployed_sha256": "973710227b9eda1d21a86cbd0a612a5c7783356f7b1f61978333386db790632a",
+      "source_hashes": {
+        "local_source": "973710227b9eda1d21a86cbd0a612a5c7783356f7b1f61978333386db790632a",
+        "frozen_base": "973710227b9eda1d21a86cbd0a612a5c7783356f7b1f61978333386db790632a",
+        "launch_pr": "973710227b9eda1d21a86cbd0a612a5c7783356f7b1f61978333386db790632a"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/kids-capsule/qa/metadata-v2.json",
+      "deployed_sha256": "c873d1064e80971090afb7685a686d07fd5001a59c22b5a7dd911e7278486458",
+      "source_hashes": {
+        "local_source": "c873d1064e80971090afb7685a686d07fd5001a59c22b5a7dd911e7278486458",
+        "frozen_base": "c873d1064e80971090afb7685a686d07fd5001a59c22b5a7dd911e7278486458",
+        "launch_pr": "c873d1064e80971090afb7685a686d07fd5001a59c22b5a7dd911e7278486458"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/love-hurts/qa/metadata-v2.json",
+      "deployed_sha256": "71ec8b7295eb86357fc7fe926ec8ac0f0e753149c33458a4ba14bec346b30bdc",
+      "source_hashes": {
+        "local_source": "71ec8b7295eb86357fc7fe926ec8ac0f0e753149c33458a4ba14bec346b30bdc",
+        "frozen_base": "71ec8b7295eb86357fc7fe926ec8ac0f0e753149c33458a4ba14bec346b30bdc",
+        "launch_pr": "71ec8b7295eb86357fc7fe926ec8ac0f0e753149c33458a4ba14bec346b30bdc"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "data/._product-presentation-registry.json",
+      "deployed_sha256": "d3c93cb5d9b30a6c3c2497d716cd5f77c2d7daa1d84eb02d015d4b6f141b4cc8",
+      "source_hashes": {
+        "local_source": null,
+        "frozen_base": null,
+        "launch_pr": null
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "data/approved-card-fronts.json",
+      "deployed_sha256": "cf84c4ff7e864286f68e1b07cf5ad2da9dafd097b8f507acf138494b0b1959b3",
+      "source_hashes": {
+        "local_source": "cf84c4ff7e864286f68e1b07cf5ad2da9dafd097b8f507acf138494b0b1959b3",
+        "frozen_base": "c9a35409c5af2fac958bc429c798f6ff23fee5a4e03db2e41dd604a1b96d841c",
+        "launch_pr": "cf84c4ff7e864286f68e1b07cf5ad2da9dafd097b8f507acf138494b0b1959b3"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "data/approved-scroll-world-scenes.json",
+      "deployed_sha256": "20b1532710f93c98b8c8161853d44caadd3c6c4eecbcdc81ce3bc5c6d5c4fd42",
+      "source_hashes": {
+        "local_source": "20b1532710f93c98b8c8161853d44caadd3c6c4eecbcdc81ce3bc5c6d5c4fd42",
+        "frozen_base": "20b1532710f93c98b8c8161853d44caadd3c6c4eecbcdc81ce3bc5c6d5c4fd42",
+        "launch_pr": "20b1532710f93c98b8c8161853d44caadd3c6c4eecbcdc81ce3bc5c6d5c4fd42"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "data/collection-hero-motion.json",
+      "deployed_sha256": "c6d99877bff4f1d97303cd56cf96f91cd3492e2ca6e5c220ecba375e4b9437cf",
+      "source_hashes": {
+        "local_source": "c6d99877bff4f1d97303cd56cf96f91cd3492e2ca6e5c220ecba375e4b9437cf",
+        "frozen_base": "c6d99877bff4f1d97303cd56cf96f91cd3492e2ca6e5c220ecba375e4b9437cf",
+        "launch_pr": "c6d99877bff4f1d97303cd56cf96f91cd3492e2ca6e5c220ecba375e4b9437cf"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "data/collection-scene-motion.json",
+      "deployed_sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef",
+      "source_hashes": {
+        "local_source": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef",
+        "frozen_base": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef",
+        "launch_pr": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "data/font-provenance.json",
+      "deployed_sha256": "9fe119d1f575c591531fa5a6f6af8401606517a801b7100843bf38cacd1cde2c",
+      "source_hashes": {
+        "local_source": "9fe119d1f575c591531fa5a6f6af8401606517a801b7100843bf38cacd1cde2c",
+        "frozen_base": "9fe119d1f575c591531fa5a6f6af8401606517a801b7100843bf38cacd1cde2c",
+        "launch_pr": "9fe119d1f575c591531fa5a6f6af8401606517a801b7100843bf38cacd1cde2c"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "data/founder-selected-theme-placeholders-v1.json",
+      "deployed_sha256": "7072cd6bb81783ba6890ddac521073667c12785801a77473fb99cf5652d234ff",
+      "source_hashes": {
+        "local_source": "7072cd6bb81783ba6890ddac521073667c12785801a77473fb99cf5652d234ff",
+        "frozen_base": "7072cd6bb81783ba6890ddac521073667c12785801a77473fb99cf5652d234ff",
+        "launch_pr": "7072cd6bb81783ba6890ddac521073667c12785801a77473fb99cf5652d234ff"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "data/hero-commerce-scenes-c1.json",
+      "deployed_sha256": "0762655bdd838f9975b484714b19ede804977b18e3fae6671671f3a87eecf193",
+      "source_hashes": {
+        "local_source": "0762655bdd838f9975b484714b19ede804977b18e3fae6671671f3a87eecf193",
+        "frozen_base": "0762655bdd838f9975b484714b19ede804977b18e3fae6671671f3a87eecf193",
+        "launch_pr": "0762655bdd838f9975b484714b19ede804977b18e3fae6671671f3a87eecf193"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "data/opening-product-media.json",
+      "deployed_sha256": "6de9889f180edf3b5ba86ee308f710649e114facbcb5830bb7b89eac1332abae",
+      "source_hashes": {
+        "local_source": "6de9889f180edf3b5ba86ee308f710649e114facbcb5830bb7b89eac1332abae",
+        "frozen_base": "6de9889f180edf3b5ba86ee308f710649e114facbcb5830bb7b89eac1332abae",
+        "launch_pr": "6de9889f180edf3b5ba86ee308f710649e114facbcb5830bb7b89eac1332abae"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "data/product-presentation-registry.json",
+      "deployed_sha256": "c94db92e3ea31310fcefb923853869f724eef97cc8758a7a1377a0ea1455b87b",
+      "source_hashes": {
+        "local_source": "14d6f3a7069bc54a36a431138ea37acd3e61ffb51825ebe4af19f223ee59dc71",
+        "frozen_base": "bcf0cbe7e343decfe8d32821976773172e6204b19bb0da14e2437d67f1a6c157",
+        "launch_pr": "fe2283541c5816d61bd8918661267b55e69bc59ec65e712de5fb142fcfd8c480"
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "data/scene-hotspots.json",
+      "deployed_sha256": "074f738fedc5e6fbad19d25af423cb7e4a87c69492bb4be80903717fbb846f2b",
+      "source_hashes": {
+        "local_source": "074f738fedc5e6fbad19d25af423cb7e4a87c69492bb4be80903717fbb846f2b",
+        "frozen_base": "074f738fedc5e6fbad19d25af423cb7e4a87c69492bb4be80903717fbb846f2b",
+        "launch_pr": "074f738fedc5e6fbad19d25af423cb7e4a87c69492bb4be80903717fbb846f2b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "data/scene-narrative-blueprints.json",
+      "deployed_sha256": "1f4bfa4d778e1383a2d04d3a9406b3b251de9e06acfd341a5885bc95b0a0f240",
+      "source_hashes": {
+        "local_source": "1f4bfa4d778e1383a2d04d3a9406b3b251de9e06acfd341a5885bc95b0a0f240",
+        "frozen_base": "1f4bfa4d778e1383a2d04d3a9406b3b251de9e06acfd341a5885bc95b0a0f240",
+        "launch_pr": "1f4bfa4d778e1383a2d04d3a9406b3b251de9e06acfd341a5885bc95b0a0f240"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "editor-style.css",
+      "deployed_sha256": "46a542cb8be2df5342f336e748b4ce3fe334508fcfc922a4e3f35289e1b8b650",
+      "source_hashes": {
+        "local_source": "46a542cb8be2df5342f336e748b4ce3fe334508fcfc922a4e3f35289e1b8b650",
+        "frozen_base": "46a542cb8be2df5342f336e748b4ce3fe334508fcfc922a4e3f35289e1b8b650",
+        "launch_pr": "46a542cb8be2df5342f336e748b4ce3fe334508fcfc922a4e3f35289e1b8b650"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "footer.php",
+      "deployed_sha256": "3a21b807edb38de607a4e7cfbd7c272313e1bafff3e6839350aebc3cac4e04a4",
+      "source_hashes": {
+        "local_source": "3a21b807edb38de607a4e7cfbd7c272313e1bafff3e6839350aebc3cac4e04a4",
+        "frozen_base": "0c5d72a8fb11b72f428f9d475e9cbf204b59cac249386490c16ae7a14f37e297",
+        "launch_pr": "3a21b807edb38de607a4e7cfbd7c272313e1bafff3e6839350aebc3cac4e04a4"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "front-page.php",
+      "deployed_sha256": "45d9a5289ec39a25e9174d20c7fb99b39d44c9477229ab9d2b1ae2413635c8d0",
+      "source_hashes": {
+        "local_source": "45d9a5289ec39a25e9174d20c7fb99b39d44c9477229ab9d2b1ae2413635c8d0",
+        "frozen_base": "76b502c07294e5044de4e139ac0cdc8a76573a0433cebdd8b61e25103afe5dcd",
+        "launch_pr": "45d9a5289ec39a25e9174d20c7fb99b39d44c9477229ab9d2b1ae2413635c8d0"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "functions.php",
+      "deployed_sha256": "62fa752a56acc65a44e3e993490ea7561b186952ce71c1525489c8e24e0022ab",
+      "source_hashes": {
+        "local_source": "2783ca2ba4179df60eae904e79a24de8c9f07a7fb9d6e564e6032c05d430d668",
+        "frozen_base": "40b14fd7cbeca559b56b144593f15cf24576e250ffd6d65ef409613f1b2d0b67",
+        "launch_pr": "3e15a586ff2e36e77bb0076bab7eb1aabfe33303934ddd3cd52a8525edb74e6b"
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "header.php",
+      "deployed_sha256": "63b7431b0bbe2ceec6f28e4c166bd5912d9f783263dbb7c96a3a2bbe19df5821",
+      "source_hashes": {
+        "local_source": "63b7431b0bbe2ceec6f28e4c166bd5912d9f783263dbb7c96a3a2bbe19df5821",
+        "frozen_base": "63b7431b0bbe2ceec6f28e4c166bd5912d9f783263dbb7c96a3a2bbe19df5821",
+        "launch_pr": "63b7431b0bbe2ceec6f28e4c166bd5912d9f783263dbb7c96a3a2bbe19df5821"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "home.php",
+      "deployed_sha256": "79aff184c16b280913542d30a3dab0bc01711a09825939d72bf00fbd938b8c5a",
+      "source_hashes": {
+        "local_source": "79aff184c16b280913542d30a3dab0bc01711a09825939d72bf00fbd938b8c5a",
+        "frozen_base": "79aff184c16b280913542d30a3dab0bc01711a09825939d72bf00fbd938b8c5a",
+        "launch_pr": "79aff184c16b280913542d30a3dab0bc01711a09825939d72bf00fbd938b8c5a"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/approved-card-fronts.php",
+      "deployed_sha256": "3ab36c2b2f0169a4b71d1f66ef38357474f278f5cb00dcae5e9ff230ad84ca4a",
+      "source_hashes": {
+        "local_source": "3ab36c2b2f0169a4b71d1f66ef38357474f278f5cb00dcae5e9ff230ad84ca4a",
+        "frozen_base": "b8152869e4b0c4b000441b245bdb42b53abf3a8866ff83743d7dc23f727cf2fa",
+        "launch_pr": "3ab36c2b2f0169a4b71d1f66ef38357474f278f5cb00dcae5e9ff230ad84ca4a"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/archive-style-bundle.php",
+      "deployed_sha256": "dca48094cf98e19ae099afa4695f078fa7814706a17f6cbeb54c057068d3d16a",
+      "source_hashes": {
+        "local_source": "dca48094cf98e19ae099afa4695f078fa7814706a17f6cbeb54c057068d3d16a",
+        "frozen_base": "dca48094cf98e19ae099afa4695f078fa7814706a17f6cbeb54c057068d3d16a",
+        "launch_pr": "dca48094cf98e19ae099afa4695f078fa7814706a17f6cbeb54c057068d3d16a"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/collection-presentation.php",
+      "deployed_sha256": "e04e8126763cdeac4ea665a1afe3ad379d6c64ef25dd86b67e048d4c0ac6ba6f",
+      "source_hashes": {
+        "local_source": "e04e8126763cdeac4ea665a1afe3ad379d6c64ef25dd86b67e048d4c0ac6ba6f",
+        "frozen_base": "e04e8126763cdeac4ea665a1afe3ad379d6c64ef25dd86b67e048d4c0ac6ba6f",
+        "launch_pr": "e04e8126763cdeac4ea665a1afe3ad379d6c64ef25dd86b67e048d4c0ac6ba6f"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/critical-rendering.php",
+      "deployed_sha256": "2504097b24dda12f84cbc9e93bf5da1f090e1a319ba710f7ef5e29f666e336e7",
+      "source_hashes": {
+        "local_source": "2504097b24dda12f84cbc9e93bf5da1f090e1a319ba710f7ef5e29f666e336e7",
+        "frozen_base": "2504097b24dda12f84cbc9e93bf5da1f090e1a319ba710f7ef5e29f666e336e7",
+        "launch_pr": "2504097b24dda12f84cbc9e93bf5da1f090e1a319ba710f7ef5e29f666e336e7"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/demo-import.php",
+      "deployed_sha256": "e4366d38651e2ff35a337cc495e30913c4a2b1f3af6cca8771d16d2433995e56",
+      "source_hashes": {
+        "local_source": "e4366d38651e2ff35a337cc495e30913c4a2b1f3af6cca8771d16d2433995e56",
+        "frozen_base": "e4366d38651e2ff35a337cc495e30913c4a2b1f3af6cca8771d16d2433995e56",
+        "launch_pr": "e4366d38651e2ff35a337cc495e30913c4a2b1f3af6cca8771d16d2433995e56"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/frame-delivery.php",
+      "deployed_sha256": "1c54edfc18e8a70b6ed4afcc13a1230887ecc541d7fbbd193cb737249953dd34",
+      "source_hashes": {
+        "local_source": "1c54edfc18e8a70b6ed4afcc13a1230887ecc541d7fbbd193cb737249953dd34",
+        "frozen_base": "1c54edfc18e8a70b6ed4afcc13a1230887ecc541d7fbbd193cb737249953dd34",
+        "launch_pr": "1c54edfc18e8a70b6ed4afcc13a1230887ecc541d7fbbd193cb737249953dd34"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/global-shell.php",
+      "deployed_sha256": "ff46acdf2650491ea7ac2fb7c7e5ab88f5b9b1a734efb022773c3d3ac63e1398",
+      "source_hashes": {
+        "local_source": "f8498a2fcea2119fdcb25bd773948e7baf402ccaef08074835455e401b7470a9",
+        "frozen_base": "f8498a2fcea2119fdcb25bd773948e7baf402ccaef08074835455e401b7470a9",
+        "launch_pr": "ff46acdf2650491ea7ac2fb7c7e5ab88f5b9b1a734efb022773c3d3ac63e1398"
+      },
+      "matched_source_refs": [
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/hero-commerce-scenes.php",
+      "deployed_sha256": "83be0a11c1935b73114ef6cbb41038a90a2a3501ebc29fc7d81087d255996cc6",
+      "source_hashes": {
+        "local_source": "83be0a11c1935b73114ef6cbb41038a90a2a3501ebc29fc7d81087d255996cc6",
+        "frozen_base": "83be0a11c1935b73114ef6cbb41038a90a2a3501ebc29fc7d81087d255996cc6",
+        "launch_pr": "83be0a11c1935b73114ef6cbb41038a90a2a3501ebc29fc7d81087d255996cc6"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/launch-readiness.php",
+      "deployed_sha256": "5ce5a813ad166303b4b26d9f7dd54c7324904d3e5cbc94b59f220647181215a4",
+      "source_hashes": {
+        "local_source": "5ce5a813ad166303b4b26d9f7dd54c7324904d3e5cbc94b59f220647181215a4",
+        "frozen_base": "5ce5a813ad166303b4b26d9f7dd54c7324904d3e5cbc94b59f220647181215a4",
+        "launch_pr": "5ce5a813ad166303b4b26d9f7dd54c7324904d3e5cbc94b59f220647181215a4"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/marketplace.php",
+      "deployed_sha256": "4a9f5f917fb09d4dee0be3212058a5a2be290f8de34cff360f89c328c2cc8ff3",
+      "source_hashes": {
+        "local_source": "4a9f5f917fb09d4dee0be3212058a5a2be290f8de34cff360f89c328c2cc8ff3",
+        "frozen_base": "4a9f5f917fb09d4dee0be3212058a5a2be290f8de34cff360f89c328c2cc8ff3",
+        "launch_pr": "4a9f5f917fb09d4dee0be3212058a5a2be290f8de34cff360f89c328c2cc8ff3"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/pdp-media-delivery.php",
+      "deployed_sha256": "c4abae8ef6ee3994c5b2f18a1b1ae6b419dc573cfa5a840b5ba00f7424bedc7c",
+      "source_hashes": {
+        "local_source": "c4abae8ef6ee3994c5b2f18a1b1ae6b419dc573cfa5a840b5ba00f7424bedc7c",
+        "frozen_base": "359ec0d85b88371aaca41dd8d253cce184a8f2dc111c9fd29b0744a1317584a8",
+        "launch_pr": "c4abae8ef6ee3994c5b2f18a1b1ae6b419dc573cfa5a840b5ba00f7424bedc7c"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/performance.php",
+      "deployed_sha256": "e32e4ffd5f68a7efbe00be7a2f928ee9b92ae54f2bc8b8d029b74b396694c996",
+      "source_hashes": {
+        "local_source": "e32e4ffd5f68a7efbe00be7a2f928ee9b92ae54f2bc8b8d029b74b396694c996",
+        "frozen_base": "13e596bde76031a6ae5e16e16c95d94c4056b69d152a3b33b3c44bbf9da40797",
+        "launch_pr": "e32e4ffd5f68a7efbe00be7a2f928ee9b92ae54f2bc8b8d029b74b396694c996"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/presentation-registry.php",
+      "deployed_sha256": "d6da13f00c9c81ba3fc228c5273ff3d671038527fcf8b856e5b878ab763fe61c",
+      "source_hashes": {
+        "local_source": "d6da13f00c9c81ba3fc228c5273ff3d671038527fcf8b856e5b878ab763fe61c",
+        "frozen_base": "d6da13f00c9c81ba3fc228c5273ff3d671038527fcf8b856e5b878ab763fe61c",
+        "launch_pr": "d6da13f00c9c81ba3fc228c5273ff3d671038527fcf8b856e5b878ab763fe61c"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/quick-view-commerce.php",
+      "deployed_sha256": "f4c7357c74935b3b266a923f7e040743e6b2629b737679fe5b4873469725f89c",
+      "source_hashes": {
+        "local_source": "f4c7357c74935b3b266a923f7e040743e6b2629b737679fe5b4873469725f89c",
+        "frozen_base": "f4c7357c74935b3b266a923f7e040743e6b2629b737679fe5b4873469725f89c",
+        "launch_pr": "f4c7357c74935b3b266a923f7e040743e6b2629b737679fe5b4873469725f89c"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/security.php",
+      "deployed_sha256": "bd9f8df3fde21b60b23a3892c5f672191086fa55a78ace52c551ce41cbaf03f6",
+      "source_hashes": {
+        "local_source": "bd9f8df3fde21b60b23a3892c5f672191086fa55a78ace52c551ce41cbaf03f6",
+        "frozen_base": "bd9f8df3fde21b60b23a3892c5f672191086fa55a78ace52c551ce41cbaf03f6",
+        "launch_pr": "bd9f8df3fde21b60b23a3892c5f672191086fa55a78ace52c551ce41cbaf03f6"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/seo-indexing.php",
+      "deployed_sha256": "fe0fc6eeb1e38e2f8b93ab561536921eb041f0d5d40b1186d1b4cc8bfb81b05b",
+      "source_hashes": {
+        "local_source": "fe0fc6eeb1e38e2f8b93ab561536921eb041f0d5d40b1186d1b4cc8bfb81b05b",
+        "frozen_base": "fe0fc6eeb1e38e2f8b93ab561536921eb041f0d5d40b1186d1b4cc8bfb81b05b",
+        "launch_pr": "fe0fc6eeb1e38e2f8b93ab561536921eb041f0d5d40b1186d1b4cc8bfb81b05b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/shop-archive.php",
+      "deployed_sha256": "bf3e5f05a70be2adbdba23b2020311c1a49371dabeb2c1108a5392b5b039b5d4",
+      "source_hashes": {
+        "local_source": "bf3e5f05a70be2adbdba23b2020311c1a49371dabeb2c1108a5392b5b039b5d4",
+        "frozen_base": "bf3e5f05a70be2adbdba23b2020311c1a49371dabeb2c1108a5392b5b039b5d4",
+        "launch_pr": "bf3e5f05a70be2adbdba23b2020311c1a49371dabeb2c1108a5392b5b039b5d4"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "inc/starter-content.php",
+      "deployed_sha256": "df6cd629d08e4aa9d328d6c05efb66c28904f2df2aa70e8d2a1db93ba8e9081b",
+      "source_hashes": {
+        "local_source": "df6cd629d08e4aa9d328d6c05efb66c28904f2df2aa70e8d2a1db93ba8e9081b",
+        "frozen_base": "df6cd629d08e4aa9d328d6c05efb66c28904f2df2aa70e8d2a1db93ba8e9081b",
+        "launch_pr": "df6cd629d08e4aa9d328d6c05efb66c28904f2df2aa70e8d2a1db93ba8e9081b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "index.php",
+      "deployed_sha256": "95ad909ab629e5ac87a40d141c5bfada7aa6b101a6d246e58e8f09c582950975",
+      "source_hashes": {
+        "local_source": "95ad909ab629e5ac87a40d141c5bfada7aa6b101a6d246e58e8f09c582950975",
+        "frozen_base": "95ad909ab629e5ac87a40d141c5bfada7aa6b101a6d246e58e8f09c582950975",
+        "launch_pr": "95ad909ab629e5ac87a40d141c5bfada7aa6b101a6d246e58e8f09c582950975"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "npm-shrinkwrap.json",
+      "deployed_sha256": "c4b15fa2a205215ff4f575a8f278b34002491a55e814181376281255e5a3edc5",
+      "source_hashes": {
+        "local_source": "4f55e1943069d260cf191330777a677d68808a145dabfd1c928d1992e78cdb87",
+        "frozen_base": "d100a336592834b98b487de2681504d670e9f001497b198fec7b10c8a0fd5733",
+        "launch_pr": "4f55e1943069d260cf191330777a677d68808a145dabfd1c928d1992e78cdb87"
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "package.json",
+      "deployed_sha256": "1dc359f5b21d7ed2dfc9d5565370189fce8a6088bfa6b89782c5dcaf048e86d3",
+      "source_hashes": {
+        "local_source": "1f489177682336cb338307db2379a4926e3c6a9dfc839f67754745b8b4ae6b44",
+        "frozen_base": "5905886312ef915b6283df872ea946c8b73c94e75f6e4e2b81f4477784d60331",
+        "launch_pr": "a2563f74989012e79b861a0a5837f724fb7517c1ad9314e75e3789b077aed41c"
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "page-lookbook.php",
+      "deployed_sha256": "3e7834ec1568e2d4c3ef336ab7eed1124f91e74548651b59499e02e7897546e3",
+      "source_hashes": {
+        "local_source": "3e7834ec1568e2d4c3ef336ab7eed1124f91e74548651b59499e02e7897546e3",
+        "frozen_base": "3e7834ec1568e2d4c3ef336ab7eed1124f91e74548651b59499e02e7897546e3",
+        "launch_pr": "3e7834ec1568e2d4c3ef336ab7eed1124f91e74548651b59499e02e7897546e3"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "page-wishlist.php",
+      "deployed_sha256": "35546cf00193c5435aac6dd217dd5b8e43bc79f42c4b81edef419858ae702a26",
+      "source_hashes": {
+        "local_source": "35546cf00193c5435aac6dd217dd5b8e43bc79f42c4b81edef419858ae702a26",
+        "frozen_base": "35546cf00193c5435aac6dd217dd5b8e43bc79f42c4b81edef419858ae702a26",
+        "launch_pr": "35546cf00193c5435aac6dd217dd5b8e43bc79f42c4b81edef419858ae702a26"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "page.php",
+      "deployed_sha256": "d24a57c72688d8cd140c80956bd451add5d9fb54fff79bab31a994507e9f8500",
+      "source_hashes": {
+        "local_source": "d24a57c72688d8cd140c80956bd451add5d9fb54fff79bab31a994507e9f8500",
+        "frozen_base": "d24a57c72688d8cd140c80956bd451add5d9fb54fff79bab31a994507e9f8500",
+        "launch_pr": "d24a57c72688d8cd140c80956bd451add5d9fb54fff79bab31a994507e9f8500"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "rtl.css",
+      "deployed_sha256": "6ca5cf8d1796c629dc58db20770d2f34ea52716b9ea4722b0ee4ef5ff02bc699",
+      "source_hashes": {
+        "local_source": "6ca5cf8d1796c629dc58db20770d2f34ea52716b9ea4722b0ee4ef5ff02bc699",
+        "frozen_base": "6ca5cf8d1796c629dc58db20770d2f34ea52716b9ea4722b0ee4ef5ff02bc699",
+        "launch_pr": "6ca5cf8d1796c629dc58db20770d2f34ea52716b9ea4722b0ee4ef5ff02bc699"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "search.php",
+      "deployed_sha256": "83654180446c10167bfd04ef17dc80496d73eefa5d772cdf375362ce45affb20",
+      "source_hashes": {
+        "local_source": "83654180446c10167bfd04ef17dc80496d73eefa5d772cdf375362ce45affb20",
+        "frozen_base": "83654180446c10167bfd04ef17dc80496d73eefa5d772cdf375362ce45affb20",
+        "launch_pr": "83654180446c10167bfd04ef17dc80496d73eefa5d772cdf375362ce45affb20"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "single.php",
+      "deployed_sha256": "d8e866dbd1d8c5781a4bcf49351c900e63898408b6c70fe857b9906d8078951e",
+      "source_hashes": {
+        "local_source": "d8e866dbd1d8c5781a4bcf49351c900e63898408b6c70fe857b9906d8078951e",
+        "frozen_base": "d8e866dbd1d8c5781a4bcf49351c900e63898408b6c70fe857b9906d8078951e",
+        "launch_pr": "d8e866dbd1d8c5781a4bcf49351c900e63898408b6c70fe857b9906d8078951e"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "style.css",
+      "deployed_sha256": "a0c2348fd09f3e2fd66903e92149e3e981ebddb533827dd8b7b1acd0406633b3",
+      "source_hashes": {
+        "local_source": "a9692c40ee7f5fa3fe330c1d0573f3933965c8b3767fc2ba8c5516378937a688",
+        "frozen_base": "a9692c40ee7f5fa3fe330c1d0573f3933965c8b3767fc2ba8c5516378937a688",
+        "launch_pr": "a9692c40ee7f5fa3fe330c1d0573f3933965c8b3767fc2ba8c5516378937a688"
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "template-collection.php",
+      "deployed_sha256": "fc93576d67d38ef8952b99f13559efff45114a3a018e019e6f03f91552f44449",
+      "source_hashes": {
+        "local_source": "fc93576d67d38ef8952b99f13559efff45114a3a018e019e6f03f91552f44449",
+        "frozen_base": "fc93576d67d38ef8952b99f13559efff45114a3a018e019e6f03f91552f44449",
+        "launch_pr": "fc93576d67d38ef8952b99f13559efff45114a3a018e019e6f03f91552f44449"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-immersive-black-rose.php",
+      "deployed_sha256": "07110e77e0a141d69bfe8dc3394f7e70ae125e2f9178c5ed59ca93624857d127",
+      "source_hashes": {
+        "local_source": "07110e77e0a141d69bfe8dc3394f7e70ae125e2f9178c5ed59ca93624857d127",
+        "frozen_base": "07110e77e0a141d69bfe8dc3394f7e70ae125e2f9178c5ed59ca93624857d127",
+        "launch_pr": "07110e77e0a141d69bfe8dc3394f7e70ae125e2f9178c5ed59ca93624857d127"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-immersive-kids-capsule.php",
+      "deployed_sha256": "4c724fef4f889205e2ca43a37a333f6ff3b1af0f9cfcb8880d84ad4b9c2811bb",
+      "source_hashes": {
+        "local_source": "4c724fef4f889205e2ca43a37a333f6ff3b1af0f9cfcb8880d84ad4b9c2811bb",
+        "frozen_base": "4c724fef4f889205e2ca43a37a333f6ff3b1af0f9cfcb8880d84ad4b9c2811bb",
+        "launch_pr": "4c724fef4f889205e2ca43a37a333f6ff3b1af0f9cfcb8880d84ad4b9c2811bb"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-immersive-love-hurts.php",
+      "deployed_sha256": "5322f54376807cb06d0173e5619e31b82584a06294bf79610b3458f1d232dbb3",
+      "source_hashes": {
+        "local_source": "5322f54376807cb06d0173e5619e31b82584a06294bf79610b3458f1d232dbb3",
+        "frozen_base": "5322f54376807cb06d0173e5619e31b82584a06294bf79610b3458f1d232dbb3",
+        "launch_pr": "5322f54376807cb06d0173e5619e31b82584a06294bf79610b3458f1d232dbb3"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-immersive-signature.php",
+      "deployed_sha256": "830c1564595809bf0f46007b5080591c35fcdaf2d30c65a17d0d589ff46ec74d",
+      "source_hashes": {
+        "local_source": "830c1564595809bf0f46007b5080591c35fcdaf2d30c65a17d0d589ff46ec74d",
+        "frozen_base": "830c1564595809bf0f46007b5080591c35fcdaf2d30c65a17d0d589ff46ec74d",
+        "launch_pr": "830c1564595809bf0f46007b5080591c35fcdaf2d30c65a17d0d589ff46ec74d"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/collections/arrival.php",
+      "deployed_sha256": "206b058935717a448b5a3d13285c78e050259ed74bb17fe2b257e141242fa78a",
+      "source_hashes": {
+        "local_source": "943c0986462f795d009af9df30e026a9b414262aa0f20fc021e1ae1dd30ce9e8",
+        "frozen_base": "943c0986462f795d009af9df30e026a9b414262aa0f20fc021e1ae1dd30ce9e8",
+        "launch_pr": "943c0986462f795d009af9df30e026a9b414262aa0f20fc021e1ae1dd30ce9e8"
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "template-parts/collections/chapters.php",
+      "deployed_sha256": "5f02890a9ef48c416241c499eeabb9f4966b698015b3427ca1f3757b152f2689",
+      "source_hashes": {
+        "local_source": "5f02890a9ef48c416241c499eeabb9f4966b698015b3427ca1f3757b152f2689",
+        "frozen_base": "5f02890a9ef48c416241c499eeabb9f4966b698015b3427ca1f3757b152f2689",
+        "launch_pr": "5f02890a9ef48c416241c499eeabb9f4966b698015b3427ca1f3757b152f2689"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/collections/editorial.php",
+      "deployed_sha256": "2ef499bbf6d642c1d3b8e6bb6ead39cf873014248f031e8d2ccc19e3f96a9823",
+      "source_hashes": {
+        "local_source": null,
+        "frozen_base": null,
+        "launch_pr": null
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "template-parts/collections/index.php",
+      "deployed_sha256": "805331e5e4b9d109f2a8256b3227b58db2d0de2d8134cb2df87e4f96974ad815",
+      "source_hashes": {
+        "local_source": "805331e5e4b9d109f2a8256b3227b58db2d0de2d8134cb2df87e4f96974ad815",
+        "frozen_base": "805331e5e4b9d109f2a8256b3227b58db2d0de2d8134cb2df87e4f96974ad815",
+        "launch_pr": "805331e5e4b9d109f2a8256b3227b58db2d0de2d8134cb2df87e4f96974ad815"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/collections/next-world.php",
+      "deployed_sha256": "ca3286b1f19e772bf0f40f08e1e3f6c4713b3896c867959eb6ab1d8b2f3be3c9",
+      "source_hashes": {
+        "local_source": "ca3286b1f19e772bf0f40f08e1e3f6c4713b3896c867959eb6ab1d8b2f3be3c9",
+        "frozen_base": "ca3286b1f19e772bf0f40f08e1e3f6c4713b3896c867959eb6ab1d8b2f3be3c9",
+        "launch_pr": "ca3286b1f19e772bf0f40f08e1e3f6c4713b3896c867959eb6ab1d8b2f3be3c9"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/collections/product-edit.php",
+      "deployed_sha256": "77854d869fa53277207efade4c94b1f562a17f14b9343ee5f8c0b5015e8145df",
+      "source_hashes": {
+        "local_source": "77854d869fa53277207efade4c94b1f562a17f14b9343ee5f8c0b5015e8145df",
+        "frozen_base": "77854d869fa53277207efade4c94b1f562a17f14b9343ee5f8c0b5015e8145df",
+        "launch_pr": "77854d869fa53277207efade4c94b1f562a17f14b9343ee5f8c0b5015e8145df"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/collections/scroll-world.php",
+      "deployed_sha256": "28b89d1fbcd7a9b3a3b6172301f568cde2d694329455bf6f99d8d9dcc50949db",
+      "source_hashes": {
+        "local_source": "28b89d1fbcd7a9b3a3b6172301f568cde2d694329455bf6f99d8d9dcc50949db",
+        "frozen_base": "28b89d1fbcd7a9b3a3b6172301f568cde2d694329455bf6f99d8d9dcc50949db",
+        "launch_pr": "28b89d1fbcd7a9b3a3b6172301f568cde2d694329455bf6f99d8d9dcc50949db"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/collections/story.php",
+      "deployed_sha256": "a81db476080e7f16a2e4160c6fd0d6c78f63cc0125a1c3649a1e7ef3f51bea14",
+      "source_hashes": {
+        "local_source": "a81db476080e7f16a2e4160c6fd0d6c78f63cc0125a1c3649a1e7ef3f51bea14",
+        "frozen_base": "a81db476080e7f16a2e4160c6fd0d6c78f63cc0125a1c3649a1e7ef3f51bea14",
+        "launch_pr": "a81db476080e7f16a2e4160c6fd0d6c78f63cc0125a1c3649a1e7ef3f51bea14"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/collections/world.php",
+      "deployed_sha256": "b14915376caec729b54b65d6452aad142a04914944270d2e39000ae3e75a8a89",
+      "source_hashes": {
+        "local_source": "c9836d1c9725bd8adc2d8337728b6fddfb4b58a7bd29a8cb5c6b9fa3f0bd7962",
+        "frozen_base": "c9836d1c9725bd8adc2d8337728b6fddfb4b58a7bd29a8cb5c6b9fa3f0bd7962",
+        "launch_pr": "c9836d1c9725bd8adc2d8337728b6fddfb4b58a7bd29a8cb5c6b9fa3f0bd7962"
+      },
+      "matched_source_refs": [],
+      "status": "BLOCKED"
+    },
+    {
+      "path": "template-parts/commerce/hero-composed-scene.php",
+      "deployed_sha256": "a0af556b79dd3507a921aaf2fc6d6a7888500e40da5bf989e5d8a357cb41fd02",
+      "source_hashes": {
+        "local_source": "a0af556b79dd3507a921aaf2fc6d6a7888500e40da5bf989e5d8a357cb41fd02",
+        "frozen_base": "a0af556b79dd3507a921aaf2fc6d6a7888500e40da5bf989e5d8a357cb41fd02",
+        "launch_pr": "a0af556b79dd3507a921aaf2fc6d6a7888500e40da5bf989e5d8a357cb41fd02"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/commerce/jersey-gallery.php",
+      "deployed_sha256": "806265cbaffa0818e91dd6832122e7eb3e5a89f928a381e85f6bedbfc54c601e",
+      "source_hashes": {
+        "local_source": "806265cbaffa0818e91dd6832122e7eb3e5a89f928a381e85f6bedbfc54c601e",
+        "frozen_base": null,
+        "launch_pr": "806265cbaffa0818e91dd6832122e7eb3e5a89f928a381e85f6bedbfc54c601e"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/commerce/product-card.php",
+      "deployed_sha256": "f0918516bffc1635935ce836534af2275ec45e68895ca0f223395d7425f12bc6",
+      "source_hashes": {
+        "local_source": "3b2100f09f5120158d4a01f18fda4a9c971b33d919865696c9486bb64dbca4b4",
+        "frozen_base": "3b2100f09f5120158d4a01f18fda4a9c971b33d919865696c9486bb64dbca4b4",
+        "launch_pr": "f0918516bffc1635935ce836534af2275ec45e68895ca0f223395d7425f12bc6"
+      },
+      "matched_source_refs": [
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/commerce/product-hero.php",
+      "deployed_sha256": "b20abda3349f1b622a459a2f4f4f8cad57a966752a154f2ddffaeec8a164b520",
+      "source_hashes": {
+        "local_source": "b20abda3349f1b622a459a2f4f4f8cad57a966752a154f2ddffaeec8a164b520",
+        "frozen_base": "b20abda3349f1b622a459a2f4f4f8cad57a966752a154f2ddffaeec8a164b520",
+        "launch_pr": "b20abda3349f1b622a459a2f4f4f8cad57a966752a154f2ddffaeec8a164b520"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/commerce/quick-view.php",
+      "deployed_sha256": "7374453ebe6177ff277b77f82d14d5a9eb7c3e36c74d4cf002cae227184408fa",
+      "source_hashes": {
+        "local_source": "7374453ebe6177ff277b77f82d14d5a9eb7c3e36c74d4cf002cae227184408fa",
+        "frozen_base": "7374453ebe6177ff277b77f82d14d5a9eb7c3e36c74d4cf002cae227184408fa",
+        "launch_pr": "7374453ebe6177ff277b77f82d14d5a9eb7c3e36c74d4cf002cae227184408fa"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/commerce/search-dialog.php",
+      "deployed_sha256": "2c8f7dc07ab0865c8b8b8eb7eeaa46f4a9ccefc34fc1704f191f1d5df3f63a00",
+      "source_hashes": {
+        "local_source": "2c8f7dc07ab0865c8b8b8eb7eeaa46f4a9ccefc34fc1704f191f1d5df3f63a00",
+        "frozen_base": "2c8f7dc07ab0865c8b8b8eb7eeaa46f4a9ccefc34fc1704f191f1d5df3f63a00",
+        "launch_pr": "2c8f7dc07ab0865c8b8b8eb7eeaa46f4a9ccefc34fc1704f191f1d5df3f63a00"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/commerce/size-guide-dialog.php",
+      "deployed_sha256": "22d0ed54a8e042663ecc2e12958ab4a377d1d523fdcb498cbeb93d8311fd65aa",
+      "source_hashes": {
+        "local_source": "22d0ed54a8e042663ecc2e12958ab4a377d1d523fdcb498cbeb93d8311fd65aa",
+        "frozen_base": "22d0ed54a8e042663ecc2e12958ab4a377d1d523fdcb498cbeb93d8311fd65aa",
+        "launch_pr": "22d0ed54a8e042663ecc2e12958ab4a377d1d523fdcb498cbeb93d8311fd65aa"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/commerce/town-line.php",
+      "deployed_sha256": "95949afc9efed8dfdbd2066c98cbabbf063be01e5ff1673a6de0a52492794fb4",
+      "source_hashes": {
+        "local_source": "95949afc9efed8dfdbd2066c98cbabbf063be01e5ff1673a6de0a52492794fb4",
+        "frozen_base": "95949afc9efed8dfdbd2066c98cbabbf063be01e5ff1673a6de0a52492794fb4",
+        "launch_pr": "95949afc9efed8dfdbd2066c98cbabbf063be01e5ff1673a6de0a52492794fb4"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/home/editorial-collection.php",
+      "deployed_sha256": "248f2a752611cf463b8a0e2cc52d23ce8cd587a9313904475dcd2e51fdee11c2",
+      "source_hashes": {
+        "local_source": "248f2a752611cf463b8a0e2cc52d23ce8cd587a9313904475dcd2e51fdee11c2",
+        "frozen_base": "72f00945ff87bb755c3f7f6883ad7c1f6e6f306795c52a36a9b6737f5a537b12",
+        "launch_pr": "248f2a752611cf463b8a0e2cc52d23ce8cd587a9313904475dcd2e51fdee11c2"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/home/editorial-film.php",
+      "deployed_sha256": "926c6637087773f1090466b4e95c742e0cfa113c93b90446558f7fec7d5e0fda",
+      "source_hashes": {
+        "local_source": "926c6637087773f1090466b4e95c742e0cfa113c93b90446558f7fec7d5e0fda",
+        "frozen_base": "891c0aa25ed392bbb2162344792f6233db9945e7c1c86c1069ada9aa9687ead3",
+        "launch_pr": "926c6637087773f1090466b4e95c742e0cfa113c93b90446558f7fec7d5e0fda"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/home/editorial-hero.php",
+      "deployed_sha256": "f15b876e6a34ef6da5a91c5006057175eebefb576ce3371980db4874bf7ed7b9",
+      "source_hashes": {
+        "local_source": "f15b876e6a34ef6da5a91c5006057175eebefb576ce3371980db4874bf7ed7b9",
+        "frozen_base": "4655bcb9573b2507a063fcda4ba0e160d81d3284e70e1d31bc9a30bc172b7f3d",
+        "launch_pr": "f15b876e6a34ef6da5a91c5006057175eebefb576ce3371980db4874bf7ed7b9"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/home/editorial-journal.php",
+      "deployed_sha256": "179725797ee2e2243738415da03899754ea7226a8f937bc6d866258557823ace",
+      "source_hashes": {
+        "local_source": "179725797ee2e2243738415da03899754ea7226a8f937bc6d866258557823ace",
+        "frozen_base": "3d8507eb2483a714c338fc37c053bdcf960a09e3c17d645bbd2f7d6c7c21eeff",
+        "launch_pr": "179725797ee2e2243738415da03899754ea7226a8f937bc6d866258557823ace"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/home/editorial-philosophy.php",
+      "deployed_sha256": "46fc7509eda5ec03a77338802ffa405ab369980f08f07859164fabd570c97f73",
+      "source_hashes": {
+        "local_source": "46fc7509eda5ec03a77338802ffa405ab369980f08f07859164fabd570c97f73",
+        "frozen_base": "46fc7509eda5ec03a77338802ffa405ab369980f08f07859164fabd570c97f73",
+        "launch_pr": "46fc7509eda5ec03a77338802ffa405ab369980f08f07859164fabd570c97f73"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/home/kids-capsule-reveal.php",
+      "deployed_sha256": "3d4bbdf3ec3d742e1dbcf5a379bc30712eec99181d89c1b96ac945403d57044d",
+      "source_hashes": {
+        "local_source": "3d4bbdf3ec3d742e1dbcf5a379bc30712eec99181d89c1b96ac945403d57044d",
+        "frozen_base": "3d4bbdf3ec3d742e1dbcf5a379bc30712eec99181d89c1b96ac945403d57044d",
+        "launch_pr": "3d4bbdf3ec3d742e1dbcf5a379bc30712eec99181d89c1b96ac945403d57044d"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/home/living-archive-worlds.php",
+      "deployed_sha256": "8df1b5628510b29bd563d9a2122695988a13d4787e8ab9a4f11f6942dc0c7bde",
+      "source_hashes": {
+        "local_source": "8df1b5628510b29bd563d9a2122695988a13d4787e8ab9a4f11f6942dc0c7bde",
+        "frozen_base": "8df1b5628510b29bd563d9a2122695988a13d4787e8ab9a4f11f6942dc0c7bde",
+        "launch_pr": "8df1b5628510b29bd563d9a2122695988a13d4787e8ab9a4f11f6942dc0c7bde"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/immersive/world.php",
+      "deployed_sha256": "1a4a06cc328426abfebe3375eb5dfb5d06ebac6fecdab3dd59fab21cdf08c384",
+      "source_hashes": {
+        "local_source": "1a4a06cc328426abfebe3375eb5dfb5d06ebac6fecdab3dd59fab21cdf08c384",
+        "frozen_base": "1a4a06cc328426abfebe3375eb5dfb5d06ebac6fecdab3dd59fab21cdf08c384",
+        "launch_pr": "1a4a06cc328426abfebe3375eb5dfb5d06ebac6fecdab3dd59fab21cdf08c384"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/journal-press-fallback.php",
+      "deployed_sha256": "fc34328eed3de17e727884172e2955b21b50f4ddb239470ef1cce371fbd41003",
+      "source_hashes": {
+        "local_source": "fc34328eed3de17e727884172e2955b21b50f4ddb239470ef1cce371fbd41003",
+        "frozen_base": "fc34328eed3de17e727884172e2955b21b50f4ddb239470ef1cce371fbd41003",
+        "launch_pr": "fc34328eed3de17e727884172e2955b21b50f4ddb239470ef1cce371fbd41003"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/pages/contact.php",
+      "deployed_sha256": "67d52ab7e575bebc1cf9926943fba36d5e63ef5e60d8895a8411cdb3e58b0868",
+      "source_hashes": {
+        "local_source": "67d52ab7e575bebc1cf9926943fba36d5e63ef5e60d8895a8411cdb3e58b0868",
+        "frozen_base": "67d52ab7e575bebc1cf9926943fba36d5e63ef5e60d8895a8411cdb3e58b0868",
+        "launch_pr": "67d52ab7e575bebc1cf9926943fba36d5e63ef5e60d8895a8411cdb3e58b0868"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/pages/journal-entry.php",
+      "deployed_sha256": "63292cece24a0f144346852051820a5899adfc09992bc640a808aa00cc8ad915",
+      "source_hashes": {
+        "local_source": "63292cece24a0f144346852051820a5899adfc09992bc640a808aa00cc8ad915",
+        "frozen_base": "63292cece24a0f144346852051820a5899adfc09992bc640a808aa00cc8ad915",
+        "launch_pr": "63292cece24a0f144346852051820a5899adfc09992bc640a808aa00cc8ad915"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/pages/service.php",
+      "deployed_sha256": "fe11de8882a98b1d40671642061231f4dff663ccc90f4082b17f2fbc0393bb40",
+      "source_hashes": {
+        "local_source": "fe11de8882a98b1d40671642061231f4dff663ccc90f4082b17f2fbc0393bb40",
+        "frozen_base": "fe11de8882a98b1d40671642061231f4dff663ccc90f4082b17f2fbc0393bb40",
+        "launch_pr": "fe11de8882a98b1d40671642061231f4dff663ccc90f4082b17f2fbc0393bb40"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/skyy-mascot.php",
+      "deployed_sha256": "76530638e16d5ec5efeb8e0101615b19597fe7ce9a53ecfc6daaade69c3879bd",
+      "source_hashes": {
+        "local_source": "76530638e16d5ec5efeb8e0101615b19597fe7ce9a53ecfc6daaade69c3879bd",
+        "frozen_base": "76530638e16d5ec5efeb8e0101615b19597fe7ce9a53ecfc6daaade69c3879bd",
+        "launch_pr": "76530638e16d5ec5efeb8e0101615b19597fe7ce9a53ecfc6daaade69c3879bd"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/v2-about.php",
+      "deployed_sha256": "14a06bbadcd65b9d756a842f1cfd942a82d856b39872bd22f01941376dee3aff",
+      "source_hashes": {
+        "local_source": "14a06bbadcd65b9d756a842f1cfd942a82d856b39872bd22f01941376dee3aff",
+        "frozen_base": "14a06bbadcd65b9d756a842f1cfd942a82d856b39872bd22f01941376dee3aff",
+        "launch_pr": "14a06bbadcd65b9d756a842f1cfd942a82d856b39872bd22f01941376dee3aff"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/v2-commerce-preview.php",
+      "deployed_sha256": "e40522de1a6e52b8543fc0cd18095997a706620ee23328c46117dff5422c61d7",
+      "source_hashes": {
+        "local_source": "e40522de1a6e52b8543fc0cd18095997a706620ee23328c46117dff5422c61d7",
+        "frozen_base": "e40522de1a6e52b8543fc0cd18095997a706620ee23328c46117dff5422c61d7",
+        "launch_pr": "e40522de1a6e52b8543fc0cd18095997a706620ee23328c46117dff5422c61d7"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "template-parts/v2-preorder.php",
+      "deployed_sha256": "a31611af50ce0dfd46fa8ebf99ba702a16f3ac945d0d19f42a8ea58667365232",
+      "source_hashes": {
+        "local_source": "9e9f80e1388f9f84fb56385c8287a1602cb8031a14efa5299528e8a8d57877cd",
+        "frozen_base": "9e9f80e1388f9f84fb56385c8287a1602cb8031a14efa5299528e8a8d57877cd",
+        "launch_pr": "a31611af50ce0dfd46fa8ebf99ba702a16f3ac945d0d19f42a8ea58667365232"
+      },
+      "matched_source_refs": [
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "theme.json",
+      "deployed_sha256": "a2e2289f929789a6513d6d05e968cb5fd833c44ac3a5df0a88657ce34a91e4a3",
+      "source_hashes": {
+        "local_source": "a2e2289f929789a6513d6d05e968cb5fd833c44ac3a5df0a88657ce34a91e4a3",
+        "frozen_base": "a2e2289f929789a6513d6d05e968cb5fd833c44ac3a5df0a88657ce34a91e4a3",
+        "launch_pr": "a2e2289f929789a6513d6d05e968cb5fd833c44ac3a5df0a88657ce34a91e4a3"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "woocommerce/archive-product.php",
+      "deployed_sha256": "9fefe12301e03fbf47c9b1e92a9b8878371b29010e0ac821c6c4ca5423fc2fd9",
+      "source_hashes": {
+        "local_source": "9fefe12301e03fbf47c9b1e92a9b8878371b29010e0ac821c6c4ca5423fc2fd9",
+        "frozen_base": "9fefe12301e03fbf47c9b1e92a9b8878371b29010e0ac821c6c4ca5423fc2fd9",
+        "launch_pr": "9fefe12301e03fbf47c9b1e92a9b8878371b29010e0ac821c6c4ca5423fc2fd9"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "woocommerce/cart/cart.php",
+      "deployed_sha256": "dd5932015e3a50e0c8fc90c27bfd971294a3b7824917880333415c76c04c88aa",
+      "source_hashes": {
+        "local_source": "dd5932015e3a50e0c8fc90c27bfd971294a3b7824917880333415c76c04c88aa",
+        "frozen_base": "dd5932015e3a50e0c8fc90c27bfd971294a3b7824917880333415c76c04c88aa",
+        "launch_pr": "dd5932015e3a50e0c8fc90c27bfd971294a3b7824917880333415c76c04c88aa"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "woocommerce/checkout/form-checkout.php",
+      "deployed_sha256": "ff8d95406d4d8266daecbee8a48f82050df6f48baeba7fac29e3ba04b584f305",
+      "source_hashes": {
+        "local_source": "ff8d95406d4d8266daecbee8a48f82050df6f48baeba7fac29e3ba04b584f305",
+        "frozen_base": "ff8d95406d4d8266daecbee8a48f82050df6f48baeba7fac29e3ba04b584f305",
+        "launch_pr": "ff8d95406d4d8266daecbee8a48f82050df6f48baeba7fac29e3ba04b584f305"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "woocommerce/checkout/thankyou.php",
+      "deployed_sha256": "5db092682defea120263a2fc36a3a9d0bc300ca87b58242dbc8c90f4eb750dd3",
+      "source_hashes": {
+        "local_source": "5db092682defea120263a2fc36a3a9d0bc300ca87b58242dbc8c90f4eb750dd3",
+        "frozen_base": "5db092682defea120263a2fc36a3a9d0bc300ca87b58242dbc8c90f4eb750dd3",
+        "launch_pr": "5db092682defea120263a2fc36a3a9d0bc300ca87b58242dbc8c90f4eb750dd3"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "woocommerce/content-product.php",
+      "deployed_sha256": "f688cb49bd64059be36508553f317de80da25e85be3186e6f6349144a497a34b",
+      "source_hashes": {
+        "local_source": "f688cb49bd64059be36508553f317de80da25e85be3186e6f6349144a497a34b",
+        "frozen_base": "f688cb49bd64059be36508553f317de80da25e85be3186e6f6349144a497a34b",
+        "launch_pr": "f688cb49bd64059be36508553f317de80da25e85be3186e6f6349144a497a34b"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "woocommerce/notices/error.php",
+      "deployed_sha256": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab",
+      "source_hashes": {
+        "local_source": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab",
+        "frozen_base": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab",
+        "launch_pr": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "woocommerce/single-product.php",
+      "deployed_sha256": "9beae21a0a22d417490a0d225de26a2fd3156baa11acd0e0c8a9bd0b3fcfc6b6",
+      "source_hashes": {
+        "local_source": "9beae21a0a22d417490a0d225de26a2fd3156baa11acd0e0c8a9bd0b3fcfc6b6",
+        "frozen_base": "9beae21a0a22d417490a0d225de26a2fd3156baa11acd0e0c8a9bd0b3fcfc6b6",
+        "launch_pr": "9beae21a0a22d417490a0d225de26a2fd3156baa11acd0e0c8a9bd0b3fcfc6b6"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "frozen_base",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    },
+    {
+      "path": "woocommerce/single-product/product-image.php",
+      "deployed_sha256": "9216992035cd204891b7cf68afaac48f2042a7f08214bbecf9bcc0c402baabea",
+      "source_hashes": {
+        "local_source": "9216992035cd204891b7cf68afaac48f2042a7f08214bbecf9bcc0c402baabea",
+        "frozen_base": "7185622650ec585926b191d110f7b02050c588d901cbb4e97989a757127d0405",
+        "launch_pr": "9216992035cd204891b7cf68afaac48f2042a7f08214bbecf9bcc0c402baabea"
+      },
+      "matched_source_refs": [
+        "local_source",
+        "launch_pr"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "source_comparison_at_utc": "2026-10-01T07:24:49.018477+00:00",
+  "final_source_followup": "Final candidate differs from previous reference only in FAQ builder import ordering outside theme; all per-file theme hashes unchanged"
+}

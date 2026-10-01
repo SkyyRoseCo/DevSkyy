@@ -1,0 +1,16 @@
+{
+  "source_sha": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+  "timestamp_utc": "2026-10-01T07:27:02.414831+00:00",
+  "status": "PASS",
+  "comparison": "frozen7892 to candidate, all33 complete registry product records",
+  "allowed_differences": {
+    "images.card_front": "existing PR983 bindings migrated without altering rejection/scoped approval metadata",
+    "catalog.description": [
+      "br-001",
+      "br-002"
+    ]
+  },
+  "all_other_product_facts_dimensions_authority_and_image_bindings": "byte-equivalent JSON values",
+  "authentication": "NOT APPLICABLE: offline git/canonical registry comparison",
+  "comprehensive_tested_source": "5b1715df3949b2ff52725cc57a1f6c8064adef4b"
+}

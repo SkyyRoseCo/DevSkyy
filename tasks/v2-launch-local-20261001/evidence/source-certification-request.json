@@ -1,0 +1,25 @@
+{
+  "source_sha": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+  "owner": "stream4",
+  "request": "Reconcile source certification input pins, package boundary and runtime PHP baseline after exact-source review; no approval state changes",
+  "changed_existing_input_hashes": {
+    "wordpress-theme/skyyrose-flagship-2/assets/css/critical/home.contract.json": "b92a0b4c5d758bb425cf75814af5ec851b95ba8b906f5d52650f841a40459a0b",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js": "18122820d55ebd02535cfb0b0dee1abd06dd652001c210b5b65f83adee83c5c7",
+    "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json": "cf84c4ff7e864286f68e1b07cf5ad2da9dafd097b8f507acf138494b0b1959b3",
+    "wordpress-theme/skyyrose-flagship-2/npm-shrinkwrap.json": "4f55e1943069d260cf191330777a677d68808a145dabfd1c928d1992e78cdb87",
+    "wordpress-theme/skyyrose-flagship-2/package.json": "1f489177682336cb338307db2379a4926e3c6a9dfc839f67754745b8b4ae6b44",
+    "wordpress-theme/skyyrose-flagship-2/scripts/build-critical-css.mjs": "8b4f9335530107292d37d7162a94397ad19a2800d8262e5a9e78bfabe51d58b7",
+    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+    "skyyrose/core/product.py": "30a44e37e1ed38950b9dbe398f0396f0293335bf4cc51e7767dcd401b28327d2",
+    "skyyrose/core/product_registry.py": "7f6ad89adb4c8f2e75041720ab8f580eb723af8ec35bd097593bff557a4e2639"
+  },
+  "new_runtime_sources": [
+    "assets/css/home-art-direction.css",
+    "assets/css/home-experience.css",
+    "assets/js/home-experience.js",
+    "assets/js/house-motion.js",
+    "template-parts/commerce/jersey-gallery.php"
+  ],
+  "registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+  "comprehensive_tested_source": "5b1715df3949b2ff52725cc57a1f6c8064adef4b"
+}

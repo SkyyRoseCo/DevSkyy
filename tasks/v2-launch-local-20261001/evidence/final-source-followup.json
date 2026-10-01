@@ -1,0 +1,121 @@
+{
+  "final_source_candidate": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+  "comprehensive_tested_source": "5b1715df3949b2ff52725cc57a1f6c8064adef4b",
+  "difference": "FAQ builder standard-library import ordering only; no executable statement, product fact, theme source or generated asset changed",
+  "diff": "diff --git a/tasks/prelaunch-faq-rewrite-2026-09-26/build_faq.py b/tasks/prelaunch-faq-rewrite-2026-09-26/build_faq.py\nindex 58a83e650..990e32329 100644\n--- a/tasks/prelaunch-faq-rewrite-2026-09-26/build_faq.py\n+++ b/tasks/prelaunch-faq-rewrite-2026-09-26/build_faq.py\n@@ -10,8 +10,8 @@ facts through skyyrose.core.product.get_product. Writes nothing outside this dir\n \n from __future__ import annotations\n \n-import html\n import hashlib\n+import html\n import json\n import re\n import sys\n",
+  "changed_paths": [
+    "tasks/prelaunch-faq-rewrite-2026-09-26/build_faq.py"
+  ],
+  "checks": [
+    {
+      "requirement_id": "ruff",
+      "tested_sha": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "scripts/sync_brand_to_php.py",
+        "skyyrose/core/product.py",
+        "skyyrose/core/product_registry.py",
+        "skyyrose/elite_studio/brand.py",
+        "skyyrose/elite_studio/tests/test_brand.py",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/build_faq.py",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/faq_content.py",
+        "tests/test_brand_php_generation.py",
+        "tests/test_collection_sot_guard.py",
+        "tests/test_faq_candidate.py",
+        "tests/test_product_entry_point.py",
+        "tests/test_registry_organization.py",
+        "tests/test_storefront_card_migration.py",
+        "tests/test_unified_product_registry.py",
+        "wordpress-theme/skyyrose-flagship-2/scripts/test-collection-hero-motion.py",
+        "wordpress-theme/skyyrose-flagship-2/scripts/validate-collection-hero-motion.py",
+        "wordpress-theme/skyyrose-flagship/data/build-collection-sot.py"
+      ],
+      "cwd": "/Users/theceo/.codex/worktrees/58b5/DevSkyy",
+      "timestamp_utc": "2026-10-01T07:28:23.120285+00:00",
+      "evidence": "tasks/v2-launch-local-20261001/evidence/python-ruff.log",
+      "artifact_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "requirement_id": "black",
+      "tested_sha": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        ".venv/bin/black",
+        "--check",
+        "scripts/sync_brand_to_php.py",
+        "skyyrose/core/product.py",
+        "skyyrose/core/product_registry.py",
+        "skyyrose/elite_studio/brand.py",
+        "skyyrose/elite_studio/tests/test_brand.py",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/build_faq.py",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/faq_content.py",
+        "tests/test_brand_php_generation.py",
+        "tests/test_collection_sot_guard.py",
+        "tests/test_faq_candidate.py",
+        "tests/test_product_entry_point.py",
+        "tests/test_registry_organization.py",
+        "tests/test_storefront_card_migration.py",
+        "tests/test_unified_product_registry.py",
+        "wordpress-theme/skyyrose-flagship-2/scripts/test-collection-hero-motion.py",
+        "wordpress-theme/skyyrose-flagship-2/scripts/validate-collection-hero-motion.py",
+        "wordpress-theme/skyyrose-flagship/data/build-collection-sot.py"
+      ],
+      "cwd": "/Users/theceo/.codex/worktrees/58b5/DevSkyy",
+      "timestamp_utc": "2026-10-01T07:28:23.165419+00:00",
+      "evidence": "tasks/v2-launch-local-20261001/evidence/python-black.log",
+      "artifact_sha256": "25fccc0eaf8d49e0c3b2a57240eafacd39c80a69834d9ccacf619b13999d43ff"
+    },
+    {
+      "requirement_id": "isort",
+      "tested_sha": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        ".venv/bin/isort",
+        "--check-only",
+        "scripts/sync_brand_to_php.py",
+        "skyyrose/core/product.py",
+        "skyyrose/core/product_registry.py",
+        "skyyrose/elite_studio/brand.py",
+        "skyyrose/elite_studio/tests/test_brand.py",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/build_faq.py",
+        "tasks/prelaunch-faq-rewrite-2026-09-26/faq_content.py",
+        "tests/test_brand_php_generation.py",
+        "tests/test_collection_sot_guard.py",
+        "tests/test_faq_candidate.py",
+        "tests/test_product_entry_point.py",
+        "tests/test_registry_organization.py",
+        "tests/test_storefront_card_migration.py",
+        "tests/test_unified_product_registry.py",
+        "wordpress-theme/skyyrose-flagship-2/scripts/test-collection-hero-motion.py",
+        "wordpress-theme/skyyrose-flagship-2/scripts/validate-collection-hero-motion.py",
+        "wordpress-theme/skyyrose-flagship/data/build-collection-sot.py"
+      ],
+      "cwd": "/Users/theceo/.codex/worktrees/58b5/DevSkyy",
+      "timestamp_utc": "2026-10-01T07:28:23.379749+00:00",
+      "evidence": "tasks/v2-launch-local-20261001/evidence/python-isort.log",
+      "artifact_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "requirement_id": "faq-regression",
+      "tested_sha": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        ".venv/bin/pytest",
+        "--no-cov",
+        "-q",
+        "tests/test_faq_candidate.py"
+      ],
+      "cwd": "/Users/theceo/.codex/worktrees/58b5/DevSkyy",
+      "timestamp_utc": "2026-10-01T07:28:23.451757+00:00",
+      "evidence": "tasks/v2-launch-local-20261001/evidence/python-faq-regression.log",
+      "artifact_sha256": "cf426ab35f3b06fccef8290fde5325d90af130a79da1d1752031518df77c4236"
+    }
+  ],
+  "authentication": "NOT APPLICABLE: offline worktree checks"
+}

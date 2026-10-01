@@ -1,0 +1,1122 @@
+{
+  "observed_at_utc": "2026-10-01T07:27:02.414831+00:00",
+  "authentication": "existing gh CLI account SkyyRoseLLC; git remote origin SkyyRoseCo/DevSkyy; read-only PR metadata scope",
+  "mutation": "NONE",
+  "pull_requests": [
+    {
+      "baseRefOid": "8a13099798c6b50d3f65bca93baba060b0a82a35",
+      "headRefOid": "6d2b57508332938d55338f7fbe439675e7a18c94",
+      "isDraft": true,
+      "mergeCommit": null,
+      "mergeable": "CONFLICTING",
+      "number": 983,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T20:59:10Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483013969/job/109133028666",
+          "name": "green-loop",
+          "startedAt": "2026-09-28T20:59:11Z",
+          "status": "COMPLETED",
+          "workflowName": "PR Green Loop"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T20:59:10Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483013973/job/109133027851",
+          "name": "PR Agent Analysis",
+          "startedAt": "2026-09-28T20:59:11Z",
+          "status": "COMPLETED",
+          "workflowName": "PR Intelligence Agent"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:00:52Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014096/job/109133026131",
+          "name": "Catalog Consistency Validation",
+          "startedAt": "2026-09-28T20:59:12Z",
+          "status": "COMPLETED",
+          "workflowName": "Catalog Consistency"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:00:15Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483013999/job/109133025956",
+          "name": "claude-review",
+          "startedAt": "2026-09-28T20:59:13Z",
+          "status": "COMPLETED",
+          "workflowName": "Claude Code Review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:04:15Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483007799/job/109133010329",
+          "name": "Analyze (javascript-typescript)",
+          "startedAt": "2026-09-28T20:59:10Z",
+          "status": "COMPLETED",
+          "workflowName": "CodeQL - Code Quality"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:02:34Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109133380581",
+          "name": "🔍 Lint & Static Analysis",
+          "startedAt": "2026-09-28T21:00:21Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:03:07Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483013991/job/109133026082",
+          "name": "🔑 Secrets Scan",
+          "startedAt": "2026-09-28T20:59:13Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:08:53Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014009/job/109133025619",
+          "name": "verify",
+          "startedAt": "2026-09-28T20:59:14Z",
+          "status": "COMPLETED",
+          "workflowName": "V2 source certification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:03:42Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483007799/job/109133010781",
+          "name": "Analyze (python)",
+          "startedAt": "2026-09-28T20:59:10Z",
+          "status": "COMPLETED",
+          "workflowName": "CodeQL - Code Quality"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:08:44Z",
+          "conclusion": "FAILURE",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109133380800",
+          "name": "🐍 Python Tests",
+          "startedAt": "2026-09-28T21:00:10Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T20:59:46Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014096/job/109133026426",
+          "name": "Retired SKU Guard",
+          "startedAt": "2026-09-28T20:59:12Z",
+          "status": "COMPLETED",
+          "workflowName": "Catalog Consistency"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:03:48Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483013991/job/109133026246",
+          "name": "📦 Dependency Review",
+          "startedAt": "2026-09-28T20:59:12Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:15:28Z",
+          "conclusion": "CANCELLED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109133380838",
+          "name": "🔐 Security Scan",
+          "startedAt": "2026-09-28T21:00:10Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:05:58Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483013991/job/109133026362",
+          "name": "📜 License Compliance",
+          "startedAt": "2026-09-28T20:59:12Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:02:25Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109133380683",
+          "name": "⚛️ Frontend Tests",
+          "startedAt": "2026-09-28T21:00:10Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T20:59:50Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483013991/job/109133026483",
+          "name": "📋 SBOM Generation",
+          "startedAt": "2026-09-28T20:59:12Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:05:48Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109133381074",
+          "name": "🎮 Root TypeScript Tests",
+          "startedAt": "2026-09-28T21:00:10Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:06:03Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483013991/job/109135614360",
+          "name": "📊 Security Summary",
+          "startedAt": "2026-09-28T21:06:01Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:01:10Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109133380391",
+          "name": "🏗️ WordPress Theme",
+          "startedAt": "2026-09-28T21:00:10Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:06:33Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109133381015",
+          "name": "🧪 Deps Canary ([all] resolves)",
+          "startedAt": "2026-09-28T21:00:10Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:08:45Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109136664005",
+          "name": "🔌 API Integration Tests",
+          "startedAt": "2026-09-28T21:08:45Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:08:45Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109136662544",
+          "name": "🎭 Playwright E2E Tests",
+          "startedAt": "2026-09-28T21:08:45Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:15:29Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109139222115",
+          "name": "🐳 Docker Build",
+          "startedAt": "2026-09-28T21:15:29Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:16:44Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109139220357",
+          "name": "📊 Pipeline Summary",
+          "startedAt": "2026-09-28T21:15:31Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:15:29Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109139221976",
+          "name": "🚀 Deploy Staging",
+          "startedAt": "2026-09-28T21:15:29Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T21:15:29Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36483014088/job/109139222185",
+          "name": "🌐 Deploy Production",
+          "startedAt": "2026-09-28T21:15:29Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        }
+      ],
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/983"
+    },
+    {
+      "baseRefOid": "8a13099798c6b50d3f65bca93baba060b0a82a35",
+      "headRefOid": "6802859b2c04dc5137a07f79201498d47502a452",
+      "isDraft": false,
+      "mergeCommit": null,
+      "mergeable": "CONFLICTING",
+      "number": 981,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:46:21Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924368/job/108790413354",
+          "name": "claude-review",
+          "startedAt": "2026-09-28T04:45:14Z",
+          "status": "COMPLETED",
+          "workflowName": "Claude Code Review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:47:45Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378915749/job/108790390146",
+          "name": "Analyze (javascript-typescript)",
+          "startedAt": "2026-09-28T04:45:49Z",
+          "status": "COMPLETED",
+          "workflowName": "CodeQL - Code Quality"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:48:09Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108790413825",
+          "name": "🔍 Lint & Static Analysis",
+          "startedAt": "2026-09-28T04:46:47Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:50:34Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924407/job/108790413711",
+          "name": "green-loop",
+          "startedAt": "2026-09-28T04:46:13Z",
+          "status": "COMPLETED",
+          "workflowName": "PR Green Loop"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:47:24Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924670/job/108790414911",
+          "name": "PR Agent Analysis",
+          "startedAt": "2026-09-28T04:46:03Z",
+          "status": "COMPLETED",
+          "workflowName": "PR Intelligence Agent"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:50:42Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924364/job/108790413714",
+          "name": "🔑 Secrets Scan",
+          "startedAt": "2026-09-28T04:46:47Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:48:50Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378915749/job/108790389992",
+          "name": "Analyze (python)",
+          "startedAt": "2026-09-28T04:44:18Z",
+          "status": "COMPLETED",
+          "workflowName": "CodeQL - Code Quality"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:55:55Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108790413955",
+          "name": "🐍 Python Tests",
+          "startedAt": "2026-09-28T04:47:29Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:46:01Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924364/job/108790413440",
+          "name": "📦 Dependency Review",
+          "startedAt": "2026-09-28T04:45:27Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:58:43Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108790413893",
+          "name": "🔐 Security Scan",
+          "startedAt": "2026-09-28T04:47:14Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:47:18Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924364/job/108790413605",
+          "name": "📜 License Compliance",
+          "startedAt": "2026-09-28T04:45:28Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:49:35Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108790413958",
+          "name": "⚛️ Frontend Tests",
+          "startedAt": "2026-09-28T04:47:26Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:47:52Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924364/job/108790413786",
+          "name": "📋 SBOM Generation",
+          "startedAt": "2026-09-28T04:47:08Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:49:26Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108790413824",
+          "name": "🎮 Root TypeScript Tests",
+          "startedAt": "2026-09-28T04:47:15Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:50:46Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924364/job/108791812329",
+          "name": "📊 Security Summary",
+          "startedAt": "2026-09-28T04:50:44Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:48:13Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108790413924",
+          "name": "🏗️ WordPress Theme",
+          "startedAt": "2026-09-28T04:47:20Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:47:27Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108790413854",
+          "name": "🧪 Deps Canary ([all] resolves)",
+          "startedAt": "2026-09-28T04:46:52Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T05:00:02Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108792846573",
+          "name": "🔌 API Integration Tests",
+          "startedAt": "2026-09-28T04:55:57Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T05:03:08Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108792846517",
+          "name": "🎭 Playwright E2E Tests",
+          "startedAt": "2026-09-28T04:55:57Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:58:43Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108793386962",
+          "name": "🐳 Docker Build",
+          "startedAt": "2026-09-28T04:58:44Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T04:58:53Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108793385998",
+          "name": "📊 Pipeline Summary",
+          "startedAt": "2026-09-28T04:58:50Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T05:00:03Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108793644803",
+          "name": "🚀 Deploy Staging",
+          "startedAt": "2026-09-28T05:00:03Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-28T05:03:09Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36378924361/job/108794298192",
+          "name": "🌐 Deploy Production",
+          "startedAt": "2026-09-28T05:03:09Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        }
+      ],
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/981"
+    },
+    {
+      "baseRefOid": "2f5f32cb4bd828bc944d0a7e884331244c47be4e",
+      "headRefOid": "c80d5855afafa2a061f3897d631d98b20ef372cf",
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "2a498071b959206ab02736ca0f72ecc0171b4be7"
+      },
+      "mergeable": "UNKNOWN",
+      "number": 993,
+      "state": "MERGED",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:28:51Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246117/job/109429068984",
+          "name": "Catalog Consistency Validation",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "Catalog Consistency"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:29:03Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246068/job/109429068163",
+          "name": "claude-review",
+          "startedAt": "2026-09-29T13:27:43Z",
+          "status": "COMPLETED",
+          "workflowName": "Claude Code Review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:32:20Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575239348/job/109429052101",
+          "name": "Analyze (javascript-typescript)",
+          "startedAt": "2026-09-29T13:27:39Z",
+          "status": "COMPLETED",
+          "workflowName": "CodeQL - Code Quality"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:31:50Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109429069202",
+          "name": "🔍 Lint & Static Analysis",
+          "startedAt": "2026-09-29T13:27:41Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:29:47Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246048/job/109429067593",
+          "name": "validate",
+          "startedAt": "2026-09-29T13:27:41Z",
+          "status": "COMPLETED",
+          "workflowName": "Dossier Check"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:32:08Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246091/job/109429068670",
+          "name": "green-loop",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "PR Green Loop"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:32:52Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246207/job/109429069506",
+          "name": "PR Agent Analysis",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "PR Intelligence Agent"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:42:36Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246123/job/109433748725",
+          "name": "🔑 Secrets Scan",
+          "startedAt": "2026-09-29T13:38:43Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:33:21Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246014/job/109429067169",
+          "name": "verify",
+          "startedAt": "2026-09-29T13:27:43Z",
+          "status": "COMPLETED",
+          "workflowName": "V2 source certification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:32:48Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575239348/job/109429051781",
+          "name": "Analyze (python)",
+          "startedAt": "2026-09-29T13:27:40Z",
+          "status": "COMPLETED",
+          "workflowName": "CodeQL - Code Quality"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:28:22Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246117/job/109429068843",
+          "name": "Retired SKU Guard",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "Catalog Consistency"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:36:31Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109429069487",
+          "name": "🐍 Python Tests",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:28:19Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246123/job/109433752742",
+          "name": "📦 Dependency Review",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:37:11Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109429069553",
+          "name": "🔐 Security Scan",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:29:49Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246123/job/109433751276",
+          "name": "📜 License Compliance",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:30:02Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109429069439",
+          "name": "⚛️ Frontend Tests",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:28:50Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246123/job/109433790762",
+          "name": "📋 SBOM Generation",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:30:12Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109429069486",
+          "name": "🎮 Root TypeScript Tests",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:42:42Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246123/job/109435427351",
+          "name": "📊 Security Summary",
+          "startedAt": "2026-09-29T13:42:39Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:28:45Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109429069655",
+          "name": "🏗️ WordPress Theme",
+          "startedAt": "2026-09-29T13:27:42Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:28:28Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109429069769",
+          "name": "🧪 Deps Canary ([all] resolves)",
+          "startedAt": "2026-09-29T13:27:43Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:41:01Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109432830886",
+          "name": "🔌 API Integration Tests",
+          "startedAt": "2026-09-29T13:36:34Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:44:52Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109432830912",
+          "name": "🎭 Playwright E2E Tests",
+          "startedAt": "2026-09-29T13:36:34Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:37:11Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109433115786",
+          "name": "🐳 Docker Build",
+          "startedAt": "2026-09-29T13:37:11Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:37:17Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109433112742",
+          "name": "📊 Pipeline Summary",
+          "startedAt": "2026-09-29T13:37:13Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:41:02Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109434756034",
+          "name": "🚀 Deploy Staging",
+          "startedAt": "2026-09-29T13:41:02Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T13:44:53Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36575246178/job/109436408668",
+          "name": "🌐 Deploy Production",
+          "startedAt": "2026-09-29T13:44:54Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        }
+      ],
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/993"
+    },
+    {
+      "baseRefOid": "2a498071b959206ab02736ca0f72ecc0171b4be7",
+      "headRefOid": "d12894c6a4fa07f29d6c0ea2b3133df03bc22754",
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "f826b6a7854cba9d0a5c8d3cba27091e64d8e65d"
+      },
+      "mergeable": "UNKNOWN",
+      "number": 994,
+      "state": "MERGED",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:13:52Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200229/job/109643922013",
+          "name": "Catalog Consistency Validation",
+          "startedAt": "2026-09-29T22:12:48Z",
+          "status": "COMPLETED",
+          "workflowName": "Catalog Consistency"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:13:53Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200195/job/109643921075",
+          "name": "claude-review",
+          "startedAt": "2026-09-29T22:12:47Z",
+          "status": "COMPLETED",
+          "workflowName": "Claude Code Review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:14:51Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638196819/job/109643913412",
+          "name": "Analyze (javascript-typescript)",
+          "startedAt": "2026-09-29T22:12:47Z",
+          "status": "COMPLETED",
+          "workflowName": "CodeQL - Code Quality"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:14:32Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109643922339",
+          "name": "🔍 Lint & Static Analysis",
+          "startedAt": "2026-09-29T22:12:48Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:14:47Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200129/job/109643921021",
+          "name": "validate",
+          "startedAt": "2026-09-29T22:12:47Z",
+          "status": "COMPLETED",
+          "workflowName": "Dossier Check"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:18:53Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200180/job/109643921710",
+          "name": "green-loop",
+          "startedAt": "2026-09-29T22:12:48Z",
+          "status": "COMPLETED",
+          "workflowName": "PR Green Loop"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:24:34Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200157/job/109643921631",
+          "name": "PR Agent Analysis",
+          "startedAt": "2026-09-29T22:12:48Z",
+          "status": "COMPLETED",
+          "workflowName": "PR Intelligence Agent"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:16:21Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200177/job/109643921266",
+          "name": "🔑 Secrets Scan",
+          "startedAt": "2026-09-29T22:12:47Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:18:25Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200175/job/109643921390",
+          "name": "verify",
+          "startedAt": "2026-09-29T22:12:50Z",
+          "status": "COMPLETED",
+          "workflowName": "V2 source certification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:17:19Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638196819/job/109643913739",
+          "name": "Analyze (python)",
+          "startedAt": "2026-09-29T22:12:46Z",
+          "status": "COMPLETED",
+          "workflowName": "CodeQL - Code Quality"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:13:49Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200229/job/109643921554",
+          "name": "Retired SKU Guard",
+          "startedAt": "2026-09-29T22:13:23Z",
+          "status": "COMPLETED",
+          "workflowName": "Catalog Consistency"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:21:05Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109643922501",
+          "name": "🐍 Python Tests",
+          "startedAt": "2026-09-29T22:12:48Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:13:24Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200177/job/109643921370",
+          "name": "📦 Dependency Review",
+          "startedAt": "2026-09-29T22:12:47Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:24:35Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109643922495",
+          "name": "🔐 Security Scan",
+          "startedAt": "2026-09-29T22:12:47Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:15:30Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200177/job/109643921321",
+          "name": "📜 License Compliance",
+          "startedAt": "2026-09-29T22:12:47Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:15:10Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109643922524",
+          "name": "⚛️ Frontend Tests",
+          "startedAt": "2026-09-29T22:12:48Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:13:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200177/job/109643920900",
+          "name": "📋 SBOM Generation",
+          "startedAt": "2026-09-29T22:12:48Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:15:03Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109643922098",
+          "name": "🎮 Root TypeScript Tests",
+          "startedAt": "2026-09-29T22:12:47Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:16:30Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200177/job/109645125203",
+          "name": "📊 Security Summary",
+          "startedAt": "2026-09-29T22:16:26Z",
+          "status": "COMPLETED",
+          "workflowName": "Security Gate"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:13:44Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109643922387",
+          "name": "🏗️ WordPress Theme",
+          "startedAt": "2026-09-29T22:12:48Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:13:50Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109643922391",
+          "name": "🧪 Deps Canary ([all] resolves)",
+          "startedAt": "2026-09-29T22:12:48Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:25:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109646677131",
+          "name": "🔌 API Integration Tests",
+          "startedAt": "2026-09-29T22:21:08Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:28:09Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109646677204",
+          "name": "🎭 Playwright E2E Tests",
+          "startedAt": "2026-09-29T22:21:07Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:24:35Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109647807494",
+          "name": "🐳 Docker Build",
+          "startedAt": "2026-09-29T22:24:36Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:24:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109647805614",
+          "name": "📊 Pipeline Summary",
+          "startedAt": "2026-09-29T22:24:37Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:25:41Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109648160512",
+          "name": "🚀 Deploy Staging",
+          "startedAt": "2026-09-29T22:25:41Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-09-29T22:28:10Z",
+          "conclusion": "SKIPPED",
+          "detailsUrl": "https://github.com/SkyyRoseCo/DevSkyy/actions/runs/36638200222/job/109648946584",
+          "name": "🌐 Deploy Production",
+          "startedAt": "2026-09-29T22:28:11Z",
+          "status": "COMPLETED",
+          "workflowName": "DevSkyy CI/CD Pipeline"
+        }
+      ],
+      "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/994"
+    }
+  ],
+  "branch_protection_at_initial_inspection": {
+    "url": "https://api.github.com/repos/SkyyRoseCo/DevSkyy/branches/main/protection",
+    "required_signatures": {
+      "url": "https://api.github.com/repos/SkyyRoseCo/DevSkyy/branches/main/protection/required_signatures",
+      "enabled": false
+    },
+    "enforce_admins": {
+      "url": "https://api.github.com/repos/SkyyRoseCo/DevSkyy/branches/main/protection/enforce_admins",
+      "enabled": false
+    },
+    "required_linear_history": {
+      "enabled": false
+    },
+    "allow_force_pushes": {
+      "enabled": false
+    },
+    "allow_deletions": {
+      "enabled": false
+    },
+    "block_creations": {
+      "enabled": false
+    },
+    "required_conversation_resolution": {
+      "enabled": false
+    },
+    "lock_branch": {
+      "enabled": false
+    },
+    "allow_fork_syncing": {
+      "enabled": false
+    }
+  },
+  "warning": "Protection metadata is not a CI/merge/release success assertion"
+}

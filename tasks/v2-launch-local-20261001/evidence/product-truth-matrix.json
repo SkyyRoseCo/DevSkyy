@@ -1,0 +1,3263 @@
+{
+  "source_sha": "524d6cd91f0ad9f16dcece58c7b7b709fcad6700",
+  "registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+  "products": [
+    {
+      "sku": "br-001",
+      "name": "BLACK Rose Crewneck",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-001",
+        "name": "BLACK Rose Crewneck",
+        "price": "35",
+        "collection": "black-rose",
+        "description": "Black crewneck with a raised embossed Black Rose chest graphic in black, white and grey, with white ribbed trim.",
+        "badge": "",
+        "image": "assets/images/products/br-001-crewneck.png",
+        "front_model_image": "assets/images/products/br-001-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "assets/images/products/black-rose-crewneck-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Embossed on front chest, approximately 10 inches wide.",
+        "render_output_slug": "black-rose-crewneck",
+        "render_source_override": "br-001-crewneck.png",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "crewneck",
+        "dossier_slug": "black-rose-crewneck",
+        "engine_override": "gemini-pro"
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Heavyweight cotton fleece, relaxed fit.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Crewneck sweatshirt — upper body only, round ribbed neckline, no hood, no buttons, no zipper, no front pocket. NOT a jersey. NOT a hoodie. NOT a jacket. NOT a t-shirt. NOT a tank top. Heavyweight cotton fleece, relaxed fit. **White ribbed neckband, white ribbed sleeve cuffs, white ribbed waist hem** (contrast white trim against the black body — same pattern as the matching joggers in the Black Rose set).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/br-001-onmodel.webp",
+        "sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8",
+        "source_sha256": "d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "BLOCKED_PRODUCT_MISMATCH",
+        "current_fidelity_note": "Current front does not establish the founder-specified raised embossed black/white/grey chest relief.",
+        "alt": "BLACK Rose Crewneck — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-002",
+      "name": "BLACK Rose Joggers",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-002",
+        "name": "BLACK Rose Joggers",
+        "price": "50",
+        "collection": "black-rose",
+        "description": "Black joggers with a full-color silicone-appliqué Black Rose patch on the left thigh, white ribbed waistband and ankle cuffs, and a white drawstring.",
+        "badge": "",
+        "image": "assets/images/products/br-002-joggers.png",
+        "front_model_image": "assets/images/products/ghost/br-002-ghost-front.webp",
+        "back_image": "assets/images/products/black-rose-joggers-back-model.webp",
+        "back_model_image": "assets/images/products/black-rose-joggers-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Silicone patch logo on left thigh area.",
+        "render_output_slug": "black-rose-joggers",
+        "render_source_override": "br-002-joggers.png",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "joggers",
+        "dossier_slug": "black-rose-joggers",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Polyester and cotton blend — founder believes this composition; blend percentages unspecified.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Black jogger sweatpants — lower body only, elasticated waist with drawstring, tapered leg, ribbed ankle cuffs, side hand pockets, back pockets. **White ribbed waistband** at the top, **white ribbed ankle cuffs** at the bottom (contrast white trim against the black body — same pattern as the matching Black Rose Crewneck). NOT shorts. NOT straight-leg sweatpants. NOT cargo pants. NOT track pants with side stripes. NOT leggings. Polyester and cotton blend — founder believes this composition; blend percentages unspecified.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/br-002-onmodel.webp",
+        "sha256": "6e395127c4b6f09a1602db3c30963bb31a42559fe64dfbca990832c3dbc951ba",
+        "source_sha256": "ab4f5f9b1c74550ee053963919091c8da71f4123ef0d502c9d4d61f20c90ec4e",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "BLACK Rose Joggers — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-003",
+      "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black)",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-003",
+        "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black)",
+        "price": "100",
+        "collection": "black-rose",
+        "description": "The foundation of the series. A bold statement in luxury athletic wear — Black is beautiful. Available in Black, Oakland (gold lettering accent on the A), Giants (black/orange), and White colorways.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/br-003-baseball-classic.jpeg",
+        "front_model_image": "assets/images/products/br-003-onmodel.webp",
+        "back_image": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp",
+        "back_model_image": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "FRONT: 'BLACK IS BEAUTIFUL' arched text, custom Baseball Patch. BACK: embroidered rose logo centered. Colorways: Black (solid), Oakland (the 'A' of BLACK is black lettering, rest is gold), Giants (black/orange), White.",
+        "render_output_slug": "black-is-beautiful-jersey",
+        "render_source_override": "br-003-baseball-classic.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "jersey",
+        "dossier_slug": "black-is-beautiful-jersey-series-0-baseball-classic",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "The same fabric as an authentic professional baseball team jersey.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid BLACK base fabric. White piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. White buttons on the placket. NO player number on front. NO player number on back. NO player name on back. NO pinstripes. NOT a t-shirt. NOT a hoodie. NOT a basketball jersey. NOT a football jersey. Mid-weight knit jersey fabric. Solid black colorway (this is the Classic base; Oakland / Giants / White editions are separate SKUs br-012 / br-014 / br-015).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": "#/sku_logos/br-003/decoration_sizing",
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/card-scenes/br-003-onmodel.webp",
+        "sha256": "43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9",
+        "source_sha256": "8e9844277eb99b2bbd3e505903334da37084dd8bb4c11fa16c63d05ef199d4f3",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-004",
+      "name": "BLACK Rose Hoodie",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-004",
+        "name": "BLACK Rose Hoodie",
+        "price": "40",
+        "collection": "black-rose",
+        "description": "Gothic luxury in twilight shadows. Intricate embroidery captures the bloom of darkness.",
+        "badge": "",
+        "image": "assets/images/products/br-004-black-rose-hoodie.jpeg",
+        "front_model_image": "assets/images/products/br-004-onmodel.webp",
+        "back_image": "assets/images/products/black-rose-hoodie-back-model.webp",
+        "back_model_image": "assets/images/products/black-rose-hoodie-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Embroidered rose logo on chest.",
+        "render_output_slug": "black-rose-hoodie",
+        "render_source_override": "br-004-black-rose-hoodie.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "hoodie",
+        "dossier_slug": "black-rose-hoodie",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Heavyweight cotton fleece.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Black pullover hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (all tonal black, no contrast white trim — distinct from the matching Black Rose Crewneck/Joggers set which use white ribbing). NOT a zip-up. NOT a half-zip. NOT a crewneck. NOT a t-shirt. Heavyweight cotton fleece.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ],
+        "render_sources": [
+          "render_sources.back"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/br-004-onmodel.webp",
+        "sha256": "8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8",
+        "source_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "BLOCKED_PRODUCT_MISMATCH",
+        "current_fidelity_note": "Current front conflicts with latest founder hoodie specification: clean sleeves, tonal black drawstrings, and left-hip patch.",
+        "alt": "BLACK Rose Hoodie — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-005",
+      "name": "BLACK Rose Hoodie — Signature Edition",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-005",
+        "name": "BLACK Rose Hoodie — Signature Edition",
+        "price": "65",
+        "collection": "black-rose",
+        "description": "The definitive Black Rose hoodie. Signature edition with premium detailing and numbered tag.",
+        "badge": "",
+        "image": "assets/images/products/br-005-signature-hoodie.jpeg",
+        "front_model_image": "assets/images/products/ghost/br-005-ghost-front.webp",
+        "back_image": "assets/images/products/black-rose-hoodie-signature-edition-back-model.webp",
+        "back_model_image": "assets/images/products/black-rose-hoodie-signature-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Silicone cut-out logo on right chest. Embroidered logo on the side of the body of the hoodie (not on the arm).",
+        "render_output_slug": "black-rose-hoodie-signature",
+        "render_source_override": "br-005-signature-hoodie.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "hoodie",
+        "dossier_slug": "black-rose-hoodie-signature-edition",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton).",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The \"Signature Edition\" identity comes from the elevated branding placement (chest + hip), the white drawstrings, and the sublimated-rose-print inner hood lining.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ],
+        "render_sources": [
+          "render_sources.back"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/br-005-onmodel.webp",
+        "sha256": "19f888f11bc6e3a282088281040ee8b27be1e5473e1b4b53fc5ad5509e80a19b",
+        "source_sha256": "3772bec455a97b1b6dce80fa37d5c116f33eb8eaeab85dc49cf751b7a817111d",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "BLACK Rose Hoodie — Signature Edition — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-006",
+      "name": "The Bomber Sherpa",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-006",
+        "name": "The Bomber Sherpa",
+        "price": "95",
+        "collection": "black-rose",
+        "description": "Lustrous black satin with plush Sherpa lining, crowned by an exquisite embroidered rose. Satin bomber silhouette, hooded.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/br-006-sherpa-jacket.jpeg",
+        "front_model_image": "assets/images/products/br-006-onmodel.webp",
+        "back_image": "assets/images/products/black-rose-sherpa-jacket-back.jpg",
+        "back_model_image": "assets/images/products/black-rose-sherpa-jacket-back.jpg",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Embroidered rose logo on left chest. Big embroidered rose logo on back. Garment is a satin bomber jacket lined with black sherpa and hooded.",
+        "render_output_slug": "black-rose-sherpa-jacket",
+        "render_source_override": "br-006-sherpa-jacket.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "jacket",
+        "dossier_slug": "black-rose-sherpa-jacket",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Black satin bomber-style hooded jacket — **lustrous black satin** exterior fabric, **plush black sherpa** interior lining (visible inside the body and inside the hood). Hooded (sherpa-lined hood). **Front closure is a ZIPPER underneath with a button-overlap storm-flap covering it** — the zipper runs the full center-front length, and a buttoned/snapped storm flap overlaps the zipper line for a clean satin front (this is a two-layer placket). NOT a denim jacket. NOT a fleece hoodie. NOT a leather jacket.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Black satin bomber-style hooded jacket — **lustrous black satin** exterior fabric, **plush black sherpa** interior lining (visible inside the body and inside the hood). Hooded (sherpa-lined hood). **Front closure is a ZIPPER underneath with a button-overlap storm-flap covering it** — the zipper runs the full center-front length, and a buttoned/snapped storm flap overlaps the zipper line for a clean satin front (this is a two-layer placket). **Side hand pockets with zipper closures** at the lower sides. Long sleeves with **black ribbed cuffs**. **Black ribbed bomber-style waistband** at the bottom hem. NOT a parka. NOT a denim jacket. NOT a fleece hoodie. NOT a windbreaker. NOT a leather jacket.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/card-scenes/br-006-onmodel.webp",
+        "sha256": "443a7d3546c8bec2495426e20e7b8a4e84b5b91c02ea57b20d43cb3c96763d2d",
+        "source_sha256": "2f68a2c273228117397883b0c6cacabda708b0bca0d9ae4799e0c88382e0f071",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "The Bomber Sherpa — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-007",
+      "name": "BLACK Rose x Love Hurts Basketball Shorts",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-007",
+        "name": "BLACK Rose x Love Hurts Basketball Shorts",
+        "price": "65",
+        "collection": "black-rose",
+        "description": "Two worlds collide. A cross-collection collaboration merging Black Rose darkness with Love Hurts fire.",
+        "badge": "",
+        "image": "assets/images/products/br-007.jpg",
+        "front_model_image": "assets/images/products/ghost/br-007-ghost-front.webp",
+        "back_image": "assets/images/products/br-007-real-back.jpg",
+        "back_model_image": "assets/images/products/black-rose-love-hurts-basketball-shorts/black-rose-love-hurts-basketball-shorts-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Tackle twill cut-out letters stitched on the front spelling 'Oakland'. Sublimated rose logo throughout the shorts. Big sublimated 'Love Hurts' logo on the left side. Additional 'Love Hurts' and rose logos stitched on the mesh sides of the shorts.",
+        "render_output_slug": "black-rose-love-hurts-bb-shorts",
+        "render_source_override": "br-007.jpg",
+        "render_back_source_override": "br-007-real-back.jpg",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "shorts",
+        "dossier_slug": "black-rose-x-love-hurts-basketball-shorts",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Mesh.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/br-007-onmodel.webp",
+        "sha256": "b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d",
+        "source_sha256": "2b7f8740f6ceb734f639be69121bc859c60ddbdad7a631a5a7dd096b2903deeb",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "BLOCKED_PRODUCT_MISMATCH",
+        "current_fidelity_note": "Current front conflicts with latest founder side-placement correction; exact product front needs review.",
+        "alt": "BLACK Rose x Love Hurts Basketball Shorts — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-008",
+      "name": "BLACK is Beautiful Jersey Series: 1. SF Inspired (Football)",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-008",
+        "name": "BLACK is Beautiful Jersey Series: 1. SF Inspired (Football)",
+        "price": "115",
+        "collection": "black-rose",
+        "description": "Red #80 football jersey. SF 49ers inspired, alternating rose fill on numbers. Exclusive edition — 80 pieces.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/br-008-sf-inspired.jpg",
+        "front_model_image": "assets/images/products/br-008-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Red",
+        "edition_size": "80",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Jersey-style stitched numbers (80) on front and back. FRONT: the '8' contains the rose logo, the '0' is plain white. Custom Football Patch in bottom-left corner. BACK: reversed — the '8' is plain white, the '0' contains the rose.",
+        "render_output_slug": "jersey-sf-inspired-football",
+        "render_source_override": "br-008-sf-inspired.jpg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "jersey",
+        "dossier_slug": "black-is-beautiful-jersey-series-1-sf-inspired-football",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Red",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "The same fabric as an authentic professional football team jersey.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Authentic-style football jersey — V-neck collar opening\nwith **black-and-white horizontal striped neckband**, short sleeves with a\n**white triple-stripe band (three thin horizontal white stripes)** at each\ncuff, straight even hem (no drop-tail), no laces, no shoulder-armor seam.\nSolid **bright red** base fabric (San Francisco red colorway). Mid-weight\nknit jersey fabric. Pullover construction — NO buttons, NO front placket. NOT\na t-shirt. NOT a hoodie. NOT a basketball tank. NOT a baseball jersey.\n**PRE-ORDER product** — design renderings only; no real-product photography\nexists yet.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": "#/sku_logos/br-008/decoration_sizing",
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back",
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/card-scenes/br-008-onmodel.webp",
+        "sha256": "cd4ca4c0ba5d7723b0ad786ad7312502bf820aece583f8a007de4be20fa6088c",
+        "source_sha256": "596b2bc258069939baec6cdf1a0975c1eefe99860ad939bf1729705d6eb66ce2",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "BLACK is Beautiful Jersey Series: 1. SF Inspired (Football) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-009",
+      "name": "BLACK is Beautiful Jersey Series: 2. Last Oakland (Football)",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-009",
+        "name": "BLACK is Beautiful Jersey Series: 2. Last Oakland (Football)",
+        "price": "115",
+        "collection": "black-rose",
+        "description": "White #32 football jersey. White numbers with black border, alternating rose fill. The Last Oakland edition — 80 pieces.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/br-009-last-oakland-football.jpg",
+        "front_model_image": "assets/images/products/br-009-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "White",
+        "edition_size": "80",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Jersey-style stitched numbers (32) on front and back. FRONT: the '3' contains the rose logo, the '2' is plain white. Custom Football Patch in bottom-left corner. BACK: reversed — the '3' is plain white, the '2' contains the rose.",
+        "render_output_slug": "jersey-last-oakland-football",
+        "render_source_override": "br-009-last-oakland-football.jpg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "jersey",
+        "dossier_slug": "black-is-beautiful-jersey-series-2-last-oakland-football",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "The same fabric as an authentic professional football team jersey.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Authentic-style football jersey — V-neck collar opening\nwith **solid black neckband** (contrast against the white body), short sleeves\nwith a **black-and-white horizontal striped cuff band** at each cuff, straight\neven hem. Solid **white** base fabric (Last Oakland Raiders-inspired road/away\ncolorway). Mid-weight knit jersey fabric. Pullover construction — NO buttons,\nNO front placket. NOT a t-shirt. NOT a hoodie. NOT a basketball tank. NOT a\nbaseball jersey. **PRE-ORDER product** — design renderings only.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": "#/sku_logos/br-009/decoration_sizing",
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back",
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/card-scenes/br-009-onmodel.webp",
+        "sha256": "e220fb9c3d2a1413bb2a9d9158736c7a7b8622beadecc5e44debacbdc3441ffc",
+        "source_sha256": "b22d2c5ab7ae4dd8b9e9fbf1c2892f1f90c3fdd1af9d1bbb7a71b343a4213c06",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "BLACK is Beautiful Jersey Series: 2. Last Oakland (Football) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-010",
+      "name": "BLACK is Beautiful Jersey Series: 3. The Bay (Basketball)",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-010",
+        "name": "BLACK is Beautiful Jersey Series: 3. The Bay (Basketball)",
+        "price": "100",
+        "collection": "black-rose",
+        "description": "Basketball tank with \"THE BAY\" gold text. Rose circle graphic, grey/silver rose fade. Bay Area edition — 80 pieces.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/br-010-the-bay-basketball.jpeg",
+        "front_model_image": "assets/images/products/br-010-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "White/Gold",
+        "edition_size": "80",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Use the existing successful render as reference — vision pipeline produced a good first render of this SKU. Preserve the established composition.",
+        "render_output_slug": "jersey-the-bay-basketball",
+        "render_source_override": "br-010-the-bay-basketball.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "1",
+        "render_is_accessory": "0",
+        "garment_type_lock": "jersey",
+        "dossier_slug": "black-is-beautiful-jersey-series-3-the-bay-basketball",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White/Gold",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "The same fabric as an authentic professional basketball team jersey.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Authentic-style basketball tank — sleeveless, round\nneck with thin contrast binding, deep armhole openings (basketball-cut),\nstraight even hem. **White base body fabric with a sublimated all-over\nrose-cluster pattern fading from clean white at the upper-chest into greyscale\nsilhouettes at the lower hem** — the bottom third of the jersey is a layered\ngrey-on-white rose-cluster pattern that wraps front and back continuously.\nMid-weight tank fabric. NO sleeves. NO numbers anywhere. NOT a t-shirt. NOT\na football jersey. NOT a baseball jersey. **PRE-ORDER product** — design\nrenderings only.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": "#/sku_logos/br-010/decoration_sizing",
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back",
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/card-scenes/br-010-onmodel.webp",
+        "sha256": "b8862f06ddfde790a9dd3327e23f824d21abfa73bf1410630e4f9b9b710abea7",
+        "source_sha256": "b0bb680e4a5eee18d1005d780c086485e0cd049b20c8b7d48a72f15a5ca3fac2",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "BLACK is Beautiful Jersey Series: 3. The Bay (Basketball) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-011",
+      "name": "BLACK is Beautiful Jersey Series: 4. The Rose (Hockey)",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-011",
+        "name": "BLACK is Beautiful Jersey Series: 4. The Rose (Hockey)",
+        "price": "115",
+        "collection": "black-rose",
+        "description": "Hooded hockey jersey in black and teal. San Jose Sharks inspired, rose crest on front. Exclusive edition — 80 pieces.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/br-011-the-rose-hockey.png",
+        "front_model_image": "assets/images/products/br-011-onmodel.webp",
+        "back_image": "assets/images/products/black-is-beautiful-hockey-jersey-back-model.webp",
+        "back_model_image": "assets/images/products/black-is-beautiful-hockey-jersey-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black/Teal",
+        "edition_size": "80",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Use the existing successful render as reference — vision pipeline produced a good first render of this SKU. Preserve the established composition.",
+        "render_output_slug": "jersey-the-rose-hockey",
+        "render_source_override": "br-011-the-rose-hockey.png",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "hoodie",
+        "dossier_slug": "black-is-beautiful-jersey-series-4-the-rose-hockey",
+        "engine_override": "gemini-pro"
+      },
+      "garment": {
+        "color": "Black/Teal",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "The same fabric as an authentic professional hockey team jersey.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Hockey-style pullover hoodie with long sleeves and a\nhood — round-neck pullover construction, hood with **bright teal/turquoise\ninner lining** against a black hood exterior, long sleeves ending in a\nlayered striped cuff band, straight hem with a matching layered striped hem\nband. Solid **black** base body fabric with **teal/turquoise (cyan)** accent\ncolorway. Mid-weight knit fabric, hockey-jersey-weight. NOT a basketball\ntank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket\n(distinct from br-006 which is a separate satin bomber). **PRE-ORDER product**\n— design renderings only.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": "#/sku_logos/br-011/decoration_sizing",
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/card-scenes/br-011-onmodel.webp",
+        "sha256": "aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290",
+        "source_sha256": "ed9a1ca7f1ac77a7a06373807a97c8b6edfb17239cd1c7f6e4d34574157c7ab0",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "BLACK is Beautiful Jersey Series: 4. The Rose (Hockey) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-012",
+      "name": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland)",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-012",
+        "name": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland)",
+        "price": "100",
+        "collection": "black-rose",
+        "description": "Green button-front baseball jersey with \"BLACK IS BEAUTIFUL\" arched in gold. Rose crest on back. Limited to 80 pieces.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/br-012-last-oakland-baseball-front.jpeg",
+        "front_model_image": "assets/images/products/jersey-last-oakland-baseball-front-model.webp",
+        "back_image": "assets/images/products/br-012-last-oakland-baseball-back.jpeg",
+        "back_model_image": "assets/images/products/br-012-last-oakland-baseball-back.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Green/Gold",
+        "edition_size": "80",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Green button-front baseball jersey. FRONT: 'BLACK IS BEAUTIFUL' arched across approximately 72% of visible torso width matching the physical flatlay; white letter faces except black A, gold satin-stitch edge. Preserve gold/yellow piping, sleeves and placket. MLB Authentic Collection patch at wearer-left lower hem, 3 inches wide x 4 inches tall. BACK: large embroidered black rose rising from gold clouds, monogram 'SR' at upper neck in gold.",
+        "render_output_slug": "jersey-last-oakland-baseball",
+        "render_source_override": "br-012-last-oakland-baseball-front.jpeg",
+        "render_back_source_override": "br-012-last-oakland-baseball-back.jpeg",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "jersey",
+        "dossier_slug": "black-is-beautiful-jersey-series-5-last-oakland-baseball",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Green/Gold",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "The same fabric as an authentic professional baseball team jersey.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Authentic-style baseball jersey — V-neck collar opening with gold/yellow piping, button-front placket with gold/yellow piping, short sleeves with gold/yellow cuff piping, straight even hem (no drop-tail). Solid **dark forest green** base fabric. Mid-weight knit jersey. NOT a t-shirt, NOT a hoodie, NOT a basketball tank, NOT a football jersey. **PRE-ORDER product**.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": "#/sku_logos/br-012/decoration_sizing",
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/card-scenes/br-012-onmodel.webp",
+        "sha256": "75f96a81896afb52b9742d561a1ee84578b94683c78d1d0aa098b8da50452625",
+        "source_sha256": "c0f2dde7a09f602e782f0edc3936e74f3d90b9fda8dc4dc6609d4b4d9f6b2b5b",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-014",
+      "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Giants)",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-014",
+        "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Giants)",
+        "price": "100",
+        "collection": "black-rose",
+        "description": "Special edition Giants colorway with black and orange accents.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/br-014-baseball-classic-giants.jpeg",
+        "front_model_image": "assets/images/products/br-014-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "assets/images/products/br-014-giants-back.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black/Orange",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Giants colorway: Black and Orange theme.",
+        "render_output_slug": "black-is-beautiful-jersey-giants",
+        "render_source_override": "br-014-baseball-classic-giants.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "jersey",
+        "dossier_slug": "black-is-beautiful-jersey-series-0-baseball-classic-giants",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black/Orange",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "The same fabric as an authentic professional baseball team jersey.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid BLACK base fabric with **bright orange** piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. **Black** buttons on the placket (matching the body, no contrast). NO player number on front. NO player number on back. NO player name on back. NO pinstripes. Mid-weight knit jersey. This is the GIANTS colorway (separate SKU from the Classic black-with-white-piping br-003).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": "#/sku_logos/br-014/decoration_sizing",
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/card-scenes/br-014-onmodel.webp",
+        "sha256": "4cc4c60b2e39bfb3986626419828b57eee1381c20889d51a9a5dbaf2d972d8ff",
+        "source_sha256": "2b0ee5724a997bee7191dc9b5cd5936381bbaf449eb247e95985435f553f9b62",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Giants) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "br-015",
+      "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (White)",
+      "collection": "black-rose",
+      "catalog": {
+        "sku": "br-015",
+        "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (White)",
+        "price": "100",
+        "collection": "black-rose",
+        "description": "Special edition White colorway of the Baseball Classic jersey.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/br-015-baseball-classic-white.jpeg",
+        "front_model_image": "assets/images/products/br-015-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "assets/images/products/black-is-beautiful-jersey-white/black-is-beautiful-jersey-white-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "White",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "White colorway with black accents.",
+        "render_output_slug": "black-is-beautiful-jersey-white",
+        "render_source_override": "br-015-baseball-classic-white.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "jersey",
+        "dossier_slug": "black-is-beautiful-jersey-series-0-baseball-classic-white",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "The same fabric as an authentic professional baseball team jersey.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid **white** base fabric with **black** piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. Black buttons on the placket. NO player number on front or back. NO player name on back. NO pinstripes. Mid-weight knit jersey. This is the WHITE colorway (separate SKU from Classic black br-003 / Giants br-014 / Oakland br-012).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": "#/sku_logos/br-015/decoration_sizing",
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/card-scenes/br-015-onmodel.webp",
+        "sha256": "d708a0e9f468c77fc43d2882c63877e4a41358de1944e0c091f85a66670cd8ad",
+        "source_sha256": "e4be508ec9b74a873d7476bfc1c372cdf0e943eada6d7c8cfa29898861606409",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (White) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "kids-001",
+      "name": "Kids Colorblock Hoodie Set — Red/Black",
+      "collection": "kids-capsule",
+      "catalog": {
+        "sku": "kids-001",
+        "name": "Kids Colorblock Hoodie Set — Red/Black",
+        "price": "65",
+        "collection": "kids-capsule",
+        "description": "Bold red and black V-chevron colorblock hoodie and jogger set. Designed for young ones who wear luxury from the start.",
+        "badge": "",
+        "image": "assets/images/products/kids-001-red-set.jpeg",
+        "front_model_image": "assets/images/products/kids-001-onmodel-v2.webp",
+        "back_image": "",
+        "back_model_image": "assets/images/products/kids-red-set-back-model.webp",
+        "sizes": "2T|3T|4T|5|6|7",
+        "color": "Red/Black/White",
+        "edition_size": "150",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Black rose embroidered logo on the left chest and the left thigh. Right arm features a circular patch logo: white background, black lettering, black rose in center. Patch text: 'Skyy Rose' arched on top, 'Collection' arched on bottom.",
+        "render_output_slug": "kids-red-set",
+        "render_source_override": "kids-001-red-set.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "hoodie",
+        "dossier_slug": "kids-colorblock-hoodie-set-red-black",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Red/Black/White",
+        "available_sizes": [
+          "2T",
+          "3T",
+          "4T",
+          "5",
+          "6",
+          "7"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Cotton.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** (red hood + diagonal black-and-white upper-body panels + red lower body), and (2) matching sweatpants in solid black with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.**",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/kids-001-onmodel.webp",
+        "sha256": "c6bd2ddd555c4359c302eebb051d5fbad4d34bec0b324b44f3447831f3ec9c9a",
+        "source_sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Kids Colorblock Hoodie Set — Red/Black — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "kids-002",
+      "name": "Kids Colorblock Hoodie Set — Purple/Black",
+      "collection": "kids-capsule",
+      "catalog": {
+        "sku": "kids-002",
+        "name": "Kids Colorblock Hoodie Set — Purple/Black",
+        "price": "65",
+        "collection": "kids-capsule",
+        "description": "Rich purple and black V-chevron colorblock hoodie and jogger set. Little ones deserve luxury too.",
+        "badge": "",
+        "image": "assets/images/products/kids-002-purple-set.jpeg",
+        "front_model_image": "assets/images/products/ghost/kids-002-ghost-front.webp",
+        "back_image": "",
+        "back_model_image": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp",
+        "sizes": "2T|3T|4T|5|6|7",
+        "color": "Lavender/Purple",
+        "edition_size": "150",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Black rose embroidered logo on the left chest and the left thigh. Right arm features a circular patch logo: white background, black lettering, black rose in center. Patch text: 'Skyy Rose' arched on top, 'Collection' arched on bottom.",
+        "render_output_slug": "kids-purple-set",
+        "render_source_override": "kids-002-purple-set.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "hoodie",
+        "dossier_slug": "kids-colorblock-hoodie-set-purple-black",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Lavender/Purple",
+        "available_sizes": [
+          "2T",
+          "3T",
+          "4T",
+          "5",
+          "6",
+          "7"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Cotton.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** (lavender/light-pink hood + diagonal lavender-and-medium-purple upper-body panels + deep purple lower body), and (2) matching sweatpants in solid deep purple with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction as the Red/Black colorway (kids-001) but in a purple-monochrome palette.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/kids-002-onmodel.webp",
+        "sha256": "88c0ca36b22a95ce1ee7969b50b4e256718ffda584027dfd97e219605aa3e51b",
+        "source_sha256": "28614e22dea4e655bf011f6d418b0413779695275750446874b07c28db1dee4f",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Kids Colorblock Hoodie Set — Purple/Black — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "lh-002",
+      "name": "Love Hurts Joggers (Black)",
+      "collection": "love-hurts",
+      "catalog": {
+        "sku": "lh-002",
+        "name": "Love Hurts Joggers (Black)",
+        "price": "95",
+        "collection": "love-hurts",
+        "description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. White flat drawstring. The Love Hurts heart-rose-composite embroidered on the left thigh — the heart-and-thorns lockup with roses emerging from the top, rendered in red, green, and crimson on the black fabric. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror white colorway available as lh-006.",
+        "badge": "",
+        "image": "assets/images/products/lh-002-joggers.jpeg",
+        "front_model_image": "assets/images/products/lh-002-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Heart-rose-composite (Love Hurts heart-and-thorns lockup) embroidered on the left thigh. White contrast side-panel running vertically on both side seams. White drawstring.",
+        "render_output_slug": "love-hurts-joggers",
+        "render_source_override": "lh-002-joggers.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "joggers",
+        "dossier_slug": "love-hurts-joggers",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Polyester and cotton blend — founder believes this composition; blend percentages unspecified.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Polyester and cotton blend — founder believes this composition; blend percentages unspecified. **BLACK body** with **WHITE contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). White flat drawstring. NOT pants. NOT shorts. NOT a track short. NOT a basketball jogger. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The white-base mirror colorway is a separate SKU (`lh-006`).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back",
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ],
+        "render_sources": [
+          "render_sources.back"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/lh-002-onmodel.webp",
+        "sha256": "dd1192e520e521308064f42d8ac0c9addc5d403a711c7e62d559541f65b35507",
+        "source_sha256": "c58b3741972167576efa0c2dafb4925570961734fa19d9373e3730c4330b674a",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Love Hurts Joggers (Black) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "lh-003",
+      "name": "Love Hurts Basketball Shorts",
+      "collection": "love-hurts",
+      "catalog": {
+        "sku": "lh-003",
+        "name": "Love Hurts Basketball Shorts",
+        "price": "75",
+        "collection": "love-hurts",
+        "description": "Oakland-inspired luxury streetwear. Defiant rose design on breathable mesh.",
+        "badge": "",
+        "image": "assets/images/products/lh-003-shorts.jpeg",
+        "front_model_image": "assets/images/products/ghost/lh-003-ghost-front.webp",
+        "back_image": "assets/images/products/lh-003-real-back.jpg",
+        "back_model_image": "assets/images/products/love-hurts-basketball-shorts-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "White",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Sublimated rose logo throughout the shorts. Big sublimated 'Love Hurts' logo on the left side. Additional 'Love Hurts' and rose logos stitched on the mesh sides of the shorts.",
+        "render_output_slug": "love-hurts-basketball-shorts",
+        "render_source_override": "lh-003-shorts.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "shorts",
+        "dossier_slug": "love-hurts-basketball-shorts",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Mesh.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Knee-length athletic basketball shorts — **white mesh\nbody fabric** with **all-over sublimated red-roses-cluster pattern** repeating\nacross the entire body, **black ribbed elasticated waistband** with **white flat\ndrawstring**, **exactly four zippered pockets** (**two side hand pockets + two\nrear pockets**), **black ribbed-binding hem with red contrast piping** along the\nleg openings. Every pocket has a zipper closure. Knee-length cut. NOT pants. NOT\njoggers. NOT short-shorts. NOT a swim trunk. NOT a track short.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/lh-003-onmodel.webp",
+        "sha256": "a8338e8a18009573203e7e09ef21e71678deaacee40ff186dacf5350e61f1089",
+        "source_sha256": "a5535461dc6684588ffaa7a58f6f0b12bd6017f0171f3a9fdb3d7f709e3f030e",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Love Hurts Basketball Shorts — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "lh-004",
+      "name": "Love Hurts Bomber Jacket",
+      "collection": "love-hurts",
+      "catalog": {
+        "sku": "lh-004",
+        "name": "Love Hurts Bomber Jacket",
+        "price": "265",
+        "collection": "love-hurts",
+        "description": "Oakland street couture. Satin bomber with bold fire-red script and a hidden rose garden in the hood.",
+        "badge": "",
+        "image": "assets/images/products/lh-004-bomber.png",
+        "front_model_image": "assets/images/products/lh-004-onmodel.webp",
+        "back_image": "assets/images/products/lh-004-bomber-back.png",
+        "back_model_image": "assets/images/products/lh-004-bomber-back.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "White/Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "'Love Hurts' logo lettering across the front. Inside of the hood features a sublimated rose logo. BACK: large 'Heart and Rose' Love Hurts logo centered.",
+        "render_output_slug": "love-hurts-bomber",
+        "render_source_override": "lh-004-bomber.png",
+        "render_back_source_override": "lh-004-bomber-back.png",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "bomber jacket",
+        "dossier_slug": "love-hurts-bomber-jacket",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White/Black",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. **FOUNDER_CONFIRMED:** Satin appearance is required. Fiber composition is unspecified. NOT a sherpa jacket.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). **FOUNDER_CONFIRMED:** Satin appearance is required. Fiber composition is unspecified. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/lh-004-onmodel.webp",
+        "sha256": "1c5aed2f72b85b5afc7a25515931e450e68dfa66011b0345c13605020b89fddc",
+        "source_sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Love Hurts Bomber Jacket — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "lh-005",
+      "name": "The Fannie",
+      "collection": "love-hurts",
+      "catalog": {
+        "sku": "lh-005",
+        "name": "The Fannie",
+        "price": "45",
+        "collection": "love-hurts",
+        "description": "Oakland luxury meets everyday utility. The essential Love Hurts fanny pack with premium embroidery.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/lh-005-fannie.jpeg",
+        "front_model_image": "assets/images/products/lh-005-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "assets/images/products/the-fannie-back-model.webp",
+        "sizes": "One Size",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "High-end leather fanny pack construction. The heart-and-rose logo positioned where the dot of the 'I' in 'FANNIE' would go.",
+        "render_output_slug": "the-fannie",
+        "render_source_override": "lh-005-fannie.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "1",
+        "garment_type_lock": "",
+        "dossier_slug": "the-fannie",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "One Size"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "A **black PU/faux-leather fanny pack (waist-belt bag / cross-body sling)** — small rectangular bag body in pebbled-textured black faux-leather, single front-pocket with a horizontal zipper closure, **adjustable black nylon webbing strap** with a **plastic quick-release buckle** (clip-on/clip-off side-release buckle), worn at the waist or across the chest. NOT a leather handbag.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "A **black PU/faux-leather fanny pack (waist-belt bag / cross-body sling)** — small rectangular bag body in pebbled-textured black faux-leather, single front-pocket with a horizontal zipper closure, **adjustable black nylon webbing strap** with a **plastic quick-release buckle** (clip-on/clip-off side-release buckle), worn at the waist or across the chest. NOT a backpack. NOT a tote bag. NOT a duffel. NOT a wristlet. NOT a leather handbag. **A small accessory product** — distinct from the apparel pieces in the Love Hurts collection.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": null,
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ],
+        "render_sources": [
+          "render_sources.back"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/lh-005-onmodel.webp",
+        "sha256": "3274c53abb457fd03856dab4014ac6076eab1853a67722fb90015749497e830f",
+        "source_sha256": "e3df4aa2781881b9364490c09611308d0c9c0a42fbab19fd114365eca8bda43c",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "The Fannie — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "lh-006",
+      "name": "Love Hurts Joggers (White)",
+      "collection": "love-hurts",
+      "catalog": {
+        "sku": "lh-006",
+        "name": "Love Hurts Joggers (White)",
+        "price": "95",
+        "collection": "love-hurts",
+        "description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. White flat drawstring. The Love Hurts heart-rose-composite embroidered on the left thigh — the heart-and-thorns lockup with roses emerging from the top, rendered in red, green, and crimson on the white fabric. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror black colorway available as lh-002.",
+        "badge": "",
+        "image": "assets/images/products/lh-006-joggers-white.jpeg",
+        "front_model_image": "assets/images/products/lh-006-onmodel.webp",
+        "back_image": "assets/images/products/love-hurts-joggers-white-back-model.webp",
+        "back_model_image": "assets/images/products/love-hurts-joggers-white-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "White",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Heart-rose-composite (Love Hurts heart-and-thorns lockup) embroidered on the left thigh. Black contrast side-panel running vertically on both side seams. White drawstring.",
+        "render_output_slug": "love-hurts-joggers-white",
+        "render_source_override": "lh-006-joggers-white.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "joggers",
+        "dossier_slug": "love-hurts-joggers-white",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Polyester and cotton blend — founder believes this composition; blend percentages unspecified.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Polyester and cotton blend — founder believes this composition; blend percentages unspecified. **WHITE body** with **BLACK contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). White flat drawstring. NOT pants. NOT shorts. NOT a track short. NOT a basketball jogger. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The black-base mirror colorway is a separate SKU (`lh-002`).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ],
+        "render_sources": [
+          "render_sources.back"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/lh-006-onmodel.webp",
+        "sha256": "7905342f32bd2963d3d5d095a0825c9ae3ec98f731de100fb481631ee76244dc",
+        "source_sha256": "805af391800f930d5631db76521ae1b6443e4c6e70e71ba4ac7e215d670e3201",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Love Hurts Joggers (White) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-001",
+      "name": "The Bridge Series 'The Bay Bridge' Shorts",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-001",
+        "name": "The Bridge Series 'The Bay Bridge' Shorts",
+        "price": "65",
+        "collection": "signature",
+        "description": "Embody West Coast luxury. Athletic shorts wrapped in a sublimated Bay Bridge skyline with the iconic embroidered rose.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/sg-001-bay-bridge-shorts.jpeg",
+        "front_model_image": "assets/images/products/bridge-bay-bridge-shorts-front-model.webp",
+        "back_image": "assets/images/products/the-bay-set-back-model.webp",
+        "back_model_image": "assets/images/products/bridge-bay-bridge-shorts-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Blue",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Bay Bridge daytime all-over photographic print; blue embroidered rose at wearer-left lower leg, blue waistband, white drawstring.",
+        "render_output_slug": "bridge-bay-bridge-shorts",
+        "render_source_override": "sg-001-bay-bridge-shorts.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "shorts",
+        "dossier_slug": "the-bridge-series-the-bay-bridge-shorts",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Blue",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Mesh.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**. The photo print shows the steel-cabled Bay Bridge crossing the water with the SF skyline visible in the background, blue sky overhead, and water reflections at the bottom hem. Standard basketball-shorts construction: blue elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT a basketball jersey. NOT the Stay Golden Shorts (that's sg-003 — Golden Gate Bridge night palette, separate SKU).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-001-onmodel.webp",
+        "sha256": "31b85575f88df52d1a61f8ce7b01b0b60c1c1de1749060e3f0bca8873b71ffce",
+        "source_sha256": "25b68eebde53d1c1afa296f77401f272de5c96f9745c7035ed3ba06a2e94a695",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "The Bridge Series 'The Bay Bridge' Shorts — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-002",
+      "name": "The Bridge Series 'Stay Golden' Shirt",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-002",
+        "name": "The Bridge Series 'Stay Golden' Shirt",
+        "price": "65",
+        "collection": "signature",
+        "description": "Embrace West Coast prestige. Luxurious statement of Bay Area style featuring signature rose.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/sg-002-stay-golden-shirt.jpeg",
+        "front_model_image": "assets/images/products/sg-002-stay-golden-shirt.webp",
+        "back_image": "",
+        "back_model_image": "assets/images/products/stay-golden-tee-back-model.webp",
+        "sizes": "XS|S|M|L|XL|2XL",
+        "color": "White",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Embroidered purple rose on front chest center with Golden Gate Bridge at night imagery stitched inside the rose petals. Preserve exact artwork and relative scale from the bound physical garment. SR monogram at back collar per existing specification.",
+        "render_output_slug": "bridge-stay-golden-shirt",
+        "render_source_override": "sg-002-stay-golden-shirt.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "shirt",
+        "dossier_slug": "the-bridge-series-stay-golden-shirt",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White",
+        "available_sizes": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Stay Golden Shorts (sg-003 Golden Gate night palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Bay Bridge Shirt (that's sg-005 — blue rose-cluster decoration, separate SKU). **The Stay Golden colorway uses a PURPLE/VIOLET rose-cluster on the chest** (matching the purple-and-orange Golden Gate night palette).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/card-scenes/sg-002-onmodel.webp",
+        "sha256": "48561fab14ae39618e048bb5ba3226fef4da3affb85855d441bb54be3e767f18",
+        "source_sha256": "6ac286b916975bd0b2e8eed4fce618554b90a07546d5deffedaf9e4e10f7934a",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "The Bridge Series 'Stay Golden' Shirt — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-003",
+      "name": "The Bridge Series 'Stay Golden' Shorts",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-003",
+        "name": "The Bridge Series 'Stay Golden' Shorts",
+        "price": "65",
+        "collection": "signature",
+        "description": "From the Bridge Series. Athletic shorts in Stay Golden colorway celebrating Bay Area luxury.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/sg-003-stay-golden-shorts.jpeg",
+        "front_model_image": "assets/images/products/bridge-stay-golden-shorts-front-model.webp",
+        "back_image": "",
+        "back_model_image": "assets/images/products/bridge-stay-golden-shorts-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "White",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Golden Gate Bridge at night all-over photographic print; purple embroidered rose at wearer-left lower leg, purple waistband, white drawstring.",
+        "render_output_slug": "bridge-stay-golden-shorts",
+        "render_source_override": "sg-003-stay-golden-shorts.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "shorts",
+        "dossier_slug": "the-bridge-series-stay-golden-shorts",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Mesh.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Golden Gate Bridge at night**. The photo print shows the iconic Golden Gate Bridge illuminated against a deep purple-violet/navy night sky, with golden city-light reflections rippling vertically across the dark water at the lower portion. Standard basketball-shorts construction: purple elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. \"Stay Golden\" refers to the **Golden Gate Bridge lit gold against the night sky** (this is the NIGHT variant — carries a purple rose; the daytime Bay Bridge variant sg-001 carries a blue rose). NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT the Bay Bridge Shorts (that's sg-001 — daytime SF-Oakland Bay Bridge, separate SKU).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-003-onmodel.webp",
+        "sha256": "a06526e3136ab5e4f157aa431850c13e6bc75969a10f8240012db7bfac63968c",
+        "source_sha256": "6a2b18619dce5fcde6fec1703c3c8a1447b4b410f8a2178e58fa8d322a5c881a",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "The Bridge Series 'Stay Golden' Shorts — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-005",
+      "name": "The Bridge Series 'The Bay Bridge' Shirt",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-005",
+        "name": "The Bridge Series 'The Bay Bridge' Shirt",
+        "price": "25",
+        "collection": "signature",
+        "description": "From the Bridge Series. White tee with blue rose and Bay Bridge emblem celebrating the iconic crossing.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/sg-005-bay-bridge-shirt.jpeg",
+        "front_model_image": "assets/images/products/sg-005-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "",
+        "sizes": "S|M|L|XL|2XL",
+        "color": "White",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Embroidered blue rose on front chest center with Bay Bridge daytime imagery stitched inside the rose petals. Preserve exact artwork and relative scale from the bound physical garment. SR monogram at back collar per existing specification.",
+        "render_output_slug": "bridge-bay-bridge-shirt",
+        "render_source_override": "sg-005-bay-bridge-shirt.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "shirt",
+        "dossier_slug": "the-bridge-series-the-bay-bridge-shirt",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Bay Bridge Shorts (sg-001 daytime SF-Oakland Bay Bridge palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Stay Golden Shirt (that's sg-002 — purple rose-cluster decoration, separate SKU). **The Bay Bridge colorway uses a BLUE/CYAN rose-cluster on the chest** (matching the daytime-blue Bay Bridge palette).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back",
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-005-onmodel.webp",
+        "sha256": "052915cfb4aaa7f3d1fdd01d222661289cb7a1eab0fdec9b68a8be8dda8f28f0",
+        "source_sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "The Bridge Series 'The Bay Bridge' Shirt — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-006",
+      "name": "Mint & Lavender Hoodie",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-006",
+        "name": "Mint & Lavender Hoodie",
+        "price": "45",
+        "collection": "signature",
+        "description": "Sweet pastel vibes meet streetwear luxury. Mint and lavender colorblock with signature rose detail.",
+        "badge": "",
+        "image": "assets/images/products/sg-006-mint-lavender-hoodie.png",
+        "front_model_image": "assets/images/products/sg-006-onmodel.webp",
+        "back_image": "assets/images/products/mint-lavender-hoodie-back-model.webp",
+        "back_model_image": "assets/images/products/mint-lavender-hoodie-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Mint/Lavender",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Lavender rose logo centered on the front.",
+        "render_output_slug": "mint-lavender-hoodie",
+        "render_source_override": "sg-006-mint-lavender-hoodie.png",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "hoodie",
+        "dossier_slug": "mint-lavender-hoodie",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Mint/Lavender",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Cotton.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "PULLOVER hoodie (kangaroo pouch pocket, NO zipper of any\nkind) — solid **mint green** body, hood, and sleeves, all one mint color.\n**Lavender/purple drawstrings** at the hood opening (the only contrast hardware).\nLarge lavender rose-cluster graphic centered on the chest. Ribbed cuffs and\nbottom hem in self-color mint. Mid-weight cotton-fleece fabric. Pairs with the\nMint & Lavender Sweatpants (sg-014) as a matching set. **Sold as the hoodie SKU\nonly — the matching sweatpants are sg-014, separate SKU.** NOT a zip-up. NOT a\ncrewneck (that's sg-013 Mint & Lavender Crewneck — separate SKU). NOT a\nwindbreaker (the white-body rainbow-chevron zip-up set is sg-015 — a completely\ndifferent product).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ],
+        "render_sources": [
+          "render_sources.back"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-006-onmodel.webp",
+        "sha256": "27d6865fb5ea6b23fbd7df5f4169543348c3dc0b5f34828ca956ca486411b44d",
+        "source_sha256": "510cac2c051615d0713180d512c1f4f132e6d774dd989e2e536e608be62bfe2f",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Mint & Lavender Hoodie — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-007",
+      "name": "The Signature Beanie",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-007",
+        "name": "The Signature Beanie",
+        "price": "25",
+        "collection": "signature",
+        "description": "Classic fitted beanie with signature rose on a silicone patch. West Coast luxury meets everyday warmth. Rose-logo color variants: red, grey, black, purple.",
+        "badge": "",
+        "image": "assets/images/products/sg-007-signature-beanie.png",
+        "front_model_image": "assets/images/products/sg-007-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "",
+        "sizes": "One Size",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Small silicone patch logo positioned slightly off-center to the left. Logo rose color variants: red, grey, black, purple.",
+        "render_output_slug": "signature-beanie",
+        "render_source_override": "sg-007-signature-beanie.png",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "1",
+        "garment_type_lock": "",
+        "dossier_slug": "the-signature-beanie",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "One Size"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. Mid-weight knit fabric.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rose graphic carried on a patch on the front face of the cuff. Mid-weight knit fabric.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.front",
+        "render_sources.back"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back",
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ],
+        "render_sources": [
+          "render_sources.front",
+          "render_sources.back"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-007-onmodel.webp",
+        "sha256": "15dd6abe1bc49ee8fc3e70a17c90d0c05aa11aff517b296290390c449307e730",
+        "source_sha256": "ba6b7523a516ae1feb310c38051e5367c891e4578628161794d0d63d0334363b",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "The Signature Beanie — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-009",
+      "name": "The Sherpa Jacket",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-009",
+        "name": "The Sherpa Jacket",
+        "price": "80",
+        "collection": "signature",
+        "description": "Plush sherpa warmth in the SkyyRose signature colorway. Luxury outerwear for the West Coast. Body lined with white sherpa.",
+        "badge": "",
+        "image": "assets/images/products/sg-009-sherpa-jacket.jpeg",
+        "front_model_image": "assets/images/products/sg-009-onmodel.webp",
+        "back_image": "assets/images/products/the-sherpa-jacket-back-model.webp",
+        "back_model_image": "",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Black",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Red rose logo on the front. Body lined with white sherpa.",
+        "render_output_slug": "signature-sherpa-jacket",
+        "render_source_override": "sg-009-sherpa-jacket.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "jacket",
+        "dossier_slug": "the-sherpa-jacket",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Black",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Sherpa-lined zip-front jacket — solid **black** nylon-windbreaker-style exterior shell with full-length center-front zipper closure and a **white / cream sherpa fleece interior lining** that wraps the entire interior body, sleeves, and stand-up collar. Visible white-sherpa contrast at the front placket, sleeve cuffs, hem, and stand-up collar opening when the jacket is worn open. NOT a sherpa-exterior coat (the sherpa is the INTERIOR lining; the exterior is smooth black nylon-style fabric).",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Sherpa-lined zip-front jacket — solid **black** nylon-windbreaker-style exterior shell with full-length center-front zipper closure and a **white / cream sherpa fleece interior lining** that wraps the entire interior body, sleeves, and stand-up collar. Visible white-sherpa contrast at the front placket, sleeve cuffs, hem, and stand-up collar opening when the jacket is worn open. Two patch hand pockets at the lower body. Stand-up funnel-neck collar (NOT a hood). Small interior brand woven label at the back-neck. Mid-weight to outerwear weight. NOT a pullover. NOT a hoodie (no hood). NOT a sherpa-exterior coat (the sherpa is the INTERIOR lining; the exterior is smooth black nylon-style fabric). NOT a fully-reversible jacket (the rose-cluster embroidery is exterior-only, so it cannot be worn inside-out as a finished look). NOT a windbreaker set (this is the jacket alone, no matching pants).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back.fallback",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back.fallback"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ],
+        "render_sources": [
+          "render_sources.back"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-009-onmodel.webp",
+        "sha256": "fad97fce9afde5e752ea62ed256b03ca7b5ad2ca449f070c9037bd266fa5222d",
+        "source_sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "The Sherpa Jacket — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-011",
+      "name": "Original Label Tee (White)",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-011",
+        "name": "Original Label Tee (White)",
+        "price": "30",
+        "collection": "signature",
+        "description": "The original SkyyRose label tee in clean white. Minimal design with signature branding.",
+        "badge": "",
+        "image": "assets/images/products/sg-011-original-label-tee-white.jpeg",
+        "front_model_image": "assets/images/products/sg-011-onmodel.webp",
+        "back_image": "assets/images/products/original-label-tee-white-back-model.webp",
+        "back_model_image": "",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "White",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Original SkyyRose label tee — minimal design with signature branding. Detailed placement spec TBD.",
+        "render_output_slug": "original-label-tee-white",
+        "render_source_override": "sg-011-original-label-tee-white.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "shirt",
+        "dossier_slug": "original-label-tee-white",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "White 100% cotton construction.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Classic crew-neck T-shirt, upper body only. NOT a crewneck sweatshirt, NOT a hoodie, NOT a jersey, NOT a long-sleeve. Short sleeves, ribbed crew neckline, no buttons, no hood, no kangaroo pocket. White 100% cotton construction.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back.fallback",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back.fallback"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ],
+        "render_sources": [
+          "render_sources.back"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-011-onmodel.webp",
+        "sha256": "25055af2f7d59fdaa18bf9fec4f7b5abe1ec9c7d9a4e5306e7be232a9163ac8e",
+        "source_sha256": "b278f4abfc7127ef62c97db79e21bd65d1f7506d18e44686325b1953dec89f06",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Original Label Tee (White) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-012",
+      "name": "Original Label Tee (Orchid)",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-012",
+        "name": "Original Label Tee (Orchid)",
+        "price": "30",
+        "collection": "signature",
+        "description": "The original SkyyRose label tee in rich orchid. Minimal design with signature branding.",
+        "badge": "",
+        "image": "assets/images/products/sg-012-original-label-tee-orchid.jpeg",
+        "front_model_image": "assets/images/products/sg-012-onmodel.webp",
+        "back_image": "assets/images/products/original-label-tee-orchid-back-model.webp",
+        "back_model_image": "assets/images/products/original-label-tee-orchid-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Orchid",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Original SkyyRose label tee — minimal design with signature branding. Detailed placement spec TBD.",
+        "render_output_slug": "original-label-tee-orchid",
+        "render_source_override": "sg-012-original-label-tee-orchid.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "shirt",
+        "dossier_slug": "original-label-tee-orchid",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Orchid",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Orchid (soft purple-pink) 100% cotton construction.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Classic crew-neck T-shirt, upper body only. NOT a crewneck sweatshirt, NOT a hoodie, NOT a jersey, NOT a long-sleeve. Short sleeves, ribbed crew neckline, no buttons, no hood, no kangaroo pocket. Orchid (soft purple-pink) 100% cotton construction.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "gap_categories": {
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ],
+        "render_sources": [
+          "render_sources.back"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-012-onmodel.webp",
+        "sha256": "360cdb19236dd2108934b9c2eaf15eb539defdb4cb4c4a176d0427ef2bf3a0cf",
+        "source_sha256": "5cd91f17c0bbd77633be628e76b7d0100c2572f76b2912add5022b9831262f87",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Original Label Tee (Orchid) — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-013",
+      "name": "Mint & Lavender Crewneck",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-013",
+        "name": "Mint & Lavender Crewneck",
+        "price": "40",
+        "collection": "signature",
+        "description": "Pastel luxury in crewneck form. Mint and lavender colorblock with signature rose embroidery.",
+        "badge": "",
+        "image": "assets/images/products/sg-013-mint-lavender-crewneck.jpeg",
+        "front_model_image": "assets/images/products/sg-013-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "assets/images/products/mint-lavender-crewneck-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Mint/Lavender",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Lavender rose embroidered logo centered on the front. Small embroidered logo at the back of the neck.",
+        "render_output_slug": "mint-lavender-crewneck",
+        "render_source_override": "sg-013-mint-lavender-crewneck.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "crewneck",
+        "dossier_slug": "mint-lavender-crewneck",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Mint/Lavender",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Cotton.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Crew-neck pullover sweatshirt — solid **mint green / seafoam-green** body fabric throughout (front, back, sleeves) with **NO hood, NO zipper, NO color-blocking, NO chevron stripes, NO contrast panels**. Long sleeves, ribbed crew-neck, ribbed cuffs at wrists, ribbed waistband at hem (all in matching mint). Mid-weight cotton-fleece fabric. NOT a hoodie (no hood — this is the no-hood sibling of the Mint & Lavender Hoodie sg-006). NOT a zip-up (pullover construction, no zipper). NOT a chevron-rainbow garment (the sg-015 Windbreaker Set has rainbow chevron stripes; this crewneck does NOT — it is a clean solid-mint body with embroidered rose decoration only). NOT a tee (this is a heavier sweatshirt with ribbed cuffs/waistband). The matching mint sweatpants visible in the techflat are sold as a separate companion piece — this dossier covers ONLY the crewneck top.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-013-onmodel.webp",
+        "sha256": "fc3fc604b56f4e9abfc95fe45ec4642ccafce625f26241605ff830bad49c8bf8",
+        "source_sha256": "cb58e694639ff02b4dd7c1d009516df237f0acb39a8c6f6948930dad5d3c157b",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Mint & Lavender Crewneck — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-014",
+      "name": "Mint & Lavender Sweatpants",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-014",
+        "name": "Mint & Lavender Sweatpants",
+        "price": "45",
+        "collection": "signature",
+        "description": "Pastel luxury meets streetwear comfort. Mint and lavender sweatpants with signature rose detail.",
+        "badge": "",
+        "image": "assets/images/products/sg-014-mint-lavender-sweatpants.jpeg",
+        "front_model_image": "assets/images/products/ghost/sg-014-ghost-front.webp",
+        "back_image": "",
+        "back_model_image": "assets/images/products/mint-lavender-sweatpants-back-model.webp",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "Mint/Lavender",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "0",
+        "branding_spec": "Embroidered rose logo on the left thigh.",
+        "render_output_slug": "mint-lavender-sweatpants",
+        "render_source_override": "sg-014-mint-lavender-sweatpants.jpeg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "sweatpants",
+        "dossier_slug": "mint-lavender-sweatpants",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "Mint/Lavender",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Cotton.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Athletic-cut sweatpants with a tapered jogger leg and\nribbed ankle cuffs — solid **mint green** body, front and back, all one mint\ncolor. Small lavender rose-cluster logo on the **wearer's left thigh** (upper\nthigh, below the hip). Elasticated drawstring waistband, side-seam hand\npockets. Mid-weight cotton-fleece fabric. Pairs with the Mint & Lavender\nHoodie (sg-006) as a matching set. **Sold as the sweatpants SKU only — the\nmatching hoodie is sg-006, separate SKU.** NOT shorts. NOT track pants. NOT\nthe white chevron windbreaker-set pants (that's sg-015 — a completely\ndifferent product).",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-014-onmodel.webp",
+        "sha256": "e07277762c0b939b7ba1756685675aa4184968de9a3e83fc3d4303d8a400f67b",
+        "source_sha256": "4d21b30b7cca2a55e6a625b2968a2a399c91f88a189e45a1d50d0cfb19a7c876",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "Mint & Lavender Sweatpants — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    },
+    {
+      "sku": "sg-015",
+      "name": "The Windbreaker Set",
+      "collection": "signature",
+      "catalog": {
+        "sku": "sg-015",
+        "name": "The Windbreaker Set",
+        "price": "85",
+        "collection": "signature",
+        "description": "Signature luxury meets West Coast weather. A premium windbreaker set built for those who move through fog.",
+        "badge": "Pre-Order",
+        "image": "assets/images/products/sg-015-windbreaker-set.jpg",
+        "front_model_image": "assets/images/products/sg-015-onmodel.webp",
+        "back_image": "",
+        "back_model_image": "",
+        "sizes": "S|M|L|XL|2XL|3XL",
+        "color": "White",
+        "edition_size": "250",
+        "published": "1",
+        "is_preorder": "1",
+        "branding_spec": "Premium windbreaker set (jacket + matching bottom). Signature first rose on wearer-left jacket chest and pants thigh; separate small rear SR below hood. See dossier and logo-registry.json for artwork and placement authority.",
+        "render_output_slug": "signature-windbreaker-set",
+        "render_source_override": "sg-015-windbreaker-set.jpg",
+        "render_back_source_override": "",
+        "render_is_tech_flat": "0",
+        "render_is_accessory": "0",
+        "garment_type_lock": "set",
+        "dossier_slug": "the-windbreaker-set",
+        "engine_override": ""
+      },
+      "garment": {
+        "color": "White",
+        "available_sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "fit": {
+          "specification": "gender neutral relaxed fit",
+          "source": "derived_from_dossier"
+        },
+        "materials": {
+          "specification": "Windbreaker fabric.",
+          "source": "derived_from_dossier"
+        },
+        "features": {
+          "specification": "Two-piece matching set sold as a single SKU — **zip-front hooded windbreaker JACKET + matching track-style PANTS**. Both pieces are constructed from **windbreaker fabric**. Solid **white** body on both pieces with a **multi-color V-shape rainbow chevron color-block detail** at the upper chest (jacket) and at each upper-thigh (pants), **PINK contrast hood** on the jacket, **multi-color rainbow stripe bands** at the jacket cuffs / hem and the pants waistband / ankle cuffs. The jacket has a full-length center-front zipper. The pants have a white drawstring waistband and slash hand pockets. NOT cotton-fleece (this is the windbreaker variant, not the cousin sg-006 fleece hoodie + sg-014 fleece pants). NOT a single-piece SKU — this is sold as the matching JACKET + PANTS set together. NOT a fleece hoodie (different fabric, different weight, different construction). NOT solid black — both the current catalog and tech flat specify a WHITE body; preserve the pink hood and rainbow chevrons shown in the reference.",
+          "source": "derived_from_dossier"
+        },
+        "sizing_references": {
+          "decoration_sizing_pointer": null,
+          "garment_size_chart": null,
+          "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+        },
+        "care_instructions": {
+          "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+          "source": "derived_from_dossier"
+        }
+      },
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "gap_categories": {
+        "images": [
+          "images.back",
+          "images.back_packshot"
+        ],
+        "content": [
+          "content.description.enriched",
+          "content.short_description.enriched",
+          "content.seo_meta",
+          "content.instagram",
+          "content.tiktok",
+          "content.alt_text"
+        ]
+      },
+      "card_front": {
+        "path": "assets/approved-card-fronts/sg-015-onmodel.webp",
+        "sha256": "e8f365cb5a1e1546977f41a5271bb7ce62287b18ac64f1c62934783198cebfcf",
+        "source_sha256": "3d2c32ea1ef392a234d25d487c524234faa3f3c05830673ce8ba387898de52a5",
+        "scene_status": "FOUNDER_APPROVED_V2_CARD",
+        "current_fidelity_status": "EXISTING_SCOPED_APPROVAL_RETAINED",
+        "current_fidelity_note": null,
+        "alt": "The Windbreaker Set — front on model",
+        "width": 1024,
+        "height": 1536,
+        "source_key": "images.card_front"
+      },
+      "scope": "derived read-only report; editable source remains registry"
+    }
+  ],
+  "comprehensive_tested_source": "5b1715df3949b2ff52725cc57a1f6c8064adef4b"
+}
