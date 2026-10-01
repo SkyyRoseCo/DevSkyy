@@ -1,0 +1,14 @@
+{
+  "version": "7.5.21",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "chownr": "^3.0.0",
+    "yallist": "^5.0.0",
+    "minipass": "^7.1.2",
+    "minizlib": "^3.1.0",
+    "@isaacs/fs-minipass": "^4.0.0"
+  },
+  "dist.integrity": "sha512-XdhtCvlMywwxpCW8YEq3lOXBJpUPTR2OHHcwLPO3HwsJqOHa2Ok/oJ7ruGzp+JrKoRPVCzJwAdEjqLW/vNRPHA=="
+}

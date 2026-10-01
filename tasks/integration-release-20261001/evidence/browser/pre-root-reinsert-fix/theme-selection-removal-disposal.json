@@ -1,0 +1,67 @@
+{
+  "scope": "REPRODUCED_LOCAL_SYNTHETIC_REAL_THEME_MODULES",
+  "authentication": "NOT_APPLICABLE",
+  "approval_id": "SYNTHETIC-TEST-ONLY",
+  "actual_wordpress": false,
+  "actual_browser_bfcache": false,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser_version": "143.0.7499.4",
+  "endpoint_posts": [
+    {
+      "sku": "fixture-native",
+      "variation_id": 512,
+      "attributes": {
+        "attribute_pa_size": "m"
+      }
+    },
+    {
+      "sku": "fixture-native",
+      "variation_id": 512,
+      "attributes": {
+        "attribute_pa_size": "m"
+      }
+    },
+    {
+      "sku": "fixture-native",
+      "variation_id": 511,
+      "attributes": {
+        "attribute_pa_size": "s"
+      }
+    },
+    {
+      "sku": "fixture-native",
+      "variation_id": 512,
+      "attributes": {
+        "attribute_pa_size": "m"
+      }
+    },
+    {
+      "sku": "fixture-native",
+      "variation_id": 512,
+      "attributes": {
+        "attribute_pa_size": "m"
+      }
+    }
+  ],
+  "requests": [
+    "/",
+    "/theme/product-glb-init.mjs",
+    "/theme/product-glb-viewer.mjs",
+    "/theme/product-glb-three.mjs",
+    "/vendor/three.module.min.js",
+    "/vendor/GLTFLoader.js",
+    "/vendor/BufferGeometryUtils.js",
+    "/triangle.glb",
+    "/triangle.glb"
+  ],
+  "blocked_external_requests": [],
+  "source_sha256": {
+    "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-init.mjs": "8d57161037ea1f50315d38733c47004cccd351948702851cd7d1769d7640f479",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-viewer.mjs": "2cd7fe6561028de194a479c21351f77f44f3ff6d7856335548f13f9bbc96bc29",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-three.mjs": "029fa2357b57603c0286446098e1598f07f6fb27b6e6460e9020cd9396bd6842"
+  },
+  "head": "Working tree sources; hashes identify tested bytes, not commit cleanliness"
+}

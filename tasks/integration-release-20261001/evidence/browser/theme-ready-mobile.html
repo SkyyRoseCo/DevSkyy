@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Real V2 init - synthetic local acceptance only</title>
+<style>body{font:18px system-ui;margin:16px}button,a,select{padding:12px;min-height:24px}
+[hidden]{display:none!important}[data-viewer-stage]{height:360px;width:100%;touch-action:none}
+[data-viewer-stage]>div{height:100%;width:100%}canvas{display:block;width:100%;height:100%}
+:focus-visible{outline:3px solid #124faa;outline-offset:2px}</style>
+</head><body><main class="summary"><h1>Synthetic local V2 init fixture</h1>
+<p>Real theme modules; synthetic native identity and triangle. Authentication not applicable.</p>
+<form class="variations_form"><label for="size">Size</label>
+<select id="size" name="attribute_pa_size"><option value="">Choose size</option>
+<option value="s">Small</option><option value="m">Medium</option></select>
+<input type="hidden" name="variation_id" value="512" style="">
+<button type="button" id="native-cart">Add to cart fixture control</button></form>
+<section id="viewer" data-product-glb="" data-config="{&quot;sku&quot;: &quot;fixture-native&quot;, &quot;productId&quot;: 501, &quot;registrySha&quot;: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;, &quot;manifest&quot;: {&quot;schema&quot;: &quot;skyyrose.accepted-glb-runtime.v1&quot;, &quot;registry_sha256&quot;: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;, &quot;publication_authorized&quot;: true, &quot;entries&quot;: [{&quot;sku&quot;: &quot;fixture-native&quot;, &quot;native_sku&quot;: &quot;fixture-native-m&quot;, &quot;product_id&quot;: 501, &quot;variation_id&quot;: 512, &quot;attributes&quot;: {&quot;attribute_pa_size&quot;: &quot;m&quot;}, &quot;url&quot;: &quot;http://127.0.0.1:56121/native-product&quot;, &quot;name&quot;: &quot;Synthetic triangle - no product fidelity claim&quot;, &quot;asset_url&quot;: &quot;/triangle.glb&quot;, &quot;sha256&quot;: &quot;75d8d57295d49d363ba43caaa5a6f984f016a058746e71b3e42bc5539f591eb3&quot;, &quot;byte_length&quot;: 508, &quot;registry_sha256&quot;: &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;, &quot;qc_binding&quot;: &quot;PASS&quot;, &quot;product_fidelity&quot;: &quot;PASS&quot;, &quot;creative_approval&quot;: &quot;FOUNDER_APPROVED&quot;, &quot;license&quot;: &quot;PASS&quot;, &quot;runtime_budget&quot;: &quot;PASS&quot;, &quot;approval_id&quot;: &quot;SYNTHETIC-TEST-ONLY&quot;, &quot;publication_authorized&quot;: true}]}, &quot;endpoint&quot;: &quot;/native-resolve&quot;, &quot;vendorBase&quot;: &quot;http://127.0.0.1:56121/vendor/&quot;}" aria-label="Product view" data-viewer-state="ready">
+<a href="/native-product">Product details</a>
+<button type="button" data-viewer-open="fixture-native">Explore in 3D</button>
+<p data-viewer-status="" role="status" aria-live="polite">3D view ready. Drag to rotate, or use arrow keys.</p>
+<div data-viewer-stage="" tabindex="0" role="group" aria-label="Interactive product view. Use arrow keys to rotate." aria-busy="false"><div data-camera-yaw="0" data-camera-pitch="0"><canvas data-engine="three.js r170" width="358" height="360" aria-hidden="true" style="display: block;"></canvas></div></div>
+<button type="button" data-viewer-retry="" hidden="">Retry</button>
+<button type="button" data-viewer-reset="">Reset view</button>
+<button type="button" data-viewer-back="">Back to product</button></section></main>
+<script>
+window.fixtureMetrics={posts:[],cart:0};
+const realFetch=window.fetch;
+window.fetch=(url,options)=>{
+ if(String(url).includes('native-resolve'))window.fixtureMetrics.posts.push(JSON.parse(options.body));
+ return realFetch(url,options);
+};
+document.querySelector('#size').addEventListener('change',event=>{
+ document.querySelector('[name="variation_id"]').value=({s:511,m:512})[event.target.value]||0;
+});
+document.querySelector('#native-cart').addEventListener('click',()=>window.fixtureMetrics.cart++);
+</script><script type="module">
+await import('/theme/product-glb-init.mjs');window.fixtureReady=true;
+</script></body></html>

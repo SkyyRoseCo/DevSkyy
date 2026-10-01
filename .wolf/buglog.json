@@ -6566,5 +6566,40 @@
     "related_bugs": [],
     "occurrences": 1,
     "last_seen": "2026-10-01T09:48:43.673205+00:00"
+  },
+  {
+    "id": "bug-385",
+    "timestamp": "2026-10-01T12:26:27.616410+00:00",
+    "error_message": "Error establishing a database connection in integration fixture while copy still running",
+    "file": "tasks/integration-release-20261001/evidence/native-activation.txt",
+    "root_cause": "Dependent WP commands started before yielded fixture-copy session completed.",
+    "fix": "Awaited fixture-copy completion, verified own SQLite paths then reran activation/hooks/matrix successfully.",
+    "tags": [
+      "integration",
+      "fixture",
+      "orchestration"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-01T12:26:27.616410+00:00"
+  },
+  {
+    "id": "bug-386",
+    "timestamp": "2026-10-01T12:45:59.982960+00:00",
+    "error_message": "Integration viewer root lifecycle, login deadline and future approval rebinding review findings",
+    "file": "tasks/integration-release-20261001/adoption-manifest.json",
+    "root_cause": "Disposed controllers retained root keys; login lacked a full session-establishment deadline; builder would restamp an old approval with new registry digest.",
+    "fix": "Committed Map eviction and7browserregressions incl historicalnegative; reviewed30s/10s login deadlines+9tests; reject any future acceptedGLBbinding until reviewed sourceapproval contract,3regressions. Retained harness failures and pending source certification separately.",
+    "tags": [
+      "integration",
+      "viewer",
+      "auth",
+      "approval"
+    ],
+    "related_bugs": [
+      "bug-385"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-01T12:45:59.982960+00:00"
   }
 ]

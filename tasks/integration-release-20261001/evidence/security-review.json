@@ -1,0 +1,22 @@
+{
+  "scope": "read-only source/offline checks; dormant GLB only",
+  "review": "security_boundary_review",
+  "source_head": "e4a53a86378545c2e90025c35556959086d785ef",
+  "result": "No actionable exploitable finding in current dormant boundary",
+  "checks": {
+    "node_contracts": 33,
+    "installed_php_lint": 2,
+    "additional_url_attacks_rejected": 5
+  },
+  "module_sha256": {
+    "viewer": "2cd7fe6561028de194a479c21351f77f44f3ff6d7856335548f13f9bbc96bc29",
+    "native_adapter": "5e6896e6f07f51b1c072826b7b24068a398a16ca5ce4900d2da191258c9f5746"
+  },
+  "acceptance_rebinding": {
+    "architect_severity": "HIGH conditional future binding",
+    "correction_commit": "3b570b35e370977105f719c445992ccf3f6d04f2",
+    "regression_tests_passed": 3,
+    "live_bindings": 0,
+    "final_review": "pending"
+  }
+}

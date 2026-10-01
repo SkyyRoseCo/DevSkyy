@@ -1,0 +1,108 @@
+{
+  "scope": "identity audit; historical peer receipts preserved",
+  "policy": "published main identity wins; only starting-ledger identity and own385 included, conflicting peer entries excluded from integration, no owner rewrites",
+  "owners": {
+    "58b5": [
+      {
+        "id": "bug-377",
+        "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+        "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping"
+      }
+    ],
+    "56b5": [
+      {
+        "id": "bug-377",
+        "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+        "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping"
+      }
+    ],
+    "b5f2": [],
+    "2610": [
+      {
+        "id": "bug-377",
+        "file": "tools/3d-commerce/three-renderer.mjs",
+        "error_message": "Accepted multi-scene GLB resources outside the default displayed scene were not disposed"
+      },
+      {
+        "id": "bug-378",
+        "file": "tasks/3d-commerce-20261001/evidence/run_source_certification.py",
+        "error_message": "Exact-source report overlay_sha256 could identify mutable source bytes not copied/executed bytes"
+      },
+      {
+        "id": "bug-379",
+        "file": "tools/3d-commerce/viewer.mjs",
+        "error_message": "GLB preflight accepted empty/null URI fields and undeclared nested extensions"
+      },
+      {
+        "id": "bug-380",
+        "file": "tools/3d-commerce/test-native-product-link.php",
+        "error_message": "SQLite database is locked during synthetic WooCommerce publish/draft test transitions"
+      },
+      {
+        "id": "bug-381",
+        "file": "tools/3d-commerce/test-native-product-link.php",
+        "error_message": "WP shutdown cron HTTP attempt made fixture process fail after assertion output"
+      },
+      {
+        "id": "bug-382",
+        "file": "tasks/3d-commerce-20261001/README.md",
+        "error_message": "Default python3 has no modules ruff, black or mypy"
+      },
+      {
+        "id": "bug-383",
+        "file": "tasks/3d-commerce-20261001/evidence/viewer-contract.log",
+        "error_message": "git diff --cached --check reported trailing whitespace in retained Node empty-URI test names"
+      },
+      {
+        "id": "bug-384",
+        "file": "tasks/3d-commerce-20261001/acceptance-ledger.json",
+        "error_message": "R13/R16/R17 ledger artifact hashes drifted after README log-normalization disclosure edit"
+      }
+    ],
+    "a924": [
+      {
+        "id": "bug-383",
+        "file": "scripts/repository_inventory.py",
+        "error_message": "UP035 Import from collections.abc instead: Iterator"
+      },
+      {
+        "id": "bug-378",
+        "file": "scripts/repository_inventory.py",
+        "error_message": "Known credential configuration exclusions bypassed by case variants"
+      },
+      {
+        "id": "bug-379",
+        "file": "scripts/repository_inventory.py",
+        "error_message": "Exact repository root with trailing whitespace rejected as not top-level"
+      },
+      {
+        "id": "bug-380",
+        "file": "scripts/repository_inventory.py",
+        "error_message": "Default metadata inventory invoked Git status clean filter on tracked synthetic .env"
+      },
+      {
+        "id": "bug-381",
+        "file": "scripts/repository_inventory.py",
+        "error_message": "Nested agent config stores bypassed sensitive path exclusion"
+      },
+      {
+        "id": "bug-382",
+        "file": "scripts/repository_inventory.py",
+        "error_message": "B905 zip() without an explicit strict= parameter"
+      }
+    ],
+    "4035": [
+      {
+        "id": "bug-377",
+        "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+        "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping"
+      },
+      {
+        "id": "bug-385",
+        "file": "tasks/integration-release-20261001/evidence/native-activation.txt",
+        "error_message": "Error establishing a database connection in integration fixture while copy still running"
+      }
+    ]
+  },
+  "central_pending_external_ledgers": true
+}

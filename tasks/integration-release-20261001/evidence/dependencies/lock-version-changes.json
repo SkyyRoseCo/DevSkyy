@@ -1,0 +1,37 @@
+[
+  {
+    "path": "node_modules/baseline-browser-mapping",
+    "before": "2.10.7",
+    "after": "2.11.26"
+  },
+  {
+    "path": "node_modules/browserslist",
+    "before": "4.28.1",
+    "after": "4.28.7"
+  },
+  {
+    "path": "node_modules/caniuse-lite",
+    "before": "1.0.30001778",
+    "after": "1.0.30001814"
+  },
+  {
+    "path": "node_modules/electron-to-chromium",
+    "before": "1.5.313",
+    "after": "1.5.443"
+  },
+  {
+    "path": "node_modules/node-releases",
+    "before": "2.0.36",
+    "after": "2.0.57"
+  },
+  {
+    "path": "node_modules/smol-toml",
+    "before": "1.5.2",
+    "after": "1.7.1"
+  },
+  {
+    "path": "node_modules/tar",
+    "before": "7.5.11",
+    "after": "7.5.21"
+  }
+]

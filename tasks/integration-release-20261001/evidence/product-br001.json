@@ -1,0 +1,281 @@
+{
+  "sku": "br-001",
+  "name": "BLACK Rose Crewneck",
+  "collection": "black-rose",
+  "catalog": {
+    "sku": "br-001",
+    "name": "BLACK Rose Crewneck",
+    "price": "35",
+    "collection": "black-rose",
+    "description": "Black crewneck with a raised embossed Black Rose chest graphic in black, white and grey, with white ribbed trim.",
+    "badge": "",
+    "image": "assets/images/products/br-001-crewneck.png",
+    "front_model_image": "assets/images/products/br-001-onmodel.webp",
+    "back_image": "",
+    "back_model_image": "assets/images/products/black-rose-crewneck-back-model.webp",
+    "sizes": "S|M|L|XL|2XL|3XL",
+    "color": "Black",
+    "edition_size": "250",
+    "published": "1",
+    "is_preorder": "0",
+    "branding_spec": "Embossed on front chest, approximately 10 inches wide.",
+    "render_output_slug": "black-rose-crewneck",
+    "render_source_override": "br-001-crewneck.png",
+    "render_back_source_override": "",
+    "render_is_tech_flat": "0",
+    "render_is_accessory": "0",
+    "garment_type_lock": "crewneck",
+    "dossier_slug": "black-rose-crewneck",
+    "engine_override": "gemini-pro"
+  },
+  "garment": {
+    "color": "Black",
+    "available_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "fit": {
+      "specification": "gender neutral relaxed fit",
+      "source": "derived_from_dossier"
+    },
+    "materials": {
+      "specification": "Heavyweight cotton fleece, relaxed fit.",
+      "source": "derived_from_dossier"
+    },
+    "features": {
+      "specification": "Crewneck sweatshirt — upper body only, round ribbed neckline, no hood, no buttons, no zipper, no front pocket. NOT a jersey. NOT a hoodie. NOT a jacket. NOT a t-shirt. NOT a tank top. Heavyweight cotton fleece, relaxed fit. **White ribbed neckband, white ribbed sleeve cuffs, white ribbed waist hem** (contrast white trim against the black body — same pattern as the matching joggers in the Black Rose set).",
+      "source": "derived_from_dossier"
+    },
+    "sizing_references": {
+      "decoration_sizing_pointer": null,
+      "garment_size_chart": null,
+      "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+    },
+    "care_instructions": {
+      "specification": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+      "source": "derived_from_dossier"
+    }
+  },
+  "merchandising": {
+    "series_slug": "",
+    "series_region": "",
+    "series_order": 0
+  },
+  "merchandising_provenance": {
+    "source": "tools/v2-source-certification/inputs/product-sot.json#sha256=4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+    "kind": "ROUTE_CONFIGURATION"
+  },
+  "dossier": {
+    "sku": "br-001",
+    "name": "BLACK Rose Crewneck",
+    "collection": "black-rose",
+    "slug": "black-rose-crewneck",
+    "garment_type_lock": "Crewneck sweatshirt — upper body only, round ribbed neckline, no hood, no buttons, no zipper, no front pocket. NOT a jersey. NOT a hoodie. NOT a jacket. NOT a t-shirt. NOT a tank top. Heavyweight cotton fleece, relaxed fit. **White ribbed neckband, white ribbed sleeve cuffs, white ribbed waist hem** (contrast white trim against the black body — same pattern as the matching joggers in the Black Rose set).",
+    "branding_block": "> Logo art canonical references:\n> - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`\n> - SR monogram (gold lettermark): `data/brand-logos/sr-monogram.md`\n\n### Front\n- **front-chest** (~10in tall × proportional width): The Black Rose logo,\n  **physically embossed onto the fabric surface as a raised dimensional\n  relief** — visibly 3D and tactile, sitting proud of the fabric. NOT\n  debossed/sunken. NOT a flat print. NOT tone-on-tone.\n\n  **Composition** — vertical teardrop cluster, widest at the top where the\n  rose blooms are, narrowing down where stems converge, anchored at the\n  bottom by a single small cumulus cloud. The cloud is a SINGLE PEDESTAL\n  AT THE BASE ONLY — it does NOT split, wrap, or fan around the roses.\n  Stems emerge UPWARD from the top of the cloud — stems do NOT extend\n  below the cloud. The thorny vines wrap around the stems and twist\n  between the blooms.\n\n  **Art elements** (all preserved from the canonical Black Rose logo at\n  data/brand-logos/three-rose-cluster.md):\n  - **Three roses** in illustrated comic-book style with hard ink edges\n    and soft tonal shading: one large fully-open bloom dominant in the\n    upper portion, one medium three-quarter-angle bloom upper-left, one\n    smaller bud or partially-open rose lower in the cluster. A few leaves\n    behind / between the blooms.\n  - **Stems** running vertically from the blooms down to the cloud.\n  - **Thorny vines** with clearly visible short sharp dark spikes wrapping\n    the stems.\n  - **Single cumulus cloud** at the very base, soft pillowy lobes, sitting\n    directly under the cluster like a pedestal.\n\n  **Embossed colorway** — reduced 3-color palette of **BLACK + WHITE + GREY**:\n  - Rose petals: GREYSCALE shading (light-grey highlights, dark-grey\n    shadows) with **bold BLACK ink outlines**. NOT solid black silhouettes.\n    NOT solid grey shapes. They are illustrated greyscale roses with\n    visible petal detail and tonal shading — the same petal rendering as\n    the canonical art tile, just without any green or blue.\n  - Cloud: WHITE with subtle light-grey shading on the underside lobes.\n  - Stems, leaves, thorny vines: GREY (mid-tone grey), with darker-grey\n    shading on undersides. NO green anywhere.\n  - Bold black outlines/ink lines throughout (rose edges, leaf veins,\n    cloud lobe outlines, vine outlines) — the illustrated comic-book\n    line-art style is preserved in the embossing.\n\n  **Technique:** embossed (raised, dimensional, color-preserved).\n  **Colors:** black, white, grey only.\n\n### Back\n- **back-neck** (small, ~2in wide, top-center just below the white-ribbed\n  collar): The SR monogram (gold metallic art — see sr-monogram reference).\n  Embroidered directly onto the jersey in gold-tone thread. **Technique:**\n  embroidered. **Color:** gold-tone thread (preserves the gold-to-copper\n  gradient from the canonical mark).\n\n### Sleeves / Collar / Hem / Other\n- **collar-outside / neckband**: White ribbed-knit neckband contrasting against\n  the black body. **Technique:** stitched. **Color:** white.\n- **left-cuff / right-cuff**: White ribbed-knit sleeve cuffs contrasting\n  against the black body. **Technique:** stitched. **Color:** white.\n- **hem**: White ribbed-knit waist hem contrasting against the black body.\n  **Technique:** stitched. **Color:** white.\n- **collar-inside** (~1.75in × 0.75in): Small woven brand label sewn into the\n  inside back of the collar. **Technique:** woven-label. **Color:**\n  brand-label colors (typically black with brand-color accents).",
+    "negative_block": "- NO flat-print, screen-print, or DTG print on the front chest — the front-\n  chest logo is an embossed raised relief, not a flat print.\n- NO printed text — no \"BLACK IS BEAUTIFUL\" arched text, no other printed\n  words on the body fabric.\n- NO debossed/sunken treatment of the chest logo — the technique is embossed\n  (RAISED), not debossed.\n- NO tonal/flatten-to-base black-on-black treatment of the chest logo — the\n  embossed art is rendered in a 3-color palette (BLACK / WHITE / GREY), not\n  monochrome black.\n- NO kelly-green stems on this product — the embossed colorway uses GREY\n  for stems/leaves/vines. (Kelly-green only appears on Black Rose products\n  that use techniques preserving the full canonical color, e.g., silicone\n  appliqué or screen-print — NOT this crewneck.)\n- NO blue-tinted cloud shading on this product — the embossed cloud is\n  WHITE only.\n- NO embroidered Black Rose logo on the front chest (the front is embossed,\n  NOT embroidered — embroidery would have visible thread texture).\n- NO embroidered patches on the lower right front (this is NOT a baseball jersey).\n- NO SR monogram on the front chest. NO SR monogram on the sleeves. NO SR\n  monogram at the back-center. The SR monogram is at the back-neck only.\n- NO embroidered roses on mid back (the back-CENTER is empty; the SR monogram\n  sits at the back-neck only).\n- NO baseball player graphics anywhere.\n- NO sleeve patches, sleeve embroidery, sleeve printing — sleeves are clean.\n- NO hem or side-seam decoration on the body fabric — the hem is plain ribbed\n  knit (white), no logo, no text, no piping.\n- NO chest text other than the embossed rose logo.\n- NO contrasting-color logos on the body fabric beyond the back-neck SR monogram.\n- NO silicone appliqué.\n- NO heat-transfer vinyl.\n- NO sublimated panels.\n- NO black ribbed neckband (the rib trim is WHITE, not tonal black).",
+    "scene_pose": "Standing facing forward, three-quarter angle, hands relaxed at sides\n  or one hand in pocket of joggers. Chest area clearly lit from the front-left\n  to reveal the embossed logo's raised texture; back-neck framed in back/back-\n  three-quarter renders to show the gold SR monogram.",
+    "scene_setting": "Pure white studio backdrop, soft directional studio lighting,\n  subtle natural drop shadow on the floor.",
+    "logo_reference": "data/brand-logos/three-rose-cluster.md",
+    "extra_logos": [
+      "data/brand-logos/sr-monogram.md"
+    ],
+    "reference_image": "",
+    "extra_references": [],
+    "full_text": "---\nsku: br-001\nname: BLACK Rose Crewneck\ncollection: black-rose\nlogo_reference: data/brand-logos/three-rose-cluster.md\nextra_logos:\n  - data/brand-logos/sr-monogram.md\n---\n\n# BLACK Rose Crewneck\n\n**Garment type lock:** Crewneck sweatshirt — upper body only, round ribbed neckline, no hood, no buttons, no zipper, no front pocket. NOT a jersey. NOT a hoodie. NOT a jacket. NOT a t-shirt. NOT a tank top. Heavyweight cotton fleece, relaxed fit. **White ribbed neckband, white ribbed sleeve cuffs, white ribbed waist hem** (contrast white trim against the black body — same pattern as the matching joggers in the Black Rose set).\n\n## Founder-confirmed correction\n\n**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: \"also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat\")\n\n**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.\n\n## Branding — exactly what IS on this product\n\n> Logo art canonical references:\n> - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`\n> - SR monogram (gold lettermark): `data/brand-logos/sr-monogram.md`\n\n### Front\n- **front-chest** (~10in tall × proportional width): The Black Rose logo,\n  **physically embossed onto the fabric surface as a raised dimensional\n  relief** — visibly 3D and tactile, sitting proud of the fabric. NOT\n  debossed/sunken. NOT a flat print. NOT tone-on-tone.\n\n  **Composition** — vertical teardrop cluster, widest at the top where the\n  rose blooms are, narrowing down where stems converge, anchored at the\n  bottom by a single small cumulus cloud. The cloud is a SINGLE PEDESTAL\n  AT THE BASE ONLY — it does NOT split, wrap, or fan around the roses.\n  Stems emerge UPWARD from the top of the cloud — stems do NOT extend\n  below the cloud. The thorny vines wrap around the stems and twist\n  between the blooms.\n\n  **Art elements** (all preserved from the canonical Black Rose logo at\n  data/brand-logos/three-rose-cluster.md):\n  - **Three roses** in illustrated comic-book style with hard ink edges\n    and soft tonal shading: one large fully-open bloom dominant in the\n    upper portion, one medium three-quarter-angle bloom upper-left, one\n    smaller bud or partially-open rose lower in the cluster. A few leaves\n    behind / between the blooms.\n  - **Stems** running vertically from the blooms down to the cloud.\n  - **Thorny vines** with clearly visible short sharp dark spikes wrapping\n    the stems.\n  - **Single cumulus cloud** at the very base, soft pillowy lobes, sitting\n    directly under the cluster like a pedestal.\n\n  **Embossed colorway** — reduced 3-color palette of **BLACK + WHITE + GREY**:\n  - Rose petals: GREYSCALE shading (light-grey highlights, dark-grey\n    shadows) with **bold BLACK ink outlines**. NOT solid black silhouettes.\n    NOT solid grey shapes. They are illustrated greyscale roses with\n    visible petal detail and tonal shading — the same petal rendering as\n    the canonical art tile, just without any green or blue.\n  - Cloud: WHITE with subtle light-grey shading on the underside lobes.\n  - Stems, leaves, thorny vines: GREY (mid-tone grey), with darker-grey\n    shading on undersides. NO green anywhere.\n  - Bold black outlines/ink lines throughout (rose edges, leaf veins,\n    cloud lobe outlines, vine outlines) — the illustrated comic-book\n    line-art style is preserved in the embossing.\n\n  **Technique:** embossed (raised, dimensional, color-preserved).\n  **Colors:** black, white, grey only.\n\n### Back\n- **back-neck** (small, ~2in wide, top-center just below the white-ribbed\n  collar): The SR monogram (gold metallic art — see sr-monogram reference).\n  Embroidered directly onto the jersey in gold-tone thread. **Technique:**\n  embroidered. **Color:** gold-tone thread (preserves the gold-to-copper\n  gradient from the canonical mark).\n\n### Sleeves / Collar / Hem / Other\n- **collar-outside / neckband**: White ribbed-knit neckband contrasting against\n  the black body. **Technique:** stitched. **Color:** white.\n- **left-cuff / right-cuff**: White ribbed-knit sleeve cuffs contrasting\n  against the black body. **Technique:** stitched. **Color:** white.\n- **hem**: White ribbed-knit waist hem contrasting against the black body.\n  **Technique:** stitched. **Color:** white.\n- **collar-inside** (~1.75in × 0.75in): Small woven brand label sewn into the\n  inside back of the collar. **Technique:** woven-label. **Color:**\n  brand-label colors (typically black with brand-color accents).\n\n## Negative — what is NOT on this product (DO NOT render)\n\n- NO flat-print, screen-print, or DTG print on the front chest — the front-\n  chest logo is an embossed raised relief, not a flat print.\n- NO printed text — no \"BLACK IS BEAUTIFUL\" arched text, no other printed\n  words on the body fabric.\n- NO debossed/sunken treatment of the chest logo — the technique is embossed\n  (RAISED), not debossed.\n- NO tonal/flatten-to-base black-on-black treatment of the chest logo — the\n  embossed art is rendered in a 3-color palette (BLACK / WHITE / GREY), not\n  monochrome black.\n- NO kelly-green stems on this product — the embossed colorway uses GREY\n  for stems/leaves/vines. (Kelly-green only appears on Black Rose products\n  that use techniques preserving the full canonical color, e.g., silicone\n  appliqué or screen-print — NOT this crewneck.)\n- NO blue-tinted cloud shading on this product — the embossed cloud is\n  WHITE only.\n- NO embroidered Black Rose logo on the front chest (the front is embossed,\n  NOT embroidered — embroidery would have visible thread texture).\n- NO embroidered patches on the lower right front (this is NOT a baseball jersey).\n- NO SR monogram on the front chest. NO SR monogram on the sleeves. NO SR\n  monogram at the back-center. The SR monogram is at the back-neck only.\n- NO embroidered roses on mid back (the back-CENTER is empty; the SR monogram\n  sits at the back-neck only).\n- NO baseball player graphics anywhere.\n- NO sleeve patches, sleeve embroidery, sleeve printing — sleeves are clean.\n- NO hem or side-seam decoration on the body fabric — the hem is plain ribbed\n  knit (white), no logo, no text, no piping.\n- NO chest text other than the embossed rose logo.\n- NO contrasting-color logos on the body fabric beyond the back-neck SR monogram.\n- NO silicone appliqué.\n- NO heat-transfer vinyl.\n- NO sublimated panels.\n- NO black ribbed neckband (the rib trim is WHITE, not tonal black).\n\n## Scene direction\n\n- **Pose:** Standing facing forward, three-quarter angle, hands relaxed at sides\n  or one hand in pocket of joggers. Chest area clearly lit from the front-left\n  to reveal the embossed logo's raised texture; back-neck framed in back/back-\n  three-quarter renders to show the gold SR monogram.\n- **Setting:** Pure white studio backdrop, soft directional studio lighting,\n  subtle natural drop shadow on the floor.\n"
+  },
+  "catalog_row": {
+    "sku": "br-001",
+    "name": "BLACK Rose Crewneck",
+    "price": "35",
+    "collection": "black-rose",
+    "description": "Black crewneck with a raised embossed Black Rose chest graphic in black, white and grey, with white ribbed trim.",
+    "badge": "",
+    "image": "assets/images/products/br-001-crewneck.png",
+    "front_model_image": "assets/images/products/br-001-onmodel.webp",
+    "back_image": "",
+    "back_model_image": "assets/images/products/black-rose-crewneck-back-model.webp",
+    "sizes": "S|M|L|XL|2XL|3XL",
+    "color": "Black",
+    "edition_size": "250",
+    "published": "1",
+    "is_preorder": "0",
+    "branding_spec": "Embossed on front chest, approximately 10 inches wide.",
+    "render_output_slug": "black-rose-crewneck",
+    "render_source_override": "br-001-crewneck.png",
+    "render_back_source_override": "",
+    "render_is_tech_flat": "0",
+    "render_is_accessory": "0",
+    "garment_type_lock": "crewneck",
+    "dossier_slug": "black-rose-crewneck",
+    "engine_override": "gemini-pro",
+    "fit": "gender neutral relaxed fit",
+    "materials": "Heavyweight cotton fleece, relaxed fit.",
+    "features": "Crewneck sweatshirt — upper body only, round ribbed neckline, no hood, no buttons, no zipper, no front pocket. NOT a jersey. NOT a hoodie. NOT a jacket. NOT a t-shirt. NOT a tank top. Heavyweight cotton fleece, relaxed fit. **White ribbed neckband, white ribbed sleeve cuffs, white ribbed waist hem** (contrast white trim against the black body — same pattern as the matching joggers in the Black Rose set).",
+    "care_instructions": "Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.",
+    "sizing_references": "{\"decoration_sizing_pointer\": null, \"garment_size_chart\": null, \"source_rule\": \"Use founder specifications and actual product flatlays; no inferred garment measurements.\"}"
+  },
+  "images": {
+    "front": {
+      "path": "assets/images/products/br-001-onmodel.webp",
+      "source_key": "front_model_image",
+      "role_asset": true
+    },
+    "back": {
+      "path": "assets/images/products/black-rose-crewneck-back-model.webp",
+      "source_key": "back_model_image",
+      "role_asset": true
+    },
+    "packshot": {
+      "path": "assets/images/products/br-001-crewneck.png",
+      "source_key": "image",
+      "role_asset": true
+    },
+    "back_packshot": null,
+    "card_front": {
+      "path": "assets/approved-card-fronts/br-001-onmodel.webp",
+      "sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8",
+      "source_sha256": "d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724",
+      "scene_status": "FOUNDER_APPROVED_V2_CARD",
+      "current_fidelity_status": "BLOCKED_PRODUCT_MISMATCH",
+      "current_fidelity_note": "Current front does not establish the founder-specified raised embossed black/white/grey chest relief.",
+      "alt": "BLACK Rose Crewneck — front on model",
+      "width": 1024,
+      "height": 1536,
+      "source_key": "images.card_front"
+    }
+  },
+  "render_sources": {
+    "front": "assets/products/techflats/split/catalog/br-001-techflat-front.png",
+    "back": "assets/products/techflats/split/catalog/br-001-techflat-back.png",
+    "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/br-001-crewneck.png",
+    "techflat_sheet": "assets/products/techflats/black-rose/crewneck-and-joggers.jpeg",
+    "techflat_front": "assets/products/techflats/split/catalog/br-001-techflat-front.png",
+    "techflat_back": "assets/products/techflats/split/catalog/br-001-techflat-back.png"
+  },
+  "asset_library": {
+    "directory": "assets/products/catalog/black-rose/br-001",
+    "sources": [
+      {
+        "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-001-crewneck.png",
+        "kind": "flatlay",
+        "view": "front",
+        "sha256": "c9cd0614f52f8c9a6f8bcfb098acd89bcca15ea612cb62a48bba5d48697123c2",
+        "width": 2000,
+        "height": 1800,
+        "verification": "VISUALLY_REVIEWED_PRODUCT_IDENTITY",
+        "source_location": "worktree",
+        "source_path": "assets/products/source-photos/black-rose/br-001-crewneck-front-authentic.png",
+        "review_note": "Product identity and visible view compared with registry specifications; does not override founder facts or grant final render approval."
+      },
+      {
+        "path": "assets/products/source-photos/black-rose/br-001-crewneck-front-hq.png",
+        "kind": "flatlay",
+        "view": "front",
+        "sha256": "b875fde3457cf3fcea00d67a6a73f2dd6c4edcee72ceacb9eb9e6314d0e4df2e",
+        "width": 5120,
+        "height": 4608,
+        "verification": "VISUALLY_REVIEWED_PRODUCT_IDENTITY",
+        "source_location": "worktree",
+        "source_path": "assets/products/source-photos/black-rose/br-001-crewneck-front-hq.png",
+        "review_note": "Product identity and visible view compared with registry specifications; does not override founder facts or grant final render approval."
+      },
+      {
+        "path": "skyyrose/elite_studio/assets/golden/br-001/reference.jpg",
+        "kind": "flatlay",
+        "view": "front",
+        "sha256": "149f96e34e93d02d16991a84793d8dab15ed8d2e585f433535c08fc7385c2279",
+        "width": 400,
+        "height": 360,
+        "verification": "VISUALLY_REVIEWED_PRODUCT_IDENTITY",
+        "source_location": "worktree",
+        "source_path": "assets/products/source-photos/black-rose/br-001-crewneck-front.jpeg",
+        "review_note": "Product identity and visible view compared with registry specifications; does not override founder facts or grant final render approval."
+      }
+    ]
+  },
+  "logos": {
+    "placements": [
+      {
+        "logo_id": "black-roses-cloud-cluster",
+        "position": "front_chest_center",
+        "technique": "embossed",
+        "size_inches": 10
+      }
+    ],
+    "decoration_sizing": {},
+    "primary_reference": "wordpress-theme/skyyrose-flagship/assets/images/logos/black-roses-cloud-cluster.jpeg",
+    "reference_kind": "logo",
+    "patch_sport": null,
+    "sku_folder": null
+  },
+  "content": {
+    "description": {
+      "value": "Black crewneck with a raised embossed Black Rose chest graphic in black, white and grey, with white ribbed trim.",
+      "source": "registry.catalog.description",
+      "enriched": false
+    },
+    "short_description": {
+      "value": "Black crewneck with a raised embossed Black Rose chest graphic in black, white and grey, with white ribbed trim.",
+      "source": "registry.catalog.description",
+      "enriched": false
+    },
+    "seo_meta": null,
+    "instagram": null,
+    "tiktok": null
+  },
+  "alt_text": {},
+  "corrections": [
+    {
+      "text": "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE separate roses — one dominant upright rose plus a smaller rose or bud offset to the side, on a single cumulus cloud at the base. It is NOT a single large bloom and NOT a peony. Keep the roses as distinct flowers; do not merge them into one.",
+      "authority": "AGENT_ADDED",
+      "captured": "2026-06-12"
+    },
+    {
+      "text": "[ghost] Render the rose logo at the size and position shown in the real product photo and tech flat — do NOT enlarge it to fill or dominate the chest.",
+      "authority": "AGENT_ADDED",
+      "captured": "2026-06-12"
+    }
+  ],
+  "render_policy": {
+    "keepers": []
+  },
+  "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+  "gaps": [
+    "images.back_packshot",
+    "content.description.enriched",
+    "content.short_description.enriched",
+    "content.seo_meta",
+    "content.instagram",
+    "content.tiktok",
+    "content.alt_text"
+  ],
+  "provenance": {
+    "generated": "2026-10-01T12:21:54.258155+00:00",
+    "entry_point": "skyyrose.core.product.get_product",
+    "sources": {
+      "registry": {
+        "path": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+        "sha256": "db3181f70cc7ec02",
+        "modified": "2026-10-01T12:19:39.482623+00:00",
+        "bytes": 601930
+      }
+    }
+  },
+  "gap_categories": {
+    "images": [
+      "images.back_packshot"
+    ],
+    "content": [
+      "content.description.enriched",
+      "content.short_description.enriched",
+      "content.seo_meta",
+      "content.instagram",
+      "content.tiktok",
+      "content.alt_text"
+    ]
+  }
+}

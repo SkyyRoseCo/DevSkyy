@@ -1,0 +1,11 @@
+# Dependency remediation evidence
+
+Local worktree `/Users/theceo/.codex/worktrees/4035/DevSkyy`, shared integration branch. Source identity and dirty concurrent files are in `identity-before.json` and `validation-source-identity.json`. Node v22.23.2 and npm10.9.8 from `/Users/theceo/.hermes/node/bin`.
+
+Frontend exact same-major patches: browserslist4.28.7, tar7.5.21, smol-toml1.7.1. Root lock audit contains no high/critical findings; root manifests remain unchanged. Vercel59.26.0 retained; audit-proposed Vercel50 downgrade rejected. Browserslist requires four browser-data transitive updates; these are the only additional version changes (`lock-version-changes.json`). Optional libc metadata normalized by npm was restored to preserve unrelated lock content.
+
+Audit: frontend41(8low30moderate2high1critical) ->31(8low23moderate0high0critical), confirmed independently by lock and installed audits. Root9(1low8moderate0high0critical). Audit commands return exit1 for remaining lower severity advisories; audit JSON is evidence, not a zero-vulnerability claim.
+
+Validation: npm ci --ignore-scripts --no-audit installed1143 packages in this worktree. npm ls browserslist tar smol-toml vercel minimatch undici --json and --package-lock-only --json both report no problems. Full frontend Vitest26files/320tests, type-check, lint(0errors228warnings), read-only scene-authority projection check, and git diff --check passed. Production build passed with `NEXT_TELEMETRY_DISABLED=1 npm exec -- next build --webpack`. The build script's mutating prebuild projection sync was avoided because it is outside dependency ownership; the projection was checked separately. Default Turbopack build and browser E2E were not run. Logs and exit files preserve executed commands and outcomes.
+
+Advisory sources verified on2026-10-01: [Browserslist patched4.28.7](https://github.com/advisories/GHSA-c83g-rgw3-j3cx), [tar patched7.5.21](https://github.com/advisories/GHSA-r292-9mhp-454m), [smol-toml patched1.7.1](https://github.com/advisories/GHSA-7w5x-hrqm-74c2). Fresh npm registry metadata for all selected versions is retained in `*-selected-registry.json`. Authentication not applicable: public registry/advisory reads and local install/test/build only. No secrets/providers, deployment, migrations, product edits, staging, or commits.

@@ -1,0 +1,55 @@
+{
+  "source_commit": "3c93bf0814a9cf1c6295fe3a2c6004cdf4399a39",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "0fe972f5bc0bf1ba252dccb2c217a36741b6c9889e11b85377b5a149fab30bb3"
+    },
+    {
+      "path": "browser-check.cjs",
+      "sha256": "2beae8dd378395e8ee5efc9dedaf93d3b316b5da1e20674eb2eb7ca1d6805c7d"
+    },
+    {
+      "path": "evidence/browser-initial-failed.json",
+      "sha256": "75cab72b1b69bf23fe380272dbd5b6493e8de027581c47f3603cb7ca18f513ad"
+    },
+    {
+      "path": "evidence/browser.json",
+      "sha256": "7296c504953744f926871c9053f626bba1c639abfa7dfbb39293c4bf533a813d"
+    },
+    {
+      "path": "evidence/dependencies.json",
+      "sha256": "b94ddbe5e3c92d2e773742f4ff0803a6643ef806ffe06ab33dd5248274498b27"
+    },
+    {
+      "path": "evidence/frontend-build.txt",
+      "sha256": "84c0bd1a5c11d988836bbae05087e0982c09f63b691a04749f6188dc974fa94c"
+    },
+    {
+      "path": "evidence/frontend-lint.txt",
+      "sha256": "672a361dc2c64e2913f77c646220bb74b5cfdb37d508a13c30fc905eca81efe8"
+    },
+    {
+      "path": "evidence/frontend-tests.txt",
+      "sha256": "87527e43c0740fd177d32d0dd72791720780ed6dd0685724fa9f1aec6e263708"
+    },
+    {
+      "path": "evidence/frontend-types.txt",
+      "sha256": "6016acd2b42dd1ba16971b4d4ef4ce137913975899a660649b8d74401cf2a4e8"
+    },
+    {
+      "path": "login-deadline.patch",
+      "sha256": "85dae7374a299461a20a0f605c6274bd3a939f141ba7c42634eb441aadb61e83"
+    },
+    {
+      "path": "source-map.json",
+      "sha256": "0ebf3c0fee43f0f4e66691f124ccff861435f6105ca661eafbb89977b152ec47"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "/Users/theceo/.codex/visualizations/2026/10/01/01a0f644-19f5-78c0-926f-f6fc9f9417be/login-deadline-timeout.png",
+      "sha256": "e4e7f1b639a51cf3d3e2b631d7d4d6ffea8821a5897c10ba7f69814b50e12778"
+    }
+  ]
+}

@@ -9295,3 +9295,16 @@
 - `tasks/preorder-correctness-20261001/evidence/architect-closing-review.md` — Recorded bounded independent review, artifact/count verification and remaining gates (~350 tok).
 
 - `tasks/v2-launch-local-20261001/evidence/closing/successor-*.json` and successor gate/matrix logs — Exact6f source, 43-row acceptance ledger, independent architect review and byte-preservation proof; historical9e logs retained (~1800 tok excluding raw logs).
+
+## Integration release 20261001
+- `tasks/integration-release-20261001/` — current assembled source/dependency/test/release evidence; separates local and held runtime gates.
+- `wordpress-theme/skyyrose-flagship-2/inc/product-glb.php` — registry-projected accepted asset gate, native read-only selection route, optional PDP mount.
+- `wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-init.mjs` — selected variation disposal/remount and current native resolver.
+
+## Integration release 2026-10-01
+- tasks/integration-release-20261001/README.md — Combinedcandidate scope, actualchecks, productionholds and reproductioncommands (~2500tokens).
+- tasks/integration-release-20261001/adoption-manifest.json — Owner/source/adoptedcommits and exactshared ownership (~2500tokens).
+- tasks/integration-release-20261001/evidence-index.json — Retainedartifact bytes/hashes; executionclaims remain inindividualreports (~12000tokens).
+- wordpress-theme/skyyrose-flagship-2/inc/product-glb.php — Optional dormantproduct-view mount/server-ownedreadonlynativeidentityroute (~1500tokens).
+- wordpress-theme/skyyrose-flagship-2/assets/js/product-glb-init.mjs — Nativeoptioncontroller lifecycle and freshresolver requests (~1200tokens).
+- tests/test_glb_projection_approval.py — Offline current/staleapprovalprojection3caseregression (~700tokens).

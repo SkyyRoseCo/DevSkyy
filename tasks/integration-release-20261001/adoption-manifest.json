@@ -1,0 +1,271 @@
+{
+  "starting_head": "f3e2b91cad3a17f25aabde6932cfbfb593f0b694",
+  "main_base": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+  "adoptions": [
+    {
+      "owner_source": "9d6319a2c30551f8533fcb5d997d3b1e5ae4e863",
+      "adopted_commit": "7043f8f25fd006f32d0bdcca9e4106e2379a97e7",
+      "stable_patch_id": "b489e869656e14d0b677f084a39953a9c74a98e1",
+      "paths": [
+        "skyyrose/elite_studio/creative/checkpointer.py",
+        "tests/test_creative_checkpointer.py"
+      ]
+    },
+    {
+      "owner_source": "3a93058112fa96bf64b337f45b0a414aece9e28b",
+      "adopted_commit": "fcafc3424724fb1dbe3b13ca930097b2fed3dfea",
+      "stable_patch_id": "b6dc09c97e67e701ff75e3430fadab73f93737a3",
+      "paths": [
+        "skyyrose/elite_studio/creative/runway_quota.py",
+        "tests/api/analytics/test_storefront_ingest.py",
+        "tests/test_runway_quota_governor.py"
+      ]
+    },
+    {
+      "owner_source": "2e41f6c93ff0ed9c44cbb219f0b4302a2b419594",
+      "adopted_commit": "1136a21957cad3214aac55694ddc3542ce6f3a14",
+      "stable_patch_id": "31c7812cb13e1dfb5c912966b32335b1fd01f575",
+      "paths": [
+        "frontend/app/admin/governor/page.tsx",
+        "frontend/app/api/governor/report/route.ts",
+        "frontend/app/login/page.tsx",
+        "frontend/components/console/TopBar.tsx",
+        "frontend/components/console/nav-config.ts",
+        "frontend/lib/api-auth.ts",
+        "frontend/lib/governor/report-client.ts",
+        "frontend/lib/governor/server.ts",
+        "frontend/tests/governor-owner-report.test.ts",
+        "frontend/tests/governor-report-route.test.ts"
+      ]
+    },
+    {
+      "owner_source": "042d469da4803a7e3a6492c0387a5e3afec098a0",
+      "adopted_commit": "f2f4e83475c39db523e87c9d5f3877ca3ed0c64f",
+      "stable_patch_id": "b42adf2d4bb081c73925a16b80417d347123a98e",
+      "paths": [
+        "skyyrose/elite_studio/creative/nodes.py",
+        "skyyrose/elite_studio/creative/runner.py",
+        "skyyrose/elite_studio/creative/world_governor.py",
+        "tests/api/analytics/test_storefront_ingest.py",
+        "tests/test_creative_hub.py",
+        "tests/test_paid_governor_boundary.py",
+        "tests/test_world_governor.py"
+      ]
+    },
+    {
+      "owner_source": "d34bfc587c2ecb4fd47d0aacae76d432e6534f18",
+      "adopted_commit": "efd38733b281f888c77be9d6ff23d2893b6d2d03",
+      "stable_patch_id": "ad16b312e30bceb374480c44c5fdac3bb35e249b",
+      "paths": [
+        "skyyrose/elite_studio/creative/world_governor.py",
+        "tests/test_world_governor.py"
+      ]
+    },
+    {
+      "owner_source": "4b5763ce5b3d0768f7f39d182ccd62c2b838b158",
+      "adopted_commit": "0149b628f26ad496e09ac39b2e4f6304dd25bff5",
+      "stable_patch_id": "fbb8efdb220041952ee15b47d9f35fd3a49b8b5e",
+      "paths": [
+        "docs/consolidation/README.md",
+        "docs/consolidation/evidence.json",
+        "scripts/repository_inventory.py",
+        "tests/scripts/test_repository_inventory.py"
+      ]
+    },
+    {
+      "owner_source": "3ec51ed9287e6cf381d9fc3581efad184ead3f72",
+      "adopted_commit": "fed553f8b944f7f7fdb3a1a710b304535785512e",
+      "stable_patch_id": "f93aaaf79dc17ce634d23ccc62597234949a85a1",
+      "paths": [
+        "tools/3d-commerce/native-product-link.php",
+        "tools/3d-commerce/test-native-product-link.php",
+        "tools/3d-commerce/test-viewer-contract.mjs",
+        "tools/3d-commerce/test_viewer_browser.py",
+        "tools/3d-commerce/three-renderer.mjs",
+        "tools/3d-commerce/viewer.mjs"
+      ]
+    },
+    {
+      "owner_source": "961d9b1c39c437e473184276256fe0ae7fd8b06b",
+      "adopted_commit": "c4d971022aee75b6ea58b13b44cdc9d91aeb81e9",
+      "stable_patch_id": "18aa9d5f6678490e814586f12e3b90e352fdff21",
+      "paths": [
+        "tools/3d-commerce/test-viewer-contract.mjs",
+        "tools/3d-commerce/test_viewer_browser.py",
+        "tools/3d-commerce/three-renderer.mjs"
+      ]
+    }
+  ],
+  "preexisting_equivalent_commits": [
+    {
+      "owner_source": "48dca7136bb034727708281c4f1246dd66e4ed5d",
+      "adopted_commit": "6f796ef1f528b4a695ef510b912808484ce5cc8d",
+      "note": "21 non-Wolf changedfiles byteidentical; task+commerce scopedpatchID359592d969ca5a6ace421eba0b7e120d5e7dff06; two Wolf contextfiles differ; not reapplied"
+    },
+    {
+      "owner_source": "0513dbb2f091f0bca4009c9be1d389a9dc67f706",
+      "adopted_commit": "c7abc43e8c79ef8393d8309cd7d18dad25a7d962",
+      "note": "already included in starting source; not reapplied"
+    },
+    {
+      "owner_source": "acd5d1c22e3fc2e347d7a204016ca7f8feac1da1",
+      "adopted_commit": "2e37db9143ae5759be840bea2a81cd8679901ff8",
+      "note": "already included in starting source; not reapplied"
+    },
+    {
+      "owner_source": "221ba974ac9e920a3e4d329069bbeb8cbf0b1955",
+      "adopted_commit": "ba19dedeca3efdf4205e6d7d6c5c3f87db9a27d0",
+      "note": "already included in starting source; not reapplied"
+    },
+    {
+      "owner_source": "487455d7f799153f0fb5e31c72ceeb9116031ed3",
+      "adopted_commit": "226cef2011ffa97b8bd064b6c7d036213da62d88",
+      "note": "already included in starting source; not reapplied"
+    }
+  ],
+  "holds": [
+    "inventory lifecycle",
+    "null date/policy version/acknowledgment",
+    "accepted GLB assets/room/license/device qualification",
+    "Governor authenticated durable locked Linux runtime"
+  ],
+  "ownership": {
+    "shared integration/bootstrap/build/release": "4035 lead",
+    "frontend dependency manifests": "dependency_remediation worker finished",
+    "active dashboard/agent copy and nodes.py": "Governor owner",
+    "active creative/mascot brand copy": "3D owner",
+    "commerce immutable module": "preorder owner",
+    "certification": "3D owner frozen source",
+    "e2e tests": "viewer_e2e agent",
+    "final review": "independent Astra2957",
+    "consolidation raw evidence": "original retained+a924 verifiedcopy"
+  },
+  "consolidation_docs": {
+    "owner_source": "c31c622ada1de9a0a7de3d3914532e7d580003c2",
+    "paths": [
+      "docs/consolidation/rolling-coordination.json",
+      "docs/consolidation/README.md",
+      "docs/consolidation/COORDINATOR-HANDOFF.md",
+      "docs/consolidation/closing-evidence.json"
+    ],
+    "note": "selective contents; shared wolf ledgers not transplanted"
+  },
+  "brand_patches": [
+    {
+      "owner": "stream4",
+      "path": "tasks/3d-commerce-20261001/evidence/brand-consumer-corrections.patch",
+      "sha256": "6045059fef6103a8194ca5e540d55ca44678ea117049a367e69eb5a4b7deab7e",
+      "paths": 42,
+      "status": "adopted in 8a99eafce; independent42path actualhashreview PASS"
+    },
+    {
+      "owner": "stream3",
+      "source_commit": "f050634551c12c6f3e8e3ff63295941241ab6bed",
+      "sha256": "d8a05fcc0d5f16e5e952089443bf403823dd1d92c836f7739c6af482e7ac3404",
+      "paths": 22,
+      "status": "adopted in8a99eafce independenthashreview PASS"
+    }
+  ],
+  "integration_commits": [
+    {
+      "commit": "dac08687a163c7d30227f44af244fcb28eb56b36",
+      "scope": "frontend locked dependencies"
+    },
+    {
+      "commit": "4155b57d23725e0a1d0804ecde419ceaf9e209eb",
+      "scope": "review-only architect"
+    },
+    {
+      "commit": "8a99eafceb99aa0998591a0ecf20e61918ca9873",
+      "scope": "both brand patches and7coordinator consumers"
+    },
+    {
+      "commit": "c2cb46d23920f563eab2f21e85c0025e3b1e81e8",
+      "scope": "actual theme viewer wiring and native analytics/browser regressions"
+    },
+    {
+      "commit": "eb66bd38353cf09176d9b9321866ff0ae4bf7e6a",
+      "scope": "selective consolidation/preorder handoff"
+    },
+    {
+      "commit": "e4a53a86378545c2e90025c35556959086d785ef",
+      "scope": "MJS package pathscan"
+    },
+    {
+      "commit": "3b570b35e370977105f719c445992ccf3f6d04f2",
+      "scope": "failclosed futureGLB acceptance rebinding"
+    },
+    {
+      "commit": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+      "scope": "reviewed login deadline/retry correction, owner3c93bf0814a9cf1c6295fe3a2c6004cdf4399a39, exact3files"
+    }
+  ],
+  "registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+  "authentication_nextauth_limit": "30s appdeadline /10s upstreamauthorize deadline; SDK internal Set-Cookie/sessionbroadcast cannot be cancelled by Promise.race; no broader cancellation claim",
+  "functional_source_revision": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+  "login_patch": {
+    "owner_source": "3c93bf0814a9cf1c6295fe3a2c6004cdf4399a39",
+    "sha256": "85dae7374a299461a20a0f605c6274bd3a939f141ba7c42634eb441aadb61e83",
+    "adopted_commit": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+    "paths": 3,
+    "typescript_review": "bounded closure PASS",
+    "security_review": "ownerAPPROVE",
+    "browser": "ownerpending"
+  },
+  "tests": {
+    "locked_python": {
+      "passed": 522,
+      "skipped": 1,
+      "reason": "optional nativeorderexport not supplied"
+    },
+    "standalone_native_order_analytics": {
+      "passed": 1,
+      "synthetic_paid_timestamp": true
+    },
+    "approval_projection": {
+      "passed": 3
+    },
+    "root_vitest": {
+      "passed": 690
+    },
+    "frontend": {
+      "passed": 346,
+      "types": "PASS",
+      "lint_errors": 0,
+      "lint_warnings": 228,
+      "webpack_build": "PASS"
+    },
+    "native_preorder": {
+      "assertions_each_mode": 86,
+      "modes": [
+        "CPT",
+        "HPOS",
+        "compatibility"
+      ],
+      "assertions_total": 258,
+      "real_hooks": 14,
+      "database": "isolatedSQLite"
+    },
+    "portable_native_adapter": {
+      "assertions": 18
+    },
+    "portable_viewer_node": {
+      "passed": 33
+    },
+    "portable_viewer_browser": {
+      "passed": 19
+    },
+    "theme_init_browser": {
+      "passed": 7,
+      "actual_bfcache": false
+    },
+    "native_wc_browser": {
+      "journeys": 2,
+      "viewport": [
+        "desktop",
+        "mobile"
+      ],
+      "real_payments": false
+    }
+  }
+}

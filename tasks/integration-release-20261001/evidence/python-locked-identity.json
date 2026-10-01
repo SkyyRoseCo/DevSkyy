@@ -1,0 +1,14 @@
+{
+  "platform": "macOS-26.7.1-arm64-arm-64bit-Mach-O",
+  "python": "3.13.12 (main, Mar 25 2026, 02:48:22) [Clang 22.1.1 ]",
+  "packages": {
+    "pytest": "9.1.1",
+    "fastapi": "0.138.2",
+    "langgraph-checkpoint-postgres": "3.1.0",
+    "psycopg-pool": "3.3.1",
+    "psycopg": "3.3.4",
+    "redis": "8.1.0",
+    "pillow": "12.3.0"
+  },
+  "scope": "fresh locked macOS install; Linux services NOT RUN"
+}

@@ -1,0 +1,102 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_retired_taglines_do_not_appear_as_actual_usage ______________
+
+    def test_retired_taglines_do_not_appear_as_actual_usage() -> None:
+        brand = BrandConfig.load()
+        retired = list(brand.retired_taglines)
+        if not retired:
+            pytest.skip("No retired taglines declared in brand.yaml")
+    
+        violations: list[tuple[str, str, int, str]] = []  # (rel_path, phrase, line_no, line)
+    
+        for path in _git_tracked_files():
+            try:
+                rel_path = str(path.relative_to(_REPO_ROOT))
+            except ValueError:
+                continue
+            if rel_path in _ALLOWED_PATHS:
+                continue
+            try:
+                content = path.read_text(encoding="utf-8", errors="ignore")
+            except OSError:
+                continue
+            for phrase in retired:
+                if phrase not in content:
+                    continue
+                for line_no, line in enumerate(content.splitlines(), start=1):
+                    if phrase not in line:
+                        continue
+                    if _is_enforcement_line(line):
+                        continue  # enforcement mention — allowed
+                    violations.append((rel_path, phrase, line_no, line.strip()[:120]))
+    
+        if violations:
+            msg = "Retired tagline(s) used as actual content (must be migrated):\n"
+            for rel_path, phrase, line_no, snippet in violations[:30]:
+                msg += f"  {rel_path}:{line_no}  — {phrase!r}\n    {snippet}\n"
+            if len(violations) > 30:
+                msg += f"  ... {len(violations) - 30} more\n"
+            msg += (
+                "\nReplace with BrandConfig.load().tagline_active, or if this is an "
+                "enforcement mention (instruction to NOT use the phrase), include one "
+                "of the enforcement keywords (retired, NEVER, do not use, etc.) on "
+                "the same line."
+            )
+>           pytest.fail(msg)
+E           Failed: Retired tagline(s) used as actual content (must be migrated):
+E             frontend/DEPLOYMENT.md:321  — 'Luxury Grows from Concrete.'
+E               description: 'Luxury Grows from Concrete.',
+E             frontend/app/(storefront)/HomePage.tsx:137  — 'Luxury Grows from Concrete.'
+E               Luxury Grows from Concrete.
+E             frontend/app/(storefront)/HomePage.tsx:498  — 'Luxury Grows from Concrete.'
+E               Luxury Grows from Concrete.. Three immersive worlds of fashion,
+E             frontend/app/(storefront)/HomePage.tsx:545  — 'Luxury Grows from Concrete.'
+E               Luxury Grows from Concrete.
+E             frontend/app/admin/elite-studio/design/page.tsx:378  — 'Luxury Grows from Concrete.'
+E               Describe your vision. Luxury Grows from Concrete.
+E             frontend/app/admin/elite-studio/layout.tsx:64  — 'Luxury Grows from Concrete.'
+E               <p className="text-xs text-gray-500">Luxury Grows from Concrete.</p>
+E             frontend/app/admin/elite-studio/page.tsx:138  — 'Luxury Grows from Concrete.'
+E               Luxury Grows from Concrete.
+E             frontend/app/api/social-media/generate/route.ts:87  — 'Luxury Grows from Concrete.'
+E               instagram: `Introducing ${product.label} from the ${collectionLabel} collection.\n\nLuxury Grows from Concrete. -- this 
+E             frontend/app/api/social-media/generate/route.ts:89  — 'Luxury Grows from Concrete.'
+E               twitter: `${product.label} is here. ${collectionLabel} collection. Luxury Grows from Concrete.\n\nskyyrose.co ${baseHash
+E             frontend/app/api/social-media/generate/route.ts:139  — 'Luxury Grows from Concrete.'
+E               Brand tagline: "Luxury Grows from Concrete."
+E             frontend/app/collections/CollectionsLanding.tsx:182  — 'Luxury Grows from Concrete.'
+E               Luxury Grows from Concrete.
+E             frontend/app/collections/[slug]/CollectionExperience.tsx:203  — 'Luxury Grows from Concrete.'
+E               SkyyRose &mdash; Luxury Grows from Concrete.
+E             frontend/app/collections/layout.tsx:15  — 'Luxury Grows from Concrete.'
+E               'Luxury Grows from Concrete.. Explore our immersive fashion collections.',
+E             frontend/app/collections/page.tsx:11  — 'Luxury Grows from Concrete.'
+E               description: 'Luxury Grows from Concrete. Three immersive worlds await.',
+E             frontend/app/page.tsx:8  — 'Luxury Grows from Concrete.'
+E               title: 'SkyyRose | Luxury Grows from Concrete.',
+E             frontend/app/page.tsx:12  — 'Luxury Grows from Concrete.'
+E               title: 'SkyyRose | Luxury Grows from Concrete.',
+E             frontend/app/pre-order/PreOrderPage.tsx:319  — 'Luxury Grows from Concrete.'
+E               Luxury Grows from Concrete.
+E             frontend/lib/collections.ts:138  — 'Luxury Grows from Concrete.'
+E               tagline: 'Luxury Grows from Concrete.',
+E             skyyrose/elite_studio/creative/nodes.py:8  — 'Luxury Grows from Concrete.'
+E               "Luxury Grows from Concrete."
+E             skyyrose/elite_studio/creative/nodes.py:66  — 'Luxury Grows from Concrete.'
+E               dna = fashion_context.get("collection_dna", "Luxury Grows from Concrete.")
+E             skyyrose/elite_studio/creative/nodes.py:72  — 'Luxury Grows from Concrete.'
+E               f"'Luxury Grows from Concrete.' "
+E             skyyrose/multi_agent/agents.py:31  — 'Luxury Grows from Concrete.'
+E               - Tagline: "Luxury Grows from Concrete."
+E             skyyrose/multi_agent/orchestrator.py:76  — 'Luxury Grows from Concrete.'
+E               - Tagline: "Luxury Grows from Concrete." — ONLY tagline
+E             skyyrose/multi_agent/tools.py:219  — 'Luxury Grows from Concrete.'
+E               "tagline": "Luxury Grows from Concrete.",
+E           
+E           Replace with BrandConfig.load().tagline_active, or if this is an enforcement mention (instruction to NOT use the phrase), include one of the enforcement keywords (retired, NEVER, do not use, etc.) on the same line.
+
+skyyrose/elite_studio/tests/test_brand_enforcement.py:138: Failed
+=========================== short test summary info ============================
+FAILED skyyrose/elite_studio/tests/test_brand_enforcement.py::test_retired_taglines_do_not_appear_as_actual_usage
+1 failed in 0.32s

@@ -1,0 +1,14 @@
+{
+  "version": "4.28.7",
+  "engines": {
+    "node": "^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7"
+  },
+  "dependencies": {
+    "caniuse-lite": "^1.0.30001806",
+    "node-releases": "^2.0.51",
+    "electron-to-chromium": "^1.5.393",
+    "update-browserslist-db": "^1.2.3",
+    "baseline-browser-mapping": "^2.10.44"
+  },
+  "dist.integrity": "sha512-JxV13hNrFxqjOc8alRbq9dK1MM79NEXYpma2B2J4wAtpWS5zIEIKqWPGCl7N4o7Uc7B7itylh7SuDujATRyyTw=="
+}

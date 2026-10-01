@@ -1,0 +1,6 @@
+{
+  "scope": "authenticated readonly production SSH; no deployment",
+  "exit_code": 1,
+  "stdout": "Parse error: syntax error, unexpected token \"/\" in phar:///usr/local/bin/wp-cli/vendor/wp-cli/eval-command/src/Eval_Command.php(39) : eval()'d code on line 1\nError: This site is temporarily unavailable.\n\tWe are aware of the issue and the site owner has been notified. Please check back soon.\n\t We are aware of the issue and the site owner has been notified. Please check back soon.\n",
+  "stderr": ""
+}

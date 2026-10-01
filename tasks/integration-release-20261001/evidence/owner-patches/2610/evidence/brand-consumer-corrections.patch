@@ -1,0 +1,642 @@
+diff --git a/scripts/add_love_hurts_and_logos_to_lora.py b/scripts/add_love_hurts_and_logos_to_lora.py
+--- a/scripts/add_love_hurts_and_logos_to_lora.py
++++ b/scripts/add_love_hurts_and_logos_to_lora.py
+@@ -28,7 +28,7 @@
+ # SkyyRose Brand DNA (COMPLETE)
+ BRAND_DNA = {
+     "name": "SkyyRose",
+-    "tagline": "Luxury Grows from Concrete.",
++    "tagline": "",
+     "trigger_word": "skyyrose",
+     "core_values": [
+         "authentic luxury",
+diff --git a/scripts/enhance_assets_huggingface.py b/scripts/enhance_assets_huggingface.py
+--- a/scripts/enhance_assets_huggingface.py
++++ b/scripts/enhance_assets_huggingface.py
+@@ -88,7 +88,6 @@
+ ║     HuggingFace Asset Enhancement Pipeline                                   ║
+ ║     Generate high-quality 3D models from your product images                 ║
+ ║                                                                              ║
+-║     Luxury Grows from Concrete.                                                  ║
+ ║                                                                              ║
+ ╚══════════════════════════════════════════════════════════════════════════════╝
+ """
+diff --git a/scripts/enhance_product_images.py b/scripts/enhance_product_images.py
+--- a/scripts/enhance_product_images.py
++++ b/scripts/enhance_product_images.py
+@@ -850,7 +850,6 @@
+     banner = """
+ ================================================================================
+                    SKYYROSE PRODUCT IMAGE ENHANCEMENT PIPELINE
+-                         Luxury Grows from Concrete.
+ ================================================================================
+ 
+ Pipeline Stages:
+diff --git a/scripts/enhance_with_ai_pipeline.py b/scripts/enhance_with_ai_pipeline.py
+--- a/scripts/enhance_with_ai_pipeline.py
++++ b/scripts/enhance_with_ai_pipeline.py
+@@ -145,7 +145,7 @@
+ # SkyyRose Brand DNA
+ SKYYROSE_BRAND_DNA = {
+     "brand": "SkyyRose",
+-    "tagline": "Luxury Grows from Concrete.",
++    "tagline": "",
+     "style": "luxury streetwear",
+     "colors": {
+         "primary": "#B76E79",
+diff --git a/scripts/expand_brand_voice_dataset.py b/scripts/expand_brand_voice_dataset.py
+--- a/scripts/expand_brand_voice_dataset.py
++++ b/scripts/expand_brand_voice_dataset.py
+@@ -32,7 +32,6 @@
+ - Tone: Sophisticated yet accessible, bold yet elegant
+ - Style: Poetic, evocative, with street culture authenticity
+ - Colors: Rose gold (#B76E79), black (#1A1A1A), pastels
+-- Tagline: "Luxury Grows from Concrete."
+ - Collections: Signature (classic), Black Rose (dark romantic), Love Hurts (edgy)
+ 
+ Always emphasize:
+@@ -212,7 +211,6 @@
+     "Write about SkyyRose's Oakland origins.",
+     "Describe the brand's design philosophy.",
+     "Write about the inspiration behind the logo.",
+-    "Describe what 'Luxury Grows from Concrete.' means.",
+     "Write about the brand's commitment to quality.",
+     "Describe the vision for SkyyRose's future.",
+     "Write about the cultural influences on the brand.",
+diff --git a/scripts/nano_banana/prompts.py b/scripts/nano_banana/prompts.py
+--- a/scripts/nano_banana/prompts.py
++++ b/scripts/nano_banana/prompts.py
+@@ -165,7 +165,6 @@
+         "100%% identical to the reference — every logo, color, panel, stitch.\n\n"
+         "SETTING: Oakland industrial — concrete walls, steel beams, raw textures. "
+         "Night. The only light is silver-toned spotlights carving the model from darkness. "
+-        "This is where luxury grows from concrete.\n\n"
+         "LIGHTING: Dramatic chiaroscuro. Hard silver key light, deep black shadows. "
+         "No color — only silver (#C0C0C0) tones. The darkness is the point.\n\n"
+         "MOOD: Quiet authority. This person doesn't announce themselves — they command "
+diff --git a/scripts/oai_render/scene_schema.py b/scripts/oai_render/scene_schema.py
+--- a/scripts/oai_render/scene_schema.py
++++ b/scripts/oai_render/scene_schema.py
+@@ -133,7 +133,7 @@
+     "no_mannequin_visible": True,
+     "seamless_background_required": True,
+     "garment_must_be_protagonist": True,
+-    "brand": "SkyyRose — Luxury Grows from Concrete.",
++    "brand": "SkyyRose",
+ }
+ 
+ 
+diff --git a/scripts/prepare_skyyrose_lora_dataset.py b/scripts/prepare_skyyrose_lora_dataset.py
+--- a/scripts/prepare_skyyrose_lora_dataset.py
++++ b/scripts/prepare_skyyrose_lora_dataset.py
+@@ -21,7 +21,7 @@
+ # SkyyRose Brand DNA (COMPLETE)
+ BRAND_DNA = {
+     "name": "SkyyRose",
+-    "tagline": "Luxury Grows from Concrete.",
++    "tagline": "",
+     "trigger_word": "skyyrose",
+     "core_values": [
+         "authentic luxury",
+diff --git a/scripts/train_lora_from_products.py b/scripts/train_lora_from_products.py
+--- a/scripts/train_lora_from_products.py
++++ b/scripts/train_lora_from_products.py
+@@ -102,7 +102,7 @@
+     """Print CLI banner."""
+     print("╔══════════════════════════════════════════════════════════════╗")
+     print("║   SkyyRose LoRA Training - Product-to-Model Pipeline        ║")
+-    print("║   Luxury Grows from Concrete. meets Machine Learning            ║")
++    print("║   SkyyRose model training            ║")
+     print("╚══════════════════════════════════════════════════════════════╝")
+     print()
+ 
+diff --git a/scripts/training/finetune_pipeline.py b/scripts/training/finetune_pipeline.py
+--- a/scripts/training/finetune_pipeline.py
++++ b/scripts/training/finetune_pipeline.py
+@@ -137,7 +137,7 @@
+ - Relaxed fit for effortless style
+ - Double-lined hood with rose gold drawstrings
+ 
+-Luxury Grows from Concrete. This isn't just clothing - it's a statement of refined rebellion, a testament to those who dare to stand out while standing tall.
++This isn't just clothing - it's a statement of refined rebellion, a testament to those who dare to stand out while standing tall.
+ 
+ Limited pieces. Timeless style. Exclusively SkyyRose.""",
+     },
+@@ -173,7 +173,7 @@
+ 
+ Wear your heart on your sleeve. Literally.
+ 
+-SkyyRose. Luxury Grows from Concrete.""",
++SkyyRose.""",
+     },
+     {
+         "input": "Write Instagram caption for new collection drop.",
+@@ -185,7 +185,7 @@
+ 
+ Link in bio. Don't sleep on this.
+ 
+-#SkyyRose #WhereLoveMeetsLuxury #OaklandFashion #LuxuryStreetwear #SignatureCollection""",
++#SkyyRose #OaklandFashion #LuxuryStreetwear #SignatureCollection""",
+     },
+     {
+         "input": "Describe SkyyRose brand values.",
+@@ -203,7 +203,7 @@
+ 
+ LOVE - At our core, we believe fashion should feel like coming home. Comfortable. Confident. Complete.
+ 
+-Luxury Grows from Concrete. That's not just a tagline - it's our promise.""",
++""",
+     },
+ ]
+ 
+@@ -214,7 +214,6 @@
+ - Tone: Sophisticated yet accessible, bold yet elegant
+ - Style: Poetic, evocative, with street culture authenticity
+ - Colors: Rose gold (#B76E79), black (#1A1A1A), pastels
+-- Tagline: "Luxury Grows from Concrete."
+ - Collections: Signature (classic), Black Rose (dark romantic), Love Hurts (edgy)
+ 
+ Always emphasize:
+diff --git a/scripts/validate_3d_assets.py b/scripts/validate_3d_assets.py
+--- a/scripts/validate_3d_assets.py
++++ b/scripts/validate_3d_assets.py
+@@ -949,7 +949,6 @@
+     banner = """
+ ================================================================================
+               SKYYROSE 3D ASSET QUALITY VALIDATION AGENT
+-                       Luxury Grows from Concrete.
+ ================================================================================
+ 
+ Validation Checks:
+diff --git a/skyyrose/elite_studio/agents/tripo_agent.py b/skyyrose/elite_studio/agents/tripo_agent.py
+--- a/skyyrose/elite_studio/agents/tripo_agent.py
++++ b/skyyrose/elite_studio/agents/tripo_agent.py
+@@ -43,7 +43,6 @@
+ implemented). The hardcoded ``_MULTIVIEW_TEMPLATE`` constant below is the
+ single template this agent currently supports.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/character/__init__.py b/skyyrose/elite_studio/character/__init__.py
+--- a/skyyrose/elite_studio/character/__init__.py
++++ b/skyyrose/elite_studio/character/__init__.py
+@@ -5,7 +5,6 @@
+ consistency management, and sprite generation for the SkyyRose
+ mascot and custom brand characters.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/character/agent.py b/skyyrose/elite_studio/character/agent.py
+--- a/skyyrose/elite_studio/character/agent.py
++++ b/skyyrose/elite_studio/character/agent.py
+@@ -11,7 +11,6 @@
+ The frontend mascot system (/api/mascot, MascotBubble.tsx) is the canonical
+ generation system. This agent bridges Rosie into the Elite Studio creative pipeline.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+@@ -78,7 +77,7 @@
+         "'Love Hurts' script lettering on jacket chest",
+         "Rose embroidery on jacket hood lining, pants leg, and sneakers",
+         "White satin + black leather varsity aesthetic",
+-        "'Luxury Grows from Concrete.' — Oakland roots embodied in her confident stance",
++        "Oakland roots embodied in her confident stance",
+     ),
+     reference_paths=(
+         str(_CANONICAL_REFERENCE),  # PRIMARY — actual Skyy character image
+@@ -128,7 +127,7 @@
+         f"Face: {spec.face_features} "
+         f"Outfit: {spec.outfit_base} "
+         f"Brand elements: {elements}. "
+-        "SkyyRose luxury streetwear brand. 'Luxury Grows from Concrete.' Oakland, CA."
++        "SkyyRose luxury streetwear brand. Oakland, CA."
+     )
+ 
+ 
+@@ -255,7 +254,6 @@
+                 f"Pose: {pose_desc}. "
+                 "Dynamic, expressive pose with SkyyRose brand energy. "
+                 "Clean background suitable for compositing. "
+-                "'Luxury Grows from Concrete.' brand spirit."
+             )
+ 
+             return CharacterPose(
+@@ -295,7 +293,7 @@
+             front_view = (
+                 f"{base} {ref_note}"
+                 "Full body, standing confidently with hands on hips, studio lighting. "
+-                "SkyyRose brand energy, 'Luxury Grows from Concrete.' Oakland, CA."
++                "SkyyRose brand energy, Oakland, CA."
+             )
+             side_view = (
+                 f"{base} {ref_note}"
+diff --git a/skyyrose/elite_studio/character/consistency.py b/skyyrose/elite_studio/character/consistency.py
+--- a/skyyrose/elite_studio/character/consistency.py
++++ b/skyyrose/elite_studio/character/consistency.py
+@@ -4,7 +4,6 @@
+ Builds consistency anchors and manages character identity across
+ multiple generation requests.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/character/models.py b/skyyrose/elite_studio/character/models.py
+--- a/skyyrose/elite_studio/character/models.py
++++ b/skyyrose/elite_studio/character/models.py
+@@ -4,7 +4,6 @@
+ Frozen dataclasses for character specs, sheets, and poses.
+ All objects are immutable.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/character/sprite_generator.py b/skyyrose/elite_studio/character/sprite_generator.py
+--- a/skyyrose/elite_studio/character/sprite_generator.py
++++ b/skyyrose/elite_studio/character/sprite_generator.py
+@@ -4,7 +4,6 @@
+ Generates structured sprite prompts for web-deployable character animations,
+ including the canonical 7-pose SkyyRose mascot sprite sheet.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+@@ -139,7 +138,7 @@
+                     "Consistent character design — same face, hair, outfit as reference. "
+                     "Web sprite quality — clean edges, suitable for animation. "
+                     "Exact same scale and anchor point across all poses. "
+-                    "SkyyRose brand character, 'Luxury Grows from Concrete.'"
++                    "SkyyRose brand character."
+                 )
+                 prompts[pose] = prompt
+ 
+diff --git a/skyyrose/elite_studio/creative/__init__.py b/skyyrose/elite_studio/creative/__init__.py
+--- a/skyyrose/elite_studio/creative/__init__.py
++++ b/skyyrose/elite_studio/creative/__init__.py
+@@ -6,7 +6,6 @@
+ scene compositing, virtual try-on, full product launches, design ideation,
+ mockups, collection plans, tech packs, moodboards, colorway exploration.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/creative/checkpointer.py b/skyyrose/elite_studio/creative/checkpointer.py
+--- a/skyyrose/elite_studio/creative/checkpointer.py
++++ b/skyyrose/elite_studio/creative/checkpointer.py
+@@ -14,7 +14,6 @@
+     - If `DATABASE_URL` is not set or is sqlite, returns `None` and the
+       caller falls back to no checkpointing (in-memory state only).
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/creative/edges.py b/skyyrose/elite_studio/creative/edges.py
+--- a/skyyrose/elite_studio/creative/edges.py
++++ b/skyyrose/elite_studio/creative/edges.py
+@@ -3,7 +3,6 @@
+ 
+ Routing logic for the unified creative operations LangGraph.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/creative/router.py b/skyyrose/elite_studio/creative/router.py
+--- a/skyyrose/elite_studio/creative/router.py
++++ b/skyyrose/elite_studio/creative/router.py
+@@ -10,7 +10,6 @@
+ instead of silently losing the whole pipeline. Without `DATABASE_URL`,
+ the graph runs without checkpointing (the original behaviour).
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/creative/state.py b/skyyrose/elite_studio/creative/state.py
+--- a/skyyrose/elite_studio/creative/state.py
++++ b/skyyrose/elite_studio/creative/state.py
+@@ -4,7 +4,6 @@
+ Handles all 14 creative intents with unified state structure.
+ Each node populates its result field and sets status/error accordingly.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/fashion/__init__.py b/skyyrose/elite_studio/fashion/__init__.py
+--- a/skyyrose/elite_studio/fashion/__init__.py
++++ b/skyyrose/elite_studio/fashion/__init__.py
+@@ -5,7 +5,6 @@
+ Covers garment knowledge, trend signals, photography standards, color theory,
+ editorial direction, material rendering accuracy, and QA rules.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/fashion/colorway.py b/skyyrose/elite_studio/fashion/colorway.py
+--- a/skyyrose/elite_studio/fashion/colorway.py
++++ b/skyyrose/elite_studio/fashion/colorway.py
+@@ -4,7 +4,6 @@
+ Provides per-collection palettes, colorway suggestions, and color fidelity
+ validation for AI renders. All objects are frozen (immutable).
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/fashion/context.py b/skyyrose/elite_studio/fashion/context.py
+--- a/skyyrose/elite_studio/fashion/context.py
++++ b/skyyrose/elite_studio/fashion/context.py
+@@ -4,7 +4,6 @@
+ Assembles a complete FashionContext from SKU, garment type, collection,
+ and season. Loads product data from the product catalog CSV.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+@@ -210,10 +209,12 @@
+         from .knowledge import BRAND_TAGLINE
+ 
+         dna_data = COLLECTION_DNA.get(collection.lower(), {})
++        tagline = dna_data.get("tagline", BRAND_TAGLINE)
++        tagline_note = f"Tagline: {tagline}" if tagline else ""
+         collection_dna = (
+             f"{dna_data.get('name', collection)}: {dna_data.get('aesthetic', '')}. "
+             f"Mood: {dna_data.get('mood', '')}. "
+-            f"Tagline: {dna_data.get('tagline', BRAND_TAGLINE)}"
++            f"{tagline_note}"
+         ).strip()
+ 
+         # Sizing
+diff --git a/skyyrose/elite_studio/fashion/design/__init__.py b/skyyrose/elite_studio/fashion/design/__init__.py
+--- a/skyyrose/elite_studio/fashion/design/__init__.py
++++ b/skyyrose/elite_studio/fashion/design/__init__.py
+@@ -4,7 +4,6 @@
+ Covers design ideation, mockup generation, collection planning,
+ tech packs, and moodboard composition.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/fashion/design/collection_planner.py b/skyyrose/elite_studio/fashion/design/collection_planner.py
+--- a/skyyrose/elite_studio/fashion/design/collection_planner.py
++++ b/skyyrose/elite_studio/fashion/design/collection_planner.py
+@@ -4,7 +4,6 @@
+ CollectionPlanner builds structured collection plans from brief inputs,
+ using fashion intelligence and product catalog data.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/fashion/design/ideation.py b/skyyrose/elite_studio/fashion/design/ideation.py
+--- a/skyyrose/elite_studio/fashion/design/ideation.py
++++ b/skyyrose/elite_studio/fashion/design/ideation.py
+@@ -4,7 +4,6 @@
+ DesignIdeationAgent generates structured design concepts from briefs,
+ using fashion knowledge base, color advisor, and trend advisor.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+@@ -153,7 +152,7 @@
+             f"Primary color {colorway[0]}, secondary {colorway[1]}, accent {colorway[2]}. "
+             f"{texture_segment} "
+             f"Photography: {photo_style} style. "
+-            f"'Luxury Grows from Concrete.' Oakland luxury brand. High-end premium quality."
++            f"SkyyRose Oakland luxury brand. High-end premium quality."
+         )
+ 
+         return DesignConcept(
+diff --git a/skyyrose/elite_studio/fashion/design/mockup.py b/skyyrose/elite_studio/fashion/design/mockup.py
+--- a/skyyrose/elite_studio/fashion/design/mockup.py
++++ b/skyyrose/elite_studio/fashion/design/mockup.py
+@@ -4,7 +4,6 @@
+ MockupGenerator produces structured prompts and specifications for
+ AI-generated product mockups.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+@@ -84,7 +83,6 @@
+         brand_elements = (
+             "SkyyRose embroidered rose detail",
+             f"{collection.replace('-', ' ').title()} collection aesthetic",
+-            "'Luxury Grows from Concrete.' brand DNA",
+         )
+ 
+         # QA checks from garment rules
+@@ -104,7 +102,7 @@
+             f"Fabric: {texture_str}. "
+             f"{avoid_clause}"
+             f"{style.capitalize()} photography. "
+-            f"Premium quality, 'Luxury Grows from Concrete.' Oakland streetwear brand. "
++            f"Premium quality, Oakland streetwear brand. "
+             f"Photorealistic product render."
+         )
+ 
+diff --git a/skyyrose/elite_studio/fashion/design/moodboard.py b/skyyrose/elite_studio/fashion/design/moodboard.py
+--- a/skyyrose/elite_studio/fashion/design/moodboard.py
++++ b/skyyrose/elite_studio/fashion/design/moodboard.py
+@@ -4,7 +4,6 @@
+ MoodboardComposer assembles structured moodboard specifications combining
+ visual references, color stories, texture palettes, and editorial direction.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+@@ -201,7 +200,6 @@
+         # Brand anchors
+         brand_anchors = (
+             "SkyyRose rose motif — embroidered, bold",
+-            "'Luxury Grows from Concrete.' — brand tagline",
+             f"{collection.replace('-', ' ').title()} collection identity",
+             "Oakland roots, West Coast prestige",
+         )
+@@ -220,7 +218,7 @@
+             f"Location: {locations[0] if locations else 'urban Bay Area'}. "
+             f"Lighting: {lighting}. "
+             f"Typography: {typography}. "
+-            f"Brand: 'Luxury Grows from Concrete.' Oakland streetwear luxury. "
++            f"Brand: SkyyRose Oakland streetwear luxury. "
+             f"High-end editorial moodboard aesthetic."
+         )
+ 
+diff --git a/skyyrose/elite_studio/fashion/design/tech_pack.py b/skyyrose/elite_studio/fashion/design/tech_pack.py
+--- a/skyyrose/elite_studio/fashion/design/tech_pack.py
++++ b/skyyrose/elite_studio/fashion/design/tech_pack.py
+@@ -4,7 +4,6 @@
+ TechPackGenerator produces structured technical specification documents
+ for garment production and manufacturing reference.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/fashion/editorial.py b/skyyrose/elite_studio/fashion/editorial.py
+--- a/skyyrose/elite_studio/fashion/editorial.py
++++ b/skyyrose/elite_studio/fashion/editorial.py
+@@ -4,7 +4,6 @@
+ Styling rules, lookbook sequencing, and on-model vs flat-lay recommendations.
+ All objects are frozen (immutable).
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+@@ -392,5 +391,5 @@
+             ),
+         }
+         return notes.get(
+-            collection.lower(), "SkyyRose brand aesthetic — luxury grows from concrete."
++            collection.lower(), "SkyyRose brand aesthetic."
+         )
+diff --git a/skyyrose/elite_studio/fashion/knowledge.py b/skyyrose/elite_studio/fashion/knowledge.py
+--- a/skyyrose/elite_studio/fashion/knowledge.py
++++ b/skyyrose/elite_studio/fashion/knowledge.py
+@@ -4,18 +4,19 @@
+ Defines garment types, fabric properties, and the FashionKnowledgeBase
+ that ties them together. All objects are frozen (immutable).
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+ 
+ from dataclasses import dataclass
+ 
++from skyyrose.elite_studio.brand import BrandConfig
++
+ # ---------------------------------------------------------------------------
+ # Brand constants (canonical — mirrors templates.py)
+ # ---------------------------------------------------------------------------
+ 
+-BRAND_TAGLINE = "Luxury Grows from Concrete."
++BRAND_TAGLINE = BrandConfig.load().tagline_active
+ BRAND_NAME = "SkyyRose"
+ 
+ # ---------------------------------------------------------------------------
+diff --git a/skyyrose/elite_studio/fashion/materials.py b/skyyrose/elite_studio/fashion/materials.py
+--- a/skyyrose/elite_studio/fashion/materials.py
++++ b/skyyrose/elite_studio/fashion/materials.py
+@@ -4,7 +4,6 @@
+ Fabric-specific AI rendering instructions, texture validation, and prompt
+ keyword generation. All objects are frozen (immutable).
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/fashion/photography.py b/skyyrose/elite_studio/fashion/photography.py
+--- a/skyyrose/elite_studio/fashion/photography.py
++++ b/skyyrose/elite_studio/fashion/photography.py
+@@ -4,7 +4,6 @@
+ Defines per-style photography standards and garment-specific recommendations
+ aligned with SkyyRose luxury brand aesthetics.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/fashion/qa_rules.py b/skyyrose/elite_studio/fashion/qa_rules.py
+--- a/skyyrose/elite_studio/fashion/qa_rules.py
++++ b/skyyrose/elite_studio/fashion/qa_rules.py
+@@ -5,7 +5,6 @@
+ fidelity, styling coherence, photography standards, and brand consistency.
+ All objects are frozen (immutable).
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/fashion/sizing.py b/skyyrose/elite_studio/fashion/sizing.py
+--- a/skyyrose/elite_studio/fashion/sizing.py
++++ b/skyyrose/elite_studio/fashion/sizing.py
+@@ -4,7 +4,6 @@
+ Per-garment sizing guidelines and size charts for accurate product renders
+ and product descriptions.
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/fashion/trends.py b/skyyrose/elite_studio/fashion/trends.py
+--- a/skyyrose/elite_studio/fashion/trends.py
++++ b/skyyrose/elite_studio/fashion/trends.py
+@@ -4,7 +4,6 @@
+ FW26 / SS27 trend signals mapped to SkyyRose brand DNA and product categories.
+ All objects are frozen (immutable).
+ 
+-"Luxury Grows from Concrete."
+ """
+ 
+ from __future__ import annotations
+diff --git a/skyyrose/elite_studio/prompts/chain.py b/skyyrose/elite_studio/prompts/chain.py
+--- a/skyyrose/elite_studio/prompts/chain.py
++++ b/skyyrose/elite_studio/prompts/chain.py
+@@ -406,8 +406,9 @@
+                 parts.append(brand_note)
+                 added.append("injected custom brand context")
+         else:
++            brand_identity = f"{BRAND_NAME} — {BRAND_TAGLINE}" if BRAND_TAGLINE else BRAND_NAME
+             parts.append(
+-                f"Brand: {BRAND_NAME} — {BRAND_TAGLINE} "
++                f"Brand: {brand_identity}. "
+                 f"Oakland luxury streetwear. Rose gold accent: {BRAND_COLORS['rose_gold']}"
+             )
+             added.append("injected SkyyRose brand identity")
+diff --git a/skyyrose/elite_studio/prompts/templates.py b/skyyrose/elite_studio/prompts/templates.py
+--- a/skyyrose/elite_studio/prompts/templates.py
++++ b/skyyrose/elite_studio/prompts/templates.py
+@@ -9,12 +9,14 @@
+ 
+ from dataclasses import dataclass
+ 
++from skyyrose.elite_studio.brand import BrandConfig
++
+ # ---------------------------------------------------------------------------
+ # SkyyRose brand constants for template injection
+ # ---------------------------------------------------------------------------
+ 
+ BRAND_NAME = "SkyyRose"
+-BRAND_TAGLINE = "Luxury Grows from Concrete."
++BRAND_TAGLINE = BrandConfig.load().tagline_active
+ BRAND_FOUNDER = "Corey Foster"
+ BRAND_LOCATION = "Oakland, California"
+ 
+diff --git a/wordpress-theme/skyyrose-flagship/assets/js/mascot.js b/wordpress-theme/skyyrose-flagship/assets/js/mascot.js
+--- a/wordpress-theme/skyyrose-flagship/assets/js/mascot.js
++++ b/wordpress-theme/skyyrose-flagship/assets/js/mascot.js
+@@ -187,7 +187,7 @@
+ 	var SCRIPTS = {
+ 		homepage: {
+ 			greeting: {
+-				text: 'Hey! I’m Skyy 👋 Welcome to SkyyRose — Luxury Grows from Concrete.',
++				text: 'Hey! I’m Skyy 👋 Welcome to SkyyRose.',
+ 				chips: [
+ 					{ id: 'new_drops', label: 'What’s new?',    next: 'new_drops' },
+ 					{ id: 'preorder',  label: 'Pre-order drops',     next: 'preorder'  },
+diff --git a/wordpress-theme/skyyrose-flagship/assets/js/mascot.min.js b/wordpress-theme/skyyrose-flagship/assets/js/mascot.min.js
+--- a/wordpress-theme/skyyrose-flagship/assets/js/mascot.min.js
++++ b/wordpress-theme/skyyrose-flagship/assets/js/mascot.min.js
+@@ -1 +1 @@
+-!function(){"use strict";var e="skyy_greeted",t="skyy_dismissed",n="skyy_appearances",i="skyy_shown_prompts",o=document.getElementById("skyyrose-mascot");if(o){var s=document.getElementById("skyyrose-mascot-trigger"),a=document.getElementById("skyyrose-mascot-minimize"),r=document.getElementById("skyyrose-mascot-recall"),l=document.getElementById("skyy-bubble"),c=document.getElementById("skyy-bubble-text"),d=document.getElementById("skyy-chips"),u=document.getElementById("skyy-ask-trigger"),y=document.getElementById("skyy-ask-dialog"),h=document.getElementById("skyy-ask-form"),g=document.getElementById("skyy-ask-input"),f=document.getElementById("skyy-ask-cancel");if(s&&a&&r&&l&&c&&d){var m=window.matchMedia("(prefers-reduced-motion: reduce)").matches,p=o.getAttribute("data-context")||"default",k=window.SKYY_GUIDE_DATA&&window.SKYY_GUIDE_DATA.intents?window.SKYY_GUIDE_DATA:{pages:{},intents:[]},b=null,v=window.SKYY_MASCOT_CONFIG||{pageTip:"",llmEnabled:!1},w="dormant",x=null,E=null,S=null,L=null,I=0,_=null,T=null,A={homepage:{greeting:{text:"Hey! I’m Skyy 👋 Welcome to SkyyRose — Luxury Grows from Concrete.",chips:[{id:"new_drops",label:"What’s new?",next:"new_drops"},{id:"preorder",label:"Pre-order drops",next:"preorder"},{id:"story",label:"Our story",next:"story"}]},new_drops:{text:"The Black Rose and Love Hurts collections are live.",chips:[{id:"shop",label:"Shop now →",action:"/shop/",next:null},{id:"world",label:"Enter the world",action:"/collections-world/",next:null}]},preorder:{text:"Most of the collection is pre-order — made for you, no overstock. 🌹",chips:[{id:"preorder_page",label:"See pre-orders",action:"/pre-order/",next:null}]},story:{text:"SkyyRose was born in Oakland. Corey Foster built this from the concrete up. Real luxury, real roots.",chips:[{id:"about",label:"Read our story",action:"/about/",next:null}]}},"black-rose":{greeting:{text:"Oakland in your DNA? 🖤 Black Rose was made for the ones who built something from nothing.",chips:[{id:"jerseys",label:"Show me the jerseys",next:"jerseys"},{id:"br_shop",label:"Browse collection",action:"/collections/black-rose/",next:null}]},jerseys:{text:"SF inspired, Last Oakland, The Bay, The Rose — each its own story.",chips:[{id:"br_shop",label:"Browse →",action:"/collections/black-rose/",next:null}]}},"love-hurts":{greeting:{text:"Love Hurts is for the ones who feel everything deeply. ❤️",chips:[{id:"lh_fannie",label:"What’s The Fannie?",next:"fannie"},{id:"lh_browse",label:"Browse collection",action:"/collections/love-hurts/",next:null}]},fannie:{text:"The Fannie is a statement piece — small, bold, SkyyRose. Love Hurts edition. 🌹",chips:[{id:"lh_shop",label:"See it →",action:"/collections/love-hurts/",next:null}]}},signature:{greeting:{text:"SF from the soul. 🌉 The Signature collection is Golden Gate, fog, and Bay Area energy.",chips:[{id:"sg_bridge",label:"The Bay Bridge drops?",next:"bridge"},{id:"sg_browse",label:"Browse collection",action:"/collections/signature/",next:null}]},bridge:{text:"Bay Bridge Shorts + Shirt — the drop that defines the collection.",chips:[{id:"sg_shop",label:"See it →",action:"/collections/signature/",next:null}]}},"kids-capsule":{greeting:{text:"Little rebels need luxury too. 👑 Kids Capsule brings the SkyyRose story down a size.",chips:[{id:"kc_browse",label:"Browse Kids Capsule",action:"/collections/kids-capsule/",next:null}]}},preorder:{greeting:{text:"Pre-ordering means we make it for you — no overstock, no waste. Pure luxury.",chips:[{id:"po_browse",label:"See all pre-orders",action:"/pre-order/",next:null}]}},404:{greeting:{text:"That page doesn’t exist — let me point you somewhere real. 🌹",chips:[{id:"404_home",label:"Take me home",action:"/",next:null},{id:"404_shop",label:"Shop collections",action:"/shop/",next:null}]}},default:{greeting:{text:"Hey! I’m Skyy 👋 Need help finding something?",chips:[{id:"def_shop",label:"Shop now",action:"/shop/",next:null},{id:"def_help",label:"Get help",action:"/contact/",next:null}]}}};if(d.addEventListener("click",(function(e){var t=e.target.closest(".skyy-chip");if(t){var n=t.dataset.action,i=t.dataset.next;if(R("point"),n)window.location.href=n;else if(i){var o=(A[p]||A.default)[i];o?U(o.text,o.chips||null):Y()}}})),u&&y&&h&&g&&(u.addEventListener("click",(function(){_=document.activeElement,g.value="","function"==typeof y.showModal&&(y.showModal(),g.focus())})),h.addEventListener("submit",(function(){T=g.value})),f&&f.addEventListener("click",(function(){T=null,y.close()})),y.addEventListener("close",(function(){if(_&&"function"==typeof _.focus&&_.focus(),_=null,T){var e=T;T=null,(t=e)&&t.trim()&&(k.intents.length||!v.guideUrl?Promise.resolve(k):b||(b=fetch(v.guideUrl,{credentials:"same-origin"}).then((function(e){if(!e.ok)throw new Error("Guide unavailable");return e.json()})).then((function(e){return e&&Array.isArray(e.intents)&&(k=e),k})).catch((function(){return k})))).then((function(){var e=function(e){var t=F(e);if(!t||!k.intents.length)return null;var n=null,i=0;return k.intents.forEach((function(e){var o=e.patterns||[],s=0;o.forEach((function(e){var n=F(e);n&&-1!==t.indexOf(n)&&(s+=n.split(" ").length)})),s>i&&(i=s,n=e)})),n}(t);e?function(e){var t=null;e.link&&(t=[{id:"guide-"+e.id,label:"Take me there →",action:e.link,next:null}]),U(e.answer,t)}(e):function(e){if(v.llmEnabled&&window.skyyRoseData&&window.skyyRoseData.ajaxUrl){var t=new URLSearchParams;t.set("action","skyyrose_mascot_chat"),t.set("nonce",window.skyyRoseData.nonce||""),t.set("message",e),fetch(window.skyyRoseData.ajaxUrl,{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:t.toString()}).then((function(e){return e.json()})).then((function(e){var t=e&&e.data?e.data:null,n=t&&"string"==typeof t.answer?t.answer:"";n?U(n,t.link?[{id:"tier2-link",label:"Take me there →",action:t.link,next:null}]:null):K()})).catch((function(){K()}))}else K()}(t)}))}var t}))),["scroll","pointerdown","pointermove","keydown","touchstart"].forEach((function(e){window.addEventListener(e,z,{passive:!0})})),"IntersectionObserver"in window){var B=!1,C=new IntersectionObserver((function(e){e.forEach((function(e){e.isIntersecting&&"idle"===w&&!B&&(B=!0,o.classList.add("skyy--glancing"),setTimeout((function(){o.classList.remove("skyy--glancing")}),2e3),M("product-glance","These just landed. 👀",null)&&R("excited"))}))}),{threshold:.3});document.querySelectorAll(".products, .wc-block-grid, .collection-hero").forEach((function(e){C.observe(e)}))}var O=0;document.addEventListener("mouseover",(function(e){if("idle"===w&&e.target.closest(".product, .wc-block-grid__product")){o.classList.add("skyy--excited"),setTimeout((function(){o.classList.remove("skyy--excited")}),1200);var t=Date.now();t-O>2e3&&(O=t,R("excited"))}})),s.addEventListener("click",(function(e){if(e.stopPropagation(),"speaking"===w)Y();else if("idle"===w){var t=A[p]||A.default;U(t.greeting.text,t.greeting.chips)}})),a.addEventListener("click",(function(e){e.stopPropagation(),J(!0)})),r.addEventListener("click",(function(e){e.stopPropagation(),r.style.display="none",r.setAttribute("aria-hidden","true"),H(!1)})),document.addEventListener("click",(function(e){"speaking"!==w||o.contains(e.target)||r.contains(e.target)||Y()})),document.addEventListener("keydown",(function(e){"Escape"===e.key&&("speaking"===w?(Y(),s.focus()):"idle"===w&&J(!0))})),N()?(r.style.display="flex",r.setAttribute("aria-hidden","false")):W()}}function R(e){document.dispatchEvent(new CustomEvent("skyy:"+e))}function D(){null!==x&&(clearTimeout(x),x=null)}function j(){try{var e=sessionStorage.getItem(i),t=e?JSON.parse(e):[];return Array.isArray(t)?t:[]}catch(e){return[]}}function G(){var e=sessionStorage.getItem(n),t=e?parseInt(e,10):0;return isNaN(t)?0:t}function P(){return G()>=3}function N(){return"1"===sessionStorage.getItem(t)}function U(e,t){D(),clearTimeout(S),w="speaking",R("speaking"),o.classList.add("skyy--speaking"),s.setAttribute("aria-expanded","true"),d.replaceChildren(),l.removeAttribute("hidden"),l.offsetWidth,l.classList.add("skyy-bubble--visible"),u&&(u.hidden=!1),function(e,t,n){if(clearInterval(E),e.textContent="",m)return e.textContent=t,void(n&&n());var i=0;E=setInterval((function(){e.textContent+=t[i++],i>=t.length&&(clearInterval(E),n&&n())}),28)}(c,e,(function(){t&&t.length?t.forEach((function(e){var t=document.createElement("button");t.type="button",t.className="skyy-chip",t.textContent=e.label,t.dataset.chipId=e.id,t.dataset.action=e.action||"",t.dataset.next=e.next||"",d.appendChild(t)})):S=setTimeout(Y,8e3)}))}function Y(){clearTimeout(S),clearInterval(E),l.classList.remove("skyy-bubble--visible"),o.classList.remove("skyy--speaking"),s.setAttribute("aria-expanded","false"),setTimeout((function(){l.classList.contains("skyy-bubble--visible")||(l.setAttribute("hidden",""),c.textContent="",d.replaceChildren(),u&&(u.hidden=!0)),"speaking"===w&&(w="idle",R("idle"))}),300)}function F(e){return e.toLowerCase().replace(/[^\w\s-]/g," ").replace(/\s+/g," ").trim()}function K(){U("Ask me about finding things, sizing, or shipping — that’s what I know best. 🌹",null)}function M(e,t,n){return o=e,-1===j().indexOf(o)&&(function(e){if(e){var t=j();if(-1===t.indexOf(e)){t.push(e);try{sessionStorage.setItem(i,JSON.stringify(t))}catch(e){}}}}(e),U(t,n),!0);var o}function H(t){"walking-in"!==w&&"idle"!==w&&"speaking"!==w&&(w="walking-in",R("walking-in"),o.setAttribute("aria-hidden","false"),o.classList.remove("skyyrose-mascot--hidden","skyyrose-mascot--exiting"),o.classList.add("skyyrose-mascot--entering"),setTimeout((function(){if(o.classList.remove("skyyrose-mascot--entering"),o.classList.add("skyyrose-mascot--idle"),w="idle",R("idle"),t&&!sessionStorage.getItem(e)){try{sessionStorage.setItem(e,"1")}catch(e){}var i=A[p]||A.default,s=v.pageTip?v.pageTip:i.greeting.text;R("wave"),x=setTimeout((function(){x=null,"idle"!==w||N()||M("greeting:"+p,s,i.greeting.chips)}),m?0:1400),function(){try{sessionStorage.setItem(n,String(G()+1))}catch(e){}}()}}),m?0:1400))}function W(){if(clearTimeout(L),!N()&&!P()){var e=0===G()?4500:1e4+2e4*Math.random();L=setTimeout((function(){"dormant"!==w||N()||P()||H(!0)}),e)}}function z(){var e=Date.now();e-I<250||(I=e,"dormant"===w&&G()>0&&W())}function J(e){var n;e&&function(){try{sessionStorage.setItem(t,"1")}catch(e){}}(),n=function(){r.style.display="flex",r.setAttribute("aria-hidden","false"),r.focus()},D(),w="exiting",R("exiting"),Y(),clearTimeout(L),o.classList.remove("skyyrose-mascot--idle","skyyrose-mascot--entering"),o.classList.add("skyyrose-mascot--exiting"),o.setAttribute("aria-hidden","true"),setTimeout((function(){o.classList.add("skyyrose-mascot--hidden"),o.classList.remove("skyyrose-mascot--exiting"),w="dormant",R("hidden"),n&&n()}),m?0:600)}}();
+\ No newline at end of file
++!function(){"use strict";var e="skyy_greeted",t="skyy_dismissed",n="skyy_appearances",i="skyy_shown_prompts",o=document.getElementById("skyyrose-mascot");if(o){var s=document.getElementById("skyyrose-mascot-trigger"),a=document.getElementById("skyyrose-mascot-minimize"),r=document.getElementById("skyyrose-mascot-recall"),l=document.getElementById("skyy-bubble"),c=document.getElementById("skyy-bubble-text"),d=document.getElementById("skyy-chips"),u=document.getElementById("skyy-ask-trigger"),y=document.getElementById("skyy-ask-dialog"),h=document.getElementById("skyy-ask-form"),g=document.getElementById("skyy-ask-input"),f=document.getElementById("skyy-ask-cancel");if(s&&a&&r&&l&&c&&d){var m=window.matchMedia("(prefers-reduced-motion: reduce)").matches,p=o.getAttribute("data-context")||"default",k=window.SKYY_GUIDE_DATA&&window.SKYY_GUIDE_DATA.intents?window.SKYY_GUIDE_DATA:{pages:{},intents:[]},b=null,v=window.SKYY_MASCOT_CONFIG||{pageTip:"",llmEnabled:!1},w="dormant",x=null,E=null,S=null,I=null,L=0,_=null,T=null,A={homepage:{greeting:{text:"Hey! I’m Skyy 👋 Welcome to SkyyRose.",chips:[{id:"new_drops",label:"What’s new?",next:"new_drops"},{id:"preorder",label:"Pre-order drops",next:"preorder"},{id:"story",label:"Our story",next:"story"}]},new_drops:{text:"The Black Rose and Love Hurts collections are live.",chips:[{id:"shop",label:"Shop now →",action:"/shop/",next:null},{id:"world",label:"Enter the world",action:"/collections-world/",next:null}]},preorder:{text:"Most of the collection is pre-order — made for you, no overstock. 🌹",chips:[{id:"preorder_page",label:"See pre-orders",action:"/pre-order/",next:null}]},story:{text:"SkyyRose was born in Oakland. Corey Foster built this from the concrete up. Real luxury, real roots.",chips:[{id:"about",label:"Read our story",action:"/about/",next:null}]}},"black-rose":{greeting:{text:"Oakland in your DNA? 🖤 Black Rose was made for the ones who built something from nothing.",chips:[{id:"jerseys",label:"Show me the jerseys",next:"jerseys"},{id:"br_shop",label:"Browse collection",action:"/collections/black-rose/",next:null}]},jerseys:{text:"SF inspired, Last Oakland, The Bay, The Rose — each its own story.",chips:[{id:"br_shop",label:"Browse →",action:"/collections/black-rose/",next:null}]}},"love-hurts":{greeting:{text:"Love Hurts is for the ones who feel everything deeply. ❤️",chips:[{id:"lh_fannie",label:"What’s The Fannie?",next:"fannie"},{id:"lh_browse",label:"Browse collection",action:"/collections/love-hurts/",next:null}]},fannie:{text:"The Fannie is a statement piece — small, bold, SkyyRose. Love Hurts edition. 🌹",chips:[{id:"lh_shop",label:"See it →",action:"/collections/love-hurts/",next:null}]}},signature:{greeting:{text:"SF from the soul. 🌉 The Signature collection is Golden Gate, fog, and Bay Area energy.",chips:[{id:"sg_bridge",label:"The Bay Bridge drops?",next:"bridge"},{id:"sg_browse",label:"Browse collection",action:"/collections/signature/",next:null}]},bridge:{text:"Bay Bridge Shorts + Shirt — the drop that defines the collection.",chips:[{id:"sg_shop",label:"See it →",action:"/collections/signature/",next:null}]}},"kids-capsule":{greeting:{text:"Little rebels need luxury too. 👑 Kids Capsule brings the SkyyRose story down a size.",chips:[{id:"kc_browse",label:"Browse Kids Capsule",action:"/collections/kids-capsule/",next:null}]}},preorder:{greeting:{text:"Pre-ordering means we make it for you — no overstock, no waste. Pure luxury.",chips:[{id:"po_browse",label:"See all pre-orders",action:"/pre-order/",next:null}]}},404:{greeting:{text:"That page doesn’t exist — let me point you somewhere real. 🌹",chips:[{id:"404_home",label:"Take me home",action:"/",next:null},{id:"404_shop",label:"Shop collections",action:"/shop/",next:null}]}},default:{greeting:{text:"Hey! I’m Skyy 👋 Need help finding something?",chips:[{id:"def_shop",label:"Shop now",action:"/shop/",next:null},{id:"def_help",label:"Get help",action:"/contact/",next:null}]}}};if(d.addEventListener("click",(function(e){var t=e.target.closest(".skyy-chip");if(t){var n=t.dataset.action,i=t.dataset.next;if(R("point"),n)window.location.href=n;else if(i){var o=(A[p]||A.default)[i];o?U(o.text,o.chips||null):Y()}}})),u&&y&&h&&g&&(u.addEventListener("click",(function(){_=document.activeElement,g.value="","function"==typeof y.showModal&&(y.showModal(),g.focus())})),h.addEventListener("submit",(function(){T=g.value})),f&&f.addEventListener("click",(function(){T=null,y.close()})),y.addEventListener("close",(function(){if(_&&"function"==typeof _.focus&&_.focus(),_=null,T){var e=T;T=null,(t=e)&&t.trim()&&(k.intents.length||!v.guideUrl?Promise.resolve(k):b||(b=fetch(v.guideUrl,{credentials:"same-origin"}).then((function(e){if(!e.ok)throw new Error("Guide unavailable");return e.json()})).then((function(e){return e&&Array.isArray(e.intents)&&(k=e),k})).catch((function(){return k})))).then((function(){var e=function(e){var t=F(e);if(!t||!k.intents.length)return null;var n=null,i=0;return k.intents.forEach((function(e){var o=e.patterns||[],s=0;o.forEach((function(e){var n=F(e);n&&-1!==t.indexOf(n)&&(s+=n.split(" ").length)})),s>i&&(i=s,n=e)})),n}(t);e?function(e){var t=null;e.link&&(t=[{id:"guide-"+e.id,label:"Take me there →",action:e.link,next:null}]),U(e.answer,t)}(e):function(e){if(v.llmEnabled&&window.skyyRoseData&&window.skyyRoseData.ajaxUrl){var t=new URLSearchParams;t.set("action","skyyrose_mascot_chat"),t.set("nonce",window.skyyRoseData.nonce||""),t.set("message",e),fetch(window.skyyRoseData.ajaxUrl,{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:t.toString()}).then((function(e){return e.json()})).then((function(e){var t=e&&e.data?e.data:null,n=t&&"string"==typeof t.answer?t.answer:"";n?U(n,t.link?[{id:"tier2-link",label:"Take me there →",action:t.link,next:null}]:null):K()})).catch((function(){K()}))}else K()}(t)}))}var t}))),["scroll","pointerdown","pointermove","keydown","touchstart"].forEach((function(e){window.addEventListener(e,z,{passive:!0})})),"IntersectionObserver"in window){var B=!1,C=new IntersectionObserver((function(e){e.forEach((function(e){e.isIntersecting&&"idle"===w&&!B&&(B=!0,o.classList.add("skyy--glancing"),setTimeout((function(){o.classList.remove("skyy--glancing")}),2e3),M("product-glance","These just landed. 👀",null)&&R("excited"))}))}),{threshold:.3});document.querySelectorAll(".products, .wc-block-grid, .collection-hero").forEach((function(e){C.observe(e)}))}var O=0;document.addEventListener("mouseover",(function(e){if("idle"===w&&e.target.closest(".product, .wc-block-grid__product")){o.classList.add("skyy--excited"),setTimeout((function(){o.classList.remove("skyy--excited")}),1200);var t=Date.now();t-O>2e3&&(O=t,R("excited"))}})),s.addEventListener("click",(function(e){if(e.stopPropagation(),"speaking"===w)Y();else if("idle"===w){var t=A[p]||A.default;U(t.greeting.text,t.greeting.chips)}})),a.addEventListener("click",(function(e){e.stopPropagation(),J(!0)})),r.addEventListener("click",(function(e){e.stopPropagation(),r.style.display="none",r.setAttribute("aria-hidden","true"),H(!1)})),document.addEventListener("click",(function(e){"speaking"!==w||o.contains(e.target)||r.contains(e.target)||Y()})),document.addEventListener("keydown",(function(e){"Escape"===e.key&&("speaking"===w?(Y(),s.focus()):"idle"===w&&J(!0))})),N()?(r.style.display="flex",r.setAttribute("aria-hidden","false")):W()}}function R(e){document.dispatchEvent(new CustomEvent("skyy:"+e))}function D(){null!==x&&(clearTimeout(x),x=null)}function j(){try{var e=sessionStorage.getItem(i),t=e?JSON.parse(e):[];return Array.isArray(t)?t:[]}catch(e){return[]}}function P(){var e=sessionStorage.getItem(n),t=e?parseInt(e,10):0;return isNaN(t)?0:t}function G(){return P()>=3}function N(){return"1"===sessionStorage.getItem(t)}function U(e,t){D(),clearTimeout(S),w="speaking",R("speaking"),o.classList.add("skyy--speaking"),s.setAttribute("aria-expanded","true"),d.replaceChildren(),l.removeAttribute("hidden"),l.offsetWidth,l.classList.add("skyy-bubble--visible"),u&&(u.hidden=!1),function(e,t,n){if(clearInterval(E),e.textContent="",m)return e.textContent=t,void(n&&n());var i=0;E=setInterval((function(){e.textContent+=t[i++],i>=t.length&&(clearInterval(E),n&&n())}),28)}(c,e,(function(){t&&t.length?t.forEach((function(e){var t=document.createElement("button");t.type="button",t.className="skyy-chip",t.textContent=e.label,t.dataset.chipId=e.id,t.dataset.action=e.action||"",t.dataset.next=e.next||"",d.appendChild(t)})):S=setTimeout(Y,8e3)}))}function Y(){clearTimeout(S),clearInterval(E),l.classList.remove("skyy-bubble--visible"),o.classList.remove("skyy--speaking"),s.setAttribute("aria-expanded","false"),setTimeout((function(){l.classList.contains("skyy-bubble--visible")||(l.setAttribute("hidden",""),c.textContent="",d.replaceChildren(),u&&(u.hidden=!0)),"speaking"===w&&(w="idle",R("idle"))}),300)}function F(e){return e.toLowerCase().replace(/[^\w\s-]/g," ").replace(/\s+/g," ").trim()}function K(){U("Ask me about finding things, sizing, or shipping — that’s what I know best. 🌹",null)}function M(e,t,n){return o=e,-1===j().indexOf(o)&&(function(e){if(e){var t=j();if(-1===t.indexOf(e)){t.push(e);try{sessionStorage.setItem(i,JSON.stringify(t))}catch(e){}}}}(e),U(t,n),!0);var o}function H(t){"walking-in"!==w&&"idle"!==w&&"speaking"!==w&&(w="walking-in",R("walking-in"),o.setAttribute("aria-hidden","false"),o.classList.remove("skyyrose-mascot--hidden","skyyrose-mascot--exiting"),o.classList.add("skyyrose-mascot--entering"),setTimeout((function(){if(o.classList.remove("skyyrose-mascot--entering"),o.classList.add("skyyrose-mascot--idle"),w="idle",R("idle"),t&&!sessionStorage.getItem(e)){try{sessionStorage.setItem(e,"1")}catch(e){}var i=A[p]||A.default,s=v.pageTip?v.pageTip:i.greeting.text;R("wave"),x=setTimeout((function(){x=null,"idle"!==w||N()||M("greeting:"+p,s,i.greeting.chips)}),m?0:1400),function(){try{sessionStorage.setItem(n,String(P()+1))}catch(e){}}()}}),m?0:1400))}function W(){if(clearTimeout(I),!N()&&!G()){var e=0===P()?4500:1e4+2e4*Math.random();I=setTimeout((function(){"dormant"!==w||N()||G()||H(!0)}),e)}}function z(){var e=Date.now();e-L<250||(L=e,"dormant"===w&&P()>0&&W())}function J(e){var n;e&&function(){try{sessionStorage.setItem(t,"1")}catch(e){}}(),n=function(){r.style.display="flex",r.setAttribute("aria-hidden","false"),r.focus()},D(),w="exiting",R("exiting"),Y(),clearTimeout(I),o.classList.remove("skyyrose-mascot--idle","skyyrose-mascot--entering"),o.classList.add("skyyrose-mascot--exiting"),o.setAttribute("aria-hidden","true"),setTimeout((function(){o.classList.add("skyyrose-mascot--hidden"),o.classList.remove("skyyrose-mascot--exiting"),w="dormant",R("hidden"),n&&n()}),m?0:600)}}();
+\ No newline at end of file

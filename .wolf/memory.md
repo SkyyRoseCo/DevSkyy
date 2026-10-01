@@ -3295,3 +3295,7 @@ User authorized "do it" for Kids-first timed boards and parallel collection arc 
 | 02:51 | Architect closing review PASS for bounded fixture/handoff; exact artifacts/counts checked read-only; no implementation corrections; overall gates held | tasks/preorder-correctness-20261001/evidence/architect-closing-review.md | ready for scoped local commit | ~review |
 
 | 05:10 | Stream1 adopted stream2 successor48dca7136 as6f796ef1f; native monetary-control matrix86x3 PASS and all14 full-theme hooks PASS; stable35 gates30PASS5FAIL; production runtime unchanged; clean6f package blocked at old pin; exact certification request refreshed | tasks/v2-launch-local-20261001/CLOSING.md and successor evidence | local only; owner certification, broad brand and release held | ~500 |
+
+| 05:30 | Five-stream scoped adoption; patched frontend exact locks, isolated native fixture verification | tasks/integration-release-20261001 | 493 Python,690 rootTS,320 frontend,258 native/all14hooks; release gates retained | ~6000 |
+
+| 05:49 | Functionalfreeze299f6947; finalfrontend346/types/build PASS; closedGLB approvalrebinding andauthdeadline findings | tasks/integration-release-20261001 | lockedPython522+1SKIP; native/browserlocal scopeexplicit; certification/packagepending | ~1500 |

@@ -1,0 +1,24 @@
+{
+  "source_commit": "3c93bf0814a9cf1c6295fe3a2c6004cdf4399a39",
+  "local_parent": "56cba33a6480680d2c8b37bbe81103899c3ac2d0",
+  "export_base": "c4d971022aee75b6ea58b13b44cdc9d91aeb81e9",
+  "patch_sha256": "85dae7374a299461a20a0f605c6274bd3a939f141ba7c42634eb441aadb61e83",
+  "apply_check": "PASS_EXACT_BASE_BLOB_FIXTURE",
+  "files": [
+    {
+      "path": "frontend/app/login/page.tsx",
+      "base_sha256": "6ac3a1a5205a2398d8cb52c3af4dbb7ef6ff631622d456501267c343ecf072bb",
+      "corrected_sha256": "ffdee594db602a5c9a1ba8d446dec37527e2a1ce2c6d72120f8d4f7d2bf73c61"
+    },
+    {
+      "path": "frontend/lib/auth.ts",
+      "base_sha256": "9d52987b43f2d580d88092bba1cd3a940e0486cff63d8d176d30415df2e7e10c",
+      "corrected_sha256": "0e4bcc7cc3dae64709ae5587f6cec3bf4fdbda6217d333454ea7d4cdbb7689c7"
+    },
+    {
+      "path": "frontend/tests/login-deadlines.test.ts",
+      "base_sha256": null,
+      "corrected_sha256": "5cf5f98830717cefa717a0135094a972370486eb61dbfc92ed4f3d9025fb865b"
+    }
+  ]
+}

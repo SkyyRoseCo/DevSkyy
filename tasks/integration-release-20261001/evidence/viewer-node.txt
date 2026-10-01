@@ -1,0 +1,212 @@
+(node:7121) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# (node:7147) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: dispose all parsed scenes, shared resources, skeleton bone textures and decoded images once
+ok 1 - dispose all parsed scenes, shared resources, skeleton bone textures and decoded images once
+  ---
+  duration_ms: 0.812333
+  type: 'test'
+  ...
+# Subtest: exact standalone BIN accepted
+ok 2 - exact standalone BIN accepted
+  ---
+  duration_ms: 0.193458
+  type: 'test'
+  ...
+# Subtest: reject buffers URI remote.bin
+ok 3 - reject buffers URI remote.bin
+  ---
+  duration_ms: 0.14225
+  type: 'test'
+  ...
+# Subtest: reject images URI remote.bin
+ok 4 - reject images URI remote.bin
+  ---
+  duration_ms: 0.044541
+  type: 'test'
+  ...
+# Subtest: reject buffers URI ../escape.png
+ok 5 - reject buffers URI ../escape.png
+  ---
+  duration_ms: 0.039166
+  type: 'test'
+  ...
+# Subtest: reject images URI ../escape.png
+ok 6 - reject images URI ../escape.png
+  ---
+  duration_ms: 0.03525
+  type: 'test'
+  ...
+# Subtest: reject buffers URI https://example.invalid/a
+ok 7 - reject buffers URI https://example.invalid/a
+  ---
+  duration_ms: 0.079875
+  type: 'test'
+  ...
+# Subtest: reject images URI https://example.invalid/a
+ok 8 - reject images URI https://example.invalid/a
+  ---
+  duration_ms: 0.039166
+  type: 'test'
+  ...
+# Subtest: reject buffers URI data:image/png;base64,AA==
+ok 9 - reject buffers URI data:image/png;base64,AA==
+  ---
+  duration_ms: 0.206208
+  type: 'test'
+  ...
+# Subtest: reject images URI data:image/png;base64,AA==
+ok 10 - reject images URI data:image/png;base64,AA==
+  ---
+  duration_ms: 0.734958
+  type: 'test'
+  ...
+# Subtest: reject buffers URI 
+ok 11 - reject buffers URI 
+  ---
+  duration_ms: 0.105792
+  type: 'test'
+  ...
+# Subtest: reject images URI 
+ok 12 - reject images URI 
+  ---
+  duration_ms: 0.042458
+  type: 'test'
+  ...
+# Subtest: reject buffers URI null
+ok 13 - reject buffers URI null
+  ---
+  duration_ms: 0.028541
+  type: 'test'
+  ...
+# Subtest: reject images URI null
+ok 14 - reject images URI null
+  ---
+  duration_ms: 0.063375
+  type: 'test'
+  ...
+# Subtest: reject unbound buffer/image/extension {"buffers":[{"byteLength":4},{"byteLength":4}]}
+ok 15 - reject unbound buffer/image/extension {"buffers":[{"byteLength":4},{"byteLength":4}]}
+  ---
+  duration_ms: 0.092041
+  type: 'test'
+  ...
+# Subtest: reject unbound buffer/image/extension {"buffers":[{"byteLength":8}]}
+ok 16 - reject unbound buffer/image/extension {"buffers":[{"byteLength":8}]}
+  ---
+  duration_ms: 0.027459
+  type: 'test'
+  ...
+# Subtest: reject unbound buffer/image/extension {"bufferViews":[{"buffer":1,"byteLength":4}]}
+ok 17 - reject unbound buffer/image/extension {"bufferViews":[{"buffer":1,"byteLength":4}]}
+  ---
+  duration_ms: 0.039875
+  type: 'test'
+  ...
+# Subtest: reject unbound buffer/image/extension {"bufferViews":[{"buffer":0,"byteOffset":3,"byteLength":4}]}
+ok 18 - reject unbound buffer/image/extension {"bufferViews":[{"buffer":0,"byteOffset":3,"byteLength":4}]}
+  ---
+  duration_ms: 0.024541
+  type: 'test'
+  ...
+# Subtest: reject unbound buffer/image/extension {"images":[{"mimeType":"image/svg+xml","bufferView":0}]}
+ok 19 - reject unbound buffer/image/extension {"images":[{"mimeType":"image/svg+xml","bufferView":0}]}
+  ---
+  duration_ms: 0.033042
+  type: 'test'
+  ...
+# Subtest: reject unbound buffer/image/extension {"extensionsUsed":""}
+ok 20 - reject unbound buffer/image/extension {"extensionsUsed":""}
+  ---
+  duration_ms: 0.030458
+  type: 'test'
+  ...
+# Subtest: reject unbound buffer/image/extension {"extensionsRequired":["KHR_materials_ior"]}
+ok 21 - reject unbound buffer/image/extension {"extensionsRequired":["KHR_materials_ior"]}
+  ---
+  duration_ms: 0.029542
+  type: 'test'
+  ...
+# Subtest: reject unbound buffer/image/extension {"materials":[{"extensions":{"KHR_materials_ior":{"ior":2.5}}}]}
+ok 22 - reject unbound buffer/image/extension {"materials":[{"extensions":{"KHR_materials_ior":{"ior":2.5}}}]}
+  ---
+  duration_ms: 0.033667
+  type: 'test'
+  ...
+# Subtest: reject unbound buffer/image/extension {"meshes":[{"primitives":[{"extensions":{"KHR_draco_mesh_compression":{}}}]}]}
+ok 23 - reject unbound buffer/image/extension {"meshes":[{"primitives":[{"extensions":{"KHR_draco_mesh_compression":{}}}]}]}
+  ---
+  duration_ms: 0.027666
+  type: 'test'
+  ...
+# Subtest: synthetic accepted binding is exact
+ok 24 - synthetic accepted binding is exact
+  ---
+  duration_ms: 0.13575
+  type: 'test'
+  ...
+# Subtest: reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.glb-candidates.v2","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+ok 25 - reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.glb-candidates.v2","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+  ---
+  duration_ms: 0.02675
+  type: 'test'
+  ...
+# Subtest: reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","publication_authorized":true}
+ok 26 - reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","publication_authorized":true}
+  ---
+  duration_ms: 0.018625
+  type: 'test'
+  ...
+# Subtest: reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":false}
+ok 27 - reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":false}
+  ---
+  duration_ms: 0.018834
+  type: 'test'
+  ...
+# Subtest: reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"},{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+ok 28 - reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"},{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+  ---
+  duration_ms: 0.030375
+  type: 'test'
+  ...
+# Subtest: reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"https://example.invalid/a","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+ok 29 - reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"https://example.invalid/a","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+  ---
+  duration_ms: 0.024125
+  type: 'test'
+  ...
+# Subtest: reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"javascript:alert(1)","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+ok 30 - reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"javascript:alert(1)","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+  ---
+  duration_ms: 0.020459
+  type: 'test'
+  ...
+# Subtest: reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+ok 31 - reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"FOUNDER_APPROVED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+  ---
+  duration_ms: 0.018042
+  type: 'test'
+  ...
+# Subtest: reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"BLOCKED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+ok 32 - reject stale/unaccepted/duplicate/unsafe manifest {"schema":"skyyrose.accepted-glb-runtime.v1","entries":[{"sku":"fixture-a","native_sku":"fixture-a","product_id":1,"variation_id":0,"attributes":{},"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":40,"asset_url":"/fixture.glb","product_fidelity":"PASS","qc_binding":"PASS","creative_approval":"BLOCKED","license":"PASS","runtime_budget":"PASS","publication_authorized":true,"approval_id":"SYNTHETIC-TEST-ONLY"}],"registry_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","publication_authorized":true}
+  ---
+  duration_ms: 0.017667
+  type: 'test'
+  ...
+# Subtest: unknown asset identity fails
+ok 33 - unknown asset identity fails
+  ---
+  duration_ms: 0.023833
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 33
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 45.489125

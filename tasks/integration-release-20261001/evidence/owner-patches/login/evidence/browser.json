@@ -1,0 +1,329 @@
+{
+  "mode": "LOCAL_SYNTHETIC_REAL_NEXTAUTH_SDK",
+  "provider_calls": 0,
+  "cases": [
+    {
+      "requirement": "successful legacy token + stalled actual NextAuth SDK callback",
+      "timeoutMessage": true,
+      "retryEnabled": true,
+      "tokensAbsent": true,
+      "route": "/login",
+      "screenshot": "/Users/theceo/.codex/visualizations/2026/10/01/01a0f644-19f5-78c0-926f-f6fc9f9417be/login-deadline-timeout.png"
+    },
+    {
+      "requirement": "retry succeeds; first callback released",
+      "callbacks": 2,
+      "applicationToken": "SYNTHETIC_EXPECTED",
+      "cookieOrdering": "NOT_QUALIFIED",
+      "route_verified_before_release": "/admin",
+      "lateSDKCompletion": "NOT_DETERMINISTICALLY_QUALIFIED"
+    }
+  ],
+  "requests": [
+    {
+      "path": "/login",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/61d96c4884191721-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/6c25f6e897d845a3-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/6ad0344ed98ac2e9-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/60c9b95e8d9e49be-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/806de4d605d3ad01-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/css/6f5515f1d32281d5.css",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/7b89a4fd5e90ede0-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/a273567b21a7c318-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/b0bb26939bb40fdb-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/css/caa5d51f597443f0.css",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/e4af272ccee01ff0-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/fc727f226c737876-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/media/eaead17c7dbfcd5d-s.p.woff2",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/main-app-545b1067d9ea4e48.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/webpack-655001e2a629d472.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/9739-83077d61426cb3e7.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/3271-e81a2e5faa254f65.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/9456-5d587bae7e80de60.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/117-6aadca0e217dd079.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/8239-6c5e047354ea95e4.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/app/layout-6c462a0051413a6b.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/2444-5a8b29816d07a729.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/app/login/page-791918935f2e1b20.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/8934-7103fedce5366f42.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/6942-f291a98e91b68be7.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/4321-c6f5b7b186700c54.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/927bdeb0-8abd03bf86349748.js",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/token",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/providers",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/auth/token",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/providers",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/callback/credentials",
+      "status": 200
+    },
+    {
+      "path": "/admin",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/app/admin/layout-e861199bbcd4da73.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/8025-34120883b7007c1d.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/css/23742d1096eb1fe0.css",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/5120-d020f2118cdb6ceb.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/1276-11b8cca4c05490c0.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/app/admin/page-02e2d6e06a15e7cd.js",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/callback/credentials",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/agents",
+      "status": 404
+    },
+    {
+      "path": "/api/v1/agents",
+      "status": 404
+    },
+    {
+      "path": "/api/auth/session",
+      "status": 200
+    },
+    {
+      "path": "/api/console/orders-count",
+      "status": 200
+    },
+    {
+      "path": "/admin",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/session",
+      "status": 200
+    },
+    {
+      "path": "/admin/orders",
+      "status": 200
+    },
+    {
+      "path": "/admin/products",
+      "status": 200
+    },
+    {
+      "path": "/admin/hub",
+      "status": 200
+    },
+    {
+      "path": "/admin/collections",
+      "status": 200
+    },
+    {
+      "path": "/admin/agents",
+      "status": 200
+    },
+    {
+      "path": "/admin/scene-authority",
+      "status": 200
+    },
+    {
+      "path": "/admin/governor",
+      "status": 200
+    },
+    {
+      "path": "/admin/web-extraction",
+      "status": 200
+    },
+    {
+      "path": "/admin/hub",
+      "status": 200
+    },
+    {
+      "path": "/admin/orders",
+      "status": 200
+    },
+    {
+      "path": "/admin/products",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/app/admin/hub/page-df2c705d2232ab9d.js",
+      "status": 200
+    },
+    {
+      "path": "/admin/customers",
+      "status": 200
+    },
+    {
+      "path": "/admin/settings",
+      "status": 200
+    },
+    {
+      "path": "/admin/collections",
+      "status": 200
+    },
+    {
+      "path": "/admin/scene-authority",
+      "status": 200
+    },
+    {
+      "path": "/admin/agents",
+      "status": 200
+    },
+    {
+      "path": "/admin/governor",
+      "status": 200
+    },
+    {
+      "path": "/admin/web-extraction",
+      "status": 200
+    },
+    {
+      "path": "/admin/customers",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/app/admin/scene-authority/page-e99a4435d9f2472c.js",
+      "status": 200
+    },
+    {
+      "path": "/admin/settings",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/2299-73345585b27ed5b6.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/app/admin/agents/page-5699aa2a8844673e.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/app/admin/web-extraction/page-803e8d7882bb39bf.js",
+      "status": 200
+    },
+    {
+      "path": "/_next/static/chunks/app/admin/settings/page-8b1514aef2448ddc.js",
+      "status": 200
+    }
+  ],
+  "status": "PASS_APPLICATION_DEADLINE_AND_RETRY",
+  "limitations": [
+    "Second case verifies successful retry before first callback release. The200ms wait did not deterministically establish first SDK completion or postcompletion navigation.",
+    "Application-side late-result isolation is deterministically covered by unit tests; NextAuth cookie/session-broadcast ordering is not qualified."
+  ]
+}

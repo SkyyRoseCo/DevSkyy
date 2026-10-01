@@ -1,0 +1,1155 @@
+{
+  "scope": "REPRODUCED_LOCAL_WORDPRESS_WOOCOMMERCE_ANONYMOUS_SYNTHETIC_CATALOG",
+  "authentication": "NOT_APPLICABLE",
+  "site": "http://127.0.0.1:19365",
+  "active_theme_source": "/Users/theceo/.codex/worktrees/4035/DevSkyy/wordpress-theme/skyyrose-flagship-2",
+  "fixture_product_ids": {
+    "parent": 369,
+    "S": 370,
+    "M": 371
+  },
+  "fixture_product_name": "SYNTHETIC INTEGRATION br-002",
+  "browser_version": "143.0.7499.4",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "mobile": false,
+  "native_cart_url": "http://127.0.0.1:19365/?page_id=6",
+  "observed_M_availability": "Standard order option.",
+  "assertions": [
+    "No GLB root, empty stage, canvas, or GLB/Three download",
+    "Keyboard native S selection resolves 370 with current preorder label",
+    "Keyboard reset returns incomplete selection then M resolves 371",
+    "Keyboard native POST add-to-cart succeeds and busy state recovers",
+    "Local native View cart link opens real WooCommerce cart with synthetic line"
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:19365/?product=synthetic-integration-br-003",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/photoswipe/photoswipe.min.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/photoswipe/default-skin/default-skin.min.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css?ver=2.5.0-c331896bb1e1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/product-page.min.css?ver=2.5.0-6a4fd7f46d30",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/global-shell.min.css?ver=2.5.0-e397eecebe1c",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/search-preview.min.css?ver=2.5.0-b17834580431",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/premium-commerce.min.css?ver=2.5.0-8e0c34ac5644",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/quick-view-commerce.min.css?ver=2.5.0-d2acd258b12e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/cookie-consent.min.css?ver=2.5.0-9d239d0307e4",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/underscore.min.js?ver=1.13.8",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/wp-util.min.js?ver=7.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/theme.min.js?ver=2.5.0-1fb2ca77065c",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/search-preview.min.js?ver=2.5.0-7e8243b34030",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/premium-commerce.min.js?ver=2.5.0-145d8a7d6c9a",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/quick-view-commerce.min.js?ver=2.5.0-330e2a516e02",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom.min.js?ver=1.7.21-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider.min.js?ver=2.7.2-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min.js?ver=4.1.1-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/experience-analyzer.min.js?ver=2.5.0-57cd3351dd29",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/?wc-ajax=get_refreshed_fragments",
+      "method": "POST"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/?product=synthetic-integration-br-003",
+      "method": "POST"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/photoswipe/photoswipe.min.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/photoswipe/default-skin/default-skin.min.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css?ver=2.5.0-c331896bb1e1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/product-page.min.css?ver=2.5.0-6a4fd7f46d30",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/global-shell.min.css?ver=2.5.0-e397eecebe1c",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/search-preview.min.css?ver=2.5.0-b17834580431",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/premium-commerce.min.css?ver=2.5.0-8e0c34ac5644",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/quick-view-commerce.min.css?ver=2.5.0-d2acd258b12e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/cookie-consent.min.css?ver=2.5.0-9d239d0307e4",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/underscore.min.js?ver=1.13.8",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/wp-util.min.js?ver=7.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/theme.min.js?ver=2.5.0-1fb2ca77065c",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/search-preview.min.js?ver=2.5.0-7e8243b34030",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/premium-commerce.min.js?ver=2.5.0-145d8a7d6c9a",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/quick-view-commerce.min.js?ver=2.5.0-330e2a516e02",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom.min.js?ver=1.7.21-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider.min.js?ver=2.7.2-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min.js?ver=4.1.1-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/experience-analyzer.min.js?ver=2.5.0-57cd3351dd29",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/cart-frontend.js?ver=d280e168288559e9bb34",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-cart-checkout-base-frontend.js?ver=fb0069b802d50bd5bf47",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/i18n.min.js?ver=1dfe7db3940c23ea9216",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/hooks.min.js?ver=f0f188028580e8dc1255",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-cart-checkout-vendors-frontend.js?ver=d075c6ab8086318714ff",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/react.min.js?ver=18.3.1.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/react-jsx-runtime.min.js?ver=18.3.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/blocks-checkout.js?ver=1082650d449aab026b31",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/react-dom.min.js?ver=18.3.1.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/blocks-checkout-events.js?ver=1cd9ffa6e3cff96ad1b2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-types.js?ver=c4b7280ca0810ce973be",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/blocks-components.js?ver=024deac35759b91da09e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-data.js?ver=afe6cbed0b2d6966962a",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-registry.js?ver=8cf98119f62dbfe139c2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-settings.js?ver=5cdaba16c87338181b77",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/api-fetch.min.js?ver=6f2a4faeee3c722b1e57",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/private-apis.min.js?ver=eb85f28c4c729bb4f002",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/url.min.js?ver=7b0de086d4ae11d55704",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/data.min.js?ver=14a216e0932d72c22976",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/compose.min.js?ver=0e8bde2a499ea6073b42",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/deprecated.min.js?ver=fe587bac92b7d0ef760e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/dom.min.js?ver=c95f94cbbc1ac3fde84f",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/element.min.js?ver=4a4370b2b349066fd440",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/escape-html.min.js?ver=87ebe53e97bba59805a5",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/is-shallow-equal.min.js?ver=7ad271045c1fe60f5496",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/keycodes.min.js?ver=d0b4204e4bbeb412df6e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/undo-manager.min.js?ver=4554fce6276d8910a4ae",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/redux-routine.min.js?ver=acca2b4857d83ad1790e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/data-controls.min.js?ver=7e8f932da184d5537725",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/html-entities.min.js?ver=a976ff3a0f00bc2999a3",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/notices.min.js?ver=c09a068fdab0eb465e14",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/components.min.js?ver=9b751f17060211272a5c",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/a11y.min.js?ver=31c6cec5a4ff7aff483d",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/dom-ready.min.js?ver=3fe927cab37bf38d6a23",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/date.min.js?ver=8173fc0fc12b7bb7eaf0",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/moment.min.js?ver=2.30.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/primitives.min.js?ver=44cc5a35c7b9fe07a838",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/rich-text.min.js?ver=3e5852e42cee1c239bae",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/theme.min.js?ver=56a75cc08ae66c1fcb7a",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/warning.min.js?ver=a0978839debc564a6608",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-middleware.js?ver=2c049fe250c153b7cac8",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/admin/sanitize/index.js?ver=6cc3684099bd6a5547b8",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-shared-context.js?ver=621353d8a3a7c8d44b41",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-shared-hocs.js?ver=781196b1e16b60e862cb",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/price-format.js?ver=0df720e448f7ab3c5d0d",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/autop.min.js?ver=4e10a18cb6f21a043fc0",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/plugins.min.js?ver=673d1e05ca49004ab160",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/style-engine.min.js?ver=914befb08774033e6265",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/wordcount.min.js?ver=f0b1f0e977b2ff6e0132",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/checkout-frontend.js?ver=1577e157b25df4816395",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/?wc-ajax=get_refreshed_fragments",
+      "method": "POST"
+    },
+    {
+      "url": "http://127.0.0.1:19365/?page_id=6",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/all-products.css?ver=wc-11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/packages-style.css?ver=wc-11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/cart.css?ver=wc-11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/select2.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css?ver=2.5.0-c331896bb1e1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/global-shell.min.css?ver=2.5.0-e397eecebe1c",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/search-preview.min.css?ver=2.5.0-b17834580431",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/premium-commerce.min.css?ver=2.5.0-8e0c34ac5644",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/css/cookie-consent.min.css?ver=2.5.0-9d239d0307e4",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/uploads/woocommerce-placeholder-300x300.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/theme.min.js?ver=2.5.0-1fb2ca77065c",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/search-preview.min.js?ver=2.5.0-7e8243b34030",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/premium-commerce.min.js?ver=2.5.0-145d8a7d6c9a",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/hooks.min.js?ver=f0f188028580e8dc1255",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/i18n.min.js?ver=1dfe7db3940c23ea9216",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-cart-checkout-base-frontend.js?ver=fb0069b802d50bd5bf47",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-cart-checkout-vendors-frontend.js?ver=d075c6ab8086318714ff",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/react.min.js?ver=18.3.1.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/react-jsx-runtime.min.js?ver=18.3.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/react-dom.min.js?ver=18.3.1.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-types.js?ver=c4b7280ca0810ce973be",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/blocks-checkout-events.js?ver=1cd9ffa6e3cff96ad1b2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/private-apis.min.js?ver=eb85f28c4c729bb4f002",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/url.min.js?ver=7b0de086d4ae11d55704",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/api-fetch.min.js?ver=6f2a4faeee3c722b1e57",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-settings.js?ver=5cdaba16c87338181b77",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/deprecated.min.js?ver=fe587bac92b7d0ef760e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/dom.min.js?ver=c95f94cbbc1ac3fde84f",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/escape-html.min.js?ver=87ebe53e97bba59805a5",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/element.min.js?ver=4a4370b2b349066fd440",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/is-shallow-equal.min.js?ver=7ad271045c1fe60f5496",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/keycodes.min.js?ver=d0b4204e4bbeb412df6e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/undo-manager.min.js?ver=4554fce6276d8910a4ae",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/compose.min.js?ver=0e8bde2a499ea6073b42",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/redux-routine.min.js?ver=acca2b4857d83ad1790e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/data.min.js?ver=14a216e0932d72c22976",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-registry.js?ver=8cf98119f62dbfe139c2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/data-controls.min.js?ver=7e8f932da184d5537725",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/html-entities.min.js?ver=a976ff3a0f00bc2999a3",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/dom-ready.min.js?ver=3fe927cab37bf38d6a23",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/a11y.min.js?ver=31c6cec5a4ff7aff483d",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/moment.min.js?ver=2.30.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/date.min.js?ver=8173fc0fc12b7bb7eaf0",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/primitives.min.js?ver=44cc5a35c7b9fe07a838",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/rich-text.min.js?ver=3e5852e42cee1c239bae",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/theme.min.js?ver=56a75cc08ae66c1fcb7a",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/warning.min.js?ver=a0978839debc564a6608",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/components.min.js?ver=9b751f17060211272a5c",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/notices.min.js?ver=c09a068fdab0eb465e14",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-middleware.js?ver=2c049fe250c153b7cac8",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-data.js?ver=afe6cbed0b2d6966962a",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/admin/sanitize/index.js?ver=6cc3684099bd6a5547b8",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/blocks-components.js?ver=024deac35759b91da09e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/blocks-checkout.js?ver=1082650d449aab026b31",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-shared-context.js?ver=621353d8a3a7c8d44b41",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-shared-hocs.js?ver=781196b1e16b60e862cb",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/price-format.js?ver=0df720e448f7ab3c5d0d",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/autop.min.js?ver=4e10a18cb6f21a043fc0",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/plugins.min.js?ver=673d1e05ca49004ab160",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/style-engine.min.js?ver=914befb08774033e6265",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/wordcount.min.js?ver=f0b1f0e977b2ff6e0132",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/cart-frontend.js?ver=d280e168288559e9bb34",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/country-select.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/address-i18n.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/frontend/cart.min.js?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js?ver=1.0.9-wc.11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/js/experience-analyzer.min.js?ver=2.5.0-57cd3351dd29",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=11.1.2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/checkout-frontend.js?ver=1577e157b25df4816395",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-cart-checkout-base-frontend.js?ver=fb0069b802d50bd5bf47",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/i18n.min.js?ver=1dfe7db3940c23ea9216",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/hooks.min.js?ver=f0f188028580e8dc1255",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-cart-checkout-vendors-frontend.js?ver=d075c6ab8086318714ff",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/react.min.js?ver=18.3.1.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/react-jsx-runtime.min.js?ver=18.3.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/blocks-checkout.js?ver=1082650d449aab026b31",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/react-dom.min.js?ver=18.3.1.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/blocks-checkout-events.js?ver=1cd9ffa6e3cff96ad1b2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-types.js?ver=c4b7280ca0810ce973be",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/blocks-components.js?ver=024deac35759b91da09e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-data.js?ver=afe6cbed0b2d6966962a",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-registry.js?ver=8cf98119f62dbfe139c2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-settings.js?ver=5cdaba16c87338181b77",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/api-fetch.min.js?ver=6f2a4faeee3c722b1e57",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/private-apis.min.js?ver=eb85f28c4c729bb4f002",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/url.min.js?ver=7b0de086d4ae11d55704",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/data.min.js?ver=14a216e0932d72c22976",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/compose.min.js?ver=0e8bde2a499ea6073b42",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/deprecated.min.js?ver=fe587bac92b7d0ef760e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/dom.min.js?ver=c95f94cbbc1ac3fde84f",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/element.min.js?ver=4a4370b2b349066fd440",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/escape-html.min.js?ver=87ebe53e97bba59805a5",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/is-shallow-equal.min.js?ver=7ad271045c1fe60f5496",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/keycodes.min.js?ver=d0b4204e4bbeb412df6e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/priority-queue.min.js?ver=6c0aa59b65d55dfd509b",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/undo-manager.min.js?ver=4554fce6276d8910a4ae",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/redux-routine.min.js?ver=acca2b4857d83ad1790e",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/data-controls.min.js?ver=7e8f932da184d5537725",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/html-entities.min.js?ver=a976ff3a0f00bc2999a3",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/notices.min.js?ver=c09a068fdab0eb465e14",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/components.min.js?ver=9b751f17060211272a5c",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/a11y.min.js?ver=31c6cec5a4ff7aff483d",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/dom-ready.min.js?ver=3fe927cab37bf38d6a23",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/date.min.js?ver=8173fc0fc12b7bb7eaf0",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/vendor/moment.min.js?ver=2.30.1",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/primitives.min.js?ver=44cc5a35c7b9fe07a838",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/rich-text.min.js?ver=3e5852e42cee1c239bae",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/theme.min.js?ver=56a75cc08ae66c1fcb7a",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/warning.min.js?ver=a0978839debc564a6608",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-middleware.js?ver=2c049fe250c153b7cac8",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/admin/sanitize/index.js?ver=6cc3684099bd6a5547b8",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-shared-hocs.js?ver=781196b1e16b60e862cb",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-shared-context.js?ver=621353d8a3a7c8d44b41",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/plugins/woocommerce/assets/client/blocks/price-format.js?ver=0df720e448f7ab3c5d0d",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/autop.min.js?ver=4e10a18cb6f21a043fc0",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/plugins.min.js?ver=673d1e05ca49004ab160",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-includes/js/dist/wordcount.min.js?ver=f0b1f0e977b2ff6e0132",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:19365/wp-content/uploads/woocommerce-placeholder.webp",
+      "method": "GET"
+    }
+  ],
+  "external_requests_blocked_before_transmission": [],
+  "page_errors": [],
+  "orders_or_payments": "NOT_ATTEMPTED",
+  "asset_approval": "NOT_ESTABLISHED",
+  "source_sha256": {
+    "wordpress-theme/skyyrose-flagship-2/functions.php": "cab7d736d6a35546afb70cadaa661c00153843adf4e6c72a1c09b7c8efd9d788",
+    "wordpress-theme/skyyrose-flagship-2/inc/product-glb.php": "b99338b2a87155b59d39da7dee23ff1e94d122a00a53ee8d49bfc38856ac7a67",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/theme.min.js": "1fb2ca77065c5bf41adacfea5ae067c8fda035b1434e765b0e9168ff03326ae5",
+    "wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json": "14d6f3a7069bc54a36a431138ea37acd3e61ffb51825ebe4af19f223ee59dc71"
+  }
+}

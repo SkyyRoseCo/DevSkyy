@@ -1,0 +1,20 @@
+{
+  "old_local_symlink": "/Users/theceo/DevSkyy/frontend/node_modules",
+  "temporary_readonly_target": "/Users/theceo/.codex/worktrees/4035/DevSkyy/frontend/node_modules",
+  "integration_head": "c4d971022aee75b6ea58b13b44cdc9d91aeb81e9",
+  "next": {
+    "version": "16.3.8",
+    "package_sha256": "6da8fc4823b66b8f2906d150002618e3f3e0d2446ebf3823b2a2f7efe73a46a4"
+  },
+  "vitest": {
+    "version": "5.0.2",
+    "package_sha256": "943ddc2cfd3676087e243b5adc450ea8c25ad941ba678b48a679b68f67ef297a"
+  },
+  "jsdom": {
+    "version": "30.0.1",
+    "package_sha256": "e87940b12f720a5b735a5df82108b634a238b8c6ebced71050a346a1675575b9"
+  },
+  "integration_lock_sha256": "855799de07bf78ea7418ff21c474c511a094f73871ec0e3ecb37223fdf5f298a",
+  "restored_local_symlink": true,
+  "verification_context": "Same integration installed tree read-only, used for new auth source346tests/types/lint/build/browser. Temporary local symlink restored at task close."
+}
