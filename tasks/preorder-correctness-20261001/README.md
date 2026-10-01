@@ -10,6 +10,13 @@ Overall CODE COMPLETE and E2E acceptance remain **BLOCKED** by the bootstrap,
 inventory ownership, commercial decisions, target testing, and release gates.
 See [acceptance-ledger.json](acceptance-ledger.json) for per-requirement evidence.
 
+Closing handoff: [INTEGRATION-CONTRACT.md](INTEGRATION-CONTRACT.md) supplies the
+exact bootstrap, registration command, metadata/callback and existing analytics
+identity contract. [DECISION-PACKET.md](DECISION-PACKET.md) reuses recorded policy
+facts and isolates the remaining policy-version/acknowledgement and inventory
+lifecycle decisions. The closing successor supersedes the original test/evidence
+handoff from `f16f179cf2b73fa817691f72b15906309c628153`; the module is unchanged.
+
 ## Delivered transaction contract
 
 `wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php` registers native
@@ -160,7 +167,8 @@ bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh \
 /Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/vendor/bin/phpcs \
   --standard=wordpress-theme/skyyrose-flagship-2/phpcs.xml \
   wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php \
-  wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php
+  wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php \
+  wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-bootstrap.php
 
 php tools/v2-runtime/test-checkout-truth.php
 python3 scripts/sync_product_registry.py --check
@@ -175,6 +183,22 @@ SQLite initially rejected a session-table ALTER during explicit table setup;
 the completed cart/session/order tests run under its translation layer, not
 MariaDB. WP-CLI also emits a PHP 8.5/react deprecation; the runner suppresses
 E_DEPRECATED toolchain noise while preserving errors/warnings and exit statuses.
+
+The completed closing run has **86 assertions per mode, 258 total**. A mixed
+physical simple/selected variation case uses native $100/$50 prices, a $15 fixed
+cart coupon, synthetic 10% tax and a native $10 flat-rate method. Cart and reloaded
+order both retain subtotal $150, merchandise after coupon $135, item tax $13.50,
+shipping tax $1 and total $159.50. The module-enabled and native-control paths
+agree exactly; the control disables only module callbacks and restores them.
+Native rate, customer tax destination, selected size/IDs and snapshot boundaries
+are asserted separately. These artificial rates test arithmetic, not SkyyRose
+business settings. R20-local is PASS; R20-target remains NOT RUN.
+
+Earlier cases instantiate independent native carts in one process. The terminal
+monetary case detaches their cart/session callbacks before creating a fresh native
+cart, so an inactive nonshippable cart cannot erase the active shipping selection.
+The order helper copies the native customer address before recalculation. Neither
+fix changes production code or suppresses native tax/shipping calculations.
 
 The pre-existing checkout-copy test is a synthetic rendering regression only.
 No full shared V2 build/package run is claimed: those artifacts and bootstrap

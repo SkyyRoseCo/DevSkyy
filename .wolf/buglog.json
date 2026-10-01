@@ -6548,5 +6548,23 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-23T13:46:47.434298+00:00"
+  },
+  {
+    "id": "bug-377",
+    "timestamp": "2026-10-01T09:48:43.673205+00:00",
+    "error_message": "FAIL: tax/shipping enabled native cart and stored order shipping",
+    "file": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+    "root_cause": "Several native carts in a single fixture process retained session callbacks; inactive nonshippable carts cleared active chosen_shipping_methods after totals. Order helper also omitted customer address, and strict shipping instance comparison ignored native stored string representation.",
+    "fix": "Terminal case detaches prior cart/session callbacks and constructs a fresh native cart; enables shipping before initial construction; reuses matched synthetic zone/native rate; copies native customer addresses and selects returned rate; compares numeric instance identity. Enabled/control cart and reloaded order pass86 assertions in CPT/HPOS/sync.",
+    "tags": [
+      "fixture",
+      "woocommerce",
+      "shipping",
+      "tax",
+      "session"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-01T09:48:43.673205+00:00"
   }
 ]

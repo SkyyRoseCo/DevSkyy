@@ -17,6 +17,7 @@ add_filter( 'pre_wp_mail', '__return_true' );
 update_option( 'woocommerce_calc_taxes', 'no' );
 update_option( 'woocommerce_enable_coupons', 'yes' );
 update_option( 'woocommerce_currency', 'USD' );
+update_option( 'woocommerce_ship_to_countries', '' );
 WC()->initialize_session();
 WC()->customer = new WC_Customer( 0, true );
 WC()->cart     = new WC_Cart();
@@ -54,6 +55,8 @@ function skyyrose2_fixture_empty() {
 function skyyrose2_fixture_order() {
 	WC()->cart->calculate_totals();
 	$order = new WC_Order();
+	$order->set_address( WC()->customer->get_shipping(), 'shipping' );
+	$order->set_address( WC()->customer->get_billing(), 'billing' );
 	WC()->checkout()->set_data_from_cart( $order );
 	$order->calculate_totals();
 	$order->save();
@@ -333,4 +336,202 @@ $key_a     = $cart_a->add_to_cart( $last->get_id(), 1 );
 WC()->cart = new WC_Cart();
 $key_b     = WC()->cart->add_to_cart( $last->get_id(), 1 );
 skyyrose2_fixture_assert( (bool) $key_a && (bool) $key_b && '1' === (string) wc_get_product( $last->get_id() )->get_meta( '_preorder_available' ), 'ownership gap reproduced: independent carts do not reserve custom allocation' );
+
+/** Read native amounts independently of the descriptive preorder metadata. */
+function skyyrose2_fixture_amounts( $source ) {
+	$is_cart = $source instanceof WC_Cart;
+	$items   = $is_cart ? $source->get_cart() : $source->get_items();
+	$lines   = 0.0;
+	foreach ( $items as $item ) {
+		$lines += $is_cart ? (float) $item['line_total'] : (float) $item->get_total();
+	}
+	return array(
+		'subtotal'     => (float) $source->get_subtotal(),
+		'discount'     => (float) $source->get_discount_total(),
+		'merchandise'  => $lines,
+		'shipping'     => (float) $source->get_shipping_total(),
+		'item_tax'     => (float) ( $is_cart ? $source->get_cart_contents_tax() : $source->get_cart_tax() ),
+		'shipping_tax' => (float) $source->get_shipping_tax(),
+		'total'        => (float) ( $is_cart ? $source->get_total( 'edit' ) : $source->get_total() ),
+	);
+}
+
+// Terminal, synthetic native tax/shipping case: these settings are fixture-only.
+// Earlier cases use independent native carts in one process. Detach their native
+// session/cart callbacks, then construct one fresh native cart with its own hooks.
+// Otherwise an empty prior cart's set_session() clears the active shipping choice.
+foreach ( $GLOBALS['wp_filter'] as $tag => $hook ) {
+	foreach ( $hook->callbacks as $priority => $callbacks ) {
+		foreach ( $callbacks as $callback ) {
+			if ( is_array( $callback['function'] ) && ( $callback['function'][0] instanceof WC_Cart_Session || $callback['function'][0] instanceof WC_Cart ) ) {
+				remove_filter( $tag, $callback['function'], $priority );
+			}
+		}
+	}
+}
+WC()->cart = new WC_Cart();
+skyyrose2_fixture_empty();
+$tax_slug = 'fixture-' . wp_generate_uuid4();
+WC_Tax::create_tax_class( 'Synthetic tax ' . $tax_slug, $tax_slug );
+WC_Tax::_insert_tax_rate(
+	array(
+		'tax_rate_country'  => 'US',
+		'tax_rate_state'    => 'CA',
+		'tax_rate'          => '10.0000',
+		'tax_rate_name'     => 'Synthetic ten percent',
+		'tax_rate_priority' => 1,
+		'tax_rate_compound' => 0,
+		'tax_rate_shipping' => 1,
+		'tax_rate_order'    => 0,
+		'tax_rate_class'    => $tax_slug,
+	)
+);
+update_option( 'woocommerce_calc_taxes', 'yes' );
+update_option( 'woocommerce_prices_include_tax', 'no' );
+update_option( 'woocommerce_tax_based_on', 'shipping' );
+update_option( 'woocommerce_shipping_tax_class', $tax_slug );
+update_option( 'woocommerce_ship_to_countries', '' );
+update_option( 'woocommerce_default_country', 'US:CA' );
+WC()->customer->set_shipping_country( 'US' );
+WC()->customer->set_shipping_state( 'CA' );
+WC()->customer->set_shipping_postcode( '94612' );
+WC()->customer->set_shipping_city( 'Oakland' );
+WC()->customer->set_calculated_shipping( true );
+$zone = WC_Shipping_Zones::get_zone_matching_package(
+	array(
+		'destination' => array(
+			'country'  => 'US',
+			'state'    => 'CA',
+			'postcode' => '94612',
+			'city'     => 'Oakland',
+		),
+	)
+);
+if ( ! $zone->get_id() ) {
+	$zone->set_zone_name( 'Synthetic native monetary fixture' );
+	$zone->set_zone_order( 0 );
+	$zone->add_location( 'US:CA', 'state' );
+	$zone->save();
+}
+$method = null;
+foreach ( $zone->get_shipping_methods() as $candidate ) {
+	if ( 'flat_rate' === $candidate->id ) {
+		$method = $candidate;
+		break;
+	}
+}
+if ( ! $method ) {
+	$method_id = $zone->add_shipping_method( 'flat_rate' );
+	$method    = $zone->get_shipping_methods()[ $method_id ];
+}
+update_option(
+	$method->get_instance_option_key(),
+	array(
+		'enabled'    => 'yes',
+		'title'      => 'Synthetic flat rate',
+		'tax_status' => 'taxable',
+		'cost'       => '10',
+	)
+);
+WC()->shipping()->reset_shipping();
+WC()->session->set( 'chosen_shipping_methods', array() );
+$tax_simple = skyyrose2_fixture_product( array( '_is_preorder' => '1' ) );
+$tax_simple->set_regular_price( '100' );
+$tax_simple->set_virtual( false );
+$tax_simple->set_tax_status( 'taxable' );
+$tax_simple->set_tax_class( $tax_slug );
+$tax_simple->save();
+$tax_variation = $variations[0];
+$tax_variation->set_regular_price( '50' );
+$tax_variation->set_virtual( false );
+$tax_variation->set_tax_status( 'taxable' );
+$tax_variation->set_tax_class( $tax_slug );
+$tax_variation->save();
+WC_Product_Variable::sync( $parent );
+$tax_coupon = new WC_Coupon();
+$tax_coupon->set_code( 'fixture-money-' . wp_generate_uuid4() );
+$tax_coupon->set_discount_type( 'fixed_cart' );
+$tax_coupon->set_amount( '15' );
+$tax_coupon->save();
+$expected        = array(
+	'subtotal'     => 150.0,
+	'discount'     => 15.0,
+	'merchandise'  => 135.0,
+	'shipping'     => 10.0,
+	'item_tax'     => 13.5,
+	'shipping_tax' => 1.0,
+	'total'        => 159.5,
+);
+$enabled_amounts = array();
+$saved_callbacks = array();
+try {
+	foreach ( array( 'enabled', 'control' ) as $path ) {
+		if ( 'control' === $path ) {
+			// Disable only this module's callbacks. Native WooCommerce stays active.
+			foreach ( $GLOBALS['wp_filter'] as $tag => $hook ) {
+				foreach ( $hook->callbacks as $priority => $callbacks ) {
+					foreach ( $callbacks as $callback ) {
+						if ( is_string( $callback['function'] ) && 0 === strpos( $callback['function'], 'skyyrose2_preorder_' ) ) {
+							$saved_callbacks[] = array( $tag, $priority, $callback['function'], $callback['accepted_args'] );
+							remove_filter( $tag, $callback['function'], $priority );
+						}
+					}
+				}
+			}
+		}
+		skyyrose2_fixture_empty();
+		WC()->cart->add_to_cart( $tax_simple->get_id(), 1 );
+		$selected_key = WC()->cart->add_to_cart( $parent->get_id(), 1, $tax_variation->get_id(), array( 'attribute_size' => 'L' ) );
+		skyyrose2_fixture_assert( (bool) $selected_key && WC()->cart->apply_coupon( $tax_coupon->get_code() ), 'tax/shipping ' . $path . ' resolves variation and native coupon' );
+		$selected = WC()->cart->get_cart()[ $selected_key ];
+		skyyrose2_fixture_assert( 'L' === $selected['variation']['attribute_size'], 'tax/shipping ' . $path . ' native selected attribute' );
+		if ( 'enabled' === $path ) {
+			$snap = $selected['skyyrose_preorder_snapshot'];
+			skyyrose2_fixture_assert( $tax_variation->get_id() === $snap['variation_id'] && null === $snap['expected_ship_date'], 'tax/shipping snapshot identity and absent promise null preserved' );
+		} else {
+			skyyrose2_fixture_assert( ! isset( $selected['skyyrose_preorder_snapshot'] ), 'native control contains no module snapshot' );
+		}
+		WC()->cart->calculate_totals();
+		$packages = WC()->shipping()->get_packages();
+		$rate_id  = 'flat_rate:' . $method->get_instance_id();
+		skyyrose2_fixture_assert( WC()->cart->needs_shipping() && WC()->cart->show_shipping() && isset( $packages[0]['rates'][ $rate_id ] ) && $zone->get_id() === WC_Shipping_Zones::get_zone_matching_package( $packages[0] )->get_id(), 'tax/shipping ' . $path . ' native package matches fixture zone and rate' );
+		WC()->session->set( 'chosen_shipping_methods', array( $rate_id ) );
+		$order          = skyyrose2_fixture_order();
+		$shipping_items = $order->get_items( 'shipping' );
+		$shipping_item  = reset( $shipping_items );
+		skyyrose2_fixture_assert( 1 === count( $shipping_items ) && $method->get_instance_id() === (int) $shipping_item->get_instance_id() && 'CA' === $order->get_shipping_state() && '94612' === $order->get_shipping_postcode() && 'US' === $order->get_shipping_country(), 'tax/shipping ' . $path . ' stored native rate and customer tax destination' );
+		$cart_amounts  = skyyrose2_fixture_amounts( WC()->cart );
+		$order_amounts = skyyrose2_fixture_amounts( $order );
+		WP_CLI::log(
+			'Native money ' . $path . ': ' . wp_json_encode(
+				array(
+					'cart'  => $cart_amounts,
+					'order' => $order_amounts,
+				)
+			)
+		);
+		foreach ( $expected as $field => $amount ) {
+			skyyrose2_fixture_assert( abs( $cart_amounts[ $field ] - $amount ) < 0.000001 && abs( $order_amounts[ $field ] - $amount ) < 0.000001, 'tax/shipping ' . $path . ' native cart and stored order ' . $field );
+		}
+		$found = false;
+		foreach ( $order->get_items() as $item ) {
+			if ( $tax_variation->get_id() === $item->get_variation_id() ) {
+				$found  = $parent->get_id() === $item->get_product_id() && 'L' === $item->get_meta( 'size' );
+				$record = skyyrose2_preorder_read_item( $item );
+				skyyrose2_fixture_assert( 'enabled' === $path ? 'recorded' === $record['status'] : 'legacy_unknown' === $record['status'], 'tax/shipping ' . $path . ' stored snapshot boundary' );
+			}
+		}
+		skyyrose2_fixture_assert( $found, 'tax/shipping ' . $path . ' persisted parent/variation and selected size' );
+		if ( 'enabled' === $path ) {
+			$enabled_amounts = $order_amounts;
+		} else {
+			skyyrose2_fixture_assert( $enabled_amounts === $order_amounts, 'module enabled and native control preserve identical money values' );
+		}
+	}
+} finally {
+	foreach ( $saved_callbacks as $callback ) {
+		add_filter( $callback[0], $callback[2], $callback[1], $callback[3] );
+	}
+}
+skyyrose2_fixture_assert( 10 === has_filter( 'woocommerce_add_cart_item_data', 'skyyrose2_preorder_add_cart_data' ), 'native control restores module callbacks' );
 echo "LOCAL INTEGRATION COMPLETE; no external order/payment/provider calls\n";

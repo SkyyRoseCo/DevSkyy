@@ -9287,3 +9287,9 @@
 - `tools/v2-runtime/test-hero-order-labels.php` — Isolated real partial label regression for regular/variable/simplepreorder; simulated media guard, no approval claim (~1000 tok).
 - `tasks/v2-launch-local-20261001/classify_brand_consumers.py` — Read-only exact-line classification of broad brand enforcement findings and owners (~850 tok).
 - `tasks/v2-launch-local-20261001/CLOSING.md` — Closing integration outcome, reproducible remaining local failures, consolidated founder/owner holds.
+## Preorder stream 2 closing artifacts (2026-10-01)
+
+- `tasks/preorder-correctness-20261001/INTEGRATION-CONTRACT.md` — Exact bootstrap, callback, metadata and existing paid-order event handoff (~1500 tok).
+- `tasks/preorder-correctness-20261001/DECISION-PACKET.md` — Recorded policy conflict, missing machine fields and bounded inventory owner choices (~1300 tok).
+- `wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-bootstrap.php` — Read-only combined V2 hash and hook registration gate; never loads module itself (~700 tok).
+- `tasks/preorder-correctness-20261001/evidence/architect-closing-review.md` — Recorded bounded independent review, artifact/count verification and remaining gates (~350 tok).

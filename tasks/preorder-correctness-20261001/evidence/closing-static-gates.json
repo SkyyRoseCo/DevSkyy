@@ -1,0 +1,76 @@
+{
+  "timestamp_utc": "2026-10-01T09:49:12.609820+00:00",
+  "checks": [
+    {
+      "name": "phpcs",
+      "command": [
+        "/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/vendor/bin/phpcs",
+        "--standard=wordpress-theme/skyyrose-flagship-2/phpcs.xml",
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-bootstrap.php"
+      ],
+      "exit_code": 0,
+      "evidence": "tasks/preorder-correctness-20261001/evidence/phpcs.txt"
+    },
+    {
+      "name": "checkout-truth",
+      "command": [
+        "php",
+        "tools/v2-runtime/test-checkout-truth.php"
+      ],
+      "exit_code": 0,
+      "evidence": "tasks/preorder-correctness-20261001/evidence/checkout-truth.txt"
+    },
+    {
+      "name": "registry-check",
+      "command": [
+        "python3",
+        "scripts/sync_product_registry.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "evidence": "tasks/preorder-correctness-20261001/evidence/registry-check.txt"
+    },
+    {
+      "name": "php-syntax-module",
+      "command": [
+        "php",
+        "-l",
+        "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php"
+      ],
+      "exit_code": 0,
+      "evidence": "tasks/preorder-correctness-20261001/evidence/php-syntax-module.txt"
+    },
+    {
+      "name": "php-syntax-fixture",
+      "command": [
+        "php",
+        "-l",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php"
+      ],
+      "exit_code": 0,
+      "evidence": "tasks/preorder-correctness-20261001/evidence/php-syntax-fixture.txt"
+    },
+    {
+      "name": "php-syntax-bootstrap",
+      "command": [
+        "php",
+        "-l",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-bootstrap.php"
+      ],
+      "exit_code": 0,
+      "evidence": "tasks/preorder-correctness-20261001/evidence/php-syntax-bootstrap.txt"
+    },
+    {
+      "name": "shell-syntax",
+      "command": [
+        "bash",
+        "-n",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh"
+      ],
+      "exit_code": 0,
+      "evidence": "tasks/preorder-correctness-20261001/evidence/shell-syntax.txt"
+    }
+  ]
+}

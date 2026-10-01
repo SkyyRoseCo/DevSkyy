@@ -54,4 +54,36 @@ PASS: CRUD referral attribution stored without email
 PASS: repeated lifecycle event retains referral identity
 PASS: self referral receives no attribution
 PASS: ownership gap reproduced: independent carts do not reserve custom allocation
+PASS: tax/shipping enabled resolves variation and native coupon
+PASS: tax/shipping enabled native selected attribute
+PASS: tax/shipping snapshot identity and absent promise null preserved
+PASS: tax/shipping enabled native package matches fixture zone and rate
+PASS: tax/shipping enabled stored native rate and customer tax destination
+Native money enabled: {"cart":{"subtotal":150,"discount":15,"merchandise":135,"shipping":10,"item_tax":13.5,"shipping_tax":1,"total":159.5},"order":{"subtotal":150,"discount":15,"merchandise":135,"shipping":10,"item_tax":13.5,"shipping_tax":1,"total":159.5}}
+PASS: tax/shipping enabled native cart and stored order subtotal
+PASS: tax/shipping enabled native cart and stored order discount
+PASS: tax/shipping enabled native cart and stored order merchandise
+PASS: tax/shipping enabled native cart and stored order shipping
+PASS: tax/shipping enabled native cart and stored order item_tax
+PASS: tax/shipping enabled native cart and stored order shipping_tax
+PASS: tax/shipping enabled native cart and stored order total
+PASS: tax/shipping enabled stored snapshot boundary
+PASS: tax/shipping enabled persisted parent/variation and selected size
+PASS: tax/shipping control resolves variation and native coupon
+PASS: tax/shipping control native selected attribute
+PASS: native control contains no module snapshot
+PASS: tax/shipping control native package matches fixture zone and rate
+PASS: tax/shipping control stored native rate and customer tax destination
+Native money control: {"cart":{"subtotal":150,"discount":15,"merchandise":135,"shipping":10,"item_tax":13.5,"shipping_tax":1,"total":159.5},"order":{"subtotal":150,"discount":15,"merchandise":135,"shipping":10,"item_tax":13.5,"shipping_tax":1,"total":159.5}}
+PASS: tax/shipping control native cart and stored order subtotal
+PASS: tax/shipping control native cart and stored order discount
+PASS: tax/shipping control native cart and stored order merchandise
+PASS: tax/shipping control native cart and stored order shipping
+PASS: tax/shipping control native cart and stored order item_tax
+PASS: tax/shipping control native cart and stored order shipping_tax
+PASS: tax/shipping control native cart and stored order total
+PASS: tax/shipping control stored snapshot boundary
+PASS: tax/shipping control persisted parent/variation and selected size
+PASS: module enabled and native control preserve identical money values
+PASS: native control restores module callbacks
 LOCAL INTEGRATION COMPLETE; no external order/payment/provider calls

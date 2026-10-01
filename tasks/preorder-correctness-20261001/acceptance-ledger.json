@@ -1,25 +1,25 @@
 {
   "base_sha": "7892b797d838e67e62c862a6698a5b42b6dccaee",
   "branch": "codex/preorder-order-promises-20261001",
-  "recorded_at_utc": "2026-10-01T07:16:44.879447+00:00",
+  "recorded_at_utc": "2026-10-01T09:48:11.688263+00:00",
   "local_matrix": [
     {
       "mode": "cpt",
-      "assertions": 56,
+      "assertions": 86,
       "evidence": "tasks/preorder-correctness-20261001/evidence/cpt.txt",
-      "sha256": "6cec37755e7326525f638a9025fa9933eef624d3b8797ace807e1d80e5b3d2e9"
+      "sha256": "943d6889ded8c93e2c388ee24fe1f2fcbb9a13a7d41b7eb849dd04a2aaf61e3d"
     },
     {
       "mode": "hpos",
-      "assertions": 56,
+      "assertions": 86,
       "evidence": "tasks/preorder-correctness-20261001/evidence/hpos.txt",
-      "sha256": "b95acc81576a6ae3aef8444924054558f0f2c55653f3084e084017d2513dfd81"
+      "sha256": "a73efc03d10fdfdffa1e0fa62f50e50f8cc83f8c63a24ad12ccbc94c99e16c3e"
     },
     {
       "mode": "compatibility",
-      "assertions": 56,
+      "assertions": 86,
       "evidence": "tasks/preorder-correctness-20261001/evidence/compatibility.txt",
-      "sha256": "b95acc81576a6ae3aef8444924054558f0f2c55653f3084e084017d2513dfd81"
+      "sha256": "a73efc03d10fdfdffa1e0fa62f50e50f8cc83f8c63a24ad12ccbc94c99e16c3e"
     }
   ],
   "implementation_local_gates": "PASS",
@@ -34,10 +34,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -55,10 +55,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -76,10 +76,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -97,10 +97,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -118,10 +118,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -139,10 +139,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -160,10 +160,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -181,10 +181,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -202,10 +202,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -223,10 +223,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -244,10 +244,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -265,10 +265,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -286,10 +286,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -307,10 +307,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -328,10 +328,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -349,10 +349,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -371,10 +371,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -392,10 +392,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -413,10 +413,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -434,10 +434,10 @@
     {
       "layer": "local integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -446,19 +446,32 @@
         "tasks/preorder-correctness-20261001/evidence/hpos.txt",
         "tasks/preorder-correctness-20261001/evidence/compatibility.txt"
       ],
+      "owner": "stream 2",
+      "requirement_id": "R20-local-native-tax-shipping",
+      "expected_behavior": "Native physical simple/variation prices, coupon, shipping and tax preserved in cart and persisted order",
+      "observed_result": "Enabled and native control: subtotal150, discount15, merchandise135, shipping10, item tax13.5, shipping tax1, total159.5. Native rate/destination, selected variation and snapshot boundaries passed in all three modes.",
+      "status": "PASS"
+    },
+    {
+      "layer": "target integration",
+      "environment": "Intended combined V2 target configuration; not executed",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
+      "tested_artifacts": {},
+      "reproduction": "NOT RUN: actual combined candidate and separately scoped target sandbox exercise required",
+      "evidence_locations": [],
       "owner": "stream 1 sandbox integration",
-      "requirement_id": "R20-native-tax-shipping",
-      "expected_behavior": "Native totals correct under actual shipping/tax settings",
-      "observed_result": "Virtual fixture disables tax/shipping; native price/discount totals passed. Target shipping/tax matrix not run.",
+      "requirement_id": "R20-target-native-tax-shipping",
+      "expected_behavior": "Qualify intended target tax/shipping configuration through combined storefront and stored order",
+      "observed_result": "The bounded synthetic fixture establishes local arithmetic only; actual target configuration/checkout/payment not run.",
       "status": "NOT RUN"
     },
     {
       "layer": "repository integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -476,10 +489,10 @@
     {
       "layer": "commercial contract",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -491,16 +504,16 @@
       "owner": "Corey / stream 1",
       "requirement_id": "R22-commercial-owner-decisions",
       "expected_behavior": "Agreed complete customer promise/policy fields and acknowledgement semantics",
-      "observed_result": "Existing optional ship date/edition captured without inventions. Missing approved policy/version fields and final acknowledgement language must be relayed.",
+      "observed_result": "Recorded full-payment, estimated-date and 48-hour cancellation source terms reused. V2 null-date copy conflicts with estimate-dependent cutoff; controlling approved version, missing-date/changed-date handling and acknowledgement fields remain unresolved. See DECISION-PACKET.md.",
       "status": "BLOCKED"
     },
     {
       "layer": "staging runtime",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -516,10 +529,10 @@
     {
       "layer": "quality",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -537,10 +550,10 @@
     {
       "layer": "cross-stream integration",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -552,16 +565,16 @@
       "owner": "stream 3 and stream 1",
       "requirement_id": "R25-analytics-purchase",
       "expected_behavior": "One accurate native lifecycle purchase without snapshot leakage",
-      "observed_result": "Interface documented; no analytics code or extra purchase hook added. Combined-head purchase event test pending.",
+      "observed_result": "Existing source contract scoped_event_id(site_id, environment, paid_order:<native ID>) documented with paid status/date and HMAC provenance; no extra hook/counter/payload. Combined-head execution pending.",
       "status": "BLOCKED"
     },
     {
       "layer": "release",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -579,10 +592,10 @@
     {
       "layer": "release",
       "environment": "Isolated loopback WordPress 7.1.2 / WooCommerce 11.1.2 / PHP 8.5.6 / SQLite 2.2.23; CPT, HPOS, HPOS sync",
-      "timestamp_utc": "2026-10-01T07:16:44.879447+00:00",
+      "timestamp_utc": "2026-10-01T09:48:11.688263+00:00",
       "tested_artifacts": {
         "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
-        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+        "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
         "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202"
       },
       "reproduction": "bash wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh /tmp/skyyrose-preorder-wc-20261001 /Users/theceo/.codex/worktrees/56b5/DevSkyy/tasks/preorder-correctness-20261001/evidence",
@@ -597,5 +610,17 @@
       "observed_result": "Scoped local revert documented; historical metadata preserved. No candidate deployment/operational rollback ran.",
       "status": "NOT RUN"
     }
-  ]
+  ],
+  "supersedes_test_evidence_dependency": "f16f179cf2b73fa817691f72b15906309c628153",
+  "module_unchanged": true,
+  "closing_scope": "Bounded local tax/shipping fixture, integration contract and owner decision packet; R21/R25 unearned.",
+  "closing_artifacts": {
+    "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "f368bbc1d6ce4e04f0c2bed1de6b7f9ff108ab22a8bf137085c6edb9d7e6c073",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-bootstrap.php": "da2e5de25da87773cfc08de7e014c7417edcac3bd5cb137eb5184c584d95adb4",
+    "tasks/preorder-correctness-20261001/INTEGRATION-CONTRACT.md": "3666d0f2d0931a79fcb379328f9737872e830bb20f90714e99e3336ebeebc6ad",
+    "tasks/preorder-correctness-20261001/DECISION-PACKET.md": "14e84a9ecc61621e0ee7c04efe5df5ae27763a9f11225815fd4759e252acadc1"
+  },
+  "closing_static_gates": "tasks/preorder-correctness-20261001/evidence/closing-static-gates.json"
 }
