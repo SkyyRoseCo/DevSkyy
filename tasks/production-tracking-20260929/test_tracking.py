@@ -351,7 +351,7 @@ class TrackingTests(unittest.TestCase):
                 *[Path(self.cfg[k]) for k in self.cfg if k.endswith("_path")],
             )
         }
-        self.assertTrue(expected <= paths)
+        self.assertLessEqual(expected, paths)
         self.assertEqual(result["config_sha256"], tracker.file_state(self.config)["sha256"])
         self.assertEqual(
             result["collector_sha256"], tracker.file_state(Path(tracker.__file__))["sha256"]

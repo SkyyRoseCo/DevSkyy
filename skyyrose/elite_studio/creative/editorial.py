@@ -72,7 +72,8 @@ class ResolvedEditorial:
 
 
 class BrandAdapter(Protocol):
-    def resolve(self) -> ResolvedEditorial: ...
+    def resolve(self) -> ResolvedEditorial:
+        raise NotImplementedError
 
 
 @dataclass(frozen=True)
