@@ -28,10 +28,11 @@ and its fixtures are local, synthetic, and read-only with respect to paid
 providers. It is not a complete live provider gateway, does not demonstrate paid
 execution, and does not establish release approval.
 
-Fresh integration evidence reports **338 Python tests passed**, covering the
-context resolver, Creative Job, reporting, local composite, spend ledger,
-database fail-loud behavior, and `tests/api/analytics`. Treat this as candidate
-test evidence; it does not imply deployment or production acceptance.
+Fresh integration evidence reports **339 Python tests passed**, including the
+concurrent report-write regression and coverage for the context resolver,
+Creative Job, reporting, local composite, spend ledger, database fail-loud
+behavior, and `tests/api/analytics`. Treat this as candidate test evidence; it
+does not imply deployment or production acceptance.
 
 ## Neon analytics migration
 
@@ -72,16 +73,19 @@ consented storefront ingestion, measured dashboard consumers, and the portable
 tracking board. Unrelated dirty worktrees and generated historical observation
 logs are excluded.
 
-- Python integration suites: 338 passed.
-- Frontend suite: 270 passed across 24 files; production build and TypeScript
-  passed.
-- Frontend lint: zero errors, 228 existing warnings.
+- Python integration suites: 339 passed against the exact integration Git tree,
+  including the concurrent report-write regression.
+- Before dependency remediation, frontend suite: 270 passed across 24 files;
+  production build and TypeScript passed.
+- Before dependency remediation, frontend lint: zero errors, 228 existing
+  warnings.
 - Desktop/mobile reporting fixtures: six Playwright checks passed.
 - Theme consent tests: 30 passed; PHP relay fixtures: 33 checks passed.
-- Tracker unit tests: 34 passed.
-- Combined synthetic replay: all four checks passed, including separate-process
-  persistence, tamper/auth rejection, exact synthetic pixel/receipt binding, and
-  read-only signed Governor reporting.
+- Tracker unit tests: 34 passed against the exact integration Git tree.
+- Combined synthetic replay: all four checks passed against the exact
+  integration Git tree, including separate-process persistence, tamper/auth
+  rejection, exact synthetic pixel/receipt binding, and read-only signed
+  Governor reporting.
 - Product-registry projection check, dependency lock check, and scoped Ruff
   passed.
 
@@ -90,8 +94,15 @@ evidence as unavailable. It no longer relies on older absolute worktree paths.
 The old archive builder is excluded because its broad `*.lock` filter dropped
 `uv.lock`; release verification must use the committed Git tree.
 
-Dependency audit reported 17 existing frontend production advisories (one
-critical, four high, six moderate, six low). The critical/high package versions
-are unchanged from this base. This PR does not claim to remediate the dependency
-baseline or qualify production deployment. The frontend build also retains its
-existing Turbopack file-tracing warning.
+## CI and dependency-audit follow-up
+
+The root TypeScript CI job first failed before running tests at the production
+dependency audit, which reported inherited advisories from the base. Focused,
+compatible dependency patches in the root and frontend manifests and lockfiles
+now report **zero high or critical advisories**. Current audit totals are root:
+1 low and 8 moderate; frontend: 6 low and 6 moderate. After remediation, clean
+`npm ci` installs succeeded in both packages. The root JavaScript suite passed
+all 690 tests and coverage thresholds; the frontend suite passed all 270 tests.
+Both packages passed type checking and builds. Resolve the final GitHub CI state
+before treating the PR as green. The frontend build also retains its existing
+Turbopack file-tracing warning.
