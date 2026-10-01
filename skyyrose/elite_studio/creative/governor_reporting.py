@@ -6,7 +6,6 @@ truth, or owner approval. No transport, runtime, signer, or grant is constructed
 
 from __future__ import annotations
 
-import re
 import sqlite3
 from contextlib import closing
 from decimal import Decimal, localcontext
@@ -14,10 +13,8 @@ from pathlib import Path
 
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 
-from .spend_ledger import DEFAULT_UNITS, LedgerError, SpendLedger
+from .spend_ledger import DEFAULT_UNITS, DIGEST_PATTERN, LedgerError, SpendLedger, identifier
 
-_IDENTIFIER = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$")
-_DIGEST = re.compile(r"^[0-9a-f]{64}$")
 _STATES = {
     "RESERVED",
     "SUBMITTED",
@@ -28,13 +25,6 @@ _STATES = {
     "CANCELED",
 }
 _BILLING = {"RESERVED", "PENDING_ACTUAL", "FINALIZED"}
-
-
-def identifier(value: object) -> str:
-    """Identifiers are opaque values; URLs and arbitrary prose are not emitted."""
-    if not isinstance(value, str) or not _IDENTIFIER.fullmatch(value):
-        raise LedgerError("Invalid bounded report identity")
-    return value
 
 
 class ReadOnlyLedger:
@@ -70,7 +60,7 @@ class ReadOnlyLedger:
                 minimum_checkpoint["hash"] != ""
                 if minimum_checkpoint["sequence"] == 0
                 else not isinstance(minimum_checkpoint["hash"], str)
-                or not _DIGEST.fullmatch(minimum_checkpoint["hash"])
+                or not DIGEST_PATTERN.fullmatch(minimum_checkpoint["hash"])
             )
         ):
             raise LedgerError("Trusted external minimum checkpoint required")
@@ -169,7 +159,7 @@ class ReadOnlyLedger:
         if (
             op["state"] not in _STATES
             or op["billing_state"] not in _BILLING
-            or not _DIGEST.fullmatch(op["contract_digest"])
+            or not DIGEST_PATTERN.fullmatch(op["contract_digest"])
         ):
             raise LedgerError("Unsupported operation report schema")
         from .spend_ledger import _usage

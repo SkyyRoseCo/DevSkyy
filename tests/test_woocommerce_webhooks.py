@@ -10,6 +10,7 @@ import base64
 import hashlib
 import hmac
 import json
+from unittest.mock import AsyncMock
 
 import pytest
 from fastapi import FastAPI
@@ -33,14 +34,22 @@ def wc_app(monkeypatch):
     monkeypatch.setenv("WC_WEBHOOK_SECRET", SECRET)
 
     from api.v1.woocommerce_webhooks import router
+    from api.v1.wordpress_integration import WordPressSettings, get_settings
+    from database.db import get_db
 
     app = FastAPI()
     app.include_router(router)
+    app.dependency_overrides[get_db] = lambda: None
+    app.dependency_overrides[get_settings] = lambda: WordPressSettings(
+        site_url="https://test.example.com", webhook_secret=SECRET
+    )
     return TestClient(app)
 
 
 class TestOrderWebhook:
-    def test_valid_signature_returns_200(self, wc_app):
+    def test_valid_signature_returns_200(self, wc_app, monkeypatch):
+        capture = AsyncMock(return_value={"status": "accepted", "accepted": 1, "duplicates": 0})
+        monkeypatch.setattr("api.v1.woocommerce_webhooks.capture_paid_order", capture)
         body = json.dumps({"id": 501, "status": "completed"}).encode()
         r = wc_app.post(
             "/woocommerce/webhooks/order",
@@ -48,7 +57,11 @@ class TestOrderWebhook:
             headers={"X-WC-Webhook-Signature": _sign(body), "Content-Type": "application/json"},
         )
         assert r.status_code == 200
-        assert r.json() == {"status": "received"}
+        assert r.json() == {
+            "status": "received",
+            "analytics": {"status": "accepted", "accepted": 1, "duplicates": 0},
+        }
+        capture.assert_awaited_once()
 
     def test_invalid_signature_returns_401(self, wc_app):
         body = json.dumps({"id": 501}).encode()
@@ -132,6 +145,13 @@ class TestMountedInApp:
 
     @pytest.mark.asyncio
     async def test_end_to_end_through_full_app(self, client, monkeypatch):
+        from database.db import get_db
+        from main_enterprise import app
+
+        # The shared ASGI client does not run lifespan/database initialization.
+        # This unpaid-order route check needs no SQL; paid persistence is covered
+        # through the real SQLite harness in test_storefront_ingest.py.
+        monkeypatch.setitem(app.dependency_overrides, get_db, lambda: None)
         monkeypatch.setenv("WORDPRESS_SITE_URL", "https://test.example.com")
         monkeypatch.setenv("WC_WEBHOOK_SECRET", SECRET)
         body = json.dumps({"id": 900, "status": "processing"}).encode()

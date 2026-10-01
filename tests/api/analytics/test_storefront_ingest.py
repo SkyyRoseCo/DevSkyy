@@ -332,9 +332,9 @@ async def test_wc_signature_site_payment_and_amount_cannot_be_forged(harness):
         paid_order(currency="<USD>"),
     ):
         assert (await webhook(client, order)).json()["analytics"]["status"] == "skipped"
-    assert (await webhook(client, paid_order(), source="https://wrong.example.test")).json()[
-        "analytics"
-    ]["reason"] == "webhook_site_mismatch"
+    mismatch = await webhook(client, paid_order(), source="https://wrong.example.test")
+    assert mismatch.status_code == 503
+    assert mismatch.json()["detail"]["analytics"]["reason"] == "webhook_site_mismatch"
     async with sessions() as db:
         assert (await db.execute(select(func.count(StorefrontAnalyticsEvent.id)))).scalar() == 0
 
@@ -393,3 +393,29 @@ asyncio.run(run())
     assert sorted(output[0].strip() for output in outputs) == ["(0, 1)", "(1, 0)"]
     async with sessions() as db:
         assert (await db.execute(select(func.count(StorefrontAnalyticsEvent.id)))).scalar() == 1
+
+
+async def test_paid_webhook_unavailable_retries_then_persists_once(harness, monkeypatch):
+    client, sessions, _ = harness
+    order = paid_order()
+    monkeypatch.delenv("SKYYROSE_ANALYTICS_SITE_ID")
+    response = await webhook(client, order)
+    assert response.status_code == 503
+    assert response.headers["retry-after"] == "60"
+    assert response.json()["detail"]["analytics"]["status"] == "unavailable"
+    monkeypatch.setenv("SKYYROSE_ANALYTICS_SITE_ID", "synthetic-site")
+    assert (await webhook(client, order)).json()["analytics"]["accepted"] == 1
+    assert (await webhook(client, order)).json()["analytics"]["duplicates"] == 1
+    conflict = await webhook(client, {**order, "total": "1.00"})
+    assert conflict.status_code == 503
+    assert conflict.json()["detail"]["analytics"]["status"] == "conflict"
+    async with sessions() as db:
+        assert (await db.execute(select(func.count(StorefrontAnalyticsEvent.id)))).scalar() == 1
+
+
+async def test_irrelevant_order_stays_skipped_without_analytics_configuration(harness, monkeypatch):
+    client, _, _ = harness
+    monkeypatch.delenv("SKYYROSE_ANALYTICS_SITE_ID")
+    result = await webhook(client, paid_order(status="pending"))
+    assert result.status_code == 200
+    assert result.json()["analytics"]["status"] == "skipped"

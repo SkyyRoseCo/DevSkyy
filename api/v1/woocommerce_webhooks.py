@@ -44,6 +44,12 @@ async def handle_order_webhook(
         extra={"order_id": payload.get("id"), "status": payload.get("status")},
     )
     analytics = await capture_paid_order(db, payload, source_url)
+    if analytics["status"] not in {"accepted", "skipped"}:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail={"status": "retry_required", "analytics": analytics},
+            headers={"Retry-After": "60"},
+        )
     return {"status": "received", "analytics": analytics}
 
 
