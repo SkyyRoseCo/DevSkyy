@@ -6,6 +6,9 @@ import { getPlatformConnection, getPlatformToken, type PlatformId } from '@/lib/
 import type { PlatformAnalytics, SocialAnalytics } from '@/lib/api/endpoints/social-media';
 import { getAnalyticsProxyConfig } from '@/lib/analytics-client';
 
+// Meta's official Business SDK 26.0.2 targets Graph v26.0.
+// https://github.com/facebook/facebook-python-business-sdk/blob/26.0.2/facebook_business/apiconfig.py
+const META_GRAPH_VERSION = 'v26.0';
 const value = z.number().finite().nonnegative().optional();
 const PLATFORMS: PlatformId[] = ['instagram', 'tiktok', 'twitter', 'facebook'];
 const sampleWindow = {
@@ -59,15 +62,13 @@ async function instagram(): Promise<PlatformAnalytics> {
   if (!token || !account) return unavailable('disconnected', 'Instagram account is not configured.');
   const [mediaPayload, insightPayload] = await Promise.all([
     platformFetch(
-      `https://graph.facebook.com/v19.0/${account}/media?fields=like_count,comments_count,shares&limit=50&access_token=${token}`
+      `https://graph.facebook.com/${META_GRAPH_VERSION}/${account}/media?fields=like_count,comments_count&limit=50&access_token=${token}`
     ),
     platformFetch(
-      `https://graph.facebook.com/v19.0/${account}/insights?metric=reach&period=day&access_token=${token}`
+      `https://graph.facebook.com/${META_GRAPH_VERSION}/${account}/insights?metric=reach&period=day&metric_type=time_series&access_token=${token}`
     ).catch(() => null),
   ]);
-  const media = z
-    .object({ data: z.array(z.object({ like_count: value, comments_count: value, shares: value })) })
-    .parse(mediaPayload);
+  const media = z.object({ data: z.array(z.object({ like_count: value, comments_count: value })) }).parse(mediaPayload);
   const insights = z
     .object({
       data: z.array(z.object({ name: z.string(), values: z.array(z.object({ value: z.number().nonnegative() })) })),
@@ -81,7 +82,8 @@ async function instagram(): Promise<PlatformAnalytics> {
       posts: media.data.length,
       likes: sum(media.data.map(post => post.like_count)),
       comments: sum(media.data.map(post => post.comments_count)),
-      shares: sum(media.data.map(post => post.shares)),
+      // `shares` is not an IGMedia field; this query does not collect share insights.
+      shares: null,
       reach,
     }),
     window: {
@@ -169,13 +171,13 @@ async function facebook(): Promise<PlatformAnalytics> {
   const page = process.env.FACEBOOK_PAGE_ID;
   if (!token || !page) return unavailable('disconnected', 'Facebook page is not configured.');
   const payload = await platformFetch(
-    `https://graph.facebook.com/v19.0/${page}/posts?fields=likes.summary(true),comments.summary(true),shares&limit=50&access_token=${token}`
+    `https://graph.facebook.com/${META_GRAPH_VERSION}/${page}/posts?fields=reactions.type(LIKE).limit(0).summary(true),comments.limit(0).summary(true),shares&limit=50&access_token=${token}`
   );
   const data = z
     .object({
       data: z.array(
         z.object({
-          likes: z.object({ summary: z.object({ total_count: value }) }).optional(),
+          reactions: z.object({ summary: z.object({ total_count: value }) }).optional(),
           comments: z.object({ summary: z.object({ total_count: value }) }).optional(),
           shares: z.object({ count: value }).optional(),
         })
@@ -185,7 +187,7 @@ async function facebook(): Promise<PlatformAnalytics> {
   // Absent shares or reach are unknown, even when other engagement fields exist.
   return observed({
     posts: data.data.length,
-    likes: sum(data.data.map(post => post.likes?.summary.total_count)),
+    likes: sum(data.data.map(post => post.reactions?.summary.total_count)),
     comments: sum(data.data.map(post => post.comments?.summary.total_count)),
     shares: sum(data.data.map(post => post.shares?.count)),
     reach: null,
