@@ -1,0 +1,138 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { NextRequest } from 'next/server';
+
+const { sessionMock, connectionMock, tokenMock } = vi.hoisted(() => ({
+  sessionMock: vi.fn(),
+  connectionMock: vi.fn(),
+  tokenMock: vi.fn(),
+}));
+vi.mock('next-auth', () => ({ getServerSession: sessionMock }));
+vi.mock('@/lib/auth', () => ({ authOptions: {} }));
+vi.mock('@/lib/social-media/config', () => ({ getPlatformConnection: connectionMock, getPlatformToken: tokenMock }));
+
+import { GET } from '@/app/api/social-media/analytics/route';
+import {
+  getAnalytics,
+  platformEngagement,
+  socialAnalyticsSchema,
+  type PlatformAnalytics,
+} from '@/lib/api/endpoints/social-media';
+
+const fetchMock = vi.fn<typeof fetch>();
+beforeEach(() => {
+  vi.unstubAllEnvs();
+  vi.stubGlobal('fetch', fetchMock);
+  fetchMock.mockReset();
+  sessionMock.mockReset().mockResolvedValue({ user: { email: 'operator@example.test' } });
+  connectionMock.mockReset().mockReturnValue({ connected: false });
+  tokenMock.mockReset().mockReturnValue('fixture-token');
+});
+
+const request = (query = '') => new NextRequest(`http://localhost/api/social-media/analytics${query}`);
+
+describe('social analytics evidence contract', () => {
+  it('requires authentication', async () => {
+    sessionMock.mockResolvedValue(null);
+    expect((await GET(request(), undefined)).status).toBe(401);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+  it('marks disconnected accounts and totals unavailable without platform calls', async () => {
+    const response = await GET(request(), undefined);
+    const data = socialAnalyticsSchema.parse(await response.json());
+    expect(data.coverage).toBe('unavailable');
+    expect(data.total_posts).toBeNull();
+    expect(data.total_published).toBeNull();
+    expect(data.total_queue).toBeNull();
+    for (const platform of Object.values(data.platforms)) {
+      expect(platform.status).toBe('disconnected');
+      expect(platform.posts).toBeNull();
+      expect(platform.likes).toBeNull();
+    }
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+  it('keeps dry-run unavailable instead of generating simulated reports', async () => {
+    connectionMock.mockReturnValue({ connected: true });
+    const response = await GET(request('?dry_run=true'), undefined);
+    const body = await response.json();
+    expect(body.total_posts).toBeNull();
+    expect(body.simulated).toBeUndefined();
+    expect(body.platforms.instagram.status).toBe('unavailable');
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+  it('preserves a measured zero sample while keeping disconnected accounts unknown', async () => {
+    connectionMock.mockImplementation(platform => ({ connected: platform === 'instagram' }));
+    vi.stubEnv('INSTAGRAM_BUSINESS_ACCOUNT_ID', 'fixture-account');
+    fetchMock.mockResolvedValue(Response.json({ data: [] }));
+    const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+    expect(data.platforms.instagram.status).toBe('observed');
+    expect(data.platforms.instagram.posts).toBe(0);
+    expect(data.platforms.instagram.likes).toBe(0);
+    expect(data.platforms.instagram.reach).toBeNull();
+    expect(data.platforms.tiktok.posts).toBeNull();
+    expect(data.coverage).toBe('partial');
+    expect(data.total_posts).toBeNull();
+  });
+  it('marks connected API errors unknown and excludes them from totals', async () => {
+    connectionMock.mockImplementation(platform => ({ connected: platform === 'tiktok' }));
+    fetchMock.mockResolvedValue(Response.json({ error: 'access denied' }, { status: 403 }));
+    const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+    expect(data.platforms.tiktok.status).toBe('error');
+    expect(data.platforms.tiktok.views).toBeNull();
+    expect(data.total_posts).toBeNull();
+  });
+  it('does not interpret an invalid platform response as an observed empty sample', async () => {
+    connectionMock.mockImplementation(platform => ({ connected: platform === 'tiktok' }));
+    fetchMock.mockResolvedValue(Response.json({ data: {} }));
+    const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+    expect(data.platforms.tiktok.status).toBe('error');
+    expect(data.platforms.tiktok.posts).toBeNull();
+  });
+  it('keeps missing engagement counters unavailable even when posts exist', async () => {
+    connectionMock.mockImplementation(platform => ({ connected: platform === 'tiktok' }));
+    fetchMock.mockResolvedValue(Response.json({ data: { videos: [{ like_count: 0, view_count: 100 }] } }));
+    const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+    expect(data.platforms.tiktok.posts).toBe(1);
+    expect(data.platforms.tiktok.likes).toBe(0);
+    expect(data.platforms.tiktok.shares).toBeNull();
+    expect(platformEngagement(data.platforms.tiktok)).toBeNull();
+  });
+  it('shows totals as measured zero only when every platform returned an observed empty sample', async () => {
+    connectionMock.mockReturnValue({ connected: true });
+    vi.stubEnv('INSTAGRAM_BUSINESS_ACCOUNT_ID', 'fixture-account');
+    vi.stubEnv('FACEBOOK_PAGE_ID', 'fixture-page');
+    vi.stubEnv('TWITTER_API_KEY', 'fixture-key');
+    vi.stubEnv('TWITTER_API_SECRET', 'fixture-secret');
+    vi.stubEnv('TWITTER_USER_ID', 'fixture-user');
+    fetchMock.mockImplementation(async url => {
+      if (String(url).includes('/oauth2/token')) return Response.json({ access_token: 'fixture-twitter-token' });
+      if (String(url).includes('tiktokapis')) return Response.json({ data: { videos: [] }, error: { code: 'ok' } });
+      return Response.json({ data: [] });
+    });
+    const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+    expect(data.coverage).toBe('observed');
+    expect(data.total_posts).toBe(0);
+    expect(data.total_published).toBe(0);
+    expect(data.total_queue).toBeNull();
+  });
+  it('does not count retweets twice in engagement', () => {
+    const platform: PlatformAnalytics = {
+      posts: 1,
+      likes: 0,
+      comments: 0,
+      shares: 2,
+      retweets: 2,
+      status: 'observed',
+      evidence: 'fixture',
+      error: null,
+      window: { start: null, end: null, label: 'fixture' },
+    };
+    expect(platformEngagement(platform)).toBe(2);
+  });
+  it('routes every analytics consumer through the authenticated honest report', async () => {
+    const response = await GET(request(), undefined);
+    fetchMock.mockResolvedValue(response);
+    const data = await getAnalytics();
+    expect(data.total_posts).toBeNull();
+    expect(fetchMock.mock.calls[0][0]).toBe('/api/social-media/analytics');
+  });
+});
