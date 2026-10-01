@@ -72,6 +72,98 @@ describe('social analytics evidence contract', () => {
     expect(data.coverage).toBe('partial');
     expect(data.total_posts).toBeNull();
   });
+  it('requests supported Instagram fields and day reach without inventing shares', async () => {
+    connectionMock.mockImplementation(platform => ({ connected: platform === 'instagram' }));
+    vi.stubEnv('INSTAGRAM_BUSINESS_ACCOUNT_ID', 'fixture-account');
+    fetchMock.mockImplementation(async input => {
+      const url = new URL(String(input));
+      expect(url.origin).toBe('https://graph.facebook.com');
+      if (url.pathname === '/v26.0/fixture-account/media') {
+        expect(url.searchParams.get('fields')).toBe('like_count,comments_count');
+        expect(url.searchParams.get('limit')).toBe('50');
+        return Response.json({
+          data: [
+            { like_count: 3, comments_count: 0 },
+            { like_count: 2, comments_count: 1 },
+          ],
+        });
+      }
+      expect(url.pathname).toBe('/v26.0/fixture-account/insights');
+      expect(url.searchParams.get('metric')).toBe('reach');
+      expect(url.searchParams.get('period')).toBe('day');
+      expect(url.searchParams.get('metric_type')).toBe('time_series');
+      return Response.json({ data: [{ name: 'reach', period: 'day', values: [{ value: 12 }] }] });
+    });
+    const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(data.platforms.instagram).toMatchObject({
+      status: 'observed',
+      posts: 2,
+      likes: 5,
+      comments: 1,
+      reach: 12,
+      shares: null,
+    });
+  });
+  it.each([
+    Response.json({ error: { message: 'Missing insights permission' } }, { status: 403 }),
+    Response.json({ data: [{ name: 'reach', total_value: { value: 999 } }] }),
+  ])('keeps valid Instagram media when reach is denied or has a different metric shape', async insightResponse => {
+    connectionMock.mockImplementation(platform => ({ connected: platform === 'instagram' }));
+    vi.stubEnv('INSTAGRAM_BUSINESS_ACCOUNT_ID', 'fixture-account');
+    fetchMock.mockImplementation(async input =>
+      String(input).includes('/insights?')
+        ? insightResponse
+        : Response.json({ data: [{ like_count: 0, comments_count: 1 }] })
+    );
+    const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+    expect(data.platforms.instagram).toMatchObject({
+      status: 'observed',
+      posts: 1,
+      likes: 0,
+      reach: null,
+      shares: null,
+    });
+  });
+  it('reads Facebook LIKE reactions and preserves an absent share count as unknown', async () => {
+    connectionMock.mockImplementation(platform => ({ connected: platform === 'facebook' }));
+    vi.stubEnv('FACEBOOK_PAGE_ID', 'fixture-page');
+    fetchMock.mockImplementation(async input => {
+      const url = new URL(String(input));
+      expect(url.origin).toBe('https://graph.facebook.com');
+      expect(url.pathname).toBe('/v26.0/fixture-page/posts');
+      expect(url.searchParams.get('fields')).toBe(
+        'reactions.type(LIKE).limit(0).summary(true),comments.limit(0).summary(true),shares'
+      );
+      return Response.json({
+        data: [
+          {
+            reactions: { summary: { total_count: 2 } },
+            comments: { summary: { total_count: 0 } },
+            shares: { count: 1 },
+          },
+          { reactions: { summary: { total_count: 3 } }, comments: { summary: { total_count: 1 } } },
+        ],
+      });
+    });
+    const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(data.platforms.facebook).toMatchObject({
+      status: 'observed',
+      posts: 2,
+      likes: 5,
+      comments: 1,
+      shares: null,
+    });
+  });
+  it('does not treat a Meta error envelope as an observed empty sample', async () => {
+    connectionMock.mockImplementation(platform => ({ connected: platform === 'facebook' }));
+    vi.stubEnv('FACEBOOK_PAGE_ID', 'fixture-page');
+    fetchMock.mockResolvedValue(Response.json({ error: { message: 'Unsupported field', code: 100 } }));
+    const data = socialAnalyticsSchema.parse(await (await GET(request(), undefined)).json());
+    expect(data.platforms.facebook).toMatchObject({ status: 'error', posts: null, likes: null });
+    expect(data.total_posts).toBeNull();
+  });
   it('marks connected API errors unknown and excludes them from totals', async () => {
     connectionMock.mockImplementation(platform => ({ connected: platform === 'tiktok' }));
     fetchMock.mockResolvedValue(Response.json({ error: 'access denied' }, { status: 403 }));
