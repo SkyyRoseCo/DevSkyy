@@ -28,6 +28,8 @@ from typing import Any
 
 from pydantic import BaseModel, Field, HttpUrl, SecretStr, field_validator
 
+from skyyrose.elite_studio.brand import BrandConfig
+
 # Use structlog if available, otherwise fall back to standard logging
 # Note: Library code should only create loggers, not configure logging
 try:
@@ -163,7 +165,7 @@ class SkyyRoseProductionConfig:
 
     # Site Information
     site_name: str = "SkyyRose"
-    site_tagline: str = "Luxury Grows from Concrete."
+    site_tagline: str = field(default_factory=lambda: BrandConfig.load().tagline_active)
     site_url: str = "https://skyyrose.co"
 
     # WordPress Credentials (loaded from environment)
@@ -237,7 +239,7 @@ class SkyyRoseProductionConfig:
                 slug="home-2",
                 status=PageStatus.PUBLISH,
                 template="elementor_canvas",
-                meta_description="SkyyRose - Luxury Grows from Concrete. Cinematic 3D luxury streetwear from Oakland.",
+                meta_description="SkyyRose. Cinematic 3D luxury streetwear from Oakland.",
                 elementor_template_path="home.json",
                 custom_css=self._get_home_css(),
             ),

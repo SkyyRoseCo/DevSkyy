@@ -17,3 +17,14 @@ def test_local_output_and_check_support_no_active_tagline(tmp_path: Path) -> Non
         )
     )
     assert main(["--output", str(output), "--check"]) == 1
+
+
+def test_wordpress_defaults_consume_explicit_no_tagline() -> None:
+    from skyyrose.elite_studio.brand import BrandConfig
+    from wordpress.elementor import BrandVoice
+    from wordpress.production_config import SkyyRoseProductionConfig
+
+    expected = BrandConfig.load().tagline_active
+    assert expected == ""
+    assert BrandVoice().tagline == expected
+    assert SkyyRoseProductionConfig().site_tagline == expected

@@ -621,7 +621,6 @@ get_header();
 			</picture>
 
 			<blockquote class="po-manifesto__quote po-rv">
-				<p><?php esc_html_e( 'Luxury Grows from Concrete.', 'skyyrose' ); ?></p>
 			</blockquote>
 
 			<p class="po-manifesto__body po-rv">
