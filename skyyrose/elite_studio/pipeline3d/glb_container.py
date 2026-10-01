@@ -41,6 +41,23 @@ class GlbContainer:
     tail: bytes
 
 
+def require_embedded_resources(document: dict[str, Any]) -> None:
+    """Reject URI resources in standalone offline GLBs, including relative URLs.
+
+    The offline QC and candidate contract accept BIN/bufferView resources only.
+    This is a resource policy, not a complete glTF semantic or fidelity validator.
+    """
+    for kind in ("buffers", "images"):
+        resources = document.get(kind, [])
+        if not isinstance(resources, list):
+            raise GlbFormatError(f"{kind} must be an array")
+        for index, resource in enumerate(resources):
+            if not isinstance(resource, dict):
+                raise GlbFormatError(f"{kind}[{index}] must be an object")
+            if "uri" in resource:
+                raise GlbFormatError(f"{kind}[{index}] has a URI; embedded resources required")
+
+
 def _check_header(data: bytes) -> None:
     if len(data) < _HEADER.size + _CHUNK_HEADER.size:
         raise GlbFormatError(f"too short for a GLB container ({len(data)} bytes)")

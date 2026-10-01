@@ -24,6 +24,7 @@ looks. Callers must branch on it (``scripts/glb_qc_render.py`` exits 2).
 from __future__ import annotations
 
 import base64
+import hashlib
 import http.server
 import json
 import shutil
@@ -34,10 +35,11 @@ from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 from skyyrose.core.paths import REPO_ROOT
 
-from .glb_container import GlbFormatError, read_glb
+from .glb_container import GlbFormatError, read_glb, require_embedded_resources
 
 _TEMPLATES = Path(__file__).resolve().parent / "templates"
 _HARNESS_TEMPLATE = _TEMPLATES / "webgl_qc_harness.html"
@@ -155,6 +157,7 @@ class RenderReport:
     images: Sequence[RenderedImage]
     console_messages: Sequence[Mapping[str, Any]] = field(default_factory=tuple)
     page_errors: Sequence[Mapping[str, Any]] = field(default_factory=tuple)
+    asset_hashes: Mapping[str, str] = field(default_factory=dict)
 
     @property
     def console_errors(self) -> tuple[Mapping[str, Any], ...]:
@@ -178,6 +181,7 @@ class RenderReport:
 
     def as_dict(self) -> dict[str, Any]:
         return {
+            "asset_hashes": dict(self.asset_hashes),
             "parity": dict(VIEWER_PARITY),
             "images": [i.as_dict() for i in self.images],
             "console_errors": [dict(e) for e in self.console_errors],
@@ -237,10 +241,11 @@ def build_serve_root(
     three_lib: Path,
     angles: Mapping[str, Mapping[str, float]] = ANGLES,
     size: int | None = None,
+    glb_payloads: Mapping[str, bytes] | None = None,
 ) -> Path:
     """Materialise the directory the browser is allowed to see.
 
-    Only the harness, a link to the vendored three tree, and a link per GLB. The
+    Only the harness, a link to the vendored three tree, and frozen GLB bytes. The
     repo root is never served: it holds .env.wordpress and .env.secrets.
     """
     serve_root.mkdir(parents=True, exist_ok=True)
@@ -263,13 +268,20 @@ def build_serve_root(
         link.symlink_to(three_lib, target_is_directory=True)
 
     for target in targets:
-        glb = target.glb.resolve()
-        if not glb.is_file():
-            raise WebGlQcError(f"GLB not found for {target.label!r}: {glb}")
+        if glb_payloads is None:
+            if not target.glb.is_file():
+                raise WebGlQcError(f"GLB not found for {target.label!r}: {target.glb}")
+            payload = target.glb.read_bytes()
+        else:
+            payload = glb_payloads[target.label]
+        try:
+            require_embedded_resources(read_glb(payload).document)
+        except GlbFormatError as exc:
+            raise WebGlQcError(f"{target.label!r} is not a valid offline GLB: {exc}") from exc
         dest = serve_root / f"{target.label}.glb"
         if dest.exists() or dest.is_symlink():
             dest.unlink()
-        dest.symlink_to(glb)
+        dest.write_bytes(payload)
     return serve_root
 
 
@@ -302,6 +314,34 @@ def _capture(page: Any, url: str, timeout_ms: int) -> dict[str, Any]:
     )
 
 
+def _offline_request_allowed(url: str, port: int) -> bool:
+    """Only this harness origin and its internally created blob resources."""
+    if url.startswith("blob:"):
+        url = url[5:]
+    try:
+        parsed = urlsplit(url)
+        return (
+            parsed.scheme == "http"
+            and parsed.hostname == "127.0.0.1"
+            and parsed.port == port
+            and parsed.username is None
+            and parsed.password is None
+        )
+    except ValueError:
+        return False
+
+
+def _restrict_requests(context: Any, port: int, blocked: list[str]) -> None:
+    def route_request(route: Any) -> None:
+        if _offline_request_allowed(route.request.url, port):
+            route.continue_()
+        else:
+            blocked.append(route.request.url)
+            route.abort("blockedbyclient")
+
+    context.route("**/*", route_request)
+
+
 def render(
     targets: Sequence[RenderTarget],
     out_dir: Path,
@@ -327,11 +367,15 @@ def render(
 
     # Parse every container before spending a browser launch on it: a truncated or
     # non-glTF file should say so in milliseconds, not as a loader error 30s later.
+    glb_payloads: dict[str, bytes] = {}
     for target in targets:
         if not target.glb.is_file():
             raise WebGlQcError(f"GLB not found for {target.label!r}: {target.glb}")
         try:
-            read_glb(target.glb.read_bytes())
+            payload = target.glb.read_bytes()
+            container = read_glb(payload)
+            require_embedded_resources(container.document)
+            glb_payloads[target.label] = payload
         except GlbFormatError as exc:
             raise WebGlQcError(f"{target.label!r} is not a valid GLB: {exc}") from exc
 
@@ -340,7 +384,7 @@ def render(
     # The serve root is scaffolding, not output: a temp dir keeps symlink clutter out
     # of the directory the founder opens to look at renders.
     serve_root = Path(tempfile.mkdtemp(prefix="glb-qc-serve-"))
-    build_serve_root(targets, serve_root, three_lib=lib, size=size)
+    build_serve_root(targets, serve_root, three_lib=lib, size=size, glb_payloads=glb_payloads)
 
     try:
         from playwright.sync_api import sync_playwright
@@ -358,8 +402,12 @@ def render(
         with sync_playwright() as pw:
             browser = pw.chromium.launch(headless=True, args=list(_CHROMIUM_ARGS))
             context = browser.new_context(
-                viewport={"width": size, "height": size}, device_scale_factor=1
+                viewport={"width": size, "height": size},
+                device_scale_factor=1,
+                service_workers="block",
             )
+            blocked_requests: list[str] = []
+            _restrict_requests(context, port, blocked_requests)
             try:
                 for target in targets:
                     for angle in angles:
@@ -391,6 +439,11 @@ def render(
                         )
                         captured = _capture(page, url, timeout_ms)
                         page.close()
+
+                        if blocked_requests:
+                            raise RenderFailedError(
+                                "QC attempted a request outside its offline origin"
+                            )
 
                         result = captured["result"]
                         for err in captured["errors"]:
@@ -426,6 +479,9 @@ def render(
         images=tuple(images),
         console_messages=tuple(console_messages),
         page_errors=tuple(page_errors),
+        asset_hashes={
+            label: hashlib.sha256(payload).hexdigest() for label, payload in glb_payloads.items()
+        },
     )
 
 
