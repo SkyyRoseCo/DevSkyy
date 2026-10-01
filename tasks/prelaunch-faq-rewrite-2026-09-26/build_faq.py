@@ -10,8 +10,8 @@ facts through skyyrose.core.product.get_product. Writes nothing outside this dir
 
 from __future__ import annotations
 
-import html
 import hashlib
+import html
 import json
 import re
 import sys
