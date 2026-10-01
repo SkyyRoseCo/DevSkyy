@@ -20,7 +20,7 @@ msgstr ""
 msgid "%d active"
 msgstr ""
 
-#: functions.php:669 inc/global-shell.php:77
+#: functions.php:743 inc/global-shell.php:86
 msgid "%d items in bag"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr ""
 msgid "A black rose emerging inside the original Scroll World garden"
 msgstr ""
 
-#: functions.php:754
+#: functions.php:829
 msgid "A bronze signature answers the SR monogram across Golden Gate light. Oakland made the name; the water carries it forward."
 msgstr ""
 
@@ -78,7 +78,7 @@ msgstr ""
 msgid "A cracked heart and rose protected in a dark red chamber"
 msgstr ""
 
-#: functions.php:867
+#: functions.php:978
 msgid "A cracked heart is not empty. It is evidence that something stayed worth guarding."
 msgstr ""
 
@@ -110,7 +110,7 @@ msgstr ""
 msgid "A playful Kids Capsule room built for imagination after dark"
 msgstr ""
 
-#: functions.php:905
+#: functions.php:1020
 msgid "A room where imagination is treated like an heirloom, not an interruption."
 msgstr ""
 
@@ -118,7 +118,7 @@ msgstr ""
 msgid "A story from the other side of the door"
 msgstr ""
 
-#: inc/global-shell.php:50 inc/global-shell.php:61 inc/presentation-registry.php:197 inc/presentation-registry.php:240 inc/starter-content.php:26
+#: inc/global-shell.php:59 inc/global-shell.php:70 inc/presentation-registry.php:197 inc/presentation-registry.php:240 inc/starter-content.php:26
 msgid "About"
 msgstr ""
 
@@ -126,7 +126,7 @@ msgstr ""
 msgid "Accept"
 msgstr ""
 
-#: inc/global-shell.php:139 inc/presentation-registry.php:253
+#: inc/global-shell.php:167 inc/presentation-registry.php:253
 msgid "Accessibility"
 msgstr ""
 
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Accessibility feedback"
 msgstr ""
 
-#: inc/global-shell.php:131 inc/global-shell.php:87
+#: inc/global-shell.php:140 inc/global-shell.php:96
 msgid "Account"
 msgstr ""
 
@@ -150,7 +150,7 @@ msgstr ""
 msgid "Adding your selection…"
 msgstr ""
 
-#: functions.php:905 template-immersive-kids-capsule.php:37
+#: functions.php:1019 template-immersive-kids-capsule.php:37
 msgid "After-Dark Playroom"
 msgstr ""
 
@@ -202,7 +202,7 @@ msgstr ""
 msgid "Ask Skyy / Client Services"
 msgstr ""
 
-#: functions.php:545
+#: functions.php:577
 msgid "Ask about fit"
 msgstr ""
 
@@ -226,19 +226,19 @@ msgstr ""
 msgid "Available on backorder"
 msgstr ""
 
-#: functions.php:786
+#: functions.php:872
 msgid "Back in Oakland, the polish has a source: work, faith, and the decision to make a name mean something."
 msgstr ""
 
-#: inc/global-shell.php:77 inc/presentation-registry.php:219
+#: inc/global-shell.php:86 inc/presentation-registry.php:219
 msgid "Bag"
 msgstr ""
 
-#: functions.php:785
+#: functions.php:866
 msgid "Bay Atelier"
 msgstr ""
 
-#: functions.php:791
+#: functions.php:878
 msgid "Beauty Without Permission"
 msgstr ""
 
@@ -254,11 +254,11 @@ msgstr ""
 msgid "Between sizes"
 msgstr ""
 
-#: functions.php:790 inc/presentation-registry.php:188 template-immersive-black-rose.php:16 template-parts/commerce/search-dialog.php:37
+#: functions.php:877 inc/presentation-registry.php:188 template-immersive-black-rose.php:16 template-parts/commerce/search-dialog.php:37
 msgid "Black Rose"
 msgstr ""
 
-#: functions.php:797
+#: functions.php:884
 msgid "Black Rose / Night Edition"
 msgstr ""
 
@@ -266,7 +266,7 @@ msgstr ""
 msgid "Black Rose architecture under an Oakland midnight sky"
 msgstr ""
 
-#: functions.php:1035
+#: functions.php:1159
 msgid "Black Rose typography and star-and-rose monuments"
 msgstr ""
 
@@ -278,11 +278,11 @@ msgstr ""
 msgid "Black is not absence. It is depth, guard, and elegance that knows what it survived. The rose blooms here without asking the room for permission."
 msgstr ""
 
-#: functions.php:794
+#: functions.php:881
 msgid "Black is not absence. It is depth, protection, and elegance with its guard up. The rose survives because it knows its own value—and never asks a shadow for permission to bloom."
 msgstr ""
 
-#: functions.php:792
+#: functions.php:879
 msgid "Bloom under a Bay Bridge moon."
 msgstr ""
 
@@ -302,7 +302,7 @@ msgstr ""
 msgid "Browse the Shop"
 msgstr ""
 
-#: functions.php:881
+#: functions.php:993
 msgid "Built for imagination before anyone hands out roles. The next chapter belongs to whoever is ready to write it."
 msgstr ""
 
@@ -310,7 +310,7 @@ msgstr ""
 msgid "By using the storefront or placing an order, customers agree to provide current information and use the store lawfully."
 msgstr ""
 
-#: functions.php:759
+#: functions.php:834
 msgid "Carry the first mark forward."
 msgstr ""
 
@@ -318,7 +318,7 @@ msgstr ""
 msgid "Carry the world with you."
 msgstr ""
 
-#: functions.php:865 template-immersive-love-hurts.php:29
+#: functions.php:967 template-immersive-love-hurts.php:29
 msgid "Cathedral of Thorns"
 msgstr ""
 
@@ -338,19 +338,19 @@ msgstr ""
 msgid "Checkout"
 msgstr ""
 
-#: functions.php:805
+#: functions.php:892
 msgid "Choose Black Rose"
 msgstr ""
 
-#: functions.php:886
+#: functions.php:998
 msgid "Choose Kids Capsule"
 msgstr ""
 
-#: functions.php:845
+#: functions.php:945
 msgid "Choose Love Hurts"
 msgstr ""
 
-#: functions.php:766
+#: functions.php:841
 msgid "Choose Signature"
 msgstr ""
 
@@ -366,23 +366,23 @@ msgstr ""
 msgid "Choose based on the silhouette you want and the product-specific fit note. Client Services can help compare measurements before purchase."
 msgstr ""
 
-#: functions.php:258
+#: functions.php:266
 msgid "Choose options for %s"
 msgstr ""
 
-#: functions.php:765
+#: functions.php:840
 msgid "Choose the piece that carries your name with the same calm certainty."
 msgstr ""
 
-#: functions.php:844
+#: functions.php:944
 msgid "Choose the piece that holds the tenderness and the edge in the same hand."
 msgstr ""
 
-#: functions.php:885
+#: functions.php:997
 msgid "Choose the piece that lets the next generation arrive as themselves—before anyone tells them to play small."
 msgstr ""
 
-#: functions.php:804
+#: functions.php:891
 msgid "Choose the piece that lets you show up fully without giving the room all of you."
 msgstr ""
 
@@ -394,7 +394,7 @@ msgstr ""
 msgid "Choose whether to allow analytics, or %1$sread how we handle your data%2$s."
 msgstr ""
 
-#: inc/global-shell.php:91
+#: inc/global-shell.php:100
 msgid "Choose your chapter."
 msgstr ""
 
@@ -410,7 +410,7 @@ msgstr ""
 msgid "Clear filters"
 msgstr ""
 
-#: inc/global-shell.php:138 template-parts/pages/contact.php:26
+#: inc/global-shell.php:147 template-parts/pages/contact.php:26
 msgid "Client Services"
 msgstr ""
 
@@ -426,7 +426,7 @@ msgstr ""
 msgid "Client services"
 msgstr ""
 
-#: inc/global-shell.php:114
+#: inc/global-shell.php:123
 msgid "Close bag"
 msgstr ""
 
@@ -466,7 +466,7 @@ msgstr ""
 msgid "Collection worlds"
 msgstr ""
 
-#: inc/global-shell.php:45 inc/global-shell.php:59 inc/presentation-registry.php:186 inc/presentation-registry.php:236 inc/starter-content.php:24 search.php:9
+#: inc/global-shell.php:54 inc/global-shell.php:68 inc/presentation-registry.php:186 inc/presentation-registry.php:236 inc/starter-content.php:24 search.php:9
 msgid "Collections"
 msgstr ""
 
@@ -478,7 +478,7 @@ msgstr ""
 msgid "Concrete becomes sanctuary. Silver edges pull shape from shadow. The room is quiet because it is protected, not because it has nothing to say."
 msgstr ""
 
-#: functions.php:825
+#: functions.php:920
 msgid "Concrete, chrome, black petals: a house built for quiet strength, not quietness."
 msgstr ""
 
@@ -486,7 +486,7 @@ msgstr ""
 msgid "Confidence does not arrive borrowed. The first walk belongs to the child wearing it — their pace, their color, their way of taking the room."
 msgstr ""
 
-#: inc/global-shell.php:130 inc/global-shell.php:51 inc/presentation-registry.php:198 inc/presentation-registry.php:241 inc/starter-content.php:27 template-parts/pages/service.php:59 template-parts/skyy-mascot.php:12
+#: inc/global-shell.php:139 inc/global-shell.php:60 inc/presentation-registry.php:198 inc/presentation-registry.php:241 inc/starter-content.php:27 template-parts/pages/service.php:59 template-parts/skyy-mascot.php:12
 msgid "Contact"
 msgstr ""
 
@@ -494,7 +494,7 @@ msgstr ""
 msgid "Contact Client Services for a shipping estimate before ordering. A pre-order label does not establish a shipping date, stock reservation, or delayed payment."
 msgstr ""
 
-#: functions.php:542 functions.php:546 template-parts/pages/contact.php:32
+#: functions.php:567 functions.php:584 template-parts/pages/contact.php:32
 msgid "Contact the house"
 msgstr ""
 
@@ -506,7 +506,7 @@ msgstr ""
 msgid "Cookie consent"
 msgstr ""
 
-#: inc/global-shell.php:139
+#: inc/global-shell.php:170
 msgid "Cookie settings"
 msgstr ""
 
@@ -526,15 +526,15 @@ msgstr ""
 msgid "Crimson Love Hurts lettering and a rose-and-heart star frame a cathedral aisle, with a cloaked figure facing a rose under glass."
 msgstr ""
 
-#: functions.php:836
+#: functions.php:936
 msgid "Crimson glass, black thorns, a back-turned Beast, and one rose under glass. This is the story before the ending."
 msgstr ""
 
-#: functions.php:763
+#: functions.php:838
 msgid "Cross into the story"
 msgstr ""
 
-#: functions.php:756
+#: functions.php:831
 msgid "Cross the water. Find the origin."
 msgstr ""
 
@@ -570,7 +570,7 @@ msgstr ""
 msgid "Dispatches, campaigns, and the faces behind SkyyRose."
 msgstr ""
 
-#: functions.php:879 template-immersive-kids-capsule.php:57
+#: functions.php:991 template-immersive-kids-capsule.php:57
 msgid "Dress the next chapter."
 msgstr ""
 
@@ -578,7 +578,7 @@ msgstr ""
 msgid "Each"
 msgstr ""
 
-#: inc/global-shell.php:72
+#: inc/global-shell.php:81
 msgid "Editorial navigation"
 msgstr ""
 
@@ -594,15 +594,15 @@ msgstr ""
 msgid "Enter %s"
 msgstr ""
 
-#: functions.php:579 inc/seo-indexing.php:197
+#: functions.php:643 inc/seo-indexing.php:197
 msgid "Enter SkyyRose: Oakland-rooted luxury streetwear, living collection worlds, limited pieces, and the stories behind the house."
 msgstr ""
 
-#: functions.php:795
+#: functions.php:882
 msgid "Enter after dark."
 msgstr ""
 
-#: functions.php:883 template-parts/home/kids-capsule-reveal.php:121
+#: functions.php:995 template-parts/home/kids-capsule-reveal.php:121
 msgid "Enter her world"
 msgstr ""
 
@@ -630,11 +630,11 @@ msgstr ""
 msgid "Enter the full scene"
 msgstr ""
 
-#: functions.php:876
+#: functions.php:988
 msgid "Enter the heir’s room."
 msgstr ""
 
-#: functions.php:802
+#: functions.php:889
 msgid "Enter the moon court"
 msgstr ""
 
@@ -654,11 +654,11 @@ msgstr ""
 msgid "Every collection opens another world."
 msgstr ""
 
-#: functions.php:1685 template-parts/commerce/town-line.php:30
+#: functions.php:1821 template-parts/commerce/town-line.php:30
 msgid "Every number carries the tour."
 msgstr ""
 
-#: functions.php:832
+#: functions.php:932
 msgid "Every wound protects a rose."
 msgstr ""
 
@@ -666,23 +666,23 @@ msgstr ""
 msgid "Exceptions and international exchanges"
 msgstr ""
 
-#: inc/global-shell.php:85
+#: inc/global-shell.php:94
 msgid "Experiences"
 msgstr ""
 
-#: inc/global-shell.php:137
+#: inc/global-shell.php:146
 msgid "Explore"
 msgstr ""
 
-#: functions.php:553 template-parts/immersive/world.php:204
+#: functions.php:603 template-parts/immersive/world.php:204
 msgid "Explore %s"
 msgstr ""
 
-#: inc/global-shell.php:137
+#: inc/global-shell.php:146
 msgid "Explore SkyyRose"
 msgstr ""
 
-#: functions.php:547
+#: functions.php:591
 msgid "Explore The Heir"
 msgstr ""
 
@@ -690,11 +690,11 @@ msgstr ""
 msgid "Explore the collection for the current edit."
 msgstr ""
 
-#: functions.php:880
+#: functions.php:992
 msgid "Explore the published Kids Capsule pieces below. Built for expression without a script, every piece makes room for play, confidence, and personality. Product pages provide the current price, availability, size, and care information."
 msgstr ""
 
-#: inc/global-shell.php:118
+#: inc/global-shell.php:127
 msgid "Explore the shop"
 msgstr ""
 
@@ -702,7 +702,7 @@ msgstr ""
 msgid "Explore world"
 msgstr ""
 
-#: inc/global-shell.php:127 inc/presentation-registry.php:250 template-parts/pages/contact.php:20 template-parts/pages/service.php:58
+#: inc/global-shell.php:136 inc/presentation-registry.php:250 template-parts/pages/contact.php:20 template-parts/pages/service.php:58
 msgid "FAQ"
 msgstr ""
 
@@ -738,7 +738,7 @@ msgstr ""
 msgid "Find your chapter"
 msgstr ""
 
-#: functions.php:906 template-immersive-kids-capsule.php:44
+#: functions.php:1024 template-immersive-kids-capsule.php:44
 msgid "First Runway"
 msgstr ""
 
@@ -750,19 +750,19 @@ msgstr ""
 msgid "Follow the crimson aisle toward the Beast, the glass, and the wound that still guards a rose."
 msgstr ""
 
-#: functions.php:757
+#: functions.php:832
 msgid "Follow the two monuments from Golden Gate light back to Oakland—where a private mark became a house code."
 msgstr ""
 
-#: functions.php:285
+#: functions.php:301
 msgid "Footer Client Services"
 msgstr ""
 
-#: functions.php:286
+#: functions.php:302
 msgid "Footer House Directory"
 msgstr ""
 
-#: functions.php:824
+#: functions.php:914
 msgid "Forbidden Garden"
 msgstr ""
 
@@ -770,7 +770,7 @@ msgstr ""
 msgid "Four worlds, worn."
 msgstr ""
 
-#: inc/global-shell.php:90 page-lookbook.php:26
+#: inc/global-shell.php:99 page-lookbook.php:26
 msgid "Four worlds. One house."
 msgstr ""
 
@@ -806,15 +806,15 @@ msgstr ""
 msgid "Gift code"
 msgstr ""
 
-#: functions.php:884
+#: functions.php:996
 msgid "Give imagination a place at the table."
 msgstr ""
 
-#: functions.php:784
+#: functions.php:862
 msgid "Gold light turns the bridge into a threshold: one side holds the signature, the other holds the rose."
 msgstr ""
 
-#: functions.php:784
+#: functions.php:861
 msgid "Golden Gate Salon"
 msgstr ""
 
@@ -822,7 +822,7 @@ msgstr ""
 msgid "Guardian product proof unavailable"
 msgstr ""
 
-#: functions.php:866
+#: functions.php:973
 msgid "He faces the chamber with his back to us. The rose—not a throne—holds the room."
 msgstr ""
 
@@ -890,7 +890,7 @@ msgstr ""
 msgid "In stock"
 msgstr ""
 
-#: inc/global-shell.php:100
+#: inc/global-shell.php:109
 msgid "Independent luxury fashion."
 msgstr ""
 
@@ -918,11 +918,11 @@ msgstr ""
 msgid "Jersey Series"
 msgstr ""
 
-#: functions.php:1684 template-parts/commerce/town-line.php:29
+#: functions.php:1820 template-parts/commerce/town-line.php:29
 msgid "Jersey Series / The Town Line"
 msgstr ""
 
-#: functions.php:1701
+#: functions.php:1837
 msgid "Jersey Series film chapters"
 msgstr ""
 
@@ -930,7 +930,7 @@ msgstr ""
 msgid "Jersey Series pieces are deliberately reserved for their own Town Line reveal."
 msgstr ""
 
-#: home.php:16 inc/global-shell.php:49 inc/global-shell.php:60 inc/presentation-registry.php:199 inc/presentation-registry.php:239 inc/starter-content.php:28 index.php:16 template-parts/home/editorial-journal.php:19
+#: home.php:16 inc/global-shell.php:58 inc/global-shell.php:69 inc/presentation-registry.php:199 inc/presentation-registry.php:239 inc/starter-content.php:28 index.php:16 template-parts/home/editorial-journal.php:19
 msgid "Journal"
 msgstr ""
 
@@ -946,11 +946,11 @@ msgstr ""
 msgid "Keep exploring"
 msgstr ""
 
-#: functions.php:843 template-immersive-love-hurts.php:51
+#: functions.php:943 template-immersive-love-hurts.php:51
 msgid "Keep what mattered."
 msgstr ""
 
-#: functions.php:803
+#: functions.php:890
 msgid "Keep your light protected."
 msgstr ""
 
@@ -958,11 +958,11 @@ msgstr ""
 msgid "Keep your pieces close."
 msgstr ""
 
-#: functions.php:871 inc/global-shell.php:138 inc/launch-readiness.php:257 inc/presentation-registry.php:190 template-immersive-kids-capsule.php:16 template-parts/commerce/search-dialog.php:39
+#: functions.php:983 inc/global-shell.php:156 inc/launch-readiness.php:257 inc/presentation-registry.php:190 template-immersive-kids-capsule.php:16 template-parts/commerce/search-dialog.php:39
 msgid "Kids Capsule"
 msgstr ""
 
-#: functions.php:878
+#: functions.php:990
 msgid "Kids Capsule / The Heir Edit"
 msgstr ""
 
@@ -974,7 +974,7 @@ msgstr ""
 msgid "Kids Capsule is not a smaller version of the house. It is the first room built around the next generation: confidence, imagination, and enough space to picture themselves at the center."
 msgstr ""
 
-#: functions.php:875
+#: functions.php:987
 msgid "Kids Capsule is not a smaller version of the house. It is the first room built for the next generation: confidence, imagination, and enough space to picture themselves at the center of the story."
 msgstr ""
 
@@ -994,7 +994,7 @@ msgstr ""
 msgid "Leave the cathedral for the collection where the published pieces, exact fit, and live availability are waiting."
 msgstr ""
 
-#: inc/global-shell.php:139
+#: inc/global-shell.php:162
 msgid "Legal"
 msgstr ""
 
@@ -1010,7 +1010,7 @@ msgstr ""
 msgid "Look 01"
 msgstr ""
 
-#: inc/global-shell.php:47 inc/global-shell.php:87 template-parts/home/editorial-journal.php:18
+#: inc/global-shell.php:56 inc/global-shell.php:96 template-parts/home/editorial-journal.php:18
 msgid "Lookbook"
 msgstr ""
 
@@ -1018,15 +1018,15 @@ msgstr ""
 msgid "Lookbook chapters"
 msgstr ""
 
-#: functions.php:830 inc/presentation-registry.php:189 template-immersive-love-hurts.php:16 template-parts/commerce/search-dialog.php:38
+#: functions.php:930 inc/presentation-registry.php:189 template-immersive-love-hurts.php:16 template-parts/commerce/search-dialog.php:38
 msgid "Love Hurts"
 msgstr ""
 
-#: functions.php:837
+#: functions.php:937
 msgid "Love Hurts / The Rose Remains"
 msgstr ""
 
-#: functions.php:1036
+#: functions.php:1160
 msgid "Love Hurts graffiti and cracked-heart monuments"
 msgstr ""
 
@@ -1034,11 +1034,11 @@ msgstr ""
 msgid "Love Hurts is not the fairytale ending. It is the distance between damage and devotion — the room where tenderness keeps its armor and what cracked still protects what mattered."
 msgstr ""
 
-#: functions.php:834
+#: functions.php:934
 msgid "Love Hurts is the part of the story told from the other side of the door: not a fairytale ending, but the distance between damage and devotion. What cracked still protects what mattered."
 msgstr ""
 
-#: functions.php:833
+#: functions.php:933
 msgid "Love Hurts stands in scarlet script opposite the cracked-heart star. Down the aisle, the Beast faces the rose he could not forget."
 msgstr ""
 
@@ -1050,7 +1050,7 @@ msgstr ""
 msgid "Made with care"
 msgstr ""
 
-#: functions.php:764
+#: functions.php:839
 msgid "Make the origin yours."
 msgstr ""
 
@@ -1070,7 +1070,7 @@ msgstr ""
 msgid "Meet Skyy on her throne in full color, then follow imagination from the playroom to the first runway."
 msgstr ""
 
-#: inc/global-shell.php:78
+#: inc/global-shell.php:87
 msgid "Menu"
 msgstr ""
 
@@ -1098,7 +1098,7 @@ msgstr ""
 msgid "Message received. The house will reply soon."
 msgstr ""
 
-#: functions.php:825 template-immersive-black-rose.php:37
+#: functions.php:919 template-immersive-black-rose.php:37
 msgid "Midnight House"
 msgstr ""
 
@@ -1114,7 +1114,7 @@ msgstr ""
 msgid "More from %s"
 msgstr ""
 
-#: inc/global-shell.php:138 template-parts/commerce/product-hero.php:49
+#: inc/global-shell.php:151 template-parts/commerce/product-hero.php:49
 msgid "More from the house"
 msgstr ""
 
@@ -1126,7 +1126,7 @@ msgstr ""
 msgid "Move from the castle into the collection to choose the published piece that holds softness and armor in the same hand."
 msgstr ""
 
-#: functions.php:796
+#: functions.php:883
 msgid "Move from the monument room into a moonlit Oakland court, where every black surface keeps its own light."
 msgstr ""
 
@@ -1150,7 +1150,7 @@ msgstr ""
 msgid "Next collection"
 msgstr ""
 
-#: functions.php:1363
+#: functions.php:1487
 msgid "Next pieces entering the world soon."
 msgstr ""
 
@@ -1162,7 +1162,7 @@ msgstr ""
 msgid "Next world"
 msgstr ""
 
-#: functions.php:906
+#: functions.php:1025
 msgid "No borrowed confidence. Just the first walk into a story that already has room for them."
 msgstr ""
 
@@ -1210,11 +1210,11 @@ msgstr ""
 msgid "Oakland is the origin. San Francisco, The Bay, and San Jose become chapters on The Town Line: SkyyRose’s fictional house journey."
 msgstr ""
 
-#: functions.php:1686
+#: functions.php:1822
 msgid "Oakland is the origin. San Francisco, The Bay, and San Jose become chapters on The Town Line: SkyyRose’s fictional house journey. Every price, size, and availability decision stays on the live product page."
 msgstr ""
 
-#: functions.php:761
+#: functions.php:836
 msgid "Oakland origin, carried without a label. The first mark is made for the person who reaches for it."
 msgstr ""
 
@@ -1226,7 +1226,7 @@ msgstr ""
 msgid "Oakland → Golden Gate → Oakland"
 msgstr ""
 
-#: inc/global-shell.php:100
+#: inc/global-shell.php:109
 msgid "Oakland, California"
 msgstr ""
 
@@ -1250,7 +1250,7 @@ msgstr ""
 msgid "Open full size guide"
 msgstr ""
 
-#: inc/global-shell.php:78
+#: inc/global-shell.php:87
 msgid "Open site menu"
 msgstr ""
 
@@ -1262,7 +1262,7 @@ msgstr ""
 msgid "Open the piece to check options and availability."
 msgstr ""
 
-#: functions.php:545
+#: functions.php:575
 msgid "Open the piece you’re considering to see its current size options and product details. If you need fit advice, contact the house with the product name or SKU."
 msgstr ""
 
@@ -1350,7 +1350,7 @@ msgstr ""
 msgid "Piece in this scene"
 msgstr ""
 
-#: functions.php:1696
+#: functions.php:1832
 msgid "Play film"
 msgstr ""
 
@@ -1362,7 +1362,7 @@ msgstr ""
 msgid "Post navigation"
 msgstr ""
 
-#: inc/global-shell.php:138 inc/global-shell.php:48 inc/presentation-registry.php:196 inc/presentation-registry.php:238 inc/starter-content.php:25
+#: inc/global-shell.php:157 inc/global-shell.php:57 inc/presentation-registry.php:196 inc/presentation-registry.php:238 inc/starter-content.php:25
 msgid "Pre-Order"
 msgstr ""
 
@@ -1386,11 +1386,11 @@ msgstr ""
 msgid "Press or collaboration"
 msgstr ""
 
-#: inc/global-shell.php:96
+#: inc/global-shell.php:105
 msgid "Preview"
 msgstr ""
 
-#: inc/global-shell.php:96
+#: inc/global-shell.php:105
 msgid "Preview %s"
 msgstr ""
 
@@ -1418,15 +1418,15 @@ msgstr ""
 msgid "Price:"
 msgstr ""
 
-#: functions.php:284
+#: functions.php:300
 msgid "Primary Menu"
 msgstr ""
 
-#: inc/global-shell.php:80
+#: inc/global-shell.php:89
 msgid "Primary navigation"
 msgstr ""
 
-#: inc/global-shell.php:139
+#: inc/global-shell.php:165
 msgid "Privacy"
 msgstr ""
 
@@ -1462,7 +1462,7 @@ msgstr ""
 msgid "Products are never fabricated by this importer. Import or synchronize the real WooCommerce catalog through its separate authorized workflow."
 msgstr ""
 
-#: functions.php:800
+#: functions.php:887
 msgid "Protection, polish, and enough room to define the fit yourself. The rose does not ask permission to take up space."
 msgstr ""
 
@@ -1574,7 +1574,7 @@ msgstr ""
 msgid "SKU:"
 msgstr ""
 
-#: inc/global-shell.php:87 page-wishlist.php:9
+#: inc/global-shell.php:96 page-wishlist.php:9
 msgid "Saved pieces"
 msgstr ""
 
@@ -1586,7 +1586,7 @@ msgstr ""
 msgid "Scroll World / Immersive Shopping"
 msgstr ""
 
-#: inc/global-shell.php:76 inc/global-shell.php:87 search.php:42 template-parts/commerce/search-dialog.php:23
+#: inc/global-shell.php:85 inc/global-shell.php:96 search.php:42 template-parts/commerce/search-dialog.php:23
 msgid "Search"
 msgstr ""
 
@@ -1594,7 +1594,7 @@ msgstr ""
 msgid "Search SkyyRose"
 msgstr ""
 
-#: functions.php:609
+#: functions.php:673
 msgid "Search SkyyRose products, collections, and journal stories."
 msgstr ""
 
@@ -1618,7 +1618,7 @@ msgstr ""
 msgid "Search the house."
 msgstr ""
 
-#: functions.php:608
+#: functions.php:672
 msgid "Search “%s” | SkyyRose"
 msgstr ""
 
@@ -1630,7 +1630,7 @@ msgstr ""
 msgid "Secure checkout"
 msgstr ""
 
-#: functions.php:717
+#: functions.php:792
 msgid "Security check failed."
 msgstr ""
 
@@ -1654,7 +1654,7 @@ msgstr ""
 msgid "Send to the house"
 msgstr ""
 
-#: inc/global-shell.php:128 inc/presentation-registry.php:202 inc/presentation-registry.php:247 template-parts/commerce/product-hero.php:126 template-parts/pages/contact.php:17
+#: inc/global-shell.php:137 inc/presentation-registry.php:202 inc/presentation-registry.php:247 template-parts/commerce/product-hero.php:126 template-parts/pages/contact.php:17
 msgid "Shipping + Returns"
 msgstr ""
 
@@ -1662,7 +1662,7 @@ msgstr ""
 msgid "Shipping + returns"
 msgstr ""
 
-#: functions.php:546
+#: functions.php:582
 msgid "Shipping and purchase details depend on your order. Please contact the house for help with delivery, returns or an existing order."
 msgstr ""
 
@@ -1670,23 +1670,23 @@ msgstr ""
 msgid "Shipping updates"
 msgstr ""
 
-#: inc/global-shell.php:46 inc/global-shell.php:58 inc/presentation-registry.php:218 inc/presentation-registry.php:237 woocommerce/single-product.php:39
+#: inc/global-shell.php:55 inc/global-shell.php:67 inc/presentation-registry.php:218 inc/presentation-registry.php:237 woocommerce/single-product.php:39
 msgid "Shop"
 msgstr ""
 
-#: functions.php:801
+#: functions.php:888
 msgid "Shop Black Rose"
 msgstr ""
 
-#: functions.php:882
+#: functions.php:994
 msgid "Shop Kids Capsule"
 msgstr ""
 
-#: functions.php:841
+#: functions.php:941
 msgid "Shop Love Hurts"
 msgstr ""
 
-#: functions.php:762
+#: functions.php:837
 msgid "Shop Signature"
 msgstr ""
 
@@ -1710,7 +1710,7 @@ msgstr ""
 msgid "Shop the full Kids Capsule collection"
 msgstr ""
 
-#: functions.php:541 page-lookbook.php:27 template-parts/home/editorial-hero.php:26
+#: functions.php:563 page-lookbook.php:27 template-parts/home/editorial-hero.php:26
 msgid "Shop the house"
 msgstr ""
 
@@ -1726,7 +1726,7 @@ msgstr ""
 msgid "Sign your place in the route."
 msgstr ""
 
-#: functions.php:751 inc/presentation-registry.php:187 template-immersive-signature.php:16 template-parts/commerce/search-dialog.php:36
+#: functions.php:826 inc/presentation-registry.php:187 template-immersive-signature.php:16 template-parts/commerce/search-dialog.php:36
 msgid "Signature"
 msgstr ""
 
@@ -1738,7 +1738,7 @@ msgstr ""
 msgid "Signature is the first promise of the house. The route begins in Oakland, crosses the water, and comes home with the confidence of a name built to mean something."
 msgstr ""
 
-#: functions.php:755
+#: functions.php:830
 msgid "Signature is the first promise of the house: build something worthy of a daughter, rooted in The Town, and finished with enough intention to travel far beyond it."
 msgstr ""
 
@@ -1746,7 +1746,7 @@ msgstr ""
 msgid "Signature monuments facing the Golden Gate Bridge in gold light"
 msgstr ""
 
-#: functions.php:1034
+#: functions.php:1158
 msgid "Signature typography and SR monogram monuments"
 msgstr ""
 
@@ -1758,7 +1758,7 @@ msgstr ""
 msgid "Silver Black Rose lettering and a star-and-rose monument face the Bay Bridge beneath a full moon."
 msgstr ""
 
-#: inc/global-shell.php:129 inc/presentation-registry.php:204 inc/presentation-registry.php:249 template-parts/pages/contact.php:19
+#: inc/global-shell.php:138 inc/presentation-registry.php:204 inc/presentation-registry.php:249 template-parts/pages/contact.php:19
 msgid "Size Guide"
 msgstr ""
 
@@ -1802,7 +1802,7 @@ msgstr ""
 msgid "Skyy mascot wearing the red, black, and white Kids Capsule colorblock hoodie and jogger set in Oakland"
 msgstr ""
 
-#: functions.php:1037
+#: functions.php:1161
 msgid "Skyy, the heir, on her throne"
 msgstr ""
 
@@ -1814,7 +1814,7 @@ msgstr ""
 msgid "Skyy, your house concierge"
 msgstr ""
 
-#: functions.php:578 inc/global-shell.php:135 template-parts/commerce/product-card.php:41 template-parts/commerce/product-hero.php:17 template-parts/home/editorial-hero.php:24 woocommerce/single-product.php:21
+#: functions.php:642 inc/global-shell.php:144 template-parts/commerce/product-card.php:41 template-parts/commerce/product-hero.php:17 template-parts/home/editorial-hero.php:24 woocommerce/single-product.php:21
 msgid "SkyyRose"
 msgstr ""
 
@@ -1822,7 +1822,7 @@ msgstr ""
 msgid "SkyyRose / Fit + size guide"
 msgstr ""
 
-#: inc/global-shell.php:82
+#: inc/global-shell.php:91
 msgid "SkyyRose / House directory"
 msgstr ""
 
@@ -1830,7 +1830,7 @@ msgstr ""
 msgid "SkyyRose / Oakland, California"
 msgstr ""
 
-#: inc/global-shell.php:114
+#: inc/global-shell.php:123
 msgid "SkyyRose / Your selection"
 msgstr ""
 
@@ -1850,23 +1850,23 @@ msgstr ""
 msgid "SkyyRose V2 Setup"
 msgstr ""
 
-#: functions.php:1218
+#: functions.php:1342
 msgid "SkyyRose V2 catalog drift detected."
 msgstr ""
 
-#: functions.php:584
+#: functions.php:648
 msgid "SkyyRose collection piece."
 msgstr ""
 
-#: inc/global-shell.php:71
+#: inc/global-shell.php:80
 msgid "SkyyRose home"
 msgstr ""
 
-#: functions.php:572
+#: functions.php:636
 msgid "SkyyRose is independent luxury streetwear from Oakland, California."
 msgstr ""
 
-#: functions.php:547
+#: functions.php:589
 msgid "SkyyRose is named after Skyy Rose, the founder’s daughter. The Heir carries that story forward: family, inheritance and a future built with care."
 msgstr ""
 
@@ -1886,7 +1886,7 @@ msgstr ""
 msgid "Skyy’s guide could not load. Contact the house."
 msgstr ""
 
-#: functions.php:840
+#: functions.php:940
 msgid "Softness and armor live in the same piece. Wear the story your own way; the rose belongs to no one type of body."
 msgstr ""
 
@@ -1926,7 +1926,7 @@ msgstr ""
 msgid "Styling appointment"
 msgstr ""
 
-#: functions.php:838
+#: functions.php:938
 msgid "Take the mark with you."
 msgstr ""
 
@@ -1938,7 +1938,7 @@ msgstr ""
 msgid "Template synchronized: %1$s → %2$s"
 msgstr ""
 
-#: inc/global-shell.php:139
+#: inc/global-shell.php:166
 msgid "Terms"
 msgstr ""
 
@@ -1946,11 +1946,11 @@ msgstr ""
 msgid "Terms of Service"
 msgstr ""
 
-#: functions.php:753
+#: functions.php:828
 msgid "The Bay is where the signature begins."
 msgstr ""
 
-#: functions.php:831
+#: functions.php:931
 msgid "The Beast Speaks"
 msgstr ""
 
@@ -1958,11 +1958,11 @@ msgstr ""
 msgid "The Beast facing the chamber with an enchanted rose holding the room"
 msgstr ""
 
-#: functions.php:866 template-immersive-love-hurts.php:37
+#: functions.php:972 template-immersive-love-hurts.php:37
 msgid "The Beast’s Chamber"
 msgstr ""
 
-#: functions.php:793
+#: functions.php:880
 msgid "The Black Rose name holds one side of the room. Its star-and-rose monument holds the other. Between them: the Bay after dark."
 msgstr ""
 
@@ -1970,7 +1970,7 @@ msgstr ""
 msgid "The City Signs Back"
 msgstr ""
 
-#: functions.php:786 template-immersive-signature.php:46
+#: functions.php:871 template-immersive-signature.php:46
 msgid "The First Atelier"
 msgstr ""
 
@@ -1982,7 +1982,7 @@ msgstr ""
 msgid "The Guardians"
 msgstr ""
 
-#: functions.php:872 template-parts/home/kids-capsule-reveal.php:118
+#: functions.php:984 template-parts/home/kids-capsule-reveal.php:118
 msgid "The Heir"
 msgstr ""
 
@@ -1994,7 +1994,7 @@ msgstr ""
 msgid "The Heir’s Room"
 msgstr ""
 
-#: functions.php:907
+#: functions.php:1029
 msgid "The Heir’s Salon"
 msgstr ""
 
@@ -2006,7 +2006,7 @@ msgstr ""
 msgid "The House Edit"
 msgstr ""
 
-#: functions.php:752
+#: functions.php:827
 msgid "The House, Signed"
 msgstr ""
 
@@ -2022,7 +2022,7 @@ msgstr ""
 msgid "The Oakland atelier where the Signature story returns home"
 msgstr ""
 
-#: functions.php:867 template-immersive-love-hurts.php:44
+#: functions.php:977 template-immersive-love-hurts.php:44
 msgid "The Protected Wound"
 msgstr ""
 
@@ -2030,19 +2030,19 @@ msgstr ""
 msgid "The Rose Remains"
 msgstr ""
 
-#: functions.php:758
+#: functions.php:833
 msgid "The Signature Edit"
 msgstr ""
 
-#: functions.php:826 template-immersive-black-rose.php:46
+#: functions.php:924 template-immersive-black-rose.php:46
 msgid "The Silver Moon Court"
 msgstr ""
 
-#: inc/global-shell.php:141
+#: inc/global-shell.php:172
 msgid "The Skyy Rose Collection LLC"
 msgstr ""
 
-#: functions.php:874
+#: functions.php:986
 msgid "The Skyy mascot sits front and center, not waiting to inherit the house—already imagining what she will build inside it."
 msgstr ""
 
@@ -2058,7 +2058,7 @@ msgstr ""
 msgid "The Throne Is Already Hers"
 msgstr ""
 
-#: functions.php:1691
+#: functions.php:1827
 msgid "The Town Line Jersey Series previsualization"
 msgstr ""
 
@@ -2094,7 +2094,7 @@ msgstr ""
 msgid "The first bloom appears where the world said it did not belong. The garden does not soften it. The darkness lets every edge become visible."
 msgstr ""
 
-#: functions.php:824
+#: functions.php:915
 msgid "The flower appears where it was never expected to. That is the point."
 msgstr ""
 
@@ -2110,7 +2110,7 @@ msgstr ""
 msgid "The house changes hands. Follow the procession from invitation, to guardians, to the heir already seated at the center of her story."
 msgstr ""
 
-#: functions.php:907
+#: functions.php:1030
 msgid "The house does not hand down a script. It hands down the room to write one."
 msgstr ""
 
@@ -2130,7 +2130,7 @@ msgstr ""
 msgid "The journal"
 msgstr ""
 
-#: functions.php:760
+#: functions.php:835
 msgid "The monument sets the mood. The clothes are gender-neutral by design: choose the shape, size, and story that feel like yours. Each published piece below holds the live product, price, and availability decision."
 msgstr ""
 
@@ -2150,7 +2150,7 @@ msgstr ""
 msgid "The red and purple Kids Capsule guardians"
 msgstr ""
 
-#: functions.php:865
+#: functions.php:968
 msgid "The room makes space for rage, reverence, and a red rose no one gets to touch."
 msgstr ""
 
@@ -2170,19 +2170,19 @@ msgstr ""
 msgid "The story continues in the collection"
 msgstr ""
 
-#: functions.php:839
+#: functions.php:939
 msgid "The story is a frame, never a substitute for the garment. Love Hurts is gender-neutral by design—softness, armor, and fit are yours to define. Current details, sizes, prices, and availability are shown on every published piece."
 msgstr ""
 
-#: functions.php:877
+#: functions.php:989
 msgid "The throne comes first. Then the playroom, the runway, and every big idea still waiting for its name."
 msgstr ""
 
-#: functions.php:873 template-parts/home/kids-capsule-reveal.php:119
+#: functions.php:985 template-parts/home/kids-capsule-reveal.php:119
 msgid "The throne is already hers."
 msgstr ""
 
-#: functions.php:785
+#: functions.php:867
 msgid "The water is not a backdrop. It is the distance the house was built to cross."
 msgstr ""
 
@@ -2194,7 +2194,7 @@ msgstr ""
 msgid "The world behind the wardrobe"
 msgstr ""
 
-#: functions.php:799
+#: functions.php:886
 msgid "The world is the armor. These pieces are designed gender-neutral, with room for each wearer to make the silhouette their own. WooCommerce remains the authority for each current piece, its price, size, and availability."
 msgstr ""
 
@@ -2230,7 +2230,7 @@ msgstr ""
 msgid "Try “Black Rose”"
 msgstr ""
 
-#: functions.php:1697
+#: functions.php:1833
 msgid "Turn sound on"
 msgstr ""
 
@@ -2254,7 +2254,7 @@ msgstr ""
 msgid "Unavailable"
 msgstr ""
 
-#: functions.php:826
+#: functions.php:925
 msgid "Under a hard moon, beauty is neither hidden nor explained. It simply holds the court."
 msgstr ""
 
@@ -2278,15 +2278,15 @@ msgstr ""
 msgid "V2 House Directory"
 msgstr ""
 
-#: functions.php:261 functions.php:263 template-parts/commerce/product-card.php:92
+#: functions.php:269 functions.php:271 template-parts/commerce/product-card.php:92
 msgid "View %s"
 msgstr ""
 
-#: functions.php:255
+#: functions.php:263
 msgid "View %s — currently unavailable"
 msgstr ""
 
-#: inc/global-shell.php:148
+#: inc/global-shell.php:179
 msgid "View Bag"
 msgstr ""
 
@@ -2306,15 +2306,15 @@ msgstr ""
 msgid "Viewing:"
 msgstr ""
 
-#: functions.php:1707
+#: functions.php:1843
 msgid "Visual transcript: a fictional SkyyRose Town Line train moves through Oakland’s Black, White, and two Last Oakland jerseys; San Francisco’s football, Giants, and basketball looks; then San Jose hockey. This previsualization is not product-media approval."
 msgstr ""
 
-#: functions.php:842
+#: functions.php:942
 msgid "Walk the aisle"
 msgstr ""
 
-#: functions.php:835
+#: functions.php:935
 msgid "Walk the aisle without looking away."
 msgstr ""
 
@@ -2334,7 +2334,7 @@ msgstr ""
 msgid "We could not send that message. Review every field or email the house directly."
 msgstr ""
 
-#: functions.php:798 template-immersive-black-rose.php:53
+#: functions.php:885 template-immersive-black-rose.php:53
 msgid "Wear the protection beautifully."
 msgstr ""
 
@@ -2342,7 +2342,7 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: functions.php:539
+#: functions.php:560
 msgid "Welcome to SkyyRose. I’m Skyy, your digital house guide. This house is a father’s promise to his daughter, rooted in Oakland. I can help you explore a collection or find a piece by name or SKU."
 msgstr ""
 
@@ -2390,7 +2390,7 @@ msgstr ""
 msgid "Your bag"
 msgstr ""
 
-#: inc/global-shell.php:115
+#: inc/global-shell.php:124
 msgid "Your bag."
 msgstr ""
 
@@ -2442,14 +2442,14 @@ msgstr ""
 msgid "Your pieces are almost home."
 msgstr ""
 
-#: functions.php:1216
+#: functions.php:1340
 msgid "products whose WooCommerce collection category disagrees with the V2 registry: %s"
 msgstr ""
 
-#: functions.php:1210
+#: functions.php:1334
 msgid "published WooCommerce SKUs missing from the V2 presentation registry: %s"
 msgstr ""
 
-#: functions.php:1213
+#: functions.php:1337
 msgid "registry SKUs not currently published in WooCommerce: %s"
 msgstr ""
