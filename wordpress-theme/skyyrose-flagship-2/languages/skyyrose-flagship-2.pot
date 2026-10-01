@@ -12,10 +12,6 @@ msgstr ""
 msgid "%1$d. View %2$s"
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:76
-msgid "%1$d. View pre-order: %2$s"
-msgstr ""
-
 #: woocommerce/archive-product.php:56
 msgid "%d active"
 msgstr ""
@@ -598,7 +594,7 @@ msgstr ""
 msgid "Editorial navigation"
 msgstr ""
 
-#: functions.php:1873
+#: functions.php:1874
 msgid "Eight perspectives on the Bay. Discover the Jersey Series, then open a piece to explore its details and available sizes."
 msgstr ""
 
@@ -670,7 +666,7 @@ msgstr ""
 msgid "Every collection opens another world."
 msgstr ""
 
-#: functions.php:1872 template-parts/commerce/town-line.php:30
+#: functions.php:1873 template-parts/commerce/town-line.php:30
 msgid "Every number carries the tour."
 msgstr ""
 
@@ -958,7 +954,7 @@ msgstr ""
 msgid "Jersey Series / Product fronts"
 msgstr ""
 
-#: functions.php:1871 template-parts/commerce/town-line.php:29
+#: functions.php:1872 template-parts/commerce/town-line.php:29
 msgid "Jersey Series / The Town Line"
 msgstr ""
 
@@ -1198,7 +1194,7 @@ msgstr ""
 msgid "Next jersey"
 msgstr ""
 
-#: functions.php:1538
+#: functions.php:1539
 msgid "Next pieces entering the world soon."
 msgstr ""
 
@@ -1422,12 +1418,8 @@ msgstr ""
 msgid "Pre-order edition"
 msgstr ""
 
-#: functions.php:1397
+#: functions.php:1398
 msgid "Pre-order option. Full payment at checkout."
-msgstr ""
-
-#: template-parts/commerce/hero-composed-scene.php:77
-msgid "Pre-order: %s"
 msgstr ""
 
 #: template-parts/pages/contact.php:51
@@ -1970,7 +1962,7 @@ msgstr ""
 msgid "Source archive"
 msgstr ""
 
-#: functions.php:1397
+#: functions.php:1398
 msgid "Standard order option."
 msgstr ""
 

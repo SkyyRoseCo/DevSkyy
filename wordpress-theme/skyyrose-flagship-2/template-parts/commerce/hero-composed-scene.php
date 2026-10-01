@@ -73,8 +73,8 @@ if ( $backdrop_uri ) :
 					$point_product = $products['slots'][ $point_index ]['product'] ?? false; if ( ! $point_product ) {
 						continue; }
 					?>
-					<a class="sr2-scene-hotspot" data-hotspot-sku="<?php echo esc_attr( $point['sku'] ); ?>" href="<?php echo esc_url( $point_product->get_permalink() ); ?>" style="--hotspot-x: <?php echo esc_attr( (string) ( 100 * (float) $point['x'] ) ); ?>%; --hotspot-y: <?php echo esc_attr( (string) ( 100 * (float) $point['y'] ) ); ?>%;" aria-label="<?php echo esc_attr( sprintf( $is_preorder_scene ? __( '%1$d. View pre-order: %2$s', 'skyyrose-flagship-2' ) : __( '%1$d. View %2$s', 'skyyrose-flagship-2' ), $point_index + 1, $point_product->get_name() ) ); ?>">
-						<span class="sr2-scene-hotspot__number" aria-hidden="true"><?php echo esc_html( $point_index + 1 ); ?></span><span class="sr2-scene-hotspot__label" aria-hidden="true"><?php echo esc_html( $is_preorder_scene ? sprintf( __( 'Pre-order: %s', 'skyyrose-flagship-2' ), $point_product->get_name() ) : $point_product->get_name() ); ?></span>
+					<a class="sr2-scene-hotspot" data-hotspot-sku="<?php echo esc_attr( $point['sku'] ); ?>" href="<?php echo esc_url( $point_product->get_permalink() ); ?>" style="--hotspot-x: <?php echo esc_attr( (string) ( 100 * (float) $point['x'] ) ); ?>%; --hotspot-y: <?php echo esc_attr( (string) ( 100 * (float) $point['y'] ) ); ?>%;" aria-label="<?php echo esc_attr( sprintf( __( '%1$d. View %2$s', 'skyyrose-flagship-2' ), $point_index + 1, $point_product->get_name() ) ); ?>">
+						<span class="sr2-scene-hotspot__number" aria-hidden="true"><?php echo esc_html( $point_index + 1 ); ?></span><span class="sr2-scene-hotspot__label" aria-hidden="true"><?php echo esc_html( $point_product->get_name() ); ?></span>
 					</a>
 				<?php endforeach; ?>
 			</nav>
