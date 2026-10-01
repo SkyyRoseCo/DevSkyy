@@ -51,9 +51,10 @@ dependencies = [
   "python-multipart>=0.0.30",
 
   # Database
-  "sqlalchemy>=2.0",
+  "sqlalchemy[asyncio]>=2.0",
   "alembic>=1.13",
   "asyncpg>=0.29",
+  "psycopg[binary]>=3.3.4,<4",
   "aiosqlite>=0.19",
 
   # Security
