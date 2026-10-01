@@ -19,6 +19,7 @@ class WC_Product {
 	public function is_in_stock() { return $this->in_stock; }
 	public function get_short_description() { return '<p>Current Woo description.</p>'; }
 	public function get_type() { return $this->type; }
+	public function is_type( $type ) { return $type === $this->type; }
 	public function is_purchasable() { return true; }
 }
 function __( $text ) { return $text; }
@@ -34,7 +35,7 @@ function wp_trim_words( $value ) { return $value; }
 function skyyrose2_collections() { return array( 'signature' => array( 'name' => 'Signature', 'portal_statue' => $GLOBALS['test_frame'] ?? array() ) ); }
 function skyyrose2_sot_asset_uri( $path ) { return 'https://example.test/sot/' . $path; }
 function absint( $value ) { return abs( (int) $value ); }
-function skyyrose2_is_preorder_product( $product ) { return $product->preorder; }
+function skyyrose2_is_transaction_preorder_product( $product ) { return $product->preorder; }
 function skyyrose2_product_presentation() { return array( 'collection' => 'signature', 'presentation' => 'signature' ); }
 function skyyrose2_approved_card_front() { return $GLOBALS['test_front']; }
 function skyyrose2_product_commerce_media() { $GLOBALS['resolver_calls']++; return $GLOBALS['test_media']; }
@@ -154,6 +155,10 @@ check_card( '' === render_card( array( 'product' => $piece ), $previous ), 'Invi
 echo "PASS canonical card responsive authority, native commerce, lazy defaults, priority boundaries, escaping and exception restoration\n";
 
 $piece->visible = true;
+$piece->preorder = true;
+$piece->type = 'variable';
+$html = render_card( array( 'product' => $piece ), $previous );
+check_card( str_contains( $html, 'Review order options' ) && ! str_contains( $html, 'Pre-order edition' ), 'Variable parent label avoids claiming every selected option is preorder' );
 $piece->type = 'simple';
 $piece->preorder = true;
 $piece->sale = true;
