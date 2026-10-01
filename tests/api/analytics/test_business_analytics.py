@@ -378,6 +378,9 @@ class TestProductPerformanceEndpoint:
         assert response.status == "success"
         assert response.total_products == 1
         assert response.products[0].sku == "SKU-001"
+        assert response.products[0].views is None
+        assert response.products[0].add_to_cart is None
+        assert response.products[0].conversion_rate is None
 
 
 class TestCollectionMetricsEndpoint:
@@ -424,21 +427,14 @@ class TestConversionFunnelEndpoint:
     """Tests for GET /analytics/business/funnel endpoint."""
 
     @pytest.mark.asyncio
-    async def test_funnel_success(
+    async def test_unconfigured_funnel_does_not_invent_traffic_from_orders(
         self,
         mock_user: MagicMock,
         mock_db_session: AsyncMock,
+        monkeypatch,
     ) -> None:
-        """Test successful funnel retrieval."""
-        # Mock completed orders count
-        count_result = MagicMock()
-        count_result.scalar.return_value = 100
-
-        # Mock order value sum
-        value_result = MagicMock()
-        value_result.scalar.return_value = 15000.0
-
-        mock_db_session.execute.side_effect = [count_result, value_result]
+        """Missing analytics must stay unknown regardless of operational orders."""
+        monkeypatch.delenv("SKYYROSE_ANALYTICS_SECRET", raising=False)
 
         from api.v1.analytics.business import get_conversion_funnel
 
@@ -449,12 +445,15 @@ class TestConversionFunnelEndpoint:
             db=mock_db_session,
         )
 
-        assert response.status == "success"
+        assert response.status == "unavailable"
         assert len(response.stages) == 5
         assert response.stages[0].stage == "traffic"
         assert response.stages[-1].stage == "purchase_complete"
-        assert response.stages[-1].count == 100
-        assert response.stages[-1].value == 15000.0
+        assert all(stage.count is None for stage in response.stages)
+        assert all(stage.conversion_rate is None for stage in response.stages)
+        assert response.stages[-1].value is None
+        assert response.overall_conversion_rate is None
+        mock_db_session.execute.assert_not_awaited()
 
 
 # =============================================================================

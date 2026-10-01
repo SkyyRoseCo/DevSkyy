@@ -439,8 +439,10 @@ app.include_router(competitors_router, prefix="/api/v1")
 app.include_router(descriptions_router, prefix="/api/v1")
 
 from api.v1.analytics.dashboard import router as analytics_dashboard_router
+from api.v1.analytics.ingest import router as storefront_analytics_router
 
 app.include_router(analytics_dashboard_router, prefix="/api/v1")
+app.include_router(storefront_analytics_router, prefix="/api/v1")
 
 from api.v1.pipeline import router as pipeline_router
 

@@ -67,22 +67,34 @@ class TestProductionFailLoud:
         assert db._engine is not None
 
 
-class TestAsyncpgUrlNormalization:
-    """Neon-style URLs carry psycopg2-only query params (sslmode,
-    channel_binding) that asyncpg.connect() rejects — _normalize_async_url
-    must translate sslmode to asyncpg's ssl and drop channel_binding."""
+class TestAsyncDatabaseUrlNormalization:
+    """Keep channel binding on psycopg and normalize sslmode for asyncpg."""
 
-    def test_neon_url_sslmode_translated_and_channel_binding_dropped(self):
+    def test_channel_binding_url_uses_psycopg_and_preserves_security_options(self):
         from database.db import _normalize_async_url
 
         url = _normalize_async_url(
             "postgresql://u:p@ep-x-123.us-west-2.aws.neon.tech/neondb"
             "?sslmode=require&channel_binding=require"
         )
-        assert url.startswith("postgresql+asyncpg://")
-        assert "sslmode=" not in url
-        assert "channel_binding=" not in url
-        assert "ssl=require" in url
+        assert url.startswith("postgresql+psycopg://")
+        assert "sslmode=require" in url
+        assert "channel_binding=require" in url
+
+        routed = _normalize_async_url(
+            "postgresql+asyncpg://u:p@h/db?ssl=require&channel_binding=require"
+        )
+        assert routed.startswith("postgresql+psycopg://")
+        assert "sslmode=require" in routed and "channel_binding=require" in routed
+        assert "?ssl=" not in routed and "&ssl=" not in routed
+        for options in (
+            "ssl=require&sslmode=disable&channel_binding=require",
+            "ssl=true&channel_binding=require",
+            "command_timeout=5&channel_binding=require",
+            "sslmode=require&channel_binding=require&channel_binding=disable",
+        ):
+            with pytest.raises(ValueError):
+                _normalize_async_url("postgresql+asyncpg://u:p@h/db?" + options)
 
     def test_plain_postgres_url_untouched_params_absent(self):
         from database.db import _normalize_async_url

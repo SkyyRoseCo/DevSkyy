@@ -63,42 +63,106 @@ class DatabaseConfig(BaseModel):
     echo: bool = os.getenv("DB_ECHO", "false").lower() == "true"
 
 
+# Explicitly accepted libpq connection options when routing an async URL to
+# psycopg. Unknown/driver-only options must be resolved by the caller, never
+# silently discarded during the driver switch.
+_LIBPQ_URL_OPTIONS = frozenset(
+    [
+        "host",
+        "hostaddr",
+        "port",
+        "dbname",
+        "user",
+        "password",
+        "passfile",
+        "service",
+        "servicefile",
+        "connect_timeout",
+        "client_encoding",
+        "options",
+        "application_name",
+        "fallback_application_name",
+        "keepalives",
+        "keepalives_idle",
+        "keepalives_interval",
+        "keepalives_count",
+        "tcp_user_timeout",
+        "sslmode",
+        "sslcert",
+        "sslkey",
+        "sslpassword",
+        "sslrootcert",
+        "sslcrl",
+        "sslcrldir",
+        "sslsni",
+        "sslcompression",
+        "ssl_min_protocol_version",
+        "ssl_max_protocol_version",
+        "sslnegotiation",
+        "requirepeer",
+        "require_auth",
+        "channel_binding",
+        "gssencmode",
+        "krbsrvname",
+        "gsslib",
+        "gssdelegation",
+        "replication",
+        "target_session_attrs",
+        "load_balance_hosts",
+    ]
+)
+_SSL_MODES = frozenset({"disable", "allow", "prefer", "require", "verify-ca", "verify-full"})
+
+
 def _normalize_async_url(url: str) -> str:
-    """Map a bare sync Postgres URL onto the async driver this engine needs.
+    """Select an async driver while preserving explicit connection security.
 
-    create_async_engine requires an async driver; a plain ``postgresql://`` (what
-    most hosts/secret managers hand out) resolves to psycopg2, which isn't
-    installed. Rewrite it to ``postgresql+asyncpg://`` so any well-formed Postgres
-    URL works without callers having to know the driver. Already-qualified URLs
-    (``postgresql+asyncpg://``, ``sqlite+aiosqlite://``) pass through unchanged.
-
-    Query params are normalized for asyncpg: managed-Postgres hosts (Neon,
-    Supabase, RDS) hand out URLs with libpq/psycopg2-only params that
-    ``asyncpg.connect()`` rejects — ``sslmode`` becomes asyncpg's ``ssl`` and
-    ``channel_binding`` (no asyncpg equivalent) is dropped.
+    Channel binding selects psycopg. Translate the asyncpg ``ssl`` alias to
+    libpq ``sslmode`` on that route, refusing ambiguous TLS values, repeated
+    query options, or unsupported connection options before opening a socket.
+    Other Postgres URLs use asyncpg and translate ``sslmode`` to ``ssl``.
+    SQLite and unrelated explicitly qualified drivers are unchanged.
     """
     if not url:
         return url
-    for prefix in ("postgresql://", "postgres://"):
-        if url.lower().startswith(prefix):
-            url = "postgresql+asyncpg://" + url[len(prefix) :]
-            break
-    if not url.lower().startswith("postgresql+asyncpg://"):
+    parsed = make_url(url)
+    if parsed.drivername not in {
+        "postgres",
+        "postgresql",
+        "postgresql+asyncpg",
+        "postgresql+psycopg",
+    }:
         return url
 
-    base, _, query = url.partition("?")
-    if not query:
-        return url
-    kept: list[str] = []
-    for pair in query.split("&"):
-        key = pair.split("=", 1)[0].lower()
-        if key == "channel_binding":
-            continue
-        if key == "sslmode":
-            kept.append("ssl" + pair[len("sslmode") :])
-            continue
-        kept.append(pair)
-    return base + ("?" + "&".join(kept) if kept else "")
+    query = dict(parsed.query)
+    if any(not isinstance(value, str) for value in query.values()):
+        raise ValueError("Repeated PostgreSQL URL query options are not supported")
+    use_psycopg = parsed.drivername == "postgresql+psycopg" or "channel_binding" in query
+    tls_option = "sslmode" if use_psycopg else "ssl"
+    tls_alias = "ssl" if use_psycopg else "sslmode"
+    if tls_alias in query:
+        if query[tls_alias] not in _SSL_MODES:
+            raise ValueError("PostgreSQL TLS alias must specify a supported SSL mode")
+        if tls_option in query and query[tls_option] != query[tls_alias]:
+            raise ValueError("Conflicting PostgreSQL TLS options")
+        query[tls_option] = query.pop(tls_alias)
+    if use_psycopg:
+        if set(query) - _LIBPQ_URL_OPTIONS:
+            raise ValueError("Unsupported PostgreSQL URL query option for psycopg")
+        if "sslmode" in query and query["sslmode"] not in _SSL_MODES:
+            raise ValueError("Unsupported PostgreSQL SSL mode")
+        if "channel_binding" in query:
+            if query["channel_binding"] not in {"disable", "prefer", "require"}:
+                raise ValueError("Unsupported PostgreSQL channel binding mode")
+            if query["channel_binding"] == "require" and query.get("sslmode") in {
+                "disable",
+                "allow",
+            }:
+                raise ValueError("Required channel binding is incompatible with this SSL mode")
+    driver = "psycopg" if use_psycopg else "asyncpg"
+    return parsed.set(drivername=f"postgresql+{driver}", query=query).render_as_string(
+        hide_password=False
+    )
 
 
 # =============================================================================
@@ -368,6 +432,11 @@ class DatabaseManager:
         if is_memory:
             engine_kwargs["connect_args"] = {"check_same_thread": False}
 
+        if is_sqlite:
+            # PostgreSQL analytics explicitly owns public; local SQLite has no
+            # public schema. Translate at execution for DDL and DML alike.
+            engine_kwargs["execution_options"] = {"schema_translate_map": {"public": None}}
+
         if not is_sqlite:
             engine_kwargs.update(
                 {
@@ -394,7 +463,14 @@ class DatabaseManager:
         async with self._engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
 
-        logger.info(f"Database initialized: {db_url.split('@')[-1] if '@' in db_url else db_url}")
+        # Never log URL userinfo or query parameters: both can hold credentials.
+        logger.info(
+            "Database initialized: driver=%s host=%s port=%s database=%s",
+            parsed_url.drivername,
+            parsed_url.host,
+            parsed_url.port,
+            parsed_url.database,
+        )
 
     async def close(self):
         """Close database connection"""
