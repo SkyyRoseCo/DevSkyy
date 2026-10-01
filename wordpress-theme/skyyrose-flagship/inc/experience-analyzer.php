@@ -197,25 +197,20 @@ function skyyrose_see_get_summary( int $days = 30 ): array {
 		ARRAY_A
 	);
 
-	// Unique visitors (approximate, by hash).
-	// phpcs:ignore WordPress.DB.DirectDatabaseQuery
-	$unique_visitors = (int) $wpdb->get_var(
-		$wpdb->prepare(
-			"SELECT COUNT(DISTINCT visitor_hash)
-			 FROM {$table}
-			 WHERE event_date >= %s AND visitor_hash != ''",
-			$since
-		)
-	);
+	// Consented session identity lives in the durable backend. This legacy
+	// engagement projection cannot measure distinct people, even with old hashes.
+	$unique_visitors = null;
 
 	return array(
-		'period'          => $days,
-		'total_events'    => $total,
-		'unique_visitors' => $unique_visitors,
-		'by_type'         => $by_type ?: array(),
-		'by_collection'   => $by_collection ?: array(),
-		'by_page'         => $by_page ?: array(),
-		'daily_trend'     => $daily ?: array(),
+		'period'                   => $days,
+		'total_events'             => $total,
+		'unique_visitors'          => $unique_visitors,
+		'unique_visitors_status'   => 'unavailable',
+		'unique_visitors_evidence' => 'Legacy engagement projection does not measure unique visitors.',
+		'by_type'                  => $by_type ?: array(),
+		'by_collection'            => $by_collection ?: array(),
+		'by_page'                  => $by_page ?: array(),
+		'daily_trend'              => $daily ?: array(),
 	);
 }
 

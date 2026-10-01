@@ -299,8 +299,29 @@ function skyyrose_see_relay_analytics( array $events ): ?array {
 			'events'         => $events,
 		)
 	);
-	if ( ! is_string( $body ) || strlen( $body ) > 65536 ) {
-		return null; }
+	if ( ! is_string( $body ) ) {
+		return null;
+	}
+	if ( strlen( $body ) > 65536 ) {
+		// Split exact encoded bytes, including the server-owned envelope. Partial
+		// delivery is retried with unchanged IDs and deduplicated by the backend.
+		if ( count( $events ) < 2 ) {
+			return null;
+		}
+		$halves = array_chunk( $events, (int) ceil( count( $events ) / 2 ) );
+		$first  = skyyrose_see_relay_analytics( $halves[0] );
+		if ( null === $first ) {
+			return null;
+		}
+		$second = skyyrose_see_relay_analytics( $halves[1] );
+		if ( null === $second ) {
+			return null;
+		}
+		$first['accepted']   += $second['accepted'];
+		$first['duplicates'] += $second['duplicates'];
+		$first['event_ids']   = array_merge( $first['event_ids'], $second['event_ids'] );
+		return $first;
+	}
 	$timestamp = (string) time();
 	$response  = wp_remote_post(
 		$url,
