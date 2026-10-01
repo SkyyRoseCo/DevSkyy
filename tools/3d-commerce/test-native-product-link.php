@@ -13,7 +13,9 @@ if ( ! $owner || '98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778
 	throw new RuntimeException( 'Exact f16f179 owner module required.' );
 }
 require_once $owner;
-require_once __DIR__ . '/native-product-link.php';
+if ( ! function_exists( 'skyyrose2_glb_native_product_link' ) ) {
+	require_once __DIR__ . '/native-product-link.php';
+}
 add_filter( 'action_scheduler_allow_async_request_runner', '__return_false' );
 add_filter(
 	'pre_http_request',
