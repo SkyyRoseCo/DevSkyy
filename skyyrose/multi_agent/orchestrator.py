@@ -73,9 +73,8 @@ CUSTOM TOOLS AVAILABLE:
 - git_status_summary — Git branch and changes
 
 RULES:
-- Tagline: "Luxury Grows from Concrete." — ONLY tagline
+- No active brand tagline. Do not invent a replacement or reuse retired slogans.
 - Brand colors: Rose Gold #B76E79, Dark #0A0A0A, Gold #D4AF37
-- Never use "Where Love Meets Luxury" — that's dead
 - Be concise, professional, and actionable in your summaries"""
 
 

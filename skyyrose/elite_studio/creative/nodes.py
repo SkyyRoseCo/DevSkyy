@@ -4,14 +4,14 @@ Creative Operations Hub node functions.
 Each node reads from CreativeOperationState, executes a specific creative
 intent, and returns an updated state dict. Legacy provider paths fail closed before imports. Local copy and finalization
 remain available to direct callers.
-
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations
 
 import logging
 import time
+
+from skyyrose.core.product import get_product
 
 logger = logging.getLogger(__name__)
 
@@ -50,81 +50,63 @@ def social_pack_node(state: dict) -> dict:
 
 
 def product_copy_node(state: dict) -> dict:
-    """Generate SEO-optimized product copy using LLM."""
+    """Return existing SKU copy from the registry without generation or fallback facts.
+
+    This is an existing-product reader, not a new-design ideation route. Missing
+    authored descriptions fail closed. Missing SEO stays absent and named in gaps.
+    Caller params and fashion_context never override the founder's record.
+    """
     start = time.monotonic()
-    params = state.get("params", {})
     sku = state.get("sku", "")
-    fashion_context = state.get("fashion_context") or {}
-
     try:
-        garment_type = params.get("garment_type") or fashion_context.get("garment_type", "product")
-        collection = params.get("collection") or _extract_collection(fashion_context)
-        product_name = params.get("product_name", f"SkyyRose {garment_type.title()}")
-        price = params.get("price", 0)
-
-        collection_display = collection.replace("-", " ").title() if collection else "SkyyRose"
-        dna = fashion_context.get("collection_dna", "Luxury Grows from Concrete.")
-        _ = fashion_context.get("color_palette", [])
-
-        short_description = (
-            f"Elevate your look with the {product_name}. "
-            f"{collection_display} collection — {dna.split('.')[0] if dna else 'luxury streetwear'}. "
-            f"'Luxury Grows from Concrete.' "
-        )
-
-        long_description = (
-            f"The {product_name} is the cornerstone of SkyyRose's {collection_display} collection. "
-            f"Crafted with premium {fashion_context.get('fabric', 'materials')}, "
-            f"this piece embodies the SkyyRose ethos: luxury grown from Oakland's concrete foundations. "
-            f"{dna} "
-            f"Available in sizes {fashion_context.get('size_range', 'S–3XL')}. "
-            f"{'Pre-order now — limited edition.' if params.get('is_preorder') else 'Shop now.'}"
-        )
-
-        meta_title = f"{product_name} — SkyyRose {collection_display} | Luxury Streetwear"
-        meta_description = (
-            f"Shop the {product_name} from SkyyRose's {collection_display} collection. "
-            f"Premium luxury streetwear from Oakland. "
-            f"{'Pre-order available.' if params.get('is_preorder') else 'Free shipping on orders $100+.'}"
-        )
-
-        keywords = [
-            "SkyyRose",
-            "luxury streetwear",
-            f"{collection_display} collection",
-            garment_type,
-            "Oakland fashion",
-            "premium streetwear",
-            "Luxury Grows from Concrete",
+        if not isinstance(sku, str) or not sku.strip():
+            raise ValueError("An existing product SKU is required")
+        product = get_product(sku)
+        content = product["content"]
+        required = ("short_description", "description")
+        missing = [
+            f"content.{field}"
+            for field in required
+            if not content.get(field) or not content[field].get("value")
         ]
-        if sku:
-            keywords.append(sku)
+        if missing:
+            raise ValueError(f"Authoritative product copy is absent: {', '.join(missing)}")
+        if not product.get("name") or product["catalog"].get("price") is None:
+            raise ValueError("Authoritative product name or price is absent")
 
+        seo = content.get("seo_meta")
         copy_result = {
             "success": True,
-            "sku": sku,
-            "product_name": product_name,
-            "short_description": short_description.strip(),
-            "long_description": long_description.strip(),
-            "meta_title": meta_title[:70],
-            "meta_description": meta_description[:160],
-            "keywords": keywords,
-            "price": price,
+            "sku": product["sku"],
+            "product_name": product["name"],
+            "short_description": content["short_description"]["value"],
+            "long_description": content["description"]["value"],
+            "meta_title": product["name"],
+            "meta_description": seo["value"] if seo else None,
+            "keywords": [],
+            "price": product["catalog"]["price"],
+            "gaps": list(dict.fromkeys([*product["gaps"], "copy.keywords"])),
+            "content_sources": content,
+            "authority": product["authority"],
+            "provenance": product["provenance"],
         }
-        elapsed = time.monotonic() - start
         return {
             "copy_result": copy_result,
-            "stage_timings": {**state.get("stage_timings", {}), "product_copy": elapsed},
+            "stage_timings": {
+                **state.get("stage_timings", {}),
+                "product_copy": time.monotonic() - start,
+            },
         }
-
     except Exception as exc:
         logger.exception("product_copy_node failed: %s", exc)
-        elapsed = time.monotonic() - start
         return {
             "copy_result": {"success": False, "error": str(exc)},
             "status": "error",
             "error": f"product_copy failed: {exc}",
-            "stage_timings": {**state.get("stage_timings", {}), "product_copy": elapsed},
+            "stage_timings": {
+                **state.get("stage_timings", {}),
+                "product_copy": time.monotonic() - start,
+            },
         }
 
 
@@ -159,22 +141,3 @@ def finalize_node(state: dict) -> dict:
         return {}  # preserve error state as-is
 
     return {"status": "success"}
-
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-
-
-def _extract_collection(fashion_context: dict) -> str:
-    """Extract collection slug from fashion context data."""
-    dna = fashion_context.get("collection_dna", "")
-    if "Black Rose" in dna:
-        return "black-rose"
-    if "Love Hurts" in dna:
-        return "love-hurts"
-    if "Signature" in dna:
-        return "signature"
-    if "Kids Capsule" in dna:
-        return "kids-capsule"
-    return ""

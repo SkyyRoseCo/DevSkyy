@@ -5,7 +5,6 @@ Deep fashion domain knowledge with SkyyRose brand DNA baked into every layer.
 Covers garment knowledge, trend signals, photography standards, color theory,
 editorial direction, material rendering accuracy, and QA rules.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

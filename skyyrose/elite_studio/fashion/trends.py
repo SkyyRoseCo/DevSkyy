@@ -4,7 +4,6 @@ Trend intelligence for SkyyRose Elite Studio.
 FW26 / SS27 trend signals mapped to SkyyRose brand DNA and product categories.
 All objects are frozen (immutable).
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

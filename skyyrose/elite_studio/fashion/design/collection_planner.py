@@ -4,7 +4,6 @@ Collection planning tools for SkyyRose Elite Studio.
 CollectionPlanner builds structured collection plans from brief inputs,
 using fashion intelligence and product catalog data.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

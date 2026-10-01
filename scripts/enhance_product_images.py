@@ -850,7 +850,6 @@ def print_banner() -> None:
     banner = """
 ================================================================================
                    SKYYROSE PRODUCT IMAGE ENHANCEMENT PIPELINE
-                         Luxury Grows from Concrete.
 ================================================================================
 
 Pipeline Stages:

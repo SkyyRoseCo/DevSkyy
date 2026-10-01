@@ -14,7 +14,6 @@ Design notes:
     - If `DATABASE_URL` is not set or is sqlite, returns `None` and the
       caller falls back to no checkpointing (in-memory state only).
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

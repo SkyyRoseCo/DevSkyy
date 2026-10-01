@@ -4,7 +4,6 @@ Character consistency utilities for SkyyRose Elite Studio.
 Builds consistency anchors and manages character identity across
 multiple generation requests.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

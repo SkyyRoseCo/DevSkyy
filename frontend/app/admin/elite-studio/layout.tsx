@@ -61,7 +61,6 @@ export default function EliteStudioLayout({ children }: { children: React.ReactN
           </div>
           <div>
             <h2 className="text-lg font-bold text-white">Elite Studio</h2>
-            <p className="text-xs text-gray-500">Luxury Grows from Concrete.</p>
           </div>
         </div>
 
