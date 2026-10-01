@@ -971,7 +971,7 @@
     "generator": "scripts/build-product-presentation-registry.py",
     "normalization": "Sorted JSON keys, indent 2, trailing LF",
     "released": true,
-    "source": "tools/v2-source-certification/inputs/product-sot.json + canonical CSV garment_type_lock",
+    "source": "tools/v2-source-certification/inputs/product-sot.json (historical media only) + wordpress-theme/skyyrose-flagship/data/logo-registry.json via get_product",
     "tool": "Python 3.12.12 standard library",
     "tracked": true
   },
@@ -1245,6 +1245,46 @@
     "normalization": "No trailing newline; pinned minifier settings",
     "released": true,
     "source": "assets/css/lookbook.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/home-art-direction.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/home-art-direction.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/home-experience.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/home-experience.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/home-experience.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/home-experience.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/house-motion.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/house-motion.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/css/product-glb.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/product-glb.css",
     "tool": "clean-css 5.3.3",
     "tracked": true
   }
