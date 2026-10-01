@@ -1,0 +1,29 @@
+{
+  "stream2_files": [
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php",
+      "sha256": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+      "byte_identical_to_stream2": true
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php",
+      "sha256": "aaec25f7dde08440e49814f26170ef71e471bd997bcbde933f561bdb5f3e6bc0",
+      "byte_identical_to_stream2": true
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh",
+      "sha256": "56768d343f745df49bb58e76e7756fe3c2a88f0c09fb449807ef1c6d8a650202",
+      "byte_identical_to_stream2": true
+    }
+  ],
+  "tested_source_sha": "9e4101e8bde89f2efe6828519393221d9b81c639",
+  "scope": "Founder product registry hash remains db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757; no product approval or dimension edits in closing phase",
+  "registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
+  "clean_package_checkout": {
+    "path": "/tmp/stream1-clean-package-173fd1fa3",
+    "head": "9e4101e8bde89f2efe6828519393221d9b81c639",
+    "status": "",
+    "log": "clean-checkout-package-9e4101e8b.log",
+    "outcome": "BLOCKED by old certification pins; no ZIP or package hash exists"
+  }
+}

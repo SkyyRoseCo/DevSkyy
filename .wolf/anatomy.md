@@ -9283,3 +9283,7 @@
 ## Closing local commerce evidence
 - `wordpress-theme/skyyrose-flagship-2/tests/commerce/bootstrap.php` — Full active theme hooks and canonical-SKU synthetic variation classification test; offline loopback only (~1100 tok).
 - `tasks/v2-launch-local-20261001/evidence/closing/` — Closing phase raw native WP/Woo tests, screenshots, source provenance, and remaining owners.
+
+- `tools/v2-runtime/test-hero-order-labels.php` — Isolated real partial label regression for regular/variable/simplepreorder; simulated media guard, no approval claim (~1000 tok).
+- `tasks/v2-launch-local-20261001/classify_brand_consumers.py` — Read-only exact-line classification of broad brand enforcement findings and owners (~850 tok).
+- `tasks/v2-launch-local-20261001/CLOSING.md` — Closing integration outcome, reproducible remaining local failures, consolidated founder/owner holds.

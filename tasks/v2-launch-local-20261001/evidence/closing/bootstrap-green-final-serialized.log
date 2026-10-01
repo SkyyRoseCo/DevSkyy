@@ -1,0 +1,27 @@
+PASS: compatibility loaded through full theme before test includes
+PASS: exactly one bootstrap include statement
+PASS: compatibility file included exactly once
+PASS: theme registers exactly one skyyrose2_preorder_add_cart_data
+PASS: theme registers exactly one skyyrose2_preorder_check_cart
+PASS: theme registers exactly one skyyrose2_preorder_persist_item
+PASS: fixture has unused canonical regular and preorder SKUs
+PASS: regular inherited transaction classification
+PASS: snapshot keeps native variation SKU and selected size
+PASS: regular inherited display matches transaction
+PASS: native variation response shows selected classification and retains stock
+PASS: regular explicit-zero transaction classification
+PASS: snapshot keeps native variation SKU and selected size
+PASS: regular explicit-zero display matches transaction
+PASS: native variation response shows selected classification and retains stock
+PASS: preorder child of regular parent retains option-dependent classification
+PASS: parent display inherits Woo preorder metadata
+PASS: preorder inherited transaction classification
+PASS: snapshot keeps native variation SKU and selected size
+PASS: preorder inherited display matches transaction
+PASS: native variation response shows selected classification and retains stock
+PASS: preorder explicit-zero transaction classification
+PASS: snapshot keeps native variation SKU and selected size
+PASS: preorder explicit-zero display matches transaction
+PASS: native variation response shows selected classification and retains stock
+PASS: parent display inherits Woo preorder metadata
+FULL THEME BOOTSTRAP COMPLETE

@@ -1,0 +1,7 @@
+
+> skyyrose-flagship-2-theme@2.5.0 check:tokens
+> node ../../tools/v2-runtime/sync-token-contract.cjs --check
+
+PASS runtime/editor colors, layout, type roles, spacing, controls, focus, motion and layer contract
+(node:42640) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -1,0 +1,217 @@
+WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>INSERT wp_actionscheduler_logs (action_id, message, log_date_gmt, log_date_local) VALUES (151, 'action canceled', '2026-10-01 10:42:40', '2026-10-01 10:42:40')</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: INSERT wp_actionscheduler_logs (action_id, message, log_date_gmt, log_date_local) VALUES (151, :param0 , :param1 , :param2 ) | parameters: action canceled, 2026-10-01 10:42:40, 2026-10-01 10:42:40</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4229 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "wp_actionscheduler_logs": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /private/tmp/stream1-integrated-wc-20261001/wp-content/plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(549): WP_SQLite_Translator->get_error_message()
+#1 /private/tmp/stream1-integrated-wc-20261001/wp-content/plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(455): WP_SQLite_DB->_do_query('INSERT wp_actio...')
+#2 /private/tmp/stream1-integrated-wc-20261001/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBLogger.php(178): WP_SQLite_DB->query('INSERT wp_actio...')
+#3 /private/tmp/stream1-integrated-wc-20261001/wp-includes/class-wp-hook.php(353): ActionScheduler_DBLogger->bulk_log_cancel_actions(Array)
+#4 /private/tmp/stream1-integrated-wc-20261001/wp-includes/class-wp-hook.php(377): WP_Hook->apply_filters('', Array)
+#5 /private/tmp/stream1-integrated-wc-20261001/wp-includes/plugin.php(523): WP_Hook->do_action(Array)
+#6 /private/tmp/stream1-integrated-wc-20261001/wp-content/plugins/woocommerce/packages/action-scheduler/classes/abstracts/ActionScheduler_Store.php(445): do_action('action_schedule...', Array)
+#7 /private/tmp/stream1-integrated-wc-20261001/wp-content/plugins/woocommerce/packages/action-scheduler/classes/abstracts/ActionScheduler_Store.php(402): ActionScheduler_Store->bulk_cancel_actions(Array)
+#8 /private/tmp/stream1-integrated-wc-20261001/wp-content/plugins/woocommerce/packages/action-scheduler/functions.php(318): ActionScheduler_Store->cancel_actions_by_hook('woocommerce_cus...')
+#9 /private/tmp/stream1-integrated-wc-20261001/wp-content/plugins/woocommerce/includes/queue/class-wc-action-queue.php(113): as_unschedule_all_actions('woocommerce_cus...', Array, '')
+#10 /private/tmp/stream1-integrated-wc-20261001/wp-content/plugins/woocommerce/src/Internal/DataStores/Orders/DataSynchronizer.php(404): WC_Action_Queue->cancel_all('woocommerce_cus...')
+#11 /private/tmp/stream1-integrated-wc-20261001/wp-content/plugins/woocommerce/src/Internal/DataStores/Orders/DataSynchronizer.php(283): Automattic\WooCommerce\Internal\DataStores\Orders\DataSynchronizer->unschedule_background_sync()
+#12 /private/tmp/stream1-integrated-wc-20261001/wp-includes/class-wp-hook.php(353): Automattic\WooCommerce\Internal\DataStores\Orders\DataSynchronizer->process_updated_option('woocommerce_cus...', 'yes', 'no')
+#13 /private/tmp/stream1-integrated-wc-20261001/wp-includes/class-wp-hook.php(377): WP_Hook->apply_filters(NULL, Array)
+#14 /private/tmp/stream1-integrated-wc-20261001/wp-includes/plugin.php(523): WP_Hook->do_action(Array)
+#15 /private/tmp/stream1-integrated-wc-20261001/wp-includes/option.php(1030): do_action('updated_option', 'woocommerce_cus...', 'yes', 'no')
+#16 phar:///Users/theceo/.npm-global/bin/wp/vendor/wp-cli/entity-command/src/Option_Command.php(434): update_option('woocommerce_cus...', 'no', 'auto')
+#17 [internal function]: Option_Command->update(Array, Array)
+#18 phar:///Users/theceo/.npm-global/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Dispatcher/CommandFactory.php(100): call_user_func(Array, Array, Array)
+#19 [internal function]: WP_CLI\Dispatcher\CommandFactory::{closure:WP_CLI\Dispatcher\CommandFactory::create_subcommand():97}(Array, Array)
+#20 phar:///Users/theceo/.npm-global/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Dispatcher/Subcommand.php(497): call_user_func(Object(Closure), Array, Array)
+#21 phar:///Users/theceo/.npm-global/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(470): WP_CLI\Dispatcher\Subcommand->invoke(Array, Array, Array)
+#22 phar:///Users/theceo/.npm-global/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(493): WP_CLI\Runner->run_command(Array, Array)
+#23 phar:///Users/theceo/.npm-global/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1295): WP_CLI\Runner->run_command_and_exit()
+#24 phar:///Users/theceo/.npm-global/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Bootstrap/LaunchRunner.php(28): WP_CLI\Runner->start()
+#25 phar:///Users/theceo/.npm-global/bin/wp/vendor/wp-cli/wp-cli/php/bootstrap.php(84): WP_CLI\Bootstrap\LaunchRunner->process(Object(WP_CLI\Bootstrap\BootstrapState))
+#26 phar:///Users/theceo/.npm-global/bin/wp/vendor/wp-cli/wp-cli/php/wp-cli.php(35): WP_CLI\bootstrap()
+#27 phar:///Users/theceo/.npm-global/bin/wp/php/boot-phar.php(20): include('phar:///Users/t...')
+#28 /Users/theceo/.npm-global/bin/wp(4): include('phar:///Users/t...')
+#29 {main}</pre>
+ for query INSERT wp_actionscheduler_logs (action_id, message, log_date_gmt, log_date_local) VALUES (151, 'action canceled', '2026-10-01 10:42:40', '2026-10-01 10:42:40') made by include('phar:///Users/theceo/.npm-global/bin/wp/php/boot-phar.php'), include('phar:///Users/theceo/.npm-global/bin/wp/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->run_command_and_exit, WP_CLI\Runner->run_command, WP_CLI\Dispatcher\Subcommand->invoke, call_user_func, WP_CLI\Dispatcher\CommandFactory::{closure:WP_CLI\Dispatcher\CommandFactory::create_subcommand():97}, call_user_func, Option_Command->update, update_option, do_action('updated_option'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Internal\DataStores\Orders\DataSynchronizer->process_updated_option, Automattic\WooCommerce\Internal\DataStores\Orders\DataSynchronizer->unschedule_background_sync, WC_Action_Queue->cancel_all, as_unschedule_all_actions, ActionScheduler_Store->cancel_actions_by_hook, ActionScheduler_Store->bulk_cancel_actions, do_action('action_scheduler_bulk_cancel_actions'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_DBLogger->bulk_log_cancel_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+PASS: direct core add positive simple product
+PASS: server replaces tampered snapshot and excludes price
+PASS: direct core add rejects insufficient pool without fatal
+PASS: failed direct add preserves stored quantity
+PASS: quantity update excludes old line
+PASS: quantity update rejects over allocation
+PASS: native quantity edit stores validated replacement
+PASS: direct core rejects fractional quantity
+PASS: native zero add rejected
+PASS: invalid request quantity -1
+PASS: invalid request quantity 0.5
+PASS: invalid request quantity tampered
+PASS: invalid request quantity INF
+PASS: zero quantity permits removal
+PASS: prior permission denial preserved
+PASS: valid cart has no promise/allocation errors
+PASS: native checkout display includes recorded promise
+PASS: session restore preserves exact recorded promise
+PASS: native session serialization stores exact snapshot
+PASS: native session restoration retains exact snapshot
+PASS: product promise edit blocks checkout
+PASS: promise change never rewrites stored cart history
+PASS: Store API returns structured stale promise error
+PASS: legacy cart requires explicit product review
+PASS: native price change updates totals without descriptive promise drift
+PASS: actual active order data store WC_Order_Data_Store_CPT
+PASS: real order storage no promise and native total
+PASS: post-order edits and repeated hook preserve snapshot no
+PASS: failure/cancellation does not decrement or restore custom allocation no
+PASS: local non-payment refund preserves custom allocation no
+PASS: native order/email display uses order history no
+PASS: historical no-snapshot order remains unknown
+PASS: v1 historical schema readable without current product
+PASS: future order schema retained without fabrication
+PASS: persisted historical item is never backfilled
+PASS: variation inherits parent preorder/allocation
+PASS: sibling variations share parent allocation pool
+PASS: variation order stores stable selected identity
+PASS: explicit variation zero blocks addition
+PASS: unrelated variation rejected
+PASS: wildcard variation captures resolved selected size
+PASS: repeated wildcard add checks shared allocation before merge
+PASS: wildcard selection remains valid at checkout
+PASS: absent legacy allocation remains uncapped
+PASS: malformed allocation fails closed
+PASS: real Store API order builder persists promise
+PASS: existing Store API order revalidates availability with empty cart
+PASS: classic pay-for-order emits handled allocation error
+PASS: existing-order payment isolates unrelated invalid cart
+PASS: native coupon applies to snapshot cart
+PASS: native discount remains authoritative in stored order total
+PASS: real cart coupon survives through order attribution
+PASS: CRUD referral attribution stored without email
+PASS: repeated lifecycle event retains referral identity
+PASS: self referral receives no attribution
+PASS: ownership gap reproduced: independent carts do not reserve custom allocation
+LOCAL INTEGRATION COMPLETE; no external order/payment/provider calls
+PASS: direct core add positive simple product
+PASS: server replaces tampered snapshot and excludes price
+PASS: direct core add rejects insufficient pool without fatal
+PASS: failed direct add preserves stored quantity
+PASS: quantity update excludes old line
+PASS: quantity update rejects over allocation
+PASS: native quantity edit stores validated replacement
+PASS: direct core rejects fractional quantity
+PASS: native zero add rejected
+PASS: invalid request quantity -1
+PASS: invalid request quantity 0.5
+PASS: invalid request quantity tampered
+PASS: invalid request quantity INF
+PASS: zero quantity permits removal
+PASS: prior permission denial preserved
+PASS: valid cart has no promise/allocation errors
+PASS: native checkout display includes recorded promise
+PASS: session restore preserves exact recorded promise
+PASS: native session serialization stores exact snapshot
+PASS: native session restoration retains exact snapshot
+PASS: product promise edit blocks checkout
+PASS: promise change never rewrites stored cart history
+PASS: Store API returns structured stale promise error
+PASS: legacy cart requires explicit product review
+PASS: native price change updates totals without descriptive promise drift
+PASS: actual active order data store Automattic\WooCommerce\Internal\DataStores\Orders\OrdersTableDataStore
+PASS: real order storage yes promise and native total
+PASS: post-order edits and repeated hook preserve snapshot yes
+PASS: failure/cancellation does not decrement or restore custom allocation yes
+PASS: local non-payment refund preserves custom allocation yes
+PASS: native order/email display uses order history yes
+PASS: historical no-snapshot order remains unknown
+PASS: v1 historical schema readable without current product
+PASS: future order schema retained without fabrication
+PASS: persisted historical item is never backfilled
+PASS: variation inherits parent preorder/allocation
+PASS: sibling variations share parent allocation pool
+PASS: variation order stores stable selected identity
+PASS: explicit variation zero blocks addition
+PASS: unrelated variation rejected
+PASS: wildcard variation captures resolved selected size
+PASS: repeated wildcard add checks shared allocation before merge
+PASS: wildcard selection remains valid at checkout
+PASS: absent legacy allocation remains uncapped
+PASS: malformed allocation fails closed
+PASS: real Store API order builder persists promise
+PASS: existing Store API order revalidates availability with empty cart
+PASS: classic pay-for-order emits handled allocation error
+PASS: existing-order payment isolates unrelated invalid cart
+PASS: native coupon applies to snapshot cart
+PASS: native discount remains authoritative in stored order total
+PASS: real cart coupon survives through order attribution
+PASS: CRUD referral attribution stored without email
+PASS: repeated lifecycle event retains referral identity
+PASS: self referral receives no attribution
+PASS: ownership gap reproduced: independent carts do not reserve custom allocation
+LOCAL INTEGRATION COMPLETE; no external order/payment/provider calls
+PASS: direct core add positive simple product
+PASS: server replaces tampered snapshot and excludes price
+PASS: direct core add rejects insufficient pool without fatal
+PASS: failed direct add preserves stored quantity
+PASS: quantity update excludes old line
+PASS: quantity update rejects over allocation
+PASS: native quantity edit stores validated replacement
+PASS: direct core rejects fractional quantity
+PASS: native zero add rejected
+PASS: invalid request quantity -1
+PASS: invalid request quantity 0.5
+PASS: invalid request quantity tampered
+PASS: invalid request quantity INF
+PASS: zero quantity permits removal
+PASS: prior permission denial preserved
+PASS: valid cart has no promise/allocation errors
+PASS: native checkout display includes recorded promise
+PASS: session restore preserves exact recorded promise
+PASS: native session serialization stores exact snapshot
+PASS: native session restoration retains exact snapshot
+PASS: product promise edit blocks checkout
+PASS: promise change never rewrites stored cart history
+PASS: Store API returns structured stale promise error
+PASS: legacy cart requires explicit product review
+PASS: native price change updates totals without descriptive promise drift
+PASS: actual active order data store Automattic\WooCommerce\Internal\DataStores\Orders\OrdersTableDataStore
+PASS: real order storage yes promise and native total
+PASS: post-order edits and repeated hook preserve snapshot yes
+PASS: failure/cancellation does not decrement or restore custom allocation yes
+PASS: local non-payment refund preserves custom allocation yes
+PASS: native order/email display uses order history yes
+PASS: historical no-snapshot order remains unknown
+PASS: v1 historical schema readable without current product
+PASS: future order schema retained without fabrication
+PASS: persisted historical item is never backfilled
+PASS: variation inherits parent preorder/allocation
+PASS: sibling variations share parent allocation pool
+PASS: variation order stores stable selected identity
+PASS: explicit variation zero blocks addition
+PASS: unrelated variation rejected
+PASS: wildcard variation captures resolved selected size
+PASS: repeated wildcard add checks shared allocation before merge
+PASS: wildcard selection remains valid at checkout
+PASS: absent legacy allocation remains uncapped
+PASS: malformed allocation fails closed
+PASS: real Store API order builder persists promise
+PASS: existing Store API order revalidates availability with empty cart
+PASS: classic pay-for-order emits handled allocation error
+PASS: existing-order payment isolates unrelated invalid cart
+PASS: native coupon applies to snapshot cart
+PASS: native discount remains authoritative in stored order total
+PASS: real cart coupon survives through order attribution
+PASS: CRUD referral attribution stored without email
+PASS: repeated lifecycle event retains referral identity
+PASS: self referral receives no attribution
+PASS: ownership gap reproduced: independent carts do not reserve custom allocation
+LOCAL INTEGRATION COMPLETE; no external order/payment/provider calls

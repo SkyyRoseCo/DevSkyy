@@ -76,3 +76,7 @@ V2_WP_FIXTURE=/tmp/stream1-native-downloads/wordpress php tools/v2-runtime/test-
 No rollback has been executed. In an authorized integration checkout, review the commit sequence and revert scoped commits newest-first if rollback is required; do not reset or discard unrelated work. The original frozen base remains available. Full deployment rollback and cache invalidation need their own runtime authority.
 
 Repository session notes were added to `.wolf/memory.md` and `.wolf/anatomy.md`; persistent cross-session Codex memory was not changed. The existing buglog serializer refused its legacy format; the unrelated ledger was left untouched rather than normalized as part of this task.
+
+## Closing integration follow-up
+
+See [CLOSING.md](CLOSING.md) for the final tested integrated source `9e4101e8bde89f2efe6828519393221d9b81c639`, canonical dependency adoption, native commerce/browser evidence, precise certification/brand blockers and consolidated owner decisions. Earlier results above remain evidence for their originally recorded source. No release ZIP has been produced.
