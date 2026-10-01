@@ -173,6 +173,11 @@ def _report(tmp_path: Path, labels: tuple[str, ...], angle: str = "front") -> Re
 
 
 class TestProductionParity:
+    def test_report_records_effective_render_size(self):
+        report = RenderReport(images=(), render_size=512)
+        assert report.as_dict()["parity"]["size"] == 512
+        assert VIEWER_PARITY["size"] == 1024
+
     def test_production_viewer_exists(self) -> None:
         # Fails closed: if the viewer moves, the parity gate must break loudly rather
         # than quietly stop checking anything.

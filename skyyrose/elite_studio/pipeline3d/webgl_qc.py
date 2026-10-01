@@ -158,6 +158,7 @@ class RenderReport:
     console_messages: Sequence[Mapping[str, Any]] = field(default_factory=tuple)
     page_errors: Sequence[Mapping[str, Any]] = field(default_factory=tuple)
     asset_hashes: Mapping[str, str] = field(default_factory=dict)
+    render_size: int = int(VIEWER_PARITY["size"])
 
     @property
     def console_errors(self) -> tuple[Mapping[str, Any], ...]:
@@ -182,7 +183,7 @@ class RenderReport:
     def as_dict(self) -> dict[str, Any]:
         return {
             "asset_hashes": dict(self.asset_hashes),
-            "parity": dict(VIEWER_PARITY),
+            "parity": {**VIEWER_PARITY, "size": self.render_size},
             "images": [i.as_dict() for i in self.images],
             "console_errors": [dict(e) for e in self.console_errors],
             "console_warnings": [dict(e) for e in self.console_warnings],
@@ -482,6 +483,7 @@ def render(
         asset_hashes={
             label: hashlib.sha256(payload).hexdigest() for label, payload in glb_payloads.items()
         },
+        render_size=size,
     )
 
 
