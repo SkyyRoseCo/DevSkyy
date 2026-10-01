@@ -196,6 +196,18 @@ for (const endpoint of ['', 'https://untrusted.test/ingest']) {
     browser = checked_replace(browser, "/tmp/e2e-theme-consent-", "/tmp/e2e-v2-theme-consent-")
     output("tests/analytics/browser-consent.test.cjs", browser)
     relay = (SOURCE / "tests/analytics/relay.php").read_text()
+    # V2 has no local engagement projection/table. Keep the shared relay tests,
+    # excluding only V1 storage setup and its separately covered endpoint replay.
+    storage_start = relay.index("define( 'SKYYROSE_SEE_DB_VERSION'")
+    storage_end = relay.index("function wp_remote_post", storage_start)
+    relay = relay[:storage_start] + relay[storage_end:]
+    replay_start = relay.index("// A partially delivered remote batch")
+    replay_end = relay.index("putenv( 'SKYYROSE_ANALYTICS_SECRET' );", replay_start)
+    relay = relay[:replay_start] + relay[replay_end:]
+    relay = checked_replace(
+        relay, "if ( 'skyyrose_see_db_version' === $name ) { return SKYYROSE_SEE_DB_VERSION; } ", ""
+    )
+
     relay = checked_replace(
         relay,
         "require dirname( __DIR__, 2 ) . '/inc/fastapi-client.php';",

@@ -15,7 +15,7 @@ function add_action( ...$args ) {}
 function sanitize_text_field( $value ) { return is_scalar( $value ) ? (string) $value : ''; }
 function wp_unslash( $value ) { return $value; }
 function esc_html__( $value, $domain ) { return $value; }
-function get_option( $name, $default = null ) { return 'skyyrose_see_analytics_key' === $name ? 'public-page-token' : $default; }
+function get_option( $name, $default = null ) { if ( 'skyyrose_see_db_version' === $name ) { return SKYYROSE_SEE_DB_VERSION; } return 'skyyrose_see_analytics_key' === $name ? 'public-page-token' : $default; }
 function skyyrose_see_get_option( $name, $default = null ) { return 'fastapi_url' === $name ? 'http://127.0.0.1:8089' : $default; }
 function wp_get_environment_type() { return 'local'; }
 function apply_filters( $name, $value ) { return $value; }
@@ -26,7 +26,25 @@ function set_transient( $key, $value, $ttl ) { $GLOBALS['transients'][ $key ] = 
 function wp_remote_retrieve_response_code( $response ) { return $response['code']; }
 function wp_remote_retrieve_body( $response ) { return $response['body']; }
 function is_wp_error( $value ) { return $value instanceof WP_Error; }
-function skyyrose_see_store_events( $events, $hash ) { $GLOBALS['projection'] = $events; return count( $events ); }
+define( 'SKYYROSE_SEE_DB_VERSION', '1.1.0' );
+// Storage fixture enforces the production unique event key and atomic upsert.
+$wpdb = new class {
+	public $prefix = 'fixture_';
+	public $rows = array();
+	public $fail_after = null;
+	public function prepare( $sql, ...$args ) { return array( $sql, $args ); }
+	public function query( $prepared ) {
+		list( $sql, $values ) = $prepared;
+		if ( ! str_contains( $sql, 'ON DUPLICATE KEY UPDATE event_id = VALUES(event_id)' ) ) { throw new RuntimeException( 'Expected atomic event upsert' ); }
+		if ( null !== $this->fail_after && count( $this->rows ) >= $this->fail_after ) { return false; }
+		$key = $values[0];
+		if ( isset( $this->rows[ $key ] ) ) { return 0; }
+		$this->rows[ $key ] = $values;
+		$GLOBALS['projection'][] = array( 'type' => $values[2], 'value' => 0 );
+		return 1;
+	}
+};
+require dirname( __DIR__, 2 ) . '/inc/experience-analyzer.php';
 function wp_remote_post( $url, $options ) {
 	$GLOBALS['last_request'] = array( 'url' => $url, 'options' => $options );
 	++$GLOBALS['remote_calls'];
@@ -133,6 +151,28 @@ check( $ack['duplicates'] > 0 && $ack['accepted'] > 0 && 50 === $ack['accepted']
 $GLOBALS['mode'] = 'duplicate';
 $ack = skyyrose_see_relay_analytics( $large );
 check( 50 === $ack['duplicates'] && 0 === $ack['accepted'] && array_column( $large, 'event_id' ) === $ack['event_ids'], 'retry chunk acknowledgements retain original IDs and duplicate counts' );
+// A partially delivered remote batch is projected in full only on durable retry.
+$wpdb->rows = array();
+$GLOBALS['durable_ids'] = array();
+$GLOBALS['remote_calls'] = 0;
+$GLOBALS['transients'] = array();
+$GLOBALS['projection'] = array();
+$GLOBALS['mode'] = 'partial_failure';
+$large_request = new WP_REST_Request( array( 'schema_version' => 1, 'consent' => 'accepted', 'events' => $large ) );
+$response = skyyrose_see_rest_receive_events( $large_request );
+check( 503 === $response->status && 0 === count( $wpdb->rows ), 'partial remote failure projects nothing' );
+$GLOBALS['mode'] = 'durable_retry';
+$response = skyyrose_see_rest_receive_events( $large_request );
+check( 200 === $response->status && $response->data['accepted'] > 0 && $response->data['duplicates'] > 0 && 50 === count( $wpdb->rows ), 'mixed retry projects both previously accepted and newly accepted events exactly once' );
+$response = skyyrose_see_rest_receive_events( $large_request );
+check( 200 === $response->status && 0 === $response->data['engagement_projection_stored'] && 50 === count( $wpdb->rows ), 'repeated duplicate retry never increases projection' );
+$wpdb->rows = array();
+$wpdb->fail_after = 20;
+$response = skyyrose_see_rest_receive_events( $large_request );
+check( 503 === $response->status && 20 === count( $wpdb->rows ), 'partial local failure remains retryable after remote acknowledgement' );
+$wpdb->fail_after = null;
+$response = skyyrose_see_rest_receive_events( $large_request );
+check( 200 === $response->status && 30 === $response->data['engagement_projection_stored'] && 50 === count( $wpdb->rows ), 'remote duplicate retry repairs remaining local projection rows' );
 putenv( 'SKYYROSE_ANALYTICS_SECRET' );
 check( null === skyyrose_see_relay_analytics( array( $event ) ), 'missing private binding fails closed' );
 echo "PASS: {$checks} relay/consent checks (offline fixtures; authentication N/A).\n";

@@ -428,6 +428,14 @@ jobs:
       - name: Run root unit tests
         run: npm test
 
+      - name: Ensure PHP SQLite support for projection concurrency tests
+        run: |
+          if ! php -r 'exit(extension_loaded("pdo_sqlite") ? 0 : 1);'; then
+            sudo apt-get update
+            sudo apt-get install -y php-cli php-sqlite3
+          fi
+          php -r 'exit(extension_loaded("pdo_sqlite") ? 0 : 1);'
+
       - name: Test theme consent, relay, and asset cache versions
         run: npm run test:theme-analytics
 

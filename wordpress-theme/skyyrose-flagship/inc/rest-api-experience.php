@@ -295,22 +295,20 @@ function skyyrose_see_rest_receive_events( WP_REST_Request $request ): WP_REST_R
 			503
 		);
 	}
-	// Existing WP counters are an engagement projection, separate from the
-	// durable backend ledger. Duplicate-only retries never inflate this view.
-	$projection = array();
-	if ( 0 === $ack['duplicates'] && function_exists( 'skyyrose_see_store_events' ) ) {
-		foreach ( $events as $event ) {
-			$projection[] = array(
-				'type'       => 'engagement_' . $event['event_type'],
-				'target'     => $event['target'] ?? '',
-				'pageType'   => $event['page_type'],
-				'collection' => $event['collection'] ?? '',
-				'value'      => 0,
-				'ts'         => strtotime( $event['occurred_at'] ) * 1000,
-			);
-		}
+	// Existing WP counters are an event-ID-idempotent engagement projection.
+	// Remote duplicates can still be missing locally after partial delivery.
+	$stored = function_exists( 'skyyrose_see_project_acknowledged_events' )
+		? skyyrose_see_project_acknowledged_events( $events, $ack['site_id'], $ack['environment'] ) : null;
+	if ( null === $stored ) {
+		return new WP_REST_Response(
+			array(
+				'status' => 'unavailable',
+				'error'  => 'engagement_projection_unavailable',
+			),
+			503
+		);
 	}
-	$ack['engagement_projection_stored'] = $projection ? skyyrose_see_store_events( $projection, '' ) : 0;
+	$ack['engagement_projection_stored'] = $stored;
 	return new WP_REST_Response( $ack, 200 );
 }
 

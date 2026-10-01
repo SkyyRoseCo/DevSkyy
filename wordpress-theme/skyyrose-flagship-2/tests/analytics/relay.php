@@ -43,9 +43,6 @@ function wp_remote_retrieve_body( $response ) {
 	return $response['body']; }
 function is_wp_error( $value ) {
 	return $value instanceof WP_Error; }
-function skyyrose2_analytics_store_events( $events, $hash ) {
-	$GLOBALS['projection'] = $events;
-	return count( $events ); }
 function wp_remote_post( $url, $options ) {
 	$GLOBALS['last_request'] = array(
 		'url'     => $url,
