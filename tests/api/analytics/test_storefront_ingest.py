@@ -356,6 +356,7 @@ def test_site_origin_rejects_ambiguous_configuration(value):
     assert canonical_site_origin(value) is None
 
 
+@pytest.mark.timeout(60)
 async def test_database_deduplication_across_independent_processes(harness):
     """Independent processes race one synthetic event against the same file DB."""
     _, sessions, db_path = harness
@@ -386,9 +387,21 @@ asyncio.run(run())
         )
         for _ in range(2)
     ]
-    outputs = await asyncio.gather(
-        *[asyncio.to_thread(process.communicate, timeout=30) for process in processes]
-    )
+    # CI cold interpreter/import startup exceeded the global 10-second limit.
+    # Keep each child bounded to 30 seconds and always reap timed-out workers.
+    try:
+        outputs = await asyncio.gather(
+            *[asyncio.to_thread(process.communicate, timeout=30) for process in processes],
+            return_exceptions=True,
+        )
+        for output in outputs:
+            if isinstance(output, BaseException):
+                raise output
+    finally:
+        for process in processes:
+            if process.poll() is None:
+                process.kill()
+            process.wait(timeout=5)
     assert all(process.returncode == 0 for process in processes), outputs
     assert sorted(output[0].strip() for output in outputs) == ["(0, 1)", "(1, 0)"]
     async with sessions() as db:
