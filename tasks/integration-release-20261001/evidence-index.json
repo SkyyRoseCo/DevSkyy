@@ -1,15 +1,16 @@
 {
   "schema": "skyyrose.integration-evidence-index.v1",
   "functional_source_revision": "299f694702ac2dcc61a0f30aa34e4b3ef12f9118",
+  "package_source_revision": "5950592d922706dd67fc0320e8c5f3dc005a47b7",
   "scope": "local retained observations; individual reports define execution/approval limits",
   "files": {
     "README.md": {
-      "bytes": 9100,
-      "sha256": "2872cc425af5dbba6587b3d40c90eaf340d745174ab4471d6f85df420db52927"
+      "bytes": 10623,
+      "sha256": "1c0c5b5b2e7a118e471a6fdba6bd7e3027e0a77aa929edeb0aa1054a50d0e474"
     },
     "adoption-manifest.json": {
-      "bytes": 10671,
-      "sha256": "89da123cbcf310932fe02ad5746d68899822a12ff8ec515187dd29f47fbd2ba1"
+      "bytes": 11370,
+      "sha256": "22913bc44fea55b98d7df0223d0768a0ecc8f03f919a95d55dedf9c9c284c4a1"
     },
     "evidence/brand-contract.txt": {
       "bytes": 99,
@@ -623,6 +624,14 @@
       "bytes": 435,
       "sha256": "724f80679dcf3ad659a9542f31da5b4eba7c99d79a9e67b3d5353bf27fba498e"
     },
+    "evidence/native-adapter-zip-final.txt": {
+      "bytes": 1066,
+      "sha256": "4d09868a0571e64a889dc218e4839283735aecb4cd2dc9fb40bb236b7a66c9d7"
+    },
+    "evidence/native-adapter-zip-initial-owner-module-unset.txt": {
+      "bytes": 2649,
+      "sha256": "3f4d3711bf16b6ab052aed4cb4a043e694cd48159df68cdf3848ab7900ed50ca"
+    },
     "evidence/native-browser-fixture-correction.txt": {
       "bytes": 61,
       "sha256": "4f3cc9884668ca2e812ce930b88be4325e7a880449325f1cb2cab2e5f59ef966"
@@ -635,9 +644,25 @@
       "bytes": 67,
       "sha256": "953cc2bba980813fe4a18058308786bfd37f8e51bbb11d4ebc44c32d3502b11f"
     },
+    "evidence/native-gallery-isolation.json": {
+      "bytes": 2823,
+      "sha256": "94afc531eb585ed1f650ffaed60f98dfab25499f2d497c0cb7072e2159ab56d9"
+    },
+    "evidence/native-glb-source-final.txt": {
+      "bytes": 1022,
+      "sha256": "0472fd3a0b91f68aecc5455ba5f3d56f453404e8e87672925ddbe2272b7ca9a3"
+    },
+    "evidence/native-glb-zip-final.txt": {
+      "bytes": 1022,
+      "sha256": "0472fd3a0b91f68aecc5455ba5f3d56f453404e8e87672925ddbe2272b7ca9a3"
+    },
     "evidence/native-hooks-final.txt": {
       "bytes": 99,
       "sha256": "3e0c98099a7ce91774992f5a3eda9be4a9250fe9495fc83c051754b234e34f4d"
+    },
+    "evidence/native-hooks-zip-final.txt": {
+      "bytes": 485,
+      "sha256": "fea7724188ce9289d240c94fe0aab472e42502c5b3e3022e93087a66f7cde015"
     },
     "evidence/native-hooks.txt": {
       "bytes": 435,
@@ -779,6 +804,10 @@
       "bytes": 1003,
       "sha256": "0ebf3c0fee43f0f4e66691f124ccff861435f6105ca661eafbb89977b152ec47"
     },
+    "evidence/package-verification.json": {
+      "bytes": 1063,
+      "sha256": "29b223ef2955c501ed2c73b3f034e17c7121c94706b27fbcbceaf36b073b5c1f"
+    },
     "evidence/product-3d-regressions-final.txt": {
       "bytes": 598,
       "sha256": "5d70796d58628b314014e574c25a1f3cf49521b59409e96fa75538c0cbd791f9"
@@ -814,6 +843,10 @@
     "evidence/python-locked-suite.xml": {
       "bytes": 69937,
       "sha256": "08ebb53daf87123d167bcaf69c407ba77013d97cd4c19fa2c006186d29c504c1"
+    },
+    "evidence/release-manifest.json": {
+      "bytes": 77317,
+      "sha256": "4bd9049668bce40ac46729d40bb3f46dedec82c852ee2e7a462b798943fdc9ef"
     },
     "evidence/rollback-manifest.json": {
       "bytes": 584,
@@ -874,6 +907,22 @@
     "evidence/v2-assets.txt": {
       "bytes": 219,
       "sha256": "0960bd51aed7ddf523016c0a7c7744fde65eda9bade3ece24d359e62b349e754"
+    },
+    "evidence/v2-clean-install.txt": {
+      "bytes": 258,
+      "sha256": "2cfbd0a2611adcb52c4ab71949058a736e457ef960bfd32325f144492865e9d0"
+    },
+    "evidence/v2-clean-package-initial-native-fixture-missing.txt": {
+      "bytes": 47040,
+      "sha256": "40397c16a440f0b407d8e251efd72d228210efaa429687ed35027d04b67bcefb"
+    },
+    "evidence/v2-clean-package-repeat.txt": {
+      "bytes": 112,
+      "sha256": "bae9c03818b4f77ed0308f7dee8e75d5c84c44222c93063bfc635b81b4ab540a"
+    },
+    "evidence/v2-clean-package.txt": {
+      "bytes": 48171,
+      "sha256": "908f5d0cd59215816ae4454b9e87ecb86358938cee6d4bbe42440541d71f60d5"
     },
     "evidence/v2-final-build.txt": {
       "bytes": 4090,

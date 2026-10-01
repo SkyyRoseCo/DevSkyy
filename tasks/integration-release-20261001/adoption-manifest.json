@@ -281,6 +281,25 @@
     "integration_guard_tests": 27,
     "pinned_build": "PASS",
     "projection_sha256": "8e05fb50b457663bf98126823eac2cea513cdef908b71e40804fcb2fcd0502ee",
-    "clean_package": "pending"
+    "clean_package": "PASS"
+  },
+  "package": {
+    "source_revision": "5950592d922706dd67fc0320e8c5f3dc005a47b7",
+    "source_clean": true,
+    "sha256": "47c485f0001434b7dd52f572812df02e3e103631902a16e86f92ffea407b5a16",
+    "bytes": 176928301,
+    "members": 599,
+    "repeat_byte_identity": "PASS",
+    "all_installed_file_hashes": "PASS",
+    "native_resolver_assertions": 12,
+    "native_adapter_assertions": 18,
+    "preorder_hooks": 14,
+    "deployment_authorized": false
+  },
+  "ci_draft_guard": {
+    "commit": "aa6e09d48a6c1e3eefa076cd14dd1d779a241564",
+    "scope": "Skipprovider-backedadvisory reviewer on draft; normalcode/security/catalog jobs unchanged",
+    "yaml_parse": "PASS",
+    "independent_review": "PASS"
   }
 }

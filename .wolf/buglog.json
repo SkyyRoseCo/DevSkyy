@@ -6600,6 +6600,10 @@
       "bug-385"
     ],
     "occurrences": 1,
-    "last_seen": "2026-10-01T12:45:59.982960+00:00"
+    "last_seen": "2026-10-01T12:45:59.982960+00:00",
+    "integration_execution_notes": [
+      "Certification receipt copy rejected stale locator during owner historical/final filename separation; refreshed final review and verified all4correct hashes without adopting invalid receipt.",
+      "Initial clean package correctly stopped at unset V2_WP_FIXTURE; copied7immutable source files after matching every nativegalleryhash, thenreran exact packagecommand withisolatedpinnedfixture."
+    ]
   }
 ]
