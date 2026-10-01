@@ -29,7 +29,7 @@ $rest_base  = '/?rest_route=/skyyrose/v1';
 
 // Analytics values.
 $total_events    = intval( $summary['total_events'] ?? 0 );
-$unique_visitors = intval( $summary['unique_visitors'] ?? 0 );
+$unique_visitors = $summary['unique_visitors'] ?? null;
 $top_collections = $summary['top_collections'] ?? array();
 $period          = intval( $summary['period'] ?? 30 );
 ?>
@@ -64,7 +64,7 @@ $period          = intval( $summary['period'] ?? 30 );
 				<span class="see-dashboard__stat-label"><?php esc_html_e( 'Total Events', 'skyyrose' ); ?></span>
 			</div>
 			<div class="see-dashboard__stat">
-				<span class="see-dashboard__stat-value"><?php echo esc_html( number_format_i18n( $unique_visitors ) ); ?></span>
+				<span class="see-dashboard__stat-value"><?php echo esc_html( null === $unique_visitors ? __( 'Unavailable', 'skyyrose' ) : number_format_i18n( $unique_visitors ) ); ?></span>
 				<span class="see-dashboard__stat-label"><?php esc_html_e( 'Unique Visitors', 'skyyrose' ); ?></span>
 			</div>
 			<?php if ( ! empty( $top_collections ) ) : ?>

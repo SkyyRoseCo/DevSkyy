@@ -30,12 +30,20 @@ function skyyrose_see_store_events( $events, $hash ) { $GLOBALS['projection'] = 
 function wp_remote_post( $url, $options ) {
 	$GLOBALS['last_request'] = array( 'url' => $url, 'options' => $options );
 	++$GLOBALS['remote_calls'];
+	$GLOBALS['sent_bodies'][] = $options['body'];
+	if ( strlen( $options['body'] ) > 65536 ) { throw new RuntimeException( 'Oversized relay body' ); }
+	if ( 'partial_failure' === $GLOBALS['mode'] && 2 === $GLOBALS['remote_calls'] ) { return new WP_Error( 'offline' ); }
 	$payload = json_decode( $options['body'], true );
 	$timestamp = $options['headers']['X-SkyyRose-Analytics-Timestamp'];
 	$signature = $options['headers']['X-SkyyRose-Analytics-Signature'];
 	$valid = hash_equals( hash_hmac( 'sha256', $timestamp . '.' . $options['body'], getenv( 'SKYYROSE_ANALYTICS_SECRET' ) ), $signature );
 	if ( ! $valid || 'http_fail' === $GLOBALS['mode'] ) { return array( 'code' => 401, 'body' => '{}' ); }
 	$data = array( 'status' => 'accepted', 'accepted' => count( $payload['events'] ), 'duplicates' => 0, 'event_ids' => array_column( $payload['events'], 'event_id' ), 'site_id' => $payload['site_id'], 'environment' => $payload['environment'] );
+	if ( in_array( $GLOBALS['mode'], array( 'partial_failure', 'durable_retry' ), true ) ) {
+		$data['duplicates'] = count( array_intersect( $data['event_ids'], $GLOBALS['durable_ids'] ?? array() ) );
+		$data['accepted'] -= $data['duplicates'];
+		$GLOBALS['durable_ids'] = array_unique( array_merge( $GLOBALS['durable_ids'] ?? array(), $data['event_ids'] ) );
+	}
 	switch ( $GLOBALS['mode'] ) {
 		case 'wrong_ids': $data['event_ids'] = array( 'forged' ); break;
 		case 'wrong_site': $data['site_id'] = 'another-site'; break;
@@ -102,6 +110,29 @@ foreach ( array( 'event_type' => 'purchase', 'page_type' => '/arbitrary/path', '
 	check( array() === skyyrose_see_sanitize_events( array( $invalid ) ), 'reject invalid ' . $key );
 }
 check( array() === skyyrose_see_sanitize_events( array( $event, $event ) ), 'reject duplicate IDs within a batch' );
+// Maximum permitted property payload exceeds one backend request, but must drain.
+$large = array();
+foreach ( range( 1, 50 ) as $index ) {
+	$item = $event;
+	$item['event_id'] = sprintf( '00000000-0000-4000-8000-%012d', $index );
+	$item['properties'] = array_fill_keys( array( 'action', 'depth', 'sku', 'product_id', 'quantity', 'position', 'scene', 'direction', 'source', 'variant', 'route', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content' ), str_repeat( '/', 160 ) );
+	$large[] = $item;
+}
+check( 50 === count( skyyrose_see_sanitize_events( $large ) ), 'large fixture passes public validator' );
+$GLOBALS['remote_calls'] = 0;
+$GLOBALS['sent_bodies'] = array();
+$ack = skyyrose_see_relay_analytics( $large );
+check( 50 === $ack['accepted'] && array_column( $large, 'event_id' ) === $ack['event_ids'], 'split ack covers every original ID in order' );
+check( $GLOBALS['remote_calls'] > 1 && max( array_map( 'strlen', $GLOBALS['sent_bodies'] ) ) <= 65536, 'all encoded chunks fit backend byte limit' );
+$GLOBALS['mode'] = 'partial_failure';
+$GLOBALS['remote_calls'] = 0;
+check( null === skyyrose_see_relay_analytics( $large ), 'partial delivery never acknowledges complete batch' );
+$GLOBALS['mode'] = 'durable_retry';
+$ack = skyyrose_see_relay_analytics( $large );
+check( $ack['duplicates'] > 0 && $ack['accepted'] > 0 && 50 === $ack['accepted'] + $ack['duplicates'] && 50 === count( $GLOBALS['durable_ids'] ), 'partial retry drains remaining events without duplicate durable records' );
+$GLOBALS['mode'] = 'duplicate';
+$ack = skyyrose_see_relay_analytics( $large );
+check( 50 === $ack['duplicates'] && 0 === $ack['accepted'] && array_column( $large, 'event_id' ) === $ack['event_ids'], 'retry chunk acknowledgements retain original IDs and duplicate counts' );
 putenv( 'SKYYROSE_ANALYTICS_SECRET' );
 check( null === skyyrose_see_relay_analytics( array( $event ) ), 'missing private binding fails closed' );
 echo "PASS: {$checks} relay/consent checks (offline fixtures; authentication N/A).\n";
