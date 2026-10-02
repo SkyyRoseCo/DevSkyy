@@ -1,8 +1,9 @@
 # Current production status and release boundaries
 
-**Last updated:** 2026-10-01. **Evidence snapshot:** 2026-10-01 19:21:43 UTC
-(12:21:43 PDT), recorded from actual operation receipts. Individual CI and
-browser observations retain their own earlier timestamps below.
+**Last updated:** 2026-10-02. **Latest operational observation:** 2026-10-02
+12:23:59 UTC (05:23:59 PDT), recorded from actual operation receipts.
+**Additive classification review:** 2026-10-02 12:31:25 UTC (05:31:25 PDT).
+Individual CI and browser observations retain their own timestamps below.
 **Operational source:** `a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
 This is a dated operator snapshot of the integrated release. It supplements the
@@ -19,14 +20,81 @@ the frozen operational source and does not rebuild the approved package.
 | Functional source               | Frozen at `299f694702ac2dcc61a0f30aa34e4b3ef12f9118`                                                                                                                  | Local tests are bounded integration evidence                                                                                                                                                  |
 | Clean V2 package                | Source `5950592d922706dd67fc0320e8c5f3dc005a47b7`; repeat bytes and installed-file checks passed                                                                      | Packaging does not establish live production behavior                                                                                                                                         |
 | Existing staging                | V2 2.5.0 installed; all 599 reviewed file hashes matched                                                                                                              | Staging has 220 product/variation records; it cannot establish parity with production's 33 simple products                                                                                    |
-| Production                      | `https://skyyrose.co`, active V1 `skyyrose-flagship`; exact inactive V2 installation and V1 preservation independently verified                                       | All 599 installed V2 hashes matched. Ten owned pages remain drafts; Search MU installed and actual hosting caches cleared. No V2 activation or `DEPLOYED`                                     |
-| Procedure and acceptance inputs | Native capture successor passed 31 combined local tests and independent source/procedure/79-member freeze review | Local qualification and evidence integrity do not establish production acceptance; the actual successor checkpoint failed |
+| Production                      | `https://skyyrose.co`, active V1 `skyyrose-flagship`; ten owned pages remain unchanged drafts; latest scoped post-read matches its pre-read | Earlier installation verification matched all 599 inactive V2 files. The latest scoped read does not repeat that census or revalidate 33 prices. No V2 activation or `DEPLOYED` |
+| Procedure and acceptance inputs | Exact headless-shell diagnostic collection and local V2 qualification independently reviewed | The later passive diagnostic is COMPLETE, but its current acceptance remains FAILED; local V2 qualification is not live acceptance |
 | Exact operational-head CI       | `CI_PASS`: 21 mandatory successful checks, 6 intentional skips, no pending/failure/cancellation                                                                       | Single targeted Playwright retry: 62 passed (31 Chromium, 31 mobile), 0 failed/skipped/flaky; source CI is separate from production acceptance                                                |
-| Execution clearance             | One native V1 checkpoint-only run was cleared and executed after independent review | That single-run clearance is consumed. No retry, V2 activation, or publication is cleared by its failed result |
-| V1 Search checkpoint            | Latest native desktop/mobile profiles both FAIL; process exit 1 and valid FAIL completion seal | Response-only `tk_ai` violates the current response-cookie contract; 423 requests per profile remain UNKNOWN. Native PDP and no-results journeys were not attempted in this run |
+| Execution clearance             | The native V1 checkpoint and separately cleared passive diagnostic attempts are consumed | The latest diagnostic completed its observation scope. Its completion does not clear a retry, V2 activation, or publication |
+| V1 Search checkpoint            | October 1 desktop/mobile acceptance remains FAIL; October 2 passive diagnostic collected complete evidence with process exit 0 | One emitted `tk_ai` declaration still fails the frozen response-cookie rule; 423 requests remain UNKNOWN under that classifier. Diagnostic completion is not checkpoint acceptance |
 | Production V2 acceptance        | Not executed                                                                                                                                                          | No V2 activation, `DEPLOYED`, or `PRODUCTION_ACCEPTED`; complete accepted V1 Search/privacy capture, activation, and six-profile V2 acceptance remain required                                |
 
-## Latest native checkpoint and current hold
+## Latest passive diagnostic and current hold
+
+The separately reviewed, passive desktop home-to-Search diagnostic completed on
+**2026-10-02 at 12:23:00 UTC (05:23:00 PDT)** with **process exit 0**. Its
+completion seal records **COMPLETE collection** and **current acceptance
+FAILED**. Native capture and Playwright each recorded **482 requests**, with
+matching identities, complete lifecycle evidence, and all **seven owned
+processes stopped**. Search returned HTTP **200**, **27 total results**, and
+**10 returned rows**. This diagnostic did not attempt PDP or no-results flows.
+
+The additional evidence narrows the two outstanding findings:
+
+1. Search emitted one `Set-Cookie` declaration named `tk_ai`. Blocked-cookie and
+   exempted-cookie fields are present, but both lists are empty. Saved cookie
+   jars and all **55 captured sent-cookie-name rows** are empty. These are
+   observations, **not proof of explicit rejection, acceptance, transient
+   storage, or no transmission across UNKNOWN rows**. The frozen rule rejects
+   the emitted name, so its FAIL remains unchanged.
+2. The **423 UNKNOWN rows** now divide into **399 Font requests with explicit
+   CSP failure metadata** and **24 memory-cache-shaped requests: 16 Script and
+   8 Font**. The former have the exact `request → failed` sequence with a
+   present empty error string, `canceled=false`, and `blockedReason=csp`. The
+   latter have `request → cache → response → finished`, HTTP 200, and zero
+   encoded bytes. The current classifier still reports UNKNOWN; source-backed
+   predicates and controlled local server tests must qualify any successor.
+
+The additive classification was recorded at **12:28:58 UTC**, and its
+independent review passed at **12:31:25 UTC**. That later review validates the
+immutable evidence and classification; it does not move the operational
+observation time or pass production acceptance. The prior failed runs remain retained.
+An earlier October 2 diagnostic stopped before navigation on an exact browser
+identity mismatch. Subsequent local full-Chrome trials exposed native favicon
+requests absent from Playwright's page events; those failures were preserved.
+The successful passive diagnostic uses the explicitly pinned
+**HeadlessChrome/143.0.7499.4** executable and unchanged strict coverage checks.
+
+The separate V2 harness also passed its **six-profile local qualification** on
+that explicit headless-shell runtime, including both 31-second consent
+observations and clock-shift controls. This is local harness evidence only;
+V2 has not been activated or tested live.
+
+An authenticated scoped preservation read at **12:23:59 UTC (05:23:59 PDT)**
+matches the complete result of the immediate pre-read. V1 remains active, the
+owned MU source matches, all ten owned pages remain unchanged drafts, and six
+protected merchant pages match their snapshots. A separately reviewed earlier
+homepage snapshot difference consists only of the serialized Elementor CSS
+cache timestamp; no actor or mechanism is inferred. The post-read does not
+repeat the **33-product price check or 599-file inactive V2 census**. CI remains
+separately dated **October 1 at 18:10:27 UTC**.
+
+The next work is bounded local qualification of CSP/cache classifications and
+Search credentials behavior, with an explicit review of the privacy test's
+relationship to the original storage, transmission, and tracker requirements.
+Source/configuration inference must remain distinct from actual browser
+configuration. No historical FAIL is rewritten, and no new site journey or
+production mutation follows from local qualification alone.
+
+| October 2 evidence | SHA-256 |
+| --- | --- |
+| Passive diagnostic freeze manifest, 143 members | `7ecceca79ed919d84f514b717ea4c7afe683d143791a7973b1cc6cb487be475d` |
+| Actual diagnostic manifest, 8 members | `58b31b4ab48147531058923c9502daff7866ad4ee74cbad970aebc26da8f2bf2` |
+| COMPLETE collection / FAILED acceptance seal | `88f338e5622e1c0a16fa73be49f41219f97767adf40288542ac2507b1b3d6135` |
+| Additive actual classification | `10281b17ff25909c8bd655b41ca686d47ef23cd4d7c1f9039b06894c62e6807a` |
+| Independent classification review | `9b96f883ed1deb03509f5ef5de7629aaf70c330ca720ecfbeaf9e0c823ce172c` |
+| Scoped post-read at 12:23:59 UTC | `f5b1cacc06f065045ad186ee7d830867d8205043e3f0d566765518bb73637532` |
+| Explicit-shell V2 local review | `9a9e655c78faff4c398c62e8c62d9202652a76dfbf9abfbf1936778803293095` |
+
+## October 1 native checkpoint history
 
 The reviewed native-capture successor was frozen as **79 members** after **31
 combined local tests passed** and independent source, procedure, runtime, and
@@ -61,14 +129,14 @@ Two distinct findings require correction and review:
    request was unsent. The original classification's total of 407 Font rows
    must not be read as 407 failed Font requests.
 
-The correction work is local: retain native failure and blocked/exempted-cookie
+At that checkpoint, the correction work was local: retain native failure and blocked/exempted-cookie
 diagnostics without values, qualify Font/Script cache behavior separately with
 actual local server observations, and investigate a supported Search privacy
 correction. The operational classifier and response-cookie policy remain
-unchanged. Any proposed successor needs independent review and fresh scoped
-clearance before another live checkpoint. A separate V2 collector and
-entrypoint remain in local qualification; they do not supply production
-acceptance or clear the V1 findings.
+unchanged. The later diagnostic and local V2 qualification above advance that
+investigation without supplying production acceptance or clearing the V1
+findings. Any proposed operational successor needs independent review and
+fresh scoped clearance before another live checkpoint.
 
 A fresh authenticated, read-only preservation check at **19:21:43 UTC
 (12:21:43 PDT)** confirms V1 remains active, the installed MU still matches its
@@ -78,7 +146,7 @@ warnings or stderr. This read **did not revalidate the 33 product prices or all
 599 installed V2 files**. The latest retained CI refresh is separately dated
 **18:10:27 UTC (11:10:27 PDT)**: 21 SUCCESS and 6 expected SKIP at the frozen
 application head. No production mutation or second browser attempt followed
-the failed native checkpoint within this snapshot.
+the failed native checkpoint within that October 1 snapshot.
 
 ## Earlier execution history
 
@@ -379,6 +447,21 @@ including per-profile receipts, `run-receipt.json`, `evidence-manifest.json`, an
 `production-v1-native-preflight-20261001t192136.json`. Original failed-run
 artifacts are preserved; later diagnoses must add evidence rather than rewrite
 their recorded observations.
+
+The October 2 passive diagnostic packet is
+`final-clearance/frozen-native-search-diagnostic-d3667d04-4eb8-46c0-bdf9-d6f857cea2a3/`.
+Its actual output is under
+`evidence/production-v2-acceptance/local-v1-native-live-diagnostic/diagnostic-8baf50fb-b33e-4492-9f22-e55054621959/`
+inside that frozen packet. The parent final-clearance directory retains
+`native-search-diagnostic-actual-classification-d3667d04.json`,
+`native-search-diagnostic-actual-classification-review-d3667d04.json`, and
+`v2-explicit-shell-local-review-pass.json`. The execution evidence directory
+retains the post-read
+`production-v1-native-preflight-20261002t122351.json` and its `-raw.json`
+companion. The reviewed homepage cache timestamp delta is
+`final-clearance/native-diagnostic-fresh-preservation-cache-delta-20261002t120133.json`.
+These are local receipts, not files implicitly included in this documentation
+commit.
 
 Obtain the current packet from the coordinator and verify its pinned identities
 before execution; an unavailable receipt is an explicit gate gap.
