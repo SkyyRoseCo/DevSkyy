@@ -1,7 +1,8 @@
 # Current production status and release boundaries
 
-**Last updated:** 2026-10-01. **Evidence snapshot:** 2026-10-01 16:48:48 UTC,
-recorded from actual operation receipts and the latest coordinator update.
+**Last updated:** 2026-10-01. **Evidence snapshot:** 2026-10-01 19:21:43 UTC
+(12:21:43 PDT), recorded from actual operation receipts. Individual CI and
+browser observations retain their own earlier timestamps below.
 **Operational source:** `a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
 This is a dated operator snapshot of the integrated release. It supplements the
@@ -19,11 +20,67 @@ the frozen operational source and does not rebuild the approved package.
 | Clean V2 package                | Source `5950592d922706dd67fc0320e8c5f3dc005a47b7`; repeat bytes and installed-file checks passed                                                                      | Packaging does not establish live production behavior                                                                                                                                         |
 | Existing staging                | V2 2.5.0 installed; all 599 reviewed file hashes matched                                                                                                              | Staging has 220 product/variation records; it cannot establish parity with production's 33 simple products                                                                                    |
 | Production                      | `https://skyyrose.co`, active V1 `skyyrose-flagship`; exact inactive V2 installation and V1 preservation independently verified                                       | All 599 installed V2 hashes matched. Ten owned pages remain drafts; Search MU installed and actual hosting caches cleared. No V2 activation or `DEPLOYED`                                     |
-| Procedure and acceptance inputs | Initial source/freeze review and 30 offline tests passed; query-correction source/procedure/39-file freeze reviewed with 34 focused tests and Ruff/Black/mypy passing | These are offline/localhost and source-review receipts. Observer/finalization correction, review/refreeze, and tests remain pending                                                           |
+| Procedure and acceptance inputs | Native capture successor passed 31 combined local tests and independent source/procedure/79-member freeze review | Local qualification and evidence integrity do not establish production acceptance; the actual successor checkpoint failed |
 | Exact operational-head CI       | `CI_PASS`: 21 mandatory successful checks, 6 intentional skips, no pending/failure/cancellation                                                                       | Single targeted Playwright retry: 62 passed (31 Chromium, 31 mobile), 0 failed/skipped/flaky; source CI is separate from production acceptance                                                |
-| Execution clearance             | Initial combined clearance and precondition hold release retained; query-corrected V1 checkpoint-only resume issued after independent review                          | Immediate guards still apply. The corrected run has unresolved instrumentation health; all next production writes remain held                                                                 |
-| V1 Search checkpoint            | Corrected desktop/mobile functional journeys completed and printed PASS; process exited 0                                                                             | Three `TargetClosedError` occurrences in full stderr leave capture completeness UNKNOWN. Printed PASS is not accepted V1 checkpoint PASS; observer correction and full reviewed rerun pending |
+| Execution clearance             | One native V1 checkpoint-only run was cleared and executed after independent review | That single-run clearance is consumed. No retry, V2 activation, or publication is cleared by its failed result |
+| V1 Search checkpoint            | Latest native desktop/mobile profiles both FAIL; process exit 1 and valid FAIL completion seal | Response-only `tk_ai` violates the current response-cookie contract; 423 requests per profile remain UNKNOWN. Native PDP and no-results journeys were not attempted in this run |
 | Production V2 acceptance        | Not executed                                                                                                                                                          | No V2 activation, `DEPLOYED`, or `PRODUCTION_ACCEPTED`; complete accepted V1 Search/privacy capture, activation, and six-profile V2 acceptance remain required                                |
+
+## Latest native checkpoint and current hold
+
+The reviewed native-capture successor was frozen as **79 members** after **31
+combined local tests passed** and independent source, procedure, runtime, and
+relocated default-mode review. The single live V1 checkpoint completed at
+**18:17:40 UTC (11:17:40 PDT)** with **process exit 1** and **FAIL in both
+desktop and mobile profiles**. Its valid FAIL completion seal binds all **21
+operational evidence members**; all member hashes and lengths match. The
+original 79 frozen members remain unchanged. Evidence integrity passed;
+production acceptance did not.
+
+Both profiles reached a positive Search response: HTTP **200**, **27 total
+results**, and **10 returned rows**. Each then stopped at the privacy check.
+The native PDP and no-results journeys were **not attempted in this run**.
+The finalized run records no global capture exceptions and confirms transport
+exit; those facts do not resolve the request-level UNKNOWN results.
+
+Two distinct findings require correction and review:
+
+1. The Search service response contains the `Set-Cookie` **name** `tk_ai`.
+   The captured request's sent-cookie names and saved browser-cookie
+   observations are empty. This proves the response header was present; it
+   **does not prove that the browser stored or sent the cookie**. The frozen
+   acceptance contract expressly forbids that response-cookie name, so the
+   result remains FAIL. The capture does not retain blocked-cookie reasons,
+   and they cannot be reconstructed from these records.
+2. Each profile retains **423 UNKNOWN requests**: **399 Font requests** with
+   `request → failed` and insufficient failure metadata, plus **8 Font and 16
+   Script requests** with a memory-cache-shaped sequence. The latter have a
+   cache event, HTTP 200 response, and completed zero-byte transfer, but their
+   resource types are outside the reviewed Image/Stylesheet memory-cache
+   qualification. Neither a failure event nor absent ExtraInfo proves that a
+   request was unsent. The original classification's total of 407 Font rows
+   must not be read as 407 failed Font requests.
+
+The correction work is local: retain native failure and blocked/exempted-cookie
+diagnostics without values, qualify Font/Script cache behavior separately with
+actual local server observations, and investigate a supported Search privacy
+correction. The operational classifier and response-cookie policy remain
+unchanged. Any proposed successor needs independent review and fresh scoped
+clearance before another live checkpoint. A separate V2 collector and
+entrypoint remain in local qualification; they do not supply production
+acceptance or clear the V1 findings.
+
+A fresh authenticated, read-only preservation check at **19:21:43 UTC
+(12:21:43 PDT)** confirms V1 remains active, the installed MU still matches its
+owned source, the homepage and six protected merchant pages match their
+snapshots, and all ten owned pages remain unchanged drafts. It produced no
+warnings or stderr. This read **did not revalidate the 33 product prices or all
+599 installed V2 files**. The latest retained CI refresh is separately dated
+**18:10:27 UTC (11:10:27 PDT)**: 21 SUCCESS and 6 expected SKIP at the frozen
+application head. No production mutation or second browser attempt followed
+the failed native checkpoint within this snapshot.
+
+## Earlier execution history
 
 The cancelled Playwright job is `110435542010` in CI run `36880002499` on exact
 `a662e707…`. Its preserved complete log records about 16 minutes in checkout, 3
@@ -125,19 +182,19 @@ teardown. The **16:48:48 UTC** immutable instrumentation-hold receipt preserves
 the process result and verifies the run's **22 evidence members** without
 accepting V1 checkpoint PASS.
 
-A bounded local observer/finalization correction has an independently reviewed
-plan; its corrected source/procedure, independent review/refreeze, tests, and
-full two-profile rerun remain pending. The timeout, privacy, product-click,
-empty-result, and native-form gates must remain intact. This is an observation
-completeness hold; it supplies no basis for claiming a production regression or
-requiring MU rollback. No application, MU, theme package, or operational-head
-change is part of the correction.
+That instrumentation hold led to the reviewed native-capture successor and the
+later failed checkpoint described above. The earlier printed PASS and its
+incomplete observation record remain historical evidence; they have not been
+relabeled as accepted. The timeout, privacy, product-click, empty-result, and
+native-form gates remain required. The verifier correction did not change the
+application, MU, theme package, or operational head. A verifier failure alone
+does not establish a production regression or require MU rollback.
 
 At this snapshot, **all next production writes are held**. V1 remains active;
 the ten owned pages remain drafts. No V2 activation, `DEPLOYED`, or
 `PRODUCTION_ACCEPTED` is established. Source CI and conditional execution
 clearance remain separate valid receipts, but neither overrides unresolved
-runtime observation completeness. Any changed or unknown precondition also stops
+runtime privacy and observation findings. Any changed or unknown precondition also stops
 the next mutation for read-only reconciliation under the reviewed stop/recovery
 rules. Never blindly retry an uncertain mutation or substitute diagnostic
 results for required acceptance evidence.
@@ -184,6 +241,16 @@ them with the site identity immediately before execution.
 | Query-corrected printed profile results         | `a179db54b46d9c08ec2578227e4285f63b1287808916031aecc4f648dc0a0f13` |
 | Query-corrected run evidence manifest: 22 files | `62559d1f25143f9342d497042493bc0ddca2a3b2a7d2d889505bd77e1c91f59f` |
 | Query-corrected instrumentation-hold receipt    | `676635d31ad6980784a13f0a92564160c80bdbeb442b4a8626b4c31b69f3adab` |
+| Native V1 combined source review                | `9c57a0cff8dc388d6ba348df1352b72564c4c00ccfe9db06ef85e96879f01874` |
+| Native V1 reviewed freeze: 79 members            | `d99c81cb9c56bdc3f6e5a2d91d323e76734d539583e3e697640ed8076b69b9d2` |
+| Native V1 freeze identity review                | `963b4b657f1b340345e3acc645cacd3b8039bd3c9fbf1d0c58f1bdb89278ba51` |
+| Native V1 checkpoint-only clearance (consumed)   | `10ca8f91a3e3732f3e209847f528b439c57b81e44da5830702b2b400adc405bd` |
+| Native V1 actual command attempt: exit 1         | `a9f64f211dad558f1bbd13d9be9a76d7a6dfedbb7e71e1a0d5fed9fc523a5ae0` |
+| Native V1 failed-run manifest: 21 members        | `e97385294af740e63064cf8ea70d4ba9421be896dbbb3e4e359f9e2f89cd5251` |
+| Native V1 valid FAIL completion seal             | `4b7d61b7faac9d1afe75b54202a1bf78b22f2e23795152062237e89d08847bc5` |
+| Native V1 finalized FAIL run receipt              | `501c952d8738aeb80bfecc7f321cded45245318f90da6b0d4463af5a8dc867cb` |
+| CI refresh before native V1: 18:10:27 UTC         | `c6e32070524ad38ed4d70a5acb39096b3fade996858e4ca7b3b0dda98d77ce11` |
+| Post-failure preservation read: 19:21:43 UTC      | `bd2f5297f004b22d71675924a79ddac8af503ff28a6704b6c1416402d01e081f` |
 
 The Search extension is a separate artifact; it does not change the V2 ZIP.
 Recomputing hashes of changed files cannot approve a successor. Match the
@@ -297,6 +364,21 @@ Its freeze/procedure identities and
 `final-clearance/resume-v1-search-checkpoint-query-corrected.json` are
 separately bound in the table above; their recorded PASS/review states do not
 override the later instrumentation hold.
+
+The subsequent native-capture packet is
+`final-clearance/frozen-acceptance-v1-native/`. Its actual failed run is under
+`evidence/production-v2-acceptance/checkpoint-v1-native-20261001t181458/`,
+including per-profile receipts, `run-receipt.json`, `evidence-manifest.json`, and
+`completion-seal.json`. The parent final-clearance folder contains
+`v1-native-combined-source-review-pass.json`,
+`v1-native-freeze-identity-review-pass.json`,
+`v1-native-checkpoint-only-resume.json`, and
+`ci-revalidated-before-v1-native.json`. The execution evidence folder retains
+`production-v1-native-checkpoint-attempt.json`, the original
+`production-v1-native-checkpoint-failure-classification.json`, and
+`production-v1-native-preflight-20261001t192136.json`. Original failed-run
+artifacts are preserved; later diagnoses must add evidence rather than rewrite
+their recorded observations.
 
 Obtain the current packet from the coordinator and verify its pinned identities
 before execution; an unavailable receipt is an explicit gate gap.
