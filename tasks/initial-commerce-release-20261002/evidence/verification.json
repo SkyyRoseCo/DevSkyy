@@ -50,11 +50,16 @@
     "certification-before-rebind.log": "aaa4880905230e1786a62101a4b5bc81b76c0e1e15a48700d53a3baa571880e4",
     "certification-tests.log": "081f78ed89309c84c181cb6deb662799c42ebe52736c5e8eb0ee9d502a594b8f",
     "inert-snapshot-final-tests.log": "c1ad1331cdfd2563489bc45f29055f3b837258beb26505c802c966460135c627",
-    "inert-snapshot-sandbox-failure.log": "f4d994434ccfbb54ae25b6640c48e6d2e6662b6e4f61b125e21a73320c0675d2",
+    "inert-snapshot-sandbox-failure.log": "fddfcbeeccdcb2d14b936f4059c7adb63851a639d6b471a47067c3c564873bd2",
     "inert-snapshot-tests.log": "07cf9e9559ac97d914f9bc0075ccbedd4c625488e9da2e0815416f76235404e9",
     "registry-tests.log": "3de5e6b6b16bccf586a56741c04d8684d65230137ff9b8f717a30e020594ed87",
     "theme-verify-final.log": "1f3d9e9da18a589fd265331f605f2426aa3584ba6b607ac377a3dcbe0827efb9",
     "theme-verify-qualified.log": "4343c4619d0f880bfe98e7dd62a0ff9779ba255d9948c09a6060ba8e24e77a88",
     "theme-verify.log": "8adb85f403fce8f4dd0df870dbb631089a3d540cdc79f694a61fa2169a12a0fc"
+  },
+  "log_normalization": {
+    "file": "inert-snapshot-sandbox-failure.log",
+    "change": "Removed whitespace-only trailing spaces; raw launch failure retained outside Git",
+    "raw_sha256": "f4d994434ccfbb54ae25b6640c48e6d2e6662b6e4f61b125e21a73320c0675d2"
   }
 }
