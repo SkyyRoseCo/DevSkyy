@@ -72,7 +72,14 @@
       "blockGap": true,
       "margin": true,
       "padding": true,
-      "units": ["px", "rem", "em", "%", "vw", "vh"],
+      "units": [
+        "px",
+        "rem",
+        "em",
+        "%",
+        "vw",
+        "vh"
+      ],
       "spacingSizes": [
         {
           "name": "2XS",
@@ -165,65 +172,66 @@
       ],
       "fontFamilies": [
         {
-          "name": "Archivo",
-          "slug": "archivo",
-          "fontFamily": "\"Archivo\", system-ui, sans-serif",
+          "name": "Anybody Condensed",
+          "slug": "anybody-condensed",
+          "fontFamily": "\"Anybody Condensed\", \"Arial Narrow\", system-ui, sans-serif",
           "fontFace": [
             {
-              "fontFamily": "Archivo",
+              "fontFamily": "Anybody Condensed",
               "fontStyle": "normal",
               "fontWeight": "100 900",
-              "fontDisplay": "swap",
-              "src": ["file:./assets/sot/fonts/archivo-latin.woff2"]
-            },
-            {
-              "fontFamily": "Archivo",
-              "fontStyle": "normal",
-              "fontWeight": "100 900",
-              "fontDisplay": "swap",
-              "src": ["file:./assets/derived/fonts/archivo-normal-width.woff2"]
+              "fontDisplay": "optional",
+              "src": [
+                "file:./assets/derived/fonts/anybody-condensed.woff2"
+              ]
             }
           ]
         },
         {
-          "name": "Hanken Grotesk",
-          "slug": "hanken-grotesk",
-          "fontFamily": "\"Hanken Grotesk\", \"Inter\", sans-serif",
+          "name": "Anybody Wide",
+          "slug": "anybody-wide",
+          "fontFamily": "\"Anybody Wide\", system-ui, sans-serif",
           "fontFace": [
             {
-              "fontFamily": "Hanken Grotesk",
+              "fontFamily": "Anybody Wide",
               "fontStyle": "normal",
               "fontWeight": "100 900",
               "fontDisplay": "swap",
-              "src": ["file:./assets/sot/fonts/hanken-grotesk-latin.woff2"]
+              "src": [
+                "file:./assets/derived/fonts/anybody-wide.woff2"
+              ]
             }
           ]
         },
         {
-          "name": "Anton",
-          "slug": "anton",
-          "fontFamily": "\"Anton\", sans-serif",
+          "name": "Geist",
+          "slug": "geist",
+          "fontFamily": "\"Geist\", system-ui, sans-serif",
           "fontFace": [
             {
-              "fontFamily": "Anton",
+              "fontFamily": "Geist",
               "fontStyle": "normal",
-              "fontWeight": "400",
+              "fontWeight": "100 900",
               "fontDisplay": "swap",
-              "src": ["file:./assets/sot/fonts/anton-latin.woff2"]
+              "src": [
+                "file:./assets/sot/fonts/geist-latin.woff2"
+              ]
             }
           ]
         },
         {
-          "name": "Cinzel",
-          "slug": "cinzel",
-          "fontFamily": "\"Cinzel\", serif",
+          "name": "Martian Mono",
+          "slug": "martian-mono",
+          "fontFamily": "\"Martian Mono\", ui-monospace, Menlo, monospace",
           "fontFace": [
             {
-              "fontFamily": "Cinzel",
+              "fontFamily": "Martian Mono",
               "fontStyle": "normal",
-              "fontWeight": "400 900",
+              "fontWeight": "100 800",
               "fontDisplay": "swap",
-              "src": ["file:./assets/sot/fonts/cinzel-latin.woff2"]
+              "src": [
+                "file:./assets/derived/fonts/martian-mono-narrow.woff2"
+              ]
             }
           ]
         }
@@ -291,37 +299,37 @@
       "typeRoles": {
         "monument": {
           "size": "clamp(3rem, 7vw, 7rem)",
-          "family": "\"Archivo\", system-ui, sans-serif",
+          "family": "\"Anybody Wide\", system-ui, sans-serif",
           "leading": "0.94"
         },
         "display": {
           "size": "clamp(2rem, 4vw, 4rem)",
-          "family": "\"Archivo\", system-ui, sans-serif",
+          "family": "\"Anybody Condensed\", \"Arial Narrow\", system-ui, sans-serif",
           "leading": "1"
         },
         "editorial": {
           "size": "clamp(1.5rem, 2.4vw, 2.5rem)",
-          "family": "\"Archivo\", system-ui, sans-serif",
+          "family": "\"Anybody Condensed\", \"Arial Narrow\", system-ui, sans-serif",
           "leading": "1.12"
         },
         "commerce": {
           "size": "clamp(1rem, 1vw + 0.75rem, 1.25rem)",
-          "family": "\"Hanken Grotesk\", \"Inter\", sans-serif",
+          "family": "\"Geist\", system-ui, sans-serif",
           "leading": "1.35"
         },
         "body": {
           "size": "1rem",
-          "family": "\"Hanken Grotesk\", \"Inter\", sans-serif",
+          "family": "\"Geist\", system-ui, sans-serif",
           "leading": "1.6"
         },
         "utility": {
           "size": "0.875rem",
-          "family": "\"Anton\", sans-serif",
+          "family": "\"Martian Mono\", ui-monospace, Menlo, monospace",
           "leading": "1.4"
         },
         "index": {
           "size": "0.75rem",
-          "family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+          "family": "\"Martian Mono\", ui-monospace, Menlo, monospace",
           "leading": "1.4"
         }
       },
@@ -343,7 +351,7 @@
       "blockGap": "var(--wp--preset--spacing--medium)"
     },
     "typography": {
-      "fontFamily": "var(--wp--preset--font-family--hanken-grotesk)",
+      "fontFamily": "var(--wp--preset--font-family--geist)",
       "fontSize": "var(--wp--preset--font-size--body)",
       "lineHeight": "1.6"
     },
@@ -354,7 +362,7 @@
           "text": "var(--wp--preset--color--concrete-black)"
         },
         "typography": {
-          "fontFamily": "var(--wp--preset--font-family--anton)",
+          "fontFamily": "var(--wp--preset--font-family--martian-mono)",
           "fontWeight": "400",
           "letterSpacing": "0.08em",
           "textTransform": "uppercase"
@@ -368,7 +376,7 @@
           "text": "var(--wp--preset--color--text-muted)"
         },
         "typography": {
-          "fontFamily": "var(--wp--preset--font-family--cinzel)",
+          "fontFamily": "var(--wp--preset--font-family--martian-mono)",
           "fontSize": "var(--wp--preset--font-size--small)",
           "letterSpacing": "0.08em",
           "textTransform": "uppercase"
@@ -376,28 +384,31 @@
       },
       "h1": {
         "typography": {
-          "fontFamily": "var(--wp--preset--font-family--archivo)",
+          "fontFamily": "var(--wp--preset--font-family--anybody-condensed)",
           "fontSize": "var(--wp--preset--font-size--display)",
           "fontWeight": "800",
-          "letterSpacing": "-0.045em",
-          "lineHeight": "0.95"
+          "letterSpacing": "0.02em",
+          "lineHeight": "0.95",
+          "textTransform": "uppercase"
         }
       },
       "h2": {
         "typography": {
-          "fontFamily": "var(--wp--preset--font-family--archivo)",
+          "fontFamily": "var(--wp--preset--font-family--anybody-condensed)",
           "fontSize": "var(--wp--preset--font-size--display-small)",
           "fontWeight": "750",
-          "letterSpacing": "-0.035em",
-          "lineHeight": "1"
+          "letterSpacing": "0.02em",
+          "lineHeight": "1",
+          "textTransform": "uppercase"
         }
       },
       "h3": {
         "typography": {
-          "fontFamily": "var(--wp--preset--font-family--archivo)",
+          "fontFamily": "var(--wp--preset--font-family--anybody-condensed)",
           "fontSize": "var(--wp--preset--font-size--lead)",
           "fontWeight": "700",
-          "lineHeight": "1.2"
+          "lineHeight": "1.2",
+          "textTransform": "uppercase"
         }
       },
       "link": {

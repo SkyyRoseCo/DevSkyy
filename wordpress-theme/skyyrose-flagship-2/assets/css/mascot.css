@@ -260,7 +260,7 @@ body #skyy-ask-dialog {
 .skyy-ask-dialog__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sr2-space-4); margin-bottom: var(--sr2-space-4); }
 #skyy-ask-minimize { margin-inline-start: auto; }
 .skyy-ask-dialog__eyebrow { color: var(--sr2-color-text-muted); font-size: .625rem; letter-spacing: .16em; margin: 0 0 .25rem; }
-#skyy-ask-dialog-title { margin: 0; font-family: var(--sr2-font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.1; font-weight: 700; }
+#skyy-ask-dialog-title { margin: 0; font-family: var(--sr2-font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.1; font-weight: 700; text-transform: var(--sr2-case-display); }
 .skyy-ask-dialog__body { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: var(--sr2-space-6); }
 #skyyrose-mascot.skyy-concierge-stage { position: relative; align-self: start; min-width: 0; }
 #skyy-ask-dialog .skyyrose-mascot__character { position: relative; width: 100%; height: auto; aspect-ratio: 220 / 340; overflow: hidden; }
@@ -351,7 +351,7 @@ body.sr2-overlay-open #skyy-hero-stage.skyy-dock, body.sr2-nav-open #skyy-hero-s
 #skyy-hero-stage .skyy-presence-status { grid-column: 2; grid-row: 1; align-self: start; width: 9rem; margin: 0 0 var(--sr2-space-2); pointer-events: none; }
 #skyy-hero-stage #skyy-motion-toggle { grid-column: 2; grid-row: 2; align-self: end; margin-bottom: var(--sr2-space-2); }
 #skyy-hero-stage .skyy-hero-actions { grid-column: 2; grid-row: 3; display: flex; flex-direction: column; gap: var(--sr2-space-2); }
-/* House control language: Hanken 500 .75rem uppercase, hairline borders, 44px targets. */
+/* House control language: Geist 500 .75rem uppercase, hairline borders, 44px targets. */
 #skyy-hero-stage button {
  pointer-events: auto; min-width: var(--sr2-target-size); min-height: var(--sr2-target-size); padding: .625rem .875rem;
  border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control); background: var(--sr2-surface-dialog);

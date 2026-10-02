@@ -6548,5 +6548,22 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-23T13:46:47.434298+00:00"
+  },
+  {
+    "id": "bug-377",
+    "timestamp": "2026-10-02T22:35:00Z",
+    "error_message": "Founder: 'luxury grows from concrete was supposed to be removed from everywhere' — a design-system build put the retired tagline in the brand book, cover and a preview",
+    "file": "CLAUDE.md",
+    "root_cause": "Root CLAUDE.md section 6 still listed 'Luxury Grows from Concrete' as the tagline after the founder retired it; the agent copied brand copy from that file instead of from the V2 theme, which has zero occurrences",
+    "fix": "Removed the tagline from the design system artifact; CLAUDE.md section 6 now states the tagline is retired; cerebrum User Preferences records it. Repo-wide removal of the ~335 remaining references is queued as a separate task",
+    "tags": [
+      "brand",
+      "tagline",
+      "stale-canon",
+      "design-system"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-02T22:35:00Z"
   }
 ]

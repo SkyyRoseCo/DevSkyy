@@ -437,10 +437,18 @@ Python API and Dashboard: read `Makefile` / `frontend/package.json`.
 (background) · Silver `#C0C0C0` (Black Rose) · Crimson `#DC143C` (Love Hurts) ·
 Gold `#D4AF37` (Signature).
 
-Tagline "Luxury Grows from Concrete." · Collections: Signature, Black Rose, Love
-Hurts, Kids Capsule.
+No tagline: "Luxury Grows from Concrete." is retired (founder, 2026-10-02) — do not
+use it anywhere. Collections: Signature, Black Rose, Love Hurts, Kids Capsule.
 
-**Fonts** — **Archivo** (display/hero, `font-variation-settings 'wdth' 125`) ·
+**V2 fonts (Flagship 2, founder-approved "Stretch", 2026-10-02)** — **Anybody**
+cut at both ends of its width axis: **Anybody Condensed** (wdth 50, uppercase
+titles and navigation) and **Anybody Wide** (wdth 150, wordmark and collection
+nameplates) · **Geist** (body/UI) · **Martian Mono** (wdth 87.5, eyebrows,
+buttons, indices, engraved labels). Provenance and hashes:
+`wordpress-theme/skyyrose-flagship-2/data/font-provenance.json`. Product names keep
+the founder's casing (no forced uppercase).
+
+**V1 fonts** — **Archivo** (display/hero, `font-variation-settings 'wdth' 125`) ·
 **Hanken Grotesk** (body/UI) · **Anton** (drop/UI accent) · **Cinzel** (engraved
 caps) · **Inter** (fallback). Per-collection scripts: **SkyyRose Black Rose
 Script** (BR, bespoke, replaced Pacifico) · **SkyyRose Love Hurts Graffiti**

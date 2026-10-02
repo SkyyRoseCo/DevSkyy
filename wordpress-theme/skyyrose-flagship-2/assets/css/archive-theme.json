@@ -6,18 +6,18 @@
   },
   "source": {
     "file": "theme.css",
-    "sha256": "316b810daae6e0b4d31acd9e2dee117d792765c6cb7d2359e99c33926693b346",
-    "bytes": 66239
+    "sha256": "c4d45e6154bcad799a7f9b3f97f80b190dbf71e01c359a0396966f9ae7637668",
+    "bytes": 66747
   },
   "originalMin": {
     "file": "theme.min.css",
-    "sha256": "c331896bb1e1e1225ba77697283992b720e2776cddf6d8078412f67b85a1201d",
-    "bytes": 56005
+    "sha256": "40b5eaaa6468afbfd0cc2903ab925f77c7469dacc6bfde821f75101bad6c102c",
+    "bytes": 56496
   },
   "output": {
     "file": "archive-theme.min.css",
-    "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a",
-    "bytes": 26637
+    "sha256": "c4f8c9d9b79fea86f3a451fe8fb0d0e1734a70a4c635a7e6d1083c6906256d88",
+    "bytes": 26792
   },
   "ownerFamilies": {
     "content": [
@@ -414,7 +414,7 @@
       "index": 35,
       "selector": ".sr2-section-head h2",
       "wrappers": [],
-      "ruleSha256": "48247fa39561b160904f6f8dd7ceee477fb03b7bae124674348b6b913d0f14d7",
+      "ruleSha256": "cda1fe25eab44d3e5b20cbeb1c6c67576a3406862bcb81b4f54d6841d147155b",
       "disposition": "PRESERVE",
       "owners": []
     },
@@ -486,7 +486,7 @@
       "index": 44,
       "selector": ".sr2-title-display",
       "wrappers": [],
-      "ruleSha256": "8370d6ea202db0a51b524ae04639de9fab5d7b4951133847dc358a13ef9e7f28",
+      "ruleSha256": "cab9db529ffc3c041fcdcaeecba76b37842af2588003fe4cff8ab11e97bfb031",
       "disposition": "PRESERVE",
       "owners": []
     },
@@ -494,7 +494,7 @@
       "index": 45,
       "selector": ".sr2-title-chapter",
       "wrappers": [],
-      "ruleSha256": "406e98759e7af082704beae9ef3f2fbdd8ff4dd78bfb6639d9e54c4ec2be9e2a",
+      "ruleSha256": "5d2ce6fa94935ec3f42062199abf8ae0869d0366d5e445b84bbf48d5292f7093",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "editorialWorlds"
@@ -872,7 +872,7 @@
       "index": 84,
       "selector": ".sr2-journal-entry h2",
       "wrappers": [],
-      "ruleSha256": "51d2d71ad28fa4ae0296785afbc157a605a261c749af0102c3488add921169d9",
+      "ruleSha256": "928e55fbbeedc46b8e62fa9cbd2c160a93c5a8011713e1db72f44d5a107a687a",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "content"
@@ -902,7 +902,7 @@
       "index": 87,
       "selector": ".sr2-title-editorial",
       "wrappers": [],
-      "ruleSha256": "e0e3588fe6f88ad3e0fe27f8790a463687ed3588d859c17ee69da740d384d94e",
+      "ruleSha256": "d63ecb13aaa1a3c77f2fccffdef72cf39775288ffe1eff0d83544997e8435922",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "content"
@@ -1234,7 +1234,7 @@
       "index": 121,
       "selector": ".woocommerce ul.products li.product .woocommerce-loop-product__title",
       "wrappers": [],
-      "ruleSha256": "9b2042ed042277c61bbc9066fbcc1600ddd9f92bb69020707adc74485bf1464c",
+      "ruleSha256": "25acbcb01fb28906ba00543dddcd3f34078be312ed9fece9d9798b8747db8ca2",
       "disposition": "PRESERVE",
       "owners": []
     },
@@ -1278,7 +1278,7 @@
       "index": 126,
       "selector": ".woocommerce div.product .product_title",
       "wrappers": [],
-      "ruleSha256": "3073ebf0b0fdfc72ca637eeea111e16a9cf36959e54dc53b22ac6394558744a9",
+      "ruleSha256": "2d05f1c378ddf4dd6e17eebd304486e90fa1d10d1041bd13ae7142970a32d0f8",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "product"
@@ -1432,7 +1432,7 @@
       "index": 143,
       "selector": ".woocommerce-checkout h3, .woocommerce-account h2",
       "wrappers": [],
-      "ruleSha256": "7dce131cb21fc7cf862d3638c84e60883775f9fe85ca8a71e816b614e44680d9",
+      "ruleSha256": "22d9099d4d75f23a2dea927c1e3784cb47badbe75fbd91e172b9eb3da2a31c9d",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "transactions"
@@ -1706,7 +1706,7 @@
       "index": 171,
       "selector": ".sr-home h2",
       "wrappers": [],
-      "ruleSha256": "fab441a563fcef687d3e5234278346c98e21ad58fb9546ae422a8883918af1ad",
+      "ruleSha256": "2b63a782d143c496a0914fb2c4fb2d4cc386e9f68dedf858b99613b6d3ae225b",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "legacyWorlds"
@@ -2010,7 +2010,7 @@
       "index": 205,
       "selector": ".sr2-search-dialog__panel h2",
       "wrappers": [],
-      "ruleSha256": "8627bec0ddaeab20e424be60a126e5f9d47c18e241d8bd302d53fc7a70104fd3",
+      "ruleSha256": "19a50cef8c2ed221ca8a5a90eacdcbb71be98d4f8d2bfc05aa077d9114c5b085",
       "disposition": "PRESERVE",
       "owners": []
     },
@@ -2614,7 +2614,7 @@
       "index": 270,
       "selector": ".sr2-cart__summary .cart_totals h2",
       "wrappers": [],
-      "ruleSha256": "190586c12d532ccd1c45fde5ba0b084250aa1e38135b3eaad9a11ca1f3e785de",
+      "ruleSha256": "0517bd7f11dc2368c72afd888eef3631c19bafadcf476b7f67e5f73b1c481930",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "transactions"
@@ -3548,7 +3548,7 @@
       "index": 363,
       "selector": ".sr2-story__body :is(h2, h3)",
       "wrappers": [],
-      "ruleSha256": "25ccc671cf27ca3507920234e509ce123022b2ad7f85d5bd5b38ef4567499e71",
+      "ruleSha256": "4852d33c4c32ffeb3826d02bf16b22822b87294205f23da94034774431ccd50f",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "content"
@@ -4306,7 +4306,7 @@
       "index": 440,
       "selector": ".sr2-c-editorial-card__collection",
       "wrappers": [],
-      "ruleSha256": "b5451866f224a6d898706b65722ca8a50e9015f52466a45ca6a531ece275a3ed",
+      "ruleSha256": "35d61d84484a6d89afe8735fff99a9f102c4327ff9764164cd7a6da99fcec69e",
       "disposition": "PRESERVE",
       "owners": []
     },

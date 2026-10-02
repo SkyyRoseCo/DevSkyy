@@ -1,5 +1,5 @@
 /* House lookbook: ivory paper editorial on the shared surface tokens; the type roles are
-   the house roles (Archivo titles, Hanken reading, engraved index labels). Original
+   the house roles (Anybody Condensed titles, Geist reading, engraved index labels). Original
    marks stay artwork. */
 .sr2-lookbook { --lb-paper: #f2ecdf; --lb-ink: #201c18; --lb-muted: #665b50; --lb-rule: #b9a68f; --lb-reading: var(--sr2-font-body); --sr2-line: var(--lb-rule); --sr2-muted: var(--lb-muted); --sr2-ink: var(--lb-ink); color: var(--lb-ink); background: var(--lb-paper); padding-top: var(--sr2-header, 64px); font: 400 1rem/1.6 var(--lb-reading); }
 .sr2-lookbook *, .sr2-lookbook *::before, .sr2-lookbook *::after { box-sizing: border-box; }

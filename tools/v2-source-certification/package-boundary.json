@@ -990,6 +990,16 @@
       "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
       "release": true
     },
+    "assets/derived/fonts/anybody-condensed.woff2": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/fonts/anybody-wide.woff2": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
     "assets/derived/fonts/archivo-normal-width.woff2": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Hash-bound delivery derivative; original source authority retained",
@@ -1001,6 +1011,11 @@
       "release": false
     },
     "assets/derived/fonts/manifest.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/fonts/martian-mono-narrow.woff2": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Hash-bound delivery derivative; original source authority retained",
       "release": true
@@ -1535,6 +1550,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/sot/fonts/anybody-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Page font; upstream revision, license and hash in data/font-provenance.json",
+      "release": true
+    },
     "assets/sot/fonts/archivo-latin.woff2": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -1543,6 +1563,11 @@
     "assets/sot/fonts/cinzel-latin.woff2": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/geist-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Page font; upstream revision, license and hash in data/font-provenance.json",
       "release": true
     },
     "assets/sot/fonts/grand-hotel-latin.woff2": {
@@ -1558,6 +1583,11 @@
     "assets/sot/fonts/inter-latin.woff2": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/martian-mono-latin.woff2": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Page font; upstream revision, license and hash in data/font-provenance.json",
       "release": true
     },
     "assets/sot/fonts/pinyon-script-latin.woff2": {

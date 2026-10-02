@@ -23,7 +23,7 @@
 .sr2-world-chapter .sr2-chapter__copy > .sr2-lede { max-width: 44ch; }
 .sr2-world-chapter__actions { display: flex; flex-wrap: wrap; gap: var(--sr2-space-3) var(--sr2-space-6); margin-top: var(--sr2-space-2); }
 .sr2-world-chapter__aside { display: grid; gap: var(--sr2-space-4); align-content: start; padding-top: var(--sr2-space-2); }
-.sr2-world-chapter__statement { max-width: 20ch; margin: 0; font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; }
+.sr2-world-chapter__statement { max-width: 20ch; margin: 0; font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; text-transform: var(--sr2-case-display); }
 
 /* Edit: garment-led grid on #111 tiles, unframed; native Woo actions stay native. */
 .sr2-world-edit { border-top: 1px solid var(--sr2-line-soft); }
@@ -48,7 +48,7 @@
 .sr2-world-origin { border-top: 1px solid var(--sr2-line-soft); }
 .sr2-world-origin .sr2-chapter__copy > .sr2-world-origin__statement { color: var(--sr2-ink); }
 .sr2-world-origin__invitation { display: grid; gap: var(--sr2-space-3); justify-items: start; margin-top: var(--sr2-space-6); padding-top: var(--sr2-space-6); border-top: 1px solid var(--sr2-line); }
-.sr2-world-origin__invitation-title { margin: 0; font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; }
+.sr2-world-origin__invitation-title { margin: 0; font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; text-transform: var(--sr2-case-display); }
 .sr2-world-origin__look { display: grid; gap: var(--sr2-space-3); margin: 0; }
 .sr2-world-origin__look img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; background: var(--sr2-card); }
 .sr2-world-origin__look figcaption { margin: 0; color: var(--sr2-color-text-muted); }

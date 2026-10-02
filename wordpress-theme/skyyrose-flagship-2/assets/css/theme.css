@@ -41,7 +41,7 @@ img { display: block; max-width: 100%; }
 .sr2-text-link:hover span, .sr2-text-link:focus-visible span { transform: translate(0.2rem, -0.2rem); }
 .sr2-section { padding: var(--sr2-section-pad) var(--sr2-page-pad); }
 .sr2-section-head { max-width: var(--sr2-content); margin: 0 0 clamp(2.5rem, 5vw, 5rem); }
-.sr2-section-head h2 { max-width: 18ch; margin: 0; font-family: var(--sr2-font-display); font-size: var(--sr2-type-chapter); font-weight: 650; letter-spacing: var(--sr2-tracking-display); line-height: 1.02; text-wrap: balance; }
+.sr2-section-head h2 { max-width: 18ch; margin: 0; font-family: var(--sr2-font-display); font-size: var(--sr2-type-chapter); font-weight: 650; letter-spacing: var(--sr2-tracking-display); line-height: 1.02; text-wrap: balance; text-transform: var(--sr2-case-display); }
 .sr2-section-head--split { display: flex; max-width: none; align-items: end; justify-content: space-between; gap: var(--sr2-space-8); }
 .sr2-section-index { color: var(--sr2-muted); font-family: var(--sr2-font-ui); font-size: 0.65rem; letter-spacing: 0.14em; }
 .sr2-image-reveal { position: relative; overflow: hidden; }
@@ -52,8 +52,8 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 
 /* Editorial primitives — whole-site redesign 2026-09-22. Every route composes these; page sheets never redefine them. */
 .sr2-eyebrow--engraved { font-family: var(--sr2-font-caps); font-weight: 400; letter-spacing: 0.14em; }
-.sr2-title-display { margin: 0; font: 650 var(--sr2-type-display)/var(--sr2-leading-display) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; overflow-wrap: anywhere; }
-.sr2-title-chapter { margin: 0; font: 650 var(--sr2-type-chapter)/1.02 var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; overflow-wrap: anywhere; }
+.sr2-title-display { margin: 0; font: 650 var(--sr2-type-display)/var(--sr2-leading-display) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; overflow-wrap: anywhere; text-transform: var(--sr2-case-display); }
+.sr2-title-chapter { margin: 0; font: 650 var(--sr2-type-chapter)/1.02 var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; overflow-wrap: anywhere; text-transform: var(--sr2-case-display); }
 .sr2-lede { max-width: 52ch; margin: 0; color: var(--sr2-muted); font: 400 var(--sr2-type-lede)/1.6 var(--sr2-font-body); }
 .sr2-editorial-link { display: inline-flex; align-items: center; gap: var(--sr2-space-3); min-height: var(--sr2-target-size); padding-block: var(--sr2-space-1); border-bottom: 1px solid currentColor; color: inherit; font: 500 0.75rem/1.35 var(--sr2-font-body); letter-spacing: 0.14em; text-decoration: none; text-transform: uppercase; }
 .sr2-editorial-link span { font-size: 1rem; }
@@ -102,7 +102,7 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 .sr2-products { display: grid; max-width: var(--sr2-wide); grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.2rem, 2.5vw, 2.8rem); margin-inline: auto; }
 .sr2-empty { padding: var(--sr2-space-16); border: 1px solid var(--sr2-line); color: var(--sr2-muted); text-align: center; }
 .sr2-journal-entry { padding-block: var(--sr2-space-8); border-bottom: 1px solid var(--sr2-line); }
-.sr2-journal-entry h2 { margin: 0; font-family: var(--sr2-font-display); font-size: var(--sr2-type-editorial); font-weight: 650; letter-spacing: var(--sr2-tracking-display); line-height: 1.1; }
+.sr2-journal-entry h2 { margin: 0; font-family: var(--sr2-font-display); font-size: var(--sr2-type-editorial); font-weight: 650; letter-spacing: var(--sr2-tracking-display); line-height: 1.1; text-transform: var(--sr2-case-display); }
 .sr2-journal-entry h2 a { text-decoration: none; }
 
 /* Home editorial */
@@ -125,7 +125,7 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
    then a 72ch reading column or a 12-column form. Route scenes live in content-page.css,
    about-archive.css and lookbook.css; this block owns the shared shells, lists and grids. */
 .sr2-page { min-height: 70vh; }
-.sr2-title-editorial { margin: 0; font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; overflow-wrap: anywhere; }
+.sr2-title-editorial { margin: 0; font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; overflow-wrap: anywhere; text-transform: var(--sr2-case-display); }
 .sr2-page-arrival { padding-top: calc(var(--sr2-header) + var(--sr2-band-pad)); padding-bottom: 0; }
 .sr2-page-arrival .sr2-band__head { margin-bottom: 0; padding-bottom: clamp(2rem, 4vw, 3.5rem); border-bottom: 1px solid var(--sr2-line); }
 .sr2-page-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 4rem) var(--sr2-grid-gap); align-items: start; }
@@ -163,14 +163,14 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 .woocommerce ul.products::before, .woocommerce ul.products::after { display: none; }
 .woocommerce ul.products li.product { width: auto; float: none; margin: 0; }
 .woocommerce ul.products li.product a img { margin: 0; aspect-ratio: 3 / 4; object-fit: cover; background: var(--sr2-card); }
-.woocommerce ul.products li.product .woocommerce-loop-product__title { font-family: var(--sr2-font-display); font-size: 1.3rem; letter-spacing: -0.035em; }
+.woocommerce ul.products li.product .woocommerce-loop-product__title { font-family: var(--sr2-font-display); font-size: 1.3rem; letter-spacing: var(--sr2-tracking-display); }
 .woocommerce ul.products li.product .price { color: var(--sr2-muted); }
 .woocommerce span.onsale { min-width: auto; min-height: auto; padding: var(--sr2-space-2) var(--sr2-space-3); border-radius: 0; background: var(--sr2-accent); color: var(--sr2-void); font-family: var(--sr2-font-ui); font-size: 0.62rem; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase; }
 
 /* Product detail */
 .woocommerce div.product { max-width: var(--sr2-wide); margin: 0 auto; padding: var(--sr2-section-pad) var(--sr2-page-pad); }
 .woocommerce div.product div.images, .woocommerce div.product div.summary { margin-bottom: 0; }
-.woocommerce div.product .product_title { margin: 0 0 var(--sr2-space-5); font-family: var(--sr2-font-display); font-size: clamp(2.8rem, 5vw, 6rem); letter-spacing: -0.06em; line-height: 0.88; }
+.woocommerce div.product .product_title { margin: 0 0 var(--sr2-space-5); font-family: var(--sr2-font-display); font-size: clamp(2.8rem, 5vw, 6rem); letter-spacing: var(--sr2-tracking-display); line-height: 0.88; }
 .woocommerce div.product p.price, .woocommerce div.product span.price { color: var(--sr2-accent); font-size: 1.2rem; }
 .woocommerce-product-details__short-description { color: var(--sr2-muted); }
 .woocommerce div.product form.cart { margin-top: var(--sr2-space-8); }
@@ -190,7 +190,7 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 .woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea, .woocommerce form .form-row select, .select2-container--default .select2-selection--single { min-height: 48px; padding: var(--sr2-space-3); border: 1px solid var(--sr2-line); border-radius: 0; background: var(--sr2-card); color: var(--sr2-ink); }
 /* Route spacing belongs to the page shell, never the checkout body or nested form. */
 .sr2-c-account .woocommerce { min-width: 0; max-width: 100%; margin: 0; padding: 0; }
-.woocommerce-checkout h3, .woocommerce-account h2 { font-family: var(--sr2-font-display); font-size: clamp(1.8rem, 3vw, 3rem); letter-spacing: -0.04em; }
+.woocommerce-checkout h3, .woocommerce-account h2 { font-family: var(--sr2-font-display); font-size: clamp(1.8rem, 3vw, 3rem); letter-spacing: var(--sr2-tracking-display); text-transform: var(--sr2-case-display); }
 .woocommerce-checkout-review-order { padding: var(--sr2-space-6); border: 1px solid var(--sr2-line); }
 .woocommerce table.shop_table { border-color: var(--sr2-line); border-radius: 0; }
 .woocommerce table.shop_table th, .woocommerce table.shop_table td { border-color: var(--sr2-line-soft); }
@@ -235,7 +235,7 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 
 /* V1 storefront structure: V2 uses the proven V1 section anatomy. */
 .sr-home { --sr-home-ink: var(--sr2-ink); --sr-home-muted: var(--sr2-muted); --sr-home-void: var(--sr2-void); background: var(--sr-home-void); color: var(--sr-home-ink); overflow: clip; }
-.sr-home h2 { margin: 0; font-family: var(--sr2-font-display); font-weight: 800; letter-spacing: -.04em; line-height: .93; text-wrap: balance; }
+.sr-home h2 { margin: 0; font-family: var(--sr2-font-display); font-weight: 800; letter-spacing: var(--sr2-tracking-display); line-height: .93; text-wrap: balance; text-transform: var(--sr2-case-display); }
 .sr-home__button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: .85rem 1.25rem; border: 1px solid currentColor; color: var(--sr-home-ink); font-family: var(--sr2-font-ui); font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-decoration: none; text-transform: uppercase; }
 .sr-home__button--solid { border-color: var(--sr2-rose); background: var(--sr2-rose); color: var(--sr2-void); }
 .sr-home__button--line:hover, .sr-home__button--line:focus-visible { background: var(--sr-home-ink); color: var(--sr2-void); }
@@ -279,7 +279,7 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 .sr2-search-dialog::backdrop { background: rgba(0,0,0,.8); backdrop-filter: blur(10px); }
 .sr2-search-dialog__panel { display: grid; gap: var(--sr2-space-5); padding: clamp(2rem, 6vw, 5rem); }
 .sr2-search-dialog__panel > * { margin: 0; }
-.sr2-search-dialog__panel h2 { max-width: 9ch; font-family: var(--sr2-font-display); font-size: clamp(3rem, 7vw, 7rem); letter-spacing: -.07em; line-height: .82; }
+.sr2-search-dialog__panel h2 { max-width: 9ch; font-family: var(--sr2-font-display); font-size: clamp(3rem, 7vw, 7rem); letter-spacing: var(--sr2-tracking-display); line-height: .82; text-transform: var(--sr2-case-display); }
 .sr2-search-dialog__panel > p:not(.sr2-eyebrow) { max-width: 44ch; color: var(--sr2-muted); }
 .sr2-search-dialog__close-form { position: absolute; z-index: 2; top: .65rem; right: .65rem; }
 .sr2-search-dialog__close { display: grid; width: 2.7rem; height: 2.7rem; place-items: center; border: 1px solid var(--sr2-line); background: var(--sr2-void); color: var(--sr2-ink); font-size: 1.6rem; cursor: pointer; }
@@ -351,7 +351,7 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 .woocommerce .sr2-cart__actions button.button { min-height: var(--sr2-control-size); padding: var(--sr2-control-padding); border: 1px solid var(--sr2-border-control); background: transparent; color: var(--sr2-ink); font: 500 .75rem/1.4 var(--sr2-font-body); letter-spacing: .14em; text-transform: uppercase; }
 .woocommerce .sr2-cart__actions button.button:is(:hover, :focus-visible) { border-color: var(--sr2-ink); background: var(--sr2-surface-raised); color: var(--sr2-ink); }
 .sr2-cart__summary .cart_totals { display: grid; gap: var(--sr2-space-4); padding: var(--sr2-space-6); border: 1px solid var(--sr2-line); background: var(--sr2-card); }
-.sr2-cart__summary .cart_totals h2 { margin: 0; font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); }
+.sr2-cart__summary .cart_totals h2 { margin: 0; font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-transform: var(--sr2-case-display); }
 .sr2-cart__summary table { width: 100%; margin: 0; border: 0; border-collapse: collapse; }
 .sr2-cart__summary :is(th, td) { padding: var(--sr2-space-3) 0; border: 0; border-top: 1px solid var(--sr2-line); color: var(--sr2-muted); font-weight: 400; text-align: start; }
 .sr2-cart__summary td { color: var(--sr2-ink); text-align: end; font-variant-numeric: tabular-nums; }
@@ -463,7 +463,7 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 .sr2-story__hero { margin: 0 0 clamp(2.5rem, 5vw, 4.5rem); background: var(--sr2-card); }
 .sr2-story__hero img { display: block; width: 100%; height: auto; }
 .sr2-story__body { max-width: 72ch; color: var(--sr2-ink); font-size: clamp(1rem, 1.1vw, 1.125rem); line-height: 1.75; }
-.sr2-story__body :is(h2, h3) { margin: 2em 0 .75em; font-family: var(--sr2-font-display); font-weight: 600; letter-spacing: var(--sr2-tracking-display); line-height: 1.15; }
+.sr2-story__body :is(h2, h3) { margin: 2em 0 .75em; font-family: var(--sr2-font-display); font-weight: 600; letter-spacing: var(--sr2-tracking-display); line-height: 1.15; text-transform: var(--sr2-case-display); }
 .sr2-story__body img { max-width: 100%; height: auto; }
 .sr2-story__nav { margin-top: clamp(3rem, 6vw, 6rem); padding-top: var(--sr2-space-6); border-top: 1px solid var(--sr2-line); }
 .sr2-story__nav .nav-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sr2-space-5); }
@@ -572,7 +572,7 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 .sr2-c-editorial-card__nameplate { display: grid; grid-template-columns: var(--sr2-index-width) minmax(0, 1fr); align-items: center; gap: var(--sr2-space-2); padding-block: var(--sr2-space-3); border-block: var(--sr2-border-width) solid var(--sr2-card-accent); }
 .sr2-c-editorial-card__index, .sr2-c-editorial-card__reference { margin: 0; color: var(--sr2-color-text-muted); font: 400 var(--sr2-type-index)/var(--sr2-leading-utility) var(--sr2-font-index); letter-spacing: var(--sr2-tracking-index); font-variant-numeric: tabular-nums; }
 .sr2-c-editorial-card__index { color: var(--sr2-card-accent); }
-.sr2-c-editorial-card__collection { margin: 0; color: var(--sr2-card-accent); font: 750 var(--sr2-type-utility)/var(--sr2-leading-utility) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-index); text-align: center; text-transform: uppercase; white-space: nowrap; }
+.sr2-c-editorial-card__collection { margin: 0; color: var(--sr2-card-accent); font: 750 var(--sr2-type-utility)/var(--sr2-leading-utility) var(--sr2-font-wide); letter-spacing: var(--sr2-tracking-index); text-align: center; text-transform: uppercase; white-space: nowrap; }
 .sr2-c-editorial-card .sr2-c-editorial-card__title, .woocommerce ul.products li.product .sr2-c-editorial-card .sr2-c-editorial-card__title { margin: 0; padding: 0; color: var(--sr2-color-text); font: 600 var(--sr2-type-commerce)/var(--sr2-leading-commerce) var(--sr2-font-body); letter-spacing: normal; white-space: normal; overflow-wrap: anywhere; }
 .sr2-c-editorial-card__title a { display: inline-flex; min-height: var(--sr2-target-size); align-items: center; color: inherit; text-decoration: none; transition: color var(--sr2-motion-micro) var(--sr2-ease-enter); }
 .sr2-c-editorial-card__commerce { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--sr2-space-2) var(--sr2-space-3); padding-block: var(--sr2-space-2); }

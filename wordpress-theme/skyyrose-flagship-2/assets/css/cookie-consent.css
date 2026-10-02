@@ -63,7 +63,7 @@
 
 .cookie-consent__message {
   margin: 0;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: var(--sr2-font-body, system-ui, sans-serif);
   font-size: 13px;
   line-height: 1.55;
   color: var(--color-text-secondary, rgba(255, 255, 255, 0.85));
@@ -94,7 +94,7 @@
 }
 
 .cookie-consent__btn {
-  font-family: Inter, system-ui, sans-serif;
+  font-family: var(--sr2-font-body, system-ui, sans-serif);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;

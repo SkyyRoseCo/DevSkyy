@@ -1180,7 +1180,7 @@
     "generator": "tools/v2-runtime/build-font-delivery.py",
     "normalization": "Pinned deterministic delivery derivative; original retained",
     "released": true,
-    "source": "assets/sot/fonts/archivo-latin.woff2",
+    "source": "assets/sot/fonts/{archivo,anybody,martian-mono}-latin.woff2",
     "tool": "fontTools 4.59.2 / Brotli 1.2.0",
     "tracked": true
   },
@@ -1246,6 +1246,30 @@
     "released": true,
     "source": "assets/css/lookbook.css",
     "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/derived/fonts/anybody-condensed.woff2": {
+    "generator": "tools/v2-runtime/build-font-delivery.py",
+    "normalization": "Pinned deterministic fixed-width delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/fonts/anybody-latin.woff2",
+    "tool": "fontTools 4.59.2 / Brotli 1.2.0",
+    "tracked": true
+  },
+  "assets/derived/fonts/anybody-wide.woff2": {
+    "generator": "tools/v2-runtime/build-font-delivery.py",
+    "normalization": "Pinned deterministic fixed-width delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/fonts/anybody-latin.woff2",
+    "tool": "fontTools 4.59.2 / Brotli 1.2.0",
+    "tracked": true
+  },
+  "assets/derived/fonts/martian-mono-narrow.woff2": {
+    "generator": "tools/v2-runtime/build-font-delivery.py",
+    "normalization": "Pinned deterministic fixed-width delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/fonts/martian-mono-latin.woff2",
+    "tool": "fontTools 4.59.2 / Brotli 1.2.0",
     "tracked": true
   }
 }

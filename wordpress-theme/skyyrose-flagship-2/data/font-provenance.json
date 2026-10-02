@@ -12,47 +12,138 @@
   },
   "page_fonts": [
     {
-      "family": "Archivo",
+      "family": "Anybody",
       "role": "display",
+      "path": "assets/sot/fonts/anybody-latin.woff2",
+      "sha256": "8c4a79f7434579408fe25290420de69609617728a61b45d0b12055c03d92bc4e",
+      "upstream": "https://github.com/Etcetera-Type-Co/Anybody",
+      "upstream_revision": "fe7b55cf9d1563348ad95ac8e05f43b81a420c31",
+      "license": "OFL-1.1",
+      "distribution": {
+        "repository": "https://github.com/google/fonts",
+        "revision": "9710da1eacb3be272583c3224dcb70f9da6eadbb",
+        "path": "ofl/anybody/Anybody[wdth,wght].ttf",
+        "sha256": "b184bd7e6ca8348bbaecec98951565729d7e89b7872d4898a1f9981342b5b64c",
+        "license_path": "ofl/anybody/OFL.txt",
+        "license_sha256": "7f0313b042b462fcae1934436cc747f9fd4433e3b08fd6459a4a5104b0bbd5db",
+        "reserved_font_name": null
+      },
+      "derivation": "python -m fontTools.subset '<google/fonts@9710da1eacb3>/ofl/anybody/Anybody[wdth,wght].ttf' --unicodes=U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+FEFF,U+FFFD --layout-features='*' --name-IDs='*' --name-languages='*' --notdef-outline --flavor=woff2 --output-file=assets/sot/fonts/anybody-latin.woff2 (fontTools 4.59.2, Brotli 1.2.0); variable axes retained",
+      "metadata": {
+        "copyright": "Copyright 2020 The Anybody Project Authors (https://github.com/Etcetera-Type-Co/Anybody)",
+        "version": "Version 1.114;gftools[0.9.25]",
+        "license_url": "https://scripts.sil.org/OFL"
+      },
+      "status": "PAGE_FONT_PROVENANCE_PINNED"
+    },
+    {
+      "family": "Geist",
+      "role": "body",
+      "path": "assets/sot/fonts/geist-latin.woff2",
+      "sha256": "4de9c55cfca8c37f67c24fc43e632ef207812e2d7a248e774e042899f66d3414",
+      "upstream": "https://github.com/vercel/geist-font",
+      "upstream_revision": "a6d260e6cbc07eafdfad438f33601fe3c38b1e6f",
+      "license": "OFL-1.1",
+      "distribution": {
+        "repository": "https://github.com/google/fonts",
+        "revision": "9710da1eacb3be272583c3224dcb70f9da6eadbb",
+        "path": "ofl/geist/Geist[wght].ttf",
+        "sha256": "73894e0448cae90a92b6c2f8732b7bb9acb7b94c418bff559dad4a18e1de9659",
+        "license_path": "ofl/geist/OFL.txt",
+        "license_sha256": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+        "reserved_font_name": null
+      },
+      "derivation": "python -m fontTools.subset '<google/fonts@9710da1eacb3>/ofl/geist/Geist[wght].ttf' --unicodes=U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+FEFF,U+FFFD --layout-features='*' --name-IDs='*' --name-languages='*' --notdef-outline --flavor=woff2 --output-file=assets/sot/fonts/geist-latin.woff2 (fontTools 4.59.2, Brotli 1.2.0); variable axes retained",
+      "metadata": {
+        "copyright": "Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font)",
+        "version": "Version 1.800",
+        "license_url": "https://openfontlicense.org"
+      },
+      "status": "PAGE_FONT_PROVENANCE_PINNED"
+    },
+    {
+      "family": "Martian Mono",
+      "role": "utility",
+      "path": "assets/sot/fonts/martian-mono-latin.woff2",
+      "sha256": "fa6f2665175059db1410a3322cedf23328c06dae59c2e1b126bbb764fb69a1b0",
+      "upstream": "https://github.com/evilmartians/mono",
+      "upstream_revision": "17865aac562a1a800888de6604f7251f135cf3b5",
+      "license": "OFL-1.1",
+      "distribution": {
+        "repository": "https://github.com/google/fonts",
+        "revision": "9710da1eacb3be272583c3224dcb70f9da6eadbb",
+        "path": "ofl/martianmono/MartianMono[wdth,wght].ttf",
+        "sha256": "c3467843ec1c2574b05fbcfd7147c7bfbcf63ddca8fc2bcb9d117f1bfb1b22e7",
+        "license_path": "ofl/martianmono/OFL.txt",
+        "license_sha256": "ddafd2c3f37ef1d83ef284ca63e159befd3820850c5e9eded14ca52eee92c256",
+        "reserved_font_name": null
+      },
+      "derivation": "python -m fontTools.subset '<google/fonts@9710da1eacb3>/ofl/martianmono/MartianMono[wdth,wght].ttf' --unicodes=U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+FEFF,U+FFFD --layout-features='*' --name-IDs='*' --name-languages='*' --notdef-outline --flavor=woff2 --output-file=assets/sot/fonts/martian-mono-latin.woff2 (fontTools 4.59.2, Brotli 1.2.0); variable axes retained",
+      "metadata": {
+        "copyright": "Copyright 2020 The Martian Mono Project Authors (https://github.com/evilmartians/mono)",
+        "version": "Version 1.000",
+        "license_url": "https://scripts.sil.org/OFL"
+      },
+      "status": "PAGE_FONT_PROVENANCE_PINNED"
+    },
+    {
+      "family": "Archivo",
+      "role": "retired-page-font",
       "path": "assets/sot/fonts/archivo-latin.woff2",
       "sha256": "4c98b9d490d1698ec95f2ff17a6c7d0e72691864c0c5d7bc2a2c161b45afe5ad",
       "upstream": "https://github.com/Omnibus-Type/Archivo",
       "upstream_revision": null,
       "license": "OFL-1.1",
-      "metadata": {"copyright": "Copyright 2020 The Archivo Project Authors", "version": "Version 2.001", "license_url": "http://scripts.sil.org/OFL"},
+      "metadata": {
+        "copyright": "Copyright 2020 The Archivo Project Authors",
+        "version": "Version 2.001",
+        "license_url": "http://scripts.sil.org/OFL"
+      },
       "status": "PAGE_FONT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
     },
     {
       "family": "Hanken Grotesk",
-      "role": "body",
+      "role": "retired-page-font",
       "path": "assets/sot/fonts/hanken-grotesk-latin.woff2",
       "sha256": "1f21c6eaa0000f3329cfcfac966b43d5bebf5aa610303e33294ac31bc6f4bb59",
       "upstream": "https://github.com/marcologous/hanken-grotesk",
       "upstream_revision": null,
       "license": "OFL-1.1",
-      "metadata": {"copyright": "Copyright 2021 The Hanken Grotesk Project Authors", "version": "Version 3.013", "license_url": "https://scripts.sil.org/OFL"},
+      "metadata": {
+        "copyright": "Copyright 2021 The Hanken Grotesk Project Authors",
+        "version": "Version 3.013",
+        "license_url": "https://scripts.sil.org/OFL"
+      },
       "status": "PAGE_FONT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
     },
     {
       "family": "Anton",
-      "role": "utility",
+      "role": "retired-page-font",
       "path": "assets/sot/fonts/anton-latin.woff2",
       "sha256": "23aab0b2692a0c89eb7997d3c7cf5bda41276d6cd4ab6cc0edc3edfcece32b09",
       "upstream": "https://github.com/googlefonts/AntonFont",
       "upstream_revision": null,
       "license": "OFL-1.1",
-      "metadata": {"copyright": "Copyright 2020 The Anton Project Authors", "version": "Version 2.116", "license_url": "https://scripts.sil.org/OFL"},
+      "metadata": {
+        "copyright": "Copyright 2020 The Anton Project Authors",
+        "version": "Version 2.116",
+        "license_url": "https://scripts.sil.org/OFL"
+      },
       "status": "PAGE_FONT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
     },
     {
       "family": "Cinzel",
-      "role": "ceremonial-metadata",
+      "role": "retired-page-font",
       "path": "assets/sot/fonts/cinzel-latin.woff2",
       "sha256": "09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370",
       "upstream": "https://github.com/NDISCOVER/Cinzel",
       "upstream_revision": null,
       "license": "OFL-1.1",
-      "metadata": {"copyright": "Copyright 2020 The Cinzel Project Authors", "version": "Version 2.000", "license_url": "https://scripts.sil.org/OFL"},
+      "metadata": {
+        "copyright": "Copyright 2020 The Cinzel Project Authors",
+        "version": "Version 2.000",
+        "license_url": "https://scripts.sil.org/OFL"
+      },
       "status": "PAGE_FONT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
     },
     {
@@ -63,18 +154,27 @@
       "upstream": "https://www.astigmatic.com/",
       "upstream_revision": null,
       "license": "OFL-1.1",
-      "metadata": {"copyright": "Copyright (c) 2012 by Brian J. Bonislawsky DBA Astigmatic (AOETI)", "version": "Version 001.000", "license_url": "http://scripts.sil.org/OFL", "reserved_font_name": "Grand Hotel"},
+      "metadata": {
+        "copyright": "Copyright (c) 2012 by Brian J. Bonislawsky DBA Astigmatic (AOETI)",
+        "version": "Version 001.000",
+        "license_url": "http://scripts.sil.org/OFL",
+        "reserved_font_name": "Grand Hotel"
+      },
       "status": "ARTIFACT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
     },
     {
       "family": "Inter",
-      "role": "fallback",
+      "role": "retired-fallback",
       "path": "assets/sot/fonts/inter-latin.woff2",
       "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4",
       "upstream": "https://github.com/rsms/inter",
       "upstream_revision": null,
       "license": "OFL-1.1",
-      "metadata": {"copyright": "Copyright 2016 The Inter Project Authors", "version": "Version 4.001; git-66647c0bb", "license_url": "https://openfontlicense.org"},
+      "metadata": {
+        "copyright": "Copyright 2016 The Inter Project Authors",
+        "version": "Version 4.001; git-66647c0bb",
+        "license_url": "https://openfontlicense.org"
+      },
       "status": "PAGE_FONT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
     },
     {
@@ -85,7 +185,11 @@
       "upstream": "https://github.com/SorkinType/Pinyon",
       "upstream_revision": null,
       "license": "OFL-1.1",
-      "metadata": {"copyright": "Copyright 2022 The PinyonScript Project Authors", "version": "Version 1.008", "license_url": null},
+      "metadata": {
+        "copyright": "Copyright 2022 The PinyonScript Project Authors",
+        "version": "Version 1.008",
+        "license_url": null
+      },
       "status": "ARTIFACT_PROVENANCE_MATCHED_REVISION_UNRECORDED_LICENSE_URL_ABSENT"
     }
   ],
@@ -108,16 +212,37 @@
     }
   ],
   "collection_page_type": {
-    "signature": ["Archivo", "Hanken Grotesk", "Anton", "Cinzel"],
-    "black-rose": ["Archivo", "Hanken Grotesk", "Anton", "Cinzel"],
-    "love-hurts": ["Archivo", "Hanken Grotesk", "Anton", "Cinzel"],
-    "kids-capsule": ["Archivo", "Hanken Grotesk", "Anton", "Cinzel"],
-    "jersey-series-black-rose-release": ["Archivo", "Hanken Grotesk", "Anton", "Cinzel"]
+    "signature": [
+      "Anybody",
+      "Geist",
+      "Martian Mono"
+    ],
+    "black-rose": [
+      "Anybody",
+      "Geist",
+      "Martian Mono"
+    ],
+    "love-hurts": [
+      "Anybody",
+      "Geist",
+      "Martian Mono"
+    ],
+    "kids-capsule": [
+      "Anybody",
+      "Geist",
+      "Martian Mono"
+    ],
+    "jersey-series-black-rose-release": [
+      "Anybody",
+      "Geist",
+      "Martian Mono"
+    ]
   },
   "rules": [
     "Do not claim either SkyyRose custom face is open-source without a rights record.",
     "Use collection scripts only through founder-approved image/artifact slots.",
     "A font byte change requires a recorded upstream revision, this file's replacement hash, and license evidence.",
-    "A null upstream_revision is an evidence gap, not permission to replace or regenerate bytes."
+    "A null upstream_revision is an evidence gap, not permission to replace or regenerate bytes.",
+    "Retired page fonts stay bundled for existing artifact tooling; theme CSS and theme.json must not register them."
   ]
 }
