@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "status": "PROPOSAL_NOT_AUTHORIZATION",
+  "direction": "Corey 2026-10-02 initial product-commerce release; defer worlds",
+  "target": "https://skyyrose.co",
+  "read_receipt_sha256": "6213774c9f93ce95c1dababdfd719eca3df249120f2a6494b856c0b558565a96",
+  "proposed_publish": [
+    {
+      "id": 10436,
+      "path": "size-guide",
+      "status": "draft",
+      "template": "default",
+      "content_sha256": "62fa2ac6eda70f5d8119753ae2a62c3b1353c9ec01619741f03215d147d1dd4f"
+    },
+    {
+      "id": 10430,
+      "path": "collections/kids-capsule",
+      "status": "draft",
+      "template": "template-collection.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": 10429,
+      "path": "collections/love-hurts",
+      "status": "draft",
+      "template": "template-collection.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": 10428,
+      "path": "collections/black-rose",
+      "status": "draft",
+      "template": "template-collection.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": 10427,
+      "path": "collections/signature",
+      "status": "draft",
+      "template": "template-collection.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "remain_draft": [
+    {
+      "id": 10432,
+      "path": "worlds/signature",
+      "status": "draft",
+      "template": "template-immersive-signature.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": 10435,
+      "path": "worlds/kids-capsule",
+      "status": "draft",
+      "template": "template-immersive-kids-capsule.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": 10434,
+      "path": "worlds/love-hurts",
+      "status": "draft",
+      "template": "template-immersive-love-hurts.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": 10433,
+      "path": "worlds/black-rose",
+      "status": "draft",
+      "template": "template-immersive-black-rose.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": 10431,
+      "path": "worlds",
+      "status": "draft",
+      "template": "default",
+      "content_sha256": "2a62b0f0f49633e63dd37c40d5075d9a54047b5c9c63c0c438e72cad194d5ab5"
+    }
+  ],
+  "preserve_existing_published": [
+    {
+      "id": 10315,
+      "path": "collections-world",
+      "status": "publish",
+      "template": "template-collections-world.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": 9712,
+      "path": "shipping-returns",
+      "status": "publish",
+      "template": "template-shipping-returns.php",
+      "content_sha256": "12813dadaffc5e1434ee700841d754e8fd4def596ed2609712a10cc3f1b70e9b"
+    },
+    {
+      "id": 9452,
+      "path": "checkout",
+      "status": "publish",
+      "template": "skyyrose-canvas",
+      "content_sha256": "38b9c97da95eabce80859d44b8ff605a5ac9851752d8b2845ef9fe53077aa846"
+    },
+    {
+      "id": 9451,
+      "path": "cart",
+      "status": "publish",
+      "template": "skyyrose-canvas",
+      "content_sha256": "75c94c86c685b9b49646361ae3319ac835d3511806ba2224ba20269fce1c9a82"
+    },
+    {
+      "id": 9327,
+      "path": "collections",
+      "status": "publish",
+      "template": "skyyrose-canvas.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": 9335,
+      "path": "pre-order",
+      "status": "publish",
+      "template": "template-preorder-gateway.php",
+      "content_sha256": "0ed92baa91a47e976b17ae3d2ab353c2dfc7eac84fe145de0892213c223eb106"
+    }
+  ],
+  "preconditions": [
+    "Re-read exact target/active baseline/page status/template/content hashes immediately before any approved operation",
+    "Revise and review existing ten-page publisher and clearance for these five IDs",
+    "Explicit publication approval naming exact candidate and page delta",
+    "Verify initial navigation does not depend on deferred worlds",
+    "Complete current hosted commerce/media/size/policy/payment acceptance and real installed-baseline recovery"
+  ],
+  "authority": "This file does not grant publication, activation, deployment, retry, catalog writes or payment actions"
+}

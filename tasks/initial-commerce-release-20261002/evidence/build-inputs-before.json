@@ -8,7 +8,7 @@
   ],
   "catalog_authority": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
   "catalog_sha256": "a240226b133f90a6c400329d5db89b1c31a34fab01426928e0a18706c994cfb7",
-  "current_registry_sha256": "d14fb9ef09528581e552d4c4be007c8da7610d239c2017b68baf96c31ae93d8e",
+  "current_registry_sha256": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757",
   "garment_source": "skyyrose.core.product.get_product#catalog.garment_type_lock",
   "generated_policy": "tools/v2-source-certification/generated-outputs.json",
   "generator": "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py",
@@ -90,7 +90,7 @@
     "wordpress-theme/skyyrose-flagship-2/scripts/verify-marketplace.sh": "8c50abb06cb744d895efef67323be14010271f5951050b3de58e64a506e86bc6",
     "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/jersey-gallery.php": "806265cbaffa0818e91dd6832122e7eb3e5a89f928a381e85f6bedbfc54c601e",
     "wordpress-theme/skyyrose-flagship-2/tests/commerce/verify-glb-runtime.php": "682d3f729ef4dcdaa7a0394ea0e0ec4ad2e5c899f49378816cba95c1226d6f50",
-    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "d14fb9ef09528581e552d4c4be007c8da7610d239c2017b68baf96c31ae93d8e"
+    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "db3181f70cc7ec021329365cfa24554f3d3af9feb87e6a014fb1d5b3514a4757"
   },
   "node": "22.23.2",
   "npm": "10.9.8",
@@ -115,6 +115,5 @@
     "revision": "803fb08b5ea2aedc027693bcd17248c18a04bb11",
     "sha256": "f9155e61ebdb7e6119819b9a83566b7f0ba4a65b7bf675da0c875024b923cd04"
   },
-  "upstream_revision": "803fb08b5ea2aedc027693bcd17248c18a04bb11",
-  "reviewed_registry_revision": "a6bdf54321e727f21a8b5c2b41417d31b2617274"
+  "upstream_revision": "803fb08b5ea2aedc027693bcd17248c18a04bb11"
 }

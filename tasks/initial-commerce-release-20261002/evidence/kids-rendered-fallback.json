@@ -1,0 +1,96 @@
+[
+  {
+    "target": "production",
+    "sku": "kids-001",
+    "html_sha256": "4a9df95346e7e5ec014485caeadecbf7e07154f9762d80fa471334524965f416",
+    "gallery_images": [
+      {
+        "src": "https://i0.wp.com/skyyrose.co/wp-content/uploads/woocommerce-placeholder.webp?fit=600%2C600&ssl=1",
+        "alt": "Awaiting product image",
+        "class": "wp-post-image"
+      }
+    ],
+    "status": "FAIL_PLACEHOLDER",
+    "limits": "Rendered HTML only; browser visibility, image delivery and garment fidelity not inferred"
+  },
+  {
+    "target": "production",
+    "sku": "kids-002",
+    "html_sha256": "73dbebe171c0680131d4f4a35f3cb3b28b819216cbc3e4d2ee1ea671ff03563b",
+    "gallery_images": [
+      {
+        "src": "https://i0.wp.com/skyyrose.co/wp-content/uploads/woocommerce-placeholder.webp?fit=600%2C600&ssl=1",
+        "alt": "Awaiting product image",
+        "class": "wp-post-image"
+      }
+    ],
+    "status": "FAIL_PLACEHOLDER",
+    "limits": "Rendered HTML only; browser visibility, image delivery and garment fidelity not inferred"
+  },
+  {
+    "target": "staging",
+    "sku": "kids-001",
+    "html_sha256": "574c71326a6ea2cf298e81e1f7f1f2f9ee1d19281f59bdc16d50c7418957e83b",
+    "gallery_images": [
+      {
+        "width": "1024",
+        "height": "1536",
+        "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-001-onmodel.webp",
+        "class": "wp-post-image",
+        "alt": "Kids Colorblock Hoodie Set \u2014 Red/Black \u2014 front on model",
+        "srcset": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-320w.webp 320w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-480w.webp 480w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-768w.webp 768w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-001-onmodel.webp 1024w"
+      },
+      {
+        "width": "1024",
+        "height": "1536",
+        "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-001-onmodel.webp",
+        "class": "wp-post-image",
+        "alt": "Kids Colorblock Hoodie Set \u2014 Red/Black \u2014 front on model",
+        "srcset": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-320w.webp 320w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-480w.webp 480w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-768w.webp 768w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-001-onmodel.webp 1024w"
+      }
+    ],
+    "status": "PASS_APPROVED_FRONT_HTML",
+    "limits": "Rendered HTML only; browser visibility, image delivery and garment fidelity not inferred",
+    "primary_asset": {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-001-onmodel.webp",
+      "http_status": 200,
+      "bytes": 194818,
+      "sha256": "c6bd2ddd555c4359c302eebb051d5fbad4d34bec0b324b44f3447831f3ec9c9a",
+      "local_manifest_sha256": "c6bd2ddd555c4359c302eebb051d5fbad4d34bec0b324b44f3447831f3ec9c9a",
+      "matches_local_approved_front": true
+    }
+  },
+  {
+    "target": "staging",
+    "sku": "kids-002",
+    "html_sha256": "07f1318a726cead147bd0445d664f760cf7e658aa47b5912f99939b95af89312",
+    "gallery_images": [
+      {
+        "width": "1024",
+        "height": "1536",
+        "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-002-onmodel.webp",
+        "class": "wp-post-image",
+        "alt": "Kids Colorblock Hoodie Set \u2014 Purple/Black \u2014 front on model",
+        "srcset": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-320w.webp 320w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp 480w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp 768w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-002-onmodel.webp 1024w"
+      },
+      {
+        "width": "1024",
+        "height": "1536",
+        "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-002-onmodel.webp",
+        "class": "wp-post-image",
+        "alt": "Kids Colorblock Hoodie Set \u2014 Purple/Black \u2014 front on model",
+        "srcset": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-320w.webp 320w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp 480w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp 768w, https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-002-onmodel.webp 1024w"
+      }
+    ],
+    "status": "PASS_APPROVED_FRONT_HTML",
+    "limits": "Rendered HTML only; browser visibility, image delivery and garment fidelity not inferred",
+    "primary_asset": {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-002-onmodel.webp",
+      "http_status": 200,
+      "bytes": 248162,
+      "sha256": "88c0ca36b22a95ce1ee7969b50b4e256718ffda584027dfd97e219605aa3e51b",
+      "local_manifest_sha256": "88c0ca36b22a95ce1ee7969b50b4e256718ffda584027dfd97e219605aa3e51b",
+      "matches_local_approved_front": true
+    }
+  }
+]

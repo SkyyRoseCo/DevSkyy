@@ -1,0 +1,30 @@
+[
+  {
+    "target": "production",
+    "sku": "kids-001",
+    "url": "https://skyyrose.co/product/kids-001/",
+    "status": 200,
+    "bytes": 209882
+  },
+  {
+    "target": "production",
+    "sku": "kids-002",
+    "url": "https://skyyrose.co/product/kids-002/",
+    "status": 200,
+    "bytes": 209799
+  },
+  {
+    "target": "staging",
+    "sku": "kids-001",
+    "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/kids-001/",
+    "status": 200,
+    "bytes": 138728
+  },
+  {
+    "target": "staging",
+    "sku": "kids-002",
+    "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/kids-002/",
+    "status": 200,
+    "bytes": 137752
+  }
+]

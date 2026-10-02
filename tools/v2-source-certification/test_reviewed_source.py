@@ -28,11 +28,21 @@ def verify_pins(contract, reader):
             raise ValueError("Unreviewed source drift: " + relative)
 
 
+def reviewed_registry_bytes(contract):
+    revision = contract.get("reviewed_registry_revision", SOURCE)
+    return subprocess.check_output(
+        ["git", "show", revision + ":wordpress-theme/skyyrose-flagship/data/logo-registry.json"],
+        cwd=ROOT,
+    )
+
+
 class ReviewedSourceTests(unittest.TestCase):
     def setUp(self):
         self.contract = json.loads((HERE / "build-inputs.json").read_text())
 
     def combined_bytes(self, relative):
+        if relative == "wordpress-theme/skyyrose-flagship/data/logo-registry.json":
+            return reviewed_registry_bytes(self.contract)
         return (ROOT / relative).read_bytes() if relative in OVERLAY else source_bytes(relative)
 
     def test_exact_reviewed_source_and_guarded_overlay(self):
@@ -45,6 +55,7 @@ class ReviewedSourceTests(unittest.TestCase):
             THEME + "assets/js/product-glb-init.mjs",
             THEME + "inc/product-glb.php",
             THEME + "scripts/build-product-presentation-registry.py",
+            "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
         ):
             with (
                 self.subTest(target=target),
@@ -55,6 +66,19 @@ class ReviewedSourceTests(unittest.TestCase):
                     lambda p, target=target: self.combined_bytes(p)
                     + (b"changed" if p == target else b""),
                 )
+
+    def test_registry_correction_changes_only_founder_dossier(self):
+        before = json.loads(
+            source_bytes("wordpress-theme/skyyrose-flagship/data/logo-registry.json")
+        )
+        after = json.loads(reviewed_registry_bytes(self.contract))
+        corrected = after["products"]["br-007"]["dossier"]
+        self.assertIn("Love Hurts is only on the side not across the back", corrected["content"])
+        self.assertIn("No Love Hurts wordmark across the back", corrected["content"])
+        after["products"]["br-007"]["dossier"] = before["products"]["br-007"]["dossier"]
+        self.assertEqual(
+            after, before, "Registry correction changed unrelated product or approval facts"
+        )
 
     def test_package_census_and_generated_provenance(self):
         files = subprocess.check_output(

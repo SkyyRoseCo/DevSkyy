@@ -1,0 +1,131 @@
+======================================================================
+ERROR: test_alternate_authority_and_reader_fail_closed (test_inputs.RegistryAuthorityTests.test_alternate_authority_and_reader_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/test_inputs.py", line 15, in setUp
+    self.manifest, _ = inputs.load_product_sot()
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 36, in load_product_sot
+    verify_registry_binding(contract)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 26, in verify_registry_binding
+    raise ValueError("Current registry hash requires contract reconciliation")
+ValueError: Current registry hash requires contract reconciliation
+
+======================================================================
+ERROR: test_changed_current_commerce_requires_receipt_reconciliation (test_inputs.RegistryAuthorityTests.test_changed_current_commerce_requires_receipt_reconciliation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/test_inputs.py", line 15, in setUp
+    self.manifest, _ = inputs.load_product_sot()
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 36, in load_product_sot
+    verify_registry_binding(contract)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 26, in verify_registry_binding
+    raise ValueError("Current registry hash requires contract reconciliation")
+ValueError: Current registry hash requires contract reconciliation
+
+======================================================================
+ERROR: test_current_registry_supplies_every_garment_type (test_inputs.RegistryAuthorityTests.test_current_registry_supplies_every_garment_type)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/test_inputs.py", line 15, in setUp
+    self.manifest, _ = inputs.load_product_sot()
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 36, in load_product_sot
+    verify_registry_binding(contract)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 26, in verify_registry_binding
+    raise ValueError("Current registry hash requires contract reconciliation")
+ValueError: Current registry hash requires contract reconciliation
+
+======================================================================
+ERROR: test_exact_current_registry_contract (test_inputs.RegistryAuthorityTests.test_exact_current_registry_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/test_inputs.py", line 15, in setUp
+    self.manifest, _ = inputs.load_product_sot()
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 36, in load_product_sot
+    verify_registry_binding(contract)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 26, in verify_registry_binding
+    raise ValueError("Current registry hash requires contract reconciliation")
+ValueError: Current registry hash requires contract reconciliation
+
+======================================================================
+ERROR: test_founder_garment_correction_overrides_historical_receipt (test_inputs.RegistryAuthorityTests.test_founder_garment_correction_overrides_historical_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/test_inputs.py", line 15, in setUp
+    self.manifest, _ = inputs.load_product_sot()
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 36, in load_product_sot
+    verify_registry_binding(contract)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 26, in verify_registry_binding
+    raise ValueError("Current registry hash requires contract reconciliation")
+ValueError: Current registry hash requires contract reconciliation
+
+======================================================================
+ERROR: test_missing_input_pin_fails_even_with_current_sidecar_identity (test_inputs.RegistryAuthorityTests.test_missing_input_pin_fails_even_with_current_sidecar_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/test_inputs.py", line 15, in setUp
+    self.manifest, _ = inputs.load_product_sot()
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 36, in load_product_sot
+    verify_registry_binding(contract)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 26, in verify_registry_binding
+    raise ValueError("Current registry hash requires contract reconciliation")
+ValueError: Current registry hash requires contract reconciliation
+
+======================================================================
+ERROR: test_missing_receipt_product_fails_closed (test_inputs.RegistryAuthorityTests.test_missing_receipt_product_fails_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/test_inputs.py", line 15, in setUp
+    self.manifest, _ = inputs.load_product_sot()
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 36, in load_product_sot
+    verify_registry_binding(contract)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 26, in verify_registry_binding
+    raise ValueError("Current registry hash requires contract reconciliation")
+ValueError: Current registry hash requires contract reconciliation
+
+======================================================================
+ERROR: test_registry_drift_during_product_reads_is_rejected (test_inputs.RegistryAuthorityTests.test_registry_drift_during_product_reads_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/test_inputs.py", line 15, in setUp
+    self.manifest, _ = inputs.load_product_sot()
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 36, in load_product_sot
+    verify_registry_binding(contract)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 26, in verify_registry_binding
+    raise ValueError("Current registry hash requires contract reconciliation")
+ValueError: Current registry hash requires contract reconciliation
+
+======================================================================
+ERROR: test_stale_sidecar_identity_fails_even_with_current_input_pin (test_inputs.RegistryAuthorityTests.test_stale_sidecar_identity_fails_even_with_current_input_pin)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/test_inputs.py", line 15, in setUp
+    self.manifest, _ = inputs.load_product_sot()
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 36, in load_product_sot
+    verify_registry_binding(contract)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/inputs.py", line 26, in verify_registry_binding
+    raise ValueError("Current registry hash requires contract reconciliation")
+ValueError: Current registry hash requires contract reconciliation
+
+----------------------------------------------------------------------
+Ran 27 tests in 4.312s
+
+FAILED (errors=9)
+PASS 7 native fixture hashes; WordPress 7.1 / WooCommerce 11.1.0

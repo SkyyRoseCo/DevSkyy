@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "status": "PROPOSED_NOT_APPLIED",
+  "target": "https://skyyrose.co",
+  "product_id": 9879,
+  "sku": "lh-006",
+  "source": "skyyrose.core.product.get_product",
+  "canonical_sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+  ],
+  "current": {
+    "id": 9879,
+    "parent_id": 0,
+    "sku": "lh-006",
+    "name": "Love Hurts Joggers (White)",
+    "status": "publish",
+    "type": "simple",
+    "url": "https://skyyrose.co/product/lh-006/",
+    "price": "95",
+    "regular_price": "95",
+    "sale_price": "",
+    "manage_stock": false,
+    "stock_quantity": null,
+    "stock_status": "instock",
+    "backorders": "no",
+    "purchasable": true,
+    "attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "White"
+        ],
+        "variation": false,
+        "visible": true
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "One Size"
+        ],
+        "variation": false,
+        "visible": true
+      }
+    },
+    "images": [
+      {
+        "id": "10185",
+        "url": "https://skyyrose.co/wp-content/uploads/2026/06/love-hurts-joggers-white-front-model.webp"
+      },
+      {
+        "id": 10186,
+        "url": "https://skyyrose.co/wp-content/uploads/2026/06/love-hurts-joggers-white-back-model.webp"
+      }
+    ],
+    "preorder": {
+      "_is_preorder": "0",
+      "_preorder_edition_size": "250",
+      "_preorder_available": "",
+      "_preorder_ship_date": ""
+    }
+  },
+  "merchant_descriptive_delta_only": {
+    "attribute_key": "size",
+    "before": {
+      "name": "Size",
+      "options": [
+        "One Size"
+      ],
+      "variation": false,
+      "visible": true
+    },
+    "after": {
+      "name": "Size",
+      "options": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "variation": false,
+      "visible": true
+    }
+  },
+  "preserve": [
+    "simple product type for this descriptive delta",
+    "native price 95; no price setter",
+    "color/attachments/preorder fields",
+    "stock ownership/management/quantity/status/backorders; no stock setter"
+  ],
+  "effect": "Corrects descriptive attribute only. Does not create native size selection, cart line distinction or selected-size order metadata. Not an acceptance fix for required sizing.",
+  "staging_reference": {
+    "type": "variable",
+    "attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "White"
+        ],
+        "variation": false,
+        "visible": true
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true
+      }
+    },
+    "child_ids": [
+      10578,
+      10579,
+      10580,
+      10581,
+      10582,
+      10583
+    ]
+  },
+  "selection_remedy_requires_review": [
+    "Review existing size-capture extensions first; their hooks can alter native simple behavior",
+    "Otherwise separate approved variable migration preserving native price and commercial/image facts",
+    "Use canonical six size values; validate per-size purchasability and native cart/order metadata on sandbox fixture and approved staging acceptance",
+    "Do not choose inventory/decrement owner or automatically copy staging child SKUs/meta",
+    "Preserve historical orders and existing cart compatibility; plan cleanup and recovery before live migration"
+  ],
+  "approval": "Exact live descriptive delta and any separate variation migration require explicit merchant/write approval"
+}
