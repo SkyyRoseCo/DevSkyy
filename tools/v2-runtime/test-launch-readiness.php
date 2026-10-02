@@ -8,7 +8,8 @@ function is_admin() { return $GLOBALS['admin'] ?? false; }
 function is_preview() { return false; }
 function is_feed() { return false; }
 function wp_doing_ajax() { return false; }
-function wp_get_environment_type() { return 'staging'; }
+function wp_get_environment_type() { return $GLOBALS['environment'] ?? 'staging'; }
+function nocache_headers() { $GLOBALS['nocache_calls'] = ($GLOBALS['nocache_calls'] ?? 0) + 1; }
 function absint( $value ) { return abs( (int) $value ); }
 function get_post_field( $field, $id ) { return 9711 === $id ? 'faq' : 'custom-policy'; }
 function get_page_by_path( $path, $output, $type ) { return $GLOBALS['pages'][ $path ] ?? null; }
@@ -123,3 +124,17 @@ preg_match( '/function skyyrose2_immersive_url\( \$collection \) \{.*?^\}/ms', $
 eval( $match[0] );
 foreach ( array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ) as $slug ) { check( skyyrose2_immersive_url( $slug ) === '/collections/'.$slug.'/#shop', 'Initial shopping CTA '.$slug ); }
 check( skyyrose2_immersive_url( 'unknown' ) === '/collections/', 'Unknown immersive destination falls back to collections' );
+
+$GLOBALS['environment'] = 'production'; $_GET = array();
+foreach ( array( 'collections', 'collections/signature', 'collections/black-rose', 'collections/love-hurts', 'collections/kids-capsule' ) as $index => $path ) {
+	$GLOBALS['pages'][$path] = (object) array( 'ID'=>2000+$index, 'post_status'=>'publish', 'post_password'=>'' );
+	$GLOBALS['permalinks'][2000+$index] = '/'.$path.'/';
+}
+foreach ( skyyrose2_deferred_world_routes() as $path ) {
+	$_SERVER['REQUEST_URI'] = '/'.$path.'/'; $GLOBALS['redirect'] = null; $GLOBALS['nocache_calls'] = 0;
+	skyyrose2_redirect_retired_collection_alias_request();
+	check( $GLOBALS['redirect'][1] === 302 && $GLOBALS['nocache_calls'] === 1, 'Deferred production destination is temporary and uncached: '.$path );
+}
+$_SERVER['REQUEST_URI'] = '/landing-signature/'; $GLOBALS['redirect'] = null; $GLOBALS['nocache_calls'] = 0;
+skyyrose2_redirect_retired_collection_alias_request();
+check( $GLOBALS['redirect'][1] === 301 && $GLOBALS['nocache_calls'] === 0, 'Genuinely retired production alias keeps existing permanent behavior' );

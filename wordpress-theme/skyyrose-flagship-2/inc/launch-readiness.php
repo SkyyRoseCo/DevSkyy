@@ -390,7 +390,12 @@ function skyyrose2_redirect_retired_collection_alias_request() {
 	}
 	$target = $attribution ? add_query_arg( $attribution, $target ) : $target;
 
-	if ( wp_safe_redirect( $target, 'production' === wp_get_environment_type() ? 301 : 302, 'SkyyRose V2' ) ) {
+	$deferred = in_array( $request_slug, skyyrose2_deferred_world_routes(), true );
+	if ( $deferred ) {
+		nocache_headers();
+	}
+	$status = $deferred || 'production' !== wp_get_environment_type() ? 302 : 301;
+	if ( wp_safe_redirect( $target, $status, 'SkyyRose V2' ) ) {
 		exit;
 	}
 }
