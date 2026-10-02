@@ -63,6 +63,7 @@ body .sr2-world.sr2-world--hero-composed .sr2-hero-commerce__details {
   font: 650 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display);
   letter-spacing: var(--sr2-tracking-display);
   text-wrap: balance;
+	text-transform: var(--sr2-case-display);
 }
 .sr2-hero-commerce__story > p:not(.sr2-eyebrow) { max-width: 44ch; margin: 0; color: var(--sr2-muted); font: 400 var(--sr2-type-lede)/1.6 var(--sr2-font-body); }
 .sr2-hero-commerce__review { color: var(--sr2-color-text-muted); font-size: var(--sr2-type-utility); }

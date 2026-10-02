@@ -85,7 +85,7 @@
   font: 400 var(--sr2-type-utility)/var(--sr2-leading-utility) var(--sr2-font-body);
 }
 
-/* Chapter index: sticky under the header, Hanken links with engraved digits. */
+/* Chapter index: sticky under the header, Geist links with engraved digits. */
 .sr2-immersive__chapter-nav {
   position: sticky;
   top: var(--sr2-header);

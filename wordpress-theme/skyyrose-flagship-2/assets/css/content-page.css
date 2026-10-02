@@ -14,7 +14,7 @@
 .sr2-contact-form .sr2-control { justify-self: start; }
 .sr2-contact-direct { display: grid; gap: var(--sr2-space-3); align-content: start; }
 .sr2-contact-direct .sr2-eyebrow { margin: 0; }
-.sr2-contact-direct__email { color: var(--sr2-ink); font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-decoration: none; overflow-wrap: anywhere; }
+.sr2-contact-direct__email { color: var(--sr2-ink); font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-wide); letter-spacing: var(--sr2-tracking-display); text-decoration: none; overflow-wrap: anywhere; }
 .sr2-contact-direct__email:is(:hover, :focus-visible) { color: var(--sr2-color-action); }
 .sr2-contact-direct__note { margin: 0; color: var(--sr2-muted); }
 .sr2-contact-direct__links { display: grid; gap: var(--sr2-space-3); margin-top: var(--sr2-space-8); }

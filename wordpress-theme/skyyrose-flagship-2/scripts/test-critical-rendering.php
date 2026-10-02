@@ -134,7 +134,9 @@ sr2_assert( array( array( 'href' => 'x' ) ) === skyyrose2_critical_font_preloads
 $GLOBALS['sr2_front'] = true;
 $preloads = skyyrose2_critical_font_preloads( array() );
 sr2_assert( 2 === count( $preloads ), 'front page preloads only its two first-view faces' );
-sr2_assert( in_array( SKYYROSE2_URI . '/assets/derived/fonts/archivo-normal-width.woff2', array_column( $preloads, 'href' ), true ), 'the current Archivo headline face is preloaded' );
+sr2_assert( in_array( SKYYROSE2_URI . '/assets/derived/fonts/anybody-condensed.woff2', array_column( $preloads, 'href' ), true ), 'the current Anybody Condensed headline face is preloaded' );
+sr2_assert( in_array( SKYYROSE2_URI . '/assets/sot/fonts/geist-latin.woff2', array_column( $preloads, 'href' ), true ), 'the current Geist body face is preloaded' );
+sr2_assert( ! in_array( SKYYROSE2_URI . '/assets/derived/fonts/archivo-normal-width.woff2', array_column( $preloads, 'href' ), true ), 'the retired Archivo face is not preloaded' );
 sr2_assert( ! in_array( SKYYROSE2_URI . '/assets/sot/fonts/cinzel-latin.woff2', array_column( $preloads, 'href' ), true ), 'the former Cinzel headline face does not compete for first-view bandwidth' );
 foreach ( $preloads as $record ) {
 	sr2_assert( 'font' === $record['as'] && 'font/woff2' === $record['type'] && 'anonymous' === $record['crossorigin'], 'font preload records are CORS font preloads' );

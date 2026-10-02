@@ -147,14 +147,14 @@ function skyyrose2_print_hero_bootstrap() {
  *
  * The @font-face declarations arrive inline with the contract, but a font
  * download only starts once text that uses the face is laid out. Preloading
- * the two faces the editorial first view sets (Archivo title, Hanken body and
- * controls) closes that gap so the first paint is set in the brand faces
+ * the two faces the editorial first view sets (Anybody Condensed titles,
+ * Geist body and controls) closes that gap so the first paint is set in the brand faces
  * instead of swapping to them a frame later.
  *
  * @return string[] Paths beneath assets, matching the CSS font-face URLs.
  */
 function skyyrose2_critical_font_files() {
-	return array( 'sot/fonts/hanken-grotesk-latin.woff2', 'derived/fonts/archivo-normal-width.woff2' );
+	return array( 'sot/fonts/geist-latin.woff2', 'derived/fonts/anybody-condensed.woff2' );
 }
 
 /**

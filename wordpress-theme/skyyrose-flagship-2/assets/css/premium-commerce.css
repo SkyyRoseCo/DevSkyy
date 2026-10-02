@@ -35,7 +35,7 @@
 .sr2-c-editorial-card[data-cart-state="error"] .sr2-c-editorial-card__actions { outline: 1px solid var(--sr2-material-metal); outline-offset: var(--sr2-space-1); }
 
 /* Garment-first card (frame => false, data-card-frame="archive"): the approved on-model front alone
- * on a #111 tile at a constant 3:4 window, contain-fit; small nameplate, Hanken 500 title, muted price,
+ * on a #111 tile at a constant 3:4 window, contain-fit; small nameplate, Geist 500 title, muted price,
  * availability as an index, quick view + add-to-bag as quiet hairline links. Native Woo state is unchanged. */
 .sr2-c-editorial-card[data-card-frame="archive"] { border-top: 0; background: transparent; }
 .sr2-c-editorial-card[data-card-frame="archive"] .sr2-c-editorial-card__media { aspect-ratio: 3 / 4; background: var(--sr2-card); }

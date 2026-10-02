@@ -55,10 +55,10 @@ function projectTokens(current, tokens) {
   mapEntries(
     next.settings.typography.fontFamilies,
     {
-      archivo: 'font-display',
-      'hanken-grotesk': 'font-body',
-      anton: 'font-ui',
-      cinzel: 'font-caps',
+      'anybody-condensed': 'font-display',
+      'anybody-wide': 'font-wide',
+      geist: 'font-body',
+      'martian-mono': 'font-ui',
     },
     'fontFamily'
   );
@@ -145,7 +145,9 @@ function projectTokens(current, tokens) {
         family: token(
           role === 'index'
             ? 'font-index'
-            : ['monument', 'display', 'editorial'].includes(role)
+            : role === 'monument'
+              ? 'font-wide'
+              : ['display', 'editorial'].includes(role)
               ? 'font-display'
               : role === 'utility'
                 ? 'font-ui'

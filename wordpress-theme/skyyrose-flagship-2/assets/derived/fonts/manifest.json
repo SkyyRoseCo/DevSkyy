@@ -1,23 +1,81 @@
 {
-  "bytes": 34976,
-  "fixed_axes": {
-    "wdth": 100
-  },
+  "deliveries": [
+    {
+      "bytes": 34976,
+      "fixed_axes": {
+        "wdth": 100
+      },
+      "output": "assets/derived/fonts/archivo-normal-width.woff2",
+      "retained_axes": {
+        "wght": [
+          100.0,
+          600.0,
+          900.0
+        ]
+      },
+      "sha256": "7ad8d3aba9616844d4d13eddb34a7584a969c59af1f52a19e89ab4783eab41f5",
+      "source": "assets/sot/fonts/archivo-latin.woff2",
+      "source_sha256": "4c98b9d490d1698ec95f2ff17a6c7d0e72691864c0c5d7bc2a2c161b45afe5ad",
+      "unicode_subset": false
+    },
+    {
+      "bytes": 22472,
+      "fixed_axes": {
+        "wdth": 50
+      },
+      "output": "assets/derived/fonts/anybody-condensed.woff2",
+      "retained_axes": {
+        "wght": [
+          100.0,
+          100.0,
+          900.0
+        ]
+      },
+      "sha256": "e2d6a45163cdc705c5ade4de0872b2d087fd5ec4f4da77133474b29dbb56040c",
+      "source": "assets/sot/fonts/anybody-latin.woff2",
+      "source_sha256": "8c4a79f7434579408fe25290420de69609617728a61b45d0b12055c03d92bc4e",
+      "unicode_subset": false
+    },
+    {
+      "bytes": 23988,
+      "fixed_axes": {
+        "wdth": 150
+      },
+      "output": "assets/derived/fonts/anybody-wide.woff2",
+      "retained_axes": {
+        "wght": [
+          100.0,
+          100.0,
+          900.0
+        ]
+      },
+      "sha256": "13d2a4c39a73c6dccc3fc5f49653426cb0eb5540ad8d2e44f97861b1dd166f78",
+      "source": "assets/sot/fonts/anybody-latin.woff2",
+      "source_sha256": "8c4a79f7434579408fe25290420de69609617728a61b45d0b12055c03d92bc4e",
+      "unicode_subset": false
+    },
+    {
+      "bytes": 24048,
+      "fixed_axes": {
+        "wdth": 87.5
+      },
+      "output": "assets/derived/fonts/martian-mono-narrow.woff2",
+      "retained_axes": {
+        "wght": [
+          100.0,
+          400.0,
+          800.0
+        ]
+      },
+      "sha256": "b24aa0118f25ce1cfa0dd568c54b4ced13b4245793fd246818bfd18841241dd3",
+      "source": "assets/sot/fonts/martian-mono-latin.woff2",
+      "source_sha256": "fa6f2665175059db1410a3322cedf23328c06dae59c2e1b126bbb764fb69a1b0",
+      "unicode_subset": false
+    }
+  ],
   "license": "OFL-1.1",
   "license_path": "assets/sot/fonts/OFL-1.1.txt",
-  "output": "assets/derived/fonts/archivo-normal-width.woff2",
-  "retained_axes": {
-    "wght": [
-      100,
-      600,
-      900
-    ]
-  },
-  "schema": "skyyrose.font-delivery.v1",
-  "sha256": "7ad8d3aba9616844d4d13eddb34a7584a969c59af1f52a19e89ab4783eab41f5",
-  "source": "assets/sot/fonts/archivo-latin.woff2",
-  "source_sha256": "4c98b9d490d1698ec95f2ff17a6c7d0e72691864c0c5d7bc2a2c161b45afe5ad",
-  "unicode_subset": false,
+  "schema": "skyyrose.font-delivery.v2",
   "versions": {
     "brotli": "1.2.0",
     "fonttools": "4.59.2"

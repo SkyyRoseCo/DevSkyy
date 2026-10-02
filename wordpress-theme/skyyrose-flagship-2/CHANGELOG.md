@@ -2,6 +2,27 @@
 
 All notable changes to SkyyRose Flagship 2 are documented here.
 
+## Unreleased — Stretch typography — 2026-10-02
+
+- Page type is now the founder-approved "Stretch" system. Titles, section heads,
+  dialogs and navigation set in **Anybody Condensed** (width 50) capitals; the
+  wordmark role and collection nameplates in **Anybody Wide** (width 150); reading
+  and controls in **Geist**; eyebrows, buttons, indices and engraved labels in
+  **Martian Mono** (width 87.5). Product names keep their own casing.
+- Fonts come from google/fonts @ `9710da1` (upstream commits, license hashes and
+  the exact subset command in `data/font-provenance.json`). Width instances are
+  built by `tools/v2-runtime/build-font-delivery.py`; Archivo's delivery is
+  byte-identical to before.
+- Display tracking is one token (`--sr2-tracking-display: 0.02em`); hard-coded
+  negative tracking in display rules now uses it. New tokens `--sr2-font-wide`
+  and `--sr2-case-display`; `--sr2-font-caps` and `--sr2-font-index` alias the
+  label face.
+- Front-page critical CSS and font preloads move to Anybody Condensed + Geist
+  (13.3 KB of the 16 KB budget). `theme.json` editor presets and
+  `editor-style.css` follow.
+- Archivo, Hanken Grotesk, Anton, Cinzel and Inter stay bundled but are no longer
+  registered by the theme.
+
 ## 2.5.0 — Whole-site editorial redesign — 2026-09-22
 
 - Every route now follows one composition: a full-bleed cinematic arrival with a
