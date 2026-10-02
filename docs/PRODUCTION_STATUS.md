@@ -1,7 +1,7 @@
 # Current production status and release boundaries
 
 **Last updated:** 2026-10-02. **Latest browser/preservation observation:** 2026-10-02
-12:23:59 UTC (05:23:59 PDT), recorded from actual operation receipts.
+13:35:59 UTC (06:35:59 PDT), recorded from actual operation receipts.
 **Additive classification review:** 2026-10-02 12:31:25 UTC (05:31:25 PDT).
 Individual CI and browser observations retain their own timestamps below.
 **Installed theme identity read:** 2026-10-02 12:49:09 UTC (05:49:09 PDT).
@@ -12,6 +12,54 @@ retained task records; it does not change their historical states or authorize
 execution. Refresh the snapshot from the release coordinator's actual receipts
 before using it for a new operation. The documentation commit is separate from
 the frozen operational source and does not rebuild the approved package.
+
+## Controlling release hold — immersive experiences are unfinished
+
+On October 2 the owner clarified: “the immersive pages need to be fully
+immersive and we not there yet.” **V2 activation and publication of all ten
+prepared pages are on hold.** The integration lead acknowledged the hold; no
+theme switch or page-publication command was dispatched. This requirement
+supersedes the earlier technical cutover sequence below. Separate V1/V2
+packages remain prepared artifacts, not immersive-experience acceptance.
+
+The ten-page plan provisions four collection-shopping pages, a Worlds index,
+four dedicated worlds, and a size guide. Its existing templates, routes,
+link checks, and commerce tests do not establish a finished immersive journey.
+Independent source review at operational `a662e707d` found that the adult worlds
+substitute commerce-film chapters for their authored world chapters, Kids uses
+static chapters, declared camera paths are not consumed, and the optional Three
+loader is gated by the disabled mascot feature. These are source findings, not
+a new browser qualification. Completing the four worlds and reviewing their
+actual desktop/mobile experiences is required before reconsidering publication;
+merely enabling the existing procedural geometry is insufficient. No specific
+free-roam technology, paid generation, or new asset spending is authorized by
+this documentation update.
+
+The corrected V1 operational checkpoint was separately consumed at
+**13:34:13–13:34:31 UTC (06:34:13–06:34:31 PDT)** and **failed**. Desktop completed
+home, positive Search, native `br-002` PDP and empty Search; mobile completed the
+first three observations and recorded four JavaScript syntax errors before the
+empty-search step. Both final native captures remained incomplete. The parent
+exited 1 with zero stdout/stderr, all eight recorded owned processes stopped,
+and source/runtime bindings unchanged. The error cause is under diagnosis;
+sanitized HTML and error strings alone do not establish a live-site defect.
+No retry is cleared. The scoped authenticated post-reads at 13:35:16 and
+13:35:59 UTC preserve the protected site state, all ten drafts, native `br-002`
+identity and three active entry files; they do not repeat a full catalog or
+inactive-theme file census.
+
+The retained operational evidence is
+`tasks/production-readiness-redteam-20261001/final-clearance/v1-operational-checkpoint-actual-failure-packet-e526b1b5.json`
+(SHA-256 `3ee434b85b1324eea92960ca4fc7b384bb067fe57670102a108dbe21da441f19`).
+The authenticated post-read receipts under
+`tasks/production-final-pass-20261001/evidence/` are
+`production-v1-native-preflight-20261002t133508.json` (SHA-256
+`7308c7442b567bfe4edfa9d9272f87b6c6b87dedfc6def891b7bda9c4e65297d`)
+and `production-v1-native-product-precondition-20261002t133559.json` (SHA-256
+`ae1d9da8b92a08cdf5564d7e8636b4b3da9c3e934e1bc6094ebee68c72b13b9d`).
+Earlier diagnostic observations and their original failure classifications
+remain historical evidence below; they do not override this hold or the newer
+failed checkpoint.
 
 ## What is established
 
@@ -24,11 +72,11 @@ the frozen operational source and does not rebuild the approved package.
 | Production                      | `https://skyyrose.co`, active directory `skyyrose-flagship`; ten owned pages remain unchanged drafts; latest scoped post-read matches its pre-read | Active header identifies older SkyyRose Flagship 2 v2.3.1, not proven canonical source V1. Earlier verification matched 599 inactive V2 files; latest scoped read does not repeat that census or 33 prices. No V2 activation or `DEPLOYED` |
 | Procedure and acceptance inputs | Exact headless-shell diagnostic collection and local V2 qualification independently reviewed | The later passive diagnostic is COMPLETE, but its current acceptance remains FAILED; local V2 qualification is not live acceptance |
 | Exact operational-head CI       | `CI_PASS`: 21 mandatory successful checks, 6 intentional skips, no pending/failure/cancellation                                                                       | Single targeted Playwright retry: 62 passed (31 Chromium, 31 mobile), 0 failed/skipped/flaky; source CI is separate from production acceptance                                                |
-| Execution clearance             | The native V1 checkpoint and separately cleared passive diagnostic attempts are consumed | The latest diagnostic completed its observation scope. Its completion does not clear a retry, V2 activation, or publication |
-| V1 Search checkpoint            | October 1 desktop/mobile acceptance remains FAIL; October 2 passive diagnostic collected complete evidence with process exit 0 | One emitted `tk_ai` declaration still fails the frozen response-cookie rule; 423 requests remain UNKNOWN under that classifier. Diagnostic completion is not checkpoint acceptance |
-| Production V2 acceptance        | Not executed                                                                                                                                                          | No V2 activation, `DEPLOYED`, or `PRODUCTION_ACCEPTED`; complete accepted V1 Search/privacy capture, activation, and six-profile V2 acceptance remain required                                |
+| Execution clearance             | All diagnostic/checkpoint clearances are consumed, including the October 2 corrected V1 run | No retry is cleared. Human full-immersion requirement holds V2 activation and all ten page publications |
+| V1 Search checkpoint            | October 2 corrected operational run FAIL: desktop completed four observations; mobile completed three; both final captures incomplete | Clean process termination and empty observed jars do not establish complete acceptance. Earlier failures remain preserved |
+| Production V2 acceptance        | Not executed | No V2 activation, `DEPLOYED`, or `PRODUCTION_ACCEPTED`; completed and reviewed immersive experiences are now an explicit prerequisite alongside the unresolved technical acceptance gates |
 
-## Latest passive diagnostic and current hold
+## Earlier passive diagnostic — preserved history
 
 The separately reviewed, passive desktop home-to-Search diagnostic completed on
 **2026-10-02 at 12:23:00 UTC (05:23:00 PDT)** with **process exit 0**. Its
