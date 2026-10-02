@@ -57,7 +57,7 @@ function skyyrose2_scroll_world_asset_uri( $path ) {
 }
 
 /**
- * Resolve the dedicated immersive story page for a collection.
+ * Resolve initial collection shopping while immersive worlds remain deferred.
  *
  * @param string $collection Collection slug.
  * @return string
@@ -65,9 +65,9 @@ function skyyrose2_scroll_world_asset_uri( $path ) {
 function skyyrose2_immersive_url( $collection ) {
 	$collection = sanitize_title( $collection );
 	if ( ! in_array( $collection, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true ) ) {
-		return skyyrose2_marketplace_page_url( 'worlds' );
+		return skyyrose2_marketplace_page_url( 'collections' );
 	}
-	return skyyrose2_marketplace_page_url( 'immersive-' . $collection );
+	return skyyrose2_collection_url( $collection ) . '#shop';
 }
 
 /**
@@ -656,7 +656,7 @@ function skyyrose2_seo_context() {
 
 	if ( is_front_page() ) {
 		$context['title']       = __( 'SkyyRose', 'skyyrose-flagship-2' );
-		$context['description'] = __( 'Enter SkyyRose: Oakland-rooted luxury streetwear, living collection worlds, limited pieces, and the stories behind the house.', 'skyyrose-flagship-2' );
+		$context['description'] = __( 'Enter SkyyRose: Oakland-rooted luxury streetwear, collection stories, limited pieces, and the stories behind the house.', 'skyyrose-flagship-2' );
 	} elseif ( is_singular( 'product' ) && function_exists( 'wc_get_product' ) ) {
 		$product = wc_get_product( get_queried_object_id() );
 		if ( $product ) {

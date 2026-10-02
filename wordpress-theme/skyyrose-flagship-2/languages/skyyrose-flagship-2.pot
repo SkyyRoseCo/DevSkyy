@@ -86,10 +86,6 @@ msgstr ""
 msgid "A first Kids Capsule runway framed in royal color"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:71
-msgid "A fourth world has been waiting."
-msgstr ""
-
 #: page-lookbook.php:27
 msgid "A house built by a father, named after a daughter, and rooted in The Town."
 msgstr ""
@@ -618,7 +614,11 @@ msgstr ""
 msgid "Enter %s"
 msgstr ""
 
-#: functions.php:659 inc/seo-indexing.php:197
+#: functions.php:659
+msgid "Enter SkyyRose: Oakland-rooted luxury streetwear, collection stories, limited pieces, and the stories behind the house."
+msgstr ""
+
+#: inc/seo-indexing.php:197
 msgid "Enter SkyyRose: Oakland-rooted luxury streetwear, living collection worlds, limited pieces, and the stories behind the house."
 msgstr ""
 
@@ -626,7 +626,7 @@ msgstr ""
 msgid "Enter after dark."
 msgstr ""
 
-#: functions.php:1011 template-parts/home/kids-capsule-reveal.php:121
+#: functions.php:1011
 msgid "Enter her world"
 msgstr ""
 
@@ -638,16 +638,8 @@ msgstr ""
 msgid "Enter the Kids Capsule collection for currently published pieces."
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:135
-msgid "Enter the Kids world"
-msgstr ""
-
 #: 404.php:21
 msgid "Enter the collections"
-msgstr ""
-
-#: template-parts/collections/chapters.php:40
-msgid "Enter the full scene"
 msgstr ""
 
 #: functions.php:1004
@@ -738,10 +730,6 @@ msgstr ""
 msgid "Explore the shop"
 msgstr ""
 
-#: page-lookbook.php:64
-msgid "Explore world"
-msgstr ""
-
 #: inc/global-shell.php:136 inc/presentation-registry.php:250 template-parts/pages/contact.php:20 template-parts/pages/service.php:58
 msgid "FAQ"
 msgstr ""
@@ -811,7 +799,7 @@ msgid "Forbidden Garden"
 msgstr ""
 
 #: inc/global-shell.php:99 page-lookbook.php:26
-msgid "Four worlds. One house."
+msgid "Four collections. One house."
 msgstr ""
 
 #: template-parts/home/editorial-hero.php:13
@@ -1010,7 +998,7 @@ msgstr ""
 msgid "Keep your pieces close."
 msgstr ""
 
-#: functions.php:999 inc/global-shell.php:156 inc/launch-readiness.php:257 inc/presentation-registry.php:190 template-immersive-kids-capsule.php:16 template-parts/commerce/search-dialog.php:39
+#: functions.php:999 inc/global-shell.php:156 inc/launch-readiness.php:297 inc/presentation-registry.php:190 template-immersive-kids-capsule.php:16 template-parts/commerce/search-dialog.php:39
 msgid "Kids Capsule"
 msgstr ""
 
@@ -1782,7 +1770,7 @@ msgstr ""
 msgid "Shop Black Rose"
 msgstr ""
 
-#: functions.php:1010
+#: functions.php:1010 template-parts/home/kids-capsule-reveal.php:121
 msgid "Shop Kids Capsule"
 msgstr ""
 
@@ -1798,7 +1786,7 @@ msgstr ""
 msgid "Shop all pieces"
 msgstr ""
 
-#: page-lookbook.php:64 template-parts/immersive/world.php:109
+#: page-lookbook.php:64 template-parts/collections/chapters.php:40 template-parts/immersive/world.php:109
 msgid "Shop collection"
 msgstr ""
 
@@ -2122,6 +2110,10 @@ msgstr ""
 msgid "The Invitation"
 msgstr ""
 
+#: template-parts/home/kids-capsule-reveal.php:71
+msgid "The Kids Capsule collection."
+msgstr ""
+
 #: template-immersive-black-rose.php:17
 msgid "The Moon Keeps the Court"
 msgstr ""
@@ -2412,6 +2404,10 @@ msgstr ""
 
 #: woocommerce/archive-product.php:109
 msgid "View all pieces"
+msgstr ""
+
+#: page-lookbook.php:64 template-parts/home/kids-capsule-reveal.php:135
+msgid "View available pieces"
 msgstr ""
 
 #: template-parts/immersive/world.php:226

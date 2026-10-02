@@ -37,7 +37,7 @@ if ( ! $chapter_scenes ) {
 					<p class="sr2-lede"><?php echo esc_html( $chapter_scene['copy'] ); ?></p>
 					<?php if ( $chapter_number === $chapter_total ) : ?>
 						<div class="sr2-world-chapter__actions">
-							<a class="sr2-editorial-link" href="<?php echo esc_url( skyyrose2_immersive_url( $chapter_slug ) ); ?>"><?php esc_html_e( 'Enter the full scene', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↗</span></a>
+							<a class="sr2-editorial-link" href="<?php echo esc_url( skyyrose2_immersive_url( $chapter_slug ) ); ?>"><?php esc_html_e( 'Shop collection', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↗</span></a>
 						</div>
 					<?php endif; ?>
 				</div>

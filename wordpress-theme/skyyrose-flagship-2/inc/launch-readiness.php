@@ -200,11 +200,20 @@ add_action( 'template_redirect', 'skyyrose2_redirect_retired_public_content', 1 
  */
 function skyyrose2_retired_v2_page_routes() {
 	return array(
-		'experiences'                 => 'worlds',
-		'experience-signature'        => 'worlds/signature',
-		'experience-black-rose'       => 'worlds/black-rose',
-		'experience-love-hurts'       => 'worlds/love-hurts',
-		'experience-kids-capsule'     => 'worlds/kids-capsule',
+		'experiences'                 => 'collections',
+		'experience-signature'        => 'collections/signature',
+		'experience-black-rose'       => 'collections/black-rose',
+		'experience-love-hurts'       => 'collections/love-hurts',
+		'experience-kids-capsule'     => 'collections/kids-capsule',
+		'worlds'                      => 'collections',
+		'worlds/signature'            => 'collections/signature',
+		'worlds/black-rose'           => 'collections/black-rose',
+		'worlds/love-hurts'           => 'collections/love-hurts',
+		'worlds/kids-capsule'         => 'collections/kids-capsule',
+		'immersive-signature'         => 'collections/signature',
+		'immersive-black-rose'        => 'collections/black-rose',
+		'immersive-love-hurts'        => 'collections/love-hurts',
+		'immersive-kids-capsule'      => 'collections/kids-capsule',
 		'collections-world'           => 'collections',
 		'landing-signature'           => 'collections/signature',
 		'landing-black-rose'          => 'collections/black-rose',
@@ -219,11 +228,42 @@ function skyyrose2_retired_v2_routes() {
 	return array_merge( skyyrose2_legacy_collection_routes(), skyyrose2_retired_v2_page_routes() );
 }
 
-/** Repair internal menu URLs without editing the stored menus or other worlds. */
+/** Explicitly deferred initial-release destinations; keep stored pages and menus intact. */
+function skyyrose2_deferred_world_routes() {
+	return array( 'worlds', 'worlds/signature', 'worlds/black-rose', 'worlds/love-hurts', 'worlds/kids-capsule', 'immersive-signature', 'immersive-black-rose', 'immersive-love-hurts', 'immersive-kids-capsule', 'experiences', 'experience-signature', 'experience-black-rose', 'experience-love-hurts', 'experience-kids-capsule' );
+}
+
+/** Accept relative links and this exact storefront origin, without credentials. */
+function skyyrose2_internal_navigation_url( $url ) {
+	$parts = wp_parse_url( $url );
+	$home = wp_parse_url( home_url() );
+	if ( ! is_array( $parts ) || isset( $parts['user'] ) || isset( $parts['pass'] ) ) {
+		return false;
+	}
+	if ( ! isset( $parts['host'] ) ) {
+		return ! isset( $parts['scheme'] );
+	}
+	return strtolower( $parts['host'] ) === strtolower( $home['host'] )
+		&& ( $parts['scheme'] ?? $home['scheme'] ) === $home['scheme']
+		&& ( $parts['port'] ?? ( 'https' === $home['scheme'] ? 443 : 80 ) ) === ( $home['port'] ?? ( 'https' === $home['scheme'] ? 443 : 80 ) );
+}
+
+/** Hide only exact deferred destinations in rendered menus; no database writes. */
+function skyyrose2_initial_commerce_menu_items( $items ) {
+	if ( is_admin() ) {
+		return $items;
+	}
+	return array_values( array_filter( $items, static function ( $item ) {
+		$url = $item->url ?? '';
+		return ! skyyrose2_internal_navigation_url( $url ) || ! in_array( trim( (string) wp_parse_url( $url, PHP_URL_PATH ), '/' ), skyyrose2_deferred_world_routes(), true );
+	} ) );
+}
+add_filter( 'wp_nav_menu_objects', 'skyyrose2_initial_commerce_menu_items', 20 );
+
+/** Repair internal menu URLs without editing the stored menus. */
 function skyyrose2_canonical_collection_menu_links( $atts ) {
 	$href = $atts['href'] ?? '';
-	$host = wp_parse_url( $href, PHP_URL_HOST );
-	if ( $host && strtolower( $host ) !== strtolower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) ) ) {
+	if ( ! skyyrose2_internal_navigation_url( $href ) ) {
 		return $atts;
 	}
 	$slug = trim( (string) wp_parse_url( $href, PHP_URL_PATH ), '/' );

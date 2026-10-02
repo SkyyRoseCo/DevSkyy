@@ -52,11 +52,20 @@ skyyrose2_exclude_default_journal_sample( $query );
 check( array( 4 ) === $query->get( 'post__not_in' ), 'Admin queries remain untouched' );
 
 $expected_routes = array(
-	'experiences'             => 'worlds',
-	'experience-signature'    => 'worlds/signature',
-	'experience-black-rose'   => 'worlds/black-rose',
-	'experience-love-hurts'   => 'worlds/love-hurts',
-	'experience-kids-capsule' => 'worlds/kids-capsule',
+	'experiences'             => 'collections',
+	'experience-signature'    => 'collections/signature',
+	'experience-black-rose'   => 'collections/black-rose',
+	'experience-love-hurts'   => 'collections/love-hurts',
+	'experience-kids-capsule' => 'collections/kids-capsule',
+	'worlds'                 => 'collections',
+	'worlds/signature'       => 'collections/signature',
+	'worlds/black-rose'      => 'collections/black-rose',
+	'worlds/love-hurts'      => 'collections/love-hurts',
+	'worlds/kids-capsule'    => 'collections/kids-capsule',
+	'immersive-signature'    => 'collections/signature',
+	'immersive-black-rose'   => 'collections/black-rose',
+	'immersive-love-hurts'   => 'collections/love-hurts',
+	'immersive-kids-capsule' => 'collections/kids-capsule',
 	'collections-world'       => 'collections',
 	'landing-signature'       => 'collections/signature',
 	'landing-black-rose'      => 'collections/black-rose',
@@ -92,3 +101,25 @@ $GLOBALS['pages']['collections/signature']->post_status = 'draft';
 $GLOBALS['redirect'] = null;
 skyyrose2_redirect_retired_collection_alias_request();
 check( null === $GLOBALS['redirect'], 'Draft canonical targets fail closed without a redirect' );
+
+$GLOBALS['admin'] = false;
+$items = array(); foreach ( skyyrose2_deferred_world_routes() as $path ) { $items[] = (object) array( 'url' => 'https://theme.test/' . $path . '/' ); }
+$items[] = (object) array( 'url' => 'https://other.test/worlds/' );
+$items[] = (object) array( 'url' => 'https://theme.test:8443/worlds/' );
+$items[] = (object) array( 'url' => '/collections/signature/' );
+$items[] = (object) array( 'url' => '/journal/hello-world/' );
+$filtered = skyyrose2_initial_commerce_menu_items( $items );
+check( count( $filtered ) === 4, 'Exact deferred menu destinations hidden; foreign origins and unrelated routes preserved' );
+$GLOBALS['admin'] = true;
+check( skyyrose2_initial_commerce_menu_items( $items ) === $items, 'Stored/admin menu preview remains intact' );
+$GLOBALS['admin'] = false;
+check( ! skyyrose2_internal_navigation_url( 'javascript:alert(1)' ) && ! skyyrose2_internal_navigation_url( 'https://user@theme.test/worlds/' ), 'Non-navigation schemes and credentials are never rewritten' );
+check( skyyrose2_canonical_collection_menu_links( array( 'href' => 'https://theme.test:8443/landing-signature/' ) )['href'] === 'https://theme.test:8443/landing-signature/', 'Other port is not the storefront origin' );
+function sanitize_title( $value ) { return strtolower( $value ); }
+function skyyrose2_marketplace_page_url( $slug ) { return '/'.$slug.'/'; }
+function skyyrose2_collection_url( $slug ) { return '/collections/'.$slug.'/'; }
+$source = file_get_contents( __DIR__.'/../../wordpress-theme/skyyrose-flagship-2/functions.php' );
+preg_match( '/function skyyrose2_immersive_url\( \$collection \) \{.*?^\}/ms', $source, $match );
+eval( $match[0] );
+foreach ( array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ) as $slug ) { check( skyyrose2_immersive_url( $slug ) === '/collections/'.$slug.'/#shop', 'Initial shopping CTA '.$slug ); }
+check( skyyrose2_immersive_url( 'unknown' ) === '/collections/', 'Unknown immersive destination falls back to collections' );

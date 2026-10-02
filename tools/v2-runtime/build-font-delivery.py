@@ -21,6 +21,34 @@ VERSIONS = {"fonttools": "4.59.2", "brotli": "1.2.0"}
 AXES = [("wght", 100.0, 600.0, 900.0), ("wdth", 62.0, 100.0, 125.0)]
 
 
+def validate_public_directory(directory: Path) -> None:
+    """Detect inaccessible existing generated directories without repairing them."""
+    root = THEME / "assets/derived"
+    directory.relative_to(root)
+    current = directory
+    while True:
+        if current.exists() and (not current.is_dir() or current.stat().st_mode & 0o005 != 0o005):
+            raise ValueError(f"Inaccessible public generated directory: {current}")
+        if current == root:
+            break
+        current = current.parent
+
+
+def create_public_directory(directory: Path) -> None:
+    """Make only newly-created generated directories readable and searchable."""
+    missing = []
+    current = directory
+    while not current.exists():
+        missing.append(current)
+        current = current.parent
+    directory.mkdir(parents=True, exist_ok=True)
+    for created in missing:
+        if created.is_symlink():
+            raise ValueError(f"Symlink generated directory: {created}")
+        created.chmod(0o755)
+    validate_public_directory(directory)
+
+
 def axes(font: TTFont) -> list:
     """Return the complete variable axis contract."""
     return [(a.axisTag, a.minValue, a.defaultValue, a.maxValue) for a in font["fvar"].axes]
@@ -113,17 +141,26 @@ def generate(check: bool = False) -> None:
     }
     for path, data in outputs.items():
         if check:
-            if not path.is_file() or path.read_bytes() != data:
+            validate_public_directory(path.parent)
+            if (
+                not path.is_file()
+                or path.read_bytes() != data
+                or path.stat().st_mode & 0o777 != 0o644
+            ):
                 raise ValueError(f"Stale font delivery: {path.name}")
             continue
-        path.parent.mkdir(parents=True, exist_ok=True)
-        with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as stream:
-            temporary = Path(stream.name)
-            stream.write(data)
+        create_public_directory(path.parent)
+        temporary = None
         try:
+            with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as stream:
+                temporary = Path(stream.name)
+                stream.write(data)
+                stream.flush()
+                os.fchmod(stream.fileno(), 0o644)
             os.replace(temporary, path)
         finally:
-            temporary.unlink(missing_ok=True)
+            if temporary is not None:
+                temporary.unlink(missing_ok=True)
     if safe_path(SOURCE).read_bytes() != raw:
         raise ValueError("Original font changed")
     print(

@@ -3,6 +3,7 @@
 import hashlib
 import importlib.util
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -49,6 +50,78 @@ class RenditionIntegrityTests(unittest.TestCase):
             ("WIDTHS", (8, 16)),
         ]:
             self.enterContext(patch.object(module, name, value))
+
+    @unittest.skipUnless(os.name == "posix", "POSIX publication permissions")
+    def test_completed_temp_remains_private_until_publication(self):
+        original_fchmod = module.os.fchmod
+        checked = []
+
+        def observe(fd, mode):
+            current = os.fstat(fd)
+            self.assertEqual(current.st_mode & 0o777, 0o600)
+            self.assertGreater(current.st_size, 0)
+            self.assertEqual(len(os.pread(fd, current.st_size, 0)), current.st_size)
+            self.assertEqual(mode, 0o644)
+            checked.append(fd)
+            original_fchmod(fd, mode)
+
+        with patch.object(module.os, "fchmod", side_effect=observe):
+            module.generate()
+        self.assertTrue(checked)
+
+    @unittest.skipUnless(os.name == "posix", "POSIX public-directory permissions")
+    def test_private_existing_directory_fails_without_permission_repair(self):
+        module.generate()
+        root = self.theme / "assets/derived"
+        directory = next(path for path in root.iterdir() if path.is_dir())
+        before = {path: path.read_bytes() for path in root.rglob("*") if path.is_file()}
+        directory.chmod(0o700)
+        for check in (True, False):
+            with self.subTest(check=check):
+                with self.assertRaisesRegex(ValueError, "Inaccessible public"):
+                    module.generate(check=check)
+                self.assertEqual(directory.stat().st_mode & 0o777, 0o700)
+                self.assertEqual(
+                    before, {path: path.read_bytes() for path in root.rglob("*") if path.is_file()}
+                )
+
+    @unittest.skipUnless(os.name == "posix", "POSIX public-file permissions")
+    def test_failed_atomic_permission_step_preserves_destination_and_cleans_temp(self):
+        module.generate()
+        derived = self.theme / "assets/derived"
+        before = {path: path.read_bytes() for path in derived.rglob("*") if path.is_file()}
+        with patch.object(module.os, "fchmod", side_effect=OSError("permission failure")):
+            with self.assertRaisesRegex(OSError, "permission failure"):
+                module.generate()
+        self.assertEqual(
+            before, {path: path.read_bytes() for path in derived.rglob("*") if path.is_file()}
+        )
+
+    @unittest.skipUnless(os.name == "posix", "POSIX public-file permissions")
+    def test_public_artifacts_are_readable_under_restrictive_umask(self):
+        previous_umask = os.umask(0o077)
+        try:
+            module.generate()
+        finally:
+            os.umask(previous_umask)
+        generated = list((self.theme / "assets/derived").rglob("*"))
+        files = [path for path in generated if path.is_file()]
+        self.assertTrue(files)
+        for path in generated:
+            if path.is_dir():
+                self.assertEqual(path.stat().st_mode & 0o777, 0o755)
+        original = {path: path.read_bytes() for path in files}
+        for path in files:
+            self.assertEqual(path.stat().st_mode & 0o777, 0o644)
+            path.chmod(0o600)
+        with self.assertRaisesRegex(ValueError, "Stale"):
+            module.generate(check=True)
+        for path in files:
+            self.assertEqual(path.stat().st_mode & 0o777, 0o600)
+        module.generate()
+        for path in files:
+            self.assertEqual(path.stat().st_mode & 0o777, 0o644)
+            self.assertEqual(path.read_bytes(), original[path])
 
     def test_repeat_generation_and_check_preserve_source(self):
         module.generate()

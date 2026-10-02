@@ -17,16 +17,48 @@ OUTPUT = THEME / "assets/derived/card-fronts"
 WIDTHS = (320, 480, 768)
 
 
+def validate_public_directory(directory: Path) -> None:
+    """Detect inaccessible existing generated directories without repairing them."""
+    root = THEME / "assets/derived"
+    directory.relative_to(root)
+    current = directory
+    while True:
+        if current.exists() and (not current.is_dir() or current.stat().st_mode & 0o005 != 0o005):
+            raise ValueError(f"Inaccessible public generated directory: {current}")
+        if current == root:
+            break
+        current = current.parent
+
+
+def create_public_directory(directory: Path) -> None:
+    """Make only newly-created generated directories readable and searchable."""
+    missing = []
+    current = directory
+    while not current.exists():
+        missing.append(current)
+        current = current.parent
+    directory.mkdir(parents=True, exist_ok=True)
+    for created in missing:
+        if created.is_symlink():
+            raise ValueError(f"Symlink generated directory: {created}")
+        created.chmod(0o755)
+    validate_public_directory(directory)
+
+
 def write_output(destination: Path, payload: bytes) -> None:
     """Replace a generated entry without following a destination symlink."""
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile(dir=destination.parent, delete=False) as stream:
-        temporary = Path(stream.name)
-        stream.write(payload)
+    create_public_directory(destination.parent)
+    temporary = None
     try:
+        with tempfile.NamedTemporaryFile(dir=destination.parent, delete=False) as stream:
+            temporary = Path(stream.name)
+            stream.write(payload)
+            stream.flush()
+            os.fchmod(stream.fileno(), 0o644)
         os.replace(temporary, destination)
     finally:
-        temporary.unlink(missing_ok=True)
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
 
 
 def generate(check: bool = False) -> None:
@@ -63,7 +95,12 @@ def generate(check: bool = False) -> None:
                 if destination.is_symlink():
                     raise ValueError(f"Symlink rendition: {destination.name}")
                 if check:
-                    if not destination.is_file() or destination.read_bytes() != payload:
+                    validate_public_directory(destination.parent)
+                    if (
+                        not destination.is_file()
+                        or destination.read_bytes() != payload
+                        or destination.stat().st_mode & 0o777 != 0o644
+                    ):
                         raise ValueError(f"Stale rendition: {destination.name}")
                 else:
                     write_output(destination, payload)
@@ -85,7 +122,12 @@ def generate(check: bool = False) -> None:
         raise ValueError("Symlink rendition manifest")
     encoded = json.dumps(result, indent=2, sort_keys=True) + "\n"
     if check:
-        if not manifest.is_file() or manifest.read_text() != encoded:
+        validate_public_directory(manifest.parent)
+        if (
+            not manifest.is_file()
+            or manifest.read_text() != encoded
+            or manifest.stat().st_mode & 0o777 != 0o644
+        ):
             raise ValueError("Stale rendition manifest")
     else:
         write_output(manifest, encoded.encode())

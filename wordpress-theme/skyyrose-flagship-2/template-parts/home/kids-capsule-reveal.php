@@ -68,7 +68,7 @@ $render_guardian_proof = static function ( $product, $sku, $role ) {
 	<header class="sr-kids-procession__header">
 		<div>
 			<p class="sr-kids-procession__chapter-mark"><?php esc_html_e( 'Chapter 04 · Kids Capsule', 'skyyrose-flagship-2' ); ?></p>
-			<h2 id="kids-capsule-reveal-title"><?php esc_html_e( 'A fourth world has been waiting.', 'skyyrose-flagship-2' ); ?></h2>
+			<h2 id="kids-capsule-reveal-title"><?php esc_html_e( 'The Kids Capsule collection.', 'skyyrose-flagship-2' ); ?></h2>
 		</div>
 		<p><?php esc_html_e( 'The house changes hands. Follow the procession from invitation, to guardians, to the heir already seated at the center of her story.', 'skyyrose-flagship-2' ); ?></p>
 	</header>
@@ -118,7 +118,7 @@ $render_guardian_proof = static function ( $product, $sku, $role ) {
 					<p>03 · <?php esc_html_e( 'The Heir', 'skyyrose-flagship-2' ); ?></p>
 					<h3 id="kids-procession-heir-title"><?php echo esc_html( $collection['headline'] ?? __( 'The throne is already hers.', 'skyyrose-flagship-2' ) ); ?></h3>
 					<p><?php echo esc_html( $collection['manifesto'] ?? __( 'The next chapter belongs to the imagination brave enough to write it.', 'skyyrose-flagship-2' ) ); ?></p>
-					<a class="sr-kids-procession__world-link" href="<?php echo esc_url( $world_url ); ?>"><?php esc_html_e( 'Enter her world', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a>
+					<a class="sr-kids-procession__world-link" href="<?php echo esc_url( $world_url ); ?>"><?php esc_html_e( 'Shop Kids Capsule', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a>
 				</div>
 			</article>
 		</div>
@@ -132,6 +132,6 @@ $render_guardian_proof = static function ( $product, $sku, $role ) {
 
 	<p class="sr2-actions sr-kids-procession__collection-cta">
 		<a class="sr-kids-procession__world-link" href="<?php echo esc_url( $collection_url ); ?>"><?php esc_html_e( 'Shop the full Kids Capsule collection', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a>
-		<a class="sr-kids-procession__world-link" href="<?php echo esc_url( $world_url ); ?>"><?php esc_html_e( 'Enter the Kids world', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">→</span></a>
+		<a class="sr-kids-procession__world-link" href="<?php echo esc_url( $world_url ); ?>"><?php esc_html_e( 'View available pieces', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">→</span></a>
 	</p>
 </section>

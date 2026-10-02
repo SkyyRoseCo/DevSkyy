@@ -96,7 +96,7 @@ function skyyrose2_header() {
 				<div class="sr2-house-nav__utility"><a href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" data-search-open><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( $account ); ?>"><?php esc_html_e( 'Account', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'wishlist' ) ); ?>"><?php esc_html_e( 'Saved pieces', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/lookbook/' ) ); ?>"><?php esc_html_e( 'Lookbook', 'skyyrose-flagship-2' ); ?></a></div>
 			</div>
 			<div class="sr2-house-nav__collections">
-				<p class="sr2-index"><?php esc_html_e( 'Four worlds. One house.', 'skyyrose-flagship-2' ); ?></p>
+				<p class="sr2-index"><?php esc_html_e( 'Four collections. One house.', 'skyyrose-flagship-2' ); ?></p>
 				<h2 data-sr2-type-motion="mask"><?php esc_html_e( 'Choose your chapter.', 'skyyrose-flagship-2' ); ?></h2>
 				<div class="sr2-house-nav__previews">
 				<?php foreach ( skyyrose2_collections() as $slug => $collection ) : ?>
