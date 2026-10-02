@@ -1,9 +1,10 @@
 # Current production status and release boundaries
 
-**Last updated:** 2026-10-02. **Latest operational observation:** 2026-10-02
+**Last updated:** 2026-10-02. **Latest browser/preservation observation:** 2026-10-02
 12:23:59 UTC (05:23:59 PDT), recorded from actual operation receipts.
 **Additive classification review:** 2026-10-02 12:31:25 UTC (05:31:25 PDT).
 Individual CI and browser observations retain their own timestamps below.
+**Installed theme identity read:** 2026-10-02 12:49:09 UTC (05:49:09 PDT).
 **Operational source:** `a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
 This is a dated operator snapshot of the integrated release. It supplements the
@@ -20,7 +21,7 @@ the frozen operational source and does not rebuild the approved package.
 | Functional source               | Frozen at `299f694702ac2dcc61a0f30aa34e4b3ef12f9118`                                                                                                                  | Local tests are bounded integration evidence                                                                                                                                                  |
 | Clean V2 package                | Source `5950592d922706dd67fc0320e8c5f3dc005a47b7`; repeat bytes and installed-file checks passed                                                                      | Packaging does not establish live production behavior                                                                                                                                         |
 | Existing staging                | V2 2.5.0 installed; all 599 reviewed file hashes matched                                                                                                              | Staging has 220 product/variation records; it cannot establish parity with production's 33 simple products                                                                                    |
-| Production                      | `https://skyyrose.co`, active V1 `skyyrose-flagship`; ten owned pages remain unchanged drafts; latest scoped post-read matches its pre-read | Earlier installation verification matched all 599 inactive V2 files. The latest scoped read does not repeat that census or revalidate 33 prices. No V2 activation or `DEPLOYED` |
+| Production                      | `https://skyyrose.co`, active directory `skyyrose-flagship`; ten owned pages remain unchanged drafts; latest scoped post-read matches its pre-read | Active header identifies older SkyyRose Flagship 2 v2.3.1, not proven canonical source V1. Earlier verification matched 599 inactive V2 files; latest scoped read does not repeat that census or 33 prices. No V2 activation or `DEPLOYED` |
 | Procedure and acceptance inputs | Exact headless-shell diagnostic collection and local V2 qualification independently reviewed | The later passive diagnostic is COMPLETE, but its current acceptance remains FAILED; local V2 qualification is not live acceptance |
 | Exact operational-head CI       | `CI_PASS`: 21 mandatory successful checks, 6 intentional skips, no pending/failure/cancellation                                                                       | Single targeted Playwright retry: 62 passed (31 Chromium, 31 mobile), 0 failed/skipped/flaky; source CI is separate from production acceptance                                                |
 | Execution clearance             | The native V1 checkpoint and separately cleared passive diagnostic attempts are consumed | The latest diagnostic completed its observation scope. Its completion does not clear a retry, V2 activation, or publication |
@@ -324,6 +325,65 @@ The Search extension is a separate artifact; it does not change the V2 ZIP.
 Recomputing hashes of changed files cannot approve a successor. Match the
 literal reviewed bindings and invalidate clearance when the operational source
 or any required source/artifact/receipt bytes change.
+
+## Separate theme packages and installed identity
+
+The October 2 requirement is to deliver **two independently installable theme
+packages**: V1 rooted at `skyyrose-flagship/`, and V2 rooted at
+`skyyrose-flagship-2/`. Each must contain its own theme metadata, bootstrap,
+assets, and required data without a sibling-theme runtime dependency or parent
+`Template` declaration. Both remain consumers of the single editable product
+registry; package separation does not create a second source of product facts.
+
+Two separate ZIP artifacts are prepared:
+
+| Package | Theme root and source identity | ZIP size / files | SHA-256 |
+| --- | --- | --- | --- |
+| V1 source candidate | `skyyrose-flagship/`; SkyyRose 2.2.4 from exact `a662e707…` | 278,189,195 bytes / 1,724 files | `55a2552c2841b591453567b6ed1f3baa31c7c4a0da28e76ad55765988471502b` |
+| Frozen V2 release candidate | `skyyrose-flagship-2/`; SkyyRose Flagship 2 v2.5.0 | 176,928,301 bytes / 599 files | `47c485f0001434b7dd52f572812df02e3e103631902a16e86f92ffea407b5a16` |
+
+The bounded V2 audit found a single V2 root, no symlinks or V1 paths, and no
+parent or sibling runtime dependency. V2 bytes are unchanged. The clean-source
+V1 package completed at **12:55:56 UTC**, with offline checks completed at
+**12:57:11 UTC**. It retains all 64 literal bootstrap includes and all 1,598
+eligible source files under `inc`, `assets`, and `data`; its 165 PHP files pass
+syntax checks. Archive files match the clean source, with no symlinks, parent
+`Template` header, or detected PHP references to the sibling theme.
+
+V1 package construction and offline checks are bound by
+`separate-theme-packaging/review-packet-7f1104ed.json` in the local execution
+evidence directory, SHA-256
+`f4e89e3bcb83b61b205a8bac4ffd08fbc6ec8edbc6f91b6b8f71cd7d58c86f21`.
+These checks do not execute V1's bootstrap inside WordPress or establish
+browser/runtime acceptance. V1 is a separate source candidate, not an assumed
+copy of the current live theme or an equivalent rollback.
+
+An authenticated read at **12:49:09 UTC** found distinct, non-symlink installed
+theme directories and inspected `style.css`, `functions.php`, and `index.php`
+in each. Its identity comparison is:
+
+| Identity | Theme folder | Theme header | Meaning |
+| --- | --- | --- | --- |
+| Canonical source V1 at `a662e707…` | `skyyrose-flagship` | SkyyRose 2.2.4; text domain `skyyrose` | Source for the separate V1 candidate |
+| Current active installation | `skyyrose-flagship` | SkyyRose Flagship 2 v2.3.1; text domain `skyyrose-flagship-2` | Directory name does not establish source V1 equivalence |
+| Reviewed inactive V2 installation | `skyyrose-flagship-2` | SkyyRose Flagship 2 v2.5.0; text domain `skyyrose-flagship-2` | Separate reviewed V2 release candidate |
+
+The receipt is
+`production-separate-theme-install-isolation-20261002t124909.json`, SHA-256
+`2814d0e3bc7eaa71295d469b659e0770d5231d53c985f14ac5b1a57ddc1372ba`,
+in the local execution evidence directory. This read covers the two roots and
+three entry files each, **not their entire runtime dependency closure**. It
+does not identify who installed the older header or when. The additive
+`production-active-theme-entrypoint-baseline-comparison-20261002.json`
+(SHA-256 `57158065867a9a0e4be7cef0105209730c15e59a632cc26ca6759296cb7428e5`)
+independently confirms that all three active entry-file hashes match both the
+earlier rollback baseline and preapplication read. This is a preexisting
+identity mismatch, with no new drift in those three files; it does not establish
+current whole-tree equality or a tested restore. Historical references
+to “active V1” name the legacy directory/checkpoint; they must not be read as
+proof of canonical V1 content. Preserve the actual captured installation for
+recovery. Do not relabel or replace it, or call a new source V1 ZIP an equivalent
+rollback, on the strength of a folder name.
 
 ## Scoped storefront release
 

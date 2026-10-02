@@ -7,7 +7,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**Last updated:** 2026-10-01. Source baseline:
+**Last updated:** 2026-10-02. Source baseline:
 `a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
 ## Current release state
@@ -17,9 +17,16 @@ production scope is the V2 WordPress storefront with native WooCommerce and
 existing approved media. Production acceptance remains a separate gate from
 source checks, CI, packaging, and staging qualification.
 
+V1 (`skyyrose-flagship`) and V2 (`skyyrose-flagship-2`) must be delivered as
+**separate installable WordPress theme packages**, each with its own directory,
+theme identity, bootstrap, assets, and required data. Neither package may require
+the sibling theme to be installed. See [production status](docs/PRODUCTION_STATUS.md#separate-theme-packages-and-installed-identity)
+for package evidence and the distinction between source V1 and the currently
+installed theme in the legacy directory.
+
 | Surface                                                             | Implementation                                                              | Release boundary                                                                                                              |
 | ------------------------------------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| [Customer site](https://skyyrose.co)                                | WordPress.com and native WooCommerce; V1 baseline and reviewed V2 candidate | Actual installation, runtime holds, activation, and acceptance are recorded in [production status](docs/PRODUCTION_STATUS.md) |
+| [Customer site](https://skyyrose.co)                                | WordPress.com and native WooCommerce; captured active installation and separate V2 candidate | Actual theme identity, runtime holds, activation, and acceptance are recorded in [production status](docs/PRODUCTION_STATUS.md) |
 | [Existing staging](https://staging-7e48-skyyrose.wpcomstaging.com/) | `wordpress-theme/skyyrose-flagship-2/`, version 2.5.0                       | Captured staging qualification is separate from production acceptance; see [production status](docs/PRODUCTION_STATUS.md)     |
 | Agent dashboard                                                     | Next.js 16, React 19, `frontend/`                                           | Integrated source; dashboard/Fly deployment is outside this storefront cutover                                                |
 | API and creative operations                                         | FastAPI, Python, `main_enterprise.py`, `skyyrose/`                          | Integrated source; API/Governor/provider execution is outside this cutover                                                    |
@@ -148,7 +155,7 @@ invalidate the corresponding frozen evidence and require review again.
 
 ## Deployment and documentation
 
-The current storefront cutover uses an exact reviewed ZIP, a separately hashed
+The current storefront cutover uses the exact reviewed V2 theme ZIP, a separately hashed
 Search privacy MU extension, and ten owned new pages. Use the
 [runbook](docs/RUNBOOK.md), [production status](docs/PRODUCTION_STATUS.md), and
 [WordPress configuration record](docs/WORDPRESS_CONFIGURATION_STATUS.md).

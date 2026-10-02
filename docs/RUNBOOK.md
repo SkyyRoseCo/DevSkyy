@@ -1,14 +1,24 @@
 # DevSkyy production runbook
 
-**Last updated:** 2026-10-01. **Operational source:**
+**Last updated:** 2026-10-02. **Operational source:**
 `a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
 Use [PRODUCTION_STATUS.md](PRODUCTION_STATUS.md) for the dated live-target/CI
 snapshot, current holds, and literal artifact/receipt identities. This procedure
-moves the captured V1 baseline to the reviewed V2 candidate within a scoped
+moves the captured active installation to the reviewed V2 candidate within a scoped
 WordPress storefront cutover. Staging qualification remains separate from
 production acceptance. API, dashboard, Fly, Governor, paid providers, GLBs, and
 mascot deployment are outside this runbook's release scope.
+
+V1 and V2 must be delivered as separate, independently installable ZIPs
+rooted at `skyyrose-flagship/` and `skyyrose-flagship-2/`. Preserve each package's
+own identity and runtime files; neither may require the sibling theme. The
+current active directory has a historical V2 header, as detailed in the
+[installed-identity record](PRODUCTION_STATUS.md#separate-theme-packages-and-installed-identity).
+References to the V1 checkpoint below name the existing checkpoint operation;
+they do not establish that live bytes equal the canonical V1 source package.
+Recovery must use the actual captured installation, not substitute a newly
+built V1 package as an assumed equivalent rollback.
 
 ## Before application
 
@@ -48,9 +58,11 @@ package from an unrelated dirty checkout.
 
 ## Ordered storefront cutover
 
-1. **Install inactive V2 and prepare owned drafts.** Install the exact ZIP over
+1. **Install inactive V2 and prepare owned drafts.** Confirm the separate-package
+   audit and install the exact reviewed V2-only ZIP over
    the inactive `skyyrose-flagship-2` directory. Independently verify all 599
-   installed members. Keep active V1 unchanged. Prepare only the ten reviewed
+   installed members. Preserve the existing active `skyyrose-flagship` files
+   and captured identity. Prepare only the ten reviewed
    new pages using the
    [guarded page operator](../tasks/production-final-pass-20261001/apply_v2_pages.php),
    exact source/preimage checks, and a durable returned-ID journal. Preserve all

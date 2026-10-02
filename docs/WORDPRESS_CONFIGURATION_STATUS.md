@@ -1,6 +1,6 @@
 # SkyyRose WordPress configuration and ownership
 
-**Last updated:** 2026-10-01. **Operational baseline:**
+**Last updated:** 2026-10-02. **Operational baseline:**
 `a662e707d698a687d7d1d2efed3975b9aa7325b9`.
 
 This record describes the current scoped storefront release and the captured
@@ -14,9 +14,15 @@ runtime.
 
 | Target                                                             | Captured state                                                                            | Boundary                                                                                                                  |
 | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Production `https://skyyrose.co`                                   | Active stylesheet `skyyrose-flagship` V1                                                  | Captured pre-activation V1 baseline; current cutover progress is recorded in [PRODUCTION_STATUS.md](PRODUCTION_STATUS.md) |
+| Production `https://skyyrose.co`                                   | Active stylesheet/template `skyyrose-flagship`; installed header identifies SkyyRose Flagship 2, version 2.3.1 | October 2 authenticated entry-file read; directory name does not prove canonical V1 source identity. See [production status](PRODUCTION_STATUS.md#separate-theme-packages-and-installed-identity) |
 | Existing staging `https://staging-7e48-skyyrose.wpcomstaging.com/` | Active `skyyrose-flagship-2` V2 2.5.0; reviewed ZIP installed and 599 file hashes matched | Staging qualification is separate from production acceptance                                                              |
 | Platform versions                                                  | WordPress 7.1.2, WooCommerce 11.1.2, PHP 8.4.26                                           | Authenticated captured versions; recheck for hosting drift                                                                |
+
+V1 and V2 must have separate installable archives, with roots
+`skyyrose-flagship/` and `skyyrose-flagship-2/`, distinct WordPress identities,
+and their own runtime files. The installed-root read covers only both roots and
+three entry files per theme; it is not a full runtime-dependency audit or proof
+that a source V1 archive matches the active installation.
 
 WordPress.com provides the native hosting/cache layer. Site identity comes from
 actual authenticated target/readback evidence; an available credential or public
@@ -71,6 +77,9 @@ Complete reads use `from skyyrose.core.product import get_product`, or
 raise and absent facts are named in `gaps`. CSVs, dossiers, asset manifests, and
 the V2 presentation registry are projections/consumers, not editable fact
 stores.
+
+Separate theme packages do not create separate editable product authorities.
+Data included through build-time projection remains derived from this registry.
 
 Corey's latest specifications as founder/maker are `FOUNDER_CONFIRMED`. Preserve
 his exact wording, dimensions, ranges, artwork, materials, and placements. Apply
