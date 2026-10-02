@@ -9,7 +9,19 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 SOURCE = "299f694702ac2dcc61a0f30aa34e4b3ef12f9118"
+COMMERCE_SOURCE = "25442611f3261f1715b05007aec4716e2382db8b"
 THEME = "wordpress-theme/skyyrose-flagship-2/"
+COMMERCE_INPUTS = {
+    "wordpress-theme/skyyrose-flagship-2/template-parts/home/kids-capsule-reveal.php",
+    "tools/v2-runtime/build-font-delivery.py",
+    "wordpress-theme/skyyrose-flagship-2/inc/launch-readiness.php",
+    "tools/v2-runtime/build-card-renditions.py",
+    "tools/v2-runtime/build-frame-delivery.py",
+    "wordpress-theme/skyyrose-flagship-2/template-parts/collections/chapters.php",
+    "wordpress-theme/skyyrose-flagship-2/page-lookbook.php",
+    "wordpress-theme/skyyrose-flagship-2/inc/global-shell.php",
+    "wordpress-theme/skyyrose-flagship-2/functions.php",
+}
 OVERLAY = {
     "tools/v2-source-certification/inputs.py",
     "tools/v2-source-certification/package-boundary.json",
@@ -28,6 +40,13 @@ def verify_pins(contract, reader):
             raise ValueError("Unreviewed source drift: " + relative)
 
 
+def reviewed_commerce_bytes(contract, relative):
+    if contract.get("reviewed_commerce_revision") != COMMERCE_SOURCE:
+        raise ValueError("Unexpected reviewed commerce revision")
+    revision = COMMERCE_SOURCE if relative in COMMERCE_INPUTS else SOURCE
+    return subprocess.check_output(["git", "show", revision + ":" + relative], cwd=ROOT)
+
+
 def reviewed_registry_bytes(contract):
     revision = contract.get("reviewed_registry_revision", SOURCE)
     return subprocess.check_output(
@@ -43,7 +62,11 @@ class ReviewedSourceTests(unittest.TestCase):
     def combined_bytes(self, relative):
         if relative == "wordpress-theme/skyyrose-flagship/data/logo-registry.json":
             return reviewed_registry_bytes(self.contract)
-        return (ROOT / relative).read_bytes() if relative in OVERLAY else source_bytes(relative)
+        return (
+            (ROOT / relative).read_bytes()
+            if relative in OVERLAY
+            else reviewed_commerce_bytes(self.contract, relative)
+        )
 
     def test_exact_reviewed_source_and_guarded_overlay(self):
         self.assertEqual(self.contract["reviewed_source_revision"], SOURCE)
@@ -52,6 +75,8 @@ class ReviewedSourceTests(unittest.TestCase):
     def test_changed_hash_is_not_blessed(self):
         for target in (
             THEME + "assets/js/home-experience.js",
+            THEME + "functions.php",
+            "tools/v2-runtime/build-font-delivery.py",
             THEME + "assets/js/product-glb-init.mjs",
             THEME + "inc/product-glb.php",
             THEME + "scripts/build-product-presentation-registry.py",
@@ -66,6 +91,11 @@ class ReviewedSourceTests(unittest.TestCase):
                     lambda p, target=target: self.combined_bytes(p)
                     + (b"changed" if p == target else b""),
                 )
+
+    def test_unexpected_commerce_revision_is_rejected(self):
+        self.contract["reviewed_commerce_revision"] = SOURCE
+        with self.assertRaisesRegex(ValueError, "Unexpected reviewed commerce revision"):
+            reviewed_commerce_bytes(self.contract, THEME + "functions.php")
 
     def test_registry_correction_changes_only_founder_dossier(self):
         before = json.loads(
@@ -123,7 +153,11 @@ class ReviewedSourceTests(unittest.TestCase):
         baseline = json.loads((HERE / "runtime-php-baseline.json").read_text())
         for relative, digest in baseline.items():
             self.assertEqual(
-                hashlib.sha256(source_bytes(THEME + relative)).hexdigest(), digest, relative
+                hashlib.sha256(
+                    reviewed_commerce_bytes(self.contract, THEME + relative)
+                ).hexdigest(),
+                digest,
+                relative,
             )
 
     def test_product_blocks_and_historical_approvals_retained(self):

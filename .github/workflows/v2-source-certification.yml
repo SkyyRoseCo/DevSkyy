@@ -29,6 +29,8 @@ jobs:
           git config remote.origin.promisor true
           git config remote.origin.partialclonefilter blob:none
           git fetch --no-tags --depth=1 --filter=blob:none origin 299f694702ac2dcc61a0f30aa34e4b3ef12f9118
+          git fetch --no-tags --depth=1 --filter=blob:none origin a6bdf54321e727f21a8b5c2b41417d31b2617274
+          git fetch --no-tags --depth=1 --filter=blob:none origin 25442611f3261f1715b05007aec4716e2382db8b
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
           node-version: '22.23.2'
