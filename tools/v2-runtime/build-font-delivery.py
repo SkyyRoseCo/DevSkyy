@@ -1,4 +1,10 @@
-"""Derive fixed-width page-font deliveries without changing font authority."""
+"""Derive fixed-width page-font deliveries without changing font authority.
+
+Committed bytes are canonical on ARM64, like the scene posters: CI certifies on
+ubuntu-24.04-arm, and fontTools' compiled float path rounds an interpolated
+width (Martian Mono at 87.5) differently on x86. Master widths are identical on
+both. On x86, rebuild under qemu-aarch64 with the pinned wheels.
+"""
 
 import argparse
 import hashlib

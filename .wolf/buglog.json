@@ -6565,5 +6565,23 @@
     "related_bugs": [],
     "occurrences": 1,
     "last_seen": "2026-10-02T22:35:00Z"
+  },
+  {
+    "id": "bug-378",
+    "timestamp": "2026-10-02T22:50:00Z",
+    "error_message": "V2 source certification `verify` (ubuntu-24.04-arm): git diff after package:theme — assets/derived/fonts/martian-mono-narrow.woff2 and manifest.json differ (24076 B x86 vs 24048 B ARM64)",
+    "file": "tools/v2-runtime/build-font-delivery.py",
+    "root_cause": "fontTools instancing at an interpolated (non-master) axis location rounds differently on aarch64 than x86; master locations (Anybody wdth 50/150, Archivo wdth 100) are byte-identical on both. CI certifies on ARM64, the delivery was built on x86",
+    "fix": "Rebuilt the deliveries under qemu-aarch64 (ubuntu-base 24.04 arm64 rootfs + uv aarch64 CPython 3.12.11 + pinned aarch64 wheels), reproducing CI's sha b24aa011...; documented ARM64-canonical bytes in the builder docstring",
+    "tags": [
+      "ci",
+      "arm64",
+      "fonttools",
+      "determinism",
+      "v2-theme"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-02T22:50:00Z"
   }
 ]
