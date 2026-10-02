@@ -1,0 +1,62 @@
+[
+  {
+    "target": "production",
+    "url": "https://skyyrose.co/product/lh-006/",
+    "http_status": 200,
+    "html_sha256": "76d8220fed82300175b7f58e94316d733e23134aef66db52e9aaad8f67e57455",
+    "cart_form_controls": [
+      {
+        "name": "quantity",
+        "type": "number",
+        "value": "1",
+        "class": "input-text qty text"
+      },
+      {
+        "name": "add-to-cart",
+        "type": "submit",
+        "value": "9879",
+        "class": "single_add_to_cart_button button alt"
+      }
+    ],
+    "scope": "Read-only rendered HTML; no submitted selection/cart/order/payment action"
+  },
+  {
+    "target": "staging",
+    "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-006/",
+    "http_status": 200,
+    "html_sha256": "b0265cfabddb56fad4453aec0957f1b80790138fd437d93f0a80cae104ca9bd9",
+    "cart_form_controls": [
+      {
+        "name": "attribute_size",
+        "class": ""
+      },
+      {
+        "name": "quantity",
+        "type": "number",
+        "value": "1",
+        "class": "input-text qty text"
+      },
+      {
+        "type": "submit",
+        "class": "single_add_to_cart_button button alt"
+      },
+      {
+        "name": "add-to-cart",
+        "type": "hidden",
+        "value": "9879"
+      },
+      {
+        "name": "product_id",
+        "type": "hidden",
+        "value": "9879"
+      },
+      {
+        "name": "variation_id",
+        "type": "hidden",
+        "value": "0",
+        "class": "variation_id"
+      }
+    ],
+    "scope": "Read-only rendered HTML; no submitted selection/cart/order/payment action"
+  }
+]
