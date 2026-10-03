@@ -1,0 +1,14 @@
+(node:74636) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:75481) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[32m✔ repeated inert snapshots retain privacy and cause no requests, errors, upgrades or live mutations [90m(370.147375ms)[39m[39m
+[32m✔ retained legacy sanitizer reproduces HANDLER observer errors on an isolated image fixture [90m(138.632ms)[39m[39m
+[34mℹ tests 2[39m
+[34mℹ suites 0[39m
+[34mℹ pass 2[39m
+[34mℹ fail 0[39m
+[34mℹ cancelled 0[39m
+[34mℹ skipped 0[39m
+[34mℹ todo 0[39m
+[34mℹ duration_ms 685.432583[39m

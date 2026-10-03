@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "utc": "2026-10-02T23:42:47.408023+00:00",
+  "rows": [
+    {
+      "sku": "kids-001",
+      "url": "https://skyyrose.co/product/kids-001/",
+      "status": 200,
+      "html_sha256": "ecd9a2e853d02d8971a318457b3f4b97b522b1994c49a73bea4579492a97f0fb",
+      "approved_filename_present": true,
+      "awaiting_image_present": false,
+      "edge": "3.sjc _atomic_bur MISS"
+    },
+    {
+      "sku": "kids-002",
+      "url": "https://skyyrose.co/product/kids-002/",
+      "status": 200,
+      "html_sha256": "28b5517ee9885c9941e73c83ba8621d1672e8ebbb88d23765f718919aa8e0139",
+      "approved_filename_present": true,
+      "awaiting_image_present": false,
+      "edge": "2.sjc _atomic_bur MISS"
+    }
+  ],
+  "purge_urls": [
+    "https://skyyrose.co/product/kids-001/",
+    "https://skyyrose.co/product/kids-002/"
+  ],
+  "host_cli_result": "Success: Purge successful.",
+  "limits": "Static HTML/served file identity; not browser visual, size or payment acceptance"
+}

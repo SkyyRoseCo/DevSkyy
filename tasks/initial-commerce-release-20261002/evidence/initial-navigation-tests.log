@@ -1,0 +1,37 @@
+PASS Known wrong privacy assignment resolves to published policy
+PASS Custom privacy assignment is preserved
+PASS Draft policy is never exposed
+PASS Password-protected policy is never exposed
+PASS Only stock sample is excluded; previous exclusions preserved
+PASS Product queries remain untouched
+PASS Admin queries remain untouched
+PASS Every retired V2 page route has one canonical destination
+PASS Retired internal menu links resolve to their canonical collection
+PASS Draft canonical targets leave legacy internal links untouched
+PASS Footer restores the canonical Kids Capsule collection link
+PASS Retired aliases preserve UTM attribution on staging redirects
+PASS Draft canonical targets fail closed without a redirect
+PASS Exact deferred menu destinations hidden; foreign origins and unrelated routes preserved
+PASS Stored/admin menu preview remains intact
+PASS Non-navigation schemes and credentials are never rewritten
+PASS Other port is not the storefront origin
+PASS Initial shopping CTA signature
+PASS Initial shopping CTA black-rose
+PASS Initial shopping CTA love-hurts
+PASS Initial shopping CTA kids-capsule
+PASS Unknown immersive destination falls back to collections
+PASS Deferred production destination is temporary and uncached: worlds
+PASS Deferred production destination is temporary and uncached: worlds/signature
+PASS Deferred production destination is temporary and uncached: worlds/black-rose
+PASS Deferred production destination is temporary and uncached: worlds/love-hurts
+PASS Deferred production destination is temporary and uncached: worlds/kids-capsule
+PASS Deferred production destination is temporary and uncached: immersive-signature
+PASS Deferred production destination is temporary and uncached: immersive-black-rose
+PASS Deferred production destination is temporary and uncached: immersive-love-hurts
+PASS Deferred production destination is temporary and uncached: immersive-kids-capsule
+PASS Deferred production destination is temporary and uncached: experiences
+PASS Deferred production destination is temporary and uncached: experience-signature
+PASS Deferred production destination is temporary and uncached: experience-black-rose
+PASS Deferred production destination is temporary and uncached: experience-love-hurts
+PASS Deferred production destination is temporary and uncached: experience-kids-capsule
+PASS Genuinely retired production alias keeps existing permanent behavior

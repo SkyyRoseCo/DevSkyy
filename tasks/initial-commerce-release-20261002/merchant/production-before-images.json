@@ -1,0 +1,519 @@
+{
+  "home": "https://skyyrose.co",
+  "stylesheet": "skyyrose-flagship",
+  "recorded_utc": "2026-10-02T23:25:36+00:00",
+  "wp": "7.1.2",
+  "woo": "11.1.2",
+  "products": [
+    {
+      "id": 9879,
+      "name": "Love Hurts Joggers (White)",
+      "slug": "lh-006",
+      "date_created": {
+        "date": "2026-03-11 02:17:03.000000",
+        "timezone_type": 3,
+        "timezone": "America/Los_Angeles"
+      },
+      "date_modified": {
+        "date": "2026-07-15 22:52:44.000000",
+        "timezone_type": 3,
+        "timezone": "America/Los_Angeles"
+      },
+      "status": "publish",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. White flat drawstring. The Love Hurts heart-rose-composite embroidered on the left thigh \u2014 the heart-and-thorns lockup with roses emerging from the top, rendered in red, green, and crimson on the white fabric. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror black colorway available as lh-002.",
+      "short_description": "Oakland luxury meets everyday utility. The essential Love Hurts fanny pack with premium embroidery.",
+      "sku": "lh-006",
+      "global_unique_id": "",
+      "price": "95",
+      "regular_price": "95",
+      "sale_price": "",
+      "date_on_sale_from": null,
+      "date_on_sale_to": null,
+      "total_sales": 0,
+      "tax_status": "taxable",
+      "tax_class": "",
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no",
+      "low_stock_amount": "",
+      "sold_individually": false,
+      "weight": "",
+      "length": "",
+      "width": "",
+      "height": "",
+      "upsell_ids": [],
+      "cross_sell_ids": [],
+      "parent_id": 0,
+      "reviews_allowed": true,
+      "purchase_note": "",
+      "attributes": {
+        "color": {
+          "id": 0,
+          "name": "Color",
+          "options": [
+            "White"
+          ],
+          "position": 0,
+          "visible": true,
+          "variation": false,
+          "is_visible": 1,
+          "is_variation": 0,
+          "is_taxonomy": 0,
+          "value": "White"
+        },
+        "size": {
+          "id": 0,
+          "name": "Size",
+          "options": [
+            "One Size"
+          ],
+          "position": 0,
+          "visible": true,
+          "variation": false,
+          "is_visible": 1,
+          "is_variation": 0,
+          "is_taxonomy": 0,
+          "value": "One Size"
+        }
+      },
+      "default_attributes": [],
+      "menu_order": 0,
+      "post_password": "",
+      "virtual": false,
+      "downloadable": false,
+      "category_ids": [
+        157
+      ],
+      "tag_ids": [],
+      "brand_ids": [
+        146,
+        104
+      ],
+      "shipping_class_id": 0,
+      "downloads": [],
+      "image_id": "10185",
+      "gallery_image_ids": [
+        10186
+      ],
+      "download_limit": -1,
+      "download_expiry": -1,
+      "rating_counts": [],
+      "average_rating": "0",
+      "review_count": 0,
+      "cogs_value": null,
+      "children": [],
+      "native_meta": {
+        "_product_attributes": {
+          "exists": true,
+          "value": {
+            "color": {
+              "name": "Color",
+              "value": "White",
+              "position": 0,
+              "is_visible": 1,
+              "is_variation": 0,
+              "is_taxonomy": 0
+            },
+            "size": {
+              "name": "Size",
+              "value": "One Size",
+              "position": 0,
+              "is_visible": 1,
+              "is_variation": 0,
+              "is_taxonomy": 0
+            }
+          }
+        },
+        "_default_attributes": {
+          "exists": false,
+          "value": ""
+        },
+        "_price": {
+          "exists": true,
+          "value": "95"
+        },
+        "_regular_price": {
+          "exists": true,
+          "value": "95"
+        },
+        "_sale_price": {
+          "exists": false,
+          "value": ""
+        },
+        "_is_preorder": {
+          "exists": true,
+          "value": "0"
+        },
+        "_preorder_edition_size": {
+          "exists": true,
+          "value": "250"
+        },
+        "_preorder_available": {
+          "exists": false,
+          "value": ""
+        },
+        "_preorder_ship_date": {
+          "exists": false,
+          "value": ""
+        },
+        "_thumbnail_id": {
+          "exists": true,
+          "value": "10185"
+        }
+      }
+    },
+    {
+      "id": 9955,
+      "name": "Kids Colorblock Hoodie Set \u2014 Red/Black",
+      "slug": "kids-001",
+      "date_created": {
+        "date": "2026-03-25 14:22:49.000000",
+        "timezone_type": 3,
+        "timezone": "America/Los_Angeles"
+      },
+      "date_modified": {
+        "date": "2026-06-06 12:58:01.000000",
+        "timezone_type": 3,
+        "timezone": "America/Los_Angeles"
+      },
+      "status": "publish",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "Bold red and black V-chevron colorblock hoodie and jogger set. Designed for young ones who wear luxury from the start.",
+      "short_description": "Bold red and black V-chevron colorblock hoodie and jogger set. Designed for young ones who wear luxury from the start.",
+      "sku": "kids-001",
+      "global_unique_id": "",
+      "price": "65",
+      "regular_price": "65",
+      "sale_price": "",
+      "date_on_sale_from": null,
+      "date_on_sale_to": null,
+      "total_sales": 0,
+      "tax_status": "taxable",
+      "tax_class": "",
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no",
+      "low_stock_amount": "",
+      "sold_individually": false,
+      "weight": "",
+      "length": "",
+      "width": "",
+      "height": "",
+      "upsell_ids": [],
+      "cross_sell_ids": [],
+      "parent_id": 0,
+      "reviews_allowed": true,
+      "purchase_note": "",
+      "attributes": {
+        "size": {
+          "id": 0,
+          "name": "Size",
+          "options": [
+            "2T",
+            "3T",
+            "4T",
+            "5",
+            "6",
+            "7"
+          ],
+          "position": 0,
+          "visible": true,
+          "variation": true,
+          "is_visible": 1,
+          "is_variation": 1,
+          "is_taxonomy": 0,
+          "value": "2T | 3T | 4T | 5 | 6 | 7"
+        },
+        "color": {
+          "id": 0,
+          "name": "Color",
+          "options": [
+            "Red/Black"
+          ],
+          "position": 0,
+          "visible": true,
+          "variation": false,
+          "is_visible": 1,
+          "is_variation": 0,
+          "is_taxonomy": 0,
+          "value": "Red/Black"
+        }
+      },
+      "default_attributes": [],
+      "menu_order": 0,
+      "post_password": "",
+      "virtual": false,
+      "downloadable": false,
+      "category_ids": [
+        159
+      ],
+      "tag_ids": [],
+      "brand_ids": [],
+      "shipping_class_id": 0,
+      "downloads": [],
+      "image_id": "",
+      "gallery_image_ids": [],
+      "download_limit": -1,
+      "download_expiry": -1,
+      "rating_counts": [],
+      "average_rating": "0",
+      "review_count": 0,
+      "cogs_value": null,
+      "children": [],
+      "native_meta": {
+        "_product_attributes": {
+          "exists": true,
+          "value": {
+            "size": {
+              "name": "Size",
+              "value": "2T | 3T | 4T | 5 | 6 | 7",
+              "position": 0,
+              "is_visible": 1,
+              "is_variation": 1,
+              "is_taxonomy": 0
+            },
+            "color": {
+              "name": "Color",
+              "value": "Red/Black",
+              "position": 0,
+              "is_visible": 1,
+              "is_variation": 0,
+              "is_taxonomy": 0
+            }
+          }
+        },
+        "_default_attributes": {
+          "exists": false,
+          "value": ""
+        },
+        "_price": {
+          "exists": true,
+          "value": "65"
+        },
+        "_regular_price": {
+          "exists": true,
+          "value": "65"
+        },
+        "_sale_price": {
+          "exists": false,
+          "value": ""
+        },
+        "_is_preorder": {
+          "exists": true,
+          "value": "0"
+        },
+        "_preorder_edition_size": {
+          "exists": true,
+          "value": "150"
+        },
+        "_preorder_available": {
+          "exists": false,
+          "value": ""
+        },
+        "_preorder_ship_date": {
+          "exists": false,
+          "value": ""
+        },
+        "_thumbnail_id": {
+          "exists": false,
+          "value": ""
+        }
+      }
+    },
+    {
+      "id": 9956,
+      "name": "Kids Colorblock Hoodie Set \u2014 Purple/Black",
+      "slug": "kids-002",
+      "date_created": {
+        "date": "2026-03-25 14:22:51.000000",
+        "timezone_type": 3,
+        "timezone": "America/Los_Angeles"
+      },
+      "date_modified": {
+        "date": "2026-09-10 17:22:13.000000",
+        "timezone_type": 3,
+        "timezone": "America/Los_Angeles"
+      },
+      "status": "publish",
+      "featured": false,
+      "catalog_visibility": "visible",
+      "description": "Rich purple and black V-chevron colorblock hoodie and jogger set. Little ones deserve luxury too.",
+      "short_description": "Rich purple and black V-chevron colorblock hoodie and jogger set. Little ones deserve luxury too.",
+      "sku": "kids-002",
+      "global_unique_id": "",
+      "price": "65",
+      "regular_price": "65",
+      "sale_price": "",
+      "date_on_sale_from": null,
+      "date_on_sale_to": null,
+      "total_sales": 0,
+      "tax_status": "taxable",
+      "tax_class": "",
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no",
+      "low_stock_amount": "",
+      "sold_individually": false,
+      "weight": "",
+      "length": "",
+      "width": "",
+      "height": "",
+      "upsell_ids": [],
+      "cross_sell_ids": [],
+      "parent_id": 0,
+      "reviews_allowed": true,
+      "purchase_note": "",
+      "attributes": {
+        "size": {
+          "id": 0,
+          "name": "Size",
+          "options": [
+            "2T",
+            "3T",
+            "4T",
+            "5",
+            "6",
+            "7"
+          ],
+          "position": 0,
+          "visible": true,
+          "variation": true,
+          "is_visible": 1,
+          "is_variation": 1,
+          "is_taxonomy": 0,
+          "value": "2T | 3T | 4T | 5 | 6 | 7"
+        },
+        "color": {
+          "id": 0,
+          "name": "Color",
+          "options": [
+            "Purple/Black"
+          ],
+          "position": 0,
+          "visible": true,
+          "variation": false,
+          "is_visible": 1,
+          "is_variation": 0,
+          "is_taxonomy": 0,
+          "value": "Purple/Black"
+        }
+      },
+      "default_attributes": [],
+      "menu_order": 0,
+      "post_password": "",
+      "virtual": false,
+      "downloadable": false,
+      "category_ids": [
+        159
+      ],
+      "tag_ids": [],
+      "brand_ids": [],
+      "shipping_class_id": 0,
+      "downloads": [],
+      "image_id": "",
+      "gallery_image_ids": [],
+      "download_limit": -1,
+      "download_expiry": -1,
+      "rating_counts": [],
+      "average_rating": "0",
+      "review_count": 0,
+      "cogs_value": null,
+      "children": [],
+      "native_meta": {
+        "_product_attributes": {
+          "exists": true,
+          "value": {
+            "size": {
+              "name": "Size",
+              "value": "2T | 3T | 4T | 5 | 6 | 7",
+              "position": 0,
+              "is_visible": 1,
+              "is_variation": 1,
+              "is_taxonomy": 0
+            },
+            "color": {
+              "name": "Color",
+              "value": "Purple/Black",
+              "position": 0,
+              "is_visible": 1,
+              "is_variation": 0,
+              "is_taxonomy": 0
+            }
+          }
+        },
+        "_default_attributes": {
+          "exists": false,
+          "value": ""
+        },
+        "_price": {
+          "exists": true,
+          "value": "65"
+        },
+        "_regular_price": {
+          "exists": true,
+          "value": "65"
+        },
+        "_sale_price": {
+          "exists": false,
+          "value": ""
+        },
+        "_is_preorder": {
+          "exists": true,
+          "value": "0"
+        },
+        "_preorder_edition_size": {
+          "exists": true,
+          "value": "150"
+        },
+        "_preorder_available": {
+          "exists": false,
+          "value": ""
+        },
+        "_preorder_ship_date": {
+          "exists": false,
+          "value": ""
+        },
+        "_thumbnail_id": {
+          "exists": false,
+          "value": ""
+        }
+      }
+    }
+  ],
+  "tables": [
+    {
+      "name": "wp_posts",
+      "engine": "InnoDB"
+    },
+    {
+      "name": "wp_postmeta",
+      "engine": "InnoDB"
+    },
+    {
+      "name": "wp_options",
+      "engine": "InnoDB"
+    },
+    {
+      "name": "wp_terms",
+      "engine": "InnoDB"
+    },
+    {
+      "name": "wp_term_taxonomy",
+      "engine": "InnoDB"
+    },
+    {
+      "name": "wp_term_relationships",
+      "engine": "InnoDB"
+    },
+    {
+      "name": "wp_wc_product_meta_lookup",
+      "engine": "InnoDB"
+    }
+  ]
+}

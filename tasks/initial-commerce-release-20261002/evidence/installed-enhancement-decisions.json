@@ -1,0 +1,371 @@
+{
+  "schema": 1,
+  "input_identity": "38dbcdeb811ab2af1f8820c6272407ab789f30fb97858f394753e283747b817b",
+  "extras": {
+    "total": 40,
+    "nonrelease": 35,
+    "optional_runtime_enhancements": 5
+  },
+  "adopted_independent_source_fix": "permission-source-adoption.json",
+  "decisions": [
+    {
+      "path": "IMAGE-PROMPTS.md",
+      "installed_sha256": "75189cf0d476e91e90f50d28a92444d48844f6dcba116bb4fd5016a901053e41",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/css/critical/home.contract.json",
+      "installed_sha256": "b92a0b4c5d758bb425cf75814af5ec851b95ba8b906f5d52650f841a40459a0b",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/derived/fonts/inter-fallback-latin.woff2",
+      "installed_sha256": "9561a48d0deadad8b3b17f0f9a2b384c14baedb0c6d3e53738a91c0641b2471e",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/editorial-source-fronts/br-006-front.webp",
+      "installed_sha256": "d474d97d9fac60eff864a14f30b6e07845ea71696ae0483a2c5f7108f22c815b",
+      "candidate_boundary_release": null,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Optional coherent editorial/highlight block deferred; no partial adoption or new imagery approval"
+    },
+    {
+      "path": "assets/editorial-source-fronts/lh-004-front.webp",
+      "installed_sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
+      "candidate_boundary_release": null,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Optional coherent editorial/highlight block deferred; no partial adoption or new imagery approval"
+    },
+    {
+      "path": "assets/editorial-source-fronts/sg-009-front.webp",
+      "installed_sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
+      "candidate_boundary_release": null,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Optional coherent editorial/highlight block deferred; no partial adoption or new imagery approval"
+    },
+    {
+      "path": "assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png",
+      "installed_sha256": "ae4fd5f5cc40e6695939cd438c3abb402de0120f48c695a8819512ba5e8ac225",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+      "installed_sha256": "9b259f80915d358be417633d657975d5881827eb029d57f969368ea207e84beb",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1.png",
+      "installed_sha256": "24d086b221d8fff59cde4f719dc55831b7ac4c8d7b98ebdef07b226c6952d830",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1.png",
+      "installed_sha256": "b085e0ee82401c2e5db71c8a36ab63271d410ad20c29d72fa369a78e4f54ca5c",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/scroll-world/placeholders/founder-selected-v1/black-rose-east-oakland-crewneck-v1.png",
+      "installed_sha256": "7398d0f2f8fddbd80c5a4f5a63dcb6d555a84d19c6bf8ad6051ac0119fdd94fd",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/scroll-world/placeholders/founder-selected-v1/love-hurts-graphic-heart-backdrop-v1.png",
+      "installed_sha256": "fd5305ee58fd9aa751fa9c26631609bea315bafc87ac0f36c88bb0666fc66f6c",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/scroll-world/placeholders/founder-selected-v1/love-hurts-star-heart-statue-backdrop-v1.png",
+      "installed_sha256": "59d44d3597e126868ece71f9276d91dd0a223a888f9526add01ce7267ebee895",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/scroll-world/placeholders/founder-selected-v1/signature-bay-bridge-shorts-v1.png",
+      "installed_sha256": "71cdb6a0abc2788105aa8c7212399da4ed08b4614d87a785633a6ad34841d265",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/scroll-world/placeholders/founder-selected-v1/signature-graphic-monogram-backdrop-v1.png",
+      "installed_sha256": "3fb4c7c897adfd23a2ffde746e6222b998ab5e22c49b66d86c143e85d6360380",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4",
+      "installed_sha256": "cc5f9ff9ea27eaa2ca517da6986f3787bab5953bcc9d93e87c4416c9bea9cba2",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4",
+      "installed_sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/qa/love-hurts-logo-pass-contact-sheet-v1.jpg",
+      "installed_sha256": "4934c194a36b9c565bd5d8de036c3c80dd4a3bc9462ca7a3f116eb30d9ae5c46",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/sot/images/products/replica-v1/manifest.json",
+      "installed_sha256": "3930eff3c4c61e3c6cf856e7c431c7adeac831473bf8f6f9e475c9be5a6665c8",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/sot/images/products/replica-v1/qa/ghost-back-contact-sheet.jpg",
+      "installed_sha256": "3086975ef506a57837e63ae192b14cc37ec7ed1467cbf9d04ef6d79e8c1ec1d7",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/sot/images/products/replica-v1/qa/ghost-front-contact-sheet.jpg",
+      "installed_sha256": "09ec5b10445116d39dbc96863d350b83f379958ab2237cd8b67bfd58910839b3",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/sot/images/products/replica-v1/qa/on-model-front-contact-sheet.jpg",
+      "installed_sha256": "8f7941e8e11bcf424aa45d59300991da0a2336ddcc665d37484cd98494a80c8e",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/black-rose/black-rose-authentic-motion-v3-a1.mp4",
+      "installed_sha256": "9a6d885cd74d29686bf14b4e9c12f83b950203f3c8f8287415571232c5813035",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/black-rose/black-rose-bay-bridge-monuments-motion-v2.mp4",
+      "installed_sha256": "6cf9e499fd28998b28a212b7e8ba49eda802e7c92dce74789dbf6031c2d86e4d",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/black-rose/qa/contact-sheet-v2.jpg",
+      "installed_sha256": "1ab36ca061a5db10803d648a98951c450ad3393952e6deac36b9992fba839a9f",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/black-rose/qa/metadata-v2.json",
+      "installed_sha256": "973710227b9eda1d21a86cbd0a612a5c7783356f7b1f61978333386db790632a",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/kids-capsule/kids-capsule-heir-throne-motion-v2.mp4",
+      "installed_sha256": "6fffdc77c3579f8caab3bf799a544eb0970fb81929006e7f1792ffc835f0c57e",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/kids-capsule/qa/contact-sheet-v2.jpg",
+      "installed_sha256": "f2a8592fde16c2866941b04349e0f906c4dc263c6bf7b6c879545be0dd392daa",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/kids-capsule/qa/metadata-v2.json",
+      "installed_sha256": "c873d1064e80971090afb7685a686d07fd5001a59c22b5a7dd911e7278486458",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/love-hurts/love-hurts-authentic-motion-v3-a1.mp4",
+      "installed_sha256": "316084f122ae6033aff10b565e4aadb2a519d53db6fdae0061325cb1f4fad11e",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/love-hurts/love-hurts-rose-aisle-monuments-motion-v2.mp4",
+      "installed_sha256": "8b614b34aea12764c43f02ce84e4ff19e120d1d1616669b3e0852f9afa9d29b3",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/love-hurts/qa/contact-sheet-v2.jpg",
+      "installed_sha256": "3bd29acf35c845c84b73ff5a5bbf69cb1fdcab0997e8b05d90d2bda4230e1c65",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/love-hurts/qa/metadata-v2.json",
+      "installed_sha256": "71ec8b7295eb86357fc7fe926ec8ac0f0e753149c33458a4ba14bec346b30bdc",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/video/collection-heroes/approved/signature/signature-golden-gate-monuments-motion-v1.mp4",
+      "installed_sha256": "071601173b321eb6c84c6fffd0778bbf5e168ce0cdaed1e9f083b3fd8b972a3f",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "inc/card-garment-highlight.php",
+      "installed_sha256": "c4982a810c4197d3a45ebbd455122c026c607281019efd490b45bdf39ecae788",
+      "candidate_boundary_release": null,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Optional coherent editorial/highlight block deferred; no partial adoption or new imagery approval"
+    },
+    {
+      "path": "npm-shrinkwrap.json",
+      "installed_sha256": "4f55e1943069d260cf191330777a677d68808a145dabfd1c928d1992e78cdb87",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "package.json",
+      "installed_sha256": "9b1d8b67c1b3da499d3a560fdd8e3f331d64a8afcbb189d1cfac24d08f3a7c0e",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "phpcs.xml",
+      "installed_sha256": "0eb10c76dc4b292278560252a52b50717324245cf5dace33d1a1f12a75ef78ec",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "template-parts/collections/editorial.php",
+      "installed_sha256": "bd51cc635ad2fb0b2fcad0f1eecbd29c178e134ddce4543a7d6229dffa29a089",
+      "candidate_boundary_release": null,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Optional coherent editorial/highlight block deferred; no partial adoption or new imagery approval"
+    },
+    {
+      "path": "template-parts/v2-commerce-preview.php",
+      "installed_sha256": "e40522de1a6e52b8543fc0cd18095997a706620ee23328c46117dff5422c61d7",
+      "candidate_boundary_release": false,
+      "decision": "EXCLUDE_INITIAL_PACKAGE",
+      "reason": "Existing allowlist classifies authoring/build/QA/reference file as nonrelease"
+    },
+    {
+      "path": "assets/css/collection-world.min.css",
+      "installed_sha256": "a73c12bca1b73a3f09bae810b8cc2f332fa1c8c94e35a951329f6d1d215b20c2",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional merchandise-editorial composition and generated presentation integration deferred as one coherent owner block"
+    },
+    {
+      "path": "template-parts/collections/arrival.php",
+      "installed_sha256": "93e66bdb1f172f53b8f3f4d6e0f7ca2ef5774f0f1a5189e821b3a0dd84b7d1ce",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional merchandise-editorial composition and generated presentation integration deferred as one coherent owner block"
+    },
+    {
+      "path": "languages/skyyrose-flagship-2.pot",
+      "installed_sha256": "fd67a0dc0ed5d0c34a2887c3c34a62e5c1409585260c0a06684d331a24dcd3fd",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional merchandise-editorial composition and generated presentation integration deferred as one coherent owner block"
+    },
+    {
+      "path": "data/product-presentation-registry.json",
+      "installed_sha256": "58b7d735c3025d34572d2fd08335c286a4c111229ba3243a6a67ecb0bca2836a",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional merchandise-editorial composition and generated presentation integration deferred as one coherent owner block"
+    },
+    {
+      "path": "assets/js/premium-commerce.min.js",
+      "installed_sha256": "91d552b8df6613605b37396a0d477cb72d44aff4d6fad8ff4b6424500cb1fc7e",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional highlight/premium integration deferred with its annotation dependencies"
+    },
+    {
+      "path": "data/opening-product-media.json",
+      "installed_sha256": "15c259ee029db76417a2b0408e4feb1d6b4ff56cb25c7f6759b58154968eced8",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Rejection explanations differ; approval/rejection states remain held in candidate. BR007 exact explanatory correction can be reviewed separately without adopting creative pipeline"
+    },
+    {
+      "path": "assets/js/premium-commerce.js",
+      "installed_sha256": "c6946303a3511e9c14d4c79b95c67168b7a10e37c9f63516ba9e18fa5b20e8f4",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional highlight/premium integration deferred with its annotation dependencies"
+    },
+    {
+      "path": "assets/css/premium-commerce.css",
+      "installed_sha256": "21a6bbddbb294175323c865e96719a010280e12ee367a1ca376cf0dc510bf151",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional highlight/premium integration deferred with its annotation dependencies"
+    },
+    {
+      "path": "assets/css/premium-commerce.min.css",
+      "installed_sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional highlight/premium integration deferred with its annotation dependencies"
+    },
+    {
+      "path": "template-parts/commerce/product-card.php",
+      "installed_sha256": "bd06171d9d48ba7e06af8ad78bda587bd02d79ef123d3a17906f2f4099763c3e",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional highlight/premium integration deferred with its annotation dependencies"
+    },
+    {
+      "path": "template-parts/collections/world.php",
+      "installed_sha256": "9c7bcd6b320eeaaa311fa0f5fc780ddc40e561f5a6b6ee975859d4ee687628f5",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional merchandise-editorial composition and generated presentation integration deferred as one coherent owner block"
+    },
+    {
+      "path": "functions.php",
+      "installed_sha256": "6a9d350a580f21c264545b4caa5f94bc347238a0d82438ef31fa79e56e028316",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional highlight/premium integration deferred with its annotation dependencies"
+    },
+    {
+      "path": "assets/css/collection-world.css",
+      "installed_sha256": "6a35ff0c9af2ba14343065b155e1cd258229b7c5bce261a240078f80ba3b9366",
+      "decision": "KEEP_CANDIDATE_SOURCE",
+      "reason": "Optional merchandise-editorial composition and generated presentation integration deferred as one coherent owner block"
+    }
+  ],
+  "authority": "Local source decision; no staging rollback or deployment authorized"
+}

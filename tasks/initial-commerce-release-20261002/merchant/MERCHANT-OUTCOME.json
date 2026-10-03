@@ -1,0 +1,40 @@
+{
+  "status": "KIDS_PASS_LH006_BLOCKED",
+  "operation": "0bf6f801-1f5d-41e6-b2b2-6c37508c327d",
+  "reviewed_runner_sha256": "611c0c8d5ea37c18039f2bf9c2d48fbc028d4a62aabc30edaa72c493ef456cbf",
+  "native_fixture_assertions": 40,
+  "production": [
+    {
+      "id": 9879,
+      "sku": "lh-006",
+      "native_price_preserved": true,
+      "inventory_preserved": true,
+      "only_allowed_fields_changed": true
+    },
+    {
+      "id": 9955,
+      "sku": "kids-001",
+      "native_price_preserved": true,
+      "inventory_preserved": true,
+      "only_allowed_fields_changed": true
+    },
+    {
+      "id": 9956,
+      "sku": "kids-002",
+      "native_price_preserved": true,
+      "inventory_preserved": true,
+      "only_allowed_fields_changed": true
+    }
+  ],
+  "Kids_native_and_served_hashes": "PASS",
+  "ordinary_Kids_PDP_after_two_URL_host_purge": "PASS",
+  "LH006_conversion": "NOT_RUN_AUTO_REVIEW_REJECTED",
+  "LH006_current_type": "simple",
+  "LH006_current_sizes": [
+    "One Size"
+  ],
+  "approval_question": "Approve product9879 to six canonical variations at95; existing simplecart entries require reselection with native notice. No rerun dispatched.",
+  "orders_or_payments_read_or_mutated_on_production": false,
+  "theme_activation_or_page_publication": false,
+  "recovery": "RECOVERY.md; guarded native restore qualified synthetically; no live restore"
+}

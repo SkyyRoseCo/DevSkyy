@@ -1,0 +1,3204 @@
+{
+    "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+    "stylesheet": "skyyrose-flagship-2",
+    "version": "2.5.0",
+    "utc": "2026-10-02T23:54:07+00:00",
+    "files": {
+        "404.php": {
+            "sha256": "64351a69e99da8f513ed841e61fac6a811de0408b8d6fa71cbba247b58aac910",
+            "bytes": 1694,
+            "mode": "0644"
+        },
+        "CHANGELOG.md": {
+            "sha256": "d937b56e07f816388cda31467d0e606c0611ef34977c6334b1070d2311d58d82",
+            "bytes": 5470,
+            "mode": "0644"
+        },
+        "IMAGE-PROMPTS.md": {
+            "sha256": "75189cf0d476e91e90f50d28a92444d48844f6dcba116bb4fd5016a901053e41",
+            "bytes": 2541,
+            "mode": "0644"
+        },
+        "LICENSE.txt": {
+            "sha256": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6",
+            "bytes": 17984,
+            "mode": "0644"
+        },
+        "README.md": {
+            "sha256": "e2d60f02b08fea0549b6fa15fca68c67e679b2d7b012b59081a497976d92cbb2",
+            "bytes": 9506,
+            "mode": "0644"
+        },
+        "archive.php": {
+            "sha256": "0bd7bb865569ad446863504a349be599023013a8f8963ef4d83e7a4b210eadb7",
+            "bytes": 1100,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/br-001-onmodel.webp": {
+            "sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8",
+            "bytes": 196372,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/br-002-onmodel.webp": {
+            "sha256": "6e395127c4b6f09a1602db3c30963bb31a42559fe64dfbca990832c3dbc951ba",
+            "bytes": 222902,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/br-004-onmodel.webp": {
+            "sha256": "8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8",
+            "bytes": 215006,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/br-005-onmodel.webp": {
+            "sha256": "19f888f11bc6e3a282088281040ee8b27be1e5473e1b4b53fc5ad5509e80a19b",
+            "bytes": 246356,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/br-007-onmodel.webp": {
+            "sha256": "b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d",
+            "bytes": 256336,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/kids-001-onmodel.webp": {
+            "sha256": "c6bd2ddd555c4359c302eebb051d5fbad4d34bec0b324b44f3447831f3ec9c9a",
+            "bytes": 194818,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/kids-002-onmodel.webp": {
+            "sha256": "88c0ca36b22a95ce1ee7969b50b4e256718ffda584027dfd97e219605aa3e51b",
+            "bytes": 248162,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/lh-002-onmodel.webp": {
+            "sha256": "dd1192e520e521308064f42d8ac0c9addc5d403a711c7e62d559541f65b35507",
+            "bytes": 273426,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/lh-003-onmodel.webp": {
+            "sha256": "a8338e8a18009573203e7e09ef21e71678deaacee40ff186dacf5350e61f1089",
+            "bytes": 286710,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/lh-004-onmodel.webp": {
+            "sha256": "1c5aed2f72b85b5afc7a25515931e450e68dfa66011b0345c13605020b89fddc",
+            "bytes": 290126,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/lh-005-onmodel.webp": {
+            "sha256": "3274c53abb457fd03856dab4014ac6076eab1853a67722fb90015749497e830f",
+            "bytes": 171078,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/lh-006-onmodel.webp": {
+            "sha256": "7905342f32bd2963d3d5d095a0825c9ae3ec98f731de100fb481631ee76244dc",
+            "bytes": 289936,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-001-onmodel.webp": {
+            "sha256": "31b85575f88df52d1a61f8ce7b01b0b60c1c1de1749060e3f0bca8873b71ffce",
+            "bytes": 231914,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-003-onmodel.webp": {
+            "sha256": "a06526e3136ab5e4f157aa431850c13e6bc75969a10f8240012db7bfac63968c",
+            "bytes": 225156,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-005-onmodel.webp": {
+            "sha256": "052915cfb4aaa7f3d1fdd01d222661289cb7a1eab0fdec9b68a8be8dda8f28f0",
+            "bytes": 197900,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-006-onmodel.webp": {
+            "sha256": "27d6865fb5ea6b23fbd7df5f4169543348c3dc0b5f34828ca956ca486411b44d",
+            "bytes": 186676,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-007-onmodel.webp": {
+            "sha256": "15dd6abe1bc49ee8fc3e70a17c90d0c05aa11aff517b296290390c449307e730",
+            "bytes": 146130,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-009-onmodel.webp": {
+            "sha256": "fad97fce9afde5e752ea62ed256b03ca7b5ad2ca449f070c9037bd266fa5222d",
+            "bytes": 207268,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-011-onmodel.webp": {
+            "sha256": "25055af2f7d59fdaa18bf9fec4f7b5abe1ec9c7d9a4e5306e7be232a9163ac8e",
+            "bytes": 166950,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-012-onmodel.webp": {
+            "sha256": "360cdb19236dd2108934b9c2eaf15eb539defdb4cb4c4a176d0427ef2bf3a0cf",
+            "bytes": 154556,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-013-onmodel.webp": {
+            "sha256": "fc3fc604b56f4e9abfc95fe45ec4642ccafce625f26241605ff830bad49c8bf8",
+            "bytes": 256386,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-014-onmodel.webp": {
+            "sha256": "e07277762c0b939b7ba1756685675aa4184968de9a3e83fc3d4303d8a400f67b",
+            "bytes": 238928,
+            "mode": "0644"
+        },
+        "assets/approved-card-fronts/sg-015-onmodel.webp": {
+            "sha256": "e8f365cb5a1e1546977f41a5271bb7ce62287b18ac64f1c62934783198cebfcf",
+            "bytes": 228692,
+            "mode": "0644"
+        },
+        "assets/card-scenes/br-003-onmodel.webp": {
+            "sha256": "43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9",
+            "bytes": 221956,
+            "mode": "0644"
+        },
+        "assets/card-scenes/br-006-onmodel.webp": {
+            "sha256": "443a7d3546c8bec2495426e20e7b8a4e84b5b91c02ea57b20d43cb3c96763d2d",
+            "bytes": 218992,
+            "mode": "0644"
+        },
+        "assets/card-scenes/br-008-onmodel.webp": {
+            "sha256": "cd4ca4c0ba5d7723b0ad786ad7312502bf820aece583f8a007de4be20fa6088c",
+            "bytes": 257834,
+            "mode": "0644"
+        },
+        "assets/card-scenes/br-009-onmodel.webp": {
+            "sha256": "e220fb9c3d2a1413bb2a9d9158736c7a7b8622beadecc5e44debacbdc3441ffc",
+            "bytes": 249102,
+            "mode": "0644"
+        },
+        "assets/card-scenes/br-010-onmodel.webp": {
+            "sha256": "b8862f06ddfde790a9dd3327e23f824d21abfa73bf1410630e4f9b9b710abea7",
+            "bytes": 234546,
+            "mode": "0644"
+        },
+        "assets/card-scenes/br-011-onmodel.webp": {
+            "sha256": "aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290",
+            "bytes": 243112,
+            "mode": "0644"
+        },
+        "assets/card-scenes/br-012-onmodel.webp": {
+            "sha256": "75f96a81896afb52b9742d561a1ee84578b94683c78d1d0aa098b8da50452625",
+            "bytes": 206076,
+            "mode": "0644"
+        },
+        "assets/card-scenes/br-014-onmodel.webp": {
+            "sha256": "4cc4c60b2e39bfb3986626419828b57eee1381c20889d51a9a5dbaf2d972d8ff",
+            "bytes": 230702,
+            "mode": "0644"
+        },
+        "assets/card-scenes/br-015-onmodel.webp": {
+            "sha256": "d708a0e9f468c77fc43d2882c63877e4a41358de1944e0c091f85a66670cd8ad",
+            "bytes": 222562,
+            "mode": "0644"
+        },
+        "assets/card-scenes/sg-002-onmodel.webp": {
+            "sha256": "48561fab14ae39618e048bb5ba3226fef4da3affb85855d441bb54be3e767f18",
+            "bytes": 211874,
+            "mode": "0644"
+        },
+        "assets/css/about-archive.css": {
+            "sha256": "ddb4a151fb0c5010476d62b202f0050a6229fb0e077dc8abea12f67728a8b408",
+            "bytes": 9211,
+            "mode": "0644"
+        },
+        "assets/css/about-archive.min.css": {
+            "sha256": "146c48137f6998015956c8f6d113600fd2ae1a0f00965f665b7b72a9c7479cb9",
+            "bytes": 7842,
+            "mode": "0644"
+        },
+        "assets/css/archive-style-inputs.json": {
+            "sha256": "2ee7fffad85a9d8514744bb04794438cea3501bc9e5a4bc41e51b2c804d236e0",
+            "bytes": 994,
+            "mode": "0644"
+        },
+        "assets/css/archive-theme.json": {
+            "sha256": "c7093b25793dce2c2a5b88000eb62a3917bcee3f2f9a16ce8688e9986f75fa72",
+            "bytes": 144769,
+            "mode": "0644"
+        },
+        "assets/css/archive-theme.min.css": {
+            "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a",
+            "bytes": 26637,
+            "mode": "0644"
+        },
+        "assets/css/collection-scene-motion.css": {
+            "sha256": "63e2960baaea6d46f62842db69de764184d2e834b278d94f10d1a617663e1cf0",
+            "bytes": 5884,
+            "mode": "0644"
+        },
+        "assets/css/collection-scene-motion.min.css": {
+            "sha256": "96ad72035cdb4b7078f94c837f93ee019c0d47f80d828ee78ba3f902dd3b8033",
+            "bytes": 5132,
+            "mode": "0644"
+        },
+        "assets/css/collection-world.css": {
+            "sha256": "6a35ff0c9af2ba14343065b155e1cd258229b7c5bce261a240078f80ba3b9366",
+            "bytes": 12863,
+            "mode": "0644"
+        },
+        "assets/css/collection-world.min.css": {
+            "sha256": "a73c12bca1b73a3f09bae810b8cc2f332fa1c8c94e35a951329f6d1d215b20c2",
+            "bytes": 10753,
+            "mode": "0644"
+        },
+        "assets/css/content-page.css": {
+            "sha256": "887d24a7dcba56ed5912cb15e33e82db4460d7ae2045c83705c6dcd10e4222c6",
+            "bytes": 10647,
+            "mode": "0644"
+        },
+        "assets/css/content-page.min.css": {
+            "sha256": "42dd33dc4bbcb5b595ca096fd8f3ab626c260c88066c028f996e6f594f70fa4e",
+            "bytes": 8652,
+            "mode": "0644"
+        },
+        "assets/css/controls.css": {
+            "sha256": "8808bc48ed65e97ebd30de0abbb663cef8710a50b0db7b425321ac37b2ded4f4",
+            "bytes": 14479,
+            "mode": "0644"
+        },
+        "assets/css/controls.min.css": {
+            "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae",
+            "bytes": 12922,
+            "mode": "0644"
+        },
+        "assets/css/cookie-consent.css": {
+            "sha256": "c2c9c613efa2c2aa9ebcf2b8750bf70a46907a6f723b6ce3decbd7b6b9961a6c",
+            "bytes": 5731,
+            "mode": "0644"
+        },
+        "assets/css/cookie-consent.min.css": {
+            "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9",
+            "bytes": 2701,
+            "mode": "0644"
+        },
+        "assets/css/critical/home.contract.json": {
+            "sha256": "b92a0b4c5d758bb425cf75814af5ec851b95ba8b906f5d52650f841a40459a0b",
+            "bytes": 5798,
+            "mode": "0644"
+        },
+        "assets/css/critical/home.min.css": {
+            "sha256": "26184bb56cf8c4c1518aaa7386a8cd15a042990c24dedc03cb06d7fe71778072",
+            "bytes": 13580,
+            "mode": "0644"
+        },
+        "assets/css/design-tokens.css": {
+            "sha256": "508d98241ce8f190339d1c52cfff5becd4d0dc76245dcc631ca3e1d76652981a",
+            "bytes": 8317,
+            "mode": "0644"
+        },
+        "assets/css/design-tokens.min.css": {
+            "sha256": "42f7b19ea68394cb67e9c14a76d7530adcc1277f429eb126970aebea074a040f",
+            "bytes": 6250,
+            "mode": "0644"
+        },
+        "assets/css/global-shell.css": {
+            "sha256": "458fabe99c650c561b47dce6b59fa49380671b313427d553b017f9770e7ce089",
+            "bytes": 28891,
+            "mode": "0644"
+        },
+        "assets/css/global-shell.min.css": {
+            "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b",
+            "bytes": 24819,
+            "mode": "0644"
+        },
+        "assets/css/hero-commerce-scenes.css": {
+            "sha256": "edfe3b0bc1767dbf9dc349aabc0575b05ea4326659f800655f09b13ed39a6f8b",
+            "bytes": 4906,
+            "mode": "0644"
+        },
+        "assets/css/hero-commerce-scenes.min.css": {
+            "sha256": "87abb90de0ddc9a4cae73a300a817300ecc9c1cde492df4eba49a11095226fdb",
+            "bytes": 3725,
+            "mode": "0644"
+        },
+        "assets/css/home-art-direction.css": {
+            "sha256": "5b05ce9d67a4ace2937aadfc028faf7cbb948c5127a73a1d9d755cff4c27ab49",
+            "bytes": 5320,
+            "mode": "0644"
+        },
+        "assets/css/home-art-direction.min.css": {
+            "sha256": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6",
+            "bytes": 4276,
+            "mode": "0644"
+        },
+        "assets/css/home-experience.css": {
+            "sha256": "113b25b40e3828bb7b50039b99f217ca6de32deb6c929ab504517cac49d447de",
+            "bytes": 3822,
+            "mode": "0644"
+        },
+        "assets/css/home-experience.min.css": {
+            "sha256": "79c2c386597fe9493ca66e2bc4e2c34911293b190a2e1540935eacefb8c8c5d9",
+            "bytes": 3100,
+            "mode": "0644"
+        },
+        "assets/css/home-page.css": {
+            "sha256": "48aeca3a8efbd250c038bd1f47ec6542f785d22295acee34a788af6aa749d625",
+            "bytes": 16606,
+            "mode": "0644"
+        },
+        "assets/css/home-page.min.css": {
+            "sha256": "e2f0dd42494a02b552a8716c8a6b3320ecf3ee8f48ee690e28ae1b46dde2b3f7",
+            "bytes": 13302,
+            "mode": "0644"
+        },
+        "assets/css/immersive.css": {
+            "sha256": "e41d5d02789476bbe709c84d2409c01429fd5dcc2c7533c82a4b841116137530",
+            "bytes": 9328,
+            "mode": "0644"
+        },
+        "assets/css/immersive.min.css": {
+            "sha256": "390a38490d6ea890b910fccc73434a24c336389cda682deda6ddda5e468d146d",
+            "bytes": 7039,
+            "mode": "0644"
+        },
+        "assets/css/legacy-world-components.css": {
+            "sha256": "581bea768d40b7b1a65e05cd1f38aabcd10d54d3185d6dcb9af3bed912e59247",
+            "bytes": 16951,
+            "mode": "0644"
+        },
+        "assets/css/legacy-world-components.min.css": {
+            "sha256": "410ace7f1cebec1f4e3cbd1ad0d9f6247d39259cb43faa0c539d49d35ae7e302",
+            "bytes": 15111,
+            "mode": "0644"
+        },
+        "assets/css/lookbook.css": {
+            "sha256": "34610a503fce9eb76f389301f2bd42ea680965742d499511e80c688f9abf5e3b",
+            "bytes": 9939,
+            "mode": "0644"
+        },
+        "assets/css/lookbook.min.css": {
+            "sha256": "25a23fab335f589f254637a5f86d41e4787635b6bdac10be6658fa08618c82b5",
+            "bytes": 8634,
+            "mode": "0644"
+        },
+        "assets/css/mascot.css": {
+            "sha256": "ea9a84f83a4bfc092d14649084d43154a9d47c590fc27bee4820dea7c83878a8",
+            "bytes": 20357,
+            "mode": "0644"
+        },
+        "assets/css/mascot.min.css": {
+            "sha256": "efb43ec6bb085e2f4ce8983e4d99dadda8b79e6082bda275a71d8a2686921014",
+            "bytes": 15238,
+            "mode": "0644"
+        },
+        "assets/css/premium-commerce.css": {
+            "sha256": "21a6bbddbb294175323c865e96719a010280e12ee367a1ca376cf0dc510bf151",
+            "bytes": 13387,
+            "mode": "0644"
+        },
+        "assets/css/premium-commerce.min.css": {
+            "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15",
+            "bytes": 11720,
+            "mode": "0644"
+        },
+        "assets/css/product-glb.css": {
+            "sha256": "eff5d75c4edf324669c47dfb5d356742bbc43f2513d4b4d7f5d8af394e6c0b7f",
+            "bytes": 377,
+            "mode": "0644"
+        },
+        "assets/css/product-glb.min.css": {
+            "sha256": "499e6070b00e3816276853f2a8e8e21d612253806eaee8436bb4ef9579667915",
+            "bytes": 335,
+            "mode": "0644"
+        },
+        "assets/css/product-page.css": {
+            "sha256": "81071fab3523fcfc283afbb6565e94928f2548692a7cde611e8b7cc8fc144bb4",
+            "bytes": 24082,
+            "mode": "0644"
+        },
+        "assets/css/product-page.min.css": {
+            "sha256": "6a4fd7f46d304fba6b0ca781071d924dfddbc67aa7bd0c06ea7347b91d84150d",
+            "bytes": 20816,
+            "mode": "0644"
+        },
+        "assets/css/quick-view-commerce.css": {
+            "sha256": "bd96e318ddf6ece5b38c1dd718221638090679cbfb5170663ac2bd4ee46597fc",
+            "bytes": 7421,
+            "mode": "0644"
+        },
+        "assets/css/quick-view-commerce.min.css": {
+            "sha256": "d2acd258b12e5f24aeb531f72f197679865fed1c2ca0261e137e681adb16800b",
+            "bytes": 6172,
+            "mode": "0644"
+        },
+        "assets/css/scene-handoff.css": {
+            "sha256": "8956f24b8ae88d9b14fee0eada4420d1927b9b48bc93167c90dbfd883bddcb3f",
+            "bytes": 418,
+            "mode": "0644"
+        },
+        "assets/css/scene-handoff.min.css": {
+            "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255",
+            "bytes": 234,
+            "mode": "0644"
+        },
+        "assets/css/search-preview.css": {
+            "sha256": "bde18bf9c770052a340583928f6f8fd383f40421a31e6d91ae0af715ac00591b",
+            "bytes": 1420,
+            "mode": "0644"
+        },
+        "assets/css/search-preview.min.css": {
+            "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac",
+            "bytes": 1222,
+            "mode": "0644"
+        },
+        "assets/css/shop-page.css": {
+            "sha256": "ca48370cfed9c817ea34d0f4a21ae4b2a4683f74cb1e35cc96f09ce45ac3ce5a",
+            "bytes": 8615,
+            "mode": "0644"
+        },
+        "assets/css/shop-page.min.css": {
+            "sha256": "279a7e4fe988b7831eea95091877463a05f51d57775ee8184355d7ce21b9f9ae",
+            "bytes": 7206,
+            "mode": "0644"
+        },
+        "assets/css/theme.css": {
+            "sha256": "316b810daae6e0b4d31acd9e2dee117d792765c6cb7d2359e99c33926693b346",
+            "bytes": 66239,
+            "mode": "0644"
+        },
+        "assets/css/theme.min.css": {
+            "sha256": "c331896bb1e1e1225ba77697283992b720e2776cddf6d8078412f67b85a1201d",
+            "bytes": 56005,
+            "mode": "0644"
+        },
+        "assets/css/visual-recovery.css": {
+            "sha256": "9ef48e21019170ecc45e7868f495a2d3682d9d5ab145120b7ba68b4014c3faee",
+            "bytes": 7673,
+            "mode": "0644"
+        },
+        "assets/css/visual-recovery.min.css": {
+            "sha256": "49a038720af87a2353eec0e97a823e591d5fdbdb1a0b6b2a769320b9d13edc35",
+            "bytes": 5987,
+            "mode": "0644"
+        },
+        "assets/derived/card-frames/black-rose-360w.webp": {
+            "sha256": "d4182e8e8cfc49335a2111fdce5dc0ed5f37e567ed301626a23f14089e9bfcf0",
+            "bytes": 43492,
+            "mode": "0644"
+        },
+        "assets/derived/card-frames/black-rose-384w.webp": {
+            "sha256": "84e384ca31c5ed9c7dd73a50ecf1b6dff100a79a0e311cf10665afbbdd61efff",
+            "bytes": 47630,
+            "mode": "0644"
+        },
+        "assets/derived/card-frames/kids-capsule-360w.webp": {
+            "sha256": "812adf5aae02d42a7fc1c64fb8eefcfff0df8ecd0d92d0e947975074108e246c",
+            "bytes": 43088,
+            "mode": "0644"
+        },
+        "assets/derived/card-frames/kids-capsule-384w.webp": {
+            "sha256": "3e592a8504ee6909b0181ed2cd0a8970366d0c1ab5f956ea04cee893632294ef",
+            "bytes": 49014,
+            "mode": "0644"
+        },
+        "assets/derived/card-frames/love-hurts-360w.webp": {
+            "sha256": "e3a765a52c9feffc6ce90e21cb072d4550d7aba222f41f9b8f04d43c007e4ede",
+            "bytes": 46122,
+            "mode": "0644"
+        },
+        "assets/derived/card-frames/love-hurts-384w.webp": {
+            "sha256": "61c7b2fa183643c5963970a46aab740796cf53ec9d73139d56bff902c702acbb",
+            "bytes": 51128,
+            "mode": "0644"
+        },
+        "assets/derived/card-frames/manifest.json": {
+            "sha256": "d0f94db683dfc01d877d2c4254295ed8aa98ef4b12ede6a784e8fc220b72dafe",
+            "bytes": 3564,
+            "mode": "0644"
+        },
+        "assets/derived/card-frames/signature-360w.webp": {
+            "sha256": "e4c5a8caa8cce152018bfe62cd369d13131dcdc6118a8555eedad4b63726dcb9",
+            "bytes": 43386,
+            "mode": "0644"
+        },
+        "assets/derived/card-frames/signature-384w.webp": {
+            "sha256": "9cb9b3a26d105b6ec59cc9c8298cf88aeade70282834e438a2776be28176de75",
+            "bytes": 49150,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-001-320w.webp": {
+            "sha256": "969dfd8008b2afae4c30add2b2fec8fe48854ef5d71c77e8d6f2defd730c2cfc",
+            "bytes": 27950,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-001-480w.webp": {
+            "sha256": "03498fe7fa9a819ca17887aeaf689837d40a3b6538e279ee44197d021239f3bd",
+            "bytes": 59230,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-001-768w.webp": {
+            "sha256": "6c170c0574baeca7f2dc18d63b72c36a1dfcfa96c2b373172f2277e27710eecf",
+            "bytes": 134914,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-002-320w.webp": {
+            "sha256": "c3fc44a6f9e9d0a4f7cc1c08015084175aa3306a72fce61c264c4c8a13bc1b95",
+            "bytes": 38646,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-002-480w.webp": {
+            "sha256": "7cdcd11f1d0d8aeb66222192458fedcb522a0aa16de78ce2684cc83d5b0e011c",
+            "bytes": 76882,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-002-768w.webp": {
+            "sha256": "822fe7e6e9090018163564e1e8fd191772a50fc7e9f0447378e9494e270c21e1",
+            "bytes": 159844,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-003-320w.webp": {
+            "sha256": "630cd59319b669cb97831a3c6db1eebee159f672921c143207f6934e13194450",
+            "bytes": 35862,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-003-480w.webp": {
+            "sha256": "fe6de556338f9d687be718dd34e04d7bd449a43c8f2d90ceddc08122d10c422d",
+            "bytes": 70386,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-003-768w.webp": {
+            "sha256": "756e136254805e8f08e0059a0d59ed10e5ba4d19b7908506a43add211ccbf9d3",
+            "bytes": 150378,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-004-320w.webp": {
+            "sha256": "fab76c31229ca73ab014d8c0f93a1360f74a8e3e5eb55fa54289ad49d27112cc",
+            "bytes": 29402,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-004-480w.webp": {
+            "sha256": "0a34d5f5351fafb7da7e492a9329777d49119f2bedc7a190909fab13956ac6ac",
+            "bytes": 63288,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-004-768w.webp": {
+            "sha256": "64f87ee28abc192425b9b28bf9426cf76d21bfc696fdcbc823465417206ea741",
+            "bytes": 146024,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-005-320w.webp": {
+            "sha256": "ad6673edc3915ac7917e26c27d76219a5f56e8f77ee089f53b82815555dbc2de",
+            "bytes": 40858,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-005-480w.webp": {
+            "sha256": "3e0bc13cf9aa1771652944ab1c6265d0c80e3aef8b573c17cadf376bfa85542d",
+            "bytes": 84714,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-005-768w.webp": {
+            "sha256": "a4f183b0eb2f91e84cde0bf179469218c194e69ba9009d6c8c9ec313162f2599",
+            "bytes": 182604,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-006-320w.webp": {
+            "sha256": "1622f71d0fb0a32aa6d53cb19e89d50dda937dddfddd8f612b28bb41e153a23f",
+            "bytes": 41638,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-006-480w.webp": {
+            "sha256": "3ef1009cd1a0f85c703d5a757c5acb4bc9aefedcc8571264b9529eb871cfe2da",
+            "bytes": 81266,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-006-768w.webp": {
+            "sha256": "37dda44ac7e9c27123f81ccf14afb521e7a97ed479e0eac8bab240661d8d28a3",
+            "bytes": 161034,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-007-320w.webp": {
+            "sha256": "1583eda077b668a79c57fde6206df5681fcc7a3f2af4ae84028c5807343fb56c",
+            "bytes": 32192,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-007-480w.webp": {
+            "sha256": "a920437de23be1030c6e1a3e2d26b460fa49a387740d2145e9d760d7595c673a",
+            "bytes": 70432,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-007-768w.webp": {
+            "sha256": "1443baee959ae91f5d1271f4ce621cbeb41fe8d13e02340b89d9d7e7a47a881a",
+            "bytes": 165294,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-008-320w.webp": {
+            "sha256": "ba50d940500fed919bb433b4dc50b79dc7678c24e49b4cf8a83f9cee69bb8932",
+            "bytes": 39752,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-008-480w.webp": {
+            "sha256": "a93048b48cd12183201a6bd5f3fa8a1c873a572aedff9e6ac2214ca33ae5f500",
+            "bytes": 82736,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-008-768w.webp": {
+            "sha256": "bfd27eda97447e88e3a92bb5e5580f69d8ee4901a7d463fa9e7c47789aae502c",
+            "bytes": 178010,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-009-320w.webp": {
+            "sha256": "59b361534fee5b33451f164e187666b3a21f86072fab3fa0980967345b2e6b6a",
+            "bytes": 38878,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-009-480w.webp": {
+            "sha256": "05924de90641793f700911dd15567c5adcbcde523d307c4d4dd7055f9e48048a",
+            "bytes": 80896,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-009-768w.webp": {
+            "sha256": "9a13c655517b9a4b3151ab4ed4f92ecf174babd23fa9a54983381b05e7f9af4c",
+            "bytes": 172260,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-010-320w.webp": {
+            "sha256": "fdbf1ea3fff8eb3e98d484c91be18f3ee0d83b718c58057083668361d2162db6",
+            "bytes": 39736,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-010-480w.webp": {
+            "sha256": "f6d7b36f70f681cd39584e95fd297cb9a2073dad83bfb8ef3e33a5de14941020",
+            "bytes": 81502,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-010-768w.webp": {
+            "sha256": "03aa27a0452ded261ee62117dff3c1eb64cc98c0f5b14ba0d56c72ed6c40200b",
+            "bytes": 167668,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-011-320w.webp": {
+            "sha256": "3d76efb0eeea1fab6c72dc97f01d8e7a55fd85bb1968c4b9ad85daa7825c52c5",
+            "bytes": 42214,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-011-480w.webp": {
+            "sha256": "821c3a10c60338e064f1fc5c82fff38ef7d2162963b9ff44cd623edf9c655440",
+            "bytes": 85560,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-011-768w.webp": {
+            "sha256": "e9de2ce2a40675f0223093949be999a4eaa8c83cbfff1906d7ceb820ca39c9fe",
+            "bytes": 175072,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-012-320w.webp": {
+            "sha256": "5901a08d88a0a0e2d3d24202c739745d5d12813f10db6f08f46305c372992c69",
+            "bytes": 37704,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-012-480w.webp": {
+            "sha256": "3eb82b30736da9b2eaadac39deb332012c939cc1cc9924cd79ddeed8abd5a4b5",
+            "bytes": 74524,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-012-768w.webp": {
+            "sha256": "39f9cf84a15369c586c36f73e4a67eeccff2a0b1555baddb10fe4c19909ebf8c",
+            "bytes": 150996,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-014-320w.webp": {
+            "sha256": "68722bd052bbcf55c38b43ed8acb598a8e7c58f7a640d2694ae22fbe8ca8590b",
+            "bytes": 39568,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-014-480w.webp": {
+            "sha256": "c3688d910d875138d7b307dbbda83ac7cd26273807b738813c5948ff1e387579",
+            "bytes": 78710,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-014-768w.webp": {
+            "sha256": "334cae60a0d8d2af69917305dfecf173e1ba461d9fe79b50793c9bbeed0e958c",
+            "bytes": 160448,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-015-320w.webp": {
+            "sha256": "e4213f74c3ae1cc7fbb5d56e5b12958d19d6407d84283cd58edd32f56ca4a6cb",
+            "bytes": 39178,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-015-480w.webp": {
+            "sha256": "4e4b67be2cee042683cfcfb0c4d5009950ff905a84ac5b9fe66fe6b7d85b9196",
+            "bytes": 77516,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/br-015-768w.webp": {
+            "sha256": "a585db2ff9c943f856547e5a38d5bc98014ec16fc7813ec581147c718e4aaf3c",
+            "bytes": 159330,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/kids-001-320w.webp": {
+            "sha256": "bdf378a2718c2d0b267f06a4e67c2c9cd3dd381d52e7913e326da59f9b9cadaa",
+            "bytes": 39284,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/kids-001-480w.webp": {
+            "sha256": "9cfbadbf3aead10ba3d93a5e18e68e0d2310d6f18292e7037b7a664ac6d1498f",
+            "bytes": 73630,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/kids-001-768w.webp": {
+            "sha256": "a9127abdd520c9012e8354534868fa7cdc84dde345d9632af6dfdf09ea5d5bb0",
+            "bytes": 144254,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/kids-002-320w.webp": {
+            "sha256": "4cbfab5be8317023a57288dd6e29dd4f9dce2aabbb2a2e50178d390d372e2235",
+            "bytes": 47728,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/kids-002-480w.webp": {
+            "sha256": "9a73ccd654639c2965fc42facded9ee20c7395e12e4451dc3d20a21784520a6e",
+            "bytes": 89082,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/kids-002-768w.webp": {
+            "sha256": "37989aca834fb4101b77ae4bccbcac471af2ee4a348fbf8e7a9b35a854dbaf3a",
+            "bytes": 174404,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-002-320w.webp": {
+            "sha256": "bec9c521717d378233f3902271cb2d4621f382f7e0654382d94ce29f8621bd88",
+            "bytes": 40708,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-002-480w.webp": {
+            "sha256": "4cd3f09abb19079ea209e8944beb6cdcdf57201bd4b2e35ca71287e52a154022",
+            "bytes": 86374,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-002-768w.webp": {
+            "sha256": "4eb15f1df797373150d4f5c173b749924fb2dcb4cda3ad83467c79b371d8eb03",
+            "bytes": 184026,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-003-320w.webp": {
+            "sha256": "a3b51f34ceedcfa8fbf1682d7a9109637ef772cb39130ad6abee2781dc8ee376",
+            "bytes": 45084,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-003-480w.webp": {
+            "sha256": "6ee63b5118dbdbc61f670977162ed8dd733e9d64097529928d33197551b704db",
+            "bytes": 89724,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-003-768w.webp": {
+            "sha256": "1964465207350db66533ebe758359008b8ff731b32df1141e4ebf15bf935fd1c",
+            "bytes": 191220,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-004-320w.webp": {
+            "sha256": "5a51c50ddf04a1717bef444ffb2d03215fcba713bde163c798f46e774670ab82",
+            "bytes": 48906,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-004-480w.webp": {
+            "sha256": "f0177a0bd431d27e584da4db115480d0b45a55178328143c34f266d34b8ac2f7",
+            "bytes": 97276,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-004-768w.webp": {
+            "sha256": "f0b64933d674143dcb9c776869ae6f96c36fea54894d4b30454ae5f44295d390",
+            "bytes": 206162,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-005-320w.webp": {
+            "sha256": "92c3064a0ebfdbcc634e0e9b6a69818f0d664016c2d95f701865385967776724",
+            "bytes": 35180,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-005-480w.webp": {
+            "sha256": "3927929443f3fad1457b21509434d09cad43c615fd3d180ca4204bbe79bcfe8d",
+            "bytes": 65804,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-005-768w.webp": {
+            "sha256": "a2ddbe79f6176a0a871e1d4379d53b73d0552192003a0bb64b2a362db7e680b1",
+            "bytes": 124248,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-006-320w.webp": {
+            "sha256": "01d3c579662cdbee4bb4efd6e8c1ac19a9a4665de1c8b573021ead57b2f8dfc3",
+            "bytes": 48450,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-006-480w.webp": {
+            "sha256": "55640cfe5329b86907d401af5e80d3d5edd5a261cbc987df07986a1c3502633f",
+            "bytes": 99716,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/lh-006-768w.webp": {
+            "sha256": "b63d0668dd3379d7f7e1383e6a4d5da0b24dd9966292c2c3c87a6741f25c8f67",
+            "bytes": 205860,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/manifest.json": {
+            "sha256": "bd176a5b910a9c0d37281a8e23e1222992aeabc6acb8eaa4877a54a30cadf64c",
+            "bytes": 28838,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-001-320w.webp": {
+            "sha256": "c52dc3fe6bec08fff833721c3d0a7e6c22bf81d86b8575705ff5261e23e24805",
+            "bytes": 31724,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-001-480w.webp": {
+            "sha256": "12c97c76bf99682f28f9d92c884105cab3d355cb2aca54fba09575928cc94440",
+            "bytes": 67130,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-001-768w.webp": {
+            "sha256": "3c9bae8f902fd57a0554a101250af2fb115b04136fcd0c9a164cc764a9f15409",
+            "bytes": 146652,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-002-320w.webp": {
+            "sha256": "7f933d51e17f7246821d6fd4db08f365e4bb46a47b53fd0c27bd1d8547492c44",
+            "bytes": 33144,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-002-480w.webp": {
+            "sha256": "d47a11c2d6054195ae1df0ec637e929c827fd4ffef5ead17bde55b6d03da0400",
+            "bytes": 68534,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-002-768w.webp": {
+            "sha256": "4df875443f9dcae8b8df1d2d3223877b344b6fa451de31c444961929e7d48020",
+            "bytes": 147304,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-003-320w.webp": {
+            "sha256": "83d47957b70c4dfba2398c6c517f7383884f0be1afa89a3dbd3269f58159deff",
+            "bytes": 30414,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-003-480w.webp": {
+            "sha256": "dac95c9a2e416b0a8acffd8d4a016f1237140a06b8041cb6c253ff3983690e5d",
+            "bytes": 62316,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-003-768w.webp": {
+            "sha256": "186ddddd412c60d0e128158fa6baa50e9c0c977eeba8869671af84f54bbabce2",
+            "bytes": 140380,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-005-320w.webp": {
+            "sha256": "43e9f5c1388c5724b6cac58b4a9344128296efbc36bd9c756a298342a38a2c30",
+            "bytes": 28966,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-005-480w.webp": {
+            "sha256": "b51821e4c054365f50386d93bb1256c611b4a6905eec4344f5c3474166c59a38",
+            "bytes": 60820,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-005-768w.webp": {
+            "sha256": "ebb40fd6e9891f85284c3f52d590ee198bff2f476b3fb5cb4a01d501ccad0763",
+            "bytes": 135304,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-006-320w.webp": {
+            "sha256": "08ff1a9b6b331a3fb501d2fdbe6fc88cada5986458dc2fcc627005b3ba0baf6f",
+            "bytes": 26620,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-006-480w.webp": {
+            "sha256": "6187a6be56844238a10bf4f59868682d699918344de85bd98d60e1b7acea5d4a",
+            "bytes": 55158,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-006-768w.webp": {
+            "sha256": "8dd4c9433729b229b513248867f20e57b43a3c506f40a7701ea0902b972b52c0",
+            "bytes": 122596,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-007-320w.webp": {
+            "sha256": "b57ba72be28a5cab6d264a35fb1b383d6ee7c363c46810c1243ababedb3411aa",
+            "bytes": 21858,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-007-480w.webp": {
+            "sha256": "410015a4cf4dfd6cfdf134dd6fa860654652e9c3463f27b1bc582d827f973f90",
+            "bytes": 42450,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-007-768w.webp": {
+            "sha256": "8bfe4484882b614cdf12b04821209182b24af81585ac9cd98813efa3c40b851a",
+            "bytes": 94850,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-009-320w.webp": {
+            "sha256": "e6c59a48e0116069c11c3a280b3095f9ab4b9247fa0bb825bbefecb121b7d4b5",
+            "bytes": 26210,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-009-480w.webp": {
+            "sha256": "2a4fb7984612098b1a33602c1e8b23a691d78465313743b11b938abce48a987b",
+            "bytes": 58868,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-009-768w.webp": {
+            "sha256": "17cd63075f57120059c0b4b616aa660712dfc1b4ec0b42991b751c7cdb0fe852",
+            "bytes": 129188,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-011-320w.webp": {
+            "sha256": "d5a56419b4dee000b91af110ace610b868cf10c28812d494af6c563e077f9f22",
+            "bytes": 24752,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-011-480w.webp": {
+            "sha256": "eebb2f2355271e349ec91b75fbd0a3d54f2786d2d331d3c2c6886592ea5fb7be",
+            "bytes": 48400,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-011-768w.webp": {
+            "sha256": "b14fdee1430df6acf9fe9085e5400185d5665c1dfc50707650a47b9855089cbc",
+            "bytes": 108012,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-012-320w.webp": {
+            "sha256": "39095b700cad743cc9087e94af5d2ce377a6950c95e189b2c9671edcbe9e0682",
+            "bytes": 21838,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-012-480w.webp": {
+            "sha256": "1c7de8512b959fed89839c387f931ec16e494e27c4d038dadb7d67d90c8e65b4",
+            "bytes": 45404,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-012-768w.webp": {
+            "sha256": "b9a1d905d2921c3511c27aaa7058084c6b4b696e9bbb7fe472d3049854333094",
+            "bytes": 98670,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-013-320w.webp": {
+            "sha256": "1681467d53d28f2345156b2d059ed72c37ec017fa2ea3191c738a3c71d151e40",
+            "bytes": 31686,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-013-480w.webp": {
+            "sha256": "fd7f726a5e9f79049f0c9faa92adb226655c1ea07525fe1ed87668de434124f4",
+            "bytes": 68274,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-013-768w.webp": {
+            "sha256": "a8ee697883ecb0f41efd82a3c4d2e03a2f2963c9f1662bfe7a439633d356c5b6",
+            "bytes": 161598,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-014-320w.webp": {
+            "sha256": "8a6e885386e5422c35b2302e28414d15a3feccf85380582d965dd3c51042e287",
+            "bytes": 30694,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-014-480w.webp": {
+            "sha256": "027ba99760dc5dc7dd9aea78d5dd7444b32061aa095d219bee25bba6c0df8ddf",
+            "bytes": 63936,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-014-768w.webp": {
+            "sha256": "ca8b4e32a54234899eb1093bcf392cb52c9c4774cc589d38e677a05d2c88ac27",
+            "bytes": 152054,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-015-320w.webp": {
+            "sha256": "95c2b117210b942e8351af88ef71d84c9262ce7c6f146c07ded787c0bfebe089",
+            "bytes": 35010,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-015-480w.webp": {
+            "sha256": "00e9862f7b777c9f09b0e83dfb8c4573929950209dd4bb71245eb70eec766765",
+            "bytes": 72016,
+            "mode": "0644"
+        },
+        "assets/derived/card-fronts/sg-015-768w.webp": {
+            "sha256": "3094d0780f05593d4ffcb3e320c792eca640f9c0ccb8b954e7e618a1091a8333",
+            "bytes": 158718,
+            "mode": "0644"
+        },
+        "assets/derived/fonts/archivo-normal-width.woff2": {
+            "sha256": "7ad8d3aba9616844d4d13eddb34a7584a969c59af1f52a19e89ab4783eab41f5",
+            "bytes": 34976,
+            "mode": "0644"
+        },
+        "assets/derived/fonts/inter-fallback-latin.woff2": {
+            "sha256": "9561a48d0deadad8b3b17f0f9a2b384c14baedb0c6d3e53738a91c0641b2471e",
+            "bytes": 1872,
+            "mode": "0644"
+        },
+        "assets/derived/fonts/manifest.json": {
+            "sha256": "4bc28ef2891a41eb4f7edf37c7177fc2192e2797808467a9dea1d810042d6b58",
+            "bytes": 632,
+            "mode": "0644"
+        },
+        "assets/editorial-source-fronts/br-006-front.webp": {
+            "sha256": "d474d97d9fac60eff864a14f30b6e07845ea71696ae0483a2c5f7108f22c815b",
+            "bytes": 240482,
+            "mode": "0644"
+        },
+        "assets/editorial-source-fronts/lh-004-front.webp": {
+            "sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
+            "bytes": 297770,
+            "mode": "0644"
+        },
+        "assets/editorial-source-fronts/sg-009-front.webp": {
+            "sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
+            "bytes": 222756,
+            "mode": "0644"
+        },
+        "assets/images/about/kids-heir-founder-supplied.png": {
+            "sha256": "846415d1e46e861f3dc97c8684e2d2d2dec57acaabf0037d9fecc219d04aa4ae",
+            "bytes": 1355894,
+            "mode": "0644"
+        },
+        "assets/images/about/oakland-reference-mural.webp": {
+            "sha256": "d13a197007e4d1d50d4fe05d6d58cdea4e70972aa2d38ff99d5095017acd4542",
+            "bytes": 28276,
+            "mode": "0644"
+        },
+        "assets/images/about/oakland-reference-sign.webp": {
+            "sha256": "7db82dd5436cae2c31307bee043e74342ba1d93cc301cc25c6468a4aaa2166be",
+            "bytes": 5274,
+            "mode": "0644"
+        },
+        "assets/images/house-monument-20260928.webp": {
+            "sha256": "05e9890ba85971569b7a422b892e3db3d51ae53ac6efb6bdd2d55f85c7859811",
+            "bytes": 249846,
+            "mode": "0644"
+        },
+        "assets/images/house-oakland-atelier-20260928.webp": {
+            "sha256": "8c9703e6b0d3218dece581fecececefc0b5d9462fd18780639ffb1aad84da0f9",
+            "bytes": 188234,
+            "mode": "0644"
+        },
+        "assets/images/skyy-runtime-poster.webp": {
+            "sha256": "714388658e58754368007853909bbee0b7c97aa797b79d23762da26f4a0766dd",
+            "bytes": 61276,
+            "mode": "0644"
+        },
+        "assets/js/about-archive.js": {
+            "sha256": "f92e60cd405a20a30599bc1aa58a45561b3e62ef37ac83e623ec5e8e9d4d9d42",
+            "bytes": 3427,
+            "mode": "0644"
+        },
+        "assets/js/about-archive.min.js": {
+            "sha256": "32abadb6d96d55cbf5b9aa95316a0b025bcee6978a162f37855f2291d5202016",
+            "bytes": 2037,
+            "mode": "0644"
+        },
+        "assets/js/collection-scene-motion.js": {
+            "sha256": "de6e0500f53b8b368c316fa0b43b72625eca35768b9a0acb69b694e3b5c5981a",
+            "bytes": 14370,
+            "mode": "0644"
+        },
+        "assets/js/collection-scene-motion.min.js": {
+            "sha256": "737430c70e309744bbe331b3a708149090f11b5c7758208b427fc8df7245bccb",
+            "bytes": 7777,
+            "mode": "0644"
+        },
+        "assets/js/experience-analyzer.js": {
+            "sha256": "50572b96d55b35a464e436bbdb4535d064dc78502cfdbef0be45a4dae0255ab3",
+            "bytes": 10781,
+            "mode": "0644"
+        },
+        "assets/js/experience-analyzer.min.js": {
+            "sha256": "57cd3351dd297235948cb7b9343e6ba33c96ca1630c2109ce5189fafdf9d84c2",
+            "bytes": 5418,
+            "mode": "0644"
+        },
+        "assets/js/home-experience.js": {
+            "sha256": "377edb0a6eb73bca86de7e0c4b28e5061218b4179f3858570bfacba64fa71506",
+            "bytes": 4494,
+            "mode": "0644"
+        },
+        "assets/js/home-experience.min.js": {
+            "sha256": "35404dbf717c5700351cad84342d76a654a75ee88f4919926c8f7c8dcbf24ec4",
+            "bytes": 2448,
+            "mode": "0644"
+        },
+        "assets/js/house-motion.js": {
+            "sha256": "70f99397da5053dc29a592240f117c908a4b4fdcdeada555512a14f751724825",
+            "bytes": 999,
+            "mode": "0644"
+        },
+        "assets/js/house-motion.min.js": {
+            "sha256": "4f67df76e97daaf9c53f5538b5fb16236920a8fe00ad66d84d5564fb668bb63c",
+            "bytes": 699,
+            "mode": "0644"
+        },
+        "assets/js/house-of-roses-motion.js": {
+            "sha256": "3dd6aebd9e15301a4238621392ae99d7db6eab7180c13d4116695dddf9f1d942",
+            "bytes": 12513,
+            "mode": "0644"
+        },
+        "assets/js/house-of-roses-motion.min.js": {
+            "sha256": "18db5135412fdeb75d165377146593bbafc3c246fccaf70f47c02cc06418b7a0",
+            "bytes": 5807,
+            "mode": "0644"
+        },
+        "assets/js/immersive.js": {
+            "sha256": "5b3614caf69fa31c5663777b0c1bb3aa681f4feb3260243db96e92a15d61a09f",
+            "bytes": 15641,
+            "mode": "0644"
+        },
+        "assets/js/immersive.min.js": {
+            "sha256": "6adc1ab8faaadc7e7e27cf776cf94b5f6d2be72b777f66760566cbe7e652f291",
+            "bytes": 7822,
+            "mode": "0644"
+        },
+        "assets/js/kids-capsule-reveal.js": {
+            "sha256": "1c5c613b848cb48c32f19b47a34eaf262cbbf2edd3eaef34999d6b345ac31154",
+            "bytes": 4501,
+            "mode": "0644"
+        },
+        "assets/js/kids-capsule-reveal.min.js": {
+            "sha256": "2e9f4da8569ed54e0970714a082ce59fcf180a646ddf8d4f96acf2a9d592e7fa",
+            "bytes": 2467,
+            "mode": "0644"
+        },
+        "assets/js/lib/draco/draco_decoder.js": {
+            "sha256": "30e4d486fa020737af10e3c56197693e5b904bdc05b8bfa5d7b06751dec6da04",
+            "bytes": 719410,
+            "mode": "0644"
+        },
+        "assets/js/lib/draco/draco_decoder.wasm": {
+            "sha256": "c55a594e8ffd18426d36b27fea9618af3df5e173640a3e56d46f09d76f0574f2",
+            "bytes": 285747,
+            "mode": "0644"
+        },
+        "assets/js/lib/draco/draco_wasm_wrapper.js": {
+            "sha256": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8",
+            "bytes": 58763,
+            "mode": "0644"
+        },
+        "assets/js/lib/three-r170/BufferGeometryUtils.js": {
+            "sha256": "b9ea77ef3aacbf82d386c33311067e6ea4a3aac4190b32e001bdd11d063fb6ae",
+            "bytes": 31784,
+            "mode": "0644"
+        },
+        "assets/js/lib/three-r170/DRACOLoader.js": {
+            "sha256": "5250b9d5985899c458aae86b8636add0e98801b5dc330e0ab6f9e37977819481",
+            "bytes": 13715,
+            "mode": "0644"
+        },
+        "assets/js/lib/three-r170/GLTFLoader.js": {
+            "sha256": "d6b517ee599c974f9b3648b11621dc23d41de24adcac3c826b3985a9313f6b84",
+            "bytes": 110282,
+            "mode": "0644"
+        },
+        "assets/js/lib/three-r170/LICENSE": {
+            "sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+            "bytes": 1081,
+            "mode": "0644"
+        },
+        "assets/js/lib/three-r170/three.module.min.js": {
+            "sha256": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+            "bytes": 691648,
+            "mode": "0644"
+        },
+        "assets/js/mascot-loader.js": {
+            "sha256": "3daef850319e984058b8beb75021ef2cbad143f4974c42fd5eca4ec90b9fb5ab",
+            "bytes": 8356,
+            "mode": "0644"
+        },
+        "assets/js/mascot-loader.min.js": {
+            "sha256": "a45685dd734792bee911c6af36217ea2e9e4daea41abdb708bf561dd23603572",
+            "bytes": 3955,
+            "mode": "0644"
+        },
+        "assets/js/mascot.js": {
+            "sha256": "3d9c0e3210984b86a544a2a2df2d0f1e6fe621f24d1c23802128638b9e0e2cfd",
+            "bytes": 21638,
+            "mode": "0644"
+        },
+        "assets/js/mascot.min.js": {
+            "sha256": "fde4fc3a4e233869302ca144b5afb1d018a0f35989903bf8d5b7c2903c3c3fc5",
+            "bytes": 11016,
+            "mode": "0644"
+        },
+        "assets/js/premium-commerce.js": {
+            "sha256": "c6946303a3511e9c14d4c79b95c67168b7a10e37c9f63516ba9e18fa5b20e8f4",
+            "bytes": 11114,
+            "mode": "0644"
+        },
+        "assets/js/premium-commerce.min.js": {
+            "sha256": "91d552b8df6613605b37396a0d477cb72d44aff4d6fad8ff4b6424500cb1fc7e",
+            "bytes": 6386,
+            "mode": "0644"
+        },
+        "assets/js/product-glb-init.mjs": {
+            "sha256": "e066c8c5458fb1db9bb61c4d84b60fd0a7996e96ce354a11f7d4fb00bd247f1a",
+            "bytes": 4458,
+            "mode": "0644"
+        },
+        "assets/js/product-glb-three.mjs": {
+            "sha256": "029fa2357b57603c0286446098e1598f07f6fb27b6e6460e9020cd9396bd6842",
+            "bytes": 4379,
+            "mode": "0644"
+        },
+        "assets/js/product-glb-viewer.mjs": {
+            "sha256": "2cd7fe6561028de194a479c21351f77f44f3ff6d7856335548f13f9bbc96bc29",
+            "bytes": 13673,
+            "mode": "0644"
+        },
+        "assets/js/quick-view-commerce.js": {
+            "sha256": "e982febfcb73e61810f2b6124da4a0e59b5145c303d9d500dfa60954e12fc2eb",
+            "bytes": 10961,
+            "mode": "0644"
+        },
+        "assets/js/quick-view-commerce.min.js": {
+            "sha256": "330e2a516e0252392e91eb4cd61063086b71d81cb8faeba54eaa07ad67843672",
+            "bytes": 6246,
+            "mode": "0644"
+        },
+        "assets/js/scene-handoff.js": {
+            "sha256": "36922b109c9697f5fbfc91620da1bdd8980ef31f81c8dc55a35cf9f17c0cd679",
+            "bytes": 3434,
+            "mode": "0644"
+        },
+        "assets/js/scene-handoff.min.js": {
+            "sha256": "88a023379863ec4d8537f5c47916cf480faedacb227a44e55a8676460926fce6",
+            "bytes": 1945,
+            "mode": "0644"
+        },
+        "assets/js/search-preview.js": {
+            "sha256": "3c332eac383ea0ae883c0a6989c1dbfd68e7cabe54056eb8a665509dd5431bd2",
+            "bytes": 5695,
+            "mode": "0644"
+        },
+        "assets/js/search-preview.min.js": {
+            "sha256": "7e8243b34030c31ea3ac9e5df94ca09627f72b15eaea13f1c872a8ac599c5340",
+            "bytes": 3196,
+            "mode": "0644"
+        },
+        "assets/js/skyy-3d.js": {
+            "sha256": "0ff0cfe671d6747fca09bd98b94c00d9f0938901950b236578c17dddc0770e46",
+            "bytes": 34218,
+            "mode": "0644"
+        },
+        "assets/js/skyy-3d.min.js": {
+            "sha256": "6c6a73760ad667390bd50ca1fc7932f0075042f02dc2f83c58a1939d4500cf85",
+            "bytes": 15896,
+            "mode": "0644"
+        },
+        "assets/js/theme.js": {
+            "sha256": "18122820d55ebd02535cfb0b0dee1abd06dd652001c210b5b65f83adee83c5c7",
+            "bytes": 35939,
+            "mode": "0644"
+        },
+        "assets/js/theme.min.js": {
+            "sha256": "1fb2ca77065c5bf41adacfea5ae067c8fda035b1434e765b0e9168ff03326ae5",
+            "bytes": 17827,
+            "mode": "0644"
+        },
+        "assets/js/visual-recovery.js": {
+            "sha256": "9bf9edbbe75fd2fd4c3315aaeedfc3a456e7f4f7dc18f1eed505e9daaafebe4b",
+            "bytes": 9356,
+            "mode": "0644"
+        },
+        "assets/js/visual-recovery.min.js": {
+            "sha256": "84a732112d86ebf916ea9eaa83aa6baafcde10d11bdc4003ace18a7f6d8c4d56",
+            "bytes": 4624,
+            "mode": "0644"
+        },
+        "assets/models/skyy-mascot.glb": {
+            "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+            "bytes": 6058568,
+            "mode": "0644"
+        },
+        "assets/models/skyy-natural-desktop.glb": {
+            "sha256": "9b40546847d2b2776334a71edcd8f4836b3eeab904f74f6fc568d5a3d3040a00",
+            "bytes": 2143292,
+            "mode": "0644"
+        },
+        "assets/models/skyy-natural-mobile.glb": {
+            "sha256": "7267133a69d8401ba3edbe97d55a5b4605002d97114750081549671bdba129c7",
+            "bytes": 1247220,
+            "mode": "0644"
+        },
+        "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp": {
+            "sha256": "2cbf726ea73c1c0a3eead460228b302d07f6ea51ebd3e5a70c9380515e25b9d8",
+            "bytes": 156866,
+            "mode": "0644"
+        },
+        "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp": {
+            "sha256": "fe92f8838cb20f911e95afc2f1ab75ad1bc94601d3a00b0db7bf9c9165abd1a4",
+            "bytes": 69660,
+            "mode": "0644"
+        },
+        "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png": {
+            "sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+            "bytes": 2482505,
+            "mode": "0644"
+        },
+        "assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp": {
+            "sha256": "33d013d846261c82b14a3e015f630f3e8ef9e54a9f5e0592ce50e289fa1da338",
+            "bytes": 289988,
+            "mode": "0644"
+        },
+        "assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png": {
+            "sha256": "ae4fd5f5cc40e6695939cd438c3abb402de0120f48c695a8819512ba5e8ac225",
+            "bytes": 2859047,
+            "mode": "0644"
+        },
+        "assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp": {
+            "sha256": "bf251eba7a2366a8d133e10a7bd548f3c6d89d2137da8263a418e761bfdefa54",
+            "bytes": 340456,
+            "mode": "0644"
+        },
+        "assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png": {
+            "sha256": "9b259f80915d358be417633d657975d5881827eb029d57f969368ea207e84beb",
+            "bytes": 3146639,
+            "mode": "0644"
+        },
+        "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp": {
+            "sha256": "a42deb80c50e5caecc989b2ac43982e4c2aa8e6abb2b91c7c10be1d34bfc9026",
+            "bytes": 255858,
+            "mode": "0644"
+        },
+        "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1.png": {
+            "sha256": "24d086b221d8fff59cde4f719dc55831b7ac4c8d7b98ebdef07b226c6952d830",
+            "bytes": 2150593,
+            "mode": "0644"
+        },
+        "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp": {
+            "sha256": "df2f79e55c5cff38dbac7efae3cd7258685cd546c4713fa413ec9b6f0640111e",
+            "bytes": 310334,
+            "mode": "0644"
+        },
+        "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1.png": {
+            "sha256": "b085e0ee82401c2e5db71c8a36ab63271d410ad20c29d72fa369a78e4f54ca5c",
+            "bytes": 2407699,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-archive-4-poster.webp": {
+            "sha256": "b29c1c71c8754a2c716771dcf701ec880438f423e305f6fdb097d0765a8cdc51",
+            "bytes": 133642,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-motion-k1-1080p.mp4": {
+            "sha256": "73bfaf40668147f22c4ee23cd5fa74ffb5e330c63a832095a937e508da0cc0b0",
+            "bytes": 1209097,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-motion-k1-720p.mp4": {
+            "sha256": "bbc5efc1b70797b24cf69978f96febc14e123c382f22424bf07f0f738a065926",
+            "bytes": 567028,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/br-commerce-2-motion-k1-1080p.mp4": {
+            "sha256": "2980516d74851407375dd9cfb0b64f4c4fdbff0ae1b35bf9d69109ae3d8824df",
+            "bytes": 3354874,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/br-commerce-2-motion-k1-720p.mp4": {
+            "sha256": "80139065b953ebd1d9740ca9a940d127bfb6e250fc1dbd1d69fd3243b2757199",
+            "bytes": 1605812,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/br-commerce-3-motion-k1-1080p.mp4": {
+            "sha256": "fcd14d4d99c4f11988abef6e239ffc75de0c784960d8a255eb0941df3bd8c836",
+            "bytes": 2997756,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/br-commerce-3-motion-k1-720p.mp4": {
+            "sha256": "b98c417f912b340bec4ec6820ab85ab1dfdf0a9397102b69ec35f34712dcc730",
+            "bytes": 1456483,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-archive-4-poster.webp": {
+            "sha256": "6a5fbe9d202f0e47492ded17b4ea381311b41412fc3625c949874da1392d3446",
+            "bytes": 113872,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-motion-k1-1080p.mp4": {
+            "sha256": "921c060dbaca48f936a901a12a82f7c049bca121c4332270c008e99df1b2c19d",
+            "bytes": 3606213,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-motion-k1-720p.mp4": {
+            "sha256": "808b59c958ac3df1acb5946d2ec07ee499c4d1216bef1d4a6995764d3453f30d",
+            "bytes": 1798799,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-2-motion-k1-1080p.mp4": {
+            "sha256": "ceb7a2af1cf580601d227a75b72d8034b7bce7b16da619dfcf8a2d2b231dec50",
+            "bytes": 3473611,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-2-motion-k1-720p.mp4": {
+            "sha256": "470d894b4f83c0c81cc3d2b27082ccdf6e0564ea7e82365b6888a77a984e38ec",
+            "bytes": 1671544,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-archive-4-poster.webp": {
+            "sha256": "ddff5431de7614583429a92d4c51ebab87dc0b174ff1292b997004aa7b8dfc5c",
+            "bytes": 87158,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-motion-k1-1080p.mp4": {
+            "sha256": "0527231afba20ef7918f0d7d9f9a3730ade8ef82d5873e0af16b461a75f954b0",
+            "bytes": 1387412,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-motion-k1-720p.mp4": {
+            "sha256": "ee056f47484fbeea7c6e9db06f511985521a3e64b32a156ff6650583203ac108",
+            "bytes": 619697,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-1-motion-k1-1080p.mp4": {
+            "sha256": "72538af2cca074b3d8d8f5252e20793390936e3844c345184682b2b15e8b9de7",
+            "bytes": 3033789,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-1-motion-k1-720p.mp4": {
+            "sha256": "aef4de2a77fc1c0e6be98398636e1b1f5cd6ed9b5e314eac60f87dd5cd2c3ef2",
+            "bytes": 1222252,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-2-motion-k1-1080p.mp4": {
+            "sha256": "da10d2d6f09594a8cdc1e0172878451a6a92c76242330a563e9ee22dab262eb7",
+            "bytes": 3529477,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-2-motion-k1-720p.mp4": {
+            "sha256": "f9e6b2fb536d75d14fcc477bbcf8eedc406ec9222988a8e8c22895477d8b72ba",
+            "bytes": 1548209,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-1080p.mp4": {
+            "sha256": "dcc1cea5b7606ee8ee66074d91da4829394ca5f76cb12d8524b6d4d73735bcbe",
+            "bytes": 3476074,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-720p.mp4": {
+            "sha256": "80cba25c744d4bf823dffa2f2761a7de6d3d466703e12f6c066b2f4f4011f981",
+            "bytes": 1589393,
+            "mode": "0644"
+        },
+        "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-poster.webp": {
+            "sha256": "eef20813c482773ff3217cd1f367c61bbd9c31734e45ff252ea1f510783bc452",
+            "bytes": 263964,
+            "mode": "0644"
+        },
+        "assets/scroll-world/placeholders/founder-selected-v1/black-rose-east-oakland-crewneck-v1.png": {
+            "sha256": "7398d0f2f8fddbd80c5a4f5a63dcb6d555a84d19c6bf8ad6051ac0119fdd94fd",
+            "bytes": 2106007,
+            "mode": "0644"
+        },
+        "assets/scroll-world/placeholders/founder-selected-v1/love-hurts-graphic-heart-backdrop-v1.png": {
+            "sha256": "fd5305ee58fd9aa751fa9c26631609bea315bafc87ac0f36c88bb0666fc66f6c",
+            "bytes": 1835160,
+            "mode": "0644"
+        },
+        "assets/scroll-world/placeholders/founder-selected-v1/love-hurts-star-heart-statue-backdrop-v1.png": {
+            "sha256": "59d44d3597e126868ece71f9276d91dd0a223a888f9526add01ce7267ebee895",
+            "bytes": 1924573,
+            "mode": "0644"
+        },
+        "assets/scroll-world/placeholders/founder-selected-v1/signature-bay-bridge-shorts-v1.png": {
+            "sha256": "71cdb6a0abc2788105aa8c7212399da4ed08b4614d87a785633a6ad34841d265",
+            "bytes": 2273134,
+            "mode": "0644"
+        },
+        "assets/scroll-world/placeholders/founder-selected-v1/signature-graphic-monogram-backdrop-v1.png": {
+            "sha256": "3fb4c7c897adfd23a2ffde746e6222b998ab5e22c49b66d86c143e85d6360380",
+            "bytes": 1950716,
+            "mode": "0644"
+        },
+        "assets/scroll-world/scene-1-signature.webp": {
+            "sha256": "c0267322fcef1533849d50a04dee499230f0dce0406e509cebaf47c5c199cfdb",
+            "bytes": 198494,
+            "mode": "0644"
+        },
+        "assets/scroll-world/scene-2-black-rose.webp": {
+            "sha256": "b8fc17624d754136c60949b72de9a51df58f5d4c1fa2d4bc6264de3bba32452d",
+            "bytes": 212396,
+            "mode": "0644"
+        },
+        "assets/scroll-world/scene-3-love-hurts.webp": {
+            "sha256": "7d926b7854237cdbb882108661a401415cedfd8922e9b9bfd6aacfef105bc70c",
+            "bytes": 258678,
+            "mode": "0644"
+        },
+        "assets/scroll-world/scene-4-kids-capsule.webp": {
+            "sha256": "b4e25c19d34c6ea21f1c0d1c442c5422273a37aab390c8387dc0c68188b98d78",
+            "bytes": 136754,
+            "mode": "0644"
+        },
+        "assets/scroll-world/scene-5-finale.webp": {
+            "sha256": "d4f1f5010aa98b173424cec0864d132f772353e29fd87bd2f08553cd9f33a7be",
+            "bytes": 29724,
+            "mode": "0644"
+        },
+        "assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4": {
+            "sha256": "cc5f9ff9ea27eaa2ca517da6986f3787bab5953bcc9d93e87c4416c9bea9cba2",
+            "bytes": 17047417,
+            "mode": "0644"
+        },
+        "assets/scroll-world/video/black-rose/br-006/motion-plates/web/br-006-hero-origin-backdrop-loop.mp4": {
+            "sha256": "2f25029a185d19935fa1a261c9c3fcae2617d9b39419059e04896b4a63516cd6",
+            "bytes": 1496911,
+            "mode": "0644"
+        },
+        "assets/scroll-world/video/black-rose/br-006/motion-plates/web/br-006-hero-origin-backdrop-loop.webm": {
+            "sha256": "26173511c2b760049c2cde63f0b4e1c68e0bba96ca4717570ff64e3c733b9fc0",
+            "bytes": 993252,
+            "mode": "0644"
+        },
+        "assets/scroll-world/video/black-rose/br-006/poster/br-006-hero-origin-poster.jpg": {
+            "sha256": "b3f037953b5d377f44cd19ba14a8d4ac5f1043695e46e7b42d48d773b3456d8f",
+            "bytes": 34971,
+            "mode": "0644"
+        },
+        "assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4": {
+            "sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+            "bytes": 20973139,
+            "mode": "0644"
+        },
+        "assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.mp4": {
+            "sha256": "405321e50b8544917aa5075e817ad22ad58e51b90afd19bc7d0192b69e5f038b",
+            "bytes": 4365405,
+            "mode": "0644"
+        },
+        "assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.webm": {
+            "sha256": "19e965a65f63b0768166849a1d7e800f6349bc5c8ba77cf42aac5fcebce0576d",
+            "bytes": 2859993,
+            "mode": "0644"
+        },
+        "assets/sot/brand/skyyrose-logo-animated-256w.webp": {
+            "sha256": "6b1b887b6658def386ec0ce99c5b74eb21e7658df2cf804ce51a1f7455d953ef",
+            "bytes": 221526,
+            "mode": "0644"
+        },
+        "assets/sot/brand/skyyrose-logo-animated-384w.webp": {
+            "sha256": "98cfbd006e42f81782f2dd2b9a72ac2c8d7015ce09ad880d95af0f244391fb22",
+            "bytes": 1040770,
+            "mode": "0644"
+        },
+        "assets/sot/brand/skyyrose-logo-optimized-384w.webm": {
+            "sha256": "d5ed7a58727e5bdeb0cd8893e81a25ce826485bcacdba7a23962bd421ffb76f3",
+            "bytes": 617195,
+            "mode": "0644"
+        },
+        "assets/sot/brand/skyyrose-logo-still-384w.webp": {
+            "sha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+            "bytes": 5320,
+            "mode": "0644"
+        },
+        "assets/sot/branding/hero/beauty-and-beast-1280w.webp": {
+            "sha256": "e8e787036a45ebebd737fe919861be1d5e96e33b74fa4bbd5b6f961d97510976",
+            "bytes": 152866,
+            "mode": "0644"
+        },
+        "assets/sot/branding/hero/flagship-house-runway-gpt2.webp": {
+            "sha256": "9070fbb860d0244d6ebda4adae41b94bba8b7eb07668bd91d25831ae6687bc9d",
+            "bytes": 143038,
+            "mode": "0644"
+        },
+        "assets/sot/branding/hero/forbidden-midnight-1280w.webp": {
+            "sha256": "c6157066a0627b736e3c687fb2842a7ad53eb1f5c93d0ae1780e4338831cc74e",
+            "bytes": 192208,
+            "mode": "0644"
+        },
+        "assets/sot/branding/hero/signature-golden-gate-yacht-1280w.webp": {
+            "sha256": "1d04e5c5b9c93c802dc77379516b090f8d1632c8f0b58d4d62bb1c50742b3a3f",
+            "bytes": 76678,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/FONT-ATTRIBUTIONS.md": {
+            "sha256": "b628d6bc88d11effed365158dd6266fa66c0719329e60283db8e6fcc2d0229de",
+            "bytes": 1724,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/OFL-1.1.txt": {
+            "sha256": "cf7ee9ce855c14271ef9c763692292b472260e089c86bac6f52c9104c8d7135c",
+            "bytes": 3967,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/anton-latin.woff2": {
+            "sha256": "23aab0b2692a0c89eb7997d3c7cf5bda41276d6cd4ab6cc0edc3edfcece32b09",
+            "bytes": 12004,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/archivo-latin.woff2": {
+            "sha256": "4c98b9d490d1698ec95f2ff17a6c7d0e72691864c0c5d7bc2a2c161b45afe5ad",
+            "bytes": 90096,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/cinzel-latin.woff2": {
+            "sha256": "09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370",
+            "bytes": 25904,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/grand-hotel-latin.woff2": {
+            "sha256": "784264f80a7071f0e42ae9710878e19684c90af54caca66ec165b29f88b4e915",
+            "bytes": 18928,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/hanken-grotesk-latin.woff2": {
+            "sha256": "1f21c6eaa0000f3329cfcfac966b43d5bebf5aa610303e33294ac31bc6f4bb59",
+            "bytes": 34664,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/inter-latin.woff2": {
+            "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4",
+            "bytes": 48432,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/pinyon-script-latin.woff2": {
+            "sha256": "2213469353367045e336e78eb1f5515e58425485a775521b27d40eb5876f266d",
+            "bytes": 34692,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/skyyrose-black-rose-script-latin.woff2": {
+            "sha256": "4f8672fcfe567d826a3206e7820aa27b57f11a7e81371a2fb89b89f0f3dd23ad",
+            "bytes": 9520,
+            "mode": "0644"
+        },
+        "assets/sot/fonts/skyyrose-love-hurts-graffiti-latin.woff2": {
+            "sha256": "c48669f1b69c3a3db3a4866513ebd84eada771ccc7332fa7d44fb8d9bffbc734",
+            "bytes": 11352,
+            "mode": "0644"
+        },
+        "assets/sot/images/about/skyy-rose-founder-hero.webp": {
+            "sha256": "fb1406939aeb76db25597108921bc1e230b17feebf0c74a284df5f8ac713b93d",
+            "bytes": 55852,
+            "mode": "0644"
+        },
+        "assets/sot/images/about/the-blox-premiere.webp": {
+            "sha256": "3cf0c90628ed4f9df6375669c9121aebc5bae011e4b48e9d8c727abff47f9c26",
+            "bytes": 63310,
+            "mode": "0644"
+        },
+        "assets/sot/images/emblems/black-rose-emblem.webp": {
+            "sha256": "909fb300b786f2a11f3884f097625f1a693d32660399bd8386b5b7b30d93351c",
+            "bytes": 35996,
+            "mode": "0644"
+        },
+        "assets/sot/images/emblems/love-hurts-emblem.webp": {
+            "sha256": "47366cad0e7aa83c18da089c477760713b6f383bbc400487342d1bf2abbe620f",
+            "bytes": 39686,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp": {
+            "sha256": "e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9",
+            "bytes": 141154,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/black-rose-lake-merritt-monument-v2.png": {
+            "sha256": "c5796ecc0fb1719d3721b028bdbb1bec389906895e35c8cabdad8d52a36a8b87",
+            "bytes": 2294696,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/black-rose-typography-star-salon-v3.png": {
+            "sha256": "ecfdc06ef77fb8a58318cb2ad5b881d8fb5cba422f7c977b1f03951ca8fb0d64",
+            "bytes": 1943601,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/candidates/black-rose-bay-bridge-lockup-hero-v1.png": {
+            "sha256": "87fd599055d6ac6b53249e8c457f0d911e5c6fdc77a908ec3032d02b4100e299",
+            "bytes": 1954695,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/candidates/black-rose-bay-bridge-monuments-v5-heart-base-candidate.png": {
+            "sha256": "a2f20e44b32612cf48f4856996833c44c502780e048ec3e778fe185bb0917592",
+            "bytes": 1308825,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/candidates/black-rose-bay-bridge-monuments-v5-heart-base-candidate.webp": {
+            "sha256": "646afba59e5b3c190600658285e458a0c9635a411f69ceeec74f02dfa55b9d13",
+            "bytes": 205304,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/candidates/black-rose-v4-v5-heart-base-comparison.jpg": {
+            "sha256": "caac9f90aeeb554bffc56cb104f6904be064fba2f4667e510917be6311190545",
+            "bytes": 213280,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/jersey-series-town-line-train-v1.webp": {
+            "sha256": "7c444e77815a11ff9eca87c0539359b1817562c0af2acc787e838d3d1d711148",
+            "bytes": 138992,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/kids-capsule-heir-throne-v2.webp": {
+            "sha256": "aa43dd54c0d184f80fffabbc211fc39524fa16d523ee60c5491afa05e03ad810",
+            "bytes": 147230,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/kids-capsule-heir-throne-v3.webp": {
+            "sha256": "fda7df7f2f0391e10c8e93121b0757242010d4c49e69d79beb8827a32d0b7936",
+            "bytes": 142022,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/love-hurts-golden-gate-monument-v2.png": {
+            "sha256": "eedae0a86c18cb3e2d20c55b212d434d7244d4069bee71d02fc6ec0e38a1b962",
+            "bytes": 1986092,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp": {
+            "sha256": "000ec8308a8d72daa691ca8712ef751d7d8e9b9805a4b08060ebc9a59a2bc3a3",
+            "bytes": 242636,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp": {
+            "sha256": "0f2b7e412dcfc56680cf442eef46829e0a5960485b153489fa8b448d6796cce0",
+            "bytes": 63508,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp": {
+            "sha256": "ae49e7f146c900891467c511604639eb338ab79d10e210c8813f41acdb96b9bc",
+            "bytes": 108926,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp": {
+            "sha256": "5abe63100fba3f69773c7db9548d48ddf04cd18c9962419ca888801a0696eb08",
+            "bytes": 28500,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/black-rose-lake-merritt-monument-v2-1024w.webp": {
+            "sha256": "5159ae6432dac4734a8eaad3e08b231de75314bc44c1baa2169a84d5d77737b2",
+            "bytes": 85436,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/black-rose-lake-merritt-monument-v2-1440w.webp": {
+            "sha256": "757e4bba08597cb7d99321c62557f32e34defd1e44eab0b89bd179ae80ceac5d",
+            "bytes": 156072,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/black-rose-lake-merritt-monument-v2-640w.webp": {
+            "sha256": "62a2fbe114ad5498c4ab3bba6983deeefc7dfa5c995eefb10073d8030607cb99",
+            "bytes": 33288,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/black-rose-typography-star-salon-v3-1024w.webp": {
+            "sha256": "e9e1540d2658ef8ba3a3b8639cc42f0fa8bca96d02ecbb5f44c2b3b6511e85cd",
+            "bytes": 54892,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/black-rose-typography-star-salon-v3-1440w.webp": {
+            "sha256": "94f6607da9666ea42c7a4594afc89961026a9cf1f8b9f5c1a4b0264196f6de91",
+            "bytes": 96402,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/black-rose-typography-star-salon-v3-640w.webp": {
+            "sha256": "69c51c3222ccb23c284ca63658f3896fe011ef1f62b928f13667c58d8b4ced99",
+            "bytes": 23528,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/jersey-series-town-line-train-v1-1024w.webp": {
+            "sha256": "f87fa5c3993f938c8c0e5be92939c04856010d6bff6ce96e25a533adb03c63e8",
+            "bytes": 66432,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/jersey-series-town-line-train-v1-1440w.webp": {
+            "sha256": "b8e909d0961a7bcdb2b65197866bcc77ea21d43e27ad6b9335e9c5e93f300676",
+            "bytes": 115128,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/jersey-series-town-line-train-v1-640w.webp": {
+            "sha256": "93347dd25308f517a73ff82c97dd9d929f5a9fb753ed96b3a8405c009e83d3c5",
+            "bytes": 29046,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1024w.webp": {
+            "sha256": "af745ca34335422542cf5524d7d4348b2b5bdb236d802bda72c93007f68521f3",
+            "bytes": 66610,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp": {
+            "sha256": "549a800235f9a50de6e61f1d58b69ca94f2ae7d2c26a09d0711a5a2b6e51ac4c",
+            "bytes": 108766,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-640w.webp": {
+            "sha256": "0e3da0bcecffd44c073becd947c32df1cedd7dfdd278de1c6f656f36ae57452c",
+            "bytes": 33402,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/love-hurts-golden-gate-monument-v2-1024w.webp": {
+            "sha256": "368b371a78310f4d07a464fcf8efa230f05a7ac030edc29cd61150891cf2619d",
+            "bytes": 62340,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/love-hurts-golden-gate-monument-v2-1440w.webp": {
+            "sha256": "796278008028b783044db21cde3baab3c70246818109303d7e0cb96fb21e22c6",
+            "bytes": 109998,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/love-hurts-golden-gate-monument-v2-640w.webp": {
+            "sha256": "1d3f83ae8d22a3cb1a47b487b41c0050d3944254fb72fdf996a6e6b499f73a0f",
+            "bytes": 26472,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1024w.webp": {
+            "sha256": "732cff974d835bbe66630fa3817b876222c9ac71133bc6e177570fa7e22d3875",
+            "bytes": 108290,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp": {
+            "sha256": "b9362ef7ea80740603abfa0b95e973bd3f0593c9d7af47c8f78392db4c5b2062",
+            "bytes": 181918,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-640w.webp": {
+            "sha256": "063b7fe9ce19b1c1ca948ece5ff6919757187686c4ecdc71e9e022f06f755b44",
+            "bytes": 46998,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1024w.webp": {
+            "sha256": "08564ea7aced4b1911709186fe8c55891730810ca6588dc0b8b1f3a09c9b5419",
+            "bytes": 70526,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp": {
+            "sha256": "927bf1bf6ea9ea7d7e1baf22311045ab8b51551f9e643faeb88536e477809554",
+            "bytes": 115506,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-640w.webp": {
+            "sha256": "f3666eda781e94e06e27560bd5b57dc8bf24732d0c105a0241d49be8a9709d06",
+            "bytes": 33434,
+            "mode": "0644"
+        },
+        "assets/sot/images/hero/signature-golden-gate-monuments-v2.webp": {
+            "sha256": "f8bb7d2a1572f575e4f9e4e45edebf6115b4339708e64f95c3bb251813fc0fd8",
+            "bytes": 149386,
+            "mode": "0644"
+        },
+        "assets/sot/images/home/on-model/black-rose-br-004-512w.webp": {
+            "sha256": "19c9bd53c9368f09f7492e32337c2112cdeaa3433490739e2db691604e1579f2",
+            "bytes": 43610,
+            "mode": "0644"
+        },
+        "assets/sot/images/home/on-model/black-rose-br-004.webp": {
+            "sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+            "bytes": 225496,
+            "mode": "0644"
+        },
+        "assets/sot/images/home/on-model/kids-capsule-kids-001-512w.webp": {
+            "sha256": "a0ec7158de0e77b5ba760638274105997670c8aacb5f82e113b4af643fe861bb",
+            "bytes": 57706,
+            "mode": "0644"
+        },
+        "assets/sot/images/home/on-model/kids-capsule-kids-001.webp": {
+            "sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
+            "bytes": 193008,
+            "mode": "0644"
+        },
+        "assets/sot/images/home/on-model/kids-capsule-mascot-purple-guard.webp": {
+            "sha256": "5f33ec32eeeccea4b710ec4145957146c978da6ef06f9477719b79719088f096",
+            "bytes": 96032,
+            "mode": "0644"
+        },
+        "assets/sot/images/home/on-model/kids-capsule-mascot-red-guard.webp": {
+            "sha256": "4f8fef289747434600cc064a642342c5127ed702bd2d336642579fc2bb57ce96",
+            "bytes": 93008,
+            "mode": "0644"
+        },
+        "assets/sot/images/home/on-model/love-hurts-lh-004-512w.webp": {
+            "sha256": "c4d63065bea703f9e415e7e649e9674a9f0c09213f5319987148325bdbe0ded1",
+            "bytes": 63418,
+            "mode": "0644"
+        },
+        "assets/sot/images/home/on-model/love-hurts-lh-004.webp": {
+            "sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
+            "bytes": 297770,
+            "mode": "0644"
+        },
+        "assets/sot/images/home/on-model/signature-sg-005-512w.webp": {
+            "sha256": "7926c07a4dd0507571428039b75d05cd49caa7b70b9a18dcafad9492ac484917",
+            "bytes": 37318,
+            "mode": "0644"
+        },
+        "assets/sot/images/home/on-model/signature-sg-005.webp": {
+            "sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a",
+            "bytes": 208086,
+            "mode": "0644"
+        },
+        "assets/sot/images/immersive/scene-black-rose-moon-court-gpt2.webp": {
+            "sha256": "64a3622a65a3e77dfc4e51bb67cee7a04bbca90264a8fc5828e1762366d8cb5b",
+            "bytes": 151868,
+            "mode": "0644"
+        },
+        "assets/sot/images/immersive/scene-kids-capsule-heir-runway-gpt2.webp": {
+            "sha256": "c35d3b34f423f0e370a3c33e6d022aa6b59feea7422eb708e0dbed641431a655",
+            "bytes": 155548,
+            "mode": "0644"
+        },
+        "assets/sot/images/immersive/scene-kids-capsule-playroom.webp": {
+            "sha256": "6c61c1fcdc1296ed7ca9f8c9e4c04b590f6e9e3f6acfccde3acda48c0d193bed",
+            "bytes": 102036,
+            "mode": "0644"
+        },
+        "assets/sot/images/immersive/scene-kids-capsule-runway.webp": {
+            "sha256": "eaf87adfb51c5d4303748cf5f2923639cb5b8ac5c0d773b3a80a6ca49c56921b",
+            "bytes": 106872,
+            "mode": "0644"
+        },
+        "assets/sot/images/immersive/scene-love-hurts-cathedral.webp": {
+            "sha256": "c8b2aeb4876ae2bb493bd92e5a80d38f2923014feca1391f38e048178e609604",
+            "bytes": 183050,
+            "mode": "0644"
+        },
+        "assets/sot/images/immersive/scene-love-hurts-cracked-rose-gpt2.webp": {
+            "sha256": "3f4a97c51d4ce933c4c9d2fa029596b34542650d4b5842d18bbc45a6480ce709",
+            "bytes": 141812,
+            "mode": "0644"
+        },
+        "assets/sot/images/immersive/scene-signature-golden-gate.webp": {
+            "sha256": "3a2ca7768d6efce7e3d2ef8b3e36f45ccda6ebf2408ce394690b82f8d7ee6d5d",
+            "bytes": 73646,
+            "mode": "0644"
+        },
+        "assets/sot/images/immersive/scene-signature-oakland-atelier-gpt2.webp": {
+            "sha256": "90d56210e27aa988fe88a7b11f3985663c4708d1b3d489f1d631298f9a7c50ca",
+            "bytes": 150394,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/black-rose-lockup.webp": {
+            "sha256": "aa9778d9add428610c3097fb95e60ce58fce1183a5a7d4d84a69780c68fec276",
+            "bytes": 204314,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/black-rose-star-graphic.png": {
+            "sha256": "6af686d798fb6541c3a691492809224a6318d62573d1462c4f3f99af9957ec78",
+            "bytes": 1831185,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/black-rose-star-graphic.webp": {
+            "sha256": "465846f89fa4811cc5099908420ab9d02c5b0920eddbcd48bc90fb0c9cf997b8",
+            "bytes": 109796,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/founder-supplied/derived/signature-font-statue-protected-cutout-review-v1.jpg": {
+            "sha256": "1eb05725e30f3084796a0f4a2fdd0f7a9804d69fc133150c87a5953d1d355037",
+            "bytes": 173951,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/founder-supplied/derived/signature-font-statue-protected-cutout-v1.png": {
+            "sha256": "0eecb67f62f6cc02328b94b345d1201ac58fb96643fc76be05965dcc7f80a660",
+            "bytes": 1019189,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-review-v1.jpg": {
+            "sha256": "f277f477c9f19ec73cffa2ae8a5ccf4b3665d04652e49cac0e2005c6e438f412",
+            "bytes": 158781,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-v1.png": {
+            "sha256": "e259c246a320b8220044da915c3b6fa89ecbbe7ab4a74eb80bafebe668d0e274",
+            "bytes": 915438,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/founder-supplied/signature-font-statue-founder-supplied-v1.png": {
+            "sha256": "c730cfe5e6f9646aeb54561d2e4d403f4aa91d035d6dcc2beefc23b9f0cdcb68",
+            "bytes": 2164684,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/founder-supplied/signature-sr-rose-graphic-founder-supplied-v1.png": {
+            "sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc",
+            "bytes": 140137,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1-review.jpg": {
+            "sha256": "9240e2db74c4bae9b95df73264da03af6f47684f69e59a20011b37e6c7652bd9",
+            "bytes": 52242,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png": {
+            "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+            "bytes": 200061,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/love-hurts-lockup.webp": {
+            "sha256": "45532af4a17280822ef7942362e0a060c5b935622d8b48329e9662bf9512508b",
+            "bytes": 417228,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/love-hurts-star-heart-graphic.png": {
+            "sha256": "b957b842693b79c0cc925d7a928850f6bf76e69b6f49fdf8cc5fed3dc71090cf",
+            "bytes": 1659495,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/love-hurts-star-heart-graphic.webp": {
+            "sha256": "744d2001c9945e2c8f314ebad4b9b767c5fcd9dc9063689e438af6ab8a620490",
+            "bytes": 100886,
+            "mode": "0644"
+        },
+        "assets/sot/images/lockups/signature-lockup.webp": {
+            "sha256": "12ffac7935de8f8ce0607d3f652abef6e28c7acbb38726dad460930b80b198e1",
+            "bytes": 148060,
+            "mode": "0644"
+        },
+        "assets/sot/images/logos/black-roses-cloud-cluster.webp": {
+            "sha256": "c964cb91f2275ce379874edcd9dee111c8b152bbac83121e6cd4ab0be01b230f",
+            "bytes": 64274,
+            "mode": "0644"
+        },
+        "assets/sot/images/logos/heart-rose-composite.webp": {
+            "sha256": "429f5d65e195fad003196bbe39d776eb7f8f716fad04aefc4d630692d8669aaf",
+            "bytes": 59132,
+            "mode": "0644"
+        },
+        "assets/sot/images/logos/red-roses-cloud-cluster.webp": {
+            "sha256": "e1d32ec8acaae29db4ab31f8b467a56be96ee783369c415ac7162a0729523614",
+            "bytes": 62552,
+            "mode": "0644"
+        },
+        "assets/sot/images/logos/rose-gold-rose.webp": {
+            "sha256": "2f98fd671e121057b73caa8a1052a30d6afddf1cbe75cd11b25f356f70bfc1db",
+            "bytes": 86184,
+            "mode": "0644"
+        },
+        "assets/sot/images/logos/sr-monogram-rose-gold.webp": {
+            "sha256": "a67a4efc3811828f6bcea872422a76d85fb9afd929266256c71fc4c0ce7b1d1d",
+            "bytes": 31900,
+            "mode": "0644"
+        },
+        "assets/sot/images/lookbook/lb-black-rose-football-480w.webp": {
+            "sha256": "0dc157fe5df1057b4e976201074a25b03212f43b7473c954862648dd224d6876",
+            "bytes": 12574,
+            "mode": "0644"
+        },
+        "assets/sot/images/lookbook/lb-black-rose-football-960w.webp": {
+            "sha256": "6de1299e035d7888c8c5ede47ab7a5b617adc970daac37dcfbdf319368cccc33",
+            "bytes": 25870,
+            "mode": "0644"
+        },
+        "assets/sot/images/lookbook/lb-kid-black-rose-480w.webp": {
+            "sha256": "bff9fe09dcd92cfc0720720c2d381ae020784950cce8e229e6fbfd419175a758",
+            "bytes": 38630,
+            "mode": "0644"
+        },
+        "assets/sot/images/lookbook/lb-kid-black-rose-960w.webp": {
+            "sha256": "cf13e15335aabdfcf11f1bb619a1b69c35503e2c2d4f250a94b323d0c9c2942f",
+            "bytes": 87872,
+            "mode": "0644"
+        },
+        "assets/sot/images/lookbook/lb-love-hurts-varsity-480w.webp": {
+            "sha256": "d51eafe1f88f8cef3d3206e24438926083d3c71016419e4be1b3b063d50deb2b",
+            "bytes": 33076,
+            "mode": "0644"
+        },
+        "assets/sot/images/lookbook/lb-love-hurts-varsity-960w.webp": {
+            "sha256": "38b906e370af5575eb9044bc34693565dc3120dce48a4aaf4032bc89a52dbb88",
+            "bytes": 69772,
+            "mode": "0644"
+        },
+        "assets/sot/images/lookbook/lb-rose-hoodie-beanie-480w.webp": {
+            "sha256": "a6de7bc27b01f461032a62c9168e7549348f0dd9f055710823b4ff716e23a17c",
+            "bytes": 36350,
+            "mode": "0644"
+        },
+        "assets/sot/images/lookbook/lb-rose-hoodie-beanie-960w.webp": {
+            "sha256": "d8704e75d28007e44f2dd665f8db07cc6e409b834539c33a00488c3418608fcf",
+            "bytes": 72002,
+            "mode": "0644"
+        },
+        "assets/sot/images/mascot/skyy-canonical-v2-512w.webp": {
+            "sha256": "3e1ffb8cd248e1d8cea04f6a7375e923c15532d1e7892a8d4b5cd5e1ebc4a91e",
+            "bytes": 19758,
+            "mode": "0644"
+        },
+        "assets/sot/images/mascot/skyy-canonical-v2.png": {
+            "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8",
+            "bytes": 512385,
+            "mode": "0644"
+        },
+        "assets/sot/images/preorder/black-rose-salon.webp": {
+            "sha256": "2ca5326cb30844311f0dd593c7b6141ab7819ba0926913183e65c9bd6207a3eb",
+            "bytes": 317254,
+            "mode": "0644"
+        },
+        "assets/sot/images/preorder/responsive/black-rose-salon-1024w.webp": {
+            "sha256": "d116b7e3698305bf44a12edecf76c489b96ef544f478aafbf25886c7618a1454",
+            "bytes": 108020,
+            "mode": "0644"
+        },
+        "assets/sot/images/preorder/responsive/black-rose-salon-1440w.webp": {
+            "sha256": "f9c4a4c56ab5f3851da98c19c2f9eb6679a851ce03736abe76466c42b49972e1",
+            "bytes": 174276,
+            "mode": "0644"
+        },
+        "assets/sot/images/preorder/responsive/black-rose-salon-640w.webp": {
+            "sha256": "75011127ad20fc12e76f4d00d77f38f5fd39311675aa19ac3910d78e769ac43f",
+            "bytes": 47844,
+            "mode": "0644"
+        },
+        "assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp": {
+            "sha256": "37809df50e66216e624742ee1addf0fff822509fcd8951e1483af273bf50bd9d",
+            "bytes": 123928,
+            "mode": "0644"
+        },
+        "assets/sot/images/product-card-portals/black-rose-portal-statue-970w.webp": {
+            "sha256": "3b89e640e9da59b6db346d4426253e4e07b07dd0b825ea8fb3ad02a5bea97be4",
+            "bytes": 282298,
+            "mode": "0644"
+        },
+        "assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp": {
+            "sha256": "99480ca73a7d1fe7e0b7a0d2ac891b523fcdb8f1101a5210ec764e9414cb8cc9",
+            "bytes": 116604,
+            "mode": "0644"
+        },
+        "assets/sot/images/product-card-portals/kids-capsule-portal-statue-970w.webp": {
+            "sha256": "88c2bd78b09df33b679613068b223cd1f51d7fc46a722d569054c3fd866852e8",
+            "bytes": 251088,
+            "mode": "0644"
+        },
+        "assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp": {
+            "sha256": "d3294b315a023ce6d9fadd0a9b87742f00749200b2efa3ba1ce87fab43eca190",
+            "bytes": 137998,
+            "mode": "0644"
+        },
+        "assets/sot/images/product-card-portals/love-hurts-portal-statue-970w.webp": {
+            "sha256": "d37c01de59442e40b951e362bea296b216766681e93a30b5d44df697c477dda3",
+            "bytes": 298332,
+            "mode": "0644"
+        },
+        "assets/sot/images/product-card-portals/signature-portal-statue-640w.webp": {
+            "sha256": "554c2372bc1a9cf61aefd5782b9792db26522698ee8e860ae2befcde9302857d",
+            "bytes": 122698,
+            "mode": "0644"
+        },
+        "assets/sot/images/product-card-portals/signature-portal-statue-970w.webp": {
+            "sha256": "b17d06ee4d84c5480784cb83773bd0a4e12cec7031a2fe3f6f03ddb17fc2d7e6",
+            "bytes": 265700,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/br-001-onmodel-front-protected-review.jpg": {
+            "sha256": "12880d68ccc55ac54c794d8561569c51c9ff4c2f00130bd2f7d36e37393ff7b1",
+            "bytes": 30274,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/br-001-onmodel-front-protected.png": {
+            "sha256": "b0da2ea227a285b1270e2399c0688ae90d5ecb8bd7d863d83d61d0893f1f205e",
+            "bytes": 259991,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/br-006-onmodel-front-protected-review.jpg": {
+            "sha256": "0efe582b63f840f4fa833e3df2ae905b113395b2b664c360876a74878cc041c4",
+            "bytes": 29842,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/br-006-onmodel-front-protected.png": {
+            "sha256": "455354c5b36650f57bdda4824754f6ceb1e39b68891582f84120673e85c1e6e2",
+            "bytes": 299869,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/protected-cutout-review.jpg": {
+            "sha256": "17f6ceb1a47c824306f47d603d16301da7854564f146bfee7835288503d24abe",
+            "bytes": 154323,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-005-onmodel-front-protected-review.jpg": {
+            "sha256": "4aa57ed5cebf5082571a0750542422a3080eec4bf3633f8e9121892c2bc31d3d",
+            "bytes": 32342,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-005-onmodel-front-protected.png": {
+            "sha256": "93bd4f1dbee2e13d1b9ed5bab7346771ad34185e27e73631f551cd4ed458cb7f",
+            "bytes": 602793,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-009-onmodel-front-protected-review.jpg": {
+            "sha256": "c4efccd328d24603d191b35ac62fac09e6022ef6b359692cb6b3ea3117a3688c",
+            "bytes": 29910,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-009-onmodel-front-protected.png": {
+            "sha256": "eba76b08eb98f1cc7a08226a779f27a8157b73446b02071b4fb073bc79ba02b7",
+            "bytes": 367907,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-015-onmodel-front-protected-review.jpg": {
+            "sha256": "ce5ac691a061d6260e36aabc7741764bdc6195ad0014adf033596ea1ac261c42",
+            "bytes": 31462,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-015-onmodel-front-protected.png": {
+            "sha256": "985b1eb5c712a32488459efd407a61c6bf42be9bbf05c953ccfb20b0dbdf1aab",
+            "bytes": 723007,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/replica-generation/br-001/batch-01/ghost-back-candidate.png": {
+            "sha256": "58cc3471d2bc3bb24366b446c4d92c189f82e3f8cb34f0ce40038f782bf3fc8e",
+            "bytes": 1487408,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/replica-generation/br-001/batch-01/ghost-front-candidate.png": {
+            "sha256": "79b85ab8237acc20c2b5503fe923d62030e463fa23fb32bde1d19baf9fef205f",
+            "bytes": 1757097,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/replica-generation/br-001/batch-01/on-model-back-candidate.png": {
+            "sha256": "3ed3fe8f8059184511ebf9804eb577e0d9163172eb101d2c3760333881619ebe",
+            "bytes": 961303,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-22/replica-generation/br-001/batch-01/on-model-front-candidate.png": {
+            "sha256": "dc6183c1dec16054f06475a0e18711fd2156b676400b11305919f36f1fe7e6a4",
+            "bytes": 1442960,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-002-onmodel-heart-logo-pass-v1.png": {
+            "sha256": "38fec034eaede735f5de0676755308eed11c35261c535e56c369be07c9e9eff9",
+            "bytes": 2257121,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-003-onmodel-logo-pass-v1.png": {
+            "sha256": "c63cc57365bf2801137c9b13cb3ddc5ff3340c0919a52930bf0fb2b1ec1268ee",
+            "bytes": 2223145,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-005-onmodel-logo-pass-v1.png": {
+            "sha256": "8ad8c741e10c4acb9520d46b96b0532a47e34cae58e14fe87aba4c89836532dc",
+            "bytes": 2122697,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-006-onmodel-heart-logo-pass-v1.png": {
+            "sha256": "c71106349426180b0ccf8332460df4cc9f7b6f76f171db35ccf4473b5bf63261",
+            "bytes": 2277594,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/qa/love-hurts-logo-pass-contact-sheet-v1.jpg": {
+            "sha256": "4934c194a36b9c565bd5d8de036c3c80dd4a3bc9462ca7a3f116eb30d9ae5c46",
+            "bytes": 751373,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/kids-001-product-proof-400.webp": {
+            "sha256": "54110ac9be6feab1e8b188e299676669d9780ad19863bdd923856bb2bbf26c4b",
+            "bytes": 27470,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/kids-002-product-proof-400.webp": {
+            "sha256": "e28deee0e8bc8ba6271fd95b1e80acdef4e5619fdcc10f1641071a72a2ae1599",
+            "bytes": 9732,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/kids-002-purple-set.jpeg": {
+            "sha256": "e6ea845f1c877003b3489332feb7e872ccfb82fe3d0240921e7fc2f1f32728f4",
+            "bytes": 92749,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/br-004-back.webp": {
+            "sha256": "87abbbc9141a7faff0f1cd1c37f36a5e282a2ed13f2a68e9b24238c19a1710eb",
+            "bytes": 6320,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/br-004-front.webp": {
+            "sha256": "63e8f11ff080521dd1fb6bacf43f30ee097554f9420d379fcd59ebdbc0527ce8",
+            "bytes": 46196,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/br-004-packshot.webp": {
+            "sha256": "6fde5245ae14e44d0721cb0091fd00d2583d63903f3714d3e8bc6a0a79e5f861",
+            "bytes": 7250,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/kids-001-back.webp": {
+            "sha256": "c82b85850b156425419e1d44cee59bc7050be61259d91f3567f4b138c2d86412",
+            "bytes": 13862,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/kids-001-front.webp": {
+            "sha256": "85fbd0573d8306f16b0e1963892d46251a532f5667961782cbca4ffd4fb52519",
+            "bytes": 52830,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/kids-001-packshot.webp": {
+            "sha256": "94720d230516f63132bc28e68759db5f788bdfa293425dc6632d238edcb95081",
+            "bytes": 8998,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/kids-002-back.webp": {
+            "sha256": "787a400fce82ef7871a232f9b26d0871a4569660efc9515e78dad88555c76130",
+            "bytes": 8134,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/kids-002-front.webp": {
+            "sha256": "3171f0d768aede7e79c1ac489ee13301e4a9976644bd4b54217966ae9815bdff",
+            "bytes": 12486,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/kids-002-packshot.webp": {
+            "sha256": "c91261cd955f6be476a4c48af67bc63c99902e1fd2f33181c94605fc345cfb6b",
+            "bytes": 17502,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/lh-002-onmodel.webp": {
+            "sha256": "c58b3741972167576efa0c2dafb4925570961734fa19d9373e3730c4330b674a",
+            "bytes": 287532,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/lh-003-front.webp": {
+            "sha256": "9774945ccd040eb37e0e3cb30043c30192697c7acd793d65dec856c09c80ea33",
+            "bytes": 207090,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/lh-004-back.webp": {
+            "sha256": "f25860ba7371a3e51e8f30bb516ffb7b17f9c2cb125180ef34e424defddef6b6",
+            "bytes": 16610,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/lh-004-front.webp": {
+            "sha256": "726712cd213b532fc6b3148935303a3ca54e1187374c2e4feebda9e95ed63d80",
+            "bytes": 69546,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/lh-004-packshot.webp": {
+            "sha256": "1d060618e500444016240d211e8b2b3d21ab2f63a79c97de823a81491c3c56d2",
+            "bytes": 12544,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/lh-005-onmodel.webp": {
+            "sha256": "e3df4aa2781881b9364490c09611308d0c9c0a42fbab19fd114365eca8bda43c",
+            "bytes": 181814,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/lh-006-onmodel.webp": {
+            "sha256": "805af391800f930d5631db76521ae1b6443e4c6e70e71ba4ac7e215d670e3201",
+            "bytes": 303730,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/sg-005-front.webp": {
+            "sha256": "261b71881965d85e9325bd0dde5fda0f3f21b9e63f53b97c14786852df1e1a93",
+            "bytes": 40264,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/preview/sg-005-packshot.webp": {
+            "sha256": "87a1063fba1e48a91614032c582de0111380f36fe3e8b2f739703e94c3b13e0f",
+            "bytes": 10102,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/SHA256SUMS": {
+            "sha256": "5f880626b9c3f5cd00f5696d44c4773385b392f956874a7e35e880cbf791b8ea",
+            "bytes": 6516,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-002/ghost-front.png": {
+            "sha256": "cb6cc07fe1b4e1f084f6425107ff00ed9c5f2ccca18b3fd84a1317792faf190d",
+            "bytes": 268959,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-003/ghost-back.png": {
+            "sha256": "52dc613751673a6c81b4a68c1f027db5496a8b62400e318d4947f35e05ed5cd8",
+            "bytes": 273470,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-003/ghost-front.png": {
+            "sha256": "ebe6579ab52cee7487830a34ef9e3e3eda257d3d826eeba68cb0968e5130c02d",
+            "bytes": 288010,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-004/ghost-front.png": {
+            "sha256": "ab73fea3f0cdcef8926295b36fc00ff81245076a98780023cf5b47acb3fe6df7",
+            "bytes": 353611,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-007/ghost-back.png": {
+            "sha256": "ffd8e905dbf999cc03a3fb0be64db76fb4f5c4b657149bad31186e3a51326bf2",
+            "bytes": 627138,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-007/ghost-front.png": {
+            "sha256": "e64a0c380f04e717dcc774d65ab315405e88cb38093cdf809e3ba70c72690ffa",
+            "bytes": 978527,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-009/ghost-back.png": {
+            "sha256": "178ba21f0411046c064659dde57befb864ada4a0f8bcb09c8f98bff50c1c22a5",
+            "bytes": 216726,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-009/ghost-front.png": {
+            "sha256": "03461396ed8b872d2b6d7a62968fc1947a451dbcf619e31ca3c91879a40ff9d7",
+            "bytes": 193831,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-010/ghost-back.png": {
+            "sha256": "2eb5f3545b38ea80cae46b7acecc8403d2f39114dc87b4c19eccfa49c7c62ad6",
+            "bytes": 237541,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-010/ghost-front.png": {
+            "sha256": "404624974fdf4feccd330ec952cc1cf940ef3ada5996b83bd384b624ba39ab72",
+            "bytes": 281230,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-011/ghost-back.png": {
+            "sha256": "19d7c3c7a094ae5518e4192fdc3efc1de84d35ba6b2e50ce7718a9bb4e754df5",
+            "bytes": 4972505,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-011/ghost-front.png": {
+            "sha256": "d61090d8cda02a0626a2be67e6d3a96965e48349adb3394e626df20f91d7f877",
+            "bytes": 1659404,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-012/ghost-back.png": {
+            "sha256": "92439c53d71e582ea52eee1531847f1f0c349d374a2c0cac688dca31db15ba7d",
+            "bytes": 453221,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/br-012/ghost-front.png": {
+            "sha256": "dbd51387ffcac2292843a25b357b4e05e3afe5138e35d5cca68203f62bf59b3d",
+            "bytes": 479695,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/kids-001/ghost-back.png": {
+            "sha256": "7478d7590601624fdbb7b0544bd06311947c3bec6e993faae2d08760bc129958",
+            "bytes": 114141,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/kids-001/ghost-front.png": {
+            "sha256": "a7b0adb4e7deebdd3f718efb20c30fcef11cc364fc608d2bdf812381fbe4d2f5",
+            "bytes": 134211,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/kids-001/on-model-front.png": {
+            "sha256": "9b0211f9736b71c20746a231f917b0b3947edac9273ba55191192c0be53fe1b9",
+            "bytes": 1771829,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/manifest.json": {
+            "sha256": "3930eff3c4c61e3c6cf856e7c431c7adeac831473bf8f6f9e475c9be5a6665c8",
+            "bytes": 7574,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/qa/ghost-back-contact-sheet.jpg": {
+            "sha256": "3086975ef506a57837e63ae192b14cc37ec7ed1467cbf9d04ef6d79e8c1ec1d7",
+            "bytes": 213768,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/qa/ghost-front-contact-sheet.jpg": {
+            "sha256": "09ec5b10445116d39dbc96863d350b83f379958ab2237cd8b67bfd58910839b3",
+            "bytes": 327396,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/qa/on-model-front-contact-sheet.jpg": {
+            "sha256": "8f7941e8e11bcf424aa45d59300991da0a2336ddcc665d37484cd98494a80c8e",
+            "bytes": 98075,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/sg-001/ghost-back.png": {
+            "sha256": "f66726605364bc7e3b2ae28315d8ff7061e272cb62ab7345084ebdb2e10cc8c3",
+            "bytes": 65224,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/sg-001/ghost-front.png": {
+            "sha256": "af7e72fc9794ada6758f2d117088b0fded3f5ac10d8aff137222806e71db7183",
+            "bytes": 2935145,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/sg-005/ghost-back.png": {
+            "sha256": "3b6dc04c98dd5d619a85fc847770809db4395ba5d5ef3fdf1976b9a8be086607",
+            "bytes": 41228,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/sg-005/ghost-front.png": {
+            "sha256": "2cea240fd70d73f5f7379c5900ef16b140d12ea59b96ae89ca84ea6c138c6fd6",
+            "bytes": 278238,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/sg-005/on-model-front.png": {
+            "sha256": "bcf21d15afad866004ff325b3d263902f12d5be5d88c97b186ed04a77cfec5db",
+            "bytes": 1597121,
+            "mode": "0644"
+        },
+        "assets/sot/images/products/replica-v1/sg-007/ghost-front.png": {
+            "sha256": "cc94fe68f716308ad3707ac30af9b565a75dd671363a9440161414e4a416f8bb",
+            "bytes": 1127280,
+            "mode": "0644"
+        },
+        "assets/sot/video/rose-gold-spin-alpha.webm": {
+            "sha256": "2b8694128af192091c2b1edbbd1ebe9030a1bbdd875d76641fc9d20d6763eac4",
+            "bytes": 4103251,
+            "mode": "0644"
+        },
+        "assets/sot/video/rose-gold-spin-alpha.webp": {
+            "sha256": "85872b3dcc0ee00568519d520dd732dd64a2f845983d1876e9c81e0642c304ca",
+            "bytes": 51040,
+            "mode": "0644"
+        },
+        "assets/sot/video/tsrc-spin-alpha.webm": {
+            "sha256": "ba1eb482f366a7b5577775b7cc88bf72d6fc28a173644d98cd82dd6694c14feb",
+            "bytes": 2984320,
+            "mode": "0644"
+        },
+        "assets/sot/video/tsrc-spin-alpha.webp": {
+            "sha256": "cb704f6364dc3809bbc7e9618ecd7e2868997162c8bed6bef0ad91e37a03fca2",
+            "bytes": 36766,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/black-rose/black-rose-authentic-motion-v3-a1.mp4": {
+            "sha256": "9a6d885cd74d29686bf14b4e9c12f83b950203f3c8f8287415571232c5813035",
+            "bytes": 6911884,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/black-rose/black-rose-bay-bridge-monuments-motion-v2.mp4": {
+            "sha256": "6cf9e499fd28998b28a212b7e8ba49eda802e7c92dce74789dbf6031c2d86e4d",
+            "bytes": 5101258,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/black-rose/qa/contact-sheet-v2.jpg": {
+            "sha256": "1ab36ca061a5db10803d648a98951c450ad3393952e6deac36b9992fba839a9f",
+            "bytes": 106935,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/black-rose/qa/metadata-v2.json": {
+            "sha256": "973710227b9eda1d21a86cbd0a612a5c7783356f7b1f61978333386db790632a",
+            "bytes": 309,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.mp4": {
+            "sha256": "e292b78ea2c0aaa0be07872f30fb6290d54ba97a328147059f9c1c754af27beb",
+            "bytes": 840146,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm": {
+            "sha256": "043242396ffa2322153d14d2f1c785530cbed1536d3652bf0de4bf54c0afa415",
+            "bytes": 676790,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/black-rose/web/black-rose-bay-bridge-monuments-motion-v2.mp4": {
+            "sha256": "e283cae3ddf6bbf9f262022c607fbdd5b79ba251f5cbcf04ac25f4b339eb9701",
+            "bytes": 390017,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/black-rose/web/black-rose-bay-bridge-monuments-motion-v2.webm": {
+            "sha256": "083042999f11be507b4342de390877364a0cecd50b95a53e780f9251a0e21f2f",
+            "bytes": 366095,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/kids-capsule/kids-capsule-heir-throne-motion-v2.mp4": {
+            "sha256": "6fffdc77c3579f8caab3bf799a544eb0970fb81929006e7f1792ffc835f0c57e",
+            "bytes": 6012211,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/kids-capsule/qa/contact-sheet-v2.jpg": {
+            "sha256": "f2a8592fde16c2866941b04349e0f906c4dc263c6bf7b6c879545be0dd392daa",
+            "bytes": 110582,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/kids-capsule/qa/metadata-v2.json": {
+            "sha256": "c873d1064e80971090afb7685a686d07fd5001a59c22b5a7dd911e7278486458",
+            "bytes": 309,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.mp4": {
+            "sha256": "14db6dd210493a2cbac0f9f6da88f69212bae52a87c08604adb779b8dda308cc",
+            "bytes": 492931,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.webm": {
+            "sha256": "876105aaa2447d1f09cf2150b08013b15d92b340bc9ad97b05d9a0f5abd49d60",
+            "bytes": 534179,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/love-hurts/love-hurts-authentic-motion-v3-a1.mp4": {
+            "sha256": "316084f122ae6033aff10b565e4aadb2a519d53db6fdae0061325cb1f4fad11e",
+            "bytes": 7819988,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/love-hurts/love-hurts-rose-aisle-monuments-motion-v2.mp4": {
+            "sha256": "8b614b34aea12764c43f02ce84e4ff19e120d1d1616669b3e0852f9afa9d29b3",
+            "bytes": 5769751,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/love-hurts/qa/contact-sheet-v2.jpg": {
+            "sha256": "3bd29acf35c845c84b73ff5a5bbf69cb1fdcab0997e8b05d90d2bda4230e1c65",
+            "bytes": 122819,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/love-hurts/qa/metadata-v2.json": {
+            "sha256": "71ec8b7295eb86357fc7fe926ec8ac0f0e753149c33458a4ba14bec346b30bdc",
+            "bytes": 309,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.mp4": {
+            "sha256": "5135700826b7bef568651ecea477af877f5a692318336d907d1c0076b14eb542",
+            "bytes": 940111,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm": {
+            "sha256": "fce1e85ddfc697f56a458d7f207994afe5914d80e31b8169c6a5cd729ddbcceb",
+            "bytes": 824162,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-rose-aisle-monuments-motion-v2.mp4": {
+            "sha256": "f8194419f345defd3e7b016c6cb6661f3910ba31fd4f9b461203bb368d0980c3",
+            "bytes": 345500,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-rose-aisle-monuments-motion-v2.webm": {
+            "sha256": "f82a7859f9b15e1f94d451e180543e74776ebd4aacb5c2f68e08f15498524988",
+            "bytes": 343350,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/signature/signature-golden-gate-monuments-motion-v1.mp4": {
+            "sha256": "071601173b321eb6c84c6fffd0778bbf5e168ce0cdaed1e9f083b3fd8b972a3f",
+            "bytes": 9602400,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.mp4": {
+            "sha256": "423323ae440372f72b4b0336116e49f42dafec6b39ff58bf08c5973ebcecc8e6",
+            "bytes": 855303,
+            "mode": "0644"
+        },
+        "assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm": {
+            "sha256": "e0e57f545959a946b71ca2125d9dbc46756778510e55dc59ef65ac1e79127a02",
+            "bytes": 472889,
+            "mode": "0644"
+        },
+        "assets/video/jersey-series-bart-journey.mp4": {
+            "sha256": "5352a2435aa8352176067c11c44f08e2729d2cfa6e652436f2d44509f354c530",
+            "bytes": 2531017,
+            "mode": "0644"
+        },
+        "assets/video/jersey-series-bart-journey.webm": {
+            "sha256": "ae0fc8b2dc0cf37af4589ede83ec187af0aa64ae731a51e383661b5c965fbc20",
+            "bytes": 1480461,
+            "mode": "0644"
+        },
+        "assets/video/jersey-series-bart-poster.webp": {
+            "sha256": "7cd9542c328b7fdac05897bb450e63b8ad7f5098a5425922510be8ec5b688742",
+            "bytes": 68592,
+            "mode": "0644"
+        },
+        "assets/video/skyyrose-tour-around-the-bay-poster.webp": {
+            "sha256": "8963b175358c94f147728b81d1787ec5355655b7fc229fe5e77c4865f3226b9a",
+            "bytes": 74612,
+            "mode": "0644"
+        },
+        "assets/video/skyyrose-tour-around-the-bay.mp4": {
+            "sha256": "5e4ee02fa38feb63e8a7ed4ef937faa212903f0fa58bf65443bb8cd2a18e073a",
+            "bytes": 2450810,
+            "mode": "0644"
+        },
+        "assets/video/skyyrose-tour-around-the-bay.webm": {
+            "sha256": "fd7a29fbf06399057d5cf210a6fd6c2e1c9552e2beb9f1e8743c433b6eebd57d",
+            "bytes": 1532651,
+            "mode": "0644"
+        },
+        "data/approved-card-fronts.json": {
+            "sha256": "cf84c4ff7e864286f68e1b07cf5ad2da9dafd097b8f507acf138494b0b1959b3",
+            "bytes": 17962,
+            "mode": "0644"
+        },
+        "data/approved-scroll-world-scenes.json": {
+            "sha256": "20b1532710f93c98b8c8161853d44caadd3c6c4eecbcdc81ce3bc5c6d5c4fd42",
+            "bytes": 30530,
+            "mode": "0644"
+        },
+        "data/collection-hero-motion.json": {
+            "sha256": "c6d99877bff4f1d97303cd56cf96f91cd3492e2ca6e5c220ecba375e4b9437cf",
+            "bytes": 8745,
+            "mode": "0644"
+        },
+        "data/collection-scene-motion.json": {
+            "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef",
+            "bytes": 10586,
+            "mode": "0644"
+        },
+        "data/font-provenance.json": {
+            "sha256": "9fe119d1f575c591531fa5a6f6af8401606517a801b7100843bf38cacd1cde2c",
+            "bytes": 5945,
+            "mode": "0644"
+        },
+        "data/founder-selected-theme-placeholders-v1.json": {
+            "sha256": "7072cd6bb81783ba6890ddac521073667c12785801a77473fb99cf5652d234ff",
+            "bytes": 4235,
+            "mode": "0644"
+        },
+        "data/hero-commerce-scenes-c1.json": {
+            "sha256": "0762655bdd838f9975b484714b19ede804977b18e3fae6671671f3a87eecf193",
+            "bytes": 9260,
+            "mode": "0644"
+        },
+        "data/opening-product-media.json": {
+            "sha256": "15c259ee029db76417a2b0408e4feb1d6b4ff56cb25c7f6759b58154968eced8",
+            "bytes": 14187,
+            "mode": "0644"
+        },
+        "data/product-presentation-registry.json": {
+            "sha256": "58b7d735c3025d34572d2fd08335c286a4c111229ba3243a6a67ecb0bca2836a",
+            "bytes": 183923,
+            "mode": "0644"
+        },
+        "data/scene-hotspots.json": {
+            "sha256": "074f738fedc5e6fbad19d25af423cb7e4a87c69492bb4be80903717fbb846f2b",
+            "bytes": 4941,
+            "mode": "0644"
+        },
+        "data/scene-narrative-blueprints.json": {
+            "sha256": "1f4bfa4d778e1383a2d04d3a9406b3b251de9e06acfd341a5885bc95b0a0f240",
+            "bytes": 31652,
+            "mode": "0644"
+        },
+        "editor-style.css": {
+            "sha256": "46a542cb8be2df5342f336e748b4ce3fe334508fcfc922a4e3f35289e1b8b650",
+            "bytes": 1087,
+            "mode": "0644"
+        },
+        "footer.php": {
+            "sha256": "3a21b807edb38de607a4e7cfbd7c272313e1bafff3e6839350aebc3cac4e04a4",
+            "bytes": 464,
+            "mode": "0644"
+        },
+        "front-page.php": {
+            "sha256": "45d9a5289ec39a25e9174d20c7fb99b39d44c9477229ab9d2b1ae2413635c8d0",
+            "bytes": 3307,
+            "mode": "0644"
+        },
+        "functions.php": {
+            "sha256": "6a9d350a580f21c264545b4caa5f94bc347238a0d82438ef31fa79e56e028316",
+            "bytes": 91673,
+            "mode": "0644"
+        },
+        "header.php": {
+            "sha256": "63b7431b0bbe2ceec6f28e4c166bd5912d9f783263dbb7c96a3a2bbe19df5821",
+            "bytes": 426,
+            "mode": "0644"
+        },
+        "home.php": {
+            "sha256": "79aff184c16b280913542d30a3dab0bc01711a09825939d72bf00fbd938b8c5a",
+            "bytes": 1269,
+            "mode": "0644"
+        },
+        "inc/analytics-protocol.php": {
+            "sha256": "bbea3363995a98ea87f85c11b33d5546c2483fa080f042607cda96c5d92ec714",
+            "bytes": 12195,
+            "mode": "0644"
+        },
+        "inc/analytics.php": {
+            "sha256": "e5580fa54c6a9119a4760cc5da6e88f756e42071f5f3b1bff16b36ad32fe79df",
+            "bytes": 1883,
+            "mode": "0644"
+        },
+        "inc/approved-card-fronts.php": {
+            "sha256": "3ab36c2b2f0169a4b71d1f66ef38357474f278f5cb00dcae5e9ff230ad84ca4a",
+            "bytes": 5807,
+            "mode": "0644"
+        },
+        "inc/archive-style-bundle.php": {
+            "sha256": "dca48094cf98e19ae099afa4695f078fa7814706a17f6cbeb54c057068d3d16a",
+            "bytes": 16877,
+            "mode": "0644"
+        },
+        "inc/card-garment-highlight.php": {
+            "sha256": "c4982a810c4197d3a45ebbd455122c026c607281019efd490b45bdf39ecae788",
+            "bytes": 8463,
+            "mode": "0644"
+        },
+        "inc/collection-presentation.php": {
+            "sha256": "e04e8126763cdeac4ea665a1afe3ad379d6c64ef25dd86b67e048d4c0ac6ba6f",
+            "bytes": 2661,
+            "mode": "0644"
+        },
+        "inc/critical-rendering.php": {
+            "sha256": "2504097b24dda12f84cbc9e93bf5da1f090e1a319ba710f7ef5e29f666e336e7",
+            "bytes": 6385,
+            "mode": "0644"
+        },
+        "inc/demo-import.php": {
+            "sha256": "e4366d38651e2ff35a337cc495e30913c4a2b1f3af6cca8771d16d2433995e56",
+            "bytes": 16150,
+            "mode": "0644"
+        },
+        "inc/frame-delivery.php": {
+            "sha256": "1c54edfc18e8a70b6ed4afcc13a1230887ecc541d7fbbd193cb737249953dd34",
+            "bytes": 4013,
+            "mode": "0644"
+        },
+        "inc/global-shell.php": {
+            "sha256": "f8498a2fcea2119fdcb25bd773948e7baf402ccaef08074835455e401b7470a9",
+            "bytes": 13762,
+            "mode": "0644"
+        },
+        "inc/hero-commerce-scenes.php": {
+            "sha256": "83be0a11c1935b73114ef6cbb41038a90a2a3501ebc29fc7d81087d255996cc6",
+            "bytes": 4784,
+            "mode": "0644"
+        },
+        "inc/launch-readiness.php": {
+            "sha256": "5ce5a813ad166303b4b26d9f7dd54c7324904d3e5cbc94b59f220647181215a4",
+            "bytes": 17913,
+            "mode": "0644"
+        },
+        "inc/marketplace.php": {
+            "sha256": "4a9f5f917fb09d4dee0be3212058a5a2be290f8de34cff360f89c328c2cc8ff3",
+            "bytes": 891,
+            "mode": "0644"
+        },
+        "inc/pdp-media-delivery.php": {
+            "sha256": "c4abae8ef6ee3994c5b2f18a1b1ae6b419dc573cfa5a840b5ba00f7424bedc7c",
+            "bytes": 17719,
+            "mode": "0644"
+        },
+        "inc/performance.php": {
+            "sha256": "e32e4ffd5f68a7efbe00be7a2f928ee9b92ae54f2bc8b8d029b74b396694c996",
+            "bytes": 22791,
+            "mode": "0644"
+        },
+        "inc/presentation-registry.php": {
+            "sha256": "d6da13f00c9c81ba3fc228c5273ff3d671038527fcf8b856e5b878ab763fe61c",
+            "bytes": 19148,
+            "mode": "0644"
+        },
+        "inc/product-glb-links.php": {
+            "sha256": "5e6896e6f07f51b1c072826b7b24068a398a16ca5ce4900d2da191258c9f5746",
+            "bytes": 4194,
+            "mode": "0644"
+        },
+        "inc/product-glb.php": {
+            "sha256": "b99338b2a87155b59d39da7dee23ff1e94d122a00a53ee8d49bfc38856ac7a67",
+            "bytes": 5434,
+            "mode": "0644"
+        },
+        "inc/quick-view-commerce.php": {
+            "sha256": "f4c7357c74935b3b266a923f7e040743e6b2629b737679fe5b4873469725f89c",
+            "bytes": 4759,
+            "mode": "0644"
+        },
+        "inc/security.php": {
+            "sha256": "bd9f8df3fde21b60b23a3892c5f672191086fa55a78ace52c551ce41cbaf03f6",
+            "bytes": 2430,
+            "mode": "0644"
+        },
+        "inc/seo-indexing.php": {
+            "sha256": "fe0fc6eeb1e38e2f8b93ab561536921eb041f0d5d40b1186d1b4cc8bfb81b05b",
+            "bytes": 20741,
+            "mode": "0644"
+        },
+        "inc/shop-archive.php": {
+            "sha256": "bf3e5f05a70be2adbdba23b2020311c1a49371dabeb2c1108a5392b5b039b5d4",
+            "bytes": 10440,
+            "mode": "0644"
+        },
+        "inc/starter-content.php": {
+            "sha256": "df6cd629d08e4aa9d328d6c05efb66c28904f2df2aa70e8d2a1db93ba8e9081b",
+            "bytes": 1816,
+            "mode": "0644"
+        },
+        "inc/woocommerce-compat.php": {
+            "sha256": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+            "bytes": 18229,
+            "mode": "0644"
+        },
+        "index.php": {
+            "sha256": "95ad909ab629e5ac87a40d141c5bfada7aa6b101a6d246e58e8f09c582950975",
+            "bytes": 1184,
+            "mode": "0644"
+        },
+        "languages/skyyrose-flagship-2.pot": {
+            "sha256": "fd67a0dc0ed5d0c34a2887c3c34a62e5c1409585260c0a06684d331a24dcd3fd",
+            "bytes": 68572,
+            "mode": "0644"
+        },
+        "npm-shrinkwrap.json": {
+            "sha256": "4f55e1943069d260cf191330777a677d68808a145dabfd1c928d1992e78cdb87",
+            "bytes": 26083,
+            "mode": "0644"
+        },
+        "package.json": {
+            "sha256": "9b1d8b67c1b3da499d3a560fdd8e3f331d64a8afcbb189d1cfac24d08f3a7c0e",
+            "bytes": 6822,
+            "mode": "0644"
+        },
+        "page-lookbook.php": {
+            "sha256": "3e7834ec1568e2d4c3ef336ab7eed1124f91e74548651b59499e02e7897546e3",
+            "bytes": 9164,
+            "mode": "0644"
+        },
+        "page-wishlist.php": {
+            "sha256": "35546cf00193c5435aac6dd217dd5b8e43bc79f42c4b81edef419858ae702a26",
+            "bytes": 693,
+            "mode": "0644"
+        },
+        "page.php": {
+            "sha256": "d24a57c72688d8cd140c80956bd451add5d9fb54fff79bab31a994507e9f8500",
+            "bytes": 1844,
+            "mode": "0644"
+        },
+        "phpcs.xml": {
+            "sha256": "0eb10c76dc4b292278560252a52b50717324245cf5dace33d1a1f12a75ef78ec",
+            "bytes": 1031,
+            "mode": "0644"
+        },
+        "readme.txt": {
+            "sha256": "ae2b929e6e996c174a7b96335bd9db69622120b665b6a66309a916b7fbe2a315",
+            "bytes": 3195,
+            "mode": "0644"
+        },
+        "rtl.css": {
+            "sha256": "6ca5cf8d1796c629dc58db20770d2f34ea52716b9ea4722b0ee4ef5ff02bc699",
+            "bytes": 926,
+            "mode": "0644"
+        },
+        "screenshot.png": {
+            "sha256": "d46bee49930b9eda05b7ae0dc6a37dacb4ac6af3c79e31e208607e75fbabcde1",
+            "bytes": 868304,
+            "mode": "0644"
+        },
+        "search.php": {
+            "sha256": "83654180446c10167bfd04ef17dc80496d73eefa5d772cdf375362ce45affb20",
+            "bytes": 5235,
+            "mode": "0644"
+        },
+        "single.php": {
+            "sha256": "d8e866dbd1d8c5781a4bcf49351c900e63898408b6c70fe857b9906d8078951e",
+            "bytes": 1770,
+            "mode": "0644"
+        },
+        "style.css": {
+            "sha256": "a9692c40ee7f5fa3fe330c1d0573f3933965c8b3767fc2ba8c5516378937a688",
+            "bytes": 509,
+            "mode": "0644"
+        },
+        "template-collection.php": {
+            "sha256": "fc93576d67d38ef8952b99f13559efff45114a3a018e019e6f03f91552f44449",
+            "bytes": 738,
+            "mode": "0644"
+        },
+        "template-immersive-black-rose.php": {
+            "sha256": "07110e77e0a141d69bfe8dc3394f7e70ae125e2f9178c5ed59ca93624857d127",
+            "bytes": 3185,
+            "mode": "0644"
+        },
+        "template-immersive-kids-capsule.php": {
+            "sha256": "4c724fef4f889205e2ca43a37a333f6ff3b1af0f9cfcb8880d84ad4b9c2811bb",
+            "bytes": 3498,
+            "mode": "0644"
+        },
+        "template-immersive-love-hurts.php": {
+            "sha256": "5322f54376807cb06d0173e5619e31b82584a06294bf79610b3458f1d232dbb3",
+            "bytes": 3089,
+            "mode": "0644"
+        },
+        "template-immersive-signature.php": {
+            "sha256": "830c1564595809bf0f46007b5080591c35fcdaf2d30c65a17d0d589ff46ec74d",
+            "bytes": 3234,
+            "mode": "0644"
+        },
+        "template-parts/collections/arrival.php": {
+            "sha256": "93e66bdb1f172f53b8f3f4d6e0f7ca2ef5774f0f1a5189e821b3a0dd84b7d1ce",
+            "bytes": 3900,
+            "mode": "0644"
+        },
+        "template-parts/collections/chapters.php": {
+            "sha256": "5f02890a9ef48c416241c499eeabb9f4966b698015b3427ca1f3757b152f2689",
+            "bytes": 3135,
+            "mode": "0644"
+        },
+        "template-parts/collections/editorial.php": {
+            "sha256": "bd51cc635ad2fb0b2fcad0f1eecbd29c178e134ddce4543a7d6229dffa29a089",
+            "bytes": 6137,
+            "mode": "0644"
+        },
+        "template-parts/collections/index.php": {
+            "sha256": "805331e5e4b9d109f2a8256b3227b58db2d0de2d8134cb2df87e4f96974ad815",
+            "bytes": 4322,
+            "mode": "0644"
+        },
+        "template-parts/collections/next-world.php": {
+            "sha256": "ca3286b1f19e772bf0f40f08e1e3f6c4713b3896c867959eb6ab1d8b2f3be3c9",
+            "bytes": 1881,
+            "mode": "0644"
+        },
+        "template-parts/collections/product-edit.php": {
+            "sha256": "77854d869fa53277207efade4c94b1f562a17f14b9343ee5f8c0b5015e8145df",
+            "bytes": 1053,
+            "mode": "0644"
+        },
+        "template-parts/collections/scroll-world.php": {
+            "sha256": "28b89d1fbcd7a9b3a3b6172301f568cde2d694329455bf6f99d8d9dcc50949db",
+            "bytes": 2051,
+            "mode": "0644"
+        },
+        "template-parts/collections/story.php": {
+            "sha256": "a81db476080e7f16a2e4160c6fd0d6c78f63cc0125a1c3649a1e7ef3f51bea14",
+            "bytes": 1968,
+            "mode": "0644"
+        },
+        "template-parts/collections/world.php": {
+            "sha256": "9c7bcd6b320eeaaa311fa0f5fc780ddc40e561f5a6b6ee975859d4ee687628f5",
+            "bytes": 4316,
+            "mode": "0644"
+        },
+        "template-parts/commerce/hero-composed-scene.php": {
+            "sha256": "6b27d6adbc67ad4b9e41ada7ee6ee3b471e0fff6489e1b07709dbcef5e54602e",
+            "bytes": 10384,
+            "mode": "0644"
+        },
+        "template-parts/commerce/jersey-gallery.php": {
+            "sha256": "806265cbaffa0818e91dd6832122e7eb3e5a89f928a381e85f6bedbfc54c601e",
+            "bytes": 2665,
+            "mode": "0644"
+        },
+        "template-parts/commerce/product-card.php": {
+            "sha256": "bd06171d9d48ba7e06af8ad78bda587bd02d79ef123d3a17906f2f4099763c3e",
+            "bytes": 14923,
+            "mode": "0644"
+        },
+        "template-parts/commerce/product-hero.php": {
+            "sha256": "365cf2c07db3316f32c6b454f34a5a9a490d9abd68b7a188801dbe5cf5f29928",
+            "bytes": 8977,
+            "mode": "0644"
+        },
+        "template-parts/commerce/quick-view.php": {
+            "sha256": "7374453ebe6177ff277b77f82d14d5a9eb7c3e36c74d4cf002cae227184408fa",
+            "bytes": 2583,
+            "mode": "0644"
+        },
+        "template-parts/commerce/search-dialog.php": {
+            "sha256": "2c8f7dc07ab0865c8b8b8eb7eeaa46f4a9ccefc34fc1704f191f1d5df3f63a00",
+            "bytes": 3318,
+            "mode": "0644"
+        },
+        "template-parts/commerce/size-guide-dialog.php": {
+            "sha256": "22d0ed54a8e042663ecc2e12958ab4a377d1d523fdcb498cbeb93d8311fd65aa",
+            "bytes": 2510,
+            "mode": "0644"
+        },
+        "template-parts/commerce/town-line.php": {
+            "sha256": "95949afc9efed8dfdbd2066c98cbabbf063be01e5ff1673a6de0a52492794fb4",
+            "bytes": 2277,
+            "mode": "0644"
+        },
+        "template-parts/cookie-consent.php": {
+            "sha256": "9c9be9f4a1981dce92c81b8fc030333f762e4846673e6d5dccf54bd2f3f4f9c8",
+            "bytes": 8709,
+            "mode": "0644"
+        },
+        "template-parts/home/editorial-collection.php": {
+            "sha256": "248f2a752611cf463b8a0e2cc52d23ce8cd587a9313904475dcd2e51fdee11c2",
+            "bytes": 4868,
+            "mode": "0644"
+        },
+        "template-parts/home/editorial-film.php": {
+            "sha256": "926c6637087773f1090466b4e95c742e0cfa113c93b90446558f7fec7d5e0fda",
+            "bytes": 3082,
+            "mode": "0644"
+        },
+        "template-parts/home/editorial-hero.php": {
+            "sha256": "f15b876e6a34ef6da5a91c5006057175eebefb576ce3371980db4874bf7ed7b9",
+            "bytes": 1982,
+            "mode": "0644"
+        },
+        "template-parts/home/editorial-journal.php": {
+            "sha256": "179725797ee2e2243738415da03899754ea7226a8f937bc6d866258557823ace",
+            "bytes": 1759,
+            "mode": "0644"
+        },
+        "template-parts/home/editorial-philosophy.php": {
+            "sha256": "46fc7509eda5ec03a77338802ffa405ab369980f08f07859164fabd570c97f73",
+            "bytes": 1703,
+            "mode": "0644"
+        },
+        "template-parts/home/kids-capsule-reveal.php": {
+            "sha256": "3d4bbdf3ec3d742e1dbcf5a379bc30712eec99181d89c1b96ac945403d57044d",
+            "bytes": 10170,
+            "mode": "0644"
+        },
+        "template-parts/home/living-archive-worlds.php": {
+            "sha256": "8df1b5628510b29bd563d9a2122695988a13d4787e8ab9a4f11f6942dc0c7bde",
+            "bytes": 2222,
+            "mode": "0644"
+        },
+        "template-parts/immersive/world.php": {
+            "sha256": "1a4a06cc328426abfebe3375eb5dfb5d06ebac6fecdab3dd59fab21cdf08c384",
+            "bytes": 15000,
+            "mode": "0644"
+        },
+        "template-parts/journal-press-fallback.php": {
+            "sha256": "fc34328eed3de17e727884172e2955b21b50f4ddb239470ef1cce371fbd41003",
+            "bytes": 1715,
+            "mode": "0644"
+        },
+        "template-parts/pages/contact.php": {
+            "sha256": "67d52ab7e575bebc1cf9926943fba36d5e63ef5e60d8895a8411cdb3e58b0868",
+            "bytes": 5595,
+            "mode": "0644"
+        },
+        "template-parts/pages/journal-entry.php": {
+            "sha256": "63292cece24a0f144346852051820a5899adfc09992bc640a808aa00cc8ad915",
+            "bytes": 1342,
+            "mode": "0644"
+        },
+        "template-parts/pages/service.php": {
+            "sha256": "fe11de8882a98b1d40671642061231f4dff663ccc90f4082b17f2fbc0393bb40",
+            "bytes": 2883,
+            "mode": "0644"
+        },
+        "template-parts/skyy-mascot.php": {
+            "sha256": "76530638e16d5ec5efeb8e0101615b19597fe7ce9a53ecfc6daaade69c3879bd",
+            "bytes": 4779,
+            "mode": "0644"
+        },
+        "template-parts/v2-about.php": {
+            "sha256": "14a06bbadcd65b9d756a842f1cfd942a82d856b39872bd22f01941376dee3aff",
+            "bytes": 9983,
+            "mode": "0644"
+        },
+        "template-parts/v2-commerce-preview.php": {
+            "sha256": "e40522de1a6e52b8543fc0cd18095997a706620ee23328c46117dff5422c61d7",
+            "bytes": 21401,
+            "mode": "0644"
+        },
+        "template-parts/v2-preorder.php": {
+            "sha256": "9e9f80e1388f9f84fb56385c8287a1602cb8031a14efa5299528e8a8d57877cd",
+            "bytes": 5366,
+            "mode": "0644"
+        },
+        "theme.json": {
+            "sha256": "a2e2289f929789a6513d6d05e968cb5fd833c44ac3a5df0a88657ce34a91e4a3",
+            "bytes": 10798,
+            "mode": "0644"
+        },
+        "woocommerce/archive-product.php": {
+            "sha256": "9fefe12301e03fbf47c9b1e92a9b8878371b29010e0ac821c6c4ca5423fc2fd9",
+            "bytes": 8207,
+            "mode": "0644"
+        },
+        "woocommerce/cart/cart.php": {
+            "sha256": "dd5932015e3a50e0c8fc90c27bfd971294a3b7824917880333415c76c04c88aa",
+            "bytes": 7889,
+            "mode": "0644"
+        },
+        "woocommerce/checkout/form-checkout.php": {
+            "sha256": "ff8d95406d4d8266daecbee8a48f82050df6f48baeba7fac29e3ba04b584f305",
+            "bytes": 2659,
+            "mode": "0644"
+        },
+        "woocommerce/checkout/thankyou.php": {
+            "sha256": "5db092682defea120263a2fc36a3a9d0bc300ca87b58242dbc8c90f4eb750dd3",
+            "bytes": 3570,
+            "mode": "0644"
+        },
+        "woocommerce/content-product.php": {
+            "sha256": "f688cb49bd64059be36508553f317de80da25e85be3186e6f6349144a497a34b",
+            "bytes": 1915,
+            "mode": "0644"
+        },
+        "woocommerce/notices/error.php": {
+            "sha256": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab",
+            "bytes": 828,
+            "mode": "0644"
+        },
+        "woocommerce/single-product.php": {
+            "sha256": "9beae21a0a22d417490a0d225de26a2fd3156baa11acd0e0c8a9bd0b3fcfc6b6",
+            "bytes": 5120,
+            "mode": "0644"
+        },
+        "woocommerce/single-product/product-image.php": {
+            "sha256": "9216992035cd204891b7cf68afaac48f2042a7f08214bbecf9bcc0c402baabea",
+            "bytes": 4378,
+            "mode": "0644"
+        }
+    },
+    "count": 639
+}

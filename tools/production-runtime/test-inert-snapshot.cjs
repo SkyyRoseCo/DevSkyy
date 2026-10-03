@@ -38,3 +38,29 @@ test('repeated inert snapshots retain privacy and cause no requests, errors, upg
     await browser.close();
   }
 });
+
+test('retained legacy sanitizer reproduces HANDLER observer errors on an isolated image fixture', async () => {
+  const legacy = require('../../tasks/initial-commerce-release-20261002/offline-diagnosis/legacy-sanitizer.json');
+  assert.equal(legacy.source_sha256, '61298598e8787678eccd7b301dd0982c5a1340ac9178c9ede258a207371e64eb');
+  const browser = await chromium.launch();
+  try {
+    const page = await browser.newPage();
+    const requests = [];
+    const errors = [];
+    page.on('request', request => requests.push(request.url()));
+    page.on('pageerror', error => errors.push(error.message));
+    await page.route('**/*', route => route.fulfill({ contentType: 'image/svg+xml', body: '<svg xmlns="http://www.w3.org/2000/svg"/>' }));
+    await page.setContent('<img src="http://snapshot.test/item?secret=fixture" onload="window.loaded=1">');
+    await page.waitForFunction(() => window.loaded === 1);
+    const before = await page.content();
+    const requestCount = requests.length;
+    const snapshot = await page.evaluate(`(${legacy.DOM_SANITIZER})()`);
+    assert.ok(snapshot.includes('[INLINE HANDLER REDACTED]'));
+    for (let i = 0; i < 10 && !errors.some(error => error.includes('HANDLER')); i++) await page.evaluate(() => new Promise(resolve => requestAnimationFrame(resolve)));
+    assert.ok(errors.some(error => error.includes('HANDLER')), JSON.stringify(errors));
+    assert.ok(requests.length > requestCount, 'legacy active-document clone initiated an extra image request');
+    assert.equal(await page.content(), before, 'live DOM stayed unchanged; error came from observation side effect');
+  } finally {
+    await browser.close();
+  }
+});

@@ -1,0 +1,104 @@
+name: PR Green Loop
+
+# Automated drive-to-green for every internal pull request.
+# Waits for CI, fixes real failures (root cause, locally verified), pushes, re-runs CI,
+# and loops until green — then merges ONLY if the PR carries the `auto-merge` label.
+#
+# Safety model:
+# - Internal branches only. Fork PRs are excluded (forks must never receive write secrets);
+#   they still get the read-only Claude Code Review from claude-code-review.yml.
+# - The whole fix -> verify -> re-run-CI -> re-check loop runs inside ONE job. Pushes use the
+#   default GITHUB_TOKEN, which by design does NOT re-trigger workflows -> no recursion.
+# - concurrency cancels a stale loop when a new commit lands.
+# - Never force-pushes, never deploys, never calls a paid API, never weakens a test.
+#   Merge is label-gated; everything else is drive-to-green + a ready-to-merge comment.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, labeled]
+
+permissions:
+  contents: write # push fixes to the PR head branch
+  pull-requests: write # resolve threads, comment, merge
+  actions: write # re-run failed CI checks after a fix
+  checks: read
+  id-token: write
+
+concurrency:
+  group: pr-green-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  green-loop:
+    # Internal, non-draft, non-Dependabot PRs only. Dependabot has its own rebase/merge
+    # flow (`@dependabot rebase`/`recreate`); the code-fix loop adds nothing to a dep bump
+    # and would burn a run on every one. (labeled events still pass for the `auto-merge` gate.)
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.user.login != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure bot identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run PR green loop
+        uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268 # v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          additional_permissions: |
+            actions: read
+          claude_args: >-
+            --allowed-tools "Bash,Read,Edit,Write,Grep,Glob"
+          prompt: |
+            You are driving PR #${{ github.event.pull_request.number }} in
+            ${{ github.repository }} to green. The PR head branch is checked out and writable
+            with the default GITHUB_TOKEN (`gh` is authenticated). Follow the project agent
+            `.claude/agents/pr-green-loop.md` if present; otherwise use these rules verbatim.
+
+            ## Loop (run entirely within this job — do NOT wait on a re-trigger)
+            1. `gh pr checks ${{ github.event.pull_request.number }}` and read mergeability:
+               `gh pr view ${{ github.event.pull_request.number }} --json mergeable,mergeStateStatus,reviewDecision,labels,headRefName`.
+            2. Wait for in-flight checks to finish (`gh pr checks <N> --watch --interval 30` is fine;
+               respect the job timeout).
+            3. Split signals into REAL vs NOISE. NOISE (ignore): `PR Agent Analysis` concurrency
+               self-cancel, Vercel preview/agent, any `skipping` check, and Playwright E2E /
+               API-Integration when they end non-green for the known non-gating timeout (read the
+               run to confirm it is NOT a real failure of this diff).
+            4. For each REAL failure or actionable review comment (bots CodeRabbit/cubic/
+               claude-review are ADVISORY — verify each against the code; fix real ones, reply +
+               dismiss false ones): fix the ROOT CAUSE. Verify locally before pushing —
+               `python -m pytest <paths> -q`, `ruff check`, `black --check`, `mypy <module>`,
+               or the frontend/phpcs equivalent. Never weaken a test or suppress a check.
+            5. Commit (conventional subject) and `git push`. Because GITHUB_TOKEN pushes do not
+               re-trigger CI, immediately re-run the failed checks: `gh run rerun --failed` on the
+               relevant run id(s) (find via `gh run list --branch <headRefName> --limit 5`).
+               Return to step 2.
+            6. Stop when every gating check is `pass`/`skipping`, no actionable comment remains,
+               and `reviewDecision` is not CHANGES_REQUESTED. Hard caps: stop after 5 fix cycles,
+               or if the same check fails twice after a fix you believed addressed it, or if a
+               failure traces to the base branch rather than this diff — comment a concise
+               summary of what is blocked and why, then exit.
+
+            ## Terminal action
+            - If the PR is fully green AND has the `auto-merge` label:
+              `gh pr merge ${{ github.event.pull_request.number }} --merge --delete-branch`.
+              Then confirm main is not broken.
+            - If green WITHOUT the label: post ONE comment — "✅ All gating checks green and
+              comments resolved. Add the `auto-merge` label to merge, or merge manually." Do not merge.
+
+            ## Boundaries (absolute)
+            Never force-push. Never merge a PR lacking the `auto-merge` label. Never merge over a
+            human CHANGES_REQUESTED (report instead). Never deploy to skyyrose.co, never a
+            WooCommerce/media write, never a paid API call. Anti-hallucination: every "the failure
+            is X" must trace to a CI log you read this run.

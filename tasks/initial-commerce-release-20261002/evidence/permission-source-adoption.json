@@ -1,0 +1,59 @@
+{
+  "scope": "Coherent source-only public permissions correction; no runtime image bytes or product facts copied",
+  "files": [
+    {
+      "path": "tools/v2-runtime/build-card-renditions.py",
+      "owner": "card-gap-integration dirty source",
+      "source_sha256": "f1df4fdc1587251075002818e35584c6331de7809af502cc5f9a3b6dca4e1839",
+      "adopted_sha256": "f1df4fdc1587251075002818e35584c6331de7809af502cc5f9a3b6dca4e1839"
+    },
+    {
+      "path": "tools/v2-runtime/build-font-delivery.py",
+      "owner": "card-gap-integration dirty source",
+      "source_sha256": "866ade204fb8191f16916ebea92c82fd5a47fa32b5e2d1212e47d596ca3600ee",
+      "adopted_sha256": "866ade204fb8191f16916ebea92c82fd5a47fa32b5e2d1212e47d596ca3600ee"
+    },
+    {
+      "path": "tools/v2-runtime/build-frame-delivery.py",
+      "owner": "card-gap-integration dirty source",
+      "source_sha256": "427a221b8a3f08cd02ca3e5edbf567626607608da9795c14c832aa60755ebdf7",
+      "adopted_sha256": "427a221b8a3f08cd02ca3e5edbf567626607608da9795c14c832aa60755ebdf7"
+    },
+    {
+      "path": "tools/v2-runtime/test-card-renditions.py",
+      "owner": "card-gap-integration dirty source",
+      "source_sha256": "32e43ec6fd4bb7a176836594ce38bc4618ba1acb5c459fce926217816ce78c05",
+      "adopted_sha256": "32e43ec6fd4bb7a176836594ce38bc4618ba1acb5c459fce926217816ce78c05"
+    },
+    {
+      "path": "tools/v2-runtime/test-font-delivery.py",
+      "owner": "card-gap-integration dirty source",
+      "source_sha256": "adcf5aac4aab3824c0e76722ac8648560777d62dcc917a858ff5aa7850135b72",
+      "adopted_sha256": "adcf5aac4aab3824c0e76722ac8648560777d62dcc917a858ff5aa7850135b72"
+    },
+    {
+      "path": "tools/v2-runtime/test-frame-delivery.py",
+      "owner": "card-gap-integration dirty source",
+      "source_sha256": "7208f1a7c7bca07f252d1b313bbbcf6270e5f24fbd2841d64e3a21e9da22b22c",
+      "adopted_sha256": "7208f1a7c7bca07f252d1b313bbbcf6270e5f24fbd2841d64e3a21e9da22b22c"
+    },
+    {
+      "path": "scripts/check-public-release-permissions.py",
+      "owner": "card-gap-integration dirty source",
+      "source_sha256": "23685d71545b41eed90d7263600d578195fad4a145094d4dd9e26f95538ec933",
+      "adopted_sha256": "23685d71545b41eed90d7263600d578195fad4a145094d4dd9e26f95538ec933"
+    },
+    {
+      "path": "scripts/deploy-theme.sh",
+      "owner": "card-gap-integration dirty source",
+      "source_sha256": "d53a3e3440e3e89c7dd5c973f843f79a68aac9dbabafe0c06bdbe6c82c25e9c3",
+      "adopted_sha256": "d53a3e3440e3e89c7dd5c973f843f79a68aac9dbabafe0c06bdbe6c82c25e9c3"
+    },
+    {
+      "path": "tests/scripts/test_public_release_permissions.py",
+      "owner": "card-gap-integration dirty source",
+      "source_sha256": "eed5a726a0befcf6011b0f9eac683dcad584c37d855524b8dc4b285bb4218809",
+      "adopted_sha256": "eed5a726a0befcf6011b0f9eac683dcad584c37d855524b8dc4b285bb4218809"
+    }
+  ]
+}

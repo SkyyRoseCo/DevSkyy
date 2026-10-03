@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "builders": 32,
+    "preflight": 21,
+    "status": "PASS"
+  },
+  "navigation": {
+    "assertions": 37,
+    "status": "PASS",
+    "deferred_production_redirects": "302+nocache_headers; actual retained legacy aliases301"
+  },
+  "source_certification": {
+    "tests": 29,
+    "status": "PASS"
+  },
+  "inert_vs_retained_sanitizer": {
+    "tests": 2,
+    "status": "PASS_OFFLINE_ONLY",
+    "historical_mobile_causation": "UNPROVEN"
+  },
+  "capture_row_diagnosis": {
+    "unsupported_rows_per_profile": 4,
+    "status": "PASS_OFFLINE_ONLY",
+    "consumed_checkpoint_status": "FAIL_UNCHANGED"
+  },
+  "activation_options_recovery": {
+    "tests": 7,
+    "status": "PASS_SYNTHETIC_ONLY",
+    "live_installed_baseline_recovery": "NOT_RUN"
+  },
+  "merchant_native_fixture": {
+    "assertions": 40,
+    "status": "PASS"
+  },
+  "merchant_live": {
+    "Kids": "PASS_NATIVE_HASH_AND_ORDINARY_RENDERED_HTML",
+    "LH006": "NOT_RUN_AUTO_REVIEW_REJECTED"
+  },
+  "full_clean_final_package": "FINAL_EXTERNAL_RECEIPT_REQUIRED_AT_CLEAN_HEAD",
+  "new_branch_CI": "NOT_RUN"
+}

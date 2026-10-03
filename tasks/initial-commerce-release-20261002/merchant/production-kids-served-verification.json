@@ -1,0 +1,48 @@
+{
+  "utc": "2026-10-02T23:33:52.072813+00:00",
+  "rows": [
+    {
+      "sku": "kids-001",
+      "native_attachment_id": "10437",
+      "asset": {
+        "url": "https://skyyrose.co/wp-content/uploads/2026/03/kids-001-approved-front-0bf6f801-1f5d-41e6-b2b2-6c37508c327d.webp",
+        "final_url": "https://skyyrose.co/wp-content/uploads/2026/03/kids-001-approved-front-0bf6f801-1f5d-41e6-b2b2-6c37508c327d.webp",
+        "status": 200,
+        "bytes": 194818,
+        "sha256": "c6bd2ddd555c4359c302eebb051d5fbad4d34bec0b324b44f3447831f3ec9c9a",
+        "matches_native_approved_hash": true
+      },
+      "pdp": {
+        "url": "https://skyyrose.co/product/kids-001/",
+        "final_url": "https://skyyrose.co/product/kids-001/",
+        "status": 200,
+        "bytes": 209882,
+        "sha256": "4a9df95346e7e5ec014485caeadecbf7e07154f9762d80fa471334524965f416",
+        "approved_filename_present": false,
+        "awaiting_image_present": true
+      }
+    },
+    {
+      "sku": "kids-002",
+      "native_attachment_id": "10438",
+      "asset": {
+        "url": "https://skyyrose.co/wp-content/uploads/2026/03/kids-002-approved-front-0bf6f801-1f5d-41e6-b2b2-6c37508c327d.webp",
+        "final_url": "https://skyyrose.co/wp-content/uploads/2026/03/kids-002-approved-front-0bf6f801-1f5d-41e6-b2b2-6c37508c327d.webp",
+        "status": 200,
+        "bytes": 248162,
+        "sha256": "88c0ca36b22a95ce1ee7969b50b4e256718ffda584027dfd97e219605aa3e51b",
+        "matches_native_approved_hash": true
+      },
+      "pdp": {
+        "url": "https://skyyrose.co/product/kids-002/",
+        "final_url": "https://skyyrose.co/product/kids-002/",
+        "status": 200,
+        "bytes": 209799,
+        "sha256": "73dbebe171c0680131d4f4a35f3cb3b28b819216cbc3e4d2ee1ea671ff03563b",
+        "approved_filename_present": false,
+        "awaiting_image_present": true
+      }
+    }
+  ],
+  "limits": "Static HTML and asset GETs only; no browser/order/payment/controlled checkpoint"
+}

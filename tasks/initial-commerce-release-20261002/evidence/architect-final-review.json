@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "reviewed_head": "66194abd88f38bf2d2a159638e3bc383bfe69d7c",
+  "reviewed_commerce_revision": "25442611f3261f1715b05007aec4716e2382db8b",
+  "immutable_tests": 7,
+  "navigation_assertions": 37,
+  "diff_check": "PASS",
+  "remaining_source_blockers": [],
+  "limitations": [
+    "Full package at final clean head pending at review",
+    "Hosted commerce and live recovery NOT RUN",
+    "LH006 exact cart consequence approval pending"
+  ]
+}

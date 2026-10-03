@@ -1,0 +1,192 @@
+{
+  "status": "PRESERVED_NOT_INTEGRATED",
+  "pr": 1006,
+  "url": "https://github.com/SkyyRoseCo/DevSkyy/pull/1006",
+  "head": "319ce7cf6b5bacad72cf435c47c21ce39e8ca1f5",
+  "base": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+  "draft": true,
+  "current_checks": [
+    [
+      "green-loop",
+      "SKIPPED"
+    ],
+    [
+      "PR Agent Analysis",
+      "SKIPPED"
+    ],
+    [
+      "claude-review",
+      "SUCCESS"
+    ],
+    [
+      "Analyze (javascript-typescript)",
+      "SUCCESS"
+    ],
+    [
+      "\ud83d\udd0d Lint & Static Analysis",
+      "SUCCESS"
+    ],
+    [
+      "\ud83d\udd11 Secrets Scan",
+      "SUCCESS"
+    ],
+    [
+      "verify",
+      "SUCCESS"
+    ],
+    [
+      "Analyze (python)",
+      "SUCCESS"
+    ],
+    [
+      "\ud83d\udc0d Python Tests",
+      "SUCCESS"
+    ],
+    [
+      "\ud83d\udce6 Dependency Review",
+      "SUCCESS"
+    ],
+    [
+      "\ud83d\udd10 Security Scan",
+      "SUCCESS"
+    ],
+    [
+      "\ud83d\udcdc License Compliance",
+      "SUCCESS"
+    ],
+    [
+      "\u269b\ufe0f Frontend Tests",
+      "SUCCESS"
+    ],
+    [
+      "\ud83d\udccb SBOM Generation",
+      "SUCCESS"
+    ],
+    [
+      "\ud83c\udfae Root TypeScript Tests",
+      "FAILURE"
+    ],
+    [
+      "\ud83d\udcca Security Summary",
+      "SUCCESS"
+    ],
+    [
+      "\ud83c\udfd7\ufe0f WordPress Theme",
+      "SUCCESS"
+    ],
+    [
+      "\ud83e\uddea Deps Canary ([all] resolves)",
+      "SUCCESS"
+    ],
+    [
+      "\ud83d\udd0c API Integration Tests",
+      "SUCCESS"
+    ],
+    [
+      "\ud83c\udfad Playwright E2E Tests",
+      "SUCCESS"
+    ],
+    [
+      "\ud83d\udc33 Docker Build",
+      "SKIPPED"
+    ],
+    [
+      "\ud83d\udcca Pipeline Summary",
+      "SUCCESS"
+    ],
+    [
+      "\ud83d\ude80 Deploy Staging",
+      "SKIPPED"
+    ],
+    [
+      "\ud83c\udf10 Deploy Production",
+      "SKIPPED"
+    ]
+  ],
+  "shared_root_audit_failure": {
+    "run": 37073761428,
+    "head": "319ce7cf6b5bacad72cf435c47c21ce39e8ca1f5",
+    "conclusion": "failure",
+    "root_lock_changed_by_typography": false,
+    "skipped_after_failure": [
+      "Verify machine-managed files are invisible to formatters",
+      "Run root unit tests",
+      "Ensure PHP SQLite support for projection concurrency tests",
+      "Test theme consent, relay, and asset cache versions",
+      "Install Chromium for theme consent browser tests",
+      "Test theme consent in desktop and mobile browsers",
+      "Post Set up Node.js"
+    ]
+  },
+  "changed_files": [
+    ".wolf/buglog.json",
+    ".wolf/cerebrum.md",
+    ".wolf/memory.md",
+    "CLAUDE.md",
+    "docs/design/v2-remodel/reports/typography-open-source-contract.md",
+    "tools/v2-runtime/build-font-delivery.py",
+    "tools/v2-runtime/sync-token-contract.cjs",
+    "tools/v2-runtime/test-font-delivery.py",
+    "tools/v2-source-certification/build-inputs.json",
+    "tools/v2-source-certification/generated-outputs.json",
+    "tools/v2-source-certification/package-boundary.json",
+    "tools/v2-source-certification/runtime-php-baseline.json",
+    "wordpress-theme/skyyrose-flagship-2/CHANGELOG.md",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/about-archive.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/about-archive.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/archive-style-inputs.json",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/archive-theme.json",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/archive-theme.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/collection-world.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/collection-world.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/content-page.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/content-page.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/cookie-consent.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/cookie-consent.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/critical/home.contract.json",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/critical/home.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/global-shell.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/global-shell.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/hero-commerce-scenes.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/hero-commerce-scenes.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/home-page.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/home-page.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/immersive.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/legacy-world-components.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/legacy-world-components.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/lookbook.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/mascot.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/premium-commerce.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/product-page.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/product-page.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/quick-view-commerce.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/quick-view-commerce.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/shop-page.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/shop-page.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/css/theme.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/anybody-condensed.woff2",
+    "wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/anybody-wide.woff2",
+    "wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/manifest.json",
+    "wordpress-theme/skyyrose-flagship-2/assets/derived/fonts/martian-mono-narrow.woff2",
+    "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/FONT-ATTRIBUTIONS.md",
+    "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/anybody-latin.woff2",
+    "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/geist-latin.woff2",
+    "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/martian-mono-latin.woff2",
+    "wordpress-theme/skyyrose-flagship-2/data/font-provenance.json",
+    "wordpress-theme/skyyrose-flagship-2/editor-style.css",
+    "wordpress-theme/skyyrose-flagship-2/inc/critical-rendering.php",
+    "wordpress-theme/skyyrose-flagship-2/scripts/test-critical-rendering.php",
+    "wordpress-theme/skyyrose-flagship-2/theme.json"
+  ],
+  "overlap_with_current_initial_commerce_delta": [
+    "tools/v2-runtime/build-font-delivery.py",
+    "tools/v2-runtime/test-font-delivery.py",
+    "tools/v2-source-certification/build-inputs.json",
+    "tools/v2-source-certification/runtime-php-baseline.json"
+  ],
+  "decision": "Keep PR1006 immutable in final reconciliation. No font/CSS/editor presets are overwritten/adopted here. Merge needs reviewed visual authority and manual permission-builder/certification union followed by full verification. Version triple bump remains outside this packet pending owner integration."
+}

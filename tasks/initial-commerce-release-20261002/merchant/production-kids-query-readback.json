@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-02T23:34:44.549051+00:00",
+  "rows": [
+    {
+      "sku": "kids-001",
+      "url": "https://skyyrose.co/product/kids-001/?merchant_readback=0bf6f801-1f5d-41e6-b2b2-6c37508c327d",
+      "status": 200,
+      "html_sha256": "0d7308737ec51eac761850f451fda7ec10d1e1cb2ae2f52ba282b13c691a94c8",
+      "approved_filename_present": true,
+      "awaiting_image_present": false,
+      "headers": {
+        "Server": "nginx",
+        "X-ac": "3.sjc _atomic_bur MISS"
+      }
+    },
+    {
+      "sku": "kids-002",
+      "url": "https://skyyrose.co/product/kids-002/?merchant_readback=0bf6f801-1f5d-41e6-b2b2-6c37508c327d",
+      "status": 200,
+      "html_sha256": "fd9ae2176d91483bd4faea8ac039a9eb55f9f8a46644c85b4d0ee0f5e05169ba",
+      "approved_filename_present": true,
+      "awaiting_image_present": false,
+      "headers": {
+        "Server": "nginx",
+        "X-ac": "2.sjc _atomic_bur MISS"
+      }
+    }
+  ],
+  "limits": "Ordinary read-only query GET; does not rerun controlled checkpoint"
+}

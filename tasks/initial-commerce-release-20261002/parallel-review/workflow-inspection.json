@@ -1,0 +1,37 @@
+{
+  "source_revision": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+  "workflows": [
+    {
+      "file": "claude-code-review.yml",
+      "source_revision": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "sha256": "552b7286eea76a985d4bdd3ef8df6d7adbc920273e638a551dd7693f09cb804d",
+      "dollar_budget_flag_present": false,
+      "shared_monthly_cap_implementation_present": false
+    },
+    {
+      "file": "pr-agent.yml",
+      "source_revision": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "sha256": "96e1b4b9cbfdab12067ef92b9ca0a3beeb7097fe3b97566e2860a381d56758f5",
+      "dollar_budget_flag_present": false,
+      "shared_monthly_cap_implementation_present": false
+    },
+    {
+      "file": "pr-green-loop.yml",
+      "source_revision": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "sha256": "31b8da129d9005958a8dbf426383c343c75dfb9d66911396d1c9a1c4c3a19f2d",
+      "dollar_budget_flag_present": false,
+      "shared_monthly_cap_implementation_present": false
+    },
+    {
+      "file": "claude.yml",
+      "source_revision": "7892b797d838e67e62c862a6698a5b42b6dccaee",
+      "sha256": "b580ab3d7773d89426fe6237c4732bbf0dd481a80a199e29668483315ecd82d7",
+      "dollar_budget_flag_present": false,
+      "shared_monthly_cap_implementation_present": false
+    }
+  ],
+  "verified_shared_monthly_hard_cap": "NOT_PRESENT_IN_INSPECTED_SOURCE_PROVIDER_BILLING_NOT_INSPECTED",
+  "authority": "Corey approved20USDaggregate/month; enabling remains fail-closed until enforceability verified by separate task01a0fefc-e4d2-7641-a68c-8bd43b44400e; no workflow/credential/settings changed here",
+  "draft_review_guard_on_current_main": false,
+  "draft_review_guard_on_initial_commerce_branch": true
+}
