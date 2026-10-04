@@ -8,11 +8,13 @@ reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
 
 # BLACK Rose Hoodie
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Heavyweight cotton fleece.
-Features: Black pullover hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (all tonal black, no contrast white trim — distinct from the matching Black Rose Crewneck/Joggers set which use white ribbing). NOT a zip-up. NOT a half-zip. NOT a crewneck. NOT a t-shirt. Heavyweight cotton fleece.
-Color: Black
-Available sizes: S | M | L | XL | 2XL | 3XL
+**Garment type lock:** Black pullover hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (all tonal black, no contrast white trim — distinct from the matching Black Rose Crewneck/Joggers set which use white ribbing). NOT a zip-up. NOT a half-zip. NOT a crewneck. NOT a t-shirt. Heavyweight cotton fleece.
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 
@@ -33,14 +35,16 @@ Available sizes: S | M | L | XL | 2XL | 3XL
   rose on back-center. NO logos anywhere on the back.)
 
 ### Sleeves / Collar / Hem / Other
-- **left-sleeve** (upper / shoulder area, exact dimensions TBD): A small
-  patch is visible in the reference photo at the upper-left-sleeve area.
+- **left-hip** (left side of the body, exact dimensions TBD): A small
+  patch sits at the left hip / left side of the body. It is NOT on the
+  sleeve (founder-confirmed 2026-09-21).
   Patch content, technique, and dimensions are **PARKED for later
   verification** — Corey will confirm the patch detail in a follow-up
   read-back. **Do not render this region with guessed content** —
-  the RAS pipeline should treat the upper-left-sleeve area as "small patch
+  the RAS pipeline should treat the left-hip area as "small patch
   present, content unverified" and prompt for the verification before
   rendering this region in production.
+- **left-sleeve**: clean, no decoration.
 - **right-sleeve**: clean, no decoration.
 - **kangaroo-pocket** (front): clean, no embroidery, no logo, no
   decoration on the pocket itself.
@@ -70,7 +74,8 @@ Available sizes: S | M | L | XL | 2XL | 3XL
 - NO printed graphics, NO sublimated panels, NO heat-transfer vinyl,
   NO puff-print decoration.
 - NO front-pocket branding — the kangaroo pocket fabric is clean.
-- NO right-sleeve patch (only the left sleeve carries a small patch).
+- NO sleeve patch on either sleeve (the small patch is at the left hip /
+  left side of the body, NOT the sleeve).
 - NO contrasting hood lining (assume same black tonal — to be verified
   if a contrast lining exists, but default is uniform black).
 - NO chest text or wordmark (the front rose is the only chest decoration).

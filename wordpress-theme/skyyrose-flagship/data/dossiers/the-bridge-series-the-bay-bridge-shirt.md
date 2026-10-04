@@ -10,11 +10,7 @@ reference_image: assets/products/source-photos/signature/sg-005-bay-bridge-shirt
 
 # The Bridge Series 'The Bay Bridge' Shirt
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem.
-Features: Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Bay Bridge Shorts (sg-001 daytime SF-Oakland Bay Bridge palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Stay Golden Shirt (that's sg-002 — purple rose-cluster decoration, separate SKU). **The Bay Bridge colorway uses a BLUE/CYAN rose-cluster on the chest** (matching the daytime-blue Bay Bridge palette).
-Color: White
-Available sizes: S | M | L | XL | 2XL
+**Garment type lock:** Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Bay Bridge Shorts (sg-001 daytime SF-Oakland Bay Bridge palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Stay Golden Shirt (that's sg-002 — purple rose-cluster decoration, separate SKU). **The Bay Bridge colorway uses a BLUE/CYAN rose-cluster on the chest** (matching the daytime-blue Bay Bridge palette).
 
 > **Note on source filename drift:** The techflat for this SKU was found in the
 > Downloads asset directory under the filename `sg-004-techflat.jpeg`, but that
@@ -23,6 +19,12 @@ Available sizes: S | M | L | XL | 2XL
 > `sg-004-techflat.jpeg` are actually documenting sg-005 + sg-001 paired
 > styling. Source has been re-saved to product-references under the correct
 > sg-005 prefix.
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 

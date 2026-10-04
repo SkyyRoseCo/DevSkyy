@@ -1,6 +1,6 @@
 {
-  "_generated_by": "data/build-collection-sot.py \u2014 DO NOT EDIT. Fix identity.json / the masters, then regenerate.",
-  "_authority": "Single Source of Truth view for Signature. Canon = identity.json.",
+  "_generated_by": "data/build-collection-sot.py \u2014 DO NOT EDIT. Fix logo-registry.json collections / the masters, then regenerate.",
+  "_authority": "Single Source of Truth view for Signature. Canon = logo-registry.json collections.signature.",
   "collection": "signature",
   "name": "Signature",
   "updated": "GENERATED",
@@ -35,8 +35,8 @@
     }
   },
   "masters": {
-    "identity": "data/collections/signature/identity.json",
-    "products": "data/skyyrose-catalog.csv",
+    "identity": "data/logo-registry.json#collections.signature",
+    "products": "data/logo-registry.json#products",
     "imagery": "data/visual-manifest.json",
     "logos": "data/logo-registry.json"
   },
@@ -124,7 +124,7 @@
       "file": "rose-gold-rose.jpeg",
       "resolved": "images/logos/rose-gold-rose.jpeg",
       "primary_color": "#B76E79",
-      "notes": "SIGNATURE COLLECTION LOGO (paired with red-roses-cloud-cluster). Standalone stylized rose in rose-gold metallic. Used on sg-015 The Windbreaker Set (left chest "
+      "notes": "SIGNATURE COLLECTION LEAD: the first rose ever used as a SkyyRose graphic, per founder September 13, 2026. Collection-wide identity, also in the Signature font "
     },
     {
       "id": "red-roses-cloud-cluster",
@@ -222,10 +222,6 @@
         "front_model_image": {
           "path": "assets/images/products/sg-005-onmodel.webp",
           "resolved": "images/products/sg-005-onmodel.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/bridge-bay-bridge-shirt-back-model.webp",
-          "resolved": "images/products/bridge-bay-bridge-shirt-back-model.webp"
         }
       },
       "dossier": "data/dossiers/the-bridge-series-the-bay-bridge-shirt.md",
@@ -272,10 +268,6 @@
         "front_model_image": {
           "path": "assets/images/products/sg-007-signature-beanie.webp",
           "resolved": "images/products/sg-007-signature-beanie.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/signature-beanie-back-model.webp",
-          "resolved": "images/products/signature-beanie-back-model.webp"
         }
       },
       "dossier": "data/dossiers/the-signature-beanie.md",
@@ -299,10 +291,6 @@
         "back_image": {
           "path": "assets/images/products/the-sherpa-jacket-back-model.webp",
           "resolved": "images/products/the-sherpa-jacket-back-model.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/signature-sherpa-jacket-back-model.webp",
-          "resolved": "images/products/signature-sherpa-jacket-back-model.webp"
         }
       },
       "dossier": "data/dossiers/the-sherpa-jacket.md",
@@ -326,10 +314,6 @@
         "back_image": {
           "path": "assets/images/products/original-label-tee-white-back-model.webp",
           "resolved": "images/products/original-label-tee-white-back-model.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/hub/sg-011-back.webp",
-          "resolved": "images/products/hub/sg-011-back.webp"
         }
       },
       "dossier": "data/dossiers/original-label-tee-white.md",
@@ -422,10 +406,6 @@
         "front_model_image": {
           "path": "assets/images/products/hub/sg-015-front.webp",
           "resolved": "images/products/hub/sg-015-front.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/signature-windbreaker-set-back-model.webp",
-          "resolved": "images/products/signature-windbreaker-set-back-model.webp"
         }
       },
       "dossier": "data/dossiers/the-windbreaker-set.md",

@@ -19,17 +19,25 @@ on:
       - "scripts/organize_product_registry.py"
       - "tests/test_registry_organization.py"
       - "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json"
+      - "frontend/data/skyyrose-catalog.csv"
       - "tests/test_product_entry_point.py"
-      - "skyyrose/assets/data/product-content.json"
-      - "skyyrose/assets/data/alt-text.json"
+      - "tests/test_product_readiness.py"
+      - "tests/test_product_consumer_contracts.py"
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
+      - "assets/products/manifest.json"
+      - "scripts/build_asset_manifest.py"
+      - "skyyrose/core/asset_manifest.py"
+      - "tests/test_sync_manifest_projection.py"
       - "tests/test_unified_product_registry.py"
       - "tests/test_registry_product_readers.py"
       - "tests/test_registry_php_parity.py"
       - "tests/test_bridge_asset_readiness.py"
       - "scripts/scaffold_sku_asset_folders.py"
+      - "scripts/build_product_asset_library.py"
+      - "tests/test_product_asset_library.py"
+      - "assets/products/catalog/**"
       - "wordpress-theme/skyyrose-flagship/inc/product-catalog.php"
       - "scripts/oai_render/**"
       - "skyyrose/elite_studio/tests/test_logo_registry.py"
@@ -55,17 +63,25 @@ on:
       - "scripts/organize_product_registry.py"
       - "tests/test_registry_organization.py"
       - "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json"
+      - "frontend/data/skyyrose-catalog.csv"
       - "tests/test_product_entry_point.py"
-      - "skyyrose/assets/data/product-content.json"
-      - "skyyrose/assets/data/alt-text.json"
+      - "tests/test_product_readiness.py"
+      - "tests/test_product_consumer_contracts.py"
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
+      - "assets/products/manifest.json"
+      - "scripts/build_asset_manifest.py"
+      - "skyyrose/core/asset_manifest.py"
+      - "tests/test_sync_manifest_projection.py"
       - "tests/test_unified_product_registry.py"
       - "tests/test_registry_product_readers.py"
       - "tests/test_registry_php_parity.py"
       - "tests/test_bridge_asset_readiness.py"
       - "scripts/scaffold_sku_asset_folders.py"
+      - "scripts/build_product_asset_library.py"
+      - "tests/test_product_asset_library.py"
+      - "assets/products/catalog/**"
       - "wordpress-theme/skyyrose-flagship/inc/product-catalog.php"
       - "scripts/oai_render/**"
       - "skyyrose/elite_studio/tests/test_logo_registry.py"
@@ -84,10 +100,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python 3.11
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.11"
 
@@ -96,13 +112,13 @@ jobs:
           python -m pip install --upgrade pip
           # The validator step is near-stdlib: the only third-party import is jsonschema,
           # reached when collection_sot_current regenerates the per-collection SOT
-          # (build-collection-sot.py validates identity.json against its schema). The pytest
+          # (build-collection-sot.py validates each registry collection against identity.schema.json). The pytest
           # step collects test_catalog_consistency.py + the (lazy-import) shared conftest,
           # which need only pytest + pytest-asyncio (asyncio_mode is declared in pyproject;
           # without pytest-asyncio pytest errors "Unknown config option").
           # No project/base install — `.[dev]` pulls the heavy provider stack, was
           # timing out, and silently fell back to a pytest-only env that failed.
-          pip install pytest pytest-asyncio jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
+          pip install pytest pytest-asyncio pytest-timeout Pillow PyYAML jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
 
       - name: Run catalog consistency validator
         run: |
@@ -146,7 +162,7 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}
 
       - name: Verify the single product entry point (all SKUs resolve or declare gaps)
-        run: pytest tests/test_product_entry_point.py -v --tb=short
+        run: pytest tests/test_product_entry_point.py tests/test_product_readiness.py -v --tb=short
         env:
           PYTHONPATH: ${{ github.workspace }}
 
@@ -156,7 +172,7 @@ jobs:
                  tests/test_collection_sot_guard.py tests/test_lookbook_sot_guard.py \
                  tests/test_unified_product_registry.py tests/test_registry_product_readers.py \
                  tests/test_registry_php_parity.py \
-                 tests/test_bridge_asset_readiness.py \
+                 tests/test_bridge_asset_readiness.py tests/test_product_asset_library.py \
                  skyyrose/elite_studio/tests/test_logo_registry.py -v --tb=short
         env:
           PYTHONPATH: ${{ github.workspace }}
@@ -168,7 +184,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Scan for retired SKU references
         run: |

@@ -12,7 +12,7 @@ This module reuses the canonical OAI imagery infrastructure rather than
 re-implementing it:
   • garment refs  -> ``references.build_references`` (canonical SKU→techflat map,
                      hard-fails on a missing garment — no silent fallback)
-  • catalog facts -> ``catalog_loader.get_product_with_dossier``
+  • catalog facts -> ``product.get_product``
   • the edit call -> ``client.OAIImageClient`` (retry/backoff, gpt-image-2 high)
   • cost + gate   -> ``cost.CostManifest`` / ``format_manifest`` / ``SpendTracker``
 
@@ -45,8 +45,8 @@ try:
 except ImportError:  # pragma: no cover - dotenv optional if key already exported
     pass
 
-from skyyrose.core.catalog_loader import get_product_with_dossier  # noqa: E402
 from skyyrose.core.dossier_loader import DossierMissingError  # noqa: E402
+from skyyrose.core.product import get_product  # noqa: E402
 
 from . import config, cost, references  # noqa: E402
 from .client import OAIImageClient  # noqa: E402
@@ -128,12 +128,12 @@ def _garment_paths(sku: str, collection: str) -> list[Path]:
 def _resolve(sku: str, collection: str | None) -> tuple[str, str, str, str]:
     """Return (name, collection, scene_desc, placement) from the canonical catalog row.
 
-    ``get_product_with_dossier`` hard-fails (KeyError for an unknown SKU,
+    ``get_product`` hard-fails (KeyError for an unknown SKU,
     DossierMissingError for an un-authored dossier) — convert both to
     MissingReferenceError so ``main`` reports a clean ABORT, never a traceback.
     """
     try:
-        row = get_product_with_dossier(sku)
+        row = get_product(sku)
     except (KeyError, DossierMissingError) as exc:
         raise references.MissingReferenceError(f"{sku}: {exc}") from exc
     name = (row.get("name") or sku).strip()
@@ -143,6 +143,15 @@ def _resolve(sku: str, collection: str | None) -> tuple[str, str, str, str]:
 
     placement = LogoRegistry.load().prompt_instructions(
         sku, require_sizing=references.requires_patch(sku)
+    )
+    import json
+
+    placement += (
+        "\nAUTHORITATIVE PRODUCT RECORD (preserve founder text and provenance):\n"
+        + json.dumps(
+            {key: row[key] for key in ("dossier", "corrections", "render_sources", "provenance")},
+            ensure_ascii=False,
+        )
     )
     return name, coll, scene_desc, placement
 

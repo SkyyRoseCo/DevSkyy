@@ -47,6 +47,17 @@ def test_exports_cannot_override_authority(registry):
     assert export_compatibility(registry, check=True) == []
 
 
+def test_v2_card_front_manifest_is_projected_from_product_registry():
+    from skyyrose.core.product_registry import V2_CARD_FRONT_PROJECTION
+
+    raw = load_registry()
+    manifest = json.loads(V2_CARD_FRONT_PROJECTION.read_text())
+    assert set(manifest["products"]) == set(raw["products"])
+    for sku, product in raw["products"].items():
+        assert manifest["products"][sku] == product["images"]["card_front"]
+    assert str(V2_CARD_FRONT_PROJECTION) not in export_compatibility(check=True)
+
+
 def test_product_update_changes_image_binding_and_preserves_other_fields(registry):
     update_catalog_fields("br-test", {"front_model_image": "assets/images/new.webp"}, registry)
     product = load_registry(registry)["products"]["br-test"]
@@ -164,3 +175,87 @@ def test_csv_preserves_structured_garment_facts_without_competing_values(registr
     assert json.loads(row["sizing_references"]) == product["garment"]["sizing_references"]
     with pytest.raises(ValueError):
         update_catalog_fields("br-test", {"materials": "Competing value"}, registry)
+
+
+def test_symlinked_registry_stays_a_symlink_and_writes_through(registry, tmp_path):
+    """The repo-root SOT link must survive writes; projections land beside the real file."""
+    link_dir = tmp_path / "root"
+    link_dir.mkdir()
+    link = link_dir / "logo-registry.json"
+    link.symlink_to(registry)
+
+    update_catalog_fields("br-test", {"name": "Renamed"}, link)
+
+    assert link.is_symlink()
+    assert json.loads(registry.read_text())["products"]["br-test"]["catalog"]["name"] == "Renamed"
+    assert (registry.parent / "skyyrose-catalog.csv").is_file()
+    assert not (link_dir / "skyyrose-catalog.csv").exists()
+    assert not (link_dir / "dossiers").exists()
+    assert export_compatibility(link, check=True) == []
+    assert link.is_symlink()
+
+
+def test_check_reports_orphan_dossiers_without_deleting_them(registry):
+    """A dossier no product projects to is drift: product facts authored outside the SOT."""
+    from skyyrose.core.product_registry import orphan_dossiers
+
+    export_compatibility(registry)
+    dossiers = registry.parent / "dossiers"
+    (dossiers / "_template.md").write_text("template\n")
+    rogue = dossiers / "hand-authored.md"
+    rogue.write_text("---\nsku: zz-999\n---\nAuthored outside the registry\n")
+
+    assert export_compatibility(registry, check=True) == [str(rogue)]
+    assert orphan_dossiers(registry) == [rogue]
+    # A real sync must surface it too and must never remove founder-authored data.
+    assert str(rogue) in export_compatibility(registry)
+    assert rogue.is_file()
+
+
+def test_retained_dossier_is_exempt_but_any_other_orphan_still_fails(registry):
+    """The founder's keep-as-is exemption covers its exact filename and nothing else."""
+    from skyyrose.core.product_registry import RETAINED_DOSSIERS, orphan_dossiers
+
+    export_compatibility(registry)
+    dossiers = registry.parent / "dossiers"
+    for name in RETAINED_DOSSIERS:
+        (dossiers / name).write_text("---\nsku: zz-001\n---\nKept by founder decision\n")
+    rogue = dossiers / "hand-authored.md"
+    rogue.write_text("---\nsku: zz-999\n---\nAuthored outside the registry\n")
+
+    assert orphan_dossiers(registry) == [rogue]
+    assert export_compatibility(registry, check=True) == [str(rogue)]
+
+
+def test_every_retained_dossier_is_real_and_still_unowned():
+    """An exemption whose file is gone, or that now shadows a product's dossier, must go."""
+    from skyyrose.core.product_registry import (
+        PRODUCT_REGISTRY,
+        RETAINED_DOSSIERS,
+        load_registry,
+    )
+
+    dossiers = PRODUCT_REGISTRY.resolve().parent / "dossiers"
+    owned = {f"{p['dossier']['slug']}.md" for p in load_registry()["products"].values()}
+    for name, reason in RETAINED_DOSSIERS.items():
+        assert (dossiers / name).is_file(), f"{name} is exempt but no longer exists"
+        assert name not in owned, f"{name} is a registry product's dossier, not an exception"
+        assert len(reason) > 40, f"{name} needs a real reason"
+
+
+def test_sync_check_cli_fails_on_orphan_dossier(registry, monkeypatch, capsys):
+    """`sync_product_registry.py --check` exits non-zero and names the orphan."""
+    import importlib
+
+    from skyyrose.core import product_registry
+
+    cli = importlib.import_module("scripts.sync_product_registry")
+    export_compatibility(registry)
+    rogue = registry.parent / "dossiers" / "hand-authored.md"
+    rogue.write_text("Authored outside the registry\n")
+    monkeypatch.setattr(product_registry, "PRODUCT_REGISTRY", registry)
+    monkeypatch.setattr("sys.argv", ["sync_product_registry.py", "--check"])
+
+    assert cli.main() == 1
+    assert f"ORPHAN {rogue}" in capsys.readouterr().out
+    assert rogue.is_file()

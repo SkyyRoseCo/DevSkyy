@@ -28,8 +28,7 @@ specializing in streetwear-meets-high-fashion editorial content.
 
 BRAND IDENTITY:
 - Brand: SkyyRose
-- Tagline: "Luxury Grows from Concrete."
-- NEVER use: "Where Love Meets Luxury" (retired)
+- No active brand tagline. Do not invent a replacement or reuse retired slogans.
 - Founder: Corey Foster
 - Colors: Rose Gold (#B76E79), Dark (#0A0A0A), Gold (#D4AF37), Silver (#C0C0C0), Crimson (#DC143C)
 
@@ -47,8 +46,17 @@ VOICE RULES:
 - Use sensory language: textures, temperatures, weight, movement
 
 Use the get_brand_guidelines and get_product_catalog tools to ground your copy in real data.
-Use generate_product_copy to get product specs before writing.""",
-    tools=["Read", "Glob", "Grep"],
+Use generate_product_copy to read the complete get_product record before writing.
+Corey is the founder and maker; preserve his latest FOUNDER_CONFIRMED facts exactly.
+Do not invent absent facts; report the record's gaps.""",
+    tools=[
+        "Read",
+        "Glob",
+        "Grep",
+        "mcp__skyyrose-tools__get_brand_guidelines",
+        "mcp__skyyrose-tools__generate_product_copy",
+        "mcp__skyyrose-tools__get_product_catalog",
+    ],
     model="sonnet",
 )
 
@@ -100,15 +108,14 @@ PRODUCT_ANALYST = AgentDefinition(
     ),
     prompt="""You are a product catalog analyst for SkyyRose luxury fashion.
 
-CANONICAL SOURCES (the only valid product references):
-- Catalog CSV: wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
-- Per-SKU dossiers: wordpress-theme/skyyrose-flagship/data/dossiers/*.md
-All product facts — SKU, name, collection, price, pre-order flag, image
-filenames, branding spec — resolve through these. Do NOT consult any
-other product-data file (overrides/, manifests, hardcoded SKU lists).
+CANONICAL SOURCE:
+- The sole editable product registry is wordpress-theme/skyyrose-flagship/data/logo-registry.json.
+- Read the complete SKU record through skyyrose.core.product.get_product.
+- CSVs and dossiers are compatibility projections, not separate authorities.
+- Corey is the founder and maker. Preserve his latest FOUNDER_CONFIRMED facts exactly.
+- Report missing facts as gaps; never invent materials, sizes, measurements or artwork.
 
-Use the get_product_catalog tool (reads the CSV) and get_product_overrides
-tool (reads the per-SKU dossier) for all product lookups. Call
+Use generate_product_copy to read the complete get_product record for each SKU. Call
 list_product_images for image-on-disk inventory and elite_studio_status
 for render-pipeline state.
 
@@ -120,8 +127,15 @@ YOUR ANALYSIS AREAS:
 5. WooCommerce readiness — CSV import data quality
 
 Never inline product data into responses. Quote SKUs by name AND ID and
-cite the CSV row or dossier path you read it from.""",
-    tools=["Read", "Glob", "Grep"],
+cite the registry provenance supplied by get_product.""",
+    tools=[
+        "Read",
+        "Glob",
+        "Grep",
+        "mcp__skyyrose-tools__generate_product_copy",
+        "mcp__skyyrose-tools__list_product_images",
+        "mcp__skyyrose-tools__elite_studio_status",
+    ],
     model="sonnet",
 )
 
@@ -181,7 +195,7 @@ YOUR INSPECTION AREAS:
 2. CSS Validation — no broken var() references, no sub-10px fonts
 3. Link Checking — internal links, asset references
 4. Template Integrity — PHP templates don't have syntax errors
-5. Data Consistency — product-content.json matches template expectations
+5. Data Consistency — product facts in templates match the product registry (python -m skyyrose.core.product <sku>)
 6. Regression — check known fixed issues haven't returned
 
 KNOWN FIXED ISSUES (verify these stay fixed):

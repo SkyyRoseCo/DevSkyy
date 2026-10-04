@@ -38,12 +38,6 @@ components:
       6-stage scene compositor. Primary image-generation pipeline for SkyyRose
       product renders. Uses BRIA + Claude + FLUX + Gemini + GPSDiffusion.
 
-  nano_banana_vton:
-    file_path: scripts/nano-banana-vton.py
-    description: |
-      Virtual try-on image generator. Generates front/back/branding product
-      renders using Gemini 2.5 Flash Image (nano-banana) and FLUX 2 Pro.
-
   flux_orchestrator:
     file_path: pipelines/skyyrose_master_orchestrator.py
     description: |
@@ -60,7 +54,7 @@ components:
 #
 # Seeding status (2026-04-17): This registry was bootstrapped with ONE verified
 # production prompt (compositor.visual_qa.v1). Additional prompts from the
-# compositor, nano-banana, FLUX orchestrator, and copywriter skill should be
+# compositor, FLUX orchestrator, and copywriter skill should be
 # added as they're confirmed and metadata (production_since, impact) is
 # verifiable. Do not add prompts with fabricated production dates or impact
 # numbers — use `TBD` or `null` until verified.
@@ -113,10 +107,6 @@ prompts:
 #   - Stage 2 scene-prompt-builder (Claude Opus 4.6)
 #   - Stage 3 relighting prompt (if passed to IC-Light)
 #   - Stage 4 FLUX Fill prompt
-# nano_banana_vton:
-#   - Front render prompt
-#   - Back render prompt
-#   - Branding detail render prompt
 # flux_orchestrator:
 #   - Luxury pipeline 7-stage prompts
 # copywriter:

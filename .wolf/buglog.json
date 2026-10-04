@@ -5873,5 +5873,25 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-18T12:43:19.203152+00:00"
+  },
+  {
+    "id": "bug-362",
+    "timestamp": "2026-10-04T14:23:08.177106+00:00",
+    "error_message": "tests/test_asset_manifest.py::test_committed_manifest_matches_regenerated_tree and ::test_every_pinned_asset_exists_and_hash_matches fail on pure origin/codex/initial-commerce-release-20261002: committed assets/products/manifest.json pins registry_sha sha256:db3181f (branch D's registry) vs the actual registry sha256:d14fb9e, and a stale br-007 dossier hash (2 of 565 leaves).",
+    "file": "scripts/sync_product_registry.py",
+    "root_cause": "The manifest pins the registry and every dossier by sha256, so it goes stale on every registry edit by construction, but sync_product_registry.py (the documented post-edit step, also run by the catalog-drift hook and CI) only exported the CSV and dossiers and never regenerated or checked the manifest. The only detector was a pytest failure after the fact. Residual: update_catalog_fields (dashboard admin editor) still regenerates CSV/dossiers in-transaction but not the manifest.",
+    "fix": "sync_product_registry.py now owns the manifest: write mode regenerates it after the dossier export, --check reports STALE read-only, generated_at ignored, non-canonical registries skipped, unreadable manifest counts as drift. Added tests/test_sync_manifest_projection.py (6 tests, RED then GREEN), extended both paths filters in .github/workflows/catalog-validate.yml, regenerated the manifest (3 leaves differ from A: generated_at, registry_sha, br-007 dossier sha). Branch feat/registry-from-codex-a-20261003.",
+    "tags": [
+      "registry",
+      "manifest",
+      "drift",
+      "sync",
+      "ci",
+      "fail-open",
+      "projection"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-04T14:23:08.177106+00:00"
   }
 ]

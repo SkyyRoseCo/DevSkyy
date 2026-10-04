@@ -1,5 +1,5 @@
 {
-  "_note": "Image files in the asset tree registered to NO manifest entry, product, or logo. Audit before use; add legit non-role files to a collection identity.json known_orphans[].",
+  "_note": "Image files in the asset tree registered to NO manifest entry, product, or logo. Audit before use; add legit non-role files to logo-registry.json collections.<slug>.known_orphans[].",
   "count": 31,
   "orphans": [
     "branding/love-hurts-logo-hero.webp",

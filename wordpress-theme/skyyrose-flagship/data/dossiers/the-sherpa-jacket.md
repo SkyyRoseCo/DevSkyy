@@ -11,11 +11,13 @@ reference_image_interior: assets/products/references/sg-009-sherpa-interior.jpeg
 
 # The Sherpa Jacket
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Sherpa-lined zip-front jacket — solid **black** nylon-windbreaker-style exterior shell with full-length center-front zipper closure and a **white / cream sherpa fleece interior lining** that wraps the entire interior body, sleeves, and stand-up collar. Visible white-sherpa contrast at the front placket, sleeve cuffs, hem, and stand-up collar opening when the jacket is worn open. NOT a sherpa-exterior coat (the sherpa is the INTERIOR lining; the exterior is smooth black nylon-style fabric).
-Features: Sherpa-lined zip-front jacket — solid **black** nylon-windbreaker-style exterior shell with full-length center-front zipper closure and a **white / cream sherpa fleece interior lining** that wraps the entire interior body, sleeves, and stand-up collar. Visible white-sherpa contrast at the front placket, sleeve cuffs, hem, and stand-up collar opening when the jacket is worn open. Two patch hand pockets at the lower body. Stand-up funnel-neck collar (NOT a hood). Small interior brand woven label at the back-neck. Mid-weight to outerwear weight. NOT a pullover. NOT a hoodie (no hood). NOT a sherpa-exterior coat (the sherpa is the INTERIOR lining; the exterior is smooth black nylon-style fabric). NOT a fully-reversible jacket (the rose-cluster embroidery is exterior-only, so it cannot be worn inside-out as a finished look). NOT a windbreaker set (this is the jacket alone, no matching pants).
-Color: Black
-Available sizes: S | M | L | XL | 2XL | 3XL
+**Garment type lock:** Sherpa-lined zip-front jacket — solid **black** nylon-windbreaker-style exterior shell with full-length center-front zipper closure and a **white / cream sherpa fleece interior lining** that wraps the entire interior body, sleeves, and stand-up collar. Visible white-sherpa contrast at the front placket, sleeve cuffs, hem, and stand-up collar opening when the jacket is worn open. Two patch hand pockets at the lower body. Stand-up funnel-neck collar (NOT a hood). Small interior brand woven label at the back-neck. Mid-weight to outerwear weight. NOT a pullover. NOT a hoodie (no hood). NOT a sherpa-exterior coat (the sherpa is the INTERIOR lining; the exterior is smooth black nylon-style fabric). NOT a fully-reversible jacket (the rose-cluster embroidery is exterior-only, so it cannot be worn inside-out as a finished look). NOT a windbreaker set (this is the jacket alone, no matching pants).
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 

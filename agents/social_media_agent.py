@@ -294,8 +294,9 @@ def _load_catalog() -> dict[str, dict[str, str]]:
             }
     except FileNotFoundError:
         logger.warning(
-            "PRODUCT_CATALOG empty — %s not generated. Run 'make sync-catalog' or "
-            "rely on external product data at skyyrose/assets/data/product-content.json.",
+            "PRODUCT_CATALOG empty — %s not generated. Run "
+            "'python scripts/sync_product_registry.py'; product facts come only from "
+            "the product registry (skyyrose.core.product.get_product).",
             CATALOG_CSV,
         )
     return catalog
