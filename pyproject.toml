@@ -183,7 +183,7 @@ api = ["fastapi>=0.104", "mangum>=0.18.0", "pydantic>=2.5", "PyJWT>=2.13.0"]
 
 mcp = [
   "mcp>=1.28.1,<2",
-  "fastmcp==3.4.4",           # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
+  "fastmcp==4.0.10",           # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
   "openai>=1.57.2,<4",        # keep in lockstep with the base openai cap (bug-254)
   "anthropic>=0.75.0",
   "google-genai>=1.50.0",
@@ -218,7 +218,7 @@ mcp = [
   "python-dateutil==2.9.0.post0",
   "tiktoken>=0.8.0",
   "transformers>=4.53.0",
-  "sentence-transformers==6.0.1",
+  "sentence-transformers==6.1.0",
   "langchain>=0.3.18",
   "langchain-openai>=0.3.0",
   "langchain-anthropic>=0.3.0",
@@ -241,8 +241,8 @@ mcp = [
   "healthcheck==1.3.3",
   "psutil==7.2.2",
   # OpenTelemetry compatibility (google-adk requires <=1.37.0)
-  "opentelemetry-api>=1.37.0,<=1.44.0",
-  "opentelemetry-sdk>=1.37.0,<=1.44.0",
+  "opentelemetry-api>=1.37.0,<=1.45.0",
+  "opentelemetry-sdk>=1.37.0,<=1.45.0",
   "opentelemetry-semantic-conventions>=0.48b0,<0.66", # Required by mistralai
 ]
 
@@ -306,7 +306,7 @@ ml = [
   "uvicorn>=0.32.1",
   "pydantic>=2.10.3",
   "sqlalchemy==2.0.51",
-  "pymongo==4.18.1",
+  "pymongo==4.18.2",
   # Compatibility constraints for dependency resolution
   "protobuf>=6.33.5", # CVE-2026-0994 fix: JSON recursion depth bypass vulnerability
   "fsspec>=2025.7.0", # Required by bentoml>=1.4.34
