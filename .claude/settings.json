@@ -264,8 +264,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/python-format-on-write.sh",
-            "timeout": 15
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/precision-cleanup.sh",
+            "timeout": 30
           }
         ]
       },
