@@ -23,8 +23,11 @@ readers (`product_registry`, `catalog_loader`, `dossier_loader`, `sot_images`,
 the registry update API for catalog writes. Run
 `python scripts/sync_product_registry.py` after direct JSON edits and
 `python scripts/sync_product_registry.py --check` before handoff. CI must fail
-if CSV/dossier projections drift. Actual image binaries retain their existing
-asset paths; the registry owns the references.
+if CSV/dossier projections drift. The same sync also owns
+`assets/products/manifest.json`, which pins the registry by sha256 and so goes
+stale on every registry edit: write mode regenerates it, `--check` flags it.
+Actual image binaries retain their existing asset paths; the registry owns the
+references.
 
 When operating in another checkout, verify it has the unified `products` schema
 and current founder corrections before execution. Never substitute an old
@@ -247,7 +250,11 @@ by weakening it.**
 TDD RED → GREEN → IMPROVE · `pytest -v` after every change, 85%+ coverage ·
 `isort . && ruff check --fix && black .` · after any correction, commit fix +
 lesson together (`tasks/lessons.md` behavioral, `docs/engineering-learnings.md`
-engineering, `.wolf/buglog.json`).
+engineering, `.wolf/buglog.json`). Python edits are tidied on write by
+`.claude/hooks/precision-cleanup.sh` (touched lines only; removes an import only
+if the edit orphaned it, never one it just added). Register no other Python
+formatter on Edit/Write: hooks on one event run concurrently and a whole-file one
+races it.
 
 ### Attribution — prove a finding is yours before you fix it
 
