@@ -94,12 +94,14 @@ export default function CollectionsLanding({ collections }: { collections: Colle
                 {/* Content overlay */}
                 <div className="absolute inset-0 flex items-end p-6 md:p-12">
                   <div className="flex-1">
-                    <p
-                      className="text-xs tracking-[0.3em] uppercase mb-2"
-                      style={{ color: collection.accentColor }}
-                    >
-                      {collection.tagline}
-                    </p>
+                    {collection.tagline ? (
+                      <p
+                        className="text-xs tracking-[0.3em] uppercase mb-2"
+                        style={{ color: collection.accentColor }}
+                      >
+                        {collection.tagline}
+                      </p>
+                    ) : null}
                     <h2 className="text-3xl md:text-5xl font-display text-white mb-3 group-hover:tracking-wider transition-all duration-700">
                       {collection.name}
                     </h2>

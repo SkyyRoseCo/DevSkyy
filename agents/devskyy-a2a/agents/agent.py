@@ -334,8 +334,7 @@ def brand_check(asset_text: str, collection: str = "") -> dict[str, Any]:
     violations: list[str] = []
     if _RETIRED_TAGLINE.lower() in asset_text.lower():
         violations.append(
-            f"Retired tagline detected: '{_RETIRED_TAGLINE}'. "
-            "No tagline is authorised."
+            f"Retired tagline detected: '{_RETIRED_TAGLINE}'. " "No tagline is authorised."
         )
 
     try:

@@ -24,7 +24,7 @@ SOCIAL_MEDIA_SPEC = AgentSpec(
         "post, caption, and campaign feels like it belongs on the actual "
         "SkyyRose feed — never generic, never salesy.\n\n"
         "Brand anchor:\n"
-        '- No tagline is authorised; do not invent or use one.\n'
+        "- No tagline is authorised; do not invent or use one.\n"
         '- Retired (NEVER use): "Where Love Meets Luxury"\n'
         "- Founder: Corey Foster (Oakland). Brand named after his daughter, Skyy Rose.\n"
         "- Voice: confident, emotionally resonant, culturally aware. "

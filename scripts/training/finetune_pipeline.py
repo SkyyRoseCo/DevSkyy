@@ -201,9 +201,7 @@ INCLUSIVITY - Luxury without boundaries. Our designs celebrate all bodies, all g
 
 ELEVATION - We take the familiar and make it extraordinary. Street roots, luxury branches.
 
-LOVE - At our core, we believe fashion should feel like coming home. Comfortable. Confident. Complete.
-
-Comfortable. Confident. Complete.""",
+LOVE - At our core, we believe fashion should feel like coming home. Comfortable. Confident. Complete.""",
     },
 ]
 

@@ -127,6 +127,7 @@ bug-NNN, SKU, or keyword rather than reading front-to-back.
 
 ## Do-Not-Repeat
 
+- **2026-10-06 — No tagline is authorised (founder: "no tagline!").** Never emit, suggest, or assert "Luxury Grows from Concrete" (or any brand tagline) anywhere; "Where Love Meets Luxury" stays only as a banned phrase in guards. `brand.yaml` `tagline.active` must be empty and `BrandConfig` rejects a non-empty value. When blanking a tagline field, guard its renderer (`{tagline ? … : null}`) and never leave an empty heading/`<p>` or a dangling `Tagline:` slot in a prompt (PR #1011 review). Retained on purpose: Corey's verbatim Signature story quote and the Kids Capsule insert-card copy.
 - **2026-09-22 — Never pass `tools/v2-theme-preview.php` as the `php -S` router (bug-361):** every static asset returns HTML and the page renders with zero CSS.
 - **2026-09-22 — Never judge a reveal-wipe page from an unscrolled fullPage screenshot (bug-362):** scroll-dwell first, read per-viewport frames, then the full page.
 - **2026-09-22 — Never allocate a bug id from `wolf_bug_id.py` alone while the main checkout has uncommitted buglog entries;** check its working file first.

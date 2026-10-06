@@ -101,7 +101,7 @@ class LuxuryHomePageBuilder(ElementorPageBuilder):
                             "elType": "widget",
                             "widgetType": "heading",
                             "settings": {
-                                "title": brand_kit.voice.tagline,
+                                "title": brand_kit.name,
                                 "typography_font_family": "Playfair Display",
                                 "typography_font_size": {"size": 82, "unit": "px"},
                                 "typography_font_size_tablet": {"size": 56, "unit": "px"},

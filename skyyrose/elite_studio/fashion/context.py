@@ -205,13 +205,15 @@ class FashionContextBuilder:
         # Collection DNA
         from skyyrose.elite_studio.prompts.templates import COLLECTION_DNA
 
-        from .knowledge import BRAND_TAGLINE
-
         dna_data = COLLECTION_DNA.get(collection.lower(), {})
+        # No brand tagline is authorised (founder 2026-10-06): only emit the
+        # per-collection descriptor when COLLECTION_DNA carries one, never an
+        # empty "Tagline:" slot.
+        collection_tagline = dna_data.get("tagline", "")
         collection_dna = (
             f"{dna_data.get('name', collection)}: {dna_data.get('aesthetic', '')}. "
-            f"Mood: {dna_data.get('mood', '')}. "
-            f"Tagline: {dna_data.get('tagline', BRAND_TAGLINE)}"
+            f"Mood: {dna_data.get('mood', '')}."
+            + (f" Tagline: {collection_tagline}" if collection_tagline else "")
         ).strip()
 
         # Sizing

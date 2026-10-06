@@ -264,12 +264,14 @@ export default function HomePage({ collections }: HomePageProps) {
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-end">
                       <div className="p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                        <p
-                          className="text-xs tracking-[0.2em] uppercase mb-1"
-                          style={{ color: collection.accentColor }}
-                        >
-                          {collection.tagline}
-                        </p>
+                        {collection.tagline ? (
+                          <p
+                            className="text-xs tracking-[0.2em] uppercase mb-1"
+                            style={{ color: collection.accentColor }}
+                          >
+                            {collection.tagline}
+                          </p>
+                        ) : null}
                         <h3 className="text-xl font-display text-white">
                           {collection.name}
                         </h3>
@@ -359,12 +361,14 @@ export default function HomePage({ collections }: HomePageProps) {
 
                   {/* Collection Info */}
                   <div className="flex-1 w-full">
-                    <p
-                      className="text-xs tracking-[0.3em] uppercase mb-3"
-                      style={{ color: collection.accentColor }}
-                    >
-                      {collection.tagline}
-                    </p>
+                    {collection.tagline ? (
+                      <p
+                        className="text-xs tracking-[0.3em] uppercase mb-3"
+                        style={{ color: collection.accentColor }}
+                      >
+                        {collection.tagline}
+                      </p>
+                    ) : null}
                     <h3 className="text-3xl md:text-4xl font-display text-white mb-4">
                       {collection.name}
                     </h3>

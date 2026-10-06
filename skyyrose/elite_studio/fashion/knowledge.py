@@ -12,9 +12,9 @@ from dataclasses import dataclass
 
 # ---------------------------------------------------------------------------
 # Brand constants (canonical — mirrors templates.py)
+# No BRAND_TAGLINE: no tagline is authorised (founder 2026-10-06).
 # ---------------------------------------------------------------------------
 
-BRAND_TAGLINE = ""  # No tagline is authorised (founder 2026-10-06)
 BRAND_NAME = "SkyyRose"
 
 # ---------------------------------------------------------------------------
