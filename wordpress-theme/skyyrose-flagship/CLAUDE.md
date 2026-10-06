@@ -85,8 +85,8 @@ Color constants (`SKYYROSE_COLOR_ROSE_GOLD` / `_GOLD` / `_CRIMSON` / `_SILVER`)
 are defined in committed `inc/brand-colors.php`. `functions.php` ALSO includes
 `inc/brand.generated.php` (loaded first) — that file is **generated from
 `assets/brand/brand.yaml` at build and is NOT committed** (you won't see it in a
-fresh checkout); it supplies `SKYYROSE_BRAND_TAGLINE` + helpers like
-`skyyrose_brand_collections()`. NEVER hardcode a hex value or the tagline in PHP
+fresh checkout); it supplies the brand constants + helpers like
+`skyyrose_brand_collections()`. NEVER hardcode a hex value in PHP (no tagline is authorised)
 — reference the constants.
 
 ## Skyy mascot (3D site host) — v1.9.0

@@ -284,7 +284,7 @@ Structure: Fixed position, dark background with backdrop-filter blur
 
 1. **Hero Section** (100vh)
    - Badge: "Oakland Luxury Streetwear" (letter-spacing: 6px, uppercase)
-   - Headline: "Luxury Grows from Concrete." — gradient text (#D4AF37 → #B76E79)
+   - Headline: collection-led headline (no tagline) — gradient text (#D4AF37 → #B76E79)
    - Subtext: "Crafted for those who dare to stand out"
    - CTA buttons: "Shop Collections" (filled) + "Pre-Order Now" (outline)
    - Background: animated floating orbs (3 circles: 500px, 400px, 300px with blur + slow movement)
@@ -840,7 +840,7 @@ STEP 6: Check warnings
 
 ## Brand Voice
 
-- **Tagline:** "Luxury Grows from Concrete."
+- **Tagline:** No tagline is authorised (founder decision 2026-10-06).
 - **Tone:** Sophisticated, bold, intimate — not corporate
 - **Copy style:** Short, punchy sentences. Address the customer directly. Evoke emotion.
 - **Collection voices:**

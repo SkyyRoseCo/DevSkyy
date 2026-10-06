@@ -15,7 +15,7 @@ Patterns extracted from corrections. Review at session start.
 - Image URLs: append `?v=' . SKYYROSE_VERSION` for CDN cache bust on branding images
 - Cursor disappearing: Jetpack Instant Search overlay (z-index max, opacity 0, pointer-events auto) — fix with `pointer-events: none !important`
 - Customizer DB values override `get_theme_mod()` defaults — hardcode values when Customizer has stale data
-- "Where Love Meets Luxury" is NOT the tagline — "Luxury Grows from Concrete" is the only tagline
+- "Where Love Meets Luxury" is a retired phrase — never use it. No tagline is authorised (founder decision 2026-10-06).
 
 ## Animation System
 - Premium animations: `animations-premium.css` + `premium-interactions.js` loaded globally

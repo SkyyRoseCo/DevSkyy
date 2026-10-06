@@ -133,7 +133,7 @@ export const COLLECTIONS: Record<CollectionSlug, CollectionConfig> = {
   'kids-capsule': {
     slug: 'kids-capsule',
     name: 'Kids Capsule',
-    tagline: 'Luxury Grows from Concrete.',
+    tagline: '',
     description:
       'Bold colorblock hoodie and jogger sets designed for young ones who wear luxury from the start. Limited edition drops in sizes 2T–7.',
     accentColor: '#B76E79',

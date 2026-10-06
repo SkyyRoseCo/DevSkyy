@@ -11,8 +11,7 @@
 ## 1. The brand in one breath
 
 - **Brand:** SkyyRose (The Skyy Rose Collection) — luxury Oakland streetwear.
-- **Tagline (verbatim, the ONLY tagline):** `Luxury Grows from Concrete.`
-  Period included. Never paraphrase ("luxury from the streets", "grown from concrete" = WRONG).
+- **Tagline:** none. No tagline is authorised (founder decision 2026-10-06). Any tagline use is a violation.
 - **Founder:** Corey Foster. Oakland / Bay Area roots. Direct, earned, unhurried voice.
 - **Anchor:** Oakland, CA ("The Town"). "Bay Area" is acceptable; Oakland-first is preferred.
 - **Site:** skyyrose.co (WordPress store). The dashboard devskyy.app is internal — never market it.
@@ -101,7 +100,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 > A compact 4-6 bullet block of the rules from this guardrails file that matter
-> MOST for THIS skill (e.g. a caption skill leads with tagline + collection voice +
+> MOST for THIS skill (e.g. a caption skill leads with collection voice +
 > name-not-SKU; a photography brief leads with the Five refs + lockup rule).
 > Always end with: "Full canon: ../skyyrose-content-engine/brand-guardrails.md"
 

@@ -20,7 +20,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline (exact):** `Luxury Grows from Concrete.` — use in the guidelines introduction to anchor the document in brand identity.
+- **Tagline:** none authorised (founder decision 2026-10-06). Do not add one to the guidelines.
 - **Voice:** Direct, plain, Oakland-honest. Not corporate legalese. Not a startup manifesto. If you'd need a lawyer to read it aloud, rewrite it.
 - **Cultural specificity:** This is a Black-owned Oakland brand. The guidelines must protect the culture explicitly — not vaguely ("be respectful"), but specifically (e.g., no appropriation, no disrespect toward Black culture or The Town).
 - **No hype-merchant framing.** The guidelines introduction does not sell membership. It states purpose and expectation. Corey's register: earned, specific, unhurried.
@@ -76,7 +76,6 @@ The output of this skill is a complete, publication-ready **SkyyRose Community G
 - Why these guidelines exist (protect the community that built this brand)
 - Who they apply to (every member of every SkyyRose digital space)
 - The founding principle: this is The Town's brand; treat it and each other accordingly
-- Reference tagline: `Luxury Grows from Concrete.`
 - Close with a plain commitment: "We enforce these. Consistently."
 
 **Voice check:** Should sound like Corey posted it, not like a legal team wrote it. "You" and "we" throughout. No passive voice. Under 200 words total.
@@ -251,7 +250,7 @@ Appeals are not available for:
 |--------|--------------|
 | **Web page** | Plain HTML, no inline styles. H1 for document title, H2 for each section, H3 for subsections. Maximum 2000 words. |
 | **Discord pinned summary** | 10-bullet plain-language version, under 400 characters per bullet, posted in #welcome. Links to full guidelines page on skyyrose.co. |
-| **PDF** | Formatted version of the web page for download. Include SkyyRose logo (lockup, not type-rendered collection name) and `Luxury Grows from Concrete.` as footer. |
+| **PDF** | Formatted version of the web page for download. Include SkyyRose logo (lockup, not type-rendered collection name) as footer. |
 
 ---
 
@@ -261,9 +260,7 @@ Appeals are not available for:
 >
 > The Concrete Garden and every other space where SkyyRose community happens online is an extension of that. These guidelines are how we protect it. Not from criticism — we want honest feedback. From the kind of behavior that makes spaces feel unsafe and makes community impossible.
 >
-> These apply to everyone: founding members, new customers, lurkers, and anyone who represents SkyyRose online. If you're here, these are the rules.
->
-> Luxury Grows from Concrete."
+> These apply to everyone: founding members, new customers, lurkers, and anyone who represents SkyyRose online. If you're here, these are the rules."
 
 ---
 

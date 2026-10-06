@@ -176,7 +176,7 @@ woocommerce_form_field( 'billing_postcode', array(
 | ID | Finding |
 |---|---|
 | **TY-P2-01** | Delayed account creation is enabled in WC settings — WC default will prompt "Create an account" on the thank-you page. Without `thankyou.php` override, this renders in WC generic styling, not SkyyRose design. |
-| **TY-P2-02** | No post-purchase brand moment — no social follow CTA, no loyalty/waitlist mention, no brand story anchor. WC default is transactional; SkyyRose should reinforce "Luxury Grows from Concrete." |
+| **TY-P2-02** | No post-purchase brand moment — no social follow CTA, no loyalty/waitlist mention, no brand story anchor. WC default is transactional; SkyyRose should reinforce the brand story (no tagline — none is authorised, founder decision 2026-10-06). |
 
 ---
 

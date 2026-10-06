@@ -22,7 +22,7 @@ allowed-tools: Read Write Edit Glob
 ## Brand Canon (non-negotiable)
 
 - **Voice on X:** More direct and opinionated than other platforms. Oakland energy — unhurried, specific, no hedging. Corey speaks as a founder who has earned the room, not a brand trying to get it.
-- **Tagline verbatim:** `Luxury Grows from Concrete.` — appears in the CTA tweet only (once, period included).
+- **No tagline:** None is authorised (founder decision 2026-10-06); never use or invent one.
 - **Collection register locked:** Black Rose = armor, defiance. Love Hurts = bloodline, raw romance. Signature = "stay golden," West Coast standard. Never cross-attribute. A thread about one collection stays in that register throughout.
 - **No urgency manipulation:** Drop announcements state scarcity as fact ("250 made, pre-order is open"). No countdown pressure, no "last chance" desperation tone.
 - **No European luxury-house references.** The Five only: Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels.
@@ -59,7 +59,7 @@ Every SkyyRose thread follows this spine:
 2. **Context tweet** — why this matters, who Corey is, or what the collection stands for
 3. **Body tweets (3-N-2)** — the substance: story beats, product details, cultural anchors, founder lessons
 4. **Summary tweet** — designed to be screenshotted; the TL;DR that earns the share
-5. **CTA tweet** — single action + `Luxury Grows from Concrete.` + link
+5. **CTA tweet** — single action + link
 
 ### Outline Format
 
@@ -72,7 +72,7 @@ Body:
   Tweet 5: [Story beat or point 3 — include one concrete detail or fact]
   Tweet 6: [Story beat or point 4]
 Summary:  [TL;DR — shareable on its own as a screenshot]
-CTA:      [Follow + link + tagline]
+CTA:      [Follow + link]
 ```
 
 **GATE: Approve outline before writing full tweets. Every body tweet must stand alone — no tweet should require reading the previous one to make sense.**
@@ -113,7 +113,7 @@ CTA:      [Follow + link + tagline]
 **CTA Tweet (Final)**
 - Single action only.
 - If drop: link to the product page (first and only link in the thread).
-- Always close with `Luxury Grows from Concrete.`
+- Close with the single action; no tagline (none authorised).
 - Add 1-2 hashtags maximum here: `#SkyyRose` + one collection tag.
 
 ### Formatting Rules
@@ -139,7 +139,7 @@ CTA:      [Follow + link + tagline]
 - [ ] Each body tweet delivers one clear idea, numbered consistently
 - [ ] At least one body tweet contains a specific fact, detail, or mini-story
 - [ ] Summary tweet works as a standalone screenshot
-- [ ] CTA tweet has single action + "Luxury Grows from Concrete." + max 2 hashtags
+- [ ] CTA tweet has single action + max 2 hashtags
 - [ ] No links mid-thread (final tweet only)
 - [ ] Collection voice verified — no cross-attribution
 - [ ] No urgency manipulation language
@@ -247,8 +247,6 @@ The standard — not the statement.
 
 Follow @SkyyRose for every drop, story, and behind-the-scenes.
 
-Luxury Grows from Concrete.
-
 #SkyyRose #SignatureCollection
 ```
 
@@ -274,5 +272,5 @@ Luxury Grows from Concrete.
 - **No hook ideas:** Generate 5 variants using different formulas (identity statement, contrarian take, specific-detail, founder-result, culture-call). Present all 5 — let Corey or the team pick.
 - **Thread too long:** Cut any body tweet that overlaps with another. If two tweets make the same point from different angles, keep the one with a concrete detail.
 - **Voice feels too polished / corporate:** Read it aloud with Oakland cadence. If it sounds like a LinkedIn post, rewrite. Contractions, short sentences, specific proper nouns (The Town, Bay, Oakland) are the register markers.
-- **CTA tweet underperforming (low click-through):** Make the link the only item in the tweet after the tagline. Competing asks dilute click intent.
+- **CTA tweet underperforming (low click-through):** Make the link the only item in the tweet after the follow line. Competing asks dilute click intent.
 - **Collection register drift:** If you're unsure whether a phrase belongs to the right collection, read `docs/brand/collection-stories.md` before finalizing. The per-collection registers are there verbatim.

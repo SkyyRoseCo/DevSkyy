@@ -60,7 +60,6 @@
       "required": [
         "id",
         "name",
-        "tagline",
         "home"
       ],
       "properties": {
@@ -69,9 +68,6 @@
         },
         "name": {
           "const": "SkyyRose"
-        },
-        "tagline": {
-          "type": "string"
         },
         "home": {
           "type": "string"

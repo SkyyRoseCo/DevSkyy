@@ -34,7 +34,7 @@ The hero CTA reads "Explore Collections" — not "Shop Now." That one decision s
 
 4. **No product pricing on homepage collection tiles.** The showcase cards show collection names and a CTA but no price anchors. For a brand selling $195–$350 pieces, establishing price range at the first collection impression filters uncommitted visitors before they click through to broken PDPs (see Surface 2).
 
-5. **Lookbook grid lacks editorial context.** The images are present but carry no caption, no location, no narrative. "Luxury Grows from Concrete" requires showing what that concrete looks like — Bay Bridge steel, BART platform tile, block walls. The grid currently reads as a standard product-shoot lightbox, not a location-rooted editorial series.
+5. **Lookbook grid lacks editorial context.** The images are present but carry no caption, no location, no narrative. The brand calls for showing what that concrete looks like — Bay Bridge steel, BART platform tile, block walls. The grid currently reads as a standard product-shoot lightbox, not a location-rooted editorial series.
 
 6. **"Our Story" CTA sends to /about/ — a low-conversion destination from the conversion-critical hero.** The secondary hero CTA competes with the primary CTA (Explore Collections) for scroll real estate but routes to a page that has no add-to-cart path. A better secondary might be "The Black Rose — Enter" routing to the highest-conversion collection.
 
@@ -362,7 +362,7 @@ Product prices ($45–$265) are visible in the product showcase — unlike the c
 
 2. **"Shop the Drop" CTA present.** Same WP §1.3 violation as Black Rose.
 
-3. **"Where Love Meets Luxury" phrase detected in editorial copy.** This is the retired tagline — explicitly listed in project memory as "NEVER use this anywhere." It contradicts the active tagline "Luxury Grows from Concrete" and weakens the brand's voice consistency.
+3. **"Where Love Meets Luxury" phrase detected in editorial copy.** This is the retired tagline — explicitly listed in project memory as "NEVER use this anywhere." No tagline is authorised (founder decision 2026-10-06), and this phrase weakens the brand's voice consistency.
 
 4. **Gothic narrative absent.** "Beauty and the Beast from the Beast's perspective" is not alluded to, framed, or implied. The copy reads as generic luxury fashion rather than gothic Oakland couture.
 
@@ -414,7 +414,7 @@ The gold palette landing page correctly positions the Signature collection's asp
 
 **Strengths:**
 
-Corey Foster's origin story is present with a brand timeline. Press mentions name real outlets. The "Luxury Grows from Concrete" tagline is cited correctly. The about page is not visually generic — it carries brand identity through the dark theme and gold typography.
+Corey Foster's origin story is present with a brand timeline. Press mentions name real outlets. The about page is not visually generic — it carries brand identity through the dark theme and gold typography.
 
 **Weaknesses:**
 

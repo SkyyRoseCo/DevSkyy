@@ -200,7 +200,7 @@ export default function CollectionExperience({
           {collection.name} Collection
         </p>
         <p className="text-white/10 text-xs mt-2 tracking-wider">
-          SkyyRose &mdash; Luxury Grows from Concrete.
+          SkyyRose
         </p>
       </footer>
 

@@ -331,7 +331,7 @@ function skyyrose_configure_site_options() {
 	// Site title — only if still default "Just another WordPress site" or empty.
 	$current_desc = get_option( 'blogdescription' );
 	if ( empty( $current_desc ) || 'Just another WordPress site' === $current_desc ) {
-		update_option( 'blogdescription', __( 'Luxury Grows from Concrete. Premium streetwear from Oakland, CA.', 'skyyrose' ) );
+		update_option( 'blogdescription', __( 'Premium streetwear from Oakland, CA.', 'skyyrose' ) );
 	}
 
 	// Permalink structure — pretty permalinks.

@@ -4,7 +4,6 @@ Fashion ontology for SkyyRose Elite Studio.
 Defines garment types, fabric properties, and the FashionKnowledgeBase
 that ties them together. All objects are frozen (immutable).
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations
@@ -15,7 +14,7 @@ from dataclasses import dataclass
 # Brand constants (canonical — mirrors templates.py)
 # ---------------------------------------------------------------------------
 
-BRAND_TAGLINE = "Luxury Grows from Concrete."
+BRAND_TAGLINE = ""  # No tagline is authorised (founder 2026-10-06)
 BRAND_NAME = "SkyyRose"
 
 # ---------------------------------------------------------------------------
