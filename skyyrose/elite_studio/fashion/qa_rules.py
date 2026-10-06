@@ -5,7 +5,6 @@ Defines per-category quality assurance rules for fabric accuracy, color
 fidelity, styling coherence, photography standards, and brand consistency.
 All objects are frozen (immutable).
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

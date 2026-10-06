@@ -166,7 +166,7 @@ class AgentConfig(BaseModel):
 
     # SkyyRose specific
     brand_context: str = Field(
-        "SkyyRose - Where Love Meets Luxury. Premium streetwear brand based in Oakland.",
+        "SkyyRose. Premium streetwear brand based in Oakland.",
         description="Brand context for responses",
     )
 

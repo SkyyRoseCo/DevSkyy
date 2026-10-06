@@ -572,9 +572,7 @@ class SkyyRoseSpacesOrchestrator:
         Returns:
             Formatted product description
         """
-        intro = self.COLLECTION_INTROS.get(
-            specs.collection, "From SkyyRose: where love meets luxury."
-        )
+        intro = self.COLLECTION_INTROS.get(specs.collection, "From SkyyRose.")
 
         return f"""
 {intro}
@@ -586,8 +584,6 @@ class SkyyRoseSpacesOrchestrator:
 • Gender-neutral design
 • Limited availability
 • Designed in Oakland, CA
-
-Where love meets luxury. 🌹
 """.strip()
 
     async def virtual_tryon(

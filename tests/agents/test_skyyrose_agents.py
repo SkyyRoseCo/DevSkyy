@@ -348,7 +348,7 @@ class TestSkyyRoseContentAgent:
         context = dna.to_prompt_context()
 
         assert "SKYYROSE" in context
-        assert "Luxury Grows from Concrete" in context
+        assert "Luxury Grows from Concrete" not in context
         assert "Signature Collection" in context
         assert "Black Rose Collection" in context
         assert "Love Hurts Collection" in context
@@ -727,7 +727,7 @@ class TestSkyyRoseContentAgent:
         system_msg = messages[0]
         assert system_msg.role.value == "system"
         assert "SKYYROSE" in system_msg.content
-        assert "Luxury Grows from Concrete" in system_msg.content
+        assert "Luxury Grows from Concrete" not in system_msg.content
         assert "Top Headline" in system_msg.content
 
         # User message should contain request details
@@ -833,8 +833,8 @@ class TestDualAgentIntegration:
         """Both agents should reference SkyyRose brand consistently."""
         assert "SkyyRose" in imagery_agent.SYSTEM_PROMPT
         assert "SkyyRose" in content_agent.SYSTEM_PROMPT
-        assert "Luxury Grows from Concrete" in imagery_agent.SYSTEM_PROMPT
-        assert "Luxury Grows from Concrete" in content_agent.SYSTEM_PROMPT
+        assert "Luxury Grows from Concrete" not in imagery_agent.SYSTEM_PROMPT
+        assert "Luxury Grows from Concrete" not in content_agent.SYSTEM_PROMPT
 
     def test_both_agents_are_creative_type(
         self,

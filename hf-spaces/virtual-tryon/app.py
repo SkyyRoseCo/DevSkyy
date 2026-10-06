@@ -223,8 +223,6 @@ def create_app() -> gr.Blocks:
         gr.Markdown("""
             # 🌹 SkyyRose Virtual Try-On
 
-            **Where Love Meets Luxury**
-
             Try on SkyyRose merchandise using AI-powered virtual try-on.
             Upload your photo and select a product to see how it looks on you!
             """)

@@ -32,7 +32,6 @@ Brand Guidelines:
 - Tone: Sophisticated yet accessible, bold yet elegant
 - Style: Poetic, evocative, with street culture authenticity
 - Colors: Rose gold (#B76E79), black (#1A1A1A), pastels
-- Tagline: "Luxury Grows from Concrete."
 - Collections: Signature (classic), Black Rose (dark romantic), Love Hurts (edgy)
 
 Always emphasize:
@@ -212,7 +211,7 @@ STORYTELLING_PROMPTS = [
     "Write about SkyyRose's Oakland origins.",
     "Describe the brand's design philosophy.",
     "Write about the inspiration behind the logo.",
-    "Describe what 'Luxury Grows from Concrete.' means.",
+    "Describe what the SkyyRose rose motif represents.",
     "Write about the brand's commitment to quality.",
     "Describe the vision for SkyyRose's future.",
     "Write about the cultural influences on the brand.",

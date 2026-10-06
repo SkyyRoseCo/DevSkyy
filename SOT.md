@@ -53,7 +53,7 @@ Fit and care are stored in each registry product's dossier and derived garment f
   Data SOT; its in-file `typography:` block is stale/dead and slated for
   removal). Collection metadata → `logo-registry.json` → `collections`, not here.
 - Color / collection accent tokens live in `CLAUDE.md` → Brand table and
-  `theme.json` (Font Library). Tagline: **"Luxury Grows from Concrete."**
+  `theme.json` (Font Library). No tagline is authorised (founder decision 2026-10-06).
 
 ## OpenWolf memory (cross-session)
 

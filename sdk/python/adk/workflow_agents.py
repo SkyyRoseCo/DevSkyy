@@ -112,7 +112,7 @@ _ROUTING_TOKENS_PER_HOP = 350
 # ---------------------------------------------------------------------------
 _BRAND_ACCURACY_PREAMBLE = (
     "CRITICAL — 100% BRAND ACCURACY IS YOUR #1 PRIORITY.\n"
-    "Brand: SkyyRose — 'Where Love Meets Luxury'\n"
+    "Brand: SkyyRose\n"
     "Colors: Rose Gold (#B76E79), Black (#1A1A1A), White\n"
     "Location: Oakland, California\n"
     "Collections: BLACK ROSE (dark elegance), LOVE HURTS (emotional expression), "

@@ -331,7 +331,7 @@ class TestPipelineBridgeTools:
                     "winner": {
                         "provider": "Claude",
                         "score": 95,
-                        "response": "Luxury Grows from Concrete.",
+                        "response": "Built in Oakland.",
                     },
                     "entries": [
                         {"provider": "Claude", "score": 95},
@@ -439,7 +439,7 @@ class TestPipelineBridgeTools:
                 {
                     "title": "Spring Launch",
                     "platform": "Instagram",
-                    "content": "Luxury Grows from Concrete.",
+                    "content": "Built in Oakland.",
                     "hashtags": ["SkyyRose", "LuxuryFashion", "Oakland"],
                 }
             )
@@ -596,7 +596,7 @@ class TestWordPressBridgeAgent:
         agent = WordPressBridgeAgent()
         options = agent.get_options()
         assert "SkyyRose" in options.system_prompt
-        assert "Luxury Grows from Concrete" in options.system_prompt
+        assert "Grows from Concrete" not in options.system_prompt  # no tagline authorised
 
     def test_agent_options_adaptive_thinking(self):
         from agents.wordpress_bridge.agent import WordPressBridgeAgent
@@ -847,7 +847,7 @@ class TestMCPServerIntegration:
         from agents.wordpress_bridge.prompts import SYSTEM_PROMPT
 
         assert "SkyyRose" in SYSTEM_PROMPT
-        assert "Luxury Grows from Concrete" in SYSTEM_PROMPT
+        assert "Grows from Concrete" not in SYSTEM_PROMPT  # no tagline authorised
         assert "#B76E79" in SYSTEM_PROMPT
         assert "Black Rose" in SYSTEM_PROMPT
         assert "Love Hurts" in SYSTEM_PROMPT

@@ -7,7 +7,7 @@
 [![TypeScript 5.0+](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **Luxury Grows from Concrete.** — [skyyrose.co](https://skyyrose.co)
+> [skyyrose.co](https://skyyrose.co)
 
 ---
 

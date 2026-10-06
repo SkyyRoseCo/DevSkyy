@@ -135,15 +135,17 @@ export default function CollectionHero({
               >
                 {collection.name}
               </motion.h1>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-lg md:text-xl tracking-[0.15em] uppercase"
-                style={{ color: collection.accentColor }}
-              >
-                {collection.tagline}
-              </motion.p>
+              {collection.tagline ? (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  className="text-lg md:text-xl tracking-[0.15em] uppercase"
+                  style={{ color: collection.accentColor }}
+                >
+                  {collection.tagline}
+                </motion.p>
+              ) : null}
             </div>
           </motion.div>
         )}

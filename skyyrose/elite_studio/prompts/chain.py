@@ -24,7 +24,6 @@ from skyyrose.elite_studio.prompts.analyzer import (
 from skyyrose.elite_studio.prompts.templates import (
     BRAND_COLORS,
     BRAND_NAME,
-    BRAND_TAGLINE,
     COLLECTION_DNA,
     PromptTemplateRegistry,
 )
@@ -407,7 +406,7 @@ class PromptChain:
                 added.append("injected custom brand context")
         else:
             parts.append(
-                f"Brand: {BRAND_NAME} — {BRAND_TAGLINE} "
+                f"Brand: {BRAND_NAME} — "
                 f"Oakland luxury streetwear. Rose gold accent: {BRAND_COLORS['rose_gold']}"
             )
             added.append("injected SkyyRose brand identity")

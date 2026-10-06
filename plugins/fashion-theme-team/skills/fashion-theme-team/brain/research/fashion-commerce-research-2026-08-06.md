@@ -1,7 +1,6 @@
 # Fashion Theme Commerce Research Report
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> **SKYYROSE LLC · FASHION THEME BRAIN**
 
 *Generated: 2026-08-06 | Sources: 16 | Confidence: Medium*
 
