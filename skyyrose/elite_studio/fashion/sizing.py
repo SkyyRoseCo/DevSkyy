@@ -4,7 +4,6 @@ Sizing guidelines for SkyyRose Elite Studio.
 Per-garment sizing guidelines and size charts for accurate product renders
 and product descriptions.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

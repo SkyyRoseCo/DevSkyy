@@ -36,8 +36,7 @@ Per-scene `Subject:` line leans that collection's accent. Aspect `3:2`, `--resol
 ### 1 — Signature (HERO)  · accent gold `#D4AF37`  · focal = Bay Area, HEAVY OAKLAND
 - **Subject:** `A luxury Signature showroom high above the water — floor-to-ceiling glass framing the OAKLAND skyline and Bay at dusk: the Tribune Tower, Lake Merritt necklace-of-lights, the Port of Oakland container cranes, Bay Bridge, a moored yacht (The Town / Oakland, NOT San Francisco, NOT Golden Gate). Polished concrete floor, gold-veined marble plinth at center holding a single draped garment form, brushed-gold fixtures, one shaft of gold-hour light. Focal point: the Oakland city view + gold-lit plinth, centered.`
 - Reference: steer HARD to Oakland landmarks (Tribune Tower, port cranes, Lake Merritt) — AI defaults to Golden Gate/SF unless forced. Optionally feed an Oakland reference photo via `media_import_url`.
-- eyebrow: `THE SIGNATURE` · title: `Luxury Grows From Concrete` · body: `Oakland-born luxury, cut in gold and earned on the block.` · tags: `Signature`, `Gold`
-- (Section 1 title = site hero line.)
+- eyebrow: `THE SIGNATURE` · body: `Oakland-born luxury, cut in gold and earned on the block.` · tags: `Signature`, `Gold`
 
 ### 2 — Black Rose  · accent silver `#C0C0C0`  · focal = THE BLACK ROSE + star emblem
 - **Subject:** `A gothic rooftop garden at night above the Oakland skyline — silver moonlight, concrete parapets, wrought iron. At center, a single perfect BLACK ROSE in bloom (deep obsidian petals, silver-edged), and behind/around it the Black Rose collection emblem: a black rose inside a silver-outlined five-point star on a black heart base. The beauty of Black rendered as armor. Focal point: the black rose + star emblem, centered.`

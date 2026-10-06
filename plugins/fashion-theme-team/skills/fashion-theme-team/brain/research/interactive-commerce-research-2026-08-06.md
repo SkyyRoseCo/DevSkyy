@@ -1,7 +1,6 @@
 # SkyyRose Interactive Commerce Research Report
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> **SKYYROSE LLC · FASHION THEME BRAIN**
 
 *Generated 2026-08-06 · Evidence snapshot for V2 planning · Status: research, not release approval*
 

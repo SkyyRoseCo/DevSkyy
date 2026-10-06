@@ -50,8 +50,6 @@ class Collection(StrEnum):
 
 SKYYROSE_BRAND: dict[str, Any] = {
     "name": "The Skyy Rose Collection",
-    "tagline": "Luxury Streetwear with Soul",
-    "philosophy": "Luxury Grows from Concrete.",
     "location": "Oakland, California",
     "tone": {
         "primary": "Elegant, empowering, romantic, bold",
@@ -257,7 +255,7 @@ Description: {coll["description"]}"""
 
         prompt = f"""SkyyRose Brand Voice: {brand["tone"]["primary"]}
 Colors: Black Rose (#1A1A1A), Rose Gold (#D4AF37), Deep Rose (#8B0000)
-Style: Luxury streetwear, Oakland CA. {brand["tagline"]}."""
+Style: Luxury streetwear, Oakland CA."""
 
         if collection:
             coll = COLLECTION_CONTEXT[collection]
@@ -603,8 +601,7 @@ def _cached_digest(role: str, mtime_ns: int) -> str:
 
     header = (
         f"## SkyyRose Catalog Digest — live from canonical CSV\n"
-        f"Total SKUs: {context.total_skus} across {len(context.summaries)} collections. "
-        f'Brand philosophy: "{SKYYROSE_BRAND["philosophy"]}".\n'
+        f"Total SKUs: {context.total_skus} across {len(context.summaries)} collections.\n"
     )
     sections = [_format_summary(s, focus) for s in context.summaries]
     block = header + "\n" + "\n\n".join(sections)

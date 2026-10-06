@@ -1,7 +1,6 @@
 # Complete Fashion Commerce Page Blueprints
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> **SKYYROSE LLC · FASHION THEME BRAIN**
 
 V2 visual layouts and imagery direction: [`../v2/v2-page-and-imagery-plan.md`](../v2/v2-page-and-imagery-plan.md).
 

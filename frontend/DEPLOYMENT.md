@@ -318,7 +318,6 @@ const results = await wp.search('black rose', {
 // Update settings
 await wp.updateSettings({
   title: 'SkyyRose Luxury Fashion',
-  description: 'Luxury Grows from Concrete.',
   posts_per_page: 12
 })
 ```

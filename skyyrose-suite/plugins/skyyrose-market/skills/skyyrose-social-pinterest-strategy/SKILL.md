@@ -21,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline verbatim:** `Luxury Grows from Concrete.` Use in profile bio and in board descriptions. Never paraphrase.
+- **Tagline:** No tagline is authorised (founder decision 2026-10-06). Do not use or invent one in the profile bio or board descriptions.
 - **Oakland-first keyword anchor.** "Oakland fashion", "Oakland streetwear", "Bay Area style" are primary SEO targets on Pinterest — they differentiate SkyyRose from generic luxury streetwear.
 - **The Five visual references.** Pin aesthetics reference Kith (editorial polish), Culture Kings (bold graphic streetwear), Fear of God (quiet luxury silhouettes), Oaklandish (local pride, community rootedness), Palm Angels (street-luxe confidence). No European luxury-house mood boards.
 - **Collection voice in pin descriptions.** Even in keyword-dense descriptions, the collection's emotional register should be detectable: Black Rose = armor/defiant, Love Hurts = raw passion, Signature = elevated/golden, Kids = heritage/playful-premium.
@@ -73,7 +73,7 @@ Full canon: ../skyyrose-content-engine/brand-guardrails.md
 Account type: Business (mandatory for analytics + Rich Pins)
 Profile name: SkyyRose | Luxury Oakland Streetwear
 Bio: "Luxury streetwear built from Oakland concrete. Four collections,
-     one city, no shortcuts. Luxury Grows from Concrete. | Shop skyyrose.co"
+     one city, no shortcuts. | Shop skyyrose.co"
 Profile image: SkyyRose wordmark / logo (consistent with IG + TikTok)
 Website: skyyrose.co (claimed and verified)
 Rich Pins: Enabled via WooCommerce + Yoast SEO Plugin
@@ -92,7 +92,7 @@ Cover board: Black Rose Collection (most visual, highest brand-identity signal)
 | **Love Hurts Collection** | "SkyyRose Love Hurts Collection — Oakland streetwear soaked in raw passion and crimson energy. Limited drops, real craftsmanship. skyyrose.co" | All Love Hurts product pins + lifestyle |
 | **Signature Collection** | "SkyyRose Signature Collection — West Coast luxury at its standard. Gold-accented, Oakland-rooted, built for those who stay golden. skyyrose.co" | All Signature product pins + lifestyle |
 | **Kids Capsule Collection** | "SkyyRose Kids Capsule — little royalty, heritage from the first fit. Premium children's streetwear from Oakland. skyyrose.co" | All Kids product pins |
-| **Oakland Streetwear Style** | "Oakland fashion and Bay Area streetwear inspiration. The best of The Town's style culture — luxury grows from concrete. #OaklandFashion #BayAreaStyle" | Curated Oakland fashion content + SkyyRose lifestyle |
+| **Oakland Streetwear Style** | "Oakland fashion and Bay Area streetwear inspiration. The best of The Town's style culture. #OaklandFashion #BayAreaStyle" | Curated Oakland fashion content + SkyyRose lifestyle |
 | **Black-Owned Fashion Brands** | "Supporting Black-owned fashion and independent streetwear designers. Style with intention — shop Black-owned. #BlackOwnedFashion #IndependentFashion" | Curated Black-owned brands + SkyyRose product pins |
 | **Luxury Streetwear Inspo** | "Premium streetwear inspiration and luxury casual fashion. Where street meets craft. #LuxuryStreetwear #StreetLuxury" | Curated luxury streetwear editorial + SkyyRose |
 | **SkyyRose Behind the Studio** | "Inside the making of SkyyRose — production process, design details, and the people behind the brand." | Behind-the-scenes BTS content, production pins |
@@ -289,7 +289,7 @@ Month 3 — Optimize
 ## SkyyRose Pinterest Strategy Checklist
 
 - [ ] Business account created with correct profile name: "SkyyRose | Luxury Oakland Streetwear"
-- [ ] Bio includes "Luxury Grows from Concrete." verbatim
+- [ ] Bio contains no tagline (none authorised, founder decision 2026-10-06)
 - [ ] skyyrose.co claimed and verified
 - [ ] Rich Pins approved and pulling WooCommerce product data
 - [ ] 8-10 boards created with keyword-rich 2-3 sentence descriptions

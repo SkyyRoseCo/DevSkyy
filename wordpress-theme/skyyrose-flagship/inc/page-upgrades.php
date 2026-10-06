@@ -31,7 +31,7 @@ function skyyrose_page_upgrade_context() {
 
 	if ( is_front_page() ) {
 		$context['eyebrow']         = __( 'Start Here', 'skyyrose' );
-		$context['title']           = __( 'Luxury grows from concrete.', 'skyyrose' );
+		$context['title']           = __( 'SkyyRose', 'skyyrose' );
 		$context['body']            = __( 'Discover limited garments shaped by Oakland, family, and the refusal to fold.', 'skyyrose' );
 		$context['secondary_label'] = __( 'Read Our Story', 'skyyrose' );
 		$context['secondary_url']   = home_url( '/about/' );

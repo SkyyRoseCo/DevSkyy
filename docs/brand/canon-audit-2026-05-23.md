@@ -1,3 +1,5 @@
+> **Superseded 2026-10-06:** founder decision "no tagline!" — no tagline is authorised. The "locked tagline" statements below record what was canon on 2026-05-23 and are historical only.
+
 # SkyyRose Canon Audit — 2026-05-23
 
 Canon locked: `docs/brand/collection-stories.md` + `project_founder_voice.md` (locked 2026-05-23).

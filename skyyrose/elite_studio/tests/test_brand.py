@@ -16,7 +16,7 @@ FIXTURE_YAML = """
 version: 1
 generated_at: "2026-04-17T00:00:00Z"
 tagline:
-  active: "Luxury Grows from Concrete."
+  active: ""
   retired:
     - phrase: "Where Love Meets Luxury"
       retired_at: "2026-03"
@@ -31,7 +31,6 @@ colors:
 collections:
   black-rose:
     display_name: "BLACK ROSE"
-    tagline: "Luxury Grows from Concrete."
     theme: "gothic"
     mood: "dark"
     inspiration: "Oakland"
@@ -59,20 +58,20 @@ def brand(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> BrandConfig:
     return BrandConfig.load()
 
 
-def test_loads_active_tagline(brand: BrandConfig) -> None:
-    assert brand.tagline_active == "Luxury Grows from Concrete."
+def test_no_tagline_is_authorised(brand: BrandConfig) -> None:
+    assert brand.tagline_active == ""
 
 
 def test_loads_retired_taglines_as_phrase_list(brand: BrandConfig) -> None:
     assert brand.retired_taglines == ("Where Love Meets Luxury",)
 
 
-def test_missing_active_tagline_raises(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    bad = FIXTURE_YAML.replace('active: "Luxury Grows from Concrete."', 'active: ""')
+def test_any_active_tagline_is_flagged(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    bad = FIXTURE_YAML.replace('active: ""', 'active: "Any Tagline"')
     p = tmp_path / "brand.yaml"
     p.write_text(textwrap.dedent(bad).lstrip("\n"))
     monkeypatch.setenv("SKYYROSE_BRAND_PATH", str(p))
-    with pytest.raises(ValueError, match="non-empty"):
+    with pytest.raises(ValueError, match="tagline"):
         BrandConfig.load()
 
 
@@ -115,6 +114,6 @@ def test_live_brand_yaml_loads_clean() -> None:
     if not live.is_file():
         pytest.skip("Live brand.yaml not present in test environment")
     brand = BrandConfig.load(path=live)
-    assert brand.tagline_active == "Luxury Grows from Concrete."
+    assert brand.tagline_active == ""
     assert "Where Love Meets Luxury" in brand.retired_taglines
     assert "black-rose" in brand.collections

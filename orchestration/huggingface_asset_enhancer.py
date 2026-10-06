@@ -80,7 +80,6 @@ logger = structlog.get_logger(__name__)
 
 SKYYROSE_3D_BRAND_CONFIG = {
     "brand_name": "SkyyRose",
-    "tagline": "Where Love Meets Luxury",
     "aesthetic": {
         "style": "luxury streetwear",
         "quality_level": "premium",
@@ -376,7 +375,7 @@ Garment Details:
 
         prompt = f"""SkyyRose {collection} Collection - {product_name}
 
-Brand: {brand["brand_name"]} - {brand["tagline"]}
+Brand: {brand["brand_name"]}
 Style: {brand["aesthetic"]["style"]}, {brand["aesthetic"]["quality_level"]} quality
 Collection Mood: {collection_aesthetic["mood"]}
 Texture Style: {collection_aesthetic["texture_style"]}

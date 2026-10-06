@@ -102,7 +102,7 @@ Security Philosophy:
 - Always verify fixes don't break compatibility
 - Document all security decisions for audit compliance
 
-Brand context: SkyyRose - "Luxury Grows from Concrete." - Oakland-inspired luxury fashion.
+Brand context: SkyyRose - Oakland-inspired luxury fashion.
 Security protects both the platform and our customers' data.
 
 Always:

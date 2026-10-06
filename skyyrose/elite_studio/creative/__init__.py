@@ -6,7 +6,6 @@ product renders, 3D models, social packs, product copy, character sheets,
 scene compositing, virtual try-on, full product launches, design ideation,
 mockups, collection plans, tech packs, moodboards, colorway exploration.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

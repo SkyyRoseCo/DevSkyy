@@ -3,8 +3,6 @@ Fashion context builder for SkyyRose Elite Studio.
 
 Assembles a complete FashionContext from SKU, garment type, collection,
 and season. Loads product data from the product catalog CSV.
-
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

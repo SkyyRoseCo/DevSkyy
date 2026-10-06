@@ -315,9 +315,6 @@ export default function PreOrderPage({ collections }: PreOrderPageProps) {
 
       {/* Footer */}
       <footer className="border-t border-white/5 py-12 px-4 text-center pb-24">
-        <p className="text-white/20 text-xs tracking-[0.2em] uppercase">
-          Luxury Grows from Concrete.
-        </p>
         <p className="text-white/10 text-xs mt-2 tracking-wider">
           SkyyRose LLC &copy; 2026
         </p>

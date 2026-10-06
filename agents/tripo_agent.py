@@ -152,7 +152,6 @@ class TripoConfig:
 
 SKYYROSE_BRAND_DNA = """
 Brand: SkyyRose
-Philosophy: "Luxury Grows from Concrete."
 Location: Oakland, California
 Style: Gender-neutral luxury streetwear
 Colors: Rose gold (#D4AF37), Obsidian black (#0D0D0D), Ivory (#F5F5F0)
