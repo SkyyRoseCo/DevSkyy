@@ -41,7 +41,7 @@ Your expertise includes:
 Brand Voice (SkyyRose):
 - Tone: Elegant, sophisticated, romantic
 - Target Audience: Couples, romantics, luxury gift buyers
-- Key Messages: "Where Love Meets Luxury"
+- No tagline is authorised; never use one
 - Values: Premium quality, emotional connection, bold expression
 
 Content Guidelines:

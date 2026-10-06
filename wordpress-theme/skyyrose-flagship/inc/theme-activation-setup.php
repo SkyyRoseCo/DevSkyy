@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Bump this constant when adding new pages or changing setup logic.
  * The `init` runner uses this to determine if setup has already run.
  */
-define( 'SKYYROSE_SETUP_VERSION', '4.5.0' );
+define( 'SKYYROSE_SETUP_VERSION', '4.6.0' );
 
 /*
 --------------------------------------------------------------
@@ -328,9 +328,16 @@ function skyyrose_configure_reading_settings( $page_ids ) {
  * @return void
  */
 function skyyrose_configure_site_options() {
-	// Site title — only if still default "Just another WordPress site" or empty.
-	$current_desc = get_option( 'blogdescription' );
-	if ( empty( $current_desc ) || 'Just another WordPress site' === $current_desc ) {
+	// Site description — only if still the WordPress default, empty, or the
+	// value this theme wrote before 2026-10-06 (it carried the brand tagline;
+	// no tagline is authorised — founder decision 2026-10-06). An operator's
+	// own wording is left alone.
+	$current_desc = (string) get_option( 'blogdescription' );
+	if (
+		'' === $current_desc
+		|| 'Just another WordPress site' === $current_desc
+		|| false !== stripos( $current_desc, 'grows from concrete' )
+	) {
 		update_option( 'blogdescription', __( 'Premium streetwear from Oakland, CA.', 'skyyrose' ) );
 	}
 

@@ -538,6 +538,6 @@ class LuxuryHomePageBuilder(ElementorPageBuilder):
             "page_settings": {
                 "post_title": "Home - SkyyRose",
                 "template": "elementor_canvas",  # Full-width, no header/footer chrome
-                "meta_description": "SkyyRose - Luxury fashion where love meets luxury. Explore our signature collections including Black Rose, Love Hurts, and Signature lines.",
+                "meta_description": "SkyyRose - Luxury fashion. Explore our signature collections including Black Rose, Love Hurts, and Signature lines.",
             },
         }

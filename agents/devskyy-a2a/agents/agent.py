@@ -594,8 +594,8 @@ def get_agent_card(base_url: str = "http://localhost:8080") -> AgentCard:
                 name="Brand-rule compliance check",
                 description=(
                     "Validate copy against SkyyRose brand rules (palette, "
-                    "tagline, collection iconography). Hard-blocks the retired "
-                    "tagline 'Where Love Meets Luxury'."
+                    "tagline, collection iconography). "
+                    "Hard-blocks the retired tagline 'Where Love Meets Luxury'."
                 ),
                 tags=["creative", "brand", "paid"],
                 examples=[

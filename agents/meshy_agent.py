@@ -142,8 +142,7 @@ class MeshyConfig:
 SKYYROSE_BRAND_DNA = (
     "SkyyRose luxury streetwear, gender-neutral, premium materials, "
     "elevated street poetry, intellectual luxury. "
-    "Rose gold (#B76E79), obsidian black (#0D0D0D), ivory (#F5F5F0). "
-    "Where Love Meets Luxury."
+    "Rose gold (#B76E79), obsidian black (#0D0D0D), ivory (#F5F5F0)."
 )
 
 COLLECTION_STYLES = {
