@@ -98,6 +98,13 @@ class TestPruneToolReportsFailures:
             )
 
         monkeypatch.setattr(git_ops, "remove_worktree", refuse)
+        # Precondition: git still registers these worktrees (a folder the
+        # orphan check would otherwise judge missing, since the paths are fake).
+        monkeypatch.setattr(
+            git_ops,
+            "list_worktrees",
+            lambda repo_root: [{"path": p} for p in ("/wt-a", "/wt-b")],
+        )
         out = run(tools.worktree_prune(tools.PruneInput(dry_run=False, ttl_hours=0)))
         assert "contains modified files" in out
         assert tool_store.get(Path("/wt-a")) is not None

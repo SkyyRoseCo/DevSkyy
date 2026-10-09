@@ -274,50 +274,60 @@ class WorktreeFleetStore:
         self._set_status(worktree_path, "ready_to_merge", closed_at=_now())
 
     # ------------------------------------------------------------------
-    # Prune — only removes rows already in a closed state, past the TTL
+    # Prune — only removes rows already in a closed state, past the TTL,
+    # plus orphans (folder gone) whose work is provably on a remote
     # ------------------------------------------------------------------
 
     def prune(self, dry_run: bool = True, ttl_hours: int = 24) -> dict[str, Any]:
-        now = datetime.now(UTC)
-        placeholders = ", ".join("?" for _ in CLOSED_STATUSES)
         conn = self._connect_ro()
         try:
-            closed_rows = conn.execute(
-                f"SELECT * FROM worktrees WHERE status IN ({placeholders})", CLOSED_STATUSES
-            ).fetchall()
-            active_rows = conn.execute(
-                f"SELECT * FROM worktrees WHERE status IN ({', '.join('?' for _ in ACTIVE_STATUSES)})",
-                ACTIVE_STATUSES,
-            ).fetchall()
+            rows = [_row_to_dict(r) for r in conn.execute("SELECT * FROM worktrees").fetchall()]
         finally:
             conn.close()
+        now = datetime.now(UTC)
+        due = [r for r in rows if (age := _age_hours(r, now)) is not None and age >= ttl_hours]
 
-        candidates = []
-        for row in closed_rows:
-            closed_at = row["closed_at"]
-            if not closed_at:
-                continue
-            age_hours = (now - datetime.fromisoformat(closed_at)).total_seconds() / 3600
-            if age_hours >= ttl_hours:
-                candidates.append(_row_to_dict(row))
-
+        candidates: list[dict[str, Any]] = []
         # Never removed — just surfaced so a human/agent can decide, per the
         # "stranded commits != stranded work" lesson (three separate manual
         # sweeps in project history) this registry exists to stop repeating.
-        abandoned_candidates = []
-        for row in active_rows:
-            age_hours = (now - datetime.fromisoformat(row["last_seen_at"])).total_seconds() / 3600
-            if age_hours >= ttl_hours:
-                abandoned_candidates.append(_row_to_dict(row))
+        abandoned_candidates: list[dict[str, Any]] = []
+        orphans: list[dict[str, Any]] = []
+        orphaned_unverifiable: list[dict[str, Any]] = []
+        registered: dict[str, set[str] | Exception] = {}
+        for row in due:
+            reason = _orphan_verdict(row, registered)
+            if reason is None:
+                orphans.append(row)
+            elif reason:
+                orphaned_unverifiable.append({**row, "reason": reason})
+            elif row["status"] in CLOSED_STATUSES:
+                candidates.append(row)
+            elif row["status"] in ACTIVE_STATUSES:
+                abandoned_candidates.append(row)
 
+        result: dict[str, Any] = {
+            "would_remove": [],
+            "removed": [],
+            "failed": [],
+            "abandoned_candidates": abandoned_candidates,
+            "would_remove_orphaned": [],
+            "removed_orphaned": [],
+            "orphaned_unverifiable": orphaned_unverifiable,
+        }
         if dry_run:
-            return {
-                "would_remove": candidates,
-                "removed": [],
-                "failed": [],
-                "abandoned_candidates": abandoned_candidates,
-            }
+            return {**result, "would_remove": candidates, "would_remove_orphaned": orphans}
+        removed, failed = self._remove_closed(candidates)
+        return {
+            **result,
+            "removed": removed,
+            "failed": failed,
+            "removed_orphaned": self._delete_orphan_rows(orphans),
+        }
 
+    def _remove_closed(
+        self, candidates: list[dict[str, Any]]
+    ) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
         removed = []
         failed = []
         for candidate in candidates:
@@ -339,10 +349,79 @@ class WorktreeFleetStore:
             with locked_transaction(self.db_path) as conn:
                 conn.execute("DELETE FROM worktrees WHERE path = ?", (candidate["path"],))
             removed.append(candidate)
+        return removed, failed
 
-        return {
-            "would_remove": [],
-            "removed": removed,
-            "failed": failed,
-            "abandoned_candidates": abandoned_candidates,
-        }
+    def _delete_orphan_rows(self, orphans: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        """Delete only the row that was judged: a session that re-claimed the
+        same path between the check and now has a new last_seen_at/status, and
+        its row must survive."""
+        removed = []
+        with locked_transaction(self.db_path) as conn:
+            for row in orphans:
+                cursor = conn.execute(
+                    "DELETE FROM worktrees WHERE path = ? AND status = ? AND last_seen_at = ?",
+                    (row["path"], row["status"], row["last_seen_at"]),
+                )
+                if cursor.rowcount:
+                    removed.append(row)
+        return removed
+
+
+def _age_hours(row: dict[str, Any], now: datetime) -> float | None:
+    """Closed rows age from closed_at, active rows from their last heartbeat.
+    A closed row with no closed_at has no age and is never due."""
+    stamp = row["closed_at"] if row["status"] in CLOSED_STATUSES else row["last_seen_at"]
+    if not stamp:
+        return None
+    return (now - datetime.fromisoformat(stamp)).total_seconds() / 3600
+
+
+def _orphan_verdict(row: dict[str, Any], registered: dict[str, set[str] | Exception]) -> str | None:
+    """Classify a due row by whether its worktree folder still exists.
+
+    Returns "" when it is not an orphan (folder present, or git still lists the
+    worktree), None when it is an orphan safe to forget, and a non-empty reason
+    when it is an orphan that must be kept. Deleting the row loses no commits —
+    the branch outlives it — but an active row is the only record that unpushed
+    work exists, so it goes only once the branch is shown to be on a remote. A
+    closed row already passed release()'s clean-and-pushed gate.
+    """
+    path = Path(row["path"])
+    if path.exists():
+        return ""
+    repo_root = row["repo_root"]
+    if repo_root not in registered:
+        try:
+            # A "prunable" entry is git saying the folder is gone: still
+            # listed, no longer a worktree anyone can work in.
+            registered[repo_root] = {
+                str(_resolved(Path(w["path"])))
+                for w in git_ops.list_worktrees(repo_root=Path(repo_root))
+                if "prunable" not in w
+            }
+        except (subprocess.CalledProcessError, OSError) as exc:
+            registered[repo_root] = exc
+    listed = registered[repo_root]
+    if isinstance(listed, Exception):
+        return f"could not list git worktrees in {repo_root}: {_error_text(listed)}"
+    if str(_resolved(path)) in listed:
+        return ""
+    if row["status"] in CLOSED_STATUSES:
+        return None
+    try:
+        off_remotes = git_ops.branch_commits_off_remotes(
+            repo_root=Path(repo_root), branch=row["branch"]
+        )
+    except (subprocess.CalledProcessError, OSError, ValueError) as exc:
+        return f"could not check branch {row['branch']!r}: {_error_text(exc)}"
+    if off_remotes is None:
+        return f"branch {row['branch']!r} exists neither locally nor on any remote"
+    if off_remotes:
+        return f"{len(off_remotes)} commit(s) on no remote: " + "; ".join(off_remotes)
+    return None
+
+
+def _error_text(exc: Exception) -> str:
+    if isinstance(exc, subprocess.CalledProcessError):
+        return (exc.stderr or "").strip() or f"git exited {exc.returncode}"
+    return str(exc)
