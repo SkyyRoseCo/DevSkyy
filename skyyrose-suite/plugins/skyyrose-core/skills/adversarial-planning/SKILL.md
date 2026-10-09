@@ -1,111 +1,198 @@
 ---
 name: adversarial-planning
-description: Have two genuinely different models (a Claude model, e.g. Fable, and Codex/OpenAI) debate a plan before anything gets built — one drafts, the other challenges, capped at 3 rounds, then the strongest coding model actually executes the converged plan and the planner reviews the real result. Use for any task where a wrong plan is expensive to discover late (rigging/animation work, architecture decisions, migrations) — not for small, obviously-correct changes.
+description:
+  Build and test a plan with two independent providers before high-cost work.
+  Claude Code using the Fable alias drafts and revises; OpenAI Codex challenges.
+  Use for architecture, migrations, creative-production systems, and other work
+  where a wrong plan is costly. Defaults to plan-only; never execute unresolved
+  objections.
 ---
 
 # Adversarial Planning
 
-## The problem
+Claude/Fable is the planner. Codex, using its effective OpenAI configuration, is
+the independent challenger. Different model names from the same provider do not
+count as independent. If either provider, authentication, configuration, network
+readiness, or the runner is unavailable, stop before making a model request. Do
+not substitute another Claude model for Codex, or another provider for Fable.
 
-A single model planning alone has one blind spot: its own. It can catch its own typos,
-not its own bad assumptions — the plan sounds coherent because the same reasoning that
-wrote it is the reasoning checking it. [[adversarial-verification]]
-solves this for "did the fix work"; this skill solves it one step earlier, for "is the
-plan itself sound before anyone spends an hour building the wrong thing."
+## Choose this workflow
 
-## The pattern
+Use adversarial planning when a wrong plan could cause a costly rebuild,
+irreversible migration, substantial provider spend, or a product/release
+failure. Skip it for small, obvious changes and use adversarial verification
+when reviewing work that already exists.
 
-1. **Planner drafts** (Claude, e.g. `model: 'fable'`) — a real plan: steps, files touched,
-   what could go wrong, how each step is verified. Not a paragraph of vibes.
-2. **Challenger is a genuinely different model** (Codex/OpenAI, via `codex exec`) — different
-   training, different failure modes. It challenges the plan's assumptions, not its prose.
-3. **Debate is capped at 3 rounds** — rounds 1-2 are argument, round 3 is a forcing function.
-4. **Execution goes to the strongest coding model for the job** (here, Codex), not
-   automatically back to the planner.
-5. **Planner reviews the real executed result** — the actual diff/output, not the plan in
-   the abstract. Closing the loop against ground truth, not against more argument.
+The default mode is plan_only. Select plan_and_execute only when the user
+explicitly asks for execution as part of this run. The only successful planning
+outcomes are:
 
-```
-Plan (Fable)  →  Debate (Fable vs Codex, ≤3 rounds)  →  Execute (Codex)  →  Review (Fable)
-```
+- BLOCKED: preflight, authentication, approval, or runner checks failed.
+- NEEDS_REVIEW: blocking objections remain after at most three rounds, or
+  execution review found a problem.
+- PLAN_READY: independent reviewers converged and the run was plan_only.
+- EXECUTION_COMPLETE: the converged plan was executed and the resulting work
+  passed the independent review.
 
-## Round structure (mirrors adversarial-verification's 3-round cap)
+Round three is a final revision and challenge. It is never an execution
+tie-breaker. Unresolved blocking objections return NEEDS_REVIEW.
 
-1. **Round 1 — proposal + challenge.** Planner drafts. Challenger reads it skeptically and
-   must name specifically what would change its mind (a missing edge case, an untested
-   assumption, a step that can't actually be verified as described).
-2. **Round 2 — revision + recheck.** Planner addresses the _specific_ challenge, not a full
-   rewrite. Challenger rechecks. If satisfied, stop — don't burn round 3 on agreement.
-3. **Round 3 — mandatory, no more argument.** If rounds 1-2 didn't converge, stop debating in
-   the abstract and **execute** — the real build is the tie-breaker. Lock in whichever plan
-   exists and hand it to the executor; don't let round 3 become "argue again, harder."
+## Providers and configuration
 
-## Codex is not reachable via `agent()`'s `model` option
+Use Claude Code's fable model alias for planning. Do not set a fallback model.
+Use Codex CLI for challenge and, only in plan_and_execute mode, execution. Do
+not pass a model override to codex exec. Let Codex apply the configuration it
+would use from the selected working directory.
 
-`agent()` (Workflow tool) only spawns Claude models (`sonnet`/`opus`/`haiku`/`fable`). Codex
-is a separate CLI with its own auth; a Workflow script has no shell access, so it can't
-invoke `codex` directly. **Fix:** dispatch a Claude subagent whose entire job is to shell out
-to `codex exec` via Bash and relay the raw output **verbatim** — not paraphrased. A Claude
-summary of Codex's judgment defeats the whole point of a second model. The runnable script
-(below) does this and preserves Codex's exact words in a `codex_verbatim` field.
+For manifest reporting, list a Codex model only when it is explicit in the
+trusted project or user configuration. The documented precedence is command line
+overrides, trusted project configuration, an explicitly selected profile, user
+configuration, cloud-managed defaults, system configuration, then built-in
+defaults. See the
+[Codex configuration documentation](https://developers.openai.com/codex/config-basic).
+Codex ignores provider-routing keys such as `model_provider`, `model_providers`,
+and `openai_base_url` in project-local config; see the
+[configuration reference](https://developers.openai.com/codex/config-reference/).
+Use trusted project settings for model selection, but resolve provider routing
+only from applicable system and user configuration. Validate both
+`openai_base_url` and the effective `model_providers.openai.base_url`; never let
+a project provider table shadow a machine or user route. If the effective
+provider or endpoint cannot be verified, stop before any provider call.
 
-```bash
-# Verified CLI mechanics (codex-cli 0.144.1, re-checked via --help 2026-07-12, not assumed):
-codex exec -m <MODEL> -s <read-only|workspace-write> --json -o /tmp/out.json < prompt.txt
-# -m/--model     explicit model string
-# -s/--sandbox   read-only for challenge/review turns; workspace-write ONLY for execution
-# --json         machine-readable event stream
-# -o             final message written to a file, easy to read back
-# Pipe the prompt over stdin (as shown) — never interpolate plan JSON into the shell command.
-```
+This runner passes no model or profile override; Codex resolves its effective
+model settings at invocation. If lower-priority managed/default settings make
+the exact model unknown before the call, report runtime-resolved rather than
+guessing. Block a known non-OpenAI provider or unverified custom endpoint.
 
-## Model verification — do not hardcode a guessed model string
+Before work, inspect the task and run the read-only readiness checks:
 
-Re-verified live 2026-07-12: `~/.codex/config.toml` now has `model = "gpt-5.6-sol"` (the
-"GPT-5.6 Sol" this skill only speculated about at first writing is now the real, configured,
-callable default; the old `gpt-5.5` is stale). This is exactly why the string is verified at
-runtime, never hardcoded blind — it moved once already. Before a debate that depends on a
-specific Codex model:
+- claude --version
+- claude --help (verify `--model` advertises the `fable` alias)
+- claude auth status --json
+- codex --version
+- codex doctor --json
 
-1. Run `codex doctor` — it once caught a real "required provider endpoint unreachable" failure
-   despite valid auth. If reachability fails, surface it; don't silently retry or fall back.
-2. **STOP-AND-SHOW** a tiny test call (`codex exec -m <candidate> "reply with the single word
-OK"`) — a real paid call, gated like any other. If it errors on the model string, fall back
-   to the confirmed default and tell the user which model actually ran — never silently
-   substitute.
-3. Pass the confirmed string as `args.codexModel` to the script.
+Read only allowlisted status fields from auth output. Never print or retain
+account email, tokens, session data, or raw doctor output. A nonzero doctor exit
+is not itself enough to classify the result: parse the JSON. A sole terminal.env
+failure may be ignored only when TERM is dumb, the invocation is noninteractive,
+the diagnostic is limited to terminal color/cursor support, and all critical
+authentication, configuration, installation, network, and runtime checks pass.
+Any other failure or unrecognized state blocks.
 
-## Running it
+The local command interface is
+[adversarial_planning_cli.py](scripts/adversarial_planning_cli.py). First
+prepare a manifest with the task text, selected mode, runner, provider
+identities, model sources, maximum rounds and calls, and cost/quota estimates.
+Unavailable cost or quota estimates must say unknown. Preparation makes no model
+requests. Before a run, show the manifest, then require the exact typed
+lowercase y and the displayed manifest hash. Recheck authentication,
+configuration, provider readiness, task hash, and expiry before the first model
+request. A changed or expired manifest requires fresh preparation and approval.
 
-The full loop — the three schemas, the 3-round debate, the Codex relay, execute, and review —
-lives in a runnable Workflow script: **[`scripts/adversarial-planning.wf.js`](scripts/adversarial-planning.wf.js)**.
-`PLAN_SCHEMA` forces structured steps (action / files / per-step verification / risks) so each
-revision has something concrete to diff. `CHALLENGE_SCHEMA` returns `{ codex_verbatim,
-satisfied, specific_challenge }` — the verbatim preserves what Codex said, `satisfied` drives
-early convergence. `REVIEW_SCHEMA` forces a ship/no-ship boolean plus specific deviations.
+Use the local_cli route for both modes. Prepare a manifest, review it, then run
+with the same task file and manifest path. The run command requires lowercase y
+and the displayed manifest hash; do not pass approval flags or pipe a synthetic
+approval into the command. The runner invokes Claude Code with the fable alias,
+then Codex CLI without a model or profile override, so Codex resolves its
+effective configuration at invocation. If the exact Codex model cannot be known
+before a call, the manifest says it is runtime-resolved.
 
-**This run spends real money** — every challenge round and the execution turn is a paid Codex
-call. Pre-flight per "Model verification" above, then **STOP-AND-SHOW the launch** (model +
-rounds + est. cost) before invoking:
+Approval prompts refuse non-interactive stdin, so the typed y and hash must be
+entered at a real terminal. Each approved manifest is single-use: the run claims
+it through an atomic `<manifest>.consumed` file before any provider call, and
+that claim is never released, even if the run later fails. The claim is also
+keyed by manifest hash in a per-user state directory, so copying a manifest to
+another path does not reset it. To run again, prepare a new manifest at a new
+path.
 
-```js
-Workflow({
-  scriptPath: "<skill-dir>/scripts/adversarial-planning.wf.js",
-  args: {
-    task: "<the plan/task to debate>",
-    codexModel: "gpt-5.6-sol" /* the CONFIRMED string */,
-  },
-});
-```
+Plans must declare `requires_image_generation` and `requires_publish_or_deploy`;
+either being true (or a keyword hit) requires the separate typed approval. After
+execution the CLI blocks, without reverting, if any path outside the plan's
+declared files changed, and the reviewer receives a locally captured diff
+(truncation forces a non-passing verdict). Provider routing is refused when
+`OPENAI_BASE_URL`, the Claude settings `env` blocks, or `apiKeyHelper` point
+away from the first-party endpoints.
 
-It returns `{ rounds, converged, plan, transcript, execution, review }`. Read `review.ship`
-and `review.deviations` against `execution.codex_verbatim` before trusting the result.
+From the repository root:
 
-## When not to use this
+    python3 .claude/skills/adversarial-planning/scripts/adversarial_planning_cli.py prepare --task-file /path/to/task.md --manifest /tmp/adversarial-planning.json --mode plan_only --runner local_cli
+    python3 .claude/skills/adversarial-planning/scripts/adversarial_planning_cli.py run --task-file /path/to/task.md --manifest /tmp/adversarial-planning.json
 
-Small, obviously-correct changes don't need two models arguing — that's
-adversarial-verification's territory (verify after, cheaply) or just doing the thing. Reserve
-the full debate-then-execute loop for plans where being wrong is expensive to discover late:
-new rigs/animation pipelines, architecture decisions, migrations — anything where "the plan
-looked fine and then three hours in it wasn't" is a real risk this project has hit (see
-`.wolf/buglog.json` bug-198/214/215 for exactly that pattern on the mascot rig work).
+The Workflow adapter at
+[adversarial-planning.wf.js](scripts/adversarial-planning.wf.js) currently
+returns BLOCKED before any model call. Its present runtime cannot establish
+fresh authenticated readiness for both providers, provide a trusted direct Codex
+response channel, or atomically consume a one-time execution approval with
+cumulative call accounting. Do not treat a prepared CLI manifest as proof of
+Workflow readiness. Re-enable Workflow only after those runtime capabilities are
+demonstrated and the adapter has corresponding tests.
+
+The spend manifest counts provider CLI invocations, not underlying model
+requests or internal turns. plan_only caps at six invocations; local
+plan_and_execute caps at eight (up to four Claude CLI and four Codex CLI
+invocations). Actual token usage, retries inside a CLI, price, and remaining
+quota are not reliably exposed here, so cost and quota remain unknown.
+
+## Debate contract
+
+1. Write a concrete task with a scope, starting state, success conditions,
+   exclusions, and evidence sources. Capture the task hash in the manifest.
+2. Claude/Fable proposes implementable steps, affected files, a check for each
+   step that can fail, risks, and blocking unknowns.
+3. Codex independently checks source assumptions, missing cases, feasibility,
+   verification quality, permissions, and failure recovery. Preserve Codex's own
+   response as evidence; do not present a Claude paraphrase as a Codex judgment.
+4. Claude revises against the specific challenge. Codex decides whether each
+   blocking objection is resolved.
+5. Stop at convergence or after three rounds. If any blocking objection remains,
+   return NEEDS_REVIEW with its evidence and next decision. Do not execute.
+6. In plan_only, return PLAN_READY after convergence. Do not edit files.
+7. In plan_and_execute, execute only the converged plan. Review actual changed
+   files and command results with Claude in read-only mode. Return
+   EXECUTION_COMPLETE only when that review passes; otherwise NEEDS_REVIEW.
+
+Image generation and publishing/deployment are separate authorization gates. The
+planning manifest never authorizes either. If an approved execution plan
+includes one, the local CLI requests a separate typed approval for that action
+immediately before execution. Without it, return NEEDS_REVIEW and do not perform
+that action. Display the converged plan and its SHA-256, then require lowercase
+y and that hash for each separate gate. The disabled Workflow adapter accepts no
+continuation bundle and cannot execute.
+
+For repository tasks, preserve existing changes, inspect the active checkout,
+and keep execution within the manifest's file and action scope. If the checkout
+has unrelated dirty work and the executor cannot isolate the task safely, return
+NEEDS_REVIEW rather than overwriting it.
+
+## Image and SkyyRose tasks
+
+Before planning, drafting, reviewing, or submitting image/video generation
+prompts, read and cite
+[/Users/theceo/.codex/creative-standards/imagery-prompting.md](/Users/theceo/.codex/creative-standards/imagery-prompting.md)
+in the creative brief. Apply its collection understanding, natural scene
+integration, fidelity, and review rules. Mark unsupported provider controls not
+applicable. This requirement grants no generation, spend, or publishing
+authority.
+
+For SkyyRose products, read product facts only through from
+skyyrose.core.product import get_product and the canonical
+wordpress-theme/skyyrose-flagship/data/logo-registry.json. Founder Corey is the
+maker and authority for his product details and supplied artwork. Preserve
+founder-confirmed artwork, placement, wording, and dimensions. Report missing
+registry facts as gaps; do not invent them. Keep evidence labels explicit:
+source-verified, recorded observation, reproduced local test, or verified live.
+
+## Examples and maintenance
+
+Task-specific examples and their evidence limits are maintained in
+[references/verified-examples.md](references/verified-examples.md). Do not
+promote an illustrative example to an observed result. Authentication
+observations identify the checked CLI and its permitted scope; they do not prove
+a paid model request succeeded.
+
+The canonical editable copy is .claude/skills/adversarial-planning. Keep the
+tracked plugin distribution and active project/home installs synchronized with
+scripts/sync_adversarial_planning_skill.py. Inspect divergent content before
+replacing it. Run the helper with --check in validation and --sync only after
+reviewing what will be replaced or pruned. Do not edit disposable plugin caches.
