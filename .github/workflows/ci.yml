@@ -81,7 +81,9 @@ jobs:
       - name: Install linting tools
         run: |
           python -m pip install --upgrade pip
-          pip install ruff black isort mypy
+          # Pinned to the .venv / pre-commit toolchain: unpinned installs drifted
+          # (isort 9 vs local 8 re-sorted imports the commit hook then reverted).
+          pip install ruff==0.15.2 black==26.3.1 isort==8.0.0 mypy
 
       - name: Run ruff (fast linter)
         run: ruff check . --output-format=github
