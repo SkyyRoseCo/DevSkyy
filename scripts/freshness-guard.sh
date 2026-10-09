@@ -11,9 +11,11 @@
 # unless --all/--fix forces all):
 #   1. SOT drift     — data/collections/<slug>/{sot.json,index.html} + design-tokens.css
 #                      must match the masters (logo-registry.json incl. its collections,
-#                      catalog.csv, visual-manifest.json).
+#                      catalog.csv, visual-manifest.json): bound assets exist, and
+#                      sot.json + data/sot-images.json byte-equal fresh generator output.
 #   2. Lookbook SOT drift — lookbook-manifest.json drives scripts/build-lookbook-sot.py,
-#                      then from-sot to docs/campaigns/sot-lookbook.html.
+#                      then from-sot to docs/campaigns/sot-lookbook.html. Also runs on
+#                      any check-1 trigger, since the lookbook is built from collection SOTs.
 #   3. .min staleness — every assets/css|js source has an up-to-date *.min.*
 #                      (production serves .min; a stale .min = an inert fix).
 #                      Both themes: skyyrose-flagship builds via wordpress-theme/
@@ -96,6 +98,12 @@ if [ "$MODE" = "--fix" ]; then
         c_bad "SOT regeneration failed (see /tmp/fg_fix_sot.log)"
         tail -8 /tmp/fg_fix_sot.log | sed 's/^/    /'
       }
+    (cd "$ROOT" && "$PY" -m skyyrose.core.sot_images) > /tmp/fg_fix_sot_images.log 2>&1 \
+      && c_ok "regenerated data/sot-images.json" \
+      || {
+        c_bad "sot-images regeneration failed (see /tmp/fg_fix_sot_images.log)"
+        tail -8 /tmp/fg_fix_sot_images.log | sed 's/^/    /'
+      }
     (cd "$ROOT" && "$PY" scripts/build-lookbook-sot.py) > /tmp/fg_fix_lookbook_sot.log 2>&1 \
       && c_ok "regenerated lookbook-sot.json" \
       || {
@@ -125,13 +133,14 @@ if [ "$MODE" = "--fix" ]; then
   git -C "$ROOT" add -- "$THEME/assets/css/design-tokens.css" \
     "$THEME/data/collections" "$THEME/assets/css" "$THEME/assets/js" \
     "$THEME2/assets/css" "$THEME2/assets/js" \
+    "$ROOT/data/sot-images.json" \
     "$ROOT/scripts/lookbook-manifest.json" "$ROOT/wordpress-theme/skyyrose-flagship/data/lookbook-sot.json" \
     "$ROOT/docs/campaigns/sot-lookbook.html" 2> /dev/null || true
   c_ok "re-staged regenerated derived files — review then commit"
 fi
 
 # ── CHECK 1: SOT drift ──────────────────────────────────────────────────────
-SOT_TRIGGER='wordpress-theme/skyyrose-flagship/data/(skyyrose-catalog\.csv|visual-manifest\.json|logo-registry\.json|collections/)|wordpress-theme/skyyrose-flagship/assets/css/design-tokens\.css'
+SOT_TRIGGER='wordpress-theme/skyyrose-flagship/data/(skyyrose-catalog\.csv|visual-manifest\.json|logo-registry\.json|collections/|build-collection-sot\.py|sot_common\.py)|wordpress-theme/skyyrose-flagship/assets/css/design-tokens\.css|skyyrose/core/(sot_images|product|product_registry|catalog_loader)\.py|data/sot-images\.json'
 if forced || staged_match "$SOT_TRIGGER"; then
   hdr "1. Collection SOT ↔ masters"
   if [ -x "$PY" ] && [ -f "$THEME/data/verify-collection-sot.py" ]; then
@@ -141,6 +150,13 @@ if forced || staged_match "$SOT_TRIGGER"; then
       c_bad "SOT DRIFT — run: bash scripts/freshness-guard.sh --fix   (then git add + recommit)"
       grep -E '✗|missing|drift|not in' /tmp/fg_sot.log | head -8 | sed 's/^/    /'
     fi
+    # Asset presence alone passes a stale-but-valid view; also byte-compare to the generators.
+    if "$PY" scripts/validate_catalog_consistency.py --checks collection_sot_current,sot_images_current > /tmp/fg_sot_bytes.log 2>&1; then
+      c_ok "collection sot.json and data/sot-images.json match fresh generator output"
+    else
+      c_bad "SOT projections stale — run: bash scripts/freshness-guard.sh --fix   (then git add + recommit)"
+      grep -F '[FAIL]' /tmp/fg_sot_bytes.log | sed 's/^/    /'
+    fi
   else
     c_skip "SOT check skipped (no .venv python / verifier)"
   fi
@@ -148,7 +164,7 @@ fi
 
 # ── CHECK 2: Lookbook SOT + HTML drift ──────────────────────────────────────
 LOOKBOOK_TRIGGER='scripts/lookbook-manifest\.json|scripts/build-lookbook-sot\.py|scripts/build-lookbook-from-sot\.py|wordpress-theme/skyyrose-flagship/data/lookbook-sot\.json|docs/campaigns/sot-lookbook\.html'
-if forced || staged_match "$LOOKBOOK_TRIGGER"; then
+if forced || staged_match "$LOOKBOOK_TRIGGER" || staged_match "$SOT_TRIGGER"; then
   hdr "2. Lookbook SOT ↔ derived HTML"
   if [ -x "$PY" ]; then
     if "$PY" scripts/validate_catalog_consistency.py --checks lookbook_sot_current,lookbook_html_current > /tmp/fg_lookbook_guard.log 2>&1; then
