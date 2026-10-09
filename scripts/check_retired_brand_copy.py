@@ -107,21 +107,36 @@ ALLOWLIST: tuple[AllowEntry, ...] = (
 )  # fmt: skip
 
 
-def count_retired_copy(text: str) -> int:
-    """Count case, punctuation, whitespace, markup, and hashtag variants."""
-    # View 1 strips real HTML tags so `Luxury<br>Grows` joins up (`<?php` and `=>`
-    # must not swallow text). View 2 keeps everything so attribute values
-    # (`alt`, `content`, `title`, ...) are seen. A hit in either view counts.
-    views = (re.sub(r"</?[A-Za-z][^<>]*>", "", text), text)
-    return max(_count_in(html.unescape(view)) for view in views)
+_TAG = re.compile(r"""</?[A-Za-z](?:"[^"]*"|'[^']*'|[^<>"'])*>""")
+_ATTR = re.compile(r"""[\w:.-]+\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'<>]+))""")
 
 
-def _count_in(text: str) -> int:
-    normalized = re.sub(r"[^a-z]", "", text.lower())
+def _count_letters(text: str) -> int:
+    """Count the phrase in `text` after folding case, punctuation and entities."""
+    normalized = re.sub(r"[^a-z]", "", html.unescape(text).lower())
     windows = re.finditer(rf"(?=(l[a-z]{{{RETIRED_LENGTH - 2}}}e))", normalized)
     return sum(
         hashlib.sha256(match.group(1).encode()).hexdigest() == RETIRED_DIGEST for match in windows
     )
+
+
+def count_retired_copy(text: str) -> int:
+    """Count case, punctuation, whitespace, markup, and hashtag variants.
+
+    Two independent streams are summed, so nothing is counted twice:
+    the text stream (every real HTML tag replaced by one space, so a phrase
+    split across tags still joins up) and each attribute value on its own
+    (every attribute, no exclusions: alt, href slugs, data-*, class, ...).
+    `<?php` and `=>` are not tags.
+    """
+    attribute_values: list[str] = []
+
+    def drop_tag(match: re.Match[str]) -> str:
+        attribute_values.extend(v for groups in _ATTR.findall(match.group(0)) for v in groups if v)
+        return " "
+
+    text_stream = _TAG.sub(drop_tag, text)
+    return _count_letters(text_stream) + sum(_count_letters(v) for v in attribute_values)
 
 
 def contains_retired_copy(text: str) -> bool:
@@ -154,19 +169,25 @@ def find_violations(
     problems: list[str] = []
     for name in names:
         path = root / name
-        if path.is_symlink() or not path.is_file():
-            continue
-        if path.suffix.lower() in BINARY_EXTENSIONS:
-            continue
-        try:
-            text = path.read_bytes().decode("utf-8")
-        except UnicodeError:
-            problems.append(f"Cannot decode as UTF-8 (add to BINARY_EXTENSIONS if binary): {name}")
-            continue
-        except OSError as exc:
-            problems.append(f"Cannot read {name}: {exc.strerror or exc}")
-            continue
-        count = count_retired_copy(text) + count_retired_copy(name)
+        # The path name is checked for every entry; binaries and symlinks only
+        # skip the content scan.
+        count = count_retired_copy(name)
+        scannable = (
+            path.is_file()
+            and not path.is_symlink()
+            and path.suffix.lower() not in BINARY_EXTENSIONS
+        )
+        if scannable:
+            try:
+                count += count_retired_copy(path.read_bytes().decode("utf-8"))
+            except UnicodeError:
+                problems.append(
+                    f"Cannot decode as UTF-8 (add to BINARY_EXTENSIONS if binary): {name}"
+                )
+                continue
+            except OSError as exc:
+                problems.append(f"Cannot read {name}: {exc.strerror or exc}")
+                continue
         if not count:
             continue
         entry = _allowance(name, allowlist)

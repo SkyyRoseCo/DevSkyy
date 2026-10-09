@@ -39,6 +39,9 @@ syncer = load_module(
 )
 
 
+_REAL_DEFAULT_SETTINGS_PATHS = planning.default_claude_settings_paths
+
+
 def doctor_report(*, terminal_failure: bool = False) -> dict[str, Any]:
     checks = [
         {"id": check_id, "status": "pass"} for check_id in sorted(planning.CRITICAL_DOCTOR_CHECKS)
@@ -257,7 +260,7 @@ def test_live_preflight_schema_and_terminal_exception_are_fail_closed(tmp_path):
             else:
                 pytest.fail("unexpected git identity query")
             return subprocess.CompletedProcess(argv, 0, stdout=output, stderr="")
-        pytest.fail("unexpected readiness command")
+        raise AssertionError("unexpected readiness command")
 
     result = planning.preflight(
         tmp_path,
@@ -298,7 +301,7 @@ def test_preflight_blocks_unverified_claude_provider_routes(tmp_path, environmen
             return subprocess.CompletedProcess(
                 argv, 0, stdout='{"loggedIn":true,"authMethod":"claude.ai"}', stderr=""
             )
-        pytest.fail("provider mismatch must block before Codex doctor")
+        raise AssertionError("provider mismatch must block before Codex doctor")
 
     env = {
         **environment,
@@ -598,7 +601,12 @@ def test_malformed_manifest_provider_records_block_cleanly(record, provider_key)
 
 
 class FakeRunner:
-    def __init__(self, challenges=None, actions=None):
+    def __init__(self, challenges=None, actions=None, plan_flags=None):
+        self.plan_flags = {
+            "requires_image_generation": False,
+            "requires_publish_or_deploy": False,
+            **(plan_flags or {}),
+        }
         self.challenges = challenges or [
             {"satisfied": True, "blocking_objections": [], "specific_challenge": ""}
         ]
@@ -619,6 +627,7 @@ class FakeRunner:
             ],
             "risks": [],
             "blocking_unknowns": [],
+            **self.plan_flags,
         }
 
     def challenge(self, task, plan, round_number, transcript):
@@ -680,6 +689,8 @@ def test_plan_blocking_unknowns_prevent_convergence_even_if_challenger_says_yes(
             ],
             "risks": [],
             "blocking_unknowns": ["The source owner is not identified."],
+            "requires_image_generation": False,
+            "requires_publish_or_deploy": False,
         }
 
     runner.plan = unresolved_plan
@@ -768,13 +779,23 @@ def test_local_runner_uses_fable_and_never_sets_a_codex_model(monkeypatch, tmp_p
 
 
 @pytest.fixture(autouse=True)
+def _no_ambient_claude_settings(monkeypatch):
+    """Preflight must never read the developer's real Claude settings in tests."""
+    monkeypatch.setattr(planning, "default_claude_settings_paths", lambda _repo, _env: [])
+
+
+@pytest.fixture(autouse=True)
 def _isolated_ledger_dir(monkeypatch, tmp_path):
     """No test may write a single-use claim into the real per-user ledger."""
     monkeypatch.setattr(planning, "default_ledger_dir", lambda: tmp_path / "ledger-state")
 
 
 def _prepared_run(
-    monkeypatch, tmp_path, plan_action="Inspect source.txt without changing repository facts."
+    monkeypatch,
+    tmp_path,
+    plan_action="Inspect source.txt without changing repository facts.",
+    plan_flags=None,
+    on_execute=None,
 ):
     """Prepare a real manifest in a throwaway repo with every provider call stubbed."""
     repo = tmp_path / "repo"
@@ -858,6 +879,9 @@ def _prepared_run(
         ],
         "risks": [],
         "blocking_unknowns": [],
+        "requires_image_generation": False,
+        "requires_publish_or_deploy": False,
+        **(plan_flags or {}),
     }
     challenge = {
         "satisfied": True,
@@ -896,7 +920,10 @@ def _prepared_run(
                 argv, 0, stdout=json.dumps({"structured_output": response}), stderr=""
             )
         output_path = Path(argv[argv.index("--output-last-message") + 1])
-        response = challenge if argv[argv.index("--sandbox") + 1] == "read-only" else execution
+        read_only = argv[argv.index("--sandbox") + 1] == "read-only"
+        if not read_only and on_execute is not None:
+            on_execute(repo)
+        response = challenge if read_only else execution
         output_path.write_text(json.dumps(response), encoding="utf-8")
         return subprocess.CompletedProcess(argv, 0, stdout="{}", stderr="")
 
@@ -1099,6 +1126,8 @@ def test_r5_mocked_plan_preserves_all_37_gates_and_love_hurts_artwork_source():
         ],
         "risks": ["Local role reconciliation is not media approval."],
         "blocking_unknowns": [],
+        "requires_image_generation": False,
+        "requires_publish_or_deploy": False,
     }
     runner = FakeRunner()
     runner.plan = lambda _task, _prior, _transcript: plan
@@ -1330,3 +1359,201 @@ def test_copying_a_manifest_cannot_mint_a_fresh_claim(tmp_path):
 def test_consume_manifest_rejects_a_malformed_hash(tmp_path):
     with pytest.raises(planning.GateBlocked, match="malformed"):
         planning.consume_manifest(tmp_path / "m.json", "../escape", ledger_dir=tmp_path / "l")
+
+
+def _approve(monkeypatch, manifest, extra=()):
+    answers = iter(["y", manifest["manifest_sha256"], *extra])
+    monkeypatch.setattr("builtins.input", lambda _prompt: next(answers))
+
+
+def _review_prompts(provider_calls):
+    return [p for argv, p in provider_calls if argv[0] == "claude" and "Review the actual" in p]
+
+
+def test_execution_outside_the_declared_paths_blocks_without_reverting(
+    monkeypatch, tmp_path, capsys
+):
+    def stray_write(repo):
+        (repo / "stray.txt").write_text("not in the plan\n", encoding="utf-8")
+
+    repo, task_file, manifest_path, manifest, provider_calls = _prepared_run(
+        monkeypatch, tmp_path, on_execute=stray_write
+    )
+    _approve(monkeypatch, manifest)
+    assert planning.main(_run_argv(repo, task_file, manifest_path), stdin_tty=True) == 2
+    err = capsys.readouterr().err
+    assert "BLOCKED" in err and "stray.txt" in err
+    assert (repo / "stray.txt").exists()
+    assert _review_prompts(provider_calls) == []
+
+
+def test_in_plan_edit_passes_and_reviewer_receives_the_real_diff(monkeypatch, tmp_path, capsys):
+    def edit_only_source(repo):
+        (repo / "source.txt").write_text("source fixture\nEDITED LINE\n", encoding="utf-8")
+
+    repo, task_file, manifest_path, manifest, provider_calls = _prepared_run(
+        monkeypatch, tmp_path, on_execute=edit_only_source
+    )
+    _approve(monkeypatch, manifest)
+    assert planning.main(_run_argv(repo, task_file, manifest_path), stdin_tty=True) == 0
+    (prompt,) = _review_prompts(provider_calls)
+    assert "REPOSITORY DIFF:" in prompt and "+EDITED LINE" in prompt
+    assert "EXECUTION_COMPLETE" in capsys.readouterr().out
+
+
+def test_truncated_review_diff_can_never_pass(monkeypatch, tmp_path, capsys):
+    def edit_source(repo):
+        (repo / "source.txt").write_text("x" * 5000 + "\n", encoding="utf-8")
+
+    monkeypatch.setattr(planning, "MAX_REVIEW_DIFF_BYTES", 200)
+    repo, task_file, manifest_path, manifest, provider_calls = _prepared_run(
+        monkeypatch, tmp_path, on_execute=edit_source
+    )
+    _approve(monkeypatch, manifest)
+    assert planning.main(_run_argv(repo, task_file, manifest_path), stdin_tty=True) == 3
+    out = capsys.readouterr().out
+    assert "NEEDS_REVIEW" in out and "truncated" in out
+    assert "[TRUNCATED" in _review_prompts(provider_calls)[0]
+
+
+@pytest.mark.parametrize(
+    "flag",
+    ["requires_image_generation", "requires_publish_or_deploy"],
+)
+def test_structured_flags_trigger_the_separate_gate_without_keywords(flag):
+    runner = FakeRunner(actions=["Upload the site to production."], plan_flags={flag: True})
+    result = planning.run_debate("A task.", "plan_and_execute", runner)
+    assert result["status"] == "NEEDS_REVIEW"
+    assert runner.executions == 0
+
+
+def test_plan_missing_the_required_flags_is_a_schema_failure():
+    runner = FakeRunner()
+    original_plan = runner.plan
+
+    def plan_without_flags(task, prior, transcript):
+        plan = original_plan(task, prior, transcript)
+        del plan["requires_publish_or_deploy"]
+        return plan
+
+    runner.plan = plan_without_flags
+    with pytest.raises(planning.GateBlocked, match="requires_publish_or_deploy"):
+        planning.run_debate("A task.", "plan_and_execute", runner)
+    assert runner.executions == 0
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        "https://api.openai.com/v1",
+        "https://api.openai.com/v1/",
+        "https://api.openai.com",
+        "https://api.openai.com/",
+    ],
+)
+def test_openai_base_url_env_accepts_only_the_first_party_endpoint(value):
+    planning._validate_openai_env({"OPENAI_BASE_URL": value})
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        "https://third-party.example/v1",
+        "http://api.openai.com/v1",
+        "https://api.openai.com.evil.example/v1",
+        "https://user:pw@api.openai.com/v1",
+        "https://api.openai.com:8443/v1",
+        "https://api.openai.com/v1/extra",
+        "https://api.openai.com/v1?x=1",
+        "",
+    ],
+)
+def test_openai_base_url_env_override_blocks_everything_else(value):
+    with pytest.raises(planning.GateBlocked, match="OPENAI_BASE_URL"):
+        planning._validate_openai_env({"OPENAI_BASE_URL": value})
+
+
+def test_codex_model_resolution_blocks_a_foreign_openai_base_url_from_the_environment(tmp_path):
+    home = tmp_path / "codex-home"
+    home.mkdir()
+    env = {"CODEX_HOME": str(home), "OPENAI_BASE_URL": "https://third-party.example/v1"}
+    with pytest.raises(planning.GateBlocked, match="OPENAI_BASE_URL"):
+        planning.resolve_codex_model(tmp_path, env)
+    assert planning.resolve_codex_model(tmp_path, {"CODEX_HOME": str(home)}).provider
+
+
+@pytest.mark.parametrize(
+    "settings",
+    [
+        {"env": {"ANTHROPIC_BASE_URL": "https://gateway.example"}},
+        {"env": {"CLAUDE_CODE_USE_BEDROCK": "1"}},
+        {"env": {"CLAUDE_CODE_USE_VERTEX": True}},
+        {"env": {"CLAUDE_CODE_USE_FOUNDRY": "true"}},
+        {"env": {"ANTHROPIC_AUTH_TOKEN": "secret-value"}},
+        {"apiKeyHelper": "/bin/print-key"},
+        {"env": "not-an-object"},
+        ["not", "an", "object"],
+    ],
+)
+def test_claude_settings_files_cannot_reroute_the_provider(tmp_path, settings):
+    path = tmp_path / "settings.json"
+    path.write_text(json.dumps(settings), encoding="utf-8")
+    with pytest.raises(planning.GateBlocked) as caught:
+        planning._validate_claude_settings(path)
+    assert "secret-value" not in str(caught.value)
+
+
+def test_claude_settings_absent_or_clean_pass_but_malformed_blocks(tmp_path):
+    planning._validate_claude_settings(tmp_path / "missing.json")
+    clean = tmp_path / "clean.json"
+    clean.write_text(
+        json.dumps({"env": {"ANTHROPIC_BASE_URL": "https://api.anthropic.com/"}}), encoding="utf-8"
+    )
+    planning._validate_claude_settings(clean)
+    broken = tmp_path / "broken.json"
+    broken.write_text("{not json", encoding="utf-8")
+    with pytest.raises(planning.GateBlocked, match="not valid JSON"):
+        planning._validate_claude_settings(broken)
+
+
+def test_preflight_reads_injected_claude_settings_before_any_provider_call(tmp_path):
+    settings = tmp_path / "settings.local.json"
+    settings.write_text(json.dumps({"env": {"CLAUDE_CODE_USE_BEDROCK": "1"}}), encoding="utf-8")
+    calls = []
+
+    def fake_command(argv, **_kwargs):
+        calls.append(argv)
+        outputs = {
+            ("claude", "--version"): "Claude Code test",
+            (
+                "claude",
+                "--help",
+            ): "--model <model> Provide an alias for the latest model (e.g. 'fable').",
+            ("codex", "--version"): "codex-cli test",
+            ("claude", "auth", "status", "--json"): '{"loggedIn":true,"authMethod":"claude.ai"}',
+        }
+        if tuple(argv) not in outputs:
+            raise AssertionError("must block before Codex doctor")
+        return subprocess.CompletedProcess(argv, 0, stdout=outputs[tuple(argv)], stderr="")
+
+    with pytest.raises(planning.GateBlocked, match="non-Anthropic provider"):
+        planning.preflight(
+            tmp_path,
+            command=fake_command,
+            env={"TERM": "dumb", "CODEX_HOME": str(tmp_path / "codex-home")},
+            stdin_tty=False,
+            stdout_tty=False,
+            stderr_tty=False,
+            claude_settings_paths=[settings],
+        )
+    assert ["codex", "doctor", "--json"] not in calls
+
+
+def test_default_claude_settings_paths_cover_user_project_local_and_managed(tmp_path):
+    paths = _REAL_DEFAULT_SETTINGS_PATHS(tmp_path, {"CLAUDE_CONFIG_DIR": str(tmp_path / "cfg")})
+    assert paths[:3] == [
+        tmp_path / "cfg" / "settings.json",
+        tmp_path / ".claude" / "settings.json",
+        tmp_path / ".claude" / "settings.local.json",
+    ]
+    assert any(path.name == "managed-settings.json" for path in paths[3:])

@@ -167,3 +167,52 @@ def test_stale_entries_are_reported_not_failed(
     stale = guard.find_stale(repo, guard.tracked_paths(repo), allow)
     assert len(stale) == 2 and all("Stale" in m for m in stale)
     assert run(repo, allow) == []
+
+
+def test_mixed_attribute_and_tag_split_occurrences_count_both(repo: Path) -> None:
+    split = "<br>".join([W[0], " ".join(W[1:3]), W[3]])
+    text = f'<img alt="{PHRASE}"> <h2 class="t">{split}</h2>'
+    assert guard.count_retired_copy(text) == 2
+    write(repo, "kept/page.html", text)
+    allow = (guard.AllowEntry("kept/page.html", "kept", 1),)
+    problems = run(repo, allow)
+    assert len(problems) == 1 and "2 found, 1 allowed" in problems[0]
+
+
+def test_class_attribute_between_split_tags_does_not_hide_phrase(repo: Path) -> None:
+    text = "".join(f'<span class="line-{i}" data-reveal>{w}</span>' for i, w in enumerate(W))
+    assert guard.count_retired_copy(text) == 1
+
+
+def test_binary_extension_file_name_with_phrase_fails(repo: Path) -> None:
+    write(repo, "img/" + PHRASE.lower().replace(" ", "-") + ".png", b"\x89PNG\x00")
+    assert run(repo) == [
+        "Retired brand copy must be removed: img/" + PHRASE.lower().replace(" ", "-") + ".png"
+    ]
+
+
+def test_symlink_name_with_phrase_fails(repo: Path) -> None:
+    write(repo, "clean.txt", "fine")
+    link = repo / (PHRASE.lower().replace(" ", "-") + ".txt")
+    link.symlink_to(repo / "clean.txt")
+    assert len(run(repo)) == 1
+
+
+def test_phrase_in_href_slug_is_detected(repo: Path) -> None:
+    slug = "-".join(w.lower() for w in W)
+    assert guard.count_retired_copy(f'<a href="/{slug}/">x</a>') == 1
+    assert guard.count_retired_copy(f'<a href="/{"_".join(W)}">x</a>') == 1
+
+
+def test_phrase_in_data_attribute_is_detected(repo: Path) -> None:
+    assert guard.count_retired_copy(f"<div data-tagline='{PHRASE}'></div>") == 1
+    assert guard.count_retired_copy(f'<div class="{PHRASE}"></div>') == 1
+
+
+def test_quoted_angle_bracket_in_attribute_does_not_end_the_tag(repo: Path) -> None:
+    assert guard.count_retired_copy(f'<img alt="a > b" title="{PHRASE}">') == 1
+
+
+def test_tag_split_phrase_with_span_still_matches(repo: Path) -> None:
+    text = f'{W[0]}<span class="x">{W[1]} {W[2]}</span> {W[3]}'
+    assert guard.count_retired_copy(text) == 1

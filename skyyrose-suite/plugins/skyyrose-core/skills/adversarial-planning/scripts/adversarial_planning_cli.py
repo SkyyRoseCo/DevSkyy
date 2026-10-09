@@ -18,7 +18,7 @@ import sys
 import tempfile
 import tomllib
 import uuid
-from collections.abc import Callable
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -28,6 +28,7 @@ from urllib.parse import urlsplit
 MAX_ROUNDS = 3
 MANIFEST_TTL_MINUTES = 10
 CONSUMED_SUFFIX = ".consumed"
+MAX_REVIEW_DIFF_BYTES = 200_000
 CRITICAL_DOCTOR_CHECKS = {
     "auth.credentials",
     "config.load",
@@ -40,10 +41,19 @@ NONBLOCKING_TERMINAL_DIAGNOSTIC = "term=dumb - colors and cursor control are dis
 
 PLAN_SCHEMA = {
     "type": "object",
-    "required": ["summary", "steps", "risks", "blocking_unknowns"],
+    "required": [
+        "summary",
+        "steps",
+        "risks",
+        "blocking_unknowns",
+        "requires_image_generation",
+        "requires_publish_or_deploy",
+    ],
     "additionalProperties": False,
     "properties": {
         "summary": {"type": "string"},
+        "requires_image_generation": {"type": "boolean"},
+        "requires_publish_or_deploy": {"type": "boolean"},
         "steps": {
             "type": "array",
             "items": {
@@ -236,6 +246,35 @@ def _validate_openai_endpoint(value: Any) -> None:
         raise GateBlocked("Codex OpenAI provider uses an unverified endpoint")
 
 
+def _validate_openai_env(environment: Mapping[str, str]) -> None:
+    """Refuse an OPENAI_BASE_URL override that is not the first-party OpenAI API.
+
+    Codex honors OPENAI_BASE_URL (present in the installed binary; OPENAI_API_BASE is
+    not). A trailing slash and an omitted ``/v1`` are tolerated; anything else,
+    including an empty value, blocks before any call.
+    """
+    if "OPENAI_BASE_URL" not in environment:
+        return
+    value = environment["OPENAI_BASE_URL"]
+    blocked = GateBlocked("Codex OPENAI_BASE_URL does not point at the OpenAI API")
+    try:
+        parsed = urlsplit(value.strip())
+        port = parsed.port
+    except ValueError as exc:
+        raise blocked from exc
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname != "api.openai.com"
+        or parsed.username is not None
+        or parsed.password is not None
+        or port is not None
+        or parsed.query
+        or parsed.fragment
+        or parsed.path.rstrip("/") not in {"", "/v1"}
+    ):
+        raise blocked
+
+
 def _validate_openai_routing(system: dict[str, Any], user: dict[str, Any]) -> str:
     """Validate provider routing from machine/user config only.
 
@@ -311,6 +350,7 @@ def resolve_codex_model(repo: Path, env: dict[str, str] | None = None) -> CodexM
     merged.update(user)
     merged.update(project)
     _validate_openai_routing(system, user)
+    _validate_openai_env(environment)
     model = merged.get("model")
     if model is not None and not isinstance(model, str):
         raise GateBlocked("configured Codex model is malformed")
@@ -413,6 +453,66 @@ def run_command(
     )
 
 
+CLAUDE_PROVIDER_SWITCHES = (
+    "CLAUDE_CODE_USE_BEDROCK",
+    "CLAUDE_CODE_USE_VERTEX",
+    "CLAUDE_CODE_USE_FOUNDRY",
+)
+
+
+def _validate_claude_provider_env(source: Mapping[str, Any]) -> None:
+    """Apply the provider refusal rules to a process env or a settings ``env`` block."""
+    for name in CLAUDE_PROVIDER_SWITCHES:
+        if str(source.get(name, "")).strip().lower() in {"1", "true", "yes"}:
+            raise GateBlocked("Claude is configured for a non-Anthropic provider")
+    base_url = source.get("ANTHROPIC_BASE_URL")
+    if base_url and (
+        not isinstance(base_url, str) or base_url.rstrip("/") != "https://api.anthropic.com"
+    ):
+        raise GateBlocked("Claude uses an unverified Anthropic API endpoint")
+
+
+def default_claude_settings_paths(repo: Path, environment: Mapping[str, str]) -> list[Path]:
+    """Every settings file Claude Code may load provider routing from."""
+    config_dir = environment.get("CLAUDE_CONFIG_DIR")
+    user_dir = Path(config_dir) if config_dir else Path.home() / ".claude"
+    return [
+        user_dir / "settings.json",
+        repo / ".claude" / "settings.json",
+        repo / ".claude" / "settings.local.json",
+        Path("/Library/Application Support/ClaudeCode/managed-settings.json"),
+        Path("/etc/claude-code/managed-settings.json"),
+    ]
+
+
+def _validate_claude_settings(path: Path) -> None:
+    """Block provider routing, tokens, or key helpers declared in a settings file.
+
+    An absent file is fine; unreadable or malformed JSON blocks. Values are never
+    echoed into the error.
+    """
+    try:
+        raw = path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return
+    except (OSError, UnicodeDecodeError) as exc:
+        raise GateBlocked(f"Claude settings cannot be read: {path}") from exc
+    try:
+        settings = json.loads(raw)
+    except ValueError as exc:
+        raise GateBlocked(f"Claude settings are not valid JSON: {path}") from exc
+    if not isinstance(settings, dict):
+        raise GateBlocked(f"Claude settings have an unexpected shape: {path}")
+    env_block = settings.get("env", {})
+    if not isinstance(env_block, dict):
+        raise GateBlocked(f"Claude settings env block is malformed: {path}")
+    _validate_claude_provider_env(env_block)
+    if env_block.get("ANTHROPIC_AUTH_TOKEN"):
+        raise GateBlocked("Claude settings define a gateway ANTHROPIC_AUTH_TOKEN")
+    if settings.get("apiKeyHelper"):
+        raise GateBlocked("Claude settings define an apiKeyHelper that cannot be verified")
+
+
 def preflight(
     repo: Path,
     *,
@@ -421,6 +521,7 @@ def preflight(
     stdin_tty: bool | None = None,
     stdout_tty: bool | None = None,
     stderr_tty: bool | None = None,
+    claude_settings_paths: Sequence[Path] | None = None,
 ) -> dict[str, Any]:
     environment = dict(os.environ if env is None else env)
 
@@ -442,18 +543,13 @@ def preflight(
     auth_method = auth.get("authMethod")
     if auth_method not in {"claude.ai", "console", "api_key"}:
         raise GateBlocked("Claude authentication provider cannot be verified as Anthropic")
-    if any(
-        environment.get(name, "").strip().lower() in {"1", "true", "yes"}
-        for name in (
-            "CLAUDE_CODE_USE_BEDROCK",
-            "CLAUDE_CODE_USE_VERTEX",
-            "CLAUDE_CODE_USE_FOUNDRY",
-        )
+    _validate_claude_provider_env(environment)
+    for settings_path in (
+        default_claude_settings_paths(repo, environment)
+        if claude_settings_paths is None
+        else claude_settings_paths
     ):
-        raise GateBlocked("Claude is configured for a non-Anthropic provider")
-    anthropic_base_url = environment.get("ANTHROPIC_BASE_URL")
-    if anthropic_base_url and anthropic_base_url.rstrip("/") != "https://api.anthropic.com":
-        raise GateBlocked("Claude uses an unverified Anthropic API endpoint")
+        _validate_claude_settings(settings_path)
     doctor_result = command(
         ["codex", "doctor", "--json"],
         cwd=repo,
@@ -703,19 +799,22 @@ class PlanningRunner(Protocol):
 
     def plan(
         self, task: str, prior: dict[str, Any] | None, transcript: list[dict[str, Any]]
-    ) -> dict[str, Any]: ...
+    ) -> dict[str, Any]:
+        """Return the structured result for this step."""
 
     def challenge(
         self, task: str, plan: dict[str, Any], round_number: int, transcript: list[dict[str, Any]]
-    ) -> dict[str, Any]: ...
+    ) -> dict[str, Any]:
+        """Return the structured result for this step."""
 
-    def pre_execution_gate(self, plan: dict[str, Any]) -> None: ...
+    def pre_execution_gate(self, plan: dict[str, Any]) -> None:
+        """Raise GateBlocked unless the converged plan may execute here."""
 
-    def execute(self, task: str, plan: dict[str, Any]) -> dict[str, Any]: ...
+    def execute(self, task: str, plan: dict[str, Any]) -> dict[str, Any]:
+        """Return the structured result for this step."""
 
-    def review(
-        self, task: str, plan: dict[str, Any], execution: dict[str, Any]
-    ) -> dict[str, Any]: ...
+    def review(self, task: str, plan: dict[str, Any], execution: dict[str, Any]) -> dict[str, Any]:
+        """Return the structured result for this step."""
 
 
 def require_interactive_terminal(stdin_tty: bool | None = None) -> None:
@@ -825,9 +924,11 @@ def run_debate(
     if mode != "plan_and_execute":
         raise GateBlocked("unknown execution mode")
     runner.pre_execution_gate(plan)
+    declared_images = plan["requires_image_generation"] is True
+    declared_publish = plan["requires_publish_or_deploy"] is True
     scope = " ".join(step["action"] for step in plan.get("steps", [])).lower()
     scope = re.sub(r"\b(?:do not|don't|never|without|no)\b[^.;,\n]*", "", scope)
-    if re.search(
+    if declared_images or re.search(
         r"\b(?:generate|create|produce|render|submit|invoke|call)\b.{0,60}"
         r"\b(?:images?|visuals?|artwork|media|videos?|backgrounds?|scenes?|assets?)\b"
         r"|\bimage[- ]?gen\b|\bvideo generation\b",
@@ -843,7 +944,7 @@ def run_debate(
                 "transcript": transcript,
                 "reason": "separate image-generation authorization is required",
             }
-    if re.search(r"\b(?:publish|deploy|go live)\b|\brelease to live\b", scope):
+    if declared_publish or re.search(r"\b(?:publish|deploy|go live)\b|\brelease to live\b", scope):
         if not publishing_approval and gate_approver:
             publishing_approval = gate_approver("publishing or deployment", plan)
         if publishing_approval != "y":
@@ -884,6 +985,96 @@ class CliRunner:
     def __init__(self, repo: Path, expected_checkout_identity: dict[str, str] | None = None):
         self.repo = repo
         self.expected_checkout_identity = expected_checkout_identity
+        self._declared_paths: set[str] = set()
+        self._baseline: dict[str, str] = {}
+        self._diff_truncated = False
+
+    def _snapshot(self) -> dict[str, str]:
+        """Fingerprint every dirty path (status plus content) in the checkout."""
+        status = run_command(
+            ["git", "status", "--porcelain", "-z", "--untracked-files=all"], cwd=self.repo
+        )
+        if status.returncode:
+            raise GateBlocked("cannot inspect checkout state around execution")
+        records = status.stdout.split(chr(0))
+        snapshot: dict[str, str] = {}
+        index = 0
+        while index < len(records):
+            record = records[index]
+            index += 1
+            if len(record) < 4:
+                continue
+            code, name = record[:2], record[3:]
+            names = [name]
+            if code[0] in "RC" or code[1] in "RC":
+                names.append(records[index])
+                index += 1
+            for item in names:
+                target = self.repo / item
+                if target.is_symlink():
+                    content = "link:" + os.readlink(target)
+                elif target.is_file():
+                    content = hashlib.sha256(target.read_bytes()).hexdigest()
+                else:
+                    content = "absent"
+                snapshot[item] = f"{code}:{content}"
+        return snapshot
+
+    def _is_declared(self, name: str) -> bool:
+        return any(name == path or name.startswith(path + "/") for path in self._declared_paths)
+
+    def _post_execution_check(self) -> None:
+        after = self._snapshot()
+        changed = sorted(
+            name
+            for name in after.keys() | self._baseline.keys()
+            if after.get(name, "clean") != self._baseline.get(name, "clean")
+        )
+        outside = [name for name in changed if not self._is_declared(name)]
+        if outside:
+            raise GateBlocked(
+                "execution changed paths outside the plan (nothing was reverted): "
+                + ", ".join(outside)
+            )
+
+    def _execution_diff(self) -> str:
+        """Independently captured diff of the declared paths, capped and marked."""
+        declared = sorted(self._declared_paths)
+        diff = ""
+        if declared:
+            result = run_command(
+                ["git", "diff", "HEAD", "--no-ext-diff", "--no-textconv", "--no-color", "--"]
+                + declared,
+                cwd=self.repo,
+            )
+            if result.returncode:
+                raise GateBlocked("cannot capture the execution diff for review")
+            diff = result.stdout
+        untracked = run_command(
+            ["git", "ls-files", "--others", "--exclude-standard", "-z", "--"] + declared,
+            cwd=self.repo,
+        )
+        if declared and untracked.returncode:
+            raise GateBlocked("cannot list new files for review")
+        parts = [diff]
+        for name in sorted(filter(None, untracked.stdout.split(chr(0)) if declared else [])):
+            data = (self.repo / name).read_bytes()
+            try:
+                body = data.decode("utf-8")
+            except UnicodeDecodeError:
+                body = (
+                    f"[binary file, {len(data)} bytes, sha256 {hashlib.sha256(data).hexdigest()}]"
+                )
+            parts.append(f"--- /dev/null\n+++ NEW FILE {name}\n{body}\n")
+        text = "".join(parts)
+        encoded = text.encode("utf-8")
+        self._diff_truncated = len(encoded) > MAX_REVIEW_DIFF_BYTES
+        if self._diff_truncated:
+            text = (
+                encoded[:MAX_REVIEW_DIFF_BYTES].decode("utf-8", errors="ignore")
+                + f"\n[TRUNCATED: diff exceeded {MAX_REVIEW_DIFF_BYTES} bytes]\n"
+            )
+        return text or "[no changes in declared paths]\n"
 
     def _claude(self, prompt: str, schema: dict[str, Any]) -> dict[str, Any]:
         command = [
@@ -987,6 +1178,8 @@ class CliRunner:
         )
         if overlaps:
             raise GateBlocked("plan overlaps existing dirty work: " + ", ".join(overlaps))
+        self._declared_paths = paths
+        self._baseline = self._snapshot()
 
     def plan(
         self, task: str, prior: dict[str, Any] | None, transcript: list[dict[str, Any]]
@@ -994,7 +1187,9 @@ class CliRunner:
         if prior is None:
             prompt = (
                 "Create a source-bound implementation plan. Identify concrete steps, affected files, "
-                "a falsifiable check for each step, risks, and blocking unknowns. Do not execute.\n\n"
+                "a falsifiable check for each step, risks, and blocking unknowns. Set requires_image_generation "
+                "and requires_publish_or_deploy to true if any step generates media or publishes, "
+                "deploys, uploads, or otherwise changes a live system. Do not execute.\n\n"
                 "TASK:\n" + task
             )
         else:
@@ -1033,20 +1228,35 @@ class CliRunner:
             + canonical_json(plan)
         )
         value, raw = self._codex(prompt, EXECUTION_SCHEMA, "workspace-write")
+        self._post_execution_check()
         return {**value, "codex_verbatim": raw}
 
     def review(self, task: str, plan: dict[str, Any], execution: dict[str, Any]) -> dict[str, Any]:
+        diff = self._execution_diff()
         prompt = (
-            "Review the actual execution report and repository changes against the plan. You have read-only "
-            "tools; inspect named files/diffs if needed. Do not change files. Do not infer success from plan text.\n"
+            "Review the actual execution report and repository changes against the plan. The repository "
+            "diff below was captured independently of the executor. You have read-only "
+            "tools; inspect named files if needed. Do not change files. Do not infer success from plan text.\n"
             "TASK:\n"
             + task
             + "\nPLAN:\n"
             + canonical_json(plan)
             + "\nEXECUTION EVIDENCE:\n"
             + canonical_json(execution)
+            + "\nREPOSITORY DIFF:\n"
+            + diff
         )
-        return self._claude(prompt, REVIEW_SCHEMA)
+        review = self._claude(prompt, REVIEW_SCHEMA)
+        if self._diff_truncated:
+            review = {
+                **review,
+                "ship": False,
+                "deviations": [
+                    *review.get("deviations", []),
+                    "review diff was truncated; the reviewer did not see the full change",
+                ],
+            }
+        return review
 
 
 def _read_text(path: Path) -> str:

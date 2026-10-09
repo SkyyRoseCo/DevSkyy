@@ -106,6 +106,14 @@ keyed by manifest hash in a per-user state directory, so copying a manifest to
 another path does not reset it. To run again, prepare a new manifest at a new
 path.
 
+Plans must declare `requires_image_generation` and `requires_publish_or_deploy`;
+either being true (or a keyword hit) requires the separate typed approval. After
+execution the CLI blocks, without reverting, if any path outside the plan's
+declared files changed, and the reviewer receives a locally captured diff
+(truncation forces a non-passing verdict). Provider routing is refused when
+`OPENAI_BASE_URL`, the Claude settings `env` blocks, or `apiKeyHelper` point
+away from the first-party endpoints.
+
 From the repository root:
 
     python3 .claude/skills/adversarial-planning/scripts/adversarial_planning_cli.py prepare --task-file /path/to/task.md --manifest /tmp/adversarial-planning.json --mode plan_only --runner local_cli
