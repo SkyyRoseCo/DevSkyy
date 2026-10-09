@@ -67,6 +67,9 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
 
+      - name: Reject retired brand copy
+        run: python scripts/check_retired_brand_copy.py
+
       - name: Get pip cache dir
         id: pip-cache
         shell: bash
