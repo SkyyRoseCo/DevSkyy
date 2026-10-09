@@ -18,7 +18,6 @@ from __future__ import annotations
 
 import logging
 from pathlib import Path
-from typing import TYPE_CHECKING
 
 logger = logging.getLogger(__name__)
 
@@ -86,9 +85,7 @@ def get_skyyrose_context(*, force_rebuild: bool = False):
     try:
         from auggie_sdk.context import DirectContext
     except ImportError:
-        raise RuntimeError(
-            "auggie_sdk is not installed. Run: pip install auggie-sdk"
-        ) from None
+        raise RuntimeError("auggie_sdk is not installed. Run: pip install auggie-sdk") from None
 
     ctx = DirectContext.create()
     files = _collect_files()

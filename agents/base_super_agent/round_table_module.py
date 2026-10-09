@@ -24,9 +24,7 @@ try:
     from llm.round_table import ResponseScorer as ProductionResponseScorer
     from llm.round_table import RoundTableEntry as ProductionRoundTableEntry
     from llm.round_table import RoundTableResult as ProductionRoundTableResult
-    from llm.round_table import (
-        create_round_table,
-    )
+    from llm.round_table import create_round_table
 
     PRODUCTION_ROUND_TABLE_AVAILABLE = True
 except ImportError:

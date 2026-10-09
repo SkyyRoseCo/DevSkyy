@@ -7,6 +7,7 @@ session has exceeded the configured cap, 0 to allow.
 Cap is read from AUGGIE_SESSION_BUDGET_USD env var (default: $50).
 Spend is tracked in .augment/session-spend.json (append-only).
 """
+
 from __future__ import annotations
 
 import json
@@ -78,28 +79,32 @@ def main() -> int:
 
     if current_spend + matched_cost > cap:
         print(
-            json.dumps({
-                "decision": "block",
-                "reason": (
-                    f"Session budget cap ${cap:.2f} would be exceeded. "
-                    f"Current spend: ${current_spend:.2f}, "
-                    f"call cost: ${matched_cost:.2f}. "
-                    "Obtain explicit approval before proceeding."
-                ),
-            })
+            json.dumps(
+                {
+                    "decision": "block",
+                    "reason": (
+                        f"Session budget cap ${cap:.2f} would be exceeded. "
+                        f"Current spend: ${current_spend:.2f}, "
+                        f"call cost: ${matched_cost:.2f}. "
+                        "Obtain explicit approval before proceeding."
+                    ),
+                }
+            )
         )
         return 2
 
     # Allow and log the anticipated spend
     _log_call(tool_name, matched_cost, session_id)
     print(
-        json.dumps({
-            "decision": "allow",
-            "context": (
-                f"Spend tracked: ${matched_cost:.2f} for {tool_name}. "
-                f"Session total: ${current_spend + matched_cost:.2f} / ${cap:.2f}"
-            ),
-        })
+        json.dumps(
+            {
+                "decision": "allow",
+                "context": (
+                    f"Spend tracked: ${matched_cost:.2f} for {tool_name}. "
+                    f"Session total: ${current_spend + matched_cost:.2f} / ${cap:.2f}"
+                ),
+            }
+        )
     )
     return 0
 

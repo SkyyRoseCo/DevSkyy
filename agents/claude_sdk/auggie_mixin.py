@@ -71,7 +71,8 @@ class AuggieMixin:
 
         cli_args = [
             "--quiet",
-            "--max-turns", str(max_turns or self.auggie_max_turns),
+            "--max-turns",
+            str(max_turns or self.auggie_max_turns),
             *(extra_cli_args or []),
         ]
 
@@ -83,7 +84,9 @@ class AuggieMixin:
             cli_args=cli_args,
         )
 
-        logger.debug("[auggie_mixin] running task (model=%s): %s", model or self.auggie_model, task[:80])
+        logger.debug(
+            "[auggie_mixin] running task (model=%s): %s", model or self.auggie_model, task[:80]
+        )
         return agent.run(task, return_type=return_type, functions=functions or [])
 
     def _auggie_delegate(

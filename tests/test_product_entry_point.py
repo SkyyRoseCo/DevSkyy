@@ -103,9 +103,9 @@ def test_every_content_field_declares_its_layer(records: dict[str, dict]) -> Non
         for field in CONTENT_FIELDS:
             entry = record["content"][field]
             if entry is None:
-                assert f"content.{field}" in record["gaps"], (
-                    f"{sku}: content.{field} is absent but not in gaps"
-                )
+                assert (
+                    f"content.{field}" in record["gaps"]
+                ), f"{sku}: content.{field} is absent but not in gaps"
                 continue
             assert entry["value"].strip(), f"{sku}: content.{field} is whitespace"
             assert entry["source"], f"{sku}: content.{field} does not name its source"
@@ -153,9 +153,7 @@ def test_dossier_is_present_for_every_sku(records: dict[str, dict]) -> None:
 def test_unenriched_skus_match_the_pinned_set(records: dict[str, dict]) -> None:
     """Which SKUs still need editorial copy is founder-facing; changes are deliberate."""
     actual = {
-        sku
-        for sku, record in records.items()
-        if "content.description.enriched" in record["gaps"]
+        sku for sku, record in records.items() if "content.description.enriched" in record["gaps"]
     }
     assert actual == KNOWN_UNENRICHED_SKUS, (
         f"unenriched set changed.\n  newly enriched: {sorted(KNOWN_UNENRICHED_SKUS - actual)}\n"

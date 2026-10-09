@@ -31,10 +31,7 @@ from pydantic import BaseModel, Field
 from .base import CompletionResponse, Message, ModelProvider
 from .exceptions import LLMError
 from .round_table import LLMProvider as RoundTableProvider
-from .round_table import (
-    LLMRoundTable,
-    RoundTableResult,
-)
+from .round_table import LLMRoundTable, RoundTableResult
 from .router import LLMRouter, RoutingStrategy
 from .task_classifier import (
     PromptTechnique,

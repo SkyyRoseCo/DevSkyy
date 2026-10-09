@@ -4,6 +4,7 @@
 Reads the auggie hook event from stdin and exits 2 to block, 0 to allow.
 Dangerous patterns: rm -rf, git reset --hard, sudo, curl piped to sh.
 """
+
 from __future__ import annotations
 
 import json
@@ -42,23 +43,27 @@ def main() -> int:
 
     if _BLOCKED_RE.search(command):
         print(
-            json.dumps({
-                "decision": "block",
-                "reason": f"Blocked dangerous command pattern: {command[:120]}",
-            })
+            json.dumps(
+                {
+                    "decision": "block",
+                    "reason": f"Blocked dangerous command pattern: {command[:120]}",
+                }
+            )
         )
         return 2
 
     if _PAID_RE.search(command):
         # Emit a STOP-AND-SHOW style message — does not block, just surfaces
         print(
-            json.dumps({
-                "decision": "allow",
-                "context": (
-                    "PAID API CALL DETECTED — confirm this was budgeted "
-                    f"and approved before proceeding. Command: {command[:120]}"
-                ),
-            })
+            json.dumps(
+                {
+                    "decision": "allow",
+                    "context": (
+                        "PAID API CALL DETECTED — confirm this was budgeted "
+                        f"and approved before proceeding. Command: {command[:120]}"
+                    ),
+                }
+            )
         )
 
     return 0

@@ -414,7 +414,8 @@ exclude = [
   "dev/",
   "editorial-staging/",
   "hf-spaces/",
-  "skyyrose/cli_harnesses/", # vendored CLI tooling (relocated from vendor/) — not host-linted
+  "skyyrose/cli_harnesses/",     # vendored CLI tooling (relocated from vendor/) — not host-linted
+  "plugins/fashion-theme-team/", # byte-parity-managed distribution; verified by its canonical toolchain
 ]
 
 [tool.ruff.lint]
@@ -500,6 +501,7 @@ exclude = '''
     | dist
     | legacy
     | cli_harnesses
+    | plugins/fashion-theme-team
 )/
 '''
 
@@ -533,6 +535,7 @@ skip = [
   ".agents/",
   ".aidesigner/",
   "skyyrose/cli_harnesses/",
+  "plugins/fashion-theme-team/",
 ]
 
 # =============================================================================

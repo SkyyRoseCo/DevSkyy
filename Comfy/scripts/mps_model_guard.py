@@ -9,6 +9,7 @@ Usage:
     python3 Comfy/scripts/mps_model_guard.py --check
     python3 Comfy/scripts/mps_model_guard.py --check --budget-gb 12
 """
+
 from __future__ import annotations
 
 import argparse
@@ -44,13 +45,15 @@ def audit_models(models_root: Path, budget_gb: float) -> dict:
         if incompatible:
             any_incompatible = True
         total_gb += size_gb
-        results.append({
-            "path": str(path.relative_to(models_root)),
-            "size_gb": round(size_gb, 2),
-            "dtypes": sorted(dtypes),
-            "mps_compatible": not incompatible,
-            "status": "MPS_INCOMPATIBLE" if incompatible else "MPS_SAFE",
-        })
+        results.append(
+            {
+                "path": str(path.relative_to(models_root)),
+                "size_gb": round(size_gb, 2),
+                "dtypes": sorted(dtypes),
+                "mps_compatible": not incompatible,
+                "status": "MPS_INCOMPATIBLE" if incompatible else "MPS_SAFE",
+            }
+        )
 
     over_budget = total_gb > budget_gb
     return {

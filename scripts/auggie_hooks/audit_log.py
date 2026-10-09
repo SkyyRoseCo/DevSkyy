@@ -4,6 +4,7 @@
 Runs after every tool call. Never blocks (always exits 0).
 Log format is append-only JSONL: one JSON object per line.
 """
+
 from __future__ import annotations
 
 import json
@@ -16,16 +17,22 @@ _AUDIT_LOG = _REPO_ROOT / ".augment" / "audit.jsonl"
 
 # Fields to redact from tool inputs (contain credentials or PII)
 _REDACT_KEYS = {
-    "api_key", "apikey", "token", "password", "secret",
-    "authorization", "auth", "cookie", "session",
+    "api_key",
+    "apikey",
+    "token",
+    "password",
+    "secret",
+    "authorization",
+    "auth",
+    "cookie",
+    "session",
 }
 
 
 def _redact(obj: object) -> object:
     if isinstance(obj, dict):
         return {
-            k: "<redacted>" if k.lower() in _REDACT_KEYS else _redact(v)
-            for k, v in obj.items()
+            k: "<redacted>" if k.lower() in _REDACT_KEYS else _redact(v) for k, v in obj.items()
         }
     if isinstance(obj, list):
         return [_redact(i) for i in obj]

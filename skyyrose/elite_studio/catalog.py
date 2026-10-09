@@ -30,12 +30,7 @@ except ImportError:
     _YAML_AVAILABLE = False
 
 from skyyrose.core.catalog_loader import CATALOG_CSV as CANONICAL_CATALOG_CSV
-from skyyrose.core.catalog_loader import (
-    PRODUCT_STATUS,
-    int_col,
-    read_catalog_rows,
-    status_from_row,
-)
+from skyyrose.core.catalog_loader import PRODUCT_STATUS, int_col, read_catalog_rows, status_from_row
 
 # Re-export the canonical CSV path so validate_catalog_readers() and any other
 # tooling can verify this module's source matches the single source of truth

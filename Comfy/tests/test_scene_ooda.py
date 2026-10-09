@@ -186,9 +186,9 @@ def test_paid_execution_needs_receipts_even_if_text_blockers_are_removed(
 
     report = scene_ooda.observe(manifest)
 
-    assert report["configuration_ready"] is True, (
-        "configuration_ready must be True when sources pass and blockers are cleared"
-    )
+    assert (
+        report["configuration_ready"] is True
+    ), "configuration_ready must be True when sources pass and blockers are cleared"
     assert report["credit_control_check"]["prompt_review"]["status"] == "MISSING_RECEIPT"
     assert report["credit_control_check"]["paid_approval"]["status"] == "MISSING_RECEIPT"
     assert report["paid_authorized"] is False
