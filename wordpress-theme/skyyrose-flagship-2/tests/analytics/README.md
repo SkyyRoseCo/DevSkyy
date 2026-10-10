@@ -1,7 +1,7 @@
 # V2 consent and durable analytics
 
 This is a standalone V2 theme integration. It does not load V1 files at runtime.
-The live theme was observed as V2 2.3.1; this checkout is V2 2.5.1. Passing
+The live theme was observed as V2 2.3.1; this checkout is V2 2.5.0. Passing
 these local fixtures does not establish deployed collection or live provider
 execution.
 

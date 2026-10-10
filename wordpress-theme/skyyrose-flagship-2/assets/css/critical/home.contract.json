@@ -10,10 +10,13 @@
     "home-page.css",
     "global-shell.css",
     "visual-recovery.css",
-    "mascot.css"
+    "mascot.css",
+    "home-art-direction.css"
   ],
   "keepFontFaces": true,
-  "keepKeyframes": [],
+  "keepKeyframes": [
+    "house-atmosphere"
+  ],
   "keepMedia": [
     "(max-width: 900px)",
     "(max-width: 640px)",
@@ -25,7 +28,8 @@
     "(max-width: 30rem)",
     "(max-width: 63.99em)",
     "(max-width: 22.49em)",
-    "(max-width: 74.99em)"
+    "(max-width: 74.99em)",
+    "(prefers-reduced-motion: reduce)"
   ],
   "baseSelectors": [
     "*",
@@ -83,7 +87,18 @@
     ".sr2-arrival__veil",
     ".sr2-arrival__copy",
     ".sr2-arrival__actions",
-    ".sr2-arrival__utility"
+    ".sr2-arrival__utility",
+    ".sr2-house-arrival",
+    ".sr2-house-arrival__actions",
+    ".sr2-house-arrival__art",
+    ".sr2-house-arrival__copy",
+    ".sr2-house-arrival__editorial",
+    ".sr2-house-arrival__foot",
+    ".sr2-house-arrival__intro",
+    ".sr2-house-arrival__portraits",
+    ".sr2-house-arrival__shade",
+    ".sr2-house-kicker",
+    ".sr2-editorial-link"
   ],
   "excludeSelectorPatterns": [
     ":hover",
@@ -138,7 +153,11 @@
     "\\.sr2-editorial-film",
     "\\.sr2-chapter",
     "\\.sr2-band",
-    "\\.skyy-dock"
+    "\\.skyy-dock",
+    "\\.sr2-editorial-hero",
+    "\\.sr2-arrival",
+    "\\.sr2-archive-scene",
+    "\\.sr2-recovery-motion-toggle"
   ],
   "templates": [
     {
