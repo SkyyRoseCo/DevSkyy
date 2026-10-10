@@ -2765,6 +2765,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "inc/express-checkout.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "inc/frame-delivery.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Native archive responsive frame delivery and exact source fallback",
@@ -3011,6 +3016,11 @@
       "release": false
     },
     "scripts/test-critical-rendering.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/test-express-checkout.php": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
