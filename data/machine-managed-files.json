@@ -205,6 +205,62 @@
       ],
       "owner": "skyyrose/core/context_resolver.py (re-hashes it as constitution.json final_ratification_source on every load)",
       "why": "Founder's verbatim K/P/S ratification handoff. The resolver re-hashes it on every load and refuses on a mismatch; 25 of the 72 ratified rules cite it as evidence."
+    },
+    {
+      "pattern": "wordpress-theme/*/assets/js/lib/**",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/LICENSE"
+      ],
+      "owner": "vendored upstream libraries (three.js r170, GSAP, Lenis, Motion)",
+      "why": "Pinned third-party distributions served verbatim by both themes; reformatting vendored code creates unreviewable diffs and breaks byte parity with upstream releases."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/data/lookbook-sot.json",
+      "samples": ["wordpress-theme/skyyrose-flagship/data/lookbook-sot.json"],
+      "owner": "scripts/build-lookbook-sot.py",
+      "why": "Regenerated from the product registry and byte-compared by its --check freshness gate; a prettier reflow makes the committed file drift from the generator (bug-332)."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/data/collections/**/sot.json",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship/data/collections/signature/sot.json"
+      ],
+      "owner": "wordpress-theme/skyyrose-flagship/data/build-collection-sot.py",
+      "why": "Regenerated from the product registry and byte-compared by its --check freshness gate; a prettier reflow makes the committed file drift from the generator (bug-332)."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/data/collections/**/_orphans.json",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship/data/collections/_orphans.json"
+      ],
+      "owner": "wordpress-theme/skyyrose-flagship/data/build-collection-sot.py",
+      "why": "Regenerated from the product registry and byte-compared by its --check freshness gate; a prettier reflow makes the committed file drift from the generator (bug-332)."
+    },
+    {
+      "pattern": "assets/products/manifest.json",
+      "samples": ["assets/products/manifest.json"],
+      "owner": "scripts/build_asset_manifest.py",
+      "why": "Regenerated with the registry sha256 embedded; `--check` diffs the regenerated manifest against the committed bytes, so a reflow fails CI (bug-332)."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/data/v7-cards.json",
+      "samples": ["wordpress-theme/skyyrose-flagship/data/v7-cards.json"],
+      "owner": "scripts/build_v7_cards.py",
+      "why": "Regenerated from the product registry and byte-compared by its --check freshness gate; a prettier reflow makes the committed file drift from the generator (bug-332)."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/data/site-guide.json",
+      "samples": ["wordpress-theme/skyyrose-flagship/data/site-guide.json"],
+      "owner": "scripts/build-site-guide.py",
+      "why": "Regenerated from the product registry and byte-compared by its --check freshness gate; a prettier reflow makes the committed file drift from the generator (bug-332)."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/data/product-embeddings.json",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship/data/product-embeddings.json"
+      ],
+      "owner": "scripts/generate_product_embeddings.py",
+      "why": "Generated embedding vectors; reformatting a multi-megabyte numeric payload adds churn and drifts from the next regeneration."
     }
   ]
 }
