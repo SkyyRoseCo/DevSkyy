@@ -70,7 +70,7 @@ async def test_clean_copy_passes_through_judge():
 
     agent = CopyEvaluator(judge_fn=judge)
     v = await agent.evaluate(
-        subject="Luxury Grows from Concrete. The Black Rose Crewneck is armor.",
+        subject="The Black Rose Crewneck is armor.",
         ref=_brief(),
     )
 
@@ -93,7 +93,7 @@ async def test_gate_revises_once_then_passes():
 
     async def regenerate_fn(ref, critique):
         calls["regen"] += 1
-        return "Luxury Grows from Concrete. The Black Rose Crewneck is armor."
+        return "The Black Rose Crewneck is armor."
 
     async def producer(ref):
         return "Initial draft, weak voice."

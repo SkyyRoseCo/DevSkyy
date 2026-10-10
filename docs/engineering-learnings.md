@@ -244,3 +244,29 @@ not by inspection: truncate the input and confirm the gate goes red
 (`[empty] exit=1 … expected at least 14`, `[shrunk to 3] exit=1`). Prefer a
 declared registry over list-to-list parity for exactly this reason — the
 registry is still there to compare against after either consumer moves.
+
+## Worktree registry — a row whose folder is gone could never close (2026-10-09)
+
+`worktree_release` runs `git status` inside the folder and `worktree_prune`
+runs `git worktree remove` on it, so once a folder was deleted outside the
+registry (a manual `git worktree remove`, a disk cleanup) no tool could close
+its row. Six rows sat `active` / `ready_to_merge` for weeks pointing at
+directories that no longer existed, and one stale `purpose` field ("carries 8
+unpushed commits") stopped a cleanup that was by then safe — those commits had
+been pushed long before.
+
+`prune` now classifies a due row as an **orphan** when its folder is missing
+**and** `git worktree list` no longer shows it as live — absent, or flagged
+`prunable`, which is how git lists a folder deleted with `rm -rf` until
+`git worktree prune` runs — then deletes the row only when
+`branch_commits_off_remotes()` returns `[]` (or the row was already closed by
+release's clean-and-pushed gate). A branch that exists nowhere returns `None`,
+never `[]`: with nothing left to inspect, "no unpushed work" is unprovable, so
+the row is kept under `orphaned_unverifiable` with the reason. The TTL still
+applies, because `claim()` inserts the row before `git worktree add` runs — a
+fresh row legitimately has no folder yet.
+
+**The general rule:** a registry entry's free-text claims are a snapshot.
+Re-derive "is this safe to drop" from git at the moment you act
+(`git rev-list <branch> --not --remotes`), and when the branch is already gone,
+fall back to the PR record (merge time vs. last commit time).

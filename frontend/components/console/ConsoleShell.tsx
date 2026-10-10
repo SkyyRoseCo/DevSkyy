@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
@@ -14,6 +14,8 @@ interface ConsoleShellProps {
   children: React.ReactNode;
 }
 
+const subscribeToHydration = () => () => {};
+
 async function fetchOrderCount(): Promise<number> {
   const res = await fetch('/api/console/orders-count');
   if (!res.ok) return 0;
@@ -25,7 +27,14 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
   const pathname = usePathname();
   const router = useRouter();
   const { data: session, status } = useSession();
-  const userName = session?.user?.email ? session.user.email.split('@')[0] : 'Operator';
+  // A parent session may resolve before this deferred shell hydrates. Match
+  // its server identity for hydration, then display the current session.
+  const hydrated = useSyncExternalStore(
+    subscribeToHydration,
+    () => true,
+    () => false
+  );
+  const userName = hydrated && session?.user?.email ? session.user.email.split('@')[0] : 'Operator';
 
   // Server Component /admin pages skip their data fetch (never render real
   // WooCommerce data) when unauthenticated, but don't redirect themselves —
@@ -62,31 +71,40 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
   };
 
   return (
-    <div className="dsh min-h-screen" style={{ background: 'var(--void)' }}>
+    <div className='dsh min-h-screen' style={{ background: 'var(--void)' }}>
       <GrainOverlay />
-      <aside className="relative w-full flex flex-col p-[26px_18px] z-50 border-b border-white/[0.06] lg:fixed lg:top-0 lg:left-0 lg:bottom-0 lg:w-[240px] lg:border-b-0 lg:border-r" style={{ background: '#0A0A0A' }}>
-        <div className="flex items-center gap-3 px-2 pb-[26px] border-b border-white/[0.06]">
+      <aside
+        className='relative w-full flex flex-col p-[26px_18px] z-50 border-b border-white/[0.06] lg:fixed lg:top-0 lg:left-0 lg:bottom-0 lg:w-[240px] lg:border-b-0 lg:border-r'
+        style={{ background: '#0A0A0A' }}
+      >
+        <div className='flex items-center gap-3 px-2 pb-[26px] border-b border-white/[0.06]'>
           <div
             aria-hidden
-            className="w-[34px] h-[34px] rounded-full flex items-center justify-center flex-none drop-shadow-[0_2px_8px_rgba(0,0,0,.6)]"
+            className='w-[34px] h-[34px] rounded-full flex items-center justify-center flex-none drop-shadow-[0_2px_8px_rgba(0,0,0,.6)]'
             style={{ background: 'linear-gradient(135deg,#B76E79,#D4AF37)' }}
           >
-            <span className="text-[12px] font-semibold" style={{ color: '#0A0A0A', fontFamily: 'var(--font-cinzel)' }}>
+            <span className='text-[12px] font-semibold' style={{ color: '#0A0A0A', fontFamily: 'var(--font-cinzel)' }}>
               SR
             </span>
           </div>
           <div>
-            <div className="text-[13px] tracking-[0.22em] text-white uppercase" style={{ fontFamily: 'var(--font-cinzel)' }}>
+            <div
+              className='text-[13px] tracking-[0.22em] text-white uppercase'
+              style={{ fontFamily: 'var(--font-cinzel)' }}
+            >
               Skyy Rose
             </div>
-            <div className="font-mono text-[9px] tracking-[0.2em] uppercase mt-0.5" style={{ color: 'var(--acc)' }}>
+            <div className='font-mono text-[9px] tracking-[0.2em] uppercase mt-0.5' style={{ color: 'var(--acc)' }}>
               Operator Console
             </div>
           </div>
         </div>
 
-        <nav aria-label="Operator console" className="flex flex-wrap gap-[3px] mt-[22px] mb-4 lg:mb-0 lg:flex-col lg:flex-nowrap lg:flex-1">
-          {CONSOLE_NAV_ITEMS.map((item) => {
+        <nav
+          aria-label='Operator console'
+          className='flex flex-wrap gap-[3px] mt-[22px] mb-4 lg:mb-0 lg:flex-col lg:flex-nowrap lg:flex-1'
+        >
+          {CONSOLE_NAV_ITEMS.map(item => {
             const active = pathname === item.href;
             const badge = badgeFor(item.id);
             return (
@@ -94,13 +112,16 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
                 key={item.id}
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
-                className="dsh-nav-item flex items-center gap-[11px] px-3 py-[11px] rounded-md text-[13px] tracking-[0.02em] no-underline transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className='dsh-nav-item flex items-center gap-[11px] px-3 py-[11px] rounded-md text-[13px] tracking-[0.02em] no-underline transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
                 style={active ? { background: 'rgba(183,110,121,.12)', color: '#fff' } : { color: '#9A9AA2' }}
               >
-                <span className="w-1.5 h-1.5 rounded-full flex-none" style={{ background: active ? 'var(--acc)' : '#3A3A42' }} />
-                <span className="flex-1">{item.label}</span>
+                <span
+                  className='w-1.5 h-1.5 rounded-full flex-none'
+                  style={{ background: active ? 'var(--acc)' : '#3A3A42' }}
+                />
+                <span className='flex-1'>{item.label}</span>
                 {badge && (
-                  <span className="font-mono text-[9px] tracking-[0.1em]" style={{ color: 'var(--acc)' }}>
+                  <span className='font-mono text-[9px] tracking-[0.1em]' style={{ color: 'var(--acc)' }}>
                     {badge}
                   </span>
                 )}
@@ -109,21 +130,25 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
           })}
         </nav>
 
-        <div className="mt-auto pt-3.5 px-2.5 border-t border-white/[0.06] flex items-center gap-2.5">
+        <div className='mt-auto pt-3.5 px-2.5 border-t border-white/[0.06] flex items-center gap-2.5'>
           <div
-            className="w-[30px] h-[30px] rounded-full flex items-center justify-center text-[12px] font-semibold"
-            style={{ background: 'linear-gradient(135deg,#B76E79,#D4AF37)', color: '#0A0A0A', fontFamily: 'var(--font-cinzel)' }}
+            className='w-[30px] h-[30px] rounded-full flex items-center justify-center text-[12px] font-semibold'
+            style={{
+              background: 'linear-gradient(135deg,#B76E79,#D4AF37)',
+              color: '#0A0A0A',
+              fontFamily: 'var(--font-cinzel)',
+            }}
           >
             SR
           </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-[12.5px] text-[#E0E0E0] font-semibold truncate">{userName}</div>
-            <div className="text-[10px] text-[#A0A0A0]">Operator</div>
+          <div className='flex-1 min-w-0'>
+            <div className='text-[12.5px] text-[#E0E0E0] font-semibold truncate'>{userName}</div>
+            <div className='text-[10px] text-[#A0A0A0]'>Operator</div>
           </div>
         </div>
       </aside>
 
-      <main className="min-w-0 min-h-screen pb-16 lg:ml-[240px]">{children}</main>
+      <main className='min-w-0 min-h-screen pb-16 lg:ml-[240px]'>{children}</main>
     </div>
   );
 }

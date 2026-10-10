@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from '@/lib/api-auth';
 import { meshyClient, toJob3D as meshyToJob3D } from '@/lib/meshy/client';
 import { tripoClient, toJob3D as tripoToJob3D } from '@/lib/tripo/client';
-import { jobStore } from '../../jobs/route';
+import { jobStore } from '../../jobs/store';
 
 async function postHandler(request: NextRequest) {
   let body: { prompt?: string; provider?: string };

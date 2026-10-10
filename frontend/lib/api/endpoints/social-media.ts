@@ -8,6 +8,7 @@
 import { ApiError } from '../errors';
 import { API_URL } from '../config';
 import { getAuthHeaders, fetchWithTimeout } from '../client';
+import { z } from 'zod';
 
 export interface SocialPost {
   id: string;
@@ -25,21 +26,65 @@ export interface SocialPost {
 }
 
 export interface PlatformAnalytics {
-  posts: number;
-  likes: number;
-  comments?: number;
-  shares: number;
-  reach?: number;
-  views?: number;
-  retweets?: number;
-  impressions?: number;
+  posts: number | null;
+  likes: number | null;
+  comments?: number | null;
+  shares: number | null;
+  reach?: number | null;
+  views?: number | null;
+  retweets?: number | null;
+  impressions?: number | null;
+  status: 'observed' | 'disconnected' | 'error' | 'unavailable';
+  evidence: string;
+  error: string | null;
+  window: { start: string | null; end: string | null; label: string };
 }
 
 export interface SocialAnalytics {
   platforms: Record<string, PlatformAnalytics>;
-  total_posts: number;
-  total_queue: number;
-  total_published: number;
+  total_posts: number | null;
+  total_queue: number | null;
+  total_published: number | null;
+  coverage: 'observed' | 'partial' | 'unavailable';
+  timestamp: string;
+  site_id: string | null;
+  environment: 'staging' | 'production' | 'test' | null;
+}
+
+const socialMetric = z.number().finite().nonnegative().nullable();
+export const socialAnalyticsSchema: z.ZodType<SocialAnalytics> = z.object({
+  platforms: z.record(
+    z.string(),
+    z.object({
+      posts: socialMetric,
+      likes: socialMetric,
+      shares: socialMetric,
+      comments: socialMetric.optional(),
+      reach: socialMetric.optional(),
+      views: socialMetric.optional(),
+      retweets: socialMetric.optional(),
+      impressions: socialMetric.optional(),
+      status: z.enum(['observed', 'disconnected', 'error', 'unavailable']),
+      evidence: z.string(),
+      error: z.string().nullable(),
+      window: z.object({ start: z.string().nullable(), end: z.string().nullable(), label: z.string() }),
+    })
+  ),
+  total_posts: socialMetric,
+  total_queue: socialMetric,
+  total_published: socialMetric,
+  coverage: z.enum(['observed', 'partial', 'unavailable']),
+  timestamp: z.string(),
+  site_id: z.string().nullable(),
+  environment: z.enum(['staging', 'production', 'test']).nullable(),
+});
+
+export function platformEngagement(stats: PlatformAnalytics | undefined): number | null {
+  if (!stats) return null;
+  const counts = [stats.likes, stats.comments, stats.shares];
+  return counts.every((count): count is number => count != null)
+    ? counts.reduce((total, count) => total + count, 0)
+    : null;
 }
 
 export interface Campaign {
@@ -86,10 +131,7 @@ export async function generatePost(
 /**
  * Schedule a post for publishing
  */
-export async function schedulePost(
-  postId: string,
-  scheduledAt: string
-): Promise<{ success: boolean }> {
+export async function schedulePost(postId: string, scheduledAt: string): Promise<{ success: boolean }> {
   if (!postId?.trim()) {
     throw new ApiError('Post ID is required', 400, 'INVALID_INPUT');
   }
@@ -129,24 +171,19 @@ export async function getPostQueue(): Promise<SocialPost[]> {
  * Get analytics across all platforms
  */
 export async function getAnalytics(): Promise<SocialAnalytics> {
-  const res = await fetchWithTimeout(`${API_URL}/api/v1/social-media/analytics`, {
-    headers: await getAuthHeaders(),
-  });
+  const res = await fetchWithTimeout('/api/social-media/analytics', { cache: 'no-store' });
 
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw ApiError.fromResponse(res.status, body);
   }
-  return res.json();
+  return socialAnalyticsSchema.parse(await res.json());
 }
 
 /**
  * Generate a multi-platform campaign for a collection
  */
-export async function generateCampaign(
-  collection: string,
-  campaignName: string
-): Promise<Campaign> {
+export async function generateCampaign(collection: string, campaignName: string): Promise<Campaign> {
   if (!collection?.trim()) {
     throw new ApiError('Collection is required', 400, 'INVALID_INPUT');
   }

@@ -202,6 +202,15 @@
       ],
       "owner": "scripts/regen_phase_e_manifest_auto.py (AUTO regions)",
       "why": "Prettier rewrites it 12,998 -> 21,331 bytes, moving the AUTO region markers its generator edits between."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship/assets/js/lib/three-0.170.0/",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship/assets/js/lib/three-0.170.0/three.module.min.js",
+        "wordpress-theme/skyyrose-flagship/assets/js/lib/three-0.170.0/basis/basis_transcoder.js"
+      ],
+      "owner": "wordpress-theme/skyyrose-flagship/scripts/vendor-three.sh (sha256-pinned in VENDOR.md)",
+      "why": "Vendored three.js r170, reproduced byte-identically by vendor-three.sh and pinned per file in VENDOR.md; the GLB QC renderer (webgl_qc.py) renders through this exact tree. Prettier expanded three.module.min.js 691,648 -> 952,111 bytes (bug: commit 220686ae4), which voids the pin."
     }
   ]
 }

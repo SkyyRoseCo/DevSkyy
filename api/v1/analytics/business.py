@@ -17,9 +17,11 @@ from typing import Any, Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel
-from sqlalchemy import func, select
+from sqlalchemy import case, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from api.v1.analytics.event_store import read_summary
+from api.v1.analytics.ingest import get_analytics_settings, require_analytics_reporter
 from database.db import Order, OrderItem, Product, get_db
 from security.jwt_oauth2_auth import TokenPayload, get_current_user
 
@@ -123,13 +125,15 @@ class ProductPerformance(BaseModel):
     sku: str
     name: str
     collection: str | None
-    views: int
-    add_to_cart: int
+    views: int | None
+    add_to_cart: int | None
     purchases: int
     revenue: float
-    conversion_rate: float
+    conversion_rate: float | None
     inventory_count: int
     inventory_status: Literal["in_stock", "low_stock", "out_of_stock"]
+    sales_source: Literal["operational_order_database"] = "operational_order_database"
+    engagement_source: Literal["unavailable"] = "unavailable"
 
 
 class ProductPerformanceResponse(BaseModel):
@@ -170,7 +174,7 @@ class FunnelStage(BaseModel):
     """A stage in the conversion funnel."""
 
     stage: str
-    count: int
+    count: int | None
     value: float | None = None
     conversion_rate: float | None = None
     drop_off_rate: float | None = None
@@ -183,8 +187,10 @@ class ConversionFunnelResponse(BaseModel):
     timestamp: str
     period_days: int
     stages: list[FunnelStage]
-    overall_conversion_rate: float
+    overall_conversion_rate: float | None
     comparison: dict[str, Any] | None = None
+    coverage: dict[str, Any] | None = None
+    commerce: dict[str, Any] | None = None
 
 
 # =============================================================================
@@ -507,15 +513,18 @@ async def get_product_performance(
                 Product.name,
                 Product.collection,
                 Product.quantity,
-                func.count(OrderItem.id).label("order_count"),
-                func.sum(OrderItem.quantity).label("units_sold"),
-                func.sum(OrderItem.total).label("revenue"),
+                func.count(func.distinct(Order.id)).label("order_count"),
+                func.sum(case((Order.id.is_not(None), OrderItem.quantity), else_=0)).label(
+                    "units_sold"
+                ),
+                func.sum(case((Order.id.is_not(None), OrderItem.total), else_=0)).label("revenue"),
             )
             .outerjoin(OrderItem, OrderItem.product_id == Product.id)
             .outerjoin(
                 Order,
                 (Order.id == OrderItem.order_id)
                 & (Order.created_at >= period_start)
+                & (Order.created_at <= now)
                 & (Order.status != "cancelled"),
             )
             .where(Product.is_active == True)  # noqa: E712
@@ -532,13 +541,13 @@ async def get_product_performance(
         LOW_STOCK_THRESHOLD = 10
 
         for row in product_rows:
-            # Mock views and add_to_cart (would come from analytics events in production)
-            views = (row.units_sold or 0) * 10  # Mock: 10x units sold
-            add_to_cart = (row.units_sold or 0) * 3  # Mock: 3x units sold
-            purchases = row.units_sold or 0
+            # Sales records do not measure browsing, carts, or a conversion denominator.
+            views = None
+            add_to_cart = None
+            purchases = row.order_count or 0
             revenue = float(row.revenue or 0)
 
-            conversion_rate = (purchases / views * 100) if views > 0 else 0.0
+            conversion_rate = None
 
             # Determine inventory status
             if row.quantity == 0:
@@ -557,7 +566,7 @@ async def get_product_performance(
                 add_to_cart=add_to_cart,
                 purchases=purchases,
                 revenue=revenue,
-                conversion_rate=round(conversion_rate, 2),
+                conversion_rate=conversion_rate,
                 inventory_count=row.quantity,
                 inventory_status=inventory_status,
             )
@@ -575,7 +584,7 @@ async def get_product_performance(
         elif sort_by == "orders":
             products.sort(key=lambda p: p.purchases, reverse=True)
         elif sort_by == "conversion":
-            products.sort(key=lambda p: p.conversion_rate, reverse=True)
+            products.sort(key=lambda p: p.conversion_rate or 0, reverse=True)
 
         # Apply limit
         products = products[:limit]
@@ -720,7 +729,7 @@ async def get_collection_metrics(
 async def get_conversion_funnel(
     period_days: int = Query(default=30, ge=1, le=365, description="Number of days to analyze"),
     comparison: ComparisonPeriod | None = Query(default=None, description="Comparison period"),
-    user: TokenPayload = Depends(get_current_user),
+    user: TokenPayload = Depends(require_analytics_reporter),
     db: AsyncSession = Depends(get_db),
 ) -> ConversionFunnelResponse:
     """Get conversion funnel analytics.
@@ -738,100 +747,57 @@ async def get_conversion_funnel(
     """
     logger.info(f"Getting conversion funnel for user {user.sub}: {period_days} days")
 
+    now = datetime.now(UTC)
     try:
-        now = datetime.now(UTC)
-        period_start = now - timedelta(days=period_days)
-
-        # Get completed orders for the period
-        completed_orders_query = select(func.count(Order.id)).where(
-            Order.created_at >= period_start,
-            Order.status.in_(["completed", "processing", "shipped"]),
-        )
-        completed_result = await db.execute(completed_orders_query)
-        completed_orders = completed_result.scalar() or 0
-
-        # Get order value for completed orders
-        order_value_query = select(func.sum(Order.total)).where(
-            Order.created_at >= period_start,
-            Order.status.in_(["completed", "processing", "shipped"]),
-        )
-        order_value_result = await db.execute(order_value_query)
-        order_value = float(order_value_result.scalar() or 0)
-
-        # Mock funnel data (in production, this would come from analytics events)
-        # Using realistic e-commerce conversion ratios
-        traffic = completed_orders * 50  # 2% final conversion rate
-        product_views = int(traffic * 0.6)  # 60% view products
-        add_to_cart = int(product_views * 0.25)  # 25% add to cart
-        checkout_started = int(add_to_cart * 0.5)  # 50% start checkout
-        completed = completed_orders
-
-        stages = [
-            FunnelStage(
-                stage="traffic",
-                count=traffic,
-                value=None,
-                conversion_rate=100.0,
-                drop_off_rate=None,
-            ),
-            FunnelStage(
-                stage="product_views",
-                count=product_views,
-                value=None,
-                conversion_rate=(round(product_views / traffic * 100, 2) if traffic > 0 else 0),
-                drop_off_rate=(
-                    round((traffic - product_views) / traffic * 100, 2) if traffic > 0 else 0
-                ),
-            ),
-            FunnelStage(
-                stage="add_to_cart",
-                count=add_to_cart,
-                value=None,
-                conversion_rate=(round(add_to_cart / traffic * 100, 2) if traffic > 0 else 0),
-                drop_off_rate=(
-                    round((product_views - add_to_cart) / product_views * 100, 2)
-                    if product_views > 0
-                    else 0
-                ),
-            ),
-            FunnelStage(
-                stage="checkout_started",
-                count=checkout_started,
-                value=None,
-                conversion_rate=(round(checkout_started / traffic * 100, 2) if traffic > 0 else 0),
-                drop_off_rate=(
-                    round((add_to_cart - checkout_started) / add_to_cart * 100, 2)
-                    if add_to_cart > 0
-                    else 0
-                ),
-            ),
-            FunnelStage(
-                stage="purchase_complete",
-                count=completed,
-                value=order_value,
-                conversion_rate=(round(completed / traffic * 100, 2) if traffic > 0 else 0),
-                drop_off_rate=(
-                    round((checkout_started - completed) / checkout_started * 100, 2)
-                    if checkout_started > 0
-                    else 0
-                ),
-            ),
-        ]
-
-        overall_conversion = round(completed / traffic * 100, 2) if traffic > 0 else 0.0
-
+        settings = get_analytics_settings()
+    except HTTPException as exc:
+        if exc.status_code != 503:
+            raise
         return ConversionFunnelResponse(
-            status="success",
+            status="unavailable",
             timestamp=now.isoformat(),
             period_days=period_days,
-            stages=stages,
-            overall_conversion_rate=overall_conversion,
-            comparison=None,
+            stages=[
+                FunnelStage(stage=name, count=None)
+                for name in (
+                    "traffic",
+                    "product_views",
+                    "add_to_cart",
+                    "checkout_started",
+                    "purchase_complete",
+                )
+            ],
+            overall_conversion_rate=None,
+            coverage={"status": "unavailable", "missing": ["configured_storefront_analytics"]},
+            commerce={"verified_purchases": None, "verified_revenue": None, "currency": None},
         )
-
-    except Exception as e:
-        logger.error(f"Failed to get conversion funnel: {e}", exc_info=True)
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to get conversion funnel: {str(e)}",
-        )
+    summary = await read_summary(
+        db,
+        settings.site_id,
+        settings.environment,
+        now - timedelta(days=period_days),
+        now,
+        period_days,
+    )
+    metrics = summary["metrics"]
+    # Stage counts are independently observed events. They cannot prove that the
+    # same sessions progressed in order, so conversion and drop-off remain unknown.
+    names = {
+        "traffic": "sessions",
+        "product_views": "product_views",
+        "add_to_cart": "add_to_cart",
+        "checkout_started": "checkout_started",
+        "purchase_complete": "consented_purchases",
+    }
+    return ConversionFunnelResponse(
+        status=summary["coverage"]["status"],
+        timestamp=now.isoformat(),
+        period_days=period_days,
+        stages=[FunnelStage(stage=name, count=metrics[key]) for name, key in names.items()],
+        overall_conversion_rate=None,
+        comparison=None,
+        coverage=summary["coverage"],
+        commerce={
+            key: metrics[key] for key in ("verified_purchases", "verified_revenue", "currency")
+        },
+    )

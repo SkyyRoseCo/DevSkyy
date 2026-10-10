@@ -291,7 +291,7 @@ async def list_styles(
             "id": DescriptionStyle.LUXURY.value,
             "name": "Luxury",
             "description": "Sophisticated, evocative language for high-end fashion",
-            "brand_voice": "SkyyRose - Luxury Grows from Concrete.",
+            "brand_voice": "SkyyRose",
             "example_tone": "Crafted with precision, this piece embodies effortless elegance...",
         },
         {

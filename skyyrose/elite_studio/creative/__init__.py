@@ -6,13 +6,9 @@ product renders, 3D models, social packs, product copy, character sheets,
 scene compositing, virtual try-on, full product launches, design ideation,
 mockups, collection plans, tech packs, moodboards, colorway exploration.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations
-
-from .runner import run_creative
-from .state import CreativeIntent, CreativeOperationState, create_initial_state
 
 __all__ = [
     "run_creative",
@@ -20,3 +16,16 @@ __all__ = [
     "CreativeOperationState",
     "create_initial_state",
 ]
+
+
+def __getattr__(name: str):
+    """Preserve public exports without importing execution for report readers."""
+    if name == "run_creative":
+        from .runner import run_creative
+
+        return run_creative
+    if name in {"CreativeIntent", "CreativeOperationState", "create_initial_state"}:
+        from . import state
+
+        return getattr(state, name)
+    raise AttributeError(name)

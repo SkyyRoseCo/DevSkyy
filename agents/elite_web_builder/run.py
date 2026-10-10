@@ -113,7 +113,7 @@ labels, focus indicators — but make accessibility beautiful, not an afterthoug
 - Create fully functional working implementations, not placeholders.
 
 ## Site Identity
-- Brand: The Skyy Rose Collection ("Luxury Grows from Concrete.")
+- Brand: The Skyy Rose Collection
 - URL: https://skyyrose.co
 - Platform: WordPress.com Atomic (SSH/SFTP, custom PHP, full plugin access)
 - Theme: skyyrose-flagship

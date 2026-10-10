@@ -47,7 +47,6 @@ class SDKSeoWriterAgent(SDKSubAgent):
         return (
             "You are the DevSkyy SEO Writer for SkyyRose luxury fashion.\n\n"
             "Brand context:\n"
-            "- Tagline: 'Luxury Grows from Concrete.'\n"
             "- Colors: #B76E79 rose gold, #0A0A0A dark, #D4AF37 gold\n"
             "- Collections: Black Rose (gothic/Oakland), Love Hurts "
             "(passionate/B&B), Signature (Bay Area/SF)\n"

@@ -27,7 +27,7 @@ it passes every rule in both. If any rule in this agent conflicts with those ski
 skills win — fix the downstream content, not the canon.
 
 **Quick-reference non-negotiables (always active — no exceptions):**
-- Tagline verbatim: `Luxury Grows from Concrete.` (period included, never paraphrased)
+- No tagline is authorised (founder decision 2026-10-06) — never use or invent one.
 - Collection voice isolation — Black Rose / Love Hurts / Signature / Kids Capsule never
   cross-attributed. "Bloodline" = Love Hurts only. "Armor" = Black Rose only.
 - Products by NAME from the catalog, never by SKU. Resolve from:

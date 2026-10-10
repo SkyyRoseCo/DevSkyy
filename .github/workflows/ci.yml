@@ -67,6 +67,9 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
 
+      - name: Reject retired brand copy
+        run: python scripts/check_retired_brand_copy.py
+
       - name: Get pip cache dir
         id: pip-cache
         shell: bash
@@ -118,7 +121,8 @@ jobs:
 
     services:
       redis:
-        image: redis:7-alpine
+        # ECR Public mirror of the official image (same digest) — avoids Docker Hub anonymous pull limits on shared runners.
+        image: public.ecr.aws/docker/library/redis:7-alpine
         ports:
           - 6379:6379
         options: >-
@@ -428,6 +432,23 @@ jobs:
       - name: Run root unit tests
         run: npm test
 
+      - name: Ensure PHP SQLite support for projection concurrency tests
+        run: |
+          if ! php -r 'exit(extension_loaded("pdo_sqlite") ? 0 : 1);'; then
+            sudo apt-get update
+            sudo apt-get install -y php-cli php-sqlite3
+          fi
+          php -r 'exit(extension_loaded("pdo_sqlite") ? 0 : 1);'
+
+      - name: Test theme consent, relay, and asset cache versions
+        run: npm run test:theme-analytics
+
+      - name: Install Chromium for theme consent browser tests
+        run: ./node_modules/.bin/playwright install --with-deps chromium
+
+      - name: Test theme consent in desktop and mobile browsers
+        run: npm run test:theme-analytics:browser
+
       - name: Upload test results
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
@@ -470,6 +491,9 @@ jobs:
             exit 1
           fi
           echo "All PHP files passed syntax check"
+
+      - name: Flagship 2 express-checkout regression
+        run: php wordpress-theme/skyyrose-flagship-2/scripts/test-express-checkout.php
 
       # package.json + build scripts live in wordpress-theme/ (the build:css/build:js
       # scripts reference the skyyrose-flagship/ subdir). Running from the subdir
@@ -634,7 +658,7 @@ jobs:
 
     services:
       redis:
-        image: redis:7-alpine
+        image: public.ecr.aws/docker/library/redis:7-alpine
         ports:
           - 6379:6379
         options: >-
@@ -720,7 +744,7 @@ jobs:
 
       - name: Set up Docker Buildx
         if: steps.changes.outputs.build == 'true'
-        uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4.3.0
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
 
       - name: Log in to GitHub Container Registry
         if: steps.changes.outputs.build == 'true' && github.ref == 'refs/heads/main'
@@ -743,7 +767,7 @@ jobs:
 
       - name: Build backend image
         if: steps.changes.outputs.build == 'true'
-        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
           file: ./Dockerfile
@@ -756,7 +780,7 @@ jobs:
             BUILDKIT_INLINE_CACHE=1
 
       - name: Build frontend image
-        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: ./frontend
           file: ./frontend/Dockerfile

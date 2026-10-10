@@ -5,12 +5,9 @@ _Draft · 2026-06-29 · Description added 2026-07-01_
 
 ## WordPress Meta Description (≤155 chars)
 
-> SkyyRose is luxury streetwear built on Oakland pressure. Four collections. One standard: quality that doesn't need a logo to speak. Luxury grows from concrete.
-
-**Char count:** 157 → trim to:
 > SkyyRose is luxury streetwear built on Oakland pressure. Four collections. One standard: quality that doesn't need a logo to speak.
 
-*(153 chars — use this)*
+**Char count:** 153
 
 ---
 
@@ -21,8 +18,6 @@ There's a version of luxury that lives behind velvet ropes and speaks in Europea
 ---
 
 ---
-
-## Luxury Grows from Concrete
 
 There's a version of luxury that lives behind velvet ropes and speaks in European accents. That's not ours.
 
@@ -59,10 +54,6 @@ SkyyRose exists because there was a gap between what was available and what was 
 From the first sample to the final stitch, every SkyyRose piece passes one test: would the person who built this be proud to wear it?
 
 That question shapes every decision — material sourcing, colorway, fit, finish. It's not a brand promise. It's an operating principle.
-
-Luxury grows from concrete.
-
-It always has.
 
 ---
 

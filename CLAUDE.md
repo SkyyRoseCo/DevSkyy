@@ -437,7 +437,7 @@ Python API and Dashboard: read `Makefile` / `frontend/package.json`.
 (background) · Silver `#C0C0C0` (Black Rose) · Crimson `#DC143C` (Love Hurts) ·
 Gold `#D4AF37` (Signature).
 
-Tagline "Luxury Grows from Concrete." · Collections: Signature, Black Rose, Love
+No tagline is authorised (founder decision 2026-10-06). · Collections: Signature, Black Rose, Love
 Hurts, Kids Capsule.
 
 **Fonts** — **Archivo** (display/hero, `font-variation-settings 'wdth' 125`) ·

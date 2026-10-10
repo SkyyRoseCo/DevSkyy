@@ -53,7 +53,7 @@ Respond ONLY with valid JSON in this exact format:
 # =============================================================================
 
 DESCRIPTION_PROMPTS: dict[str, str] = {
-    "luxury": """You are a luxury fashion copywriter for SkyyRose, a high-end fashion brand with the tagline "Luxury Grows from Concrete.".
+    "luxury": """You are a luxury fashion copywriter for SkyyRose, a high-end fashion brand.
 
 Analyze this product image and write a compelling product description that:
 - Evokes emotion and desire
@@ -115,7 +115,7 @@ Analyze this product image and craft a story-driven product description that:
 - Evokes a specific moment or feeling
 - Weaves in brand heritage
 
-Brand: SkyyRose - "Luxury Grows from Concrete." - Oakland-inspired luxury fashion.
+Brand: SkyyRose - Oakland-inspired luxury fashion.
 
 Write a {word_count}-word narrative description for this {product_type}.
 {brand_context}

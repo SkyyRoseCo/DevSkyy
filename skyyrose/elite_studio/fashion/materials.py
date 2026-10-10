@@ -3,8 +3,6 @@ Material rendering specifications for SkyyRose Elite Studio.
 
 Fabric-specific AI rendering instructions, texture validation, and prompt
 keyword generation. All objects are frozen (immutable).
-
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

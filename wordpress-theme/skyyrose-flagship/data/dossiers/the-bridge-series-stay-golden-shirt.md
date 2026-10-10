@@ -12,6 +12,12 @@ reference_image: assets/products/source-photos/signature/sg-002-stay-golden-shir
 
 **Garment type lock:** Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Stay Golden Shorts (sg-003 Golden Gate night palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Bay Bridge Shirt (that's sg-005 — blue rose-cluster decoration, separate SKU). **The Stay Golden colorway uses a PURPLE/VIOLET rose-cluster on the chest** (matching the purple-and-orange Golden Gate night palette).
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
 ## Branding — exactly what IS on this product
 
 Exact SKU artwork and front placement are bound in `logo-registry.json::sku_logos::sg-002::render_reference` to `assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg`. The existing physical-authority record and its current file hash agree. Use the complete garment pixels for artwork, position and relative scale; no generic cluster recoloring.

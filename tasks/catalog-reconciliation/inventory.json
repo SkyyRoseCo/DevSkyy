@@ -1,0 +1,2075 @@
+{
+  "scope": "Offline registry and existing asset reconciliation; no generation or deployment. Snapshot, not editable product authority.",
+  "base_commit": "2f5f32cb4bd828bc944d0a7e884331244c47be4e",
+  "registry_before_sha256": "4bd403a92525048dc55367582861436f7082e15001c5c7812f18b2aa70d113e1",
+  "registry_after_sha256": "956e23b246b3523fb774739bbac1444a67c37f921a89451c81aa414b26b0c198",
+  "changes": [
+    {
+      "sku": "br-010",
+      "field": "garment.fit.specification",
+      "before": "**White base body fabric with a sublimated all-over\nrose-cluster pattern fading from clean white at the upper-chest into greyscale\nsilhouettes at the lower hem** — the bottom third of the jersey is a layered\ngrey-on-white rose-cluster pattern that wraps front and back continuously.",
+      "after": null,
+      "reason": "Existing fit field describes printed artwork, not fit.",
+      "authority": "derived-field correction; founder dossier unchanged"
+    },
+    {
+      "sku": "lh-004",
+      "field": "garment.fit.specification",
+      "before": "The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down).",
+      "after": null,
+      "reason": "Existing fit field describes hood lining, not fit.",
+      "authority": "derived-field correction; founder dossier unchanged"
+    },
+    {
+      "sku": "lh-002",
+      "field": "images.back_image",
+      "before": {
+        "path": "assets/images/products/love-hurts-joggers-back-model.webp",
+        "resolved": "images/products/love-hurts-joggers-back-model.webp"
+      },
+      "after": null,
+      "reason": "Assigned white pants contradict this black SKU.",
+      "asset_sha256": "dbe22667ab46f7aff1355359eab07e7a3f9c989c458c85ab517b762b2187504d"
+    },
+    {
+      "sku": "lh-002",
+      "field": "images.back_model_image",
+      "before": {
+        "path": "assets/images/products/love-hurts-joggers-back-model.webp",
+        "resolved": "images/products/love-hurts-joggers-back-model.webp"
+      },
+      "after": null,
+      "reason": "Assigned white pants contradict this black SKU.",
+      "asset_sha256": "dbe22667ab46f7aff1355359eab07e7a3f9c989c458c85ab517b762b2187504d"
+    },
+    {
+      "sku": "sg-005",
+      "field": "images.back_model_image",
+      "before": {
+        "path": "assets/images/products/bridge-bay-bridge-shirt-back-model.webp",
+        "resolved": "images/products/bridge-bay-bridge-shirt-back-model.webp"
+      },
+      "after": null,
+      "reason": "Assigned image is isolated artwork, not a garment back.",
+      "asset_sha256": "6dbf4eb432231616fc9923ca30a74ad7801961651dc21f005b7a426581f098d4"
+    },
+    {
+      "sku": "sg-015",
+      "field": "images.back_model_image",
+      "before": {
+        "path": "assets/images/products/signature-windbreaker-set-back-model.webp",
+        "resolved": "images/products/signature-windbreaker-set-back-model.webp"
+      },
+      "after": null,
+      "reason": "Assigned image shows the front chevrons and front zipper; it is not a back view.",
+      "asset_sha256": "0c596b7199356f2ac2c79f505240078e38b91ca66d1121e12b29d2309512c1cd"
+    },
+    {
+      "sku": "sg-011",
+      "field": "images.back_model_image",
+      "before": {
+        "path": "assets/images/products/hub/sg-011-back.webp",
+        "resolved": "images/products/hub/sg-011-back.webp"
+      },
+      "after": null,
+      "reason": "Assigned hub image shows a front collar; clear it so the existing actual back_image is used.",
+      "asset_sha256": "d74379af8cb3c68dbb891ec06867caff32e86561f38820bed96cf7e083973d3b"
+    }
+  ],
+  "existing_authority_issues": [
+    {
+      "id": "signature-bridge-source-conflict",
+      "skus": [
+        "sg-001",
+        "sg-002",
+        "sg-003",
+        "sg-005"
+      ],
+      "status": "RESOLVED_FRONT_SOURCE_BINDINGS",
+      "detail": "All four front references now bind the existing SKU-specific physical-authority photos with matching historical hashes. Shirt chest placement and bridge-filled petals, shorts waistband colors and wearer-left roses follow those sources. Superseded reference/dossier snapshots are retained inside each product record. This resolves front artwork sourcing; it does not certify a new render or a rear-view source.",
+      "sources": [
+        "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+        "assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg",
+        "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png",
+        "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg"
+      ]
+    },
+    {
+      "id": "signature-beanie-variant-binding",
+      "skus": [
+        "sg-007"
+      ],
+      "status": "NEEDS_SOURCE_RECONCILIATION",
+      "detail": "Catalog/registry specify silicone patch and color variants; dossier specifies embroidered mixed graphic variants. Inspected tech flat contains visibly different rose treatments, so one default cluster does not prove all variant identities. Preserve current catalog specification until reconciled.",
+      "sources": [
+        "assets/products/references/sg-007-techflat.jpeg",
+        "data/dossiers/the-signature-beanie.md"
+      ]
+    },
+    {
+      "id": "signature-secondary-sr-registration",
+      "skus": [
+        "sg-002",
+        "sg-005",
+        "sg-015"
+      ],
+      "status": "NEEDS_EXACT_ARTWORK_BINDING",
+      "detail": "Dossiers and tech flats show a separate small rear SR. The plain SR reference is distinct from the rose-bearing site-wide primary. Bind its exact source/version before adding a registry logo ID; do not alias it to the first rose.",
+      "sources": [
+        "data/brand-logos/sr-monogram.md"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "sku": "br-001",
+      "name": "BLACK Rose Crewneck",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/br-001-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/black-rose-crewneck-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "105bee1c200c034a886ba10df23fcb94a6d1a4a0e82deae1a390fc169396499d",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-001-crewneck.png",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "c9cd0614f52f8c9a6f8bcfb098acd89bcca15ea612cb62a48bba5d48697123c2",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/black-rose/br-crewneck-front.jpeg",
+        "back": "assets/products/techflats/split/black-rose/br-crewneck-back.jpeg",
+        "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/br-001-crewneck.png"
+      },
+      "fit": {
+        "specification": "Heavyweight cotton fleece, relaxed fit.",
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "c3443d005f8d9d06e59420f4631c8e6a58657abda30d43620de450b9db64e03c",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-002",
+      "name": "BLACK Rose Joggers",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/ghost/br-002-ghost-front.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "9cd61c58bf3e85a42d74dc0dc22a554abb15d1f3cec86e3625f3165df6600004",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/black-rose-joggers-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "8d7a455d22a459e9e03220000aa9962aa365f446a3db963f18e8557f5b9232fa",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-002-joggers.png",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "f7596bbcee6a189aac561b60261bb313ff063cc62722a8f13fe721f0ac7a9928",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/black-rose-joggers-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "8d7a455d22a459e9e03220000aa9962aa365f446a3db963f18e8557f5b9232fa",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/black-rose/br-joggers-front.jpeg",
+        "back": "assets/products/techflats/split/black-rose/br-joggers-back.jpeg",
+        "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/br-002-joggers.png"
+      },
+      "fit": {
+        "specification": "Black jogger sweatpants — lower body only, elasticated waist with drawstring, tapered leg, ribbed ankle cuffs, side hand pockets, back pockets. Heavyweight cotton-blend fleece, relaxed fit through the thigh.",
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "9d27c9a273c4b5ecd483be26f4aaba02d6c5358be5585668b29e2cefd5a7d1e4",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-003",
+      "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black)",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/br-003-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "2c3f72b68414443c78f7d0d8fc837e78bf1703f0c4f338d4a183deb278c4646b",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "1891699ccdef5a4e60bdd8d8088e929ad8addb0b4900d58a1470d80444057291",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-003-baseball-classic.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "34069502b799270fa63f41120acf30f2fd62874df8c475753a3af41489b59841",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "1891699ccdef5a4e60bdd8d8088e929ad8addb0b4900d58a1470d80444057291",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/black-rose/br-jersey-baseball-black-front.jpeg",
+        "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-black-back.jpeg",
+        "reference": "assets/products/references/br-003-classic-real-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": "#/sku_logos/br-003/decoration_sizing",
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "f8789eeec6f40c1259d6e2d183c66bd1c8d580f55115770f0a6e2e566ef80cdd",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-004",
+      "name": "BLACK Rose Hoodie",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/br-004-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/black-rose-hoodie-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "564db00dca2d99235e16829931d48f1f97b5583439a9d9c49457131694f4695d",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-004-black-rose-hoodie.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "64e1c21b1fc042417fc17767d02f854fea6b0637ef0901b06f672c0876a95487",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/black-rose-hoodie-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "564db00dca2d99235e16829931d48f1f97b5583439a9d9c49457131694f4695d",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-source.jpg",
+        "back": null,
+        "reference": "assets/products/references/br-004-hoodie-real-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "054f92006937e470c148d6cd3a66f69739792a11b2c00cfc43f10dda04bf1b8b",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-005",
+      "name": "BLACK Rose Hoodie — Signature Edition",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/ghost/br-005-ghost-front.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "204f173996400068f749ecf625b1bdeaf14e16b4b29638ca97773b4837255d61",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/black-rose-hoodie-signature-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "953a14d4924bda179d09e636af718ebd51914a1a4a36147ada5e5a73d888acf8",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-005-signature-hoodie.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/black-rose-hoodie-signature-edition-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "2ea30a2fa75fd36f713ffa3fc9812d2c4cc73e8982c30901d5f6fc700a2748d3",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-signature-edition-hoodie-ltd-source.jpg",
+        "back": null,
+        "reference": "assets/products/references/br-005-signature-hoodie-real.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "55a09ad64b4a0a9fa9ac03b7fb8c370378327bcbc4acafa5bcd466d7d90e0532",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-006",
+      "name": "The Bomber Sherpa",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/br-006-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "d474d97d9fac60eff864a14f30b6e07845ea71696ae0483a2c5f7108f22c815b",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/black-rose-sherpa-jacket-back.jpg",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "ef980d90ac3beb786a16351cbb523222cf909c3c74c3b10165e929fd1aa881ce",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-006-sherpa-jacket.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "c5a4b17f625cbefeff7ed440b4fb879172154ace0c7193511eb02ab52a7352f6",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/black-rose-sherpa-jacket-back.jpg",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "ef980d90ac3beb786a16351cbb523222cf909c3c74c3b10165e929fd1aa881ce",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-sherpa-jacket-sherpa-product.jpg",
+        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-sherpa-jacket-back.jpg",
+        "reference": "assets/products/references/br-006-sherpa-jacket-real-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "83c6d2d6fb778d0f44a247a622be45c2dd7e4cd5092e30106c1c8e4f932f66fa",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-007",
+      "name": "BLACK Rose x Love Hurts Basketball Shorts",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/hub/br-007-front.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "b9473ded79d2ee52b7d132790574405197191bc3427411a5cff55616382095a7",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/hub/br-007-back.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "11bfdd039fab91827e370c318e3ec9a9c48a49e457325f07494cad7d139e1e62",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-007.jpg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "6d7ea279905b7cfdbc9fa58d371d0fcfc3e8326c2041b4b6a1c86219fe2c7890",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/br-007-real-back.jpg",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "f1245ae31b688f0e1a830da7e9eaa09411219caeede13569d3a9cb90d8f286b9",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "assets/products/references/br-007-shorts-real-front.jpeg",
+        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007-real-back.jpg",
+        "reference": "assets/products/references/br-007-shorts-real-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "274adf8ff0472eaa3006f099725c20f46bd6e5bf48d441306ae13b134bf429cf",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-008",
+      "name": "BLACK is Beautiful Jersey Series: 1. SF Inspired (Football)",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/br-008-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "eb76157818cc49cea870e94c7a41681484bfb081226e69ef10d67db18f57c4e9",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": null,
+        "packshot": {
+          "path": "assets/images/products/br-008-sf-inspired.jpg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "426edc25035c475e6e79818bc3a5be6612e2c1343ad85bdc5272f3bd1041357e",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/black-rose/br-jersey-football-sf-front.jpeg",
+        "back": "assets/products/techflats/split/black-rose/br-jersey-football-sf-back.jpeg",
+        "reference": "assets/products/references/br-008-design-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": "#/sku_logos/br-008/decoration_sizing",
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "30616c5c83341a4827c3b28b55a7eb8c812b0233d6bf03a3a7071b8c99fe64ce",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-009",
+      "name": "BLACK is Beautiful Jersey Series: 2. Last Oakland (Football)",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/br-009-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "4445d0d0a2a38604ee90a9e6402e212b2764e01ee815f677f9700b63a390e698",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": null,
+        "packshot": {
+          "path": "assets/images/products/br-009-last-oakland-football.jpg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "60aebd8517d562b111f4042a48b7e2c7ccceefb2bf2a40e3e42a2d434e2f26e8",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/black-rose/br-jersey-football-oakland-front.jpeg",
+        "back": "assets/products/techflats/split/black-rose/br-jersey-football-oakland-back.jpeg",
+        "reference": "assets/products/references/br-009-design-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": "#/sku_logos/br-009/decoration_sizing",
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "b408643809e92e263bcba798ad4294605df8a619c76417e5579accd154c0fea2",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-010",
+      "name": "BLACK is Beautiful Jersey Series: 3. The Bay (Basketball)",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/br-010-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "f913a57df3e98987f4365b24778d1a51454a8900de12f9cf59406b9899e03b0f",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": null,
+        "packshot": {
+          "path": "assets/images/products/br-010-the-bay-basketball.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "ac39ac55169f3d031746cf212dd056a0514bd19a4ab5f1702063864097d71222",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/black-rose/br-jersey-basketball-front.jpeg",
+        "back": "assets/products/techflats/split/black-rose/br-jersey-basketball-back.jpeg",
+        "reference": "assets/products/references/br-010-design-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": "#/sku_logos/br-010/decoration_sizing",
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "a70d8554ca5cc1d081d5e54b96b31d20c229590036e0a7890b9dfed44796eeb4",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-011",
+      "name": "BLACK is Beautiful Jersey Series: 4. The Rose (Hockey)",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/br-011-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "3260ec857be2da18fbec4d2a6a92f6edeca1825f4a8e38fc602c4a580f2544ef",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/br-011-the-rose-hockey-back.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "e96656573c7ced497a9c47e3cad432497ce1f433fe05a28bfc64936ee0bb3d45",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-011-the-rose-hockey.png",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "027f6babaa7d9f5ac44c1ce5afdcd3ce181fd161f1d7fd5a1cc9fbe533fc2b3f",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/black-is-beautiful-hockey-jersey-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "02951ec439a484fdb9764267532a02fe284eed5859a1c3226a74b48bed13b937",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/black-rose/br-jersey-hockey-front.jpeg",
+        "back": "assets/products/techflats/split/black-rose/br-jersey-hockey-back.jpeg",
+        "reference": "assets/products/references/br-011-design-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": "#/sku_logos/br-011/decoration_sizing",
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "007e6d73174f8b4c8ddaa0a0d618ccfb9af8ce0aa9e2091377501eb7879506c0",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-012",
+      "name": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland)",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/jersey-last-oakland-baseball-front-model.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "a33786b7daa8d35f89c65a7a39e0808c876ae15c4d6b3cfe359363ab13a2abd7",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/br-012-last-oakland-baseball-back.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "9047c354c67226e6de730208837e6fd2409aa1053e76fc65c0f7132ca911c7f8",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-012-last-oakland-baseball-front.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "da41030af207d29cb5dbda46fe0bc60328bb689d500b807ab463ced399f37fd1",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/br-012-last-oakland-baseball-back.jpeg",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "a5121d4275d493ab6ebb0e22fed896cbbcc2ca355856c4aca9fb33c0bf7dbb85",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/last-oakland-baseball-jersey-front.jpeg",
+        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-back.jpeg",
+        "reference": "assets/products/references/br-012-techflat.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": "#/sku_logos/br-012/decoration_sizing",
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "d9356bba1e8a310664d3dd0138bf127d2e3fac02441825bcc0ec9350f8c53fe0",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-014",
+      "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Giants)",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/br-014-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "dcc3eb92e83591bdfa9d35b2691db72b5b8f3cf39b37e14dc671b32151b9f719",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/br-014-giants-back.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "a51915c92dea276feb30bbafd1061b3c641e3fec69df635c0e48df5075d82474",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-014-baseball-classic-giants.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "aed53e3a9a181c8e9a1c3909e8a50f410a249a8f93a5bc01271301add88ca890",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/black-rose/br-jersey-baseball-giants-front.jpeg",
+        "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-giants-back.jpeg",
+        "reference": "assets/products/references/br-014-real-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": "#/sku_logos/br-014/decoration_sizing",
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "6918b34916f69ad64a3553109bf128e839658686be048efd442b2e0e47145da5",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "br-015",
+      "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (White)",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/br-015-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "b85812b19f282a8916a942326f54b3e1f7a0ee246025c35876c7b06451f2f65b",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/black-is-beautiful-jersey-white/black-is-beautiful-jersey-white-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "eae215bc8058cdae8f7c718c0c51843796d3d964bf4702b335cd031cc9685a9c",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/br-015-baseball-classic-white.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "0ce949e7cb59b028113acfdd61b5d1775fa7db85e5fa33fcdb893a1a7d724df9",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/black-rose/br-jersey-baseball-white-front.jpeg",
+        "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-white-back.jpeg",
+        "reference": "assets/products/references/br-015-techflat.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": "#/sku_logos/br-015/decoration_sizing",
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "c5fff8e858d510ce68edb2ac28892d9535ad427be949f85e9acd225cd0c41798",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "kids-001",
+      "name": "Kids Colorblock Hoodie Set — Red/Black",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/kids-001-onmodel-v2.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/kids-red-set-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "1f33d6147185de85d90ece651948e18476d66c7027138cada80a48d4004cfac8",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/kids-001-red-set.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "fb6ee3489c11a9223bc11598443be1b55f3c10f851cf063ff377a44670e92f9c",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/kids-capsule/kids-red-hoodie-front.jpeg",
+        "back": "assets/products/techflats/split/kids-capsule/kids-red-hoodie-back.jpeg",
+        "reference": "assets/products/references/kids-001-real-photo.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "af98b74131430762ffb05fbc7726fd6f483d15e2d71604315b4233eca3bb77ce",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "kids-002",
+      "name": "Kids Colorblock Hoodie Set — Purple/Black",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/ghost/kids-002-ghost-front.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "8975c682531dc505276d62d73677a0bce33d3460ae59efa46011e2bfddb14126",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "7ce66f7a94a6b1d50c0ed7c6a701a675b81c61305d5293f3bfd5e43e9c290ea1",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/kids-002-purple-set.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "e6ea845f1c877003b3489332feb7e872ccfb82fe3d0240921e7fc2f1f32728f4",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/kids-capsule/kids-purple-hoodie-front.jpeg",
+        "back": "assets/products/techflats/split/kids-capsule/kids-purple-hoodie-back.jpeg",
+        "reference": "assets/products/references/kids-002-real-photo.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "50f0ac3ce94c2d60e4a1b97e7959d06cb6a7cfedf51440f4b338bfc0376eee48",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "lh-002",
+      "name": "Love Hurts Joggers (Black)",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/lh-002-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "c58b3741972167576efa0c2dafb4925570961734fa19d9373e3730c4330b674a",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": null,
+        "packshot": {
+          "path": "assets/images/products/lh-002-joggers.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/love-hurts/lh-joggers-front.jpeg",
+        "back": null,
+        "reference": "assets/products/references/lh-002-techflat-front.jpeg"
+      },
+      "fit": {
+        "specification": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs).",
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "796f623b0de1006b10f4259ed5ab29427af7453de1f998029734a142a194ab33",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "lh-003",
+      "name": "Love Hurts Basketball Shorts",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/hub/lh-003-front.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "9774945ccd040eb37e0e3cb30043c30192697c7acd793d65dec856c09c80ea33",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/love-hurts-basketball-shorts-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "94b6cbc9455933f2312e8ec163c5f97eec7b543ee434f0b10310fb9a6803f210",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/lh-003-shorts.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/lh-003-real-back.jpg",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "d6e2756c3d87ef5c6d38abae124647e33881a065ad31a53f6c4c37c72223a136",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-front.jpg",
+        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg",
+        "reference": "assets/products/references/lh-003-techflat-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "115952d71ade955796c98e3d80f688e2607256d975f16ebc80f1fc977b7199ff",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "lh-004",
+      "name": "Love Hurts Bomber Jacket",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/lh-004-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/lh-004-bomber-back.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "83cbe09c3496149ae8375e84c4ecd694470f4b9aee264da3c616279b5e12d260",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/lh-004-bomber.png",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "fb8dee3a83c5df81fe8372acc9c6dba2374b2d6f1c51b4b1bf4bcbb3dc6e79af",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/lh-004-bomber-back.png",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "e170a556f4ee444f273c4aacd2bfce569d0c87263397826b6e757db6402888f1",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/love-hurts/lh-bomber-front.jpeg",
+        "back": "assets/products/techflats/split/love-hurts/lh-bomber-back.jpeg",
+        "reference": "assets/products/references/lh-004-techflat-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "f15761191119895c6b86ab99fcd364b2df4a0d19397d0af25dab978c50429c50",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "lh-005",
+      "name": "The Fannie",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/lh-005-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "e3df4aa2781881b9364490c09611308d0c9c0a42fbab19fd114365eca8bda43c",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/the-fannie-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "ec4e825796fa52db3cba10d83f2a064a4280fd3fb600ec02f29c9fdf76271d49",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/lh-005-fannie.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "8cae4c6b10bfe9bcd4ba60b4a5529769064ef9b5d558527bb71126a115697f18",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/the-fannie-pack-photo.jpg",
+        "back": null,
+        "reference": "assets/products/references/lh-005-fannie-mockup.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "016770b3c8d1b5389549c3c3830e7dc44d19c55542630bd855eed40c7cbe62c6",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "lh-006",
+      "name": "Love Hurts Joggers (White)",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/lh-006-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "805af391800f930d5631db76521ae1b6443e4c6e70e71ba4ac7e215d670e3201",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/love-hurts-joggers-white-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "bdcf95a8e0f62c18d64e54b6695391e1f72eef6d1385da29d7c18cbf29d9d1c4",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/lh-006-joggers-white.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "c48bd2e8e764859dee048e3c8f4af955e32bce041fd2975e5948ec700fcc0417",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/love-hurts-joggers-white-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "bdcf95a8e0f62c18d64e54b6695391e1f72eef6d1385da29d7c18cbf29d9d1c4",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-joggers-white.jpeg",
+        "back": null,
+        "reference": "assets/products/references/lh-006-techflat-front.jpeg"
+      },
+      "fit": {
+        "specification": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs).",
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "5e0d549dbbc8cb184c86d85b6c56b52a51e5023af0c9b64205a15658621157c1",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-001",
+      "name": "The Bridge Series 'The Bay Bridge' Shorts",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/sg-001-bay-bridge-shorts.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "5b5e8fde5ce3ae87714d7b3f118ed0ee1dba4f05df4cd58ac9815bd2767c11b3",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/bridge-bay-bridge-shorts-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "aa9e2236f29b24c65598038f77c73c8d651bb8bec563391250790edeaa3d688b",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/sg-001-bay-bridge-shorts.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "3bfe3a460f6bb425240f2c268977e6c11f248bfd9bf9a872d83d2d11c441a950",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/the-bay-set-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "205c10a7fb09f9888d4bce3100aed31d3099833b84b3659debc9f0bf8315eff7",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+        "back": null,
+        "reference": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "5ee7a70aa783848c7bbb64c1df5bac0bde0427d8e28685830d6d03982c8f8164",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-002",
+      "name": "The Bridge Series 'Stay Golden' Shirt",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/sg-002-stay-golden-shirt.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "bd2e1c0481e1e982e7b4b811b2005f39fb14e95fc8d6cf4368d5716a04587e10",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/stay-golden-tee-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "2b1868c007e196786d4a66fdb6534b16774dac8038676d9abea741c4f0e93685",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/sg-002-stay-golden-shirt.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "a9b752b555281f473b7fc9924c930d1353e3ad5c123fd76b8eddbdd409155f3f",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg",
+        "back": null,
+        "reference": "assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "513e7d9958d0c796c69fe12deb6a64780837cbcbb110e7920609617c80cd4fdb",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-003",
+      "name": "The Bridge Series 'Stay Golden' Shorts",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/hub/sg-003-front.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "56f56d762b0dc7e75ecd64dfbd9c8bca3c14938fb3ee299f48c36bb88b63564e",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/bridge-stay-golden-shorts-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "aff15b6f2bc2bb17811b125f555702fdf00ecd33434e6ef3cda59016bfc98991",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/sg-003-stay-golden-shorts.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "5148de48a616ab9d9fb334bf8b0ed8357259339fd45658f90c4ef640e581a71d",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png",
+        "back": null,
+        "reference": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "1b9ee6654ea39a250ce0baa774b1234b2d4a429d3f48a4bcb3014ac46d7ed07f",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-005",
+      "name": "The Bridge Series 'The Bay Bridge' Shirt",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/sg-005-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": null,
+        "packshot": {
+          "path": "assets/images/products/sg-005-bay-bridge-shirt.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "3e44b05480b96941c52b5d83d9e41eaec7f7fecda34358845b51306f7d961292",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg",
+        "back": null,
+        "reference": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "68e60b6bed2f094681f91de86bc5108e79ee07678ea9d8a86ae5b4f8ffeb6f12",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-006",
+      "name": "Mint & Lavender Hoodie",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/sg-006-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "510cac2c051615d0713180d512c1f4f132e6d774dd989e2e536e608be62bfe2f",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/mint-lavender-hoodie-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "189647dfa9c1b82c502016380747c20b086c7ffe6cb4334110b9b1e13b28e8be",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/sg-006-mint-lavender-hoodie.png",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "0f47125187736a1089a42fa5f2f92987cbae5ac00c77bd41225697160afac4ea",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/mint-lavender-hoodie-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "189647dfa9c1b82c502016380747c20b086c7ffe6cb4334110b9b1e13b28e8be",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/signature/sg-mint-lav-hoodie-front.jpeg",
+        "back": null,
+        "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-006-mint-lavender-hoodie.png"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "04cdd10dde63036f52990027a6e51b0cc7907c799543c4dfc6ad7d5216ee8529",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-007",
+      "name": "The Signature Beanie",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/sg-007-signature-beanie.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "913771ea3f81d68637da6f92b7951ce15630dcc93b46f398964d736811ec234c",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/signature-beanie-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "d26b90f648aa7a394fb7363e051bf166bd386889cfd46bcd555efa411bfccb0d",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/sg-007-signature-beanie.png",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "f81a14d7dfea27b570ee2c0ba09661474f87d3df637652055e0f225ba91f9a43",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/signature/sg-beanie-purple.jpeg",
+        "back": null,
+        "reference": "assets/products/references/sg-007-techflat.jpeg"
+      },
+      "fit": {
+        "specification": "Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit.",
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "96d73659411b12df3c4ad60fbdaef0a412fad13132a61dbcabc5e5e4cd891393",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-009",
+      "name": "The Sherpa Jacket",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/sg-009-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/signature-sherpa-jacket-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "ce3abe659db2e795bb54990758bdcf92ab7cc7cd555322440b83a0e3f5474b62",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/sg-009-sherpa-jacket.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "cb13b25aa3854190b2fbaa3e701a96ef2c813969c8bba7118ac6e68af46711fb",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/the-sherpa-jacket-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "4c16fea9870d524bc47ff5846e4893164ff9e29f03ff1d68bab0eadf787f0468",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/sherpa-jacket-front.jpg",
+        "back": null,
+        "reference": "assets/products/references/sg-009-sherpa-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "358c11e77f353575f26d6c1569cf0ae8f6d5d20b2e10727f548f39a549d3cd41",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-011",
+      "name": "Original Label Tee (White)",
+      "gaps": [
+        "images.back.fallback",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/sg-011-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "b278f4abfc7127ef62c97db79e21bd65d1f7506d18e44686325b1953dec89f06",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/original-label-tee-white-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": false,
+          "exists": true,
+          "sha256": "64e97879684e7bfe1b79997165c58c303dd968a832ef80e71bc9565f96e26444",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/sg-011-original-label-tee-white.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "9e80fd8e297d6e5da548d39569301b2f032f1bb73949db2bc7a1c2b41f231ab1",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/original-label-tee-white-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "64e97879684e7bfe1b79997165c58c303dd968a832ef80e71bc9565f96e26444",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/original-label-tee-white-front.webp",
+        "back": null,
+        "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-011-onmodel.webp"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "0d2fd02c684cc717e165734925f6198ed119812b5cb9eda1ffbe3b523a2df4a2",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-012",
+      "name": "Original Label Tee (Orchid)",
+      "gaps": [
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/sg-012-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "5cd91f17c0bbd77633be628e76b7d0100c2572f76b2912add5022b9831262f87",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/original-label-tee-orchid-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "e5f88a95bbe50f50343608f47e28d9bbc1aa896c7f9c0e1a0d92e737580c38b9",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/sg-012-original-label-tee-orchid.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "ebbe6620d6781d128c7da811e7febad138dbbccb91fb8f760df98c6749fd8fb5",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": {
+          "path": "assets/images/products/original-label-tee-orchid-back-model.webp",
+          "source_key": "back_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "e5f88a95bbe50f50343608f47e28d9bbc1aa896c7f9c0e1a0d92e737580c38b9",
+          "visual_status": "overview only; not fidelity approval"
+        }
+      },
+      "render_sources": {
+        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-012-original-label-tee-orchid.webp",
+        "back": null,
+        "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-012-onmodel.webp"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "cc5de2341bffaf523116b8f8a78db94dc9c77f61cb38bfef210521313f94ea9a",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-013",
+      "name": "Mint & Lavender Crewneck",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/sg-013-onmodel.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "cb58e694639ff02b4dd7c1d009516df237f0acb39a8c6f6948930dad5d3c157b",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/mint-lavender-crewneck-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "7742f98a5d8e3146d13a02b57eb0b46b1f5a6df261e08686e288ecf4919485ac",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/sg-013-mint-lavender-crewneck.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "ad26b94284690685af52307d8bdc72d7187e9177586282275279b577179396f5",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/signature/sg-mint-lav-crewneck-front.jpeg",
+        "back": "assets/products/techflats/split/signature/sg-mint-lav-crewneck-back.jpeg",
+        "reference": "assets/products/references/sg-013-techflat-front.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "fcaf102759169051f4e4408087c4ddee5631e2703ccbf83a43ce0e2bb16d45a3",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-014",
+      "name": "Mint & Lavender Sweatpants",
+      "gaps": [
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/hub/sg-014-front.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "c003bf3abc2014d87a0262d111c0a2e825232465d8725da5df0dcbcb9bc68953",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": {
+          "path": "assets/images/products/mint-lavender-sweatpants-back-model.webp",
+          "source_key": "back_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "d0eb730e4e09c7d9439170039e0c4029bb2215a607fbe11a6077bb7b134d6ccc",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "packshot": {
+          "path": "assets/images/products/sg-014-mint-lavender-sweatpants.jpeg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "1cc5ced83992c4c11ca39b36613f1bcddc44fd02c2b6ba9e648f591ba947eae4",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "front": "assets/products/techflats/split/signature/sg-mint-lav-sweats-front.jpeg",
+        "back": "assets/products/techflats/split/signature/sg-mint-lav-sweats-back.jpeg",
+        "reference": "assets/products/references/sg-014-techflat-front.jpeg"
+      },
+      "fit": {
+        "specification": "Athletic-cut sweatpants with a tapered jogger leg and\nribbed ankle cuffs — solid **mint green** body, front and back, all one mint\ncolor.",
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "361ab61cdd47cb5bf84784a201b70bb4da9605749043053cb57025644d84de47",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    },
+    {
+      "sku": "sg-015",
+      "name": "The Windbreaker Set",
+      "gaps": [
+        "images.back",
+        "images.back_packshot",
+        "content.description.enriched",
+        "content.short_description.enriched",
+        "content.seo_meta",
+        "content.instagram",
+        "content.tiktok",
+        "content.alt_text",
+        "garment.fit",
+        "render_sources.front",
+        "render_sources.back"
+      ],
+      "images": {
+        "front": {
+          "path": "assets/images/products/hub/sg-015-front.webp",
+          "source_key": "front_model_image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "25844098b434342393c2a3aa947bea0ec1972352b4716dc8cdb22a19b6fb270f",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back": null,
+        "packshot": {
+          "path": "assets/images/products/sg-015-windbreaker-set.jpg",
+          "source_key": "image",
+          "role_asset": true,
+          "exists": true,
+          "sha256": "cddd4d4dfccd473bbd1d1223c18270141342c7e6bc31bdab25df99f04d8ce2dc",
+          "visual_status": "overview only; not fidelity approval"
+        },
+        "back_packshot": null
+      },
+      "render_sources": {
+        "reference": "assets/products/references/sg-015-windbreaker-set-techflat.jpeg"
+      },
+      "fit": {
+        "specification": null,
+        "source": "derived_from_dossier"
+      },
+      "sizing_references": {
+        "decoration_sizing_pointer": null,
+        "garment_size_chart": null,
+        "source_rule": "Use founder specifications and actual product flatlays; no inferred garment measurements."
+      },
+      "dossier_sha256": "9da2deb21736758f9b2b590513a62b2990408b5e644f0a34f2019e7d8c2f98e5",
+      "next_action": "Resolve explicit gaps using existing evidence; do not infer measurements or promote filename matches."
+    }
+  ]
+}

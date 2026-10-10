@@ -201,20 +201,14 @@ This isn't fast fashion. This is armor.
 
 ---
 
-## Canonical Tagline
+## Tagline
 
-> **`Luxury Grows from Concrete.`**
-
-The period is part of the tagline. This is the **only** tagline. Never paraphrase:
-- "luxury from the streets" = WRONG
-- "grown from concrete" = WRONG
-- "Luxury grows from the concrete" (no period, no capital C) = WRONG
+No tagline is authorised (founder decision 2026-10-06). Any tagline use, in any form or variant, is a violation.
 
 ---
 
 ## Key Brand Messages
 
-- "Luxury Grows from Concrete." (only tagline — verbatim with period)
 - "Where fashion meets emotion"
 - "Redefine luxury fashion"
 - "Sustainably crafted, limited edition designs"

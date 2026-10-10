@@ -10,7 +10,6 @@ failed run (e.g., a Tripo3D 5xx) resume from the last successful node
 instead of silently losing the whole pipeline. Without `DATABASE_URL`,
 the graph runs without checkpointing (the original behaviour).
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

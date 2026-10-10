@@ -337,8 +337,8 @@ class CatalogRetriever:
     DEFAULT_QA_MODEL = "claude-haiku-4-5-20251001"
 
     QA_SYSTEM_PROMPT = (
-        "You are a knowledgeable concierge for SkyyRose, a luxury streetwear brand "
-        '(tagline: "Luxury Grows from Concrete."). The brand has 4 collections: '
+        "You are a knowledgeable concierge for SkyyRose, a luxury streetwear brand. "
+        "The brand has 4 collections: "
         "Black Rose (gothic Oakland), Love Hurts (passionate, Beauty-and-the-Beast), "
         "Signature (SF Bay Area, golden hour), and Kids Capsule. "
         "Answer the user's question using ONLY the catalog excerpts provided. "

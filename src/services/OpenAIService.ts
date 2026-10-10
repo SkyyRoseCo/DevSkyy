@@ -36,9 +36,12 @@ export interface OpenAICompletionResponse {
   };
 }
 
+export type OpenAIContentPart =
+  { type: 'text'; text: string } | { type: 'image_url'; image_url: { url: string; detail?: 'auto' | 'low' | 'high' } };
+
 export interface OpenAIChatMessage {
   role: 'system' | 'user' | 'assistant';
-  content: string;
+  content: string | OpenAIContentPart[];
 }
 
 export interface OpenAIChatRequest {
@@ -207,7 +210,10 @@ export class OpenAIService {
     const messages: OpenAIChatMessage[] = [
       {
         role: 'user',
-        content: `${prompt}\n\nImage: ${imageUrl}`,
+        content: [
+          { type: 'text', text: prompt },
+          { type: 'image_url', image_url: { url: imageUrl } },
+        ],
       },
     ];
 

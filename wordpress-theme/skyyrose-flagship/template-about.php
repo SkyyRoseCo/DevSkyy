@@ -169,9 +169,6 @@ $arrow_svg = '<svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns=
 				<h1 class="abt-hero__title">
 					<?php echo wp_kses( __( 'The<br>Story', 'skyyrose' ), $allowed_inline ); ?>
 				</h1>
-				<p class="abt-hero__tag">
-					<?php esc_html_e( 'Luxury Grows from Concrete.', 'skyyrose' ); ?>
-				</p>
 				<dl class="abt-hero__meta">
 					<?php foreach ( $hero_meta as $row ) : ?>
 						<div class="abt-hero__meta-row">

@@ -51,7 +51,7 @@ class AboutPageBuilder(ElementorBuilder):
 
         widgets.append(
             self.heading(
-                "Luxury Grows from Concrete.",
+                "SkyyRose",
                 size="xxl",
                 tag="h1",
                 align="center",

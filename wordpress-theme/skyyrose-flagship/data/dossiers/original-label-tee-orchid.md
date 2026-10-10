@@ -14,6 +14,12 @@ Authored from canonical product specification. Two-eyes review: Corey confirms e
 
 **Garment type lock:** Classic crew-neck T-shirt, upper body only. NOT a crewneck sweatshirt, NOT a hoodie, NOT a jersey, NOT a long-sleeve. Short sleeves, ribbed crew neckline, no buttons, no hood, no kangaroo pocket. Orchid (soft purple-pink) 100% cotton construction.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
 ## Branding — exactly what IS on this product
 
 > **Founder-confirmed (2026-06-16): there are NO logos at all on the Original Label Tees.** No SR monogram, no chest mark, no sleeve badge, no print, no embroidery. The garment is a BLANK orchid tee whose only branding is the interior woven neck label (the "original label" the product is named for). A prior dossier revision invented a front-left-chest rose-gold SR monogram — that mark does NOT exist on the product and must never be rendered.

@@ -23,7 +23,7 @@ Before producing any output, apply skyyrose-brand-dna canon (auto-loaded via fro
 
 **Non-negotiables confirmed by that skill (quick-reference — the skill is authoritative):**
 
-- Tagline verbatim: `Luxury Grows from Concrete.` — period included, no paraphrase, no truncation.
+- No tagline is authorised (founder decision 2026-10-06) — never use or invent one.
 - Collections: Black Rose / Love Hurts / Signature / Kids Capsule. Never cross-attribute voices, quotes, or visual language between them.
 - Products by NAME, never SKU. Resolve all product facts from `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (33 SKUs) + per-SKU dossier in the same directory. Never invent details from memory.
 - Visual references = The Five only: Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels. Never European luxury-house lineage (Bottega, Rick Owens, Acne, Hedi Slimane, 032c, Givenchy-by-Tisci, Celine, Balenciaga, Vetements).

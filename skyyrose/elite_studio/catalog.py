@@ -1,18 +1,8 @@
-"""Catalog — Single source of truth loader for SkyyRose product data.
+"""Typed compatibility catalog backed by the single editable product registry.
 
-Reads the canonical CSV at:
-  wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
-
-Typical usage:
-
-    from skyyrose.elite_studio.catalog import Catalog
-
-    cat = Catalog.load()
-    p = cat.require("sg-013")
-    print(p.series)             # 'Mint & Lavender'
-    print(p.branding_summary)   # logo/branding spec from CSV
-
-Env var SKYYROSE_CATALOG_PATH overrides the default CSV path.
+Default reads resolve registry catalog projections. CATALOG_CSV identifies the
+compatibility export; explicit alternate CSV paths support isolated fixtures.
+Complete product facts, corrections and provenance use core.product.get_product.
 """
 
 from __future__ import annotations

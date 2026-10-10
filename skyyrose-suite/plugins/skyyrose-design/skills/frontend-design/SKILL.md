@@ -310,7 +310,7 @@ If the project ships any of these, **they override this skill's defaults**:
 
 Read those first. **This skill is the floor of expectations, not the ceiling.** The project's own guide wins every conflict.
 
-**SkyyRose project note**: `wordpress-theme/CLAUDE.md` documents the WordPress theme conventions (PHP escaping rules, enqueue priorities, builder integration, brand palette tokens). When working on `wordpress-theme/skyyrose-flagship/`, that file is the canonical spec and overrides this skill's framework-agnostic guidance. Brand canon: Rose Gold `#B76E79`, Dark `#0A0A0A`, Silver `#C0C0C0`, Crimson `#DC143C`, Gold `#D4AF37`. Tagline: "Luxury Grows from Concrete." No blue ever. The four collections are Black Rose, Love Hurts, Signature, Kids Capsule. For SkyyRose work, also load the `skyyrose-brand-dna` skill.
+**SkyyRose project note**: `wordpress-theme/CLAUDE.md` documents the WordPress theme conventions (PHP escaping rules, enqueue priorities, builder integration, brand palette tokens). When working on `wordpress-theme/skyyrose-flagship/`, that file is the canonical spec and overrides this skill's framework-agnostic guidance. Brand canon: Rose Gold `#B76E79`, Dark `#0A0A0A`, Silver `#C0C0C0`, Crimson `#DC143C`, Gold `#D4AF37`. No tagline is authorised (founder decision 2026-10-06). No blue ever. The four collections are Black Rose, Love Hurts, Signature, Kids Capsule. For SkyyRose work, also load the `skyyrose-brand-dna` skill.
 
 ---
 

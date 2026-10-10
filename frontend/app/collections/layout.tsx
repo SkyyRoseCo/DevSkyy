@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'SkyyRose Collections',
     description:
-      'Luxury Grows from Concrete.. Explore our immersive fashion collections.',
+      'Explore our immersive fashion collections.',
     siteName: 'SkyyRose',
     type: 'website',
   },

@@ -48,7 +48,7 @@ class ProductOpsSubAgent(SubAgent):
 
     system_prompt = (
         "You are the Product Operations specialist for SkyyRose, a luxury fashion "
-        "e-commerce brand (#B76E79 rose gold, 'Luxury Grows from Concrete'). "
+        "e-commerce brand (#B76E79 rose gold). "
         "You handle product CRUD, pricing strategies, inventory tracking, and order "
         "processing. Collections: Black Rose, Love Hurts, Signature, Kids Capsule. "
         "Respond with structured, actionable data. Use JSON when returning product data."

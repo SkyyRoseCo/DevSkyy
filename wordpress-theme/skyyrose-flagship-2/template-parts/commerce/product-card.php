@@ -55,10 +55,10 @@ try {
 	// Match the owning archive grid: one card per row through 479px, then
 	// two/three/four columns. The outer 4vw gutters are clamped and the inner
 	// shell/gaps contribute 3/4/5rem at their respective column counts.
-	$default_sizes = $native_archive
+	$default_sizes  = $native_archive
 		? '(max-width: 29.99em) calc(100vw - 4rem), (max-width: 47.99em) calc((100vw - clamp(2rem, 8vw, 9rem) - 3rem) / 2), (max-width: 74.99em) calc((100vw - clamp(2rem, 8vw, 9rem) - 4rem) / 3), (max-width: 95.75em) calc((100vw - clamp(2rem, 8vw, 9rem) - 5rem) / 4), 360px'
 		: '(max-width: 47.99em) calc(100vw - 2rem), (max-width: 74.99em) calc((100vw - 5rem) / 2), 480px';
-	$image_sizes   = isset( $args['sizes'] ) && is_string( $args['sizes'] ) && '' !== trim( $args['sizes'] ) ? $args['sizes'] : $default_sizes;
+	$image_sizes    = isset( $args['sizes'] ) && is_string( $args['sizes'] ) && '' !== trim( $args['sizes'] ) ? $args['sizes'] : $default_sizes;
 	$frame_delivery = $native_archive && $frame_uri && function_exists( 'skyyrose2_archive_frame_delivery' ) ? skyyrose2_archive_frame_delivery( $collection ) : array();
 	$is_eager       = $native_archive && $card_index < 2 && in_array( $priority_intent, array( 'eager', 'high' ), true );
 	$loading        = $is_eager ? 'eager' : 'lazy';
@@ -88,7 +88,7 @@ try {
 		'sizes'         => $image_sizes,
 	);
 	?>
-<article class="sr2-c-editorial-card" data-card-direction="living-archive" data-preorder="<?php echo $is_preorder ? 'true' : 'false'; ?>" data-sale="<?php echo method_exists( $card_product, 'is_on_sale' ) && $card_product->is_on_sale() ? 'true' : 'false'; ?>" data-card-variant="<?php echo esc_attr( $variant ); ?>" data-card-crop="full" data-card-frame="<?php echo $frame_uri ? 'v2-statue' : 'archive'; ?>" data-presentation="<?php echo esc_attr( $presentation ?: 'house' ); ?>" data-collection="<?php echo esc_attr( $collection ?: 'house' ); ?>" data-product-type="<?php echo esc_attr( $card_product->get_type() ); ?>" data-purchasable="<?php echo $card_product->is_purchasable() ? 'true' : 'false'; ?>" data-availability="<?php echo esc_attr( $stock_state ); ?>" data-media-state="<?php echo esc_attr( $media_state ); ?>" data-media-source="<?php echo esc_attr( $media_source ); ?>">
+<article data-sku="<?php echo esc_attr( $product_sku ); ?>" class="sr2-c-editorial-card" data-card-direction="living-archive" data-preorder="<?php echo $is_preorder ? 'true' : 'false'; ?>" data-sale="<?php echo method_exists( $card_product, 'is_on_sale' ) && $card_product->is_on_sale() ? 'true' : 'false'; ?>" data-card-variant="<?php echo esc_attr( $variant ); ?>" data-card-crop="full" data-card-frame="<?php echo $frame_uri ? 'v2-statue' : 'archive'; ?>" data-presentation="<?php echo esc_attr( $presentation ?: 'house' ); ?>" data-collection="<?php echo esc_attr( $collection ?: 'house' ); ?>" data-product-type="<?php echo esc_attr( $card_product->get_type() ); ?>" data-purchasable="<?php echo $card_product->is_purchasable() ? 'true' : 'false'; ?>" data-availability="<?php echo esc_attr( $stock_state ); ?>" data-media-state="<?php echo esc_attr( $media_state ); ?>" data-media-source="<?php echo esc_attr( $media_source ); ?>">
 	<a class="sr2-c-editorial-card__media" href="<?php echo esc_url( $product_url ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>">
 		<span class="sr2-c-editorial-card__photo-window">
 		<?php if ( $front ) : ?>

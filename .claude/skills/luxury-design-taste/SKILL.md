@@ -5,7 +5,7 @@ description: Luxury streetwear design taste for SkyyRose surfaces — visual hie
 
 # Luxury Design Taste — SkyyRose
 
-Brand truth: "Luxury Grows from Concrete." Oakland-rooted luxury streetwear — NOT European maison minimalism. Canonical references: Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels. Never Chanel/Dior/Celine lineage.
+Brand truth: Oakland-rooted luxury streetwear — NOT European maison minimalism. Canonical references: Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels. Never Chanel/Dior/Celine lineage.
 
 ## When to use
 

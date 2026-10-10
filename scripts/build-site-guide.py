@@ -13,7 +13,7 @@ Sources parsed:
                                       $wc_pages array — slug => title page registry
   - footer.php                       hardcoded legal/help <li><a href="home_url('/x/')">
                                       links (FAQ, shipping-returns, privacy-policy, ...)
-  - data/skyyrose-catalog.csv        distinct `collection` values (collection => URL)
+  - product registry (get_product)   distinct `collection` values (collection => URL)
 
 Fails loud (non-zero exit) if any source yields suspiciously little — a silent
 empty/partial site-guide.json would quietly break the mascot's "where is X"
@@ -25,7 +25,6 @@ Usage:
 
 from __future__ import annotations
 
-import csv
 import json
 import re
 import sys
@@ -33,6 +32,11 @@ from pathlib import Path
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from skyyrose.core.product import all_skus, get_product  # noqa: E402
+
 THEME_DIR = REPO_ROOT / "wordpress-theme" / "skyyrose-flagship"
 
 # Title always immediately precedes url as adjacent keys within a menu item
@@ -103,14 +107,10 @@ def extract_footer_legal_links(php_source: str) -> dict[str, str]:
     return out
 
 
-def extract_collections(csv_path: Path) -> list[str]:
-    """Sorted distinct `collection` column values from the catalog CSV."""
-    with csv_path.open(newline="", encoding="utf-8") as fh:
-        reader = csv.DictReader(fh)
-        collections = {
-            row["collection"].strip() for row in reader if row.get("collection", "").strip()
-        }
-    return sorted(collections)
+def registry_collections() -> list[str]:
+    """Sorted distinct `collection` values across every registry product."""
+    collections = {(get_product(sku)["collection"] or "").strip() for sku in all_skus()}
+    return sorted(c for c in collections if c)
 
 
 def build_pages(
@@ -226,8 +226,10 @@ def build_intents(pages: dict[str, dict[str, Any]], collections: list[str]) -> l
     return intents
 
 
-def generate(theme_dir: Path = THEME_DIR) -> dict[str, Any]:
+def generate(theme_dir: Path = THEME_DIR, collections: list[str] | None = None) -> dict[str, Any]:
     """Parse every source and return the {pages, intents} site-guide dict.
+
+    ``collections`` defaults to the product registry; tests pass a fixed list.
 
     Raises SystemExit (not a soft error) if any source parses to
     suspiciously little — a regex that silently stops matching after an
@@ -238,15 +240,15 @@ def generate(theme_dir: Path = THEME_DIR) -> dict[str, Any]:
         encoding="utf-8"
     )
     footer_source = (theme_dir / "footer.php").read_text(encoding="utf-8")
-    catalog_path = theme_dir / "data" / "skyyrose-catalog.csv"
 
     menu_items = extract_menu_items(menu_source)
     page_registry = extract_page_registry(activation_source)
     legal_links = extract_footer_legal_links(footer_source)
-    collections = extract_collections(catalog_path)
+    if collections is None:
+        collections = registry_collections()
 
     if not collections:
-        raise SystemExit("build-site-guide: 0 collections found in catalog CSV — aborting")
+        raise SystemExit("build-site-guide: 0 collections found in product registry — aborting")
     if len(page_registry) < 4:
         raise SystemExit(
             f"build-site-guide: only {len(page_registry)} registered pages parsed "

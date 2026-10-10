@@ -55,6 +55,7 @@ class SynthesizedVision:
     providers_used: tuple[str, ...] = ()
     individual_results: tuple[VisionAnalysis, ...] = ()
     error: str = ""
+    reference_evidence: dict[str, Any] = field(default_factory=dict)
 
     @property
     def provider_count(self) -> int:
@@ -232,6 +233,7 @@ class PreflightResult:
     agent_a_verdict: str  # "YES: ..." or "NO: ..."
     agent_b_verdict: str
     blocking_reason: str = ""  # set when passed=False
+    reference_evidence: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)

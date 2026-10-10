@@ -6,7 +6,7 @@ Deploys pages, 3D models, and WooCommerce products to WordPress.com
 Usage:
     python3 scripts/deploy_to_skyyrose.py \
         --username skyyroseco \
-        --password "HI20 7wmY km9V bFGq OQrv 34mM" \
+        --password "$WP_APP_PASSWORD" \
         --verbose
 
 Author: DevSkyy Platform Team
@@ -90,7 +90,7 @@ class WordPressDeployer:
                 "title": "Home",
                 "slug": "home",
                 "status": "publish",
-                "content": "<h1>SkyyRose - Luxury Grows from Concrete.</h1><p>Immersive 3D collection experiences</p>",
+                "content": "<h1>SkyyRose</h1><p>Immersive 3D collection experiences</p>",
                 "meta": {"_elementor_edit_mode": "builder"},
             },
             {
@@ -125,7 +125,7 @@ class WordPressDeployer:
                 "title": "About SkyyRose",
                 "slug": "about",
                 "status": "publish",
-                "content": "<h1>About SkyyRose</h1><p>Luxury Grows from Concrete.</p>",
+                "content": "<h1>About SkyyRose</h1>",
                 "meta": {"_elementor_edit_mode": "builder"},
             },
         ]

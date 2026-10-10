@@ -80,7 +80,6 @@ logger = structlog.get_logger(__name__)
 
 SKYYROSE_3D_BRAND_CONFIG = {
     "brand_name": "SkyyRose",
-    "tagline": "Where Love Meets Luxury",
     "aesthetic": {
         "style": "luxury streetwear",
         "quality_level": "premium",
@@ -287,7 +286,7 @@ class SkyyRoseBrandValidator:
 
             # Get dominant colors
             img_small = img.resize((50, 50))
-            pixels = list(img_small.getdata())
+            pixels = list(img_small.get_flattened_data())
 
             # Calculate average color
             r_avg = sum(p[0] for p in pixels) / len(pixels)
@@ -376,7 +375,7 @@ Garment Details:
 
         prompt = f"""SkyyRose {collection} Collection - {product_name}
 
-Brand: {brand["brand_name"]} - {brand["tagline"]}
+Brand: {brand["brand_name"]}
 Style: {brand["aesthetic"]["style"]}, {brand["aesthetic"]["quality_level"]} quality
 Collection Mood: {collection_aesthetic["mood"]}
 Texture Style: {collection_aesthetic["texture_style"]}

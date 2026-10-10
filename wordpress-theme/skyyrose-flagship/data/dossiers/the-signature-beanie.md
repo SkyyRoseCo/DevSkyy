@@ -10,7 +10,18 @@ reference_image: assets/products/references/sg-007-techflat.jpeg
 
 # The Signature Beanie
 
-**Garment type lock:** Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rose graphic embroidered on the front face of the cuff. Mid-weight knit fabric.
+**Garment type lock:** Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rose graphic carried on a patch on the front face of the cuff. Mid-weight knit fabric.
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
+
+**FOUNDER_CONFIRMED:** logo Is a patch not directly on beanie
+
+(Founder review recorded 2026-06-09: "logo Is a patch not directly on beanie"; preserved in this product's corrections. The existing sku_logos placement specifies silicone_patch, slightly_off_left.)
 
 ## Branding — exactly what IS on this product
 
@@ -24,7 +35,7 @@ Source reconciliation pending: see `logo-registry.json::gaps::signature-beanie-v
 > ### COLORWAY / DECORATION VARIANTS
 >
 > All 4 variants share the same **black ribbed knit beanie** base. The only
-> difference is the rose graphic embroidered on the front face of the cuff:
+> difference is the rose graphic carried on a patch on the front face of the cuff:
 >
 > - **Variant 1 — Purple/Violet rose-cluster** (small, ~1.5in tall): a
 >   tonal purple-and-violet rendering of the canonical rose-cluster (three
@@ -47,7 +58,7 @@ Source reconciliation pending: see `logo-registry.json::gaps::signature-beanie-v
 > single beanie.
 
 ### Front
-- **front-cuff** (small, ~1.5–2in tall, centered on the front face of the cuff fold): The selected variant's rose decoration (Variant 1, 2, 3, or 4 per the COLORWAY/DECORATION VARIANTS block above) embroidered into the cuff face. **Technique:** embroidered. **Color:** per selected variant.
+- **front-cuff** (small, ~1.5–2in tall, slightly off-center to the left on the front face of the cuff fold): The selected variant's rose decoration (Variant 1, 2, 3, or 4 per the COLORWAY/DECORATION VARIANTS block above) carried on a silicone patch, not embroidered directly into the cuff face. **Technique:** silicone patch. **Color:** per selected variant.
 
 ### Back
 - (Clean back — no decoration on the rear-cuff face or rear-crown.)
@@ -68,7 +79,7 @@ Source reconciliation pending: see `logo-registry.json::gaps::signature-beanie-v
 - NO slouchy / oversize crown — the beanie is a snug fitted-knit silhouette.
 - NO Authentic Collection patch on a beanie.
 - NO SR monogram on the beanie (the SR mark is a back-neck embroidery on jerseys, not on accessories).
-- NO printed graphics — branding is embroidered, not printed.
+- NO direct embroidery into the beanie — the rose logo is on a patch.
 - NO contrast piping along the cuff edge.
 - NO tag visible on the exterior (interior size-tag only).
 

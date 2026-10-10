@@ -20,7 +20,7 @@ from skyyrose.core.creative_job import (
 )
 from skyyrose.elite_studio.prompts.analyzer import PromptAnalysis, PromptAnalyzer
 from skyyrose.elite_studio.prompts.cache import PromptCache, _context_digest, _prompt_hash
-from skyyrose.elite_studio.prompts.chain import PromptChain
+from skyyrose.elite_studio.prompts.chain import PromptChain, product_skus
 
 
 @dataclass(frozen=True)
@@ -35,6 +35,10 @@ class EnhancedPrompt:
     context_added: tuple[str, ...]
     cache_key: str
     template_used: str
+    brief_status: str = "unverified"
+    gaps: tuple[str, ...] = ()
+    blocking_gaps: tuple[str, ...] = ()
+    optional_gaps: tuple[str, ...] = ()
 
 
 class PromptEnhancer:
@@ -63,6 +67,11 @@ class PromptEnhancer:
         intent: str | None = None,
         fashion_context: dict | None = None,
         brand_context: dict | None = None,
+        *,
+        sku: str | None = None,
+        required_views: tuple[str, ...] = (),
+        new_design: bool = False,
+        operation: str = "render",
     ) -> EnhancedPrompt:
         """Enhance a raw prompt into an expert-level agent brief.
 
@@ -84,11 +93,26 @@ class PromptEnhancer:
         # Partition the cache by the caller's context so two tenants (or two
         # brand/fashion overrides) with the same raw prompt cannot receive
         # each other's enhancements.
-        ctx_digest = _context_digest(fashion_context, brand_context)
+        ctx_digest = _context_digest(
+            fashion_context,
+            brand_context,
+            {
+                "version": 3,
+                "operation": operation,
+                "sku": sku,
+                "views": required_views,
+                "new_design": new_design,
+            },
+        )
+        grounded = bool(product_skus(prompt, sku)) or not new_design
         cache_key = _prompt_hash(prompt, resolved_intent, ctx_digest)
 
         # Check cache for semantically similar prompt inside this context
-        cached = self._cache.check(prompt, resolved_intent, context_digest=ctx_digest)
+        cached = (
+            None
+            if grounded
+            else self._cache.check(prompt, resolved_intent, context_digest=ctx_digest)
+        )
         if cached is not None:
             return cached
 
@@ -98,6 +122,10 @@ class PromptEnhancer:
             intent=resolved_intent,
             fashion_context=fashion_context,
             brand_context=brand_context,
+            sku=sku,
+            required_views=required_views,
+            new_design=new_design,
+            operation=operation,
         )
 
         # Score the enhanced prompt
@@ -112,10 +140,17 @@ class PromptEnhancer:
             context_added=tuple(chain_result["context_added"]),
             cache_key=cache_key,
             template_used=chain_result["template_used"],
+            brief_status=chain_result.get("brief_status", "ideation"),
+            gaps=tuple(chain_result.get("gaps", [])),
+            blocking_gaps=tuple(chain_result.get("blocking_gaps", [])),
+            optional_gaps=tuple(chain_result.get("optional_gaps", [])),
         )
 
         # Store in cache
-        self._cache.store(prompt, result, context_digest=ctx_digest)
+        # Product briefs are cheap and must read current authority every time.
+        # Semantic matching can cross-match SKUs, views, or negated instructions.
+        if not grounded:
+            self._cache.store(prompt, result, context_digest=ctx_digest)
 
         return result
 
@@ -140,7 +175,12 @@ class PromptEnhancer:
         if mode not in ("resolved", "shadow", "legacy"):
             raise ValueError("Unsupported brief mode")
         if mode == "legacy":
-            legacy = self._chain.enhance(prompt=request.objective, intent="product-render")
+            legacy = self._chain.enhance(
+                prompt=request.objective
+                + "\nProducts: "
+                + ", ".join(p.sku for p in request.products),
+                intent="product-render",
+            )
             return {
                 "mode": mode,
                 "brief": legacy["enhanced"],
@@ -160,7 +200,12 @@ class PromptEnhancer:
         if include_audit:
             result["audit_bundle"] = audit_bundle(job)
         if mode == "shadow":
-            legacy = self._chain.enhance(prompt=request.objective, intent="product-render")
+            legacy = self._chain.enhance(
+                prompt=request.objective
+                + "\nProducts: "
+                + ", ".join(p.sku for p in request.products),
+                intent="product-render",
+            )
             result["comparison"] = {
                 "legacy_brief": legacy["enhanced"],
                 "legacy_status": "UNVERIFIED_COMPARISON_ONLY",

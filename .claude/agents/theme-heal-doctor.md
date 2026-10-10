@@ -159,7 +159,7 @@ When healing an S2 canon-drift regression, apply these invariants verbatim:
 |--------|---------------|-----------------|
 | "Four Collections" | Present on homepage | `front-page.php` |
 | NOT "Three Worlds" | Absent on homepage | `front-page.php` |
-| Tagline | "Luxury Grows from Concrete." (period, exact) | `design-tokens.css` / PHP |
+| Tagline | None authorised; absent everywhere (founder decision 2026-10-06) | `design-tokens.css` / PHP |
 | Cart | No "Complete the Look" cross-sell | `inc/woocommerce.php:541` (hooked-out by founder rule) |
 | Collection hero | A lockup image present, not type-only text | Hero overlay PNGs in `assets/images/hero-overlays/` |
 | Version constant (`SKYYROSE_VERSION` V1 / `SKYYROSE2_VERSION` V2) | Matches asset `?ver=` in live HTML | `style.css` / `functions.php` constant of the theme production serves |

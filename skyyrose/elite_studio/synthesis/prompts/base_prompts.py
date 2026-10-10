@@ -10,6 +10,8 @@ can't render decoration on a cuff if no decoration is described.
 
 from __future__ import annotations
 
+import json
+
 _VIEW_DIRECTION: dict[str, str] = {
     "front": (
         "Camera positioned DIRECTLY IN FRONT of the garment. "
@@ -66,6 +68,8 @@ def build_base_prompt(dossier: dict, *, view: str = "front") -> str:
         f"NO chest decoration, NO sleeve decoration, NO back decoration. "
         f"The garment surface must be entirely undecorated."
         f"{negative_section}\n\n"
+        "PRODUCT CORRECTIONS (preserve authority; decoration is applied in the later stage):\n"
+        f"{json.dumps(dossier.get('product_corrections', []), ensure_ascii=False)}\n\n"
         f"Output: pure white background, soft directional studio lighting, "
         f"hyper-realistic, true-to-fabric texture, ghost-mannequin product "
         f"photography style, sharp focus on fabric weave and construction."

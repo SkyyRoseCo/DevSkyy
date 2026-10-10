@@ -28,7 +28,7 @@ specializing in streetwear-meets-high-fashion editorial content.
 
 BRAND IDENTITY:
 - Brand: SkyyRose
-- Tagline: "Luxury Grows from Concrete."
+- No tagline is authorised — never use one.
 - NEVER use: "Where Love Meets Luxury" (retired)
 - Founder: Corey Foster
 - Colors: Rose Gold (#B76E79), Dark (#0A0A0A), Gold (#D4AF37), Silver (#C0C0C0), Crimson (#DC143C)

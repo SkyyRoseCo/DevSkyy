@@ -44,7 +44,7 @@ Theme path on server: `/htdocs/wp-content/themes/skyyrose-flagship`
 ## Brand Constants
 
 - Colors: Rose Gold `#B76E79`, Dark `#0A0A0A`, Silver `#C0C0C0`, Crimson `#DC143C`, Gold `#D4AF37`
-- Tagline: "Luxury Grows from Concrete." (NEVER "Where Love Meets Luxury")
+- Tagline: none authorised (founder decision 2026-10-06); NEVER "Where Love Meets Luxury"
 - API: `index.php?rest_route=` (NOT `/wp-json/`)
 
 Output <promise>COMPLETE</promise> when all 6 tasks + verification are done.

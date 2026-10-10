@@ -14,6 +14,11 @@ reference_image: assets/products/references/lh-004-techflat-front.jpeg
 
 ## Founder-confirmed correction
 
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
+
 The earlier “NOT satin” and cotton-blend assertions are superseded by the recorded founder review at `renders/oai/_review/review-state.json`, entries `love-hurts-bomber/ghost.png` (2026-06-10T02:10:51.825Z) and `love-hurts-bomber/ghost-back.png` (2026-06-10T02:10:54.542Z): both flag that the render “doesn't look satin.” `data/render-corrections.json` preserves these comments and identifies their founder-review provenance. **FOUNDER_CONFIRMED:** Satin appearance is required; fiber composition is unspecified. The flagged renders remain unapproved; this correction grants no media approval.
 
 ## Branding — exactly what IS on this product

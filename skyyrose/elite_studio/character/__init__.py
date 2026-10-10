@@ -5,7 +5,6 @@ Provides character spec, sheet generation, pose generation,
 consistency management, and sprite generation for the SkyyRose
 mascot and custom brand characters.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

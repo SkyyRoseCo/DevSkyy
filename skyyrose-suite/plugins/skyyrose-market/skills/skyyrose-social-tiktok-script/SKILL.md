@@ -21,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline close:** Every brand-story or product-reveal video ends with "Luxury Grows from Concrete." — either spoken or as the final text overlay + logo.
+- **Close:** No tagline is authorised (founder decision 2026-10-06). Videos end on the SkyyRose logo or wordmark frame, with no tagline spoken or overlaid.
 - **Collection voice is strict:** Love Hurts = crimson heat, "the bloodline that raised me." Black Rose = armor, defiance, "you already stood up." Signature = "stay golden / the standard," West Coast elevation. Kids Capsule = little royalty, heritage. Never cross-register.
 - **No hype-merchant delivery.** Corey's tone: unhurried, earned, Oakland-direct. No "You NEED this", no "fire 🔥🔥", no countdown-pressure delivery.
 - **Burned-in captions are mandatory.** 70% of viewers watch without sound. Every text overlay must be brief enough to read in the time it's on screen (3-7 words).
@@ -59,7 +59,7 @@ Hook      (0–3 sec):  Stop the scroll. Text overlay + visual action.
 Setup     (3–10 sec): Context — what is this, why it matters.
 Body      (10–X sec): The value: reveal, styling beats, construction detail, or story.
 Payoff    (last 5 sec): The takeaway or emotional landing.
-CTA       (final 2–3 sec): Single action + "Luxury Grows from Concrete." close.
+CTA       (final 2–3 sec): Single action.
 ```
 
 **GATE: Approve outline and duration before writing full script.**
@@ -101,7 +101,6 @@ CTA       (final 2–3 sec): Single action + "Luxury Grows from Concrete." close
 ### CTA (final 2–3 seconds)
 **On screen:** [SkyyRose logo or wordmark frame]
 **Spoken:** "[CTA — e.g. 'Pre-order. Link in bio.']"
-**Text overlay:** "Luxury Grows from Concrete."
 
 ---
 
@@ -148,7 +147,6 @@ Use ONE per video. Label it in the script.
 [5–10s]   DETAIL: Close-up of construction detail — embroidery, hardware, ribbing
 [10–13s]  WEAR: Cut to product being worn — confident, still, no performance
 [13–15s]  CTA: SkyyRose wordmark + "Link in bio" or "skyyrose.co"
-           Text overlay: "Luxury Grows from Concrete."
 ```
 
 ### 30-Second Brand Story
@@ -159,7 +157,7 @@ Use ONE per video. Label it in the script.
 [3–10s]   CONTEXT: Voice-over about the making while showing production/products
 [10–20s]  PRODUCTS: Quick cuts across collections — 1-2 seconds each, confident pacing
 [20–27s]  EMOTION: Corey with community moment or quiet product hold
-[27–30s]  CLOSE: "Luxury Grows from Concrete." + SkyyRose logo
+[27–30s]  CLOSE: SkyyRose logo
 ```
 
 ### 60-Second "3 Ways to Style"
@@ -170,7 +168,7 @@ Use ONE per video. Label it in the script.
 [20–37s]  LOOK 2: Different context/styling, transition cut (not a swipe effect)
 [37–54s]  LOOK 3: Most elevated look — slow reveal, no rushing
 [54–60s]  CTA: "Which is your style? Comment 1, 2, or 3."
-           + "skyyrose.co" + "Luxury Grows from Concrete."
+           + "skyyrose.co"
 ```
 
 ---
@@ -189,7 +187,6 @@ Use ONE per video. Label it in the script.
 - [ ] At least one retention trigger mid-video
 - [ ] Audio/sound suggestion included
 - [ ] 5-8 hashtags in the caption (not burned into video)
-- [ ] "Luxury Grows from Concrete." appears in final frame
 - [ ] Collection voice verified — no cross-attribution
 - [ ] No hype-merchant delivery in the spoken lines
 ```
@@ -284,11 +281,10 @@ python -m skyyrose.elite_studio.ventures.social smoke --sku lh-004
 ### CTA (27–30 seconds)
 **On screen:** SkyyRose wordmark on dark frame.
 **Spoken:** "Pre-order. Link in bio."
-**Text overlay:** "Luxury Grows from Concrete."
 
 ---
 **Audio suggestion:** Soulful, minimal — no lyrics. Think KAYTRANADA instrumental energy.
-**Hashtags:** #SkyyRose #LoveHurtsCollection #LuxuryGrowsFromConcrete #BlackOwnedFashion #OaklandFashion #StreetLuxury #BayAreaStyle
+**Hashtags:** #SkyyRose #LoveHurtsCollection #BlackOwnedFashion #OaklandFashion #StreetLuxury #BayAreaStyle
 **TikTok caption:** "The bloodline that raised me. Love Hurts Bomber — pre-order link in bio."
 **Reels caption:** "Built to carry what the streets taught you. Love Hurts Bomber. Pre-order open → link in bio."
 ```
@@ -303,7 +299,6 @@ python -m skyyrose.elite_studio.ventures.social smoke --sku lh-004
 - **Reading the script word-for-word** — spoken lines must sound natural at Oakland cadence. Read aloud before approving; rewrite any phrase that sounds scripted.
 - **Text overlays as full sentences** — "This bomber was constructed with satin lining and crimson embroidery" is not a text overlay, it's a caption. Cut to the essential phrase.
 - **No retention trigger** — a 30-second product reveal with no mid-point hook loses half its audience by second 15. Build in "and the detail nobody expects..." type beats.
-- **Ending without the tagline** — every SkyyRose video closes with "Luxury Grows from Concrete." in the final frame. Missing this breaks brand consistency across the library.
 - **Multiple CTAs** — "Follow, comment, share AND link in bio" is no CTA. One action per video.
 - **Trending sound that breaks the mood** — a trending audio that conflicts with the collection's emotional register undermines the whole video. Only adapt trends that fit. Skip the rest.
 - **SKU in the caption or overlay** — "lh-004 just dropped" is internal language. Always the product name.

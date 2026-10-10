@@ -37,7 +37,7 @@ Match the task to the right MCP tool:
 
 ## Brand Context
 
-- **Brand**: SkyyRose — "Luxury Grows from Concrete."
+- **Brand**: SkyyRose
 - **Colors**: Rose gold (#B76E79), Dark (#0a0a0a), Gold accent (#d4af37)
 - **Collections**: Black Rose (gothic), Love Hurts (romantic), Signature (Bay Area lifestyle)
 - **Site**: skyyrose.co (WordPress)

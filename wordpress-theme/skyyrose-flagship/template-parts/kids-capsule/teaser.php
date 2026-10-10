@@ -170,9 +170,6 @@ $assets_uri  = defined( 'SKYYROSE_ASSETS_URI' ) ? SKYYROSE_ASSETS_URI : '';
 					<?php esc_html_e( 'Corey built this brand for Skyy Rose. This collection is hers.', 'skyyrose' ); ?>
 				</p>
 			</blockquote>
-			<p class="kc-teaser__anchor-tagline">
-				<?php esc_html_e( 'Luxury Grows from Concrete.', 'skyyrose' ); ?>
-			</p>
 		</div>
 	</section>
 

@@ -949,7 +949,6 @@ def print_banner() -> None:
     banner = """
 ================================================================================
               SKYYROSE 3D ASSET QUALITY VALIDATION AGENT
-                       Luxury Grows from Concrete.
 ================================================================================
 
 Validation Checks:

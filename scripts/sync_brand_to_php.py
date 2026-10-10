@@ -57,8 +57,7 @@ def build_php(brand: BrandConfig) -> str:
     out.append("")
     out.append("if ( ! defined( 'ABSPATH' ) ) { exit; }")
     out.append("")
-    out.append("// ─── Tagline ────────────────────────────────────────────────────────")
-    out.append(f"define( 'SKYYROSE_BRAND_TAGLINE', {_php_string(brand.tagline_active)} );")
+    out.append("// ─── Retired taglines (no tagline is authorised; banned-phrase list only) ───")
     out.append(
         f"define( 'SKYYROSE_RETIRED_TAGLINES', {_php_array(list(brand.retired_taglines))} );"
     )
@@ -153,7 +152,6 @@ def build_php(brand: BrandConfig) -> str:
     out.append("            'name'        => SKYYROSE_BRAND_NAME,")
     out.append("            'legalName'   => SKYYROSE_LEGAL_NAME,")
     out.append("            'founder'     => SKYYROSE_BRAND_FOUNDER,")
-    out.append("            'slogan'      => SKYYROSE_BRAND_TAGLINE,")
     out.append("            'url'         => SKYYROSE_URL_FLAGSHIP,")
     out.append(
         "            'sameAs'      => array_values( array_filter( skyyrose_social_handles() ) ),"

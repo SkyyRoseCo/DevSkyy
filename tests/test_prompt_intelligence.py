@@ -16,7 +16,6 @@ from skyyrose.elite_studio.prompts.history import PromptHistory
 from skyyrose.elite_studio.prompts.templates import (
     BRAND_COLORS,
     BRAND_NAME,
-    BRAND_TAGLINE,
     COLLECTION_DNA,
     PromptTemplateRegistry,
 )
@@ -218,7 +217,7 @@ class TestPromptChain:
         assert result["intent"] == "product-render"
 
     def test_season_injection(self):
-        result = self.chain.enhance("make a hoodie")
+        result = self.chain.enhance("make a hoodie", intent="design-ideation", new_design=True)
         # Should have added a season
         assert any("season" in c.lower() for c in result["context_added"])
 
@@ -228,21 +227,24 @@ class TestPromptChain:
         assert "black rose" in enhanced or "rose" in enhanced
 
     def test_collection_detection_from_name(self):
-        result = self.chain.enhance("design something for love hurts")
+        result = self.chain.enhance(
+            "design something for love hurts", intent="design-ideation", new_design=True
+        )
         assert any("love hurts" in c.lower() for c in result["context_added"])
 
     def test_brand_injection(self):
-        result = self.chain.enhance("design a hoodie")
+        result = self.chain.enhance("design a hoodie", intent="design-ideation", new_design=True)
         enhanced = result["enhanced"].lower()
         assert "skyyrose" in enhanced or "luxury grows" in enhanced or "b76e79" in enhanced
 
-    def test_fabric_injection_for_hoodie(self):
+    def test_no_fabric_default_for_existing_render(self):
         result = self.chain.enhance("render a hoodie")
-        assert any("fabric" in c.lower() for c in result["context_added"])
+        assert "french terry" not in result["enhanced"].lower()
 
-    def test_resolution_default_for_render(self):
+    def test_render_does_not_invent_resolution(self):
         result = self.chain.enhance("render br-001", intent="product-render")
-        assert any("resolution" in c.lower() or "4k" in c.lower() for c in result["context_added"])
+        assert "4K (2048x2730)" not in result["enhanced"]
+        assert result["brief_status"] == "incomplete"
 
     def test_fashion_context_override(self):
         custom_context = {"collection_dna": "custom brand override context"}
@@ -482,13 +484,17 @@ class TestBrandDNAPresence:
         assert BRAND_COLORS["crimson"] == "#DC143C"
         assert BRAND_COLORS["silver"] == "#C0C0C0"
 
-    def test_brand_name_and_tagline(self):
+    def test_brand_name_and_no_tagline(self):
+        import skyyrose.elite_studio.prompts.templates as templates
+
         assert BRAND_NAME == "SkyyRose"
-        assert BRAND_TAGLINE == "Luxury Grows from Concrete."
+        assert not hasattr(templates, "BRAND_TAGLINE")
 
     def test_enhancement_injects_brand_for_black_rose(self):
         chain = PromptChain()
-        result = chain.enhance("design a hoodie for black rose")
+        result = chain.enhance(
+            "design a hoodie for black rose", intent="design-ideation", new_design=True
+        )
         enhanced = result["enhanced"].lower()
         assert "gothic" in enhanced or "noir" in enhanced or "darkness" in enhanced
 

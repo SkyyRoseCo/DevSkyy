@@ -149,9 +149,9 @@ class TestCompositorNode:
 
 
 class TestFinalizeNode:
-    def test_sets_success_when_no_error(self):
+    def test_requires_qa_approval_even_without_other_error(self):
         result = finalize_node(_state(status="running"))
-        assert result["status"] == "success"
+        assert result["status"] == "error"
 
     def test_preserves_error_status(self):
         result = finalize_node(_state(status="error"))

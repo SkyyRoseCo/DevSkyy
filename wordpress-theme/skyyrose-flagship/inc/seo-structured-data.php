@@ -166,15 +166,14 @@ function skyyrose_organization_schema() {
 			'@type' => 'Person',
 			'name'  => 'Corey Foster',
 		),
-		'description' => __( 'Luxury Grows from Concrete. Premium streetwear and luxury fashion brand.', 'skyyrose' ),
+		'description' => __( 'Premium streetwear and luxury fashion brand.', 'skyyrose' ),
 		'logo'        => $logo_url ? array(
 			'@type' => 'ImageObject',
 			'url'   => $logo_url,
 		) : null,
 		'brand'       => array(
-			'@type'  => 'Brand',
-			'name'   => 'SkyyRose',
-			'slogan' => 'Luxury Grows from Concrete.',
+			'@type' => 'Brand',
+			'name'  => 'SkyyRose',
 		),
 		'sameAs'      => array(),
 	);

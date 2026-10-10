@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     'Discover the SkyyRose luxury fashion collections. Three immersive worlds: Black Rose, Love Hurts, and Signature.',
   openGraph: {
     title: 'SkyyRose Collections',
-    description: 'Luxury Grows from Concrete. Three immersive worlds await.',
+    description: 'Three immersive worlds await.',
   },
 };
 

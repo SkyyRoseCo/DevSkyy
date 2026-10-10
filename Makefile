@@ -1,7 +1,7 @@
 # DevSkyy Makefile
 # ==================
 # Unified development commands for Python + TypeScript
-# SkyyRose - Luxury Grows from Concrete.
+# SkyyRose
 
 .PHONY: install dev lint lint-gitignore format test clean help \
         ts-build ts-lint ts-test ts-type-check \

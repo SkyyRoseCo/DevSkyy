@@ -3,7 +3,7 @@
   "$comment": "SkyyRose V2 gap-closure procedure. Evidence is produced during each phase, not after the build.",
   "procedure_id": "skyyrose-v2-gap-closure",
   "version": "1.0.0",
-  "brand": {"id": "skyyrose", "name": "SkyyRose", "tagline": "Luxury Grows from Concrete."},
+  "brand": {"id": "skyyrose", "name": "SkyyRose"},
   "status": "ready-to-run",
   "candidate_rule": "Every phase operates on one candidate_id; any source mutation invalidates downstream evidence.",
   "completion_rule": "A phase is complete only when implementation, evidence, independent review, and rollback notes exist. UNKNOWN or UNVERIFIED never becomes PASS by omission.",

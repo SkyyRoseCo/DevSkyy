@@ -21,6 +21,7 @@ Usage:
 
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
 import os
@@ -283,19 +284,35 @@ class OpenAIAdapter:
         return openai.OpenAI(
             api_key=os.getenv("OPENAI_API_KEY"),
             http_client=_make_httpx_client(timeout=300.0),
+            max_retries=0,  # Runtime owns provider fallback; no hidden SDK retries.
         )
 
-    async def call(self, model: str, messages: list[LLMMessage]) -> LLMResponse:
+    async def call(
+        self,
+        model: str,
+        messages: list[LLMMessage],
+        *,
+        max_tokens: int = 16384,
+        temperature: float | None = None,
+        **settings: Any,
+    ) -> LLMResponse:
         """Call OpenAI Chat Completions API."""
-        client = self._get_client()
+        from skyyrose.core.openai_settings import chat_settings
+
+        options = chat_settings(model, max_tokens, temperature, settings, default_temperature=None)
 
         oai_messages = [{"role": msg.role, "content": msg.content} for msg in messages]
 
-        response = client.chat.completions.create(
-            model=model,
-            messages=oai_messages,
-            max_tokens=16384,
-        )
+        def request():
+            client = self._get_client()
+            try:
+                return client.chat.completions.create(model=model, messages=oai_messages, **options)
+            finally:
+                client.close()
+
+        response = await asyncio.to_thread(request)
+        if response.choices[0].finish_reason != "stop":
+            raise ValueError("OpenAI returned incomplete output")
 
         return LLMResponse(
             text=response.choices[0].message.content,

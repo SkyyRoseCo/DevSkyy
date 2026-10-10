@@ -34,7 +34,7 @@ This hub is **social/content**. When the task is brand-definition (not brand-app
 
 ## Brand voice — at a glance
 
-- **Tagline (verbatim):** `Luxury Grows from Concrete.` — period included, never paraphrased.
+- **Tagline:** No tagline is authorised (founder decision 2026-10-06) — never use or invent one.
 - **Brand:** SkyyRose — luxury Oakland streetwear. Founder: Corey Foster. Site: skyyrose.co.
 - **Voice:** earned, unhurried, Oakland-direct. No hype-merchant tone, no fake urgency, no
   "complete the look" cross-sell. The garment is the protagonist. Reference products by NAME, not SKU.

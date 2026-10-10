@@ -1,7 +1,6 @@
 # Few-Shot and Contrastive Patterns
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> **SKYYROSE LLC · FASHION THEME BRAIN**
 
 ## Collection hero
 

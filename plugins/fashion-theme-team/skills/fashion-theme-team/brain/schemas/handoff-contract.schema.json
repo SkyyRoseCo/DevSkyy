@@ -11,11 +11,10 @@
     "brand": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "name", "tagline", "artifact_system"],
+      "required": ["id", "name", "artifact_system"],
       "properties": {
         "id": {"const": "skyyrose"},
         "name": {"const": "SkyyRose"},
-        "tagline": {"const": "Luxury Grows from Concrete."},
         "artifact_system": {"const": "../brand/skyyrose-artifact-system.json"}
       }
     },

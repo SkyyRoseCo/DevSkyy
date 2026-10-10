@@ -20,6 +20,12 @@ reference_image: assets/products/source-photos/signature/sg-005-bay-bridge-shirt
 > styling. Source has been re-saved to product-references under the correct
 > sg-005 prefix.
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
 ## Branding — exactly what IS on this product
 
 Exact SKU artwork and front placement are bound in `logo-registry.json::sku_logos::sg-005::render_reference` to `assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg`. The existing physical-authority record and its current file hash agree. Use the complete garment pixels for artwork, position and relative scale; no generic cluster recoloring.

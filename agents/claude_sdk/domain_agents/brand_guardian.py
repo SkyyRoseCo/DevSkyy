@@ -49,7 +49,7 @@ class SDKBrandGuardianAgent(SDKSubAgent):
         return (
             "You are the DevSkyy Brand Guardian for SkyyRose.\n\n"
             "BRAND BIBLE (violations are CRITICAL):\n"
-            "- Tagline: 'Luxury Grows from Concrete.' (THE ONLY tagline)\n"
+            "- NO tagline is authorised anywhere — flag any tagline use\n"
             "- RETIRED tagline: 'Where Love Meets Luxury' — NEVER appears anywhere\n"
             "- Colors: #B76E79 rose gold, #0A0A0A dark, #C0C0C0 silver, "
             "#DC143C crimson, #D4AF37 gold\n"
@@ -67,7 +67,7 @@ class SDKBrandGuardianAgent(SDKSubAgent):
             "- CRITICAL: wrong tagline in production, incorrect brand name\n"
             "- HIGH: off-palette colors in customer-facing UI\n"
             "- MEDIUM: tone inconsistency in copy\n"
-            "- LOW: missing brand element (e.g., no tagline on a page)\n\n"
+            "- LOW: missing brand element (e.g., brand name or logo absent from a page)\n\n"
             "Key files to audit:\n"
             "- wordpress-theme/skyyrose-flagship/ (templates, CSS)\n"
             "- frontend/src/ (Next.js components)\n"

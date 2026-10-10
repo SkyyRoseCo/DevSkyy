@@ -265,6 +265,16 @@
       "reason": "Phase3A global shell or canonical control styles",
       "release": true
     },
+    "assets/css/cookie-consent.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Standalone consent UI and durable analytics transport",
+      "release": true
+    },
+    "assets/css/cookie-consent.min.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Standalone consent UI and durable analytics transport",
+      "release": true
+    },
     "assets/css/critical/home.contract.json": {
       "category": "BUILD TOOLING",
       "reason": "Critical CSS extraction contract consumed by scripts/build-critical-css.mjs; not a PHP runtime reader",
@@ -1033,6 +1043,16 @@
     "assets/js/collection-scene-motion.min.js": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/experience-analyzer.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Standalone consent UI and durable analytics transport",
+      "release": true
+    },
+    "assets/js/experience-analyzer.min.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Standalone consent UI and durable analytics transport",
       "release": true
     },
     "assets/js/house-of-roses-motion.js": {
@@ -2710,6 +2730,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "inc/analytics-protocol.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Standalone consent UI and durable analytics transport",
+      "release": true
+    },
+    "inc/analytics.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Standalone consent UI and durable analytics transport",
+      "release": true
+    },
     "inc/approved-card-fronts.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -2731,6 +2761,11 @@
       "release": true
     },
     "inc/demo-import.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/express-checkout.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
@@ -2975,7 +3010,17 @@
       "reason": "Internal generation/review workflow; not canonical asset build",
       "release": false
     },
+    "scripts/sync-analytics.py": {
+      "category": "AUTHORING ONLY",
+      "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
     "scripts/test-critical-rendering.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/test-express-checkout.php": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
@@ -3006,6 +3051,11 @@
       "release": false
     },
     "scripts/test-seo-indexing.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/test-validate-sitemap.py": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
@@ -3051,6 +3101,11 @@
       "release": false
     },
     "scripts/validate-scene-production.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-sitemap.py": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
@@ -3195,6 +3250,11 @@
       "reason": "Phase3B reviewed page implementation",
       "release": true
     },
+    "template-parts/cookie-consent.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Standalone consent UI and durable analytics transport",
+      "release": true
+    },
     "template-parts/home/editorial-collection.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Reusable reference editorial homepage section",
@@ -3274,6 +3334,46 @@
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
+    },
+    "tests/analytics/README.md": {
+      "category": "AUTHORING ONLY",
+      "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
+    "tests/analytics/bootstrap.php": {
+      "category": "AUTHORING ONLY",
+      "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
+    "tests/analytics/browser-consent.test.cjs": {
+      "category": "AUTHORING ONLY",
+      "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
+    "tests/analytics/consent.test.cjs": {
+      "category": "AUTHORING ONLY",
+      "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
+    "tests/analytics/relay.php": {
+      "category": "AUTHORING ONLY",
+      "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
+    "tests/analytics/rendered-card.cjs": {
+      "category": "AUTHORING ONLY",
+      "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
+    "tests/analytics/rendered-card.php": {
+      "category": "AUTHORING ONLY",
+      "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
+    "tests/analytics/test_sync_analytics.py": {
+      "category": "AUTHORING ONLY",
+      "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
     },
     "theme.json": {
       "category": "RUNTIME SOURCE",

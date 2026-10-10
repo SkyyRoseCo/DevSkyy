@@ -196,18 +196,28 @@ async def worktree_release(params: ReleaseInput) -> str:
     },
 )
 async def worktree_prune(params: PruneInput) -> str:
-    """Only ever removes rows already marked ready_to_merge/merged by a prior
+    """Removes rows already marked ready_to_merge/merged by a prior
     worktree_release. Anything that looks abandoned (active status, no
     heartbeat past the TTL) is reported under abandoned_candidates and never
     touched — a human or agent decides what to do with those.
+
+    Orphans — rows past the TTL whose folder is gone and that git no longer
+    lists — are deleted from the registry (never touching git) only when
+    their branch is provably on a remote, or the row was already closed.
+    Any orphan that cannot be proven safe is reported under
+    orphaned_unverifiable with the reason, and kept.
     """
     result = _store.prune(dry_run=params.dry_run, ttl_hours=params.ttl_hours)
     logger.info(
-        "worktree_prune dry_run=%s would_remove=%d removed=%d failed=%d abandoned=%d",
+        "worktree_prune dry_run=%s would_remove=%d removed=%d failed=%d abandoned=%d "
+        "orphans_would_remove=%d orphans_removed=%d orphans_kept=%d",
         params.dry_run,
         len(result["would_remove"]),
         len(result["removed"]),
         len(result["failed"]),
         len(result["abandoned_candidates"]),
+        len(result["would_remove_orphaned"]),
+        len(result["removed_orphaned"]),
+        len(result["orphaned_unverifiable"]),
     )
     return format_response(result, params.response_format, "Prune result")

@@ -1,7 +1,6 @@
 # Fashion Theme Engineering
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> **SKYYROSE LLC · FASHION THEME BRAIN**
 
 ## Architecture declaration
 

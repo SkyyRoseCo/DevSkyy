@@ -79,7 +79,7 @@ def _catalog_projection(product: dict[str, Any], columns: list[str]) -> dict[str
             row[key] = "|".join(garment["available_sizes"])
         if key in {"image", "front_model_image", "back_image", "back_model_image"}:
             row[key] = product.get("images", {}).get(key, {}).get("path", "")
-    for field in ("fit", "materials", "features"):
+    for field in ("fit", "materials", "features", "care_instructions"):
         if field in columns:
             row[field] = garment.get(field, {}).get("specification") or ""
     if "sizing_references" in columns:
@@ -125,6 +125,7 @@ def update_catalog_fields(sku: str, changes: dict[str, str], path: Path | None =
             "materials",
             "features",
             "sizing_references",
+            "care_instructions",
         }
         if not set(changes) <= allowed:
             raise ValueError("Unknown or identity-changing catalog fields")
