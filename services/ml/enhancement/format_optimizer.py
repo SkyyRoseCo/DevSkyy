@@ -288,7 +288,7 @@ class FormatOptimizer:
         # Strip EXIF if requested
         if strip_exif:
             # Create new image without EXIF
-            data = list(img.getdata())
+            data = list(img.get_flattened_data())
             clean_img = Image.new(img.mode, img.size)
             clean_img.putdata(data)
             clean_img.save(buffer, **save_kwargs)

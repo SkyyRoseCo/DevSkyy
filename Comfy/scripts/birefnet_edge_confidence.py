@@ -65,7 +65,7 @@ def analyze_birefnet_mask(
     width, height = mask.size
     if width <= 0 or height <= 0:
         raise EdgeConfidenceError("mask dimensions must be positive")
-    pixels = list(mask.getdata())
+    pixels = list(mask.get_flattened_data())
     total = len(pixels)
     transparent = sum(alpha == 0 for alpha in pixels)
     opaque = sum(alpha == 255 for alpha in pixels)
