@@ -211,6 +211,14 @@
       ],
       "owner": "wordpress-theme/skyyrose-flagship/scripts/vendor-three.sh (sha256-pinned in VENDOR.md)",
       "why": "Vendored three.js r170, reproduced byte-identically by vendor-three.sh and pinned per file in VENDOR.md; the GLB QC renderer (webgl_qc.py) renders through this exact tree. Prettier expanded three.module.min.js 691,648 -> 952,111 bytes (bug: commit 220686ae4), which voids the pin."
+    },
+    {
+      "pattern": "tools/v2-runtime/build-card-renditions.py",
+      "samples": [
+        "tools/v2-runtime/build-card-renditions.py"
+      ],
+      "owner": "wordpress-theme/skyyrose-flagship-2/inc/v2-media-eligibility.php (builder_sha256 pin)",
+      "why": "Its sha256 is the builder_sha256 the V2 media gate requires of every card-front rendition. isort added one blank line, which changed the hash and made the gate reject all 173 renditions (bug-372); tests/test_v2_card_rendition_pins.py guards it."
     }
   ]
 }

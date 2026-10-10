@@ -27,7 +27,6 @@ def rendition_widths(native_width: int) -> tuple[int, ...]:
 # Reuse release admission: there is only one visual approval inventory.
 sys.path.insert(0, str(ROOT / "tools/v2-source-certification"))
 import package as admission  # noqa: E402
-
 from skyyrose.core.product import get_product  # noqa: E402
 
 

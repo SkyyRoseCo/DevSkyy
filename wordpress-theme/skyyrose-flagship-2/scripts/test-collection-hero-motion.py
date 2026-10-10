@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Regression tests for the homepage emitter approval boundaries."""
 
+import copy
 import importlib.util
+import json
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -59,6 +61,61 @@ class HomepageEmitterTests(unittest.TestCase):
             validator.validate_home_collection(
                 self.collection.replace("$chapter_motion['mp4']", "'other.mp4'")
             )
+
+
+class FounderFilmTests(unittest.TestCase):
+    """The 2026-10-08 films are admitted only through their founder receipt."""
+
+    def setUp(self):
+        manifest = json.loads(validator.MANIFEST.read_text(encoding="utf-8"))
+        self.motion = manifest["collections"]["signature"]["ai_motion"]
+        self.poster = manifest["collections"]["signature"]["source"]["file"]
+        self.max_bytes = manifest["runtime"]["performance"]["max_web_asset_bytes"]
+        self.receipt = validator.film_receipt("signature", self.poster)
+
+    def check(self, motion=None, poster=None):
+        validator.validate_founder_film(
+            "signature", motion or self.motion, poster or self.poster, self.max_bytes
+        )
+
+    def test_current_film_passes(self):
+        self.check()
+
+    def test_missing_receipt_fails(self):
+        with self.assertRaisesRegex(ValueError, "no founder authorization"):
+            validator.film_receipt("signature", "assets/video/unknown.webp")
+
+    def test_changed_decision_text_fails(self):
+        changed = {**self.receipt, "decision_text": "wire them in"}
+        with patch.object(
+            validator.json,
+            "loads",
+            side_effect=[json.loads(validator.ELIGIBILITY.read_text(encoding="utf-8")), changed],
+        ):
+            with self.assertRaisesRegex(ValueError, "authorization drift"):
+                validator.film_receipt("signature", self.poster)
+
+    def test_other_collection_receipt_fails(self):
+        with self.assertRaisesRegex(ValueError, "authorization drift"):
+            validator.film_receipt("black-rose", self.poster)
+
+    def test_master_hash_mismatch_fails(self):
+        motion = copy.deepcopy(self.motion)
+        motion["master"]["sha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "authorized master"):
+            self.check(motion)
+
+    def test_web_asset_outside_boundary_fails(self):
+        motion = copy.deepcopy(self.motion)
+        motion["web"][0]["file"] = motion["web"][0]["file"].replace("cinema-20261008", "other")
+        with self.assertRaisesRegex(ValueError, "approval boundary"):
+            self.check(motion)
+
+    def test_changed_delivery_bytes_fail(self):
+        motion = copy.deepcopy(self.motion)
+        with patch.object(validator, "sha256", return_value="0" * 64):
+            with self.assertRaisesRegex(ValueError, "hash drift"):
+                self.check(motion)
 
 
 if __name__ == "__main__":

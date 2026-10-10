@@ -15,11 +15,27 @@ TEMPLATE = THEME / "template-collection.php"
 # The template delegates rendering to the arrival part, which is where the hero <video> is emitted.
 ARRIVAL = THEME / "template-parts/collections/arrival.php"
 CONTROLLER = THEME / "assets/js/visual-recovery.js"
-EXPECTED_SOURCES = {
+# Approved stills stay wired as each collection's responsive hub hero.
+RESPONSIVE_HEROES = {
     "signature": "assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
     "black-rose": "assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
     "love-hurts": "assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp",
     "kids-capsule": "assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+}
+# Founder-authorized 2026-10-08 cinema films ("wire them in. fix the imagery in
+# production"). Their masters are review evidence outside the theme; each delivery
+# file and the master hash are bound by a hash-pinned founder receipt instead,
+# exactly as inc/v2-media-eligibility.php skyyrose2_founder_film_allowed() admits them.
+FILM_RELEASE = "cinema-20261008"
+FILM_DECISION = "wire them in. fix the imagery in production"
+FILM_COLLECTIONS = ("signature", "black-rose", "love-hurts")
+ELIGIBILITY = THEME / "data/v2-media-eligibility.json"
+EXPECTED_SOURCES = {
+    **RESPONSIVE_HEROES,
+    **{
+        slug: f"assets/video/collection-heroes/approved/{slug}/{FILM_RELEASE}/poster.webp"
+        for slug in FILM_COLLECTIONS
+    },
 }
 REQUIRED_SAFEGUARDS = {
     "load_only_in_view",
@@ -113,6 +129,66 @@ def validate_ai_assets(slug: str, ai_motion: dict, status: str, max_bytes: int) 
         raise ValueError(f"{slug} approved motion lacks founder approval evidence")
 
 
+def film_receipt(slug: str, source_file: str) -> dict:
+    """The hash-pinned founder authorization the poster's eligibility record names."""
+    record = json.loads(ELIGIBILITY.read_text(encoding="utf-8"))["assets"].get(source_file)
+    if not isinstance(record, dict):
+        raise ValueError(f"{slug} film has no founder authorization")
+    binding = record.get("authorization")
+    if (
+        record.get("status") != "FOUNDER_AUTHORIZED_COLLECTION_FILM"
+        or not isinstance(binding, dict)
+        or set(binding) != {"path", "sha256"}
+        or not re.fullmatch(r"data/v2-media-reviews/[A-Za-z0-9_.-]+\.json", str(binding["path"]))
+    ):
+        raise ValueError(f"{slug} film has no founder authorization")
+    path = validate_asset({"file": binding["path"], "sha256": binding["sha256"]}, f"{slug} receipt")
+    receipt = json.loads(path.read_text(encoding="utf-8"))
+    expected = {
+        "schema": "skyyrose.collection-film-authorization.v1",
+        "authority": "FOUNDER_CONFIRMED",
+        "decision_text": FILM_DECISION,
+        "target": "https://skyyrose.co",
+        "collection": slug,
+    }
+    if any(receipt.get(key) != value for key, value in expected.items()):
+        raise ValueError(f"{slug} founder film authorization drift")
+    return receipt
+
+
+def validate_founder_film(slug: str, ai_motion: dict, source_file: str, max_bytes: int) -> None:
+    """Every delivered byte traces to the founder receipt and its recorded master."""
+    receipt = film_receipt(slug, source_file)
+    master = ai_motion.get("master")
+    if (
+        ai_motion.get("status") != "founder_approved"
+        or ai_motion.get("founder_approval_note") != FILM_DECISION
+        or ai_motion.get("job_id") != receipt.get("provider_task")
+        or not isinstance(master, dict)
+        or master.get("sha256") != receipt.get("source_master_sha256")
+    ):
+        raise ValueError(f"{slug} film is not bound to its authorized master")
+    root = f"assets/video/collection-heroes/approved/{slug}/{FILM_RELEASE}/"
+    web = ai_motion.get("web")
+    files = [record.get("file") for record in web] if isinstance(web, list) else []
+    if sorted(files) != [root + "hero.mp4", root + "hero.webm"]:
+        raise ValueError(f"{slug} film delivery violates its approval boundary")
+    if set(receipt.get("assets", {})) != {*files, source_file}:
+        raise ValueError(f"{slug} receipt does not cover exactly the delivered film")
+    for record in web:
+        path = validate_asset(record, f"{slug} film {Path(record['file']).name}")
+        if path.stat().st_size > max_bytes:
+            raise ValueError(f"{slug} AI web asset exceeds the runtime byte budget")
+    roles = {source_file: ("collection_hero_poster", receipt.get("poster_source_sha256"))}
+    roles.update(dict.fromkeys(files, ("collection_hero_video", master["sha256"])))
+    hashes = {record["file"]: record["sha256"] for record in web}
+    hashes[source_file] = sha256(THEME / source_file)
+    for file, (role, origin) in roles.items():
+        granted = receipt["assets"][file]
+        if granted != {"sha256": hashes[file], "role": role, "source_sha256": origin}:
+            raise ValueError(f"{slug} receipt does not authorize {file}")
+
+
 def validate_home_journal(source: str) -> None:
     """Jersey reveal uses exact registry-bound fronts; old film cannot return."""
     gallery = GALLERY.read_text(encoding="utf-8")
@@ -152,7 +228,7 @@ def validate_home_journal(source: str) -> None:
         path = validate_asset(
             {"file": front["src"], "sha256": front["sha256"]}, f"{sku} card front"
         )
-        if not path.name.startswith(sku + "-"):
+        if path.stem != sku and not path.name.startswith(sku + "-"):
             raise ValueError(f"{sku} card front filename disagrees with SKU")
     for sku in JERSEY_SKUS:
         sizing = registry["sku_logos"][sku]["decoration_sizing"]
@@ -234,14 +310,20 @@ def main() -> int:
         ):
             raise ValueError(f"{slug} is not bound to its approved hero master")
         validate_asset(source_record, f"{slug} source")
+        # An authorized film replaces the CSS treatment of a still; a still needs one.
         treatment = collection.get("exact_pixel_treatment")
-        if not isinstance(treatment, str) or len(treatment.strip()) < 12:
+        if slug not in FILM_COLLECTIONS and (
+            not isinstance(treatment, str) or len(treatment.strip()) < 12
+        ):
             raise ValueError(f"{slug} has no exact-pixel motion treatment")
         ai_motion = collection.get("ai_motion", {})
         status = ai_motion.get("status") if isinstance(ai_motion, dict) else None
         if status not in AI_STATUSES:
             raise ValueError(f"{slug} has unsupported AI motion status: {status}")
-        validate_ai_assets(slug, ai_motion, status, max_bytes)
+        if slug in FILM_COLLECTIONS:
+            validate_founder_film(slug, ai_motion, source_record["file"], max_bytes)
+        else:
+            validate_ai_assets(slug, ai_motion, status, max_bytes)
         if status == "founder_approved":
             approved += 1
 
@@ -249,7 +331,7 @@ def main() -> int:
     template_source = TEMPLATE.read_text(encoding="utf-8")
     arrival_source = ARRIVAL.read_text(encoding="utf-8")
     controller_source = CONTROLLER.read_text(encoding="utf-8")
-    for source in EXPECTED_SOURCES.values():
+    for source in RESPONSIVE_HEROES.values():
         responsive_name = Path(source).stem + "-1440w.webp"
         if responsive_name not in functions_source:
             raise ValueError(f"approved responsive hero is not wired: {responsive_name}")
@@ -289,6 +371,12 @@ def main() -> int:
         if relative == "template-parts/home/editorial-journal.php":
             validate_home_journal(source)
             continue
+        # The media gate parses <video> tags in rendered output to vet their sources.
+        if (
+            relative == "inc/v2-media-eligibility.php"
+            and "function skyyrose2_media_filter_html(" in source
+        ):
+            continue
         if relative == "template-parts/home/editorial-collection.php":
             validate_home_collection(source)
         if relative not in video_emitters:
@@ -321,7 +409,8 @@ def main() -> int:
             raise ValueError(f"collection hero runtime guard is missing: {runtime_guard}")
 
     print(
-        f"Collection hero motion valid: {len(collections)} exact-pixel treatments, "
+        f"Collection hero motion valid: {len(collections) - len(FILM_COLLECTIONS)} exact-pixel "
+        f"treatments, {len(FILM_COLLECTIONS)} founder-authorized films, "
         f"{approved} founder-approved AI motion plates."
     )
     return 0
