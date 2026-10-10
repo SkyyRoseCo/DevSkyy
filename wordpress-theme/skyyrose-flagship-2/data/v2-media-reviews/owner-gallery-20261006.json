@@ -1,0 +1,27 @@
+{
+  "schema": "skyyrose.creative.owner-decision.v1",
+  "decision_date": "2026-10-06",
+  "status": "FOUNDER_ACCEPTED_CANDIDATES_QUARANTINED",
+  "decision_text": "i approve those only need a patch edit for the fannie. the logo looks bad",
+  "decision_source": "direct user message in current conversation",
+  "scope": "The eleven non-Fannie product-card candidates listed here from cards-review.html. This receipt does not decide the two separate collection-scene candidates. Fannie's R2 card is excluded; its separately accepted R3 patch is recorded in patches/fannie-logo-patch-r3/founder-approval.json.",
+  "candidates": [
+    {"sku":"sg-001","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-sg-001-r2.png","sha256":"6a54cff3a90583c9d0e50bacf3cc6606dd70531976c19350e7799d89e105b8ba","roles":["card_front"]},
+    {"sku":"sg-002","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-sg-002.png","sha256":"cb8b21742ce20ed778f5c8fccc44e60c08df6deade28c9cd525c61575a608931","roles":["card_front"]},
+    {"sku":"br-003","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-br-003.png","sha256":"914f5fd17f85ef47f22047f24fa88f3d617fa1946231ef35094fb27b13aaf2c9","roles":["card_front"]},
+    {"sku":"br-006","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-br-006.png","sha256":"06bcb9c83369d73a676741f3ae62fd309709ee83df07ff29f8b52969e0da963b","roles":["card_front"]},
+    {"sku":"br-008","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-br-008.png","sha256":"62ffb9a3521e4026d5f1c588ecab999a1ed0631ccb7c2eea34be2bc59fe93121","roles":["card_front"]},
+    {"sku":"br-009","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-br-009.png","sha256":"1ec571744f4fbe9249d97fc1f3004e61bf8c6416cb7e7d281263b2b0def1bb91","roles":["card_front"]},
+    {"sku":"br-010","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-br-010.png","sha256":"e0391d5fbc4a8c0f69179218231ecf2afd256b58d662367faedca01e274a2782","roles":["card_front"]},
+    {"sku":"br-011","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-br-011.png","sha256":"b84df3b69e7bb4bdeaee3e837d6189e3e171707f4e64b89b45739bcb04a3e580","roles":["card_front"]},
+    {"sku":"br-012","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-br-012.png","sha256":"9cba8eb23ba1359871951f585e55fc898372b2ae493848be333c72d361684f2d","roles":["card_front"]},
+    {"sku":"br-014","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-br-014.png","sha256":"ab871a8035a2f7e0f6fbf65c44c0e2d940a5d9f323d436a8cdfff844c278d0c8","roles":["card_front"]},
+    {"sku":"br-015","path":"tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-br-015.png","sha256":"935b4e584369cad2543860824b78c2163171052adc7fe8483b29409f70e9f681","roles":["card_front"]}
+  ],
+  "decision_boundaries": {
+    "independent_pixel_review": "NOT_REPLACED_BY_FOUNDER_DECISION",
+    "media_promotion": "NOT_AUTHORIZED",
+    "staging_deployment": "NOT_AUTHORIZED",
+    "production_release": "NOT_AUTHORIZED"
+  }
+}

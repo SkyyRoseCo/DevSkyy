@@ -1,0 +1,45 @@
+{
+  "schema": "skyyrose.creative.owner-decision.v1",
+  "sku": "lh-005",
+  "product": "The Fannie",
+  "status": "FOUNDER_ACCEPTED_CANDIDATE_QUARANTINED",
+  "decision": "ACCEPTED_FOR_PRODUCT_CARD_VISUAL_REVIEW",
+  "decision_text": "Image 1: this is spot on",
+  "decision_date": "2026-10-06",
+  "candidate": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/patches/fannie-logo-patch-r3/card-lh-005-r3-owner-approved.png",
+    "sha256": "016ffe57064fd7c6f49d1df4ff9f5d59ffdb239f807ecea31d10c3362ddde752",
+    "width": 1024,
+    "height": 1536,
+    "generation_route": "built-in image_gen"
+  },
+  "source_bindings": [
+    {
+      "role": "prior_card_target",
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/production-revised/quarantine/card-lh-005-r2.png",
+      "sha256": "b9d6cc1b64147ea3a6d9d16b54d6f6d7f32200a3f65b80b8c0b92048b74888ba"
+    },
+    {
+      "role": "product_sot_photo",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/the-fannie-pack-photo.jpg",
+      "sha256": "b70ab3937f1991ef02c2e5f91ecf42dfbb9803be77d60eea9446065789eb14bf"
+    },
+    {
+      "role": "product_sot_techflat",
+      "path": "assets/products/source-photos/pre-order/lh-001-fannie-pack-techflat.jpeg",
+      "sha256": "1414257204f1225ecee947bbc3faad3c49247ed6fc55b6d16d48e80ae6be23be"
+    },
+    {
+      "role": "founder_artwork_authority",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png",
+      "sha256": "a9b96c60811a92b34dd8b5700317603a16f0976ea863c5d255a4762935d363a8"
+    }
+  ],
+  "separate_states": {
+    "founder_visual_decision": "ACCEPTED",
+    "independent_pixel_review": "NOT_RECORDED_BY_THIS_RECEIPT",
+    "promotion": "NOT_AUTHORIZED",
+    "staging_deployment": "NOT_AUTHORIZED",
+    "production_release": "NOT_AUTHORIZED"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-all-products-card-lh-003",
+  "asset_id": "card-lh-003",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "c6be96eccf2f5534c960f21af64d5c1151c4acb63341b21d2083e1dde1f91ef5",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "lh-003"
+  ],
+  "collections": [
+    "love-hurts"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/all-products/card-lh-003-visual-review.json",
+    "sha256": "3ec7596c0c3b407aed8a669895ca4cc9d79a011bd1fa57c16da9a425110a30a4"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-003-card-desktop.png",
+      "sha256": "ec9461e1bce51f3bab1f0ddb6c566017d98f80ec3d4bd7ca05889cf5e281dfb1"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-003-card-mobile.png",
+      "sha256": "3c2ea65eafee6609f53412711ead1324b331ae769c2dcb5ed86d906cf20c303c"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-003-pdp-desktop.png",
+      "sha256": "8434694c9e56a39d61c4e932d0170a2c48f5725ae638ff89ea63387e4d01bded"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-003-pdp-mobile.png",
+      "sha256": "6095a87520d8b19c66ae8c7ab7108d92b2083dd7ac4ede544b795bc13a9f7c8e"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native asset and actual offline card/current product-page.css PDP media-only contexts at 1440 desktop/390 mobile. Full commerce, theme states, 768, motion, accessibility and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: Complete white mesh basketball shorts retain black waistband, white cords, current red rose-cloud repeat, angular black/red/white inset borders and large wearer-left script with distinct side-panel art. Waist, visible pocket construction and both complete hems remain inside frame. Side lettering/rose artwork wraps around the body as in the supplied physical geometry; no invented micro-letter mismatch is claimed. This is front-role approval, not unseen rear/detail approval.",
+    "pdp_on_model_front": "PASS: Current gallery containment preserves all native pixels; the same exact native identity/framing verdict applies."
+  }
+}

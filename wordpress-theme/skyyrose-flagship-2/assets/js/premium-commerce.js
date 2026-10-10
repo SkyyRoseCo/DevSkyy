@@ -8,10 +8,84 @@
     card.dataset.premiumInitialized = 'true';
     const image = card.querySelector('.sr2-c-editorial-card__product-image');
     const failure = card.querySelector('[data-card-image-error]');
+    const overlay = card.querySelector('[data-garment-overlay]');
+    const toggle = card.querySelector('[data-garment-toggle]');
+    const media = card.querySelector('.sr2-c-editorial-card__media');
+    const alignHighlight = () => {
+      if (!overlay || !toggle || !image || !media) return;
+      const disable = () => {
+        overlay.setAttribute('hidden', '');
+        toggle.hidden = true;
+        toggle.disabled = true;
+        toggle.setAttribute('aria-pressed', 'false');
+        delete card.dataset.garmentActive;
+        delete card.dataset.garmentReady;
+      };
+      if (!image.complete || !image.naturalWidth) { disable(); return; }
+      const frame = image.getBoundingClientRect();
+      const parent = media.getBoundingClientRect();
+      const style = getComputedStyle(image);
+      const number = value => Number.parseFloat(value) || 0;
+      const left = number(style.borderLeftWidth) + number(style.paddingLeft);
+      const right = number(style.borderRightWidth) + number(style.paddingRight);
+      const top = number(style.borderTopWidth) + number(style.paddingTop);
+      const bottom = number(style.borderBottomWidth) + number(style.paddingBottom);
+      const availableWidth = frame.width - left - right;
+      const availableHeight = frame.height - top - bottom;
+      const view = overlay.viewBox.baseVal;
+      if (!view.width || !view.height || availableWidth <= 0 || availableHeight <= 0 ||
+          Math.abs(image.naturalWidth / image.naturalHeight - view.width / view.height) > 0.002) {
+        disable(); return;
+      }
+      // Highlight cards force center/contain; use the actual image content box,
+      // accounting for archive/world padding and responsive derivative sizes.
+      const scale = Math.min(availableWidth / view.width, availableHeight / view.height);
+      const width = view.width * scale;
+      const height = view.height * scale;
+      overlay.style.left = `${frame.left - parent.left - media.clientLeft + left + (availableWidth - width) / 2}px`;
+      overlay.style.top = `${frame.top - parent.top - media.clientTop + top + (availableHeight - height) / 2}px`;
+      overlay.style.width = `${width}px`;
+      overlay.style.height = `${height}px`;
+      overlay.removeAttribute('hidden');
+      toggle.hidden = false;
+      toggle.disabled = false;
+      card.dataset.garmentReady = 'true';
+    };
+    if (toggle) {
+      let togglePointer = '';
+      toggle.addEventListener('pointerdown', event => { togglePointer = event.pointerType; });
+      toggle.addEventListener('pointercancel', () => { togglePointer = ''; });
+      toggle.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') togglePointer = '';
+      });
+      toggle.addEventListener('click', () => {
+        if (toggle.disabled || card.dataset.garmentReady !== 'true') return;
+        const active = toggle.getAttribute('aria-pressed') !== 'true';
+        toggle.setAttribute('aria-pressed', String(active));
+        if (active) card.dataset.garmentActive = 'true';
+        else {
+          delete card.dataset.garmentActive;
+          // Touch browsers retain button focus after tap; release it on an
+          // explicit off tap so focus-within does not undo the user's choice.
+          if (togglePointer === 'touch') toggle.blur();
+        }
+        togglePointer = '';
+      });
+    }
+    if (overlay && image && media) {
+      if ('ResizeObserver' in window) {
+        const observer = new ResizeObserver(alignHighlight);
+        observer.observe(image);
+        observer.observe(media);
+        window.addEventListener('pagehide', () => observer.disconnect());
+        window.addEventListener('pageshow', () => { observer.observe(image); observer.observe(media); alignHighlight(); });
+      } else window.addEventListener('resize', alignHighlight);
+    }
     const settle = () => {
       const failed = image.complete && image.naturalWidth === 0;
       card.dataset.imageState = failed ? 'error' : image.complete ? 'ready' : 'loading';
       if (failure) failure.hidden = !failed;
+      alignHighlight();
     };
     if (image) { image.addEventListener('load', settle); image.addEventListener('error', settle); settle(); }
     card.addEventListener('pointerdown', () => { card.dataset.touchState = 'active'; });
@@ -90,11 +164,19 @@
       const link = entry.querySelector('a');
       const label = link.querySelector('span')?.textContent || '';
       entries.forEach(item => item.querySelector('button').setAttribute('aria-pressed', String(item === entry)));
+      const sourceUrl = source?.currentSrc || source?.getAttribute('src');
+      if (!sourceUrl) {
+        image.hidden = true;
+        caption.textContent = label;
+        stage.dataset.state = 'unavailable';
+        stage.removeAttribute('aria-busy');
+        return;
+      }
       stage.dataset.state = 'loading';
       stage.setAttribute('aria-busy', 'true');
       const next = new Image();
       pendingImage = next;
-      next.src = source.currentSrc || source.src;
+      next.src = sourceUrl;
       try {
         let timer;
         try { await Promise.race([next.decode(), new Promise((_, reject) => { timer = setTimeout(() => reject(Error('Preview timed out')), 8000); })]); }

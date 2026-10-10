@@ -1,0 +1,40 @@
+{
+  "schema": "skyyrose.v2.independent-media-review.v1",
+  "roles": [
+    "card_front"
+  ],
+  "skus": [
+    "sg-015"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "producer": "Codex source-bound V2 corrective batch",
+  "production_id": "v2-card-sg-015-prompt-qualification-20261006-r4",
+  "asset_sha256": "ffe79d1d89422990ff4a1e9fcdefeacbefbd15d21d2d3cf758ce30cd9317488d",
+  "reviewer": "/root/all33_completion_review",
+  "verdict": "PASS",
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/v2-card-placement-review-20261006/source-adoption-r4-sg015/sg-015-native-visual-review.json",
+    "sha256": "de3d4502e763fb85eb723a88223f0aa02a23ebb81587363f9a9bf3c8c860d126"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/v2-card-placement-review-20261006/source-adoption-r4-sg015/contexts/sg-015-1440.png",
+      "sha256": "5bb597c6012b32594d8b122ac987b94979495ace979e2269dd836bcc512a76d8"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/v2-card-placement-review-20261006/source-adoption-r4-sg015/contexts/sg-015-390.png",
+      "sha256": "638f2cce078c72a35bca8753ff27ba504cd2d8792a688240235f71a32a2bbc19"
+    },
+    "card_tablet": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/v2-card-placement-review-20261006/source-adoption-r4-sg015/contexts/sg-015-768.png",
+      "sha256": "c1c01172e7174434c61428ad94f1f34d6f88526869c999491fc1a3d45158ffda"
+    }
+  },
+  "review_scope": "Actual native pixels and 390/768/1440 product-card presentation; card_front only",
+  "review_limits": "Readable card identity and source-defined construction; microscopic patch lettering and physical print dimensions not established",
+  "publishing_authorized_by_this_receipt": false
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-all-products-card-br-005",
+  "asset_id": "card-br-005",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "6ac3b4092f21226f3f4202448f6115651c472f25df9946edbcfeda9155b99757",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "br-005"
+  ],
+  "collections": [
+    "black-rose"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/all-products/card-br-005-visual-review.json",
+    "sha256": "a814e72fbe5786dca4bfa59a70524418ad3a76cec28669e661687cbb28582fe1"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-005-card-desktop.png",
+      "sha256": "95b42e2dad5e8a094cf16fa2dcfb5ed94390098bc5d652ef44c262cdc0a16b6a"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-005-card-mobile.png",
+      "sha256": "f3d947992f291dff2ddb0afd524f62ff5ccb7b882163fafaaeb95e3a3dd9b286"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-005-pdp-desktop.png",
+      "sha256": "892edc8f40c1b22564d5bcfe3559bec0bd1efcba5970f1997eef92a963e9dddd"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-005-pdp-mobile.png",
+      "sha256": "a8865de7c02235e0b4c7c70f19b52bd98e9b74e66e48db0c8809225ffe965970"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native asset and actual offline card/current product-page.css PDP media-only contexts at 1440 desktop/390 mobile. Full commerce, theme states, 768, motion, accessibility and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: Black lightweight hoodie retains white cords, patterned inner hood, small tonal wearer-right chest silicone mark and large wearer-left lower body-side embroidery. Complete hood, cuffs, hem, kangaroo pocket and visible artwork remain inside native and both actual role contexts. No conflicting styling marks or hidden garment construction.",
+    "pdp_on_model_front": "PASS: Current gallery containment preserves all native pixels; the same exact native identity/framing verdict applies."
+  }
+}

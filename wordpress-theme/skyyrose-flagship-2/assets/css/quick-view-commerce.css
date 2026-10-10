@@ -7,6 +7,8 @@
 .sr2-quick-view .sr2-quick-view__panel.product { max-width: none; margin: 0; padding: 0; }
 .sr2-quick-view .sr2-quick-view__media { display: grid; align-items: center; min-height: 24rem; overflow: hidden; background: var(--sr2-card); }
 .sr2-quick-view .sr2-quick-view__media img { display: block; width: 100%; height: 100%; min-height: 0; min-width: 0; max-height: 78svh; object-fit: contain; object-position: center; }
+.sr2-quick-view .sr2-quick-view__media[hidden], .sr2-quick-view .sr2-quick-view__media img[hidden] { display: none; }
+.sr2-quick-view .sr2-quick-view__panel:has(.sr2-quick-view__media[hidden]) { grid-template-columns: minmax(0, 1fr); }
 .sr2-quick-view .sr2-quick-view__copy { display: grid; align-content: start; gap: var(--sr2-space-3); padding: clamp(1.25rem, 3vw, 2.5rem); }
 .sr2-quick-view .sr2-quick-view__copy > * { margin: 0; }
 .sr2-quick-view .sr2-quick-view__copy > p:empty { display: none; }

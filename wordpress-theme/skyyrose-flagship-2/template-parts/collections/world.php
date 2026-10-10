@@ -1,6 +1,6 @@
 <?php
 /**
- * Collection world: Arrival → Chapters → Scroll World → Edit → Story → Colophon.
+ * Collection world: Arrival → Merchandise editorial → Scroll World → Edit → Story → Colophon.
  *
  * Narrative and scene authority remain in skyyrose2_collections(); this
  * composition consumes live products through the canonical commerce card.
@@ -20,7 +20,7 @@ if ( ! $world_presentation || empty( $world_collection['name'] ) ) {
 }
 $world_products       = array_values(
 	array_filter(
-		skyyrose2_get_products( 12, $world_slug ),
+		skyyrose2_get_products( -1, $world_slug ),
 		static function ( $item ) {
 			return is_a( $item, 'WC_Product' ) && $item->is_visible();
 		}
@@ -28,10 +28,14 @@ $world_products       = array_values(
 );
 $world_shop_url       = add_query_arg( 'product_cat', $world_slug, skyyrose2_shop_url() );
 $world_scene_chapters = skyyrose2_collection_commerce_scenes( $world_slug );
+$world_show_editorial = in_array( $world_slug, array( 'signature', 'black-rose', 'love-hurts' ), true );
 $world_args           = array(
 	'slug'            => $world_slug,
 	'collection'      => $world_collection,
 	'presentation'    => $world_presentation,
+	'products'        => $world_products,
+	'shop_url'        => $world_shop_url,
+	'pieces_anchor'   => $world_show_editorial ? '#world' : '#shop',
 	// Without an approved Scroll World the founder's world statement opens chapter 01 instead.
 	'world_statement' => empty( $world_scene_chapters ),
 );
@@ -41,7 +45,9 @@ $world_args           = array(
 		<div class="sr2-commerce-notices" aria-live="polite"><?php wc_print_notices(); ?></div>
 	<?php endif; ?>
 	<?php get_template_part( 'template-parts/collections/arrival', null, $world_args ); ?>
-	<?php get_template_part( 'template-parts/collections/chapters', null, $world_args ); ?>
+	<?php if ( $world_show_editorial ) : ?>
+		<?php get_template_part( 'template-parts/collections/editorial', null, $world_args ); ?>
+	<?php endif; ?>
 	<?php get_template_part( 'template-parts/collections/scroll-world', null, $world_args ); ?>
 	<section id="shop" class="sr2-band sr2-world-edit"
 	<?php

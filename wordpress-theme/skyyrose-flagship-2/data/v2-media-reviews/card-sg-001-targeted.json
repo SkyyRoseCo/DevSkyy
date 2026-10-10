@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-targeted-repairs-card-sg-001",
+  "asset_id": "card-sg-001",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "80cc41601242f767fd453d31e0534c4d1a6ce3d474be335b8fc6e2167053794a",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "sg-001"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-repairs/card-sg-001-visual-review.json",
+    "sha256": "08ba91f1b5fd218f260aacecb96b528d2899b4b7e2dd8948b6f3bd419cb06a56"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-001-targeted-card-desktop.png",
+      "sha256": "0803f4370bddc4d9b12219514ebaa6cef845d9d7ef260b101a47d5e563b2ed5a"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-001-targeted-card-mobile.png",
+      "sha256": "06790f55a5069b05a75137fcdd43a1d85f173c6c22cc4755980acd64c28b3c07"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-001-targeted-pdp-desktop.png",
+      "sha256": "6e14c368c4f49726c2e97b19f2d86e497fc302d0a4f43a7e73de2797a1e72085"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-001-targeted-pdp-mobile.png",
+      "sha256": "8ef1ad349961350a32e3989a786dd74517dcb5ba5dabf915860a3cf588e2bc6e"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native photograph and actual offline card/current product-page.css PDP media-only contexts at1440 desktop/390 mobile. Full commerce, theme interaction, motion, 768 layout and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: The complete Bay Bridge shorts preserve blue waistband, white drawstring, photographic bridge towers/span/cables, skyline/water and the small wearer-left blue rose/cloud mark. Both complete hems stay inside the native frame with margin. Woven mesh, drape, stitches and sunlight belong to the same stone-walkway event; plain white styling carries no competing mark.",
+    "pdp_on_model_front": "PASS: the same native master is entirely contained in the actual current gallery selectors at desktop/mobile, without merchandise cropping or horizontal overflow. The complete Bay Bridge shorts preserve blue waistband, white drawstring, photographic bridge towers/span/cables, skyline/water and the small wearer-left blue rose/cloud mark. Both complete hems stay inside the native frame with margin. Woven mesh, drape, stitches and sunlight belong to the same stone-walkway event; plain white styling carries no competing mark."
+  }
+}

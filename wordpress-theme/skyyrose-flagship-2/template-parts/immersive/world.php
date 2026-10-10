@@ -187,7 +187,7 @@ get_header();
 							$product    = $product_id ? wc_get_product( $product_id ) : false;
 						}
 						$approved_front = skyyrose2_approved_card_front( $product );
-						if ( ! $product || 'publish' !== $product->get_status() || ! $product->is_visible() || ( ! $approved_front && ! $product->get_image_id() ) ) {
+						if ( ! $product || 'publish' !== $product->get_status() || ! $product->is_visible() || ! $approved_front ) {
 							continue;
 						}
 						$hotspot_presentation = function_exists( 'skyyrose2_product_presentation' ) ? skyyrose2_product_presentation( $product ) : array();
@@ -204,23 +204,7 @@ get_header();
 							aria-label="<?php echo esc_attr( sprintf( __( 'Explore %s', 'skyyrose-flagship-2' ), $product->get_name() ) ); ?>">
 							<span class="sr2-immersive__hotspot-media">
 								<?php if ( $approved_front ) : ?>
-									<img class="sr2-immersive__hotspot-image" src="<?php echo esc_url( $approved_front['src'] ); ?>" alt="<?php echo esc_attr( $approved_front['alt'] ); ?>" width="<?php echo esc_attr( (string) $approved_front['width'] ); ?>" height="<?php echo esc_attr( (string) $approved_front['height'] ); ?>" loading="lazy" decoding="async">
-								<?php else : ?>
-									<?php
-									echo wp_kses_post(
-										wp_get_attachment_image(
-											$product->get_image_id(),
-											'woocommerce_thumbnail',
-											false,
-											array(
-												'class'    => 'sr2-immersive__hotspot-image',
-												'loading'  => 'lazy',
-												'decoding' => 'async',
-												'alt'      => $product->get_name(),
-											)
-										)
-									);
-									?>
+									<img class="sr2-immersive__hotspot-image" src="<?php echo esc_url( $approved_front['card_src'] ?? $approved_front['src'] ); ?>" srcset="<?php echo esc_attr( $approved_front['srcset'] ?? '' ); ?>" sizes="(max-width: 47.99em) 5.5rem, clamp(11rem, 16vw, 16rem)" alt="<?php echo esc_attr( $approved_front['alt'] ); ?>" width="<?php echo esc_attr( (string) $approved_front['width'] ); ?>" height="<?php echo esc_attr( (string) $approved_front['height'] ); ?>" loading="lazy" decoding="async">
 								<?php endif; ?>
 							</span>
 							<span class="sr2-immersive__hotspot-copy"><small><?php esc_html_e( 'Piece in this scene', 'skyyrose-flagship-2' ); ?></small><strong><?php echo esc_html( $product->get_name() ); ?></strong><em><?php esc_html_e( 'View the product', 'skyyrose-flagship-2' ); ?> →</em></span>
