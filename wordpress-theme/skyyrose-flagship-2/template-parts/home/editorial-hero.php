@@ -3,9 +3,10 @@
 defined( 'ABSPATH' ) || exit;
 $collections = is_array( $args['collections'] ?? null ) ? $args['collections'] : array();
 $shop_url    = (string) ( $args['shop_url'] ?? '' );
+$hero_uri    = skyyrose2_media_uri( 'assets/images/house-monument-20260928.webp' );
 ?>
 <section id="sr2-archive-arrival" class="sr2-house-arrival" data-house-motion aria-labelledby="sr2-archive-title">
-	<div class="sr2-house-arrival__art"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/house-monument-20260928.webp' ) ); ?>" width="1672" height="941" alt="<?php esc_attr_e( 'A translucent SkyyRose monogram and rose sculpture overlooking Oakland at dusk.', 'skyyrose-flagship-2' ); ?>" fetchpriority="high" decoding="async"></div>
+	<?php if ( $hero_uri ) : ?><div class="sr2-house-arrival__art"><img src="<?php echo esc_url( $hero_uri ); ?>" width="1672" height="941" alt="<?php esc_attr_e( 'A translucent SkyyRose monogram and rose sculpture overlooking Oakland at dusk.', 'skyyrose-flagship-2' ); ?>" fetchpriority="high" loading="eager" decoding="async"></div><?php endif; ?>
 	<div class="sr2-house-arrival__shade" aria-hidden="true"></div>
 	<div class="sr2-house-arrival__copy">
 		<p class="sr2-house-kicker"><?php esc_html_e( 'Oakland, California / The house of SkyyRose', 'skyyrose-flagship-2' ); ?></p>

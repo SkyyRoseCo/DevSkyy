@@ -97,6 +97,42 @@ function skyyrose2_performance_dequeue_unused_assets() {
 add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_dequeue_unused_assets', 100 );
 
 /**
+ * The native homepage renders no plugin blocks or Elementor editor UI.
+ * Remove their CSS before Boost combines styles, retaining native search,
+ * accessibility and all commerce styles. Editors and other routes keep them.
+ */
+function skyyrose2_performance_home_plugin_styles() {
+	if ( is_admin() || ! is_front_page() || is_user_logged_in() || is_customize_preview() || is_preview() || apply_filters( 'skyyrose2_home_plugin_styles', false ) ) {
+		return;
+	}
+	foreach ( array(
+		'wp-mediaelement',
+		'mediaelement',
+		'jetpack-block-podcast-episode',
+		'jetpack-block-paypal-payment-buttons',
+		'jetpack-forms-layout',
+		'jetpack-layout-grid',
+		'wp-block-code',
+		'videopress-video-style',
+		'jetpack-sharing-buttons-style',
+		'social-logos',
+		'elementor-common',
+		'elementor-icons',
+		'e-theme-ui-light',
+		'gravatar-enhanced-patterns-shared',
+		'gravatar-enhanced-patterns-edit',
+		'gravatar-enhanced-patterns-view',
+		'jetpack-global-styles-frontend-style',
+		'sharedaddy',
+	) as $handle ) {
+		wp_dequeue_style( $handle );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_home_plugin_styles', 200 );
+add_action( 'wp_print_styles', 'skyyrose2_performance_home_plugin_styles', 1 );
+
+
+/**
  * Offer small, exact theme styles to Core's bounded inline-style delivery.
  *
  * Core retains handle order, attached CSS and relative URL normalization. Its
@@ -257,6 +293,7 @@ function skyyrose2_performance_sot_preload( $path, $media = '' ) {
 	}
 
 	$url      = skyyrose2_sot_asset_uri( $path );
+	if ( ! $url ) { return array(); }
 	$resource = array(
 		'href'          => $url,
 		'as'            => 'image',
@@ -308,9 +345,11 @@ function skyyrose2_performance_art_directed_preloads( $desktop, $tablet, $mobile
  */
 function skyyrose2_performance_route_preloads() {
 	if ( is_front_page() ) {
+		$hero = function_exists( 'skyyrose2_media_uri' ) ? skyyrose2_media_uri( 'assets/images/house-monument-20260928.webp' ) : '';
+		if ( ! $hero ) { return array(); }
 		return array(
 			array(
-				'href'          => SKYYROSE2_URI . '/assets/images/house-monument-20260928.webp',
+				'href'          => $hero,
 				'as'            => 'image',
 				'fetchpriority' => 'high',
 				'type'          => 'image/webp',
@@ -364,18 +403,9 @@ function skyyrose2_performance_route_preloads() {
 			);
 		}
 		if ( in_array( $slug, array( 'pre-order', 'preorder' ), true ) ) {
-			$monument = '/assets/images/house-monument-20260928.webp';
-			if ( ! is_readable( SKYYROSE2_DIR . $monument ) ) {
-				return array();
-			}
-			return array(
-				array(
-					'href'          => SKYYROSE2_URI . $monument,
-					'as'            => 'image',
-					'fetchpriority' => 'high',
-					'type'          => 'image/webp',
-				),
-			);
+			// The pre-order template assigns high priority to its eligible arrival.
+			// A historical house image must never be loaded for this route.
+			return array();
 		}
 		// Contact renders no hero image since 2.5.0; only About keeps a page hero.
 		$page_heroes = array(
@@ -393,6 +423,17 @@ function skyyrose2_performance_route_preloads() {
 		$product = wc_get_product( get_queried_object_id() );
 		// Delivery hints obey the same authority as the visible PDP gallery.
 		$media      = $product && function_exists( 'skyyrose2_product_commerce_media' ) ? skyyrose2_product_commerce_media( $product ) : array();
+		if ( ! empty( $media['front']['src'] ) ) {
+			$front    = $media['front'];
+			$resource = array( 'href' => $front['display_src'] ?? $front['card_src'] ?? $front['src'], 'as' => 'image', 'fetchpriority' => 'high' );
+			$type     = skyyrose2_performance_image_mime( $resource['href'] );
+			if ( $type ) { $resource['type'] = $type; }
+			if ( ! empty( $front['srcset'] ) ) {
+				$resource['imagesrcset'] = $front['srcset'];
+				$resource['imagesizes']  = function_exists( 'skyyrose2_pdp_gallery_sizes' ) ? skyyrose2_pdp_gallery_sizes( $front['width'], $front['height'] ) : '100vw';
+			}
+			return array( $resource );
+		}
 		$image_id   = (int) ( $media['ids'][0] ?? 0 );
 		$image_size = 'woocommerce_single';
 		$delivery   = $image_id && function_exists( 'skyyrose2_pdp_media_delivery' ) ? skyyrose2_pdp_media_delivery( $product, $image_id ) : array();

@@ -50,7 +50,7 @@ if ( ! $cards ) {
 					<?php else : ?>
 						<a class="sr2-editorial-hero__film-card sr2-editorial-film__card" href="<?php echo esc_url( $product->get_permalink() ); ?>" data-sku="<?php echo esc_attr( strtoupper( $sku ) ); ?>" data-collection="<?php echo esc_attr( $card['collection'] ); ?>">
 					<?php endif; ?>
-						<img src="<?php echo esc_url( $front['src'] ); ?>" width="<?php echo esc_attr( (string) $front['width'] ); ?>" height="<?php echo esc_attr( (string) $front['height'] ); ?>" sizes="(max-width: 47.99em) 68vw, clamp(14rem, 22vw, 20rem)" alt="<?php echo $is_copy ? '' : esc_attr( $front['alt'] ); ?>" loading="lazy" decoding="async">
+						<img src="<?php echo esc_url( $front['card_src'] ?? $front['src'] ); ?>" srcset="<?php echo esc_attr( $front['srcset'] ?? '' ); ?>" sizes="(max-width: 47.99em) min(15rem, 68vw), clamp(14rem, 22vw, 20rem)" width="<?php echo esc_attr( (string) $front['width'] ); ?>" height="<?php echo esc_attr( (string) $front['height'] ); ?>" alt="<?php echo $is_copy ? '' : esc_attr( $front['alt'] ); ?>" loading="lazy" decoding="async">
 						<span><small><?php echo esc_html( strtoupper( $sku ) ); ?> · <?php echo esc_html( $collections[ $card['collection'] ]['name'] ?? '' ); ?></small><b><?php echo esc_html( $product->get_name() ); ?></b></span>
 					<?php
 					if ( $is_copy ) :

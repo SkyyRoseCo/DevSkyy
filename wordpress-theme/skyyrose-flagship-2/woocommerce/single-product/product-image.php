@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 global $product;
 $native_template = WC()->plugin_path() . '/templates/single-product/product-image.php';
 $context         = skyyrose2_pdp_media_context( $product );
-$front           = function_exists( 'skyyrose2_approved_card_front' ) ? skyyrose2_approved_card_front( $product ) : array();
+$front           = function_exists( 'skyyrose2_approved_pdp_front' ) ? skyyrose2_approved_pdp_front( $product ) : array();
 $front_filter    = skyyrose2_pdp_card_front_filter( $front );
 if ( ! $context ) {
 	// Native variation AJAX generates an intermediate gallery before its data
@@ -30,11 +30,7 @@ $permitted = array_map( 'intval', $context['media']['ids'] );
 if ( ! $permitted || 'rejected' === $context['media']['state'] ) {
 	// A hash-bound storefront front can still give this PDP its exact product
 	// image when older Woo attachments are explicitly rejected.
-	if ( $front ) {
-		echo '<div class="woocommerce-product-gallery woocommerce-product-gallery--with-images" data-columns="1"><figure class="woocommerce-product-gallery__wrapper">';
-		echo skyyrose2_pdp_card_front_markup( $front ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- helper escapes every attribute.
-		echo '</figure></div>';
-	}
+	echo skyyrose2_pdp_v2_gallery_markup( $front ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- helper escapes every attribute.
 	return;
 }
 $candidates = array_values( array_unique( array_filter( array_map( 'intval', array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() ) ) ) ) );

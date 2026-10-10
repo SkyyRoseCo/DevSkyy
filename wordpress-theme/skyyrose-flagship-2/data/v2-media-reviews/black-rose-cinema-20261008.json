@@ -1,0 +1,27 @@
+{
+  "schema": "skyyrose.collection-film-authorization.v1",
+  "authority": "FOUNDER_CONFIRMED",
+  "decision_text": "wire them in. fix the imagery in production",
+  "target": "https://skyyrose.co",
+  "collection": "black-rose",
+  "provider_task": "34a3c4ce-9f14-4848-b8af-435737d94dbf",
+  "source_master_sha256": "da815f4434c2e085baedba730605c6339d552ef65df79a647b72d64bb83f2635",
+  "poster_source_sha256": "916363c8f5dcbe3b9eee6b0c9360fd44a1d2e00bbda5fda91853a6300da88e7f",
+  "assets": {
+    "assets/video/collection-heroes/approved/black-rose/cinema-20261008/hero.webm": {
+      "sha256": "dbff22200027a5e4785219428a3b1eab773e9565b85f90c4881bccd344f51bd6",
+      "role": "collection_hero_video",
+      "source_sha256": "da815f4434c2e085baedba730605c6339d552ef65df79a647b72d64bb83f2635"
+    },
+    "assets/video/collection-heroes/approved/black-rose/cinema-20261008/poster.webp": {
+      "sha256": "92ca243f7885dfefcd2171b9c6c2ab2413f5160aa170e1c1253eeba7d556888c",
+      "role": "collection_hero_poster",
+      "source_sha256": "916363c8f5dcbe3b9eee6b0c9360fd44a1d2e00bbda5fda91853a6300da88e7f"
+    },
+    "assets/video/collection-heroes/approved/black-rose/cinema-20261008/hero.mp4": {
+      "sha256": "ac0d2a9642646f7124fd9293f20c0b57f673765eb841f18cae0d9b9f8ccf345b",
+      "role": "collection_hero_video",
+      "source_sha256": "da815f4434c2e085baedba730605c6339d552ef65df79a647b72d64bb83f2635"
+    }
+  }
+}

@@ -27,21 +27,7 @@ $render_guardian_proof = static function ( $product, $sku, $role ) {
 	<div class="sr-kids-procession__proof" data-sku="<?php echo esc_attr( $sku ); ?>" data-product-state="<?php echo $product ? 'resolved' : 'unavailable'; ?>">
 		<div class="sr-kids-procession__proof-media">
 			<?php if ( $approved_front ) : ?>
-				<img src="<?php echo esc_url( $approved_front['src'] ); ?>" alt="<?php echo esc_attr( $approved_front['alt'] ); ?>" width="<?php echo esc_attr( (string) $approved_front['width'] ); ?>" height="<?php echo esc_attr( (string) $approved_front['height'] ); ?>" loading="lazy" decoding="async">
-			<?php elseif ( $product && $product->get_image_id() ) : ?>
-				<?php
-				echo wp_kses_post(
-					wp_get_attachment_image(
-						$product->get_image_id(),
-						'woocommerce_thumbnail',
-						false,
-						array(
-							'loading'  => 'lazy',
-							'decoding' => 'async',
-						)
-					)
-				);
-				?>
+				<img src="<?php echo esc_url( $approved_front['card_src'] ?? $approved_front['src'] ); ?>" srcset="<?php echo esc_attr( $approved_front['srcset'] ?? '' ); ?>" sizes="(max-width: 47.99em) 120px, 160px" alt="<?php echo esc_attr( $approved_front['alt'] ); ?>" width="<?php echo esc_attr( (string) $approved_front['width'] ); ?>" height="<?php echo esc_attr( (string) $approved_front['height'] ); ?>" loading="lazy" decoding="async">
 			<?php else : ?>
 				<span aria-hidden="true">SR</span>
 			<?php endif; ?>

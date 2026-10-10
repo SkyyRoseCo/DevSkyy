@@ -28,121 +28,89 @@
   "collections": {
     "signature": {
       "source": {
-        "file": "assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
-        "sha256": "f8bb7d2a1572f575e4f9e4e45edebf6115b4339708e64f95c3bb251813fc0fd8"
+        "file": "assets/video/collection-heroes/approved/signature/cinema-20261008/poster.webp",
+        "sha256": "9b16a49cf34cfd9768aa558b4ab310b25bc24e9e769eadaa8cc7a99887e6b492"
       },
-      "exact_pixel_treatment": "gold base-and-bridge hook, marine atmosphere, slow image breathing",
       "ai_motion": {
         "status": "founder_approved",
-        "job_id": "29d61e8a-dc7a-43f3-a40d-f7e17763624f",
+        "provider": "runway",
+        "model": "seedance-2.5",
+        "job_id": "f1ea652f-1341-4a49-ab54-00fa028509a1",
+        "founder_approval_note": "wire them in. fix the imagery in production",
         "master": {
-          "file": "assets/video/collection-heroes/approved/signature/signature-golden-gate-monuments-motion-v1.mp4",
-          "sha256": "071601173b321eb6c84c6fffd0778bbf5e168ce0cdaed1e9f083b3fd8b972a3f"
+          "file": "tasks/v2-creative-review/collection-heroes-sunburst-20261007/story-films/signature-20s.mp4",
+          "sha256": "18ff879823aef1717717eba45712bdcefa3114ca73bd532e73535daed3304d25"
         },
         "web": [
           {
-            "file": "assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.mp4",
-            "sha256": "423323ae440372f72b4b0336116e49f42dafec6b39ff58bf08c5973ebcecc8e6"
+            "file": "assets/video/collection-heroes/approved/signature/cinema-20261008/hero.mp4",
+            "sha256": "a4c8a001185e2ea2c2d4407deca05cb72a3f0f05c28f072c5a898c2e60e0c132",
+            "bytes": 1758767
           },
           {
-            "file": "assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm",
-            "sha256": "e0e57f545959a946b71ca2125d9dbc46756778510e55dc59ef65ac1e79127a02"
+            "file": "assets/video/collection-heroes/approved/signature/cinema-20261008/hero.webm",
+            "sha256": "9702e862b5cfe7cc6f8ff1c701d0e71ad51b433c70c3b69c6fbd13286d9d25ca",
+            "bytes": 1607754
           }
-        ],
-        "internal_visual_qa": "pass_pending_founder_review",
-        "virality_predictor": "blocked_daily_generation_limit",
-        "founder_approved_at": "2026-09-04T23:44:54.599Z",
-        "founder_approval_note": "Founder explicitly requested that the supplied signature-golden-gate-monuments-motion-v1.mp4 clip be wired to V2. Approval covers this existing Signature hero clip and its existing delivery derivatives only; no deployment or other candidate approval is implied."
+        ]
       }
     },
     "black-rose": {
       "source": {
-        "file": "assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
-        "sha256": "e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9"
+        "file": "assets/video/collection-heroes/approved/black-rose/cinema-20261008/poster.webp",
+        "sha256": "92ca243f7885dfefcd2171b9c6c2ab2413f5160aa170e1c1253eeba7d556888c"
       },
-      "exact_pixel_treatment": "locked monuments with localized Bay water motion, cloud drift, and existing bridge-light flicker",
       "ai_motion": {
         "status": "founder_approved",
-        "provider": "higgsfield",
-        "model": "seedance_2_5",
-        "job_id": "d62996a8-caa3-41bf-ba93-a74591c4a84b",
+        "provider": "runway",
+        "model": "seedance-2.5",
+        "job_id": "34a3c4ce-9f14-4848-b8af-435737d94dbf",
+        "founder_approval_note": "wire them in. fix the imagery in production",
         "master": {
-          "file": "assets/video/collection-heroes/approved/black-rose/black-rose-authentic-motion-v3-a1.mp4",
-          "sha256": "9a6d885cd74d29686bf14b4e9c12f83b950203f3c8f8287415571232c5813035",
-          "bytes": 6911884
+          "file": "tasks/v2-creative-review/collection-heroes-sunburst-20261007/story-films/black-rose-20s.mp4",
+          "sha256": "da815f4434c2e085baedba730605c6339d552ef65df79a647b72d64bb83f2635"
         },
         "web": [
           {
-            "file": "assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.mp4",
-            "sha256": "e292b78ea2c0aaa0be07872f30fb6290d54ba97a328147059f9c1c754af27beb",
-            "bytes": 840146
+            "file": "assets/video/collection-heroes/approved/black-rose/cinema-20261008/hero.mp4",
+            "sha256": "ac0d2a9642646f7124fd9293f20c0b57f673765eb841f18cae0d9b9f8ccf345b",
+            "bytes": 1608919
           },
           {
-            "file": "assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm",
-            "sha256": "043242396ffa2322153d14d2f1c785530cbed1536d3652bf0de4bf54c0afa415",
-            "bytes": 676790
+            "file": "assets/video/collection-heroes/approved/black-rose/cinema-20261008/hero.webm",
+            "sha256": "dbff22200027a5e4785219428a3b1eab773e9565b85f90c4881bccd344f51bd6",
+            "bytes": 1772915
           }
-        ],
-        "founder_approved_at": "2026-09-04T23:59:41.494Z",
-        "founder_approval_note": "Founder selected the displayed Black Rose authentic-motion-v3-a1 candidate and requested V2 wiring on a continuous loop with WordPress performance optimization. No deployment authorized.",
-        "delivery": {
-          "loop": true,
-          "muted": true,
-          "playsinline": true,
-          "preload": "none",
-          "frame_rate": 24,
-          "width": 1440,
-          "mp4_fast_start": true,
-          "audio_removed": true,
-          "visible_only_playback": true,
-          "reduced_motion_uses_still": true,
-          "save_data_uses_still": true
-        }
+        ]
       }
     },
     "love-hurts": {
       "source": {
-        "file": "assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp",
-        "sha256": "000ec8308a8d72daa691ca8712ef751d7d8e9b9805a4b08060ebc9a59a2bc3a3"
+        "file": "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/poster.webp",
+        "sha256": "133a7ffd80dc8239683a681f61df8d653be777969e9fb5c40b1eb488025c02e6"
       },
-      "exact_pixel_treatment": "locked cathedral with enchanted rose hover inside the existing globe and restrained falling petals",
       "ai_motion": {
         "status": "founder_approved",
-        "provider": "higgsfield",
-        "model": "seedance_2_5",
-        "job_id": "e0435fa2-5d60-4d1f-8f90-00a40a433e49",
+        "provider": "runway",
+        "model": "seedance-2.5",
+        "job_id": "cf2b6b6d-8448-4e2c-af1b-574400812072",
+        "founder_approval_note": "wire them in. fix the imagery in production",
         "master": {
-          "file": "assets/video/collection-heroes/approved/love-hurts/love-hurts-authentic-motion-v3-a1.mp4",
-          "sha256": "316084f122ae6033aff10b565e4aadb2a519d53db6fdae0061325cb1f4fad11e",
-          "bytes": 7819988
+          "file": "tasks/v2-creative-review/collection-heroes-sunburst-20261007/story-films/love-hurts-20s.mp4",
+          "sha256": "6c076725db0ce2d78d894c9ac20ccf927801e9eb865698326b571bdc21fdd9fe"
         },
         "web": [
           {
-            "file": "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.mp4",
-            "sha256": "5135700826b7bef568651ecea477af877f5a692318336d907d1c0076b14eb542",
-            "bytes": 940111
+            "file": "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/hero.mp4",
+            "sha256": "b7584e6018c79bb9eada07516d710a8243d096e0ff6a2ab18afe81e00ed4edc9",
+            "bytes": 1595813
           },
           {
-            "file": "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm",
-            "sha256": "fce1e85ddfc697f56a458d7f207994afe5914d80e31b8169c6a5cd729ddbcceb",
-            "bytes": 824162
+            "file": "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/hero.webm",
+            "sha256": "eb1d2c5a17ab1d2278b5a12c432a28645c676c197ccd8e4959da98a4fb646d65",
+            "bytes": 1855947
           }
-        ],
-        "founder_approved_at": "2026-09-05T00:03:59.981Z",
-        "founder_approval_note": "Founder replied \"yup approved\" to the displayed Love Hurts authentic-motion-v3-a1 candidate and the offer to apply the same optimized V2 continuous-loop wiring as Black Rose. No deployment authorized.",
-        "delivery": {
-          "loop": true,
-          "muted": true,
-          "playsinline": true,
-          "preload": "none",
-          "frame_rate": 24,
-          "width": 1440,
-          "mp4_fast_start": true,
-          "audio_removed": true,
-          "visible_only_playback": true,
-          "reduced_motion_uses_still": true,
-          "save_data_uses_still": true
-        }
+        ]
       }
     },
     "kids-capsule": {

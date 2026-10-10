@@ -75,32 +75,12 @@ function skyyrose2_exclude_demo_editorials( $query ) {
 }
 add_action( 'pre_get_posts', 'skyyrose2_exclude_demo_editorials', 21 );
 
-/** Resolve the founder-approved styling view a PDP may reuse, or null; renders nothing. */
+/** Resolve any collection's exact independently eligible PDP lead, or null. */
 function skyyrose2_approved_pdp_styling_view_front( $product ) {
-	if ( ! $product instanceof WC_Product || ! function_exists( 'skyyrose2_approved_card_front' ) ) {
-		return null;
-	}
-	$approved = array(
-		'br-001' => array( 'src' => 'assets/approved-card-fronts/br-001-onmodel.webp', 'sha256' => 'fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8' ),
-		'br-003' => array( 'src' => 'assets/card-scenes/br-003-onmodel.webp', 'sha256' => '43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9' ),
-		'br-004' => array( 'src' => 'assets/approved-card-fronts/br-004-onmodel.webp', 'sha256' => '8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8' ),
-		'br-007' => array( 'src' => 'assets/approved-card-fronts/br-007-onmodel.webp', 'sha256' => 'b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d' ),
-		'br-011' => array( 'src' => 'assets/card-scenes/br-011-onmodel.webp', 'sha256' => 'aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290' ),
-	);
-	$sku = strtolower( $product->get_sku() );
-	if ( ! isset( $approved[ $sku ] ) ) {
-		return null;
-	}
-	$entry = $approved[ $sku ];
-	$root = realpath( SKYYROSE2_DIR . '/assets' );
-	$file = realpath( SKYYROSE2_DIR . '/' . $entry['src'] );
-	if ( ! $root || ! $file || 0 !== strpos( $file, $root . DIRECTORY_SEPARATOR ) || ! is_file( $file ) || ! is_readable( $file ) || ! hash_equals( $entry['sha256'], hash_file( 'sha256', $file ) ) ) {
-		return null;
-	}
-	$front = skyyrose2_approved_card_front( $product );
-	if ( ! $front || $front['src'] !== SKYYROSE2_URI . '/' . $entry['src'] ) {
-		return null;
-	}
+	if ( ! $product instanceof WC_Product || ! function_exists( 'skyyrose2_approved_pdp_front' ) ) { return null; }
+	$front = skyyrose2_approved_pdp_front( $product );
+	if ( ! $front ) { return null; }
+	$sku = $front['sku'];
 	$src = $front['card_src'] ?? $front['src'];
 	$width = (int) ( $front['card_width'] ?? $front['width'] );
 	$height = (int) ( $front['card_height'] ?? $front['height'] );
@@ -108,7 +88,7 @@ function skyyrose2_approved_pdp_styling_view_front( $product ) {
 	return compact( 'sku', 'front', 'src', 'width', 'height', 'sizes' );
 }
 
-/** Founder-approved card reuse, separately labeled; never authorizes native media. */
+/** Render an independently reviewed PDP role without authorizing other imagery. */
 function skyyrose2_render_approved_pdp_styling_view( $product ) {
 	$view = skyyrose2_approved_pdp_styling_view_front( $product );
 	if ( ! $view ) {
@@ -120,7 +100,7 @@ function skyyrose2_render_approved_pdp_styling_view( $product ) {
 
 /** Render an approved original when no integrity-valid derivative is available. */
 function skyyrose2_render_approved_pdp_styling_front( $sku, $front, $src = '', $width = 0, $height = 0, $sizes = '' ) {
-	if ( ! is_array( $front ) || 'FOUNDER_APPROVED_V2_CARD' !== ( $front['scene_status'] ?? '' ) || empty( $front['src'] ) || empty( $front['alt'] ) ) {
+	if ( ! is_array( $front ) || 'INDEPENDENT_VISUAL_PASS' !== ( $front['status'] ?? '' ) || ! in_array( 'pdp_on_model_front', $front['roles'] ?? array(), true ) || empty( $front['src'] ) || empty( $front['alt'] ) ) {
 		return false;
 	}
 	$src = $src ?: $front['src'];

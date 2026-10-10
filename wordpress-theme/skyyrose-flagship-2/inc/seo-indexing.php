@@ -203,7 +203,7 @@ function skyyrose2_seo_resolved_context() {
 			$context['title']       = $product->get_name() . ' | ' . $site_name;
 			$context['description'] = $product_description ? $product_description : $context['description'];
 			$media                 = function_exists( 'skyyrose2_product_commerce_media' ) ? skyyrose2_product_commerce_media( $product ) : array();
-			$context['image']       = ! empty( $media['ids'] ) ? (string) wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '';
+			$context['image']       = ! empty( $media['front']['src'] ) ? (string) $media['front']['src'] : ( ! empty( $media['ids'] ) ? (string) wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '' );
 			$context['type']        = 'product';
 		}
 	} elseif ( is_single() ) {
@@ -232,7 +232,9 @@ function skyyrose2_seo_resolved_context() {
 		$context['description'] = $archive_description ? $archive_description : $context['description'];
 	}
 
-	return apply_filters( 'skyyrose2_seo_context', $context );
+	$context = apply_filters( 'skyyrose2_seo_context', $context );
+	$context['image'] = function_exists( 'skyyrose2_media_url' ) ? skyyrose2_media_url( $context['image'] ?? '' ) : '';
+	return $context;
 }
 
 /**
@@ -465,7 +467,7 @@ function skyyrose2_seo_schema_graph() {
 			),
 			'publisher'        => array( '@id' => $organization_id ),
 		);
-		$image   = get_the_post_thumbnail_url( get_queried_object_id(), 'full' );
+		$image   = function_exists( 'skyyrose2_media_url' ) ? skyyrose2_media_url( get_the_post_thumbnail_url( get_queried_object_id(), 'full' ) ?: '' ) : '';
 		if ( $image ) {
 			$article['image'] = $image;
 		}

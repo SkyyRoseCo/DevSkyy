@@ -35,8 +35,9 @@ $GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_capture_media_context( $
 try {
 	$commerce_media     = $GLOBALS['skyyrose2_pdp_media_context']['media'];
 	$verified_image_ids = $commerce_media['ids'];
-	$gallery_count      = count( $verified_image_ids );
-	$has_verified_media = ! empty( $verified_image_ids );
+	$pdp_front          = skyyrose2_approved_pdp_front( $hero_product );
+	$gallery_count      = count( $verified_image_ids ) ?: ( $pdp_front ? 1 : 0 );
+	$has_verified_media = ! empty( $verified_image_ids ) || ! empty( $pdp_front );
 	// The region's accessible name counts what it renders: verified views, or the one approved styling view.
 	$styling_view       = $has_verified_media ? null : skyyrose2_approved_pdp_styling_view_front( $hero_product );
 	$published_views    = $gallery_count + ( $styling_view ? 1 : 0 );
@@ -85,9 +86,7 @@ try {
 		?>
 		<?php if ( ! $has_verified_media ) : ?>
 			<?php if ( ! $styling_view || ! skyyrose2_render_approved_pdp_styling_front( $styling_view['sku'], $styling_view['front'], $styling_view['src'], $styling_view['width'], $styling_view['height'], $styling_view['sizes'] ) ) : ?>
-<div class="sr2-pdp-product__media-missing" role="status">
-				<?php esc_html_e( 'Product imagery is currently unavailable.', 'skyyrose-flagship-2' ); ?>
-			</div>
+<?php echo skyyrose2_pdp_v2_gallery_markup( array() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- helper emits escaped native gallery or unavailable status. ?>
 <?php endif; ?>
 		<?php endif; ?>
 	</div>

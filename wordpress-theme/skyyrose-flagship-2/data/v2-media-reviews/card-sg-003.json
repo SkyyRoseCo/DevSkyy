@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-all-products-card-sg-003",
+  "asset_id": "card-sg-003",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "8f8b5a016be28ceba3268091e603a6cdd0d3fc78e77085b40be61f89b9173b0a",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "sg-003"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/all-products/card-sg-003-visual-review.json",
+    "sha256": "af84ef33223d7c7c32a5c585406140b53ecad6fff07d62ef6f73209944d7c78c"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-003-card-desktop.png",
+      "sha256": "2b1ff65c738a0b614851a8af55efc6ff5a95a31e58d1e09b67720dc305addc68"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-003-card-mobile.png",
+      "sha256": "14a1929fd3c85608d96587d5a3a7c9868ace926346d16fb5fb8f0cd68bd1f2bb"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-003-pdp-desktop.png",
+      "sha256": "e7964859814a3b2804695d22854c3835cd857d96b6e618dff86346e053768572"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-003-pdp-mobile.png",
+      "sha256": "895780e42e596b2e1a5eb6676491129851dbc53afc92a7866bec2ccec12db52d"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native asset and actual offline card/current product-page.css PDP media-only contexts at1440 desktop/390 mobile. Full commerce, theme state, motion and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: Exact Golden Gate night front print, purple waistband and lower wearer-left embroidered rose, white cords, complete shorts hems and pockets preserved. Shorts are fully readable in all four role captures.",
+    "pdp_on_model_front": "PASS: all master pixels contained in current gallery selectors at desktop/mobile; exact native identity verdict applies."
+  }
+}

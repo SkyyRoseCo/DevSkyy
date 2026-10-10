@@ -196,6 +196,18 @@
   max-width: 35ch;
   color: var(--sr2-ink);
 }
+.sr2-reserve-arrival.sr2-reserve-arrival--text {
+  min-height: 0;
+  padding: calc(var(--sr2-header) + var(--sr2-space-12)) var(--sr2-page-pad) var(--sr2-space-12);
+}
+.sr2-reserve-arrival.sr2-reserve-arrival--text .sr2-arrival__copy {
+  width: 100%;
+  max-width: 54rem;
+  padding: 0;
+}
+.sr2-reserve-arrival--text .sr2-lede {
+  max-width: 48ch;
+}
 .sr2-reserve-arrival__index {
   position: absolute;
   right: var(--sr2-page-pad);
@@ -304,7 +316,17 @@
   font-size: 1.2rem;
 }
 .sr2-reserve-edit {
+  --sr2-reserve-accent: var(--sr2-rose);
   scroll-margin-top: calc(var(--sr2-header) + var(--sr2-space-5));
+}
+.sr2-reserve-edit[data-collection="signature"] {
+  --sr2-reserve-accent: var(--sr2-gold);
+}
+.sr2-reserve-edit[data-collection="black-rose"] {
+  --sr2-reserve-accent: var(--sr2-silver);
+}
+.sr2-reserve-edit[data-collection="love-hurts"] {
+  --sr2-reserve-accent: var(--sr2-crimson);
 }
 .sr2-reserve-edit + .sr2-reserve-edit {
   margin-top: var(--sr2-space-24);
@@ -317,10 +339,11 @@
   gap: var(--sr2-space-5);
   margin-bottom: var(--sr2-space-8);
   padding-bottom: var(--sr2-space-5);
-  border-bottom: 1px solid var(--sr2-line);
+  border-bottom: 1px solid var(--sr2-reserve-accent);
 }
 .sr2-reserve-edit__head .sr2-eyebrow {
   margin: 0;
+  color: var(--sr2-reserve-accent);
 }
 .sr2-reserve-edit__head h3 {
   font-size: clamp(2.25rem, 5vw, 5rem);
@@ -334,6 +357,34 @@
 }
 .sr2-reserve-edit .sr2-c-editorial-card__media {
   background: var(--sr2-card);
+}
+.sr2-reserve-edit__head .sr2-lede {
+  max-width: 48ch;
+  margin-top: var(--sr2-space-4);
+}
+.sr2-reserve-scene {
+  margin: 0 0 var(--sr2-space-12);
+}
+.sr2-reserve-scene > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.sr2-reserve-scene__pieces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sr2-space-3) var(--sr2-space-8);
+  padding-block: var(--sr2-space-4);
+  border-bottom: 1px solid var(--sr2-line);
+}
+.sr2-reserve-scene__pieces a {
+  min-height: var(--sr2-target-size);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.sr2-reserve-edit.sr2-reserve-edit--single .sr2-garment-grid {
+  max-width: 32rem;
+  grid-template-columns: minmax(0, 1fr);
 }
 .sr2-reserve-worlds .sr2-page-grid__main {
   display: grid;

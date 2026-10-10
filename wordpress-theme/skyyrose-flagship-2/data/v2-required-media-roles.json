@@ -1,0 +1,314 @@
+{
+  "schema": "skyyrose.v2.required-media-roles.v2",
+  "scope": "Active V2 delivery census for 33 product card fronts, 33 product-page fronts, four merchandise-led collection heroes, four merchandise-led collection story/lookbook images, and three collection-bound merchandise scenes reused by their matching pre-order edits. Every collection visual must visibly feature exact sold merchandise; atmosphere-only artwork is not eligible. All current product-card callers disable the optional legacy archive_frame layer. Background-only candidates remain governed components until integrated into a V2 card. There is no global preorder_arrival scene. Authenticated hosted-route audit remains separate.",
+  "slots": [
+    {
+      "role": "card_front",
+      "sku": "br-001"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-002"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-003"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-004"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-005"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-006"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-007"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-008"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-009"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-010"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-011"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-012"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-014"
+    },
+    {
+      "role": "card_front",
+      "sku": "br-015"
+    },
+    {
+      "role": "card_front",
+      "sku": "kids-001"
+    },
+    {
+      "role": "card_front",
+      "sku": "kids-002"
+    },
+    {
+      "role": "card_front",
+      "sku": "lh-002"
+    },
+    {
+      "role": "card_front",
+      "sku": "lh-003"
+    },
+    {
+      "role": "card_front",
+      "sku": "lh-004"
+    },
+    {
+      "role": "card_front",
+      "sku": "lh-005"
+    },
+    {
+      "role": "card_front",
+      "sku": "lh-006"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-001"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-002"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-003"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-005"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-006"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-007"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-009"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-011"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-012"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-013"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-014"
+    },
+    {
+      "role": "card_front",
+      "sku": "sg-015"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-001"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-002"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-003"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-004"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-005"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-006"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-007"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-008"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-009"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-010"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-011"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-012"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-014"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "br-015"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "kids-001"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "kids-002"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "lh-002"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "lh-003"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "lh-004"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "lh-005"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "lh-006"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-001"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-002"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-003"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-005"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-006"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-007"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-009"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-011"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-012"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-013"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-014"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "sg-015"
+    },
+    {
+      "role": "collection_hero",
+      "collection": "signature"
+    },
+    {
+      "role": "collection_hero",
+      "collection": "black-rose"
+    },
+    {
+      "role": "collection_hero",
+      "collection": "love-hurts"
+    },
+    {
+      "role": "collection_hero",
+      "collection": "kids-capsule"
+    },
+    {
+      "role": "collection_story",
+      "collection": "signature"
+    },
+    {
+      "role": "collection_story",
+      "collection": "black-rose"
+    },
+    {
+      "role": "collection_story",
+      "collection": "love-hurts"
+    },
+    {
+      "role": "collection_story",
+      "collection": "kids-capsule"
+    },
+    {
+      "collection": "signature",
+      "role": "merchandise_scene"
+    },
+    {
+      "collection": "black-rose",
+      "role": "merchandise_scene"
+    },
+    {
+      "collection": "love-hurts",
+      "role": "merchandise_scene"
+    }
+  ]
+}

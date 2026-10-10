@@ -76,3 +76,27 @@ body .sr2-c-editorial-card[data-card-frame="archive"] .sr2-c-editorial-card__col
 @media (forced-colors: active) {
 	.sr2-c-editorial-card[data-card-frame="archive"] .sr2-c-editorial-card__actions :is(a, button) { border-bottom-color: CanvasText; }
 }
+
+/* A reviewed region preserves the sold garment pixels while its surroundings
+ * recede. The overlay follows the actual contain-fit image, never the card. */
+.sr2-c-editorial-card[data-garment-highlight="reviewed"] .sr2-c-editorial-card__media { position: relative; }
+.sr2-c-editorial-card[data-garment-highlight="reviewed"] .sr2-c-editorial-card__media .sr2-c-editorial-card__product-image { object-fit: contain; object-position: center; transform: none; }
+.sr2-c-editorial-card__garment-overlay { position: absolute; z-index: 2; max-width: none; pointer-events: none; opacity: 0; transition: opacity 180ms ease; }
+.sr2-c-editorial-card__garment-overlay[hidden], .sr2-c-editorial-card__highlight-toggle[hidden] { display: none; }
+.sr2-c-editorial-card__garment-veil { fill: rgb(0 0 0 / .56); }
+.sr2-c-editorial-card__garment-contour { stroke: var(--sr2-card-accent, #c8a97e); stroke-width: 1; stroke-opacity: .72; }
+.sr2-c-editorial-card__highlight-toggle { justify-self: start; min-height: 44px; padding: .5rem 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: var(--sr2-ink); cursor: pointer; font: inherit; }
+.sr2-c-editorial-card__highlight-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.sr2-c-editorial-card__highlight-identity { display: block; visibility: hidden; margin: 0; color: var(--sr2-ink); }
+.sr2-c-editorial-card[data-garment-ready="true"]:is([data-garment-active="true"], :focus-within) .sr2-c-editorial-card__garment-overlay { opacity: 1; }
+.sr2-c-editorial-card[data-garment-ready="true"]:is([data-garment-active="true"], :focus-within) .sr2-c-editorial-card__highlight-identity { visibility: visible; }
+@media (hover: hover) and (pointer: fine) {
+	.sr2-c-editorial-card[data-garment-ready="true"]:hover .sr2-c-editorial-card__garment-overlay { opacity: 1; }
+	.sr2-c-editorial-card[data-garment-ready="true"]:hover .sr2-c-editorial-card__highlight-identity { visibility: visible; }
+}
+@media (prefers-reduced-motion: reduce) { .sr2-c-editorial-card__garment-overlay { transition: none; } }
+@media (forced-colors: active) {
+	.sr2-c-editorial-card__garment-overlay { display: none; }
+	.sr2-c-editorial-card__highlight-toggle { border: 1px solid ButtonText; color: ButtonText; }
+	.sr2-c-editorial-card__highlight-identity { color: CanvasText; }
+}

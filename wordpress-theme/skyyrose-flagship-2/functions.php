@@ -16,6 +16,8 @@ function skyyrose2_mascot_enabled() {
 	return false;
 }
 
+require_once SKYYROSE2_DIR . '/inc/v2-media-eligibility.php';
+
 /* Fresh-install, demo-import, and editor integration. */
 require_once SKYYROSE2_DIR . '/inc/marketplace.php';
 require_once SKYYROSE2_DIR . '/inc/performance.php';
@@ -23,7 +25,9 @@ require_once SKYYROSE2_DIR . '/inc/frame-delivery.php';
 require_once SKYYROSE2_DIR . '/inc/archive-style-bundle.php';
 require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
 require_once SKYYROSE2_DIR . '/inc/security.php';
+require_once SKYYROSE2_DIR . '/inc/express-checkout.php';
 require_once SKYYROSE2_DIR . '/inc/approved-card-fronts.php';
+require_once SKYYROSE2_DIR . '/inc/card-garment-highlight.php';
 require_once SKYYROSE2_DIR . '/inc/pdp-media-delivery.php';
 require_once SKYYROSE2_DIR . '/inc/hero-commerce-scenes.php';
 require_once SKYYROSE2_DIR . '/inc/global-shell.php';
@@ -43,7 +47,7 @@ require_once SKYYROSE2_DIR . '/inc/product-glb.php';
  * @return string
  */
 function skyyrose2_sot_asset_uri( $path ) {
-	return SKYYROSE2_URI . '/assets/sot/' . ltrim( $path, '/' );
+	return skyyrose2_media_uri( 'assets/sot/' . ltrim( $path, '/' ) );
 }
 
 /**
@@ -53,7 +57,7 @@ function skyyrose2_sot_asset_uri( $path ) {
  * @return string
  */
 function skyyrose2_scroll_world_asset_uri( $path ) {
-	return SKYYROSE2_URI . '/assets/scroll-world/' . ltrim( $path, '/' );
+	return skyyrose2_media_uri( 'assets/scroll-world/' . ltrim( $path, '/' ) );
 }
 
 /**
@@ -209,7 +213,7 @@ function skyyrose2_approved_scroll_world_scene( $scene, $collection ) {
 		'desktop' => $scene['scene_motion']['desktop'] ?? '',
 		'mobile'  => $scene['scene_motion']['mobile'] ?? '',
 	) as $role => $path ) {
-		if ( ! $path || ( 'assets/scroll-world/' . $path ) !== ( $assets[ $role ] ?? '' ) ) {
+		if ( ! $path || ! skyyrose2_media_path_allowed( 'assets/scroll-world/' . $path, 'scene_' . $role ) || ( 'assets/scroll-world/' . $path ) !== ( $assets[ $role ] ?? '' ) ) {
 			return false; }
 	}
 	return array_values( $scene['product_bindings'] ?? array() ) === array_values( $record['cta']['product_bindings'] ?? array() );
@@ -663,7 +667,7 @@ function skyyrose2_seo_context() {
 			$context['title']       = $product->get_name() . ' | ' . get_bloginfo( 'name' );
 			$context['description'] = wp_strip_all_tags( $product->get_short_description() ?: $product->get_name() . ' · ' . __( 'SkyyRose collection piece.', 'skyyrose-flagship-2' ) );
 			$media                  = skyyrose2_product_commerce_media( $product );
-			$context['image']       = ! empty( $media['ids'] ) ? wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '';
+			$context['image']       = ! empty( $media['front']['src'] ) ? $media['front']['src'] : ( ! empty( $media['ids'] ) ? wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '' );
 			$context['type']        = 'product';
 		}
 	} elseif ( is_single() ) {
@@ -689,6 +693,7 @@ function skyyrose2_seo_context() {
 		$context['description'] = __( 'Search SkyyRose products, collections, and journal stories.', 'skyyrose-flagship-2' );
 	}
 
+	$context['image'] = function_exists( 'skyyrose2_media_url' ) ? skyyrose2_media_url( $context['image'] ) : '';
 	return $context;
 }
 
@@ -735,7 +740,7 @@ function skyyrose2_schema_head() {
 			'datePublished'    => get_the_date( DATE_W3C ),
 			'dateModified'     => get_the_modified_date( DATE_W3C ),
 			'mainEntityOfPage' => get_permalink(),
-			'image'            => get_the_post_thumbnail_url( get_queried_object_id(), 'full' ) ?: null,
+			'image'            => function_exists( 'skyyrose2_media_url' ) ? ( skyyrose2_media_url( get_the_post_thumbnail_url( get_queried_object_id(), 'full' ) ?: '' ) ?: null ) : null,
 			'author'           => array(
 				'@type' => 'Person',
 				'name'  => get_the_author(),
@@ -1359,6 +1364,17 @@ function skyyrose2_registry_reconciliation_notice() {
 }
 add_action( 'admin_notices', 'skyyrose2_registry_reconciliation_notice' );
 
+/** Keep native archive pagination free of pre-order-only identities. */
+function skyyrose2_standard_archive_query( $query ) {
+	if ( ! is_object( $query ) || ! method_exists( $query, 'set' ) || ! method_exists( $query, 'get' ) || ! function_exists( 'wc_get_products' ) ) { return; }
+	$excluded = (array) $query->get( 'post__not_in', array() );
+	foreach ( wc_get_products( array( 'limit' => -1, 'status' => 'publish' ) ) as $item ) {
+		if ( skyyrose2_is_transaction_preorder_product( $item ) ) { $excluded[] = $item->get_id(); }
+	}
+	$query->set( 'post__not_in', array_values( array_unique( array_map( 'absint', $excluded ) ) ) );
+}
+add_action( 'woocommerce_product_query', 'skyyrose2_standard_archive_query' );
+
 /** @param WC_Product $product @return bool */
 function skyyrose2_is_preorder_product( $product ) {
 	$presentation = skyyrose2_product_presentation( $product );
@@ -1406,7 +1422,7 @@ add_filter( 'woocommerce_available_variation', 'skyyrose2_preorder_variation_dis
 /**
  * Query published products for reusable marketplace sections.
  *
- * @param int    $limit Product limit.
+ * @param int    $limit Product limit; -1 returns the complete eligible assortment.
  * @param string $collection Product category slug.
  * @param bool   $featured Featured-only query.
  * @return array<int,WC_Product>
@@ -1416,12 +1432,7 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 		return array();
 	}
 	$args = array(
-		/*
-		 * A narrow query can be filled by Jersey Series products before the
-		 * presentation guard excludes them from the core Black Rose rail.
-		 * Resolve against the full published collection, then apply the display
-		 * limit after registry/presentation isolation has succeeded.
-		 */
+		// Filter the complete native assortment before applying a display limit.
 		'limit'   => -1,
 		'status'  => 'publish',
 		'orderby' => 'date',
@@ -1440,17 +1451,18 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 		if ( empty( $presentation ) ) {
 			continue;
 		}
+		if ( is_object( $product ) && method_exists( $product, 'is_visible' ) && ! $product->is_visible() ) { continue; }
+		$is_preorder = skyyrose2_is_transaction_preorder_product( $product );
+		if ( 'pre-order' !== $collection && $is_preorder ) { continue; }
+		if ( ! $is_preorder && is_object( $product ) && method_exists( $product, 'is_in_stock' ) && ! $product->is_in_stock() ) { continue; }
 		if ( $collection && 'pre-order' !== $collection && sanitize_title( $presentation['collection'] ?? '' ) !== sanitize_title( $collection ) ) {
 			continue;
 		}
-		if ( 'pre-order' === $collection && ! skyyrose2_is_transaction_preorder_product( $product ) ) {
-			continue;
-		}
-		if ( 'black-rose' === $collection && 'jersey-series' === ( $presentation['presentation'] ?? '' ) ) {
+		if ( 'pre-order' === $collection && ! $is_preorder ) {
 			continue;
 		}
 		$filtered[] = $product;
-		if ( count( $filtered ) >= absint( $limit ) ) {
+		if ( -1 !== (int) $limit && count( $filtered ) >= absint( $limit ) ) {
 			break;
 		}
 	}
@@ -1462,7 +1474,7 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
  *
  * A chapter remains scenic, but it must also carry a real item from its own
  * collection. The product image, name, price, and availability stay WooCommerce
- * authoritative; Jersey Series remains isolated from the core Black Rose rail.
+ * authoritative; pre-order products have their listing on the pre-order page.
  *
  * @param string $collection Collection slug.
  * @param int    $chapter Chapter index.
@@ -1502,6 +1514,7 @@ function skyyrose2_get_products_by_skus( $skus, $required_collection ) {
 		if ( ! $product || ! $product->is_visible() ) {
 			continue;
 		}
+		if ( skyyrose2_is_transaction_preorder_product( $product ) || ! $product->is_in_stock() ) { continue; }
 		if ( function_exists( 'get_post_status' ) && 'publish' !== get_post_status( $product_id ) ) {
 			continue;
 		}
@@ -1739,52 +1752,40 @@ function skyyrose2_product_verified_card_media( $product ) {
 	return array_slice( $ordered, 0, 3 );
 }
 
-/** Resolve PDP commerce attachments without promoting opening-media states. */
-function skyyrose2_product_commerce_media( $product ) {
-	$empty = array(
-		'state' => 'missing',
-		'ids'   => array(),
-	);
-	if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
-		return $empty;
-	}
-	$manifest = skyyrose2_product_card_media_manifest();
-	if ( empty( $manifest['products'] ) ) {
-		return $empty;
-	}
-	$sku    = sanitize_key( $product->get_sku() );
-	$record = $manifest['products'][ $sku ] ?? array();
-	// A Woo assignment is not permission to reuse explicitly rejected imagery.
-	if ( 'REJECTED_AUTHENTICITY' === ( $record['status'] ?? '' ) ) {
-		return array(
-			'state' => 'rejected',
-			'ids'   => array(),
-		);
-	}
-	$editorial     = skyyrose2_product_verified_card_media( $product );
-	$valid         = static function ( $id ) {
-		$metadata = $id ? wp_get_attachment_metadata( $id ) : array();
-		return $id && wp_attachment_is_image( $id ) && wp_get_attachment_url( $id ) && ! empty( $metadata['width'] ) && ! empty( $metadata['height'] );
+/** Resolve attachment IDs only with the same current V2 SKU and view-role binding. */
+function skyyrose2_product_commerce_media( $product, $required_role = 'pdp_on_model_front' ) {
+	$empty = array( 'state' => 'missing', 'ids' => array(), 'front' => array() );
+	$product = skyyrose2_product_media_identity( $product );
+	if ( ! $product || ! in_array( $required_role, array( 'card_front', 'pdp_on_model_front' ), true ) ) { return $empty; }
+	$sku = strtolower( trim( (string) $product->get_sku( 'edit' ) ) );
+	$presentation = skyyrose2_product_presentation( $product );
+	$collection = $presentation['collection'] ?? '';
+	$inventory = skyyrose2_media_inventory();
+	$front = skyyrose2_product_media_front( $product, $required_role );
+	$roles = 'card_front' === $required_role ? array( 'card_front' ) : array( 'pdp_on_model_front', 'pdp_on_model_back', 'pdp_detail' );
+	$valid = static function ( $id ) use ( $sku, $collection, $inventory, $roles ) {
+		$url = $id ? wp_get_attachment_url( $id ) : '';
+		$prefix = rtrim( SKYYROSE2_URI, '/' ) . '/';
+		if ( ! is_string( $url ) || 0 !== strpos( $url, $prefix ) ) { return false; }
+		$relative = rawurldecode( explode( '?', explode( '#', substr( $url, strlen( $prefix ) ) )[0] )[0] );
+		$record = $inventory['assets'][ $relative ] ?? array();
+		if ( array( $sku ) !== ( $record['skus'] ?? null ) || array( $collection ) !== ( $record['collections'] ?? null ) ) { return false; }
+		foreach ( $roles as $role ) {
+			if ( skyyrose2_media_path_allowed( $relative, $role, $sku ) ) { return true; }
+		}
+		return false;
 	};
-	$editorial_ids = array_values( array_unique( array_filter( array_map( 'absint', array_column( $editorial, 'id' ) ), $valid ) ) );
-	if ( $editorial_ids ) {
-		return array(
-			'state' => 'editorial',
-			'ids'   => $editorial_ids,
-		);
-	}
 	$ids = array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() );
 	$ids = array_values( array_unique( array_filter( array_map( 'absint', $ids ), $valid ) ) );
-	return array(
-		'state' => $ids ? 'commerce' : 'missing',
-		'ids'   => $ids,
-	);
+	return array( 'state' => $front ? 'v2-original' : ( $ids ? 'commerce' : 'missing' ), 'ids' => $ids, 'front' => $front );
 }
 
 /** Keep Product schema imagery aligned with the PDP's permitted primary. */
 function skyyrose2_product_commerce_schema_image( $markup, $product ) {
 	$media = skyyrose2_product_commerce_media( $product );
-	if ( $media['ids'] ) {
+	if ( ! empty( $media['front']['src'] ) ) {
+		$markup['image'] = $media['front']['src'];
+	} elseif ( $media['ids'] ) {
 		$markup['image'] = wp_get_attachment_url( $media['ids'][0] );
 	} else {
 		unset( $markup['image'] );
@@ -1823,6 +1824,7 @@ function skyyrose2_render_product_loop_card( $product, $index = 0 ) {
 		array(
 			'product' => $product,
 			'index'   => max( 0, (int) $index ),
+			'frame'   => false,
 		)
 	);
 }

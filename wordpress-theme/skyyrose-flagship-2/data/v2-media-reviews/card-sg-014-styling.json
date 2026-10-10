@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-targeted-lowerbody-styling-card-sg-014",
+  "asset_id": "card-sg-014",
+  "producer": "/root",
+  "reviewer": "/root/kids_lowerbody_native_qa",
+  "verdict": "PASS",
+  "asset_sha256": "07c3d1bb60ad24f1b8987859e21e9658d80126f2486820d79f83cc7ae11114d2",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "sg-014"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-lowerbody-styling-repairs/card-sg-014-visual-review.json",
+    "sha256": "244ef4248aa9392b30214000259f23c232228619336b8858ec14213f67938896"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-014-styling-card-desktop.png",
+      "sha256": "56526116b0b2abefc4923f1ee1fc1ada6d6afa0480eb19bb5f208bfa7f7976b0"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-014-styling-card-mobile.png",
+      "sha256": "2d54e4e0025cc980a09e1672c179345644d69bd5583a016da67204097139879d"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-014-styling-pdp-desktop.png",
+      "sha256": "89bf887f28f70e95eedacb697300cb7c964a8df00cdf3fe410c60425eb69e111"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-014-styling-pdp-mobile.png",
+      "sha256": "6d06c9768f47e7d6c40bc7c62a011b8648cfd63bdc763c62bfab1c31ecdd177b"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native photograph and actual offline card/current product-page.css PDP media-only contexts at 1440 desktop/390 mobile. Full commerce, theme interaction, motion, 768 layout and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: The complete sold mint sweatpants are readable from elastic waistband/white cords through both tapered legs and BOTH ankle cuff edges. The small wearer-left lavender THREE-ROSE CLOUD CLUSTER matches the supplied current source silhouette, placement and lavender/grey-green/cloud treatment; this is not a FIRST ROSE mark. Side-seam pocket construction remains visible with hands outside the openings. The plain white supporting top and small unmarked black boots are subordinate. Legs continue into real feet with credible low-sun contact shadows and clear margin below; the neighborhood greenway setting shares the same perspective and light.",
+    "pdp_on_model_front": "PASS: The complete sold mint sweatpants are readable from elastic waistband/white cords through both tapered legs and BOTH ankle cuff edges. The small wearer-left lavender THREE-ROSE CLOUD CLUSTER matches the supplied current source silhouette, placement and lavender/grey-green/cloud treatment; this is not a FIRST ROSE mark. Side-seam pocket construction remains visible with hands outside the openings. The plain white supporting top and small unmarked black boots are subordinate. Legs continue into real feet with credible low-sun contact shadows and clear margin below; the neighborhood greenway setting shares the same perspective and light. The full master is contained without an additional crop in both captured media-only contexts."
+  }
+}

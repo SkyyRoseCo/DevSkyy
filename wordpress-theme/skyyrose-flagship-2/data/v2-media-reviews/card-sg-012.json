@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-all-products-card-sg-012",
+  "asset_id": "card-sg-012",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "0f94046c37a1eb7c075b345efa6529e25133795b7f68298b995699f24c36740d",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "sg-012"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/all-products/card-sg-012-visual-review.json",
+    "sha256": "eee63a80a500f1b9237a8eca12fb2e8f5a13cd5c6cb22c9c1b35b6079b937550"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-012-card-desktop.png",
+      "sha256": "d56016249cbeaa086c232a50c5bb9194d45b11abc7a8408f2a1eeb110b05b441"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-012-card-mobile.png",
+      "sha256": "5bf4978eed6158c66f3f662525683f2a5a7a9aee481e51f801a6dadcb8abc993"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-012-pdp-desktop.png",
+      "sha256": "8f6f371831abf835b5a086399c0254ad8074900804ca3114b3c4b632c3d90ef0"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-012-pdp-mobile.png",
+      "sha256": "4c2b0a15d9149ef9edf01e9c304b52456994f3edb9be4d19536eb4af1cdf5da6"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native asset plus actual offline card and current product-page.css media-layout contexts at1440px desktop/390px mobile. Bounded photographic/media role review; full theme, interactions, commerce and public release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: Current blank orchid cotton tee retains the complete crew neckline, both sleeves and full hem. No exterior sleeve badge or competing styling mark; hand rests in the trouser pocket below the sold garment.",
+    "pdp_on_model_front": "PASS: complete master is contained in the inspected current gallery selectors; full sold garment and observable artwork remain visible on desktop/mobile."
+  }
+}

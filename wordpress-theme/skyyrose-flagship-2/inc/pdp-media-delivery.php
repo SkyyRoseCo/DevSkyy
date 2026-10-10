@@ -61,48 +61,16 @@ function skyyrose2_pdp_gallery_sizes( $width, $height ) {
 	return sprintf( '(max-width: 47.99rem) clamp(%dpx, %.4fsvh, %dpx), clamp(%dpx, %.4fsvh, %dpx)', (int) ceil( 320 * $ratio ), 52 * $ratio, (int) ceil( 480 * $ratio ), (int) ceil( 448 * $ratio ), 64 * $ratio, (int) ceil( 704 * $ratio ) );
 }
 
-/** Resolve an approved front only for that SKU's exact ghost primary. */
+/** Compatibility caller: only the current exact PDP lead can replace a primary. */
 function skyyrose2_pdp_approved_ghost_front( $attachment_id, $product ) {
-	if ( ! is_a( $product, 'WC_Product' ) || ! $attachment_id || ! function_exists( 'skyyrose2_approved_card_front' ) ) {
-		return array();
-	}
-	$sku = sanitize_key( (string) $product->get_sku() );
-	if ( ! $sku || (int) $attachment_id !== (int) $product->get_image_id() ) {
-		return array();
-	}
-	$attachment_url  = (string) wp_get_attachment_url( $attachment_id );
-	$attachment_path = (string) parse_url( $attachment_url, PHP_URL_PATH );
-	if ( ! $attachment_path || basename( $attachment_path ) !== $sku . '-ghost-front.webp' ) {
-		return array();
-	}
-	$front = skyyrose2_approved_card_front( $product );
-	if ( empty( $front['src'] ) || empty( $front['path'] ) || empty( $front['sha256'] ) || 'FOUNDER_APPROVED_V2_CARD' !== ( $front['scene_status'] ?? '' ) ) {
-		return array();
-	}
-	$root        = realpath( SKYYROSE2_DIR . '/assets' );
-	$file        = realpath( SKYYROSE2_DIR . '/' . $front['path'] );
-	$actual_hash = $file && is_file( $file ) && is_readable( $file ) ? hash_file( 'sha256', $file ) : false;
-	if ( ! $root || ! $file || 0 !== strpos( $file, $root . DIRECTORY_SEPARATOR ) || ! is_string( $actual_hash ) || ! hash_equals( $front['sha256'], $actual_hash ) ) {
-		return array();
-	}
-	$src         = $front['card_src'] ?? $front['src'];
-	$width       = (int) ( $front['card_width'] ?? $front['width'] ?? 0 );
-	$height      = (int) ( $front['card_height'] ?? $front['height'] ?? 0 );
-	$full_width  = (int) ( $front['width'] ?? 0 );
-	$full_height = (int) ( $front['height'] ?? 0 );
-	$sizes       = skyyrose2_pdp_gallery_sizes( $full_width, $full_height );
-	if ( ! $width || ! $height || ! $full_width || ! $full_height || ! $sizes ) {
-		return array();
-	}
-	return array_merge(
-		$front,
-		array(
-			'pdp_src'    => $src,
-			'pdp_width'  => $width,
-			'pdp_height' => $height,
-			'pdp_sizes'  => $sizes,
-		)
-	);
+	if ( ! is_a( $product, 'WC_Product' ) || ! $attachment_id || (int) $attachment_id !== (int) $product->get_image_id() ) { return array(); }
+	$front = skyyrose2_approved_pdp_front( $product );
+	if ( ! $front || wp_get_attachment_url( $attachment_id ) !== $front['src'] ) { return array(); }
+	$front['pdp_src'] = $front['card_src'] ?? $front['src'];
+	$front['pdp_width'] = $front['card_width'] ?? $front['width'];
+	$front['pdp_height'] = $front['card_height'] ?? $front['height'];
+	$front['pdp_sizes'] = skyyrose2_pdp_gallery_sizes( $front['width'], $front['height'] );
+	return $front;
 }
 
 /** Replace only a matching ghost primary frame with its approved model front. */
@@ -135,11 +103,19 @@ function skyyrose2_pdp_card_front_markup( $front ) {
 	if ( ! is_array( $front ) || empty( $front['src'] ) ) {
 		return '';
 	}
-	$front['pdp_src']    = $front['src'];
-	$front['pdp_width']  = (int) $front['width'];
-	$front['pdp_height'] = (int) $front['height'];
+	$front['pdp_src']    = $front['display_src'] ?? $front['card_src'] ?? $front['src'];
+	$front['pdp_width']  = (int) ( $front['display_width'] ?? $front['card_width'] ?? $front['width'] );
+	$front['pdp_height'] = (int) ( $front['display_height'] ?? $front['card_height'] ?? $front['height'] );
 	$front['pdp_sizes']  = skyyrose2_pdp_gallery_sizes( $front['width'], $front['height'] );
 	return skyyrose2_pdp_approved_ghost_front_markup( $front );
+}
+
+/** Native Woo variation replacement requires a complete gallery, including gaps. */
+function skyyrose2_pdp_v2_gallery_markup( $front ) {
+	$frame = skyyrose2_pdp_card_front_markup( $front );
+	$state = $frame ? 'with-images' : 'without-images';
+	$content = $frame ?: '<div class="sr2-pdp-product__media-missing" role="status">' . esc_html__( 'Product imagery is currently unavailable.', 'skyyrose-flagship-2' ) . '</div>';
+	return '<div class="woocommerce-product-gallery woocommerce-product-gallery--' . $state . ' images" data-columns="1"><figure class="woocommerce-product-gallery__wrapper">' . $content . '</figure></div>';
 }
 
 /** Replace only the first native gallery frame; keep native hooks and later views. */
@@ -226,156 +202,41 @@ function skyyrose2_pdp_delivery_file_hash( $path ) {
 	return $hashes[ $local ];
 }
 
-/**
- * Return responsive display attributes only after native PDP permission and byte proof.
- *
- * The accepted front's sha256 identifies the rendition source. Its source_sha256
- * identifies an earlier production input and is deliberately not interchangeable.
- * The caller retains native attachment IDs, alt text, full/lightbox and thumbnails.
- */
+/** Same current role-bound PDP lead, retaining native attachment and full-view fields. */
 function skyyrose2_pdp_media_delivery( $product, $attachment_id ) {
-	if ( ! is_a( $product, 'WC_Product' ) || ! $attachment_id ) {
-		return array();
-	}
+	if ( ! is_a( $product, 'WC_Product' ) || ! $attachment_id ) { return array(); }
 	$context = skyyrose2_pdp_media_context( $product );
-	$media   = $context ? $context['media'] : skyyrose2_product_commerce_media( $product );
-	if ( ! in_array( $media['state'] ?? '', array( 'commerce', 'editorial' ), true ) || ! in_array( (int) $attachment_id, array_map( 'intval', $media['ids'] ?? array() ), true ) ) {
-		return array();
-	}
-	static $accepted = null;
-	static $derived  = null;
-	if ( null === $accepted ) {
-		$accepted_path = SKYYROSE2_DIR . '/data/approved-card-fronts.json';
-		$derived_path  = SKYYROSE2_DIR . '/assets/derived/card-fronts/manifest.json';
-		$accepted      = is_readable( $accepted_path ) ? json_decode( file_get_contents( $accepted_path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$derived       = is_readable( $derived_path ) ? json_decode( file_get_contents( $derived_path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-	}
-	$sku    = strtolower( trim( (string) $product->get_sku() ) );
-	$front  = $accepted['products'][ $sku ] ?? array();
-	$record = $derived['products'][ $sku ] ?? array();
-	if ( ! is_array( $front ) || ! is_array( $record ) ) {
-		return array();
-	}
-	$hash = $front['sha256'] ?? '';
-	if ( 1 !== ( $accepted['schema_version'] ?? null ) || 'skyyrose.card-renditions.v1' !== ( $derived['schema'] ?? '' ) || 'FOUNDER_APPROVED_V2_CARD' !== ( $front['scene_status'] ?? '' ) || 'BLOCKED_PRODUCT_MISMATCH' === ( $front['current_fidelity_status'] ?? '' ) || ! is_string( $hash ) || ! preg_match( '/^[a-f0-9]{64}$/D', $hash ) || ! preg_match( '/^[a-z0-9-]+$/D', $sku ) || ! is_array( $record['renditions'] ?? null ) || ( $record['source_sha256'] ?? '' ) !== $hash || ( $record['source'] ?? '' ) !== ( $front['src'] ?? '' ) ) {
-		return array();
-	}
-	// Unfiltered local attachment metadata avoids trusting an offload URL as proof.
-	if ( skyyrose2_pdp_delivery_file_hash( get_attached_file( $attachment_id, true ) ) !== $hash ) {
-		return array();
-	}
-	$width  = (int) ( $front['width'] ?? 0 );
-	$height = (int) ( $front['height'] ?? 0 );
-	if ( $width < 1 || $height < 1 ) {
-		return array();
-	}
-	$srcset = array();
-	$result = array();
-	$root   = realpath( SKYYROSE2_DIR . '/assets/derived/card-fronts' );
-	foreach ( $record['renditions'] as $rendition ) {
-		if ( ! is_array( $rendition ) ) {
-			continue;
-		}
-		$rw    = (int) ( $rendition['width'] ?? 0 );
-		$rh    = (int) ( $rendition['height'] ?? 0 );
-		$rhash = $rendition['sha256'] ?? '';
-		if ( ! is_string( $rhash ) || ! preg_match( '/^[a-f0-9]{64}$/D', $rhash ) ) {
-			continue;
-		}
-		$relative = 'assets/derived/card-fronts/' . $sku . '-' . $rw . 'w.webp';
-		$file     = SKYYROSE2_DIR . '/' . $relative;
-		$local    = realpath( $file );
-		if ( ! in_array( $rw, array( 320, 480, 768 ), true ) || $rh !== (int) round( $height * $rw / $width ) || ( $rendition['src'] ?? '' ) !== $relative || ! $root || ! $local || 0 !== strpos( $local, $root . DIRECTORY_SEPARATOR ) || is_link( $file ) || skyyrose2_pdp_delivery_file_hash( $file ) !== ( $rendition['sha256'] ?? '' ) ) {
-			continue;
-		}
-		$dimensions = getimagesize( $local );
-		if ( ! $dimensions || $rw !== $dimensions[0] || $rh !== $dimensions[1] ) {
-			continue;
-		}
-		$url           = SKYYROSE2_URI . '/' . $relative;
-		$srcset[ $rw ] = $url . ' ' . $rw . 'w';
-		if ( 480 === $rw ) {
-			$result = array(
-				'src'    => $url,
-				'width'  => $rw,
-				'height' => $rh,
-			);
-		}
-	}
-	if ( ! $result || ! $srcset ) {
-		return array();
-	}
-	ksort( $srcset );
-	$result['srcset'] = implode( ', ', $srcset );
-	// Object-fit:contain paints within the existing bounded gallery height. Size
-	// selection follows those pixels rather than the wider empty gallery box.
-	$result['sizes'] = skyyrose2_pdp_gallery_sizes( $width, $height );
-	return $result;
+	$media = $context ? $context['media'] : skyyrose2_product_commerce_media( $product );
+	if ( ! in_array( (int) $attachment_id, array_map( 'intval', $media['ids'] ?? array() ), true ) ) { return array(); }
+	$front = skyyrose2_approved_pdp_front( $product );
+	if ( ! $front || wp_get_attachment_url( $attachment_id ) !== $front['src'] || skyyrose2_pdp_delivery_file_hash( get_attached_file( $attachment_id, true ) ) !== $front['sha256'] ) { return array(); }
+	return array(
+		'src' => $front['card_src'] ?? $front['src'],
+		'width' => $front['card_width'] ?? $front['width'],
+		'height' => $front['card_height'] ?? $front['height'],
+		'srcset' => $front['srcset'] ?? '',
+		'sizes' => skyyrose2_pdp_gallery_sizes( $front['width'], $front['height'] ),
+	);
 }
 
-/** Native variation JSON keeps original IDs, thumbnail and full/lightbox sources. */
+/** Native variation purchase fields stay intact; imagery follows the selected SKU. */
 function skyyrose2_pdp_variation_delivery( $data, $product, $variation ) {
 	if ( ! is_a( $product, 'WC_Product' ) || ! is_a( $variation, 'WC_Product_Variation' ) || (int) $variation->get_parent_id() !== $product->get_id() || ( ! skyyrose2_pdp_media_context( $product ) && ! skyyrose2_pdp_gallery_request() ) ) {
 		return $data;
 	}
-	$previous = $GLOBALS['skyyrose2_pdp_media_context'] ?? null;
-	// Native get_available_variation has restored its getter overrides before
-	// this filter runs, including the native AJAX get_variation path.
-	$GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_media_context( $product ) ?: skyyrose2_pdp_capture_media_context( $product );
-	try {
-		$context   = skyyrose2_pdp_media_context( $product );
-		$permitted = array_map( 'intval', $context['media']['ids'] );
-		if ( ! $permitted || 'rejected' === $context['media']['state'] ) {
-			$data['image']               = array();
-			$data['image_id']            = 0;
-			$data['gallery_image_ids']   = array();
-			$data['gallery_images_html'] = '';
-			return $data;
-		}
-		$image_id = (int) ( $data['image_id'] ?? 0 );
-		if ( $image_id && ! in_array( $image_id, $permitted, true ) ) {
-			$data['image']    = array();
-			$data['image_id'] = 0;
-			$image_id         = 0;
-		}
-		$approved_front_variation = false;
-		if ( $image_id && ! empty( $data['image'] ) ) {
-			$original_image           = $data['image'];
-			$data['image']            = skyyrose2_pdp_approved_ghost_front_variation_image( $data['image'], $image_id, $product );
-			$approved_front_variation = $original_image !== $data['image'];
-		}
-		$candidates = array_values( array_unique( array_map( 'intval', $data['gallery_image_ids'] ?? array() ) ) );
-		if ( $candidates ) {
-			$data['gallery_image_ids'] = array_values( array_intersect( $candidates, $permitted ) );
-			if ( $image_id && ! in_array( $image_id, $candidates, true ) ) {
-				array_unshift( $candidates, $image_id );
-			}
-			$approved_primary = skyyrose2_pdp_approved_ghost_front_filter( $product );
-			add_filter( 'woocommerce_single_product_image_thumbnail_html', $approved_primary, 30, 2 );
-			try {
-				$data['gallery_images_html'] = wc_get_product_gallery_html( $product, array_values( array_intersect( $candidates, $permitted ) ) );
-			} finally {
-				remove_filter( 'woocommerce_single_product_image_thumbnail_html', $approved_primary, 30 );
-			}
-		} else {
-			$data['gallery_images_html'] = '';
-		}
-		$delivery = ! $approved_front_variation && ! empty( $data['image_id'] ) && ! empty( $data['image'] ) ? skyyrose2_pdp_media_delivery( $product, $image_id ) : array();
-		if ( $delivery ) {
-			foreach ( array( 'src', 'srcset', 'sizes' ) as $key ) {
-				$data['image'][ $key ] = $delivery[ $key ];
-			}
-			$data['image']['src_w'] = $delivery['width'];
-			$data['image']['src_h'] = $delivery['height'];
-		}
-		return $data;
-	} finally {
-		if ( null === $previous ) {
-			unset( $GLOBALS['skyyrose2_pdp_media_context'] );
-		} else {
-			$GLOBALS['skyyrose2_pdp_media_context'] = $previous;
-		}
-	}
+	// A complete gallery is necessary: empty native image payloads reset to
+	// the parent's default image, which may represent a different variation.
+	$front = skyyrose2_approved_pdp_front( $variation );
+	$data['image_id'] = 0;
+	$data['gallery_image_ids'] = array();
+	$data['gallery_images_html'] = skyyrose2_pdp_v2_gallery_markup( $front );
+	if ( ! $front ) { $data['image'] = array(); return $data; }
+	$front['pdp_src'] = $front['display_src'] ?? $front['card_src'] ?? $front['src'];
+	$front['pdp_width'] = $front['display_width'] ?? $front['card_width'] ?? $front['width'];
+	$front['pdp_height'] = $front['display_height'] ?? $front['card_height'] ?? $front['height'];
+	$front['pdp_sizes'] = skyyrose2_pdp_gallery_sizes( $front['width'], $front['height'] );
+	$data['image'] = skyyrose2_pdp_variation_image_from_approved_front( array(), $front );
+	return $data;
 }
 add_filter( 'woocommerce_available_variation', 'skyyrose2_pdp_variation_delivery', 40, 3 );
 

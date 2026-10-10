@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-targeted-lowerbody-styling-card-kids-001",
+  "asset_id": "card-kids-001",
+  "producer": "/root",
+  "reviewer": "/root/kids_lowerbody_native_qa",
+  "verdict": "PASS",
+  "asset_sha256": "0da7f1158e80c738b457b42f132a5ab723c7cee739d588ca9dcea00b404c0f29",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "kids-001"
+  ],
+  "collections": [
+    "kids-capsule"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-lowerbody-styling-repairs/card-kids-001-visual-review.json",
+    "sha256": "0c26917220755a3668ebb371c2c0ff6b7c9fcd1a3aa102679c467be84895010d"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/kids-001-styling-card-desktop.png",
+      "sha256": "25d868484dcb1e4f9a0d492d335eadf42a069b62d47196165fa6edc218d8b157"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/kids-001-styling-card-mobile.png",
+      "sha256": "ade43383b74b6e8ca9eced2d644fa32cd76d9ae6b6c5aaa58c317d87329352d6"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/kids-001-styling-pdp-desktop.png",
+      "sha256": "a4c0fa50ebd7a9bc497b39775add493e56ba03e71dd60911ed73703c57ca031f"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/kids-001-styling-pdp-mobile.png",
+      "sha256": "42c2aa50a8b6736f2ad66a82b39c2206113aa7809c86de0e4e6de6a44343258d"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native photograph and actual offline card/current product-page.css PDP media-only contexts at 1440 desktop/390 mobile. Full commerce, theme interaction, motion, 768 layout and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: The complete two-piece red/black set is readable: red outer hood, exact angular black/white/red panels, greyscale chest and wearer-left thigh clusters, ONE wearer-right circular sleeve patch, WHITE hood and pants cords, both wrist cuffs/hem and BOTH ankle cuffs. Hands remain clear of artwork and pocket details. Child proportions, continuous ankles into plain small unmarked black boots, grounded shadows and margin below are coherent. The soft library-pavement light and chalk event integrate the child and garment naturally without copying a source scene.",
+    "pdp_on_model_front": "PASS: The complete two-piece red/black set is readable: red outer hood, exact angular black/white/red panels, greyscale chest and wearer-left thigh clusters, ONE wearer-right circular sleeve patch, WHITE hood and pants cords, both wrist cuffs/hem and BOTH ankle cuffs. Hands remain clear of artwork and pocket details. Child proportions, continuous ankles into plain small unmarked black boots, grounded shadows and margin below are coherent. The soft library-pavement light and chalk event integrate the child and garment naturally without copying a source scene. The full master is contained without an additional crop in both captured media-only contexts."
+  }
+}

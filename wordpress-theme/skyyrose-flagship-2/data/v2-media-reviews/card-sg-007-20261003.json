@@ -1,0 +1,58 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-next-20261003-fresh-three-card-sg-007",
+  "asset_id": "card-sg-007",
+  "producer": "/root",
+  "reviewer": "/root/next_phase_visual_qa",
+  "verdict": "PASS",
+  "asset_sha256": "e16b24203568108ad1d088cc5a4d9d03f100261468360f2223dc40ef17180a6f",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "sg-007"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/card-sg-007-visual-review.json",
+    "sha256": "d7853ab489b60211810dcb8115de9587ba88ed5b6325b4f2722ff97f828d7bab"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/sg-007-card-1440.png",
+      "sha256": "46c4b019d7628aa1f2930274f75ddeeafedbf2409f154537c597f97507fe257d"
+    },
+    "card_tablet": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/sg-007-card-768.png",
+      "sha256": "8d3eaefbb983646ba0518b83926f3d46e9693cf1633a221a8f057b39b705a900"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/sg-007-card-390.png",
+      "sha256": "d766020b7eab8578b370e361d79ff50dcb1f8c51ea288d16618e9ca2edafc9cb"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/sg-007-pdp-1440.png",
+      "sha256": "4feb0673db0adcf4a003e2ef7e8443f9760b0555917530f61a79a79ce0ac96f6"
+    },
+    "pdp_tablet": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/sg-007-pdp-768.png",
+      "sha256": "abe7a4d93f56e2d7954b6e2edbd9eecc24f6ef6331de1d4cc413f69fe94ee110"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/sg-007-pdp-390.png",
+      "sha256": "3227beb57e3611983608dbe14d3183c257658ec2bf243f84b070f940d9d503f1"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "PASS only for exact native candidate and card_front/pdp_on_model_front static media containment in actual local V2 markup at390/768/1440. Full theme, interactive commerce, highlight/walking, variants, staging, publishing and founder acceptance remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "Full snug black knit crown and folded cuff are visible. Single bordered purple silicone patch off center viewer-right matches physical source, the explicitly inferred wearer-left reading of founder off-left. Purple rose forms, green stem/loop/leaves and pale cloud stay source-bound. No extra patch, brim, pompom or occlusion. Natural warm brick-corner portrait directs attention to sold beanie, supporting black layers unbranded. Only purple look reviewed; complete red/black/purple artwork map remains unresolved. Whole sold item preserved at all3widths.",
+    "pdp_on_model_front": "Whole native frame preserved by actual V2 media helper at all3widths; this is a media fixture, not complete PDP commerce."
+  }
+}
