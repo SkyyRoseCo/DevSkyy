@@ -206,3 +206,45 @@ class TestServiceTokenAuth:
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
+
+
+class TestTasksRequireAuth:
+    """api/tasks.py ran agent work (paid LLM calls) for anonymous callers."""
+
+    def test_list_requires_auth(self):
+        from api.tasks import tasks_router
+
+        r = _client(tasks_router, prefix="/api/v1").get("/api/v1/tasks")
+        assert r.status_code in _UNAUTH, r.status_code
+
+    def test_get_requires_auth(self):
+        from api.tasks import tasks_router
+
+        r = _client(tasks_router, prefix="/api/v1").get("/api/v1/tasks/x")
+        assert r.status_code in _UNAUTH, r.status_code
+
+    def test_submit_requires_auth(self):
+        from api.tasks import tasks_router
+
+        r = _client(tasks_router, prefix="/api/v1").post(
+            "/api/v1/tasks", json={"agentType": "commerce", "prompt": "x"}
+        )
+        assert r.status_code in _UNAUTH, r.status_code
+
+    def test_cancel_requires_auth(self):
+        from api.tasks import tasks_router
+
+        r = _client(tasks_router, prefix="/api/v1").post("/api/v1/tasks/x/cancel")
+        assert r.status_code in _UNAUTH, r.status_code
+
+    def test_submit_forbidden_for_api_user(self):
+        from api.tasks import tasks_router
+        from security.jwt_oauth2_auth import UserRole, jwt_manager
+
+        token = jwt_manager.create_token_pair(user_id="u1", roles=[UserRole.API_USER.value])
+        r = _client(tasks_router, prefix="/api/v1").post(
+            "/api/v1/tasks",
+            json={"agentType": "commerce", "prompt": "x"},
+            headers={"Authorization": f"Bearer {token.access_token}"},
+        )
+        assert r.status_code == 403, r.status_code
