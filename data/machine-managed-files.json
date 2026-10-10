@@ -26,33 +26,25 @@
   "entries": [
     {
       "pattern": ".wolf/buglog.json",
-      "samples": [
-        ".wolf/buglog.json"
-      ],
+      "samples": [".wolf/buglog.json"],
       "owner": "mcp_servers/wolf_memory/store.py (_serialize)",
       "why": "The wolf-memory MCP server writes one entry per line group in its own layout and allocates ids atomically. Prettier collapses its arrays; the next bug_log call rewrites the file back."
     },
     {
       "pattern": ".wolf/anatomy.md",
-      "samples": [
-        ".wolf/anatomy.md"
-      ],
+      "samples": [".wolf/anatomy.md"],
       "owner": "scripts/regen_anatomy_from_main.sh (post-commit)",
       "why": "Regenerated wholesale by the anatomy scanner in its own layout; reformatting it guarantees a diff against the next regeneration."
     },
     {
       "pattern": "/logo-registry.json",
-      "samples": [
-        "logo-registry.json"
-      ],
+      "samples": ["logo-registry.json"],
       "owner": "skyyrose/core/product_registry.py (registry update API)",
       "why": "The product SOT. Byte-compared by scripts/sync_product_registry.py --check and sha256-pinned in assets/products/manifest.json. The root path is a symlink, so a write through it lands on the registry."
     },
     {
       "pattern": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
-      "samples": [
-        "wordpress-theme/skyyrose-flagship/data/logo-registry.json"
-      ],
+      "samples": ["wordpress-theme/skyyrose-flagship/data/logo-registry.json"],
       "owner": "skyyrose/core/product_registry.py (registry update API)",
       "why": "The real file behind the root symlink — the one editable product SOT."
     },
@@ -66,33 +58,25 @@
     },
     {
       "pattern": "assets/products/source-photos/manifest.json",
-      "samples": [
-        "assets/products/source-photos/manifest.json"
-      ],
+      "samples": ["assets/products/source-photos/manifest.json"],
       "owner": "scripts/audit_source_photos.py",
       "why": "Deterministic generator output behind a byte-for-byte freshness gate."
     },
     {
       "pattern": "tasks/source-photo-audit-report.md",
-      "samples": [
-        "tasks/source-photo-audit-report.md"
-      ],
+      "samples": ["tasks/source-photo-audit-report.md"],
       "owner": "scripts/audit_source_photos.py",
       "why": "Generated report; reformatting breaks the same freshness gate."
     },
     {
       "pattern": "tasks/source-photo-shoot-list.md",
-      "samples": [
-        "tasks/source-photo-shoot-list.md"
-      ],
+      "samples": ["tasks/source-photo-shoot-list.md"],
       "owner": "scripts/audit_source_photos.py",
       "why": "Generated shoot list; same gate."
     },
     {
       "pattern": "skyyrose/elite_studio/assets/golden/*/placement.md",
-      "samples": [
-        "skyyrose/elite_studio/assets/golden/br-001/placement.md"
-      ],
+      "samples": ["skyyrose/elite_studio/assets/golden/br-001/placement.md"],
       "owner": "skyyrose/elite_studio (golden placement generation)",
       "why": "Canonical dossier generation owns these bytes; generic Markdown formatting desynchronizes the checked-in placement brief."
     },
@@ -115,9 +99,7 @@
     },
     {
       "pattern": "plugins/fashion-theme-team/",
-      "samples": [
-        "plugins/fashion-theme-team/formatting.toml"
-      ],
+      "samples": ["plugins/fashion-theme-team/formatting.toml"],
       "owner": "the fashion-theme-team plugin (vendored)",
       "why": "Externally managed tree; the repo does not own its formatting."
     },
@@ -157,9 +139,7 @@
     },
     {
       "pattern": "docs/campaigns/sot-lookbook.html",
-      "samples": [
-        "docs/campaigns/sot-lookbook.html"
-      ],
+      "samples": ["docs/campaigns/sot-lookbook.html"],
       "owner": "scripts/build-lookbook-from-sot.py",
       "why": "Generated and byte-compared by validate_catalog_consistency. Prettier rewrites it 17,118 -> 25,176 bytes, which makes that byte check unsatisfiable."
     },
@@ -181,25 +161,19 @@
     },
     {
       "pattern": ".wolf/memory.md",
-      "samples": [
-        ".wolf/memory.md"
-      ],
+      "samples": [".wolf/memory.md"],
       "owner": "every session (append-only one-row-per-action log, founder-mandated in every commit)",
       "why": "Rows are single long table lines read per line. proseWrap reflows them, and because a row is appended in EVERY commit this is the highest-frequency exposure of the whole list."
     },
     {
       "pattern": ".wolf/cerebrum.md",
-      "samples": [
-        ".wolf/cerebrum.md"
-      ],
+      "samples": [".wolf/cerebrum.md"],
       "owner": "OpenWolf cross-session learning log (appended by every session)",
       "why": "Prettier rewrites it 156,585 -> 160,446 bytes, renumbering and re-indenting entries that sessions append to by position."
     },
     {
       "pattern": "tasks/phase-e-manifest.md",
-      "samples": [
-        "tasks/phase-e-manifest.md"
-      ],
+      "samples": ["tasks/phase-e-manifest.md"],
       "owner": "scripts/regen_phase_e_manifest_auto.py (AUTO regions)",
       "why": "Prettier rewrites it 12,998 -> 21,331 bytes, moving the AUTO region markers its generator edits between."
     },
