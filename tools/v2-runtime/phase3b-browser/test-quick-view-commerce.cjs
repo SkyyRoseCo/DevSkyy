@@ -115,6 +115,46 @@ test('native variation plugin initializes once and images stay inside dialog', (
     assert.match(await page.locator('[data-quick-view-image]').getAttribute('src'), /variation.jpg$/);
   }));
 
+test('variation responsive family changes atomically, unavailable images clear and reset restores the opener', () =>
+  fixture(async page => {
+    await page.evaluate(() => {
+      const image = document.querySelector('[data-quick-view-image]');
+      Object.entries({ src: '/original.jpg', srcset: '/original-small.webp 320w, /original-large.webp 768w', sizes: '420px', width: '768', height: '1152', alt: 'Original' }).forEach(([key, value]) => image.setAttribute(key, value));
+      window.events = {};
+      window.jQuery = element => ({
+        empty() { element.replaceChildren(); },
+        on(name, handler) { window.events[name] = handler; return this; },
+        wc_variation_form() {},
+      });
+      window.jQuery.fn = { wc_variation_form() {} };
+    });
+    await page.route('**/product/a/', r => r.fulfill({ contentType: 'text/html', body: product('variable') }));
+    await open(page);
+    await ready(page, 'Ready');
+    const attributes = () => page.locator('[data-quick-view-image]').evaluate(image => Object.fromEntries(['src', 'srcset', 'sizes', 'width', 'height', 'alt'].map(key => [key, image.getAttribute(key)])));
+    const original = await attributes();
+    await page.evaluate(() => window.events['found_variation.sr2QuickView']({}, { image: { src: '/new-768.webp', srcset: '/new-320.webp 320w, /new-768.webp 768w', sizes: '50vw', src_w: 768, src_h: 960, alt: 'New exact SKU' } }));
+    const selected = await attributes();
+    assert.match(selected.src, /\/new-768.webp$/);
+    assert.equal(selected.srcset, '/new-320.webp 320w, /new-768.webp 768w');
+    assert.equal(selected.sizes, '50vw');
+    assert.equal(selected.width, '768');
+    assert.equal(selected.height, '960');
+    assert.equal(selected.alt, 'New exact SKU');
+    await page.evaluate(() => window.events['found_variation.sr2QuickView']({}, { image: { src: '/no-renditions.webp' } }));
+    const plain = await attributes();
+    assert.match(plain.src, /\/no-renditions.webp$/);
+    for (const key of ['srcset', 'sizes', 'width', 'height']) assert.equal(plain[key], null, `Absent ${key} clears previous SKU`);
+    for (const src of [null, 'data:image/png;base64,AAAA', 'http://[bad']) {
+      await page.evaluate(value => window.events['found_variation.sr2QuickView']({}, { image: { src: value } }), src);
+      for (const [key, value] of Object.entries(await attributes())) assert.equal(value, key === 'alt' ? '' : null, `Unavailable image clears ${key}`);
+      assert.equal(await page.locator('[data-quick-view-image]').isVisible(), false);
+    }
+    await page.evaluate(() => window.events['reset_data.sr2QuickView']());
+    assert.deepEqual(await attributes(), original);
+    assert.equal(await page.locator('[data-quick-view-image]').getAttribute('hidden'), null);
+  }));
+
 async function lazyFixture(page, source = '/native-variation.js') {
   await page.evaluate(src => {
     window.jQuery = element => ({

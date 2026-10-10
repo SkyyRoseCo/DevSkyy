@@ -548,6 +548,7 @@ jobs:
           python -m pip install -r tools/v2-source-certification/requirements.txt
           python scripts/sync_product_registry.py --check
           npm --prefix wordpress-theme/skyyrose-flagship-2 run check:registry
+          php wordpress-theme/skyyrose-flagship-2/scripts/test-marketplace-registry.php
 
   # ===========================================================================
   # Stage 3: E2E Tests with Playwright

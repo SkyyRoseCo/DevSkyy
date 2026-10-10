@@ -301,8 +301,8 @@
     }
   },
   "product_registry_sha256": "0f29cfc29ee52e98821078647f47206a76dd53ce5af2b9235957a5f34b4be3db",
-  "product_sot_scope": "current_registry_presentation_identity_only",
-  "product_sot_sha256": "0f29cfc29ee52e98821078647f47206a76dd53ce5af2b9235957a5f34b4be3db",
+  "product_sot_scope": "historical_media_binding_only",
+  "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
   "products": {
     "br-001": {
       "collection": "black-rose",
@@ -601,9 +601,9 @@
       },
       "garment_type": "crewneck",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "catalog_media_only",
       "presentation": "black-rose",
-      "product_sot_hash": "a2fec50e4b80da6c1a206ab7bb42be2b927c7304efd5ee263bba60586d107ba2",
+      "product_sot_hash": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c",
       "route": "/collections/black-rose/"
     },
     "br-002": {
@@ -928,9 +928,9 @@
       },
       "garment_type": "joggers",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "catalog_media_only",
       "presentation": "black-rose",
-      "product_sot_hash": "c92da75d73f91e0135a6c8a25db3cc9f4de05e34e2eef264d72bc3fd351a106a",
+      "product_sot_hash": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e",
       "route": "/collections/black-rose/"
     },
     "br-003": {
@@ -938,9 +938,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "jersey",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "product_sot_hash": "870ae640570ff80dda7e185654cc7943d0e8ed59b7f897c7c7311ae511166845",
+      "product_sot_hash": "665aca97d1b61be02dec4fce949fb32ea562ee82c9a63854cbbac4214041112e",
       "route": "/pre-order/",
       "series_order": 10,
       "series_region": "oakland"
@@ -1343,9 +1343,9 @@
       },
       "garment_type": "hoodie",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
-      "product_sot_hash": "dbc9ca073deaa91495ef054a812bd7d39569e61605d9233a956dee713e593d34",
+      "product_sot_hash": "977cd308b8b9d512b72f0db91151b23936777282406aeaafe6977e635862bbac",
       "route": "/collections/black-rose/"
     },
     "br-005": {
@@ -1750,9 +1750,9 @@
       },
       "garment_type": "hoodie",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
-      "product_sot_hash": "a9d7282f6ea166b6d52dcf3710b361f7d861e46bd16627d5a1c7d7d220d1ecd8",
+      "product_sot_hash": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e",
       "route": "/collections/black-rose/"
     },
     "br-006": {
@@ -1760,9 +1760,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "jacket",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
-      "product_sot_hash": "454c442bdd68d5eee4e7dda8fa4ea47c9a9fa5407b0d68cf8af4bccc98eaa7f4",
+      "product_sot_hash": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd",
       "route": "/pre-order/"
     },
     "br-007": {
@@ -2087,9 +2087,9 @@
       },
       "garment_type": "shorts",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
-      "product_sot_hash": "1dc17ea39058255063810f1421fab03ad7c9c35923e75d582bc4f29955d5c670",
+      "product_sot_hash": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b",
       "route": "/collections/black-rose/"
     },
     "br-008": {
@@ -2097,9 +2097,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "jersey",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "product_sot_hash": "149634754ee890009c3d12ef10cc0bd330fcd50ec368d59086f581853077f013",
+      "product_sot_hash": "6e5df3321ee8d9c262296ae28789b926b5e25c4e13af64f7cabb4a69c9c5d163",
       "route": "/pre-order/",
       "series_order": 50,
       "series_region": "san-francisco"
@@ -2109,9 +2109,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "jersey",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "product_sot_hash": "50761632e34c228e7eae66135660a39e5737f57eedb56206ca358659dd37b95f",
+      "product_sot_hash": "348f18190d00ccdd6eb9b9702743a518ceee2c471e0a575d42381030341ac614",
       "route": "/pre-order/",
       "series_order": 30,
       "series_region": "oakland"
@@ -2121,9 +2121,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "jersey",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "product_sot_hash": "1a15c7806a56f23a1a4bf48b8ac71afbe28f33bcaec6d1f4d495b8b0333e2912",
+      "product_sot_hash": "a657b4ebe780966746b0cf72686575ba9a830c212dd518ad029e7642bc583329",
       "route": "/pre-order/",
       "series_order": 70,
       "series_region": "san-francisco"
@@ -2133,9 +2133,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "hoodie",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "product_sot_hash": "b30afb3de0be2788e6e7454361647e318bc956c8c04aef2bbf379490276a9475",
+      "product_sot_hash": "9dd33981cdf7e1e98247f0aa708054186bf877c3bb2c4c03687536a5e9cf42a0",
       "route": "/pre-order/",
       "series_order": 80,
       "series_region": "san-jose"
@@ -2145,9 +2145,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "jersey",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "jersey-series",
-      "product_sot_hash": "1ca016e29d86fcf2aec03e040947b57f0ecb1641b70cf7e72ea3f59b81b1670e",
+      "product_sot_hash": "b34b44167fcb5f8d7d7d72d200d533274d4074e134de695274cd0c5ca52033d6",
       "route": "/pre-order/",
       "series_order": 40,
       "series_region": "oakland"
@@ -2157,9 +2157,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "jersey",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "jersey-series",
-      "product_sot_hash": "605d0322842e2c03790ab7bdfd095a94dd543ba9debefd0bd72c6c262ec7c9dc",
+      "product_sot_hash": "2741304d4950265536ffc9b52d58f68b5ad88bce911fde8588612107aac9842f",
       "route": "/pre-order/",
       "series_order": 60,
       "series_region": "san-francisco"
@@ -2169,9 +2169,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "jersey",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
-      "product_sot_hash": "be6c15855364cabd2709f276161ecb833a0e58614df543b11c00cf4e37224091",
+      "product_sot_hash": "06adab4dd19a5c9092755f031b30176f406b9799f9ee366000538e4b85429ebb",
       "route": "/pre-order/",
       "series_order": 20,
       "series_region": "oakland"
@@ -2767,9 +2767,9 @@
       },
       "garment_type": "hoodie",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "kids-capsule",
-      "product_sot_hash": "11325105421096960871b900a7c7233ded25c6c75b2f18572c79600296a6dfc0",
+      "product_sot_hash": "055e87cefa9cda456b59b230b7597fbead5a822854ccc615ff8f021ed9387028",
       "route": "/collections/kids-capsule/"
     },
     "kids-002": {
@@ -2777,9 +2777,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "hoodie",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "kids-capsule",
-      "product_sot_hash": "c0bddb333b0f8e51a9fd060dbc48e85d3f5eec0c2690b281b4b09f42d5151911",
+      "product_sot_hash": "9de73174b9b580cfadf21040753ddd17fdf34640ef3259a549352119a5251878",
       "route": "/collections/kids-capsule/"
     },
     "lh-002": {
@@ -2787,9 +2787,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "joggers",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "love-hurts",
-      "product_sot_hash": "4e2b5a5bfe267672180fe721394646ade70082bb12aa1c4a3dfc37200a58d33b",
+      "product_sot_hash": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed",
       "route": "/collections/love-hurts/"
     },
     "lh-003": {
@@ -3094,9 +3094,9 @@
       },
       "garment_type": "shorts",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "love-hurts",
-      "product_sot_hash": "e5529d62b6ca12af70b406282cf76baa9f396c9929e29aa0616db3afbd9cfe67",
+      "product_sot_hash": "3cceca9656872d9cb1598539dbb23801241e57fa63d749a32f740087743a3a8c",
       "route": "/collections/love-hurts/"
     },
     "lh-004": {
@@ -3592,9 +3592,9 @@
       },
       "garment_type": "bomber jacket",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "love-hurts",
-      "product_sot_hash": "1cb797e029dae97f0147eae7ebad27d0dd70f9ebc7c8e578cd45355c784fc735",
+      "product_sot_hash": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69",
       "route": "/collections/love-hurts/"
     },
     "lh-005": {
@@ -3602,9 +3602,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "canonical_product_reference",
       "presentation": "love-hurts",
-      "product_sot_hash": "d11c4a424c2845b5eae37b177c20bf414ca59d14ae1cfc0a1c9fad6ec0d91588",
+      "product_sot_hash": "67cba7ca43810be60c66e5e29d12449c61a76a8704ef1498c145950f9ae53583",
       "route": "/pre-order/"
     },
     "lh-006": {
@@ -3965,9 +3965,9 @@
       },
       "garment_type": "joggers",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "love-hurts",
-      "product_sot_hash": "e21173bb78be73895f5ddf1179f0d0b40e272ebfd526be364a42eb0c5b8d40d5",
+      "product_sot_hash": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079",
       "route": "/collections/love-hurts/"
     },
     "sg-001": {
@@ -3975,9 +3975,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "shorts",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "signature",
-      "product_sot_hash": "12af4db94811dae7189221eb3a50638e3963f095c3cc2315ea78890c52ce2a3c",
+      "product_sot_hash": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941",
       "route": "/pre-order/"
     },
     "sg-002": {
@@ -3985,9 +3985,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "shirt",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
-      "product_sot_hash": "cac303db124a03c4f5d135da74475a85c527b412866d4c1f27129172c4ad95c3",
+      "product_sot_hash": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e",
       "route": "/pre-order/"
     },
     "sg-003": {
@@ -4248,9 +4248,9 @@
       },
       "garment_type": "shorts",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "canonical_product_reference",
       "presentation": "signature",
-      "product_sot_hash": "43e795688f7591d23bab2d4441bd308b6f9225f88bc3f98cbcfce31dd0dcc86b",
+      "product_sot_hash": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23",
       "route": "/pre-order/"
     },
     "sg-005": {
@@ -4659,9 +4659,9 @@
       },
       "garment_type": "shirt",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "physical_product_photo",
       "presentation": "signature",
-      "product_sot_hash": "afdfc2849009f64e600ba677996e894d17098dff82c158d776a10e6a46007fef",
+      "product_sot_hash": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6",
       "route": "/pre-order/"
     },
     "sg-006": {
@@ -5151,9 +5151,9 @@
       },
       "garment_type": "hoodie",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
-      "product_sot_hash": "f5306cb7aa2edaaf78626b310cf5d539cc438ec8a44bc95f0686b6a93cb2b4d3",
+      "product_sot_hash": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3",
       "route": "/collections/signature/"
     },
     "sg-007": {
@@ -5494,9 +5494,9 @@
       },
       "garment_type": "",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
-      "product_sot_hash": "b9b0d76ba464699646a246231743df7ca38eb31a3351d66110f21234ff4d86d2",
+      "product_sot_hash": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c",
       "route": "/collections/signature/"
     },
     "sg-009": {
@@ -6161,9 +6161,9 @@
       },
       "garment_type": "jacket",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "canonical_product_reference",
       "presentation": "signature",
-      "product_sot_hash": "96cbb5d2878181d0efb16fe926ec359223c2c118e0418f8db2d43a3039f79d9b",
+      "product_sot_hash": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a",
       "route": "/collections/signature/"
     },
     "sg-011": {
@@ -6556,9 +6556,9 @@
       },
       "garment_type": "shirt",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "catalog_media_only",
       "presentation": "signature",
-      "product_sot_hash": "fecc2c9060b4bea87cb7ea9c10f54f2199c30352c25fb3338a5bfb6a8770b204",
+      "product_sot_hash": "07116629c233b65d83677575f5661720c872c01441333619b8e874146505e669",
       "route": "/collections/signature/"
     },
     "sg-012": {
@@ -6951,9 +6951,9 @@
       },
       "garment_type": "shirt",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "catalog_media_only",
       "presentation": "signature",
-      "product_sot_hash": "35594db12b2ecf9bb58aa97e64b9fd8b39f17a91e2c08d1d1b34391532ece099",
+      "product_sot_hash": "d96a7efcf46057a84afb93fb27031849891b2d81965cc2df5b47c1a50eda8786",
       "route": "/collections/signature/"
     },
     "sg-013": {
@@ -7490,9 +7490,9 @@
       },
       "garment_type": "crewneck",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
-      "product_sot_hash": "40fb1b5d512001edb2df4fa5dc76f241baa29fb687223092fd7287de3fc6bae5",
+      "product_sot_hash": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2",
       "route": "/collections/signature/"
     },
     "sg-014": {
@@ -7929,9 +7929,9 @@
       },
       "garment_type": "sweatpants",
       "is_preorder": false,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
-      "product_sot_hash": "7f57df4eda29f19848bd8a4df4b17e553d3d30882e7a260b0333331298c5c6aa",
+      "product_sot_hash": "0f063bd55595390672123e0aecff6df96be10bdefddcbdec45614d665dbc6867",
       "route": "/collections/signature/"
     },
     "sg-015": {
@@ -7939,9 +7939,9 @@
       "garment_highlight_state": "SOURCE_CHANGED_REVIEW_REQUIRED",
       "garment_type": "set",
       "is_preorder": true,
-      "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
-      "product_sot_hash": "c9ecb32063f3cb1ee9f6cf4343b0b0b2ae9334a75ba81cd2667698d8acc32ede",
+      "product_sot_hash": "b01ceabb690a9924c160bc4599d065f26f59d4b203248ad308a72484a9f2d34d",
       "route": "/pre-order/"
     }
   },

@@ -24,6 +24,9 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "tools/v2-source-certification"))
+
+from inputs import garment_types, load_product_sot  # noqa: E402
 
 from skyyrose.core.card_annotations import validate_annotation  # noqa: E402
 from skyyrose.core.media_usage import validated_usage_roles  # noqa: E402
@@ -93,6 +96,13 @@ def build_locked_registry(registry_bytes: bytes) -> dict[str, object]:
     # remain release evidence, never a competing source of commerce or colors.
     current_products = {sku: get_product(sku) for sku in all_skus()}
     registry_digest = hashlib.sha256(registry_bytes).hexdigest()
+    # The approved card-media contract (inc/presentation-registry.php) is bound
+    # to the pinned media receipt, so product_sot_* keep that identity. The
+    # receipt never supplies commerce or garment facts; garment_types() fails
+    # closed when current registry facts drift from it without a recorded
+    # founder correction.
+    receipt, receipt_text = load_product_sot()
+    garment_types(receipt)
     authority = json.loads(registry_bytes)
     for sku, current in current_products.items():
         if (
@@ -153,10 +163,8 @@ def build_locked_registry(registry_bytes: bytes) -> dict[str, object]:
                 else f"/collections/{collection}/"
             ),
             "is_preorder": current["is_preorder"].strip() == "1",
-            "product_sot_hash": hashlib.sha256(
-                json.dumps(current, sort_keys=True, separators=(",", ":")).encode()
-            ).hexdigest(),
-            "media_proof_level": "CURRENT_REGISTRY_IDENTITY_ONLY",
+            "product_sot_hash": receipt["products"][sku]["product_hash"],
+            "media_proof_level": receipt["products"][sku]["verification"]["proof_level"],
         }
         annotation = current_record.get("presentation", {}).get("garment_highlight")
         if annotation is not None:
@@ -217,8 +225,8 @@ def build_locked_registry(registry_bytes: bytes) -> dict[str, object]:
         "kind": "skyyrose-v2-product-presentation-registry",
         "generated_from": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
         "product_registry_sha256": registry_digest,
-        "product_sot_scope": "current_registry_presentation_identity_only",
-        "product_sot_sha256": registry_digest,
+        "product_sot_scope": "historical_media_binding_only",
+        "product_sot_sha256": hashlib.sha256(receipt_text.encode()).hexdigest(),
         "supplements": supplements,
         "collections": collections,
         "media_usage_adoptions": adoptions,
