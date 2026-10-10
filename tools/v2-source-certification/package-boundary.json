@@ -3115,6 +3115,11 @@
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
     },
+    "scripts/verify-image-transparency.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
     "scripts/verify-marketplace.sh": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
