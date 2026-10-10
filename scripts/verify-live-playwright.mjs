@@ -39,8 +39,10 @@
 
 import { createRequire } from 'module';
 import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
 
-const FRONTEND = process.env.PW_FRONTEND_ROOT || '/Users/theceo/DevSkyy/frontend/';
+// Resolve playwright from this checkout's frontend/, wherever the repo lives.
+const FRONTEND = process.env.PW_FRONTEND_ROOT || fileURLToPath(new URL('../frontend/', import.meta.url));
 
 function loadSpec() {
   const fileArg = process.argv[2] || process.env.PW_VERIFY_SPEC_FILE;

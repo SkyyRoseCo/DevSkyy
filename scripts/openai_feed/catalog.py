@@ -9,12 +9,9 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from skyyrose.core.catalog_loader import read_catalog_rows
+from skyyrose.core.catalog_loader import CATALOG_CSV, read_catalog_rows
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_CATALOG_PATH = (
-    REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
-)
+DEFAULT_CATALOG_PATH = CATALOG_CSV
 
 
 def load_catalog(path: Path = DEFAULT_CATALOG_PATH) -> dict[str, dict[str, Any]]:
