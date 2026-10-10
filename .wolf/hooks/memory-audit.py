@@ -38,7 +38,11 @@ import sys
 from datetime import date, datetime
 from pathlib import Path
 
-REPO_ROOT = Path(os.environ.get("SKYYROSE_REPO_ROOT") or "/Users/theceo/DevSkyy")
+REPO_ROOT = Path(
+    os.environ.get("SKYYROSE_REPO_ROOT")
+    or os.environ.get("CLAUDE_PROJECT_DIR")
+    or Path(__file__).resolve().parents[2]  # .wolf/hooks/ -> repo root
+)
 FRESHNESS_DAYS = 30
 LINE_COUNT_TOLERANCE = 0.10  # ±10%
 
