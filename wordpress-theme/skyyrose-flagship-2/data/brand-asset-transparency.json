@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "policy": "Every standalone SkyyRose brand mark is delivered with an alpha channel and a transparent canvas. Scene, lookbook, on-model, product-proof, and editorial photography remain intentionally opaque.",
+  "transparent_assets": [
+    "assets/sot/brand/skyyrose-logo-animated-384w.webp",
+    "assets/sot/brand/skyyrose-logo-still-384w.webp",
+    "assets/sot/images/emblems/black-rose-emblem.webp",
+    "assets/sot/images/emblems/love-hurts-emblem.webp",
+    "assets/sot/images/lockups/black-rose-lockup.webp",
+    "assets/sot/images/lockups/black-rose-star-graphic.png",
+    "assets/sot/images/lockups/black-rose-star-graphic.webp",
+    "assets/sot/images/lockups/love-hurts-lockup.webp",
+    "assets/sot/images/lockups/love-hurts-star-heart-graphic.png",
+    "assets/sot/images/lockups/love-hurts-star-heart-graphic.webp",
+    "assets/sot/images/lockups/signature-lockup.webp",
+    "assets/sot/images/logos/black-roses-cloud-cluster.webp",
+    "assets/sot/images/logos/heart-rose-composite.webp",
+    "assets/sot/images/logos/red-roses-cloud-cluster.webp",
+    "assets/sot/images/logos/rose-gold-rose.webp",
+    "assets/sot/images/logos/sr-monogram-rose-gold.webp"
+  ],
+  "opaque_scene_families": [
+    "assets/sot/branding/hero/",
+    "assets/sot/images/hero/",
+    "assets/sot/images/immersive/",
+    "assets/sot/images/lookbook/",
+    "assets/sot/images/home/on-model/",
+    "assets/sot/images/products/"
+  ],
+  "audit": {
+    "method": "ImageMagick identify: every transparent asset reports an alpha channel and opaque=false; visible pixels remain non-zero.",
+    "audited_at": "2026-08-15",
+    "status": "PASS"
+  }
+}

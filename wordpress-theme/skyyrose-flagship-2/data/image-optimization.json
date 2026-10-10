@@ -1,0 +1,76 @@
+{
+  "schema": "skyyrose.sot.image-optimization.v1",
+  "policy": {
+    "served_hero_format": "webp",
+    "responsive_widths": [640, 1024, 1440],
+    "max_served_hero_bytes": 260000,
+    "max_served_editorial_bytes": 260000,
+    "source_policy": "Original SOT pixels remain preserved; templates serve only responsive derivatives.",
+    "brand_graphic_policy": "Standalone SkyyRose brand lockups, monograms, collection graphics, and animated global brand marks retain an alpha channel. The rotating header/footer derivative starts from a 5 KB still, loads its 1 MB motion asset only for motion-enabled clients, and defers the below-fold footer request until it approaches the viewport. Scene photography is intentionally excluded from this transparency rule."
+  },
+  "derivative_root": "assets/sot/images/hero/responsive",
+  "editorial_derivative_sets": [
+    {
+      "source": "assets/sot/images/preorder/black-rose-salon.webp",
+      "derivative_root": "assets/sot/images/preorder/responsive",
+      "basename": "black-rose-salon",
+      "widths": [640, 1024, 1440],
+      "usage": ["pre-order hero", "pre-order editorial scene"]
+    },
+    {
+      "source": "assets/sot/images/lookbook/lb-rose-hoodie-beanie-960w.webp",
+      "derivative_root": "assets/sot/images/lookbook",
+      "basename": "lb-rose-hoodie-beanie",
+      "widths": [480, 960],
+      "usage": ["about page lookbook chapters", "collection editorial reveal"]
+    },
+    {
+      "source": "assets/sot/images/lookbook/lb-black-rose-football-960w.webp",
+      "derivative_root": "assets/sot/images/lookbook",
+      "basename": "lb-black-rose-football",
+      "widths": [480, 960],
+      "usage": ["about page lookbook chapters", "collection editorial reveal"]
+    },
+    {
+      "source": "assets/sot/images/lookbook/lb-love-hurts-varsity-960w.webp",
+      "derivative_root": "assets/sot/images/lookbook",
+      "basename": "lb-love-hurts-varsity",
+      "widths": [480, 960],
+      "usage": ["about page lookbook chapters", "collection editorial reveal"]
+    },
+    {
+      "source": "assets/sot/images/lookbook/lb-kid-black-rose-960w.webp",
+      "derivative_root": "assets/sot/images/lookbook",
+      "basename": "lb-kid-black-rose",
+      "widths": [480, 960],
+      "usage": ["about page lookbook chapters", "collection editorial reveal"]
+    }
+  ],
+  "transparent_brand_assets": [
+    "assets/sot/brand/skyyrose-logo-animated-384w.webp",
+    "assets/sot/brand/skyyrose-logo-still-384w.webp",
+    "assets/sot/images/lockups/signature-lockup.webp",
+    "assets/sot/images/lockups/black-rose-lockup.webp",
+    "assets/sot/images/lockups/love-hurts-lockup.webp",
+    "assets/sot/images/lockups/black-rose-star-graphic.png",
+    "assets/sot/images/lockups/black-rose-star-graphic.webp",
+    "assets/sot/images/lockups/love-hurts-star-heart-graphic.png",
+    "assets/sot/images/lockups/love-hurts-star-heart-graphic.webp",
+    "assets/sot/images/logos/black-roses-cloud-cluster.webp",
+    "assets/sot/images/logos/heart-rose-composite.webp",
+    "assets/sot/images/logos/red-roses-cloud-cluster.webp",
+    "assets/sot/images/logos/rose-gold-rose.webp",
+    "assets/sot/images/logos/sr-monogram-rose-gold.webp"
+  ],
+  "hero_bases": [
+    "signature-golden-gate-monuments-v2",
+    "black-rose-bay-bridge-monuments-v4",
+    "love-hurts-rose-aisle-monuments-v3",
+    "kids-capsule-heir-throne-v3",
+    "jersey-series-town-line-train-v1",
+    "black-rose-lake-merritt-monument-v2",
+    "love-hurts-golden-gate-monument-v2",
+    "black-rose-typography-star-salon-v3"
+  ],
+  "authority": "SOT source pixels and the approved visual manifest; this file records generated delivery derivatives only."
+}

@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SKYYROSE2_VERSION', '2.5.0' );
+define( 'SKYYROSE2_VERSION', '2.5.1' );
 define( 'SKYYROSE2_DIR', get_template_directory() );
 define( 'SKYYROSE2_URI', get_template_directory_uri() );
 
@@ -1366,10 +1366,17 @@ add_action( 'admin_notices', 'skyyrose2_registry_reconciliation_notice' );
 
 /** Keep native archive pagination free of pre-order-only identities. */
 function skyyrose2_standard_archive_query( $query ) {
-	if ( ! is_object( $query ) || ! method_exists( $query, 'set' ) || ! method_exists( $query, 'get' ) || ! function_exists( 'wc_get_products' ) ) { return; }
+	if ( ! is_object( $query ) || ! method_exists( $query, 'set' ) || ! method_exists( $query, 'get' ) || ! function_exists( 'wc_get_products' ) ) {
+		return; }
 	$excluded = (array) $query->get( 'post__not_in', array() );
-	foreach ( wc_get_products( array( 'limit' => -1, 'status' => 'publish' ) ) as $item ) {
-		if ( skyyrose2_is_transaction_preorder_product( $item ) ) { $excluded[] = $item->get_id(); }
+	foreach ( wc_get_products(
+		array(
+			'limit'  => -1,
+			'status' => 'publish',
+		)
+	) as $item ) {
+		if ( skyyrose2_is_transaction_preorder_product( $item ) ) {
+			$excluded[] = $item->get_id(); }
 	}
 	$query->set( 'post__not_in', array_values( array_unique( array_map( 'absint', $excluded ) ) ) );
 }
@@ -1451,10 +1458,13 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 		if ( empty( $presentation ) ) {
 			continue;
 		}
-		if ( is_object( $product ) && method_exists( $product, 'is_visible' ) && ! $product->is_visible() ) { continue; }
+		if ( is_object( $product ) && method_exists( $product, 'is_visible' ) && ! $product->is_visible() ) {
+			continue; }
 		$is_preorder = skyyrose2_is_transaction_preorder_product( $product );
-		if ( 'pre-order' !== $collection && $is_preorder ) { continue; }
-		if ( ! $is_preorder && is_object( $product ) && method_exists( $product, 'is_in_stock' ) && ! $product->is_in_stock() ) { continue; }
+		if ( 'pre-order' !== $collection && $is_preorder ) {
+			continue; }
+		if ( ! $is_preorder && is_object( $product ) && method_exists( $product, 'is_in_stock' ) && ! $product->is_in_stock() ) {
+			continue; }
 		if ( $collection && 'pre-order' !== $collection && sanitize_title( $presentation['collection'] ?? '' ) !== sanitize_title( $collection ) ) {
 			continue;
 		}
@@ -1514,7 +1524,8 @@ function skyyrose2_get_products_by_skus( $skus, $required_collection ) {
 		if ( ! $product || ! $product->is_visible() ) {
 			continue;
 		}
-		if ( skyyrose2_is_transaction_preorder_product( $product ) || ! $product->is_in_stock() ) { continue; }
+		if ( skyyrose2_is_transaction_preorder_product( $product ) || ! $product->is_in_stock() ) {
+			continue; }
 		if ( function_exists( 'get_post_status' ) && 'publish' !== get_post_status( $product_id ) ) {
 			continue;
 		}
@@ -1754,30 +1765,42 @@ function skyyrose2_product_verified_card_media( $product ) {
 
 /** Resolve attachment IDs only with the same current V2 SKU and view-role binding. */
 function skyyrose2_product_commerce_media( $product, $required_role = 'pdp_on_model_front' ) {
-	$empty = array( 'state' => 'missing', 'ids' => array(), 'front' => array() );
+	$empty   = array(
+		'state' => 'missing',
+		'ids'   => array(),
+		'front' => array(),
+	);
 	$product = skyyrose2_product_media_identity( $product );
-	if ( ! $product || ! in_array( $required_role, array( 'card_front', 'pdp_on_model_front' ), true ) ) { return $empty; }
-	$sku = strtolower( trim( (string) $product->get_sku( 'edit' ) ) );
+	if ( ! $product || ! in_array( $required_role, array( 'card_front', 'pdp_on_model_front' ), true ) ) {
+		return $empty; }
+	$sku          = strtolower( trim( (string) $product->get_sku( 'edit' ) ) );
 	$presentation = skyyrose2_product_presentation( $product );
-	$collection = $presentation['collection'] ?? '';
-	$inventory = skyyrose2_media_inventory();
-	$front = skyyrose2_product_media_front( $product, $required_role );
-	$roles = 'card_front' === $required_role ? array( 'card_front' ) : array( 'pdp_on_model_front', 'pdp_on_model_back', 'pdp_detail' );
-	$valid = static function ( $id ) use ( $sku, $collection, $inventory, $roles ) {
-		$url = $id ? wp_get_attachment_url( $id ) : '';
+	$collection   = $presentation['collection'] ?? '';
+	$inventory    = skyyrose2_media_inventory();
+	$front        = skyyrose2_product_media_front( $product, $required_role );
+	$roles        = 'card_front' === $required_role ? array( 'card_front' ) : array( 'pdp_on_model_front', 'pdp_on_model_back', 'pdp_detail' );
+	$valid        = static function ( $id ) use ( $sku, $collection, $inventory, $roles ) {
+		$url    = $id ? wp_get_attachment_url( $id ) : '';
 		$prefix = rtrim( SKYYROSE2_URI, '/' ) . '/';
-		if ( ! is_string( $url ) || 0 !== strpos( $url, $prefix ) ) { return false; }
+		if ( ! is_string( $url ) || 0 !== strpos( $url, $prefix ) ) {
+			return false; }
 		$relative = rawurldecode( explode( '?', explode( '#', substr( $url, strlen( $prefix ) ) )[0] )[0] );
-		$record = $inventory['assets'][ $relative ] ?? array();
-		if ( array( $sku ) !== ( $record['skus'] ?? null ) || array( $collection ) !== ( $record['collections'] ?? null ) ) { return false; }
+		$record   = $inventory['assets'][ $relative ] ?? array();
+		if ( array( $sku ) !== ( $record['skus'] ?? null ) || array( $collection ) !== ( $record['collections'] ?? null ) ) {
+			return false; }
 		foreach ( $roles as $role ) {
-			if ( skyyrose2_media_path_allowed( $relative, $role, $sku ) ) { return true; }
+			if ( skyyrose2_media_path_allowed( $relative, $role, $sku ) ) {
+				return true; }
 		}
 		return false;
 	};
-	$ids = array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() );
-	$ids = array_values( array_unique( array_filter( array_map( 'absint', $ids ), $valid ) ) );
-	return array( 'state' => $front ? 'v2-original' : ( $ids ? 'commerce' : 'missing' ), 'ids' => $ids, 'front' => $front );
+	$ids          = array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() );
+	$ids          = array_values( array_unique( array_filter( array_map( 'absint', $ids ), $valid ) ) );
+	return array(
+		'state' => $front ? 'v2-original' : ( $ids ? 'commerce' : 'missing' ),
+		'ids'   => $ids,
+		'front' => $front,
+	);
 }
 
 /** Keep Product schema imagery aligned with the PDP's permitted primary. */
