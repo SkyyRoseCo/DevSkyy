@@ -130,7 +130,7 @@ Run on 2026-05-05 against br-001 from a `feat/v2-phase-0-5` git worktree (after 
 
 **What this proves:**
 - ✅ The VisionContext refactor is regression-free. The validator ran end-to-end with no exception path; spec source confirmed as "canonical dossier (4,152c spec text)" — Tier 2 wiring works through the typed dataclass.
-- ✅ The result JSON serialized cleanly via `vision_desc.to_dict()` without leaking the `Dossier` object. See `tasks/layer1-validation-1778015839.json`.
+- ✅ The result JSON serialized cleanly via `vision_desc.to_dict()` without leaking the `Dossier` object. See `tasks/archive/2026-h1/layer1-validation-1778015839.json`.
 - ⚠️ The +24 lift is below the historical +36 (canonical) and +45 (fake DNA) runs. **The +24 is honest.** Today's baseline is lower (38 vs 45) because Opus 4.7 now vetoes hallucinations the prior run flagged less aggressively — the existing `br-001-crewneck.png` carries full-color rose artwork violating the canonical "tonal embossed black-on-black" spec.
 - ⚠️ Hallucination veto persists post-refine (True → True). That's a generation-quality story, not a refactor regression. Multi-pass refinement would likely close more of the gap.
 
@@ -140,7 +140,7 @@ Run on 2026-05-05 against br-001 from a `feat/v2-phase-0-5` git worktree (after 
 
 ## Honest open items (not blocking)
 
-1. **Multi-SKU production validation deferred.** The Phase 1 driver (`_validate_pipeline_multi_sku.py`, ~$5–$15 per run, one SKU per collection) is captured in the plan at `tasks/plan-layer1-tier2-closeout.md` but not yet executed. The single-SKU `_validate_layer1.py` from the prior session validated br-001 only.
+1. **Multi-SKU production validation deferred.** The Phase 1 driver (`_validate_pipeline_multi_sku.py`, ~$5–$15 per run, one SKU per collection) is captured in the plan at `tasks/archive/2026-h1/plan-layer1-tier2-closeout.md` but not yet executed. The single-SKU `_validate_layer1.py` from the prior session validated br-001 only.
 
 2. **Tournament + engine_fal coverage at 85%, not 98%.** The remaining gaps (`tournament.py:434-467` GPT vision adapter SDK call, `502-536` Opus synthesis SDK call; `engine_fal.py:69-86` the `_fal_available()` import-guard branches) require either real SDK dispatch or import-mocking that hides what's being tested. Documented as integration territory.
 
@@ -164,5 +164,5 @@ Run on 2026-05-05 against br-001 from a `feat/v2-phase-0-5` git worktree (after 
 - `tests/scripts/nano_banana/test_vision_context.py` — **new**, 32 tests
 
 **Docs (2 files):**
-- `tasks/plan-layer1-tier2-closeout.md` — **new**, the multi-phase plan
+- `tasks/archive/2026-h1/plan-layer1-tier2-closeout.md` — **new**, the multi-phase plan
 - `tasks/pr-description-phase-0-5-closeout.md` — **new**, this file
