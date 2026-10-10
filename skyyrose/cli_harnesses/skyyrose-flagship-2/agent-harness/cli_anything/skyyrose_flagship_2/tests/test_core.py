@@ -601,3 +601,101 @@ def test_review_of_other_harness_code_does_not_count(repo: Path, tmp_path: Path)
         out_dir=tmp_path / "o",
     )
     assert rec["fashion_theme_team"]["status"] == "BLOCKED"
+
+
+# ---------------------------------------------------------------------------
+# CLI commands in-process (synthetic repo; real npm for the failing-gate path)
+# ---------------------------------------------------------------------------
+
+
+def _cli(repo: Path, *args: str, input: str | None = None):
+    from click.testing import CliRunner
+
+    from cli_anything.skyyrose_flagship_2.skyyrose_flagship_2_cli import CliState, cli
+
+    return CliRunner().invoke(cli, ["--repo-root", str(repo), *args], obj=CliState(), input=input)
+
+
+@pytest.fixture()
+def pinned_ok(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Accept the host toolchain so a synthetic gate can run through real npm."""
+    import os
+
+    tc = Toolchain(
+        path_env=os.environ["PATH"],
+        node="22.23.2",
+        npm="10.9.8",
+        python="3.12.12",
+        php="8.5.6",
+        pins={"node": "22.23.2", "npm": "10.9.8", "python": "3.12.12"},
+    )
+    monkeypatch.setattr(backend, "resolve_toolchain", lambda repo: tc)
+    monkeypatch.setenv("SKYYROSE2_GATE_OWNER", "builder")
+
+
+class TestCliCommands:
+    def test_version_show_and_bump(self, repo: Path) -> None:
+        shown = _cli(repo, "--json", "version", "show")
+        assert shown.exit_code == 0 and json.loads(shown.output)["version"] == "2.5.1"
+        plan = _cli(repo, "--json", "version", "bump", "--to", "2.6.0", "--plan")
+        assert json.loads(plan.output)["files"] == ["functions.php", "readme.txt", "style.css"]
+        assert ver_mod.read_version(repo / THEME).current == "2.5.1"
+        bumped = _cli(repo, "--json", "version", "bump", "--to", "2.6.0")
+        assert bumped.exit_code == 0 and ver_mod.read_version(repo / THEME).current == "2.6.0"
+
+    def test_version_check_disagreement_exits_3(self, repo: Path) -> None:
+        (repo / THEME / "readme.txt").write_text("Stable tag: 2.5.0\n")
+        result = _cli(repo, "--json", "version", "check")
+        assert result.exit_code == 3 and json.loads(result.stdout)["consistent"] is False
+
+    def test_fixture_status_missing_then_present(
+        self, repo: Path, tmp_path: Path, monkeypatch
+    ) -> None:
+        monkeypatch.delenv("V2_WP_FIXTURE", raising=False)
+        pins = repo / backend.FIXTURE_PINS_REL
+        pins.parent.mkdir(parents=True, exist_ok=True)
+        pins.write_text("{}")
+        missing = _cli(repo, "--json", "fixture", "status")
+        assert missing.exit_code == 3 and json.loads(missing.stdout)["present"] is False
+        fixture = tmp_path / "fx"
+        fixture.mkdir()
+        monkeypatch.setenv("V2_WP_FIXTURE", str(fixture))
+        present = _cli(repo, "--json", "fixture", "status")
+        assert present.exit_code == 0 and json.loads(present.output)["path"] == str(fixture)
+
+    def test_session_new_and_show(self, repo: Path) -> None:
+        created = json.loads(_cli(repo, "--json", "session", "new").output)
+        shown = json.loads(_cli(repo, "--json", "session", "show").output)
+        assert shown["session_id"] == created["session_id"] and shown["runs"] == []
+
+    def test_failing_gate_exits_3_and_is_saved(self, repo: Path, pinned_ok: None) -> None:
+        scripts = json.loads((repo / THEME / "package.json").read_text())
+        scripts["scripts"]["check:registry"] = "exit 1"
+        (repo / THEME / "package.json").write_text(json.dumps(scripts))
+        result = _cli(repo, "--json", "check", "run", "check:registry")
+        assert result.exit_code == 3
+        payload = json.loads(result.output)
+        assert payload["ok"] is False and payload["runs"][0]["status_reason"] == "exit 1"
+        saved = sess_mod.load_session(payload["session_id"])
+        assert [r["status"] for r in saved.runs] == ["FAIL"]
+
+    def test_check_all_fail_fast_stops_at_first_failure(self, repo: Path, pinned_ok: None) -> None:
+        pkg = json.loads((repo / THEME / "package.json").read_text())
+        for name in gates_mod.CHECK_ALL_ORDER:
+            pkg["scripts"][name] = "exit 0"
+        pkg["scripts"][gates_mod.CHECK_ALL_ORDER[1]] = "exit 2"
+        (repo / THEME / "package.json").write_text(json.dumps(pkg))
+        result = _cli(repo, "--json", "check", "all", "--fail-fast")
+        runs = json.loads(result.output)["runs"]
+        assert result.exit_code == 3 and [r["status"] for r in runs] == ["PASS", "FAIL"]
+
+    def test_dry_run_does_not_save(self, repo: Path, pinned_ok: None) -> None:
+        result = _cli(repo, "--json", "--dry-run", "check", "run", "check:registry")
+        assert result.exit_code == 0 and json.loads(result.output)["saved"] is False
+        assert sess_mod.list_sessions() == []
+
+    def test_repl_runs_piped_commands_and_exits(self, repo: Path) -> None:
+        """Regression: prompt_toolkit swallowed piped stdin, so agents got no output."""
+        result = _cli(repo, input="version show\nhelp\nversion bump --to 9\nexit\n")
+        assert result.exit_code == 0, result.output
+        assert "2.5.1" in result.output and "Version must be X.Y.Z" in result.output

@@ -139,6 +139,10 @@ def test_gates_to_god_mode_x_pass(run, tmp_path: Path) -> None:
     else:
         assert exported.returncode == 0, exported.stdout
         assert record["claim"] == "verified" and payload["god_mode_x"]["gate"] == "PASS"
+        validated = json.loads(
+            run("--json", "evidence", "validate", str(out / "task-evidence.json")).stdout
+        )
+        assert validated["gate"] == "PASS" and validated["exit_code"] == 0
         assert payload["fashion_theme_team"] == "BLOCKED"
     assert _tracked_state() == before
 

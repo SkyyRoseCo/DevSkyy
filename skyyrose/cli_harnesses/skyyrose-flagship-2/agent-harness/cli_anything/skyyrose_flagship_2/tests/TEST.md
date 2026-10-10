@@ -6,7 +6,7 @@
 
 | File | Kind | Planned |
 |---|---|---|
-| `test_core.py` | Unit: synthetic git repos in `tmp_path`, no network, no real theme | 27 planned → 45 written (incl. parametrized; 9 added from the independent review) |
+| `test_core.py` | Unit: synthetic git repos in `tmp_path`, no network, no real theme | 27 planned → 53 written (incl. parametrized; 9 added from the independent review, 8 in-process CLI command tests added for coverage) |
 | `test_full_e2e.py` | E2E: the real flagship-2 theme scripts + God Mode X's real checker + installed CLI via subprocess | 10 planned → 10 written (incl. parametrized) |
 
 ### Unit plan (`test_core.py`)
@@ -131,7 +131,7 @@ tests/test_full_e2e.py::test_build_plan_does_not_run PASSED
 ============================= 55 passed in 15.44s ==============================
 ```
 
-**Summary:** 55 passed, 0 failed (45 unit, 10 E2E) with `SKYYROSE2_E2E=1`. Without the opt-in: 45 passed, 10 skipped. The installed command was used, as the `[_resolve_cli]` line shows.
+**Summary:** 63 passed, 0 failed (53 unit, 10 E2E) with `SKYYROSE2_E2E=1`. Without the opt-in: 53 passed, 10 skipped. (The per-test listing above is the 55-test run, before the coverage tests were added.) The installed command was used, as the `[_resolve_cli]` line shows.
 
 ### Full gate chain through the installed CLI
 
@@ -173,5 +173,20 @@ The first full run had no WordPress fixture, and `verify` failed with exit 255 (
 ### Coverage gaps
 
 - **Build gates:** a real `build run` is not covered by an automated E2E, because it rewrites tracked files in the checkout under test. It was run by hand once: `build run build:registry` and `build run build:assets` both returned PASS on the clean tree and left 0 tracked changes, so the outputs reproduced byte-identical.
-- **REPL:** the REPL loop has no automated test, because it needs an interactive TTY.
+- **REPL:** `test_repl_runs_piped_commands_and_exits` drives it with piped stdin. Writing that test exposed a real bug: prompt_toolkit swallowed piped input, so an agent running `printf 'info\n' | cli-anything-skyyrose-flagship-2` got no output. The REPL now uses `input()` when stdin is not a TTY. The interactive prompt_toolkit path is not covered by automated tests.
 - **Preview:** not implemented (see README).
+
+### Coverage
+
+The E2E tests drive the installed CLI through a subprocess, which plain `pytest --cov` does not count. With that tool, the CLI module looked like 51% and `backend.py` like 73%. The real figures come from coverage.py 7.16 run with `[run] patch = subprocess` and `parallel = true`, then `coverage combine`:
+
+| Module | Coverage |
+|---|---|
+| core/candidate.py | 100% |
+| core/gates.py | 100% |
+| core/evidence.py | 93% |
+| core/version.py | 92% |
+| skyyrose_flagship_2_cli.py | 93% |
+| utils/backend.py | 87% |
+| core/session.py | 85% |
+| **Total** (excluding the vendored `repl_skin.py` and `__main__.py`) | **91%** |

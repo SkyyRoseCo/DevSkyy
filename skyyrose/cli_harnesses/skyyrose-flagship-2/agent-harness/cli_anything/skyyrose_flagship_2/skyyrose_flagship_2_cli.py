@@ -642,7 +642,8 @@ def repl(ctx: click.Context) -> None:
     state.repl_mode = True
     skin = state.skin
     skin.print_banner()
-    pt = skin.create_prompt_session()
+    # prompt_toolkit swallows piped (non-TTY) input; agents pipe commands, so use input() there.
+    pt = skin.create_prompt_session() if sys.stdin.isatty() else None
     commands = {
         name: (cmd.help or "").split("\n")[0]
         for name, cmd in cli.commands.items()
