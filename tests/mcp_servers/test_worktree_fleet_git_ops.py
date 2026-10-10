@@ -15,7 +15,9 @@ from mcp_servers.worktree_fleet.git_ops import (
     PushState,
     _commit_subjects,
     add_worktree,
+    branch_commits_off_remotes,
     is_dirty,
+    list_worktrees,
     push_status,
     remove_worktree,
 )
@@ -306,3 +308,65 @@ class TestBranchMustBeALocalBranch:
         wt_path = tmp_path / "wt-attached"
         add_worktree(repo_root=tagged, worktree_path=wt_path, branch="attached", base_ref="main")
         assert _git(["symbolic-ref", "HEAD"], cwd=wt_path).stdout.strip() == "refs/heads/attached"
+
+
+class TestBranchCommitsOffRemotes:
+    """Whether a branch whose worktree folder is gone still holds work no remote has."""
+
+    def test_pushed_local_branch_has_none(self, repo: Path) -> None:
+        _git(["branch", "pushed"], cwd=repo)
+        _git(["push", "origin", "pushed"], cwd=repo)
+        assert branch_commits_off_remotes(repo_root=repo, branch="pushed") == []
+
+    def test_local_commit_missing_from_every_remote_is_listed(self, repo: Path) -> None:
+        _git(["checkout", "-b", "local-only"], cwd=repo)
+        (repo / "x.txt").write_text("x")
+        _git(["add", "x.txt"], cwd=repo)
+        _git(["commit", "-m", "only here"], cwd=repo)
+        commits = branch_commits_off_remotes(repo_root=repo, branch="local-only")
+        assert commits is not None and len(commits) == 1
+        assert "only here" in commits[0]
+
+    def test_branch_deleted_locally_but_on_a_remote_has_none(self, repo: Path) -> None:
+        _git(["branch", "remote-only"], cwd=repo)
+        _git(["push", "origin", "remote-only"], cwd=repo)
+        _git(["branch", "-D", "remote-only"], cwd=repo)
+        assert branch_commits_off_remotes(repo_root=repo, branch="remote-only") == []
+
+    def test_branch_that_exists_nowhere_is_none_not_empty(self, repo: Path) -> None:
+        """None is "cannot tell", which a caller must not read as "nothing unpushed"."""
+        assert branch_commits_off_remotes(repo_root=repo, branch="never-existed") is None
+
+    def test_a_suffix_match_is_not_the_branch(self, repo: Path) -> None:
+        """origin/feat/x must not vouch for a branch named x."""
+        _git(["branch", "feat/x"], cwd=repo)
+        _git(["push", "origin", "feat/x"], cwd=repo)
+        _git(["branch", "-D", "feat/x"], cwd=repo)
+        assert branch_commits_off_remotes(repo_root=repo, branch="x") is None
+
+    def test_option_like_branch_is_rejected(self, repo: Path) -> None:
+        with pytest.raises(ValueError):
+            branch_commits_off_remotes(repo_root=repo, branch="--all")
+
+    def test_missing_repo_raises_rather_than_reporting_clean(self, tmp_path: Path) -> None:
+        with pytest.raises((subprocess.CalledProcessError, OSError, ValueError)):
+            branch_commits_off_remotes(repo_root=tmp_path / "gone", branch="main")
+
+
+class TestListWorktreesPrunable:
+    def test_folder_deleted_without_git_is_flagged_prunable(
+        self, repo: Path, tmp_path: Path
+    ) -> None:
+        import shutil
+
+        wt_path = tmp_path / "wt-rmrf"
+        add_worktree(repo_root=repo, worktree_path=wt_path, branch="rmrf", base_ref="main")
+        shutil.rmtree(wt_path)
+        [entry] = [w for w in list_worktrees(repo) if w.get("branch") == "rmrf"]
+        assert "prunable" in entry
+
+    def test_live_worktree_is_not_prunable(self, repo: Path, tmp_path: Path) -> None:
+        wt_path = tmp_path / "wt-live"
+        add_worktree(repo_root=repo, worktree_path=wt_path, branch="live", base_ref="main")
+        [entry] = [w for w in list_worktrees(repo) if w.get("branch") == "live"]
+        assert "prunable" not in entry

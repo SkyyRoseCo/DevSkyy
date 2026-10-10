@@ -78,7 +78,12 @@ def remove_worktree(repo_root: Path, worktree_path: Path, force: bool = False) -
 
 
 def list_worktrees(repo_root: Path) -> list[dict[str, str]]:
-    """Parse `git worktree list --porcelain` into a list of {path, branch, head}."""
+    """Parse `git worktree list --porcelain` into a list of {path, branch, head}.
+
+    An entry whose folder was deleted without `git worktree remove` (rm -rf, a
+    disk cleanup) stays listed until `git worktree prune`; it also carries
+    "prunable", git's own word for "registered, but the folder is gone".
+    """
     result = _run(["worktree", "list", "--porcelain"], cwd=repo_root)
     entries: list[dict[str, str]] = []
     current: dict[str, str] = {}
@@ -95,9 +100,35 @@ def list_worktrees(repo_root: Path) -> list[dict[str, str]]:
             current["head"] = value
         elif key == "branch":
             current["branch"] = value.removeprefix("refs/heads/")
+        elif key == "prunable":
+            current["prunable"] = value or "gitdir file points to non-existent location"
     if current:
         entries.append(current)
     return entries
+
+
+def branch_commits_off_remotes(repo_root: Path, branch: str) -> list[str] | None:
+    """Commits on `branch` that no remote-tracking ref contains, checked from the
+    repo itself — for a worktree whose folder is already gone.
+
+    Returns None when the branch exists neither locally nor on any remote: with
+    nothing left to inspect, "no unpushed commits" cannot be proven, and an
+    empty list would claim it (bug-230 shape). A branch present only as a
+    remote-tracking ref is fully on that remote, so it returns [].
+    """
+    _reject_option_like(branch=branch)
+    if _resolves(f"refs/heads/{branch}", repo_root):
+        result = _run(
+            ["log", f"refs/heads/{branch}", "--not", "--remotes", "--oneline"], cwd=repo_root
+        )
+        return [line for line in result.stdout.splitlines() if line.strip()]
+    remote_refs = _run(["for-each-ref", "--format=%(refname)", "refs/remotes"], cwd=repo_root)
+    # Exact <remote>/<branch> only: a suffix match would let origin/feat/x vouch for x.
+    for ref in remote_refs.stdout.splitlines():
+        parts = ref.removeprefix("refs/remotes/").split("/", 1)
+        if len(parts) == 2 and parts[1] == branch:
+            return []
+    return None
 
 
 def is_dirty(worktree_path: Path) -> bool:

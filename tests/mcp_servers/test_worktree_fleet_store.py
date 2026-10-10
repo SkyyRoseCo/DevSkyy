@@ -231,6 +231,13 @@ class TestPrune:
                 AssertionError("should not be called in dry_run")
             ),
         )
+        # Precondition: git still registers these worktrees (a folder the
+        # orphan check would otherwise judge missing, since the paths are fake).
+        monkeypatch.setattr(
+            git_ops,
+            "list_worktrees",
+            lambda repo_root: [{"path": p} for p in ("/wt-a", "/wt-b")],
+        )
         store.claim(
             repo_root=Path("/repo"),
             worktree_path=Path("/wt-a"),
@@ -436,6 +443,13 @@ class TestPruneRemoval:
     @pytest.fixture
     def closed_store(self, store: WorktreeFleetStore, monkeypatch: pytest.MonkeyPatch):
         monkeypatch.setattr(git_ops, "add_worktree", lambda **kwargs: None)
+        # Precondition: git still registers these worktrees (a folder the
+        # orphan check would otherwise judge missing, since the paths are fake).
+        monkeypatch.setattr(
+            git_ops,
+            "list_worktrees",
+            lambda repo_root: [{"path": p} for p in ("/wt-a", "/wt-b")],
+        )
         for name in ("a", "b"):
             store.claim(
                 repo_root=Path("/repo"),
@@ -612,3 +626,158 @@ class TestWorktreePathContainment:
         link_parent.symlink_to(repo_root.parent, target_is_directory=True)
         self._claim(store, repo_root, link_parent / "DevSkyy-wt-a")
         assert store.get(real) is not None, "symlinked path registered a second row"
+
+
+class TestPruneOrphanedRows:
+    """Rows whose worktree folder was removed outside the registry.
+
+    release() and prune() both need the folder (git status / git worktree
+    remove), so before this nothing could close such a row: three live rows
+    sat `active` for weeks pointing at directories that no longer existed.
+    """
+
+    @pytest.fixture
+    def orphan(
+        self, store: WorktreeFleetStore, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> Path:
+        monkeypatch.setattr(git_ops, "add_worktree", lambda **kwargs: None)
+        monkeypatch.setattr(git_ops, "list_worktrees", lambda repo_root: [])
+        monkeypatch.setattr(
+            git_ops,
+            "remove_worktree",
+            lambda **kwargs: (_ for _ in ()).throw(
+                AssertionError("an orphan has no folder for git to remove")
+            ),
+        )
+        wt = tmp_path / "wt-gone"
+        store.claim(
+            repo_root=tmp_path / "repo",
+            worktree_path=wt,
+            branch="gone",
+            owner="claude:s1",
+            purpose="p",
+            base_ref="main",
+        )
+        assert not wt.exists()
+        return wt
+
+    def _branch_state(self, monkeypatch: pytest.MonkeyPatch, value: list[str] | None) -> None:
+        monkeypatch.setattr(git_ops, "branch_commits_off_remotes", lambda **kwargs: value)
+
+    def test_dry_run_reports_a_pushed_orphan_without_removing_it(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        self._branch_state(monkeypatch, [])
+        result = store.prune(dry_run=True, ttl_hours=0)
+        assert [r["path"] for r in result["would_remove_orphaned"]] == [str(orphan)]
+        assert store.get(orphan) is not None
+
+    def test_pushed_orphan_row_is_deleted_without_calling_git_remove(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        self._branch_state(monkeypatch, [])
+        result = store.prune(dry_run=False, ttl_hours=0)
+        assert [r["path"] for r in result["removed_orphaned"]] == [str(orphan)]
+        assert store.get(orphan) is None
+        assert result["abandoned_candidates"] == []
+
+    def test_orphan_with_commits_on_no_remote_is_kept(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        self._branch_state(monkeypatch, ["abc123 only here"])
+        result = store.prune(dry_run=False, ttl_hours=0)
+        assert result["removed_orphaned"] == []
+        [kept] = result["orphaned_unverifiable"]
+        assert "abc123 only here" in kept["reason"]
+        assert store.get(orphan) is not None
+
+    def test_orphan_whose_branch_exists_nowhere_is_kept(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        self._branch_state(monkeypatch, None)
+        result = store.prune(dry_run=False, ttl_hours=0)
+        assert [r["path"] for r in result["orphaned_unverifiable"]] == [str(orphan)]
+        assert store.get(orphan) is not None
+
+    def test_a_failed_branch_check_keeps_the_row(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        def boom(**kwargs: object) -> None:
+            raise subprocess.CalledProcessError(128, ["git"], "", "not a git repository")
+
+        monkeypatch.setattr(git_ops, "branch_commits_off_remotes", boom)
+        result = store.prune(dry_run=False, ttl_hours=0)
+        [kept] = result["orphaned_unverifiable"]
+        assert "not a git repository" in kept["reason"]
+        assert store.get(orphan) is not None
+
+    def test_a_failed_worktree_listing_keeps_the_row(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        def boom(repo_root: Path) -> list[dict[str, str]]:
+            raise FileNotFoundError(repo_root)
+
+        monkeypatch.setattr(git_ops, "list_worktrees", boom)
+        self._branch_state(monkeypatch, [])
+        result = store.prune(dry_run=False, ttl_hours=0)
+        assert [r["path"] for r in result["orphaned_unverifiable"]] == [str(orphan)]
+        assert store.get(orphan) is not None
+
+    def test_a_folder_git_still_registers_is_not_an_orphan(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """Missing on disk but still in `git worktree list` (e.g. an unmounted
+        volume): git is the authority, so this stays an ordinary active row."""
+        monkeypatch.setattr(
+            git_ops, "list_worktrees", lambda repo_root: [{"path": str(orphan), "branch": "gone"}]
+        )
+        self._branch_state(monkeypatch, [])
+        result = store.prune(dry_run=False, ttl_hours=0)
+        assert result["removed_orphaned"] == []
+        assert [r["path"] for r in result["abandoned_candidates"]] == [str(orphan)]
+        assert store.get(orphan) is not None
+
+    def test_a_prunable_listing_is_still_an_orphan(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """rm -rf leaves the worktree listed but flagged prunable — git itself
+        says the folder is gone, so the row is judged like any other orphan."""
+        monkeypatch.setattr(
+            git_ops,
+            "list_worktrees",
+            lambda repo_root: [{"path": str(orphan), "branch": "gone", "prunable": "gone"}],
+        )
+        self._branch_state(monkeypatch, [])
+        result = store.prune(dry_run=False, ttl_hours=0)
+        assert [r["path"] for r in result["removed_orphaned"]] == [str(orphan)]
+        assert store.get(orphan) is None
+
+    def test_a_fresh_row_is_never_treated_as_an_orphan(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """claim() inserts the row before `git worktree add` runs, so a brand-new
+        row legitimately has no folder yet. The TTL protects it."""
+        self._branch_state(monkeypatch, [])
+        result = store.prune(dry_run=False, ttl_hours=24)
+        assert result["removed_orphaned"] == []
+        assert result["would_remove_orphaned"] == []
+        assert store.get(orphan) is not None
+
+    def test_closed_orphan_is_removed_instead_of_failing_in_git(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        store._mark_ready_to_merge_for_test(orphan)
+        self._branch_state(monkeypatch, None)
+        result = store.prune(dry_run=False, ttl_hours=0)
+        assert result["failed"] == []
+        assert [r["path"] for r in result["removed_orphaned"]] == [str(orphan)]
+        assert store.get(orphan) is None
+
+    def test_a_present_folder_is_never_an_orphan(
+        self, store: WorktreeFleetStore, orphan: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        orphan.mkdir()
+        self._branch_state(monkeypatch, [])
+        result = store.prune(dry_run=False, ttl_hours=0)
+        assert result["removed_orphaned"] == []
+        assert store.get(orphan) is not None
