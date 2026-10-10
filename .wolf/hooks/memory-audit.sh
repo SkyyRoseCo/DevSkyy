@@ -6,23 +6,25 @@
 #
 #   {
 #     "type": "command",
-#     "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/memory-audit.sh",
+#     "command": "bash \"$CLAUDE_PROJECT_DIR/.wolf/hooks/memory-audit.sh\"",
 #     "timeout": 5
 #   }
 #
 # Exits 0 on success (including when decay is detected — decay is informational,
-# not a failure). Exits non-zero only if the Python script crashes.
+# not a failure). Exits non-zero if the audit script is missing or crashes.
 #
-# Override repo root with SKYYROSE_REPO_ROOT env var if needed.
+# Repo root: SKYYROSE_REPO_ROOT, else CLAUDE_PROJECT_DIR, else this script's
+# own checkout (two levels up), so it works on any machine and in worktrees.
 
 set -euo pipefail
 
-REPO_ROOT="${SKYYROSE_REPO_ROOT:-/Users/theceo/DevSkyy}"
+REPO_ROOT="${SKYYROSE_REPO_ROOT:-${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}}"
 AUDIT_PY="${REPO_ROOT}/.wolf/hooks/memory-audit.py"
 
 if [[ ! -f "$AUDIT_PY" ]]; then
+  # Surface it as a (non-blocking) hook error rather than a silent no-op.
   echo "[memory-audit] $AUDIT_PY not found" >&2
-  exit 0   # non-blocking — a missing audit script shouldn't kill the session
+  exit 1
 fi
 
 exec python3 "$AUDIT_PY" "$@"
