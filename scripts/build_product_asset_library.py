@@ -21,8 +21,12 @@ from PIL.PngImagePlugin import PngInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from skyyrose.core.paths import PRODUCT_ASSETS  # noqa: E402
 from skyyrose.core.product import all_skus, get_product  # noqa: E402
 from skyyrose.core.product_registry import load_registry  # noqa: E402
+
+CATALOG_DIR = PRODUCT_ASSETS / "catalog"
+REVIEW_DIR = PRODUCT_ASSETS / "outside-verified-products"
 
 
 def digest(path: Path) -> str:
@@ -126,7 +130,7 @@ def product_sources(product: dict) -> list[dict]:
 def build_product(product: dict, policy: dict, check: bool) -> dict:
     sku = product["sku"]
     directory = inside(ROOT, product["asset_library"]["directory"])
-    expected_directory = ROOT / "assets/products/catalog" / product["collection"] / sku
+    expected_directory = CATALOG_DIR / product["collection"] / sku
     if directory != expected_directory:
         raise ValueError(f"Incorrect product directory: {sku}")
     entries = []
@@ -208,7 +212,7 @@ def build_product(product: dict, policy: dict, check: bool) -> dict:
 
 def build_review(inventory: Path, external_root: Path | None, reviewed_hashes: set[str]) -> dict:
     rows = json.loads(inventory.read_text())["files"]
-    review = ROOT / "assets/products/outside-verified-products"
+    review = REVIEW_DIR
     review.mkdir(parents=True, exist_ok=True)
     counts = {}
     missing = []
@@ -276,7 +280,7 @@ def main() -> int:
         "products": summaries,
     }
     write_text(
-        ROOT / "assets/products/catalog/index.json",
+        CATALOG_DIR / "index.json",
         json.dumps(overview, indent=2) + "\n",
         args.check,
     )

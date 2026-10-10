@@ -286,7 +286,7 @@ class SkyyRoseBrandValidator:
 
             # Get dominant colors
             img_small = img.resize((50, 50))
-            pixels = list(img_small.getdata())
+            pixels = list(img_small.get_flattened_data())
 
             # Calculate average color
             r_avg = sum(p[0] for p in pixels) / len(pixels)
