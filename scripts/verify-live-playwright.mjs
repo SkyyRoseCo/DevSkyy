@@ -39,8 +39,29 @@
 
 import { createRequire } from 'module';
 import { readFileSync } from 'fs';
+import { execFileSync } from 'child_process';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
-const FRONTEND = process.env.PW_FRONTEND_ROOT || '/Users/theceo/DevSkyy/frontend/';
+// Playwright lives in frontend/node_modules. Linked worktrees (the deploy runs
+// from one) usually have no node_modules, so after this checkout's frontend/
+// fall back to the main checkout's — the parent of the shared git directory.
+function mainCheckoutFrontend() {
+  try {
+    const common = execFileSync('git', ['rev-parse', '--path-format=absolute', '--git-common-dir'], {
+      cwd: fileURLToPath(new URL('.', import.meta.url)),
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    return join(dirname(common), 'frontend') + '/';
+  } catch {
+    return null;
+  }
+}
+
+const FRONTEND_CANDIDATES = process.env.PW_FRONTEND_ROOT
+  ? [process.env.PW_FRONTEND_ROOT]
+  : [...new Set([fileURLToPath(new URL('../frontend/', import.meta.url)), mainCheckoutFrontend()].filter(Boolean))];
 
 function loadSpec() {
   const fileArg = process.argv[2] || process.env.PW_VERIFY_SPEC_FILE;
@@ -57,11 +78,16 @@ function cacheBust(url) {
 }
 
 let chromium;
-try {
-  const require = createRequire(FRONTEND);
-  ({ chromium } = require('playwright'));
-} catch (e) {
-  console.error(`[pw-verify] playwright not resolvable from ${FRONTEND}: ${e.message}`);
+for (const root of FRONTEND_CANDIDATES) {
+  try {
+    ({ chromium } = createRequire(root)('playwright'));
+    break;
+  } catch {
+    // Try the next candidate root.
+  }
+}
+if (!chromium) {
+  console.error(`[pw-verify] playwright not resolvable from ${FRONTEND_CANDIDATES.join(' or ')}`);
   process.exit(3);
 }
 
