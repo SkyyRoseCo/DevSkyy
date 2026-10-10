@@ -6,7 +6,7 @@ Deploys pages, 3D models, and WooCommerce products to WordPress.com
 Usage:
     python3 scripts/deploy_to_skyyrose.py \
         --username skyyroseco \
-        --password "HI20 7wmY km9V bFGq OQrv 34mM" \
+        --password "$WP_APP_PASSWORD" \
         --verbose
 
 Author: DevSkyy Platform Team

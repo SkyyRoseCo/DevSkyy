@@ -2765,6 +2765,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "inc/express-checkout.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "inc/frame-delivery.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Native archive responsive frame delivery and exact source fallback",
@@ -3015,6 +3020,11 @@
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
     },
+    "scripts/test-express-checkout.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
     "scripts/test-global-shell-contract.php": {
       "category": "TEST SOURCE",
       "reason": "Preserved shell controls regression",
@@ -3041,6 +3051,11 @@
       "release": false
     },
     "scripts/test-seo-indexing.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/test-validate-sitemap.py": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
@@ -3086,6 +3101,11 @@
       "release": false
     },
     "scripts/validate-scene-production.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-sitemap.py": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false

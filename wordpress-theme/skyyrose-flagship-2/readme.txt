@@ -3,7 +3,7 @@ Contributors: skyyrose
 Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: e-commerce, custom-menu, featured-images, rtl-language-support, accessibility-ready
@@ -45,6 +45,12 @@ Yes. It is idempotent and reuses exact existing pages and menus without replacin
 No. Motion is progressive enhancement. Purchase controls and route links remain available with JavaScript disabled or reduced motion enabled.
 
 == Changelog ==
+
+= 2.5.1 =
+* Express checkout no longer renders twice when WooPayments and Stripe express checkout are both active.
+* Consented analytics integrated and certified; acknowledged events project idempotently.
+* Founder material specifications recorded for 21 products.
+* Search discovery: robots.txt advertises only a resolving sitemap, the Jetpack sitemap lists every product and skips retired/cart/account URLs, duplicate Jetpack metadata is switched off while the theme owns it, and the WordPress tagline is never used as a fallback description.
 
 = 2.5.0 =
 * Whole-site editorial redesign: every route follows one composition — a full-bleed cinematic arrival with a single focal point, editorial chapters, then a quiet colophon. Shared primitives live in theme.css; page sheets compose them.
