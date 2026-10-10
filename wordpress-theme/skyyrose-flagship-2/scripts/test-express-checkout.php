@@ -26,8 +26,12 @@ function remove_action( $name, $callback, $priority = 10 ) {
 }
 class SkyyRose_Test_Wallet_Helper {
 	public $eligible = true;
+	public $woopay   = false;
 	public function should_show_express_checkout_button() {
 		return $this->eligible;
+	}
+	public function should_show_woopay_button() {
+		return $this->woopay;
 	}
 }
 class WC_Payments {
@@ -114,6 +118,34 @@ foreach ( $actions as $action ) {
 		++$checks;
 	}
 }
-if ( 3 !== count( $actions ) ) {
+// WooPay-only eligibility still counts as a WooPayments row; Stripe is deduped.
+WC_Payments::$helper->eligible = false;
+WC_Payments::$helper->woopay   = true;
+foreach ( $actions as $action ) {
+	$hook    = $action[0];
+	$removed = array();
+	skyyrose_test_seed( $hook, WC_Stripe_Express_Checkout_Element::$renderer, $other );
+	skyyrose2_single_express_wallet_row();
+	if ( 2 !== count( $removed ) ) {
+		throw new RuntimeException( 'WooPay-only did not dedupe Stripe: ' . $hook ); }
+	++$checks;
+}
+// Neither wallets nor WooPay: Stripe is the sole provider and is kept.
+WC_Payments::$helper->woopay = false;
+foreach ( $actions as $action ) {
+	$hook    = $action[0];
+	$removed = array();
+	skyyrose_test_seed( $hook, WC_Stripe_Express_Checkout_Element::$renderer, $other );
+	skyyrose2_single_express_wallet_row();
+	if ( $removed ) {
+		throw new RuntimeException( 'Stripe removed when WooPayments renders nothing: ' . $hook ); }
+	++$checks;
+}
+WC_Payments::$helper->eligible = true;
+$hooks                         = array_column( $actions, 0 );
+if ( ! in_array( 'woocommerce_pay_order_before_payment', $hooks, true ) ) {
+	throw new RuntimeException( 'Order-pay hook not covered.' ); }
+++$checks;
+if ( 4 !== count( $actions ) ) {
 	throw new RuntimeException( 'Unexpected display scope.' ); }
 echo 'PASS: ' . $checks . " renderer and fallback checks; no payment settings or gateway filters changed.\n";

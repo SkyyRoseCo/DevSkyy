@@ -489,6 +489,9 @@ jobs:
           fi
           echo "All PHP files passed syntax check"
 
+      - name: Flagship 2 express-checkout regression
+        run: php wordpress-theme/skyyrose-flagship-2/scripts/test-express-checkout.php
+
       # package.json + build scripts live in wordpress-theme/ (the build:css/build:js
       # scripts reference the skyyrose-flagship/ subdir). Running from the subdir
       # itself fails with ENOENT (no package.json there).
