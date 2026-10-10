@@ -185,6 +185,26 @@
       ],
       "owner": "wordpress-theme/skyyrose-flagship/scripts/vendor-three.sh (sha256-pinned in VENDOR.md)",
       "why": "Vendored three.js r170, reproduced byte-identically by vendor-three.sh and pinned per file in VENDOR.md; the GLB QC renderer (webgl_qc.py) renders through this exact tree. Prettier expanded three.module.min.js 691,648 -> 952,111 bytes (bug: commit 220686ae4), which voids the pin."
+    },
+    {
+      "pattern": "docs/brand/constitution-v1/constitution.json",
+      "samples": ["docs/brand/constitution-v1/constitution.json"],
+      "owner": "skyyrose/core/context_resolver.py (sha256 lineage: constitution.json, context-manifest.json, owner-decisions.json, validation.json)",
+      "why": "Owner-ratified constitution; context-manifest.json pins its sha256 and the context resolver refuses to load on a mismatch. A formatter rewrite fails every resolver call."
+    },
+    {
+      "pattern": "docs/brand/constitution-v1/OWNER-RATIFICATION-20260923.md",
+      "samples": ["docs/brand/constitution-v1/OWNER-RATIFICATION-20260923.md"],
+      "owner": "skyyrose/core/context_resolver.py (sha256 lineage: constitution.json, context-manifest.json, owner-decisions.json, validation.json)",
+      "why": "Founder's verbatim ratification handoff, byte-preserved (including a trailing space) because four constitution records pin its sha256 as the evidence for 72 ratified rules. Reformatting breaks that lineage."
+    },
+    {
+      "pattern": "docs/brand/constitution-v1/OWNER-RATIFICATION-KPS-20260923.md",
+      "samples": [
+        "docs/brand/constitution-v1/OWNER-RATIFICATION-KPS-20260923.md"
+      ],
+      "owner": "skyyrose/core/context_resolver.py (sha256 lineage: constitution.json, context-manifest.json, owner-decisions.json, validation.json)",
+      "why": "Founder's verbatim K/P/S ratification handoff, sha256-pinned in the same four constitution records. Reformatting breaks that lineage."
     }
   ]
 }
