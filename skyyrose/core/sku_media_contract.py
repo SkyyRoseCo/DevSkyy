@@ -1,10 +1,10 @@
 """Catalog-derived production contract for complete SkyyRose SKU media.
 
-The catalog CSV remains the only product source of truth.  This module does
-not create a second product/media registry: it reads the generated collection
-SOT through :mod:`skyyrose.core.sot_images` and reports the required views for
-each SKU.  Candidate outputs are review-only until a founder-approved asset is
-promoted into the catalog and re-generated SOT.
+The product registry remains the only product source of truth.  This module
+does not create a second product/media registry: it reads the registry's image
+bindings through :mod:`skyyrose.core.sot_images` and reports the required views
+for each SKU.  Candidate outputs are review-only until a founder-approved asset
+is promoted into the registry.
 """
 
 from __future__ import annotations
@@ -12,7 +12,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Final
 
-from skyyrose.core import sot_images
+from skyyrose.core import paths, sot_images
+
+# Registry image paths are theme-relative (``assets/images/...``).
+_THEME_ROOT: Final = paths.THEME_ROOT
 
 
 @dataclass(frozen=True)
@@ -135,13 +138,12 @@ def _image_path(product: dict, field: str) -> str | None:
     if not isinstance(entry, dict):
         return None
     path = entry.get("path")
-    # ``resolved`` is set only after the canonical collection-SOT builder has
-    # confirmed that the theme asset exists.  A catalog string alone is not a
-    # production-ready view.
-    resolved = entry.get("resolved")
-    if not isinstance(path, str) or not path or not isinstance(resolved, str) or not resolved:
+    if not isinstance(path, str) or not path:
         return None
-    return sot_images._validated_path(path, product.get("sku", "unknown"))
+    path = sot_images._validated_path(path, product.get("sku", "unknown"))
+    # A view is ready only when its bound asset exists. Presence is read from the
+    # file itself, never from a stored ``resolved`` copy that can go missing or stale.
+    return path if (_THEME_ROOT / path).is_file() else None
 
 
 def sku_media_record(sku: str) -> dict | None:
