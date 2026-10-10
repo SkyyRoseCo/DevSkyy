@@ -1,0 +1,603 @@
+"""Unit tests on synthetic git repositories; no network and no real theme."""
+
+from __future__ import annotations
+
+import json
+import subprocess
+from pathlib import Path
+
+import pytest
+from cli_anything.skyyrose_flagship_2.core import candidate as cand_mod
+from cli_anything.skyyrose_flagship_2.core import evidence as ev
+from cli_anything.skyyrose_flagship_2.core import gates as gates_mod
+from cli_anything.skyyrose_flagship_2.core import session as sess_mod
+from cli_anything.skyyrose_flagship_2.core import version as ver_mod
+from cli_anything.skyyrose_flagship_2.utils import backend
+from cli_anything.skyyrose_flagship_2.utils.backend import ScriptResult, Toolchain
+
+THEME = backend.THEME_REL
+
+
+def _git(repo: Path, *args: str) -> str:
+    return subprocess.run(
+        ["git", "-C", str(repo), *args], check=True, capture_output=True, text=True
+    ).stdout
+
+
+@pytest.fixture()
+def repo(tmp_path: Path) -> Path:
+    root = tmp_path / "repo"
+    theme = root / THEME
+    theme.mkdir(parents=True)
+    (theme / "package.json").write_text(
+        json.dumps(
+            {
+                "version": "2.5.1",
+                "scripts": {
+                    "check:registry": "true",
+                    "build:assets": "true",
+                    "render:commerce-scenes": "true",
+                    "certify:x": "true",
+                    "brand-new-script": "true",
+                    "verify": "true",
+                },
+            }
+        )
+    )
+    (theme / "functions.php").write_text("<?php\ndefine( 'SKYYROSE2_VERSION', '2.5.1' );\n")
+    (theme / "style.css").write_text("/*\nTheme Name: X\nVersion: 2.5.1\n*/\n")
+    (theme / "readme.txt").write_text("=== X ===\nStable tag: 2.5.1\n")
+    reg = root / backend.REGISTRY_REL
+    reg.parent.mkdir(parents=True, exist_ok=True)
+    reg.write_text('{"products": {}}\n')
+    digest = backend.sha256_file(reg)
+    inputs = root / backend.BUILD_INPUTS_REL
+    inputs.parent.mkdir(parents=True)
+    inputs.write_text(
+        json.dumps(
+            {
+                "node": "22.23.2",
+                "npm": "10.9.8",
+                "python": "3.12.12",
+                "current_registry_sha256": digest,
+                "input_hashes": {backend.REGISTRY_REL: digest},
+            }
+        )
+    )
+    _git(root, "init", "-q", "-b", "main")
+    _git(root, "-c", "user.name=t", "-c", "user.email=t@t", "add", "-A")
+    _git(root, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "init")
+    return root
+
+
+@pytest.fixture(autouse=True)
+def _home(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("SKYYROSE2_CLI_HOME", str(tmp_path / "clihome"))
+
+
+def _toolchain() -> Toolchain:
+    return Toolchain(
+        path_env="/usr/bin",
+        node="22.23.2",
+        npm="10.9.8",
+        python="3.12.12",
+        php="8.5.6",
+        pins={"node": "22.23.2", "npm": "10.9.8", "python": "3.12.12"},
+    )
+
+
+def _result(
+    script: str = "check:registry", rc: int = 0, changed: list[str] | None = None
+) -> ScriptResult:
+    return ScriptResult(
+        script=script,
+        command=["npm", "run", script],
+        cwd=THEME,
+        returncode=rc,
+        duration_s=0.1,
+        started_at="2026-10-10T00:00:00+00:00",
+        stdout="ok\n",
+        stderr="",
+        changed_paths=changed or [],
+    )
+
+
+def _entry(
+    repo: Path,
+    sess: sess_mod.Session,
+    script: str = "check:registry",
+    rc: int = 0,
+    owner: str = "builder",
+):
+    scripts = backend.load_package_scripts(repo)
+    gate = gates_mod.classify(script, scripts)
+    cand = cand_mod.capture(repo)
+    result = _result(script, rc)
+    header = ev.log_header(gate=gate, result=result, before=cand, after=cand)
+    log = sess.write_log(script, sess_mod.format_log(header, "ok", ""))
+    return ev.run_entry(
+        gate=gate,
+        result=result,
+        before=cand,
+        after=cand,
+        toolchain=_toolchain(),
+        log_path=log,
+        owner=owner,
+    )
+
+
+# ---------------------------------------------------------------------------
+# gates
+# ---------------------------------------------------------------------------
+
+
+class TestGates:
+    def test_every_script_gets_exactly_one_class(self, repo: Path) -> None:
+        scripts = backend.load_package_scripts(repo)
+        kinds = {g.name: g.kind for g in gates_mod.classify_all(scripts)}
+        assert kinds == {
+            "check:registry": "check",
+            "build:assets": "build",
+            "render:commerce-scenes": "blocked",
+            "certify:x": "blocked",
+            "brand-new-script": "unclassified",
+            "verify": "check",
+        }
+
+    def test_unclassified_is_refused(self, repo: Path) -> None:
+        with pytest.raises(gates_mod.GateRefusedError, match="unclassified"):
+            gates_mod.require_runnable(
+                "brand-new-script", backend.load_package_scripts(repo), "check"
+            )
+
+    @pytest.mark.parametrize("name", ["render:commerce-scenes", "certify:x"])
+    def test_blocked_is_refused(self, repo: Path, name: str) -> None:
+        with pytest.raises(gates_mod.GateRefusedError, match="blocked"):
+            gates_mod.require_runnable(name, backend.load_package_scripts(repo), "build")
+
+    def test_build_cannot_run_as_check(self, repo: Path) -> None:
+        with pytest.raises(gates_mod.GateRefusedError, match="build"):
+            gates_mod.require_runnable("build:assets", backend.load_package_scripts(repo), "check")
+
+    def test_missing_script_is_refused(self, repo: Path) -> None:
+        with pytest.raises(gates_mod.GateRefusedError, match="missing"):
+            gates_mod.require_runnable("check:nope", backend.load_package_scripts(repo), "check")
+
+    def test_image_judge_scripts_are_blocked_even_with_check_prefix(self) -> None:
+        gate = gates_mod.classify(
+            "check:image-judge-availability", {"check:image-judge-availability": "x"}
+        )
+        assert gate.kind == "blocked"
+
+
+# ---------------------------------------------------------------------------
+# version
+# ---------------------------------------------------------------------------
+
+
+class TestVersion:
+    def test_reads_triple(self, repo: Path) -> None:
+        state = ver_mod.read_version(repo / THEME)
+        assert state.consistent and state.current == "2.5.1" and state.package_json == "2.5.1"
+
+    def test_detects_disagreement(self, repo: Path) -> None:
+        (repo / THEME / "readme.txt").write_text("Stable tag: 2.5.0\n")
+        state = ver_mod.read_version(repo / THEME)
+        assert not state.consistent
+        with pytest.raises(ver_mod.VersionError, match="disagree"):
+            _ = state.current
+
+    @pytest.mark.parametrize("bad", ["2.5", "v2.6.0", "2.5.1"])
+    def test_rejects_bad_or_noop_version(self, repo: Path, bad: str) -> None:
+        with pytest.raises(ver_mod.VersionError):
+            ver_mod.plan_bump(repo / THEME, bad)
+
+    def test_plan_writes_nothing(self, repo: Path) -> None:
+        before = (repo / THEME / "style.css").read_bytes()
+        plan = ver_mod.plan_bump(repo / THEME, "2.6.0")
+        assert sorted(plan) == ["functions.php", "readme.txt", "style.css"]
+        assert (repo / THEME / "style.css").read_bytes() == before
+
+    def test_write_updates_all_three(self, repo: Path) -> None:
+        state = ver_mod.write_version(repo / THEME, "2.6.0")
+        assert state.sources == {
+            "functions.php": "2.6.0",
+            "style.css": "2.6.0",
+            "readme.txt": "2.6.0",
+        }
+        assert (
+            "define( 'SKYYROSE2_VERSION', '2.6.0' );"
+            in (repo / THEME / "functions.php").read_text()
+        )
+
+    def test_failed_write_rolls_back(self, repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+        real = ver_mod._atomic_write
+        calls = {"n": 0}
+
+        def flaky(path: Path, content: str) -> None:
+            calls["n"] += 1
+            if calls["n"] == 2:
+                raise OSError("disk full")
+            real(path, content)
+
+        monkeypatch.setattr(ver_mod, "_atomic_write", flaky)
+        with pytest.raises(OSError):
+            ver_mod.write_version(repo / THEME, "2.6.0")
+        assert ver_mod.read_version(repo / THEME).current == "2.5.1"
+
+
+# ---------------------------------------------------------------------------
+# candidate
+# ---------------------------------------------------------------------------
+
+
+class TestCandidate:
+    def test_clean_revision_is_head(self, repo: Path) -> None:
+        cand = cand_mod.capture(repo)
+        assert not cand.dirty and cand.revision == _git(repo, "rev-parse", "HEAD").strip()
+
+    def test_edit_dirties_and_changes_id(self, repo: Path) -> None:
+        clean = cand_mod.capture(repo)
+        (repo / THEME / "style.css").write_text("changed\n")
+        dirty = cand_mod.capture(repo)
+        assert dirty.dirty and dirty.candidate_id != clean.candidate_id
+        assert dirty.revision.startswith(clean.head + "+dirty.")
+
+    def test_second_edit_to_dirty_file_changes_id(self, repo: Path) -> None:
+        (repo / THEME / "style.css").write_text("one\n")
+        first = cand_mod.capture(repo)
+        (repo / THEME / "style.css").write_text("two\n")
+        assert cand_mod.capture(repo).candidate_id != first.candidate_id
+
+    def test_untracked_gate_input_dirties_and_changes_id(self, repo: Path) -> None:
+        clean = cand_mod.capture(repo)
+        (repo / THEME / "new-template.php").write_text("<?php\n")
+        dirty = cand_mod.capture(repo)
+        assert dirty.dirty and dirty.candidate_id != clean.candidate_id
+        assert f"{THEME}/new-template.php" in dirty.dirty_paths
+
+    def test_untracked_outside_gate_inputs_is_ignored(self, repo: Path) -> None:
+        clean = cand_mod.capture(repo)
+        (repo / "notes.txt").write_text("scratch\n")
+        assert cand_mod.capture(repo).candidate_id == clean.candidate_id
+
+    def test_commit_changes_id(self, repo: Path) -> None:
+        before = cand_mod.capture(repo)
+        (repo / THEME / "style.css").write_text("Version: 2.5.1\nx\n")
+        _git(repo, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qam", "edit")
+        after = cand_mod.capture(repo)
+        assert not after.dirty and after.candidate_id != before.candidate_id
+
+    def test_pin_status_detects_drift(self, repo: Path) -> None:
+        assert cand_mod.pin_status(repo)["in_sync"] is True
+        (repo / backend.REGISTRY_REL).write_text('{"products": {"x": {}}}\n')
+        status = cand_mod.pin_status(repo)
+        assert status["in_sync"] is False and "founder approval" in status["action"]
+
+
+# ---------------------------------------------------------------------------
+# session
+# ---------------------------------------------------------------------------
+
+
+class TestSession:
+    def test_round_trip(self, repo: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        sess.add_run({"gate_id": "check:registry"})
+        sess.save()
+        loaded = sess_mod.load_session(sess.session_id)
+        assert loaded.runs == [{"gate_id": "check:registry"}]
+        assert sess_mod.current_session_id() == sess.session_id
+
+    def test_schema_mismatch_rejected(self, repo: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        sess.save()
+        data = json.loads(sess.path.read_text())
+        data["schema"] = "other"
+        sess.path.write_text(json.dumps(data))
+        with pytest.raises(sess_mod.SessionError, match="schema"):
+            sess_mod.load_session(sess.session_id)
+
+    def test_resume_only_same_repo(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        sess.save()
+        assert sess_mod.open_or_create(repo).session_id == sess.session_id
+        assert sess_mod.open_or_create(tmp_path / "elsewhere").session_id != sess.session_id
+
+    def test_logs_written_per_run(self, repo: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        log = sess.write_log(
+            "check:registry", sess_mod.format_log({"gate_id": "check:registry"}, "out", "err")
+        )
+        assert (
+            log.is_file()
+            and "out" in log.read_text()
+            and log.name.startswith("0001-check_registry")
+        )
+
+
+# ---------------------------------------------------------------------------
+# evidence
+# ---------------------------------------------------------------------------
+
+
+class TestEvidence:
+    def test_owner_cannot_review_own_candidate(self, repo: Path) -> None:
+        with pytest.raises(ev.EvidenceError, match="independent"):
+            ev.review_entry(
+                candidate=cand_mod.capture(repo),
+                reviewer="Builder",
+                disposition="PASS",
+                note="n",
+                owners={"builder"},
+            )
+
+    def test_check_that_mutates_fails(self, repo: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        gate = gates_mod.classify("check:registry", backend.load_package_scripts(repo))
+        cand = cand_mod.capture(repo)
+        entry = ev.run_entry(
+            gate=gate,
+            result=_result(changed=[f"{THEME}/style.css"]),
+            before=cand,
+            after=cand,
+            toolchain=_toolchain(),
+            log_path=sess.write_log("check:registry", sess_mod.format_log({}, "", "")),
+            owner="builder",
+        )
+        assert entry["status"] == "FAIL" and "changed tracked files" in entry["status_reason"]
+
+    def test_stale_runs_excluded(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        old = _entry(repo, sess)
+        (repo / THEME / "style.css").write_text("Version: 2.5.1\nedit\n")
+        cand = cand_mod.capture(repo)
+        with pytest.raises(ev.EvidenceError, match="No gate runs recorded"):
+            ev.build_record(
+                session_runs=[old],
+                reviews=[],
+                candidate=cand,
+                toolchain=_toolchain(),
+                out_dir=tmp_path / "out",
+            )
+
+    def test_dirty_is_partial_and_failed_is_blocked(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        (repo / THEME / "style.css").write_text("Version: 2.5.1\nedit\n")
+        cand = cand_mod.capture(repo)
+        passing = _entry(repo, sess)
+        rec = ev.build_record(
+            session_runs=[passing],
+            reviews=[],
+            candidate=cand,
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "a",
+        )
+        assert rec["claim"] == "partial" and rec["fashion_theme_team"]["status"] == "BLOCKED"
+        failing = _entry(repo, sess, rc=1)
+        rec = ev.build_record(
+            session_runs=[failing],
+            reviews=[],
+            candidate=cand,
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "b",
+        )
+        assert rec["claim"] == "blocked" and rec["fashion_theme_team"]["status"] == "FAIL"
+        assert rec["findings"][0]["severity"] == "P1"
+
+    def test_independent_review_passes_clean_candidate(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        cand = cand_mod.capture(repo)
+        run = _entry(repo, sess)
+        review = ev.review_entry(
+            candidate=cand,
+            reviewer="reviewer",
+            disposition="PASS",
+            note="read logs",
+            owners={"builder"},
+        )
+        rec = ev.build_record(
+            session_runs=[run],
+            reviews=[review],
+            candidate=cand,
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "out",
+        )
+        assert rec["claim"] == "verified"
+        assert rec["fashion_theme_team"]["status"] == "PASS"
+        assert rec["fashion_theme_team"]["gates"][0]["reviewer"] == "reviewer"
+
+    def test_tampered_log_refused(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        run = _entry(repo, sess)
+        Path(run["artifact"]["path"]).write_text("tampered")
+        with pytest.raises(ev.EvidenceError, match="changed since the run"):
+            ev.build_record(
+                session_runs=[run],
+                reviews=[],
+                candidate=cand_mod.capture(repo),
+                toolchain=_toolchain(),
+                out_dir=tmp_path / "out",
+            )
+
+
+def test_repo_discovery_fails_closed(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("SKYYROSE2_REPO_ROOT", raising=False)
+    monkeypatch.chdir(tmp_path)
+    with pytest.raises(backend.RepoNotFoundError, match="--repo-root"):
+        backend.find_repo_root()
+
+
+def test_verify_refuses_without_wp_fixture(repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    from click.testing import CliRunner
+
+    from cli_anything.skyyrose_flagship_2.skyyrose_flagship_2_cli import CliState, cli
+
+    monkeypatch.delenv("V2_WP_FIXTURE", raising=False)
+    pins = repo / backend.FIXTURE_PINS_REL
+    pins.parent.mkdir(parents=True, exist_ok=True)
+    pins.write_text("{}")
+    result = CliRunner().invoke(
+        cli, ["--json", "--repo-root", str(repo), "check", "run", "verify"], obj=CliState()
+    )
+    assert result.exit_code == 1, (result.output, result.exception)
+    assert "fixture prepare" in json.loads(result.output)["error"]
+
+
+def test_fixture_dir_is_keyed_by_pin_manifest(repo: Path, tmp_path: Path) -> None:
+    pins = repo / backend.FIXTURE_PINS_REL
+    pins.parent.mkdir(parents=True, exist_ok=True)
+    pins.write_text('{"a": 1}')
+    first = backend.managed_fixture_dir(repo, tmp_path)
+    pins.write_text('{"a": 2}')
+    assert backend.managed_fixture_dir(repo, tmp_path) != first
+
+
+def test_missing_fixture_manifest_is_a_clear_error(repo: Path, tmp_path: Path) -> None:
+    with pytest.raises(backend.BackendError, match="manifest missing"):
+        backend.managed_fixture_dir(repo, tmp_path)
+
+
+# ---------------------------------------------------------------------------
+# Regression tests for the independent Fashion Theme Team review (2026-10-10)
+# ---------------------------------------------------------------------------
+
+
+class TestReviewFindings:
+    def test_env_owner_swap_cannot_launder_self_review(self, repo: Path, tmp_path: Path) -> None:
+        """P1: independence is judged against owners recorded on runs, not the env at review time."""
+        sess = sess_mod.new_session(repo)
+        run = _entry(repo, sess, owner="builder")
+        cand = cand_mod.capture(repo)
+        owners = ev.run_owners([run], cand)
+        with pytest.raises(ev.EvidenceError, match="independent"):
+            ev.review_entry(
+                candidate=cand, reviewer="builder", disposition="PASS", note="n", owners=owners
+            )
+        forged = {
+            "candidate_id": cand.candidate_id,
+            "revision": cand.revision,
+            "reviewer": "builder",
+            "disposition": "PASS",
+            "note": "n",
+            "reviewed_at": "2026-10-10T00:00:00+00:00",
+            "harness_sha256": backend.harness_sha256(),
+        }
+        rec = ev.build_record(
+            session_runs=[run],
+            reviews=[forged],
+            candidate=cand,
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
+        assert rec["fashion_theme_team"]["status"] == "BLOCKED"
+
+    def test_review_without_runs_is_refused(self, repo: Path) -> None:
+        with pytest.raises(ev.EvidenceError, match="No gate runs"):
+            ev.review_entry(
+                candidate=cand_mod.capture(repo),
+                reviewer="r",
+                disposition="PASS",
+                note="n",
+                owners=set(),
+            )
+
+    def test_flipped_ledger_status_is_caught(self, repo: Path, tmp_path: Path) -> None:
+        """P2: a FAIL edited to PASS in session.json disagrees with its hashed log."""
+        sess = sess_mod.new_session(repo)
+        run = _entry(repo, sess, rc=1)
+        assert run["status"] == "FAIL"
+        forged = {**run, "status": "PASS", "status_reason": "exit 0"}
+        with pytest.raises(ev.EvidenceError, match="disagrees with its log"):
+            ev.build_record(
+                session_runs=[forged],
+                reviews=[],
+                candidate=cand_mod.capture(repo),
+                toolchain=_toolchain(),
+                out_dir=tmp_path / "o",
+            )
+
+    def test_runs_from_other_harness_code_are_stale(self, repo: Path, tmp_path: Path) -> None:
+        """P1 provenance: evidence binds to the exact harness source that produced it."""
+        sess = sess_mod.new_session(repo)
+        run = {**_entry(repo, sess), "harness_sha256": "0" * 64}
+        with pytest.raises(ev.EvidenceError, match="harness"):
+            ev.build_record(
+                session_runs=[run],
+                reviews=[],
+                candidate=cand_mod.capture(repo),
+                toolchain=_toolchain(),
+                out_dir=tmp_path / "o",
+            )
+
+    def test_record_carries_harness_hash(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        rec = ev.build_record(
+            session_runs=[_entry(repo, sess)],
+            reviews=[],
+            candidate=cand_mod.capture(repo),
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
+        assert rec["cli"]["harness_sha256"] == backend.harness_sha256()
+        assert rec["target"]["environment"].endswith("harness=" + backend.harness_sha256()[:12])
+
+    def test_earlier_failure_is_reported(self, repo: Path, tmp_path: Path) -> None:
+        """P3: a later PASS supersedes an earlier FAIL but the FAIL stays visible."""
+        sess = sess_mod.new_session(repo)
+        failed = _entry(repo, sess, rc=1)
+        sess.add_run(failed)
+        passed = _entry(repo, sess)
+        rec = ev.build_record(
+            session_runs=[failed, passed],
+            reviews=[],
+            candidate=cand_mod.capture(repo),
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
+        assert rec["claim"] == "verified"
+        assert rec["cli"]["earlier_failures"] == {"check:registry": 1}
+        assert any(
+            f["severity"] == "P3" and "failed 1 earlier" in f["description"]
+            for f in rec["findings"]
+        )
+
+    def test_missing_pin_is_a_mismatch(self, repo: Path) -> None:
+        """P3: a pin absent from build-inputs.json fails closed instead of going unchecked."""
+        inputs = repo / backend.BUILD_INPUTS_REL
+        data = json.loads(inputs.read_text())
+        del data["npm"]
+        inputs.write_text(json.dumps(data))
+        tc = backend.resolve_toolchain(repo)
+        assert not tc.ok and any(m.startswith("npm: no pin") for m in tc.mismatches)
+
+    def test_unknown_owner_is_refused(
+        self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    ) -> None:
+        """P3: no anonymous gate owner."""
+        monkeypatch.delenv("SKYYROSE2_GATE_OWNER", raising=False)
+        monkeypatch.setenv("GIT_CONFIG_GLOBAL", str(tmp_path / "empty-gitconfig"))
+        monkeypatch.setenv("GIT_CONFIG_NOSYSTEM", "1")
+        monkeypatch.chdir(tmp_path)
+        with pytest.raises(ev.EvidenceError, match="No gate owner"):
+            ev.default_owner()
+
+
+def test_review_of_other_harness_code_does_not_count(repo: Path, tmp_path: Path) -> None:
+    sess = sess_mod.new_session(repo)
+    run = _entry(repo, sess)
+    cand = cand_mod.capture(repo)
+    review = {
+        **ev.review_entry(
+            candidate=cand, reviewer="r", disposition="PASS", note="n", owners={"builder"}
+        ),
+        "harness_sha256": "0" * 64,
+    }
+    rec = ev.build_record(
+        session_runs=[run],
+        reviews=[review],
+        candidate=cand,
+        toolchain=_toolchain(),
+        out_dir=tmp_path / "o",
+    )
+    assert rec["fashion_theme_team"]["status"] == "BLOCKED"
