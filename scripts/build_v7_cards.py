@@ -10,7 +10,7 @@ br-014/br-015 ``badge="Pre-Order"`` vs ``is_preorder=0`` contradiction verbatim)
 This generator makes it a GENERATED VIEW joining two authorities:
 
   * Catalog fields (name, price, collection, badge, edition, preorder)
-        → the product SOT: ``skyyrose-catalog.csv`` (via ``skyyrose.core.catalog_loader``).
+        → the product SOT: the registry, read through ``skyyrose.core.product.get_product``.
   * Imagery (which SKUs qualify + their shot files)
         → the tracked, promoted V7 served tree
           ``wordpress-theme/skyyrose-flagship/assets/images/products/v7/<sku>/``.
@@ -21,12 +21,12 @@ This generator makes it a GENERATED VIEW joining two authorities:
           (``assets/hub/manifest.json``) is gitignored and absent.
 
 ``preorder`` is therefore a COMPUTED field — it can no longer disagree with the
-CSV. The companion validator check ``v7_cards_current`` regenerates into a buffer
+registry. The companion validator check ``v7_cards_current`` regenerates into a buffer
 and fails CI if the committed file drifts from this generator's output, closing
 the recurrence hole.
 
-Stdlib-only + ``skyyrose.core.catalog_loader`` so it runs in the catalog-validate
-CI job (no project install).
+Stdlib-only + ``skyyrose.core`` so it runs in the catalog-validate CI job (no
+project install).
 
 USAGE:
   python scripts/build_v7_cards.py            # regenerate the file in place
@@ -40,18 +40,15 @@ import argparse
 import sys
 from pathlib import Path
 
-from skyyrose.core.catalog_loader import (
-    CATALOG_CSV,
-    bool_col,
-    int_col,
-    read_catalog_rows,
-)
+from skyyrose.core.catalog_loader import bool_col, int_col
+from skyyrose.core.paths import REPO_ROOT, THEME_ROOT
+from skyyrose.core.product import all_skus, get_product
 
 # ---------------------------------------------------------------------------
-# Paths (derived from the canonical CSV location — single path anchor)
+# Paths (canonical anchors from skyyrose.core.paths)
 # ---------------------------------------------------------------------------
-_THEME_DATA: Path = CATALOG_CSV.parent
-_THEME_ROOT: Path = _THEME_DATA.parent
+_THEME_ROOT: Path = THEME_ROOT
+_THEME_DATA: Path = _THEME_ROOT / "data"
 _V7_IMG_DIR: Path = _THEME_ROOT / "assets" / "images" / "products" / "v7"
 _OUT_PATH: Path = _THEME_DATA / "v7-cards.json"
 
@@ -77,6 +74,11 @@ _GENERATED_BY = (
 )
 
 
+def _registry_rows() -> list[dict[str, str]]:
+    """Every product's catalog section from the registry, via get_product."""
+    return [get_product(sku)["catalog"] for sku in all_skus()]
+
+
 def _shots_for(sku: str) -> list[dict[str, str]]:
     """Return the ordered shot list for a SKU by scanning its served V7 dir.
 
@@ -99,13 +101,14 @@ def _shots_for(sku: str) -> list[dict[str, str]]:
 
 
 def build_cards(rows: list[dict[str, str]] | None = None) -> list[dict]:
-    """Build the V7 card list: every CSV SKU with a promoted ``front`` shot.
+    """Build the V7 card list: every registry SKU with a promoted ``front`` shot.
 
     Cards are emitted in lexicographic SKU order (the established file order).
-    Each card joins CSV catalog fields with the served shot list. ``preorder``
-    is computed from the CSV ``is_preorder`` flag — never hand-set.
+    Each card joins registry catalog fields with the served shot list.
+    ``preorder`` is computed from the ``is_preorder`` flag — never hand-set.
+    ``rows`` overrides the registry with catalog-shaped dicts (tests).
     """
-    catalog_rows = rows if rows is not None else read_catalog_rows()
+    catalog_rows = rows if rows is not None else _registry_rows()
     cards: list[dict] = []
     for row in sorted(catalog_rows, key=lambda r: r["sku"].strip()):
         sku = row["sku"].strip()
@@ -184,7 +187,7 @@ def main(argv: list[str] | None = None) -> int:
 
     _OUT_PATH.write_text(generated, encoding="utf-8")
     doc_count = generated.count('"sku":')
-    print(f"Wrote {_OUT_PATH.relative_to(_THEME_ROOT.parent.parent)} — {doc_count} cards.")
+    print(f"Wrote {_OUT_PATH.relative_to(REPO_ROOT)} — {doc_count} cards.")
     return 0
 
 
