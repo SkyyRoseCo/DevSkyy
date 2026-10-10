@@ -18,8 +18,8 @@ async function getHandler() {
       status: 'healthy',
       timestamp: new Date().toISOString(),
       uptime_seconds: Math.round(uptimeSeconds),
-      version: process.env.VERCEL_GIT_COMMIT_SHA?.substring(0, 7) || 'unknown',
-      region: process.env.VERCEL_REGION || 'unknown',
+      version: process.env.APP_REVISION?.substring(0, 7) || 'unknown',
+      region: process.env.FLY_REGION || 'local',
       checks: {
         api: true,
       },

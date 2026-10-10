@@ -20,8 +20,10 @@ from collections import deque
 from datetime import UTC, datetime
 from typing import Any, Literal
 
-from fastapi import APIRouter, BackgroundTasks, HTTPException, Query
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
+
+from security.jwt_oauth2_auth import TokenPayload, UserRole, get_current_user, require_roles
 
 from .dashboard import agent_registry
 from .websocket_integration import WebSocketIntegration
@@ -272,13 +274,14 @@ async def list_tasks(
     agent_type: str | None = Query(None, alias="agent_type"),
     status: str | None = Query(None),
     limit: int = Query(20, ge=1, le=100),
+    user: TokenPayload = Depends(get_current_user),
 ):
     """List tasks with optional filtering."""
     return await task_store.list_tasks(agent_type=agent_type, status=status, limit=limit)
 
 
 @tasks_router.get("/tasks/{task_id}", response_model=TaskResponse)
-async def get_task(task_id: str):
+async def get_task(task_id: str, user: TokenPayload = Depends(get_current_user)):
     """Get a specific task by ID."""
     task = await task_store.get(task_id)
     if not task:
@@ -287,8 +290,13 @@ async def get_task(task_id: str):
 
 
 @tasks_router.post("/tasks", response_model=TaskResponse)
-async def submit_task(request: TaskRequest, background_tasks: BackgroundTasks):
-    """Submit a new task for execution."""
+@require_roles(UserRole.ADMIN, UserRole.SUPER_ADMIN)
+async def submit_task(
+    request: TaskRequest,
+    background_tasks: BackgroundTasks,
+    user: TokenPayload = Depends(get_current_user),
+):
+    """Submit a new task for execution (admin-only: runs paid agent/LLM work)."""
     # Create the task
     task = await task_store.create(request.agent_type, request.prompt)
 
@@ -305,7 +313,8 @@ async def submit_task(request: TaskRequest, background_tasks: BackgroundTasks):
 
 
 @tasks_router.post("/tasks/{task_id}/cancel")
-async def cancel_task(task_id: str):
+@require_roles(UserRole.ADMIN, UserRole.SUPER_ADMIN)
+async def cancel_task(task_id: str, user: TokenPayload = Depends(get_current_user)):
     """Cancel a running task."""
     task = await task_store.get(task_id)
     if not task:
