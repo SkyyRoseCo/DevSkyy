@@ -74,6 +74,23 @@ function skyyrose2_seo_is_transactional_request() {
 }
 
 /**
+ * Whether the merchant marked the current singular record noindex in Jetpack SEO Tools.
+ *
+ * Silencing `jetpack_seo_meta_tags_enabled` also stops Jetpack from printing its
+ * per-post `noindex` robots tag (Jetpack_SEO::meta_tags), so the saved
+ * `jetpack_seo_noindex` post meta is honoured here instead. Jetpack's own reader
+ * applies its SEO-tools-enabled gate; a supported SEO plugin owns robots itself.
+ *
+ * @return bool
+ */
+function skyyrose2_seo_jetpack_post_noindex() {
+	if ( ! is_singular() || skyyrose2_seo_has_authority_plugin() || ! class_exists( 'Jetpack_SEO_Posts' ) ) {
+		return false;
+	}
+	return (bool) Jetpack_SEO_Posts::get_post_noindex_setting( get_queried_object_id() );
+}
+
+/**
  * Apply indexability rules without overriding unrelated plugin directives.
  *
  * @param array<string,bool|string> $robots Robots directives.
@@ -95,6 +112,12 @@ function skyyrose2_seo_robots( $robots ) {
 	}
 
 	if ( is_404() ) {
+		unset( $robots['index'] );
+		$robots['noindex'] = true;
+		return $robots;
+	}
+
+	if ( skyyrose2_seo_jetpack_post_noindex() ) {
 		unset( $robots['index'] );
 		$robots['noindex'] = true;
 		return $robots;
@@ -146,7 +169,7 @@ function skyyrose2_seo_canonical_url() {
 	}
 	$paged = max( 1, (int) get_query_var( 'paged' ) );
 	if ( $paged > 1 && ! is_singular() ) {
-		return (string) get_pagenum_link( $paged );
+		return skyyrose2_seo_pagenum_url( $paged );
 	}
 	if ( is_front_page() ) {
 		return home_url( '/' );
@@ -171,9 +194,44 @@ function skyyrose2_seo_canonical_url() {
 		return $url ? (string) $url : '';
 	}
 	if ( is_archive() ) {
-		return (string) get_pagenum_link( $paged );
+		return skyyrose2_seo_pagenum_url( $paged );
 	}
 	return '';
+}
+
+/**
+ * Paginated archive URL without the request's tracking/cache-buster parameters.
+ *
+ * WordPress carries every query parameter of the current request into
+ * get_pagenum_link(), so cache-busters and tracking parameters would otherwise
+ * become the canonical URL. Under plain permalinks the archive identity lives in
+ * the query string, so the parameters that select the archive (post type,
+ * category, tag, taxonomy/term, author, date) survive along with `paged`;
+ * everything else is dropped. The link is requested unescaped ($escape = false)
+ * because the default escapes `&` to `&#038;`, which parse_str() would misread.
+ *
+ * @param int $paged Page number.
+ * @return string
+ */
+function skyyrose2_seo_pagenum_url( $paged ) {
+	$url   = (string) get_pagenum_link( $paged, false );
+	$query = (string) wp_parse_url( $url, PHP_URL_QUERY );
+	if ( '' === $query ) {
+		return $url;
+	}
+	parse_str( html_entity_decode( $query ), $params );
+	$archive_keys = array( 'post_type', 'cat', 'category_name', 'tag', 'tag_id', 'taxonomy', 'term', 'author', 'author_name', 'year', 'monthnum', 'day', 'm' );
+	$kept         = array();
+	foreach ( $archive_keys as $key ) {
+		if ( isset( $params[ $key ] ) && is_scalar( $params[ $key ] ) ) {
+			$kept[ $key ] = (string) $params[ $key ];
+		}
+	}
+	if ( isset( $params['paged'] ) ) {
+		$kept['paged'] = (int) $params['paged'];
+	}
+	$base = strtok( $url, '?' );
+	return $kept ? $base . '?' . http_build_query( $kept, '', '&' ) : $base;
 }
 
 /**
@@ -183,10 +241,11 @@ function skyyrose2_seo_canonical_url() {
  */
 function skyyrose2_seo_resolved_context() {
 	$site_name = (string) get_bloginfo( 'name' );
-	$tagline   = (string) get_bloginfo( 'description' );
-	$context   = array(
+	// No tagline is authorised (founder decision 2026-10-06): the WordPress
+	// "Tagline" option never becomes a description. Absent copy is omitted.
+	$context = array(
 		'title'       => $site_name,
-		'description' => skyyrose2_seo_excerpt( $tagline ),
+		'description' => '',
 		'image'       => function_exists( 'skyyrose2_sot_asset_uri' ) ? skyyrose2_sot_asset_uri( 'branding/hero/flagship-house-runway-gpt2.webp' ) : '',
 		'type'        => 'website',
 		'url'         => skyyrose2_seo_canonical_url(),
@@ -202,7 +261,7 @@ function skyyrose2_seo_resolved_context() {
 			$product_description    = skyyrose2_seo_excerpt( $product_copy );
 			$context['title']       = $product->get_name() . ' | ' . $site_name;
 			$context['description'] = $product_description ? $product_description : $context['description'];
-			$media                 = function_exists( 'skyyrose2_product_commerce_media' ) ? skyyrose2_product_commerce_media( $product ) : array();
+			$media                  = function_exists( 'skyyrose2_product_commerce_media' ) ? skyyrose2_product_commerce_media( $product ) : array();
 			$context['image']       = ! empty( $media['ids'] ) ? (string) wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '';
 			$context['type']        = 'product';
 		}
@@ -476,18 +535,22 @@ function skyyrose2_seo_schema_graph() {
 		$slug  = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
 		$world = skyyrose2_collections()[ $slug ] ?? null;
 		if ( $world ) {
-			$graph[] = array(
-				'@type'              => 'CollectionPage',
-				'@id'                => get_permalink() . '#collection',
-				'name'               => $world['name'],
-				'description'        => skyyrose2_seo_excerpt( $world['line'] . ' ' . $world['manifesto'] ),
-				'url'                => get_permalink(),
-				'isPartOf'           => array( '@id' => $website_id ),
-				'primaryImageOfPage' => array(
-					'@type' => 'ImageObject',
-					'url'   => skyyrose2_sot_asset_uri( $world['hero'] ),
-				),
+			$collection = array(
+				'@type'       => 'CollectionPage',
+				'@id'         => get_permalink() . '#collection',
+				'name'        => $world['name'],
+				'description' => skyyrose2_seo_excerpt( $world['line'] . ' ' . $world['manifesto'] ),
+				'url'         => get_permalink(),
+				'isPartOf'    => array( '@id' => $website_id ),
 			);
+			$hero       = ! empty( $world['hero'] ) ? skyyrose2_sot_asset_uri( $world['hero'] ) : '';
+			if ( $hero ) {
+				$collection['primaryImageOfPage'] = array(
+					'@type' => 'ImageObject',
+					'url'   => $hero,
+				);
+			}
+			$graph[] = $collection;
 		}
 	}
 
@@ -529,31 +592,75 @@ function skyyrose2_seo_render_schema() {
 }
 
 /**
- * Advertise the native WordPress sitemap in public robots.txt.
+ * Whether the native WordPress sitemap (/wp-sitemap.xml) actually resolves.
+ *
+ * Jetpack's Sitemaps module forces `wp_sitemaps_enabled` to false and serves
+ * /sitemap.xml itself, so the native URL 404s while that module is active.
+ *
+ * @return bool
+ */
+function skyyrose2_seo_native_sitemaps_enabled() {
+	if ( ! function_exists( 'wp_sitemaps_get_server' ) ) {
+		return false;
+	}
+	$server = wp_sitemaps_get_server();
+	return is_object( $server ) && method_exists( $server, 'sitemaps_enabled' ) && $server->sitemaps_enabled();
+}
+
+/**
+ * Advertise the native WordPress sitemap in public robots.txt, only when it resolves.
+ *
+ * Jetpack advertises its own /sitemap.xml through the `do_robotstxt` action, so
+ * this filter never adds a second, competing generator.
  *
  * @param string $output Robots text.
  * @param bool   $is_public Whether search engines are allowed.
  * @return string
  */
 function skyyrose2_seo_robots_txt( $output, $is_public ) {
-	if ( ! $is_public || skyyrose2_seo_has_authority_plugin() || skyyrose2_seo_is_nonproduction_request() || false !== stripos( $output, 'Sitemap:' ) ) {
+	if (
+		! $is_public
+		|| skyyrose2_seo_has_authority_plugin()
+		|| skyyrose2_seo_is_nonproduction_request()
+		|| ! skyyrose2_seo_native_sitemaps_enabled()
+		|| false !== stripos( $output, 'Sitemap:' )
+	) {
 		return $output;
 	}
 	return rtrim( $output ) . "\n\nSitemap: " . esc_url_raw( home_url( '/wp-sitemap.xml' ) ) . "\n";
 }
 
 /**
- * Keep noindex commerce utilities out of the native WordPress page sitemap.
+ * Whether a published page/post at this slug is redirected by the theme's
+ * retired-route handling (inc/launch-readiness.php). Redirecting URLs are not
+ * canonical and never belong in a sitemap.
  *
- * @param array<string,mixed> $args      Sitemap query arguments.
- * @param string              $post_type Sitemap post type.
- * @return array<string,mixed>
+ * @param string $slug Post slug.
+ * @return bool
  */
-function skyyrose2_seo_sitemap_query_args( $args, $post_type ) {
-	if ( 'page' !== $post_type || skyyrose2_seo_has_authority_plugin() ) {
-		return $args;
+function skyyrose2_seo_slug_redirects( $slug ) {
+	if ( ! function_exists( 'skyyrose2_retired_v2_routes' ) ) {
+		return false;
 	}
+	$routes = skyyrose2_retired_v2_routes();
+	if ( ! isset( $routes[ $slug ] ) ) {
+		return false;
+	}
+	$destination = get_page_by_path( $routes[ $slug ], OBJECT, 'page' );
+	return $destination instanceof WP_Post && 'publish' === $destination->post_status && empty( $destination->post_password );
+}
 
+/**
+ * Post IDs that must stay out of every sitemap: noindex commerce utilities and
+ * retired routes that 301 to their V2 canonical page.
+ *
+ * @return int[]
+ */
+function skyyrose2_seo_sitemap_excluded_ids() {
+	static $excluded = null;
+	if ( null !== $excluded ) {
+		return $excluded;
+	}
 	$excluded = array();
 	if ( function_exists( 'wc_get_page_id' ) ) {
 		foreach ( array( 'cart', 'checkout', 'myaccount' ) as $page_key ) {
@@ -567,10 +674,101 @@ function skyyrose2_seo_sitemap_query_args( $args, $post_type ) {
 	if ( $wishlist instanceof WP_Post ) {
 		$excluded[] = (int) $wishlist->ID;
 	}
+	if ( function_exists( 'skyyrose2_retired_v2_routes' ) ) {
+		foreach ( array_keys( skyyrose2_retired_v2_routes() ) as $slug ) {
+			$page = get_page_by_path( $slug, OBJECT, 'page' );
+			if ( $page instanceof WP_Post && skyyrose2_seo_slug_redirects( $slug ) ) {
+				$excluded[] = (int) $page->ID;
+			}
+		}
+	}
+	$excluded = array_values( array_unique( array_map( 'intval', $excluded ) ) );
+	return $excluded;
+}
+
+/**
+ * Keep excluded records out of the native WordPress sitemap (any post type).
+ *
+ * @param array<string,mixed> $args Sitemap query arguments.
+ * @return array<string,mixed>
+ */
+function skyyrose2_seo_sitemap_query_args( $args ) {
+	if ( skyyrose2_seo_has_authority_plugin() ) {
+		return $args;
+	}
+	$excluded = skyyrose2_seo_sitemap_excluded_ids();
 	if ( $excluded ) {
 		$args['post__not_in'] = array_values( array_unique( array_merge( $args['post__not_in'] ?? array(), $excluded ) ) );
 	}
 	return $args;
+}
+
+/**
+ * Drop the native users (author archive) sitemap: a single-author storefront has
+ * no indexable author pages, and the sitemap would publish the login username.
+ *
+ * @param object|false $provider Sitemap provider.
+ * @param string       $name     Provider name.
+ * @return object|false
+ */
+function skyyrose2_seo_sitemap_provider( $provider, $name ) {
+	return 'users' === $name ? false : $provider;
+}
+
+/**
+ * Jetpack sitemap post types: pages and posts plus every WooCommerce product.
+ *
+ * @param string[] $post_types Post types Jetpack will list.
+ * @return string[]
+ */
+function skyyrose2_seo_jetpack_sitemap_post_types( $post_types ) {
+	$post_types = is_array( $post_types ) ? $post_types : array();
+	if ( ! in_array( 'product', $post_types, true ) && post_type_exists( 'product' ) ) {
+		$post_types[] = 'product';
+	}
+	return $post_types;
+}
+
+/**
+ * Jetpack sitemap entry filter: skip the same excluded records as the native sitemap.
+ *
+ * @param bool   $skip Whether Jetpack already skips this record.
+ * @param object $post Row from the posts table (not a WP_Post).
+ * @return bool
+ */
+function skyyrose2_seo_jetpack_sitemap_skip( $skip, $post ) {
+	if ( $skip || skyyrose2_seo_has_authority_plugin() || ! is_object( $post ) || empty( $post->ID ) ) {
+		return (bool) $skip;
+	}
+	return in_array( (int) $post->ID, skyyrose2_seo_sitemap_excluded_ids(), true );
+}
+
+/**
+ * Jetpack image-sitemap filter: skip images attached to excluded records.
+ *
+ * Unlike the page filter, Jetpack passes the image attachment here, and the
+ * image entry's <loc> is the attachment's parent page, so the parent is tested.
+ *
+ * @param bool   $skip Whether Jetpack already skips this image.
+ * @param object $post Attachment row from the posts table (not a WP_Post).
+ * @return bool
+ */
+function skyyrose2_seo_jetpack_sitemap_image_skip( $skip, $post ) {
+	if ( $skip || skyyrose2_seo_has_authority_plugin() || ! is_object( $post ) || empty( $post->post_parent ) ) {
+		return (bool) $skip;
+	}
+	return in_array( (int) $post->post_parent, skyyrose2_seo_sitemap_excluded_ids(), true );
+}
+
+/**
+ * Jetpack Open Graph / SEO-tools metadata is redundant while this adapter renders
+ * description, Open Graph, and Twitter tags; a supported SEO plugin takes over both.
+ *
+ * @param bool $enabled Jetpack default.
+ * @return bool
+ */
+function skyyrose2_seo_jetpack_metadata_enabled( $enabled ) {
+	return skyyrose2_seo_has_authority_plugin() ? (bool) $enabled : false;
 }
 
 /**
@@ -586,7 +784,14 @@ function skyyrose2_seo_indexing_bootstrap() {
 	add_filter( 'wp_robots', 'skyyrose2_seo_robots', 20 );
 	add_filter( 'wp_headers', 'skyyrose2_seo_headers', 20 );
 	add_filter( 'robots_txt', 'skyyrose2_seo_robots_txt', 20, 2 );
-	add_filter( 'wp_sitemaps_posts_query_args', 'skyyrose2_seo_sitemap_query_args', 20, 2 );
+	add_filter( 'wp_sitemaps_posts_query_args', 'skyyrose2_seo_sitemap_query_args', 20 );
+	add_filter( 'wp_sitemaps_add_provider', 'skyyrose2_seo_sitemap_provider', 20, 2 );
+	add_filter( 'jetpack_sitemap_post_types', 'skyyrose2_seo_jetpack_sitemap_post_types', 20 );
+	add_filter( 'jetpack_sitemap_skip_post', 'skyyrose2_seo_jetpack_sitemap_skip', 20, 2 );
+	add_filter( 'jetpack_sitemap_image_skip_post', 'skyyrose2_seo_jetpack_sitemap_image_skip', 20, 2 );
+	add_filter( 'jetpack_enable_open_graph', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
+	add_filter( 'jetpack_seo_meta_tags_enabled', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
+	add_filter( 'jetpack_seo_custom_titles', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
 	add_action( 'wp_head', 'skyyrose2_seo_render_meta', 4 );
 	add_action( 'wp_head', 'skyyrose2_seo_render_schema', 5 );
 }

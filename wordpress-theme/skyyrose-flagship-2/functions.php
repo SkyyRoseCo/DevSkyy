@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SKYYROSE2_VERSION', '2.5.0' );
+define( 'SKYYROSE2_VERSION', '2.5.1' );
 define( 'SKYYROSE2_DIR', get_template_directory() );
 define( 'SKYYROSE2_URI', get_template_directory_uri() );
 
@@ -18,6 +18,7 @@ require_once SKYYROSE2_DIR . '/inc/frame-delivery.php';
 require_once SKYYROSE2_DIR . '/inc/archive-style-bundle.php';
 require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
 require_once SKYYROSE2_DIR . '/inc/security.php';
+require_once SKYYROSE2_DIR . '/inc/express-checkout.php';
 require_once SKYYROSE2_DIR . '/inc/approved-card-fronts.php';
 require_once SKYYROSE2_DIR . '/inc/pdp-media-delivery.php';
 require_once SKYYROSE2_DIR . '/inc/hero-commerce-scenes.php';

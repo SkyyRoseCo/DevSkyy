@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.vercel
+.env
+.env.*
+*.pem
+*.key
+*.log
+*.tsbuildinfo
+coverage
+playwright-report
+test-results
+data/settings.json
+.claude
