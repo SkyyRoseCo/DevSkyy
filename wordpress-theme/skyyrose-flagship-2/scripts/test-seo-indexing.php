@@ -7,22 +7,61 @@
 
 define( 'ABSPATH', __DIR__ . '/' );
 
-$skyyrose2_test_actions  = array();
-$skyyrose2_test_filters  = array();
-$skyyrose2_test_removed  = array();
-$skyyrose2_test_context  = array(
-	'environment'   => 'production',
-	'home'          => 'https://skyyrose.co/',
-	'preview'       => false,
-	'search'        => false,
-	'cart'          => false,
-	'checkout'      => false,
-	'account'       => false,
-	'page'          => false,
-	'not_found'     => false,
-	'singular'      => false,
-	'canonical'     => '',
+$skyyrose2_test_actions = array();
+$skyyrose2_test_filters = array();
+$skyyrose2_test_removed = array();
+$skyyrose2_test_context = array(
+	'environment'     => 'production',
+	'home'            => 'https://skyyrose.co/',
+	'preview'         => false,
+	'search'          => false,
+	'cart'            => false,
+	'checkout'        => false,
+	'account'         => false,
+	'page'            => false,
+	'not_found'       => false,
+	'singular'        => false,
+	'canonical'       => '',
+	'native_sitemaps' => true,
 );
+
+class SkyyRose2_Test_Sitemap_Server {
+	public function sitemaps_enabled() {
+		global $skyyrose2_test_context;
+		return $skyyrose2_test_context['native_sitemaps'];
+	}
+}
+function wp_sitemaps_get_server() {
+	return new SkyyRose2_Test_Sitemap_Server();
+}
+function is_single() {
+	return false;
+}
+function is_archive() {
+	return false;
+}
+function is_home() {
+	return false;
+}
+function is_category() {
+	return false;
+}
+function is_tag() {
+	return false;
+}
+function is_tax() {
+	return false;
+}
+function is_post_type_archive() {
+	return false;
+}
+function post_type_exists( $post_type ) {
+	return 'product' === $post_type;
+}
+function get_pagenum_link( $paged ) {
+	global $skyyrose2_test_context;
+	return $skyyrose2_test_context['pagenum_link'] ?? 'https://skyyrose.co/shop/page/' . $paged . '/?cb=123&utm_source=x';
+}
 
 class WP_Post {
 	public $ID;
@@ -137,7 +176,11 @@ function esc_url_raw( $value ) {
 	return filter_var( $value, FILTER_SANITIZE_URL );
 }
 function wc_get_page_id( $page_key ) {
-	return array( 'cart' => 10, 'checkout' => 11, 'myaccount' => 12 )[ $page_key ] ?? -1;
+	return array(
+		'cart'      => 10,
+		'checkout'  => 11,
+		'myaccount' => 12,
+	)[ $page_key ] ?? -1;
 }
 function get_page_by_path( $path ) {
 	return 'wishlist' === $path ? new WP_Post( 13 ) : null;
@@ -155,7 +198,11 @@ function skyyrose2_test_assert( $condition, $message ) {
 
 skyyrose2_test_assert(
 	in_array(
-		array( 'hook' => 'after_setup_theme', 'callback' => 'skyyrose2_seo_indexing_bootstrap', 'priority' => 99 ),
+		array(
+			'hook'     => 'after_setup_theme',
+			'callback' => 'skyyrose2_seo_indexing_bootstrap',
+			'priority' => 99,
+		),
 		$skyyrose2_test_actions,
 		true
 	),
@@ -164,21 +211,51 @@ skyyrose2_test_assert(
 
 skyyrose2_seo_indexing_bootstrap();
 skyyrose2_test_assert(
-	in_array( array( 'hook' => 'wp_head', 'callback' => 'skyyrose2_seo_head', 'priority' => 4 ), $skyyrose2_test_removed, true ),
+	in_array(
+		array(
+			'hook'     => 'wp_head',
+			'callback' => 'skyyrose2_seo_head',
+			'priority' => 4,
+		),
+		$skyyrose2_test_removed,
+		true
+	),
 	'Legacy social metadata hook was not removed.'
 );
 skyyrose2_test_assert(
-	in_array( array( 'hook' => 'wp_head', 'callback' => 'skyyrose2_schema_head', 'priority' => 5 ), $skyyrose2_test_removed, true ),
+	in_array(
+		array(
+			'hook'     => 'wp_head',
+			'callback' => 'skyyrose2_schema_head',
+			'priority' => 5,
+		),
+		$skyyrose2_test_removed,
+		true
+	),
 	'Legacy schema hook was not removed.'
 );
 skyyrose2_test_assert(
-	in_array( array( 'hook' => 'wp_sitemaps_posts_query_args', 'callback' => 'skyyrose2_seo_sitemap_query_args', 'priority' => 20, 'accepted_args' => 2 ), $skyyrose2_test_filters, true ),
+	in_array(
+		array(
+			'hook'          => 'wp_sitemaps_posts_query_args',
+			'callback'      => 'skyyrose2_seo_sitemap_query_args',
+			'priority'      => 20,
+			'accepted_args' => 1,
+		),
+		$skyyrose2_test_filters,
+		true
+	),
 	'Native sitemap exclusion filter was not registered.'
 );
 
 $skyyrose2_test_context['environment'] = 'local';
 skyyrose2_test_assert( skyyrose2_seo_is_nonproduction_request(), 'Local environment must fail closed.' );
-$robots = skyyrose2_seo_robots( array( 'index' => true, 'follow' => true ) );
+$robots = skyyrose2_seo_robots(
+	array(
+		'index'  => true,
+		'follow' => true,
+	)
+);
 skyyrose2_test_assert( isset( $robots['noindex'], $robots['nofollow'] ) && ! isset( $robots['index'], $robots['follow'] ), 'Local robots directives must be noindex,nofollow.' );
 $headers = skyyrose2_seo_headers( array() );
 skyyrose2_test_assert( 'noindex, nofollow, noarchive' === ( $headers['X-Robots-Tag'] ?? '' ), 'Local responses need an X-Robots-Tag safeguard.' );
@@ -191,18 +268,45 @@ skyyrose2_test_assert( ! skyyrose2_seo_is_nonproduction_request(), 'Public produ
 $robots = skyyrose2_seo_robots( array() );
 skyyrose2_test_assert( 'large' === ( $robots['max-image-preview'] ?? '' ) && ! isset( $robots['noindex'] ), 'Public routes must remain indexable and allow large previews.' );
 skyyrose2_test_assert( str_contains( skyyrose2_seo_robots_txt( 'User-agent: *', true ), 'Sitemap: https://skyyrose.co/wp-sitemap.xml' ), 'Public robots.txt must advertise the native sitemap.' );
+$skyyrose2_test_context['native_sitemaps'] = false;
+skyyrose2_test_assert( 'User-agent: *' === skyyrose2_seo_robots_txt( 'User-agent: *', true ), 'robots.txt must not advertise /wp-sitemap.xml while native sitemaps are disabled (Jetpack serves /sitemap.xml).' );
+$skyyrose2_test_context['native_sitemaps'] = true;
+$robots_with_generator                     = "User-agent: *\nSitemap: https://skyyrose.co/sitemap.xml";
+skyyrose2_test_assert( $robots_with_generator === skyyrose2_seo_robots_txt( $robots_with_generator, true ), 'A second sitemap generator must never be advertised.' );
 $sitemap_args = skyyrose2_seo_sitemap_query_args( array( 'post__not_in' => array( 9 ) ), 'page' );
 skyyrose2_test_assert( array( 9, 10, 11, 12, 13 ) === $sitemap_args['post__not_in'], 'Native sitemap must preserve exclusions and omit transactional pages.' );
+$sitemap_args = skyyrose2_seo_sitemap_query_args( array(), 'post' );
+skyyrose2_test_assert( array( 10, 11, 12, 13 ) === $sitemap_args['post__not_in'], 'Excluded records apply to every native sitemap post type.' );
+skyyrose2_test_assert( false === skyyrose2_seo_sitemap_provider( (object) array(), 'users' ) && is_object( skyyrose2_seo_sitemap_provider( (object) array(), 'posts' ) ), 'Native users sitemap must be dropped; other providers untouched.' );
+skyyrose2_test_assert( array( 'post', 'page', 'product' ) === skyyrose2_seo_jetpack_sitemap_post_types( array( 'post', 'page' ) ), 'Jetpack sitemap must list WooCommerce products.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_skip( false, (object) array( 'ID' => 11 ) ), 'Jetpack sitemap must skip the checkout page.' );
+skyyrose2_test_assert( ! skyyrose2_seo_jetpack_sitemap_skip( false, (object) array( 'ID' => 42 ) ), 'Jetpack sitemap must keep public records.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_skip( true, (object) array( 'ID' => 42 ) ), 'Jetpack skip decisions already made are preserved.' );
+skyyrose2_test_assert( false === skyyrose2_seo_jetpack_metadata_enabled( true ), 'Jetpack Open Graph / SEO meta tags must be silent while the theme renders metadata.' );
+skyyrose2_test_assert( 'https://skyyrose.co/shop/page/2/' === skyyrose2_seo_pagenum_url( 2 ), 'Paginated canonical must drop request query parameters.' );
+$skyyrose2_test_context['pagenum_link'] = 'https://skyyrose.co/?paged=3&cb=9';
+skyyrose2_test_assert( 'https://skyyrose.co/?paged=3' === skyyrose2_seo_pagenum_url( 3 ), 'Plain-permalink pagination must keep only the paged parameter.' );
+unset( $skyyrose2_test_context['pagenum_link'] );
+foreach ( array( 'wp_sitemaps_add_provider', 'jetpack_sitemap_post_types', 'jetpack_sitemap_skip_post', 'jetpack_sitemap_image_skip_post', 'jetpack_enable_open_graph', 'jetpack_seo_meta_tags_enabled', 'jetpack_seo_custom_titles' ) as $hook ) {
+	skyyrose2_test_assert( in_array( $hook, array_column( $skyyrose2_test_filters, 'hook' ), true ), "Filter {$hook} was not registered." );
+}
+skyyrose2_test_assert( '' === skyyrose2_seo_resolved_context()['description'], 'The WordPress tagline must never become a meta description (no tagline is authorised).' );
+skyyrose2_test_assert( ! str_contains( file_get_contents( dirname( __DIR__ ) . '/inc/seo-indexing.php' ), "get_bloginfo( 'description' )" ), 'Adapter must not read the tagline option.' );
 
 $skyyrose2_test_context['search'] = true;
-$robots = skyyrose2_seo_robots( array( 'index' => true ) );
+$robots                           = skyyrose2_seo_robots( array( 'index' => true ) );
 skyyrose2_test_assert( isset( $robots['noindex'], $robots['follow'] ) && ! isset( $robots['index'] ), 'Search routes must be noindex,follow.' );
 $skyyrose2_test_context['search'] = false;
 $skyyrose2_test_context['cart']   = true;
-$robots = skyyrose2_seo_robots( array( 'index' => true, 'follow' => true ) );
+$robots                           = skyyrose2_seo_robots(
+	array(
+		'index'  => true,
+		'follow' => true,
+	)
+);
 skyyrose2_test_assert( isset( $robots['noindex'], $robots['nofollow'] ), 'Cart must be noindex,nofollow.' );
 skyyrose2_test_assert( array() === skyyrose2_seo_schema_graph(), 'Transactional routes must not emit schema.' );
-$skyyrose2_test_context['cart'] = false;
+$skyyrose2_test_context['cart']      = false;
 $skyyrose2_test_context['singular']  = true;
 $skyyrose2_test_context['canonical'] = 'https://skyyrose.co/story/2/';
 skyyrose2_test_assert( 'https://skyyrose.co/story/2/' === skyyrose2_seo_canonical_url(), 'Singular canonical must preserve WordPress multipage routing.' );
@@ -217,7 +321,7 @@ skyyrose2_test_assert( str_contains( $source, "defined( 'AIOSEO_VERSION' )" ), '
 skyyrose2_test_assert( str_contains( $source, "'FAQPage'" ), 'FAQ schema contract is missing.' );
 skyyrose2_test_assert( str_contains( $source, "'CollectionPage'" ), 'Collection schema contract is missing.' );
 
-$theme_source = file_get_contents( dirname( __DIR__ ) . '/functions.php' );
+$theme_source   = file_get_contents( dirname( __DIR__ ) . '/functions.php' );
 $function_names = static function ( $php_source ) {
 	$names  = array();
 	$tokens = token_get_all( $php_source );
@@ -237,31 +341,51 @@ $function_names = static function ( $php_source ) {
 	}
 	return $names;
 };
-$collisions = array_intersect( $function_names( $theme_source ), $function_names( $source ) );
+$collisions     = array_intersect( $function_names( $theme_source ), $function_names( $source ) );
 skyyrose2_test_assert( array() === array_values( $collisions ), 'Adapter redeclares active theme functions: ' . implode( ', ', $collisions ) );
 
 // The active SEO adapter must use the same permitted primary as the PDP.
-function get_bloginfo( $key ) { return 'SkyyRose'; }
-function apply_filters( $name, $value ) { return $value; }
+function get_bloginfo( $key ) {
+	return 'SkyyRose'; }
+function apply_filters( $name, $value ) {
+	return $value; }
 $skyyrose2_test_context['page'] = true;
-$faq_entries = skyyrose2_seo_faq_entries();
+$faq_entries                    = skyyrose2_seo_faq_entries();
 skyyrose2_test_assert(
-	array( array( 'question' => 'Merchant size question?', 'answer' => 'Merchant size answer.' ) ) === $faq_entries,
+	array(
+		array(
+			'question' => 'Merchant size question?',
+			'answer'   => 'Merchant size answer.',
+		),
+	) === $faq_entries,
 	'FAQ schema must reflect visible merchant content, never bundled defaults.'
 );
 $skyyrose2_test_context['page'] = false;
-function wc_get_product( $id ) { return new class {
-	public function get_name() { return 'Test garment'; }
-	public function get_short_description() { return 'Authoritative product copy.'; }
-	public function get_description() { return ''; }
-	public function get_image_id() { throw new RuntimeException( 'Raw attachment bypassed resolver' ); }
-}; }
-function skyyrose2_product_commerce_media( $product ) { return $GLOBALS['sr2_seo_test_media']; }
-function wp_get_attachment_image_url( $id, $size ) { return 'https://example.test/' . $id . '.webp'; }
+function wc_get_product( $id ) {
+	return new class() {
+		public function get_name() {
+			return 'Test garment'; }
+		public function get_short_description() {
+			return 'Authoritative product copy.'; }
+		public function get_description() {
+				return ''; }
+		public function get_image_id() {
+				throw new RuntimeException( 'Raw attachment bypassed resolver' ); }
+	}; }
+function skyyrose2_product_commerce_media( $product ) {
+	return $GLOBALS['sr2_seo_test_media']; }
+function wp_get_attachment_image_url( $id, $size ) {
+	return 'https://example.test/' . $id . '.webp'; }
 $skyyrose2_test_context['singular'] = true;
-$GLOBALS['sr2_seo_test_media'] = array( 'state' => 'editorial', 'ids' => array( 77 ) );
+$GLOBALS['sr2_seo_test_media']      = array(
+	'state' => 'editorial',
+	'ids'   => array( 77 ),
+);
 skyyrose2_test_assert( 'https://example.test/77.webp' === skyyrose2_seo_resolved_context()['image'], 'SEO must use the resolved product image.' );
-$GLOBALS['sr2_seo_test_media'] = array( 'state' => 'rejected', 'ids' => array() );
+$GLOBALS['sr2_seo_test_media'] = array(
+	'state' => 'rejected',
+	'ids'   => array(),
+);
 skyyrose2_test_assert( '' === skyyrose2_seo_resolved_context()['image'], 'Rejected media cannot return through social metadata.' );
 $skyyrose2_test_context['singular'] = false;
 define( 'AIOSEO_VERSION', 'test' );

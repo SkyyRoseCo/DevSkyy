@@ -3100,6 +3100,11 @@
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
     },
+    "scripts/validate-sitemap.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
     "scripts/verify-image-judge-availability.py": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
