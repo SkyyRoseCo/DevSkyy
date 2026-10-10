@@ -1,5 +1,5 @@
 <?php
-/** Homepage journal and source-bound Jersey Series reveal. */
+/** Homepage journal band: two house films at their native 16:9, routing into the Lookbook and Journal. */
 defined( 'ABSPATH' ) || exit;
 
 $lookbook = get_page_by_path( 'lookbook' );
@@ -14,13 +14,8 @@ $lookbook = $lookbook ? get_permalink( $lookbook ) : skyyrose2_marketplace_page_
 		</div>
 		<a class="sr2-editorial-link" href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'journal' ) ); ?>"><?php esc_html_e( 'Read the journal', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">→</span></a>
 	</div>
-	<article class="sr2-jersey-experience" aria-labelledby="sr2-jersey-title">
-		<?php get_template_part( 'template-parts/commerce/jersey-gallery' ); ?>
-		<div class="sr2-jersey-experience__story">
-			<p class="sr2-eyebrow"><?php esc_html_e( 'Jersey Series / Product fronts', 'skyyrose-flagship-2' ); ?></p>
-			<h3 id="sr2-jersey-title"><?php esc_html_e( 'Tour Around the Bay.', 'skyyrose-flagship-2' ); ?></h3>
-			<p class="sr2-lede"><?php esc_html_e( 'Explore each jersey and its own product page, from Oakland to San Jose.', 'skyyrose-flagship-2' ); ?></p>
-			<a class="sr2-editorial-link" href="<?php echo esc_url( $lookbook ); ?>"><?php esc_html_e( 'Explore the lookbook', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↗</span></a>
-		</div>
-	</article>
+	<div class="sr2-editorial-journal__grid">
+		<a class="sr2-editorial-journal__media sr2-image-reveal" href="<?php echo esc_url( $lookbook ); ?>"><img src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay-poster.webp' ); ?>" width="1280" height="720" alt="" loading="lazy" decoding="async"><span><span><small><?php esc_html_e( 'Lookbook', 'skyyrose-flagship-2' ); ?></small><b><?php esc_html_e( 'Open the lookbook', 'skyyrose-flagship-2' ); ?></b></span><i aria-hidden="true">↗</i></span></a>
+		<a class="sr2-editorial-journal__media sr2-image-reveal" href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'journal' ) ); ?>"><img src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/jersey-series-bart-poster.webp' ); ?>" width="1280" height="720" alt="" loading="lazy" decoding="async"><span><span><small><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></small><b><?php esc_html_e( 'Read the journal', 'skyyrose-flagship-2' ); ?></b></span><i aria-hidden="true">→</i></span></a>
+	</div>
 </section>

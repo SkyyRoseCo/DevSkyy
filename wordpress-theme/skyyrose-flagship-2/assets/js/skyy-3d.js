@@ -141,28 +141,8 @@
         });
       });
       summaries.push({ name: source.name, varying: moving, tracks: source.tracks.length });
+      if (moving) return source; // Future approved baked motion retains precedence.
       var kind = source.name.toLowerCase().replace('skyy_', '');
-      if (moving) {
-        // Preserve the authored full-body performance while correcting the
-        // over-folded neutral elbows in the three locomotion/rest clips. The
-        // expressive wave, talk, and joy arm choreography remains untouched.
-        if (!['idle', 'walk', 'exit'].includes(kind)) return source;
-        var relaxedTracks = source.tracks.map(function (track) {
-          var normalized = track.name.toLowerCase().replace(/[^a-z0-9]/g, '');
-          var side = normalized.includes('forearml') ? 1 : normalized.includes('forearmr') ? -1 : 0;
-          if (!side || track.getValueSize() !== 4) return track.clone();
-          var corrected = track.clone();
-          var elbowOffset = new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0, side * 1.18, 'XYZ'));
-          for (var valueIndex = 0; valueIndex < corrected.values.length; valueIndex += 4) {
-            var elbow = new THREE.Quaternion().fromArray(corrected.values, valueIndex).multiply(elbowOffset).normalize();
-            elbow.toArray(corrected.values, valueIndex);
-          }
-          return corrected;
-        });
-        var relaxedClip = new THREE.AnimationClip(source.name, source.duration, relaxedTracks);
-        relaxedClip.skyyMotionSource = 'authored-rig-arm-relax-v2';
-        return relaxedClip;
-      }
       var duration = kind === 'idle' ? 3.2 : kind === 'talk' ? 2.4 : kind === 'walk' || kind === 'exit' ? 1.6 : 1.4;
       var frames = 48,
         times = [],
@@ -189,11 +169,8 @@
           if (key.startsWith('shin') && walking) x = -0.58 * Math.max(0, -stride);
           if (key.startsWith('foot') && walking) x = 0.18 * Math.max(0, -stride);
           if (key.startsWith('upperarm')) {
-            // Bring the T-pose shoulders fully down, then keep the walk swing
-            // close to the body. The prior 1.15 rad offset left both elbows
-            // visibly winged away from the torso in idle and locomotion.
-            z = -side * 1.42;
-            if (walking) x = -0.18 * stride;
+            z = -side * 1.15; // Relax the source horizontal arms toward the torso.
+            if (walking) x = -0.25 * stride;
             if (kind === 'wave' && side === 1) {
               z = -0.25;
               x = 0.12 * breath;
@@ -202,9 +179,7 @@
             if (kind === 'joy') z += side * 0.16 * Math.sin((Math.PI * time) / duration);
           }
           if (key.startsWith('forearm')) {
-            // A soft, asymmetric elbow bend avoids the rigid straight-arm
-            // silhouette without pushing either wrist through the garment.
-            x = -0.16 - (side === 1 ? 0.025 : 0);
+            x = -0.1;
             if (kind === 'wave' && side === 1) z = 0.45 + 0.22 * Math.sin((time * Math.PI * 6) / duration);
             if (kind === 'talk') x -= 0.1 * Math.max(0, breath);
           }

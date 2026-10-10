@@ -806,5 +806,4 @@
     window.addEventListener('pageshow', () => { observer?.observe(heroModelLoop); syncModelLoop(); }, { passive: true });
     syncModelLoop();
   }
-
 })();

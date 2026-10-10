@@ -30,9 +30,6 @@ ALLOWED_SERIES = {"jersey-series"}
 def build_registry() -> dict[str, object]:
     manifest, expected = load_product_sot()
     garments = garment_types(manifest)
-    registry_path = ROOT / provenance()["sources"]["registry"]["path"]
-    registry_digest = hashlib.sha256(registry_path.read_bytes()).hexdigest()
-    accepted_glbs: list[dict[str, object]] = []
     products: dict[str, dict[str, object]] = {}
     series_members: dict[str, list[tuple[int, str]]] = {
         series_slug: [] for series_slug in ALLOWED_SERIES
@@ -41,15 +38,6 @@ def build_registry() -> dict[str, object]:
     for sku, product in manifest["products"].items():
         current_record = get_product(sku)
         current = current_record["catalog"]
-        # Current registry bytes identify this projection, not an asset approval.
-        # Real assets stay held until an approval contract binds the approved
-        # founder facts without a circular whole-registry self-hash. Never stamp
-        # an old binding with a new digest and imply that it was reapproved.
-        binding = current_record["asset_library"].get("accepted_glb_runtime")
-        if binding is not None:
-            raise ValueError(
-                f"Accepted GLB binding for {sku} requires a reviewed product-source approval contract"
-            )
         collection = current["collection"]
         if not sku or sku in products:
             raise ValueError(f"Product SOT contains an empty or duplicate SKU: {sku!r}")
@@ -95,17 +83,10 @@ def build_registry() -> dict[str, object]:
         for series_slug, members in sorted(series_members.items())
     }
     return {
-        "glb_runtime": {
-            "schema": "skyyrose.accepted-glb-runtime.v1",
-            "registry_sha256": registry_digest,
-            "publication_authorized": bool(accepted_glbs)
-            and all(entry.get("publication_authorized") is True for entry in accepted_glbs),
-            "entries": accepted_glbs,
-        },
         "schema_version": "2.0.0",
         "kind": "skyyrose-v2-product-presentation-registry",
         "generated_from": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
-        "product_registry_sha256": registry_digest,
+        "product_registry_sha256": provenance()["sources"]["registry"]["sha256"],
         "product_sot_scope": "historical_media_binding_only",
         "product_sot_sha256": hashlib.sha256(expected.encode()).hexdigest(),
         "supplements": supplements,

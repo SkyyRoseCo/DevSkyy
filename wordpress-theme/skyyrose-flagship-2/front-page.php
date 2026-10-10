@@ -1,13 +1,9 @@
 <?php
-/**
- * Front Page — SkyyRose editorial house.
- *
- * @package SkyyRoseFlagship2
- */
-
+/** Front Page — SkyyRose editorial house. @package SkyyRoseFlagship2 */
 defined( 'ABSPATH' ) || exit;
 
 $archive_collections = skyyrose2_collections();
+$archive_hero_motion = skyyrose2_collection_hero_motion( 'black-rose', $archive_collections['black-rose']['hero'] );
 $archive_shop        = skyyrose2_shop_url();
 // Founder-approved V2 card fronts only. BR-002 and KIDS-002 stay out of curated card-front slots;
 // founder-approved scroll-world scene casts (approved-scroll-world-scenes.json) are a separate mechanism.
@@ -46,28 +42,10 @@ get_header();
 		if ( function_exists( 'wc_print_notices' ) ) :
 			?>
 			<div class="sr2-commerce-notices" aria-live="polite"><?php wc_print_notices(); ?></div><?php endif; ?>
-		<?php
-		get_template_part(
-			'template-parts/home/editorial-hero',
-			null,
-			array(
-				'collections' => $archive_collections,
-				'shop_url'    => $archive_shop,
-			)
-		);
-		?>
+		<?php get_template_part( 'template-parts/home/editorial-hero', null, array( 'collections' => $archive_collections, 'motion' => $archive_hero_motion, 'shop_url' => $archive_shop ) ); ?>
 		<?php skyyrose2_print_hero_bootstrap(); ?>
 		<?php get_template_part( 'template-parts/home/editorial-film', null, array( 'products' => $archive_film_products ) ); ?>
-		<?php
-		get_template_part(
-			'template-parts/home/editorial-collection',
-			null,
-			array(
-				'collections' => $archive_collections,
-				'products'    => $archive_products,
-			)
-		);
-		?>
+		<?php get_template_part( 'template-parts/home/editorial-collection', null, array( 'collections' => $archive_collections, 'products' => $archive_products ) ); ?>
 		<section class="sr2-editorial-worlds sr2-band" aria-labelledby="sr2-editorial-worlds-title">
 			<div class="sr2-band__head">
 				<div><p class="sr2-eyebrow"><?php esc_html_e( 'House worlds', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-editorial-worlds-title" class="sr2-title-chapter"><?php esc_html_e( 'Enter the worlds.', 'skyyrose-flagship-2' ); ?></h2></div>

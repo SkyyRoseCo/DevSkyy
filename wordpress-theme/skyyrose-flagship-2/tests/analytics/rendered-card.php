@@ -64,7 +64,7 @@ function skyyrose2_sot_asset_uri( $path ) {
 	return 'https://example.test/sot/' . $path; }
 function absint( $value ) {
 	return abs( (int) $value ); }
-function skyyrose2_is_transaction_preorder_product( $product ) {
+function skyyrose2_is_preorder_product( $product ) {
 	return $product->preorder; }
 function skyyrose2_product_presentation() {
 	return array(

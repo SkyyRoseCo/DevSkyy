@@ -7,14 +7,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SKYYROSE2_VERSION', '2.5.0' );
+define( 'SKYYROSE2_VERSION', '2.5.1' );
 define( 'SKYYROSE2_DIR', get_template_directory() );
 define( 'SKYYROSE2_URI', get_template_directory_uri() );
-
-/** Keep the mascot off all storefront routes until its arm rig is repaired. */
-function skyyrose2_mascot_enabled() {
-	return false;
-}
 
 /* Fresh-install, demo-import, and editor integration. */
 require_once SKYYROSE2_DIR . '/inc/marketplace.php';
@@ -23,6 +18,7 @@ require_once SKYYROSE2_DIR . '/inc/frame-delivery.php';
 require_once SKYYROSE2_DIR . '/inc/archive-style-bundle.php';
 require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
 require_once SKYYROSE2_DIR . '/inc/security.php';
+require_once SKYYROSE2_DIR . '/inc/express-checkout.php';
 require_once SKYYROSE2_DIR . '/inc/approved-card-fronts.php';
 require_once SKYYROSE2_DIR . '/inc/pdp-media-delivery.php';
 require_once SKYYROSE2_DIR . '/inc/hero-commerce-scenes.php';
@@ -32,9 +28,6 @@ require_once SKYYROSE2_DIR . '/inc/shop-archive.php';
 require_once SKYYROSE2_DIR . '/inc/quick-view-commerce.php';
 require_once SKYYROSE2_DIR . '/inc/critical-rendering.php';
 require_once SKYYROSE2_DIR . '/inc/analytics.php';
-require_once SKYYROSE2_DIR . '/inc/woocommerce-compat.php';
-require_once SKYYROSE2_DIR . '/inc/product-glb-links.php';
-require_once SKYYROSE2_DIR . '/inc/product-glb.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
@@ -265,7 +258,7 @@ function skyyrose2_resolve_commerce_scene_products( $scene, $collection ) {
 function skyyrose2_scene_product_action_label( $product, $preorder_requested = false ) {
 	$name         = $product->get_name();
 	$presentation = skyyrose2_product_presentation( $product );
-	$is_preorder  = $preorder_requested && skyyrose2_is_transaction_preorder_product( $product );
+	$is_preorder  = $preorder_requested && ! empty( $presentation['is_preorder'] );
 
 	if ( ! $product->is_purchasable() || ! $product->is_in_stock() ) {
 		return sprintf( __( 'View %s — currently unavailable', 'skyyrose-flagship-2' ), $name );
@@ -407,14 +400,8 @@ function skyyrose2_assets() {
 		$page_styles[] = 'content-page';
 	}
 	if ( is_front_page() ) {
-		$page_styles[]   = 'collection-world';
-		$page_styles[]   = 'home-page';
-		$page_styles[]   = 'home-experience';
-		$page_styles[]   = 'home-art-direction';
-		$home_experience = '/assets/js/home-experience' . $suffix . '.js';
-		wp_enqueue_script( 'skyyrose2-home-experience', SKYYROSE2_URI . $home_experience, array(), skyyrose2_asset_version( $home_experience ), true );
-		$house_motion = '/assets/js/house-motion' . $suffix . '.js';
-		wp_enqueue_script( 'skyyrose2-house-motion', SKYYROSE2_URI . $house_motion, array(), skyyrose2_asset_version( $house_motion ), true );
+		$page_styles[] = 'collection-world';
+		$page_styles[] = 'home-page';
 	}
 	if ( function_exists( 'is_product' ) && is_product() ) {
 		$page_styles[] = 'product-page';
@@ -530,11 +517,9 @@ JS
 	// so an eligible simple product gets the normal AJAX confirmation, fragments,
 	// and updated bag count; the anchor URL remains the no-JS cart fallback.
 	if (
-		class_exists( 'WooCommerce' ) &&
+		function_exists( 'is_woocommerce' ) &&
 		(
-			$collection_slug ||
-			( function_exists( 'is_page' ) && is_page( array( 'pre-order', 'preorder' ) ) ) ||
-			is_page_template( 'template-collection.php' ) ||
+			$collection_slug || is_page_template( 'template-collection.php' ) ||
 			is_page_template( 'template-preorder.php' ) ||
 			is_page_template( 'template-parts/v2-preorder.php' )
 		)
@@ -542,7 +527,7 @@ JS
 		wp_enqueue_script( 'wc-add-to-cart' );
 		wp_enqueue_script( 'wc-cart-fragments' );
 	}
-	if ( skyyrose2_mascot_enabled() && ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
+	if ( ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
 		wp_enqueue_style( 'skyyrose2-mascot', SKYYROSE2_URI . $mascot_style, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $mascot_style ) );
 		wp_enqueue_script( 'skyyrose2-mascot-loader', SKYYROSE2_URI . $loader_script, array(), skyyrose2_asset_version( $loader_script ), true );
 		wp_localize_script(
@@ -1366,44 +1351,6 @@ function skyyrose2_is_preorder_product( $product ) {
 }
 
 /**
- * Classify one display identity using the transaction module's metadata rule.
- * The registry-only helper remains unchanged for its transaction fallback.
- * Variable parents describe browse state; their selected option is resolved by WC.
- *
- * @param WC_Product $product Native parent, simple product, or selected variation.
- * @return bool
- */
-function skyyrose2_is_transaction_preorder_product( $product ) {
-	if ( ! $product || ! method_exists( $product, 'meta_exists' ) ) {
-		return skyyrose2_is_preorder_product( $product );
-	}
-	$parent = $product;
-	if ( $product->is_type( 'variation' ) ) {
-		$parent = wc_get_product( $product->get_parent_id() );
-		if ( ! $parent ) {
-			return false;
-		}
-	}
-	$value = $product->meta_exists( '_is_preorder' ) ? $product->get_meta( '_is_preorder', true ) : $parent->get_meta( '_is_preorder', true );
-	return '1' === (string) $value || skyyrose2_is_preorder_product( $parent );
-}
-
-/**
- * Let WooCommerce render and clear the selected option's status natively.
- *
- * @param array      $data Native variation response.
- * @param WC_Product $parent_product Parent product.
- * @param WC_Product $variation Selected variation.
- * @return array
- */
-function skyyrose2_preorder_variation_display( $data, $parent_product, $variation ) {
-	$label                     = skyyrose2_is_transaction_preorder_product( $variation ) ? __( 'Pre-order option. Full payment at checkout.', 'skyyrose-flagship-2' ) : __( 'Standard order option.', 'skyyrose-flagship-2' );
-	$data['availability_html'] = ( $data['availability_html'] ?? '' ) . '<p class="sr2-variation-order-status" role="status">' . esc_html( $label ) . '</p>';
-	return $data;
-}
-add_filter( 'woocommerce_available_variation', 'skyyrose2_preorder_variation_display', 10, 3 );
-
-/**
  * Query published products for reusable marketplace sections.
  *
  * @param int    $limit Product limit.
@@ -1443,7 +1390,7 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 		if ( $collection && 'pre-order' !== $collection && sanitize_title( $presentation['collection'] ?? '' ) !== sanitize_title( $collection ) ) {
 			continue;
 		}
-		if ( 'pre-order' === $collection && ! skyyrose2_is_transaction_preorder_product( $product ) ) {
+		if ( 'pre-order' === $collection && empty( $presentation['is_preorder'] ) ) {
 			continue;
 		}
 		if ( 'black-rose' === $collection && 'jersey-series' === ( $presentation['presentation'] ?? '' ) ) {
@@ -1873,9 +1820,29 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 		<div class="sr2-jersey-reveal__head">
 			<p class="sr2-eyebrow"><?php esc_html_e( 'Jersey Series / The Town Line', 'skyyrose-flagship-2' ); ?></p>
 			<h2 id="sr2-jersey-series-title"><?php esc_html_e( 'Every number carries the tour.', 'skyyrose-flagship-2' ); ?></h2>
-			<p><?php esc_html_e( 'Eight perspectives on the Bay. Discover the Jersey Series, then open a piece to explore its details and available sizes.', 'skyyrose-flagship-2' ); ?></p>
+			<p><?php esc_html_e( 'Oakland is the origin. San Francisco, The Bay, and San Jose become chapters on The Town Line: SkyyRose’s fictional house journey. Every price, size, and availability decision stays on the live product page.', 'skyyrose-flagship-2' ); ?></p>
 		</div>
-		<?php get_template_part( 'template-parts/commerce/jersey-gallery' ); ?>
+		<div class="sr2-house-film" data-house-film data-house-film-scroll-world data-scroll-world-pinned data-media-status="founder-review-candidate">
+			<div class="sr2-house-film__stage" data-scroll-world-stage>
+				<div class="sr2-house-film__media">
+				<video width="1672" height="941" muted playsinline preload="none" poster="<?php echo esc_url( SKYYROSE2_URI . '/assets/sot/images/hero/jersey-series-town-line-train-v1.webp' ); ?>" data-house-film-video aria-label="<?php esc_attr_e( 'The Town Line Jersey Series previsualization', 'skyyrose-flagship-2' ); ?>">
+					<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.webm' ); ?>" type="video/webm">
+					<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.mp4' ); ?>" type="video/mp4">
+				</video>
+				<div class="sr2-house-film__controls">
+					<button type="button" data-house-film-toggle><?php esc_html_e( 'Play film', 'skyyrose-flagship-2' ); ?></button>
+					<button type="button" data-house-film-sound hidden><?php esc_html_e( 'Turn sound on', 'skyyrose-flagship-2' ); ?></button>
+					<span class="screen-reader-text" aria-live="polite" data-house-film-status></span>
+				</div>
+				</div>
+				<nav class="sr2-house-film__chapters" aria-label="<?php esc_attr_e( 'Jersey Series film chapters', 'skyyrose-flagship-2' ); ?>">
+					<?php foreach ( $pieces as $piece_index => $piece ) : ?>
+						<a href="<?php echo esc_url( get_permalink( $piece['product']->get_id() ) ); ?>" data-house-film-chapter data-start="<?php echo esc_attr( (string) ( $piece_index * 2.6 ) ); ?>"><span><?php echo esc_html( strtoupper( $piece['sku'] ) ); ?></span><strong><?php echo esc_html( $piece['chapter'] ); ?></strong></a>
+					<?php endforeach; ?>
+				</nav>
+			</div>
+			<p class="sr2-house-film__transcript"><?php esc_html_e( 'Visual transcript: a fictional SkyyRose Town Line train moves through Oakland’s Black, White, and two Last Oakland jerseys; San Francisco’s football, Giants, and basketball looks; then San Jose hockey. This previsualization is not product-media approval.', 'skyyrose-flagship-2' ); ?></p>
+		</div>
 		<?php if ( $show_product_grid ) : ?>
 			<div class="sr2-jersey-reveal__grid">
 				<?php foreach ( $pieces as $piece_index => $piece ) : ?>

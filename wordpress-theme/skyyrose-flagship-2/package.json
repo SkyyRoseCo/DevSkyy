@@ -1,6 +1,6 @@
 {
   "name": "skyyrose-flagship-2-theme",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "private": true,
   "description": "Deterministic build, verification, and marketplace packaging for SkyyRose Flagship 2.",
   "license": "GPL-2.0-or-later",
@@ -35,7 +35,7 @@
     "render:commerce-scenes": "bash scripts/render-founder-commerce-scenes.sh",
     "check:provisioning": "php scripts/test-marketplace-registry.php",
     "lint:php": "find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
-    "verify": "npm run check:source-integrity && npm run check:archive-theme && php ../../tools/v2-runtime/test-archive-style-bundle.php && npm run check:scene-posters && npm run check:approved-scenes && npm run check:commerce-scenes && bash scripts/verify-marketplace.sh && php scripts/test-performance.php && php scripts/test-critical-rendering.php && php scripts/test-global-shell-contract.php && php scripts/test-seo-indexing.php && php scripts/test-page-service-template.php && node --test ../../tools/v2-runtime/test-*.cjs && php ../../tools/v2-runtime/test-commerce-page-assets.php && php ../../tools/v2-runtime/test-launch-readiness.php && php ../../tools/v2-runtime/test-product-media.php && php ../../tools/v2-runtime/test-checkout-truth.php && php ../../tools/v2-runtime/test-cart-contract.php && php ../../tools/v2-runtime/test-quick-view-dependencies.php && php ../../tools/v2-runtime/test-search.php && npm run check:tokens && npm run check:card-renditions && python3 ../../tools/v2-runtime/test-card-renditions.py && php ../../tools/v2-runtime/test-product-card.php && php ../../tools/v2-runtime/test-native-card-priority.php && php ../../tools/v2-runtime/test-shop-archive.php && php ../../tools/v2-runtime/test-archive-preload.php && php ../../tools/v2-runtime/test-pdp-summary.php && php ../../tools/v2-runtime/test-collection-routes.php && php ../../tools/v2-runtime/test-home-labels.php && php ../../tools/v2-runtime/test-pdp-delivery.php && php ../../tools/v2-runtime/test-pdp-gallery.php && php ../../tools/v2-runtime/test-pdp-approved-fronts.php && npm run check:font-delivery && python3 ../../tools/v2-runtime/test-font-delivery.py && npm run check:frame-delivery && python3 ../../tools/v2-runtime/test-frame-delivery.py && for mode in valid missing source derived schema path dimensions malformed symlink ancestor narrow-missing narrow-derived narrow-path narrow-dimensions narrow-symlink; do php ../../tools/v2-runtime/test-frame-delivery.php \"$mode\" || exit 1; done && php scripts/test-prelaunch-safety.php",
+    "verify": "npm run check:source-integrity && npm run check:archive-theme && php ../../tools/v2-runtime/test-archive-style-bundle.php && npm run check:scene-posters && npm run check:approved-scenes && npm run check:commerce-scenes && bash scripts/verify-marketplace.sh && php scripts/test-performance.php && php scripts/test-critical-rendering.php && php scripts/test-global-shell-contract.php && php scripts/test-seo-indexing.php && php scripts/test-page-service-template.php && node --test ../../tools/v2-runtime/test-*.cjs && php ../../tools/v2-runtime/test-product-media.php && php ../../tools/v2-runtime/test-checkout-truth.php && php ../../tools/v2-runtime/test-cart-contract.php && php ../../tools/v2-runtime/test-quick-view-dependencies.php && php ../../tools/v2-runtime/test-search.php && npm run check:tokens && npm run check:card-renditions && python3 ../../tools/v2-runtime/test-card-renditions.py && php ../../tools/v2-runtime/test-product-card.php && php ../../tools/v2-runtime/test-native-card-priority.php && php ../../tools/v2-runtime/test-shop-archive.php && php ../../tools/v2-runtime/test-archive-preload.php && php ../../tools/v2-runtime/test-pdp-summary.php && php ../../tools/v2-runtime/test-collection-routes.php && php ../../tools/v2-runtime/test-home-labels.php && php ../../tools/v2-runtime/test-pdp-delivery.php && php ../../tools/v2-runtime/test-pdp-gallery.php && php ../../tools/v2-runtime/test-pdp-approved-fronts.php && npm run check:font-delivery && python3 ../../tools/v2-runtime/test-font-delivery.py && npm run check:frame-delivery && python3 ../../tools/v2-runtime/test-frame-delivery.py && for mode in valid missing source derived schema path dimensions malformed symlink ancestor narrow-missing narrow-derived narrow-path narrow-dimensions narrow-symlink; do php ../../tools/v2-runtime/test-frame-delivery.php \"$mode\" || exit 1; done && php scripts/test-prelaunch-safety.php",
     "verify:workspace": "bash scripts/verify-v2-workspace.sh",
     "verify:workspace:strict": "bash scripts/verify-v2-workspace.sh --strict",
     "package:theme": "bash scripts/package-theme.sh",
@@ -57,7 +57,6 @@
   },
   "devDependencies": {
     "clean-css": "5.3.3",
-    "jsdom": "30.0.1",
     "postcss": "8.5.28",
     "terser": "5.36.0"
   }

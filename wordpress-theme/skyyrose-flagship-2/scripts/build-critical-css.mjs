@@ -178,7 +178,7 @@ function main() {
   const problems = [];
   if (bytes > contract.budgetBytes) problems.push(`critical CSS is ${bytes} bytes; budget is ${contract.budgetBytes}`);
   problems.push(...coverage(css).map((token) => `first-view class has no critical rule: ${token}`));
-  for (const required of ['@font-face', '.sr2-house-header', '.sr2-house-arrival', '.sr2-brand-media', '.sr2-house-arrival__art', '.sr2-control--primary', ':root']) {
+  for (const required of ['@font-face', '.sr2-house-header', '.sr2-archive-scene', '.sr2-brand-media', '[data-recovery-hero-video]', '.sr2-control--primary', ':root']) {
     if (!css.includes(required)) problems.push(`required structure missing from critical CSS: ${required}`);
   }
   if (checkOnly) {

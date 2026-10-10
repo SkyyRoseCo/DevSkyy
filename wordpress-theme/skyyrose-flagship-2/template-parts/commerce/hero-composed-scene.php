@@ -73,8 +73,8 @@ if ( $backdrop_uri ) :
 					$point_product = $products['slots'][ $point_index ]['product'] ?? false; if ( ! $point_product ) {
 						continue; }
 					?>
-					<a class="sr2-scene-hotspot" data-hotspot-sku="<?php echo esc_attr( $point['sku'] ); ?>" href="<?php echo esc_url( $point_product->get_permalink() ); ?>" style="--hotspot-x: <?php echo esc_attr( (string) ( 100 * (float) $point['x'] ) ); ?>%; --hotspot-y: <?php echo esc_attr( (string) ( 100 * (float) $point['y'] ) ); ?>%;" aria-label="<?php echo esc_attr( sprintf( __( '%1$d. View %2$s', 'skyyrose-flagship-2' ), $point_index + 1, $point_product->get_name() ) ); ?>">
-						<span class="sr2-scene-hotspot__number" aria-hidden="true"><?php echo esc_html( $point_index + 1 ); ?></span><span class="sr2-scene-hotspot__label" aria-hidden="true"><?php echo esc_html( $point_product->get_name() ); ?></span>
+					<a class="sr2-scene-hotspot" data-hotspot-sku="<?php echo esc_attr( $point['sku'] ); ?>" href="<?php echo esc_url( $point_product->get_permalink() ); ?>" style="--hotspot-x: <?php echo esc_attr( (string) ( 100 * (float) $point['x'] ) ); ?>%; --hotspot-y: <?php echo esc_attr( (string) ( 100 * (float) $point['y'] ) ); ?>%;" aria-label="<?php echo esc_attr( sprintf( $is_preorder_scene ? __( '%1$d. View pre-order: %2$s', 'skyyrose-flagship-2' ) : __( '%1$d. View %2$s', 'skyyrose-flagship-2' ), $point_index + 1, $point_product->get_name() ) ); ?>">
+						<span class="sr2-scene-hotspot__number" aria-hidden="true"><?php echo esc_html( $point_index + 1 ); ?></span><span class="sr2-scene-hotspot__label" aria-hidden="true"><?php echo esc_html( $is_preorder_scene ? sprintf( __( 'Pre-order: %s', 'skyyrose-flagship-2' ), $point_product->get_name() ) : $point_product->get_name() ); ?></span>
 					</a>
 				<?php endforeach; ?>
 			</nav>
@@ -96,7 +96,7 @@ if ( $backdrop_uri ) :
 	</figure>
 	<?php if ( ! empty( $scene['scene_motion'] ) ) : ?>
 		<div class="sr2-scene-motion-controls">
-			<a class="sr2-scene-shop-link" href="#scene-products-title-<?php echo esc_attr( $scene_id ); ?>"><?php echo esc_html( $is_preorder_scene ? __( 'Review this look', 'skyyrose-flagship-2' ) : __( 'Shop this look', 'skyyrose-flagship-2' ) ); ?><span aria-hidden="true">&rarr;</span></a>
+			<a class="sr2-scene-shop-link" href="#scene-products-title-<?php echo esc_attr( $scene_id ); ?>"><?php echo esc_html( $is_preorder_scene ? __( 'Pre-order this look', 'skyyrose-flagship-2' ) : __( 'Shop this look', 'skyyrose-flagship-2' ) ); ?><span aria-hidden="true">&rarr;</span></a>
 			<?php
 			if ( $hotspots_valid ) :
 				?>
@@ -125,11 +125,11 @@ if ( $backdrop_uri ) :
 				<p class="sr2-hero-commerce__review"><?php echo esc_html( $record['review_message'] ); ?></p><?php endif; ?>
 		</header>
 		<nav class="sr2-hero-commerce__products" aria-labelledby="<?php echo esc_attr( 'scene-products-title-' . $scene_id ); ?>">
-			<h4 id="<?php echo esc_attr( 'scene-products-title-' . $scene_id ); ?>" tabindex="-1"><?php echo esc_html( $is_preorder_scene ? __( 'Review this look', 'skyyrose-flagship-2' ) : __( 'Shop this look', 'skyyrose-flagship-2' ) ); ?><span class="screen-reader-text">: <?php echo esc_html( $scene['label'] ); ?></span></h4>
+			<h4 id="<?php echo esc_attr( 'scene-products-title-' . $scene_id ); ?>" tabindex="-1"><?php echo esc_html( $is_preorder_scene ? __( 'Pre-order this look', 'skyyrose-flagship-2' ) : __( 'Shop this look', 'skyyrose-flagship-2' ) ); ?><span class="screen-reader-text">: <?php echo esc_html( $scene['label'] ); ?></span></h4>
 			<?php
 			if ( $is_preorder_scene ) :
 				?>
-				<p><?php esc_html_e( 'Review the order options for each piece. Full payment is due at checkout. Review each product for shipping details, or contact Client Services for an estimate before ordering.', 'skyyrose-flagship-2' ); ?></p><?php endif; ?>
+				<p><?php esc_html_e( 'The pieces in this scene are pre-order items. Full payment is due at checkout. Review each product for shipping details, or contact Client Services for an estimate before ordering.', 'skyyrose-flagship-2' ); ?></p><?php endif; ?>
 			<ul>
 				<?php foreach ( $products['slots'] as $slot ) : ?>
 					<li data-scene-product-sku="<?php echo esc_attr( $slot['sku'] ); ?>">
@@ -139,7 +139,7 @@ if ( $backdrop_uri ) :
 								<small><?php echo wp_kses_post( $slot['product']->get_price_html() ); ?></small>
 								<em>
 								<?php
-								if ( $is_preorder_scene && ! $slot['product']->is_type( 'variable' ) && skyyrose2_is_transaction_preorder_product( $slot['product'] ) ) :
+								if ( $is_preorder_scene ) :
 									?>
 									<?php esc_html_e( 'Pre-order / Full payment at checkout', 'skyyrose-flagship-2' ); ?><br><?php endif; ?><?php echo esc_html( skyyrose2_scene_product_action_label( $slot['product'], $is_preorder_scene ) ); ?> &rarr;</em>
 							</a>
