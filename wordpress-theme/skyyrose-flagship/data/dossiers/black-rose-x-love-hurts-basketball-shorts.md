@@ -21,6 +21,8 @@ extra_references:
 
 **FOUNDER_CONFIRMED:** Love Hurts is only on the side not across the back. (Corey, 2026-06-09, verbatim: "Love Hurts is only on the side not across the back")
 
+**FOUNDER_CONFIRMED:** The large sublimated Love Hurts wordmark is on the left side. (Corey, 2026-10-10, verbatim: "br-007 is on the left side")
+
 **FOUNDER_CONFIRMED:** Mesh. (Corey, 2026-09-29, verbatim: "the shorts are mesh")
 
 **FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
@@ -68,10 +70,10 @@ extra_references:
   appliquéd onto the body in classic baseball-script style with a contrast
   satin-stitch edge. **Technique:** tackle-twill. **Color:** white twill
   letter face with a dark satin-stitch edge.
-- **front-right-thigh** (cursive script overlapping the OAKLAND wordmark):
+- **left-side** (cursive script overlapping the OAKLAND wordmark):
   The "Love Hurts" wordmark in cursive script, rendered as a large
   sublimated/printed wordmark in **cream/peach/pink tonal color** on the
-  black mesh. Spans the right thigh area, reading top-to-bottom as the
+  black mesh. Sits on the left side per the founder correction above, reading top-to-bottom as the
   cursive lettering descends. **Technique:** sublimated. **Color:**
   cream/peach/light-pink tonal.
 - **wearer-left-mesh-side-panel** (small, on the white mesh side panel):
