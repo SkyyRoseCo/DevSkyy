@@ -108,6 +108,18 @@ class RegistryAuthorityTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "stale"):
                 inputs.garment_types(self.manifest)
 
+    def test_presentation_builds_do_not_require_a_recert(self):
+        # A founder correction changes the registry digest; presentation must
+        # still build. Only certification binds the release pin.
+        def pin_drift(_contract):
+            raise ValueError("Current registry hash requires contract reconciliation")
+
+        with patch.object(inputs, "verify_registry_binding", side_effect=pin_drift):
+            manifest, _ = inputs.load_product_sot(bind_registry=False)
+            self.assertIn("kids-002", inputs.garment_types(manifest, bind_registry=False))
+            with self.assertRaisesRegex(ValueError, "contract reconciliation"):
+                inputs.load_product_sot()
+
 
 if __name__ == "__main__":
     unittest.main()

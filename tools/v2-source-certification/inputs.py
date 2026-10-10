@@ -33,9 +33,16 @@ def verify_registry_binding(contract):
         raise ValueError("Contract garment source differs from product entry point")
 
 
-def load_product_sot():
+def load_product_sot(*, bind_registry=True):
+    """Return the pinned media receipt.
+
+    ``bind_registry=False`` is for presentation builds: they need the receipt's
+    identity and the staleness comparison, not the release pin on the current
+    registry digest, which only certification (check-integrity) enforces.
+    """
     contract = json.loads(CONTRACT.read_text())
-    verify_registry_binding(contract)
+    if bind_registry:
+        verify_registry_binding(contract)
     raw = SOT.read_bytes()
     if hashlib.sha256(raw).hexdigest() != contract["product_sot_sha256"]:
         raise ValueError("Pinned upstream product SOT artifact changed")
@@ -52,16 +59,18 @@ def load_product_sot():
     return manifest, raw.decode("utf-8")
 
 
-def garment_types(manifest):
+def garment_types(manifest, *, bind_registry=True):
     """Read current product facts from the unified registry, not historical CSVs.
 
     The pinned snapshot is retained only as the existing media receipt identity.
     Its commerce binding must still agree with the current founder registry.
     """
     contract = json.loads(CONTRACT.read_text())
-    verify_registry_binding(contract)
+    if bind_registry:
+        verify_registry_binding(contract)
     by_sku = {sku: get_product(sku)["catalog"] for sku in all_skus()}
-    verify_registry_binding(contract)
+    if bind_registry:
+        verify_registry_binding(contract)
     if set(by_sku) != set(manifest["products"]):
         raise ValueError("Registry SKU identity differs from media receipt")
     corrections = load_receipt_corrections()

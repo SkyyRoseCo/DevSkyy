@@ -100,9 +100,10 @@ def build_locked_registry(registry_bytes: bytes) -> dict[str, object]:
     # to the pinned media receipt, so product_sot_* keep that identity. The
     # receipt never supplies commerce or garment facts; garment_types() fails
     # closed when current registry facts drift from it without a recorded
-    # founder correction.
-    receipt, receipt_text = load_product_sot()
-    garment_types(receipt)
+    # founder correction. The release pin on the registry digest belongs to
+    # certification, so a founder correction never needs a recert to build.
+    receipt, receipt_text = load_product_sot(bind_registry=False)
+    garment_types(receipt, bind_registry=False)
     authority = json.loads(registry_bytes)
     for sku, current in current_products.items():
         if (

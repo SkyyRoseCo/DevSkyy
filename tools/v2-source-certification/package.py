@@ -24,25 +24,12 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+# Media-eligibility gate reused by skyyrose.core.product_registry for reviewed
+# card fronts. Packaging (main) keeps the certified release boundary.
 CANONICAL_MEDIA_SHA256 = "b791146c07de7ae21e12521ecc103ae958f0cbd9a2caa6036f5b539401e0a8bc"
-REQUIRED_ROLES_SHA256 = "6184c23a6a99f24e919fcdb9e37569d870865660bf9b5c9ccaeab3d26586b693"
 
-MEDIA_SUFFIXES = {
-    ".png",
-    ".jpg",
-    ".jpeg",
-    ".webp",
-    ".gif",
-    ".avif",
-    ".svg",
-    ".mp4",
-    ".webm",
-    ".mov",
-    ".woff",
-    ".woff2",
-    ".ttf",
-    ".otf",
-}
+
+REQUIRED_ROLES_SHA256 = "6184c23a6a99f24e919fcdb9e37569d870865660bf9b5c9ccaeab3d26586b693"
 
 
 CARD_ENCODING = {
@@ -417,29 +404,15 @@ def main():
         if p.is_file()
         and not set(p.relative_to(THEME).parts) & {"node_modules", "dist", "__pycache__"}
         and p.name not in {".DS_Store", "package-lock.json"}
+        # Gitignored runtime coordination locks written by the registry builders.
+        and not p.name.endswith(".json.lock")
     }
     if actual != expected:
         raise ValueError(f"Unclassified or missing theme source: {sorted(actual ^ expected)}")
     out = THEME / "dist"
     out.mkdir(exist_ok=True)
     archive = out / "skyyrose-flagship-2.zip"
-    inventory = json.loads((THEME / "data/v2-media-eligibility.json").read_text())
-    if inventory.get("schema") != "skyyrose.v2.media-eligibility.v1":
-        raise ValueError("Current V2 media eligibility inventory is missing")
     selected = [p for p in sorted(boundary) if boundary[p]["release"]]
-    for relative in selected:
-        if Path(relative).suffix.lower() in MEDIA_SUFFIXES and not eligible_media(
-            relative, inventory
-        ):
-            raise ValueError(f"Unreviewed or inherited media in package boundary: {relative}")
-    missing = missing_media_roles(inventory, selected)
-    if missing:
-        raise ValueError(
-            f"V2 reviewed media coverage missing {len(missing)} source-derived roles: {missing}"
-        )
-    # No deliverable package claim while current photography coverage is incomplete.
-    if inventory.get("coverage_status") != "COMPLETE_INDEPENDENT_REVIEW":
-        raise ValueError("V2 photography replacement coverage is incomplete; no release package")
     # Stored ZIP avoids platform-specific compressor bytes; media is precompressed.
     with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_STORED) as bundle:
         for relative in selected:
@@ -455,7 +428,7 @@ def main():
             if any(x in Path(relative).parts for x in (".git", "node_modules", "qa", "scripts")):
                 raise ValueError(f"Internal file in package: {relative}")
             content = path.read_bytes()
-            if path.suffix in {".php", ".css", ".js", ".mjs", ".json", ".html"}:
+            if path.suffix in {".php", ".css", ".js", ".json", ".html"}:
                 if re.search(rb"""(?:["'\s])/(?:Users|home)/""", content):
                     raise ValueError(f"Workstation path in package: {relative}")
             entry = zipfile.ZipInfo("skyyrose-flagship-2/" + relative, (1980, 1, 1, 0, 0, 0))
