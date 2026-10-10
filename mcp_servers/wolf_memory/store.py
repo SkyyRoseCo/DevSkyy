@@ -12,6 +12,7 @@ from __future__ import annotations
 import difflib
 import json
 import re
+import subprocess
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -20,6 +21,11 @@ from mcp_servers._shared import atomic_write_text, locked_transaction
 
 # Matches scripts/wolf_bug_id.py's ID_RE exactly — same id format, same source of truth.
 ID_RE = re.compile(r"^bug-(\d+)$")
+
+# Published history the id allocator must not collide with. Kept as constants so
+# the ref check and the blob read can never drift onto different branches.
+_PUBLISHED_BRANCH = "origin/main"
+_PUBLISHED_REF = f"refs/remotes/{_PUBLISHED_BRANCH}"
 
 RECURRING_SYNC_THRESHOLD = 2
 DUPLICATE_MATCH_RATIO = 0.85
@@ -99,7 +105,65 @@ class WolfMemoryStore:
                 conn.execute("INSERT INTO counters (name, value) VALUES ('bug', ?)", (seed,))
 
     def _max_existing_id(self) -> int:
-        return self._max_id(self._read_entries())
+        """The floor for the next id: the highest id this checkout can see.
+
+        Both sources matter. The local file catches ids appended by the
+        manual-edit fallback that the counter never issued. `origin/main`
+        catches ids already PUBLISHED that this working tree has not received
+        yet — a checkout behind main otherwise reissues them (bug-353: a tree
+        missing nine entries was handed bug-353 for a new defect while main's
+        bug-353 was an SSRF fixture bug, and both then claimed the id).
+        """
+        return max(self._max_id(self._read_entries()), self._published_max_id())
+
+    def _published_max_id(self) -> int:
+        """Highest bug id on `origin/main`, or 0 when nothing is published.
+
+        Reads a local ref — no network. Distinguishes three cases deliberately:
+        not a repo / no origin/main ref / the file is absent there all mean
+        "nothing published to collide with" and return 0, while a ref that
+        exists but whose buglog cannot be parsed RAISES. An unreadable input is
+        not an empty one (bug-230): guessing there is exactly how a duplicate
+        id gets minted silently.
+        """
+        root = self._git("rev-parse", "--show-toplevel", cwd=self.buglog_path.parent)
+        if root is None:
+            return 0
+        repo_root = Path(root)
+        if self._git("rev-parse", "--verify", "--quiet", _PUBLISHED_REF, cwd=repo_root) is None:
+            return 0
+        try:
+            relative = self.buglog_path.resolve().relative_to(repo_root.resolve())
+        except ValueError:
+            # A buglog outside the repo has no published counterpart.
+            return 0
+        blob = self._git("show", f"{_PUBLISHED_BRANCH}:{relative.as_posix()}", cwd=repo_root)
+        if blob is None:
+            return 0  # not tracked on main yet
+        try:
+            data = json.loads(blob)
+        except json.JSONDecodeError as error:
+            raise ValueError(
+                f"cannot read the published buglog at {_PUBLISHED_BRANCH}:{relative.as_posix()} "
+                f"({error}); refusing to allocate an id that could already be in use there"
+            ) from error
+        entries = data if isinstance(data, list) else data.get("bugs", [])
+        return self._max_id(entries)
+
+    @staticmethod
+    def _git(*args: str, cwd: Path) -> str | None:
+        """Run git, returning stdout, or None when git says no.
+
+        None means "git answered, and the answer is that this does not exist" —
+        never "git could not run". A missing binary or an unreadable repo
+        surfaces as the OSError it is.
+        """
+        result = subprocess.run(
+            ["git", *args], cwd=cwd, capture_output=True, text=True, check=False
+        )
+        if result.returncode != 0:
+            return None
+        return result.stdout.strip() if len(args) < 2 or args[0] != "show" else result.stdout
 
     @staticmethod
     def _max_id(entries: list[dict[str, Any]]) -> int:

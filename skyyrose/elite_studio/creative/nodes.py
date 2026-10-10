@@ -524,16 +524,24 @@ def collection_plan_node(state: dict) -> dict:
     fashion_context = state.get("fashion_context") or {}
 
     try:
-        from skyyrose.elite_studio.fashion.design.collection_planner import CollectionPlanner
+        from skyyrose.elite_studio.fashion.design.collection_planner import (
+            DEFAULT_COLLECTION_THEMES,
+            CollectionPlanner,
+        )
 
         planner = CollectionPlanner()
         collection = (
             params.get("collection") or _extract_collection(fashion_context) or "black-rose"
         )
+        # No brand tagline is authorised (founder 2026-10-06): an omitted theme
+        # falls back to the planner's per-collection theme, never an empty one.
+        theme = params.get("theme") or DEFAULT_COLLECTION_THEMES.get(
+            collection, f"{collection.replace('-', ' ').title()} collection"
+        )
         plan = planner.plan_collection(
             collection=collection,
             season=params.get("season", "FW26"),
-            theme=params.get("theme", ""),
+            theme=theme,
             target_skus_count=int(params.get("target_skus_count", 8)),
         )
         collection_plan_result = {

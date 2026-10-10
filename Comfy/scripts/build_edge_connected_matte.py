@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 from collections import deque
 from datetime import UTC, datetime
@@ -89,6 +90,10 @@ def build_matte(
     role: str,
 ) -> dict[str, object]:
     """Create a protected RGBA asset, visual proof sheet, and JSON receipt."""
+    destinations = (output, proof, receipt)
+    existing = [path for path in destinations if path.exists()]
+    if existing:
+        raise FileExistsError(f"protected matte destination already exists: {existing[0]}")
     with Image.open(source) as opened:
         rgb_image = opened.convert("RGB")
     rgb = np.asarray(rgb_image, dtype=np.uint8)
@@ -100,10 +105,9 @@ def build_matte(
     alpha = np.where(background, 0, 255).astype(np.uint8)
     rgba = np.dstack((rgb, alpha))
 
-    output.parent.mkdir(parents=True, exist_ok=True)
-    proof.parent.mkdir(parents=True, exist_ok=True)
-    receipt.parent.mkdir(parents=True, exist_ok=True)
-    Image.fromarray(rgba, mode="RGBA").save(output, format="PNG", optimize=True)
+    output_buffer = io.BytesIO()
+    Image.fromarray(rgba, mode="RGBA").save(output_buffer, format="PNG", optimize=True)
+    output_bytes = output_buffer.getvalue()
 
     checker = Image.new("RGB", rgb_image.size, "#d2d2d2")
     draw = ImageDraw.Draw(checker)
@@ -124,7 +128,9 @@ def build_matte(
     proof_sheet.paste(on_checker, (0, 0))
     proof_sheet.paste(on_black, (rgb_image.width, 0))
     proof_sheet.paste(on_white, (rgb_image.width * 2, 0))
-    proof_sheet.save(proof, format="PNG", optimize=True)
+    proof_buffer = io.BytesIO()
+    proof_sheet.save(proof_buffer, format="PNG", optimize=True)
+    proof_bytes = proof_buffer.getvalue()
 
     pixel_count = int(alpha.size)
     transparent_count = int(np.count_nonzero(alpha == 0))
@@ -142,13 +148,13 @@ def build_matte(
         },
         "output": {
             "path": str(output.resolve()),
-            "sha256": sha256_file(output),
+            "sha256": hashlib.sha256(output_bytes).hexdigest(),
             "mode": "RGBA",
             "rgb_policy": "SOURCE_RGB_PRESERVED_BYTE_FOR_BYTE_PER_PIXEL",
         },
         "proof": {
             "path": str(proof.resolve()),
-            "sha256": sha256_file(proof),
+            "sha256": hashlib.sha256(proof_bytes).hexdigest(),
             "views": ["checkerboard", "black", "white"],
         },
         "algorithm": {
@@ -166,7 +172,22 @@ def build_matte(
             "allowed_use": "source inspection, protected product layout, and mask planning",
         },
     }
-    receipt.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    receipt_bytes = (json.dumps(report, indent=2) + "\n").encode("utf-8")
+    created: list[Path] = []
+    try:
+        for path, content in (
+            (output, output_bytes),
+            (proof, proof_bytes),
+            (receipt, receipt_bytes),
+        ):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            with path.open("xb") as handle:
+                handle.write(content)
+            created.append(path)
+    except OSError:
+        for path in reversed(created):
+            path.unlink(missing_ok=True)
+        raise
     return report
 
 

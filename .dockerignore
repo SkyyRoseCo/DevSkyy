@@ -23,6 +23,22 @@
 !docker-entrypoint.sh
 !init.sql
 
+# --- Isolated analytics migration only -------------------------------------
+# Descend through excluded ancestors and allow only the reviewed track files.
+# Main alembic.ini, env.py, and versions remain excluded: the main baseline is
+# incompatible with the existing unversioned DevSkyy database.
+!alembic-analytics.ini
+!alembic/
+alembic/*
+!alembic/storefront_migrations/
+alembic/storefront_migrations/*
+!alembic/storefront_migrations/env.py
+!alembic/storefront_migrations/__init__.py
+!alembic/storefront_migrations/script.py.mako
+!alembic/storefront_migrations/versions/
+alembic/storefront_migrations/versions/*
+!alembic/storefront_migrations/versions/001_create_storefront_analytics.py
+
 # --- Re-include every first-party Python package -----------------------------
 # (every root dir with an __init__.py, plus the sdk/ tree and canonical data/).
 # Including all of them means no `import X` can ever be missing from the image;

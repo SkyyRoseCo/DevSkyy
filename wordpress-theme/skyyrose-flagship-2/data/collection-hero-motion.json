@@ -1,0 +1,191 @@
+{
+  "schema": "skyyrose.v2.collection-hero-motion.v1",
+  "generated_at": "2026-08-22",
+  "runtime": {
+    "template": "template-collection.php",
+    "controller": "assets/js/theme.js",
+    "styles": "assets/css/theme.css",
+    "exact_pixel_motion": "active",
+    "video_wire_policy": "AI motion plates remain candidates until founder_approved; approved stills remain the poster and reduced-motion/Save-Data source.",
+    "performance": {
+      "load_only_in_view": true,
+      "pause_offscreen": true,
+      "pause_when_hidden": true,
+      "save_data_uses_still": true,
+      "reduced_motion_uses_still": true,
+      "user_pause_control": true,
+      "video_failure_uses_still": true,
+      "play_rejection_uses_still": true,
+      "requires_mp4_and_webm": true,
+      "max_web_asset_bytes": 2000000
+    },
+    "creative_gate": {
+      "strongest_short_form_hook_by_seconds": 1,
+      "authentic_product_established_by_seconds": 1.5,
+      "predictor_is_not_product_approval": true
+    }
+  },
+  "collections": {
+    "signature": {
+      "source": {
+        "file": "assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+        "sha256": "f8bb7d2a1572f575e4f9e4e45edebf6115b4339708e64f95c3bb251813fc0fd8"
+      },
+      "exact_pixel_treatment": "gold base-and-bridge hook, marine atmosphere, slow image breathing",
+      "ai_motion": {
+        "status": "founder_approved",
+        "job_id": "29d61e8a-dc7a-43f3-a40d-f7e17763624f",
+        "master": {
+          "file": "assets/video/collection-heroes/approved/signature/signature-golden-gate-monuments-motion-v1.mp4",
+          "sha256": "071601173b321eb6c84c6fffd0778bbf5e168ce0cdaed1e9f083b3fd8b972a3f"
+        },
+        "web": [
+          {
+            "file": "assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.mp4",
+            "sha256": "423323ae440372f72b4b0336116e49f42dafec6b39ff58bf08c5973ebcecc8e6"
+          },
+          {
+            "file": "assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm",
+            "sha256": "e0e57f545959a946b71ca2125d9dbc46756778510e55dc59ef65ac1e79127a02"
+          }
+        ],
+        "internal_visual_qa": "pass_pending_founder_review",
+        "virality_predictor": "blocked_daily_generation_limit",
+        "founder_approved_at": "2026-09-04T23:44:54.599Z",
+        "founder_approval_note": "Founder explicitly requested that the supplied signature-golden-gate-monuments-motion-v1.mp4 clip be wired to V2. Approval covers this existing Signature hero clip and its existing delivery derivatives only; no deployment or other candidate approval is implied."
+      }
+    },
+    "black-rose": {
+      "source": {
+        "file": "assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+        "sha256": "e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9"
+      },
+      "exact_pixel_treatment": "locked monuments with localized Bay water motion, cloud drift, and existing bridge-light flicker",
+      "ai_motion": {
+        "status": "founder_approved",
+        "provider": "higgsfield",
+        "model": "seedance_2_5",
+        "job_id": "d62996a8-caa3-41bf-ba93-a74591c4a84b",
+        "master": {
+          "file": "assets/video/collection-heroes/approved/black-rose/black-rose-authentic-motion-v3-a1.mp4",
+          "sha256": "9a6d885cd74d29686bf14b4e9c12f83b950203f3c8f8287415571232c5813035",
+          "bytes": 6911884
+        },
+        "web": [
+          {
+            "file": "assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.mp4",
+            "sha256": "e292b78ea2c0aaa0be07872f30fb6290d54ba97a328147059f9c1c754af27beb",
+            "bytes": 840146
+          },
+          {
+            "file": "assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm",
+            "sha256": "043242396ffa2322153d14d2f1c785530cbed1536d3652bf0de4bf54c0afa415",
+            "bytes": 676790
+          }
+        ],
+        "founder_approved_at": "2026-09-04T23:59:41.494Z",
+        "founder_approval_note": "Founder selected the displayed Black Rose authentic-motion-v3-a1 candidate and requested V2 wiring on a continuous loop with WordPress performance optimization. No deployment authorized.",
+        "delivery": {
+          "loop": true,
+          "muted": true,
+          "playsinline": true,
+          "preload": "none",
+          "frame_rate": 24,
+          "width": 1440,
+          "mp4_fast_start": true,
+          "audio_removed": true,
+          "visible_only_playback": true,
+          "reduced_motion_uses_still": true,
+          "save_data_uses_still": true
+        }
+      }
+    },
+    "love-hurts": {
+      "source": {
+        "file": "assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp",
+        "sha256": "000ec8308a8d72daa691ca8712ef751d7d8e9b9805a4b08060ebc9a59a2bc3a3"
+      },
+      "exact_pixel_treatment": "locked cathedral with enchanted rose hover inside the existing globe and restrained falling petals",
+      "ai_motion": {
+        "status": "founder_approved",
+        "provider": "higgsfield",
+        "model": "seedance_2_5",
+        "job_id": "e0435fa2-5d60-4d1f-8f90-00a40a433e49",
+        "master": {
+          "file": "assets/video/collection-heroes/approved/love-hurts/love-hurts-authentic-motion-v3-a1.mp4",
+          "sha256": "316084f122ae6033aff10b565e4aadb2a519d53db6fdae0061325cb1f4fad11e",
+          "bytes": 7819988
+        },
+        "web": [
+          {
+            "file": "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.mp4",
+            "sha256": "5135700826b7bef568651ecea477af877f5a692318336d907d1c0076b14eb542",
+            "bytes": 940111
+          },
+          {
+            "file": "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm",
+            "sha256": "fce1e85ddfc697f56a458d7f207994afe5914d80e31b8169c6a5cd729ddbcceb",
+            "bytes": 824162
+          }
+        ],
+        "founder_approved_at": "2026-09-05T00:03:59.981Z",
+        "founder_approval_note": "Founder replied \"yup approved\" to the displayed Love Hurts authentic-motion-v3-a1 candidate and the offer to apply the same optimized V2 continuous-loop wiring as Black Rose. No deployment authorized.",
+        "delivery": {
+          "loop": true,
+          "muted": true,
+          "playsinline": true,
+          "preload": "none",
+          "frame_rate": 24,
+          "width": 1440,
+          "mp4_fast_start": true,
+          "audio_removed": true,
+          "visible_only_playback": true,
+          "reduced_motion_uses_still": true,
+          "save_data_uses_still": true
+        }
+      }
+    },
+    "kids-capsule": {
+      "source": {
+        "file": "assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+        "sha256": "fda7df7f2f0391e10c8e93121b0757242010d4c49e69d79beb8827a32d0b7936"
+      },
+      "exact_pixel_treatment": "locked throne room with the canonical mascot walking from the foreground aisle to the throne",
+      "ai_motion": {
+        "status": "founder_approved",
+        "founder_approved_at": "2026-08-22T09:58:01-07:00",
+        "founder_approval_evidence": "Founder directive: get those wired into v2",
+        "job_id": "0e72251e-d1f6-46ee-8c80-7d479ac4c0bf",
+        "generator": "higgsfield_seedance_2_5_omni_reference",
+        "provider_attempt": {
+          "provider": "higgsfield",
+          "status": "completed",
+          "submitted_count": 1
+        },
+        "master": {
+          "file": "assets/video/collection-heroes/approved/kids-capsule/kids-capsule-heir-throne-motion-v2.mp4",
+          "sha256": "6fffdc77c3579f8caab3bf799a544eb0970fb81929006e7f1792ffc835f0c57e"
+        },
+        "web": [
+          {
+            "file": "assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.mp4",
+            "sha256": "14db6dd210493a2cbac0f9f6da88f69212bae52a87c08604adb779b8dda308cc"
+          },
+          {
+            "file": "assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.webm",
+            "sha256": "876105aaa2447d1f09cf2150b08013b15d92b340bc9ad97b05d9a0f5abd49d60"
+          }
+        ],
+        "internal_visual_qa": "pass_pending_founder_review",
+        "qa": {
+          "duration_seconds": 6,
+          "resolution": "1920x1080",
+          "contact_sheet": "assets/video/collection-heroes/approved/kids-capsule/qa/contact-sheet-v2.jpg",
+          "motion_brief": "canonical mascot walk from foreground aisle to throne",
+          "text_and_geometry": "visually stable; founder review required"
+        },
+        "virality_predictor": "pending_founder_review"
+      }
+    }
+  }
+}

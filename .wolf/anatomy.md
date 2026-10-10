@@ -38,7 +38,6 @@
 - `IDEA.md` (~5 tok)
 - `init.sql` — DevSkyy Database Initialization (~198 tok)
 - `lint-staged.config.mjs` — Declares relPaths (~346 tok)
-- `main.py` — Higgsfield SDK example: Seedance 2.5 text-to-video via higgsfield_client.subscribe; HF_KEY from .env.local; fails closed on failed/nsfw/canceled (~1100 tok)
 - `main_enterprise.py` — API router (~5854 tok)
   - fn `_parse_sentry_sample_rate` L39-52 (~130 tok)
   - fn `_resolve_cors_origin_regex` L53-78 (~327 tok)
@@ -75,6 +74,9 @@
 - `skills-lock.json` (~3853 tok)
 - `SOT.md` — Source of Truth (SOT) Registry (~5533 tok)
 - `vercel.json` — /*.ts": { (~525 tok)
+- `main.py` — Higgsfield Seedance 2.5 text-to-video example — BILLABLE; fail-closed confirm_billable_run gate (manifest always, SKYYROSE_AUTO_CONFIRM read before .env.local loads, no TTY aborts, exit 5) (~1818 tok)
+- `wolf_memory_mcp.py` — stdio launcher for the wolf-memory MCP server (darwin fork-safety guard before imports) (~249 tok)
+- `worktree_fleet_mcp.py` — stdio launcher for the worktree-fleet MCP server (darwin fork-safety guard before imports) (~208 tok)
 
 ## .claude/
 
@@ -3999,6 +4001,7 @@
 - `README.md` — Project documentation (~1993 tok)
 - `render-fidelity-industry-standard-2026-06-15.html` — AI Product-Render Fidelity — Industry Standard & SkyyRose Reconciliation (2026-06-15) (~4363 tok)
 - `SYSTEM_ARCHITECTURE.md` — DevSkyy System Architecture (~3118 tok)
+- `mcp-worktree-fleet-and-wolf-memory.html` — Architecture of the two in-repo MCP servers: tools, stores, locking, failure modes (~6296 tok)
 
 ## docs/audits/
 
@@ -5542,7 +5545,7 @@
 - `api.ts` — TypeScript resolves `@/lib/api` to this file before the `api/` directory. (~62 tok)
 - `auth.d.ts` — NextAuth.js type augmentations for custom JWT fields (~146 tok)
 - `auth.ts` — NextAuth.js v4 Configuration (~798 tok)
-- `catalog-csv.ts` — Pure CSV transforms for the canonical SkyyRose catalog. (~2228 tok)
+- `catalog-csv.ts` — Pure READ-side CSV helpers for the registry's catalog projection: EDITABLE_COLUMNS, CatalogPatch, splitCsvRow, collapseNewlines. No row serialization/splicing (writes go through the registry). (~600 tok)
   - fn `splitCsvRow` L38-62 (~163 tok)
   - fn `escapeCsvCell` L63-69 (~44 tok)
   - fn `serializeCsvRow` L70-79 (~117 tok)
@@ -5551,7 +5554,7 @@
   - fn `applyPatch` L103-197 (~892 tok)
   - fn `parseDataRows` L198-255 (~342 tok)
 - `catalog-server.ts` — Exports getEnrichedCollection, getAllEnrichedCollections (~401 tok)
-- `catalog-write.ts` — Canonical catalog WRITE path (server-only). (~828 tok)
+- `catalog-write.ts` — Catalog WRITE path (server-only): spawns `python -m skyyrose.core.product_registry update <sku> --registry <path>` via execFile (args array, DEVSKYY_PYTHON, 30s timeout); never writes the CSV; CatalogWriteError kinds unavailable/rejected/not_found (503/400/404 in the route). Tests: frontend/tests/catalog-write.test.ts, catalog-put-api.test.ts. (~1900 tok)
   - section `UpdateResult` L26-35 (~75 tok)
   - fn `updateProductRow` L36-76 (~427 tok)
 - `catalog.ts` — Canonical product catalog reader (server-only). Exposes resolveRepoFile/resolveCsvPath/resetCatalogCache; reuses splitCsvRow from catalog-csv.ts. (~1494 tok)
@@ -6116,7 +6119,6 @@
 - `context_dev.py` — Server-side Context.dev structured web extraction. (~881 tok)
   - class `ContextDevConfigurationError` L18-21 (~38 tok)
   - fn `extract_structured_data` L22-83 (~711 tok)
-- `openai_agents_api.py` — Raw-httpx client for OpenAI Agents API beta (/v1/agents/sessions, OpenAI-Beta: agents=v1); dry-run-by-default paid create_session + STOP-AND-SHOW manifest, SSE terminal-state classifier, free check_access probe (~4288 tok)
 - `wordpress_client.py` — Pydantic: ProductData (50 fields) (~6631 tok)
   - class `APIType` L40-46 (~56 tok)
   - class `SkyyRoseCollection` L47-99 (~444 tok)
@@ -6126,6 +6128,7 @@
   - class `MediaUploadResult` L140-149 (~46 tok)
   - class `WebhookPayload` L150-160 (~68 tok)
   - class `WordPressClient` L161-724 (~5370 tok)
+- `openai_agents_api.py` — Raw-httpx client for OpenAI Agents API beta (/v1/agents/sessions, OpenAI-Beta: agents=v1); dry-run-by-default paid create_session + STOP-AND-SHOW manifest, SSE terminal-state classifier, free check_access probe (~4288 tok)
 - `wordpress_com_client.py` — WordPress.com REST API Client. (~3594 tok)
   - class `WordPressConfig` L16-38 (~290 tok)
   - class `WooCommerceConfig` L39-46 (~92 tok)
@@ -6342,6 +6345,26 @@
   - class `StabilityClient` L38-630 (~5050 tok)
 - `vertex_imagen.py` — VertexImagenClient: generate, generate_fast, edit, upscale + 1 more (~4680 tok)
   - class `VertexImagenClient` L47-501 (~4286 tok)
+
+## mcp_servers/
+
+- `__init__.py` — Package marker for the in-repo stdio MCP servers (~20 tok)
+- `_shared.py` — Shared by both servers: ResponseFormat/format_response, locked_transaction (cross-process SQLite write lock), apply_darwin_fork_safety (bug-263) (~1512 tok)
+
+## mcp_servers/wolf_memory/
+
+- `__init__.py` — Package marker (~22 tok)
+- `server.py` — FastMCP instance + paths; WOLF_BUGLOG_PATH / WOLF_CEREBRUM_PATH / WOLF_LOCK_DB_PATH override the .wolf/ defaults (~154 tok)
+- `store.py` — WolfMemoryStore: atomic bug-NNN allocation, near-duplicate bump, byte-stable _serialize, cerebrum_append; validate_cerebrum_entry refuses any line break or leading '#' (~3105 tok)
+- `tools.py` — MCP tools bug_next_id / bug_log / bug_bump / bug_search / cerebrum_append and their Pydantic inputs (~1570 tok)
+
+## mcp_servers/worktree_fleet/
+
+- `__init__.py` — Package marker (~19 tok)
+- `git_ops.py` — Real `git worktree` wrappers: _reject_option_like (no '-' refs/paths), local-branch-only adoption, push_status with PushState.UNKNOWN for an unresolvable base_ref (~1968 tok)
+- `server.py` — FastMCP instance + REPO_ROOT; FLEET_DB_PATH overrides .wolf/fleet.db (~109 tok)
+- `store.py` — WorktreeFleetStore ownership registry: claim (row under lock, git outside it, rollback on failure), owner-checked release with an allow-list push gate, heartbeat, prune that reports failures; paths resolved + containment-checked (~3644 tok)
+- `tools.py` — MCP tools worktree_claim / heartbeat / list / release / prune; maps store and git errors to structured responses (~1865 tok)
 
 ## mcp_tools/
 
@@ -8137,386 +8160,960 @@
 - `SKILL.md` — Transactional Email (~2192 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/trial-to-paid-email/
+## plugins/fashion-theme-team/runtime/elite_web_builder/core/
+  - class `TokenRecord` L60-71 (~55 tok)
+  - class `CostSummary` L72-88 (~123 tok)
+  - class `CostTracker` L89-185 (~920 tok)
+  - fn `check_build` L43-116 (~682 tok)
+  - fn `_check_balanced` L117-144 (~249 tok)
+  - fn `_try_php_lint` L145-194 (~539 tok)
+  - fn `check_lint` L195-268 (~698 tok)
+  - fn `check_security` L269-330 (~545 tok)
+  - fn `check_diff` L331-431 (~811 tok)
+  - fn `check_a11y` L432-500 (~646 tok)
+  - fn `check_perf` L501-548 (~392 tok)
+  - fn `build_gate_checkers` L549-610 (~527 tok)
+  - class `ClaimType` L40-53 (~109 tok)
+  - class `ValidationSeverity` L54-62 (~48 tok)
+  - class `ValidationResult` L63-91 (~258 tok)
+  - fn `_is_valid_color` L92-137 (~437 tok)
+  - fn `_has_spaces` L138-142 (~30 tok)
+  - fn `_has_double_slashes_in_path` L143-166 (~237 tok)
+  - class `GroundTruthValidator` L167-248 (~812 tok)
+  - fn `_verify_file_exists` L249-278 (~270 tok)
+  - fn `_verify_color_value` L279-297 (~178 tok)
+  - fn `_verify_css_value` L298-337 (~368 tok)
+  - fn `_verify_font_name` L338-391 (~520 tok)
+  - fn `_verify_json_validity` L392-414 (~212 tok)
+  - fn `_verify_api_endpoint` L415-473 (~494 tok)
+  - fn `_verify_import_path` L474-509 (~384 tok)
+  - fn `_verify_php_syntax` L510-570 (~538 tok)
+  - fn `_verify_html_validity` L571-639 (~646 tok)
+  - class `JournalEntry` L40-78 (~304 tok)
+  - class `Instinct` L79-105 (~201 tok)
+  - class `LearningJournal` L106-261 (~1505 tok)
+  - class `ProviderStatus` L38-46 (~49 tok)
+  - class `ProviderConfig` L47-54 (~36 tok)
+  - class `RouteResult` L55-63 (~47 tok)
+  - class `ProviderHealth` L64-89 (~224 tok)
+  - class `RoutingConfig` L90-123 (~358 tok)
+  - class `ModelRouter` L124-361 (~2506 tok)
+  - class `ExtractedFile` L94-102 (~42 tok)
+  - class `WriteResult` L103-152 (~431 tok)
+  - class `OutputWriter` L153-364 (~2022 tok)
+  - class `RalphConfig` L37-46 (~56 tok)
+  - class `ExecutionResult` L47-70 (~193 tok)
+  - class `RalphExecutor` L71-208 (~1271 tok)
+  - class `FailureCategory` L43-52 (~107 tok)
+  - class `HealAttempt` L53-61 (~45 tok)
+  - class `Diagnosis` L62-70 (~55 tok)
+  - class `HealResult` L71-79 (~46 tok)
+  - class `HealCycleResult` L80-127 (~517 tok)
+  - class `SelfHealer` L128-283 (~1580 tok)
+  - class `Gate` L40-52 (~66 tok)
+  - class `GateStatus` L53-66 (~106 tok)
+  - class `GateResult` L67-82 (~108 tok)
+  - class `VerificationConfig` L83-100 (~166 tok)
+  - class `VerificationReport` L101-153 (~478 tok)
+  - class `VerificationLoop` L154-252 (~910 tok)
+## plugins/fashion-theme-team/runtime/elite_web_builder/evals/
+## plugins/fashion-theme-team/runtime/elite_web_builder/knowledge/
+## plugins/fashion-theme-team/runtime/elite_web_builder/templates/shopify/
+## plugins/fashion-theme-team/runtime/elite_web_builder/templates/wordpress/
+## plugins/fashion-theme-team/runtime/elite_web_builder/tests/
+  - fn `routing_config` L20-38 (~169 tok)
+  - fn `router` L39-43 (~26 tok)
+  - fn `validator` L44-48 (~20 tok)
+  - fn `journal` L49-53 (~26 tok)
+  - fn `runtime` L54-58 (~39 tok)
+  - fn `frontend_spec` L59-75 (~133 tok)
+  - fn `design_spec` L76-88 (~101 tok)
+  - class `TestBuildMessages` L89-132 (~506 tok)
+  - class `TestExecute` L133-253 (~1234 tok)
+  - class `TestExtractFiles` L254-279 (~248 tok)
+  - class `TestRuntimeRouterIntegration` L280-306 (~286 tok)
+  - class `TestAgentRole` L14-37 (~229 tok)
+  - class `TestAgentCapability` L38-62 (~239 tok)
+  - class `TestAgentOutput` L63-94 (~324 tok)
+  - class `TestAgentSpec` L95-164 (~661 tok)
+  - class `TestLibraryInfo` L25-59 (~283 tok)
+  - class `TestDocSnippet` L60-89 (~268 tok)
+  - class `TestBridgeConstruction` L90-108 (~186 tok)
+  - class `TestResolveLibrary` L109-216 (~1175 tok)
+  - class `TestQueryDocs` L217-324 (~1246 tok)
+  - class `TestLookup` L325-361 (~365 tok)
+  - class `TestErrorHandling` L362-390 (~380 tok)
+  - class `TestComputeCost` L10-39 (~373 tok)
+  - class `TestRecord` L40-69 (~380 tok)
+  - class `TestSummary` L70-97 (~306 tok)
+  - class `TestToDict` L98-110 (~110 tok)
+  - class `TestReset` L111-119 (~92 tok)
+  - class `TestStoryStatus` L25-39 (~136 tok)
+  - class `TestUserStory` L40-80 (~407 tok)
+  - class `TestPRDBreakdown` L81-110 (~274 tok)
+  - class `TestDirectorCreation` L111-145 (~396 tok)
+  - class `TestDirectorStoryManagement` L146-259 (~1109 tok)
+  - class `TestDirectorExecution` L260-377 (~1140 tok)
+  - class `TestDefaultRouting` L378-418 (~395 tok)
+  - class `TestDirectorRuntimeIntegration` L419-593 (~1856 tok)
+  - fn `_valid_planning_json` L26-44 (~207 tok)
+  - fn `_make_mock_adapter` L45-61 (~153 tok)
+  - class `TestPlanningError` L62-84 (~225 tok)
+  - class `TestProjectReport` L85-146 (~534 tok)
+  - class `TestParsePlanningResponse` L147-181 (~436 tok)
+  - class `TestBuildBreakdown` L182-274 (~910 tok)
+  - class `TestPlanStories` L275-330 (~668 tok)
+  - class `TestExecutePrd` L331-586 (~2480 tok)
+  - class `TestDirectorConfigMaxStories` L587-605 (~204 tok)
+  - class `TestCheckBuild` L25-96 (~866 tok)
+  - class `TestCheckLint` L97-142 (~572 tok)
+  - class `TestCheckSecurity` L143-177 (~431 tok)
+  - class `TestCheckDiff` L178-205 (~280 tok)
+  - class `TestCheckA11y` L206-239 (~409 tok)
+  - class `TestCheckPerf` L240-259 (~230 tok)
+  - class `TestBuildGateCheckers` L260-282 (~311 tok)
+  - fn `validator` L29-33 (~27 tok)
+  - fn `temp_dir` L34-103 (~626 tok)
+  - class `TestClaimType` L104-125 (~179 tok)
+  - class `TestValidationResult` L126-151 (~262 tok)
+  - class `TestUnknownClaimType` L152-169 (~226 tok)
+  - class `TestFileExists` L170-210 (~464 tok)
+  - class `TestColorValue` L211-321 (~1542 tok)
+  - class `TestCSSValue` L322-359 (~438 tok)
+  - class `TestFontName` L360-409 (~603 tok)
+  - class `TestJSONValidity` L410-448 (~449 tok)
+  - class `TestAPIEndpoint` L449-515 (~852 tok)
+  - class `TestImportPath` L516-581 (~770 tok)
+  - class `TestPHPSyntax` L582-624 (~522 tok)
+  - class `TestHTMLValidity` L625-694 (~910 tok)
+  - class `TestInputSanitization` L695-725 (~374 tok)
+  - class `TestVerifyAllOrFail` L726-752 (~282 tok)
+  - class `TestBatchValidation` L753-785 (~361 tok)
+  - class `TestValidationSummary` L786-817 (~380 tok)
+  - fn `director` L45-49 (~23 tok)
+  - fn `mini_prd_stories` L50-92 (~421 tok)
+  - class `TestStoryLifecycle` L93-135 (~472 tok)
+  - class `TestAgentExecutionPipeline` L136-251 (~1239 tok)
+  - class `TestMultiProviderRouting` L252-273 (~251 tok)
+  - class `TestGroundTruthIntegration` L274-310 (~416 tok)
+  - class `TestLearningIntegration` L311-357 (~494 tok)
+  - class `TestVerificationIntegration` L358-403 (~506 tok)
+  - class `TestSelfHealIntegration` L404-436 (~325 tok)
+  - class `TestRalphIntegration` L437-474 (~369 tok)
+  - class `TestFullPipeline` L475-532 (~550 tok)
+  - fn `_make_gate_result` L533-539 (~66 tok)
+  - fn `journal` L18-22 (~33 tok)
+  - fn `sample_entry` L23-37 (~128 tok)
+  - class `TestJournalEntry` L38-72 (~390 tok)
+  - class `TestJournalOperations` L73-150 (~698 tok)
+  - class `TestPersistence` L151-177 (~297 tok)
+  - class `TestInstinctExtraction` L178-229 (~581 tok)
+  - class `TestContextGeneration` L230-248 (~209 tok)
+  - fn `_make_result` L86-127 (~343 tok)
+  - class `TestLighthouseResult` L128-178 (~534 tok)
+  - class `TestRunLighthouse` L179-344 (~2070 tok)
+  - class `TestCheckPerformanceBudget` L345-455 (~1292 tok)
+  - class `TestFormatReport` L456-517 (~607 tok)
+  - fn `routing_config` L20-42 (~357 tok)
+  - fn `router` L43-51 (~84 tok)
+  - class `TestProviderConfig` L52-68 (~186 tok)
+  - class `TestRoutingResolution` L69-104 (~356 tok)
+  - class `TestFallbackChain` L105-130 (~285 tok)
+  - class `TestProviderHealth` L131-171 (~490 tok)
+  - class `TestAsyncProviderCall` L172-245 (~754 tok)
+  - class `TestConfigLoading` L246-269 (~229 tok)
+  - class `TestExtractedFile` L20-37 (~181 tok)
+  - class `TestExtractFiles` L38-126 (~1016 tok)
+  - class `TestValidatePath` L127-165 (~414 tok)
+  - class `TestValidateContent` L166-179 (~135 tok)
+  - class `TestWriteFile` L180-223 (~548 tok)
+  - class `TestExtractAndWrite` L224-261 (~478 tok)
+  - class `TestLLMMessage` L22-33 (~103 tok)
+  - class `TestLLMResponse` L34-61 (~245 tok)
+  - class `TestAnthropicAdapter` L62-147 (~928 tok)
+  - class `TestGoogleAdapter` L148-203 (~501 tok)
+  - class `TestOpenAIAdapter` L204-250 (~478 tok)
+  - class `TestXAIAdapter` L251-286 (~359 tok)
+  - class `TestGetAdapter` L287-307 (~181 tok)
+  - fn `executor` L23-27 (~28 tok)
+  - fn `custom_executor` L28-42 (~105 tok)
+  - class `TestRalphConfig` L43-60 (~166 tok)
+  - class `TestExecuteWithRetry` L61-114 (~518 tok)
+  - class `TestExecuteWithFallback` L115-159 (~550 tok)
+  - class `TestExecutionResult` L160-180 (~194 tok)
+  - fn `_save_solid_image` L29-39 (~79 tok)
+  - fn `_save_half_red_half_blue` L40-55 (~164 tok)
+  - class `TestDiffResult` L56-116 (~548 tok)
+  - class `TestCompareIdentical` L117-149 (~398 tok)
+  - class `TestCompareDifferent` L150-206 (~699 tok)
+  - class `TestCompareSizeMismatch` L207-231 (~300 tok)
+  - class `TestCompareErrors` L232-260 (~352 tok)
+  - class `TestCaptureScreenshot` L261-320 (~689 tok)
+  - class `TestRunVisualRegression` L321-450 (~1348 tok)
+  - fn `healer` L27-31 (~24 tok)
+  - fn `failing_report` L32-62 (~353 tok)
+  - class `TestFailureCategory` L63-74 (~116 tok)
+  - class `TestDiagnosis` L75-110 (~404 tok)
+  - class `TestHealCycle` L111-250 (~1383 tok)
+  - class `TestCategoryRouting` L251-290 (~469 tok)
+  - class `TestAllSpecs` L31-76 (~468 tok)
+  - class `TestDesignSystem` L77-100 (~256 tok)
+  - class `TestFrontendDev` L101-120 (~203 tok)
+  - class `TestBackendDev` L121-141 (~223 tok)
+  - class `TestAccessibility` L142-161 (~197 tok)
+  - class `TestPerformance` L162-181 (~195 tok)
+  - class `TestSeoContent` L182-201 (~195 tok)
+  - class `TestQA` L202-225 (~226 tok)
+  - class `TestLearningInjection` L226-234 (~120 tok)
+  - class `TestScaffoldFileImmutability` L26-42 (~193 tok)
+  - class `TestScaffoldResultImmutability` L43-86 (~419 tok)
+  - class `TestScaffoldWordPressTemplate` L87-167 (~1020 tok)
+  - class `TestScaffoldShopifyTemplate` L168-233 (~816 tok)
+  - class `TestScaffoldComponent` L234-314 (~1043 tok)
+  - class `TestListTemplates` L315-362 (~496 tok)
+  - class `TestEdgeCases` L363-394 (~400 tok)
+  - class `TestHexToRgb` L27-37 (~88 tok)
+  - class `TestRelativeLuminance` L38-45 (~75 tok)
+  - class `TestCheckContrast` L46-79 (~318 tok)
+  - class `TestFileValidator` L80-120 (~424 tok)
+  - class `TestTypeScale` L121-147 (~228 tok)
+  - class `TestSpacingScale` L148-169 (~228 tok)
+  - fn `default_config` L26-31 (~37 tok)
+  - fn `loop` L32-40 (~87 tok)
+  - class `TestGateEnum` L41-62 (~160 tok)
+  - class `TestGateResult` L63-96 (~305 tok)
+  - class `TestVerificationConfig` L97-120 (~291 tok)
+  - class `TestRunGate` L121-168 (~514 tok)
+  - class `TestFullRun` L169-238 (~680 tok)
+  - class `TestVerificationReport` L239-272 (~453 tok)
+## plugins/fashion-theme-team/runtime/elite_web_builder/tools/
+  - class `Context7Error` L38-47 (~90 tok)
+  - class `LibraryInfo` L48-58 (~56 tok)
+  - class `DocSnippet` L59-73 (~95 tok)
+  - class `Context7Bridge` L74-238 (~1564 tok)
+  - class `ContrastResult` L18-30 (~74 tok)
+  - fn `hex_to_rgb` L31-38 (~80 tok)
+  - fn `relative_luminance` L39-49 (~111 tok)
+  - fn `contrast_ratio` L50-58 (~90 tok)
+  - fn `wcag_level` L59-69 (~72 tok)
+  - fn `check_contrast` L70-93 (~185 tok)
+  - class `FileValidationResult` L17-36 (~152 tok)
+  - fn `validate_file_exists` L37-44 (~91 tok)
+  - fn `validate_json_file` L45-61 (~167 tok)
+  - fn `validate_no_secrets` L62-82 (~201 tok)
+  - class `LighthouseError` L59-68 (~90 tok)
+  - class `LighthouseResult` L69-86 (~135 tok)
+  - fn `_get_timestamp` L87-91 (~38 tok)
+  - fn `_build_command` L92-112 (~137 tok)
+  - fn `_extract_score` L113-124 (~96 tok)
+  - fn `_extract_metrics` L125-134 (~113 tok)
+  - fn `_extract_failed_audits` L135-154 (~176 tok)
+  - fn `_parse_report` L155-188 (~332 tok)
+  - fn `run_lighthouse` L189-238 (~482 tok)
+  - fn `check_performance_budget` L239-280 (~375 tok)
+  - fn `format_report` L281-327 (~385 tok)
+  - class `DiffResult` L41-57 (~121 tok)
+  - fn `_validate_file_exists` L58-65 (~74 tok)
+  - fn `_validate_dir_exists` L66-73 (~75 tok)
+  - fn `_url_to_filename` L74-88 (~161 tok)
+  - fn `capture_screenshot` L89-141 (~424 tok)
+  - fn `_load_and_normalize` L142-162 (~210 tok)
+  - fn `_compute_pixel_diff` L163-198 (~316 tok)
+  - fn `compare_screenshots` L199-248 (~490 tok)
+  - fn `run_visual_regression` L249-299 (~504 tok)
+  - class `ScaffoldError` L29-38 (~92 tok)
+  - class `ScaffoldFile` L39-46 (~42 tok)
+  - class `ScaffoldResult` L47-61 (~108 tok)
+  - fn `_validate_name` L62-68 (~72 tok)
+  - fn `_slugify` L69-97 (~236 tok)
+  - fn `_wp_page` L98-133 (~371 tok)
+  - fn `_wp_archive` L134-157 (~287 tok)
+  - fn `_wp_single` L158-177 (~243 tok)
+  - fn `_wp_template_part` L178-189 (~132 tok)
+  - fn `_wp_block_pattern` L190-255 (~588 tok)
+  - fn `_shopify_json_template` L256-272 (~127 tok)
+  - fn `_shopify_page` L273-279 (~92 tok)
+  - fn `_shopify_collection` L280-286 (~98 tok)
+  - fn `_shopify_product` L287-293 (~95 tok)
+  - fn `_shopify_section` L294-328 (~307 tok)
+  - fn `_shopify_snippet` L329-360 (~285 tok)
+  - fn `_component_react` L361-399 (~397 tok)
+  - fn `_component_vue` L400-439 (~361 tok)
+  - fn `_component_vanilla` L440-486 (~457 tok)
+  - fn `scaffold_wordpress_template` L487-531 (~392 tok)
+  - fn `scaffold_shopify_template` L532-577 (~397 tok)
+  - fn `scaffold_component` L578-620 (~374 tok)
+  - fn `list_templates` L621-673 (~556 tok)
+## plugins/fashion-theme-team/scripts/
+  - fn `authenticated_capture` L59-87 (~394 tok)
+  - fn `main` L88-210 (~1486 tok)
+  - class `MatrixError` L32-35 (~30 tok)
+  - class `_HTMLProbe` L36-42 (~67 tok)
+  - fn `load_config` L43-53 (~118 tok)
+  - fn `run_git` L54-67 (~138 tok)
+  - fn `has_git_worktree` L68-83 (~136 tok)
+  - fn `decode_nul_list` L84-87 (~44 tok)
+  - fn `changed_files` L88-104 (~118 tok)
+  - fn `candidate_files` L105-134 (~322 tok)
+  - fn `matches_exclude` L135-139 (~45 tok)
+  - fn `is_excluded` L140-143 (~43 tok)
+  - fn `extension` L144-147 (~21 tok)
+  - fn `language_for` L148-159 (~126 tok)
+  - fn `classify_files` L160-179 (~191 tok)
+  - fn `read_text` L180-187 (~73 tok)
+  - fn `text_policy_errors` L188-207 (~250 tok)
+  - fn `normalize_text` L208-222 (~177 tok)
+  - fn `resolve_tool` L223-238 (~152 tok)
+  - fn `tool_version` L239-253 (~166 tok)
+  - fn `enforce_pinned_version` L254-278 (~261 tok)
+  - fn `run_command` L279-288 (~105 tok)
+  - fn `run_black` L289-308 (~269 tok)
+  - fn `run_python_quality_checks` L309-358 (~574 tok)
+  - fn `optional_formatter_command` L359-377 (~224 tok)
+  - fn `run_optional_formatter` L378-399 (~233 tok)
+  - fn `validate_syntax` L400-452 (~586 tok)
+  - fn `format_group` L453-490 (~397 tok)
+  - fn `build_parser` L491-506 (~185 tok)
+  - fn `main` L507-555 (~517 tok)
+  - fn `sha256_bytes` L145-148 (~24 tok)
+  - fn `parse_frontmatter` L149-161 (~136 tok)
+  - fn `capability_profile` L162-219 (~617 tok)
+  - fn `gap_records` L220-337 (~1716 tok)
+  - fn `canonical_contract_sha` L338-349 (~109 tok)
+  - fn `record_for` L350-619 (~3129 tok)
+  - fn `generate` L620-678 (~789 tok)
+  - fn `compare_trees` L679-692 (~169 tok)
+  - fn `main` L693-747 (~623 tok)
+  - fn `copy_sources` L13-20 (~91 tok)
+  - fn `main` L21-63 (~513 tok)
+  - class `Difference` L39-48 (~63 tok)
+  - fn `is_local_path` L49-56 (~73 tok)
+  - fn `package_files` L57-69 (~131 tok)
+  - fn `sha256` L70-77 (~65 tok)
+  - fn `validate_package` L78-87 (~140 tok)
+  - fn `compare` L88-102 (~149 tok)
+  - fn `print_difference` L103-118 (~128 tok)
+  - fn `remove_empty_parent_directories` L119-128 (~72 tok)
+  - fn `apply` L129-144 (~196 tok)
+  - fn `parse_args` L145-171 (~234 tok)
+  - fn `main` L172-198 (~268 tok)
+  - class `ChangedFileScopeTests` L21-116 (~1235 tok)
+  - class `PackageBoundaryTests` L21-64 (~512 tok)
+  - fn `sha256` L16-19 (~22 tok)
+  - fn `contract_sha` L20-27 (~86 tok)
+  - fn `candidate_sha` L28-35 (~72 tok)
+  - fn `main` L36-100 (~902 tok)
+## plugins/fashion-theme-team/tasks/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/brand-architecture/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/brand-audit/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/brand-identity-guide/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/brand-positioning-statement/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/brand-refresh/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/brand-tagline/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/brand-voice-guide/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/color-palette-generator/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/executive-resume/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/expert-positioning/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/icon-set-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/merch-design-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/mission-statement/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/naming-workshop/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/packaging-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/portfolio-page/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/presentation-template-guide/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/rebrand-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/signage-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/signature-talk/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/speaking-one-sheet/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/style-tile/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/unboxing-experience/
+## plugins/fashion-theme-team/vendor/branded-skills/branding-design/visual-identity-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/about-page/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/article-rewriter/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/authority-content-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/blog-post/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/book-outline/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/book-proposal/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/brand-story/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/caption-writer/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/case-study/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/collection-page-copy/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/comparison-article/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/content-audit/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/content-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/content-calendar/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/content-cluster-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/content-gap-finder/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/content-pillar-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/content-repurpose/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/content-style-guide/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/donation-page-copy/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/ebook-outline/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/expert-roundup-pitch/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/faq-generator/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/feature-announcement/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/ghostwriter-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/headline-generator/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/help-center-article/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/hook-generator/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/landing-page-copy/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/linkedin-article/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/listicle-generator/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/microcopy-writer/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/newsletter-builder/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/newsletter-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/pillar-page/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/podcast-one-sheet/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/podcast-show-notes/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/press-kit/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/press-release/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/pricing-page-copy/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/product-changelog/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/product-description/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/product-faq/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/professional-bio/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/recipe-card/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/release-notes/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/script-to-blog/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/seo-content-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/speech-writer/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/thought-leader-content-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/thought-leadership/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/tutorial-writer/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/video-script/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/viral-content-formula/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/white-paper/
+## plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/youtube-thumbnail/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/cross-border-selling/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/dropshipping-supplier-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/exchange-policy/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/food-delivery-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/food-truck-business-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/gift-guide/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/investment-property-analysis/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/lease-agreement-checklist/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/marketplace-listing/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/neighborhood-guide/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/open-house-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/product-recall-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/product-sourcing-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/property-listing/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/property-management-sop/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/real-estate-crm-setup/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/real-estate-newsletter/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/rental-listing/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/seasonal-inventory-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/seller-onboarding/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/size-guide/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/store-launch-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/subscription-box-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/e-commerce-products/wholesale-catalog/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/abandoned-cart-email/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/ambassador-program/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/black-friday-emails/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/cart-recovery-sms/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/cause-marketing-campaign/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/cold-outreach/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/customer-review-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/downsell-sequence/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/drip-campaign/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/email-ab-test-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/email-deliverability-audit/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/email-design-system/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/email-list-cleanup/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/email-newsletter-template/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/email-preference-center/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/email-sequence/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/email-subject-line-tester/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/engagement-playbook/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/flash-sale-campaign/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/launch-email-sequence/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/loyalty-program/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/milestone-email/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/order-bump-copy/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/payment-plan-offer/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/price-increase-notice/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/product-launch-email/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/re-engagement-email/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/referral-program/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/renewal-campaign/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/seasonal-campaign/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/social-proof-collector/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/testimonial-collector/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/thank-you-campaign/
 
-- `SKILL.md` — Trial-to-Paid Email Sequence (~1916 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/two-sided-email-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/transactional-email/
 
-- `SKILL.md` — Two-Sided Email Strategy (~2097 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/upsell-sequence/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/trial-to-paid-email/
 
 - `SKILL.md` — Upsell Sequence (~5388 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/user-generated-content/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/two-sided-email-strategy/
 
 - `SKILL.md` — User-Generated Content (~1979 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/waitlist-builder/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/upsell-sequence/
 
 - `SKILL.md` — Waitlist Builder (~1569 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/webinar-email-sequence/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/user-generated-content/
 
 - `SKILL.md` — Webinar Email Sequence (~1348 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/welcome-sequence/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/waitlist-builder/
 
 - `SKILL.md` — Welcome Sequence Builder (~1864 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/win-back-campaign/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/webinar-email-sequence/
 
 - `SKILL.md` — Win-Back Campaign (~5039 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/business-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/welcome-sequence/
 
 - `SKILL.md` — Business Plan Writer (~1728 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/coaching-framework/
+## plugins/fashion-theme-team/vendor/branded-skills/email-marketing-automation/win-back-campaign/
 
 - `SKILL.md` — Coaching Framework (~3100 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/collaboration-agreement/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/business-plan/
 
 - `SKILL.md` — Collaboration Agreement (~2045 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/competitor-analysis/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/coaching-framework/
 
 - `SKILL.md` — Competitor Analysis (~6825 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/customer-journey-map/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/collaboration-agreement/
 
 - `SKILL.md` — Customer Journey Map (~3209 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/customer-persona/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/competitor-analysis/
 
 - `SKILL.md` — Customer Persona (~1679 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/customer-segmentation/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/customer-journey-map/
 
 - `SKILL.md` — Customer Segmentation (~1933 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/discovery-call-script/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/customer-persona/
 
 - `SKILL.md` — Discovery Call Script (~1930 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/joint-venture-proposal/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/customer-segmentation/
 
 - `SKILL.md` — Joint Venture Proposal (~1841 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/lead-magnet/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/discovery-call-script/
 
 - `SKILL.md` — Lead Magnet (~5092 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/market-research/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/joint-venture-proposal/
 
 - `SKILL.md` — Market Research (~1732 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/market-sizing/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/lead-magnet/
 
 - `SKILL.md` — Market Sizing (~1457 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/membership-site-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/market-research/
 
 - `SKILL.md` — Membership Site Plan (~3357 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/objection-handler/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/market-sizing/
 
 - `SKILL.md` — Objection Handler Playbook (~1926 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/partnership-proposal/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/membership-site-plan/
 
 - `SKILL.md` — Partnership Proposal (~2471 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/pitch-deck/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/objection-handler/
 
 - `SKILL.md` — Pitch Deck (~3802 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/product-comparison/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/partnership-proposal/
 
 - `SKILL.md` — Product Comparison (~2977 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/product-roadmap/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/pitch-deck/
 
 - `SKILL.md` — Product Roadmap (~4362 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/proposal-writer/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/product-comparison/
 
 - `SKILL.md` — Proposal Writer (~5255 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/revenue-model/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/product-roadmap/
 
 - `SKILL.md` — Revenue Model (~1452 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/sales-battlecard/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/proposal-writer/
 
 - `SKILL.md` — Sales Battlecard (~1585 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/sales-deck/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/revenue-model/
 
 - `SKILL.md` — Sales Deck (~1602 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/sales-email-template/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/sales-battlecard/
 
 - `SKILL.md` — Sales Email Template (~1588 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/sales-funnel-builder/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/sales-deck/
 
 - `SKILL.md` — Sales Funnel Builder (~1610 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/sales-script/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/sales-email-template/
 
 - `SKILL.md` — Sales Script Builder (~1767 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/strategic-alliance-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/sales-funnel-builder/
 
 - `SKILL.md` — Strategic Alliance Plan (~1846 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/swot-analysis/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/sales-script/
 
 - `SKILL.md` — SWOT Analysis (~7119 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/value-proposition-canvas/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/strategic-alliance-plan/
 
 - `SKILL.md` — Value Proposition Canvas (~1546 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/webinar-sales-script/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/swot-analysis/
 
 - `SKILL.md` — Webinar Sales Script (~1626 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/win-loss-analysis/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/value-proposition-canvas/
 
 - `SKILL.md` — Win/Loss Analysis (~1599 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/checkout-optimizer/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/webinar-sales-script/
 
 - `SKILL.md` — Checkout Optimizer (~2443 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/featured-snippet-optimizer/
+## plugins/fashion-theme-team/vendor/branded-skills/sales-funnels/win-loss-analysis/
 
 - `SKILL.md` — Featured Snippet Optimizer (~1675 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/google-business-profile/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/checkout-optimizer/
 
 - `SKILL.md` — Google Business Profile (~1859 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/keyword-research/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/featured-snippet-optimizer/
 
 - `SKILL.md` — Keyword Research (~1573 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/landing-page-audit/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/google-business-profile/
 
 - `SKILL.md` — Landing Page Audit (~1668 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/link-building-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/keyword-research/
 
 - `SKILL.md` — Link Building Plan (~1649 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/local-seo-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/landing-page-audit/
 
 - `SKILL.md` — Local SEO Plan (~1674 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/marketplace-seo/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/link-building-plan/
 
 - `SKILL.md` — Marketplace SEO (~2136 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/meta-tag-optimizer/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/local-seo-plan/
 
 - `SKILL.md` — Meta Tag Optimizer (~1568 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/platform-migration/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/marketplace-seo/
 
 - `SKILL.md` — Platform Migration (~2164 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/product-listing-optimizer/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/meta-tag-optimizer/
 
 - `SKILL.md` — Product Listing Optimizer (~1677 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/schema-markup-guide/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/platform-migration/
 
 - `SKILL.md` — Schema Markup Guide (~1626 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/seo-audit/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/product-listing-optimizer/
 
 - `SKILL.md` — SEO Audit (~1697 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/seo-competitor-analysis/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/schema-markup-guide/
 
 - `SKILL.md` — SEO Competitor Analysis (~1630 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/seo-migration-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/seo-audit/
 
 - `SKILL.md` — SEO Migration Plan (~1751 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/seo-reporting-template/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/seo-competitor-analysis/
 
 - `SKILL.md` — SEO Reporting Template (~1646 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/site-architecture-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/seo-migration-plan/
 
 - `SKILL.md` — Site Architecture Plan (~1657 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/store-page-audit/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/seo-reporting-template/
 
 - `SKILL.md` — Store Page Audit (~1648 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/technical-seo-checklist/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/site-architecture-plan/
 
 - `SKILL.md` — Technical SEO Checklist (~1800 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/seo-search/youtube-seo/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/store-page-audit/
 
 - `SKILL.md` — YouTube SEO (~1679 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/author-platform-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/technical-seo-checklist/
 
 - `SKILL.md` — Author Platform Plan (~2050 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/brand-photography-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/seo-search/youtube-seo/
 
 - `SKILL.md` — Brand Photography Brief (~3008 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/co-marketing-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/author-platform-plan/
 
 - `SKILL.md` — Co-Marketing Plan (~1927 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/community-launch/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/brand-photography-brief/
 
 - `SKILL.md` — Community Launch (~2106 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/community-moderation/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/co-marketing-plan/
 
 - `SKILL.md` — Community Moderation (~2406 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/crisis-comms/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/community-launch/
 
 - `SKILL.md` — Crisis Communications Planner (~1683 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/facebook-group-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/community-moderation/
 
 - `SKILL.md` — Facebook Group Plan (~2307 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/food-photography-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/crisis-comms/
 
 - `SKILL.md` — Food Photography Brief (~2148 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/guest-post-pitch/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/facebook-group-plan/
 
 - `SKILL.md` — Guest Post Pitch (~2005 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/hashtag-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/food-photography-brief/
 
 - `SKILL.md` — Hashtag Strategy (~3184 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/influencer-campaign-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/guest-post-pitch/
 
 - `SKILL.md` — Influencer Campaign Brief (~1726 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/influencer-outreach/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/hashtag-strategy/
 
 - `SKILL.md` — Influencer Outreach (~2148 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/instagram-carousel/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/influencer-campaign-brief/
 
 - `SKILL.md` — Instagram Carousel (~1789 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/linkedin-profile-optimizer/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/influencer-outreach/
 
 - `SKILL.md` — LinkedIn Profile Optimizer (~2233 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/linkedin-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/instagram-carousel/
 
 - `SKILL.md` — LinkedIn Strategy (~2120 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/media-kit/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/linkedin-profile-optimizer/
 
 - `SKILL.md` — Media Kit Builder (~1287 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/meme-content-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/linkedin-strategy/
 
 - `SKILL.md` — Meme Content Brief (~1680 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/menu-design-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/media-kit/
 
 - `SKILL.md` — Menu Design Brief (~2134 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/networking-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/meme-content-brief/
 
 - `SKILL.md` — Networking Strategy (~1861 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/personal-brand-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/menu-design-brief/
 
 - `SKILL.md` — Personal Brand Strategy (~1952 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/pinterest-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/networking-strategy/
 
 - `SKILL.md` — Pinterest Strategy (~2051 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/platform-community-guidelines/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/personal-brand-strategy/
 
 - `SKILL.md` — Platform Community Guidelines (~2101 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/podcast-guest-pitch/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/pinterest-strategy/
 
 - `SKILL.md` — Podcast Guest Pitch (~2040 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/pr-pitch/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/platform-community-guidelines/
 
 - `SKILL.md` — PR Pitch Writer (~1388 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/product-photography-brief/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/podcast-guest-pitch/
 
 - `SKILL.md` — Product Photography Brief (~3531 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/reddit-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/pr-pitch/
 
 - `SKILL.md` — Reddit Strategy (~2024 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/short-form-video-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/product-photography-brief/
 
 - `SKILL.md` — Short-Form Video Plan (~1911 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-listening-plan/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/reddit-strategy/
 
 - `SKILL.md` — Social Listening Plan (~2101 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-media-audit/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/short-form-video-plan/
 
 - `SKILL.md` — Social Media Audit (~6858 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-media-calendar/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-listening-plan/
 
 - `SKILL.md` — Social Media Calendar (~2041 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-media-graphics/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-media-audit/
 
 - `SKILL.md` — Social Media Graphics (~4494 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-media-policy/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-media-calendar/
 
 - `SKILL.md` — Social Media Policy (~2201 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-media-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-media-graphics/
 
 - `SKILL.md` — Social Media Strategy (~1985 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/sponsor-pitch/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-media-policy/
 
 - `SKILL.md` — Sponsor Pitch (~1587 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/thread-hook-writer/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/social-media-strategy/
 
 - `SKILL.md` — Thread Hook Writer (~1942 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/tiktok-script/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/sponsor-pitch/
 
 - `SKILL.md` — TikTok Script (~1848 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/twitter-thread/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/thread-hook-writer/
 
 - `SKILL.md` — Twitter Thread (~1748 tok)
 
 ## plugins/fashion-theme-team/vendor/branded-skills/social-media/youtube-strategy/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/tiktok-script/
 
 - `SKILL.md` — YouTube Strategy (~2135 tok)
 
@@ -8720,7 +9317,6 @@
   - fn `benchmark_semaphore_limiting` L290-348 (~580 tok)
   - fn `print_summary` L349-384 (~399 tok)
   - fn `main` L385-412 (~291 tok)
-- `bug322_sig_commerce_audit.py` — bug-322 follow-up: git-only sha256 audit of 21 stale SIG-COMMERCE contract bindings vs codex/final-scenes-e2e-20260830; --deep hashes every blob in .git (all refs/reflogs/unreachable) with provenance; gated (--fire, manifest, y) Agents API 3-subagent delegation (~6517 tok)
 - `build_asset_manifest.py` — Generate ``assets/products/manifest.json`` — the content-hashed SKU→asset map. (~2066 tok)
   - fn `_catalog_rows` L49-61 (~130 tok)
   - fn `_record` L62-68 (~82 tok)
@@ -8892,6 +9488,9 @@
   - fn `build_matrix` L206-335 (~1426 tok)
   - fn `render_markdown` L336-395 (~793 tok)
   - fn `main` L396-434 (~476 tok)
+- `deploy-production.sh` — Production wrapper: pins .env.wordpress + skyyrose-flagship-2 source, validates host/SSH user/WP_THEME_PATH, execs deploy-theme.sh (~450 tok)
+- `deploy-staging.sh` — Staging wrapper: pins .env.wordpress.staging + skyyrose-flagship-2 source, validates *.wpcomstaging.com host, execs deploy-theme.sh (~400 tok)
+- `deploy-target-lib.sh` — Shared wrapper body: env-file validation without sourcing, inherited-var refusal, --allow-* one-shot flags (~2200 tok)
 - `deploy_elementor_templates.py` — ElementorDeployer: get_page_by_slug, deploy_template, deploy_all, main (~1786 tok)
   - class `ElementorDeployer` L14-147 (~1362 tok)
   - fn `main` L148-189 (~373 tok)
@@ -8909,7 +9508,7 @@
 - `deploy-holo-cards.sh` — scripts/deploy-holo-cards.sh -- Deploy Holo product card rollout to production (~3234 tok)
 - `deploy-mu-plugin.sh` — scripts/deploy-mu-plugin.sh -- SCP one MU-plugin (MU_SRC param, dest=basename) to wp-content/mu-plugins/ + nonce-endpoint verify; STOPSHOW_ACK-gated (~1048 tok)
 - `deploy-pipeline.sh` — scripts/deploy-pipeline.sh -- Single-command deploy pipeline for SkyyRose WordPress theme (~1847 tok)
-- `deploy-theme.sh` — scripts/deploy-theme.sh -- Production deploy script for SkyyRose WordPress theme (~13969 tok)
+- `deploy-theme.sh` — Deploy ENGINE for the WordPress theme; refuses direct runs (needs DEPLOY_TARGET from a wrapper), target-host + SSH-destination + live theme identity gates, V1-only until PR #918 (~17800 tok)
 - `designqc-playwright.mjs` — Captures desktop and mobile visual-QA evidence without OpenWolf's (~644 tok)
 - `diagnose_cli_raw.py` — Build the exact CLI command the SDK would use and run it via subprocess (~507 tok)
 - `diagnose_orchestrator.py` — Test ClaudeSDKClient (async context manager) with MCP server. (~665 tok)
@@ -9139,6 +9738,8 @@
   - fn `generate_model_with_product` L131-176 (~403 tok)
   - fn `main` L177-265 (~840 tok)
 
+- `verify_live_registries.py` — Page registries (V1 skyyrose / V2 skyyrose-flagship-2 routes + DOM assertions) for verify_live_structure.py (~3600 tok)
+- `verify_live_structure.py` — Post-deploy Scrapling DOM check; picks the registry from the LIVE theme's Text Domain, fails closed (~5000 tok)
 ## scripts/_lib/
 
 - `script-utils.js` — scripts/_lib/script-utils.js — shared utilities for the per-edit toolchain. (~543 tok)
@@ -9213,27 +9814,95 @@
   - fn `show_upload_stopandshow` L64-100 (~305 tok)
   - fn `upload_zip` L101-183 (~614 tok)
 
-## pipelines/blender_render/
+## ./docs/research/
 
+- `2026-09-12-brand-story-storyboard-line-introduction-workflows.md` — deep-research report: brand-story frameworks/tests, storyboard + AI pipeline, collection-launch/drop model, AI disclosure law, SkyyRose applied section; 130 cited sources (~17770 tok)
+- `2026-09-12-brand-story-ledgers/` — three exa agent reports with full URL ledgers backing the report above; provenance evidence, not prose to read (~34497 tok)
+
+## tests/mcp_servers/
+
+- `__init__.py` — Package marker — without it this dir's conftest shadows the ROOT conftest for `import conftest` (bug-350) (~109 tok)
+- `conftest.py` — Points both servers' env path overrides at a throwaway dir at collection time (assigned, not setdefault) so tool imports never open the live .wolf stores (~322 tok)
+- `test_wolf_memory_cerebrum.py` — cerebrum_append: section targeting, heading-injection and every-line-break refusal, anchored heading match (~1955 tok)
+- `test_wolf_memory_store.py` — Bug store: id allocation, bump-not-duplicate, serializer stability, cross-process concurrency (~3472 tok)
+- `test_worktree_fleet_git_ops.py` — git_ops against real tmp repos: option injection, branch-kind rule, push states incl. UNKNOWN (~3456 tok)
+- `test_worktree_fleet_store.py` — Registry logic with git faked: claim conflicts, release ownership + allow-list gate, prune, path validation (~5737 tok)
+- `test_worktree_fleet_tools.py` — Tool layer error mapping: heartbeat on unregistered path, git failure text, prune failures (~932 tok)
+## wordpress-theme/skyyrose-flagship-2/assets/models/
+
+- `skyy-natural-desktop.glb` — Skyy natural-motion rig, desktop tier (110k tris, 30 joints, Draco + WebP; sha256 9b405468…, 2,143,292 B); clips Skyy_Idle/Walk/Talk/Joy/Exit/Wave; wired via SKYY_3D_CONFIG.modelUrl (binary)
+- `skyy-natural-mobile.glb` — Skyy natural-motion rig, mobile tier (Draco + WebP; sha256 7267133a…, 1,247,220 B); chosen by skyy-3d.js below 47.99em or deviceMemory ≤ 4 via SKYY_3D_CONFIG.mobileModelUrl (binary)
+- `skyy-mascot.glb` — Previous 5.8 MB paid rig, retained; no runtime reference after 2.5.0 — removal is a founder decision (binary)
+
+## wordpress-theme/skyyrose-flagship-2/template-parts/collections/
+
+- `chapters.php` — The three `world` scenes as alternating `.sr2-chapter` bands (engraved index, chapter title, lede; last carries the quiet "Enter the full scene" link) (~900 tok)
+- `index.php` — Collections index for page.php: quiet head + four full-bleed `.sr2-chapter`s (lockup, founder line, "Enter the {name} collection"); no cards (~700 tok)
+
+## wordpress-theme/skyyrose-flagship-2/template-parts/home/
+
+- `editorial-film.php` — On-model film band: one founder-selected worn look per world in a `[data-home-model-loop]` strip (original + `data-loop-copy` duplicates, toggle in its own lane) (~600 tok)
+
+## wordpress-theme/skyyrose-flagship-2/template-parts/pages/
+
+- `contact.php` — Contact page composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
+- `journal-entry.php` — Single journal entry composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/twitter-thread/
+## plugins/fashion-theme-team/vendor/branded-skills/social-media/youtube-strategy/
+- `bug322_sig_commerce_audit.py` — bug-322 follow-up: git-only sha256 audit of 21 stale SIG-COMMERCE contract bindings vs codex/final-scenes-e2e-20260830; --deep hashes every blob in .git (all refs/reflogs/unreachable) with provenance; gated (--fire, manifest, y) Agents API 3-subagent delegation (~6517 tok)
+
+## scripts/flux_lora/
+  - fn `_confirm` L70-83 (~134 tok)
+  - fn `cmd_dataset_info` L84-104 (~212 tok)
+  - fn `cmd_train` L105-184 (~772 tok)
+  - fn `cmd_generate` L185-243 (~551 tok)
+  - fn `cmd_status` L244-257 (~127 tok)
+  - fn `cmd_build_dataset` L258-305 (~510 tok)
+  - fn `cmd_upload_dataset` L306-345 (~326 tok)
+  - fn `cmd_list` L346-368 (~216 tok)
+  - fn `build_parser` L369-484 (~1256 tok)
+  - fn `main` L485-500 (~109 tok)
+  - fn `get_api_key` L76-83 (~82 tok)
+  - fn `api_key_present` L84-88 (~46 tok)
+  - fn `is_https_url` L89-97 (~92 tok)
+  - fn `_compose_caption` L32-67 (~323 tok)
+  - fn `build_dataset` L68-156 (~843 tok)
+  - fn `_image_files` L25-33 (~108 tok)
+  - fn `load_dataset` L34-77 (~388 tok)
+  - fn `validate_dataset` L78-124 (~455 tok)
+  - fn `pack_zip` L125-156 (~263 tok)
+  - fn `dataset_summary` L157-185 (~235 tok)
+  - fn `load_latest_lora` L54-75 (~204 tok)
+  - fn `_show_inference_stopandshow` L76-95 (~168 tok)
+  - fn `_extract_output_urls` L96-108 (~128 tok)
+  - fn `_poll_prediction` L109-135 (~324 tok)
+  - fn `generate` L136-235 (~1110 tok)
+  - fn `get_status` L25-52 (~250 tok)
+  - fn `list_runs` L53-72 (~169 tok)
+  - fn `format_status` L73-107 (~314 tok)
+  - fn `build_manifest` L56-134 (~880 tok)
+  - fn `show_stopandshow` L135-171 (~416 tok)
+  - fn `_build_training_url` L172-192 (~249 tok)
+  - fn `start_training` L193-270 (~772 tok)
+  - fn `save_run_record` L271-304 (~328 tok)
+  - fn `_get_hf_token` L36-63 (~240 tok)
+  - fn `show_upload_stopandshow` L64-100 (~305 tok)
+  - fn `upload_zip` L101-183 (~614 tok)
+## pipelines/blender_render/
 Headless-Blender render worker (2026-09-17). Consumes the `blender_render` Redis
 stream fed by `/api/v1/render-jobs`; two job types — `render_stills` (Cycles CPU
 turntable PNGs) and `optimize_web` (sheen patch + gltfpack + web gate). Fails
 CLOSED on every path.
-
 - `models.py` — Pydantic v2 job models; key/SKU validation, `count·resolution²·samples ≤ 2e9` budget. (~1798 tok)
 - `worker.py` — queue consumer: get→execute→update→ack wrapped, infra errors NACK×3 then ACK, `reclaim_pending` janitor, child kill on cancel, `check_still` opaque-RGB uniformity gate. (~5248 tok)
 - `render_stills.py` — runs INSIDE Blender (bpy only): import glTF, frame camera to bbox, 3-light rig, transparent film, N stills. (~2560 tok)
 - `artifacts.py` — keyed artifact store (Local + S3-compatible), atomic tmp+rename put, delete for rollback. (~1783 tok)
 - `store.py` — job store; RedisJobStore subclass overriding only get/list. (~876 tok)
 - `oneshot.py` — in-process single-job runner used for local E2E without Redis. (~1003 tok)
-
 ## api/v1/render_jobs/
-
 - `router.py` — `/render-jobs` POST 202 + GET {job_id}/list/health. Mounted in `main_enterprise.py` (lazy `_IncludedRouter` — verify with TestClient, NOT `app.routes`; bug-330). 503 fail-closed when the artifact store is unconfigured. (~1850 tok)
 - `schemas.py` — request/response envelopes matching the clothing_3d convention. (~248 tok)
-
 ## skyyrose/elite_studio/pipeline3d/ — web-GLB modules (2026-09-17)
-
 - `glb_container.py` — lossless GLB I/O: rewrites ONLY the JSON chunk, walks every chunk and fails closed on BIN overrun / trailing junk / unpadded length / duplicate BIN / NaN literals. (~1246 tok)
 - `glb_materials.py` — fabric classifier over founder prose (negation-stripping, exterior-shell precedence) + sheen presets per class; anisotropy opt-in only (AI atlases have no grain). (~2881 tok)
 - `glb_optimize.py` — gltfpack `-cc -tc` wrapper + web gate (≤3MB, meshopt in extensionsRequired AND on a real bufferView, basisu, sheen VALUES valid, KTX2-only images). (~1790 tok)

@@ -1,0 +1,63 @@
+{
+  "task": "SkyyRose cinematic campaign skill audit",
+  "status": "AUDIT_COMPLETE_RECOMMENDATIONS_DELIVERED",
+  "date": "2026-09-12",
+  "baseline": "4da200886c73252c5271f5bf89de61c5c32ba062",
+  "owner": "/root",
+  "scope": "Audit six selected skills, relevant Fashion Theme Team routing, and existing production tools; identify gaps and provide evidence-backed stronger examples for the rejected train films.",
+  "owned_paths": [
+    "tasks/relaunch-7day-20260911/collection-films/skill-audit/"
+  ],
+  "authorization": "User explicitly requested skill analysis, examples, Higgsfield and Fashion Theme Team. Read-only provider checks and non-rendering prompt enhancement are within this audit. Prior paid rendering permission persists; replacement creative is unapproved.",
+  "tools": [
+    "local read/search",
+    "scoped artifact write",
+    "Higgsfield read-only account/model checks",
+    "Higgsfield enhance-only",
+    "bounded Fashion Theme Team review"
+  ],
+  "roster": [
+    {
+      "owner": "/root",
+      "responsibility": "Higgsfield workflow validation, audit synthesis and examples"
+    },
+    {
+      "owner": "narrative_skill_audit",
+      "responsibility": "Read-only video-script and viral-content-formula gap review"
+    },
+    {
+      "owner": "workflow_scope_audit",
+      "responsibility": "Read-only UI/software/storefront scope audit and additional installed skill shortlist"
+    }
+  ],
+  "exclusions": [
+    "paid generation",
+    "campaign activation",
+    "source media edits",
+    "plugin cache edits",
+    "global permission/configuration changes",
+    "claims of founder acceptance"
+  ],
+  "evidence": [
+    "AUDIT.md",
+    "EXAMPLES.md",
+    "source-evidence.json",
+    "source-contract-check.json",
+    "enhancer-inputs.json",
+    "enhancer-generic.json",
+    "enhancer-directed.json",
+    "provider-scope.json",
+    "plugin-capabilities.json",
+    "cinema-studio-contract.json",
+    "validation.json",
+    "independent-review.json",
+    "artifact-manifest.json"
+  ],
+  "gates": {
+    "source_skill_audit": "COMPLETED_FOR_DECLARED_SCOPE",
+    "example_validation": "OBSERVED_PROMPT_FAILURES_AND_ILLUSTRATIVE_CREATIVE_EXAMPLES_DISTINGUISHED",
+    "independent_review": "PASS_AUDIT_DOCUMENT_ONLY",
+    "replacement_creative_approval": "NOT_GRANTED_NOT_REQUESTED_BY_THIS_AUDIT"
+  },
+  "coverage": "PARTIAL_CAMPAIGN_ADOPTION_NOT_GLOBAL_SKILL_COMPLIANCE"
+}

@@ -37,12 +37,14 @@ from anthropic import AsyncAnthropic
 from google import genai
 from groq import AsyncGroq
 
+from skyyrose.core.openai_settings import chat_settings
+
 # langfuse drop-in wrapper auto-traces model + tokens + cost (graceful fallback if extra not installed)
 try:
     from langfuse.openai import AsyncOpenAI
 except ImportError:
     from openai import AsyncOpenAI
-from mistralai import Mistral
+
 from pydantic import BaseModel
 from tenacity import retry, stop_after_attempt, wait_exponential
 
@@ -236,6 +238,9 @@ class OpenAIClient(BaseLLMClient):
         )
         self._init_client()
 
+    async def close(self):
+        await self._client.close()
+
     def _init_client(self):
         """Initialize the OpenAI async client"""
         self._client = AsyncOpenAI(
@@ -245,12 +250,11 @@ class OpenAIClient(BaseLLMClient):
             max_retries=self.max_retries,
         )
 
-    @retry(stop=stop_after_attempt(3), wait=wait_exponential(min=1, max=10))
     async def complete(
         self,
         messages: list[Message],
         model: str = "gpt-4o-mini",
-        temperature: float = 0.7,
+        temperature: float | None = None,
         max_tokens: int = 1024,
         tools: list[dict] | None = None,
         response_format: dict | None = None,
@@ -262,14 +266,14 @@ class OpenAIClient(BaseLLMClient):
         request_kwargs: dict[str, Any] = {
             "model": model,
             "messages": self._messages_to_list(messages),
-            "temperature": temperature,
-            "max_tokens": max_tokens,
+            **chat_settings(
+                model,
+                max_tokens,
+                temperature,
+                {**kwargs, "response_format": response_format},
+                tools=tools,
+            ),
         }
-
-        if tools:
-            request_kwargs["tools"] = tools
-        if response_format:
-            request_kwargs["response_format"] = response_format
 
         # Call the SDK
         response = await self._client.chat.completions.create(**request_kwargs)
@@ -311,15 +315,15 @@ class OpenAIClient(BaseLLMClient):
         self,
         messages: list[Message],
         model: str = "gpt-4o-mini",
-        temperature: float = 0.7,
+        temperature: float | None = None,
         max_tokens: int = 1024,
+        tools: list[dict] | None = None,
         **kwargs,
     ) -> AsyncIterator[StreamChunk]:
         stream = await self._client.chat.completions.create(
             model=model,
             messages=self._messages_to_list(messages),
-            temperature=temperature,
-            max_tokens=max_tokens,
+            **chat_settings(model, max_tokens, temperature, kwargs, tools=tools),
             stream=True,
         )
 
@@ -669,6 +673,9 @@ class MistralClient(BaseLLMClient):
 
     def _init_client(self):
         """Initialize the Mistral client"""
+        # Optional provider SDKs must not prevent unrelated OpenAI imports.
+        from mistralai import Mistral
+
         self._client = Mistral(api_key=self.api_key)
 
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(min=1, max=10))

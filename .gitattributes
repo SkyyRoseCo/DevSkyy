@@ -2,3 +2,11 @@
 # See: https://huggingface.co/datasets/damBruh/skyyrose-assets
 # See: https://huggingface.co/datasets/damBruh/skyyrose-lora-dataset-v1
 # See: https://huggingface.co/datasets/damBruh/skyyrose-lora-dataset-v2
+
+# .wolf/memory.md is an append-at-tail session log written by several concurrent
+# Claude/Codex sessions, so every branch appends rows at the same place and every
+# PR conflicts there. `merge=union` is git's built-in driver: it keeps both sides'
+# lines instead of raising a conflict. Ordering within a merge is not guaranteed,
+# which is fine for a log read by timestamp. Only this file — buglog.json (JSON)
+# and cerebrum.md (edited in place, by section) must still conflict loudly.
+.wolf/memory.md merge=union

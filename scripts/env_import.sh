@@ -55,8 +55,10 @@ if [ -z "$TARGET" ]; then
 fi
 
 umask 077
-work="$(mktemp -t env_import)"
-incoming="$(mktemp -t env_import)"
+# An explicit XXXXXX template: `mktemp -t NAME` is BSD-only, and GNU coreutils
+# rejects it with "too few X's in template".
+work="$(mktemp "${TMPDIR:-/tmp}/env_import.XXXXXX")"
+incoming="$(mktemp "${TMPDIR:-/tmp}/env_import.XXXXXX")"
 trap 'rm -f "$work" "$incoming"' EXIT
 
 if [ -n "$SOURCE_FILE" ]; then

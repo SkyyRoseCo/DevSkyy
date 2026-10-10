@@ -34,6 +34,22 @@ claude-mem observations for this project into `.wolf/claude-mem-digest.md`. Read
 that file when you need cross-session context that isn't already in
 `cerebrum.md`/`anatomy.md`/`memory.md`.
 
+**Wiring** (per-clone, since `.claude/` is gitignored to protect
+keys/preferences): add this entry under `hooks.SessionStart[0].hooks` in
+`.claude/settings.json`. The script is non-blocking — it no-ops cleanly when the
+DB or sqlite3 are missing.
+
+```json
+{
+  "type": "command",
+  "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/claude-mem-sync.sh",
+  "timeout": 5
+}
+```
+
+Verify wiring with:
+`bash .wolf/hooks/claude-mem-sync.sh && ls -la .wolf/claude-mem-digest.md`.
+
 **Use the digest to:**
 
 1. **Cite observation IDs** — when logging to `.wolf/memory.md` or adding
@@ -71,8 +87,8 @@ OpenWolf's value comes from learning across sessions. You MUST update
 
 **Update `## Key Learnings` when you discover:**
 
-- A project convention not obvious from the code (e.g., "tests go in **tests**/
-  not test/")
+- A project convention not obvious from the code (e.g., "tests go in
+  `__tests__/` not `test/`")
 - A framework-specific pattern this project uses
 - An API behavior that surprised you
 - A dependency quirk or version constraint
@@ -109,14 +125,48 @@ discovery process.
 - You change error handling, try/catch blocks, or validation logic
 - The user says something "doesn't work", "is broken", or "shows wrong X"
 
-**Before fixing:** Read `.wolf/buglog.json` first — the fix may already be
-known.
+**Before fixing:** call the `wolf-memory` MCP tool `bug_search` (or read
+`.wolf/buglog.json` if that server isn't available in this harness) — the fix
+may already be known.
 
-**Before allocating a new ID:** run `python scripts/wolf_bug_id.py` for the next
-free `bug-NNN` ID — do not guess or reuse an ID from memory (past cross-session
-collisions came from manual ID guessing).
+**Preferred path — the `wolf-memory` MCP server:** call `bug_log` directly. It
+allocates the next `bug-NNN` id and appends the entry atomically across
+concurrent sessions on this checkout, and bumps an existing near-duplicate
+instead of creating a new entry, per the rule below.
+`python scripts/wolf_bug_id.py` remains the CLI fallback where there is no MCP
+client; hand-editing `buglog.json` is what caused past cross-session id
+collisions — use it only when neither is reachable.
 
-**After fixing:** ALWAYS append to `.wolf/buglog.json` with this structure:
+**Ids no longer go stale on a branch that is behind `main`** — this used to be
+your job and is now enforced. The counter's floor is
+`max(local buglog, origin/main buglog)`, read from the local remote-tracking ref
+with no network, so a checkout missing entries can no longer reissue an id
+`main` has published. If `origin/main` exists but its buglog cannot be parsed,
+`bug_log` **refuses to allocate** rather than guess (bug-230: an unreadable
+input is not an empty one). With no `origin/main` ref at all — a fresh clone —
+allocation falls back to the local file, because then nothing is published to
+collide with.
+
+It went wrong twice before the fix: bug-348/349 were first issued as 339/340,
+and bug-353 was issued for a second, unrelated defect while `main`'s bug-353
+was an SSRF-fixture bug — a citation in `docs/engineering-learnings.md` then
+pointed at the wrong entry. **Resolved 2026-09-21: the published id wins**, so
+`bug-353` stays the SSRF-fixture bug and the later, unpublished entry was
+renumbered to **bug-359**, with the three entries that referenced it repointed.
+The same tree had also dropped bug-339..347, which are published — committing
+it would have deleted them from `main`; they were restored in the same repair.
+That rule generalises: when two trees disagree about an id, the one already on
+`main` keeps it.
+
+The manual-edit fallback below is still unpoliceable from inside the allocator,
+so `tests/test_buglog_published_ids.py` is the backstop: it fails if this tree
+duplicates an id, **redefines** one `main` has published (`error_message` or
+`file` changed), or has silently dropped published entries. Bumping
+`occurrences`, `last_seen`, `fix`, `tags`, `related_bugs` or `root_cause` on an
+existing entry stays allowed — those are the normal operations.
+
+**After fixing (manual-edit fallback only):** if you can't use `bug_log`, append
+to `.wolf/buglog.json` with this structure:
 
 ```json
 {

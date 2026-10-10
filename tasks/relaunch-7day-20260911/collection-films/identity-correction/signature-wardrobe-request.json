@@ -1,0 +1,50 @@
+{
+  "request": {
+    "model": "gpt-image-2",
+    "count": 1,
+    "ratio": "1:1",
+    "rationale": "Identity continuity correction: prepare the same founder-selected Skyy in the Signature garment while preserving her head exactly, before placing her into scenes.",
+    "referenceImages": [
+      {
+        "tag": "skyy",
+        "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA"
+      },
+      {
+        "tag": "jacket",
+        "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg"
+      }
+    ],
+    "promptText": "Edit only the CLOTHING in @skyy. Keep her entire head, face, eyes, eyebrows, cheeks, mouth, ears, neck, hairline, every curl and rounded hair silhouette EXACTLY UNCHANGED from @skyy. Keep the same forward-facing head, expression, pose, hand positions, height, body proportions, white studio background and square composition. Replace the Love Hurts jacket with the exact Signature black sherpa jacket from @jacket: black shell, open white fleece lining, white stand collar, patch pockets, exact small red/green/grey rose-cloud chest embroidery, no hood. Keep a plain white tee beneath. Make her joggers plain cream and her sneakers plain white, retaining their shapes. Nothing above the collar may change. This is a local wardrobe edit of the supplied mascot image, not a newly drawn or reimagined character. Do not alter the facial design, do not slim her cheeks or jaw, do not change brow thickness, do not shrink or sweep back her rounded curls. No lettering added."
+  },
+  "submission": {
+    "kind": "task_pending",
+    "taskId": "4f08df8a-237b-4a2e-afb0-1b9bef5e0b48",
+    "taskType": "gpt_image_2",
+    "outputKind": "image",
+    "prompt": "Edit only the CLOTHING in @skyy. Keep her entire head, face, eyes, eyebrows, cheeks, mouth, ears, neck, hairline, every curl and rounded hair silhouette EXACTLY UNCHANGED from @skyy. Keep the same forward-facing head, expression, pose, hand positions, height, body proportions, white studio background and square composition. Replace the Love Hurts jacket with the exact Signature black sherpa jacket from @jacket: black shell, open white fleece lining, white stand collar, patch pockets, exact small red/green/grey rose-cloud chest embroidery, no hood. Keep a plain white tee beneath. Make her joggers plain cream and her sneakers plain white, retaining their shapes. Nothing above the collar may change. This is a local wardrobe edit of the supplied mascot image, not a newly drawn or reimagined character. Do not alter the facial design, do not slim her cheeks or jaw, do not change brow thickness, do not shrink or sweep back her rounded curls. No lettering added.",
+    "meta": {
+      "aspectRatio": "1:1"
+    },
+    "_regenerate": {
+      "tool": "generate_image",
+      "arguments": {
+        "model": "gpt-image-2",
+        "promptText": "Edit only the CLOTHING in @skyy. Keep her entire head, face, eyes, eyebrows, cheeks, mouth, ears, neck, hairline, every curl and rounded hair silhouette EXACTLY UNCHANGED from @skyy. Keep the same forward-facing head, expression, pose, hand positions, height, body proportions, white studio background and square composition. Replace the Love Hurts jacket with the exact Signature black sherpa jacket from @jacket: black shell, open white fleece lining, white stand collar, patch pockets, exact small red/green/grey rose-cloud chest embroidery, no hood. Keep a plain white tee beneath. Make her joggers plain cream and her sneakers plain white, retaining their shapes. Nothing above the collar may change. This is a local wardrobe edit of the supplied mascot image, not a newly drawn or reimagined character. Do not alter the facial design, do not slim her cheeks or jaw, do not change brow thickness, do not shrink or sweep back her rounded curls. No lettering added.",
+        "ratio": "1:1",
+        "count": 1,
+        "referenceImages": [
+          {
+            "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+            "tag": "skyy"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg",
+            "tag": "jacket"
+          }
+        ],
+        "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+      }
+    },
+    "creditsRemaining": 1810
+  }
+}

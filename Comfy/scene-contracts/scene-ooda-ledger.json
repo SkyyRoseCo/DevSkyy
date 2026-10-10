@@ -8,7 +8,7 @@
   },
   "team_index": {
     "path": "Comfy/scene-contracts/scene-ooda-index.json",
-    "sha256": "849a08060a02879495075e383a641f6f4632b548ab12e2239ec384c42425eab4"
+    "sha256": "dd0b8ff0cec304c78d72830e1056d0969750d69795e74f4ce1e8f2e559ccc0a5"
   },
   "approval_boundaries": {
     "higgsfield_enhancement_only": "AUTO_WITH_LOG",
@@ -27,7 +27,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "0b7a2c3b04a78bc056c1c0ff69c0442d5f2157343b02de08e7de8968bd7ed95f",
+      "contract_sha256": "77226296e2db02f06cc64dfde0b1b8a8acd5ed7b0cd44ea9c8fbc9b97f389cfc",
       "evidence": [
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T072421816848Z.json",
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T072503771026Z.json",
@@ -46,19 +46,19 @@
         "cinematic urban-grit creative and optical contracts PASS",
         "local Comfy correction-only and one-attempt credit policies PASS",
         "one 8.5-credit 2688x1520 candidate generated and hash-bound",
-        "candidate quarantined before Comfy staging"
+        "candidate quarantined before Comfy staging",
+        "new full-scene Higgsfield attempts are disabled; only exact protected alphas plus a separately approved product-free Runway background may proceed"
       ],
       "blockers": [
-        "single approved paid attempt consumed",
-        "BR-005 chest mark moved to the wrong side",
-        "BR-007 physical construction drifted",
-        "BR-004 founder-approved cast identity and center artwork were regenerated",
-        "protected Black Rose sculpture geometry was changed",
-        "composition and BR-004 references are opaque, not cutouts",
-        "available real-alpha dual-cast v6 contains a rejected product correction",
-        "clean separate approved cast/product alphas and local Comfy native-integration plan are required"
+        "the single approved paid attempt has been consumed",
+        "candidate hard-failed exact BR-005 chest placement, BR-007 construction, BR-004 cast and artwork identity, and protected sculpture geometry",
+        "the revised Bay Bridge world prompt has no current independent prompt-review receipt or new candidate-bound approval",
+        "automatic paid retry is forbidden",
+        "explicit protected masks and hash-bound individual alpha receipts are required before composition",
+        "the founder composition reference and BR-004 wearer reference are opaque, while the available real-alpha dual-cast v6 contains a rejected product correction",
+        "exact approved male BR-005 plus BR-007 wearer authority must be recovered or the scene remains blocked without speculative VTO spend"
       ],
-      "next_authority": "product-fidelity-image-edits mask and protected-source recovery plan; no automatic paid retry"
+      "next_authority": "approved source separation into exact per-look protected alphas, with a hard multi-garment wearer-authority blocker if BR-005 plus BR-007 cannot be recovered; then a separately approved product-free Runway background and independent visual-commerce-qa"
     },
     {
       "id": "LH-COMMERCE-2-OODA-1",
@@ -68,7 +68,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "e0b6fc67c4561b25f5b8639e700cfae175238c97ae9f7cded41f99a64ec067a6",
+      "contract_sha256": "d86d73a5258f3a0b3d4ff2e2ff29c58030e93ba33d3766a922fa985f5e48e1b4",
       "evidence": [
         "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
         "tasks/lh-003-source-authority-intake-20260902.json",
@@ -92,15 +92,18 @@
         "one 2K adult Black woman casting board generated for exactly 8.5 credits; identity, anatomy, styling, pockets, fit, and neutral source quality passed",
         "independent review scored 83.3/100 and hard-failed wearer-relative artwork continuity; candidate quarantined with no automatic retry",
         "founder approved LH-MODEL-01 identity only; two garment-free bust references are cropped, hash-bound, and eligible only for separately authorized identity conditioning",
-        "four exact-RGB product-only alpha mattes generated, reviewed, receipt-bound, and staged in local Comfy"
+        "four exact-RGB product-only alpha mattes generated, reviewed, receipt-bound, and staged in local Comfy",
+        "selected route is approved full-body model plate, one front-facing VTO candidate, BiRefNet alpha, product-free Runway environment, and protected local Comfy composition",
+        "BiRefNet segmentation must produce a pixel-bound protected-RGB receipt proving zero interior RGB changes before composition"
       ],
       "blockers": [
-        "model-casting A1 quarantined because Love Hurts artwork changes anatomical sides between front and rear views",
-        "founder-approved identity now exists, but an approved exact-LH-003 on-model product target still does not",
-        "approved exact on-model garment matte remains missing; product-only mattes do not satisfy wearer authority",
-        "paid preflight approval missing"
+        "LH-MODEL-01 identity is founder-approved, but LH-003-MODEL-CASTING-20260902-A1 remains rejected because directional artwork changed anatomical sides between front and rear views",
+        "founder-approved full-body LH-MODEL-01 plate is not yet generated and bound",
+        "front-facing exact-LH-003 VTO candidate has not passed independent and founder review",
+        "candidate-bound Runway background approval is not recorded",
+        "no environment, segmentation, or final-scene execution may begin before the protected foreground hash is approved"
       ],
-      "next_authority": "separately authorized exact-garment recovery around founder-approved LH-MODEL-01, protected matte, and independent product review; no automatic paid retry"
+      "next_authority": "separately authorized FASHN model plate and front-facing LH-003 VTO candidate, followed by independent product review and founder-bound FRONT_SCENE_INPUT_ALLOWED approval"
     },
     {
       "id": "SIG-COMMERCE-1-OODA-1",
@@ -110,7 +113,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-1-higgsfield-comfy-ooda.json",
-      "contract_sha256": "a867f58124e32b1a592659d24dd35e63d3515fa262e9ced7f8b58d4ca2bdbb85",
+      "contract_sha256": "5ad5120a822dbb734113384ad0f51f08da9693d5a1466c22384539f725635648",
       "evidence": [
         "Comfy/LOG.md",
         "Comfy/receipts/sig-commerce-1-higgsfield-enhance-20260902T193504736502Z.json",
@@ -123,13 +126,14 @@
         "local Comfy correction-only and one-attempt credit policies PASS",
         "black SG-007 source replaces the conflicting green reference",
         "four rejected candidate hashes are deny-listed",
-        "provider capability and static prompt-adherence contracts PASS"
+        "Higgsfield is not required for product or customer pixels; the accepted look and sculpture remain protected local inputs",
+        "product-free Runway environment and protected local Comfy composition route is explicit"
       ],
       "blockers": [
-        "corrected prompt enhancement endpoint unavailable; no enhanced-prompt PASS receipt exists",
-        "paid preflight approval missing"
+        "protected customer/product and sculpture sources require current hash and independent-review verification",
+        "candidate-bound product-free Runway background approval is not recorded"
       ],
-      "next_authority": "prompt assertion review, approved provider runtime, then independent visual-commerce-qa"
+      "next_authority": "current hash and independent-product review of the protected SG-009 plus SG-007 look and exact sculpture, then a separately approved product-free Runway background and independent visual-commerce-qa"
     },
     {
       "id": "SIG-COMMERCE-2-OODA-1",
@@ -139,20 +143,22 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "d6dbf44e1b195417126d833f51c284322f12a569a5fc7225bc9150bb135d24f9",
+      "contract_sha256": "878829abd993a94629b42514540e8adfdfee64d5e29f1df983ac5a841c0758f6",
       "evidence": ["Comfy/receipts/protected-alpha-audit-20260902.json"],
       "outputs": [
         "allowed male/products/environment/monument hashes PASS",
         "founder-rejected female hash deny-listed",
         "distinct real-alpha SG-006 alternative discovered and kept unrouted pending exact founder approval",
         "cinematic urban-grit creative and optical contracts PASS",
-        "local Comfy correction-only and one-attempt credit policies PASS"
+        "local Comfy correction-only and one-attempt credit policies PASS",
+        "approved male look remains protected; only the missing female side may use separately approved model-plate and SG-006 VTO calls before a product-free Runway environment"
       ],
       "blockers": [
-        "correct founder-supplied SG-006 female wearer missing",
-        "prompt review and paid preflight approval missing"
+        "correct founder-supplied SG-006 female wearer/model authority is missing",
+        "female full-body identity plate and SG-006 VTO fingerprints, spend approvals, and review receipts are not recorded",
+        "candidate-bound product-free Runway background approval is not recorded"
       ],
-      "next_authority": "correct founder-supplied SG-006 female wearer authority"
+      "next_authority": "separately approved female full-body identity plate and one SG-006 VTO candidate with independent product review, then a separately approved product-free Runway background and independent visual-commerce-qa"
     },
     {
       "id": "SIG-COMMERCE-3-OODA-1",
@@ -162,7 +168,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-3-higgsfield-comfy-ooda.json",
-      "contract_sha256": "da215cf4ce9c2a988f202a5c299d9dfd15a04f014a49ef5afd11aa76f3cfc38e",
+      "contract_sha256": "180fc68c72f3a7928dbe0401b3301ca808602db46b23b6806e9ed9447e1775ff",
       "evidence": [
         "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
         "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-verify-receipt-v1.json"
@@ -177,9 +183,10 @@
       "blockers": [
         "SG-001 remains candidate-only pending founder review",
         "SG-003 correction receipt missing",
-        "mask-bound correction approval missing; full-frame prompt review is intentionally not pursued"
+        "mask-bound local correction plan and independent-review assignment are not approved",
+        "full-frame FASHN, Higgsfield, and Runway regeneration remain forbidden"
       ],
-      "next_authority": "verified SG-001 and SG-003 correction receipts, then independent visual-commerce-qa"
+      "next_authority": "verified SG-001 and SG-003 correction receipts, then brand-experience-architect"
     }
   ]
 }

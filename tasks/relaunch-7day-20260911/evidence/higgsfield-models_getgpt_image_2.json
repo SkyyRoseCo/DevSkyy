@@ -1,0 +1,86 @@
+{
+  "id": "gpt_image_2",
+  "name": "GPT Image 2",
+  "provider_name": "OpenAI",
+  "description": "Next-gen GPT Image model with 1k/2k/4k resolution and low/medium/high quality tiers",
+  "output_type": "image",
+  "parameters": [
+    {
+      "name": "resolution",
+      "required": "optional",
+      "type": "string",
+      "description": "Output resolution",
+      "default": "1k",
+      "options": [
+        "1k",
+        "2k",
+        "4k"
+      ]
+    },
+    {
+      "name": "quality",
+      "required": "optional",
+      "type": "string",
+      "description": "Image quality",
+      "default": "low",
+      "options": [
+        "low",
+        "medium",
+        "high"
+      ]
+    }
+  ],
+  "medias": [
+    {
+      "name": "medias",
+      "type": "image",
+      "roles": [
+        "image"
+      ]
+    }
+  ],
+  "aspect_ratios": [
+    "1:1",
+    "4:3",
+    "3:4",
+    "16:9",
+    "21:9",
+    "9:16",
+    "3:2",
+    "2:3"
+  ],
+  "tags": [
+    "text-rendering",
+    "editing",
+    "typography",
+    "photorealistic",
+    "4k",
+    "high-resolution",
+    "unlim"
+  ],
+  "supports_unlim": true,
+  "free_gens": [
+    {
+      "job_set_types": [
+        "hf_mult_motion_control",
+        "hf_mult_replace_object"
+      ],
+      "remaining": 1,
+      "parameters": {
+        "resolution": [
+          "480p",
+          "720p"
+        ]
+      },
+      "max_duration": 30
+    },
+    {
+      "job_set_types": [
+        "viral_hub_video"
+      ],
+      "remaining": 1,
+      "parameters": {},
+      "max_duration": null
+    }
+  ]
+}

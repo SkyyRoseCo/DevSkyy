@@ -1,0 +1,74 @@
+{
+  "verified_at": "2026-09-12T13:44:04.689506+00:00",
+  "classification": "REPRODUCED_LOCAL",
+  "authentication": "NOT_APPLICABLE",
+  "scope": "Local source-byte identification and selected skill inventory; no image quality or original frame match test rerun.",
+  "files": [
+    {
+      "path": "/Users/theceo/.agents/skills/higgsfield-product-photoshoot/SKILL.md",
+      "sha256": "139c38f3b8a33a4ef37a1066850e4bcddc0976b4143cc6ea0c3b7ad9de3b3b9e",
+      "line_count": 215
+    },
+    {
+      "path": "/Users/theceo/.agents/skills/ln-1000-pipeline-orchestrator/SKILL.md",
+      "sha256": "d31240b52067092292a283ab4b412cc5dfa2864a1abf0f7b6aeca119a04744ea",
+      "line_count": 584
+    },
+    {
+      "path": "/Users/theceo/.agents/skills/animate/SKILL.md",
+      "sha256": "8c3fa9a748670889c728a558c1f203278a29199a175174674b8d4acc9d51939b",
+      "line_count": 175
+    },
+    {
+      "path": "/Users/theceo/plugins/fashion-theme-team/skills/fashion-premium-feature-system/SKILL.md",
+      "sha256": "be9b04fa84db35493d5e0af63c27a2652d72982c067ef676cf1b67f62fc16fe0",
+      "line_count": 95
+    },
+    {
+      "path": "/Users/theceo/plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/video-script/SKILL.md",
+      "sha256": "f18b22ee9ebbf94d66612363d1c1591738f4d52b1fcf45bcbfd0a54557883b01",
+      "line_count": 449
+    },
+    {
+      "path": "/Users/theceo/plugins/fashion-theme-team/vendor/branded-skills/content-copywriting/viral-content-formula/SKILL.md",
+      "sha256": "91bf993bab53fc25d3efbfac2f58a3fccc80685a8ada96260438c5e9227282ca",
+      "line_count": 210
+    },
+    {
+      "path": "/Users/theceo/.codex/skill-standards/verified-examples.md",
+      "sha256": "530639900fe94c4abad44a04b34c6d62ed5c49eabb4868784ecf0dc9bd9fb887",
+      "line_count": 46
+    },
+    {
+      "path": "/Users/theceo/plugins/fashion-theme-team/skills/fashion-branded-skills/SKILL.md",
+      "sha256": "97e0676fceeb5d0380048508fcbd010efc57c7e74ee335114b11b590beb80fd3",
+      "line_count": 68
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/identity-correction/founder-rejection.json",
+      "sha256": "718e7534cc54c256a6fb4e079c9e5a346050eeb48b77a3a37eb387be068c78c5",
+      "line_count": 27
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/identity-correction/black-rose-actor-references.json",
+      "sha256": "2ab2d47c4a4f056f803547bb5ca70044d99ea00b77aa4e1b7cce2ca57d428941",
+      "line_count": 20
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/identity-correction/output/final-report.json",
+      "sha256": "0625547eb3df518bed73df0522501dcf0c9524e1550581d9e0a6936f1eb7b1be",
+      "line_count": 1092
+    }
+  ],
+  "original_media_hashes": [
+    {
+      "path": "/Users/theceo/Downloads/Video Apr 21 2024, 11 01 18 AM.mp4",
+      "sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127"
+    },
+    {
+      "path": "/Users/theceo/Downloads/image.png",
+      "sha256": "a8a32b8097f6885300f537e50c942c445c09012269807b072b6854c7019b9973"
+    }
+  ],
+  "cli_version": "higgsfield 1.1.23 (dd8d00a83d46aa443eaa605a75c246e1226010c1) built 2026-08-08T19:50:15Z"
+}

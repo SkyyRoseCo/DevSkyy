@@ -180,6 +180,31 @@ class SkyyRose_Accessibility_Fix {
 		);
 
 		// ══════════════════════════════════════════════
+		// Legacy search overlays predate header.php's explicit label and input ID.
+		// Preserve current labels; repair only the old, unbound overlay input.
+		$html = preg_replace_callback(
+			'/<input\b((?:"[^"]*"|\'[^\']*\'|[^\'">])*)>/is',
+			function ( $m ) {
+				preg_match_all(
+					'/(?:^|\s)([a-z_:][a-z0-9_:.-]*)(?:\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s"\'=<>`]+)))?/i',
+					$m[1],
+					$matches,
+					PREG_SET_ORDER | PREG_UNMATCHED_AS_NULL
+				);
+				$attributes = array();
+				foreach ( $matches as $attribute ) {
+					$attributes[ strtolower( $attribute[1] ) ] = $attribute[2] ?? $attribute[3] ?? $attribute[4] ?? '';
+				}
+				$classes = preg_split( '/\s+/', trim( $attributes['class'] ?? '' ) );
+				if ( ! in_array( 'search-overlay__input', $classes, true )
+					|| isset( $attributes['id'] ) || isset( $attributes['aria-label'] ) || isset( $attributes['aria-labelledby'] ) ) {
+					return $m[0];
+				}
+				return '<input aria-label="' . esc_attr__( 'Search the collection', 'skyyrose' ) . '"' . $m[1] . '>';
+			},
+			$html
+		);
+
 		// 8. LAZY LOAD below-fold images
 		// ══════════════════════════════════════════════
 		$html = preg_replace_callback(

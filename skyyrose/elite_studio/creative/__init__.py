@@ -10,12 +10,22 @@ mockups, collection plans, tech packs, moodboards, colorway exploration.
 
 from __future__ import annotations
 
-from .runner import run_creative
-from .state import CreativeIntent, CreativeOperationState, create_initial_state
-
 __all__ = [
     "run_creative",
     "CreativeIntent",
     "CreativeOperationState",
     "create_initial_state",
 ]
+
+
+def __getattr__(name: str):
+    """Preserve public exports without importing execution for report readers."""
+    if name == "run_creative":
+        from .runner import run_creative
+
+        return run_creative
+    if name in {"CreativeIntent", "CreativeOperationState", "create_initial_state"}:
+        from . import state
+
+        return getattr(state, name)
+    raise AttributeError(name)

@@ -24,7 +24,7 @@
 
   if (!viewport || chapters.length !== 3) return;
 
-  const setActive = (index) => {
+  const setActive = index => {
     activeIndex = Math.max(0, Math.min(chapters.length - 1, index));
     section.dataset.activeChapter = chapters[activeIndex].dataset.processionChapter;
     chapters.forEach((chapter, chapterIndex) => {
@@ -37,7 +37,7 @@
     if (next) next.disabled = activeIndex === chapters.length - 1;
   };
 
-  const moveTo = (index) => {
+  const moveTo = index => {
     const target = chapters[Math.max(0, Math.min(chapters.length - 1, index))];
     if (!target) return;
     const behavior = reducedMotion.matches || saveData ? 'auto' : 'smooth';
@@ -49,35 +49,75 @@
     setActive(chapters.indexOf(target));
   };
 
+  const handleNavigationKeys = event => {
+    if (event.target !== viewport) {
+      return;
+    }
+
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      moveTo(activeIndex - 1);
+      return;
+    }
+
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+      event.preventDefault();
+      moveTo(activeIndex + 1);
+    }
+  };
+
   const connectObserver = () => {
     observer?.disconnect();
     if (!('IntersectionObserver' in window)) return;
-    observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) setActive(chapters.indexOf(visible.target));
-    }, {
-      root: verticalLayout.matches ? null : viewport,
-      threshold: [0.42, 0.62, 0.82]
-    });
-    chapters.forEach((chapter) => observer.observe(chapter));
+    observer = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(chapters.indexOf(visible.target));
+      },
+      {
+        root: verticalLayout.matches ? null : viewport,
+        threshold: [0.42, 0.62, 0.82],
+      }
+    );
+    chapters.forEach(chapter => observer.observe(chapter));
   };
 
   previous?.addEventListener('click', () => moveTo(activeIndex - 1), { signal });
   next?.addEventListener('click', () => moveTo(activeIndex + 1), { signal });
+  viewport.addEventListener('keydown', handleNavigationKeys, { signal });
   verticalLayout.addEventListener?.('change', connectObserver, { signal });
-  reducedMotion.addEventListener?.('change', () => section.dataset.motion = reducedMotion.matches || saveData ? 'reduced' : 'full', { signal });
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) setActive(activeIndex);
-  }, { signal });
-  section.querySelectorAll('img').forEach((image) => {
-    image.addEventListener('error', () => image.closest('.sr-kids-procession__scene, .sr-kids-procession__guardian, .sr-kids-procession__proof-media')?.classList.add('is-media-missing'), { signal, once: true });
+  reducedMotion.addEventListener?.(
+    'change',
+    () => (section.dataset.motion = reducedMotion.matches || saveData ? 'reduced' : 'full'),
+    { signal }
+  );
+  document.addEventListener(
+    'visibilitychange',
+    () => {
+      if (!document.hidden) setActive(activeIndex);
+    },
+    { signal }
+  );
+  section.querySelectorAll('img').forEach(image => {
+    image.addEventListener(
+      'error',
+      () =>
+        image
+          .closest('.sr-kids-procession__scene, .sr-kids-procession__guardian, .sr-kids-procession__proof-media')
+          ?.classList.add('is-media-missing'),
+      { signal, once: true }
+    );
   });
-  window.addEventListener('pagehide', () => {
-    observer?.disconnect();
-    controller.abort();
-  }, { signal, once: true });
+  window.addEventListener(
+    'pagehide',
+    () => {
+      observer?.disconnect();
+      controller.abort();
+    },
+    { signal, once: true }
+  );
 
   section.dataset.enhanced = 'true';
   section.dataset.motion = reducedMotion.matches || saveData ? 'reduced' : 'full';

@@ -216,7 +216,7 @@ async def get_brand_guidelines(args: dict[str, Any]) -> dict[str, Any]:
     """Return canonical brand guidelines."""
     guidelines = {
         "brand": "SkyyRose",
-        "retired_taglines": ["Where Love Meets Luxury"],
+        "retired_taglines": ["Where Love Meets Luxury", "Luxury Grows from Concrete"],
         "founder": "Corey Foster",
         "colors": {
             "rose_gold": "#B76E79",

@@ -1,0 +1,93 @@
+{
+  "title": "She Knows the Way",
+  "status": "COMPLETED_KEYFRAME_CANDIDATES",
+  "supersedes": "../rendered/index.html",
+  "direction": "Actual product-card models as distinct human cast; original Higgsfield Skyy mascot as animated guide; narrative reveals.",
+  "approval": {
+    "paidRendering": "Authorized in user conversation",
+    "publication": false,
+    "finalCreative": false
+  },
+  "reference_element": {
+    "items": [
+      {
+        "id": "cf20a690-7828-4738-9557-2ef00bc42591",
+        "name": "skyy-mascot",
+        "category": "character",
+        "description": "Canonical Skyy child mascot — stylized 3D-animated toon, curly afro, white/black rose-embroidered varsity set, rose sneakers. Identity source: assets/branding/mascot/ canon (bug-268: never a generated render).",
+        "status": "completed",
+        "medias": [
+          {
+            "id": "6756ab9e-6c3a-4371-8a93-174e99220901",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/6756ab9e-6c3a-4371-8a93-174e99220901.jpg",
+            "type": "media_input"
+          },
+          {
+            "id": "f3ca2d19-4dac-405d-8647-33611b686ee1",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/f3ca2d19-4dac-405d-8647-33611b686ee1.png",
+            "type": "media_input"
+          }
+        ],
+        "video_medias": [
+
+        ],
+        "created_at": 1784266313.344138
+      }
+    ],
+    "next_cursor": null
+  },
+  "requests": [
+    {
+      "model": "gpt_image_2",
+      "prompt": "Create one continuous cinematic film frame for SkyyRose fictional fashion short SHE KNOWS THE WAY. Use the supplied Black Rose product-card photograph as strict identity and wardrobe reference for the SAME adult male: exact face, messy dark hair, black pullover hoodie, silver botanical rose-and-cloud chest artwork, kangaroo pocket, black jeans and boots. His expression may change, his identity and clothing may not. Skyy is <<<cf20a690-7828-4738-9557-2ef00bc42591>>>: preserve her original stylized 3D child proportions, curly hair, brown eyes, white-and-black Love Hurts varsity outfit, red chest script, rose details and sneakers. Integrate this animated mascot into physically photographed surroundings with grounded contact shadows and matching light; never convert her into a real child or convert the adult into a cartoon. Do not merge their faces or transfer graphics between costumes. No poster layout, borders, product cards, floating products, new logos, slogans, captions, watermarks or generic runway poses. This is a moment in a narrative, not an advertising collage. THE ENCOUNTER: 35mm lens, eye level near the adult's waist, medium-wide 16:9 composition. Beneath the same heavy waterfront concrete structure as the source photo, the adult stands left foreground three-quarter FRONT, hands beginning to leave the hoodie pocket, chin lifted toward Skyy. His torso graphic remains fully visible and faithful. Skyy stands right midground on the wet pavement, around half his height, glancing back with a small knowing smile and extending one open hand toward a distant warm light. Leave a believable physical distance between them. A single black rose grows beside the concrete pillar. Cold silver practical light cuts across the adult's face, a narrow rose-gold reflection begins at Skyy's feet and points into the depth. Real industrial waterfront cranes, grounded puddles, tactile worn concrete, breathable dark shadows, restrained film grain. The emotional beat is surprise becoming curiosity. Capture a poised instant just before he takes his first step. Reserve the largest reveal for the next scene; no fantasy particles or exploding rose petals.",
+      "aspect_ratio": "16:9",
+      "resolution": "2k",
+      "quality": "high",
+      "count": 1,
+      "use_unlim": false,
+      "medias": [
+        {
+          "role": "image",
+          "value": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/br-004-onmodel.webp"
+        }
+      ]
+    },
+    {
+      "model": "gpt_image_2",
+      "prompt": "Create one continuous cinematic film frame for SkyyRose fictional fashion short SHE KNOWS THE WAY. Use the supplied Black Rose product-card photograph as strict identity and wardrobe reference for the SAME adult male: exact face, messy dark hair, black pullover hoodie, silver botanical rose-and-cloud chest artwork, kangaroo pocket, black jeans and boots. His expression may change, his identity and clothing may not. Skyy is <<<cf20a690-7828-4738-9557-2ef00bc42591>>>: preserve her original stylized 3D child proportions, curly hair, brown eyes, white-and-black Love Hurts varsity outfit, red chest script, rose details and sneakers. Integrate this animated mascot into physically photographed surroundings with grounded contact shadows and matching light; never convert her into a real child or convert the adult into a cartoon. Do not merge their faces or transfer graphics between costumes. No poster layout, borders, product cards, floating products, new logos, slogans, captions, watermarks or generic runway poses. This is a moment in a narrative, not an advertising collage. THE TOWN LINE REVEAL: Use the supplied canonical Town Line train image for the train's exact front shape, black body, existing markings, rose-star emblem and warm headlamps. A monumental but physically believable night arrival at an empty fictional waterfront platform. 28mm anamorphic-style wide composition, camera low at platform level, train occupies background center-right, headlights illuminate a thin bank of sea mist and glisten along wet rails. Skyy stands safely behind the platform edge at right foreground, open palm presenting the arriving train, looking toward the adult. The exact Black Rose adult is at left foreground facing CAMERA in three-quarter front, head turned slightly toward Skyy while keeping his face recognizable and the full chest artwork visible. He has just stopped walking; weight settled naturally on one foot. Both characters remain safely on the platform, not on tracks. Clear depth from tactile foreground to immense train, convincing scale, controlled highlights, silver Black Rose atmosphere warmed only by headlamps. This image must feel like the payoff to her invitation. No additional cast, no invented transit branding, no extra text or signage. Preserve the source train design rather than creating a generic subway.",
+      "aspect_ratio": "16:9",
+      "resolution": "2k",
+      "quality": "high",
+      "count": 1,
+      "use_unlim": false,
+      "medias": [
+        {
+          "role": "image",
+          "value": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/br-004-onmodel.webp"
+        },
+        {
+          "role": "image",
+          "value": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/jersey-series-town-line-train-v1.webp"
+        }
+      ]
+    }
+  ],
+  "jobs": {
+    "jobs": [
+      {
+        "index": 1,
+        "job_id": "e04af071-4a84-4c48-98e0-7a1159d9af3d",
+        "status": "pending"
+      },
+      {
+        "index": 2,
+        "job_id": "ed092c55-2a53-4bb8-b9d3-bfc4ecedf541",
+        "status": "pending"
+      }
+    ],
+    "submitted_count": 2,
+    "failed_count": 0
+  },
+  "estimated_credits": 13,
+  "retries": 0
+}

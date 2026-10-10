@@ -1,5 +1,32 @@
 # Current Tasks
 
+## ACTIVE — Registry = the only product source: fold side stores, repoint every lookup (2026-09-18)
+
+Founder: "fold in remaining side stores" + "every workflow, pipeline, product
+rendering, agent look up points to this 1 source ... everything outside of it
+needs to be removed". SOT = `wordpress-theme/skyyrose-flagship/data/logo-registry.json`,
+read via `skyyrose.core.product.get_product`. Branch `feat/registry-fold-side-stores`.
+
+### Three buckets (census 2026-09-18, [repo])
+
+| Bucket | Stores | Action |
+| --- | --- | --- |
+| Authored outside the registry | `render-corrections.json` (20 SKUs/41 lines), `render-keepers.json` (2), 4x `collections/<slug>/identity.json` | FOLD into registry, repoint readers, delete after founder `y` |
+| Agent copy, not foldable | `skyyrose/assets/data/product-content.json` (19), `alt-text.json` (19) | Written by `skyyrose/build/gemini-content.js` from its OWN hard-coded 20-SKU table; 11/19 names differ from the registry, 5 describe a different garment; alt keys name images that are not in the repo. Gate in `get_product`, founder decides the copy |
+| Generated projections | CSV, `data/dossiers/*.md`, `sot-images.json`, `v7-cards.json`, `lookbook-sot.json`, collection `sot.json`, asset manifest | KEEP — regenerated from the registry, `--check` fails closed on drift. Production PHP can only read deployed projections |
+| Consumers | everything that reads the above | REPOINT to `get_product` / registry sections |
+
+### Plan
+- [x] Fold: `products[sku].corrections` (per-line authority from the file's own `_meta`: 9 lines added 2026-06-12 per Fable vision test = `AGENT_ADDED`, 32 = `FOUNDER_VERBATIM`), `products[sku].render_policy.keepers`, top-level `collections`, folded `_meta` kept verbatim; schema version 1 -> 2; `logo-registry.schema.json` extended
+- [x] `get_product`: corrections + render_policy from the registry; content exact-name gate (`content.sku_mismatch`); alt text served only when its key names a registry-bound image
+- [x] Repoint `scripts/oai_render` (corrections, keepers), `sot_common.load_identity`, collection generators/verifiers, drift hooks, agent prompts naming `garment-analysis.json` / side stores
+- [x] Tests: value-equal round trip for every folded store; gates; readers hit the registry; guard covers JS + folded stores
+- [x] `sync_product_registry.py`, asset manifest, `organize --check`, full suite, clean-checkout run, review
+- [ ] Phase 4 STOP-AND-SHOW: exact deletion manifest (folded stores + legacy product stores + dead readers/writers) -> founder `y`
+- [ ] Founder decision list: the 19 agent-copy records (names side by side)
+- [x] Also repointed (census follow-ups): dashboard admin editor writes through the registry (CLI `python -m skyyrose.core.product_registry update`); `frontend/data/skyyrose-catalog.csv` generated as a projection (had drifted: 15 image cells + 6 branding specs); dashboard CSV parser handles multi-line cells (was minting 70 fake products); content agent, SDK commerce agent (invented products under real SKUs), and domain-agent prompts read the registry
+- [x] Review REQUEST CHANGES fixed: agent-added corrections rendered under their own prompt header; authorship note corrected; alt-text writer bound to registry images; SDK canon from registry; replica pinned to the canonical registry (bug-231 recurrence #6)
+
 ## ACTIVE — Refactor scripts/deploy-theme.sh (2026-08-01)
 
 Scope narrowed after advisor review (production deploy script, bug-107 history
@@ -787,3 +814,30 @@ Post-deploy verify matrix:
 - [ ] `.exp-name` renders bespoke scripts; both new woff2 200 (`skyyrose-black-rose-script-latin`, `skyyrose-love-hurts-graffiti-latin`)
 - [ ] BR/LH emblems still 200 · KC teaser hero visible · homepage hero un-clipped @1440px · cart shell present
 - [ ] Playwright eyes-on mobile + desktop, console clean
+
+## Hooks + deploy gates: two themes, staging → production cutover (2026-09-18, founder-approved)
+
+Founder decisions: one PR; after cutover production runs folder `skyyrose-flagship-2` (retire the old `skyyrose-flagship` folder on the server); cutover = `deploy-theme.sh` + `wp theme activate`, each step its own STOP-AND-SHOW; user-level Prettier hook no longer formats md/json/css (done 2026-09-18).
+Facts [live 2026-09-18]: production `skyyrose.co` serves Flagship 2 v2.3.1 inside folder `skyyrose-flagship`; staging `staging-7e48-skyyrose.wpcomstaging.com` serves `skyyrose-flagship-2` v2.4.4; `staging.skyyrose.co` does not resolve.
+
+- [x] A. Hook gates: paid-api-stopgate (per-segment normalized rules, staging vs production, gate `wp theme activate`/stylesheet/db/search-replace, Vercel retitled, internal errors fail closed); catalog-drift-guard reads `.tool_input.file_path` + worktree-aware (+ .codex mirror); stop-test-gate fails closed without python, reasons on stderr; format/phpcs/tsc hooks work in worktrees
+- [x] B. Deploy + verify: separate `deploy-staging.sh` / `deploy-production.sh` wrappers over the `deploy-theme.sh` engine; engine refuses when live theme identity != local, when SSH_USER is not the target site's account, on URL userinfo; 404 first deploy needs WP REST root proof; one-shot `--allow-*` flags; verify scripts take URL/slug from env, exact redirect check
+- [x] C. Per-theme tooling: php-format/lint-staged/phpcs-on-write route each file to its theme's own ruleset (flagship `.phpcs.xml`, flagship-2's tracked `phpcs.xml`), freshness-guard (pinned V2 minifiers) + CI cover flagship-2; `*.min.*` prettier-ignored
+- [x] D. Instructions: docs/skills/router/canon-prefetch name both themes, real staging host, registry-first, deploy BLOCKED-until-#918 labels
+- [x] Review 2026-09-19 (/code-review, 3 independent reviewers): 5 HIGH + 11 MEDIUM confirmed and fixed with RED→GREEN tests (bug-340..347); full suite 7316 passed / 0 failed before the final splits — re-run before commit
+- [ ] One commit, PR, CI green (merge only on the founder's y)
+- [x] `.env.wordpress.staging` `SFTP_*` added as literal copies of its `SSH_*` (founder request 2026-09-19); `dt_validate_env_file staging` passes
+- [ ] Founder: `deploy-pipeline.sh` / `deploy-holo-cards.sh` build V1 then deploy V2 via the wrapper (pipeline build step already fails: V1 folder has no package.json) — repoint the build, or delete both scripts (deletion needs y)
+- [ ] Follow-up (separate): land PR #918's V2 deploy support on main
+
+## V2 whole-site redesign — codex/v2-whole-site-rework-20260922 (2026-09-22)
+
+- [x] Read HANDOFF.md + baseline evidence; confirm pristine build is a no-op; map pinned tests, JS hooks, critical-CSS contract, packaging boundary
+- [x] Write DESIGN-CONTRACT.html + task-ledger.json (fashion-e2e strict ledger)
+- [x] Phase 1 (A): tokens, theme.css primitives, global-shell (header/footer, Cinzel → eyebrows), controls, header mascot removal, skyy-mascot.php dock markup, functions.php (mobileModelUrl, content-page on cart/checkout), natural-motion GLBs staged in assets/models
+- [x] Phase 2 parallel: A homepage ✅ (recomposed, evidence captured, film-toggle lane fix) · B collections+immersive · C shop/PDP/card · D supporting+commerce pages · E Skyy natural motion runtime — B/C/D/E in flight
+- [x] Integrate: home.contract.json, package-boundary.json + build-inputs.json reconciliation, build → check:assets → verify → lint:php → phpcs → package:theme; version triple 2.5.0 + CHANGELOG
+- [ ] Evidence: 1440/390 captures per route (home ✅ + Lighthouse ✅; final pass F/G/H running 2026-09-22 23:50Z), reduced-motion/no-JS, console/network, keyboard, commerce journey, Lighthouse lab
+- [ ] Red team = Ultracode Workflow (independent reviewers, verdicts only) → fix material findings → re-verify
+- [ ] Commit (global identity), PR superseding PR970, pr-green-loop, merge on fresh green
+- [ ] Staging (conditional y): manifest with archive SHA/count, preserve original, remote hash verify, edge purge, fresh-browser verify, perf measurement

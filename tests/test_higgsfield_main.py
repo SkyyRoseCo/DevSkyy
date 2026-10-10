@@ -8,8 +8,12 @@ import importlib.util
 import sys
 from pathlib import Path
 
-import higgsfield_client
 import pytest
+
+# higgsfield_client is declared in the optional `higgsfield` extra, which CI installs
+# (.github/workflows/ci.yml). importorskip keeps collection green anyway if that install
+# fell back to a narrower extra set.
+higgsfield_client = pytest.importorskip("higgsfield_client")
 
 _SPEC = importlib.util.spec_from_file_location(
     "higgsfield_main",

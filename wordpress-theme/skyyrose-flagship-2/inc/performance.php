@@ -33,7 +33,7 @@ add_action( 'init', 'skyyrose2_performance_disable_emojis', 1 );
  * @return bool
  */
 function skyyrose2_performance_is_governed_route() {
-	if ( is_front_page() || is_page_template( 'template-collection.php' ) ) {
+	if ( is_front_page() || is_page_template( 'template-collection.php' ) || ( function_exists( 'skyyrose2_collection_page_slug' ) && skyyrose2_collection_page_slug() ) ) {
 		return true;
 	}
 
@@ -51,6 +51,14 @@ function skyyrose2_performance_is_governed_route() {
 function skyyrose2_performance_dequeue_unused_assets() {
 	if ( ! is_user_logged_in() ) {
 		wp_dequeue_style( 'dashicons' );
+	}
+
+	// Archive grid geometry is owned by shop-page.css. Retain Woo's general
+	// controls, notices and Quick View styling; extensions can restore its layout.
+	$is_archive = function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() );
+	if ( $is_archive && ! apply_filters( 'skyyrose2_archive_native_woo_layout', false ) ) {
+		wp_dequeue_style( 'woocommerce-layout' );
+		wp_dequeue_style( 'woocommerce-smallscreen' );
 	}
 
 	if ( ! skyyrose2_performance_is_governed_route() ) {
@@ -72,8 +80,66 @@ function skyyrose2_performance_dequeue_unused_assets() {
 	}
 
 	wp_dequeue_script( 'wp-embed' );
+
+	// These editorial routes render our cards, Quick View and bag dialog. Their
+	// controls/notices are owned by theme.css, controls.css and global-shell.css;
+	// Woo's product grids, tables and forms are not present. Keep native styles on
+	// every transactional, archive, content and legacy immersive route. Extensions
+	// adding native Woo markup here can opt back in without changing this policy.
+	$collection = function_exists( 'skyyrose2_collection_page_slug' ) ? skyyrose2_collection_page_slug() : '';
+	$owned_commerce = is_front_page() || ( $collection && function_exists( 'skyyrose2_collection_world_enabled' ) && skyyrose2_collection_world_enabled( $collection ) );
+	if ( $owned_commerce && ! apply_filters( 'skyyrose2_editorial_native_woo_styles', false ) ) {
+		foreach ( array( 'woocommerce-general', 'woocommerce-layout', 'woocommerce-smallscreen' ) as $handle ) {
+			wp_dequeue_style( $handle );
+		}
+	}
 }
 add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_dequeue_unused_assets', 100 );
+
+/**
+ * Offer small, exact theme styles to Core's bounded inline-style delivery.
+ *
+ * Core retains handle order, attached CSS and relative URL normalization. Its
+ * total byte budget is unchanged; large sheets and every non-selected sheet
+ * remain ordinary blocking stylesheet links, including the no-JS path.
+ * Third-party replacements, alternate media and RTL variants are not bypassed.
+ */
+function skyyrose2_performance_inline_small_styles() {
+	if ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) || ! apply_filters( 'skyyrose2_inline_small_styles', true ) ) {
+		return;
+	}
+
+	$styles = wp_styles();
+	$assets = array(
+		'tokens' => 'design-tokens', 'controls' => 'controls',
+		'theme' => 'archive-theme',
+		'global-shell' => 'global-shell', 'visual-recovery' => 'visual-recovery',
+		'home-page' => 'home-page', 'collection-world' => 'collection-world',
+		'product-page' => 'product-page', 'shop-page' => 'shop-page',
+		'hero-commerce-scenes' => 'hero-commerce-scenes',
+		'collection-scene-motion' => 'collection-scene-motion', 'mascot' => 'mascot',
+	);
+	foreach ( $assets as $name => $asset ) {
+		$handle = 'skyyrose2-' . $name;
+		$style = $styles->registered[ $handle ] ?? null;
+		if ( ! $style || ! in_array( $handle, $styles->queue, true ) || 'all' !== $style->args || ! empty( $style->extra['rtl'] ) || ! empty( $style->extra['conditional'] ) || ! empty( $style->extra['path'] ) ) {
+			continue;
+		}
+		// The verified archive projection has a separate per-file ceiling;
+		// Core still decides whether it fits the unchanged total 40KB budget.
+		$limit = 'archive-theme' === $asset ? 32768 : 16384;
+		$suffixes = 'archive-theme' === $asset ? array( '.min.css' ) : array( '.min.css', '.css' );
+		foreach ( $suffixes as $suffix ) {
+			$relative = '/assets/css/' . $asset . $suffix;
+			$path = SKYYROSE2_DIR . $relative;
+			if ( SKYYROSE2_URI . $relative === $style->src && is_readable( $path ) && filesize( $path ) <= $limit ) {
+				wp_style_add_data( $handle, 'path', $path );
+				break;
+			}
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_inline_small_styles', 101 );
 
 /**
  * Prevent the disabled emoji service from retaining a DNS-prefetch hint.
@@ -243,12 +309,17 @@ function skyyrose2_performance_route_preloads() {
 			'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp'
 		);
 	}
+	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
+		$front = skyyrose2_performance_archive_front_preload();
+		return $front ? array( $front ) : array();
+	}
 
-	if ( is_page_template( 'template-collection.php' ) && function_exists( 'skyyrose2_collections' ) ) {
+	if ( ( ( function_exists( 'skyyrose2_collection_page_slug' ) && skyyrose2_collection_page_slug() ) || is_page_template( 'template-collection.php' ) ) && function_exists( 'skyyrose2_collections' ) ) {
 		$slug        = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
 		$collections = skyyrose2_collections();
 		$collection  = $collections[ $slug ] ?? array();
 		if ( ! empty( $collection['hero'] ) ) {
+			// The arrival <picture> selects its candidate by viewport, so the hint is art-directed the same way.
 			return skyyrose2_performance_art_directed_preloads(
 				$collection['hero'],
 				$collection['hero_tablet'] ?? $collection['hero'],
@@ -272,9 +343,17 @@ function skyyrose2_performance_route_preloads() {
 
 	if ( is_page() ) {
 		$slug = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
-		if ( 'collections' === $slug ) {
-			$resource = skyyrose2_performance_sot_preload( 'branding/hero/signature-golden-gate-yacht-1280w.webp' );
-			return $resource ? array( $resource ) : array();
+		if ( 'collections' === $slug && function_exists( 'skyyrose2_collections' ) ) {
+			// The collections index opens on the first world's monument (template-parts/collections/index.php).
+			$first = current( skyyrose2_collections() );
+			if ( empty( $first['hero'] ) ) {
+				return array();
+			}
+			return skyyrose2_performance_art_directed_preloads(
+				$first['hero'],
+				$first['hero_tablet'] ?? $first['hero'],
+				$first['hero_mobile'] ?? $first['hero']
+			);
 		}
 		if ( in_array( $slug, array( 'pre-order', 'preorder' ), true ) ) {
 			return skyyrose2_performance_art_directed_preloads(
@@ -283,9 +362,9 @@ function skyyrose2_performance_route_preloads() {
 				'images/preorder/responsive/black-rose-salon-640w.webp'
 			);
 		}
+		// Contact renders no hero image since 2.5.0; only About keeps a page hero.
 		$page_heroes = array(
-			'about'   => 'images/about/skyy-rose-founder-hero.webp',
-			'contact' => 'images/immersive/scene-signature-oakland-atelier-gpt2.webp',
+			'about' => 'images/about/skyy-rose-founder-hero.webp',
 		);
 		if ( isset( $page_heroes[ $slug ] ) ) {
 			$resource = skyyrose2_performance_sot_preload( $page_heroes[ $slug ] );
@@ -297,8 +376,14 @@ function skyyrose2_performance_route_preloads() {
 	$image_size = 'full';
 	if ( is_singular( 'product' ) && function_exists( 'wc_get_product' ) ) {
 		$product    = wc_get_product( get_queried_object_id() );
-		$image_id   = $product ? (int) $product->get_image_id() : 0;
+		// Delivery hints obey the same authority as the visible PDP gallery.
+		$media      = $product && function_exists( 'skyyrose2_product_commerce_media' ) ? skyyrose2_product_commerce_media( $product ) : array();
+		$image_id   = (int) ( $media['ids'][0] ?? 0 );
 		$image_size = 'woocommerce_single';
+		$delivery = $image_id && function_exists( 'skyyrose2_pdp_media_delivery' ) ? skyyrose2_pdp_media_delivery( $product, $image_id ) : array();
+		if ( $delivery ) {
+			return array( array( 'href' => $delivery['src'], 'as' => 'image', 'type' => 'image/webp', 'fetchpriority' => 'high', 'imagesrcset' => $delivery['srcset'], 'imagesizes' => $delivery['sizes'] ) );
+		}
 	} elseif ( is_single() ) {
 		$image_id = (int) get_post_thumbnail_id( get_queried_object_id() );
 	}
@@ -324,6 +409,76 @@ function skyyrose2_performance_route_preloads() {
 		}
 	}
 
+	return array();
+}
+
+/**
+ * Discover the first native archive card's approved garment front without advancing
+ * or replacing its query. The archive renders garment-first (no portal frame), so the
+ * hint carries the same approved front, srcset and sizes the first card will request.
+ *
+ * Category displays and extension-owned loop/visibility behavior are deliberately
+ * excluded. Product hydration may read metadata; no product-selection query or
+ * Woo loop setup is performed. The first visible product owns the hint or none.
+ *
+ * @return array<string,string>
+ */
+function skyyrose2_performance_archive_front_preload() {
+	global $wp_query, $wp_the_query;
+	if (
+		! function_exists( 'is_shop' ) || ! ( is_shop() || is_product_taxonomy() ) ||
+		is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || is_feed() || is_embed() ||
+		! ( $wp_query instanceof WP_Query ) || $wp_query !== $wp_the_query || ! $wp_query->is_main_query() ||
+		'product_query' !== $wp_query->get( 'wc_query' ) || -1 !== $wp_query->current_post ||
+		$wp_query->post_count < 1 || ! is_array( $wp_query->posts ) ||
+		has_filter( 'woocommerce_product_is_visible' ) || has_action( 'woocommerce_shop_loop' )
+	) {
+		return array();
+	}
+	$loop = $GLOBALS['woocommerce_loop'] ?? array();
+	if ( ! is_array( $loop ) || ! empty( $loop['name'] ) || ! empty( $loop['is_shortcode'] ) || ! empty( $loop['loop'] ) || ( isset( $loop['total'] ) && (int) $loop['total'] < 1 ) ) {
+		return array();
+	}
+	$display = '';
+	if ( is_shop() ) {
+		$display = get_option( 'woocommerce_shop_page_display', '' );
+	} elseif ( is_product_category() ) {
+		$display = get_term_meta( get_queried_object_id(), 'display_type', true );
+		$display = $display ? $display : get_option( 'woocommerce_category_archive_display', '' );
+	}
+	if ( in_array( $display, array( 'both', 'subcategories' ), true ) ) {
+		return array();
+	}
+	foreach ( $wp_query->posts as $candidate_post ) {
+		if ( ! ( $candidate_post instanceof WP_Post ) || 'product' !== $candidate_post->post_type ) {
+			return array();
+		}
+		$candidate = wc_get_product( $candidate_post->ID );
+		if ( ! ( $candidate instanceof WC_Product ) || ! $candidate->is_visible() ) {
+			continue;
+		}
+		$front = function_exists( 'skyyrose2_approved_card_front' ) ? skyyrose2_approved_card_front( $candidate ) : array();
+		$href  = (string) ( $front['card_src'] ?? $front['src'] ?? '' );
+		if ( '' === $href ) {
+			return array();
+		}
+		$resource = array(
+			'href'          => $href,
+			'as'            => 'image',
+			'fetchpriority' => 'high',
+		);
+		$type = skyyrose2_performance_image_mime( $href );
+		if ( $type ) {
+			$resource['type'] = $type;
+		}
+		// The card only emits sizes alongside a srcset; the hint mirrors that exactly so
+		// the preloaded candidate is the one the img element selects.
+		if ( ! empty( $front['srcset'] ) && function_exists( 'skyyrose2_shop_card_sizes' ) ) {
+			$resource['imagesrcset'] = $front['srcset'];
+			$resource['imagesizes']  = skyyrose2_shop_card_sizes();
+		}
+		return $resource;
+	}
 	return array();
 }
 
@@ -374,3 +529,61 @@ function skyyrose2_performance_defer_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_defer_scripts', 110 );
 add_action( 'wp_footer', 'skyyrose2_performance_defer_scripts', 1 );
+
+/**
+ * Precompile the two native variation templates without relaxing storefront CSP.
+ *
+ * Woo's complex-template detection can delegate even a simple field token to
+ * wp.template/Underscore, which otherwise compiles with new Function. Populate
+ * WordPress's existing memoization cache after wp-util and before its consumer.
+ * Only the existing Woo HTML fields are interpolated; commerce resolution stays
+ * entirely in WooCommerce. Unknown executable template syntax fails closed.
+ */
+function skyyrose2_performance_csp_variation_templates() {
+	if ( ! function_exists( 'is_product' ) || ( ! is_product() && ! wp_script_is( 'wc-add-to-cart-variation', 'enqueued' ) ) ) {
+		return;
+	}
+	$script = <<<'SKYYROSE_VARIATION_TEMPLATES'
+(() => {
+  const cache = window.wp?.template?.cache;
+  if (!cache) return;
+  const allowed = new Set(['variation_description', 'price_html', 'availability_html']);
+  const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+  for (const id of ['variation-template', 'unavailable-variation-template']) {
+    cache[id] = (data) => {
+      const element = document.getElementById(`tmpl-${id}`);
+      if (!element) throw new Error(`Missing native Woo template: ${id}`);
+      const source = element.textContent;
+      const token = /({{{?)\s*data\.variation\.([a-z_]+)\s*(}}}?)/g;
+      const remaining = source.replace(token, (match, open, key, close) => open.length === close.length && allowed.has(key) ? '' : match);
+      if (/<#|{{|}}/.test(remaining)) throw new Error('Unsupported Woo variation template expression under CSP');
+      return source.replace(token, (_match, open, key) => {
+        const value = data?.variation?.[key] ?? '';
+        return open.length === 2 ? escapeHtml(value) : String(value);
+      });
+    };
+  }
+})();
+SKYYROSE_VARIATION_TEMPLATES;
+	wp_add_inline_script( 'wp-util', $script, 'after' );
+}
+add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_csp_variation_templates', 120 );
+
+/**
+ * Keep the editorial home stylesheet render-blocking when Jetpack Boost has
+ * critical CSS enabled. The split on-model hero relies on its complete layout
+ * before first paint; Other routes retain their existing Boost stylesheet behavior.
+ *
+ * @param string|false $method Requested Boost loading method.
+ * @param string       $handle  Registered style handle.
+ * @param string       $media   Stylesheet media attribute.
+ * @return string|false
+ */
+function skyyrose2_homepage_blocking_boost_styles( $method, $handle, $media ) {
+	if ( ! is_front_page() || 'all' !== $media ) {
+		return $method;
+	}
+
+	return false;
+}
+add_filter( 'jetpack_boost_async_style', 'skyyrose2_homepage_blocking_boost_styles', PHP_INT_MAX, 3 );

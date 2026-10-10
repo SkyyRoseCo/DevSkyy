@@ -1,0 +1,31 @@
+{
+  "model": "kling-o3-pro",
+  "duration": 5,
+  "ratio": "9:16",
+  "generateAudio": false,
+  "resolution": "1080p",
+  "rationale": "Founder explicitly selected Runway with Kling and requires the exact supplied Skyy character plus the actual male from original bomber footage. Run a single bounded 5-second reference-driven Black Rose continuity proof, with no rejected generated face as input.",
+  "referenceImages": [
+    {
+      "tag": "skyy",
+      "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA"
+    },
+    {
+      "tag": "actual_man",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0e4f2dc8-d20c-4245-8e51-a37dcea29ea6.png"
+    },
+    {
+      "tag": "actual_man_second_view",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0bd8bc95-0044-44b6-872b-8d6805de2fcb.png"
+    },
+    {
+      "tag": "bomber",
+      "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/br-006-sherpa-jacket.jpeg"
+    },
+    {
+      "tag": "black_rose_world",
+      "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp"
+    }
+  ],
+  "promptText": "One continuous five-second cinematic luxury fashion encounter aboard a moving night train. Two subjects only. CAST 1: @skyy is the exact founder-supplied stylized 3D girl. Use her actual reference design, full rounded cheeks and broad round lower face, thick eyebrows, large brown eyes, button nose, wide smile, broad rounded ringlet silhouette framing both shoulders, compact child body and large head-to-body ratio. Preserve this exact character through every frame. Only her wardrobe changes: dress her in a child-scale version of @bomber, black satin hooded sherpa bomber with silver rose/cloud chest, black trousers, hood down. No Love Hurts clothing from identity photo. CAST 2: @actual_man and @actual_man_second_view are the SAME actual photographic man extracted from the founder's video. Keep his real reference face, hair, facial hair, jewelry, black bomber and dark trousers; never replace him with a new generated model. He stays camera-RIGHT, seated and facing slightly LEFT as in his source frames; do not mirror either source face. Skyy stands camera-LEFT at his seated eye level, her face near-frontal like her master photo, chin level, not tilted up. Both bomber fronts visible. Keep her full broad curls and compact body proportions, do not make her taller, slimmer or older. TRAIN: tactile black bench, tall rounded windows, black curved metal shell, silver practical lighting, natural face fill and contact shadows. @black_rose_world supplies only the Bay Bridge and black silver-edged rose-star sculpture outside the window, none of its people or lettering. ACTION: camera holds a medium two-shot; moving bridge lights outside establish train motion. Man makes a tiny glance toward Skyy; she gives one small natural smile, eyes shift slightly toward him while her face stays nearly frontal. Bodies stay grounded, hands low, subtle breathing. No scene cuts, costume morph, dramatic body turns, added people, lettering, captions or audio. Product texture and embroidery stay stable. End with both faces and bomber fronts clearly readable."
+}

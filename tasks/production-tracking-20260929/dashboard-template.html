@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SkyyRose Tracking</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #111617;
+        --panel: #1a2021;
+        --line: #354041;
+        --text: #edf0ed;
+        --muted: #b0bdb8;
+        --teal: #a2dec9;
+        --amber: #f4cd8b;
+        --red: #f3a9a7;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          15px/1.55 -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+      }
+      a {
+        color: var(--teal);
+        overflow-wrap: anywhere;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button,
+      select,
+      input {
+        color: var(--text);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        padding: 10px 12px;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:hover {
+        border-color: var(--teal);
+      }
+      :focus-visible {
+        outline: 3px solid var(--teal);
+        outline-offset: 4px;
+      }
+      main {
+        max-width: 1480px;
+        margin: auto;
+        padding: 34px 34px 48px;
+      }
+      .skip {
+        position: absolute;
+        left: 20px;
+        top: -70px;
+        background: var(--panel);
+        padding: 12px;
+        z-index: 10;
+      }
+      .skip:focus {
+        top: 12px;
+      }
+      .masthead {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      h1 {
+        font-size: 38px;
+        line-height: 1.2;
+        margin: 9px 0 12px;
+        letter-spacing: -1.5px;
+      }
+      h2 {
+        font-size: 21px;
+        letter-spacing: -0.4px;
+        margin: 0;
+      }
+      h3 {
+        font-size: 17px;
+        line-height: 1.4;
+        margin: 0;
+      }
+      .eyebrow {
+        color: var(--teal);
+        font-size: 11px;
+        letter-spacing: 2.2px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      p {
+        margin: 8px 0;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .clock {
+        text-align: right;
+        max-width: 320px;
+        font-size: 12px;
+      }
+      .notice {
+        padding: 15px 19px;
+        margin: 27px 0;
+        background: #202925;
+        border: 1px solid #41624f;
+        border-radius: 9px;
+        color: #d6e9db;
+      }
+      .notice strong {
+        color: var(--teal);
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+      .metric,
+      .panel,
+      .component {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+      .metric {
+        padding: 20px;
+      }
+      .metric-label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .metric-value {
+        font-size: 26px;
+        font-weight: 650;
+        line-height: 1.3;
+        margin: 9px 0;
+        letter-spacing: -0.5px;
+      }
+      .metric-note {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        gap: 12px;
+        margin: 32px 0 18px;
+      }
+      .toolbar label {
+        display: grid;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .search {
+        flex: 1;
+        min-width: 220px;
+      }
+      .toolbar select {
+        min-width: 165px;
+      }
+      .toolbar button {
+        height: 45px;
+      }
+      .count {
+        font-size: 12px;
+        color: var(--muted);
+        margin-left: auto;
+        padding: 10px 0;
+      }
+      .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 18px;
+        margin: 30px 0 14px;
+      }
+      .section-heading p {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .component {
+        padding: 19px;
+        min-width: 0;
+      }
+      .component-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .category {
+        font-size: 11px;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      .badge {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        border: 1px solid #566260;
+        border-radius: 5px;
+        padding: 4px 7px;
+        color: #d5ddda;
+        white-space: normal;
+      }
+      .badge.good {
+        color: var(--teal);
+        border-color: #496f62;
+        background: #1e3029;
+      }
+      .badge.warning {
+        color: var(--amber);
+        border-color: #796441;
+        background: #302a21;
+      }
+      .badge.bad {
+        color: var(--red);
+        border-color: #865551;
+        background: #352524;
+      }
+      .summary {
+        font-size: 13px;
+        color: #d2dbd7;
+        margin: 14px 0;
+      }
+      .evidence-tag {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .next {
+        border-top: 1px solid var(--line);
+        margin-top: 14px;
+        padding-top: 12px;
+        font-size: 12px;
+      }
+      .next strong {
+        color: var(--teal);
+        display: block;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+      }
+      .owner {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+      details {
+        font-size: 12px;
+        margin-top: 15px;
+      }
+      summary {
+        cursor: pointer;
+        color: var(--teal);
+        padding: 4px 0;
+      }
+      details ul {
+        padding-left: 19px;
+      }
+      .source {
+        margin: 9px 0;
+        overflow-wrap: anywhere;
+      }
+      .source-meta {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+        margin: 4px 0;
+      }
+      .layout-two {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 18px;
+      }
+      .panel {
+        padding: 21px;
+        min-width: 0;
+      }
+      .site {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .site:first-child {
+        padding-top: 0;
+      }
+      .site:last-child {
+        border: 0;
+      }
+      .site-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .site-metric {
+        font-size: 25px;
+        margin: 8px 0;
+      }
+      .fine {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .funnel {
+        display: grid;
+        gap: 8px;
+        margin-top: 18px;
+      }
+      .funnel-row {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+      .funnel-row strong {
+        color: var(--amber);
+        font-size: 12px;
+      }
+      .list {
+        margin: 15px 0 0;
+        padding-left: 18px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .list li {
+        margin: 8px 0;
+      }
+      .list strong {
+        color: var(--text);
+      }
+      .table-wrap {
+        overflow: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      th,
+      td {
+        padding: 13px 10px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        font-size: 10px;
+        letter-spacing: 0.8px;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+      td {
+        overflow-wrap: anywhere;
+      }
+      .timeline {
+        display: grid;
+        gap: 0;
+      }
+      .observation {
+        border-bottom: 1px solid var(--line);
+        padding: 14px 0;
+      }
+      .observation:last-child {
+        border: 0;
+      }
+      .empty {
+        font-size: 13px;
+        color: var(--muted);
+        padding: 18px 0;
+      }
+      .integrity {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin: 13px 0;
+        font-size: 12px;
+      }
+      .integrity span {
+        color: var(--muted);
+      }
+      .integrity strong {
+        color: var(--text);
+        display: block;
+        font-size: 19px;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        margin-top: 34px;
+        padding-top: 18px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      [hidden] {
+        display: none !important;
+      }
+      @media (max-width: 1080px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .metrics {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 680px) {
+        main {
+          padding: 25px 18px;
+        }
+        .masthead {
+          display: block;
+        }
+        h1 {
+          font-size: 32px;
+        }
+        .clock {
+          text-align: left;
+          margin-top: 18px;
+        }
+        .grid,
+        .layout-two {
+          grid-template-columns: 1fr;
+        }
+        .metric {
+          padding: 15px;
+        }
+        .metric-value {
+          font-size: 22px;
+        }
+        .toolbar label {
+          flex: 1;
+        }
+        .toolbar select {
+          width: 100%;
+          min-width: 0;
+        }
+        .count {
+          width: 100%;
+          padding: 0;
+        }
+        .section-heading {
+          display: block;
+        }
+        .component-top {
+          gap: 14px;
+        }
+        .badge {
+          max-width: 150px;
+        }
+        .notice {
+          font-size: 13px;
+        }
+      }
+      .panel {
+        overflow-wrap: anywhere;
+      }
+      .site-header {
+        flex-wrap: wrap;
+      }
+      .site-header > * {
+        min-width: 0;
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to tracking</a>
+    <main id="main">
+      <header class="masthead">
+        <div>
+          <div class="eyebrow">SkyyRose / Operations</div>
+          <h1>SkyyRose Tracking</h1>
+          <p class="muted">
+            Creative production, connected systems, and website performance—with evidence behind each status.
+          </p>
+        </div>
+        <div class="clock">
+          <div>Snapshot collected</div>
+          <strong id="refreshed">Unknown</strong>
+          <div id="zone" class="muted">America/Los_Angeles</div>
+          <p id="website-time" class="muted"></p>
+        </div>
+      </header>
+      <div class="notice">
+        <strong>Collected snapshot + append-only observations.</strong>
+        This board shows recorded evidence at the times shown. Continuous ingestion, deployment, and complete
+        transaction coverage remain separate gates.
+      </div>
+      <section class="metrics" aria-label="Tracking overview" id="metrics"></section>
+      <form class="toolbar" role="search" onsubmit="return false;">
+        <label class="search">
+          Search components
+          <input id="search" type="search" placeholder="Find a system, phase, or next action" autocomplete="off" />
+        </label>
+        <label>
+          Category
+          <select id="category">
+            <option value="">All categories</option>
+          </select>
+        </label>
+        <label>
+          Status
+          <select id="status">
+            <option value="">All statuses</option>
+          </select>
+        </label>
+        <button id="reset" type="button">Clear filters</button>
+        <span id="count" class="count" role="status" aria-live="polite"></span>
+      </form>
+      <section aria-labelledby="integration-heading">
+        <div class="section-heading">
+          <h2 id="integration-heading">Local E2E validation</h2>
+          <p>Synthetic fixtures remain separate from website traffic, provider spend and owner acceptance.</p>
+        </div>
+        <div id="integration-summary" class="panel"></div>
+        <div id="integration-checks" class="table-wrap"></div>
+      </section>
+      <section aria-labelledby="creative-heading">
+        <div class="section-heading">
+          <h2 id="creative-heading">Creative OS lifecycle</h2>
+          <p>Each phase retains its own evidence and next action.</p>
+        </div>
+        <div id="creative" class="grid"></div>
+      </section>
+      <section aria-labelledby="systems-heading">
+        <div class="section-heading">
+          <h2 id="systems-heading">Production OS & integrations</h2>
+          <p>Local verification and live operation are shown separately.</p>
+        </div>
+        <div id="systems" class="grid"></div>
+      </section>
+      <section aria-labelledby="web-heading">
+        <div class="section-heading">
+          <h2 id="web-heading">Website traffic & conversion</h2>
+          <p>Missing measurements remain unknown.</p>
+        </div>
+        <div class="layout-two">
+          <div class="panel">
+            <h3>Connected site observations</h3>
+            <div id="sites"></div>
+          </div>
+          <div class="panel">
+            <h3>Commerce event coverage</h3>
+            <p class="fine">Event counts require a connected source and a defined reporting window.</p>
+            <div id="funnel" class="funnel"></div>
+            <ul id="web-limitations" class="list"></ul>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="connections-heading">
+        <div class="section-heading"><h2 id="connections-heading">Connections & source checkouts</h2></div>
+        <div class="layout-two">
+          <div class="panel">
+            <h3>Connectors</h3>
+            <div id="connectors" class="table-wrap"></div>
+            <details>
+              <summary>Configured MCP origins · configuration only</summary>
+              <p class="fine">
+                An enabled entry does not establish account authentication, site access, or successful execution.
+              </p>
+              <div id="mcp-inventory" class="table-wrap"></div>
+            </details>
+          </div>
+          <div class="panel">
+            <h3>Repositories</h3>
+            <div id="repositories" class="table-wrap"></div>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="evidence-heading">
+        <div class="section-heading">
+          <h2 id="evidence-heading">Evidence & readiness</h2>
+          <p>A source file's presence does not certify a running service.</p>
+        </div>
+        <div class="layout-two">
+          <div class="panel">
+            <h3>Execution gates</h3>
+            <div id="gates" class="timeline"></div>
+          </div>
+          <div class="panel">
+            <h3>Historical Governor candidate & event integrity</h3>
+            <p class="fine">
+              The 115-file check below covers the earlier Governor manifest. This E2E candidate has its own closure and
+              final verification record.
+            </p>
+            <div id="integrity" class="integrity"></div>
+            <div id="event-log"></div>
+            <h3 style="margin-top: 22px">Remaining evidence gaps</h3>
+            <ul id="gaps" class="list"></ul>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="observations-heading">
+        <div class="section-heading">
+          <h2 id="observations-heading">Recorded live observations</h2>
+          <p>Point-in-time checks; continuous monitoring is not implied.</p>
+        </div>
+        <div id="observations" class="panel timeline"></div>
+      </section>
+      <footer>
+        This local board makes no network requests and performs no provider, publishing, or deployment actions. Source
+        timestamps, collection time, and execution readiness describe different kinds of evidence.
+      </footer>
+    </main>
+    <script id="tracking-data" type="application/json">
+      __TRACKING_DATA__
+    </script>
+    <script>
+      'use strict';
+      (() => {
+        const el = id => document.getElementById(id);
+        const array = value => (Array.isArray(value) ? value : []);
+        const string = (value, fallback = 'Unknown') =>
+          value === null || value === undefined || value === '' ? fallback : String(value);
+        const human = value => string(value).replace(/_/g, ' ');
+        const count = value =>
+          typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value.toLocaleString('en-US') : 'Unknown';
+        const node = (tag, cls, value) => {
+          const n = document.createElement(tag);
+          if (cls) n.className = cls;
+          if (value !== undefined) n.textContent = string(value);
+          return n;
+        };
+        const append = (parent, ...children) => {
+          children.forEach(child => parent.append(child));
+          return parent;
+        };
+        const time = value => {
+          if (!value) return 'Unknown';
+          const d = new Date(value);
+          if (Number.isNaN(d.valueOf())) return string(value);
+          return new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Los_Angeles',
+            dateStyle: 'medium',
+            timeStyle: 'short',
+          }).format(d);
+        };
+        const tone = value => {
+          const s = string(value).toUpperCase();
+          if (/FAIL|BLOCK|ERROR|MISMATCH|REJECT|UNHEALTHY|DISCONNECTED/.test(s)) return 'bad';
+          if (/PENDING|GAP|HOLD|PARTIAL|STALE|REQUIRED|UNVERIFIED/.test(s)) return 'warning';
+          if (/PASS|READY|VERIFIED|CONNECTED|COMPLETE|HEALTHY|RATIFIED/.test(s) && !/NOT|UNKNOWN|INCOMPLETE/.test(s))
+            return 'good';
+          return '';
+        };
+        const badge = value => node('span', 'badge ' + tone(value), human(value));
+        const localPath = value => {
+          if (
+            typeof value !== 'string' ||
+            !value.startsWith('/') ||
+            value.startsWith('//') ||
+            /[\u0000-\u001f]/.test(value)
+          )
+            return null;
+          const parts = [];
+          value.split('/').forEach(p => {
+            if (p === '..') parts.pop();
+            else if (p && p !== '.') parts.push(p);
+          });
+          return '/' + parts.join('/');
+        };
+        const pathNode = value => node('code', '', localPath(value) || string(value, 'No source path'));
+        let data = {};
+        try {
+          data = JSON.parse(el('tracking-data').textContent);
+        } catch (_) {
+          el('refreshed').textContent = 'Snapshot unavailable';
+          el('gaps').append(
+            node(
+              'li',
+              '',
+              'The embedded tracking snapshot could not be read. Rebuild the board from the tracking collector.'
+            )
+          );
+        }
+        const components = array(data.components).filter(c => c && typeof c === 'object');
+        const creative = c => /creative/i.test(string(c.category, ''));
+        const website = data.website || {},
+          sites = array(website.sites),
+          e2e = data.e2e_gates || data.e2e || {},
+          integrity = data.manifest_integrity || {},
+          eventLog = data.history || data.event_log || {};
+        const sourceFiles = Array.isArray(data.source_files)
+          ? data.source_files
+          : Object.entries(data.source_files || {}).map(([path, metadata]) => ({ path, ...(metadata || {}) }));
+        el('refreshed').textContent = time(data.captured_at || data.refreshed_at);
+        el('zone').textContent = 'America/Los_Angeles · source times shown separately';
+        el('website-time').textContent = 'Website captured: ' + time(website.captured_at);
+        function metric(label, value, note) {
+          const box = node('div', 'metric');
+          append(
+            box,
+            node('div', 'metric-label', label),
+            node('div', 'metric-value', value),
+            node('div', 'metric-note', note)
+          );
+          el('metrics').append(box);
+        }
+        const primarySite = sites.find(s => s && s.environment === 'production') || sites[0] || {};
+        metric(
+          'End-to-end readiness',
+          human(e2e.overall_status),
+          'Readiness is separate from individual component checks.'
+        );
+        metric(
+          'Creative lifecycle phases',
+          String(components.filter(creative).length),
+          'Evidence and next action recorded for each listed phase.'
+        );
+        metric(
+          'Provider-reported monthly views',
+          count(primarySite.monthly_views),
+          string(primarySite.primary_domain || primarySite.url, 'No connected traffic source') +
+            ' · not unique visitors or revenue'
+        );
+        metric(
+          'Recorded observation events',
+          eventLog.event_count === undefined ? 'Unknown' : string(eventLog.event_count),
+          'An observation log does not establish continuous runtime coverage.'
+        );
+        function evidenceDetails(c) {
+          const details = node('details');
+          details.append(node('summary', '', 'Evidence, source times & owner'));
+          const sources = array(c.source_evidence).length
+              ? array(c.source_evidence)
+              : sourceFiles.filter(s => array(c.source_paths).includes(s.path)),
+            paths = [...new Set([...array(c.source_paths), ...sources.map(s => s.path)].filter(Boolean))];
+          if (!paths.length) details.append(node('p', 'muted', 'No source path recorded.'));
+          const list = node('ul');
+          paths.forEach(path => {
+            const li = node('li', 'source');
+            li.append(pathNode(path));
+            const source = sources.find(s => s.path === path);
+            if (source) {
+              li.append(
+                node(
+                  'span',
+                  'source-meta',
+                  'Source modified: ' +
+                    time(source.modified_at) +
+                    ' · existence: ' +
+                    (source.exists === true ? 'present' : source.exists === false ? 'missing' : 'unknown')
+                )
+              );
+              if (source.sha256) li.append(node('span', 'source-meta', 'SHA-256: ' + string(source.sha256)));
+            }
+            list.append(li);
+          });
+          details.append(list, node('p', 'owner', 'Owner: ' + string(c.owner, 'Not assigned')));
+          return details;
+        }
+        function card(c) {
+          const box = node('article', 'component'),
+            top = node('div', 'component-top'),
+            title = node('div');
+          append(title, node('div', 'category', human(c.category)), node('h3', '', c.name));
+          append(top, title, badge(c.status));
+          append(
+            box,
+            top,
+            node('p', 'summary', string(c.summary, 'No observation recorded.')),
+            node('div', 'evidence-tag', 'Evidence class: ' + human(c.evidence_class))
+          );
+          const next = node('div', 'next');
+          append(
+            next,
+            node('strong', '', 'Next action'),
+            node('span', '', string(c.next_action, 'Next action not recorded.'))
+          );
+          append(box, next, evidenceDetails(c));
+          return box;
+        }
+        ['category', 'status'].forEach(key => {
+          [...new Set(components.map(c => string(c[key])))].sort().forEach(value => {
+            const option = node('option', '', human(value));
+            option.value = value;
+            el(key).append(option);
+          });
+        });
+        function render() {
+          const query = el('search').value.trim().toLowerCase(),
+            category = el('category').value,
+            status = el('status').value;
+          const filtered = components.filter(
+            c =>
+              (!category || string(c.category) === category) &&
+              (!status || string(c.status) === status) &&
+              (!query ||
+                [c.name, c.category, c.status, c.summary, c.next_action, c.evidence_class, ...array(c.source_paths)]
+                  .map(v => string(v, ''))
+                  .join(' ')
+                  .toLowerCase()
+                  .includes(query))
+          );
+          el('creative').replaceChildren();
+          el('systems').replaceChildren();
+          filtered.forEach(c => el(creative(c) ? 'creative' : 'systems').append(card(c)));
+          ['creative', 'systems'].forEach(id => {
+            if (!el(id).childElementCount)
+              el(id).append(
+                node(
+                  'p',
+                  'empty',
+                  components.length ? 'No components match these filters.' : 'No component snapshot available.'
+                )
+              );
+          });
+          el('count').textContent = filtered.length + ' of ' + components.length + ' components shown';
+        }
+        ['search', 'category', 'status'].forEach(id => el(id).addEventListener('input', render));
+        el('reset').addEventListener('click', () => {
+          el('search').value = '';
+          el('category').value = '';
+          el('status').value = '';
+          render();
+          el('search').focus();
+        });
+        render();
+        sites.filter(Boolean).forEach(site => {
+          const box = node('article', 'site'),
+            header = node('div', 'site-header');
+          append(header, node('h3', '', site.primary_domain || site.url || site.site_id), badge(site.environment));
+          append(
+            box,
+            header,
+            node(
+              'div',
+              'site-metric',
+              count(site.monthly_views) === 'Unknown' ? 'Views unknown' : count(site.monthly_views) + ' views'
+            ),
+            node(
+              'div',
+              'fine',
+              'Provider-reported monthly views · ' + string(site.window_definition, 'Reporting window not defined')
+            ),
+            node('p', 'fine', 'Theme: ' + string(site.theme) + ' · site ID: ' + string(site.site_id))
+          );
+          el('sites').append(box);
+        });
+        if (!sites.length) el('sites').append(node('p', 'empty', 'No authenticated site observation recorded.'));
+        const funnel = website.funnel || {};
+        [
+          ['page_view', 'Page views'],
+          ['view_item', 'Product views'],
+          ['add_to_cart', 'Added to cart'],
+          ['begin_checkout', 'Checkout started'],
+          ['purchase', 'Purchases'],
+        ].forEach(([key, label]) => {
+          const row = node('div', 'funnel-row');
+          const value = funnel[key];
+          append(
+            row,
+            node('span', '', label),
+            node('strong', '', value === null || value === undefined ? 'Not connected' : string(value))
+          );
+          el('funnel').append(row);
+        });
+        array(website.limitations).forEach(value => el('web-limitations').append(node('li', '', value)));
+        function table(target, headings, rows) {
+          if (!rows.length) {
+            el(target).append(node('p', 'empty', 'No observations recorded.'));
+            return;
+          }
+          const t = node('table'),
+            head = node('thead'),
+            tr = node('tr');
+          headings.forEach(value => tr.append(node('th', '', value)));
+          head.append(tr);
+          t.append(head);
+          const body = node('tbody');
+          rows.forEach(values => {
+            const row = node('tr');
+            values.forEach(value => {
+              const cell = node('td');
+              cell.append(value instanceof Node ? value : node('span', '', value));
+              row.append(cell);
+            });
+            body.append(row);
+          });
+          t.append(body);
+          el(target).append(t);
+        }
+        table(
+          'connectors',
+          ['Connector', 'Status', 'Observation'],
+          array(data.connectors)
+            .filter(Boolean)
+            .map(c => {
+              const detail = node('div');
+              append(
+                detail,
+                node('p', '', c.summary || c.evidence_class || 'No evidence recorded'),
+                node('p', 'fine', 'Observed: ' + time(c.observed_at || c.captured_at))
+              );
+              if (c.next_action) detail.append(node('p', 'fine', 'Next: ' + string(c.next_action)));
+              return [c.name || c.id, badge(c.status), detail];
+            })
+        );
+        table(
+          'mcp-inventory',
+          ['Server', 'Origin', 'Transport', 'Configured'],
+          array(data.mcp_inventory)
+            .filter(Boolean)
+            .map(c => [
+              c.name,
+              string(c.url, 'Local process'),
+              human(c.transport),
+              c.enabled === true ? 'Enabled' : c.enabled === false ? 'Disabled' : 'Unknown',
+            ])
+        );
+        table(
+          'repositories',
+          ['Checkout', 'Revision', 'State'],
+          array(data.repository_state || data.repositories)
+            .filter(Boolean)
+            .map(r => [
+              pathNode(r.path || r.root || r.checkout),
+              r.head || r.revision || r.commit,
+              r.state ||
+                r.status ||
+                [
+                  string(r.branch, 'Detached HEAD'),
+                  'staged: ' + string(r.staged_count),
+                  'modified: ' + string(r.dirty_count),
+                  'untracked: ' + string(r.untracked_count),
+                ].join(' · '),
+            ])
+        );
+        const gates = Array.isArray(e2e.gates)
+          ? e2e.gates
+          : Object.entries(e2e.gates || {}).map(([name, value]) => ({
+              name,
+              ...(typeof value === 'object' ? value : { status: value }),
+            }));
+        gates.forEach(gate => {
+          const g = typeof gate === 'string' ? { name: gate } : gate || {},
+            item = node('div', 'observation'),
+            top = node('div', 'site-header');
+          append(top, node('strong', '', human(g.name || g.id || g.gate)), badge(g.status));
+          append(
+            item,
+            top,
+            node(
+              'p',
+              'fine',
+              g.summary ||
+                g.next_action ||
+                g.reason ||
+                'Recorded gate evidence; current execution requires its own qualification.'
+            )
+          );
+          if (g.source_path || g.path || g.report) item.append(pathNode(g.source_path || g.path || g.report));
+          if (e2e.source_date) item.append(node('p', 'fine', 'Gate source date: ' + string(e2e.source_date)));
+          el('gates').append(item);
+        });
+        if (!el('gates').childElementCount)
+          el('gates').append(node('p', 'empty', 'End-to-end gates have not been recorded.'));
+        const checked = integrity.checked ?? integrity.file_count,
+          mismatches = Array.isArray(integrity.mismatches) ? integrity.mismatches.length : integrity.mismatched,
+          matching =
+            integrity.matched ??
+            (typeof checked === 'number' && typeof mismatches === 'number' ? checked - mismatches : undefined);
+        [
+          ['Files checked', checked],
+          ['Matching', matching],
+          ['Nonmatching / missing', mismatches],
+        ].forEach(([label, value]) => {
+          const n = node('span', '', label);
+          n.prepend(node('strong', '', string(value)));
+          el('integrity').append(n);
+        });
+        if (integrity.status) el('integrity').append(badge(integrity.status));
+        append(
+          el('event-log'),
+          node(
+            'p',
+            'fine',
+            'Event chain: ' +
+              (eventLog.chain_verified === true
+                ? 'Verified for this collected log'
+                : eventLog.chain_verified === false
+                  ? 'Verification failed'
+                  : 'Not verified')
+          )
+        );
+        if (eventLog.path) {
+          const link = node('a', '', 'Open observation log'),
+            line = node('p');
+          link.setAttribute('href', './observed-events.jsonl');
+          line.append(link);
+          append(el('event-log'), pathNode(eventLog.path), line);
+        }
+        if (eventLog.integrity_limitation) el('event-log').append(node('p', 'fine', eventLog.integrity_limitation));
+        const declaredGaps = array(data.evidence_gaps),
+          derivedGaps = [
+            ...array(website.limitations),
+            ...components
+              .filter(c =>
+                /BLOCK|UNOBSERVED|NOT_APPROVED|NOT_AUTHORIZED|UNQUALIFIED|REVISION_REQUIRED|UNAVAILABLE|NOT_RUN|NOT_LINKED/i.test(
+                  string(c.status, '')
+                )
+              )
+              .map(
+                c =>
+                  string(c.name) + ' · ' + human(c.status) + '. ' + string(c.next_action, 'Next action not recorded.')
+              ),
+          ];
+        (declaredGaps.length ? declaredGaps : derivedGaps).forEach(value => el('gaps').append(node('li', '', value)));
+        if (!el('gaps').childElementCount)
+          el('gaps').append(
+            node('li', '', 'No gaps listed in this snapshot; that does not certify complete coverage.')
+          );
+        const integration = data.integration;
+        if (integration) {
+          const c = integration.creative || {},
+            g = integration.governor || {},
+            w = integration.website || {};
+          append(
+            el('integration-summary'),
+            badge(integration.evidence_class),
+            node(
+              'p',
+              'fine',
+              'Replay captured: ' +
+                time(integration.captured_at) +
+                ' · authentication: ' +
+                human(integration.authentication)
+            ),
+            node(
+              'p',
+              '',
+              'Creative job: ' +
+                string(c.job_id) +
+                ' · artifacts checked: ' +
+                count(c.technical_passes) +
+                ' / ' +
+                count(c.artifact_count)
+            ),
+            node('p', 'fine', 'Contract: ' + string(c.contract_id)),
+            node(
+              'p',
+              '',
+              'Owner acceptance: ' + human(c.owner_acceptance) + ' · publication/spending authority remains absent'
+            ),
+            node(
+              'p',
+              '',
+              'Fixture ledger: ' +
+                count(g.operations_count) +
+                ' operations · verified sequence ' +
+                count(g.head_sequence) +
+                ' · ' +
+                human(g.evidence_mode)
+            ),
+            node(
+              'p',
+              'fine',
+              'Ledger verification authenticates local record bytes; actual provider execution and spend remain unknown.'
+            ),
+            node(
+              'p',
+              '',
+              'Test website: ' +
+                string(w.site_id) +
+                ' · ' +
+                count(w.events) +
+                ' persisted fixture events · ' +
+                count(w.paid_orders) +
+                ' verified fixture orders'
+            ),
+            node(
+              'p',
+              'fine',
+              'Test purchase attribution remains unknown; these figures are excluded from the traffic and conversion panels.'
+            )
+          );
+          array(integration.limitations).forEach(value => el('integration-summary').append(node('p', 'fine', value)));
+          table(
+            'integration-checks',
+            ['Check', 'Result', 'Evidence'],
+            array(integration.checks).map(check => [check.name, badge(check.status), check.detail])
+          );
+        } else {
+          el('integration-summary').append(
+            node('p', 'empty', 'No integrated local replay record is declared or captured.')
+          );
+        }
+        array(data.live_observations).forEach(observation => {
+          const o = typeof observation === 'string' ? { summary: observation } : observation || {},
+            item = node('article', 'observation'),
+            top = node('div', 'site-header');
+          append(
+            top,
+            node('strong', '', human(o.name || o.component || o.id || o.type || o.kind || 'Live observation')),
+            badge(o.error ? 'OBSERVATION_ERROR' : o.status || o.evidence_class)
+          );
+          append(
+            item,
+            top,
+            node(
+              'p',
+              'summary',
+              o.error ||
+                o.summary ||
+                o.result ||
+                o.message ||
+                (o.http_status ? 'HTTP ' + o.http_status + ' returned for this check.' : 'No result recorded')
+            ),
+            node('p', 'fine', o.url || o.id || 'Observation source not recorded'),
+            node(
+              'p',
+              'fine',
+              o.observed_at || o.timestamp || o.captured_at
+                ? 'Observed: ' + time(o.observed_at || o.timestamp || o.captured_at)
+                : 'Snapshot collected: ' + time(data.captured_at || data.refreshed_at)
+            )
+          );
+          if (o.error) {
+            if (o.http_status !== null && o.http_status !== undefined)
+              item.append(
+                node(
+                  'p',
+                  'fine',
+                  'HTTP response: ' + string(o.http_status) + ' · this does not resolve the observation error.'
+                )
+              );
+            item.append(node('p', 'fine', 'Evidence class: ' + human(o.evidence_class)));
+          }
+          if (o.final_url && o.final_url !== o.url)
+            item.append(node('p', 'fine', 'Final address: ' + string(o.final_url)));
+          if (o.health && typeof o.health === 'object') {
+            if (o.health.status) {
+              const state = node('p', 'fine', 'Reported service status: ');
+              state.append(badge(o.health.status));
+              item.append(state);
+            }
+            if (o.health.service || o.health.version)
+              item.append(
+                node(
+                  'p',
+                  'fine',
+                  'Reported service: ' + string(o.health.service) + ' · version: ' + string(o.health.version)
+                )
+              );
+            [
+              ['dry_run_enabled', 'Governed dry run enabled'],
+              ['provider_execution_enabled', 'Provider execution enabled'],
+            ].forEach(([key, label]) => {
+              if (typeof o.health[key] === 'boolean')
+                item.append(
+                  node(
+                    'p',
+                    'fine',
+                    label + ': ' + (o.health[key] ? 'Yes' : 'No') + ' · reported configuration, not execution evidence'
+                  )
+                );
+            });
+          }
+          const markers = Array.isArray(o.analytics_markers)
+            ? o.analytics_markers
+            : Object.entries(o.analytics_markers || {})
+                .filter(([, value]) => typeof value === 'boolean')
+                .map(([key, value]) => human(key) + ': ' + (value ? 'found' : 'not found'));
+          if (array(o.ga4_ids).length || markers.length)
+            item.append(
+              node(
+                'p',
+                'fine',
+                'Page analytics markers: ' +
+                  [...array(o.ga4_ids), ...markers].join(', ') +
+                  ' · marker presence does not verify event delivery.'
+              )
+            );
+          if (o.path || o.source_path) item.append(pathNode(o.path || o.source_path));
+          el('observations').append(item);
+        });
+        if (!el('observations').childElementCount)
+          el('observations').append(node('p', 'empty', 'No live runtime observations are included in this snapshot.'));
+      })();
+    </script>
+  </body>
+</html>

@@ -23,7 +23,7 @@ Required before any taste judgment. **If any is absent, stop and obtain it — n
 | Input | Canonical location | If absent |
 |---|---|---|
 | Brand tokens + fonts | `CLAUDE.md` §6 Brand; `wordpress-theme/skyyrose-flagship/theme.json`; `data/brand/typography.json` | Stop — read them; memory rots, tokens do not |
-| Per-collection identity | `wordpress-theme/skyyrose-flagship/data/collections/<slug>/identity.json` | Stop — this is the SOT (see `docs/CLAUDE.md`); never invent a palette |
+| Per-collection identity | `wordpress-theme/skyyrose-flagship/data/logo-registry.json` → `collections.<slug>` | Stop — this is the SOT (see `docs/CLAUDE.md`); never invent a palette |
 | Visual reference canon | `docs/brand/visual-references.md` (The Five) | Stop — read it; proposing European-maison references is a canon violation |
 | Product imagery, if any product appears | `data/sot-images.json` via `skyyrose.core.sot_images` | Stop — filenames are not identity; SOT-resolve or do not show the product |
 | The surface under review | the actual file(s), or a live URL | Stop — taste review of an unread surface is a guess |
@@ -63,7 +63,7 @@ Centered-everything symmetric layouts; gradient text on headings; emoji in UI; 1
 ## Procedure
 
 1. Load inputs (table above). Read the surface's actual CSS/HTML/template files — never review from a description.
-2. Identify the collection register from `identity.json` for the surface; note its single permitted accent hex.
+2. Identify the collection register from the registry's `collections.<slug>` entry for the surface; note its single permitted accent hex.
 3. Grade against each section above in order: protagonist → restraint → motion → imagery → slop detectors. Record each violation as `file:line` + the rule it breaks.
 4. For every proposed change, state which rule it serves in one line. A change serving no rule is scope creep — drop it.
 5. If the surface is theme CSS/JS, every edit requires `cd wordpress-theme && npm run build` — production serves `.min` (see skyyrose-design:theme-min-build).

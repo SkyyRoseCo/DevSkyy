@@ -261,8 +261,11 @@ describe('OpenAIService', () => {
 
       const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
       expect(callBody.model).toBe('gpt-4o');
-      expect(callBody.messages[0].content).toContain('What is in this image?');
-      expect(callBody.messages[0].content).toContain('https://example.com/cat.jpg');
+      expect(callBody.messages[0].content).toEqual([
+        { type: 'text', text: 'What is in this image?' },
+        { type: 'image_url', image_url: { url: 'https://example.com/cat.jpg' } },
+      ]);
+      expect(callBody.max_tokens).toBe(1000);
       expect(result.success).toBe(true);
     });
 
@@ -277,7 +280,7 @@ describe('OpenAIService', () => {
       await service.analyzeImage('https://example.com/image.jpg');
 
       const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
-      expect(callBody.messages[0].content).toContain('Describe this image');
+      expect(callBody.messages[0].content[0]).toEqual({ type: 'text', text: 'Describe this image' });
     });
   });
 

@@ -5,7 +5,7 @@
     "appearanceTools": true,
     "layout": {
       "contentSize": "1200px",
-      "wideSize": "1440px"
+      "wideSize": "1500px"
     },
     "color": {
       "custom": true,
@@ -16,31 +16,99 @@
       "defaultPalette": false,
       "link": true,
       "palette": [
-        { "name": "Concrete Black", "slug": "concrete-black", "color": "#0A0A0A" },
-        { "name": "Surface", "slug": "surface", "color": "#151515" },
-        { "name": "White", "slug": "white", "color": "#FFFFFF" },
-        { "name": "Text Secondary", "slug": "text-secondary", "color": "#CCCCCC" },
-        { "name": "Text Muted", "slug": "text-muted", "color": "#999999" },
-        { "name": "Border", "slug": "border", "color": "#2A2A2A" },
-        { "name": "Rose Gold", "slug": "rose-gold", "color": "#B76E79" },
-        { "name": "Signature Gold", "slug": "signature-gold", "color": "#D4AF37" },
-        { "name": "Black Rose Silver", "slug": "black-rose-silver", "color": "#C0C0C0" },
-        { "name": "Love Hurts Crimson", "slug": "love-hurts-crimson", "color": "#DC143C" }
+        {
+          "name": "Concrete Black",
+          "slug": "concrete-black",
+          "color": "#0A0A0A"
+        },
+        {
+          "name": "Surface",
+          "slug": "surface",
+          "color": "#111"
+        },
+        {
+          "name": "White",
+          "slug": "white",
+          "color": "#FFF"
+        },
+        {
+          "name": "Text Secondary",
+          "slug": "text-secondary",
+          "color": "#F5F5F0"
+        },
+        {
+          "name": "Text Muted",
+          "slug": "text-muted",
+          "color": "#B3B3B3"
+        },
+        {
+          "name": "Border",
+          "slug": "border",
+          "color": "#323232"
+        },
+        {
+          "name": "Rose Gold",
+          "slug": "rose-gold",
+          "color": "#B76E79"
+        },
+        {
+          "name": "Signature Gold",
+          "slug": "signature-gold",
+          "color": "#D4AF37"
+        },
+        {
+          "name": "Black Rose Silver",
+          "slug": "black-rose-silver",
+          "color": "#C0C0C0"
+        },
+        {
+          "name": "Love Hurts Crimson",
+          "slug": "love-hurts-crimson",
+          "color": "#EB4666"
+        }
       ]
     },
     "spacing": {
       "blockGap": true,
       "margin": true,
       "padding": true,
-      "units": [ "px", "rem", "em", "%", "vw", "vh" ],
+      "units": ["px", "rem", "em", "%", "vw", "vh"],
       "spacingSizes": [
-        { "name": "2XS", "slug": "2-xs", "size": "0.375rem" },
-        { "name": "XS", "slug": "xs", "size": "0.625rem" },
-        { "name": "Small", "slug": "small", "size": "1rem" },
-        { "name": "Medium", "slug": "medium", "size": "1.5rem" },
-        { "name": "Large", "slug": "large", "size": "2.5rem" },
-        { "name": "XL", "slug": "xl", "size": "4rem" },
-        { "name": "2XL", "slug": "2-xl", "size": "6rem" }
+        {
+          "name": "2XS",
+          "slug": "2-xs",
+          "size": "0.25rem"
+        },
+        {
+          "name": "XS",
+          "slug": "xs",
+          "size": "0.5rem"
+        },
+        {
+          "name": "Small",
+          "slug": "small",
+          "size": "1rem"
+        },
+        {
+          "name": "Medium",
+          "slug": "medium",
+          "size": "1.5rem"
+        },
+        {
+          "name": "Large",
+          "slug": "large",
+          "size": "2.5rem"
+        },
+        {
+          "name": "XL",
+          "slug": "xl",
+          "size": "4rem"
+        },
+        {
+          "name": "2XL",
+          "slug": "2-xl",
+          "size": "6rem"
+        }
       ]
     },
     "typography": {
@@ -54,66 +122,108 @@
       "textDecoration": true,
       "textTransform": true,
       "fontSizes": [
-        { "name": "Small", "slug": "small", "size": "clamp(0.8125rem, 0.79rem + 0.12vw, 0.875rem)" },
-        { "name": "Body", "slug": "body", "size": "clamp(1rem, 0.95rem + 0.2vw, 1.125rem)" },
-        { "name": "Lead", "slug": "lead", "size": "clamp(1.125rem, 1rem + 0.6vw, 1.5rem)" },
-        { "name": "Display Small", "slug": "display-small", "size": "clamp(1.75rem, 1.35rem + 2vw, 3.25rem)" },
-        { "name": "Display", "slug": "display", "size": "clamp(2.5rem, 1.6rem + 4.5vw, 6.5rem)" }
+        {
+          "name": "Small",
+          "slug": "small",
+          "size": "0.875rem"
+        },
+        {
+          "name": "Body",
+          "slug": "body",
+          "size": "1rem"
+        },
+        {
+          "name": "Lead",
+          "slug": "lead",
+          "size": "clamp(1.5rem, 2.4vw, 2.5rem)"
+        },
+        {
+          "name": "Display Small",
+          "slug": "display-small",
+          "size": "clamp(1.5rem, 2.4vw, 2.5rem)"
+        },
+        {
+          "name": "Display",
+          "slug": "display",
+          "size": "clamp(2rem, 4vw, 4rem)"
+        },
+        {
+          "name": "Monument",
+          "slug": "monument",
+          "size": "clamp(3rem, 7vw, 7rem)"
+        },
+        {
+          "name": "Commerce",
+          "slug": "commerce",
+          "size": "clamp(1rem, 1vw + 0.75rem, 1.25rem)"
+        },
+        {
+          "name": "Index",
+          "slug": "index",
+          "size": "0.75rem"
+        }
       ],
       "fontFamilies": [
         {
           "name": "Archivo",
           "slug": "archivo",
-          "fontFamily": "'Archivo', system-ui, sans-serif",
+          "fontFamily": "\"Archivo\", system-ui, sans-serif",
           "fontFace": [
             {
               "fontFamily": "Archivo",
               "fontStyle": "normal",
               "fontWeight": "100 900",
               "fontDisplay": "swap",
-              "src": [ "file:./assets/sot/fonts/archivo-latin.woff2" ]
+              "src": ["file:./assets/sot/fonts/archivo-latin.woff2"]
+            },
+            {
+              "fontFamily": "Archivo",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/derived/fonts/archivo-normal-width.woff2"]
             }
           ]
         },
         {
           "name": "Hanken Grotesk",
           "slug": "hanken-grotesk",
-          "fontFamily": "'Hanken Grotesk', 'Inter', sans-serif",
+          "fontFamily": "\"Hanken Grotesk\", \"Inter\", sans-serif",
           "fontFace": [
             {
               "fontFamily": "Hanken Grotesk",
               "fontStyle": "normal",
               "fontWeight": "100 900",
               "fontDisplay": "swap",
-              "src": [ "file:./assets/sot/fonts/hanken-grotesk-latin.woff2" ]
+              "src": ["file:./assets/sot/fonts/hanken-grotesk-latin.woff2"]
             }
           ]
         },
         {
           "name": "Anton",
           "slug": "anton",
-          "fontFamily": "'Anton', sans-serif",
+          "fontFamily": "\"Anton\", sans-serif",
           "fontFace": [
             {
               "fontFamily": "Anton",
               "fontStyle": "normal",
               "fontWeight": "400",
               "fontDisplay": "swap",
-              "src": [ "file:./assets/sot/fonts/anton-latin.woff2" ]
+              "src": ["file:./assets/sot/fonts/anton-latin.woff2"]
             }
           ]
         },
         {
           "name": "Cinzel",
           "slug": "cinzel",
-          "fontFamily": "'Cinzel', Georgia, serif",
+          "fontFamily": "\"Cinzel\", serif",
           "fontFace": [
             {
               "fontFamily": "Cinzel",
               "fontStyle": "normal",
               "fontWeight": "400 900",
               "fontDisplay": "swap",
-              "src": [ "file:./assets/sot/fonts/cinzel-latin.woff2" ]
+              "src": ["file:./assets/sot/fonts/cinzel-latin.woff2"]
             }
           ]
         }
@@ -127,21 +237,107 @@
     },
     "custom": {
       "motion": {
-        "house-ease": "cubic-bezier(.16, 1, .3, 1)",
+        "house-ease": "cubic-bezier(0.16, 1, 0.3, 1)",
         "fast": "180ms",
-        "standard": "600ms"
+        "standard": "420ms",
+        "slow": "900ms",
+        "micro": "180ms",
+        "interface": "420ms",
+        "editorial": "900ms",
+        "scene": "900ms",
+        "enter-ease": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "exit-ease": "cubic-bezier(0.4, 0, 1, 1)",
+        "expressive-ease": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "distance": "0.75rem",
+        "stagger": "40ms",
+        "commerce": "280ms",
+        "cinematic": "900ms",
+        "character": "700ms",
+        "reveal": "900ms",
+        "exit": "180ms",
+        "micro-ease": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "spring-ease": "cubic-bezier(0.2, 0.8, 0.2, 1)"
       },
       "focus": {
-        "color": "#D4AF37",
+        "color": "#f5f5f0",
         "width": "2px",
-        "offset": "3px"
+        "offset": "3px",
+        "inner": "#0a0a0a"
+      },
+      "layers": {
+        "content": "0",
+        "floating": "10",
+        "commerce": "40",
+        "guide": "80",
+        "header": "100",
+        "scrim": "110",
+        "drawer": "120",
+        "navigation": "130",
+        "modal": "140",
+        "toast": "160",
+        "critical": "200",
+        "skip": "999"
+      },
+      "controls": {
+        "size": "3rem",
+        "target": "2.75rem",
+        "border": "#808080"
+      },
+      "layout": {
+        "reading": "60ch",
+        "commerce": "42rem",
+        "gap": "clamp(1rem, 2vw, 2rem)"
+      },
+      "typeRoles": {
+        "monument": {
+          "size": "clamp(3rem, 7vw, 7rem)",
+          "family": "\"Archivo\", system-ui, sans-serif",
+          "leading": "0.94"
+        },
+        "display": {
+          "size": "clamp(2rem, 4vw, 4rem)",
+          "family": "\"Archivo\", system-ui, sans-serif",
+          "leading": "1"
+        },
+        "editorial": {
+          "size": "clamp(1.5rem, 2.4vw, 2.5rem)",
+          "family": "\"Archivo\", system-ui, sans-serif",
+          "leading": "1.12"
+        },
+        "commerce": {
+          "size": "clamp(1rem, 1vw + 0.75rem, 1.25rem)",
+          "family": "\"Hanken Grotesk\", \"Inter\", sans-serif",
+          "leading": "1.35"
+        },
+        "body": {
+          "size": "1rem",
+          "family": "\"Hanken Grotesk\", \"Inter\", sans-serif",
+          "leading": "1.6"
+        },
+        "utility": {
+          "size": "0.875rem",
+          "family": "\"Anton\", sans-serif",
+          "leading": "1.4"
+        },
+        "index": {
+          "size": "0.75rem",
+          "family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+          "leading": "1.4"
+        }
+      },
+      "materials": {
+        "paper": "#161616",
+        "ink": "#0a0a0a",
+        "glass": "rgba(12, 12, 12, 0.96)",
+        "metal": "#b76e79",
+        "atmosphere": "rgba(0, 0, 0, 0.24)"
       }
     }
   },
   "styles": {
     "color": {
       "background": "var(--wp--preset--color--concrete-black)",
-      "text": "var(--wp--preset--color--white)"
+      "text": "var(--wp--preset--color--text-secondary)"
     },
     "spacing": {
       "blockGap": "var(--wp--preset--spacing--medium)"
@@ -149,13 +345,13 @@
     "typography": {
       "fontFamily": "var(--wp--preset--font-family--hanken-grotesk)",
       "fontSize": "var(--wp--preset--font-size--body)",
-      "lineHeight": "1.65"
+      "lineHeight": "1.6"
     },
     "elements": {
       "button": {
         "color": {
           "background": "var(--wp--preset--color--rose-gold)",
-          "text": "var(--wp--preset--color--white)"
+          "text": "var(--wp--preset--color--concrete-black)"
         },
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--anton)",

@@ -23,13 +23,13 @@ numpy>=1.26
 # --- Background removal (optional but recommended) ---
 # rembg pulls onnxruntime; pin a lighter wheel for slim images.
 rembg>=2.0.77
-onnxruntime>=1.26.0
+onnxruntime>=1.30.0
 
 # --- USDZ export (optional, iOS AR) ---
 # Pick one of:
 #   - usd-core (Python, partial GLB→USDZ support)
 #   - usd_from_gltf (Google's C++ CLI, install via brew/apt)
-usd-core>=26.5; platform_system != "Windows"
+usd-core>=26.8; platform_system != "Windows"
 
 # --- Replicate backend (optional) ---
 replicate>=1.0.7

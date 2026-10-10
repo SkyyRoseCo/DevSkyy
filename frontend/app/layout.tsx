@@ -40,8 +40,8 @@ export default function RootLayout({
           <MascotBubble />
         </Suspense>
         <SyncStatusToast />
-        <Analytics />
-        <SpeedInsights />
+        {process.env.VERCEL && <Analytics />}
+        {process.env.VERCEL && <SpeedInsights />}
       </body>
     </html>
   )

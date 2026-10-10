@@ -1,223 +1,95 @@
 # SkyyRose Flagship 2 — scoped context
 
-**Status: in staging. Will replace `skyyrose-flagship` (v1) on skyyrose.co when
-approved.** **Theme Name:** SkyyRose Flagship 2 | **Text Domain:**
-`skyyrose-flagship-2` **@package:** SkyyRoseFlagship2 | **Version constant:**
-`SKYYROSE2_VERSION` (currently `2.4.4`)
+**This is the V2 theme. Folder name `skyyrose-flagship-2` (never `-v2`).**
+**Theme Name:** SkyyRose Flagship 2 | **Text Domain:** `skyyrose-flagship-2` | **PHPCS:** `phpcs.xml` (text domain `skyyrose-flagship-2`, prefix `skyyrose2`)
 
-Directory layout is derivable via `ls`/`find` — not duplicated here.
+The V1 theme ("SkyyRose", text domain `skyyrose`, `SKYYROSE_VERSION`) is `../skyyrose-flagship/` with its
+own `CLAUDE.md`; it builds from `wordpress-theme/package.json` and is not the deploy target. Nothing in
+that folder's build or lint tooling applies here.
 
-## Theme architecture
+`[live 2026-09-18]`: skyyrose.co serves this lineage at v2.3.1 inside folder `skyyrose-flagship`;
+staging https://staging-7e48-skyyrose.wpcomstaging.com serves folder `skyyrose-flagship-2` at v2.4.4
+(`staging.skyyrose.co` does not resolve). After cutover production runs folder `skyyrose-flagship-2`.
 
-Classic PHP theme + `theme.json`. WooCommerce is the **sole authority** for
-products, variations, price, inventory, cart, checkout, and payment state. The
-theme never manufactures a product fallback or invents inventory.
+## Version triple — `SKYYROSE2_VERSION`
 
-| Surface           | Source of truth            | Notes                                               |
-| ----------------- | -------------------------- | --------------------------------------------------- |
-| Homepage          | `front-page.php`           | No `front-page.html` — keeps cinematic PHP routing  |
-| Collection worlds | `template-collection.php`  | Shared shell; collection slug drives content        |
-| Immersive worlds  | `template-immersive-*.php` | One per collection                                  |
-| Generic pages     | `page.php`, `index.php`    | Classic hierarchy                                   |
-| WooCommerce       | `woocommerce/*.php`        | Classic WC overrides — hooks only, never core edits |
+Bump all three to one value before any deploy that changed shipped CSS/JS/PHP:
 
-**Do not** add `/templates/index.html` — it converts to a block theme and
-bypasses every PHP template and WooCommerce override.
+- `functions.php:10` — `define( 'SKYYROSE2_VERSION', … )`; asset `?ver=` is this constant plus a per-file
+  content hash (`functions.php` ~173-177), so a stale constant still ships stale-cached assets.
+- `style.css` — `Version:`
+- `readme.txt` — `Stable tag:`
 
-## PHP conventions
+`CHANGELOG.md` records what each version shipped.
 
-- Prefix: **`skyyrose2_`** — never use `skyyrose_` (that's the v1 theme)
-- Namespace tag: `@package SkyyRoseFlagship2`
-- ABSPATH guard on every file: `defined( 'ABSPATH' ) || exit;`
-- Escape: `esc_html()` / `esc_attr()` / `esc_url()` / `wp_kses_post()`
-- Sanitize: `sanitize_text_field()` / `absint()`
-- Always `$wpdb->prepare()` — never concatenate untrusted input
-- Nonce + capability check on every write action
-- No `innerHTML` in JS — `createElement` + `textContent`
-
-PHPCS standard: `phpcs.xml` in theme root. Run from this directory:
+## Build commands run from THIS folder (own `package.json`, not the parent's)
 
 ```bash
-find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l
+cd wordpress-theme/skyyrose-flagship-2 && npm install   # devDependencies: clean-css, terser
+npm run build            # build:registry + build:assets + build:i18n
+npm run build:assets     # node scripts/build-assets.mjs — deterministic source → .min for assets/css + assets/js
+npm run check:assets     # --check: every .min byte-identical to a fresh build (fails on drift)
+npm run check:registry   # data/product-presentation-registry.json current
+npm run check:i18n       # languages/ .pot current
+npm run lint:php         # php -l on every .php
+../skyyrose-flagship/vendor/bin/phpcs --standard=phpcs.xml -s .   # PHPCS with THIS theme's phpcs.xml; no vendor/ here — the V1 theme's composer install supplies the binary (.claude/hooks/phpcs-on-write.sh does this per edit)
+npm run verify           # bash scripts/verify-marketplace.sh — php -l, jq on data/*.json, font provenance hashes
+npm run verify:workspace # bash scripts/verify-v2-workspace.sh (--strict via verify:workspace:strict)
+npm run package:theme    # bash scripts/package-theme.sh — build + verify + dist/skyyrose-flagship-2.zip
+bash scripts/verify-v2-candidate.sh   # route/attestation gate (needs .fashion-theme/founder-rights-attestation-2026-08-26.json at repo root)
 ```
 
-## Build commands (run from THIS directory — has its own package.json)
+Production serves `.min` (`functions.php:127` switches on `SCRIPT_DEBUG`; map at `functions.php:137-139`).
+After ANY edit under `assets/css/` or `assets/js/`, run `npm run build:assets` or the change is inert live;
+`npm run check:assets` is the drift gate. Never edit a `.min` file directly.
+
+`build:registry` (`scripts/build-product-presentation-registry.py`) reads
+`wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`, which is a generated projection of the ONE
+product SOT `wordpress-theme/skyyrose-flagship/data/logo-registry.json` (read via
+`from skyyrose.core.product import get_product`). Fix product facts in the registry, run
+`python scripts/sync_product_registry.py`, then rebuild here — never edit the CSV or
+`data/product-presentation-registry.json` by hand.
+
+## Layout facts
+
+- Classic PHP theme: `front-page.php`, `home.php`, `page.php`, `single.php`, `archive.php`, `search.php`,
+  `404.php`, `page-wishlist.php`, `template-collection.php`, four `template-immersive-*.php`,
+  `woocommerce/` overrides, `template-parts/`. Modules in `inc/`: `demo-import.php`, `marketplace.php`,
+  `performance.php`, `presentation-registry.php`, `security.php`, `seo-indexing.php`, `starter-content.php`.
+- Routes (from `README.md`): `/collections/<slug>/`, `/worlds/<slug>/`, `/pre-order/`, `/about/`,
+  `/journal/`, `/wishlist/`, policy pages, WooCommerce shop/bag/checkout/account. `[live 2026-09-18]`:
+  staging answers `/collections/signature/` 200 and 302s `/collection-signature/` to it; production
+  (2.3.1) still answers the V1-style `/collection-signature/` and 404s `/collections/signature/`.
+- Data: `data/product-presentation-registry.json` (generated), `data/font-provenance.json`,
+  `data/image-optimization.json`, `data/opening-product-media.json`, `data/brand-asset-transparency.json`.
+- WooCommerce is the sole authority for product, price, inventory, cart, checkout, order state; the demo
+  importer (`inc/demo-import.php`) creates pages, never products.
+
+## WordPress rules (same bar as V1)
+
+- Extend via hooks, never modify core · escape output (`esc_html()`, `esc_attr()`, `esc_url()`,
+  `wp_kses_post()`) · sanitize input · `$wpdb->prepare()` · nonce + capability on every write · no
+  `innerHTML` in JS · text domain `skyyrose-flagship-2` on every i18n call (PHPCS `text_domain` in
+  `phpcs.xml`; never the V1 theme's `.phpcs.xml`, whose domain is `skyyrose`).
+- API: `index.php?rest_route=` NOT `/wp-json/`.
+
+## Deploy — always STOP-AND-SHOW, always through the wrappers
+
+**BLOCKED until PR #918 lands — both wrappers refuse a `skyyrose-flagship-2` source, `--dry-run`
+included.** One-shot flags `--allow-new-theme-folder` / `--allow-theme-identity-change` replace exporting
+`ALLOW_NEW_THEME_FOLDER` / `ALLOW_THEME_IDENTITY_CHANGE` (inherited exports are refused); the env file's
+`SSH_USER` must be `<first label of the PUBLIC_URL host>.wordpress.com` and `SFTP_USER` must equal it;
+`.env.wordpress.staging` carries `SFTP_*` as literal copies of its `SSH_*` (one WP.com credential).
 
 ```bash
-cd wordpress-theme/skyyrose-flagship-2
-
-npm ci # install pinned build tools (npm-shrinkwrap.json)
-
-npm run build # full build: registry + assets + i18n
-#  build:registry → python3 scripts/build-product-presentation-registry.py
-#  build:assets   → node scripts/build-assets.mjs   (CSS + JS → .min siblings)
-#  build:i18n     → python3 scripts/build-pot.py
-
-npm run lint:php         # PHP syntax check (all .php, excluding vendor/)
-npm run verify           # full marketplace gate → scripts/verify-marketplace.sh
-npm run verify:workspace # candidate provenance + SOT gap check
-npm run verify:workspace:strict
-npm run package:theme # build + verify → dist/skyyrose-flagship-2.zip
+bash scripts/deploy-staging.sh [--dry-run]      # env .env.wordpress.staging → staging-7e48-skyyrose.wpcomstaging.com
+bash scripts/deploy-production.sh [--dry-run]   # env .env.wordpress → skyyrose.co; refuses until WP_THEME_PATH names the -2 folder
 ```
 
-**Parity checks (write nothing, exit 1 on drift):**
-
-```bash
-node scripts/build-assets.mjs --check
-python3 scripts/build-product-presentation-registry.py --check
-python3 scripts/build-pot.py --check
-```
-
-## Co-change rules (hard)
-
-### 1. Source CSS/JS → .min rebuild (always)
-
-`.min` siblings live next to every source file. After any CSS or JS edit:
-
-```bash
-node scripts/build-assets.mjs
-```
-
-Then verify: `node scripts/build-assets.mjs --check`
-
-**Critical:** the global repo `.gitignore` excludes `*.min.css` and `*.min.js`.
-Force-add every `.min` file:
-
-```bash
-git add -f assets/css/theme.min.css assets/js/theme.min.js
-```
-
-A clean checkout is NOT release-ready without the force-tracked `.min` files.
-
-### 2. Version triple — same rule as v1, different constant
-
-Any version bump must touch all three in one commit:
-
-```
-functions.php   ← SKYYROSE2_VERSION constant
-style.css       ← Version: header
-readme.txt      ← Stable tag
-```
-
-Commit: `chore(theme): bump version triple to X.Y.Z`
-
-### 3. Generated data files — commit with their source
-
-These four files are always rebuilt and committed when their inputs change:
-
-| Generated file                            | Source / trigger                                 |
-| ----------------------------------------- | ------------------------------------------------ |
-| `data/product-presentation-registry.json` | `scripts/build-product-presentation-registry.py` |
-| `data/font-provenance.json`               | Manually maintained; SHA256-locked per font      |
-| `data/image-optimization.json`            | Manually maintained                              |
-| `data/opening-product-media.json`         | Manually maintained                              |
-
-### 4. Font changes → SHA256 update in data/font-provenance.json
-
-`verify-marketplace.sh` checks every registered page font's `sha256` field. A
-mismatch fails the gate. Update the hash whenever a font file changes.
-
-## Asset authority
-
-`assets/sot/` is **self-contained** — it does NOT pull from the repo-root
-`sot-images.json` or `assets/products/`. All theme-local SOT assets live here:
-
-```
-assets/sot/
-├── brand/          # lockup images, wordmarks
-├── branding/       # collection branding assets
-├── fonts/          # page typography (license-locked via font-provenance.json)
-├── images/
-│   ├── hero/       # full-bleed heroes; must have 640w, 1024w, 1440w webp ≤ 260KB each
-│   └── logos/      # monogram, rose, cluster assets
-└── video/          # editorial video
-
-assets/approved-card-fronts/<sku>-onmodel.webp  # candidate-bound; needs SOT dossier
-assets/card-scenes/<sku>-onmodel.webp           # editorial scene backgrounds
-assets/scroll-world/                            # immersive world assets
-assets/models/skyy-mascot.glb                   # Draco-compressed; keep DRACOLoader wiring
-```
-
-Hero derivative rule: every base hero must exist at **640w, 1024w, and 1440w**
-webp; each file must be **≤ 260 KB**. `verify-marketplace.sh` enforces both.
-
-Adding a card front: provide `assets/approved-card-fronts/<sku>-onmodel.webp`
-AND update the matching SOT dossier. A filename alone is not proof of identity.
-
-## Mascot (assets/models/skyy-mascot.glb)
-
-- Draco-compressed — `skyy-3d.js` MUST keep its DRACOLoader wiring or the model
-  fails silently
-- Clips required: `idle`, `walk`; optional: `wave`, `point`, `talk`, `joy`
-- `mascot.js` emits `skyy:*` CustomEvents; `skyy-3d.js` maps them to clips
-- Mounts via `template-parts/skyy-mascot.php`; excluded from checkout pages
-
-## inc/ module load order (functions.php)
-
-```
-inc/marketplace.php        ← demo importer (idempotent; never creates products)
-inc/performance.php        ← resource hints, lazy loading, LCP preloads
-inc/seo-indexing.php       ← structured data, OG/Twitter, canonical
-inc/security.php           ← CSP, nonce, auth hardening
-inc/demo-import.php        ← page/menu provisioning (admin; runs once)
-inc/presentation-registry.php ← product-presentation adapter (no prices/stock)
-```
-
-The demo importer is idempotent: reuses existing page paths, never deletes
-content, never overwrites merchant-authored pages, never replaces a populated
-menu.
-
-## Marketplace handoff gates (must all pass before dist/)
-
-| Gate                | Command                                                     |
-| ------------------- | ----------------------------------------------------------- |
-| PHP syntax          | `npm run lint:php`                                          |
-| JSON validity       | `jq empty` on all `data/*.json`                             |
-| Font license SHA256 | `verify-marketplace.sh` (auto-checked)                      |
-| Asset parity        | `node scripts/build-assets.mjs --check`                     |
-| Registry freshness  | `build-product-presentation-registry.py --check`            |
-| POT freshness       | `build-pot.py --check`                                      |
-| Hero derivatives    | 3 breakpoints × every hero base, ≤ 260KB                    |
-| Transparency        | `python3 scripts/verify-image-transparency.py <asset>`      |
-| Viewport review     | 390, 768, 1440 px — visual + keyboard + screen-reader       |
-| WooCommerce flows   | simple + variable products, cart, checkout failure/recovery |
-| Lighthouse          | Performance + accessibility audit                           |
-
-## Promotion path (staging → production)
-
-V2 is packaged as a distributable ZIP and validated in staging before replacing
-v1:
-
-```
-1. npm run package:theme          # build + verify → dist/skyyrose-flagship-2.zip
-2. Upload ZIP to staging WP install; activate
-3. Full QA pass (viewports, WC flows, Lighthouse, a11y)
-4. Founder approval
-5. STOP-AND-SHOW: deploy ZIP to skyyrose.co (replaces skyyrose-flagship)
-6. Deactivate / archive skyyrose-flagship (v1)
-```
-
-**Deploy is STOP-AND-SHOW.** The promotion to skyyrose.co is irreversible from a
-caching perspective — version bump must accompany every deploy so CDN cache
-busts. Until the founder confirms approval and triggers the deploy, V2 only runs
-in staging.
-
-Once promoted, `SKYYROSE2_VERSION` becomes the cache-bust constant for all
-enqueue calls on skyyrose.co — the same role `SKYYROSE_VERSION` plays in v1.
-
-## What this theme is NOT (yet)
-
-- Not live on skyyrose.co yet — currently in staging (v1 is still production)
-- Not a product catalog — WooCommerce owns all product facts
-- Not a media generator — all imagery requires candidate-bound SOT provenance
-- No payment / tax / shipping config — merchant configures those independently
-
-## Anti-patterns
-
-- Using `skyyrose_` prefix in V2 PHP (that's v1 — they must not cross)
-- Committing `.min` files without `git add -f` (global gitignore drops them
-  silently)
-- Running `npm run verify` before `npm run build` (stale assets fail the check)
-- Adding a card front without a matching SOT dossier
-- Hardcoding a product fallback or inventing inventory in PHP templates
-- Editing WC core instead of using hooks and `woocommerce/*.php` overrides
+`scripts/deploy-theme.sh` is the engine and refuses direct runs; its preflight `check_theme_identity`
+refuses when the live theme's Name/Text Domain differs from this source. The engine does not yet support
+deploying `skyyrose-flagship-2` (PR #918's V2 deploy changes are a follow-up). Cutover = deploy +
+`wp theme activate skyyrose-flagship-2`, each its own STOP-AND-SHOW. Deploy is an atomic hot-swap:
+production ends up with exactly this tree — anything the source lacks is deleted live.
+`cd wordpress-theme && npm run deploy:staging[:dry]` / `deploy:production[:dry]` wrap the same two
+scripts; `bash scripts/verify-deploy.sh --env-file <env>` verifies the routes afterwards.

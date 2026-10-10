@@ -717,9 +717,9 @@ Both observed this session. `[repro]`
 - **Redirect-to-login from an API route.** A 302 to `/login` gets followed transparently by `fetch`,
   handing the caller an HTML page with status 200 that parses as success. API handlers must return
   **401 JSON**, never a redirect.
-- **Gating new routes via the edge matcher.** `frontend/proxy.ts` (`config.matcher`) is legacy and
-  slated for removal — gate with `withAuth()` per handler, not by extending the matcher. (bug-162
-  history: the admin-renders gate lived there.)
+- **Gating new routes via an edge matcher.** There is none: `frontend/proxy.ts` (`config.matcher`)
+  was removed 2026-07-28 — gate with `withAuth()` per handler (`frontend/lib/api-auth.ts`), never by
+  adding a proxy or `middleware.ts`. (bug-162 history: the admin-renders gate lived in that matcher.)
 - **In-memory state on serverless.** The `RateLimiter` and `JobQueue` patterns above hold state in a
   per-process `Map` — on Vercel each instance has its own, reset on every cold start. Single
   long-lived Node process only; serverless needs Redis or a real queue.

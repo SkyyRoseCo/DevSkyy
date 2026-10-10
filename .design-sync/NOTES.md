@@ -36,7 +36,7 @@ The converter copies woff2 files and the @font-face CSS into `ds-bundle/fonts/`.
 ## Canon font set (11 woff2 files, 8 families)
 
 Only fonts referenced by DS components or tokens are included. Provenance:
-- `wordpress-theme/skyyrose-flagship/data/collections/<slug>/identity.json` `fonts` key
+- `wordpress-theme/skyyrose-flagship/data/logo-registry.json` → `collections.<slug>.fonts`
   blesses: Cinzel (caps), Hanken Grotesk (body), per-collection name-scripts —
   Black Rose=SkyyRose Black Rose Script, Love Hurts=SkyyRose Love Hurts Graffiti,
   Signature=Pinyon Script, Kids Capsule=Grand Hotel

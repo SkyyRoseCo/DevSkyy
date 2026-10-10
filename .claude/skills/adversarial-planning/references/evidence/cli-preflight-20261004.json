@@ -1,0 +1,64 @@
+{
+  "evidence_class": "HISTORICAL_OBSERVED",
+  "observed_at": "2026-10-04",
+  "environment": {
+    "host_scope": "local macOS Codex host",
+    "repository": "/Users/theceo/DevSkyy",
+    "permitted_scope": "CLI version, authentication status, Codex doctor readiness, and effective configuration only"
+  },
+  "authentication": {
+    "claude_code": {
+      "logged_in": true,
+      "auth_method": "claude.ai",
+      "email": "REDACTED",
+      "organization_id": "REDACTED",
+      "scope": "claude auth status --json only; no model request"
+    },
+    "codex": {
+      "doctor_auth_credentials_status": "ok",
+      "scope": "codex doctor --json readiness check; no model request"
+    }
+  },
+  "claude_model_alias": {
+    "evidence_class": "HISTORICAL_OBSERVED",
+    "command": "claude --help",
+    "accepted_option": "--model <model>",
+    "aliases_listed": ["fable", "opus", "sonnet"],
+    "scope": "local CLI help only; no model request"
+  },
+  "versions": {
+    "claude_code": "2.1.288 (Claude Code)",
+    "codex_cli": "codex-cli 0.155.1"
+  },
+  "effective_codex_model": {
+    "model": "gpt-6.1-sol",
+    "source": "user config model",
+    "provider": "OpenAI Codex CLI",
+    "override_passed_to_codex_exec": false
+  },
+  "codex_doctor": {
+    "overall_status": "fail",
+    "exit_code": 1,
+    "critical_checks": {
+      "auth.credentials": "ok",
+      "config.load": "ok",
+      "installation": "ok",
+      "network.provider_reachability": "ok",
+      "runtime.provenance": "ok"
+    },
+    "only_failed_check": {
+      "id": "terminal.env",
+      "status": "fail",
+      "summary": "TERM=dumb - colors and cursor control are disabled"
+    },
+    "environment": {
+      "TERM": "dumb",
+      "noninteractive": true
+    },
+    "classifier_result": "READY_WITH_SOLE_NONBLOCKING_TERMINAL_EXCEPTION"
+  },
+  "limitations": [
+    "This receipt is a historical local readiness observation, not a model invocation.",
+    "It does not prove a future session, other account, Workflow runtime, image provider, media approval, or deployment."
+  ]
+}

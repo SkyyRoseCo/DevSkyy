@@ -130,7 +130,7 @@ class TryOnAgent(BaseSuperAgent):
 
         # Real FASHN dispatch
         try:
-            async with FashnClient.from_env() as client:
+            async with FashnClient.from_default() as client:
                 fashn_result = await client.run_tryon(
                     model_image_url=model_image_path,
                     garment_image_url=garment_image_path,

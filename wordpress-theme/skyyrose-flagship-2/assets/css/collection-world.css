@@ -1,0 +1,98 @@
+/** Collection worlds — Arrival → Chapters → Scroll World → Edit → Story → Colophon.
+ * Composes the theme.css primitives (.sr2-arrival, .sr2-chapter, .sr2-band, type roles);
+ * never redefines them. No new font, scene, animation or JavaScript dependency.
+ */
+.sr2-collection-world { color: var(--sr2-color-text); background: var(--sr2-surface-page); }
+.sr2-collection-world .sr2-commerce-notices { padding-inline: var(--sr2-page-pad); }
+.sr2-collection-world .sr2-commerce-notices:empty { display: none; }
+.sr2-collection-world :is(#world, #shop, #origin) { scroll-margin-top: calc(var(--sr2-header) + var(--sr2-space-4)); }
+/* Utility index label shared with the home arrival (template-parts/home/editorial-hero.php). */
+.sr2-world-index { margin: 0; color: var(--sr2-color-text-muted); font: 400 var(--sr2-type-index)/var(--sr2-leading-utility) var(--sr2-font-index); letter-spacing: var(--sr2-tracking-index); text-transform: uppercase; }
+
+/* Arrival: the monument scene is the structure; the lockup is the title. */
+.sr2-world-arrival__title { margin: 0; }
+/* From 48em the monument in the approved scene is the title; the lockup would render the same mark twice. */
+@media (min-width: 48em) { .sr2-world-arrival__title--in-scene .sr2-arrival__lockup { display: none; } }
+.sr2-arrival__lockup--mark { width: auto; height: clamp(5rem, 9vw, 7.5rem); }
+.sr2-world-arrival .sr2-lede { color: var(--sr2-ink); }
+.sr2-world-arrival .sr2-eyebrow { margin: 0; }
+.sr2-world-arrival .sr2-editorial-link { color: var(--sr2-ink); }
+.sr2-world-arrival [data-recovery-hero-video] { object-position: var(--sr2-focal); }
+
+/* Chapters: full-bleed scene, then the founder's label and copy on the void. */
+.sr2-world-chapter .sr2-chapter__copy > .sr2-lede { max-width: 44ch; }
+.sr2-world-chapter__actions { display: flex; flex-wrap: wrap; gap: var(--sr2-space-3) var(--sr2-space-6); margin-top: var(--sr2-space-2); }
+.sr2-world-chapter__aside { display: grid; gap: var(--sr2-space-4); align-content: start; padding-top: var(--sr2-space-2); }
+.sr2-world-chapter__statement { max-width: 20ch; margin: 0; font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; }
+
+/* Edit: garment-led grid on #111 tiles, unframed; native Woo actions stay native. */
+.sr2-world-edit { border-top: 1px solid var(--sr2-line-soft); }
+.sr2-world-products { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sr2-space-10) var(--sr2-grid-gap); }
+.sr2-world-products > .sr2-c-editorial-card { min-width: 0; height: 100%; border: 0; background: transparent; }
+.sr2-world-products .sr2-c-editorial-card__media,
+.sr2-world-products .sr2-c-editorial-card[data-card-frame="v2-statue"] .sr2-c-editorial-card__media { height: auto; aspect-ratio: 3 / 4; container-type: normal; background: var(--sr2-card); }
+.sr2-world-products .sr2-c-editorial-card__photo-window,
+.sr2-world-products .sr2-c-editorial-card[data-card-frame="v2-statue"] .sr2-c-editorial-card__photo-window { position: static; inset: auto; width: 100%; height: 100%; }
+.sr2-world-products .sr2-c-editorial-card .sr2-c-editorial-card__media .sr2-c-editorial-card__product-image { aspect-ratio: auto; object-fit: contain; object-position: center; }
+.sr2-world-products :is(.sr2-c-editorial-card__frame, .sr2-c-editorial-card__frame-label, .sr2-c-editorial-card__nameplate, .sr2-c-editorial-card__reference) { display: none; }
+.sr2-world-products .sr2-c-editorial-card__body { gap: var(--sr2-space-2); padding: var(--sr2-space-4) 0 0; }
+.sr2-world-products .sr2-c-editorial-card .sr2-c-editorial-card__title { font: 500 var(--sr2-type-body)/var(--sr2-leading-commerce) var(--sr2-font-body); }
+.sr2-world-products .sr2-c-editorial-card__commerce { padding: 0; }
+.sr2-world-products .sr2-c-editorial-card .sr2-c-editorial-card__price { color: var(--sr2-color-text-muted); font-weight: 400; }
+.sr2-world-products .sr2-c-editorial-card__actions { gap: var(--sr2-space-4); margin-top: var(--sr2-space-2); }
+.sr2-world-products .sr2-c-editorial-card .sr2-c-editorial-card__actions :is(.button, .sr2-c-editorial-card__quick-view) { flex: 0 1 auto; min-height: var(--sr2-target-size); padding: var(--sr2-space-2) 0; border: 0; border-bottom: 1px solid var(--sr2-border-solid); border-radius: 0; color: var(--sr2-ink); background: transparent; font: 500 0.75rem/1.35 var(--sr2-font-body); letter-spacing: 0.14em; text-decoration: none; text-transform: uppercase; }
+.sr2-world-products .sr2-c-editorial-card .sr2-c-editorial-card__actions :is(.button, .sr2-c-editorial-card__quick-view):is(:hover, :focus-visible) { border-color: var(--sr2-color-action); color: var(--sr2-color-action); background: transparent; }
+.sr2-world-empty { display: grid; gap: var(--sr2-space-4); justify-items: start; }
+
+/* Story: collection code beside the lookbook garment, then the invitation. */
+.sr2-world-origin { border-top: 1px solid var(--sr2-line-soft); }
+.sr2-world-origin .sr2-chapter__copy > .sr2-world-origin__statement { color: var(--sr2-ink); }
+.sr2-world-origin__invitation { display: grid; gap: var(--sr2-space-3); justify-items: start; margin-top: var(--sr2-space-6); padding-top: var(--sr2-space-6); border-top: 1px solid var(--sr2-line); }
+.sr2-world-origin__invitation-title { margin: 0; font: 600 var(--sr2-type-editorial)/var(--sr2-leading-editorial) var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); text-wrap: balance; }
+.sr2-world-origin__look { display: grid; gap: var(--sr2-space-3); margin: 0; }
+.sr2-world-origin__look img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; background: var(--sr2-card); }
+.sr2-world-origin__look figcaption { margin: 0; color: var(--sr2-color-text-muted); }
+
+/* Black Rose / Jersey Series: an authored chapter, not an interchangeable product row. */
+.sr2-town-line { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 3rem) var(--sr2-grid-gap); padding: var(--sr2-band-pad) var(--sr2-page-pad); border-top: 1px solid var(--sr2-line-soft); }
+.sr2-town-line__head { display: grid; grid-column: 1 / span 5; gap: var(--sr2-space-4); align-content: start; min-width: 0; }
+.sr2-town-line__head > p { margin: 0; }
+.sr2-town-line__directory { grid-column: 7 / -1; min-width: 0; padding: 0; margin: 0; list-style: none; border-top: 1px solid var(--sr2-line); }
+.sr2-town-line__directory li { padding: 0; margin: 0; border-bottom: 1px solid var(--sr2-line); }
+.sr2-town-line__directory a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--sr2-space-1) var(--sr2-space-4); min-height: var(--sr2-target-size); padding-block: var(--sr2-space-4); color: var(--sr2-color-text); text-decoration: none; }
+.sr2-town-line__sku { grid-column: 1; color: var(--sr2-color-text-muted); font: 400 var(--sr2-type-index)/var(--sr2-leading-utility) var(--sr2-font-index); letter-spacing: var(--sr2-tracking-index); }
+.sr2-town-line__name { grid-column: 1; min-width: 0; font: 500 var(--sr2-type-commerce)/var(--sr2-leading-commerce) var(--sr2-font-body); overflow-wrap: anywhere; }
+.sr2-town-line__arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--sr2-color-action); font-size: var(--sr2-type-editorial); }
+.sr2-town-line__directory a:is(:hover, :focus-visible) .sr2-town-line__name { color: var(--sr2-color-action); text-decoration: underline; text-underline-offset: .25em; }
+
+/* Colophon: the next world, then the quiet house index. */
+.sr2-world-next { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 3rem) var(--sr2-grid-gap); border-top: 1px solid var(--sr2-line-soft); }
+.sr2-world-next__lead { display: grid; grid-column: 1 / span 7; gap: var(--sr2-space-4); min-width: 0; }
+.sr2-world-next__lead h2 a { text-decoration: none; }
+.sr2-world-next__lead h2 a:is(:hover, :focus-visible) { color: var(--sr2-color-action); }
+.sr2-world-index-nav { display: grid; grid-column: 9 / -1; align-content: start; align-self: end; min-width: 0; border-top: 1px solid var(--sr2-line); }
+.sr2-world-index-nav a { display: flex; gap: var(--sr2-space-4); min-height: var(--sr2-target-size); align-items: center; padding-block: var(--sr2-space-2); border-bottom: 1px solid var(--sr2-line); font: 500 var(--sr2-type-utility)/var(--sr2-leading-utility) var(--sr2-font-body); text-decoration: none; }
+.sr2-world-index-nav a span { min-width: var(--sr2-index-width); color: var(--sr2-color-text-muted); font-size: var(--sr2-type-index); }
+.sr2-world-index-nav a:is(:hover, :focus-visible) { color: var(--sr2-color-action); }
+.sr2-world-index-nav a[aria-current="page"] { color: var(--sr2-color-action); text-decoration: underline; text-underline-offset: .3em; }
+
+@media (min-width: 48em) {
+	.sr2-world-products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 64em) {
+	.sr2-world-products { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 90em) {
+	.sr2-world-products { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 63.99em) {
+	.sr2-town-line__head, .sr2-town-line__directory, .sr2-world-next__lead, .sr2-world-index-nav { grid-column: 1 / -1; }
+	.sr2-world-index-nav { align-self: start; }
+}
+@media (max-width: 47.99em) {
+	.sr2-world-arrival { --sr2-focal: var(--sr2-focal-mobile, 50% 50%); }
+	.sr2-arrival__lockup--mark { height: clamp(4rem, 18vw, 5.5rem); }
+	.sr2-world-arrival .sr2-arrival__actions { width: 100%; }
+	.sr2-world-arrival .sr2-control--primary { flex: 1 1 100%; }
+	.sr2-world-chapter__statement { max-width: none; }
+}

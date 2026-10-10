@@ -14,13 +14,13 @@ origin: ECC
 - When the UI looks "off" but you can't pinpoint why
 - Reviewing PRs that touch styling
 
-**When NOT to use:** on skyyrose.co the token system already exists and is canon — `wordpress-theme/skyyrose-flagship/theme.json` plus per-collection `data/collections/<slug>/identity.json`. Audit mode applies there; **generate mode does not**. Generating a parallel token set for a surface that already has one is the single most damaging outcome of this skill. For SkyyRose taste calls (restraint, motion, imagery) use `luxury-design-taste`; for framework-grounded implementation use `frontend-design`.
+**When NOT to use:** on skyyrose.co the token system already exists and is canon — `wordpress-theme/skyyrose-flagship/theme.json` plus the per-collection identity in `data/logo-registry.json` → `collections.<slug>`. Audit mode applies there; **generate mode does not**. Generating a parallel token set for a surface that already has one is the single most damaging outcome of this skill. For SkyyRose taste calls (restraint, motion, imagery) use `luxury-design-taste`; for framework-grounded implementation use `frontend-design`.
 
 ## Inputs
 
 | Input | Where | If absent |
 |---|---|---|
-| Existing token source | `theme.json`, `tokens.css`, `design-tokens.css`, `tailwind.config.*`, `data/collections/*/identity.json` | Search first with the census command below. **If tokens exist, generate mode is off** — switch to audit |
+| Existing token source | `theme.json`, `tokens.css`, `design-tokens.css`, `tailwind.config.*`, `data/logo-registry.json` (`collections`) | Search first with the census command below. **If tokens exist, generate mode is off** — switch to audit |
 | The stylesheets to audit | the repo's real CSS/SCSS/TSX, excluding built `.min`/`dist` output | Stop — auditing build output reports the compiler's opinion, not the author's |
 | Brand constraints doc | `CLAUDE.md`, `.impeccable.md`, `docs/brand/*` | Stop — an audit with no target palette can only report "it is what it is" |
 | Target contrast level | WCAG 2.2 AA unless the project states higher | Default AA; state that you defaulted |
@@ -84,7 +84,7 @@ Identifies generic AI-generated design patterns:
 3. Score the 10 audit dimensions. Every finding carries `file:line` and the intended value it deviates from. A score with no file:line is an opinion, not an audit.
 4. Measure contrast numerically for each text/background pair you flag (Verification #2). Never assert a ratio you did not compute.
 5. Run the slop-detection greps (Verification #3) rather than reading for vibes — the patterns have exact CSS signatures.
-6. If the codebase carries a generated-token pipeline, edit the **source** (`identity.json` on SkyyRose), never the generated artifact, then re-run the drift guard (Verification #4).
+6. If the codebase carries a generated-token pipeline, edit the **source** (the registry's `collections` entry on SkyyRose), never the generated artifact, then re-run the drift guard (Verification #4).
 7. For theme CSS, any accepted fix requires `cd wordpress-theme && npm run build` — production serves `.min`.
 
 ## Verification
@@ -95,7 +95,7 @@ Every check states its command, its pass condition, and its evidence scope.
 
 ```bash
 ls wordpress-theme/skyyrose-flagship/theme.json \
-   wordpress-theme/skyyrose-flagship/data/collections/*/identity.json 2>/dev/null
+   wordpress-theme/skyyrose-flagship/data/logo-registry.json 2>/dev/null
 ```
 
    **PASS (audit mode):** files listed → a system exists, do not generate a second one.
@@ -148,14 +148,14 @@ Inherited rules: a check that errors or times out produced an artifact, not a pa
 
 ## Examples
 
-**Audit an existing UI (real, this repo, 2026-07-28):**
+**Audit an existing UI (real, this repo; census re-run 2026-09-18, CSS counts 2026-07-28):**
 
 ```bash
-$ ls wordpress-theme/skyyrose-flagship/data/collections/*/identity.json
-wordpress-theme/skyyrose-flagship/data/collections/black-rose/identity.json
-wordpress-theme/skyyrose-flagship/data/collections/kids-capsule/identity.json
-wordpress-theme/skyyrose-flagship/data/collections/love-hurts/identity.json
-wordpress-theme/skyyrose-flagship/data/collections/signature/identity.json
+$ ls wordpress-theme/skyyrose-flagship/theme.json wordpress-theme/skyyrose-flagship/data/logo-registry.json
+wordpress-theme/skyyrose-flagship/data/logo-registry.json
+wordpress-theme/skyyrose-flagship/theme.json
+$ python -c "import json;print(sorted(json.load(open('wordpress-theme/skyyrose-flagship/data/logo-registry.json'))['collections']))"
+['black-rose', 'kids-capsule', 'love-hurts', 'signature']
 ```
 
 A token system exists → **generate mode is off**, audit only. Census then returned `478 #b76e79 · 146 #0a0a0a · 103 #d4af37 · 49 #050505 · 48 #ffffff · 46 #dc143c · 31 #c0c0c0 · 14 #2a2a2a` across 52 non-minified stylesheets — top ranks all declared tokens or neutral surface steps, so color-consistency scores high with no drift finding `[repo]`. The drift guard ran `24 passed, 1 skipped` `[test]`.
@@ -175,7 +175,7 @@ A token system exists → **generate mode is off**, audit only. Census then retu
 ## Failure modes
 
 - **Generating a parallel token system on top of an existing one.** The most damaging outcome; the two systems then fight forever. Check #1 exists to make this impossible — run it first, always.
-- **Editing a generated artifact.** On SkyyRose, `design-tokens.css` and `sot.json` are generated from `identity.json` (see `data/collections/README.md`). Editing the output means the next regeneration silently reverts your fix. Edit the source.
+- **Editing a generated artifact.** On SkyyRose, `design-tokens.css` and `sot.json` are generated from the registry's `collections` section (see `data/collections/README.md`). Editing the output means the next regeneration silently reverts your fix. Edit the source.
 - **Scoring contrast by eye.** `#DC143C` on `#0A0A0A` reads confident and measures 3.97:1 — below AA. Compute it (check #3).
 - **Auditing minified output.** `.min.css` is machine-formatted; findings there are noise. Filter with `grep -v '.min.css'` as every command above does.
 - **Reading a SKIP as green** — `test_verify_drift` skips in sparse worktrees (bug-257 class: sparse-checkout guards must skip narrowly and be reported, not swallowed). Name who closes it.

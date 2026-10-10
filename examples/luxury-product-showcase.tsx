@@ -102,7 +102,7 @@ export default function LuxuryProductShowcase() {
             variants={heroSubtitle}
             className="text-xl md:text-2xl text-gray-300 mb-12 tracking-widest"
           >
-            WHERE LOVE MEETS LUXURY
+            OAKLAND LUXURY STREETWEAR
           </motion.p>
 
           <motion.button

@@ -12,12 +12,11 @@ name: PR Intelligence Agent
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review, reopened]
-  issue_comment:
-    types: [created]
 
-# Only run one instance per PR at a time
+# Skipped events must not cancel a real review before the job condition runs.
+# Isolate bot events from active human PR reviews.
 concurrency:
-  group: pr-agent-${{ github.event.pull_request.number || github.event.issue.number }}
+  group: pr-agent-${{ github.event.pull_request.number }}-${{ (endsWith(github.actor, '[bot]') || github.event.pull_request.user.type == 'Bot') && github.run_id || 'review' }}
   cancel-in-progress: true
 
 jobs:
@@ -32,33 +31,66 @@ jobs:
     # This action deliberately rejects bot actors. Skip bot-authored PRs rather
     # than producing a failed non-actionable check for every Dependabot update.
     if: |
-      (github.event_name == 'pull_request' && !github.event.pull_request.draft && github.event.pull_request.user.type != 'Bot') ||
-      (github.event_name == 'issue_comment' && github.event.issue.pull_request && !github.event.comment.user.type == 'Bot')
+      github.event_name == 'pull_request' && !endsWith(github.actor, '[bot]') &&
+      !github.event.pull_request.draft && github.event.pull_request.user.type != 'Bot' &&
+      github.event.pull_request.head.repo.full_name == github.repository
 
     permissions:
       contents: write
       pull-requests: write
       issues: read
+      checks: read
+      statuses: read
       id-token: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
-        with:
-          fetch-depth: 0
-
       - name: Determine PR number
         id: pr
         run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "number=${{ github.event.pull_request.number }}" >> "$GITHUB_OUTPUT"
-          else
-            echo "number=${{ github.event.issue.number }}" >> "$GITHUB_OUTPUT"
+          echo "number=${{ github.event.pull_request.number }}" >> "$GITHUB_OUTPUT"
+
+      - name: Verify PR source repository
+        id: trust
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+          EVENT_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          pr_metadata=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER")
+          default_branch=$(gh api "repos/$GITHUB_REPOSITORY" --jq .default_branch)
+          eligible=$(jq --arg repo "$GITHUB_REPOSITORY" --arg default "$default_branch" --arg event_sha "$EVENT_HEAD_SHA" '[.head.repo.full_name == $repo, .user.type != "Bot", .draft == false, .state == "open", .head.ref != $default, .head.sha == $event_sha] | all' <<< "$pr_metadata")
+          echo "eligible=$eligible" >> "$GITHUB_OUTPUT"
+          if [ "$eligible" = "true" ]; then
+            echo "head_ref=$(jq -r .head.ref <<< "$pr_metadata")" >> "$GITHUB_OUTPUT"
+            echo "head_sha=$(jq -r .head.sha <<< "$pr_metadata")" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Run PR Intelligence Agent
-        uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268  # v1
+      - name: Checkout verified PR branch
+        if: steps.trust.outputs.eligible == 'true'
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
         with:
+          ref: ${{ steps.trust.outputs.head_sha }}
+          fetch-depth: 0
+
+      - name: Verify checked-out PR head
+        if: steps.trust.outputs.eligible == 'true'
+        env:
+          PR_HEAD_REF: ${{ steps.trust.outputs.head_ref }}
+          PR_HEAD_SHA: ${{ steps.trust.outputs.head_sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$PR_HEAD_SHA"
+          git switch --create "$PR_HEAD_REF" "$PR_HEAD_SHA"
+          test "$(git branch --show-current)" = "$PR_HEAD_REF"
+
+      - name: Run PR Intelligence Agent
+        if: steps.trust.outputs.eligible == 'true'
+        uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268 # v1
+        env:
+          PR_HEAD_REF: ${{ steps.trust.outputs.head_ref }}
+        with:
+          # The GitHub App exchange rejects modified workflow files. The
+          # ephemeral job token retains the permissions declared above.
+          github_token: ${{ github.token }}
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
             You are the PR Intelligence Agent. Analyze PR #${{ steps.pr.outputs.number }} in this repository.
@@ -76,7 +108,7 @@ jobs:
             - If Dependabot minor/patch dep bump: comment "Will be batched in next /pr-auto audit run"
             - If Dependabot security-critical: approve and comment "Security patch — ready for immediate merge"
             - If clean code + CI passing + significance <= 2: approve and comment "Clean PR — ready to merge"
-            - If fixable issues (formatting, lint): push a fix commit, then re-evaluate
+            - If fixable issues (formatting, lint): commit on the checked-out PR branch and push with git push origin "HEAD:$PR_HEAD_REF", then re-evaluate. Never switch to or push the default branch. If the remote branch has advanced, stop and report the conflict; never force-push.
             - If code quality issues: comment with detailed findings using this format:
               [CRITICAL|HIGH|MEDIUM|LOW] file:line — Issue description
             - If human reviewer already requested changes: skip — do not override

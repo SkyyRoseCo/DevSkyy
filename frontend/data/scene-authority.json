@@ -2,7 +2,7 @@
   "schema": "skyyrose.scene-authority-projection/1",
   "recordedAt": "2026-09-02",
   "source": {
-    "ledgerSha256": "2501176f4bfbb52eabfef34e295ca05588463374ca385b6e69116041375e0cbf"
+    "ledgerSha256": "26796a989e0ed675ad7f1ae23163b4d3f9c28c7317267b1b79941dc2bba2e062"
   },
   "approvalBoundaries": {
     "paidGeneration": "SEPARATE_PAID_ACTION_APPROVAL",
@@ -15,7 +15,7 @@
       "sceneId": "BR-COMMERCE-2",
       "collection": "black-rose",
       "state": "FAILED",
-      "purpose": "Create one native 16:9 Black Rose campaign candidate in Higgsfield, then route it through Comfy for bounded correction, integration, evidence, and independent review.",
+      "purpose": "Recover exact founder-approved Black Rose cast/product foregrounds, build a product-free Oakland/Bay Bridge environment, and integrate only authority-passing protected pixels in Comfy.",
       "owner": "product-fidelity-image-edits",
       "accountable": "fashion-theme-lead",
       "attempt": 1,
@@ -31,25 +31,26 @@
       },
       "identity": null,
       "evidenceHashes": {
-        "contract": "54494f55cf351ecd0ef0f8d71610bd35ae56383677669ab4771331f35f9d2e9c",
+        "contract": "77226296e2db02f06cc64dfde0b1b8a8acd5ed7b0cd44ea9c8fbc9b97f389cfc",
         "identityApproval": null,
         "identityManifest": null
       },
       "blockers": [
-        "single approved paid attempt consumed",
-        "BR-005 chest mark moved to the wrong side",
-        "BR-007 physical construction drifted",
-        "BR-004 founder-approved cast identity and center artwork were regenerated",
-        "protected Black Rose sculpture geometry was changed",
-        "explicit protected masks and local Comfy native-integration plan are required"
+        "the single approved paid attempt has been consumed",
+        "candidate hard-failed exact BR-005 chest placement, BR-007 construction, BR-004 cast and artwork identity, and protected sculpture geometry",
+        "the revised Bay Bridge world prompt has no current independent prompt-review receipt or new candidate-bound approval",
+        "automatic paid retry is forbidden",
+        "explicit protected masks and hash-bound individual alpha receipts are required before composition",
+        "the founder composition reference and BR-004 wearer reference are opaque, while the available real-alpha dual-cast v6 contains a rejected product correction",
+        "exact approved male BR-005 plus BR-007 wearer authority must be recovered or the scene remains blocked without speculative VTO spend"
       ],
-      "nextAuthority": "product-fidelity-image-edits mask and protected-source recovery plan; no automatic paid retry"
+      "nextAuthority": "approved source separation into exact per-look protected alphas, with a hard multi-garment wearer-authority blocker if BR-005 plus BR-007 cannot be recovered; then a separately approved product-free Runway background and independent visual-commerce-qa"
     },
     {
       "sceneId": "LH-COMMERCE-2",
       "collection": "love-hurts",
       "state": "BLOCKED",
-      "purpose": "Create the final Love Hurts commerce scene only after current founder-approved on-model and protected-matte authority exists.",
+      "purpose": "Build the final Love Hurts commerce scene around a separately approved, protected FASHN customer/product foreground without allowing the environment provider to redraw it.",
       "owner": "product-fidelity-image-edits",
       "accountable": "fashion-theme-lead",
       "attempt": 1,
@@ -69,22 +70,23 @@
         "fullCandidateVerdict": "REJECT"
       },
       "evidenceHashes": {
-        "contract": "edd12d66e9137d3f98f42e56e5051a5dbdf4ef9876be54673d8c48772e9cca9c",
+        "contract": "d86d73a5258f3a0b3d4ff2e2ff29c58030e93ba33d3766a922fa985f5e48e1b4",
         "identityApproval": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b",
         "identityManifest": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52"
       },
       "blockers": [
-        "model-casting A1 quarantined because Love Hurts artwork changes anatomical sides between front and rear views",
-        "founder-approved identity now exists, but an approved exact-LH-003 on-model product target still does not",
-        "protected garment matte missing",
-        "paid preflight approval missing"
+        "LH-MODEL-01 identity is founder-approved, but LH-003-MODEL-CASTING-20260902-A1 remains rejected because directional artwork changed anatomical sides between front and rear views",
+        "founder-approved full-body LH-MODEL-01 plate is not yet generated and bound",
+        "front-facing exact-LH-003 VTO candidate has not passed independent and founder review",
+        "candidate-bound Runway background approval is not recorded",
+        "no environment, segmentation, or final-scene execution may begin before the protected foreground hash is approved"
       ],
-      "nextAuthority": "separately authorized exact-garment recovery around founder-approved LH-MODEL-01, protected matte, and independent product review; no automatic paid retry"
+      "nextAuthority": "separately authorized FASHN model plate and front-facing LH-003 VTO candidate, followed by independent product review and founder-bound FRONT_SCENE_INPUT_ALLOWED approval"
     },
     {
       "sceneId": "SIG-COMMERCE-1",
       "collection": "signature",
-      "state": "READY",
+      "state": "BLOCKED",
       "purpose": "Recompose the mapped Sherpa-and-Beanie look into a powerful wide Signature campaign while preserving the protected customer/product and exact cleaned font sculpture.",
       "owner": "brand-experience-architect",
       "accountable": "fashion-theme-lead",
@@ -101,15 +103,15 @@
       },
       "identity": null,
       "evidenceHashes": {
-        "contract": "1afd8359ddf6292925ca47187a8fb5caa2e84869d92ba6122f39c8c3475db727",
+        "contract": "5ad5120a822dbb734113384ad0f51f08da9693d5a1466c22384539f725635648",
         "identityApproval": null,
         "identityManifest": null
       },
       "blockers": [
-        "corrected enhanced prompt not yet reviewed",
-        "paid preflight approval missing"
+        "protected customer/product and sculpture sources require current hash and independent-review verification",
+        "candidate-bound product-free Runway background approval is not recorded"
       ],
-      "nextAuthority": "prompt assertion review, approved provider runtime, then independent visual-commerce-qa"
+      "nextAuthority": "current hash and independent-product review of the protected SG-009 plus SG-007 look and exact sculpture, then a separately approved product-free Runway background and independent visual-commerce-qa"
     },
     {
       "sceneId": "SIG-COMMERCE-2",
@@ -131,15 +133,16 @@
       },
       "identity": null,
       "evidenceHashes": {
-        "contract": "2221f0be79b5d1bf8e2132dfcfbce999abf8f8751f8f0a222b4f56c90f772004",
+        "contract": "878829abd993a94629b42514540e8adfdfee64d5e29f1df983ac5a841c0758f6",
         "identityApproval": null,
         "identityManifest": null
       },
       "blockers": [
-        "correct founder-supplied SG-006 female wearer missing",
-        "prompt review and paid preflight approval missing"
+        "correct founder-supplied SG-006 female wearer/model authority is missing",
+        "female full-body identity plate and SG-006 VTO fingerprints, spend approvals, and review receipts are not recorded",
+        "candidate-bound product-free Runway background approval is not recorded"
       ],
-      "nextAuthority": "correct founder-supplied SG-006 female wearer authority"
+      "nextAuthority": "separately approved female full-body identity plate and one SG-006 VTO candidate with independent product review, then a separately approved product-free Runway background and independent visual-commerce-qa"
     },
     {
       "sceneId": "SIG-COMMERCE-3",
@@ -161,16 +164,17 @@
       },
       "identity": null,
       "evidenceHashes": {
-        "contract": "76664c2345bbd1bad4d710d7809776bffc64ce86db64da711f37c0f6a8e0b2e2",
+        "contract": "180fc68c72f3a7928dbe0401b3301ca808602db46b23b6806e9ed9447e1775ff",
         "identityApproval": null,
         "identityManifest": null
       },
       "blockers": [
-        "SG-001 correction receipt not promoted into packet",
+        "SG-001 remains candidate-only pending founder review",
         "SG-003 correction receipt missing",
-        "mask-bound correction approval missing; full-frame prompt review is intentionally not pursued"
+        "mask-bound local correction plan and independent-review assignment are not approved",
+        "full-frame FASHN, Higgsfield, and Runway regeneration remain forbidden"
       ],
-      "nextAuthority": "verified SG-001 and SG-003 correction receipts, then independent visual-commerce-qa"
+      "nextAuthority": "verified SG-001 and SG-003 correction receipts, then brand-experience-architect"
     }
   ]
 }

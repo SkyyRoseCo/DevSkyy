@@ -1,7 +1,8 @@
 {
   "schema": "skyyrose.scene-ooda-team-index/1",
   "plugin": "fashion-theme-team@personal",
-  "plugin_contract": "/Users/theceo/.codex/plugins/cache/personal/fashion-theme-team/0.4.0+codex.20260825142900/skills/fashion-theme-team/SKILL.md",
+  "plugin_contract": "plugins/fashion-theme-team/skills/fashion-theme-team/SKILL.md",
+  "plugin_source_commit": "7571dc04b4ea37a47327871f97775ca40971110f",
   "governance": "Comfy/FASHION-THEME-TEAM-OODA.md",
   "active_task": "Comfy/scene-contracts/cinematic-urban-grit-ooda-task.json",
   "visual_contract": "Comfy/CINEMATIC-URBAN-GRIT-SCENE-BIBLE.md",
@@ -31,6 +32,26 @@
     "act_capture": {
       "scheduler": "fashion-theme-lead",
       "runtime": "elite-builder-runtime",
+      "approval": "SEPARATE_PAID_ACTION_APPROVAL"
+    },
+    "act_vto": {
+      "owner": "product-fidelity-image-edits",
+      "runtime": "fashn-tryon-max",
+      "scope": "ONE_SOURCE_BOUND_CANDIDATE_BEFORE_ENVIRONMENT_GENERATION",
+      "approval": "SEPARATE_PAID_ACTION_APPROVAL",
+      "independent_review": "visual-commerce-qa"
+    },
+    "act_model_plate": {
+      "owner": "product-fidelity-image-edits",
+      "runtime": "fashn-model-create",
+      "scope": "ONE_IDENTITY_BOUND_FULL_BODY_CANDIDATE",
+      "approval": "SEPARATE_PAID_ACTION_APPROVAL",
+      "independent_review": "visual-commerce-qa"
+    },
+    "act_environment": {
+      "owner": "brand-experience-architect",
+      "runtime": "runway-gen4-via-comfy",
+      "scope": "PRODUCT_FREE_BACKGROUND_ONLY",
       "approval": "SEPARATE_PAID_ACTION_APPROVAL"
     },
     "act_correction": {
@@ -63,7 +84,10 @@
     "automatic_paid_retries": false,
     "current_prompt_review_required": true,
     "candidate_bound_paid_approval_required": true,
-    "measured_optical_contract_required": true
+    "measured_optical_contract_required": true,
+    "vto_candidate_precedes_scene_generation_when_on_model_authority_is_missing": true,
+    "environment_provider_must_not_receive_protected_customer_product_or_sculpture": true,
+    "front_candidate_cannot_claim_rear_pocket_rendered_proof": true
   },
   "scenes": [
     {

@@ -3,7 +3,7 @@
   "scene_id": "BR-COMMERCE-2",
   "collection": "black-rose",
   "status": "FAIL_CANDIDATE_QUARANTINED",
-  "purpose": "Create one native 16:9 Black Rose campaign candidate in Higgsfield, then route it through Comfy for bounded correction, integration, evidence, and independent review.",
+  "purpose": "Recover exact founder-approved Black Rose cast/product foregrounds, build a product-free Oakland/Bay Bridge environment, and integrate only authority-passing protected pixels in Comfy.",
   "fashion_theme_team": {
     "plugin": "fashion-theme-team@personal",
     "team_contract": "Comfy/scene-contracts/scene-ooda-index.json",
@@ -11,7 +11,7 @@
     "attempt": 1,
     "accountable": "fashion-theme-lead",
     "current_owner": "catalog-sot-integrator",
-    "next_authority": "approved provider runtime, then independent visual-commerce-qa"
+    "next_authority": "approved source separation into exact per-look protected alphas, with a hard multi-garment wearer-authority blocker if BR-005 plus BR-007 cannot be recovered; then a separately approved product-free Runway background and independent visual-commerce-qa"
   },
   "catalog_snapshot": {
     "catalog_path": "skyyrose-catalog.csv",
@@ -128,7 +128,8 @@
       "role": "composition_and_cast_authority",
       "path": "renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
       "sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "cast identity, pose relationship, landscape hierarchy",
       "alpha_classification": "OPAQUE_COMPOSITION_REFERENCE_NOT_A_CUTOUT"
     },
@@ -136,42 +137,48 @@
       "role": "black_rose_collection_world_reference",
       "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
       "sha256": "e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "RUNWAY_ENVIRONMENT_REFERENCE_ONLY",
       "preserve": "extract the nocturnal Oakland Bay Bridge depth, monochrome wet-stone palette, fog, reflection behavior, and physically weighted monument scale; do not copy the empty composition, extra star monument, duplicate word monument, or let scenery outrank the customers and products"
     },
     {
       "role": "exact_brand_sculpture",
       "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png",
       "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "COMFY_PROTECTED_COMPOSITE_ONLY",
       "preserve": "exact lettering and rose sculpture geometry"
     },
     {
       "role": "br-005_physical_product_authority",
       "path": "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
       "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "black construction, right-chest silicone cut-out logo, side-body embroidery"
     },
     {
       "role": "br-007_physical_product_authority",
       "path": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
       "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "Oakland front lettering, rose field, Love Hurts marks, mesh side construction"
     },
     {
       "role": "br-007_founder_four_angle_physical_authority",
       "path": "assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
       "sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "founder-confirmed physical front, back, wearer-left, and wearer-right construction identity"
     },
     {
       "role": "br-004_founder_wearer_authority",
       "path": "renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/BLACK_Rose_Long_Hoodie.png",
       "sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "female wearer identity and exact long-hoodie product presentation",
       "alpha_classification": "OPAQUE_WEARER_REFERENCE_NOT_A_CUTOUT"
     }
@@ -259,7 +266,7 @@
     "disposition_on_failure": "QUARANTINE_NO_AUTOMATIC_RETRY"
   },
   "provider_capability": {
-    "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
+    "higgsfield_role": "DISABLED_FOR_NEW_FULL_SCENE_ATTEMPTS",
     "exact_product_guarantee": false,
     "adapter": "higgsfield_product_photoshoot",
     "model_id": "gpt_image_2",
@@ -269,11 +276,25 @@
     "runtime_receipt": "Comfy/receipts/br-commerce-2-higgsfield-runtime-capability-20260902T123106Z.json",
     "runtime_receipt_sha256": "93445948e0077b5e877213e098e07a0eb8bdd0450cf5725ac16d7c70b7346a24",
     "estimated_credits": 8.5,
-    "rule": "Provider success is not product approval, native-integration approval, or promotion."
+    "rule": "The failed 8.5-credit Higgsfield candidate and rejected dual-cast correction remain quarantine evidence only. No additional full-scene Higgsfield attempt is authorized."
+  },
+  "route_contract": {
+    "mode": "environment_rebuild_around_source",
+    "foreground_rule": "Segment only founder-approved opaque cast/product authorities into individual protected alphas. BR-004, BR-005, and BR-007 remain distinct products and identities.",
+    "wearer_authority_blocker": "If exact approved male BR-005 plus BR-007 on-model authority cannot be separated from existing sources, record a multi-garment wearer-authority blocker. Never infer product pixels or chain sequential VTO calls.",
+    "background_rule": "Create the Oakland/Bay Bridge world as a separately approved product-free Runway plate through Comfy.",
+    "sculpture_rule": "Place only the exact protected transparent Black Rose sculpture; never regenerate its geometry.",
+    "provider_sequence": [
+      "approved protected cast/product alphas",
+      "product-free Runway environment",
+      "local Comfy native integration",
+      "independent product and optical review",
+      "founder approval"
+    ]
   },
   "comfy": {
     "routing": "local",
-    "server": "127.0.0.1:8188",
+    "server": "http://127.0.0.1:8189",
     "role": "POST_CAPTURE_PROTECTED_CORRECTION_ONLY",
     "workflow": "SELECT_AFTER_CANDIDATE_HASH_AND_DEFECT_CLASSIFICATION",
     "allowed_operations": [
@@ -325,8 +346,9 @@
       "load prior rejection, approved Black Rose Bay Bridge world reference, and scene-direction constraints"
     ],
     "orient": [
-      "use Higgsfield Product Photoshoot hero_banner for a native 16:9 campaign candidate",
-      "treat every Higgsfield result as candidate-only"
+      "recover separate founder-approved foreground authorities before any environment spend",
+      "use Runway only for a product-free Oakland and Bay Bridge environment",
+      "treat every provider result as candidate-only"
     ],
     "decide": [
       "hard-fail wrong SKU, garment, logo, wordmark, cast, sculpture, or aspect ratio",
@@ -334,8 +356,9 @@
       "independent visual review precedes founder review"
     ],
     "act": [
-      "stage a surviving candidate in local Comfy",
-      "apply only mask-bounded or authority-preserving corrections",
+      "segment only approved cast/product sources into individual protected alphas",
+      "build the empty environment through the approved Comfy Runway route",
+      "integrate exact foreground and protected sculpture pixels locally",
       "write immutable receipts and quarantine failures",
       "never promote, wire, deploy, or overwrite SOT automatically"
     ]
@@ -357,8 +380,9 @@
     "candidate hard-failed exact BR-005 chest placement, BR-007 construction, BR-004 cast and artwork identity, and protected sculpture geometry",
     "the revised Bay Bridge world prompt has no current independent prompt-review receipt or new candidate-bound approval",
     "automatic paid retry is forbidden",
-    "explicit protected masks and a local Comfy native-integration plan are required before correction",
-    "the founder composition reference and BR-004 wearer reference are opaque, while the available real-alpha dual-cast v6 contains a rejected product correction"
+    "explicit protected masks and hash-bound individual alpha receipts are required before composition",
+    "the founder composition reference and BR-004 wearer reference are opaque, while the available real-alpha dual-cast v6 contains a rejected product correction",
+    "exact approved male BR-005 plus BR-007 wearer authority must be recovered or the scene remains blocked without speculative VTO spend"
   ],
   "promotion_gate": "FOUNDER_APPROVED_VISUAL"
 }

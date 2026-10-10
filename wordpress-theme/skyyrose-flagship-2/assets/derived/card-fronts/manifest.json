@@ -1,0 +1,797 @@
+{
+  "products": {
+    "br-001": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "969dfd8008b2afae4c30add2b2fec8fe48854ef5d71c77e8d6f2defd730c2cfc",
+          "src": "assets/derived/card-fronts/br-001-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "03498fe7fa9a819ca17887aeaf689837d40a3b6538e279ee44197d021239f3bd",
+          "src": "assets/derived/card-fronts/br-001-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "6c170c0574baeca7f2dc18d63b72c36a1dfcfa96c2b373172f2277e27710eecf",
+          "src": "assets/derived/card-fronts/br-001-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/br-001-onmodel.webp",
+      "source_sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8"
+    },
+    "br-002": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "c3fc44a6f9e9d0a4f7cc1c08015084175aa3306a72fce61c264c4c8a13bc1b95",
+          "src": "assets/derived/card-fronts/br-002-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "7cdcd11f1d0d8aeb66222192458fedcb522a0aa16de78ce2684cc83d5b0e011c",
+          "src": "assets/derived/card-fronts/br-002-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "822fe7e6e9090018163564e1e8fd191772a50fc7e9f0447378e9494e270c21e1",
+          "src": "assets/derived/card-fronts/br-002-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/br-002-onmodel.webp",
+      "source_sha256": "6e395127c4b6f09a1602db3c30963bb31a42559fe64dfbca990832c3dbc951ba"
+    },
+    "br-003": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "630cd59319b669cb97831a3c6db1eebee159f672921c143207f6934e13194450",
+          "src": "assets/derived/card-fronts/br-003-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "fe6de556338f9d687be718dd34e04d7bd449a43c8f2d90ceddc08122d10c422d",
+          "src": "assets/derived/card-fronts/br-003-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "756e136254805e8f08e0059a0d59ed10e5ba4d19b7908506a43add211ccbf9d3",
+          "src": "assets/derived/card-fronts/br-003-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/card-scenes/br-003-onmodel.webp",
+      "source_sha256": "43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9"
+    },
+    "br-004": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "fab76c31229ca73ab014d8c0f93a1360f74a8e3e5eb55fa54289ad49d27112cc",
+          "src": "assets/derived/card-fronts/br-004-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "0a34d5f5351fafb7da7e492a9329777d49119f2bedc7a190909fab13956ac6ac",
+          "src": "assets/derived/card-fronts/br-004-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "64f87ee28abc192425b9b28bf9426cf76d21bfc696fdcbc823465417206ea741",
+          "src": "assets/derived/card-fronts/br-004-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/br-004-onmodel.webp",
+      "source_sha256": "8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8"
+    },
+    "br-005": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "ad6673edc3915ac7917e26c27d76219a5f56e8f77ee089f53b82815555dbc2de",
+          "src": "assets/derived/card-fronts/br-005-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "3e0bc13cf9aa1771652944ab1c6265d0c80e3aef8b573c17cadf376bfa85542d",
+          "src": "assets/derived/card-fronts/br-005-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "a4f183b0eb2f91e84cde0bf179469218c194e69ba9009d6c8c9ec313162f2599",
+          "src": "assets/derived/card-fronts/br-005-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/br-005-onmodel.webp",
+      "source_sha256": "19f888f11bc6e3a282088281040ee8b27be1e5473e1b4b53fc5ad5509e80a19b"
+    },
+    "br-006": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "1622f71d0fb0a32aa6d53cb19e89d50dda937dddfddd8f612b28bb41e153a23f",
+          "src": "assets/derived/card-fronts/br-006-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "3ef1009cd1a0f85c703d5a757c5acb4bc9aefedcc8571264b9529eb871cfe2da",
+          "src": "assets/derived/card-fronts/br-006-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "37dda44ac7e9c27123f81ccf14afb521e7a97ed479e0eac8bab240661d8d28a3",
+          "src": "assets/derived/card-fronts/br-006-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/card-scenes/br-006-onmodel.webp",
+      "source_sha256": "443a7d3546c8bec2495426e20e7b8a4e84b5b91c02ea57b20d43cb3c96763d2d"
+    },
+    "br-007": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "1583eda077b668a79c57fde6206df5681fcc7a3f2af4ae84028c5807343fb56c",
+          "src": "assets/derived/card-fronts/br-007-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "a920437de23be1030c6e1a3e2d26b460fa49a387740d2145e9d760d7595c673a",
+          "src": "assets/derived/card-fronts/br-007-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "1443baee959ae91f5d1271f4ce621cbeb41fe8d13e02340b89d9d7e7a47a881a",
+          "src": "assets/derived/card-fronts/br-007-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/br-007-onmodel.webp",
+      "source_sha256": "b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d"
+    },
+    "br-008": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "ba50d940500fed919bb433b4dc50b79dc7678c24e49b4cf8a83f9cee69bb8932",
+          "src": "assets/derived/card-fronts/br-008-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "a93048b48cd12183201a6bd5f3fa8a1c873a572aedff9e6ac2214ca33ae5f500",
+          "src": "assets/derived/card-fronts/br-008-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "bfd27eda97447e88e3a92bb5e5580f69d8ee4901a7d463fa9e7c47789aae502c",
+          "src": "assets/derived/card-fronts/br-008-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/card-scenes/br-008-onmodel.webp",
+      "source_sha256": "cd4ca4c0ba5d7723b0ad786ad7312502bf820aece583f8a007de4be20fa6088c"
+    },
+    "br-009": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "59b361534fee5b33451f164e187666b3a21f86072fab3fa0980967345b2e6b6a",
+          "src": "assets/derived/card-fronts/br-009-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "05924de90641793f700911dd15567c5adcbcde523d307c4d4dd7055f9e48048a",
+          "src": "assets/derived/card-fronts/br-009-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "9a13c655517b9a4b3151ab4ed4f92ecf174babd23fa9a54983381b05e7f9af4c",
+          "src": "assets/derived/card-fronts/br-009-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/card-scenes/br-009-onmodel.webp",
+      "source_sha256": "e220fb9c3d2a1413bb2a9d9158736c7a7b8622beadecc5e44debacbdc3441ffc"
+    },
+    "br-010": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "fdbf1ea3fff8eb3e98d484c91be18f3ee0d83b718c58057083668361d2162db6",
+          "src": "assets/derived/card-fronts/br-010-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "f6d7b36f70f681cd39584e95fd297cb9a2073dad83bfb8ef3e33a5de14941020",
+          "src": "assets/derived/card-fronts/br-010-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "03aa27a0452ded261ee62117dff3c1eb64cc98c0f5b14ba0d56c72ed6c40200b",
+          "src": "assets/derived/card-fronts/br-010-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/card-scenes/br-010-onmodel.webp",
+      "source_sha256": "b8862f06ddfde790a9dd3327e23f824d21abfa73bf1410630e4f9b9b710abea7"
+    },
+    "br-011": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "3d76efb0eeea1fab6c72dc97f01d8e7a55fd85bb1968c4b9ad85daa7825c52c5",
+          "src": "assets/derived/card-fronts/br-011-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "821c3a10c60338e064f1fc5c82fff38ef7d2162963b9ff44cd623edf9c655440",
+          "src": "assets/derived/card-fronts/br-011-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "e9de2ce2a40675f0223093949be999a4eaa8c83cbfff1906d7ceb820ca39c9fe",
+          "src": "assets/derived/card-fronts/br-011-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/card-scenes/br-011-onmodel.webp",
+      "source_sha256": "aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290"
+    },
+    "br-012": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "5901a08d88a0a0e2d3d24202c739745d5d12813f10db6f08f46305c372992c69",
+          "src": "assets/derived/card-fronts/br-012-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "3eb82b30736da9b2eaadac39deb332012c939cc1cc9924cd79ddeed8abd5a4b5",
+          "src": "assets/derived/card-fronts/br-012-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "39f9cf84a15369c586c36f73e4a67eeccff2a0b1555baddb10fe4c19909ebf8c",
+          "src": "assets/derived/card-fronts/br-012-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/card-scenes/br-012-onmodel.webp",
+      "source_sha256": "75f96a81896afb52b9742d561a1ee84578b94683c78d1d0aa098b8da50452625"
+    },
+    "br-014": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "68722bd052bbcf55c38b43ed8acb598a8e7c58f7a640d2694ae22fbe8ca8590b",
+          "src": "assets/derived/card-fronts/br-014-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "c3688d910d875138d7b307dbbda83ac7cd26273807b738813c5948ff1e387579",
+          "src": "assets/derived/card-fronts/br-014-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "334cae60a0d8d2af69917305dfecf173e1ba461d9fe79b50793c9bbeed0e958c",
+          "src": "assets/derived/card-fronts/br-014-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/card-scenes/br-014-onmodel.webp",
+      "source_sha256": "4cc4c60b2e39bfb3986626419828b57eee1381c20889d51a9a5dbaf2d972d8ff"
+    },
+    "br-015": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "e4213f74c3ae1cc7fbb5d56e5b12958d19d6407d84283cd58edd32f56ca4a6cb",
+          "src": "assets/derived/card-fronts/br-015-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "4e4b67be2cee042683cfcfb0c4d5009950ff905a84ac5b9fe66fe6b7d85b9196",
+          "src": "assets/derived/card-fronts/br-015-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "a585db2ff9c943f856547e5a38d5bc98014ec16fc7813ec581147c718e4aaf3c",
+          "src": "assets/derived/card-fronts/br-015-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/card-scenes/br-015-onmodel.webp",
+      "source_sha256": "d708a0e9f468c77fc43d2882c63877e4a41358de1944e0c091f85a66670cd8ad"
+    },
+    "kids-001": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "bdf378a2718c2d0b267f06a4e67c2c9cd3dd381d52e7913e326da59f9b9cadaa",
+          "src": "assets/derived/card-fronts/kids-001-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "9cfbadbf3aead10ba3d93a5e18e68e0d2310d6f18292e7037b7a664ac6d1498f",
+          "src": "assets/derived/card-fronts/kids-001-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "a9127abdd520c9012e8354534868fa7cdc84dde345d9632af6dfdf09ea5d5bb0",
+          "src": "assets/derived/card-fronts/kids-001-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/kids-001-onmodel.webp",
+      "source_sha256": "c6bd2ddd555c4359c302eebb051d5fbad4d34bec0b324b44f3447831f3ec9c9a"
+    },
+    "kids-002": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "4cbfab5be8317023a57288dd6e29dd4f9dce2aabbb2a2e50178d390d372e2235",
+          "src": "assets/derived/card-fronts/kids-002-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "9a73ccd654639c2965fc42facded9ee20c7395e12e4451dc3d20a21784520a6e",
+          "src": "assets/derived/card-fronts/kids-002-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "37989aca834fb4101b77ae4bccbcac471af2ee4a348fbf8e7a9b35a854dbaf3a",
+          "src": "assets/derived/card-fronts/kids-002-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/kids-002-onmodel.webp",
+      "source_sha256": "88c0ca36b22a95ce1ee7969b50b4e256718ffda584027dfd97e219605aa3e51b"
+    },
+    "lh-002": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "bec9c521717d378233f3902271cb2d4621f382f7e0654382d94ce29f8621bd88",
+          "src": "assets/derived/card-fronts/lh-002-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "4cd3f09abb19079ea209e8944beb6cdcdf57201bd4b2e35ca71287e52a154022",
+          "src": "assets/derived/card-fronts/lh-002-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "4eb15f1df797373150d4f5c173b749924fb2dcb4cda3ad83467c79b371d8eb03",
+          "src": "assets/derived/card-fronts/lh-002-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/lh-002-onmodel.webp",
+      "source_sha256": "dd1192e520e521308064f42d8ac0c9addc5d403a711c7e62d559541f65b35507"
+    },
+    "lh-003": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "a3b51f34ceedcfa8fbf1682d7a9109637ef772cb39130ad6abee2781dc8ee376",
+          "src": "assets/derived/card-fronts/lh-003-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "6ee63b5118dbdbc61f670977162ed8dd733e9d64097529928d33197551b704db",
+          "src": "assets/derived/card-fronts/lh-003-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "1964465207350db66533ebe758359008b8ff731b32df1141e4ebf15bf935fd1c",
+          "src": "assets/derived/card-fronts/lh-003-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/lh-003-onmodel.webp",
+      "source_sha256": "a8338e8a18009573203e7e09ef21e71678deaacee40ff186dacf5350e61f1089"
+    },
+    "lh-004": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "5a51c50ddf04a1717bef444ffb2d03215fcba713bde163c798f46e774670ab82",
+          "src": "assets/derived/card-fronts/lh-004-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "f0177a0bd431d27e584da4db115480d0b45a55178328143c34f266d34b8ac2f7",
+          "src": "assets/derived/card-fronts/lh-004-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "f0b64933d674143dcb9c776869ae6f96c36fea54894d4b30454ae5f44295d390",
+          "src": "assets/derived/card-fronts/lh-004-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/lh-004-onmodel.webp",
+      "source_sha256": "1c5aed2f72b85b5afc7a25515931e450e68dfa66011b0345c13605020b89fddc"
+    },
+    "lh-005": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "92c3064a0ebfdbcc634e0e9b6a69818f0d664016c2d95f701865385967776724",
+          "src": "assets/derived/card-fronts/lh-005-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "3927929443f3fad1457b21509434d09cad43c615fd3d180ca4204bbe79bcfe8d",
+          "src": "assets/derived/card-fronts/lh-005-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "a2ddbe79f6176a0a871e1d4379d53b73d0552192003a0bb64b2a362db7e680b1",
+          "src": "assets/derived/card-fronts/lh-005-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/lh-005-onmodel.webp",
+      "source_sha256": "3274c53abb457fd03856dab4014ac6076eab1853a67722fb90015749497e830f"
+    },
+    "lh-006": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "01d3c579662cdbee4bb4efd6e8c1ac19a9a4665de1c8b573021ead57b2f8dfc3",
+          "src": "assets/derived/card-fronts/lh-006-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "55640cfe5329b86907d401af5e80d3d5edd5a261cbc987df07986a1c3502633f",
+          "src": "assets/derived/card-fronts/lh-006-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "b63d0668dd3379d7f7e1383e6a4d5da0b24dd9966292c2c3c87a6741f25c8f67",
+          "src": "assets/derived/card-fronts/lh-006-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/lh-006-onmodel.webp",
+      "source_sha256": "7905342f32bd2963d3d5d095a0825c9ae3ec98f731de100fb481631ee76244dc"
+    },
+    "sg-001": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "c52dc3fe6bec08fff833721c3d0a7e6c22bf81d86b8575705ff5261e23e24805",
+          "src": "assets/derived/card-fronts/sg-001-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "12c97c76bf99682f28f9d92c884105cab3d355cb2aca54fba09575928cc94440",
+          "src": "assets/derived/card-fronts/sg-001-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "3c9bae8f902fd57a0554a101250af2fb115b04136fcd0c9a164cc764a9f15409",
+          "src": "assets/derived/card-fronts/sg-001-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-001-onmodel.webp",
+      "source_sha256": "31b85575f88df52d1a61f8ce7b01b0b60c1c1de1749060e3f0bca8873b71ffce"
+    },
+    "sg-002": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "7f933d51e17f7246821d6fd4db08f365e4bb46a47b53fd0c27bd1d8547492c44",
+          "src": "assets/derived/card-fronts/sg-002-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "d47a11c2d6054195ae1df0ec637e929c827fd4ffef5ead17bde55b6d03da0400",
+          "src": "assets/derived/card-fronts/sg-002-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "4df875443f9dcae8b8df1d2d3223877b344b6fa451de31c444961929e7d48020",
+          "src": "assets/derived/card-fronts/sg-002-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/card-scenes/sg-002-onmodel.webp",
+      "source_sha256": "48561fab14ae39618e048bb5ba3226fef4da3affb85855d441bb54be3e767f18"
+    },
+    "sg-003": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "83d47957b70c4dfba2398c6c517f7383884f0be1afa89a3dbd3269f58159deff",
+          "src": "assets/derived/card-fronts/sg-003-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "dac95c9a2e416b0a8acffd8d4a016f1237140a06b8041cb6c253ff3983690e5d",
+          "src": "assets/derived/card-fronts/sg-003-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "186ddddd412c60d0e128158fa6baa50e9c0c977eeba8869671af84f54bbabce2",
+          "src": "assets/derived/card-fronts/sg-003-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-003-onmodel.webp",
+      "source_sha256": "a06526e3136ab5e4f157aa431850c13e6bc75969a10f8240012db7bfac63968c"
+    },
+    "sg-005": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "43e9f5c1388c5724b6cac58b4a9344128296efbc36bd9c756a298342a38a2c30",
+          "src": "assets/derived/card-fronts/sg-005-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "b51821e4c054365f50386d93bb1256c611b4a6905eec4344f5c3474166c59a38",
+          "src": "assets/derived/card-fronts/sg-005-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "ebb40fd6e9891f85284c3f52d590ee198bff2f476b3fb5cb4a01d501ccad0763",
+          "src": "assets/derived/card-fronts/sg-005-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-005-onmodel.webp",
+      "source_sha256": "052915cfb4aaa7f3d1fdd01d222661289cb7a1eab0fdec9b68a8be8dda8f28f0"
+    },
+    "sg-006": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "08ff1a9b6b331a3fb501d2fdbe6fc88cada5986458dc2fcc627005b3ba0baf6f",
+          "src": "assets/derived/card-fronts/sg-006-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "6187a6be56844238a10bf4f59868682d699918344de85bd98d60e1b7acea5d4a",
+          "src": "assets/derived/card-fronts/sg-006-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "8dd4c9433729b229b513248867f20e57b43a3c506f40a7701ea0902b972b52c0",
+          "src": "assets/derived/card-fronts/sg-006-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-006-onmodel.webp",
+      "source_sha256": "27d6865fb5ea6b23fbd7df5f4169543348c3dc0b5f34828ca956ca486411b44d"
+    },
+    "sg-007": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "b57ba72be28a5cab6d264a35fb1b383d6ee7c363c46810c1243ababedb3411aa",
+          "src": "assets/derived/card-fronts/sg-007-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "410015a4cf4dfd6cfdf134dd6fa860654652e9c3463f27b1bc582d827f973f90",
+          "src": "assets/derived/card-fronts/sg-007-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "8bfe4484882b614cdf12b04821209182b24af81585ac9cd98813efa3c40b851a",
+          "src": "assets/derived/card-fronts/sg-007-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-007-onmodel.webp",
+      "source_sha256": "15dd6abe1bc49ee8fc3e70a17c90d0c05aa11aff517b296290390c449307e730"
+    },
+    "sg-009": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "e6c59a48e0116069c11c3a280b3095f9ab4b9247fa0bb825bbefecb121b7d4b5",
+          "src": "assets/derived/card-fronts/sg-009-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "2a4fb7984612098b1a33602c1e8b23a691d78465313743b11b938abce48a987b",
+          "src": "assets/derived/card-fronts/sg-009-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "17cd63075f57120059c0b4b616aa660712dfc1b4ec0b42991b751c7cdb0fe852",
+          "src": "assets/derived/card-fronts/sg-009-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-009-onmodel.webp",
+      "source_sha256": "fad97fce9afde5e752ea62ed256b03ca7b5ad2ca449f070c9037bd266fa5222d"
+    },
+    "sg-011": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "d5a56419b4dee000b91af110ace610b868cf10c28812d494af6c563e077f9f22",
+          "src": "assets/derived/card-fronts/sg-011-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "eebb2f2355271e349ec91b75fbd0a3d54f2786d2d331d3c2c6886592ea5fb7be",
+          "src": "assets/derived/card-fronts/sg-011-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "b14fdee1430df6acf9fe9085e5400185d5665c1dfc50707650a47b9855089cbc",
+          "src": "assets/derived/card-fronts/sg-011-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-011-onmodel.webp",
+      "source_sha256": "25055af2f7d59fdaa18bf9fec4f7b5abe1ec9c7d9a4e5306e7be232a9163ac8e"
+    },
+    "sg-012": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "39095b700cad743cc9087e94af5d2ce377a6950c95e189b2c9671edcbe9e0682",
+          "src": "assets/derived/card-fronts/sg-012-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "1c7de8512b959fed89839c387f931ec16e494e27c4d038dadb7d67d90c8e65b4",
+          "src": "assets/derived/card-fronts/sg-012-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "b9a1d905d2921c3511c27aaa7058084c6b4b696e9bbb7fe472d3049854333094",
+          "src": "assets/derived/card-fronts/sg-012-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-012-onmodel.webp",
+      "source_sha256": "360cdb19236dd2108934b9c2eaf15eb539defdb4cb4c4a176d0427ef2bf3a0cf"
+    },
+    "sg-013": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "1681467d53d28f2345156b2d059ed72c37ec017fa2ea3191c738a3c71d151e40",
+          "src": "assets/derived/card-fronts/sg-013-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "fd7f726a5e9f79049f0c9faa92adb226655c1ea07525fe1ed87668de434124f4",
+          "src": "assets/derived/card-fronts/sg-013-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "a8ee697883ecb0f41efd82a3c4d2e03a2f2963c9f1662bfe7a439633d356c5b6",
+          "src": "assets/derived/card-fronts/sg-013-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-013-onmodel.webp",
+      "source_sha256": "fc3fc604b56f4e9abfc95fe45ec4642ccafce625f26241605ff830bad49c8bf8"
+    },
+    "sg-014": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "8a6e885386e5422c35b2302e28414d15a3feccf85380582d965dd3c51042e287",
+          "src": "assets/derived/card-fronts/sg-014-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "027ba99760dc5dc7dd9aea78d5dd7444b32061aa095d219bee25bba6c0df8ddf",
+          "src": "assets/derived/card-fronts/sg-014-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "ca8b4e32a54234899eb1093bcf392cb52c9c4774cc589d38e677a05d2c88ac27",
+          "src": "assets/derived/card-fronts/sg-014-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-014-onmodel.webp",
+      "source_sha256": "e07277762c0b939b7ba1756685675aa4184968de9a3e83fc3d4303d8a400f67b"
+    },
+    "sg-015": {
+      "renditions": [
+        {
+          "height": 480,
+          "sha256": "95c2b117210b942e8351af88ef71d84c9262ce7c6f146c07ded787c0bfebe089",
+          "src": "assets/derived/card-fronts/sg-015-320w.webp",
+          "width": 320
+        },
+        {
+          "height": 720,
+          "sha256": "00e9862f7b777c9f09b0e83dfb8c4573929950209dd4bb71245eb70eec766765",
+          "src": "assets/derived/card-fronts/sg-015-480w.webp",
+          "width": 480
+        },
+        {
+          "height": 1152,
+          "sha256": "3094d0780f05593d4ffcb3e320c792eca640f9c0ccb8b954e7e618a1091a8333",
+          "src": "assets/derived/card-fronts/sg-015-768w.webp",
+          "width": 768
+        }
+      ],
+      "source": "assets/approved-card-fronts/sg-015-onmodel.webp",
+      "source_sha256": "e8f365cb5a1e1546977f41a5271bb7ce62287b18ac64f1c62934783198cebfcf"
+    }
+  },
+  "schema": "skyyrose.card-renditions.v1"
+}

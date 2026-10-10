@@ -1,0 +1,2752 @@
+{
+  "agent": "G",
+  "fixture": "http://127.0.0.1:8790",
+  "captured": "2026-09-22",
+  "branch": "codex/v2-whole-site-rework-20260922",
+  "scope_note": "fixture stubs Woo; no real transactions. Verified rendered states, controls, forms, focus and copy only. Fixture artefacts (not theme defects): every product priced $128.00 and named by WC_Product stub [repo tools/v2-theme-preview.php:524,536]; purchase form stub without method/action [repo :186]; cart/checkout/account/tracking forms method=get without nonces (theme templates are method=post) [repo]; JSON-LD head hooks not executed; 'LOCAL V2 REVIEW' badge overlay; wishlist routed to page.php.",
+  "method": "Playwright chromium (swiftshader), contexts 1440x900 DSF1 and 390x844 DSF2 mobile; scroll-dwell 0.85vh/650ms to bottom, back to top, image settle <=4s, then fullPage. Reduced motion variant for shop + 4 PDPs. No-JS (javaScriptEnabled:false) for shop + sg-005 with mouse.wheel scrolling and frame hashes. Keyboard: 14 Tabs from load per route; PDP reach loop to Size/Add-to-cart/size-guide opener; dialog open via Enter, close via Escape and via Close button. Registry via python -m skyyrose.core.product. Garment identity by eyes-on comparison of served card-front/PDP images against the registry front role (wordpress-theme/skyyrose-flagship/assets/images/products/).",
+  "garment_verification": {
+    "sg-005": {
+      "registry_front": "assets/images/products/sg-005-onmodel.webp (resolves under wordpress-theme/skyyrose-flagship/)",
+      "served_card_front": "assets/approved-card-fronts/sg-005-onmodel.webp (re-encoded, visually identical)",
+      "served_pdp": [
+        "sot/images/products/preview/sg-005-front.webp",
+        "sot/images/products/preview/sg-005-packshot.webp"
+      ],
+      "verdict": "correct",
+      "spec_check": "white crew-neck tee, blue/cyan rose cluster on cloud, front chest centre - matches founder specification and packshot shows the same emblem"
+    },
+    "br-004": {
+      "registry_front": "assets/images/products/br-004-onmodel.webp",
+      "served_card_front": "assets/approved-card-fronts/br-004-onmodel.webp",
+      "served_pdp": [
+        "assets/derived/card-fronts/br-004-480w.webp (fallback, 0 published views)"
+      ],
+      "verdict": "correct",
+      "spec_check": "black pullover hoodie, drawstring hood, kangaroo pocket, tonal ribbing, cloud cluster front chest centre - matches the registry record; conflicts with the stale-looking rejection text in data/opening-product-media.json (see findings)"
+    },
+    "lh-004": {
+      "registry_front": "assets/images/products/lh-004-onmodel.webp",
+      "served_card_front": "assets/approved-card-fronts/lh-004-onmodel.webp",
+      "served_pdp": [
+        "sot/images/products/preview/lh-004-front.webp",
+        "lh-004-back.webp",
+        "lh-004-packshot.webp"
+      ],
+      "verdict": "correct",
+      "spec_check": "white satin body, black raglan sleeves and hood, snap front, red 'Love Hurts' script across front, striped ribbed cuffs/waistband, welt pockets"
+    },
+    "kids-001": {
+      "registry_front": "assets/images/products/kids-001-onmodel-v2.webp",
+      "served_card_front": "assets/approved-card-fronts/kids-001-onmodel.webp",
+      "served_pdp": [
+        "sot/images/products/preview/kids-001-front.webp",
+        "kids-001-back.webp",
+        "kids-001-packshot.webp"
+      ],
+      "verdict": "correct",
+      "spec_check": "red hood, diagonal black/white upper panels, red lower body, kangaroo pocket, left-chest cluster, right-arm circular patch, black sweatpants with left-thigh cluster"
+    },
+    "kids-002": {
+      "served_card_front": "assets/approved-card-fronts/kids-002-onmodel.webp",
+      "verdict": "different SKU (purple/pink set); present only in the full shop grid and Woo's native related loop"
+    }
+  },
+  "global_invariants": {
+    "console_errors_total": 0,
+    "failed_requests_total": 0,
+    "skip_link_first_all_routes": true,
+    "focus_indicator_missing_stops": 0,
+    "horizontal_overflow_390_any": false,
+    "cut_fonts_any": false,
+    "cinzel_offenders_any": false,
+    "crimson_dc143c_text_any": false,
+    "sub_aa_text_total": 0,
+    "reduced_motion_static": true
+  },
+  "routes": [
+    {
+      "route": "shop",
+      "sku": null,
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=shop",
+      "http_status": 200,
+      "captures": [
+        "shop-1440.png",
+        "shop-390.png",
+        "shop-390-reduced.png",
+        "shop-1440-nojs.png"
+      ],
+      "console": [],
+      "failed_requests": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "visible_indicator": true
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "visible_indicator": true
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "class": "",
+          "text": "Collections",
+          "visible_indicator": true
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "class": "",
+          "text": "Journal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "class": "",
+          "text": "About",
+          "visible_indicator": true
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "visible_indicator": true
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "visible_indicator": true
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "visible_indicator": true
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "class": "",
+          "text": "All pieces",
+          "visible_indicator": true
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "class": "",
+          "text": "Signature",
+          "visible_indicator": true
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "class": "",
+          "text": "Black Rose",
+          "visible_indicator": true
+        },
+        {
+          "stop": 13,
+          "tag": "a",
+          "class": "",
+          "text": "Love Hurts",
+          "visible_indicator": true
+        },
+        {
+          "stop": 14,
+          "tag": "a",
+          "class": "",
+          "text": "Kids Capsule",
+          "visible_indicator": true
+        }
+      ],
+      "skip_link_ok": true,
+      "skip_target_receives_focus": false,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "sans-serif",
+        "Anton",
+        "Hanken Grotesk",
+        "Archivo",
+        "ui-monospace"
+      ],
+      "fonts_loaded": [
+        "Archivo",
+        "Hanken Grotesk",
+        "Anton"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "crimson_text_elements": [],
+      "sub_aa_text_elements": 0,
+      "scroll_height": {
+        "1440": 2118,
+        "390": 4532
+      },
+      "h1": "Shop",
+      "reduced_motion_390": {
+        "html_class": "sr2-motion-ready sr2-motion-reduced",
+        "running_animations": 0,
+        "reveal_pending": 0
+      },
+      "registry_match": {
+        "name": false,
+        "price": false,
+        "collection": true,
+        "garment_image": "correct",
+        "notes": "fixture stub [repo tools/v2-theme-preview.php:524,536]: WC_Product::get_price_html() hard-codes $128.00 and get_name() returns short display names for every product; theme renders what Woo returns, so price/name deltas on this fixture are not theme defects. Per card [repro]: SG-005 card h2 'Bay Bridge Shirt' (registry: The Bridge Series 'The Bay Bridge' Shirt, $25) - img alt carries the registry name; BR-004 'Black Rose Hoodie' (registry: BLACK Rose Hoodie, $40); LH-004 exact ($265 in registry); KIDS-001 exact ($65 in registry). Collection eyebrows Signature/Black Rose/Love Hurts/Kids Capsule match registry collections and data-collection. Card fronts eyes-on vs registry front role (wordpress-theme/skyyrose-flagship/assets/images/products/*-onmodel*.webp): all four correct garments; KIDS-002 is the purple/pink set, allowed in the full grid."
+      },
+      "shop": {
+        "card_count": 5,
+        "result_count": "Showing all 5 results",
+        "empty_state_text": null,
+        "pagination_rendered": false,
+        "eyebrow": "The House Edit",
+        "ordering_form": {
+          "method": "get",
+          "action": null,
+          "select": true,
+          "submit": true,
+          "noscript": false
+        },
+        "filters_form": {
+          "method": "get",
+          "action": "/tools/v2-theme-preview.php?route=shop",
+          "controls": 5,
+          "submit": true
+        },
+        "cards": [
+          {
+            "sku": "SG-005",
+            "collection": "signature",
+            "eyebrow": "Signature",
+            "title": "Bay Bridge Shirt",
+            "price": "$128.00",
+            "availability": "Available for preorder",
+            "frame": "archive",
+            "img_count": 1,
+            "img_src": "sg-005-320w.webp",
+            "img_loaded": true,
+            "rendered_1440": [
+              285,
+              427
+            ],
+            "actions": []
+          },
+          {
+            "sku": "BR-004",
+            "collection": "black-rose",
+            "eyebrow": "Black Rose",
+            "title": "Black Rose Hoodie",
+            "price": "$128.00",
+            "availability": "Available for preorder",
+            "frame": "archive",
+            "img_count": 1,
+            "img_src": "br-004-320w.webp",
+            "img_loaded": true,
+            "rendered_1440": [
+              285,
+              427
+            ],
+            "actions": []
+          },
+          {
+            "sku": "LH-004",
+            "collection": "love-hurts",
+            "eyebrow": "Love Hurts",
+            "title": "Love Hurts Bomber Jacket",
+            "price": "$128.00",
+            "availability": "Available for preorder",
+            "frame": "archive",
+            "img_count": 1,
+            "img_src": "lh-004-320w.webp",
+            "img_loaded": true,
+            "rendered_1440": [
+              285,
+              427
+            ],
+            "actions": []
+          },
+          {
+            "sku": "KIDS-001",
+            "collection": "kids-capsule",
+            "eyebrow": "Kids Capsule",
+            "title": "Kids Colorblock Hoodie Set — Red/Black",
+            "price": "$128.00",
+            "availability": "Available for preorder",
+            "frame": "archive",
+            "img_count": 1,
+            "img_src": "kids-001-320w.webp",
+            "img_loaded": true,
+            "rendered_1440": [
+              285,
+              427
+            ],
+            "actions": []
+          },
+          {
+            "sku": "KIDS-002",
+            "collection": "kids-capsule",
+            "eyebrow": "Kids Capsule",
+            "title": "Kids Colorblock Hoodie Set — Purple/Black",
+            "price": "$128.00",
+            "availability": "Available for preorder",
+            "frame": "archive",
+            "img_count": 1,
+            "img_src": "kids-002-320w.webp",
+            "img_loaded": true,
+            "rendered_1440": [
+              285,
+              427
+            ],
+            "actions": []
+          }
+        ]
+      },
+      "nojs": {
+        "frames_differ": true,
+        "frame_hashes": [
+          "689fc6acf3b2",
+          "63e5b52e60db"
+        ],
+        "wheel_scroll_reached": "1967/2867",
+        "images": {
+          "total": 12,
+          "loaded": 11,
+          "broken": [],
+          "pending": 0
+        },
+        "product_images_visible": [
+          {
+            "src": "sg-005-320w.webp",
+            "w": 285,
+            "h": 427,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          },
+          {
+            "src": "br-004-320w.webp",
+            "w": 285,
+            "h": 427,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          },
+          {
+            "src": "lh-004-320w.webp",
+            "w": 285,
+            "h": 427,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          },
+          {
+            "src": "kids-001-320w.webp",
+            "w": 285,
+            "h": 427,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          },
+          {
+            "src": "kids-002-320w.webp",
+            "w": 285,
+            "h": 427,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          }
+        ],
+        "forms": [
+          {
+            "class": "woocommerce-ordering",
+            "method": "get",
+            "action": null,
+            "selects": [
+              "orderby"
+            ],
+            "submit": [
+              "button[type=submit] Sort"
+            ],
+            "noscript": false
+          },
+          {
+            "class": "sr2-shop-filters__form",
+            "method": "get",
+            "action": "/tools/v2-theme-preview.php?route=shop",
+            "selects": [
+              "product_cat",
+              "stock_status"
+            ],
+            "submit": [
+              "button[type=submit] Apply filters"
+            ],
+            "noscript": false
+          },
+          {
+            "class": "sr2-search-dialog__form",
+            "method": "get",
+            "action": "/tools/v2-theme-preview.php?route=home",
+            "selects": [],
+            "submit": [
+              "button[type=submit] Search"
+            ],
+            "noscript": false
+          }
+        ],
+        "console": [],
+        "failed": [],
+        "method": "javaScriptEnabled:false, scrolling driven by page.mouse.wheel only; page.evaluate used read-only for DOM inspection"
+      },
+      "visual_review": "1440: quiet arrival band - Anton eyebrow 'The House Edit', Archivo 'Shop' left, result count and native 'Shop order' select right, collection tabs plus 'Filters +', then a 4-column garment-led grid on #111 tiles with no portal frames; each card carries index, accent-coloured collection eyebrow, SKU reference, title, price, availability and quiet hairline Quick view / Select options. Reads like Kith/Culture Kings archive merchandising, not European luxury. 390: single column, tabs wrap to two lines, cards full-width at 329x494; nothing cramped or overlapping. The fixture's 'LOCAL V2 REVIEW' badge overlaps card 4's title at 1440 (fixture chrome). The 5th card sits alone on row two - a product-count artefact, not a layout defect.",
+      "findings": [
+        {
+          "severity": "minor",
+          "invariant": "skip link target receives focus",
+          "observation": "skip link is first stop and targets #primary [repro]; after Enter location.hash=#primary but document.activeElement stays body because <main id=primary> lacks tabindex=-1 [repo woocommerce/archive-product.php:31, woocommerce/single-product.php:37]; page.php/front-page.php carry tabindex=-1 and do receive focus [repro cart/checkout/account/order-tracking/wishlist]",
+          "evidence": "probe-raw.json shop.skip_link_activation"
+        },
+        {
+          "severity": "note",
+          "invariant": "registry price/name on card",
+          "observation": "fixture stub [repo tools/v2-theme-preview.php:524,536]: WC_Product::get_price_html() hard-codes $128.00 and get_name() returns short display names for every product; theme renders what Woo returns, so price/name deltas on this fixture are not theme defects",
+          "evidence": "shop-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "pagination preserved",
+          "observation": "fixture exposes 5 products, so no pagination is rendered and it could not be exercised [repro]",
+          "evidence": "shop-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "no-JS sort/filter",
+          "observation": "without JS the ordering form exposes a visible 'Sort' submit (hidden by JS when on) and the filter form 'Apply filters'; both method=get, orderby/product_cat/stock_status selects present; page scrolls by wheel (two differing frame hashes) and all 5 card images render [repro]",
+          "evidence": "shop-1440-nojs.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "fixture chrome",
+          "observation": "'LOCAL V2 REVIEW' badge (fixture) overlaps card 4 at 1440 and card 1 at 390 - not theme output",
+          "evidence": "shop-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "product",
+      "sku": "sg-005",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=sg-005",
+      "http_status": 200,
+      "captures": [
+        "product-sg-005-1440.png",
+        "product-sg-005-390.png",
+        "product-sg-005-390-reduced.png",
+        "product-sg-005-1440-nojs.png"
+      ],
+      "console": [],
+      "failed_requests": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "visible_indicator": true
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "visible_indicator": true
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "class": "",
+          "text": "Collections",
+          "visible_indicator": true
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "class": "",
+          "text": "Journal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "class": "",
+          "text": "About",
+          "visible_indicator": true
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "visible_indicator": true
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "visible_indicator": true
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "visible_indicator": true
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "class": "",
+          "text": "Signature",
+          "visible_indicator": true
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "class": "",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 13,
+          "tag": "select",
+          "class": "",
+          "text": "Choose a sizeXSSMLXL2XL",
+          "visible_indicator": true
+        },
+        {
+          "stop": 14,
+          "tag": "input",
+          "class": "",
+          "text": "1",
+          "visible_indicator": true
+        }
+      ],
+      "skip_link_ok": true,
+      "skip_target_receives_focus": false,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "sans-serif",
+        "Anton",
+        "Hanken Grotesk",
+        "Archivo",
+        "ui-monospace",
+        "Cinzel"
+      ],
+      "fonts_loaded": [
+        "Archivo",
+        "Hanken Grotesk",
+        "Anton",
+        "Cinzel"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "crimson_text_elements": [],
+      "sub_aa_text_elements": 0,
+      "scroll_height": {
+        "1440": 4286,
+        "390": 5880
+      },
+      "h1": "Bay Bridge Shirt",
+      "reduced_motion_390": {
+        "html_class": "sr2-motion-ready sr2-motion-reduced",
+        "running_animations": 0,
+        "reveal_pending": 0
+      },
+      "registry_match": {
+        "name": false,
+        "price": false,
+        "collection": true,
+        "garment_image": "correct",
+        "notes": "h1 'Bay Bridge Shirt' vs registry 'The Bridge Series 'The Bay Bridge' Shirt' (fixture stub name); PDP price $128.00 vs registry $25 - fixture stub [repo tools/v2-theme-preview.php:524,536]: WC_Product::get_price_html() hard-codes $128.00 and get_name() returns short display names for every product; theme renders what Woo returns, so price/name deltas on this fixture are not theme defects. Collection eyebrow 'Signature' and <main data-collection> = signature match the registry [repro]. Garment image eyes-on vs registry front role: correct garment for the SKU. Sizes shown XS-2XL are the fixture stub; registry available_sizes ['S', 'M', 'L', 'XL', '2XL'] - unverifiable here."
+      },
+      "pdp": {
+        "h1": "Bay Bridge Shirt",
+        "price": "$128.00",
+        "stock": "Available for preorder",
+        "sku_meta": "SG-005",
+        "collection_eyebrow": "Signature",
+        "json_ld_scripts": 0,
+        "description_present": true,
+        "related_cards": 4,
+        "gallery": {
+          "role": "region",
+          "aria_label": "2 published views",
+          "img_count": 2,
+          "dominant_share": 0.98,
+          "sticky": "sticky",
+          "images_1440": [
+            {
+              "src": "sg-005-front.webp",
+              "alt": "SkyyRose published product view",
+              "w": 761,
+              "h": 1142,
+              "area": 868759,
+              "complete": true,
+              "naturalWidth": 533
+            },
+            {
+              "src": "sg-005-packshot.webp",
+              "alt": "SkyyRose published product view",
+              "w": 248,
+              "h": 80,
+              "area": 19861,
+              "complete": true,
+              "naturalWidth": 600
+            }
+          ],
+          "images_390": [
+            [
+              "sg-005-front.webp",
+              358,
+              537
+            ],
+            [
+              "sg-005-packshot.webp",
+              114,
+              56
+            ]
+          ]
+        },
+        "purchase_form": {
+          "method": null,
+          "action": null,
+          "class": "cart variations_form",
+          "sizeOptions": [
+            "Choose a size",
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "2XL"
+          ],
+          "sizeLabel": "Size",
+          "qtyLabel": "Quantity",
+          "atc": {
+            "text": "Secure this piece",
+            "type": "button",
+            "name": null
+          }
+        },
+        "size_guide": {
+          "opener": {
+            "tag": "a",
+            "text": "Fit + size guide→",
+            "href": "/tools/v2-theme-preview.php?route=size-guide",
+            "ariaControls": "sr2-size-guide-dialog",
+            "haspopup": "dialog"
+          },
+          "dialog": {
+            "open": false,
+            "labelledby": "sr2-size-guide-title",
+            "title": "Choose the silhouette you want to live in."
+          }
+        },
+        "keyboard_reach": {
+          "sizeSelect": {
+            "stop": 13,
+            "label": "Size"
+          },
+          "addToCart": {
+            "stop": 15,
+            "label": "Secure this piece"
+          },
+          "sizeGuideOpener": {
+            "stop": 16,
+            "label": "Fit + size guide→"
+          },
+          "stops": 16
+        },
+        "size_guide_interaction": {
+          "openedViaKeyboard": true,
+          "focusInsideAfterOpen": {
+            "inside": true,
+            "tag": "button",
+            "text": "Close fit and size guide"
+          },
+          "closedViaEscape": true,
+          "focusReturnedToOpener": true,
+          "focusAfterClose": {
+            "tag": "a",
+            "class": "sr2-editorial-link",
+            "text": "Fit + size guide→",
+            "id": null,
+            "visibleIndicator": true,
+            "outline": "solid 2px rgb(245, 245, 240)",
+            "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+            "inViewport": true
+          },
+          "closeButtonWorks": {
+            "closed": true,
+            "focusOnOpener": true
+          }
+        },
+        "url_after_interactions": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=sg-005"
+      },
+      "nojs": {
+        "frames_differ": true,
+        "frame_hashes": [
+          "7b4937dacec6",
+          "c2808ba08a7a"
+        ],
+        "wheel_scroll_reached": "4135/5035",
+        "images": {
+          "total": 14,
+          "loaded": 13,
+          "broken": [],
+          "pending": 0
+        },
+        "product_images_visible": [
+          {
+            "src": "sg-005-front.webp",
+            "w": 761,
+            "h": 1142,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          },
+          {
+            "src": "sg-005-packshot.webp",
+            "w": 248,
+            "h": 80,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          },
+          {
+            "src": "br-004-480w.webp",
+            "w": 285,
+            "h": 427,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          },
+          {
+            "src": "lh-004-480w.webp",
+            "w": 285,
+            "h": 427,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          },
+          {
+            "src": "kids-001-480w.webp",
+            "w": 285,
+            "h": 427,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          },
+          {
+            "src": "kids-002-480w.webp",
+            "w": 285,
+            "h": 427,
+            "opacity": "1",
+            "visibility": "visible",
+            "clip": "none",
+            "loaded": true
+          }
+        ],
+        "forms": [
+          {
+            "class": "cart variations_form",
+            "method": null,
+            "action": null,
+            "selects": [
+              "preview-size"
+            ],
+            "submit": [
+              "button[type=button] Secure this piece"
+            ],
+            "noscript": false
+          },
+          {
+            "class": "sr2-search-dialog__form",
+            "method": "get",
+            "action": "/tools/v2-theme-preview.php?route=home",
+            "selects": [],
+            "submit": [
+              "button[type=submit] Search"
+            ],
+            "noscript": false
+          }
+        ],
+        "console": [],
+        "failed": [],
+        "method": "javaScriptEnabled:false, scrolling driven by page.mouse.wheel only; page.evaluate used read-only for DOM inspection"
+      },
+      "visual_review": "1440: breadcrumb, then a dominant 761x1142 on-model hero (white tee, blue/cyan rose cluster, Bay Bridge dusk) in a sticky gallery left with a small thumb rail beneath; buy column right with gold Signature eyebrow, Archivo title, price, lede, availability, native Size select, Quantity and a gold-filled 'Secure this piece', SKU/collection meta, promise line, quiet Fit + size guide / Shipping + returns links and the house note. Then Description tabs, 'More from the house' 4-up grid, a full-bleed Signature chapter (Golden Gate lockup scene) with engraved '01 / Signature' index, chapter title and 'Enter Signature'. Restrained, garment-first, on-contract. 390: stacks cleanly, hero 358x537, no overflow, controls full-width; the thumb rail's packshot is small (~56px) but legible.",
+      "findings": [
+        {
+          "severity": "minor",
+          "invariant": "skip link target receives focus",
+          "observation": "skip link is first stop and targets #primary [repro]; after Enter location.hash=#primary but document.activeElement stays body because <main id=primary> lacks tabindex=-1 [repo woocommerce/archive-product.php:31, woocommerce/single-product.php:37]; page.php/front-page.php carry tabindex=-1 and do receive focus [repro cart/checkout/account/order-tracking/wishlist]",
+          "evidence": "probe-raw.json product-sg-005.skip_link_activation"
+        },
+        {
+          "severity": "note",
+          "invariant": "native Woo purchase spread",
+          "observation": "purchase form is the fixture stub [repo tools/v2-theme-preview.php:186]: no method/action, add-to-cart type=button, sizes XS-2XL; theme ships no override of Woo core single-product/add-to-cart/variable.php [repo], so Woo core's method=post form applies on production - unverifiable here; rendered spread: price, stock 'Available for preorder', Size select (label 'Size', stop 13), Quantity (label 'Quantity'), add-to-cart 'Secure this piece' (stop 15) all keyboard-reachable and labelled [repro]",
+          "evidence": "product-sg-005-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "size guide dialog",
+          "observation": "Enter on the focused 'Fit + size guide' opener opens dialog#sr2-size-guide-dialog with focus on its Close button; Escape closes and returns focus to the opener (visible ring); the Close button path also returns focus [repro]",
+          "evidence": "frames/product-sg-005-1440-size-guide-open.png (scratchpad)"
+        },
+        {
+          "severity": "note",
+          "invariant": "JSON-LD/SEO hooks",
+          "observation": "0 application/ld+json scripts on the fixture [repro]; theme emits JSON-LD from inc/seo-indexing.php:528 through WP head hooks the fixture does not run [repo][inferred fixture gap]",
+          "evidence": "probe-raw.json product-sg-005.pdp.jsonLd"
+        },
+        {
+          "severity": "note",
+          "invariant": "BR-002/KIDS-002 out of curated slots",
+          "observation": "KIDS-002 appears in 'More from the house' on every PDP [repro]; that grid is Woo's native woocommerce_after_single_product_summary related loop with only the heading renamed [repo template-parts/commerce/product-hero.php:144-148], i.e. not a curated slot; on a 5-product fixture the loop necessarily includes it",
+          "evidence": "product-sg-005-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "registry price/name",
+          "observation": "fixture stub [repo tools/v2-theme-preview.php:524,536]: WC_Product::get_price_html() hard-codes $128.00 and get_name() returns short display names for every product; theme renders what Woo returns, so price/name deltas on this fixture are not theme defects",
+          "evidence": "product-sg-005-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "product",
+      "sku": "br-004",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=br-004",
+      "http_status": 200,
+      "captures": [
+        "product-br-004-1440.png",
+        "product-br-004-390.png",
+        "product-br-004-390-reduced.png"
+      ],
+      "console": [],
+      "failed_requests": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "visible_indicator": true
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "visible_indicator": true
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "class": "",
+          "text": "Collections",
+          "visible_indicator": true
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "class": "",
+          "text": "Journal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "class": "",
+          "text": "About",
+          "visible_indicator": true
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "visible_indicator": true
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "visible_indicator": true
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "visible_indicator": true
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "class": "",
+          "text": "Black Rose",
+          "visible_indicator": true
+        },
+        {
+          "stop": 12,
+          "tag": "select",
+          "class": "",
+          "text": "Choose a sizeXSSMLXL2XL",
+          "visible_indicator": true
+        },
+        {
+          "stop": 13,
+          "tag": "input",
+          "class": "",
+          "text": "1",
+          "visible_indicator": true
+        },
+        {
+          "stop": 14,
+          "tag": "button",
+          "class": "single_add_to_cart_button button alt",
+          "text": "Secure this piece",
+          "visible_indicator": true
+        }
+      ],
+      "skip_link_ok": true,
+      "skip_target_receives_focus": false,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "sans-serif",
+        "Anton",
+        "Hanken Grotesk",
+        "Archivo",
+        "ui-monospace",
+        "Cinzel"
+      ],
+      "fonts_loaded": [
+        "Archivo",
+        "Hanken Grotesk",
+        "Anton",
+        "Cinzel"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "crimson_text_elements": [],
+      "sub_aa_text_elements": 0,
+      "scroll_height": {
+        "1440": 3660,
+        "390": 5688
+      },
+      "h1": "Black Rose Hoodie",
+      "reduced_motion_390": {
+        "html_class": "sr2-motion-ready sr2-motion-reduced",
+        "running_animations": 0,
+        "reveal_pending": 0
+      },
+      "registry_match": {
+        "name": false,
+        "price": false,
+        "collection": true,
+        "garment_image": "correct",
+        "notes": "h1 'Black Rose Hoodie' vs registry 'BLACK Rose Hoodie' (fixture stub name); PDP price $128.00 vs registry $40 - fixture stub [repo tools/v2-theme-preview.php:524,536]: WC_Product::get_price_html() hard-codes $128.00 and get_name() returns short display names for every product; theme renders what Woo returns, so price/name deltas on this fixture are not theme defects. Collection eyebrow 'Black Rose' and <main data-collection> = black-rose match the registry [repro]. Garment image eyes-on vs registry front role: correct garment for the SKU. Sizes shown XS-2XL are the fixture stub; registry available_sizes ['S', 'M', 'L', 'XL', '2XL', '3XL'] - unverifiable here."
+      },
+      "pdp": {
+        "h1": "Black Rose Hoodie",
+        "price": "$128.00",
+        "stock": "Available for preorder",
+        "sku_meta": "BR-004",
+        "collection_eyebrow": "Black Rose",
+        "json_ld_scripts": 0,
+        "description_present": true,
+        "related_cards": 4,
+        "gallery": {
+          "role": "region",
+          "aria_label": "0 published views",
+          "img_count": 1,
+          "dominant_share": 1,
+          "sticky": "sticky",
+          "images_1440": [
+            {
+              "src": "br-004-480w.webp",
+              "alt": "BLACK Rose Hoodie — front on model",
+              "w": 761,
+              "h": 576,
+              "area": 438219,
+              "complete": true,
+              "naturalWidth": 384
+            }
+          ],
+          "images_390": [
+            [
+              "br-004-768w.webp",
+              358,
+              439
+            ]
+          ]
+        },
+        "purchase_form": {
+          "method": null,
+          "action": null,
+          "class": "cart variations_form",
+          "sizeOptions": [
+            "Choose a size",
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "2XL"
+          ],
+          "sizeLabel": "Size",
+          "qtyLabel": "Quantity",
+          "atc": {
+            "text": "Secure this piece",
+            "type": "button",
+            "name": null
+          }
+        },
+        "size_guide": {
+          "opener": {
+            "tag": "a",
+            "text": "Fit + size guide→",
+            "href": "/tools/v2-theme-preview.php?route=size-guide",
+            "ariaControls": "sr2-size-guide-dialog",
+            "haspopup": "dialog"
+          },
+          "dialog": {
+            "open": false,
+            "labelledby": "sr2-size-guide-title",
+            "title": "Choose the silhouette you want to live in."
+          }
+        },
+        "keyboard_reach": {
+          "sizeSelect": {
+            "stop": 12,
+            "label": "Size"
+          },
+          "addToCart": {
+            "stop": 14,
+            "label": "Secure this piece"
+          },
+          "sizeGuideOpener": {
+            "stop": 15,
+            "label": "Fit + size guide→"
+          },
+          "stops": 15
+        },
+        "size_guide_interaction": {
+          "openedViaKeyboard": true,
+          "focusInsideAfterOpen": {
+            "inside": true,
+            "tag": "button",
+            "text": "Close fit and size guide"
+          },
+          "closedViaEscape": true,
+          "focusReturnedToOpener": true,
+          "focusAfterClose": {
+            "tag": "a",
+            "class": "sr2-editorial-link",
+            "text": "Fit + size guide→",
+            "id": null,
+            "visibleIndicator": true,
+            "outline": "solid 2px rgb(245, 245, 240)",
+            "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+            "inViewport": true
+          },
+          "closeButtonWorks": {
+            "closed": true,
+            "focusOnOpener": true
+          }
+        },
+        "url_after_interactions": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=br-004"
+      },
+      "nojs": null,
+      "visual_review": "1440: same shell with the Black Rose silver accent - eyebrow, silver 'Secure this piece', 'Beauty without permission' house note, 'Bloom under a Bay Bridge moon' chapter over the Black Rose lockup scene. The gallery, however, shows a portrait model shot centred in a landscape tile with dark void on both sides and no thumb rail, visibly softer than the other PDPs (384px source). Everything else - grid, chapter, footer - matches the other PDPs. 390: hero 358x439 letterboxed, otherwise a clean stack.",
+      "findings": [
+        {
+          "severity": "major",
+          "invariant": "#sr2-product-views accessible name = published view count; PDP hero one dominant image",
+          "observation": "aria-label reads '0 published views' while the region renders one visible image (br-004-480w.webp, the derived approved card front, alt 'BLACK Rose Hoodie - front on model') - the accessible name contradicts the content [repro]. That fallback hero is laid out in a 761x576 landscape tile with the portrait image letterboxed (~50% void either side) and upscaled from a 384px-wide source into a 761px slot (naturalWidth 384), so the hero is soft at 1440 [repro]. No thumbnail rail renders. Root: data/opening-product-media.json products.br-004 = status REJECTED_AUTHENTICITY, views [] [repo]; the fixture maps attachment ids 2/201/202 to br-004 front/back/packshot previews [repo tools/v2-theme-preview.php:436-445] and the delivery layer discards them [inferred]. SG-005 is also views [] (STALE_PRODUCT_HASH) yet renders '2 published views', so the two statuses are handled differently [repro].",
+          "evidence": "product-br-004-1440.png"
+        },
+        {
+          "severity": "major",
+          "invariant": "single product registry is the SOT (founder authority)",
+          "observation": "opening-product-media.json's br-004 rejection reason describes a hoodie with a small wearer-left chest mark, longitudinal wearer-left forearm artwork, light floral hood lining, white drawstrings and no circular upper-arm patch [repo]; the registry record (get_product br-004, FOUNDER_PRODUCT_SPECIFICATIONS) specifies black-roses-cloud-cluster embroidered front_chest_center, all tonal black, drawstring hood [repro]. The served card and PDP image matches the registry detail-for-detail [repro eyes-on]. The two records conflict; the registry is the SOT and the media projection may be stale. Not adjudicated here - needs Corey to confirm which BR-004 specification is current so Agent C can clear or regenerate the published views.",
+          "evidence": "refs/br-004-REGISTRY-front.png vs refs/br-004-SERVED-cardfront.png (scratchpad); wordpress-theme/skyyrose-flagship-2/data/opening-product-media.json"
+        },
+        {
+          "severity": "minor",
+          "invariant": "skip link target receives focus",
+          "observation": "skip link is first stop and targets #primary [repro]; after Enter location.hash=#primary but document.activeElement stays body because <main id=primary> lacks tabindex=-1 [repo woocommerce/archive-product.php:31, woocommerce/single-product.php:37]; page.php/front-page.php carry tabindex=-1 and do receive focus [repro cart/checkout/account/order-tracking/wishlist]",
+          "evidence": "probe-raw.json product-br-004.skip_link_activation"
+        },
+        {
+          "severity": "note",
+          "invariant": "native Woo purchase spread",
+          "observation": "purchase form is the fixture stub [repo tools/v2-theme-preview.php:186]: no method/action, add-to-cart type=button, sizes XS-2XL; theme ships no override of Woo core single-product/add-to-cart/variable.php [repo], so Woo core's method=post form applies on production - unverifiable here; rendered spread: price, stock 'Available for preorder', Size select (label 'Size', stop 12), Quantity (label 'Quantity'), add-to-cart 'Secure this piece' (stop 14) all keyboard-reachable and labelled [repro]",
+          "evidence": "product-br-004-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "size guide dialog",
+          "observation": "Enter on the focused 'Fit + size guide' opener opens dialog#sr2-size-guide-dialog with focus on its Close button; Escape closes and returns focus to the opener (visible ring); the Close button path also returns focus [repro]",
+          "evidence": "frames/product-br-004-1440-size-guide-open.png (scratchpad)"
+        },
+        {
+          "severity": "note",
+          "invariant": "JSON-LD/SEO hooks",
+          "observation": "0 application/ld+json scripts on the fixture [repro]; theme emits JSON-LD from inc/seo-indexing.php:528 through WP head hooks the fixture does not run [repo][inferred fixture gap]",
+          "evidence": "probe-raw.json product-br-004.pdp.jsonLd"
+        },
+        {
+          "severity": "note",
+          "invariant": "BR-002/KIDS-002 out of curated slots",
+          "observation": "KIDS-002 appears in 'More from the house' on every PDP [repro]; that grid is Woo's native woocommerce_after_single_product_summary related loop with only the heading renamed [repo template-parts/commerce/product-hero.php:144-148], i.e. not a curated slot; on a 5-product fixture the loop necessarily includes it",
+          "evidence": "product-br-004-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "registry price/name",
+          "observation": "fixture stub [repo tools/v2-theme-preview.php:524,536]: WC_Product::get_price_html() hard-codes $128.00 and get_name() returns short display names for every product; theme renders what Woo returns, so price/name deltas on this fixture are not theme defects",
+          "evidence": "product-br-004-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "product",
+      "sku": "lh-004",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=lh-004",
+      "http_status": 200,
+      "captures": [
+        "product-lh-004-1440.png",
+        "product-lh-004-390.png",
+        "product-lh-004-390-reduced.png"
+      ],
+      "console": [],
+      "failed_requests": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "visible_indicator": true
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "visible_indicator": true
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "class": "",
+          "text": "Collections",
+          "visible_indicator": true
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "class": "",
+          "text": "Journal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "class": "",
+          "text": "About",
+          "visible_indicator": true
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "visible_indicator": true
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "visible_indicator": true
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "visible_indicator": true
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "class": "",
+          "text": "Love Hurts",
+          "visible_indicator": true
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "class": "",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 13,
+          "tag": "select",
+          "class": "",
+          "text": "Choose a sizeXSSMLXL2XL",
+          "visible_indicator": true
+        },
+        {
+          "stop": 14,
+          "tag": "input",
+          "class": "",
+          "text": "1",
+          "visible_indicator": true
+        }
+      ],
+      "skip_link_ok": true,
+      "skip_target_receives_focus": false,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "sans-serif",
+        "Anton",
+        "Hanken Grotesk",
+        "Archivo",
+        "ui-monospace",
+        "Cinzel"
+      ],
+      "fonts_loaded": [
+        "Archivo",
+        "Hanken Grotesk",
+        "Anton",
+        "Cinzel"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "crimson_text_elements": [],
+      "sub_aa_text_elements": 0,
+      "scroll_height": {
+        "1440": 4224,
+        "390": 5822
+      },
+      "h1": "Love Hurts Bomber Jacket",
+      "reduced_motion_390": {
+        "html_class": "sr2-motion-ready sr2-motion-reduced",
+        "running_animations": 0,
+        "reveal_pending": 0
+      },
+      "registry_match": {
+        "name": true,
+        "price": false,
+        "collection": true,
+        "garment_image": "correct",
+        "notes": "h1 'Love Hurts Bomber Jacket' vs registry 'Love Hurts Bomber Jacket' (exact); PDP price $128.00 vs registry $265 - fixture stub [repo tools/v2-theme-preview.php:524,536]: WC_Product::get_price_html() hard-codes $128.00 and get_name() returns short display names for every product; theme renders what Woo returns, so price/name deltas on this fixture are not theme defects. Collection eyebrow 'Love Hurts' and <main data-collection> = love-hurts match the registry [repro]. Garment image eyes-on vs registry front role: correct garment for the SKU. Sizes shown XS-2XL are the fixture stub; registry available_sizes ['S', 'M', 'L', 'XL', '2XL', '3XL'] - unverifiable here."
+      },
+      "pdp": {
+        "h1": "Love Hurts Bomber Jacket",
+        "price": "$128.00",
+        "stock": "Available for preorder",
+        "sku_meta": "LH-004",
+        "collection_eyebrow": "Love Hurts",
+        "json_ld_scripts": 0,
+        "description_present": true,
+        "related_cards": 4,
+        "gallery": {
+          "role": "region",
+          "aria_label": "3 published views",
+          "img_count": 3,
+          "dominant_share": 0.98,
+          "sticky": "sticky",
+          "images_1440": [
+            {
+              "src": "lh-004-front.webp",
+              "alt": "SkyyRose published product view",
+              "w": 761,
+              "h": 1142,
+              "area": 868759,
+              "complete": true,
+              "naturalWidth": 533
+            },
+            {
+              "src": "lh-004-back.webp",
+              "alt": "SkyyRose published product view",
+              "w": 248,
+              "h": 80,
+              "area": 19861,
+              "complete": true,
+              "naturalWidth": 600
+            },
+            {
+              "src": "lh-004-packshot.webp",
+              "alt": "SkyyRose published product view",
+              "w": 248,
+              "h": 80,
+              "area": 19861,
+              "complete": true,
+              "naturalWidth": 600
+            }
+          ],
+          "images_390": [
+            [
+              "lh-004-front.webp",
+              358,
+              537
+            ],
+            [
+              "lh-004-back.webp",
+              114,
+              56
+            ],
+            [
+              "lh-004-packshot.webp",
+              114,
+              56
+            ]
+          ]
+        },
+        "purchase_form": {
+          "method": null,
+          "action": null,
+          "class": "cart variations_form",
+          "sizeOptions": [
+            "Choose a size",
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "2XL"
+          ],
+          "sizeLabel": "Size",
+          "qtyLabel": "Quantity",
+          "atc": {
+            "text": "Secure this piece",
+            "type": "button",
+            "name": null
+          }
+        },
+        "size_guide": {
+          "opener": {
+            "tag": "a",
+            "text": "Fit + size guide→",
+            "href": "/tools/v2-theme-preview.php?route=size-guide",
+            "ariaControls": "sr2-size-guide-dialog",
+            "haspopup": "dialog"
+          },
+          "dialog": {
+            "open": false,
+            "labelledby": "sr2-size-guide-title",
+            "title": "Choose the silhouette you want to live in."
+          }
+        },
+        "keyboard_reach": {
+          "sizeSelect": {
+            "stop": 13,
+            "label": "Size"
+          },
+          "addToCart": {
+            "stop": 15,
+            "label": "Secure this piece"
+          },
+          "sizeGuideOpener": {
+            "stop": 16,
+            "label": "Fit + size guide→"
+          },
+          "stops": 16
+        },
+        "size_guide_interaction": {
+          "openedViaKeyboard": true,
+          "focusInsideAfterOpen": {
+            "inside": true,
+            "tag": "button",
+            "text": "Close fit and size guide"
+          },
+          "closedViaEscape": true,
+          "focusReturnedToOpener": true,
+          "focusAfterClose": {
+            "tag": "a",
+            "class": "sr2-editorial-link",
+            "text": "Fit + size guide→",
+            "id": null,
+            "visibleIndicator": true,
+            "outline": "solid 2px rgb(245, 245, 240)",
+            "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+            "inViewport": true
+          },
+          "closeButtonWorks": {
+            "closed": true,
+            "focusOnOpener": true
+          }
+        },
+        "url_after_interactions": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=lh-004"
+      },
+      "nojs": null,
+      "visual_review": "1440: Love Hurts accent throughout - crimson (#eb4666) eyebrow and filled 'Secure this piece', hero 761x1142 of the white/black satin bomber with red script, two thumbs (back, packshot), 'The beast speaks' house note, then the related grid and the 'Every wound protects a rose' chapter over the Love Hurts red-script scene. Title wraps to two lines at 1440 as designed. 390: clean stack, hero 358x537, chapter scene crops to 3:2 with the lockup partly cropped but readable.",
+      "findings": [
+        {
+          "severity": "minor",
+          "invariant": "skip link target receives focus",
+          "observation": "skip link is first stop and targets #primary [repro]; after Enter location.hash=#primary but document.activeElement stays body because <main id=primary> lacks tabindex=-1 [repo woocommerce/archive-product.php:31, woocommerce/single-product.php:37]; page.php/front-page.php carry tabindex=-1 and do receive focus [repro cart/checkout/account/order-tracking/wishlist]",
+          "evidence": "probe-raw.json product-lh-004.skip_link_activation"
+        },
+        {
+          "severity": "note",
+          "invariant": "native Woo purchase spread",
+          "observation": "purchase form is the fixture stub [repo tools/v2-theme-preview.php:186]: no method/action, add-to-cart type=button, sizes XS-2XL; theme ships no override of Woo core single-product/add-to-cart/variable.php [repo], so Woo core's method=post form applies on production - unverifiable here; rendered spread: price, stock 'Available for preorder', Size select (label 'Size', stop 13), Quantity (label 'Quantity'), add-to-cart 'Secure this piece' (stop 15) all keyboard-reachable and labelled [repro]",
+          "evidence": "product-lh-004-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "size guide dialog",
+          "observation": "Enter on the focused 'Fit + size guide' opener opens dialog#sr2-size-guide-dialog with focus on its Close button; Escape closes and returns focus to the opener (visible ring); the Close button path also returns focus [repro]",
+          "evidence": "frames/product-lh-004-1440-size-guide-open.png (scratchpad)"
+        },
+        {
+          "severity": "note",
+          "invariant": "JSON-LD/SEO hooks",
+          "observation": "0 application/ld+json scripts on the fixture [repro]; theme emits JSON-LD from inc/seo-indexing.php:528 through WP head hooks the fixture does not run [repo][inferred fixture gap]",
+          "evidence": "probe-raw.json product-lh-004.pdp.jsonLd"
+        },
+        {
+          "severity": "note",
+          "invariant": "BR-002/KIDS-002 out of curated slots",
+          "observation": "KIDS-002 appears in 'More from the house' on every PDP [repro]; that grid is Woo's native woocommerce_after_single_product_summary related loop with only the heading renamed [repo template-parts/commerce/product-hero.php:144-148], i.e. not a curated slot; on a 5-product fixture the loop necessarily includes it",
+          "evidence": "product-lh-004-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "registry price/name",
+          "observation": "fixture stub [repo tools/v2-theme-preview.php:524,536]: WC_Product::get_price_html() hard-codes $128.00 and get_name() returns short display names for every product; theme renders what Woo returns, so price/name deltas on this fixture are not theme defects",
+          "evidence": "product-lh-004-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "product",
+      "sku": "kids-001",
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=kids-001",
+      "http_status": 200,
+      "captures": [
+        "product-kids-001-1440.png",
+        "product-kids-001-390.png",
+        "product-kids-001-390-reduced.png"
+      ],
+      "console": [],
+      "failed_requests": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "visible_indicator": true
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "visible_indicator": true
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "class": "",
+          "text": "Collections",
+          "visible_indicator": true
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "class": "",
+          "text": "Journal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "class": "",
+          "text": "About",
+          "visible_indicator": true
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "visible_indicator": true
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "visible_indicator": true
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "visible_indicator": true
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "class": "",
+          "text": "Kids Capsule",
+          "visible_indicator": true
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "class": "",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 13,
+          "tag": "select",
+          "class": "",
+          "text": "Choose a sizeXSSMLXL2XL",
+          "visible_indicator": true
+        },
+        {
+          "stop": 14,
+          "tag": "input",
+          "class": "",
+          "text": "1",
+          "visible_indicator": true
+        }
+      ],
+      "skip_link_ok": true,
+      "skip_target_receives_focus": false,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "sans-serif",
+        "Anton",
+        "Hanken Grotesk",
+        "Archivo",
+        "ui-monospace",
+        "Cinzel"
+      ],
+      "fonts_loaded": [
+        "Archivo",
+        "Hanken Grotesk",
+        "Anton",
+        "Cinzel"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "crimson_text_elements": [],
+      "sub_aa_text_elements": 0,
+      "scroll_height": {
+        "1440": 4224,
+        "390": 5901
+      },
+      "h1": "Kids Colorblock Hoodie Set — Red/Black",
+      "reduced_motion_390": {
+        "html_class": "sr2-motion-ready sr2-motion-reduced",
+        "running_animations": 0,
+        "reveal_pending": 0
+      },
+      "registry_match": {
+        "name": true,
+        "price": false,
+        "collection": true,
+        "garment_image": "correct",
+        "notes": "h1 'Kids Colorblock Hoodie Set — Red/Black' vs registry 'Kids Colorblock Hoodie Set — Red/Black' (exact); PDP price $128.00 vs registry $65 - fixture stub [repo tools/v2-theme-preview.php:524,536]: WC_Product::get_price_html() hard-codes $128.00 and get_name() returns short display names for every product; theme renders what Woo returns, so price/name deltas on this fixture are not theme defects. Collection eyebrow 'Kids Capsule' and <main data-collection> = kids-capsule match the registry [repro]. Garment image eyes-on vs registry front role: correct garment for the SKU. Sizes shown XS-2XL are the fixture stub; registry available_sizes ['2T', '3T', '4T', '5', '6', '7'] - unverifiable here."
+      },
+      "pdp": {
+        "h1": "Kids Colorblock Hoodie Set — Red/Black",
+        "price": "$128.00",
+        "stock": "Available for preorder",
+        "sku_meta": "KIDS-001",
+        "collection_eyebrow": "Kids Capsule",
+        "json_ld_scripts": 0,
+        "description_present": true,
+        "related_cards": 4,
+        "gallery": {
+          "role": "region",
+          "aria_label": "3 published views",
+          "img_count": 3,
+          "dominant_share": 0.98,
+          "sticky": "sticky",
+          "images_1440": [
+            {
+              "src": "kids-001-front.webp",
+              "alt": "SkyyRose published product view",
+              "w": 761,
+              "h": 1142,
+              "area": 868759,
+              "complete": true,
+              "naturalWidth": 533
+            },
+            {
+              "src": "kids-001-back.webp",
+              "alt": "SkyyRose published product view",
+              "w": 248,
+              "h": 80,
+              "area": 19861,
+              "complete": true,
+              "naturalWidth": 597
+            },
+            {
+              "src": "kids-001-packshot.webp",
+              "alt": "SkyyRose published product view",
+              "w": 248,
+              "h": 80,
+              "area": 19861,
+              "complete": true,
+              "naturalWidth": 360
+            }
+          ],
+          "images_390": [
+            [
+              "kids-001-front.webp",
+              358,
+              537
+            ],
+            [
+              "kids-001-back.webp",
+              114,
+              56
+            ],
+            [
+              "kids-001-packshot.webp",
+              114,
+              56
+            ]
+          ]
+        },
+        "purchase_form": {
+          "method": null,
+          "action": null,
+          "class": "cart variations_form",
+          "sizeOptions": [
+            "Choose a size",
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "2XL"
+          ],
+          "sizeLabel": "Size",
+          "qtyLabel": "Quantity",
+          "atc": {
+            "text": "Secure this piece",
+            "type": "button",
+            "name": null
+          }
+        },
+        "size_guide": {
+          "opener": {
+            "tag": "a",
+            "text": "Fit + size guide→",
+            "href": "/tools/v2-theme-preview.php?route=size-guide",
+            "ariaControls": "sr2-size-guide-dialog",
+            "haspopup": "dialog"
+          },
+          "dialog": {
+            "open": false,
+            "labelledby": "sr2-size-guide-title",
+            "title": "Choose the silhouette you want to live in."
+          }
+        },
+        "keyboard_reach": {
+          "sizeSelect": {
+            "stop": 13,
+            "label": "Size"
+          },
+          "addToCart": {
+            "stop": 15,
+            "label": "Secure this piece"
+          },
+          "sizeGuideOpener": {
+            "stop": 16,
+            "label": "Fit + size guide→"
+          },
+          "stops": 16
+        },
+        "size_guide_interaction": {
+          "openedViaKeyboard": true,
+          "focusInsideAfterOpen": {
+            "inside": true,
+            "tag": "button",
+            "text": "Close fit and size guide"
+          },
+          "closedViaEscape": true,
+          "focusReturnedToOpener": true,
+          "focusAfterClose": {
+            "tag": "a",
+            "class": "sr2-editorial-link",
+            "text": "Fit + size guide→",
+            "id": null,
+            "visibleIndicator": true,
+            "outline": "solid 2px rgb(245, 245, 240)",
+            "boxShadow": "rgb(10, 10, 10) 0px 0px 0px 3px",
+            "inViewport": true
+          },
+          "closeButtonWorks": {
+            "closed": true,
+            "focusOnOpener": true
+          }
+        },
+        "url_after_interactions": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=product&sku=kids-001"
+      },
+      "nojs": null,
+      "visual_review": "1440: Kids Capsule rose accent, hero 761x1142 of the red/black/white colourblock set in the throne room with two thumbs, rose-filled 'Secure this piece', 'The heir' house note; related grid; 'The throne is already hers' chapter over the Heir/Next Up throne scene with '04 / Kids Capsule' engraved index. Three-line title at 1440 is tall but balanced against the hero. 390: stacks cleanly, hero 358x537, no overflow.",
+      "findings": [
+        {
+          "severity": "minor",
+          "invariant": "skip link target receives focus",
+          "observation": "skip link is first stop and targets #primary [repro]; after Enter location.hash=#primary but document.activeElement stays body because <main id=primary> lacks tabindex=-1 [repo woocommerce/archive-product.php:31, woocommerce/single-product.php:37]; page.php/front-page.php carry tabindex=-1 and do receive focus [repro cart/checkout/account/order-tracking/wishlist]",
+          "evidence": "probe-raw.json product-kids-001.skip_link_activation"
+        },
+        {
+          "severity": "note",
+          "invariant": "native Woo purchase spread",
+          "observation": "purchase form is the fixture stub [repo tools/v2-theme-preview.php:186]: no method/action, add-to-cart type=button, sizes XS-2XL; theme ships no override of Woo core single-product/add-to-cart/variable.php [repo], so Woo core's method=post form applies on production - unverifiable here; rendered spread: price, stock 'Available for preorder', Size select (label 'Size', stop 13), Quantity (label 'Quantity'), add-to-cart 'Secure this piece' (stop 15) all keyboard-reachable and labelled [repro]",
+          "evidence": "product-kids-001-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "size guide dialog",
+          "observation": "Enter on the focused 'Fit + size guide' opener opens dialog#sr2-size-guide-dialog with focus on its Close button; Escape closes and returns focus to the opener (visible ring); the Close button path also returns focus [repro]",
+          "evidence": "frames/product-kids-001-1440-size-guide-open.png (scratchpad)"
+        },
+        {
+          "severity": "note",
+          "invariant": "JSON-LD/SEO hooks",
+          "observation": "0 application/ld+json scripts on the fixture [repro]; theme emits JSON-LD from inc/seo-indexing.php:528 through WP head hooks the fixture does not run [repo][inferred fixture gap]",
+          "evidence": "probe-raw.json product-kids-001.pdp.jsonLd"
+        },
+        {
+          "severity": "note",
+          "invariant": "BR-002/KIDS-002 out of curated slots",
+          "observation": "KIDS-002 appears in 'More from the house' on every PDP [repro]; that grid is Woo's native woocommerce_after_single_product_summary related loop with only the heading renamed [repo template-parts/commerce/product-hero.php:144-148], i.e. not a curated slot; on a 5-product fixture the loop necessarily includes it",
+          "evidence": "product-kids-001-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "registry price/name",
+          "observation": "fixture stub [repo tools/v2-theme-preview.php:524,536]: WC_Product::get_price_html() hard-codes $128.00 and get_name() returns short display names for every product; theme renders what Woo returns, so price/name deltas on this fixture are not theme defects",
+          "evidence": "product-kids-001-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "cart",
+      "sku": null,
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=cart",
+      "http_status": 200,
+      "captures": [
+        "cart-1440.png",
+        "cart-390.png"
+      ],
+      "console": [],
+      "failed_requests": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "visible_indicator": true
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "visible_indicator": true
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "class": "",
+          "text": "Collections",
+          "visible_indicator": true
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "class": "",
+          "text": "Journal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "class": "",
+          "text": "About",
+          "visible_indicator": true
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "visible_indicator": true
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "visible_indicator": true
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "visible_indicator": true
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "class": "sr2-editorial-link",
+          "text": "Continue shopping→",
+          "visible_indicator": true
+        },
+        {
+          "stop": 11,
+          "tag": "a",
+          "class": "",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 12,
+          "tag": "a",
+          "class": "",
+          "text": "Bay Bridge Shirt",
+          "visible_indicator": true
+        },
+        {
+          "stop": 13,
+          "tag": "input",
+          "class": "input-text qty text",
+          "text": "1",
+          "visible_indicator": true
+        },
+        {
+          "stop": 14,
+          "tag": "a",
+          "class": "sr2-cart__remove",
+          "text": "Remove Bay Bridge Shirt from your bag",
+          "visible_indicator": true
+        }
+      ],
+      "skip_link_ok": true,
+      "skip_target_receives_focus": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "sans-serif",
+        "Anton",
+        "Hanken Grotesk",
+        "Archivo"
+      ],
+      "fonts_loaded": [
+        "Archivo",
+        "Hanken Grotesk",
+        "Anton"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "crimson_text_elements": [],
+      "sub_aa_text_elements": 0,
+      "scroll_height": {
+        "1440": 1415,
+        "390": 1764
+      },
+      "h1": "Keep your pieces close.",
+      "reduced_motion_390": null,
+      "registry_match": {
+        "name": null,
+        "price": null,
+        "collection": null,
+        "garment_image": "unverifiable",
+        "notes": "not a product surface; cart/checkout line items are fixture stubs (Bay Bridge Shirt, Black Rose Hoodie at $128.00) and their thumbs are the correct garments [repro eyes-on]"
+      },
+      "commerce": {
+        "forms": [
+          {
+            "class": "woocommerce-cart-form sr2-cart__items",
+            "method": "get",
+            "action": "/tools/v2-theme-preview.php",
+            "inputs": 3,
+            "hidden": 1,
+            "buttons": [
+              "Apply",
+              "Update bag"
+            ],
+            "nonce": false
+          }
+        ],
+        "woo_classes_present": {
+          ".woocommerce-cart-form": 1,
+          ".cart_totals": 1,
+          ".shop_table": 1
+        },
+        "sr2_controls": 4,
+        "woo_buttons": 3,
+        "layout": {
+          "class": "sr2-cart__layout",
+          "display": "grid",
+          "columns": "84px 84px 84px 84px 84px 84px 84px 84.0156px 84px 84px 84px 84px"
+        },
+        "eyebrow": "Your bag"
+      },
+      "visual_review": "1440: 'Your bag' eyebrow, Archivo 'Keep your pieces close.' left with a quiet 'Continue shopping' editorial link right; two columns - line items (thumb, name, size, each, line subtotal, qty input, Remove) left, sticky 'Bag total' card right with rose-filled 'Proceed to checkout'; coupon field with outline Apply / Update bag. Native Woo cart form and cart_totals wearing controls.css. 390: items, then coupon, then the total card stacked; qty and Remove drop to their own row - readable, nothing overlaps.",
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "native Woo form structure/nonces",
+          "observation": "fixture renders the Woo form with method=get action=/tools/v2-theme-preview.php and no nonce field [repro]; the theme templates emit method=post [repo woocommerce/cart/cart.php:43, woocommerce/checkout/form-checkout.php:19] - real submission/nonces are outside fixture scope",
+          "evidence": "cart-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "checkout",
+      "sku": null,
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=checkout",
+      "http_status": 200,
+      "captures": [
+        "checkout-1440.png",
+        "checkout-390.png"
+      ],
+      "console": [],
+      "failed_requests": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "visible_indicator": true
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "visible_indicator": true
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "class": "",
+          "text": "Collections",
+          "visible_indicator": true
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "class": "",
+          "text": "Journal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "class": "",
+          "text": "About",
+          "visible_indicator": true
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "visible_indicator": true
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "visible_indicator": true
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "visible_indicator": true
+        },
+        {
+          "stop": 10,
+          "tag": "input",
+          "class": "input-text",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 11,
+          "tag": "input",
+          "class": "input-text",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 12,
+          "tag": "select",
+          "class": "country_to_state country_select",
+          "text": "Select an option… United States (US) Canada United Kingdom (",
+          "visible_indicator": true
+        },
+        {
+          "stop": 13,
+          "tag": "input",
+          "class": "input-text",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 14,
+          "tag": "input",
+          "class": "input-text",
+          "text": "",
+          "visible_indicator": true
+        }
+      ],
+      "skip_link_ok": true,
+      "skip_target_receives_focus": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "sans-serif",
+        "Anton",
+        "Hanken Grotesk",
+        "Archivo"
+      ],
+      "fonts_loaded": [
+        "Archivo",
+        "Hanken Grotesk",
+        "Anton"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "crimson_text_elements": [],
+      "sub_aa_text_elements": 0,
+      "scroll_height": {
+        "1440": 1971,
+        "390": 2928
+      },
+      "h1": "Your pieces are almost home.",
+      "reduced_motion_390": null,
+      "registry_match": {
+        "name": null,
+        "price": null,
+        "collection": null,
+        "garment_image": "unverifiable",
+        "notes": "not a product surface; cart/checkout line items are fixture stubs (Bay Bridge Shirt, Black Rose Hoodie at $128.00) and their thumbs are the correct garments [repro eyes-on]"
+      },
+      "commerce": {
+        "forms": [
+          {
+            "class": "checkout woocommerce-checkout sr2-c-checkout",
+            "method": "get",
+            "action": "/tools/v2-theme-preview.php",
+            "inputs": 15,
+            "hidden": 2,
+            "buttons": [
+              "Place order"
+            ],
+            "nonce": false
+          }
+        ],
+        "woo_classes_present": {
+          "form.checkout.woocommerce-checkout": 1,
+          "#order_review": 1,
+          ".shop_table": 1
+        },
+        "sr2_controls": 4,
+        "woo_buttons": 1,
+        "layout": {
+          "class": null,
+          "display": null,
+          "columns": null
+        },
+        "eyebrow": "Secure checkout"
+      },
+      "visual_review": "1440: 'Secure checkout' eyebrow, Archivo title, 'Your details' billing fields in a 12-col form (name pair, country select, address, apartment, city, state/zip pair, phone, email), ship-to toggle, order notes; sticky 'Order summary' right with items, subtotal, shipping radio, total, payment radio, gateway placeholder, terms checkbox and rose 'Place order'. Required marks are small red asterisks (not #DC143C text). 390: single column, fields full-width, summary below - clean.",
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "native Woo form structure/nonces",
+          "observation": "fixture renders the Woo form with method=get action=/tools/v2-theme-preview.php and no nonce field [repro]; the theme templates emit method=post [repo woocommerce/cart/cart.php:43, woocommerce/checkout/form-checkout.php:19] - real submission/nonces are outside fixture scope",
+          "evidence": "checkout-1440.png"
+        },
+        {
+          "severity": "note",
+          "invariant": "no changes to checkout fields",
+          "observation": "payment block shows 'The live payment provider renders its own secure fields here.' - fixture template copy (template-parts/v2-commerce-preview.php) standing in for gateway fields; real gateway/transactions out of fixture scope [repro]",
+          "evidence": "checkout-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "account",
+      "sku": null,
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=account",
+      "http_status": 200,
+      "captures": [
+        "account-1440.png",
+        "account-390.png"
+      ],
+      "console": [],
+      "failed_requests": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "visible_indicator": true
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "visible_indicator": true
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "class": "",
+          "text": "Collections",
+          "visible_indicator": true
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "class": "",
+          "text": "Journal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "class": "",
+          "text": "About",
+          "visible_indicator": true
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "visible_indicator": true
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "visible_indicator": true
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "visible_indicator": true
+        },
+        {
+          "stop": 10,
+          "tag": "input",
+          "class": "woocommerce-Input woocommerce-Input--text input-text",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 11,
+          "tag": "input",
+          "class": "woocommerce-Input woocommerce-Input--text input-text",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 12,
+          "tag": "button",
+          "class": "show-password-input",
+          "text": "Show password",
+          "visible_indicator": true
+        },
+        {
+          "stop": 13,
+          "tag": "input",
+          "class": "woocommerce-form__input woocommerce-form__input-checkbox",
+          "text": "forever",
+          "visible_indicator": true
+        },
+        {
+          "stop": 14,
+          "tag": "button",
+          "class": "woocommerce-button button woocommerce-form-login__submit",
+          "text": "Log in",
+          "visible_indicator": true
+        }
+      ],
+      "skip_link_ok": true,
+      "skip_target_receives_focus": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "sans-serif",
+        "Anton",
+        "Hanken Grotesk",
+        "Archivo"
+      ],
+      "fonts_loaded": [
+        "Archivo",
+        "Hanken Grotesk",
+        "Anton"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "crimson_text_elements": [],
+      "sub_aa_text_elements": 0,
+      "scroll_height": {
+        "1440": 1239,
+        "390": 1096
+      },
+      "h1": "My account",
+      "reduced_motion_390": null,
+      "registry_match": {
+        "name": null,
+        "price": null,
+        "collection": null,
+        "garment_image": "unverifiable",
+        "notes": "n/a"
+      },
+      "commerce": {
+        "forms": [
+          {
+            "class": "woocommerce-form woocommerce-form-login login",
+            "method": "get",
+            "action": "/tools/v2-theme-preview.php",
+            "inputs": 3,
+            "hidden": 2,
+            "buttons": [
+              "",
+              "Log in"
+            ],
+            "nonce": false
+          }
+        ],
+        "woo_classes_present": {
+          ".woocommerce-form-login": 1
+        },
+        "sr2_controls": 4,
+        "woo_buttons": 1,
+        "layout": {
+          "class": null,
+          "display": null,
+          "columns": null
+        },
+        "eyebrow": "Client account"
+      },
+      "visual_review": "1440 and 390: 'Client account' eyebrow, Archivo 'My account', native Woo login form (username, password, remember me, rose 'Log in', 'Lost your password?') in a 512px column on the void. Sparse but on-contract. The password field's show/hide toggle renders as a blank grey square with no glyph.",
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "native Woo form structure/nonces",
+          "observation": "fixture renders the Woo form with method=get action=/tools/v2-theme-preview.php and no nonce field [repro]; the theme templates emit method=post [repo woocommerce/cart/cart.php:43, woocommerce/checkout/form-checkout.php:19] - real submission/nonces are outside fixture scope",
+          "evidence": "account-1440.png"
+        },
+        {
+          "severity": "minor",
+          "invariant": "theme controls on native Woo forms / readable controls",
+          "observation": "the .show-password-input toggle renders as a blank grey square (UA button face, no glyph) at 1440 and 390 [repro]; it is keyboard-reachable (stop 12) with accessible name 'Show password' and a visible focus ring [repro]. controls.css:134-152 only sizes/positions it and applies a filter to a ::before glyph it expects from Woo core CSS; inc/performance.php:60-61 dequeues only woocommerce-layout/smallscreen, so woocommerce-general (and its icon) should still load on production [repo] - unverified here [inferred]",
+          "evidence": "account-1440.png (crop: scratchpad crop-account-password-1440.png)"
+        }
+      ]
+    },
+    {
+      "route": "order-tracking",
+      "sku": null,
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=order-tracking",
+      "http_status": 200,
+      "captures": [
+        "order-tracking-1440.png",
+        "order-tracking-390.png"
+      ],
+      "console": [],
+      "failed_requests": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "visible_indicator": true
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "visible_indicator": true
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "class": "",
+          "text": "Collections",
+          "visible_indicator": true
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "class": "",
+          "text": "Journal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "class": "",
+          "text": "About",
+          "visible_indicator": true
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "visible_indicator": true
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "visible_indicator": true
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "visible_indicator": true
+        },
+        {
+          "stop": 10,
+          "tag": "input",
+          "class": "input-text",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 11,
+          "tag": "input",
+          "class": "input-text",
+          "text": "",
+          "visible_indicator": true
+        },
+        {
+          "stop": 12,
+          "tag": "button",
+          "class": "button",
+          "text": "Track",
+          "visible_indicator": true
+        },
+        {
+          "stop": 13,
+          "tag": "a",
+          "class": "sr2-house-footer__wordmark",
+          "text": "SkyyRose",
+          "visible_indicator": true
+        },
+        {
+          "stop": 14,
+          "tag": "summary",
+          "class": "",
+          "text": "Explore",
+          "visible_indicator": true
+        }
+      ],
+      "skip_link_ok": true,
+      "skip_target_receives_focus": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "sans-serif",
+        "Anton",
+        "Hanken Grotesk",
+        "Archivo"
+      ],
+      "fonts_loaded": [
+        "Archivo",
+        "Hanken Grotesk",
+        "Anton"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "crimson_text_elements": [],
+      "sub_aa_text_elements": 0,
+      "scroll_height": {
+        "1440": 1235,
+        "390": 1120
+      },
+      "h1": "Order tracking",
+      "reduced_motion_390": null,
+      "registry_match": {
+        "name": null,
+        "price": null,
+        "collection": null,
+        "garment_image": "unverifiable",
+        "notes": "n/a"
+      },
+      "commerce": {
+        "forms": [
+          {
+            "class": "woocommerce-form woocommerce-form-track-order track_order",
+            "method": "get",
+            "action": "/tools/v2-theme-preview.php",
+            "inputs": 2,
+            "hidden": 1,
+            "buttons": [
+              "Track"
+            ],
+            "nonce": false
+          }
+        ],
+        "woo_classes_present": {
+          ".woocommerce-form-track-order": 1
+        },
+        "sr2_controls": 4,
+        "woo_buttons": 1,
+        "layout": {
+          "class": null,
+          "display": null,
+          "columns": null
+        },
+        "eyebrow": "Client services"
+      },
+      "visual_review": "1440 and 390: 'Client services' eyebrow, Archivo 'Order tracking', Woo's tracking copy, Order ID and Billing email fields with placeholders, rose 'Track'. Clean reading column; nothing generic beyond Woo's own copy.",
+      "findings": [
+        {
+          "severity": "note",
+          "invariant": "native Woo form structure/nonces",
+          "observation": "fixture renders the Woo form with method=get action=/tools/v2-theme-preview.php and no nonce field [repro]; the theme templates emit method=post [repo woocommerce/cart/cart.php:43, woocommerce/checkout/form-checkout.php:19] - real submission/nonces are outside fixture scope",
+          "evidence": "order-tracking-1440.png"
+        }
+      ]
+    },
+    {
+      "route": "wishlist",
+      "sku": null,
+      "url": "http://127.0.0.1:8790/tools/v2-theme-preview.php?route=wishlist",
+      "http_status": 200,
+      "captures": [
+        "wishlist-1440.png",
+        "wishlist-390.png"
+      ],
+      "console": [],
+      "failed_requests": [],
+      "focus_order": [
+        {
+          "stop": 1,
+          "tag": "a",
+          "class": "sr2-skip",
+          "text": "Skip to content",
+          "visible_indicator": true
+        },
+        {
+          "stop": 2,
+          "tag": "a",
+          "class": "sr2-header__brand",
+          "text": "SkyyRose home",
+          "visible_indicator": true
+        },
+        {
+          "stop": 3,
+          "tag": "a",
+          "class": "",
+          "text": "Shop",
+          "visible_indicator": true
+        },
+        {
+          "stop": 4,
+          "tag": "a",
+          "class": "",
+          "text": "Collections",
+          "visible_indicator": true
+        },
+        {
+          "stop": 5,
+          "tag": "a",
+          "class": "",
+          "text": "Journal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 6,
+          "tag": "a",
+          "class": "",
+          "text": "About",
+          "visible_indicator": true
+        },
+        {
+          "stop": 7,
+          "tag": "a",
+          "class": "sr2-house-header__direct sr2-house-header__search",
+          "text": "Search",
+          "visible_indicator": true
+        },
+        {
+          "stop": 8,
+          "tag": "a",
+          "class": "sr2-header__bag",
+          "text": "Bag 0",
+          "visible_indicator": true
+        },
+        {
+          "stop": 9,
+          "tag": "button",
+          "class": "sr2-header__menu",
+          "text": "Open site menu",
+          "visible_indicator": true
+        },
+        {
+          "stop": 10,
+          "tag": "a",
+          "class": "sr2-house-footer__wordmark",
+          "text": "SkyyRose",
+          "visible_indicator": true
+        },
+        {
+          "stop": 11,
+          "tag": "summary",
+          "class": "",
+          "text": "Explore",
+          "visible_indicator": true
+        },
+        {
+          "stop": 12,
+          "tag": "summary",
+          "class": "",
+          "text": "Client Services",
+          "visible_indicator": true
+        },
+        {
+          "stop": 13,
+          "tag": "summary",
+          "class": "",
+          "text": "Legal",
+          "visible_indicator": true
+        },
+        {
+          "stop": 14,
+          "tag": "body",
+          "class": "",
+          "text": "",
+          "visible_indicator": false
+        }
+      ],
+      "skip_link_ok": true,
+      "skip_target_receives_focus": true,
+      "horizontal_overflow_390": false,
+      "overflow_offenders_390": [],
+      "fonts_seen": [
+        "sans-serif",
+        "Anton",
+        "Hanken Grotesk",
+        "Archivo"
+      ],
+      "fonts_loaded": [
+        "Archivo",
+        "Hanken Grotesk",
+        "Anton"
+      ],
+      "cut_fonts_seen": [],
+      "cinzel_only_on_engraved": true,
+      "crimson_text_elements": [],
+      "sub_aa_text_elements": 0,
+      "scroll_height": {
+        "1440": 979,
+        "390": 980
+      },
+      "h1": "Wishlist",
+      "reduced_motion_390": null,
+      "registry_match": {
+        "name": null,
+        "price": null,
+        "collection": null,
+        "garment_image": "unverifiable",
+        "notes": "n/a"
+      },
+      "commerce": {
+        "forms": [],
+        "woo_classes_present": {},
+        "sr2_controls": 4,
+        "woo_buttons": 0,
+        "layout": {
+          "class": null,
+          "display": null,
+          "columns": null
+        },
+        "eyebrow": "The house"
+      },
+      "visual_review": "1440 and 390: 'The house' eyebrow, Archivo 'Wishlist', one paragraph of fixture placeholder copy ('Preview route content is rendered from this V2 template...'). No wishlist UI is rendered on this fixture, so only the shell (arrival band, reading column, footer) was verified.",
+      "findings": [
+        {
+          "severity": "minor",
+          "invariant": "wishlist renders with theme controls",
+          "observation": "fixture routes wishlist to page.php (badge: template page.php) and prints placeholder copy; the theme ships page-wishlist.php which WP's hierarchy would select for slug 'wishlist' on production [repo], so the actual wishlist UI was not exercised - coverage gap, not a rendering defect",
+          "evidence": "wishlist-1440.png"
+        }
+      ]
+    }
+  ],
+  "finding_counts": {
+    "minor": 7,
+    "note": 29,
+    "major": 2
+  }
+}

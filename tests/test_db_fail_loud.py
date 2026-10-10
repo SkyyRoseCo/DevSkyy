@@ -67,22 +67,34 @@ class TestProductionFailLoud:
         assert db._engine is not None
 
 
-class TestAsyncpgUrlNormalization:
-    """Neon-style URLs carry psycopg2-only query params (sslmode,
-    channel_binding) that asyncpg.connect() rejects — _normalize_async_url
-    must translate sslmode to asyncpg's ssl and drop channel_binding."""
+class TestAsyncDatabaseUrlNormalization:
+    """Keep channel binding on psycopg and normalize sslmode for asyncpg."""
 
-    def test_neon_url_sslmode_translated_and_channel_binding_dropped(self):
+    def test_channel_binding_url_uses_psycopg_and_preserves_security_options(self):
         from database.db import _normalize_async_url
 
         url = _normalize_async_url(
             "postgresql://u:p@ep-x-123.us-west-2.aws.neon.tech/neondb"
             "?sslmode=require&channel_binding=require"
         )
-        assert url.startswith("postgresql+asyncpg://")
-        assert "sslmode=" not in url
-        assert "channel_binding=" not in url
-        assert "ssl=require" in url
+        assert url.startswith("postgresql+psycopg://")
+        assert "sslmode=require" in url
+        assert "channel_binding=require" in url
+
+        routed = _normalize_async_url(
+            "postgresql+asyncpg://u:p@h/db?ssl=require&channel_binding=require"
+        )
+        assert routed.startswith("postgresql+psycopg://")
+        assert "sslmode=require" in routed and "channel_binding=require" in routed
+        assert "?ssl=" not in routed and "&ssl=" not in routed
+        for options in (
+            "ssl=require&sslmode=disable&channel_binding=require",
+            "ssl=true&channel_binding=require",
+            "command_timeout=5&channel_binding=require",
+            "sslmode=require&channel_binding=require&channel_binding=disable",
+        ):
+            with pytest.raises(ValueError):
+                _normalize_async_url("postgresql+asyncpg://u:p@h/db?" + options)
 
     def test_plain_postgres_url_untouched_params_absent(self):
         from database.db import _normalize_async_url
@@ -105,3 +117,36 @@ class TestAsyncpgUrlNormalization:
             _normalize_async_url("sqlite+aiosqlite:///./devskyy.db")
             == "sqlite+aiosqlite:///./devskyy.db"
         )
+
+
+async def test_sqlite_startup_provisions_isolated_analytics_and_preserves_users(monkeypatch):
+    from sqlalchemy import inspect, select
+
+    from api.v1.analytics.event_store import StorefrontAnalyticsEvent
+
+    monkeypatch.setenv("ENVIRONMENT", "development")
+    manager = DatabaseManager()
+    await manager.initialize(DatabaseConfig(url="sqlite+aiosqlite:///:memory:"))
+    try:
+        async with manager._engine.begin() as connection:
+            tables = await connection.run_sync(lambda c: inspect(c).get_table_names())
+            columns = await connection.run_sync(lambda c: inspect(c).get_columns("users"))
+        assert "analytics_events" in tables
+        assert {c["name"] for c in columns} >= {"id", "email", "username"}
+        async with manager._session_factory() as session:
+            row = StorefrontAnalyticsEvent(
+                event_type="test", event_name="fixture", source="synthetic"
+            )
+            session.add(row)
+            await session.commit()
+            assert (
+                await session.execute(select(StorefrontAnalyticsEvent))
+            ).scalar_one().id == row.id
+        # Repeated startup is idempotent and leaves the persisted event accessible.
+        await manager.initialize(DatabaseConfig(url="sqlite+aiosqlite:///:memory:"))
+        async with manager._session_factory() as session:
+            assert (
+                await session.execute(select(StorefrontAnalyticsEvent))
+            ).scalar_one().event_name == "fixture"
+    finally:
+        await manager.close()

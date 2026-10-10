@@ -114,14 +114,6 @@ $hp_models  = SKYYROSE_ASSETS_URI . '/models';
 					loading="lazy"
 					decoding="async">
 				<span class="hp-letter__stamp-label"><?php esc_html_e( 'Capsule IV', 'skyyrose' ); ?></span>
-				<span class="hp-letter__postmark" aria-hidden="true">
-					<?php
-					echo wp_kses(
-						__( 'Luxury<br>Grows from<br>Concrete', 'skyyrose' ),
-						array( 'br' => array() )
-					);
-					?>
-				</span>
 			</div>
 		</div>
 

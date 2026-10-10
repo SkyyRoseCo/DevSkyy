@@ -33,6 +33,8 @@ export interface CollectionConfig {
   accentColorRGB: string;
   bgColor: string;
   heroImage: string;
+  /** Server-checked local asset availability; omitted when not yet checked. */
+  heroImageAvailable?: boolean;
   scenes: CollectionScene[];
   environment: 'night' | 'apartment' | 'studio';
   enableBloom: boolean;

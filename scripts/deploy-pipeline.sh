@@ -3,8 +3,13 @@
 #
 # Orchestrates three steps sequentially:
 #   [1/3] Build   -- npm run build (local-only, always runs including dry-run)
-#   [2/3] Deploy  -- deploy-theme.sh (maintenance mode, rsync transfer, cache flush)
-#   [3/3] Verify  -- verify-deploy.sh (HTTP 200 + content markers on 6 pages)
+#   [2/3] Deploy  -- deploy-production.sh (the production wrapper; it pins
+#                    DEPLOY_TARGET=production + .env.wordpress and execs the
+#                    engine, deploy-theme.sh, which refuses direct calls)
+#   [3/3] Verify  -- verify-deploy.sh --env-file .env.wordpress (HTTP 200 +
+#                    content markers; route table chosen by the live theme)
+#
+# This is a PRODUCTION script (skyyrose.co). Callers: agents/wordpress_theme_builder/agent.ts.
 #
 # Usage:
 #   bash scripts/deploy-pipeline.sh              # Full pipeline (build + deploy + verify)
@@ -13,7 +18,8 @@
 #
 # Each step must succeed before the next runs. In --dry-run mode:
 #   - Build step runs normally (local-only, catches build errors early)
-#   - Deploy step passes --dry-run to deploy-theme.sh (no server contact)
+#   - Deploy step passes --dry-run to deploy-production.sh, which execs
+#     deploy-theme.sh --dry-run (no server contact beyond one identity GET)
 #   - Verify step is skipped (nothing was deployed)
 #
 # Exit codes:
@@ -57,8 +63,9 @@ usage() {
     echo ""
     echo "Steps:"
     echo "  [1/3] Build   Run npm run build in the theme directory (local-only)"
-    echo "  [2/3] Deploy  Transfer files to production via deploy-theme.sh"
-    echo "  [3/3] Verify  Check 6 pages for HTTP 200 + content via verify-deploy.sh"
+    echo "  [2/3] Deploy  Transfer files to production via deploy-production.sh"
+    echo "                (the wrapper around the deploy-theme.sh engine)"
+    echo "  [3/3] Verify  HTTP 200 + content via verify-deploy.sh --env-file .env.wordpress"
     echo ""
     echo "Options:"
     echo "  --dry-run    Build runs, deploy previews, verify is skipped"
@@ -97,6 +104,12 @@ parse_args() {
 check_dependencies() {
     local missing=0
 
+    if [[ ! -f "$SCRIPT_DIR/deploy-production.sh" ]]; then
+        log_error "Missing dependency: $SCRIPT_DIR/deploy-production.sh"
+        missing=$((missing + 1))
+    fi
+
+    # The wrapper execs the engine; both must be present.
     if [[ ! -f "$SCRIPT_DIR/deploy-theme.sh" ]]; then
         log_error "Missing dependency: $SCRIPT_DIR/deploy-theme.sh"
         missing=$((missing + 1))
@@ -145,13 +158,13 @@ main() {
     log_success "[1/3] Build complete"
 
     # -----------------------------------------------------------------------
-    # Step 2: Deploy (passes --dry-run if set)
+    # Step 2: Deploy (passes --dry-run if set) via the production wrapper
     # -----------------------------------------------------------------------
     log_info "[2/3] Deploying to production..."
     if [[ "$DRY_RUN" == "true" ]]; then
-        bash "$SCRIPT_DIR/deploy-theme.sh" --dry-run
+        bash "$SCRIPT_DIR/deploy-production.sh" --dry-run
     else
-        bash "$SCRIPT_DIR/deploy-theme.sh"
+        bash "$SCRIPT_DIR/deploy-production.sh"
     fi
     log_success "[2/3] Deploy complete"
 
@@ -163,7 +176,7 @@ main() {
         log_info "[DRY RUN] Would verify: homepage, collections, REST API, about page"
     else
         log_info "[3/3] Verifying deployment..."
-        bash "$SCRIPT_DIR/verify-deploy.sh"
+        bash "$SCRIPT_DIR/verify-deploy.sh" --env-file "$PROJECT_ROOT/.env.wordpress"
         log_success "[3/3] Verification passed"
     fi
 

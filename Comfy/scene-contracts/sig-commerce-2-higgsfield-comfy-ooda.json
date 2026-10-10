@@ -11,7 +11,7 @@
     "attempt": 1,
     "accountable": "fashion-theme-lead",
     "current_owner": "catalog-sot-integrator",
-    "next_authority": "correct founder-supplied SG-006 female wearer authority"
+    "next_authority": "separately approved female full-body identity plate and one SG-006 VTO candidate with independent product review, then a separately approved product-free Runway background and independent visual-commerce-qa"
   },
   "catalog_snapshot": {
     "catalog_path": "skyyrose-catalog.csv",
@@ -125,42 +125,48 @@
       "role": "protected_male_mint_set",
       "path": "renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-013-sg-014-mint-set-look-protected-v2.png",
       "sha256": "eb8cfbd99c4a963223cf094551dcc62bb022573f46b17f9c819561b1a4794a16",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "COMFY_PROTECTED_COMPOSITE_ONLY",
       "preserve": "male identity, SG-013 crewneck, SG-014 sweatpants"
     },
     {
       "role": "sg-013_physical_authority",
       "path": "assets/products/source-photos/signature/sg-013-mint-lavender-crewneck-front.jpeg",
       "sha256": "ad26b94284690685af52307d8bdc72d7187e9177586282275279b577179396f5",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "mint/lavender construction and centered lavender embroidered rose"
     },
     {
       "role": "sg-014_physical_authority",
       "path": "assets/products/source-photos/signature/sg-014-mint-lavender-sweatpants-front.jpeg",
       "sha256": "1cc5ced83992c4c11ca39b36613f1bcddc44fd02c2b6ba9e648f591ba947eae4",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "mint/lavender construction and left-thigh embroidered rose"
     },
     {
       "role": "sg-006_product_only_not_wearer_authority",
       "path": "assets/products/source-photos/signature/sg-006-mint-lavender-hoodie-front-authentic.png",
       "sha256": "0f47125187736a1089a42fa5f2f92987cbae5ac00c77bd41225697160afac4ea",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "FASHN_PRIMARY_PRODUCT_INPUT_AFTER_SEPARATE_APPROVAL",
       "preserve": "mint/lavender colorblock and centered lavender rose"
     },
     {
       "role": "environment_authority_not_composition_target",
       "path": "renders/scroll-world/SIG-COMMERCE-2/scene-authority/sig-3-graphic-monument-environment-plate-v3.png",
       "sha256": "ce1232d5b470a25a160fdde4f559b87652782d9f19b69fe635313944cfedc5fb",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "RUNWAY_ENVIRONMENT_REFERENCE_ONLY",
       "preserve": "material and architectural language only; output must be wide"
     },
     {
       "role": "exact_sr_rose_monument",
       "path": "renders/scroll-world/SIG-COMMERCE-2/protected-hero-element/signature-sr-rose-graphic-founder-supplied-v1.png",
       "sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "COMFY_PROTECTED_COMPOSITE_ONLY",
       "preserve": "exact silhouette, palette, letterform, flourish, leaves, and internal rose"
     }
   ],
@@ -195,13 +201,20 @@
     }
   },
   "provider_capability": {
-    "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
+    "higgsfield_role": "DISABLED_FOR_FULL_SCENE_REGENERATION",
     "exact_product_guarantee": false,
-    "rule": "Do not enhance or generate before a founder-approved SG-006 wearer replaces the deny-listed source."
+    "rule": "Do not generate the scene before a separately approved female full-body identity plate and SG-006 VTO candidate replace the deny-listed source. The existing male mint set remains protected authority."
+  },
+  "route_contract": {
+    "mode": "selective_vto_then_environment_rebuild_around_source",
+    "male_foreground_rule": "Preserve the approved male SG-013 and SG-014 mint set without VTO.",
+    "female_foreground_rule": "Create one separately approved female full-body identity plate, then one separately approved SG-006 VTO candidate. Never reuse LH approvals or ceilings.",
+    "background_rule": "Create only the product-free pre-dawn transit overlook through a separately approved Runway environment request.",
+    "monument_rule": "Composite the exact protected SR-and-rose monument locally after both customer foregrounds pass independent review."
   },
   "comfy": {
     "routing": "local",
-    "server": "127.0.0.1:8188",
+    "server": "http://127.0.0.1:8189",
     "role": "POST_CAPTURE_PROTECTED_CORRECTION_ONLY",
     "workflow": "SELECT_AFTER_CANDIDATE_HASH_AND_DEFECT_CLASSIFICATION",
     "allowed_operations": [
@@ -245,21 +258,25 @@
       "verify a new founder-approved SG-006 wearer hash exists",
       "deny-list the rejected wearer hash"
     ],
-    "orient": ["do not call Higgsfield until the couple is source-complete"],
+    "orient": [
+      "preserve the approved male source directly",
+      "use separately approved FASHN model-plate and VTO calls only for the missing female SG-006 authority",
+      "use Runway only for the product-free pre-dawn transit environment"
+    ],
     "decide": [
       "hard-fail missing/rejected female identity, wrong colorblock, misplaced roses, or altered monument"
     ],
     "act": [
-      "stage in Comfy only after source completion",
-      "apply protected corrections",
+      "stage protected male and independently approved female alphas in Comfy only after source completion",
+      "integrate the exact monument into the empty environment",
       "quarantine failures",
       "require independent and founder review"
     ]
   },
   "execute_blockers": [
     "correct founder-supplied SG-006 female wearer/model authority is missing",
-    "corrected enhanced prompt has not passed",
-    "candidate-bound preflight and paid Higgsfield generation approval not recorded"
+    "female full-body identity plate and SG-006 VTO fingerprints, spend approvals, and review receipts are not recorded",
+    "candidate-bound product-free Runway background approval is not recorded"
   ],
   "promotion_gate": "FOUNDER_APPROVED_VISUAL"
 }

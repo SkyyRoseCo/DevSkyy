@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "components": [
+    {
+      "id": "constitution",
+      "category": "Creative OS",
+      "name": "Brand Constitution",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": [
+        "docs/brand/constitution-v1/constitution.json",
+        "docs/brand/constitution-v1/OWNER-RATIFICATION-20260923.md",
+        "docs/brand/constitution-v1/OWNER-RATIFICATION-KPS-20260923.md"
+      ],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    },
+    {
+      "id": "resolver",
+      "category": "Creative OS",
+      "name": "Context resolution",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": ["skyyrose/core/context_resolver.py"],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    },
+    {
+      "id": "brief-job",
+      "category": "Creative OS",
+      "name": "Brief and job contract",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": ["skyyrose/core/creative_job.py"],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    },
+    {
+      "id": "creative-execution",
+      "category": "Creative OS",
+      "name": "Execution and render receipts",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": ["skyyrose/elite_studio/creative/editorial.py"],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    },
+    {
+      "id": "creative-fidelity",
+      "category": "Creative OS",
+      "name": "Fidelity and technical review",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": ["skyyrose/core/creative_job.py"],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    },
+    {
+      "id": "spend-ledger",
+      "category": "Production OS",
+      "name": "Spend, quota and recovery ledger",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": ["skyyrose/elite_studio/creative/spend_ledger.py"],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    },
+    {
+      "id": "website-funnel",
+      "category": "Website",
+      "name": "Cart, checkout and purchase attribution",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": [
+        "frontend/app/api/conversion/route.ts",
+        "api/v1/analytics/event_store.py"
+      ],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    },
+    {
+      "id": "website-consent",
+      "category": "Website",
+      "name": "Visitor consent and analytics relay",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": [
+        "wordpress-theme/skyyrose-flagship/assets/js/experience-analyzer.js",
+        "wordpress-theme/skyyrose-flagship/inc/fastapi-client.php"
+      ],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    },
+    {
+      "id": "local-event-pipeline",
+      "category": "Production OS",
+      "name": "Website event delivery and durable reports",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": [
+        "api/v1/analytics/ingest.py",
+        "api/v1/analytics/event_store.py",
+        "wordpress-theme/skyyrose-flagship/inc/fastapi-client.php",
+        "tests/api/analytics/test_storefront_ingest.py"
+      ],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    },
+    {
+      "id": "local-creative-reports",
+      "category": "Creative OS",
+      "name": "Creative receipt and Governor reporting",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": [
+        "skyyrose/elite_studio/creative/receipt_reader.py",
+        "skyyrose/elite_studio/creative/governor_reporting.py",
+        "skyyrose/elite_studio/creative/reporting_app.py",
+        "tests/test_creative_reporting.py"
+      ],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    },
+    {
+      "id": "local-measured-ui",
+      "category": "Website analytics",
+      "name": "Measured analytics dashboard candidate",
+      "status": "SOURCE_PRESENT_UNVERIFIED",
+      "evidence_class": "SOURCE_INVENTORY_ONLY",
+      "summary": "Current checkout source inventory. Presence is not execution, owner acceptance, deployment, or live integration evidence.",
+      "source_paths": [
+        "frontend/lib/analytics-client.ts",
+        "frontend/app/api/conversion/route.ts",
+        "frontend/app/admin/conversion/page.tsx",
+        "frontend/app/admin/journey-analytics/page.tsx"
+      ],
+      "next_action": "Use current verification reports to evaluate this component before execution or release.",
+      "owner": "Codex"
+    }
+  ],
+  "repositories": ["."],
+  "live_targets": [
+    {
+      "id": "fly-governor",
+      "url": "https://devskyy-runway-governor-staging.fly.dev/health",
+      "kind": "service"
+    },
+    {
+      "id": "website-domain",
+      "url": "https://skyyrose.co/",
+      "kind": "website"
+    },
+    {
+      "id": "v2-staging",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+      "kind": "website"
+    }
+  ]
+}

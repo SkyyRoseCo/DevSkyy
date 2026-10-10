@@ -55,6 +55,15 @@ foreach ( $required as $key ) {
 	skyyrose2_registry_assert( isset( $pages[ $key ] ), "Missing required page definition: {$key}" );
 }
 
+$service_content = skyyrose2_marketplace_service_content();
+skyyrose2_registry_assert( str_contains( $service_content['shipping-returns'], 'within 30 days of confirmed delivery' ), 'Shipping and returns summary must retain the published 30-day US return window.' );
+skyyrose2_registry_assert( str_contains( $service_content['shipping-returns'], 'prepaid USPS return label within 24 hours' ), 'Shipping and returns summary must retain the published prepaid US-label timing.' );
+skyyrose2_registry_assert( str_contains( $service_content['shipping-returns'], 'unworn, unwashed, unaltered, with tags attached and original packaging' ), 'Shipping and returns summary must retain published return eligibility conditions.' );
+skyyrose2_registry_assert( str_contains( $service_content['returns-exchanges'], 'Free US size or color exchanges' ), 'Returns summary must identify the published free US same-style exchange scope.' );
+skyyrose2_registry_assert( str_contains( $service_content['returns-exchanges'], 'within 14 days of receiving that label' ), 'Returns summary must retain the published 14-day exchange-label window.' );
+skyyrose2_registry_assert( str_contains( $service_content['returns-exchanges'], 'Final Sale, customized or personalized, and ineligible-condition items cannot be returned or exchanged' ), 'Returns summary must retain published exchange exceptions.' );
+skyyrose2_registry_assert( ! str_contains( $service_content['returns-exchanges'], 'reviewed case by case' ), 'Returns summary must not contradict the published free US same-style exchange policy.' );
+
 $paths = array();
 foreach ( $pages as $key => $page ) {
 	skyyrose2_registry_assert( ! empty( $page['path'] ), "Page path is empty: {$key}" );
@@ -90,5 +99,26 @@ foreach ( $menus as $location => $menu ) {
 		}
 	}
 }
+
+$theme_dir = dirname( __DIR__ );
+$product_registry = json_decode( file_get_contents( $theme_dir . '/data/product-presentation-registry.json' ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+$product_media    = json_decode( file_get_contents( $theme_dir . '/data/opening-product-media.json' ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+skyyrose2_registry_assert( skyyrose2_validate_product_card_media_contract( $product_media, $product_registry ), 'Current product-card media contract must validate.' );
+
+$stale_global = $product_media;
+$stale_global['product_sot_sha256'] = str_repeat( '0', 64 );
+skyyrose2_registry_assert( ! skyyrose2_validate_product_card_media_contract( $stale_global, $product_registry ), 'Stale global product SOT hash must fail closed.' );
+
+$stale_sku = $product_media;
+$stale_sku['product_hashes']['br-001'] = str_repeat( '0', 64 );
+skyyrose2_registry_assert( ! skyyrose2_validate_product_card_media_contract( $stale_sku, $product_registry ), 'Stale per-SKU product hash must fail closed.' );
+
+$missing_integrity = $product_media;
+unset( $missing_integrity['asset_integrity']['br-006'] );
+skyyrose2_registry_assert( ! skyyrose2_validate_product_card_media_contract( $missing_integrity, $product_registry ), 'Approved media without asset integrity must fail closed.' );
+
+$wrong_opening_role = $product_media;
+$wrong_opening_role['products']['br-006']['views'][0]['role'] = 'packshot';
+skyyrose2_registry_assert( ! skyyrose2_validate_product_card_media_contract( $wrong_opening_role, $product_registry ), 'A product card that does not open on-model must fail closed.' );
 
 echo "Marketplace registry structure passed.\n";

@@ -1,0 +1,65 @@
+{
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+  "classification": "VERIFIED_LIVE_PUBLIC_LAB",
+  "candidate_deployed": false,
+  "runs": [
+    {
+      "file": "/tmp/skyyrose-v2-readiness-20260921/baseline.json",
+      "sha256": "679220b0396f1d94732407b9304746ae75b4ff3dd0ffb3fd89e352a7ce75c7f3",
+      "time": "2026-09-22T06:23:14.155Z",
+      "lighthouse": "13.5.0",
+      "form_factor": "mobile",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "score": 0.91,
+      "lcp_ms": 3470.1325999999995,
+      "tbt_ms": 0,
+      "cls": 0.0001572155488476603
+    },
+    {
+      "file": "/tmp/skyyrose-v2-readiness-20260921/baseline-2.json",
+      "sha256": "031f19aebea8df0a8a56d982323b0d58d4de99fe5c26108ea77384f6a873666a",
+      "time": "2026-09-22T06:26:51.253Z",
+      "lighthouse": "13.5.0",
+      "form_factor": "mobile",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "score": 0.83,
+      "lcp_ms": 4283.606749999999,
+      "tbt_ms": 15.5,
+      "cls": 0
+    },
+    {
+      "file": "/tmp/skyyrose-v2-readiness-20260921/baseline-3.json",
+      "sha256": "bc69fee221668dd8e2f4d10511e114d943d66430aa0a955d2d60606b3d867259",
+      "time": "2026-09-22T06:27:40.756Z",
+      "lighthouse": "13.5.0",
+      "form_factor": "mobile",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "score": 0.91,
+      "lcp_ms": 3402.3154000000004,
+      "tbt_ms": 0,
+      "cls": 0.0001572155488476603
+    }
+  ],
+  "median_lcp_ms": 3470.1325999999995
+}

@@ -51,9 +51,10 @@ dependencies = [
   "python-multipart>=0.0.30",
 
   # Database
-  "sqlalchemy>=2.0",
+  "sqlalchemy[asyncio]>=2.0",
   "alembic>=1.13",
   "asyncpg>=0.29",
+  "psycopg[binary]>=3.3.4,<4",
   "aiosqlite>=0.19",
 
   # Security
@@ -65,7 +66,7 @@ dependencies = [
 
   # HTTP
   "httpx>=0.25",
-  "aiohttp>=3.9",
+  "aiohttp>=3.12.14",
   "requests>=2.31",
 
   # GraphQL
@@ -77,7 +78,7 @@ dependencies = [
   # openai 1.x client (verified green). openai 2.x is API-compatible for our usage
   # (Context7-checked, 486 mocked tests pass) but the live imagery path is unverified;
   # lifting this cap is the deliberate 2.x migration, not a routine bump (bug-254).
-  "openai>=1.6,<3",
+  "openai>=1.6,<4",
   "mcp>=1.28.1,<2",          # Fixed: CVE-2025-53365, CVE-2025-53366, CVE-2025-66416
   "claude-agent-sdk>=0.1.0", # Claude Agent SDK for multi-agent orchestration
 
@@ -151,6 +152,9 @@ dev = [
   "pytest-asyncio>=0.23",
   "pytest-cov>=4.1",
   "pytest-mock>=3.12",
+  # Full-suite character and provider tests import these optional runtimes.
+  "gradio-client==2.5.0",
+  "matplotlib==3.11.2",
   "pytest-timeout>=2.4",
   "pytest-xdist>=3.6",
   "rich>=13.9",
@@ -180,7 +184,7 @@ api = ["fastapi>=0.104", "mangum>=0.18.0", "pydantic>=2.5", "PyJWT>=2.13.0"]
 mcp = [
   "mcp>=1.28.1,<2",
   "fastmcp==3.4.4",           # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
-  "openai>=1.57.2,<3",        # keep in lockstep with the base openai<2 cap (bug-254)
+  "openai>=1.57.2,<4",        # keep in lockstep with the base openai cap (bug-254)
   "anthropic>=0.75.0",
   "google-genai>=1.50.0",
   "fastapi>=0.119.0",
@@ -203,18 +207,18 @@ mcp = [
   "backoff==2.2.1",
   "ratelimit==2.2.1",
   "boto3>=1.43.0",                        # integrations/cloudflare_r2_manager.py — was undeclared, install -e .[all] never pulled it
-  "cryptography==49.0.0",
+  "cryptography==50.0.0",
   "pyjwt==2.13.0",
   "sqlalchemy==2.0.51",
   "aiosqlite==0.22.1",
-  "redis==8.0.1",
+  "redis==8.1.0",
   "pyyaml==6.0.3",
   "toml==0.10.2",
   "typing-extensions==4.16.0",
   "python-dateutil==2.9.0.post0",
   "tiktoken>=0.8.0",
   "transformers>=4.53.0",
-  "sentence-transformers==5.6.0",
+  "sentence-transformers==6.0.1",
   "langchain>=0.3.18",
   "langchain-openai>=0.3.0",
   "langchain-anthropic>=0.3.0",
@@ -222,7 +226,7 @@ mcp = [
   "langgraph-checkpoint-postgres>=2.0.0",
   "psycopg[binary,pool]>=3.2",
   "chromadb>=0.6.0",
-  "faiss-cpu==1.14.3",
+  "faiss-cpu==1.15.1",
   "beautifulsoup4>=4.13.5",               # Fixed: raganything>=1.2.10 requires >=4.13.5 via mineru
   "requests==2.34.2",
   "pypdf>=6.6.2",
@@ -248,8 +252,8 @@ ml = [
   # A Dependabot bump of torch alone (2.9.1 -> 2.12.1) made the [all] extra
   # unresolvable and broke the Docker build; this is the locally-installed,
   # test-validated set. Bump all three together (and re-validate) if upgrading.
-  "torch==2.9.1",
-  "torchvision==0.24.1",
+  "torch==2.14.0",
+  "torchvision==0.29.0",
   "torchaudio==2.11.0",
   "transformers>=4.53.0",
   "sentence-transformers>=5.6.0",
@@ -273,15 +277,15 @@ ml = [
   # cryptography<49 cap conflicted with the mcp extra's cryptography==49.0.0
   # security pin, making .[all] unresolvable (Docker + local + CI).
   "bentoml>=1.4.34",
-  "wandb>=0.24.2",            # Updated for protobuf 6.x compatibility
+  "wandb>=0.24.2",             # Updated for protobuf 6.x compatibility
   "tensorboard==2.21.0",
-  "matplotlib==3.11.1",
+  "matplotlib==3.11.2",
   "seaborn==0.13.2",
-  "plotly==6.9.0",
+  "plotly==7.1.0",
   "feature-engine==1.9.4",
-  "category-encoders==2.9.0",
-  "optuna==4.9.0",
-  "hyperopt==0.2.7",
+  "category-encoders==2.11.1",
+  "optuna==5.0.0",
+  "hyperopt==0.3.0",
   # Removed 2026-06-22 — all force source builds that break a clean py3.12
   # install, and all are unused EXCEPT prophet:
   #   librosa, shap → numba → llvmlite 0.36 (no py3.12 support)
@@ -291,18 +295,18 @@ ml = [
   #     prophet's cmdstan build never succeeded in the py3.12 image anyway).
   #   gymnasium, stable-baselines3, soundfile, lime → dead RL/audio/explainability
   # This unbreaks `uv pip install .[all]` on Python 3.12.
-  "polars==1.42.1",
-  "pyarrow==25.0.0",
-  "hydra-core==1.3.4",
+  "polars==1.44.2",
+  "pyarrow==25.0.1",
+  "hydra-core==1.3.7",
   "omegaconf==2.3.1",
-  "tqdm==4.68.3",
-  "joblib==1.5.3",
+  "tqdm==4.70.0",
+  "joblib==1.6.0",
   "dill==0.4.1",
   "fastapi>=0.119.0",
   "uvicorn>=0.32.1",
   "pydantic>=2.10.3",
   "sqlalchemy==2.0.51",
-  "pymongo==4.17.0",
+  "pymongo==4.18.1",
   # Compatibility constraints for dependency resolution
   "protobuf>=6.33.5", # CVE-2026-0994 fix: JSON recursion depth bypass vulnerability
   "fsspec>=2025.7.0", # Required by bentoml>=1.4.34
@@ -408,6 +412,7 @@ exclude = [
   ".agents/",
   ".aidesigner/",
   ".venv*/",
+  "node_modules/",
   "claude-context/",
   "sdk/",
   ".wolf/",
@@ -490,6 +495,7 @@ exclude = '''
     | \.tox
     | \.venv
     | \.venv-.*
+    | node_modules
     | \.claude
     | \.agents
     | \.aidesigner
@@ -529,6 +535,8 @@ skip = [
   "legacy/",
   ".venv/",
   ".venv-*/",
+  "node_modules/",
+  "frontend/node_modules/",
   ".claude/",
   "_archive/",
   "open-claude-code/",

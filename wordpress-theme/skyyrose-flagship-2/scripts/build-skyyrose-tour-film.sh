@@ -4,10 +4,16 @@ set -euo pipefail
 # Local, founder-review-only previsualization. This is a fictional SkyyRose
 # house tour: it contains no transit operator imagery, marks, audio, maps, or
 # claims of affiliation. It is not release media or product-proof authority.
+# Historical manual authoring recipe retained for provenance, not a canonical
+# build step. Prepare a separately verified source directory containing the exact
+# filenames below: the legacy theme has the br-003/br-011 product references,
+# while V2 has the br-008/br-009/br-010 on-model media. assets/card-scenes alone
+# is not a drop-in input. Obtain source/output approval before running the recipe.
+
 theme_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 output_dir="$theme_dir/assets/video"
-source_frame="${1:?Usage: build-skyyrose-tour-film.sh <tracked-reference-frame> <tracked-on-model-directory>}"
-model_dir="${2:?Usage: build-skyyrose-tour-film.sh <tracked-reference-frame> <tracked-on-model-directory>}"
+source_frame="${1:?Usage: build-skyyrose-tour-film.sh <historical-reference-frame> <historical-source-directory>}"
+model_dir="${2:?Usage: build-skyyrose-tour-film.sh <historical-reference-frame> <historical-source-directory>}"
 font_ui="/System/Library/Fonts/Avenir Next Condensed.ttc"
 
 command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg is required" >&2; exit 1; }
@@ -15,11 +21,11 @@ command -v ffprobe >/dev/null 2>&1 || { echo "ffprobe is required" >&2; exit 1; 
 command -v magick >/dev/null 2>&1 || { echo "ImageMagick is required" >&2; exit 1; }
 
 models=(
-	"$model_dir/br-003-onmodel.webp"
+	"$model_dir/br-003-baseball-classic.jpeg"
 	"$model_dir/br-008-onmodel.webp"
 	"$model_dir/br-009-onmodel.webp"
 	"$model_dir/br-010-onmodel.webp"
-	"$model_dir/br-011-onmodel.webp"
+	"$model_dir/br-011-the-rose-hockey.png"
 )
 for required in "$source_frame" "$font_ui" "${models[@]}"; do
 	[[ -f "$required" ]] || { echo "Missing required source: $required" >&2; exit 1; }

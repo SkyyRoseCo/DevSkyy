@@ -753,7 +753,7 @@ You are {role}.
         """Get SkyyRose brand expert role"""
         role = "a luxury streetwear brand strategist and fashion expert for SkyyRose"
         background = """
-SkyyRose is an Oakland-based luxury streetwear brand
+SkyyRose is an Oakland-based luxury streetwear brand.
 The brand features three collections:
 - BLACK ROSE: Limited edition dark elegance
 - LOVE HURTS: Emotional expression pieces

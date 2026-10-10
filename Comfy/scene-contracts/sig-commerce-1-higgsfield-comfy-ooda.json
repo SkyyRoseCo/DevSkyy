@@ -2,7 +2,7 @@
   "schema": "skyyrose.scene-ooda/1",
   "scene_id": "SIG-COMMERCE-1",
   "collection": "signature",
-  "status": "BLOCKED_PROMPT_ENHANCEMENT_ENDPOINT_UNAVAILABLE",
+  "status": "BLOCKED_PENDING_PROTECTED_SOURCE_REHASH_AND_BACKGROUND_APPROVAL",
   "purpose": "Recompose the mapped Sherpa-and-Beanie look into a powerful wide Signature campaign while preserving the protected customer/product and exact cleaned font sculpture.",
   "fashion_theme_team": {
     "plugin": "fashion-theme-team@personal",
@@ -11,7 +11,7 @@
     "attempt": 1,
     "accountable": "fashion-theme-lead",
     "current_owner": "brand-experience-architect",
-    "next_authority": "prompt assertion review, approved provider runtime, then independent visual-commerce-qa"
+    "next_authority": "current hash and independent-product review of the protected SG-009 plus SG-007 look and exact sculpture, then a separately approved product-free Runway background and independent visual-commerce-qa"
   },
   "catalog_snapshot": {
     "catalog_path": "skyyrose-catalog.csv",
@@ -108,35 +108,40 @@
       "role": "protected_customer_product_look",
       "path": "renders/scroll-world/SIG-COMMERCE-1/protected-input/sg-009-sg-007-sherpa-beanie-look-protected-v2.png",
       "sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "COMFY_PROTECTED_COMPOSITE_ONLY",
       "preserve": "identity, pose, SG-009 jacket, SG-007 beanie"
     },
     {
       "role": "sg-009_physical_authority",
       "path": "assets/products/source-photos/signature/sg-009-sherpa-jacket-open.jpeg",
       "sha256": "cb13b25aa3854190b2fbaa3e701a96ef2c813969c8bba7118ac6e68af46711fb",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "black outer, white sherpa body lining, red rose front mark"
     },
     {
       "role": "sg-007_physical_authority",
       "path": "assets/products/source-photos/signature/sg-007-signature-beanie-black.png",
       "sha256": "f81a14d7dfea27b570ee2c0ba09661474f87d3df637652055e0f225ba91f9a43",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "solid black ribbed-knit body, folded cuff, exact small light rose patch artwork, scale, and wearer-left-of-center placement"
     },
     {
       "role": "environment_authority_not_composition_target",
       "path": "renders/scroll-world/SIG-COMMERCE-1/scene-authority/sig-1-font-statue-environment-plate-v3.png",
       "sha256": "331666b86748477816bbc65cc130494d2dadc009adb8905eae5302d70e88c600",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "RUNWAY_ENVIRONMENT_REFERENCE_ONLY",
       "preserve": "material and architectural language only; output must be wide"
     },
     {
       "role": "exact_clean_font_sculpture",
       "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/protected-hero-element/signature-skyyrose-font-sculpture-clean-transparent-v2.png",
       "sha256": "4db76780d8280af2d1d7c081b424ccd385054f15778593b240cec52e34b75c3e",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "COMFY_PROTECTED_COMPOSITE_ONLY",
       "preserve": "single-line SkyyRose letterforms, gold palette, copper rose, exact proportions"
     }
   ],
@@ -200,7 +205,7 @@
     }
   },
   "provider_capability": {
-    "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
+    "higgsfield_role": "NOT_REQUIRED_FOR_PRODUCT_OR_CUSTOMER",
     "exact_product_guarantee": false,
     "adapter": "higgsfield_product_photoshoot",
     "model_id": "gpt_image_2",
@@ -210,7 +215,14 @@
     "runtime_receipt": "Comfy/receipts/br-commerce-2-higgsfield-runtime-capability-20260902T123106Z.json",
     "runtime_receipt_sha256": "93445948e0077b5e877213e098e07a0eb8bdd0450cf5725ac16d7c70b7346a24",
     "estimated_credits": 8.5,
-    "rule": "A provider result is only an environment and integration candidate; protected product and sculpture pixels remain authoritative."
+    "rule": "The approved SG-009 Sherpa plus SG-007 beanie look and exact transparent sculpture are direct protected inputs. Any provider result may supply only a product-free environment candidate."
+  },
+  "route_contract": {
+    "mode": "environment_rebuild_around_source",
+    "vto_required": false,
+    "foreground_rule": "Use the existing independently reviewed SG-009 Sherpa plus SG-007 black beanie customer look directly after current hash verification.",
+    "background_rule": "Generate only a rain-cleared industrial roof-deck environment through a separately approved product-free Runway request.",
+    "sculpture_rule": "Use the cleaned transparent single-line SkyyRose gold/copper sculpture as a physically grounded freestanding object with contact, occlusion, shadow, and reflection. Reject split lettering, moved copper rose, tiny customer scale, and wall-signage treatment."
   },
   "prompt_adherence": {
     "mode": "FAIL_CLOSED",
@@ -254,7 +266,7 @@
   },
   "comfy": {
     "routing": "local",
-    "server": "127.0.0.1:8188",
+    "server": "http://127.0.0.1:8189",
     "role": "POST_CAPTURE_PROTECTED_CORRECTION_ONLY",
     "workflow": "SELECT_AFTER_CANDIDATE_HASH_AND_DEFECT_CLASSIFICATION",
     "allowed_operations": [
@@ -297,22 +309,22 @@
       "load the three founder-rejected SIG-1 results as negative evidence only"
     ],
     "orient": [
-      "Higgsfield creates one native wide campaign candidate",
-      "portrait environment is material authority, not final composition"
+      "preserve the approved customer/product look and transparent sculpture directly",
+      "use Runway only for the product-free industrial roof-deck environment"
     ],
     "decide": [
       "hard-fail product drift, tiny protagonist, split lettering, missing rose, wall sticker, or portrait output"
     ],
     "act": [
-      "stage in Comfy",
-      "correct only with protected masks",
+      "generate one separately approved empty environment plate",
+      "integrate the protected customer/product and sculpture in Comfy",
       "quarantine failures",
       "require independent and founder review"
     ]
   },
   "execute_blockers": [
-    "corrected source-bound prompt passes static assertions, but Higgsfield enhancement endpoint was unreachable and no enhanced-prompt PASS receipt exists",
-    "candidate-bound preflight and paid Higgsfield generation approval not recorded"
+    "protected customer/product and sculpture sources require current hash and independent-review verification",
+    "candidate-bound product-free Runway background approval is not recorded"
   ],
   "promotion_gate": "FOUNDER_APPROVED_VISUAL"
 }

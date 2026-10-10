@@ -109,7 +109,7 @@
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
     "facebook-nodejs-business-sdk": "^24.0.1",
-    "fastify": "^5.8.1",
+    "fastify": "^5.12.5",
     "fflate": "^0.8.2",
     "framer-motion": "^12.30.0",
     "google-auth-library": "^10.6.2",
@@ -130,11 +130,11 @@
     "meshoptimizer": "^1.0.1",
     "mongodb": "^7.0.0",
     "mongoose": "^9.0.1",
-    "next": "^16.3.1",
+    "next": "^16.3.8",
     "next-auth": "^4.24.13",
     "node-fetch": "^3.3.2",
     "nuxt": "^4.2.2",
-    "openai": "^6.24.0",
+    "openai": "^7.8.0",
     "pica": "10.0.2",
     "pino": "^10.3.1",
     "pino-pretty": "^13.1.3",
@@ -150,7 +150,7 @@
     "redis": "^5.10.0",
     "replicate": "^1.4.0",
     "resend": "^6.9.2",
-    "sharp": "0.35.3",
+    "sharp": "0.35.4",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
     "sonner": "^2.0.7",
@@ -181,6 +181,7 @@
     "lint:fix": "eslint \"src/**/*.{ts,tsx,js,jsx}\" --no-error-on-unmatched-pattern --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\" \"*.{json,md}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx}\" \"*.{json,md}\"",
+    "verify:formatter-ignores": "node scripts/verify-formatter-ignores.mjs",
     "type-check": "tsc --project config/typescript/tsconfig.json --noEmit",
     "clean": "rm -rf dist coverage",
     "prepare": "husky && npm run build",
@@ -196,7 +197,9 @@
     "demo:love-hurts": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=love_hurts",
     "demo:showroom": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=showroom",
     "demo:runway": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=runway",
-    "test:collections": "vitest run --config config/testing/vitest.config.ts src/collections"
+    "test:collections": "vitest run --config config/testing/vitest.config.ts src/collections",
+    "test:theme-analytics": "node --test wordpress-theme/skyyrose-flagship/tests/analytics/consent.test.cjs && php wordpress-theme/skyyrose-flagship/tests/analytics/relay.php && php wordpress-theme/skyyrose-flagship/tests/analytics/projection.php && php wordpress-theme/skyyrose-flagship/tests/analytics/projection-schema.php && php wordpress-theme/skyyrose-flagship/tests/analytics/cache-version.php && php wordpress-theme/skyyrose-flagship/tests/analytics/cache-version.php debug && php wordpress-theme/skyyrose-flagship/tests/analytics/summary.php && python3 wordpress-theme/skyyrose-flagship-2/scripts/sync-analytics.py --check && python3 wordpress-theme/skyyrose-flagship-2/tests/analytics/test_sync_analytics.py && node --test wordpress-theme/skyyrose-flagship-2/tests/analytics/consent.test.cjs && php wordpress-theme/skyyrose-flagship-2/tests/analytics/relay.php && php wordpress-theme/skyyrose-flagship-2/tests/analytics/bootstrap.php",
+    "test:theme-analytics:browser": "node --test wordpress-theme/skyyrose-flagship/tests/analytics/browser-consent.test.cjs && node --test wordpress-theme/skyyrose-flagship-2/tests/analytics/browser-consent.test.cjs"
   },
   "repository": {
     "type": "git",
@@ -214,10 +217,9 @@
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.58.2",
-    "@prettier/plugin-xml": "^3.4.2",
     "@tailwindcss/typography": "^0.5.19",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.2",
     "@types/compression": "^1.8.1",
     "@types/cors": "^2.8.19",
@@ -227,8 +229,8 @@
     "@types/three": "^0.185.1",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.54.0",
-    "@vitest/coverage-v8": "^4.0.18",
-    "@vitest/ui": "^4.0.18",
+    "@vitest/coverage-v8": "^5.0.1",
+    "@vitest/ui": "^5.0.1",
     "concurrently": "^10.0.3",
     "cssnano": "^7.1.2",
     "eslint": "^10.5.0",
@@ -249,7 +251,7 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.18",
+    "vitest": "^5.0.1",
     "webpack": "^5.104.1",
     "webpack-cli": "7.2.2"
   },
@@ -295,6 +297,12 @@
     },
     "eslint": {
       "ajv": "^6.14.0"
+    },
+    "@fastify/ajv-compiler": {
+      "fast-uri": ">=4.2.1"
+    },
+    "fast-json-stringify": {
+      "fast-uri": ">=4.2.1"
     }
   }
 }

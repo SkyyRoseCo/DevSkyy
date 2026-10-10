@@ -1,0 +1,175 @@
+{
+  "display_name": "Cinematic Studio 3.0",
+  "job_type": "cinematic_studio_3_0",
+  "params": [
+    {
+      "name": "aspect_ratio",
+      "type": "string",
+      "default": "16:9",
+      "required": false,
+      "enum": [
+        "auto",
+        "21:9",
+        "16:9",
+        "4:3",
+        "1:1",
+        "3:4",
+        "9:16"
+      ]
+    },
+    {
+      "name": "audio_references",
+      "type": "array",
+      "default": null,
+      "required": false
+    },
+    {
+      "name": "batch_size",
+      "type": "integer",
+      "default": 1,
+      "required": false
+    },
+    {
+      "name": "duration",
+      "type": "integer",
+      "default": 5,
+      "required": false
+    },
+    {
+      "name": "end_image",
+      "type": "object|null",
+      "default": null,
+      "required": false
+    },
+    {
+      "name": "enhance_prompt",
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    {
+      "name": "folder_id",
+      "type": "string|null",
+      "default": null,
+      "required": false
+    },
+    {
+      "name": "generate_audio",
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    {
+      "name": "genre",
+      "type": "string",
+      "default": "auto",
+      "required": false,
+      "enum": [
+        "auto",
+        "action",
+        "horror",
+        "comedy",
+        "noir",
+        "drama",
+        "epic"
+      ]
+    },
+    {
+      "name": "image_references",
+      "type": "array",
+      "default": null,
+      "required": false
+    },
+    {
+      "name": "multi_prompt",
+      "type": "array",
+      "default": null,
+      "required": false
+    },
+    {
+      "name": "multi_shot_mode",
+      "type": "string",
+      "default": "custom",
+      "required": false,
+      "enum": [
+        "auto",
+        "custom"
+      ]
+    },
+    {
+      "name": "multi_shots",
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    {
+      "name": "preset_id",
+      "type": "string|null",
+      "default": null,
+      "required": false
+    },
+    {
+      "name": "prompt",
+      "type": "string",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "prompt_language",
+      "type": "string",
+      "default": "zh",
+      "required": false,
+      "enum": [
+        "en",
+        "zh"
+      ]
+    },
+    {
+      "name": "resolution",
+      "type": "string",
+      "default": "720p",
+      "required": false,
+      "enum": [
+        "480p",
+        "720p",
+        "1080p",
+        "4k"
+      ]
+    },
+    {
+      "name": "speedramp",
+      "type": "string",
+      "default": "auto",
+      "required": false,
+      "enum": [
+        "auto",
+        "linear",
+        "slowmo",
+        "speedup",
+        "fast_to_slowmo",
+        "slowmo_to_fast",
+        "super_slowmo",
+        "impact"
+      ]
+    },
+    {
+      "name": "start_image",
+      "type": "object|null",
+      "default": null,
+      "required": false
+    },
+    {
+      "name": "video_references",
+      "type": "array",
+      "default": null,
+      "required": false
+    }
+  ],
+  "rules": [
+    {
+      "cel": "size(params.image_references) + size(params.video_references) + size(params.audio_references) + (params.start_image == null ? 0 : 1) + (params.end_image == null ? 0 : 1) <= 15",
+      "message": "at most 15 media references are allowed in total"
+    }
+  ],
+  "type": "video"
+}

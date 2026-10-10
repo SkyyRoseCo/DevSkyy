@@ -46,7 +46,7 @@ async def product_launch_workflow():
     Ensure all outputs align with SkyyRose brand guidelines:
     - Premium, elegant, romantic
     - Colors: Rose Gold (#B76E79), Black (#1A1A1A)
-    - Tagline: "Where Love Meets Luxury"
+    - No tagline is authorised
     """
 
     print("\n🚀 Task: Product Launch Workflow")

@@ -22,6 +22,8 @@ try:
 except ImportError:
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
+from skyyrose.core.openai_settings import chat_settings
+
 from ..base import BaseLLMClient, CompletionResponse, Message, StreamChunk, ToolCall
 
 logger = logging.getLogger(__name__)
@@ -72,7 +74,7 @@ class OpenAIClient(BaseLLMClient):
         self,
         messages: list[Message],
         model: str | None = None,
-        temperature: float = 0.7,
+        temperature: float | None = None,
         max_tokens: int = 1024,
         tools: list[dict[str, Any]] | None = None,
         **kwargs: Any,
@@ -81,20 +83,12 @@ class OpenAIClient(BaseLLMClient):
         model = model or self.default_model
         start_time = datetime.now(UTC)
 
+        wire_tools = [{"type": "function", "function": t} for t in tools] if tools else None
         data: dict[str, Any] = {
             "model": model,
             "messages": self._messages_to_list(messages),
-            "temperature": temperature,
-            "max_tokens": max_tokens,
+            **chat_settings(model, max_tokens, temperature, kwargs, tools=wire_tools),
         }
-
-        if tools:
-            data["tools"] = [{"type": "function", "function": t} for t in tools]
-            data["tool_choice"] = kwargs.get("tool_choice", "auto")
-
-        for key in ["top_p", "frequency_penalty", "presence_penalty", "stop"]:
-            if key in kwargs:
-                data[key] = kwargs[key]
 
         response = await self._make_request(
             "POST",
@@ -138,27 +132,33 @@ class OpenAIClient(BaseLLMClient):
         self,
         messages: list[Message],
         model: str | None = None,
-        temperature: float = 0.7,
+        temperature: float | None = None,
         max_tokens: int = 1024,
+        tools: list[dict[str, Any]] | None = None,
         **kwargs: Any,
     ) -> AsyncIterator[StreamChunk]:
         """Stream completion using OpenAI API."""
         model = model or self.default_model
-        await self.connect()
-
         data = {
             "model": model,
             "messages": self._messages_to_list(messages),
-            "temperature": temperature,
-            "max_tokens": max_tokens,
+            **chat_settings(
+                model,
+                max_tokens,
+                temperature,
+                kwargs,
+                tools=[{"type": "function", "function": t} for t in tools] if tools else None,
+            ),
             "stream": True,
         }
 
+        await self.connect()
         async with self._client.stream(
             "POST",
             f"{self.base_url}/chat/completions",
             json=data,
         ) as response:
+            response.raise_for_status()
             async for line in response.aiter_lines():
                 if line.startswith("data: "):
                     data_str = line[6:]

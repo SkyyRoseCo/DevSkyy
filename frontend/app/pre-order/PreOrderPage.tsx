@@ -347,12 +347,14 @@ function CollectionSection({
           style={{ backgroundColor: collection.accentColor }}
         />
         <div>
-          <p
-            className="text-xs tracking-[0.2em] uppercase"
-            style={{ color: collection.accentColor }}
-          >
-            {collection.tagline}
-          </p>
+          {collection.tagline ? (
+            <p
+              className="text-xs tracking-[0.2em] uppercase"
+              style={{ color: collection.accentColor }}
+            >
+              {collection.tagline}
+            </p>
+          ) : null}
           <h2 className="text-2xl md:text-3xl font-display text-white">
             {collection.name} Collection
           </h2>

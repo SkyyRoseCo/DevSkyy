@@ -1,0 +1,164 @@
+{
+  "motion_manifest_sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef",
+  "scenes": {
+    "BR-COMMERCE-1": {
+      "base_plate_disposition": "SUPERSEDED_IN_CURRENT_RUNTIME",
+      "blueprint_cast": [
+        "br-001",
+        "br-002"
+      ],
+      "collection": "black-rose",
+      "poster": "motion/collection-scenes-k1/br-commerce-1-archive-4-poster.webp",
+      "poster_sha256": "b29c1c71c8754a2c716771dcf701ec880438f423e305f6fdb097d0765a8cdc51",
+      "product_bindings": [
+        "br-001",
+        "br-002"
+      ],
+      "retained_legacy_validator": "scripts/validate-founder-commerce-scenes.py",
+      "runtime_consumer": "inc/hero-commerce-scenes.php::skyyrose2_apply_collection_scene_motion"
+    },
+    "BR-COMMERCE-2": {
+      "base_plate_disposition": "SUPERSEDED_IN_CURRENT_RUNTIME",
+      "blueprint_cast": [
+        "br-005",
+        "br-007"
+      ],
+      "collection": "black-rose",
+      "poster": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp",
+      "poster_sha256": "33d013d846261c82b14a3e015f630f3e8ef9e54a9f5e0592ce50e289fa1da338",
+      "product_bindings": [
+        "br-005",
+        "br-007",
+        "br-004"
+      ],
+      "retained_legacy_validator": "scripts/validate-founder-commerce-scenes.py",
+      "runtime_consumer": "inc/hero-commerce-scenes.php::skyyrose2_apply_collection_scene_motion"
+    },
+    "BR-COMMERCE-3": {
+      "base_plate_disposition": "SUPERSEDED_IN_CURRENT_RUNTIME",
+      "blueprint_cast": [
+        "br-008",
+        "br-009",
+        "br-010",
+        "br-011",
+        "br-012"
+      ],
+      "collection": "black-rose",
+      "poster": "generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+      "poster_sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+      "product_bindings": [
+        "br-008",
+        "br-009",
+        "br-010",
+        "br-011",
+        "br-012"
+      ],
+      "retained_legacy_validator": "scripts/validate-founder-commerce-scenes.py",
+      "runtime_consumer": "inc/hero-commerce-scenes.php::skyyrose2_apply_collection_scene_motion"
+    },
+    "LH-COMMERCE-1": {
+      "base_plate_disposition": "SUPERSEDED_IN_CURRENT_RUNTIME",
+      "blueprint_cast": [
+        "lh-004",
+        "lh-002",
+        "lh-006"
+      ],
+      "collection": "love-hurts",
+      "poster": "motion/collection-scenes-k1/lh-commerce-1-archive-4-poster.webp",
+      "poster_sha256": "6a5fbe9d202f0e47492ded17b4ea381311b41412fc3625c949874da1392d3446",
+      "product_bindings": [
+        "lh-004",
+        "lh-002",
+        "lh-006"
+      ],
+      "retained_legacy_validator": "scripts/validate-founder-commerce-scenes.py",
+      "runtime_consumer": "inc/hero-commerce-scenes.php::skyyrose2_apply_collection_scene_motion"
+    },
+    "LH-COMMERCE-2": {
+      "base_plate_disposition": "SUPERSEDED_IN_CURRENT_RUNTIME",
+      "blueprint_cast": [
+        "lh-003"
+      ],
+      "collection": "love-hurts",
+      "poster": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+      "poster_sha256": "bf251eba7a2366a8d133e10a7bd548f3c6d89d2137da8263a418e761bfdefa54",
+      "product_bindings": [
+        "lh-003"
+      ],
+      "retained_legacy_validator": "scripts/validate-founder-commerce-scenes.py",
+      "runtime_consumer": "inc/hero-commerce-scenes.php::skyyrose2_apply_collection_scene_motion"
+    },
+    "LH-COMMERCE-3": {
+      "base_plate_disposition": "SUPERSEDED_IN_CURRENT_RUNTIME",
+      "blueprint_cast": [
+        "lh-005"
+      ],
+      "collection": "love-hurts",
+      "poster": "motion/collection-scenes-k1/lh-commerce-3-archive-4-poster.webp",
+      "poster_sha256": "ddff5431de7614583429a92d4c51ebab87dc0b174ff1292b997004aa7b8dfc5c",
+      "product_bindings": [
+        "lh-005"
+      ],
+      "retained_legacy_validator": "scripts/validate-founder-commerce-scenes.py",
+      "runtime_consumer": "inc/hero-commerce-scenes.php::skyyrose2_apply_collection_scene_motion"
+    },
+    "SIG-COMMERCE-1": {
+      "base_plate_disposition": "SUPERSEDED_IN_CURRENT_RUNTIME",
+      "blueprint_cast": [
+        "sg-009",
+        "sg-007"
+      ],
+      "collection": "signature",
+      "poster": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp",
+      "poster_sha256": "a42deb80c50e5caecc989b2ac43982e4c2aa8e6abb2b91c7c10be1d34bfc9026",
+      "product_bindings": [
+        "sg-009",
+        "sg-007"
+      ],
+      "retained_legacy_validator": "scripts/validate-founder-commerce-scenes.py",
+      "runtime_consumer": "inc/hero-commerce-scenes.php::skyyrose2_apply_collection_scene_motion"
+    },
+    "SIG-COMMERCE-2": {
+      "base_plate_disposition": "SUPERSEDED_IN_CURRENT_RUNTIME",
+      "blueprint_cast": [
+        "sg-013",
+        "sg-014",
+        "sg-006"
+      ],
+      "collection": "signature",
+      "poster": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp",
+      "poster_sha256": "df2f79e55c5cff38dbac7efae3cd7258685cd546c4713fa413ec9b6f0640111e",
+      "product_bindings": [
+        "sg-013",
+        "sg-014",
+        "sg-006"
+      ],
+      "retained_legacy_validator": "scripts/validate-founder-commerce-scenes.py",
+      "runtime_consumer": "inc/hero-commerce-scenes.php::skyyrose2_apply_collection_scene_motion"
+    },
+    "SIG-COMMERCE-3": {
+      "base_plate_disposition": "SUPERSEDED_IN_CURRENT_RUNTIME",
+      "blueprint_cast": [
+        "sg-001",
+        "sg-005",
+        "sg-003",
+        "sg-002",
+        "sg-015"
+      ],
+      "collection": "signature",
+      "poster": "motion/collection-scenes-k1/sig-commerce-3-motion-k1-poster.webp",
+      "poster_sha256": "eef20813c482773ff3217cd1f367c61bbd9c31734e45ff252ea1f510783bc452",
+      "product_bindings": [
+        "sg-001",
+        "sg-005",
+        "sg-003",
+        "sg-002",
+        "sg-015"
+      ],
+      "retained_legacy_validator": "scripts/validate-founder-commerce-scenes.py",
+      "runtime_consumer": "inc/hero-commerce-scenes.php::skyyrose2_apply_collection_scene_motion"
+    }
+  },
+  "schema": "skyyrose.v2.recovered-motion-source.v1",
+  "source_status": "DEPLOYED_SOURCE_ONLY_NOT_NEW_VISUAL_APPROVAL"
+}

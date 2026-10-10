@@ -60,9 +60,9 @@ function skyyrose2_demo_upsert_page( $slug, $data, $parent_id, &$report ) {
 		$report['reused'][] = sprintf( __( 'Page: %s', 'skyyrose-flagship-2' ), $data['title'] );
 		$expected_template = skyyrose2_demo_template( $data['template'] );
 		$current_template  = get_page_template_slug( $existing->ID );
-		if ( ! is_wp_error( $expected_template ) && 'default' !== $expected_template && $expected_template !== $current_template ) {
+		if ( get_post_meta( $existing->ID, '_skyyrose2_demo_owned', true ) && ! is_wp_error( $expected_template ) && 'default' !== $expected_template && $expected_template !== $current_template && in_array( $current_template, array( '', 'default', 'template-collection.php', 'template-immersive-signature.php', 'template-immersive-black-rose.php', 'template-immersive-love-hurts.php', 'template-immersive-kids-capsule.php' ), true ) ) {
 			/*
-			 * This is a theme-owned route binding, not merchant page copy. Repair
+			 * Only repair an owned, known theme assignment; preserve custom templates. Repair
 			 * the template so a prior V1/V2 assignment cannot keep an obsolete
 			 * layout live after the V2 importer is run.
 			 */

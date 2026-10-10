@@ -1,0 +1,50 @@
+{
+  "status": "PASS_FOCUSED_LOCAL_BROWSER_AND_EXPORT_CHECKS",
+  "date": "2026-09-12T16:56:08.964Z",
+  "checks": {
+    "source_images_loaded": 9,
+    "route_durations": [
+      24,
+      22,
+      22
+    ],
+    "pause_seek_same_frame": true,
+    "explicit_cut": true,
+    "reduced_motion": true,
+    "next_previous": true,
+    "blind_notes_hidden": true,
+    "mobile_horizontal_overflow": false,
+    "page_errors": []
+  },
+  "exports": [
+    {
+      "route": "A",
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-workflow/kids-boards/exports/Kids-Route-A-rough-board.mp4",
+      "seconds": 24,
+      "frames": 576,
+      "audio": false,
+      "kind": "TIMED_STILL_BOARDS_NOT_GENERATED_MOTION"
+    },
+    {
+      "route": "B",
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-workflow/kids-boards/exports/Kids-Route-B-rough-board.mp4",
+      "seconds": 22,
+      "frames": 528,
+      "audio": false,
+      "kind": "TIMED_STILL_BOARDS_NOT_GENERATED_MOTION"
+    },
+    {
+      "route": "C",
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-workflow/kids-boards/exports/Kids-Route-C-rough-board.mp4",
+      "seconds": 22,
+      "frames": 528,
+      "audio": false,
+      "kind": "TIMED_STILL_BOARDS_NOT_GENERATED_MOTION"
+    }
+  ],
+  "limits": [
+    "No finished garment/identity fidelity proved by schematics",
+    "No live provider or campaign execution",
+    "Movies hold schematic endpoint frames for planned shot duration; browser additionally interpolates simple blocking"
+  ]
+}

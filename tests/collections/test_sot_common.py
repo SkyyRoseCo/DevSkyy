@@ -48,7 +48,8 @@ def test_identity_validates_and_matches_canon(slug):
     import jsonschema
 
     schema = json.loads(SCHEMA.read_text())
-    ident = json.loads((DATA / "collections" / slug / "identity.json").read_text())
+    registry = json.loads((DATA / "logo-registry.json").read_text())
+    ident = registry["collections"][slug]
     jsonschema.validate(ident, schema)
     assert ident["slug"] == slug
     assert ident["key"] == slug.replace("-", "_")
@@ -76,11 +77,27 @@ def test_load_identity_all_four():
 
 
 def test_load_identity_rejects_malformed(tmp_path, monkeypatch):
-    bad = tmp_path / "black-rose"
-    bad.mkdir()
-    (bad / "identity.json").write_text('{"slug": "black-rose"}')  # missing required keys
-    monkeypatch.setattr(sot_common, "COLLECTIONS_DIR", tmp_path)
-    with pytest.raises(sot_common.IdentityError):
+    registry = tmp_path / "logo-registry.json"
+    registry.write_text('{"collections": {"black-rose": {"slug": "black-rose"}}}')
+    monkeypatch.setattr(sot_common, "LOGO_REG", registry)
+    with pytest.raises(sot_common.IdentityError, match="collections.black-rose"):
+        sot_common.load_identity()
+
+
+def test_load_identity_rejects_a_slug_that_disagrees_with_its_key(tmp_path, monkeypatch):
+    ident = json.loads((DATA / "logo-registry.json").read_text())["collections"]["signature"]
+    registry = tmp_path / "logo-registry.json"
+    registry.write_text(json.dumps({"collections": {"black-rose": ident}}))
+    monkeypatch.setattr(sot_common, "LOGO_REG", registry)
+    with pytest.raises(sot_common.IdentityError, match="!= key 'black-rose'"):
+        sot_common.load_identity()
+
+
+def test_load_identity_fails_closed_without_a_collections_section(tmp_path, monkeypatch):
+    registry = tmp_path / "logo-registry.json"
+    registry.write_text('{"products": {}}')
+    monkeypatch.setattr(sot_common, "LOGO_REG", registry)
+    with pytest.raises(sot_common.IdentityError, match="no collections section"):
         sot_common.load_identity()
 
 

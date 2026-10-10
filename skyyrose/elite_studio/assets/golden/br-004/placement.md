@@ -33,7 +33,8 @@ Black pullover hoodie — long sleeves, drawstring hood, kangaroo front pocket, 
 - NO printed graphics, NO sublimated panels, NO heat-transfer vinyl,
   NO puff-print decoration.
 - NO front-pocket branding — the kangaroo pocket fabric is clean.
-- NO right-sleeve patch (only the left sleeve carries a small patch).
+- NO sleeve patch on either sleeve (the small patch is at the left hip /
+  left side of the body, NOT the sleeve).
 - NO contrasting hood lining (assume same black tonal — to be verified
   if a contrast lining exists, but default is uniform black).
 - NO chest text or wordmark (the front rose is the only chest decoration).

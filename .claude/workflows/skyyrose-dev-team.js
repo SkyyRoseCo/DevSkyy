@@ -120,7 +120,7 @@ function normalizeTask(a) {
 
 function agentFor(batch) {
   if (batch === 'marketing') return 'skyyrose-launch-commander'
-  return batch === 'frontend' ? 'Frontend Developer' : 'Backend Architect'
+  return batch === 'frontend' ? 'frontend-developer' : 'Backend Architect'
 }
 
 function fileList(files) {
@@ -204,14 +204,17 @@ const wpTouched = plan.surface === 'wp' || plan.surface === 'mixed' || plan.touc
 if (wpTouched) {
   health = await agent(
     `${READ_FIRST}\n\nRun the WordPress health-check sweep (section 7 of the charter) over the changes just made in ` +
-      `${REPO}/wordpress-theme/skyyrose-flagship.\n` +
+      `${REPO}/wordpress-theme/skyyrose-flagship-2 (V2 "SkyyRose Flagship 2", text domain skyyrose-flagship-2, ` +
+      `SKYYROSE2_VERSION, own package.json — the lineage skyyrose.co and staging serve) — or ` +
+      `${REPO}/wordpress-theme/skyyrose-flagship (V1 "SkyyRose", text domain skyyrose, SKYYROSE_VERSION, ` +
+      `builds via wordpress-theme/package.json) if that is the theme the plan edited. State which theme in the report.\n` +
       `STATIC ONLY — do NOT deploy or curl production.\n` +
       `Check all 7 items: (1) duplicate pages (theme-activation-setup slug collisions + SETUP_VERSION gate), ` +
       `(2) broken code (php -l via /opt/homebrew/bin/php on touched PHP), ` +
       `(3) templates not rendering (enqueue.php slug map matches template filenames; get_template_part targets exist; front-page manual includes), ` +
-      `(4) PHPCS (vendor/bin/phpcs --standard=.phpcs.xml -s on touched files), ` +
+      `(4) PHPCS (phpcs -s on touched files with THAT theme's ruleset — skyyrose-flagship/.phpcs.xml, skyyrose-flagship-2/phpcs.xml; the binary is skyyrose-flagship/vendor/bin/phpcs, skyyrose-flagship-2 has no vendor/), ` +
       `(5) security (no innerHTML; escaping; sanitize; nonce+capability; no hardcoded secrets), ` +
-      `(6) assets exist + SKYYROSE_VERSION bumped when CSS/JS changed, ` +
+      `(6) assets exist + that theme's version constant (SKYYROSE2_VERSION for skyyrose-flagship-2, SKYYROSE_VERSION for skyyrose-flagship) bumped when CSS/JS changed, ` +
       `(7) no regression / no resurrection of retired patterns.\n` +
       `Report each check pass/warn/fail with file:line evidence. If a CRITICAL item fails, APPLY the fix and re-check. Return pass=true only when the sweep is green.`,
     { agentType: 'wp-code-simplifier', schema: HEALTH_SCHEMA, label: 'wp-health', phase: 'WP Health' },

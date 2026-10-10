@@ -1,0 +1,21 @@
+{
+  "task_id": "RELAUNCH-7DAY-20260911",
+  "status": "NEEDS_FOUNDER_REVIEW",
+  "sources": "source-manifest.json",
+  "provider": "Read-only model/estimate/workspace receipts in evidence/",
+  "generation_jobs": [],
+  "spend": 0,
+  "authentication": {
+    "offline": "NOT_APPLICABLE",
+    "higgsfield": "VERIFIED_LIVE_READ_ONLY_LIST_AND_ESTIMATES; no selected workspace; target binding pending before upload",
+    "ad_platforms": "UNVERIFIED",
+    "woocommerce": "UNVERIFIED"
+  },
+  "browser": "evidence/browser.json — 390/768/1440, no overflow, broken images/anchors or page errors",
+  "independent_review": "evidence/independent-review.md — clean within bounded planning scope",
+  "founder_approval": "PENDING",
+  "skill_examples": "PARTIAL; see verified-examples.md",
+  "candidate_sha256": "93d18e8a0c8326faf4caa0a867abc341f01e52ea60c26d1c78e7274460fc0304",
+  "manager_verification": "evidence/invariants.json and FIX-REPORT.md",
+  "execution": "BLOCKED_FOR_EXECUTION — release-gates.json"
+}

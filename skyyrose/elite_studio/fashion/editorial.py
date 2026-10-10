@@ -390,6 +390,4 @@ class EditorialDirector:
                 "Bright, clean, family-forward."
             ),
         }
-        return notes.get(
-            collection.lower(), "SkyyRose brand aesthetic."
-        )
+        return notes.get(collection.lower(), "SkyyRose brand aesthetic.")

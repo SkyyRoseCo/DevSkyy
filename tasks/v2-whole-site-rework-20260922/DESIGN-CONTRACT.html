@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SkyyRose V2 — Whole-Site Design Contract (2026-09-22)</title>
+<style>body{font:15px/1.55 system-ui;max-width:76rem;margin:2rem auto;padding:0 1rem;color:#111}code{background:#f2f2f2;padding:.1em .3em}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:.4rem .6rem;vertical-align:top;text-align:left}h2{margin-top:2.5rem;border-bottom:2px solid #111}h3{margin-top:1.75rem}.no{color:#a00;font-weight:600}</style>
+</head>
+<body>
+<h1>SkyyRose V2 — Whole-Site Design Contract</h1>
+<p>Branch <code>codex/v2-whole-site-rework-20260922</code> · theme <code>wordpress-theme/skyyrose-flagship-2</code> · ledger <code>tasks/v2-whole-site-rework-20260922/task-ledger.json</code>. Approved direction (Corey): <em>find an innovative way to follow the Veritas composition but add some of the SkyyRose direction</em>. Founder additions 2026-09-22: <em>take the mascot out of the header; implement Skyy as the walk-on-screen chatbot</em> using <code>Skyy-Natural-Motion-20260911.zip</code>; red team runs as Ultracode.</p>
+
+<section id="direction">
+<h2>1. Direction — Veritas composition × SkyyRose identity</h2>
+<ol>
+<li><strong>One dominant focal point per viewport.</strong> Full-bleed imagery is the structure of every page, not decoration. Nothing competes with the opener: no filmstrips, giant emblems, numbered rails and mascot all inside one hero.</li>
+<li><strong>Editorial sequence.</strong> Every route is <em>Arrival → Chapters → Colophon</em>. A chapter = a full-bleed scene (16:9 desktop, 3:2 mobile) followed by a copy/commerce band on the void. Alternate band column order for rhythm; never stack centred titles over everything.</li>
+<li><strong>Restrained navigation.</strong> Transparent header over cinematic arrivals, solid on scroll. Small wordmark, Hanken links, one primary action per view plus one quiet text link.</li>
+<li><strong>Garment is the protagonist.</strong> Product imagery is shown large and unframed on <code>#0A0A0A</code>/<code>#111</code> tiles. <span class="no">No ornate portal frames in grids</span> (card arg <code>'frame' => false</code>; the frame system stays available for the archive test and founder-directed uses).</li>
+<li><strong>Oakland identity, not European luxury.</strong> References: Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels. Copy comes from <code>skyyrose2_collections()</code> and founder text only; never invent product facts (registry via <code>get_product</code>).</li>
+<li><strong>Motion is inherited.</strong> Reuse the existing controllers and their DOM hooks (§6). Reduced motion always yields the static composition. No new JS unless the contract names it.</li>
+</ol>
+</section>
+
+<section id="system">
+<h2>2. System rules</h2>
+<table>
+<tr><th>Rule</th><th>Value</th></tr>
+<tr><td>Base</td><td><code>--sr2-void #0a0a0a</code> page, <code>--sr2-card #111</code> tiles, <code>--sr2-ink #f5f5f0</code> text, <code>--sr2-muted #b3b3b3</code> secondary.</td></tr>
+<tr><td>Accent</td><td>One accent per surface via <code>data-collection="signature|black-rose|love-hurts|kids-capsule"</code> on the <em>section</em> (rebinding <code>--sr2-accent</code>). Crimson text uses <code>--sr2-crimson #eb4666</code> (AA); <code>#DC143C</code> is fills/borders/glows only. House default = rose <code>#b76e79</code>.</td></tr>
+<tr><td>Display type</td><td>Archivo (<code>--sr2-font-display</code>) weight 600–700, tracking <code>-0.035em</code>, line-height 1–1.05. Sizes: <code>--sr2-type-display</code> (page titles), <code>--sr2-type-chapter</code> (chapter h2), <code>--sr2-type-editorial</code> (h3). <span class="no">No 850-weight monument headlines, no uppercase Archivo walls.</span></td></tr>
+<tr><td>Body/UI</td><td>Hanken Grotesk (<code>--sr2-font-body</code>). Body 1rem/1.6; ledes <code>.sr2-lede</code>; controls Hanken 500 .75rem uppercase tracking .14em (controls.css, phase 1).</td></tr>
+<tr><td>Accent type</td><td>Anton (<code>--sr2-font-ui</code>) only for <code>.sr2-eyebrow</code> labels. Cinzel (<code>--sr2-font-caps</code>) only for <code>.sr2-eyebrow--engraved</code> index labels (e.g. “01 / Signature”). <span class="no">Never Cinzel on h1/h2/wordmarks.</span> Cut fonts (Playfair, Cormorant, Bebas, Yellowtail) never return.</td></tr>
+<tr><td>Lockups</td><td>Collection titles in arrivals are the lockup <em>images</em> (<code>collections[slug]['lockup']</code>) with a screen-reader name; interior copy is type.</td></tr>
+<tr><td>Imagery</td><td>Heroes: <code>hero_mobile</code> ≤47.99em, <code>hero_tablet</code> ≤74.99em, <code>hero</code> above. Scenes crop with <code>object-fit: cover</code> and an explicit <code>--sr2-focal</code>. Founder portrait <code>images/about/skyy-rose-founder-hero.webp</code> is 724×1086 — <span class="no">never crop to panoramic</span>; show it in a portrait column. Videos keep posters at their native 3:2.</td></tr>
+<tr><td>Spacing</td><td>Sections: <code>--sr2-band-pad</code> vertical, <code>--sr2-page-pad</code> horizontal. 12-column grid (<code>--sr2-grid-gap</code>); copy 5/12, aside 6/12; mobile stacks.</td></tr>
+<tr><td>Controls</td><td><code>.sr2-control.sr2-control--primary</code> (filled accent) for the one primary action; <code>.sr2-control.sr2-control--quiet</code> / <code>.sr2-editorial-link</code> for the quiet link. Woo buttons inherit controls.css.</td></tr>
+<tr><td>Copy</td><td>Founder voice; no urgency, no guilt, no “luxury grows from concrete” (retired). Use <code>kicker/headline/line/manifesto/world_*/shop_*/card_story/hero_cta/world_cta/invitation*</code> from <code>skyyrose2_collections()</code>.</td></tr>
+</table>
+<p><strong>Delivery notes (red team 2026-09-22):</strong> Archivo ships width-instanced (<code>wdth</code> fixed at 100 in <code>assets/derived/fonts/manifest.json</code>); the legacy <code>'wdth' 125</code> hero setting is not in effect anywhere and its last dead declaration was removed from <code>about-archive.css</code>. The theme defines no <code>#DC143C</code> token: Love Hurts fills, wipes and hairlines use <code>--sr2-crimson #eb4666</code> like its text; a dedicated fill token is a founder decision, not shipped. Cinzel renders only through <code>.sr2-eyebrow--engraved</code> (immersive chapter marks now carry that class). Every runtime <code>&lt;video&gt;</code> emitter is allow-listed against its approved resolver in <code>scripts/validate-collection-hero-motion.py</code>, whose runtime guards now read the live arrival controller <code>visual-recovery.js</code>.</p>
+</section>
+
+<section id="primitives">
+<h2>3. Shared primitives (Phase 1, owned by Agent A — use, don’t redefine)</h2>
+<table>
+<tr><th>Class</th><th>Where</th><th>Semantics</th></tr>
+<tr><td><code>.sr2-arrival</code></td><td>theme.css</td><td>Full-bleed opener: grid, <code>align-content:end</code>, <code>min-height:100svh</code> (mobile <code>min(100svh,46rem)</code>), top padding clears the header. Children: <code>.sr2-arrival__media</code> (absolute, z -2; picture/img/video cover, <code>--sr2-focal</code>), <code>.sr2-arrival__veil</code> (z -1 gradient), <code>.sr2-arrival__copy</code> (bottom-left, max 44rem), <code>.sr2-arrival__lockup</code> (img, clamp(12rem,30vw,24rem)), <code>.sr2-arrival__actions</code>, <code>.sr2-arrival__utility</code> (top-right slot for the motion toggle). <strong>Any page whose <code>body</code> contains <code>.sr2-arrival</code> gets the transparent header until scrolled</strong> (<code>body:has(.sr2-arrival) .sr2-house-header</code>).</td></tr>
+<tr><td><code>.sr2-chapter</code></td><td>theme.css</td><td>Scene + band. <code>.sr2-chapter__scene</code> (figure, <code>aspect-ratio: var(--sr2-scene-ratio)</code> 16/9, mobile 3/2, cover), <code>.sr2-chapter__band</code> (12-col grid, band padding), <code>.sr2-chapter__copy</code> (cols 1–5), <code>.sr2-chapter__aside</code> (cols 7–12), <code>.sr2-chapter--flip</code> swaps them, <code>.sr2-chapter__index</code> (accent index label with hairline). Set <code>data-collection</code> on the chapter.</td></tr>
+<tr><td><code>.sr2-band</code>, <code>.sr2-band__head</code></td><td>theme.css</td><td>Generic section wrapper and left-aligned 12-col head (title cols 1–7, action cols 9–12 right-aligned; stacks on mobile).</td></tr>
+<tr><td><code>.sr2-title-display</code>, <code>.sr2-title-chapter</code>, <code>.sr2-lede</code>, <code>.sr2-eyebrow</code>, <code>.sr2-eyebrow--engraved</code>, <code>.sr2-editorial-link</code></td><td>theme.css</td><td>Type roles from §2. <code>.sr2-editorial-link</code> = uppercase Hanken hairline link with arrow span (moved out of home-page.css).</td></tr>
+<tr><td>Tokens</td><td>design-tokens.css</td><td><code>--sr2-header: 64px</code>, <code>--sr2-band-pad</code>, <code>--sr2-type-chapter</code>, <code>--sr2-type-lede</code>, <code>--sr2-scene-ratio</code>, <code>--sr2-scene-ratio-mobile</code>, <code>--sr2-dock-offset</code>, <code>--sr2-focal</code> (per-element override).</td></tr>
+</table>
+<p>Existing atoms you may rely on: <code>.sr2-control*</code>, <code>.sr2-index</code>, <code>.sr2-world-index</code>, <code>.sr2-image-reveal</code> (theme.js adds <code>is-seen</code>), <code>.sr2-c-editorial-card</code> (product card), <code>.sr2-surface--light</code> (paper sections).</p>
+</section>
+
+<section id="shell">
+<h2>4. Header, footer, Skyy dock (Agent A markup; Agent E runtime)</h2>
+<ul>
+<li>Header: brand mark <code>clamp(2.5rem,3.2vw,3rem)</code> tall, masthead links Hanken 500 .78rem, transparent over <code>.sr2-arrival</code> until <code>.is-scrolled</code>, solid otherwise. Menu directory unchanged except <span class="no">the mascot recall is removed from the header entirely</span>.</li>
+<li>Footer: centred quiet colophon; wordmark Hanken uppercase (no Cinzel); disclosure groups unchanged (test pins).</li>
+<li>Skyy dock (all routes except checkout), rendered by <code>template-parts/skyy-mascot.php</code> after the dialog:
+<pre>&lt;div id="skyy-hero-stage" class="skyy-dock" role="region" aria-label="Skyy, your house concierge" data-skyy-dock&gt;&lt;noscript&gt;…&lt;/noscript&gt;&lt;/div&gt;
+&lt;a id="skyyrose-mascot-recall" class="skyyrose-mascot__recall skyy-dock__recall" href="…/contact/" aria-controls="skyy-ask-dialog" aria-haspopup="dialog" aria-expanded="false" hidden&gt;&lt;img …&gt;&lt;span&gt;Ask Skyy&lt;small&gt;Your house guide&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;</pre>
+Behaviour (E): stage <code>#skyyrose-mascot</code> mounts in the dock (fixed, bottom-right, <code>--sr2-dock-offset</code>); portrait first; after <code>window.load</code> + ~4.5 s (rulebook) the natural-motion rig loads and she <em>walks in</em> (Skyy_Walk → Skyy_Wave → Skyy_Idle) unless reduced motion / saveData / session-dismissed / another overlay is open. “Ask Skyy” opens the native dialog (stage reparents as today). “Dismiss” hides the stage for the session (<code>sessionStorage</code>) and reveals the recall pill; recall click clears the dismissal and opens the dialog. Pause toggle appears when 3D is ready. Auto walk-ins capped at 3 per session; afterwards the portrait sits in the dock without the walk. Mobile dock is compact (character ≤ 96×148, two 44px buttons). Overlays (<code>dialog[open]</code>, <code>sr2-nav-open</code>, <code>sr2-overlay-open</code>) hide her.</li>
+</ul>
+</section>
+
+<section id="surfaces">
+<h2>5. Surface briefs</h2>
+<h3>A — Homepage (Agent A)</h3>
+<p>Arrival (BR Bay Bridge v4 picture + founder-approved motion video, wordmark bottom-left, one primary CTA to <code>#sr2-archive-worlds</code>, quiet “Shop the house”, motion toggle top-right, slim four-name chapter index strip at the hero’s bottom edge) → on-model film band (sg-005, br-004, lh-004, kids-001; reuses <code>data-home-model-loop</code>/<code>data-home-model-toggle</code>) → four <code>.sr2-chapter</code>s (SIG golden-gate v2 + SG-005 · BR lake-merritt/bay-bridge + BR-001/BR-004 · LH rose-aisle v3 + LH-004 · KIDS heir-throne v3 + KIDS-001; alternating) → worlds rail (<code>living-archive-worlds</code>, no <code>&lt;details&gt;</code>) → founder story (portrait column intact) → journal posters at 3:2 → footer. <code>editorial-product-edit.php</code> is deleted (census: only front-page used it).</p>
+
+<h3>B — Collection landings + immersive worlds (Agent B)</h3>
+<p>Routes: <code>?route=signature|black-rose|love-hurts|kids-capsule</code> (<code>template-collection.php → template-parts/collections/world.php</code>), <code>?route=collections</code> (page.php), <code>?route=immersive-signature|immersive-black-rose|immersive-love-hurts|immersive-kids-capsule</code>.</p>
+<ul>
+<li>Arrival = <code>.sr2-arrival</code> with the collection <code>hero*</code> picture (+ approved motion where <code>skyyrose2_collection_hero_motion</code> returns it), lockup image as the title, <code>kicker</code> eyebrow, <code>line</code> lede, primary <code>hero_cta</code> → the shop band anchor, quiet <code>world_cta</code> → the world anchor, motion toggle in <code>.sr2-arrival__utility</code>. Keep <code>data-recovery-hero</code>, <code>data-recovery-hero-video</code>, <code>data-recovery-motion-toggle</code> hooks.</li>
+<li>Chapters = the three <code>world</code> scenes as <code>.sr2-chapter</code>s (label eyebrow + copy in the band; hotspot scenes keep <code>hero-composed-scene</code> and <code>collection-scene-motion</code> hooks). Kill centred Cinzel titles and disconnected module stacks.</li>
+<li>Product edit = garment-led grid (2/3/4 cols) using the shared card with <code>'frame' => false</code>, <code>shop_kicker/shop_heading/shop_intro</code> in a <code>.sr2-band__head</code>. Native loop add-to-cart preserved.</li>
+<li>Story/manifesto and next-world sections restyled to the primitives; <code>tools/v2-runtime/test-home-labels.php</code> needs “Enter Signature/Black Rose/Love Hurts” in <code>living-archive-worlds.php</code> (Agent A’s file — do not edit; it already passes).</li>
+<li>Immersive: keep <code>immersive.js</code>/Three scenes and fallbacks; restyle chrome (captions, hotspot labels, section heads) to the primitives; ensure the poster fallback is full-bleed and the reduced-motion path is static.</li>
+<li>Collections index page: four full-bleed chapters (one per collection, lockup + line + enter link), no grid of cards.</li>
+</ul>
+
+<h3>C — Shop archive, taxonomy, PDP, card (Agent C)</h3>
+<ul>
+<li>First: fix the fixture crash — add <code>is_product_category()</code> / <code>is_product_tag()</code> stubs (return false) to <code>tools/v2-theme-preview.php</code> near the other WooCommerce stubs; update the stale <code>require_text</code> (“ornate-frame”) in <code>tools/verify-v2-theme-preview.sh</code> to the current <code>data-card-direction="living-archive"</code>.</li>
+<li>Card: honour <code>$args['frame']</code> (default true) — when false, emit no frame <code>&lt;img&gt;</code>/label and set <code>data-card-frame="archive"</code>; keep <code>tools/v2-runtime/test-product-card.php</code> passing (one <code>&lt;img&gt;</code> when no frame; frame fetchpriority when a frame is given). Card body: name, price, availability, quick view + add-to-bag as quiet hairline actions.</li>
+<li>Shop: quiet arrival band (eyebrow, Archivo h1 left, result count, native ordering select), garment-led grid on <code>#111</code> tiles, <code>frame => false</code>, pagination preserved. Taxonomy pages: same grid with the collection accent.</li>
+<li>PDP: gallery left (sticky ≥64em), buy column right (title, price, variations, size guide dialog, add to cart, availability), then description/materials from Woo, then related pieces in the same grid. Collection accent via <code>data-collection</code>. Keep <code>quick-view-commerce</code>, <code>wc-add-to-cart-variation</code>, size-guide dialog hooks, JSON-LD/SEO hooks, and the PDP tests (<code>test-pdp-*.php</code>, <code>test-shop-archive.php</code>, <code>test-archive-preload.php</code>, <code>test-native-card-priority.php</code>).</li>
+</ul>
+
+<h3>D — Supporting and commerce pages (Agent D)</h3>
+<ul>
+<li>Routes: <code>collections? (B)</code>, <code>pre-order, about, contact, wishlist, faq, shipping-returns, returns-exchanges, size-guide, privacy-policy, terms-of-service, accessibility, journal, cart, checkout, account, order-tracking, 404</code> (see <code>$preview_template_map</code> in the fixture).</li>
+<li>Pattern: quiet arrival band (eyebrow + left Archivo title + lede, optionally one full-bleed scene for about/pre-order/lookbook) → 72ch reading column or 12-col form layout. About keeps the founder portrait as a portrait column beside the copy.</li>
+<li>Cart/checkout: two columns ≥64em (items/form left, sticky summary right), controls.css fields, Woo notices; all hooks, nonces and Woo template structure preserved (<code>test-cart-contract.php</code>, <code>test-checkout-truth.php</code>). Account/order-tracking: same shell.</li>
+<li>Lookbook keeps its ivory paper editorial (<code>.sr2-surface--light</code>) but adopts the type roles. 404 = one full-bleed scene + one link.</li>
+<li><code>theme.css</code> from <code>/* Content pages */</code> downward is yours after the phase-1 commit; do not touch the base/header/atoms block above it.</li>
+</ul>
+
+<h3>E — Skyy natural motion runtime (Agent E)</h3>
+<ul>
+<li>Models: <code>assets/models/skyy-natural-desktop.glb</code> and <code>assets/models/skyy-natural-mobile.glb</code> (staged by A; sha256 in the ledger). Config from <code>functions.php</code>: <code>SKYY_3D_CONFIG.modelUrl</code> (desktop), <code>mobileModelUrl</code>, <code>decoderPath</code>, <code>moduleBase</code>. Select mobile when <code>(max-width: 47.99em)</code> or <code>navigator.deviceMemory &lt;= 4</code>. Clip names are unchanged (<code>Skyy_Idle/Walk/Talk/Joy/Exit/Wave</code>); Draco + EXT_texture_webp required — decoders already at <code>assets/js/lib/draco/</code>.</li>
+<li>Playback: LoopOnce + mixer <code>finished</code> for transient clips (Wave/Talk/Joy/Exit), greeting waits for the wave to finish, 30 fps cap, pixel ratio ≤1.5, no rendering while hidden — verify what the current <code>skyy-3d.js</code> already does and port only what is missing from the delivered <code>assets/js/skyy-3d.js</code> in the zip (reference, not a drop-in: it targets the V1 DOM).</li>
+<li>Dock behaviour per §4; keep every id in <code>skyy-mascot.php</code>; keep the deterministic guide (no network chat). Update <code>tools/v2-runtime/test-skyy-concierge.cjs</code> and its harness to the new contract (dock exists on every page; recall hidden until dismissal; auto walk-in timer; session memory) — strengthen, never delete assertions without an equivalent.</li>
+<li>Fixture: add a <code>&amp;skyy=1</code> query flag to <code>tools/v2-theme-preview.php</code> that renders the mascot template part and prints <code>mascot.css</code>, <code>SKYY_LOADER_CONFIG</code>/<code>SKYY_3D_CONFIG</code>/<code>SKYY_GUIDE_DATA</code> and the loader script (source files). Verify in Chromium with <code>--use-gl=swiftshader --enable-unsafe-swiftshader</code>: walk-in visible, wave completes, dialog opens/closes with focus restore, dismiss/recall, reduced-motion static, zero page errors. Capture 1440/390 and a short frame sequence.</li>
+</ul>
+</section>
+
+<section id="preserve">
+<h2>6. Preservation inventory (breaking any of these is a defect)</h2>
+<table>
+<tr><th>Controller / test</th><th>Hooks that must survive</th></tr>
+<tr><td><code>visual-recovery.js</code></td><td><code>[data-recovery-hero]</code> ⊃ <code>[data-recovery-motion-toggle]</code>, optional <code>[data-recovery-hero-video]</code> with <code>source[data-src]</code>, first <code>img</code> = poster; classes <code>is-hero-poster-ready</code>/<code>is-hero-video-ready</code>; rails <code>[data-recovery-rail] &gt; [data-recovery-track]</code>, <code>[data-recovery-prev|next|count]</code>, <code>.sr2-recovery-controls</code>.</td></tr>
+<tr><td><code>theme.js</code></td><td><code>[data-site-header]</code>, <code>[data-sr2-menu]</code>, <code>[data-sr2-nav]</code>, <code>[data-search-open]</code>, <code>[data-bag-open]</code>, <code>[data-home-model-loop]</code> ⊃ <code>[data-home-model-toggle]</code> and cards matching <code>.sr2-editorial-hero__film-card[href]</code> (keep that class on film cards), <code>[data-horizontal-world]</code>/<code>[data-horizontal-rail]</code>/<code>[data-rail-*]</code>, <code>[data-scene-motion]</code>, <code>[data-hero-depth]</code>, <code>[data-brand-animation]</code>, <code>.sr2-image-reveal</code>; classes <code>is-scrolled</code>, <code>sr2-motion-ready</code>, <code>sr2-motion-reduced</code>, <code>sr2-nav-open</code>, <code>sr2-overlay-open</code>, <code>is-seen</code>.</td></tr>
+<tr><td>Mascot</td><td>ids <code>skyy-ask-dialog, skyyrose-mascot-recall, skyyrose-mascot, skyyrose-mascot-trigger, skyy-3d-canvas, skyy-conversation, skyy-ask-form, skyy-ask-input, skyy-motion-toggle, skyy-hero-stage, skyy-dialog-stage, skyy-hero-chat, skyy-hero-dismiss, skyy-presence-status, skyy-ask-minimize, skyy-ask-cancel, skyy-chips</code>; events <code>skyy:*</code>.</td></tr>
+<tr><td>Critical CSS (<code>scripts/test-critical-rendering.php</code>, <code>home.contract.json</code>)</td><td>Built CSS must contain <code>.sr2-header__brand-mark, .sr2-editorial-hero__copy, #sr2-archive-title, .sr2-control--primary, [data-recovery-hero-video], .sr2-archive-scene__concierge, .sr2-house-nav</code>, no <code>is-open</code>/<code>:hover</code>, a <code>(scripting: none)</code> nav fallback; budget 16384 bytes. <code>front-page.php</code>: <code>editorial-hero</code> part then <code>skyyrose2_print_hero_bootstrap()</code> within 40 chars, then <code>editorial-collection</code>. <code>editorial-hero.php</code>: <code>data-recovery-hero-video</code>, <code>data-recovery-motion-toggle</code>, <code>id="sr2-archive-title"</code>, <code>aria-label="&lt;?php esc_attr_e( 'SkyyRose'</code>. Font preloads: Hanken + <code>derived/fonts/archivo-normal-width.woff2</code> only.</td></tr>
+<tr><td><code>scripts/test-global-shell-contract.php</code></td><td><code>inc/global-shell.php</code> keeps masthead Shop/Collections/Journal/About, <code>data-brand-video=</code>, <code>data-brand-animation-mode="viewport"</code>, <code>data-search-open</code>, <code>data-bag-open</code>, <code>data-sr2-menu</code>, <code>aria-controls="sr2-menu"</code>, <code>data-nav-preview-toggle</code>, <code>'footer-house'</code>, <code>'footer-services'</code>, legal slugs, <code>&lt;details&gt;&lt;summary&gt;</code>. The mascot pins move to <code>template-parts/skyy-mascot.php</code> (Agent E updates the test: recall absent from the shell, present exactly once in the mascot part).</td></tr>
+<tr><td>Product card</td><td><code>test-product-card.php</code>, <code>test-native-card-priority.php</code>; quick view attributes <code>data-quick-view*</code>; <code>data-card-cart-feedback</code>; native <code>woocommerce_template_loop_add_to_cart()</code>.</td></tr>
+<tr><td>Packaging</td><td><code>package.py</code> requires the theme file set == <code>package-boundary.json</code>; <code>build-inputs.json</code> pins hashes of <code>home.contract.json</code>, <code>theme.js</code>, <code>collection-scene-motion.js</code>, build scripts, <code>package.json</code>, data JSON. <strong>Agents: report every added/removed/renamed file and any edit to a pinned input; Agent A reconciles centrally.</strong> Do not edit <code>package-boundary.json</code> or <code>build-inputs.json</code> yourselves.</td></tr>
+</table>
+</section>
+
+<section id="ownership">
+<h2>7. Ownership and hazards</h2>
+<p>Ownership per the ledger roster. Shared worktree, shared files: <span class="no">never run <code>npm run build</code>/<code>build:assets</code>, never commit, never <code>git stash</code>/<code>reset</code>/<code>checkout --</code>, never edit a file you do not own</span>. Two agents touch <code>tools/v2-theme-preview.php</code> (C: stubs, E: <code>skyy=1</code> flag) — use small targeted edits and re-read before editing. If you need a change in someone else’s file, write the exact request in your report.</p>
+</section>
+
+<section id="verify">
+<h2>8. Verification protocol (every agent)</h2>
+<ol>
+<li>Boot your own preview on a distinct port from the repo root: <code>php -S 127.0.0.1:&lt;port&gt; -t /Users/theceo/.codex/worktrees/v2-home-layout-repair/DevSkyy</code> — no router argument (passing the fixture as router makes every static asset return HTML). Routes: <code>http://127.0.0.1:&lt;port&gt;/tools/v2-theme-preview.php?route=…</code>; add <code>&amp;skyy=1</code> to render the Skyy dock. (B: 8791, C: 8792, D: 8793, E: 8794; A uses 8790.) The preview serves <em>source</em> CSS/JS, so no build is needed to see changes.</li>
+<li>Validate CSS after every edit: <code>node -e "const p=require('/Users/theceo/.codex/worktrees/v2-home-layout-repair/DevSkyy/wordpress-theme/skyyrose-flagship-2/node_modules/postcss');p.parse(require('fs').readFileSync(process.argv[1],'utf8'));console.log('ok')" &lt;file.css&gt;</code>; PHP: <code>php -l &lt;file&gt;</code>.</li>
+<li><strong>Scroll-dwell before any full-page shot.</strong> <code>.sr2-image-reveal</code> clears on IntersectionObserver and <code>loading=lazy</code> media loads on scroll, so an unscrolled fullPage PNG shows solid accent blocks that are not defects (bug-362). Scroll in ~0.85vh steps with ~650ms dwell, wait for images to settle (bounded 4s), save per-viewport frames for eyes-on review, then take the full-page PNG. No-JS proof uses real wheel input (<code>javaScriptEnabled:false</code>), not page scripting.</li>
+<li>Capture with Playwright from <code>/Users/theceo/DevSkyy/node_modules/playwright</code> (chromium): contexts 1440×900 and 390×844, fullPage PNGs, <code>reducedMotion:'reduce'</code> variant for motion surfaces, collect <code>pageerror</code>/console errors/failed requests. Save to <code>tasks/v2-whole-site-rework-20260922/evidence/&lt;surface&gt;/&lt;route&gt;-{1440,390}.png</code> plus <code>notes.md</code> (what you exercised, what failed, what you left open). <strong>Read your screenshots</strong> with the Read tool and judge them against §1 before reporting.</li>
+<li>Run the runtime tests that cover your files (e.g. <code>php tools/v2-runtime/test-product-card.php</code>, <code>node --test tools/v2-runtime/test-skyy-concierge.cjs</code>) with <code>PATH=/tmp/skyyrose-v2-audit-venv/bin:/Users/theceo/.local/bin:$PATH V2_WP_FIXTURE=/tmp/skyyrose-v2-native-fixture</code>.</li>
+<li>Report: files changed, evidence paths, tests run with output, DOM hooks touched, files added/removed (for packaging reconciliation), open questions for the founder. Tag claims <code>[repro]</code>/<code>[repo]</code>/<code>[inferred]</code>.</li>
+</ol>
+</section>
+
+<section id="donts">
+<h2>9. Don’ts</h2>
+<ul>
+<li>No new product facts, images or SKUs outside the registry and the approved assets listed here. BR-002 and KIDS-002 stay out of featured slots.</li>
+<li>No centred Cinzel titles, no European-luxury serif lineage, no cut fonts, no crimson body text.</li>
+<li>No placeholder copy, TODOs, or commented-out code. No inline styles except CSS custom properties (<code>style="--sr2-focal: …"</code>).</li>
+<li>No changes to WooCommerce data flow, nonces, or checkout fields. No deletion of paid assets (the old <code>skyy-mascot.glb</code> stays until the founder says otherwise).</li>
+</ul>
+</section>
+</body>
+</html>

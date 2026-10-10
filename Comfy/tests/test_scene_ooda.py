@@ -17,6 +17,7 @@ def test_higgsfield_command_is_enhance_only_and_source_bound(tmp_path: Path) -> 
     source = tmp_path / "source.png"
     source.write_bytes(b"source")
     manifest = {
+        "provider_capability": {"higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY"},
         "higgsfield": {
             "mode": "hero_banner",
             "prompt": "campaign",
@@ -45,6 +46,13 @@ def test_higgsfield_command_is_enhance_only_and_source_bound(tmp_path: Path) -> 
     assert command[command.index("--image") + 1] == str(source)
 
 
+def test_higgsfield_command_rejects_disabled_scene_route() -> None:
+    manifest = {"provider_capability": {"higgsfield_role": "DISABLED_FOR_NEW_FULL_SCENE_ATTEMPTS"}}
+
+    with pytest.raises(RuntimeError, match="does not authorize"):
+        scene_ooda.higgsfield_command(manifest, enhance_only=False)
+
+
 def test_observe_fails_closed_on_missing_dependency(tmp_path: Path) -> None:
     source = tmp_path / "source.png"
     source.write_bytes(b"source")
@@ -66,6 +74,7 @@ def test_observe_fails_closed_on_missing_dependency(tmp_path: Path) -> None:
 
     assert report["source_ready"] is True
     assert report["dependencies_ready"] is False
+    assert report["configuration_ready"] is False
     assert report["paid_execution_ready"] is False
 
 
@@ -124,6 +133,12 @@ def test_all_remaining_scene_manifests_follow_team_ooda() -> None:
     assert index["plugin"] == "fashion-theme-team@personal"
     assert index["phase_ownership"]["decide"]["independent"] is True
     assert index["candidate_rules"]["rejected_assets_are_evidence_only"] is True
+    assert (
+        index["candidate_rules"][
+            "environment_provider_must_not_receive_protected_customer_product_or_sculpture"
+        ]
+        is True
+    )
     assert index["phase_ownership"]["promotion"]["required_state"] == "FOUNDER_APPROVED_VISUAL"
 
     expected_scenes = {
@@ -138,14 +153,19 @@ def test_all_remaining_scene_manifests_follow_team_ooda() -> None:
         manifest_path = scene_ooda.resolve_path(entry["contract"])
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         actual_scenes.add(manifest["scene_id"])
-        assert manifest["higgsfield"]["mode"] == "hero_banner"
-        assert manifest["higgsfield"]["aspect_ratio"] == "16:9"
-        assert manifest["higgsfield"]["count"] == 1
+        assert manifest.get("route_contract", {}).get("mode") in {
+            "environment_rebuild_around_source",
+            "selective_vto_then_environment_rebuild_around_source",
+            "mask_bound_local_correction_only",
+        } or manifest.get("native_scene_workflow", {}).get("mode") == (
+            "environment_rebuild_around_source"
+        )
         assert manifest["creative_direction"]["style"] == "cinematic_urban_grit"
         assert scene_ooda.verify_creative_direction(manifest)["status"] == "PASS"
         assert scene_ooda.verify_optical_contract(manifest)["status"] == "PASS"
         assert scene_ooda.verify_comfy_contract(manifest)["status"] == "PASS"
         assert scene_ooda.verify_credit_control(manifest)["status"] == "PASS"
+        assert manifest["comfy"]["server"] == "http://127.0.0.1:8189"
         assert manifest["credit_control"]["max_paid_generations"] == 1
         assert manifest["credit_control"]["automatic_paid_retries"] is False
         assert manifest["credit_control"]["rejected_candidate_may_be_next_input"] is False
@@ -153,8 +173,74 @@ def test_all_remaining_scene_manifests_follow_team_ooda() -> None:
             assert manifest["execute_blockers"]
         assert manifest["promotion_gate"] == "FOUNDER_APPROVED_VISUAL"
         assert scene_ooda.verify_team_contract(manifest)["status"] == "PASS"
+        if manifest["provider_capability"].get("higgsfield_role") != (
+            "REFERENCE_GENERATION_CANDIDATE_ONLY"
+        ):
+            assert all(
+                binding.get("send_to_higgsfield") is not True
+                for binding in manifest["source_bindings"]
+            )
+            assert all(
+                isinstance(binding.get("provider_use"), str) and binding["provider_use"].strip()
+                for binding in manifest["source_bindings"]
+            )
 
     assert actual_scenes == expected_scenes
+
+
+def test_lh_native_workflow_dependencies_are_hash_bound_and_fail_closed() -> None:
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "lh-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+
+    checks = scene_ooda.verify_native_workflow_dependencies(manifest)
+
+    assert len(checks) == 6
+    assert all(check["status"] == "PASS" for check in checks)
+
+    manifest["native_scene_workflow"]["background"][
+        "workflow"
+    ] = "Comfy/workflows/does-not-exist.api.json"
+    missing_checks = scene_ooda.verify_native_workflow_dependencies(manifest)
+    assert any(check["status"] == "MISSING" for check in missing_checks)
+    assert scene_ooda.observe(manifest)["configuration_ready"] is False
+
+    manifest = json.loads(
+        (contract_root / "lh-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+    manifest["native_scene_workflow"]["segmentation"][
+        "verification_required_before_composite"
+    ] = False
+    rgb_checks = scene_ooda.verify_native_workflow_dependencies(manifest)
+    assert any(check["status"] == "MISSING_PROTECTED_RGB_VERIFICATION" for check in rgb_checks)
+
+
+def test_paid_execution_needs_portable_authorities_and_receipts() -> None:
+    """A source bound outside the repository must fail closed before any receipt check.
+
+    BR-COMMERCE-2 sources are now tracked repo-relative files, so the missing
+    authority is made explicit instead of relying on an uncommitted path.
+    """
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "br-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+    manifest["execute_blockers"] = []
+    manifest["credit_control"]["prompt_review_receipt"] = None
+    manifest["credit_control"]["approval_receipt"] = None
+    manifest["source_bindings"][0][
+        "path"
+    ] = "Comfy/external-authorities/BR-COMMERCE-2/not-committed-anywhere.png"
+
+    report = scene_ooda.observe(manifest)
+
+    assert report["configuration_ready"] is False
+    assert any(check["status"] == "MISSING" for check in report["source_checks"])
+    assert report["credit_control_check"]["prompt_review"]["status"] == "MISSING_RECEIPT"
+    assert report["credit_control_check"]["paid_approval"]["status"] == "MISSING_RECEIPT"
+    assert report["paid_authorized"] is False
+    assert report["paid_execution_ready"] is False
 
 
 def test_paid_execution_needs_receipts_even_if_text_blockers_are_removed(
@@ -322,6 +408,97 @@ def test_prompt_adherence_rejects_unrouted_duplicate_null_and_weak_threshold() -
     base["prompt_adherence"] = None
     result = scene_ooda.verify_prompt_adherence(base)
     assert result["status"] == "INVALID_PROMPT_ADHERENCE"
+
+
+def test_prompt_adherence_accepts_explicit_provider_use_routing() -> None:
+    manifest = {
+        "source_bindings": [
+            {"role": "product", "provider_use": "SOURCE_AUTHORITY_ONLY"},
+            {"role": "world", "provider_use": "RUNWAY_ENVIRONMENT_REFERENCE_ONLY"},
+        ],
+        "native_scene_workflow": {
+            "foreground": "protected product",
+            "background": {"prompt": "environment only with no people and no products"},
+        },
+        "prompt_adherence": {
+            "mode": "FAIL_CLOSED",
+            "independent_reviewer_role": "visual-commerce-qa",
+            "preflight": {
+                "required_source_roles": ["product", "world"],
+                "required_prompt_claims": ["environment only", "no people", "no products"],
+            },
+            "post_capture": {
+                "minimum_total_score": 90,
+                "dimensions": [{"id": "fidelity", "weight": 100}],
+            },
+            "hard_fail_invariants": ["wrong product"],
+            "disposition_on_failure": "QUARANTINE_NO_AUTOMATIC_RETRY",
+        },
+    }
+
+    assert scene_ooda.verify_prompt_adherence(manifest) == {
+        "status": "PASS",
+        "configured": True,
+        "failures": [],
+    }
+
+
+@pytest.mark.parametrize(
+    ("provider_use", "role", "expected_failure"),
+    [
+        ("", "product", "invalid provider_use"),
+        ("UNKNOWN_PROVIDER_ROUTE", "product", "invalid provider_use"),
+        (
+            "RUNWAY_ENVIRONMENT_REFERENCE_ONLY",
+            "protected_customer_product_and_sculpture",
+            "Runway may receive only a world/environment source",
+        ),
+        (
+            "FASHN_PRIMARY_PRODUCT_INPUT",
+            "approved_customer_identity",
+            "FASHN may receive only an explicit product source",
+        ),
+        (
+            "RUNWAY_ENVIRONMENT_REFERENCE_ONLY",
+            "protected_customer_product_environment",
+            "Runway may receive only a world/environment source",
+        ),
+        (
+            "FASHN_PRIMARY_PRODUCT_INPUT",
+            "nonproduct_customer_identity",
+            "FASHN may receive only an explicit product source",
+        ),
+    ],
+)
+def test_prompt_adherence_rejects_invalid_or_misrouted_provider_use(
+    provider_use: str, role: str, expected_failure: str
+) -> None:
+    manifest = {
+        "source_bindings": [{"role": role, "provider_use": provider_use}],
+        "native_scene_workflow": {
+            "foreground": "protected source",
+            "background": {"prompt": "environment only"},
+        },
+        "prompt_adherence": {
+            "mode": "FAIL_CLOSED",
+            "independent_reviewer_role": "visual-commerce-qa",
+            "preflight": {
+                "required_source_roles": [role],
+                "required_prompt_claims": ["environment only"],
+            },
+            "post_capture": {
+                "minimum_total_score": 90,
+                "dimensions": [{"id": "fidelity", "weight": 100}],
+            },
+            "hard_fail_invariants": ["wrong product"],
+            "disposition_on_failure": "QUARANTINE_NO_AUTOMATIC_RETRY",
+        },
+    }
+
+    result = scene_ooda.verify_prompt_adherence(manifest)
+
+    assert result["status"] == "INVALID_PROMPT_ADHERENCE"
+    assert expected_failure in " ".join(result["failures"])
 
 
 def _prompt_adherence_review(
@@ -531,7 +708,9 @@ def test_signature_ensemble_is_preserve_and_correct_only() -> None:
     assert report["paid_execution_ready"] is False
 
 
-def test_rejected_source_cannot_be_routed_to_higgsfield(tmp_path: Path) -> None:
+def test_rejected_source_cannot_be_routed_to_any_provider_or_local_operation(
+    tmp_path: Path,
+) -> None:
     allowed = tmp_path / "allowed.png"
     rejected = tmp_path / "rejected.png"
     allowed.write_bytes(b"allowed")
@@ -567,3 +746,9 @@ def test_rejected_source_cannot_be_routed_to_higgsfield(tmp_path: Path) -> None:
 
     assert report["forbidden_routing_clean"] is False
     assert report["paid_execution_ready"] is False
+
+    manifest["source_bindings"][0]["send_to_higgsfield"] = False
+    manifest["source_bindings"][0]["provider_use"] = "COMFY_PROTECTED_CORRECTION_INPUT"
+    report = scene_ooda.observe(manifest)
+    assert report["forbidden_routing_clean"] is False
+    assert report["configuration_ready"] is False

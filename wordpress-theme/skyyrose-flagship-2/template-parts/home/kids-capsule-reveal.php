@@ -7,11 +7,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$collection = isset( $args['collection'] ) && is_array( $args['collection'] ) ? $args['collection'] : array();
-$products   = isset( $args['products'] ) && is_array( $args['products'] ) ? $args['products'] : array();
-$red        = $products['kids-001'] ?? null;
-$purple     = $products['kids-002'] ?? null;
-$world_url  = skyyrose2_collection_url( 'kids-capsule' );
+$collection     = isset( $args['collection'] ) && is_array( $args['collection'] ) ? $args['collection'] : array();
+$products       = isset( $args['products'] ) && is_array( $args['products'] ) ? $args['products'] : array();
+$red            = $products['kids-001'] ?? null;
+$purple         = $products['kids-002'] ?? null;
+$collection_url = skyyrose2_collection_url( 'kids-capsule' );
+$world_url      = skyyrose2_immersive_url( 'kids-capsule' );
 
 /**
  * Render a Woo-authoritative guardian proof block.
@@ -21,11 +22,26 @@ $world_url  = skyyrose2_collection_url( 'kids-capsule' );
  * @param string          $role Human-readable role.
  */
 $render_guardian_proof = static function ( $product, $sku, $role ) {
+	$approved_front = skyyrose2_approved_card_front( $product );
 	?>
 	<div class="sr-kids-procession__proof" data-sku="<?php echo esc_attr( $sku ); ?>" data-product-state="<?php echo $product ? 'resolved' : 'unavailable'; ?>">
 		<div class="sr-kids-procession__proof-media">
-			<?php if ( $product && $product->get_image_id() ) : ?>
-				<?php echo wp_kses_post( wp_get_attachment_image( $product->get_image_id(), 'woocommerce_thumbnail', false, array( 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?>
+			<?php if ( $approved_front ) : ?>
+				<img src="<?php echo esc_url( $approved_front['src'] ); ?>" alt="<?php echo esc_attr( $approved_front['alt'] ); ?>" width="<?php echo esc_attr( (string) $approved_front['width'] ); ?>" height="<?php echo esc_attr( (string) $approved_front['height'] ); ?>" loading="lazy" decoding="async">
+			<?php elseif ( $product && $product->get_image_id() ) : ?>
+				<?php
+				echo wp_kses_post(
+					wp_get_attachment_image(
+						$product->get_image_id(),
+						'woocommerce_thumbnail',
+						false,
+						array(
+							'loading'  => 'lazy',
+							'decoding' => 'async',
+						)
+					)
+				);
+				?>
 			<?php else : ?>
 				<span aria-hidden="true">SR</span>
 			<?php endif; ?>
@@ -113,4 +129,9 @@ $render_guardian_proof = static function ( $product, $sku, $role ) {
 		<p aria-live="polite" aria-atomic="true"><span data-procession-current>1</span> / 3 · <span data-procession-label><?php esc_html_e( 'The Invitation', 'skyyrose-flagship-2' ); ?></span></p>
 		<button type="button" data-procession-next><?php esc_html_e( 'Next chapter', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">→</span></button>
 	</footer>
+
+	<p class="sr2-actions sr-kids-procession__collection-cta">
+		<a class="sr-kids-procession__world-link" href="<?php echo esc_url( $collection_url ); ?>"><?php esc_html_e( 'Shop the full Kids Capsule collection', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a>
+		<a class="sr-kids-procession__world-link" href="<?php echo esc_url( $world_url ); ?>"><?php esc_html_e( 'Enter the Kids world', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">→</span></a>
+	</p>
 </section>

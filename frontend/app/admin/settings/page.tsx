@@ -76,7 +76,7 @@ export default function SettingsPage() {
   return (
     <>
       <TopBar title="Settings" />
-      <div className="px-9 py-8 max-w-[1320px]">
+      <div className="px-4 sm:px-9 py-8 max-w-[1320px] min-w-0">
         <div
           className="rounded-[10px] p-[24px_26px] mb-[22px] border"
           style={{ borderColor: 'rgba(183,110,121,.28)', background: 'linear-gradient(135deg,#100E12,#0A0A0A)' }}
@@ -95,10 +95,10 @@ export default function SettingsPage() {
         {groups.map((g) => (
           <div key={g.group} className="mb-6">
             <div className="font-mono text-[10px] tracking-[0.18em] text-[#8A8A92] uppercase mb-3">{g.group}</div>
-            <div className="grid grid-cols-2 gap-[14px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
               {g.items.map((item) => (
-                <ConsoleCard key={item.name} className="p-5">
-                  <div className="flex justify-between items-center gap-2.5">
+                <ConsoleCard key={item.name} className="p-5 min-w-0 break-words">
+                  <div className="flex flex-wrap justify-between items-center gap-2.5">
                     <span className="text-[15px] tracking-[0.06em] text-white uppercase" style={{ fontFamily: 'var(--font-cinzel)' }}>
                       {item.name}
                     </span>

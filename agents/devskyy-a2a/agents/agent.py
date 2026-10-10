@@ -334,8 +334,7 @@ def brand_check(asset_text: str, collection: str = "") -> dict[str, Any]:
     violations: list[str] = []
     if _RETIRED_TAGLINE.lower() in asset_text.lower():
         violations.append(
-            f"Retired tagline detected: '{_RETIRED_TAGLINE}'. "
-            "No tagline is authorised."
+            f"Retired tagline detected: '{_RETIRED_TAGLINE}'. " "No tagline is authorised."
         )
 
     try:
@@ -595,8 +594,8 @@ def get_agent_card(base_url: str = "http://localhost:8080") -> AgentCard:
                 name="Brand-rule compliance check",
                 description=(
                     "Validate copy against SkyyRose brand rules (palette, "
-                    "tagline, collection iconography). Hard-blocks the retired "
-                    "tagline 'Where Love Meets Luxury'."
+                    "tagline, collection iconography). "
+                    "Hard-blocks the retired tagline 'Where Love Meets Luxury'."
                 ),
                 tags=["creative", "brand", "paid"],
                 examples=[

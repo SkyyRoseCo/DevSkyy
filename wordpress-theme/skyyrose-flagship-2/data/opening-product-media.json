@@ -1,56 +1,310 @@
 {
-  "schema": "skyyrose.sot.opening-product-media.v1",
-  "purpose": "Local V2 prototype product reels. These derivatives are sourced only from the canonical product-imagery SOT and do not replace WooCommerce gallery authority in production.",
-  "source_of_truth": "data/sot-images.json",
+  "schema": "skyyrose.sot.product-card-media.v2",
+  "purpose": "Full-catalog V2 product-card media projection. Every approved card opens on an eyes-on verified on-model view; flat, ghost, mannequin, and packshot media are secondary proof only.",
+  "sources_of_truth": [
+    "data/product-sot.json",
+    "data/sot-images.json",
+    "assets/hub/manifest.json"
+  ],
+  "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+  "reviewed_at": "2026-08-21",
+  "product_hashes": {
+    "br-001": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c",
+    "br-002": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e",
+    "br-003": "665aca97d1b61be02dec4fce949fb32ea562ee82c9a63854cbbac4214041112e",
+    "br-004": "977cd308b8b9d512b72f0db91151b23936777282406aeaafe6977e635862bbac",
+    "br-005": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e",
+    "br-006": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd",
+    "br-007": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b",
+    "br-008": "6e5df3321ee8d9c262296ae28789b926b5e25c4e13af64f7cabb4a69c9c5d163",
+    "br-009": "348f18190d00ccdd6eb9b9702743a518ceee2c471e0a575d42381030341ac614",
+    "br-010": "a657b4ebe780966746b0cf72686575ba9a830c212dd518ad029e7642bc583329",
+    "br-011": "9dd33981cdf7e1e98247f0aa708054186bf877c3bb2c4c03687536a5e9cf42a0",
+    "br-012": "b34b44167fcb5f8d7d7d72d200d533274d4074e134de695274cd0c5ca52033d6",
+    "lh-002": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed",
+    "lh-003": "3cceca9656872d9cb1598539dbb23801241e57fa63d749a32f740087743a3a8c",
+    "lh-004": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69",
+    "lh-005": "67cba7ca43810be60c66e5e29d12449c61a76a8704ef1498c145950f9ae53583",
+    "lh-006": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079",
+    "sg-001": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941",
+    "sg-002": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e",
+    "sg-003": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23",
+    "sg-005": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6",
+    "sg-006": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3",
+    "sg-007": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c",
+    "sg-009": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a",
+    "sg-011": "07116629c233b65d83677575f5661720c872c01441333619b8e874146505e669",
+    "sg-012": "d96a7efcf46057a84afb93fb27031849891b2d81965cc2df5b47c1a50eda8786",
+    "sg-013": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2",
+    "sg-014": "0f063bd55595390672123e0aecff6df96be10bdefddcbdec45614d665dbc6867",
+    "sg-015": "b01ceabb690a9924c160bc4599d065f26f59d4b203248ad308a72484a9f2d34d",
+    "kids-001": "055e87cefa9cda456b59b230b7597fbead5a822854ccc615ff8f021ed9387028",
+    "kids-002": "9de73174b9b580cfadf21040753ddd17fdf34640ef3259a549352119a5251878",
+    "br-014": "2741304d4950265536ffc9b52d58f68b5ad88bce911fde8588612107aac9842f",
+    "br-015": "06adab4dd19a5c9092755f031b30176f406b9799f9ee366000538e4b85429ebb"
+  },
   "delivery": {
     "format": "webp",
-    "max_dimension": "600x800",
-    "max_bytes": 80000,
+    "max_dimension": "800x1200",
+    "max_bytes": 180000,
     "card_order": [
       "on_model_front",
       "on_model_back",
+      "mannequin_front",
+      "mannequin_back",
       "packshot"
     ]
   },
+  "asset_integrity": {
+    "br-006": {
+      "on_model_front": {
+        "source_sha256": "d474d97d9fac60eff864a14f30b6e07845ea71696ae0483a2c5f7108f22c815b",
+        "source_bytes": 240482
+      }
+    },
+    "sg-009": {
+      "on_model_front": {
+        "source_sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
+        "source_bytes": 222756
+      }
+    },
+    "sg-013": {
+      "on_model_front": {
+        "source_sha256": "cb58e694639ff02b4dd7c1d009516df237f0acb39a8c6f6948930dad5d3c157b",
+        "source_bytes": 269208
+      }
+    }
+  },
   "products": {
-    "sg-005": {
-      "collection": "signature",
-      "views": [
-        { "role": "on_model_front", "source": "assets/images/products/sg-005-onmodel.webp", "derivative": "assets/sot/images/products/preview/sg-005-front.webp" },
-        { "role": "packshot", "source": "assets/images/products/sg-005-bay-bridge-shirt.jpeg", "derivative": "assets/sot/images/products/preview/sg-005-packshot.webp" }
-      ]
+    "br-001": {
+      "collection": "black-rose",
+      "status": "REJECTED_AUTHENTICITY",
+      "reason": "Founder correction requires an embossed BLACK Rose crewneck treatment, but every current br-001 product and on-model source depicts a contrasting embroidered rose/cloud graphic. No current source is replica-eligible.",
+      "views": []
+    },
+    "br-002": {
+      "collection": "black-rose",
+      "status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "reason": "Current verified front is flat jogger media, not an on-model view.",
+      "views": []
+    },
+    "br-003": {
+      "collection": "black-rose",
+      "status": "REJECTED_AUTHENTICITY",
+      "reason": "Current on-model front suppresses canonical patch color.",
+      "views": []
     },
     "br-004": {
       "collection": "black-rose",
+      "status": "REJECTED_AUTHENTICITY",
+      "reason": "Current on-model front does not match the corrected hoodie: no circular upper-arm patch is permitted; the small wearer-left chest mark, longitudinal wearer-left forearm artwork, light floral hood lining, and white drawstrings must remain exact.",
+      "views": []
+    },
+    "br-005": {
+      "collection": "black-rose",
+      "status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "reason": "Current verified front is a ghost-mannequin hoodie, not an on-model view.",
+      "views": []
+    },
+    "br-006": {
+      "collection": "black-rose",
       "views": [
-        { "role": "on_model_front", "source": "assets/images/products/br-004-onmodel.webp", "derivative": "assets/sot/images/products/preview/br-004-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/black-rose-hoodie-back-model.webp", "derivative": "assets/sot/images/products/preview/br-004-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/br-004-black-rose-hoodie.jpeg", "derivative": "assets/sot/images/products/preview/br-004-packshot.webp" }
+        {
+          "role": "on_model_front",
+          "source": "assets/images/products/br-006-onmodel.webp"
+        }
       ]
     },
-    "lh-004": {
-      "collection": "love-hurts",
-      "views": [
-        { "role": "on_model_front", "source": "assets/images/products/lh-004-onmodel.webp", "derivative": "assets/sot/images/products/preview/lh-004-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/lh-004-bomber-back.webp", "derivative": "assets/sot/images/products/preview/lh-004-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/lh-004-bomber.png", "derivative": "assets/sot/images/products/preview/lh-004-packshot.webp" }
-      ]
+    "br-007": {
+      "collection": "black-rose",
+      "status": "REJECTED_AUTHENTICITY",
+      "reason": "Current front has incorrect logo color and the back omits required Love Hurts placements.",
+      "views": []
+    },
+    "br-008": {
+      "collection": "black-rose",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "br-009": {
+      "collection": "black-rose",
+      "status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "reason": "An on-model candidate exists, but the asset-hub product-card verdict is still pending.",
+      "views": []
+    },
+    "br-010": {
+      "collection": "black-rose",
+      "status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "reason": "An on-model candidate exists, but the asset-hub product-card verdict is still pending.",
+      "views": []
+    },
+    "br-011": {
+      "collection": "black-rose",
+      "status": "REJECTED_AUTHENTICITY",
+      "reason": "Current front invents a prohibited NHL shield at the collar.",
+      "views": []
+    },
+    "br-012": {
+      "collection": "black-rose",
+      "status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "reason": "Current front is flat green-and-gold jersey media and remains pending in the asset hub.",
+      "views": []
+    },
+    "br-014": {
+      "collection": "black-rose",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "br-015": {
+      "collection": "black-rose",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
     },
     "kids-001": {
       "collection": "kids-capsule",
-      "views": [
-        { "role": "on_model_front", "source": "assets/images/products/kids-001-onmodel-v2.webp", "derivative": "assets/sot/images/products/preview/kids-001-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/kids-red-set-back-model.webp", "derivative": "assets/sot/images/products/preview/kids-001-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/kids-001-red-set.jpeg", "derivative": "assets/sot/images/products/preview/kids-001-packshot.webp" }
-      ]
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
     },
     "kids-002": {
       "collection": "kids-capsule",
+      "status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "reason": "Current front is a ghost-mannequin set and the asset-hub product-card verdict remains pending.",
+      "views": []
+    },
+    "lh-002": {
+      "collection": "love-hurts",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "lh-003": {
+      "collection": "love-hurts",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "lh-004": {
+      "collection": "love-hurts",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "lh-005": {
+      "collection": "love-hurts",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "lh-006": {
+      "collection": "love-hurts",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "sg-001": {
+      "collection": "signature",
+      "status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "reason": "Current verified front is flat shorts media, not an on-model view.",
+      "views": []
+    },
+    "sg-002": {
+      "collection": "signature",
+      "status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "reason": "Current verified front is flat shirt media, not an on-model view.",
+      "views": []
+    },
+    "sg-003": {
+      "collection": "signature",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "sg-005": {
+      "collection": "signature",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "sg-006": {
+      "collection": "signature",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "sg-007": {
+      "collection": "signature",
+      "status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "reason": "Current verified front is flat beanie media, not an on-model view.",
+      "views": []
+    },
+    "sg-009": {
+      "collection": "signature",
       "views": [
-        { "role": "on_model_front", "source": "assets/images/products/ghost/kids-002-ghost-front.webp", "derivative": "assets/sot/images/products/preview/kids-002-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp", "derivative": "assets/sot/images/products/preview/kids-002-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/kids-002-purple-set.jpeg", "derivative": "assets/sot/images/products/preview/kids-002-packshot.webp" }
+        {
+          "role": "on_model_front",
+          "source": "assets/images/products/sg-009-onmodel.webp"
+        }
       ]
+    },
+    "sg-011": {
+      "collection": "signature",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "sg-012": {
+      "collection": "signature",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "sg-013": {
+      "collection": "signature",
+      "views": [
+        {
+          "role": "on_model_front",
+          "source": "assets/images/products/sg-013-onmodel.webp"
+        }
+      ]
+    },
+    "sg-014": {
+      "collection": "signature",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+    },
+    "sg-015": {
+      "collection": "signature",
+      "views": [],
+      "status": "STALE_PRODUCT_HASH",
+      "reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
     }
+  },
+  "rebind_provenance": {
+    "kind": "nonvisual_merchandising_metadata_rebind",
+    "rebound_at": "2026-08-22",
+    "previous_product_sot_sha256": "9ae8c2b6f8857ea47e57d1d348421f428187ffc1fa53565076f477104bbf16a7",
+    "current_product_sot_sha256": "2778ed740081c5f528a1135953520005ab47f3d33efd259ca5517de63f599e58",
+    "preserved_visual_reviewed_at": "2026-08-21",
+    "visual_assets_changed": false,
+    "allowed_changes": [
+      "catalog source hash",
+      "merchandising series metadata",
+      "derived product hashes"
+    ]
+  },
+  "visual_contract_audit": {
+    "kind": "founder_flatlay_techflat_dossier_reconciliation",
+    "audited_at": "2026-08-23",
+    "changed_approved_skus_invalidated": [],
+    "changed_blocked_skus_preserved": [
+      "br-007"
+    ],
+    "unchanged_approvals_preserved": true,
+    "visual_assets_changed": false
   }
 }

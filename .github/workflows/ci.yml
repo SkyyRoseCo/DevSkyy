@@ -32,6 +32,9 @@ on:
         default: false
         type: boolean
 
+permissions:
+  contents: read
+
 env:
   # Black validates AST equivalence against pyproject.toml's py313 target.
   # Keep the CI interpreter aligned with that target.
@@ -56,13 +59,16 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
+
+      - name: Reject retired brand copy
+        run: python scripts/check_retired_brand_copy.py
 
       - name: Get pip cache dir
         id: pip-cache
@@ -110,15 +116,15 @@ jobs:
   # ===========================================================================
   python-tests:
     name: 🐍 Python Tests
-    # Routed to the Docker-containerized self-hosted runner (genuine Linux, not
-    # macOS) so services: (Docker container orchestration) works natively.
-    # See project_self_hosted_runner_2026_07_26.md for the macOS-runner history.
-    runs-on: [self-hosted, docker-arm64]
+    # Hosted Linux provides Docker for Redis without depending on an absent
+    # docker-arm64 runner. Preserve the complete suite and service container.
+    runs-on: ubuntu-latest
     timeout-minutes: 20
 
     services:
       redis:
-        image: redis:7-alpine
+        # ECR Public mirror of the official image (same digest) — avoids Docker Hub anonymous pull limits on shared runners.
+        image: public.ecr.aws/docker/library/redis:7-alpine
         ports:
           - 6379:6379
         options: >-
@@ -129,10 +135,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -140,13 +146,20 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e ".[dev,mcp]" || pip install -e ".[dev]" || pip install -e .
+          pip install -e ".[dev,mcp,higgsfield]" || pip install -e ".[dev,mcp]" || pip install -e ".[dev]" || pip install -e .
           pip install pytest pytest-asyncio pytest-cov pytest-xdist httpx
           # Optional deps the test suite imports (langgraph comes from the [mcp]
           # extra above with a compatible pin; the rest are standalone). No
           # `|| true` mask — if these fail to install we want the job to say so,
           # not silently skip the tests that need them.
           pip install boto3 scikit-image trimesh pyotp
+
+      # tests/test_buglog_published_ids.py compares this tree's bug ids against
+      # what main has published. actions/checkout fetches only the ref under test
+      # at depth 1, so origin/main is absent and that gate would skip silently;
+      # it raises in CI instead, and this is what keeps it able to run.
+      - name: Fetch origin/main for published-id comparison
+        run: git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main
 
       - name: Run pytest with coverage
         run: |
@@ -196,10 +209,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -220,7 +233,10 @@ jobs:
           #   chromadb     CVE-2026-45829   (no patched release)
           #   torch        PYSEC-2026-139, CVE-2025-3000   (no patched release)
           #   transformers PYSEC-2025-217   (no patched release)
-          IGNORE="--ignore-vuln CVE-2026-45829 --ignore-vuln PYSEC-2026-139 --ignore-vuln CVE-2025-3000 --ignore-vuln PYSEC-2025-217"
+          # PYSEC-2026-3740 affects nltk<=3.10.3 and has no patched release as of
+          # 2026-09-03. DevSkyy does not call the affected model-artifact APIs;
+          # remove this exception as soon as upstream publishes a fixed version.
+          IGNORE="--ignore-vuln CVE-2026-45829 --ignore-vuln PYSEC-2026-139 --ignore-vuln CVE-2025-3000 --ignore-vuln PYSEC-2025-217 --ignore-vuln PYSEC-2026-3740"
           pip-audit $IGNORE --format=json --output=pip-audit-results.json || pip_audit_status=$?
           pip-audit $IGNORE --strict 2>&1 | tee pip-audit.txt || pip_audit_status=$?
           echo "pip_audit_exit=$pip_audit_status" >> "$GITHUB_OUTPUT"
@@ -348,7 +364,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -365,6 +381,9 @@ jobs:
 
       - name: Run TypeScript type check
         run: npm run type-check
+
+      - name: Run frontend unit tests
+        run: npm test
 
       - name: Build application
         run: npm run build
@@ -383,13 +402,13 @@ jobs:
   # Stage 2: Three.js Collection Tests (Parallel)
   # ===========================================================================
   threejs-tests:
-    name: 🎮 Three.js Tests
+    name: 🎮 Root TypeScript Tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -404,8 +423,33 @@ jobs:
       - name: Audit production dependencies
         run: npm run security:audit:production
 
-      - name: Run Three.js collection tests
-        run: npm run test:collections
+      # Asks prettier and lint-staged themselves whether they would rewrite a
+      # file some program owns (data/machine-managed-files.json). This job is
+      # the one that installs the ROOT node_modules, so it is where prettier is
+      # available; tests/test_machine_managed_files.py covers the same registry
+      # with no dependencies in the Python job.
+      - name: Verify machine-managed files are invisible to formatters
+        run: npm run verify:formatter-ignores
+
+      - name: Run root unit tests
+        run: npm test
+
+      - name: Ensure PHP SQLite support for projection concurrency tests
+        run: |
+          if ! php -r 'exit(extension_loaded("pdo_sqlite") ? 0 : 1);'; then
+            sudo apt-get update
+            sudo apt-get install -y php-cli php-sqlite3
+          fi
+          php -r 'exit(extension_loaded("pdo_sqlite") ? 0 : 1);'
+
+      - name: Test theme consent, relay, and asset cache versions
+        run: npm run test:theme-analytics
+
+      - name: Install Chromium for theme consent browser tests
+        run: ./node_modules/.bin/playwright install --with-deps chromium
+
+      - name: Test theme consent in desktop and mobile browsers
+        run: npm run test:theme-analytics:browser
 
       - name: Upload test results
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -425,7 +469,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -440,7 +484,7 @@ jobs:
               echo "::error file=$file::PHP syntax error: $output"
               error_count=$((error_count + 1))
             fi
-          done < <(find wordpress-theme/skyyrose-flagship \
+          done < <(find wordpress-theme/skyyrose-flagship wordpress-theme/skyyrose-flagship-2 \
             -name "*.php" \
             -not -path "*/node_modules/*" \
             -not -path "*/vendor/*")
@@ -478,6 +522,22 @@ jobs:
           fi
           echo "No minification drift -- build output is clean"
 
+      # skyyrose-flagship-2 is self-contained: its own package.json (npm-shrinkwrap
+      # pins clean-css/terser) and scripts/build-assets.mjs, whose --check mode
+      # compares the committed .min files against a fresh build without writing.
+      - name: Install Flagship 2 theme dependencies
+        working-directory: wordpress-theme/skyyrose-flagship-2
+        run: npm ci
+
+      - name: Check Flagship 2 minification drift (CI-05b)
+        working-directory: wordpress-theme/skyyrose-flagship-2
+        run: |
+          if ! npm run check:assets; then
+            echo "::error::Flagship 2 minification drift: committed .min files differ from a fresh build."
+            echo "Fix: cd wordpress-theme/skyyrose-flagship-2 && npm run build:assets && git add assets && git commit"
+            exit 1
+          fi
+
   # ===========================================================================
   # Stage 3: E2E Tests with Playwright
   # ===========================================================================
@@ -485,15 +545,13 @@ jobs:
     name: 🎭 Playwright E2E Tests
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    # Non-gating: E2E suite is nascent / not yet CI-stable. Still runs for visibility,
-    # but does not block merges until the suite is hardened (see settings-page.spec follow-up).
-    continue-on-error: true
+    # Browser regressions must fail CI now that the suite covers current behavior.
     needs: [python-tests, frontend-tests]
     if: ${{ !inputs.skip_e2e }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
@@ -505,7 +563,7 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
 
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -551,17 +609,19 @@ jobs:
 
       - name: Start frontend server
         run: |
+          # Ephemeral authentication key for this isolated localhost test run.
+          # Production-mode NextAuth refuses to render without a signing key.
+          export NEXTAUTH_SECRET="$(openssl rand -hex 32)"
           npm run start &
           echo "Waiting for frontend to start..."
           for i in $(seq 1 30); do curl -sf http://localhost:3000 && break || sleep 2; done
         working-directory: frontend
         env:
           NEXT_TELEMETRY_DISABLED: 1
+          NEXTAUTH_URL: http://localhost:3000
 
       - name: Run Playwright tests
-        # Step-level cap: a slow/failing E2E suite fails HERE (step failure, absorbed by this
-        # job's continue-on-error) instead of running to the 30-min JOB timeout, which fires as
-        # a cancellation that continue-on-error cannot absorb — that gated the pipeline.
+        # Keep slow or failing browser runs bounded and retain their failure status.
         timeout-minutes: 15
         # `--reporter=list,html`: the `list` reporter streams per-test results to the
         # CI log (a bare `--reporter=html` overrode the config's list reporter, so the
@@ -603,7 +663,7 @@ jobs:
 
     services:
       redis:
-        image: redis:7-alpine
+        image: public.ecr.aws/docker/library/redis:7-alpine
         ports:
           - 6379:6379
         options: >-
@@ -614,10 +674,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
@@ -664,7 +724,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # Path filter (2026-07-07): the GHCR image this job pushes has NO deploy
       # consumer (deploys are gated manual runs; see tasks/mcp-golive-manifest.md
@@ -689,11 +749,11 @@ jobs:
 
       - name: Set up Docker Buildx
         if: steps.changes.outputs.build == 'true'
-        uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4.2.0
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
 
       - name: Log in to GitHub Container Registry
         if: steps.changes.outputs.build == 'true' && github.ref == 'refs/heads/main'
-        uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v3
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -712,7 +772,7 @@ jobs:
 
       - name: Build backend image
         if: steps.changes.outputs.build == 'true'
-        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
           file: ./Dockerfile
@@ -725,7 +785,7 @@ jobs:
             BUILDKIT_INLINE_CACHE=1
 
       - name: Build frontend image
-        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: ./frontend
           file: ./frontend/Dockerfile
@@ -753,7 +813,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Check whether pyproject.toml changed in this PR
         id: touched
@@ -772,7 +832,7 @@ jobs:
 
       - name: Set up Python
         if: steps.touched.outputs.changed == 'true'
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -795,18 +855,18 @@ jobs:
     timeout-minutes: 15
     needs: [python-tests, frontend-tests, security, api-integration]
     # DISABLED 2026-07-07: Render deploy hooks are inert (secrets never configured,
-    # no render.yaml exists) and the URLs reference the wrong domain (skyyrose.com;
-    # live site is skyyrose.co). Real deploys are gated manual runs — see
+    # no render.yaml exists) and the URLs referenced the wrong domain (skyyrose.com,
+    # corrected to skyyrose.co 2026-09-19). Real deploys are gated manual runs — see
     # tasks/mcp-golive-manifest.md; backend production home is the planned Fly app
     # (P5, ~/.claude/plans/lucky-nibbling-oasis.md). Re-enable only with a real target.
     if: false
     environment:
       name: staging
-      url: https://staging.skyyrose.com
+      url: https://staging-7e48-skyyrose.wpcomstaging.com
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Deploy frontend to Vercel
         if: ${{ vars.ENABLE_VERCEL_DEPLOY == 'true' }}
@@ -852,11 +912,11 @@ jobs:
     if: false
     environment:
       name: production
-      url: https://skyyrose.com
+      url: https://skyyrose.co
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Security gate check
         run: |
@@ -902,7 +962,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Environment**: production" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **URL**: https://skyyrose.com" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL**: https://skyyrose.co" >> $GITHUB_STEP_SUMMARY
 
   # ===========================================================================
   # Workflow Summary

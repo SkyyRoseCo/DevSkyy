@@ -1,0 +1,57 @@
+{
+  "revision": 2,
+  "operation": "frame-accurate source selections, lossless video, audio absent",
+  "source_silent_sha256": "2dad60dccc4b1e9af2594c03fb635e076ac6b51ccd54b7dd4880a61b67977ebe",
+  "output_sha256": "beeb0045d74edf3f7933422aca1ea9df6eed0832fc2d5217a42f88f78b5b3608",
+  "output_bytes": 32346222,
+  "selected_frames": 192,
+  "duration_seconds": 8.008,
+  "width": 720,
+  "height": 1280,
+  "fps": "24000/1001",
+  "audio_streams": 0,
+  "all_selected_decoded_frames_equal_source": true,
+  "encoding": "H264 lossless CRF0 for exact cuts, not stream copy",
+  "frame_order_sha256": "203f8a52c2d8c7484742a8d64c2b8e2d6ae6adf0866f1ecd7654c043a722cefa",
+  "clips": [
+    {
+      "id": "BR-S1",
+      "source_start_frame": 695,
+      "source_end_frame_exclusive": 767,
+      "source_start_seconds": 28.987291666666668,
+      "source_end_seconds": 31.990291666666668,
+      "duration_seconds": 3.003,
+      "product_role": "FRONT / SILHOUETTE"
+    },
+    {
+      "id": "BR-S2",
+      "source_start_frame": 983,
+      "source_end_frame_exclusive": 1031,
+      "source_start_seconds": 40.999291666666664,
+      "source_end_seconds": 43.00129166666667,
+      "duration_seconds": 2.002,
+      "product_role": "REAR ROSE / CONSTRUCTION"
+    },
+    {
+      "id": "BR-S3",
+      "source_start_frame": 1391,
+      "source_end_frame_exclusive": 1463,
+      "source_start_seconds": 58.01629166666667,
+      "source_end_seconds": 61.01929166666667,
+      "duration_seconds": 3.003,
+      "product_role": "FRONT / FABRIC MOVEMENT"
+    }
+  ],
+  "media_id": "1865a315-cd14-467b-8d6b-6022cee222e9",
+  "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/1865a315-cd14-467b-8d6b-6022cee222e9.mp4",
+  "review_sheet_media_id": "89723e5b-8a12-4e1f-96a8-1aae2b10b4d2",
+  "review_sheet_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/89723e5b-8a12-4e1f-96a8-1aae2b10b4d2.jpg",
+  "initial_candidate": {
+    "media_id": "e2fbab7b-10fa-403a-86fa-57456949bbd6",
+    "status": "SUPERSEDED",
+    "reason": "Rear insert moved from source 39–41 seconds to 41–43 seconds for fuller rose visibility."
+  },
+  "visual_review": "R2 representative source frames inspected: front chest detail readable, rear rose more fully visible after replacing the initial selection, final front returns to fabric and wearer.",
+  "provider_upload_confirmed": true,
+  "new_generated_scene_jobs": 0
+}

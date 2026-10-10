@@ -133,70 +133,80 @@
       "role": "founder_composition_target",
       "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/founder-supplied-source/sig-commerce-3-five-sku-ensemble-target-2026-08-31.webp",
       "sha256": "11e9fe54c8bff8be2b3bc0508bd8d22b5b04e33d3f546acf33541b8478a9dc1c",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "LOCAL_CORRECTION_COMPOSITION_AUTHORITY_ONLY",
       "preserve": "wide three-person hierarchy and five-SKU ensemble"
     },
     {
       "role": "departure_terrace_environment",
       "path": "renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-commerce-3-departure-terrace-plate-v1.png",
       "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "LOCAL_CORRECTION_ENVIRONMENT_AUTHORITY_ONLY",
       "preserve": "Golden Gate environment and ground plane"
     },
     {
       "role": "protected_bay_bridge_look",
       "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-005-bay-bridge-look-protected-v1.png",
       "sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "COMFY_PROTECTED_CORRECTION_INPUT",
       "preserve": "customer identity and SG-005/SG-001 look, subject to exact SG-001 correction"
     },
     {
       "role": "protected_stay_golden_look",
       "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-002-sg-003-stay-golden-look-protected-v1.png",
       "sha256": "786fbb95ed5d823574d66b5d3121f44d1b6f2a9b7f054a6bcdc678da9768b575",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "COMFY_PROTECTED_CORRECTION_INPUT",
       "preserve": "customer identity and SG-002/SG-003 look, subject to exact SG-003 correction"
     },
     {
       "role": "protected_windbreaker_look",
       "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-015-windbreaker-look-protected-v1.png",
       "sha256": "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "COMFY_PROTECTED_CORRECTION_INPUT",
       "preserve": "customer identity and complete jacket-plus-pants set"
     },
     {
       "role": "sg-001_physical_authority",
       "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
       "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "daytime Bay Bridge all-over print, blue waistband, white drawstring, blue rose bottom-left"
     },
     {
       "role": "sg-005_physical_authority",
       "path": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg",
       "sha256": "5666c853832dfe5fb092813081c03dfb7991adf165e9766df100aa6a888a3cf1",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "white shirt and blue rose with Bay Bridge imagery"
     },
     {
       "role": "sg-003_physical_authority",
       "path": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png",
       "sha256": "6eb255db697ecd838d2caa87530b6b289045ccbea201a08f54ddb0578e51e28e",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "Golden Gate night all-over print, purple waistband, white drawstring, purple rose bottom-left"
     },
     {
       "role": "sg-002_physical_authority",
       "path": "assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg",
       "sha256": "25f82fa5960105b4e093892c3aec28e707dd0d0534413e21075163d92f7a2baa",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "white shirt and rose containing Golden Gate imagery"
     },
     {
       "role": "sg-015_physical_authority",
       "path": "assets/products/source-photos/signature/sg-015-windbreaker-set.jpg",
       "sha256": "cddd4d4dfccd473bbd1d1223c18270141342c7e6bc31bdab25df99f04d8ce2dc",
-      "send_to_higgsfield": true,
+      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "complete coordinated windbreaker jacket and pants as one canonical SKU"
     }
   ],
@@ -257,9 +267,16 @@
     "exact_product_guarantee": false,
     "rule": "No Higgsfield full-frame spend is justified for this scene."
   },
+  "route_contract": {
+    "mode": "mask_bound_local_correction_only",
+    "full_frame_generation_allowed": false,
+    "protected_ensemble_rule": "Preserve the existing three-customer, five-SKU ensemble and all pixels outside the SG-001 and SG-003 correction masks.",
+    "correction_rule": "Complete only SG-001 and SG-003 shorts corrections from exact physical authorities. Each receipt must prove zero changed pixels outside its correction mask.",
+    "review_rule": "Require independent five-SKU product fidelity and optical-integration PASS before founder review."
+  },
   "comfy": {
     "routing": "local",
-    "server": "127.0.0.1:8188",
+    "server": "http://127.0.0.1:8189",
     "role": "POST_CAPTURE_PROTECTED_CORRECTION_ONLY",
     "workflow": "MASK_BOUND_SHORTS_CORRECTION_AFTER_AUTHORITY_RECEIPTS",
     "allowed_operations": [
@@ -304,7 +321,7 @@
     ],
     "orient": [
       "use founder 16:9 ensemble target as composition authority",
-      "Higgsfield creates a native cohesive campaign candidate"
+      "use only mask-bound local SG-001 and SG-003 corrections; no full-frame provider generation"
     ],
     "decide": [
       "hard-fail missing SKU, wrong bridge print, wrong rose color/placement, split SG-015 count, cutout integration, or altered cast"

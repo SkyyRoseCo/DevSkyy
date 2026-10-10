@@ -120,7 +120,7 @@ def resize_for_claude(image_path: str, max_size: int = 1568) -> str:
 
 
 def discover_all_skus() -> list[str]:
-    """Discover all SKUs from the canonical catalog (skyyrose-catalog.csv).
+    """Discover all SKUs from the registry-backed catalog projection.
 
     Previously globbed ``OVERRIDES_DIR/*.json``, which is empty — leaving the
     batch CLI unable to resolve any SKU (``no SKUs match prefix``). Per the
