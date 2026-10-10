@@ -52,3 +52,24 @@ The pre-commit PHP formatter reflowed `scripts/test-seo-indexing.php`
 `cdc2094b2f41c826…` (was `fe6829c6451c0d1c…`) and the
 `runtime-php-baseline.json` pin is `b022c01952f276e3…` (was
 `c93844900e15e2d0…`).
+
+## PR #1035 review-thread follow-up (2026-10-10)
+
+Source reading: Jetpack `class-jetpack-seo-posts.php`
+(`NOINDEX_META_KEY = 'jetpack_seo_noindex'`, `get_post_noindex_setting()`),
+`class-jetpack-seo.php` (`jetpack_seo_meta_tags_enabled` gates `wp_head`
+`meta_tags`, which prints the per-post `robots: noindex`), `sitemap-builder.php`
+(`jetpack_sitemap_image_skip_post` receives the attachment row), and the
+WordPress `get_pagenum_link( $pagenum, $escape = true )` signature.
+
+| Entry                                    | Old sha256          | New sha256          | Why                                                                                                                        |
+| ---------------------------------------- | ------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| baseline `inc/seo-indexing.php`          | `8de740e0ccfce661…` | `559b6a99d41ad96a…` | Unescaped pagenum link + archive parameters kept; Jetpack per-post noindex honoured; separate image-sitemap skip callback. |
+| baseline `scripts/test-seo-indexing.php` | `cdc2094b2f41c826…` | `6df7a0e0a72d1639…` | Cases for all three runtime changes (the earlier value is the post-formatter re-pin in `c65d4a2d6`).                       |
+| input `runtime-php-baseline.json`        | `b022c01952f276e3…` | `616c3598e63dba3b…` | Follows the two entries above.                                                                                             |
+| input `package-boundary.json`            | `d7896a6ed05c567b…` | `7ac027321ce32651…` | Classifies `scripts/test-validate-sitemap.py` (BUILD TOOLING, release:false).                                              |
+
+`scripts/validate-sitemap.py` and `scripts/test-validate-sitemap.py` are not
+pinned and not released. The POT was regenerated (one line-reference change).
+Hash replica: 0 mismatches; `check-current-scenes.py` PASS; `package.py`
+validates 581 entries.

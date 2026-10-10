@@ -10,7 +10,11 @@ Checks (Google Search Central, "Build and submit a sitemap" + sitemaps.org proto
   * every <loc> answers 200 directly (no redirect hop) and carries no noindex
     (robots meta or X-Robots-Tag); its canonical, when present, is itself;
   * <lastmod>, when present, is a valid W3C datetime.
-Exit 0 when every check passes, 1 otherwise. Every failure is printed.
+Exit 0 when every check passes, 1 on any finding, 2 when the page-probe cap
+(--max-urls) truncated the run: a truncated run is INCOMPLETE and never prints PASS.
+A sitemap index may only reference child sitemaps on the index's own host; foreign
+children are rejected and never fetched. The same <loc> may appear once in a
+page sitemap and once in an image sitemap, but not twice within one kind.
 """
 
 from __future__ import annotations
@@ -26,6 +30,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 
 NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
+IMAGE_NS = "http://www.google.com/schemas/sitemap-image/1.1"
 UA = "Mozilla/5.0 (compatible; SkyyRoseSitemapValidator/1.0; read-only)"
 MAX_URLS = 50_000
 MAX_BYTES = 50 * 1024 * 1024
@@ -94,16 +99,29 @@ def check_page(url: str, failures: list[str]) -> None:
     html = body.decode("utf-8", errors="replace")
     head = html[: html.find("</head>")] if "</head>" in html else html[:200_000]
     for meta in re.findall(r"<meta\b[^>]*>", head, re.I):
-        if re.search(r'name\s*=\s*["\']robots["\']', meta, re.I) and "noindex" in meta.lower():
-            failures.append(f"{url}: robots meta noindex")
-    canonical = re.search(
-        r'<link\b[^>]*rel\s*=\s*["\']canonical["\'][^>]*href\s*=\s*["\']([^"\']+)', head, re.I
-    )
-    if canonical and canonical.group(1).split("?")[0].rstrip("/") != url.rstrip("/"):
-        failures.append(f"{url}: canonical points elsewhere ({canonical.group(1)})")
+        name = re.search(r'\bname\s*=\s*["\']?(robots|googlebot)\b', meta, re.I)
+        if name and "noindex" in meta.lower():
+            failures.append(f"{url}: {name.group(1).lower()} meta noindex")
+    for link in re.findall(r"<link\b[^>]*>", head, re.I):
+        rel = re.search(r'\brel\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s>]+))', link, re.I)
+        if (
+            not rel
+            or "canonical" not in (rel.group(1) or rel.group(2) or rel.group(3)).lower().split()
+        ):
+            continue
+        href = re.search(r'\bhref\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s>]+))', link, re.I)
+        target = (href.group(1) or href.group(2) or href.group(3)) if href else ""
+        if target.split("?")[0].rstrip("/") != url.rstrip("/"):
+            failures.append(f"{url}: canonical points elsewhere ({target})")
 
 
-def walk(sitemap_url: str, failures: list[str], seen: set[str], locs: list[str]) -> None:
+def walk(
+    sitemap_url: str,
+    root_host: str,
+    failures: list[str],
+    seen: set[str],
+    locs: dict[str, list[str]],
+) -> None:
     if sitemap_url in seen:
         return
     seen.add(sitemap_url)
@@ -114,16 +132,24 @@ def walk(sitemap_url: str, failures: list[str], seen: set[str], locs: list[str])
     root = parse(body, sitemap_url, failures)
     if root is None:
         return
-    host = urllib.parse.urlsplit(sitemap_url).netloc
     if root.tag == f"{{{NS}}}sitemapindex":
         for child in root.findall(f"{{{NS}}}sitemap"):
             loc = (child.findtext(f"{{{NS}}}loc") or "").strip()
-            if loc:
-                walk(loc, failures, seen, locs)
+            if not loc:
+                continue
+            parts = urllib.parse.urlsplit(loc)
+            if parts.scheme != "https" or parts.netloc != root_host:
+                failures.append(
+                    f"{loc}: child sitemap is not an https URL on {root_host}; not fetched"
+                )
+                continue
+            walk(loc, root_host, failures, seen, locs)
         return
     entries = root.findall(f"{{{NS}}}url")
     if len(entries) > MAX_URLS:
         failures.append(f"{sitemap_url}: {len(entries)} URLs exceeds the 50,000 limit")
+    kind = "image" if root.find(f".//{{{IMAGE_NS}}}image") is not None else "page"
+    bucket = locs.setdefault(kind, [])
     for entry in entries:
         loc = (entry.findtext(f"{{{NS}}}loc") or "").strip()
         lastmod = (entry.findtext(f"{{{NS}}}lastmod") or "").strip()
@@ -131,15 +157,28 @@ def walk(sitemap_url: str, failures: list[str], seen: set[str], locs: list[str])
             failures.append(f"{sitemap_url}: <url> without <loc>")
             continue
         parts = urllib.parse.urlsplit(loc)
-        if parts.scheme != "https" or parts.netloc != host:
-            failures.append(f"{loc}: not an absolute https URL on {host}")
+        if parts.scheme != "https" or parts.netloc != root_host:
+            failures.append(f"{loc}: not an absolute https URL on {root_host}")
         if parts.query:
             failures.append(f"{loc}: query string in sitemap URL")
         if lastmod and not valid_lastmod(lastmod):
             failures.append(f"{loc}: invalid lastmod {lastmod}")
-        if loc in locs:
-            failures.append(f"{loc}: listed more than once")
-        locs.append(loc)
+        if loc in bucket:
+            failures.append(f"{loc}: listed more than once in the {kind} sitemaps")
+        bucket.append(loc)
+
+
+def validate(sitemap: str, max_urls: int, sleep: float = SLEEP) -> tuple[list[str], int, int]:
+    """Return (failures, urls listed, urls probed); probed < unique listed means truncated."""
+    failures: list[str] = []
+    locs: dict[str, list[str]] = {}
+    walk(sitemap, urllib.parse.urlsplit(sitemap).netloc, failures, set(), locs)
+    unique = list(dict.fromkeys(loc for kind in locs.values() for loc in kind))
+    probed = unique[:max_urls]
+    for loc in probed:
+        check_page(loc, failures)
+        time.sleep(sleep)
+    return failures, len(unique), len(probed)
 
 
 def main() -> int:
@@ -151,18 +190,19 @@ def main() -> int:
         "--max-urls", type=int, default=2000, help="cap on page probes (default 2000)"
     )
     args = parser.parse_args()
-    failures: list[str] = []
-    locs: list[str] = []
-    walk(args.sitemap, failures, set(), locs)
-    print(f"{len(locs)} URLs listed under {args.sitemap}")
-    for loc in locs[: args.max_urls]:
-        check_page(loc, failures)
-        time.sleep(SLEEP)
+    failures, listed, probed = validate(args.sitemap, args.max_urls)
+    print(f"{listed} unique URLs listed under {args.sitemap}; {probed} probed")
     if failures:
         print(f"FAIL {len(failures)} finding(s):")
         for item in failures:
             print(" -", item)
         return 1
+    if probed < listed:
+        print(
+            f"INCOMPLETE: only {probed} of {listed} URLs were probed (--max-urls); "
+            "no finding in the probed set, but the rest is unverified. Re-run with a higher --max-urls."
+        )
+        return 2
     print("PASS sitemap: valid XML, within size limits, every URL 200/indexable/canonical/direct.")
     return 0
 

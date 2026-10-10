@@ -30,6 +30,13 @@ All notable changes to SkyyRose Flagship 2 are documented here.
   per-page SEO-tool titles). A supported SEO plugin still takes over everything.
 - No tagline: the WordPress "Tagline" option is never used as a fallback
   description; absent copy omits the tag instead.
+- Plain-permalink pagination canonicals keep the parameters that identify the
+  archive (`post_type`, `cat`, `tag`, `taxonomy`/`term`, author, date) beside
+  `paged` and drop tracking/cache-buster parameters.
+- A record marked noindex in Jetpack SEO Tools keeps its `noindex` robots tag
+  although Jetpack's own meta output is switched off.
+- Jetpack's image sitemap skips images attached to the excluded pages (the
+  attachment's parent is tested, not the attachment).
 - Canonical: paginated archive canonicals drop request query parameters;
   CollectionPage schema omits `primaryImageOfPage` when no hero resolves.
 

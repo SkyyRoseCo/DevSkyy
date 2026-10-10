@@ -58,9 +58,18 @@ function is_post_type_archive() {
 function post_type_exists( $post_type ) {
 	return 'product' === $post_type;
 }
-function get_pagenum_link( $paged ) {
+function get_pagenum_link( $paged, $escape = true ) {
 	global $skyyrose2_test_context;
-	return $skyyrose2_test_context['pagenum_link'] ?? 'https://skyyrose.co/shop/page/' . $paged . '/?cb=123&utm_source=x';
+	$skyyrose2_test_context['pagenum_escape_arg'] = $escape;
+	$link = $skyyrose2_test_context['pagenum_link'] ?? 'https://skyyrose.co/shop/page/' . $paged . '/?cb=123&utm_source=x';
+	return $escape ? str_replace( '&', '&#038;', $link ) : $link;
+}
+
+class Jetpack_SEO_Posts {
+	public static $noindex = array();
+	public static function get_post_noindex_setting( $post_id ) {
+		return ! empty( self::$noindex[ $post_id ] );
+	}
 }
 
 class WP_Post {
@@ -282,11 +291,64 @@ skyyrose2_test_assert( array( 'post', 'page', 'product' ) === skyyrose2_seo_jetp
 skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_skip( false, (object) array( 'ID' => 11 ) ), 'Jetpack sitemap must skip the checkout page.' );
 skyyrose2_test_assert( ! skyyrose2_seo_jetpack_sitemap_skip( false, (object) array( 'ID' => 42 ) ), 'Jetpack sitemap must keep public records.' );
 skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_skip( true, (object) array( 'ID' => 42 ) ), 'Jetpack skip decisions already made are preserved.' );
+skyyrose2_test_assert(
+	skyyrose2_seo_jetpack_sitemap_image_skip(
+		false,
+		(object) array(
+			'ID'          => 900,
+			'post_parent' => 11,
+		)
+	),
+	'Image sitemap must skip images attached to the checkout page.'
+);
+skyyrose2_test_assert(
+	! skyyrose2_seo_jetpack_sitemap_image_skip(
+		false,
+		(object) array(
+			'ID'          => 11,
+			'post_parent' => 42,
+		)
+	),
+	'Image sitemap must test the parent, not the attachment ID.'
+);
+skyyrose2_test_assert(
+	! skyyrose2_seo_jetpack_sitemap_image_skip(
+		false,
+		(object) array(
+			'ID'          => 901,
+			'post_parent' => 0,
+		)
+	),
+	'Unattached images are kept.'
+);
+skyyrose2_test_assert(
+	skyyrose2_seo_jetpack_sitemap_image_skip(
+		true,
+		(object) array(
+			'ID'          => 902,
+			'post_parent' => 42,
+		)
+	),
+	'Earlier image skip decisions are preserved.'
+);
 skyyrose2_test_assert( false === skyyrose2_seo_jetpack_metadata_enabled( true ), 'Jetpack Open Graph / SEO meta tags must be silent while the theme renders metadata.' );
 skyyrose2_test_assert( 'https://skyyrose.co/shop/page/2/' === skyyrose2_seo_pagenum_url( 2 ), 'Paginated canonical must drop request query parameters.' );
 $skyyrose2_test_context['pagenum_link'] = 'https://skyyrose.co/?paged=3&cb=9';
 skyyrose2_test_assert( 'https://skyyrose.co/?paged=3' === skyyrose2_seo_pagenum_url( 3 ), 'Plain-permalink pagination must keep only the paged parameter.' );
+skyyrose2_test_assert( false === $skyyrose2_test_context['pagenum_escape_arg'], 'Pagination canonical must request the unescaped pagenum link.' );
+$skyyrose2_test_context['pagenum_link'] = 'https://skyyrose.co/?post_type=product&paged=3';
+skyyrose2_test_assert( 'https://skyyrose.co/?post_type=product&paged=3' === skyyrose2_seo_pagenum_url( 3 ), 'Plain-permalink product archive must keep post_type and paged.' );
+$skyyrose2_test_context['pagenum_link'] = 'https://skyyrose.co/?cat=7&paged=2';
+skyyrose2_test_assert( 'https://skyyrose.co/?cat=7&paged=2' === skyyrose2_seo_pagenum_url( 2 ), 'Plain-permalink category archive must keep cat and paged.' );
+$skyyrose2_test_context['pagenum_link'] = 'https://skyyrose.co/?utm_source=x&cat=7&cb=9&paged=2';
+skyyrose2_test_assert( 'https://skyyrose.co/?cat=7&paged=2' === skyyrose2_seo_pagenum_url( 2 ), 'Tracking and cache-buster parameters must be dropped beside archive parameters.' );
+$skyyrose2_test_context['pagenum_link'] = 'https://skyyrose.co/?post_type=product&utm_campaign=a&paged=3';
+skyyrose2_test_assert( 'https://skyyrose.co/?post_type=product&paged=3' === skyyrose2_seo_pagenum_url( 3 ), 'An extra utm parameter must not reach the canonical.' );
+$skyyrose2_test_context['pagenum_link'] = 'https://skyyrose.co/?utm_source=x&paged=4';
+skyyrose2_test_assert( 'https://skyyrose.co/?paged=4' === skyyrose2_seo_pagenum_url( 4 ), 'Escaped-separator hazard: paged must survive beside another parameter.' );
 unset( $skyyrose2_test_context['pagenum_link'] );
+$image_filter = array_values( array_filter( $skyyrose2_test_filters, static fn( $f ) => 'jetpack_sitemap_image_skip_post' === $f['hook'] ) );
+skyyrose2_test_assert( 'skyyrose2_seo_jetpack_sitemap_image_skip' === $image_filter[0]['callback'], 'Image sitemap must use its own parent-checking callback.' );
 foreach ( array( 'wp_sitemaps_add_provider', 'jetpack_sitemap_post_types', 'jetpack_sitemap_skip_post', 'jetpack_sitemap_image_skip_post', 'jetpack_enable_open_graph', 'jetpack_seo_meta_tags_enabled', 'jetpack_seo_custom_titles' ) as $hook ) {
 	skyyrose2_test_assert( in_array( $hook, array_column( $skyyrose2_test_filters, 'hook' ), true ), "Filter {$hook} was not registered." );
 }
@@ -387,7 +449,18 @@ $GLOBALS['sr2_seo_test_media'] = array(
 	'ids'   => array(),
 );
 skyyrose2_test_assert( '' === skyyrose2_seo_resolved_context()['image'], 'Rejected media cannot return through social metadata.' );
+$skyyrose2_test_context['singular'] = true;
+Jetpack_SEO_Posts::$noindex         = array( 42 => true );
+$robots                             = skyyrose2_seo_robots( array( 'index' => true ) );
+skyyrose2_test_assert( isset( $robots['noindex'] ) && ! isset( $robots['index'] ) && ! isset( $robots['max-image-preview'] ), 'A record the merchant marked noindex in Jetpack SEO Tools must keep its noindex.' );
+Jetpack_SEO_Posts::$noindex = array( 7 => true );
+$robots                     = skyyrose2_seo_robots( array( 'index' => true ) );
+skyyrose2_test_assert( ! isset( $robots['noindex'] ) && 'large' === $robots['max-image-preview'], 'Other records stay indexable.' );
+Jetpack_SEO_Posts::$noindex         = array( 42 => true );
 $skyyrose2_test_context['singular'] = false;
+$robots                             = skyyrose2_seo_robots( array( 'index' => true ) );
+skyyrose2_test_assert( ! isset( $robots['noindex'] ), 'Jetpack per-post noindex applies only to singular requests.' );
+Jetpack_SEO_Posts::$noindex = array();
 define( 'AIOSEO_VERSION', 'test' );
 skyyrose2_test_assert( skyyrose2_seo_has_authority_plugin(), 'Supported SEO plugins must become the sole metadata/schema authority.' );
 skyyrose2_test_assert( 'User-agent: *' === skyyrose2_seo_robots_txt( 'User-agent: *', true ), 'Theme must defer sitemap advertising to the active SEO plugin.' );

@@ -74,6 +74,23 @@ function skyyrose2_seo_is_transactional_request() {
 }
 
 /**
+ * Whether the merchant marked the current singular record noindex in Jetpack SEO Tools.
+ *
+ * Silencing `jetpack_seo_meta_tags_enabled` also stops Jetpack from printing its
+ * per-post `noindex` robots tag (Jetpack_SEO::meta_tags), so the saved
+ * `jetpack_seo_noindex` post meta is honoured here instead. Jetpack's own reader
+ * applies its SEO-tools-enabled gate; a supported SEO plugin owns robots itself.
+ *
+ * @return bool
+ */
+function skyyrose2_seo_jetpack_post_noindex() {
+	if ( ! is_singular() || skyyrose2_seo_has_authority_plugin() || ! class_exists( 'Jetpack_SEO_Posts' ) ) {
+		return false;
+	}
+	return (bool) Jetpack_SEO_Posts::get_post_noindex_setting( get_queried_object_id() );
+}
+
+/**
  * Apply indexability rules without overriding unrelated plugin directives.
  *
  * @param array<string,bool|string> $robots Robots directives.
@@ -95,6 +112,12 @@ function skyyrose2_seo_robots( $robots ) {
 	}
 
 	if ( is_404() ) {
+		unset( $robots['index'] );
+		$robots['noindex'] = true;
+		return $robots;
+	}
+
+	if ( skyyrose2_seo_jetpack_post_noindex() ) {
 		unset( $robots['index'] );
 		$robots['noindex'] = true;
 		return $robots;
@@ -177,24 +200,38 @@ function skyyrose2_seo_canonical_url() {
 }
 
 /**
- * Paginated archive URL without the request's query string.
+ * Paginated archive URL without the request's tracking/cache-buster parameters.
  *
  * WordPress carries every query parameter of the current request into
  * get_pagenum_link(), so cache-busters and tracking parameters would otherwise
- * become the canonical URL. Only a `paged` parameter (plain permalinks) survives.
+ * become the canonical URL. Under plain permalinks the archive identity lives in
+ * the query string, so the parameters that select the archive (post type,
+ * category, tag, taxonomy/term, author, date) survive along with `paged`;
+ * everything else is dropped. The link is requested unescaped ($escape = false)
+ * because the default escapes `&` to `&#038;`, which parse_str() would misread.
  *
  * @param int $paged Page number.
  * @return string
  */
 function skyyrose2_seo_pagenum_url( $paged ) {
-	$url   = (string) get_pagenum_link( $paged );
+	$url   = (string) get_pagenum_link( $paged, false );
 	$query = (string) wp_parse_url( $url, PHP_URL_QUERY );
 	if ( '' === $query ) {
 		return $url;
 	}
-	parse_str( $query, $params );
+	parse_str( html_entity_decode( $query ), $params );
+	$archive_keys = array( 'post_type', 'cat', 'category_name', 'tag', 'tag_id', 'taxonomy', 'term', 'author', 'author_name', 'year', 'monthnum', 'day', 'm' );
+	$kept         = array();
+	foreach ( $archive_keys as $key ) {
+		if ( isset( $params[ $key ] ) && is_scalar( $params[ $key ] ) ) {
+			$kept[ $key ] = (string) $params[ $key ];
+		}
+	}
+	if ( isset( $params['paged'] ) ) {
+		$kept['paged'] = (int) $params['paged'];
+	}
 	$base = strtok( $url, '?' );
-	return isset( $params['paged'] ) ? $base . '?paged=' . (int) $params['paged'] : $base;
+	return $kept ? $base . '?' . http_build_query( $kept, '', '&' ) : $base;
 }
 
 /**
@@ -707,6 +744,23 @@ function skyyrose2_seo_jetpack_sitemap_skip( $skip, $post ) {
 }
 
 /**
+ * Jetpack image-sitemap filter: skip images attached to excluded records.
+ *
+ * Unlike the page filter, Jetpack passes the image attachment here, and the
+ * image entry's <loc> is the attachment's parent page, so the parent is tested.
+ *
+ * @param bool   $skip Whether Jetpack already skips this image.
+ * @param object $post Attachment row from the posts table (not a WP_Post).
+ * @return bool
+ */
+function skyyrose2_seo_jetpack_sitemap_image_skip( $skip, $post ) {
+	if ( $skip || skyyrose2_seo_has_authority_plugin() || ! is_object( $post ) || empty( $post->post_parent ) ) {
+		return (bool) $skip;
+	}
+	return in_array( (int) $post->post_parent, skyyrose2_seo_sitemap_excluded_ids(), true );
+}
+
+/**
  * Jetpack Open Graph / SEO-tools metadata is redundant while this adapter renders
  * description, Open Graph, and Twitter tags; a supported SEO plugin takes over both.
  *
@@ -734,7 +788,7 @@ function skyyrose2_seo_indexing_bootstrap() {
 	add_filter( 'wp_sitemaps_add_provider', 'skyyrose2_seo_sitemap_provider', 20, 2 );
 	add_filter( 'jetpack_sitemap_post_types', 'skyyrose2_seo_jetpack_sitemap_post_types', 20 );
 	add_filter( 'jetpack_sitemap_skip_post', 'skyyrose2_seo_jetpack_sitemap_skip', 20, 2 );
-	add_filter( 'jetpack_sitemap_image_skip_post', 'skyyrose2_seo_jetpack_sitemap_skip', 20, 2 );
+	add_filter( 'jetpack_sitemap_image_skip_post', 'skyyrose2_seo_jetpack_sitemap_image_skip', 20, 2 );
 	add_filter( 'jetpack_enable_open_graph', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
 	add_filter( 'jetpack_seo_meta_tags_enabled', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
 	add_filter( 'jetpack_seo_custom_titles', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
