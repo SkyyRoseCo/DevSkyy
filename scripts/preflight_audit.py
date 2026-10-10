@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Preflight audit — classify every canonical SKU before any paid API call.
 
-Classifies every SKU in the canonical catalog (the CSV is the SOT — the
-count is read from it, never hardcoded) into one of:
+Classifies every SKU in the product registry (read through
+``skyyrose.core.product.get_product`` — the count is read from it, never
+hardcoded) into one of:
   READY                — bundle dir exists AND techflat-front.* on disk
   SKIPPED              — render_is_accessory == "1"
   PENDING_USER_ASSETS  — garment missing bundle dir or techflat-front file
@@ -10,9 +11,9 @@ count is read from it, never hardcoded) into one of:
 Writes `renders/ghost-mannequin/SKIPPED.json` (accessories only, machine-readable).
 
 Exit codes:
-  0 — every catalog SKU classified (READY + SKIPPED + PENDING == catalog
-      rows), even when PENDING > 0
-  1 — unexpected error (CSV unreadable, bundles root missing, etc.)
+  0 — every registry SKU classified (READY + SKIPPED + PENDING == registry
+      SKUs), even when PENDING > 0
+  1 — unexpected error (registry unreadable or empty)
 
 PENDING_USER_ASSETS is treated as an INFORMATIONAL WARNING, not a hard failure.
 The user must provide the source assets before Phase 15 runs — the script's
@@ -31,7 +32,9 @@ from datetime import UTC, datetime
 from enum import StrEnum
 from pathlib import Path
 
-from skyyrose.core.catalog_loader import CATALOG_CSV, bool_col, read_catalog_rows
+from skyyrose.core.catalog_loader import bool_col
+from skyyrose.core.product import all_skus, get_product
+from skyyrose.core.product_registry import PRODUCT_REGISTRY
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 BUNDLES_DIR = PROJECT_ROOT / "data" / "product-bundles"
@@ -88,9 +91,10 @@ def _find_techflat_front(bundle: Path) -> Path | None:
 
 
 def classify_sku(row: dict[str, str], bundles_dir: Path = BUNDLES_DIR) -> AuditEntry:
-    """Classify a single CSV row into a READY / SKIPPED / PENDING_USER_ASSETS entry.
+    """Classify one catalog row into a READY / SKIPPED / PENDING_USER_ASSETS entry.
 
-    This is a pure function over a CSV row dict — it does not read the catalog
+    This is a pure function over a catalog-shaped dict (a product's
+    ``get_product(sku)["catalog"]`` section) — it does not read the registry
     itself. Tests call this directly to assert on Status enum values rather than
     string-matching stdout output.
     """
@@ -142,7 +146,7 @@ def _print_header() -> None:
     print(_SEP)
     print("PREFLIGHT AUDIT — v1.2 Imagery Pipeline")
     print(_SEP)
-    print(f"Catalog: {CATALOG_CSV}")
+    print(f"Registry: {PRODUCT_REGISTRY}")
     print(f"Bundles: {BUNDLES_DIR}")
     print(_SEP)
 
@@ -212,19 +216,18 @@ def _write_skipped_json(
 
 def main(
     *,
-    catalog_path: Path | None = None,
     bundles_dir: Path = BUNDLES_DIR,
     skipped_out: Path | None = None,
 ) -> int:
     """Run the preflight audit. Returns 0 on success, 1 on unexpected error."""
     try:
-        rows = read_catalog_rows(catalog_path or CATALOG_CSV)
-    except (OSError, FileNotFoundError) as exc:
-        print(f"ERROR: cannot read canonical CSV: {exc}", file=sys.stderr)
+        rows = [get_product(sku)["catalog"] for sku in all_skus()]
+    except OSError as exc:
+        print(f"ERROR: cannot read the product registry: {exc}", file=sys.stderr)
         return 1
 
     if not rows:
-        print("ERROR: canonical CSV has zero rows", file=sys.stderr)
+        print("ERROR: the product registry has zero products", file=sys.stderr)
         return 1
 
     _print_header()
