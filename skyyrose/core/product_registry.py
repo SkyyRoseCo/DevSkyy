@@ -24,6 +24,10 @@ PRODUCT_REGISTRY = (
 FRONTEND_CATALOG_REPLICA = (
     Path(__file__).resolve().parents[2] / "frontend/data/skyyrose-catalog.csv"
 )
+V2_CARD_FRONT_PROJECTION = (
+    Path(__file__).resolve().parents[2]
+    / "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json"
+)
 # The real registry file, fixed at import. The replica belongs to it alone: a
 # caller (or test) that points PRODUCT_REGISTRY at a copy must never rewrite the
 # tracked dashboard replica from that copy.
@@ -67,6 +71,64 @@ def load_registry(path: Path | None = None) -> dict[str, Any]:
 def catalog_rows(path: Path | None = None) -> list[dict[str, str]]:
     raw = load_registry(path)
     return [_catalog_projection(p, raw["catalog_columns"]) for p in raw["products"].values()]
+
+
+def import_storefront_card_projection(projection: Path, path: Path | None = None) -> None:
+    """Move existing card bindings into the registry without changing product facts.
+
+    This is a source migration, not a visual approval. All existing rejection and
+    scoped approval metadata is retained verbatim. An existing canonical binding
+    cannot be overwritten by an older projection.
+    """
+    from jsonschema import Draft202012Validator, ValidationError
+
+    schema = json.loads(_CANONICAL_REGISTRY.with_name("logo-registry.schema.json").read_text())
+    binding_validator = Draft202012Validator(schema["$defs"]["cardFrontBinding"])
+    metadata_validator = Draft202012Validator(schema["properties"]["storefront_card_manifest"])
+    target = _registry_target(path)
+    with target.with_suffix(".json.lock").open("a") as lock:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+        raw = load_registry(target)
+        cards = json.loads(projection.read_text(encoding="utf-8"))
+        if not isinstance(cards, dict):
+            raise ValueError("Invalid storefront card projection metadata")
+        records = cards.get("products")
+        if not isinstance(records, dict) or set(records) != set(raw["products"]):
+            raise ValueError("Storefront card projection must cover the exact registry SKU set")
+        metadata = {key: value for key, value in cards.items() if key != "products"}
+        try:
+            metadata_validator.validate(metadata)
+            for record in records.values():
+                binding_validator.validate(record)
+        except ValidationError as error:
+            raise ValueError("Invalid storefront card projection: " + error.message) from error
+        for sku, record in records.items():
+            existing = raw["products"][sku].get("images", {}).get("card_front")
+            if existing is not None and existing != record:
+                raise ValueError(f"Canonical card binding conflicts with projection: {sku}")
+        if raw.get("storefront_card_manifest", metadata) != metadata:
+            raise ValueError("Canonical card metadata conflicts with projection")
+        for sku, record in records.items():
+            raw["products"][sku].setdefault("images", {})["card_front"] = record
+        raw["storefront_card_manifest"] = metadata
+        outputs = _compatibility_outputs(raw, target)
+        previous = {p: p.read_text() if p.exists() else None for p in outputs}
+        touched = []
+        try:
+            for destination, content in outputs.items():
+                if previous[destination] != content:
+                    destination.parent.mkdir(parents=True, exist_ok=True)
+                    _atomic_write(destination, content)
+                    touched.append(destination)
+            # Commit authority last, under the same lock as catalog writers.
+            _atomic_write(target, json.dumps(raw, ensure_ascii=False, indent=2) + "\n")
+        except BaseException:
+            for destination in reversed(touched):
+                if previous[destination] is None:
+                    destination.unlink(missing_ok=True)
+                else:
+                    _atomic_write(destination, previous[destination])
+            raise
 
 
 def _catalog_projection(product: dict[str, Any], columns: list[str]) -> dict[str, str]:
@@ -371,6 +433,26 @@ def _compatibility_outputs(raw: dict[str, Any], target: Path) -> dict[Path, str]
     outputs = {target.parent / "skyyrose-catalog.csv": stream.getvalue()}
     if target == _CANONICAL_REGISTRY:
         outputs[FRONTEND_CATALOG_REPLICA] = stream.getvalue()
+        card_manifest = raw.get("storefront_card_manifest")
+        if card_manifest is not None:
+            if not isinstance(card_manifest, dict):
+                raise ValueError("Storefront card metadata must be an object")
+            card_fronts = {}
+            for sku, product in raw["products"].items():
+                front = product.get("images", {}).get("card_front")
+                if not isinstance(front, dict):
+                    raise ValueError(f"Missing registry-owned card front for {sku}")
+                card_fronts[sku] = front
+            projection = {
+                "schema_version": card_manifest["schema_version"],
+                "authorization": card_manifest["authorization"],
+                "products": card_fronts,
+            }
+            if "card_treatment_approval" in card_manifest:
+                projection["card_treatment_approval"] = card_manifest["card_treatment_approval"]
+            outputs[V2_CARD_FRONT_PROJECTION] = (
+                json.dumps(projection, ensure_ascii=False, indent=2) + "\n"
+            )
     for product in raw["products"].values():
         dossier = product["dossier"]
         slug = dossier["slug"]

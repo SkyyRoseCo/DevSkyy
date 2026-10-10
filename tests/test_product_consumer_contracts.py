@@ -29,6 +29,15 @@ def product_fixture(monkeypatch, tmp_path):
     (tmp_path / "back.png").write_bytes(b"back-fixture")
     # Similarly named files must never be guessed.
     (tmp_path / "br-001.jpg").write_bytes(b"wrong-unbound-garment")
+    # get_product() refuses a card_front binding that does not resolve to a file
+    # under the V2 theme's assets/ root; REPO_ROOT is this tmp tree, so give every
+    # bound card front a fixture file there.
+    for product in registry["products"].values():
+        card = (product.get("images") or {}).get("card_front")
+        if card:
+            asset = tmp_path / "wordpress-theme/skyyrose-flagship-2" / card["src"]
+            asset.parent.mkdir(parents=True, exist_ok=True)
+            asset.write_bytes(b"card-front-fixture")
     path = tmp_path / "registry.json"
     path.write_text(json.dumps(registry))
     monkeypatch.setattr(product_registry, "PRODUCT_REGISTRY", path)
