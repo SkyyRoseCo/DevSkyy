@@ -44,3 +44,11 @@ entries below. No product fact, `logo-registry.json`, or unrelated pin changed.
 - `check-integrity.py` requires node exactly 22.23.2; the author machine has
   22.23.3, so it was not run. CI's `verify` job is authoritative.
 - Nothing deployed; behavior on staging/production unverified.
+
+## Post-format correction
+
+The pre-commit PHP formatter reflowed `scripts/test-seo-indexing.php`
+(whitespace only; test still passes), so its baseline entry is
+`cdc2094b2f41c826…` (was `fe6829c6451c0d1c…`) and the
+`runtime-php-baseline.json` pin is `b022c01952f276e3…` (was
+`c93844900e15e2d0…`).
