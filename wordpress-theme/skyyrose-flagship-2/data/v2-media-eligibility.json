@@ -4078,6 +4078,22 @@
       "sha256": "7ad8d3aba9616844d4d13eddb34a7584a969c59af1f52a19e89ab4783eab41f5",
       "status": "CANONICAL_EXACT_BYTES"
     },
+    "assets/images/house-monument-20260928.webp": {
+      "authority_reference": "Existing V2 homepage slot and current user request to recover its missing hero",
+      "collections": [],
+      "kind": "house_art",
+      "origin": "EXISTING_V2_HOUSE_EDITORIAL",
+      "restoration_receipt": {
+        "path": "data/v2-media-reviews/homepage-art-restoration-20261006.json",
+        "sha256": "b9f29c5e2cb924e1bc3dcd0ae51a5db715f0f3ca2282b93a1edaf4c19e8a2aa8"
+      },
+      "roles": [
+        "homepage_hero"
+      ],
+      "sha256": "05e9890ba85971569b7a422b892e3db3d51ae53ac6efb6bdd2d55f85c7859811",
+      "skus": [],
+      "status": "CANONICAL_EXACT_BYTES"
+    },
     "assets/sot/brand/skyyrose-logo-animated-384w.webp": {
       "authority_reference": "registered SkyyRose housemark; unchanged global-shell brand-only derivative; not photographic campaign permission",
       "kind": "housemark",
@@ -4928,27 +4944,27 @@
       "status": "INDEPENDENT_VISUAL_PASS"
     },
     "assets/v2-original/scenes/lh-004-back-hood-l2.webp": {
-      "kind": "photograph",
-      "status": "INDEPENDENT_VISUAL_PASS",
-      "origin": "V2_ORIGINAL_20261002",
-      "sha256": "c68052ec05a6408167fc96cc9050998090bd93300dec11153bdda65bce6bd457",
-      "roles": [
-        "collection_scene_back"
-      ],
-      "skus": [
-        "lh-004"
-      ],
       "collections": [
         "love-hurts"
       ],
+      "kind": "photograph",
+      "origin": "V2_ORIGINAL_20261002",
       "producer": "/root",
       "production_id": "v2-lh004-source-locked-hood-20261006-l2",
       "review": {
         "path": "data/v2-media-reviews/lh-004-hood-l2-scene-20261006.json",
-        "sha256": "c3716902b81d50f6ff2b13c2f6161849f95515c10e5b41e117eb7e6380bca9e5",
         "reviewer": "/root/hood_and_optimization_review",
+        "sha256": "c3716902b81d50f6ff2b13c2f6161849f95515c10e5b41e117eb7e6380bca9e5",
         "verdict": "PASS"
-      }
+      },
+      "roles": [
+        "collection_scene_back"
+      ],
+      "sha256": "c68052ec05a6408167fc96cc9050998090bd93300dec11153bdda65bce6bd457",
+      "skus": [
+        "lh-004"
+      ],
+      "status": "INDEPENDENT_VISUAL_PASS"
     },
     "assets/video/collection-heroes/approved/signature/cinema-20261008/hero.webm": {
       "sha256": "9702e862b5cfe7cc6f8ff1c701d0e71ad51b433c70c3b69c6fbd13286d9d25ca",
@@ -5108,7 +5124,6 @@
     "0527231afba20ef7918f0d7d9f9a3730ade8ef82d5873e0af16b461a75f954b0",
     "052915cfb4aaa7f3d1fdd01d222661289cb7a1eab0fdec9b68a8be8dda8f28f0",
     "05924de90641793f700911dd15567c5adcbcde523d307c4d4dd7055f9e48048a",
-    "05e9890ba85971569b7a422b892e3db3d51ae53ac6efb6bdd2d55f85c7859811",
     "063b7fe9ce19b1c1ca948ece5ff6919757187686c4ecdc71e9e022f06f755b44",
     "071601173b321eb6c84c6fffd0778bbf5e168ce0cdaed1e9f083b3fd8b972a3f",
     "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8",
@@ -5502,5 +5517,95 @@
     "ffd8e905dbf999cc03a3fb0be64db76fb4f5c4b657149bad31186e3a51326bf2"
   ],
   "schema": "skyyrose.v2.media-eligibility.v1",
-  "scope": "DISALLOWED_V2_DISPLAY supersedes retained photographic approvals; generation does not grant display"
+  "scope": "DISALLOWED_V2_DISPLAY supersedes retained photographic approvals; generation does not grant display",
+  "usage_adoptions": {
+    "assets/v2-original/products/br-001.png": {
+      "path": "data/v2-media-reviews/usage-01-20261006.json",
+      "sha256": "477ab55b5d102624032b0f77635891fab0ca29597b49af49098bf484f72eb9a6"
+    },
+    "assets/v2-original/products/br-003.png": {
+      "path": "data/v2-media-reviews/usage-02-20261006.json",
+      "sha256": "3188df3338a3c9eb4d9f4b56c32299c306a62b32159cd8adef9bac9d7691b32b"
+    },
+    "assets/v2-original/products/br-004.png": {
+      "path": "data/v2-media-reviews/usage-03-20261006.json",
+      "sha256": "fe168f2764b8933a261bf21098beb559dbc29de3b508b5dd74d9e6929da8e498"
+    },
+    "assets/v2-original/products/br-006.png": {
+      "path": "data/v2-media-reviews/usage-04-20261006.json",
+      "sha256": "1d08f52762b7ae924badb88013ec738bf84b663ae2ee3099d08d03944b5b8aff"
+    },
+    "assets/v2-original/products/br-008.png": {
+      "path": "data/v2-media-reviews/usage-05-20261006.json",
+      "sha256": "8a950ee7cd2f4d6277d1f539e1b03f62c5228dc46e2fb211d21d5a1ee3e6f951"
+    },
+    "assets/v2-original/products/br-009.png": {
+      "path": "data/v2-media-reviews/usage-06-20261006.json",
+      "sha256": "61b8d5c1860c9ad0e29cdc73c3c99c4fcfb98830ea03f303c01f09922b86c3ab"
+    },
+    "assets/v2-original/products/br-010.png": {
+      "path": "data/v2-media-reviews/usage-07-20261006.json",
+      "sha256": "4379ad4808bb91f6c0f0f837fbab70f2b87c3dd12656384655bb5866ef673950"
+    },
+    "assets/v2-original/products/br-011.png": {
+      "path": "data/v2-media-reviews/usage-08-20261006.json",
+      "sha256": "7e974d3a3e7bddbb96da5c5802885a822c32d6f896ccbb8d3a8363dba18534c2"
+    },
+    "assets/v2-original/products/br-012.png": {
+      "path": "data/v2-media-reviews/usage-09-20261006.json",
+      "sha256": "bee0d353135aa02a838e60b76ca941137fca240723d9608746867a6ad1ec9f06"
+    },
+    "assets/v2-original/products/br-014.png": {
+      "path": "data/v2-media-reviews/usage-10-20261006.json",
+      "sha256": "5fe68692780cc15f8495799b2a97fae2a5df63db9f58bc5627a0dd7c5ab81300"
+    },
+    "assets/v2-original/products/br-015.png": {
+      "path": "data/v2-media-reviews/usage-11-20261006.json",
+      "sha256": "68dec46dfaf41568e056cba0cd0c8b87a2e0bc3da04b19517fe036f814177beb"
+    },
+    "assets/v2-original/products/kids-001.png": {
+      "path": "data/v2-media-reviews/usage-12-20261006.json",
+      "sha256": "e56ab51bbdbdf2571589563826c3e87345b96e58f72cccfc66a9c6a4b49d4443"
+    },
+    "assets/v2-original/products/kids-002.png": {
+      "path": "data/v2-media-reviews/usage-13-20261006.json",
+      "sha256": "04c941b75f97538356db693cc43c19f2e71af002c280f594a133e346046d8015"
+    },
+    "assets/v2-original/products/lh-002.png": {
+      "path": "data/v2-media-reviews/usage-14-20261006.json",
+      "sha256": "f07fe46d9a111bbc9f5ab7bff2f4ed7ba43a3544351f04643654064ff7a5e192"
+    },
+    "assets/v2-original/products/lh-004.png": {
+      "path": "data/v2-media-reviews/usage-15-20261006.json",
+      "sha256": "a89a6f2c99b564b9e181c3fedc469902e21a153f9392d2fc41b3ba89ed93c931"
+    },
+    "assets/v2-original/products/lh-005.png": {
+      "path": "data/v2-media-reviews/usage-16-20261006.json",
+      "sha256": "2cbcd522665f0c31110a3f16a8bc842c938cdc8d0ede6fb1ce774a6b0da8d3da"
+    },
+    "assets/v2-original/products/sg-001.png": {
+      "path": "data/v2-media-reviews/usage-17-20261006.json",
+      "sha256": "b13597384b617c00e36ac11bdeefd592ae0a06398f30122e14f05da05862c29e"
+    },
+    "assets/v2-original/products/sg-002.png": {
+      "path": "data/v2-media-reviews/usage-18-20261006.json",
+      "sha256": "a721f2eca5bad37bb6b6e23412d4a0d1b8c4b0df916b19aab9baeb0f0b4ced50"
+    },
+    "assets/v2-original/products/sg-009.png": {
+      "path": "data/v2-media-reviews/usage-19-20261006.json",
+      "sha256": "7795d4b0b2216bfa93c18365dd5c7ec6af982167726c885c6177cdf2237aca63"
+    },
+    "assets/v2-original/products/sg-013.png": {
+      "path": "data/v2-media-reviews/usage-20-20261006.json",
+      "sha256": "9258da2e7653dcc7dc29f64f7094bb552f9bc85af38da72a5f9a3b28337a02d2"
+    },
+    "assets/v2-original/products/sg-015.png": {
+      "path": "data/v2-media-reviews/usage-21-20261006.json",
+      "sha256": "cab2d075ddccc7cf66fe2f39dbd31b7348bd7a9f3716beb5299a0de810ee967b"
+    },
+    "assets/v2-original/scenes/lh-004-back-hood-l2.webp": {
+      "path": "data/v2-media-reviews/usage-22-20261006.json",
+      "sha256": "4ea9e167d412f3fcfc7cedcfafb1a2981a6af6771aab03585cc0d5678ff3edf2"
+    }
+  }
 }

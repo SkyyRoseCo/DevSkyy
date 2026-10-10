@@ -1,0 +1,36 @@
+{
+  "operation_id": "v2-next-20261003-br004-cuff-repair-card-br-004",
+  "job_digest": "36e94ef1782bb0a706035a2dda83de4e1ecbedf1edeabc02e1aa3f46d0974c57",
+  "sources_digest": "5d0993bfc25b9de17c89d337f97176681992a711ea62d3e85acf13b53f0ef7b7",
+  "candidate": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/quarantine/card-br-004.png",
+    "sha256": "c54a5bb33a862c02211ffedc6e377c5431a624dfba54f2c70c50648631dba0ac"
+  },
+  "full_size_pixels": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/quarantine/card-br-004.png",
+    "sha256": "c54a5bb33a862c02211ffedc6e377c5431a624dfba54f2c70c50648631dba0ac"
+  },
+  "desktop_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/qa-captures/br-004-card-1440.png",
+    "sha256": "2b455dd921bf5d29b7bf5ea7991a02a6a6a8d44df450ab79c0128418d5ba74a5"
+  },
+  "mobile_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/qa-captures/br-004-card-390.png",
+    "sha256": "a59354accad6e482409915ff1ab46d6d804e6955b9e1c3eb2cd807fca6caf4d7"
+  },
+  "reviewer": "/root/next_phase_visual_qa",
+  "status": "PASS",
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "checks": {
+    "artwork_fidelity": "PASS",
+    "cinematic_light": "PASS",
+    "collection_specific_storytelling": "PASS",
+    "credible_material_response": "PASS",
+    "editorial_composition": "PASS",
+    "fashion_commerce_intent": "PASS",
+    "garment_artwork_identity": "PASS",
+    "optical_integration": "PASS",
+    "product_fidelity": "PASS",
+    "product_readability": "PASS"
+  }
+}

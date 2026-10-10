@@ -41,6 +41,7 @@ TREE_SCAN_DIRS = [
     "images/immersive",
     "images",
 ]
+SOURCE_IMAGE_ROLES = ("image", "front_model_image", "back_image", "back_model_image")
 
 
 def manifest_entry(entry: Any) -> dict | None:
@@ -62,7 +63,7 @@ def load_products_by_collection() -> dict[str, list]:
     for row in read_catalog_rows():
         sku = row["sku"]
         imgs = {}
-        for col in ("image", "front_model_image", "back_image", "back_model_image"):
+        for col in SOURCE_IMAGE_ROLES:
             v = (row.get(col) or "").strip()
             if v:
                 imgs[col] = {"path": v, "resolved": sot_common.resolve_asset(v)}
@@ -72,6 +73,7 @@ def load_products_by_collection() -> dict[str, list]:
             imgs = {
                 key: {**entry, "resolved": sot_common.resolve_asset(entry.get("path", ""))}
                 for key, entry in registry_products[sku].get("images", {}).items()
+                if key in SOURCE_IMAGE_ROLES
             }
         dslug = (row.get("dossier_slug") or "").strip()
         by_col.setdefault(row.get("collection", ""), []).append(

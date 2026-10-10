@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "generated_at": "2026-10-10T10:10:04+00:00",
-  "catalog_sha": "sha256:292f7e287496905769d1758600165f72829c51bb414fd8023a6e4c9123bc5126",
-  "registry_sha": "sha256:67f407ba2ede2252f078e5445647d2fe626547d5005eb5ac4518a97d0ea8cd9f",
+  "generated_at": "2026-10-10T16:56:29+00:00",
+  "catalog_sha": "sha256:7bdaae70b41a0291e9577ba2d078fdb2b3f7574186a961a7d0f4f0ed0c3900af",
+  "registry_sha": "sha256:0f29cfc29ee52e98821078647f47206a76dd53ce5af2b9235957a5f34b4be3db",
   "registry_path": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
   "skus": {
     "br-001": {
@@ -34,7 +34,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-crewneck.md",
-          "sha256": "sha256:0448db08dc5c7bbf8b3612e7420beea5710a4751513a617d729d35b6ee1e9595"
+          "sha256": "sha256:dad23052ea09b027dc4409b68c12235debadae1290c7a9bd206d64da592a8a50"
         }
       ]
     },
@@ -128,7 +128,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie.md",
-          "sha256": "sha256:e0831a08e749974e4f993bb2288f9f7952c64008bf68740f2748a61cdd726441"
+          "sha256": "sha256:bc02a2683f53e0c78e25d42aa29bdb49e65b1791505ca66d6f64154b3721fc75"
         }
       ]
     },
@@ -156,7 +156,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie-signature-edition.md",
-          "sha256": "sha256:4c7a917e6dd95ef3cdc55c7e2f38dabcaf84dafbd4a3bc9f3a223f6db02e167c"
+          "sha256": "sha256:496006927c8fc7673b495f98b72d833601623386e125afdd399bcf213b15073a"
         }
       ]
     },
@@ -265,7 +265,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-1-sf-inspired-football.md",
-          "sha256": "sha256:bf9f7f0086e57ba3ab861883114a136911a2d3da86eb4d995efe083dde83691a"
+          "sha256": "sha256:5ad0800bf931f86f85bab8d33681707e74f9a5d54d95dc56bc20a692a8828a99"
         }
       ]
     },
@@ -331,7 +331,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-3-the-bay-basketball.md",
-          "sha256": "sha256:ba031cdd71d129ef80e5d0f6b9654b0828ed0469c27c3806e30480388156ac79"
+          "sha256": "sha256:1c31d2821afb5e21c20da07e284f34fd6409ac59cf9ef3469eadfa3264c4edab"
         }
       ]
     },
@@ -529,7 +529,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/kids-colorblock-hoodie-set-purple-black.md",
-          "sha256": "sha256:faabf7f75d2d077923a42a0d7a13f81cef6290938c2f9726ce5a4522887bb7ae"
+          "sha256": "sha256:2d5a8799115c5f5d33a86f96efe90b0ccb37ab2028b8ae481e40260f7a78051f"
         }
       ]
     },
@@ -540,26 +540,12 @@
       "garment_type": "joggers",
       "assets": [
         {
-          "role": "garment",
-          "path": "assets/products/references/lh-002-techflat-front.jpeg",
-          "sha256": "sha256:1a5ad59e099bacf048261949ed316954723bfc7c6efb3918ea3f41631b62ca0c"
-        },
-        {
-          "role": "garment",
-          "path": "assets/products/techflats/split/catalog/lh-002-techflat-front.png",
-          "sha256": "sha256:b17f56eccca4ea869a39d6d900d1d0e15c1b80ddf1f86320f5797cc36b84ff52"
-        },
-        {
-          "role": "logo",
-          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
-          "sha256": "sha256:4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0"
-        },
-        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
-          "sha256": "sha256:7244b3655649bc76d9eb4aa6011af194e3f81cc6d4331acc28959b48cd2d7e84"
+          "sha256": "sha256:9700d77cb4d0398d0dca13c6d897e2e03a7c4922828f1fbe6ea6562cb537286d"
         }
-      ]
+      ],
+      "resolution_error": "MissingReferenceError: Registered logo reference missing for lh-002: /Users/theceo/DevSkyy-v2-port-20261010/wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png"
     },
     "lh-003": {
       "sku": "lh-003",
@@ -633,7 +619,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-bomber-jacket.md",
-          "sha256": "sha256:379bcba5e3c1d3e8023bf7097b35864b11bae8859bc99be98223f1d5160dfff8"
+          "sha256": "sha256:797e4d5366531f64b1834eb0cb64066d5379842908443828c8a8d25ab952d30f"
         }
       ]
     },
@@ -644,26 +630,12 @@
       "garment_type": "",
       "assets": [
         {
-          "role": "garment",
-          "path": "assets/products/references/lh-005-fannie-mockup.jpeg",
-          "sha256": "sha256:a81ea0ddde232a07253ba53168580bc36fba6b0c61622e172b65e8b161c36213"
-        },
-        {
-          "role": "garment",
-          "path": "wordpress-theme/skyyrose-flagship/assets/images/products/the-fannie-pack-photo.jpg",
-          "sha256": "sha256:b70ab3937f1991ef02c2e5f91ecf42dfbb9803be77d60eea9446065789eb14bf"
-        },
-        {
-          "role": "logo",
-          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
-          "sha256": "sha256:4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0"
-        },
-        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-fannie.md",
-          "sha256": "sha256:0fe81cc5c854784528b76a1b2462517c33b400d50e1f90ea06be9051a47900ca"
+          "sha256": "sha256:1d97a775a1460b15b0c75b16050de904b596f8678c1782ca2631e3b9f13b0c2f"
         }
-      ]
+      ],
+      "resolution_error": "MissingReferenceError: Registered logo reference missing for lh-005: /Users/theceo/DevSkyy-v2-port-20261010/wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png"
     },
     "lh-006": {
       "sku": "lh-006",
@@ -672,26 +644,12 @@
       "garment_type": "joggers",
       "assets": [
         {
-          "role": "garment",
-          "path": "assets/products/references/lh-006-techflat-front.jpeg",
-          "sha256": "sha256:a85fbed9da1d7cc1dd8b7ce913b97b50c1f85274f328def457386abc40c97649"
-        },
-        {
-          "role": "garment",
-          "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-joggers-white.jpeg",
-          "sha256": "sha256:c48bd2e8e764859dee048e3c8f4af955e32bce041fd2975e5948ec700fcc0417"
-        },
-        {
-          "role": "logo",
-          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
-          "sha256": "sha256:4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0"
-        },
-        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
-          "sha256": "sha256:05fe5c53b14d07e8c8f157d1bd69847dddc25ff36d3ce29d76b3e8a40d0f8f3b"
+          "sha256": "sha256:d463c988d56ef6637a4a802a1e105afb160d79eaf6db9fdb3c84765882cb9f4c"
         }
-      ]
+      ],
+      "resolution_error": "MissingReferenceError: Registered logo reference missing for lh-006: /Users/theceo/DevSkyy-v2-port-20261010/wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png"
     },
     "sg-001": {
       "sku": "sg-001",
@@ -805,6 +763,11 @@
           "sha256": "sha256:b50a98043429d5097edbbafc603812c4ff22e60bf0528ce4aa270d1a565f381a"
         },
         {
+          "role": "garment",
+          "path": "assets/products/catalog/signature/sg-007/originals/sg-007-front-7cd34d0e3e74.jpg",
+          "sha256": "sha256:7cd34d0e3e74dde299b4ba4dc3e4e0f1bb703714b2c237d31604a361792100e0"
+        },
+        {
           "role": "logo",
           "path": "assets/products/logos/three-rose-cluster-greyscale.png",
           "sha256": "sha256:fd4738f50bca8aea436e5ae2c8fdb7bb8ce8a1528738a587a6c1eeafdf930ba7"
@@ -812,7 +775,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-signature-beanie.md",
-          "sha256": "sha256:686094fb069c9b18b920005f20188feae8d256be0efb58808f87edb28e2d6a34"
+          "sha256": "sha256:29299f263589442498a025e3fb14d177570cc693a027b21b2f5a8b1805627ae9"
         }
       ]
     },

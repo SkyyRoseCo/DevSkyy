@@ -4,11 +4,80 @@
       "editorial": {
         "lead_sku": "br-001"
       },
+      "imagery": {
+        "collection_hero": {
+          "alt": "BLACK Rose Crewneck",
+          "height": 1536,
+          "role": "collection_hero",
+          "sha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60",
+          "sku": "br-001",
+          "src": "assets/v2-original/products/br-001.png",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-01-20261006.json",
+            "sha256": "477ab55b5d102624032b0f77635891fab0ca29597b49af49098bf484f72eb9a6"
+          },
+          "width": 1024
+        },
+        "collection_story": {
+          "alt": "BLACK Rose Hoodie",
+          "height": 1536,
+          "role": "collection_story",
+          "sha256": "c54a5bb33a862c02211ffedc6e377c5431a624dfba54f2c70c50648631dba0ac",
+          "sku": "br-004",
+          "src": "assets/v2-original/products/br-004.png",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-03-20261006.json",
+            "sha256": "fe168f2764b8933a261bf21098beb559dbc29de3b508b5dd74d9e6929da8e498"
+          },
+          "width": 1024
+        },
+        "merchandise_scene": {
+          "alt": "BLACK is Beautiful Jersey Series: 2. Last Oakland (Football)",
+          "height": 2048,
+          "role": "merchandise_scene",
+          "sha256": "e3b7615167aa2c6b012ae959b68e82b4d239f22bd044f7c73a07d42e64cb355d",
+          "sku": "br-009",
+          "src": "assets/v2-original/products/br-009.png",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-06-20261006.json",
+            "sha256": "61b8d5c1860c9ad0e29cdc73c3c99c4fcfb98830ea03f303c01f09922b86c3ab"
+          },
+          "width": 1360
+        }
+      },
       "story": {
         "seed": "Defining beauty through the color black."
       }
     },
     "kids-capsule": {
+      "imagery": {
+        "collection_hero": {
+          "alt": "Kids Colorblock Hoodie Set \u2014 Purple/Black",
+          "height": 2240,
+          "role": "collection_hero",
+          "sha256": "d9a0ea0e8bfd7044714f22f04c12a92f7f2fb70ba05c3011d048a7b48e3339f0",
+          "sku": "kids-002",
+          "src": "assets/v2-original/products/kids-002.png",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-13-20261006.json",
+            "sha256": "04c941b75f97538356db693cc43c19f2e71af002c280f594a133e346046d8015"
+          },
+          "width": 1792
+        },
+        "collection_story": {
+          "alt": "Kids Colorblock Hoodie Set \u2014 Red/Black",
+          "height": 1536,
+          "role": "collection_story",
+          "sha256": "0da7f1158e80c738b457b42f132a5ab723c7cee739d588ca9dcea00b404c0f29",
+          "sku": "kids-001",
+          "src": "assets/v2-original/products/kids-001.png",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-12-20261006.json",
+            "sha256": "e56ab51bbdbdf2571589563826c3e87345b96e58f72cccfc66a9c6a4b49d4443"
+          },
+          "width": 1024
+        }
+      },
       "story": {
         "seed": "The Heir to the throne."
       }
@@ -38,6 +107,47 @@
           "width": 2688
         }
       },
+      "imagery": {
+        "collection_hero": {
+          "alt": "Love Hurts Bomber Jacket",
+          "height": 1536,
+          "role": "collection_hero",
+          "sha256": "e3b22a5fbc315f1147d51a50ddc447fdc819c6f8366d8c4c0de8263bb47685a3",
+          "sku": "lh-004",
+          "src": "assets/v2-original/products/lh-004.png",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-15-20261006.json",
+            "sha256": "a89a6f2c99b564b9e181c3fedc469902e21a153f9392d2fc41b3ba89ed93c931"
+          },
+          "width": 1024
+        },
+        "collection_story": {
+          "alt": "Love Hurts Bomber Jacket",
+          "height": 1520,
+          "role": "collection_story",
+          "sha256": "c68052ec05a6408167fc96cc9050998090bd93300dec11153bdda65bce6bd457",
+          "sku": "lh-004",
+          "src": "assets/v2-original/scenes/lh-004-back-hood-l2.webp",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-22-20261006.json",
+            "sha256": "4ea9e167d412f3fcfc7cedcfafb1a2981a6af6771aab03585cc0d5678ff3edf2"
+          },
+          "width": 2688
+        },
+        "merchandise_scene": {
+          "alt": "The Fannie",
+          "height": 1536,
+          "role": "merchandise_scene",
+          "sha256": "016ffe57064fd7c6f49d1df4ff9f5d59ffdb239f807ecea31d10c3362ddde752",
+          "sku": "lh-005",
+          "src": "assets/v2-original/products/lh-005.png",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-16-20261006.json",
+            "sha256": "2cbcd522665f0c31110a3f16a8bc842c938cdc8d0ede6fb1ce774a6b0da8d3da"
+          },
+          "width": 1024
+        }
+      },
       "story": {
         "seed": "Beauty and the Beast told from the Beast's perspective, through luxury attire."
       }
@@ -45,6 +155,47 @@
     "signature": {
       "editorial": {
         "lead_sku": "sg-009"
+      },
+      "imagery": {
+        "collection_hero": {
+          "alt": "The Sherpa Jacket",
+          "height": 1536,
+          "role": "collection_hero",
+          "sha256": "43f0175692b4a8d123e2aed28a6cfbcc6902521e86fb0ac4cd2cc64a9e99e005",
+          "sku": "sg-009",
+          "src": "assets/v2-original/products/sg-009.png",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-19-20261006.json",
+            "sha256": "7795d4b0b2216bfa93c18365dd5c7ec6af982167726c885c6177cdf2237aca63"
+          },
+          "width": 1024
+        },
+        "collection_story": {
+          "alt": "Mint & Lavender Crewneck",
+          "height": 1536,
+          "role": "collection_story",
+          "sha256": "12cce820da6f783537847139bf8636fd0ee0627e45e577d5315e46bdd142bda9",
+          "sku": "sg-013",
+          "src": "assets/v2-original/products/sg-013.png",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-20-20261006.json",
+            "sha256": "9258da2e7653dcc7dc29f64f7094bb552f9bc85af38da72a5f9a3b28337a02d2"
+          },
+          "width": 1024
+        },
+        "merchandise_scene": {
+          "alt": "The Windbreaker Set",
+          "height": 2240,
+          "role": "merchandise_scene",
+          "sha256": "ffe79d1d89422990ff4a1e9fcdefeacbefbd15d21d2d3cf758ce30cd9317488d",
+          "sku": "sg-015",
+          "src": "assets/v2-original/products/sg-015.png",
+          "usage_adoption": {
+            "path": "data/v2-media-reviews/usage-21-20261006.json",
+            "sha256": "cab2d075ddccc7cf66fe2f39dbd31b7348bd7a9f3716beb5299a0de810ee967b"
+          },
+          "width": 1792
+        }
       },
       "story": {
         "seed": "The beginning of it all \u2014 where it started from."
@@ -55,13 +206,103 @@
   "glb_runtime": {
     "entries": [],
     "publication_authorized": false,
-    "registry_sha256": "2b28053796ce3f8025c5c259125a74ce9170f8dd31c804342b44b8e2d0ddee35",
+    "registry_sha256": "0f29cfc29ee52e98821078647f47206a76dd53ce5af2b9235957a5f34b4be3db",
     "schema": "skyyrose.accepted-glb-runtime.v1"
   },
   "kind": "skyyrose-v2-product-presentation-registry",
-  "product_registry_sha256": "2b28053796ce3f8025c5c259125a74ce9170f8dd31c804342b44b8e2d0ddee35",
+  "media_usage_adoptions": {
+    "assets/v2-original/products/br-001.png": {
+      "path": "data/v2-media-reviews/usage-01-20261006.json",
+      "sha256": "477ab55b5d102624032b0f77635891fab0ca29597b49af49098bf484f72eb9a6"
+    },
+    "assets/v2-original/products/br-003.png": {
+      "path": "data/v2-media-reviews/usage-02-20261006.json",
+      "sha256": "3188df3338a3c9eb4d9f4b56c32299c306a62b32159cd8adef9bac9d7691b32b"
+    },
+    "assets/v2-original/products/br-004.png": {
+      "path": "data/v2-media-reviews/usage-03-20261006.json",
+      "sha256": "fe168f2764b8933a261bf21098beb559dbc29de3b508b5dd74d9e6929da8e498"
+    },
+    "assets/v2-original/products/br-006.png": {
+      "path": "data/v2-media-reviews/usage-04-20261006.json",
+      "sha256": "1d08f52762b7ae924badb88013ec738bf84b663ae2ee3099d08d03944b5b8aff"
+    },
+    "assets/v2-original/products/br-008.png": {
+      "path": "data/v2-media-reviews/usage-05-20261006.json",
+      "sha256": "8a950ee7cd2f4d6277d1f539e1b03f62c5228dc46e2fb211d21d5a1ee3e6f951"
+    },
+    "assets/v2-original/products/br-009.png": {
+      "path": "data/v2-media-reviews/usage-06-20261006.json",
+      "sha256": "61b8d5c1860c9ad0e29cdc73c3c99c4fcfb98830ea03f303c01f09922b86c3ab"
+    },
+    "assets/v2-original/products/br-010.png": {
+      "path": "data/v2-media-reviews/usage-07-20261006.json",
+      "sha256": "4379ad4808bb91f6c0f0f837fbab70f2b87c3dd12656384655bb5866ef673950"
+    },
+    "assets/v2-original/products/br-011.png": {
+      "path": "data/v2-media-reviews/usage-08-20261006.json",
+      "sha256": "7e974d3a3e7bddbb96da5c5802885a822c32d6f896ccbb8d3a8363dba18534c2"
+    },
+    "assets/v2-original/products/br-012.png": {
+      "path": "data/v2-media-reviews/usage-09-20261006.json",
+      "sha256": "bee0d353135aa02a838e60b76ca941137fca240723d9608746867a6ad1ec9f06"
+    },
+    "assets/v2-original/products/br-014.png": {
+      "path": "data/v2-media-reviews/usage-10-20261006.json",
+      "sha256": "5fe68692780cc15f8495799b2a97fae2a5df63db9f58bc5627a0dd7c5ab81300"
+    },
+    "assets/v2-original/products/br-015.png": {
+      "path": "data/v2-media-reviews/usage-11-20261006.json",
+      "sha256": "68dec46dfaf41568e056cba0cd0c8b87a2e0bc3da04b19517fe036f814177beb"
+    },
+    "assets/v2-original/products/kids-001.png": {
+      "path": "data/v2-media-reviews/usage-12-20261006.json",
+      "sha256": "e56ab51bbdbdf2571589563826c3e87345b96e58f72cccfc66a9c6a4b49d4443"
+    },
+    "assets/v2-original/products/kids-002.png": {
+      "path": "data/v2-media-reviews/usage-13-20261006.json",
+      "sha256": "04c941b75f97538356db693cc43c19f2e71af002c280f594a133e346046d8015"
+    },
+    "assets/v2-original/products/lh-002.png": {
+      "path": "data/v2-media-reviews/usage-14-20261006.json",
+      "sha256": "f07fe46d9a111bbc9f5ab7bff2f4ed7ba43a3544351f04643654064ff7a5e192"
+    },
+    "assets/v2-original/products/lh-004.png": {
+      "path": "data/v2-media-reviews/usage-15-20261006.json",
+      "sha256": "a89a6f2c99b564b9e181c3fedc469902e21a153f9392d2fc41b3ba89ed93c931"
+    },
+    "assets/v2-original/products/lh-005.png": {
+      "path": "data/v2-media-reviews/usage-16-20261006.json",
+      "sha256": "2cbcd522665f0c31110a3f16a8bc842c938cdc8d0ede6fb1ce774a6b0da8d3da"
+    },
+    "assets/v2-original/products/sg-001.png": {
+      "path": "data/v2-media-reviews/usage-17-20261006.json",
+      "sha256": "b13597384b617c00e36ac11bdeefd592ae0a06398f30122e14f05da05862c29e"
+    },
+    "assets/v2-original/products/sg-002.png": {
+      "path": "data/v2-media-reviews/usage-18-20261006.json",
+      "sha256": "a721f2eca5bad37bb6b6e23412d4a0d1b8c4b0df916b19aab9baeb0f0b4ced50"
+    },
+    "assets/v2-original/products/sg-009.png": {
+      "path": "data/v2-media-reviews/usage-19-20261006.json",
+      "sha256": "7795d4b0b2216bfa93c18365dd5c7ec6af982167726c885c6177cdf2237aca63"
+    },
+    "assets/v2-original/products/sg-013.png": {
+      "path": "data/v2-media-reviews/usage-20-20261006.json",
+      "sha256": "9258da2e7653dcc7dc29f64f7094bb552f9bc85af38da72a5f9a3b28337a02d2"
+    },
+    "assets/v2-original/products/sg-015.png": {
+      "path": "data/v2-media-reviews/usage-21-20261006.json",
+      "sha256": "cab2d075ddccc7cf66fe2f39dbd31b7348bd7a9f3716beb5299a0de810ee967b"
+    },
+    "assets/v2-original/scenes/lh-004-back-hood-l2.webp": {
+      "path": "data/v2-media-reviews/usage-22-20261006.json",
+      "sha256": "4ea9e167d412f3fcfc7cedcfafb1a2981a6af6771aab03585cc0d5678ff3edf2"
+    }
+  },
+  "product_registry_sha256": "0f29cfc29ee52e98821078647f47206a76dd53ce5af2b9235957a5f34b4be3db",
   "product_sot_scope": "current_registry_presentation_identity_only",
-  "product_sot_sha256": "2b28053796ce3f8025c5c259125a74ce9170f8dd31c804342b44b8e2d0ddee35",
+  "product_sot_sha256": "0f29cfc29ee52e98821078647f47206a76dd53ce5af2b9235957a5f34b4be3db",
   "products": {
     "br-001": {
       "collection": "black-rose",

@@ -1,0 +1,36 @@
+{
+  "operation_id": "v2-reset-20261002-targeted-lowerbody-styling-card-sg-014",
+  "job_digest": "ccac10f9690ad4eabe12f00c6cbb1aa7a2de716adade63eaaf850aba6e110223",
+  "sources_digest": "38cd3b4f209369def10f98cf9d8d9b30f0c6519598d92eee8132364d5fe9f36d",
+  "candidate": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-lowerbody-styling-repairs/quarantine/card-sg-014.png",
+    "sha256": "07c3d1bb60ad24f1b8987859e21e9658d80126f2486820d79f83cc7ae11114d2"
+  },
+  "full_size_pixels": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-lowerbody-styling-repairs/quarantine/card-sg-014.png",
+    "sha256": "07c3d1bb60ad24f1b8987859e21e9658d80126f2486820d79f83cc7ae11114d2"
+  },
+  "desktop_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-014-styling-card-desktop.png",
+    "sha256": "56526116b0b2abefc4923f1ee1fc1ada6d6afa0480eb19bb5f208bfa7f7976b0"
+  },
+  "mobile_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-014-styling-card-mobile.png",
+    "sha256": "2d54e4e0025cc980a09e1672c179345644d69bd5583a016da67204097139879d"
+  },
+  "reviewer": "/root/kids_lowerbody_native_qa",
+  "status": "PASS",
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "checks": {
+    "artwork_fidelity": "PASS",
+    "cinematic_light": "PASS",
+    "collection_specific_storytelling": "PASS",
+    "credible_material_response": "PASS",
+    "editorial_composition": "PASS",
+    "fashion_commerce_intent": "PASS",
+    "garment_artwork_identity": "PASS",
+    "optical_integration": "PASS",
+    "product_fidelity": "PASS",
+    "product_readability": "PASS"
+  }
+}
