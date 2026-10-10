@@ -748,6 +748,7 @@ preflight() {
 
     # V2 data/ release allowlist must resolve before any transfer list is built.
     check_v2_data_boundary
+    check_v2_public_asset_permissions
 
     # Source-completeness gate (bug-252) -- cheap checks before the PHP lint sweep.
     preflight_completeness
@@ -834,6 +835,20 @@ check_v2_data_boundary() {
         exit 1
     fi
     log_success "V2 data/ allowlist: $count runtime file(s) from the package boundary"
+}
+
+
+# Check only explicitly released V2 static assets. This read-only gate rejects
+# owner-only outputs before transfer; it never changes modes or private files.
+check_v2_public_asset_permissions() {
+    skyyrose_is_v2_theme || return 0
+    if ! python3 "$PROJECT_ROOT/scripts/check-public-release-permissions.py" \
+        --theme-dir "$THEME_DIR" \
+        --boundary "$PROJECT_ROOT/tools/v2-source-certification/package-boundary.json"; then
+        log_error "V2 public asset permission gate failed -- refusing to deploy"
+        exit 1
+    fi
+    log_success "V2 public asset permissions verified"
 }
 
 # ---------------------------------------------------------------------------

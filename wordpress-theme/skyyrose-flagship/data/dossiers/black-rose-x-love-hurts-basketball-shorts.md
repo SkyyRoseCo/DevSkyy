@@ -19,6 +19,10 @@ extra_references:
 
 ## Founder-confirmed correction
 
+**FOUNDER_CONFIRMED:** Love Hurts is only on the side not across the back. (Corey, 2026-06-09, verbatim: "Love Hurts is only on the side not across the back")
+
+**FOUNDER_CONFIRMED:** The large sublimated Love Hurts wordmark is on the left side. (Corey, 2026-10-10, verbatim: "br-007 is on the left side")
+
 **FOUNDER_CONFIRMED:** Mesh. (Corey, 2026-09-29, verbatim: "the shorts are mesh")
 
 **FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
@@ -66,10 +70,10 @@ extra_references:
   appliquéd onto the body in classic baseball-script style with a contrast
   satin-stitch edge. **Technique:** tackle-twill. **Color:** white twill
   letter face with a dark satin-stitch edge.
-- **front-right-thigh** (cursive script overlapping the OAKLAND wordmark):
+- **left-side** (cursive script overlapping the OAKLAND wordmark):
   The "Love Hurts" wordmark in cursive script, rendered as a large
   sublimated/printed wordmark in **cream/peach/pink tonal color** on the
-  black mesh. Spans the right thigh area, reading top-to-bottom as the
+  black mesh. Sits on the left side per the founder correction above, reading top-to-bottom as the
   cursive lettering descends. **Technique:** sublimated. **Color:**
   cream/peach/light-pink tonal.
 - **wearer-left-mesh-side-panel** (small, on the white mesh side panel):
@@ -85,11 +89,8 @@ extra_references:
 - **back-body** (entire black mesh field): Same sublimated tonal grey
   rose-cluster pattern as the front-body (continuous across the garment).
   **Technique:** sublimated. **Color:** tonal grey on black mesh.
-- **back-upper / back-yoke** (large cursive across the upper back):
-  The "Love Hurts" wordmark in cursive script, rendered larger than the
-  front-right version, in **cream/peach/light-pink tonal color** sublimated
-  onto the back mesh. **Technique:** sublimated. **Color:** cream/peach/
-  light-pink tonal.
+- **back-upper / back-yoke**: No Love Hurts wordmark across the back.
+  Founder correction above controls this region.
 - **back-side continuity:** The white mesh inserts remain on the two outer side
   panels. There is no white center-back pentagon. The wearer-left panel carries
   Love Hurts; the wearer-right panel carries the Black Rose cluster.
@@ -135,8 +136,8 @@ extra_references:
   the OAKLAND tackle-twill wordmark, not a rose.
 - NO solid-color body — the body fabric carries the sublimated rose
   pattern (NOT a plain black field).
-- NO front pockets visible from outside — the visible pockets are on
-  the BACK only; the front is uninterrupted by pocket openings.
+- Preserve the two zippered side hand pockets and one zippered back
+  pocket specified in the garment type lock; do not invent extra pockets.
 - NO black drawstrings — the drawstring is white.
 - NO black waistband — the waistband is white.
 - NO contrast satin-stitch edge other than dark on the OAKLAND letters.
@@ -145,15 +146,15 @@ extra_references:
   upper-body decoration of any kind).
 - NO Authentic Collection patch (that is reserved for the jersey series).
 - NO sublimated pattern on the white mesh side panels — the side panels
-  are clean white mesh with only the embroidered cluster (left) and
-  wordmark (right) on top.
+  are clean white mesh with only the embroidered cluster (wearer-right)
+  and wordmark (wearer-left) on top.
 
 ## Scene direction
 
 - **Pose:** Front view straight-on (or three-quarter front-left) showing
   the OAKLAND wordmark, the wearer-left Love Hurts script/side panel, and the
   wearer-right physical-color Black Rose cluster. For back: back view
-  straight-on showing the upper-back Love Hurts cursive script and both outer
-  side panels, with no invented center-back panel.
+  straight-on showing the tonal rose field and both outer side panels,
+  with no Love Hurts across the back and no invented center-back panel.
 - **Setting:** Pure white studio backdrop, soft directional studio
   lighting from front-left, subtle natural drop shadow on the floor.
