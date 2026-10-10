@@ -70,19 +70,80 @@ def test_product_asset_library_uses_canonical_asset_root():
     )
 
 
-@pytest.mark.skipif(shutil.which("node") is None, reason="node is required for the .mjs check")
-def test_live_verifier_finds_frontend_without_a_hardcoded_home():
+NODE_AND_GIT = pytest.mark.skipif(
+    shutil.which("node") is None or shutil.which("git") is None,
+    reason="node and git are required for the .mjs check",
+)
+VERIFIER = ROOT / "scripts" / "verify-live-playwright.mjs"
+
+
+def _run_verifier(script: Path) -> subprocess.CompletedProcess[str]:
     """With no spec the verifier stops before any browser or network use."""
-    script = ROOT / "scripts" / "verify-live-playwright.mjs"
-    assert "/Users/" not in script.read_text(encoding="utf-8")
     env = {"PATH": "/usr/bin:/bin:/usr/local/bin:/opt/homebrew/bin"}
-    result = subprocess.run(
+    return subprocess.run(
         ["node", str(script)], capture_output=True, text=True, env=env, timeout=60
     )
-    if result.returncode == 3:
-        # Playwright is not installed under frontend/: the message names the root it tried.
-        assert f"not resolvable from {ROOT / 'frontend'}/" in result.stderr
-    else:
-        # Playwright resolved from the derived root, so the run reached spec loading.
-        assert result.returncode != 0
-        assert "No spec" in result.stderr
+
+
+def _git(*args: str, cwd: Path) -> None:
+    subprocess.run(
+        ["git", "-c", "user.name=t", "-c", "user.email=t@t", *args],
+        cwd=cwd,
+        check=True,
+        capture_output=True,
+    )
+
+
+@pytest.fixture
+def deploy_layout(tmp_path):
+    """A main checkout plus a linked worktree holding the verifier, like the deploy worktree."""
+    main = tmp_path / "main"
+    main.mkdir()
+    _git("init", "-q", cwd=main)
+    _git("commit", "-q", "--allow-empty", "-m", "init", cwd=main)
+    worktree = tmp_path / "deploy-worktree"
+    _git("worktree", "add", "-q", str(worktree), cwd=main)
+    script = worktree / "scripts" / "verify-live-playwright.mjs"
+    script.parent.mkdir()
+    shutil.copy(VERIFIER, script)
+    return main, worktree, script
+
+
+def _install_fake_playwright(frontend: Path) -> None:
+    package = frontend / "node_modules" / "playwright"
+    package.mkdir(parents=True)
+    (package / "package.json").write_text('{"name": "playwright", "main": "index.js"}')
+    (package / "index.js").write_text("exports.chromium = {};\n")
+
+
+@NODE_AND_GIT
+def test_live_verifier_has_no_hardcoded_home():
+    assert "/Users/" not in VERIFIER.read_text(encoding="utf-8")
+
+
+@NODE_AND_GIT
+def test_live_verifier_falls_back_to_main_checkout_playwright(deploy_layout):
+    """The deploy runs from a worktree without node_modules; playwright must still resolve."""
+    main, _, script = deploy_layout
+    _install_fake_playwright(main / "frontend")
+    result = _run_verifier(script)
+    assert result.returncode not in (0, 3), result.stderr
+    assert "No spec" in result.stderr
+
+
+@NODE_AND_GIT
+def test_live_verifier_prefers_its_own_checkout(deploy_layout):
+    _, worktree, script = deploy_layout
+    _install_fake_playwright(worktree / "frontend")
+    result = _run_verifier(script)
+    assert result.returncode not in (0, 3), result.stderr
+    assert "No spec" in result.stderr
+
+
+@NODE_AND_GIT
+def test_live_verifier_names_every_root_it_tried(deploy_layout):
+    main, worktree, script = deploy_layout
+    result = _run_verifier(script)
+    assert result.returncode == 3
+    assert str(worktree / "frontend") + "/" in result.stderr
+    assert str(main.resolve() / "frontend") + "/" in result.stderr
