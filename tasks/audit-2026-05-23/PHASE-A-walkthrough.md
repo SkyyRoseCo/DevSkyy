@@ -22,7 +22,7 @@ Evidence: `<meta property="og:site_name" content="The Skyy Rose Collection">` on
 2. Sidebar → **Settings** → **General**
 3. Field: **Site Title**
 4. Replace `The Skyy Rose Collection` → `SkyyRose`
-5. **Tagline** field — verify it says `Luxury Grows from Concrete.` (brand canon). Update if not.
+5. **Tagline** field — verify it says `` (brand canon). Update if not.
 6. Scroll to bottom → **Save Changes**
 
 **Verify (run from terminal):**

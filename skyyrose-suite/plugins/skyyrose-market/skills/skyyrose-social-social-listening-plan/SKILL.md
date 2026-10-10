@@ -23,7 +23,7 @@ allowed-tools: Read Write Edit Glob
 
 - **Monitor the brand, not just the handle.** Most SkyyRose mentions will be untagged — people write "SkyyRose" or "Skyy Rose" or "The Town's luxury brand" without the @. Untagged monitoring is as important as @mention tracking.
 - **Oakland context is signal.** Mentions that pair Oakland/Bay Area with luxury streetwear, even without naming SkyyRose, are warm audience signals. The Town is the brand's home territory.
-- **Tagline (exact) for search:** `Luxury Grows from Concrete` — use as a monitored phrase. Any mis-quote of the tagline is a signal that the brand is spreading but not precisely.
+- **Tagline (exact) for search:** `` — use as a monitored phrase. Any mis-quote of the tagline is a signal that the brand is spreading but not precisely.
 - **The Five visual references** define the competitive space we monitor. Kith, Oaklandish, Culture Kings, Fear of God, and Palm Angels represent our competitive adjacency — their audience conversations are intelligence. European luxury house (Bottega, Rick Owens, 032c) conversations are not our audience.
 - **No hype-merchant response.** When we respond to a mention, it must be in Corey's voice: direct, specific, genuinely grateful or genuinely helpful. Not "🔥 Thanks for the love!! 🙌🙌."
 - Full canon: `../skyyrose-content-engine/brand-guardrails.md`
@@ -72,7 +72,7 @@ allowed-tools: Read Write Edit Glob
 | Category              | What to Listen For                                         | Why It Matters                               |
 |-----------------------|------------------------------------------------------------|----------------------------------------------|
 | Brand mentions        | "SkyyRose", "Skyy Rose", "@skyyroseco", "The Skyy Rose Collection" | Reputation, UGC sourcing, sentiment tracking |
-| Tagline mentions      | "Luxury Grows from Concrete"                               | Brand spread + mis-quote detection           |
+| Tagline mentions      | ""                               | Brand spread + mis-quote detection           |
 | Collection mentions   | "Black Rose collection", "Love Hurts collection", "Signature collection", "Kids Capsule" | Per-collection sentiment + UGC |
 | Corey Foster mentions | "Corey Foster", "SkyyRose founder"                         | Founder brand health, interview/press opportunities |
 | Competitor mentions   | Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels  | Competitive intelligence, audience overlap   |
@@ -93,7 +93,7 @@ Exact matches:
   - "Skyy Rose Collection"
   - "The Skyy Rose Collection"
   - "@skyyroseco"
-  - "Luxury Grows from Concrete"
+  - ""
 
 Common variations and misspellings:
   - "SkyRose" / "Sky Rose"
@@ -129,7 +129,7 @@ Common variations and misspellings:
   - "streetwear gift idea" + "luxury"
 
 ### Branded hashtags to monitor (Instagram & TikTok)
-  #SkyyRose #LuxuryGrowsFromConcrete #TheSkyRoseCollection
+  #SkyyRose  #TheSkyRoseCollection
   #BlackRoseCollection #LoveHurtsCollection #SignatureCollection #SkyyRoseKids
   #OaklandFashion #BayAreaStyle #LuxuryStreetwear #BlackOwnedFashion
 ```
@@ -152,7 +152,7 @@ Common variations and misspellings:
 
   Query 1: "SkyyRose" -site:skyyrose.co
   Query 2: "Skyy Rose Collection" -site:skyyrose.co
-  Query 3: "Luxury Grows from Concrete" -site:skyyrose.co
+  Query 3: "" -site:skyyrose.co
   Delivery: Daily digest, to social@skyyrose.co
   Sources: Everything (web + news + blogs)
 
@@ -319,7 +319,7 @@ mentions = agent.get_analytics(
     metric="brand_mentions",
     platform="all",
     date_range="last_30_days",
-    keywords=["SkyyRose", "Skyy Rose Collection", "Luxury Grows from Concrete"]
+    keywords=["SkyyRose", "Skyy Rose Collection", ""]
 )
 print(mentions.summary)
 print(mentions.sentiment_breakdown)
@@ -354,7 +354,7 @@ sweep:
       "LoveHurtsCollection",
       "SignatureCollection",
       "SkyyRose",
-      "LuxuryGrowsFromConcrete",
+      "",
       "OaklandFashion",
       "BayAreaStyle"
     ],
@@ -388,7 +388,7 @@ Xquik X Tweet Scraper Actor input for a bounded Tier 1 and Tier 5 sweep:
   "searchTerms": [
     "\"SkyyRose\"",
     "\"Skyy Rose Collection\"",
-    "\"Luxury Grows from Concrete\"",
+    "\"\"",
     "\"looking for luxury streetwear\"",
     "\"Black-owned streetwear\" Oakland"
   ],
@@ -442,7 +442,7 @@ Google Alerts configuration, replicated per query:
     "email": "social@skyyrose.co"
   },
   {
-    "query": "\"Luxury Grows from Concrete\" -site:skyyrose.co",
+    "query": "\"\" -site:skyyrose.co",
     "frequency": "daily_digest",
     "delivery": "email",
     "email": "social@skyyrose.co"

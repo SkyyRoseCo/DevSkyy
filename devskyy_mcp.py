@@ -39,10 +39,14 @@ if sys.platform == "darwin":
 from dotenv import load_dotenv
 from utils.logging_utils import configure_logging
 
-# Bootstrap canonical WooCommerce/WordPress credentials into os.environ so the MCP
-# tools resolve them. WCCredentials.from_env reads os.environ only — loading the
-# .env.wordpress file is the application's job and lives here, not in the dataclass.
-load_dotenv(Path(__file__).resolve().parent / ".env.wordpress")
+# Bootstrap credentials into os.environ for all MCP tools.
+# Load order matters: .env.wordpress first so its canonical WORDPRESS_URL /
+# WOOCOMMERCE_KEY values land before .env, which has those keys as empty
+# strings (intentional for the FastAPI host that uses WP_BASE_URL instead).
+# override=False means shell env vars and mcp_servers/.env values are never clobbered.
+_repo_root = Path(__file__).resolve().parent
+load_dotenv(_repo_root / ".env.wordpress", override=False)
+load_dotenv(_repo_root / ".env", override=False)
 
 from mcp_tools import mcp  # noqa: E402, F401 - re-export for deploy script compatibility
 from mcp_tools.server import API_BASE_URL, API_KEY  # noqa: E402

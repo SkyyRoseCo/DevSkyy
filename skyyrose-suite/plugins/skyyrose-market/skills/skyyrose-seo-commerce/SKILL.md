@@ -8,7 +8,7 @@ allowed-tools: Read Write Edit Glob Grep Bash
 
 ## Brand Canon (Enforce Always)
 
-- Tagline verbatim: **"Luxury Grows from Concrete."** (period included)
+- Tagline verbatim: **""** (period included)
 - Collections and their voices:
   - **Black Rose** — armor / concrete / "you already stood up" / silver `#C0C0C0`
   - **Love Hurts** — bloodline / "bloodline that raised me" / crimson `#DC143C`
@@ -362,8 +362,8 @@ function skyyrose_org_schema() {
             'height' => 512,
         ),
         'image'       => array( '@id' => 'https://skyyrose.co/#logo' ),
-        'description' => 'Luxury streetwear brand from Oakland, California. Luxury Grows from Concrete.',
-        'slogan'      => 'Luxury Grows from Concrete.',
+        'description' => 'Luxury streetwear brand from Oakland, California. ',
+        'slogan'      => '',
         'founder'     => array(
             '@type' => 'Person',
             'name'  => 'Corey Foster',

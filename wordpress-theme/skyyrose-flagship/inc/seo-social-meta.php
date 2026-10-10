@@ -90,7 +90,7 @@ function skyyrose_open_graph_tags() {
 		$col_label = $active_collection_template[0];
 		echo '<meta property="og:type" content="website" />' . "\n";
 		echo '<meta property="og:title" content="' . esc_attr( 'Shop ' . $col_label . ' | ' . $site_name ) . '" />' . "\n";
-		echo '<meta property="og:description" content="' . esc_attr( 'Browse the ' . $col_label . ' from SkyyRose. Luxury Grows from Concrete.' ) . '" />' . "\n";
+		echo '<meta property="og:description" content="' . esc_attr( 'Browse the ' . $col_label . ' from SkyyRose. ' ) . '" />' . "\n";
 		echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '" />' . "\n";
 		if ( has_post_thumbnail() ) {
 			echo '<meta property="og:image" content="' . esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) . '" />' . "\n";
@@ -102,10 +102,10 @@ function skyyrose_open_graph_tags() {
 	} elseif ( null !== $collection_ctx ) {
 		if ( 'landing' === $collection_ctx['type'] ) {
 			$ctx_title = 'Shop ' . $collection_ctx['label'] . ' | ' . $site_name;
-			$ctx_desc  = 'Shop the ' . $collection_ctx['label'] . ' collection from SkyyRose. Luxury Grows from Concrete.';
+			$ctx_desc  = 'Shop the ' . $collection_ctx['label'] . ' collection from SkyyRose. ';
 		} else {
 			$ctx_title = $collection_ctx['label'] . ' — Immersive Experience | ' . $site_name;
-			$ctx_desc  = 'Step inside the ' . $collection_ctx['label'] . ' world — an immersive SkyyRose experience. Luxury Grows from Concrete.';
+			$ctx_desc  = 'Step inside the ' . $collection_ctx['label'] . ' world — an immersive SkyyRose experience. ';
 		}
 		echo '<meta property="og:type" content="website" />' . "\n";
 		echo '<meta property="og:title" content="' . esc_attr( $ctx_title ) . '" />' . "\n";
@@ -146,7 +146,7 @@ function skyyrose_open_graph_tags() {
 		}
 	} elseif ( is_front_page() ) {
 		echo '<meta property="og:type" content="website" />' . "\n";
-		echo '<meta property="og:title" content="' . esc_attr( $site_name . ' — Luxury Grows from Concrete.' ) . '" />' . "\n";
+		echo '<meta property="og:title" content="' . esc_attr( $site_name . ' — ' ) . '" />' . "\n";
 		echo '<meta property="og:description" content="' . esc_attr( get_bloginfo( 'description' ) ) . '" />' . "\n";
 		echo '<meta property="og:url" content="' . esc_url( home_url( '/' ) ) . '" />' . "\n";
 
@@ -166,7 +166,7 @@ function skyyrose_open_graph_tags() {
 	} elseif ( function_exists( 'is_shop' ) && is_shop() ) {
 		echo '<meta property="og:type" content="website" />' . "\n";
 		echo '<meta property="og:title" content="' . esc_attr( 'Shop | ' . $site_name ) . '" />' . "\n";
-		echo '<meta property="og:description" content="' . esc_attr( 'Premium streetwear and luxury fashion. Luxury Grows from Concrete.' ) . '" />' . "\n";
+		echo '<meta property="og:description" content="' . esc_attr( 'Premium streetwear and luxury fashion. ' ) . '" />' . "\n";
 		echo '<meta property="og:url" content="' . esc_url( get_permalink( wc_get_page_id( 'shop' ) ) ) . '" />' . "\n";
 		echo '<meta property="og:image" content="' . esc_url( $fallback_og_image ) . '" />' . "\n";
 	} elseif ( is_category() || is_tag() ) {
@@ -226,7 +226,7 @@ function skyyrose_twitter_card_tags() {
 	if ( $active_twitter_collection ) {
 		$tc_label = $active_twitter_collection[0];
 		echo '<meta name="twitter:title" content="' . esc_attr( 'Shop ' . $tc_label . ' | SkyyRose' ) . '" />' . "\n";
-		echo '<meta name="twitter:description" content="' . esc_attr( 'Browse the ' . $tc_label . ' from SkyyRose. Luxury Grows from Concrete.' ) . '" />' . "\n";
+		echo '<meta name="twitter:description" content="' . esc_attr( 'Browse the ' . $tc_label . ' from SkyyRose. ' ) . '" />' . "\n";
 		if ( has_post_thumbnail() ) {
 			echo '<meta name="twitter:image" content="' . esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) . '" />' . "\n";
 		} else {
@@ -235,7 +235,7 @@ function skyyrose_twitter_card_tags() {
 	} elseif ( null !== $twitter_ctx ) {
 		if ( 'landing' === $twitter_ctx['type'] ) {
 			$tw_title = 'Shop ' . $twitter_ctx['label'] . ' | SkyyRose';
-			$tw_desc  = 'Shop the ' . $twitter_ctx['label'] . ' collection from SkyyRose. Luxury Grows from Concrete.';
+			$tw_desc  = 'Shop the ' . $twitter_ctx['label'] . ' collection from SkyyRose. ';
 		} else {
 			$tw_title = $twitter_ctx['label'] . ' — Immersive Experience | SkyyRose';
 			$tw_desc  = 'Step inside the ' . $twitter_ctx['label'] . ' world — an immersive SkyyRose experience.';
@@ -257,7 +257,7 @@ function skyyrose_twitter_card_tags() {
 			echo '<meta name="twitter:image" content="' . esc_url( $fallback_image ) . '" />' . "\n";
 		}
 	} elseif ( is_front_page() ) {
-		echo '<meta name="twitter:title" content="' . esc_attr( get_bloginfo( 'name' ) . ' — Luxury Grows from Concrete.' ) . '" />' . "\n";
+		echo '<meta name="twitter:title" content="' . esc_attr( get_bloginfo( 'name' ) . ' — ' ) . '" />' . "\n";
 		echo '<meta name="twitter:description" content="' . esc_attr( get_bloginfo( 'description' ) ) . '" />' . "\n";
 
 		$logo_url = skyyrose_og_logo_url();
@@ -269,7 +269,7 @@ function skyyrose_twitter_card_tags() {
 		echo '<meta name="twitter:image" content="' . esc_url( $fallback_image ) . '" />' . "\n";
 	} elseif ( function_exists( 'is_shop' ) && is_shop() ) {
 		echo '<meta name="twitter:title" content="Shop | SkyyRose" />' . "\n";
-		echo '<meta name="twitter:description" content="Premium streetwear and luxury fashion. Luxury Grows from Concrete." />' . "\n";
+		echo '<meta name="twitter:description" content="Premium streetwear and luxury fashion. " />' . "\n";
 		echo '<meta name="twitter:image" content="' . esc_url( $fallback_image ) . '" />' . "\n";
 	}
 }
@@ -331,7 +331,7 @@ function skyyrose_meta_description() {
 				'template-collection-black-rose.php' => 'Browse the full Black Rose Collection. Limited edition gothic streetwear — hockey jerseys, basketball jerseys, and more.',
 				'template-collection-love-hurts.php' => 'Browse the full Love Hurts Collection. Crimson luxury fashion — fanny packs, apparel, and accessories from SkyyRose.',
 				'template-collection-signature.php'  => 'Browse the full Signature Collection. Everyday luxury — windbreakers, shorts, beanies, and essentials from SkyyRose.',
-				'template-about.php'                 => 'The SkyyRose story — Luxury Grows from Concrete. Founded in Oakland, building premium streetwear for the culture.',
+				'template-about.php'                 => 'The SkyyRose story —  Founded in Oakland, building premium streetwear for the culture.',
 				'template-preorder-gateway.php'      => 'Secure your SkyyRose pieces before they drop. Pre-order limited edition streetwear and luxury fashion.',
 				'template-contact.php'               => 'Reach SkyyRose directly. Oakland-made, founder-led. Questions about orders, sizing, collaborations, or press — we read every message.',
 				'template-faq.php'                   => 'Frequently asked questions about SkyyRose orders, shipping, returns, sizing, and pre-orders. Everything you need to know.',
@@ -345,8 +345,8 @@ function skyyrose_meta_description() {
 				$collection_ctx = skyyrose_collection_template_context();
 				if ( null !== $collection_ctx ) {
 					$description = ( 'landing' === $collection_ctx['type'] )
-						? 'Shop the ' . $collection_ctx['label'] . ' collection from SkyyRose. Premium streetwear and luxury fashion — Luxury Grows from Concrete.'
-						: 'Step inside the ' . $collection_ctx['label'] . ' world. An immersive SkyyRose experience — Luxury Grows from Concrete.';
+						? 'Shop the ' . $collection_ctx['label'] . ' collection from SkyyRose. Premium streetwear and luxury fashion — '
+						: 'Step inside the ' . $collection_ctx['label'] . ' world. An immersive SkyyRose experience — ';
 				}
 			}
 		}
@@ -366,7 +366,7 @@ function skyyrose_meta_description() {
 	} elseif ( is_tax( 'product_cat' ) ) {
 		$description = term_description();
 	} elseif ( function_exists( 'is_shop' ) && is_shop() ) {
-		$description = 'Shop premium streetwear and luxury fashion from SkyyRose. Luxury Grows from Concrete. Oakland, CA.';
+		$description = 'Shop premium streetwear and luxury fashion from SkyyRose.  Oakland, CA.';
 	}
 
 	if ( ! empty( $description ) ) {
@@ -407,7 +407,7 @@ function skyyrose_pre_document_title( $title ) {
 			'template-collection-black-rose.php' => 'Shop Black Rose — Limited Edition Streetwear | ' . $brand,
 			'template-collection-love-hurts.php' => 'Shop Love Hurts — Crimson Luxury Fashion | ' . $brand,
 			'template-collection-signature.php'  => 'Shop Signature — Everyday Luxury Essentials | ' . $brand,
-			'template-about.php'                 => 'Our Story — Luxury Grows from Concrete | ' . $brand,
+			'template-about.php'                 => 'Our Story —  | ' . $brand,
 			'template-preorder-gateway.php'      => 'Pre-Order — Secure Your Pieces | ' . $brand,
 			'template-contact.php'               => 'Reach Out | ' . $brand,
 			'page-wishlist.php'                  => 'Your Wishlist | ' . $brand,

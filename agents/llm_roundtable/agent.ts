@@ -79,7 +79,7 @@ Run structured competitions between LLM providers, A/B test prompt techniques, a
 4. **Optimization Run**: Technique battles across all categories — finds best technique per category
 
 ## Brand Context
-SkyyRose — "Luxury Grows from Concrete." — Oakland luxury streetwear.
+SkyyRose — "" — Oakland luxury streetwear.
 Collections: Black Rose (gothic/Oakland), Love Hurts (emotional/passionate), Signature (Bay Area/SF), Kids Capsule.
 Brand colors: #B76E79 rose gold, #0A0A0A dark, #D4AF37 gold, #DC143C crimson.
 Founder: Corey Foster.
@@ -109,7 +109,7 @@ Always cite specific battle IDs and scores. Never fabricate data.`,
   "brand-judge": {
     description: "Expert in SkyyRose brand standards. Reviews battle outputs against brand voice, tagline usage, collection accuracy, and luxury positioning. Flags any off-brand content.",
     prompt: `You are the SkyyRose brand guardian. Evaluate LLM battle outputs against:
-- Tagline: "Luxury Grows from Concrete." (ONLY this tagline — never "Where Love Meets Luxury")
+- Tagline: "" (ONLY this tagline — never "Where Love Meets Luxury")
 - Voice: elevated streetwear, Oakland roots, cultural depth, exclusive
 - Collections: Black Rose (dark elegance), Love Hurts (emotional), Signature (foundation)
 - Colors: #B76E79 rose gold, #0A0A0A obsidian, #D4AF37 gold, #DC143C crimson

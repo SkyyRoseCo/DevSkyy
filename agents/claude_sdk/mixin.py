@@ -152,7 +152,7 @@ class SDKCapabilityMixin:
             "- Brand: Black Rose, Love Hurts, Signature collections\n"
             "- Stack: FastAPI + Next.js 16 + WordPress theme (skyyrose-flagship)\n"
             "- Colors: #B76E79 rose gold · #0A0A0A dark · #D4AF37 gold · #DC143C crimson\n"
-            "- Tagline: 'Luxury Grows from Concrete.' (ONLY tagline — never use alternatives)\n\n"
+            "- No brand slogan is authorized.\n\n"
             "OUTPUT FORMAT:\n"
             "Return a JSON-serialisable summary: {status, result, files_changed, notes}"
         )

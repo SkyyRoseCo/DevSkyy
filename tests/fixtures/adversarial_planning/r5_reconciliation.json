@@ -1,0 +1,72 @@
+{
+  "evidence_class": "REPRODUCED_LOCAL_INPUT_SNAPSHOT",
+  "source_path": "/Users/theceo/.codex/worktrees/card-gap-integration/DevSkyy/tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/source-certification/reconciliation-r5-20261004/ROLE-CENSUS-RECONCILIATION-R5.json",
+  "source_sha256": "ddc910227f3e4db480ca24d7f6e683ff8576706044f02e4735476f8d5c2f2542",
+  "revision": "R5",
+  "classification": "DETERMINISTIC_LOCAL_SOURCE_RECONCILIATION_NOT_MEDIA_REVIEW_OR_RELEASE",
+  "required_roles": 81,
+  "covered_roles": 44,
+  "gated_roles": 37,
+  "gated_by_role": {
+    "archive_frame": 4,
+    "card_front": 11,
+    "collection_hero": 4,
+    "collection_story": 4,
+    "merchandise_scene": 3,
+    "pdp_on_model_front": 11
+  },
+  "gated_bindings": {
+    "card_front": [
+      "br-003",
+      "br-008",
+      "br-010",
+      "br-011",
+      "br-012",
+      "br-014",
+      "br-015",
+      "kids-002",
+      "lh-002",
+      "lh-005",
+      "sg-015"
+    ],
+    "pdp_on_model_front": [
+      "br-003",
+      "br-008",
+      "br-010",
+      "br-011",
+      "br-012",
+      "br-014",
+      "br-015",
+      "kids-002",
+      "lh-002",
+      "lh-005",
+      "sg-015"
+    ],
+    "collection_hero": ["black-rose", "kids-capsule", "love-hurts", "signature"],
+    "collection_story": ["black-rose", "kids-capsule", "love-hurts", "signature"],
+    "archive_frame": ["black-rose", "kids-capsule", "love-hurts", "signature"],
+    "merchandise_scene": ["black-rose", "love-hurts", "signature"]
+  },
+  "love_hurts_gated_skus": [
+    "lh-002",
+    "lh-005"
+  ],
+  "founder_artwork_source": {
+    "evidence_path": "/Users/theceo/.codex/worktrees/card-gap-integration/DevSkyy/tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/source-association/love-hurts-founder-artwork-20261003/ACTUAL-FOUNDER-ARTWORK-ADOPTION-R1.json",
+    "classification": "ACTUAL_LOCAL_FOUNDER_ARTWORK_ADOPTION",
+    "artwork_path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png",
+    "artwork_sha256": "a9b96c60811a92b34dd8b5700317603a16f0976ea863c5d255a4762935d363a8",
+    "affected_skus": [
+      "lh-002",
+      "lh-004",
+      "lh-005",
+      "lh-006"
+    ]
+  },
+  "external_actions": {
+    "provider_calls": 0,
+    "media_generation": false,
+    "staging_deployment": false,
+    "acceptance": false
+  }
+}

@@ -45,7 +45,7 @@ Delivery file convention: `{sku}-product-copy.md` saved alongside the dossier, o
 | Element | Rule |
 |---------|------|
 | Tone | Luxury but grounded, poetic but never pretentious |
-| Tagline | "Luxury Grows from Concrete." (period is mandatory) |
+| Tagline | "" (period is mandatory) |
 | NEVER say | "high-quality", "affordable luxury", "premium", "exclusive" as standalone filler |
 | ALWAYS show | Weight (gsm), construction (double-stitched), material specifics from dossier |
 | Oakland anchor | "The Town" for Oakland-specific; "Bay Area" is acceptable for regional references |
@@ -362,7 +362,6 @@ Black Rose Hoodie — Heavyweight French Terry
 
 <p><strong>PRE-ORDER</strong><br>Limited release. Once they're gone, they're gone. Ships within 4–6 weeks of order close.</p>
 
-<p>This isn't just a hoodie. It's what luxury looks like when it grows from concrete.</p>
 ```
 
 ### SEO
@@ -432,7 +431,7 @@ The Bridge Series 'The Bay Bridge' Shorts — Limited Edition
 
 <p><strong>PRE-ORDER</strong><br>Limited to 250 pieces. Ships within 4–6 weeks of order close.</p>
 
-<p>Luxury Grows from Concrete.</p>
+<p></p>
 ```
 
 ---

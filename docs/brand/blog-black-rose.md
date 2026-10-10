@@ -1,7 +1,7 @@
 # Blog copy: "Black Rose Is Not a Theme. It's Armor."
 
 Status: draft copy, ready to publish once a blog surface exists (same gap as
-`blog-luxury-grows-from-concrete.md` — no blog template/listing in
+`blog-retired-brand-copy.md` — no blog template/listing in
 `wordpress-theme/skyyrose-flagship/` `[repo]`, unverified this session, carried
 forward rather than re-checked).
 

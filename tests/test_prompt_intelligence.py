@@ -234,7 +234,7 @@ class TestPromptChain:
     def test_brand_injection(self):
         result = self.chain.enhance("design a hoodie")
         enhanced = result["enhanced"].lower()
-        assert "skyyrose" in enhanced or "luxury grows" in enhanced or "b76e79" in enhanced
+        assert "skyyrose" in enhanced or "b76e79" in enhanced
 
     def test_fabric_injection_for_hoodie(self):
         result = self.chain.enhance("render a hoodie")
@@ -298,11 +298,7 @@ class TestPromptEnhancer:
         result = self.enhancer.enhance("make me a hoodie")
         lower = result.enhanced.lower()
         brand_present = (
-            "skyyrose" in lower
-            or "b76e79" in lower
-            or "luxury grows" in lower
-            or "rose gold" in lower
-            or "oakland" in lower
+            "skyyrose" in lower or "b76e79" in lower or "rose gold" in lower or "oakland" in lower
         )
         assert brand_present, "Enhanced prompt missing SkyyRose brand DNA"
 
@@ -484,7 +480,7 @@ class TestBrandDNAPresence:
 
     def test_brand_name_and_tagline(self):
         assert BRAND_NAME == "SkyyRose"
-        assert BRAND_TAGLINE == "Luxury Grows from Concrete."
+        assert BRAND_TAGLINE == ""
 
     def test_enhancement_injects_brand_for_black_rose(self):
         chain = PromptChain()

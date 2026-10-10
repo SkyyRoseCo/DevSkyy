@@ -30,7 +30,7 @@ for f in [Path(".env"), Path(".env.hf")]:
 ## Brand Constants
 
 - Colors: Rose Gold `#B76E79`, Dark `#0A0A0A`, Silver `#C0C0C0`, Crimson `#DC143C`, Gold `#D4AF37`
-- Tagline: "Luxury Grows from Concrete." (NEVER "Where Love Meets Luxury")
+- No brand slogan is authorized. (NEVER "Where Love Meets Luxury")
 - WordPress API: `index.php?rest_route=` (NOT `/wp-json/`)
 - Only theme: `skyyrose-flagship`
 

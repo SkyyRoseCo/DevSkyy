@@ -47,7 +47,7 @@ Features per page: Urgency hero + countdown, founder story + parallax divider, 4
 
 ## Brand Constants
 - Brand: SkyyRose (one word)
-- Tagline: "Luxury Grows from Concrete"
+- No brand slogan is authorized.
 - Rose Gold: #B76E79
 - BLACK ROSE: #C0C0C0 (silver)
 - LOVE HURTS: #DC143C (crimson)

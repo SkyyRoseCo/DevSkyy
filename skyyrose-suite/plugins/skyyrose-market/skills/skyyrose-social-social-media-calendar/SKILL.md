@@ -20,7 +20,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline is verbatim:** `Luxury Grows from Concrete.` Period included. Use in Friday exclusivity posts and Month 4 drop hype — never paraphrase.
+- **Tagline is verbatim:** `` Period included. Use in Friday exclusivity posts and Month 4 drop hype — never paraphrase.
 - **Daily collection voice discipline:** Every planned slot must note which collection it represents — and that collection's voice is locked. Black Rose = armor. Love Hurts = bloodline. Signature = the standard. Kids = little royalty.
 - **No urgency-manipulation language** in any calendar slot description. Exclusivity is stated as fact, not manufactured pressure.
 - **Products by NAME in every slot description.** "BLACK Rose Crewneck" not "br-001". Downstream creators pull from calendar descriptions.

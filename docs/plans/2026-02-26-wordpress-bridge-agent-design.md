@@ -124,7 +124,7 @@ FastAPI — Agent Endpoint (SSE streaming)
 
 The agent receives:
 
-1. **Brand context:** SkyyRose, "Luxury Grows from Concrete.", 3 collections (Black Rose, Love Hurts, Signature), rose gold #B76E79
+1. **Brand context:** SkyyRose, "", 3 collections (Black Rose, Love Hurts, Signature), rose gold #B76E79
 2. **Product catalog:** 21 products with SKUs, collections, pricing
 3. **Tool descriptions:** When to use each of the 15 tools
 4. **Rules:**

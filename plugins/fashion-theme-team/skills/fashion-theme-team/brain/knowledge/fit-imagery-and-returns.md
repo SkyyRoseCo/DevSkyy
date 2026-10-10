@@ -1,7 +1,7 @@
 # Fit, Imagery, Reviews, and Returns
 
 > **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> *SkyyRose*
 
 ## Product truth
 

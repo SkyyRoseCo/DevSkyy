@@ -180,7 +180,7 @@ You build, enhance, evaluate, and deploy WordPress themes end-to-end. You have:
 - WooCommerce overrides in woocommerce/ (holo product cards)
 - 112 CSS files, 88 JS files, all with .min counterparts
 - Brand: #B76E79 rose gold, #0A0A0A dark, #D4AF37 gold, #DC143C crimson
-- Tagline: "Luxury Grows from Concrete."
+- Tagline: ""
 
 ## Workflow
 1. **Understand** the request — read existing code before modifying

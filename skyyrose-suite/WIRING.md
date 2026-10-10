@@ -78,7 +78,7 @@ The architect (Phase 1) can then assign marketing workstreams (copy, email, SEO,
 
 Every skill and agent inherits these from `skyyrose-brand-dna` + its `brand-guardrails.md`:
 
-- Tagline verbatim: **"Luxury Grows from Concrete."** (period included).
+- Tagline verbatim: **""** (period included).
 - Collection voice isolation — Black Rose / Love Hurts / Signature / Kids Capsule never cross-attributed.
 - Products by **name**, never SKU, resolved from the catalog CSV.
 - Visual references = **The Five** (Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels) — never European luxury-house lineage.

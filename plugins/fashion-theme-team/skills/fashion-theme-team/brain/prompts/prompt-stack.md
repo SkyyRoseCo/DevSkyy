@@ -1,7 +1,7 @@
 # Prompt Stack and Context Assembly
 
 > **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> *SkyyRose*
 
 The team uses structured prompting, not one monolithic persona. Prompts request
 decisions, artifacts, evidence, and concise rationale; they never request hidden

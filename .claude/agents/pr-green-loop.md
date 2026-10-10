@@ -52,7 +52,7 @@ Repeat until the stop conditions are met:
 
 Bot reviewers — **CodeRabbit, cubic, claude-review, Vercel Agent** — are ADVISORY. Treat their comments as leads: verify each against the actual code. Fix the ones that are real; for false positives, reply briefly explaining why and resolve. Never blindly apply a bot's suggested diff without confirming it's correct against the source.
 
-Gating checks that ARE real (fix these): `🐍 Python Tests`, `🔍 Lint & Static Analysis`, `🔐 Security Scan`, `🔑 Secrets Scan`, `🔬 CodeQL Analysis`, `⚛️ Frontend Tests`, `🎮 Three.js Tests`, `🏗️ WordPress Theme`, `📦 Dependency Review`, `📜 License Compliance`, `Analyze (python|javascript-typescript)`.
+Gating checks that ARE real (fix these) — the first eight are **required by branch protection on `main`** (verified live 2026-10-04; admins are not enforced, so nothing server-side stops a red merge — you are the backstop): `🐍 Python Tests`, `⚛️ Frontend Tests`, `🎭 Playwright E2E Tests`, `🏗️ WordPress Theme`, `🔍 Lint & Static Analysis`, `🔐 Security Scan`, `🔑 Secrets Scan`, `🔌 API Integration Tests`. Also real but not required: `📦 Dependency Review`, `📜 License Compliance`, `Analyze (python)` / `Analyze (javascript-typescript)` (CodeQL). `🎮 Root TypeScript Tests` is red on `main` itself (pre-existing, not required): don't chase it in a PR whose diff doesn't touch it.
 
 ## Local verification matrix (run the RIGHT check for the failure — must run before push)
 

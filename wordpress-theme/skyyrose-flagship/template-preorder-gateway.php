@@ -621,7 +621,7 @@ get_header();
 			</picture>
 
 			<blockquote class="po-manifesto__quote po-rv">
-				<p><?php esc_html_e( 'Luxury Grows from Concrete.', 'skyyrose' ); ?></p>
+
 			</blockquote>
 
 			<p class="po-manifesto__body po-rv">
@@ -744,7 +744,7 @@ get_header();
 					</button>
 				</div>
 
-				<p class="po-email-form__status" id="po-email-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
 			</form>
 		</div>
 	</section>

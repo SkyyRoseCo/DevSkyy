@@ -20,7 +20,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Every video closes with `Luxury Grows from Concrete.`** — burned in as text overlay on the final frame or spoken by Corey. Never drop the tagline to "save time." It is the brand's close, every time.
+- **Every video closes with ``** — burned in as text overlay on the final frame or spoken by Corey. Never drop the tagline to "save time." It is the brand's close, every time.
 - **Collection voice is non-negotiable across the plan.** Each video is tagged to a collection or to brand-level. A Black Rose week does not bleed Love Hurts language into any video in that week.
 - **No hype-merchant production.** Phone camera is fine. Authenticity beats overproduction. The brand's credibility is in the garment and the person wearing it — not a ring light and a green screen.
 - **Name, not SKU.** "BLACK Rose Crewneck" in every script reference, title, and hook. Never "br-001" in any external-facing video element.
@@ -167,7 +167,7 @@ Scheduling: Use platform-native schedulers — TikTok Studio and Meta Business S
 - [ ] Pillar percentages are correct: Showcase 30%, Culture 25%, Lifestyle 20%, Story 15%, Drop 10%
 - [ ] Every video has a hook (first 3 sec) — not "Hey everyone, today I want to..."
 - [ ] Duration assigned per format (reveal=15-30s, story=30-60s)
-- [ ] "Luxury Grows from Concrete." closes every brand-story or product-reveal video
+- [ ] "" closes every brand-story or product-reveal video
 - [ ] One CTA per video — no stacking
 - [ ] Batch session assigned to every video
 - [ ] Repurpose notes included for cross-platform leverage
@@ -327,7 +327,7 @@ Repurpose: X/Twitter: 1 frame + "Every order that goes out, goes out right." + s
 - **Planning without assigning batch sessions** — if every video requires a separate setup day, the plan is unsustainable. Batch or the plan collapses by week 2.
 - **Every video is a talking head** — vary: product reveal, b-roll, POV, transition, text-on-screen, behind-the-scenes. Format monotony trains the audience to scroll past.
 - **Hooks starting with "Hey guys"** — the first 3 seconds are 80% of performance. "Hey everyone, so today I want to show you..." = audience lost before the content starts.
-- **Missing the tagline close** — "Luxury Grows from Concrete." must close every brand-story or product-reveal video. Not optional. Not "when there's room." Built into the format.
+- **Missing the tagline close** — "" must close every brand-story or product-reveal video. Not optional. Not "when there's room." Built into the format.
 - **Drop week treated like a regular week** — a new product launch changes the entire week's pillar rotation. Product Showcase and Exclusivity slots move to the top; Brand Story becomes drop context.
 - **Cross-collection register** — a Black Rose video planned adjacent to a Love Hurts video should still carry its own register cleanly. Never mix language across back-to-back videos.
 - **Trending audio added without checking the window** — recommending a sound that peaked 2 weeks ago makes the brand look behind. Date every audio suggestion; replace if > 72 hours post-peak.

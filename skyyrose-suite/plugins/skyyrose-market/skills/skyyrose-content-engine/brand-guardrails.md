@@ -11,7 +11,7 @@
 ## 1. The brand in one breath
 
 - **Brand:** SkyyRose (The Skyy Rose Collection) — luxury Oakland streetwear.
-- **Tagline (verbatim, the ONLY tagline):** `Luxury Grows from Concrete.`
+No tagline is authorized. Do not restore retired slogans.
   Period included. Never paraphrase ("luxury from the streets", "grown from concrete" = WRONG).
 - **Founder:** Corey Foster. Oakland / Bay Area roots. Direct, earned, unhurried voice.
 - **Anchor:** Oakland, CA ("The Town"). "Bay Area" is acceptable; Oakland-first is preferred.

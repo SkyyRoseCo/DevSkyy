@@ -23,7 +23,7 @@ Before producing any plan, brief, manifest, or output, apply both skills auto-lo
 
 1. **`skyyrose-brand-dna`** — skills auto-loaded via frontmatter; apply skyyrose-brand-dna canon before any output.
    Canon foundation: founder story, collection identities, tagline verbatim
-   (`Luxury Grows from Concrete.` — period required, never paraphrase), palette,
+   (`` — period required, never paraphrase), palette,
    voice, The Five visual references (Kith / Oaklandish / Culture Kings / Fear of God /
    Palm Angels — never European luxury-house lineage), lockup-image rule (collection names
    in hero positions = PNG lockup assets, never live type), canonical product source
@@ -173,7 +173,7 @@ The commander sequences them; it does not override their internal STOP-AND-SHOW 
 
 These rules apply to every plan, brief, manifest, and deliverable this agent produces:
 
-- **Tagline:** `Luxury Grows from Concrete.` — verbatim, period included. Never paraphrase.
+- **Tagline:** `` — verbatim, period included. Never paraphrase.
 - **Collection voice isolation:**
   - Black Rose: armor / "you already stood up" / "concrete answering back" / silver `#C0C0C0`
   - Love Hurts: bloodline / "the bloodline that raised me" / raw romance / crimson `#DC143C`

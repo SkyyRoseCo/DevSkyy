@@ -2,7 +2,7 @@
 
 **Theme**: `skyyrose-flagship` (v3.2.0)
 **Location**: `wordpress-theme/skyyrose-flagship/`
-**Brand Tagline**: "Luxury Grows from Concrete." (ONLY tagline — "Where Love Meets Luxury" is RETIRED)
+**Brand Tagline**: "" (ONLY tagline — "Where Love Meets Luxury" is RETIRED)
 
 ## Theme Structure
 

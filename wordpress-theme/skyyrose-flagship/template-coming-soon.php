@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 
 $skyyrose_title       = __( 'The next collection is coming.', 'skyyrose' );
 $skyyrose_eyebrow     = __( 'Skyy Rose — Studio Notice', 'skyyrose' );
-$skyyrose_tagline     = __( 'Luxury Grows from Concrete.', 'skyyrose' );
+$skyyrose_tagline     = __( '', 'skyyrose' );
 $skyyrose_body_intro  = __( 'We are reworking the floor. The story stays the same — what you wear should say something. New collection, new chapters, same Oakland blood.', 'skyyrose' );
 $skyyrose_signup_lead = __( 'Be the first to know when we open the doors.', 'skyyrose' );
 $skyyrose_fonts_uri   = SKYYROSE_ASSETS_URI . '/fonts';
@@ -425,7 +425,7 @@ $skyyrose_ajax_url    = admin_url( 'admin-ajax.php' );
 						<?php esc_html_e( 'Submit', 'skyyrose' ); ?>
 					</button>
 				</form>
-				<p class="cs-form__message" id="cs-form-msg" role="status" aria-live="polite"></p>
+
 			</aside>
 
 		</main>

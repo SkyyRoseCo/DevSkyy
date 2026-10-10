@@ -2,7 +2,7 @@
 
 A private Claude Code **marketplace** of five plugins — an orchestrator plus four themed teams (marketing, design, core-engineering, QA) — each grounded in verified vendor docs and wired to the SkyyRose Elite Studio runtime and dev-team pipeline.
 
-> Tagline canon: **"Luxury Grows from Concrete."**
+> Tagline canon: **""**
 
 ## The five plugins
 

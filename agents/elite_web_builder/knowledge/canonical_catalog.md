@@ -58,7 +58,7 @@ All of these are gone and must NOT be resurrected: `assets/product-masters/catal
 
 ## Brand copy rules
 
-- **Only tagline:** `Luxury Grows from Concrete.`
+- **Only tagline:** ``
 - **Retired tagline (NEVER use):** `Where Love Meets Luxury`
 - **Brand name:** SkyyRose (one word in product copy). "Skyy Rose" only when referring to the founder's daughter by name.
 - **Founder:** Corey Foster.

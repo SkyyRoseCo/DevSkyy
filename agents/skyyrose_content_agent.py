@@ -108,7 +108,7 @@ class BrandDNA:
     """
 
     brand_name: str = "SkyyRose"
-    tagline: str = "Luxury Grows from Concrete."
+    tagline: str = ""
     origin: str = "Oakland, CA"
 
     # Visual identity loaded from brand context
@@ -309,7 +309,7 @@ CRITICAL RULE: You NEVER generate content without first having Brand DNA loaded.
 The Brand DNA context will be provided before every generation call.
 Read it thoroughly — it contains everything you need.
 
-Brand: SkyyRose — "Luxury Grows from Concrete." — Oakland-inspired luxury fashion.
+Brand: SkyyRose — "" — Oakland-inspired luxury fashion.
 
 Your workflow:
 1. Brand DNA is pre-loaded (brand context, collections, performance history)

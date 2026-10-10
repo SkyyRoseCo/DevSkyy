@@ -1,4 +1,4 @@
-/* SkyyRose Fashion Theme Brain — Luxury Grows from Concrete. */
+/* SkyyRose Fashion Theme Brain — SkyyRose */
 @font-face {
   font-family: "Archivo";
   src: url("fonts/archivo-latin.woff2") format("woff2");
@@ -79,6 +79,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--sr-rose); outli
   letter-spacing: .22em;
   text-transform: uppercase;
 }
+/* Never set a collection name in .sr-title or .sr-hero-mark: hero titles are collection lockup images, never type-rendered. */
 .sr-title {
   max-width: 12ch;
   margin: .7rem 0 1.5rem;

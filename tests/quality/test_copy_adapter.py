@@ -97,7 +97,7 @@ def test_deterministic_check_related_products_push():
 
 
 def test_deterministic_checks_clean_copy_returns_empty_list():
-    clean = "Luxury Grows from Concrete. The Black Rose Crewneck is armor."
+    clean = " The Black Rose Crewneck is armor."
     assert CopyAdapter().deterministic_checks(clean, _brief()) == []
 
 
@@ -187,7 +187,7 @@ def test_build_judge_request_structure():
 
 
 def test_build_judge_request_embeds_subject_and_collection():
-    subject = "Luxury Grows from Concrete."
+    subject = "Black Rose Crewneck."
     req = CopyAdapter().build_judge_request(subject, _brief(collection="black_rose"))
     text = req["messages"][0]["content"][0]["text"]
     assert subject in text

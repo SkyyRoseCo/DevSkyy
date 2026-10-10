@@ -20,7 +20,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline (exact):** `Luxury Grows from Concrete.` — never paraphrase; use in welcome posts and pinned messages.
+- **Tagline (exact):** `` — never paraphrase; use in welcome posts and pinned messages.
 - **Tone:** Oakland-direct, earned, unhurried. No hype-merchant energy. The community is not a hype machine — it is a space where the people who already found us feel seen.
 - **No urgency manipulation.** Founding-member scarcity is stated as fact ("first 100 members get early access to drops"), never a fake countdown.
 - **Garment is the protagonist.** Community conversations center on the craft, the story, and the culture — not on "complete the look" cross-sell or bundle pressure.
@@ -310,11 +310,11 @@ python -m skyyrose.elite_studio.ventures.social smoke \
 **Scenario:** The BLACK Rose Crewneck is opening for pre-order. We're launching The Concrete Garden simultaneously — founding members get 48-hour early access before the public link goes live.
 
 **#welcome pin (Corey's voice):**
-> "This is The Concrete Garden. You're here because you found SkyyRose before everyone else did.  
-> The deal: you get early access to every drop, first look at what we're building, and a direct line to me.  
-> In return: keep it real, keep drop info inside these walls until we go public.  
-> First up — the BLACK Rose Crewneck pre-order drops in here in 48 hours. Nowhere else yet.  
-> Luxury Grows from Concrete. — Corey"
+> "This is The Concrete Garden. You're here because you found SkyyRose before everyone else did.
+> The deal: you get early access to every drop, first look at what we're building, and a direct line to me.
+> In return: keep it real, keep drop info inside these walls until we go public.
+> First up — the BLACK Rose Crewneck pre-order drops in here in 48 hours. Nowhere else yet.
+>  — Corey"
 
 **Collection voice check:** Black Rose register — armor, defiance, earned access. No "🔥" or countdown pressure. Scarcity stated as fact ("48 hours before public"). Garment is the protagonist.
 

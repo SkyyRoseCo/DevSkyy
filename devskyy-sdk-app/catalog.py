@@ -33,7 +33,7 @@ class CollectionMeta:
 COLLECTIONS: dict[str, CollectionMeta] = {
     "Signature": CollectionMeta(
         accent="#D4AF37",  # Gold
-        ethos="The flagship line — where 'Luxury Grows from Concrete' begins. "
+        ethos="The flagship line — where '' begins. "
         "Foundational pieces built to outlast the trend cycle.",
         lineage="Gold-standard staples; the bedrock of the house.",
     ),

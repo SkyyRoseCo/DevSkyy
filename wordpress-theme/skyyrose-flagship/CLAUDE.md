@@ -70,14 +70,14 @@ npm run verify:theme # per-aspect gate (--only <id>, --json, --list)
 # key ~/.ssh/skyyrose-deploy · server sftp.wp.com
 ```
 
-## Adding a template = TWO edits in `inc/enqueue.php` (or CSS loads wrong, silently)
+## Adding a template = TWO edits in `inc/enqueue-templates.php` (or CSS loads wrong, silently)
 
-1. `$template_map` in `skyyrose_get_current_template_slug()`
-   (~`enqueue.php:426`) — maps `template-*.php` filename → slug string.
-2. `$template_styles` in `skyyrose_enqueue_template_styles()`
-   (~`enqueue.php:485`) — maps slug → CSS file (a JS section mirrors this). Then
-   create the source CSS/JS and run `npm run build` to emit `.min`. Miss either
-   array → new template gets wrong CSS or none.
+1. `$template_map` in `skyyrose_get_current_template_slug()` — maps
+   `template-*.php` filename → slug string.
+2. `$template_styles` in `skyyrose_enqueue_template_styles()` — maps slug → CSS
+   file (a JS section mirrors this). Then create the source CSS/JS and run
+   `npm run build` to emit `.min`. Miss either array → new template gets wrong
+   CSS or none.
 
 ## Brand constants — use them, never hardcode
 
@@ -107,8 +107,8 @@ fresh checkout); it supplies `SKYYROSE_BRAND_TAGLINE` + helpers like
   stored `false` in the DB overrides code defaults (bit us on first deploy).
 - Mounts ONLY via footer.php (front-page.php uses `get_footer()`); checkout
   excluded.
-- `window.SKYY_3D_CONFIG` IS emitted by `inc/enqueue.php` (~447) whenever a GLB
-  URL resolves (`modelUrl` + `walkSide`); the hardcoded theme-path fallbacks in
+- `window.SKYY_3D_CONFIG` IS emitted by `inc/enqueue.php` whenever a GLB URL
+  resolves (`modelUrl` + `walkSide`); the hardcoded theme-path fallbacks in
   skyy-3d.js only cover the localize-missing edge case.
 - **Mascot body v7 = the Love Hurts Girl** (2026-07-12, founder-directed):
   `assets/models/skyy.glb` now carries the in-house-rigged girl (25-joint rig,

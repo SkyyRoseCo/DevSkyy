@@ -228,11 +228,7 @@ class TestRosieMascot:
         sheet = self.agent.create_skyyrose_rosie()
         elements_text = " ".join(sheet.spec.brand_elements)
         # Skyy wears Love Hurts collection — crimson accents + Oakland tagline
-        assert (
-            "love hurts" in elements_text.lower()
-            or "crimson" in elements_text.lower()
-            or "luxury grows" in elements_text.lower()
-        )
+        assert "love hurts" in elements_text.lower() or "crimson" in elements_text.lower()
 
     def test_rosie_wears_love_hurts_varsity(self):
         sheet = self.agent.create_skyyrose_rosie()
@@ -262,7 +258,7 @@ class TestRosieMascot:
         )
         assert "skyyrose" in all_prompts.lower() or "SkyyRose" in all_prompts
 
-    def test_rosie_tagline_present(self):
+    def test_rosie_prompts_retain_brand_identity(self):
         sheet = self.agent.create_skyyrose_rosie()
         all_prompts = " ".join(
             [
@@ -271,7 +267,7 @@ class TestRosieMascot:
                 sheet.expression_grid_prompt,
             ]
         )
-        assert "Luxury Grows from Concrete" in all_prompts
+        assert "skyyrose" in all_prompts.lower()
 
     def test_rosie_is_young_black_girl(self):
         sheet = self.agent.create_skyyrose_rosie()
@@ -433,7 +429,7 @@ class TestSpriteGenerator:
         result = self.generator.generate_skyyrose_mascot_sprites()
         all_prompts = " ".join(result.sprite_prompts.values())
         assert "SkyyRose" in all_prompts or "skyyrose" in all_prompts.lower()
-        assert "Luxury Grows from Concrete" in all_prompts
+        assert "skyyrose" in all_prompts.lower()
 
     def test_rosie_sprite_css_hint_mentions_walk(self):
         result = self.generator.generate_skyyrose_mascot_sprites()

@@ -81,8 +81,7 @@ from `llm/creative_judge.py:CreativeJudge`. Returns pass/fail + structured verdi
 }
 ```
 **Behavior:** Routes to `agents/claude_sdk/domain_agents/brand_guardian.py:BrandGuardianAgent`,
-which validates color palette (`#0a0a0a`, `#C0C0C0`), tagline ("Luxury Grows from
-Concrete." — never "Where Love Meets Luxury"), and collection-specific iconography.
+which validates color palette (`#0a0a0a`, `#C0C0C0`), tagline ("" — never "Where Love Meets Luxury"), and collection-specific iconography.
 **Output:** `{ "compliant": false, "violations": ["forbidden tagline detected"], "fix_suggestions": [...] }`
 
 ### 5. External partner agent (future) requests product availability

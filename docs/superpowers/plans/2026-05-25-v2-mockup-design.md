@@ -403,7 +403,7 @@ Append inside `<style>`:
 
   <footer class="cover__line reveal">
     <div>
-      <p class="cover__tagline">Luxury Grows<br>from <em>Concrete.</em></p>
+      <p class="cover__tagline"></em></p>
       <p class="cover__byline">By Corey Foster · Oakland · 2026</p>
     </div>
     <div class="cover__barcode" aria-hidden="true">

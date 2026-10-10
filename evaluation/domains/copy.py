@@ -106,7 +106,7 @@ _RUBRIC_PROMPT = (
     "- no_urgency_theatre: no countdowns, scarcity nudges, or FOMO CTAs.\n"
     "- no_related_products_push: no 'you may also like' / 'customers also bought' framing.\n"
     "- name_not_sku_referencing: products named in full, never by SKU handle.\n"
-    "- canonical_tagline_only: only 'Luxury Grows from Concrete.'; never 'Where Love Meets Luxury'.\n"
+    "- canonical_tagline_only: no brand slogan is authorized; reject retired or invented slogans.\n"
     "- oakland_anchoring: Oakland-first vocabulary ('The Town', 'frisco'), never glossed; "
     "'Bay Area' in supporting copy is acceptable.\n"
     "Emit failure_tags from the approved vocabulary for any canon violation; empty if clean."

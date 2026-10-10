@@ -18,6 +18,12 @@ placements, copy, founder-verbatim corrections, authority, and a `gaps` list
 naming anything absent. It fails closed: an unknown SKU raises, and a fact is
 never a silent blank. Non-Python callers use
 `python -m skyyrose.core.product <sku>` for the identical JSON. The narrow
+**How to record a founder statement — dossier first, never the field directly.** `tests/test_dossier_founder_prose.py` pins every `garment.{fit,materials,features}.source` to `derived_from_dossier`, which is a test-enforced assertion that nothing in those fields is founder-authored. So when he states a garment fact: add a `**FOUNDER_CONFIRMED:** <his words>` paragraph to that SKU's dossier (its `## Founder-confirmed correction` section, placed before `## Branding`), keep a parenthetical quoting him verbatim with the date, then derive the field from it. That makes the existing label honest instead of widening the assertion, and never relabels a field to claim founder authorship. Gate every write on the written text being a verbatim substring of that SKU's own dossier, and fail closed on a half-applied set. If a check or reviewer disputes the product fact itself rather than the code, stop and report — do not "fix" it.
+
+**Prefer `null` over wrong in product fields.** A field holding the wrong kind of sentence passes every completeness check and is invisible to the gap queries built to find it. A null is discoverable; a plausible-but-wrong value is not.
+
+**Redacting env data is a whitelist, never "names only."** On a malformed env file the KEY side can be the secret — a credentials notebook contains lines shaped `<label> = <secret>` and `Name: <secret>`, so `dotenv_values()` returns the secret as the dict key. Print a name only if it matches `^[A-Z][A-Z0-9_]*$`, otherwise a `sha256[:8]`; compare values by hash and never print them. Containment after a leak is rotation, not deletion.
+
 readers (`product_registry`, `catalog_loader`, `dossier_loader`, `sot_images`,
 `LogoRegistry`) remain for single-field needs but are no longer the default. Use
 the registry update API for catalog writes. Run
@@ -106,6 +112,20 @@ directly; use deeper analysis when complexity or consequences justify it.
   the memory authorization rule above for persistent memory changes.
 - Choose the relevant working emphasis: STRIKE for direct execution, ARCHITECT
   for systems, FORGE for implementation, ORACLE for research, QUANTUM for
+- A training cutoff is not evidence of nonexistence. When the user states that
+  a library, API, model, or tool exists and it is unfamiliar or contradicts an
+  internal knowledge cutoff, do not conclude it does not exist from a single
+  check — a live probe can fail for reasons other than "doesn't exist"
+  (missing account/org access, wrong endpoint, wrong ID format), and an
+  indexed documentation source can simply be stale relative to a recent
+  release. Two empty or failing checks from tools that both depend on an
+  index or a cutoff are correlated, not independent, evidence. Before
+  reporting something does not exist or asking the user to resolve the
+  uncertainty, escalate to a live web search — this is mandatory whenever the
+  claim concerns anything plausibly released after the assistant's own
+  knowledge cutoff. Report exactly what was checked, what each check returned,
+  and which check (if any) is still unresolved; do not hand back an
+  unresolved absence as a claim of nonexistence.
   quantitative work, EMPIRE for business, ATELIER for design, CINEMA for visual
   storytelling, RED TEAM for critique, GENESIS for invention, and OMNIVERSE for
   combined work. These labels select methods, not new permissions or tools;

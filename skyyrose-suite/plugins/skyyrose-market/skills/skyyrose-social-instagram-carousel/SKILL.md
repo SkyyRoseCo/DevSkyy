@@ -20,7 +20,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline:** `Luxury Grows from Concrete.` — verbatim, period included. No paraphrase.
+- **Tagline:** `` — verbatim, period included. No paraphrase.
 - **Collection voice is strict:** "Bloodline that raised me" = Love Hurts ONLY. "Armor / you already stood up / concrete answering back" = Black Rose ONLY. Signature = "stay golden / the standard". Kids Capsule = little royalty, heritage passed down.
 - **Name, not SKU:** Write "BLACK Rose Crewneck", not "br-001". SKU-first copy has caused product conflations — it is forbidden in any customer-facing slide.
 - **No hype-merchant tone:** No countdown timers, no "DON'T MISS OUT", no fake urgency. Scarcity = "limited to pre-order" stated once as fact.
@@ -103,7 +103,7 @@ For each slide deliver:
 
 **CTA Slide**
 - Single action. If pre-order: "Pre-order open. Link in bio." If live: "Shop now. skyyrose.co"
-- Include @SkyyRose handle and `Luxury Grows from Concrete.` tagline.
+- Include @SkyyRose handle and `` tagline.
 - Design: clean, near-black background, Rose Gold accent line, no competing visual elements.
 
 ### Caption Writing
@@ -125,7 +125,7 @@ Caption complements — does not repeat — slide content.
 **Caption length:** 150-300 words. Hashtags go in the FIRST COMMENT, not the caption.
 
 **Hashtag block for first comment (15-20 tags):**
-- Branded always: `#SkyyRose` `#LuxuryGrowsFromConcrete` `#TheSkyRoseCollection`
+- Branded always: `#SkyyRose` `` `#TheSkyRoseCollection`
 - Collection-specific (pick set): `#BlackRoseCollection` OR `#LoveHurtsCollection` OR `#SignatureCollection` OR `#SkyyRoseKids`
 - Niche (rotate 10-12): `#LuxuryStreetwear` `#BlackOwnedFashion` `#OaklandFashion` `#BayAreaStyle` `#StreetLuxury` `#BlackDesigner` `#UrbanLuxury` `#TheTown` `#MadeInOakland` `#IndependentFashion`
 
@@ -244,7 +244,7 @@ Design note: Near-black background. Single centered text block. Hanken Grotesk 3
 CTA SLIDE
 Headline:    "Pre-order now."
 Supporting:  skyyrose.co | @SkyyRose
-             Luxury Grows from Concrete.
+
 Design note: Dark #0A0A0A. Rose Gold #B76E79 accent left border. Headline Anton 52pt white centered. Handle + tagline Hanken Grotesk 22pt silver below.
 ```
 
@@ -264,7 +264,7 @@ Link in bio.
 ```
 
 **First comment hashtags:**
-`#SkyyRose #BlackRoseCollection #LuxuryGrowsFromConcrete #BlackOwnedFashion #OaklandFashion #TheTown #LuxuryStreetwear #UrbanLuxury #BlackDesigner #StreetLuxury #BayAreaStyle #IndependentFashion #TheSkyRoseCollection #BlackRoseBySkyyRose #MadeInOakland`
+`#SkyyRose #BlackRoseCollection  #BlackOwnedFashion #OaklandFashion #TheTown #LuxuryStreetwear #UrbanLuxury #BlackDesigner #StreetLuxury #BayAreaStyle #IndependentFashion #TheSkyRoseCollection #BlackRoseBySkyyRose #MadeInOakland`
 
 ---
 

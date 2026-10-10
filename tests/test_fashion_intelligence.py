@@ -70,7 +70,7 @@ class TestFashionKnowledgeBase:
     def test_brand_tagline_present(self):
         from skyyrose.elite_studio.fashion.knowledge import BRAND_TAGLINE
 
-        assert "Luxury Grows from Concrete" in BRAND_TAGLINE
+        assert BRAND_TAGLINE == ""
 
 
 # ---------------------------------------------------------------------------

@@ -21,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline (exact):** `Luxury Grows from Concrete.` — Corey built this brand from Oakland. The community is an extension of that. Moderation must reflect the same earned, direct energy — not corporate stiffness.
+- **Tagline (exact):** `` — Corey built this brand from Oakland. The community is an extension of that. Moderation must reflect the same earned, direct energy — not corporate stiffness.
 - **Culture is not decorative.** SkyyRose is a Black-owned Oakland brand. Any disrespect toward Black culture, The Town, or community members gets removed immediately — no warnings, no debate.
 - **No hype-merchant energy.** Mods don't generate artificial excitement. They hold space. Quiet consistency beats public drama.
 - **Founder canon: no related-products cross-sell.** The community is not a sales floor. A member who only posts purchase links gets redirected; a spammer gets removed.

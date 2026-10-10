@@ -1,0 +1,920 @@
+{
+  "status": "INVESTIGATION_NOT_NEW_CANON",
+  "repository": "/Users/theceo/DevSkyy",
+  "records": [
+    {
+      "id": "E01",
+      "location": "AGENTS.md",
+      "locator": {
+        "start_line": 1,
+        "end_line": 45
+      },
+      "category": "PRODUCT",
+      "observed_fact": "Single editable registry; latest founder facts authoritative; dossier-first wording needs embedded-prose interpretation.",
+      "explicitness": "EXPLICIT",
+      "authority": "AUTHORITATIVE",
+      "temporal_status": "current instruction",
+      "current_usage": "Registry API and projection workflow",
+      "confidence": "high",
+      "conflicts": [
+        "C12"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E02",
+      "location": "SOT.md",
+      "locator": {
+        "start_line": 3,
+        "end_line": 45
+      },
+      "category": "IDENTITY",
+      "observed_fact": "Field-specific authority splits product, brand identity, typography, collections and non-product media.",
+      "explicitness": "EXPLICIT",
+      "authority": "CANONICAL",
+      "temporal_status": "current working tree",
+      "current_usage": "Registry/readers/generator routing",
+      "confidence": "high",
+      "conflicts": [
+        "C01",
+        "C12"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E03",
+      "location": "knowledge-base/seed/from-interview.md",
+      "locator": {
+        "start_line": 24,
+        "end_line": 81
+      },
+      "category": "POSITIONING",
+      "observed_fact": "Founder-captured Oakland specificity, autobiography, gender-neutral presentation, story-led collection experiences; later reference supersession noted.",
+      "explicitness": "EXPLICIT",
+      "authority": "AUTHORITATIVE",
+      "temporal_status": "current principles with historical sections",
+      "current_usage": "Narrative and creative direction",
+      "confidence": "high",
+      "conflicts": [
+        "C04",
+        "C05"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E04",
+      "location": "assets/brand/brand.yaml",
+      "locator": {
+        "start_line": 1,
+        "end_line": 180
+      },
+      "category": "IDENTITY",
+      "observed_fact": "Structured identity and empty active tagline; collection/font blocks are mirrors despite broad header.",
+      "explicitness": "EXPLICIT",
+      "authority": "CANONICAL",
+      "temporal_status": "current dirty working tree",
+      "current_usage": "BrandConfig and generated PHP",
+      "confidence": "high",
+      "conflicts": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E05",
+      "location": "tasks/retired-brand-copy-removal-20260921.md",
+      "locator": {
+        "start_line": 1,
+        "end_line": 18
+      },
+      "category": "PROHIBITIONS",
+      "observed_fact": "Founder retirement with no replacement; edited historical snapshots no longer original evidence.",
+      "explicitness": "EXPLICIT",
+      "authority": "AUTHORITATIVE",
+      "temporal_status": "recorded correction",
+      "current_usage": "Retirement check and local source state",
+      "confidence": "high",
+      "conflicts": [
+        "C02"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E06",
+      "location": "docs/brand/corey-questions.md",
+      "locator": {
+        "start_line": 60,
+        "end_line": 80
+      },
+      "category": "COLLECTION",
+      "observed_fact": "Recorded founder resolutions for Love Hurts bloodline and Signature Bay Bridge/Oakland.",
+      "explicitness": "EXPLICIT",
+      "authority": "AUTHORITATIVE",
+      "temporal_status": "recorded owner decisions",
+      "current_usage": "Collection interpretation",
+      "confidence": "high",
+      "conflicts": [
+        "C03"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E07",
+      "location": "docs/brand/collection-stories.md",
+      "locator": {
+        "start_line": 1,
+        "end_line": 300
+      },
+      "category": "VOICE",
+      "observed_fact": "Distinct collection registers; contains implementation quotes and redacted prose, not uniformly founder-verbatim.",
+      "explicitness": "EXPLICIT",
+      "authority": "DERIVED",
+      "temporal_status": "partly current, partly stale",
+      "current_usage": "Narrative guidance",
+      "confidence": "medium",
+      "conflicts": [
+        "C03",
+        "C06"
+      ],
+      "upstream_source": "E03",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E08",
+      "location": "docs/brand/visual-references.md",
+      "locator": {
+        "start_line": 1,
+        "end_line": 64
+      },
+      "category": "VISUAL",
+      "observed_fact": "Founder-locked Five reference set with specific moves and excluded lineage.",
+      "explicitness": "EXPLICIT",
+      "authority": "AUTHORITATIVE",
+      "temporal_status": "recorded current reference policy",
+      "current_usage": "Design briefs, not permanent identity",
+      "confidence": "high",
+      "conflicts": [
+        "C05",
+        "C06"
+      ],
+      "upstream_source": "E03",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E09",
+      "location": "docs/brand/asset-hierarchy.md",
+      "locator": {
+        "start_line": 1,
+        "end_line": 100
+      },
+      "category": "VISUAL",
+      "observed_fact": "Separates chrome, collection marks and product-exclusive artwork; recolor only where registry allows.",
+      "explicitness": "EXPLICIT",
+      "authority": "AUTHORITATIVE",
+      "temporal_status": "scoped guide with historical wiring notes",
+      "current_usage": "Asset selection",
+      "confidence": "medium",
+      "conflicts": [
+        "C04"
+      ],
+      "upstream_source": "E02",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E10",
+      "location": "wordpress-theme/skyyrose-flagship/data/brand/typography.json",
+      "locator": {
+        "start_line": 1,
+        "end_line": 43
+      },
+      "category": "VISUAL",
+      "observed_fact": "Archivo/Hanken/Anton/Cinzel/Inter roles and collection script identities.",
+      "explicitness": "EXPLICIT",
+      "authority": "CANONICAL",
+      "temporal_status": "current design system",
+      "current_usage": "V1/V2 font roles",
+      "confidence": "high",
+      "conflicts": [
+        "C07"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E11",
+      "location": "wordpress-theme/skyyrose-flagship/data/collections/kids-capsule/identity.json",
+      "locator": {
+        "start_line": 1,
+        "end_line": 49
+      },
+      "category": "COLLECTION",
+      "observed_fact": "Heir story/palette; top-level verified coexists with interim-pending hero.",
+      "explicitness": "EXPLICIT",
+      "authority": "CANONICAL",
+      "temporal_status": "mixed nested status",
+      "current_usage": "Collection identity reader",
+      "confidence": "high",
+      "conflicts": [
+        "C06",
+        "C10"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E12",
+      "location": "wordpress-theme/skyyrose-flagship/data/collections/signature/identity.json",
+      "locator": {
+        "start_line": 1,
+        "end_line": 35
+      },
+      "category": "COLLECTION",
+      "observed_fact": "Beginning/origin story and gold/rose palette; interim hero.",
+      "explicitness": "EXPLICIT",
+      "authority": "CANONICAL",
+      "temporal_status": "mixed nested status",
+      "current_usage": "Collection identity reader",
+      "confidence": "high",
+      "conflicts": [
+        "C03",
+        "C10"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E13",
+      "location": "eval/brand.md",
+      "locator": {
+        "start_line": 13,
+        "end_line": 81
+      },
+      "category": "VOICE",
+      "observed_fact": "Explicit copy bans and rigid visual/motion prescriptions; evaluative spec does not prove runtime compliance.",
+      "explicitness": "EXPLICIT",
+      "authority": "REFERENCE",
+      "temporal_status": "partly stale rubric",
+      "current_usage": "Brand review",
+      "confidence": "high",
+      "conflicts": [
+        "C04",
+        "C07",
+        "C08"
+      ],
+      "upstream_source": "E03",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E14",
+      "location": "eval/design-system.json",
+      "locator": {
+        "start_line": 1,
+        "end_line": 100
+      },
+      "category": "VISUAL",
+      "observed_fact": "Legacy token rubric includes unfinished values; not complete generated token source.",
+      "explicitness": "EXPLICIT",
+      "authority": "REFERENCE",
+      "temporal_status": "partly incomplete",
+      "current_usage": "Evaluation design",
+      "confidence": "high",
+      "conflicts": [
+        "C07"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E15",
+      "location": "orchestration/brand_context.py",
+      "locator": {
+        "start_line": 42,
+        "end_line": 150
+      },
+      "category": "INFRASTRUCTURE",
+      "observed_fact": "Existing injector contains alternate slogan, stale fonts, incorrect rose-gold code, Midnight Bloom and no Kids.",
+      "explicitness": "EXPLICIT",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "current source, semantically stale",
+      "current_usage": "Agent context generation",
+      "confidence": "high",
+      "conflicts": [
+        "C02",
+        "C07",
+        "C09"
+      ],
+      "upstream_source": "E04",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E16",
+      "location": "orchestration/brand_context.py",
+      "locator": {
+        "start_line": 481,
+        "end_line": 660
+      },
+      "category": "INFRASTRUCTURE",
+      "observed_fact": "CSV-mtime cache despite registry-backed loader; exceptions can degrade to brand-only block.",
+      "explicitness": "EXPLICIT",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "current source risk, not mutation-reproduced",
+      "current_usage": "Catalog/context assembly",
+      "confidence": "high",
+      "conflicts": [
+        "C09"
+      ],
+      "upstream_source": "E18",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E17",
+      "location": "skyyrose/core/product.py",
+      "locator": {
+        "start_line": 109,
+        "end_line": 308
+      },
+      "category": "PRODUCT",
+      "observed_fact": "Complete product API combines registry facts with referenced content/alt stores; gaps cover image/content only.",
+      "explicitness": "EXPLICIT",
+      "authority": "AUTHORITATIVE",
+      "temporal_status": "current tested interface",
+      "current_usage": "All future SKU context",
+      "confidence": "high",
+      "conflicts": [
+        "C12"
+      ],
+      "upstream_source": "E02",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E18",
+      "location": "skyyrose/core/product_registry.py",
+      "locator": {
+        "start_line": 1,
+        "end_line": 80
+      },
+      "category": "PRODUCT",
+      "observed_fact": "Strict unified products reader; source registry is single editable owner.",
+      "explicitness": "EXPLICIT",
+      "authority": "AUTHORITATIVE",
+      "temporal_status": "current tested interface",
+      "current_usage": "Product projections",
+      "confidence": "high",
+      "conflicts": [],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E19",
+      "location": "scripts/sync_product_registry.py",
+      "locator": {
+        "start_line": 1,
+        "end_line": 28
+      },
+      "category": "PRODUCT",
+      "observed_fact": "CSV/dossier projections generated from registry; check passed in this investigation.",
+      "explicitness": "EXPLICIT",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "current tested workflow",
+      "current_usage": "Compatibility exports",
+      "confidence": "high",
+      "conflicts": [],
+      "upstream_source": "E18",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E20",
+      "location": "scripts/sync_brand_to_php.py",
+      "locator": {
+        "start_line": 1,
+        "end_line": 205
+      },
+      "category": "INFRASTRUCTURE",
+      "observed_fact": "Existing BrandConfig-to-PHP generator; YAML names stale sync_brand.py path.",
+      "explicitness": "EXPLICIT",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "source traced; freshness not checked",
+      "current_usage": "V1 functions.php includes generated output",
+      "confidence": "high",
+      "conflicts": [
+        "C01"
+      ],
+      "upstream_source": "E04",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E21",
+      "location": "wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+      "locator": {
+        "start_line": 1,
+        "end_line": 100
+      },
+      "category": "VISUAL",
+      "observed_fact": "Collection accents, font roles, contrast-adjusted crimson, artwork/UI separation and exact motion values.",
+      "explicitness": "EXPLICIT",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "current local V2",
+      "current_usage": "theme.css and immersive.css",
+      "confidence": "high",
+      "conflicts": [
+        "C07",
+        "C08"
+      ],
+      "upstream_source": "E10",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E22",
+      "location": "design-system/skyyrose-storefront/scripts/sync-theme-assets.mjs",
+      "locator": {
+        "start_line": 1,
+        "end_line": 65
+      },
+      "category": "INFRASTRUCTURE",
+      "observed_fact": "One-way V1 asset/token sync into package, not independent source authority.",
+      "explicitness": "EXPLICIT",
+      "authority": "DERIVED",
+      "temporal_status": "current source graph",
+      "current_usage": "Component package",
+      "confidence": "high",
+      "conflicts": [
+        "C07"
+      ],
+      "upstream_source": "E10",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E23",
+      "location": "frontend/app/layout.tsx",
+      "locator": {
+        "start_line": 1,
+        "end_line": 40
+      },
+      "category": "CHANNEL",
+      "observed_fact": "DevSkyy Dashboard has separate font/application scope; do not collapse into storefront DNA.",
+      "explicitness": "EXPLICIT",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "current local frontend",
+      "current_usage": "Dashboard layout",
+      "confidence": "high",
+      "conflicts": [
+        "C07"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E24",
+      "location": "wordpress-theme/skyyrose-flagship-2/assets/js/immersive.js",
+      "locator": {
+        "start_line": 123,
+        "end_line": 205
+      },
+      "category": "3D",
+      "observed_fact": "Poster fallbacks, WebGL capability checks, camera/renderer settings and pause behavior.",
+      "explicitness": "EXPLICIT",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "current source; capability paths not all runtime tested",
+      "current_usage": "Immersive enhancement",
+      "confidence": "high",
+      "conflicts": [],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E25",
+      "location": "wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+      "locator": {
+        "start_line": 90,
+        "end_line": 315
+      },
+      "category": "MOTION",
+      "observed_fact": "Viewport/preference-aware media and carousel behavior.",
+      "explicitness": "EXPLICIT",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "current source",
+      "current_usage": "V2 motion enqueued by functions.php",
+      "confidence": "high",
+      "conflicts": [
+        "C08"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E26",
+      "location": "wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+      "locator": {
+        "start_line": 1,
+        "end_line": 86
+      },
+      "category": "EXPERIENCE",
+      "observed_fact": "Royal Procession native-scroll narrative with reduced-motion accommodation.",
+      "explicitness": "EXPLICIT",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "current source",
+      "current_usage": "Kids/home controller",
+      "confidence": "high",
+      "conflicts": [
+        "C06"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E27",
+      "location": "docs/brand/immersive-hero-prompts.md",
+      "locator": {
+        "start_line": 1,
+        "end_line": 45
+      },
+      "category": "CAMPAIGN",
+      "observed_fact": "June LOCKED prompt prohibits devices later implemented, including Kids throne/cartoon/front-facing child.",
+      "explicitness": "EXPLICIT",
+      "authority": "REFERENCE",
+      "temporal_status": "historical scope conflict",
+      "current_usage": "Creative prompt lineage",
+      "confidence": "high",
+      "conflicts": [
+        "C05",
+        "C06"
+      ],
+      "upstream_source": "E08",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E28",
+      "location": "docs/design/v2-remodel/reports/cinematic-motion-responsive-contract.md",
+      "locator": {
+        "start_line": 1,
+        "end_line": 52
+      },
+      "category": "MOTION",
+      "observed_fact": "RECOMMENDED / UNAPPROVED header governs otherwise binding-sounding principles.",
+      "explicitness": "EXPLICIT",
+      "authority": "EXPERIMENTAL",
+      "temporal_status": "unapproved proposal",
+      "current_usage": "Possible future motion contract",
+      "confidence": "high",
+      "conflicts": [
+        "C08"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E29",
+      "location": "docs/design/v2-remodel/kids-capsule-reveal/contract.json",
+      "locator": {
+        "start_line": 1,
+        "end_line": 50
+      },
+      "category": "COLLECTION",
+      "observed_fact": "Selected procession remains candidate with founder review required in this record.",
+      "explicitness": "EXPLICIT",
+      "authority": "EXPERIMENTAL",
+      "temporal_status": "local candidate status",
+      "current_usage": "Kids implementation context",
+      "confidence": "high",
+      "conflicts": [
+        "C06"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E30",
+      "location": "docs/design/v2-remodel/house-of-roses/skyyrose-tour-film-storyboard.md",
+      "locator": {
+        "start_line": 1,
+        "end_line": 48
+      },
+      "category": "CAMPAIGN",
+      "observed_fact": "Fictional house train; local previsualization, release blocked, not partnership or product proof.",
+      "explicitness": "EXPLICIT",
+      "authority": "EXPERIMENTAL",
+      "temporal_status": "active creative direction / blocked release",
+      "current_usage": "Jersey film/storyboard",
+      "confidence": "high",
+      "conflicts": [
+        "C11"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E31",
+      "location": "docs/design/v2-remodel/house-of-roses/bart-film-storyboard.md",
+      "locator": {
+        "start_line": 1,
+        "end_line": 68
+      },
+      "category": "CAMPAIGN",
+      "observed_fact": "Transit-specific concept explicitly superseded and archival.",
+      "explicitness": "EXPLICIT",
+      "authority": "LEGACY",
+      "temporal_status": "superseded",
+      "current_usage": "Historical evidence only",
+      "confidence": "high",
+      "conflicts": [
+        "C11"
+      ],
+      "upstream_source": "E30",
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E32",
+      "location": "docs/adr/0002-brand-centroid-global-pending-data.md",
+      "locator": {
+        "start_line": 1,
+        "end_line": 15
+      },
+      "category": "INFRASTRUCTURE",
+      "observed_fact": "Global visual centroid chosen pending false-pass measurements; similarity is not brand authority.",
+      "explicitness": "EXPLICIT",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "accepted technical ADR, validation data deferred there",
+      "current_usage": "Automated visual quality gate",
+      "confidence": "high",
+      "conflicts": [
+        "C13"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "source_inspection"
+    },
+    {
+      "id": "E33",
+      "location": "evidence/runtime-2.json",
+      "locator": {
+        "start_line": 1,
+        "end_line": 1
+      },
+      "category": "EXPERIENCE",
+      "observed_fact": "Production homepage readback: dark body, Hanken H1, Archivo H2; retired greeting observed and redacted in saved text.",
+      "explicitness": "STRONGLY_OBSERVED",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "live 2026-09-23 session with admin bar",
+      "current_usage": "Production homepage",
+      "confidence": "high",
+      "conflicts": [
+        "C02",
+        "C07"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_tool_observation"
+    },
+    {
+      "id": "E34",
+      "location": "evidence/runtime-3.json",
+      "locator": {
+        "start_line": 1,
+        "end_line": 1
+      },
+      "category": "EXPERIENCE",
+      "observed_fact": "Staging homepage: Archivo H1, four collection chapters, product links, motion controls, throne narrative.",
+      "explicitness": "STRONGLY_OBSERVED",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "live 2026-09-23 session with admin bar",
+      "current_usage": "Staging homepage",
+      "confidence": "high",
+      "conflicts": [
+        "C03",
+        "C06",
+        "C07"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_tool_observation"
+    },
+    {
+      "id": "E35",
+      "location": "evidence/kids-desktop.json",
+      "locator": {
+        "start_line": 1,
+        "end_line": 1
+      },
+      "category": "COLLECTION",
+      "observed_fact": "Guest Kids page displays throne asset and product collection; Hanken headings in this captured state.",
+      "explicitness": "STRONGLY_OBSERVED",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "live guest desktop 1440x780",
+      "current_usage": "Staging Kids page",
+      "confidence": "high",
+      "conflicts": [
+        "C06",
+        "C07"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_tool_observation"
+    },
+    {
+      "id": "E36",
+      "location": "evidence/kids-mobile.json",
+      "locator": {
+        "start_line": 1,
+        "end_line": 1
+      },
+      "category": "EXPERIENCE",
+      "observed_fact": "Guest mobile 390px: page width 390, motion/character pause controls; current headings include scene chapters.",
+      "explicitness": "STRONGLY_OBSERVED",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "live mobile emulation 390x844",
+      "current_usage": "Staging Kids page",
+      "confidence": "high",
+      "conflicts": [
+        "C06"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_tool_observation"
+    },
+    {
+      "id": "E37",
+      "location": "https://drive.google.com/file/d/1UjFULS_H4rEktwomxv0LZ5Xvk2T7_Oi_/view",
+      "locator": null,
+      "category": "INFRASTRUCTURE",
+      "observed_fact": "April theme architect PDF asserts theme-as-brand authority and older font/Kids palette systems; fetched text is historic prompt, not current instruction.",
+      "explicitness": "EXPLICIT",
+      "authority": "LEGACY",
+      "temporal_status": "Drive modified 2026-04-12",
+      "current_usage": "Historical architecture brief",
+      "confidence": "high",
+      "conflicts": [
+        "C01",
+        "C06",
+        "C07"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_tool_observation"
+    },
+    {
+      "id": "E38",
+      "location": "https://drive.google.com/file/d/1fWDOPyHwp7c7V37ERmByM03W3cWwNo9U/view",
+      "locator": null,
+      "category": "POSITIONING",
+      "observed_fact": "2025 overview supports family/Oakland/gender-neutral narrative but carries old prices and unsupported broad sustainability claim.",
+      "explicitness": "EXPLICIT",
+      "authority": "REFERENCE",
+      "temporal_status": "Drive modified 2025-05-06",
+      "current_usage": "Historical overview",
+      "confidence": "high",
+      "conflicts": [
+        "C14"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_tool_observation"
+    },
+    {
+      "id": "E39",
+      "location": "https://drive.google.com/drive/folders/1sFKCKCX5N17orxE9zYH1aERiQ1y_4ec8",
+      "locator": null,
+      "category": "VISUAL",
+      "observed_fact": "30 logo-folder metadata entries inspected, including AI source and multiple colored masters; filename presence does not approve current use.",
+      "explicitness": "EXPLICIT",
+      "authority": "REFERENCE",
+      "temporal_status": "bounded metadata listing; pixels not inspected",
+      "current_usage": "Historical asset discovery",
+      "confidence": "medium",
+      "conflicts": [
+        "C04"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_tool_observation"
+    },
+    {
+      "id": "E40",
+      "location": "https://skyyrose.co",
+      "locator": null,
+      "category": "CHANNEL",
+      "observed_fact": "Authenticated WordPress site listing identifies production site 238510894; description retains retired copy. Staging site 256563697 has no such description.",
+      "explicitness": "STRONGLY_OBSERVED",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "connector observation 2026-09-23",
+      "current_usage": "CMS site metadata",
+      "confidence": "high",
+      "conflicts": [
+        "C02"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_tool_observation"
+    },
+    {
+      "id": "E41",
+      "location": "evidence/black-rose-desktop.json",
+      "locator": null,
+      "category": "VISUAL",
+      "observed_fact": "Guest staging Black Rose: silver sculptural lettering/star/rose against moonlit Bay Bridge; on-model story scenes and product links. Strong current expression evidence, not global cathedral identity.",
+      "explicitness": "STRONGLY_OBSERVED",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "live guest desktop 2026-09-23, after owner directed emphasis to staging",
+      "current_usage": "staging /collections/black-rose/",
+      "confidence": "high",
+      "conflicts": [
+        "C05"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_browser_text_and_visual_inspection"
+    },
+    {
+      "id": "E42",
+      "location": "evidence/love-hurts-desktop.json",
+      "locator": null,
+      "category": "VISUAL",
+      "observed_fact": "Guest staging Love Hurts: crimson glass/rose/heart/star, back-turned Beast, axial cathedral aisle; story scenes lead to specific products. Context-specific cinematic grammar.",
+      "explicitness": "STRONGLY_OBSERVED",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "live guest desktop 2026-09-23, after owner directed emphasis to staging",
+      "current_usage": "staging /collections/love-hurts/",
+      "confidence": "high",
+      "conflicts": [
+        "C05"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_browser_text_and_visual_inspection"
+    },
+    {
+      "id": "E43",
+      "location": "evidence/signature-desktop.json",
+      "locator": null,
+      "category": "VISUAL",
+      "observed_fact": "Guest staging Signature: warm metallic wordmark/monogram, Golden Gate dusk/fog, blue-gray sky, on-model foreground. Current scenic expression does not replace Oakland origin or exact product artwork.",
+      "explicitness": "STRONGLY_OBSERVED",
+      "authority": "IMPLEMENTATION",
+      "temporal_status": "live guest desktop 2026-09-23, after owner directed emphasis to staging",
+      "current_usage": "staging /collections/signature/",
+      "confidence": "high",
+      "conflicts": [
+        "C03",
+        "C04"
+      ],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "live_browser_text_and_visual_inspection"
+    },
+    {
+      "id": "E44",
+      "location": "current conversation, user steering",
+      "locator": null,
+      "category": "PROVENANCE",
+      "observed_fact": "Owner said the brand's staging site would give a better brand visual. Investigation prioritizes staging for current visual expression.",
+      "explicitness": "EXPLICIT",
+      "authority": "AUTHORITATIVE",
+      "temporal_status": "current 2026-09-23",
+      "current_usage": "investigation evidence weighting",
+      "confidence": "high",
+      "conflicts": [],
+      "upstream_source": null,
+      "last_validation": "2026-09-23",
+      "validation_kind": "owner_instruction",
+      "limits": "Does not authorize migration, redefine product truth, or approve every asset for every future use."
+    }
+  ]
+}

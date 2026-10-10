@@ -154,7 +154,7 @@ def test_brand_check_flags_retired_tagline() -> None:
 def test_brand_check_passes_clean_copy() -> None:
     """Brand check approves copy that uses the canonical tagline."""
     result = brand_check(
-        asset_text="Luxury Grows from Concrete. The Black Rose drops Friday.",
+        asset_text=" The Black Rose drops Friday.",
         collection="black-rose",
     )
     # Without CreativeAgent installed, the structural-only check passes.

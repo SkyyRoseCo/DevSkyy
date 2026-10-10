@@ -21,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Branded hashtags always included:** `#SkyyRose` and `#LuxuryGrowsFromConcrete` appear on every post. These are non-negotiable.
+- **Branded hashtags always included:** `#SkyyRose` and `` appear on every post. These are non-negotiable.
 - **Collection tags are mutually exclusive:** Never mix collection hashtags on the same post. A Black Rose post uses Black Rose tags. A Love Hurts post uses Love Hurts tags. No blending.
 - **Oakland-first niche tags preferred** over generic streetwear tags — `#OaklandFashion` and `#TheTown` over `#StreetStyle` alone.
 - **Products by name in any hashtag** that references a product: `#BlackRoseCrewneck` not `#br001`.
@@ -65,7 +65,7 @@ Before generating sets, confirm:
 These appear on every SkyyRose post, every platform, every pillar:
 
 ```
-#SkyyRose  #LuxuryGrowsFromConcrete  #TheSkyRoseCollection
+#SkyyRose    #TheSkyRoseCollection
 ```
 
 Platform placement:
@@ -99,10 +99,10 @@ Broad (use sparingly):
 
 ```
 Black Rose — Set A (Product Showcase)
-#SkyyRose #LuxuryGrowsFromConcrete #BlackRoseCollection #BlackRoseBySkyyRose #DarkElegance #GothicLuxury #OaklandFashion #LuxuryStreetwear #BlackOwnedFashion #BlackDesigner #StreetLuxury #TheTownStyle #BayAreaBrand #UrbanLuxury #IndependentFashion
+#SkyyRose  #BlackRoseCollection #BlackRoseBySkyyRose #DarkElegance #GothicLuxury #OaklandFashion #LuxuryStreetwear #BlackOwnedFashion #BlackDesigner #StreetLuxury #TheTownStyle #BayAreaBrand #UrbanLuxury #IndependentFashion
 
 Black Rose — Set B (Brand Story / Culture)
-#SkyyRose #LuxuryGrowsFromConcrete #BlackRoseCollection #TheSkyRoseCollection #ConcreteRoots #DefiantFashion #OaklandFashion #BlackOwnedFashion #TheTownStyle #BayAreaBrand #StreetLuxury #BlackDesigner #ArmorWear #DarkElegance #LuxuryStreetwear
+#SkyyRose  #BlackRoseCollection #TheSkyRoseCollection #ConcreteRoots #DefiantFashion #OaklandFashion #BlackOwnedFashion #TheTownStyle #BayAreaBrand #StreetLuxury #BlackDesigner #ArmorWear #DarkElegance #LuxuryStreetwear
 
 Black Rose — Reels Set (fewer tags)
 #SkyyRose #BlackRoseCollection #OaklandFashion #LuxuryStreetwear #BlackOwnedFashion
@@ -132,10 +132,10 @@ Broad (use sparingly):
 
 ```
 Love Hurts — Set A (Product Showcase)
-#SkyyRose #LuxuryGrowsFromConcrete #LoveHurtsCollection #LoveHurtsBySkyyRose #OaklandFashion #LuxuryStreetwear #BlackOwnedFashion #StreetPassion #TheTownStyle #BayAreaBrand #BlackDesigner #UrbanLuxury #IndependentFashion #StreetLuxury #RawStyle
+#SkyyRose  #LoveHurtsCollection #LoveHurtsBySkyyRose #OaklandFashion #LuxuryStreetwear #BlackOwnedFashion #StreetPassion #TheTownStyle #BayAreaBrand #BlackDesigner #UrbanLuxury #IndependentFashion #StreetLuxury #RawStyle
 
 Love Hurts — Set B (Lifestyle / Culture)
-#SkyyRose #LuxuryGrowsFromConcrete #LoveHurtsCollection #TheSkyRoseCollection #BlackLove #RealOnes #OaklandFashion #BayAreaBrand #LuxuryStreetwear #StreetPassion #TheTownStyle #BlackDesigner #CrimsonFashion #StreetLuxury #BlackOwnedFashion
+#SkyyRose  #LoveHurtsCollection #TheSkyRoseCollection #BlackLove #RealOnes #OaklandFashion #BayAreaBrand #LuxuryStreetwear #StreetPassion #TheTownStyle #BlackDesigner #CrimsonFashion #StreetLuxury #BlackOwnedFashion
 
 Love Hurts — Reels Set
 #SkyyRose #LoveHurtsCollection #OaklandFashion #BlackOwnedFashion #LuxuryStreetwear
@@ -165,10 +165,10 @@ Broad (use sparingly):
 
 ```
 Signature — Set A (Product Showcase)
-#SkyyRose #LuxuryGrowsFromConcrete #SignatureCollection #SkyyRoseSignature #WestCoastLuxury #OaklandFashion #BayAreaStyle #LuxuryStreetwear #BlackOwnedFashion #BlackDesigner #GoldenStandard #BayAreaBrand #UrbanLuxury #PremiumStreetwear #StreetLuxury
+#SkyyRose  #SignatureCollection #SkyyRoseSignature #WestCoastLuxury #OaklandFashion #BayAreaStyle #LuxuryStreetwear #BlackOwnedFashion #BlackDesigner #GoldenStandard #BayAreaBrand #UrbanLuxury #PremiumStreetwear #StreetLuxury
 
 Signature — Set B (Brand Story / Lifestyle)
-#SkyyRose #LuxuryGrowsFromConcrete #SignatureCollection #TheSkyRoseCollection #StayGolden #TheStandard #OaklandFashion #BayAreaStyle #WestCoastLuxury #LuxuryStreetwear #BlackDesigner #BayAreaBrand #LuxuryDefined #StreetLuxury #BlackOwnedFashion
+#SkyyRose  #SignatureCollection #TheSkyRoseCollection #StayGolden #TheStandard #OaklandFashion #BayAreaStyle #WestCoastLuxury #LuxuryStreetwear #BlackDesigner #BayAreaBrand #LuxuryDefined #StreetLuxury #BlackOwnedFashion
 
 Signature — Reels Set
 #SkyyRose #SignatureCollection #WestCoastLuxury #OaklandFashion #BlackOwnedFashion
@@ -198,7 +198,7 @@ Broad:
 
 ```
 Kids Capsule — Set A
-#SkyyRose #LuxuryGrowsFromConcrete #SkyyRoseKids #LittleRoyalty #KidsFashion #BlackKidsFashion #MiniRoyalty #OaklandKids #BlackParenting #StyleFromBirth #BlackFamilyStyle #HeritageFashion #BayAreaFamilies #BlackOwnedKids #LittleOnes
+#SkyyRose  #SkyyRoseKids #LittleRoyalty #KidsFashion #BlackKidsFashion #MiniRoyalty #OaklandKids #BlackParenting #StyleFromBirth #BlackFamilyStyle #HeritageFashion #BayAreaFamilies #BlackOwnedKids #LittleOnes
 ```
 
 ---
@@ -276,7 +276,7 @@ python -m skyyrose.elite_studio.ventures.social smoke --sku br-001
 ```json
 // Hashtag set config — store in skyyrose/assets/data/hashtag-sets.json
 {
-  "branded": ["#SkyyRose", "#LuxuryGrowsFromConcrete", "#TheSkyRoseCollection"],
+  "branded": ["#SkyyRose", "", "#TheSkyRoseCollection"],
   "collections": {
     "black-rose": {
       "collection_tags": ["#BlackRoseCollection", "#BlackRoseBySkyyRose"],
@@ -284,8 +284,8 @@ python -m skyyrose.elite_studio.ventures.social smoke --sku br-001
       "mid": ["#StreetLuxury", "#BlackOwnedFashion", "#UrbanLuxury", "#BlackDesigner", "#IndependentFashion", "#BayAreaBrand"],
       "broad": ["#LuxuryFashion", "#StreetStyle"],
       "sets": {
-        "ig_feed_a": "#SkyyRose #LuxuryGrowsFromConcrete #BlackRoseCollection #BlackRoseBySkyyRose #DarkElegance #GothicLuxury #OaklandFashion #LuxuryStreetwear #BlackOwnedFashion #BlackDesigner #StreetLuxury #TheTownStyle #BayAreaBrand #UrbanLuxury #IndependentFashion",
-        "ig_feed_b": "#SkyyRose #LuxuryGrowsFromConcrete #BlackRoseCollection #TheSkyRoseCollection #ConcreteRoots #DefiantFashion #OaklandFashion #BlackOwnedFashion #TheTownStyle #BayAreaBrand #StreetLuxury #BlackDesigner #ArmorWear #DarkElegance #LuxuryStreetwear",
+        "ig_feed_a": "#SkyyRose  #BlackRoseCollection #BlackRoseBySkyyRose #DarkElegance #GothicLuxury #OaklandFashion #LuxuryStreetwear #BlackOwnedFashion #BlackDesigner #StreetLuxury #TheTownStyle #BayAreaBrand #UrbanLuxury #IndependentFashion",
+        "ig_feed_b": "#SkyyRose  #BlackRoseCollection #TheSkyRoseCollection #ConcreteRoots #DefiantFashion #OaklandFashion #BlackOwnedFashion #TheTownStyle #BayAreaBrand #StreetLuxury #BlackDesigner #ArmorWear #DarkElegance #LuxuryStreetwear",
         "ig_reels": "#SkyyRose #BlackRoseCollection #OaklandFashion #LuxuryStreetwear #BlackOwnedFashion",
         "tiktok": "#skyyrose #blackrosecollection #luxurystreetwear #blackownedfashion"
       }
@@ -305,7 +305,7 @@ python -m skyyrose.elite_studio.ventures.social smoke --sku br-001
 
 **First comment hashtags (Set A + pillar add):**
 ```
-#SkyyRose #LuxuryGrowsFromConcrete #BlackRoseCollection #BlackRoseBySkyyRose #DarkElegance #GothicLuxury #OaklandFashion #LuxuryStreetwear #BlackOwnedFashion #BlackDesigner #StreetLuxury #TheTownStyle #BayAreaBrand #BlackRoseCrewneck #LimitedEditionDrop
+#SkyyRose  #BlackRoseCollection #BlackRoseBySkyyRose #DarkElegance #GothicLuxury #OaklandFashion #LuxuryStreetwear #BlackOwnedFashion #BlackDesigner #StreetLuxury #TheTownStyle #BayAreaBrand #BlackRoseCrewneck #LimitedEditionDrop
 ```
 
 **Friday TikTok BTS (Reels Set + 1):**
@@ -328,7 +328,7 @@ Caption: "Every stitch earns it. BLACK Rose Crewneck — pre-order at skyyrose.c
 - **Over-hashtagging on TikTok** — More than 5 tags on TikTok dilutes the signal. 3-5 targeted tags outperform 20 generic ones.
 - **Product hashtags with SKUs** — `#BR001` is meaningless to a customer. `#BlackRoseCrewneck` is searchable.
 - **Trending tags that don't fit** — `#WeddingStyle` or `#TravelInspo` drive irrelevant traffic. Every tag must connect the post to an audience actively searching for SkyyRose-relevant content.
-- **Forgetting `#LuxuryGrowsFromConcrete`** — This is the brand's most distinctive community-building tag. Missing it on product posts is a missed UGC aggregation opportunity.
+- **Forgetting ``** — This is the brand's most distinctive community-building tag. Missing it on product posts is a missed UGC aggregation opportunity.
 
 ---
 

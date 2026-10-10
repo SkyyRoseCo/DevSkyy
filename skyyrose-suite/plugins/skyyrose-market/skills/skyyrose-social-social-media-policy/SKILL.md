@@ -21,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline (exact):** `Luxury Grows from Concrete.` — this is the only tagline. Anyone posting on behalf of SkyyRose must use it verbatim when referencing the brand positioning. Never "grown from concrete," never "luxury from the streets."
+No tagline is authorized. Do not restore retired slogans.
 - **Voice guardrails:** Oakland-direct, earned, unhurried. The brand does not hype. Any post that reads like a hype-merchant wrote it violates this policy.
 - **No urgency manipulation.** Scarcity statements must be factual ("limited to pre-order run of 250") — never fake countdown pressure. Anyone posting urgency timers violates this policy.
 - **Products by name, not SKU.** Any team member or partner who references a SkyyRose product in a post must use the product name (e.g., "BLACK Rose Crewneck"), not a SKU code.

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Love Hurts — Front &amp; Back</title>
+<link rel="stylesheet" href="lh.css">
+<style>
+  .intro { position: relative; padding: 140px var(--lh-gutter) 64px; overflow: hidden; isolation: isolate; }
+  .intro img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; z-index: -2; opacity: .45; }
+  .intro::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(10,10,10,.3), var(--lh-black)); }
+  .intro__lockup { width: min(420px, 70vw); margin: 0 0 28px; }
+  .intro p { max-width: 52ch; margin: 0; color: var(--lh-muted); }
+
+  .piece { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 80px); padding: 10vh var(--lh-gutter); border-top: 1px solid rgba(220,20,60,.25); align-items: center; }
+  .stage { position: relative; aspect-ratio: 4 / 5; background: #120608; overflow: hidden; }
+  .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .6s var(--lh-ease), transform .8s var(--lh-ease); transform: scale(1.02); }
+  .stage img[data-role="front"] { object-fit: cover; object-position: 50% 30%; }
+  .stage img.is-active { opacity: 1; transform: none; }
+  .toggle { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .toggle button { font-family: var(--lh-caps); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--lh-muted); background: transparent; border: 1px solid #3a2a2d; padding: 10px 16px; cursor: pointer; }
+  .toggle button[aria-pressed="true"] { color: var(--lh-text); border-color: var(--lh-crimson); background: rgba(155,15,46,.35); }
+  .piece__name { font-size: clamp(2rem, 4vw, 3.6rem); margin: 10px 0 18px; }
+  .specs { margin: 24px 0; display: grid; grid-template-columns: max-content 1fr; gap: 10px 24px; }
+  .specs dt { font-family: var(--lh-caps); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--lh-muted); padding-top: 3px; }
+  .specs dd { margin: 0; }
+  .price { font-family: var(--lh-display); font-variation-settings: "wdth" 125; font-weight: 700; font-size: 1.6rem; margin: 0 0 20px; }
+
+  @media (max-width: 860px) {
+    .piece { grid-template-columns: 1fr; padding: 56px var(--lh-gutter); }
+    .specs { grid-template-columns: 1fr; gap: 4px; }
+    .specs dd { margin-bottom: 12px; }
+  }
+</style>
+</head>
+<body>
+<a class="lh-skip" href="#main">Skip to the collection</a>
+<header class="lh-topbar"><span class="lh-caps">SkyyRose</span><span class="lh-caps lh-muted">Collection 03</span></header>
+<main id="main">
+  <section class="intro" aria-labelledby="intro-title">
+    <img class="bg" src="../../assets/scenes/love-hurts/love-hurts-crimson-throne-room.png" alt="">
+    <h1 id="intro-title"><img class="intro__lockup" src="../../wordpress-theme/skyyrose-flagship/assets/images/hero-overlays/lh-logo-combined.webp" alt="Love Hurts" width="1600" height="900"></h1>
+    <p>Every piece, turned around. The front as it’s worn, the back as it was made — and where we have it, the drawing it started from.</p>
+  </section>
+  <div id="pieces"></div>
+</main>
+<footer class="lh-footer">
+  <span class="lh-caps">Hurts is the bloodline that raised me.</span>
+  <div id="proto-nav"></div>
+</footer>
+<script src="products.js"></script>
+<script src="lh.js"></script>
+<script>
+(function () {
+  var K = window.LHKit, P = window.LH.products;
+  var LABELS = { front: "Front", back: "Back", back_packshot: "Back, photographed", reference: "The drawing" };
+
+  function stageFor(p) {
+    var views = Object.keys(p.images).map(function (role) { return { role: role, node: K.img(p, role, { "data-role": role }) }; });
+    if (p.reference) {
+      views.push({ role: "reference", node: K.el("img", { src: p.reference, alt: p.name + " — technical drawing", loading: "lazy", "data-role": "reference" }) });
+    }
+    views[0].node.classList.add("is-active");
+    var stage = K.el("div", { class: "stage" }, views.map(function (v) { return v.node; }));
+    var buttons = views.map(function (v, i) {
+      var b = K.el("button", { type: "button", "aria-pressed": i === 0 ? "true" : "false" }, [LABELS[v.role] || v.role]);
+      b.addEventListener("click", function () {
+        views.forEach(function (w, j) {
+          w.node.classList.toggle("is-active", j === i);
+          buttons[j].setAttribute("aria-pressed", j === i ? "true" : "false");
+        });
+      });
+      return b;
+    });
+    var toggle = views.length > 1 ? K.el("div", { class: "toggle", role: "group", "aria-label": "Views of " + p.name }, buttons) : null;
+    return K.el("div", {}, [stage, toggle]);
+  }
+
+  P.forEach(function (p, i) {
+    var specs = K.el("dl", { class: "specs" }, [
+      K.el("dt", {}, ["Colour"]), K.el("dd", {}, [p.color]),
+      K.el("dt", {}, ["Sizes"]), K.el("dd", {}, [p.sizes.join(" · ")]),
+      K.el("dt", {}, ["Branding"]), K.el("dd", {}, [p.branding]),
+    ]);
+    document.getElementById("pieces").appendChild(K.el("section", { class: "piece", "aria-labelledby": "n-" + p.sku }, [
+      stageFor(p),
+      K.el("div", { class: "lh-reveal" }, [
+        K.el("span", { class: "lh-caps lh-muted" }, [String(i + 1).padStart(2, "0") + " / 05"]),
+        K.el("h2", { class: "piece__name lh-display", id: "n-" + p.sku }, [p.name]),
+        K.el("p", {}, [K.copy(p)]),
+        specs,
+        K.el("p", { class: "price" }, [K.price(p), p.preorder ? " " : null, p.preorder ? K.el("span", { class: "lh-status" }, ["Pre-Order"]) : null]),
+        K.viewLink(p),
+      ]),
+    ]));
+  });
+  document.getElementById("proto-nav").appendChild(K.protoNav("03-front-and-back.html"));
+  K.reveal();
+})();
+</script>
+</body>
+</html>

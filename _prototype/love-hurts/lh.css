@@ -1,0 +1,128 @@
+/* Love Hurts prototypes — shared tokens and faces.
+   Palette and fonts from data/collections/love-hurts/identity.json. */
+
+@font-face {
+  font-family: "SkyyRose Love Hurts Graffiti";
+  src: url("../../wordpress-theme/skyyrose-flagship/assets/fonts/skyyrose-love-hurts-graffiti-latin.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("../../wordpress-theme/skyyrose-flagship/assets/fonts/archivo-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cinzel";
+  src: url("../../wordpress-theme/skyyrose-flagship/assets/fonts/cinzel-latin.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("../../wordpress-theme/skyyrose-flagship/assets/fonts/hanken-grotesk-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --lh-black: #0a0a0a;
+  --lh-text: #f5f5f5;
+  --lh-muted: #b3b3b3;
+  --lh-crimson: #dc143c;
+  --lh-crimson-deep: #9b0f2e;
+  --lh-white: #ffffff;
+  --lh-rose-gold: #b76e79;
+  --lh-script: "SkyyRose Love Hurts Graffiti", "Archivo", sans-serif;
+  --lh-display: "Archivo", "Hanken Grotesk", sans-serif;
+  --lh-caps: "Cinzel", serif;
+  --lh-body: "Hanken Grotesk", "Archivo", sans-serif;
+  --lh-gutter: clamp(16px, 5vw, 72px);
+  --lh-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--lh-black); }
+body {
+  margin: 0;
+  background: var(--lh-black);
+  color: var(--lh-text);
+  font: 400 17px/1.6 var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--lh-text); text-decoration-color: var(--lh-crimson); text-underline-offset: 0.3em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--lh-rose-gold); outline-offset: 4px; }
+
+.lh-display {
+  font-family: var(--lh-display);
+  font-variation-settings: "wdth" 125;
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+.lh-caps {
+  font-family: var(--lh-caps);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+.lh-script { font-family: var(--lh-script); font-weight: 400; line-height: 1; }
+.lh-muted { color: var(--lh-muted); }
+.lh-rule { height: 1px; border: 0; background: var(--lh-crimson); margin: 0; }
+
+.lh-skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--lh-text); color: var(--lh-black); padding: 12px 16px; z-index: 10;
+}
+.lh-skip:focus { left: 16px; top: 16px; }
+
+.lh-topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px var(--lh-gutter);
+  position: absolute; inset: 0 0 auto 0; z-index: 5;
+}
+.lh-topbar a { text-decoration: none; }
+
+.lh-view {
+  display: inline-flex; align-items: center; gap: 0.6em;
+  font-family: var(--lh-caps); font-weight: 600; font-size: 0.78rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--lh-text); text-decoration: none;
+  border: 1px solid var(--lh-crimson); padding: 14px 22px; align-self: flex-start; width: fit-content;
+  transition: background 0.3s var(--lh-ease);
+}
+.lh-view:hover { background: var(--lh-crimson-deep); }
+
+.lh-status {
+  display: inline-block; font-family: var(--lh-caps); font-size: 0.7rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border: 1px solid var(--lh-rose-gold); color: var(--lh-text); padding: 4px 10px;
+}
+
+.lh-reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--lh-ease), transform 0.9s var(--lh-ease); }
+.lh-reveal.is-in { opacity: 1; transform: none; }
+
+.lh-footer {
+  padding: 64px var(--lh-gutter) 48px;
+  border-top: 1px solid rgba(220, 20, 60, 0.35);
+  display: flex; flex-wrap: wrap; gap: 16px 40px; justify-content: space-between;
+}
+
+.lh-proto-nav {
+  display: flex; flex-wrap: wrap; gap: 8px 20px;
+  font-family: var(--lh-caps); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.lh-proto-nav a { text-decoration: none; color: var(--lh-muted); }
+.lh-proto-nav a[aria-current="page"] { color: var(--lh-text); text-decoration: underline; text-decoration-color: var(--lh-crimson); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .lh-reveal { opacity: 1; transform: none; }
+}

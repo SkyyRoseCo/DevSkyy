@@ -1,7 +1,7 @@
 # Fashion Theme Do and Don't
 
 > **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> *SkyyRose*
 
 | Do | Don't |
 | --- | --- |

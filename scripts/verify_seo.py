@@ -303,12 +303,12 @@ class SEOValidator:
             Page title
         """
         titles = {
-            "home": "SkyyRose - Luxury Grows from Concrete.",
+            "home": "SkyyRose",
             "shop": "Shop SkyyRose Collections | Luxury Streetwear",
             "collection_signature": "SIGNATURE Collection | Premium Oakland Essentials",
             "collection_black_rose": "BLACK ROSE Collection | Dark Elegance Luxury",
             "collection_love_hurts": "LOVE HURTS Collection | Bold Fashion Statements",
-            "about": "About SkyyRose | Luxury Streetwear Brand from Oakland",
+            "about": "About SkyyRose — Luxury Streetwear Brand from Oakland",
             "blog": "Blog - SkyyRose Fashion Stories & Insights",
         }
         return titles.get(page_key, "SkyyRose")

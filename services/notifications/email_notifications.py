@@ -134,7 +134,7 @@ TEMPLATES = {
             <a href="{dashboard_url}/approval/{item_id}" class="btn">Review Now</a>
         </div>
         <div class="footer">
-            <p>SkyyRose - Luxury Grows from Concrete.</p>
+            <p>SkyyRose</p>
             <p>This is an automated notification from your asset pipeline.</p>
         </div>
     </div>
@@ -155,7 +155,7 @@ Enhanced: {enhanced_url}
 Please review at: {dashboard_url}/approval/{item_id}
 
 ---
-SkyyRose - Luxury Grows from Concrete.
+SkyyRose
 """,
     },
     EmailTemplate.APPROVAL_BATCH: {
@@ -200,7 +200,7 @@ SkyyRose - Luxury Grows from Concrete.
             </p>
         </div>
         <div class="footer">
-            <p>SkyyRose - Luxury Grows from Concrete.</p>
+            <p>SkyyRose</p>
         </div>
     </div>
 </body>
@@ -215,7 +215,7 @@ Affected products: {products}
 Review at: {dashboard_url}/approval
 
 ---
-SkyyRose - Luxury Grows from Concrete.
+SkyyRose
 """,
     },
     EmailTemplate.REVISION_REQUESTED: {
@@ -259,7 +259,7 @@ SkyyRose - Luxury Grows from Concrete.
             <a href="{dashboard_url}/revisions/{revision_id}" class="btn">View Details</a>
         </div>
         <div class="footer">
-            <p>SkyyRose - Luxury Grows from Concrete.</p>
+            <p>SkyyRose</p>
         </div>
     </div>
 </body>
@@ -278,7 +278,7 @@ Feedback:
 View details: {dashboard_url}/revisions/{revision_id}
 
 ---
-SkyyRose - Luxury Grows from Concrete.
+SkyyRose
 """,
     },
     EmailTemplate.SYNC_COMPLETE: {
@@ -318,7 +318,7 @@ SkyyRose - Luxury Grows from Concrete.
             </div>
         </div>
         <div class="footer">
-            <p>SkyyRose - Luxury Grows from Concrete.</p>
+            <p>SkyyRose</p>
         </div>
     </div>
 </body>
@@ -331,7 +331,7 @@ SkyyRose: WordPress Sync Complete
 {products} products updated.
 
 ---
-SkyyRose - Luxury Grows from Concrete.
+SkyyRose
 """,
     },
 }

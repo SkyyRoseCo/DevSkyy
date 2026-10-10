@@ -16,6 +16,7 @@ require_once SKYYROSE2_DIR . '/inc/marketplace.php';
 require_once SKYYROSE2_DIR . '/inc/performance.php';
 require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
 require_once SKYYROSE2_DIR . '/inc/security.php';
+require_once SKYYROSE2_DIR . '/inc/express-checkout.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
@@ -251,7 +252,7 @@ function skyyrose2_seo_context() {
 	);
 
 	if ( is_front_page() ) {
-		$context['title']       = __( 'SkyyRose | Luxury Grows from Concrete', 'skyyrose-flagship-2' );
+		$context['title']       = __( 'SkyyRose', 'skyyrose-flagship-2' );
 		$context['description'] = __( 'Enter SkyyRose: Oakland-rooted luxury streetwear, living collection worlds, limited pieces, and the stories behind the house.', 'skyyrose-flagship-2' );
 	} elseif ( is_singular( 'product' ) && function_exists( 'wc_get_product' ) ) {
 		$product = wc_get_product( get_queried_object_id() );
@@ -1335,7 +1336,7 @@ function skyyrose2_header() {
 						<button type="button" aria-pressed="false" data-house-header-toggle><?php esc_html_e( 'Pause collection scenes', 'skyyrose-flagship-2' ); ?></button>
 					</div>
 				</header>
-				<p class="screen-reader-text" aria-live="polite" data-house-header-status></p>
+
 				<div class="sr2-header-worlds__viewport" tabindex="0" aria-label="<?php esc_attr_e( 'Collection typography and graphic monuments. Scroll horizontally.', 'skyyrose-flagship-2' ); ?>" data-house-header-track>
 					<div class="sr2-header-worlds__rail">
 						<?php foreach ( $frames as $index => $frame ) : ?>

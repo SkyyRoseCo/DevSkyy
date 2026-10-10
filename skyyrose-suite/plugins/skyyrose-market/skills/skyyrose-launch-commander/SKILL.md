@@ -8,7 +8,7 @@ allowed-tools: Read Write Edit Glob Bash Grep
 
 ## Brand Canon (non-negotiable)
 
-> - Tagline (verbatim, only): `Luxury Grows from Concrete.` (period included — never paraphrase)
+No tagline is authorized. Do not restore retired slogans.
 > - Collections: Black Rose (armor/concrete · silver `#C0C0C0`), Love Hurts (bloodline/crimson `#DC143C`), Signature (stay golden · gold `#D4AF37`), Kids Capsule (little royalty · rose gold `#B76E79`)
 > - **Never cross-attribute** collection voices — "bloodline that raised me" = Love Hurts ONLY, "armor / you already stood up" = Black Rose ONLY
 > - Products by **NAME**, not SKU, resolved from the catalog CSV + per-SKU dossier — never invented
@@ -573,7 +573,7 @@ python -m skyyrose.elite_studio.ventures.social smoke --drop-type full_collectio
             "channel": "email",
             "content": {
               "subject": "something's coming.",
-              "preview_text": "Luxury Grows from Concrete."
+              "preview_text": ""
             }
           }
         }]

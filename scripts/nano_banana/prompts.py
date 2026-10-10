@@ -165,7 +165,7 @@ BRANDING_TEMPLATES = {
         "100%% identical to the reference — every logo, color, panel, stitch.\n\n"
         "SETTING: Oakland industrial — concrete walls, steel beams, raw textures. "
         "Night. The only light is silver-toned spotlights carving the model from darkness. "
-        "This is where luxury grows from concrete.\n\n"
+        "This is where \n\n"
         "LIGHTING: Dramatic chiaroscuro. Hard silver key light, deep black shadows. "
         "No color — only silver (#C0C0C0) tones. The darkness is the point.\n\n"
         "MOOD: Quiet authority. This person doesn't announce themselves — they command "

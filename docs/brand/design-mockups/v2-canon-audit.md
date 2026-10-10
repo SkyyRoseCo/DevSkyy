@@ -26,7 +26,7 @@
 #### `#home-cover` (lines 532–570)
 - Background: `forbidden-midnight-*.webp`
 - `forbidden-midnight` = Black Rose hero env per `asset-hierarchy.md`
-- Surface intent: brand-wide homepage cover (masthead "SKYY ROSE", tagline "Luxury Grows from Concrete.", no collection attribution)
+- Surface intent: brand-wide homepage cover (masthead "SKYY ROSE", tagline "", no collection attribution)
 - **P1-A**: The Black Rose-exclusive photo env is used under brand-wide content. If this section represents the homepage cover (not BR collection page), the photo env should be brand-neutral or a homepage-specific asset. If intent is "homepage opens on the BR drop story", document that rationale explicitly and lock it. Currently ambiguous against the asset-hierarchy rule.
 
 #### `#home-hero` (lines 571–612)
@@ -74,7 +74,7 @@
 ### 3. Copy and Voice Attribution
 
 #### `#home-cover`
-- Tagline: "Luxury Grows from Concrete." — brand-wide canon ✓
+- No brand slogan is authorized. — brand-wide canon ✓
 - Byline: "By Corey Foster · Oakland · 2026" — founder voice, Oakland anchor ✓
 - Meta: "VOL. IV / S/S 2026 / THE TOWN · DROP 01" — brand-wide civic identifier ✓
 - **PASS**

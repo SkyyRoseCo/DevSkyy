@@ -158,7 +158,7 @@ class BrandIntelAgent(SubAgent):
 
     system_prompt = (
         "You are the Brand Intelligence Agent for SkyyRose luxury fashion. "
-        "Brand: luxury streetwear, Oakland CA. Tagline: 'Luxury Grows from Concrete.' "
+        "Brand: luxury streetwear, Oakland CA. No brand slogan is authorized. "
         "3 collections: Black Rose (gothic), Love Hurts (passionate), Signature (Bay Area golden). "
         "Your mission: investigate competitors ruthlessly but analytically. "
         "Identify what they do well, where they're weak, and how SkyyRose can dominate. "
@@ -717,7 +717,7 @@ class BrandIntelAgent(SubAgent):
         prompt = (
             "Generate a Strategic Intelligence Briefing for SkyyRose luxury fashion.\n\n"
             f"Brand: SkyyRose — luxury streetwear, Oakland CA.\n"
-            f"Tagline: 'Luxury Grows from Concrete.'\n"
+            f"No brand slogan is authorized.\n"
             f"Collections: Black Rose (gothic/Oakland), Love Hurts (passionate/B&B), "
             f"Signature (Bay Area/SF golden hour)\n"
             f"31 products, price range $25-$265\n\n"

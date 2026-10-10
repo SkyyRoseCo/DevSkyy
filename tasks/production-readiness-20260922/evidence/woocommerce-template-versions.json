@@ -1,0 +1,54 @@
+{
+    "home": "https:\/\/staging-7e48-skyyrose.wpcomstaging.com",
+    "woocommerce": "11.1.2",
+    "templates": [
+        {
+            "template": "content-product.php",
+            "override_version": null,
+            "core_version": "9.4.0",
+            "core_exists": true
+        },
+        {
+            "template": "single-product\/product-image.php",
+            "override_version": "11.1.0",
+            "core_version": "11.1.0",
+            "core_exists": true
+        },
+        {
+            "template": "single-product.php",
+            "override_version": null,
+            "core_version": "1.6.4",
+            "core_exists": true
+        },
+        {
+            "template": "checkout\/form-checkout.php",
+            "override_version": null,
+            "core_version": "9.4.0",
+            "core_exists": true
+        },
+        {
+            "template": "checkout\/thankyou.php",
+            "override_version": null,
+            "core_version": "8.1.0",
+            "core_exists": true
+        },
+        {
+            "template": "archive-product.php",
+            "override_version": null,
+            "core_version": "8.6.0",
+            "core_exists": true
+        },
+        {
+            "template": "notices\/error.php",
+            "override_version": "8.6.0",
+            "core_version": "8.6.0",
+            "core_exists": true
+        },
+        {
+            "template": "cart\/cart.php",
+            "override_version": null,
+            "core_version": "11.0.0",
+            "core_exists": true
+        }
+    ]
+}

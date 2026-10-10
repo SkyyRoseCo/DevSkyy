@@ -32,7 +32,7 @@ class TestPromptEnrichmentAgent:
         result = self.agent.enrich("br-001", "A black crewneck with rose logo.")
         assert result.success is True
         assert "black-rose" in result.enriched_spec
-        assert "Oakland" in result.enriched_spec or "Luxury Grows" in result.enriched_spec
+        assert "Oakland" in result.enriched_spec
 
     def test_love_hurts_sku_gets_collection_dna(self):
         result = self.agent.enrich("lh-002", "Red varsity joggers.")
