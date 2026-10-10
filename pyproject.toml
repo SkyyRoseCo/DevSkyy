@@ -74,11 +74,12 @@ dependencies = [
   "aiodataloader>=0.2.0",                 # DataLoader pattern for N+1 query prevention
 
   # AI/ML & MCP Server
-  # Capped <2 deliberately: the codebase + paid gpt-image-2 pipeline run on the
-  # openai 1.x client (verified green). openai 2.x is API-compatible for our usage
-  # (Context7-checked, 486 mocked tests pass) but the live imagery path is unverified;
-  # lifting this cap is the deliberate 2.x migration, not a routine bump (bug-254).
-  "openai>=1.6,<4",
+  # openai 2.x (bug-254). Capped <3 because litellm >=1.81 requires openai<3, and
+  # 3.x swaps the transport to httpx2 (agents/elite_web_builder passes an
+  # httpx.Client). tests/pipelines/test_oai_render_sdk_boundary.py drives the paid
+  # gpt-image-2 client through the real SDK offline; a live edit is still verified
+  # once per upgrade under STOP-AND-SHOW.
+  "openai>=2.20,<3",
   "mcp>=1.28.1,<2",          # Fixed: CVE-2025-53365, CVE-2025-53366, CVE-2025-66416
   "claude-agent-sdk>=0.1.0", # Claude Agent SDK for multi-agent orchestration
 
@@ -89,15 +90,10 @@ dependencies = [
   "mistralai>=1.10.1",    # Updated for security and compatibility
   "groq>=0.37.0",
   "voyageai>=0.2.4",      # Asymmetric document/query embeddings (RAG-optimized)
-  # llm/providers/litellm_provider.py universal fallback. Capped <1.81 on purpose:
-  # litellm 1.81+ requires openai>=2.8, but this codebase runs on the openai 1.x
-  # client (verified green). 1.80.0 needs only openai>=1.99.5. Lifting this cap is
-  # part of the deliberate openai 2.x migration, not a routine bump (bug-254).
-  # SECURITY: 1.80.x carries 7 GHSA advisories (fixed 1.84.0) — ALL scoped to
-  # litellm.proxy, which this repo neither installs ([proxy] extra) nor runs; usage
-  # is SDK-only (acompletion/completion_cost), so unreachable here. The 2.x migration
-  # MUST target litellm>=1.84.0 (not just >=1.81) to clear them in the same step.
-  "litellm>=1.80,<1.94",
+  # llm/providers/litellm_provider.py universal fallback. >=1.84.0 clears the 7
+  # litellm.proxy GHSA advisories carried by 1.80.x (bug-254). litellm >=1.93
+  # requires openai>=2.20,<3, which sets the openai floor and cap above.
+  "litellm>=1.84,<1.94",
 
   # Monitoring
   "prometheus-client>=0.19",
@@ -184,7 +180,7 @@ api = ["fastapi>=0.104", "mangum>=0.18.0", "pydantic>=2.5", "PyJWT>=2.13.0"]
 mcp = [
   "mcp>=1.28.1,<2",
   "fastmcp==3.4.4",           # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
-  "openai>=1.57.2,<4",        # keep in lockstep with the base openai cap (bug-254)
+  "openai>=2.20,<3",          # keep in lockstep with the base openai cap (bug-254)
   "anthropic>=0.75.0",
   "google-genai>=2.29,<3",
   "fastapi>=0.119.0",
