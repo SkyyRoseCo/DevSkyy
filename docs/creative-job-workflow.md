@@ -31,10 +31,12 @@ explicitly.
 method and sources, feasibility evidence, success/channel/approval requirements,
 novelty, accessibility and commerce applicability, open issues, saturation
 evidence and optional derivative coverage. Source-composite and photography
-plans require every requested canonical view. Film, photoshoot, product-scan and
-other declared high-cost sources require derivative coverage planning before
-production readiness; coverage plans name intended applications and different
-adaptation purposes, not one crop applied everywhere.
+plans require every requested canonical view. Plans flagged `high_cost_source`,
+and the photoshoot, editorial_shoot, commercial, short_film, 3d_asset,
+product_scan, location_production, character_system and campaign_environment
+production types, require derivative coverage planning before production
+readiness; coverage plans name intended applications and different adaptation
+purposes, not one crop applied everywhere.
 
 Saturation without evidence is UNKNOWN_NOT_REVIEWED; no fabricated recent-work
 classifications are emitted. Major production needs evidence of recent-work
@@ -85,9 +87,8 @@ for internal exploration. The stale collection absence reason has been removed.
 
 Execution contains embossed front treatment and registry preorder false.
 Conflicting copy and dimension-axis history remain in audit. No creative image
-has been produced. The earlier pilot remains preserved in
-`.artifacts/creative-brief-pilot`; hardened outputs are in
-`.artifacts/context-resolver-hardening-v1`.
+has been produced. Pilot outputs live in gitignored local `.artifacts/`
+directories and are not tracked.
 
 The next implementation boundary remains actual verifier integrations,
 authenticated approval handling and appropriately scoped channel/live-commerce

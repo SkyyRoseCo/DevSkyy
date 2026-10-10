@@ -100,11 +100,10 @@ derivatives and Bay Area discovery territory. It does not prescribe a landmark.
 
 Audit retains raw assembled products, relevant raw registry/dossier records,
 marketing evidence, conflicting values, all considered rules,
-inclusion/exclusion reasons, source hashes, complete decisions and context. Use
-[the hardened pilot](../.artifacts/context-resolver-hardening-v1/execution-bundle.json)
-and
-[its audit bundle](../.artifacts/context-resolver-hardening-v1/audit-bundle.json)
-to compare representations.
+inclusion/exclusion reasons, source hashes, complete decisions and context. To
+compare representations, run the resolver on the tracked example with and
+without `--audit`:
+`.venv/bin/python -m skyyrose.core.context_resolver docs/examples/context-resolver-abstract.json --audit`.
 
 Every call hashes current inputs, reader references, selected policies, taxonomy
 and implementations. Product inputs are checked before and after reading;
@@ -124,7 +123,4 @@ implemented. Source files are trusted repository inputs. Changing a file hash
 proves a version change, not owner identity.
 
 See [job workflow](creative-job-workflow.md), `tests/test_context_hardening.py`,
-`tests/test_content_intent.py`, and the existing resolver/product suites. The
-supplied hardening handoff ends at “Test G — Content”; its missing continuation
-has been requested. Tests A–F and the supplied substantive requirements are
-implemented, with additional intent/authority regressions.
+`tests/test_content_intent.py`, and the existing resolver/product suites.
