@@ -81,8 +81,14 @@ def requires_patch(sku: str) -> bool:
 
 def has_back_source(sku: str) -> bool:
     """True if the SKU has a dedicated back garment source → it earns a ghost-back render."""
-    back = get_source_map().get(sku, {}).get("back")
-    return back is not None and back.exists()
+    sources = get_source_map().get(sku, {})
+    back = sources.get("back")
+    if back is None or not back.exists():
+        return False
+    technical_back = sources.get("techflat_back")
+    if LogoRegistry.load().reference_kind_for(sku) == "garment" and technical_back:
+        return back.resolve() != technical_back.resolve()
+    return True
 
 
 # ── Paired-look registry (founder-confirmed 2026-06-08) ─────────────────────
@@ -228,9 +234,15 @@ def build_references(
     logo = get_logo_reference(sku, collection)
     reference_kind = registry.reference_kind_for(sku)
     bound_garment = logo if reference_kind == "garment" else None
+    technical_back = smap.get("techflat_back")
+    if bound_garment and back and technical_back and back.resolve() == technical_back.resolve():
+        # Exact physical-artwork mode cannot promote a design drawing into photo evidence.
+        # The drawing remains registered for technical-reference consumers.
+        back = None
     if bound_garment and view == "back" and (back is None or not back.is_file()):
         raise MissingReferenceError(
-            f"{sku}: garment artwork is bound to the front only; no registered back source"
+            f"{sku}: garment artwork is bound to the front only; no registered back source "
+            "qualified as a physical garment photo"
         )
     physical_front_label = (
         "REFERENCE IMAGE {n} — REGISTERED GARMENT SOURCE (FRONT VIEW): the complete "

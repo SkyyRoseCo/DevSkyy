@@ -620,10 +620,6 @@ get_header();
 					alt="" width="120" height="120" loading="lazy">
 			</picture>
 
-			<blockquote class="po-manifesto__quote po-rv">
-				<p><?php esc_html_e( 'Luxury Grows from Concrete.', 'skyyrose' ); ?></p>
-			</blockquote>
-
 			<p class="po-manifesto__body po-rv">
 				<?php esc_html_e( 'Every piece in every collection is a limited number. Defined. Finite. When the run closes it stays closed. This is not a drop. This is a record.', 'skyyrose' ); ?>
 			</p>

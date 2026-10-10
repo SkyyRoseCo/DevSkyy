@@ -15,11 +15,17 @@ extra_references:
 
 # BLACK Rose × Love Hurts Basketball Shorts
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total.
-Features: Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
-Color: Black
-Available sizes: S | M | L | XL | 2XL | 3XL
+**Garment type lock:** Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** Love Hurts is only on the side not across the back. (Corey, 2026-06-09, verbatim: "Love Hurts is only on the side not across the back")
+
+**FOUNDER_CONFIRMED:** Mesh. (Corey, 2026-09-29, verbatim: "the shorts are mesh")
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 
@@ -81,11 +87,8 @@ Available sizes: S | M | L | XL | 2XL | 3XL
 - **back-body** (entire black mesh field): Same sublimated tonal grey
   rose-cluster pattern as the front-body (continuous across the garment).
   **Technique:** sublimated. **Color:** tonal grey on black mesh.
-- **back-upper / back-yoke** (large cursive across the upper back):
-  The "Love Hurts" wordmark in cursive script, rendered larger than the
-  front-right version, in **cream/peach/light-pink tonal color** sublimated
-  onto the back mesh. **Technique:** sublimated. **Color:** cream/peach/
-  light-pink tonal.
+- **back-upper / back-yoke**: No Love Hurts wordmark across the back.
+  Founder correction above controls this region.
 - **back-side continuity:** The white mesh inserts remain on the two outer side
   panels. There is no white center-back pentagon. The wearer-left panel carries
   Love Hurts; the wearer-right panel carries the Black Rose cluster.
@@ -131,8 +134,8 @@ Available sizes: S | M | L | XL | 2XL | 3XL
   the OAKLAND tackle-twill wordmark, not a rose.
 - NO solid-color body — the body fabric carries the sublimated rose
   pattern (NOT a plain black field).
-- NO front pockets visible from outside — the visible pockets are on
-  the BACK only; the front is uninterrupted by pocket openings.
+- Preserve the two zippered side hand pockets and one zippered back
+  pocket specified in the garment type lock; do not invent extra pockets.
 - NO black drawstrings — the drawstring is white.
 - NO black waistband — the waistband is white.
 - NO contrast satin-stitch edge other than dark on the OAKLAND letters.
@@ -141,15 +144,15 @@ Available sizes: S | M | L | XL | 2XL | 3XL
   upper-body decoration of any kind).
 - NO Authentic Collection patch (that is reserved for the jersey series).
 - NO sublimated pattern on the white mesh side panels — the side panels
-  are clean white mesh with only the embroidered cluster (left) and
-  wordmark (right) on top.
+  are clean white mesh with only the embroidered cluster (wearer-right)
+  and wordmark (wearer-left) on top.
 
 ## Scene direction
 
 - **Pose:** Front view straight-on (or three-quarter front-left) showing
   the OAKLAND wordmark, the wearer-left Love Hurts script/side panel, and the
   wearer-right physical-color Black Rose cluster. For back: back view
-  straight-on showing the upper-back Love Hurts cursive script and both outer
-  side panels, with no invented center-back panel.
+  straight-on showing the tonal rose field and both outer side panels,
+  with no Love Hurts across the back and no invented center-back panel.
 - **Setting:** Pure white studio backdrop, soft directional studio
   lighting from front-left, subtle natural drop shadow on the floor.

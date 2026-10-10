@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Generate per-collection SOT: data/collections/<slug>/sot.json + a global _orphans.json.
 
-Canon source = data/collections/<slug>/identity.json (via sot_common, schema-validated).
-Products come from skyyrose.core.product.get_product (the logo-registry.json SOT); the
-visual-manifest.json and logo masters remain authoritative for their domain; sot.json is
-a GENERATED VIEW — DO NOT hand-edit it.
+Canon source = logo-registry.json collections.<slug> (via sot_common, schema-validated).
+The masters (catalog CSV, visual-manifest.json, logo-registry.json) remain authoritative
+for their domain; sot.json is a GENERATED VIEW — DO NOT hand-edit it.
 
 Orphans = every image file in the scanned tree registered to NO manifest entry, catalog
 product, or logo (naming-independent set-difference). Manifest entries are expanded across
@@ -25,8 +24,8 @@ sys.path.insert(0, str(DATA))
 sys.path.insert(0, str(DATA.parents[2]))
 import sot_common  # noqa: E402
 
-from skyyrose.core.catalog_loader import bool_col  # noqa: E402
-from skyyrose.core.product import all_skus, get_product  # noqa: E402
+from skyyrose.core.catalog_loader import bool_col, read_catalog_rows  # noqa: E402
+from skyyrose.core.product_registry import load_registry  # noqa: E402
 
 ASSETS = sot_common.ASSETS
 IMG_EXTS = sot_common.IMG_EXTS
@@ -42,6 +41,7 @@ TREE_SCAN_DIRS = [
     "images/immersive",
     "images",
 ]
+SOURCE_IMAGE_ROLES = ("image", "front_model_image", "back_image", "back_model_image")
 
 
 def manifest_entry(entry: Any) -> dict | None:
@@ -57,28 +57,29 @@ def manifest_entry(entry: Any) -> dict | None:
     }
 
 
-# Historical sot.json key order; the CI freshness guard byte-compares the output.
-IMAGE_KEY_ORDER = ("image", "front_model_image", "back_image", "back_model_image")
-
-
 def load_products_by_collection() -> dict[str, list]:
     by_col: dict[str, list] = {}
-    for sku in all_skus():
-        product = get_product(sku)
-        row = product["catalog"]
-        # Keyed by the registry field that bound each image. Roles that fall back
-        # to another role's asset share its key, so each binding appears once.
-        bound = {im["source_key"]: im["path"] for im in product["images"].values() if im}
-        imgs = {
-            key: {"path": bound[key], "resolved": sot_common.resolve_asset(bound[key])}
-            for key in IMAGE_KEY_ORDER
-            if key in bound
-        }
+    registry_products = load_registry()["products"]
+    for row in read_catalog_rows():
+        sku = row["sku"]
+        imgs = {}
+        for col in SOURCE_IMAGE_ROLES:
+            v = (row.get(col) or "").strip()
+            if v:
+                imgs[col] = {"path": v, "resolved": sot_common.resolve_asset(v)}
+        # Product imagery is bound in the sole registry. Hub review records are
+        # provenance, not a competing live override.
+        if registry_products.get(sku):
+            imgs = {
+                key: {**entry, "resolved": sot_common.resolve_asset(entry.get("path", ""))}
+                for key, entry in registry_products[sku].get("images", {}).items()
+                if key in SOURCE_IMAGE_ROLES
+            }
         dslug = (row.get("dossier_slug") or "").strip()
-        by_col.setdefault(product["collection"] or "", []).append(
+        by_col.setdefault(row.get("collection", ""), []).append(
             {
-                "sku": sku,
-                "name": product["name"],
+                "sku": row["sku"],
+                "name": row["name"],
                 "price": row.get("price"),
                 "is_preorder": bool_col(row, "is_preorder"),
                 "published": bool_col(row, "published"),
@@ -218,7 +219,7 @@ def build_collection(
     }
     lockup_keys = {"lockup_display", "lockup_svg_master", "lockup_source_art", "lockup_alt"}
     imagery = {k: v for k, v in full.items() if k not in lockup_keys}
-    # Resolve imagery.hero from identity.json (collection-specific canonical hub slot).
+    # Resolve imagery.hero from the collection identity (collection-specific canonical hub slot).
     ident_hero_raw = (ident.get("imagery") or {}).get("hero")
     if ident_hero_raw:
         h_path = ident_hero_raw.get("path", "")
@@ -232,8 +233,8 @@ def build_collection(
     else:
         imagery["hero"] = None
     return {
-        "_generated_by": "data/build-collection-sot.py — DO NOT EDIT. Fix identity.json / the masters, then regenerate.",
-        "_authority": f"Single Source of Truth view for {ident['name']}. Canon = identity.json.",
+        "_generated_by": "data/build-collection-sot.py — DO NOT EDIT. Fix logo-registry.json collections / the masters, then regenerate.",
+        "_authority": f"Single Source of Truth view for {ident['name']}. Canon = logo-registry.json collections.{slug}.",
         "collection": slug,
         "name": ident["name"],
         "updated": updated,
@@ -241,8 +242,8 @@ def build_collection(
         "palette": ident["palette"],
         "fonts": ident["fonts"],
         "masters": {
-            "identity": f"data/collections/{slug}/identity.json",
-            "products": "data/skyyrose-catalog.csv",
+            "identity": f"data/logo-registry.json#collections.{slug}",
+            "products": "data/logo-registry.json#products",
             "imagery": "data/visual-manifest.json",
             "logos": "data/logo-registry.json",
         },
@@ -322,7 +323,7 @@ def build_orphans(*, masters: _Masters | None = None) -> dict:
     orphans = sorted(tree - reg - known)
     return {
         "_note": "Image files in the asset tree registered to NO manifest entry, product, or logo. "
-        "Audit before use; add legit non-role files to a collection identity.json known_orphans[].",
+        "Audit before use; add legit non-role files to logo-registry.json collections.<slug>.known_orphans[].",
         "count": len(orphans),
         "orphans": orphans,
     }

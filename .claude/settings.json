@@ -150,17 +150,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.wolf/hooks/memory-audit.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/memory-audit.sh",
             "timeout": 10
           },
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.wolf/hooks/claude-mem-sync.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/claude-mem-sync.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.wolf/hooks/memory-session-log.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/memory-session-log.sh",
             "timeout": 5
           }
         ]
@@ -171,17 +171,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/context7-prefetch.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/context7-prefetch.sh",
             "timeout": 3
           },
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/canon-prefetch.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/canon-prefetch.sh",
             "timeout": 3
           },
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/prompt-eng-nudge.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/prompt-eng-nudge.sh",
             "timeout": 3
           }
         ]
@@ -190,7 +190,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/router/router.py\"",
+            "command": "python3 /Users/theceo/DevSkyy/.claude/hooks/router/router.py",
             "timeout": 10
           }
         ]
@@ -202,7 +202,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/paid-api-stopgate.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/paid-api-stopgate.sh",
             "timeout": 3
           }
         ]
@@ -212,7 +212,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/prompt-eng-tripwire.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/prompt-eng-tripwire.sh",
             "timeout": 3
           }
         ]
@@ -224,7 +224,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/context7-touched.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/context7-touched.sh",
             "timeout": 2
           }
         ]
@@ -234,7 +234,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/learning-tripwire.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/learning-tripwire.sh",
             "timeout": 2
           }
         ]
@@ -244,7 +244,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/phpcs-on-write.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/phpcs-on-write.sh",
             "timeout": 10
           }
         ]
@@ -254,7 +254,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/catalog-drift-guard.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/catalog-drift-guard.sh",
             "timeout": 15
           }
         ]
@@ -264,8 +264,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/python-format-on-write.sh\"",
-            "timeout": 15
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/precision-cleanup.sh",
+            "timeout": 30
           }
         ]
       },
@@ -274,7 +274,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // empty'); case \"$fp\" in \"$CLAUDE_PROJECT_DIR\"/frontend/*.ts|\"$CLAUDE_PROJECT_DIR\"/frontend/*.tsx) cd \"$CLAUDE_PROJECT_DIR\"/frontend && npx tsc --noEmit --pretty false 2>&1 | head -10 ;; esac; true",
+            "command": "fp=$(jq -r '.tool_input.file_path // empty'); case \"$fp\" in /Users/theceo/DevSkyy/frontend/*.ts|/Users/theceo/DevSkyy/frontend/*.tsx) cd /Users/theceo/DevSkyy/frontend && npx tsc --noEmit --pretty false 2>&1 | head -10 ;; esac; true",
             "timeout": 90,
             "statusMessage": "Type-checking frontend"
           }
@@ -286,7 +286,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/learning-reminder.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/learning-reminder.sh",
             "timeout": 3
           }
         ]
@@ -295,7 +295,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/stop-test-gate.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/stop-test-gate.sh",
             "timeout": 600,
             "statusMessage": "Running test suite (background)",
             "asyncRewake": true,
@@ -307,7 +307,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/wolf_recurring_sync.py\" >/dev/null 2>&1 || echo '[wolf-recurring-sync] FAILED — run python3 scripts/wolf_recurring_sync.py to see the error'; true",
+            "command": "python3 /Users/theceo/DevSkyy/scripts/wolf_recurring_sync.py >/dev/null 2>&1 || echo '[wolf-recurring-sync] FAILED — run python3 scripts/wolf_recurring_sync.py to see the error'; true",
             "timeout": 10
           }
         ]
@@ -318,7 +318,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/subagent-stop-tidy.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/subagent-stop-tidy.sh",
             "timeout": 5
           }
         ]
@@ -330,7 +330,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.wolf/hooks/memory-session-log.sh\"",
+            "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/memory-session-log.sh",
             "timeout": 5
           }
         ]
@@ -344,7 +344,6 @@
     "voltagent-core-dev@voltagent-subagents": true,
     "agent-sdk-dev@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "finding-unknowns@finding-unknowns-skills": true,
-    "github@claude-plugins-official": true
+    "finding-unknowns@finding-unknowns-skills": true
   }
 }

@@ -164,7 +164,7 @@ function skyyrose_home_marquee_marks() {
 }
 
 /**
- * Ticker copy — collection names above the rule, mantra + attributes below.
+ * Ticker copy — collection names above the rule, attributes below.
  *
  * @since 1.13.0
  * @return array{names: array<int, string>, lower: array<int, array<string, string>>}
@@ -176,12 +176,7 @@ function skyyrose_home_ticker() {
 		$names[] = $config['label'] ?? ucwords( str_replace( '-', ' ', $slug ) );
 	}
 
-	$mantra = defined( 'SKYYROSE_BRAND_TAGLINE' ) ? SKYYROSE_BRAND_TAGLINE : __( 'Luxury Grows from Concrete.', 'skyyrose' );
-	$lower  = array(
-		array(
-			'kind' => 'mantra',
-			'text' => $mantra,
-		),
+	$lower = array(
 		array(
 			'kind' => 'sub',
 			'text' => __( 'Oakland Made', 'skyyrose' ),
@@ -191,20 +186,12 @@ function skyyrose_home_ticker() {
 			'text' => __( 'Gender Neutral', 'skyyrose' ),
 		),
 		array(
-			'kind' => 'mantra',
-			'text' => $mantra,
-		),
-		array(
 			'kind' => 'sub',
 			'text' => __( 'Limited Edition', 'skyyrose' ),
 		),
 		array(
 			'kind' => 'sub',
 			'text' => __( 'Luxury Streetwear', 'skyyrose' ),
-		),
-		array(
-			'kind' => 'mantra',
-			'text' => $mantra,
 		),
 		array(
 			'kind' => 'sub',

@@ -46,7 +46,7 @@ def _content() -> GeneratedContent:
         content_type=ContentType.COLLECTION_PAGE,
         collection=Collection.BLACK_ROSE,
         title="Black Rose Crewneck",
-        body_html="<p>Luxury Grows from Concrete. The Black Rose Crewneck is armor.</p>",
+        body_html="<p>The Black Rose Crewneck is armor.</p>",
     )
 
 

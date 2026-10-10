@@ -44,7 +44,7 @@ __all__ = [
 **Step 3: Write `prompts.py`**
 
 Create the system prompt and per-pipeline prompt templates. The system prompt must include:
-- Brand context (SkyyRose, "Luxury Grows from Concrete.", rose gold #B76E79)
+- Brand context (SkyyRose, rose gold #B76E79; no tagline — none is authorised)
 - Product catalog summary (21 products, 3 collections: Black Rose, Love Hurts, Signature)
 - Tool usage guidance for each of the 15 MCP tools
 - Safety rules (never modify prices without confirmation, always verify connectivity first, draft status for content)
@@ -968,7 +968,7 @@ class TestMCPServerIntegration:
         assert "wordpress_bridge" in options.mcp_servers
         assert options.model == "claude-opus-4-6"
         assert options.thinking == {"type": "adaptive"}
-        assert "Luxury Grows from Concrete" in options.system_prompt
+        assert "Where Love Meets Luxury" not in options.system_prompt
 ```
 
 **Step 2: Run full test suite**
@@ -1012,7 +1012,7 @@ Fix any import or integration issues.
 
 **Step 2: Fix the stale tagline in orchestrator (bonus)**
 
-In `sdk/python/agent_sdk/orchestrator.py:118`, the tagline says "Where Love Meets Luxury". This should be "Luxury Grows from Concrete."
+In `sdk/python/agent_sdk/orchestrator.py:118`, the tagline says "Where Love Meets Luxury". This retired tagline must be removed; no tagline is authorised (founder decision 2026-10-06).
 
 ```bash
 git add sdk/python/agent_sdk/orchestrator.py

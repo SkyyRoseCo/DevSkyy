@@ -8,7 +8,7 @@
       "packshot": "assets/images/products/br-001-crewneck.png"
     },
     "br-002": {
-      "front": "assets/images/products/black-rose-joggers/black-rose-joggers-approved-front-model.webp",
+      "front": "assets/images/products/ghost/br-002-ghost-front.webp",
       "back": "assets/images/products/black-rose-joggers-back-model.webp",
       "packshot": "assets/images/products/br-002-joggers.png",
       "back_packshot": "assets/images/products/black-rose-joggers-back-model.webp"
@@ -26,7 +26,7 @@
       "back_packshot": "assets/images/products/black-rose-hoodie-back-model.webp"
     },
     "br-005": {
-      "front": "assets/images/products/black-rose-hoodie-signature-edition/black-rose-hoodie-signature-edition-approved-front-model.webp",
+      "front": "assets/images/products/ghost/br-005-ghost-front.webp",
       "back": "assets/images/products/black-rose-hoodie-signature-back-model.webp",
       "packshot": "assets/images/products/br-005-signature-hoodie.jpeg",
       "back_packshot": "assets/images/products/black-rose-hoodie-signature-edition-back-model.webp"
@@ -83,15 +83,13 @@
       "packshot": "assets/images/products/kids-001-red-set.jpeg"
     },
     "kids-002": {
-      "front": "assets/images/products/kids-purple-set/kids-purple-set-approved-front-model.webp",
+      "front": "assets/images/products/ghost/kids-002-ghost-front.webp",
       "back": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp",
       "packshot": "assets/images/products/kids-002-purple-set.jpeg"
     },
     "lh-002": {
       "front": "assets/images/products/lh-002-onmodel.webp",
-      "back": "assets/images/products/love-hurts-joggers-back-model.webp",
-      "packshot": "assets/images/products/lh-002-joggers.jpeg",
-      "back_packshot": "assets/images/products/love-hurts-joggers-back-model.webp"
+      "packshot": "assets/images/products/lh-002-joggers.jpeg"
     },
     "lh-003": {
       "front": "assets/images/products/hub/lh-003-front.webp",
@@ -134,7 +132,6 @@
     },
     "sg-005": {
       "front": "assets/images/products/sg-005-onmodel.webp",
-      "back": "assets/images/products/bridge-bay-bridge-shirt-back-model.webp",
       "packshot": "assets/images/products/sg-005-bay-bridge-shirt.jpeg"
     },
     "sg-006": {
@@ -145,18 +142,17 @@
     },
     "sg-007": {
       "front": "assets/images/products/sg-007-signature-beanie.webp",
-      "back": "assets/images/products/signature-beanie-back-model.webp",
       "packshot": "assets/images/products/sg-007-signature-beanie.png"
     },
     "sg-009": {
       "front": "assets/images/products/sg-009-onmodel.webp",
-      "back": "assets/images/products/signature-sherpa-jacket-back-model.webp",
+      "back": "assets/images/products/the-sherpa-jacket-back-model.webp",
       "packshot": "assets/images/products/sg-009-sherpa-jacket.jpeg",
       "back_packshot": "assets/images/products/the-sherpa-jacket-back-model.webp"
     },
     "sg-011": {
       "front": "assets/images/products/sg-011-onmodel.webp",
-      "back": "assets/images/products/hub/sg-011-back.webp",
+      "back": "assets/images/products/original-label-tee-white-back-model.webp",
       "packshot": "assets/images/products/sg-011-original-label-tee-white.jpeg",
       "back_packshot": "assets/images/products/original-label-tee-white-back-model.webp"
     },
@@ -178,7 +174,6 @@
     },
     "sg-015": {
       "front": "assets/images/products/hub/sg-015-front.webp",
-      "back": "assets/images/products/signature-windbreaker-set-back-model.webp",
       "packshot": "assets/images/products/sg-015-windbreaker-set.jpg"
     }
   }

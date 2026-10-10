@@ -13,13 +13,17 @@ reference_image: assets/products/references/br-012-techflat.jpeg
 
 # BLACK is Beautiful Jersey Series — 5. Baseball Classic (Last Oakland)
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Solid **dark forest green** base fabric. Mid-weight knit jersey.
-Features: Authentic-style baseball jersey — V-neck collar opening with gold/yellow piping, button-front placket with gold/yellow piping, short sleeves with gold/yellow cuff piping, straight even hem (no drop-tail). Solid **dark forest green** base fabric. Mid-weight knit jersey. NOT a t-shirt, NOT a hoodie, NOT a basketball tank, NOT a football jersey. **PRE-ORDER product**.
-Color: Green/Gold
-Available sizes: S | M | L | XL | 2XL | 3XL
+**Garment type lock:** Authentic-style baseball jersey — V-neck collar opening with gold/yellow piping, button-front placket with gold/yellow piping, short sleeves with gold/yellow cuff piping, straight even hem (no drop-tail). Solid **dark forest green** base fabric. Mid-weight knit jersey. NOT a t-shirt, NOT a hoodie, NOT a basketball tank, NOT a football jersey. **PRE-ORDER product**.
 
 This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giants br-014 / White br-015). Green base + gold/yellow piping is the Oakland palette throughout.
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** The same fabric as an authentic professional baseball team jersey. (Corey, 2026-09-29, verbatim: "the jerseys are the same fabric as a professional teams jersey")
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 

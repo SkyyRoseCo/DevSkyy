@@ -251,7 +251,6 @@ function skyyrose2_seo_context() {
 	);
 
 	if ( is_front_page() ) {
-		$context['title']       = __( 'SkyyRose | Luxury Grows from Concrete', 'skyyrose-flagship-2' );
 		$context['description'] = __( 'Enter SkyyRose: Oakland-rooted luxury streetwear, living collection worlds, limited pieces, and the stories behind the house.', 'skyyrose-flagship-2' );
 	} elseif ( is_singular( 'product' ) && function_exists( 'wc_get_product' ) ) {
 		$product = wc_get_product( get_queried_object_id() );

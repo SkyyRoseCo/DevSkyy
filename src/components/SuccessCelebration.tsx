@@ -374,19 +374,6 @@ export const SuccessCelebration: React.FC<SuccessCelebrationProps> = ({
             </button>
           )}
         </div>
-
-        {/* Tagline */}
-        <p
-          style={{
-            fontSize: '14px',
-            color: '#999999',
-            marginTop: '24px',
-            fontStyle: 'italic',
-            fontFamily: 'Georgia, serif',
-          }}
-        >
-          Luxury Grows from Concrete.
-        </p>
       </div>
 
       <style>

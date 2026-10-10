@@ -18,9 +18,7 @@ Print-technique fields are conservative defaults pending founder confirmation.
 
 # Mint & Lavender Hoodie
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Mid-weight cotton-fleece fabric.
-Features: PULLOVER hoodie (kangaroo pouch pocket, NO zipper of any
+**Garment type lock:** PULLOVER hoodie (kangaroo pouch pocket, NO zipper of any
 kind) — solid **mint green** body, hood, and sleeves, all one mint color.
 **Lavender/purple drawstrings** at the hood opening (the only contrast hardware).
 Large lavender rose-cluster graphic centered on the chest. Ribbed cuffs and
@@ -30,8 +28,14 @@ only — the matching sweatpants are sg-014, separate SKU.** NOT a zip-up. NOT a
 crewneck (that's sg-013 Mint & Lavender Crewneck — separate SKU). NOT a
 windbreaker (the white-body rainbow-chevron zip-up set is sg-015 — a completely
 different product).
-Color: Mint/Lavender
-Available sizes: S | M | L | XL | 2XL | 3XL
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** Cotton. (Corey, 2026-09-29, verbatim: "the kids and signature outfits are cotton")
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 

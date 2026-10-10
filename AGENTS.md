@@ -23,8 +23,11 @@ readers (`product_registry`, `catalog_loader`, `dossier_loader`, `sot_images`,
 the registry update API for catalog writes. Run
 `python scripts/sync_product_registry.py` after direct JSON edits and
 `python scripts/sync_product_registry.py --check` before handoff. CI must fail
-if CSV/dossier projections drift. Actual image binaries retain their existing
-asset paths; the registry owns the references.
+if CSV/dossier projections drift. The same sync also owns
+`assets/products/manifest.json`, which pins the registry by sha256 and so goes
+stale on every registry edit: write mode regenerates it, `--check` flags it.
+Actual image binaries retain their existing asset paths; the registry owns the
+references.
 
 When operating in another checkout, verify it has the unified `products` schema
 and current founder corrections before execution. Never substitute an old

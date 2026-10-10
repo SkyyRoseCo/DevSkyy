@@ -17,12 +17,7 @@ founder's 2026-06-09 review-board comments.
 
 # Mint & Lavender Sweatpants
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Mid-weight cotton-fleece fabric.
-Fit: Athletic-cut sweatpants with a tapered jogger leg and
-ribbed ankle cuffs — solid **mint green** body, front and back, all one mint
-color.
-Features: Athletic-cut sweatpants with a tapered jogger leg and
+**Garment type lock:** Athletic-cut sweatpants with a tapered jogger leg and
 ribbed ankle cuffs — solid **mint green** body, front and back, all one mint
 color. Small lavender rose-cluster logo on the **wearer's left thigh** (upper
 thigh, below the hip). Elasticated drawstring waistband, side-seam hand
@@ -31,8 +26,14 @@ Hoodie (sg-006) as a matching set. **Sold as the sweatpants SKU only — the
 matching hoodie is sg-006, separate SKU.** NOT shorts. NOT track pants. NOT
 the white chevron windbreaker-set pants (that's sg-015 — a completely
 different product).
-Color: Mint/Lavender
-Available sizes: S | M | L | XL | 2XL | 3XL
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** Cotton. (Corey, 2026-09-29, verbatim: "the kids and signature outfits are cotton")
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 

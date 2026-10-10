@@ -405,29 +405,6 @@ class LuxuryHomePageBuilder(ElementorPageBuilder):
                         "object_fit": "cover",
                     },
                 },
-                {
-                    "elType": "container",
-                    "settings": {
-                        "position": "absolute",
-                        "inset": {"top": "50%", "left": "50%"},
-                        "transform": "translate(-50%, -50%)",
-                        "text_align": "center",
-                        "z_index": 10,
-                    },
-                    "elements": [
-                        {
-                            "elType": "widget",
-                            "widgetType": "heading",
-                            "settings": {
-                                "title": "Luxury Grows from Concrete.",
-                                "typography_font_family": "Playfair Display",
-                                "typography_font_size": {"size": 56, "unit": "px"},
-                                "color": "#FFFFFF",
-                                "_css_classes": "parallax-text",
-                            },
-                        },
-                    ],
-                },
             ],
         }
 
@@ -559,7 +536,7 @@ class LuxuryHomePageBuilder(ElementorPageBuilder):
         return {
             "content": sections,
             "page_settings": {
-                "post_title": "Home - SkyyRose | Luxury Grows from Concrete.",
+                "post_title": "Home - SkyyRose",
                 "template": "elementor_canvas",  # Full-width, no header/footer chrome
                 "meta_description": "SkyyRose - Luxury fashion where love meets luxury. Explore our signature collections including Black Rose, Love Hurts, and Signature lines.",
             },

@@ -329,7 +329,7 @@ async def test_webhook(
         "webhook_id": webhook_id,
         "test": True,
         "timestamp": datetime.now(UTC).isoformat(),
-        "message": "SkyyRose webhook test — Luxury Grows from Concrete.",
+        "message": "SkyyRose webhook test",
     }
 
     # Fire delivery directly (bypasses event subscription check for test)

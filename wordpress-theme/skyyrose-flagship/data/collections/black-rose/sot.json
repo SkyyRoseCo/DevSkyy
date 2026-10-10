@@ -1,6 +1,6 @@
 {
-  "_generated_by": "data/build-collection-sot.py \u2014 DO NOT EDIT. Fix identity.json / the masters, then regenerate.",
-  "_authority": "Single Source of Truth view for Black Rose. Canon = identity.json.",
+  "_generated_by": "data/build-collection-sot.py \u2014 DO NOT EDIT. Fix logo-registry.json collections / the masters, then regenerate.",
+  "_authority": "Single Source of Truth view for Black Rose. Canon = logo-registry.json collections.black-rose.",
   "collection": "black-rose",
   "name": "Black Rose",
   "updated": "GENERATED",
@@ -36,8 +36,8 @@
     }
   },
   "masters": {
-    "identity": "data/collections/black-rose/identity.json",
-    "products": "data/skyyrose-catalog.csv",
+    "identity": "data/logo-registry.json#collections.black-rose",
+    "products": "data/logo-registry.json#products",
     "imagery": "data/visual-manifest.json",
     "logos": "data/logo-registry.json"
   },
@@ -169,8 +169,8 @@
           "resolved": "images/products/br-002-joggers.png"
         },
         "front_model_image": {
-          "path": "assets/images/products/black-rose-joggers/black-rose-joggers-approved-front-model.webp",
-          "resolved": "images/products/black-rose-joggers/black-rose-joggers-approved-front-model.webp"
+          "path": "assets/images/products/ghost/br-002-ghost-front.webp",
+          "resolved": "images/products/ghost/br-002-ghost-front.webp"
         },
         "back_image": {
           "path": "assets/images/products/black-rose-joggers-back-model.webp",
@@ -250,8 +250,8 @@
           "resolved": "images/products/br-005-signature-hoodie.jpeg"
         },
         "front_model_image": {
-          "path": "assets/images/products/black-rose-hoodie-signature-edition/black-rose-hoodie-signature-edition-approved-front-model.webp",
-          "resolved": "images/products/black-rose-hoodie-signature-edition/black-rose-hoodie-signature-edition-approved-front-model.webp"
+          "path": "assets/images/products/ghost/br-005-ghost-front.webp",
+          "resolved": "images/products/ghost/br-005-ghost-front.webp"
         },
         "back_image": {
           "path": "assets/images/products/black-rose-hoodie-signature-edition-back-model.webp",

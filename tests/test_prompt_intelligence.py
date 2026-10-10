@@ -16,7 +16,6 @@ from skyyrose.elite_studio.prompts.history import PromptHistory
 from skyyrose.elite_studio.prompts.templates import (
     BRAND_COLORS,
     BRAND_NAME,
-    BRAND_TAGLINE,
     COLLECTION_DNA,
     PromptTemplateRegistry,
 )
@@ -482,9 +481,11 @@ class TestBrandDNAPresence:
         assert BRAND_COLORS["crimson"] == "#DC143C"
         assert BRAND_COLORS["silver"] == "#C0C0C0"
 
-    def test_brand_name_and_tagline(self):
+    def test_brand_name_and_no_tagline(self):
+        import skyyrose.elite_studio.prompts.templates as templates
+
         assert BRAND_NAME == "SkyyRose"
-        assert BRAND_TAGLINE == "Luxury Grows from Concrete."
+        assert not hasattr(templates, "BRAND_TAGLINE")
 
     def test_enhancement_injects_brand_for_black_rose(self):
         chain = PromptChain()

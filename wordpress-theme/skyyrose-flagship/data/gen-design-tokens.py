@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Generate the [data-collection] token region of design-tokens.css from identity.json.
+"""Generate the [data-collection] token region of design-tokens.css from the registry's collections.
 
 Also generates the GENERATED:global-fonts region in :root from data/brand/typography.json.
 
 Writes ONLY between the GENERATED:* START/END markers. The rest of the CSS is
-hand-authored and untouched. Run after editing any identity.json or typography.json.
+hand-authored and untouched. Run after editing logo-registry.json collections or typography.json.
 The verifier asserts the live region matches a fresh generation.
 
 Emits the tokens the theme consumes: accent, accent-rgb (computed), accent-dark,

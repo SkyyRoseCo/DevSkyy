@@ -5,8 +5,8 @@ description: "The SkyyRose flagship theme's own engineering doctrine (wordpress-
 
 # SkyyRose WordPress Platform
 
-"Luxury Grows from Concrete." This skill exists because a generic WordPress reference can't
-carry that -- it doesn't know the difference between Black Rose's gothic armor and Love Hurts'
+This skill exists because a generic WordPress reference can't
+carry the brand -- it doesn't know the difference between Black Rose's gothic armor and Love Hurts'
 "bloodline that raised me," it doesn't know the mascot is the face of the brand, and it doesn't
 know a wrong-garment render is the single most repeated defect on this project. Every section
 below is written for THIS storefront, not a portable template that happens to mention it.

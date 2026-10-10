@@ -134,28 +134,22 @@ def test_verify_detects_a_missing_file(tmp_path):
     assert len(drift) == 1 and drift[0].kind == "missing"
 
 
-def test_keeper_with_missing_asset_is_ignored(tmp_path, monkeypatch):
+def test_keeper_with_missing_asset_is_ignored(monkeypatch):
     """A keeper whose surviving asset is gone must NOT block the re-render."""
-    import json
+    from scripts.oai_render import pipeline
 
-    from scripts.oai_render import config, pipeline
-
-    kj = tmp_path / "render-keepers.json"
-    kj.write_text(
-        json.dumps(
+    monkeypatch.setattr(
+        pipeline,
+        "_registry_keepers",
+        lambda: [
             {
-                "keepers": [
-                    {
-                        "sku": "sg-009",
-                        "style": "on-model",
-                        "view": "front",
-                        "asset": "assets/products/_gone.webp",
-                    }
-                ]
+                "sku": "sg-009",
+                "style": "on-model",
+                "view": "front",
+                "asset": "assets/products/_gone.webp",
             }
-        )
+        ],
     )
-    monkeypatch.setattr(config, "KEEPERS_JSON", kj)
     skips = pipeline._keeper_skips()
     assert ("sg-009", "on-model", "front") not in skips  # asset missing → not skipped
 

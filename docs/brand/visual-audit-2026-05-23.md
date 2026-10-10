@@ -18,7 +18,7 @@ Live capture across 16 routes (108+ screenshots) via `openwolf designqc`. Read-o
 - **What's happening:** Every interior page renders two stacked nav bars:
   - Row 1: SEARCH / ACCOUNT / BAG with `SKYY ROSE` wordmark (wrapped on 2 lines)
   - Row 2: `SKYYROSE | LUXURY STREETWEAR BORN FROM STRUGGLE` + duplicate nav (`SIGNATURE COLLECTION | SKYYROSE`, `LOVE HURTS COLLECTION | SKYYROSE`, `BLACK ROSE COLLECTION | SKYYROSE`, `CONTACT | SKYYROSE`)
-- **Tagline issue:** "LUXURY STREETWEAR BORN FROM STRUGGLE" is tagline drift — not in brand canon. Locked tagline is "Luxury Grows from Concrete."
+- **Tagline issue:** "LUXURY STREETWEAR BORN FROM STRUGGLE" is tagline drift — not in brand canon. No tagline is authorised (founder decision 2026-10-06).
 - **Wordmark issue:** "SKYY ROSE" wraps to 2 lines in the second header, indicating the container is too narrow.
 - **Customer impact:** Every interior page first-fold is a broken-looking double header. Brand looks unprofessional and the second nav redundantly repeats menu options.
 - **Root cause hypothesis:** Either a builder (Elementor / Divi / Beaver) plugin is injecting a second header globally while the theme header is also active, OR `header.php` is being included twice, OR a global Elementor header template is fighting `header.php`.
@@ -88,7 +88,7 @@ Live capture across 16 routes (108+ screenshots) via `openwolf designqc`. Read-o
 
 ### P3-1. About page works — minor breadcrumb hygiene
 - **Page:** `/about/`
-- **What's working:** "THE STORY" big serif headline + child wearing rose-embroidered hoodie + "Luxury Grows from Concrete." tagline = strong page.
+- **What's working:** "THE STORY" big serif headline + child wearing rose-embroidered hoodie = strong page.
 - **Minor:** Breadcrumb "ABOUT / SR-001" is cryptic — SR-001 is an internal slug, shouldn't be customer-facing breadcrumb text.
 
 ### P3-2. 404 page rendered content

@@ -64,7 +64,7 @@ class SDKCustomerIntelAgent(SDKSubAgent):
             "Data sources:\n"
             "- Read order/analytics data from data/ directory\n"
             "- Research luxury streetwear consumer trends via web\n"
-            "- Cross-reference with product catalog in scripts/nano-banana-vton.py\n\n"
+            "- Cross-reference product facts via skyyrose.core.product.get_product(sku) — the ONE product lookup (CLI: python -m skyyrose.core.product <sku> | --all | --skus)\n\n"
             "Always quantify insights: percentages, dollar values, timeframes. "
             "Segment by collection affinity: Black Rose (edgy/exclusive), "
             "Love Hurts (romantic/bold), Signature (everyday/accessible)."

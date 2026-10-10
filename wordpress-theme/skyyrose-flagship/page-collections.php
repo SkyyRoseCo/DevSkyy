@@ -54,7 +54,7 @@ get_header();
 	<section class="ci-hero">
 		<p class="ci-hero__eyebrow"><?php esc_html_e( 'The Collections', 'skyyrose' ); ?></p>
 		<h1 class="ci-hero__title"><?php esc_html_e( 'Four Collections. One Vision.', 'skyyrose' ); ?></h1>
-		<p class="ci-hero__subtitle"><?php esc_html_e( 'Luxury Grows from Concrete. Every piece limited, numbered, and never restocked.', 'skyyrose' ); ?></p>
+		<p class="ci-hero__subtitle"><?php esc_html_e( 'Every piece limited, numbered, and never restocked.', 'skyyrose' ); ?></p>
 	</section>
 
 	<section class="ci-grid stagger-grid" aria-label="<?php esc_attr_e( 'All collections', 'skyyrose' ); ?>">

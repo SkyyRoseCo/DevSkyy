@@ -15,7 +15,7 @@ Patterns extracted from corrections. Review at session start.
 - Image URLs: append `?v=' . SKYYROSE_VERSION` for CDN cache bust on branding images
 - Cursor disappearing: Jetpack Instant Search overlay (z-index max, opacity 0, pointer-events auto) — fix with `pointer-events: none !important`
 - Customizer DB values override `get_theme_mod()` defaults — hardcode values when Customizer has stale data
-- "Where Love Meets Luxury" is NOT the tagline — "Luxury Grows from Concrete" is the only tagline
+- "Where Love Meets Luxury" is a retired phrase — never use it. No tagline is authorised (founder decision 2026-10-06).
 
 ## Animation System
 - Premium animations: `animations-premium.css` + `premium-interactions.js` loaded globally
@@ -98,6 +98,7 @@ Patterns extracted from corrections. Review at session start.
 ## 2026-06-22 — Adding an import in a separate edit from its first use trips format-on-write
 - **Wrong:** with the `python-format-on-write.sh` PostToolUse hook active, I added `import os` to `verify-collection-sot.py` in one Edit, then added the `os.environ.get(...)` usage in a *second* Edit. Between them, ruff's autofix deleted `import os` as unused (F401); the second edit's usage then failed `F821 Undefined name os` and the hook blocked.
 - **Prevention:** when a format/lint-on-write hook is active, never land an import in a separate step from its first usage. Introduce both in the **same atomic write** (rewrite the file whole, or one Edit whose old/new_string spans import + usage). Any autofix-removable construct (unused import/var) must not exist alone, even transiently, between two hook-linted edits.
+- **Structural fix (2026-10-04):** `python-format-on-write.sh` is replaced by `precision-cleanup.sh` / `scripts/precision_cleanup.py`, which removes only an import the edit **orphaned** (it existed and was used before) and never one the edit **introduced**, so the transient-import failure above can no longer happen. It also formats only the touched lines (`black --line-ranges`, the formatter CI enforces) instead of the whole file: on 33 real files the old chain rewrote 781 untouched lines for a one-line edit each, precision 0. The workaround above is no longer required while that hook is the only Python formatter registered (`tests/test_precision_cleanup.py` guards that). Whole-file formatters on the same event race a range-limited one: keep exactly one.
 
 ## 2026-06-22 — A flaky test that mutates a shared real file races the rest of the suite
 - **Wrong:** `test_stale_tokens_fail_and_verify_leaves_no_net_change` injected junk into the real `design-tokens.css`, then ran a verify subprocess whose staleness gate reads that same file. Under the full suite (`asyncio_mode=auto` + sibling token tests), a concurrent regen wiped the junk before verify read it → verify returned 0 → `assert 0 == 1`. Passed in isolation, so it first read as "not my bug."

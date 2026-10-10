@@ -12,11 +12,7 @@ reference_image: assets/products/references/br-011-design-front.jpeg
 
 # BLACK is Beautiful Jersey Series — 4. The Rose (Hockey)
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Solid **black** base body fabric with **teal/turquoise (cyan)** accent
-colorway. Mid-weight knit fabric, hockey-jersey-weight. NOT a sherpa jacket
-(distinct from br-006 which is a separate satin bomber).
-Features: Hockey-style pullover hoodie with long sleeves and a
+**Garment type lock:** Hockey-style pullover hoodie with long sleeves and a
 hood — round-neck pullover construction, hood with **bright teal/turquoise
 inner lining** against a black hood exterior, long sleeves ending in a
 layered striped cuff band, straight hem with a matching layered striped hem
@@ -25,8 +21,14 @@ colorway. Mid-weight knit fabric, hockey-jersey-weight. NOT a basketball
 tank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket
 (distinct from br-006 which is a separate satin bomber). **PRE-ORDER product**
 — design renderings only.
-Color: Black/Teal
-Available sizes: S | M | L | XL | 2XL | 3XL
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** The same fabric as an authentic professional hockey team jersey. (Corey, 2026-09-29, verbatim: "the jerseys are the same fabric as a professional teams jersey")
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 

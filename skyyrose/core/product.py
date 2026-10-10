@@ -15,11 +15,10 @@ Non-Python callers get the identical record over the CLI::
     python -m skyyrose.core.product --all           # every SKU
     python -m skyyrose.core.product --gaps          # only the gap report
 
-This module assembles the record from the authored product registry
-(``logo-registry.json``) plus the authored side-stores that have not been folded
-into it yet. The section names match the registry's own, so when those stores
-merge in, the assembly collapses to a single registry read and **no caller
-changes**. The API is the contract; the file layout is an implementation detail.
+Every section is read from one file, the authored product registry
+(``logo-registry.json``). The render corrections, keep decisions, and collection
+identity that used to live in side files are folded into it (schema v2), so there
+is no second place a product fact can be edited.
 
 Fail-closed, always (bug-230). A fact is either present or named in ``gaps`` —
 never silently blank:
@@ -34,10 +33,10 @@ never silently blank:
 * copy with no source at all   -> ``None`` + a ``gaps`` entry
 
 Every SKU has a description; all 33 carry one in the registry, and that is the
-copy the live storefront serves. What varies is the layer: 19 SKUs also have
-enriched editorial copy, SEO meta, and social captions. A caller is always told
-which layer it received, so an editorial task can tell finished copy from the
-one-line base description.
+copy the live storefront serves. Editorial copy (long description, SEO meta,
+social captions) lives in ``products[sku].content``, one field at a time, each
+naming who wrote it. A caller is always told which layer it received, so an
+editorial task can tell finished copy from the one-line base description.
 
 An agent handed ``description: ""`` invents copy. An agent handed the base line
 tagged ``enriched: False`` knows exactly what it is holding. That difference is
@@ -52,12 +51,13 @@ import json
 import sys
 from datetime import UTC, datetime
 from functools import lru_cache
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
+from skyyrose.core import product_registry
 from skyyrose.core.dossier_loader import get_product_with_dossier
 from skyyrose.core.paths import REPO_ROOT
-from skyyrose.core.product_registry import PRODUCT_REGISTRY, load_registry
+from skyyrose.core.product_registry import CONTENT_FIELDS, load_registry
 from skyyrose.core.sot_images import _ROLE_KEYS, Role
 
 __all__ = [
@@ -66,33 +66,23 @@ __all__ = [
     "gap_report",
     "get_all_products",
     "get_product",
+    "gap_categories",
+    "product_readiness",
     "provenance",
+    "render_reference",
 ]
 
 IMAGE_ROLES: tuple[Role, ...] = ("front", "back", "packshot", "back_packshot")
 
-# Authored side-stores not yet folded into the registry. Each is tracked; an
-# absent file is a broken checkout, not "this SKU has no copy" -- so reads raise
-# rather than report 33 phantom gaps.
-_CONTENT_JSON = REPO_ROOT / "skyyrose" / "assets" / "data" / "product-content.json"
-_ALT_TEXT_JSON = REPO_ROOT / "skyyrose" / "assets" / "data" / "alt-text.json"
-_CORRECTIONS_JSON = (
-    REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "render-corrections.json"
-)
-
-_CONTENT_FIELDS = ("description", "short_description", "seo_meta", "instagram", "tiktok")
+_CONTENT_FIELDS = CONTENT_FIELDS
 
 # Fields the registry's own catalog.description can legitimately stand in for.
 # Social captions and SEO meta are their own craft -- a product description is
 # not a TikTok caption, so those stay absent rather than borrow.
 _BASE_BACKED_FIELDS = frozenset({"description", "short_description"})
 
-_CONTENT_SOURCE = "product-content.json"
+_CONTENT_SOURCE = "registry.content"
 _REGISTRY_SOURCE = "registry.catalog.description"
-
-
-class ProductSourceMissingError(FileNotFoundError):
-    """An authored product source file is absent from the checkout."""
 
 
 @lru_cache(maxsize=16)
@@ -107,48 +97,54 @@ def _stamp(path: str, mtime_ns: int, size: int) -> dict[str, Any]:
 
 
 def provenance() -> dict[str, Any]:
-    """Which files this record was assembled from, and their current state.
+    """The file this record was assembled from, and its current state.
 
     Every record carries this, so a caller can prove the facts it is holding
     match what is on disk right now rather than a stale cache. ``generated`` is
-    when the record was assembled; each source's ``sha256`` and ``modified``
+    when the record was assembled; the registry's ``sha256`` and ``modified``
     change the moment the founder edits it.
     """
-    sources: dict[str, Any] = {}
-    for label, path in (
-        ("registry", PRODUCT_REGISTRY),
-        ("content", _CONTENT_JSON),
-        ("alt_text", _ALT_TEXT_JSON),
-        ("corrections", _CORRECTIONS_JSON),
-    ):
-        if not path.exists():
-            raise ProductSourceMissingError(f"authored product source missing: {path}")
-        info = path.stat()
-        sources[label] = {
-            "path": str(path.relative_to(REPO_ROOT)),
-            **_stamp(str(path), info.st_mtime_ns, info.st_size),
-        }
+    path = product_registry.PRODUCT_REGISTRY.resolve()
+    info = path.stat()
     return {
         "generated": datetime.now(tz=UTC).isoformat(),
         "entry_point": "skyyrose.core.product.get_product",
-        "sources": sources,
+        "sources": {
+            "registry": {
+                "path": _relative(path),
+                **_stamp(str(path), info.st_mtime_ns, info.st_size),
+            }
+        },
     }
-
-
-def _load_json(path: Path) -> dict[str, Any]:
-    """Read an authored source, or fail loudly. Never degrade to an empty dict."""
-    if not path.exists():
-        raise ProductSourceMissingError(
-            f"authored product source missing: {path}. "
-            "Restore it before reading product facts -- an empty read would "
-            "report every SKU as having no content."
-        )
-    return json.loads(path.read_text())
 
 
 def all_skus() -> list[str]:
     """Every SKU in the product registry, sorted."""
     return sorted(load_registry()["products"])
+
+
+def _validated_card_path(value: Any, sku: str) -> str:
+    """Accept only an existing theme asset under the V2 assets root."""
+    if not isinstance(value, str) or not value or "\\" in value:
+        raise ValueError(f"{sku} card front has an invalid path")
+    relative = PurePosixPath(value)
+    if (
+        relative.is_absolute()
+        or relative.as_posix() != value
+        or len(relative.parts) < 2
+        or relative.parts[0] != "assets"
+        or any(part in {".", ".."} for part in value.split("/"))
+    ):
+        raise ValueError(f"{sku} card front must be a normalized theme-assets path")
+    assets_root = (REPO_ROOT / "wordpress-theme/skyyrose-flagship-2/assets").resolve()
+    try:
+        asset = (assets_root / Path(*relative.parts[1:])).resolve(strict=True)
+        asset.relative_to(assets_root)
+    except (OSError, RuntimeError, ValueError) as error:
+        raise ValueError(f"{sku} card front escapes or is missing from theme assets") from error
+    if not asset.is_file():
+        raise ValueError(f"{sku} card front is not a file")
+    return value
 
 
 def _images_for(product: dict[str, Any], sku: str) -> tuple[dict[str, Any], list[str]]:
@@ -185,6 +181,25 @@ def _images_for(product: dict[str, Any], sku: str) -> tuple[dict[str, Any], list
         }
         if key != keys[0]:
             gaps.append(f"images.{role}.fallback")
+    card = images.get("card_front")
+    if isinstance(card, dict) and card.get("src") and card.get("sha256"):
+        resolved["card_front"] = {
+            "path": _validated_card_path(card["src"], sku),
+            "sha256": card["sha256"],
+            "source_sha256": card.get("source_sha256"),
+            "scene_status": card.get("scene_status"),
+            "current_fidelity_status": card.get(
+                "current_fidelity_status", "EXISTING_SCOPED_APPROVAL_RETAINED"
+            ),
+            "current_fidelity_note": card.get("current_fidelity_note"),
+            "alt": card.get("alt"),
+            "width": card.get("width"),
+            "height": card.get("height"),
+            "source_key": "images.card_front",
+        }
+    else:
+        resolved["card_front"] = None
+        gaps.append("images.card_front")
     return resolved, gaps
 
 
@@ -217,14 +232,15 @@ def _relative(path: Path | None) -> str | None:
 
 
 def _content_for(
-    sku: str, catalog: dict[str, Any]
+    product: dict[str, Any], catalog: dict[str, Any]
 ) -> tuple[dict[str, Any], dict[str, str], list[str]]:
     """Marketing copy resolved through its layers, with the source named.
 
     Copy exists in two layers and a caller needs to know which one it got:
 
-    1. ``product-content.json`` -- the enriched editorial layer: long-form
-       description, a distinct short description, SEO meta, and social captions.
+    1. ``products[sku].content`` -- the editorial layer: long-form description,
+       a distinct short description, SEO meta, and social captions. Each field
+       carries the ``authority`` of whoever wrote it.
     2. the registry's own ``catalog.description`` -- the base line every SKU
        has, and the copy the live storefront currently serves.
 
@@ -233,16 +249,22 @@ def _content_for(
     gaps as ``content.<field>.enriched``, so an editorial or SEO task can tell
     "this is the one-line base description" from "this is finished copy".
     """
-    entry = _load_json(_CONTENT_JSON).get(sku) or {}
-    alt = _load_json(_ALT_TEXT_JSON).get(sku) or {}
+    entry = product.get("content") or {}
+    alt = dict(entry.get("alt_text") or {})
     base = (catalog.get("description") or "").strip() or None
 
     content: dict[str, Any] = {}
     gaps: list[str] = []
     for field in _CONTENT_FIELDS:
-        value = (entry.get(field) or "").strip() or None
+        written = entry.get(field) or {}
+        value = (written.get("value") or "").strip() or None
         if value:
-            content[field] = {"value": value, "source": _CONTENT_SOURCE, "enriched": True}
+            content[field] = {
+                "value": value,
+                "source": _CONTENT_SOURCE,
+                "enriched": True,
+                "authority": written.get("authority"),
+            }
             continue
         if base and field in _BASE_BACKED_FIELDS:
             content[field] = {"value": base, "source": _REGISTRY_SOURCE, "enriched": False}
@@ -256,10 +278,87 @@ def _content_for(
     return content, alt, gaps
 
 
-def _corrections_for(sku: str) -> list[dict[str, str]]:
-    """Founder-verbatim render corrections. Wording is preserved exactly."""
-    raw = _load_json(_CORRECTIONS_JSON).get("corrections", {}).get(sku) or []
-    return [{"text": line, "authority": "FOUNDER_VERBATIM"} for line in raw]
+def _corrections_for(product: dict[str, Any]) -> list[dict[str, str]]:
+    """Render corrections, wording preserved exactly, each naming who wrote it."""
+    return [dict(line) for line in product.get("corrections") or []]
+
+
+# Requirements concern data readiness, never provider authorization or asset QA.
+GARMENT_SPEC_FIELDS = ("color", "fit", "materials", "features")
+RENDER_VIEWS = ("front", "back")
+OPERATION_FIELDS = {
+    "render": tuple(f"garment.{field}" for field in GARMENT_SPEC_FIELDS),
+    "seo": ("content.seo_meta",),
+    "alt-text": ("content.alt_text",),
+}
+
+
+def _present(value: Any) -> bool:
+    if isinstance(value, str):
+        return bool(value.strip())
+    return bool(value)
+
+
+def gap_categories(record: dict[str, Any]) -> dict[str, list[str]]:
+    """Classify legacy gaps and discover missing specifications/view bindings.
+
+    Accepts the complete get_product projection; does not infer or mutate facts.
+    Render sources are explicit bindings, independent of storefront fallbacks.
+    """
+    gaps = list(record.get("gaps", []))
+    for field in GARMENT_SPEC_FIELDS:
+        value = (record.get("garment") or {}).get(field)
+        if isinstance(value, dict):
+            value = value.get("specification")
+        if not _present(value):
+            gaps.append(f"garment.{field}")
+    for view in RENDER_VIEWS:
+        if not _present((record.get("render_sources") or {}).get(view)):
+            gaps.append(f"render_sources.{view}")
+    for field in CONTENT_FIELDS:
+        value = (record.get("content") or {}).get(field)
+        if not value or not _present(value.get("value")):
+            gaps.append(f"content.{field}")
+    if not any(_present(value) for value in (record.get("alt_text") or {}).values()):
+        gaps.append("content.alt_text")
+    categories: dict[str, list[str]] = {}
+    for gap in dict.fromkeys(gaps):
+        categories.setdefault(gap.split(".", 1)[0], []).append(gap)
+    return categories
+
+
+def product_readiness(
+    record: dict[str, Any], operation: str = "render", *, required_views: tuple[str, ...] = ()
+) -> dict[str, Any]:
+    """Check explicit operation requirements on a get_product snapshot.
+
+    SEO/alt-text check existing deliverable completeness, not ability to draft it.
+    Render readiness checks bindings only; binary and fidelity QA remain separate.
+    Unknown operations/views raise. No required render view fails closed.
+    """
+    if operation not in OPERATION_FIELDS:
+        raise ValueError(f"Unknown product readiness operation: {operation!r}")
+    if any(view not in RENDER_VIEWS for view in required_views):
+        raise ValueError("Required views must be front or back")
+    categories = gap_categories(record)
+    gaps = list(dict.fromkeys(gap for group in categories.values() for gap in group))
+    required = list(OPERATION_FIELDS[operation])
+    if operation == "render":
+        required.extend(f"render_sources.{view}" for view in dict.fromkeys(required_views))
+        if not required_views:
+            required.append("required_views")
+            gaps.append("required_views")
+    blocking = [field for field in required if field in gaps]
+    return {
+        "operation": operation,
+        "required_fields": required,
+        "required_views": list(required_views) if operation == "render" else [],
+        "ready": not blocking,
+        "blocking_gaps": blocking,
+        "optional_gaps": [gap for gap in gaps if gap not in blocking],
+        "gaps": gaps,
+        "gap_categories": categories,
+    }
 
 
 def get_product(sku: str) -> dict[str, Any]:
@@ -268,14 +367,16 @@ def get_product(sku: str) -> dict[str, Any]:
     Sections: ``catalog`` (commerce), ``garment`` (color, sizes, fit, materials,
     features, sizing references), ``dossier`` (the founder's design
     specification), ``images`` (every role, resolved), ``render_sources``,
+    ``asset_library`` (collection/SKU directory and reviewed source-photo bindings),
     ``logos`` (graphics, placements, decoration dimensions), ``content``
-    (marketing copy and SEO), ``alt_text``, ``corrections`` (founder-verbatim),
-    ``authority``, and ``gaps``.
+    (marketing copy and SEO), ``alt_text``, ``corrections`` (render corrections,
+    each naming its author), ``render_policy`` (founder keep decisions),
+    ``merchandising`` (series route, region, ordering), ``authority``, and ``gaps``.
 
     Raises:
         KeyError: ``sku`` is not in the product registry.
         DossierMissingError: the SKU has no design specification bound.
-        ProductSourceMissingError: an authored source file is absent.
+        FileNotFoundError: the product registry itself is absent.
     """
     products = load_registry()["products"]
     if sku not in products:
@@ -286,24 +387,70 @@ def get_product(sku: str) -> dict[str, Any]:
     merged = get_product_with_dossier(sku)
     catalog = product.get("catalog", {})
     images, image_gaps = _images_for(product, sku)
-    content, alt_text, content_gaps = _content_for(sku, catalog)
+    content, alt_text, content_gaps = _content_for(product, catalog)
+    merchandising = product.get("merchandising")
+    if merchandising is not None:
+        product_registry.validate_merchandising(merchandising)
+    merchandising_gaps = [] if merchandising is not None else ["merchandising"]
 
-    return {
+    record = {
         "sku": sku,
         "name": catalog.get("name"),
         "collection": catalog.get("collection"),
         "catalog": catalog,
         "garment": product.get("garment", {}),
-        "dossier": merged["dossier"],
+        "merchandising": merchandising,
+        "merchandising_provenance": product.get("merchandising_provenance"),
+        "dossier": {**merged["dossier"], "full_text": merged["_dossier"].raw},
+        "catalog_row": {k: v for k, v in merged.items() if k not in ("dossier", "_dossier")},
         "images": images,
         "render_sources": product.get("render_sources", {}),
+        "asset_library": product.get("asset_library", {}),
         "logos": _logos_for(sku),
         "content": content,
         "alt_text": alt_text,
-        "corrections": _corrections_for(sku),
+        "corrections": _corrections_for(product),
+        "render_policy": {
+            "keepers": [dict(k) for k in (product.get("render_policy") or {}).get("keepers", [])]
+        },
         "authority": product.get("authority"),
-        "gaps": image_gaps + content_gaps,
+        "gaps": image_gaps + content_gaps + merchandising_gaps,
         "provenance": provenance(),
+    }
+
+    record["gap_categories"] = gap_categories(record)
+    record["gaps"] = list(
+        dict.fromkeys(
+            record["gaps"] + [gap for group in record["gap_categories"].values() for gap in group]
+        )
+    )
+    return record
+
+
+def render_reference(record: dict[str, Any], view: str) -> dict[str, Any]:
+    """Resolve exactly one registry-bound view before any provider dispatch.
+
+    Never guesses filenames, crosses views, or accepts paths outside this checkout.
+    The digest proves bytes read, not visual approval or generation authority.
+    """
+    if view not in RENDER_VIEWS:
+        raise ValueError("Reference view must be front or back")
+    binding = (record.get("render_sources") or {}).get(view)
+    if not isinstance(binding, str) or not binding.strip():
+        raise ValueError(f"{record['sku']}: missing render_sources.{view}")
+    path = (REPO_ROOT / binding).resolve()
+    if not path.is_relative_to(REPO_ROOT.resolve()):
+        raise ValueError("Render reference must remain inside the repository")
+    data = path.read_bytes()
+    if not data:
+        raise ValueError(f"Empty reference: {binding}")
+    return {
+        "sku": record["sku"],
+        "view": view,
+        "path": str(path),
+        "binding": f"products.{record['sku']}.render_sources.{view}",
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "provenance": record.get("provenance"),
     }
 
 
