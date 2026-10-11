@@ -293,7 +293,9 @@ def _execute(state: CliState, name: str, kind: str, timeout: float | None) -> di
         raise backend.ToolchainMismatchError(
             "Toolchain does not match the V2 pins: " + " | ".join(tc.mismatches)
         )
-    owner, owner_source = ev.default_owner()  # fail before running, never record an anonymous run
+    owner, owner_source = ev.default_owner(
+        repo
+    )  # fail before running, never record an anonymous run
     before = cand_mod.capture(repo)
     result = backend.run_npm_script(repo, name, tc, timeout=timeout, extra_env=extra_env)
     after = cand_mod.capture(repo)

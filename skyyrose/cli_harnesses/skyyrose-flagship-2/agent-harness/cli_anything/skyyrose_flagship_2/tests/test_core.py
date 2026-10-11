@@ -16,6 +16,7 @@ from cli_anything.skyyrose_flagship_2.utils import backend
 from cli_anything.skyyrose_flagship_2.utils.backend import ScriptResult, Toolchain
 
 THEME = backend.THEME_REL
+DEPS = "d" * 64  # a healthy install: the deps lockfile is present
 
 
 def _git(repo: Path, *args: str) -> str:
@@ -75,7 +76,7 @@ def _home(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("SKYYROSE2_CLI_HOME", str(tmp_path / "clihome"))
 
 
-def _toolchain(deps: str | None = None) -> Toolchain:
+def _toolchain(deps: str | None = DEPS) -> Toolchain:
     return Toolchain(
         path_env="/usr/bin",
         node="22.23.2",
@@ -547,7 +548,7 @@ class TestReviewFindings:
         )
         assert rec["cli"]["harness_sha256"] == backend.harness_sha256()
         assert rec["target"]["environment"].endswith(
-            ";harness=" + backend.harness_sha256()[:12] + ";deps=none"
+            ";harness=" + backend.harness_sha256()[:12] + ";deps=" + DEPS[:12]
         )
 
     def test_earlier_failure_is_reported(self, repo: Path, tmp_path: Path) -> None:
@@ -635,6 +636,7 @@ def pinned_ok(monkeypatch: pytest.MonkeyPatch) -> None:
         python="3.12.12",
         php="8.5.6",
         pins={"node": "22.23.2", "npm": "10.9.8", "python": "3.12.12"},
+        deps_sha256=DEPS,
     )
     monkeypatch.setattr(backend, "resolve_toolchain", lambda repo: tc)
     monkeypatch.setenv("SKYYROSE2_GATE_OWNER", "builder")
@@ -865,7 +867,7 @@ class TestP3Followups:
     def test_deps_digest_reaches_environment_label(self, repo: Path) -> None:
         assert backend.deps_digest(repo) is None
         assert backend.resolve_toolchain(repo).deps_sha256 is None
-        assert backend.environment_label(_toolchain()).endswith(";deps=none")
+        assert backend.environment_label(_toolchain(None)).endswith(";deps=none")
         lock = repo / backend.DEPS_LOCK_REL
         lock.parent.mkdir(parents=True)
         lock.write_text('{"lockfileVersion": 3}\n')
@@ -894,10 +896,15 @@ class TestP3Followups:
         pins = repo / backend.FIXTURE_PINS_REL
         pins.parent.mkdir(parents=True, exist_ok=True)
         pins.write_text("{}")
+        tc = backend.resolve_toolchain(repo)
+        monkeypatch.setattr(
+            backend,
+            "resolve_toolchain",
+            lambda repo: Toolchain(**{**tc.__dict__, "deps_sha256": None}),
+        )
         missing = json.loads(_cli(repo, "--json", "doctor").stdout)
         assert missing["ok"] is False and missing["deps_label"] == "none"
         assert "npm ci" in missing["deps_hint"]
-        tc = backend.resolve_toolchain(repo)
         monkeypatch.setattr(
             backend,
             "resolve_toolchain",
@@ -906,3 +913,184 @@ class TestP3Followups:
         present = json.loads(_cli(repo, "--json", "doctor").stdout)
         assert present["deps_sha256"] == "c" * 64 and present["deps_label"] == "c" * 12
         assert present["deps_hint"] is None
+
+
+# ---------------------------------------------------------------------------
+# Review round 2 (2026-10-11): FAIL laundering, owner provenance, deps=none
+# ---------------------------------------------------------------------------
+
+
+def _export(repo: Path) -> dict:
+    out = _cli(repo, "--json", "evidence", "export", "--no-validate")
+    assert out.exit_code == 0, out.output
+    return json.loads(Path(json.loads(out.output)["record"]).read_text())
+
+
+class TestReviewRound2:
+    # P1 / P2: owner filtering must never drop a FAIL ------------------------
+
+    def test_fail_survives_reviewer_becoming_owner_in_other_session(
+        self, repo: Path, tmp_path: Path
+    ) -> None:
+        sess = sess_mod.new_session(repo)
+        cand = cand_mod.capture(repo)
+        run = _entry(repo, sess, owner="alice")
+        other = sess_mod.new_session(repo)
+        laundering = _entry(repo, other, owner="bob", owner_source="env")
+        rec = ev.build_record(
+            session_runs=[run],
+            reviews=[
+                _review(cand, "bob", "FAIL", "2026-10-11T00:00:01+00:00"),
+                _review(cand, "carol", "PASS", "2026-10-11T00:00:02+00:00"),
+            ],
+            candidate=cand,
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+            other_runs=[laundering],
+        )
+        ftt = rec["fashion_theme_team"]
+        assert ftt["status"] == "FAIL" and "bob" in ftt["reason"], ftt
+        assert ftt["owners"] == ["alice", "bob"]
+        assert [r["reviewer"] for r in ftt["reviews_considered"]] == ["bob", "carol"]
+
+    def test_owner_pass_never_counts(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        cand = cand_mod.capture(repo)
+        rec = ev.build_record(
+            session_runs=[_entry(repo, sess), _entry(repo, sess, owner="r1")],
+            reviews=[_review(cand, "r1", "PASS", "2026-10-11T00:00:01+00:00")],
+            candidate=cand,
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
+        assert rec["fashion_theme_team"]["status"] == "BLOCKED"
+        assert rec["fashion_theme_team"]["reviews_considered"] == []
+
+    def test_withdrawn_fail_stays_withdrawn_after_reviewer_becomes_owner(
+        self, repo: Path, tmp_path: Path
+    ) -> None:
+        """Latest-then-filter: r1 FAIL, r1 PASS (independent), then r1 runs a gate."""
+        sess = sess_mod.new_session(repo)
+        cand = cand_mod.capture(repo)
+        rec = ev.build_record(
+            session_runs=[_entry(repo, sess), _entry(repo, sess, owner="r1")],
+            reviews=[
+                _review(cand, "r1", "FAIL", "2026-10-11T00:00:01+00:00"),
+                _review(cand, "r1", "PASS", "2026-10-11T00:00:02+00:00"),
+            ],
+            candidate=cand,
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
+        assert rec["fashion_theme_team"]["status"] == "BLOCKED"
+        assert rec["fashion_theme_team"]["reviews_considered"] == []
+
+    def test_cli_cannot_launder_fail_through_owner_run_in_other_session(
+        self, repo: Path, pinned_ok: None, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """Reviewer's exact repro: FAIL, then a run as r1 elsewhere, then a fresh PASS."""
+        assert _cli(repo, "check", "run", "check:registry").exit_code == 0
+        failed = _cli(
+            repo, "evidence", "review", "--reviewer", "r1", "--disposition", "FAIL", "--note", "x"
+        )
+        assert failed.exit_code == 0, failed.output
+        assert _cli(repo, "session", "new").exit_code == 0
+        monkeypatch.setenv("SKYYROSE2_GATE_OWNER", "r1")
+        assert _cli(repo, "check", "run", "check:registry").exit_code == 0
+        monkeypatch.setenv("SKYYROSE2_GATE_OWNER", "builder")
+        assert _cli(repo, "session", "new").exit_code == 0
+        assert _cli(repo, "check", "run", "check:registry").exit_code == 0
+        passed = _cli(
+            repo, "evidence", "review", "--reviewer", "r2", "--disposition", "PASS", "--note", "y"
+        )
+        assert passed.exit_code == 0, passed.output
+        rec = _export(repo)
+        ftt = rec["fashion_theme_team"]
+        assert ftt["status"] == "FAIL" and "r1" in ftt["reason"], ftt
+        # P2: the laundering run lives only in another session, yet it is disclosed.
+        assert ftt["owner_sources"] == {"builder": ["env"], "r1": ["env"]}
+        unverified = [f for f in rec["findings"] if ev.UNVERIFIED_OWNER in f["description"]]
+        assert len(unverified) == 1 and "r1" in unverified[0]["description"]
+
+    # P2: owner_sources and the env finding cover every owner-feeding run --------
+
+    def test_superseded_env_run_is_disclosed(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        superseded = _entry(repo, sess, owner="bob", owner_source="env")
+        latest = _entry(repo, sess, owner="alice")
+        rec = ev.build_record(
+            session_runs=[superseded, latest],
+            reviews=[],
+            candidate=cand_mod.capture(repo),
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
+        ftt = rec["fashion_theme_team"]
+        assert [g["owner"] for g in ftt["gates"]] == ["alice"]
+        assert set(ftt["owners"]) == set(ftt["owner_sources"]) == {"alice", "bob"}
+        assert ftt["owner_sources"] == {"alice": ["git"], "bob": ["env"]}
+        unverified = [f for f in rec["findings"] if ev.UNVERIFIED_OWNER in f["description"]]
+        assert len(unverified) == 1 and "bob" in unverified[0]["description"]
+        assert "alice" not in unverified[0]["description"]
+
+    def test_run_without_owner_source_counts_as_unverified(self, repo: Path) -> None:
+        cand = cand_mod.capture(repo)
+        legacy = {"candidate_id": cand.candidate_id, "owner": "old"}
+        assert ev.owner_sources_for([legacy], cand) == {"old": ["unrecorded"]}
+
+    # P2: owner_source "git" cannot be supplied through the environment ---------
+
+    def test_git_owner_ignores_env_config_injection_and_other_cwd(
+        self, repo: Path, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    ) -> None:
+        monkeypatch.delenv("SKYYROSE2_GATE_OWNER", raising=False)
+        cfg = tmp_path / "gitconfig"
+        cfg.write_text("[user]\n\tname = From Git\n")
+        monkeypatch.setenv("GIT_CONFIG_GLOBAL", str(cfg))
+        monkeypatch.setenv("GIT_CONFIG_NOSYSTEM", "1")
+        monkeypatch.setenv("GIT_CONFIG_COUNT", "1")
+        monkeypatch.setenv("GIT_CONFIG_KEY_0", "user.name")
+        monkeypatch.setenv("GIT_CONFIG_VALUE_0", "alice")
+        monkeypatch.setenv("GIT_CONFIG_PARAMETERS", "'user.name'='mallory'")
+        elsewhere = tmp_path / "elsewhere"
+        elsewhere.mkdir()
+        _git(elsewhere, "init", "-q")
+        _git(elsewhere, "config", "user.name", "cwd-local")
+        monkeypatch.chdir(elsewhere)
+        assert ev.default_owner(repo) == ("From Git", "git")
+        assert ev.default_owner(elsewhere) == ("cwd-local", "git")
+
+    # P2: unidentified installed deps block, never pass -------------------------
+
+    def test_deps_none_at_run_and_export_blocks(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        cand = cand_mod.capture(repo)
+        run = _entry(repo, sess, toolchain=_toolchain(None))
+        rec = ev.build_record(
+            session_runs=[run],
+            reviews=[_review(cand, "reviewer", "PASS", "2026-10-11T00:00:00+00:00")],
+            candidate=cand,
+            toolchain=_toolchain(None),
+            out_dir=tmp_path / "o",
+        )
+        assert run["status"] == "PASS" and run["environment"] == rec["target"]["environment"]
+        assert rec["criteria"][0]["status"] == "FAIL" and rec["claim"] == "blocked"
+        assert "deps are unidentified" in rec["criteria"][0]["reason"]
+        assert any(
+            f["severity"] == "P1" and "deps are unidentified" in f["description"]
+            for f in rec["findings"]
+        )
+        ftt = rec["fashion_theme_team"]
+        assert ftt["status"] == "BLOCKED" and backend.DEPS_LOCK_REL in ftt["reason"]
+
+    def test_reviewer_fail_outranks_unidentified_deps(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        cand = cand_mod.capture(repo)
+        rec = ev.build_record(
+            session_runs=[_entry(repo, sess, toolchain=_toolchain(None))],
+            reviews=[_review(cand, "reviewer", "FAIL", "2026-10-11T00:00:00+00:00")],
+            candidate=cand,
+            toolchain=_toolchain(None),
+            out_dir=tmp_path / "o",
+        )
+        assert rec["fashion_theme_team"]["status"] == "FAIL"

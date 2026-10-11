@@ -91,9 +91,10 @@ may run is set only in `core/gates.py`:
   `partial` and `blocked` by design.
 
 - **Fashion Theme Team verdict**:
-  - FAIL: a gate failed or ran in a different environment, or an independent
-    reviewer's latest review is FAIL.
-  - BLOCKED: the tree is dirty, or no independent review exists yet. A review by
+  - FAIL: a gate failed or ran in a different environment, or any reviewer's
+    latest review is FAIL.
+  - BLOCKED: the installed deps cannot be identified (see Installed deps), the
+    tree is dirty, or no independent review exists yet. A review by
     anyone recorded as running a gate on that candidate is refused (checked
     against the owners stored on the runs, not the current environment).
   - PASS: every gate passed and an independent reviewer accepted it. That means
@@ -101,10 +102,13 @@ may run is set only in `core/gates.py`:
 
   Reviews are read from **every session** in the CLI home that matches the same
   `candidate_id` and `harness_sha256`, so `session new` cannot drop an earlier
-  FAIL. Each reviewer's latest review (by `reviewed_at`) stands. One independent
-  FAIL makes the verdict FAIL; otherwise PASS needs at least one independent
-  PASS. Anyone who ran a gate on the candidate in any session counts as an
-  owner. A session file that cannot be read stops the export or review with an
+  FAIL. Each reviewer's latest review (by `reviewed_at`) stands. One FAIL makes
+  the verdict FAIL; otherwise PASS needs at least one independent PASS. Anyone
+  who ran a gate on the candidate in any session counts as an owner.
+  Independence applies to PASS only: a FAIL stands even when its reviewer later
+  becomes an owner (by rerunning a gate to reproduce the failure, or by a run
+  under `SKYYROSE2_GATE_OWNER=<reviewer>`), so the owner set growing after a
+  review cannot drop that FAIL. A session file that cannot be read stops the export or review with an
   error instead of being skipped.
 
 ## Provenance
@@ -119,19 +123,28 @@ may run is set only in `core/gates.py`:
   earlier failure is reported as a P3 finding.
 - **Gate owner source.** Each run and its log header record `owner_source`:
   `env` when `SKYYROSE2_GATE_OWNER` named the owner, otherwise `git`
-  (`git config user.name`). The record lists them in
-  `fashion_theme_team.owner_sources`. When any included run has an `env` owner,
-  the record carries an OPEN P3 finding, "gate owner supplied via
-  SKYYROSE2_GATE_OWNER is unverified". It does not block. Editing the source in
+  (`git config user.name`, read in the repo with per-command
+  `GIT_CONFIG_COUNT`/`GIT_CONFIG_KEY_n`/`GIT_CONFIG_VALUE_n`/`GIT_CONFIG_PARAMETERS`
+  injection stripped, so an env-only name cannot read as `git`). A `git` owner
+  is still self-declared: it is whatever the git config files say, and
+  `HOME`/`GIT_CONFIG_GLOBAL` choose which files. The record lists sources in
+  `fashion_theme_team.owner_sources`, built from every run that feeds the owner
+  set: other sessions and superseded runs included. When any of those runs has a
+  non-`git` owner source, the record carries an OPEN P3 finding, "gate owner
+  supplied via SKYYROSE2_GATE_OWNER is unverified". It does not block. Editing the source in
   the ledger makes it disagree with the hashed log, and the export refuses it.
 - **Installed deps.** The candidate id covers tracked files only, not
   `node_modules`. The environment label therefore ends with `;deps=<12 hex>`,
   the sha256 of
   `wordpress-theme/skyyrose-flagship-2/node_modules/.package-lock.json` (the
   hidden lockfile `npm ci` writes), or `;deps=none` when that file is missing. A
-  run made with different installed deps has a different environment from the
-  export, so it does not count as a PASS. `doctor` reports the digest and flags
-  a missing lockfile.
+  run made with a different deps lockfile has a different environment from the
+  export, so it does not count as a PASS. When the lockfile is missing at
+  export, no gate counts as a PASS (claim `blocked`, FTT BLOCKED): unidentified
+  deps never pass. `doctor` reports the digest and flags a missing lockfile.
+  Limitation: the digest covers only that lockfile. Edits inside `node_modules`
+  that npm does not record there (patch-package, manual edits, `npm link`,
+  copied trees) leave it unchanged and are not detected.
 
 ## Preview
 

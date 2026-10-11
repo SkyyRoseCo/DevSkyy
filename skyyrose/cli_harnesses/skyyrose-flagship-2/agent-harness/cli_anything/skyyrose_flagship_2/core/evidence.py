@@ -13,7 +13,9 @@ extra ``fashion_theme_team`` block, because its rules are stricter:
   - BLOCKED until a reviewer who is not the gate owner records a PASS review
     of this exact candidate (a builder cannot review its own candidate).
     Reviews from every session in the CLI home count, and each reviewer's
-    latest review is the one that stands: one independent FAIL means FAIL.
+    latest review is the one that stands: one FAIL means FAIL. Independence
+    gates PASS only; a FAIL stands even if its reviewer later runs a gate.
+  - BLOCKED when the installed deps cannot be identified at export.
   - PASS only means ready for founder review. It never authorises a deploy.
 
 The claim is never inflated to satisfy the checker. A dirty tree yields
@@ -36,6 +38,7 @@ from cli_anything.skyyrose_flagship_2.core.candidate import Candidate
 from cli_anything.skyyrose_flagship_2.core.gates import Gate
 from cli_anything.skyyrose_flagship_2.core.session import SessionError, read_log_header
 from cli_anything.skyyrose_flagship_2.utils.backend import (
+    DEPS_LOCK_REL,
     ScriptResult,
     Toolchain,
     environment_label,
@@ -85,18 +88,36 @@ OWNER_SOURCES = ("env", "git")
 UNVERIFIED_OWNER = "gate owner supplied via SKYYROSE2_GATE_OWNER is unverified"
 
 
-def default_owner() -> tuple[str, str]:
+def _is_git_config_injection(name: str) -> bool:
+    """Env vars that hand git a config value per command, with no file on disk."""
+    return name in {"GIT_CONFIG_COUNT", "GIT_CONFIG_PARAMETERS"} or name.startswith(
+        ("GIT_CONFIG_KEY_", "GIT_CONFIG_VALUE_")
+    )
+
+
+def default_owner(repo: Path | None = None) -> tuple[str, str]:
     """
     (owner, source). ``source`` is ``env`` when SKYYROSE2_GATE_OWNER supplied the
     name, else ``git``. Neither is proof of identity; the source is recorded so a
     reviewer can see which runs had a freely chosen owner name.
+
+    The ``git`` lookup runs in *repo* and ignores per-command config injection
+    (GIT_CONFIG_COUNT/KEY_n/VALUE_n, GIT_CONFIG_PARAMETERS), so an env-only name
+    cannot read as ``git``. It is still self-declared: whoever can write the git
+    config files (or point HOME / GIT_CONFIG_GLOBAL at another one) chooses it.
     """
     env = os.environ.get("SKYYROSE2_GATE_OWNER")
     if env:
         return env, "env"
+    clean_env = {k: v for k, v in os.environ.items() if not _is_git_config_injection(k)}
     try:
         out = subprocess.run(
-            ["git", "config", "user.name"], capture_output=True, text=True, timeout=10
+            ["git", "config", "user.name"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+            cwd=repo,
+            env=clean_env,
         )
         name = out.stdout.strip()
     except (OSError, subprocess.TimeoutExpired):
@@ -278,13 +299,22 @@ def runs_for(
     return list(latest.values()), stale, failures
 
 
+def owner_sources_for(runs: list[dict[str, Any]], candidate: Candidate) -> dict[str, list[str]]:
+    """
+    {owner: sorted owner_source values} over every run on *candidate*, by any
+    harness version, in any session, superseded or not. A run recorded before
+    owner_source existed reports ``unrecorded``, which counts as unverified.
+    """
+    sources: dict[str, set[str]] = {}
+    for r in runs:
+        if r.get("candidate_id") == candidate.candidate_id and r.get("owner"):
+            sources.setdefault(r["owner"], set()).add(str(r.get("owner_source") or "unrecorded"))
+    return {owner: sorted(found) for owner, found in sorted(sources.items())}
+
+
 def run_owners(runs: list[dict[str, Any]], candidate: Candidate) -> set[str]:
     """Everyone who ran a gate on *candidate*, by any harness version."""
-    return {
-        r["owner"]
-        for r in runs
-        if r.get("candidate_id") == candidate.candidate_id and r.get("owner")
-    }
+    return set(owner_sources_for(runs, candidate))
 
 
 def _check_log(run: dict[str, Any], src: Path) -> None:
@@ -316,7 +346,14 @@ def latest_reviews(
     reviews: list[dict[str, Any]], candidate: Candidate, harness: str, owners: set[str]
 ) -> list[dict[str, Any]]:
     """
-    Each independent reviewer's latest review of *candidate* by this harness code.
+    Each reviewer's latest review of *candidate* by this harness code, minus any
+    PASS from someone who is (now) an owner.
+
+    Independence only matters for PASS. A FAIL stands whoever recorded it, so a
+    reviewer who later runs a gate on the candidate (honestly, to reproduce the
+    failure, or under SKYYROSE2_GATE_OWNER) cannot make their FAIL disappear.
+    The latest review is picked first and filtered second, so a reviewer who
+    withdrew their own FAIL with a PASS while independent stays withdrawn.
 
     *reviews* may come from many sessions. They are ordered by ``reviewed_at``;
     the sort is stable, so equal timestamps keep their list order (oldest
@@ -329,7 +366,6 @@ def latest_reviews(
             for r in reviews
             if r.get("candidate_id") == candidate.candidate_id
             and r.get("harness_sha256") == harness
-            and _norm(r["reviewer"]) not in blocked
         ),
         key=lambda r: str(r.get("reviewed_at", "")),
     )
@@ -337,7 +373,7 @@ def latest_reviews(
     for r in mine:
         latest.pop(_norm(r["reviewer"]), None)
         latest[_norm(r["reviewer"])] = r
-    return list(latest.values())
+    return [r for key, r in latest.items() if not (r["disposition"] == "PASS" and key in blocked)]
 
 
 def _ftt_verdict(
@@ -345,12 +381,15 @@ def _ftt_verdict(
     gates_ok: bool,
     reviews: list[dict[str, Any]],
     candidate: Candidate,
-    owners: set[str],
+    owner_sources: dict[str, list[str]],
+    deps_known: bool,
 ) -> dict[str, Any]:
     """
     *gates_ok* is the environment-matched result (a run under other deps or
-    tools is not a PASS), not just each run's own status.
+    tools is not a PASS), not just each run's own status. *deps_known* is False
+    when the export cannot identify the installed deps; that blocks, never passes.
     """
+    owners = set(owner_sources)
     standing = latest_reviews(reviews, candidate, harness_sha256(), owners)
     failed = [r for r in standing if r["disposition"] == "FAIL"]
     passed = [r for r in standing if r["disposition"] == "PASS"]
@@ -362,7 +401,9 @@ def _ftt_verdict(
         )
     elif failed:
         names = ", ".join(r["reviewer"] for r in failed)
-        status, reason = "FAIL", f"Independent reviewer(s) {names} recorded FAIL."
+        status, reason = "FAIL", f"Reviewer(s) {names} recorded FAIL."
+    elif not deps_known:
+        status, reason = "BLOCKED", f"Installed deps are unidentified ({DEPS_LOCK_REL} missing)."
     elif candidate.dirty:
         status, reason = "BLOCKED", "Candidate has uncommitted changes; commit before handoff."
     elif not passed:
@@ -375,18 +416,13 @@ def _ftt_verdict(
             "PASS",
             "Gates passed and an independent reviewer accepted. Ready for founder review only.",
         )
-    owner_sources: dict[str, list[str]] = {}
-    for r in included:
-        owner_sources.setdefault(r["owner"], [])
-        if r["owner_source"] not in owner_sources[r["owner"]]:
-            owner_sources[r["owner"]].append(r["owner_source"])
     reviewer = deciding["reviewer"] if deciding else None
     return {
         "status": status,
         "reason": reason,
         "candidate_id": candidate.candidate_id,
         "owners": sorted(owners),
-        "owner_sources": {k: sorted(v) for k, v in sorted(owner_sources.items())},
+        "owner_sources": owner_sources,
         "reviewer": reviewer,
         "review": deciding,
         "reviews_considered": standing,
@@ -435,7 +471,10 @@ def build_record(
             f"No gate runs recorded for candidate {candidate.candidate_id} with this harness "
             f"version ({stale} run(s) belong to other candidates or harness code). Run a gate first."
         )
-    owners = run_owners([*session_runs, *(other_runs or [])], candidate)
+    # Every run on this candidate (any session, superseded or not) feeds the owner
+    # set, so every one of them feeds owner_sources and the unverified-owner finding.
+    owner_sources = owner_sources_for([*session_runs, *(other_runs or [])], candidate)
+    deps_known = toolchain.deps_sha256 is not None
     logs_dir = out_dir / "logs"
     logs_dir.mkdir(parents=True, exist_ok=True)
     target = {
@@ -458,11 +497,17 @@ def build_record(
         cid = f"C{index}"
         cats = run["categories"] or ["regression"]
         covered.update(cats)
-        passed = run["status"] == "PASS" and run["environment"] == target["environment"]
+        env_match = run["status"] == "PASS" and run["environment"] == target["environment"]
+        passed = env_match and deps_known
         reason = run["status_reason"]
-        if run["status"] == "PASS" and not passed:
+        if run["status"] == "PASS" and not env_match:
             reason = (
                 f"Run environment {run['environment']} differs from the export environment; rerun."
+            )
+        elif env_match and not deps_known:
+            reason = (
+                f"Installed deps are unidentified ({DEPS_LOCK_REL} missing, deps=none), so this "
+                "run is not evidence; run `npm ci` in the theme and rerun."
             )
         criteria.append(
             {
@@ -515,15 +560,16 @@ def build_record(
                 "before the included run; check for flakiness.",
             }
         )
-    env_owners = sorted({r["owner"] for r in included if r["owner_source"] == "env"})
+    env_owners = [o for o, src in owner_sources.items() if any(s != "git" for s in src)]
     if env_owners:
         findings.append(
             {
                 "severity": "P3",
                 "in_scope": True,
                 "status": "OPEN",
-                "description": f"{UNVERIFIED_OWNER} (owner(s): {', '.join(env_owners)}); "
-                "independence checks rely on that name.",
+                "description": f"{UNVERIFIED_OWNER} (owner(s): {', '.join(env_owners)}; "
+                "counted over every run on this candidate in any session, superseded or "
+                "not); independence checks rely on that name.",
             }
         )
     if candidate.dirty:
@@ -538,6 +584,9 @@ def build_record(
         )
 
     all_pass = all(c["status"] == "PASS" for c in criteria)
+    gates_ok = all(
+        r["status"] == "PASS" and r["environment"] == target["environment"] for r in included
+    )
     toolchain_ok = all(r["toolchain_ok"] for r in included)
     no_mutation = all(not (r["kind"] == "check" and r["changed_paths"]) for r in included)
     claim = "blocked" if not all_pass else ("partial" if candidate.dirty else "verified")
@@ -602,7 +651,9 @@ def build_record(
             "recovery": "",
             "evidence": [],
         },
-        "fashion_theme_team": _ftt_verdict(included, all_pass, reviews, candidate, owners),
+        "fashion_theme_team": _ftt_verdict(
+            included, gates_ok, reviews, candidate, owner_sources, deps_known
+        ),
         "cli": {
             "harness_sha256": harness,
             "stale_runs_excluded": stale,
@@ -610,8 +661,11 @@ def build_record(
             "candidate": candidate.to_dict(),
             "limitation": "The session ledger is unsigned. Each status is re-derived from its "
             "hashed log, but someone with write access to both could still forge a run. "
-            "Reviewer identity is self-declared, and so is a gate owner taken from "
-            "SKYYROSE2_GATE_OWNER (see fashion_theme_team.owner_sources).",
+            "Reviewer identity is self-declared, and so is every gate owner: SKYYROSE2_GATE_OWNER "
+            "is flagged, and a git-sourced owner is whatever the git config files say "
+            "(per-command GIT_CONFIG_* injection is ignored; see fashion_theme_team.owner_sources). "
+            f"The deps digest covers only {DEPS_LOCK_REL}; edits inside node_modules that "
+            "npm does not record there (patch-package, manual edits, npm link) are invisible.",
         },
     }
     return record
