@@ -14,7 +14,7 @@ httpx>=0.25
 
 # --- HF Space backend (default; cheap and CPU-only client) ---
 gradio_client>=1.0
-huggingface_hub>=0.24
+huggingface_hub>=0.24,<2
 
 # --- Mesh postprocessing (recommended) ---
 trimesh>=4.0
