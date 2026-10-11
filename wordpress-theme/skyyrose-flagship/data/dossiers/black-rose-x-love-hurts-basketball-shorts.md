@@ -21,6 +21,8 @@ extra_references:
 
 **FOUNDER_CONFIRMED:** Love Hurts is only on the side not across the back. (Corey, 2026-06-09, verbatim: "Love Hurts is only on the side not across the back")
 
+**FOUNDER_CONFIRMED:** Oakland needs to be centered and slightly bigger. (Corey, 2026-06-09, verbatim: "oakland needs to be centered and slightly bigger")
+
 **FOUNDER_CONFIRMED:** The large sublimated Love Hurts wordmark is on the left side. (Corey, 2026-10-10, verbatim: "br-007 is on the left side")
 
 **FOUNDER_CONFIRMED:** Mesh. (Corey, 2026-09-29, verbatim: "the shorts are mesh")

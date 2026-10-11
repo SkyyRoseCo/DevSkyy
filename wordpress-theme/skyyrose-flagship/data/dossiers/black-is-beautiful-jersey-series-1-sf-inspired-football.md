@@ -27,6 +27,8 @@ exists yet.
 
 **FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
 
+**FOUNDER_CONFIRMED:** True to size, relaxed through the body. (Corey, 2026-09-21, verbatim: "all jerseys true to size, relaxed through the body")
+
 **Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 **FOUNDER_CONFIRMED:** The jersey number 80 appears on both sides; greyscale rose artwork is inside the front 8 only, with no rose artwork on the back. (Corey, 2026-10-05, verbatim: "80 on both sides, eight roses on the front and none on the back")

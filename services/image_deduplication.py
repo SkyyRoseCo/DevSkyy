@@ -148,7 +148,7 @@ class ImageDeduplicator:
             img = img.convert("L")
 
             # Compute average
-            pixels = list(img.getdata())
+            pixels = list(img.get_flattened_data())
             avg = sum(pixels) // len(pixels)
 
             # Create hash based on whether pixel is above/below average
