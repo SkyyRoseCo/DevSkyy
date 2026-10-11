@@ -16,7 +16,7 @@ import shlex
 import sys
 import tempfile
 from dataclasses import dataclass
-from datetime import datetime, UTC
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -165,9 +165,15 @@ def doctor(state: CliState) -> None:
     else:
         checker_error = None
     node_modules = (backend.theme_dir(repo) / "node_modules").is_dir()
+    deps = tc.deps_sha256
     fixture = backend.fixture_dir(repo, sess_mod.state_home())
     healthy = (
-        tc.ok and pins["in_sync"] and checker is not None and node_modules and fixture is not None
+        tc.ok
+        and pins["in_sync"]
+        and checker is not None
+        and node_modules
+        and deps is not None
+        and fixture is not None
     )
     payload = {
         "ok": healthy,
@@ -175,9 +181,19 @@ def doctor(state: CliState) -> None:
         "toolchain": tc.to_dict(),
         "registry_pin": pins,
         "node_modules": node_modules,
-        "node_modules_hint": None
-        if node_modules
-        else f"cd {backend.theme_dir(repo)} && npm ci  (with the pinned node on PATH)",
+        "node_modules_hint": (
+            None
+            if node_modules
+            else f"cd {backend.theme_dir(repo)} && npm ci  (with the pinned node on PATH)"
+        ),
+        "deps_sha256": deps,
+        "deps_label": deps[:12] if deps else "none",
+        "deps_hint": (
+            None
+            if deps
+            else f"{backend.DEPS_LOCK_REL} missing: installed deps are unidentified (environment "
+            f"label deps=none). Run `npm ci` in {backend.theme_dir(repo)} with the pinned node."
+        ),
         "god_mode_x_checker": checker,
         "god_mode_x_error": checker_error,
         "wp_fixture": str(fixture) if fixture else None,
@@ -188,6 +204,7 @@ def doctor(state: CliState) -> None:
         *[f"  ✗ {m}" for m in tc.mismatches],
         f"registry pin {'in sync' if pins['in_sync'] else 'DRIFTED'}",
         f"node_modules {'present' if node_modules else 'missing — ' + str(payload['node_modules_hint'])}",
+        f"deps digest  {deps[:12] if deps else 'MISSING — ' + str(payload['deps_hint'])}",
         f"god mode x   {checker or checker_error}",
         f"wp fixture   {fixture or 'missing — run `fixture prepare` (needed by verify, package:theme)'}",
     ]
@@ -276,13 +293,20 @@ def _execute(state: CliState, name: str, kind: str, timeout: float | None) -> di
         raise backend.ToolchainMismatchError(
             "Toolchain does not match the V2 pins: " + " | ".join(tc.mismatches)
         )
-    owner = ev.default_owner()  # fail before running, never record an anonymous run
+    owner, owner_source = ev.default_owner()  # fail before running, never record an anonymous run
     before = cand_mod.capture(repo)
     result = backend.run_npm_script(repo, name, tc, timeout=timeout, extra_env=extra_env)
     after = cand_mod.capture(repo)
     sess = state.session
     text = sess_mod.format_log(
-        ev.log_header(gate=gate, result=result, before=before, after=after),
+        ev.log_header(
+            gate=gate,
+            result=result,
+            before=before,
+            after=after,
+            owner=owner,
+            owner_source=owner_source,
+        ),
         result.stdout,
         result.stderr,
     )
@@ -299,6 +323,7 @@ def _execute(state: CliState, name: str, kind: str, timeout: float | None) -> di
         toolchain=tc,
         log_path=log,
         owner=owner,
+        owner_source=owner_source,
     )
     sess.add_run(entry)
     if not state.repl_mode:
@@ -552,15 +577,17 @@ def evidence_export(
         if out_dir
         else state.session.directory / "evidence" / f"{cand.candidate_id}-{stamp}"
     )
+    others = sess_mod.other_sessions(exclude=state.session.session_id)
     out.mkdir(parents=True, exist_ok=True)
     record = ev.build_record(
         session_runs=state.session.runs,
-        reviews=state.session.reviews,
+        reviews=[*(r for o in others for r in o.reviews), *state.session.reviews],
         candidate=cand,
         toolchain=tc,
         out_dir=out,
         task_id=task_id,
         objective=objective,
+        other_runs=[r for o in others for r in o.runs],
     )
     path = ev.write_record(record, out)
     verdict = ev.validate_with_god_mode_x(path, ev.find_checker()) if validate else None
@@ -612,12 +639,13 @@ def evidence_validate(state: CliState, record: str) -> None:
 def evidence_review(state: CliState, reviewer: str, disposition: str, note: str) -> None:
     """Record an independent Fashion Theme Team review of the current candidate."""
     cand = cand_mod.capture(state.repo)
+    others = sess_mod.other_sessions(exclude=state.session.session_id)
     entry = ev.review_entry(
         candidate=cand,
         reviewer=reviewer,
         disposition=disposition,
         note=note,
-        owners=ev.run_owners(state.session.runs, cand),
+        owners=ev.run_owners([*(r for o in others for r in o.runs), *state.session.runs], cand),
     )
     state.session.add_review(entry)
     if not state.repl_mode:

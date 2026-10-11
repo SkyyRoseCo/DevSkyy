@@ -18,7 +18,7 @@ import os
 import re
 import uuid
 from dataclasses import dataclass, field
-from datetime import datetime, UTC
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -178,13 +178,16 @@ def load_session(session_id: str) -> Session:
         raise SessionError(
             f"Session file {path} has schema {data.get('schema')!r}, expected {SCHEMA}"
         )
-    return Session(
-        session_id=data["session_id"],
-        repo_root=data["repo_root"],
-        created_at=data["created_at"],
-        runs=list(data.get("runs", [])),
-        reviews=list(data.get("reviews", [])),
-    )
+    try:
+        return Session(
+            session_id=data["session_id"],
+            repo_root=data["repo_root"],
+            created_at=data["created_at"],
+            runs=list(data.get("runs", [])),
+            reviews=list(data.get("reviews", [])),
+        )
+    except (KeyError, TypeError, AttributeError) as exc:
+        raise SessionError(f"Session file {path} is malformed: {exc!r}") from exc
 
 
 def current_session_id() -> str | None:
@@ -220,3 +223,22 @@ def list_sessions() -> list[dict[str, Any]]:
             except SessionError as exc:
                 out.append({"session_id": child.name, "error": str(exc)})
     return out
+
+
+def other_sessions(exclude: str | None = None) -> list[Session]:
+    """
+    Every saved session in the CLI home except *exclude*, oldest first.
+
+    Fails closed: a session.json that cannot be read raises SessionError, so a
+    corrupt ledger can never hide a FAIL review. A session directory with no
+    session.json yet (logs written before the first save) holds no reviews and
+    is skipped.
+    """
+    root = state_home() / "sessions"
+    if not root.is_dir():
+        return []
+    return [
+        load_session(child.name)
+        for child in sorted(root.iterdir())
+        if child.name != exclude and (child / "session.json").is_file()
+    ]

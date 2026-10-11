@@ -75,7 +75,7 @@ def _home(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("SKYYROSE2_CLI_HOME", str(tmp_path / "clihome"))
 
 
-def _toolchain() -> Toolchain:
+def _toolchain(deps: str | None = None) -> Toolchain:
     return Toolchain(
         path_env="/usr/bin",
         node="22.23.2",
@@ -83,6 +83,7 @@ def _toolchain() -> Toolchain:
         python="3.12.12",
         php="8.5.6",
         pins={"node": "22.23.2", "npm": "10.9.8", "python": "3.12.12"},
+        deps_sha256=deps,
     )
 
 
@@ -108,21 +109,26 @@ def _entry(
     script: str = "check:registry",
     rc: int = 0,
     owner: str = "builder",
+    owner_source: str = "git",
+    toolchain: Toolchain | None = None,
 ):
     scripts = backend.load_package_scripts(repo)
     gate = gates_mod.classify(script, scripts)
     cand = cand_mod.capture(repo)
     result = _result(script, rc)
-    header = ev.log_header(gate=gate, result=result, before=cand, after=cand)
+    header = ev.log_header(
+        gate=gate, result=result, before=cand, after=cand, owner=owner, owner_source=owner_source
+    )
     log = sess.write_log(script, sess_mod.format_log(header, "ok", ""))
     return ev.run_entry(
         gate=gate,
         result=result,
         before=cand,
         after=cand,
-        toolchain=_toolchain(),
+        toolchain=toolchain or _toolchain(),
         log_path=log,
         owner=owner,
+        owner_source=owner_source,
     )
 
 
@@ -344,6 +350,7 @@ class TestEvidence:
             toolchain=_toolchain(),
             log_path=sess.write_log("check:registry", sess_mod.format_log({}, "", "")),
             owner="builder",
+            owner_source="git",
         )
         assert entry["status"] == "FAIL" and "changed tracked files" in entry["status_reason"]
 
@@ -429,9 +436,8 @@ def test_repo_discovery_fails_closed(tmp_path: Path, monkeypatch: pytest.MonkeyP
 
 
 def test_verify_refuses_without_wp_fixture(repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    from click.testing import CliRunner
-
     from cli_anything.skyyrose_flagship_2.skyyrose_flagship_2_cli import CliState, cli
+    from click.testing import CliRunner
 
     monkeypatch.delenv("V2_WP_FIXTURE", raising=False)
     pins = repo / backend.FIXTURE_PINS_REL
@@ -540,7 +546,9 @@ class TestReviewFindings:
             out_dir=tmp_path / "o",
         )
         assert rec["cli"]["harness_sha256"] == backend.harness_sha256()
-        assert rec["target"]["environment"].endswith("harness=" + backend.harness_sha256()[:12])
+        assert rec["target"]["environment"].endswith(
+            ";harness=" + backend.harness_sha256()[:12] + ";deps=none"
+        )
 
     def test_earlier_failure_is_reported(self, repo: Path, tmp_path: Path) -> None:
         """P3: a later PASS supersedes an earlier FAIL but the FAIL stays visible."""
@@ -609,9 +617,8 @@ def test_review_of_other_harness_code_does_not_count(repo: Path, tmp_path: Path)
 
 
 def _cli(repo: Path, *args: str, input: str | None = None):
-    from click.testing import CliRunner
-
     from cli_anything.skyyrose_flagship_2.skyyrose_flagship_2_cli import CliState, cli
+    from click.testing import CliRunner
 
     return CliRunner().invoke(cli, ["--repo-root", str(repo), *args], obj=CliState(), input=input)
 
@@ -699,3 +706,203 @@ class TestCliCommands:
         result = _cli(repo, input="version show\nhelp\nversion bump --to 9\nexit\n")
         assert result.exit_code == 0, result.output
         assert "2.5.1" in result.output and "Version must be X.Y.Z" in result.output
+
+
+# ---------------------------------------------------------------------------
+# P3 follow-ups from the independent Fashion Theme Team review (2026-10-11)
+# ---------------------------------------------------------------------------
+
+
+def _review(cand, reviewer: str, disposition: str, at: str) -> dict:
+    entry = ev.review_entry(
+        candidate=cand, reviewer=reviewer, disposition=disposition, note="n", owners={"builder"}
+    )
+    return {**entry, "reviewed_at": at}
+
+
+class TestP3Followups:
+    # P3a: gate-owner identity is self-asserted -----------------------------
+
+    def test_default_owner_reports_its_source(
+        self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    ) -> None:
+        monkeypatch.setenv("SKYYROSE2_GATE_OWNER", "someone")
+        assert ev.default_owner() == ("someone", "env")
+        monkeypatch.delenv("SKYYROSE2_GATE_OWNER")
+        cfg = tmp_path / "gitconfig"
+        cfg.write_text("[user]\n\tname = From Git\n")
+        monkeypatch.setenv("GIT_CONFIG_GLOBAL", str(cfg))
+        monkeypatch.setenv("GIT_CONFIG_NOSYSTEM", "1")
+        monkeypatch.chdir(tmp_path)
+        assert ev.default_owner() == ("From Git", "git")
+
+    def test_env_owner_is_recorded_flagged_and_does_not_block(
+        self, repo: Path, tmp_path: Path
+    ) -> None:
+        sess = sess_mod.new_session(repo)
+        cand = cand_mod.capture(repo)
+        run = _entry(repo, sess, owner="builder", owner_source="env")
+        header = sess_mod.read_log_header(Path(run["artifact"]["path"]))
+        assert run["owner_source"] == "env" and header["owner_source"] == "env"
+        rec = ev.build_record(
+            session_runs=[run],
+            reviews=[_review(cand, "reviewer", "PASS", "2026-10-11T00:00:00+00:00")],
+            candidate=cand,
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
+        ftt = rec["fashion_theme_team"]
+        assert ftt["owner_sources"] == {"builder": ["env"]}
+        assert ftt["gates"][0]["owner_source"] == "env"
+        p3 = [f for f in rec["findings"] if ev.UNVERIFIED_OWNER in f["description"]]
+        assert len(p3) == 1 and p3[0]["severity"] == "P3" and p3[0]["status"] == "OPEN"
+        assert rec["claim"] == "verified" and ftt["status"] == "PASS"
+
+    def test_git_owner_raises_no_unverified_finding(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        rec = ev.build_record(
+            session_runs=[_entry(repo, sess, owner_source="git")],
+            reviews=[],
+            candidate=cand_mod.capture(repo),
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
+        assert rec["fashion_theme_team"]["owner_sources"] == {"builder": ["git"]}
+        assert not any(ev.UNVERIFIED_OWNER in f["description"] for f in rec["findings"])
+
+    def test_ledger_owner_source_edit_is_caught(self, repo: Path, tmp_path: Path) -> None:
+        """Rewriting env -> git in session.json would hide the finding; the log header disagrees."""
+        sess = sess_mod.new_session(repo)
+        run = _entry(repo, sess, owner_source="env")
+        with pytest.raises(ev.EvidenceError, match="disagrees with its log"):
+            ev.build_record(
+                session_runs=[{**run, "owner_source": "git"}],
+                reviews=[],
+                candidate=cand_mod.capture(repo),
+                toolchain=_toolchain(),
+                out_dir=tmp_path / "o",
+            )
+
+    # P3b: reviews from every session count ----------------------------------
+
+    def test_latest_review_per_reviewer_decides(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        cand = cand_mod.capture(repo)
+        run = _entry(repo, sess)
+
+        def verdict(reviews: list[dict]) -> str:
+            return ev.build_record(
+                session_runs=[run],
+                reviews=reviews,
+                candidate=cand,
+                toolchain=_toolchain(),
+                out_dir=tmp_path / "o",
+            )["fashion_theme_team"]["status"]
+
+        fail_then_pass = [
+            _review(cand, "r1", "PASS", "2026-10-11T00:00:02+00:00"),
+            _review(cand, "r1", "FAIL", "2026-10-11T00:00:01+00:00"),
+        ]
+        assert verdict(fail_then_pass) == "PASS"  # ordered by reviewed_at, not list order
+        other_fails = [
+            _review(cand, "r2", "FAIL", "2026-10-11T00:00:01+00:00"),
+            _review(cand, "r1", "PASS", "2026-10-11T00:00:05+00:00"),
+        ]
+        assert verdict(other_fails) == "FAIL"  # a later PASS by someone else does not clear it
+        assert verdict([_review(cand, "r1", "FAIL", "2026-10-11T00:00:01+00:00")]) == "FAIL"
+
+    def test_session_new_keeps_an_earlier_fail_review(self, repo: Path, pinned_ok: None) -> None:
+        assert _cli(repo, "check", "run", "check:registry").exit_code == 0
+        failed = _cli(
+            repo, "evidence", "review", "--reviewer", "r1", "--disposition", "FAIL", "--note", "x"
+        )
+        assert failed.exit_code == 0, failed.output
+        assert _cli(repo, "session", "new").exit_code == 0
+        assert _cli(repo, "check", "run", "check:registry").exit_code == 0
+        passed = _cli(
+            repo, "evidence", "review", "--reviewer", "r2", "--disposition", "PASS", "--note", "y"
+        )
+        assert passed.exit_code == 0, passed.output
+        out = _cli(repo, "--json", "evidence", "export", "--no-validate")
+        payload = json.loads(out.output)
+        assert payload["fashion_theme_team"] == "FAIL", payload
+        assert "r1" in payload["fashion_theme_team_reason"]
+
+    def test_runner_in_another_session_cannot_review(self, repo: Path, pinned_ok: None) -> None:
+        assert _cli(repo, "check", "run", "check:registry").exit_code == 0
+        assert _cli(repo, "session", "new").exit_code == 0
+        self_review = _cli(
+            repo,
+            "--json",
+            "evidence",
+            "review",
+            "--reviewer",
+            "builder",
+            "--disposition",
+            "PASS",
+            "--note",
+            "z",
+        )
+        assert self_review.exit_code == 1 and "independent" in self_review.output
+
+    def test_corrupt_session_file_fails_closed(self, repo: Path) -> None:
+        good = sess_mod.new_session(repo)
+        good.save()
+        (sess_mod.state_home() / "sessions" / "logs-only").mkdir(parents=True)
+        assert [s.session_id for s in sess_mod.other_sessions()] == [good.session_id]
+        assert sess_mod.other_sessions(exclude=good.session_id) == []
+        bad = sess_mod.new_session(repo)
+        bad.save()
+        bad.path.write_text("{not json")
+        with pytest.raises(sess_mod.SessionError, match="not valid JSON"):
+            sess_mod.other_sessions(exclude=good.session_id)
+        bad.path.write_text(json.dumps({"schema": sess_mod.SCHEMA}))
+        with pytest.raises(sess_mod.SessionError, match="malformed"):
+            sess_mod.other_sessions()
+
+    # P3c: installed deps are part of the environment -----------------------
+
+    def test_deps_digest_reaches_environment_label(self, repo: Path) -> None:
+        assert backend.deps_digest(repo) is None
+        assert backend.resolve_toolchain(repo).deps_sha256 is None
+        assert backend.environment_label(_toolchain()).endswith(";deps=none")
+        lock = repo / backend.DEPS_LOCK_REL
+        lock.parent.mkdir(parents=True)
+        lock.write_text('{"lockfileVersion": 3}\n')
+        digest = backend.sha256_file(lock)
+        assert backend.resolve_toolchain(repo).deps_sha256 == digest
+        assert backend.environment_label(_toolchain(digest)).endswith(f";deps={digest[:12]}")
+
+    def test_run_under_other_deps_is_not_a_pass(self, repo: Path, tmp_path: Path) -> None:
+        sess = sess_mod.new_session(repo)
+        cand = cand_mod.capture(repo)
+        run = _entry(repo, sess, toolchain=_toolchain("a" * 64))
+        rec = ev.build_record(
+            session_runs=[run],
+            reviews=[_review(cand, "reviewer", "PASS", "2026-10-11T00:00:00+00:00")],
+            candidate=cand,
+            toolchain=_toolchain("b" * 64),
+            out_dir=tmp_path / "o",
+        )
+        assert run["status"] == "PASS"
+        assert rec["criteria"][0]["status"] == "FAIL" and rec["claim"] == "blocked"
+        assert rec["fashion_theme_team"]["status"] == "FAIL"
+
+    def test_doctor_reports_deps_digest(
+        self, repo: Path, pinned_ok: None, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        pins = repo / backend.FIXTURE_PINS_REL
+        pins.parent.mkdir(parents=True, exist_ok=True)
+        pins.write_text("{}")
+        missing = json.loads(_cli(repo, "--json", "doctor").stdout)
+        assert missing["ok"] is False and missing["deps_label"] == "none"
+        assert "npm ci" in missing["deps_hint"]
+        tc = backend.resolve_toolchain(repo)
+        monkeypatch.setattr(
+            backend,
+            "resolve_toolchain",
+            lambda repo: Toolchain(**{**tc.__dict__, "deps_sha256": "c" * 64}),
+        )
+        present = json.loads(_cli(repo, "--json", "doctor").stdout)
+        assert present["deps_sha256"] == "c" * 64 and present["deps_label"] == "c" * 12
+        assert present["deps_hint"] is None

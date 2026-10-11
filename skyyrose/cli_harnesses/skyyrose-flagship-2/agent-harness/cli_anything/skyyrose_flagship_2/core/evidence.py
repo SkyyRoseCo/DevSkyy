@@ -12,6 +12,8 @@ extra ``fashion_theme_team`` block, because its rules are stricter:
   - FAIL when any included gate failed.
   - BLOCKED until a reviewer who is not the gate owner records a PASS review
     of this exact candidate (a builder cannot review its own candidate).
+    Reviews from every session in the CLI home count, and each reviewer's
+    latest review is the one that stands: one independent FAIL means FAIL.
   - PASS only means ready for founder review. It never authorises a deploy.
 
 The claim is never inflated to satisfy the checker. A dirty tree yields
@@ -26,7 +28,7 @@ import os
 import shutil
 import subprocess
 import sys
-from datetime import datetime, UTC
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -79,10 +81,19 @@ def _now() -> str:
     return datetime.now(UTC).isoformat(timespec="seconds")
 
 
-def default_owner() -> str:
+OWNER_SOURCES = ("env", "git")
+UNVERIFIED_OWNER = "gate owner supplied via SKYYROSE2_GATE_OWNER is unverified"
+
+
+def default_owner() -> tuple[str, str]:
+    """
+    (owner, source). ``source`` is ``env`` when SKYYROSE2_GATE_OWNER supplied the
+    name, else ``git``. Neither is proof of identity; the source is recorded so a
+    reviewer can see which runs had a freely chosen owner name.
+    """
     env = os.environ.get("SKYYROSE2_GATE_OWNER")
     if env:
-        return env
+        return env, "env"
     try:
         out = subprocess.run(
             ["git", "config", "user.name"], capture_output=True, text=True, timeout=10
@@ -94,7 +105,7 @@ def default_owner() -> str:
         raise EvidenceError(
             "No gate owner: set git user.name or SKYYROSE2_GATE_OWNER. Evidence needs a named owner."
         )
-    return name
+    return name, "git"
 
 
 # ---------------------------------------------------------------------------
@@ -111,6 +122,7 @@ def run_entry(
     toolchain: Toolchain,
     log_path: Path,
     owner: str,
+    owner_source: str,
 ) -> dict[str, Any]:
     """
     Build one ledger entry for one gate run.
@@ -118,7 +130,18 @@ def run_entry(
     A check gate is evidence for the tree it ran against, and it fails if it
     changed any tracked file. A build gate is evidence for the tree it produced.
     """
-    status, why = derive_status(log_header(gate=gate, result=result, before=before, after=after))
+    if owner_source not in OWNER_SOURCES:
+        raise EvidenceError(f"owner_source must be one of {OWNER_SOURCES}, got {owner_source!r}")
+    status, why = derive_status(
+        log_header(
+            gate=gate,
+            result=result,
+            before=before,
+            after=after,
+            owner=owner,
+            owner_source=owner_source,
+        )
+    )
     if status == "PASS":
         why = f"{why} in {result.duration_s}s"
     bound = after if gate.kind == "build" else before
@@ -146,13 +169,20 @@ def run_entry(
         "artifact": {"path": str(log_path), "sha256": sha256_file(log_path)},
         "stdout_tail": tail,
         "owner": owner,
+        "owner_source": owner_source,
         "reviewer": None,
         "harness_sha256": harness_sha256(),
     }
 
 
 def log_header(
-    *, gate: Gate, result: ScriptResult, before: Candidate, after: Candidate
+    *,
+    gate: Gate,
+    result: ScriptResult,
+    before: Candidate,
+    after: Candidate,
+    owner: str,
+    owner_source: str,
 ) -> dict[str, Any]:
     """The facts a run's status is derived from; written as the first line of its log."""
     return {
@@ -165,6 +195,8 @@ def log_header(
         "candidate_before": before.candidate_id,
         "candidate_after": after.candidate_id,
         "started_at": result.started_at,
+        "owner": owner,
+        "owner_source": owner_source,
         "harness_sha256": harness_sha256(),
     }
 
@@ -268,35 +300,72 @@ def _check_log(run: dict[str, Any], src: Path) -> None:
         or derived != run["status"]
         or bound != run["candidate_id"]
         or header["harness_sha256"] != run.get("harness_sha256")
+        or header.get("owner") != run.get("owner")
+        or header.get("owner_source") != run.get("owner_source")
+        or run.get("owner_source") not in OWNER_SOURCES
     ):
         raise EvidenceError(
             f"Ledger entry for {run['gate_id']} disagrees with its log (ledger {run['status']}, "
-            f"log {derived}); the session file was edited. Rerun the gate."
+            f"log {derived}; owner/source {run.get('owner')}/{run.get('owner_source')} vs "
+            f"{header.get('owner')}/{header.get('owner_source')}); the session file was edited. "
+            "Rerun the gate."
         )
+
+
+def latest_reviews(
+    reviews: list[dict[str, Any]], candidate: Candidate, harness: str, owners: set[str]
+) -> list[dict[str, Any]]:
+    """
+    Each independent reviewer's latest review of *candidate* by this harness code.
+
+    *reviews* may come from many sessions. They are ordered by ``reviewed_at``;
+    the sort is stable, so equal timestamps keep their list order (oldest
+    session first, then within-session order).
+    """
+    blocked = {_norm(o) for o in owners}
+    mine = sorted(
+        (
+            r
+            for r in reviews
+            if r.get("candidate_id") == candidate.candidate_id
+            and r.get("harness_sha256") == harness
+            and _norm(r["reviewer"]) not in blocked
+        ),
+        key=lambda r: str(r.get("reviewed_at", "")),
+    )
+    latest: dict[str, dict[str, Any]] = {}
+    for r in mine:
+        latest.pop(_norm(r["reviewer"]), None)
+        latest[_norm(r["reviewer"])] = r
+    return list(latest.values())
 
 
 def _ftt_verdict(
     included: list[dict[str, Any]],
+    gates_ok: bool,
     reviews: list[dict[str, Any]],
     candidate: Candidate,
     owners: set[str],
 ) -> dict[str, Any]:
-    harness = harness_sha256()
-    mine = [
-        r
-        for r in reviews
-        if r.get("candidate_id") == candidate.candidate_id and r.get("harness_sha256") == harness
-    ]
-    blocked = {_norm(o) for o in owners}
-    independent = [r for r in mine if _norm(r["reviewer"]) not in blocked]
-    latest = independent[-1] if independent else None
-    if any(r["status"] != "PASS" for r in included):
-        status, reason = "FAIL", "At least one gate failed on this candidate."
-    elif latest and latest["disposition"] == "FAIL":
-        status, reason = "FAIL", f"Independent reviewer {latest['reviewer']} recorded FAIL."
+    """
+    *gates_ok* is the environment-matched result (a run under other deps or
+    tools is not a PASS), not just each run's own status.
+    """
+    standing = latest_reviews(reviews, candidate, harness_sha256(), owners)
+    failed = [r for r in standing if r["disposition"] == "FAIL"]
+    passed = [r for r in standing if r["disposition"] == "PASS"]
+    deciding = failed[-1] if failed else (passed[-1] if passed else None)
+    if not gates_ok:
+        status, reason = (
+            "FAIL",
+            "At least one gate failed, or ran in a different environment, on this candidate.",
+        )
+    elif failed:
+        names = ", ".join(r["reviewer"] for r in failed)
+        status, reason = "FAIL", f"Independent reviewer(s) {names} recorded FAIL."
     elif candidate.dirty:
         status, reason = "BLOCKED", "Candidate has uncommitted changes; commit before handoff."
-    elif not latest:
+    elif not passed:
         status, reason = (
             "BLOCKED",
             "Awaiting an independent reviewer (not the gate owner) for this candidate.",
@@ -306,13 +375,21 @@ def _ftt_verdict(
             "PASS",
             "Gates passed and an independent reviewer accepted. Ready for founder review only.",
         )
+    owner_sources: dict[str, list[str]] = {}
+    for r in included:
+        owner_sources.setdefault(r["owner"], [])
+        if r["owner_source"] not in owner_sources[r["owner"]]:
+            owner_sources[r["owner"]].append(r["owner_source"])
+    reviewer = deciding["reviewer"] if deciding else None
     return {
         "status": status,
         "reason": reason,
         "candidate_id": candidate.candidate_id,
         "owners": sorted(owners),
-        "reviewer": latest["reviewer"] if latest else None,
-        "review": latest,
+        "owner_sources": {k: sorted(v) for k, v in sorted(owner_sources.items())},
+        "reviewer": reviewer,
+        "review": deciding,
+        "reviews_considered": standing,
         "gates": [
             {
                 k: r[k]
@@ -325,12 +402,10 @@ def _ftt_verdict(
                     "observed_at",
                     "artifact",
                     "owner",
+                    "owner_source",
                 )
             }
-            | {
-                "candidate_id": r["candidate_id"],
-                "reviewer": latest["reviewer"] if latest else None,
-            }
+            | {"candidate_id": r["candidate_id"], "reviewer": reviewer}
             for r in included
         ],
         "note": "PASS means ready for founder review only; it never authorises a deploy or merge.",
@@ -346,7 +421,13 @@ def build_record(
     out_dir: Path,
     task_id: str | None = None,
     objective: str | None = None,
+    other_runs: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
+    """
+    *reviews* should hold every session's reviews (see ``session.other_sessions``).
+    *other_runs* are runs from other sessions; they never become evidence, but
+    whoever ran a gate on this candidate there is an owner and cannot review it.
+    """
     harness = harness_sha256()
     included, stale, earlier_failures = runs_for(session_runs, candidate, harness)
     if not included:
@@ -354,7 +435,7 @@ def build_record(
             f"No gate runs recorded for candidate {candidate.candidate_id} with this harness "
             f"version ({stale} run(s) belong to other candidates or harness code). Run a gate first."
         )
-    owners = run_owners(session_runs, candidate)
+    owners = run_owners([*session_runs, *(other_runs or [])], candidate)
     logs_dir = out_dir / "logs"
     logs_dir.mkdir(parents=True, exist_ok=True)
     target = {
@@ -392,17 +473,19 @@ def build_record(
                 "categories": cats,
                 "status": "PASS" if passed else "FAIL",
                 "reason": reason,
-                "evidence": [
-                    {
-                        "method": "command",
-                        "reference": rel,
-                        "observation": f"{reason}; last line: {run['stdout_tail'] or '(no stdout)'}",
-                        "observed_at": run["observed_at"],
-                        **target,
-                    }
-                ]
-                if passed
-                else [],
+                "evidence": (
+                    [
+                        {
+                            "method": "command",
+                            "reference": rel,
+                            "observation": f"{reason}; last line: {run['stdout_tail'] or '(no stdout)'}",
+                            "observed_at": run["observed_at"],
+                            **target,
+                        }
+                    ]
+                    if passed
+                    else []
+                ),
             }
         )
         subtasks.append(
@@ -432,6 +515,17 @@ def build_record(
                 "before the included run; check for flakiness.",
             }
         )
+    env_owners = sorted({r["owner"] for r in included if r["owner_source"] == "env"})
+    if env_owners:
+        findings.append(
+            {
+                "severity": "P3",
+                "in_scope": True,
+                "status": "OPEN",
+                "description": f"{UNVERIFIED_OWNER} (owner(s): {', '.join(env_owners)}); "
+                "independence checks rely on that name.",
+            }
+        )
     if candidate.dirty:
         findings.append(
             {
@@ -448,15 +542,17 @@ def build_record(
     no_mutation = all(not (r["kind"] == "check" and r["changed_paths"]) for r in included)
     claim = "blocked" if not all_pass else ("partial" if candidate.dirty else "verified")
     categories = {
-        name: {"applicability": "REQUIRED", "reason": "Exercised by an included gate."}
-        if name in covered
-        else {
-            "applicability": "NOT APPLICABLE",
-            "reason": _NOT_APPLICABLE_REASON.get(
-                name,
-                f"No included gate exercises {name}; this record certifies only the listed gates.",
-            ),
-        }
+        name: (
+            {"applicability": "REQUIRED", "reason": "Exercised by an included gate."}
+            if name in covered
+            else {
+                "applicability": "NOT APPLICABLE",
+                "reason": _NOT_APPLICABLE_REASON.get(
+                    name,
+                    f"No included gate exercises {name}; this record certifies only the listed gates.",
+                ),
+            }
+        )
         for name in CATEGORIES
     }
     record = {
@@ -484,9 +580,11 @@ def build_record(
             ),
             "integration": _phase(
                 no_mutation,
-                "No read-only gate changed a tracked file."
-                if no_mutation
-                else "A read-only gate changed tracked files.",
+                (
+                    "No read-only gate changed a tracked file."
+                    if no_mutation
+                    else "A read-only gate changed tracked files."
+                ),
             ),
             "final": _phase(
                 not candidate.dirty, f"Candidate re-read at export: {candidate.revision}."
@@ -504,7 +602,7 @@ def build_record(
             "recovery": "",
             "evidence": [],
         },
-        "fashion_theme_team": _ftt_verdict(included, reviews, candidate, owners),
+        "fashion_theme_team": _ftt_verdict(included, all_pass, reviews, candidate, owners),
         "cli": {
             "harness_sha256": harness,
             "stale_runs_excluded": stale,
@@ -512,7 +610,8 @@ def build_record(
             "candidate": candidate.to_dict(),
             "limitation": "The session ledger is unsigned. Each status is re-derived from its "
             "hashed log, but someone with write access to both could still forge a run. "
-            "Reviewer identity is self-declared.",
+            "Reviewer identity is self-declared, and so is a gate owner taken from "
+            "SKYYROSE2_GATE_OWNER (see fashion_theme_team.owner_sources).",
         },
     }
     return record
