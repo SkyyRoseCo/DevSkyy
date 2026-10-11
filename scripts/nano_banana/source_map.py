@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+from skyyrose.core.paths import REPO_ROOT, WP_PRODUCTS_DIR
+
+PROJECT_ROOT = REPO_ROOT
 SPLIT_DIR = PROJECT_ROOT / "assets" / "techflats" / "split"
-PRODUCTS_DIR = (
-    PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "assets" / "images" / "products"
-)
+PRODUCTS_DIR = WP_PRODUCTS_DIR
 
 
 # ── AUTHORITATIVE SOURCE MAP ────────────────────────────────────────────────
