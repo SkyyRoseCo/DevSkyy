@@ -60,6 +60,25 @@ async def _register(client, username=None, email=None, password="StrongP@ss1"):
     )
 
 
+class TestRegisterRoleNotSelfAssignable:
+    @pytest.mark.asyncio
+    async def test_client_supplied_role_is_ignored(self, client):
+        from security.jwt_oauth2_auth import jwt_manager
+
+        resp = await client.post(
+            "/api/v1/auth/register",
+            json={
+                "username": f"esc_{uuid.uuid4().hex[:8]}",
+                "email": f"esc_{uuid.uuid4().hex[:8]}@test.co",
+                "password": "StrongP@ss1",
+                "roles": ["super_admin"],
+            },
+        )
+        assert resp.status_code == 201, resp.text
+        payload = jwt_manager.validate_token(resp.json()["access_token"])
+        assert [str(r) for r in payload.roles] == ["api_user"]
+
+
 class TestRegisterEndpoint:
     @pytest.mark.asyncio
     async def test_register_success(self, client):

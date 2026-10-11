@@ -260,8 +260,8 @@ class LightingNormalizationService:
         img1 = img1.convert("RGB")
         img2 = img2.convert("RGB")
 
-        pixels1 = list(img1.getdata())
-        pixels2 = list(img2.getdata())
+        pixels1 = list(img1.get_flattened_data())
+        pixels2 = list(img2.get_flattened_data())
 
         if len(pixels1) == 0:
             return 0.0

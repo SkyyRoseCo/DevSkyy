@@ -180,23 +180,43 @@ def test_extract_footer_legal_links_excludes_anchors() -> None:
 
 
 # ---------------------------------------------------------------------------
-# extract_collections
+# registry_collections
 # ---------------------------------------------------------------------------
 
 
-def test_extract_collections_returns_sorted_distinct(tmp_path: Path) -> None:
-    csv_path = tmp_path / "catalog.csv"
-    csv_path.write_text(
-        "sku,collection\nbr-001,black-rose\nlh-001,love-hurts\nbr-002,black-rose\n",
-        encoding="utf-8",
+def _fake_registry(monkeypatch, collections_by_sku: dict[str, str | None]) -> None:
+    monkeypatch.setattr(guide, "all_skus", lambda: sorted(collections_by_sku))
+    monkeypatch.setattr(
+        guide, "get_product", lambda sku: {"sku": sku, "collection": collections_by_sku[sku]}
     )
-    assert guide.extract_collections(csv_path) == ["black-rose", "love-hurts"]
 
 
-def test_extract_collections_empty_csv_returns_empty(tmp_path: Path) -> None:
-    csv_path = tmp_path / "catalog.csv"
-    csv_path.write_text("sku,collection\n", encoding="utf-8")
-    assert guide.extract_collections(csv_path) == []
+def test_registry_collections_returns_sorted_distinct(monkeypatch) -> None:
+    _fake_registry(
+        monkeypatch, {"lh-001": "love-hurts", "br-001": "black-rose", "br-002": "black-rose"}
+    )
+    assert guide.registry_collections() == ["black-rose", "love-hurts"]
+
+
+def test_registry_collections_drops_blank_values(monkeypatch) -> None:
+    _fake_registry(monkeypatch, {"br-001": "", "br-002": None, "br-003": "  "})
+    assert guide.registry_collections() == []
+
+
+def test_generate_reads_collections_from_the_registry(monkeypatch) -> None:
+    """With no explicit list, generate() sources collections through get_product."""
+    _fake_registry(monkeypatch, {"zz-001": "zz-registry-only"})
+    pages = guide.generate(theme_dir=THEME_DIR)["pages"]
+    assert pages["collection-zz-registry-only"]["url"] == "/collections/zz-registry-only/"
+
+
+def test_real_registry_has_the_four_collections() -> None:
+    assert guide.registry_collections() == [
+        "black-rose",
+        "kids-capsule",
+        "love-hurts",
+        "signature",
+    ]
 
 
 # ---------------------------------------------------------------------------
@@ -277,7 +297,7 @@ def test_build_intents_link_matches_page_url() -> None:
 # ---------------------------------------------------------------------------
 
 
-def _write_minimal_theme_fixture(tmp_path: Path, *, collections: str = "black-rose\n") -> Path:
+def _write_minimal_theme_fixture(tmp_path: Path) -> Path:
     theme_dir = tmp_path / "skyyrose-flagship"
     (theme_dir / "inc").mkdir(parents=True)
     (theme_dir / "data").mkdir(parents=True)
@@ -287,17 +307,13 @@ def _write_minimal_theme_fixture(tmp_path: Path, *, collections: str = "black-ro
         _REGISTRY_FIXTURE, encoding="utf-8"
     )
     (theme_dir / "footer.php").write_text(_FOOTER_FIXTURE, encoding="utf-8")
-    (theme_dir / "data" / "skyyrose-catalog.csv").write_text(
-        "sku,collection\nbr-001," + collections if collections else "sku,collection\n",
-        encoding="utf-8",
-    )
     return theme_dir
 
 
 def test_generate_raises_when_catalog_has_zero_collections(tmp_path: Path) -> None:
-    theme_dir = _write_minimal_theme_fixture(tmp_path, collections="")
+    theme_dir = _write_minimal_theme_fixture(tmp_path)
     with pytest.raises(SystemExit, match="0 collections"):
-        guide.generate(theme_dir=theme_dir)
+        guide.generate(theme_dir=theme_dir, collections=[])
 
 
 def test_generate_raises_when_required_page_missing(tmp_path: Path) -> None:
@@ -324,11 +340,8 @@ def test_generate_raises_when_required_page_missing(tmp_path: Path) -> None:
         "<?php esc_html_e( 'Privacy Policy', 'skyyrose' ); ?></a></li>",
         encoding="utf-8",
     )
-    (theme_dir / "data" / "skyyrose-catalog.csv").write_text(
-        "sku,collection\nbr-001,black-rose\n", encoding="utf-8"
-    )
     with pytest.raises(SystemExit, match="required page"):
-        guide.generate(theme_dir=theme_dir)
+        guide.generate(theme_dir=theme_dir, collections=["black-rose"])
 
 
 def test_generate_raises_when_page_registry_too_small(tmp_path: Path) -> None:
@@ -341,18 +354,15 @@ def test_generate_raises_when_page_registry_too_small(tmp_path: Path) -> None:
         encoding="utf-8",
     )
     (theme_dir / "footer.php").write_text(_FOOTER_FIXTURE, encoding="utf-8")
-    (theme_dir / "data" / "skyyrose-catalog.csv").write_text(
-        "sku,collection\nbr-001,black-rose\n", encoding="utf-8"
-    )
     with pytest.raises(SystemExit, match="registered pages parsed"):
-        guide.generate(theme_dir=theme_dir)
+        guide.generate(theme_dir=theme_dir, collections=["black-rose"])
 
 
 def test_generate_raises_when_footer_has_no_legal_links(tmp_path: Path) -> None:
     theme_dir = _write_minimal_theme_fixture(tmp_path)
     (theme_dir / "footer.php").write_text("<p>no legal links here</p>", encoding="utf-8")
     with pytest.raises(SystemExit, match="footer legal links"):
-        guide.generate(theme_dir=theme_dir)
+        guide.generate(theme_dir=theme_dir, collections=["black-rose"])
 
 
 # ---------------------------------------------------------------------------
