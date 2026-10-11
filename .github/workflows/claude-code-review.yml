@@ -82,9 +82,20 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
+          claude_args: '--debug'  # TEMPORARY (PR #1030 diagnosis)
           prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
+
+      # TEMPORARY (PR #1030 diagnosis): only hook/error lines of the CLI debug log.
+      - name: "DIAG: CLI debug log (hooks and errors only)"
+        if: always()
+        run: |
+          for f in "$HOME"/.claude/debug/*.txt; do
+            [ -f "$f" ] || continue
+            echo "== $f"
+            grep -iE 'hook|error|fail|block|denied|invalid|exception|exit' "$f" | cut -c1-400 | head -150
+          done
 
       # One retry absorbs a transient action/API outage — the 2026-10-11 00:07-00:30Z
       # window had every run exit in ~0.5s at $0. Only a FAST failure is retried (a
@@ -116,6 +127,7 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
+          claude_args: '--debug'  # TEMPORARY (PR #1030 diagnosis)
           prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
