@@ -131,7 +131,8 @@ def validate_ai_assets(slug: str, ai_motion: dict, status: str, max_bytes: int) 
 
 def film_receipt(slug: str, source_file: str) -> dict:
     """The hash-pinned founder authorization the poster's eligibility record names."""
-    record = json.loads(ELIGIBILITY.read_text(encoding="utf-8"))["assets"].get(source_file)
+    assets = json.loads(ELIGIBILITY.read_text(encoding="utf-8")).get("assets")
+    record = assets.get(source_file) if isinstance(assets, dict) else None
     if not isinstance(record, dict):
         raise ValueError(f"{slug} film has no founder authorization")
     binding = record.get("authorization")
@@ -170,7 +171,9 @@ def validate_founder_film(slug: str, ai_motion: dict, source_file: str, max_byte
         raise ValueError(f"{slug} film is not bound to its authorized master")
     root = f"assets/video/collection-heroes/approved/{slug}/{FILM_RELEASE}/"
     web = ai_motion.get("web")
-    files = [record.get("file") for record in web] if isinstance(web, list) else []
+    if not isinstance(web, list) or not all(isinstance(record, dict) for record in web):
+        raise ValueError(f"{slug} film delivery violates its approval boundary")
+    files = [record.get("file") for record in web]
     if sorted(files) != [root + "hero.mp4", root + "hero.webm"]:
         raise ValueError(f"{slug} film delivery violates its approval boundary")
     if set(receipt.get("assets", {})) != {*files, source_file}:
@@ -187,6 +190,18 @@ def validate_founder_film(slug: str, ai_motion: dict, source_file: str, max_byte
         granted = receipt["assets"][file]
         if granted != {"sha256": hashes[file], "role": role, "source_sha256": origin}:
             raise ValueError(f"{slug} receipt does not authorize {file}")
+
+
+MEDIA_GATE = "inc/v2-media-eligibility.php"
+
+
+def is_media_gate_filter(relative: str, source: str) -> bool:
+    """The media gate mentions <video> once, to parse rendered tags; any more is an emitter."""
+    if relative != MEDIA_GATE or "function skyyrose2_media_filter_html(" not in source:
+        return False
+    if len(re.findall(r"<\s*video\b", source, re.IGNORECASE)) != 1:
+        raise ValueError(f"{MEDIA_GATE} emits video outside its tag filter")
+    return True
 
 
 def validate_home_journal(source: str) -> None:
@@ -371,11 +386,7 @@ def main() -> int:
         if relative == "template-parts/home/editorial-journal.php":
             validate_home_journal(source)
             continue
-        # The media gate parses <video> tags in rendered output to vet their sources.
-        if (
-            relative == "inc/v2-media-eligibility.php"
-            and "function skyyrose2_media_filter_html(" in source
-        ):
+        if is_media_gate_filter(relative, source):
             continue
         if relative == "template-parts/home/editorial-collection.php":
             validate_home_collection(source)

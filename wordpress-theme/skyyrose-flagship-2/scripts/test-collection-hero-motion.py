@@ -117,6 +117,36 @@ class FounderFilmTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "hash drift"):
                 self.check(motion)
 
+    def test_non_object_web_entry_fails(self):
+        motion = copy.deepcopy(self.motion)
+        motion["web"][0] = motion["web"][0]["file"]
+        with self.assertRaisesRegex(ValueError, "approval boundary"):
+            self.check(motion)
+
+    def test_eligibility_without_assets_fails(self):
+        with patch.object(validator.json, "loads", return_value={}):
+            with self.assertRaisesRegex(ValueError, "no founder authorization"):
+                validator.film_receipt("signature", self.poster)
+
+
+class MediaGateExemptionTests(unittest.TestCase):
+    """The media gate is exempt from the emitter scan only while it emits no video."""
+
+    def setUp(self):
+        self.source = (validator.THEME / validator.MEDIA_GATE).read_text(encoding="utf-8")
+
+    def test_current_gate_is_exempt(self):
+        self.assertTrue(validator.is_media_gate_filter(validator.MEDIA_GATE, self.source))
+
+    def test_other_file_is_not_exempt(self):
+        self.assertFalse(validator.is_media_gate_filter("functions.php", self.source))
+
+    def test_added_video_in_gate_fails(self):
+        with self.assertRaisesRegex(ValueError, "emits video outside its tag filter"):
+            validator.is_media_gate_filter(
+                validator.MEDIA_GATE, self.source + '<VIDEO src="other.mp4"></video>'
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
