@@ -48,6 +48,7 @@ No. Motion is progressive enhancement. Purchase controls and route links remain 
 
 = 2.5.2 =
 * Homepage hero: the media gate admits the unchanged homepage hero still (house art) under its own hash-bound restoration receipt, so the arrival image renders again.
+* robots.txt no longer advertises Jetpack's news sitemap; the main sitemap is still listed.
 
 = 2.5.1 =
 * Express checkout no longer renders twice when WooPayments and Stripe express checkout are both active.

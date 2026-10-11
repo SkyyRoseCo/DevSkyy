@@ -775,6 +775,20 @@ function skyyrose2_seo_jetpack_metadata_enabled( $enabled ) {
 }
 
 /**
+ * Jetpack robots.txt filter: do not advertise the news sitemap.
+ *
+ * SkyyRose is a store, not a Google News publisher; Jetpack's news sitemap
+ * carries no news entries, so only the main sitemap is advertised. A supported
+ * SEO plugin keeps its own decision.
+ *
+ * @param bool $advertise Jetpack default.
+ * @return bool
+ */
+function skyyrose2_seo_jetpack_news_sitemap_in_robots( $advertise ) {
+	return skyyrose2_seo_has_authority_plugin() ? (bool) $advertise : false;
+}
+
+/**
  * Replace the legacy V2 hooks and register this adapter.
  */
 function skyyrose2_seo_indexing_bootstrap() {
@@ -792,6 +806,7 @@ function skyyrose2_seo_indexing_bootstrap() {
 	add_filter( 'jetpack_sitemap_post_types', 'skyyrose2_seo_jetpack_sitemap_post_types', 20 );
 	add_filter( 'jetpack_sitemap_skip_post', 'skyyrose2_seo_jetpack_sitemap_skip', 20, 2 );
 	add_filter( 'jetpack_sitemap_image_skip_post', 'skyyrose2_seo_jetpack_sitemap_image_skip', 20, 2 );
+	add_filter( 'jetpack_news_sitemap_include_in_robotstxt', 'skyyrose2_seo_jetpack_news_sitemap_in_robots', 20 );
 	add_filter( 'jetpack_enable_open_graph', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
 	add_filter( 'jetpack_seo_meta_tags_enabled', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
 	add_filter( 'jetpack_seo_custom_titles', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );

@@ -79,3 +79,26 @@ hero webp was already `release: true`.
 ## Not verified
 
 - Nothing deployed. Production and staging behavior after deploy is unverified.
+
+## Follow-up: robots.txt news sitemap (2026-10-11, same 2.5.2)
+
+**Authority:** founder asked to stop advertising Jetpack's news sitemap.
+`[live 2026-10-11]` robots.txt listed both `sitemap.xml` and `news-sitemap.xml`
+(Jetpack 16.3 `callback_action_do_robotstxt`); the news sitemap held only the
+homepage with no `<news:news>` tags.
+
+- `inc/seo-indexing.php`: `skyyrose2_seo_jetpack_news_sitemap_in_robots()`
+  returns false unless a supported SEO plugin is active (then passes through);
+  registered on `jetpack_news_sitemap_include_in_robotstxt` at priority 20 in
+  `skyyrose2_seo_indexing_bootstrap()`. The main sitemap line is unchanged.
+- `scripts/test-seo-indexing.php`: asserts registration, `false` without an
+  authority plugin and pass-through with one. RED before the runtime change (3
+  failures), GREEN after.
+
+| Entry                                    | Old sha256          | New sha256          | Why                                  |
+| ---------------------------------------- | ------------------- | ------------------- | ------------------------------------ |
+| baseline `inc/seo-indexing.php`          | `b9c022ed913ba104…` | `13cd1cf4609e29b1…` | News-sitemap robots.txt filter.      |
+| baseline `scripts/test-seo-indexing.php` | `01d262fdafa1c592…` | `ccdb9453f2181a12…` | Registration and pass-through cases. |
+| input `runtime-php-baseline.json`        | `0c4b3b9d1e047068…` | `5411b4a6d8723dd2…` | Follows the two entries above.       |
+
+Version stays 2.5.2; CHANGELOG and readme 2.5.2 entries gained one line each.

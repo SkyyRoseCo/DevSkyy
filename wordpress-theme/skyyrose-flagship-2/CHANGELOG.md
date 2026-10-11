@@ -13,6 +13,10 @@ All notable changes to SkyyRose Flagship 2 are documented here.
   changed byte or changed receipt fails closed.
 - `data/v2-canonical-media.json` gains the exact hero entry; its code pin moves
   from `b791146c…` to `b4957a6f…` in the gate and the package mirror.
+- robots.txt: Jetpack's news sitemap is no longer advertised
+  (`jetpack_news_sitemap_include_in_robotstxt` returns false unless a supported
+  SEO plugin owns the decision). SkyyRose is not a news publisher; the main
+  sitemap line stays.
 
 ## 2.5.1 — Search discovery, consented analytics, express-checkout dedupe — 2026-10-10
 
