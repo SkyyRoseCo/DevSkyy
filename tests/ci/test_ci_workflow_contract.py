@@ -322,6 +322,9 @@ def test_guard_fails_a_run_that_never_reached_the_model(
     result = run_script(script, tmp_path, {"EXECUTION_FILE": str(execution_file)})
     assert (result.returncode == 0) is passes, result.stdout + result.stderr
     assert message in result.stdout
+    if message == "never reached the model":
+        # The red check must carry the fix: a dead token is not a code problem.
+        assert "gh secret set CLAUDE_CODE_OAUTH_TOKEN" in result.stdout
 
 
 def _git(*args: str, cwd: Path) -> str:
