@@ -7,9 +7,11 @@ fetch() and the REA runner are replaced with in-memory fakes, so nothing touches
 from __future__ import annotations
 
 import hashlib
+import http.client
 import importlib.util
 import tempfile
 import unittest
+import unittest.mock
 from pathlib import Path
 
 spec = importlib.util.spec_from_file_location(
@@ -316,9 +318,6 @@ class ParityTests(unittest.TestCase):
 
 class FetchTests(unittest.TestCase):
     def test_truncated_body_is_reported_as_unreachable(self) -> None:
-        import http.client
-        from unittest import mock
-
         class Truncated:
             status = 200
 
@@ -331,7 +330,7 @@ class FetchTests(unittest.TestCase):
             def __exit__(self, *exc) -> None:
                 return None
 
-        with mock.patch.object(vp.OPENER, "open", return_value=Truncated()):
+        with unittest.mock.patch.object(vp.OPENER, "open", return_value=Truncated()):
             self.assertEqual(vp.fetch("https://skyyrose.co/"), (0, b""))
 
 
