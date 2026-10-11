@@ -1,0 +1,18 @@
+{
+  "schema": "skyyrose.v2.site-art-restoration.v1",
+  "scope": "UNCHANGED_EXISTING_V2_HOMEPAGE_ART",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "source": {
+    "path": "assets/images/house-monument-20260928.webp",
+    "sha256": "05e9890ba85971569b7a422b892e3db3d51ae53ac6efb6bdd2d55f85c7859811"
+  },
+  "user_request": "wherr my homepage hero? my scenes?",
+  "interpretation": "Restore the existing homepage art to its existing slot; no new pixel acceptance or garment authority is asserted.",
+  "provenance": {
+    "v2_source_commit": "15d6f012a",
+    "v2_current_source_commit": "3e5c66fc5",
+    "v1_same_named_source_found": false
+  },
+  "product_facts": "NOT_APPLICABLE_NO_MERCHANDISE",
+  "new_generation": false
+}

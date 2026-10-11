@@ -3,7 +3,7 @@ Contributors: skyyrose
 Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 2.5.1
+Stable tag: 2.5.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: e-commerce, custom-menu, featured-images, rtl-language-support, accessibility-ready
@@ -45,6 +45,10 @@ Yes. It is idempotent and reuses exact existing pages and menus without replacin
 No. Motion is progressive enhancement. Purchase controls and route links remain available with JavaScript disabled or reduced motion enabled.
 
 == Changelog ==
+
+= 2.5.2 =
+* Homepage hero: the media gate admits the unchanged homepage hero still (house art) under its own hash-bound restoration receipt, so the arrival image renders again.
+* robots.txt no longer advertises Jetpack's news sitemap; the main sitemap is still listed.
 
 = 2.5.1 =
 * Express checkout no longer renders twice when WooPayments and Stripe express checkout are both active.

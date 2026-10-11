@@ -352,6 +352,9 @@ skyyrose2_test_assert( 'skyyrose2_seo_jetpack_sitemap_image_skip' === $image_fil
 foreach ( array( 'wp_sitemaps_add_provider', 'jetpack_sitemap_post_types', 'jetpack_sitemap_skip_post', 'jetpack_sitemap_image_skip_post', 'jetpack_enable_open_graph', 'jetpack_seo_meta_tags_enabled', 'jetpack_seo_custom_titles' ) as $hook ) {
 	skyyrose2_test_assert( in_array( $hook, array_column( $skyyrose2_test_filters, 'hook' ), true ), "Filter {$hook} was not registered." );
 }
+$news_filter = array_values( array_filter( $skyyrose2_test_filters, static fn( $f ) => 'jetpack_news_sitemap_include_in_robotstxt' === $f['hook'] ) );
+skyyrose2_test_assert( isset( $news_filter[0] ) && 'skyyrose2_seo_jetpack_news_sitemap_in_robots' === $news_filter[0]['callback'] && 20 === $news_filter[0]['priority'], 'Jetpack news-sitemap robots.txt filter must be registered.' );
+skyyrose2_test_assert( function_exists( 'skyyrose2_seo_jetpack_news_sitemap_in_robots' ) && false === skyyrose2_seo_jetpack_news_sitemap_in_robots( true ), 'robots.txt must not advertise the Jetpack news sitemap (not a news publisher).' );
 skyyrose2_test_assert( '' === skyyrose2_seo_resolved_context()['description'], 'The WordPress tagline must never become a meta description (no tagline is authorised).' );
 skyyrose2_test_assert( ! str_contains( file_get_contents( dirname( __DIR__ ) . '/inc/seo-indexing.php' ), "get_bloginfo( 'description' )" ), 'Adapter must not read the tagline option.' );
 
@@ -584,6 +587,7 @@ Jetpack_SEO_Posts::$noindex = array();
 define( 'AIOSEO_VERSION', 'test' );
 skyyrose2_test_assert( skyyrose2_seo_has_authority_plugin(), 'Supported SEO plugins must become the sole metadata/schema authority.' );
 skyyrose2_test_assert( 'User-agent: *' === skyyrose2_seo_robots_txt( 'User-agent: *', true ), 'Theme must defer sitemap advertising to the active SEO plugin.' );
+skyyrose2_test_assert( function_exists( 'skyyrose2_seo_jetpack_news_sitemap_in_robots' ) && true === skyyrose2_seo_jetpack_news_sitemap_in_robots( true ) && false === skyyrose2_seo_jetpack_news_sitemap_in_robots( false ), 'News-sitemap robots.txt decision must pass through under an authority plugin.' );
 skyyrose2_test_assert( array() === skyyrose2_seo_schema_graph(), 'Theme schema must be silent under an authority plugin.' );
 ob_start();
 skyyrose2_seo_render_meta();

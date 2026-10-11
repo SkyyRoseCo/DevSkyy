@@ -25,11 +25,18 @@ function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = 
 	if ( in_array( $hash, $inventory['disallowed_legacy_sha256'] ?? array(), true ) ) { return false; }
 	if ( 'FOUNDER_AUTHORIZED_COLLECTION_FILM' === ( $record['status'] ?? '' ) ) { return skyyrose2_founder_film_allowed( $relative, $record, $role, $sku ); }
 	if ( 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ) { return skyyrose2_media_delivery_derivative_allowed( $relative, $record, $role, $sku ); }
-	if ( in_array( $kind, array( 'housemark', 'font', 'icon' ), true ) ) {
+	if ( in_array( $kind, array( 'housemark', 'font', 'icon', 'house_art' ), true ) ) {
 		$authority = SKYYROSE2_DIR . '/data/v2-canonical-media.json';
-		if ( ! is_file( $authority ) || is_link( $authority ) || ! hash_equals( 'b791146c07de7ae21e12521ecc103ae958f0cbd9a2caa6036f5b539401e0a8bc', hash_file( 'sha256', $authority ) ) ) { return false; }
+		if ( ! is_file( $authority ) || is_link( $authority ) || ! hash_equals( 'b4957a6f9210c6c906990a974e7f3f432cc4b2fe9d9ae94d09958e590c1a673e', hash_file( 'sha256', $authority ) ) ) { return false; }
 		$canonical = json_decode( file_get_contents( $authority ), true );
 		$exact = $canonical['assets'][ $relative ] ?? null;
+		// House art is the unchanged homepage hero only: no SKU, no collection, no
+		// other role, and its own hash-bound restoration receipt.
+		if ( 'house_art' === $kind ) {
+			if ( $sku || array( 'homepage_hero' ) !== ( $record['roles'] ?? null ) || array() !== ( $record['skus'] ?? null ) || array() !== ( $record['collections'] ?? null ) ) { return false; }
+			$restore = skyyrose2_media_usage_document( $record['restoration_receipt'] ?? null );
+			if ( ! $restore || 'skyyrose.v2.site-art-restoration.v1' !== ( $restore['schema'] ?? '' ) || 'UNCHANGED_EXISTING_V2_HOMEPAGE_ART' !== ( $restore['scope'] ?? '' ) || array( 'path' => $relative, 'sha256' => $hash ) !== ( $restore['source'] ?? null ) || 'wherr my homepage hero? my scenes?' !== ( $restore['user_request'] ?? '' ) || 'https://staging-7e48-skyyrose.wpcomstaging.com' !== ( $restore['target'] ?? '' ) ) { return false; }
+		}
 		return is_array( $exact ) && $exact == $record && ( ! $role || in_array( $role, $record['roles'], true ) );
 	}
 	if ( 'FOUNDER_ACCEPTED' === ( $record['status'] ?? '' ) ) { return skyyrose2_founder_card_allowed( $relative, $record, $role, $sku ); }
