@@ -21,7 +21,7 @@ import socket
 import subprocess
 import time
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, UTC
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -30,6 +30,8 @@ BUILD_INPUTS_REL = "tools/v2-source-certification/build-inputs.json"
 REGISTRY_REL = "wordpress-theme/skyyrose-flagship/data/logo-registry.json"
 FIXTURE_SCRIPT_REL = "tools/v2-source-certification/prepare-native-fixture.py"
 FIXTURE_PINS_REL = "tools/v2-runtime/fixtures/pdp-native-template-hashes.json"
+# The hidden lockfile `npm ci` writes: it names every installed package and version.
+DEPS_LOCK_REL = f"{THEME_REL}/node_modules/.package-lock.json"
 NODE_DOWNLOAD = "https://nodejs.org/dist/v{version}/node-v{version}-darwin-arm64.tar.gz"
 
 
@@ -114,6 +116,7 @@ class Toolchain:
     php: str | None
     pins: dict[str, str]
     mismatches: tuple[str, ...] = field(default_factory=tuple)
+    deps_sha256: str | None = None
 
     @property
     def ok(self) -> bool:
@@ -210,7 +213,18 @@ def resolve_toolchain(repo: Path) -> Toolchain:
         php=php,
         pins=pins,
         mismatches=tuple(mismatches),
+        deps_sha256=deps_digest(repo),
     )
+
+
+def deps_digest(repo: Path) -> str | None:
+    """
+    sha256 of the theme's installed-deps lockfile (``node_modules/.package-lock.json``),
+    or None when it is absent. It identifies the installed node_modules, which the
+    candidate id (tracked files only) does not cover.
+    """
+    lock = repo / DEPS_LOCK_REL
+    return sha256_file(lock) if lock.is_file() else None
 
 
 def harness_sha256() -> str:
@@ -230,10 +244,12 @@ def harness_sha256() -> str:
 
 
 def environment_label(tc: Toolchain) -> str:
+    """Runs whose label differs from the export's (other tools, harness or deps) do not PASS."""
     v = tc.versions()
+    deps = tc.deps_sha256[:12] if tc.deps_sha256 else "none"
     return (
         f"local:{socket.gethostname()};node={v['node']};npm={v['npm']};"
-        f"python={v['python']};php={v['php']};harness={harness_sha256()[:12]}"
+        f"python={v['python']};php={v['php']};harness={harness_sha256()[:12]};deps={deps}"
     )
 
 
