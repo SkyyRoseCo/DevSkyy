@@ -7,7 +7,7 @@
 #   TOGETHER_API_KEY        — FLUX.2 via Together AI (optional)
 #   FAL_KEY                 — fal.ai models (optional)
 
-google-genai>=1.14.0
+google-genai>=2.29,<3
 Pillow>=12.3.0
 together>=2.24.1
 openai>=2.20,<3
