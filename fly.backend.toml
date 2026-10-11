@@ -96,15 +96,18 @@ kill_timeout = '30s'
     hard_limit = 250
     soft_limit = 200
 
-# Health checks — both routes verified live in main_enterprise.py:437,459
-# (a third route, /live, also exists at :464 but is not checked here, mirroring
-# fly.toml's existing convention of checking /health + /ready only).
+# Health checks — both target DB-free routes (main_enterprise.py /live, /ready).
+# Do NOT point a check at /health: it runs db.health_check() on every call, and a
+# 15s probe kept the Neon compute from ever reaching its 5-min scale-to-zero idle,
+# exhausting the Free 100 CU-h/month quota (backend crash-loop, 2026-09-28).
+# /health also always returns 200 (DB status is only a field), so checking it
+# never detected a DB outage anyway.
 [[http_service.checks]]
   grace_period = '60s'
   interval = '15s'
   timeout = '10s'
   method = 'GET'
-  path = '/health'
+  path = '/live'
   protocol = 'http'
   tls_skip_verify = false
 
