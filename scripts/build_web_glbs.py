@@ -15,7 +15,9 @@ product SOT) this script:
 ``--prepacked-dir`` (opt-in) covers SKUs whose uncompressed source is gone but an
 already-packed copy exists: the sheen patch is applied to that file's JSON chunk only
 (meshopt/KTX2 payload carried over byte-for-byte, no re-encode) and the same gate decides.
-A source GLB always takes precedence over a prepacked copy.
+A source GLB always takes precedence over a prepacked copy. A prepacked fallback
+never replaces an existing output unless --force is explicitly supplied; attempt
+reports cannot weaken this guard, even after failed or partial runs.
 
 Local files only: zero network, zero paid calls, zero WordPress/WooCommerce writes. It never
 writes into ``renders/3d/web`` (the legacy hand-built set) or over the source directory.
@@ -41,7 +43,6 @@ import subprocess
 import sys
 import tempfile
 from collections import Counter
-from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -92,7 +93,6 @@ class BuildContext:
     work_dir: Path
     binary: Path
     prepacked_dir: Path | None
-    prior_kinds: Mapping[str, str]
     force: bool
 
 
@@ -117,7 +117,7 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     parser.add_argument(
         "--force",
         action="store_true",
-        help="allow a prepacked patch to replace an output a previous run built from source",
+        help="allow a prepacked patch to replace an existing output",
     )
     parser.add_argument("--report", type=Path, default=None)
     parser.add_argument("--registry", type=Path, default=None, help=argparse.SUPPRESS)
@@ -229,12 +229,12 @@ def _build_one(
     if not src.is_file():
         return _failed(entry, "missing_source", f"source not found: {src}")
     if source_kind == "prepacked" and not context.force:
-        if context.prior_kinds.get(sku) == "source":
+        if (context.out_dir / f"{sku}.glb").exists():
             return _failed(
                 entry,
                 "refused_downgrade",
-                "a previous run built this SKU from its uncompressed source; refusing to replace "
-                "it with a JSON-patched prepacked copy (pass --force to override)",
+                "an output already exists; refusing to replace it with a JSON-patched "
+                "prepacked copy (pass --force to override)",
             )
     try:
         match = classify_product(product)
@@ -316,25 +316,6 @@ def summarise(entries: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def prior_source_kinds(path: Path) -> dict[str, str]:
-    """Read the previous run's report so a prepacked patch cannot silently downgrade it."""
-    try:
-        report = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return {}
-    entries = report.get("entries") if isinstance(report, dict) else None
-    if not isinstance(entries, list):
-        return {}
-    return {
-        entry["sku"]: entry["source_kind"]
-        for entry in entries
-        if isinstance(entry, dict)
-        and isinstance(entry.get("sku"), str)
-        and isinstance(entry.get("source_kind"), str)
-        and entry.get("status") == "ok"
-    }
-
-
 def write_report(path: Path, report: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     staging = path.with_suffix(path.suffix + ".tmp")
@@ -345,9 +326,9 @@ def write_report(path: Path, report: dict[str, Any]) -> None:
 def print_table(entries: list[dict[str, Any]]) -> None:
     print(f"{'sku':<10}{'class':<14}{'keyword':<14}{'src MB':>8}{'out MB':>8}  status")
     for e in entries:
-        src_mb = f"{e['src_bytes'] / 1e6:.2f}" if e["src_bytes"] else "-"
-        out_mb = f"{e['out_bytes'] / 1e6:.2f}" if e["out_bytes"] else "-"
-        klass, keyword = e["fabric_class"] or "-", e["matched_keyword"] or "-"
+        src_mb = f"{e['src_bytes'] / 1e6:.2f}" if e.get("src_bytes") else "-"
+        out_mb = f"{e['out_bytes'] / 1e6:.2f}" if e.get("out_bytes") else "-"
+        klass, keyword = e.get("fabric_class") or "-", e.get("matched_keyword") or "-"
         print(f"{e['sku']:<10}{klass:<14}{keyword:<14}{src_mb:>8}{out_mb:>8}  {e['status']}")
 
 
@@ -378,7 +359,6 @@ def main(argv: list[str] | None = None) -> int:
     except (GltfpackError, subprocess.SubprocessError, OSError) as exc:
         print(f"build_web_glbs: {binary} is not runnable: {exc}", file=sys.stderr)
         return 2
-    prior_kinds = prior_source_kinds(report_path)
     with tempfile.TemporaryDirectory(dir=args.out_dir, prefix=".build-") as scratch:
         context = BuildContext(
             src_dir=args.src_dir,
@@ -386,7 +366,6 @@ def main(argv: list[str] | None = None) -> int:
             work_dir=Path(scratch),
             binary=binary,
             prepacked_dir=args.prepacked_dir,
-            prior_kinds=prior_kinds,
             force=args.force,
         )
         entries = [build_one(sku, products[sku], context, anisotropy.get(sku)) for sku in skus]

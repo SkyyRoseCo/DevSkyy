@@ -301,6 +301,12 @@ def test_prepacked_refuses_to_downgrade_a_source_built_output(tmp_path, monkeypa
     assert code == 1
     assert report["entries"][0]["status"] == "refused_downgrade"
 
+    repeated_code, repeated_report = _run(
+        tmp_path, registry, src, "--prepacked-dir", str(prepacked)
+    )
+    assert repeated_code == 1
+    assert repeated_report["entries"][0]["status"] == "refused_downgrade"
+
     forced_code, forced_report = _run(
         tmp_path, registry, src, "--prepacked-dir", str(prepacked), "--force"
     )
@@ -323,3 +329,42 @@ def test_broken_gltfpack_publishes_nothing_and_still_writes_the_report(tmp_path,
     assert report["entries"][0]["status"] == "pack_failed"
     assert report["tool"]["version"] == "unknown"
     assert not (tmp_path / "web-v2" / "br-006.glb").exists()
+
+
+def test_unexpected_exception_reaches_cli_summary(tmp_path, monkeypatch):
+    registry = _registry(tmp_path, {"br-006": SATIN})
+    src = _sources(tmp_path, ["br-006"])
+    _fake_gltfpack(tmp_path, monkeypatch, output=build_triangle_glb())
+
+    def broken(*args):
+        raise RuntimeError("synthetic unexpected error")
+
+    monkeypatch.setattr(cli, "_build_one", broken)
+    code, report = _run(tmp_path, registry, src)
+    assert code == 1
+    assert report["entries"][0]["status"] == "error"
+
+
+@pytest.mark.parametrize(
+    "report_body",
+    [
+        None,
+        {"entries": []},
+        {"entries": [{"sku": "sg-011", "status": "ok", "source_kind": "source"}]},
+    ],
+)
+def test_existing_output_is_protected_without_complete_report(tmp_path, monkeypatch, report_body):
+    registry = _registry(tmp_path, {"br-006": SATIN})
+    src = _sources(tmp_path, [])
+    packed = pack_glb(web_ready_document(sheen=True), b"\0" * 4)
+    prepacked = _prepacked(tmp_path, "br-006", packed)
+    _fake_gltfpack(tmp_path, monkeypatch, output=packed)
+    out = tmp_path / "web-v2"
+    out.mkdir()
+    (out / "br-006.glb").write_bytes(packed)
+    if report_body is not None:
+        (out / "build_report.json").write_text(json.dumps(report_body))
+    code, report = _run(tmp_path, registry, src, "--prepacked-dir", str(prepacked))
+    assert code == 1
+    assert report["entries"][0]["status"] == "refused_downgrade"
+    assert (out / "br-006.glb").read_bytes() == packed
