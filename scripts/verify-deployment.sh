@@ -74,7 +74,7 @@ echo ""
 # 2. API Endpoints
 echo "2. API Endpoints"
 echo "----------------"
-check_url "$BASE_URL/api/v1/health" "Health Endpoint" || ((failures++))
+check_url "$BASE_URL/health" "Health Endpoint" || ((failures++))
 echo ""
 
 # 3. HuggingFace Spaces Content

@@ -24,7 +24,7 @@ Enterprise AI Platform - Next.js 16 + React 19 + TypeScript + Vercel
 - **Node.js:** 22.x or later
 - **Package Manager:** pnpm (v10.x)
 - **Git:** Latest version
-- **Vercel CLI:** `npm i -g vercel` (optional, for deployments)
+- **Fly CLI:** `brew install flyctl` (for deployments; app `devskyy-dashboard`)
 
 ### Quick Start
 
@@ -61,18 +61,8 @@ The dashboard will be available at http://localhost:3000
 | `test:e2e` | `playwright test` | Run end-to-end tests with Playwright |
 | `test:e2e:ui` | `playwright test --ui` | Run E2E tests with interactive UI |
 | **Deployment** |
-| `deploy` | `vercel` | Deploy to Vercel (preview) |
-| `deploy:prod` | `vercel --prod` | Deploy to production |
-| `deploy:auto` | `tsx scripts/deploy.ts` | Automated deployment with pre-checks (preview) |
-| `deploy:auto:prod` | `tsx scripts/deploy.ts --prod` | Automated deployment with pre-checks (production) |
-| **Vercel Project** |
-| `vercel:link` | `vercel link --project=devskyy` | Link local project to Vercel |
-| `vercel:link:auto` | `./scripts/link-vercel-project.sh` | Auto-link to devskyy project |
-| `vercel:env:pull` | `vercel env pull .env.local` | Download environment variables from Vercel |
-| `vercel:env:push` | `vercel env push .env.production` | Upload environment variables to Vercel |
-| `vercel:logs` | `vercel logs` | View deployment logs |
-| `vercel:inspect` | `vercel inspect` | Inspect deployment details |
-| `vercel:project` | `vercel project ls` | List all Vercel projects |
+| `deploy` | `flyctl deploy --config fly.toml --ha=false` | Type-check, lint, test, build, then deploy to Fly (`devskyy-dashboard`) |
+| `deploy:prod` / `deploy:auto` / `deploy:auto:prod` | `npm run deploy` | Aliases of `deploy` (single Fly production app) |
 
 ### Usage Examples
 
@@ -106,11 +96,8 @@ pnpm deploy:auto:prod
 
 **Environment Management:**
 ```bash
-# Pull latest env vars from Vercel
-pnpm vercel:env:pull
-
-# Push local env vars to Vercel
-pnpm vercel:env:push
+# Non-secret runtime config lives in fly.toml [env]; secrets are Fly secrets
+flyctl secrets list -a devskyy-dashboard
 ```
 
 ---
@@ -247,10 +234,8 @@ MAX_PARALLEL_INGESTION=5
 ### Pulling Environment Variables
 
 ```bash
-# Pull from Vercel (recommended)
-pnpm vercel:env:pull
-
-# This creates .env.local with all production secrets
+# Copy the template; production secrets live in Fly (flyctl secrets list -a devskyy-dashboard)
+cp .env.example .env.local
 ```
 
 ---
@@ -468,7 +453,8 @@ frontend/
 ├── next.config.js        # Next.js configuration
 ├── tailwind.config.ts    # Tailwind CSS config
 ├── tsconfig.json         # TypeScript config
-└── vercel.json           # Vercel deployment config
+├── Dockerfile            # Fly image (standalone Next.js)
+└── fly.toml              # Fly app config (devskyy-dashboard)
 ```
 
 ---
@@ -492,7 +478,6 @@ frontend/
 - **Forms:** Zod validation
 - **Charts:** Recharts
 - **Icons:** lucide-react
-- **Analytics:** @vercel/analytics, @vercel/speed-insights
 - **Testing:** Playwright
 
 ### Typography System
@@ -515,7 +500,7 @@ frontend/
 - **Documentation:** `/docs`
 - **Runbook:** `/docs/RUNBOOK.md`
 - **Environment Reference:** `/.env.example`
-- **Vercel Dashboard:** https://vercel.com/skkyroseco/devskyy
+- **Fly app:** `devskyy-dashboard` (`flyctl status -a devskyy-dashboard`)
 - **Production URL:** https://www.devskyy.app
 
 ---
