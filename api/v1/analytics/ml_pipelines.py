@@ -23,12 +23,17 @@ from typing import TYPE_CHECKING, Any
 from fastapi import APIRouter, Depends, Query
 from pydantic import BaseModel, Field
 
-from security import TokenPayload, require_roles
+from security import RoleChecker, TokenPayload, UserRole
 
 if TYPE_CHECKING:
     pass
 
 logger = logging.getLogger(__name__)
+
+# Real FastAPI dependency (security.require_roles is a decorator: wrapping it in
+# Depends() made FastAPI treat its `func` parameter as a query param, so
+# `?func=x` skipped authentication entirely).
+_require_analytics_admin = RoleChecker([UserRole.ADMIN, UserRole.SUPER_ADMIN])
 
 router = APIRouter(prefix="/analytics/ml", tags=["ML Analytics"])
 
@@ -307,7 +312,7 @@ async def get_ml_overview(
         default=TimeRange.HOURS_24,
         description="Time range for analytics",
     ),
-    current_user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    current_user: TokenPayload = Depends(_require_analytics_admin),
 ) -> MLOverviewResponse:
     """
     Get overview of all ML pipelines.
@@ -363,7 +368,7 @@ async def get_3d_analytics(
         default=None,
         description="Filter by provider",
     ),
-    current_user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    current_user: TokenPayload = Depends(_require_analytics_admin),
 ) -> ThreeDAnalyticsResponse:
     """
     Get 3D generation pipeline analytics.
@@ -428,7 +433,7 @@ async def get_description_analytics(
         default=None,
         description="Filter by provider",
     ),
-    current_user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    current_user: TokenPayload = Depends(_require_analytics_admin),
 ) -> DescriptionAnalyticsResponse:
     """
     Get image description pipeline analytics.
@@ -488,7 +493,7 @@ async def get_asset_analytics(
         default=TimeRange.HOURS_24,
         description="Time range for analytics",
     ),
-    current_user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    current_user: TokenPayload = Depends(_require_analytics_admin),
 ) -> AssetAnalyticsResponse:
     """
     Get asset processing pipeline analytics.
@@ -528,7 +533,7 @@ async def get_provider_analytics(
         default=TimeRange.HOURS_24,
         description="Time range for analytics",
     ),
-    current_user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    current_user: TokenPayload = Depends(_require_analytics_admin),
 ) -> ProviderAnalyticsResponse:
     """
     Get provider-level analytics.

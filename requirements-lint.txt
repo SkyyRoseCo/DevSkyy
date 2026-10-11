@@ -1,0 +1,8 @@
+# Exact lint toolchain for CI (.github/workflows/ci.yml `lint` job).
+# Unpinned installs drifted run to run (isort 8 vs 9 disagree on import order).
+# These are the versions main passes as of 2026-10-11; bump them together and
+# re-run `ruff check . && black --check . && isort --check-only .` on the tree.
+ruff==0.17.0
+black==26.10.1
+isort==9.0.2
+mypy==2.4.0
