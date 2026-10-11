@@ -48,6 +48,10 @@ jobs:
       - name: Run Claude Code Review
         id: claude-review
         continue-on-error: true
+        # DIAG (revert before merge): a model that does not exist makes the first
+        # attempt fail fast at $0 AFTER installing the plugin, exercising the retry.
+        env:
+          ANTHROPIC_MODEL: claude-diag-nonexistent-model
         uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268 # v1
         with:
           # Use the job-scoped token on internal PRs so workflow changes can be
