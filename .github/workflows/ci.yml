@@ -176,9 +176,12 @@ jobs:
       # tests/test_buglog_published_ids.py compares this tree's bug ids against
       # what main has published. actions/checkout fetches only the ref under test
       # at depth 1, so origin/main is absent and that gate would skip silently;
-      # it raises in CI instead, and this is what keeps it able to run.
+      # it raises in CI instead, and this is what keeps it able to run. The `+`
+      # force-updates the ref: on a push run checkout already set it to the tested
+      # commit, and when main advances mid-run the shallow fetch cannot prove a
+      # fast-forward and is rejected (main run 38147299555, 2026-10-11).
       - name: Fetch origin/main for published-id comparison
-        run: git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main
+        run: git fetch --no-tags --depth=1 origin +main:refs/remotes/origin/main
 
       - name: Run pytest with coverage
         run: |
@@ -259,9 +262,24 @@ jobs:
           # PyPI, and --strict also rejects --skip-editable). --strict then fails the
           # scan if any real dependency cannot be audited, instead of skipping it.
           uv pip freeze --color never --python "$(command -v python)" --exclude-editable > audit-requirements.txt
-          # One scan; the readable report is rendered from its JSON.
-          pip-audit $IGNORE --strict --no-deps --disable-pip -r audit-requirements.txt \
-            --format=json --output=pip-audit-results.json || pip_audit_status=$?
+          # One scan; the readable report is rendered from its JSON. pip-audit exits
+          # 1 both for findings and for a crash; only findings write the report, so a
+          # run with no report is a tool/network error (a PyPI connection reset on
+          # 2026-10-11 was misreported as FIXABLE). Retry that once; it never passes.
+          for attempt in 1 2; do
+            pip_audit_status=0
+            rm -f pip-audit-results.json
+            pip-audit $IGNORE --strict --no-deps --disable-pip -r audit-requirements.txt \
+              --format=json --output=pip-audit-results.json || pip_audit_status=$?
+            if [ "$pip_audit_status" -eq 0 ] || jq -e '.dependencies' pip-audit-results.json >/dev/null 2>&1; then
+              break
+            fi
+            echo "::warning::pip-audit attempt $attempt errored without a report (exit $pip_audit_status)"
+            if [ "$attempt" -eq 1 ]; then sleep 20; fi
+          done
+          report=false
+          if jq -e '.dependencies' pip-audit-results.json >/dev/null 2>&1; then report=true; fi
+          echo "pip_audit_report=$report" >> "$GITHUB_OUTPUT"
           jq -r '.dependencies[]? | select((.vulns // []) | length > 0)
                  | .name + " " + .version + ": "
                    + ([.vulns[] | .id + " (fix: " + ((.fix_versions // []) | join(",")) + ")"] | join("; "))' \
@@ -353,12 +371,19 @@ jobs:
         if: always()
         run: |
           failed=0
-          # Only fail when exit code is explicitly non-zero (empty = tool did not run = skip)
           pip_exit="${{ steps.pip_audit.outputs.pip_audit_exit }}"
+          pip_report="${{ steps.pip_audit.outputs.pip_audit_report }}"
           bandit_exit="${{ steps.bandit.outputs.bandit_exit }}"
           semgrep_exit="${{ steps.semgrep.outputs.semgrep_exit }}"
 
-          if [ -n "$pip_exit" ] && [ "$pip_exit" != "0" ]; then
+          # pip-audit is blocking, so a scan that never reported fails too (bug-230).
+          if [ -z "$pip_exit" ]; then
+            echo "::error::pip-audit did not run to completion — no verdict on dependency vulnerabilities"
+            failed=1
+          elif [ "$pip_exit" != "0" ] && [ "$pip_report" != "true" ]; then
+            echo "::error::pip-audit errored twice without producing a report (exit $pip_exit) — a tool or network failure, not a finding; re-run the job"
+            failed=1
+          elif [ "$pip_exit" != "0" ]; then
             echo "::error::pip-audit found FIXABLE dependency vulnerabilities (exit $pip_exit) — bump the flagged packages, or add a documented --ignore-vuln only if there is no upstream fix"
             failed=1
           fi
@@ -982,8 +1007,7 @@ jobs:
   summary:
     name: 📊 Pipeline Summary
     runs-on: ubuntu-latest
-    needs:
-      [lint, python-tests, security, frontend-tests, threejs-tests, wordpress-theme, e2e-tests, api-integration]
+    needs: [lint, python-tests, security, frontend-tests, threejs-tests, wordpress-theme, e2e-tests, api-integration]
     if: always()
 
     steps:

@@ -8,7 +8,10 @@ detection, the lint toolchain pins, and the review-bot retry/trigger shape.
 
 from __future__ import annotations
 
+import json
+import os
 import re
+import subprocess
 from fnmatch import fnmatch
 from pathlib import Path
 
@@ -219,3 +222,185 @@ def test_workflow_changes_run_every_filtered_job() -> None:
         for path in probes:
             assert any(fnmatch(path, p) for p in includes), (group, path)
             assert not any(fnmatch(path, p) for p in excludes), (group, path)
+
+
+BOT_ATTEMPTS = {
+    "claude-code-review.yml": ("claude-review", "claude-review-retry"),
+    "pr-agent.yml": ("pr-agent-run", "pr-agent-run-retry"),
+    "pr-green-loop.yml": ("green-loop-run", "green-loop-run-retry"),
+}
+BASH = "/bin/bash"
+
+
+def run_script(script: str, cwd: Path, env: dict[str, str]) -> subprocess.CompletedProcess:
+    # GitHub runs `run:` blocks as `bash -e {0}` when no shell is given.
+    return subprocess.run(
+        [BASH, "-e", "-c", script],
+        cwd=cwd,
+        env={"PATH": os.environ["PATH"], **env},
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+
+
+def step_named(workflow: dict, name: str) -> dict:
+    return next(s for s in all_steps(workflow) if s.get("name") == name)
+
+
+def test_review_bot_resets_plugin_state_before_its_retry() -> None:
+    """The first attempt registers the marketplace; re-adding it fails the retry."""
+    steps = all_steps(load("claude-code-review.yml"))
+    names = [s.get("name") for s in steps]
+    reset = steps[names.index("Reset plugin state before retrying")]
+    assert names.index("Wait before retrying") < names.index(reset["name"])
+    assert names.index(reset["name"]) < names.index("Retry Run Claude Code Review")
+    assert reset["if"] == "steps.retry-decision.outputs.retry == 'true'"
+    assert 'rm -rf "$HOME/.claude/plugins"' in reset["run"]
+
+
+@pytest.mark.parametrize("filename", sorted(BOT_ATTEMPTS))
+def test_bots_guard_the_succeeding_attempt_inline(filename: str) -> None:
+    first, retry = BOT_ATTEMPTS[filename]
+    wf = load(filename)
+    steps = all_steps(wf)
+    by_id = {s["id"]: i for i, s in enumerate(steps) if "id" in s}
+    guard_at = next(
+        i for i, s in enumerate(steps) if s.get("name") == "Fail when Claude did not actually run"
+    )
+    guard = steps[guard_at]
+    assert by_id[first] < by_id[retry] < guard_at
+    assert f"steps.{first}.outcome == 'success'" in guard["if"]
+    assert f"steps.{retry}.outcome == 'success'" in guard["if"]
+    # Both attempts write the same path; the retry's output wins when it ran.
+    assert guard["env"]["EXECUTION_FILE"] == (
+        f"${{{{ steps.{retry}.outputs.execution_file || steps.{first}.outputs.execution_file }}}}"
+    )
+    # The workspace holds PR code, so a ./ action could be rewritten by the PR.
+    assert not [s["uses"] for s in steps if s.get("uses", "").startswith("./")]
+
+
+def _result(turns: int, cost: float) -> str:
+    return json.dumps(
+        [
+            {"type": "system", "subtype": "init", "session_id": "s"},
+            {
+                "type": "result",
+                "subtype": "success",
+                "is_error": False,
+                "num_turns": turns,
+                "total_cost_usd": cost,
+            },
+        ]
+    )
+
+
+@pytest.mark.parametrize(
+    ("content", "passes", "message"),
+    [
+        (_result(26, 0.7898919499999999), True, "Claude ran: 26 turns"),
+        # The revoked-token signature, from run 38102829095.
+        (_result(4, 0), False, "never reached the model"),
+        (json.dumps([{"type": "system", "subtype": "init"}]), False, "never reached the model"),
+        ("{not json", False, "not readable JSON"),
+        ("", False, "no execution file"),
+        (None, False, "no execution file"),
+    ],
+    ids=["real-review", "zero-cost", "no-result", "corrupt", "empty", "missing"],
+)
+@pytest.mark.parametrize("filename", sorted(BOT_ATTEMPTS))
+def test_guard_fails_a_run_that_never_reached_the_model(
+    filename: str, content: str | None, passes: bool, message: str, tmp_path: Path
+) -> None:
+    script = step_named(load(filename), "Fail when Claude did not actually run")["run"]
+    execution_file = tmp_path / "claude-execution-output.json"
+    if content is not None:
+        execution_file.write_text(content)
+    result = run_script(script, tmp_path, {"EXECUTION_FILE": str(execution_file)})
+    assert (result.returncode == 0) is passes, result.stdout + result.stderr
+    assert message in result.stdout
+
+
+def test_published_id_fetch_force_updates_origin_main() -> None:
+    """A shallow fetch cannot prove a fast-forward once main moves mid-run."""
+    step = step_named(load("ci.yml"), "Fetch origin/main for published-id comparison")
+    assert "+main:refs/remotes/origin/main" in step["run"]
+
+
+def _security_step(name: str) -> dict:
+    return next(s for s in load("ci.yml")["jobs"]["security"]["steps"] if s.get("name") == name)
+
+
+def _fake_tools(bin_dir: Path, pip_audit_body: str) -> None:
+    """Stub uv, sleep and pip-audit so the real step script runs offline."""
+    bin_dir.mkdir()
+    for name, body in {
+        "uv": "exit 0",
+        "sleep": "exit 0",
+        "pip-audit": pip_audit_body,
+    }.items():
+        tool = bin_dir / name
+        tool.write_text(f"#!/bin/bash\n{body}\n")
+        tool.chmod(0o755)
+
+
+REPORT = '{"dependencies": [{"name": "x", "version": "1", "vulns": [{"id": "V", "fix_versions": ["2"]}]}]}'
+
+
+@pytest.mark.parametrize(
+    ("pip_audit_body", "exit_code", "report", "calls"),
+    [
+        ("exit 0", "0", "false", 1),
+        # Findings: exit 1 with a report, never retried.
+        (f"echo '{REPORT}' > pip-audit-results.json; exit 1", "1", "true", 1),
+        # A crash (connection reset) writes nothing: retried once, still not a pass.
+        ("echo ConnectionResetError >&2; exit 1", "1", "false", 2),
+        # A crash, then a clean scan.
+        ("[ -f crashed ] && exit 0; touch crashed; exit 1", "0", "false", 2),
+    ],
+    ids=["clean", "findings", "crash-twice", "crash-then-clean"],
+)
+def test_pip_audit_retries_only_a_run_without_a_report(
+    pip_audit_body: str, exit_code: str, report: str, calls: int, tmp_path: Path
+) -> None:
+    bin_dir = tmp_path / "bin"
+    _fake_tools(bin_dir, f"echo call >> calls.log\n{pip_audit_body}")
+    output = tmp_path / "github_output"
+    result = subprocess.run(
+        [BASH, "-e", "-c", _security_step("Run pip-audit (dependency vulnerabilities)")["run"]],
+        cwd=tmp_path,
+        env={"PATH": f"{bin_dir}:{os.environ['PATH']}", "GITHUB_OUTPUT": str(output)},
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    assert result.returncode == 0, result.stderr
+    outputs = dict(line.split("=", 1) for line in output.read_text().splitlines())
+    assert outputs == {"pip_audit_exit": exit_code, "pip_audit_report": report}
+    assert len((tmp_path / "calls.log").read_text().splitlines()) == calls
+
+
+@pytest.mark.parametrize(
+    ("pip_exit", "pip_report", "passes", "message"),
+    [
+        ("0", "false", True, ""),
+        ("1", "true", False, "found FIXABLE"),
+        ("1", "false", False, "errored twice without producing a report"),
+        ("", "", False, "did not run to completion"),
+    ],
+    ids=["clean", "findings", "tool-error", "never-ran"],
+)
+def test_security_gate_tells_a_finding_from_a_scan_error(
+    pip_exit: str, pip_report: str, passes: bool, message: str, tmp_path: Path
+) -> None:
+    script = (
+        _security_step("Fail on security findings")["run"]
+        .replace("${{ steps.pip_audit.outputs.pip_audit_exit }}", pip_exit)
+        .replace("${{ steps.pip_audit.outputs.pip_audit_report }}", pip_report)
+        .replace("${{ steps.bandit.outputs.bandit_exit }}", "0")
+        .replace("${{ steps.semgrep.outputs.semgrep_exit }}", "0")
+    )
+    assert "${{" not in script, "an expression the test does not substitute"
+    result = run_script(script, tmp_path, {})
+    assert (result.returncode == 0) is passes, result.stdout + result.stderr
+    assert message in result.stdout
