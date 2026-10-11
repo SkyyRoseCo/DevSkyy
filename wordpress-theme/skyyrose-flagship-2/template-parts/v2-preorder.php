@@ -98,7 +98,7 @@ $sr2_reserve_media = static function ( $role, $collection, $pieces ) {
 			$sr2_reserve_scene = $sr2_reserve_media( 'merchandise_scene', $sr2_reserve_slug, $sr2_reserve_pieces );
 			?>
 			<section id="reserve-<?php echo esc_attr( $sr2_reserve_slug ); ?>" class="sr2-reserve-edit<?php echo 1 === count( $sr2_reserve_pieces ) ? ' sr2-reserve-edit--single' : ''; ?>" data-preorder-collection="<?php echo esc_attr( $sr2_reserve_slug ); ?>" data-collection="<?php echo esc_attr( $sr2_reserve_slug ); ?>" aria-labelledby="reserve-<?php echo esc_attr( $sr2_reserve_slug ); ?>-title" tabindex="-1">
-				<div class="sr2-reserve-edit__intro">
+				<div class="sr2-reserve-edit__intro<?php echo $sr2_reserve_scene ? ' sr2-reserve-edit__intro--scene' : ''; ?>">
 				<header class="sr2-reserve-edit__head">
 					<div>
 						<p class="sr2-eyebrow"><?php esc_html_e( 'The pre-order edit', 'skyyrose-flagship-2' ); ?></p>

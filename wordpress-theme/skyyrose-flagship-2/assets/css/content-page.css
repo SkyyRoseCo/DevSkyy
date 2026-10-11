@@ -370,9 +370,9 @@
 .sr2-reserve-edit__intro .sr2-reserve-scene { width: 100%; max-width: 560px; justify-self: center; margin: 0; }
 .sr2-reserve-scene img { display: block; width: 100%; height: auto; object-fit: contain; }
 @media (min-width: 48em) {
-  .sr2-reserve-edit__intro { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 7rem); }
-  .sr2-reserve-edit[data-collection="black-rose"] .sr2-reserve-edit__head { grid-column: 2; grid-row: 1; }
-  .sr2-reserve-edit[data-collection="black-rose"] .sr2-reserve-scene { grid-column: 1; grid-row: 1; }
+  .sr2-reserve-edit__intro--scene { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 7rem); }
+  .sr2-reserve-edit[data-collection="black-rose"] .sr2-reserve-edit__intro--scene .sr2-reserve-edit__head { grid-column: 2; grid-row: 1; }
+  .sr2-reserve-edit[data-collection="black-rose"] .sr2-reserve-edit__intro--scene .sr2-reserve-scene { grid-column: 1; grid-row: 1; }
 }
 .sr2-reserve-scene > img {
   display: block;

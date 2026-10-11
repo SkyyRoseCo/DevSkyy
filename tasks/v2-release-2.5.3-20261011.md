@@ -271,12 +271,12 @@ empty:
 | baseline `inc/launch-readiness.php`                      | `b753741a791d3d29…` | `aeffd7fdc34b988f…` |
 | baseline `inc/pdp-media-delivery.php`                    | `3225b5c4a990eb36…` | `a5e871453a511e54…` |
 | baseline `inc/performance.php`                           | `9d7ee4b82297347d…` | `56be7b798ac34885…` |
-| baseline `inc/v2-media-eligibility.php`                  | `18b41121eeed9116…` | `9fc1d00caf66caf2…` |
+| baseline `inc/v2-media-eligibility.php`                  | `18b41121eeed9116…` | `f82fb4f17ef77be4…` |
 | baseline `template-parts/collections/index.php`          | `805331e5e4b9d109…` | `dfd9ffc8ab897346…` |
 | baseline `template-parts/collections/story.php`          | `a81db476080e7f16…` | `94bf267469981ec2…` |
 | baseline `template-parts/home/living-archive-worlds.php` | `8df1b5628510b29b…` | `159bf8c43a25cc6a…` |
-| baseline `template-parts/v2-preorder.php`                | `8c8f4a9dcbb87c5d…` | `46ea99e1b06d7176…` |
-| input `runtime-php-baseline.json`                        | `fea4cc5d1733e8f4…` | `842a189430d217af…` |
+| baseline `template-parts/v2-preorder.php`                | `8c8f4a9dcbb87c5d…` | `5640e2431429e900…` |
+| input `runtime-php-baseline.json`                        | `fea4cc5d1733e8f4…` | `6c2e3c47f5a0963c…` |
 | input `wordpress-theme/…/package.json`                   | `5c886030bc1c99e6…` | `6cee7ab2e487f55a…` |
 
 This is an entry-only re-pin: no key was added or removed.
@@ -302,12 +302,12 @@ theme file was added or removed and `generated-outputs.json` pins no hashes.
   worktree needed `git sparse-checkout add assets/products`.
 - `npm run lint:php`: exit 0.
 - `npm run package:theme`: exit 0, 0 `not ok`. Result: "Validated 773 runtime
-  package entries; SHA-256 `2842707efefa203c…`".
+  package entries; SHA-256 `0e3bbbc08c4365ea…`".
 - `pytest tests/test_v2_*.py tools/v2-source-certification`: 73 tests, 0
   failures, 0 errors, 0 skipped (junit). `unittest discover`: OK.
 - `scripts/sync_product_registry.py --check`: PASS.
 - PHPCS on the changed theme files: every file is at or below base, except
-  `inc/v2-media-eligibility.php`, which goes from 148/55 to 183/63.
+  `inc/v2-media-eligibility.php`, which goes from 148/55 to 185/63.
   - That increase is the ported Codex code in the file's dense single-line house
     style.
   - phpcbf was not run, because it would reflow a pinned file.
@@ -339,3 +339,41 @@ theme file was added or removed and `generated-outputs.json` pins no hashes.
   "lavender/light-pink hood", but the real photo and the slot show a deep-purple
   hood. This is a registry text discrepancy, not a slot defect. No registry edit
   was made.
+
+## PR #1070 review response (Codex review of `fa5e872db`)
+
+- **P1, repeated hashing (fixed).** `skyyrose2_media_sha256()` is now a
+  request-scoped memo of the file sha256.
+  - The memo is keyed by path plus the current stat identity (inode, size,
+    mtime, ctime), and the stat is re-read on every call. Any write that changes
+    the size or a timestamp is therefore hashed again.
+  - The 7 `hash_file()` calls in the gate now go through it.
+  - Offline `/collections/` render: 1.47 s became 0.16 s `[repro]`. The base,
+    which renders no images, takes 0.07 s.
+  - Limit: a rewrite with the same size inside the same second, during one
+    request, is detected on the next request. The gate only decides which URLs
+    to emit; nginx serves the bytes either way.
+- **P2, preorder intro without a scene (fixed).** The two-column intro now
+  applies only with `.sr2-reserve-edit__intro--scene`, which is emitted only
+  when a scene rendered.
+  - `test-preorder-collections.php` gained 2 assertions.
+  - RED: on `25840c9db` the template fails "Only groups with a rendered scene
+    take the two-column intro". GREEN: passes after the fix.
+- **P1, grant `target` = staging (not changed; founder call).** The usage
+  authority's antecedent scope is a staging update. Enforcing the target against
+  the runtime host would turn every grant off on skyyrose.co. Keeping the
+  current string comparison publishes the roles on production on the strength of
+  a staging-scoped decision.
+  - Which one ships is the founder's decision, and it gates this PR's production
+    effect. No grant was edited.
+- **P2, preload vs Photon (open; not reproduced).**
+  - Live `/collections/` today shows no `i0.wp.com` image, only the preconnect
+    `[live]`.
+  - On the homepage, Jetpack Boost rewrote the LCP house art to Photon, while
+    the theme preload stays at the origin `[live]`. That mismatch existed before
+    this PR.
+  - Whether Boost also rewrites the new eager `/collections/` image after deploy
+    can only be checked after deploy. If it does, the preload would duplicate
+    the fetch.
+  - Remedy options are to drop the theme preload where Boost optimizes the LCP,
+    or to emit the Photon URL. This is a post-deploy check.

@@ -18,7 +18,7 @@ function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = 
 	$file = realpath( SKYYROSE2_DIR . '/' . $relative );
 	$root = realpath( SKYYROSE2_DIR );
 	$hash = $record['sha256'] ?? '';
-	if ( ! $file || ! $root || 0 !== strpos( $file, $root . DIRECTORY_SEPARATOR ) || is_link( SKYYROSE2_DIR . '/' . $relative ) || ! is_file( $file ) || ! is_string( $hash ) || ! preg_match( '/^[a-f0-9]{64}$/D', $hash ) || ! hash_equals( $hash, hash_file( 'sha256', $file ) ) ) { return false; }
+	if ( ! $file || ! $root || 0 !== strpos( $file, $root . DIRECTORY_SEPARATOR ) || is_link( SKYYROSE2_DIR . '/' . $relative ) || ! is_file( $file ) || ! is_string( $hash ) || ! preg_match( '/^[a-f0-9]{64}$/D', $hash ) || ! hash_equals( $hash, skyyrose2_media_sha256( $file ) ) ) { return false; }
 	$kind = $record['kind'] ?? '';
 	if ( ! is_array( $record['roles'] ?? null ) || empty( $record['roles'] ) || ( isset( $record['skus'] ) && ! is_array( $record['skus'] ) ) ) { return false; }
 	$inventory = skyyrose2_media_inventory();
@@ -32,7 +32,7 @@ function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = 
 	}
 	if ( in_array( $kind, array( 'housemark', 'font', 'icon', 'house_art' ), true ) ) {
 		$authority = SKYYROSE2_DIR . '/data/v2-canonical-media.json';
-		if ( ! is_file( $authority ) || is_link( $authority ) || ! hash_equals( 'b4957a6f9210c6c906990a974e7f3f432cc4b2fe9d9ae94d09958e590c1a673e', hash_file( 'sha256', $authority ) ) ) { return false; }
+		if ( ! is_file( $authority ) || is_link( $authority ) || ! hash_equals( 'b4957a6f9210c6c906990a974e7f3f432cc4b2fe9d9ae94d09958e590c1a673e', skyyrose2_media_sha256( $authority ) ) ) { return false; }
 		$canonical = json_decode( file_get_contents( $authority ), true );
 		$exact = $canonical['assets'][ $relative ] ?? null;
 		// House art is the unchanged homepage hero only: no SKU, no collection, no
@@ -52,7 +52,7 @@ function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = 
 	$receipt = SKYYROSE2_DIR . '/' . $review['path'];
 	$receipt_real = realpath( $receipt );
 	if ( ! $receipt_real || 0 !== strpos( $receipt_real, $root . DIRECTORY_SEPARATOR ) ) { return false; }
-	if ( ! is_file( $receipt ) || is_link( $receipt ) || ! preg_match( '/^[a-f0-9]{64}$/D', $review['sha256'] ?? '' ) || ! hash_equals( $review['sha256'], hash_file( 'sha256', $receipt ) ) ) { return false; }
+	if ( ! is_file( $receipt ) || is_link( $receipt ) || ! preg_match( '/^[a-f0-9]{64}$/D', $review['sha256'] ?? '' ) || ! hash_equals( $review['sha256'], skyyrose2_media_sha256( $receipt ) ) ) { return false; }
 	$data = json_decode( file_get_contents( $receipt ), true );
 	if ( ! is_array( $data ) ) { return false; }
 	foreach ( array( 'roles', 'skus', 'collections' ) as $binding ) {
@@ -65,20 +65,36 @@ function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = 
 	return is_array( $data ) && ( $data['asset_sha256'] ?? '' ) === $hash && ( $data['reviewer'] ?? '' ) === $review['reviewer'] && 'PASS' === ( $data['verdict'] ?? '' ) && true === ( $data['v2_originality_pass'] ?? false ) && true === ( $data['product_fidelity_pass'] ?? false );
 }
 
+/**
+ * Request-scoped sha256 of a file. The gate hashes the same masters, renditions
+ * and receipts for every srcset candidate and again at the HTML boundary; the
+ * memo is keyed by the file's current stat identity (inode, size, mtime, ctime),
+ * re-read on every call, so any write to the file is hashed afresh.
+ */
+function skyyrose2_media_sha256( $path ) {
+	static $memo = array();
+	clearstatcache( true, $path );
+	$stat = @stat( $path ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- a missing file is an ordinary fail-closed result.
+	if ( ! $stat ) { return false; }
+	$key = $path . "\0" . $stat['ino'] . ':' . $stat['size'] . ':' . $stat['mtime'] . ':' . $stat['ctime'];
+	if ( ! array_key_exists( $key, $memo ) ) { $memo[ $key ] = hash_file( 'sha256', $path ); }
+	return $memo[ $key ];
+}
+
 /** A current, hash-bound owner decision grants only the exact card role. */
 function skyyrose2_founder_card_allowed( $relative, $record, $role = '', $sku = '' ) {
 	if ( 'photograph' !== ( $record['kind'] ?? '' ) || 'V2_ORIGINAL_20261002' !== ( $record['origin'] ?? '' ) || array( 'card_front' ) !== ( $record['roles'] ?? null ) || ( $role && 'card_front' !== $role ) || ! is_array( $record['skus'] ?? null ) || 1 !== count( $record['skus'] ) || ! is_array( $record['collections'] ?? null ) || 1 !== count( $record['collections'] ) || ( $sku && array( $sku ) !== $record['skus'] ) ) { return false; }
 	$review = $record['review'] ?? array();
 	if ( 'Corey' !== ( $review['reviewer'] ?? '' ) || 'ACCEPTED' !== ( $review['verdict'] ?? '' ) || ! preg_match( '#^data/v2-media-reviews/[A-Za-z0-9_.-]+\.json$#D', $review['path'] ?? '' ) ) { return false; }
 	$file = SKYYROSE2_DIR . '/' . $review['path'];
-	if ( ! is_file( $file ) || is_link( $file ) || ! is_string( $review['sha256'] ?? null ) || ! hash_equals( $review['sha256'], hash_file( 'sha256', $file ) ) ) { return false; }
+	if ( ! is_file( $file ) || is_link( $file ) || ! is_string( $review['sha256'] ?? null ) || ! hash_equals( $review['sha256'], skyyrose2_media_sha256( $file ) ) ) { return false; }
 	$data = json_decode( file_get_contents( $file ), true );
 	if ( ! is_array( $data ) || 'skyyrose.founder-card-acceptance.v1' !== ( $data['schema'] ?? '' ) || 'Corey' !== ( $data['reviewer'] ?? '' ) || 'ACCEPTED' !== ( $data['verdict'] ?? '' ) || 'FOUNDER_CONFIRMED' !== ( $data['authority'] ?? '' ) || ( $data['asset_sha256'] ?? '' ) !== $record['sha256'] || empty( $data['decision_text'] ) || 'ALL 33 PRODUCTS. add them to their card NOW.' !== ( $data['placement_authorization'] ?? '' ) ) { return false; }
 	foreach ( array( 'roles', 'skus', 'collections', 'producer', 'production_id' ) as $key ) { if ( ( $data[ $key ] ?? null ) !== ( $record[ $key ] ?? null ) ) { return false; } }
 	$source = $data['decision_source'] ?? array();
 	if ( ! preg_match( '#^data/v2-media-reviews/owner-[A-Za-z0-9_.-]+\.json$#D', $source['path'] ?? '' ) ) { return false; }
 	$file = SKYYROSE2_DIR . '/' . $source['path'];
-	if ( ! is_file( $file ) || is_link( $file ) || ! is_string( $source['sha256'] ?? null ) || ! hash_equals( $source['sha256'], hash_file( 'sha256', $file ) ) ) { return false; }
+	if ( ! is_file( $file ) || is_link( $file ) || ! is_string( $source['sha256'] ?? null ) || ! hash_equals( $source['sha256'], skyyrose2_media_sha256( $file ) ) ) { return false; }
 	$original = json_decode( file_get_contents( $file ), true );
 	if ( ! is_array( $original ) || ( $original['decision_text'] ?? $original['decision_evidence']['verbatim'] ?? '' ) !== $data['decision_text'] ) { return false; }
 	$schema = $original['schema'] ?? '';
@@ -122,7 +138,7 @@ function skyyrose2_media_delivery_derivative_allowed( $relative, $record, $role 
 	$delivery = $record['delivery_manifest'] ?? null;
 	$manifest_path = 'assets/derived/card-fronts/manifest.json';
 	$manifest_file = SKYYROSE2_DIR . '/' . $manifest_path;
-	if ( ! is_array( $delivery ) || $manifest_path !== ( $delivery['path'] ?? '' ) || ! is_file( $manifest_file ) || is_link( $manifest_file ) || ! is_string( $delivery['sha256'] ?? null ) || ! preg_match( '/^[a-f0-9]{64}$/D', $delivery['sha256'] ) || ! hash_equals( $delivery['sha256'], hash_file( 'sha256', $manifest_file ) ) ) { return false; }
+	if ( ! is_array( $delivery ) || $manifest_path !== ( $delivery['path'] ?? '' ) || ! is_file( $manifest_file ) || is_link( $manifest_file ) || ! is_string( $delivery['sha256'] ?? null ) || ! preg_match( '/^[a-f0-9]{64}$/D', $delivery['sha256'] ) || ! hash_equals( $delivery['sha256'], skyyrose2_media_sha256( $manifest_file ) ) ) { return false; }
 	$manifest = json_decode( file_get_contents( $manifest_file ), true );
 	$entry = $manifest['products'][ $owner ] ?? null;
 	if ( 'skyyrose.card-renditions.v1' !== ( $manifest['schema'] ?? '' ) || ! is_array( $entry ) || $source !== ( $entry['source'] ?? '' ) || $master['sha256'] !== ( $entry['source_sha256'] ?? '' ) || ( $entry['source_review'] ?? null ) != $master['review'] ) { return false; }
@@ -149,7 +165,7 @@ function skyyrose2_media_usage_document( $binding ) {
 	$cursor = SKYYROSE2_DIR;
 	foreach ( explode( '/', $binding['path'] ) as $part ) { $cursor .= '/' . $part; if ( is_link( $cursor ) ) { return null; } }
 	$root = realpath( SKYYROSE2_DIR ); $real = realpath( $cursor );
-	if ( ! $root || ! $real || 0 !== strpos( $real, $root . DIRECTORY_SEPARATOR ) || ! is_file( $cursor ) || ! hash_equals( $binding['sha256'], hash_file( 'sha256', $cursor ) ) ) { return null; }
+	if ( ! $root || ! $real || 0 !== strpos( $real, $root . DIRECTORY_SEPARATOR ) || ! is_file( $cursor ) || ! hash_equals( $binding['sha256'], skyyrose2_media_sha256( $cursor ) ) ) { return null; }
 	$data = json_decode( file_get_contents( $cursor ), true );
 	return is_array( $data ) ? $data : null;
 }
