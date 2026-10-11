@@ -17,7 +17,7 @@ Reference census across 103 files found only 4 with any references:
 | File | Refs | Action |
 |------|------|--------|
 | `sig-hero.jpg` | 4 (incl. `tests/agents/test_skyyrose_agents.py`) | Move + update referencers in same commit |
-| `glb-models.html` | 1 external (`tasks/v7-product-card-merge.md`) | Move + update doc link |
+| `glb-models.html` | 1 external (`tasks/archive/2026-h1/v7-product-card-merge.md`) | Move + update doc link |
 | `render-review.html` | 1 (doc) | Move + update doc link |
 | remaining ~99 files | 0 | Move, no ref fixes needed |
 

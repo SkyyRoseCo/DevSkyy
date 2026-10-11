@@ -237,7 +237,7 @@ Then commit + ready for deploy.
 ## RESUME PROMPT (paste at start of fresh session)
 
 ```
-Resume from /Users/theceo/DevSkyy/tasks/handoff-2026-05-26-elite-team-pipeline.md.
+Resume from /Users/theceo/DevSkyy/tasks/archive/2026-h1/handoff-2026-05-26-elite-team-pipeline.md.
 
 Context: elite-team imagery pipeline wired (commit 7d6ed30ec on
 fix/elite-studio-audit-2026-05-25). 3 founder-locked Stage-1 scene PNGs

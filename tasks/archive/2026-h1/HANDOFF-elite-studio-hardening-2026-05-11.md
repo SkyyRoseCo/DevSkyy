@@ -36,10 +36,10 @@ Single commit, 8 files, 609+/28-:
 `EliteStudioState` schema extended with `budget: RunBudget | None` and `run_summary_path: str`. `create_initial_state` instantiates default budget.
 
 ### Phase F report (uncommitted, advisory)
-`tasks/phase-f-report.md` — 7 legacy scripts banner-marked with `# DEPRECATED:` comments, ~33 standalone scripts flagged for archive. No functional changes. **Re-read this report through the lens of the elite_studio-canonical correction** — the "migrate" buckets need re-classification: scripts that already call `skyyrose.elite_studio` are correctly wired; only scripts that bypass elite_studio need attention.
+`tasks/archive/2026-h1/phase-f-report.md` — 7 legacy scripts banner-marked with `# DEPRECATED:` comments, ~33 standalone scripts flagged for archive. No functional changes. **Re-read this report through the lens of the elite_studio-canonical correction** — the "migrate" buckets need re-classification: scripts that already call `skyyrose.elite_studio` are correctly wired; only scripts that bypass elite_studio need attention.
 
 ### Phase G report (uncommitted, advisory)
-`tasks/phase-g-report.md` — 8 docs + 2 wolf files touched. Codemaps refreshed. `docs/3D_GENERATION_PIPELINE.md` gained provider tournament section. `.wolf/cerebrum.md` + `.wolf/anatomy.md` updated. Subagent claimed `docs/PIPELINE-ARCHITECTURE.md` was wrong abstraction and skipped — **subagent was wrong, doc exists and is the correct banner target**.
+`tasks/archive/2026-h1/phase-g-report.md` — 8 docs + 2 wolf files touched. Codemaps refreshed. `docs/3D_GENERATION_PIPELINE.md` gained provider tournament section. `.wolf/cerebrum.md` + `.wolf/anatomy.md` updated. Subagent claimed `docs/PIPELINE-ARCHITECTURE.md` was wrong abstraction and skipped — **subagent was wrong, doc exists and is the correct banner target**.
 
 ---
 
@@ -120,8 +120,8 @@ python -m pytest \
 - 4 dispatch options were offered in the manifest; user said "we're not starting any rendering until this pipeline is hardened" — DO NOT DISPATCH
 
 ### Background agent outputs (advisory, uncommitted)
-- `tasks/phase-f-report.md` — script migration audit (needs elite_studio-canonical re-read)
-- `tasks/phase-g-report.md` — docs/codemap refresh (skipped `docs/PIPELINE-ARCHITECTURE.md` in error)
+- `tasks/archive/2026-h1/phase-f-report.md` — script migration audit (needs elite_studio-canonical re-read)
+- `tasks/archive/2026-h1/phase-g-report.md` — docs/codemap refresh (skipped `docs/PIPELINE-ARCHITECTURE.md` in error)
 
 ### Provider tournament shape
 `orchestration/threed_round_table.py` ThreeDProvider enum (post-Phase D):
