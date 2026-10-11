@@ -29,20 +29,21 @@ Bump all three to one value before any deploy that changed shipped CSS/JS/PHP:
 ## Build commands run from THIS folder (own `package.json`, not the parent's)
 
 ```bash
-cd wordpress-theme/skyyrose-flagship-2 && npm install               # devDependencies: clean-css, terser
-npm run build                                                       # build:registry + build:assets + build:i18n
-npm run build:assets                                                # node scripts/build-assets.mjs — deterministic source → .min for assets/css + assets/js
-npm run check:assets                                                # --check: every .min byte-identical to a fresh build (fails on drift)
-npm run check:registry                                              # data/product-presentation-registry.json current
-npm run check:i18n                                                  # languages/ .pot current
-npm run lint:php                                                    # php -l on every .php
-../skyyrose-flagship/vendor/bin/phpcs --standard=phpcs.xml -s .     # PHPCS with THIS theme's phpcs.xml; no vendor/ here — the V1 theme's composer install supplies the binary (.claude/hooks/phpcs-on-write.sh does this per edit)
-npm run verify                                                      # bash scripts/verify-marketplace.sh — php -l, jq on data/*.json, font provenance hashes
-php scripts/test-seo-indexing.php                                   # SEO/indexing contract (also inside npm run verify)
-python3 scripts/validate-sitemap.py https://skyyrose.co/sitemap.xml # read-only: live sitemap vs Google's rules (XML, limits, every <loc> 200/direct/indexable)
-npm run verify:workspace                                            # bash scripts/verify-v2-workspace.sh (--strict via verify:workspace:strict)
-npm run package:theme                                               # bash scripts/package-theme.sh — build + verify + dist/skyyrose-flagship-2.zip
-bash scripts/verify-v2-candidate.sh                                 # route/attestation gate (needs .fashion-theme/founder-rights-attestation-2026-08-26.json at repo root)
+cd wordpress-theme/skyyrose-flagship-2 && npm install                   # devDependencies: clean-css, terser
+npm run build                                                           # build:registry + build:assets + build:i18n
+npm run build:assets                                                    # node scripts/build-assets.mjs — deterministic source → .min for assets/css + assets/js
+npm run check:assets                                                    # --check: every .min byte-identical to a fresh build (fails on drift)
+npm run check:registry                                                  # data/product-presentation-registry.json current
+npm run check:i18n                                                      # languages/ .pot current
+npm run lint:php                                                        # php -l on every .php
+../skyyrose-flagship/vendor/bin/phpcs --standard=phpcs.xml -s .         # PHPCS with THIS theme's phpcs.xml; no vendor/ here — the V1 theme's composer install supplies the binary (.claude/hooks/phpcs-on-write.sh does this per edit)
+npm run verify                                                          # bash scripts/verify-marketplace.sh — php -l, jq on data/*.json, font provenance hashes
+php scripts/test-seo-indexing.php                                       # SEO/indexing contract (also inside npm run verify)
+python3 scripts/validate-sitemap.py https://skyyrose.co/sitemap.xml     # read-only: live sitemap vs Google's rules (XML, limits, every <loc> 200/direct/indexable)
+python3 scripts/verify-live-parity.py [--rea-cdp http://127.0.0.1:9333] # read-only: live theme JS/CSS bytes == repo (+ Boost bundles, font policy; REA = executed scripts); exit 0/1/2 = PASS/FAIL/INCOMPLETE
+npm run verify:workspace                                                # bash scripts/verify-v2-workspace.sh (--strict via verify:workspace:strict)
+npm run package:theme                                                   # bash scripts/package-theme.sh — build + verify + dist/skyyrose-flagship-2.zip
+bash scripts/verify-v2-candidate.sh                                     # route/attestation gate (needs .fashion-theme/founder-rights-attestation-2026-08-26.json at repo root)
 ```
 
 Production serves `.min` (`functions.php:127` switches on `SCRIPT_DEBUG`; map at
