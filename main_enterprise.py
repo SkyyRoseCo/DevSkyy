@@ -300,6 +300,11 @@ async def rate_limit_middleware(request: Request, call_next):
 # Routers
 # =============================================================================
 
+# Owner-only routers: every route below runs paid generation, mutates config, or
+# exposes internal state, and none has a public consumer (storefront calls none of
+# them). Gate at the mount so a new route in these modules is protected by default.
+from fastapi import Depends  # noqa: E402
+
 # Core dashboard & agent routers
 from api.admin_dashboard import admin_dashboard_router
 from api.agents import agents_router
@@ -310,14 +315,17 @@ from api.tasks import tasks_router
 from api.three_d import three_d_router
 from api.tools import tools_router
 from api.visual import visual_router
+from security.jwt_oauth2_auth import RoleChecker, UserRole  # noqa: E402
 
-app.include_router(dashboard_router, prefix="/api/v1")
+_ADMIN_ONLY = [Depends(RoleChecker([UserRole.ADMIN, UserRole.SUPER_ADMIN]))]
+
+app.include_router(dashboard_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
 app.include_router(tasks_router, prefix="/api/v1")
-app.include_router(round_table_router, prefix="/api/v1")
-app.include_router(brand_router, prefix="/api/v1")
-app.include_router(tools_router, prefix="/api/v1")
-app.include_router(three_d_router, prefix="/api/v1")
-app.include_router(visual_router, prefix="/api/v1")
+app.include_router(round_table_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
+app.include_router(brand_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
+app.include_router(tools_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
+app.include_router(three_d_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
+app.include_router(visual_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
 app.include_router(agents_router)
 app.include_router(admin_dashboard_router, prefix="/api/v1")
 
@@ -329,11 +337,11 @@ from api.virtual_tryon import virtual_tryon_router
 from api.webhooks import webhook_router
 from api.websocket import ws_router
 
-app.include_router(ar_sessions_router, prefix="/api/v1")
-app.include_router(virtual_tryon_router, prefix="/api/v1")
+app.include_router(ar_sessions_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
+app.include_router(virtual_tryon_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
 app.include_router(elementor_3d_router, prefix="/api/v1")
 app.include_router(gdpr_router)
-app.include_router(webhook_router)
+app.include_router(webhook_router, dependencies=_ADMIN_ONLY)
 app.include_router(ws_router)
 
 # API v1 MCP routers
@@ -356,11 +364,11 @@ from api.v1 import (
     wordpress_theme_router,
 )
 
-app.include_router(catalog_router, prefix="/api/v1")
+app.include_router(catalog_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
 app.include_router(code_router, prefix="/api/v1")
 app.include_router(commerce_router, prefix="/api/v1")
 app.include_router(context_dev_router, prefix="/api/v1")
-app.include_router(hf_spaces_router, prefix="/api/v1")
+app.include_router(hf_spaces_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
 app.include_router(marketing_router, prefix="/api/v1")
 app.include_router(media_router, prefix="/api/v1")
 app.include_router(ml_router, prefix="/api/v1")
@@ -368,8 +376,8 @@ app.include_router(autonomous_router, prefix="/api/v1")
 app.include_router(monitoring_router, prefix="/api/v1")
 app.include_router(orchestration_router, prefix="/api/v1")
 app.include_router(sync_router, prefix="/api/v1")
-app.include_router(lora_router, prefix="/api/v1")
-app.include_router(training_router, prefix="/api/v1")
+app.include_router(lora_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
+app.include_router(training_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
 app.include_router(wordpress_agent_router, prefix="/api/v1")
 app.include_router(wordpress_theme_router, prefix="/api/v1")
 
@@ -436,7 +444,7 @@ app.include_router(assets_router, prefix="/api/v1")
 app.include_router(approval_router, prefix="/api/v1")
 app.include_router(brand_assets_router, prefix="/api/v1")
 app.include_router(competitors_router, prefix="/api/v1")
-app.include_router(descriptions_router, prefix="/api/v1")
+app.include_router(descriptions_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
 
 from api.v1.analytics.dashboard import router as analytics_dashboard_router
 from api.v1.analytics.ingest import router as storefront_analytics_router
@@ -472,7 +480,7 @@ app.include_router(portal_router, prefix="/api/v1")
 # GraphQL
 from api.graphql_server import graphql_router
 
-app.include_router(graphql_router, prefix="/graphql", tags=["GraphQL"])
+app.include_router(graphql_router, prefix="/graphql", tags=["GraphQL"], dependencies=_ADMIN_ONLY)
 
 
 # =============================================================================

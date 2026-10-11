@@ -2,34 +2,65 @@
 """
 Purge Hallucinations Utility
 ============================
-Deletes identified AI hallucinations from the product imagery folder:
-1. Model shots for SKUs marked as accessories in the catalog.
+Finds identified AI hallucinations in the product imagery folder:
+1. Model shots for SKUs the product registry marks as accessories.
 2. Renders for the non-existent 'po' collection.
 3. Identified 2MB+ unoptimized model shots that lack front-view pairs.
+
+Files the product registry references are never deleted, even when a rule
+matches; remove the registry reference first. Deletion is permanent, so the
+default run only lists the matches. Pass --apply to delete them.
 """
 
+import argparse
 import logging
 from pathlib import Path
+
+from skyyrose.core.paths import WP_PRODUCTS_DIR
+from skyyrose.core.product import all_skus, get_product
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
 
 # Paths
-PRODUCTS_DIR = Path("wordpress-theme/skyyrose-flagship/assets/images/products")
+PRODUCTS_DIR = WP_PRODUCTS_DIR
 
 # Hallucinated targets
-ACCESSORY_SKUS = ["lh-005", "sg-007"]  # Fanny pack and Beanie should not have human model shots
 PO_COLLECTION_PREFIX = "po-"  # Non-existent collection
 SUSPECT_UNOPTIMIZED_SIZE_LIMIT = 1.5 * 1024 * 1024  # 1.5MB
+CATALOG_IMAGE_FIELDS = ("image", "front_model_image", "back_image", "back_model_image")
 
 
-def purge():
+def accessory_skus() -> list[str]:
+    """SKUs the registry flags as accessories; these should not have human model shots."""
+    return [
+        sku
+        for sku in all_skus()
+        if str(get_product(sku)["catalog"].get("render_is_accessory", "")).strip() == "1"
+    ]
+
+
+def registry_image_names() -> set[str]:
+    """Lower-case filenames of every image the registry binds or lists in a catalog image field."""
+    names = set()
+    for sku in all_skus():
+        record = get_product(sku)
+        paths = [role["path"] for role in (record.get("images") or {}).values() if role]
+        paths += [record["catalog"].get(field, "") for field in CATALOG_IMAGE_FIELDS]
+        names.update(Path(path).name.lower() for path in paths if path)
+    return names
+
+
+def purge(apply: bool = False) -> list[Path]:
+    """Return the matching files, deleting them only when ``apply`` is true."""
     if not PRODUCTS_DIR.exists():
         logger.error(f"Products directory not found: {PRODUCTS_DIR}")
-        return
+        return []
 
-    deleted_count = 0
+    accessories = accessory_skus()
+    protected = registry_image_names()
+    matches = []
 
     for item in PRODUCTS_DIR.iterdir():
         if not item.is_file():
@@ -38,7 +69,7 @@ def purge():
         name = item.name.lower()
 
         # Rule 1: Purge accessory model shots
-        is_accessory_model = any(sku in name for sku in ACCESSORY_SKUS) and "model" in name
+        is_accessory_model = any(sku in name for sku in accessories) and "model" in name
 
         # Rule 2: Purge 'po' collection
         is_po_hallucination = name.startswith(PO_COLLECTION_PREFIX)
@@ -50,14 +81,31 @@ def purge():
         )
 
         if is_accessory_model or is_po_hallucination or is_massive_hallucination:
+            if name in protected:
+                logger.info(f"Keeping {item.name}: the product registry references it")
+                continue
+            verb = "Purging" if apply else "Would purge"
             logger.info(
-                f"Purging hallucination: {item.name} ({item.stat().st_size / 1024 / 1024:.2f} MB)"
+                f"{verb} hallucination: {item.name} ({item.stat().st_size / 1024 / 1024:.2f} MB)"
             )
-            item.unlink()
-            deleted_count += 1
+            if apply:
+                item.unlink()
+            matches.append(item)
 
-    logger.info(f"Cleanup complete. Deleted {deleted_count} hallucinated assets.")
+    if apply:
+        logger.info(f"Cleanup complete. Deleted {len(matches)} hallucinated assets.")
+    else:
+        logger.info(f"Dry run: {len(matches)} file(s) match. Re-run with --apply to delete them.")
+    return matches
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    parser.add_argument(
+        "--apply", action="store_true", help="Delete the matches (permanent). Default: list only."
+    )
+    purge(apply=parser.parse_args(argv).apply)
 
 
 if __name__ == "__main__":
-    purge()
+    main()

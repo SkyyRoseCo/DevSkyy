@@ -836,9 +836,15 @@ def test_agent_added_corrections_never_appear_as_founder_words(tmp_path: Path, m
 
 
 # The founder's own words, kept character for character (typos included).
-_BR004_FOUNDER_LINE = (
+# The founder's 2026-09-21 hip-placement line was superseded by his 2026-10-03
+# regular-hoodie corrections; it is history, and must never reach a prompt.
+_BR004_SUPERSEDED_LINE = (
     "[on-model] its left hip, left side of the body whatever you need to change it too "
     "but it not the sleeve"
+)
+_BR004_FOUNDER_LINES = (
+    "2. its no hip patch on the regular hoodie only the black rose signasture",
+    "br-004 does have a label on the wrist with the cluster logo on ut",
 )
 
 
@@ -854,14 +860,16 @@ def test_live_br004_agent_lines_are_not_labelled_founder():
         view="front",
     )
     # br-004 carries two lines an agent added on 2026-06-12 and the founder's own
-    # 2026-09-21 patch-placement correction. Each must sit under its own header:
-    # the agent's lines never under the founder's, the founder's never under the agent's.
+    # 2026-10-03 corrections. Each must sit under its own header: the agent's
+    # lines never under the founder's, the founder's never under the agent's.
     founder_at = p.index("FOUNDER CORRECTIONS")
     agent_at = p.index("AGENT-ADDED RENDER CONSTRAINTS")
     assert founder_at < agent_at
     founder_block, agent_block = p[founder_at:agent_at], p[agent_at:]
-    assert _BR004_FOUNDER_LINE in founder_block
-    assert _BR004_FOUNDER_LINE not in agent_block
+    for founder_line in _BR004_FOUNDER_LINES:
+        assert founder_line in founder_block
+        assert founder_line not in agent_block
+    assert _BR004_SUPERSEDED_LINE not in p
     for agent_words in (
         "rose-cluster logo is a cluster of MULTIPLE",
         "Render the rose logo at the size and position shown",
@@ -881,14 +889,15 @@ def test_corrections_missing_registry_fails_closed(tmp_path: Path, monkeypatch):
 def test_live_registry_corrections_reach_the_prompt():
     # br-004's two agent lines live only in the registry now; they must still arrive
     # verbatim, in order, exactly as the retired render-corrections.json held them,
-    # followed by the founder's 2026-09-21 correction, word for word.
+    # followed by the founder's 2026-10-03 corrections, word for word.
     lines = prompt_mod.corrections_for("br-004")
     assert [line["authority"] for line in lines] == [
         "AGENT_ADDED",
         "AGENT_ADDED",
         "FOUNDER_VERBATIM",
+        "FOUNDER_VERBATIM",
     ]
-    assert lines[2]["text"] == _BR004_FOUNDER_LINE
+    assert tuple(line["text"] for line in lines[2:]) == _BR004_FOUNDER_LINES
     assert lines[0]["text"].startswith(
         "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE"
     )
@@ -1030,12 +1039,20 @@ def test_founder_keeper_assets_skip_their_plan(tmp_path, monkeypatch):
 
 
 def test_live_registry_keepers_are_the_founder_decisions():
-    # The two keep decisions moved from render-keepers.json into the registry's
-    # render_policy sections, with their founder notes intact.
+    # The two original keep decisions moved from render-keepers.json into the
+    # registry's render_policy sections with their founder notes intact; the
+    # founder kept the LH-004 front on 2026-10-06.
     from scripts.oai_render import pipeline
 
     keepers = {(k["sku"], k["style"], k["view"]): k for k in pipeline._registry_keepers()}
-    assert set(keepers) == {("br-006", "on-model", "front"), ("sg-009", "on-model", "front")}
+    assert set(keepers) == {
+        ("br-006", "on-model", "front"),
+        ("lh-004", "on-model", "front"),
+        ("sg-009", "on-model", "front"),
+    }
+    assert "THIS IS THE ONLY RENDER THAT USED THE CORRECT HOOD OF THIS JACKET" in (
+        keepers[("lh-004", "on-model", "front")]["founder_note"]
+    )
     assert keepers[("br-006", "on-model", "front")]["founder_note"] == (
         "real product \u2014 approved 2026-06-10"
     )

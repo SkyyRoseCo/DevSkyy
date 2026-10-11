@@ -1,0 +1,40 @@
+{
+  "schema": "skyyrose.v2.independent-media-review.v1",
+  "roles": [
+    "card_front"
+  ],
+  "skus": [
+    "kids-002"
+  ],
+  "collections": [
+    "kids-capsule"
+  ],
+  "producer": "Codex source-bound V2 corrective batch",
+  "production_id": "v2-card-kids-002-source-correction-20261006-r2",
+  "asset_sha256": "d9a0ea0e8bfd7044714f22f04c12a92f7f2fb70ba05c3011d048a7b48e3339f0",
+  "reviewer": "/root/all33_completion_review",
+  "verdict": "PASS",
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/v2-card-placement-review-20261006/source-adoption-r2/kids-002-native-visual-review.json",
+    "sha256": "19f161af74d291e72b39eb7013c80432f68b51b011626e2115060cb202056487"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/v2-card-placement-review-20261006/source-adoption-r2/contexts/kids-002-1440.png",
+      "sha256": "bc0f802cacf09b74cb409838d425ca383a6b99c9eb43e407647cd85f22b472df"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/v2-card-placement-review-20261006/source-adoption-r2/contexts/kids-002-390.png",
+      "sha256": "bd104401eab768c5deef7d19001ba7e63d10985111fe944546d2ee63c92a03ec"
+    },
+    "card_tablet": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/v2-card-placement-review-20261006/source-adoption-r2/contexts/kids-002-768.png",
+      "sha256": "2d9c5c45a1dc1b065e3ef5bcac4ca4b3b8096444910ff5f80c5e415a8218e2ab"
+    }
+  },
+  "review_scope": "Actual native pixels and 390/768/1440 product-card presentation; card_front only",
+  "review_limits": "Readable card identity and source-defined construction; microscopic patch lettering and physical print dimensions not established",
+  "publishing_authorized_by_this_receipt": false
+}

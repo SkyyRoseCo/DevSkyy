@@ -1,0 +1,28 @@
+{
+  "schema": "skyyrose.founder-card-acceptance.v1",
+  "roles": [
+    "card_front"
+  ],
+  "skus": [
+    "sg-002"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "producer": "Recorded V2 production candidate",
+  "production_id": "founder-accepted-sg-002-cb8b21742ce20ed7",
+  "asset_sha256": "cb8b21742ce20ed778f5c8fccc44e60c08df6deade28c9cd525c61575a608931",
+  "reviewer": "Corey",
+  "verdict": "ACCEPTED",
+  "authority": "FOUNDER_CONFIRMED",
+  "decision_text": "i approve those only need a patch edit for the fannie. the logo looks bad",
+  "decision_source": {
+    "path": "data/v2-media-reviews/owner-gallery-20261006.json",
+    "sha256": "e8cd9ece5052ede874ba53006e5f59a2e4d875520d322d7769496e3b106b9ca4"
+  },
+  "placement_authorization": "ALL 33 PRODUCTS. add them to their card NOW.",
+  "placement_source": "Later direct founder instruction in this conversation,2026-10-06",
+  "independent_visual_review": "NOT_GRANTED_BY_FOUNDER_ACCEPTANCE",
+  "historical_reviews": "Preserved in original task records; REVISE remains REVISE",
+  "publishing_authorized_by_this_receipt": false
+}

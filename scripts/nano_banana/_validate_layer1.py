@@ -105,7 +105,9 @@ def main() -> int:
     print("All required keys loaded.\n")
 
     # Load files
-    products = REPO / "wordpress-theme/skyyrose-flagship/assets/images/products"
+    from skyyrose.core.paths import WP_PRODUCTS_DIR
+
+    products = WP_PRODUCTS_DIR
     source_path = products / "black-rose-crewneck-techflat-v4.jpg"
     candidate_path = products / "br-001-crewneck.png"
     refined_path = Path(

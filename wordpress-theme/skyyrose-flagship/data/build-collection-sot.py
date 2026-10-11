@@ -24,8 +24,8 @@ sys.path.insert(0, str(DATA))
 sys.path.insert(0, str(DATA.parents[2]))
 import sot_common  # noqa: E402
 
-from skyyrose.core.catalog_loader import bool_col, read_catalog_rows  # noqa: E402
-from skyyrose.core.product_registry import load_registry  # noqa: E402
+from skyyrose.core.catalog_loader import bool_col  # noqa: E402
+from skyyrose.core.product import all_skus, get_product  # noqa: E402
 
 ASSETS = sot_common.ASSETS
 IMG_EXTS = sot_common.IMG_EXTS
@@ -56,28 +56,28 @@ def manifest_entry(entry: Any) -> dict | None:
     }
 
 
+# Historical sot.json key order; the CI freshness guard byte-compares the output.
+IMAGE_KEY_ORDER = ("image", "front_model_image", "back_image", "back_model_image")
+
+
 def load_products_by_collection() -> dict[str, list]:
     by_col: dict[str, list] = {}
-    registry_products = load_registry()["products"]
-    for row in read_catalog_rows():
-        sku = row["sku"]
-        imgs = {}
-        for col in ("image", "front_model_image", "back_image", "back_model_image"):
-            v = (row.get(col) or "").strip()
-            if v:
-                imgs[col] = {"path": v, "resolved": sot_common.resolve_asset(v)}
-        # Product imagery is bound in the sole registry. Hub review records are
-        # provenance, not a competing live override.
-        if registry_products.get(sku):
-            imgs = {
-                key: {**entry, "resolved": sot_common.resolve_asset(entry.get("path", ""))}
-                for key, entry in registry_products[sku].get("images", {}).items()
-            }
+    for sku in all_skus():
+        product = get_product(sku)
+        row = product["catalog"]
+        # Keyed by the registry field that bound each image. Roles that fall back
+        # to another role's asset share its key, so each binding appears once.
+        bound = {im["source_key"]: im["path"] for im in product["images"].values() if im}
+        imgs = {
+            key: {"path": bound[key], "resolved": sot_common.resolve_asset(bound[key])}
+            for key in IMAGE_KEY_ORDER
+            if key in bound
+        }
         dslug = (row.get("dossier_slug") or "").strip()
-        by_col.setdefault(row.get("collection", ""), []).append(
+        by_col.setdefault(product["collection"] or "", []).append(
             {
-                "sku": row["sku"],
-                "name": row["name"],
+                "sku": sku,
+                "name": product["name"],
                 "price": row.get("price"),
                 "is_preorder": bool_col(row, "is_preorder"),
                 "published": bool_col(row, "published"),

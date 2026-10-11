@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-method-test-card-br-006-r2",
+  "asset_id": "card-br-006-r2",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "749b87a9a61715e14ed1d170013b172b45461885a799cd1b488d8b6ad19e7355",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "br-006"
+  ],
+  "collections": [
+    "black-rose"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/production-method-test/card-br-006-r2-visual-review.json",
+    "sha256": "62236eb10c51bd149ac3d46207349f303c5c1f7a55f51c455604496547e928bb"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/production-method-test/context/card-br-006-r2-desktop.png",
+      "sha256": "1c5beb5c7b516f687adb9f151ea09ee6bc907f9afdfe59fc280df63ffad4b04f"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/production-method-test/context/card-br-006-r2-mobile.png",
+      "sha256": "9c985244696af9394c4769c02536ac7e7ae2c816aeac6bf86dc2a1a27a071256"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/production-method-test/context/card-br-006-r2-pdp-desktop.png",
+      "sha256": "6d31269fb0003d44efa4e0a10f54e10d41716fc17c8028042ee507a9d95f58ee"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/production-method-test/context/card-br-006-r2-pdp-mobile.png",
+      "sha256": "20aad14d11bd17bdeea89346c9b6f2ed96405bc7b87166de8dd97281d39694a1"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native asset plus actual offline card and current product-page.css media-layout crops on desktop/mobile; no hosted-commerce or full-theme/release verdict.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: full hood, chest embroidery, cuffs, both pocket closure regions and hem are visible in contained2:3 desktop/mobile media.",
+    "pdp_on_model_front": "PASS: current gallery/media crop contains the complete jacket and artwork on1440px desktop and390px mobile; no clipped construction or competing styling marks."
+  }
+}

@@ -20,6 +20,7 @@ function skyyrose2_archive_frame_delivery( $collection ) {
 	$cache[ $collection ] = array();
 	$relative = 'assets/derived/card-frames/' . $collection . '-384w.webp';
 	$source = 'assets/sot/images/product-card-portals/' . $collection . '-portal-statue-640w.webp';
+	if ( ! skyyrose2_media_path_allowed( $relative, 'archive_frame' ) || ! skyyrose2_media_path_allowed( $source, 'archive_frame' ) ) { return array(); }
 	$collections = skyyrose2_collections();
 	if ( ( $collections[ $collection ]['portal_statue']['small'] ?? '' ) !== substr( $source, strlen( 'assets/sot/' ) ) ) {
 		return array();
@@ -58,7 +59,7 @@ function skyyrose2_archive_frame_delivery( $collection ) {
 	$narrow_relative = 'assets/derived/card-frames/' . $collection . '-360w.webp';
 	$narrow_file = SKYYROSE2_DIR . '/' . $narrow_relative;
 	$narrow_srcset = '';
-	if ( is_array( $narrow ) && ( $narrow['src'] ?? null ) === $narrow_relative && 360 === ( $narrow['width'] ?? null ) && ! is_link( $narrow_file ) && is_readable( $narrow_file ) && hash_file( 'sha256', $narrow_file ) === ( $narrow['sha256'] ?? null ) ) {
+	if ( skyyrose2_media_path_allowed( $narrow_relative, 'archive_frame' ) && is_array( $narrow ) && ( $narrow['src'] ?? null ) === $narrow_relative && 360 === ( $narrow['width'] ?? null ) && ! is_link( $narrow_file ) && is_readable( $narrow_file ) && hash_file( 'sha256', $narrow_file ) === ( $narrow['sha256'] ?? null ) ) {
 		$narrow_dimensions = getimagesize( $narrow_file );
 		if ( $narrow_dimensions && IMAGETYPE_WEBP === $narrow_dimensions[2] && 360 === $narrow_dimensions[0] && $narrow_dimensions[1] === (int) round( $source_dimensions[1] * 360 / 640 ) && $narrow_dimensions[1] === ( $narrow['height'] ?? null ) ) {
 			$narrow_srcset = SKYYROSE2_URI . '/' . $narrow_relative . ' 360w, ';

@@ -1,0 +1,27 @@
+{
+  "schema": "skyyrose.collection-film-authorization.v1",
+  "authority": "FOUNDER_CONFIRMED",
+  "decision_text": "wire them in. fix the imagery in production",
+  "target": "https://skyyrose.co",
+  "collection": "love-hurts",
+  "provider_task": "cf2b6b6d-8448-4e2c-af1b-574400812072",
+  "source_master_sha256": "6c076725db0ce2d78d894c9ac20ccf927801e9eb865698326b571bdc21fdd9fe",
+  "poster_source_sha256": "a1b148190a73bd699b57936c1f749c33621a217e0e3a189e2e421aaa94694a4a",
+  "assets": {
+    "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/hero.webm": {
+      "sha256": "eb1d2c5a17ab1d2278b5a12c432a28645c676c197ccd8e4959da98a4fb646d65",
+      "role": "collection_hero_video",
+      "source_sha256": "6c076725db0ce2d78d894c9ac20ccf927801e9eb865698326b571bdc21fdd9fe"
+    },
+    "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/poster.webp": {
+      "sha256": "133a7ffd80dc8239683a681f61df8d653be777969e9fb5c40b1eb488025c02e6",
+      "role": "collection_hero_poster",
+      "source_sha256": "a1b148190a73bd699b57936c1f749c33621a217e0e3a189e2e421aaa94694a4a"
+    },
+    "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/hero.mp4": {
+      "sha256": "b7584e6018c79bb9eada07516d710a8243d096e0ff6a2ab18afe81e00ed4edc9",
+      "role": "collection_hero_video",
+      "source_sha256": "6c076725db0ce2d78d894c9ac20ccf927801e9eb865698326b571bdc21fdd9fe"
+    }
+  }
+}

@@ -218,7 +218,11 @@ def _run_tsc_hook(
         input=json.dumps(payload),
         capture_output=True,
         text=True,
-        env={**os.environ, "CLAUDE_PROJECT_DIR": str(project_dir)},
+        # Settings hooks skip themselves under GITHUB_ACTIONS; exercise the hook body.
+        env={
+            **{k: v for k, v in os.environ.items() if k != "GITHUB_ACTIONS"},
+            "CLAUDE_PROJECT_DIR": str(project_dir),
+        },
         cwd=str(project_dir),
         timeout=60,
     )

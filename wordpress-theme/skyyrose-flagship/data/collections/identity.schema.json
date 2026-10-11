@@ -45,6 +45,10 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "collection_hero": {"$ref": "#/$defs/usagePlacement"},
+        "collection_story": {"$ref": "#/$defs/usagePlacement"},
+        "merchandise_scene": {"$ref": "#/$defs/usagePlacement"},
+        "editorial_scene": {"type": "object", "required": ["src", "sha256", "sku", "role", "review"]},
         "hero": {
           "type": "object",
           "additionalProperties": false,
@@ -60,6 +64,28 @@
     }
   },
   "$defs": {
+    "usagePlacement": {
+      "type": "object",
+      "required": ["src", "sha256", "width", "height", "sku", "role", "alt", "usage_adoption"],
+      "properties": {
+        "src": {"type": "string", "pattern": "^assets/v2-original/[A-Za-z0-9_./-]+$"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "width": {"type": "integer", "minimum": 1},
+        "height": {"type": "integer", "minimum": 1},
+        "sku": {"type": "string", "pattern": "^(br|lh|sg|kids)-[0-9]{3}$"},
+        "role": {"enum": ["collection_hero", "collection_story", "merchandise_scene"]},
+        "alt": {"type": "string", "minLength": 1},
+        "usage_adoption": {
+          "type": "object", "required": ["path", "sha256"],
+          "properties": {
+            "path": {"type": "string", "pattern": "^data/v2-media-reviews/[A-Za-z0-9_.-]+\\.json$"},
+            "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
     "font": {
       "type": "object",
       "additionalProperties": false,

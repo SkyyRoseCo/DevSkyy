@@ -43,6 +43,24 @@ FOLD_CAPTURED = "2026-06-09"
 # Founder corrections given after the fold. A FOUNDER_VERBATIM line with any
 # other date must be listed here word for word, so an agent cannot add one
 # silently.
+# Recorded September correction superseded by the founder's October 3 regular-
+# hoodie correction. Preserve its exact historical wording without injecting it
+# into the current render instructions.
+SUPERSEDED_FOUNDER = {
+    (
+        "br-004",
+        "2026-09-21",
+        "[on-model] its left hip, left side of the body whatever you need to change it too "
+        "but it not the sleeve",
+    ),
+    # Founder review-board lines superseded by his 2026-10-05 br-008 correction
+    # ("80 on both sides, eight roses on the front and none on the back").
+    ("br-008", "2026-06-09", "[ghost] rose only goes in the 8 in front"),
+    ("br-008", "2026-06-09", "[ghost-back] rose logo only goes in the 0 in back"),
+}
+# Founder review-board lines from the 2026-06-09 fold still active (32 folded,
+# two retired as superseded above).
+FOLD_FOUNDER_ACTIVE = 30
 POST_FOLD_FOUNDER = {
     (
         "br-005",
@@ -50,15 +68,88 @@ POST_FOLD_FOUNDER = {
         "[on-model] right chest logo is a silicone 3D cutout and left logo it on side hip NOT SLEEVE",
     ),
     (
+        "br-001",
+        "2026-10-03",
+        "8x-10 for the crewneck",
+    ),
+    ("br-001", "2026-10-03", "1. yes"),
+    (
         "br-004",
-        "2026-09-21",
-        "[on-model] its left hip, left side of the body whatever you need to change it too "
-        "but it not the sleeve",
+        "2026-10-03",
+        "2. its no hip patch on the regular hoodie only the black rose signasture",
+    ),
+    (
+        "br-004",
+        "2026-10-03",
+        "br-004 does have a label on the wrist with the cluster logo on ut",
+    ),
+    (
+        "br-005",
+        "2026-10-03",
+        "2. its no hip patch on the regular hoodie only the black rose signasture",
+    ),
+    (
+        "sg-007",
+        "2026-10-03",
+        "signature beanie has a silicone patch that off centered to the left of beanie "
+        "that comes in red, black and purple color styles",
+    ),
+    (
+        "br-008",
+        "2026-10-05",
+        "80 on both sides, eight roses on the front and none on the back",
+    ),
+    (
+        "kids-002",
+        "2026-10-06",
+        "my techflats and real products should always be referenced we never wrote lavender and light pink so that had to be one of you dumb ass agents hallucinating",
+    ),
+    (
+        "lh-002",
+        "2026-10-06",
+        "the droplets arent on the actual joggers",
+    ),
+    (
+        "lh-004",
+        "2026-10-06",
+        "THIS IS THE ONLY RENDER THAT USED THE CORRECT HOOD OF THIS JACKET",
+    ),
+    (
+        "lh-004",
+        "2026-10-06",
+        "Thr front of that jacket is spot on too",
+    ),
+    (
+        "lh-004",
+        "2026-10-06",
+        "the hood ediT must look have the red rose cluster inside of it no hallucinated rose images",
     ),
 }
 AGENT_ADDED = {
     **{sku: [TWO_ROSE] for sku in ("br-002", "br-005", "br-007")},
     **{sku: [TWO_ROSE, CHEST_SCALE] for sku in ("br-001", "br-004", "br-006")},
+}
+# Agent restatements written after the fold. Each one operationalises a
+# founder line given the same day on the same SKU and stays labelled
+# AGENT_ADDED, so it can never pass as his words.
+POST_FOLD_AGENT = {
+    (
+        "lh-002",
+        "2026-10-06",
+        "For the Love Hurts Joggers depiction, render the heart-and-rose motif",
+    ),
+    (
+        "lh-004",
+        "2026-10-06",
+        "Use wordpress-theme/skyyrose-flagship-2/assets/v2-original/products/lh-004.png",
+    ),
+    ("lh-004", "2026-10-06", "Keep the front depiction of LH-004 in wordpress-theme/"),
+    (
+        "lh-004",
+        "2026-10-06",
+        "LH-004 inside hood uses the exact canonical red-roses-cloud-cluster artwork",
+    ),
+    ("kids-002", "2026-10-06", "For Kids-002, use the registered front/back techflats"),
 }
 
 
@@ -89,7 +180,18 @@ def test_each_correction_names_who_wrote_it(registry: dict) -> None:
     for sku, product in registry["products"].items():
         for line in product.get("corrections") or []:
             if line["authority"] == "AGENT_ADDED":
-                assert line["captured"] == "2026-06-12", (sku, line["text"][:40])
+                if line["captured"] != "2026-06-12":
+                    assert any(
+                        (sku, line["captured"]) == (a_sku, a_captured)
+                        and line["text"].startswith(prefix)
+                        for a_sku, a_captured, prefix in POST_FOLD_AGENT
+                    ), (sku, line["text"][:40])
+                    assert any(
+                        other["authority"] == "FOUNDER_VERBATIM"
+                        and other["captured"] == line["captured"]
+                        for other in product["corrections"]
+                    ), (sku, line["text"][:40])
+                    continue
                 agent_added.setdefault(sku, []).append(line["text"])
             else:
                 assert line["authority"] == "FOUNDER_VERBATIM", (sku, line["authority"])
@@ -98,6 +200,13 @@ def test_each_correction_names_who_wrote_it(registry: dict) -> None:
                         sku,
                         line["text"][:40],
                     )
+    post_fold_agent = [
+        (sku, line["captured"])
+        for sku, product in registry["products"].items()
+        for line in product.get("corrections") or []
+        if line["authority"] == "AGENT_ADDED" and line["captured"] != "2026-06-12"
+    ]
+    assert len(post_fold_agent) == len(POST_FOLD_AGENT)
     assert {sku: len(lines) for sku, lines in agent_added.items()} == {
         sku: len(prefixes) for sku, prefixes in AGENT_ADDED.items()
     }
@@ -113,9 +222,27 @@ def test_founder_review_lines_are_the_majority_and_verbatim(registry: dict) -> N
         for line in product.get("corrections") or []
         if line["authority"] == "FOUNDER_VERBATIM"
     ]
-    assert sum(line["captured"] == FOLD_CAPTURED for line in founder) == 32
-    assert len(founder) == 32 + len(POST_FOLD_FOUNDER)
-    assert all(line["text"].startswith("[") for line in founder)
+    assert sum(line["captured"] == FOLD_CAPTURED for line in founder) == FOLD_FOUNDER_ACTIVE
+    assert len(founder) == FOLD_FOUNDER_ACTIVE + len(POST_FOLD_FOUNDER)
+    texts = {(line["captured"], line["text"]) for line in founder}
+    assert all((captured, text) not in texts for _, captured, text in SUPERSEDED_FOUNDER)
+    # Older review-board entries used mechanical [view] prefixes; the October
+    # founder statements retain his exact words rather than adding a prefix.
+    assert all(line["text"].startswith("[") for line in founder if line["captured"] < "2026-10-03")
+
+
+def test_post_fold_founder_allowlist_matches_active_records_exactly(registry: dict) -> None:
+    active = {
+        (sku, line["captured"], line["text"])
+        for sku, product in registry["products"].items()
+        for line in product.get("corrections") or []
+        if line["authority"] == "FOUNDER_VERBATIM" and line["captured"] != FOLD_CAPTURED
+    }
+    assert active == POST_FOLD_FOUNDER
+    assert active.isdisjoint(SUPERSEDED_FOUNDER)
+    for sku, captured, text in POST_FOLD_FOUNDER:
+        if captured >= "2026-10-03":
+            assert text in registry["products"][sku]["dossier"]["content"]
 
 
 def test_get_product_serves_corrections_and_keepers() -> None:
