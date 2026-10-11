@@ -25,6 +25,7 @@ $skyyrose2_test_context = array(
 	'single'          => false,
 	'canonical'       => '',
 	'native_sitemaps' => true,
+	'attachment'      => false,
 );
 
 class SkyyRose2_Test_Sitemap_Server {
@@ -158,6 +159,10 @@ function is_account_page() {
 function is_404() {
 	global $skyyrose2_test_context;
 	return $skyyrose2_test_context['not_found'];
+}
+function is_attachment() {
+	global $skyyrose2_test_context;
+	return $skyyrose2_test_context['attachment'];
 }
 function is_singular( $post_type = '' ) {
 	global $skyyrose2_test_context;
@@ -721,6 +726,40 @@ $skyyrose2_test_context['singular'] = false;
 $robots                             = skyyrose2_seo_robots( array( 'index' => true ) );
 skyyrose2_test_assert( ! isset( $robots['noindex'] ), 'Jetpack per-post noindex applies only to singular requests.' );
 Jetpack_SEO_Posts::$noindex = array();
+
+// Attachment pages (founder decision 2026-10-11): noindex,follow, never a
+// canonical or schema claim. Core sets is_singular() and is_single() for them.
+$skyyrose2_test_context['attachment'] = true;
+$skyyrose2_test_context['singular']   = true;
+$skyyrose2_test_context['single']     = true;
+$skyyrose2_test_context['post_type']  = 'attachment';
+$skyyrose2_test_context['canonical']  = 'https://skyyrose.co/photoroom_20260201_143638/';
+$robots                               = skyyrose2_seo_robots(
+	array(
+		'index'             => true,
+		'nofollow'          => true,
+		'max-image-preview' => 'large',
+	)
+);
+skyyrose2_test_assert( isset( $robots['noindex'], $robots['follow'] ) && ! isset( $robots['index'] ) && ! isset( $robots['nofollow'] ), 'Attachment pages must be noindex,follow.' );
+skyyrose2_test_assert( 'large' === ( $robots['max-image-preview'] ?? '' ), 'Attachment pages keep max-image-preview:large.' );
+skyyrose2_test_assert( '' === skyyrose2_seo_canonical_url(), 'Attachment pages must not emit a canonical URL.' );
+skyyrose2_test_assert( array() === skyyrose2_seo_schema_graph(), 'Attachment pages must not emit schema (no Article claim).' );
+ob_start();
+skyyrose2_seo_render_meta();
+$attachment_meta = ob_get_clean();
+skyyrose2_test_assert( ! str_contains( $attachment_meta, 'rel="canonical"' ) && ! str_contains( $attachment_meta, 'og:url' ), 'Attachment head output must not carry a canonical or og:url.' );
+Jetpack_SEO_Posts::$noindex = array( 42 => true );
+$robots                     = skyyrose2_seo_robots( array( 'index' => true ) );
+skyyrose2_test_assert( isset( $robots['noindex'], $robots['follow'] ) && 'large' === ( $robots['max-image-preview'] ?? '' ), 'A Jetpack-noindex attachment is still noindex,follow with large previews.' );
+Jetpack_SEO_Posts::$noindex           = array();
+$skyyrose2_test_context['attachment'] = false;
+$robots                               = skyyrose2_seo_robots( array( 'index' => true ) );
+skyyrose2_test_assert( ! isset( $robots['noindex'] ) && 'large' === $robots['max-image-preview'], 'Non-attachment singular records stay indexable.' );
+$skyyrose2_test_context['singular']  = false;
+$skyyrose2_test_context['single']    = false;
+$skyyrose2_test_context['post_type'] = 'product';
+$skyyrose2_test_context['canonical'] = '';
 define( 'AIOSEO_VERSION', 'test' );
 skyyrose2_test_assert( skyyrose2_seo_has_authority_plugin(), 'Supported SEO plugins must become the sole metadata/schema authority.' );
 skyyrose2_test_assert( 'User-agent: *' === skyyrose2_seo_robots_txt( 'User-agent: *', true ), 'Theme must defer sitemap advertising to the active SEO plugin.' );
@@ -733,11 +772,17 @@ ob_start();
 skyyrose2_seo_render_meta();
 skyyrose2_seo_render_schema();
 skyyrose2_test_assert( '' === ob_get_clean(), 'Theme head output must be silent under an authority plugin.' );
+$skyyrose2_test_context['attachment'] = true;
+$skyyrose2_test_context['singular']   = true;
+$robots                               = skyyrose2_seo_robots( array( 'index' => true ) );
+skyyrose2_test_assert( ! isset( $robots['noindex'] ) && true === ( $robots['index'] ?? null ), 'Attachment robots pass through under an authority plugin.' );
+$skyyrose2_test_context['attachment'] = false;
+$skyyrose2_test_context['singular']   = false;
 
 if ( $skyyrose2_test_failures ) {
 	fwrite( STDERR, "FAIL SEO/indexing contract\n- " . implode( "\n- ", $skyyrose2_test_failures ) . "\n" );
 	exit( 1 );
 }
 
-echo "PASS SEO/indexing contract: preview fail-closed, public sitemap/indexing, transactional/search noindex, legacy hook replacement, and Woo Product ownership.\n";
+echo "PASS SEO/indexing contract: preview fail-closed, public sitemap/indexing, transactional/search/attachment noindex, legacy hook replacement, and Woo Product ownership.\n";
 echo "PASS offline exact-URL imagery gate: registered V2 social and Article JSON-LD retained; assigned V1, unregistered V2 and filtered legacy URLs withheld by active and compatibility emitters.\n";
