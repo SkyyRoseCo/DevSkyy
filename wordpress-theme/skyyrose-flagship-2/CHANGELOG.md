@@ -2,6 +2,26 @@
 
 All notable changes to SkyyRose Flagship 2 are documented here.
 
+## 2.5.3 — Image sitemap: one entry per page, no attachment pages — 2026-10-11
+
+- Jetpack image sitemap: Jetpack writes one `<url>` per image attachment, so a
+  product with several attached images was listed several times. An unattached
+  image was listed at its own attachment page. Every `<image:loc>` was also
+  empty, because the V2 media gate blanks `wp_get_attachment_url()` for Media
+  Library uploads.
+- Now each parent page appears at most once, through its lowest-ID image
+  attachment. The parent must be published, not password-protected, in the
+  sitemap post types (post, page, product), not excluded, and not marked noindex
+  in Jetpack SEO Tools.
+- The entry carries the image the page actually shows. A product gets the PDP's
+  permitted primary, the same image as its `og:image` and Product schema; any
+  other page gets its gated attachment URL. A page with no eligible image is
+  left out. Orphan images, images attached to attachments and withheld images
+  are never listed.
+- A supported SEO plugin keeps both Jetpack decisions unchanged.
+- Jetpack offers no hook that repeats `<image:image>` under one `<url>`, so one
+  image per page is listed. The other product images stay on the PDP itself.
+
 ## 2.5.2 — Homepage hero restored through the media gate — 2026-10-11
 
 - Media gate: `house_art` joins the canonical-exact-bytes path. The homepage

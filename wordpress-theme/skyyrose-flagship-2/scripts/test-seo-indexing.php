@@ -70,9 +70,40 @@ class Jetpack_SEO_Posts {
 
 class WP_Post {
 	public $ID;
-	public function __construct( $post_id ) {
+	public $post_type     = 'page';
+	public $post_status   = 'publish';
+	public $post_password = '';
+	public $post_parent   = 0;
+	public function __construct( $post_id, $fields = array() ) {
 		$this->ID = $post_id;
+		foreach ( $fields as $field => $value ) {
+			$this->$field = $value;
+		}
 	}
+}
+
+// Image-sitemap fixtures: records by ID, image attachments by parent, gated
+// attachment URLs (the V2 media gate blanks every Media Library upload).
+$GLOBALS['sr2_seo_test_posts']           = array();
+$GLOBALS['sr2_seo_test_children']        = array();
+$GLOBALS['sr2_seo_test_attachment_urls'] = array();
+$GLOBALS['sr2_seo_test_permalinks']      = array();
+$GLOBALS['sr2_seo_test_children_calls']  = 0;
+function get_post( $post_id ) {
+	$post_id = is_object( $post_id ) ? (int) $post_id->ID : (int) $post_id;
+	return $GLOBALS['sr2_seo_test_posts'][ $post_id ] ?? null;
+}
+function get_posts( $args ) {
+	++$GLOBALS['sr2_seo_test_children_calls'];
+	if ( 'attachment' !== ( $args['post_type'] ?? '' ) || 'image' !== ( $args['post_mime_type'] ?? '' ) || 'ids' !== ( $args['fields'] ?? '' ) || 'ID' !== ( $args['orderby'] ?? '' ) || 'ASC' !== ( $args['order'] ?? '' ) ) {
+		throw new RuntimeException( 'Unexpected image-sitemap child query' );
+	}
+	$children = $GLOBALS['sr2_seo_test_children'][ (int) ( $args['post_parent'] ?? -1 ) ] ?? array();
+	sort( $children );
+	return array_slice( $children, 0, (int) ( $args['posts_per_page'] ?? 5 ) );
+}
+function wp_get_attachment_url( $attachment_id ) {
+	return $GLOBALS['sr2_seo_test_attachment_urls'][ (int) $attachment_id ] ?? '';
 }
 
 function add_action( $hook, $callback, $priority = 10 ) {
@@ -173,7 +204,8 @@ function wp_get_canonical_url( $post_id ) {
 	return $skyyrose2_test_context['canonical'];
 }
 function get_permalink( $post_id = 0 ) {
-	return 'https://skyyrose.co/story/';
+	$post_id = is_object( $post_id ) ? (int) $post_id->ID : (int) $post_id;
+	return $GLOBALS['sr2_seo_test_permalinks'][ $post_id ] ?? 'https://skyyrose.co/story/';
 }
 function wp_strip_all_tags( $value ) {
 	return strip_tags( $value );
@@ -291,46 +323,6 @@ skyyrose2_test_assert( array( 'post', 'page', 'product' ) === skyyrose2_seo_jetp
 skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_skip( false, (object) array( 'ID' => 11 ) ), 'Jetpack sitemap must skip the checkout page.' );
 skyyrose2_test_assert( ! skyyrose2_seo_jetpack_sitemap_skip( false, (object) array( 'ID' => 42 ) ), 'Jetpack sitemap must keep public records.' );
 skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_skip( true, (object) array( 'ID' => 42 ) ), 'Jetpack skip decisions already made are preserved.' );
-skyyrose2_test_assert(
-	skyyrose2_seo_jetpack_sitemap_image_skip(
-		false,
-		(object) array(
-			'ID'          => 900,
-			'post_parent' => 11,
-		)
-	),
-	'Image sitemap must skip images attached to the checkout page.'
-);
-skyyrose2_test_assert(
-	! skyyrose2_seo_jetpack_sitemap_image_skip(
-		false,
-		(object) array(
-			'ID'          => 11,
-			'post_parent' => 42,
-		)
-	),
-	'Image sitemap must test the parent, not the attachment ID.'
-);
-skyyrose2_test_assert(
-	! skyyrose2_seo_jetpack_sitemap_image_skip(
-		false,
-		(object) array(
-			'ID'          => 901,
-			'post_parent' => 0,
-		)
-	),
-	'Unattached images are kept.'
-);
-skyyrose2_test_assert(
-	skyyrose2_seo_jetpack_sitemap_image_skip(
-		true,
-		(object) array(
-			'ID'          => 902,
-			'post_parent' => 42,
-		)
-	),
-	'Earlier image skip decisions are preserved.'
-);
 skyyrose2_test_assert( false === skyyrose2_seo_jetpack_metadata_enabled( true ), 'Jetpack Open Graph / SEO meta tags must be silent while the theme renders metadata.' );
 skyyrose2_test_assert( 'https://skyyrose.co/shop/page/2/' === skyyrose2_seo_pagenum_url( 2 ), 'Paginated canonical must drop request query parameters.' );
 $skyyrose2_test_context['pagenum_link'] = 'https://skyyrose.co/?paged=3&cb=9';
@@ -349,6 +341,8 @@ skyyrose2_test_assert( 'https://skyyrose.co/?paged=4' === skyyrose2_seo_pagenum_
 unset( $skyyrose2_test_context['pagenum_link'] );
 $image_filter = array_values( array_filter( $skyyrose2_test_filters, static fn( $f ) => 'jetpack_sitemap_image_skip_post' === $f['hook'] ) );
 skyyrose2_test_assert( 'skyyrose2_seo_jetpack_sitemap_image_skip' === $image_filter[0]['callback'], 'Image sitemap must use its own parent-checking callback.' );
+$image_item_filter = array_values( array_filter( $skyyrose2_test_filters, static fn( $f ) => 'jetpack_sitemap_image_sitemap_item' === $f['hook'] ) );
+skyyrose2_test_assert( isset( $image_item_filter[0] ) && 'skyyrose2_seo_jetpack_sitemap_image_item' === $image_item_filter[0]['callback'] && 20 === $image_item_filter[0]['priority'] && 2 === $image_item_filter[0]['accepted_args'], 'Image sitemap item filter must be registered with both arguments.' );
 foreach ( array( 'wp_sitemaps_add_provider', 'jetpack_sitemap_post_types', 'jetpack_sitemap_skip_post', 'jetpack_sitemap_image_skip_post', 'jetpack_enable_open_graph', 'jetpack_seo_meta_tags_enabled', 'jetpack_seo_custom_titles' ) as $hook ) {
 	skyyrose2_test_assert( in_array( $hook, array_column( $skyyrose2_test_filters, 'hook' ), true ), "Filter {$hook} was not registered." );
 }
@@ -508,6 +502,149 @@ $GLOBALS['sr2_seo_test_media'] = array(
 );
 skyyrose2_test_assert( '' === skyyrose2_seo_resolved_context()['image'], 'Rejected media cannot return through social metadata.' );
 
+// Jetpack image sitemap: one <url> per indexable parent page, carrying the image
+// that page actually shows; never an attachment page, never an empty image:loc.
+$image_entry                             = static function ( $attachment_id, $parent_id ) {
+	return (object) array(
+		'ID'          => $attachment_id,
+		'post_parent' => $parent_id,
+	);
+};
+$jetpack_item                            = static function ( $loc, $image_url ) {
+	return array(
+		'url' => array(
+			'loc'         => $loc,
+			'lastmod'     => '2026-10-11T00:00:00Z',
+			'image:image' => array( 'image:loc' => $image_url ),
+		),
+	);
+};
+$GLOBALS['sr2_seo_test_posts']           = array(
+	42  => new WP_Post( 42, array( 'post_type' => 'product' ) ),
+	11  => new WP_Post( 11 ),
+	50  => new WP_Post( 50, array( 'post_type' => 'product' ) ),
+	60  => new WP_Post( 60 ),
+	61  => new WP_Post( 61 ),
+	70  => new WP_Post(
+		70,
+		array(
+			'post_type'   => 'attachment',
+			'post_status' => 'inherit',
+		)
+	),
+	80  => new WP_Post( 80, array( 'post_status' => 'draft' ) ),
+	81  => new WP_Post( 81, array( 'post_type' => 'product' ) ),
+	82  => new WP_Post( 82, array( 'post_password' => 'secret' ) ),
+	83  => new WP_Post( 83, array( 'post_type' => 'wp_block' ) ),
+	43  => new WP_Post( 43, array( 'post_type' => 'product' ) ),
+	900 => new WP_Post(
+		900,
+		array(
+			'post_type'   => 'attachment',
+			'post_status' => 'inherit',
+			'post_parent' => 11,
+		)
+	),
+	906 => new WP_Post(
+		906,
+		array(
+			'post_type'   => 'attachment',
+			'post_status' => 'inherit',
+			'post_parent' => 43,
+		)
+	),
+	920 => new WP_Post(
+		920,
+		array(
+			'post_type'   => 'attachment',
+			'post_status' => 'inherit',
+			'post_parent' => 60,
+		)
+	),
+	930 => new WP_Post(
+		930,
+		array(
+			'post_type'   => 'attachment',
+			'post_status' => 'inherit',
+			'post_parent' => 61,
+		)
+	),
+);
+$GLOBALS['sr2_seo_test_children']        = array(
+	42 => array( 905, 11 ),
+	43 => array( 906 ),
+	11 => array( 900 ),
+	50 => array( 910 ),
+	60 => array( 920 ),
+	61 => array( 930 ),
+	70 => array( 940 ),
+	80 => array( 950 ),
+	81 => array( 960 ),
+	82 => array( 970 ),
+	83 => array( 980 ),
+);
+$GLOBALS['sr2_seo_test_permalinks']      = array(
+	42 => 'https://skyyrose.co/product/br-001/',
+	43 => 'https://skyyrose.co/product/br-003/',
+	50 => 'https://skyyrose.co/product/br-002/',
+	60 => 'https://skyyrose.co/about/',
+	61 => 'https://skyyrose.co/journal/',
+);
+$GLOBALS['sr2_seo_test_attachment_urls'] = array(
+	11  => '',
+	905 => '',
+	920 => '',
+	930 => 'https://skyyrose.co/wp-content/themes/skyyrose-flagship-2/assets/test/current-article.webp',
+);
+Jetpack_SEO_Posts::$noindex              = array( 81 => true );
+$GLOBALS['sr2_seo_test_media']           = array(
+	'state' => 'v2-original',
+	'ids'   => array( 77 ),
+	'front' => array( 'src' => 'https://example.test/v2/current-sku-front.webp' ),
+);
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 900, 11 ) ), 'Image sitemap must skip images attached to the checkout page.' );
+skyyrose2_test_assert( ! skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 11, 42 ) ), 'Image sitemap must test the parent, not the attachment ID.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( true, $image_entry( 11, 42 ) ), 'Earlier image skip decisions are preserved.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 901, 0 ) ), 'An unattached image has no page of its own: Jetpack would list its attachment page, so it is skipped.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 905, 42 ) ), 'Only one image entry per parent page: a later sibling attachment is skipped.' );
+$GLOBALS['sr2_seo_test_children_calls'] = 0;
+skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 905, 42 ) );
+skyyrose2_test_assert( 0 === $GLOBALS['sr2_seo_test_children_calls'], 'The representative attachment per parent is resolved once per request.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 940, 70 ) ), 'An image whose parent is another attachment would list an attachment page and is skipped.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 950, 80 ) ), 'An image attached to an unpublished record is skipped.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 960, 81 ) ), 'An image attached to a record marked noindex in Jetpack SEO Tools is skipped.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 970, 82 ) ), 'An image attached to a password-protected record is skipped.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 980, 83 ) ), 'An image attached to a post type outside the sitemap is skipped.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 990, 999 ) ), 'An image whose parent record is missing is skipped.' );
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 920, 60 ) ), 'A page image the V2 media gate withholds (empty URL) is skipped, never listed with an empty image:loc.' );
+skyyrose2_test_assert( ! skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 930, 61 ) ), 'A page image that passes the V2 media gate is kept.' );
+$product_item = skyyrose2_seo_jetpack_sitemap_image_item( $jetpack_item( 'https://skyyrose.co/product/br-003/', '' ), 906 );
+skyyrose2_test_assert( 'https://skyyrose.co/product/br-003/' === ( $product_item['url']['loc'] ?? '' ), 'A product image entry is located at its product page.' );
+skyyrose2_test_assert( 'https://example.test/v2/current-sku-front.webp' === ( $product_item['url']['image:image']['image:loc'] ?? '' ), 'A product image entry carries the PDP permitted primary (the og:image / schema image), not the withheld upload.' );
+skyyrose2_test_assert( '2026-10-11T00:00:00Z' === ( $product_item['url']['lastmod'] ?? '' ), 'Jetpack lastmod is preserved.' );
+$page_item = skyyrose2_seo_jetpack_sitemap_image_item( $jetpack_item( 'https://skyyrose.co/journal/', '' ), 930 );
+skyyrose2_test_assert( $GLOBALS['sr2_seo_test_attachment_urls'][930] === ( $page_item['url']['image:image']['image:loc'] ?? '' ), 'A page image entry carries its own gated attachment URL.' );
+skyyrose2_test_assert( null === skyyrose2_seo_jetpack_sitemap_image_item( $jetpack_item( 'https://skyyrose.co/about/', '' ), 920 ), 'A withheld image never reaches the sitemap as an entry.' );
+$GLOBALS['sr2_seo_test_posts'][901] = new WP_Post(
+	901,
+	array(
+		'post_type'   => 'attachment',
+		'post_status' => 'inherit',
+	)
+);
+skyyrose2_test_assert( null === skyyrose2_seo_jetpack_sitemap_image_item( $jetpack_item( 'https://skyyrose.co/photoroom/', 'https://skyyrose.co/x.webp' ), 901 ), 'An orphan never reaches the sitemap as an attachment-page entry.' );
+$GLOBALS['sr2_seo_test_media'] = array(
+	'state' => 'missing',
+	'ids'   => array(),
+	'front' => array(),
+);
+skyyrose2_test_assert( skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 910, 50 ) ), 'A product with no eligible V2 image gets no image entry.' );
+Jetpack_SEO_Posts::$noindex    = array();
+$GLOBALS['sr2_seo_test_media'] = array(
+	'state' => 'rejected',
+	'ids'   => array(),
+);
+
 // Execute both maintained and compatibility emitters. The active adapter owns
 // production output; the old hooks still cannot expose assigned V1 thumbnails.
 $legacy_start = strpos( $theme_source, 'function skyyrose2_seo_context()' );
@@ -589,6 +726,9 @@ skyyrose2_test_assert( skyyrose2_seo_has_authority_plugin(), 'Supported SEO plug
 skyyrose2_test_assert( 'User-agent: *' === skyyrose2_seo_robots_txt( 'User-agent: *', true ), 'Theme must defer sitemap advertising to the active SEO plugin.' );
 skyyrose2_test_assert( function_exists( 'skyyrose2_seo_jetpack_news_sitemap_in_robots' ) && true === skyyrose2_seo_jetpack_news_sitemap_in_robots( true ) && false === skyyrose2_seo_jetpack_news_sitemap_in_robots( false ), 'News-sitemap robots.txt decision must pass through under an authority plugin.' );
 skyyrose2_test_assert( array() === skyyrose2_seo_schema_graph(), 'Theme schema must be silent under an authority plugin.' );
+skyyrose2_test_assert( false === skyyrose2_seo_jetpack_sitemap_image_skip( false, $image_entry( 901, 0 ) ) && true === skyyrose2_seo_jetpack_sitemap_image_skip( true, $image_entry( 906, 43 ) ), 'Image sitemap skip decisions pass through under an authority plugin.' );
+$authority_item = $jetpack_item( 'https://skyyrose.co/photoroom/', 'https://skyyrose.co/x.webp' );
+skyyrose2_test_assert( $authority_item === skyyrose2_seo_jetpack_sitemap_image_item( $authority_item, 901 ), 'Image sitemap items pass through unchanged under an authority plugin.' );
 ob_start();
 skyyrose2_seo_render_meta();
 skyyrose2_seo_render_schema();
