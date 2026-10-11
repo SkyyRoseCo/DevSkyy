@@ -787,7 +787,7 @@ class TestP3Followups:
 
     # P3b: reviews from every session count ----------------------------------
 
-    def test_latest_review_per_reviewer_decides(self, repo: Path, tmp_path: Path) -> None:
+    def test_any_fail_review_decides(self, repo: Path, tmp_path: Path) -> None:
         sess = sess_mod.new_session(repo)
         cand = cand_mod.capture(repo)
         run = _entry(repo, sess)
@@ -805,7 +805,9 @@ class TestP3Followups:
             _review(cand, "r1", "PASS", "2026-10-11T00:00:02+00:00"),
             _review(cand, "r1", "FAIL", "2026-10-11T00:00:01+00:00"),
         ]
-        assert verdict(fail_then_pass) == "PASS"  # ordered by reviewed_at, not list order
+        assert (
+            verdict(fail_then_pass) == "FAIL"
+        )  # a FAIL is permanent, even against a later same-name PASS
         other_fails = [
             _review(cand, "r2", "FAIL", "2026-10-11T00:00:01+00:00"),
             _review(cand, "r1", "PASS", "2026-10-11T00:00:05+00:00"),
@@ -966,10 +968,8 @@ class TestReviewRound2:
         assert rec["fashion_theme_team"]["status"] == "BLOCKED"
         assert rec["fashion_theme_team"]["reviews_considered"] == []
 
-    def test_withdrawn_fail_stays_withdrawn_after_reviewer_becomes_owner(
-        self, repo: Path, tmp_path: Path
-    ) -> None:
-        """Latest-then-filter: r1 FAIL, r1 PASS (independent), then r1 runs a gate."""
+    def test_fail_cannot_be_withdrawn_by_same_name_pass(self, repo: Path, tmp_path: Path) -> None:
+        """Round 3: names are self-declared, so a later same-name PASS never clears a FAIL."""
         sess = sess_mod.new_session(repo)
         cand = cand_mod.capture(repo)
         rec = ev.build_record(
@@ -982,9 +982,9 @@ class TestReviewRound2:
             toolchain=_toolchain(),
             out_dir=tmp_path / "o",
         )
-        assert rec["fashion_theme_team"]["status"] == "BLOCKED"
-        assert rec["fashion_theme_team"]["reviews_considered"] == []
+        assert rec["fashion_theme_team"]["status"] == "FAIL"
 
+    @pytest.mark.timeout(60)
     def test_cli_cannot_launder_fail_through_owner_run_in_other_session(
         self, repo: Path, pinned_ok: None, monkeypatch: pytest.MonkeyPatch
     ) -> None:
@@ -1094,3 +1094,53 @@ class TestReviewRound2:
             out_dir=tmp_path / "o",
         )
         assert rec["fashion_theme_team"]["status"] == "FAIL"
+
+
+class TestReviewRound3:
+    """A FAIL on a candidate is permanent; only a new candidate (a code change) gets past it."""
+
+    def _rec(self, repo: Path, tmp_path: Path, reviews: list[dict]) -> dict:
+        sess = sess_mod.new_session(repo)
+        return ev.build_record(
+            session_runs=[_entry(repo, sess)],
+            reviews=reviews,
+            candidate=cand_mod.capture(repo),
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
+
+    def test_fail_from_other_harness_still_stands(self, repo: Path, tmp_path: Path) -> None:
+        cand = cand_mod.capture(repo)
+        old = {
+            **_review(cand, "r1", "FAIL", "2026-10-11T00:00:01+00:00"),
+            "harness_sha256": "0" * 64,
+        }
+        later_pass = _review(cand, "r2", "PASS", "2026-10-11T00:00:02+00:00")
+        rec = self._rec(repo, tmp_path, [old, later_pass])
+        assert rec["fashion_theme_team"]["status"] == "FAIL"
+
+    def test_case_folded_same_name_pass_cannot_clear_fail(self, repo: Path, tmp_path: Path) -> None:
+        cand = cand_mod.capture(repo)
+        reviews = [
+            _review(cand, "bob", "FAIL", "2026-10-11T00:00:01+00:00"),
+            _review(cand, " BOB ", "PASS", "2026-10-11T00:00:02+00:00"),
+        ]
+        assert self._rec(repo, tmp_path, reviews)["fashion_theme_team"]["status"] == "FAIL"
+
+    @pytest.mark.parametrize(
+        "bad", [{"disposition": "fail"}, {"disposition": None}, {"reviewer": None}]
+    )
+    def test_malformed_review_fails_closed(self, repo: Path, tmp_path: Path, bad: dict) -> None:
+        cand = cand_mod.capture(repo)
+        review = {**_review(cand, "r1", "FAIL", "2026-10-11T00:00:01+00:00"), **bad}
+        with pytest.raises(ev.EvidenceError, match="Malformed review"):
+            self._rec(repo, tmp_path, [review])
+
+    def test_fail_on_other_candidate_does_not_leak(self, repo: Path, tmp_path: Path) -> None:
+        cand = cand_mod.capture(repo)
+        other = {
+            **_review(cand, "r1", "FAIL", "2026-10-11T00:00:01+00:00"),
+            "candidate_id": "f" * 16,
+        }
+        good = _review(cand, "r2", "PASS", "2026-10-11T00:00:02+00:00")
+        assert self._rec(repo, tmp_path, [other, good])["fashion_theme_team"]["status"] == "PASS"

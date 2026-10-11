@@ -25,10 +25,13 @@ from pathlib import Path
 import pytest
 from cli_anything.skyyrose_flagship_2.utils.backend import THEME_REL, sha256_file
 
-pytestmark = pytest.mark.skipif(
-    os.environ.get("SKYYROSE2_E2E", "").strip() != "1",
-    reason="opt-in: SKYYROSE2_E2E=1 (edits a tracked file in the checkout under test)",
-)
+pytestmark = [
+    pytest.mark.skipif(
+        os.environ.get("SKYYROSE2_E2E", "").strip() != "1",
+        reason="opt-in: SKYYROSE2_E2E=1 (edits a tracked file in the checkout under test)",
+    ),
+    pytest.mark.timeout(600),  # real npm gates; the repo-wide 10s default flakes under load
+]
 
 CLI_NAME = "cli-anything-skyyrose-flagship-2"
 MODULE = "cli_anything.skyyrose_flagship_2.skyyrose_flagship_2_cli"

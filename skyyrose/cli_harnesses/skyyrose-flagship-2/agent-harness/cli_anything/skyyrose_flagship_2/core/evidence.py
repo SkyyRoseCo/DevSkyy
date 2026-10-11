@@ -346,34 +346,34 @@ def latest_reviews(
     reviews: list[dict[str, Any]], candidate: Candidate, harness: str, owners: set[str]
 ) -> list[dict[str, Any]]:
     """
-    Each reviewer's latest review of *candidate* by this harness code, minus any
-    PASS from someone who is (now) an owner.
+    The reviews that decide the Fashion Theme Team verdict for *candidate*.
 
-    Independence only matters for PASS. A FAIL stands whoever recorded it, so a
-    reviewer who later runs a gate on the candidate (honestly, to reproduce the
-    failure, or under SKYYROSE2_GATE_OWNER) cannot make their FAIL disappear.
-    The latest review is picked first and filtered second, so a reviewer who
-    withdrew their own FAIL with a PASS while independent stays withdrawn.
+    - Every FAIL on this candidate stands, whatever harness or session recorded
+      it, and no later review can withdraw it. Reviewer names are self-declared,
+      so a "withdrawal" is indistinguishable from someone else typing the same
+      name. The only way past a FAIL is a new candidate, i.e. a code change.
+    - A PASS counts only for this exact harness code, from someone who is not
+      an owner of the candidate's runs (latest PASS per reviewer).
 
-    *reviews* may come from many sessions. They are ordered by ``reviewed_at``;
-    the sort is stable, so equal timestamps keep their list order (oldest
-    session first, then within-session order).
+    A review with any other disposition fails closed.
+
+    *reviews* may come from many sessions; the result is ordered by ``reviewed_at``.
     """
     blocked = {_norm(o) for o in owners}
-    mine = sorted(
-        (
-            r
-            for r in reviews
-            if r.get("candidate_id") == candidate.candidate_id
-            and r.get("harness_sha256") == harness
-        ),
-        key=lambda r: str(r.get("reviewed_at", "")),
-    )
-    latest: dict[str, dict[str, Any]] = {}
-    for r in mine:
-        latest.pop(_norm(r["reviewer"]), None)
-        latest[_norm(r["reviewer"])] = r
-    return [r for key, r in latest.items() if not (r["disposition"] == "PASS" and key in blocked)]
+    on_candidate = [r for r in reviews if r.get("candidate_id") == candidate.candidate_id]
+    for r in on_candidate:
+        if r.get("disposition") not in {"PASS", "FAIL"} or not isinstance(r.get("reviewer"), str):
+            raise EvidenceError(
+                f"Malformed review on candidate {candidate.candidate_id}: {r!r}. "
+                "Refusing to decide a verdict from an unreadable ledger."
+            )
+    fails = [r for r in on_candidate if r["disposition"] == "FAIL"]
+    passes: dict[str, dict[str, Any]] = {}
+    for r in sorted(on_candidate, key=lambda r: str(r.get("reviewed_at", ""))):
+        key = _norm(r["reviewer"])
+        if r["disposition"] == "PASS" and r.get("harness_sha256") == harness and key not in blocked:
+            passes[key] = r
+    return sorted([*fails, *passes.values()], key=lambda r: str(r.get("reviewed_at", "")))
 
 
 def _ftt_verdict(
