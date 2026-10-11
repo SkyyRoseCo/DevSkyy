@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-10-10T23:59:28+00:00",
+  "generated_at": "2026-10-11T01:31:16+00:00",
   "catalog_sha": "sha256:bbc02e5bc4b9753e56305e954bb10a53bf2f58a6c4ffe6b0380be4c4ab19f2cb",
   "registry_sha": "sha256:7d9a8d6d82c8277153055c1b3ac5217a547498641b1068c03025bdd3cfc70232",
   "registry_path": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
@@ -540,12 +540,26 @@
       "garment_type": "joggers",
       "assets": [
         {
+          "role": "garment",
+          "path": "assets/products/references/lh-002-techflat-front.jpeg",
+          "sha256": "sha256:1a5ad59e099bacf048261949ed316954723bfc7c6efb3918ea3f41631b62ca0c"
+        },
+        {
+          "role": "garment",
+          "path": "assets/products/techflats/split/catalog/lh-002-techflat-front.png",
+          "sha256": "sha256:b17f56eccca4ea869a39d6d900d1d0e15c1b80ddf1f86320f5797cc36b84ff52"
+        },
+        {
+          "role": "logo",
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png",
+          "sha256": "sha256:a9b96c60811a92b34dd8b5700317603a16f0976ea863c5d255a4762935d363a8"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
           "sha256": "sha256:9700d77cb4d0398d0dca13c6d897e2e03a7c4922828f1fbe6ea6562cb537286d"
         }
-      ],
-      "resolution_error": "MissingReferenceError: Registered logo reference missing for lh-002: /Users/theceo/DevSkyy-v2-port-20261010/wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png"
+      ]
     },
     "lh-003": {
       "sku": "lh-003",
@@ -630,12 +644,26 @@
       "garment_type": "",
       "assets": [
         {
+          "role": "garment",
+          "path": "assets/products/references/lh-005-fannie-mockup.jpeg",
+          "sha256": "sha256:a81ea0ddde232a07253ba53168580bc36fba6b0c61622e172b65e8b161c36213"
+        },
+        {
+          "role": "garment",
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/products/the-fannie-pack-photo.jpg",
+          "sha256": "sha256:b70ab3937f1991ef02c2e5f91ecf42dfbb9803be77d60eea9446065789eb14bf"
+        },
+        {
+          "role": "logo",
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png",
+          "sha256": "sha256:a9b96c60811a92b34dd8b5700317603a16f0976ea863c5d255a4762935d363a8"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-fannie.md",
           "sha256": "sha256:1d97a775a1460b15b0c75b16050de904b596f8678c1782ca2631e3b9f13b0c2f"
         }
-      ],
-      "resolution_error": "MissingReferenceError: Registered logo reference missing for lh-005: /Users/theceo/DevSkyy-v2-port-20261010/wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png"
+      ]
     },
     "lh-006": {
       "sku": "lh-006",
@@ -644,12 +672,26 @@
       "garment_type": "joggers",
       "assets": [
         {
+          "role": "garment",
+          "path": "assets/products/references/lh-006-techflat-front.jpeg",
+          "sha256": "sha256:a85fbed9da1d7cc1dd8b7ce913b97b50c1f85274f328def457386abc40c97649"
+        },
+        {
+          "role": "garment",
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-joggers-white.jpeg",
+          "sha256": "sha256:c48bd2e8e764859dee048e3c8f4af955e32bce041fd2975e5948ec700fcc0417"
+        },
+        {
+          "role": "logo",
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png",
+          "sha256": "sha256:a9b96c60811a92b34dd8b5700317603a16f0976ea863c5d255a4762935d363a8"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
           "sha256": "sha256:d463c988d56ef6637a4a802a1e105afb160d79eaf6db9fdb3c84765882cb9f4c"
         }
-      ],
-      "resolution_error": "MissingReferenceError: Registered logo reference missing for lh-006: /Users/theceo/DevSkyy-v2-port-20261010/wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png"
+      ]
     },
     "sg-001": {
       "sku": "sg-001",
