@@ -1,6 +1,7 @@
 """Offline product/view binding and founder-prose propagation contracts."""
 
 import copy
+import hashlib
 import json
 from unittest.mock import AsyncMock, Mock
 
@@ -27,6 +28,15 @@ def product_fixture(monkeypatch, tmp_path):
     record["render_sources"] = {"front": "front.png", "back": "back.png"}
     (tmp_path / "front.png").write_bytes(b"front-fixture")
     (tmp_path / "back.png").write_bytes(b"back-fixture")
+    # The relocated registry still owns its card binding. Supply that asset in
+    # the isolated theme root so render-reference tests reach their own guard.
+    # Synthetic bytes only: no pixel verification or provenance promotion.
+    card = record["images"]["card_front"]
+    card_path = tmp_path / "wordpress-theme/skyyrose-flagship-2" / card["src"]
+    card_path.parent.mkdir(parents=True)
+    card_bytes = b"synthetic-card-front-fixture"
+    card_path.write_bytes(card_bytes)
+    card["sha256"] = hashlib.sha256(card_bytes).hexdigest()
     # Similarly named files must never be guessed.
     (tmp_path / "br-001.jpg").write_bytes(b"wrong-unbound-garment")
     path = tmp_path / "registry.json"

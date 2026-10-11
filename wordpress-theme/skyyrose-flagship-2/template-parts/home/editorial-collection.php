@@ -7,35 +7,39 @@ defined( 'ABSPATH' ) || exit;
 
 $collections = is_array( $args['collections'] ?? null ) ? $args['collections'] : array();
 $products    = is_array( $args['products'] ?? null ) ? $args['products'] : array();
-// The arrival already shows the Bay Bridge salon; Black Rose opens here on its approved Lake Merritt alternate.
-$chapter_scenes = array(
-	'signature'    => array( 'base' => 'images/hero/responsive/signature-golden-gate-monuments-v2', 'focal' => '50% 45%' ),
-	'black-rose'   => array( 'base' => 'images/hero/responsive/black-rose-lake-merritt-monument-v2', 'focal' => '50% 50%' ),
-	'love-hurts'   => array( 'base' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3', 'focal' => '50% 45%' ),
-	'kids-capsule' => array( 'base' => 'images/hero/responsive/kids-capsule-heir-throne-v3', 'focal' => '50% 40%' ),
-);
+// Use the destination collection's own hero and approved motion binding.
+$chapter_slugs = array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' );
 $lockups = array(
 	'signature'  => array( 'width' => 1600, 'height' => 540 ),
 	'black-rose' => array( 'width' => 1600, 'height' => 796 ),
 	'love-hurts' => array( 'width' => 1600, 'height' => 1228 ),
 );
 $chapter = 0;
-foreach ( $chapter_scenes as $slug => $scene ) :
+foreach ( $chapter_slugs as $slug ) :
 	if ( empty( $collections[ $slug ] ) ) {
 		continue;
 	}
 	$collection       = $collections[ $slug ];
+	$chapter_motion   = skyyrose2_collection_hero_motion( $slug, $collection['hero'] );
 	$chapter_products = array_values( $products[ $slug ] ?? array() );
 	$title_id         = 'sr2-chapter-' . $slug . '-title';
 	$chapter++;
 	?>
 <section<?php echo 1 === $chapter ? ' id="sr2-archive-worlds" tabindex="-1"' : ''; ?> class="sr2-editorial-collection sr2-chapter<?php echo 0 === $chapter % 2 ? ' sr2-chapter--flip' : ''; ?>" data-collection="<?php echo esc_attr( $slug ); ?>" aria-labelledby="<?php echo esc_attr( $title_id ); ?>">
-	<figure class="sr2-editorial-collection__image sr2-chapter__scene sr2-image-reveal" style="--sr2-focal: <?php echo esc_attr( $scene['focal'] ); ?>;">
+	<figure class="sr2-editorial-collection__image sr2-chapter__scene sr2-home-motion" data-home-motion>
 		<picture>
-			<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $scene['base'] . '-640w.webp' ) ); ?>">
-			<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $scene['base'] . '-1024w.webp' ) ); ?>">
-			<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $scene['base'] . '-1440w.webp' ) ); ?>" width="1440" height="810" alt="" loading="lazy" decoding="async">
+			<?php if ( ! empty( $collection['hero_mobile'] ) ) : ?>
+				<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['hero_mobile'] ) ); ?>">
+			<?php endif; ?>
+			<?php if ( ! empty( $collection['hero_tablet'] ) ) : ?>
+				<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['hero_tablet'] ) ); ?>">
+			<?php endif; ?>
+			<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['hero'] ) ); ?>" width="1440" height="810" alt="" loading="lazy" decoding="async">
 		</picture>
+		<?php if ( $chapter_motion ) : ?>
+			<video id="<?php echo esc_attr( 'sr2-home-film-' . $slug ); ?>" muted loop playsinline preload="none" aria-hidden="true"><source data-src="<?php echo esc_url( $chapter_motion['webm'] ); ?>" type="video/webm"><source data-src="<?php echo esc_url( $chapter_motion['mp4'] ); ?>" type="video/mp4"></video>
+			<button class="sr2-home-motion__toggle" type="button" aria-controls="<?php echo esc_attr( 'sr2-home-film-' . $slug ); ?>" data-home-motion-toggle hidden><?php esc_html_e( 'Play motion', 'skyyrose-flagship-2' ); ?></button>
+		<?php endif; ?>
 	</figure>
 	<div class="sr2-editorial-collection__band sr2-chapter__band">
 		<div class="sr2-editorial-collection__copy sr2-chapter__copy">

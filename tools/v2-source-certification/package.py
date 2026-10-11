@@ -1,6 +1,7 @@
 """Deterministic runtime allowlist packager. Call through npm run package:theme."""
 
 import hashlib
+import io
 import json
 import os
 import platform
@@ -10,7 +11,10 @@ import zipfile
 import zlib
 from pathlib import Path
 
-from inputs import ROOT
+from inputs import ROOT, all_skus, get_product
+from PIL import Image, features
+
+from skyyrose.core.media_usage import validated_usage_roles
 
 HERE = Path(__file__).resolve().parent
 THEME = ROOT / "wordpress-theme/skyyrose-flagship-2"
@@ -18,6 +22,377 @@ THEME = ROOT / "wordpress-theme/skyyrose-flagship-2"
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+# Media-eligibility gate reused by skyyrose.core.product_registry for reviewed
+# card fronts. Packaging (main) keeps the certified release boundary.
+CANONICAL_MEDIA_SHA256 = "b791146c07de7ae21e12521ecc103ae958f0cbd9a2caa6036f5b539401e0a8bc"
+
+
+REQUIRED_ROLES_SHA256 = "6184c23a6a99f24e919fcdb9e37569d870865660bf9b5c9ccaeab3d26586b693"
+
+
+CARD_ENCODING = {
+    "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+    "crop": False,
+    "format": "WEBP",
+    "libwebp_version": "1.6.0",
+    "method": 6,
+    "pillow_version": "12.3.0",
+    "quality": 90,
+    "resize": "LANCZOS",
+    "upscale": False,
+}
+
+
+def eligible_derivative(relative, record, inventory):
+    """Delivery inherits an eligible master; it cannot create visual approval."""
+    skus = record.get("skus")
+    if not isinstance(skus, list) or len(skus) != 1 or not isinstance(skus[0], str):
+        return False
+    sku = skus[0]
+    width, height = record.get("width"), record.get("height")
+    if (
+        type(width) is not int
+        or width < 1
+        or type(height) is not int
+        or height < 1
+        or relative != f"assets/derived/card-fronts/{sku}-{width}w.webp"
+        or not re.fullmatch(r"[a-z0-9-]+", sku)
+        or record.get("kind") != "photograph"
+        or record.get("origin") != "V2_ORIGINAL_20261002"
+    ):
+        return False
+    source_path = record.get("source_path")
+    if not isinstance(source_path, str) or source_path == relative:
+        return False
+    source = inventory.get("assets", {}).get(source_path, {})
+    if (
+        not isinstance(source, dict)
+        or source.get("status") not in {"INDEPENDENT_VISUAL_PASS", "FOUNDER_ACCEPTED"}
+        or source.get("kind") != "photograph"
+        or source.get("sha256") != record.get("source_sha256")
+        or not eligible_media(source_path, inventory)
+    ):
+        return False
+    for binding in ("roles", "skus", "collections"):
+        if record.get(binding) != source.get(binding):
+            return False
+    delivery = record.get("delivery_manifest")
+    if (
+        not isinstance(delivery, dict)
+        or delivery.get("path") != "assets/derived/card-fronts/manifest.json"
+    ):
+        return False
+    manifest_path = THEME / delivery["path"]
+    if (
+        manifest_path.is_symlink()
+        or not manifest_path.is_file()
+        or sha(manifest_path) != delivery.get("sha256")
+    ):
+        return False
+    try:
+        manifest_path.resolve().relative_to(THEME.resolve())
+        manifest = json.loads(manifest_path.read_text())
+        if not isinstance(manifest, dict) or not isinstance(manifest.get("products"), dict):
+            return False
+        product = manifest["products"][sku]
+        if not isinstance(product, dict):
+            return False
+        encoding = product.get("encoding")
+        if not isinstance(encoding, dict) or set(encoding) != set(CARD_ENCODING):
+            return False
+        if any(type(encoding[key]) is not type(value) for key, value in CARD_ENCODING.items()):
+            return False
+        if (
+            sha(ROOT / "tools/v2-runtime/build-card-renditions.py")
+            != CARD_ENCODING["builder_sha256"]
+        ):
+            return False
+        if (
+            manifest.get("schema") != "skyyrose.card-renditions.v1"
+            or product.get("source") != source_path
+            or product.get("source_sha256") != source["sha256"]
+            or product.get("source_review") != source.get("review")
+            or product.get("encoding") != CARD_ENCODING
+        ):
+            return False
+        if (
+            Image.__version__ != CARD_ENCODING["pillow_version"]
+            or features.version("webp") != CARD_ENCODING["libwebp_version"]
+        ):
+            return False
+        for binding in ("roles", "skus", "collections"):
+            if product.get(binding) != source.get(binding):
+                return False
+        expected = {"src": relative, "width": width, "height": height, "sha256": record["sha256"]}
+        renditions = product.get("renditions")
+        if not isinstance(renditions, list) or renditions.count(expected) != 1:
+            return False
+        with Image.open(THEME / source_path) as master, Image.open(THEME / relative) as child:
+            if (
+                child.format != "WEBP"
+                or child.size != (width, height)
+                or width > master.width
+                or (width not in (160, 320, 480, 768, 1024, 1280, 1536) and width != master.width)
+                or height != round(master.height * width / master.width)
+            ):
+                return False
+            resized = master.resize((width, height), Image.Resampling.LANCZOS)
+            stream = io.BytesIO()
+            resized.save(stream, format="WEBP", quality=90, method=6)
+            return stream.getvalue() == (THEME / relative).read_bytes()
+    except (KeyError, TypeError, ValueError, OSError):
+        return False
+
+
+def eligible_media(relative, inventory):
+    """Packaging never promotes a candidate, old photograph or unbound derivative."""
+    record = inventory.get("assets", {}).get(relative, {})
+    path = THEME / relative
+    if (
+        not isinstance(record, dict)
+        or not isinstance(record.get("roles"), list)
+        or not record["roles"]
+    ):
+        return False
+    if not record or path.is_symlink() or not path.is_file():
+        return False
+    try:
+        path.resolve().relative_to(THEME.resolve())
+    except ValueError:
+        return False
+    digest = sha(path)
+    if record.get("sha256") != digest:
+        return False
+    if digest in inventory.get("disallowed_legacy_sha256", []):
+        return False
+    if record.get("kind") in {"housemark", "font", "icon"}:
+        authority = THEME / "data/v2-canonical-media.json"
+        if (
+            not authority.is_file()
+            or authority.is_symlink()
+            or sha(authority) != CANONICAL_MEDIA_SHA256
+        ):
+            return False
+        canonical = json.loads(authority.read_text())
+        return canonical.get("assets", {}).get(relative) == record
+    if record.get("status") == "DELIVERY_DERIVATIVE":
+        return eligible_derivative(relative, record, inventory)
+    review = record.get("review", {})
+    if not isinstance(review, dict):
+        return False
+    receipt_path = review.get("path", "")
+    if not re.fullmatch(r"data/v2-media-reviews/[A-Za-z0-9_.-]+\.json", receipt_path):
+        return False
+    receipt = THEME / receipt_path
+    if not receipt.is_file() or receipt.is_symlink() or sha(receipt) != review.get("sha256"):
+        return False
+    try:
+        receipt.resolve().relative_to(THEME.resolve())
+        evidence = json.loads(receipt.read_text())
+    except (ValueError, json.JSONDecodeError):
+        return False
+    if not isinstance(evidence, dict):
+        return False
+    for binding in ("roles", "skus", "collections"):
+        values = record.get(binding)
+        if (
+            not isinstance(values, list)
+            or not isinstance(evidence.get(binding), list)
+            or values != evidence[binding]
+            or any(not isinstance(value, str) or not value for value in values)
+        ):
+            return False
+    for binding in ("production_id", "producer"):
+        if (
+            not isinstance(record.get(binding), str)
+            or not record[binding]
+            or record[binding] != evidence.get(binding)
+        ):
+            return False
+    if record.get("status") == "FOUNDER_ACCEPTED":
+        # Founder acceptance is its own evidence class, never a fabricated
+        # independent visual PASS. It cannot broaden a card decision to PDP.
+        return all(
+            (
+                record.get("kind") == "photograph",
+                record.get("origin") == "V2_ORIGINAL_20261002",
+                record.get("roles") == ["card_front"],
+                len(record.get("skus", [])) == 1,
+                len(record.get("collections", [])) == 1,
+                evidence.get("schema") == "skyyrose.founder-card-acceptance.v1",
+                review.get("verdict") == "ACCEPTED",
+                review.get("reviewer") == "Corey",
+                evidence.get("reviewer") == "Corey",
+                evidence.get("verdict") == "ACCEPTED",
+                evidence.get("authority") == "FOUNDER_CONFIRMED",
+                evidence.get("asset_sha256") == digest,
+                bool(evidence.get("decision_text")),
+                evidence.get("placement_authorization")
+                == "ALL 33 PRODUCTS. add them to their card NOW.",
+                _founder_decision_bound(evidence),
+            )
+        )
+    return all(
+        (
+            digest not in inventory.get("disallowed_legacy_sha256", []),
+            record.get("kind") == "photograph",
+            record.get("status") == "INDEPENDENT_VISUAL_PASS",
+            record.get("origin") == "V2_ORIGINAL_20261002",
+            bool(record.get("production_id")),
+            bool(record.get("roles")),
+            bool(record.get("producer")),
+            bool(review.get("reviewer")),
+            record.get("producer") != review.get("reviewer"),
+            review.get("verdict") == "PASS",
+            evidence.get("verdict") == "PASS",
+            evidence.get("reviewer") == review.get("reviewer"),
+            evidence.get("asset_sha256") == digest,
+            evidence.get("v2_originality_pass") is True,
+            evidence.get("product_fidelity_pass") is True,
+        )
+    )
+
+
+def _founder_decision_bound(evidence):
+    """Hash the preserved owner receipt as well as the selected image."""
+    source = evidence.get("decision_source", {})
+    relative = source.get("path", "")
+    if not re.fullmatch(r"data/v2-media-reviews/owner-[A-Za-z0-9_.-]+\.json", relative):
+        return False
+    path = THEME / relative
+    if not path.is_file() or path.is_symlink() or sha(path) != source.get("sha256"):
+        return False
+    try:
+        document = json.loads(path.read_text())
+        quote = document.get("decision_text") or document.get("decision_evidence", {}).get(
+            "verbatim"
+        )
+        candidates = document.get("candidates", [document.get("candidate", {})])
+        schema = document.get("schema")
+        status = document.get("status")
+        if schema == "skyyrose.creative.owner-decision.v1":
+            accepted = status in {
+                "FOUNDER_ACCEPTED_CANDIDATES_QUARANTINED",
+                "FOUNDER_ACCEPTED_CANDIDATE_QUARANTINED",
+            }
+        elif schema == "skyyrose.founder-accepted-image-candidate.v2":
+            accepted = (
+                status == "FOUNDER_ACCEPTED_CANDIDATE"
+                and document.get("decision_evidence", {}).get("authority") == "FOUNDER_CONFIRMED"
+            )
+        else:
+            return False
+        if not accepted:
+            return False
+        if not isinstance(candidates, list):
+            return False
+        return quote == evidence.get("decision_text") and any(
+            isinstance(candidate, dict)
+            and candidate.get("sha256") == evidence.get("asset_sha256")
+            and (candidate.get("sku") or document.get("sku")) == evidence["skus"][0]
+            and (
+                (
+                    isinstance(candidate.get("roles"), list)
+                    and all(isinstance(role, str) and role for role in candidate["roles"])
+                    and "card_front" in candidate["roles"]
+                )
+                or (
+                    schema == "skyyrose.creative.owner-decision.v1"
+                    and document.get("decision") == "ACCEPTED_FOR_PRODUCT_CARD_VISUAL_REVIEW"
+                    and candidate.get("roles") is None
+                    and status == "FOUNDER_ACCEPTED_CANDIDATE_QUARANTINED"
+                )
+            )
+            for candidate in candidates
+        )
+    except (ValueError, TypeError, KeyError):
+        return False
+
+
+def effective_media_roles(relative, inventory):
+    """Preserve the original review roles and add only validated reuse grants."""
+    if not eligible_media(relative, inventory):
+        return []
+    record = inventory["assets"][relative]
+    if record.get("status") == "DELIVERY_DERIVATIVE":
+        return effective_media_roles(record["source_path"], inventory)
+    return list(
+        dict.fromkeys(
+            record.get("roles", [])
+            + validated_usage_roles(relative, record, inventory.get("usage_adoptions", {}), THEME)
+        )
+    )
+
+
+def missing_media_roles(inventory, selected):
+    """A scalar COMPLETE label cannot replace a source-bound role census."""
+    source = THEME / "data/v2-required-media-roles.json"
+    if not source.is_file() or source.is_symlink() or sha(source) != REQUIRED_ROLES_SHA256:
+        raise ValueError("Required V2 delivery role census changed without review")
+    required = json.loads(source.read_text())["slots"]
+    eligible = [
+        (relative, record)
+        for relative, record in inventory.get("assets", {}).items()
+        if relative in selected
+        and record.get("kind") == "photograph"
+        and record.get("status") in {"INDEPENDENT_VISUAL_PASS", "FOUNDER_ACCEPTED"}
+        and eligible_media(relative, inventory)
+    ]
+    roles_by_path = {
+        relative: effective_media_roles(relative, inventory) for relative, _ in eligible
+    }
+    products = {sku: get_product(sku) for sku in all_skus()}
+    preorder_skus_by_collection = {}
+    for sku, product in products.items():
+        catalog = product.get("catalog", {})
+        collection = product.get("collection")
+        if (
+            catalog.get("published") == "1"
+            and catalog.get("is_preorder") == "1"
+            and isinstance(collection, str)
+            and collection
+        ):
+            preorder_skus_by_collection.setdefault(collection, set()).add(sku)
+    missing = []
+    for slot in required:
+        if slot["role"] in {"card_front", "pdp_on_model_front"}:
+            collection = products.get(slot.get("sku"), {}).get("collection")
+            matches = [
+                record
+                for relative, record in eligible
+                if not relative.startswith("assets/derived/card-fronts/")
+                and record.get("skus") == [slot.get("sku")]
+                and collection
+                and record.get("collections") == [collection]
+                and slot["role"] in roles_by_path[relative]
+            ]
+            covered = len(matches) == 1
+        elif slot["role"] == "merchandise_scene":
+            collection = slot.get("collection")
+            preorder_skus = preorder_skus_by_collection.get(collection, set())
+            covered = any(
+                slot["role"] in roles_by_path[relative]
+                and record.get("collections") == [collection]
+                and isinstance(record.get("skus"), list)
+                and bool(record["skus"])
+                and all(isinstance(sku, str) for sku in record["skus"])
+                and set(record["skus"]).issubset(preorder_skus)
+                for relative, record in eligible
+            )
+        else:
+            covered = any(
+                slot["role"] in roles_by_path[relative]
+                and ("sku" not in slot or slot["sku"] in record.get("skus", []))
+                and (
+                    "collection" not in slot or slot["collection"] in record.get("collections", [])
+                )
+                for relative, record in eligible
+            )
+        if not covered:
+            missing.append(slot)
+    return missing
 
 
 def main():
@@ -29,6 +404,8 @@ def main():
         if p.is_file()
         and not set(p.relative_to(THEME).parts) & {"node_modules", "dist", "__pycache__"}
         and p.name not in {".DS_Store", "package-lock.json"}
+        # Gitignored runtime coordination locks written by the registry builders.
+        and not p.name.endswith(".json.lock")
     }
     if actual != expected:
         raise ValueError(f"Unclassified or missing theme source: {sorted(actual ^ expected)}")

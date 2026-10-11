@@ -48,18 +48,18 @@ test('immersive shell has the shared skip target and immediate native commerce',
   assert.match(entry, /href="#chapter-/);
 });
 
-test('Kids keeps both world and shopping entries plus its editorial story', () => {
-  // 2.5.0 arrival: one primary action to the shop band, one quiet link into the chapters
-  // (#world); the immersive world entry moved to the last chapter, the story keeps its own part.
+test('collection arrivals link to merchandise and retain the editorial story', () => {
   const arrival = read('template-parts/collections/arrival.php');
   assert.match(arrival, /class="sr2-control sr2-control--primary" href="#shop"/);
   assert.match(arrival, /\$arrival\['hero_cta'\]/);
-  assert.match(arrival, /class="sr2-editorial-link" href="#world"/);
-  assert.match(arrival, /\$arrival\['world_cta'\]/);
-  const chapters = read('template-parts/collections/chapters.php');
-  assert.match(chapters, /id="world"/);
-  assert.match(chapters, /skyyrose2_immersive_url\( \$chapter_slug \)/);
+  assert.match(arrival, /esc_url\( \$args\['pieces_anchor'\] \?\? '#shop' \)/);
+  assert.match(arrival, /Explore the pieces/);
   const world = read('template-parts/collections/world.php');
+  assert.match(world, /'pieces_anchor'\s*=> \$world_show_editorial \? '#world' : '#shop'/);
+  assert.doesNotMatch(world, /get_template_part\( 'template-parts\/collections\/chapters'/);
   assert.match(world, /<section id="shop"/);
   assert.match(world, /get_template_part\( 'template-parts\/collections\/story'/);
+  const editorial = read('template-parts/collections/editorial.php');
+  assert.match(editorial, /id="world"/);
+  assert.match(editorial, /skyyrose2_immersive_url\( \$editorial_slug \)/);
 });

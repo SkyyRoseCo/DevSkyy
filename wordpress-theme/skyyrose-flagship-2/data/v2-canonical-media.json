@@ -1,0 +1,87 @@
+{
+  "assets": {
+    "assets/derived/fonts/archivo-normal-width.woff2": {
+      "authority_reference": "existing V2 theme.json typography and design-tokens.css delivery",
+      "kind": "font",
+      "roles": [
+        "font"
+      ],
+      "sha256": "7ad8d3aba9616844d4d13eddb34a7584a969c59af1f52a19e89ab4783eab41f5",
+      "status": "CANONICAL_EXACT_BYTES"
+    },
+    "assets/sot/brand/skyyrose-logo-animated-384w.webp": {
+      "authority_reference": "registered SkyyRose housemark; unchanged global-shell brand-only derivative; not photographic campaign permission",
+      "kind": "housemark",
+      "roles": [
+        "housemark"
+      ],
+      "sha256": "98cfbd006e42f81782f2dd2b9a72ac2c8d7015ce09ad880d95af0f244391fb22",
+      "status": "CANONICAL_EXACT_BYTES"
+    },
+    "assets/sot/brand/skyyrose-logo-optimized-384w.webm": {
+      "authority_reference": "registered SkyyRose housemark; unchanged global-shell brand-only derivative; not photographic campaign permission",
+      "kind": "housemark",
+      "roles": [
+        "housemark"
+      ],
+      "sha256": "d5ed7a58727e5bdeb0cd8893e81a25ce826485bcacdba7a23962bd421ffb76f3",
+      "status": "CANONICAL_EXACT_BYTES"
+    },
+    "assets/sot/brand/skyyrose-logo-still-384w.webp": {
+      "authority_reference": "registered SkyyRose housemark; unchanged global-shell brand-only derivative; not photographic campaign permission",
+      "kind": "housemark",
+      "roles": [
+        "housemark"
+      ],
+      "sha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+      "status": "CANONICAL_EXACT_BYTES"
+    },
+    "assets/sot/fonts/anton-latin.woff2": {
+      "authority_reference": "existing V2 theme.json typography and design-tokens.css delivery",
+      "kind": "font",
+      "roles": [
+        "font"
+      ],
+      "sha256": "23aab0b2692a0c89eb7997d3c7cf5bda41276d6cd4ab6cc0edc3edfcece32b09",
+      "status": "CANONICAL_EXACT_BYTES"
+    },
+    "assets/sot/fonts/archivo-latin.woff2": {
+      "authority_reference": "existing V2 theme.json typography and design-tokens.css delivery",
+      "kind": "font",
+      "roles": [
+        "font"
+      ],
+      "sha256": "4c98b9d490d1698ec95f2ff17a6c7d0e72691864c0c5d7bc2a2c161b45afe5ad",
+      "status": "CANONICAL_EXACT_BYTES"
+    },
+    "assets/sot/fonts/cinzel-latin.woff2": {
+      "authority_reference": "existing V2 theme.json typography and design-tokens.css delivery",
+      "kind": "font",
+      "roles": [
+        "font"
+      ],
+      "sha256": "09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370",
+      "status": "CANONICAL_EXACT_BYTES"
+    },
+    "assets/sot/fonts/hanken-grotesk-latin.woff2": {
+      "authority_reference": "existing V2 theme.json typography and design-tokens.css delivery",
+      "kind": "font",
+      "roles": [
+        "font"
+      ],
+      "sha256": "1f21c6eaa0000f3329cfcfac966b43d5bebf5aa610303e33294ac31bc6f4bb59",
+      "status": "CANONICAL_EXACT_BYTES"
+    },
+    "assets/sot/fonts/inter-latin.woff2": {
+      "authority_reference": "existing V2 theme.json typography and design-tokens.css delivery",
+      "kind": "font",
+      "roles": [
+        "font"
+      ],
+      "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4",
+      "status": "CANONICAL_EXACT_BYTES"
+    }
+  },
+  "purpose": "Frozen exact existing housemark derivatives and active V2 font delivery. Source-reviewed inventory; never a photographic approval. Any change requires explicit inventory review and code pin reconciliation.",
+  "schema": "skyyrose.v2.canonical-media.v1"
+}

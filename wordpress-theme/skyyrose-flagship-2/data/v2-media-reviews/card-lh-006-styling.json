@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-targeted-lowerbody-styling-card-lh-006",
+  "asset_id": "card-lh-006",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "b376de27c083bd9ad19244db1a4a22b127b59c4add7ccf860d78140af14375fe",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "lh-006"
+  ],
+  "collections": [
+    "love-hurts"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-lowerbody-styling-repairs/card-lh-006-visual-review.json",
+    "sha256": "cd4dea0f1166ea9e4ef09efa62260754cbe1aac86918acc23a7d33300126e721"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-006-styling-card-desktop.png",
+      "sha256": "297f0b4b44be9978a5c811c19feff43abb8c897ce6df817a07f7e5aa9bbb2fb5"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-006-styling-card-mobile.png",
+      "sha256": "006bc5a6594e5e72618393b334a06a04bf670d1db0dbe9c0d272a17a6679b55c"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-006-styling-pdp-desktop.png",
+      "sha256": "70c116951e6689420a92bd55edce01e01c6d0964a51f8c70d60c58f63b99e219"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-006-styling-pdp-mobile.png",
+      "sha256": "bf4bf4511e02ec9c1b0f9ba108136a5b99aeb90b3b646ea9e94673d90449f9eb"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Whole original native photograph and actual offline card/current product-page.css PDP media-only desktop1440/mobile390 contexts. Whole-theme, 768 interactions, hosted commerce and release UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: The whole white joggers preserve black inserted side panels, WHITE drawstrings, complete cuff/ankle zipper construction and grounded continuous feet in small plain black laceless unmarked boots. The wearer-left thigh retains the red heart, separate rose blooms, green leaves, dark thorns, lateral splatter and separated terminal droplets at observable physical scale. Night-street red/amber spill, fabric folds and contact shadows integrate one fashion event without concealing merchandise.",
+    "pdp_on_model_front": "PASS: Entire native master contained in actual desktop/mobile gallery media with no merchandise crop or visible overflow. The whole white joggers preserve black inserted side panels, WHITE drawstrings, complete cuff/ankle zipper construction and grounded continuous feet in small plain black laceless unmarked boots. The wearer-left thigh retains the red heart, separate rose blooms, green leaves, dark thorns, lateral splatter and separated terminal droplets at observable physical scale. Night-street red/amber spill, fabric folds and contact shadows integrate one fashion event without concealing merchandise."
+  }
+}

@@ -21,6 +21,8 @@ $skyyrose2_test_context = array(
 	'page'            => false,
 	'not_found'       => false,
 	'singular'        => false,
+	'post_type'       => 'product',
+	'single'          => false,
 	'canonical'       => '',
 	'native_sitemaps' => true,
 );
@@ -33,12 +35,6 @@ class SkyyRose2_Test_Sitemap_Server {
 }
 function wp_sitemaps_get_server() {
 	return new SkyyRose2_Test_Sitemap_Server();
-}
-function is_single() {
-	return false;
-}
-function is_archive() {
-	return false;
 }
 function is_home() {
 	return false;
@@ -134,8 +130,12 @@ function is_404() {
 }
 function is_singular( $post_type = '' ) {
 	global $skyyrose2_test_context;
-	return $skyyrose2_test_context['singular'];
+	return $skyyrose2_test_context['singular'] && ( ! $post_type || $post_type === $skyyrose2_test_context['post_type'] );
 }
+function is_single() {
+	return $GLOBALS['skyyrose2_test_context']['single']; }
+function is_archive() {
+	return false; }
 function is_front_page() {
 	return false;
 }
@@ -410,7 +410,52 @@ skyyrose2_test_assert( array() === array_values( $collisions ), 'Adapter redecla
 function get_bloginfo( $key ) {
 	return 'SkyyRose'; }
 function apply_filters( $name, $value ) {
+	if ( 'skyyrose2_seo_context' === $name && isset( $GLOBALS['sr2_seo_image_override'] ) ) {
+		$value['image'] = $GLOBALS['sr2_seo_image_override']; }
+	return $value;
+}
+// Explicit offline URL eligibility fixture. No prefix-wide or allow-all bypass.
+$GLOBALS['sr2_seo_allowed_urls'] = array(
+	'https://example.test/77.webp',
+	'https://example.test/v2/current-sku-front.webp',
+	'https://skyyrose.co/wp-content/themes/skyyrose-flagship-2/assets/test/current-article.webp',
+);
+function skyyrose2_media_url( $url ) {
+	return is_string( $url ) && in_array( $url, $GLOBALS['sr2_seo_allowed_urls'] ?? array(), true ) ? $url : ''; }
+function esc_attr( $value ) {
+	return htmlspecialchars( (string) $value, ENT_QUOTES, 'UTF-8' ); }
+function esc_url( $value ) {
+	return esc_attr( $value ); }
+function get_locale() {
+	return 'en_US'; }
+function get_the_title( $id = null ) {
+	return 'Authored journal title'; }
+function get_the_excerpt() {
+	return 'Authored journal copy retained verbatim.'; }
+function get_the_content() {
+	return get_the_excerpt(); }
+function get_the_post_thumbnail_url( $id, $size ) {
+	return $GLOBALS['sr2_seo_post_thumbnail'] ?? ''; }
+function get_the_date( $format ) {
+	return '2026-10-02T00:00:00+00:00'; }
+function get_the_modified_date( $format ) {
+	return '2026-10-02T01:00:00+00:00'; }
+function get_the_author() {
+	return 'Fixture author'; }
+function get_post_ancestors( $id ) {
+	return array(); }
+function get_theme_mod( $key ) {
+	return 0; }
+function trailingslashit( $url ) {
+	return rtrim( $url, '/' ) . '/'; }
+function wp_json_encode( $value, $flags = 0 ) {
+	return json_encode( $value, $flags ); }
+function __( $value, $domain ) {
 	return $value; }
+function wp_trim_words( $value, $count, $more ) {
+	return implode( ' ', array_slice( explode( ' ', $value ), 0, $count ) ); }
+function skyyrose2_sot_asset_uri( $path ) {
+	return 'https://skyyrose.co/wp-content/themes/skyyrose-flagship-2/assets/sot/' . $path; }
 $skyyrose2_test_context['page'] = true;
 $faq_entries                    = skyyrose2_seo_faq_entries();
 skyyrose2_test_assert(
@@ -445,13 +490,88 @@ $GLOBALS['sr2_seo_test_media']      = array(
 );
 skyyrose2_test_assert( 'https://example.test/77.webp' === skyyrose2_seo_resolved_context()['image'], 'SEO must use the resolved product image.' );
 $GLOBALS['sr2_seo_test_media'] = array(
+	'state' => 'v2-original',
+	'ids'   => array( 77 ),
+	'front' => array( 'src' => 'https://example.test/v2/current-sku-front.webp' ),
+);
+$product_context               = skyyrose2_seo_resolved_context();
+skyyrose2_test_assert( $GLOBALS['sr2_seo_test_media']['front']['src'] === $product_context['image'], 'Current exact PDP lead must win over assigned attachment social preview.' );
+skyyrose2_test_assert( 'Test garment | SkyyRose' === $product_context['title'] && 'Authoritative product copy.' === $product_context['description'] && 'product' === $product_context['type'], 'Replacing imagery must preserve native product copy and metadata type.' );
+$GLOBALS['sr2_seo_test_media']['ids'] = array();
+skyyrose2_test_assert( $GLOBALS['sr2_seo_test_media']['front']['src'] === skyyrose2_seo_resolved_context()['image'], 'Theme-local social preview must work without a fabricated attachment ID.' );
+$GLOBALS['sr2_seo_test_media'] = array(
 	'state' => 'rejected',
 	'ids'   => array(),
 );
 skyyrose2_test_assert( '' === skyyrose2_seo_resolved_context()['image'], 'Rejected media cannot return through social metadata.' );
-$skyyrose2_test_context['singular'] = true;
-Jetpack_SEO_Posts::$noindex         = array( 42 => true );
-$robots                             = skyyrose2_seo_robots( array( 'index' => true ) );
+
+// Execute both maintained and compatibility emitters. The active adapter owns
+// production output; the old hooks still cannot expose assigned V1 thumbnails.
+$legacy_start = strpos( $theme_source, 'function skyyrose2_seo_context()' );
+$legacy_end   = strpos( $theme_source, 'function skyyrose2_cart_fragment(', $legacy_start );
+if ( false === $legacy_start || false === $legacy_end ) {
+	throw new RuntimeException( 'Legacy SEO extraction failed' ); }
+eval( substr( $theme_source, $legacy_start, $legacy_end - $legacy_start ) );
+$skyyrose2_test_context['post_type'] = 'post';
+$skyyrose2_test_context['single']    = true;
+$approved_article                    = $GLOBALS['sr2_seo_allowed_urls'][2];
+$legacy_article                      = 'https://skyyrose.co/wp-content/uploads/v1-editorial.jpg';
+$unregistered_v2                     = 'https://skyyrose.co/wp-content/themes/skyyrose-flagship-2/assets/test/unreviewed-article.webp';
+foreach ( array( $legacy_article, $unregistered_v2, $approved_article ) as $thumbnail ) {
+	$GLOBALS['sr2_seo_post_thumbnail'] = $thumbnail;
+	$expected                          = $thumbnail === $approved_article ? $thumbnail : '';
+	foreach ( array( 'skyyrose2_seo_resolved_context', 'skyyrose2_seo_context' ) as $context_reader ) {
+		$article_context = $context_reader();
+		skyyrose2_test_assert( $expected === $article_context['image'], 'Article social context must permit only the explicitly registered V2 thumbnail: ' . $context_reader );
+		skyyrose2_test_assert( 'Authored journal title | SkyyRose' === $article_context['title'] && get_the_excerpt() === $article_context['description'] && 'article' === $article_context['type'], 'Image rejection must preserve authored journal copy and metadata type.' );
+	}
+	foreach ( array( 'skyyrose2_seo_render_meta', 'skyyrose2_seo_head' ) as $meta_renderer ) {
+		ob_start();
+		$meta_renderer();
+		$meta = ob_get_clean();
+		skyyrose2_test_assert( ! str_contains( $meta, $legacy_article ) && ! str_contains( $meta, $unregistered_v2 ), 'Emitted social metadata must exclude V1 and unregistered V2 thumbnails.' );
+		skyyrose2_test_assert( (bool) $expected === str_contains( $meta, 'property="og:image"' ), 'Open Graph image must follow the explicit URL gate.' );
+		skyyrose2_test_assert( str_contains( $meta, 'name="twitter:card" content="' . ( $expected ? 'summary_large_image' : 'summary' ) . '"' ), 'Twitter card type must follow actual eligible imagery.' );
+		if ( 'skyyrose2_seo_render_meta' === $meta_renderer ) {
+			skyyrose2_test_assert( (bool) $expected === str_contains( $meta, 'name="twitter:image"' ), 'Twitter image must follow the same explicit URL gate.' ); }
+		skyyrose2_test_assert( str_contains( $meta, 'content="' . get_the_excerpt() . '"' ), 'Emitted metadata preserves authored article copy when imagery is withheld.' );
+		if ( $expected ) {
+			skyyrose2_test_assert( str_contains( $meta, 'content="' . $approved_article . '"' ), 'Registered V2 thumbnail must reach emitted metadata.' ); }
+	}
+	foreach ( array( 'skyyrose2_seo_render_schema', 'skyyrose2_schema_head' ) as $schema_renderer ) {
+		ob_start();
+		$schema_renderer();
+		$schema_html = ob_get_clean();
+		if ( ! preg_match( '#<script type="application/ld\+json">(.*?)</script>#s', $schema_html, $json ) ) {
+			throw new RuntimeException( 'Missing parseable Article JSON-LD' ); }
+		$schema   = json_decode( $json[1], true, 512, JSON_THROW_ON_ERROR );
+		$nodes    = $schema['@graph'] ?? array( $schema );
+		$articles = array_values( array_filter( $nodes, static fn( $node ) => 'Article' === ( $node['@type'] ?? '' ) ) );
+		skyyrose2_test_assert( 1 === count( $articles ), 'Each schema renderer emits exactly one Article.' );
+		$article = $articles[0];
+		skyyrose2_test_assert( ( $article['image'] ?? '' ) === $expected, 'Article JSON-LD image must follow the explicit V2 URL gate.' );
+		skyyrose2_test_assert( get_the_title() === $article['headline'] && get_the_author() === $article['author']['name'] && get_the_date( DATE_W3C ) === $article['datePublished'], 'Gating Article imagery must preserve native authorship, headline and publication date.' );
+		skyyrose2_test_assert( ! str_contains( $schema_html, $legacy_article ) && ! str_contains( $schema_html, $unregistered_v2 ), 'Serialized JSON-LD must not contain rejected image URLs.' );
+	}
+}
+// The final context gate runs after extension filters, preventing a URL injected
+// by another callback from reopening rejected assigned imagery.
+$GLOBALS['sr2_seo_post_thumbnail'] = $approved_article;
+foreach ( array( $legacy_article, $unregistered_v2, $approved_article ) as $override ) {
+	$GLOBALS['sr2_seo_image_override'] = $override;
+	$expected                          = $override === $approved_article ? $override : '';
+	skyyrose2_test_assert( $expected === skyyrose2_seo_resolved_context()['image'], 'Filtered context image must still pass exact URL eligibility.' );
+	ob_start();
+	skyyrose2_seo_render_meta();
+	$meta = ob_get_clean();
+	skyyrose2_test_assert( ! str_contains( $meta, $legacy_article ) && ! str_contains( $meta, $unregistered_v2 ), 'Filtered social metadata must exclude rejected URLs.' );
+}
+unset( $GLOBALS['sr2_seo_image_override'] );
+$skyyrose2_test_context['single']    = false;
+$skyyrose2_test_context['post_type'] = 'product';
+$skyyrose2_test_context['singular']  = true;
+Jetpack_SEO_Posts::$noindex          = array( 42 => true );
+$robots                              = skyyrose2_seo_robots( array( 'index' => true ) );
 skyyrose2_test_assert( isset( $robots['noindex'] ) && ! isset( $robots['index'] ) && ! isset( $robots['max-image-preview'] ), 'A record the merchant marked noindex in Jetpack SEO Tools must keep its noindex.' );
 Jetpack_SEO_Posts::$noindex = array( 7 => true );
 $robots                     = skyyrose2_seo_robots( array( 'index' => true ) );
@@ -476,3 +596,4 @@ if ( $skyyrose2_test_failures ) {
 }
 
 echo "PASS SEO/indexing contract: preview fail-closed, public sitemap/indexing, transactional/search noindex, legacy hook replacement, and Woo Product ownership.\n";
+echo "PASS offline exact-URL imagery gate: registered V2 social and Article JSON-LD retained; assigned V1, unregistered V2 and filtered legacy URLs withheld by active and compatibility emitters.\n";

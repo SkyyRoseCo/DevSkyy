@@ -38,6 +38,7 @@ python3 scripts/build-product-presentation-registry.py --check
 python3 ../../tools/v2-source-certification/check-commerce-projection.py --check
 python3 scripts/validate-opening-product-media.py
 python3 scripts/validate-collection-hero-motion.py
+python3 scripts/test-collection-hero-motion.py
 python3 scripts/build-pot.py --check
 php scripts/test-marketplace-registry.php
 node scripts/build-assets.mjs --check

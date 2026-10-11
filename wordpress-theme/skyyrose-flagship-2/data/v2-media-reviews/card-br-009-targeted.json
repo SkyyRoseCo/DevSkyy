@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-targeted-repairs-card-br-009",
+  "asset_id": "card-br-009",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "f051a28b80c239ea82bdee026f51306d0814134df5d7b289b462a29ef7947c23",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "br-009"
+  ],
+  "collections": [
+    "black-rose"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-repairs/card-br-009-visual-review.json",
+    "sha256": "65414b2bf80e215f2651be9e11fd359cf959f5f6394687562099ca8ec4a7ec69"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-009-targeted-card-desktop.png",
+      "sha256": "a438d8a64111bdea15ed9069e862e4ba846ea5382e560ef54ef9a2e1096cab2d"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-009-targeted-card-mobile.png",
+      "sha256": "c8125991663542d19d5a4dec72de3258cefb982fe0e227665a14cd134fe06d9b"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-009-targeted-pdp-desktop.png",
+      "sha256": "a157ad3ed255b9c8ab16617fc3d63afefc59a251bae35a3ba5afa99c301d76e8"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-009-targeted-pdp-mobile.png",
+      "sha256": "84c4708c8ce222b3aa6c346e7c236fe63fe8f1dec4807045ecb8317f3f588d43"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native photograph and actual offline card/current product-page.css PDP media-only contexts at1440 desktop/390 mobile. Full commerce, theme interaction, motion, 768 layout and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: Complete black V-neck football jersey, both striped sleeves, number 32 with greyscale black-rose fill in 3, opposite sleeve numbers, mesh response and entire hem remain visible. The portrait gold/black patch retains BLACK ROSE, NFL, AUTHENTIC, COLLECTION and the complete white lower artwork field at its source-relative size. Tiny footer copy is not individually resolvable and has not been guessed; no observed alteration of a resolvable letterform. Natural charcoal civic-pavilion light supports the garment.",
+    "pdp_on_model_front": "PASS: the same native master is entirely contained in the actual current gallery selectors at desktop/mobile, without merchandise cropping or horizontal overflow. Complete black V-neck football jersey, both striped sleeves, number 32 with greyscale black-rose fill in 3, opposite sleeve numbers, mesh response and entire hem remain visible. The portrait gold/black patch retains BLACK ROSE, NFL, AUTHENTIC, COLLECTION and the complete white lower artwork field at its source-relative size. Tiny footer copy is not individually resolvable and has not been guessed; no observed alteration of a resolvable letterform. Natural charcoal civic-pavilion light supports the garment."
+  }
+}

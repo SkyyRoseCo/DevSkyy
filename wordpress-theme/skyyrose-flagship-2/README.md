@@ -1,3 +1,18 @@
+## Required current V2 product card contract
+
+All 33 current SKUs must resolve their own current V2 master and SHA-256. Standard
+collection listings exclude pre-orders; the pre-order page groups those items
+by collection. The sole editable authority is the root `logo-registry.json`.
+Masters live in `assets/v2-original/products/`. Current approved-media lookup is
+[data/v2-product-media-index.json](data/v2-product-media-index.json), generated
+from that registry and the actual runtime review gate.
+
+Follow the [repository media contract](../../docs/creative/V2-PRODUCT-MEDIA-CONTRACT.md)
+and [generated SKU proof](../../docs/creative/V2-PRODUCT-CARD-AUDIT.md). Run
+`npm run check:product-card-sot` before handoff; a partial gallery is not proof
+that all 33 current cards resolve. Responsive copies inherit their exact master
+hash and cannot approve a product, a view, a mask, or a deployment.
+
 # SkyyRose Flagship 2
 
 SkyyRose Flagship 2 is a WooCommerce-first, Oakland-rooted luxury streetwear

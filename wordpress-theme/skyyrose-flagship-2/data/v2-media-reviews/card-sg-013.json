@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-access-refresh-card-sg-013",
+  "asset_id": "card-sg-013",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "12cce820da6f783537847139bf8636fd0ee0627e45e577d5315e46bdd142bda9",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "sg-013"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/all-products-access-refresh/card-sg-013-visual-review.json",
+    "sha256": "6a0b998331228ec0fcca4f4a99152638fea13974448f48e4c3d17a24bc7391ee"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-013-card-desktop.png",
+      "sha256": "c53318e077a772fdb8039368af6deceb282afffd740ad74e96f3060cfc80b546"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-013-card-mobile.png",
+      "sha256": "8fb9cb291d61cead4556e14d5307b49b3f7cae757f35649e60526d2da5239551"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-013-pdp-desktop.png",
+      "sha256": "151e504244558037a45166100bb332472f74c9fff64eac9ff697581dd3c451dc"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-013-pdp-mobile.png",
+      "sha256": "a789216f6c5a2d556cca029ef00b6a9f4ea40ae825dda880bbc072e111b7c6de"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native asset and actual offline card/current product-page.css PDP media-only contexts at 1440 desktop/390 mobile. Full commerce, theme states, 768, motion, accessibility and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: Complete mint crewneck retains current lavender three-rose embroidery with silver-grey stems/leaves and grey-white cloud, ribbed crew collar, both complete wrist cuffs and hem. No hood, zip, extra garment graphics or companion-set implication. Natural stoop side light describes fleece and supports front artwork readability in both actual media roles. Registered low-resolution techflat limitation remains acknowledged; current maker prose supplies exact recolor and placement.",
+    "pdp_on_model_front": "PASS: Current gallery containment preserves all native pixels; the same exact native identity/framing verdict applies."
+  }
+}

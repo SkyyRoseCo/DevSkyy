@@ -13,6 +13,10 @@ extra_logos:
 
 ## Founder-confirmed correction
 
+**FOUNDER_CONFIRMED:** 1. yes (Corey, 2026-10-03 America/Los_Angeles, verbatim: "1. yes"; answer to "Does the crewneck’s “8x-10” mean 8 inches wide × 10 inches tall for the chest graphic?"). Confirmed chest graphic dimensions: **8 inches wide × 10 inches tall**.
+
+**FOUNDER_CONFIRMED:** 8x-10 for the crewneck (Corey, 2026-10-03 America/Los_Angeles, verbatim: "8x-10 for the crewneck")
+
 **FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
 
 **Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
@@ -24,7 +28,7 @@ extra_logos:
 > - SR monogram (gold lettermark): `data/brand-logos/sr-monogram.md`
 
 ### Front
-- **front-chest** (~10in tall × proportional width): The Black Rose logo,
+- **front-chest** (**8 inches wide × 10 inches tall**, founder-confirmed 2026-10-03): The Black Rose logo,
   **physically embossed onto the fabric surface as a raised dimensional
   relief** — visibly 3D and tactile, sitting proud of the fabric. NOT
   debossed/sunken. NOT a flat print. NOT tone-on-tone.

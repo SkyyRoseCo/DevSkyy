@@ -568,6 +568,23 @@ jobs:
             exit 1
           fi
 
+      # The deployed presentation registry must be exactly what committed code
+      # produces from the committed product registry. The V2 source
+      # certification workflow also checks this, but it is path-filtered and
+      # not required; live once shipped a registry no commit could rebuild.
+      # (WebP renditions stay in that ARM64 job: x86 encodes different bytes.)
+      - name: Set up Python for Flagship 2 generated-data checks
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12.12"
+
+      - name: Check Flagship 2 generated product data drift (CI-05c)
+        run: |
+          python -m pip install -r tools/v2-source-certification/requirements.txt
+          python scripts/sync_product_registry.py --check
+          npm --prefix wordpress-theme/skyyrose-flagship-2 run check:registry
+          php wordpress-theme/skyyrose-flagship-2/scripts/test-marketplace-registry.php
+
   # ===========================================================================
   # Stage 3: E2E Tests with Playwright
   # ===========================================================================

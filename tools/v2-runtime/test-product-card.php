@@ -19,6 +19,7 @@ class WC_Product {
 	public function is_in_stock() { return $this->in_stock; }
 	public function get_short_description() { return '<p>Current Woo description.</p>'; }
 	public function get_type() { return $this->type; }
+	public function is_type( $type ) { return $type === $this->type; }
 	public function is_purchasable() { return true; }
 }
 function __( $text ) { return $text; }
@@ -34,7 +35,7 @@ function wp_trim_words( $value ) { return $value; }
 function skyyrose2_collections() { return array( 'signature' => array( 'name' => 'Signature', 'portal_statue' => $GLOBALS['test_frame'] ?? array() ) ); }
 function skyyrose2_sot_asset_uri( $path ) { return 'https://example.test/sot/' . $path; }
 function absint( $value ) { return abs( (int) $value ); }
-function skyyrose2_is_preorder_product( $product ) { return $product->preorder; }
+function skyyrose2_is_transaction_preorder_product( $product ) { return $product->preorder; }
 function skyyrose2_product_presentation() { return array( 'collection' => 'signature', 'presentation' => 'signature' ); }
 function skyyrose2_approved_card_front() { return $GLOBALS['test_front']; }
 function skyyrose2_product_commerce_media() { $GLOBALS['resolver_calls']++; return $GLOBALS['test_media']; }
@@ -70,7 +71,8 @@ function render_card( $args, $previous ) {
 $front = array(
 	'src' => 'https://example.test/approved-original.webp', 'width' => 1024, 'height' => 1536, 'alt' => 'Approved "front" <view>',
 	'card_src' => 'https://example.test/approved-480.webp', 'card_width' => 480, 'card_height' => 720,
-	'srcset' => 'https://example.test/approved-320.webp 320w, https://example.test/approved-480.webp 480w, https://example.test/approved-original.webp 1024w',
+	'display_src' => 'https://example.test/approved-768.webp', 'display_width' => 768, 'display_height' => 1152,
+	'srcset' => 'https://example.test/approved-320.webp 320w, https://example.test/approved-480.webp 480w, https://example.test/approved-768.webp 768w, https://example.test/approved-1024.webp 1024w',
 	'sizes' => '(max-width: 640px) 92vw, 30vw',
 );
 $GLOBALS['test_front'] = $front;
@@ -89,7 +91,7 @@ check_card( 1 === substr_count( $html, '<img ' ), 'One card front only: no decor
 check_card( str_contains( $html, 'src="https://example.test/approved-480.webp"' ) && str_contains( $html, 'width="480" height="720"' ), 'Card uses bounded responsive derivative dimensions' );
 check_card( str_contains( $html, 'srcset="' ) && str_contains( $html, 'sizes="(max-width: 47.99em) calc(100vw - 2rem),' ), 'Editorial card source selection uses a full-width mobile slot rather than the asset helper estimate' );
 check_card( str_contains( $html, 'loading="lazy" fetchpriority="auto"' ), 'Index zero in an editorial module is lazy by default' );
-check_card( str_contains( $html, 'data-quick-view-image="https://example.test/approved-original.webp"' ), 'Deferred quick view uses the same independently approved front' );
+check_card( str_contains( $html, 'data-quick-view-image="https://example.test/approved-768.webp"' ) && str_contains( $html, 'data-quick-view-srcset="' . esc_attr( $front['srcset'] ) . '"' ) && str_contains( $html, 'data-quick-view-width="768" data-quick-view-height="1152"' ), 'Deferred quick view uses the same approved source through its complete responsive display family' );
 check_card( 0 === $GLOBALS['resolver_calls'], 'Approved card-front authority is not blocked by unrelated opening-editorial rejection' );
 check_card( str_contains( $html, '&lt;Edition&gt;' ) && str_contains( $html, '&quot;front&quot; &lt;view&gt;' ), 'Product text and image attributes must be escaped' );
 check_card( str_contains( $html, '<h3 ' ) && str_contains( $html, 'Available on backorder' ) && str_contains( $html, '$25.00' ), 'Editorial heading and native stock/price truth survive' );
@@ -110,7 +112,7 @@ foreach ( array( 0 => array( 'eager', 'high' ), 1 => array( 'eager', 'auto' ), 2
 }
 $GLOBALS['test_frame'] = array( 'small' => 'approved-frame.webp', 'width' => 640, 'height' => 1067 );
 foreach ( array( 0 => 'high', 1 => 'auto', 2 => 'auto' ) as $index => $expected ) {
-	$html = render_card( array( 'product' => $piece, 'index' => $index, 'media_priority' => 'high' ), $previous );
+	$html = render_card( array( 'product' => $piece, 'index' => $index, 'media_priority' => 'high', 'frame' => true ), $previous );
 	preg_match( '/<img class="sr2-c-editorial-card__frame"[^>]+>/', $html, $frame_tag );
 	check_card( str_contains( $frame_tag[0] ?? '', 'fetchpriority="' . $expected . '"' ), 'The measured LCP frame shares only its first native card priority' );
 }
@@ -141,7 +143,8 @@ check_card( str_contains( $html, '<h4 ' ) && str_contains( $html, 'data-card-var
 
 $GLOBALS['test_front'] = array_intersect_key( $front, array_flip( array( 'src', 'width', 'height', 'alt' ) ) );
 $html = render_card( array( 'product' => $piece ), $previous );
-check_card( str_contains( $html, 'src="https://example.test/approved-original.webp"' ) && ! str_contains( $html, 'srcset="' ), 'Legacy approved front degrades gracefully before derivative availability' );
+preg_match( '/<img\b[^>]*>/', $html, $original_image );
+check_card( str_contains( $original_image[0] ?? '', 'src="https://example.test/approved-original.webp"' ) && ! str_contains( $original_image[0] ?? '', 'srcset="' ), 'An eligible front without delivery children retains its original img source without a responsive family' );
 $piece->in_stock = false;
 $html = render_card( array( 'product' => $piece ), $previous );
 check_card( str_contains( $html, 'data-availability="unavailable"' ) && str_contains( $html, 'Out of stock' ), 'Unavailability remains native Woo truth' );
@@ -154,12 +157,19 @@ check_card( '' === render_card( array( 'product' => $piece ), $previous ), 'Invi
 echo "PASS canonical card responsive authority, native commerce, lazy defaults, priority boundaries, escaping and exception restoration\n";
 
 $piece->visible = true;
+$piece->preorder = true;
+$piece->type = 'variable';
+check_card( '' === render_card( array( 'product' => $piece ), $previous ), 'Pre-order card is excluded from a standard listing' );
+$html = render_card( array( 'product' => $piece, 'listing' => 'pre-order' ), $previous );
+check_card( str_contains( $html, 'Review order options' ) && ! str_contains( $html, 'Pre-order edition' ), 'Variable parent label avoids claiming every selected option is preorder' );
 $piece->type = 'simple';
 $piece->preorder = true;
 $piece->sale = true;
 $GLOBALS['test_action_throw'] = false;
-$html = render_card( array( 'product' => $piece ), $previous );
+$html = render_card( array( 'product' => $piece, 'listing' => 'pre-order' ), $previous );
 check_card( str_contains( $html, 'data-product-type="simple"' ) && str_contains( $html, 'data-preorder="true"' ) && str_contains( $html, 'data-sale="true"' ), 'Simple/sale/preorder states derive from Woo product' );
 check_card( str_contains( $html, 'Pre-order edition' ), 'Authoritative preorder label is visible' );
 check_card( str_contains( $html, 'aria-haspopup="dialog"' ) && str_contains( $html, 'aria-expanded="false"' ), 'Quick View progressive dialog semantics exist' );
+$piece->preorder = false;
+check_card( '' === render_card( array( 'product' => $piece, 'listing' => 'pre-order' ), $previous ), 'Standard card is excluded from the pre-order listing' );
 echo "PASS premium card simple/sale/preorder state derivation and dialog semantics\n";

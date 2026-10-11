@@ -511,6 +511,8 @@ exclude = '''
 [tool.isort]
 profile = "black"
 line_length = 100
+# lint-staged passes explicit paths; without this, `skip` is ignored for them.
+filter_files = true
 known_first_party = [
   "core",
   "api",
@@ -537,6 +539,9 @@ skip = [
   ".aidesigner/",
   "skyyrose/cli_harnesses/",
   "plugins/fashion-theme-team/",
+  # Hash-pinned: its sha256 is the builder_sha256 that inc/v2-media-eligibility.php
+  # requires of every card-front rendition. One reformatted line rejects them all.
+  "tools/v2-runtime/build-card-renditions.py",
 ]
 
 # =============================================================================

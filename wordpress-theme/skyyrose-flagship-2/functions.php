@@ -11,6 +11,13 @@ define( 'SKYYROSE2_VERSION', '2.5.1' );
 define( 'SKYYROSE2_DIR', get_template_directory() );
 define( 'SKYYROSE2_URI', get_template_directory_uri() );
 
+/** Keep the mascot off all storefront routes until its arm rig is repaired. */
+function skyyrose2_mascot_enabled() {
+	return false;
+}
+
+require_once SKYYROSE2_DIR . '/inc/v2-media-eligibility.php';
+
 /* Fresh-install, demo-import, and editor integration. */
 require_once SKYYROSE2_DIR . '/inc/marketplace.php';
 require_once SKYYROSE2_DIR . '/inc/performance.php';
@@ -20,6 +27,7 @@ require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
 require_once SKYYROSE2_DIR . '/inc/security.php';
 require_once SKYYROSE2_DIR . '/inc/express-checkout.php';
 require_once SKYYROSE2_DIR . '/inc/approved-card-fronts.php';
+require_once SKYYROSE2_DIR . '/inc/card-garment-highlight.php';
 require_once SKYYROSE2_DIR . '/inc/pdp-media-delivery.php';
 require_once SKYYROSE2_DIR . '/inc/hero-commerce-scenes.php';
 require_once SKYYROSE2_DIR . '/inc/global-shell.php';
@@ -28,6 +36,9 @@ require_once SKYYROSE2_DIR . '/inc/shop-archive.php';
 require_once SKYYROSE2_DIR . '/inc/quick-view-commerce.php';
 require_once SKYYROSE2_DIR . '/inc/critical-rendering.php';
 require_once SKYYROSE2_DIR . '/inc/analytics.php';
+require_once SKYYROSE2_DIR . '/inc/woocommerce-compat.php';
+require_once SKYYROSE2_DIR . '/inc/product-glb-links.php';
+require_once SKYYROSE2_DIR . '/inc/product-glb.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
@@ -36,7 +47,7 @@ require_once SKYYROSE2_DIR . '/inc/analytics.php';
  * @return string
  */
 function skyyrose2_sot_asset_uri( $path ) {
-	return SKYYROSE2_URI . '/assets/sot/' . ltrim( $path, '/' );
+	return skyyrose2_media_uri( 'assets/sot/' . ltrim( $path, '/' ) );
 }
 
 /**
@@ -46,7 +57,7 @@ function skyyrose2_sot_asset_uri( $path ) {
  * @return string
  */
 function skyyrose2_scroll_world_asset_uri( $path ) {
-	return SKYYROSE2_URI . '/assets/scroll-world/' . ltrim( $path, '/' );
+	return skyyrose2_media_uri( 'assets/scroll-world/' . ltrim( $path, '/' ) );
 }
 
 /**
@@ -202,7 +213,7 @@ function skyyrose2_approved_scroll_world_scene( $scene, $collection ) {
 		'desktop' => $scene['scene_motion']['desktop'] ?? '',
 		'mobile'  => $scene['scene_motion']['mobile'] ?? '',
 	) as $role => $path ) {
-		if ( ! $path || ( 'assets/scroll-world/' . $path ) !== ( $assets[ $role ] ?? '' ) ) {
+		if ( ! $path || ! skyyrose2_media_path_allowed( 'assets/scroll-world/' . $path, 'scene_' . $role ) || ( 'assets/scroll-world/' . $path ) !== ( $assets[ $role ] ?? '' ) ) {
 			return false; }
 	}
 	return array_values( $scene['product_bindings'] ?? array() ) === array_values( $record['cta']['product_bindings'] ?? array() );
@@ -258,7 +269,7 @@ function skyyrose2_resolve_commerce_scene_products( $scene, $collection ) {
 function skyyrose2_scene_product_action_label( $product, $preorder_requested = false ) {
 	$name         = $product->get_name();
 	$presentation = skyyrose2_product_presentation( $product );
-	$is_preorder  = $preorder_requested && ! empty( $presentation['is_preorder'] );
+	$is_preorder  = $preorder_requested && skyyrose2_is_transaction_preorder_product( $product );
 
 	if ( ! $product->is_purchasable() || ! $product->is_in_stock() ) {
 		return sprintf( __( 'View %s — currently unavailable', 'skyyrose-flagship-2' ), $name );
@@ -400,8 +411,14 @@ function skyyrose2_assets() {
 		$page_styles[] = 'content-page';
 	}
 	if ( is_front_page() ) {
-		$page_styles[] = 'collection-world';
-		$page_styles[] = 'home-page';
+		$page_styles[]   = 'collection-world';
+		$page_styles[]   = 'home-page';
+		$page_styles[]   = 'home-experience';
+		$page_styles[]   = 'home-art-direction';
+		$home_experience = '/assets/js/home-experience' . $suffix . '.js';
+		wp_enqueue_script( 'skyyrose2-home-experience', SKYYROSE2_URI . $home_experience, array(), skyyrose2_asset_version( $home_experience ), true );
+		$house_motion = '/assets/js/house-motion' . $suffix . '.js';
+		wp_enqueue_script( 'skyyrose2-house-motion', SKYYROSE2_URI . $house_motion, array(), skyyrose2_asset_version( $house_motion ), true );
 	}
 	if ( function_exists( 'is_product' ) && is_product() ) {
 		$page_styles[] = 'product-page';
@@ -517,9 +534,11 @@ JS
 	// so an eligible simple product gets the normal AJAX confirmation, fragments,
 	// and updated bag count; the anchor URL remains the no-JS cart fallback.
 	if (
-		function_exists( 'is_woocommerce' ) &&
+		class_exists( 'WooCommerce' ) &&
 		(
-			$collection_slug || is_page_template( 'template-collection.php' ) ||
+			$collection_slug ||
+			( function_exists( 'is_page' ) && is_page( array( 'pre-order', 'preorder' ) ) ) ||
+			is_page_template( 'template-collection.php' ) ||
 			is_page_template( 'template-preorder.php' ) ||
 			is_page_template( 'template-parts/v2-preorder.php' )
 		)
@@ -527,7 +546,7 @@ JS
 		wp_enqueue_script( 'wc-add-to-cart' );
 		wp_enqueue_script( 'wc-cart-fragments' );
 	}
-	if ( ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
+	if ( skyyrose2_mascot_enabled() && ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
 		wp_enqueue_style( 'skyyrose2-mascot', SKYYROSE2_URI . $mascot_style, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $mascot_style ) );
 		wp_enqueue_script( 'skyyrose2-mascot-loader', SKYYROSE2_URI . $loader_script, array(), skyyrose2_asset_version( $loader_script ), true );
 		wp_localize_script(
@@ -648,7 +667,7 @@ function skyyrose2_seo_context() {
 			$context['title']       = $product->get_name() . ' | ' . get_bloginfo( 'name' );
 			$context['description'] = wp_strip_all_tags( $product->get_short_description() ?: $product->get_name() . ' · ' . __( 'SkyyRose collection piece.', 'skyyrose-flagship-2' ) );
 			$media                  = skyyrose2_product_commerce_media( $product );
-			$context['image']       = ! empty( $media['ids'] ) ? wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '';
+			$context['image']       = ! empty( $media['front']['src'] ) ? $media['front']['src'] : ( ! empty( $media['ids'] ) ? wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '' );
 			$context['type']        = 'product';
 		}
 	} elseif ( is_single() ) {
@@ -674,6 +693,7 @@ function skyyrose2_seo_context() {
 		$context['description'] = __( 'Search SkyyRose products, collections, and journal stories.', 'skyyrose-flagship-2' );
 	}
 
+	$context['image'] = function_exists( 'skyyrose2_media_url' ) ? skyyrose2_media_url( $context['image'] ) : '';
 	return $context;
 }
 
@@ -720,7 +740,7 @@ function skyyrose2_schema_head() {
 			'datePublished'    => get_the_date( DATE_W3C ),
 			'dateModified'     => get_the_modified_date( DATE_W3C ),
 			'mainEntityOfPage' => get_permalink(),
-			'image'            => get_the_post_thumbnail_url( get_queried_object_id(), 'full' ) ?: null,
+			'image'            => function_exists( 'skyyrose2_media_url' ) ? ( skyyrose2_media_url( get_the_post_thumbnail_url( get_queried_object_id(), 'full' ) ?: '' ) ?: null ) : null,
 			'author'           => array(
 				'@type' => 'Person',
 				'name'  => get_the_author(),
@@ -1344,6 +1364,24 @@ function skyyrose2_registry_reconciliation_notice() {
 }
 add_action( 'admin_notices', 'skyyrose2_registry_reconciliation_notice' );
 
+/** Keep native archive pagination free of pre-order-only identities. */
+function skyyrose2_standard_archive_query( $query ) {
+	if ( ! is_object( $query ) || ! method_exists( $query, 'set' ) || ! method_exists( $query, 'get' ) || ! function_exists( 'wc_get_products' ) ) {
+		return; }
+	$excluded = (array) $query->get( 'post__not_in', array() );
+	foreach ( wc_get_products(
+		array(
+			'limit'  => -1,
+			'status' => 'publish',
+		)
+	) as $item ) {
+		if ( skyyrose2_is_transaction_preorder_product( $item ) ) {
+			$excluded[] = $item->get_id(); }
+	}
+	$query->set( 'post__not_in', array_values( array_unique( array_map( 'absint', $excluded ) ) ) );
+}
+add_action( 'woocommerce_product_query', 'skyyrose2_standard_archive_query' );
+
 /** @param WC_Product $product @return bool */
 function skyyrose2_is_preorder_product( $product ) {
 	$presentation = skyyrose2_product_presentation( $product );
@@ -1351,9 +1389,47 @@ function skyyrose2_is_preorder_product( $product ) {
 }
 
 /**
+ * Classify one display identity using the transaction module's metadata rule.
+ * The registry-only helper remains unchanged for its transaction fallback.
+ * Variable parents describe browse state; their selected option is resolved by WC.
+ *
+ * @param WC_Product $product Native parent, simple product, or selected variation.
+ * @return bool
+ */
+function skyyrose2_is_transaction_preorder_product( $product ) {
+	if ( ! $product || ! method_exists( $product, 'meta_exists' ) ) {
+		return skyyrose2_is_preorder_product( $product );
+	}
+	$parent = $product;
+	if ( $product->is_type( 'variation' ) ) {
+		$parent = wc_get_product( $product->get_parent_id() );
+		if ( ! $parent ) {
+			return false;
+		}
+	}
+	$value = $product->meta_exists( '_is_preorder' ) ? $product->get_meta( '_is_preorder', true ) : $parent->get_meta( '_is_preorder', true );
+	return '1' === (string) $value || skyyrose2_is_preorder_product( $parent );
+}
+
+/**
+ * Let WooCommerce render and clear the selected option's status natively.
+ *
+ * @param array      $data Native variation response.
+ * @param WC_Product $parent_product Parent product.
+ * @param WC_Product $variation Selected variation.
+ * @return array
+ */
+function skyyrose2_preorder_variation_display( $data, $parent_product, $variation ) {
+	$label                     = skyyrose2_is_transaction_preorder_product( $variation ) ? __( 'Pre-order option. Full payment at checkout.', 'skyyrose-flagship-2' ) : __( 'Standard order option.', 'skyyrose-flagship-2' );
+	$data['availability_html'] = ( $data['availability_html'] ?? '' ) . '<p class="sr2-variation-order-status" role="status">' . esc_html( $label ) . '</p>';
+	return $data;
+}
+add_filter( 'woocommerce_available_variation', 'skyyrose2_preorder_variation_display', 10, 3 );
+
+/**
  * Query published products for reusable marketplace sections.
  *
- * @param int    $limit Product limit.
+ * @param int    $limit Product limit; -1 returns the complete eligible assortment.
  * @param string $collection Product category slug.
  * @param bool   $featured Featured-only query.
  * @return array<int,WC_Product>
@@ -1363,12 +1439,7 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 		return array();
 	}
 	$args = array(
-		/*
-		 * A narrow query can be filled by Jersey Series products before the
-		 * presentation guard excludes them from the core Black Rose rail.
-		 * Resolve against the full published collection, then apply the display
-		 * limit after registry/presentation isolation has succeeded.
-		 */
+		// Filter the complete native assortment before applying a display limit.
 		'limit'   => -1,
 		'status'  => 'publish',
 		'orderby' => 'date',
@@ -1387,17 +1458,21 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 		if ( empty( $presentation ) ) {
 			continue;
 		}
+		if ( is_object( $product ) && method_exists( $product, 'is_visible' ) && ! $product->is_visible() ) {
+			continue; }
+		$is_preorder = skyyrose2_is_transaction_preorder_product( $product );
+		if ( 'pre-order' !== $collection && $is_preorder ) {
+			continue; }
+		if ( ! $is_preorder && is_object( $product ) && method_exists( $product, 'is_in_stock' ) && ! $product->is_in_stock() ) {
+			continue; }
 		if ( $collection && 'pre-order' !== $collection && sanitize_title( $presentation['collection'] ?? '' ) !== sanitize_title( $collection ) ) {
 			continue;
 		}
-		if ( 'pre-order' === $collection && empty( $presentation['is_preorder'] ) ) {
-			continue;
-		}
-		if ( 'black-rose' === $collection && 'jersey-series' === ( $presentation['presentation'] ?? '' ) ) {
+		if ( 'pre-order' === $collection && ! $is_preorder ) {
 			continue;
 		}
 		$filtered[] = $product;
-		if ( count( $filtered ) >= absint( $limit ) ) {
+		if ( -1 !== (int) $limit && count( $filtered ) >= absint( $limit ) ) {
 			break;
 		}
 	}
@@ -1409,7 +1484,7 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
  *
  * A chapter remains scenic, but it must also carry a real item from its own
  * collection. The product image, name, price, and availability stay WooCommerce
- * authoritative; Jersey Series remains isolated from the core Black Rose rail.
+ * authoritative; pre-order products have their listing on the pre-order page.
  *
  * @param string $collection Collection slug.
  * @param int    $chapter Chapter index.
@@ -1449,6 +1524,8 @@ function skyyrose2_get_products_by_skus( $skus, $required_collection ) {
 		if ( ! $product || ! $product->is_visible() ) {
 			continue;
 		}
+		if ( skyyrose2_is_transaction_preorder_product( $product ) || ! $product->is_in_stock() ) {
+			continue; }
 		if ( function_exists( 'get_post_status' ) && 'publish' !== get_post_status( $product_id ) ) {
 			continue;
 		}
@@ -1686,52 +1763,52 @@ function skyyrose2_product_verified_card_media( $product ) {
 	return array_slice( $ordered, 0, 3 );
 }
 
-/** Resolve PDP commerce attachments without promoting opening-media states. */
-function skyyrose2_product_commerce_media( $product ) {
-	$empty = array(
+/** Resolve attachment IDs only with the same current V2 SKU and view-role binding. */
+function skyyrose2_product_commerce_media( $product, $required_role = 'pdp_on_model_front' ) {
+	$empty   = array(
 		'state' => 'missing',
 		'ids'   => array(),
+		'front' => array(),
 	);
-	if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
-		return $empty;
-	}
-	$manifest = skyyrose2_product_card_media_manifest();
-	if ( empty( $manifest['products'] ) ) {
-		return $empty;
-	}
-	$sku    = sanitize_key( $product->get_sku() );
-	$record = $manifest['products'][ $sku ] ?? array();
-	// A Woo assignment is not permission to reuse explicitly rejected imagery.
-	if ( 'REJECTED_AUTHENTICITY' === ( $record['status'] ?? '' ) ) {
-		return array(
-			'state' => 'rejected',
-			'ids'   => array(),
-		);
-	}
-	$editorial     = skyyrose2_product_verified_card_media( $product );
-	$valid         = static function ( $id ) {
-		$metadata = $id ? wp_get_attachment_metadata( $id ) : array();
-		return $id && wp_attachment_is_image( $id ) && wp_get_attachment_url( $id ) && ! empty( $metadata['width'] ) && ! empty( $metadata['height'] );
+	$product = skyyrose2_product_media_identity( $product );
+	if ( ! $product || ! in_array( $required_role, array( 'card_front', 'pdp_on_model_front' ), true ) ) {
+		return $empty; }
+	$sku          = strtolower( trim( (string) $product->get_sku( 'edit' ) ) );
+	$presentation = skyyrose2_product_presentation( $product );
+	$collection   = $presentation['collection'] ?? '';
+	$inventory    = skyyrose2_media_inventory();
+	$front        = skyyrose2_product_media_front( $product, $required_role );
+	$roles        = 'card_front' === $required_role ? array( 'card_front' ) : array( 'pdp_on_model_front', 'pdp_on_model_back', 'pdp_detail' );
+	$valid        = static function ( $id ) use ( $sku, $collection, $inventory, $roles ) {
+		$url    = $id ? wp_get_attachment_url( $id ) : '';
+		$prefix = rtrim( SKYYROSE2_URI, '/' ) . '/';
+		if ( ! is_string( $url ) || 0 !== strpos( $url, $prefix ) ) {
+			return false; }
+		$relative = rawurldecode( explode( '?', explode( '#', substr( $url, strlen( $prefix ) ) )[0] )[0] );
+		$record   = $inventory['assets'][ $relative ] ?? array();
+		if ( array( $sku ) !== ( $record['skus'] ?? null ) || array( $collection ) !== ( $record['collections'] ?? null ) ) {
+			return false; }
+		foreach ( $roles as $role ) {
+			if ( skyyrose2_media_path_allowed( $relative, $role, $sku ) ) {
+				return true; }
+		}
+		return false;
 	};
-	$editorial_ids = array_values( array_unique( array_filter( array_map( 'absint', array_column( $editorial, 'id' ) ), $valid ) ) );
-	if ( $editorial_ids ) {
-		return array(
-			'state' => 'editorial',
-			'ids'   => $editorial_ids,
-		);
-	}
-	$ids = array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() );
-	$ids = array_values( array_unique( array_filter( array_map( 'absint', $ids ), $valid ) ) );
+	$ids          = array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() );
+	$ids          = array_values( array_unique( array_filter( array_map( 'absint', $ids ), $valid ) ) );
 	return array(
-		'state' => $ids ? 'commerce' : 'missing',
+		'state' => $front ? 'v2-original' : ( $ids ? 'commerce' : 'missing' ),
 		'ids'   => $ids,
+		'front' => $front,
 	);
 }
 
 /** Keep Product schema imagery aligned with the PDP's permitted primary. */
 function skyyrose2_product_commerce_schema_image( $markup, $product ) {
 	$media = skyyrose2_product_commerce_media( $product );
-	if ( $media['ids'] ) {
+	if ( ! empty( $media['front']['src'] ) ) {
+		$markup['image'] = $media['front']['src'];
+	} elseif ( $media['ids'] ) {
 		$markup['image'] = wp_get_attachment_url( $media['ids'][0] );
 	} else {
 		unset( $markup['image'] );
@@ -1770,6 +1847,7 @@ function skyyrose2_render_product_loop_card( $product, $index = 0 ) {
 		array(
 			'product' => $product,
 			'index'   => max( 0, (int) $index ),
+			'frame'   => false,
 		)
 	);
 }
@@ -1820,29 +1898,9 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 		<div class="sr2-jersey-reveal__head">
 			<p class="sr2-eyebrow"><?php esc_html_e( 'Jersey Series / The Town Line', 'skyyrose-flagship-2' ); ?></p>
 			<h2 id="sr2-jersey-series-title"><?php esc_html_e( 'Every number carries the tour.', 'skyyrose-flagship-2' ); ?></h2>
-			<p><?php esc_html_e( 'Oakland is the origin. San Francisco, The Bay, and San Jose become chapters on The Town Line: SkyyRose’s fictional house journey. Every price, size, and availability decision stays on the live product page.', 'skyyrose-flagship-2' ); ?></p>
+			<p><?php esc_html_e( 'Eight perspectives on the Bay. Discover the Jersey Series, then open a piece to explore its details and available sizes.', 'skyyrose-flagship-2' ); ?></p>
 		</div>
-		<div class="sr2-house-film" data-house-film data-house-film-scroll-world data-scroll-world-pinned data-media-status="founder-review-candidate">
-			<div class="sr2-house-film__stage" data-scroll-world-stage>
-				<div class="sr2-house-film__media">
-				<video width="1672" height="941" muted playsinline preload="none" poster="<?php echo esc_url( SKYYROSE2_URI . '/assets/sot/images/hero/jersey-series-town-line-train-v1.webp' ); ?>" data-house-film-video aria-label="<?php esc_attr_e( 'The Town Line Jersey Series previsualization', 'skyyrose-flagship-2' ); ?>">
-					<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.webm' ); ?>" type="video/webm">
-					<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.mp4' ); ?>" type="video/mp4">
-				</video>
-				<div class="sr2-house-film__controls">
-					<button type="button" data-house-film-toggle><?php esc_html_e( 'Play film', 'skyyrose-flagship-2' ); ?></button>
-					<button type="button" data-house-film-sound hidden><?php esc_html_e( 'Turn sound on', 'skyyrose-flagship-2' ); ?></button>
-					<span class="screen-reader-text" aria-live="polite" data-house-film-status></span>
-				</div>
-				</div>
-				<nav class="sr2-house-film__chapters" aria-label="<?php esc_attr_e( 'Jersey Series film chapters', 'skyyrose-flagship-2' ); ?>">
-					<?php foreach ( $pieces as $piece_index => $piece ) : ?>
-						<a href="<?php echo esc_url( get_permalink( $piece['product']->get_id() ) ); ?>" data-house-film-chapter data-start="<?php echo esc_attr( (string) ( $piece_index * 2.6 ) ); ?>"><span><?php echo esc_html( strtoupper( $piece['sku'] ) ); ?></span><strong><?php echo esc_html( $piece['chapter'] ); ?></strong></a>
-					<?php endforeach; ?>
-				</nav>
-			</div>
-			<p class="sr2-house-film__transcript"><?php esc_html_e( 'Visual transcript: a fictional SkyyRose Town Line train moves through Oakland’s Black, White, and two Last Oakland jerseys; San Francisco’s football, Giants, and basketball looks; then San Jose hockey. This previsualization is not product-media approval.', 'skyyrose-flagship-2' ); ?></p>
-		</div>
+		<?php get_template_part( 'template-parts/commerce/jersey-gallery' ); ?>
 		<?php if ( $show_product_grid ) : ?>
 			<div class="sr2-jersey-reveal__grid">
 				<?php foreach ( $pieces as $piece_index => $piece ) : ?>

@@ -170,7 +170,20 @@
       });
       if (variable) {
         const image = dialog.querySelector('[data-quick-view-image]');
-        const originalImage = image ? { src: image.getAttribute('src'), alt: image.alt } : null;
+        const imageAttributes = ['src', 'srcset', 'sizes', 'width', 'height', 'alt'];
+        const originalImage = image ? Object.fromEntries(imageAttributes.map((attribute) => [attribute, image.getAttribute(attribute)])) : null;
+        const applyImage = (values) => {
+          // Responsive state belongs to one SKU. Clear missing values before src
+          // changes, so a previous srcset cannot win browser source selection.
+          ['srcset', 'sizes', 'width', 'height', 'src'].forEach((attribute) => {
+            if (values[attribute] != null && values[attribute] !== '') image.setAttribute(attribute, values[attribute]);
+            else image.removeAttribute(attribute);
+          });
+          image.alt = values.alt || '';
+          image.hidden = !values.src;
+          const media = image.closest('[data-quick-view-media]');
+          if (media) media.hidden = image.hidden;
+        };
         const $form = window.jQuery(nativeForm);
         const button = nativeForm.querySelector('.single_add_to_cart_button');
         button?.setAttribute('aria-disabled', 'true');
@@ -181,16 +194,31 @@
           if (current === generation && dialog.open) button?.setAttribute('aria-disabled', 'true');
         });
         $form.on('found_variation.sr2QuickView', (_event, variation) => {
-          if (current !== generation || !dialog.open || !image || !variation?.image?.src) return;
-          const source = new URL(variation.image.src, responseUrl.href);
-          if (!['https:', 'http:'].includes(source.protocol)) return;
-          image.src = source.href;
-          image.alt = variation.image.alt || originalImage.alt;
+          if (current !== generation || !dialog.open || !image) return;
+          if (!variation?.image?.src) {
+            applyImage({});
+            return;
+          }
+          let source;
+          try {
+            source = new URL(variation.image.src, responseUrl.href);
+            if (!['https:', 'http:'].includes(source.protocol) || source.username || source.password) throw Error('Invalid variation image');
+          } catch {
+            applyImage({});
+            return;
+          }
+          applyImage({
+            src: source.href,
+            srcset: variation.image.srcset || '',
+            sizes: variation.image.sizes || '',
+            width: variation.image.src_w || '',
+            height: variation.image.src_h || '',
+            alt: variation.image.alt || originalImage?.alt || ''
+          });
         });
         $form.on('reset_data.sr2QuickView', () => {
           if (current === generation && dialog.open && image && originalImage) {
-            image.setAttribute('src', originalImage.src || '');
-            image.alt = originalImage.alt;
+            applyImage(originalImage);
           }
         });
         $form.wc_variation_form();

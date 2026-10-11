@@ -1016,7 +1016,7 @@ test('natural-motion GLB tiers match the ledger, require Draco + WebP, carry the
   }
 });
 
-test('the runtime plays the natural-motion clips as authored: baked tracks bypass the synthetic gait and keep their identity', async () => {
+test('the runtime preserves expressive natural-motion clips and relaxes only neutral locomotion elbows', async () => {
   const vm = require('node:vm');
   const { pathToFileURL } = require('node:url');
   const THREE = await import(pathToFileURL(path.join(theme, 'assets/js/lib/three-r170/three.module.min.js')).href);
@@ -1053,8 +1053,17 @@ test('the runtime plays the natural-motion clips as authored: baked tracks bypas
   const motion = derive(THREE, clips, root);
   assert.equal(motion.clips.length, 6);
   assert.ok(motion.source.every(clip => clip.varying), 'every natural clip is detected as baked motion');
-  motion.clips.forEach((clip, i) => assert.equal(clip, clips[i], `${clip.name} is the authored clip, not a runtime substitute`));
-  assert.ok(motion.clips.every(clip => clip.skyyMotionSource === undefined));
+  motion.clips.forEach((clip, i) => {
+    const kind = clip.name.toLowerCase().replace('skyy_', '');
+    if (['idle', 'walk', 'exit'].includes(kind)) {
+      assert.notEqual(clip, clips[i], `${clip.name} receives the bounded elbow correction`);
+      assert.equal(clip.skyyMotionSource, 'authored-rig-arm-relax-v2');
+      assert.equal(clip.tracks.length, clips[i].tracks.length, `${clip.name} retains its authored track set`);
+    } else {
+      assert.equal(clip, clips[i], `${clip.name} keeps its authored expressive arm choreography`);
+      assert.equal(clip.skyyMotionSource, undefined);
+    }
+  });
   for (const key of ['thighl', 'thighr', 'shinl', 'shinr', 'footl', 'footr', 'upperarml', 'upperarmr', 'forearml', 'forearmr', 'chest', 'head', 'pelvis'])
     assert.ok(motion.bones[key], `guard bone ${key} resolves on the natural rig`);
 });
