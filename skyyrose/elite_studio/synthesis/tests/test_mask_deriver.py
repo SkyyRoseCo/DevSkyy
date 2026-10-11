@@ -188,7 +188,7 @@ def test_rasterize_produces_binary_mask_matching_image_size():
     mask = _rasterize_boxes(boxes, image_size=(100, 100))
     assert mask.size == (100, 100)
     assert mask.mode == "L"
-    pixels = set(mask.getdata())
+    pixels = set(mask.get_flattened_data())
     # Mask must be strictly binary (0 or 255).
     assert pixels.issubset({0, 255})
 

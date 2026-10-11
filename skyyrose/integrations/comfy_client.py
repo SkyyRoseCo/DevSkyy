@@ -233,9 +233,9 @@ def verify_protected_foreground_rgb(
             source = source_image.convert("RGB")
             protected = protected_image.convert("RGBA")
             mask = mask_image.convert("L")
-            source_pixels = list(source.getdata())
-            protected_pixels = list(protected.getdata())
-            mask_pixels = list(mask.getdata())
+            source_pixels = list(source.get_flattened_data())
+            protected_pixels = list(protected.get_flattened_data())
+            mask_pixels = list(mask.get_flattened_data())
     except (OSError, SyntaxError, UnidentifiedImageError) as exc:
         raise ComfyRuntimeError("protected foreground evidence contains an invalid image") from exc
     if source.size != protected.size or source.size != mask.size:

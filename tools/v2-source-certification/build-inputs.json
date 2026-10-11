@@ -8,13 +8,11 @@
   ],
   "catalog_authority": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
   "catalog_sha256": "a240226b133f90a6c400329d5db89b1c31a34fab01426928e0a18706c994cfb7",
-  "current_registry_sha256": "351a6bbe80face1735c5b73ae9ed472feed11fa19cf67dfb3954a757ca2a4c48",
+  "current_registry_sha256": "2fa4875623e1b0ff6bf1082b7dcb6f391d0d3fa5d64a3f2c67f76f2409bcd9ac",
   "garment_source": "skyyrose.core.product.get_product#catalog.garment_type_lock",
   "generated_policy": "tools/v2-source-certification/generated-outputs.json",
   "generator": "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py",
   "input_hashes": {
-    "skyyrose/core/product.py": "0934c000ec3a94b12847c5ebb32eca018769f867d5cb9a2e7588f139559e98bb",
-    "skyyrose/core/product_registry.py": "049e493b5a3056927aa2d171a15f82c6c67d5dca57e74d3073649a79c584f529",
     "tools/v2-runtime/build-archive-style-bundle.cjs": "220c3528f2fd97670b43d51cc8594e3f742ea8f382264101adff1f1f5c1398d2",
     "tools/v2-runtime/build-card-renditions.py": "b86bd22d62c6f8ac4bcc03d5537366e3344b34bc243a2d1b7a2e22ad62450280",
     "tools/v2-runtime/build-font-delivery.py": "c1b50124906d0bc60118131876859b451c18c8ac5c01021f4b1a46d21a6b3570",
@@ -71,7 +69,9 @@
     "wordpress-theme/skyyrose-flagship-2/scripts/build-pot.py": "7c9a40faad581e718676d4ea00455bf94a373662a25594aa2d029ae04dd88d51",
     "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py": "c0563e46dfddef92706e4aadcd25a41d1da09ef287d3c3a81353b400a0996537",
     "wordpress-theme/skyyrose-flagship-2/scripts/verify-marketplace.sh": "8c50abb06cb744d895efef67323be14010271f5951050b3de58e64a506e86bc6",
-    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "351a6bbe80face1735c5b73ae9ed472feed11fa19cf67dfb3954a757ca2a4c48"
+    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "2fa4875623e1b0ff6bf1082b7dcb6f391d0d3fa5d64a3f2c67f76f2409bcd9ac",
+    "skyyrose/core/product.py": "0934c000ec3a94b12847c5ebb32eca018769f867d5cb9a2e7588f139559e98bb",
+    "skyyrose/core/product_registry.py": "049e493b5a3056927aa2d171a15f82c6c67d5dca57e74d3073649a79c584f529"
   },
   "node": "22.23.2",
   "npm": "10.9.8",

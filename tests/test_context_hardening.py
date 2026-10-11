@@ -44,10 +44,16 @@ def test_B_C_authority_over_stale_copy_real_product(monkeypatch):
     original = get_product
 
     # The registry nulls stale copy once it is corrected, so the stale
-    # pre-order claim is injected rather than assumed to still be live data.
+    # pre-order claim and the pre-correction "Embroidered" description (the
+    # founder corrected br-001 to embossed) are injected rather than assumed
+    # to still be live data.
     def with_stale_copy(sku):
         record = original(sku)
         record["content"]["seo_meta"] = {"value": "Gothic luxury. Pre-order now."}
+        record["catalog"]["description"] = (
+            "Gothic luxury blooms in twilight. Embroidered with defiant elegance, "
+            "a dark romance woven in every thread."
+        )
         return record
 
     monkeypatch.setattr(context_resolver, "get_product", with_stale_copy)
