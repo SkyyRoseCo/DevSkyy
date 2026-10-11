@@ -15,7 +15,6 @@ import {
   CheckCircle2,
   Megaphone,
   Globe,
-  Triangle,
   Brain,
   TrendingUp,
   ListTodo,
@@ -148,11 +147,6 @@ const deployNavItems = [
     title: 'WordPress',
     url: '/admin/wordpress',
     icon: Globe,
-  },
-  {
-    title: 'Vercel',
-    url: '/admin/vercel',
-    icon: Triangle,
   },
   {
     title: 'HuggingFace',
