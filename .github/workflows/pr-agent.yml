@@ -201,6 +201,7 @@ jobs:
           fi
           if ! awk -v c="$cost" 'BEGIN { exit !(c + 0 > 0) }'; then
             echo "::error::Claude reported success after ${turns} turns at \$${cost}: it never reached the model (revoked or missing CLAUDE_CODE_OAUTH_TOKEN?). Nothing was done."
+            echo "::error::Fix: rotate the token, then re-run this check — run \`claude setup-token\` locally, then \`gh secret set CLAUDE_CODE_OAUTH_TOKEN\` with the new token. Not a code problem."
             exit 1
           fi
           echo "Claude ran: ${turns} turns, \$${cost}"
