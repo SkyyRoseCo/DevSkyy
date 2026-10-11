@@ -9,6 +9,7 @@ detection, the lint toolchain pins, and the review-bot retry/trigger shape.
 from __future__ import annotations
 
 import re
+from fnmatch import fnmatch
 from pathlib import Path
 
 import pytest
@@ -149,15 +150,25 @@ def test_lint_tools_are_exact_pins_from_one_file() -> None:
 @pytest.mark.parametrize(
     "filename", ["claude-code-review.yml", "pr-green-loop.yml", "pr-agent.yml"]
 )
-def test_review_bots_retry_once_and_only_the_retry_decides(filename: str) -> None:
+def test_review_bots_retry_only_fast_failures_and_never_fail_open(filename: str) -> None:
     steps = all_steps(load(filename))
     runs = [s for s in steps if s.get("uses", "").startswith(CLAUDE_ACTION)]
     assert len(runs) == 2, f"{filename}: expected first attempt + retry, got {len(runs)}"
     first, retry = runs
     assert first.get("continue-on-error") is True and first.get("id"), first
-    assert f"steps.{first['id']}.outcome == 'failure'" in retry.get("if", ""), retry
-    assert not retry.get("continue-on-error"), "the retry must be able to fail the check"
     assert first["with"] == retry["with"], "the retry must repeat the same request"
+    assert not retry.get("continue-on-error"), "the retry must be able to fail the check"
+    by_id = {s["id"]: s for s in steps if "id" in s}
+    decide = by_id["retry-decision"]
+    assert f"steps.{first['id']}.outcome == 'failure'" in decide["if"], decide
+    assert '"$elapsed" -lt 120' in decide["run"], "only a fast (outage) failure is retried"
+    assert "steps.retry-decision.outputs.retry == 'true'" in retry["if"], retry
+    # continue-on-error must never turn a real failure green: when the first attempt
+    # failed and was not retried, a later step fails the job.
+    fail = steps[-1]
+    assert f"steps.{first['id']}.outcome == 'failure'" in fail["if"], fail
+    assert "steps.retry-decision.outputs.retry != 'true'" in fail["if"], fail
+    assert "exit 1" in fail["run"] and not fail.get("continue-on-error")
 
 
 def test_claude_review_cancels_stale_reviews() -> None:
@@ -177,9 +188,29 @@ def test_green_loop_starts_from_a_finished_ci_run() -> None:
     prompt = "\n".join(str(s.get("with", {}).get("prompt", "")) for s in all_steps(wf))
     assert "non-gating" not in prompt, "Playwright E2E is a required check"
     assert "--watch" not in prompt, "the loop must not hold a runner waiting on CI"
-    # A rerun re-tests the old SHA and GITHUB_TOKEN pushes trigger nothing, so the
-    # fix is tested only if the loop dispatches both gating workflows on it.
-    assert "gh run rerun" not in prompt
-    assert "gh workflow run ci.yml" in prompt and "gh workflow run security-gate.yml" in prompt
+    # A rerun re-tests the old SHA and GITHUB_TOKEN pushes trigger nothing, so a
+    # deterministic step (not the model) dispatches both gating workflows on the fix.
+    assert "gh run rerun" not in prompt and "gh workflow run" not in prompt
+    dispatch = next(s for s in all_steps(wf) if s.get("name") == "Dispatch CI on the bot fix")
+    assert "!cancelled()" in dispatch["if"], "a failed retry may still have pushed a fix"
+    assert "gh workflow run ci.yml" in dispatch["run"]
+    assert "gh workflow run security-gate.yml" in dispatch["run"]
     assert "workflow_dispatch" in triggers(load("security-gate.yml"))
     assert "workflow_dispatch" in triggers(load("ci.yml"))
+    decide = next(s for s in all_steps(wf) if s.get("id") == "retry-decision")
+    assert "git ls-remote" in decide["run"], "never retry after the first attempt pushed"
+
+
+def test_workflow_changes_run_every_filtered_job() -> None:
+    """A CI change must exercise the jobs it gates, never skip them."""
+    step = next(s for s in load("ci.yml")["jobs"]["changes"]["steps"] if s.get("id") == "filter")
+    filters = yaml.safe_load(step["with"]["filters"])
+    probes = [".github/workflows/ci.yml", ".github/actions/setup-python-env/action.yml"]
+    for group in ("app", "theme"):
+        patterns = filters[group]
+        includes = [p for p in patterns if not p.startswith("!")]
+        # fnmatch's `*` also crosses `/`, so it over-matches excludes: a pass here is safe.
+        excludes = [p[1:] for p in patterns if p.startswith("!")]
+        for path in probes:
+            assert any(fnmatch(path, p) for p in includes), (group, path)
+            assert not any(fnmatch(path, p) for p in excludes), (group, path)

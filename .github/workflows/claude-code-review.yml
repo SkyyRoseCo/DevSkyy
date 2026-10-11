@@ -41,6 +41,10 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Start attempt clock
+        id: attempt-clock
+        run: echo "start=$(date +%s)" >> "$GITHUB_OUTPUT"
+
       - name: Run Claude Code Review
         id: claude-review
         continue-on-error: true
@@ -56,15 +60,28 @@ jobs:
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
 
-      # One retry absorbs a transient action/API outage (e.g. the 2026-10-11
-      # 00:07-00:30Z window where every run exited in 0.5s at $0). Only the retry's
-      # result decides the check, so a real failure still fails twice and goes red.
-      - name: Wait before retrying a failed review
+      # One retry absorbs a transient action/API outage — the 2026-10-11 00:07-00:30Z
+      # window had every run exit in ~0.5s at $0. Only a FAST failure is retried (a
+      # genuine failure that ran for minutes is not re-run); without a retry, the
+      # last step fails the job, so continue-on-error never masks a real failure.
+      - name: Decide whether to retry
+        id: retry-decision
         if: steps.claude-review.outcome == 'failure'
+        env:
+          START: ${{ steps.attempt-clock.outputs.start }}
+        run: |
+          elapsed=$(( $(date +%s) - START ))
+          retry=false
+          if [ "$elapsed" -lt 120 ]; then retry=true; fi
+          echo "First attempt failed after ${elapsed}s; retry=$retry"
+          echo "retry=$retry" >> "$GITHUB_OUTPUT"
+
+      - name: Wait before retrying
+        if: steps.retry-decision.outputs.retry == 'true'
         run: sleep 60
 
-      - name: Retry Claude Code Review
-        if: steps.claude-review.outcome == 'failure'
+      - name: Retry Run Claude Code Review
+        if: steps.retry-decision.outputs.retry == 'true'
         uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268  # v1
         with:
           # Use the job-scoped token on internal PRs so workflow changes can be
@@ -76,3 +93,9 @@ jobs:
           prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
+
+      - name: Fail when the first attempt failed and was not retried
+        if: ${{ steps.claude-review.outcome == 'failure' && steps.retry-decision.outputs.retry != 'true' }}
+        run: |
+          echo "::error::Run Claude Code Review failed and was not a fast (outage) failure — see the step log above."
+          exit 1

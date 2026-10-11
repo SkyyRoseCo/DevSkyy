@@ -4,7 +4,8 @@ name: PR Green Loop
 # Starts only when a CI run has FINISHED with a failure, so no runner sits idle
 # waiting for CI (the old pull_request trigger ran `gh pr checks --watch` for 15-35
 # min per push, holding 1 of the free plan's 20 concurrent runners). It reads the
-# failed logs, fixes the root cause, pushes, and dispatches CI on the fixed commit.
+# failed logs, fixes the root cause, and pushes; a deterministic step then dispatches
+# CI on the fixed commit.
 # If that run fails too, this workflow fires again — up to MAX_FIX_COMMITS.
 #
 # Safety model:
@@ -15,7 +16,7 @@ name: PR Green Loop
 # - The PR must still be open, non-draft, non-Dependabot, and its head must still
 #   be the commit CI failed on (a newer push gets its own CI run).
 # - Pushes use GITHUB_TOKEN, which does not trigger workflows; the loop dispatches
-#   CI explicitly so the fix itself is tested (a rerun would re-test the old SHA).
+#   CI explicitly (outside the model) so the fix itself is tested.
 # - Never force-pushes, merges, deploys, calls a paid API, or weakens a test.
 
 on:
@@ -97,6 +98,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Start attempt clock
+        id: attempt-clock
+        if: steps.budget.outputs.go == 'true'
+        run: echo "start=$(date +%s)" >> "$GITHUB_OUTPUT"
+
       - name: Run PR green loop
         id: green-loop-run
         if: steps.budget.outputs.go == 'true'
@@ -128,11 +134,9 @@ jobs:
                against the code; fix real ones, reply + dismiss false ones): fix the ROOT CAUSE. Verify
                locally before pushing — `python -m pytest <paths> -q`, `ruff check`, `black --check`,
                `mypy <module>`, or the frontend/phpcs equivalent. Never weaken a test or suppress a check.
-            4. Commit (conventional subject) and `git push`. GITHUB_TOKEN pushes trigger no workflows
-               and a rerun would re-test the OLD commit, so dispatch both gating workflows on the fix:
-               `gh workflow run ci.yml --ref ${{ github.event.workflow_run.head_branch }}` and
-               `gh workflow run security-gate.yml --ref ${{ github.event.workflow_run.head_branch }}`.
-               Then exit — if that CI run fails, this workflow starts the next cycle automatically.
+            4. Commit (conventional subject) and `git push`, then exit. The workflow's next step
+               dispatches CI on your commit; do not dispatch or re-run CI yourself. If that CI run
+               fails, this workflow starts the next cycle automatically.
             5. Do not push when the failure traces to the base branch rather than this diff, when the
                same check already failed after a bot fix for it, or when nothing REAL failed — instead
                post ONE concise comment saying what is blocked and why, then exit.
@@ -142,15 +146,30 @@ jobs:
             Never deploy to skyyrose.co, never a WooCommerce/media write, never a paid API call.
             Anti-hallucination: every "the failure is X" must trace to a CI log you read this run.
 
-      # One retry absorbs a transient action/API outage (e.g. the 2026-10-11
-      # 00:07-00:30Z window where every run exited in 0.5s at $0). Only the retry's
-      # result decides the check, so a real failure still fails twice and goes red.
-      - name: Wait before retrying
+      # One retry absorbs a transient action/API outage — the 2026-10-11 00:07-00:30Z
+      # window had every run exit in ~0.5s at $0. Only a FAST failure is retried (a
+      # genuine failure that ran for minutes is not re-run); without a retry, the
+      # last step fails the job, so continue-on-error never masks a real failure.
+      - name: Decide whether to retry
+        id: retry-decision
         if: steps.budget.outputs.go == 'true' && steps.green-loop-run.outcome == 'failure'
+        env:
+          START: ${{ steps.attempt-clock.outputs.start }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          elapsed=$(( $(date +%s) - START ))
+          retry=false
+          if [ "$elapsed" -lt 120 ] && [ "$(git ls-remote origin "refs/heads/$HEAD_BRANCH" | cut -f1)" = "$HEAD_SHA" ]; then retry=true; fi
+          echo "First attempt failed after ${elapsed}s; retry=$retry"
+          echo "retry=$retry" >> "$GITHUB_OUTPUT"
+
+      - name: Wait before retrying
+        if: steps.budget.outputs.go == 'true' && steps.retry-decision.outputs.retry == 'true'
         run: sleep 60
 
       - name: Retry Run PR green loop
-        if: steps.budget.outputs.go == 'true' && steps.green-loop-run.outcome == 'failure'
+        if: steps.budget.outputs.go == 'true' && steps.retry-decision.outputs.retry == 'true'
         uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268 # v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -178,11 +197,9 @@ jobs:
                against the code; fix real ones, reply + dismiss false ones): fix the ROOT CAUSE. Verify
                locally before pushing — `python -m pytest <paths> -q`, `ruff check`, `black --check`,
                `mypy <module>`, or the frontend/phpcs equivalent. Never weaken a test or suppress a check.
-            4. Commit (conventional subject) and `git push`. GITHUB_TOKEN pushes trigger no workflows
-               and a rerun would re-test the OLD commit, so dispatch both gating workflows on the fix:
-               `gh workflow run ci.yml --ref ${{ github.event.workflow_run.head_branch }}` and
-               `gh workflow run security-gate.yml --ref ${{ github.event.workflow_run.head_branch }}`.
-               Then exit — if that CI run fails, this workflow starts the next cycle automatically.
+            4. Commit (conventional subject) and `git push`, then exit. The workflow's next step
+               dispatches CI on your commit; do not dispatch or re-run CI yourself. If that CI run
+               fails, this workflow starts the next cycle automatically.
             5. Do not push when the failure traces to the base branch rather than this diff, when the
                same check already failed after a bot fix for it, or when nothing REAL failed — instead
                post ONE concise comment saying what is blocked and why, then exit.
@@ -191,3 +208,32 @@ jobs:
             Never merge. Never force-push. Never act over a human CHANGES_REQUESTED (report instead).
             Never deploy to skyyrose.co, never a WooCommerce/media write, never a paid API call.
             Anti-hallucination: every "the failure is X" must trace to a CI log you read this run.
+
+      # GITHUB_TOKEN pushes trigger no workflows and `gh run rerun` re-tests the OLD
+      # commit, so dispatch both gating workflows on the bot's fix here, outside the
+      # model — a missed instruction can never leave a fix untested.
+      - name: Dispatch CI on the bot fix
+        if: ${{ !cancelled() && steps.budget.outputs.go == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          git fetch --no-tags --quiet origin "refs/heads/$HEAD_BRANCH"
+          remote=$(git rev-parse FETCH_HEAD)
+          author=$(git log -1 --format=%an FETCH_HEAD)
+          if [ "$remote" = "$HEAD_SHA" ]; then
+            echo "::notice::No fix pushed — nothing to dispatch."; exit 0
+          fi
+          if [ "$author" != "github-actions[bot]" ]; then
+            echo "::notice::Head moved to a non-bot commit ($author); its own push runs CI."; exit 0
+          fi
+          gh workflow run ci.yml --repo "$GITHUB_REPOSITORY" --ref "$HEAD_BRANCH"
+          gh workflow run security-gate.yml --repo "$GITHUB_REPOSITORY" --ref "$HEAD_BRANCH"
+          echo "::notice::Dispatched CI and Security Gate on $remote."
+
+      - name: Fail when the first attempt failed and was not retried
+        if: ${{ steps.budget.outputs.go == 'true' && steps.green-loop-run.outcome == 'failure' && steps.retry-decision.outputs.retry != 'true' }}
+        run: |
+          echo "::error::Run PR green loop failed and was not a fast (outage) failure — see the step log above."
+          exit 1
