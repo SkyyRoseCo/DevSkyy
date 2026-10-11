@@ -41,6 +41,32 @@ jobs:
         with:
           fetch-depth: 1
 
+      # TEMPORARY (PR #1030 diagnosis): run the startup hooks the CLI will run, in the
+      # runner's environment, and print each one's exit code and output. Remove before merge.
+      - name: "DIAG: run startup hooks"
+        continue-on-error: true
+        env:
+          PROMPT: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
+        run: |
+          export CLAUDE_PROJECT_DIR="$PWD" CLAUDE_CODE_ACTION=1
+          eval "$(jq -r '.env // {} | to_entries[] | "export \(.key)=\(.value|@sh)"' .claude/settings.json)"
+          export HOME="$(mktemp -d)"
+          python3 --version; bash --version | head -1
+          for ev in SessionStart UserPromptSubmit; do
+            jq -r --arg ev "$ev" '.hooks[$ev][]?.hooks[]?.command' .claude/settings.json | while IFS= read -r cmd; do
+              input=$(jq -nc --arg ev "$ev" --arg p "$PROMPT" --arg cwd "$PWD" \
+                '{session_id:"diag",hook_event_name:$ev,source:"startup",prompt:$p,cwd:$cwd,transcript_path:"/tmp/none.jsonl"}')
+              set +e
+              out=$(printf '%s' "$input" | bash -c "$cmd" 2>/tmp/hook.err); rc=$?
+              set -e
+              echo "::group::$ev rc=$rc :: $cmd"
+              echo "--- stdout (first 1500 chars)"; printf '%s\n' "${out:0:1500}"
+              echo "--- stderr (first 1500 chars)"; head -c 1500 /tmp/hook.err; echo
+              echo "::endgroup::"
+              echo "SUMMARY $ev rc=$rc stdout_bytes=${#out} :: $cmd"
+            done
+          done
+
       - name: Start attempt clock
         id: attempt-clock
         run: echo "start=$(date +%s)" >> "$GITHUB_OUTPUT"
