@@ -14,7 +14,7 @@ from pathlib import Path
 from inputs import ROOT, all_skus, get_product
 from PIL import Image, features
 
-from skyyrose.core.media_usage import validated_usage_roles
+from skyyrose.core.media_usage import STAGING_TARGET, bound_document, validated_usage_roles
 
 HERE = Path(__file__).resolve().parent
 THEME = ROOT / "wordpress-theme/skyyrose-flagship-2"
@@ -26,7 +26,7 @@ def sha(path):
 
 # Media-eligibility gate reused by skyyrose.core.product_registry for reviewed
 # card fronts. Packaging (main) keeps the certified release boundary.
-CANONICAL_MEDIA_SHA256 = "b791146c07de7ae21e12521ecc103ae958f0cbd9a2caa6036f5b539401e0a8bc"
+CANONICAL_MEDIA_SHA256 = "b4957a6f9210c6c906990a974e7f3f432cc4b2fe9d9ae94d09958e590c1a673e"
 
 
 REQUIRED_ROLES_SHA256 = "6184c23a6a99f24e919fcdb9e37569d870865660bf9b5c9ccaeab3d26586b693"
@@ -146,6 +146,25 @@ def eligible_derivative(relative, record, inventory):
         return False
 
 
+def house_art_restored(relative, record, digest):
+    """Mirror of the PHP gate: the unchanged homepage hero and nothing else."""
+    if (
+        record.get("roles") != ["homepage_hero"]
+        or record.get("skus") != []
+        or record.get("collections") != []
+    ):
+        return False
+    restore = bound_document(THEME, record.get("restoration_receipt"))
+    return (
+        restore is not None
+        and restore.get("schema") == "skyyrose.v2.site-art-restoration.v1"
+        and restore.get("scope") == "UNCHANGED_EXISTING_V2_HOMEPAGE_ART"
+        and restore.get("source") == {"path": relative, "sha256": digest}
+        and restore.get("user_request") == "wherr my homepage hero? my scenes?"
+        and restore.get("target") == STAGING_TARGET
+    )
+
+
 def eligible_media(relative, inventory):
     """Packaging never promotes a candidate, old photograph or unbound derivative."""
     record = inventory.get("assets", {}).get(relative, {})
@@ -167,7 +186,7 @@ def eligible_media(relative, inventory):
         return False
     if digest in inventory.get("disallowed_legacy_sha256", []):
         return False
-    if record.get("kind") in {"housemark", "font", "icon"}:
+    if record.get("kind") in {"housemark", "font", "icon", "house_art"}:
         authority = THEME / "data/v2-canonical-media.json"
         if (
             not authority.is_file()
@@ -176,6 +195,8 @@ def eligible_media(relative, inventory):
         ):
             return False
         canonical = json.loads(authority.read_text())
+        if record.get("kind") == "house_art" and not house_art_restored(relative, record, digest):
+            return False
         return canonical.get("assets", {}).get(relative) == record
     if record.get("status") == "DELIVERY_DERIVATIVE":
         return eligible_derivative(relative, record, inventory)

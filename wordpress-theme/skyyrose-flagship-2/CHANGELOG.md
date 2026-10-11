@@ -2,6 +2,18 @@
 
 All notable changes to SkyyRose Flagship 2 are documented here.
 
+## 2.5.2 — Homepage hero restored through the media gate — 2026-10-11
+
+- Media gate: `house_art` joins the canonical-exact-bytes path. The homepage
+  hero still `assets/images/house-monument-20260928.webp` (sha256 `05e9890b…`)
+  is admitted only for the `homepage_hero` placement, with no SKU or collection,
+  and only while its hash-bound restoration receipt
+  (`data/v2-media-reviews/homepage-art-restoration-20261006.json`) and the
+  re-pinned canonical media inventory match exactly. Any other role, SKU,
+  changed byte or changed receipt fails closed.
+- `data/v2-canonical-media.json` gains the exact hero entry; its code pin moves
+  from `b791146c…` to `b4957a6f…` in the gate and the package mirror.
+
 ## 2.5.1 — Search discovery, consented analytics, express-checkout dedupe — 2026-10-10
 
 - Express checkout: when WooPayments renders express checkout, every callback

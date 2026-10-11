@@ -188,11 +188,17 @@
     },
     {
       "pattern": "tools/v2-runtime/build-card-renditions.py",
-      "samples": [
-        "tools/v2-runtime/build-card-renditions.py"
-      ],
+      "samples": ["tools/v2-runtime/build-card-renditions.py"],
       "owner": "wordpress-theme/skyyrose-flagship-2/inc/v2-media-eligibility.php (builder_sha256 pin)",
       "why": "Its sha256 is the builder_sha256 the V2 media gate requires of every card-front rendition. isort added one blank line, which changed the hash and made the gate reject all 173 renditions (bug-372); tests/test_v2_card_rendition_pins.py guards it."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship-2/data/v2-canonical-media.json",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship-2/data/v2-canonical-media.json"
+      ],
+      "owner": "wordpress-theme/skyyrose-flagship-2/inc/v2-media-eligibility.php and tools/v2-source-certification/package.py (CANONICAL_MEDIA_SHA256 pin)",
+      "why": "Both gates admit housemarks, fonts and the homepage hero only while this file's sha256 equals the pinned value. Prettier collapses its one-item role arrays, which changes the hash and makes the gate drop every logo, font and the hero."
     },
     {
       "pattern": "docs/brand/constitution-v1/constitution.json",
