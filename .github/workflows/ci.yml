@@ -43,12 +43,54 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
-# Cancel in-progress runs for same branch
+# A new push to a PR cancels that PR's stale run. Pushes to main get one group
+# per commit and are never cancelled, so every merged commit gets a full result.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  # ===========================================================================
+  # Stage 0: Change detection (pull requests only)
+  # ===========================================================================
+  # Path-filtered jobs skip on a PR whose files cannot affect them; a job skipped
+  # by `if:` reports "skipped", which satisfies its required check. Every filtered
+  # job also runs when this detector did not succeed, so it fails closed.
+  changes:
+    name: 🧭 Detect Changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: github.event_name == 'pull_request'
+    permissions:
+      pull-requests: read
+    outputs:
+      app: ${{ steps.filter.outputs.app }}
+      theme: ${{ steps.filter.outputs.theme }}
+    steps:
+      - uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        id: filter
+        with:
+          predicate-quantifier: "some-with-excludes"
+          # app: frontend build + Playwright (which boots the Python backend).
+          # Everything counts except paths neither of them reads.
+          # theme: the WordPress Theme job reads only wordpress-theme/.
+          filters: |
+            app:
+              - '**'
+              - '.github/**'
+              - '!**/*.md'
+              - '!docs/**'
+              - '!tasks/**'
+              - '!.planning/**'
+              - '!.wolf/**'
+              - '!.claude/**'
+              - '!**/*.php'
+              - '!wordpress-theme/skyyrose-flagship-2/**'
+            theme:
+              - 'wordpress-theme/**'
+              - 'logo-registry.json'
+              - '.github/**'
+
   # ===========================================================================
   # Stage 1: Lint & Static Analysis (Fast Feedback)
   # ===========================================================================
@@ -66,28 +108,14 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
+          cache-dependency-path: requirements-lint.txt
 
       - name: Reject retired brand copy
         run: python scripts/check_retired_brand_copy.py
 
-      - name: Get pip cache dir
-        id: pip-cache
-        shell: bash
-        run: |
-          echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache pip dependencies
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt', '**/pyproject.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
+      # Exact versions live in requirements-lint.txt (tests/ci pins the shape).
       - name: Install linting tools
-        run: |
-          python -m pip install --upgrade pip
-          pip install ruff black isort mypy
+        run: pip install -r requirements-lint.txt
 
       - name: Run ruff (fast linter)
         run: ruff check . --output-format=github
@@ -135,29 +163,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      # Optional deps the suite imports (langgraph comes from the [mcp] extra with a
+      # compatible pin; the rest are standalone). Nothing is masked: an extra or
+      # package that fails to install fails the job.
+      - name: Set up Python environment
+        uses: ./.github/actions/setup-python-env
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: "pip"
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev,mcp,higgsfield]" || pip install -e ".[dev,mcp]" || pip install -e ".[dev]" || pip install -e .
-          pip install pytest pytest-asyncio pytest-cov pytest-xdist httpx
-          # Optional deps the test suite imports (langgraph comes from the [mcp]
-          # extra above with a compatible pin; the rest are standalone). No
-          # `|| true` mask — if these fail to install we want the job to say so,
-          # not silently skip the tests that need them.
-          pip install boto3 scikit-image trimesh pyotp
+          extras: dev,mcp,higgsfield
+          packages: pytest pytest-asyncio pytest-cov pytest-xdist httpx boto3 scikit-image trimesh pyotp
 
       # tests/test_buglog_published_ids.py compares this tree's bug ids against
       # what main has published. actions/checkout fetches only the ref under test
       # at depth 1, so origin/main is absent and that gate would skip silently;
       # it raises in CI instead, and this is what keeps it able to run.
+      # A push to main IS the published state: pin origin/main to the commit under
+      # test, because a later merge's new ids would otherwise falsely fail it.
+      # Elsewhere compare with main's tip; `+` because a shallow fetch cannot prove
+      # a fast-forward once main moves mid-run (main run 38147299555, 2026-10-11).
       - name: Fetch origin/main for published-id comparison
-        run: git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = push ] && [ "$GITHUB_REF" = refs/heads/main ]; then
+            git update-ref refs/remotes/origin/main "$GITHUB_SHA"
+          else
+            git fetch --no-tags --depth=1 origin +main:refs/remotes/origin/main
+          fi
 
       - name: Run pytest with coverage
         run: |
@@ -209,18 +239,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      - name: Set up Python environment
+        uses: ./.github/actions/setup-python-env
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: "pip"
+          extras: dev
+          packages: pip-audit bandit safety
 
-      - name: Install dependencies
-        run: |
-          pip install -e ".[dev]" || pip install -e .
-          pip install pip-audit bandit safety
-          # semgrep wheel build fails on Python 3.12 from source; use pipx isolation
-          pipx install semgrep || pip install semgrep || true
+      - name: Install semgrep
+        # semgrep wheel build fails on Python 3.12 from source; use pipx isolation.
+        # semgrep is informational, so a failed install skips it (see the gate below).
+        run: pipx install semgrep || pip install semgrep || true
 
       - name: Run pip-audit (dependency vulnerabilities)
         id: pip_audit
@@ -235,8 +264,32 @@ jobs:
           # 2026-09-03. DevSkyy does not call the affected model-artifact APIs;
           # remove this exception as soon as upstream publishes a fixed version.
           IGNORE="--ignore-vuln CVE-2026-45829 --ignore-vuln PYSEC-2026-139 --ignore-vuln CVE-2025-3000 --ignore-vuln PYSEC-2025-217 --ignore-vuln PYSEC-2026-3740"
-          pip-audit $IGNORE --format=json --output=pip-audit-results.json || pip_audit_status=$?
-          pip-audit $IGNORE --strict 2>&1 | tee pip-audit.txt || pip_audit_status=$?
+          # Audit the exact installed set minus the editable project (devskyy is not on
+          # PyPI, and --strict also rejects --skip-editable). --strict then fails the
+          # scan if any real dependency cannot be audited, instead of skipping it.
+          uv pip freeze --color never --python "$(command -v python)" --exclude-editable > audit-requirements.txt
+          # One scan; the readable report is rendered from its JSON. pip-audit exits
+          # 1 both for findings and for a crash; only findings write the report, so a
+          # run with no report is a tool/network error (a PyPI connection reset on
+          # 2026-10-11 was misreported as FIXABLE). Retry that once; it never passes.
+          for attempt in 1 2; do
+            pip_audit_status=0
+            rm -f pip-audit-results.json
+            pip-audit $IGNORE --strict --no-deps --disable-pip -r audit-requirements.txt \
+              --format=json --output=pip-audit-results.json || pip_audit_status=$?
+            if [ "$pip_audit_status" -eq 0 ] || jq -e '.dependencies' pip-audit-results.json >/dev/null 2>&1; then
+              break
+            fi
+            echo "::warning::pip-audit attempt $attempt errored without a report (exit $pip_audit_status)"
+            if [ "$attempt" -eq 1 ]; then sleep 20; fi
+          done
+          report=false
+          if jq -e '.dependencies' pip-audit-results.json >/dev/null 2>&1; then report=true; fi
+          echo "pip_audit_report=$report" >> "$GITHUB_OUTPUT"
+          jq -r '.dependencies[]? | select((.vulns // []) | length > 0)
+                 | .name + " " + .version + ": "
+                   + ([.vulns[] | .id + " (fix: " + ((.fix_versions // []) | join(",")) + ")"] | join("; "))' \
+            pip-audit-results.json 2>/dev/null | tee pip-audit.txt || true
           echo "pip_audit_exit=$pip_audit_status" >> "$GITHUB_OUTPUT"
 
       - name: Run bandit (code security)
@@ -247,9 +300,8 @@ jobs:
             -x ./tests,./venv,./.venv,./node_modules \
             -f json -o bandit-results.json \
             -ll || bandit_status=$?
-          bandit -r . \
-            -x ./tests,./venv,./.venv,./node_modules \
-            -ll 2>&1 | tee bandit.txt || bandit_status=$?
+          jq -r '.results[] | "\(.filename):\(.line_number) \(.test_id) \(.issue_severity)/\(.issue_confidence) \(.issue_text)"' \
+            bandit-results.json 2>/dev/null | tee bandit.txt || true
           echo "bandit_exit=$bandit_status" >> "$GITHUB_OUTPUT"
 
       - name: Run safety check
@@ -262,9 +314,15 @@ jobs:
       - name: Run semgrep (SAST)
         id: semgrep
         run: |
+          if ! command -v semgrep >/dev/null; then
+            echo "::warning::semgrep not installed — SAST skipped (informational)"
+            exit 0
+          fi
           semgrep_status=0
+          # One full-repo scan (it was 2 identical ~4 min scans for JSON + text).
           semgrep scan --config=auto --error --json --output=semgrep-results.json . || semgrep_status=$?
-          semgrep scan --config=auto --error . 2>&1 | tee semgrep.txt || semgrep_status=$?
+          jq -r '.results[] | "\(.path):\(.start.line) \(.check_id) [\(.extra.severity)]"' \
+            semgrep-results.json 2>/dev/null | tee semgrep.txt || true
           echo "semgrep_exit=$semgrep_status" >> "$GITHUB_OUTPUT"
         env:
           SEMGREP_RULES: "p/python"
@@ -288,7 +346,7 @@ jobs:
 
           # pip-audit summary
           if [ -f pip-audit-results.json ]; then
-            VULN_COUNT=$(jq '. | length' pip-audit-results.json 2>/dev/null || echo "0")
+            VULN_COUNT=$(jq '[.dependencies[]? | .vulns[]?] | length' pip-audit-results.json 2>/dev/null || echo "0")
             echo "### pip-audit: $VULN_COUNT dependency vulnerabilities" >> $GITHUB_STEP_SUMMARY
           fi
 
@@ -319,12 +377,19 @@ jobs:
         if: always()
         run: |
           failed=0
-          # Only fail when exit code is explicitly non-zero (empty = tool did not run = skip)
           pip_exit="${{ steps.pip_audit.outputs.pip_audit_exit }}"
+          pip_report="${{ steps.pip_audit.outputs.pip_audit_report }}"
           bandit_exit="${{ steps.bandit.outputs.bandit_exit }}"
           semgrep_exit="${{ steps.semgrep.outputs.semgrep_exit }}"
 
-          if [ -n "$pip_exit" ] && [ "$pip_exit" != "0" ]; then
+          # pip-audit is blocking, so a scan that never reported fails too (bug-230).
+          if [ -z "$pip_exit" ]; then
+            echo "::error::pip-audit did not run to completion — no verdict on dependency vulnerabilities"
+            failed=1
+          elif [ "$pip_exit" != "0" ] && [ "$pip_report" != "true" ]; then
+            echo "::error::pip-audit errored twice without producing a report (exit $pip_exit) — a tool or network failure, not a finding; re-run the job"
+            failed=1
+          elif [ "$pip_exit" != "0" ]; then
             echo "::error::pip-audit found FIXABLE dependency vulnerabilities (exit $pip_exit) — bump the flagged packages, or add a documented --ignore-vuln only if there is no upstream fix"
             failed=1
           fi
@@ -355,6 +420,11 @@ jobs:
     name: ⚛️ Frontend Tests
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    needs: [changes]
+    # Shares the `app` filter with e2e-tests, which needs this job's build artifact.
+    if: >-
+      !cancelled() && (github.event_name != 'pull_request'
+      || needs.changes.result != 'success' || needs.changes.outputs.app == 'true')
 
     defaults:
       run:
@@ -364,15 +434,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      - name: Set up Node environment
+        uses: ./.github/actions/setup-node-env
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: "npm"
-          cache-dependency-path: frontend/package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
+          working-directory: frontend
 
       - name: Run ESLint
         run: npm run lint
@@ -408,15 +474,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      # The committed root lockfile provides deterministic test and audit inputs.
+      - name: Set up Node environment
+        uses: ./.github/actions/setup-node-env
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: "npm"
-
-      # The committed root lockfile provides deterministic test and audit inputs.
-      - name: Install dependencies
-        run: npm ci
 
       - name: Audit production dependencies
         run: npm run security:audit:production
@@ -464,6 +526,10 @@ jobs:
     name: "🏗️ WordPress Theme"
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    needs: [changes]
+    if: >-
+      !cancelled() && (github.event_name != 'pull_request'
+      || needs.changes.result != 'success' || needs.changes.outputs.theme == 'true')
 
     steps:
       - name: Checkout code
@@ -533,6 +599,23 @@ jobs:
             exit 1
           fi
 
+      # The deployed presentation registry must be exactly what committed code
+      # produces from the committed product registry. The V2 source
+      # certification workflow also checks this, but it is path-filtered and
+      # not required; live once shipped a registry no commit could rebuild.
+      # (WebP renditions stay in that ARM64 job: x86 encodes different bytes.)
+      - name: Set up Python for Flagship 2 generated-data checks
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12.12"
+
+      - name: Check Flagship 2 generated product data drift (CI-05c)
+        run: |
+          python -m pip install -r tools/v2-source-certification/requirements.txt
+          python scripts/sync_product_registry.py --check
+          npm --prefix wordpress-theme/skyyrose-flagship-2 run check:registry
+          php wordpress-theme/skyyrose-flagship-2/scripts/test-marketplace-registry.php
+
   # ===========================================================================
   # Stage 3: E2E Tests with Playwright
   # ===========================================================================
@@ -541,8 +624,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     # Browser regressions must fail CI now that the suite covers current behavior.
-    needs: [python-tests, frontend-tests]
-    if: ${{ !inputs.skip_e2e }}
+    # `!cancelled()` lets the change filter decide; the explicit results keep the
+    # old rule that E2E only runs on top of passing Python and frontend jobs.
+    needs: [changes, python-tests, frontend-tests]
+    if: >-
+      !cancelled() && !inputs.skip_e2e
+      && needs.python-tests.result == 'success' && needs.frontend-tests.result == 'success'
+      && (github.event_name != 'pull_request'
+      || needs.changes.result != 'success' || needs.changes.outputs.app == 'true')
 
     steps:
       - name: Checkout code
@@ -550,31 +639,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "npm"
-          cache-dependency-path: frontend/package-lock.json
-
-      - name: Set up Python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      # main_enterprise:app imports boto3/scikit-image/trimesh/pyotp transitively;
+      # without them the backend fails to boot and the Playwright run hangs.
+      - name: Set up Python environment
+        uses: ./.github/actions/setup-python-env
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: "pip"
+          extras: dev,mcp
+          packages: uvicorn boto3 scikit-image trimesh pyotp
 
-      - name: Install Python dependencies
-        run: |
-          pip install -e ".[dev,mcp]" || pip install -e ".[dev]" || pip install -e .
-          pip install uvicorn
-          # main_enterprise:app imports these optional deps transitively; without
-          # them the backend server fails to boot (ModuleNotFoundError) and the
-          # Playwright run hangs until the job is cancelled.
-          pip install boto3 scikit-image trimesh pyotp
-
-      - name: Install frontend dependencies
-        run: npm ci
-        working-directory: frontend
+      - name: Set up Node environment
+        uses: ./.github/actions/setup-node-env
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          working-directory: frontend
 
       - name: Install Playwright
         # Install inside frontend/ so the binary that runs tests is the same one
@@ -671,16 +749,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      - name: Set up Python environment
+        uses: ./.github/actions/setup-python-env
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: "pip"
-
-      - name: Install dependencies
-        run: |
-          pip install -e ".[dev,mcp]" || pip install -e ".[dev]" || pip install -e .
-          pip install httpx pytest-asyncio boto3
+          extras: dev,mcp
+          packages: httpx pytest-asyncio boto3
 
       - name: Run API integration tests
         run: |
@@ -863,19 +937,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Deploy frontend to Vercel
-        if: ${{ vars.ENABLE_VERCEL_DEPLOY == 'true' }}
-        working-directory: ./frontend
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        run: |
-          npm install -g vercel
-          vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
-          vercel build --token=$VERCEL_TOKEN
-          vercel deploy --prebuilt --token=$VERCEL_TOKEN
-
       - name: Deploy backend to Render
         run: |
           if [ -n "${{ secrets.RENDER_DEPLOY_HOOK }}" ]; then
@@ -918,19 +979,6 @@ jobs:
           echo "Verifying all security checks passed..."
           # This step runs after security job succeeds
 
-      - name: Deploy frontend to Vercel (Production)
-        if: ${{ vars.ENABLE_VERCEL_DEPLOY == 'true' }}
-        working-directory: ./frontend
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        run: |
-          npm install -g vercel
-          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
-          vercel build --prod --token=$VERCEL_TOKEN
-          vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
-
       - name: Deploy backend to Render (Production)
         run: |
           if [ -n "${{ secrets.RENDER_PROD_DEPLOY_HOOK }}" ]; then
@@ -965,19 +1013,24 @@ jobs:
   summary:
     name: 📊 Pipeline Summary
     runs-on: ubuntu-latest
-    needs: [lint, python-tests, security, frontend-tests, threejs-tests, wordpress-theme]
+    needs: [lint, python-tests, security, frontend-tests, threejs-tests, wordpress-theme, e2e-tests, api-integration]
     if: always()
 
     steps:
       - name: Generate summary
+        env:
+          RESULTS: ${{ toJSON(needs) }}
         run: |
-          echo "## 📊 CI/CD Pipeline Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
-          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
-          echo "| 🔍 Lint | ${{ needs.lint.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🐍 Python Tests | ${{ needs.python-tests.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🔐 Security | ${{ needs.security.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| ⚛️ Frontend | ${{ needs.frontend-tests.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🎮 Three.js | ${{ needs.threejs-tests.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🏗️ WordPress Theme | ${{ needs.wordpress-theme.result }} |" >> $GITHUB_STEP_SUMMARY
+          {
+            echo "## 📊 CI/CD Pipeline Summary"
+            echo ""
+            echo "| Job | Status |"
+            echo "|-----|--------|"
+            jq -r 'to_entries[] | "| \(.key) | \(.value.result) |"' <<< "$RESULTS"
+          } >> "$GITHUB_STEP_SUMMARY"
+          # "skipped" passes: a path-filtered job whose files did not change.
+          bad=$(jq -r 'to_entries[] | select(.value.result == "failure" or .value.result == "cancelled") | .key' <<< "$RESULTS")
+          if [ -n "$bad" ]; then
+            echo "::error::Failed or cancelled: $(tr '\n' ' ' <<< "$bad")"
+            exit 1
+          fi

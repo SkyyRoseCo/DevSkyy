@@ -10,9 +10,9 @@ extra_references:
 
 # Kids Colorblock Hoodie Set — Purple/Black
 
-**Garment type lock:** Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** (lavender/light-pink hood + diagonal lavender-and-medium-purple upper-body panels + deep purple lower body), and (2) matching sweatpants in solid deep purple with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction as the Red/Black colorway (kids-001) but in a purple-monochrome palette.
+**Garment type lock:** Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, angular geometric color-block construction matching the registered Kids-002 front/back techflats and real-product photo; solid deep-purple hood; and (2) matching sweatpants in deep purple, as pictured. Use those registered product images for all exact colors, panel boundaries, fabric appearance, and placements; do not infer or add shade names. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction as the Red/Black colorway (kids-001).
 
-> **Note on catalog name:** The catalog lists this SKU as "Purple/Black," but the techflat + real-product photo confirm the **pants are deep purple, NOT black**. Render purple pants to match the actual product. The "Black" in the SKU name appears to refer to the dark-purple tones reading visually as a near-black neutral, NOT to a literal black pant.
+> **Catalog color note:** The catalog label is "Purple/Black." Follow the registered Kids-002 product images for the physical garment colors; do not infer a color from the catalog label.
 
 ## Founder-confirmed correction
 
@@ -22,6 +22,11 @@ extra_references:
 
 **Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
+
+**FOUNDER_CONFIRMED:** my techflats and real products should always be referenced we never wrote lavender and light pink so that had to be one of you dumb ass agents hallucinating (Corey, 2026-10-06 America/Los_Angeles; captured verbatim.)
+
+**Garment implementation (agent-derived from founder-directed product sources):** For Kids-002, use the registered front/back techflats, colorway sheet, and real-product photo as the exact authorities for garment construction, palette, panel boundaries, fabric appearance, and placements. The hood is deep purple as shown. Do not copy prior prose or add shade names. Evidence: assets/products/techflats/split/catalog/kids-002-techflat-front.png SHA-256 93ee08c36d52b99cae598aeb7e0082c2bc5ddcf7166c330c293c21c38d99edca; assets/products/techflats/split/catalog/kids-002-techflat-back.png SHA-256 3d302b2ffbca315c502b4c716235bfe7fdc6aafacba56547fb7eb50133d20b93; assets/products/techflats/kids-capsule/colorblock-purple.jpeg SHA-256 85aeeded900df2df1415b7d220ca06a659025bd4cbfa6b9090f4ad2b343bd34e; assets/products/references/kids-002-real-photo.jpeg SHA-256 5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:
@@ -30,17 +35,17 @@ extra_references:
 > - Real product photo:            `assets/products/references/kids-002-real-photo.jpeg`
 
 ### Hoodie — Front
-- **front-body color-block** (entire front body): Angular geometric color-block construction with diagonal seams. **Upper-left panel** (descending from top-left toward center): **lavender / light pink-purple**. **Upper-right panel** (descending from top-right toward center): **medium purple**. **Lower body** (from the diagonal meeting points down to the hem, including the kangaroo pocket area): **deep / dark purple**. **Technique:** stitched. **Color:** lavender + medium purple + deep purple.
+- **front-body color-block** (entire front body): Preserve the exact angular panel geometry, color boundaries, and colors shown in the registered Kids-002 front/back techflats and real-product photo. Do not reinterpret panel hues or redraw the block layout. **Technique:** stitched; exact colors follow the product images.
 - **front-chest cluster** (ONLY mark on the hoodie front body; small, ~2in tall, on the CHEST — see the real product photo for exact position): The Black Rose three-rose-cluster, rendered in greyscale (NOT canonical multi-color). **Technique:** embroidered. **Color:** white + black + grey thread. NOTE: there is NO patch on the chest and NO logo on the stomach / lower body (above the kangaroo pocket) — the front body carries this single chest cluster and nothing else.
 
 ### Hoodie — Back
-- **back-body color-block**: Mirrors the front — the back has the same angular lavender/medium-purple upper panels and deep-purple lower body. **Technique:** stitched. **Color:** lavender + medium purple + deep purple.
+- **back-body color-block**: Match the registered back techflat exactly, including panel geometry, color boundaries, and colors. **Technique:** stitched; exact colors follow the product images.
 
 ### Hoodie — Sleeves / Hood / Hem / Other
-- **left-sleeve**: Solid **lavender / light pink-purple** to match the front-upper-left panel. **Technique:** stitched. **Color:** lavender.
+- **left-sleeve**: Match the registered front/back techflats and real-product photo exactly. **Technique:** stitched; do not infer or rename its color.
 - **right-sleeve**: Solid **medium purple** to match the front-upper-right panel. **Technique:** stitched. **Color:** medium purple.
 - **sleeve patch** (ONE only, ~2in diameter, on the upper sleeve / shoulder — see the real product photo for which sleeve and its exact artwork): A small round embroidered patch. **Technique:** embroidered-patch. Only ONE sleeve carries a patch; the other sleeve is plain.
-- **hood**: Solid **lavender / light pink-purple** (matching the upper-left panel). **Technique:** stitched. **Color:** lavender.
+- **hood**: Solid **deep purple**, as shown in the registered product techflat and real-product photo. **Technique:** stitched. **Color:** deep purple.
 - **hood-drawstring**: White flat drawstring threaded through the hood. **Technique:** stitched. **Color:** white.
 - **kangaroo-pocket**: Deep purple front kangaroo pocket integrated into the lower-body panel.
 - **left-cuff / right-cuff**: Ribbed-knit cuffs, color-matching their sleeves. **Technique:** stitched.
@@ -61,9 +66,9 @@ extra_references:
 
 - NO BLACK pants — pants are DEEP PURPLE despite the catalog name "Purple/Black" (the techflat and real photo both confirm purple, not black).
 - NO red anywhere on this colorway — this is the all-purple sister set to kids-001 (Red/Black). NO red roses, NO red body panel, NO red kangaroo pocket.
-- NO solid-color hoodie body — body is angular color-block, NOT a solid lavender or solid purple field.
+- NO solid-color hoodie body — preserve the angular color-block construction shown in the registered product images.
 - NO horizontal stripe blocking — color-block panels are DIAGONAL.
-- NO matching sleeves — LEFT sleeve is lavender (light), RIGHT sleeve is medium purple.
+- Do not make the sleeves match; preserve the exact sleeve colors and construction shown in the registered product images.
 - NO colored drawstrings — drawstrings are WHITE on hoodie + WHITE on pants.
 - NO decoration on the back-body — back is a clean color-block panel.
 - NO logos on the kangaroo pocket fabric.
@@ -79,5 +84,5 @@ extra_references:
 
 ## Scene direction
 
-- **Pose:** Front view straight-on showing the lavender/purple color-block hoodie + the single chest rose-cluster + the single sleeve patch, with the matching deep-purple sweatpants (one rose-cluster) laid below the hoodie.
+- **Pose:** Front view straight-on showing the exact color-block hoodie, the single chest rose-cluster, the single sleeve patch, and matching sweatpants with one rose-cluster, all arranged as shown in the registered product images.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.

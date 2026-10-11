@@ -9,18 +9,14 @@ import json
 import logging
 from pathlib import Path
 
-from skyyrose.core.catalog_loader import read_catalog_rows
+from skyyrose.core.catalog_loader import CATALOG_CSV, read_catalog_rows
+from skyyrose.core.paths import REPO_ROOT, WP_PRODUCTS_DIR
 
 log = logging.getLogger(__name__)
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-PRODUCTS_DIR = (
-    PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "assets" / "images" / "products"
-)
+PROJECT_ROOT = REPO_ROOT
+PRODUCTS_DIR = WP_PRODUCTS_DIR
 SOURCE_DIR = PROJECT_ROOT / "skyyrose" / "assets" / "images" / "source-products"
-CATALOG_CSV = (
-    PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
-)
 SPECS_JSON = PROJECT_ROOT / "data" / "product-specs.json"
 
 

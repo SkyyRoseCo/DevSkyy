@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-targeted-repairs-card-sg-002",
+  "asset_id": "card-sg-002",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "34b79e43ac2c9b84b471642da138411b22e080b8e0cf157aaff3223ea705b294",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "sg-002"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-repairs/card-sg-002-visual-review.json",
+    "sha256": "aead6dd950831e86144579e7ca7e557cb359cea3dc55679cd5bd64316856b2ef"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-002-targeted-card-desktop.png",
+      "sha256": "70f9807447a21d7959fc6ea0eff46426a1cc6f3d77b21fe3f38130a9b83b8952"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-002-targeted-card-mobile.png",
+      "sha256": "a665b5786b79d274ce812b38177d9cc83d4bfb3c6b9a92beed39e09ba7ac58e0"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-002-targeted-pdp-desktop.png",
+      "sha256": "3cb23336367614278820f5a97eb8e5a7b4395a95179ed4012c6d49bc82a0f079"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-002-targeted-pdp-mobile.png",
+      "sha256": "175c9596d4334a5e6ccd71a75a264b00723f2216d4f7c6d484d4996f264703f8"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native photograph and actual offline card/current product-page.css PDP media-only contexts at1440 desktop/390 mobile. Full commerce, theme interaction, motion, 768 layout and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: The complete white tee retains both sleeve edges, collar and full hem. Purple photographic bridge-filled rose petals, Golden Gate detail, silver-grey stems/vines and black cloud preserve the supplied center-chest identity. Real cotton folds and soft sunset light integrate the wearer with the stone entry and distant bridge bokeh.",
+    "pdp_on_model_front": "PASS: the same native master is entirely contained in the actual current gallery selectors at desktop/mobile, without merchandise cropping or horizontal overflow. The complete white tee retains both sleeve edges, collar and full hem. Purple photographic bridge-filled rose petals, Golden Gate detail, silver-grey stems/vines and black cloud preserve the supplied center-chest identity. Real cotton folds and soft sunset light integrate the wearer with the stone entry and distant bridge bokeh."
+  }
+}

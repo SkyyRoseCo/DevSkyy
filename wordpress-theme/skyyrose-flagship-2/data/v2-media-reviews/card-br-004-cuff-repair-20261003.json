@@ -1,0 +1,58 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-next-20261003-br004-cuff-repair-card-br-004",
+  "asset_id": "card-br-004",
+  "producer": "/root",
+  "reviewer": "/root/next_phase_visual_qa",
+  "verdict": "PASS",
+  "asset_sha256": "c54a5bb33a862c02211ffedc6e377c5431a624dfba54f2c70c50648631dba0ac",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "br-004"
+  ],
+  "collections": [
+    "black-rose"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/card-br-004-visual-review.json",
+    "sha256": "615408e1c92262a680a5685bfc14c488b5954988cb66bbfd9dee697d7df02b7c"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/qa-captures/br-004-card-1440.png",
+      "sha256": "2b455dd921bf5d29b7bf5ea7991a02a6a6a8d44df450ab79c0128418d5ba74a5"
+    },
+    "card_tablet": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/qa-captures/br-004-card-768.png",
+      "sha256": "f838f3b680a9480cdbca501f49a1138f175f6e3a414309a24857794a990cecf8"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/qa-captures/br-004-card-390.png",
+      "sha256": "a59354accad6e482409915ff1ab46d6d804e6955b9e1c3eb2cd807fca6caf4d7"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/qa-captures/br-004-pdp-1440.png",
+      "sha256": "f05941e46e2fdc038484b77d9f5334f69d7e038aaffdcb53ec6deee2c96e0da7"
+    },
+    "pdp_tablet": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/qa-captures/br-004-pdp-768.png",
+      "sha256": "984fb791a7f2871f8ccef8d256cc0c56a7d2e61959116e0c980fd80d7430fd57"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/br004-cuff-repair/qa-captures/br-004-pdp-390.png",
+      "sha256": "3aeb18373e200789f8ff4d68877d27a192addfa93a2c9626bf927c634ab9ea69"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "PASS exact controlled-redraw native output and card_front/pdp_on_model_front local static media at390/768/1440 only. This is whole-output review of generative mask guidance, literal_pixel_preservation=false; not strict localized-patch or zero-outside preservation. Interactive commerce/walking/highlight/fullfunnel/staging/release/founderacceptance remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "Sole small wrist label now on source-relative viewer-LEFT cuff; viewer-RIGHT cuff plain. Physical source cluster label color cue retained. No invented wrist dimensions/material. Front silver/white embroidered rose/cloud cluster, tonal black cords, clean kangaroo pocket and no hip mark retained. Entire hood, hem, cuffs and hands visible. Parent model/pose, face/hair, hands, chest composition, dusk light, brick/court and background hierarchy remain visually coherent after whole-output inspection; byte-level preservation explicitly false. Full hoodie/cuffs retained at all3widths.",
+    "pdp_on_model_front": "Actual V2 gallery helper preserves whole native frame at all3widths; cuff correction and chest identity retained. Media-only fixture not full PDP."
+  }
+}

@@ -7,14 +7,42 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from skyyrose.core.product import all_skus, get_product  # noqa: E402
+from skyyrose.core.product import all_skus, get_product, provenance  # noqa: E402
 
 CONTRACT = Path(__file__).with_name("build-inputs.json")
 SOT = Path(__file__).with_name("inputs") / "product-sot.json"
+CORRECTIONS = Path(__file__).with_name("receipt-corrections.json")
+RECEIPT_FIELDS = ("price", "sizes", "colors", "edition_size", "published", "is_preorder")
 
 
-def load_product_sot():
+def verify_registry_binding(contract):
+    """The release sidecar must name the registry the consumer actually reads."""
+    actual = provenance()["sources"]["registry"]["path"]
+    if contract.get("catalog_authority") != actual:
+        raise ValueError("Contract catalog authority differs from product entry point")
+    digest = hashlib.sha256((ROOT / actual).read_bytes()).hexdigest()
+    if (
+        contract.get("current_registry_sha256") != digest
+        or contract.get("input_hashes", {}).get(actual) != digest
+    ):
+        raise ValueError("Current registry hash requires contract reconciliation")
+    if (
+        contract.get("garment_source")
+        != "skyyrose.core.product.get_product#catalog.garment_type_lock"
+    ):
+        raise ValueError("Contract garment source differs from product entry point")
+
+
+def load_product_sot(*, bind_registry=True):
+    """Return the pinned media receipt.
+
+    ``bind_registry=False`` is for presentation builds: they need the receipt's
+    identity and the staleness comparison, not the release pin on the current
+    registry digest, which only certification (check-integrity) enforces.
+    """
     contract = json.loads(CONTRACT.read_text())
+    if bind_registry:
+        verify_registry_binding(contract)
     raw = SOT.read_bytes()
     if hashlib.sha256(raw).hexdigest() != contract["product_sot_sha256"]:
         raise ValueError("Pinned upstream product SOT artifact changed")
@@ -31,15 +59,22 @@ def load_product_sot():
     return manifest, raw.decode("utf-8")
 
 
-def garment_types(manifest):
+def garment_types(manifest, *, bind_registry=True):
     """Read current product facts from the unified registry, not historical CSVs.
 
     The pinned snapshot is retained only as the existing media receipt identity.
     Its commerce binding must still agree with the current founder registry.
     """
+    contract = json.loads(CONTRACT.read_text())
+    if bind_registry:
+        verify_registry_binding(contract)
     by_sku = {sku: get_product(sku)["catalog"] for sku in all_skus()}
+    if bind_registry:
+        verify_registry_binding(contract)
     if set(by_sku) != set(manifest["products"]):
         raise ValueError("Registry SKU identity differs from media receipt")
+    corrections = load_receipt_corrections()
+    applied = set()
     for sku, product in manifest["products"].items():
         row = by_sku[sku]
         expected = {
@@ -50,9 +85,45 @@ def garment_types(manifest):
             "published": row["published"].strip() == "1",
             "is_preorder": row["is_preorder"].strip() == "1",
         }
-        if (
-            product["commerce"] != expected
-            or product["identity"]["collection"] != row["collection"].strip()
-        ):
+        receipt = dict(product["commerce"])
+        for field, correction in corrections.get(sku, {}).items():
+            if receipt.get(field) != correction["receipt_value"]:
+                raise ValueError(f"Receipt correction does not match the receipt: {sku}.{field}")
+            if expected.get(field) != correction["current_value"]:
+                raise ValueError(f"Receipt correction does not match the registry: {sku}.{field}")
+            receipt[field] = correction["current_value"]
+            applied.add((sku, field))
+        if receipt != expected or product["identity"]["collection"] != row["collection"].strip():
             raise ValueError(f"Current registry requires media-binding reconciliation: {sku}")
+    if applied != {(sku, field) for sku, fields in corrections.items() for field in fields}:
+        raise ValueError("Receipt correction is stale: it no longer reconciles a difference")
     return {sku: row["garment_type_lock"].strip().lower() for sku, row in by_sku.items()}
+
+
+def load_receipt_corrections():
+    """Founder corrections that supersede one historical receipt field each.
+
+    An entry is honored only when its quote is a founder-verbatim correction on
+    that SKU, so an agent cannot widen the receipt by asserting a correction.
+    """
+    document = json.loads(CORRECTIONS.read_text())
+    if document.get("schema") != "skyyrose.v2.receipt-corrections.v1":
+        raise ValueError("Invalid receipt corrections schema")
+    corrections = {}
+    for entry in document["corrections"]:
+        sku, field, quote = entry["sku"], entry["field"], entry["founder_verbatim"].strip()
+        if field not in RECEIPT_FIELDS or field in corrections.get(sku, {}):
+            raise ValueError(f"Invalid or duplicate receipt correction: {sku}.{field}")
+        if entry["receipt_value"] == entry["current_value"]:
+            raise ValueError(
+                f"Receipt correction is stale: it reconciles no difference: {sku}.{field}"
+            )
+        founder = [
+            c["text"]
+            for c in get_product(sku).get("corrections", [])
+            if c.get("authority") == "FOUNDER_VERBATIM"
+        ]
+        if not quote or not any(quote in text for text in founder):
+            raise ValueError(f"Receipt correction lacks a founder-verbatim source: {sku}.{field}")
+        corrections.setdefault(sku, {})[field] = entry
+    return corrections

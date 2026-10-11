@@ -89,7 +89,10 @@ def _resolve_source_image(sku: str, name: str, src_override: str) -> Path | None
       4. Glob `{sku}.{ext}` or `{sku}-*.{ext}` in products/ dir, preferring
          "main" variants over -back/-composite/-detail/-real-back-three-quarter.
     """
-    img_dir = REPO / "wordpress-theme/skyyrose-flagship/assets/images/products"
+    from skyyrose.core.paths import REPO_ROOT, WP_PRODUCTS_DIR
+
+    # Canonical layout, rooted at this module's REPO (tests point REPO at a fixture tree).
+    img_dir = REPO / WP_PRODUCTS_DIR.relative_to(REPO_ROOT)
     bundle_dir = REPO / "data/product-bundles" / name if name else None
 
     candidates: list[Path] = []

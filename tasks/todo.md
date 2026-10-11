@@ -568,7 +568,7 @@ LOCAL verification, not GitHub CI. Execute via `/do`. Sequenced by dependency.
 ### Phase 4 — Holds + hygiene
 - [x] 4.1 HOLD wip/codex-homepage-v2 (51ee222a2). Trigger: OAI render batch re-run + validated
       (sections hard-reference deleted render image paths). Then cherry-pick onto theme branch.
-- [x] 4.2 HOLD PR #538 (pipeline3d draft). Trigger: founder picks 3D path (tasks/3d-pipeline-handoff.md).
+- [x] 4.2 HOLD PR #538 (pipeline3d draft). Trigger: founder picks 3D path (tasks/archive/2026-h1/3d-pipeline-handoff.md).
 - [x] 4.3 Main-checkout cleanup — DONE 2026-06-12 (landed on main via 525c6799a):
       frontend/.next.stale-20260609/ (252MB) DELETED (commit 76acaa98e);
       claude-mem CLAUDE.md churn ROOT-FIXED — redirected to gitignored CLAUDE.local.md

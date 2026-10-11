@@ -1,0 +1,36 @@
+{
+  "operation_id": "v2-reset-20261002-all-products-card-sg-006",
+  "job_digest": "caf2226b7968029f2da11c54f3c6b82d6a2ef371ce030a7af300cebf879fe983",
+  "sources_digest": "29dac94dd770d60363f5fd48866a9bccd8f8b97d2da3eb207528c0c59c657976",
+  "candidate": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/all-products/quarantine/card-sg-006.png",
+    "sha256": "aab946a9757511cc9b7f258520972fc21de016006ca74f92d8e54da293cd869d"
+  },
+  "full_size_pixels": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/all-products/quarantine/card-sg-006.png",
+    "sha256": "aab946a9757511cc9b7f258520972fc21de016006ca74f92d8e54da293cd869d"
+  },
+  "desktop_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-006-card-desktop.png",
+    "sha256": "5aef99c4617246350e9d666cfc9f74a4d5ebddde9c0e4c14ec563805c9aea170"
+  },
+  "mobile_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-006-card-mobile.png",
+    "sha256": "1e9c1557ee09651a37e302ebb525683a04aa473e19e9aa171db6ad87a7de3c64"
+  },
+  "reviewer": "/root/v2_prompt_precheck",
+  "status": "PASS",
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "checks": {
+    "artwork_fidelity": "PASS",
+    "cinematic_light": "PASS",
+    "collection_specific_storytelling": "PASS",
+    "credible_material_response": "PASS",
+    "editorial_composition": "PASS",
+    "fashion_commerce_intent": "PASS",
+    "garment_artwork_identity": "PASS",
+    "optical_integration": "PASS",
+    "product_fidelity": "PASS",
+    "product_readability": "PASS"
+  }
+}

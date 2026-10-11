@@ -1,0 +1,36 @@
+{
+  "operation_id": "v2-reset-20261002-targeted-lowerbody-styling-card-lh-006",
+  "job_digest": "962ff06dc566d38d39e608171cfa7823d456d0beaec36c548a6fa3fa0e30e67d",
+  "sources_digest": "62770b74c9f5a6ae17e3c6663735530c80a28039898260f208b27ebe2e89757d",
+  "candidate": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-lowerbody-styling-repairs/quarantine/card-lh-006.png",
+    "sha256": "b376de27c083bd9ad19244db1a4a22b127b59c4add7ccf860d78140af14375fe"
+  },
+  "full_size_pixels": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-lowerbody-styling-repairs/quarantine/card-lh-006.png",
+    "sha256": "b376de27c083bd9ad19244db1a4a22b127b59c4add7ccf860d78140af14375fe"
+  },
+  "desktop_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-006-styling-card-desktop.png",
+    "sha256": "297f0b4b44be9978a5c811c19feff43abb8c897ce6df817a07f7e5aa9bbb2fb5"
+  },
+  "mobile_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-006-styling-card-mobile.png",
+    "sha256": "006bc5a6594e5e72618393b334a06a04bf670d1db0dbe9c0d272a17a6679b55c"
+  },
+  "reviewer": "/root/v2_prompt_precheck",
+  "status": "PASS",
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "checks": {
+    "artwork_fidelity": "PASS",
+    "cinematic_light": "PASS",
+    "collection_specific_storytelling": "PASS",
+    "credible_material_response": "PASS",
+    "editorial_composition": "PASS",
+    "fashion_commerce_intent": "PASS",
+    "garment_artwork_identity": "PASS",
+    "optical_integration": "PASS",
+    "product_fidelity": "PASS",
+    "product_readability": "PASS"
+  }
+}

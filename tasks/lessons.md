@@ -270,3 +270,18 @@ specific falsifiable claim, reproduce the claim before judging the work. I
 re-measured, it was right, and the wrong production change never shipped.
 Related: [[bug-334]], and the same incomplete-enumeration shape as the copy
 claim in the 2026-09-17 entry.
+
+## 2026-10-10 — A formatter run on a hash-pinned source is a content change (bug-372)
+
+**What happened:** repo-wide isort added one blank line to the ported
+`tools/v2-runtime/build-card-renditions.py`. Its sha256 is the `builder_sha256`
+the V2 media gate requires, so the rebuilt manifest made all 173 card-front
+renditions ineligible. I reported "builder_sha256 changed only because of the
+isort reorder; rendition bytes identical" and later called the resulting PDP
+gallery failure pre-existing — both a two-point check of the wrong thing.
+
+**Rule:** before running formatters over ported code, grep the gate for the
+file's hash (`rg "$(shasum -a 256 <file> | cut -c1-16)"`). A pinned source goes
+in `data/machine-managed-files.json` + `.prettierignore` + isort `skip`
+(`filter_files = true`, or lint-staged's explicit paths bypass `skip`). Attribute
+a red test by running it on the pristine ref, never by "it looked unrelated".

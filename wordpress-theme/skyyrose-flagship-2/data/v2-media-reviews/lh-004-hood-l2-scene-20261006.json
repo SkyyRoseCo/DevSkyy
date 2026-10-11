@@ -1,0 +1,45 @@
+{
+  "schema": "skyyrose.v2.independent-media-review.v1",
+  "roles": [
+    "collection_scene_back"
+  ],
+  "skus": [
+    "lh-004"
+  ],
+  "collections": [
+    "love-hurts"
+  ],
+  "producer": "/root",
+  "production_id": "v2-lh004-source-locked-hood-20261006-l2",
+  "asset_sha256": "c68052ec05a6408167fc96cc9050998090bd93300dec11153bdda65bce6bd457",
+  "reviewer": "/root/hood_and_optimization_review",
+  "verdict": "PASS",
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "method": "ACTUAL_NATIVE_WEBP_PIXEL_INSPECTION_AND_SOURCE_COMPARISON",
+  "source_master": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/v2-card-placement-review-20261006/hood-cluster-r3/lh-004-hood-locked-l2.png",
+    "sha256": "b342acec88704f970a3fbabeb1c8ee4024b3171ff637d7b31e7c5c30dcad69db"
+  },
+  "native_png_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/v2-card-placement-review-20261006/hood-cluster-r3/independent-local-pixel-review-l2.json",
+    "sha256": "c90f23259237257494f3392e447f5fa310db0c9cd891f32e647228f1189c2cc6"
+  },
+  "webp_review": {
+    "verdict": "PASS",
+    "dimensions": [
+      2688,
+      1520
+    ],
+    "bytes": 553570,
+    "mean_absolute_rgb_error": 1.5291,
+    "psnr_db": 40.865,
+    "reason": "Native side-by-side preserves canonical lining cluster/cloud, corrected edge, original back artwork and full uncropped scene."
+  },
+  "authority": "FOUNDER_CONFIRMED",
+  "placement_authorization": "so update staging with these",
+  "scope_confirmation": "make sure you update all staging files so no old reads slip in'",
+  "authorized_target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "recorded_at": "2026-10-07T02:40:09.056110+00:00",
+  "publishing_scope": "STAGING_ONLY"
+}

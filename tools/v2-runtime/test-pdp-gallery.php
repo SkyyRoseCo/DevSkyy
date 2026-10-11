@@ -59,11 +59,16 @@ class WC_Product {
 	public function get_image_id() { return apply_filters('woocommerce_product_get_image_id', $this->image, $this); }
 	public function get_gallery_image_ids() { return apply_filters('woocommerce_product_get_gallery_image_ids', $this->gallery, $this); }
 	public function get_title() { return $this->sku; }
+	public function get_name() { return $this->sku; }
 }
 class WC_Product_Variation extends WC_Product {
 	public function get_parent_id() { return 101; }
+	public function get_variation_attributes() { return $GLOBALS['variation_attributes'] ?? array('attribute_pa_size' => 'M'); }
 }
 function WC() { return new class { public function plugin_path() { return $GLOBALS['woo_path']; } }; }
+function is_admin() { return false; }
+function wc_get_product($id) { return $GLOBALS['parents'][$id] ?? null; }
+function esc_html__($text, ...$args) { return htmlspecialchars($text, ENT_QUOTES); }
 function is_product() { return $GLOBALS['is_product']; }
 function wp_doing_ajax() { return $GLOBALS['ajax']; }
 function skyyrose2_product_commerce_media($product) {
@@ -89,6 +94,11 @@ function esc_url($text) { return htmlspecialchars($text, ENT_QUOTES); }
 function esc_attr($text) { return htmlspecialchars((string)$text, ENT_QUOTES); }
 function sanitize_key($text) { return strtolower(preg_replace('/[^a-z0-9_\\-]/', '', (string)$text)); }
 function wp_get_attachment_url($id) { return $GLOBALS['attachment_urls'][$id] ?? false; }
+function skyyrose2_product_presentation($product) {
+	static $presentation = null;
+	if (null === $presentation) { $presentation = json_decode(file_get_contents(SKYYROSE2_DIR . '/data/product-presentation-registry.json'), true); }
+	return $presentation['products'][strtolower($product->get_sku())] ?? array();
+}
 function sanitize_html_class($text) { return preg_replace('/[^a-zA-Z0-9_-]/', '', $text); }
 function wp_get_attachment_image($id, $size, $icon, $attrs) {
 	$attrs = array_merge(array('src' => 'https://uploads.invalid/' . $id . '-full.webp', 'data-test-attachment' => $id), $attrs);
@@ -105,148 +115,94 @@ $start = strpos($source, 'function wc_get_gallery_image_html(');
 $end = strpos($source, "if ( ! function_exists( 'woocommerce_get_alt_from_product_title_and_position'", $start);
 check_gallery(false !== $start && false !== $end, 'Native gallery helper boundary was not found.');
 eval(substr($source, $start, $end - $start));
+require SKYYROSE2_DIR . '/inc/v2-media-eligibility.php';
 require SKYYROSE2_DIR . '/inc/approved-card-fronts.php';
 require SKYYROSE2_DIR . '/inc/pdp-media-delivery.php';
 add_action('woocommerce_product_thumbnails', static function () { require $GLOBALS['woo_path'] . '/templates/single-product/product-thumbnails.php'; });
+// Current source/review bindings replace the superseded founder-label fixture.
 $manifest = json_decode(file_get_contents(SKYYROSE2_DIR . '/data/approved-card-fronts.json'), true);
-check_gallery( 33 === count( $manifest['products'] ?? array() ), 'The approved-front manifest must retain all 33 product bindings.' );
-foreach ( $manifest['products'] as $approved_sku => $approved_record ) {
-	$approved_product = new WC_Product( 800 + count( $GLOBALS['files'] ), $approved_sku, 800 + count( $GLOBALS['files'] ) );
-	$approved_front = skyyrose2_approved_card_front( $approved_product );
-	check_gallery( 'FOUNDER_APPROVED_V2_CARD' === ( $approved_front['scene_status'] ?? '' ) && str_ends_with( strtolower( $approved_front['alt'] ?? '' ), 'front on model' ), 'Every published SKU must resolve its founder-approved on-model front: ' . $approved_sku . '.' );
-	check_gallery( ( $approved_record['sha256'] ?? '' ) === ( $approved_front['sha256'] ?? '' ), 'Approved-front source hash must stay bound for ' . $approved_sku . '.' );
+check_gallery(33 === count($manifest['products'] ?? array()), 'Every current SKU has its exact card binding.');
+$pdp_count = 0;
+foreach ($manifest['products'] as $sku => $record) {
+    $item = new WC_Product(800, $sku, 800);
+    $front = skyyrose2_approved_card_front($item);
+    check_gallery($front && $front['sha256'] === $record['sha256'] && $front['path'] === $record['src'] && $front['status'] === $record['current_fidelity_status'], 'Exact current card bytes/review for ' . $sku);
+    if (skyyrose2_approved_pdp_front($item)) { ++$pdp_count; }
 }
-$GLOBALS['files'][77] = SKYYROSE2_DIR . '/' . $manifest['products']['sg-005']['src'];
+check_gallery(18 === $pdp_count, 'Card approval retains the separate 18 current PDP-role grants.');
 $parent = new WC_Product(101, 'sg-005', 77, array(78));
-$variation = new WC_Product_Variation(201, 'sg-005-m', 77, array(78));
+$GLOBALS['parents'][101] = $parent;
+$front = skyyrose2_approved_pdp_front($parent);
+check_gallery($front && str_ends_with($front['display_src'], 'sg-005-768w.webp'), 'Fixture requires an actual current PDP-role lead.');
+$GLOBALS['files'][77] = SKYYROSE2_DIR . '/' . $front['path'];
+$GLOBALS['attachment_urls'][77] = $front['src'];
 $GLOBALS['product'] = 'previous-global';
 $GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_capture_media_context($parent);
 $permission_calls = $GLOBALS['permission_calls'];
 $default = wc_get_product_gallery_html($parent);
-check_gallery(str_contains($default, 'sg-005-480w.webp'), 'Native default HTML must use same-source delivery.');
-check_gallery(str_contains($default, 'href="https://uploads.invalid/77-full.webp"') && str_contains($default, 'data-thumb="https://uploads.invalid/77-thumb.webp"'), 'Original lightbox and thumbnail references must remain native.');
-check_gallery($GLOBALS['product'] === 'previous-global', 'Native product global was not restored.');
+check_gallery(str_contains($default, 'src="' . $front['display_src'] . '"') && str_contains($default, 'srcset="') && str_contains($default, 'href="' . $front['src'] . '"'), 'Native default uses bounded responsive display and exact original zoom.');
+check_gallery(str_contains($default, 'data-test-attachment="78"'), 'Native secondary hooks remain available before the final media boundary.');
+$filtered = skyyrose2_media_filter_html($default);
+check_gallery(substr_count($filtered, '<img ') === 1 && !str_contains($filtered, 'src="https://uploads.invalid'), 'Final media gate retains only the reviewed responsive family.');
+check_gallery($GLOBALS['product'] === 'previous-global', 'Native product global is restored.');
 $ordered = wc_get_product_gallery_html($parent, array(78, 999, 77));
-check_gallery(!str_contains($ordered, '999-') && strpos($ordered, 'data-test-attachment="78"') < strpos($ordered, 'data-test-attachment="77"'), 'Variation candidate intersection must preserve permitted order and exclude injected ID.');
-check_gallery($GLOBALS['permission_calls'] === $permission_calls, 'Permission was recomputed while native getter overrides were active.');
-check_gallery($parent->get_image_id() === 77 && $parent->get_gallery_image_ids() === array(78), 'Native and wrapper getter overrides leaked.');
-check_gallery($default === wc_get_product_gallery_html($parent), 'Repeated reset/default snapshot differs after variation rendering.');
-check_gallery('' === wc_get_product_gallery_html($parent, array(999)), 'No permitted candidates must render no gallery.');
+check_gallery(!str_contains($ordered, '999-') && str_contains($ordered, $front['display_src']), 'Native variation candidates exclude unpermitted IDs and retain exact current primary.');
+check_gallery($GLOBALS['permission_calls'] === $permission_calls, 'No permission lookup occurs under temporary native getters.');
+check_gallery($parent->get_image_id() === 77 && $parent->get_gallery_image_ids() === array(78), 'Temporary getters do not leak.');
+check_gallery($default === wc_get_product_gallery_html($parent), 'Repeated default/reset snapshots remain stable.');
+check_gallery('' === wc_get_product_gallery_html($parent, array(999)), 'An empty candidate intersection cannot restore unpermitted media.');
 
-// Ghost primary images may be replaced only by the exact SKU's integrity-checked,
-// founder-approved model front. The native gallery keeps its remaining views.
-$ghost_cases = array( 'br-002', 'br-005', 'kids-002', 'lh-003', 'sg-014' );
-$ghost_id = 300;
-foreach ( $ghost_cases as $ghost_sku ) {
-	$ghost_product = new WC_Product( $ghost_id, $ghost_sku, $ghost_id, array( 78 ) );
-	$GLOBALS['attachment_urls'][ $ghost_id ] = 'https://uploads.invalid/' . $ghost_sku . '-ghost-front.webp';
-	$approved_html = skyyrose2_pdp_approved_ghost_front_html( '<div>ghost</div>', $ghost_id, $ghost_product );
-	$approved_front = skyyrose2_approved_card_front( $ghost_product );
-	check_gallery( $approved_front && str_contains( $approved_html, $approved_front['src'] ) && str_contains( $approved_html, esc_attr( $approved_front['alt'] ) ), 'Ghost primary must render the exact approved model front for ' . $ghost_sku . '.' );
-	$approved_pdp_sizes = skyyrose2_pdp_gallery_sizes( $approved_front['width'], $approved_front['height'] );
-	check_gallery( str_contains( $approved_html, 'data-large_image="' . $approved_front['src'] . '"' ) && str_contains( $approved_html, 'sizes="' . $approved_pdp_sizes . '"' ), 'Approved PDP front must keep zoom and responsive sources for ' . $ghost_sku . '.' );
-	$previous_context = $GLOBALS['skyyrose2_pdp_media_context'] ?? null;
-	$GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_capture_media_context( $ghost_product );
-	$primary_done = false;
-	$primary_filter = static function ( $html, $id ) use ( &$primary_done, $ghost_product ) {
-		if ( $primary_done ) { return $html; }
-		$replacement = skyyrose2_pdp_approved_ghost_front_html( $html, $id, $ghost_product );
-		if ( $replacement !== $html ) { $primary_done = true; }
-		return $replacement;
-	};
-	add_filter( 'woocommerce_single_product_image_thumbnail_html', $primary_filter, 30, 2 );
-	$gallery_html = wc_get_product_gallery_html( $ghost_product );
-	remove_filter( 'woocommerce_single_product_image_thumbnail_html', $primary_filter, 30 );
-	check_gallery( $primary_done && str_contains( $gallery_html, $approved_front['src'] ) && ! str_contains( $gallery_html, 'ghost-front.webp' ), 'Native PDP gallery must lead with the approved front and omit the ghost for ' . $ghost_sku . '.' );
-	check_gallery( str_contains( $gallery_html, 'data-test-attachment="78"' ), 'Native gallery must retain non-primary views for ' . $ghost_sku . '.' );
-	if ( null === $previous_context ) { unset( $GLOBALS['skyyrose2_pdp_media_context'] ); } else { $GLOBALS['skyyrose2_pdp_media_context'] = $previous_context; }
-	check_gallery( '<div>ghost</div>' === skyyrose2_pdp_approved_ghost_front_html( '<div>ghost</div>', 999, $ghost_product ), 'A non-primary attachment must not be replaced for ' . $ghost_sku . '.' );
-	$GLOBALS['attachment_urls'][ $ghost_id ] = 'https://uploads.invalid/' . $ghost_sku . '-onmodel.webp';
-	check_gallery( '<div>ghost</div>' === skyyrose2_pdp_approved_ghost_front_html( '<div>ghost</div>', $ghost_id, $ghost_product ), 'A non-ghost primary must remain untouched for ' . $ghost_sku . '.' );
-	++$ghost_id;
-}
-$wrong_sku = new WC_Product( 400, 'br-005', 400 );
-$GLOBALS['attachment_urls'][400] = 'https://uploads.invalid/br-002-ghost-front.webp';
-check_gallery( '<div>ghost</div>' === skyyrose2_pdp_approved_ghost_front_html( '<div>ghost</div>', 400, $wrong_sku ), 'A ghost image from another SKU must remain untouched.' );
-
-// The resolver can select an editorial order different from raw assignments.
-// Default/reset must honor that canonical order without rewriting a variation.
+// Compatibility helpers cannot substitute a historical or other-SKU attachment.
+check_gallery(str_contains(skyyrose2_pdp_approved_ghost_front_html('<div>original</div>', 77, $parent), $front['src']), 'An exact current attachment binding may use the current same-source delivery.');
+$GLOBALS['attachment_urls'][77] = 'https://uploads.invalid/sg-005-ghost-front.webp';
+check_gallery('<div>original</div>' === skyyrose2_pdp_approved_ghost_front_html('<div>original</div>', 77, $parent), 'An unbound historical ghost is not silently adopted.');
+$GLOBALS['attachment_urls'][77] = $front['src'];
+check_gallery('<div>original</div>' === skyyrose2_pdp_approved_ghost_front_html('<div>original</div>', 999, $parent), 'Non-primary attachments cannot inherit the primary binding.');
 $original_context = $GLOBALS['skyyrose2_pdp_media_context'];
 $GLOBALS['skyyrose2_pdp_media_context']['media'] = array('state' => 'editorial', 'ids' => array(78, 77));
 $editorial_default = wc_get_product_gallery_html($parent);
-check_gallery(strpos($editorial_default, 'data-test-attachment="78"') < strpos($editorial_default, 'data-test-attachment="77"'), 'Default raw [77,78] must render canonical editorial [78,77].');
-$editorial_variation = wc_get_product_gallery_html($parent, array(77));
-check_gallery(str_contains($editorial_variation, 'data-test-attachment="77"') && !str_contains($editorial_variation, 'data-test-attachment="78"'), 'An explicit permitted variation [77] must not be replaced by the editorial default.');
-check_gallery($GLOBALS['permission_calls'] === $permission_calls, 'Editorial mapping must not resolve authority under overrides.');
+check_gallery(str_contains($editorial_default, $front['display_src']) && !str_contains($editorial_default, 'data-test-attachment="78"'), 'Canonical editorial order is respected while the first frame retains the reviewed primary.');
+check_gallery($GLOBALS['permission_calls'] === $permission_calls, 'Editorial order does not broaden permission.');
 $GLOBALS['skyyrose2_pdp_media_context'] = $original_context;
-
-// Test the actual default-cache expression and the embedded-template gallery
-// expression, without evaluating native purchase controls or changing commerce.
-check_gallery(str_contains($source, 'wp_json_encode( wc_get_product_gallery_html( $product ) )'), 'Installed inline-default call path changed.');
-$variable_template = file_get_contents($GLOBALS['woo_path'] . '/templates/single-product/add-to-cart/variable.php');
-check_gallery(str_contains($variable_template, 'wc_get_product_gallery_html( $product )'), 'Installed embedded-default call path changed.');
-$inline_default = json_decode(json_encode(wc_get_product_gallery_html($parent)), true);
-$embedded_default = wc_get_product_gallery_html($parent);
-check_gallery($inline_default === $default && $embedded_default === $default, 'Reset representations must use the same native template boundary.');
+check_gallery(str_contains($source, 'wp_json_encode( wc_get_product_gallery_html( $product ) )'), 'Native inline-default expression remains pinned.');
+check_gallery(str_contains(file_get_contents($GLOBALS['woo_path'] . '/templates/single-product/add-to-cart/variable.php'), 'wc_get_product_gallery_html( $product )'), 'Native embedded-default expression remains pinned.');
 
 $thrower = static function () { throw new \RuntimeException('native gallery hook failure'); };
 add_action('woocommerce_product_thumbnails', $thrower, 5);
 try { wc_get_product_gallery_html($parent, array(78)); throw new \RuntimeException('Expected native exception.'); }
-catch (\RuntimeException $error) { check_gallery($error->getMessage() === 'native gallery hook failure', 'Native error must propagate.'); }
+catch (\RuntimeException $error) { check_gallery($error->getMessage() === 'native gallery hook failure', 'Native errors propagate.'); }
 remove_action('woocommerce_product_thumbnails', $thrower, 5);
-check_gallery($parent->get_image_id() === 77 && $parent->get_gallery_image_ids() === array(78), 'Exception leaked temporary getters.');
-check_gallery(!has_filter('woocommerce_gallery_image_html_attachment_image_params'), 'Exception leaked delivery attributes.');
-check_gallery(!has_filter('get_post_metadata') && !has_filter('woocommerce_product_get__wc_video_gallery'), 'Exception leaked video metadata filters.');
-check_gallery(get_post_meta(101, '_wc_video_gallery', true)[0]['id'] === 999, 'Native video data was mutated outside its render boundary.');
-check_gallery($GLOBALS['product'] === 'previous-global', 'Exception leaked native product global.');
+check_gallery($parent->get_image_id() === 77 && $parent->get_gallery_image_ids() === array(78), 'Exceptions restore native getters.');
+check_gallery(!has_filter('woocommerce_gallery_image_html_attachment_image_params') && !has_filter('woocommerce_single_product_image_thumbnail_html'), 'Exceptions restore delivery and primary filters.');
+check_gallery(!has_filter('get_post_metadata') && !has_filter('woocommerce_product_get__wc_video_gallery'), 'Exceptions restore video metadata filters.');
+check_gallery(get_post_meta(101, '_wc_video_gallery', true)[0]['id'] === 999 && $GLOBALS['product'] === 'previous-global', 'Exceptions preserve native video data and global product.');
 
-$rejected = new WC_Product(102, 'br-003', 79, array(), 'rejected');
-$GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_capture_media_context($rejected);
-check_gallery('' === wc_get_product_gallery_html($rejected) && '' === wc_get_product_gallery_html($rejected, array(77)), 'Rejected default and variation galleries must stay empty.');
+$card_only = new WC_Product(102, 'br-003', 79, array(), 'rejected');
+$GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_capture_media_context($card_only);
+check_gallery(skyyrose2_approved_card_front($card_only) && !skyyrose2_approved_pdp_front($card_only), 'Fixture retains a card-only product.');
+check_gallery(!str_contains(wc_get_product_gallery_html($card_only), '<img') && str_contains(wc_get_product_gallery_html($card_only), 'currently unavailable'), 'Card-only acceptance cannot become PDP approval through rejected attachments.');
 unset($GLOBALS['skyyrose2_pdp_media_context']);
 $GLOBALS['is_product'] = false;
 $GLOBALS['ajax'] = true;
 $_REQUEST['wc-ajax'] = 'get_variation';
-check_gallery('' === wc_get_product_gallery_html($parent, array(999, 77)), 'AJAX intermediate render must not infer permission from overridden IDs.');
-$data = array('image_id' => 77, 'image' => array('src' => 'original', 'full_src' => 'full', 'gallery_thumbnail_src' => 'thumb'), 'gallery_image_ids' => array(78,999), 'gallery_images_html' => 'untrusted intermediate');
-$result = skyyrose2_pdp_variation_delivery($data, $parent, $variation);
-check_gallery(str_contains($result['gallery_images_html'], 'sg-005-480w.webp') && !str_contains($result['gallery_images_html'], '999-'), 'AJAX gallery must be regenerated through the guarded native template.');
-check_gallery($result['gallery_image_ids'] === array(78) && $result['image_id'] === 77 && $result['image']['full_src'] === 'full', 'AJAX identity/order/full metadata changed incorrectly.');
-check_gallery(!isset($GLOBALS['skyyrose2_pdp_media_context']), 'AJAX context leaked.');
-add_action('woocommerce_product_thumbnails', $thrower, 5);
-try { skyyrose2_pdp_variation_delivery($data, $parent, $variation); throw new \RuntimeException('Expected AJAX exception.'); }
-catch (\RuntimeException $error) { check_gallery($error->getMessage() === 'native gallery hook failure', 'AJAX native error must propagate.'); }
-remove_action('woocommerce_product_thumbnails', $thrower, 5);
-check_gallery(!isset($GLOBALS['skyyrose2_pdp_media_context']) && $parent->get_image_id() === 77 && $GLOBALS['product'] === 'previous-global', 'AJAX exception must restore context, getters and global product.');
+check_gallery('' === wc_get_product_gallery_html($parent, array(999, 77)), 'Intermediate native AJAX cannot infer permission from overridden IDs.');
 
-// Native variation JSON and reset must retain the same approved primary.
-$_REQUEST['wc-ajax'] = 'get_variation';
-$ghost_variation_parent = new WC_Product(101, 'br-002', 501, array(78));
-$ghost_variation = new WC_Product_Variation(201, 'br-002-m', 501, array(78));
-$GLOBALS['attachment_urls'][501] = 'https://uploads.invalid/br-002-ghost-front.webp';
-$GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_capture_media_context($ghost_variation_parent);
-$GLOBALS['is_product'] = true;
-$ghost_front = skyyrose2_approved_card_front($ghost_variation_parent);
-$variation_payload = array(
-	'image_id' => 501,
-	'image' => array( 'src' => 'ghost-small', 'src_w' => 600, 'src_h' => 600, 'full_src' => 'ghost-full', 'full_src_w' => 1024, 'full_src_h' => 1024, 'gallery_thumbnail_src' => 'ghost-thumb', 'gallery_thumbnail_src_w' => 100, 'gallery_thumbnail_src_h' => 100, 'thumb_src' => 'ghost-thumb', 'thumb_src_w' => 100, 'thumb_src_h' => 100, 'alt' => 'ghost' ),
-	'gallery_image_ids' => array(78),
-	'gallery_images_html' => 'untrusted ghost variation markup',
-	'price' => '$40.00',
-);
-$approved_variation_payload = skyyrose2_pdp_variation_delivery($variation_payload, $ghost_variation_parent, $ghost_variation);
-check_gallery($approved_variation_payload['image_id'] === 501 && $approved_variation_payload['image']['src'] === $ghost_front['card_src'] && $approved_variation_payload['image']['full_src'] === $ghost_front['src'] && $approved_variation_payload['image']['sizes'] === skyyrose2_pdp_gallery_sizes($ghost_front['width'], $ghost_front['height']), 'Selected variation must expose approved responsive front and full-view image data.');
-check_gallery(!str_contains($approved_variation_payload['image']['src'], 'ghost') && !str_contains($approved_variation_payload['gallery_images_html'], 'ghost-front.webp') && str_contains($approved_variation_payload['gallery_images_html'], $ghost_front['src']) && str_contains($approved_variation_payload['gallery_images_html'], 'data-test-attachment="78"'), 'Variation gallery must replace only the ghost primary and retain secondary views.');
-check_gallery($approved_variation_payload['price'] === '$40.00', 'Image substitution must preserve variation commerce data.');
-$reset_gallery = wc_get_product_gallery_html($ghost_variation_parent);
-check_gallery(str_contains($reset_gallery, $ghost_front['src']) && !str_contains($reset_gallery, 'ghost-front.webp'), 'Variation reset/default must return to the approved model front.');
-$invalid_variation_payload = $variation_payload;
-$invalid_variation_payload['image_id'] = 999;
-$invalid_variation = skyyrose2_pdp_variation_delivery($invalid_variation_payload, $ghost_variation_parent, $ghost_variation);
-check_gallery(0 === $invalid_variation['image_id'] && array() === $invalid_variation['image'] && !str_contains($invalid_variation['gallery_images_html'], '999-'), 'An unpermitted variation image must fail closed without restoring an image.');
-unset($GLOBALS['skyyrose2_pdp_media_context']);
-$GLOBALS['is_product'] = false;
+// A selected size inherits only its parent SKU, while unknown/color variants fail closed.
+$variation = new WC_Product_Variation(201, '', 77, array(78));
+$data = array('image_id' => 999, 'image' => array('src' => 'stale', 'srcset' => 'stale 600w'), 'gallery_image_ids' => array(78, 999), 'display_price' => 137, 'is_in_stock' => true, 'is_purchasable' => true, 'variation_id' => 201);
+$result = skyyrose2_media_variation(skyyrose2_pdp_variation_delivery($data, $parent, $variation), $parent, $variation);
+check_gallery(0 === $result['image_id'] && array() === $result['gallery_image_ids'] && $result['image']['src'] === $front['display_src'] && $result['image']['full_src'] === $front['src'] && $result['image']['sizes'] === skyyrose2_pdp_gallery_sizes($front['width'], $front['height']), 'Selected size has one current responsive family and original zoom, without stale attachment IDs.');
+check_gallery(str_contains($result['gallery_images_html'], $front['display_src']) && !str_contains($result['gallery_images_html'], '999-'), 'AJAX produces a complete current gallery for native replacement/reset.');
+foreach (array('display_price', 'is_in_stock', 'is_purchasable', 'variation_id') as $field) { check_gallery($data[$field] === $result[$field], 'Image delivery preserves purchase field ' . $field); }
+$unknown = new WC_Product_Variation(202, 'unknown-color', 77);
+$missing = skyyrose2_pdp_variation_delivery($data, $parent, $unknown);
+check_gallery(array() === $missing['image'] && !str_contains($missing['gallery_images_html'], '<img') && str_contains($missing['gallery_images_html'], 'currently unavailable'), 'Unknown variation cannot restore the parent image.');
+$GLOBALS['variation_attributes'] = array('attribute_pa_color' => 'red');
+$missing = skyyrose2_pdp_variation_delivery($data, $parent, $variation);
+check_gallery(array() === $missing['image'] && !str_contains($missing['gallery_images_html'], '<img'), 'Color changes cannot silently inherit parent imagery.');
+unset($GLOBALS['variation_attributes']);
+check_gallery(!isset($GLOBALS['skyyrose2_pdp_media_context']) && $parent->get_image_id() === 77 && $GLOBALS['product'] === 'previous-global', 'Variation delivery does not leak context or native state.');
 $_REQUEST['wc-ajax'] = 'unrelated';
-check_gallery($data === skyyrose2_pdp_variation_delivery($data, $parent, $variation), 'Unrelated AJAX presentation must remain untouched.');
-echo "PASS native PDP gallery boundary: default/embedded/reset, variation order and exclusion, stable permission, rejected/empty, AJAX regeneration, native metadata and exception cleanup.\n";
+check_gallery($data === skyyrose2_pdp_variation_delivery($data, $parent, $variation), 'Unrelated AJAX remains unchanged.');
+echo "PASS pinned native WP7.1/Woo11.1 gallery: 33 exact cards / 18 PDP grants, responsive originals/reset, candidate exclusion, scoped hooks, no video promotion, exception cleanup, complete variation families and native purchase truth (offline).\n";
 }

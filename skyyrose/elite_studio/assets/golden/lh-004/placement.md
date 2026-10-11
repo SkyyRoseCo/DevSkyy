@@ -5,7 +5,7 @@ _Collection: love-hurts_
 'Love Hurts' logo lettering across the front. Inside of the hood features a sublimated rose logo. BACK: large 'Heart and Rose' Love Hurts logo centered.
 
 ## Garment silhouette lock
-Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). **FOUNDER_CONFIRMED:** Satin appearance is required. Fiber composition is unspecified. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).
+Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood construction and lining pattern match the founder-approved V2 front render at `wordpress-theme/skyyrose-flagship-2/assets/v2-original/products/lh-004.png` (visible when the hood is laid open or worn down). **FOUNDER_CONFIRMED:** Satin appearance is required. Fiber composition is unspecified. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).
 
 ## Logo placements
 1. **love-hurts-full-lettering** — position: `front_across`, technique: `embroidered_or_applique`, size: 12″
@@ -59,7 +59,7 @@ Apply only decorations visible from the requested garment view; do not move back
 - NO sublimated all-over body pattern — the body is solid white, NOT sublimated.
 - NO Love Hurts wordmark on the back — the back has the heart-and-thorns + roses graphic; the wordmark is on the front-chest only.
 - NO heart-and-thorns on the front — the front has the cursive "Love" + "Hurts" wordmark only; the heart graphic is on the back.
-- NO red drawstrings — there is no drawstring on this jacket (it's a button-front bomber, not a pullover hoodie).
+- NO red drawstrings — preserve the hood drawcords depicted in the founder-approved V2 front render.
 - NO white sleeves — sleeves are black.
 - NO contrast piping on the body or pockets.
 - NO Authentic Collection patch — that patch is reserved for the Black Rose jersey series.

@@ -150,12 +150,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/memory-audit.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.wolf/hooks/memory-audit.sh\"",
             "timeout": 10
           },
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/claude-mem-sync.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.wolf/hooks/claude-mem-sync.sh\"",
             "timeout": 5
           }
         ]
@@ -166,17 +166,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/context7-prefetch.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/context7-prefetch.sh\"",
             "timeout": 3
           },
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/canon-prefetch.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/canon-prefetch.sh\"",
             "timeout": 3
           },
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/prompt-eng-nudge.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/prompt-eng-nudge.sh\"",
             "timeout": 3
           }
         ]
@@ -185,7 +185,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 /Users/theceo/DevSkyy/.claude/hooks/router/router.py",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/router/router.py\"",
             "timeout": 10
           }
         ]
@@ -197,7 +197,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/paid-api-stopgate.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/paid-api-stopgate.sh\"",
             "timeout": 3
           }
         ]
@@ -207,7 +207,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/prompt-eng-tripwire.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/prompt-eng-tripwire.sh\"",
             "timeout": 3
           }
         ]
@@ -219,7 +219,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/context7-touched.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/context7-touched.sh\"",
             "timeout": 2
           }
         ]
@@ -229,7 +229,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/learning-tripwire.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/learning-tripwire.sh\"",
             "timeout": 2
           }
         ]
@@ -239,7 +239,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/phpcs-on-write.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/phpcs-on-write.sh\"",
             "timeout": 10
           }
         ]
@@ -249,7 +249,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/catalog-drift-guard.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/catalog-drift-guard.sh\"",
             "timeout": 15
           }
         ]
@@ -259,7 +259,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/python-format-on-write.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/python-format-on-write.sh\"",
             "timeout": 15
           }
         ]
@@ -269,7 +269,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // empty'); case \"$fp\" in */frontend/*.ts|*/frontend/*.tsx) root=$(git -C \"$(dirname \"$fp\")\" rev-parse --show-toplevel 2>/dev/null) || exit 0; [ \"$(git -C \"$root\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)\" = \"$(git -C \"${CLAUDE_PROJECT_DIR:-/Users/theceo/DevSkyy}\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)\" ] || exit 0; fe=\"$root/frontend\"; [ -f \"$fe/package.json\" ] || exit 0; if [ ! -x \"$fe/node_modules/.bin/tsc\" ]; then echo \"[tsc-on-write] $fe/node_modules missing — run: cd $fe && npm install (type check skipped)\"; exit 0; fi; cd \"$fe\" && npx tsc --noEmit --pretty false 2>&1 | head -10 ;; esac; true",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; fp=$(jq -r '.tool_input.file_path // empty'); case \"$fp\" in */frontend/*.ts|*/frontend/*.tsx) root=$(git -C \"$(dirname \"$fp\")\" rev-parse --show-toplevel 2>/dev/null) || exit 0; [ \"$(git -C \"$root\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)\" = \"$(git -C \"${CLAUDE_PROJECT_DIR:-/Users/theceo/DevSkyy}\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)\" ] || exit 0; fe=\"$root/frontend\"; [ -f \"$fe/package.json\" ] || exit 0; if [ ! -x \"$fe/node_modules/.bin/tsc\" ]; then echo \"[tsc-on-write] $fe/node_modules missing — run: cd $fe && npm install (type check skipped)\"; exit 0; fi; cd \"$fe\" && npx tsc --noEmit --pretty false 2>&1 | head -10 ;; esac; true",
             "timeout": 90,
             "statusMessage": "Type-checking frontend"
           }
@@ -281,7 +281,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/learning-reminder.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/learning-reminder.sh\"",
             "timeout": 3
           }
         ]
@@ -290,7 +290,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/stop-test-gate.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/stop-test-gate.sh\"",
             "timeout": 600,
             "statusMessage": "Running test suite (background)",
             "asyncRewake": true,
@@ -302,7 +302,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 /Users/theceo/DevSkyy/scripts/wolf_recurring_sync.py >/dev/null 2>&1 || echo '[wolf-recurring-sync] FAILED — run python3 scripts/wolf_recurring_sync.py to see the error'; true",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; python3 \"$CLAUDE_PROJECT_DIR/scripts/wolf_recurring_sync.py\" >/dev/null 2>&1 || echo '[wolf-recurring-sync] FAILED — run python3 scripts/wolf_recurring_sync.py to see the error'; true",
             "timeout": 10
           }
         ]
@@ -313,7 +313,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/subagent-stop-tidy.sh",
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/subagent-stop-tidy.sh\"",
             "timeout": 5
           }
         ]

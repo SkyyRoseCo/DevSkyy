@@ -1,0 +1,13 @@
+{
+  "schema": "skyyrose.v2.receipt-corrections.v1",
+  "scope": "Founder corrections to current commerce facts that the immutable historical media receipt predates. Each entry authorizes exactly one field difference; it does not re-review media.",
+  "corrections": [
+    {
+      "sku": "kids-002",
+      "field": "colors",
+      "receipt_value": ["Lavender/Purple"],
+      "current_value": ["Purple/Black"],
+      "founder_verbatim": "we never wrote lavender and light pink so that had to be one of you dumb ass agents hallucinating"
+    }
+  ]
+}

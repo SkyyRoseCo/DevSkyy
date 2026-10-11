@@ -2,6 +2,42 @@
 
 All notable changes to SkyyRose Flagship 2 are documented here.
 
+## 2.5.3 — Image sitemap: one entry per page, no attachment pages — 2026-10-11
+
+- Jetpack image sitemap: Jetpack writes one `<url>` per image attachment, so a
+  product with several attached images was listed several times. An unattached
+  image was listed at its own attachment page. Every `<image:loc>` was also
+  empty, because the V2 media gate blanks `wp_get_attachment_url()` for Media
+  Library uploads.
+- Now each parent page appears at most once, through its lowest-ID image
+  attachment. The parent must be published, not password-protected, in the
+  sitemap post types (post, page, product), not excluded, and not marked noindex
+  in Jetpack SEO Tools.
+- The entry carries the image the page actually shows. A product gets the PDP's
+  permitted primary, the same image as its `og:image` and Product schema; any
+  other page gets its gated attachment URL. A page with no eligible image is
+  left out. Orphan images, images attached to attachments and withheld images
+  are never listed.
+- A supported SEO plugin keeps both Jetpack decisions unchanged.
+- Jetpack offers no hook that repeats `<image:image>` under one `<url>`, so one
+  image per page is listed. The other product images stay on the PDP itself.
+
+## 2.5.2 — Homepage hero restored through the media gate — 2026-10-11
+
+- Media gate: `house_art` joins the canonical-exact-bytes path. The homepage
+  hero still `assets/images/house-monument-20260928.webp` (sha256 `05e9890b…`)
+  is admitted only for the `homepage_hero` placement, with no SKU or collection,
+  and only while its hash-bound restoration receipt
+  (`data/v2-media-reviews/homepage-art-restoration-20261006.json`) and the
+  re-pinned canonical media inventory match exactly. Any other role, SKU,
+  changed byte or changed receipt fails closed.
+- `data/v2-canonical-media.json` gains the exact hero entry; its code pin moves
+  from `b791146c…` to `b4957a6f…` in the gate and the package mirror.
+- robots.txt: Jetpack's news sitemap is no longer advertised
+  (`jetpack_news_sitemap_include_in_robotstxt` returns false unless a supported
+  SEO plugin owns the decision). SkyyRose is not a news publisher; the main
+  sitemap line stays.
+
 ## 2.5.1 — Search discovery, consented analytics, express-checkout dedupe — 2026-10-10
 
 - Express checkout: when WooPayments renders express checkout, every callback

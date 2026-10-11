@@ -25,12 +25,17 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from database.db import get_db
-from security import TokenPayload, require_roles
+from security import RoleChecker, TokenPayload, UserRole
 
 # Configure logging
 logger = logging.getLogger(__name__)
 
 # Create router
+# Real FastAPI dependency (security.require_roles is a decorator: wrapping it in
+# Depends() made FastAPI treat its `func` parameter as a query param, so
+# `?func=x` skipped authentication entirely).
+_require_analytics_admin = RoleChecker([UserRole.ADMIN, UserRole.SUPER_ADMIN])
+
 router = APIRouter(prefix="/analytics/alert-configs", tags=["Alert Configuration"])
 
 
@@ -268,7 +273,7 @@ async def list_alert_configs(
     is_enabled: bool | None = Query(default=None, description="Filter by enabled status"),
     metric_name: str | None = Query(default=None, description="Filter by metric name"),
     search: str | None = Query(default=None, max_length=100, description="Search by name"),
-    user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    user: TokenPayload = Depends(_require_analytics_admin),
     db: AsyncSession = Depends(get_db),
 ) -> AlertConfigListResponse:
     """List alert configurations with pagination and filters.
@@ -373,7 +378,7 @@ async def list_alert_configs(
 )
 async def create_alert_config(
     request: AlertConfigCreate,
-    user: TokenPayload = Depends(require_roles(["admin"])),
+    user: TokenPayload = Depends(_require_analytics_admin),
     db: AsyncSession = Depends(get_db),
 ) -> AlertConfigCreateResponse:
     """Create a new alert configuration.
@@ -476,7 +481,7 @@ async def create_alert_config(
 )
 async def get_alert_config(
     config_id: str,
-    user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    user: TokenPayload = Depends(_require_analytics_admin),
     db: AsyncSession = Depends(get_db),
 ) -> AlertConfigResponse:
     """Get a single alert configuration.
@@ -539,7 +544,7 @@ async def get_alert_config(
 async def update_alert_config(
     config_id: str,
     request: AlertConfigUpdate,
-    user: TokenPayload = Depends(require_roles(["admin"])),
+    user: TokenPayload = Depends(_require_analytics_admin),
     db: AsyncSession = Depends(get_db),
 ) -> AlertConfigUpdateResponse:
     """Update an alert configuration.
@@ -691,7 +696,7 @@ async def update_alert_config(
 )
 async def delete_alert_config(
     config_id: str,
-    user: TokenPayload = Depends(require_roles(["admin"])),
+    user: TokenPayload = Depends(_require_analytics_admin),
     db: AsyncSession = Depends(get_db),
 ) -> AlertConfigDeleteResponse:
     """Delete an alert configuration.

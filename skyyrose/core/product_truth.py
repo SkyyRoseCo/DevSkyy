@@ -35,6 +35,20 @@ def _strings(value: Any, path: str):
             yield from _strings(item, f"{path}.{key}")
 
 
+def _exterior_placement(position: str) -> bool:
+    """Recognize canonical exterior locations; rear/interior qualifiers win."""
+    tokens = set(re.findall(r"[a-z0-9]+", position.lower()))
+    if tokens & {"back", "rear", "inside", "interior", "inner", "lining"}:
+        return False
+    return (
+        bool(
+            tokens
+            & {"front", "chest", "wrist", "cuff", "hip", "hem", "sleeve", "collar", "neckband"}
+        )
+        or {"body", "side"} <= tokens
+    )
+
+
 def project_product(record: dict, required_views: list[str], required_details: list[str]) -> dict:
     """Return separate execution and audit conflict views using explicit field ownership."""
     catalog = record.get("catalog", {})
@@ -108,7 +122,9 @@ def project_product(record: dict, required_views: list[str], required_details: l
     dossier_axis = set(
         re.findall(r'\b(\d+(?:\.\d+)?)\s*(?:inches?|in\.?|["″])?\s*(wide|tall)\b', branding, re.I)
     )
-    dimension_conflict = bool(spec_axis and dossier_axis and spec_axis != dossier_axis)
+    # Catalog prose is a summary; a full dossier also includes other placements.
+    # Extra dossier dimensions alone are not contradictory maker specifications.
+    dimension_conflict = bool(spec_axis and dossier_axis and not spec_axis <= dossier_axis)
     if dimension_conflict:
         conflicts.append(
             {
@@ -128,7 +144,7 @@ def project_product(record: dict, required_views: list[str], required_details: l
         }
         for p in placements
         if any(view.startswith("front") or view == "packshot" for view in required_views)
-        and "front" in p.get("position", "").lower()
+        and _exterior_placement(p.get("position", ""))
     ]
     # Back prose is not converted into guessed structured technique; its authoritative reference remains controlling.
     safe_details = {}
@@ -178,6 +194,7 @@ def project_product(record: dict, required_views: list[str], required_details: l
         "protected_placements": safe_placements,
         "negative_constraints": [
             "Preserve exact silhouette, proportions, color, artwork, logos, construction, placement and reference scale.",
+            "Preserve canonical exterior decorations in their registered locations when visible; do not force them into view or move side or wrist marks to the chest.",
             "No invented views, recoloring, moved marks, merged products or approximation presented as real SKU.",
         ],
         "founder_corrections": record.get("corrections", []),

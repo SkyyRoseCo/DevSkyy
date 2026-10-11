@@ -12,6 +12,8 @@ reference_image: assets/products/references/br-005-signature-hoodie-real.jpeg
 
 ## Founder-confirmed correction
 
+**FOUNDER_CONFIRMED:** 2. its no hip patch on the regular hoodie only the black rose signasture (Corey, 2026-10-03 America/Los_Angeles, verbatim: "2. its no hip patch on the regular hoodie only the black rose signasture"; answer to "For BR-004, what artwork belongs on the left-hip patch, and how is it applied? Include its size if you have it."). The hip decoration belongs to BR-005 Signature Edition. Existing artwork, application, dimensions and placement specifications below are preserved.
+
 **FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
 
 **Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.

@@ -270,3 +270,68 @@ fresh row legitimately has no folder yet.
 Re-derive "is this safe to drop" from git at the moment you act
 (`git rev-list <branch> --not --remotes`), and when the branch is already gone,
 fall back to the PR record (merge time vs. last commit time).
+
+## CI wall-clock is runner queueing, not test time (2026-10-11)
+
+**Symptom:** PRs took 30-60 min to go green though no job ran longer than ~12 min.
+Per-job `created_at → started_at` from `gh api …/actions/runs/<id>/jobs` showed
+8-38 min of queueing. SkyyRoseCo is a public repo on the free org plan (20
+concurrent hosted jobs); one PR push started ~18 jobs, and two review bots held a
+runner for 15-35 min each, mostly waiting on CI (`gh pr checks --watch`).
+
+**Fixes (contract pinned by `tests/ci/test_ci_workflow_contract.py`):**
+
+- **Required checks match job `name` strings.** Never rename one, and never move a
+  required job into a reusable workflow: called jobs report as `caller / job`, a
+  name branch protection never sees. Dedupe setup with composite actions
+  (`.github/actions/setup-python-env`, `setup-node-env`) instead.
+- **Path-filtered required jobs must fail closed.** A job skipped by `if:` reports
+  "skipped", which satisfies a required check, so a broken detector would pass
+  every gate. Each filtered job runs when `needs.changes.result != 'success'` and
+  on every non-PR event, and uses `!cancelled()` so a skipped `needs` does not
+  cascade into a skip.
+- **Concurrency per PR, never per main commit:** group on
+  `pull_request.number || github.sha`; `cancel-in-progress` only for PRs. The old
+  per-ref group cancelled every main run when merges landed back to back.
+- **A rerun re-tests the original commit,** and pushes made with `GITHUB_TOKEN`
+  trigger no workflows. A bot that pushes a fix and then runs `gh run rerun` never
+  tests its fix — dispatch the workflows on the branch (`gh workflow run … --ref`).
+  The green loop now starts from `workflow_run` (CI completed with failure) and
+  dispatches `ci.yml` + `security-gate.yml` on its fix.
+- **Bot outages:** claude-code-action can exit in 0.5s at $0 during an upstream
+  outage. One delayed retry step (`continue-on-error` on the first attempt, the
+  retry decides) absorbs that without masking a real failure.
+- **`pip install -e ".[a,b]" || pip install -e .` is fail-open** (bug-230): it
+  silently tests a smaller environment. Install the exact extras; let it fail.
+
+**`cmd | tee file || status=$?` never sees `cmd` fail (2026-10-11).** Without
+`set -o pipefail` a pipeline's exit status is the LAST command's — `tee`, which is
+0. Main's `pip-audit --strict 2>&1 | tee pip-audit.txt` had been erroring on every
+run ("devskyy: Dependency not found on PyPI") and passing. Collapsing to one JSON
+pass made `--strict` real and turned Security Scan red; the fix is
+`--strict --skip-editable` (strict for every real dependency, not the local
+project). When de-duplicating a scan, check which invocation was actually gating.
+Follow-up: `--strict` also rejects `--skip-editable` ("distribution marked as
+editable"). Audit `uv pip freeze --exclude-editable` with
+`--strict --no-deps --disable-pip -r` instead.
+
+**A bot step that "succeeded" may not have run (2026-10-11).** claude-code-action
+ends `subtype: success, is_error: false` even when the CLI never reached the model:
+a revoked `CLAUDE_CODE_OAUTH_TOKEN` passed every review for weeks at 4 turns and
+`total_cost_usd: 0` (real reviews: 26-43 turns, $0.69-$1.01). Each bot now reads
+the succeeding attempt's `execution_file` and fails on a missing/corrupt file or a
+$0 run. Keep that guard inline: the workspace holds the PR's code, so a `./` action
+could be rewritten by the PR it gates. Related traps on the same retry path: the
+first attempt registers the plugin marketplace and `marketplace add` refuses a
+second add ("already installed") — reset `~/.claude/plugins` before retrying; both
+attempts write the same `$RUNNER_TEMP/claude-execution-output.json`, so read the
+file only from an attempt whose outcome is `success`.
+
+**Per-SHA main concurrency unmasks races (2026-10-11).** Once main runs stopped
+cancelling each other, two latent failures surfaced on back-to-back merges:
+`git fetch --depth=1 origin main:refs/remotes/origin/main` is rejected as
+non-fast-forward when main moves mid-run (shallow history cannot prove ancestry —
+use `+main:`), and pip-audit exits 1 for both findings and a crash, so a PyPI
+connection reset read as "FIXABLE vulnerabilities". Distinguish by the report:
+only findings write `--output`; retry a report-less run once and fail it as a
+tool error, never pass it.

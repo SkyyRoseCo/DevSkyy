@@ -20,6 +20,8 @@ reference_image: assets/products/references/lh-006-techflat-front.jpeg
 
 **Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
+**FOUNDER_CONFIRMED:** this is the artwork for the love hurts joggers and the back of the love hurts bomber, and the Fannie (Corey, 2026-10-03, verbatim: "this is the artwork for the love hurts joggers and the back of the love hurts bomber, and the Fannie")
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:
@@ -31,7 +33,7 @@ reference_image: assets/products/references/lh-006-techflat-front.jpeg
 - **front-body** (entire front body — solid white field): Solid white, polyester/cotton blend (composition stated with founder uncertainty). **Technique:** stitched. **Color:** white.
 - **front-left-pocket** (vertical slash pocket at the left side of the upper hip): Slash-style hand pocket at the front left side, with vertical welt opening. **Technique:** stitched (sewn-on welt edges). **Color:** body-matching white.
 - **front-right-pocket** (vertical slash pocket at the right side of the upper hip): Slash-style hand pocket at the front right side, with vertical welt opening. **Technique:** stitched (sewn-on welt edges). **Color:** body-matching white.
-- **left-thigh** (centered on the wearer's left thigh, just below the hip): **Heart-rose-composite logo** — the Love Hurts heart-and-thorns lockup with roses emerging from the top, rendered embroidered on the white body fabric. **Technique:** embroidered. **Color:** red roses + green thorns + crimson heart, on white body.
+- **left-thigh** (centered on the wearer's left thigh, just below the hip): **Heart-rose-composite logo** — the Love Hurts heart-and-thorns lockup with roses emerging from the top, rendered embroidered on the white body fabric. **Technique:** embroidered. **Color:** the exact red/pink heart-and-rose artwork with brown thorns, green leaves, white highlights and dark outlines, on white body.
 
 ### Back
 - (No back-body decoration. The back is a clean panel with no embroidered logo or graphic — the contrast side-panel wraps cleanly from front to back through the side seam.)

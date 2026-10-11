@@ -38,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --quiet pyyaml
-          pip install --quiet -e ".[dev]" || pip install --quiet -e . || pip install --quiet httpx pydantic
+          pip install --quiet -e ".[dev]"
 
       - name: Coverage — every active SKU has a dossier
         run: python scripts/check_dossier_coverage.py
