@@ -256,7 +256,7 @@ jobs:
           # remove this exception as soon as upstream publishes a fixed version.
           IGNORE="--ignore-vuln CVE-2026-45829 --ignore-vuln PYSEC-2026-139 --ignore-vuln CVE-2025-3000 --ignore-vuln PYSEC-2025-217 --ignore-vuln PYSEC-2026-3740"
           # One scan; the readable report is rendered from its JSON.
-          pip-audit $IGNORE --strict --format=json --output=pip-audit-results.json || pip_audit_status=$?
+          pip-audit $IGNORE --strict --skip-editable --format=json --output=pip-audit-results.json || pip_audit_status=$?
           jq -r '.dependencies[]? | select((.vulns // []) | length > 0)
                  | .name + " " + .version + ": "
                    + ([.vulns[] | .id + " (fix: " + ((.fix_versions // []) | join(",")) + ")"] | join("; "))' \

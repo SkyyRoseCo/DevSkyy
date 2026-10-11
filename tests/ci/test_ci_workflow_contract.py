@@ -130,6 +130,10 @@ def test_security_scanners_run_once() -> None:
     for tool in ("semgrep scan", "bandit -r", "pip-audit "):
         runs = [ln for ln in lines if ln.startswith(tool)]
         assert len(runs) == 1, f"{tool!r} runs {len(runs)}x: {runs}"
+    # --strict fails on the editable project itself (devskyy is not on PyPI), which
+    # would turn every PR red; --skip-editable keeps strict for real dependencies.
+    audit = next(ln for ln in lines if ln.startswith("pip-audit "))
+    assert "--strict" in audit and "--skip-editable" in audit, audit
 
 
 def test_lint_tools_are_exact_pins_from_one_file() -> None:

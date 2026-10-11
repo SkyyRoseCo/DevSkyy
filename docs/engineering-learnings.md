@@ -303,3 +303,11 @@ runner for 15-35 min each, mostly waiting on CI (`gh pr checks --watch`).
   retry decides) absorbs that without masking a real failure.
 - **`pip install -e ".[a,b]" || pip install -e .` is fail-open** (bug-230): it
   silently tests a smaller environment. Install the exact extras; let it fail.
+
+**`cmd | tee file || status=$?` never sees `cmd` fail (2026-10-11).** Without
+`set -o pipefail` a pipeline's exit status is the LAST command's — `tee`, which is
+0. Main's `pip-audit --strict 2>&1 | tee pip-audit.txt` had been erroring on every
+run ("devskyy: Dependency not found on PyPI") and passing. Collapsing to one JSON
+pass made `--strict` real and turned Security Scan red; the fix is
+`--strict --skip-editable` (strict for every real dependency, not the local
+project). When de-duplicating a scan, check which invocation was actually gating.
