@@ -7,8 +7,9 @@ Finds identified AI hallucinations in the product imagery folder:
 2. Renders for the non-existent 'po' collection.
 3. Identified 2MB+ unoptimized model shots that lack front-view pairs.
 
-Deletion is permanent, so the default run only lists the matches.
-Pass --apply to delete them.
+Files the product registry references are never deleted, even when a rule
+matches; remove the registry reference first. Deletion is permanent, so the
+default run only lists the matches. Pass --apply to delete them.
 """
 
 import argparse
@@ -28,6 +29,7 @@ PRODUCTS_DIR = WP_PRODUCTS_DIR
 # Hallucinated targets
 PO_COLLECTION_PREFIX = "po-"  # Non-existent collection
 SUSPECT_UNOPTIMIZED_SIZE_LIMIT = 1.5 * 1024 * 1024  # 1.5MB
+CATALOG_IMAGE_FIELDS = ("image", "front_model_image", "back_image", "back_model_image")
 
 
 def accessory_skus() -> list[str]:
@@ -39,6 +41,17 @@ def accessory_skus() -> list[str]:
     ]
 
 
+def registry_image_names() -> set[str]:
+    """Lower-case filenames of every image the registry binds or lists in a catalog image field."""
+    names = set()
+    for sku in all_skus():
+        record = get_product(sku)
+        paths = [role["path"] for role in (record.get("images") or {}).values() if role]
+        paths += [record["catalog"].get(field, "") for field in CATALOG_IMAGE_FIELDS]
+        names.update(Path(path).name.lower() for path in paths if path)
+    return names
+
+
 def purge(apply: bool = False) -> list[Path]:
     """Return the matching files, deleting them only when ``apply`` is true."""
     if not PRODUCTS_DIR.exists():
@@ -46,6 +59,7 @@ def purge(apply: bool = False) -> list[Path]:
         return []
 
     accessories = accessory_skus()
+    protected = registry_image_names()
     matches = []
 
     for item in PRODUCTS_DIR.iterdir():
@@ -67,6 +81,9 @@ def purge(apply: bool = False) -> list[Path]:
         )
 
         if is_accessory_model or is_po_hallucination or is_massive_hallucination:
+            if name in protected:
+                logger.info(f"Keeping {item.name}: the product registry references it")
+                continue
             verb = "Purging" if apply else "Would purge"
             logger.info(
                 f"{verb} hallucination: {item.name} ({item.stat().st_size / 1024 / 1024:.2f} MB)"
