@@ -747,20 +747,146 @@ function skyyrose2_seo_jetpack_sitemap_skip( $skip, $post ) {
 }
 
 /**
- * Jetpack image-sitemap filter: skip images attached to excluded records.
+ * The one image attachment that stands for a parent record in the image sitemap:
+ * its lowest-ID image attachment. Jetpack walks attachments in ascending ID order
+ * across cron batches, so this stateless choice is the first one it meets.
  *
- * Unlike the page filter, Jetpack passes the image attachment here, and the
- * image entry's <loc> is the attachment's parent page, so the parent is tested.
+ * @param int $parent_id Parent record ID.
+ * @return int Attachment ID, or 0 when the parent has no image attachment.
+ */
+function skyyrose2_seo_image_sitemap_representative_id( $parent_id ) {
+	static $representatives = array();
+
+	$parent_id = (int) $parent_id;
+	if ( ! array_key_exists( $parent_id, $representatives ) ) {
+		$ids = get_posts(
+			array(
+				'post_type'        => 'attachment',
+				'post_mime_type'   => 'image',
+				'post_parent'      => $parent_id,
+				'post_status'      => 'any',
+				'orderby'          => 'ID',
+				'order'            => 'ASC',
+				'posts_per_page'   => 1,
+				'fields'           => 'ids',
+				'no_found_rows'    => true,
+				'suppress_filters' => true,
+			)
+		);
+
+		$representatives[ $parent_id ] = $ids ? (int) $ids[0] : 0;
+	}
+	return $representatives[ $parent_id ];
+}
+
+/**
+ * The image a parent page actually shows, as an image-sitemap URL.
+ *
+ * A product uses the PDP's permitted primary (the same image as its og:image and
+ * Product schema). Any other page uses the attachment URL after the V2 media
+ * gate, which withholds Media Library uploads ('' = withheld).
+ *
+ * @param WP_Post $record        Parent record.
+ * @param int     $attachment_id Representative attachment ID.
+ * @return string
+ */
+function skyyrose2_seo_image_sitemap_image_url( $record, $attachment_id ) {
+	static $images = array();
+	if ( array_key_exists( $record->ID, $images ) ) {
+		return $images[ $record->ID ];
+	}
+	$url = '';
+	if ( 'product' === $record->post_type ) {
+		$product = function_exists( 'wc_get_product' ) ? wc_get_product( $record->ID ) : null;
+		$media   = $product && function_exists( 'skyyrose2_product_commerce_media' ) ? skyyrose2_product_commerce_media( $product ) : array();
+		if ( ! empty( $media['front']['src'] ) ) {
+			$url = (string) $media['front']['src'];
+		} elseif ( ! empty( $media['ids'] ) ) {
+			$url = (string) wp_get_attachment_url( $media['ids'][0] );
+		}
+	} else {
+		$url = (string) wp_get_attachment_url( $attachment_id );
+	}
+	$images[ $record->ID ] = function_exists( 'skyyrose2_media_url' ) ? skyyrose2_media_url( $url ) : '';
+	return $images[ $record->ID ];
+}
+
+/**
+ * Resolve an image attachment to its image-sitemap entry, or null to leave it out.
+ *
+ * Jetpack emits one <url> per image attachment, located at the parent's
+ * permalink or, for an unattached image, at the attachment page itself. An entry
+ * is kept only for the parent's representative attachment, when the parent is a
+ * published, public, indexable sitemap record and shows an eligible image, so
+ * every <loc> is listed once and no attachment page is ever listed.
+ *
+ * @param object $attachment Attachment row (ID, post_parent).
+ * @return array{loc:string,image:string}|null
+ */
+function skyyrose2_seo_image_sitemap_entry( $attachment ) {
+	$attachment_id = is_object( $attachment ) && isset( $attachment->ID ) ? (int) $attachment->ID : 0;
+	$parent_id     = is_object( $attachment ) && isset( $attachment->post_parent ) ? (int) $attachment->post_parent : 0;
+	if ( $attachment_id <= 0 || $parent_id <= 0 || in_array( $parent_id, skyyrose2_seo_sitemap_excluded_ids(), true ) ) {
+		return null;
+	}
+	$parent = get_post( $parent_id );
+	if (
+		! $parent instanceof WP_Post
+		|| 'publish' !== $parent->post_status
+		|| '' !== (string) $parent->post_password
+		|| ! in_array( $parent->post_type, skyyrose2_seo_jetpack_sitemap_post_types( array( 'page', 'post' ) ), true )
+		|| ( class_exists( 'Jetpack_SEO_Posts' ) && Jetpack_SEO_Posts::get_post_noindex_setting( $parent_id ) )
+		|| skyyrose2_seo_image_sitemap_representative_id( $parent_id ) !== $attachment_id
+	) {
+		return null;
+	}
+	$loc   = (string) get_permalink( $parent );
+	$image = skyyrose2_seo_image_sitemap_image_url( $parent, $attachment_id );
+	return '' !== $loc && '' !== $image ? array(
+		'loc'   => $loc,
+		'image' => $image,
+	) : null;
+}
+
+/**
+ * Jetpack image-sitemap filter: keep one entry per indexable parent page.
+ *
+ * Jetpack passes the image attachment here; whether it is listed depends on its
+ * parent page (see skyyrose2_seo_image_sitemap_entry()).
  *
  * @param bool   $skip Whether Jetpack already skips this image.
  * @param object $post Attachment row from the posts table (not a WP_Post).
  * @return bool
  */
 function skyyrose2_seo_jetpack_sitemap_image_skip( $skip, $post ) {
-	if ( $skip || skyyrose2_seo_has_authority_plugin() || ! is_object( $post ) || empty( $post->post_parent ) ) {
+	if ( $skip || skyyrose2_seo_has_authority_plugin() ) {
 		return (bool) $skip;
 	}
-	return in_array( (int) $post->post_parent, skyyrose2_seo_sitemap_excluded_ids(), true );
+	return null === skyyrose2_seo_image_sitemap_entry( $post );
+}
+
+/**
+ * Jetpack image-sitemap item filter: list the image the parent page shows.
+ *
+ * Jetpack writes wp_get_attachment_url() into <image:loc>, which the V2 media
+ * gate blanks for every Media Library upload. The entry carries the page's
+ * eligible image instead, and is dropped (null) when there is none.
+ *
+ * @param array<string,mixed>|null $item          Jetpack <url> item.
+ * @param int                      $attachment_id Image attachment ID.
+ * @return array<string,mixed>|null
+ */
+function skyyrose2_seo_jetpack_sitemap_image_item( $item, $attachment_id ) {
+	if ( skyyrose2_seo_has_authority_plugin() || ! is_array( $item ) || ! isset( $item['url'] ) || ! is_array( $item['url'] ) ) {
+		return $item;
+	}
+	$entry = skyyrose2_seo_image_sitemap_entry( get_post( $attachment_id ) );
+	if ( null === $entry ) {
+		return null;
+	}
+	$item['url']['loc']         = $entry['loc'];
+	$item['url']['image:image'] = array( 'image:loc' => $entry['image'] );
+	return $item;
 }
 
 /**
@@ -806,6 +932,7 @@ function skyyrose2_seo_indexing_bootstrap() {
 	add_filter( 'jetpack_sitemap_post_types', 'skyyrose2_seo_jetpack_sitemap_post_types', 20 );
 	add_filter( 'jetpack_sitemap_skip_post', 'skyyrose2_seo_jetpack_sitemap_skip', 20, 2 );
 	add_filter( 'jetpack_sitemap_image_skip_post', 'skyyrose2_seo_jetpack_sitemap_image_skip', 20, 2 );
+	add_filter( 'jetpack_sitemap_image_sitemap_item', 'skyyrose2_seo_jetpack_sitemap_image_item', 20, 2 );
 	add_filter( 'jetpack_news_sitemap_include_in_robotstxt', 'skyyrose2_seo_jetpack_news_sitemap_in_robots', 20 );
 	add_filter( 'jetpack_enable_open_graph', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
 	add_filter( 'jetpack_seo_meta_tags_enabled', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
