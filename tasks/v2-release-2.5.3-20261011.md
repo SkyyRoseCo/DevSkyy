@@ -1,16 +1,16 @@
 # V2 release 2.5.3 certification lineage (2026-10-11)
 
-**Scope:** the Jetpack image sitemap only. No product fact, `logo-registry.json`,
-media inventory, or unrelated pin changed. The certification entries below
-change only because shipped bytes changed (`inc/seo-indexing.php`, its contract
-test, and the version triple).
+**Scope:** the Jetpack image sitemap only. No product fact,
+`logo-registry.json`, media inventory, or unrelated pin changed. The
+certification entries below change only because shipped bytes changed
+(`inc/seo-indexing.php`, its contract test, and the version triple).
 
 ## Live defect (`[live 2026-10-11]`, bare URL `https://skyyrose.co/image-sitemap-1.xml`)
 
 Jetpack 16.3 (`Jetpack_Sitemap_Buffer_Image_XMLWriter`) served this file:
 
-- 307 `<url>` entries for 285 unique `<loc>`s. 20 locs repeat: 19 product
-  pages (`/product/br-001/` and `/product/br-003/` three times each) and the
+- 307 `<url>` entries for 285 unique `<loc>`s. 20 locs repeat: 19 product pages
+  (`/product/br-001/` and `/product/br-003/` three times each) and the
   attachment page `/photoroom_20260201_143638/`. Jetpack emits one `<url>` per
   image attachment.
 - Only 31 unique locs are product pages. The other **254 are attachment pages**
@@ -24,6 +24,11 @@ Jetpack 16.3 (`Jetpack_Sitemap_Buffer_Image_XMLWriter`) served this file:
   returns `''` for every URL outside the theme. It skips only non-AJAX admin
   requests, so it also runs during Jetpack's cron build. `validate-sitemap.py`
   does not inspect `<image:loc>`, so it never reported this.
+  - Symptom: `[live]`. Code path: `[repo]`.
+  - Gate behavior: `[repro]`. The gate file was loaded outside admin with
+    stubbed hooks.
+    - An uploads URL returned `''`.
+    - `assets/v2-original/products/br-001.png` passed unchanged.
 
 ## Why one image per page, not grouping
 
@@ -37,7 +42,8 @@ emit more than one:
 - A list (`0`, `1`, …) under `url` would call `startElement( 0 )` or
   `createElement( '0' )`, which is not a valid element name.
 - `jetpack_sitemap_image_sitemap_item` is the only hook on an image entry.
-  `jetpack_print_sitemap` runs only on page sitemaps (`sitemap-builder.php:968`).
+  `jetpack_print_sitemap` runs only on page sitemaps
+  (`sitemap-builder.php:968`).
 - Nothing filters the stored sitemap XML when it is served (`sitemaps.php`
   `callback_action_catch_sitemap_urls`).
 
@@ -61,18 +67,18 @@ page actually shows. A product's other images remain on its PDP.
   - The image a product page shows is its PDP permitted primary,
     `skyyrose2_product_commerce_media()['front']['src']`, else its first gated
     ID. This is the same chain as the live `og:image` and Product schema
-    (`assets/v2-original/products/br-001.png` on `/product/br-001/`,
-    `[live]`). Any other page gets its gated attachment URL. The result passes
+    (`assets/v2-original/products/br-001.png` on `/product/br-001/`, `[live]`).
+    Any other page gets its gated attachment URL. The result passes
     `skyyrose2_media_url()` last, so the URL gate is never bypassed.
   - The skip filter (`jetpack_sitemap_image_skip_post`) now applies the full
     rule.
-  - The new item filter (`jetpack_sitemap_image_sitemap_item`, priority 20,
-    2 args) sets `<loc>` to the parent permalink and `<image:loc>` to the
-    eligible image. It returns null (a Jetpack no-op) when there is no entry.
+  - The new item filter (`jetpack_sitemap_image_sitemap_item`, priority 20, 2
+    args) sets `<loc>` to the parent permalink and `<image:loc>` to the eligible
+    image. It returns null (a Jetpack no-op) when there is no entry.
   - Both filters pass through unchanged while a supported SEO plugin is active.
 - `scripts/test-seo-indexing.php` adds 21 image-sitemap assertions (24 in
-  total). They use record, child and gated-URL fixtures, and cover
-  registration and pass-through under `AIOSEO_VERSION`.
+  total). They use record, child and gated-URL fixtures, and cover registration
+  and pass-through under `AIOSEO_VERSION`.
   - The old assertion "Unattached images are kept." encoded the defect. It is
     now "…is skipped". This is a required behavior change, not a weakened test.
   - The three other old image assertions still apply, with fixtures.
@@ -115,8 +121,9 @@ page actually shows. A product's other images remain on its PDP.
     phpcbf on that file only, before re-pinning.
 - `npm run lint:php`: exit 0.
 - `npm run package:theme` (build + verify + package): exit 0, 0 `not ok`.
-  Result: "Validated 773 runtime package entries; SHA-256 `ea230f4b342967ad…`".
-  The tree is unchanged afterwards apart from this change.
+  Result: "Validated 773 runtime package entries; SHA-256 `fe3f01f39decdaa6…`".
+  This was rerun after the prettier pass on `CHANGELOG.md`, which ships in the
+  package. The tree is unchanged afterwards apart from this change.
 - `pytest tests/test_v2_*.py tools/v2-source-certification`: 73 tests, 0
   failures, 0 errors, 0 skipped (junit).
 - `python -m unittest discover -s tools/v2-source-certification`: OK.
@@ -135,18 +142,22 @@ page actually shows. A product's other images remain on its PDP.
   - Each returns 200 with robots `max-image-preview:large`, no noindex, a
     self-canonical, and the filename as title.
   - This change removes them from the image sitemap, but they stay crawlable.
-  - Remedy (founder call, not done): disable attachment pages. In WordPress
-    6.4+ that is the site option `wp_attachment_pages_enabled = 0`, which
-    redirects to the file URL; check that redirect against the media gate first.
+  - Remedy (founder call, not done): disable attachment pages. In WordPress 6.4+
+    that is the site option `wp_attachment_pages_enabled = 0`, which redirects
+    to the file URL; check that redirect against the media gate first.
     Alternatively, add `noindex` for `is_attachment()` in
     `skyyrose2_seo_robots()`.
 - After deploy, Jetpack rebuilds only on its own cron. The stored `jp_sitemap`
-  rows keep serving today's XML until the builder reaches the image type again.
-  `JP_SITEMAP_INTERVAL` is 12 h; one file is built per tick, under a 15 min
-  lock.
+  rows keep serving today's XML until the next rebuild.
+  - `JP_SITEMAP_INTERVAL` is 12 h. The 60 s value applies only under
+    `JETPACK_DEV_DEBUG`.
+  - Each cron run builds up to `JP_SITEMAP_UPDATE_SIZE` = 100 files
+    (`update_sitemap()`). At this site's size the whole set should regenerate in
+    a single run.
+  - Another session today (Lane C row in `.wolf/memory.md`) observed the next
+    Jetpack sitemap cron about 9 h out at 10:15.
 - Post-deploy check against the bare URL, without `?cb`:
   - every `<loc>` is unique;
   - no `<image:loc>` is empty;
-  - no `<loc>` is an attachment page.
-  If nothing qualifies, Jetpack deletes the image sitemap and a 404 is the
-  expected result.
+  - no `<loc>` is an attachment page. If nothing qualifies, Jetpack deletes the
+    image sitemap and a 404 is the expected result.

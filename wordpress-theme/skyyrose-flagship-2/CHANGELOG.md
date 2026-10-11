@@ -15,9 +15,9 @@ All notable changes to SkyyRose Flagship 2 are documented here.
   in Jetpack SEO Tools.
 - The entry carries the image the page actually shows. A product gets the PDP's
   permitted primary, the same image as its `og:image` and Product schema; any
-  other page gets its gated attachment URL. A page with no eligible image is left
-  out. Orphan images, images attached to attachments and withheld images are
-  never listed.
+  other page gets its gated attachment URL. A page with no eligible image is
+  left out. Orphan images, images attached to attachments and withheld images
+  are never listed.
 - A supported SEO plugin keeps both Jetpack decisions unchanged.
 - Jetpack offers no hook that repeats `<image:image>` under one `<url>`, so one
   image per page is listed. The other product images stay on the PDP itself.
