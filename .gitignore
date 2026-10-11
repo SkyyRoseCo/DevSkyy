@@ -529,3 +529,7 @@ dist/
 
 # Local pinned tool binaries (scripts/install_gltfpack.sh)
 .tools/
+
+# wolf_memory_rotate.py runtime files
+.wolf/memory.md.rotate.lock
+.wolf/.memory.*.tmp

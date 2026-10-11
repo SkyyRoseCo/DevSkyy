@@ -7,6 +7,8 @@ tasks/source-photo-shoot-list.md
 # and by agents mid-session. Re-padding the table on every commit rewrites every row and
 # causes merge conflicts between parallel sessions.
 .wolf/memory.md
+# Byte-exact rotations of that log (scripts/wolf_memory_rotate.py) — never reflow.
+.wolf/memory-archive/
 # Cross-LLM learning log and bug ledger, hand-edited by parallel sessions. Neither was
 # ever prettier-formatted; reflowing them on commit churns thousands of lines and
 # causes merge conflicts between sessions (bug-322 session, 2026-09-12).
