@@ -188,7 +188,7 @@ class AuthenticityValidator:
         resized = gray.resize((HASH_SIZE + 1, HASH_SIZE), Image.Resampling.LANCZOS)
 
         # Compute differences
-        pixels = list(resized.getdata())
+        pixels = list(resized.get_flattened_data())
         diff = []
         for row in range(HASH_SIZE):
             for col in range(HASH_SIZE):
@@ -281,8 +281,8 @@ class AuthenticityValidator:
         img2 = img2.convert("RGB")
 
         # Get pixel data
-        pixels1 = list(img1.getdata())
-        pixels2 = list(img2.getdata())
+        pixels1 = list(img1.get_flattened_data())
+        pixels2 = list(img2.get_flattened_data())
 
         if len(pixels1) == 0:
             return 0.0

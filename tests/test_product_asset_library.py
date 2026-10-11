@@ -74,10 +74,21 @@ def test_founder_fit_and_care_reach_csv_without_inventing_materials():
 
     rows = {row["sku"]: row for row in catalog_rows()}
     assert len(rows) == 33
+    # Jerseys combine two founder statements (2026-09-29 + 2026-09-21); each
+    # clause must still trace to its own FOUNDER_CONFIRMED dossier paragraph.
+    jerseys = {"br-003", "br-008", "br-009", "br-010", "br-011", "br-012", "br-014", "br-015"}
     for sku, row in rows.items():
         product = get_product(sku)
-        assert row["fit"] == "gender neutral relaxed fit"
-        assert row["fit"] in product["dossier"]["full_text"]
+        dossier = product["dossier"]["full_text"]
+        assert "gender neutral relaxed fit" in dossier
+        if sku in jerseys:
+            assert (
+                row["fit"] == "Gender neutral relaxed fit; true to size, relaxed through the body."
+            )
+            assert "True to size, relaxed through the body." in dossier
+            assert 'verbatim: "all jerseys true to size, relaxed through the body"' in dossier
+        else:
+            assert row["fit"] == "gender neutral relaxed fit"
         if sku == "lh-005":
             assert row["care_instructions"] == ""
         else:
