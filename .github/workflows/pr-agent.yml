@@ -186,7 +186,9 @@ jobs:
       - name: Fail when Claude did not actually run
         if: ${{ steps.pr-agent-run.outcome == 'success' || steps.pr-agent-run-retry.outcome == 'success' }}
         env:
-          EXECUTION_FILE: ${{ steps.pr-agent-run-retry.outputs.execution_file || steps.pr-agent-run.outputs.execution_file }}
+          # Only the attempt that succeeded: both write the same path, so falling back
+          # to the other attempt's output would validate a failed run's stale file.
+          EXECUTION_FILE: ${{ steps.pr-agent-run-retry.outcome == 'success' && steps.pr-agent-run-retry.outputs.execution_file || steps.pr-agent-run.outcome == 'success' && steps.pr-agent-run.outputs.execution_file || '' }}
         run: |
           if [ -z "$EXECUTION_FILE" ] || [ ! -s "$EXECUTION_FILE" ]; then
             echo "::error::Claude reported success but left no execution file — the run cannot be verified."

@@ -176,12 +176,18 @@ jobs:
       # tests/test_buglog_published_ids.py compares this tree's bug ids against
       # what main has published. actions/checkout fetches only the ref under test
       # at depth 1, so origin/main is absent and that gate would skip silently;
-      # it raises in CI instead, and this is what keeps it able to run. The `+`
-      # force-updates the ref: on a push run checkout already set it to the tested
-      # commit, and when main advances mid-run the shallow fetch cannot prove a
-      # fast-forward and is rejected (main run 38147299555, 2026-10-11).
+      # it raises in CI instead, and this is what keeps it able to run.
+      # A push to main IS the published state: pin origin/main to the commit under
+      # test, because a later merge's new ids would otherwise falsely fail it.
+      # Elsewhere compare with main's tip; `+` because a shallow fetch cannot prove
+      # a fast-forward once main moves mid-run (main run 38147299555, 2026-10-11).
       - name: Fetch origin/main for published-id comparison
-        run: git fetch --no-tags --depth=1 origin +main:refs/remotes/origin/main
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = push ] && [ "$GITHUB_REF" = refs/heads/main ]; then
+            git update-ref refs/remotes/origin/main "$GITHUB_SHA"
+          else
+            git fetch --no-tags --depth=1 origin +main:refs/remotes/origin/main
+          fi
 
       - name: Run pytest with coverage
         run: |

@@ -272,9 +272,12 @@ def test_bots_guard_the_succeeding_attempt_inline(filename: str) -> None:
     assert by_id[first] < by_id[retry] < guard_at
     assert f"steps.{first}.outcome == 'success'" in guard["if"]
     assert f"steps.{retry}.outcome == 'success'" in guard["if"]
-    # Both attempts write the same path; the retry's output wins when it ran.
+    # Both attempts write the same path: read only the attempt that succeeded,
+    # never fall back to a failed attempt's stale file.
     assert guard["env"]["EXECUTION_FILE"] == (
-        f"${{{{ steps.{retry}.outputs.execution_file || steps.{first}.outputs.execution_file }}}}"
+        f"${{{{ steps.{retry}.outcome == 'success' && steps.{retry}.outputs.execution_file"
+        f" || steps.{first}.outcome == 'success' && steps.{first}.outputs.execution_file"
+        " || '' }}"
     )
     # The workspace holds PR code, so a ./ action could be rewritten by the PR.
     assert not [s["uses"] for s in steps if s.get("uses", "").startswith("./")]
@@ -321,10 +324,70 @@ def test_guard_fails_a_run_that_never_reached_the_model(
     assert message in result.stdout
 
 
-def test_published_id_fetch_force_updates_origin_main() -> None:
-    """A shallow fetch cannot prove a fast-forward once main moves mid-run."""
+def _git(*args: str, cwd: Path) -> str:
+    return subprocess.run(
+        ["git", *args], cwd=cwd, check=True, capture_output=True, text=True
+    ).stdout.strip()
+
+
+def _commit(repo: Path, message: str) -> str:
+    _git(
+        "-c",
+        "user.name=t",
+        "-c",
+        "user.email=t@t",
+        "commit",
+        "-q",
+        "--allow-empty",
+        "-m",
+        message,
+        cwd=repo,
+    )
+    return _git("rev-parse", "HEAD", cwd=repo)
+
+
+@pytest.fixture
+def advanced_main(tmp_path: Path) -> tuple[Path, str, str]:
+    """A checkout of main commit A whose remote main has since moved on to B."""
+    upstream = tmp_path / "upstream"
+    upstream.mkdir()
+    _git("init", "-q", "-b", "main", cwd=upstream)
+    tested = _commit(upstream, "A")
+    work = tmp_path / "work"
+    _git("clone", "-q", "--depth=1", f"file://{upstream}", str(work), cwd=tmp_path)
+    tip = _commit(upstream, "B")
+    return work, tested, tip
+
+
+@pytest.mark.parametrize(
+    ("event", "ref", "expected"),
+    [
+        ("push", "refs/heads/main", "tested"),
+        ("pull_request", "refs/pull/1/merge", "tip"),
+        ("schedule", "refs/heads/main", "tip"),
+    ],
+)
+def test_published_id_fetch_pins_push_runs_and_tracks_main_elsewhere(
+    event: str, ref: str, expected: str, advanced_main: tuple[Path, str, str]
+) -> None:
+    """A push run compares against itself; others against main's moved-on tip."""
+    work, tested, tip = advanced_main
+    # The shallow fetch below was rejected as non-fast-forward without `+`.
+    _git("update-ref", "refs/remotes/origin/main", tested, cwd=work)
     step = step_named(load("ci.yml"), "Fetch origin/main for published-id comparison")
-    assert "+main:refs/remotes/origin/main" in step["run"]
+    result = run_script(
+        step["run"],
+        work,
+        {
+            "GITHUB_EVENT_NAME": event,
+            "GITHUB_REF": ref,
+            "GITHUB_SHA": tested,
+            "HOME": os.environ.get("HOME", str(work)),
+        },
+    )
+    assert result.returncode == 0, result.stderr
+    want = tested if expected == "tested" else tip
+    assert _git("rev-parse", "refs/remotes/origin/main", cwd=work) == want
 
 
 def _security_step(name: str) -> dict:
