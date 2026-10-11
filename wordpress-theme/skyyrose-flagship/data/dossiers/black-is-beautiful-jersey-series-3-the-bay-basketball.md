@@ -12,8 +12,7 @@ reference_image: assets/products/references/br-010-design-front.jpeg
 
 # BLACK is Beautiful Jersey Series — 3. The Bay (Basketball)
 
-**Garment type lock:** Authentic-style basketball tank — sleeveless, round
-neck with thin contrast binding, deep armhole openings (basketball-cut),
+**Garment type lock:** Authentic-style basketball tank — sleeveless, V-neck with thin contrast binding, deep armhole openings (basketball-cut),
 straight even hem. **White base body fabric with a sublimated all-over
 rose-cluster pattern fading from clean white at the upper-chest into greyscale
 silhouettes at the lower hem** — the bottom third of the jersey is a layered
@@ -31,6 +30,8 @@ renderings only.
 **FOUNDER_CONFIRMED:** True to size, relaxed through the body. (Corey, 2026-09-21, verbatim: "all jerseys true to size, relaxed through the body")
 
 **Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
+**FOUNDER_CONFIRMED:** greyscale and Vneck for both jerseys] (Corey, 2026-10-03, verbatim: "greyscale and Vneck for both jerseys]")
 
 ## Branding — exactly what IS on this product
 
@@ -79,8 +80,8 @@ renderings only.
   sublimated. **Color:** tonal grey on white.
 
 ### Collar / Hem / Other
-- **collar / round-neck binding**: Thin contrast binding (~1/4in) around the
-  round neck opening. **Technique:** stitched. **Color:** dark grey / black.
+- **collar / V-neck binding**: Thin contrast binding (~1/4in) around the
+  V-neck opening. **Technique:** stitched. **Color:** dark grey / black.
 - **armhole binding**: Thin matching binding around each armhole opening.
   **Technique:** stitched. **Color:** dark grey / black.
 - **collar-inside** (~1.75in × 0.75in): Branded woven size tag (universal

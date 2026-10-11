@@ -1,0 +1,226 @@
+/* Homepage editorial type and house-level art direction. Collection lockups remain artwork. */
+.sr2-editorial-home {
+  --sr2-font-display: "Hanken Grotesk", sans-serif;
+  --sr2-font-body: "Hanken Grotesk", sans-serif;
+  --sr2-font-index: "Hanken Grotesk", sans-serif;
+  font-family: var(--sr2-font-body);
+}
+.sr2-editorial-home .sr2-title-chapter {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.06;
+  text-transform: none;
+}
+.sr2-editorial-home :is(.sr2-eyebrow, .sr2-world-index, .sr2-house-kicker) {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.sr2-editorial-home .sr2-lede {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.16rem);
+  line-height: 1.7;
+}
+.sr2-house-arrival {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  min-height: 94svh;
+  padding: 9rem 5vw 7rem;
+  overflow: hidden;
+  background: #101923;
+  color: #f7f2eb;
+}
+.sr2-house-arrival__art,
+.sr2-house-arrival__shade {
+  position: absolute;
+  inset: 0;
+}
+.sr2-house-arrival__art {
+  z-index: -2;
+  overflow: hidden;
+}
+.sr2-house-arrival__art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.sr2-house-arrival[data-motion="playing"] .sr2-house-arrival__art img {
+  animation: house-atmosphere 24s ease-in-out infinite alternate;
+}
+.sr2-house-arrival__shade {
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 14, 23, 0.74) 0%,
+      rgba(7, 14, 23, 0.52) 31%,
+      rgba(7, 14, 23, 0.12) 52%,
+      transparent 68%
+    ),
+    linear-gradient(0deg, rgba(7, 14, 23, 0.62), transparent 29%);
+}
+.sr2-house-arrival__copy {
+  position: relative;
+  z-index: 1;
+  width: min(44vw, 42rem);
+  max-width: 44%;
+}
+.sr2-house-kicker {
+  margin: 0 0 2rem;
+  color: #edd7c7;
+}
+.sr2-house-arrival #sr2-archive-title {
+  margin: 0;
+  overflow: visible;
+  white-space: normal;
+  font:
+    400 clamp(3.15rem, 5.45vw, 6.1rem)/1.03 "Hanken Grotesk",
+    sans-serif;
+  letter-spacing: -0.06em;
+  text-transform: none;
+}
+.sr2-house-arrival #sr2-archive-title em {
+  display: block;
+  margin-top: 0.15em;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  color: #dfb8a7;
+}
+.sr2-house-arrival__intro {
+  max-width: 35ch;
+  margin: 2rem 0;
+  color: #e2ded9;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.65;
+}
+.sr2-house-arrival__actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.sr2-house-arrival__actions .sr2-control,
+.sr2-house-arrival__actions .sr2-control--primary {
+  border-radius: 0;
+  background: #f4ece2;
+  color: #14212a;
+  padding: 1rem 1.35rem;
+  min-height: 48px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.sr2-house-arrival__actions .sr2-editorial-link {
+  color: #f4ece2;
+  text-transform: none;
+  font-size: 0.85rem;
+}
+.sr2-house-arrival__foot {
+  position: absolute;
+  inset: auto 5vw 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid rgba(244, 230, 215, 0.3);
+  padding-top: 1rem;
+  font:
+    500 0.65rem/1.4 "Hanken Grotesk",
+    sans-serif;
+  letter-spacing: 0.16em;
+}
+.sr2-house-arrival__foot i {
+  margin: 0 1rem;
+  color: #d8af9c;
+}
+.sr2-house-arrival__foot button {
+  min-height: 44px;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid rgba(244, 230, 215, 0.45);
+  color: inherit;
+  background: rgba(8, 15, 23, 0.65);
+  font:
+    500 0.72rem "Hanken Grotesk",
+    sans-serif;
+  cursor: pointer;
+}
+.sr2-house-arrival a:focus-visible,
+.sr2-house-arrival button:focus-visible {
+  outline: 2px solid #f4d6bf;
+  outline-offset: 5px;
+}
+@keyframes house-atmosphere {
+  from {
+    transform: scale(1.015) translateX(-0.35%);
+  }
+  to {
+    transform: scale(1.07) translateX(0.35%);
+  }
+}
+@media (max-width: 47.99em) {
+  .sr2-house-arrival {
+    align-items: start;
+    min-height: auto;
+    padding: var(--sr2-header) 1.25rem 7rem;
+  }
+  .sr2-house-arrival__art {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    grid-row: 1;
+    height: clamp(21rem, 94vw, 26rem);
+    margin: 0 -1.25rem;
+  }
+  .sr2-house-arrival__art img {
+    object-position: 90% center;
+  }
+  .sr2-house-arrival__shade {
+    inset: var(--sr2-header) 0 auto;
+    z-index: 1;
+    height: clamp(21rem, 94vw, 26rem);
+    background: linear-gradient(0deg, rgba(7, 14, 23, 0.12), transparent 33%);
+  }
+  .sr2-house-arrival__copy {
+    z-index: 2;
+    width: 100%;
+    max-width: none;
+    padding-top: 2.1rem;
+  }
+  .sr2-house-arrival #sr2-archive-title {
+    font-size: clamp(2.9rem, 11.5vw, 4.8rem);
+  }
+  .sr2-house-kicker {
+    font-size: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .sr2-house-arrival__intro {
+    margin: 1.4rem 0;
+    font-size: 1rem;
+  }
+  .sr2-house-arrival__actions {
+    gap: 1rem;
+  }
+  .sr2-house-arrival__foot {
+    inset-inline: 1.25rem;
+    bottom: 1.25rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sr2-house-arrival__art img {
+    animation: none !important;
+    transform: none !important;
+  }
+}

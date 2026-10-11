@@ -24,7 +24,8 @@ from huggingface_hub import HfApi, hf_hub_url
 from scripts.flux_lora import RequiresConfirmationError
 from scripts.flux_lora.config import is_https_url
 
-_ENV_HF = "/Users/theceo/DevSkyy/.env.hf"
+# Repo-root .env.hf, wherever the checkout lives (scripts/flux_lora/upload.py → parents[2]).
+_ENV_HF = str(Path(__file__).resolve().parents[2] / ".env.hf")
 _TOKEN_VARS = ("HF_TOKEN", "HUGGINGFACE_API_TOKEN")
 
 
@@ -38,7 +39,7 @@ def _get_hf_token() -> str:
     Load HF token from .env.hf at runtime (never hardcoded).
 
     Reads HF_TOKEN then HUGGINGFACE_API_TOKEN from the environment,
-    loading /Users/theceo/DevSkyy/.env.hf first if it exists.
+    loading the repository's .env.hf first if it exists.
 
     Raises
     ------

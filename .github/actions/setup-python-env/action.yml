@@ -1,0 +1,43 @@
+name: Set up Python environment
+description: >-
+  Python interpreter plus the project installed editable with the given extras,
+  via uv with a persistent download cache. Fails closed: an extra that cannot be
+  installed fails the job instead of silently testing a smaller environment.
+
+inputs:
+  python-version:
+    description: Interpreter version for actions/setup-python
+    required: true
+  extras:
+    description: Comma-separated pyproject extras, e.g. "dev,mcp"
+    required: true
+  packages:
+    description: Additional space-separated packages installed into the same environment
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Set up uv
+      uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+      with:
+        enable-cache: true
+        cache-dependency-glob: pyproject.toml
+        prune-cache: true
+
+    - name: Install project and packages
+      shell: bash
+      env:
+        EXTRAS: ${{ inputs.extras }}
+        PACKAGES: ${{ inputs.packages }}
+      run: |
+        # Target the setup-python interpreter explicitly so a stray UV_PYTHON or
+        # .python-version can never redirect the install to another Python.
+        # shellcheck disable=SC2086 # PACKAGES is a deliberate word list
+        uv pip install --python "$(command -v python)" -e ".[${EXTRAS}]" $PACKAGES

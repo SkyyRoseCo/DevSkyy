@@ -1,0 +1,36 @@
+{
+  "operation_id": "v2-next-20261003-fresh-three-card-br-001",
+  "job_digest": "b556b5b119b41a6c2e6f1bfe246b6a9826e550a4133fc2d6cb1a7a129b29ebc0",
+  "sources_digest": "832b36017871eaa856eeb61c39d9e0cbe841a9e5eb3702ccff93b6be444c8d98",
+  "candidate": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/quarantine/card-br-001.png",
+    "sha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60"
+  },
+  "full_size_pixels": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/quarantine/card-br-001.png",
+    "sha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60"
+  },
+  "desktop_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/br-001-card-1440.png",
+    "sha256": "c98b9078c06dd5f34bbb204ff50242b6489138c3d9997abdf81d9d1d95c5bc3e"
+  },
+  "mobile_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/br-001-card-390.png",
+    "sha256": "02a55ddda8d1123612db7ebcc6586d3eb3e363d19cd8d3f778c8f48457604c1a"
+  },
+  "reviewer": "/root/next_phase_visual_qa",
+  "status": "PASS",
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "checks": {
+    "artwork_fidelity": "PASS",
+    "cinematic_light": "PASS",
+    "collection_specific_storytelling": "PASS",
+    "credible_material_response": "PASS",
+    "editorial_composition": "PASS",
+    "fashion_commerce_intent": "PASS",
+    "garment_artwork_identity": "PASS",
+    "optical_integration": "PASS",
+    "product_fidelity": "PASS",
+    "product_readability": "PASS"
+  }
+}

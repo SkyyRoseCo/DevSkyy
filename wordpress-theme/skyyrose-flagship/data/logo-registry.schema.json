@@ -53,6 +53,20 @@
       }
     },
 
+    "media_usage_adoptions": {
+      "type": "object",
+      "description": "Exact additional-use receipts for unchanged accepted V2 originals. Original source decisions remain immutable.",
+      "propertyNames": {"pattern": "^assets/v2-original/[A-Za-z0-9_./-]+$"},
+      "additionalProperties": {
+        "type": "object",
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^data/v2-media-reviews/[A-Za-z0-9_.-]+\\.json$"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    },
     "products": {
       "type": "object",
       "description": "Every product, keyed by canonical SKU.",
@@ -177,16 +191,44 @@
         "source_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
         "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
         "candidate_id": { "type": "string", "minLength": 1 },
-        "scene_status": { "const": "FOUNDER_APPROVED_V2_CARD" },
+        "scene_status": { "enum": ["FOUNDER_APPROVED_V2_CARD", "INDEPENDENT_REVIEWED_V2_CARD"] },
         "current_fidelity_status": {
           "enum": [
             "EXISTING_SCOPED_APPROVAL_RETAINED",
-            "BLOCKED_PRODUCT_MISMATCH"
+            "BLOCKED_PRODUCT_MISMATCH",
+            "INDEPENDENT_VISUAL_PASS",
+            "FOUNDER_ACCEPTED"
           ]
         },
-        "current_fidelity_note": { "type": "string", "minLength": 1 }
+        "current_fidelity_note": { "type": "string", "minLength": 1 },
+        "review": {
+          "type": "object",
+          "required": ["path", "sha256", "reviewer", "verdict"],
+          "properties": {
+            "path": { "type": "string", "pattern": "^data/v2-media-reviews/[A-Za-z0-9_.-]+\\.json$" },
+            "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "reviewer": { "type": "string", "pattern": "\\S" },
+            "verdict": { "enum": ["PASS", "ACCEPTED"] }
+          },
+          "additionalProperties": false
+        }
       },
       "allOf": [
+        {
+          "if": { "properties": { "scene_status": { "const": "INDEPENDENT_REVIEWED_V2_CARD" } } },
+          "then": {
+            "required": ["review", "candidate_id"],
+            "properties": { "current_fidelity_status": { "const": "INDEPENDENT_VISUAL_PASS" }, "review": { "properties": { "verdict": { "const": "PASS" } } } }
+          },
+          "else": { "properties": { "current_fidelity_status": { "enum": ["EXISTING_SCOPED_APPROVAL_RETAINED", "BLOCKED_PRODUCT_MISMATCH", "FOUNDER_ACCEPTED"] } } }
+        },
+        {
+          "if": { "properties": { "current_fidelity_status": { "const": "FOUNDER_ACCEPTED" } } },
+          "then": {
+            "required": ["review", "candidate_id"],
+            "properties": { "scene_status": { "const": "FOUNDER_APPROVED_V2_CARD" }, "review": { "properties": { "reviewer": { "const": "Corey" }, "verdict": { "const": "ACCEPTED" } } } }
+          }
+        },
         {
           "if": {
             "properties": {
@@ -197,6 +239,83 @@
         }
       ],
       "additionalProperties": false
+    },
+
+    "presentation": {
+      "type": "object",
+      "description": "Technical image geometry, not founder garment facts. Optional until source-bound regions are independently reviewed. Structural validity does not certify current pixels, topology, aggregate geometry budgets, or independent review; card_annotations.validate_annotation enforces those runtime checks.",
+      "properties": {
+        "garment_highlight": { "$ref": "#/$defs/garmentHighlight" }
+      },
+      "additionalProperties": false
+    },
+    "garmentHighlight": {
+      "type": "object",
+      "required": ["sku", "status", "source", "polygons", "review"],
+      "properties": {
+        "sku": { "$ref": "#/$defs/sku" },
+        "status": { "const": "INDEPENDENT_VISUAL_PASS" },
+        "source": {
+          "type": "object",
+          "required": ["path", "sha256", "width", "height"],
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^assets/[a-zA-Z0-9_./-]+\\.(?:webp|png|jpe?g)$",
+              "not": { "pattern": "\\.\\." }
+            },
+            "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "width": { "const": 1024 },
+            "height": { "const": 1536 }
+          },
+          "additionalProperties": false
+        },
+        "polygons": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {
+            "type": "object",
+            "required": ["outer", "holes"],
+            "properties": {
+              "outer": { "$ref": "#/$defs/garmentRing" },
+              "holes": {
+                "type": "array",
+                "maxItems": 16,
+                "items": { "$ref": "#/$defs/garmentRing" }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "review": {
+          "type": "object",
+          "required": ["geometry_sha256", "evidence_sha256", "evidence_path"],
+          "properties": {
+            "geometry_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "evidence_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "evidence_path": { "type": "string", "pattern": "\\S" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "garmentRing": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "prefixItems": [
+          { "type": "integer", "minimum": 0, "maximum": 1024 },
+          { "type": "integer", "minimum": 0, "maximum": 1536 }
+        ],
+        "items": false
+      }
     },
 
     "product": {
@@ -251,6 +370,7 @@
           "additionalProperties": false
         },
         "garment": { "$ref": "#/$defs/garment" },
+        "presentation": { "$ref": "#/$defs/presentation" },
         "dossier": {
           "type": "object",
           "required": ["slug", "content"],

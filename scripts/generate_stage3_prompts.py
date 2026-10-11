@@ -22,12 +22,12 @@ from pathlib import Path
 # Path setup
 # ---------------------------------------------------------------------------
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DOSSIER_DIR = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/dossiers"
 OUTPUT_DIR = REPO_ROOT / "renders/prompts-preview"
 
 # Ensure repo root is on sys.path so we can import from the package tree.
 sys.path.insert(0, str(REPO_ROOT))
 
+from skyyrose.core.paths import DOSSIERS_DIR as DOSSIER_DIR  # noqa: E402
 from skyyrose.core.product_registry import RETAINED_DOSSIERS  # noqa: E402
 from skyyrose.elite_studio.synthesis.prompts.decoration_prompts import (  # noqa: E402
     build_decoration_prompt,

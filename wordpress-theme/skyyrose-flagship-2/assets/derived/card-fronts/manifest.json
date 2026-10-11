@@ -1,796 +1,2116 @@
 {
   "products": {
     "br-001": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "ecffbf712e3216138fa4926a887874c2d484c1dc483dc1a355acc70cd9b4f202",
+          "src": "assets/derived/card-fronts/br-001-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "969dfd8008b2afae4c30add2b2fec8fe48854ef5d71c77e8d6f2defd730c2cfc",
+          "sha256": "a334e05ce1e17dc7a049b6dd6fb647f2dcb8da79ee4bd3658b06f615a9d8e697",
           "src": "assets/derived/card-fronts/br-001-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "03498fe7fa9a819ca17887aeaf689837d40a3b6538e279ee44197d021239f3bd",
+          "sha256": "d4c205f0fa4ed9216e71ba556ccbf69851a52a496bcf2990da25d507ad5adb39",
           "src": "assets/derived/card-fronts/br-001-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "6c170c0574baeca7f2dc18d63b72c36a1dfcfa96c2b373172f2277e27710eecf",
+          "sha256": "3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003",
           "src": "assets/derived/card-fronts/br-001-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "08ebb2c97b4b93d3e8234aa07e30ea9df77deca7be2eeef2908d84b9a48e4433",
+          "src": "assets/derived/card-fronts/br-001-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/br-001-onmodel.webp",
-      "source_sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-001"
+      ],
+      "source": "assets/v2-original/products/br-001.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-br-001-20261003.json",
+        "reviewer": "/root/next_phase_visual_qa",
+        "sha256": "cfdd6a87be8b0aa6b4b3b9048940ad59260ff078dfcfabe61bb9930f47c7f3e9",
+        "verdict": "PASS"
+      },
+      "source_sha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60"
     },
     "br-002": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "d9af2d1360e7996887209576b7588b77959b8b382546b73cc1852f93061a34d3",
+          "src": "assets/derived/card-fronts/br-002-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "c3fc44a6f9e9d0a4f7cc1c08015084175aa3306a72fce61c264c4c8a13bc1b95",
+          "sha256": "333c3496eaf53969861e5560816b8c85de36a1a8f61b2ba1c339d3c783a95f2a",
           "src": "assets/derived/card-fronts/br-002-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "7cdcd11f1d0d8aeb66222192458fedcb522a0aa16de78ce2684cc83d5b0e011c",
+          "sha256": "91802fb742239518611978613e5d92172fbf9d160896d58639d62fee0b04f147",
           "src": "assets/derived/card-fronts/br-002-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "822fe7e6e9090018163564e1e8fd191772a50fc7e9f0447378e9494e270c21e1",
+          "sha256": "133a4179b3726d083e4804e14c6286fbf25734fc05cfee14db8a923dd2170cbc",
           "src": "assets/derived/card-fronts/br-002-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "8c25e0c401c28ace35784e9df8ca47b51504b0989dfe856f342a728cc3a1f70d",
+          "src": "assets/derived/card-fronts/br-002-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/br-002-onmodel.webp",
-      "source_sha256": "6e395127c4b6f09a1602db3c30963bb31a42559fe64dfbca990832c3dbc951ba"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-002"
+      ],
+      "source": "assets/v2-original/products/br-002.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-br-002-masked-garment.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "2abfd000cd5a99440ab4f22bbafe5e38ec894444550c3d6eb364f69c2d98d231",
+        "verdict": "PASS"
+      },
+      "source_sha256": "598a0be749d8b3951107f5b0bf39e51399ef8ae990f6c70f2c43a357d445a08d"
     },
     "br-003": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "4e780c2dcf95084a89101a2a1eeb5da11d6213afaa30722f2f15dbab9685ff76",
+          "src": "assets/derived/card-fronts/br-003-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "630cd59319b669cb97831a3c6db1eebee159f672921c143207f6934e13194450",
+          "sha256": "e10e8da0124dc9b880b491a2890e946e59b92ea5c6ceccd1089176ba3d376d2b",
           "src": "assets/derived/card-fronts/br-003-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "fe6de556338f9d687be718dd34e04d7bd449a43c8f2d90ceddc08122d10c422d",
+          "sha256": "7b91999206ba9d31363cd5a549a1439e7b02bfe2729044869954a122fa275363",
           "src": "assets/derived/card-fronts/br-003-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "756e136254805e8f08e0059a0d59ed10e5ba4d19b7908506a43add211ccbf9d3",
+          "sha256": "6fc5b07d1bde9155fff5aa8b0b206a0287110d128597838c37b4c5ca9019f54e",
           "src": "assets/derived/card-fronts/br-003-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "296635011e2da4542c6a6ae77cefd21e118f06d35f7b0ec0144d1fd34b0a5ccd",
+          "src": "assets/derived/card-fronts/br-003-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/card-scenes/br-003-onmodel.webp",
-      "source_sha256": "43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "br-003"
+      ],
+      "source": "assets/v2-original/products/br-003.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/br-003-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "90726ca5a88478f8f0d40349548a164f84f99bc889ab2042a5bb7e5bd2969fff",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "914f5fd17f85ef47f22047f24fa88f3d617fa1946231ef35094fb27b13aaf2c9"
     },
     "br-004": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "07ce0e794d29940882ee4f68e22757fd44f0fb83f744d33c57a57755bdf145fb",
+          "src": "assets/derived/card-fronts/br-004-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "fab76c31229ca73ab014d8c0f93a1360f74a8e3e5eb55fa54289ad49d27112cc",
+          "sha256": "100a7eac4e9285bc20019d7f9fd2d9c34de52040fd75c90e40dd6c2c9a5193e4",
           "src": "assets/derived/card-fronts/br-004-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "0a34d5f5351fafb7da7e492a9329777d49119f2bedc7a190909fab13956ac6ac",
+          "sha256": "f66afc2fa22b8726d74404ac545822c7ec51068ca8743acafbb300d69fb9e4e5",
           "src": "assets/derived/card-fronts/br-004-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "64f87ee28abc192425b9b28bf9426cf76d21bfc696fdcbc823465417206ea741",
+          "sha256": "f75f28ebbc74d1b6a4fefc7e9d2c71b073e9a6290d314ce34c3d208400596291",
           "src": "assets/derived/card-fronts/br-004-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "7afda607f6f33748dacfb18681c36445afa06585cdd12820d404a705867c2271",
+          "src": "assets/derived/card-fronts/br-004-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/br-004-onmodel.webp",
-      "source_sha256": "8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-004"
+      ],
+      "source": "assets/v2-original/products/br-004.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-br-004-cuff-repair-20261003.json",
+        "reviewer": "/root/next_phase_visual_qa",
+        "sha256": "d7352e27a97134a6bf79ab885dfea006c93cbf4e549ba7d76ccf0290633ff684",
+        "verdict": "PASS"
+      },
+      "source_sha256": "c54a5bb33a862c02211ffedc6e377c5431a624dfba54f2c70c50648631dba0ac"
     },
     "br-005": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "0ffccb0dfaf8e5ee9aeeb8d448bb4fc2f4a6faa5ba8be33703c2ae21fc6942d5",
+          "src": "assets/derived/card-fronts/br-005-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "ad6673edc3915ac7917e26c27d76219a5f56e8f77ee089f53b82815555dbc2de",
+          "sha256": "f1ed3efa84eedac11186a2994017a3cba862dd95592c7a389a36a96fe0de4150",
           "src": "assets/derived/card-fronts/br-005-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "3e0bc13cf9aa1771652944ab1c6265d0c80e3aef8b573c17cadf376bfa85542d",
+          "sha256": "3bbe2cb558c15076628cc5d41d40453726e6208b59c2d1cfde29e57f7a1f02c7",
           "src": "assets/derived/card-fronts/br-005-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "a4f183b0eb2f91e84cde0bf179469218c194e69ba9009d6c8c9ec313162f2599",
+          "sha256": "116ff834103ffc2aadeebf367a46cdb5fadf2e3a213f04971d2815af742c4b86",
           "src": "assets/derived/card-fronts/br-005-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "fd81d65c1af87abee237e77ad702f4aa7e8444880b038a56269535abfc42f417",
+          "src": "assets/derived/card-fronts/br-005-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/br-005-onmodel.webp",
-      "source_sha256": "19f888f11bc6e3a282088281040ee8b27be1e5473e1b4b53fc5ad5509e80a19b"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-005"
+      ],
+      "source": "assets/v2-original/products/br-005.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-br-005.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "488c365944198bfb549d7e9f7d6716b6c9eeb78e12eca158f8798dc0b8d99f61",
+        "verdict": "PASS"
+      },
+      "source_sha256": "6ac3b4092f21226f3f4202448f6115651c472f25df9946edbcfeda9155b99757"
     },
     "br-006": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "d6cc311f7c4694aee5eef31376e467a9b2716e3b10185a60cdbf5afac4248f23",
+          "src": "assets/derived/card-fronts/br-006-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "1622f71d0fb0a32aa6d53cb19e89d50dda937dddfddd8f612b28bb41e153a23f",
+          "sha256": "41bc2cdd641dd71fb7a66410e7c09a2f927de0338b240fb34515c5ba9ccce30d",
           "src": "assets/derived/card-fronts/br-006-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "3ef1009cd1a0f85c703d5a757c5acb4bc9aefedcc8571264b9529eb871cfe2da",
+          "sha256": "195d1e3320e8095564bf5ad5968f44b0e3cddd12f05adfaf927e1e0feb44dbf4",
           "src": "assets/derived/card-fronts/br-006-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "37dda44ac7e9c27123f81ccf14afb521e7a97ed479e0eac8bab240661d8d28a3",
+          "sha256": "bca640625f3076c1370ff119fef13d3dfc0b38a6ffbe15faff2dc71b39f4ab89",
           "src": "assets/derived/card-fronts/br-006-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "7c6129ce371501d2025c6174cae832ec7baf23ea26e925ee19b426cbb8842a2d",
+          "src": "assets/derived/card-fronts/br-006-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/card-scenes/br-006-onmodel.webp",
-      "source_sha256": "443a7d3546c8bec2495426e20e7b8a4e84b5b91c02ea57b20d43cb3c96763d2d"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "br-006"
+      ],
+      "source": "assets/v2-original/products/br-006.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/br-006-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "0b6720c7b08c90e63224f93c9c933ee0d0d626813dd39249e8748129d62f07c1",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "06bcb9c83369d73a676741f3ae62fd309709ee83df07ff29f8b52969e0da963b"
     },
     "br-007": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "c8081d42d8f55904d5166ecfc8f269a7a4d72ad14b9c7a5349653a33f2583cd5",
+          "src": "assets/derived/card-fronts/br-007-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "1583eda077b668a79c57fde6206df5681fcc7a3f2af4ae84028c5807343fb56c",
+          "sha256": "1b0375ab4474a869266eb370d5a796fe1892888938ef601b0ca4e9b9a61d9b61",
           "src": "assets/derived/card-fronts/br-007-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "a920437de23be1030c6e1a3e2d26b460fa49a387740d2145e9d760d7595c673a",
+          "sha256": "c70a7a9fece8412524d125974be47cf1decff13c09767ec027ba63e22fdf8726",
           "src": "assets/derived/card-fronts/br-007-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "1443baee959ae91f5d1271f4ce621cbeb41fe8d13e02340b89d9d7e7a47a881a",
+          "sha256": "0c0b75ab7fc00cfa813315186136abd8155a108784c1ed07cba3dea6c7ffcf68",
           "src": "assets/derived/card-fronts/br-007-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "0fd97364fd4d71c43185755f8d25e0440bc0d5b7161af43d7d136a9239619231",
+          "src": "assets/derived/card-fronts/br-007-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/br-007-onmodel.webp",
-      "source_sha256": "b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-007"
+      ],
+      "source": "assets/v2-original/products/br-007.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-br-007-method.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "128d5d1fd8d191b97c4b976729fe7534b43bdea44f3371e5129068939ff123a5",
+        "verdict": "PASS"
+      },
+      "source_sha256": "5dc9e70947183f159c5ad889aa441677907f5a5b8fe4d3f22b941f094bcf8c26"
     },
     "br-008": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "d7bc0be5747d94cf8c48635ce43f9df97473c368c25bb529840c56d1b0ff1f5f",
+          "src": "assets/derived/card-fronts/br-008-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "ba50d940500fed919bb433b4dc50b79dc7678c24e49b4cf8a83f9cee69bb8932",
+          "sha256": "52b7dfccc70ef2da4e6e760e6c818789d82429167683a4f4ecf54cb5089e7198",
           "src": "assets/derived/card-fronts/br-008-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "a93048b48cd12183201a6bd5f3fa8a1c873a572aedff9e6ac2214ca33ae5f500",
+          "sha256": "71e90345a9965db4fa001a01a026ca758e8579657d8b3e7a05c343bb13db2150",
           "src": "assets/derived/card-fronts/br-008-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "bfd27eda97447e88e3a92bb5e5580f69d8ee4901a7d463fa9e7c47789aae502c",
+          "sha256": "078bff7bae5a2d2cba734b77e9be3ac74c9a8b241ff540d23fec143997b8686f",
           "src": "assets/derived/card-fronts/br-008-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "b31365bcee768dc802804eb9d9ee1d9897679058823263ee36dfa501575514b3",
+          "src": "assets/derived/card-fronts/br-008-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/card-scenes/br-008-onmodel.webp",
-      "source_sha256": "cd4ca4c0ba5d7723b0ad786ad7312502bf820aece583f8a007de4be20fa6088c"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "br-008"
+      ],
+      "source": "assets/v2-original/products/br-008.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/br-008-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "265be2dd2178ce617de2956703efcad276c9a4dbec1acf398d058c4b7f3e0c9e",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "62ffb9a3521e4026d5f1c588ecab999a1ed0631ccb7c2eea34be2bc59fe93121"
     },
     "br-009": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
-          "height": 480,
-          "sha256": "59b361534fee5b33451f164e187666b3a21f86072fab3fa0980967345b2e6b6a",
+          "height": 241,
+          "sha256": "e79e794ec3b02d167d8bcfa358a02d738fdbdf2c784e117daa875f3e84288364",
+          "src": "assets/derived/card-fronts/br-009-160w.webp",
+          "width": 160
+        },
+        {
+          "height": 482,
+          "sha256": "36c78b260b6179b60d420757362fcf5c4472c0596319c4f882405d80cfe90b03",
           "src": "assets/derived/card-fronts/br-009-320w.webp",
           "width": 320
         },
         {
-          "height": 720,
-          "sha256": "05924de90641793f700911dd15567c5adcbcde523d307c4d4dd7055f9e48048a",
+          "height": 723,
+          "sha256": "5e560e4712177cd56b2ac5a0bdfe5aea941d66dc3efc342e098f5d607d77f71d",
           "src": "assets/derived/card-fronts/br-009-480w.webp",
           "width": 480
         },
         {
-          "height": 1152,
-          "sha256": "9a13c655517b9a4b3151ab4ed4f92ecf174babd23fa9a54983381b05e7f9af4c",
+          "height": 1157,
+          "sha256": "a7b7b256769ce9db27b7f543ab8e514b22963b4265b0a25834ddafe0bbdbbbb2",
           "src": "assets/derived/card-fronts/br-009-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1542,
+          "sha256": "e216ea08bb71c39d8814378bac824deb17c930f588542b721a27c532e88828cc",
+          "src": "assets/derived/card-fronts/br-009-1024w.webp",
+          "width": 1024
+        },
+        {
+          "height": 1928,
+          "sha256": "04b63eaed14090f4770dad9a5b2ec4e000fbd3beddda5d7142bdc57da49a004b",
+          "src": "assets/derived/card-fronts/br-009-1280w.webp",
+          "width": 1280
+        },
+        {
+          "height": 2048,
+          "sha256": "69e68973f258d0310f02414f249f3ae234c6afa8c4e98416636ed3c850106c7f",
+          "src": "assets/derived/card-fronts/br-009-1360w.webp",
+          "width": 1360
         }
       ],
-      "source": "assets/card-scenes/br-009-onmodel.webp",
-      "source_sha256": "e220fb9c3d2a1413bb2a9d9158736c7a7b8622beadecc5e44debacbdc3441ffc"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "br-009"
+      ],
+      "source": "assets/v2-original/products/br-009.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/br-009-native-card-r2-20261006.json",
+        "reviewer": "/root/all33_completion_review",
+        "sha256": "c4f000b0a216121b1777e78f433398562b74f57c55a7af7fe5b4aead9f9b2372",
+        "verdict": "PASS"
+      },
+      "source_sha256": "e3b7615167aa2c6b012ae959b68e82b4d239f22bd044f7c73a07d42e64cb355d"
     },
     "br-010": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "c275eb01aeea40b8940f4bb608c0992bbca33cdda780c50f4d7fd329cbf478fb",
+          "src": "assets/derived/card-fronts/br-010-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "fdbf1ea3fff8eb3e98d484c91be18f3ee0d83b718c58057083668361d2162db6",
+          "sha256": "f60fdfaf50f96396932738645f378171beba77ea6d26b8ff53949df82375ce55",
           "src": "assets/derived/card-fronts/br-010-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "f6d7b36f70f681cd39584e95fd297cb9a2073dad83bfb8ef3e33a5de14941020",
+          "sha256": "28ef6ba4b2840c2212cd6e8b5b3611af4990dd698597251e93c16db1c6be8b28",
           "src": "assets/derived/card-fronts/br-010-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "03aa27a0452ded261ee62117dff3c1eb64cc98c0f5b14ba0d56c72ed6c40200b",
+          "sha256": "c554b6a08b4d31c2f83c2ccd7b35fe712f36d24ff781668e491aae60feba1da5",
           "src": "assets/derived/card-fronts/br-010-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "bfbaa94dd3249197c19c091007ae966dae6abadebc64d0cd47b3ecf931bc1c42",
+          "src": "assets/derived/card-fronts/br-010-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/card-scenes/br-010-onmodel.webp",
-      "source_sha256": "b8862f06ddfde790a9dd3327e23f824d21abfa73bf1410630e4f9b9b710abea7"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "br-010"
+      ],
+      "source": "assets/v2-original/products/br-010.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/br-010-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "7150ebc8e6f539363fd86bdc17ceee9d95b32a9e247e600c66b9f7dccde14ccc",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "e0391d5fbc4a8c0f69179218231ecf2afd256b58d662367faedca01e274a2782"
     },
     "br-011": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "c56005cc4d85e7ce74cb1d0387752c0ee54152d5dc90350f557325c80c88a2f1",
+          "src": "assets/derived/card-fronts/br-011-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "3d76efb0eeea1fab6c72dc97f01d8e7a55fd85bb1968c4b9ad85daa7825c52c5",
+          "sha256": "5d2241ec84b5eb1e1b0e54a37f86ddad0c33c2f6142e4ba0da7de4fa86d71750",
           "src": "assets/derived/card-fronts/br-011-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "821c3a10c60338e064f1fc5c82fff38ef7d2162963b9ff44cd623edf9c655440",
+          "sha256": "01b95ef85aa1387c3ed4ac1a68a7c107141c43948fd05774ded3af2d424b7cec",
           "src": "assets/derived/card-fronts/br-011-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "e9de2ce2a40675f0223093949be999a4eaa8c83cbfff1906d7ceb820ca39c9fe",
+          "sha256": "11c9e1a5ea451521894ad39603d7a18122b2b963f489afdfc1a47c0189ab785f",
           "src": "assets/derived/card-fronts/br-011-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "3def7cf9f6272161c9f34ddaf6c0f1bf399fc1bb788bd329d7ac1187da0f048d",
+          "src": "assets/derived/card-fronts/br-011-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/card-scenes/br-011-onmodel.webp",
-      "source_sha256": "aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "br-011"
+      ],
+      "source": "assets/v2-original/products/br-011.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/br-011-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "f6d81ba83495f4f6d0f3fa2e9d52ec84c9dabff849bc9595c9e4131102a6eaec",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "b84df3b69e7bb4bdeaee3e837d6189e3e171707f4e64b89b45739bcb04a3e580"
     },
     "br-012": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "6dbfcae715d8e38b6131d5d6a668f1105e9a8acfba0284165bcf401d90e6fed4",
+          "src": "assets/derived/card-fronts/br-012-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "5901a08d88a0a0e2d3d24202c739745d5d12813f10db6f08f46305c372992c69",
+          "sha256": "f57114d3b052f5735b0c711e4f487a25f2270c1d8ff7f2bbb872b7281bb800ce",
           "src": "assets/derived/card-fronts/br-012-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "3eb82b30736da9b2eaadac39deb332012c939cc1cc9924cd79ddeed8abd5a4b5",
+          "sha256": "04959236909f17663c24b1d05cce66009c4179d965310def81a20c3f8a008c30",
           "src": "assets/derived/card-fronts/br-012-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "39f9cf84a15369c586c36f73e4a67eeccff2a0b1555baddb10fe4c19909ebf8c",
+          "sha256": "e82f037b714d9de67d674085a20a27950e0a303ad57287f45323ca74193288b0",
           "src": "assets/derived/card-fronts/br-012-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "264b03b0105568ca7dfcd6cb8339f57c830e7facd6b30ccdafff483d597de322",
+          "src": "assets/derived/card-fronts/br-012-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/card-scenes/br-012-onmodel.webp",
-      "source_sha256": "75f96a81896afb52b9742d561a1ee84578b94683c78d1d0aa098b8da50452625"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "br-012"
+      ],
+      "source": "assets/v2-original/products/br-012.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/br-012-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "b7287f1c3df793121df1687ae98bfb5daa41a0053c833b15ec24fb9a0e0dd13c",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "9cba8eb23ba1359871951f585e55fc898372b2ae493848be333c72d361684f2d"
     },
     "br-014": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "453b612353ffd6cc30c67eb4967a020445eac9e1e20e8da51d1318301685035a",
+          "src": "assets/derived/card-fronts/br-014-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "68722bd052bbcf55c38b43ed8acb598a8e7c58f7a640d2694ae22fbe8ca8590b",
+          "sha256": "6e6ef31c7803af661c4d6fec0035dbe8a7bd84753ab89868c181d1e6044c591b",
           "src": "assets/derived/card-fronts/br-014-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "c3688d910d875138d7b307dbbda83ac7cd26273807b738813c5948ff1e387579",
+          "sha256": "cd3a6d65e8ec7f47774997068e70f24049ee8c399e9b41f885fedbd69c8a8d46",
           "src": "assets/derived/card-fronts/br-014-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "334cae60a0d8d2af69917305dfecf173e1ba461d9fe79b50793c9bbeed0e958c",
+          "sha256": "5f891245d27af819e84a9e530f295159ac8ff027e92aff3dab889b1217f3057d",
           "src": "assets/derived/card-fronts/br-014-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "0aa6a5c7822b71b42276976fa2447192487c392b4bbe283ce63019ef4b146509",
+          "src": "assets/derived/card-fronts/br-014-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/card-scenes/br-014-onmodel.webp",
-      "source_sha256": "4cc4c60b2e39bfb3986626419828b57eee1381c20889d51a9a5dbaf2d972d8ff"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "br-014"
+      ],
+      "source": "assets/v2-original/products/br-014.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/br-014-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "12640b4a038f67facae4c0f29d429fb27f80100d2e6010300d713fb7408d28a1",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "ab871a8035a2f7e0f6fbf65c44c0e2d940a5d9f323d436a8cdfff844c278d0c8"
     },
     "br-015": {
+      "collections": [
+        "black-rose"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "27687c796de1e767f949b0178c8969785eff48be5182d3cbf323ade6c39bfad5",
+          "src": "assets/derived/card-fronts/br-015-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "e4213f74c3ae1cc7fbb5d56e5b12958d19d6407d84283cd58edd32f56ca4a6cb",
+          "sha256": "bb092df545253820c2e837d3c2ca520772ac3cae4b9c5b1a60ad762afcdc3988",
           "src": "assets/derived/card-fronts/br-015-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "4e4b67be2cee042683cfcfb0c4d5009950ff905a84ac5b9fe66fe6b7d85b9196",
+          "sha256": "0589f061797a77ea69ec7d117e83e9d2a4df916ec224e68bed340c2d4020efa5",
           "src": "assets/derived/card-fronts/br-015-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "a585db2ff9c943f856547e5a38d5bc98014ec16fc7813ec581147c718e4aaf3c",
+          "sha256": "d17ee209836c8b252c1aa5e5a6488fd00aed23c180ced71e3d3e300580a04777",
           "src": "assets/derived/card-fronts/br-015-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "08afb78e06f60f900aac904dc8034a4460a3cb0412da8addded78384f2e73d50",
+          "src": "assets/derived/card-fronts/br-015-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/card-scenes/br-015-onmodel.webp",
-      "source_sha256": "d708a0e9f468c77fc43d2882c63877e4a41358de1944e0c091f85a66670cd8ad"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "br-015"
+      ],
+      "source": "assets/v2-original/products/br-015.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/br-015-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "987735f678bcbc3b59bde1d5a1ac15dec05ec82e2c509c73c833e2c7cdc21aa4",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "935b4e584369cad2543860824b78c2163171052adc7fe8483b29409f70e9f681"
     },
     "kids-001": {
+      "collections": [
+        "kids-capsule"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "0eea5b918ef98ee82f6707240f55a5d33e1366c2a65b37117d553e6d4ab165a2",
+          "src": "assets/derived/card-fronts/kids-001-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "bdf378a2718c2d0b267f06a4e67c2c9cd3dd381d52e7913e326da59f9b9cadaa",
+          "sha256": "f002e7e337fa4b05962934490d1bbdc327c05b21f6307baf0e71cd94ac2ef0c4",
           "src": "assets/derived/card-fronts/kids-001-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "9cfbadbf3aead10ba3d93a5e18e68e0d2310d6f18292e7037b7a664ac6d1498f",
+          "sha256": "58dda702ab9f2740466ec8144d5bc296cf26334f55803108de1bd33126e4b794",
           "src": "assets/derived/card-fronts/kids-001-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "a9127abdd520c9012e8354534868fa7cdc84dde345d9632af6dfdf09ea5d5bb0",
+          "sha256": "169506e7d992f42fdf6f699366557a1290e43c69d0fae9abd81b0e372977aa7d",
           "src": "assets/derived/card-fronts/kids-001-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "494939c4f005b6cb8bbc33d20ed0dc1699941796b6e2094c6cefc0d0010b22f6",
+          "src": "assets/derived/card-fronts/kids-001-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/kids-001-onmodel.webp",
-      "source_sha256": "c6bd2ddd555c4359c302eebb051d5fbad4d34bec0b324b44f3447831f3ec9c9a"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "kids-001"
+      ],
+      "source": "assets/v2-original/products/kids-001.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-kids-001-styling.json",
+        "reviewer": "/root/kids_lowerbody_native_qa",
+        "sha256": "1931bf385b5df47306ac48dee77a58a7a686e34d92f7b48869bcdaa9fe124f4c",
+        "verdict": "PASS"
+      },
+      "source_sha256": "0da7f1158e80c738b457b42f132a5ab723c7cee739d588ca9dcea00b404c0f29"
     },
     "kids-002": {
+      "collections": [
+        "kids-capsule"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
-          "height": 480,
-          "sha256": "4cbfab5be8317023a57288dd6e29dd4f9dce2aabbb2a2e50178d390d372e2235",
+          "height": 200,
+          "sha256": "7b4d2dd23a74b5bbd49ad8382acc84cb0baac3006e46490df1e0e8e08cf16a72",
+          "src": "assets/derived/card-fronts/kids-002-160w.webp",
+          "width": 160
+        },
+        {
+          "height": 400,
+          "sha256": "5c2851eb79062c12d91508f01a13343dc6075a2742450f998c124078e31b130e",
           "src": "assets/derived/card-fronts/kids-002-320w.webp",
           "width": 320
         },
         {
-          "height": 720,
-          "sha256": "9a73ccd654639c2965fc42facded9ee20c7395e12e4451dc3d20a21784520a6e",
+          "height": 600,
+          "sha256": "20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
           "src": "assets/derived/card-fronts/kids-002-480w.webp",
           "width": 480
         },
         {
-          "height": 1152,
-          "sha256": "37989aca834fb4101b77ae4bccbcac471af2ee4a348fbf8e7a9b35a854dbaf3a",
+          "height": 960,
+          "sha256": "d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
           "src": "assets/derived/card-fronts/kids-002-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1280,
+          "sha256": "5f1343d00517daa68d3f5864b3a72fa6b818459383314dd783b4993517661205",
+          "src": "assets/derived/card-fronts/kids-002-1024w.webp",
+          "width": 1024
+        },
+        {
+          "height": 1600,
+          "sha256": "fd61340b74f7a87ea3a61e6ad698e463abbb84c4896ec62c381a69fad30b8bb5",
+          "src": "assets/derived/card-fronts/kids-002-1280w.webp",
+          "width": 1280
+        },
+        {
+          "height": 1920,
+          "sha256": "5b3e78d937a0e6a497259c214752fe8f966f87b8d8548f412740bb63c76d0dce",
+          "src": "assets/derived/card-fronts/kids-002-1536w.webp",
+          "width": 1536
+        },
+        {
+          "height": 2240,
+          "sha256": "08fef35fdb64e418ea051e8b986c1fe7e71499556ed17218a38c63b608f5f3fd",
+          "src": "assets/derived/card-fronts/kids-002-1792w.webp",
+          "width": 1792
         }
       ],
-      "source": "assets/approved-card-fronts/kids-002-onmodel.webp",
-      "source_sha256": "88c0ca36b22a95ce1ee7969b50b4e256718ffda584027dfd97e219605aa3e51b"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "kids-002"
+      ],
+      "source": "assets/v2-original/products/kids-002.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/kids-002-native-card-r2-20261006.json",
+        "reviewer": "/root/all33_completion_review",
+        "sha256": "d86d0cd2ed37c1cd165d562cbeb7a6c298a327644ad12b0a1e1142022e4cd07c",
+        "verdict": "PASS"
+      },
+      "source_sha256": "d9a0ea0e8bfd7044714f22f04c12a92f7f2fb70ba05c3011d048a7b48e3339f0"
     },
     "lh-002": {
+      "collections": [
+        "love-hurts"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "05451d98c0547bc134bb350f61cde74429c708900d114dcb899c8c6873779372",
+          "src": "assets/derived/card-fronts/lh-002-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "bec9c521717d378233f3902271cb2d4621f382f7e0654382d94ce29f8621bd88",
+          "sha256": "72c641ff0b85d227e25c5295deb9ee31a2b5a33db62815ccabf209615a3adfdb",
           "src": "assets/derived/card-fronts/lh-002-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "4cd3f09abb19079ea209e8944beb6cdcdf57201bd4b2e35ca71287e52a154022",
+          "sha256": "c4cb42af321ef03f38ab82d269885bfa47fc2681b321e824316b9752df844759",
           "src": "assets/derived/card-fronts/lh-002-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "4eb15f1df797373150d4f5c173b749924fb2dcb4cda3ad83467c79b371d8eb03",
+          "sha256": "b617cb047b069c1283d49b0456be2270147a0a29239b0f0b21a8c8d6e8bbe20a",
           "src": "assets/derived/card-fronts/lh-002-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "e28185b8ec1508e33fba7dc463128cfc8323d757596f4166e6503bbc965cc7b5",
+          "src": "assets/derived/card-fronts/lh-002-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/lh-002-onmodel.webp",
-      "source_sha256": "dd1192e520e521308064f42d8ac0c9addc5d403a711c7e62d559541f65b35507"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "lh-002"
+      ],
+      "source": "assets/v2-original/products/lh-002.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/lh-002-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "8262e349e85cd654c57c25e4867848e77098f016ed72d27329efa906e8a81347",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "8237df33b67dadaa443a32c06541c0d80ec8ad8dbdb6039fab2f75e1c4fa2ff4"
     },
     "lh-003": {
+      "collections": [
+        "love-hurts"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "d140ce68fa43fc5c9218c5b0aaf68a4212a6a8f8dec09779e1430723696cc940",
+          "src": "assets/derived/card-fronts/lh-003-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "a3b51f34ceedcfa8fbf1682d7a9109637ef772cb39130ad6abee2781dc8ee376",
+          "sha256": "95053286a1a1c98d7f9b344959bf0439944273aa956f1866ff2f18ea1444c6fb",
           "src": "assets/derived/card-fronts/lh-003-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "6ee63b5118dbdbc61f670977162ed8dd733e9d64097529928d33197551b704db",
+          "sha256": "66c79500d532022cf6d97a776ffc33e55274dee72752a8da647ec79562ca6527",
           "src": "assets/derived/card-fronts/lh-003-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "1964465207350db66533ebe758359008b8ff731b32df1141e4ebf15bf935fd1c",
+          "sha256": "429a5323e88dc2b24f8f1dc590534e6e7a6f41c52872a4e5f08e45ae05d5fb0c",
           "src": "assets/derived/card-fronts/lh-003-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "5d0e7eee2171e947d81bfa4c9627694d1dabf364f7f8ee40246a9fb622c80b9f",
+          "src": "assets/derived/card-fronts/lh-003-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/lh-003-onmodel.webp",
-      "source_sha256": "a8338e8a18009573203e7e09ef21e71678deaacee40ff186dacf5350e61f1089"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "lh-003"
+      ],
+      "source": "assets/v2-original/products/lh-003.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-lh-003.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "a5da4e1e3716dcff03370a35b12dfb5c7f21baae63447007e7656108a63a4b58",
+        "verdict": "PASS"
+      },
+      "source_sha256": "c6be96eccf2f5534c960f21af64d5c1151c4acb63341b21d2083e1dde1f91ef5"
     },
     "lh-004": {
+      "collections": [
+        "love-hurts"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "73a7a4cc844969cd360a284badb911ff04211c84519b71980bea386b852aa66b",
+          "src": "assets/derived/card-fronts/lh-004-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "5a51c50ddf04a1717bef444ffb2d03215fcba713bde163c798f46e774670ab82",
+          "sha256": "3bc95246a82eb122bcfd190683ba887a184750b9b754e26ea67eee25b20a20cd",
           "src": "assets/derived/card-fronts/lh-004-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "f0177a0bd431d27e584da4db115480d0b45a55178328143c34f266d34b8ac2f7",
+          "sha256": "e14a00108e70df43cec69876b70b5d91133c6998e551dfcddf7284016bead43a",
           "src": "assets/derived/card-fronts/lh-004-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "f0b64933d674143dcb9c776869ae6f96c36fea54894d4b30454ae5f44295d390",
+          "sha256": "a334f8bcefa10d3f3a978a65c634117d4a69b3248efc9adfcd340fa4af085519",
           "src": "assets/derived/card-fronts/lh-004-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "da73582f72a999e14d5cb07632d60815ac1728301bb8d35b5a81c2efacb9693a",
+          "src": "assets/derived/card-fronts/lh-004-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/lh-004-onmodel.webp",
-      "source_sha256": "1c5aed2f72b85b5afc7a25515931e450e68dfa66011b0345c13605020b89fddc"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "lh-004"
+      ],
+      "source": "assets/v2-original/products/lh-004.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-lh-004.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "0c89600ff02bf12c7bc49bd102863293520757290c28ba459af2dc4cb1a47cc0",
+        "verdict": "PASS"
+      },
+      "source_sha256": "e3b22a5fbc315f1147d51a50ddc447fdc819c6f8366d8c4c0de8263bb47685a3"
     },
     "lh-005": {
+      "collections": [
+        "love-hurts"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "9dc3aee050a6db491645b55508c31720d6257ee8126b1fc391994295ae0d89ec",
+          "src": "assets/derived/card-fronts/lh-005-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "92c3064a0ebfdbcc634e0e9b6a69818f0d664016c2d95f701865385967776724",
+          "sha256": "3a19d911c9df4620aeb797c1ddf008bb5a3600b4eeffea483f3a6a58160cfa4b",
           "src": "assets/derived/card-fronts/lh-005-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "3927929443f3fad1457b21509434d09cad43c615fd3d180ca4204bbe79bcfe8d",
+          "sha256": "d965333a1d12729acbde82c33701de6497919ef806333ddfd563018825ef3536",
           "src": "assets/derived/card-fronts/lh-005-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "a2ddbe79f6176a0a871e1d4379d53b73d0552192003a0bb64b2a362db7e680b1",
+          "sha256": "20279ca48df1f124dce783430470192c6cdb2486a3c126a896287e14f3ac6e94",
           "src": "assets/derived/card-fronts/lh-005-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "176050e85c59308bc96e60049a6c31c612319059b8425f9a2b9514acaba00b05",
+          "src": "assets/derived/card-fronts/lh-005-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/lh-005-onmodel.webp",
-      "source_sha256": "3274c53abb457fd03856dab4014ac6076eab1853a67722fb90015749497e830f"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "lh-005"
+      ],
+      "source": "assets/v2-original/products/lh-005.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/lh-005-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "056a4606e26aa2a8568668d1c265551f7c8f933d8de70f777b0772a9abdb8cd7",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "016ffe57064fd7c6f49d1df4ff9f5d59ffdb239f807ecea31d10c3362ddde752"
     },
     "lh-006": {
+      "collections": [
+        "love-hurts"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "a9c3c1e647abd512ea6f58106f3701ef591b35ca69c25f9ecc8c48a8eb5e8479",
+          "src": "assets/derived/card-fronts/lh-006-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "01d3c579662cdbee4bb4efd6e8c1ac19a9a4665de1c8b573021ead57b2f8dfc3",
+          "sha256": "45b85c86e5f9212ca2445054664b83b92fcdb61345bfbf198f5f386cef407fef",
           "src": "assets/derived/card-fronts/lh-006-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "55640cfe5329b86907d401af5e80d3d5edd5a261cbc987df07986a1c3502633f",
+          "sha256": "3049419c0101a9b9293898eb59645c1bb95cf2bde51c12988f1377cfc6e06663",
           "src": "assets/derived/card-fronts/lh-006-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "b63d0668dd3379d7f7e1383e6a4d5da0b24dd9966292c2c3c87a6741f25c8f67",
+          "sha256": "f48b2ad65fec1c39c9274650552ad50e4ac6753713262e3106a90fccc6ef4965",
           "src": "assets/derived/card-fronts/lh-006-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "f1b5de35915989511a9276873bc483a3a045ff0e17f7863a237f891e449a71c8",
+          "src": "assets/derived/card-fronts/lh-006-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/lh-006-onmodel.webp",
-      "source_sha256": "7905342f32bd2963d3d5d095a0825c9ae3ec98f731de100fb481631ee76244dc"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "lh-006"
+      ],
+      "source": "assets/v2-original/products/lh-006.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-lh-006-styling.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "b3391b3a42b30d17e0486772bd8b91ed44becadc8f3b442c75b30f06bd6de305",
+        "verdict": "PASS"
+      },
+      "source_sha256": "b376de27c083bd9ad19244db1a4a22b127b59c4add7ccf860d78140af14375fe"
     },
     "sg-001": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "1c64ead272af1a24d7db3d1d96af2a508c9e693aeef3b73f979d271536c3772b",
+          "src": "assets/derived/card-fronts/sg-001-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "c52dc3fe6bec08fff833721c3d0a7e6c22bf81d86b8575705ff5261e23e24805",
+          "sha256": "8e46550022c33002a4bcb4d64a7430da28501e8cedad2bb89b844bf1cb187edf",
           "src": "assets/derived/card-fronts/sg-001-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "12c97c76bf99682f28f9d92c884105cab3d355cb2aca54fba09575928cc94440",
+          "sha256": "4ad97b94c7390bf2faa1c8fb6b803d36e6cf6bb2147db2407e5042b8cd0384de",
           "src": "assets/derived/card-fronts/sg-001-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "3c9bae8f902fd57a0554a101250af2fb115b04136fcd0c9a164cc764a9f15409",
+          "sha256": "e58f9cd0ee5e2f9e2f0b07a9087225007729d8bddd25ab31540f41c3f927bbb2",
           "src": "assets/derived/card-fronts/sg-001-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "fc7a7ace37ea74e54d2131d78083ef398110fef373f75b62291727e2d64d06cf",
+          "src": "assets/derived/card-fronts/sg-001-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/sg-001-onmodel.webp",
-      "source_sha256": "31b85575f88df52d1a61f8ce7b01b0b60c1c1de1749060e3f0bca8873b71ffce"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "sg-001"
+      ],
+      "source": "assets/v2-original/products/sg-001.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/sg-001-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "fffe16c4cb431974d46d50841188c6b13971ed54817678709f57ef3b1b50bcfb",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "6a54cff3a90583c9d0e50bacf3cc6606dd70531976c19350e7799d89e105b8ba"
     },
     "sg-002": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "50d075861be5a188569deb8d23b0634959b859a876681da3fe3bd6d2563e19cc",
+          "src": "assets/derived/card-fronts/sg-002-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "7f933d51e17f7246821d6fd4db08f365e4bb46a47b53fd0c27bd1d8547492c44",
+          "sha256": "20c3c7cf2516142d60e64d5e3b22b16a546c0dd7f6926f48a91e2619df52cc94",
           "src": "assets/derived/card-fronts/sg-002-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "d47a11c2d6054195ae1df0ec637e929c827fd4ffef5ead17bde55b6d03da0400",
+          "sha256": "ce70ad882841f431cf25749a142d500da3de1a969a76ab8a0bb88af4f27fd015",
           "src": "assets/derived/card-fronts/sg-002-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "4df875443f9dcae8b8df1d2d3223877b344b6fa451de31c444961929e7d48020",
+          "sha256": "9565f6359fb478f4cab5f6ea2a1c6680ecfe0019c2ff2dfdada1039b87671dd1",
           "src": "assets/derived/card-fronts/sg-002-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "7e20b9fd8f4ccbacafc5ada9cad00282e1790141892defae0e0cb05259c44c49",
+          "src": "assets/derived/card-fronts/sg-002-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/card-scenes/sg-002-onmodel.webp",
-      "source_sha256": "48561fab14ae39618e048bb5ba3226fef4da3affb85855d441bb54be3e767f18"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "sg-002"
+      ],
+      "source": "assets/v2-original/products/sg-002.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/sg-002-founder-card-20261006.json",
+        "reviewer": "Corey",
+        "sha256": "59091420157be062bacbdebcb4afdb87214df5ed28b99fe00599a988a1beed1c",
+        "verdict": "ACCEPTED"
+      },
+      "source_sha256": "cb8b21742ce20ed778f5c8fccc44e60c08df6deade28c9cd525c61575a608931"
     },
     "sg-003": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "fa8dcf20eb608f1287e00ca5dae11ef906adc494eca23c8614244b182cdc62b2",
+          "src": "assets/derived/card-fronts/sg-003-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "83d47957b70c4dfba2398c6c517f7383884f0be1afa89a3dbd3269f58159deff",
+          "sha256": "9084f4b06e4ba26454a6366bf7bff1c63f52a6eb077d9e1470a404df7c3e1966",
           "src": "assets/derived/card-fronts/sg-003-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "dac95c9a2e416b0a8acffd8d4a016f1237140a06b8041cb6c253ff3983690e5d",
+          "sha256": "41fb484ed59e6b363620452365c9e908bd7f0edaa6dfcfde923a2a409b330537",
           "src": "assets/derived/card-fronts/sg-003-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "186ddddd412c60d0e128158fa6baa50e9c0c977eeba8869671af84f54bbabce2",
+          "sha256": "e559bba77a0c49cd6b7dfb5ac990869d5eeecb7135ea70c90eb371449a995eef",
           "src": "assets/derived/card-fronts/sg-003-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "941f37096685fc11bf0d4bc681615741e77fd0cbc3557ede355d9ea55cc2a93a",
+          "src": "assets/derived/card-fronts/sg-003-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/sg-003-onmodel.webp",
-      "source_sha256": "a06526e3136ab5e4f157aa431850c13e6bc75969a10f8240012db7bfac63968c"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-003"
+      ],
+      "source": "assets/v2-original/products/sg-003.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-sg-003.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "6cfc2f413febb42963651a9be7ef7b4d46734202e28ef53f6a71028755748703",
+        "verdict": "PASS"
+      },
+      "source_sha256": "8f8b5a016be28ceba3268091e603a6cdd0d3fc78e77085b40be61f89b9173b0a"
     },
     "sg-005": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "b4bb4192bb1810661a4a8f70b88889140a7ce99c341d49bc6d6e3b3ce95fd284",
+          "src": "assets/derived/card-fronts/sg-005-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "43e9f5c1388c5724b6cac58b4a9344128296efbc36bd9c756a298342a38a2c30",
+          "sha256": "22ea70c580d6d27fa46f6090cbe3c567430e4bd8a660be7066f296e9f2d14f43",
           "src": "assets/derived/card-fronts/sg-005-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "b51821e4c054365f50386d93bb1256c611b4a6905eec4344f5c3474166c59a38",
+          "sha256": "e4f30b2d7814ce1fafa74da80ce6ca41f400d586f919edeea236cb42de8ead90",
           "src": "assets/derived/card-fronts/sg-005-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "ebb40fd6e9891f85284c3f52d590ee198bff2f476b3fb5cb4a01d501ccad0763",
+          "sha256": "a82bde8ed6e1ae76d0a47a02fa3a8b17cd24a4555d93f1f3f2da6a876602f558",
           "src": "assets/derived/card-fronts/sg-005-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "10a872a020ddfb0930702d42b42cef853c6e83ee7c546404ab89e89a24abfdc8",
+          "src": "assets/derived/card-fronts/sg-005-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/sg-005-onmodel.webp",
-      "source_sha256": "052915cfb4aaa7f3d1fdd01d222661289cb7a1eab0fdec9b68a8be8dda8f28f0"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-005"
+      ],
+      "source": "assets/v2-original/products/sg-005.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-sg-005.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "e504a052b1ae68edee67daaca1aa57f54dd5e8e850f046f1e6e868a8f3b7e41b",
+        "verdict": "PASS"
+      },
+      "source_sha256": "abced2c89fae4152b98e64b21235fa51dde08e29814c1d20d67d91b675fcbb6d"
     },
     "sg-006": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "472054bea1f8e3463e4a88e6930aa3eef989f693c515c04d85538fc2f80aa9aa",
+          "src": "assets/derived/card-fronts/sg-006-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "08ff1a9b6b331a3fb501d2fdbe6fc88cada5986458dc2fcc627005b3ba0baf6f",
+          "sha256": "fb5d43a222c53a2eeb3e0823d9b4be627c585e6b2b87fc483b525b1db662bf80",
           "src": "assets/derived/card-fronts/sg-006-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "6187a6be56844238a10bf4f59868682d699918344de85bd98d60e1b7acea5d4a",
+          "sha256": "c33811e37c9e1733ff5e426f12982374d8c94e4ee72a2d9fd7d08a8d8f869210",
           "src": "assets/derived/card-fronts/sg-006-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "8dd4c9433729b229b513248867f20e57b43a3c506f40a7701ea0902b972b52c0",
+          "sha256": "930356d9eaa2b0f9ea345050ebd88416d6535f375d9c932750caad6bcf7b1eeb",
           "src": "assets/derived/card-fronts/sg-006-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "9395e97de3d31b35772715003c4dc51d4bc14162e774c761f959b6df63ef7518",
+          "src": "assets/derived/card-fronts/sg-006-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/sg-006-onmodel.webp",
-      "source_sha256": "27d6865fb5ea6b23fbd7df5f4169543348c3dc0b5f34828ca956ca486411b44d"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-006"
+      ],
+      "source": "assets/v2-original/products/sg-006.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-sg-006.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "8c4031db21112a2a252f0e8e01cf940bc67301157ead1a86f438691073e26c50",
+        "verdict": "PASS"
+      },
+      "source_sha256": "aab946a9757511cc9b7f258520972fc21de016006ca74f92d8e54da293cd869d"
     },
     "sg-007": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "fdf3161bdd172a13883d2403be6627b820a81926709d7bce7b47a0fe0caee9ec",
+          "src": "assets/derived/card-fronts/sg-007-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "b57ba72be28a5cab6d264a35fb1b383d6ee7c363c46810c1243ababedb3411aa",
+          "sha256": "7e7a3741be16f11e0a2b5bccdf270e013f48e7d3d60fdd23a361e5711e0ca145",
           "src": "assets/derived/card-fronts/sg-007-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "410015a4cf4dfd6cfdf134dd6fa860654652e9c3463f27b1bc582d827f973f90",
+          "sha256": "89ecc645480c3a6622c5f79f25a9ae493f82d4b79db80ba4d3b2a50fa91b2d2e",
           "src": "assets/derived/card-fronts/sg-007-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "8bfe4484882b614cdf12b04821209182b24af81585ac9cd98813efa3c40b851a",
+          "sha256": "701c3ec6f5db2ccde963be73126413d64c4c37a5d4e4d574a84e7cb49a3b50e3",
           "src": "assets/derived/card-fronts/sg-007-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "229313987fd7c2771f6f8958e05c3f44c0b71676930fe0cb3fccef9e9d4cc95d",
+          "src": "assets/derived/card-fronts/sg-007-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/sg-007-onmodel.webp",
-      "source_sha256": "15dd6abe1bc49ee8fc3e70a17c90d0c05aa11aff517b296290390c449307e730"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-007"
+      ],
+      "source": "assets/v2-original/products/sg-007.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-sg-007-20261003.json",
+        "reviewer": "/root/next_phase_visual_qa",
+        "sha256": "9879d7658ad3c6c0a3453990d2721f837a4f73d424484849864055bef384ee3c",
+        "verdict": "PASS"
+      },
+      "source_sha256": "e16b24203568108ad1d088cc5a4d9d03f100261468360f2223dc40ef17180a6f"
     },
     "sg-009": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "a0ee37dc843cd8e7cf8a6fd2ed48e610ae977389394319c814060b99d195c253",
+          "src": "assets/derived/card-fronts/sg-009-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "e6c59a48e0116069c11c3a280b3095f9ab4b9247fa0bb825bbefecb121b7d4b5",
+          "sha256": "293b3d02ea73b6b64941081a4ab3736ce667d26d13d6ecae738b73c738f66506",
           "src": "assets/derived/card-fronts/sg-009-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "2a4fb7984612098b1a33602c1e8b23a691d78465313743b11b938abce48a987b",
+          "sha256": "e43f2b2e23a77170bdcf50f890e4d332d8a67c98c1443cf1013bb3082657d739",
           "src": "assets/derived/card-fronts/sg-009-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "17cd63075f57120059c0b4b616aa660712dfc1b4ec0b42991b751c7cdb0fe852",
+          "sha256": "feb08c5a37d90fca93709b0638791e42b8ae581db225d4f1d3eae0f0567e47ca",
           "src": "assets/derived/card-fronts/sg-009-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "3d731e427f18ade3c005797de5066f46198b1074b7c73fbd8a497972dfc72873",
+          "src": "assets/derived/card-fronts/sg-009-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/sg-009-onmodel.webp",
-      "source_sha256": "fad97fce9afde5e752ea62ed256b03ca7b5ad2ca449f070c9037bd266fa5222d"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-009"
+      ],
+      "source": "assets/v2-original/products/sg-009.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-sg-009-styling.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "194f938addc29271a088779a78235a073070e142ad23b784c09161b53ab4500c",
+        "verdict": "PASS"
+      },
+      "source_sha256": "43f0175692b4a8d123e2aed28a6cfbcc6902521e86fb0ac4cd2cc64a9e99e005"
     },
     "sg-011": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "9996d3d7766c877528f18650f0519ea2f576fa51e4d83e28c66a78deb651caad",
+          "src": "assets/derived/card-fronts/sg-011-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "d5a56419b4dee000b91af110ace610b868cf10c28812d494af6c563e077f9f22",
+          "sha256": "da984810e3b3946119f9c5f584e0035d5db043efa827fd525b95d65de3d751b1",
           "src": "assets/derived/card-fronts/sg-011-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "eebb2f2355271e349ec91b75fbd0a3d54f2786d2d331d3c2c6886592ea5fb7be",
+          "sha256": "0d309678f8472d4027ad8606e2fd127bc4df4c9e737dbd0c328ceb60f085e530",
           "src": "assets/derived/card-fronts/sg-011-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "b14fdee1430df6acf9fe9085e5400185d5665c1dfc50707650a47b9855089cbc",
+          "sha256": "b40e0d8d7f8d1420979c0a35236d71a1179fe205f25f4c5f00700ea939ff45ab",
           "src": "assets/derived/card-fronts/sg-011-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "7395abc260fac198a5635daaf1ebeb5e4248e5385e4ed8ca24506c7afa869dfc",
+          "src": "assets/derived/card-fronts/sg-011-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/sg-011-onmodel.webp",
-      "source_sha256": "25055af2f7d59fdaa18bf9fec4f7b5abe1ec9c7d9a4e5306e7be232a9163ac8e"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-011"
+      ],
+      "source": "assets/v2-original/products/sg-011.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-sg-011.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "1966a57a5fde8aa812d68283c5f756148886f61ec92f99a7cb40be3fd82bf30e",
+        "verdict": "PASS"
+      },
+      "source_sha256": "aa0d3593bfe8acda2a92eca0b1a40c229d59e7246871b8227ecb5d90fc9e5a87"
     },
     "sg-012": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "4ba4f5cf3f55449acb671ad15cd8742e822423d45cba08739e5833feeeaae2db",
+          "src": "assets/derived/card-fronts/sg-012-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "39095b700cad743cc9087e94af5d2ce377a6950c95e189b2c9671edcbe9e0682",
+          "sha256": "0304f48a33286e0b19ae11311c18f0349b3e94c1609903825909b6bda7781877",
           "src": "assets/derived/card-fronts/sg-012-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "1c7de8512b959fed89839c387f931ec16e494e27c4d038dadb7d67d90c8e65b4",
+          "sha256": "468ef52faa9c3d91057752ffa3140c0b9afe4db30a08374a337bceb664782438",
           "src": "assets/derived/card-fronts/sg-012-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "b9a1d905d2921c3511c27aaa7058084c6b4b696e9bbb7fe472d3049854333094",
+          "sha256": "28b4ab326494c3b66b30c07b2465f0af911f5278d337b73ad8aa2465251b4ad1",
           "src": "assets/derived/card-fronts/sg-012-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "a842633682b395dc019c9e2ef3d2cf9e38b7844527a0d85412fb005f2544771d",
+          "src": "assets/derived/card-fronts/sg-012-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/sg-012-onmodel.webp",
-      "source_sha256": "360cdb19236dd2108934b9c2eaf15eb539defdb4cb4c4a176d0427ef2bf3a0cf"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-012"
+      ],
+      "source": "assets/v2-original/products/sg-012.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-sg-012.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "6726921d639df5ef6702c7caf3b18ebc8bd4c7d75f6707136edad4780da4cbc1",
+        "verdict": "PASS"
+      },
+      "source_sha256": "0f94046c37a1eb7c075b345efa6529e25133795b7f68298b995699f24c36740d"
     },
     "sg-013": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "a0a0bb13c662d61feddd33b23da27147e7fc6300e7921e0de957011e84e6391f",
+          "src": "assets/derived/card-fronts/sg-013-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "1681467d53d28f2345156b2d059ed72c37ec017fa2ea3191c738a3c71d151e40",
+          "sha256": "c53b22acdd5f1478aac915137f6345869678f4fa1a2a7811a67aded569428c6a",
           "src": "assets/derived/card-fronts/sg-013-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "fd7f726a5e9f79049f0c9faa92adb226655c1ea07525fe1ed87668de434124f4",
+          "sha256": "b25cadb8e7fadcb26bf714ac9e9dd7e882a02c43120e29193c1385575e3c12d9",
           "src": "assets/derived/card-fronts/sg-013-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "a8ee697883ecb0f41efd82a3c4d2e03a2f2963c9f1662bfe7a439633d356c5b6",
+          "sha256": "740ff65da0f4a199ccc9212ef8c64ba5d03b0f0351bb67181b4a80a2aab605ad",
           "src": "assets/derived/card-fronts/sg-013-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "2df126d6225f7abf67e10521c676599f656f9a11311b52eac326dffbe304d7ca",
+          "src": "assets/derived/card-fronts/sg-013-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/sg-013-onmodel.webp",
-      "source_sha256": "fc3fc604b56f4e9abfc95fe45ec4642ccafce625f26241605ff830bad49c8bf8"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-013"
+      ],
+      "source": "assets/v2-original/products/sg-013.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-sg-013.json",
+        "reviewer": "/root/v2_prompt_precheck",
+        "sha256": "f040c1de9322125779e130ebf79054cc3ab5c771ee2a186c005d5d3fb8dd46d4",
+        "verdict": "PASS"
+      },
+      "source_sha256": "12cce820da6f783537847139bf8636fd0ee0627e45e577d5315e46bdd142bda9"
     },
     "sg-014": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
+          "height": 240,
+          "sha256": "2ed982a566243cf5e762ca356cffef09067ce03e70a18ea272ef69253d83a7a7",
+          "src": "assets/derived/card-fronts/sg-014-160w.webp",
+          "width": 160
+        },
+        {
           "height": 480,
-          "sha256": "8a6e885386e5422c35b2302e28414d15a3feccf85380582d965dd3c51042e287",
+          "sha256": "96f1291d8eb61d74aaba8a6e4c6e8cfb6edbebe23f05e727591b415470444839",
           "src": "assets/derived/card-fronts/sg-014-320w.webp",
           "width": 320
         },
         {
           "height": 720,
-          "sha256": "027ba99760dc5dc7dd9aea78d5dd7444b32061aa095d219bee25bba6c0df8ddf",
+          "sha256": "d11a28b08740767fb442a4fa03a47490a023d5be314c18cafa82b9faae0747ea",
           "src": "assets/derived/card-fronts/sg-014-480w.webp",
           "width": 480
         },
         {
           "height": 1152,
-          "sha256": "ca8b4e32a54234899eb1093bcf392cb52c9c4774cc589d38e677a05d2c88ac27",
+          "sha256": "5db38618a979f7759193037d89e5e815ee09cb4ce7a840445565ad142c4bc24f",
           "src": "assets/derived/card-fronts/sg-014-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1536,
+          "sha256": "7159c867baa82f79b250b9c6c1ad336fd7d106b57d1da316de828f4c76bfe62f",
+          "src": "assets/derived/card-fronts/sg-014-1024w.webp",
+          "width": 1024
         }
       ],
-      "source": "assets/approved-card-fronts/sg-014-onmodel.webp",
-      "source_sha256": "e07277762c0b939b7ba1756685675aa4184968de9a3e83fc3d4303d8a400f67b"
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-014"
+      ],
+      "source": "assets/v2-original/products/sg-014.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/card-sg-014-styling.json",
+        "reviewer": "/root/kids_lowerbody_native_qa",
+        "sha256": "43e9842e0c041dc9df0ce28cf39219892c630285fe2c1072751cbb75f2043cfa",
+        "verdict": "PASS"
+      },
+      "source_sha256": "07c3d1bb60ad24f1b8987859e21e9658d80126f2486820d79f83cc7ae11114d2"
     },
     "sg-015": {
+      "collections": [
+        "signature"
+      ],
+      "encoding": {
+        "builder_sha256": "5b9247ea80d593b87b1dd4bb15c02460fcb235d6dfc5d4fe8a1f8de8b98de791",
+        "crop": false,
+        "format": "WEBP",
+        "libwebp_version": "1.6.0",
+        "method": 6,
+        "pillow_version": "12.3.0",
+        "quality": 90,
+        "resize": "LANCZOS",
+        "upscale": false
+      },
       "renditions": [
         {
-          "height": 480,
-          "sha256": "95c2b117210b942e8351af88ef71d84c9262ce7c6f146c07ded787c0bfebe089",
+          "height": 200,
+          "sha256": "e128a39f9a40a5fdb0e896a10358c61e5586b92a27f985f7c3f26692a23d01fe",
+          "src": "assets/derived/card-fronts/sg-015-160w.webp",
+          "width": 160
+        },
+        {
+          "height": 400,
+          "sha256": "5a897ce58c5ff5ccb334d6c6cdbf57f575c1926e880ba37c413d9b2577a9d713",
           "src": "assets/derived/card-fronts/sg-015-320w.webp",
           "width": 320
         },
         {
-          "height": 720,
-          "sha256": "00e9862f7b777c9f09b0e83dfb8c4573929950209dd4bb71245eb70eec766765",
+          "height": 600,
+          "sha256": "db4464f954b89f469ea0ee229217d13f37fa1cb8d4b20f9e5a3714e68872aea3",
           "src": "assets/derived/card-fronts/sg-015-480w.webp",
           "width": 480
         },
         {
-          "height": 1152,
-          "sha256": "3094d0780f05593d4ffcb3e320c792eca640f9c0ccb8b954e7e618a1091a8333",
+          "height": 960,
+          "sha256": "46ad0d97236670bf09ec8b1d77e27c89286e836cd6e815f5b22a8df836f2d9ad",
           "src": "assets/derived/card-fronts/sg-015-768w.webp",
           "width": 768
+        },
+        {
+          "height": 1280,
+          "sha256": "beca96b072ee1a3fb84bc55c1018bb9a84039e564b1f0acf53422db54cb91caa",
+          "src": "assets/derived/card-fronts/sg-015-1024w.webp",
+          "width": 1024
+        },
+        {
+          "height": 1600,
+          "sha256": "a9bde188679836a3a91f2bd2ab4be59065d40c9075c1907c5234ecbf1d07891d",
+          "src": "assets/derived/card-fronts/sg-015-1280w.webp",
+          "width": 1280
+        },
+        {
+          "height": 1920,
+          "sha256": "9b2cd845b7749d295612e5e05fbd5668402aea7bb67ac3c2f360d9f662d2cc14",
+          "src": "assets/derived/card-fronts/sg-015-1536w.webp",
+          "width": 1536
+        },
+        {
+          "height": 2240,
+          "sha256": "2f2f92126ae0c36f2a2b4c500c3225a11bd9a0ce4b412f21268cb38b66aa34d6",
+          "src": "assets/derived/card-fronts/sg-015-1792w.webp",
+          "width": 1792
         }
       ],
-      "source": "assets/approved-card-fronts/sg-015-onmodel.webp",
-      "source_sha256": "e8f365cb5a1e1546977f41a5271bb7ce62287b18ac64f1c62934783198cebfcf"
+      "roles": [
+        "card_front"
+      ],
+      "skus": [
+        "sg-015"
+      ],
+      "source": "assets/v2-original/products/sg-015.png",
+      "source_review": {
+        "path": "data/v2-media-reviews/sg-015-native-card-r4-20261006.json",
+        "reviewer": "/root/all33_completion_review",
+        "sha256": "cb5a467e9088c119d75dbc80b266d38f2c2d0b6bdea8c136591f6e5dc54f6abe",
+        "verdict": "PASS"
+      },
+      "source_sha256": "ffe79d1d89422990ff4a1e9fcdefeacbefbd15d21d2d3cf758ce30cd9317488d"
     }
   },
   "schema": "skyyrose.card-renditions.v1"

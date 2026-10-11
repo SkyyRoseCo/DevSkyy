@@ -18,6 +18,10 @@ extra_references:
 
 **Care guidance — pending founder confirmation:** The general garment wash/tumble-dry template has not been applied to this bag. Proposed accessory care is gentle wipe-clean and air-dry; confirm before publishing.
 
+**FOUNDER_CONFIRMED:** this is the artwork for the love hurts joggers and the back of the love hurts bomber, and the Fannie (Corey, 2026-10-03, verbatim: "this is the artwork for the love hurts joggers and the back of the love hurts bomber, and the Fannie")
+
+**FOUNDER_CONFIRMED:** [ghost] logo is supposed the be the dot of the I (Corey, 2026-06-09, verbatim: "[ghost] logo is supposed the be the dot of the I"; existing registry correction, preserved here to resolve the conflicting right-side single-rose prose.)
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:
@@ -28,7 +32,7 @@ extra_references:
 ### Front
 - **front-body** (the front face of the bag, ~6–8in wide): Solid **black pebbled faux-leather** fabric. **Technique:** stitched. **Color:** black.
 - **front-pocket-zipper** (horizontal, across the front face below the bag's top edge): A black metal/plastic zipper running horizontally across the front face providing access to the front pocket. **Technique:** patch (sewn-on zipper hardware). **Color:** black zipper teeth and pull.
-- **front-center-bottom** (~3–4in wide, centered on the lower front face below the zipper): The wordmark **"FANNIE"** in stylized white cursive script lettering, with a small **canonical Love Hurts red rose graphic** decoration to the immediate right of the wordmark (a single small red rose accent — similar in style to the small standalone rose accent used on lh-002 joggers). **Technique:** embroidered (wordmark in white thread + small red rose embroidered detail). **Color:** white "FANNIE" + small red rose accent.
+- **front-center-bottom** (~3–4in wide, centered on the lower front face below the zipper): The wordmark **"FANNIE"** in stylized white cursive script lettering, with the **canonical heart-rose-composite artwork** forming the **dot of the I** in the Fannie lettering, as recorded in Corey's founder correction. **Technique:** embroidered (wordmark in white thread + canonical heart-rose-composite detail). **Color:** white "FANNIE" + exact canonical heart-rose-composite artwork.
 
 ### Back
 - **back-body** (the panel against the wearer's body): Solid **black pebbled faux-leather**, no decoration. **Technique:** stitched. **Color:** black.
@@ -41,13 +45,13 @@ extra_references:
 
 ## Negative — what is NOT on this product (DO NOT render)
 
-- NO Love Hurts full lockup (wordmark + broken-heart-and-thorns) on the bag — only the "FANNIE" wordmark + a single small red rose accent appear. The full Love Hurts lockup is for jackets / shorts / shirts, NOT this small accessory.
+- NO Love Hurts full lockup (wordmark + broken-heart-and-thorns) on the bag — only the "FANNIE" wordmark + the canonical heart-rose-composite artwork as the dot of the I appear. The full Love Hurts lockup is for jackets / shorts / shirts, NOT this small accessory.
 - NO Black Rose three-rose-cluster on this product — this is a Love Hurts collection product.
-- NO multi-color rose-cluster composition — the rose accent is a single small red rose graphic, NOT the full canonical multi-rose-on-cloud composition.
+- NO unrelated rose-cluster composition — use the exact canonical heart-rose-composite artwork as the dot of the I, NOT the Black Rose three-rose cluster or any invented rose artwork.
 - NO patches on this bag — the wordmark + rose are EMBROIDERED directly into the front face, NOT sewn-on patches.
 - NO Authentic Collection patch.
 - NO greyscale wordmark — the "FANNIE" lettering is WHITE on the black faux-leather.
-- NO red wordmark — the "FANNIE" letters are WHITE; the only red element is the small rose graphic accent next to the wordmark.
+- NO red wordmark — the "FANNIE" letters are WHITE; the canonical heart-rose-composite artwork retains its exact source colors and forms the dot of the I.
 - NO additional pockets visible from outside other than the single front zipper-pocket. No back pocket. No side pockets.
 - NO hardware in metal-gold or rose-gold finish — all hardware (buckle, zipper) is BLACK.
 - NO contrast piping along any edge — the bag is uniformly black faux-leather with no contrast piping or trim.
@@ -55,9 +59,9 @@ extra_references:
 - NO embossed or debossed branding — the FANNIE wordmark is embroidered, NOT embossed into the faux-leather surface.
 - NO real leather (this is **faux-leather / PU pebbled-finish**, not genuine leather).
 - NO printed graphics — branding is embroidered.
-- NO Skyy Rose Co script logo on this bag — the only branding is "FANNIE" + the small red rose accent.
+- NO Skyy Rose Co script logo on this bag — the only branding is "FANNIE" + the canonical heart-rose-composite artwork as the dot of the I.
 
 ## Scene direction
 
-- **Pose:** Front view straight-on showing the bag worn flat (or laid flat), with the strap visible curving above and connecting to the bag corners — show the buckle clip and the FANNIE wordmark + red rose accent on the lower-front face. Optional alternate view: bag worn cross-body or at the waist on a model to show scale.
+- **Pose:** Front view straight-on showing the bag worn flat (or laid flat), with the strap visible curving above and connecting to the bag corners — show the buckle clip and the FANNIE wordmark + exact canonical heart-rose-composite artwork as the dot of the I on the lower-front face. Optional alternate view: bag worn cross-body or at the waist on a model to show scale.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.

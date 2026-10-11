@@ -64,7 +64,7 @@ function skyyrose2_sot_asset_uri( $path ) {
 	return 'https://example.test/sot/' . $path; }
 function absint( $value ) {
 	return abs( (int) $value ); }
-function skyyrose2_is_preorder_product( $product ) {
+function skyyrose2_is_transaction_preorder_product( $product ) {
 	return $product->preorder; }
 function skyyrose2_product_presentation() {
 	return array(
@@ -132,6 +132,11 @@ $GLOBALS['test_media']        = array(
 	'ids'   => array(),
 );
 $GLOBALS['resolver_calls']    = 0;
+$GLOBALS['test_frame']        = array(
+	'small'  => 'fixture/legacy-portal.webp',
+	'width'  => 640,
+	'height' => 960,
+);
 $GLOBALS['test_archive']      = false;
 $GLOBALS['test_main']         = true;
 $GLOBALS['test_loop_name']    = '';
@@ -144,5 +149,21 @@ $html                         = render_card(
 		'index'   => 0,
 	),
 	$previous
+);
+check_card(
+	false === strpos( $html, 'class="sr2-c-editorial-card__frame"' ),
+	'The default V2 card must omit the optional legacy archive frame.'
+);
+$opted_in_html = render_card(
+	array(
+		'product' => $piece,
+		'index'   => 0,
+		'frame'   => true,
+	),
+	$previous
+);
+check_card(
+	false !== strpos( $opted_in_html, 'class="sr2-c-editorial-card__frame"' ),
+	'An explicitly opted-in legacy archive frame must remain renderable.'
 );
 echo $html;

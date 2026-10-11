@@ -1,0 +1,58 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-next-20261003-fresh-three-card-br-001",
+  "asset_id": "card-br-001",
+  "producer": "/root",
+  "reviewer": "/root/next_phase_visual_qa",
+  "verdict": "PASS",
+  "asset_sha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "br-001"
+  ],
+  "collections": [
+    "black-rose"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/card-br-001-visual-review.json",
+    "sha256": "87713186aa1fb30f45179e5681886e151951132400b364ac3ac87ff5d9f28401"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/br-001-card-1440.png",
+      "sha256": "c98b9078c06dd5f34bbb204ff50242b6489138c3d9997abdf81d9d1d95c5bc3e"
+    },
+    "card_tablet": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/br-001-card-768.png",
+      "sha256": "62947cf40419be02926e599500edad4f25f382fc57d6532b486b1ee675dcf365"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/br-001-card-390.png",
+      "sha256": "02a55ddda8d1123612db7ebcc6586d3eb3e363d19cd8d3f778c8f48457604c1a"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/br-001-pdp-1440.png",
+      "sha256": "7987bdc07cddd4c9e004eccf3796de16a7c657c2a148e2ec6d531a260dcfde70"
+    },
+    "pdp_tablet": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/br-001-pdp-768.png",
+      "sha256": "f9b16cd26730bf26155995f5c6366919f861484e2eaaabc332a949ac10b748da"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/fresh-three/qa-captures/br-001-pdp-390.png",
+      "sha256": "0fe72d2ce7349676e7d6e6fc8cc4a3ec8ee2b04db416cf845d973e4bf672cb49"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "PASS only for exact native candidate and card_front/pdp_on_model_front static media containment in actual local V2 markup at390/768/1440. Full theme, interactive commerce, highlight/walking, variants, staging, publishing and founder acceptance remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "Black crewneck retains white neckline, both visible white cuffs and full white hem. Silver/white embossed three-rose cluster, leaf/stem structure and cloud match the physical garment colorway. Founder8W x10H inches remains authoritative; uncalibrated image is not an independent inch measurement. No hood, zipper, kangaroo pocket or extra marks. Hand in supporting trouser pocket leaves full sold item readable. Outdoor court, rail and natural neighborhood daylight continue accepted Black Rose streetwear lane. Whole sold item preserved at all3widths.",
+    "pdp_on_model_front": "Whole native frame preserved by actual V2 media helper at all3widths; this is a media fixture, not complete PDP commerce."
+  }
+}

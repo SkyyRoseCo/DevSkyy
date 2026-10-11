@@ -46,6 +46,7 @@ the point of this module.
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 import sys
@@ -197,6 +198,10 @@ def _images_for(product: dict[str, Any], sku: str) -> tuple[dict[str, Any], list
             "height": card.get("height"),
             "source_key": "images.card_front",
         }
+        if "review" in card:
+            resolved["card_front"]["review"] = copy.deepcopy(card["review"])
+        if "candidate_id" in card:
+            resolved["card_front"]["candidate_id"] = card["candidate_id"]
     else:
         resolved["card_front"] = None
         gaps.append("images.card_front")
@@ -399,6 +404,7 @@ def get_product(sku: str) -> dict[str, Any]:
         "collection": catalog.get("collection"),
         "catalog": catalog,
         "garment": product.get("garment", {}),
+        "presentation": copy.deepcopy(product.get("presentation", {})),
         "merchandising": merchandising,
         "merchandising_provenance": product.get("merchandising_provenance"),
         "dossier": {**merged["dossier"], "full_text": merged["_dossier"].raw},

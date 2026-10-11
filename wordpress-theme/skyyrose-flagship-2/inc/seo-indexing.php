@@ -262,7 +262,7 @@ function skyyrose2_seo_resolved_context() {
 			$context['title']       = $product->get_name() . ' | ' . $site_name;
 			$context['description'] = $product_description ? $product_description : $context['description'];
 			$media                  = function_exists( 'skyyrose2_product_commerce_media' ) ? skyyrose2_product_commerce_media( $product ) : array();
-			$context['image']       = ! empty( $media['ids'] ) ? (string) wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '';
+			$context['image']       = ! empty( $media['front']['src'] ) ? (string) $media['front']['src'] : ( ! empty( $media['ids'] ) ? (string) wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '' );
 			$context['type']        = 'product';
 		}
 	} elseif ( is_single() ) {
@@ -291,7 +291,9 @@ function skyyrose2_seo_resolved_context() {
 		$context['description'] = $archive_description ? $archive_description : $context['description'];
 	}
 
-	return apply_filters( 'skyyrose2_seo_context', $context );
+	$context          = apply_filters( 'skyyrose2_seo_context', $context );
+	$context['image'] = function_exists( 'skyyrose2_media_url' ) ? skyyrose2_media_url( $context['image'] ?? '' ) : '';
+	return $context;
 }
 
 /**
@@ -511,7 +513,7 @@ function skyyrose2_seo_schema_graph() {
 	}
 
 	if ( is_single() && ! is_singular( 'product' ) ) {
-		$article = array(
+		$article   = array(
 			'@type'            => 'Article',
 			'@id'              => get_permalink() . '#article',
 			'headline'         => get_the_title(),
@@ -524,7 +526,8 @@ function skyyrose2_seo_schema_graph() {
 			),
 			'publisher'        => array( '@id' => $organization_id ),
 		);
-		$image   = get_the_post_thumbnail_url( get_queried_object_id(), 'full' );
+		$thumbnail = get_the_post_thumbnail_url( get_queried_object_id(), 'full' );
+		$image     = function_exists( 'skyyrose2_media_url' ) ? skyyrose2_media_url( $thumbnail ? $thumbnail : '' ) : '';
 		if ( $image ) {
 			$article['image'] = $image;
 		}
@@ -772,6 +775,20 @@ function skyyrose2_seo_jetpack_metadata_enabled( $enabled ) {
 }
 
 /**
+ * Jetpack robots.txt filter: do not advertise the news sitemap.
+ *
+ * SkyyRose is a store, not a Google News publisher; Jetpack's news sitemap
+ * carries no news entries, so only the main sitemap is advertised. A supported
+ * SEO plugin keeps its own decision.
+ *
+ * @param bool $advertise Jetpack default.
+ * @return bool
+ */
+function skyyrose2_seo_jetpack_news_sitemap_in_robots( $advertise ) {
+	return skyyrose2_seo_has_authority_plugin() ? (bool) $advertise : false;
+}
+
+/**
  * Replace the legacy V2 hooks and register this adapter.
  */
 function skyyrose2_seo_indexing_bootstrap() {
@@ -789,6 +806,7 @@ function skyyrose2_seo_indexing_bootstrap() {
 	add_filter( 'jetpack_sitemap_post_types', 'skyyrose2_seo_jetpack_sitemap_post_types', 20 );
 	add_filter( 'jetpack_sitemap_skip_post', 'skyyrose2_seo_jetpack_sitemap_skip', 20, 2 );
 	add_filter( 'jetpack_sitemap_image_skip_post', 'skyyrose2_seo_jetpack_sitemap_image_skip', 20, 2 );
+	add_filter( 'jetpack_news_sitemap_include_in_robotstxt', 'skyyrose2_seo_jetpack_news_sitemap_in_robots', 20 );
 	add_filter( 'jetpack_enable_open_graph', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
 	add_filter( 'jetpack_seo_meta_tags_enabled', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );
 	add_filter( 'jetpack_seo_custom_titles', 'skyyrose2_seo_jetpack_metadata_enabled', 100 );

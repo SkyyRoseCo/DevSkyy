@@ -568,6 +568,14 @@
    * intent; the PDP remains the complete progressive fallback. */
   const quickView = document.querySelector('[data-quick-view-dialog], #sr2-quick-view-dialog');
   if (quickView && typeof quickView.showModal === 'function') {
+    const quickViewMedia = quickView.querySelector('[data-quick-view-media]');
+    if (quickViewMedia && !quickViewMedia.querySelector('[data-quick-view-image]')) {
+      const image = document.createElement('img');
+      image.setAttribute('data-quick-view-image', '');
+      image.alt = '';
+      image.hidden = true;
+      quickViewMedia.append(image);
+    }
     const fields = {
       name: quickView.querySelector('[data-quick-view-name]'),
       collection: quickView.querySelector('[data-quick-view-collection]'),
@@ -586,7 +594,16 @@
           if (!field || key === 'media') return;
           const value = button.dataset[`quickView${key[0].toUpperCase()}${key.slice(1)}`] || '';
           if (key === 'image') {
-            field.src = value;
+            ['srcset', 'sizes', 'width', 'height'].forEach((attribute) => {
+              const responsiveValue = button.dataset[`quickView${attribute[0].toUpperCase()}${attribute.slice(1)}`] || '';
+              if (responsiveValue && responsiveValue !== '0') field.setAttribute(attribute, responsiveValue);
+              else field.removeAttribute(attribute);
+            });
+            field.loading = 'eager';
+            field.decoding = 'async';
+            if (value) field.src = value;
+            else field.removeAttribute('src');
+            field.hidden = !value;
             field.alt = button.dataset.quickViewName || '';
             if (fields.media) fields.media.hidden = !value;
           } else if (key === 'url') {
@@ -806,4 +823,5 @@
     window.addEventListener('pageshow', () => { observer?.observe(heroModelLoop); syncModelLoop(); }, { passive: true });
     syncModelLoop();
   }
+
 })();

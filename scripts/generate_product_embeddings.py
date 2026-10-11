@@ -2,10 +2,10 @@
 """Generate CLIP image embeddings for the canonical catalog SKUs.
 
 Builds ``wordpress-theme/skyyrose-flagship/data/product-embeddings.json`` — the
-input ``scripts/catalog_ml_audit.py`` loads. Each SKU's FRONT product image is
-resolved via the canonical SOT imagery manifest (``data/sot-images.json`` —
-NEVER the raw CSV image columns, per ``feedback_sot_imagery_everywhere.md``),
-then encoded with the local CLIP vision model (``openai/clip-vit-base-patch32``,
+input ``scripts/catalog_ml_audit.py`` loads. Each SKU's name, collection and
+FRONT product image come from ``skyyrose.core.product.get_product`` (the image
+role is the registry binding that ``data/sot-images.json`` projects — NEVER the
+raw CSV image columns, per ``feedback_sot_imagery_everywhere.md``), then encoded with the local CLIP vision model (``openai/clip-vit-base-patch32``,
 512-d, L2-normalized).
 
 Output schema (matches what ``catalog_ml_audit.py`` expects — dict keyed by
@@ -26,7 +26,7 @@ SKU, not a list):
     }
 
 Usage:
-    /Users/theceo/DevSkyy/.venv/bin/python scripts/generate_product_embeddings.py
+    python scripts/generate_product_embeddings.py
 """
 
 from __future__ import annotations
@@ -40,37 +40,29 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from skyyrose.core import clip_embedder  # noqa: E402
-from skyyrose.core.catalog_loader import read_catalog_rows  # noqa: E402
 from skyyrose.core.paths import THEME_ROOT  # noqa: E402
+from skyyrose.core.product import get_product, load_registry  # noqa: E402
 
-SOT_IMAGES_PATH = ROOT / "data" / "sot-images.json"
-OUTPUT_PATH = ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "product-embeddings.json"
-
-
-def _load_sot_images() -> dict[str, dict]:
-    """Load the canonical SOT imagery contract (never the raw CSV image columns)."""
-    payload = json.loads(SOT_IMAGES_PATH.read_text())
-    return payload["images"]
+OUTPUT_PATH = THEME_ROOT / "data" / "product-embeddings.json"
 
 
 def main() -> int:
-    catalog_rows = read_catalog_rows()
-    sot_images = _load_sot_images()
+    # Registry order is the catalog order; every fact comes from get_product.
+    skus = list(load_registry()["products"])
 
     products: dict[str, dict] = {}
     skipped: list[tuple[str, str]] = []
 
-    for row in catalog_rows:
-        sku = row["sku"]
-        name = row["name"]
-        collection = row["collection"]
+    for sku in skus:
+        record = get_product(sku)
+        name = record["catalog"]["name"]
+        collection = record["catalog"]["collection"]
 
-        entry = sot_images.get(sku)
-        if not entry or not entry.get("front"):
-            skipped.append((sku, "no front image in sot-images.json"))
+        front_rel = (record["images"].get("front") or {}).get("path")
+        if not front_rel:
+            skipped.append((sku, "no front image bound in the product registry"))
             continue
 
-        front_rel = entry["front"]
         front_abs = THEME_ROOT / front_rel
         if not front_abs.exists():
             skipped.append((sku, f"resolved path does not exist: {front_abs}"))
@@ -105,7 +97,7 @@ def main() -> int:
 
     print()
     print(f"Wrote {OUTPUT_PATH.relative_to(ROOT)}")
-    print(f"  embedded: {len(products)}/{len(catalog_rows)} SKUs")
+    print(f"  embedded: {len(products)}/{len(skus)} SKUs")
     if skipped:
         print(f"  skipped: {len(skipped)}")
         for sku, reason in skipped:

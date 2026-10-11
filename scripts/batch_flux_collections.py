@@ -23,7 +23,6 @@ from __future__ import annotations
 
 import argparse
 import asyncio
-import csv
 import json
 import logging
 import sys
@@ -42,6 +41,8 @@ for _f in [".env", ".env.hf", ".env.secrets"]:
         load_dotenv(_f, override=False)
 
 from skyyrose.core.dossier_loader import DOSSIERS_DIR, get_product_with_dossier
+from skyyrose.core.paths import THEME_ROOT
+from skyyrose.core.product import get_product, load_registry
 from skyyrose.core.sot_images import resolve_image
 from skyyrose.elite_studio.synthesis.flux_pipeline import render
 from skyyrose.elite_studio.synthesis.state.telemetry import CostTracker
@@ -53,40 +54,39 @@ logging.basicConfig(
 )
 logger = logging.getLogger("batch")
 
-CATALOG_CSV = Path("wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv")
-ASSETS_ROOT = Path("wordpress-theme/skyyrose-flagship")
+ASSETS_ROOT = THEME_ROOT
 BATCH_COLLECTIONS = {"love-hurts", "signature"}
 
 
 def _load_manifest(collections: set[str], skus: set[str]) -> list[dict]:
     """Return list of {sku, name, collection, front_path, back_path, dossier_slug}."""
     manifest = []
-    with CATALOG_CSV.open() as f:
-        for row in csv.DictReader(f):
-            if row.get("published", "true").lower() == "false":
-                continue
-            if row["collection"] not in collections:
-                continue
-            if skus and row["sku"] not in skus:
-                continue
-            sku = row["sku"]
-            front_rel = resolve_image(sku, "packshot")
-            if front_rel is None:
-                logger.warning("skipping %s — SOT has no packshot image", sku)
-                continue
-            front_path = ASSETS_ROOT / front_rel
-            back_rel = resolve_image(sku, "back_packshot")
-            back_path = (ASSETS_ROOT / back_rel) if back_rel else None
-            manifest.append(
-                {
-                    "sku": sku,
-                    "name": row["name"],
-                    "collection": row["collection"],
-                    "dossier_slug": row.get("dossier_slug", ""),
-                    "front_path": front_path,
-                    "back_path": back_path,
-                }
-            )
+    # Registry order is the catalog order; every fact comes from get_product.
+    for sku in load_registry()["products"]:
+        row = get_product(sku)["catalog"]
+        if row.get("published", "true").lower() == "false":
+            continue
+        if row["collection"] not in collections:
+            continue
+        if skus and sku not in skus:
+            continue
+        front_rel = resolve_image(sku, "packshot")
+        if front_rel is None:
+            logger.warning("skipping %s — SOT has no packshot image", sku)
+            continue
+        front_path = ASSETS_ROOT / front_rel
+        back_rel = resolve_image(sku, "back_packshot")
+        back_path = (ASSETS_ROOT / back_rel) if back_rel else None
+        manifest.append(
+            {
+                "sku": sku,
+                "name": row["name"],
+                "collection": row["collection"],
+                "dossier_slug": row.get("dossier_slug", ""),
+                "front_path": front_path,
+                "back_path": back_path,
+            }
+        )
     return manifest
 
 

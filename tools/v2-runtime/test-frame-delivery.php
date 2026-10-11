@@ -8,8 +8,17 @@ define( 'ABSPATH', $fixture );
 define( 'SKYYROSE2_DIR', $fixture );
 define( 'SKYYROSE2_URI', 'https://example.test/theme' );
 function skyyrose2_sot_asset_uri( $path ) { return SKYYROSE2_URI . '/assets/sot/' . $path; }
+// The media gate is tested on its own; here it is a grant this harness controls,
+// so each mode proves delivery consults it and fails closed when it says no.
+$GLOBALS['sr2_frame_denied'] = 'ineligible' === $mode ? 'assets/derived/card-frames/signature-384w.webp' : ( 'narrow-ineligible' === $mode ? 'assets/derived/card-frames/signature-360w.webp' : '' );
+// `current-eligibility` runs the real gate on the shipped inventory instead: it holds
+// no archive_frame grant, so production delivers no responsive frame.
+if ( 'current-eligibility' !== $mode ) {
+	function skyyrose2_media_path_allowed( $relative, $role = '', $sku = '' ) { return 'archive_frame' === $role && $relative !== $GLOBALS['sr2_frame_denied']; }
+}
 function skyyrose2_collections() { return array( 'signature' => array( 'portal_statue' => array( 'small' => 'images/product-card-portals/signature-portal-statue-640w.webp' ) ) ); }
 $files = array( 'assets/derived/card-frames/manifest.json', 'assets/derived/card-frames/signature-384w.webp', 'assets/sot/images/product-card-portals/signature-portal-statue-640w.webp', 'assets/derived/card-frames/signature-360w.webp' );
+if ( 'current-eligibility' === $mode ) { $files[] = 'data/v2-media-eligibility.json'; }
 try {
 	foreach ( $files as $relative ) {
 		$target = $fixture . '/' . $relative;
@@ -23,6 +32,12 @@ try {
 	$data = json_decode( file_get_contents( $manifest ), true );
 	switch ( $mode ) {
 		case 'valid': break;
+		case 'ineligible': case 'narrow-ineligible': break;
+		case 'current-eligibility':
+			function add_action( ...$args ) {}
+			function add_filter( ...$args ) {}
+			require $theme . '/inc/v2-media-eligibility.php';
+			break;
 		case 'narrow-missing': unlink( $narrow ); break;
 		case 'narrow-derived': file_put_contents( $narrow, 'changed' ); break;
 		case 'narrow-path': $data['collections']['signature']['narrow_rendition']['src'] = '../escape.webp'; break;

@@ -8,9 +8,13 @@ reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
 
 # BLACK Rose Hoodie
 
-**Garment type lock:** Black pullover hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (all tonal black, no contrast white trim — distinct from the matching Black Rose Crewneck/Joggers set which use white ribbing). NOT a zip-up. NOT a half-zip. NOT a crewneck. NOT a t-shirt. Heavyweight cotton fleece.
+**Garment type lock:** Black pullover hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (all tonal black, no contrast white trim — distinct from the matching Black Rose Crewneck/Joggers set which use white ribbing). NOT a zip-up. NOT a half-zip. NOT a crewneck. NOT a t-shirt. Heavyweight cotton fleece. No hip patch on this regular hoodie. A wrist/cuff label carries the cluster logo.
 
 ## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** br-004 does have a label on the wrist with the cluster logo on ut (Corey, 2026-10-03 America/Los_Angeles, verbatim: "br-004 does have a label on the wrist with the cluster logo on ut"). Wrist/cuff label carries the cluster logo. Left/right wrist, dimensions, label material and application are not specified in this statement. The regular hoodie still has NO hip patch.
+
+**FOUNDER_CONFIRMED:** 2. its no hip patch on the regular hoodie only the black rose signasture (Corey, 2026-10-03 America/Los_Angeles, verbatim: "2. its no hip patch on the regular hoodie only the black rose signasture"; answer to "For BR-004, what artwork belongs on the left-hip patch, and how is it applied? Include its size if you have it."). The regular BR-004 hoodie has **NO hip patch**; the prior requirement was misattributed and is superseded. Historical record retained in `tasks/v2-creative-review/v2-imagery-reset-20261002/founder-corrections-20261003-width-height-regular-hoodie/registry-before.json`; it is not an active garment requirement.
 
 **FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
 
@@ -35,17 +39,9 @@ reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
   rose on back-center. NO logos anywhere on the back.)
 
 ### Sleeves / Collar / Hem / Other
-- **left-hip** (left side of the body, exact dimensions TBD): A small
-  patch sits at the left hip / left side of the body. It is NOT on the
-  sleeve (founder-confirmed 2026-09-21).
-  Patch content, technique, and dimensions are **PARKED for later
-  verification** — Corey will confirm the patch detail in a follow-up
-  read-back. **Do not render this region with guessed content** —
-  the RAS pipeline should treat the left-hip area as "small patch
-  present, content unverified" and prompt for the verification before
-  rendering this region in production.
-- **left-sleeve**: clean, no decoration.
-- **right-sleeve**: clean, no decoration.
+- **left-hip / right-hip**: clean body fabric, **NO hip patch** (founder-confirmed 2026-10-03).
+- **wrist-label / wrist-cuff**: A label with the Black Rose cluster logo (founder-confirmed 2026-10-03). Left/right wrist, material, application and dimensions are unspecified; do not infer them. This is distinct from the interior woven size tag.
+- **left-sleeve / right-sleeve**: sleeve fabric otherwise unbranded, with the founder-confirmed wrist/cuff cluster-logo label as the exception.
 - **kangaroo-pocket** (front): clean, no embroidery, no logo, no
   decoration on the pocket itself.
 - **hood-drawstring**: tonal black flat drawstring (matches the body —
@@ -66,16 +62,12 @@ reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
   Crewneck/Joggers signature, not the Hoodie).
 - NO contrast-color drawstrings — they are tonal black, not white,
   not rose-gold, not gold.
-- NO Black Rose logo on the back. NO Black Rose logo on the sleeves. NO
-  Black Rose logo on the kangaroo pocket. The rose appears at the
-  front-chest only.
-- NO silicone-appliqué patch on the chest or anywhere else.
+- NO Black Rose logo on the back or kangaroo pocket. The front-chest rose and wrist/cuff cluster-logo label are the registered decorations; sleeve fabric elsewhere is unbranded.
+- NO silicone-appliqué patch on the chest. The wrist/cuff label material and application remain unspecified.
 - NO embossed/debossed decoration on the body or hood.
-- NO printed graphics, NO sublimated panels, NO heat-transfer vinyl,
-  NO puff-print decoration.
+- NO printed graphics, sublimated panels, heat-transfer vinyl or puff-print decoration on the body fabric. This does not prescribe or prohibit the unspecified application of the wrist/cuff cluster-logo label.
 - NO front-pocket branding — the kangaroo pocket fabric is clean.
-- NO sleeve patch on either sleeve (the small patch is at the left hip /
-  left side of the body, NOT the sleeve).
+- NO other sleeve decoration beyond the wrist/cuff cluster-logo label. NO hip patch on either side of this regular hoodie; the hip decoration belongs to BR-005 Signature Edition.
 - NO contrasting hood lining (assume same black tonal — to be verified
   if a contrast lining exists, but default is uniform black).
 - NO chest text or wordmark (the front rose is the only chest decoration).

@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "artifact_id": "v2-independent-garment-geometry-r4-20261003",
+  "created_at_utc": "2026-10-03T23:35:06.114297+00:00",
+  "classification": "ONE_FRESH_FROZEN_NATIVE_EDGE_REVIEW_AND_TWENTY_ONE_EXACT_INDEPENDENT_PASS_CARRY_FORWARD",
+  "candidate": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r4/FROZEN-R4-candidate-polygons.json",
+    "sha256": "7c037fb1a735032ce96fa769a9781c113623c29c9144df646a475e83c6ce6adb"
+  },
+  "current_candidate_at_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/candidate-polygons.json",
+    "sha256": "7c037fb1a735032ce96fa769a9781c113623c29c9144df646a475e83c6ce6adb"
+  },
+  "preview": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r4/FROZEN-R4-SkyyRoseV2preview.html",
+    "sha256": "6c93941719749bbb400e541623aaa29fe0659fad80753857333f5763a3d2bf9d"
+  },
+  "reviewer": "/root/kids_terminal_visual_review",
+  "independence": "Reviewer authored no candidate geometry, product facts, source imagery or runtime changes",
+  "required_reference": "/Users/theceo/.codex/creative-standards/imagery-prompting.md",
+  "source_authority": "get_product(sku) from sole root logo-registry.json; Corey maker specifications authoritative FOUNDER_CONFIRMED; checks execution geometry only",
+  "registry_binding": "All22 exact per-image current get_product card_front identities verified; global registry hash intentionally not frozen during concurrent unrelated source-owner work",
+  "authentication": "NOT_APPLICABLE_LOCAL_FROZEN_NATIVE_GEOMETRY_AND_DIAGNOSTIC_BROWSER_REVIEW",
+  "scope": "TECHNICAL_GARMENT_REGION_AND_FROZEN_DIAGNOSTIC_STATES_ONLY",
+  "summary": {
+    "pass_count": 22,
+    "revise_count": 0,
+    "fresh_pass_skus": [
+      "sg-009"
+    ],
+    "exact_r3_pass_carried_count": 21,
+    "overall_visual_verdict": "PASS_COMBINED_TECHNICAL_GARMENT_GEOMETRY_CANDIDATE",
+    "artwork_motion_founder_staging_release_approval": "NOT_GRANTED"
+  },
+  "native_checkpoint": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r4/SG009-NATIVE-CHECKPOINT-R4.json",
+    "sha256": "1a715a3309696104a0dbdeed5b7cf54b3e5950f64dee762b52b440a566ef1417"
+  },
+  "native_diagnostics": [
+    {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/r4-edge-diagnostics/entire-adjoining-bands-native-and-selection.png",
+      "sha256": "d70d67d5c287ffacc687181b75ecb940876fc0c72120ea60f7296b37e5eea3bb"
+    },
+    {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/r4-edge-diagnostics/actual-raster-adjoining-band-pixels.json",
+      "sha256": "23f5db7d4bbdd92c640561645c19811403c337c977cc770d44ce7e423ffc47b3"
+    },
+    {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/r4-edge-diagnostics/sg-009-full-native-outline.png",
+      "sha256": "1239788cfcaba47ecf2dfc006cc676cceb11686093f4bbce9cdd988cdebae2a8"
+    },
+    {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/r4-edge-diagnostics/known-fail-points-8x.png",
+      "sha256": "c1b23b626bda8cc62404594ce756995bdecdc753597d110bdf401a1b412e20a9"
+    },
+    {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/r4-edge-diagnostics/sg-009-rasterized-selection.png",
+      "sha256": "87b4ccbdce05dcc229fde5aaddb7f10e7b757e89c37de820ecd5cbd248672067"
+    },
+    {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/r4-edge-diagnostics/upper-edge-unpainted-8x.png",
+      "sha256": "d874a8346e3153a64e1c0ca60003963270fec23617404862ab394b278243f1af"
+    },
+    {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/r4-edge-diagnostics/entire-collar-outline-6x.png",
+      "sha256": "47fc5225eff8c62a83a4f2b1deb687c13c3d446beea5ccd8d82dcee85258efb8"
+    }
+  ],
+  "browser_validation": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r4/BROWSER-VALIDATION-R4.json",
+    "sha256": "e3183b4e7c6832aac12217598b3635774067c45c6a23753603a55895f27a86c8"
+  },
+  "browser_capture_review": "Personally inspected hover390/768/1440, actualTabfocus390/768/1440, pressed1440, reducedmotion768, touch390 and defaultcard390. All3 default-hover diffs calculated;15 fresh screenshotfiles hash-bound.",
+  "screenshot_diff": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r4/SCREENSHOT-DIFF-R4.json",
+    "sha256": "8e64f14d8f29d8fed37aa91ae14bef0bad20ba2bb95945f3e9e069bac68dfa81"
+  },
+  "browser_state_scope": "Fresh SG009 default/hover/focus/pressed at3 widths, all22 exact DOM paths/source bytes/native decodes and explicit selected overlays, reducedmotion equivalent, touch390checkbox fallback, nooverflow/pageerrors. Other21 carry does not claim new native image review.",
+  "other_surface_gates": {
+    "full_theme_100_point_rubric": "UNVERIFIED_OUTSIDE_BOUNDED_TECHNICAL_REVIEW",
+    "logo_off_anti_generic": "UNVERIFIED_OUTSIDE_BOUNDED_TECHNICAL_REVIEW",
+    "contrast_full_funnel_inheritance": "UNVERIFIED_OUTSIDE_BOUNDED_TECHNICAL_REVIEW",
+    "Lighthouse_CWV": "UNVERIFIED_NOT_PERFORMED",
+    "application_runtime_staging": "UNVERIFIED_NOT_PERFORMED",
+    "provider_controls": "NOT_APPLICABLE_NO_GENERATION"
+  },
+  "setup_failures_preserved": [
+    {
+      "tool_chunk": "2be9ce",
+      "record": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r4/BROWSER-SETUP-FAILURE-R4.json",
+        "sha256": "501a6f8049bfaacaaf930f9b254d31d5e736b9e0dd4a99dbcb452ac217dedfd0"
+      },
+      "reason": "Reviewer harness called Fetch Response.ok as method; failed before capture. Corrected harness then actual51c091 completed fresh captures successfully."
+    },
+    {
+      "tool_chunk": "a7e645",
+      "reason": "Reviewer receipt compiler assumed historical BR007 row had method key; KeyError before receipt write. Explicit native-review flags verified in aabd19 and lineage corrected. No candidate/source writes."
+    }
+  ],
+  "reviews": [
+    {
+      "sku": "br-001",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/br-001.png",
+        "sha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "ec560d34e2281ce7a4010371401af71dde39c5ec0d92dcc0a491b7050da4629e",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "br-002",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/br-002.png",
+        "sha256": "598a0be749d8b3951107f5b0bf39e51399ef8ae990f6c70f2c43a357d445a08d",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "0a73b56d5350149df46ada59564dd84a59e05d99265ab0dfa4e016b4985087c1",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "br-004",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/br-004.png",
+        "sha256": "c54a5bb33a862c02211ffedc6e377c5431a624dfba54f2c70c50648631dba0ac",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "b2cc46b47c002daf62ec6a21c493b332b7f3e53d8d05abe20e6fd615f9d5f0a2",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "br-005",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/br-005.png",
+        "sha256": "6ac3b4092f21226f3f4202448f6115651c472f25df9946edbcfeda9155b99757",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "57279587c1bf0e307f12821ba7ae524873f6dcbd89bdc1071898980387de8f7f",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "br-006",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/br-006.png",
+        "sha256": "749b87a9a61715e14ed1d170013b172b45461885a799cd1b488d8b6ad19e7355",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "a4f2bb0a2f7d7388d5630b0ad29c2d8d59572c0a844e010986039f4dcf705d9e",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "br-007",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/br-007.png",
+        "sha256": "5dc9e70947183f159c5ad889aa441677907f5a5b8fe4d3f22b941f094bcf8c26",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "8ace6ced953140f6a4a789c82349e8dfc26bec8cf0339c4e9256f539e50e349c",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "ACTUAL_NATIVE_R3_ENTIRE_CHANGED_BR007_EDGE_AND_FULL_GARMENT_INSPECTION"
+    },
+    {
+      "sku": "br-009",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/br-009.png",
+        "sha256": "f051a28b80c239ea82bdee026f51306d0814134df5d7b289b462a29ef7947c23",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "6b6d1df456863d5363cedddbd3d5cd93034fc703bc2e1836cd94c1ea01174ba7",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "kids-001",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/kids-001.png",
+        "sha256": "0da7f1158e80c738b457b42f132a5ab723c7cee739d588ca9dcea00b404c0f29",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "6e7a4cb23977f97d32a420523c01f8a9e174c20997778bfa8fdb22fc8769ff1e",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "lh-003",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/lh-003.png",
+        "sha256": "c6be96eccf2f5534c960f21af64d5c1151c4acb63341b21d2083e1dde1f91ef5",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "6f5e97c76e01c1e6ee2158f47ab8159e218e5bcd11e2dfcd61c6d26406a08341",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "lh-004",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/lh-004.png",
+        "sha256": "e3b22a5fbc315f1147d51a50ddc447fdc819c6f8366d8c4c0de8263bb47685a3",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "2f052203104a37ca36adf89aa1a7d52b25fb7c8b25a85e1656bf8e20b32db48f",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "lh-006",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/lh-006.png",
+        "sha256": "b376de27c083bd9ad19244db1a4a22b127b59c4add7ccf860d78140af14375fe",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "f21dce2c77f5668fa8535736a681f99e25733e61449d3e8ef33db60eed9d2bab",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "sg-001",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-001.png",
+        "sha256": "80cc41601242f767fd453d31e0534c4d1a6ce3d474be335b8fc6e2167053794a",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "69e434768f5c30a008461639004b6cf4773e8a8531f45a5548c13c27bc4eaa6a",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "sg-002",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-002.png",
+        "sha256": "34b79e43ac2c9b84b471642da138411b22e080b8e0cf157aaff3223ea705b294",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "7cf563725e938b65628bbc9538e1dc2dff97b852b2d2f74815e0b1bac5522aae",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "sg-003",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-003.png",
+        "sha256": "8f8b5a016be28ceba3268091e603a6cdd0d3fc78e77085b40be61f89b9173b0a",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "4de1d2383062589092bb9d2539eb32c1586c0689e685bc546be8a9d3d129dd06",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "sg-005",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-005.png",
+        "sha256": "abced2c89fae4152b98e64b21235fa51dde08e29814c1d20d67d91b675fcbb6d",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "27829dc2ad2464924383c59c298bd24dce88b3967837cf55bafaa7e1603b4940",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "sg-006",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-006.png",
+        "sha256": "aab946a9757511cc9b7f258520972fc21de016006ca74f92d8e54da293cd869d",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "f3f0a1e675a1a57a0e7d71b38985d6f52a4ba6b42bec0d1448bc49d9c9aa6372",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "sg-007",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-007.png",
+        "sha256": "e16b24203568108ad1d088cc5a4d9d03f100261468360f2223dc40ef17180a6f",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "df8ccffa2c256df9184d1501bf1535f713f73d5b32dcdcdd3fecff9c430a6342",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "sg-009",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-009.png",
+        "sha256": "43f0175692b4a8d123e2aed28a6cfbcc6902521e86fb0ac4cd2cc64a9e99e005",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "230daa232ba48ff870683df1ec8d0e815989303bb6753806d2fc6ee83a80f731",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "ACTUAL_FROZEN_R4_NATIVE_FULL_GARMENT_AND_ENTIRE_CHANGED_EDGE_REVIEW",
+      "notes": "Full native garment and complete collar diagonal/bend inspected. Raster mask matches candidate; all140 rows native RGB and neighboring membership verified. R3 scenery at309429/297440 plus both3x3 neighborhoods excluded. Dark trim/cream collar retained; skin, hair, styling shirt, trousers and scenery excluded.",
+      "native_checkpoint": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r4/SG009-NATIVE-CHECKPOINT-R4.json",
+        "sha256": "1a715a3309696104a0dbdeed5b7cf54b3e5950f64dee762b52b440a566ef1417"
+      },
+      "prior_receipt_for_unchanged_segments": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_status": "REVISE; old whole-SKU verdict not carried forward"
+    },
+    {
+      "sku": "sg-011",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-011.png",
+        "sha256": "aa0d3593bfe8acda2a92eca0b1a40c229d59e7246871b8227ecb5d90fc9e5a87",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "f3053f9a93867c2f9fc697a93790598cac34891c0e5516b6d1a9a27f357adf22",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "sg-012",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-012.png",
+        "sha256": "0f94046c37a1eb7c075b345efa6529e25133795b7f68298b995699f24c36740d",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "a5ee978ef38f808237cf84883ac65ed83cf9768d7d3c61c16bba76de1df67287",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "sg-013",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-013.png",
+        "sha256": "12cce820da6f783537847139bf8636fd0ee0627e45e577d5315e46bdd142bda9",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "854f26ee7414c4cf19c3555b049384149faa5fbd12b076b015ef8f198790059d",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    },
+    {
+      "sku": "sg-014",
+      "status": "PASS",
+      "source": {
+        "path": "assets/v2-original/products/sg-014.png",
+        "sha256": "07c3d1bb60ad24f1b8987859e21e9658d80126f2486820d79f83cc7ae11114d2",
+        "width": 1024,
+        "height": 1536
+      },
+      "geometry_sha256": "21864b661c9667139be8e52ae259f9641cc7ce8cf7a804da0f6c58851b95d446",
+      "annotator": "/root/geometry_repair_r2",
+      "reviewer": "/root/kids_terminal_visual_review",
+      "scope": "TECHNICAL_GARMENT_REGION_ONLY",
+      "method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R3_PASS",
+      "notes": "Polygon arrays byte-equivalent under identical JSON serialization; source identity and geometry digest unchanged from independent R3 PASS. Explicit carry-forward, not new image/artwork pixel approval.",
+      "prior_receipt": {
+        "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/next-phases-20261003/garment-geometry-22/independent-qa-r3/INDEPENDENT-GARMENT-GEOMETRY-REVIEW-R3.json",
+        "sha256": "681fb6bfd9f44f31d0050cf3fc3b1eb56000f2bcda21959f20cbcad89a96b651"
+      },
+      "prior_review_method": "EXACT_SOURCE_AND_GEOMETRY_PRESERVATION_OF_INDEPENDENT_R2_PASS"
+    }
+  ]
+}
