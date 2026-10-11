@@ -50,7 +50,7 @@ function skyyrose2_product_media_front( $product, $role ) {
 	if ( ! is_array( $current ) || ( $current['src'] ?? '' ) !== 'assets/v2-original/products/' . $sku . '.png' || ( $current['source_sha256'] ?? '' ) !== ( $current['sha256'] ?? null ) || ! preg_match( '/^[a-f0-9]{64}$/D', $current['sha256'] ?? '' ) ) { return array(); }
 	$matches = array();
 	foreach ( (array) ( skyyrose2_media_inventory()['assets'] ?? array() ) as $path => $record ) {
-		if ( 0 === strpos( $path, 'assets/derived/card-fronts/' ) || ! is_array( $record ) || 'photograph' !== ( $record['kind'] ?? '' ) || array( $sku ) !== ( $record['skus'] ?? null ) || array( $collection ) !== ( $record['collections'] ?? null ) || ! is_array( $record['roles'] ?? null ) || ! in_array( $role, $record['roles'], true ) ) { continue; }
+		if ( 0 === strpos( $path, 'assets/derived/card-fronts/' ) || ! is_array( $record ) || 'photograph' !== ( $record['kind'] ?? '' ) || array( $sku ) !== ( $record['skus'] ?? null ) || array( $collection ) !== ( $record['collections'] ?? null ) || ! in_array( $role, skyyrose2_media_effective_roles( $path, $record ), true ) ) { continue; }
 		$uri = skyyrose2_media_uri( $path, $role, $sku );
 		if ( ! $uri ) { continue; }
 		$dimensions = getimagesize( SKYYROSE2_DIR . '/' . $path );
@@ -58,7 +58,7 @@ function skyyrose2_product_media_front( $product, $role ) {
 		$matches[] = array(
 			'src' => $uri, 'path' => $path, 'sha256' => $record['sha256'],
 			'width' => (int) $dimensions[0], 'height' => (int) $dimensions[1],
-			'alt' => $product->get_name(), 'sku' => $sku, 'roles' => $record['roles'],
+			'alt' => $product->get_name(), 'sku' => $sku, 'roles' => skyyrose2_media_effective_roles( $path, $record ),
 			'collections' => $record['collections'], 'status' => $record['status'],
 		);
 	}
@@ -152,8 +152,8 @@ function skyyrose2_approved_card_front_renditions( $sku, $front, $delivery, $ori
 		}
 		$dimensions = getimagesize( $path );
 		if ( ! $dimensions || $dimensions[0] !== $width || $dimensions[1] !== (int) $rendition['height'] ) { continue; }
-		if ( ! skyyrose2_media_path_allowed( $relative, $role, $sku ) ) { continue; }
-		$url      = SKYYROSE2_URI . '/' . $relative;
+		$url = skyyrose2_media_uri( $relative, $role, $sku );
+		if ( ! $url ) { continue; }
 		$srcset[] = $url . ' ' . $width . 'w';
 		if ( 160 === $width ) {
 			$resolved['thumbnail_src'] = $url;

@@ -21,6 +21,18 @@ All notable changes to SkyyRose Flagship 2 are documented here.
 - A supported SEO plugin keeps both Jetpack decisions unchanged.
 - Jetpack offers no hook that repeats `<image:image>` under one `<url>`, so one
   image per page is listed. The other product images stay on the PDP itself.
+- Founder-approved collection imagery now renders from the registry's
+  `collections.*.imagery` bindings, through the founder usage grants
+  (`data/v2-media-reviews/usage-*.json`): the collections index chapters
+  (`collection_hero`), the collection origin story (`collection_story`), the
+  homepage worlds rail, and the pre-order merchandise scenes
+  (`merchandise_scene`). Images are uncropped. Homepage chapters keep their
+  destination-hero motion binding. The 15 card originals with a
+  `pdp_on_model_front` grant now also lead their PDPs.
+- Every theme media URL now carries `?v=<sha256 of the served bytes>`. This
+  covers `src`, every srcset candidate, preload `href`/`imagesrcset`, CSS
+  `url()` and video sources, so an edge cache can never serve older bytes under
+  an unchanged path.
 
 ## 2.5.2 — Homepage hero restored through the media gate — 2026-10-11
 

@@ -38,10 +38,6 @@ msgstr ""
 msgid "%s looks"
 msgstr ""
 
-#: template-parts/v2-preorder.php:127
-msgid "%s pre-order pieces"
-msgstr ""
-
 #: woocommerce/single-product.php:50
 msgid "%s purchase details"
 msgstr ""
@@ -426,7 +422,7 @@ msgstr ""
 msgid "Choose your chapter."
 msgstr ""
 
-#: template-parts/v2-preorder.php:72
+#: template-parts/v2-preorder.php:56
 msgid "Choose your collection"
 msgstr ""
 
@@ -478,7 +474,7 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-#: template-parts/collections/story.php:15
+#: template-parts/collections/story.php:16
 msgid "Collection Code"
 msgstr ""
 
@@ -610,7 +606,7 @@ msgstr ""
 msgid "Each"
 msgstr ""
 
-#: template-parts/v2-preorder.php:70
+#: template-parts/v2-preorder.php:54
 msgid "Each collection, its own story. Every piece, a personal choice. Explore the pieces, then review your size, price, availability, and order terms."
 msgstr ""
 
@@ -630,7 +626,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: inc/shop-archive.php:237 template-parts/home/living-archive-worlds.php:39 woocommerce/single-product.php:87
+#: inc/shop-archive.php:237 template-parts/home/living-archive-worlds.php:30 woocommerce/single-product.php:87
 msgid "Enter %s"
 msgstr ""
 
@@ -646,7 +642,7 @@ msgstr ""
 msgid "Enter her world"
 msgstr ""
 
-#: template-parts/collections/index.php:81 template-parts/immersive/world.php:235
+#: template-parts/collections/index.php:69 template-parts/immersive/world.php:235
 msgid "Enter the %s collection"
 msgstr ""
 
@@ -686,7 +682,7 @@ msgstr ""
 msgid "Enter the worlds."
 msgstr ""
 
-#: template-parts/collections/index.php:45
+#: template-parts/collections/index.php:40
 msgid "Every collection opens another world."
 msgstr ""
 
@@ -714,7 +710,7 @@ msgstr ""
 msgid "Explore"
 msgstr ""
 
-#: functions.php:623 template-parts/immersive/world.php:204 template-parts/v2-preorder.php:123
+#: functions.php:623 template-parts/immersive/world.php:204 template-parts/v2-preorder.php:108
 msgid "Explore %s"
 msgstr ""
 
@@ -1090,10 +1086,6 @@ msgstr ""
 msgid "Loading available options…"
 msgstr ""
 
-#: template-parts/collections/story.php:29
-msgid "Look 01"
-msgstr ""
-
 #: inc/global-shell.php:56 inc/global-shell.php:96
 msgid "Lookbook"
 msgstr ""
@@ -1462,7 +1454,7 @@ msgstr ""
 msgid "Pre-order / Full payment at checkout"
 msgstr ""
 
-#: template-parts/v2-preorder.php:105
+#: template-parts/v2-preorder.php:89
 msgid "Pre-order collections"
 msgstr ""
 
@@ -1602,7 +1594,7 @@ msgstr ""
 msgid "Read the journal"
 msgstr ""
 
-#: template-parts/v2-preorder.php:73
+#: template-parts/v2-preorder.php:57
 msgid "Read the order terms"
 msgstr ""
 
@@ -1874,7 +1866,7 @@ msgstr ""
 msgid "Signature"
 msgstr ""
 
-#: template-parts/collections/index.php:46
+#: template-parts/collections/index.php:41
 msgid "Signature begins the story. Black Rose protects it. Love Hurts tells the truth. Kids Capsule carries it forward."
 msgstr ""
 
@@ -1958,7 +1950,7 @@ msgstr ""
 msgid "Skyy, your house concierge"
 msgstr ""
 
-#: functions.php:662 inc/global-shell.php:144 template-parts/commerce/product-card.php:46 template-parts/commerce/product-hero.php:17 template-parts/v2-preorder.php:107 template-parts/v2-preorder.php:112 woocommerce/single-product.php:21
+#: functions.php:662 inc/global-shell.php:144 template-parts/commerce/product-card.php:46 template-parts/commerce/product-hero.php:17 template-parts/v2-preorder.php:91 template-parts/v2-preorder.php:96 woocommerce/single-product.php:21
 msgid "SkyyRose"
 msgstr ""
 
@@ -2134,7 +2126,7 @@ msgstr ""
 msgid "The Heir"
 msgstr ""
 
-#: template-parts/home/living-archive-worlds.php:47
+#: template-parts/home/living-archive-worlds.php:38
 msgid "The Heir / Discover Kids Capsule"
 msgstr ""
 
@@ -2146,7 +2138,7 @@ msgstr ""
 msgid "The Heir’s Salon"
 msgstr ""
 
-#: template-parts/collections/index.php:44
+#: template-parts/collections/index.php:39
 msgid "The House"
 msgstr ""
 
@@ -2170,7 +2162,7 @@ msgstr ""
 msgid "The Oakland atelier where the Signature story returns home"
 msgstr ""
 
-#: template-parts/v2-preorder.php:68
+#: template-parts/v2-preorder.php:52
 msgid "The Pre-Order Edit"
 msgstr ""
 
@@ -2294,7 +2286,7 @@ msgstr ""
 msgid "The next chapter sits front and center"
 msgstr ""
 
-#: template-parts/v2-preorder.php:119
+#: template-parts/v2-preorder.php:104
 msgid "The pre-order edit"
 msgstr ""
 

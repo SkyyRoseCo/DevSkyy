@@ -161,3 +161,181 @@ page actually shows. A product's other images remain on its PDP.
   - no `<image:loc>` is empty;
   - no `<loc>` is an attachment page. If nothing qualifies, Jetpack deletes the
     image sitemap and a 404 is the expected result.
+
+---
+
+# 2.5.3 Lane B: collection imagery and media cache keys
+
+This lane is stacked on the Lane A branch `fix/v2-image-sitemap-20261011`
+(`5adf98061`). The version stays 2.5.3. It ports the remaining V2
+collection-imagery gate from local-only commit `d0a014a33`
+(`capture/codex-v2-card-gap-20261010`). The port takes only Codex's side of the
+3-way diff against the merge base `7ed2180b5`. No product fact,
+`logo-registry.json`, presentation registry, media inventory, usage grant or
+receipt changed.
+
+## Live state before the change (`[live 2026-10-11]`, cache-busted HTML)
+
+The current media gate strips these slots on production, so each one renders
+empty:
+
+- `/collections/black-rose/`: the origin-story `<picture>` has no image. It
+  shows only the caption "Black Rose / Look 01".
+- `/collections/`: all four chapter `<picture>` elements are empty, and the
+  lockups are stripped.
+- `/`: all four chapter figures are empty. The worlds rail has zero worlds.
+- `/pre-order/`: there are zero merchandise scenes. The template's inventory
+  scan required `merchandise_scene` in the record's own `roles`, and that role
+  exists only through a founder usage grant.
+
+## What changed
+
+- `inc/v2-media-eligibility.php` takes the following from `d0a014a33`:
+  - Role-not-in-record branch: a new role is admitted only when the unchanged
+    original still passes its own review **and** an exact, hash-bound founder
+    usage grant names that role.
+  - New functions: `skyyrose2_media_usage_roles()`,
+    `skyyrose2_media_effective_roles()`, `skyyrose2_collection_media()` (reads
+    the registry's `collections.*.imagery` binding by sha and usage-adoption
+    pointer; checks SKU, collection, preorder partition, pixel size and alt
+    text) and `skyyrose2_collection_media_markup()` (an uncropped `<img>` with
+    the rendition srcset).
+  - `?v=<sha256>` cache key in `skyyrose2_media_uri()`. `skyyrose2_media_url()`
+    normalizes to it, so stale `?v=` values are replaced.
+  - Every srcset candidate, attachment `src`, variation `full_src` and CSS
+    `url()` is rewritten to its keyed URL.
+  - `skyyrose2_media_usage_document()` moved above its first caller, as in
+    `d0a014a33`. The offline contract tests evaluate the gate only up to
+    `skyyrose2_media_start_buffer()`.
+  - Main's `house_art` comment is kept.
+  - `skyyrose2_collection_hero_uri()` is not taken, because nothing here calls
+    it.
+- Consumers:
+  - `approved-card-fronts.php` uses effective roles, and its renditions use
+    `media_uri`.
+  - `launch-readiness.php` admits a `FOUNDER_ACCEPTED` front via `path_allowed`
+    for `pdp_on_model_front`.
+  - `pdp-media-delivery.php` compares `media_url( attachment )` to the keyed
+    front. Without this, the PDP front drops once URLs are keyed.
+  - `performance.php` gains `skyyrose2_performance_collection_preload()` for the
+    `/collections/` index only. Its href, imagesrcset and imagesizes equal the
+    eager chapter image.
+  - The collection-world route keeps its arrival preload, because the arrival is
+    unchanged.
+- Templates:
+  - `collections/index.php`: `collection_hero` figures; the lockup `<h2>` is
+    kept.
+  - `collections/story.php`: `collection_story` replaces the retired lookbook.
+  - `home/living-archive-worlds.php`: Signature and Black Rose heroes, and the
+    Love Hurts story.
+  - `v2-preorder.php`: `merchandise_scene` comes from the registry binding.
+- CSS (`collection-world.css`, `content-page.css`): uncropped (`contain`) rules
+  for the story image, the index chapters and the pre-order intro.
+- Tests:
+  - New `tools/v2-runtime/render-collection-imagery.php` (offline renderer) and
+    `tools/v2-runtime/test-collection-imagery.php` (render contract).
+  - `npm run verify` now also runs `test-v2-media-eligibility.php`,
+    `test-media-usage.php`, `test-collection-imagery.php` and
+    `test-preorder-collections.php`.
+- Existing tests updated, each for a required behavior change. None was
+  weakened:
+  - `test-homepage-hero-gate.php`: the expected URL now carries `?v=<hero sha>`.
+    This is stricter, because it is bound to the bytes.
+  - `test-pdp-gallery.php`: there are 33 PDP fronts. 18 are reviewed PDP roles
+    and 15 come from founder grants, and the test counts the grants exactly.
+    - No real card-only SKU remains, so the card-only case became "br-003's PDP
+      role exists only through its exact grant". A grant borrowed by another SKU
+      is rejected. Rejected Woo attachments never enter the gallery.
+  - `test-home-labels.php`: the stub dependency is now
+    `skyyrose2_collection_media`, and the label assertions are unchanged.
+
+## Not taken (kept main), with the reason
+
+- Homepage chapter figures (`home/editorial-collection.php`):
+  `scripts/validate-collection-hero-motion.py`, a gate inside `npm run build`,
+  pins them to `skyyrose2_collection_hero_motion( $slug, $collection['hero'] )`.
+  Taking Codex's version fails 3 of its tests, so it was reverted. These figures
+  stay empty on production. Founder call.
+- Header collection previews (`inc/global-shell.php`): the JS preview stage
+  enlarges the thumbnail's `currentSrc` into a 1024×576 stage. With the `128px`
+  sizes, that would show a 160–320w rendition at stage size. Founder call.
+- Monument copy (`skyyrose2_collections()['line']`) and SEO `og:image` /
+  `primaryImageOfPage` are not imagery rendering, and they belong to Lane A's
+  file. The arrival, which they describe, is unchanged.
+
+## Lineage
+
+| Entry (file)                                             | Old sha256          | New sha256          |
+| -------------------------------------------------------- | ------------------- | ------------------- |
+| baseline `inc/approved-card-fronts.php`                  | `64d247522897ff86…` | `2d272ae096846f50…` |
+| baseline `inc/launch-readiness.php`                      | `b753741a791d3d29…` | `aeffd7fdc34b988f…` |
+| baseline `inc/pdp-media-delivery.php`                    | `3225b5c4a990eb36…` | `a5e871453a511e54…` |
+| baseline `inc/performance.php`                           | `9d7ee4b82297347d…` | `56be7b798ac34885…` |
+| baseline `inc/v2-media-eligibility.php`                  | `18b41121eeed9116…` | `9fc1d00caf66caf2…` |
+| baseline `template-parts/collections/index.php`          | `805331e5e4b9d109…` | `dfd9ffc8ab897346…` |
+| baseline `template-parts/collections/story.php`          | `a81db476080e7f16…` | `94bf267469981ec2…` |
+| baseline `template-parts/home/living-archive-worlds.php` | `8df1b5628510b29b…` | `159bf8c43a25cc6a…` |
+| baseline `template-parts/v2-preorder.php`                | `8c8f4a9dcbb87c5d…` | `46ea99e1b06d7176…` |
+| input `runtime-php-baseline.json`                        | `fea4cc5d1733e8f4…` | `842a189430d217af…` |
+| input `wordpress-theme/…/package.json`                   | `5c886030bc1c99e6…` | `6cee7ab2e487f55a…` |
+
+This is an entry-only re-pin: no key was added or removed.
+`package-boundary.json` and `generated-outputs.json` are unchanged, because no
+theme file was added or removed and `generated-outputs.json` pins no hashes.
+
+## Evidence (this session)
+
+- RED, from the pristine Lane A tree (`git archive 5adf98061`):
+  - `test-v2-media-eligibility.php` fails at line 35 ("Public image cache key is
+    bound to the verified bytes").
+  - `test-media-usage.php` fails at line 10 (undefined
+    `skyyrose2_media_usage_roles()`).
+  - `test-collection-imagery.php` fails 11 checks.
+  - `test-v2-delivery-derivatives.php` fails ("Responsive card cache version
+    matches its own derivative bytes").
+- GREEN: all four pass on this branch. `test-media-usage.php` reports
+  `pdp_on_model_front` 15, `collection_hero` 4, `collection_story` 4 and
+  `merchandise_scene` 3, with 100 negative cases.
+- Toolchain: Node 22.23.2 (`~/.local/opt/node-v22.23.2-darwin-arm64`), npm
+  10.9.x. The fixtures are a fresh `prepare-native-fixture.py` fixture (7
+  hashes) and a `V2_NATIVE_JS_FIXTURE` whose 2 hashes match the pins. The
+  worktree needed `git sparse-checkout add assets/products`.
+- `npm run lint:php`: exit 0.
+- `npm run package:theme`: exit 0, 0 `not ok`. Result: "Validated 773 runtime
+  package entries; SHA-256 `2842707efefa203c…`".
+- `pytest tests/test_v2_*.py tools/v2-source-certification`: 73 tests, 0
+  failures, 0 errors, 0 skipped (junit). `unittest discover`: OK.
+- `scripts/sync_product_registry.py --check`: PASS.
+- PHPCS on the changed theme files: every file is at or below base, except
+  `inc/v2-media-eligibility.php`, which goes from 148/55 to 183/63.
+  - That increase is the ported Codex code in the file's dense single-line house
+    style.
+  - phpcbf was not run, because it would reflow a pinned file.
+- Rendering was checked offline and by eye (Playwright, 1440×900 and 390×844):
+  - Every role image is uncropped: rendered aspect matches natural aspect within
+    0.001, except the worlds rail, which letterboxes with `contain`.
+  - No horizontal overflow.
+  - br-004 hoodie, sg-009 sherpa, br-001 crewneck, lh-004 bomber and kids-002
+    set were confirmed in their slots.
+
+## Not verified / open
+
+- Nothing was deployed.
+- Jetpack Image CDN (Photon) drops the origin query string by default (`[docs]`
+  `class-image-cdn-core.php`: `jetpack_photon_add_query_string_to_domain`
+  defaults to false). The live homepage LCP image is rewritten by Jetpack Boost
+  to `i0.wp.com/…/house-monument-20260928.webp?ssl=1` (`[live]`).
+  - Photon-served copies therefore do not carry the cache key, and Photon caches
+    them by path.
+  - No bytes change under an existing path in this release, so nothing goes
+    stale today.
+- The usage grants and their authority name `target`
+  `https://staging-7e48-skyyrose.wpcomstaging.com`.
+  - The gate compares that string inside the grant documents, not the request
+    host. The grants therefore also admit the roles on skyyrose.co.
+  - Whether that target string should name production is the founder's call. No
+    grant was edited.
+- QC flag carried from the fidelity review: kids-002 `garment.features` says
+  "lavender/light-pink hood", but the real photo and the slot show a deep-purple
+  hood. This is a registry text discrepancy, not a slot defect. No registry edit
+  was made.
