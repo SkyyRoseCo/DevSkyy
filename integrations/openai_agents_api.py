@@ -391,14 +391,14 @@ class AgentsApiClient:
         }
 
     def probe_access(self) -> AccessProbe:
-        """Zero-cost ``GET /v1/agents/sessions``; ok only on HTTP 200."""
+        """Observe ``GET /v1/agents/sessions`` status; provider and billing unqualified."""
         return self._probe(AGENTS_SESSIONS_URL)
 
     def check_access(self) -> bool:
         return self.probe_access().ok
 
     def probe_model(self, model: str) -> AccessProbe:
-        """Zero-cost ``GET /v1/models/{model}``; 404 means the key cannot use it."""
+        """Observe model GET status; a response alone does not explain access or billing."""
         return self._probe(f"{MODELS_URL}/{model}")
 
     def _probe(self, url: str) -> AccessProbe:
