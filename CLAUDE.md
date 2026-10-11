@@ -41,6 +41,28 @@ and this authority rule to every delegated agent and workflow.
 Follow `.wolf/OPENWOLF.md` every session. Check `.wolf/cerebrum.md` before
 generating code, `.wolf/anatomy.md` before reading files.
 
+**Session handoff log — required, every session, every agent.** Multiple agents
+(Claude Code, Codex, Ralph loops) work this repo at once; `.wolf/memory.md` is
+how each one knows where the others left off.
+
+- **Before starting:** read the last ~20 rows. Do not redo work marked done, and
+  do not touch files another agent marked in-progress — pick other work or ask.
+- **Before ending:** append one row to `.wolf/memory.md` in the **main
+  checkout** (first path in `git worktree list`), never a worktree's copy —
+  other agents can't see it until merge:
+  `| YYYY-MM-DD HH:MM | <agent> @ <branch> sid:<id8> | what you did | files / PRs | done · in-progress · blocked + next step | ~tokens |`
+  (`<id8>` = first 8 chars of your session id.)
+- Append only. Never edit or delete another agent's rows.
+- **Enforced.** `.wolf/hooks/handoff-gate.sh` (Claude Code + Codex) blocks the
+  first turn that changes the repo without a new `sid:<id8>` row — once per
+  session, handing you the pre-filled row — then reminds (user via Stop, model
+  via the next prompt) until you log. `.husky/pre-push` refuses to push a branch
+  with no `@ <branch>` row dated today/yesterday — the backstop for agents
+  without hooks. Bypass a push once with `WOLF_HANDOFF_SKIP=1`.
+- **Rotated.** Past 128KB the log keeps its newest ~64KB; older entries move
+  byte-for-byte to `.wolf/memory-archive/` (`scripts/wolf_memory_rotate.py`, run
+  at SessionStart). Search the archive for older history.
+
 **Source of Truth:** canonical product / imagery / brand / memory sources are
 registered in **`SOT.md`** (root symlinks: `skyyrose-catalog.csv`,
 `sot-images.json`, `cerebrum.md`, `anatomy.md`). Read `SOT.md` before caching
@@ -147,7 +169,7 @@ guess with a citation.
 | Visual / UI / live rendering       | **Chrome DevTools** or **Playwright MCP**, mobile **and** desktop              | Eyes-on, not an HTTP code                                                 |
 | Live HTML / JSON-LD / OG / headers | `curl -s "URL?cb=$(date +%s)" \| grep`                                         | **NEVER WebFetch** — strips `<script>`. Cache-bust: Batcache serves stale |
 | Codebase facts                     | **Read / Grep / Glob**, quote `file:line`                                      | `anatomy.md` first; code may have moved                                   |
-| Product facts (SKU, price, name)   | **catalog CSV** + per-SKU **dossier**                                          | Canonical only (`SOT.md`). Memory rots; the CSV doesn't                   |
+| Product facts (SKU, price, name)   | **`get_product(sku)`** → `logo-registry.json::products`                        | CSV + dossiers are generated projections — never verify against them      |
 | Imagery ownership                  | product → `sot-images.json` (`make sot-manifest`); else `visual-manifest.json` | **Filenames are not identity** — the manifest is                          |
 | What a render shows                | **Read the image** (vision); `identify` for metadata                           | One-shot batch quota — batch, never retry                                 |
 | Prior work                         | **mem-search** / `get_observations([IDs])`                                     | Check before re-deriving; cite obs IDs                                    |

@@ -534,3 +534,7 @@ dist/
 .tools/
 # Required plugin reference captures are distribution assets, not QA output.
 !plugins/fashion-theme-team/skills/fashion-theme-team/brain/visuals/*.png
+
+# wolf_memory_rotate.py runtime files
+.wolf/memory.md.rotate.lock
+.wolf/.memory.*.tmp

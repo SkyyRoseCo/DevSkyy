@@ -9210,6 +9210,7 @@
 
 ## scripts/
 
+- `wolf_memory_rotate.py` — rotates .wolf/memory.md past 128KB: keeps newest ~64KB, moves older entries byte-exact to .wolf/memory-archive/; carries over concurrent appends; run at SessionStart by .wolf/hooks/memory-session-log.sh (~1500 tok)
 - `__init__.py` (~0 tok)
 - `3D_GENERATION_STATUS.md` — 3D Generation Status - READY (API Key Required) (~1003 tok)
 - `add_love_hurts_and_logos_to_lora.py` — luxury_post_process, upscale_with_lanczos, detect_garment_type, generate_training_caption + 2 more (~4004 tok)

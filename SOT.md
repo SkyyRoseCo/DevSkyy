@@ -57,12 +57,12 @@ Fit and care are stored in each registry product's dossier and derived garment f
 
 ## OpenWolf memory (cross-session)
 
-| Root symlink                  | Canonical path      | Owns                                                                                                        |
-| ----------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `cerebrum.md`                 | `.wolf/cerebrum.md` | Learnings, User Preferences, Do-Not-Repeat, Decision Log, Project Conventions. Read before generating code. |
-| `anatomy.md`                  | `.wolf/anatomy.md`  | Per-file 2–3 line descriptions + token estimates. Read before reading files.                                |
-| `buglog.json`                 | `.wolf/buglog.json` | Known bugs + fixes. Read before fixing; append after fixing.                                                |
-| — (gitignored, not symlinked) | `.wolf/memory.md`   | Per-action session log.                                                                                     |
+| Root symlink               | Canonical path      | Owns                                                                                                        |
+| -------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `cerebrum.md`              | `.wolf/cerebrum.md` | Learnings, User Preferences, Do-Not-Repeat, Decision Log, Project Conventions. Read before generating code. |
+| `anatomy.md`               | `.wolf/anatomy.md`  | Per-file 2–3 line descriptions + token estimates. Read before reading files.                                |
+| `buglog.json`              | `.wolf/buglog.json` | Known bugs + fixes. Read before fixing; append after fixing.                                                |
+| — (tracked, not symlinked) | `.wolf/memory.md`   | Cross-agent session handoff log (main checkout's copy). Older rows rotate to `.wolf/memory-archive/`.       |
 
 ## Domain configuration map (current-state, token-cheap)
 

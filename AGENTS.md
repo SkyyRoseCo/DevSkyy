@@ -73,11 +73,30 @@ system and developer constraints; historical notes do not grant authorization.
 
 - Before editing, confirm the checkout, branch or detached HEAD, and staged,
   unstaged, and untracked changes. Preserve unrelated work and working features.
-- Check `.wolf/memory.md` for current notes. If absent, check the main checkout
-  identified by `git worktree list`; treat its notes as context, not this
-  worktree's verified state. If unavailable, report the gap and continue with repository evidence. Follow `.wolf/OPENWOLF.md` for repository
-  session-log entries; do not update persistent cross-session agent memory unless
-  requested.
+- **Session handoff log — required, every session, every agent.** Multiple
+  agents (Claude Code, Codex, Ralph loops) work this repo at once;
+  `.wolf/memory.md` in the **main checkout** (first path in `git worktree list`)
+  is how each one knows where the others left off. Treat its rows as context,
+  not this worktree's verified state.
+  - Before starting: read the last ~20 rows. Do not redo work marked done, and
+    do not touch files another agent marked in-progress — pick other work or
+    ask.
+  - Before ending: append one row to the main checkout's `.wolf/memory.md`,
+    never a worktree's copy (other agents can't see it until merge):
+    `| YYYY-MM-DD HH:MM | <agent> @ <branch> sid:<id8> | what you did | files / PRs | done · in-progress · blocked + next step | ~tokens |`
+    (`<id8>` = first 8 chars of your session id; if your tool exposes none, use
+    any stable 8-char tag for the session.)
+  - Append only. Never edit or delete another agent's rows. If the file is
+    unavailable, report the gap and continue with repository evidence.
+  - Enforced: `.wolf/hooks/handoff-gate.sh` (wired in `.codex/hooks.json` /
+    `.claude/settings.json`) blocks the first turn that changes the repo without
+    a new `sid:<id8>` row — once per session — then reminds until you log.
+    `.husky/pre-push` refuses to push a branch with no `@ <branch>` row dated
+    today or yesterday — the backstop for agents without hooks. Bypass a push
+    once with `WOLF_HANDOFF_SKIP=1`.
+  - Rotated: past 128KB the log keeps its newest ~64KB and moves older entries
+    byte-for-byte to `.wolf/memory-archive/` (`scripts/wolf_memory_rotate.py`).
+    Search the archive for older history.
 - Inspect the existing implementation and source of truth before changing it.
   Make the smallest coherent change that completes the task. Diagnose failures
   from evidence, fix their cause, and verify the result.
@@ -237,7 +256,10 @@ corrections are authoritative.
 - Verify that our output matches his instructions. Ask only for genuinely
   missing details, and leave unrelated product facts unchanged.
 - Consult `SOT.md` for canonical product and media sources. Do not substitute
-  generated assets or assumptions for approved source material.
+  generated assets or assumptions for approved source material. Verify product
+  facts against `get_product(sku)` (`logo-registry.json::products`), never
+  against `skyyrose-catalog.csv` or `dossiers/` — those are generated
+  projections of the registry.
 - Include these founder-authority requirements in delegated briefs and handoffs
   involving SkyyRose products, catalogs, design, rendering, or review.
 

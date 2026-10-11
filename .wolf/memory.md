@@ -1,135 +1,7 @@
 # Memory
 
-| session | Made prompt engineering, typed prompt chaining, and prompt caching
-first-class Fashion Theme Team capabilities. Added a governed Brain contract,
-taxonomy routing, cache keys/invalidation/privacy rules, verifier enforcement,
-and active V2 ledger scope. |
-/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/prompts/,
-/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/.fashion-theme/v2-remodel-ledger.json
-| cache is optimization only; candidate/SOT/approval/schema changes fail closed
-and invalidate | ~4k | | session | Ran role-by-role gap sweep on
-`fashion-theme-team` agents and added explicit claim-bound handoff requirements
-to all nine roles (`Handoff requirement`), ensuring deterministic artifact +
-eyes-on review or authoritative documentation + executable evidence. Added this
-consistency pass for catalog and WooCommerce charters plus lead/discretion
-roles. | /Users/theceo/plugins/fashion-theme-team | 9 role charters now aligned
-on evidence discipline and `BLOCKED` fallback | ~1k | | session | Loaded the
-installed Fashion Theme Team into the current multi-agent runtime. Active
-reusable cohort: `fashion-theme-lead` (`019fd5c0-7344-7180-873a-5bac6dab8c52`),
-`brand-experience-architect` (`019fd5c0-728f-7453-a587-ac2ed8ac31a5`),
-`fashion-design-system-engineer` (`019fd5c0-7445-7c41-af9d-cbd6feadd3b1`), and
-`woocommerce-theme-engineer` (`019fd5c0-75f1-7992-8bbe-dc6a1553628e`). Runtime
-limit is four threads, so frontend, catalog, accessibility/performance, visual
-QA, and release roles must be swapped in by the lead phase-by-phase. | Codex
-multi-agent runtime, `fashion-theme-team@personal` | four-role foundation cohort
-READY; no project inspection or edits performed | ~2k | | session | Hardened the
-fashion-theme-team tool-budget and verification contract. Added
-`references/tool-budget-and-loading.md`, updated SKILL and team contract to
-require temporary tool-profile expansion discipline, strengthened lead handoff
-evidence requirements, and updated verifier/plugin metadata to enforce the new
-policy. | /Users/theceo/plugins/fashion-theme-team | gap pass: docs-policy
-alignment and profile discipline added | ~4k | | session | Built and installed
-`fashion-theme-team@personal` v0.1.0 as a nine-role end-to-end
-fashion/WooCommerce delivery team. Added dedicated
-`fashion-design-system-engineer` ownership for tokens, primitives, components,
-states, motion, docs, fixtures, and adoption. Included orchestration skill,
-independent QA/release roles, hooks, preflight/report/integrity scripts, and
-personal marketplace registration. | ~/plugins/fashion-theme-team,
-~/.agents/plugins/marketplace.json,
-tasks/fashion-theme-team-plugin-audit-2026-08-05.md | plugin validator PASS;
-skill validator PASS; integrity PASS; ShellCheck PASS; DevSkyy preflight found 3
-themes; installed and enabled cache integrity PASS | ~12k | | session | Audited
-the requested conversion of the historical `fashion-theme-architect` role into a
-full end-to-end plugin team. No standalone `fashion-theme-developer` definition
-exists; recovered its charter from Claude team session `session-5db8882f` and
-proposed an eight-role `fashion-theme-team` with isolated implementation,
-independent QA, release evidence, and human deployment approval. |
-tasks/fashion-theme-team-plugin-audit-2026-08-05.md | planning only; awaiting
-founder approval before scaffold or marketplace changes | ~4k | | session |
-Refreshed the AI Designer MCP OAuth grant through `codex mcp login aidesigner`;
-browser consent callback completed successfully. | Codex MCP credential store |
-login succeeded; new sessions can connect with refreshed OAuth | ~1k | | session
-| Enabled load-on-demand tool discovery for Codex and Claude globally and in
-DevSkyy: Claude forces MCP Tool Search; Codex uses code-mode-only with deferred
-capability discovery and skill search. Corrected router/context-budget docs so
-callable inventory is not counted as resident schema context. |
-~/.claude/settings.json, ~/.codex/config.toml, .claude/settings.json,
-.codex/config.toml, .claude/hooks/router/README.md,
-.agents/skills/context-budget/SKILL.md, .claude/skills/context-budget/SKILL.md |
-Codex doctor 17 ok/0 fail; Claude doctor found no installation issues; new
-sessions required | ~3k | | 19:26 | Added explicit AGENTS.md instruction to
-consult `.wolf/memory.md` before making changes; verified and mirrored this
-requirement in the root AGENTS session log compliance rule. Also ran a hook diff
-check between `.claude/hooks/hooks.json` and `.codex/hooks/hooks.json` to
-confirm matcher/script parity before this change. | AGENTS.md,
-.claude/hooks/hooks.json, .codex/hooks/hooks.json | no functional regressions;
-file changes applied | ~2k | | 01:15 | Seeded
-elite-theme-platform/adapters/nextjs/ — 4 files: README.md (adapter positioning
-vs WP storefront), contract.ts (6-method typed interface stubs:
-scaffold/build/deploy/monitor/commerceBind/heal, dashboard-flavored), tokens.ts
-(DASHBOARD_TOKENS dark-ops set derived from monitoring/page.tsx + globals.css),
-component-kit.md (5 vocabulary entries
-StatCard/SignalBadge/CycleTimeline/KBTable/KeyholeRow mapped to
-storefront-autonomy canonical paths) |
-elite-theme-platform/adapters/nextjs/README.md, contract.ts, tokens.ts,
-component-kit.md | 4 files created | ~8k | | 22:18 | Elite Studio PASS 1 audit +
-PASS 2 fixes: 3 CRITICAL (compositor_node budget gate, tryon_node budget gate,
-_find_garment_image stub), 4 HIGH deferred, 4 MEDIUM (3 fixed: logger f-string,
-2x print->logging). Zero new test failures vs baseline. |
-tasks/elite-studio-audit-2026-05-22.md, skyyrose/elite_studio/graph/nodes.py,
-skyyrose/elite_studio/agents/tryon_agent.py,
-skyyrose/elite_studio/agents/generator_agent.py,
-skyyrose/elite_studio/graph/runner.py, skyyrose/elite_studio/retry.py | 25 pass
-/ 28 fail (all pre-existing) | ~18k | | 14:59 | Built devflow-review workflow:
-scripts/devworkflows/review.sh (ruff+tsc+phpcs in parallel, bash 3 compat, FIX=1
-auto-fix mode, loop-until-green protocol) + .claude/skills/devflow-review.md.
-Replaces dead fwstack plugin. Smoke-tested: clean on 23 changed files, correctly
-detects ruff E702. | scripts/devworkflows/review.sh,
-.claude/skills/devflow-review.md, .wolf/anatomy.md | exit 0 confirmed | ~4k | |
-15:32 | Phase 13 executed: 13-01 regression gate (2 PASS/1 FAIL — CURS-01
-confirmed, CURS-03 gap surfaced); 13-02 annotations (REQUIREMENTS.md CURS-03 [ ]
-open, ROADMAP.md 2/2 partial, verify_live_structure.py HOMEPAGE_ASSERTIONS +
-Assertion); bug-097 logged | tests/test_luxury_cursor.py,
-.planning/REQUIREMENTS.md, .planning/ROADMAP.md,
-scripts/verify_live_structure.py, .wolf/buglog.json | commit 818868654 | ~8k |
-[cmem #4001] | 11:40 | Priority 6 complete: wired assets page to real data — GET
-/assets/per-sku (WP image dir scan, 60s TTL) + GET /assets/datasets (HfApi, 300s
-TTL); Zod schemas + types + client methods; assets page gets Disk Images tile +
-SKU breakdown panel + HF datasets table | api/v1/assets.py,
-frontend/app/admin/assets/page.tsx, frontend/lib/api/endpoints/assets.ts,
-frontend/lib/api/schemas.ts, frontend/lib/api/types.ts | commit e525affd1;
-pytest 93 pass; type-check + lint + build clean | ~12k | [cmem #3455] | session
-| Priority 3 complete: wired admin/agents page to real backend; useAgents()
-hook + agents API client + Zod schemas; fixed lib/api.ts shadow bug by importing
-directly from endpoints/agents.ts; 592 pytest pass |
-frontend/app/admin/agents/page.tsx, frontend/hooks/useAgents.ts,
-frontend/lib/api/endpoints/agents.ts, frontend/lib/api/schemas.ts,
-frontend/lib/api/types.ts, frontend/lib/api/index.ts | commit f0a0e501b | ~8k |
-| 00:43 | Three.js pin r160→r147 in inc/enqueue.php (fixes 9 dead /examples/js/
-404s); skyy-3d.js:130 GLTFLoader fallback to window.THREE.GLTFLoader |
-inc/enqueue.php, assets/js/skyy-3d.js | lint:php 0 errors | ~3k | | session | UX
-audit + fix: (1) about-hero.jpg 404 → swapped to homepage-story-founder.webp in
-template-about.php:11; (2) personalization.js REST URL double-? bug → changed
-'?' to '&' at line 199; (3) nav audit report-only | template-about.php,
-assets/js/personalization.js | lint:php 0 errors | ~5k | | 22:34 | Bug-fix pass:
-removed wc_get_products() from front-page.php + preorder-gateway.php, added
-kids-capsule collection, removed fake fallback SKUs, fixed mascot path in
-404.php, guarded .closest() in experience-analyzer.js | front-page.php,
-template-preorder-gateway.php, assets/js/experience-analyzer.js, 404.php | npm
-run lint:php: 0 errors | ~4k | | 22:32 | Immersive scene 404 fix: added
-file_exists() guard + CSS gradient fallback for missing scene images |
-template-parts/immersive-scene.php | rooms preserved, hotspots intact,
-data-missing-scene attr added | ~3k | | 17:57 | Source-of-truth refactor:
-deleted root agent_sdk/, agents/base_super_agent.py, my_agent/,
-tests/test_hybrid_integration.py | 14 files edited, 4 deleted | all
-sdk.python.agent_sdk imports verified OK | ~8k | | 19:24 | Restored 3 Phase
-16-gutted agents to sync implementations | prompt_enrichment_agent.py,
-safety_agent.py, upscaling_agent.py | 39/39 tests passing | ~6k | | 19:35 | OPEN
-WORK: 70 Elite Studio test failures remain from Phase 16 ADK-promotion damage |
-test_cli, test_generator_phase_b2, test_ghost_mannequin__, test_graph_builder,
-test_graph_nodes_, test_graph_runner, test_color_correction_agent,
-test_tryon_agent, test_variant_agent, test_vision_test_registry | deferred, not
-yet fixed | ~1k |
+> Live handoff log: newest rows at the bottom. Older entries are archived in
+> `.wolf/memory-archive/` (rotated by `scripts/wolf_memory_rotate.py`).
 
 > Chronological action log. Hooks and AI append to this file automatically. Old
 > sessions are consolidated by the daemon weekly. | 11:30 | Created
@@ -3447,3 +3319,106 @@ User authorized "do it" for Kids-first timed boards and parallel collection arc 
 | 21:05 | v2-recert VERIFIED 4/5: once the pin edit was COMMITTED the classifier permitted the individual gates — check-integrity.py PASS (33 fronts, media 16/9/5/3, 18 motion), 17/17 cert negative tests, sync_product_registry --check PASS, 3/3 presentation-registry, fixture PASS (WP 7.1/WC 11.1.0). Amended to 3a9131eee dropping the now-stale UNVERIFIED claim. Step 5 (npm run verify → package:theme ×2 → byte-compare) stays classifier-denied. Branch ahead 1, UNPUSHED | tools/v2-source-certification/build-inputs.json | verified 4/5, awaiting founder push decision | ~35k |
 | 21:07 | session start (fork) — 451dbfa1 on feat/single-product-entry-point @a9e52529c · uncommitted: 418 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+413 more) | open | — |
 | 21:40 | v2-recert FULLY VERIFIED after founder granted the verify permission: all 5 CI verify steps green — npm run verify exit 0 (61 PASS, node --test 126/126, 0 fail/0 skip), package:theme x2 both sha256 802d704a0dd05684 with 573 entries, cmp byte-identical, git diff --exit-code clean after each. Amended to 3a9769122 recording the evidence. Gotcha: npm scripts call bare `python3`, so main .venv must be FIRST on PATH or check:source-integrity dies on missing PIL | tools/v2-source-certification/build-inputs.json | verified, UNPUSHED — founder push decision only | ~40k |
+| 21:18 | session start (fork) — 783bd64a on feat/single-product-entry-point @8b6ab3cda · uncommitted: 418 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+413 more) | open | — |
+| 21:18 | session end (prompt_input_exit) — 4f10c6cf on feat/single-product-entry-point @8b6ab3cda · uncommitted: 419 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+414 more) | closed | — |
+| 21:19 | session start (startup) — c72db33d on feat/single-product-entry-point @8b6ab3cda · uncommitted: 419 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+414 more) | open | — |
+| 21:31 | LH bindings finished: committed 8b914d38c (founder identity), pushed fix/lh-imagery-bindings, opened PR #978 — sync --check PASS, full suite 7565 passed/33 skipped exit 0, V2 cert pin confirmed passing at base 21d112299 and now fails closed on check-integrity.py (not bumped, HOLD on skyyrose-flagship-2 touch) | wordpress-theme/skyyrose-flagship/data/logo-registry.json + 22 projections, PR #978 | committed, pushed, PR open — no merge | ~55k |
+| 12:13 | session start (startup) — b06f794c on feat/single-product-entry-point @ce15290a3 · uncommitted: 406 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+401 more) | open | — |
+| 12:27 | session start (resume) — 05213451 on feat/single-product-entry-point @ce15290a3 · uncommitted: 406 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+401 more) | open | — |
+| 18:16 | green-loop: PR #989 fast-uri overrides verified locally (audit exit 0, formatter-ignores OK, vitest 690/690, fastify runtime 200) + 20/20 CI green incl Playwright E2E -> squash-merged 54c643f85; #987 merged origin/main (fcaa92373, no-ff), 22/22 green -> squash-merged 2f5f32cb4; #986 closed as superseded | package.json, package-lock.json, PRs 989/987/986 | merged | ~40k |
+| 22:59 | session end (other) — 3fa3eee5 on feat/single-product-entry-point @ce15290a3 · uncommitted: 406 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+401 more) | closed | — |
+| 22:59 | session end (other) — b06f794c on feat/single-product-entry-point @ce15290a3 · uncommitted: 406 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+401 more) | closed | — |
+| 22:59 | session end (other) — 9406276d on feat/single-product-entry-point @ce15290a3 · uncommitted: 406 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+401 more) | closed | — |
+| 22:59 | session end (other) — 36acc7b7 on feat/single-product-entry-point @ce15290a3 · uncommitted: 406 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+401 more) | closed | — |
+| 22:59 | session end (other) — dc5d458f on feat/single-product-entry-point @ce15290a3 · uncommitted: 406 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+401 more) | closed | — |
+| 22:59 | session start (startup) — 34cb658e on feat/single-product-entry-point @ce15290a3 · uncommitted: 406 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+401 more) | open | — |
+| 20:40 | session start (startup) — d0ccf43a on feat/single-product-entry-point @ce15290a3 · uncommitted: 406 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+401 more) | open | — |
+| 21:13 | session end (prompt_input_exit) — d0ccf43a on feat/single-product-entry-point @ce15290a3 · uncommitted: 406 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+401 more) | closed | — |
+| 14:21 | session start (resume) — 5a6aa2c1 on feat/single-product-entry-point @ce15290a3 · uncommitted: 407 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+402 more) | open | — |
+| 05:48 | session end (other) — 5a6aa2c1 on feat/single-product-entry-point @ce15290a3 · uncommitted: 407 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+402 more) | closed | — |
+| 15:41 | session start (startup) — 52a813de on feat/single-product-entry-point @ce15290a3 · uncommitted: 407 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+402 more) | open | — |
+| 14:15 | session end (prompt_input_exit) — 52a813de on feat/single-product-entry-point @ce15290a3 · uncommitted: 414 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+409 more) | closed | — |
+| 14:16 | session start (resume) — 52a813de on feat/single-product-entry-point @ce15290a3 · uncommitted: 414 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+409 more) | open | — |
+| 17:07 | session end (other) — 52a813de on feat/single-product-entry-point @ce15290a3 · uncommitted: 414 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+409 more) | closed | — |
+| 17:17 | session start (startup) — 487fdc4a on feat/single-product-entry-point @ce15290a3 · uncommitted: 414 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+409 more) | open | — |
+| 22:39 | Disk cleanup 13->48GB; PR #1012 check_anthropic_key.py; PR #1013 dependabot lockfiles (255/276 pip alerts) | scripts/check_anthropic_key.py, uv.lock x3, package-lock x3, pyproject.toml | PRs open, CI pending | ~60k |
+| 23:06 | session start (startup) — aacb55b7 on feat/single-product-entry-point @4b7e6b3ec · uncommitted: 414 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+409 more) | open | — |
+| 23:38 | session start (resume) — 52a813de on feat/single-product-entry-point @4b7e6b3ec · uncommitted: 414 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+409 more) | open | — |
+| 01:07 | session start (startup) — 3381d26a on feat/single-product-entry-point @4b7e6b3ec · uncommitted: 414 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+409 more) | open | — |
+| 01:11 | build-collection-sot.py: products via get_product (all_skus) instead of read_catalog_rows+load_registry; output byte-identical | wordpress-theme/skyyrose-flagship/data/build-collection-sot.py | 4 generated files byte-identical, tests pass, collection_sot_current PASS | ~6k |
+| 01:28 | session start (startup) — 152dbbb3 on feat/single-product-entry-point @a2a0f9706 · uncommitted: 416 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+411 more) | open | — |
+| 01:29 | Fixed 2 stale SOT checks (+ downstream lookbook HTML): regenerated 6 projections stale since registry b7597a7d2; validator 27/27 | data/sot-images.json, lookbook-sot.json, 3 collection sot.json, docs/campaigns/sot-lookbook.html | committed 3930478e2 | ~8k |
+| 01:57 | fix lint: restored 10 stripped noqa:E402 in elite_web_builder/agents/__init__.py; black on 14 branch files; ruff-fixed untracked evidence check-links.py — ruff/black/isort clean on 267 changed py, tests pass | multiple | ok | ~8k |
+| 05:12 | SkyyRose OS skill hardening: recall 67->100%, E2E 39->132/135; commits bc69c65b8 0095af904 (wt skyyrose-os-20261006) | skyyrose/os/rules.py, RECORD-HANDLING.md, 4 SKILL.md | done, local | ~40k |
+| 05:24 | OS gate fixes 536f3273f (one conflict rule, founder-voice rule, care hole) + 8753d9cd4 (subject off-by-one); run-4 residuals 3/3; 509 tests, recall 1.0 | rules.py, RECORD-HANDLING.md, 2 contracts | done, local | ~20k |
+| 06:27 | session start (startup) — 73880fd1 on feat/single-product-entry-point @3930478e2 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | open | — |
+| 06:59 | Cleared 3 stale worktree-fleet rows (hooks-cutover, glb-qc-renderer, v2-open-seo-security-audit) — dirs gone, branches fully pushed; backup in session scratchpad | .wolf/fleet.db | done | ~2k |
+| 07:35 | session start (startup) — 46ce1c95 on feat/single-product-entry-point @3930478e2 · uncommitted: 428 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+423 more) | open | — |
+| 13:15 | Cleared last 3 stale fleet rows: sidestore-fold (branch pushed), mcp-servers-and-gate-fixes (#953 merged), br-005 (#959 merged); fleet.db now empty; backups in scratchpad | .wolf/fleet.db | done | ~3k |
+| 13:50 | PR #1016 fleet prune orphan handling (c534cd5d5, wt fleet-prune-missing); bug-366 logged; local husky hook broken by missing Homebrew libsimdjson.33.dylib | mcp_servers/worktree_fleet/* | PR open, CI pending | ~40k |
+| 14:01 | review→5-agent fix team; PR #1018 (CLI TTY+one-time ledger, retired-copy guard w/ pinned allowlist, key-check pin, mission/letter tagline removed) + PR #1017 (flagship-2 express-checkout priority-agnostic, app-pw literal scrubbed); loops running | worktrees DevSkyy-fix-review-20261009, DevSkyy-flagship2-xc-20261009 | PRs open, CI pending | ~250k |
+| 14:17 | lint: committed 21501fa4f (plugin exclusion from main, isort/black fixes) + ce34a5ab3 (CI pins ruff 0.15.2/black 26.3.1/isort 8.0.0 = hook toolchain); pushed; PR #1019 opened (CONFLICTING vs main, 115 paths) | pyproject.toml mypy.ini ci.yml +17 py | ok | ~40k |
+| 18:38 | Merged #1015 (d1107dd42, 8/8 required green; API-int flake = Docker Hub rate limit, fixed by main's ECR mirror). Reconciled feat/single-product-entry-point: opened #1029 runway, #1030 hook paths, #1031 creative docs+constitution formatter protection; MCP/3D/env/higgsfield/lint/constitution superseded by main; registry PR blocked (founder chose registry A; #1019 by another session) | PRs 1015 1029 1030 1031 | done | ~60k |
+| 19:05 | PR #1016 MERGED 3efd3d9eb (all 8 required green; Python Tests rerun after Docker Hub rate limit); worktree fleet-prune-missing removed | mcp_servers/worktree_fleet/* | merged | ~5k |
+| 19:31 | Registry: main≈A (1998 identical fields); opened #1032 with 3 founder-correct fields (br-001/002 desc, br-007 no back wordmark) + carried wolf logs; closed #1019 with accounting; V2 recert pending founder | PR 1032, 1019 | done | ~25k |
+| 20:12 | merge main->feat (worktree merge-main-20261009): step1 Codex A committed 3d257edb0; step2 my buckets resolved (product SOT, policy/CI, -2 theme, .wolf, docs); 4 agents resolving Comfy/constitution/3D/misc | merge worktree | in progress | ~60k |
+| 20:12 | session end (prompt_input_exit) — aacb55b7 on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 415 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+410 more) | closed | — |
+| 20:12 | session start (resume) — aacb55b7 on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 415 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+410 more) | open | — |
+| 20:29 | merge main→feat/single-product-entry-point = 76cc6ce42 (backup branch pushed); clean suite 8383/0 fail + Comfy green; #1019 closed by scoped-PR plan → landing held for founder; bug-369 ready.glb leak | merge/main-into-single-product-entry-point-20261009 | held | ~ |
+| 20:39 | /code-review high on #1029-#1032 (4 parallel reviewers, findings re-verified): 0 CRIT/HIGH; fixed 2 MEDIUM (runway limiter dead-client after Redis outage, TDD; memory-audit hardcoded root fail-open) + LOWs (doc path leak, false redaction, registry owner/why text, dangling .artifacts links, dup wolf row); all pushed | PRs 1029 1030 1031 1032 | done | ~40k |
+| 03:11 | ported merge 76cc6ce42 → #1032 (2d71f7845), #1031 (af8be9297), new #1033 V2 perm gate, new #1034 card_front (stacked on #1032) | scoped PRs | done, merges held for founder | ~ |
+| 03:11 | FOUNDER_CONFIRMED br-007 large Love Hurts wordmark on the left side -> #1032 acbf3b91e (+ presentation repin 02464700b); sync/validator/59 tests green | PR 1032 | done | ~10k |
+| 03:14 | cleared WP Tagline (blogdescription) via WP-CLI; was "Luxury Grows from Concrete. Premium streetwear from Oakland, CA."; live pages 0 hits; revoked leaked app pw "ChatGPT MCP Tool" (401 now); V2 2.5.1 release prep + live imagery audit dispatched | production options + app passwords | done/verified | ~40k |
+| 03:30 | merged main@6e1ec9b9b into 76cc6ce42 (prior 122-conflict resolution, founder Codex-A registry) as fa93c3857; ff-pushed to feat/single-product-entry-point; PR #1019 body updated; V2 recert (4 drifted pins) + flagship-2 held path await founder | wt merge-main-into-spe-20261010 | ok | ~60k |
+| 05:17 | jersey fit both-statements PR #1036; closed #960/#978 (lh-005 no back pocket) | logo-registry.json, 8 jersey dossiers, tests/test_product_asset_library.py | PR open, 969 tests pass locally | ~40k |
+| 05:28 | #1036 +f537ff6cc mesh colours derived from dossiers (br-007, lh-003, sg-001, sg-003) | logo-registry.json + projections | pushed, 969 pass | ~8k |
+| 05:51 | #1019 found CLOSED (scoped PRs); merged main into #1032 + founder-approved V2 recert (registry pin 351a6bbe->67f407ba); all required+verify green; squash-merged feed4fd98; main registry==V2 pin | tools/v2-source-certification/build-inputs.json | ok | ~90k |
+| 06:05 | #1033 V2 perm gate MERGED e553b560d; #1034 conflict fix 455c56cad pushed (stacked on #1032) | main | done | ~ |
+| 06:07 | PR #1037 blocked: live product-presentation-registry built by uncommitted Codex generator + forked registry (card_front bindings); jersey route test vs live /pre-order/ conflict; founder decision requested | wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json | blocked | ~40k |
+| 09:09 | session end (other) — 3381d26a on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | closed | — |
+| 09:09 | session end (other) — 152dbbb3 on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | closed | — |
+| 09:09 | session end (other) — 73880fd1 on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | closed | — |
+| 09:09 | session end (other) — 46ce1c95 on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | closed | — |
+| 09:09 | session end (other) — aacb55b7 on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | closed | — |
+| 09:09 | session end (other) — 52a813de on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | closed | — |
+| 09:11 | session start (startup) — 8d304d5e on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | open | — |
+| 09:17 | Captured Codex card-gap-integration V2 uncommitted work onto capture/codex-v2-card-gap-20261010 (d0a014a33 + 26504279d), sha-verified 4962 files | ~/DevSkyy-codex-v2-capture-20261010 | ok, local only | ~15k |
+| 10:16 | Option 2 port: V2 presentation registry rebuildable from git, media contract restored (bug-370), renditions 0644 (bug-371), CI-05c gate | ~/DevSkyy-v2-port-20261010 af6d667db..624366d29 | pytest rc0, cert 22 OK, node 130/130, lint clean; local unpushed | ~400k |
+| 10:31 | Port follow-up: generator decoupled from release pin (recert-free founder corrections), package.py = main + eligibility gate, boundary classifies usage grants | ~/DevSkyy-v2-port-20261010 4f7777a46 | package deterministic 772, pytest rc0, lint+mypy clean | ~60k |
+| 12:45 | V2 port: fixed hero-motion validator, frame harness, card builder hash regression (bug-372); d2352afc9 | port wt | full package verify green, pytest rc0 | ~60k |
+| 12:49 | session start (startup) — b063dae8 on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | open | — |
+| 12:51 | session start (startup) — 92346cb7 on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | open | — |
+| 12:54 | session start (startup) — 0ed2a396 on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | open | — |
+| 12:55 | prepped devskyy-backend health check /health→/live (Neon idle) 409550a06 | fly.backend.toml | committed local, deploy gated | ~3k |
+| 13:00 | PR #1036: merged main, br-007 "oakland" FOUNDER_CONFIRMED dossier para, founder-approved V2 recert 67f407ba->2fa48756; full V2 chain green locally; pushed 83baffe29 | logo-registry.json, build-inputs.json | pushed, CI pending | ~40k |
+| 13:18 | scripts refactor: god-mode-x PR #1 (green), DevSkyy batch1 PR #1038 (Pillow getdata, paths anchors) | scripts/*, tests/test_scripts_current_apis.py | PRs open | ~40k |
+| 15:13 | session start (startup) — e0664ae3 on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | open | — |
+| 15:19 | session start (startup) — af5c4d0b on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | open | — |
+| 15:25 | #1034 retargeted to main; merged origin/main (12388f8bf), 2 digest conflicts → branch value; sync --check PASS, 78 tests pass; V2 verify awaits recert (4 own-input drifts) | feat/registry-card-front-bindings | pushed | ~8k |
+| 15:25 | backend↔dashboard audit; fixed unauth /tasks + register role escalation (bug-373) 6057ac363 | api/tasks.py security/jwt_oauth2_auth.py | committed local, deploy gated | ~40k |
+| 15:25 | session start (startup) — fe785cff on feat/single-product-entry-point @ce34a5ab3 · uncommitted: 417 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/pr-green-loop.md .claude/agents/theme-heal-doctor.md (+412 more) | open | — |
+| 15:36 | scripts refactor: merged gmx#1, DevSkyy #1038 (deploy-verifier worktree fallback) #1039 (Pillow) #1040 (get_product batch2); combined main tests green | scripts/, services/, tests/ | merged | ~40k |
+| 15:38 | merged #1036 (be36d4513, founder-authorized past Root TS); #1034 merged main + regen digests (6dea32cd0) + V2 recert 5 pins incl package-boundary for new verify-image-transparency.py (f2c1ff646); local package x2 byte-identical | feat/registry-card-front-bindings | pushed, CI running | ~25k |
+| 15:47 | deployed devskyy-backend v17 (6057ac363): /live check, tasks auth, register role fix, shared MCP token; all probes pass | fly.backend.toml api/tasks.py | live verified | ~10k |
+| 16:14 | cli-anything-skyyrose-flagship-2 harness built (wt DevSkyy-cli-flagship2-20261010, uncommitted): 44/44 tests, check all 12/12 incl verify, GMX PASS | skyyrose/cli_harnesses/skyyrose-flagship-2/ | built, awaiting FTT review + commit call | ~120k |
+| 16:23 | merged PR #1043 (c5c0520db); WP.com DNS zone prepared for devskyy.app; NS switch pending founder | PR #1043, devskyy.app DNS | merged / zone verified | ~5k |
+| 16:24 | merged PR #979 (e31e947ff) dashboard-on-Fly; prod==main for backend+dashboard | PR #979 | merged | ~2k |
+| 16:44 | founder ran uv sync on advice; shared .venv lost 100 pkgs (branch lock stale, exact sync); restored exact prior versions --no-deps + 7 editable harnesses; pip check = pre-existing state; pytest collect rc=0 | .venv | restored | ~15k |
+| 16:46 | God Mode X live Agents API qualification passed (founder-run): sess_0144664e…, completed, local function call round trip, SHA matches HEAD; inspect idle | ~/.devskyy-pm | passed | ~5k |
+| 16:50 | devskyy.app LIVE on Fly: certs issued, all HTTPS probes 200, login eyes-on desktop+mobile | devskyy-dashboard | live verified | ~8k |
+| 17:13 | batch 3 complete (#1042/#1044/#1045 merged); gmx clones synced to 2c216d2; session worktrees removed | uv.lock, pyproject | merged | ~10k |
+| 17:17 | PR #1051 opened; merged main (#1036) into port branch, 3-way resolved, recert pin 7d9a8d6d82c8, full verify green | port/v2-presentation-registry-20261010 | ab7637d38 pushed, CI pending | ~40k |
+| 17:29 | route auth audit (120 open) → PR #1059 gate+coverage test; vercel CLI removed; worktrees/branches cleaned; secrets files deleted | main_enterprise.py tests/test_route_auth_coverage.py frontend/ | PR open, CI running | ~60k |
+| 17:36 | #1051 review follow-up: media-gate emitter exemption narrowed + 2 fail-closed type guards, 5 tests; merged GitHub update-branch (#1045) | validate/test-collection-hero-motion.py | d0146f4c4 + 60228bf7a pushed, CI pending | ~15k |
+| 18:29 | Session: PR #1041 (25 tests build-collection-sot), #1047 (get_product loader port + 5 tests, byte-identical), #1046 merged (Root TS green); #1047/#1041/#1031/#1029 awaiting queued CI (runner backlog 01:29Z); #1030 bot checks red; other session merged #1036/#1038-#1040 while red | tests/test_build_collection_sot*.py, package.json | merges gated on all-green per founder 2026-10-10 | ~40k |
+| 18:40 | backend v18 deployed (b6ad6046e): 110 routes gated live, 19 probes 401, public probes 200 | devskyy-backend | live verified | ~4k |
+| 18:51 | batches 4-5 merged (#1061/#1062/#1057); #1037 blocked on hero master films + treatment text; #1064 waits | scripts/ | merged | ~20k |
+| 01:48 | FINAL: #1059+#1063 merged; backend v19 + dashboard v2 deployed from main 1aee393d1; all gates verified live; worktrees cleaned | prod | synced | ~10k |
+| 2026-10-11 05:08 | claude-code @ feat/single-product-entry-point | Fixed SOT drift: added root symlinks dossiers + render-keepers.json; CLAUDE.md §2 product-facts row -> get_product/registry; AGENTS.md same rule; added session-handoff-log rule to CLAUDE.md + AGENTS.md | CLAUDE.md, AGENTS.md, dossiers, render-keepers.json | done, UNCOMMITTED (branch has unrelated WIP — commit via git add -p). Open: SOT.md:50 typo "all33"; SOT.md says .wolf/memory.md gitignored but it is tracked | ~25k |
+| 2026-10-11 05:13 | claude-code @ feat/single-product-entry-point sid:f209abee | Built handoff-log enforcement: .wolf/hooks/handoff-gate.sh (Claude Code + Codex PostToolUse/Stop), .husky/pre-push backstop, tests/test_handoff_gate.py (22 pass); wired .claude/settings.json + .codex/hooks.json; documented sid: row format in CLAUDE.md + AGENTS.md | .wolf/hooks/handoff-gate.sh, .husky/pre-push, tests/test_handoff_gate.py, .claude/settings.json, .codex/hooks.json, CLAUDE.md, AGENTS.md | done, UNCOMMITTED (branch has unrelated WIP — use git add -p for shared files) | ~60k |
+| 2026-10-11 05:17 | claude-code @ feat/single-product-entry-point sid:f209abee | Review fixes to handoff gate: resolve repo from edited path / cd target when shell cwd is outside repo (marker now stores memory path + worktree); accept argv-array Codex commands; moved hook entries to END of PostToolUse/Stop arrays (Codex trusts hooks by position+hash) | .wolf/hooks/handoff-gate.sh, tests/test_handoff_gate.py (26 pass), .claude/settings.json, .codex/hooks.json | done, UNCOMMITTED. Next: live check in fresh Claude + Codex sessions; Codex will ask to trust the 2 new hooks | ~20k |
+| 2026-10-11 05:25 | claude-code @ feat/single-product-entry-point sid:f209abee | Handoff gate soft mode (block once/session, then Stop systemMessage + UserPromptSubmit reminders; fingerprint not count); added scripts/wolf_memory_rotate.py (concurrency-safe, byte-exact) wired at SessionStart; rotated memory.md 610KB->64KB into .wolf/memory-archive/memory-20261011-052456.md | .wolf/hooks/handoff-gate.sh, .wolf/hooks/memory-session-log.sh, scripts/wolf_memory_rotate.py, tests (35 pass), .claude/settings.json, .codex/hooks.json, .gitignore, CLAUDE.md, AGENTS.md | done, UNCOMMITTED; next: live check in fresh Claude + Codex sessions (Codex must trust 3 new hooks) | ~45k |
+| 2026-10-11 05:36 | claude-code @ feat/single-product-entry-point sid:e0664ae3 | CI refactor #1065 merged (584e65e38; main run green); found CLAUDE_CODE_OAUTH_TOKEN revoked (all claude-review passes since 09-14 vacuous); #1030 hooks made local-only (GITHUB_ACTIONS guard + test) | PR #1065, PR #1030 (e3a3e3247, ffe89e1d5), .github/workflows/*, .claude/settings.json, tests/ci, tests/hooks | in-progress: #1030 CI re-running on rotated token → merge if fully green + real review; then PR for claude-review retry marketplace reset | ~180k |
+| 2026-10-11 05:37 | claude-code @ feat/single-product-entry-point sid:f209abee | Follow-ups: .prettierignore now skips .wolf/memory-archive/ (protects byte-exact archive); SOT.md memory row fixed (tracked, archive location); anatomy.md entry for wolf_memory_rotate.py. Verified: gate live in a NEW Claude session (marker for e0664ae3 written 05:36); this session predates wiring so it is ungated; sid:f209abee confirmed from transcript filename | .prettierignore, SOT.md, .wolf/anatomy.md | done, UNCOMMITTED. Open: Codex live check; anatomy entries for .wolf/hooks/handoff-gate.sh + tests/test_handoff_gate.py + tests/test_wolf_memory_rotate.py (anatomy has no such sections) | ~10k |
+| 2026-10-11 05:38 | claude-code @ feat/single-product-entry-point sid:fe785cff | Read-only recheck of 2.5.1 deploy state: live still V2 2.5.0, robots.txt lists 404 wp-sitemap.xml, homepage 2 meta descriptions; PR #1035 merged 8d762775d; deploy wt mighty-crunching-toast HEAD e30a78cfb unchanged, no deploy row. No files changed (git fetch only). | none | blocked: founder must pick 1 (full 2.5.1) / 2 (SEO-only) / 3 (hold) before any deploy | ~15k |
+| 2026-10-11 05:50 | claude-code @ feat/single-product-entry-point sid:e0664ae3 | #1030 MERGED 2258988fc after token rotation: all checks green, claude-review real (275s, 43 turns, $1.01) | PR #1030 | done; next: small PR resetting ~/.claude/plugins before claude-review retry (marketplace-already-installed bug from #1065) | ~20k |
