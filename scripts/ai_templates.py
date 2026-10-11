@@ -124,7 +124,7 @@ demo.queue().launch()
 '''
 
 REQUIREMENTS_TEMPLATE = """gradio==5.50.0
-huggingface_hub>=0.28.0
+huggingface_hub>=0.33.5,<2
 requests>=2.32.0
 torch>=2.1.0
 accelerate>=1.0.0
