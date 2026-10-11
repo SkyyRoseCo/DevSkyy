@@ -59,3 +59,21 @@ Pages: `/`, `/shop/`, `/collections/black-rose/`, `/product/br-001/`.
   therefore see what the edge cache serves visitors.
 - REA needs a loopback CDP endpoint (`--remote-debugging-address=127.0.0.1`);
   use a throwaway `--user-data-dir`, never the founder's browser profile.
+
+## Re-run after review hardening (same day)
+
+Checker now fetches bare visitor URLs without following redirects, verifies
+every distinct `(path, query)` reference, requires a content-hashed `?ver=` on
+hash-sized assets, reproduces Boost's exact `url()` rewrite, verifies Boost
+**JS** bundles and the homepage inline blocks (`#skyyrose2-critical-home`,
+`#skyyrose2-visual-recovery-early`), treats leftover theme code in any bundle as
+drift, and scans all CSS for cut families.
+
+Result `[live]`: **91 asset checks verified, 0 drift, 0 unmatched theme code, 0
+incomplete** (53 concat-exact incl. 3 theme scripts inside JS bundles, 17
+http-bytes, 15 REA runtime, 4 Boost-url CSS, 2 inline blocks). Policy findings:
+the 4 Elementor `fonts-api.wp.com` stylesheets on `/`, plus cut families
+declared on every checked page by `.skyyrose-modal__name` (Playfair Display),
+`.skyyrose-immersive` (Cormorant Garamond) and `.skyyrose-immersive__hud-hint`
+(Bebas Neue) — CSS that is **not in this repo** (`git grep` finds no match), so
+it ships from another live source (likely a plugin).
