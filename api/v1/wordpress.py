@@ -77,7 +77,7 @@ async def sync_to_wordpress(
 
 
 @router.get("/status", summary="WordPress connection status")
-async def get_wordpress_status() -> dict[str, Any]:
+async def get_wordpress_status(_principal=Depends(service_or_user_auth)) -> dict[str, Any]:
     """Check WordPress connection by fetching site info."""
     creds = _get_wp_creds()
     try:
