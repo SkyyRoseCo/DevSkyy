@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import unittest
 from pathlib import Path
@@ -27,7 +28,10 @@ class ProductPresentationTests(unittest.TestCase):
             "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
         )
         self.assertEqual(
-            registry["product_registry_sha256"], provenance()["sources"]["registry"]["sha256"]
+            registry["product_registry_sha256"],
+            hashlib.sha256(
+                (ROOT / provenance()["sources"]["registry"]["path"]).read_bytes()
+            ).hexdigest(),
         )
         for sku, presentation in registry["products"].items():
             with self.subTest(sku=sku):

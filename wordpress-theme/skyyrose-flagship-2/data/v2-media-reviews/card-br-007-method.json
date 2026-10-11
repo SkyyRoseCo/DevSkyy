@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-dense-method-card-br-007-method",
+  "asset_id": "card-br-007-method",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "5dc9e70947183f159c5ad889aa441677907f5a5b8fe4d3f22b941f094bcf8c26",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "br-007"
+  ],
+  "collections": [
+    "black-rose"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/production-dense-method/card-br-007-method-visual-review.json",
+    "sha256": "ab11610ec38d65bb21a1375d46cd2e3f7579553bec6ee5230c6fd446304b12d6"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-007-card-desktop.png",
+      "sha256": "c8a2758e6b2dd9c93a281a326213199957cfab6595db7d3b25cf97e72f9a5cf3"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-007-card-mobile.png",
+      "sha256": "572b0af77a304fb4e6ca3cf33c00eda17939485ba0415512a1eb4549aa2f1366"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-007-pdp-desktop.png",
+      "sha256": "b96958b8ca48f091bf59c55f5ada6117371aea8114911fbfc38704080b4fa509"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-007-pdp-mobile.png",
+      "sha256": "bc3e9335f8e5275288d172573da1e9fe497b4f3aaf410f5a6fac7e04445cf2ee"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native asset plus actual offline card and current product-page.css media-layout contexts at1440px desktop/390px mobile. Bounded photographic/media role review; full theme, interactions, commerce and public release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: Complete white waistband, both zipper regions, OAKLAND, tonal rose repeat, distinct side emblems and both hems remain visible. The plain basketball touches the outer upper wearer-right side edge but does not hide its emblem; the wrapped large body script has the source-relative front projection.",
+    "pdp_on_model_front": "PASS: complete master is contained in the inspected current gallery selectors; full sold garment and observable artwork remain visible on desktop/mobile."
+  }
+}

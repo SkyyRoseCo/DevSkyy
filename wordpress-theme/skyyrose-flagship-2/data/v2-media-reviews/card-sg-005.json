@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-all-products-card-sg-005",
+  "asset_id": "card-sg-005",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "abced2c89fae4152b98e64b21235fa51dde08e29814c1d20d67d91b675fcbb6d",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "sg-005"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/all-products/card-sg-005-visual-review.json",
+    "sha256": "03d7a2ef00ed6fbe921aac9753c52fc069f83a091440dfbf2942f26b4c8d5260"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-005-card-desktop.png",
+      "sha256": "698d141157d77a1d365156a0d0f0f7c5e5b7ecfb68e2344fefbab6f43cb0a767"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-005-card-mobile.png",
+      "sha256": "bf5ba119e483feef1269026f291f3fb02da1cdc954d94207c7c210de9d2d02e3"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-005-pdp-desktop.png",
+      "sha256": "9ad2e8f1655e7d204af08f12c3e4f1f27cee5b9c939639bda37c70136effa993"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-005-pdp-mobile.png",
+      "sha256": "03e28b8ebb562fb2d594cfeb7b3469751eb2aaf1a3e7e1080b9f089acb850545"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native asset and actual offline card/current product-page.css PDP media-only contexts at1440 desktop/390 mobile. Full commerce, theme state, motion and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: Blue/cyan rose artwork retains Bay Bridge imagery inside the blooms, grey vine/leaf geometry, blue/black cloud and center placement. Both sleeve fabric boundaries, collar and complete hem remain inside frame. The arm exits the frame; that is not a clipped sleeve.",
+    "pdp_on_model_front": "PASS: all master pixels contained in current gallery selectors at desktop/mobile; exact native identity verdict applies."
+  }
+}

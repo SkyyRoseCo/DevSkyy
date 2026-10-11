@@ -86,7 +86,7 @@ function skyyrose2_performance_dequeue_unused_assets() {
 	// Woo's product grids, tables and forms are not present. Keep native styles on
 	// every transactional, archive, content and legacy immersive route. Extensions
 	// adding native Woo markup here can opt back in without changing this policy.
-	$collection = function_exists( 'skyyrose2_collection_page_slug' ) ? skyyrose2_collection_page_slug() : '';
+	$collection     = function_exists( 'skyyrose2_collection_page_slug' ) ? skyyrose2_collection_page_slug() : '';
 	$owned_commerce = is_front_page() || ( $collection && function_exists( 'skyyrose2_collection_world_enabled' ) && skyyrose2_collection_world_enabled( $collection ) );
 	if ( $owned_commerce && ! apply_filters( 'skyyrose2_editorial_native_woo_styles', false ) ) {
 		foreach ( array( 'woocommerce-general', 'woocommerce-layout', 'woocommerce-smallscreen' ) as $handle ) {
@@ -95,6 +95,42 @@ function skyyrose2_performance_dequeue_unused_assets() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_dequeue_unused_assets', 100 );
+
+/**
+ * The native homepage renders no plugin blocks or Elementor editor UI.
+ * Remove their CSS before Boost combines styles, retaining native search,
+ * accessibility and all commerce styles. Editors and other routes keep them.
+ */
+function skyyrose2_performance_home_plugin_styles() {
+	if ( is_admin() || ! is_front_page() || is_user_logged_in() || is_customize_preview() || is_preview() || apply_filters( 'skyyrose2_home_plugin_styles', false ) ) {
+		return;
+	}
+	foreach ( array(
+		'wp-mediaelement',
+		'mediaelement',
+		'jetpack-block-podcast-episode',
+		'jetpack-block-paypal-payment-buttons',
+		'jetpack-forms-layout',
+		'jetpack-layout-grid',
+		'wp-block-code',
+		'videopress-video-style',
+		'jetpack-sharing-buttons-style',
+		'social-logos',
+		'elementor-common',
+		'elementor-icons',
+		'e-theme-ui-light',
+		'gravatar-enhanced-patterns-shared',
+		'gravatar-enhanced-patterns-edit',
+		'gravatar-enhanced-patterns-view',
+		'jetpack-global-styles-frontend-style',
+		'sharedaddy',
+	) as $handle ) {
+		wp_dequeue_style( $handle );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_home_plugin_styles', 200 );
+add_action( 'wp_print_styles', 'skyyrose2_performance_home_plugin_styles', 1 );
+
 
 /**
  * Offer small, exact theme styles to Core's bounded inline-style delivery.
@@ -111,27 +147,32 @@ function skyyrose2_performance_inline_small_styles() {
 
 	$styles = wp_styles();
 	$assets = array(
-		'tokens' => 'design-tokens', 'controls' => 'controls',
-		'theme' => 'archive-theme',
-		'global-shell' => 'global-shell', 'visual-recovery' => 'visual-recovery',
-		'home-page' => 'home-page', 'collection-world' => 'collection-world',
-		'product-page' => 'product-page', 'shop-page' => 'shop-page',
-		'hero-commerce-scenes' => 'hero-commerce-scenes',
-		'collection-scene-motion' => 'collection-scene-motion', 'mascot' => 'mascot',
+		'tokens'                  => 'design-tokens',
+		'controls'                => 'controls',
+		'theme'                   => 'archive-theme',
+		'global-shell'            => 'global-shell',
+		'visual-recovery'         => 'visual-recovery',
+		'home-page'               => 'home-page',
+		'collection-world'        => 'collection-world',
+		'product-page'            => 'product-page',
+		'shop-page'               => 'shop-page',
+		'hero-commerce-scenes'    => 'hero-commerce-scenes',
+		'collection-scene-motion' => 'collection-scene-motion',
+		'mascot'                  => 'mascot',
 	);
 	foreach ( $assets as $name => $asset ) {
 		$handle = 'skyyrose2-' . $name;
-		$style = $styles->registered[ $handle ] ?? null;
+		$style  = $styles->registered[ $handle ] ?? null;
 		if ( ! $style || ! in_array( $handle, $styles->queue, true ) || 'all' !== $style->args || ! empty( $style->extra['rtl'] ) || ! empty( $style->extra['conditional'] ) || ! empty( $style->extra['path'] ) ) {
 			continue;
 		}
 		// The verified archive projection has a separate per-file ceiling;
 		// Core still decides whether it fits the unchanged total 40KB budget.
-		$limit = 'archive-theme' === $asset ? 32768 : 16384;
+		$limit    = 'archive-theme' === $asset ? 32768 : 16384;
 		$suffixes = 'archive-theme' === $asset ? array( '.min.css' ) : array( '.min.css', '.css' );
 		foreach ( $suffixes as $suffix ) {
 			$relative = '/assets/css/' . $asset . $suffix;
-			$path = SKYYROSE2_DIR . $relative;
+			$path     = SKYYROSE2_DIR . $relative;
 			if ( SKYYROSE2_URI . $relative === $style->src && is_readable( $path ) && filesize( $path ) <= $limit ) {
 				wp_style_add_data( $handle, 'path', $path );
 				break;
@@ -252,6 +293,7 @@ function skyyrose2_performance_sot_preload( $path, $media = '' ) {
 	}
 
 	$url      = skyyrose2_sot_asset_uri( $path );
+	if ( ! $url ) { return array(); }
 	$resource = array(
 		'href'          => $url,
 		'as'            => 'image',
@@ -303,10 +345,15 @@ function skyyrose2_performance_art_directed_preloads( $desktop, $tablet, $mobile
  */
 function skyyrose2_performance_route_preloads() {
 	if ( is_front_page() ) {
-		return skyyrose2_performance_art_directed_preloads(
-			'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp',
-			'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp',
-			'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp'
+		$hero = function_exists( 'skyyrose2_media_uri' ) ? skyyrose2_media_uri( 'assets/images/house-monument-20260928.webp' ) : '';
+		if ( ! $hero ) { return array(); }
+		return array(
+			array(
+				'href'          => $hero,
+				'as'            => 'image',
+				'fetchpriority' => 'high',
+				'type'          => 'image/webp',
+			),
 		);
 	}
 	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
@@ -356,11 +403,9 @@ function skyyrose2_performance_route_preloads() {
 			);
 		}
 		if ( in_array( $slug, array( 'pre-order', 'preorder' ), true ) ) {
-			return skyyrose2_performance_art_directed_preloads(
-				'images/preorder/responsive/black-rose-salon-1440w.webp',
-				'images/preorder/responsive/black-rose-salon-1024w.webp',
-				'images/preorder/responsive/black-rose-salon-640w.webp'
-			);
+			// The pre-order template assigns high priority to its eligible arrival.
+			// A historical house image must never be loaded for this route.
+			return array();
 		}
 		// Contact renders no hero image since 2.5.0; only About keeps a page hero.
 		$page_heroes = array(
@@ -375,14 +420,34 @@ function skyyrose2_performance_route_preloads() {
 	$image_id   = 0;
 	$image_size = 'full';
 	if ( is_singular( 'product' ) && function_exists( 'wc_get_product' ) ) {
-		$product    = wc_get_product( get_queried_object_id() );
+		$product = wc_get_product( get_queried_object_id() );
 		// Delivery hints obey the same authority as the visible PDP gallery.
 		$media      = $product && function_exists( 'skyyrose2_product_commerce_media' ) ? skyyrose2_product_commerce_media( $product ) : array();
+		if ( ! empty( $media['front']['src'] ) ) {
+			$front    = $media['front'];
+			$resource = array( 'href' => $front['display_src'] ?? $front['card_src'] ?? $front['src'], 'as' => 'image', 'fetchpriority' => 'high' );
+			$type     = skyyrose2_performance_image_mime( $resource['href'] );
+			if ( $type ) { $resource['type'] = $type; }
+			if ( ! empty( $front['srcset'] ) ) {
+				$resource['imagesrcset'] = $front['srcset'];
+				$resource['imagesizes']  = function_exists( 'skyyrose2_pdp_gallery_sizes' ) ? skyyrose2_pdp_gallery_sizes( $front['width'], $front['height'] ) : '100vw';
+			}
+			return array( $resource );
+		}
 		$image_id   = (int) ( $media['ids'][0] ?? 0 );
 		$image_size = 'woocommerce_single';
-		$delivery = $image_id && function_exists( 'skyyrose2_pdp_media_delivery' ) ? skyyrose2_pdp_media_delivery( $product, $image_id ) : array();
+		$delivery   = $image_id && function_exists( 'skyyrose2_pdp_media_delivery' ) ? skyyrose2_pdp_media_delivery( $product, $image_id ) : array();
 		if ( $delivery ) {
-			return array( array( 'href' => $delivery['src'], 'as' => 'image', 'type' => 'image/webp', 'fetchpriority' => 'high', 'imagesrcset' => $delivery['srcset'], 'imagesizes' => $delivery['sizes'] ) );
+			return array(
+				array(
+					'href'          => $delivery['src'],
+					'as'            => 'image',
+					'type'          => 'image/webp',
+					'fetchpriority' => 'high',
+					'imagesrcset'   => $delivery['srcset'],
+					'imagesizes'    => $delivery['sizes'],
+				),
+			);
 		}
 	} elseif ( is_single() ) {
 		$image_id = (int) get_post_thumbnail_id( get_queried_object_id() );
@@ -396,7 +461,7 @@ function skyyrose2_performance_route_preloads() {
 				'as'            => 'image',
 				'fetchpriority' => 'high',
 			);
-			$type = skyyrose2_performance_image_mime( $source[0] );
+			$type     = skyyrose2_performance_image_mime( $source[0] );
 			if ( $type ) {
 				$resource['type'] = $type;
 			}
@@ -467,7 +532,7 @@ function skyyrose2_performance_archive_front_preload() {
 			'as'            => 'image',
 			'fetchpriority' => 'high',
 		);
-		$type = skyyrose2_performance_image_mime( $href );
+		$type     = skyyrose2_performance_image_mime( $href );
 		if ( $type ) {
 			$resource['type'] = $type;
 		}
@@ -500,7 +565,7 @@ function skyyrose2_performance_preload_resources( $resources ) {
 		if ( empty( $resource['href'] ) || isset( $existing[ $resource['href'] ] ) ) {
 			continue;
 		}
-		$resources[]                    = $resource;
+		$resources[]                   = $resource;
 		$existing[ $resource['href'] ] = true;
 	}
 

@@ -1,0 +1,90 @@
+{
+  "schema": "skyyrose.founder-accepted-image-candidate.v2",
+  "status": "FOUNDER_ACCEPTED_CANDIDATE",
+  "recorded_on": "2026-10-06 America/Los_Angeles",
+  "decision_evidence": {
+    "source": "codex_app.read_thread current conversation event",
+    "authority": "FOUNDER_CONFIRMED",
+    "verbatim": "well this is a pass. the droplets arent on the actual joggers",
+    "thread_id": "01a0f571-95e2-7361-9e42-7c680bc6109f",
+    "turn_id": "01a10f8d-255a-7173-8fa4-402831117fc8",
+    "user_message_id": "01a10f8d-27df-7162-ba86-1333b0f9ec62",
+    "displayed_image_item_id": "exec-be871f0e-a178-4335-8c81-3847bd6830bf",
+    "displayed_image": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/qualification-r5-lh002-20261005/quarantine/lh-002-cardfront-r2.png",
+      "sha256": "8237df33b67dadaa443a32c06541c0d80ec8ad8dbdb6039fab2f75e1c4fa2ff4"
+    },
+    "disposition": "The founder accepted this exact R2 image for the LH-002 card-front and PDP-front roles and directly corrected the separate-droplet depiction. The artwork source remains unchanged; the accepted candidate stays quarantined until its independent role review and promotion gates complete."
+  },
+  "candidate": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/qualification-r5-lh002-20261005/quarantine/lh-002-cardfront-r2.png",
+    "sha256": "8237df33b67dadaa443a32c06541c0d80ec8ad8dbdb6039fab2f75e1c4fa2ff4",
+    "sku": "lh-002",
+    "collection": "love-hurts",
+    "roles": [
+      "card_front",
+      "pdp_on_model_front"
+    ],
+    "media_state": "QUARANTINED_FOUNDER_ACCEPTED_NOT_PROMOTED"
+  },
+  "resolved_from_generation_scope": [
+    {
+      "role": "card_front",
+      "sku": "lh-002"
+    },
+    {
+      "role": "pdp_on_model_front",
+      "sku": "lh-002"
+    }
+  ],
+  "execution_observation": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/qualification-r5-lh002-20261005/lh002-r2-exec-observation.json",
+    "sha256": "9db07ed6f336c25018609df22e9f901eb53f0be511ae300304de73c302d0013b"
+  },
+  "product_source": {
+    "path": "assets/products/catalog/love-hurts/lh-002/originals/lh-002-front-b2d07d547b31.png",
+    "sha256": "b2d07d547b31419b8c74054789a2cc26f8607a67b6a8c1668fa59859495256d4",
+    "source_role": "Exact product image input recorded in the R2 execution observation."
+  },
+  "current_product_registry_source": {
+    "path": "assets/products/techflats/split/catalog/lh-002-techflat-front.png",
+    "sha256": "b17f56eccca4ea869a39d6d900d1d0e15c1b80ddf1f86320f5797cc36b84ff52",
+    "source_role": "Current registry-bound techflat retained as separate product SOT evidence; the accepted historical candidate is not silently relabeled as rendered from this file."
+  },
+  "founder_artwork": {
+    "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png",
+    "sha256": "a9b96c60811a92b34dd8b5700317603a16f0976ea863c5d255a4762935d363a8",
+    "handling": "Source artwork bytes remain unchanged. This accepted jogger image omits the separate red droplets."
+  },
+  "previous_automated_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/qualification-r5-lh002-20261005/lh002-r2-independent-visual-review.json",
+    "sha256": "c9b35ad012cc50d246c26b4f92128615b8bec9044c06b9438389db3c510936bd",
+    "verdict": "REVISE",
+    "finding": "The candidate-specific review raised product-art and footwear concerns. The founder's later acceptance controls the two declared roles for this batch; the review is preserved unchanged as history."
+  },
+  "review_contexts": [
+    {
+      "role": "card_desktop",
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/qualification-r5-lh002-20261005/contexts/lh002-r2-card-desktop.png",
+      "sha256": "b3a8f5f6bd39da500beb54e2d66b7e482c62dad24107479a54a051aa72158395"
+    },
+    {
+      "role": "card_mobile",
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/qualification-r5-lh002-20261005/contexts/lh002-r2-card-mobile.png",
+      "sha256": "91b47cb156547aaf7d96374791de0c16b78937016868323f1803669141d26793"
+    },
+    {
+      "role": "pdp_desktop",
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/qualification-r5-lh002-20261005/contexts/lh002-r2-pdp-desktop.png",
+      "sha256": "f4c65fd8b77830050cc020f450a78ad9145026ed368716bde0395950b46556ef"
+    },
+    {
+      "role": "pdp_mobile",
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/qualification-r5-lh002-20261005/contexts/lh002-r2-pdp-mobile.png",
+      "sha256": "87e4ae17470a4e9ce2721a288bb038ec24806ca64200146b72dd75e9a5113ba2"
+    }
+  ],
+  "authentication": "NOT_APPLICABLE_OFFLINE_FOR_REVIEW_CONTEXTS; the generation artifact and founder decision are recorded separately above.",
+  "promotion": "NOT_AUTHORIZED_BY_THIS_RECEIPT",
+  "publication": "NOT_AUTHORIZED_BY_THIS_RECEIPT"
+}
