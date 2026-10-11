@@ -36,7 +36,8 @@ jobs:
   secrets-scan:
     name: 🔑 Secrets Scan
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    # Full-history checkout (~2 min) + gitleaks + trufflehog runs 4-5 min; 5 timed out.
+    timeout-minutes: 10
 
     steps:
       - name: Checkout code

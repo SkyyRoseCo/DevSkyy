@@ -255,8 +255,13 @@ jobs:
           # 2026-09-03. DevSkyy does not call the affected model-artifact APIs;
           # remove this exception as soon as upstream publishes a fixed version.
           IGNORE="--ignore-vuln CVE-2026-45829 --ignore-vuln PYSEC-2026-139 --ignore-vuln CVE-2025-3000 --ignore-vuln PYSEC-2025-217 --ignore-vuln PYSEC-2026-3740"
+          # Audit the exact installed set minus the editable project (devskyy is not on
+          # PyPI, and --strict also rejects --skip-editable). --strict then fails the
+          # scan if any real dependency cannot be audited, instead of skipping it.
+          uv pip freeze --color never --python "$(command -v python)" --exclude-editable > audit-requirements.txt
           # One scan; the readable report is rendered from its JSON.
-          pip-audit $IGNORE --strict --skip-editable --format=json --output=pip-audit-results.json || pip_audit_status=$?
+          pip-audit $IGNORE --strict --no-deps --disable-pip -r audit-requirements.txt \
+            --format=json --output=pip-audit-results.json || pip_audit_status=$?
           jq -r '.dependencies[]? | select((.vulns // []) | length > 0)
                  | .name + " " + .version + ": "
                    + ([.vulns[] | .id + " (fix: " + ((.fix_versions // []) | join(",")) + ")"] | join("; "))' \

@@ -311,3 +311,6 @@ run ("devskyy: Dependency not found on PyPI") and passing. Collapsing to one JSO
 pass made `--strict` real and turned Security Scan red; the fix is
 `--strict --skip-editable` (strict for every real dependency, not the local
 project). When de-duplicating a scan, check which invocation was actually gating.
+Follow-up: `--strict` also rejects `--skip-editable` ("distribution marked as
+editable"). Audit `uv pip freeze --exclude-editable` with
+`--strict --no-deps --disable-pip -r` instead.
