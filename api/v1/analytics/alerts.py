@@ -22,12 +22,17 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from database.db import get_db
-from security import TokenPayload, require_roles
+from security import RoleChecker, TokenPayload, UserRole
 
 # Configure logging
 logger = logging.getLogger(__name__)
 
 # Create router
+# Real FastAPI dependency (security.require_roles is a decorator: wrapping it in
+# Depends() made FastAPI treat its `func` parameter as a query param, so
+# `?func=x` skipped authentication entirely).
+_require_analytics_admin = RoleChecker([UserRole.ADMIN, UserRole.SUPER_ADMIN])
+
 router = APIRouter(prefix="/analytics/alerts", tags=["Alert Management"])
 
 
@@ -258,7 +263,7 @@ async def get_alert_history(
     alert_config_id: str | None = Query(default=None, description="Filter by alert config ID"),
     start_date: str | None = Query(default=None, description="Filter from date (ISO format)"),
     end_date: str | None = Query(default=None, description="Filter to date (ISO format)"),
-    user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    user: TokenPayload = Depends(_require_analytics_admin),
     db: AsyncSession = Depends(get_db),
 ) -> AlertHistoryResponse:
     """Get alert history with filters.
@@ -433,7 +438,7 @@ async def get_alert_history(
 )
 async def get_active_alerts(
     severity_filter: AlertSeverity | None = Query(default=None, description="Filter by severity"),
-    user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    user: TokenPayload = Depends(_require_analytics_admin),
     db: AsyncSession = Depends(get_db),
 ) -> ActiveAlertsResponse:
     """Get currently active (unacknowledged) alerts.
@@ -575,7 +580,7 @@ async def get_active_alerts(
 async def acknowledge_alert(
     alert_id: str,
     request: AcknowledgeRequest,
-    user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    user: TokenPayload = Depends(_require_analytics_admin),
     db: AsyncSession = Depends(get_db),
 ) -> AcknowledgeResponse:
     """Acknowledge a triggered alert.
@@ -675,7 +680,7 @@ async def acknowledge_alert(
 async def resolve_alert(
     alert_id: str,
     request: ResolveRequest,
-    user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    user: TokenPayload = Depends(_require_analytics_admin),
     db: AsyncSession = Depends(get_db),
 ) -> ResolveResponse:
     """Resolve an alert.
@@ -785,7 +790,7 @@ async def resolve_alert(
 )
 async def bulk_acknowledge_alerts(
     request: BulkAcknowledgeRequest,
-    user: TokenPayload = Depends(require_roles(["admin", "analyst"])),
+    user: TokenPayload = Depends(_require_analytics_admin),
     db: AsyncSession = Depends(get_db),
 ) -> BulkAcknowledgeResponse:
     """Bulk acknowledge multiple alerts.

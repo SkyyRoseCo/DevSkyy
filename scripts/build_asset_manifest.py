@@ -39,8 +39,8 @@ from skyyrose.core.asset_manifest import (  # noqa: E402
     hash_if_present,
     to_repo_relative,
 )
-from skyyrose.core.catalog_loader import read_catalog_rows  # noqa: E402
 from skyyrose.core.hashing import sha256_of_file  # noqa: E402
+from skyyrose.core.product import get_product, load_registry  # noqa: E402
 from skyyrose.core.product_registry import PRODUCT_REGISTRY  # noqa: E402
 from skyyrose.elite_studio.logo_registry import RegistryContractError  # noqa: E402
 
@@ -49,16 +49,16 @@ _SUPPLEMENTAL_SOURCE_ROLES = ("wearer-left", "wearer-right", "founder-four-angle
 
 
 def _catalog_rows() -> dict[str, dict]:
-    """SKU → {name, collection, garment_type} via the shared catalog loader."""
-    return {
-        row["sku"].strip(): {
-            "name": (row.get("name") or "").strip(),
-            "collection": (row.get("collection") or "").strip(),
-            "garment_type": (row.get("garment_type_lock") or "").strip(),
+    """SKU → {name, collection, garment_type} from get_product, in catalog (registry) order."""
+    rows: dict[str, dict] = {}
+    for sku in load_registry()["products"]:
+        catalog = get_product(sku)["catalog"]
+        rows[sku] = {
+            "name": (catalog.get("name") or "").strip(),
+            "collection": (catalog.get("collection") or "").strip(),
+            "garment_type": (catalog.get("garment_type_lock") or "").strip(),
         }
-        for row in read_catalog_rows()
-        if (row.get("sku") or "").strip()
-    }
+    return rows
 
 
 def _record(role: str, path: Path | None) -> AssetRecord | None:

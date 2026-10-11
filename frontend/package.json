@@ -17,13 +17,6 @@
     "deploy:prod": "npm run deploy",
     "deploy:auto": "npm run deploy",
     "deploy:auto:prod": "npm run deploy",
-    "vercel:link": "vercel link --project=devskyy",
-    "vercel:link:auto": "./scripts/link-vercel-project.sh",
-    "vercel:env:pull": "vercel env pull .env.local",
-    "vercel:env:push": "vercel env push .env.production",
-    "vercel:logs": "vercel logs",
-    "vercel:inspect": "vercel inspect",
-    "vercel:project": "vercel project ls",
     "sync:scene-authority": "node scripts/sync-scene-authority.mjs",
     "check:scene-authority": "node scripts/sync-scene-authority.mjs --check",
     "build:standalone": "NEXT_OUTPUT_STANDALONE=1 npm run build"
@@ -138,7 +131,6 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vercel": "^59.20.0",
     "vite": "8.2.0",
     "vitest": "^5.0.1"
   }
