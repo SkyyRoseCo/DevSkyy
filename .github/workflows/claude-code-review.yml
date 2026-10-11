@@ -10,6 +10,11 @@ on:
     #   - "src/**/*.js"
     #   - "src/**/*.jsx"
 
+# Review only the latest push: a new commit cancels the in-flight review.
+concurrency:
+  group: claude-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   claude-review:
     # The action rejects bot-triggered events. Keep the code/security test jobs
@@ -38,6 +43,28 @@ jobs:
 
       - name: Run Claude Code Review
         id: claude-review
+        continue-on-error: true
+        uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268  # v1
+        with:
+          # Use the job-scoped token on internal PRs so workflow changes can be
+          # reviewed before merging. Forks retain the GitHub App auth path.
+          github_token: ${{ github.event.pull_request.head.repo.full_name == github.repository && github.token || '' }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
+          plugins: 'code-review@claude-code-plugins'
+          prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
+          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
+          # or https://code.claude.com/docs/en/cli-reference for available options
+
+      # One retry absorbs a transient action/API outage (e.g. the 2026-10-11
+      # 00:07-00:30Z window where every run exited in 0.5s at $0). Only the retry's
+      # result decides the check, so a real failure still fails twice and goes red.
+      - name: Wait before retrying a failed review
+        if: steps.claude-review.outcome == 'failure'
+        run: sleep 60
+
+      - name: Retry Claude Code Review
+        if: steps.claude-review.outcome == 'failure'
         uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268  # v1
         with:
           # Use the job-scoped token on internal PRs so workflow changes can be

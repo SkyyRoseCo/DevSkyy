@@ -1,58 +1,106 @@
 name: PR Green Loop
 
-# Automated drive-to-green for every internal pull request.
-# Waits for CI, fixes real failures (root cause, locally verified), pushes, re-runs CI,
-# and loops until green — then merges ONLY if the PR carries the `auto-merge` label.
+# Event-driven drive-to-green for internal pull requests.
+# Starts only when a CI run has FINISHED with a failure, so no runner sits idle
+# waiting for CI (the old pull_request trigger ran `gh pr checks --watch` for 15-35
+# min per push, holding 1 of the free plan's 20 concurrent runners). It reads the
+# failed logs, fixes the root cause, pushes, and dispatches CI on the fixed commit.
+# If that run fails too, this workflow fires again — up to MAX_FIX_COMMITS.
 #
 # Safety model:
-# - Internal branches only. Fork PRs are excluded (forks must never receive write secrets);
-#   they still get the read-only Claude Code Review from claude-code-review.yml.
-# - The whole fix -> verify -> re-run-CI -> re-check loop runs inside ONE job. Pushes use the
-#   default GITHUB_TOKEN, which by design does NOT re-trigger workflows -> no recursion.
-# - concurrency cancels a stale loop when a new commit lands.
-# - Never force-pushes, never deploys, never calls a paid API, never weakens a test.
-#   Merge is label-gated; everything else is drive-to-green + a ready-to-merge comment.
+# - Internal branches only (head repository == this repository). Forks never get
+#   this job's write token; they still get the read-only claude-code-review.yml.
+# - workflow_run always executes the DEFAULT BRANCH's copy of this file, so a PR
+#   cannot change the job that runs with these permissions.
+# - The PR must still be open, non-draft, non-Dependabot, and its head must still
+#   be the commit CI failed on (a newer push gets its own CI run).
+# - Pushes use GITHUB_TOKEN, which does not trigger workflows; the loop dispatches
+#   CI explicitly so the fix itself is tested (a rerun would re-test the old SHA).
+# - Never force-pushes, merges, deploys, calls a paid API, or weakens a test.
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, ready_for_review, labeled]
+  workflow_run:
+    workflows: ["DevSkyy CI/CD Pipeline"]
+    types: [completed]
 
 permissions:
   contents: write # push fixes to the PR head branch
-  pull-requests: write # resolve threads, comment, merge
-  actions: write # re-run failed CI checks after a fix
+  pull-requests: write # resolve threads, comment
+  actions: write # dispatch CI on the fixed commit
   checks: read
   id-token: write
 
 concurrency:
-  group: pr-green-${{ github.event.pull_request.number }}
+  group: pr-green-${{ github.event.workflow_run.head_branch }}
   cancel-in-progress: true
+
+env:
+  MAX_FIX_COMMITS: 5
 
 jobs:
   green-loop:
-    # Internal, non-draft, non-Dependabot PRs only. Dependabot has its own rebase/merge
-    # flow (`@dependabot rebase`/`recreate`); the code-fix loop adds nothing to a dep bump
-    # and would burn a run on every one. (labeled events still pass for the `auto-merge` gate.)
     if: >-
-      github.event.pull_request.head.repo.full_name == github.repository &&
-      github.event.pull_request.draft == false &&
-      github.event.pull_request.user.login != 'dependabot[bot]'
+      github.event.workflow_run.conclusion == 'failure' &&
+      github.event.workflow_run.head_repository.full_name == github.repository &&
+      (github.event.workflow_run.event == 'pull_request' ||
+       github.event.workflow_run.event == 'workflow_dispatch')
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
+      - name: Resolve the pull request
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          pr=$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$HEAD_BRANCH" --state open \
+                 --json number,isDraft,author,headRefOid --jq '.[0] // empty')
+          if [ -z "$pr" ]; then
+            echo "::notice::No open PR for $HEAD_BRANCH — nothing to drive."
+            echo "eligible=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          eligible=$(jq --arg sha "$HEAD_SHA" \
+            '(.isDraft | not) and (.author.login | test("dependabot") | not) and .headRefOid == $sha' <<< "$pr")
+          echo "eligible=$eligible" >> "$GITHUB_OUTPUT"
+          echo "number=$(jq -r .number <<< "$pr")" >> "$GITHUB_OUTPUT"
+          [ "$eligible" = "true" ] || echo "::notice::PR is draft, Dependabot, or has moved past $HEAD_SHA — skipping."
+
       - name: Checkout PR head
+        if: steps.pr.outputs.eligible == 'true'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.workflow_run.head_branch }}
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Verify head and fix-commit budget
+        id: budget
+        if: steps.pr.outputs.eligible == 'true'
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$HEAD_SHA"
+          git fetch --no-tags --quiet origin main
+          used=$(git log origin/main..HEAD --author='github-actions\[bot\]' --format=%H | wc -l | tr -d ' ')
+          echo "used=$used" >> "$GITHUB_OUTPUT"
+          if [ "$used" -ge "$MAX_FIX_COMMITS" ]; then
+            echo "::warning::$used bot fix commits already on this PR (cap $MAX_FIX_COMMITS) — stopping."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Configure bot identity
+        if: steps.budget.outputs.go == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Run PR green loop
+        id: green-loop-run
+        if: steps.budget.outputs.go == 'true'
+        continue-on-error: true
         uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268 # v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -61,44 +109,85 @@ jobs:
           claude_args: >-
             --allowed-tools "Bash,Read,Edit,Write,Grep,Glob"
           prompt: |
-            You are driving PR #${{ github.event.pull_request.number }} in
-            ${{ github.repository }} to green. The PR head branch is checked out and writable
-            with the default GITHUB_TOKEN (`gh` is authenticated). Follow the project agent
+            CI run ${{ github.event.workflow_run.id }} ("${{ github.event.workflow_run.name }}") just
+            FINISHED with a failure on PR #${{ steps.pr.outputs.number }} in ${{ github.repository }},
+            commit ${{ github.event.workflow_run.head_sha }}. The PR head branch
+            `${{ github.event.workflow_run.head_branch }}` is checked out and writable with the default
+            GITHUB_TOKEN (`gh` is authenticated). Follow the project agent
             `.claude/agents/pr-green-loop.md` if present; otherwise use these rules verbatim.
+            Bot fix commits already on this PR: ${{ steps.budget.outputs.used }} of ${{ env.MAX_FIX_COMMITS }}.
 
-            ## Loop (run entirely within this job — do NOT wait on a re-trigger)
-            1. `gh pr checks ${{ github.event.pull_request.number }}` and read mergeability:
-               `gh pr view ${{ github.event.pull_request.number }} --json mergeable,mergeStateStatus,reviewDecision,labels,headRefName`.
-            2. Wait for in-flight checks to finish (`gh pr checks <N> --watch --interval 30` is fine;
-               respect the job timeout).
-            3. Split signals into REAL vs NOISE. NOISE (ignore): `PR Agent Analysis` concurrency
-               self-cancel, Vercel preview/agent, any `skipping` check, and Playwright E2E /
-               API-Integration when they end non-green for the known non-gating timeout (read the
-               run to confirm it is NOT a real failure of this diff).
-            4. For each REAL failure or actionable review comment (bots CodeRabbit/cubic/
-               claude-review are ADVISORY — verify each against the code; fix real ones, reply +
-               dismiss false ones): fix the ROOT CAUSE. Verify locally before pushing —
-               `python -m pytest <paths> -q`, `ruff check`, `black --check`, `mypy <module>`,
-               or the frontend/phpcs equivalent. Never weaken a test or suppress a check.
-            5. Commit (conventional subject) and `git push`. Because GITHUB_TOKEN pushes do not
-               re-trigger CI, immediately re-run the failed checks: `gh run rerun --failed` on the
-               relevant run id(s) (find via `gh run list --branch <headRefName> --limit 5`).
-               Return to step 2.
-            6. Stop when every gating check is `pass`/`skipping`, no actionable comment remains,
-               and `reviewDecision` is not CHANGES_REQUESTED. Hard caps: stop after 5 fix cycles,
-               or if the same check fails twice after a fix you believed addressed it, or if a
-               failure traces to the base branch rather than this diff — comment a concise
-               summary of what is blocked and why, then exit.
-
-            ## Terminal action
-            - If the PR is fully green AND has the `auto-merge` label:
-              `gh pr merge ${{ github.event.pull_request.number }} --merge --delete-branch`.
-              Then confirm main is not broken.
-            - If green WITHOUT the label: post ONE comment — "✅ All gating checks green and
-              comments resolved. Add the `auto-merge` label to merge, or merge manually." Do not merge.
+            ## One fix cycle (this job runs once per failed CI run — do not wait or poll)
+            1. Read the failures: `gh run view ${{ github.event.workflow_run.id }} --log-failed`, plus
+               `gh pr checks ${{ steps.pr.outputs.number }}` and
+               `gh pr view ${{ steps.pr.outputs.number }} --json mergeable,mergeStateStatus,reviewDecision`.
+            2. Split REAL vs NOISE. NOISE (ignore): any `skipping`/`skipped` check, `PR Agent Analysis`
+               concurrency self-cancel. Every other failed job is REAL — including Playwright E2E and
+               API Integration, which are required checks on `main`.
+            3. For each REAL failure (bots CodeRabbit/cubic/claude-review are ADVISORY — verify each
+               against the code; fix real ones, reply + dismiss false ones): fix the ROOT CAUSE. Verify
+               locally before pushing — `python -m pytest <paths> -q`, `ruff check`, `black --check`,
+               `mypy <module>`, or the frontend/phpcs equivalent. Never weaken a test or suppress a check.
+            4. Commit (conventional subject) and `git push`. GITHUB_TOKEN pushes trigger no workflows
+               and a rerun would re-test the OLD commit, so dispatch both gating workflows on the fix:
+               `gh workflow run ci.yml --ref ${{ github.event.workflow_run.head_branch }}` and
+               `gh workflow run security-gate.yml --ref ${{ github.event.workflow_run.head_branch }}`.
+               Then exit — if that CI run fails, this workflow starts the next cycle automatically.
+            5. Do not push when the failure traces to the base branch rather than this diff, when the
+               same check already failed after a bot fix for it, or when nothing REAL failed — instead
+               post ONE concise comment saying what is blocked and why, then exit.
 
             ## Boundaries (absolute)
-            Never force-push. Never merge a PR lacking the `auto-merge` label. Never merge over a
-            human CHANGES_REQUESTED (report instead). Never deploy to skyyrose.co, never a
-            WooCommerce/media write, never a paid API call. Anti-hallucination: every "the failure
-            is X" must trace to a CI log you read this run.
+            Never merge. Never force-push. Never act over a human CHANGES_REQUESTED (report instead).
+            Never deploy to skyyrose.co, never a WooCommerce/media write, never a paid API call.
+            Anti-hallucination: every "the failure is X" must trace to a CI log you read this run.
+
+      # One retry absorbs a transient action/API outage (e.g. the 2026-10-11
+      # 00:07-00:30Z window where every run exited in 0.5s at $0). Only the retry's
+      # result decides the check, so a real failure still fails twice and goes red.
+      - name: Wait before retrying
+        if: steps.budget.outputs.go == 'true' && steps.green-loop-run.outcome == 'failure'
+        run: sleep 60
+
+      - name: Retry Run PR green loop
+        if: steps.budget.outputs.go == 'true' && steps.green-loop-run.outcome == 'failure'
+        uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268 # v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          additional_permissions: |
+            actions: read
+          claude_args: >-
+            --allowed-tools "Bash,Read,Edit,Write,Grep,Glob"
+          prompt: |
+            CI run ${{ github.event.workflow_run.id }} ("${{ github.event.workflow_run.name }}") just
+            FINISHED with a failure on PR #${{ steps.pr.outputs.number }} in ${{ github.repository }},
+            commit ${{ github.event.workflow_run.head_sha }}. The PR head branch
+            `${{ github.event.workflow_run.head_branch }}` is checked out and writable with the default
+            GITHUB_TOKEN (`gh` is authenticated). Follow the project agent
+            `.claude/agents/pr-green-loop.md` if present; otherwise use these rules verbatim.
+            Bot fix commits already on this PR: ${{ steps.budget.outputs.used }} of ${{ env.MAX_FIX_COMMITS }}.
+
+            ## One fix cycle (this job runs once per failed CI run — do not wait or poll)
+            1. Read the failures: `gh run view ${{ github.event.workflow_run.id }} --log-failed`, plus
+               `gh pr checks ${{ steps.pr.outputs.number }}` and
+               `gh pr view ${{ steps.pr.outputs.number }} --json mergeable,mergeStateStatus,reviewDecision`.
+            2. Split REAL vs NOISE. NOISE (ignore): any `skipping`/`skipped` check, `PR Agent Analysis`
+               concurrency self-cancel. Every other failed job is REAL — including Playwright E2E and
+               API Integration, which are required checks on `main`.
+            3. For each REAL failure (bots CodeRabbit/cubic/claude-review are ADVISORY — verify each
+               against the code; fix real ones, reply + dismiss false ones): fix the ROOT CAUSE. Verify
+               locally before pushing — `python -m pytest <paths> -q`, `ruff check`, `black --check`,
+               `mypy <module>`, or the frontend/phpcs equivalent. Never weaken a test or suppress a check.
+            4. Commit (conventional subject) and `git push`. GITHUB_TOKEN pushes trigger no workflows
+               and a rerun would re-test the OLD commit, so dispatch both gating workflows on the fix:
+               `gh workflow run ci.yml --ref ${{ github.event.workflow_run.head_branch }}` and
+               `gh workflow run security-gate.yml --ref ${{ github.event.workflow_run.head_branch }}`.
+               Then exit — if that CI run fails, this workflow starts the next cycle automatically.
+            5. Do not push when the failure traces to the base branch rather than this diff, when the
+               same check already failed after a bot fix for it, or when nothing REAL failed — instead
+               post ONE concise comment saying what is blocked and why, then exit.
+
+            ## Boundaries (absolute)
+            Never merge. Never force-push. Never act over a human CHANGES_REQUESTED (report instead).
+            Never deploy to skyyrose.co, never a WooCommerce/media write, never a paid API call.
+            Anti-hallucination: every "the failure is X" must trace to a CI log you read this run.

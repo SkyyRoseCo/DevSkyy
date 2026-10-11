@@ -12,6 +12,17 @@ on:
     branches: [main]
   push:
     branches: [main]
+  schedule:
+    # License + SBOM depend on the dependency set, not on each PR diff.
+    - cron: "0 3 * * 1"
+  # PR Green Loop dispatches this on a bot-fixed commit (GITHUB_TOKEN pushes
+  # trigger nothing), so the required Secrets Scan reports on that commit.
+  workflow_dispatch:
+
+# Same policy as ci.yml: cancel a PR's stale run, never a main commit's.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -76,6 +87,9 @@ jobs:
     name: 📜 License Compliance
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # PRs already get dependency-review's license deny list; the full installed-set
+    # audit runs on main and weekly instead of holding a runner on every PR push.
+    if: github.event_name != 'pull_request'
 
     steps:
       - name: Checkout code
@@ -89,7 +103,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pip-licenses
-          pip install -e ".[dev]" || pip install -e . || true
+          pip install -e ".[dev]"
 
       # Policy: block copyleft (GPL/AGPL) only — mirrors the dependency-review
       # deny list. The prior --allow-only whitelist was deny-by-default and
@@ -115,6 +129,7 @@ jobs:
     name: 📋 SBOM Generation
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    if: github.event_name != 'pull_request'
 
     steps:
       - name: Checkout code
