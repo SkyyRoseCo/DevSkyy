@@ -236,13 +236,30 @@ def cleanup_text(rel: str, baseline: str | None, current: str, root: Path) -> tu
     return text, notes
 
 
-def _write_atomic(path: Path, content: str) -> None:
+def _file_identity(value: os.stat_result) -> tuple[int, ...]:
+    return (value.st_dev, value.st_ino, value.st_size, value.st_mtime_ns, value.st_ctime_ns)
+
+
+def _write_atomic(path: Path, content: str, *, expected: bytes, identity: tuple[int, ...]) -> bool:
+    """Skip if another writer changed the snapshot while formatting.
+
+    The last comparison narrows but cannot eliminate the race with a writer
+    that does not cooperate between this check and os.replace; this is not CAS.
+    """
     fd, tmp = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.", suffix=".tmp")
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as handle:
             handle.write(content)
         shutil.copymode(path, tmp)
+        if (
+            path.is_symlink()
+            or _file_identity(path.stat()) != identity
+            or path.read_bytes() != expected
+        ):
+            Path(tmp).unlink(missing_ok=True)
+            return False
         os.replace(tmp, path)
+        return True
     except BaseException:
         Path(tmp).unlink(missing_ok=True)
         raise
@@ -300,12 +317,17 @@ def main() -> int:
         root = _repo_root(path)
         if root not in path.parents or not _belongs_to_hook_repo(root):
             return 0
-        current = path.read_text(encoding="utf-8")
+        with path.open("rb") as handle:
+            snapshot = handle.read()
+            identity = _file_identity(os.fstat(handle.fileno()))
+        current = snapshot.decode("utf-8")
         cleaned, notes = cleanup_text(
             path.relative_to(root).as_posix(), _baseline_from(payload), current, root
         )
         if cleaned != current:
-            _write_atomic(path, cleaned)
+            if not _write_atomic(path, cleaned, expected=snapshot, identity=identity):
+                print(f"[precision-cleanup] skipped newer edit: {path.name}", file=sys.stderr)
+                return 0
             print(f"[precision-cleanup] {path.name}: {'; '.join(notes)}", file=sys.stderr)
     except Exception as exc:  # a formatter must never fail the edit it follows
         print(f"[precision-cleanup] skipped: {type(exc).__name__}: {exc}", file=sys.stderr)

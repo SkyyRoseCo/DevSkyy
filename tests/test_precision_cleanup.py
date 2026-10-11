@@ -207,3 +207,36 @@ def test_the_wrapper_is_executable_and_never_fails():
     assert wrapper.stat().st_mode & 0o111, "wrapper must be executable"
     proc = subprocess.run(["bash", str(wrapper)], input="garbage", capture_output=True, text=True)
     assert proc.returncode == 0
+
+
+@pytest.mark.parametrize("replace_identity", [False, True])
+def test_main_preserves_intervening_editor_write(root, monkeypatch, replace_identity):
+    import io
+    import os
+
+    target = root / "mod.py"
+    target.write_text("x=1\n")
+    monkeypatch.setenv("PRECISION_CLEANUP_ROOT", str(root))
+    monkeypatch.setattr(
+        sys,
+        "stdin",
+        io.StringIO(
+            json.dumps(
+                {"tool_input": {"file_path": str(target)}, "tool_response": {"type": "create"}}
+            )
+        ),
+    )
+
+    def racing_cleanup(*args):
+        if replace_identity:
+            replacement = root / "new.py"
+            replacement.write_text("x=1\n")
+            os.replace(replacement, target)
+        else:
+            target.write_text("x=1\nvaluable_second_edit=2\n")
+        return "x = 1\n", ["format"]
+
+    monkeypatch.setattr(pc, "cleanup_text", racing_cleanup)
+    assert pc.main() == 0
+    expected = "x=1\n" if replace_identity else "x=1\nvaluable_second_edit=2\n"
+    assert target.read_text() == expected
