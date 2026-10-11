@@ -48,3 +48,20 @@ wordpress-theme/skyyrose-flagship/data/collections/*/index.html
 .wolf/memory.md
 .wolf/cerebrum.md
 tasks/phase-e-manifest.md
+
+# Owner-ratified constitution sources: sha256-pinned by the context resolver
+# (registered in data/machine-managed-files.json).
+docs/brand/constitution-v1/constitution.json
+docs/brand/constitution-v1/OWNER-RATIFICATION-20260923.md
+docs/brand/constitution-v1/OWNER-RATIFICATION-KPS-20260923.md
+
+# Generated projections and vendored payloads: each is written by a program and
+# byte-compared by a freshness gate (registered in data/machine-managed-files.json).
+wordpress-theme/*/assets/js/lib/**
+wordpress-theme/skyyrose-flagship/data/lookbook-sot.json
+wordpress-theme/skyyrose-flagship/data/collections/**/sot.json
+wordpress-theme/skyyrose-flagship/data/collections/**/_orphans.json
+assets/products/manifest.json
+wordpress-theme/skyyrose-flagship/data/v7-cards.json
+wordpress-theme/skyyrose-flagship/data/site-guide.json
+wordpress-theme/skyyrose-flagship/data/product-embeddings.json
