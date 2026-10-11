@@ -314,3 +314,24 @@ project). When de-duplicating a scan, check which invocation was actually gating
 Follow-up: `--strict` also rejects `--skip-editable` ("distribution marked as
 editable"). Audit `uv pip freeze --exclude-editable` with
 `--strict --no-deps --disable-pip -r` instead.
+
+**A bot step that "succeeded" may not have run (2026-10-11).** claude-code-action
+ends `subtype: success, is_error: false` even when the CLI never reached the model:
+a revoked `CLAUDE_CODE_OAUTH_TOKEN` passed every review for weeks at 4 turns and
+`total_cost_usd: 0` (real reviews: 26-43 turns, $0.69-$1.01). Each bot now reads
+the succeeding attempt's `execution_file` and fails on a missing/corrupt file or a
+$0 run. Keep that guard inline: the workspace holds the PR's code, so a `./` action
+could be rewritten by the PR it gates. Related traps on the same retry path: the
+first attempt registers the plugin marketplace and `marketplace add` refuses a
+second add ("already installed") — reset `~/.claude/plugins` before retrying; both
+attempts write the same `$RUNNER_TEMP/claude-execution-output.json`, so read the
+file only from an attempt whose outcome is `success`.
+
+**Per-SHA main concurrency unmasks races (2026-10-11).** Once main runs stopped
+cancelling each other, two latent failures surfaced on back-to-back merges:
+`git fetch --depth=1 origin main:refs/remotes/origin/main` is rejected as
+non-fast-forward when main moves mid-run (shallow history cannot prove ancestry —
+use `+main:`), and pip-audit exits 1 for both findings and a crash, so a PyPI
+connection reset read as "FIXABLE vulnerabilities". Distinguish by the report:
+only findings write `--output`; retry a report-less run once and fail it as a
+tool error, never pass it.
