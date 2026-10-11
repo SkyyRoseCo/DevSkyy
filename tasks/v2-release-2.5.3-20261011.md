@@ -166,13 +166,15 @@ page actually shows. A product's other images remain on its PDP.
 
 # 2.5.3 Lane B: collection imagery and media cache keys
 
-This lane is stacked on the Lane A branch `fix/v2-image-sitemap-20261011`
-(`5adf98061`). The version stays 2.5.3. It ports the remaining V2
-collection-imagery gate from local-only commit `d0a014a33`
+This lane was built on the Lane A branch `fix/v2-image-sitemap-20261011`
+(`5adf98061`). Lane A then landed on `main` as squash `7971aa8fd` (#1068), so
+the branch now merges `main` and targets it. The version stays 2.5.3. It ports
+the remaining V2 collection-imagery gate from local-only commit `d0a014a33`
 (`capture/codex-v2-card-gap-20261010`). The port takes only Codex's side of the
-3-way diff against the merge base `7ed2180b5`. No product fact,
-`logo-registry.json`, presentation registry, media inventory, usage grant or
-receipt changed.
+3-way diff against the true merge base `7892b797d`
+(`git merge-base d0a014a33 5adf98061`). An earlier draft named `7ed2180b5`,
+which was wrong. No product fact, `logo-registry.json`, presentation registry,
+media inventory, usage grant or receipt changed.
 
 ## Live state before the change (`[live 2026-10-11]`, cache-busted HTML)
 
@@ -277,7 +279,7 @@ empty:
 | baseline `template-parts/home/living-archive-worlds.php` | `8df1b5628510b29b…` | `159bf8c43a25cc6a…` |
 | baseline `template-parts/v2-preorder.php`                | `8c8f4a9dcbb87c5d…` | `5640e2431429e900…` |
 | input `runtime-php-baseline.json`                        | `fea4cc5d1733e8f4…` | `6c2e3c47f5a0963c…` |
-| input `wordpress-theme/…/package.json`                   | `5c886030bc1c99e6…` | `6cee7ab2e487f55a…` |
+| input `wordpress-theme/…/package.json`                   | `5c886030bc1c99e6…` | `b8e48950499a9761…` |
 
 This is an entry-only re-pin: no key was added or removed.
 `package-boundary.json` and `generated-outputs.json` are unchanged, because no
@@ -295,7 +297,8 @@ theme file was added or removed and `generated-outputs.json` pins no hashes.
     matches its own derivative bytes").
 - GREEN: all four pass on this branch. `test-media-usage.php` reports
   `pdp_on_model_front` 15, `collection_hero` 4, `collection_story` 4 and
-  `merchandise_scene` 3, with 100 negative cases.
+  `merchandise_scene` 3. It now reports the negative checks it actually executes
+  (148; see the round-2 section). The earlier "100" was a hard-coded literal.
 - Toolchain: Node 22.23.2 (`~/.local/opt/node-v22.23.2-darwin-arm64`), npm
   10.9.x. The fixtures are a fresh `prepare-native-fixture.py` fixture (7
   hashes) and a `V2_NATIVE_JS_FIXTURE` whose 2 hashes match the pins. The
@@ -377,3 +380,79 @@ theme file was added or removed and `generated-outputs.json` pins no hashes.
     the fetch.
   - Remedy options are to drop the theme preload where Boost optimizes the LCP,
     or to emit the Photon URL. This is a post-deploy check.
+
+## PR #1070 round 2: retarget to `main` and mechanical review fixes
+
+- **Retarget.** #1068 (Lane A) landed on `main` as squash `7971aa8fd`. Its bytes
+  for every Lane A file equal `5adf98061`. Merge commit `9def34d3a` merges
+  `origin/main` (`132598443`) into this branch; it was a new merge commit, not a
+  rebase or force-push. The only conflicts were Lane B's own additions
+  (`CHANGELOG.md`, `readme.txt`, this file) and the two Lane B pins in
+  `build-inputs.json`. Lane B's side was kept in each. After the merge, all 106
+  `build-inputs.json` pins matched their bytes. The version triple stays 2.5.3.
+- **3-way attribution, corrected base.** The true merge base is `7892b797d`. The
+  three sides were base `7892b797d`, main `5adf98061` and Codex `d0a014a33`,
+  compared with the port `25840c9db`. A line was a candidate revert if main
+  added it after the base and the port lacks it.
+  - **Theme code** (`approved-card-fronts.php`, `launch-readiness.php`,
+    `pdp-media-delivery.php`, `v2-media-eligibility.php`, `v2-preorder.php`):
+    every candidate sits inside a region Codex also rewrote, so it is a 3-way
+    conflict that takes Codex's side. Main's guards survive in the new form:
+    - `media_uri()` still calls `path_allowed()`;
+    - the PDP file-hash check is kept;
+    - the preorder inventory scan is replaced by the documented registry
+      binding.
+  - **Test code**: `test-pdp-gallery.php` is the only file where the port
+    dropped main lines that Codex did not touch. That is the documented
+    adaptation to the 15 `pdp_on_model_front` grants:
+    - 18 PDP fronts became 18 + 15;
+    - the card-only br-003 fixture became a grant-only fixture;
+    - the rejected-attachment and cross-SKU negatives are kept.
+  - `fa5e872db` and `85ed1207c` only route `hash_file()` through the memo.
+    Neither reverts main.
+  - The merge `9def34d3a` drops no line that main added to `package.json`,
+    `ci.yml` or `sync_product_registry.py`.
+  - **No main change was reverted.**
+- **`test-v2-delivery-derivatives.php` in `npm run verify`.** It is wired into
+  `package.json` next to `test-v2-media-eligibility.php` and
+  `test-media-usage.php`. It ran inside `npm run package:theme`: "PASS 173
+  actual delivery copies".
+  - The input pin was re-pinned entry-only: `package.json` `6cee7ab2…` became
+    `b8e48950…`.
+  - `package-boundary.json` holds no hash for `package.json`, and
+    `runtime-php-baseline.json` is unchanged.
+- **`test-media-usage.php`**
+  - It reports `negative_cases` from a counter that increments only after a
+    negative check passes. The counter replaces the literal `22 * 4 + 12`.
+    Without the new cases it counts 101, not 100.
+  - New on-disk tamper cases run in a child PHP process. The gate root is a
+    `define`, so it cannot be changed in the parent. The child runs against a
+    temp copy of `data/v2-media-eligibility.json` and
+    `data/v2-media-reviews/*.json`.
+  - A positive control comes first: the pristine copy grants exactly the 26 real
+    roles.
+  - Grant cases: one adoption's `usage-01` grant gets a trailing byte, widened
+    `roles`, and `target` moved to `https://skyyrose.co`. Each is rejected, and
+    the other 21 adoptions are unaffected.
+  - Authority cases: `usage-authority-20261006.json` gets a trailing byte and a
+    production `target`. Each revokes all 22 adoptions.
+  - The restored copy grants the real roles again.
+  - Total: 148 executed negative checks. No real grant or receipt file was
+    edited.
+  - RED: a scratch clone with the grant `hash_equals` check removed from
+    `skyyrose2_media_usage_document()` fails "Tampered grant (byte) rejected".
+    On the same mutant, the previous test passes and prints "100". GREEN: the
+    real gate passes.
+- **Gates (this session).**
+  - Node 22.23.2 and the main `.venv`.
+  - Fresh fixtures: `prepare-native-fixture.py` (7 hashes) and a hash-checked
+    `V2_NATIVE_JS_FIXTURE` (2 hashes).
+  - `git sparse-checkout add assets/products`.
+  - `npm run lint:php`: exit 0.
+  - `npm run package:theme`: exit 0, 0 `not ok`. Result: "Validated 773 runtime
+    package entries; SHA-256 `0e3bbbc08c4365ea…`", unchanged.
+  - `pytest tests/test_v2_*.py tools/v2-source-certification`: 73 tests, 0
+    failures, 0 errors, 0 skipped (junit).
+  - `sync_product_registry.py --check`: PASS.
+- The founder decision on grant `target` (staging versus production) is still
+  open. It is not resolved here.
