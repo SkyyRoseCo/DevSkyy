@@ -259,8 +259,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/python-format-on-write.sh\"",
-            "timeout": 15
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/precision-cleanup.sh\"",
+            "timeout": 30
           }
         ]
       },
@@ -269,7 +269,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // empty'); case \"$fp\" in */frontend/*.ts|*/frontend/*.tsx) root=$(git -C \"$(dirname \"$fp\")\" rev-parse --show-toplevel 2>/dev/null) || exit 0; [ \"$(git -C \"$root\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)\" = \"$(git -C \"${CLAUDE_PROJECT_DIR:-/Users/theceo/DevSkyy}\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)\" ] || exit 0; fe=\"$root/frontend\"; [ -f \"$fe/package.json\" ] || exit 0; if [ ! -x \"$fe/node_modules/.bin/tsc\" ]; then echo \"[tsc-on-write] $fe/node_modules missing — run: cd $fe && npm install (type check skipped)\"; exit 0; fi; cd \"$fe\" && npx tsc --noEmit --pretty false 2>&1 | head -10 ;; esac; true",
+            "command": "fp=$(jq -r '.tool_input.file_path // empty'); case \"$fp\" in */frontend/*.ts|*/frontend/*.tsx) root=$(git -C \"$(dirname \"$fp\")\" rev-parse --show-toplevel 2>/dev/null) || exit 0; [ \"$(git -C \"$root\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)\" = \"$(git -C \"${CLAUDE_PROJECT_DIR:-/Users/theceo/DevSkyy}\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)\" ] || exit 0; fe=\"$root/frontend\"; [ -f \"$fe/package.json\" ] || exit 0; if [ ! -x \"$fe/node_modules/.bin/tsc\" ]; then echo \"[tsc-on-write] $fe/node_modules missing \u2014 run: cd $fe && npm install (type check skipped)\"; exit 0; fi; cd \"$fe\" && npx tsc --noEmit --pretty false 2>&1 | head -10 ;; esac; true",
             "timeout": 90,
             "statusMessage": "Type-checking frontend"
           }
@@ -302,7 +302,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/wolf_recurring_sync.py\" >/dev/null 2>&1 || echo '[wolf-recurring-sync] FAILED — run python3 scripts/wolf_recurring_sync.py to see the error'; true",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/wolf_recurring_sync.py\" >/dev/null 2>&1 || echo '[wolf-recurring-sync] FAILED \u2014 run python3 scripts/wolf_recurring_sync.py to see the error'; true",
             "timeout": 10
           }
         ]
