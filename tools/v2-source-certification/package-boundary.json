@@ -4156,6 +4156,11 @@
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
     },
+    "scripts/test-verify-live-parity.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
     "scripts/validate-collection-hero-motion.py": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
@@ -4207,6 +4212,11 @@
       "release": false
     },
     "scripts/verify-image-judge-availability.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-live-parity.py": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
