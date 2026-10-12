@@ -26,19 +26,25 @@ if ( is_product() && in_array( wc_get_loop_prop( 'name' ), array( 'related', 'up
 	// Related grid: one track under 48em, then 2/3/4 tracks inside the 1500px product shell.
 	$card_sizes = '(max-width: 47.99em) calc(100vw - 2 * clamp(1rem, 4vw, 4rem)), (max-width: 63.99em) calc((100vw - 2 * clamp(1rem, 4vw, 4rem) - clamp(1rem, 2vw, 2rem)) / 2), (max-width: 89.99em) calc((100vw - 2 * clamp(1rem, 4vw, 4rem) - 2 * clamp(1rem, 2vw, 2rem)) / 3), (max-width: 93.75em) calc((100vw - 8rem - 3 * clamp(1rem, 2vw, 2rem)) / 4), 319px';
 }
+$card_args = array(
+	'product'        => $product,
+	'index'          => $loop_index,
+	'sizes'          => $card_sizes,
+	'frame'          => false,
+	'media_priority' => ( is_shop() || is_product_taxonomy() ) && ! wc_get_loop_prop( 'name' ) && 0 === $loop_index ? 'high' : 'lazy',
+);
+// A grouping parent (the grouped Shop bands) sets the card heading level under its own h2.
+$card_heading_level = (int) wc_get_loop_prop( 'sr2_card_heading_level', 0 );
+if ( $card_heading_level ) {
+	$card_args['heading_level'] = $card_heading_level;
+}
 ?>
 <li <?php wc_product_class( 'sr2-c-product-card-wrap sr2-c-product-card-wrap--archive', $product ); ?>>
 	<?php
 	get_template_part(
 		'template-parts/commerce/product-card',
 		null,
-		array(
-			'product'        => $product,
-			'index'          => $loop_index,
-			'sizes'          => $card_sizes,
-			'frame'          => false,
-			'media_priority' => ( is_shop() || is_product_taxonomy() ) && ! wc_get_loop_prop( 'name' ) && 0 === $loop_index ? 'high' : 'lazy',
-		)
+		$card_args
 	);
 	?>
 </li>

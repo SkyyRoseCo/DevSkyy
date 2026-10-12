@@ -239,3 +239,126 @@ function skyyrose2_shop_world_note( $slug ) {
 	</li>
 	<?php
 }
+
+/**
+ * Founder ruling 2026-10-11: the unfiltered Shop keeps the separate collection
+ * structure (the v2 Cinema Bands). Only the public main product archive with no
+ * collection, stock, price, layered-nav or rating filter qualifies; search and
+ * taxonomy routes keep the grid. Ordering alone orders pieces within each band.
+ *
+ * @param WP_Query|null $query Query to classify; the global main query by default.
+ * @return bool
+ */
+function skyyrose2_shop_bands_v2_active( $query = null ) {
+	$query = null === $query ? ( $GLOBALS['wp_query'] ?? null ) : $query;
+	if ( is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || ! is_object( $query ) || ! method_exists( $query, 'is_main_query' )
+		|| ! $query->is_main_query() || ! $query->is_post_type_archive( 'product' ) || $query->is_search() || $query->is_tax() || $query->is_feed() ) {
+		return false;
+	}
+	$state = skyyrose2_shop_filter_state( $_GET ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	if ( '' !== $state['product_cat'] . $state['stock_status'] . $state['min_price'] . $state['max_price'] ) {
+		return false;
+	}
+	// Woo's layered-nav (filter_*) and rating filters are filtered views too (WC is_filtered()).
+	foreach ( $_GET as $key => $value ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( is_string( $key ) && ( 0 === strpos( $key, 'filter_' ) || 'rating_filter' === $key ) && '' !== $value ) {
+			return false;
+		}
+	}
+	return true;
+}
+
+/**
+ * The grouped view renders every published piece on one page. WooCommerce's own
+ * pre_get_posts (priority 10) applies loop_shop_per_page; this runs after it.
+ *
+ * @param WP_Query $query Main query being prepared.
+ */
+function skyyrose2_shop_bands_v2_query( $query ) {
+	if ( skyyrose2_shop_bands_v2_active( $query ) ) {
+		$query->set( 'posts_per_page', -1 );
+	}
+}
+add_action( 'pre_get_posts', 'skyyrose2_shop_bands_v2_query', 30 );
+
+/**
+ * House collection slug a piece is grouped under, or '' when it has none.
+ *
+ * @param WC_Product $product Native product.
+ * @return string
+ */
+function skyyrose2_shop_bands_v2_collection( $product ) {
+	$record = skyyrose2_product_presentation( $product );
+	$slug   = sanitize_title( (string) ( $record['collection'] ?? '' ) );
+	return '' !== $slug && array_key_exists( $slug, skyyrose2_collections() ) ? $slug : '';
+}
+
+/**
+ * Stable house-order sort of the grouped view's results, so the main query's
+ * first piece is the first card of the first band (the archive preload reads
+ * this order). Within a collection the native order, including Sort, is kept.
+ *
+ * @param WP_Post[] $posts Query results.
+ * @param WP_Query  $query Query that produced them.
+ * @return WP_Post[]
+ */
+function skyyrose2_shop_bands_v2_house_order( $posts, $query ) {
+	if ( ! is_array( $posts ) || count( $posts ) < 2 || ! function_exists( 'wc_get_product' ) || ! skyyrose2_shop_bands_v2_active( $query ) ) {
+		return $posts;
+	}
+	$rank  = array_flip( array_keys( skyyrose2_collections() ) );
+	$order = array();
+	foreach ( array_values( $posts ) as $position => $post ) {
+		$product = is_object( $post ) && isset( $post->ID ) ? wc_get_product( $post->ID ) : null;
+		$slug    = $product ? skyyrose2_shop_bands_v2_collection( $product ) : '';
+		$order[] = array( $rank[ $slug ] ?? count( $rank ), $position, $post );
+	}
+	usort(
+		$order,
+		static function ( $left, $right ) {
+			return array( $left[0], $left[1] ) <=> array( $right[0], $right[1] );
+		}
+	);
+	return array_column( $order, 2 );
+}
+add_filter( 'the_posts', 'skyyrose2_shop_bands_v2_house_order', 20, 2 );
+
+/**
+ * Group pieces for the bands template: every house collection in house order,
+ * plus the pieces with no collection so nothing published is unreachable.
+ *
+ * @param WC_Product[] $products Pieces in main-query order.
+ * @return array{groups:array<string,array{collection:array,products:WC_Product[]}>,ungrouped:WC_Product[]}
+ */
+function skyyrose2_shop_bands_v2_groups( $products ) {
+	$groups = array();
+	foreach ( skyyrose2_collections() as $slug => $collection ) {
+		$groups[ $slug ] = array(
+			'collection' => $collection,
+			'products'   => array(),
+		);
+	}
+	$ungrouped = array();
+	foreach ( $products as $product ) {
+		$slug = skyyrose2_shop_bands_v2_collection( $product );
+		if ( '' !== $slug ) {
+			$groups[ $slug ]['products'][] = $product;
+		} else {
+			$ungrouped[] = $product;
+		}
+	}
+	return array(
+		'groups'    => $groups,
+		'ungrouped' => $ungrouped,
+	);
+}
+
+/** Stale /shop/page/N/ links on the one-page grouped view resolve to /shop/, keeping ordering and tracking args. */
+function skyyrose2_shop_bands_v2_redirect() {
+	if ( (int) get_query_var( 'paged' ) < 2 || ! skyyrose2_shop_bands_v2_active() ) {
+		return;
+	}
+	wp_safe_redirect( skyyrose2_shop_category_url( '' ), 301 );
+	exit;
+}
+add_action( 'template_redirect', 'skyyrose2_shop_bands_v2_redirect', 5 );

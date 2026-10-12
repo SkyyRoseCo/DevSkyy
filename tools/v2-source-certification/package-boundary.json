@@ -445,6 +445,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/shop-bands-v2.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Unfiltered Shop cinema bands stylesheet source",
+      "release": true
+    },
+    "assets/css/shop-bands-v2.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
     "assets/css/shop-page.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
@@ -1643,6 +1653,16 @@
     "assets/js/search-preview.min.js": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/shop-bands-v2.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Unfiltered Shop cinema bands controller source",
+      "release": true
+    },
+    "assets/js/shop-bands-v2.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Deterministic minified page script",
       "release": true
     },
     "assets/js/skyy-3d.js": {
@@ -4126,6 +4146,11 @@
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
     },
+    "scripts/test-shop-bands-v2.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
     "scripts/test-validate-sitemap.py": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",
@@ -4394,6 +4419,11 @@
     "template-parts/pages/service.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Shared generic, service, FAQ and account page section",
+      "release": true
+    },
+    "template-parts/shop/collection-bands-v2.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Unfiltered Shop cinema bands template part (v2-cinema-bands)",
       "release": true
     },
     "template-parts/skyy-mascot.php": {

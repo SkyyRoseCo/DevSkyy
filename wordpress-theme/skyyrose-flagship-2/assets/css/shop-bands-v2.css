@@ -1,0 +1,488 @@
+/* Unfiltered Shop cinema bands (template-parts/shop/collection-bands-v2.php).
+ * The collection film is pinned (sticky) behind each band; the band's pieces travel
+ * across it on a native horizontal snap rail. Everything here is scoped to .sr2-bands-v2.
+ * Without JavaScript or scroll timelines every band, card and link is fully visible. */
+.sr2-bands-v2 {
+	--sr2bv2-pin: calc(100vh - var(--sr2-header));
+	--sr2bv2-card: min(78vw, 20rem);
+	--sr2bv2-rise: var(--sr2-space-10);
+	--sr2bv2-recede-opacity: 0.55;
+	--sr2bv2-recede-filter: saturate(0.4) brightness(0.72);
+	position: relative;
+	overflow-x: clip;
+	background: var(--sr2-void);
+	color: var(--sr2-ink);
+}
+/* Full bleed: the bands release the archive results shell's width cap and side padding. */
+.sr2-shop-archive__results:has(> .sr2-bands-v2) { max-width: none; padding-inline: 0; }
+@supports (height: 100svh) {
+	.sr2-bands-v2 { --sr2bv2-pin: calc(100svh - var(--sr2-header)); }
+}
+@media (min-width: 48em) { .sr2-bands-v2 { --sr2bv2-card: clamp(16rem, 30vw, 20rem); } }
+@media (min-width: 90em) { .sr2-bands-v2 { --sr2bv2-card: 22rem; } }
+
+.sr2-bands-v2__band {
+	position: relative;
+	isolation: isolate;
+	border-top: 1px solid var(--sr2-line);
+}
+
+/* The pinned film: sticky inside its band, so it releases when the band ends. */
+.sr2-bands-v2__film {
+	position: sticky;
+	top: var(--sr2-header);
+	z-index: 0;
+	height: var(--sr2bv2-pin);
+	overflow: hidden;
+	background:
+		radial-gradient(120% 80% at 70% 30%, rgba(var(--sr2-accent-rgb), 0.18), transparent 60%),
+		var(--sr2-void);
+	pointer-events: none;
+}
+.sr2-bands-v2__poster,
+.sr2-bands-v2__video {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: var(--sr2bv2-focal, 50% 50%);
+}
+.sr2-bands-v2__video {
+	opacity: 0;
+	transition: opacity var(--sr2-motion-editorial) var(--sr2-ease-enter);
+}
+.sr2-bands-v2__band.is-playing .sr2-bands-v2__video { opacity: 1; }
+.sr2-bands-v2__band[data-poster="failed"] .sr2-bands-v2__poster { visibility: hidden; }
+
+/* Scrim: atmosphere only. Text never relies on it; each text surface carries its own floor. */
+.sr2-bands-v2__scrim,
+.sr2-bands-v2__dim {
+	position: absolute;
+	inset: 0;
+}
+.sr2-bands-v2__scrim {
+	background:
+		linear-gradient(to bottom, color-mix(in srgb, var(--sr2-void) 50%, transparent) 0%, color-mix(in srgb, var(--sr2-void) 20%, transparent) 22%, color-mix(in srgb, var(--sr2-void) 62%, transparent) 46%, color-mix(in srgb, var(--sr2-void) 90%, transparent) 70%, var(--sr2-void) 100%),
+		linear-gradient(to right, color-mix(in srgb, var(--sr2-void) 55%, transparent), transparent 60%);
+}
+.sr2-bands-v2__dim {
+	background: var(--sr2-void);
+	opacity: 0;
+	transition: opacity var(--sr2-motion-scene) var(--sr2-ease-expressive);
+}
+.sr2-bands-v2__band[data-sr2bv2-complete="true"] .sr2-bands-v2__dim { opacity: 0.55; }
+
+/* Type-led header: Kids Capsule, an empty collection, or a film the gate withheld. */
+.sr2-bands-v2__band[data-film="type"] .sr2-bands-v2__film {
+	background:
+		radial-gradient(90% 70% at 85% 20%, rgba(var(--sr2-accent-rgb), 0.28), transparent 62%),
+		repeating-linear-gradient(to bottom, transparent 0 calc(var(--sr2-space-16) - 1px), var(--sr2-line-soft) calc(var(--sr2-space-16) - 1px) var(--sr2-space-16)),
+		var(--sr2-void);
+}
+.sr2-bands-v2__type-mark {
+	position: absolute;
+	top: 8%;
+	right: calc(-1 * var(--sr2-space-4));
+	color: transparent;
+	font: 800 clamp(5rem, 19vw, 17rem)/0.82 var(--sr2-font-display);
+	font-variation-settings: "wdth" 125;
+	letter-spacing: -0.05em;
+	text-align: right;
+	text-transform: uppercase;
+	white-space: nowrap;
+	-webkit-text-stroke: 1px rgba(var(--sr2-accent-rgb), 0.55);
+	writing-mode: vertical-rl;
+	transform: rotate(180deg);
+}
+@media (min-width: 48em) {
+	.sr2-bands-v2__type-mark { top: 9%; right: var(--sr2-page-pad); font-size: clamp(5rem, 11vw, 12rem); writing-mode: horizontal-tb; transform: none; }
+}
+.sr2-bands-v2__band[data-film="type"] .sr2-bands-v2__scrim { background: linear-gradient(to bottom, transparent 40%, color-mix(in srgb, var(--sr2-void) 85%, transparent) 75%, var(--sr2-void)); }
+
+/* Content travels over the pinned film. */
+.sr2-bands-v2__content {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	gap: var(--sr2-space-8);
+	margin-top: calc(-1 * var(--sr2bv2-pin));
+	padding-bottom: var(--sr2-band-pad);
+}
+.sr2-bands-v2__head {
+	display: grid;
+	align-content: end;
+	min-height: calc(var(--sr2bv2-pin) * 0.62);
+	padding: var(--sr2-space-16) var(--sr2-page-pad) 0;
+}
+.sr2-bands-v2__copy {
+	position: relative;
+	display: grid;
+	justify-items: start;
+	gap: var(--sr2-space-4);
+	max-width: 46rem;
+}
+/* Contrast floor under the copy: >= 0.8 void wherever text can sit (the fade lies above the
+ * copy box, and the right fade lies beyond the page pad). Worst case over a white
+ * film pixel is rgb(59 59 59), where ink, muted and every collection accent rule stay legible. */
+.sr2-bands-v2__copy::before {
+	content: "";
+	position: absolute;
+	inset: calc(-1 * var(--sr2-space-12)) -12vw calc(-1 * var(--sr2-space-6)) calc(-1 * var(--sr2-page-pad));
+	z-index: -1;
+	background: linear-gradient(to top, color-mix(in srgb, var(--sr2-void) 88%, transparent), color-mix(in srgb, var(--sr2-void) 80%, transparent) calc(100% - var(--sr2-space-12)), transparent);
+	-webkit-mask-image: linear-gradient(to right, var(--sr2-void) calc(100% - 12vw), transparent);
+	mask-image: linear-gradient(to right, var(--sr2-void) calc(100% - 12vw), transparent);
+}
+/* The lede (intro and "View all") continues the copy column and its contrast floor. */
+.sr2-bands-v2__lede {
+	position: relative;
+	display: grid;
+	justify-items: start;
+	gap: var(--sr2-space-4);
+	max-width: 46rem;
+	margin: calc(var(--sr2-space-4) - var(--sr2-space-8)) 0 0 var(--sr2-page-pad);
+}
+.sr2-bands-v2__lede::before {
+	content: "";
+	position: absolute;
+	inset: 0 -12vw calc(-1 * var(--sr2-space-6)) calc(-1 * var(--sr2-page-pad));
+	z-index: -1;
+	background: color-mix(in srgb, var(--sr2-void) 88%, transparent);
+	-webkit-mask-image: linear-gradient(to right, var(--sr2-void) calc(100% - 12vw), transparent);
+	mask-image: linear-gradient(to right, var(--sr2-void) calc(100% - 12vw), transparent);
+}
+.sr2-bands-v2__lede--after { display: none; }
+.sr2-bands-v2__head:has(+ .sr2-bands-v2__lede) .sr2-bands-v2__copy::before { bottom: calc(-1 * var(--sr2-space-4)); }
+/* The head's opening height included the lede before it became a sibling; keep the same rhythm. */
+@media (min-width: 48em) {
+	.sr2-bands-v2__head:has(+ .sr2-bands-v2__lede) { min-height: calc(var(--sr2bv2-pin) * 0.62 - 12rem); }
+}
+.sr2-bands-v2__index {
+	display: flex;
+	align-items: baseline;
+	gap: var(--sr2-space-3);
+	margin: 0;
+	font: 400 var(--sr2-type-index)/1 var(--sr2-font-caps);
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+.sr2-bands-v2__numeral {
+	color: var(--sr2-accent);
+	font: 400 clamp(2.75rem, 7vw, 5.5rem)/0.8 var(--sr2-font-ui);
+	letter-spacing: 0;
+}
+.sr2-bands-v2__of { color: var(--sr2-muted); }
+.sr2-bands-v2__name {
+	padding-left: var(--sr2-space-3);
+	border-left: 2px solid var(--sr2-accent);
+	color: var(--sr2-ink);
+}
+.sr2-bands-v2__kicker {
+	margin: 0;
+	color: var(--sr2-muted);
+	font: 500 var(--sr2-type-index)/var(--sr2-leading-utility) var(--sr2-font-body);
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+.sr2-bands-v2__title {
+	margin: 0;
+	max-width: 14ch;
+	color: var(--sr2-ink);
+	font: 750 var(--sr2-type-chapter)/0.95 var(--sr2-font-display);
+	font-variation-settings: "wdth" 125;
+	letter-spacing: var(--sr2-tracking-display);
+	text-transform: uppercase;
+	text-wrap: balance;
+	overflow-wrap: anywhere;
+}
+.sr2-bands-v2__intro {
+	margin: 0;
+	max-width: 52ch;
+	color: var(--sr2-muted);
+	font: 400 var(--sr2-type-lede)/var(--sr2-leading-body) var(--sr2-font-body);
+}
+.sr2-bands-v2 .sr2-bands-v2__all { color: var(--sr2-ink); border-bottom-color: var(--sr2-accent); }
+.sr2-bands-v2 .sr2-bands-v2__all span { transition: transform var(--sr2-motion-micro) var(--sr2-ease-micro); }
+.sr2-bands-v2 .sr2-bands-v2__all:is(:hover, :focus-visible) { color: var(--sr2-ink); }
+.sr2-bands-v2 .sr2-bands-v2__all:is(:hover, :focus-visible) span { transform: translateX(var(--sr2-space-1)); }
+
+/* Rail stage: a bar (count, film toggle, prev/position/next) above the snap rail. */
+.sr2-bands-v2__stage { display: grid; gap: var(--sr2-space-4); min-width: 0; }
+.sr2-bands-v2__bar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--sr2-space-3) var(--sr2-space-5);
+	padding: var(--sr2-space-3) var(--sr2-page-pad);
+	background: color-mix(in srgb, var(--sr2-void) 88%, transparent);
+	border-block: 1px solid var(--sr2-line);
+}
+.sr2-bands-v2__count {
+	margin: 0;
+	color: var(--sr2-muted);
+	font: 500 var(--sr2-type-index)/var(--sr2-leading-utility) var(--sr2-font-body);
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+.sr2-bands-v2__controls { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sr2-space-2); }
+.sr2-bands-v2__controls[hidden],
+.sr2-bands-v2__motion[hidden] { display: none; }
+.sr2-bands-v2__step,
+.sr2-bands-v2__motion {
+	display: inline-grid;
+	place-items: center;
+	min-width: var(--sr2-target-size);
+	min-height: var(--sr2-target-size);
+	padding: 0 var(--sr2-space-3);
+	border: 1px solid var(--sr2-border-control);
+	border-radius: var(--sr2-radius-control);
+	background: var(--sr2-void);
+	color: var(--sr2-ink);
+	font: 500 var(--sr2-type-index)/1 var(--sr2-font-body);
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: border-color var(--sr2-motion-micro) var(--sr2-ease-micro), background-color var(--sr2-motion-micro) var(--sr2-ease-micro), transform var(--sr2-motion-micro) var(--sr2-ease-micro);
+}
+.sr2-bands-v2__step { padding: 0; font-size: 1rem; }
+.sr2-bands-v2__step:hover:not([aria-disabled="true"]),
+.sr2-bands-v2__motion:hover:not(:disabled) { border-color: var(--sr2-accent); background: var(--sr2-card-hover); }
+.sr2-bands-v2__step:active:not([aria-disabled="true"]),
+.sr2-bands-v2__motion:active:not(:disabled) { transform: scale(0.96); }
+.sr2-bands-v2__step:focus-visible,
+.sr2-bands-v2__motion:focus-visible { outline: var(--sr2-focus-width) solid var(--sr2-focus-outer); outline-offset: var(--sr2-focus-offset); }
+.sr2-bands-v2__step[aria-disabled="true"] { border-color: var(--sr2-line); color: var(--sr2-dim); cursor: default; }
+.sr2-bands-v2__motion:disabled { border-color: var(--sr2-line); color: var(--sr2-muted); cursor: default; }
+.sr2-bands-v2__position {
+	min-width: 4.5rem;
+	color: var(--sr2-ink);
+	font: 400 var(--sr2-type-utility)/1 var(--sr2-font-ui);
+	letter-spacing: 0.12em;
+	text-align: center;
+}
+
+/* The rail: native horizontal scroll with mandatory snap; the page never scrolls sideways. */
+.woocommerce .sr2-shop-archive ul.products.sr2-bands-v2__rail,
+.sr2-bands-v2 ul.products.sr2-bands-v2__rail {
+	display: flex;
+	gap: var(--sr2-grid-gap);
+	width: 100%;
+	margin: 0;
+	padding: var(--sr2-space-2) var(--sr2-page-pad) var(--sr2-space-6);
+	/* Trailing room so every piece, the last included, can snap into the focus slot. */
+	padding-inline-end: max(var(--sr2-page-pad), calc(100% - var(--sr2-page-pad) - var(--sr2bv2-card)));
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scroll-snap-type: x mandatory;
+	scroll-padding-inline: var(--sr2-page-pad);
+	scrollbar-color: rgba(var(--sr2-accent-rgb), 0.6) transparent;
+	scrollbar-width: thin;
+	list-style: none;
+}
+.woocommerce .sr2-shop-archive ul.products.sr2-bands-v2__rail::before,
+.woocommerce .sr2-shop-archive ul.products.sr2-bands-v2__rail::after { display: none; content: none; }
+.woocommerce .sr2-shop-archive ul.products.sr2-bands-v2__rail > li.product,
+.sr2-bands-v2 ul.products.sr2-bands-v2__rail > li.product {
+	position: relative;
+	display: grid;
+	flex: 0 0 var(--sr2bv2-card);
+	width: var(--sr2bv2-card);
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border-top: 2px solid transparent;
+	background: var(--sr2-card);
+	scroll-snap-align: start;
+	/* The focus slot: the rail's snap position, one card wide, measured on the rail's own scroll. */
+	view-timeline: --sr2bv2-card inline;
+	view-timeline-inset: var(--sr2-page-pad) calc(100% - var(--sr2-page-pad) - var(--sr2bv2-card));
+	transition: border-color var(--sr2-motion-commerce) var(--sr2-ease-micro), transform var(--sr2-motion-commerce) var(--sr2-ease-enter);
+}
+.sr2-bands-v2__rail > li.product:focus-within { border-top-color: var(--sr2-accent); }
+/* Lift only for real hover pointers, so a tap never leaves a card raised. */
+@media (hover: hover) {
+	.sr2-bands-v2__rail > li.product:hover { border-top-color: var(--sr2-accent); transform: translateY(calc(-1 * var(--sr2-space-1))); }
+	.sr2-bands-v2__rail > li.product:active { transform: none; }
+}
+.sr2-bands-v2 .sr2-c-editorial-card[data-card-frame="archive"] .sr2-c-editorial-card__body { padding: var(--sr2-space-4) var(--sr2-space-4) var(--sr2-space-3); }
+/* A rail slot has no grid track to size it: pin the 3:4 window to the card width so a decoded
+ * front's intrinsic height cannot grow its tile (min-height: 0 drops the aspect-ratio auto minimum). */
+.sr2-bands-v2 .sr2-c-editorial-card[data-card-frame="archive"] .sr2-c-editorial-card__media { min-height: 0; background: var(--sr2-card); }
+.sr2-bands-v2 .sr2-c-editorial-card[data-card-frame="archive"] .sr2-c-editorial-card__photo-window { height: 100%; }
+.sr2-bands-v2 .sr2-c-editorial-card[data-image-state="loading"] .sr2-c-editorial-card__photo-window {
+	background: linear-gradient(100deg, var(--sr2-card) 30%, var(--sr2-card-hover) 50%, var(--sr2-card) 70%) 0 0 / 300% 100%;
+}
+
+/* Handoff to the next band; it brightens once the last piece has snapped into place. */
+.sr2-bands-v2__handoff {
+	display: flex;
+	align-items: center;
+	gap: var(--sr2-space-4);
+	justify-self: end;
+	min-height: var(--sr2-target-size);
+	margin-inline: var(--sr2-page-pad);
+	padding: 0 var(--sr2-space-4);
+	background: color-mix(in srgb, var(--sr2-void) 88%, transparent);
+	color: var(--sr2-muted);
+	font: 500 var(--sr2-type-index)/var(--sr2-leading-utility) var(--sr2-font-body);
+	letter-spacing: 0.18em;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: color var(--sr2-motion-interface) var(--sr2-ease-enter);
+}
+.sr2-bands-v2__handoff-rule {
+	width: var(--sr2-space-20);
+	height: 1px;
+	background: currentColor;
+	transform: scaleX(0.5);
+	transform-origin: left center;
+	transition: transform var(--sr2-motion-scene) var(--sr2-ease-expressive), background-color var(--sr2-motion-interface) var(--sr2-ease-enter);
+}
+.sr2-bands-v2__handoff-name { font-family: var(--sr2-font-caps); color: var(--sr2-ink); }
+.sr2-bands-v2__handoff:is(:hover, :focus-visible),
+.sr2-bands-v2__band[data-sr2bv2-complete="true"] .sr2-bands-v2__handoff { color: var(--sr2-ink); }
+.sr2-bands-v2__handoff:is(:hover, :focus-visible) .sr2-bands-v2__handoff-rule,
+.sr2-bands-v2__band[data-sr2bv2-complete="true"] .sr2-bands-v2__handoff-rule { background: var(--sr2-accent); transform: none; }
+.sr2-bands-v2__handoff:focus-visible { outline: var(--sr2-focus-width) solid var(--sr2-focus-outer); outline-offset: var(--sr2-focus-offset); }
+
+/* Designed quiet state for a collection with no published pieces. */
+.sr2-bands-v2__quiet {
+	margin: 0 var(--sr2-page-pad);
+	padding: var(--sr2-space-6) 0;
+	border-top: 1px solid var(--sr2-line);
+	color: var(--sr2-muted);
+	font: 400 var(--sr2-type-utility)/var(--sr2-leading-body) var(--sr2-font-body);
+}
+.sr2-bands-v2__band:has(.sr2-bands-v2__quiet) .sr2-bands-v2__film { height: auto; position: absolute; inset: 0; }
+.sr2-bands-v2__band:has(.sr2-bands-v2__quiet) .sr2-bands-v2__content { margin-top: 0; }
+.sr2-bands-v2__band:has(.sr2-bands-v2__quiet) .sr2-bands-v2__head { min-height: 0; }
+
+/* Motion choreography. Scroll timelines where supported; an IntersectionObserver phase
+ * fallback (data-sr2bv2-observe, set by shop-bands-v2.js) elsewhere. Reduced motion: none. */
+@media (prefers-reduced-motion: no-preference) {
+	.sr2-bands-v2 .sr2-c-editorial-card[data-image-state="loading"] .sr2-c-editorial-card__photo-window { animation: sr2bv2-shimmer 1.6s linear infinite; }
+
+	@supports (animation-timeline: view()) {
+		.sr2-bands-v2__band { view-timeline: --sr2bv2-band block; }
+		.sr2-bands-v2__poster,
+		.sr2-bands-v2__video,
+		.sr2-bands-v2__type-mark {
+			animation: sr2bv2-drift linear both;
+			animation-timeline: --sr2bv2-band;
+			animation-range: entry 0% exit 100%;
+		}
+		.sr2-bands-v2__scrim {
+			animation: sr2bv2-deepen linear both;
+			animation-timeline: --sr2bv2-band;
+			animation-range: entry 70% contain 30%;
+		}
+		.sr2-bands-v2__band:not([data-sr2bv2-complete="true"]) .sr2-bands-v2__dim {
+			animation: sr2bv2-dim linear both;
+			animation-timeline: --sr2bv2-band;
+			animation-range: exit 0% exit 70%;
+		}
+		.sr2-bands-v2__head {
+			animation: sr2bv2-rise linear both;
+			animation-timeline: view();
+			animation-range: entry 5% entry 85%;
+		}
+		/* Focused piece: the card in the snap slot is at full presence and its neighbours recede.
+		 * Opacity and filter only, on the photo window: no geometry changes, so the garment
+		 * highlight (premium-commerce.js measures the image against the card media) stays aligned. */
+		.sr2-bands-v2__rail > li.product .sr2-c-editorial-card__photo-window {
+			animation: sr2bv2-focus linear both;
+			animation-timeline: --sr2bv2-card;
+			animation-range: cover 0% cover 100%;
+		}
+		.sr2-bands-v2__rail > li.product:is(:hover, :focus-within) .sr2-c-editorial-card__photo-window { animation: none; }
+		/* A piece still decoding keeps its shimmer and recedes like its neighbours, so a card
+		 * entering at the rail's edge never flashes at full presence. */
+		.sr2-bands-v2__rail > li.product .sr2-c-editorial-card[data-image-state="loading"] .sr2-c-editorial-card__photo-window {
+			animation: sr2bv2-shimmer 1.6s linear infinite, sr2bv2-focus linear both;
+			animation-timeline: auto, --sr2bv2-card;
+			animation-range: normal, cover 0% cover 100%;
+		}
+		.sr2-bands-v2__rail > li.product:is(:hover, :focus-within) .sr2-c-editorial-card[data-image-state="loading"] .sr2-c-editorial-card__photo-window {
+			animation: sr2bv2-shimmer 1.6s linear infinite;
+		}
+	}
+
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__head,
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__scrim,
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__poster {
+		transition: transform var(--sr2-motion-scene) var(--sr2-ease-enter), opacity var(--sr2-motion-scene) var(--sr2-ease-enter);
+	}
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__band[data-sr2bv2-phase="before"] .sr2-bands-v2__head { opacity: 0; transform: translateY(var(--sr2bv2-rise)); }
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__band[data-sr2bv2-phase="before"] .sr2-bands-v2__poster,
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__band[data-sr2bv2-phase="enter"] .sr2-bands-v2__poster { transform: scale(1.06); }
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__band[data-sr2bv2-phase="enter"] .sr2-bands-v2__scrim { opacity: 0.75; }
+	/* Without scroll timelines, shop-bands-v2.js marks the snapped piece instead. */
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__rail > li.product .sr2-c-editorial-card__photo-window {
+		transition: opacity var(--sr2-motion-interface) var(--sr2-ease-enter), filter var(--sr2-motion-interface) var(--sr2-ease-enter);
+	}
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__rail > li.product:not([data-sr2bv2-focus="true"], :hover, :focus-within) .sr2-c-editorial-card__photo-window {
+		opacity: var(--sr2bv2-recede-opacity);
+		filter: var(--sr2bv2-recede-filter);
+	}
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__band[data-sr2bv2-phase="after"] .sr2-bands-v2__dim,
+	.sr2-bands-v2[data-sr2bv2-observe] .sr2-bands-v2__band[data-sr2bv2-phase="exit"] .sr2-bands-v2__dim { opacity: 0.55; }
+}
+
+@keyframes sr2bv2-drift { from { transform: scale(1.08) translateY(-1.5%); } to { transform: scale(1) translateY(1.5%); } }
+@keyframes sr2bv2-deepen { from { opacity: 0.75; } to { opacity: 1; } }
+@keyframes sr2bv2-dim { from { opacity: 0; } to { opacity: 0.55; } }
+@keyframes sr2bv2-rise { from { opacity: 0.2; transform: translateY(var(--sr2bv2-rise)); } to { opacity: 1; transform: none; } }
+@keyframes sr2bv2-focus {
+	0%, 22%, 78%, 100% { opacity: var(--sr2bv2-recede-opacity); filter: var(--sr2bv2-recede-filter); }
+	50% { opacity: 1; filter: none; }
+}
+@keyframes sr2bv2-shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+	.sr2-bands-v2 *,
+	.sr2-bands-v2 *::before,
+	.sr2-bands-v2 *::after { transition-duration: 1ms; }
+	.sr2-bands-v2__video { display: none; }
+}
+
+/* Portrait crop (phones, and tablets held upright): the 16:9 film is set high and wide so its
+ * monument, not the sky, fills the window above the title; each collection names the
+ * monument's horizontal position. */
+@media (max-width: 47.99em), (orientation: portrait) {
+	.sr2-bands-v2__band[data-collection="signature"] { --sr2bv2-focal-sm: 96% 50%; }
+	.sr2-bands-v2__band[data-collection="black-rose"] { --sr2bv2-focal-sm: 95% 50%; }
+	.sr2-bands-v2__band[data-collection="love-hurts"] { --sr2bv2-focal-sm: 50% 50%; }
+	.sr2-bands-v2__poster,
+	.sr2-bands-v2__video {
+		top: calc(var(--sr2bv2-pin) * -0.28);
+		bottom: auto;
+		height: calc(var(--sr2bv2-pin) * 0.74);
+		object-position: var(--sr2bv2-focal-sm, 50% 50%);
+		-webkit-mask-image: linear-gradient(to bottom, var(--sr2-void) 72%, transparent);
+		mask-image: linear-gradient(to bottom, var(--sr2-void) 72%, transparent);
+	}
+	.sr2-bands-v2__band[data-film="cinema"] .sr2-bands-v2__scrim {
+		background: linear-gradient(to bottom, color-mix(in srgb, var(--sr2-void) 25%, transparent) 0%, transparent 12%, color-mix(in srgb, var(--sr2-void) 35%, transparent) 26%, color-mix(in srgb, var(--sr2-void) 90%, transparent) 46%, var(--sr2-void) 60%);
+	}
+}
+
+@media (max-width: 47.99em) {
+	/* The band's first screen holds the film window, the title and the first piece; the lede
+	 * (intro and "View all") is the copy rendered after the rail, so DOM, focus and visual
+	 * order agree. */
+	.sr2-bands-v2__content { gap: var(--sr2-space-4); }
+	.sr2-bands-v2__head { min-height: 0; padding-top: max(var(--sr2-space-16), calc(var(--sr2bv2-pin) * 0.24)); }
+	.sr2-bands-v2__lede--head { display: none; }
+	.sr2-bands-v2__lede--after { display: grid; margin-top: var(--sr2-space-2); }
+	.sr2-bands-v2__bar { padding-block: var(--sr2-space-2); }
+	.sr2-bands-v2__handoff { justify-self: stretch; justify-content: space-between; }
+}
+
+@media (forced-colors: active) {
+	.sr2-bands-v2__scrim,
+	.sr2-bands-v2__dim,
+	.sr2-bands-v2__copy::before { display: none; }
+	.sr2-bands-v2__step[aria-disabled="true"] { color: GrayText; }
+}
