@@ -162,6 +162,67 @@ page actually shows. A product's other images remain on its PDP.
   - no `<loc>` is an attachment page. If nothing qualifies, Jetpack deletes the
     image sitemap and a 404 is the expected result.
 
+## Addendum: attachment pages noindex (founder choice "a", 2026-10-11)
+
+Corey chose option "a" on 2026-10-11: keep attachment pages reachable and mark
+them `noindex`. He did not choose to disable them site-wide
+(`wp_attachment_pages_enabled = 0`). The version stays 2.5.3 (unreleased).
+
+- `inc/seo-indexing.php`
+  - New `skyyrose2_seo_is_attachment_page()` is true for `is_attachment()`
+    unless a supported SEO plugin owns the decision.
+  - `skyyrose2_seo_robots()` gives attachment pages `noindex, follow` and keeps
+    `max-image-preview:large`. The branch runs before the Jetpack per-post
+    branch, because an attachment is `is_singular()`.
+  - `skyyrose2_seo_canonical_url()` returns `''` and
+    `skyyrose2_seo_schema_graph()` returns `array()` on attachment pages. This
+    matches the file's other noindex routes (search, 404, transactional). Core
+    sets `is_single()` for attachments, so the page previously carried a
+    self-canonical, `og:url` and an `Article` + `BreadcrumbList` graph with the
+    filename as headline.
+  - Other emitters were checked. Jetpack's own robots/meta tags are already off
+    (`jetpack_seo_meta_tags_enabled` returns false without an SEO plugin).
+    `X-Robots-Tag` is sent only on non-production requests. Neither sitemap
+    lists attachments: Jetpack's post types are post, page and product, and the
+    image sitemap entry rule above never yields an attachment `<loc>`.
+- `scripts/test-seo-indexing.php`: an `is_attachment()` stub and 8 assertions.
+  - On an attachment fixture (`singular`, `single`, `attachment`): noindex and
+    follow set, `index`/`nofollow` removed, `max-image-preview:large` kept,
+    empty canonical, empty schema, no `rel="canonical"`/`og:url` in the head.
+  - A Jetpack-noindex attachment is still `noindex, follow` with large previews.
+  - A non-attachment singular record stays indexable.
+  - Under `AIOSEO_VERSION`, attachment robots pass through unchanged.
+- POT: one line reference moved (`inc/seo-indexing.php:256` -> `:277`).
+- CHANGELOG and readme 2.5.3 entries gained one line each.
+
+| Entry (file)                             | Old sha256          | New sha256          | Why                                    |
+| ---------------------------------------- | ------------------- | ------------------- | -------------------------------------- |
+| baseline `inc/seo-indexing.php`          | `99dea849348ec5b2…` | `e1eb693995889071…` | Attachment noindex, canonical, schema. |
+| baseline `scripts/test-seo-indexing.php` | `ebccda8c60f61959…` | `7b7460f6b04f3a91…` | Attachment fixture and assertions.     |
+| input `runtime-php-baseline.json`        | `fea4cc5d1733e8f4…` | `55eb3f267584eb17…` | Follows the two entries above.         |
+
+Evidence (this session):
+
+- RED: the new test file run against `origin/main` `072e0626b` runtime
+  (`inc/seo-indexing.php` sha256 `99dea849…`, exported with `git archive`) fails
+  5 assertions: noindex/follow, empty canonical, empty schema, no
+  canonical/`og:url` in head, Jetpack-noindex attachment.
+- GREEN: the same file passes on the changed runtime.
+- PHPCS (`phpcs.xml`): `inc/seo-indexing.php` 0 findings. The test harness gains
+  one finding of the existing stub kind (`is_attachment` unprefixed).
+- Toolchain: Node 22.23.2, npm 10.9.8, Python 3.12.12, PHP 8.5.6; fresh
+  `prepare-native-fixture.py` fixture (7 hashes) and hash-checked
+  `V2_NATIVE_JS_FIXTURE` (2 hashes).
+- `npm run lint:php`: exit 0.
+- `npm run package:theme`: exit 0, 0 `not ok`, "Validated 773 runtime package
+  entries; SHA-256 `2e094c4717bfe439…`" (after the prettier pass on
+  `CHANGELOG.md`). Two runs gave the same archive hash.
+- `pytest tests/test_v2_*.py tools/v2-source-certification`: 73 tests, 0
+  failures, 0 errors, 0 skipped (junit).
+- `python -m unittest discover -s tools/v2-source-certification`: OK.
+- `scripts/sync_product_registry.py --check`: PASS.
+- Not deployed. Live attachment-page robots are unchanged until a deploy.
+
 ---
 
 # 2.5.3 Lane B: collection imagery and media cache keys
@@ -456,3 +517,65 @@ theme file was added or removed and `generated-outputs.json` pins no hashes.
   - `sync_product_registry.py --check`: PASS.
 - The founder decision on grant `target` (staging versus production) is still
   open. It is not resolved here.
+
+## PR #1070 round 3: merge `main` after #1073 and #1074
+
+`main` (`4796e2d3f`) already carried #1068, #1073 (live theme parity checker)
+and #1074 (attachment pages `noindex`), so this PR was `CONFLICTING`. The green
+checks recorded on 2026-10-11 ran against the old base and do not cover the
+merged tree. `origin/main` was merged into `8f3c310dd` as a new merge commit (no
+rebase, no force-push). The version stays 2.5.3.
+
+- **Conflicts: four files, all additive.**
+  - `CHANGELOG.md` and `readme.txt`: every 2.5.3 entry from both sides is kept.
+    The attachment-noindex entry follows the sitemap entries, then Lane B's.
+  - This document: Lane A, then the #1074 addendum, then Lane B, then this
+    round.
+  - `tools/v2-source-certification/build-inputs.json`: one pin line.
+- **Pin intersection** (paths changed on both sides since `132598443` that carry
+  a pin): only `runtime-php-baseline.json`. The two sides edited disjoint
+  baseline entries (nine here, two in #1074), so no PHP file needed a recomputed
+  baseline entry.
+
+| Entry (file)                      | Lane B              | #1074 (`main`)      | Merged              |
+| --------------------------------- | ------------------- | ------------------- | ------------------- |
+| input `runtime-php-baseline.json` | `6c2e3c47f5a0963c…` | `55eb3f267584eb17…` | `2fc7921bf5f9c3df…` |
+
+Entry-only again. `package.json` (changed only on this branch) and
+`package-boundary.json` (changed only on `main`, for #1073) keep their own pins.
+`current_registry_sha256` and the `logo-registry.json` pin are unchanged
+(`7d9a8d6d82c82771…`), so no product fact moved.
+
+Evidence (this session):
+
+- Toolchain: Node 22.23.2, npm 10.9.8, Python 3.12.12, Pillow 12.3.0, PHP 8.5.6,
+  cwebp 1.6.0. Fresh `prepare-native-fixture.py` fixture (7 hashes) and
+  hash-checked `V2_NATIVE_JS_FIXTURE` (2 hashes).
+- All 106 `input_hashes` pins and all 85 baseline entries match the merged
+  bytes.
+- `python -m unittest discover -s tools/v2-source-certification -p 'test_*.py'`:
+  23 tests, OK.
+- `python scripts/sync_product_registry.py --check`: PASS.
+- `python -m unittest discover -s tests -p 'test_v2_product_presentation_registry.py'`:
+  3 tests, OK.
+- `npm run package:theme`: exit 0, 0 `not ok`. "Validated 773 runtime package
+  entries; SHA-256 `deb5b4ceb409b254…`". The archive hash is new, as it must be
+  for a tree that neither parent built.
+- `git diff --exit-code` after the build: clean, so the POT, the minified
+  outputs and the presentation registry did not drift.
+- Prettier `--check` on the touched Markdown and JSON, and
+  `verify-formatter-ignores.mjs`: pass. Commit hooks were off for the merge
+  commit, as in round 2.
+- Not repeated locally: the second `package:theme` run and the `cmp` of the two
+  archives. CI's `verify` job does that.
+
+Changed or still open:
+
+- **kids-002 caveat (resolved in the merged tree).** The QC flag in "Not
+  verified / open" above no longer holds. `get_product('kids-002')`
+  `garment.features.specification` reads "solid deep-purple hood", and #1072
+  regenerated the Elite Studio golden brief from it. No registry edit was made.
+- **Founder call, unchanged.** The grant `target` string names staging and the
+  gate does not compare it to the request host, so a 2.5.3 deploy admits the new
+  roles on skyyrose.co, including the 15 on-model PDP fronts.
+- Not deployed. Production behavior after deploy is unverified.

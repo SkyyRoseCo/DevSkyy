@@ -21,6 +21,10 @@ All notable changes to SkyyRose Flagship 2 are documented here.
 - A supported SEO plugin keeps both Jetpack decisions unchanged.
 - Jetpack offers no hook that repeats `<image:image>` under one `<url>`, so one
   image per page is listed. The other product images stay on the PDP itself.
+- Attachment pages are `noindex, follow` (founder decision 2026-10-11: noindex
+  them rather than disable them site-wide). `max-image-preview:large` stays, and
+  the theme emits no canonical, `og:url` or schema on them. A supported SEO
+  plugin keeps its own robots decision.
 - Founder-approved collection imagery now renders from the registry's
   `collections.*.imagery` bindings, through the founder usage grants
   (`data/v2-media-reviews/usage-*.json`): the collections index chapters
