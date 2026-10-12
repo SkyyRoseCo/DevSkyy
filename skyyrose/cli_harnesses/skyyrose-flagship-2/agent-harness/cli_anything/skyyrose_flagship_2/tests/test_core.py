@@ -1208,3 +1208,33 @@ class TestReviewNits:
         result = _cli(repo, "--json", "evidence", "export", "--no-validate")
         assert result.exit_code == 1
         assert "Malformed review" in json.loads(result.stdout)["error"]
+
+
+@pytest.mark.parametrize("name", ["\u200b", "\ufeff", "\u2060 \u200b"])
+def test_invisible_only_reviewer_is_refused(repo: Path, name: str) -> None:
+    with pytest.raises(ev.EvidenceError, match="non-blank"):
+        ev.review_entry(
+            candidate=cand_mod.capture(repo),
+            reviewer=name,
+            disposition="PASS",
+            note="n",
+            owners={"builder"},
+        )
+
+
+@pytest.mark.parametrize("cid", [" {c} ", "{c}\n", "{C}", "{c}0"])
+def test_padded_or_altered_candidate_id_fails_closed(repo: Path, tmp_path: Path, cid: str) -> None:
+    sess = sess_mod.new_session(repo)
+    cand = cand_mod.capture(repo)
+    bad = {
+        **_review(cand, "r1", "FAIL", "2026-10-11T00:00:01+00:00"),
+        "candidate_id": cid.format(c=cand.candidate_id, C=cand.candidate_id.upper()),
+    }
+    with pytest.raises(ev.EvidenceError, match="Malformed review"):
+        ev.build_record(
+            session_runs=[_entry(repo, sess)],
+            reviews=[bad],
+            candidate=cand,
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
