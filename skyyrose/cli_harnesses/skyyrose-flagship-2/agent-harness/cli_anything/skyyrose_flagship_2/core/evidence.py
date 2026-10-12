@@ -27,9 +27,11 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
+import unicodedata
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -233,8 +235,16 @@ def derive_status(header: dict[str, Any]) -> tuple[str, str]:
     return "PASS", "exit 0"
 
 
+_CANDIDATE_ID = re.compile(r"[0-9a-f]{16}")
+
+
+def _visible(name: str) -> str:
+    """Drop Unicode format characters (zero-width space, BOM, word joiner...) and trim."""
+    return "".join(c for c in name if unicodedata.category(c) != "Cf").strip()
+
+
 def _norm(name: str) -> str:
-    return name.strip().casefold()
+    return _visible(name).casefold()
 
 
 def review_entry(
@@ -246,6 +256,9 @@ def review_entry(
     """
     if disposition not in {"PASS", "FAIL"}:
         raise EvidenceError("disposition must be PASS or FAIL")
+    reviewer = _visible(reviewer)
+    if not reviewer:
+        raise EvidenceError("A review needs a non-blank --reviewer name")
     if not owners:
         raise EvidenceError(f"No gate runs on candidate {candidate.candidate_id} to review.")
     if _norm(reviewer) in {_norm(o) for o in owners}:
@@ -360,13 +373,22 @@ def latest_reviews(
     *reviews* may come from many sessions; the result is ordered by ``reviewed_at``.
     """
     blocked = {_norm(o) for o in owners}
-    on_candidate = [r for r in reviews if r.get("candidate_id") == candidate.candidate_id]
-    for r in on_candidate:
-        if r.get("disposition") not in {"PASS", "FAIL"} or not isinstance(r.get("reviewer"), str):
+    # Validate every review before filtering: a review that cannot be attributed
+    # to a candidate (e.g. a FAIL whose candidate_id was removed) must not vanish.
+    for r in reviews:
+        if (
+            not isinstance(r, dict)
+            or not isinstance(r.get("candidate_id"), str)
+            or not _CANDIDATE_ID.fullmatch(r["candidate_id"])
+            or r.get("disposition") not in {"PASS", "FAIL"}
+            or not isinstance(r.get("reviewer"), str)
+            or not _visible(r["reviewer"])
+        ):
             raise EvidenceError(
-                f"Malformed review on candidate {candidate.candidate_id}: {r!r}. "
+                f"Malformed review in the ledger: {r!r}. "
                 "Refusing to decide a verdict from an unreadable ledger."
             )
+    on_candidate = [r for r in reviews if r["candidate_id"] == candidate.candidate_id]
     fails = [r for r in on_candidate if r["disposition"] == "FAIL"]
     passes: dict[str, dict[str, Any]] = {}
     for r in sorted(on_candidate, key=lambda r: str(r.get("reviewed_at", ""))):
