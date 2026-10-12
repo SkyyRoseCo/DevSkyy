@@ -13,7 +13,17 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
+
+# Each test below is one clean-interpreter subprocess import, and the subprocess
+# budget is its real limit. The suite-wide pytest-timeout (pyproject: 10s) is
+# sized for unit tests and silently preempted that budget whenever the machine
+# was busy (bug-368). The per-test marker sits above the subprocess budget, so
+# subprocess.run raises its own TimeoutExpired first, with the captured output.
+_SUBPROCESS_TIMEOUT_S = 60
+_TEST_TIMEOUT_S = _SUBPROCESS_TIMEOUT_S + 30
 
 _BLOCKER_SCRIPT = """
 import sys
@@ -82,6 +92,7 @@ for label, fn in (
 """
 
 
+@pytest.mark.timeout(_TEST_TIMEOUT_S)
 def test_main_enterprise_imports_without_ml_libs() -> None:
     """`import main_enterprise` must succeed with zero torch-class ML libs importable."""
     result = subprocess.run(
@@ -92,7 +103,7 @@ def test_main_enterprise_imports_without_ml_libs() -> None:
         env={**os.environ, "PYTHONPATH": str(REPO_ROOT)},
         capture_output=True,
         text=True,
-        timeout=60,
+        timeout=_SUBPROCESS_TIMEOUT_S,
     )
     assert result.returncode == 0 and "ML_OPTIONAL_IMPORT_OK" in result.stdout, (
         "import main_enterprise failed without ML libs installed "
@@ -101,6 +112,7 @@ def test_main_enterprise_imports_without_ml_libs() -> None:
     )
 
 
+@pytest.mark.timeout(_TEST_TIMEOUT_S)
 def test_encoders_fail_loud_with_ml_extra_message() -> None:
     """Calling embed_text/embed_image without the `ml` extra must raise ImportError
     naming `pip install -e '.[ml]'` — never a bare ModuleNotFoundError from a
@@ -112,7 +124,7 @@ def test_encoders_fail_loud_with_ml_extra_message() -> None:
         env={**os.environ, "PYTHONPATH": str(REPO_ROOT)},
         capture_output=True,
         text=True,
-        timeout=60,
+        timeout=_SUBPROCESS_TIMEOUT_S,
     )
     lines = [ln for ln in result.stdout.splitlines() if ln.startswith(("OK:", "FAIL:"))]
     failures = [ln for ln in lines if ln.startswith("FAIL:")]
