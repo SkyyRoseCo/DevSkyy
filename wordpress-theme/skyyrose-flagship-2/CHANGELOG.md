@@ -2,6 +2,30 @@
 
 All notable changes to SkyyRose Flagship 2 are documented here.
 
+## 2.5.4 — Shop grouped per collection (Cinema Bands) — 2026-10-11
+
+- Founder ruling: the unfiltered Shop keeps the separate collection structure,
+  as the founder-chosen v2 Cinema Bands. One band per collection in house order
+  (Signature, Black Rose, Love Hurts, Kids Capsule). Pieces with no collection
+  follow in a final band, so nothing published is unreachable. Kids Capsule, and
+  any film the media gate withholds, opens on the type-led header.
+- The grouped view is the main product archive with no collection, stock,
+  price, layered-nav or rating filter, and not search or a taxonomy route.
+  Ordering alone keeps it and orders pieces inside each band. It renders every
+  published piece on one page (`posts_per_page` -1 at `pre_get_posts` 30, after
+  WooCommerce's own handler at 10). `/shop/page/N/` 301s to `/shop/` and keeps
+  non-filter query args.
+- The grouped view's results are stable-sorted into house order (`the_posts`
+  20), so the archive LCP preload names the first band's first piece, the one
+  eager card.
+- Filtered views keep the grid, the world note after piece 8, pagination, and
+  the empty state, unchanged.
+- SEO: a paged, filtered Shop view's canonical is the Shop, never the
+  redirecting `/shop/page/N/`.
+- New assets `shop-bands-v2.css`/`.js` (and their `.min` files) are enqueued
+  only on the grouped view, at priority 20, outside the archive inline-style
+  order.
+
 ## 2.5.3 — Image sitemap: one entry per page, no attachment pages — 2026-10-11
 
 - Jetpack image sitemap: Jetpack writes one `<url>` per image attachment, so a

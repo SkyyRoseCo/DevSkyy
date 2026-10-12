@@ -49,7 +49,22 @@ const run = beginRun(path.join(out, 'shop-behavior.json'));
       ]);
       await p.locator('.sr2-c-editorial-card').first().waitFor();
       assert((await p.locator('.sr2-c-editorial-card').count()) > 0);
+      // Founder ruling 2026-10-11: the unfiltered Shop is grouped per collection in house
+      // order on one page (v2 Cinema Bands). It has no pagination, and stale
+      // /shop/page/N/ links 301 to /shop/.
+      assert.equal(
+        await p.locator('[data-sr2bv2] [data-sr2bv2-band]').first().getAttribute('data-collection'),
+        'signature'
+      );
+      assert.equal(await p.locator('.woocommerce-pagination a.next').count(), 0);
+      const stale = await p.request.get(base + '/shop/page/2/', { maxRedirects: 0 });
+      assert.equal(stale.status(), 301);
+      assert.equal(new URL(stale.headers().location, base).pathname, '/shop/');
+      // Filtered views keep the existing grid and native pagination unchanged.
+      await p.goto(base + '/shop/?min_price=0');
+      assert.equal(await p.locator('[data-sr2bv2]').count(), 0);
       await Promise.all([p.waitForURL(/page\/2|paged=2/), p.locator('.woocommerce-pagination a.next').click()]);
+      assert.equal(new URL(p.url()).searchParams.get('min_price'), '0');
       await p.locator('.sr2-c-editorial-card').first().waitFor();
       assert.match(p.url(), /page\/2|paged=2/);
       assert((await p.locator('.sr2-c-editorial-card').count()) > 0);

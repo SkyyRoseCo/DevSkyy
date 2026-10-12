@@ -194,7 +194,10 @@ function skyyrose2_marketplace_pages() {
 	);
 }
 function get_query_var( $key ) {
-	return 0;
+	return 'paged' === $key ? (int) ( $GLOBALS['skyyrose2_test_context']['paged'] ?? 0 ) : 0;
+}
+function is_shop() {
+	return ! empty( $GLOBALS['skyyrose2_test_context']['shop'] );
 }
 function get_queried_object_id() {
 	return 42;
@@ -221,6 +224,7 @@ function wc_get_page_id( $page_key ) {
 		'cart'      => 10,
 		'checkout'  => 11,
 		'myaccount' => 12,
+		'shop'      => 20,
 	)[ $page_key ] ?? -1;
 }
 function get_page_by_path( $path ) {
@@ -370,6 +374,16 @@ $skyyrose2_test_context['singular']  = true;
 $skyyrose2_test_context['canonical'] = 'https://skyyrose.co/story/2/';
 skyyrose2_test_assert( 'https://skyyrose.co/story/2/' === skyyrose2_seo_canonical_url(), 'Singular canonical must preserve WordPress multipage routing.' );
 $skyyrose2_test_context['singular'] = false;
+// Founder ruling 2026-10-11: unfiltered /shop/page/N/ 301s to the one-page grouped Shop,
+// so a paged (filtered) Shop view must name the Shop, never the redirecting /shop/page/N/.
+$GLOBALS['sr2_seo_test_permalinks'][20] = 'https://skyyrose.co/shop/';
+$skyyrose2_test_context['shop']         = true;
+$skyyrose2_test_context['paged']        = 2;
+skyyrose2_test_assert( 'https://skyyrose.co/shop/' === skyyrose2_seo_canonical_url(), 'A paged Shop view must not canonicalize to the redirecting /shop/page/2/.' );
+$skyyrose2_test_context['shop'] = false;
+skyyrose2_test_assert( skyyrose2_seo_pagenum_url( 2 ) === skyyrose2_seo_canonical_url(), 'Other paged archives keep their paged canonical.' );
+$skyyrose2_test_context['paged'] = 0;
+unset( $GLOBALS['sr2_seo_test_permalinks'][20] );
 
 $excerpt = skyyrose2_seo_excerpt( '<p>Actual   authored [shortcode] text.</p>', 158 );
 skyyrose2_test_assert( 'Actual authored text.' === $excerpt, 'Metadata text normalization changed authored copy incorrectly.' );

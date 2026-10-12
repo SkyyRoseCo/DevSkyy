@@ -372,6 +372,12 @@ def main() -> int:
             "skyyrose2_approved_scroll_world_scene(",
         ),
         "functions.php": ("functions.php", "function skyyrose2_render_black_rose_jersey_series"),
+        # Founder-chosen v2 Cinema Bands (2026-10-11): each film source is resolved
+        # through the media gate under the collection_hero_video role.
+        "template-parts/shop/collection-bands-v2.php": (
+            "template-parts/shop/collection-bands-v2.php",
+            "'collection_hero_video' )",
+        ),
     }
     for php_file in sorted(THEME.rglob("*.php")):
         relative = php_file.relative_to(THEME).as_posix()

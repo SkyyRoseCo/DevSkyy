@@ -81,7 +81,24 @@ get_header();
 	</section>
 	<section class="sr2-shop-archive__results" aria-label="<?php esc_attr_e( 'Products', 'skyyrose-flagship-2' ); ?>">
 		<?php
-		if ( woocommerce_product_loop() ) {
+		if ( woocommerce_product_loop() && skyyrose2_shop_bands_v2_active() ) {
+			// Founder ruling 2026-10-11: the unfiltered Shop is grouped per collection
+			// in house order (v2 Cinema Bands), every piece on one page.
+			$band_pieces = array();
+			while ( have_posts() ) {
+				the_post();
+				$band_piece = wc_get_product( get_the_ID() );
+				if ( $band_piece ) {
+					$band_pieces[] = $band_piece;
+				}
+			}
+			wp_reset_postdata();
+			// Each band titles its collection with an h2, so its pieces nest at h3 (WCAG 1.3.1).
+			wc_set_loop_prop( 'sr2_card_heading_level', 3 );
+			get_template_part( 'template-parts/shop/collection-bands-v2', null, skyyrose2_shop_bands_v2_groups( $band_pieces ) );
+			wc_set_loop_prop( 'sr2_card_heading_level', 0 );
+			do_action( 'woocommerce_after_shop_loop' );
+		} elseif ( woocommerce_product_loop() ) {
 			woocommerce_product_loop_start();
 			$piece_number    = 0;
 			$editorial_world = '';

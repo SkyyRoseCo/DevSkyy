@@ -41,6 +41,7 @@ python3 scripts/validate-collection-hero-motion.py
 python3 scripts/test-collection-hero-motion.py
 python3 scripts/build-pot.py --check
 php scripts/test-marketplace-registry.php
+php scripts/test-shop-bands-v2.php
 node scripts/build-assets.mjs --check
 node scripts/build-critical-css.mjs --check
 

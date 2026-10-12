@@ -168,7 +168,9 @@ function skyyrose2_seo_canonical_url() {
 		return '';
 	}
 	$paged = max( 1, (int) get_query_var( 'paged' ) );
-	if ( $paged > 1 && ! is_singular() ) {
+	// /shop/page/N/ now 301s to the one-page grouped Shop (founder ruling 2026-10-11),
+	// so a paged, filtered Shop view names the Shop itself, never a redirecting URL.
+	if ( $paged > 1 && ! is_singular() && ! ( function_exists( 'is_shop' ) && is_shop() ) ) {
 		return skyyrose2_seo_pagenum_url( $paged );
 	}
 	if ( is_front_page() ) {

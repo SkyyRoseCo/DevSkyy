@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SKYYROSE2_VERSION', '2.5.3' );
+define( 'SKYYROSE2_VERSION', '2.5.4' );
 define( 'SKYYROSE2_DIR', get_template_directory() );
 define( 'SKYYROSE2_URI', get_template_directory_uri() );
 
@@ -571,6 +571,23 @@ JS
 	}
 }
 add_action( 'wp_enqueue_scripts', 'skyyrose2_assets' );
+
+/**
+ * v2 Cinema Bands load only on the grouped, unfiltered Shop. Priority 20 queues
+ * them after every skyyrose2_assets() handle (the mascot pair included), so the
+ * seven-sheet archive inline order and its budget contract stay untouched.
+ */
+function skyyrose2_shop_bands_v2_assets() {
+	if ( ! skyyrose2_shop_bands_v2_active() ) {
+		return;
+	}
+	$suffix = skyyrose2_asset_suffix();
+	$style  = '/assets/css/shop-bands-v2' . $suffix . '.css';
+	$script = '/assets/js/shop-bands-v2' . $suffix . '.js';
+	wp_enqueue_style( 'skyyrose2-shop-bands-v2', SKYYROSE2_URI . $style, array( 'skyyrose2-shop-page' ), skyyrose2_asset_version( $style ) );
+	wp_enqueue_script( 'skyyrose2-shop-bands-v2', SKYYROSE2_URI . $script, array(), skyyrose2_asset_version( $script ), true );
+}
+add_action( 'wp_enqueue_scripts', 'skyyrose2_shop_bands_v2_assets', 20 );
 
 /** Read-only concierge destinations and product discovery; Woo owns all sale facts. */
 function skyyrose2_concierge_guide() {
