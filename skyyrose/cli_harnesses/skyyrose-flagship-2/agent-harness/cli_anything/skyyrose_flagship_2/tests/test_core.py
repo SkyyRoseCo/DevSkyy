@@ -1144,3 +1144,67 @@ class TestReviewRound3:
         }
         good = _review(cand, "r2", "PASS", "2026-10-11T00:00:02+00:00")
         assert self._rec(repo, tmp_path, [other, good])["fashion_theme_team"]["status"] == "PASS"
+
+
+class TestReviewNits:
+    """The three P3s noted on #1071."""
+
+    def _rec(self, repo: Path, tmp_path: Path, reviews: list) -> dict:
+        sess = sess_mod.new_session(repo)
+        return ev.build_record(
+            session_runs=[_entry(repo, sess)],
+            reviews=reviews,
+            candidate=cand_mod.capture(repo),
+            toolchain=_toolchain(),
+            out_dir=tmp_path / "o",
+        )
+
+    @pytest.mark.parametrize("name", ["", "   ", "\t\n"])
+    def test_blank_reviewer_is_refused(self, repo: Path, name: str) -> None:
+        with pytest.raises(ev.EvidenceError, match="non-blank"):
+            ev.review_entry(
+                candidate=cand_mod.capture(repo),
+                reviewer=name,
+                disposition="PASS",
+                note="n",
+                owners={"builder"},
+            )
+
+    def test_reviewer_name_is_stored_trimmed(self, repo: Path) -> None:
+        entry = ev.review_entry(
+            candidate=cand_mod.capture(repo),
+            reviewer="  r1 ",
+            disposition="PASS",
+            note="n",
+            owners={"builder"},
+        )
+        assert entry["reviewer"] == "r1"
+
+    @pytest.mark.parametrize("bad", ["not-a-dict", 42, None, ["x"]])
+    def test_non_dict_review_is_a_clean_error(
+        self, repo: Path, tmp_path: Path, bad: object
+    ) -> None:
+        with pytest.raises(ev.EvidenceError, match="Malformed review"):
+            self._rec(repo, tmp_path, [bad])
+
+    @pytest.mark.parametrize(
+        "edit", [{"candidate_id": None}, {"candidate_id": ""}, {"reviewer": "  "}]
+    )
+    def test_unattributable_fail_fails_closed(self, repo: Path, tmp_path: Path, edit: dict) -> None:
+        cand = cand_mod.capture(repo)
+        review = {**_review(cand, "r1", "FAIL", "2026-10-11T00:00:01+00:00"), **edit}
+        with pytest.raises(ev.EvidenceError, match="Malformed review"):
+            self._rec(repo, tmp_path, [review])
+
+    def test_cli_rejects_non_dict_review_without_traceback(
+        self, repo: Path, pinned_ok: None
+    ) -> None:
+        assert _cli(repo, "check", "run", "check:registry").exit_code == 0
+        sid = sess_mod.current_session_id()
+        path = sess_mod.state_home() / "sessions" / sid / "session.json"
+        data = json.loads(path.read_text())
+        data["reviews"] = ["junk"]
+        path.write_text(json.dumps(data))
+        result = _cli(repo, "--json", "evidence", "export", "--no-validate")
+        assert result.exit_code == 1
+        assert "Malformed review" in json.loads(result.stdout)["error"]
