@@ -33,6 +33,9 @@ from tests.hooks.conftest import (
 )
 
 PY_HOOK = "python-format-on-write.sh"
+# The Claude flavor was replaced by precision-cleanup.sh (tests/test_precision_cleanup.py);
+# only the Codex flavor still ships this hook.
+PY_FLAVOR = "codex"
 PHP_HOOK = "phpcs-on-write.sh"
 FORMATTER_PATH = {"PATH": f"{Path(sys.executable).parent}:{os.environ.get('PATH', '')}"}
 PYPROJECT = '[tool.black]\nline-length = 100\n[tool.ruff]\nline-length = 100\n[tool.isort]\nprofile = "black"\n'
@@ -50,8 +53,8 @@ def py_repo(tmp_path: Path) -> Path:
     return init_repo(tmp_path / "repo", {"pyproject.toml": PYPROJECT, "pkg/a.py": "x = 1\n"})
 
 
-def test_py_in_worktree_is_formatted(flavor: str, py_repo: Path, tmp_path: Path) -> None:
-    hook = install_hook(py_repo, PY_HOOK, flavor)
+def test_py_in_worktree_is_formatted(py_repo: Path, tmp_path: Path) -> None:
+    hook = install_hook(py_repo, PY_HOOK, PY_FLAVOR)
     wt = add_worktree(py_repo, tmp_path / "wt")
     target = wt / "pkg" / "a.py"
     target.write_text("x=1\n")
@@ -60,8 +63,8 @@ def test_py_in_worktree_is_formatted(flavor: str, py_repo: Path, tmp_path: Path)
     assert target.read_text() == "x = 1\n"
 
 
-def test_py_in_main_checkout_is_formatted(flavor: str, py_repo: Path) -> None:
-    hook = install_hook(py_repo, PY_HOOK, flavor)
+def test_py_in_main_checkout_is_formatted(py_repo: Path) -> None:
+    hook = install_hook(py_repo, PY_HOOK, PY_FLAVOR)
     target = py_repo / "pkg" / "a.py"
     target.write_text("x=1\n")
     result = run_hook(hook, _edit(target), env=FORMATTER_PATH, cwd=py_repo)
@@ -69,8 +72,8 @@ def test_py_in_main_checkout_is_formatted(flavor: str, py_repo: Path) -> None:
     assert target.read_text() == "x = 1\n"
 
 
-def test_py_in_foreign_repo_is_left_alone(flavor: str, py_repo: Path, tmp_path: Path) -> None:
-    hook = install_hook(py_repo, PY_HOOK, flavor)
+def test_py_in_foreign_repo_is_left_alone(py_repo: Path, tmp_path: Path) -> None:
+    hook = install_hook(py_repo, PY_HOOK, PY_FLAVOR)
     other = init_repo(tmp_path / "other", {"pyproject.toml": PYPROJECT, "b.py": "y=1\n"})
     target = other / "b.py"
     result = run_hook(hook, _edit(target), env=FORMATTER_PATH, cwd=other)
@@ -79,10 +82,7 @@ def test_py_in_foreign_repo_is_left_alone(flavor: str, py_repo: Path, tmp_path: 
 
 
 def test_py_hook_no_longer_skips_worktrees() -> None:
-    for flavor in HOOK_DIRS:
-        assert (
-            ".claude/worktrees/*) exit 0" not in (HOOK_DIRS[flavor] / PY_HOOK).read_text()
-        ), flavor
+    assert ".claude/worktrees/*) exit 0" not in (HOOK_DIRS[PY_FLAVOR] / PY_HOOK).read_text()
 
 
 # ── phpcs-on-write.sh ───────────────────────────────────────────────────────
@@ -259,7 +259,8 @@ def test_tsc_hook_skips_foreign_repo(flavor: str, ts_repo: Path, tmp_path: Path)
 
 
 def test_codex_mirrors_are_identical() -> None:
-    for name in (PY_HOOK, PHP_HOOK):
+    # PY_HOOK is Codex-only now: the Claude flavor was replaced by precision-cleanup.sh.
+    for name in (PHP_HOOK,):
         assert (HOOK_DIRS["claude"] / name).read_bytes() == (
             HOOK_DIRS["codex"] / name
         ).read_bytes(), name
