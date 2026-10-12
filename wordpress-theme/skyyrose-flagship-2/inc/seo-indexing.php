@@ -91,6 +91,19 @@ function skyyrose2_seo_jetpack_post_noindex() {
 }
 
 /**
+ * Whether the request is a WordPress attachment page the theme marks noindex.
+ *
+ * Attachment pages are thin filename-titled views of a Media Library upload
+ * (founder decision 2026-10-11: keep them reachable, noindex them rather than
+ * disable them site-wide). A supported SEO plugin owns that decision itself.
+ *
+ * @return bool
+ */
+function skyyrose2_seo_is_attachment_page() {
+	return is_attachment() && ! skyyrose2_seo_has_authority_plugin();
+}
+
+/**
  * Apply indexability rules without overriding unrelated plugin directives.
  *
  * @param array<string,bool|string> $robots Robots directives.
@@ -114,6 +127,14 @@ function skyyrose2_seo_robots( $robots ) {
 	if ( is_404() ) {
 		unset( $robots['index'] );
 		$robots['noindex'] = true;
+		return $robots;
+	}
+
+	if ( skyyrose2_seo_is_attachment_page() ) {
+		unset( $robots['index'], $robots['nofollow'] );
+		$robots['noindex']           = true;
+		$robots['follow']            = true;
+		$robots['max-image-preview'] = 'large';
 		return $robots;
 	}
 
@@ -164,7 +185,7 @@ function skyyrose2_seo_excerpt( $text, $length = 158 ) {
  * @return string
  */
 function skyyrose2_seo_canonical_url() {
-	if ( is_search() || is_404() || skyyrose2_seo_is_nonproduction_request() || skyyrose2_seo_is_transactional_request() ) {
+	if ( is_search() || is_404() || skyyrose2_seo_is_attachment_page() || skyyrose2_seo_is_nonproduction_request() || skyyrose2_seo_is_transactional_request() ) {
 		return '';
 	}
 	$paged = max( 1, (int) get_query_var( 'paged' ) );
@@ -463,6 +484,7 @@ function skyyrose2_seo_schema_graph() {
 		|| skyyrose2_seo_is_transactional_request()
 		|| is_search()
 		|| is_404()
+		|| skyyrose2_seo_is_attachment_page()
 	) {
 		return array();
 	}

@@ -161,3 +161,64 @@ page actually shows. A product's other images remain on its PDP.
   - no `<image:loc>` is empty;
   - no `<loc>` is an attachment page. If nothing qualifies, Jetpack deletes the
     image sitemap and a 404 is the expected result.
+
+## Addendum: attachment pages noindex (founder choice "a", 2026-10-11)
+
+Corey chose option "a" on 2026-10-11: keep attachment pages reachable and mark
+them `noindex`. He did not choose to disable them site-wide
+(`wp_attachment_pages_enabled = 0`). The version stays 2.5.3 (unreleased).
+
+- `inc/seo-indexing.php`
+  - New `skyyrose2_seo_is_attachment_page()` is true for `is_attachment()`
+    unless a supported SEO plugin owns the decision.
+  - `skyyrose2_seo_robots()` gives attachment pages `noindex, follow` and keeps
+    `max-image-preview:large`. The branch runs before the Jetpack per-post
+    branch, because an attachment is `is_singular()`.
+  - `skyyrose2_seo_canonical_url()` returns `''` and
+    `skyyrose2_seo_schema_graph()` returns `array()` on attachment pages. This
+    matches the file's other noindex routes (search, 404, transactional). Core
+    sets `is_single()` for attachments, so the page previously carried a
+    self-canonical, `og:url` and an `Article` + `BreadcrumbList` graph with the
+    filename as headline.
+  - Other emitters were checked. Jetpack's own robots/meta tags are already off
+    (`jetpack_seo_meta_tags_enabled` returns false without an SEO plugin).
+    `X-Robots-Tag` is sent only on non-production requests. Neither sitemap
+    lists attachments: Jetpack's post types are post, page and product, and the
+    image sitemap entry rule above never yields an attachment `<loc>`.
+- `scripts/test-seo-indexing.php`: an `is_attachment()` stub and 8 assertions.
+  - On an attachment fixture (`singular`, `single`, `attachment`): noindex and
+    follow set, `index`/`nofollow` removed, `max-image-preview:large` kept,
+    empty canonical, empty schema, no `rel="canonical"`/`og:url` in the head.
+  - A Jetpack-noindex attachment is still `noindex, follow` with large previews.
+  - A non-attachment singular record stays indexable.
+  - Under `AIOSEO_VERSION`, attachment robots pass through unchanged.
+- POT: one line reference moved (`inc/seo-indexing.php:256` -> `:277`).
+- CHANGELOG and readme 2.5.3 entries gained one line each.
+
+| Entry (file)                             | Old sha256          | New sha256          | Why                                    |
+| ---------------------------------------- | ------------------- | ------------------- | -------------------------------------- |
+| baseline `inc/seo-indexing.php`          | `99dea849348ec5b2…` | `e1eb693995889071…` | Attachment noindex, canonical, schema. |
+| baseline `scripts/test-seo-indexing.php` | `ebccda8c60f61959…` | `7b7460f6b04f3a91…` | Attachment fixture and assertions.     |
+| input `runtime-php-baseline.json`        | `fea4cc5d1733e8f4…` | `55eb3f267584eb17…` | Follows the two entries above.         |
+
+Evidence (this session):
+
+- RED: the new test file run against `origin/main` `072e0626b` runtime
+  (`inc/seo-indexing.php` sha256 `99dea849…`, exported with `git archive`) fails
+  5 assertions: noindex/follow, empty canonical, empty schema, no
+  canonical/`og:url` in head, Jetpack-noindex attachment.
+- GREEN: the same file passes on the changed runtime.
+- PHPCS (`phpcs.xml`): `inc/seo-indexing.php` 0 findings. The test harness gains
+  one finding of the existing stub kind (`is_attachment` unprefixed).
+- Toolchain: Node 22.23.2, npm 10.9.8, Python 3.12.12, PHP 8.5.6; fresh
+  `prepare-native-fixture.py` fixture (7 hashes) and hash-checked
+  `V2_NATIVE_JS_FIXTURE` (2 hashes).
+- `npm run lint:php`: exit 0.
+- `npm run package:theme`: exit 0, 0 `not ok`, "Validated 773 runtime package
+  entries; SHA-256 `2e094c4717bfe439…`" (after the prettier pass on
+  `CHANGELOG.md`). Two runs gave the same archive hash.
+- `pytest tests/test_v2_*.py tools/v2-source-certification`: 73 tests, 0
+  failures, 0 errors, 0 skipped (junit).
+- `python -m unittest discover -s tools/v2-source-certification`: OK.
+- `scripts/sync_product_registry.py --check`: PASS.
+- Not deployed. Live attachment-page robots are unchanged until a deploy.
