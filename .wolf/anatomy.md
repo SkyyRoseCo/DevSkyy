@@ -9241,3 +9241,12 @@ CLOSED on every path.
 - `webgl_qc.py` — renders a web GLB in the PRODUCTION three.js viewer (Playwright + loopback server over a temp serve root) and pixel-diffs variants; VIEWER_PARITY is parity-gated against product-3d-viewer.js; VOID (maxΔ=0) is distinct from "no visible difference". (~3900 tok)
 - `templates/webgl_qc_harness.html` — the deterministic render page; PARITY/ANGLES are injected at serve time, un-injected it refuses to render. (~1700 tok)
 - `tests/scripts/test_glb_qc_render.py` — CLI exit-code contract for scripts/glb_qc_render.py (0 ok / 1 failed / 2 VOID), --diff label validation, --overwrite plumbing. (~1100 tok)
+
+## .wolf/hooks/
+
+- `handoff-gate.sh` — session handoff-log gate shared by Claude Code + Codex: PostToolUse marks repo edits unlogged, Stop blocks once with a pre-filled row then only reminds, UserPromptSubmit reminds the model; "logged" = newest `sid:<id8>` row fingerprint changed; fails open only on missing infra (~2000 tok)
+
+## tests/
+
+- `tests/test_handoff_gate.py` — drives handoff-gate.sh with Claude/Codex hook JSON against a throwaway git repo + memory file (~3000 tok)
+- `tests/test_wolf_memory_rotate.py` — scripts/wolf_memory_rotate.py: 128KB threshold, newest ~64KB kept, byte-exact archive, concurrent-append carry-over (~1500 tok)
