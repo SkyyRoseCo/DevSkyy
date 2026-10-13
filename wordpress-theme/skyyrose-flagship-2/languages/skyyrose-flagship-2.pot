@@ -266,7 +266,7 @@ msgstr ""
 msgid "Between sizes"
 msgstr ""
 
-#: functions.php:898 inc/presentation-registry.php:188 template-immersive-black-rose.php:16 template-parts/commerce/search-dialog.php:37
+#: functions.php:898 inc/cinematic-chapters.php:36 inc/presentation-registry.php:188 template-immersive-black-rose.php:16 template-parts/commerce/search-dialog.php:37
 msgid "Black Rose"
 msgstr ""
 
@@ -336,6 +336,10 @@ msgstr ""
 
 #: template-parts/commerce/hero-composed-scene.php:111
 msgid "Chapter %02d"
+msgstr ""
+
+#: inc/cinematic-chapters.php:114
+msgid "Chapter %1$s: %2$s"
 msgstr ""
 
 #: template-parts/home/kids-capsule-reveal.php:56
@@ -1042,7 +1046,7 @@ msgstr ""
 msgid "Keep your pieces close."
 msgstr ""
 
-#: functions.php:1004 inc/global-shell.php:156 inc/launch-readiness.php:237 inc/presentation-registry.php:190 template-immersive-kids-capsule.php:16 template-parts/commerce/search-dialog.php:39
+#: functions.php:1004 inc/cinematic-chapters.php:56 inc/global-shell.php:156 inc/launch-readiness.php:237 inc/presentation-registry.php:190 template-immersive-kids-capsule.php:16 template-parts/commerce/search-dialog.php:39
 msgid "Kids Capsule"
 msgstr ""
 
@@ -1102,7 +1106,7 @@ msgstr ""
 msgid "Lookbook chapters"
 msgstr ""
 
-#: functions.php:951 inc/presentation-registry.php:189 template-immersive-love-hurts.php:16 template-parts/commerce/search-dialog.php:38
+#: functions.php:951 inc/cinematic-chapters.php:46 inc/presentation-registry.php:189 template-immersive-love-hurts.php:16 template-parts/commerce/search-dialog.php:38
 msgid "Love Hurts"
 msgstr ""
 
@@ -1472,6 +1476,10 @@ msgstr ""
 
 #: functions.php:1423
 msgid "Pre-order option. Full payment at checkout."
+msgstr ""
+
+#: template-prologue.php:32
+msgid "Press Start"
 msgstr ""
 
 #: template-parts/pages/contact.php:51
@@ -1870,7 +1878,7 @@ msgstr ""
 msgid "Sign your place in the route."
 msgstr ""
 
-#: functions.php:847 inc/presentation-registry.php:187 template-immersive-signature.php:16 template-parts/commerce/search-dialog.php:36
+#: functions.php:847 inc/cinematic-chapters.php:26 inc/presentation-registry.php:187 template-immersive-signature.php:16 template-parts/commerce/search-dialog.php:36
 msgid "Signature"
 msgstr ""
 
@@ -2066,7 +2074,7 @@ msgstr ""
 msgid "Stories / Journal"
 msgstr ""
 
-#: template-parts/immersive/world.php:116
+#: inc/cinematic-chapters.php:108 template-parts/immersive/world.php:116
 msgid "Story chapters"
 msgstr ""
 
