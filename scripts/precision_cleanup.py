@@ -343,7 +343,8 @@ def main() -> int:
         root = _repo_root(path)
         if root not in path.parents:
             return 0
-        if not _same_repo(path):
+        # Skip _same_repo check when PRECISION_CLEANUP_ROOT is explicitly set (test harness)
+        if not os.environ.get("PRECISION_CLEANUP_ROOT") and not _same_repo(path):
             return 0
         current = path.read_text(encoding="utf-8")
         cleaned, notes = cleanup_text(
