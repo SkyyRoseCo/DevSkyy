@@ -225,6 +225,16 @@
       "reason": "Native archive projection retaining all shared rules and original full stylesheet; SHA-bound selector classification",
       "release": true
     },
+    "assets/css/chapters.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/chapters.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "assets/css/collection-scene-motion.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -1456,6 +1466,16 @@
       "release": true
     },
     "assets/js/about-archive.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/chapters.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/chapters.min.js": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
@@ -3796,6 +3816,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "inc/cinematic-chapters.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "inc/collection-presentation.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -4079,6 +4104,11 @@
     "scripts/sync-analytics.py": {
       "category": "AUTHORING ONLY",
       "reason": "Analytics projection builder or offline regression fixture; not storefront runtime",
+      "release": false
+    },
+    "scripts/test-cinematic-chapters.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Cinematic chapter module contract test; not PHP runtime",
       "release": false
     },
     "scripts/test-collection-hero-motion.py": {
@@ -4422,6 +4452,11 @@
       "release": false
     },
     "template-parts/v2-preorder.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-prologue.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
