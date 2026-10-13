@@ -70,7 +70,8 @@ function skyyrose2_chapters() {
 
 /**
  * Whether this request carries the chapter shell (Story Thread + motion CSS/JS).
- * Opt-in: the Prologue template, or any route via the filter.
+ * This file is loaded only by template-prologue.php, so the shell never reaches
+ * existing heroes or product cards.
  *
  * @return bool
  */

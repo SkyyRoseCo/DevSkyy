@@ -11,6 +11,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/*
+ * Loaded here, not from functions.php: the chapter module exists only on this
+ * template, so no existing hero, scene or product card can be affected.
+ * Hooks register before get_header() fires wp_head / wp_enqueue_scripts.
+ */
+require_once SKYYROSE2_DIR . '/inc/cinematic-chapters.php';
+
 get_header();
 ?>
 <main id="primary" class="sr2-prologue" data-prologue>

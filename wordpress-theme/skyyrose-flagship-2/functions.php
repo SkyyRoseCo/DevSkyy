@@ -39,7 +39,6 @@ require_once SKYYROSE2_DIR . '/inc/analytics.php';
 require_once SKYYROSE2_DIR . '/inc/woocommerce-compat.php';
 require_once SKYYROSE2_DIR . '/inc/product-glb-links.php';
 require_once SKYYROSE2_DIR . '/inc/product-glb.php';
-require_once SKYYROSE2_DIR . '/inc/cinematic-chapters.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
