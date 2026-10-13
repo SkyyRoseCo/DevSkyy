@@ -73,6 +73,40 @@ def _black_config(root: Path) -> dict:
         return {}
 
 
+def _isort_config(root: Path) -> dict:
+    if tomllib is None:
+        return {}
+    try:
+        return tomllib.loads((root / "pyproject.toml").read_text()).get("tool", {}).get("isort", {})
+    except (OSError, tomllib.TOMLDecodeError):
+        return {}
+
+
+def _isort_excluded(rel: str, root: Path) -> bool:
+    """True when isort's own skip / skip_glob config covers this path (e.g. hash-pinned files)."""
+    isort_cfg = _isort_config(root)
+    rel_posix = Path(rel).as_posix()
+    name = Path(rel).name
+    for entry in isort_cfg.get("skip", []):
+        norm = entry.rstrip("/")
+        # isort matches bare names against the basename; slash-containing entries against the path
+        if "/" in norm:
+            if rel_posix == norm or rel_posix.startswith(norm + "/"):
+                return True
+        else:
+            if name == norm or rel_posix == norm or rel_posix.startswith(norm + "/"):
+                return True
+    for pattern in isort_cfg.get("skip_glob", []):
+        try:
+            import fnmatch
+
+            if fnmatch.fnmatch(rel_posix, pattern) or fnmatch.fnmatch(name, pattern):
+                return True
+        except Exception:
+            pass
+    return False
+
+
 def _excluded(rel: str, root: Path) -> bool:
     """Vendored trees, black's own excludes, and generated headers are never ours to touch."""
     parts = Path(rel).parts
@@ -162,9 +196,14 @@ def _drop_orphaned_imports(rel: str, baseline: str, text: str, root: Path, notes
             # Orphaned = the statement was already there (and used) before the edit.
             if region.strip() and region in baseline:
                 edits.append((lo, hi, e["content"], finding["message"]))
+    applied: list[tuple[int, int]] = []
     for lo, hi, content, message in sorted(edits, reverse=True):
+        # Skip edits whose byte range overlaps one already applied (same multi-binding import line)
+        if any(lo < ahi and hi > alo for alo, ahi in applied):
+            continue
         text = text[:lo] + content + text[hi:]
         notes.append(f"removed orphaned import: {message}")
+        applied.append((lo, hi))
     return text
 
 
@@ -183,6 +222,8 @@ def _import_lines(text: str) -> set[int]:
 def _sort_touched_imports(rel: str, baseline: str, text: str, root: Path, notes: list[str]) -> str:
     isort = _tool("isort", root)
     if not isort:
+        return text
+    if _isort_excluded(rel, root):  # respect isort's own skip/skip_glob (e.g. hash-pinned files)
         return text
     touched = {n for lo, hi in changed_ranges(baseline, text) for n in range(lo, hi + 1)}
     if not touched & _import_lines(text):
@@ -269,6 +310,25 @@ def _repo_root(path: Path) -> Path:
     return path.parent.resolve()
 
 
+def _git_common_dir(directory: Path) -> str | None:
+    """Return the resolved git-common-dir for ``directory``, or None if not in a git repo."""
+    proc = _run(["git", "rev-parse", "--git-common-dir"], "", directory)
+    if proc is None or proc.returncode != 0:
+        return None
+    raw = proc.stdout.strip()
+    if not raw:
+        return None
+    # git may return a relative path (e.g. ".git"); resolve it against the queried directory
+    return str((directory / raw).resolve())
+
+
+def _same_repo(path: Path) -> bool:
+    """True when ``path`` lives in the same git repository as this hook script."""
+    hook_dir = _git_common_dir(Path(__file__).parent)
+    file_dir = _git_common_dir(path.parent)
+    return bool(hook_dir and file_dir and hook_dir == file_dir)
+
+
 def main() -> int:
     if os.environ.get("PRECISION_CLEANUP_DISABLE") == "1":
         return 0
@@ -283,13 +343,20 @@ def main() -> int:
         root = _repo_root(path)
         if root not in path.parents:
             return 0
+        if not _same_repo(path):
+            return 0
         current = path.read_text(encoding="utf-8")
         cleaned, notes = cleanup_text(
             path.relative_to(root).as_posix(), _baseline_from(payload), current, root
         )
         if cleaned != current:
-            _write_atomic(path, cleaned)
-            print(f"[precision-cleanup] {path.name}: {'; '.join(notes)}", file=sys.stderr)
+            try:
+                on_disk = path.read_text(encoding="utf-8")
+            except OSError:
+                on_disk = current
+            if on_disk == current:
+                _write_atomic(path, cleaned)
+                print(f"[precision-cleanup] {path.name}: {'; '.join(notes)}", file=sys.stderr)
     except Exception as exc:  # a formatter must never fail the edit it follows
         print(f"[precision-cleanup] skipped: {type(exc).__name__}: {exc}", file=sys.stderr)
     return 0
