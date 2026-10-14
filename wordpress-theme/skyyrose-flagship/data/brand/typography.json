@@ -31,7 +31,8 @@
   "system": {
     "family": "Inter",
     "woff2": "assets/fonts/inter-latin.woff2",
-    "note": "system/utility; --ff-system + body fallback"
+    "woff2_subsets": ["assets/fonts/inter-latin-ext.woff2"],
+    "note": "system/utility; --ff-system + body fallback. woff2_subsets = extra unicode-range faces declared in assets/css/fonts.css and theme.json"
   },
   "collection_scripts": {
     "note": "per-collection script fonts live in data/logo-registry.json collections.<slug>.fonts",

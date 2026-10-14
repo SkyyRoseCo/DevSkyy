@@ -479,6 +479,45 @@ class GroqFastClassifier:
         self._store_cache(cache_key, result)
         return result
 
+    @staticmethod
+    def _parse_result(
+        response: Any,
+        classification_type: ClassificationType,
+        expected_labels: list[str] | None,
+        latency_ms: float,
+    ) -> ClassificationResult:
+        """Build a result from the model's JSON, refusing anything it would have to guess.
+
+        Raises ValueError (wrapped as LLMError by the caller) on unparseable JSON, a
+        missing label or confidence, or a label outside ``expected_labels``.
+        """
+        content = response.content.strip()
+        if content.startswith("```"):  # markdown code fence
+            content = content.split("```")[1]
+            if content.startswith("json"):
+                content = content[4:]
+            content = content.strip()
+        data = json.loads(content)
+        if not isinstance(data, dict) or "label" not in data or "confidence" not in data:
+            raise ValueError("classification response needs both 'label' and 'confidence'")
+        label = str(data["label"])
+        if expected_labels:
+            matches = [e for e in expected_labels if e.lower() == label.lower()]
+            if not matches:
+                raise ValueError(f"label {label!r} is not one of {expected_labels}")
+            label = matches[0]
+        return ClassificationResult(
+            label=label,
+            confidence=data["confidence"],
+            all_scores=data.get("scores", data.get("all_scores", {})),
+            reasoning=data.get("reasoning"),
+            classification_type=classification_type,
+            latency_ms=latency_ms,
+            model=response.model,
+            cached=False,
+            raw_response=response.content,
+        )
+
     async def _classify_with_groq(
         self,
         prompt: str,
@@ -488,7 +527,8 @@ class GroqFastClassifier:
         """
         Execute classification using Groq client.
 
-        Handles JSON parsing, validation, and error recovery.
+        Any unusable response (bad JSON, missing label or confidence, a label outside
+        ``expected_labels``) raises LLMError; callers decide how to proceed without it.
         """
         client = await self._get_client()
 
@@ -508,67 +548,15 @@ class GroqFastClassifier:
             )
 
             latency_ms = (time.monotonic() - start_time) * 1000
+            return self._parse_result(response, classification_type, expected_labels, latency_ms)
 
-            # Parse JSON response
-            content = response.content.strip()
-
-            # Handle markdown code blocks
-            if content.startswith("```"):
-                content = content.split("```")[1]
-                if content.startswith("json"):
-                    content = content[4:]
-                content = content.strip()
-
-            data = json.loads(content)
-
-            # Validate label if expected_labels provided
-            label = data.get("label", "unknown")
-            if expected_labels and label not in expected_labels:
-                # Find closest match
-                label_lower = label.lower()
-                for expected in expected_labels:
-                    if expected.lower() == label_lower:
-                        label = expected
-                        break
-
-            # Build scores dict
-            scores = data.get("scores", data.get("all_scores", {}))
-            if not scores and expected_labels:
-                scores = dict.fromkeys(expected_labels, 0.0)
-                scores[label] = data.get("confidence", 0.9)
-
-            return ClassificationResult(
-                label=label,
-                confidence=data.get("confidence", 0.9),
-                all_scores=scores,
-                reasoning=data.get("reasoning"),
-                classification_type=classification_type,
-                latency_ms=latency_ms,
-                model=response.model,
-                cached=False,
-                raw_response=response.content,
-            )
-
-        except json.JSONDecodeError as e:
-            logger.warning(f"Failed to parse Groq response as JSON: {e}")
-            # Fallback: Extract label from text
-            return ClassificationResult(
-                label=expected_labels[0] if expected_labels else "unknown",
-                confidence=0.5,
-                all_scores={},
-                reasoning=f"JSON parse error: {e}",
-                classification_type=classification_type,
-                latency_ms=(time.monotonic() - start_time) * 1000,
-                model=self.config.model,
-                cached=False,
-            )
         except Exception as e:
             logger.error(f"Classification failed: {e}")
             raise LLMError(
                 f"Classification failed: {e}",
                 provider="groq",
                 model=self.config.model,
-            )
+            ) from e
 
     def get_cache_stats(self) -> dict[str, Any]:
         """Get cache performance statistics."""
