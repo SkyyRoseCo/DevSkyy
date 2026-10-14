@@ -260,8 +260,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/python-format-on-write.sh\"",
-            "timeout": 15
+            "command": "[ -n \"${GITHUB_ACTIONS:-}\" ] && exit 0; bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/precision-cleanup.sh\"",
+            "timeout": 30
           }
         ]
       },
