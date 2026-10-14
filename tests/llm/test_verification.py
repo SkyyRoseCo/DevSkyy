@@ -204,7 +204,23 @@ async def test_verification_auto_escalation(mock_api_keys):
         cost_usd=0.005,
     )
 
-    verifier.complete.side_effect = [reject_response, reject_response, approve_response]
+    # Escalated output goes back through the verification gate
+    approve_escalated = CompletionResponse(
+        content='{"decision": "approved", "issues": [], "reasoning": "Escalated code is correct"}',
+        model="claude-3-5-sonnet",
+        provider="anthropic",
+        input_tokens=12,
+        output_tokens=18,
+        total_tokens=30,
+        cost_usd=0.001,
+    )
+
+    verifier.complete.side_effect = [
+        reject_response,
+        reject_response,
+        approve_response,
+        approve_escalated,
+    ]
 
     config = VerificationConfig(max_retries=2, auto_escalate=True)
     engine = LLMVerificationEngine(generator, verifier, config)
@@ -216,10 +232,57 @@ async def test_verification_auto_escalation(mock_api_keys):
     assert verification.decision == VerificationDecision.APPROVED
     assert response.content == "Good escalated code"
     assert generator.complete.call_count == 2  # Retry budget exhausted by the cheap model
-    assert verifier.complete.call_count == 3  # 2 verifications + 1 escalated generation
+    assert verifier.complete.call_count == 4  # 2 verifications + escalated gen + its verification
     assert verification.verified_by == config.verifier_model
     assert verification.cost_savings_pct <= 0  # Escalation never saves vs premium-only
     assert verification.total_cost_usd > 0
+    assert "Escalated" in (verification.reasoning or "")
+
+
+@pytest.mark.unit
+@pytest.mark.asyncio
+async def test_verification_escalation_rejected_raises(mock_api_keys):
+    """Escalated output that fails verification raises instead of returning unverified code."""
+    generator = AsyncMock()
+    generator.complete.return_value = CompletionResponse(
+        content="bad code",
+        model="deepseek-chat",
+        provider="deepseek",
+        input_tokens=16,
+        output_tokens=24,
+        total_tokens=40,
+        cost_usd=0.00001,
+    )
+    reject_json = (
+        '{"decision": "rejected", "issues": [{"level": "critical", "category": "logic", '
+        '"message": "Code is incorrect"}], "reasoning": "Code is incorrect"}'
+    )
+
+    def _response(content: str) -> CompletionResponse:
+        return CompletionResponse(
+            content=content,
+            model="claude-3-5-sonnet",
+            provider="anthropic",
+            input_tokens=12,
+            output_tokens=18,
+            total_tokens=30,
+            cost_usd=0.001,
+        )
+
+    verifier = AsyncMock()
+    verifier.complete.side_effect = [
+        _response(reject_json),
+        _response(reject_json),
+        _response("still bad escalated code"),
+        _response(reject_json),
+    ]
+
+    config = VerificationConfig(max_retries=2, auto_escalate=True)
+    engine = LLMVerificationEngine(generator, verifier, config)
+
+    with pytest.raises(RuntimeError, match="and escalation to"):
+        await engine.generate_and_verify("Task", [Message.user("Write code")])
+    assert verifier.complete.call_count == 4
 
 
 @pytest.mark.unit
