@@ -6568,5 +6568,22 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-10-14T00:00:00+00:00"
+  },
+  {
+    "id": "bug-379",
+    "timestamp": "2026-10-14T00:00:00+00:00",
+    "error_message": "typography.json failed its own schema: ['universal', 'display'] Additional properties are not allowed ('note' was unexpected)",
+    "file": "wordpress-theme/skyyrose-flagship/data/brand/typography.schema.json",
+    "root_cause": "fontRole had additionalProperties:false without a note property, while typography.json carries the Archivo 'wdth' 125 usage note on universal.display; nothing validated typography.json against its schema, so the drift went unnoticed",
+    "fix": "fontRole allows an optional string note (as caps and system already do); tests/test_typography_schema.py validates typography.json against the schema and checks the schema still rejects unknown keys, missing core keys and non-string notes",
+    "tags": [
+      "schema",
+      "typography",
+      "brand",
+      "validation"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-14T00:00:00+00:00"
   }
 ]
