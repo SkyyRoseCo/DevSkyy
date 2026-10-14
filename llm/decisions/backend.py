@@ -42,7 +42,12 @@ class DistributionBackend(Protocol):
 
     async def distribution(
         self, state: str, instructions: str, options: Sequence[tuple[str, str]]
-    ) -> dict[str, float]: ...
+    ) -> dict[str, float]:
+        """Return a probability per option key, summing to 1.
+
+        Raise (typically ``DecisionBackendError``) instead of returning a guess; the
+        engine turns any exception into a SPLIT answer.
+        """
 
 
 def render_prompt(state: str, instructions: str, options: Sequence[tuple[str, str]]) -> str:
