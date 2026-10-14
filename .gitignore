@@ -427,6 +427,8 @@ skyyrose_clothing_barcodes.txt
 audit_reports/
 scraped_docs/
 data/sdk_sessions/
+# Creative OS render-budget ledger (skyyrose/elite_studio/creative/editorial.py); per-run state
+/.artifacts/
 
 # --- Broken tooling artifacts / dead symlinks / empty clone dirs ---
 --version/
