@@ -275,6 +275,14 @@
       ],
       "owner": "scripts/generate_product_embeddings.py",
       "why": "Generated embedding vectors; reformatting a multi-megabyte numeric payload adds churn and drifts from the next regeneration."
+    },
+    {
+      "pattern": "tasks/v2-collection-imagery-renders-20261011/*.html",
+      "samples": [
+        "tasks/v2-collection-imagery-renders-20261011/after-home.html"
+      ],
+      "owner": "tools/v2-runtime/render-collection-imagery.php (before/after evidence)",
+      "why": "Byte-exact output of the offline V2 renderer, committed as before/after evidence for the 2.5.3 collection-imagery change; reformatting would change the evidence."
     }
   ]
 }

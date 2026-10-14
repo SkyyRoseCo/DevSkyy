@@ -339,6 +339,34 @@ function skyyrose2_performance_art_directed_preloads( $desktop, $tablet, $mobile
 }
 
 /**
+ * Preload the exact image the collections index renders eagerly: same src,
+ * same srcset, same sizes as skyyrose2_collection_media_markup()'s default.
+ *
+ * @param string $slug Collection slug.
+ * @return array<string,string>
+ */
+function skyyrose2_performance_collection_preload( $slug ) {
+	$image = function_exists( 'skyyrose2_collection_media' ) ? skyyrose2_collection_media( $slug, 'collection_hero' ) : array();
+	if ( ! $image ) {
+		return array();
+	}
+	$resource = array(
+		'href'          => $image['display_src'] ?? $image['src'],
+		'as'            => 'image',
+		'fetchpriority' => 'high',
+	);
+	$type     = skyyrose2_performance_image_mime( $resource['href'] );
+	if ( $type ) {
+		$resource['type'] = $type;
+	}
+	if ( ! empty( $image['srcset'] ) ) {
+		$resource['imagesrcset'] = $image['srcset'];
+		$resource['imagesizes']  = '(max-width: 47.99em) calc(100vw - 2rem), (max-width: 74.99em) 48vw, 560px';
+	}
+	return $resource;
+}
+
+/**
  * Resolve the one route-owned LCP asset (or one art-directed set).
  *
  * @return array<int,array<string,string>>
@@ -391,16 +419,9 @@ function skyyrose2_performance_route_preloads() {
 	if ( is_page() ) {
 		$slug = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
 		if ( 'collections' === $slug && function_exists( 'skyyrose2_collections' ) ) {
-			// The collections index opens on the first world's monument (template-parts/collections/index.php).
-			$first = current( skyyrose2_collections() );
-			if ( empty( $first['hero'] ) ) {
-				return array();
-			}
-			return skyyrose2_performance_art_directed_preloads(
-				$first['hero'],
-				$first['hero_tablet'] ?? $first['hero'],
-				$first['hero_mobile'] ?? $first['hero']
-			);
+			// The collections index opens on the first world's collection_hero (template-parts/collections/index.php).
+			$resource = skyyrose2_performance_collection_preload( (string) array_key_first( skyyrose2_collections() ) );
+			return $resource ? array( $resource ) : array();
 		}
 		if ( in_array( $slug, array( 'pre-order', 'preorder' ), true ) ) {
 			// The pre-order template assigns high priority to its eligible arrival.

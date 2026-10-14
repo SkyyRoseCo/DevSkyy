@@ -3,7 +3,7 @@ Contributors: skyyrose
 Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 2.5.3
+Stable tag: 2.5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: e-commerce, custom-menu, featured-images, rtl-language-support, accessibility-ready
@@ -45,6 +45,9 @@ Yes. It is idempotent and reuses exact existing pages and menus without replacin
 No. Motion is progressive enhancement. Purchase controls and route links remain available with JavaScript disabled or reduced motion enabled.
 
 == Changelog ==
+
+= 2.5.4 =
+* Collection imagery: founder-approved collection hero, story and pre-order merchandise photography renders uncropped from the product registry; theme media URLs carry a content-hash cache key (?v=<sha256>).
 
 = 2.5.3 =
 * Image sitemap: each page appears once, with the image it actually shows (a product's permitted primary). Orphan attachment pages, withheld uploads and empty image entries are no longer listed.

@@ -2,6 +2,21 @@
 
 All notable changes to SkyyRose Flagship 2 are documented here.
 
+## 2.5.4 — Founder-approved collection imagery + content-hash media cache keys — 2026-10-14
+
+- Founder-approved collection imagery now renders from the registry's
+  `collections.*.imagery` bindings, through the founder usage grants
+  (`data/v2-media-reviews/usage-*.json`): the collections index chapters
+  (`collection_hero`), the collection origin story (`collection_story`), the
+  homepage worlds rail, and the pre-order merchandise scenes
+  (`merchandise_scene`). Images are uncropped. Homepage chapters keep their
+  destination-hero motion binding. The 15 card originals with a
+  `pdp_on_model_front` grant now also lead their PDPs.
+- Every theme media URL now carries `?v=<sha256 of the served bytes>`. This
+  covers `src`, every srcset candidate, preload `href`/`imagesrcset`, CSS
+  `url()` and video sources, so an edge cache can never serve older bytes under
+  an unchanged path.
+
 ## 2.5.3 — Image sitemap: one entry per page, no attachment pages — 2026-10-11
 
 - Jetpack image sitemap: Jetpack writes one `<url>` per image attachment, so a
