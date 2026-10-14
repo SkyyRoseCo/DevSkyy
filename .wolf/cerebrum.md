@@ -40,6 +40,8 @@ bug-NNN, SKU, or keyword rather than reading front-to-back.
 
 ## Key Learnings
 
+- [2026-10-14] **Asset ownership gate = `python scripts/asset_sot_census.py --check`.** Every in-scope media file must be referenced by a declared ledger or be a byte copy of an owned file. Unverified media goes into the review inventory (`tasks/catalog-reconciliation/image-library/inventory.json`, status `unassigned` + `review_category`/`review_basis`), never into an authority. Editing `visual-manifest.json` makes a hook regenerate `data/collections/_orphans.json` — commit that regeneration. Agent worktrees can be sparse checkouts (78% of tracked files here): run `git sparse-checkout disable` before any census, or the gate fails closed on absent tracked files.
+
 - **[2026-09-22] V2 local preview = plain document root, never a router.** `php -S 127.0.0.1:<port> -t <repo>` then `/tools/v2-theme-preview.php?route=<route>[&skyy=1]`; the fixture now links every route's real stylesheet order and stubs the Woo/WP functions the templates call (bug-361).
 - **[2026-09-22] `.sr2-image-reveal` pages must be captured with scroll-dwell.** The wipe clears on IntersectionObserver and lazy images load on scroll; an unscrolled fullPage shot shows solid accent blocks that are NOT a defect (bug-362). No-JS and reduced-motion show the images directly because the overlay is gated on `html.sr2-motion-ready`.
 - **[2026-09-22] global-shell.css carries a `@media (scripting: none)` fallback** that puts the house directory in document flow; anything inherited from the base `.sr2-house-nav` rule (a scroll container with contained overscroll) must be reset there or no-JS visitors cannot scroll (bug-360).
