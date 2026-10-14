@@ -1,4 +1,5 @@
 {
+  "model": "opusplan",
   "env": {
     "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "60",
     "CLAUDE_CODE_SUBAGENT_MODEL": "fable",
