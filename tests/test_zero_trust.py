@@ -12,6 +12,7 @@ Comprehensive test suite for Zero Trust security components:
 import os
 import shutil
 import ssl
+import sys
 import tempfile
 from datetime import datetime
 from pathlib import Path
@@ -660,22 +661,17 @@ class TestCertificateInfo:
 class TestVaultCA:
     """Test VaultCA production implementation"""
 
-    def test_vault_ca_requires_hvac(self):
-        """Test VaultCA raises RuntimeError when hvac is not installed"""
-        # VaultCA now requires the hvac library to be installed
-        # If hvac is not available, initialization should raise RuntimeError
-        try:
-            import hvac  # noqa: F401
+    def test_vault_ca_requires_hvac(self, monkeypatch):
+        """VaultCA raises RuntimeError when hvac cannot be imported"""
+        # Setting a sys.modules entry to None makes `import hvac` raise ImportError,
+        # simulating a missing library regardless of what is installed.
+        monkeypatch.setitem(sys.modules, "hvac", None)
 
-            # hvac is installed, skip this test as we can't test the missing-hvac path
-            pytest.skip("hvac is installed, cannot test missing-hvac behavior")
-        except ImportError:
-            # hvac is not installed, VaultCA should raise RuntimeError on init
-            with pytest.raises(RuntimeError, match="hvac library required"):
-                VaultCA(
-                    vault_url="https://vault.example.com",
-                    vault_token="test-token",
-                )
+        with pytest.raises(RuntimeError, match="hvac library required"):
+            VaultCA(
+                vault_url="https://vault.example.com",
+                vault_token="test-token",
+            )
 
     def test_vault_ca_init_with_hvac(self):
         """Test VaultCA initialization when hvac is available (mocked)"""
