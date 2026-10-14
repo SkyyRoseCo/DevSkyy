@@ -16,6 +16,7 @@ reliable; "whether to act" is not, and confident-wrong answers exceed 0.7).
 - [x] `scripts/decision_calibrate.py`: paid run refuses without `--yes` (STOP-AND-SHOW)
 - [x] Tests (mocked transport only), ruff/black/isort, docs (`llm/CLAUDE.md`, anatomy, cerebrum); python-reviewer findings 1-6 fixed (bug-377); #7 (sibling cancellation) left: wasted calls only, not fail-open
 - [ ] Not in this PR: wiring into `llm/task_classifier.py` — needs a paid calibration run first (founder `y`)
+- [x] Draft labelled set `data/decisions/task-routing.labelled.jsonl` (75 cases from real DevSkyy work; no routing logs exist because TaskClassifier never ran, bug-378). Founder corrects labels, then paid calibration (~$0.004 by repo price table, 150 gpt-4o-mini requests) → STOP-AND-SHOW
 - [x] Pinned `model: sonnet` on the two unpinned agents (`frontend-developer`, `pr-green-loop`)
 
 

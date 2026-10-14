@@ -6317,6 +6317,10 @@
   - class `VerificationConfig` L74-134 (~570 tok)
   - class `LLMVerificationEngine` L135-345 (~2411 tok)
 
+## data/decisions/
+
+- `task-routing.labelled.jsonl` — DRAFT labelled set (75 cases, 5 per TaskCategory) for scripts/decision_calibrate.py; labels await founder correction (~9000 tok)
+
 ## llm/decisions/
 
 - `__init__.py` — Public API of the in-house typed decision layer (Choice/Score/Noul, engine, gate, calibration) (~400 tok)
