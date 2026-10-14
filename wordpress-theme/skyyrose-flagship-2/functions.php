@@ -1193,25 +1193,80 @@ function skyyrose2_header_world_frames() {
 }
 
 /**
+ * Permalink for a page only when it is publicly visitable.
+ *
+ * A draft, private or password-protected page resolves through
+ * get_page_by_path() but 404s (or shows a gate) for visitors, so it is never a
+ * valid link target.
+ *
+ * @param string $path Page path, e.g. "worlds/signature".
+ * @return string Permalink, or '' when no visitable page lives at that path.
+ */
+function skyyrose2_published_page_permalink( $path ) {
+	$path = trim( (string) $path, '/' );
+	if ( '' === $path || ! function_exists( 'get_page_by_path' ) ) {
+		return '';
+	}
+	$page = get_page_by_path( $path, OBJECT, 'page' );
+	if ( ! $page instanceof WP_Post || 'publish' !== $page->post_status || ! empty( $page->post_password ) ) {
+		return '';
+	}
+	return (string) get_permalink( $page );
+}
+
+/**
+ * Registry pages that are not published yet, mapped to the published page that
+ * serves the same intent today. A registry page that is published always wins.
+ *
+ * @return array<string,string> Registry key => page path.
+ */
+function skyyrose2_marketplace_page_stand_ins() {
+	return array(
+		'worlds'                 => 'experiences',
+		'immersive-signature'    => 'experience-signature',
+		'immersive-black-rose'   => 'experience-black-rose',
+		'immersive-love-hurts'   => 'experience-love-hurts',
+		'immersive-kids-capsule' => 'experience-kids-capsule',
+	);
+}
+
+/**
+ * Visitable URL for a marketplace page: its own published page, else its
+ * published stand-in, else '' (nothing live to link to).
+ *
+ * @param string $page_key Marketplace page registry key.
+ * @return string
+ */
+function skyyrose2_marketplace_page_live_url( $page_key ) {
+	$pages = function_exists( 'skyyrose2_marketplace_pages' ) ? skyyrose2_marketplace_pages() : array();
+	$key   = sanitize_key( $page_key );
+	$page  = isset( $pages[ $key ] ) && is_array( $pages[ $key ] ) ? $pages[ $key ] : array();
+	$url   = ! empty( $page['path'] ) ? skyyrose2_published_page_permalink( $page['path'] ) : '';
+	if ( '' === $url ) {
+		$stand_ins = skyyrose2_marketplace_page_stand_ins();
+		$url       = isset( $stand_ins[ $key ] ) ? skyyrose2_published_page_permalink( $stand_ins[ $key ] ) : '';
+	}
+	return $url;
+}
+
+/**
  * Resolve a theme-owned page from the imported hierarchy before falling back
- * to the documented route. This keeps runtime links aligned with the actual
- * page binding instead of assuming a hard-coded permalink shape.
+ * to the documented route. A page that is not published is never linked by its
+ * permalink: the published stand-in serves instead, and the documented route
+ * remains only for setup and the demo importer.
  *
  * @param string $page_key Marketplace page registry key.
  * @return string
  */
 function skyyrose2_marketplace_page_url( $page_key ) {
+	$live = skyyrose2_marketplace_page_live_url( $page_key );
+	if ( '' !== $live ) {
+		return $live;
+	}
 	$pages = function_exists( 'skyyrose2_marketplace_pages' ) ? skyyrose2_marketplace_pages() : array();
 	$key   = sanitize_key( $page_key );
 	$page  = isset( $pages[ $key ] ) && is_array( $pages[ $key ] ) ? $pages[ $key ] : array();
 	$path  = ! empty( $page['path'] ) ? trim( (string) $page['path'], '/' ) : '';
-
-	if ( $path && function_exists( 'get_page_by_path' ) ) {
-		$resolved = get_page_by_path( $path, OBJECT, 'page' );
-		if ( $resolved instanceof WP_Post ) {
-			return get_permalink( $resolved );
-		}
-	}
 
 	return $path ? home_url( '/' . $path . '/' ) : home_url( '/' );
 }
