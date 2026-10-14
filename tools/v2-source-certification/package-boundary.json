@@ -4091,6 +4091,11 @@
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
     },
+    "scripts/test-dead-links.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
     "scripts/test-express-checkout.php": {
       "category": "BUILD TOOLING",
       "reason": "Build/test/package entry point; not PHP runtime",

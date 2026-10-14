@@ -4,6 +4,13 @@ All notable changes to SkyyRose Flagship 2 are documented here.
 
 ## 2.5.4 — Founder-approved collection imagery + content-hash media cache keys — 2026-10-14
 
+- Navigation and in-page links no longer point at pages that are not published.
+  A registry page that is a draft or absent used to resolve to its documented
+  route (404) or a `?page_id=` link. The "Enter the full scene" links now fall
+  back to the published `experience-*` page, the worlds hub to `experiences`, and
+  a published registry page still wins. Journal and Lookbook leave the masthead,
+  menu and utility links until their pages are published; entries that repeat a
+  destination are dropped. Covered by `scripts/test-dead-links.php`.
 - Founder-approved collection imagery now renders from the registry's
   `collections.*.imagery` bindings, through the founder usage grants
   (`data/v2-media-reviews/usage-*.json`): the collections index chapters

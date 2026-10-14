@@ -47,6 +47,7 @@ No. Motion is progressive enhancement. Purchase controls and route links remain 
 == Changelog ==
 
 = 2.5.4 =
+* Navigation and in-page links no longer point at unpublished pages; Journal and Lookbook are hidden until published, and scene links use the live experience pages.
 * Collection imagery: founder-approved collection hero, story and pre-order merchandise photography renders uncropped from the product registry; theme media URLs carry a content-hash cache key (?v=<sha256>).
 
 = 2.5.3 =
