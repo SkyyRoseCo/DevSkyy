@@ -162,6 +162,8 @@ dev = [
   "beautifulsoup4>=4.13.5",
   "pygltflib>=1.16.5",
   "pyotp>=2.9",
+  # tests/character_pipeline/test_love_hurts_girl_golden.py (importorskip)
+  "matplotlib>=3.8",
   "mypy>=1.8",
   "ruff>=0.1",
   "black>=24.1",
@@ -556,7 +558,7 @@ testpaths = ["tests"]
 pythonpath = [".", "scripts"]
 python_files = ["test_*.py", "*_test.py"]
 python_functions = ["test_*"]
-addopts = ["-ra", "-q", "--strict-markers", "--strict-config", "--tb=short", "-m", "not slow and not integration"]
+addopts = ["-ra", "--strict-markers", "--strict-config", "--tb=short", "-m", "not slow and not integration"]
 filterwarnings = ["ignore::DeprecationWarning", "ignore::PendingDeprecationWarning"]
 markers = [
   "slow: marks tests as slow (deselect with '-m \"not slow\"')",
