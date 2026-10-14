@@ -6548,5 +6548,25 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-23T13:46:47.434298+00:00"
+  },
+  {
+    "id": "bug-377",
+    "timestamp": "2026-10-14T00:00:00+00:00",
+    "error_message": "Review of new llm/decisions layer: NaN/inf/bool/positive logprobs accepted as probability mass (NaN passed the coverage gate); failed calibration cases diluted ECE; recommended threshold could fall below GatePolicy's 0.5 floor; paid calibration run exited 0 with every case failed",
+    "file": "llm/decisions/backend.py",
+    "root_cause": "isinstance(x,(int,float)) admits NaN, inf, bool and positive values; failures were scored as confidence 0 inside ECE bins; threshold search did not respect the gate floor; script ignored the failure count",
+    "fix": "_checked_logprob rejects non-finite, bool and >0 logprobs (DecisionBackendError); ECE over answered cases only; thresholds only >0.5; calibration grouped per question shape; script exits 1 on any failed case; --model limited to logprob-capable model_ids constants",
+    "tags": [
+      "fail-open",
+      "llm",
+      "decisions",
+      "calibration",
+      "logprobs"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-14T00:00:00+00:00"
   }
 ]
