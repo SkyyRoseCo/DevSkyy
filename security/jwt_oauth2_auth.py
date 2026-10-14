@@ -35,6 +35,7 @@ from enum import StrEnum
 from functools import wraps
 from typing import Any, TypeVar
 
+import bcrypt
 import jwt
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
@@ -43,7 +44,6 @@ from argon2.exceptions import VerifyMismatchError
 # (used in router endpoint type annotations evaluated at module load time)
 from fastapi import Request
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
-from passlib.context import CryptContext
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
 try:
@@ -317,18 +317,22 @@ class PasswordManager:
             salt_len=16,  # Salt length
         )
 
-        # BCrypt fallback for legacy systems
-        self.bcrypt_context = CryptContext(
-            schemes=["bcrypt"],
-            deprecated="auto",
-            bcrypt__rounds=12,
-        )
+        # BCrypt fallback for legacy systems (bcrypt library directly: passlib's
+        # bcrypt backend probes with a >72-byte secret, which bcrypt 5.x rejects).
+        self.bcrypt_rounds = 12
 
     def hash_password(self, password: str, use_argon2: bool = True) -> str:
         """Hash password using Argon2id (preferred) or BCrypt."""
         if use_argon2:
             return self.argon2_hasher.hash(password)
-        return self.bcrypt_context.hash(password)
+        return bcrypt.hashpw(
+            self._bcrypt_secret(password), bcrypt.gensalt(rounds=self.bcrypt_rounds)
+        ).decode("ascii")
+
+    @staticmethod
+    def _bcrypt_secret(password: str) -> bytes:
+        """BCrypt reads at most 72 bytes; truncate as passlib did so old hashes verify."""
+        return password.encode("utf-8")[:72]
 
     def verify_password(self, password: str, hashed_password: str) -> bool:
         """Verify password against hash."""
@@ -338,7 +342,7 @@ class PasswordManager:
                 self.argon2_hasher.verify(hashed_password, password)
                 return True
             # Fall back to BCrypt
-            return self.bcrypt_context.verify(password, hashed_password)
+            return bcrypt.checkpw(self._bcrypt_secret(password), hashed_password.encode("ascii"))
         except VerifyMismatchError:
             return False
         except Exception as e:
