@@ -28,7 +28,7 @@ from llm.decisions import (
     calibration_report,
     run_cases,
 )
-from llm.decisions.backend import letter_mass, normalize, render_prompt
+from llm.decisions.backend import SYSTEM_PROMPT, letter_mass, normalize, render_prompt
 from llm.decisions.calibration import CaseRecord, expected_calibration_error
 from llm.decisions.engine import MAX_STATE_CHARS, serialize_state
 from llm.decisions.gate import build_answer
@@ -104,7 +104,8 @@ def test_question_union_parses_by_type():
         lambda: Choice(instructions="q", criteria={"a": " ", "b": "2"}),
         lambda: Score(instructions="q", criteria=["single"]),
         lambda: Noul(instructions="q", true_when="", false_when="n"),
-        lambda: Choice(instructions="q", criteria={str(i): "x" for i in range(27)}),
+        lambda: Choice(instructions="q", criteria={str(i): "x" for i in range(21)}),
+        lambda: Score(instructions="q", criteria=[str(i) for i in range(21)]),
     ],
 )
 def test_invalid_questions_rejected(build):
@@ -460,3 +461,61 @@ def test_script_rejects_unregistered_model(cases_file):
 
     with pytest.raises(SystemExit):
         decision_calibrate.main(["--cases", str(cases_file), "--model", "made-up-model"])
+
+
+# ------------------------------------------------------------ review round 2
+
+
+def test_option_limit_matches_observable_logprobs():
+    """Every letter must be able to appear in the 20 top logprobs the API returns."""
+    assert len(Choice(instructions="q", criteria={str(i): "x" for i in range(20)}).options()) == 20
+
+
+async def test_logprob_backend_refuses_unobservable_options():
+    backend = LogprobBackend(Mock())
+    options = [(str(i), "x") for i in range(21)]
+    with pytest.raises(DecisionBackendError):
+        await backend.distribution("s", "q", options)
+    backend.client.complete.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    "question,distribution",
+    [
+        (TIER, {"simple": 1.05, "hard": -0.05}),
+        (TIER, {"simple": 0.95, "hard": 0.95}),
+        (TIER, {"simple": math.nan, "hard": 0.0}),
+        (TIER, {"simple": True, "hard": 0.0}),
+        (URGENT, {"true": 0.95, "false": 0.6}),
+    ],
+)
+def test_malformed_distributions_never_route(question, distribution):
+    with pytest.raises(ValueError):
+        build_answer(question, distribution, GatePolicy())
+
+
+@pytest.mark.parametrize(
+    "flags",
+    [["--target-precision", "0.5"], ["--min-support", "0"], ["--concurrency", "0"]],
+)
+def test_script_rejects_bad_settings_before_any_paid_call(cases_file, monkeypatch, flags):
+    import decision_calibrate
+
+    monkeypatch.setattr(
+        decision_calibrate, "LogprobBackend", Mock(side_effect=AssertionError("paid call"))
+    )
+    with pytest.raises(SystemExit) as exit_info:
+        decision_calibrate.main(["--cases", str(cases_file), "--yes", *flags])
+    assert exit_info.value.code == 2
+
+
+def test_manifest_counts_the_rendered_request(cases_file):
+    import decision_calibrate
+
+    cases = decision_calibrate.load_cases(cases_file)
+    (case,) = cases
+    rendered = render_prompt(
+        serialize_state(case.state), case.question.instructions, case.question.options()
+    )
+    plan = decision_calibrate.manifest(cases, OPENAI_MINI_MODEL, debias=False)
+    assert plan["approx_input_tokens"] == (len(SYSTEM_PROMPT) + len(rendered)) // 4

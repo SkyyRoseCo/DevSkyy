@@ -8,6 +8,8 @@ confidence of 0.778, so a gate near 0.7 still lets confident mistakes through.
 
 from __future__ import annotations
 
+import math
+
 from pydantic import BaseModel, ConfigDict, Field
 
 from .types import (
@@ -37,6 +39,15 @@ class GatePolicy(BaseModel):
     noul_no: float = Field(default=0.1, ge=0.0, lt=0.5)
 
 
+def _check_probabilities(distribution: dict[str, float]) -> None:
+    """Every value a finite probability and the total 1; anything else must not route."""
+    for value in distribution.values():
+        if type(value) not in (int, float) or not 0.0 <= value <= 1.0:
+            raise ValueError(f"not a probability: {value!r}")
+    if not math.isclose(sum(distribution.values()), 1.0, abs_tol=1e-6):
+        raise ValueError("probabilities do not sum to 1")
+
+
 def _top(distribution: dict[str, float]) -> tuple[str, float]:
     key = max(distribution, key=lambda option: (distribution[option], option))
     return key, distribution[key]
@@ -55,6 +66,7 @@ def build_answer(
     expected = {key for key, _ in question.options()}
     if set(distribution) != expected:
         raise ValueError("distribution keys do not match the question's options")
+    _check_probabilities(distribution)
     if isinstance(question, Noul):
         noul = distribution["true"]
         confident = noul >= policy.noul_yes or noul <= policy.noul_no

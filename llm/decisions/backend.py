@@ -22,6 +22,8 @@ from typing import Any, Protocol
 from llm.base import BaseLLMClient, Message
 from llm.model_ids import OPENAI_MINI_MODEL
 
+from .types import MAX_OPTIONS
+
 LETTERS = string.ascii_uppercase
 TOP_LOGPROBS = 20  # API maximum
 
@@ -126,8 +128,8 @@ class LogprobBackend:
     async def distribution(
         self, state: str, instructions: str, options: Sequence[tuple[str, str]]
     ) -> dict[str, float]:
-        if not 2 <= len(options) <= len(LETTERS):
-            raise DecisionBackendError(f"need 2..{len(LETTERS)} options, got {len(options)}")
+        if not 2 <= len(options) <= MAX_OPTIONS:
+            raise DecisionBackendError(f"need 2..{MAX_OPTIONS} options, got {len(options)}")
         forward = await self._ask(state, instructions, options)
         if not self.debias_order:
             return forward

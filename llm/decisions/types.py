@@ -19,7 +19,9 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-MAX_OPTIONS = 26  # one letter per option, A..Z
+# One letter per option, and every letter must be observable in the first token's
+# top logprobs, which the API caps at 20.
+MAX_OPTIONS = 20
 
 
 def _require_text(value: str) -> str:

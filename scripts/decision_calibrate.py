@@ -32,6 +32,7 @@ from llm.decisions import (  # noqa: E402
     calibration_report,
     run_cases,
 )
+from llm.decisions.backend import SYSTEM_PROMPT, render_prompt  # noqa: E402
 from llm.decisions.engine import serialize_state  # noqa: E402
 from llm.model_ids import OPENAI_MINI_MODEL, OPENAI_VISION_MODEL  # noqa: E402
 
@@ -53,9 +54,16 @@ def load_cases(path: Path) -> list[LabelledCase]:
     return cases
 
 
+def prompt_chars(case: LabelledCase) -> int:
+    """Characters of one request exactly as the backend renders it."""
+    question = case.question
+    user = render_prompt(serialize_state(case.state), question.instructions, question.options())
+    return len(SYSTEM_PROMPT) + len(user)
+
+
 def manifest(cases: list[LabelledCase], model: str, debias: bool) -> dict[str, object]:
     calls = len(cases) * (2 if debias else 1)
-    chars = sum(len(serialize_state(case.state)) + 600 for case in cases)
+    chars = sum(prompt_chars(case) for case in cases)
     return {
         "action": "decision calibration (paid OpenAI chat completions)",
         "model": model,
@@ -75,7 +83,15 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     parser.add_argument("--concurrency", type=int, default=4)
     parser.add_argument("--no-debias", action="store_true", help="one request per case")
     parser.add_argument("--yes", action="store_true", help="confirm the paid run")
-    return parser.parse_args(argv)
+    args = parser.parse_args(argv)
+    # Reject bad settings here, before any paid request, not after the run.
+    if not 0.5 < args.target_precision <= 1.0:
+        parser.error("--target-precision must be in (0.5, 1]")
+    if args.min_support < 1:
+        parser.error("--min-support must be >= 1")
+    if args.concurrency < 1:
+        parser.error("--concurrency must be >= 1")
+    return args
 
 
 async def _run(args: argparse.Namespace, cases: list[LabelledCase]) -> dict[str, dict]:

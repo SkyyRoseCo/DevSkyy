@@ -6555,7 +6555,7 @@
     "error_message": "Review of new llm/decisions layer: NaN/inf/bool/positive logprobs accepted as probability mass (NaN passed the coverage gate); failed calibration cases diluted ECE; recommended threshold could fall below GatePolicy's 0.5 floor; paid calibration run exited 0 with every case failed",
     "file": "llm/decisions/backend.py",
     "root_cause": "isinstance(x,(int,float)) admits NaN, inf, bool and positive values; failures were scored as confidence 0 inside ECE bins; threshold search did not respect the gate floor; script ignored the failure count",
-    "fix": "_checked_logprob rejects non-finite, bool and >0 logprobs (DecisionBackendError); ECE over answered cases only; thresholds only >0.5; calibration grouped per question shape; script exits 1 on any failed case; --model limited to logprob-capable model_ids constants",
+    "fix": "_checked_logprob rejects non-finite, bool and >0 logprobs (DecisionBackendError); ECE over answered cases only; thresholds only >0.5; calibration grouped per question shape; script exits 1 on any failed case; --model limited to logprob-capable model_ids constants. Round 2 (Codex on #1082): options capped at 20 (= top_logprobs max) so every letter is observable; build_answer rejects values outside [0,1], bools and totals != 1 before routing; calibration flags validated before any paid request; manifest estimates tokens from the rendered request (was ~40% low); labelled prompts use registry product names (an invented Signature bomber removed)",
     "tags": [
       "fail-open",
       "llm",
@@ -6566,8 +6566,8 @@
     "related_bugs": [
       "bug-230"
     ],
-    "occurrences": 1,
-    "last_seen": "2026-10-14T00:00:00+00:00"
+    "occurrences": 2,
+    "last_seen": "2026-10-14T20:40:00+00:00"
   },
   {
     "id": "bug-378",
