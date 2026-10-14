@@ -1,7 +1,7 @@
 {
-  "scope": "Image inventory of worktree excluding dependency/cache folders; supplemental main checkout assets/renders/theme/golden/data. Same-path same-byte supplemental copies omitted. Includes non-product imagery pending classification. Filename candidates are not authoritative product bindings.",
+  "scope": "Image inventory of worktree excluding dependency/cache folders; supplemental main checkout assets/renders/theme/golden/data. Same-path same-byte supplemental copies omitted. Includes non-product imagery pending classification. Filename candidates are not authoritative product bindings. Since 2026-10-14 also holds non-image media (video, 3D, fonts, PDF) that the asset SOT census (scripts/asset_sot_census.py) found referenced by no ledger.",
   "counts": {
-    "unassigned": 2974,
+    "unassigned": 3030,
     "unverified-candidate": 1620,
     "registry-associated-by-hash": 538
   },
@@ -48781,6 +48781,566 @@
       "bytes": 317254,
       "status": "unassigned",
       "candidate_skus": []
+    },
+    {
+      "path": "assets/3d-models/black-rose/IMG_4939_202.mp4",
+      "location": "worktree",
+      "sha256": "a8f53fb724e8fe83d992f50f3f141b34c644ae00246d898e5ffd1008bbc498fc",
+      "bytes": 359214,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "source-footage",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Raw phone footage stored beside 3D model sources. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "assets/3d-models/black-rose/Video Apr 21 2024, 11 01 18 AM.mov",
+      "location": "worktree",
+      "sha256": "b406a108d1e04d311367d78eb7c79cf4108914ebf80761bcd91b658f4ea0cf2a",
+      "bytes": 18514110,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "source-footage",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Raw phone footage stored beside 3D model sources. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "renders/3d/girl-love-hurts/girl-mascot-raw.glb",
+      "location": "worktree",
+      "sha256": "be69521f9fe6d813aff80ccf01ae2304e7e3054700c5ca4e9e0e8a6ed64ea2cc",
+      "bytes": 26733408,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "3d-working-file",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. 3D rig/export working file; not pixel-verifiable here. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "renders/3d/girl-love-hurts/love-hurts-girl-rig.blend",
+      "location": "worktree",
+      "sha256": "7fa9944ef4aeb2ab0b16b3d384862f6385e62d4920fec2f1890512bd5632eaa4",
+      "bytes": 25897444,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "3d-working-file",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. 3D rig/export working file; not pixel-verifiable here. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "renders/3d/girl-love-hurts/love-hurts-girl-v1.glb",
+      "location": "worktree",
+      "sha256": "f42fc9c49ffb4eb4e612c06b0a46ddf4377be8684c9596374682c86c46d53df2",
+      "bytes": 26731128,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "3d-working-file",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. 3D rig/export working file; not pixel-verifiable here. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "renders/3d/mascot/v2/live/plumbingtest-merged.glb",
+      "location": "worktree",
+      "sha256": "0aac4acc75aba48e6de5b186946c875ecb8173a616e42e81f1808740cbbc8219",
+      "bytes": 24619744,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "3d-working-file",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. 3D rig/export working file; not pixel-verifiable here. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "renders/3d/mascot/v2/skyy-v6-merged.glb",
+      "location": "worktree",
+      "sha256": "24dc34245b393a649246adce4e4c4962c388ac3132141fbb5bf8a2b21a2e666a",
+      "bytes": 24050596,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "3d-working-file",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. 3D rig/export working file; not pixel-verifiable here. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "renders/3d/mascot/v2/skyy-v9-idle-only-merged.glb",
+      "location": "worktree",
+      "sha256": "98061458abfa70523c6acf13c173e56ca57bf0921bddccdfb470b7ffc86ff007",
+      "bytes": 24051480,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "3d-working-file",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. 3D rig/export working file; not pixel-verifiable here. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "renders/3d/mascot/v2/skyy-v9-idle-only-web.glb",
+      "location": "worktree",
+      "sha256": "db9981943cefb52e3deaae58541b897a36049c61c5304fadf11cc57c73c44705",
+      "bytes": 827072,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "3d-working-file",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. 3D rig/export working file; not pixel-verifiable here. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/attribution-check-1.jpg",
+      "location": "worktree",
+      "sha256": "195acf87a6d93760b281b6a27122293b5757110d948e736525e21ec18c67e4c0",
+      "bytes": 260583,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/attribution-check-2.jpg",
+      "location": "worktree",
+      "sha256": "ce86c338eddc5e9c33bc772e7e54c3bc5f9b64a6c87b437116a0c0f0e1fceca8",
+      "bytes": 209558,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/attribution-check-3.jpg",
+      "location": "worktree",
+      "sha256": "2a7b44d69379ab3b7c3f31bae131fbc015767c418e2a6716970ea7a81f259136",
+      "bytes": 67903,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/material-review/board-1.jpg",
+      "location": "worktree",
+      "sha256": "66d683635feac5dd713feb34d12691df1caa37fd2319617d57272daaf6cd3039",
+      "bytes": 336588,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/material-review/board-2.jpg",
+      "location": "worktree",
+      "sha256": "ec95ad3099eeb3bc4df58e9b1c45934ee67458b62d3bb0cb2d7fc7d8dc0fdffa",
+      "bytes": 372776,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/material-review/board-3.jpg",
+      "location": "worktree",
+      "sha256": "273c9ba862d8d9eafd2d9e1198f841b509f7e07c310903da552d61b207ba06dc",
+      "bytes": 369991,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/material-review/board-4.jpg",
+      "location": "worktree",
+      "sha256": "91ad78e80c4b851e74cf5bdb7fbcb4012fbffdfb9ebd338f67be93f21ea02ee6",
+      "bytes": 374361,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/material-review/board-5.jpg",
+      "location": "worktree",
+      "sha256": "e9631e3e9bcc963a4ecbe19ed0497c600ee1aef5255d8b94bf18e3d86b081432",
+      "bytes": 281440,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/material-review/board-6.jpg",
+      "location": "worktree",
+      "sha256": "f9143282500d537e970e93120d447835030a45379ad67f5e323555cb667b7c98",
+      "bytes": 117659,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/retouch-pilot/comparison.jpg",
+      "location": "worktree",
+      "sha256": "141dada1f178b6e38d10b2719d8961e69fa6b949be79a88b85749c0fbce6699f",
+      "bytes": 132109,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/retouch-pilot/plain-fabric-mask.png",
+      "location": "worktree",
+      "sha256": "b85c2b9e01901cc3ce75815a9200ec9aef03f9cb9d4023daa58180ce978431d8",
+      "bytes": 19415,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/catalog-reconciliation/image-library/retouch-pilot/sg-002-local-retouch-candidate.png",
+      "location": "worktree",
+      "sha256": "f749b2a20f8351575f42684acd6dd96337a453cc94c36d34fa84f3203422f74b",
+      "bytes": 891659,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "review-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Contact sheet / attribution / retouch-pilot evidence image produced by the catalog reconciliation. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/images/house-oakland-atelier-20260928.webp",
+      "location": "worktree",
+      "sha256": "8c9703e6b0d3218dece581fecececefc0b5d9462fd18780639ffb1aad84da0f9",
+      "bytes": 188234,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/models/skyy-mascot.glb",
+      "location": "worktree",
+      "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+      "bytes": 6058568,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-3d-model",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme mascot model; 3D content not pixel-verifiable here (runtime reference exists in theme code where noted by CLAUDE.md). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-desktop.glb",
+      "location": "worktree",
+      "sha256": "9b40546847d2b2776334a71edcd8f4836b3eeab904f74f6fc568d5a3d3040a00",
+      "bytes": 2143292,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-3d-model",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme mascot model; 3D content not pixel-verifiable here (runtime reference exists in theme code where noted by CLAUDE.md). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/models/skyy-natural-mobile.glb",
+      "location": "worktree",
+      "sha256": "7267133a69d8401ba3edbe97d55a5b4605002d97114750081549671bdba129c7",
+      "bytes": 1247220,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-3d-model",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme mascot model; 3D content not pixel-verifiable here (runtime reference exists in theme code where noted by CLAUDE.md). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4",
+      "location": "worktree",
+      "sha256": "cc5f9ff9ea27eaa2ca517da6986f3787bab5953bcc9d93e87c4416c9bea9cba2",
+      "bytes": 17047417,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/motion-plates/web/br-006-hero-origin-backdrop-loop.mp4",
+      "location": "worktree",
+      "sha256": "2f25029a185d19935fa1a261c9c3fcae2617d9b39419059e04896b4a63516cd6",
+      "bytes": 1496911,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/motion-plates/web/br-006-hero-origin-backdrop-loop.webm",
+      "location": "worktree",
+      "sha256": "26173511c2b760049c2cde63f0b4e1c68e0bba96ca4717570ff64e3c733b9fc0",
+      "bytes": 993252,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4",
+      "location": "worktree",
+      "sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+      "bytes": 20973139,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.mp4",
+      "location": "worktree",
+      "sha256": "405321e50b8544917aa5075e817ad22ad58e51b90afd19bc7d0192b69e5f038b",
+      "bytes": 4365405,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.webm",
+      "location": "worktree",
+      "sha256": "19e965a65f63b0768166849a1d7e800f6349bc5c8ba77cf42aac5fcebce0576d",
+      "bytes": 2859993,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/black-rose-authentic-motion-v3-a1.mp4",
+      "location": "worktree",
+      "sha256": "9a6d885cd74d29686bf14b4e9c12f83b950203f3c8f8287415571232c5813035",
+      "bytes": 6911884,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/black-rose-bay-bridge-monuments-motion-v2.mp4",
+      "location": "worktree",
+      "sha256": "6cf9e499fd28998b28a212b7e8ba49eda802e7c92dce74789dbf6031c2d86e4d",
+      "bytes": 5101258,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.mp4",
+      "location": "worktree",
+      "sha256": "e292b78ea2c0aaa0be07872f30fb6290d54ba97a328147059f9c1c754af27beb",
+      "bytes": 840146,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm",
+      "location": "worktree",
+      "sha256": "043242396ffa2322153d14d2f1c785530cbed1536d3652bf0de4bf54c0afa415",
+      "bytes": 676790,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-bay-bridge-monuments-motion-v2.mp4",
+      "location": "worktree",
+      "sha256": "e283cae3ddf6bbf9f262022c607fbdd5b79ba251f5cbcf04ac25f4b339eb9701",
+      "bytes": 390017,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-bay-bridge-monuments-motion-v2.webm",
+      "location": "worktree",
+      "sha256": "083042999f11be507b4342de390877364a0cecd50b95a53e780f9251a0e21f2f",
+      "bytes": 366095,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/love-hurts-authentic-motion-v3-a1.mp4",
+      "location": "worktree",
+      "sha256": "316084f122ae6033aff10b565e4aadb2a519d53db6fdae0061325cb1f4fad11e",
+      "bytes": 7819988,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/love-hurts-rose-aisle-monuments-motion-v2.mp4",
+      "location": "worktree",
+      "sha256": "8b614b34aea12764c43f02ce84e4ff19e120d1d1616669b3e0852f9afa9d29b3",
+      "bytes": 5769751,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.mp4",
+      "location": "worktree",
+      "sha256": "5135700826b7bef568651ecea477af877f5a692318336d907d1c0076b14eb542",
+      "bytes": 940111,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm",
+      "location": "worktree",
+      "sha256": "fce1e85ddfc697f56a458d7f207994afe5914d80e31b8169c6a5cd729ddbcceb",
+      "bytes": 824162,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-rose-aisle-monuments-motion-v2.mp4",
+      "location": "worktree",
+      "sha256": "f8194419f345defd3e7b016c6cb6661f3910ba31fd4f9b461203bb368d0980c3",
+      "bytes": 345500,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-rose-aisle-monuments-motion-v2.webm",
+      "location": "worktree",
+      "sha256": "f82a7859f9b15e1f94d451e180543e74776ebd4aacb5c2f68e08f15498524988",
+      "bytes": 343350,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/signature-golden-gate-monuments-motion-v1.mp4",
+      "location": "worktree",
+      "sha256": "071601173b321eb6c84c6fffd0778bbf5e168ce0cdaed1e9f083b3fd8b972a3f",
+      "bytes": 9602400,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.mp4",
+      "location": "worktree",
+      "sha256": "423323ae440372f72b4b0336116e49f42dafec6b39ff58bf08c5973ebcecc8e6",
+      "bytes": 855303,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm",
+      "location": "worktree",
+      "sha256": "e0e57f545959a946b71ca2125d9dbc46756778510e55dc59ef65ac1e79127a02",
+      "bytes": 472889,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/jersey-series-bart-journey.mp4",
+      "location": "worktree",
+      "sha256": "5352a2435aa8352176067c11c44f08e2729d2cfa6e652436f2d44509f354c530",
+      "bytes": 2531017,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/jersey-series-bart-journey.webm",
+      "location": "worktree",
+      "sha256": "ae0fc8b2dc0cf37af4589ede83ec187af0aa64ae731a51e383661b5c965fbc20",
+      "bytes": 1480461,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/skyyrose-tour-around-the-bay.mp4",
+      "location": "worktree",
+      "sha256": "5e4ee02fa38feb63e8a7ed4ef937faa212903f0fa58bf65443bb8cd2a18e073a",
+      "bytes": 2450810,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/video/skyyrose-tour-around-the-bay.webm",
+      "location": "worktree",
+      "sha256": "fd7a29fbf06399057d5cf210a6fd6c2e1c9552e2beb9f1e8743c433b6eebd57d",
+      "bytes": 1532651,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-media-unregistered",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/fonts/kaushan-script-latin.woff2",
+      "location": "worktree",
+      "sha256": "d6ca8ff38a71629475ec11665a9929ed6228975146de972e7034db008bf11836",
+      "bytes": 32644,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "retired-font",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Legacy script face superseded by the bespoke Black Rose / Love Hurts scripts (not canon per design-system sync-theme-assets.mjs) yet still declared in V1 assets/css/fonts.css. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/fonts/pacifico-latin.woff2",
+      "location": "worktree",
+      "sha256": "1a47a54e53bbfd3cfb4673636eac5edc98a7ecbf36c41340f48086a4f4796b18",
+      "bytes": 22296,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "retired-font",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Legacy script face superseded by the bespoke Black Rose / Love Hurts scripts (not canon per design-system sync-theme-assets.mjs) yet still declared in V1 assets/css/fonts.css. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-joggers/black-rose-joggers-front-model.pdf",
+      "location": "worktree",
+      "sha256": "442242852cc2d54eee4b2113ae9213de3aadfb3537b98dd7282c01bd3300c213",
+      "bytes": 535295,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-document",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. PDF stored under a product image folder. Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/models/skyy-child-mobile.glb",
+      "location": "worktree",
+      "sha256": "88733994bcaf8929eac5dc266f6ac71105b8de0c392549ab6904943a0f36d7b2",
+      "bytes": 850712,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-3d-model",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme mascot model; 3D content not pixel-verifiable here (runtime reference exists in theme code where noted by CLAUDE.md). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/models/skyy-child.glb",
+      "location": "worktree",
+      "sha256": "91175c3847a2648f5168bab886c607d0204fcaa6741c3d62e29337bdfb07d099",
+      "bytes": 1975472,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-3d-model",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme mascot model; 3D content not pixel-verifiable here (runtime reference exists in theme code where noted by CLAUDE.md). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/models/skyy.glb",
+      "location": "worktree",
+      "sha256": "6961e69196d1470c245f74e1707aa2f62adaf74839ba9c59fe1216f33015cb14",
+      "bytes": 1115540,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "theme-3d-model",
+      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme mascot model; 3D content not pixel-verifiable here (runtime reference exists in theme code where noted by CLAUDE.md). Parked for founder decision; no identity or binding is asserted."
     }
   ]
 }

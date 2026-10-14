@@ -9,6 +9,31 @@ on:
       - "skyyrose/elite_studio/commerce.py"
       - "scripts/validate_catalog_consistency.py"
       - ".github/workflows/catalog-validate.yml"
+      - "scripts/asset_sot_census.py"
+      - "tests/scripts/test_asset_sot_census.py"
+      - "tasks/catalog-reconciliation/image-library/inventory.json"
+      - "wordpress-theme/skyyrose-flagship-2/data/**"
+      - "assets/hub/manifest.json"
+      - "data/sot-images.json"
+      - "assets/products/manifest.json"
+      - "**.png"
+      - "**.jpg"
+      - "**.jpeg"
+      - "**.webp"
+      - "**.avif"
+      - "**.gif"
+      - "**.svg"
+      - "**.mp4"
+      - "**.webm"
+      - "**.mov"
+      - "**.glb"
+      - "**.gltf"
+      - "**.blend"
+      - "**.woff2"
+      - "**.woff"
+      - "**.ttf"
+      - "**.otf"
+      - "**.pdf"
       - "scripts/sync_catalog_downstream.py"
       - "skyyrose/elite_studio/tests/test_catalog_consistency.py"
       - "skyyrose/elite_studio/tests/conftest.py"
@@ -52,6 +77,31 @@ on:
       - "skyyrose/elite_studio/logo_registry.py"
       - "scripts/validate_catalog_consistency.py"
       - ".github/workflows/catalog-validate.yml"
+      - "scripts/asset_sot_census.py"
+      - "tests/scripts/test_asset_sot_census.py"
+      - "tasks/catalog-reconciliation/image-library/inventory.json"
+      - "wordpress-theme/skyyrose-flagship-2/data/**"
+      - "assets/hub/manifest.json"
+      - "data/sot-images.json"
+      - "assets/products/manifest.json"
+      - "**.png"
+      - "**.jpg"
+      - "**.jpeg"
+      - "**.webp"
+      - "**.avif"
+      - "**.gif"
+      - "**.svg"
+      - "**.mp4"
+      - "**.webm"
+      - "**.mov"
+      - "**.glb"
+      - "**.gltf"
+      - "**.blend"
+      - "**.woff2"
+      - "**.woff"
+      - "**.ttf"
+      - "**.otf"
+      - "**.pdf"
       - "scripts/build_v7_cards.py"
       - "skyyrose/core/catalog_loader.py"
       - "skyyrose/core/product_registry.py"
@@ -143,6 +193,16 @@ jobs:
         # visual-manifest.json must exist in the tracked theme assets.
         run: |
           python wordpress-theme/skyyrose-flagship/data/verify-visual-manifest.py
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+      - name: Asset SOT census (every in-scope media file has an owning ledger)
+        # Fails on any tracked/untracked media file referenced by no ledger
+        # (registry, visual-manifest, typography, projections, Flagship 2 media
+        # ledgers, review-area inventory). Ledger missing/unreadable = exit 2.
+        run: |
+          python scripts/asset_sot_census.py --check
+          pytest tests/scripts/test_asset_sot_census.py -v --tb=short
         env:
           PYTHONPATH: ${{ github.workspace }}
 
