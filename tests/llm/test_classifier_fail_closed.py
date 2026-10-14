@@ -86,3 +86,16 @@ async def test_unified_client_falls_back_to_default_routing_when_classification_
     assert response.content == "ok"
     assert response.task_classification is None
     assert router.complete.await_args.kwargs["provider"] is None
+
+
+async def test_task_prompt_asks_for_the_keys_the_parser_reads():
+    """A reply in exactly the format the prompt requests must parse."""
+    from llm.task_classifier import TASK_CLASSIFICATION_PROMPT
+
+    prompt = TASK_CLASSIFICATION_PROMPT.format(task_description="x")
+    template = prompt[prompt.index("{") : prompt.rindex("}") + 1]
+    reply = template.replace("<category>", "code").replace("<0.0-1.0>", "0.8")
+    reply = reply.replace("<brief explanation>", "fix a test")
+    classifier = TaskClassifier(groq_classifier=groq_returning(reply))
+    result = await classifier.classify("fix the failing pytest in api/")
+    assert result.task_category is TaskCategory.CODE

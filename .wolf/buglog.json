@@ -6555,7 +6555,7 @@
     "error_message": "TaskClassifier.classify() raised LLMError on every call: classification_type='ClassificationConfig' (a class name) failed ClassificationResult enum validation; GroqFastClassifier also invented confidence 0.9 when missing, returned the first label at 0.5 on unparseable JSON, and passed out-of-set labels through",
     "file": "llm/classification.py",
     "root_cause": "task_classifier passed groq_classifier.config.__class__.__name__ as the ClassificationType; _classify_with_groq defaulted missing fields and swallowed JSON errors into a guessed result (bug-230 fail-open pattern); UnifiedLLMClient let a classification error abort the whole completion",
-    "fix": "TaskClassifier passes ClassificationType.CATEGORY; GroqFastClassifier._parse_result requires label + confidence and an in-set label, else LLMError; UnifiedLLMClient._classify_request falls back to default routing (no provider/technique hint) on LLMError; test_json_parse_error_handling now expects LLMError",
+    "fix": "TaskClassifier passes ClassificationType.CATEGORY; GroqFastClassifier._parse_result requires label + confidence and an in-set label, else LLMError; UnifiedLLMClient._classify_request falls back to default routing (no provider/technique hint) on LLMError; test_json_parse_error_handling now expects LLMError; TASK_CLASSIFICATION_PROMPT asked for a \"category\" key the parser never read, now \"label\" (test ties prompt format to parser)",
     "tags": [
       "fail-open",
       "llm",

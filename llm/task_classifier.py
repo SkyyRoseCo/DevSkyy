@@ -183,7 +183,7 @@ Available Categories:
 - translation: Language translation, localization
 
 Respond with JSON only:
-{{"category": "<category>", "confidence": <0.0-1.0>, "reasoning": "<brief explanation>"}}"""
+{{"label": "<category>", "confidence": <0.0-1.0>, "reasoning": "<brief explanation>"}}"""
 
 
 # =============================================================================
