@@ -5,6 +5,7 @@ Tests for Product DataLoader - N+1 Query Prevention
 Verifies that ProductDataLoader batches DB queries to prevent N+1 problems.
 """
 
+from types import SimpleNamespace
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
@@ -207,11 +208,57 @@ class TestProductDataLoader:
         assert products == []
 
 
-@pytest.mark.skip(reason="Will implement in TDD GREEN phase")
+@pytest.mark.unit
 async def test_integration_graphql_prevents_n_plus_one():
     """
-    Integration test: GraphQL query for 100 products should make only 1 DB query
+    Integration test: a GraphQL query selecting 100 products by SKU runs the
+    real Strawberry schema and must hit the database exactly once.
 
-    This test will be implemented after GraphQL schema is created.
+    The 100 aliased `product(sku:)` fields resolve concurrently; the
+    DataLoader in the request context coalesces them into one batched query.
     """
-    pass
+    from api.graphql.schema import schema
+
+    skus = [f"br-{i:03d}" for i in range(1, 101)]
+    products = [
+        SimpleNamespace(
+            id=i,
+            sku=sku,
+            name=f"Product {sku}",
+            description="",
+            price=10.0,
+            compare_price=None,
+            collection="test-collection",
+            is_active=True,
+            images_json=None,
+        )
+        for i, sku in enumerate(skus, start=1)
+    ]
+
+    mock_session = MagicMock()
+    mock_result = MagicMock()
+    mock_result.scalars.return_value.all.return_value = products
+    mock_session.execute = AsyncMock(return_value=mock_result)
+
+    with patch("api.graphql.dataloaders.product_loader.DatabaseManager") as mock_db_class:
+        mock_db_instance = MagicMock()
+        mock_db_instance.session.return_value.__aenter__.return_value = mock_session
+        mock_db_instance.session.return_value.__aexit__.return_value = AsyncMock()
+        mock_db_class.return_value = mock_db_instance
+
+        loader = ProductDataLoader()
+        query = (
+            "query {\n"
+            + "\n".join(
+                f'  p{i}: product(sku: "{sku}") {{ sku name }}' for i, sku in enumerate(skus)
+            )
+            + "\n}"
+        )
+
+        result = await schema.execute(query, context_value={"product_loader": loader})
+
+    assert result.errors is None
+    assert result.data is not None
+    assert [result.data[f"p{i}"]["sku"] for i in range(100)] == skus
+    # 100 resolved products, ONE database call
+    assert mock_session.execute.call_count == 1

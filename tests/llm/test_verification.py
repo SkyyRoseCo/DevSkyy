@@ -166,7 +166,6 @@ async def test_verification_max_retries_exceeded(mock_api_keys):
 
 @pytest.mark.unit
 @pytest.mark.asyncio
-@pytest.mark.skip(reason="auto_escalate feature not yet implemented")
 async def test_verification_auto_escalation(mock_api_keys):
     """Test auto-escalation to premium model after failures."""
     generator = AsyncMock()
@@ -216,6 +215,11 @@ async def test_verification_auto_escalation(mock_api_keys):
     # Should escalate to premium model
     assert verification.decision == VerificationDecision.APPROVED
     assert response.content == "Good escalated code"
+    assert generator.complete.call_count == 2  # Retry budget exhausted by the cheap model
+    assert verifier.complete.call_count == 3  # 2 verifications + 1 escalated generation
+    assert verification.verified_by == config.verifier_model
+    assert verification.cost_savings_pct <= 0  # Escalation never saves vs premium-only
+    assert verification.total_cost_usd > 0
 
 
 @pytest.mark.unit
