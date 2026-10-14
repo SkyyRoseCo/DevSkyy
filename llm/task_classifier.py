@@ -25,7 +25,7 @@ from typing import Any
 from pydantic import BaseModel, Field
 
 from .base import Message
-from .classification import ClassificationConfig, GroqFastClassifier
+from .classification import ClassificationConfig, ClassificationType, GroqFastClassifier
 from .exceptions import LLMError
 
 logger = logging.getLogger(__name__)
@@ -316,20 +316,14 @@ class TaskClassifier:
             # Call Groq for classification
             response = await groq_classifier._classify_with_groq(
                 prompt=prompt,
-                classification_type=groq_classifier.config.__class__.__name__,
+                classification_type=ClassificationType.CATEGORY,
                 expected_labels=[cat.value for cat in TaskCategory],
             )
 
             latency_ms = (time.monotonic() - start_time) * 1000
 
-            # Parse category
-            category_str = response.label
-            try:
-                task_category = TaskCategory(category_str)
-            except ValueError:
-                # Fallback to reasoning if invalid category
-                logger.warning(f"Invalid category '{category_str}', defaulting to REASONING")
-                task_category = TaskCategory.REASONING
+            # The classifier only returns labels from expected_labels.
+            task_category = TaskCategory(response.label)
 
             # Get recommended technique
             recommended_technique = TECHNIQUE_MAPPING.get(
