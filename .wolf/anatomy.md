@@ -8742,6 +8742,7 @@
   - fn `benchmark_semaphore_limiting` L290-348 (~580 tok)
   - fn `print_summary` L349-384 (~399 tok)
   - fn `main` L385-412 (~291 tok)
+- `asset_sot_census.py` — Asset SOT census: every in-scope media file must be referenced by a declared ledger (registry, visual-manifest, typography, projections, Flagship 2 media ledgers, review inventory) or be a byte copy of an owned file; `--check` (exit 1 orphans, 2 ledger error) / `--report` JSON. Wired into CI catalog-validate. (~4200 tok)
 - `build_asset_manifest.py` — Generate ``assets/products/manifest.json`` — the content-hashed SKU→asset map. (~2066 tok)
   - fn `_catalog_rows` L49-61 (~130 tok)
   - fn `_record` L62-68 (~82 tok)
@@ -9243,6 +9244,10 @@
 
 - `2026-09-12-brand-story-storyboard-line-introduction-workflows.md` — deep-research report: brand-story frameworks/tests, storyboard + AI pipeline, collection-launch/drop model, AI disclosure law, SkyyRose applied section; 130 cited sources (~17770 tok)
 - `2026-09-12-brand-story-ledgers/` — three exa agent reports with full URL ledgers backing the report above; provenance evidence, not prose to read (~34497 tok)
+
+## tests/scripts/ (census)
+
+- `test_asset_sot_census.py` — tmp_path repo tests for scripts/asset_sot_census.py: reference kinds, byte copies, scope reasons, fail-closed ledgers, exit codes. (~1500 tok)
 
 ## tests/mcp_servers/
 

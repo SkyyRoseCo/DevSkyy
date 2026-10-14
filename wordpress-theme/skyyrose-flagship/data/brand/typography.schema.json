@@ -39,6 +39,11 @@
       "properties": {
         "family": { "type": "string" },
         "woff2":  { "type": ["string", "null"] },
+        "woff2_subsets": {
+          "type": "array",
+          "description": "Additional unicode-range subset files of the same family, relative to theme root",
+          "items": { "type": "string" }
+        },
         "note":   { "type": "string" }
       }
     },

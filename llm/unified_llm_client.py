@@ -248,6 +248,33 @@ class UnifiedLLMClient:
             self._classifier = TaskClassifier()
         return self._classifier
 
+    async def _classify_request(
+        self, request: LLMRequest
+    ) -> tuple[TaskClassificationResult | None, float]:
+        """Classify the task, or return None so routing uses its defaults.
+
+        A failed classification never picks a provider or technique: the request
+        proceeds exactly as if ``skip_classification`` had been set.
+        """
+        if request.skip_classification:
+            return None, 0.0
+        start = time.monotonic()
+        classifier = await self._get_classifier()
+        try:
+            if request.task_description:
+                result = await classifier.classify(request.task_description)
+            else:
+                result = await classifier.classify_messages(request.messages)
+        except LLMError as e:
+            logger.warning(f"Task classification unavailable, using default routing: {e}")
+            return None, (time.monotonic() - start) * 1000
+        latency_ms = (time.monotonic() - start) * 1000
+        logger.info(
+            f"Task classified as {result.task_category.value} "
+            f"(confidence: {result.confidence:.2f}, latency: {latency_ms:.2f}ms)"
+        )
+        return result, latency_ms
+
     async def _get_round_table(self) -> LLMRoundTable:
         """Lazy initialization of Round Table with auto-registered providers."""
         if self._round_table is None:
@@ -349,31 +376,7 @@ class UnifiedLLMClient:
         start_time = time.monotonic()
 
         # Step 1: Task Classification (optional)
-        task_classification: TaskClassificationResult | None = None
-        classification_latency_ms = 0.0
-
-        if not request.skip_classification and request.task_description:
-            classification_start = time.monotonic()
-            classifier = await self._get_classifier()
-            task_classification = await classifier.classify(request.task_description)
-            classification_latency_ms = (time.monotonic() - classification_start) * 1000
-
-            logger.info(
-                f"Task classified as {task_classification.task_category.value} "
-                f"(confidence: {task_classification.confidence:.2f}, "
-                f"latency: {classification_latency_ms:.2f}ms)"
-            )
-        elif not request.skip_classification:
-            # Classify from messages if no task description
-            classification_start = time.monotonic()
-            classifier = await self._get_classifier()
-            task_classification = await classifier.classify_messages(request.messages)
-            classification_latency_ms = (time.monotonic() - classification_start) * 1000
-
-            logger.info(
-                f"Task classified from messages as {task_classification.task_category.value} "
-                f"(confidence: {task_classification.confidence:.2f})"
-            )
+        task_classification, classification_latency_ms = await self._classify_request(request)
 
         # Step 2: Select Technique
         technique_used: PromptTechnique | None = None

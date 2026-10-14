@@ -27,6 +27,7 @@ from llm.classification import (
     GroqFastClassifier,
     get_classifier,
 )
+from llm.exceptions import LLMError
 
 
 @pytest.mark.unit
@@ -299,16 +300,12 @@ async def test_json_parse_error_handling(mock_api_keys):
     mock_client.complete = AsyncMock(return_value=mock_response)
     classifier._client = mock_client
 
-    # Should handle gracefully with fallback
-    result = await classifier.classify_intent(
-        "test",
-        intents=["intent1", "intent2"],
-    )
-
-    # Should fallback to first intent with low confidence
-    assert result.label == "intent1"
-    assert result.confidence == 0.5
-    assert "JSON parse error" in result.reasoning
+    # A response that cannot be parsed is an error, never a guessed first label
+    with pytest.raises(LLMError, match="Classification failed"):
+        await classifier.classify_intent(
+            "test",
+            intents=["intent1", "intent2"],
+        )
 
 
 @pytest.mark.unit
