@@ -259,12 +259,17 @@ class LLMVerificationEngine:
         # Max retries exceeded
         if self.config.auto_escalate:
             return await self._escalate(
-                messages, max_retries, total_generator_cost, total_verifier_cost
+                task_description,
+                messages,
+                max_retries,
+                total_generator_cost,
+                total_verifier_cost,
             )
         raise RuntimeError(f"Code generation failed verification after {max_retries} attempts")
 
     async def _escalate(
         self,
+        task_description: str,
         messages: list[Message],
         attempts: int,
         generator_cost: float,
@@ -274,9 +279,9 @@ class LLMVerificationEngine:
         Generate once with the premium model after the cheap generator's budget is spent.
 
         ``messages`` already carries every rejected attempt and its critical-issue
-        feedback, so the premium model generates with that context. Its output is
-        returned as approved: the escalation model is the quality gate itself, so
-        a second verification round-trip would only have it grade its own work.
+        feedback, so the premium model generates with that context. The escalated
+        output then goes through the same verification gate as any other attempt;
+        a rejection raises rather than returning unverified code.
         """
         model = self.config.escalation_model or self.config.verifier_model
         logger.warning(
@@ -300,24 +305,34 @@ class LLMVerificationEngine:
             f"(cost: ${escalation_cost:.4f}, total: ${total_cost:.4f})"
         )
 
+        verification = await self._verify_code(
+            task_description=task_description,
+            generated_code=response.content,
+        )
+        total_cost += self._calculate_cost(
+            None,  # Approximate, as in the retry loop
+            self.config.verifier_provider,
+            self.config.verifier_model,
+        )
+        if verification.decision == VerificationDecision.REJECTED:
+            raise RuntimeError(
+                f"Code generation failed verification after {attempts} attempts "
+                f"and escalation to {model}"
+            )
+
         # Savings vs premium-only: the rejected cheap attempts were pure overhead on
         # top of the premium generation, so this is zero at best and negative in practice.
         savings_pct = 0.0
         if escalation_cost > 0:
             savings_pct = round(((escalation_cost - total_cost) / escalation_cost) * 100, 2)
 
-        return response, VerificationResult(
-            decision=VerificationDecision.APPROVED,
-            issues=[],
-            verified_by=model,
-            cost_savings_pct=savings_pct,
-            total_cost_usd=total_cost,
-            reasoning=(
-                f"Escalated to {model} after {attempts} rejected attempts "
-                f"by {self.config.generator_model}; escalated output was not "
-                f"independently re-verified"
-            ),
+        verification.cost_savings_pct = savings_pct
+        verification.total_cost_usd = total_cost
+        verification.reasoning = (
+            f"Escalated to {model} after {attempts} rejected attempts "
+            f"by {self.config.generator_model}; {verification.reasoning or 'verified'}"
         )
+        return response, verification
 
     async def _verify_code(self, task_description: str, generated_code: str) -> VerificationResult:
         """Run verification using premium model."""
