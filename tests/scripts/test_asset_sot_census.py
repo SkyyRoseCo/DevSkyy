@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import fnmatch
 import json
 import subprocess
 from pathlib import Path
@@ -54,7 +55,6 @@ def repo(tmp_path: Path) -> Path:
         "theme/assets/logo.svg": b"<svg/>",
         "theme/assets/video/hero.mp4": b"MP4",
         "theme/assets/video/hero-480w.webp": b"W",
-        "catalog/x/orig/x.jpg": b"X",
         "misc/r.png": b"R",
         "copies/a-copy.png": b"A",
         "tests/fixtures/f.png": b"F",
@@ -63,6 +63,9 @@ def repo(tmp_path: Path) -> Path:
         "README.md": "not media",
     }.items():
         _write(tmp_path, rel, data)
+    # Like assets/products/catalog/**/originals: a link to an authority-owned source.
+    (tmp_path / "catalog/x/orig").mkdir(parents=True)
+    (tmp_path / "catalog/x/orig/x.jpg").symlink_to("../../../assets/products/a.png")
     _git(tmp_path, "add", "-A")
     return tmp_path
 
@@ -77,8 +80,10 @@ def test_every_reference_kind_resolves(repo: Path) -> None:
     assert report["owners"]["assets/products/a.png"] == ["registry"]
     assert report["owners"]["theme/assets/logo.svg"] == ["registry"]
     assert report["owners"]["theme/assets/video/hero-480w.webp"] == ["visual"]
-    assert report["owners"]["catalog/x/orig/x.jpg"] == ["indexes"]
-    assert report["byte_copies"] == {"copies/a-copy.png": "assets/products/a.png"}
+    assert report["byte_copies"] == {
+        "catalog/x/orig/x.jpg": "assets/products/a.png",
+        "copies/a-copy.png": "assets/products/a.png",
+    }
     assert report["totals"]["review_only"] == 1
 
 
@@ -155,3 +160,44 @@ def test_missing_tracked_asset_fails_check(repo: Path, capsys: pytest.CaptureFix
     (repo / "misc/r.png").unlink()
     assert census.main(["--check", "--root", str(repo)], LEDGERS) == 1
     assert "absent on disk" in capsys.readouterr().err
+
+
+def test_projection_reference_alone_does_not_own(repo: Path) -> None:
+    """A stale generated view must not keep an asset the authority dropped."""
+    _write(repo, "catalog/x/index.json", json.dumps({"assets": [{"path": "orig/stale.jpg"}]}))
+    _write(repo, "catalog/x/orig/stale.jpg", b"STALE")
+    _git(repo, "add", "-A")
+    report = _run(repo)
+    assert [row["path"] for row in report["orphans"]] == ["catalog/x/orig/stale.jpg"]
+    indexes = next(row for row in report["ledgers"] if row["name"] == "indexes")
+    assert indexes["owned_in_scope"] == 1  # still reported for consistency
+    assert "indexes" not in report["owned_by_ledger"]
+
+
+def test_theme_ledger_resolves_paths_relative_to_its_own_folder(repo: Path) -> None:
+    (theme_v2,) = [ledger for ledger in census.DEFAULT_LEDGERS if ledger.role == "theme-v2"]
+    ledgers = (*LEDGERS, census.Ledger("v2", "theme-v2", ("v2/**/manifest.json",), theme_v2.bases))
+    _write(repo, "v2/assets/sot/manifest.json", json.dumps({"file": "br-002/ghost-front.png"}))
+    _write(repo, "v2/assets/sot/br-002/ghost-front.png", b"GHOST")
+    _git(repo, "add", "-A")
+    report = census.run_census(repo, ledgers)
+    assert report["owners"]["v2/assets/sot/br-002/ghost-front.png"] == ["v2"]
+
+
+WORKFLOW = census.REPO_ROOT / ".github/workflows/catalog-validate.yml"
+
+
+@pytest.mark.parametrize("event", ["pull_request", "push"])
+def test_workflow_triggers_on_every_scanned_extension(event: str) -> None:
+    """A PR adding only an orphan of any scanned type, in any case, must run the census."""
+    yaml = pytest.importorskip("yaml")
+    workflow = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
+    triggers = workflow.get("on") or workflow[True]  # PyYAML reads a bare `on` key as True
+    patterns = triggers[event]["paths"]
+    missing = [
+        name
+        for ext in sorted(census.MEDIA_EXTENSIONS)
+        for name in (f"assets/x/new.{ext}", f"assets/x/new.{ext.upper()}")
+        if not any(fnmatch.fnmatchcase(name, pattern) for pattern in patterns)
+    ]
+    assert missing == []
