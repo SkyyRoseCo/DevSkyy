@@ -6317,6 +6317,19 @@
   - class `VerificationConfig` L74-134 (~570 tok)
   - class `LLMVerificationEngine` L135-345 (~2411 tok)
 
+## data/decisions/
+
+- `task-routing.labelled.jsonl` — DRAFT labelled set (75 cases, 5 per TaskCategory) for scripts/decision_calibrate.py; labels await founder correction (~9000 tok)
+
+## llm/decisions/
+
+- `__init__.py` — Public API of the in-house typed decision layer (Choice/Score/Noul, engine, gate, calibration) (~400 tok)
+- `types.py` — Choice/Score/Noul questions, typed answers, Route (SHARP/SPLIT), DecisionFailure always SPLIT (~1200 tok)
+- `gate.py` — GatePolicy thresholds + Noul deadband; build_answer() shapes a distribution into a routed answer (~650 tok)
+- `backend.py` — LogprobBackend: letter options, first-token top_logprobs, coverage refusal, order debias (~1100 tok)
+- `engine.py` — DecisionEngine.decide(): concurrent questions, per-question failure -> DecisionFailure (~650 tok)
+- `calibration.py` — LabelledCase, run_cases, ECE, recommend_threshold, calibration_report (~1300 tok)
+
 ## llm/providers/
 
 - `__init__.py` (~260 tok)
@@ -8895,6 +8908,7 @@
   - fn `_write_manifest` L158-171 (~142 tok)
   - fn `_write_readme` L172-215 (~465 tok)
   - fn `main` L216-270 (~507 tok)
+- `decision_calibrate.py` — Calibrate llm/decisions on a labelled JSONL set; paid run refuses without --yes (~800 tok)
 - `demo_image_generation.py` — demo_replicate, demo_stability, compare_providers, main + 1 more (~3045 tok)
   - fn `demo_replicate` L23-121 (~905 tok)
   - fn `demo_stability` L122-243 (~1110 tok)

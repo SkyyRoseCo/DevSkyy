@@ -1,5 +1,25 @@
 # Current Tasks
 
+## ACTIVE — opusplan config + in-house typed decision layer (2026-10-14)
+
+Founder: "go ahead with the opusplan config changes without Jev or make our own
+system with jev capabilities". Branch `feat/opusplan-decision-layer`. No TypeSafe
+dependency. Jev research + REFLEX caveats: session 2026-10-14 (choice selection is
+reliable; "whether to act" is not, and confident-wrong answers exceed 0.7).
+
+### Plan
+- [x] `.claude/settings.json` `"model": "opusplan"` (docs: Opus in plan mode, Sonnet otherwise). Keep `CLAUDE_CODE_SUBAGENT_MODEL=fable`: per sub-agents docs it ranks below frontmatter and does not touch Explore/Plan without `_FORCE` [docs]
+- [x] Document model routing + precedence in `.claude/rules/agents.md`
+- [x] `skyyrose/core/openai_settings.py`: allow `logprobs` / `top_logprobs` (0..20) only where sampling is supported; fail closed otherwise
+- [x] `llm/decisions/`: typed Choice / Score / Noul questions, probabilities from first-token logprobs over letter keys (never self-reported confidence), optional order-debias, sharp/split gate with deadband, every failure -> SPLIT (escalate), never "act"
+- [x] `llm/decisions/calibration.py`: accuracy, ECE, threshold for a target precision over a labelled set
+- [x] `scripts/decision_calibrate.py`: paid run refuses without `--yes` (STOP-AND-SHOW)
+- [x] Tests (mocked transport only), ruff/black/isort, docs (`llm/CLAUDE.md`, anatomy, cerebrum); python-reviewer findings 1-6 fixed (bug-377); #7 (sibling cancellation) left: wasted calls only, not fail-open
+- [ ] Not in this PR: wiring into `llm/task_classifier.py` — needs a paid calibration run first (founder `y`)
+- [x] Draft labelled set `data/decisions/task-routing.labelled.jsonl` (75 cases from real DevSkyy work; no routing logs exist because TaskClassifier never ran, bug-378). Founder corrects labels, then paid calibration (~$0.004 by repo price table, 150 gpt-4o-mini requests) → STOP-AND-SHOW
+- [x] Pinned `model: sonnet` on the two unpinned agents (`frontend-developer`, `pr-green-loop`)
+
+
 ## ACTIVE — Registry = the only product source: fold side stores, repoint every lookup (2026-09-18)
 
 Founder: "fold in remaining side stores" + "every workflow, pipeline, product

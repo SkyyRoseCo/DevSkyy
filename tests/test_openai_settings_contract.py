@@ -221,3 +221,40 @@ async def test_raw_http_retry_budget(monkeypatch):
         assert len(attempts) == 2  # legacy raw client max_retries counts total attempts
     finally:
         await client.close()
+
+
+def test_logprobs_serialized_for_sampling_models():
+    request = chat_settings("gpt-4o-mini", 1, 0.0, {"logprobs": True, "top_logprobs": 20})
+    assert request == {"max_tokens": 1, "temperature": 0.0, "logprobs": True, "top_logprobs": 20}
+
+
+def test_logprobs_allowed_on_gpt6_only_with_reasoning_none():
+    request = chat_settings(
+        "gpt-6-sol", 1, None, {"reasoning_effort": "none", "logprobs": True, "top_logprobs": 5}
+    )
+    assert request["logprobs"] is True
+    assert request["top_logprobs"] == 5
+    with pytest.raises(ValueError):
+        chat_settings("gpt-6-sol", 1, None, {"reasoning_effort": "high", "logprobs": True})
+    with pytest.raises(ValueError):
+        chat_settings("gpt-6-astra", 1, None, {"logprobs": True})
+
+
+@pytest.mark.parametrize(
+    "options",
+    [
+        {"top_logprobs": 5},
+        {"logprobs": False, "top_logprobs": 5},
+        {"logprobs": True, "top_logprobs": 21},
+        {"logprobs": True, "top_logprobs": -1},
+        {"logprobs": True, "top_logprobs": True},
+        {"logprobs": "yes"},
+    ],
+)
+def test_invalid_logprob_settings_rejected(options):
+    with pytest.raises(ValueError):
+        chat_settings("gpt-4o-mini", 1, 0.0, options)
+
+
+def test_logprobs_omitted_by_default():
+    assert "logprobs" not in chat_settings("gpt-4o-mini", 1, 0.0, {})
