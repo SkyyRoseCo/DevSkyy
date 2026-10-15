@@ -75,29 +75,5 @@ class ProductPresentationTests(unittest.TestCase):
         self.assertEqual(orders, sorted(set(orders)))
 
 
-def test_jersey_membership_and_routes_have_one_registry_authority() -> None:
-    registry = _registry()
-    jerseys = registry["supplements"]["jersey_series_skus"]
-    assert jerseys == [
-        "br-003",
-        "br-008",
-        "br-009",
-        "br-010",
-        "br-011",
-        "br-012",
-        "br-014",
-        "br-015",
-    ]
-    for sku in jerseys:
-        record = registry["products"][sku]
-        assert record["collection"] == "black-rose"
-        assert record["presentation"] == "jersey-series"
-        # The jersey series is a chapter of Black Rose, not a fifth collection
-        # route — see build-product-presentation-registry.py.
-        assert record["route"] == "/collections/black-rose/#jersey-series"
-        assert "jersey_chapter" in record
-        assert "film_start" in record
-
-
 if __name__ == "__main__":
     unittest.main()

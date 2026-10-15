@@ -377,7 +377,7 @@ app.include_router(autonomous_router, prefix="/api/v1")
 app.include_router(monitoring_router, prefix="/api/v1")
 app.include_router(orchestration_router, prefix="/api/v1")
 # Blender render jobs (POST /api/v1/render-jobs → headless worker; see pipelines/blender_render).
-app.include_router(render_jobs_router, prefix="/api/v1")
+app.include_router(render_jobs_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
 app.include_router(sync_router, prefix="/api/v1")
 app.include_router(lora_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
 app.include_router(training_router, prefix="/api/v1", dependencies=_ADMIN_ONLY)
