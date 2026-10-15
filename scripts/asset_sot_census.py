@@ -147,7 +147,7 @@ DEFAULT_LEDGERS: tuple[Ledger, ...] = (
             f"{V2}/data/v2-media-reviews/*.json",
             f"{V2}/assets/**/manifest.json",
         ),
-        (V2, f"{V2}/assets", "", "@dir"),
+        ("@dir", V2, f"{V2}/assets", ""),  # manifest-local names win over broader bases
     ),
     Ledger(
         REVIEW_LEDGER,

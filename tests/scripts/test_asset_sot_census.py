@@ -184,6 +184,19 @@ def test_theme_ledger_resolves_paths_relative_to_its_own_folder(repo: Path) -> N
     assert report["owners"]["v2/assets/sot/br-002/ghost-front.png"] == ["v2"]
 
 
+def test_theme_ledger_prefers_the_manifest_folder_over_broader_bases(repo: Path) -> None:
+    """A name that also exists at the theme root must credit the file beside the manifest."""
+    (theme_v2,) = [ledger for ledger in census.DEFAULT_LEDGERS if ledger.role == "theme-v2"]
+    bases = tuple("v2" if base == census.V2 else base for base in theme_v2.bases)
+    ledgers = (*LEDGERS, census.Ledger("v2", "theme-v2", ("v2/**/manifest.json",), bases))
+    _write(repo, "v2/assets/sot/manifest.json", json.dumps({"file": "dupe.png"}))
+    _write(repo, "v2/assets/sot/dupe.png", b"LOCAL")
+    _write(repo, "v2/dupe.png", b"ROOT")
+    _git(repo, "add", "-A")
+    report = census.run_census(repo, ledgers)
+    assert report["owners"].get("v2/assets/sot/dupe.png") == ["v2"]
+
+
 WORKFLOW = census.REPO_ROOT / ".github/workflows/catalog-validate.yml"
 
 
