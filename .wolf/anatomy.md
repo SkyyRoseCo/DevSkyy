@@ -4038,7 +4038,7 @@
 
 ## docs/campaigns/
 
-- `2026-kids-capsule-report.html` — SkyyRose | Inheritance of Elegance Campaign Report (~1140 tok)
+- `2026-kids-capsule-report.html` — SkyyRoseInheritance of Elegance Campaign Report (~1140 tok)
 - `sot-lookbook.html` — SkyyRose Lookbook (wordpress-theme/skyyrose-flagship / lookbook · 4 collections) (~4514 tok)
 
 ## docs/database/

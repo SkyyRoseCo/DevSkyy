@@ -1,0 +1,64 @@
+{
+  "_note": "Remotion project created by the founder's command on 2026-10-14. Read-only inventory; skills not reviewed.",
+  "command": "npx create-video@latest --yes --blank my-video && cd my-video && npx remotion skills add && npm run dev",
+  "location": "/Users/theceo/DevSkyy/my-video (repo root, UNTRACKED, not ignored)",
+  "stack": {
+    "remotion": "4.0.535",
+    "@remotion/cli": "4.0.535",
+    "react": "19.2.3",
+    "typescript": "5.9.3",
+    "bundler": "Rspack (Config.setRspack(true))",
+    "scripts": {
+      "dev": "remotion studio",
+      "build": "remotion bundle",
+      "lint": "eslint src && tsc"
+    }
+  },
+  "src": [
+    "src/index.ts",
+    "src/Root.tsx",
+    "src/Composition.tsx"
+  ],
+  "skills_added": {
+    "source": "remotion-dev/skills (skills-lock.json)",
+    "installed_at": ".agents/skills/, .claude/skills/",
+    "names": [
+      "remotion-best-practices",
+      "remotion-captions",
+      "remotion-create",
+      "remotion-docs",
+      "remotion-interactivity",
+      "remotion-maps",
+      "remotion-markup",
+      "remotion-multimedia",
+      "remotion-render",
+      "remotion-saas",
+      "remotion-studio",
+      "remotion-upgrade"
+    ],
+    "warning": "installer printed: 'Review skills before use; they run with full agent permissions.' NOT reviewed; do not invoke them until read"
+  },
+  "dev_server": {
+    "port": 3000,
+    "pid_seen": 71989,
+    "conflict": "3000 is also the documented port for html-anything and the Next dev server; stop this one before starting those"
+  },
+  "self_contained": "own package.json, lockfile and node_modules; does not touch root or frontend/",
+  "skyyrose_fit": {
+    "role": "programmatic video: React compositions rendered to MP4; pairs with ffmpeg.wasm (browser) as the server/CLI alternative, and with motion/three for scenes",
+    "uses": [
+      "drop teasers, lookbook reels, OG video, social posts (see references.json posts.design)"
+    ],
+    "constraints": [
+      "Rendering is local compute (no per-call cost) but anything uploaded or published is STOP-AND-SHOW",
+      "Product imagery inside any composition must come through get_product(sku)['images'] and be eyes-on verified; no unverified renders",
+      "Remotion licence: free for individuals/small teams, company licence beyond that threshold; terms not verified here, check before commercial use"
+    ]
+  },
+  "gaps": [
+    "my-video untracked in repo root: move out of ~/DevSkyy or gitignore",
+    "Skills unreviewed",
+    "Licence terms unverified",
+    "No composition built"
+  ]
+}

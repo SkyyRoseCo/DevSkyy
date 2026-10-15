@@ -126,8 +126,7 @@
   "source_bindings": [
     {
       "role": "composition_and_cast_authority",
-      "path": "Comfy/external-authorities/BR-COMMERCE-2/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
-      "availability": "REQUIRED_EXTERNAL_INPUT_NOT_COMMITTED",
+      "path": "renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
       "sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e",
       "send_to_higgsfield": false,
       "provider_use": "SOURCE_AUTHORITY_ONLY",
@@ -144,8 +143,7 @@
     },
     {
       "role": "exact_brand_sculpture",
-      "path": "Comfy/external-authorities/BR-COMMERCE-2/black-rose-font-statue-hero-exact-v1.png",
-      "availability": "REQUIRED_EXTERNAL_INPUT_NOT_COMMITTED",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png",
       "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
       "send_to_higgsfield": false,
       "provider_use": "COMFY_PROTECTED_COMPOSITE_ONLY",
@@ -177,8 +175,7 @@
     },
     {
       "role": "br-004_founder_wearer_authority",
-      "path": "Comfy/external-authorities/BR-COMMERCE-2/BLACK_Rose_Long_Hoodie.png",
-      "availability": "REQUIRED_EXTERNAL_INPUT_NOT_COMMITTED",
+      "path": "renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/BLACK_Rose_Long_Hoodie.png",
       "sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34",
       "send_to_higgsfield": false,
       "provider_use": "SOURCE_AUTHORITY_ONLY",

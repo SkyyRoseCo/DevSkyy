@@ -1,0 +1,17 @@
+{
+  "role": "god-mode-project-manager",
+  "installed_file": "/Users/theceo/.codex/agents/god-mode-project-manager.toml",
+  "registered_in": "/Users/theceo/.codex/config.toml",
+  "model_override": false,
+  "concurrency_changed": false,
+  "toml_parse": "PASS",
+  "unrelated_config_preserved": "PASS",
+  "role_sha256": "7a045c5251a1608918d4be8b81611734fa07753d928a88c89fd193508959f1ee",
+  "host_discovery": "NOT_YET_VERIFIED",
+  "native_role_invocation": "NOT_TESTED: role not exposed in this session tool schema",
+  "throughput_multiplier": "UNMEASURED",
+  "scheduled_background_worker": false,
+  "default_agent_rehearsal": "PASS core scenarios; review gaps corrected in final text",
+  "independent_architect_review": "PASS final configuration/source; native role activation excluded",
+  "independent_review_sha256": "7a045c5251a1608918d4be8b81611734fa07753d928a88c89fd193508959f1ee"
+}

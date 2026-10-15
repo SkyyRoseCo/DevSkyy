@@ -65,6 +65,9 @@ $skyyrose_core_includes = array(
 	'/inc/theme-setup.php',
 	'/inc/brand-colors.php',
 	'/inc/collections-config.php',
+	// Hook-free 3D model URL policy + viewer enqueue; consumed by
+	// enqueue-templates.php and (when WooCommerce is active) woocommerce.php.
+	'/inc/product-3d-model.php',
 	'/inc/enqueue.php',
 	'/inc/enqueue-templates.php',
 	'/inc/enqueue-performance.php',

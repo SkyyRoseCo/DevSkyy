@@ -1,104 +1,189 @@
 ---
 name: devskyy-patterns
-description: Coding patterns extracted from DevSkyy git history (200 commits analyzed 2026-06-10). Commit conventions, hot-surface workflows, co-change rules (CSS→.min rebuild, source→.wolf docs), and testing layout. Use when committing, editing theme assets, or onboarding a session to this repo's actual practices.
-version: 1.0.0
+description: >
+  Coding patterns extracted from DevSkyy git history (200 commits re-analyzed
+  2026-09-11). Commit conventions, co-change rules (CSS→.min rebuild, version
+  triple, buglog discipline), hotspot files, monorepo architecture, theme build
+  workflow, and test locations. Use when writing commits, editing theme CSS/JS,
+  fixing bugs, or navigating the repo structure.
+version: 2.0.0
 source: local-git-analysis
 analyzed_commits: 200
+generated: 2026-09-11
 ---
 
 # DevSkyy Patterns
 
-Extracted from the last 200 commits on `main`/feature branches (analyzed 2026-06-10).
-These are *observed* practices — what the repo actually does, not aspirations.
+Re-analyzed from the last 200 commits (2026-09-11). Observed practices, not
+aspirations.
 
 ## Commit Conventions
 
-**Conventional commits, near-100% adherence.** Distribution over 200 commits:
+**Conventional commits with mandatory scope for theme/sot/security/ci work.**
 
-| Type | Count | Usage |
-|------|-------|-------|
-| `feat` | 70 | New features, templates, pipelines |
-| `fix` | 43 | Bug fixes, security findings, CI repair |
-| `chore` | 27 | Deps, cleanup, .wolf/openwolf metadata |
-| `docs` | 26 | Specs, brand docs, CLAUDE.md learnings |
-| `refactor` | 14 | Template consolidation, DI inversions |
-| `perf` | 12 | Theme asset/loading optimization |
-| `style` / `test` / `ci` / `build` | rare | Used precisely, not as dumping grounds |
+| Type     | Freq | Scope examples                                       |
+| -------- | ---- | ---------------------------------------------------- |
+| `fix:`   | 27%  | `(theme)` `(security)` `(ci)` `(sot)` `(deps)`       |
+| `feat:`  | 20%  | `(theme)` `(plugin)` `(comfy)` `(dashboard)` `(sot)` |
+| `chore:` | 16%  | `(theme)` `(wolf)` `(deps)` `(claude-md)` `(v2)`     |
+| `docs:`  | 14%  | `(skills)` `(lessons)` `(comfy)`                     |
+| `ci:`    | 5%   | `(catalog)` `(security)`                             |
+| `deps:`  | 4%   | `(npm)` — batch-bump style                           |
+| `perf:`  | 4%   | `(theme)`                                            |
 
-**Scopes are used ~50% of the time** and name the subsystem, not the file:
-`(theme)` `(elite-studio)` `(v2-mockup)` `(specs)` `(deps)` `(phase0)` `(hooks)`
-`(openwolf)` `(uploader)` `(plugin)` `(security)` `(render)` `(pipeline3d)`.
+Pattern: `type(scope): imperative-mood description`
 
-Pattern: `<type>(<subsystem>): <imperative description>`. Example from history:
-`fix(security): resolve 7 bandit HIGH/HIGH findings blocking security CI gate`.
+```
+fix(theme): correct hero overflow on mobile viewport
+feat(sot): bind BR-007 four-angle authority
+chore(theme): bump version triple to 2.2.5
+```
 
-## Hot Surfaces (where work concentrates)
+**Scope decision tree:**
 
-Most-changed files — treat edits here as high-blast-radius, read before writing:
+- `wordpress-theme/**` → `(theme)`; `.wolf/**` → `(wolf)`; `assets/products/**`
+  → `(sot)`
+- `Comfy/**` → `(comfy)`; `.github/workflows/**` → `(ci)`; `plugins/**` →
+  `(plugin)`
+- `frontend/**` → `(dashboard)`; security/vuln fix → `(security)` or `(deps)`
 
-1. `wordpress-theme/skyyrose-flagship/functions.php` (33 commits) — theme constants,
-   includes array, bootstrap order. Almost every theme feature touches it.
-2. `wordpress-theme/skyyrose-flagship/inc/enqueue.php` (17) — all CSS/JS loading,
-   template-slug detection. New page CSS/JS lands here, never inline.
-3. `wordpress-theme/skyyrose-flagship/style.css` (10) — version bumps ride along
-   with asset changes (cache-bust via `SKYYROSE_VERSION`).
-4. `assets/images/products/**` (255 directory touches) — product imagery batches;
-   per-SKU folders named `<product-name>/<product-name>-<view>.<ext>`.
-5. `.wolf/anatomy.md` + `.wolf/memory.md` (15 commits co-change with source) —
-   OpenWolf metadata is committed WITH the change it documents, not after.
+## Co-Change Rules (hard)
 
-## Co-Change Rules (files that move together)
+### 1. Theme Version Triple
 
-- **Theme CSS/JS source ⇄ `.min` build**: 14 of the analyzed commits change a
-  source asset and its `.min` together. Production loads `.min` only — an edit
-  without `node scripts/build-css.js` / `build-js.js` is inert. Never commit
-  one without the other.
-- **`functions.php` ⇄ `inc/<module>.php`**: new `inc/` modules are registered in
-  the same commit that creates them (includes array, bootstrap order matters:
-  `detection.php` → `shared.php` → builder files).
-- **Fix ⇄ learning**: corrective commits carry their CLAUDE.md "Learnings" entry
-  or `.wolf/cerebrum.md` entry in the same commit (project Self-Correction rule,
-  visible in history as `docs+fix:` style commits).
-- **Theme version bump ⇄ asset change**: `SKYYROSE_VERSION` in `functions.php` /
-  `style.css` bumps alongside CSS/JS changes so the CDN cache busts.
+Any version bump must touch all three in one commit:
 
-## Workflows
+```
+functions.php   ← SKYYROSE_VERSION constant (~52 enqueue cache-busts)
+style.css       ← Version: header
+readme.txt      ← Stable tag
+```
 
-### Adding a theme page/template
-1. Create `template-<kind>-<slug>.php` in theme root
-2. Register slug in `inc/enqueue.php` template-slug map (filename must match exactly)
-3. Add page CSS to `assets/css/`, JS to `assets/js/`
-4. Rebuild minified assets (`scripts/build-css.js`, `scripts/build-js.js`)
-5. Bump `SKYYROSE_VERSION`; commit all of it together as one `feat(theme):`
+Commit: `chore(theme): bump version triple to X.Y.Z`
 
-### Adding an `inc/` module
-1. Create `inc/<module>.php` with ABSPATH guard
-2. Add to includes array in `functions.php` (respect bootstrap order)
-3. Same commit
+### 2. CSS Source → .min Rebuild (always)
 
-### Product imagery batch
-- One commit per batch under `assets/images/products/<sku-folder>/`
-- Reference images live in `products/_references/`, ghost-mannequin in `products/ghost/`
-- Catalog truth = `data/skyyrose-catalog.csv` + per-SKU dossiers in `data/dossiers/`
+Every `.css` source edit requires a rebuilt `.min.css` in the **same commit**.
 
-### Python pipeline work
-- Pipelines live in `scripts/` (e.g. `scripts/oai_render/`) and `skyyrose/elite_studio/`
-- Every top-level package dir needs `__init__.py` (mypy `namespace_packages = False`)
-- Format gate before commit: `isort . && ruff check --fix && black .` (line length 100)
+```bash
+cd wordpress-theme && npm run build:css                   # rebuilds all 61 .min files
+cd skyyrose-flagship && node scripts/build-css.js --check # verify sync
+```
 
-## Testing Patterns
+CI `🏗️ WordPress Theme` will fail on any `.min` drift — no exceptions.
 
-- Framework: **pytest**; tests mirror source domains: `tests/elite_studio/platform/`
-  (19 commit-touches), `tests/pipelines/`, `tests/integration/` (integration tests
-  go here, NOT `tests/api/`)
-- Naming: `test_<area>_<behavior>.py` (e.g. `tests/test_p0_ssrf_replicate.py`
-  shipped 20 regression tests alongside its fix — tests land in the fix commit)
-- Run `pytest tests/ -v` after every change; coverage target 85%
-- Use `rtk proxy pytest` for true pass/fail (bare rtk pytest output can mislead)
+### 3. Bug Fix → Buglog Update (30 of 200 commits)
 
-## Anti-Patterns (observed and corrected in history)
+Significant bug fixes update `.wolf/buglog.json` in the same commit. Record:
+bug-ID, description, fix summary, recurrence count.
 
-- Committing source CSS/JS without rebuilding `.min` → fix shipped but inert in prod
-- Creating `agents/base_super_agent.py` flat file → silently shadowed by the package
-- Staging auto-injected `<claude-mem-context>` CLAUDE.md churn → session noise, exclude
-- Editing WC core templates instead of hooks → all WC changes via theme overrides + hooks
+### 4. Design Token Edits → Freshness Guard
+
+Edits to `design-tokens.css`, `skyyrose-catalog.csv`, or `visual-manifest.json`
+trigger the collection-SOT check. Run before staging:
+
+```bash
+bash scripts/freshness-guard.sh       # check
+bash scripts/freshness-guard.sh --fix # regenerate derived files + re-stage
+```
+
+### 5. Fix → Learning (behavioral)
+
+Corrective commits carry the lesson in the same commit:
+
+- `tasks/lessons.md` — behavioral lessons
+- `docs/engineering-learnings.md` — engineering lessons
+- `.wolf/buglog.json` — bug record
+
+## Hotspot Files (most-changed in 200 commits)
+
+| File                                 | Touches | Risk                               |
+| ------------------------------------ | ------- | ---------------------------------- |
+| `.wolf/buglog.json`                  | 30      | Updated with every significant fix |
+| `functions.php`                      | 21      | Version bump + hook registration   |
+| `style.css`                          | 20      | Version bump + theme metadata      |
+| `readme.txt`                         | 19      | Version bump only                  |
+| `CLAUDE.md`                          | 16      | Agent config — reads frequently    |
+| `inc/enqueue.php`                    | 11      | All CSS/JS registration lives here |
+| `template-parts/collection/page.php` | 10      | Collection layout                  |
+| `.github/workflows/ci.yml`           | 8       | CI pipeline                        |
+
+## Theme Build Workflow
+
+```bash
+# 1. Edit source CSS/JS
+# 2. Rebuild
+cd wordpress-theme && npm run build        # CSS + JS + editorial index
+# — or targeted —
+cd wordpress-theme && npm run build:css    # CSS only
+
+# 3. Verify sync (no drift)
+cd wordpress-theme/skyyrose-flagship && node scripts/build-css.js --check
+
+# 4. Run freshness guard if design-tokens.css touched
+bash scripts/freshness-guard.sh
+
+# 5. Commit source + .min + any version bump together
+git add wordpress-theme/skyyrose-flagship/assets/css/
+git commit -- <explicit paths>             # never bare git add .
+```
+
+## Monorepo Architecture
+
+```
+DevSkyy/
+├── main_enterprise.py          # FastAPI entry (Python 3.11+)
+├── api/                        # Route handlers
+├── agents/                     # EnhancedSuperAgent + ADK agents
+├── src/                        # Shared TypeScript (vitest)
+│   ├── components/             # PascalCase.tsx
+│   ├── hooks/                  # use*.ts
+│   ├── lib/                    # Three.js, cart, checkout
+│   └── types/
+├── frontend/                   # Next.js 16 App Router dashboard
+├── wordpress-theme/
+│   ├── skyyrose-flagship/      # v1 — current production theme (skyyrose.co)
+│   │   ├── assets/css/         # design-tokens.css → source → .min
+│   │   ├── assets/js/          # source → .min
+│   │   ├── inc/                # PHP modules (enqueue, WC, security)
+│   │   ├── template-parts/     # Partials (BEM class naming)
+│   │   └── data/               # SOT scripts + catalog
+│   └── skyyrose-flagship-2/    # v2 — STAGING; replaces v1 on approval
+│       ├── assets/sot/         # self-contained SOT (logos, heroes, fonts, video)
+│       ├── data/               # generated: registry, font-provenance, image-opt
+│       ├── scripts/            # build-assets.mjs, verify-marketplace.sh, package-theme.sh
+│       └── dist/               # skyyrose-flagship-2.zip (packaged release)
+├── Comfy/                      # ComfyUI + OODA ledgers
+├── plugins/fashion-theme-team/ # Elite Web Builder runtime
+├── tests/                      # Python pytest (test_*.py)
+└── .wolf/                      # buglog, cerebrum, anatomy
+```
+
+**Workspace isolation:** `frontend/node_modules` ≠ root. WordPress build runs
+from `wordpress-theme/` (not `skyyrose-flagship/`). ADK uses `.venv-agents/`.
+
+## Testing Locations
+
+| Layer                | Framework         | Location                                                   |
+| -------------------- | ----------------- | ---------------------------------------------------------- |
+| Python API           | pytest            | `tests/test_*.py`                                          |
+| TypeScript shared    | vitest            | `src/**/__tests__/*.test.ts`                               |
+| Frontend Next.js     | vitest/playwright | `frontend/tests/`                                          |
+| WordPress PHP        | PHPUnit           | `wordpress-theme/skyyrose-flagship/tests/`                 |
+| Three.js/Collections | vitest            | filter: `vitest … collections` (**not** `src/collections`) |
+
+## Anti-Patterns (observed and corrected)
+
+- Committing source CSS without `.min` rebuild → inert in production
+- Using `src/collections` as vitest filter when directory doesn't exist → "no
+  tests found"
+- Bumping `SKYYROSE_VERSION` without the style.css + readme.txt triple → cache
+  not busted
+- `npm audit fix --force` on shared branch without reviewing breaking changes
+- `git stash` in a shared worktree → pops another session's stash
+- Editing WC core templates instead of hooks → all WC changes via theme
+  overrides + hooks
+- Staging auto-injected `<claude-mem-context>` CLAUDE.md churn → session noise,
+  exclude
+
+V2-specific anti-patterns → `wordpress-theme/skyyrose-flagship-2/CLAUDE.md`

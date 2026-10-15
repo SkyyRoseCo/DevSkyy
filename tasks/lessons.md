@@ -98,6 +98,7 @@ Patterns extracted from corrections. Review at session start.
 ## 2026-06-22 — Adding an import in a separate edit from its first use trips format-on-write
 - **Wrong:** with the `python-format-on-write.sh` PostToolUse hook active, I added `import os` to `verify-collection-sot.py` in one Edit, then added the `os.environ.get(...)` usage in a *second* Edit. Between them, ruff's autofix deleted `import os` as unused (F401); the second edit's usage then failed `F821 Undefined name os` and the hook blocked.
 - **Prevention:** when a format/lint-on-write hook is active, never land an import in a separate step from its first usage. Introduce both in the **same atomic write** (rewrite the file whole, or one Edit whose old/new_string spans import + usage). Any autofix-removable construct (unused import/var) must not exist alone, even transiently, between two hook-linted edits.
+- **Structural fix (2026-10-04):** `python-format-on-write.sh` is replaced by `precision-cleanup.sh` / `scripts/precision_cleanup.py`, which removes only an import the edit **orphaned** (it existed and was used before) and never one the edit **introduced**, so the transient-import failure above can no longer happen. It also formats only the touched lines (`black --line-ranges`, the formatter CI enforces) instead of the whole file: on 33 real files the old chain rewrote 781 untouched lines for a one-line edit each, precision 0. The workaround above is no longer required while that hook is the only Python formatter registered (`tests/test_precision_cleanup.py` guards that). Whole-file formatters on the same event race a range-limited one: keep exactly one.
 
 ## 2026-06-22 — A flaky test that mutates a shared real file races the rest of the suite
 - **Wrong:** `test_stale_tokens_fail_and_verify_leaves_no_net_change` injected junk into the real `design-tokens.css`, then ran a verify subprocess whose staleness gate reads that same file. Under the full suite (`asyncio_mode=auto` + sibling token tests), a concurrent regen wiped the junk before verify read it → verify returned 0 → `assert 0 == 1`. Passed in isolation, so it first read as "not my bug."
@@ -271,6 +272,82 @@ re-measured, it was right, and the wrong production change never shipped.
 Related: [[bug-334]], and the same incomplete-enumeration shape as the copy
 claim in the 2026-09-17 entry.
 
+## 2026-09-21 — "names only" is not redaction on a malformed env file (bug-357)
+
+**What I did wrong.** Auditing `.env.secrets`, I printed the key *names* from
+`dotenv_values()`, reasoning that names are safe and only values are secret.
+That dumped ~25 live credentials into the transcript.
+
+**Why the reasoning failed.** The invariant "the key side is not a secret" only
+holds for a *well-formed* env file. `.env.secrets` is a credentials notebook:
+it contains prose and pasted-command lines shaped `<label> = <secret>` and
+`Name: <secret>`, so python-dotenv returns the **secret as the dict key**. A
+names-only print is a values print. I had already recorded that this exact file
+contains prose labels with `=` — the fact was in memory and not applied at the
+moment of printing.
+
+**The rule.** Redaction is a **whitelist, never a blacklist**. When echoing
+anything derived from an env file:
+
+```python
+SAFE_NAME = re.compile(r"^[A-Z][A-Z0-9_]*$")
+label = k if SAFE_NAME.match(k) else f"<redacted:{hashlib.sha256(k.encode()).hexdigest()[:8]}>"
+```
+
+Never iterate `dotenv_values()` keys into stdout unfiltered. This applies to any
+file not *proven* well-formed — and a file you are auditing *because* it is
+malformed is by definition not proven well-formed.
+
+**Blast radius when it happens.** Values reach the model context and the local
+`~/.claude/projects/*/​*.jsonl` transcript. Containment is rotation, not deletion.
+
+## 2026-09-21 — a two-way diff cannot tell you who changed what
+
+**What I did wrong.** Checking whether a merge preserved both sides, I diffed my
+branch against `origin/main` and reported 24 keys "lost." Every one of them was
+**my own change reflected back**: the comparison had no way to separate "they
+changed it" from "I changed it."
+
+**Why it matters.** The output was plausible — a tidy list of named registry keys.
+Had I relayed it, an agent would have chased 24 regressions that never existed.
+This is the second baseline error of the session; the first hashed the empty string
+as a value and invented 5 diverging credentials.
+
+**The rule.** Attribution questions require the **merge base**, never the other
+branch:
+
+```bash
+base=$(git merge-base <mine> origin/main)
+```
+
+`theirs` = base→main, `ours` = base→mine. The merged result must carry theirs'
+value for `theirs - ours` and ours' for `ours - theirs`; only `theirs ∩ ours`
+needs judgment. Same shape as the pristine-tree rule for test attribution in
+`CLAUDE.md` §3 — **whenever the question is "who did this," a two-point comparison
+is the wrong instrument.**
+
+**Also from this session:** assert before you replace. A `python` edit of
+`MEMORY.md` asserted its anchor string was present, failed loudly on a wording
+mismatch, and cost one retry. A blind `str.replace` would have silently no-op'd
+and I would have reported success.
+
+## 2026-09-27 — "identical to main" is not "no consumer here" (bug-360)
+
+After PR #975 merged I deleted 24 untracked resolver copies from the shared
+checkout, having byte-proven each one was superseded by `main`. The tree
+broke: its branch (`feat/single-product-entry-point`) had not merged `main`,
+and a dirty tracked file (`enhancer.py`) imported `context_resolver`. The
+untracked copies were the only thing satisfying that import. The stop-gate
+caught it; all 24 were restored from `origin/main`.
+
+**Rule:** redundancy is relative to a tree. Before deleting from a working
+tree, run the importer census *in that tree* (including dirty tracked files)
+and confirm the tree's own branch contains the replacement. "Merged to main"
+only makes a file redundant in a checkout that has main.
+
+## 2026-10-10 — Check a PR's open/closed state, not just mergeability
+- Wrong: drove PR #1019 (merge-up + V2 recert + body edit) for hours after another session had closed it in favour of scoped PRs (#1029-#1034); `gh pr view --json mergeable` said CONFLICTING and a stale head, never "closed".
+- Rule: before any work "for" a PR, read `state` and the latest comments (`gh pr view N --json state,comments`); a head SHA that stops syncing after a push means the PR is closed, not that GitHub is slow.
 ## 2026-10-10 — A formatter run on a hash-pinned source is a content change (bug-372)
 
 **What happened:** repo-wide isort added one blank line to the ported

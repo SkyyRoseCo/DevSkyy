@@ -20,6 +20,7 @@
             <file>inc/brand-colors.php</file>
             <file>inc/collections-config.php</file>
             <file>inc/product-catalog.php</file>
+            <file>inc/product-3d-model.php</file>
         </include>
         <report>
             <html outputDirectory="tests/coverage/html" lowUpperBound="50" highLowerBound="85"/>

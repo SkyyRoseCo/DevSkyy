@@ -380,7 +380,10 @@ class TestOrchestrator:
         failing = _FailingCoreAgent()
         failing.core_type = CoreAgentType.CONTENT
         o.register_core_agent(failing)
-        result = await o.route("Write blog copy description")
+        # Never spawn a real Claude Agent SDK session from a unit test: it is a
+        # paid call when a key is present and a ~17s timeout when it is not.
+        with patch.object(Orchestrator, "_sdk_escalation", AsyncMock(return_value=None)):
+            result = await o.route("Write blog copy description")
         # After SDK escalation path was added, the result may come back
         # from SDK with different keys, or still require human approval
         assert (
@@ -1195,9 +1198,12 @@ class TestOrchestratorAdvanced:
         f2.name = "creative_fail"
         o.register_core_agent(f1)
         o.register_core_agent(f2)
-        result = await o._handle_escalation(
-            "task", failed_type=CoreAgentType.CONTENT, original_result={"error": "initial"}
-        )
+        # Never spawn a real Claude Agent SDK session from a unit test: it is a
+        # paid call when a key is present and a ~17s timeout when it is not.
+        with patch.object(Orchestrator, "_sdk_escalation", AsyncMock(return_value=None)):
+            result = await o._handle_escalation(
+                "task", failed_type=CoreAgentType.CONTENT, original_result={"error": "initial"}
+            )
         # SDK escalation may run and return a different structure;
         # if SDK also fails, requires_human_approval is set
         assert result.get("requires_human_approval") or result.get("success") is not None

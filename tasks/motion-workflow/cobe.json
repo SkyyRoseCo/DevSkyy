@@ -1,0 +1,80 @@
+{
+  "_note": "Scaffold of shuding/cobe as read 2026-10-14 via gh + npm + README. Nothing installed.",
+  "repo": "https://github.com/shuding/cobe",
+  "license": "MIT",
+  "default_branch": "main",
+  "stars": 5970,
+  "description": "5KB WebGL globe lib",
+  "latest_release": {
+    "tag": "2.0.1",
+    "date": "2026-03-19"
+  },
+  "last_push": "2026-09-22",
+  "npm": {
+    "cobe": "2.0.1",
+    "unpackedSize_bytes": 19292,
+    "runtime_dependencies": "none"
+  },
+  "api": {
+    "createGlobe(canvas, options)": "returns instance; call .destroy() to remove bindings",
+    "onRender(state)": "per-frame callback; mutate state (e.g. state.phi) to animate",
+    "options": [
+      "devicePixelRatio",
+      "width",
+      "height",
+      "phi",
+      "theta",
+      "dark",
+      "diffuse",
+      "scale",
+      "mapSamples",
+      "mapBrightness",
+      "baseColor",
+      "markerColor",
+      "glowColor",
+      "offset",
+      "markers",
+      "arcs",
+      "arcColor",
+      "arcWidth",
+      "arcHeight",
+      "markerElevation",
+      "onRender"
+    ],
+    "markers": "{ location:[lat,lng], size, color?, id? }",
+    "arcs": "{ from:[lat,lng], to:[lat,lng], color?, id? }"
+  },
+  "dom_binding": {
+    "mechanism": "CSS Anchor Positioning; markers/arcs with an `id` expose anchor names",
+    "css_vars": [
+      "--cobe-{id}",
+      "--cobe-arc-{id}",
+      "--cobe-visible-{id}",
+      "--cobe-visible-arc-{id}"
+    ],
+    "use": "any DOM element can be pinned to a marker; visibility var (0 behind globe, 1 front) drives opacity/blur/scale",
+    "verify": "CSS anchor-positioning browser support was NOT checked; confirm against caniuse/MDN before relying on it, and design a fallback"
+  },
+  "skyyrose_fit": {
+    "surfaces": [
+      "theme (vanilla, ~19 KB, single canvas, no React; vendor self-hosted into .min build)",
+      "frontend/ (works from a useEffect in a 'use client' component)"
+    ],
+    "plausible_uses": [
+      "brand-story or about section: Oakland origin point plus arcs to ship-to regions",
+      "admin: where orders ship"
+    ],
+    "brand_constraints": [
+      "baseColor/markerColor/glowColor are [r,g,b] 0..1 floats; derive from brand tokens (rose gold #B76E79, gold #D4AF37, silver #C0C0C0, crimson #DC143C, background #0A0A0A), never defaults",
+      "Marker coordinates and any location claims come from the founder; do not invent store, studio or shipping locations",
+      "Respect prefers-reduced-motion: stop the onRender spin",
+      "Own WebGL context: keep off pages already running a three.js scene"
+    ]
+  },
+  "gaps": [
+    "Not installed",
+    "No visual QC",
+    "Anchor-positioning support unverified",
+    "Real marker locations unknown, need founder input"
+  ]
+}
