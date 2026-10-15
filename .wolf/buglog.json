@@ -7286,6 +7286,26 @@
     "last_seen": "2026-10-14T00:00:00+00:00"
   },
   {
+    "id": "bug-406",
+    "timestamp": "2026-10-14T00:00:00+00:00",
+    "error_message": "Review of merged asset SOT census (#1084): generated projections (catalog index.json etc.) granted ownership on their own; flagship-2-media never resolved manifest-relative paths (replica-v1/manifest.json 'br-002/ghost-front.png' fell to review-only); catalog-validate path filters omitted 18 scanned extensions and every upper-case variant, so a PR adding only e.g. a .HEIC orphan never ran the gate",
+    "file": "scripts/asset_sot_census.py",
+    "root_cause": "census treated every declared ledger as an owner regardless of role (a stale projection could keep an asset the registry dropped); theme-v2 ledger bases lacked '@dir'; workflow filters were hand-listed and case-sensitive, not derived from MEDIA_EXTENSIONS",
+    "fix": "projection ledgers are parsed and reported but never grant ownership (the 256 catalog originals/ symlinks now count as byte copies of their registry-owned targets); flagship-2-media also resolves from the manifest's own folder; workflow filters use one case-insensitive [xX] class pattern per MEDIA_EXTENSIONS entry, and a test fails if any scanned extension, lower or upper case, would not trigger the workflow",
+    "tags": [
+      "fail-open",
+      "census",
+      "sot",
+      "ci",
+      "path-filter"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-14T00:00:00+00:00"
+  },
+  {
     "id": "bug-407",
     "timestamp": "2026-10-15T00:00:00+00:00",
     "error_message": "Kids colorblock product bundles (data/product-bundles/Kids {Purple,Red} Set/source-photo.jpg) held plain-tee photos; the legacy render paths pass that file to the model as 'REFERENCE — REAL PRODUCT PHOTO' for kids-002/kids-001",
