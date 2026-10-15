@@ -12,14 +12,16 @@ Ledgers (declared in ``DEFAULT_LEDGERS``; see ``SOT.md``):
                 (non-product imagery), ``typography.json`` (fonts)
 * projection  - registry-generated views: ``data/sot-images.json``,
                 ``assets/products/manifest.json``, ``assets/products/catalog/**/index.json``,
-                ``assets/hub/manifest.json``
+                ``assets/hub/manifest.json``. Reported for consistency, but never owners:
+                a stale view must not keep an asset its authority dropped
 * theme-v2    - Flagship 2 media ledgers under ``skyyrose-flagship-2/data`` and its
                 delivery ``assets/**/manifest.json`` files
 * review      - ``tasks/catalog-reconciliation/image-library/inventory.json``, the
                 review-area inventory for unverified, other-design and non-product media
 
-A file is *owned* when a ledger references its path, or when its bytes are identical
-to an owned file (a byte copy carries the identity of the referenced original).
+A file is *owned* when a non-projection ledger references its path, or when its bytes
+are identical to an owned file (a byte copy, or a symlink to one, carries the identity of
+the referenced original).
 Out-of-scope paths (dependencies, test fixtures, QA captures, documentation figures,
 agent tooling, ledger-regenerated derivatives) are excluded with an explicit reason.
 
@@ -114,6 +116,8 @@ class Ledger:
 
 # Owned only by this ledger = parked in the review area awaiting a founder decision.
 REVIEW_LEDGER = "review-inventory"
+# Generated views of an authority: checked for resolution, never counted as owners.
+PROJECTION = "projection"
 
 
 DEFAULT_LEDGERS: tuple[Ledger, ...] = (
@@ -131,12 +135,10 @@ DEFAULT_LEDGERS: tuple[Ledger, ...] = (
         "visual-manifest",
     ),
     Ledger("typography", "authority", (f"{V1}/data/brand/typography.json",), (V1, "")),
-    Ledger("sot-images", "projection", ("data/sot-images.json",), (V1, "")),
-    Ledger("product-asset-manifest", "projection", ("assets/products/manifest.json",)),
-    Ledger(
-        "product-library", "projection", ("assets/products/catalog/**/index.json",), ("", "@dir")
-    ),
-    Ledger("asset-hub", "projection", ("assets/hub/manifest.json",), ("assets/hub", "", V1)),
+    Ledger("sot-images", PROJECTION, ("data/sot-images.json",), (V1, "")),
+    Ledger("product-asset-manifest", PROJECTION, ("assets/products/manifest.json",)),
+    Ledger("product-library", PROJECTION, ("assets/products/catalog/**/index.json",), ("", "@dir")),
+    Ledger("asset-hub", PROJECTION, ("assets/hub/manifest.json",), ("assets/hub", "", V1)),
     Ledger(
         "flagship-2-media",
         "theme-v2",
@@ -145,7 +147,7 @@ DEFAULT_LEDGERS: tuple[Ledger, ...] = (
             f"{V2}/data/v2-media-reviews/*.json",
             f"{V2}/assets/**/manifest.json",
         ),
-        (V2, f"{V2}/assets", ""),
+        ("@dir", V2, f"{V2}/assets", ""),  # manifest-local names win over broader bases
     ),
     Ledger(
         REVIEW_LEDGER,
@@ -352,8 +354,9 @@ def _owners(
     summary: list[dict] = []
     for ledger in ledgers:
         owned, unresolved = ledger_references(root, ledger, universe)
-        for path in owned:
-            owners.setdefault(path, []).append(ledger.name)
+        if ledger.role != PROJECTION:
+            for path in owned:
+                owners.setdefault(path, []).append(ledger.name)
         summary.append(
             {
                 "name": ledger.name,
