@@ -740,7 +740,7 @@ get_header();
 					</button>
 				</div>
 
-
+				<p class="po-email-form__status" id="po-email-status" role="status" aria-live="polite" aria-atomic="true"></p>
 			</form>
 		</div>
 	</section>
