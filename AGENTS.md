@@ -382,3 +382,23 @@ Keep substantial examples in linked references and maintained canonical sources
 or overlays, never disposable plugin caches. Report missing evidence as a
 coverage gap; it does not revoke otherwise authorized work. Do not claim library
 compliance without checking every skill included in that claim.
+
+## Three-chapter campaign OS routing
+
+For this campaign and its skill audits, read `.agents/skills/skyyrose-campaign-ooda/SKILL.md` and its maintained application overlays. They bind current canon, source-backed examples and actual local OS limits; they do not enable remote dispatch or override founder decisions.
+
+## Workflow before production — standing founder direction (2026-10-15)
+
+Before production work, establish or update the relevant plugin, skill and workflow
+in their canonical editable sources. Reuse an adequate existing workflow; repair
+material gaps before its production step. Apply the latest explicit owner ideas,
+features and approved decisions to the affected briefs, contracts and handoffs.
+Retain superseded history with clear labels so it cannot silently drive new work.
+
+Identify each affected source, runtime copy, distribution mirror, manifest and
+consumer. Use the owning synchronization procedure, preserve unrelated work,
+verify actual parity and refresh dependent hashes/reviews. Do not edit disposable
+plugin caches directly. Report excluded copies or unresolved drift; never equate
+an intended sync or updated timestamp with verified synchronization. Skill example
+and imagery standards remain required. Source/contract readiness, production,
+independent QA, founder acceptance and release remain separate gates.
