@@ -251,6 +251,42 @@ Before ANY code touching an external library or API: `resolve-library-id` →
 LangGraph, FastAPI, WooCommerce REST — everything non-stdlib. Skipping costs
 more tokens fixing wrong usage than the lookup saves.
 
+- Pass a `/org/project` ID straight to `query-docs`; otherwise resolve first.
+  Max 3 calls per question, one concept per query.
+- Queries are sent to an external API — never put secrets, env values, or
+  proprietary code in one.
+- Pin the version the repo actually uses (`pip show` / `npm ls`) and ask for
+  that version's ID when Context7 lists one.
+
+### Serena — symbols before text
+
+For the _structure_ of code (what is defined where, who calls it, safe renames),
+use Serena's semantic tools before reading whole files or grepping. Call
+`initial_instructions` once per session, then `activate_project` on the checkout
+you are actually editing — a worktree is its own project path.
+
+| Need                     | Tool                                                               |
+| ------------------------ | ------------------------------------------------------------------ |
+| Outline of one file      | `get_symbols_overview`                                             |
+| One function / class     | `find_symbol` — `include_body` only for what you will read or edit |
+| Who uses X               | `find_referencing_symbols`                                         |
+| Rename / delete a symbol | `rename_symbol` / `safe_delete_symbol` — reference-aware, not sed  |
+| Replace a whole symbol   | `replace_symbol_body`; a few lines inside one → `replace_content`  |
+
+- **Serena answers "what does THIS repo do"; Context7 answers "what does the
+  LIBRARY do."** Never use one for the other's question.
+- **Serena memories are pointers, not facts.** The live ones
+  (`.serena/memories/*.md`) locate the authoritative docs; the Dec 2025–Jan 2026
+  notes in `.serena/memories/_archive/` describe a retired architecture and are
+  hidden from `list_memories`. This file, `get_product()`, and the code outrank
+  all of them (§2: a register is not current state).
+- Serena's line numbers are **0-based**.
+- Product, registry, and imagery facts are not Serena's domain — use
+  `get_product` and the manifests.
+- Serena edits are edits: §1 STOP-AND-SHOW and the shared-worktree rules below
+  still apply. `activate_project` rewrites `.serena/project.yml`; do not commit
+  that change.
+
 ### The loop
 
 1. Write the change — read existing code first; `Edit` targeted, `Write` for new
