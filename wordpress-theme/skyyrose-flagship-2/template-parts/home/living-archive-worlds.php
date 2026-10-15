@@ -1,6 +1,6 @@
 <?php
 /**
- * Entry through three approved final scene references.
+ * Three current V2 collection entries. Retired motion sources cannot empty the rail.
  * The Heir retains a direct native destination.
  *
  * @package SkyyRoseFlagship2
@@ -15,24 +15,15 @@ $archive_defaults = skyyrose2_collections();
 	<div class="sr2-recovered-worlds__rail" data-recovery-track tabindex="0" aria-label="<?php esc_attr_e( 'Approved collection worlds', 'skyyrose-flagship-2' ); ?>">
 	<?php foreach ( array( 'signature', 'black-rose', 'love-hurts' ) as $world_index => $world_slug ) : ?>
 		<?php
-		$world_scenes = skyyrose2_collection_commerce_scenes( $world_slug );
-		$world_scene  = $world_scenes[0] ?? array();
-		if ( empty( $world_scene['hero_composed'] ) ) {
+		$world_image = skyyrose2_collection_media( $world_slug, 'love-hurts' === $world_slug ? 'collection_story' : 'collection_hero' );
+		if ( empty( $world_image['src'] ) ) {
 			continue;
 		}
 		?>
-		<div class="sr2-recovery-home-world" style="--scene-ratio: <?php echo esc_attr( (string) ( absint( $world_scene['width'] ) / max( 1, absint( $world_scene['height'] ) ) ) ); ?>;" data-collection="<?php echo esc_attr( $world_slug ); ?>">
-			<?php
-			get_template_part(
-				'template-parts/commerce/hero-composed-scene',
-				null,
-				array(
-					'scene'      => $world_scene,
-					'collection' => $world_slug,
-					'index'      => $world_index,
-				)
-			);
-			?>
+		<div class="sr2-recovery-home-world" style="--scene-ratio: <?php echo esc_attr( (string) ( absint( $world_image['width'] ) / max( 1, absint( $world_image['height'] ) ) ) ); ?>;" data-collection="<?php echo esc_attr( $world_slug ); ?>" data-home-scene="<?php echo esc_attr( $world_slug ); ?>" data-scene-state="approved-v2-still">
+			<figure class="sr2-hero-commerce__frame" style="--scene-aspect: <?php echo absint( $world_image['width'] ); ?> / <?php echo absint( $world_image['height'] ); ?>;">
+				<?php echo skyyrose2_collection_media_markup( $world_image, 'lazy', '(max-width: 47.99em) calc(100vw - 2rem), 768px' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- skyyrose2_collection_media_markup() escapes every attribute. ?>
+			</figure>
 			<a class="sr2-control sr2-control--secondary" href="<?php echo esc_url( skyyrose2_collection_url( $world_slug ) ); ?>"><?php
 				echo esc_html(
 					sprintf(

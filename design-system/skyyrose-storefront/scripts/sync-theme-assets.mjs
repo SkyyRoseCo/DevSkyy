@@ -27,8 +27,8 @@ const FONT_DEST = resolve(PKG, 'src/fonts')
 //   - per-collection name-scripts (NOT in theme.json fontFamilies -> CURATED below):
 //     SkyyRose Black Rose Script, SkyyRose Love Hurts Graffiti, Pinyon Script, Grand Hotel
 //   - RETIRED 2026-07-10, excluded: Playfair Display, Cormorant Garamond, Bebas Neue, Yellowtail
-//     (woff2 removed from the theme). Legacy Pacifico/Kaushan woff2 remain on disk but are
-//     superseded by the bespoke BR/LH scripts and are NOT canon.
+//     (woff2 removed from the theme). Pacifico/Kaushan Script were removed 2026-10-14,
+//     superseded by the bespoke BR/LH scripts.
 // ---------------------------------------------------------------------------
 const CANON_WOFF2 = new Set([
   'archivo-latin.woff2',

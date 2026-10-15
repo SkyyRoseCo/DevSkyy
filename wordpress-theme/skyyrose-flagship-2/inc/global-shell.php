@@ -48,26 +48,50 @@ function skyyrose2_shell_links( $location, $links, $class = '' ) {
 	echo '</ul>';
 }
 
+/**
+ * Drop navigation entries with no visitable destination, and later entries
+ * that repeat an earlier URL, so the shell never advertises a dead route.
+ *
+ * @param array<string,string> $links Label => URL.
+ * @return array<string,string>
+ */
+function skyyrose2_live_links( $links ) {
+	$seen = array();
+	$live = array();
+	foreach ( $links as $label => $url ) {
+		if ( '' === (string) $url || isset( $seen[ $url ] ) ) {
+			continue;
+		}
+		$seen[ $url ] = true;
+		$live[ $label ] = $url;
+	}
+	return $live;
+}
+
 /** House routes stay visible and usable even without JavaScript. */
 function skyyrose2_house_links() {
-	return array(
-		__( 'Collections', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'collections' ),
-		__( 'Shop', 'skyyrose-flagship-2' )        => skyyrose2_shop_url(),
-		__( 'Lookbook', 'skyyrose-flagship-2' )    => home_url( '/lookbook/' ),
-		__( 'Pre-Order', 'skyyrose-flagship-2' )   => skyyrose2_marketplace_page_url( 'pre-order' ),
-		__( 'Journal', 'skyyrose-flagship-2' )     => skyyrose2_marketplace_page_url( 'journal' ),
-		__( 'About', 'skyyrose-flagship-2' )       => skyyrose2_marketplace_page_url( 'about' ),
-		__( 'Contact', 'skyyrose-flagship-2' )     => skyyrose2_marketplace_page_url( 'contact' ),
+	return skyyrose2_live_links(
+		array(
+			__( 'Collections', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'collections' ),
+			__( 'Shop', 'skyyrose-flagship-2' )        => skyyrose2_shop_url(),
+			__( 'Lookbook', 'skyyrose-flagship-2' )    => skyyrose2_published_page_permalink( 'lookbook' ),
+			__( 'Pre-Order', 'skyyrose-flagship-2' )   => skyyrose2_marketplace_page_url( 'pre-order' ),
+			__( 'Journal', 'skyyrose-flagship-2' )     => skyyrose2_marketplace_page_live_url( 'journal' ),
+			__( 'About', 'skyyrose-flagship-2' )       => skyyrose2_marketplace_page_url( 'about' ),
+			__( 'Contact', 'skyyrose-flagship-2' )     => skyyrose2_marketplace_page_url( 'contact' ),
+		)
 	);
 }
 
 /** The four permanent editorial routes shown in the quiet desktop masthead. */
 function skyyrose2_masthead_links() {
-	return array(
-		__( 'Shop', 'skyyrose-flagship-2' )        => skyyrose2_shop_url(),
-		__( 'Collections', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'collections' ),
-		__( 'Journal', 'skyyrose-flagship-2' )     => skyyrose2_marketplace_page_url( 'journal' ),
-		__( 'About', 'skyyrose-flagship-2' )       => skyyrose2_marketplace_page_url( 'about' ),
+	return skyyrose2_live_links(
+		array(
+			__( 'Shop', 'skyyrose-flagship-2' )        => skyyrose2_shop_url(),
+			__( 'Collections', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'collections' ),
+			__( 'Journal', 'skyyrose-flagship-2' )     => skyyrose2_marketplace_page_live_url( 'journal' ),
+			__( 'About', 'skyyrose-flagship-2' )       => skyyrose2_marketplace_page_url( 'about' ),
+		)
 	);
 }
 
@@ -93,7 +117,7 @@ function skyyrose2_header() {
 				<?php if ( has_nav_menu( 'primary' ) ) : ?>
 				<div class="sr2-house-nav__experiences"><h2 class="sr2-index"><?php esc_html_e( 'Experiences', 'skyyrose-flagship-2' ); ?></h2><?php skyyrose2_shell_links( 'primary', array(), 'sr2-house-nav__experience-links' ); ?></div>
 				<?php endif; ?>
-				<div class="sr2-house-nav__utility"><a href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" data-search-open><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( $account ); ?>"><?php esc_html_e( 'Account', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'wishlist' ) ); ?>"><?php esc_html_e( 'Saved pieces', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/lookbook/' ) ); ?>"><?php esc_html_e( 'Lookbook', 'skyyrose-flagship-2' ); ?></a></div>
+				<div class="sr2-house-nav__utility"><a href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" data-search-open><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( $account ); ?>"><?php esc_html_e( 'Account', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'wishlist' ) ); ?>"><?php esc_html_e( 'Saved pieces', 'skyyrose-flagship-2' ); ?></a><?php if ( skyyrose2_published_page_permalink( 'lookbook' ) ) : ?><a href="<?php echo esc_url( skyyrose2_published_page_permalink( 'lookbook' ) ); ?>"><?php esc_html_e( 'Lookbook', 'skyyrose-flagship-2' ); ?></a><?php endif; ?></div>
 			</div>
 			<div class="sr2-house-nav__collections">
 				<p class="sr2-index"><?php esc_html_e( 'Four worlds. One house.', 'skyyrose-flagship-2' ); ?></p>

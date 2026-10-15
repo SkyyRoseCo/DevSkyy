@@ -114,6 +114,7 @@ try {
 	}
 	$html = render_preorder( $template );
 	preorder_check( 3 === substr_count( $html, '<figure class="sr2-reserve-scene" data-media-role="merchandise_scene"' ) && 3 === substr_count( $html, '<img ' ), 'One permitted role-bound merchandise scene appears per collection' );
+	preorder_check( 3 === substr_count( $html, 'sr2-reserve-edit__intro sr2-reserve-edit__intro--scene' ), 'Only groups with a rendered scene take the two-column intro' );
 	preorder_check( str_contains( $html, 'Synthetic lh-005 &lt;piece&gt;' ), 'Scene cast links use native product names and URLs' );
 	foreach ( $GLOBALS['media_requests'] as $request ) { preorder_check( 'merchandise_scene' === $request[1], 'Scene lookup always supplies the required eligibility role' ); }
 	$GLOBALS['fixture_media']['assets/test/signature.webp']['fixture_allowed'] = false;
@@ -121,6 +122,7 @@ try {
 	$GLOBALS['fixture_media']['assets/test/love-hurts.webp']['collections'] = array( 'black-rose' );
 	$html = render_preorder( $template );
 	preorder_check( ! str_contains( $html, '<img ' ), 'Denied, cross-cast and wrong-collection records have no fallback' );
+	preorder_check( 3 === substr_count( $html, 'class="sr2-reserve-edit__intro"' ) && ! str_contains( $html, 'sr2-reserve-edit__intro--scene' ), 'Scene-less groups keep the single-column intro (no empty scene column)' );
 	$GLOBALS['fixture_media'] = array(
 		'assets/test/arrival.webp' => array( 'kind' => 'photograph', 'roles' => array( 'preorder_arrival' ), 'collections' => array( 'signature', 'black-rose', 'love-hurts' ), 'skus' => array( 'sg-001', 'br-006', 'lh-005' ), 'fixture_allowed' => true ),
 		'bad-roles' => array( 'kind' => 'photograph', 'roles' => 'merchandise_scene' ),

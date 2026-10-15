@@ -100,7 +100,7 @@ function skyyrose2_render_approved_pdp_styling_view( $product ) {
 
 /** Render an approved original when no integrity-valid derivative is available. */
 function skyyrose2_render_approved_pdp_styling_front( $sku, $front, $src = '', $width = 0, $height = 0, $sizes = '' ) {
-	if ( ! is_array( $front ) || 'INDEPENDENT_VISUAL_PASS' !== ( $front['status'] ?? '' ) || ! in_array( 'pdp_on_model_front', $front['roles'] ?? array(), true ) || empty( $front['src'] ) || empty( $front['alt'] ) ) {
+	if ( ! is_array( $front ) || ! in_array( $front['status'] ?? '', array( 'INDEPENDENT_VISUAL_PASS', 'FOUNDER_ACCEPTED' ), true ) || ! skyyrose2_media_path_allowed( $front['path'] ?? '', 'pdp_on_model_front', $sku ) || ! in_array( 'pdp_on_model_front', $front['roles'] ?? array(), true ) || empty( $front['src'] ) || empty( $front['alt'] ) ) {
 		return false;
 	}
 	$src = $src ?: $front['src'];

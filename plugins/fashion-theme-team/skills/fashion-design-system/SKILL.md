@@ -8,12 +8,17 @@ description: Builds and governs SkyyRose tokens, typography, primitives, compone
 Use before broad storefront implementation or when a token, component, state,
 or route pattern is missing.
 
+For SkyyRose redesign work, apply the design-system examples in
+[`../fashion-theme-team/references/verified-examples.md`](../fashion-theme-team/references/verified-examples.md#fashion-design-system).
+
 ## Owners and inputs
 
 Route `fashion-design-system-engineer`, `fashion-token-foundations-engineer`,
 `fashion-component-commerce-engineer`, `fashion-motion-responsive-engineer`,
 `fashion-accessibility-content-engineer`, and DesignOps. Read the design-system,
-V2 motion, component, and official platform contracts.
+V2 motion, component, and official platform contracts. For cascade, layout,
+theming, and responsive CSS mechanics, load one file via
+`../fashion-theme-team/references/engineering/css/index.md`.
 
 ## Procedure
 

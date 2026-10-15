@@ -28,6 +28,9 @@
 #   5. Retired refs  — no code points at retired masters (product-masters/
 #                      catalog.yaml, manifest.json, data/product-catalog.csv,
 #                      products.json, the deleted flat data/collections/*.json).
+#   6. Formatter-ignore coverage — every derived / vendored / sha256-pinned file
+#                      is prettier-ignored, so lint-staged cannot rewrite it
+#                      after the diff was reviewed (bug-332). Always runs.
 #
 # Modes:
 #   (default)  check staged files only — fast; used by the pre-commit hook.
@@ -35,7 +38,8 @@
 #   --fix      regenerate the SOT, rebuild .min, and re-stage them; then re-check.
 #
 # Exit 0 = everything fresh. Exit 1 = stale (with the exact fix command).
-# Missing tooling (no venv / no npm) downgrades a check to a skip, never a fail.
+# Missing tooling (no venv / no npm) downgrades checks 1-5 to a skip, never a fail.
+# CHECK 6 is the exception and fails closed — see its comment for why.
 
 set -uo pipefail
 
@@ -290,6 +294,24 @@ if [ -n "$HITS" ]; then
   printf '%s\n' "$HITS" | head -12 | sed 's/^/    /'
 else
   c_ok "no retired-master references"
+fi
+
+# ── CHECK 6: formatter-ignore coverage ──────────────────────────────────────
+# Unconditional (40ms) and fails CLOSED, unlike checks 1-5. The failure it
+# guards against happens BETWEEN review and commit: lint-staged formats and
+# re-stages files after the diff a human approved, so no other gate in this
+# hook can see it. A skip here would restore exactly the silence that let
+# prettier expand three.module.min.js 691,648 -> 952,111 bytes (bug-332).
+hdr "6. Formatter-ignore coverage"
+if command -v node > /dev/null 2>&1; then
+  if node "$ROOT/scripts/verify-formatter-ignores.mjs" --quiet > /tmp/fg_fmt_ignore.log 2>&1; then
+    c_ok "derived/vendored/pinned files are prettier-ignored"
+  else
+    c_bad "a derived or pinned file is formattable — lint-staged would rewrite it after review:"
+    sed 's/^/    /' /tmp/fg_fmt_ignore.log
+  fi
+else
+  c_bad "node unavailable — cannot prove derived files are prettier-ignored (gate fails closed)"
 fi
 
 # ── Summary ─────────────────────────────────────────────────────────────────

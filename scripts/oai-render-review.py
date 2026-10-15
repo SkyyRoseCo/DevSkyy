@@ -24,7 +24,7 @@ import os
 import re
 import sys
 import tempfile
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
@@ -281,7 +281,7 @@ def main() -> None:
     args = parser.parse_args()
     REVIEW_DIR.mkdir(parents=True, exist_ok=True)
     server = ThreadingHTTPServer(("127.0.0.1", args.port), ReviewHandler)
-    stamp = datetime.now(timezone.utc).strftime("%H:%M:%SZ")
+    stamp = datetime.now(UTC).strftime("%H:%M:%SZ")
     print(f"[{stamp}] review board: http://127.0.0.1:{args.port}/  (state: {STATE_PATH})")
     server.serve_forever()
 

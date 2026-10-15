@@ -62,6 +62,25 @@ class OpenAIChatSettings:
     stop: str | list[str] | None = None
     tool_choice: str | dict[str, Any] | None = None
     parallel_tool_calls: bool | None = None
+    logprobs: bool | None = None
+    top_logprobs: int | None = None
+
+    def _logprob_request(self, model: str, sampling: bool) -> dict[str, Any]:
+        """Token log probabilities exist only on sampling-capable settings."""
+        if self.logprobs is None and self.top_logprobs is None:
+            return {}
+        if type(self.logprobs) is not bool or not sampling:
+            raise ValueError(f"logprobs unsupported or invalid for {model}")
+        request: dict[str, Any] = {"logprobs": self.logprobs}
+        if self.top_logprobs is not None:
+            if (
+                not self.logprobs
+                or type(self.top_logprobs) is not int
+                or not 0 <= self.top_logprobs <= 20
+            ):
+                raise ValueError("top_logprobs must be 0..20 and requires logprobs=True")
+            request["top_logprobs"] = self.top_logprobs
+        return request
 
     def to_request(self, model: str, *, tools: list[dict] | None = None) -> dict[str, Any]:
         cap = capabilities(model)
@@ -100,6 +119,7 @@ class OpenAIChatSettings:
             if not cap.sampling:
                 raise ValueError(f"stop unsupported by this adapter for {model}")
             result["stop"] = self.stop
+        result.update(self._logprob_request(model, sampling))
         if self.response_format is not None:
             kind = self.response_format.get("type")
             if kind not in {"text", "json_object", "json_schema"}:

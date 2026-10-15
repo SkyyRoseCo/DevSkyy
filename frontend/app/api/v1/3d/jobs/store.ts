@@ -1,5 +1,5 @@
 // In-memory job store (replaced by database in production)
-export const jobStore: Array<{
+export type ThreeDJob = {
   id: string;
   status: 'queued' | 'processing' | 'completed' | 'failed';
   provider: string;
@@ -9,4 +9,6 @@ export const jobStore: Array<{
   error?: string;
   created_at: string;
   completed_at?: string;
-}> = [];
+};
+
+export const jobStore: ThreeDJob[] = [];

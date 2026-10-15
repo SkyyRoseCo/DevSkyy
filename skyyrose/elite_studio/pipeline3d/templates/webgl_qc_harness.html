@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>GLB QC harness</title>
+    <link rel="icon" href="data:," />
     <style>
       html,
       body {
@@ -84,7 +85,10 @@
         renderer.setPixelRatio(1);
         renderer.setSize(size, size, false);
         renderer.setClearColor(PARITY.clearColor, 1);
-        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.outputColorSpace = THREE[PARITY.outputColorSpace];
+        if (renderer.outputColorSpace === undefined) {
+          throw new Error('three has no colour space named ' + PARITY.outputColorSpace);
+        }
         renderer.toneMapping = THREE[PARITY.toneMapping];
         if (renderer.toneMapping === undefined) {
           throw new Error('three has no tone mapping named ' + PARITY.toneMapping);
@@ -103,6 +107,7 @@
         const loader = new GLTFLoader().setKTX2Loader(ktx2).setMeshoptDecoder(MeshoptDecoder);
         const gltf = await loader.loadAsync(glbUrl);
 
+        if (!gltf.scene) throw new Error('GLB has no scene — nothing to render');
         const model = gltf.scene;
         const box = new THREE.Box3().setFromObject(model);
         if (box.isEmpty()) throw new Error('GLB contains no renderable geometry');

@@ -1,0 +1,61 @@
+{
+  "mcpServers": {
+    "devskyy": {
+      "command": "/Users/theceo/DevSkyy/.venv/bin/python3",
+      "args": ["devskyy_mcp.py"],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    }
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "launch-process",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/auggie_hooks/pre_launch_gate.py",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "mcp:.*_devskyy$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/auggie_hooks/budget_gate.py",
+            "timeout": 3000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/auggie_hooks/audit_log.py"
+          }
+        ],
+        "metadata": {
+          "includeUserContext": true,
+          "includeMCPMetadata": true
+        }
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/stop-test-gate.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

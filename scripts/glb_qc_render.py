@@ -13,8 +13,10 @@ the harness, a link to the vendored three tree, and a link per GLB.
 
 Exit codes:
     0  every render succeeded, and every requested diff showed a real pixel difference
-    1  a render or diff failed
-    2  VOID — at least one diff was byte-identical. That is NOT "no visible difference":
+    1  a render or diff failed — including a console/page error, a blank frame, or an
+       --out-dir that already holds PNGs without --overwrite
+    2  usage error (argparse)
+    3  VOID — at least one diff was byte-identical. That is NOT "no visible difference":
        the change under test produced no pixels, so any look-based verdict drawn from
        those two images would be a verdict on a null result. Callers must branch on it.
 
@@ -35,6 +37,10 @@ from pathlib import Path
 
 from skyyrose.elite_studio.pipeline3d.webgl_qc import (
     ANGLES,
+    MAX_SIZE,
+    MIN_SIZE,
+    PixelDiff,
+    RenderReport,
     RenderTarget,
     WebGlQcError,
     diff_report,
@@ -43,14 +49,31 @@ from skyyrose.elite_studio.pipeline3d.webgl_qc import (
 
 EXIT_OK = 0
 EXIT_FAILED = 1
-EXIT_VOID = 2
+# Not 2: argparse exits 2 on a usage error, and a caller branching on the code must never
+# read "you mistyped a flag" as "the change rendered nothing".
+EXIT_VOID = 3
 
 
 def _parse_glb(value: str) -> RenderTarget:
     label, _, path = value.partition("=")
     if not label or not path:
         raise argparse.ArgumentTypeError(f"--glb expects LABEL=PATH, got {value!r}")
-    return RenderTarget(label=label, glb=Path(path))
+    try:
+        return RenderTarget(label=label, glb=Path(path))
+    except WebGlQcError as exc:
+        # argparse only turns ArgumentTypeError/TypeError/ValueError into a usage error;
+        # anything else escapes as a traceback.
+        raise argparse.ArgumentTypeError(str(exc)) from exc
+
+
+def _parse_size(value: str) -> int:
+    try:
+        size = int(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"--size expects an integer, got {value!r}") from exc
+    if not MIN_SIZE <= size <= MAX_SIZE:
+        raise argparse.ArgumentTypeError(f"--size must be in [{MIN_SIZE}, {MAX_SIZE}], got {size}")
+    return size
 
 
 def _parse_pair(value: str) -> tuple[str, str]:
@@ -79,7 +102,12 @@ def _build_parser() -> argparse.ArgumentParser:
         help=f"repeatable; default all of {sorted(ANGLES)}",
     )
     parser.add_argument("--out-dir", type=Path, required=True)
-    parser.add_argument("--size", type=int, default=1024, help="square render size, default 1024")
+    parser.add_argument(
+        "--size",
+        type=_parse_size,
+        default=1024,
+        help=f"square render size in [{MIN_SIZE}, {MAX_SIZE}], default 1024",
+    )
     parser.add_argument(
         "--diff",
         type=_parse_pair,
@@ -94,13 +122,44 @@ def _build_parser() -> argparse.ArgumentParser:
         default=None,
         help="override the vendored three tree (default: the theme's, resolved fail-closed)",
     )
+    parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="replace PNGs already in --out-dir (default: refuse, so stale and fresh renders never mix)",
+    )
     parser.add_argument("--report", type=Path, default=None, help="write the full JSON report")
     return parser
+
+
+def _print_summary(report: RenderReport, diffs: list[PixelDiff]) -> None:
+    for img in report.images:
+        anisotropy = {m.get("anisotropy") for m in img.materials}
+        print(f"  {img.label:<24} {img.angle:<14} {img.path.name}  anisotropy={anisotropy}")
+    for d in diffs:
+        flag = "  VOID" if d.is_void else ""
+        print(
+            f"  {d.baseline_label} -> {d.target_label} @ {d.angle}: "
+            f"maxΔ={d.max_abs_delta}/255 changed={d.changed_pixel_pct:.2f}%{flag}"
+        )
+    if report.console_warnings:
+        # Software rendering always emits a few. Console ERRORS never reach here:
+        # they fail the render.
+        print(f"  console warnings: {len(report.console_warnings)} (software renderer)")
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
     angles = tuple(dict.fromkeys(args.angle)) if args.angle else tuple(ANGLES)
+
+    # A typo in --diff should cost nothing, not a full render followed by a traceback.
+    labels = {t.label for t in args.targets}
+    unknown = sorted({name for pair in args.diff for name in pair if name not in labels})
+    if unknown:
+        print(
+            f"glb-qc: --diff names unknown label(s) {unknown}; given: {sorted(labels)}",
+            file=sys.stderr,
+        )
+        return EXIT_FAILED
 
     try:
         report = render(
@@ -109,6 +168,7 @@ def main(argv: list[str] | None = None) -> int:
             angles=angles,
             size=args.size,
             three_lib=args.three_lib,
+            overwrite=args.overwrite,
         )
         diffs = diff_report(report, args.diff, args.out_dir, angles=angles) if args.diff else []
     except WebGlQcError as exc:
@@ -120,29 +180,7 @@ def main(argv: list[str] | None = None) -> int:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
-    for img in report.images:
-        anisotropy = {m.get("anisotropy") for m in img.materials}
-        print(f"  {img.label:<24} {img.angle:<14} {img.path.name}  anisotropy={anisotropy}")
-    for d in diffs:
-        flag = "  VOID" if d.is_void else ""
-        print(
-            f"  {d.baseline_label} -> {d.target_label} @ {d.angle}: "
-            f"maxΔ={d.max_abs_delta}/255 changed={d.changed_pixel_pct:.2f}%{flag}"
-        )
-    if report.console_errors or report.page_errors:
-        print(
-            f"  console errors: {len(report.console_errors)}  "
-            f"page errors: {len(report.page_errors)}",
-            file=sys.stderr,
-        )
-        for msg in list(report.console_errors) + list(report.page_errors):
-            print(
-                f"    {msg.get('label')}/{msg.get('angle')}: {msg.get('text') or msg.get('error')}",
-                file=sys.stderr,
-            )
-    elif report.console_warnings:
-        # Software rendering always emits a few; reported as a count, never as an error.
-        print(f"  console warnings: {len(report.console_warnings)} (software renderer)")
+    _print_summary(report, diffs)
 
     void = [d for d in diffs if d.is_void]
     if void:

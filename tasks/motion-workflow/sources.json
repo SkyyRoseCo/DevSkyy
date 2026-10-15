@@ -1,0 +1,217 @@
+{
+  "_note": "Intake ledger for the Motion + three.js workflow. Append each file the founder supplies; do not edit entries once recorded.",
+  "collected": "2026-10-14",
+  "sources": [
+    {
+      "id": "src-001",
+      "kind": "code",
+      "name": "three.js minimal scene",
+      "origin": "pasted by founder (matches three.js README usage snippet)",
+      "summary": "PerspectiveCamera + BoxGeometry + MeshNormalMaterial; renderer.setAnimationLoop; rotation derived from absolute time",
+      "needs": "import map or bundler for bare specifier 'three'"
+    },
+    {
+      "id": "src-002",
+      "kind": "mcp",
+      "name": "Motion MCP server",
+      "origin": "https://mcp.motion.dev",
+      "summary": "Motion docs/examples tool source. NOT registered in .mcp.json; registration awaits founder call"
+    },
+    {
+      "id": "src-003",
+      "kind": "code",
+      "name": "motion/react entry",
+      "origin": "pasted by founder",
+      "summary": "import { motion } from 'motion/react'; <motion.div animate={{ x: 100 }} />",
+      "surface": "frontend/ (devskyy.app, Next 16)"
+    },
+    {
+      "id": "src-004",
+      "kind": "code",
+      "name": "motion vanilla entry",
+      "origin": "pasted by founder",
+      "summary": "import { animate } from 'motion'; animate('#box', { x: 100 })",
+      "surface": "WordPress theme only if vendored self-hosted"
+    },
+    {
+      "id": "src-005",
+      "kind": "site",
+      "name": "Motion examples index",
+      "origin": "https://motion.dev/examples",
+      "summary": "See catalog.json. Slug pattern: https://motion.dev/examples/<slug>",
+      "fetched_via": "WebFetch, 2 passes covering the full 122,652 chars"
+    },
+    {
+      "id": "src-006",
+      "kind": "install",
+      "name": "Fabric.js packages",
+      "origin": "pasted by founder",
+      "summary": "npm install @fabricjs/browser (browser apps); npm install @fabricjs/node (Node.js apps). Canvas 2D object-model library; complements WebGL three.js and Motion",
+      "status": "Superseded by the plain `fabric` package (docs install line pasted next). `fabric@7.4.0` installed in frontend/ on 2026-10-14; @fabricjs/* names remain unchecked and uninstalled"
+    },
+    {
+      "id": "src-007",
+      "kind": "docs",
+      "name": "Fabric.js packages and migration",
+      "origin": "pasted by founder",
+      "summary": "`fabric` = legacy facade re-exporting @fabricjs/browser; new browser apps use @fabricjs/browser, Node uses @fabricjs/node, shared runtime @fabricjs/core, optional extensions (e.g. @fabricjs/aligning-guidelines). Keep fabric and all @fabricjs/* on matching versions. Legacy UMD at dist/index.js / index.min.js for <script> tags",
+      "supersedes_note": "CORRECTION 2026-10-14: @fabricjs/browser and @fabricjs/node return E404 on registry.npmjs.org (npm view); the doc describes an unpublished monorepo. Stay on fabric@7.4.0 (dist-tags latest).",
+      "decision_pending": "re-check when @fabricjs/* publishes; no swap now"
+    },
+    {
+      "id": "src-008",
+      "kind": "repo",
+      "name": "fabricjs/fabric.js",
+      "origin": "https://github.com/fabricjs/fabric.js",
+      "summary": "MIT, ~31.5k stars, default branch master, pushed 2026-10-14. master has packages/{browser,core,node,aligning-guidelines,cropping-controls,data-updaters,gradient-controls,westures-integration,e2e,website}; root package.json still fabric 7.4.0; latest GitHub release v7.4.0 (2026-05-18)",
+      "finding": "the @fabricjs/* monorepo is on master but unreleased; matches the npm 404. Installing it now would mean a git dependency, not a registry one"
+    },
+    {
+      "id": "src-009",
+      "kind": "install",
+      "name": "ffmpeg.wasm",
+      "origin": "npm install @ffmpeg/ffmpeg @ffmpeg/util (founder ran at repo root)",
+      "summary": "Browser-side video/audio processing via WebAssembly",
+      "status": "Moved to frontend/ 2026-10-14 (root reverted clean). @ffmpeg/ffmpeg 0.12.15, @ffmpeg/util 0.12.2. @ffmpeg/core NOT installed: it is the wasm payload, loaded at runtime from a URL or added separately"
+    },
+    {
+      "id": "src-010",
+      "kind": "repo",
+      "name": "visgl/deck.gl",
+      "origin": "https://github.com/visgl/deck.gl",
+      "summary": "v9.4.0 (2026-09-05), MIT, WebGL2 geospatial/data-viz framework; catalogued in deckgl.json",
+      "status": "scaffolded only, NOT installed"
+    },
+    {
+      "id": "src-011",
+      "kind": "repo",
+      "name": "catdad/canvas-confetti",
+      "origin": "https://github.com/catdad/canvas-confetti",
+      "summary": "1.9.4 (2025-10-25), ISC, zero-dependency canvas confetti; catalogued in confetti.json",
+      "status": "scaffolded only, NOT installed"
+    },
+    {
+      "id": "src-012",
+      "kind": "install",
+      "name": "canvas-confetti",
+      "origin": "https://github.com/catdad/canvas-confetti (src-011)",
+      "summary": "Installed in frontend/: canvas-confetti 1.9.4 + @types/canvas-confetti 1.9.0 (devDependency)",
+      "status": "installed 2026-10-14; no code imports it yet; storefront use still needs founder brand approval"
+    },
+    {
+      "id": "src-013",
+      "kind": "repo",
+      "name": "pmndrs/drei",
+      "origin": "https://github.com/pmndrs/drei",
+      "summary": "@react-three/drei: helper library for react-three-fiber (MIT, ~9.95k stars, v10.7.9 released 2026-09-25); catalogued in drei.json",
+      "status": "ALREADY a frontend dependency; patch-updated 10.7.7 -> 10.7.9 within existing ^10.7.7 range"
+    },
+    {
+      "id": "src-014",
+      "kind": "repo",
+      "name": "shuding/cobe",
+      "origin": "https://github.com/shuding/cobe",
+      "summary": "cobe 2.0.1 (2026-03-19), MIT, ~19 KB WebGL globe, zero deps, DOM-bindable markers; catalogued in cobe.json",
+      "status": "scaffolded only, NOT installed"
+    },
+    {
+      "id": "src-015",
+      "kind": "repo",
+      "name": "greggman/twgl.js",
+      "origin": "https://github.com/greggman/twgl.js",
+      "summary": "twgl.js 7.0.0 (npm; no GitHub releases), MIT, tiny WebGL helper; catalogued in twgl.json",
+      "status": "scaffolded only, NOT installed"
+    },
+    {
+      "id": "src-016",
+      "kind": "repo",
+      "name": "rive-app/rive-runtime",
+      "origin": "https://github.com/rive-app/rive-runtime",
+      "summary": "C++ core of Rive (MIT, ~1.2k stars, pushed 2026-10-14). Web use is via the @rive-app/* npm family (canvas 2.44.2, react-canvas 4.36.0); catalogued in rive.json",
+      "status": "scaffolded only, NOT installed; needs .riv assets that do not exist yet"
+    },
+    {
+      "id": "src-017",
+      "kind": "install",
+      "name": "Remotion starter (my-video)",
+      "origin": "founder ran create-video + remotion skills add + npm run dev",
+      "summary": "remotion 4.0.535 blank project at repo-root my-video/; catalogued in remotion.json",
+      "status": "EXISTS untracked; dev server on :3000; skills unreviewed"
+    },
+    {
+      "id": "src-018",
+      "kind": "sites",
+      "name": "Reference galleries (9 unique)",
+      "origin": "scrolltide.co, navbar.gallery, footer.design, cta.gallery, minimal.gallery, 60fps.design, collectui.com, posts.design, landdding.com",
+      "summary": "Home pages read; taxonomy in references.json. footer.design was listed twice; scrolltide '600+' claim unsupported (page shows ~255 items, $299 lifetime)",
+      "status": "scaffolded; 60fps.design most useful; 60fps.design deep dive done 2026-10-14 (glossary, MCP, shopping, snippets); MCP is paid and not subscribed"
+    },
+    {
+      "id": "src-019",
+      "kind": "research",
+      "name": "More-access source research (deep-research)",
+      "origin": "Exa searches + GitHub API + HTTP checks, 2026-10-14",
+      "summary": "Ranked top 15 plus rejections in research-more-sources.md. Best free substitute for the paid 60fps MCP: INSANE0777/Awwwards-mcp (MIT). Best fashion pattern gallery: goodcart.design (screenshots only).",
+      "status": "report saved; nothing installed or registered; licences re-checked on GitHub API (ecommerce-product-showcase README says MIT, API says none)"
+    }
+  ],
+  "pending": "founder is gathering more files",
+  "install_state": {
+    "date": "2026-10-14",
+    "frontend/": {
+      "motion": "14.2.0",
+      "fabric": "7.4.0",
+      "three": "0.172.0 (pre-existing)",
+      "framer-motion": "12.38.0 (pre-existing, overlaps motion)",
+      "@react-three/fiber": "^9.5.0 (pre-existing)",
+      "@ffmpeg/ffmpeg": "0.12.15",
+      "@ffmpeg/util": "0.12.2",
+      "canvas-confetti": "1.9.4",
+      "@types/canvas-confetti": "1.9.0 (dev)",
+      "@react-three/drei": "10.7.9 (was 10.7.7)"
+    },
+    "root": "motion reverted; package.json and lockfile clean",
+    "reference_checkouts": {
+      "location": "~/Developer/motion-references/ (OUTSIDE the DevSkyy repo; nothing here is tracked)",
+      "installed_with": "npm --prefix <dir> install --ignore-scripts",
+      "Awwwards-mcp": {
+        "version": "1.8.0",
+        "built": "tsc -> dist/cli.js",
+        "handshake": "initialize ok, 16 tools listed",
+        "registered_in_mcp_json": false,
+        "cache": "~/.awwwards-mcp (default); probe used ~/Developer/motion-references/.awwwards-cache",
+        "optional_not_installed": [],
+        "note": "AWWWARDS_AUTO_UPDATE is opt-in; only a daily npm registry version check runs by default",
+        "playwright": {
+          "version": "1.63.0",
+          "chromium_build": "1243 (Chrome for Testing 153.0.8010.12)",
+          "launch_test": "passed, mobile viewport page title read",
+          "gotcha": "founder's `npx playwright install chromium` ran from the repo root and fetched build 1234 for the repo's Playwright 1.62.1; Awwwards-mcp's 1.63.0 needs 1243. Always install browsers with the package's own binary: ./node_modules/.bin/playwright install chromium"
+        },
+        "ffmpeg": "node_modules/ffmpeg-static/ffmpeg symlinked to /opt/homebrew/bin/ffmpeg (no binary download; install script was skipped on purpose)"
+      },
+      "ecommerce-product-showcase": {
+        "deps": "installed (421 pkgs)",
+        "licence": "NONE on GitHub; study only, do not copy into product code"
+      },
+      "add-item-to-cart-animation": {
+        "deps": "installed (365 pkgs)",
+        "licence": "MIT"
+      },
+      "pmndrs/examples": {
+        "checked_out": [
+          "examples/shoe-configurator",
+          "examples/t-shirt-configurator"
+        ],
+        "deps": "installed; shoe-configurator tsc clean",
+        "licence": "MIT",
+        "correction": "the shoe-configurator path in the research report (demos/shoe-configurator) is stale; the repo moved it to examples/shoe-configurator. t-shirt-configurator is the garment-relevant one; needed --legacy-peer-deps"
+      },
+      "not_installable": [
+        "GoodCart",
+        "Studio Ubique GRYM",
+        "Webforging StreetWearzzz (websites)"
+      ]
+    }
+  }
+}
