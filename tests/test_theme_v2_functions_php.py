@@ -66,8 +66,6 @@ def test_unconditional_requires_exist(source: str) -> None:
     assert not missing, f"fatal on load, missing: {missing}"
 
 
-
-
 def test_function_names_namespaced_and_unique(source: str) -> None:
     names = re.findall(r"^function (\w+)\s*\(", source, re.M)
     assert names, "no top-level functions parsed"
