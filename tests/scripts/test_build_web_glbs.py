@@ -23,6 +23,16 @@ SATIN = "**lustrous black satin** exterior fabric. NOT a fleece hoodie."
 LEATHER = "black PU/faux-leather fanny pack with nylon webbing strap. NOT a leather handbag."
 
 
+@pytest.fixture(autouse=True)
+def _no_stray_cwd_writes():
+    """Fail any test in this file that leaves a new entry in the working directory."""
+    cwd = Path.cwd()
+    before = {p.name for p in cwd.iterdir()}
+    yield
+    leaked = {p.name for p in cwd.iterdir()} - before
+    assert not leaked, f"test wrote into the working directory: {sorted(leaked)}"
+
+
 def _registry(tmp_path: Path, specs: dict[str, str]) -> Path:
     products = {
         sku: {
@@ -41,7 +51,11 @@ def _fake_gltfpack(tmp_path: Path, monkeypatch, *, output: bytes | None) -> Path
     seen = tmp_path / "seen"
     seen.mkdir()
     ready = tmp_path / "ready.glb"
-    body = f'cp "$2" "{seen}/$(basename "$2")"\n'
+    # `gltfpack -v` (the version probe) passes no $2/$4. On macOS `cp <file> ""`
+    # exits 0 and copies into the cwd, which leaked a ready.glb into the repo
+    # root (bug-369). Answer the probe silently and never reach the copies.
+    body = '[ "$1" = "-v" ] && exit 0\n'
+    body += f'cp "$2" "{seen}/$(basename "$2")"\n'
     if output is None:
         body += 'echo "Error: simulated failure" >&2\nexit 1'
     else:
