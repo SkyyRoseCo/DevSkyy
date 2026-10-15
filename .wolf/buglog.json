@@ -7269,6 +7269,23 @@
     "note": "Renumbered from bug-385 when merging uncommitted work into main (2026-10-14)."
   },
   {
+    "id": "bug-405",
+    "timestamp": "2026-10-14T00:00:00+00:00",
+    "error_message": "typography.json failed its own schema: ['universal', 'display'] Additional properties are not allowed ('note' was unexpected)",
+    "file": "wordpress-theme/skyyrose-flagship/data/brand/typography.schema.json",
+    "root_cause": "fontRole had additionalProperties:false without a note property, while typography.json carries the Archivo 'wdth' 125 usage note on universal.display; nothing validated typography.json against its schema, so the drift went unnoticed",
+    "fix": "fontRole allows an optional string note (as caps and system already do); tests/test_typography_schema.py validates typography.json against the schema and checks the schema still rejects unknown keys, missing core keys and non-string notes",
+    "tags": [
+      "schema",
+      "typography",
+      "brand",
+      "validation"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-14T00:00:00+00:00"
+  },
+  {
     "id": "bug-406",
     "timestamp": "2026-10-14T00:00:00+00:00",
     "error_message": "Review of merged asset SOT census (#1084): generated projections (catalog index.json etc.) granted ownership on their own; flagship-2-media never resolved manifest-relative paths (replica-v1/manifest.json 'br-002/ghost-front.png' fell to review-only); catalog-validate path filters omitted 18 scanned extensions and every upper-case variant, so a PR adding only e.g. a .HEIC orphan never ran the gate",
