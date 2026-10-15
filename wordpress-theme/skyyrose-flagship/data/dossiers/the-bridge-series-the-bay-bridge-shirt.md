@@ -10,11 +10,7 @@ reference_image: assets/products/source-photos/signature/sg-005-bay-bridge-shirt
 
 # The Bridge Series 'The Bay Bridge' Shirt
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem.
-Features: Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Bay Bridge Shorts (sg-001 daytime SF-Oakland Bay Bridge palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Stay Golden Shirt (that's sg-002 — purple rose-cluster decoration, separate SKU). **The Bay Bridge colorway uses a BLUE/CYAN rose-cluster on the chest** (matching the daytime-blue Bay Bridge palette).
-Color: White
-Available sizes: S | M | L | XL | 2XL
+**Garment type lock:** Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Bay Bridge Shorts (sg-001 daytime SF-Oakland Bay Bridge palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Stay Golden Shirt (that's sg-002 — purple rose-cluster decoration, separate SKU). **The Bay Bridge colorway uses a BLUE/CYAN rose-cluster on the chest** (matching the daytime-blue Bay Bridge palette).
 
 > **Note on source filename drift:** The techflat for this SKU was found in the
 > Downloads asset directory under the filename `sg-004-techflat.jpeg`, but that

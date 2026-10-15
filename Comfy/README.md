@@ -69,6 +69,21 @@ comfy --workspace /Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI launch -- \
 This launch path does not add a telemetry feature flag. CLI tracking must remain
 disabled; verify it with `comfy --json env`.
 
+> **Known issue — ComfyUI Desktop injects telemetry:** When the server is launched
+> via the Desktop app rather than the CLI command above, it appends
+> `--feature-flag enable_telemetry=true` to `argv`. The CLI config
+> (`tracking_enabled: false`) controls the CLI tool itself; it does not suppress
+> the Desktop-injected server flag. To avoid this, always launch from the
+> terminal using the command above, not from the Desktop UI. Verify the running
+> server's argv with:
+>
+> ```bash
+> curl -s http://127.0.0.1:8188/system_stats | python3 -c \
+>   "import json,sys; print([a for a in json.load(sys.stdin)['system']['argv'] if 'telemetry' in a])"
+> ```
+>
+> An empty list `[]` confirms no telemetry flag is active.
+
 ## Verify before a run
 
 ```bash

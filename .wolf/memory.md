@@ -1,135 +1,7 @@
 # Memory
 
-| session | Made prompt engineering, typed prompt chaining, and prompt caching
-first-class Fashion Theme Team capabilities. Added a governed Brain contract,
-taxonomy routing, cache keys/invalidation/privacy rules, verifier enforcement,
-and active V2 ledger scope. |
-/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/prompts/,
-/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/.fashion-theme/v2-remodel-ledger.json
-| cache is optimization only; candidate/SOT/approval/schema changes fail closed
-and invalidate | ~4k | | session | Ran role-by-role gap sweep on
-`fashion-theme-team` agents and added explicit claim-bound handoff requirements
-to all nine roles (`Handoff requirement`), ensuring deterministic artifact +
-eyes-on review or authoritative documentation + executable evidence. Added this
-consistency pass for catalog and WooCommerce charters plus lead/discretion
-roles. | /Users/theceo/plugins/fashion-theme-team | 9 role charters now aligned
-on evidence discipline and `BLOCKED` fallback | ~1k | | session | Loaded the
-installed Fashion Theme Team into the current multi-agent runtime. Active
-reusable cohort: `fashion-theme-lead` (`019fd5c0-7344-7180-873a-5bac6dab8c52`),
-`brand-experience-architect` (`019fd5c0-728f-7453-a587-ac2ed8ac31a5`),
-`fashion-design-system-engineer` (`019fd5c0-7445-7c41-af9d-cbd6feadd3b1`), and
-`woocommerce-theme-engineer` (`019fd5c0-75f1-7992-8bbe-dc6a1553628e`). Runtime
-limit is four threads, so frontend, catalog, accessibility/performance, visual
-QA, and release roles must be swapped in by the lead phase-by-phase. | Codex
-multi-agent runtime, `fashion-theme-team@personal` | four-role foundation cohort
-READY; no project inspection or edits performed | ~2k | | session | Hardened the
-fashion-theme-team tool-budget and verification contract. Added
-`references/tool-budget-and-loading.md`, updated SKILL and team contract to
-require temporary tool-profile expansion discipline, strengthened lead handoff
-evidence requirements, and updated verifier/plugin metadata to enforce the new
-policy. | /Users/theceo/plugins/fashion-theme-team | gap pass: docs-policy
-alignment and profile discipline added | ~4k | | session | Built and installed
-`fashion-theme-team@personal` v0.1.0 as a nine-role end-to-end
-fashion/WooCommerce delivery team. Added dedicated
-`fashion-design-system-engineer` ownership for tokens, primitives, components,
-states, motion, docs, fixtures, and adoption. Included orchestration skill,
-independent QA/release roles, hooks, preflight/report/integrity scripts, and
-personal marketplace registration. | ~/plugins/fashion-theme-team,
-~/.agents/plugins/marketplace.json,
-tasks/fashion-theme-team-plugin-audit-2026-08-05.md | plugin validator PASS;
-skill validator PASS; integrity PASS; ShellCheck PASS; DevSkyy preflight found 3
-themes; installed and enabled cache integrity PASS | ~12k | | session | Audited
-the requested conversion of the historical `fashion-theme-architect` role into a
-full end-to-end plugin team. No standalone `fashion-theme-developer` definition
-exists; recovered its charter from Claude team session `session-5db8882f` and
-proposed an eight-role `fashion-theme-team` with isolated implementation,
-independent QA, release evidence, and human deployment approval. |
-tasks/fashion-theme-team-plugin-audit-2026-08-05.md | planning only; awaiting
-founder approval before scaffold or marketplace changes | ~4k | | session |
-Refreshed the AI Designer MCP OAuth grant through `codex mcp login aidesigner`;
-browser consent callback completed successfully. | Codex MCP credential store |
-login succeeded; new sessions can connect with refreshed OAuth | ~1k | | session
-| Enabled load-on-demand tool discovery for Codex and Claude globally and in
-DevSkyy: Claude forces MCP Tool Search; Codex uses code-mode-only with deferred
-capability discovery and skill search. Corrected router/context-budget docs so
-callable inventory is not counted as resident schema context. |
-~/.claude/settings.json, ~/.codex/config.toml, .claude/settings.json,
-.codex/config.toml, .claude/hooks/router/README.md,
-.agents/skills/context-budget/SKILL.md, .claude/skills/context-budget/SKILL.md |
-Codex doctor 17 ok/0 fail; Claude doctor found no installation issues; new
-sessions required | ~3k | | 19:26 | Added explicit AGENTS.md instruction to
-consult `.wolf/memory.md` before making changes; verified and mirrored this
-requirement in the root AGENTS session log compliance rule. Also ran a hook diff
-check between `.claude/hooks/hooks.json` and `.codex/hooks/hooks.json` to
-confirm matcher/script parity before this change. | AGENTS.md,
-.claude/hooks/hooks.json, .codex/hooks/hooks.json | no functional regressions;
-file changes applied | ~2k | | 01:15 | Seeded
-elite-theme-platform/adapters/nextjs/ — 4 files: README.md (adapter positioning
-vs WP storefront), contract.ts (6-method typed interface stubs:
-scaffold/build/deploy/monitor/commerceBind/heal, dashboard-flavored), tokens.ts
-(DASHBOARD_TOKENS dark-ops set derived from monitoring/page.tsx + globals.css),
-component-kit.md (5 vocabulary entries
-StatCard/SignalBadge/CycleTimeline/KBTable/KeyholeRow mapped to
-storefront-autonomy canonical paths) |
-elite-theme-platform/adapters/nextjs/README.md, contract.ts, tokens.ts,
-component-kit.md | 4 files created | ~8k | | 22:18 | Elite Studio PASS 1 audit +
-PASS 2 fixes: 3 CRITICAL (compositor_node budget gate, tryon_node budget gate,
-_find_garment_image stub), 4 HIGH deferred, 4 MEDIUM (3 fixed: logger f-string,
-2x print->logging). Zero new test failures vs baseline. |
-tasks/elite-studio-audit-2026-05-22.md, skyyrose/elite_studio/graph/nodes.py,
-skyyrose/elite_studio/agents/tryon_agent.py,
-skyyrose/elite_studio/agents/generator_agent.py,
-skyyrose/elite_studio/graph/runner.py, skyyrose/elite_studio/retry.py | 25 pass
-/ 28 fail (all pre-existing) | ~18k | | 14:59 | Built devflow-review workflow:
-scripts/devworkflows/review.sh (ruff+tsc+phpcs in parallel, bash 3 compat, FIX=1
-auto-fix mode, loop-until-green protocol) + .claude/skills/devflow-review.md.
-Replaces dead fwstack plugin. Smoke-tested: clean on 23 changed files, correctly
-detects ruff E702. | scripts/devworkflows/review.sh,
-.claude/skills/devflow-review.md, .wolf/anatomy.md | exit 0 confirmed | ~4k | |
-15:32 | Phase 13 executed: 13-01 regression gate (2 PASS/1 FAIL — CURS-01
-confirmed, CURS-03 gap surfaced); 13-02 annotations (REQUIREMENTS.md CURS-03 [ ]
-open, ROADMAP.md 2/2 partial, verify_live_structure.py HOMEPAGE_ASSERTIONS +
-Assertion); bug-097 logged | tests/test_luxury_cursor.py,
-.planning/REQUIREMENTS.md, .planning/ROADMAP.md,
-scripts/verify_live_structure.py, .wolf/buglog.json | commit 818868654 | ~8k |
-[cmem #4001] | 11:40 | Priority 6 complete: wired assets page to real data — GET
-/assets/per-sku (WP image dir scan, 60s TTL) + GET /assets/datasets (HfApi, 300s
-TTL); Zod schemas + types + client methods; assets page gets Disk Images tile +
-SKU breakdown panel + HF datasets table | api/v1/assets.py,
-frontend/app/admin/assets/page.tsx, frontend/lib/api/endpoints/assets.ts,
-frontend/lib/api/schemas.ts, frontend/lib/api/types.ts | commit e525affd1;
-pytest 93 pass; type-check + lint + build clean | ~12k | [cmem #3455] | session
-| Priority 3 complete: wired admin/agents page to real backend; useAgents()
-hook + agents API client + Zod schemas; fixed lib/api.ts shadow bug by importing
-directly from endpoints/agents.ts; 592 pytest pass |
-frontend/app/admin/agents/page.tsx, frontend/hooks/useAgents.ts,
-frontend/lib/api/endpoints/agents.ts, frontend/lib/api/schemas.ts,
-frontend/lib/api/types.ts, frontend/lib/api/index.ts | commit f0a0e501b | ~8k |
-| 00:43 | Three.js pin r160→r147 in inc/enqueue.php (fixes 9 dead /examples/js/
-404s); skyy-3d.js:130 GLTFLoader fallback to window.THREE.GLTFLoader |
-inc/enqueue.php, assets/js/skyy-3d.js | lint:php 0 errors | ~3k | | session | UX
-audit + fix: (1) about-hero.jpg 404 → swapped to homepage-story-founder.webp in
-template-about.php:11; (2) personalization.js REST URL double-? bug → changed
-'?' to '&' at line 199; (3) nav audit report-only | template-about.php,
-assets/js/personalization.js | lint:php 0 errors | ~5k | | 22:34 | Bug-fix pass:
-removed wc_get_products() from front-page.php + preorder-gateway.php, added
-kids-capsule collection, removed fake fallback SKUs, fixed mascot path in
-404.php, guarded .closest() in experience-analyzer.js | front-page.php,
-template-preorder-gateway.php, assets/js/experience-analyzer.js, 404.php | npm
-run lint:php: 0 errors | ~4k | | 22:32 | Immersive scene 404 fix: added
-file_exists() guard + CSS gradient fallback for missing scene images |
-template-parts/immersive-scene.php | rooms preserved, hotspots intact,
-data-missing-scene attr added | ~3k | | 17:57 | Source-of-truth refactor:
-deleted root agent_sdk/, agents/base_super_agent.py, my_agent/,
-tests/test_hybrid_integration.py | 14 files edited, 4 deleted | all
-sdk.python.agent_sdk imports verified OK | ~8k | | 19:24 | Restored 3 Phase
-16-gutted agents to sync implementations | prompt_enrichment_agent.py,
-safety_agent.py, upscaling_agent.py | 39/39 tests passing | ~6k | | 19:35 | OPEN
-WORK: 70 Elite Studio test failures remain from Phase 16 ADK-promotion damage |
-test_cli, test_generator_phase_b2, test_ghost_mannequin__, test_graph_builder,
-test_graph_nodes_, test_graph_runner, test_color_correction_agent,
-test_tryon_agent, test_variant_agent, test_vision_test_registry | deferred, not
-yet fixed | ~1k |
+> Live handoff log: newest rows at the bottom. Older entries are archived in
+> `.wolf/memory-archive/` (rotated by `scripts/wolf_memory_rotate.py`).
 
 > Chronological action log. Hooks and AI append to this file automatically. Old
 > sessions are consolidated by the daemon weekly. | 11:30 | Created
@@ -3290,6 +3162,118 @@ User authorized "do it" for Kids-first timed boards and parallel collection arc 
 | 02:35 | Consolidated dep bumps branch deps/consolidated-bumps-20260927: 11 dependabot PRs (973 974 969 947 955 946 933 931+932 929 816) re-applied on main, locks regenerated; fastmcp held at 3.4.4 (4.x needs mcp 2) | pyproject.toml uv.lock package*.json ci.yml requirements | frontend+root+pytest 7574 pass, canary [all] resolves | ~40k |
 | 12:46 | PR #1011 review: black (3 files, CI 26.10.0), empty tagline slots guarded (fashion context prompt, Elementor luxury hero h1, 6 frontend renderers), copy fixes; hook gates run by hand (prettier would churn 6 tsx whole-file) | context.py knowledge.py luxury_home_builder.py prompt_engineering.py finetune_pipeline.py frontend/*.tsx cerebrum.md | fixed, pushed to chore/no-tagline-20261006 | ~60k |
 | 12:56 | PR #1011 cycle 2: Codex threads verified — removed 16 live "Where Love Meets Luxury" sites (MascotBubble, home builders, hf-spaces, SDK prompts), enforcement test now case-insensitive over 14 dirs with founder-quote allow-list, LGfC recorded as retired, POT founder msgids restored, blogdescription migration + SETUP_VERSION 4.6.0, collection-plan theme default | brand.yaml test_brand_enforcement.py nodes.py collection_planner.py theme-activation-setup.php skyyrose.pot + 20 copy sites | 48/48 + linters green | ~45k |
+| 02:35 | Consolidated dep bumps branch deps/consolidated-bumps-20260927: 11 dependabot PRs (973 974 969 947 955 946 933 931+932 929 816) re-applied on main, locks regenerated; fastmcp held at 3.4.4 (4.x needs mcp 2) | pyproject.toml uv.lock package*.json ci.yml requirements | frontend+root+pytest 7574 pass, canary [all] resolves | ~40k |
+| 12:46 | PR #1011 review: black (3 files, CI 26.10.0), empty tagline slots guarded (fashion context prompt, Elementor luxury hero h1, 6 frontend renderers), copy fixes; hook gates run by hand (prettier would churn 6 tsx whole-file) | context.py knowledge.py luxury_home_builder.py prompt_engineering.py finetune_pipeline.py frontend/*.tsx cerebrum.md | fixed, pushed to chore/no-tagline-20261006 | ~60k |
+| 12:56 | PR #1011 cycle 2: Codex threads verified — removed 16 live "Where Love Meets Luxury" sites (MascotBubble, home builders, hf-spaces, SDK prompts), enforcement test now case-insensitive over 14 dirs with founder-quote allow-list, LGfC recorded as retired, POT founder msgids restored, blogdescription migration + SETUP_VERSION 4.6.0, collection-plan theme default | brand.yaml test_brand_enforcement.py nodes.py collection_planner.py theme-activation-setup.php skyyrose.pot + 20 copy sites | 48/48 + linters green | ~45k |
+| 04:28 | Fixed 3 tagline violations: missing period in front-page.php + template-preorder-gateway.php; wrong capitalization in template-about.php                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | front-page.php:158, template-preorder-gateway.php:70, template-about.php:109                                                                                                                                                                                                                                                                                                                                                                     | "" canonical now consistent across all 3 templates                               | ~2k     |
+
+
+"SkyyRose" (was "SkyyRoseLuxury Streetwear Born From Struggle"). Primary
+
+
+
+
+
+
+
+
+
+
+
+  the open topic-choice flagged in `blog-retired-brand-copy.md`. Each:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 | 06:35 | Promoted the throwaway anisotropy harness to a TRACKED QC tool: skyyrose/elite_studio/pipeline3d/webgl_qc.py + templates/webgl_qc_harness.html + scripts/glb_qc_render.py + 29 tests. Renders in the PRODUCTION three.js viewer (not model-viewer like glb_fidelity.py — different engine answers a different question). Parity constants can't be imported (the viewer is an IIFE) so a test regexes BOTH sources and fails on drift — red-green proved. Added the pdp-initial angle: production opens at (0, 0.1*framing.height, distance), NOT level, so `front` was never the opening view. VOID is exit code 2, not a log line. Serve root = temp dir on 127.0.0.1, three tree resolved from the theme fail-closed and never copied (it's sha256-pinned). E2E reproduces the recorded numbers EXACTLY: br-006 184/11.98%, lh-004 199/7.77% | skyyrose/elite_studio/pipeline3d/{webgl_qc.py,templates/,README.md}, scripts/glb_qc_render.py, tests/elite_studio/pipeline3d/test_webgl_qc.py, pyproject.toml | 215 tests pass; ruff/black/isort/mypy clean; malformed GLB fails in 0.04s with no browser launch | ~55k |
 | 06:18 | review 9953f3135 glb_qc: 32-mutation run on test_webgl_qc.py (6 requested: d=diff_report self-check SURVIVED; render()/server-bind/CLI exit codes/harness JS all untested); live render VOID exit 2 + cross-process PNG hashes identical; server 127.0.0.1 traversal 404 | tests/elite_studio/pipeline3d/test_webgl_qc.py, skyyrose/elite_studio/pipeline3d/webgl_qc.py | findings returned to orchestrator, tree restored | ~90k |
 | 06:19 | session start (startup) — 762a9ee6 on feat/single-product-entry-point @9953f3135 · uncommitted: 100 | .augment/settings.json .claude/CLAUDE.md .claude/commands/CLAUDE.md .claude/rules/agents.md .claude/rules/prompt-techniques.md (+95 more) | open | — |

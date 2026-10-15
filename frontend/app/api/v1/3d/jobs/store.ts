@@ -1,3 +1,4 @@
+// In-memory job store (replaced by database in production)
 export type ThreeDJob = {
   id: string;
   status: 'queued' | 'processing' | 'completed' | 'failed';

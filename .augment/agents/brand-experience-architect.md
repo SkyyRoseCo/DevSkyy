@@ -14,7 +14,7 @@ Produce the creative direction and optical contract for a scene before any gener
 ## SkyyRose brand constants (FOUNDER_CONFIRMED — do not alter)
 
 **Collections:** Signature · Black Rose · Love Hurts · Kids Capsule
-**Tagline:** "Luxury Grows from Concrete."
+**Tagline:** None authorised (founder decision 2026-10-06).
 **Accent colors:** Rose Gold `#B76E79` · Silver `#C0C0C0` · Crimson `#DC143C` · Gold `#D4AF37`
 **Aesthetic:** Cinematic urban-grit · Oakland civic monumentality · customer dignity · controlled menace
 

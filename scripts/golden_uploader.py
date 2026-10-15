@@ -40,7 +40,10 @@ from skyyrose.core.paths import (
 )
 from skyyrose.core.paths import DOSSIERS_DIR as DOSSIER_ROOT  # noqa: E402
 from skyyrose.core.paths import GOLDEN_DIR as GOLDEN_ROOT
-from skyyrose.core.paths import PRODUCT_REFERENCES, golden_path
+from skyyrose.core.paths import (
+    PRODUCT_REFERENCES,
+    golden_path,
+)
 
 logger = logging.getLogger(__name__)
 
