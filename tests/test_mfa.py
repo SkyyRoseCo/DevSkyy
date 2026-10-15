@@ -483,11 +483,12 @@ class TestMFASecurity:
 class TestMFAErrorHandling:
     """Test MFA error handling."""
 
-    def test_mfa_manager_requires_pyotp(self) -> None:
+    def test_mfa_manager_requires_pyotp(self, monkeypatch: pytest.MonkeyPatch) -> None:
         """Test MFAManager raises error if pyotp not installed."""
-        # Skip this test since we have pyotp installed
-        # This is more of a deployment/installation test
-        pytest.skip("pyotp is installed, cannot test missing dependency")
+        monkeypatch.setattr("security.mfa.pyotp", None)
+
+        with pytest.raises(RuntimeError, match="pyotp package required"):
+            MFAManager()
 
     def test_verify_totp_handles_invalid_secret(self) -> None:
         """Test TOTP verification handles invalid secret gracefully."""

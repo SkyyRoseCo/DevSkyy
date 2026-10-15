@@ -1,0 +1,59 @@
+{
+  "_note": "Scaffold of greggman/twgl.js as read 2026-10-14 via gh + npm + README. Nothing installed.",
+  "repo": "https://github.com/greggman/twgl.js",
+  "license": "MIT",
+  "default_branch": "main",
+  "stars": 3020,
+  "description": "A Tiny WebGL helper Library (pronounced like 'wiggle')",
+  "last_push": "2026-09-09",
+  "versioning": {
+    "npm": "7.0.0",
+    "github_releases": "none (releases/latest returns 404); npm is the version authority"
+  },
+  "npm": {
+    "twgl.js": "7.0.0",
+    "unpackedSize_bytes": 1528326,
+    "note": "unpacked size covers every dist variant; the shipped runtime is a small fraction",
+    "types": "dist/7.x/twgl-full.d.ts (ships its own types)",
+    "runtime_dependencies": "none"
+  },
+  "purpose": "Reduce WebGL API verbosity; a thin helper over raw WebGL, not a scene graph or renderer. README itself says: for getting things done use three.js.",
+  "core_functions": [
+    "createProgramInfo (compile + attribute/uniform setters)",
+    "createBufferInfoFromArrays",
+    "setBuffersAndAttributes",
+    "setUniforms",
+    "createTextures",
+    "createFramebufferInfo"
+  ],
+  "helpers": [
+    "resizeCanvasToDisplaySize",
+    "drawBufferInfo",
+    "primitives (cube, sphere, plane...)",
+    "m4/v3 math (twgl-full)"
+  ],
+  "entry_points": {
+    "twgl-full": "everything incl. primitives and math",
+    "twgl": "core only",
+    "dist/7.x": "UMD + ESM builds, .min.js for <script> tags"
+  },
+  "skyyrose_fit": {
+    "overlap": "three.js already covers the dashboard (frontend/ pins three 0.172 + R3F + drei) and the theme (vanilla three.js). twgl duplicates that role.",
+    "only_real_niche": "a lightweight full-screen fragment-shader surface (animated background, image-transition or distortion effect) where loading three.js is overkill; one quad, one shader, tiny footprint",
+    "surfaces": [
+      "theme (vanilla, no bundler; vendor self-hosted twgl.min.js)",
+      "frontend/ (works from useEffect)"
+    ],
+    "not_for": "product-garment rendering; use three/R3F, where PBR and GLB loading already exist"
+  },
+  "constraints": [
+    "Own WebGL context: do not combine with a three.js canvas on one view",
+    "Fragment shaders are code; need review for contrast/accessibility and a prefers-reduced-motion path",
+    "Brand colours as uniforms from tokens, never hard-coded"
+  ],
+  "gaps": [
+    "Not installed",
+    "No example run",
+    "Shader candidates not defined; need founder direction on any effect"
+  ]
+}

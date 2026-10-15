@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "code": "PASS_PIXEL_GENERATION_AND_SEMANTIC_REVIEW",
+  "candidate_sha256": "cc40b0828e327bffe382dc11e1d3e24d3a0f6dfb2a40f61c7bc2edafed445ad0",
+  "pixel_verification": {
+    "status": "PASS",
+    "code": "OUTSIDE_MASK_PRESERVED",
+    "baseline_sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0",
+    "output_sha256": "cc40b0828e327bffe382dc11e1d3e24d3a0f6dfb2a40f61c7bc2edafed445ad0",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "outside_changed_pixels": 0,
+    "maximum_outside_changed_pixels": 0,
+    "outside_changed_bbox": null,
+    "inside_changed_pixels": 4270,
+    "minimum_inside_changed_pixels": 1,
+    "per_channel_tolerance": 0
+  },
+  "generation_receipt": {
+    "status": "PASS",
+    "code": "GENERATION_RECEIPT_PASS",
+    "receipt_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
+    "receipt_sha256": "0ceacf9d801f5649c511701d1cc47861bfc5ff513935ff957c7e0d19e8566043",
+    "provider_execution_recorded": true,
+    "provider_receipt_trust_state": "SELF_DECLARED_WITH_REQUEST_ID",
+    "x_request_id": "req_7e909300e22c4b3faad725d08bc2a4c8",
+    "requested_model": "gpt-image-2-2026-04-21",
+    "mask": {
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-reference-pack-v3/openai-edit-mask-alpha-zero-is-editable.png",
+      "sha256": "a58fc3dce52096a0277655c4fa14524ed4f5400757652d842a9abe8941347b80",
+      "mode": "RGBA",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "size_bytes": 8512
+    },
+    "findings": [],
+    "wiring_allowed": false
+  },
+  "semantic_review": {
+    "status": "PASS",
+    "code": "SEMANTIC_REVIEW_PASS",
+    "candidate_sha256": "cc40b0828e327bffe382dc11e1d3e24d3a0f6dfb2a40f61c7bc2edafed445ad0",
+    "contract_sha256": "5cfd5cb880c850b92999fde7024a8ccd147049b0f9c58a2b8278664f49f24fb2",
+    "review_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/data/candidates/sig-commerce-3-sg001-logo-semantic-review-v5-2026-08-31.json",
+    "review_sha256": "6e8a37c9c9c8552d54361b4e7843206edee3093054336aef8fd7b7e569a53f19",
+    "reviewer": "senior-fidelity-gate-reviewer-kierkegaard",
+    "review_identity_verified": false,
+    "review_trust_state": "SELF_DECLARED_IDENTITY",
+    "scope": "logo_and_construction",
+    "checks": {
+      "color_and_material": "PASS",
+      "construction": "PASS",
+      "placement": "PASS",
+      "verbatim_text": "PASS"
+    },
+    "expected_verbatim_text": [],
+    "verdict": "PASS",
+    "review_findings": [],
+    "findings": [],
+    "wiring_allowed": false
+  },
+  "promotion_state": "FOUNDER_REVIEW_REQUIRED",
+  "wiring_allowed": false,
+  "deployment_allowed": false,
+  "schema": "product-fidelity-verification-receipt.v2"
+}

@@ -1,0 +1,534 @@
+{
+  "_note": "Reference-gallery scaffold from 9 unique sites (footer.design was listed twice), fetched 2026-10-14 via WebFetch on each home page only. Pattern vocabulary, not design authority.",
+  "brand_rule": "SkyyRose visual references are the Five (Kith, Oaklandish, Culture Kings, FoG, Palm Angels); never Euro-luxury lineage. These galleries are mostly SaaS/agency-heavy: use them for pattern NAMES and motion vocabulary, not as style targets.",
+  "sites": {
+    "scrolltide.co": {
+      "what": "Prompt/template library for scroll-driven and 3D sites; paste a prompt into an AI tool",
+      "size": "121 templates, 46 components, 55 shaders, 19 sections, 14 UI screens (~255 items)",
+      "stack_named": [
+        "React",
+        "Vite",
+        "Next.js",
+        "Tailwind",
+        "Framer Motion",
+        "GSAP",
+        "Three.js",
+        "WebGL",
+        "Lenis"
+      ],
+      "price": "$299 lifetime, one-time (early access banner)",
+      "public_samples": "previews only; no prompt text or source visible",
+      "correction": "'600+ prompts' claim is NOT supported by the page; it shows ~255 items",
+      "use": "vocabulary of techniques (Liquid Glass Button, Image Trail, Marble Scroll, Petal Dissolve, Grid Warp, mesh-gradient and halftone shaders). Paid; do not buy without founder approval"
+    },
+    "navbar.gallery": {
+      "what": "Curated navbar inspiration, 38 pages",
+      "types": [
+        "Static/Sticky",
+        "Dropdown/Flyout",
+        "Mega Menu",
+        "Side Bar",
+        "Search Bar",
+        "Announcement",
+        "Full Screen",
+        "Breadcrumbs",
+        "Tabs",
+        "Progress bar"
+      ],
+      "org": "/type/<name> pages, Load more",
+      "use": "pattern names for header/nav audit; Mega Menu and Full Screen map to the collection navigation"
+    },
+    "footer.design": {
+      "what": "Curated footer gallery, 65 pages",
+      "style_filters": [
+        "Typographic",
+        "Small Type",
+        "Illustrative",
+        "Grid",
+        "Flat",
+        "Animated",
+        "Cards",
+        "Bright",
+        "Dark",
+        "Large Type",
+        "Bold"
+      ],
+      "use": "footer vocabulary; Large Type + Dark + Animated closest to a streetwear footer. Note: sponsored entries exist"
+    },
+    "cta.gallery": {
+      "what": "CTA gallery",
+      "categories": [
+        "Button",
+        "Call-to-Buy",
+        "Download",
+        "Form",
+        "Modal / Pop-up",
+        "Navigation",
+        "Newsletter",
+        "Pricing / Subscription"
+      ],
+      "filters": [
+        "industry",
+        "mode"
+      ],
+      "use": "Call-to-Buy is the e-commerce relevant category; values for industry/mode not exposed on home page"
+    },
+    "minimal.gallery": {
+      "what": "Hand-picked minimal sites since 2013",
+      "tags": {
+        "E-commerce": 143,
+        "One page": 123,
+        "Portfolio": 983,
+        "Agency": 761
+      },
+      "platforms": [
+        "Framer",
+        "Webflow",
+        "Shopify",
+        "WordPress",
+        "Astro"
+      ],
+      "use": "E-commerce (143) tag is the relevant slice; Shopify/WordPress platform filters"
+    },
+    "60fps.design": {
+      "what": "2,110 recorded UI interactions from iOS and web apps",
+      "gestures": [
+        "Drag",
+        "Flick",
+        "Hold",
+        "Long Press",
+        "Pan",
+        "Pinch",
+        "Pull",
+        "Scrub",
+        "Swipe",
+        "Tap"
+      ],
+      "effects": [
+        "Blur",
+        "Bounce",
+        "Confetti",
+        "Glow",
+        "Morph",
+        "Parallax",
+        "Particles",
+        "Reveal",
+        "Shimmer",
+        "Spring Physics",
+        "Stagger",
+        "Ticker",
+        "Zoom"
+      ],
+      "patterns": [
+        "3D",
+        "Card Stack",
+        "Carousel",
+        "Empty State",
+        "Loading",
+        "Onboarding",
+        "Pricing",
+        "Quick Actions",
+        "Success State"
+      ],
+      "elements": [
+        "Bottom Sheet",
+        "Button",
+        "Card",
+        "Counter",
+        "Liquid Glass",
+        "Menu",
+        "Picker",
+        "Slider",
+        "Tabs",
+        "Toast",
+        "Tooltip"
+      ],
+      "app_categories": "includes Shopping and Lifestyle",
+      "use": "BEST fit: the effect and gesture taxonomy maps directly onto Motion/Rive/confetti choices; has an MCP entry and a Glossary (unexplored)",
+      "deep_dive": {
+        "date": "2026-10-14",
+        "pages_read": [
+          "/glossary",
+          "/mcp",
+          "/apps/category/shopping",
+          "/shots/filter/spring-physics",
+          "/shots/filter/liquid-glass",
+          "/snippets"
+        ],
+        "paths": {
+          "filters": "/shots/filter",
+          "filter_page": "/shots/filter/<slug>",
+          "shot": "/shots/<slug>",
+          "app": "/apps/<slug>",
+          "shopping": "/apps/category/shopping",
+          "glossary": "/glossary",
+          "mcp": "/mcp",
+          "snippets": "/snippets"
+        },
+        "platform_bias": "iOS-native. Shots are recordings of iOS app interactions; snippets and the MCP code tool emit SwiftUI, not web. Treat as design/motion reference to translate into Motion springs and CSS, not copy-paste code.",
+        "shopping_category": {
+          "apps": [
+            "Adidas",
+            "AliExpress",
+            "Dunzo",
+            "FirstClub",
+            "GOAT",
+            "H&M",
+            "Nike",
+            "Shop",
+            "Zara"
+          ],
+          "note": "shot counts, titles and tags are NOT visible on the category page; need each /apps/<slug> page (fashion-relevant: Adidas, GOAT, H&M, Nike, Zara)"
+        },
+        "filters": {
+          "spring_physics": "835 per description / 840 in menu",
+          "liquid_glass": "21 shots",
+          "gating": "page states all shot filters require a PRO subscription; free access to filtered listings was partial"
+        },
+        "glossary": {
+          "terms": "~85 across Gestures, Patterns, Effects, Elements",
+          "undefined_in_glossary": [
+            "Card Stack",
+            "Carousel",
+            "Delete",
+            "Gamification",
+            "Idle Animation",
+            "Shared Element",
+            "Success State",
+            "Bounce",
+            "Draw",
+            "Glow",
+            "Orbit",
+            "Parallax",
+            "Particles",
+            "Shimmer",
+            "Skeuomorphic",
+            "Spring Physics",
+            "Stagger",
+            "Ticker",
+            "Counter",
+            "Liquid Glass",
+            "Toast"
+          ],
+          "defined_and_relevant": {
+            "Showcase": "immersive full-screen views or carousels",
+            "Gallery": "structured visual-first collection",
+            "Featured": "spotlights curated content",
+            "Card": "compact scannable container",
+            "Pricing": "tiers/features presented clearly",
+            "Bottom Sheet": "panel sliding up from bottom",
+            "Badge": "count/update indicator on icons",
+            "Quick Actions": "contextual shortcuts",
+            "Reveal": "gradual uncover, easing-timed",
+            "Sequence": "elements appear step by step",
+            "Morph": "one element transforms into another",
+            "Confetti": "celebratory particles",
+            "Hold": "long press confirming deliberate action",
+            "Timer": "countdown; NOTE brand rule: no urgency timers"
+          }
+        },
+        "mcp": {
+          "url": "not shown on /mcp (behind #setup)",
+          "pricing": "$29/month or $69/quarter per seat via Gumroad; NOT included in PRO",
+          "auth": "no key in config; ChatGPT path signs in with licence key",
+          "tools": {
+            "search_shots": "closest shots to a plain-language description",
+            "list_filters": "all filters",
+            "get_shot": "keyframes, filters, mood",
+            "get_motion_breakdown": "trigger, start, movement, settle, reasoning",
+            "get_motion_code": "SwiftUI, compile-checked",
+            "get_related_shots": "similar shots"
+          },
+          "status": "NOT subscribed, NOT registered; paid -> STOP-AND-SHOW with manifest before any purchase",
+          "value_for_web": "get_motion_breakdown (trigger/start/movement/settle) is platform-neutral and the useful part; get_motion_code is SwiftUI only"
+        },
+        "snippets": {
+          "count": 20,
+          "framework": "SwiftUI (.swift download)",
+          "licence": "not stated on page",
+          "web_translatable": [
+            "Hold to Commit Button",
+            "Plan Switch Card Expand",
+            "Bottom Sheet Detail Expansion",
+            "List Fade Up from Down",
+            "Hide Sensitive Number",
+            "Card 3D Flip",
+            "List Item Accordion Expand",
+            "Continue Button to Tick",
+            "Number Flip with Reflection",
+            "Line Graph Morph",
+            "OTP Input Pulse Fill Success",
+            "Bottom Tabs Active Tab Expansion"
+          ]
+        },
+        "fit_for_skyyrose": {
+          "map": {
+            "Spring Physics/Stagger": "Motion spring + stagger()",
+            "Confetti": "canvas-confetti (founder approval, brand tokens)",
+            "Card 3D Flip": "CSS 3D or three.js card",
+            "Bottom Sheet Detail Expansion": "mobile quick-view / size guide sheet",
+            "Plan Switch Card Expand": "size/colour variant selector",
+            "Hold to Commit": "pre-order confirm with deliberate action",
+            "Liquid Glass": "CSS backdrop-filter + Motion; verify against brand (restrained)"
+          },
+          "do_not_use": [
+            "Mascot animations (founder-locked GLB mascot)",
+            "Timer/urgency patterns (founder voice: no urgency timers)",
+            "Streak/gamification patterns"
+          ]
+        },
+        "next": [
+          "Open /apps/nike, /apps/zara, /apps/adidas, /apps/goat, /apps/h-m for fashion shot titles",
+          "Decide on MCP purchase (founder y)"
+        ],
+        "shopping_app_pages": {
+          "date": "2026-10-14",
+          "slugs": {
+            "adidas": "/apps/adidas",
+            "aliexpress": "/apps/aliexpress",
+            "dunzo": "/apps/dunzo",
+            "firstclub": "/apps/firstclub",
+            "goat": "/apps/goat",
+            "h&m": "/apps/h-m",
+            "nike": "/apps/nike",
+            "shop": "/apps/shop",
+            "zara": "/apps/zara"
+          },
+          "slug_note": "/apps/h-and-m 404s; the real slug is /apps/h-m",
+          "read": [
+            "nike",
+            "zara",
+            "adidas",
+            "goat",
+            "h-m",
+            "shop"
+          ],
+          "not_read": [
+            "aliexpress",
+            "dunzo",
+            "firstclub"
+          ],
+          "shots": {
+            "nike": [
+              {
+                "id": 1464,
+                "title": "Nike Jordan Logo Scale Splash",
+                "type": "splash / logo scale"
+              }
+            ],
+            "zara": [
+              {
+                "id": 1901,
+                "title": "Zara Menu Swipe Interaction",
+                "type": "horizontal swipe between departments"
+              },
+              {
+                "id": 1899,
+                "title": "Zara Logo Splash to Permissions Story Interaction",
+                "type": "logo zoom + permissions story"
+              }
+            ],
+            "adidas": [
+              {
+                "id": 1900,
+                "title": "Adidas Intro Story Video Interaction"
+              },
+              {
+                "id": 1897,
+                "title": "Adidas Onboarding Story Stepper Interaction"
+              },
+              {
+                "id": 1895,
+                "title": "Adidas Logo Splash to Intro Message Swipe Animation"
+              }
+            ],
+            "goat": [
+              {
+                "id": 1573,
+                "title": "GOAT Top Tabs Swipe Interaction",
+                "type": "curved tab bar rotating on a circular path while swiping"
+              }
+            ],
+            "h-m": [
+              {
+                "id": 1863,
+                "title": "H&M Header Swipe Interaction",
+                "type": "horizontal swipe through featured category cards with synchronized text"
+              }
+            ],
+            "shop": [
+              {
+                "slug": "shop-add-to-cart-image-drop-interaction",
+                "type": "add to cart, image drop"
+              },
+              {
+                "slug": "shop-add-to-cart-interaction"
+              },
+              {
+                "slug": "shop-cart-sheet",
+                "type": "cart bottom sheet"
+              },
+              {
+                "slug": "shop-orders-animated-empty-screen",
+                "type": "animated empty state"
+              },
+              {
+                "slug": "shop-back-navigation-pop-interaction"
+              },
+              {
+                "slug": "shop-get-started-intro"
+              }
+            ]
+          },
+          "findings": [
+            "Fashion brand apps are thin: Nike 1, Zara 2, Adidas 3, GOAT 1, H&M 1 shots; none shows product browsing, size selection, wishlist, checkout or purchase",
+            "Nike page states all app shots require PRO; counts there may be understated",
+            "Only the Shop app (6 shots) has cart interactions: Add to Cart Image Drop, Cart Sheet",
+            "Recurring fashion-app motifs: logo splash/zoom (Nike, Zara, Adidas), swipe between departments or categories (Zara, H&M), story-style intros (Adidas)",
+            "Tags are not shown per shot; interaction types above are inferred from titles/descriptions"
+          ],
+          "useful_for_skyyrose": {
+            "cart": "Shop Add to Cart Image Drop (product thumbnail flies into the bag) and Cart Sheet (bottom sheet): the reference pair for add-to-bag feedback",
+            "navigation": "H&M header swipe and Zara department swipe: horizontal category/collection switching, relevant to the 4-collection structure",
+            "avoid": "Adidas story stepper and Duolingo-style onboarding: wrong register for a streetwear storefront"
+          },
+          "gap": "The library has almost no product-detail, size-selector or checkout motion for fashion; that part of the vocabulary has to come from collectui, landdding Fashion & Beauty, or first-principles Motion work"
+        }
+      }
+    },
+    "collectui.com": {
+      "what": "Daily design inspiration, newsletter",
+      "result": "home page exposed no categories or challenges; nothing extractable",
+      "use": "none from this fetch; would need sub-pages"
+    },
+    "posts.design": {
+      "what": "4,253+ social posts from 830+ brands, plus headers and OG images",
+      "categories": [
+        "Teaser",
+        "Announcements",
+        "Ad",
+        "Deal",
+        "Poster",
+        "Branding",
+        "Contest",
+        "Milestone"
+      ],
+      "subjects": [
+        "Merch",
+        "Commerce",
+        "Marketplaces"
+      ],
+      "use": "social/OG reference only; relevant to brand OG images and drop teasers; no fashion-specific taxonomy"
+    },
+    "landdding.com": {
+      "what": "~2.5k landing pages, 40 categories, 5 platforms",
+      "categories_relevant": [
+        "E-commerce",
+        "Fashion & Beauty"
+      ],
+      "examples_fashion": [
+        "Reiss",
+        "Lyle & Scott",
+        "BERO"
+      ],
+      "discovery": [
+        "browse by tag",
+        "browse by color",
+        "daily/weekly picks"
+      ],
+      "use": "Fashion & Beauty + E-commerce category slices; examples inferred, not categorized by the site",
+      "fashion_beauty_deep_dive": {
+        "date": "2026-10-14",
+        "paths": {
+          "category": "/c/fashion-beauty",
+          "e_commerce": "/c/e-commerce",
+          "detail": "/l/{slug}-{id}",
+          "pagination": "/c/fashion-beauty/page/{n}"
+        },
+        "count": "22 landing pages stated; 2 pages of 11",
+        "page_1": "NOT READ. /c/fashion-beauty returns 200 but its listing is client-rendered: no /l/ links in HTML, __NEXT_DATA__ present but __APOLLO_STATE__ is empty. Needs a real browser render (Chrome MCP).",
+        "page_2": [
+          {
+            "name": "Cairo - Webflow Shop Template (4 versions)",
+            "designer": "Wedoflow Agency",
+            "href": "/l/cairo---webflow-shop-template-h68vlkput",
+            "type": "template"
+          },
+          {
+            "name": "Milano - Webflow Retail Template (8 versions)",
+            "designer": "Wedoflow Agency",
+            "href": "/l/milano---webflow-retail-template-iqde56cxa6pcnn0",
+            "type": "template"
+          },
+          {
+            "name": "Older Studio",
+            "designer": "Landdding",
+            "href": "/l/older-studio-voy9h"
+          },
+          {
+            "name": "Moral",
+            "designer": "Landdding",
+            "href": "/l/moral-5ibfh"
+          },
+          {
+            "name": "Aware",
+            "designer": "Landdding",
+            "href": "/l/aware-cvkee"
+          },
+          {
+            "name": "CAUSE+MEDIC",
+            "designer": "Awesome Design",
+            "href": "/l/causemedic-6bw3ml"
+          },
+          {
+            "name": "Harley Of Scotland",
+            "designer": "Landdding",
+            "href": "/l/harley-of-scotland-1fd9h"
+          },
+          {
+            "name": "LifeLabs",
+            "designer": "Landdding",
+            "href": "/l/lifelabs-frssm"
+          },
+          {
+            "name": "Gemnote",
+            "designer": "Landdding",
+            "href": "/l/merch-swag-and-corporate-gifts--promotional-products---gemnote-ix832",
+            "note": "slug indicates merch/corporate gifts, not fashion"
+          },
+          {
+            "name": "Solere",
+            "designer": "Landdding",
+            "href": "/l/solere-sjckd"
+          },
+          {
+            "name": "The outset",
+            "designer": "Landdding",
+            "href": "/l/the-outset-ou5vq"
+          }
+        ],
+        "cross_check": "page-2 hrefs were confirmed with curl (11 /l/ links) and match the WebFetch table",
+        "findings": [
+          "The category page does not label entries as apparel vs beauty, tag them, or show platform; only the designer is shown",
+          "Of the 11 read, none is identifiable as streetwear from name or slug alone; 2 are Webflow shop/retail templates, 1 is merch/corporate gifts",
+          "Earlier home-page examples Reiss and Lyle & Scott are fashion but sit in the main feed, not confirmed in this category",
+          "Detail pages (/l/...) were NOT opened, so no layout, section or motion data exists yet"
+        ],
+        "verdict": "Low yield from the list view alone. Value requires opening detail pages for the few real fashion entries, or a rendered view of page 1 to see the other 11.",
+        "next": [
+          "Render page 1 with the Chrome MCP (read-only)",
+          "Open /l/ pages for Harley Of Scotland, Solere, Older Studio, Moral, Aware, The outset to identify brand type",
+          "Try /c/e-commerce as the likelier source of storefront patterns"
+        ]
+      }
+    }
+  },
+  "next_fetches": [
+    "60fps.design/glossary and filter pages for Shopping + Liquid Glass + Spring Physics",
+    "landdding.com Fashion & Beauty category page",
+    "minimal.gallery E-commerce tag page",
+    "navbar.gallery /type/mega-menu",
+    "footer.design large-type + dark filter"
+  ],
+  "caveat": "Each gallery was read from its home page only; counts and example names are as shown on 2026-10-14 and can shift"
+}

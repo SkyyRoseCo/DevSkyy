@@ -8,6 +8,12 @@ description: Defines SkyyRose brand direction, visual identity, editorial compos
 Use before a major visual redesign, collection world, hero, lookbook, or
 imagery system.
 
+For SkyyRose redesign work, apply the brand-experience examples in
+[`../fashion-theme-team/references/verified-examples.md`](../fashion-theme-team/references/verified-examples.md#fashion-brand-experience).
+Current founder-supplied direction may intentionally override an older
+presentation heuristic; preserve product truth, accessibility, commerce, and
+working-feature contracts while doing so.
+
 ## Owners and inputs
 
 Route `brand-experience-architect`, `fashion-brand-systems-researcher`,

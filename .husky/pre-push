@@ -1,5 +1,5 @@
 # git-lfs (managed by husky) — run if installed; don't short-circuit the rest.
-if command -v git-lfs >/dev/null 2>&1; then
+if command -v git-lfs > /dev/null 2>&1; then
   git lfs pre-push "$@" || exit $?
 fi
 
@@ -19,12 +19,35 @@ fi
 # Bypass a single push with `git push --no-verify`. Remove this block (or the gate
 # files) once GitHub Actions billing is restored.
 if [ -f .ci-local-gate ]; then
-  _ci_script="$(git rev-parse --show-toplevel 2>/dev/null)/scripts/ci-local.sh"
+  _ci_script="$(git rev-parse --show-toplevel 2> /dev/null)/scripts/ci-local.sh"
   [ -f "$_ci_script" ] || _ci_script="/Users/theceo/DevSkyy/scripts/ci-local.sh"
   if [ -f "$_ci_script" ]; then
     echo "ci-local stopgap: running fast pre-push checks (rm .ci-local-gate to disable)…"
     if ! CI_LOCAL_ROOT="$PWD" bash "$_ci_script" wordpress-theme; then
       echo "✗ ci-local pre-push failed — fix it, or 'git push --no-verify' to bypass, or 'rm .ci-local-gate' to disable."
+      exit 1
+    fi
+  fi
+fi
+
+# ── session handoff log gate (CLAUDE.md / AGENTS.md "Session handoff log") ──
+# Tool-agnostic backstop for agents with no Stop-hook support (Gemini CLI, Cursor,
+# Aider, …): pushing a branch requires a row for it — `@ <branch>` dated today or
+# yesterday — in the MAIN checkout's .wolf/memory.md, so parallel agents can see
+# what landed. Claude Code and Codex are gated earlier by .wolf/hooks/handoff-gate.sh.
+# Bypass one push: WOLF_HANDOFF_SKIP=1 git push   (or --no-verify).
+if [ "${WOLF_HANDOFF_SKIP:-0}" != "1" ]; then
+  _wolf_branch="$(git symbolic-ref --short -q HEAD 2> /dev/null)"
+  _wolf_main="$(git worktree list --porcelain 2> /dev/null | awk '/^worktree /{print substr($0, 10); exit}')"
+  _wolf_mem="$_wolf_main/.wolf/memory.md"
+  if [ -n "$_wolf_branch" ] && [ -f "$_wolf_mem" ]; then
+    _wolf_today="$(date '+%Y-%m-%d')"
+    _wolf_yday="$(date -v-1d '+%Y-%m-%d' 2> /dev/null || date -d yesterday '+%Y-%m-%d' 2> /dev/null)"
+    if ! grep -F "@ $_wolf_branch " "$_wolf_mem" | grep -Eq "^\| ($_wolf_today|${_wolf_yday:-$_wolf_today}) "; then
+      echo "✗ handoff log: no row for branch '$_wolf_branch' dated today/yesterday in $_wolf_mem"
+      echo "  Append one (format in CLAUDE.md / AGENTS.md → Session handoff log), e.g.:"
+      echo "  | $_wolf_today $(date '+%H:%M') | <agent> @ $_wolf_branch sid:<id8> | what you did | files / PRs | done · in-progress · blocked + next step | ~tokens |"
+      echo "  Bypass once: WOLF_HANDOFF_SKIP=1 git push"
       exit 1
     fi
   fi

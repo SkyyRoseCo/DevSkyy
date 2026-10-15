@@ -1,7 +1,7 @@
 {
   "scope": "Image inventory of worktree excluding dependency/cache folders; supplemental main checkout assets/renders/theme/golden/data. Same-path same-byte supplemental copies omitted. Includes non-product imagery pending classification. Filename candidates are not authoritative product bindings. Since 2026-10-14 also holds non-image media (video, 3D, fonts, PDF) that the asset SOT census (scripts/asset_sot_census.py) found referenced by no ledger.",
   "counts": {
-    "unassigned": 3030,
+    "unassigned": 3034,
     "unverified-candidate": 1620,
     "registry-associated-by-hash": 538
   },
@@ -49283,26 +49283,6 @@
       "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
     },
     {
-      "path": "wordpress-theme/skyyrose-flagship/assets/fonts/kaushan-script-latin.woff2",
-      "location": "worktree",
-      "sha256": "d6ca8ff38a71629475ec11665a9929ed6228975146de972e7034db008bf11836",
-      "bytes": 32644,
-      "status": "unassigned",
-      "candidate_skus": [],
-      "review_category": "retired-font",
-      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Legacy script face superseded by the bespoke Black Rose / Love Hurts scripts (not canon per design-system sync-theme-assets.mjs) yet still declared in V1 assets/css/fonts.css. Parked for founder decision; no identity or binding is asserted."
-    },
-    {
-      "path": "wordpress-theme/skyyrose-flagship/assets/fonts/pacifico-latin.woff2",
-      "location": "worktree",
-      "sha256": "1a47a54e53bbfd3cfb4673636eac5edc98a7ecbf36c41340f48086a4f4796b18",
-      "bytes": 22296,
-      "status": "unassigned",
-      "candidate_skus": [],
-      "review_category": "retired-font",
-      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Legacy script face superseded by the bespoke Black Rose / Love Hurts scripts (not canon per design-system sync-theme-assets.mjs) yet still declared in V1 assets/css/fonts.css. Parked for founder decision; no identity or binding is asserted."
-    },
-    {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-joggers/black-rose-joggers-front-model.pdf",
       "location": "worktree",
       "sha256": "442242852cc2d54eee4b2113ae9213de3aadfb3537b98dd7282c01bd3300c213",
@@ -49341,6 +49321,46 @@
       "candidate_skus": [],
       "review_category": "theme-3d-model",
       "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme mascot model; 3D content not pixel-verifiable here (runtime reference exists in theme code where noted by CLAUDE.md). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/jersey-direction-reset-20261014/red-team/men-blind.jpg",
+      "location": "worktree",
+      "sha256": "8d8a62d70d9f9741d992c2be39b3b204fe032ff5ad6caf0b4653732509adf0a5",
+      "bytes": 87300,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "task-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: red-team comparison renders from the jersey direction reset task, landed with the shared checkout's uncommitted work. Generated review evidence, not product photography; no identity or binding is asserted. Parked for founder decision."
+    },
+    {
+      "path": "tasks/jersey-direction-reset-20261014/red-team/men-native-2.5.jpg",
+      "location": "worktree",
+      "sha256": "91ff384aa92228939e86ac03925eba5a60bc9a4a687623fb82d021b21356d13e",
+      "bytes": 96147,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "task-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: red-team comparison renders from the jersey direction reset task, landed with the shared checkout's uncommitted work. Generated review evidence, not product photography; no identity or binding is asserted. Parked for founder decision."
+    },
+    {
+      "path": "tasks/jersey-direction-reset-20261014/red-team/women-blind.jpg",
+      "location": "worktree",
+      "sha256": "3114c6944ad86ae79c30567b4687e0a5b12f208d1ab2d2e92d0d2dae6b0ac16a",
+      "bytes": 137285,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "task-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: red-team comparison renders from the jersey direction reset task, landed with the shared checkout's uncommitted work. Generated review evidence, not product photography; no identity or binding is asserted. Parked for founder decision."
+    },
+    {
+      "path": "tasks/jersey-direction-reset-20261014/red-team/women-native-4.jpg",
+      "location": "worktree",
+      "sha256": "d7f581a225766c717b3490d0fde229ee564d45e0dc36e17272843b13174373c9",
+      "bytes": 93925,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "task-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: red-team comparison renders from the jersey direction reset task, landed with the shared checkout's uncommitted work. Generated review evidence, not product photography; no identity or binding is asserted. Parked for founder decision."
     }
   ]
 }

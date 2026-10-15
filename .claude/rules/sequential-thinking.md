@@ -1,16 +1,23 @@
 # Sequential Thinking (Auto-Trigger)
 
-Use the Sequential Thinking MCP tool (`mcp__sequential-thinking__sequentialthinking`) **proactively** — do not wait for the user to ask.
+Use the Sequential Thinking MCP tool
+(`mcp__sequential-thinking__sequentialthinking`) **proactively** — do not wait
+for the user to ask.
 
 ## When to Use
 
 Automatically invoke sequential thinking when:
 
-- **Multi-step planning**: Tasks requiring 3+ implementation steps with dependencies
-- **Complex debugging**: Bugs with multiple possible root causes or cross-file interactions
-- **Architecture decisions**: Trade-offs between approaches, system design, refactoring strategy
-- **Dependency analysis**: Determining execution order, identifying circular dependencies, migration planning
-- **Ambiguous requirements**: Breaking down vague requests into concrete, ordered action items
+- **Multi-step planning**: Tasks requiring 3+ implementation steps with
+  dependencies
+- **Complex debugging**: Bugs with multiple possible root causes or cross-file
+  interactions
+- **Architecture decisions**: Trade-offs between approaches, system design,
+  refactoring strategy
+- **Dependency analysis**: Determining execution order, identifying circular
+  dependencies, migration planning
+- **Ambiguous requirements**: Breaking down vague requests into concrete,
+  ordered action items
 
 ## When NOT to Use
 

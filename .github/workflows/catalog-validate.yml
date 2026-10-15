@@ -69,6 +69,10 @@ on:
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
+      - "assets/products/manifest.json"
+      - "scripts/build_asset_manifest.py"
+      - "skyyrose/core/asset_manifest.py"
+      - "tests/test_sync_manifest_projection.py"
       - "tests/test_unified_product_registry.py"
       - "tests/test_registry_product_readers.py"
       - "tests/test_registry_php_parity.py"
@@ -152,6 +156,10 @@ on:
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
+      - "assets/products/manifest.json"
+      - "scripts/build_asset_manifest.py"
+      - "skyyrose/core/asset_manifest.py"
+      - "tests/test_sync_manifest_projection.py"
       - "tests/test_unified_product_registry.py"
       - "tests/test_registry_product_readers.py"
       - "tests/test_registry_php_parity.py"
@@ -196,7 +204,7 @@ jobs:
           # without pytest-asyncio pytest errors "Unknown config option").
           # No project/base install — `.[dev]` pulls the heavy provider stack, was
           # timing out, and silently fell back to a pytest-only env that failed.
-          pip install pytest pytest-asyncio pytest-timeout Pillow PyYAML jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
+          pip install pytest pytest-asyncio pytest-timeout Pillow PyYAML jsonschema cryptography PyJWT argon2-cffi passlib bcrypt email-validator fastapi python-multipart --quiet
 
       - name: Run catalog consistency validator
         run: |

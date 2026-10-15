@@ -1,0 +1,35 @@
+{
+  "schema": "product-fidelity-generation-receipt.v1",
+  "contract_sha256": "5cfd5cb880c850b92999fde7024a8ccd147049b0f9c58a2b8278664f49f24fb2",
+  "provider": "openai",
+  "api_surface": "images",
+  "endpoint": "/v1/images/edits",
+  "requested_model": "gpt-image-2-2026-04-21",
+  "input_sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0",
+  "request_image_sha256s": [
+    "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0",
+    "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c"
+  ],
+  "mask_path": "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-reference-pack-v3/openai-edit-mask-alpha-zero-is-editable.png",
+  "mask_sha256": "a58fc3dce52096a0277655c4fa14524ed4f5400757652d842a9abe8941347b80",
+  "output_sha256": "cc40b0828e327bffe382dc11e1d3e24d3a0f6dfb2a40f61c7bc2edafed445ad0",
+  "prompt_sha256": "0790ccee08533665431e9f770b02dcaf70152844829a65a312381cbefae9ef0b",
+  "request_parameters": {
+    "size": "1024x1536",
+    "quality": "high",
+    "output_format": "png",
+    "background": "transparent"
+  },
+  "x_request_id": "req_7e909300e22c4b3faad725d08bc2a4c8",
+  "sdk_version": "openai-python/2.23.0",
+  "provider_output": {
+    "path": "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-provider-raw-v1.png",
+    "sha256": "b130961999560d2a0fc0bc7497ac061dc86c907d0d1204de76f3a541aecb564f",
+    "outside_mask_changed_pixels_before_lock_restore": 1568594
+  },
+  "pixel_integrity": {
+    "inside_mask_changed_pixels": 4270,
+    "outside_mask_changed_pixels": 0,
+    "outside_mask_byte_identical": true
+  }
+}

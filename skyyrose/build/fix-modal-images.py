@@ -414,7 +414,6 @@ def replace_modal_html(content):
         pos = content.find(pattern, inner_start)
         if pos != -1:
             close_div_pos = pos
-            close_div_len = len("</div>")
             new_content = content[:inner_start] + NEW_MODAL_INNER + content[close_div_pos:]
             return new_content, True
 

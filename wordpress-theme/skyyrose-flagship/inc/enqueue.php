@@ -18,9 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Enqueue self-hosted fonts (all brand typography).
  *
  * GDPR-compliant: zero external requests to Google Fonts.
- * 5 universal families + 3 collection scripts served locally from assets/fonts/ as woff2.
+ * 5 universal families + 4 collection scripts served locally from assets/fonts/ as woff2.
  * Universal: Inter, Archivo, Cinzel, Hanken Grotesk, Anton.
- * Collection scripts: Pacifico, Kaushan Script, Pinyon Script.
+ * Collection scripts: SkyyRose Black Rose Script, SkyyRose Love Hurts Graffiti,
+ * Pinyon Script, Grand Hotel.
  *
  * @since 3.2.1
  * @updated 4.1.0 — self-hosted all Google Fonts families

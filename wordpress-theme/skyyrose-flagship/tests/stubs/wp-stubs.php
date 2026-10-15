@@ -179,3 +179,38 @@ if ( ! function_exists( 'delete_transient' ) ) {
 		return true;
 	}
 }
+
+// ---------------------------------------------------------------------------
+// URL sanitization (inc/product-3d-model.php)
+// ---------------------------------------------------------------------------
+
+if ( ! function_exists( 'esc_url_raw' ) ) {
+	/**
+	 * Mirrors the WP behaviour the sanitizer relies on: strip control chars,
+	 * leave scheme-less relative paths alone, prepend http:// to bare hosts,
+	 * and return '' when the scheme is not in $protocols.
+	 */
+	function esc_url_raw( $url, $protocols = null ) {
+		$url = preg_replace( '/[^a-z0-9-~+_.?#=!&;,\/:%@$\|*\'()\[\]\\x80-\\xff]/i', '', (string) $url );
+		if ( '' === $url ) {
+			return '';
+		}
+		if ( ! str_contains( $url, ':' ) && ! in_array( $url[0], array( '/', '#', '?' ), true ) ) {
+			$url = 'http://' . $url;
+		}
+		if ( str_contains( $url, ':' ) ) {
+			$scheme    = strtolower( (string) parse_url( $url, PHP_URL_SCHEME ) );
+			$protocols = is_array( $protocols ) ? $protocols : array( 'http', 'https', 'ftp', 'mailto' );
+			if ( '' === $scheme || ! in_array( $scheme, $protocols, true ) ) {
+				return '';
+			}
+		}
+		return $url;
+	}
+}
+
+if ( ! function_exists( 'wp_parse_url' ) ) {
+	function wp_parse_url( $url, $component = -1 ) {
+		return parse_url( (string) $url, $component );
+	}
+}

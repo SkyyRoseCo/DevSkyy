@@ -1,0 +1,269 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>CLO3D / pattern-based garment pipeline — evaluation</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0a0a0a;
+    --fg: #ededed;
+    --muted: #b3b3b3;
+    --accent: #b76e79;
+    --line: #2a2a2a;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font:
+      16px/1.6 'Hanken Grotesk',
+      system-ui,
+      sans-serif;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  h1,
+  h2 {
+    font-family: Archivo, system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+  h1 {
+    font-size: 1.9rem;
+    margin-bottom: 0.25rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+    margin-top: 2.25rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.35rem;
+  }
+  code {
+    background: #161616;
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  th,
+  td {
+    border: 1px solid var(--line);
+    padding: 0.5rem 0.6rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #141414;
+  }
+  .sub {
+    color: var(--muted);
+    margin-top: 0;
+  }
+  .tag {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 1rem 0;
+    padding: 0.25rem 0 0.25rem 1rem;
+    color: var(--muted);
+  }
+</style>
+
+<h1>CLO3D / pattern-based garment pipeline — evaluation</h1>
+<p class="sub">2026-09-17 · item 5 of the founder 3D brief · decision document, nothing purchased or installed</p>
+
+<h2 id="verdict">Verdict</h2>
+<p>
+  <strong>Yes, sewing patterns can be built — but not from anything currently in the repo.</strong>
+  Pattern drafting needs garment measurements, and
+  <span class="tag">0 of 33</span>
+  products carry one: every
+  <code>garment.sizing_references.garment_size_chart</code>
+  in the product registry is
+  <code>null</code>
+  , and that same record states the rule
+  <em>"Use founder specifications and actual product flatlays; no inferred garment measurements."</em>
+  So the one missing input is a flat-measure spec taken off the real samples. Inventing it is not an option, and
+  estimating it from photos is the same thing wearing a hat.
+</p>
+
+<h2 id="what-it-replaces">What this would replace, and what it would not</h2>
+<p>
+  Today's 33 web GLBs come from Meshy: one image &rarr; one mesh, one material, one baked texture atlas. That is why two
+  limits exist that no amount of material tuning fixes:
+</p>
+<ul>
+  <li>
+    <strong>Inferred geometry.</strong>
+    A back that no photo showed is a guess. This is the recurring wrong-garment defect class (bug-096).
+  </li>
+  <li>
+    <strong>Incoherent UVs.</strong>
+    The atlas is fragmented AI islands, so there is no fabric grain direction. That is exactly why
+    <code>KHR_materials_anisotropy</code>
+    is off by default in the web build: anisotropy is defined in tangent space, which an AI atlas does not align to the
+    weave. A pattern-based garment has UVs that follow the grain line, so anisotropy becomes physically meaningful on
+    satin and nylon for the first time.
+  </li>
+</ul>
+<p>
+  What does
+  <em>not</em>
+  change: CLO3D does not export the glTF sheen or clearcoat extensions, so the
+  <code>glb_materials</code>
+  sheen patch and the
+  <code>gltfpack</code>
+  +
+  <code>web_gate</code>
+  steps stay in the pipeline regardless of where the geometry comes from. The work built for items 1 and 2 is not thrown
+  away by adopting CLO.
+</p>
+
+<h2 id="inputs">Inputs required before any pilot</h2>
+<table>
+  <tr>
+    <th>Input</th>
+    <th>Status</th>
+    <th>Who supplies it</th>
+  </tr>
+  <tr>
+    <td>
+      Flat-measure spec per silhouette (chest/body width, body length, shoulder, sleeve length, cuff, hem, rise, inseam,
+      leg opening)
+    </td>
+    <td><strong>Missing — blocking</strong></td>
+    <td>Founder, measuring the real samples</td>
+  </tr>
+  <tr>
+    <td>Grading rule S&ndash;3XL (increment per measurement)</td>
+    <td>Missing</td>
+    <td>Founder, or standard streetwear grade once he approves it</td>
+  </tr>
+  <tr>
+    <td>Fabric behaviour (weight, stretch, drape) per class</td>
+    <td>Partial — fabric named in prose, no physical values</td>
+    <td>CLO/MD preset picked to match the named fabric</td>
+  </tr>
+  <tr>
+    <td>Artwork and placement dimensions</td>
+    <td>Present — registry logo/placement records</td>
+    <td>Already authoritative</td>
+  </tr>
+  <tr>
+    <td>Reference flatlays and real front photos</td>
+    <td>
+      Present —
+      <code>assets/products/references/</code>
+    </td>
+    <td>Already in repo</td>
+  </tr>
+</table>
+
+<h2 id="path">Proposed path (cheapest first)</h2>
+<ol>
+  <li>
+    <strong>Five base blocks cover most of the line:</strong>
+    fleece crew/hoodie, cotton tee, jogger, mesh basketball short, knit jersey. That is 26 of 33 products. The outliers
+    are the Bomber Sherpa (two-layer satin placket + storm flap), the Love Hurts Bomber (raglan + rib banding), the
+    Windbreaker Set, the Signature Beanie and The Fannie — those are individual drafts, not block variants.
+  </li>
+  <li>
+    <strong>Draft in a free tool first.</strong>
+    Seamly2D drafts parametrically and exports DXF-AAMA, which is what CLO and Marvelous import. That lets the block
+    work happen at $0 before any subscription is bought.
+  </li>
+  <li>
+    <strong>Simulate in one paid tool, on one product, as a pilot.</strong>
+    Judge it side by side against the real front photo before buying a year.
+  </li>
+  <li>
+    <strong>Run the pilot GLB through the existing web build</strong>
+    (
+    <code>scripts/build_web_glbs.py</code>
+    ) so it is measured against the same 3MB budget and gate as the Meshy set, then compare the two in the same viewer.
+  </li>
+</ol>
+
+<h2 id="tools">Tool comparison</h2>
+<table>
+  <tr>
+    <th></th>
+    <th>CLO3D</th>
+    <th>Marvelous Designer</th>
+    <th>Seamly2D</th>
+  </tr>
+  <tr>
+    <td>Cost (individual, 2026)</td>
+    <td>$50/mo · $450/yr</td>
+    <td>$39/mo · $280/yr (perpetual discontinued for new buyers Dec 2025)</td>
+    <td>Free, open source</td>
+  </tr>
+  <tr>
+    <td>Role</td>
+    <td>Pattern + simulation + render, fashion-industry oriented</td>
+    <td>Cloth simulation, pattern-based, VFX/games oriented</td>
+    <td>Pattern drafting only, no simulation</td>
+  </tr>
+  <tr>
+    <td>glTF/GLB export</td>
+    <td>Yes</td>
+    <td>No (OBJ/FBX/USD/Alembic)</td>
+    <td>n/a (DXF/SVG/PDF)</td>
+  </tr>
+  <tr>
+    <td>Tech pack / DXF out</td>
+    <td>Yes</td>
+    <td>Limited</td>
+    <td>DXF-AAMA</td>
+  </tr>
+  <tr>
+    <td>Scriptable / headless</td>
+    <td>Python API; headless unverified</td>
+    <td>
+      Python API in-process;
+      <strong>no official headless or batch mode as of MD 12</strong>
+    </td>
+    <td>CLI available</td>
+  </tr>
+</table>
+<p>
+  On export format alone CLO3D is the fit: GLB out of the box is the format the storefront consumes. Marvelous is
+  cheaper and better at cloth realism but would need an OBJ/FBX &rarr; GLB conversion step, and this repo already has a
+  Marvelous CLI harness whose own notes record that
+  <em>no command-line session exists as of MD 12</em>
+  — meaning neither tool becomes an unattended pipeline stage. This stays designer-in-the-loop work.
+</p>
+
+<h2 id="decision">Decision points for the founder</h2>
+<ul>
+  <li>
+    <strong>Measurements.</strong>
+    Will you flat-measure one sample per silhouette? Nothing downstream can start without it.
+  </li>
+  <li>
+    <strong>Pilot scope.</strong>
+    One product end to end (recommended: a cotton tee — simplest block, and its Meshy GLB is already the smallest at
+    0.98MB, so the comparison is clean) before any subscription decision.
+  </li>
+  <li>
+    <strong>Purchase.</strong>
+    A CLO3D or Marvelous subscription is real money and needs an explicit go — it is not covered by any approval in this
+    session.
+  </li>
+</ul>
+
+<blockquote>
+  Sources: CLO3D support docs on glTF 2.0 export and its lack of sheen/clearcoat extension support; CLO3D vs Marvelous
+  Designer pricing comparisons (2026); this repo's
+  <code>skyyrose/cli_harnesses/marvelous/agent-harness/MARVELOUS.md</code>
+  on the MD scripting API and the absence of a batch session; product registry
+  <code>garment.sizing_references</code>
+  read via
+  <code>skyyrose.core.product_registry</code>
+  on 2026-09-17.
+</blockquote>
