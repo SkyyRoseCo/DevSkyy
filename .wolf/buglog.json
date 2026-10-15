@@ -7284,5 +7284,26 @@
     "related_bugs": [],
     "occurrences": 1,
     "last_seen": "2026-10-14T00:00:00+00:00"
+  },
+  {
+    "id": "bug-407",
+    "timestamp": "2026-10-15T00:00:00+00:00",
+    "error_message": "Kids colorblock product bundles (data/product-bundles/Kids {Purple,Red} Set/source-photo.jpg) held plain-tee photos; the legacy render paths pass that file to the model as 'REFERENCE — REAL PRODUCT PHOTO' for kids-002/kids-001",
+    "file": "data/product-bundles/Kids Purple Set/source-photo.jpg",
+    "root_cause": "The bundles are a separate, hand-placed copy of render sources that nothing checked against the registry. Their source photos were byte copies of six misnamed V1 theme images (images/products/colorblock-{purple,red}-set-real.*) that show a white and a mauve tee. The registry itself was correct (render_sources.reference = assets/products/references/kids-00x-real-photo.jpeg).",
+    "fix": "Kids bundle source photos replaced with byte copies of the registry reference; the six misnamed tee files deleted with their review-inventory records (no code referenced them). tests/test_product_bundle_sources.py requires every bundle real-photo to be a byte copy of get_product(sku).render_sources.reference, with a shrink-only list of 8 bundles that already diverged and await eyes-on review.",
+    "tags": [
+      "sot",
+      "imagery",
+      "wrong-garment",
+      "render-source",
+      "product-bundles",
+      "kids"
+    ],
+    "related_bugs": [
+      "bug-096"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-15T00:00:00+00:00"
   }
 ]
