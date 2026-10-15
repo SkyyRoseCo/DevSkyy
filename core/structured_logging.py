@@ -9,7 +9,6 @@ logging entry point.
 
 from __future__ import annotations
 
-
 from utils.log import (
     add_context_vars,
     agent_id_var,
@@ -17,12 +16,7 @@ from utils.log import (
     clear_contextvars,
 )
 from utils.log import configure_logging as _configure_logging
-from utils.log import (
-    correlation_id_var,
-    get_logger,
-    unbind_contextvars,
-    user_id_var,
-)
+from utils.log import correlation_id_var, get_logger, unbind_contextvars, user_id_var
 
 
 def configure_logging(

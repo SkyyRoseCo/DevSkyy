@@ -15,9 +15,7 @@ from tests.elite_studio.pipeline3d.glb_fixture import (
     pack_glb,
 )
 from tests.elite_studio.pipeline3d.glb_fixture import triangle_document as build_triangle_document
-from tests.elite_studio.pipeline3d.glb_fixture import (
-    web_ready_document,
-)
+from tests.elite_studio.pipeline3d.glb_fixture import web_ready_document
 
 SATIN = "**lustrous black satin** exterior fabric. NOT a fleece hoodie."
 LEATHER = "black PU/faux-leather fanny pack with nylon webbing strap. NOT a leather handbag."

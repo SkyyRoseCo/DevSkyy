@@ -131,11 +131,7 @@ from llm.model_ids import (  # noqa: E402, F401  -- re-exported for legacy impor
     COMPOSITOR_QA_MODEL,
 )
 from llm.model_ids import GEMINI_FLASH_IMAGE_MODEL as GEMINI_IMAGE_GEN_MODEL  # noqa: E402, F401
-from llm.model_ids import (  # noqa: E402, F401  -- re-exported for legacy importers
-    GEMINI_VISION_MODEL,
-    OPENAI_IMAGE_MODEL,
-    OPENAI_VISION_MODEL,
-)
+from llm.model_ids import GEMINI_VISION_MODEL, OPENAI_IMAGE_MODEL, OPENAI_VISION_MODEL
 
 # Local-only back-compat aliases — these names exist only here, not in
 # llm/model_ids.py, because they're skyyrose-specific re-spellings.

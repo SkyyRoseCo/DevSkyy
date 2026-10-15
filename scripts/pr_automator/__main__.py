@@ -17,9 +17,7 @@ from scripts.pr_automator.core import (
     State,
 )
 from scripts.pr_automator.core import git_run as _git
-from scripts.pr_automator.core import (
-    setup_logging,
-)
+from scripts.pr_automator.core import setup_logging
 from scripts.pr_automator.gates import run_gates
 from scripts.pr_automator.merge_gate import (
     MAX_CYCLES_PER_SHA,

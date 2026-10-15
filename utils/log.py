@@ -49,11 +49,7 @@ from utils.logger import (
     LoggerConfig,
 )
 from utils.logger import get_logger as get_stdlib_logger
-from utils.logger import (
-    log_with_context,
-    setup_logger,
-    temporary_level,
-)
+from utils.logger import log_with_context, setup_logger, temporary_level
 
 # ---------------------------------------------------------------------------
 # Context variables — the only definitions in the repo
