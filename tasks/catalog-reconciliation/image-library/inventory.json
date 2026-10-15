@@ -49283,26 +49283,6 @@
       "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
     },
     {
-      "path": "wordpress-theme/skyyrose-flagship/assets/fonts/kaushan-script-latin.woff2",
-      "location": "worktree",
-      "sha256": "d6ca8ff38a71629475ec11665a9929ed6228975146de972e7034db008bf11836",
-      "bytes": 32644,
-      "status": "unassigned",
-      "candidate_skus": [],
-      "review_category": "retired-font",
-      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Legacy script face superseded by the bespoke Black Rose / Love Hurts scripts (not canon per design-system sync-theme-assets.mjs) yet still declared in V1 assets/css/fonts.css. Parked for founder decision; no identity or binding is asserted."
-    },
-    {
-      "path": "wordpress-theme/skyyrose-flagship/assets/fonts/pacifico-latin.woff2",
-      "location": "worktree",
-      "sha256": "1a47a54e53bbfd3cfb4673636eac5edc98a7ecbf36c41340f48086a4f4796b18",
-      "bytes": 22296,
-      "status": "unassigned",
-      "candidate_skus": [],
-      "review_category": "retired-font",
-      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Legacy script face superseded by the bespoke Black Rose / Love Hurts scripts (not canon per design-system sync-theme-assets.mjs) yet still declared in V1 assets/css/fonts.css. Parked for founder decision; no identity or binding is asserted."
-    },
-    {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-joggers/black-rose-joggers-front-model.pdf",
       "location": "worktree",
       "sha256": "442242852cc2d54eee4b2113ae9213de3aadfb3537b98dd7282c01bd3300c213",

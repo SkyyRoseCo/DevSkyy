@@ -5,8 +5,8 @@
  * All woff2 files served locally from assets/fonts/.
  *
  * Fonts: Inter, Archivo (display), Cinzel (caps), Hanken Grotesk (body),
- *        Anton (ui/drop) + collection scripts (Pacifico, Kaushan Script,
- *        Pinyon Script, Grand Hotel).
+ *        Anton (ui/drop) + collection scripts (Pinyon Script, Grand Hotel,
+ *        SkyyRose Black Rose Script, SkyyRose Love Hurts Graffiti).
  *
  * @package SkyyRose
  * @since   3.2.1
@@ -104,36 +104,10 @@
    Per-collection interior heading/accent voice — referenced by
    identity.json fonts.script.woff2 (assets/fonts/ root, not collections/).
    Name is always a lockup image; these fonts are accent/heading voice.
-   - Pacifico       → Black Rose script accent
-   - Kaushan Script → Love Hurts script accent (interim; custom face pending)
    - Pinyon Script  → Signature script accent
    - Grand Hotel    → Kids Capsule script accent
    All OFL licensed — commercial-safe, self-hosted, zero CDN.
    ═══════════════════════════════════════════════════════════════════ */
-
-/* ─── Pacifico (Black Rose script accent) ─────────────────────────── */
-@font-face {
-	font-family: Pacifico;
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url('../fonts/pacifico-latin.woff2') format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-		U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC,
-		U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* ─── Kaushan Script (Love Hurts script accent) ───────────────────── */
-@font-face {
-	font-family: 'Kaushan Script';
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url('../fonts/kaushan-script-latin.woff2') format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-		U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC,
-		U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 /* ─── Pinyon Script (Signature script accent) ─────────────────────── */
 @font-face {
