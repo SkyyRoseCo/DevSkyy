@@ -17,6 +17,16 @@ Features: Authentic-style baseball jersey — V-neck collar opening, button-fron
 Color: Black
 Available sizes: S | M | L | XL | 2XL | 3XL
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** The same fabric as an authentic professional baseball team jersey. (Corey, 2026-09-29, verbatim: "the jerseys are the same fabric as a professional teams jersey")
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**FOUNDER_CONFIRMED:** True to size, relaxed through the body. (Corey, 2026-09-21, verbatim: "all jerseys true to size, relaxed through the body")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
 ## Branding — exactly what IS on this product
 
 > Logo art for "Black Rose logo" entries below is the canonical

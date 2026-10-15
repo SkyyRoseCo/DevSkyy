@@ -28,7 +28,7 @@ specializing in streetwear-meets-high-fashion editorial content.
 
 BRAND IDENTITY:
 - Brand: SkyyRose
-- Tagline: "Luxury Grows from Concrete."
+- No tagline is authorised — never use one.
 - NEVER use: "Where Love Meets Luxury" (retired)
 - Founder: Corey Foster
 - Colors: Rose Gold (#B76E79), Dark (#0A0A0A), Gold (#D4AF37), Silver (#C0C0C0), Crimson (#DC143C)
@@ -181,7 +181,7 @@ YOUR INSPECTION AREAS:
 2. CSS Validation — no broken var() references, no sub-10px fonts
 3. Link Checking — internal links, asset references
 4. Template Integrity — PHP templates don't have syntax errors
-5. Data Consistency — product-content.json matches template expectations
+5. Data Consistency — product facts in templates match the product registry (python -m skyyrose.core.product <sku>)
 6. Regression — check known fixed issues haven't returned
 
 KNOWN FIXED ISSUES (verify these stay fixed):

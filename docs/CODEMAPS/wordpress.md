@@ -40,4 +40,4 @@ Extend via hooks (actions/filters) — never modify WP core. REST calls use `ind
 
 ## Related codemaps
 
-[data.md](data.md) (catalog CSV + collection identity.json + SOT imagery consumed by this theme) · [architecture.md](architecture.md) · [dependencies.md](dependencies.md)
+[data.md](data.md) (catalog CSV + registry collection identity + SOT imagery consumed by this theme) · [architecture.md](architecture.md) · [dependencies.md](dependencies.md)

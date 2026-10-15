@@ -11,6 +11,21 @@ fi
 
 # File-level formatting and checks. Sequential glob execution prevents races
 # where Prettier and a language-specific formatter touch the same staged file.
+# Formatter ownership: prove that every file a program owns (serializers,
+# generators, minifier output — data/machine-managed-files.json) is invisible
+# to prettier and to lint-staged, BEFORE lint-staged runs. Two writers on one
+# file means every commit carries the other's churn.
+if [ -f "$REPO_ROOT/scripts/verify-formatter-ignores.mjs" ]; then
+  if [ -d "$REPO_ROOT/node_modules/prettier" ]; then
+    node "$REPO_ROOT/scripts/verify-formatter-ignores.mjs" || exit 1
+  else
+    # Say it rather than skipping quietly: CI still runs this gate (root
+    # TypeScript job) and tests/test_machine_managed_files.py covers the
+    # registry with no dependencies, but locally you are now unguarded.
+    echo "pre-commit: skipping formatter-ownership check — run 'npm install' at the repo root to enable it" >&2
+  fi
+fi
+
 npx lint-staged --concurrent false
 
 # Whole-project tools that can't run per-file via lint-staged

@@ -271,7 +271,7 @@ class TestRosieMascot:
                 sheet.expression_grid_prompt,
             ]
         )
-        assert "Luxury Grows from Concrete" in all_prompts
+        assert "Luxury Grows from Concrete" not in all_prompts
 
     def test_rosie_is_young_black_girl(self):
         sheet = self.agent.create_skyyrose_rosie()
@@ -433,7 +433,7 @@ class TestSpriteGenerator:
         result = self.generator.generate_skyyrose_mascot_sprites()
         all_prompts = " ".join(result.sprite_prompts.values())
         assert "SkyyRose" in all_prompts or "skyyrose" in all_prompts.lower()
-        assert "Luxury Grows from Concrete" in all_prompts
+        assert "Luxury Grows from Concrete" not in all_prompts
 
     def test_rosie_sprite_css_hint_mentions_walk(self):
         result = self.generator.generate_skyyrose_mascot_sprites()

@@ -107,7 +107,7 @@ the seed elements add collection-specific atmosphere not in the base procedure.
 
 ### 3. Founder Corrections
 
-`wordpress-theme/skyyrose-flagship/data/render-corrections.json` — verbatim per-SKU review notes from the founder. Shape: `{"corrections": {"<sku>": ["line", ...]}}`. Read for any SKU before finalising the assembled prompt; inject corrections into the EXACT PRODUCT SPEC block. When the SKU key is absent, the corrections array is treated as empty.
+`get_product(sku)["corrections"]` (from `skyyrose.core.product`) — each line is `{text, authority}`; `FOUNDER_VERBATIM` lines are the founder's review-board notes, `AGENT_ADDED` lines were added by a render-QC review and yield to the founder's spec. Read for any SKU before finalising the assembled prompt; inject corrections into the EXACT PRODUCT SPEC block. When the SKU key is absent, the corrections array is treated as empty.
 
 ### 4. Template Presets
 
@@ -368,7 +368,7 @@ reference_image: data/product-references/br-004-hoodie-real-front.jpeg
 - mode = `ghost` → clean studio background
 - view = `front` → front VIEW directive
 - is_patch = false (pullover hoodie, not a jersey)
-- founder corrections: check `wordpress-theme/skyyrose-flagship/data/render-corrections.json` for `br-004` key (shape: `{"corrections": {"<sku>": ["line", ...]}}` — empty list when key absent)
+- founder corrections: `get_product("br-004")["corrections"]` (list of `{text, authority}`; empty when the SKU has none)
 
 **Step 3 — Assembled prompt (abridged):**
 ```

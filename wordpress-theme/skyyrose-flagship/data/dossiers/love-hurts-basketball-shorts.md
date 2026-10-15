@@ -10,22 +10,21 @@ reference_image: assets/products/source-photos/love-hurts/lh-003-shorts-front.jp
 
 # Love Hurts Basketball Shorts
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Knee-length athletic basketball shorts — **white mesh
-body fabric** with **all-over sublimated red-roses-cluster pattern** repeating
-across the entire body, **black ribbed elasticated waistband** with **white flat
-drawstring**, **exactly four zippered pockets** (**two side hand pockets + two
-rear pockets**), **black ribbed-binding hem with red contrast piping** along the
-leg openings.
-Features: Knee-length athletic basketball shorts — **white mesh
+**Garment type lock:** Knee-length athletic basketball shorts — **white mesh
 body fabric** with **all-over sublimated red-roses-cluster pattern** repeating
 across the entire body, **black ribbed elasticated waistband** with **white flat
 drawstring**, **exactly four zippered pockets** (**two side hand pockets + two
 rear pockets**), **black ribbed-binding hem with red contrast piping** along the
 leg openings. Every pocket has a zipper closure. Knee-length cut. NOT pants. NOT
 joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
-Color: White
-Available sizes: S | M | L | XL | 2XL | 3XL
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** Mesh. (Corey, 2026-09-29, verbatim: "the shorts are mesh")
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 

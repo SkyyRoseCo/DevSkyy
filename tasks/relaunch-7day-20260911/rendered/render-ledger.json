@@ -1,0 +1,564 @@
+{
+  "authorization": "use the right workflow in Higgsfield to create. i approve paid rendering. i want to see nothing generic",
+  "ceiling_credits": 47.25,
+  "publication_authorized": false,
+  "requests": [
+    {
+      "asset": "I2",
+      "params": {
+        "model": "gpt_image_2",
+        "aspect_ratio": "9:16",
+        "resolution": "2k",
+        "quality": "high",
+        "count": 1,
+        "use_unlim": false,
+        "medias": [
+          {
+            "role": "image",
+            "value": "8e015aad-537c-40e4-822e-f8e19a7b9708"
+          }
+        ],
+        "prompt": "CAMPAIGN: SkyyRose / Black Rose / The Town, a new chapter. Create an environment-only photographic plate for a precise editorial ad, using the attached canonical waterfront scene for place and material language.\nSUBJECT AND STRUCTURE: An intimate Oakland industrial waterfront court at midnight, camera 40cm above rain-dark stone, irregular wet granite slabs leading to a narrow horizontal silver bay and the recognizable steel suspension bridge from the reference. Two severe black architectural planes at the far edges create a naturally framed vertical view. No new monument: the original rose-star brand sculpture and exact product portrait will be placed as separate source panels in post. Upper 22 percent and middle third quiet for typography and product panel. Keep enough true environment detail on both edges that this is recognizably the supplied SkyyRose world.\nCAMERA: 50mm full-frame editorial lens, straight verticals, restrained depth, detailed wet stone near camera, distant bridge lights soft but structurally coherent. Low asymmetric composition, one sharp silver reflection runs diagonally across lower foreground.\nLIGHT AND MATERIAL: Silver moonlight from upper left skims wet black stone and dark patinated metal. Fine ground mist only across the bay, deep charcoal shadows retain texture. Black, silver, neutral grey only. Physically plausible reflections; large restrained areas of darkness, fine photographic grain. Cinematic and austere, no blue tint, no orange teal grading, no neon, no shiny plastic.\nEXCLUSIONS: No people, garment, mannequin, invented rose/star, lettering, logotype, sign, watermark, border, generic cathedral, fantasy castle, floating ornaments, glitter, smoke wall, magical light beam. Do not generate final ad typography or products. This plate supports the unchanged canonical product/source image in a designed ad.\nresolution: 2k"
+      },
+      "job_id": "c74d0778-0eaa-4ce5-ab2d-c076f4cfeaa1",
+      "estimated_credits_exact": 6.5,
+      "status": "completed",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260911_142455_c74d0778-0eaa-4ce5-ab2d-c076f4cfeaa1.png",
+      "sha256": "96734b11db5cb30b67f72a1b36519acf0760df973d8d6addf08620977d429250"
+    },
+    {
+      "asset": "I1",
+      "index": 0,
+      "job_id": "61bf0bab-b617-4a3d-ad89-f56b26600483",
+      "status": "completed",
+      "params": {
+        "model": "gpt_image_2",
+        "aspect_ratio": "9:16",
+        "resolution": "2k",
+        "quality": "high",
+        "count": 1,
+        "use_unlim": false,
+        "medias": [
+          {
+            "role": "image",
+            "value": "8e015aad-537c-40e4-822e-f8e19a7b9708"
+          }
+        ],
+        "prompt": "SKYYROSE / THE HOUSE — environment-only vertical cinematic waterfront plate. The attached canonical Bay Bridge scene defines the location, perspective, wet black stone, silver moonlight and distant steelwork. A new camera angle from the same waterfront: low 35mm lens, bridge crossing the upper middle horizon, foreground rich with dark cut granite and tidal reflections. Off-center open view toward the bay, subtly warm rose-gold reflected glow on the far left black stone, moonlit silver on right. Black silhouettes of port infrastructure low along horizon. Upper quarter clean dark sky for exact typography added in post. The lower half provides a dramatic restrained stage for the unchanged original source monument as an editorial panel, not a newly generated sculpture. Fine low fog drifting parallel to water, no heavy haze hiding the bridge. Physically coherent small ripples, deep charcoal shadows, elegant subdued metal highlights, photographic texture. Believable Bay Area industrial waterfront at night. No person, garment, letters, signage, logotype, star, rose sculpture, fantasy castle, cathedral, blue color grade, neon, glitter, laser beams, watermarks or artificial lens flare. Vertical editorial still designed to sit behind exact SkyyRose brand assets. resolution: 2k"
+      },
+      "estimated_credits_exact": 6.5,
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260911_143006_61bf0bab-b617-4a3d-ad89-f56b26600483.png"
+    },
+    {
+      "asset": "I3",
+      "index": 2,
+      "job_id": "c0cd2f4c-87bd-42ab-bd4d-7a97c3302175",
+      "status": "completed",
+      "params": {
+        "model": "gpt_image_2",
+        "aspect_ratio": "9:16",
+        "resolution": "2k",
+        "quality": "high",
+        "count": 1,
+        "use_unlim": false,
+        "medias": [
+          {
+            "role": "image",
+            "value": "c3331b7e-eeb3-40ab-8acb-963e22c772c2"
+          }
+        ],
+        "prompt": "SKYYROSE / THE TOWN LINE — environment-only vertical cinematic teaser. Use the attached fictional SkyyRose train reference to retain the exact frontal train silhouette, angular windscreen, headlamp positions, central perspective and low wet platform. The train is a black polished metal architectural object emerging slowly from a dark Oakland-inspired transit tunnel. Night, warm cream headlamps with physically coherent reflections along parallel wet rails, aged black concrete, tiny moisture droplets and restrained ground vapor. 65mm centered telephoto photograph, symmetrical track vanishing point, looming train fills middle 55 percent of frame, upper 20 percent dark for editorial title added in post. Crisp nose geometry, no fantasy vehicle design. Destination strip and nose badge are plain dark blank panels reserved for canonical brand source overlays; do not draw new writing or invent an emblem. No people, clothing, jersey, sports insignia, BART agency mark, endorsement, timetable, letters, numbers, logo, watermark, neon, blue grade, orange teal grading, excessive smoke or generic futuristic spaceship. Premium photographic detail, strong blacks with legible metal surfaces. resolution: 2k"
+      },
+      "estimated_credits_exact": 6.5,
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260911_143005_c0cd2f4c-87bd-42ab-bd4d-7a97c3302175.png"
+    },
+    {
+      "asset": "G2",
+      "index": 4,
+      "job_id": "44d3206e-bade-4449-8525-6d741fdf7b22",
+      "status": "completed",
+      "params": {
+        "model": "kling3_0",
+        "aspect_ratio": "9:16",
+        "duration": 5,
+        "mode": "pro",
+        "sound": "off",
+        "count": 1,
+        "use_unlim": false,
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "c74d0778-0eaa-4ce5-ab2d-c076f4cfeaa1"
+          }
+        ],
+        "prompt": "Single unbroken 5 second cinematic Oakland waterfront shot from supplied frame. Camera performs an almost imperceptible straight dolly forward 30cm toward the bay; keep both black architectural edges and the complete bridge geometrically stable. Small natural water ripples make restrained silver reflections shimmer; a very thin low mist moves slowly sideways over water, clouds drift subtly. Preserve monochrome silver and black. Photographic physical motion at real time, 50mm lens. No new objects, no people, no clothes, no text, no emblems, no flashes, no scene cuts, no zoom jump, no morphing bridge or changing masonry. Quiet premium atmosphere behind a separately composited unchanged product panel."
+      },
+      "estimated_credits_exact": 8.75,
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260911_143021_44d3206e-bade-4449-8525-6d741fdf7b22.mp4"
+    },
+    {
+      "asset": "G1",
+      "index": 3,
+      "job_id": "b7c675c1-aaa9-4f10-a624-21b8ac5ad09b",
+      "params": {
+        "model": "kling3_0",
+        "aspect_ratio": "9:16",
+        "duration": 5,
+        "mode": "pro",
+        "sound": "off",
+        "count": 1,
+        "use_unlim": false,
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "61bf0bab-b617-4a3d-ad89-f56b26600483"
+          }
+        ],
+        "prompt": "One continuous five-second waterfront cinematic shot. Preserve supplied black and silver Bay Bridge environment exactly as starting composition. Very slow 20cm forward camera creep; natural small water ripples and restrained reflection shimmer, almost still sky and cloud movement. Keep all bridge cables, towers, horizon and granite rigid and consistent. No people, products, new structure, text, logo or emblems, no blue grade, flashes, scene cuts, time lapse, morphing or dramatic zoom. Calm real-time luxury editorial movement, reserved space for exact canonical image panel and typography added separately."
+      },
+      "estimated_credits_exact": 8.75,
+      "status": "completed",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260911_143305_b7c675c1-aaa9-4f10-a624-21b8ac5ad09b.mp4"
+    },
+    {
+      "asset": "G3",
+      "index": 5,
+      "job_id": "97baeea2-3275-4782-8d8f-d9a2bef720fb",
+      "params": {
+        "model": "kling3_0",
+        "aspect_ratio": "9:16",
+        "duration": 5,
+        "mode": "pro",
+        "sound": "off",
+        "count": 1,
+        "use_unlim": false,
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "c0cd2f4c-87bd-42ab-bd4d-7a97c3302175"
+          }
+        ],
+        "prompt": "Single five-second shot of supplied fictional black Town Line train and wet tunnel. Camera completely locked, train moves forward only 20cm very slowly on perfectly straight rails. Keep train's geometry, blank panels, lamps and perspective rigid. Subtle headlamp shimmer in the existing rainwater; faint ground vapor only. Black and warm cream light, dark readable metal. No new lettering, emblems, brand marks, people, clothing, sports imagery, colored light, camera shake, cuts, stretching, melting or morphing. Quiet restrained teaser atmosphere, not an action sequence. Existing canonical branded train image will be used unchanged in separate editorial panel in final composition."
+      },
+      "estimated_credits_exact": 8.75,
+      "status": "completed",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260911_143304_97baeea2-3275-4782-8d8f-d9a2bef720fb.mp4"
+    }
+  ],
+  "estimated_total_credits_exact": 45.75,
+  "final_export_state": "COMPLETED_REVISION_2",
+  "production_variant": "Prelaunch copy; no released-site capture; Explore CTA; exact source panels unchanged",
+  "actual_credit_delta": 45.75,
+  "balance_before": 1074,
+  "balance_after": 1028.25,
+  "archive": {
+    "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/906bb615-50df-41ec-b746-070f7e6e4088.zip",
+    "sha256": "9360c23054e1e507483d422206e5dfc83af3efe9375d65148b92a1b73a336f6b",
+    "bytes": 65759699
+  },
+  "output_files": [
+    {
+      "id": "D1-E01",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D1-E01.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "644b353b65163466ed49e068472abc3bd5ee660fcdc7d2c6e2470b057239b680",
+      "bytes": 566004
+    },
+    {
+      "id": "D1-E02",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D1-E02.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "fae8a9718ddd9e0b27cb63bb70cce11f424afc7b87e978a424e54109f0a166e6",
+      "bytes": 570915
+    },
+    {
+      "id": "D1-E03",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D1-E03.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "a98cfbb6690fdaa202adc22ce1e943cb811ceba3231b18359e3a83a96ba302a8",
+      "bytes": 573149
+    },
+    {
+      "id": "D1-E04",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D1-E04.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "fae8a9718ddd9e0b27cb63bb70cce11f424afc7b87e978a424e54109f0a166e6",
+      "bytes": 570915
+    },
+    {
+      "id": "D2-E01",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D2-E01.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "557d7b3a6549b52ccbf700956e0192aba560548f33b010c669fc2c185461f1ca",
+      "bytes": 1858578
+    },
+    {
+      "id": "D2-E02",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D2-E02.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "c09faeacc66ead88e2dbf6cdb28a0e6b4cd5167b7c9f6a72f7674334c0606e0a",
+      "bytes": 2799021
+    },
+    {
+      "id": "D2-E03",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D2-E03.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "3a9f6b8f10e9d944f60e857aec0739cf418b0c3d99728ac91b93bea7d3e9d63f",
+      "bytes": 1931669
+    },
+    {
+      "id": "D2-E04",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D2-E04.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "0a33d3ded5f73d96ca7b65aead1922b9045eae01e0a1b6d73b00b6daab223053",
+      "bytes": 3182761
+    },
+    {
+      "id": "D3-E01",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D3-E01.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "aa3cccf45f3d05cb8e695422c76373451528be59c8f82c6c3fcb04d9d5f6b59a",
+      "bytes": 2018914
+    },
+    {
+      "id": "D3-E02",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D3-E02.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "4d6e2130203ff5989a174669d6a3e3e690daad1153a1244a8cebfc515dbdeb02",
+      "bytes": 2998147
+    },
+    {
+      "id": "D3-E03",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D3-E03.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "daf84022c9f9dd8b9e9f668c544071ebfceb6493a1cc6609aeae7b9373440ac3",
+      "bytes": 3001512
+    },
+    {
+      "id": "D3-E04",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D3-E04.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "7f570a92286e09223b487b5eb004e131b18fa692291b8808ae0daaffab385abb",
+      "bytes": 2999966
+    },
+    {
+      "id": "D4-E02",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D4-E02.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "557d7b3a6549b52ccbf700956e0192aba560548f33b010c669fc2c185461f1ca",
+      "bytes": 1858578
+    },
+    {
+      "id": "D4-E03",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D4-E03.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "3a9f6b8f10e9d944f60e857aec0739cf418b0c3d99728ac91b93bea7d3e9d63f",
+      "bytes": 1931669
+    },
+    {
+      "id": "D4-E04",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D4-E04.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "aa3cccf45f3d05cb8e695422c76373451528be59c8f82c6c3fcb04d9d5f6b59a",
+      "bytes": 2018914
+    },
+    {
+      "id": "D4-E05",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D4-E05.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "71c25083d6f2bd22622b060a7182d1ed680d35d062d0656cdfff5c6b1b13c1b1",
+      "bytes": 1871687
+    },
+    {
+      "id": "D4-E06",
+      "kind": "still",
+      "width": 1920,
+      "height": 1080,
+      "file": "D4-E06.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "dad46f241233e4ed755a66f12ee969ad4069eb33cbd759aa98808b4c2e0b7843",
+      "bytes": 964588
+    },
+    {
+      "id": "D5-E01",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D5-E01.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "71c25083d6f2bd22622b060a7182d1ed680d35d062d0656cdfff5c6b1b13c1b1",
+      "bytes": 1871687
+    },
+    {
+      "id": "D5-E02",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D5-E02.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "bb59173f0f2f81055cfc9635634206f4d596b8d87661019eb6d495630eb5437e",
+      "bytes": 2866741
+    },
+    {
+      "id": "D5-E03",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D5-E03.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "8329c8ad11ba000983539dbf0235ef5145b6774addd84fa17ee4faf99d2fb49b",
+      "bytes": 2867701
+    },
+    {
+      "id": "D5-E04",
+      "kind": "still",
+      "width": 1080,
+      "height": 1920,
+      "file": "D5-E04.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "9bc387a3a98d00bc6e7cb0b199568414309b01efe6c6b3ab76dd5a681de09d67",
+      "bytes": 2866343
+    },
+    {
+      "id": "D6-E02",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D6-E02.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "8be15427c63fe6728524186a4ac4d80e89f7a6eccf08bdb462bc07a9871eebda",
+      "bytes": 651915
+    },
+    {
+      "id": "D7-E02",
+      "kind": "still",
+      "width": 1080,
+      "height": 1350,
+      "file": "D7-E02.png",
+      "status": "RENDERED_REVIEW_CANDIDATE",
+      "diagnostics": [],
+      "sha256": "0601840001c5215c29962942572695d54363e7fb68a6800ab3e906388ceb746c",
+      "bytes": 1406803
+    },
+    {
+      "id": "V1",
+      "kind": "video",
+      "width": 1080,
+      "height": 1920,
+      "duration": 12,
+      "file": "V1.mp4",
+      "status": "RENDERED_PRELAUNCH_REVIEW_VARIANT",
+      "sha256": "296c6fa97b54bba75108bdd02d0dace5c162915e22c4356e421bdff68aa57fbb",
+      "bytes": 7988547,
+      "probe": {
+        "duration": "12.000000",
+        "streams": [
+          {
+            "codec_type": "video",
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "24/1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "V2",
+      "kind": "video",
+      "width": 1080,
+      "height": 1920,
+      "duration": 10,
+      "file": "V2.mp4",
+      "status": "RENDERED_PRELAUNCH_REVIEW_VARIANT",
+      "sha256": "23ed0c0f6684e0aab1567c564a3efd8e29fcd7c8557cdd2f7e95e2da97674546",
+      "bytes": 6066548,
+      "probe": {
+        "duration": "10.000000",
+        "streams": [
+          {
+            "codec_type": "video",
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "24/1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "V3",
+      "kind": "video",
+      "width": 1080,
+      "height": 1920,
+      "duration": 12,
+      "file": "V3.mp4",
+      "status": "RENDERED_PRELAUNCH_REVIEW_VARIANT",
+      "sha256": "6e26f07fb2f53506dacc0be5e9e91e4ae1c776991fba7acd8219bd13b12c6d2e",
+      "bytes": 5556777,
+      "probe": {
+        "duration": "12.000000",
+        "streams": [
+          {
+            "codec_type": "video",
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "24/1"
+          }
+        ]
+      }
+    }
+  ],
+  "review_images": [
+    {
+      "id": "D1-E01",
+      "media_id": "4cfcf35e-fcf8-40e5-9eca-fc61a0dee573",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/4cfcf35e-fcf8-40e5-9eca-fc61a0dee573.jpg",
+      "width": 864,
+      "height": 1080,
+      "role": "review proxy"
+    },
+    {
+      "id": "D2-E01",
+      "media_id": "e472d415-8834-4f92-8cc3-5cbf149a2c78",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/e472d415-8834-4f92-8cc3-5cbf149a2c78.jpg",
+      "width": 864,
+      "height": 1080,
+      "role": "review proxy"
+    },
+    {
+      "id": "D2-E03",
+      "media_id": "455f4a91-f0d8-4fc1-a21f-b3022938dee1",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/455f4a91-f0d8-4fc1-a21f-b3022938dee1.jpg",
+      "width": 864,
+      "height": 1080,
+      "role": "review proxy"
+    },
+    {
+      "id": "D3-E01",
+      "media_id": "f1eb7be1-a554-4383-b9f6-e5b069d276d5",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/f1eb7be1-a554-4383-b9f6-e5b069d276d5.jpg",
+      "width": 864,
+      "height": 1080,
+      "role": "review proxy"
+    },
+    {
+      "id": "D5-E01",
+      "media_id": "4c838cd8-10f7-4934-8ea9-b5c1b3081054",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/4c838cd8-10f7-4934-8ea9-b5c1b3081054.jpg",
+      "width": 864,
+      "height": 1080,
+      "role": "review proxy"
+    },
+    {
+      "id": "D6-E02",
+      "media_id": "287be954-ee9c-436b-b46a-bad6dfd1029e",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/287be954-ee9c-436b-b46a-bad6dfd1029e.jpg",
+      "width": 864,
+      "height": 1080,
+      "role": "review proxy"
+    },
+    {
+      "id": "D7-E02",
+      "media_id": "6f827f03-21ea-4bdc-ab6b-18ad020441c4",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/6f827f03-21ea-4bdc-ab6b-18ad020441c4.jpg",
+      "width": 864,
+      "height": 1080,
+      "role": "review proxy"
+    }
+  ],
+  "final_films": [
+    {
+      "id": "V1",
+      "media_id": "0adfe163-13e9-4c91-a39e-2883219e8840",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0adfe163-13e9-4c91-a39e-2883219e8840.mp4"
+    },
+    {
+      "id": "V2",
+      "media_id": "bfb37d5b-44c9-48a4-a74e-7a226f4d46a2",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/bfb37d5b-44c9-48a4-a74e-7a226f4d46a2.mp4"
+    },
+    {
+      "id": "V3",
+      "media_id": "cd81e9c9-b765-487e-94bf-83e72fea0c28",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/cd81e9c9-b765-487e-94bf-83e72fea0c28.mp4"
+    }
+  ],
+  "validation": {
+    "exit_code": 0,
+    "stdout": "V1 check exit 0 clean\n \nV2 check exit 0 clean\n \nV3 check exit 0 clean\n \n{\"exports\": 26, \"stills\": 23, \"dimensions_and_archive_errors\": [], \"archive_sha256\": \"9360c23054e1e507483d422206e5dfc83af3efe9375d65148b92a1b73a336f6b\"}\n",
+    "stderr": ""
+  },
+  "final_creative_approval": "PENDING_FOUNDER_REVIEW"
+}

@@ -1,6 +1,6 @@
 # Locked Python tooling for the full formatting lane.
 # Install with: python3 -m pip install -r requirements-formatting.txt
-black==26.1.0
+black==26.3.1
 isort==8.0.0
 ruff==0.15.2
 PyYAML==6.0.3

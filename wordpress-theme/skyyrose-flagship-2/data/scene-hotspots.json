@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "mode": "authored-poster-only",
+  "review_state": "SOURCE_INSPECTED_CANDIDATE",
+  "review_note": "Coordinates authored after eyes-on inspection of all nine approved posters and exact catalogue identities. Browser geometry and founder acceptance pending; not video tracking.",
+  "scenes": {
+    "SIG-COMMERCE-1": {
+      "poster": "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp",
+      "poster_sha256": "a42deb80c50e5caecc989b2ac43982e4c2aa8e6abb2b91c7c10be1d34bfc9026",
+      "points": [
+        {
+          "sku": "sg-009",
+          "x": 0.435,
+          "y": 0.355
+        },
+        {
+          "sku": "sg-007",
+          "x": 0.399,
+          "y": 0.105
+        }
+      ]
+    },
+    "SIG-COMMERCE-2": {
+      "poster": "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp",
+      "poster_sha256": "df2f79e55c5cff38dbac7efae3cd7258685cd546c4713fa413ec9b6f0640111e",
+      "points": [
+        {
+          "sku": "sg-013",
+          "x": 0.345,
+          "y": 0.32
+        },
+        {
+          "sku": "sg-014",
+          "x": 0.36,
+          "y": 0.62
+        },
+        {
+          "sku": "sg-006",
+          "x": 0.688,
+          "y": 0.37
+        }
+      ]
+    },
+    "SIG-COMMERCE-3": {
+      "poster": "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-poster.webp",
+      "poster_sha256": "eef20813c482773ff3217cd1f367c61bbd9c31734e45ff252ea1f510783bc452",
+      "points": [
+        {
+          "sku": "sg-001",
+          "x": 0.19,
+          "y": 0.59
+        },
+        {
+          "sku": "sg-005",
+          "x": 0.195,
+          "y": 0.32
+        },
+        {
+          "sku": "sg-003",
+          "x": 0.48,
+          "y": 0.58
+        },
+        {
+          "sku": "sg-002",
+          "x": 0.49,
+          "y": 0.33
+        },
+        {
+          "sku": "sg-015",
+          "x": 0.34,
+          "y": 0.79
+        }
+      ]
+    },
+    "BR-COMMERCE-1": {
+      "poster": "assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-archive-4-poster.webp",
+      "poster_sha256": "b29c1c71c8754a2c716771dcf701ec880438f423e305f6fdb097d0765a8cdc51",
+      "points": [
+        {
+          "sku": "br-001",
+          "x": 0.45,
+          "y": 0.4
+        },
+        {
+          "sku": "br-002",
+          "x": 0.465,
+          "y": 0.585
+        }
+      ]
+    },
+    "BR-COMMERCE-2": {
+      "poster": "assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp",
+      "poster_sha256": "33d013d846261c82b14a3e015f630f3e8ef9e54a9f5e0592ce50e289fa1da338",
+      "points": [
+        {
+          "sku": "br-005",
+          "x": 0.389,
+          "y": 0.3
+        },
+        {
+          "sku": "br-007",
+          "x": 0.377,
+          "y": 0.57
+        },
+        {
+          "sku": "br-004",
+          "x": 0.588,
+          "y": 0.395
+        }
+      ]
+    },
+    "BR-COMMERCE-3": {
+      "poster": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+      "poster_sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+      "points": [
+        {
+          "sku": "br-008",
+          "x": 0.386,
+          "y": 0.57
+        },
+        {
+          "sku": "br-009",
+          "x": 0.55,
+          "y": 0.565
+        },
+        {
+          "sku": "br-010",
+          "x": 0.514,
+          "y": 0.824
+        },
+        {
+          "sku": "br-011",
+          "x": 0.79,
+          "y": 0.61
+        },
+        {
+          "sku": "br-012",
+          "x": 0.168,
+          "y": 0.646
+        }
+      ]
+    },
+    "LH-COMMERCE-1": {
+      "poster": "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-archive-4-poster.webp",
+      "poster_sha256": "6a5fbe9d202f0e47492ded17b4ea381311b41412fc3625c949874da1392d3446",
+      "points": [
+        {
+          "sku": "lh-004",
+          "x": 0.32,
+          "y": 0.32
+        },
+        {
+          "sku": "lh-002",
+          "x": 0.325,
+          "y": 0.72
+        },
+        {
+          "sku": "lh-006",
+          "x": 0.168,
+          "y": 0.74
+        }
+      ]
+    },
+    "LH-COMMERCE-2": {
+      "poster": "assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+      "poster_sha256": "bf251eba7a2366a8d133e10a7bd548f3c6d89d2137da8263a418e761bfdefa54",
+      "points": [
+        {
+          "sku": "lh-003",
+          "x": 0.71,
+          "y": 0.545
+        }
+      ]
+    },
+    "LH-COMMERCE-3": {
+      "poster": "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-archive-4-poster.webp",
+      "poster_sha256": "ddff5431de7614583429a92d4c51ebab87dc0b174ff1292b997004aa7b8dfc5c",
+      "points": [
+        {
+          "sku": "lh-005",
+          "x": 0.65,
+          "y": 0.525
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "schema": "skyyrose.product-card-replica-assets.v1",
+  "created_at": "2026-08-22",
+  "scope": [
+    "br-001",
+    "br-002",
+    "br-003",
+    "br-004",
+    "br-007",
+    "br-009",
+    "br-010",
+    "br-011",
+    "br-012",
+    "sg-001",
+    "sg-005",
+    "sg-007",
+    "kids-001"
+  ],
+  "method": {
+    "garment_generation": "disabled",
+    "source_policy": "verified product pixels or approved technical-flat pixels only",
+    "allowed_operations": [
+      "lossless canvas extension to a 4:5 aspect ratio",
+      "deterministic crop isolating an already-rendered front or back view",
+      "format conversion for the product-card derivative"
+    ],
+    "forbidden_operations": [
+      "AI garment repainting",
+      "inventing a missing back",
+      "inventing embroidery, embossed decoration, silicone marks, tackle twill, sublimation, patches, trim, or lettering",
+      "synthetic on-model try-on"
+    ]
+  },
+  "summary": {
+    "requested_slots": 52,
+    "replica_assets_created": 23,
+    "blocked_slots": 29,
+    "ghost_front": 12,
+    "ghost_back": 9,
+    "on_model_front": 2,
+    "on_model_back": 0
+  },
+  "assets": [
+    {"sku":"br-002","role":"ghost_front","evidence":"product_only_source","source":"wordpress-theme/skyyrose-flagship/assets/images/products/ghost/br-002-ghost-front.webp","file":"br-002/ghost-front.png"},
+    {"sku":"br-003","role":"ghost_front","evidence":"physical_product_photo","source":"assets/products/references/br-003-classic-real-front.jpeg","file":"br-003/ghost-front.png"},
+    {"sku":"br-003","role":"ghost_back","evidence":"physical_product_photo","source":"assets/products/references/br-003-classic-real-back.jpeg","file":"br-003/ghost-back.png"},
+    {"sku":"br-004","role":"ghost_front","evidence":"physical_flatlay_proxy","source":"assets/products/source-photos/black-rose/br-004-hoodie-front.jpeg","file":"br-004/ghost-front.png"},
+    {"sku":"br-007","role":"ghost_front","evidence":"product_only_source","source":"wordpress-theme/skyyrose-flagship/assets/images/products/ghost/br-007-ghost-front.webp","file":"br-007/ghost-front.png"},
+    {"sku":"br-007","role":"ghost_back","evidence":"physical_product_photo","source":"assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg","file":"br-007/ghost-back.png"},
+    {"sku":"br-009","role":"ghost_front","evidence":"approved_technical_flat","source":"assets/products/references/br-009-design-front.jpeg","file":"br-009/ghost-front.png"},
+    {"sku":"br-009","role":"ghost_back","evidence":"approved_technical_flat","source":"assets/products/references/br-009-design-front.jpeg","file":"br-009/ghost-back.png"},
+    {"sku":"br-010","role":"ghost_front","evidence":"approved_technical_flat","source":"assets/products/references/br-010-design-front.jpeg","file":"br-010/ghost-front.png"},
+    {"sku":"br-010","role":"ghost_back","evidence":"approved_technical_flat","source":"assets/products/references/br-010-design-front.jpeg","file":"br-010/ghost-back.png"},
+    {"sku":"br-011","role":"ghost_front","evidence":"approved_technical_flat","source":"assets/products/references/br-011-design-front.jpeg","file":"br-011/ghost-front.png"},
+    {"sku":"br-011","role":"ghost_back","evidence":"product_reference","source":"wordpress-theme/skyyrose-flagship/assets/images/products/br-011-the-rose-hockey-back.png","file":"br-011/ghost-back.png"},
+    {"sku":"br-012","role":"ghost_front","evidence":"physical_product_photo","source":"assets/products/source-photos/black-rose/br-012-last-oakland-baseball-front.jpeg","file":"br-012/ghost-front.png"},
+    {"sku":"br-012","role":"ghost_back","evidence":"physical_product_photo","source":"assets/products/source-photos/black-rose/br-012-last-oakland-baseball-back.jpeg","file":"br-012/ghost-back.png"},
+    {"sku":"sg-001","role":"ghost_front","evidence":"physical_product_photo","source":"assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png","file":"sg-001/ghost-front.png"},
+    {"sku":"sg-001","role":"ghost_back","evidence":"approved_technical_flat","source":"assets/products/source-photos/signature/sg-001-bay-bridge-set-techflat-back.jpeg","file":"sg-001/ghost-back.png"},
+    {"sku":"sg-005","role":"ghost_front","evidence":"product_reference","source":"wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-bay-bridge-shirt.jpeg","file":"sg-005/ghost-front.png"},
+    {"sku":"sg-005","role":"ghost_back","evidence":"approved_technical_flat","source":"assets/products/references/sg-005-bay-bridge-shirt-techflat.jpeg","file":"sg-005/ghost-back.png"},
+    {"sku":"sg-005","role":"on_model_front","evidence":"approved_on_model","source":"wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-onmodel.webp","file":"sg-005/on-model-front.png"},
+    {"sku":"sg-007","role":"ghost_front","evidence":"product_reference","source":"wordpress-theme/skyyrose-flagship/assets/images/products/sg-007-signature-beanie.png","file":"sg-007/ghost-front.png"},
+    {"sku":"kids-001","role":"ghost_front","evidence":"approved_technical_flat","source":"assets/products/references/kids-001-techflat.jpeg","file":"kids-001/ghost-front.png"},
+    {"sku":"kids-001","role":"ghost_back","evidence":"approved_technical_flat","source":"assets/products/references/kids-001-techflat.jpeg","file":"kids-001/ghost-back.png"},
+    {"sku":"kids-001","role":"on_model_front","evidence":"approved_on_model","source":"wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-onmodel-v2.webp","file":"kids-001/on-model-front.png"}
+  ],
+  "blocked": [
+    {"sku":"br-001","roles":["ghost_front","ghost_back","on_model_front","on_model_back"],"reason":"Every current br-001 source depicts a contrasting embroidered rose/cloud graphic; the founder requires an embossed crewneck treatment."},
+    {"sku":"br-002","roles":["ghost_back","on_model_front","on_model_back"],"reason":"No verified matching back ghost or approved on-model views."},
+    {"sku":"br-003","roles":["on_model_front","on_model_back"],"reason":"The prior on-model front was authenticity-rejected; no approved back exists."},
+    {"sku":"br-004","roles":["ghost_back","on_model_front","on_model_back"],"reason":"No corrected back source or approved corrected on-model views."},
+    {"sku":"br-007","roles":["on_model_front","on_model_back"],"reason":"Prior generated model views were authenticity-rejected and deleted."},
+    {"sku":"br-009","roles":["on_model_front","on_model_back"],"reason":"Existing model imagery is not approved and does not pass the corrected cuff, collar, and patch gate."},
+    {"sku":"br-010","roles":["on_model_front","on_model_back"],"reason":"Existing model imagery remains unapproved; approved design evidence is technical-flat only."},
+    {"sku":"br-011","roles":["on_model_front","on_model_back"],"reason":"The former front invented a prohibited collar shield; no approved replacement model views exist."},
+    {"sku":"br-012","roles":["on_model_front","on_model_back"],"reason":"Physical front and back exist, but no approved on-model pair exists."},
+    {"sku":"sg-001","roles":["on_model_front","on_model_back"],"reason":"No approved on-model front/back pair for the shorts-only SKU."},
+    {"sku":"sg-005","roles":["on_model_back"],"reason":"No approved on-model back source."},
+    {"sku":"sg-007","roles":["ghost_back","on_model_front","on_model_back"],"reason":"Only the front product reference is approved for replica production."},
+    {"sku":"kids-001","roles":["on_model_back"],"reason":"Approved mannequin/technical back exists, but no approved on-model back photograph."}
+  ]
+}

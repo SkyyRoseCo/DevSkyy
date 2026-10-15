@@ -5,7 +5,7 @@ description: Paid media playbook for SkyyRose luxury streetwear — Meta, Google
 
 # SkyyRose Paid Media Playbook
 
-> **Brand north star:** "Luxury Grows from Concrete." (terminal period — non-negotiable in all ad copy)
+> **Tagline:** No tagline is authorised (founder decision 2026-10-06).
 > **Collections:** Black Rose (armor, concrete, silver #C0C0C0) · Love Hurts (bloodline, crimson #DC143C) · Signature (stay golden, gold #D4AF37) · Kids Capsule (little royalty, rose gold #B76E79)
 > **Visual DNA:** Kith · Oaklandish · Culture Kings · Fear of God · Palm Angels — ONLY these five. Never European luxury house aesthetics.
 > **STOP-AND-SHOW required** before any paid spend, Klaviyo send, WooCommerce write, or media upload.
@@ -38,7 +38,7 @@ These rules apply to every ad, brief, copy template, and audience segment:
 
 | Rule | Detail |
 |------|--------|
-| Tagline | "Luxury Grows from Concrete." — verbatim, terminal period, every time |
+| Tagline | No tagline is authorised (founder decision 2026-10-06). Never add one to ad copy. |
 | Collection voices | NEVER cross-attribute. Black Rose ≠ Love Hurts ≠ Signature ≠ Kids Capsule |
 | Products | Reference by NAME (e.g., "BLACK Rose Hoodie"). Never SKU. Resolve from catalog CSV + dossier. |
 | Fabric specs | Resolve from per-SKU dossier only. Never infer or invent. |
@@ -327,7 +327,7 @@ Installation path:
 17. "[Edition size] pieces. [Availability status]. Link in bio."
 18. "[Collection Voice Line]. New [Collection] is live."
 19. "Limited edition. Heavyweight. Embroidered. Ours."
-20. Price point reveal: "[$X]. Built different. Luxury Grows from Concrete."
+20. Price point reveal: "[$X]. Built different."
 
 ### 3 Script Templates
 
@@ -353,7 +353,7 @@ CTA (13–15s): "skyyrose.co" on screen
 HOOK (0–3s): "[X]+ people already wearing [Collection]."
 SOCIAL (3–15s): [Customer content — with permission] or founder walkthrough
 SCARCITY (15–30s): "[Edition size] pieces in this run." (only if catalog-verified)
-BRAND (30–40s): "Luxury Grows from Concrete." Logo lock-up.
+BRAND (30–40s): Logo lock-up.
 CTA (40–45s): "[Product name] — available now at skyyrose.co"
 ```
 
@@ -690,7 +690,7 @@ At planning AOV $65–$80: target 2–3× ROAS minimum to cover COGS and fulfill
 [3–5 lines max. Collection voice only. No cross-attribution.]
 
 **Headline (if static):**
-[Include "Luxury Grows from Concrete." if space allows — terminal period always]
+[Headline only — no tagline.]
 
 **CTA:**
 [Shop now / Preorder [Product name] / Link in bio]
@@ -723,7 +723,6 @@ At planning AOV $65–$80: target 2–3× ROAS minimum to cover COGS and fulfill
 Headline: Built from the concrete. Worn like armor.
 Body: BLACK Rose isn't streetwear. It's the proof you made it through.
       Heavyweight construction. Embroidered. Made to last.
-      Luxury Grows from Concrete.
 CTA: Shop BLACK Rose →
 ```
 
@@ -743,7 +742,6 @@ Body: They were wrong.
 Headline: Worn by those who carry the weight.
 Body: Love Hurts Collection.
       For everyone who kept going anyway.
-      Luxury Grows from Concrete.
 CTA: Shop Love Hurts →
 ```
 
@@ -754,7 +752,7 @@ CTA: Shop Love Hurts →
 ```
 Headline: Gold doesn't ask for permission.
 Body: Signature Collection by SkyyRose.
-      Stay golden. Luxury Grows from Concrete.
+      Stay golden.
 CTA: Shop Signature →
 ```
 
@@ -766,7 +764,6 @@ CTA: Shop Signature →
 Headline: Raise them like royalty.
 Body: Kids Capsule by SkyyRose.
       Premium construction, built for the next generation.
-      Luxury Grows from Concrete.
 CTA: Shop Kids Capsule →
 ```
 

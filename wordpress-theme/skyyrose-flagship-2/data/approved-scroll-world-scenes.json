@@ -1,0 +1,723 @@
+{
+  "schema_version": 1,
+  "approval_scope": "LOCAL_INTEGRATION_ONLY",
+  "source_snapshot": "bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b",
+  "engineering_foundation": "fec4e9339cad7077bcc812876668c128eb93b6e4",
+  "authority_note": "Exact existing COLLECTION-MOTION-WIRING-K1 approved visual and local wiring records, narrowed to nine by founder directive 3b686012-fe90-4073-ae81-e1287755a211. Presence alone is not approval. Final integrated visual QA remains required; no deployment permission.",
+  "scenes": {
+    "SIG-COMMERCE-1": {
+      "scene_id": "SIG-COMMERCE-1",
+      "collection": "signature",
+      "order": 1,
+      "label": "The Golden Gate Overlook",
+      "approval_status": "APPROVED FINAL — IMPLEMENT",
+      "source_reference": [
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--approval.json",
+          "sha256": "8d6b9010844806ede314436b45e06f2bbb6e56b23849e4996f966300ef879bfa"
+        },
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--receipt.json",
+          "sha256": "3eca9a38b78f736db2b659206a6716bcfbd43e888a979774206c695330ad7a8d"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/data/collection-scene-motion.json",
+          "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+        }
+      ],
+      "required_runtime_assets": [
+        {
+          "role": "poster",
+          "path": "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp",
+          "classification": "SUPPORTING ASSET — REQUIRED",
+          "sha256": "a42deb80c50e5caecc989b2ac43982e4c2aa8e6abb2b91c7c10be1d34bfc9026",
+          "bytes": 255858
+        },
+        {
+          "role": "desktop",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-1-motion-k1-1080p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "72538af2cca074b3d8d8f5252e20793390936e3844c345184682b2b15e8b9de7",
+          "bytes": 3033789
+        },
+        {
+          "role": "mobile",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-1-motion-k1-720p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "aef4de2a77fc1c0e6be98398636e1b1f5cd6ed9b5e314eac60f87dd5cd2c3ef2",
+          "bytes": 1222252
+        }
+      ],
+      "desktop_composition": {
+        "width": 1671,
+        "height": 941,
+        "fit": "contain",
+        "foreground_background": "Preserve baked approved composition; no additional model layers or candidate srcsets.",
+        "story_placement": "below-media"
+      },
+      "mobile_composition": {
+        "fit": "contain",
+        "story_placement": "below-media",
+        "cta_always_available": true,
+        "delivery": "720p motion; full reference composition retained; native product links stack below media"
+      },
+      "motion_controller": "assets/js/collection-scene-motion.js",
+      "motion_policy": {
+        "poster_first": true,
+        "preload": "none",
+        "one_active_scene": true,
+        "reduced_motion": "approved poster with native CTA; explicit play available",
+        "save_data": "approved poster with native CTA; explicit play available"
+      },
+      "cta": {
+        "collection_path": "/collections/signature/#shop",
+        "product_resolver": "wc_get_product_id_by_sku",
+        "product_bindings": [
+          "sg-009",
+          "sg-007"
+        ],
+        "product_url_source": "Published WC_Product::get_permalink()",
+        "animation_completion_required": false
+      }
+    },
+    "SIG-COMMERCE-2": {
+      "scene_id": "SIG-COMMERCE-2",
+      "collection": "signature",
+      "order": 2,
+      "label": "The Lateral Terrace",
+      "approval_status": "APPROVED FINAL — IMPLEMENT",
+      "source_reference": [
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--approval.json",
+          "sha256": "8d6b9010844806ede314436b45e06f2bbb6e56b23849e4996f966300ef879bfa"
+        },
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--receipt.json",
+          "sha256": "3eca9a38b78f736db2b659206a6716bcfbd43e888a979774206c695330ad7a8d"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/data/collection-scene-motion.json",
+          "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+        }
+      ],
+      "required_runtime_assets": [
+        {
+          "role": "poster",
+          "path": "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp",
+          "classification": "SUPPORTING ASSET — REQUIRED",
+          "sha256": "df2f79e55c5cff38dbac7efae3cd7258685cd546c4713fa413ec9b6f0640111e",
+          "bytes": 310334
+        },
+        {
+          "role": "desktop",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-2-motion-k1-1080p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "da10d2d6f09594a8cdc1e0172878451a6a92c76242330a563e9ee22dab262eb7",
+          "bytes": 3529477
+        },
+        {
+          "role": "mobile",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-2-motion-k1-720p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "f9e6b2fb536d75d14fcc477bbcf8eedc406ec9222988a8e8c22895477d8b72ba",
+          "bytes": 1548209
+        }
+      ],
+      "desktop_composition": {
+        "width": 1672,
+        "height": 941,
+        "fit": "contain",
+        "foreground_background": "Preserve baked approved composition; no additional model layers or candidate srcsets.",
+        "story_placement": "below-media"
+      },
+      "mobile_composition": {
+        "fit": "contain",
+        "story_placement": "below-media",
+        "cta_always_available": true,
+        "delivery": "720p motion; full reference composition retained; native product links stack below media"
+      },
+      "motion_controller": "assets/js/collection-scene-motion.js",
+      "motion_policy": {
+        "poster_first": true,
+        "preload": "none",
+        "one_active_scene": true,
+        "reduced_motion": "approved poster with native CTA; explicit play available",
+        "save_data": "approved poster with native CTA; explicit play available"
+      },
+      "cta": {
+        "collection_path": "/collections/signature/#shop",
+        "product_resolver": "wc_get_product_id_by_sku",
+        "product_bindings": [
+          "sg-013",
+          "sg-014",
+          "sg-006"
+        ],
+        "product_url_source": "Published WC_Product::get_permalink()",
+        "animation_completion_required": false
+      }
+    },
+    "SIG-COMMERCE-3": {
+      "scene_id": "SIG-COMMERCE-3",
+      "collection": "signature",
+      "order": 3,
+      "label": "The Departure Terrace",
+      "approval_status": "APPROVED FINAL — IMPLEMENT",
+      "source_reference": [
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--approval.json",
+          "sha256": "8d6b9010844806ede314436b45e06f2bbb6e56b23849e4996f966300ef879bfa"
+        },
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--receipt.json",
+          "sha256": "3eca9a38b78f736db2b659206a6716bcfbd43e888a979774206c695330ad7a8d"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/data/collection-scene-motion.json",
+          "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+        }
+      ],
+      "required_runtime_assets": [
+        {
+          "role": "poster",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-poster.webp",
+          "classification": "SUPPORTING ASSET — REQUIRED",
+          "sha256": "eef20813c482773ff3217cd1f367c61bbd9c31734e45ff252ea1f510783bc452",
+          "bytes": 263964
+        },
+        {
+          "role": "desktop",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-1080p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "dcc1cea5b7606ee8ee66074d91da4829394ca5f76cb12d8524b6d4d73735bcbe",
+          "bytes": 3476074
+        },
+        {
+          "role": "mobile",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-720p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "80cba25c744d4bf823dffa2f2761a7de6d3d466703e12f6c066b2f4f4011f981",
+          "bytes": 1589393
+        }
+      ],
+      "desktop_composition": {
+        "width": 1671,
+        "height": 942,
+        "fit": "contain",
+        "foreground_background": "Preserve baked approved composition; no additional model layers or candidate srcsets.",
+        "story_placement": "below-media"
+      },
+      "mobile_composition": {
+        "fit": "contain",
+        "story_placement": "below-media",
+        "cta_always_available": true,
+        "delivery": "720p motion; full reference composition retained; native product links stack below media"
+      },
+      "motion_controller": "assets/js/collection-scene-motion.js",
+      "motion_policy": {
+        "poster_first": true,
+        "preload": "none",
+        "one_active_scene": true,
+        "reduced_motion": "approved poster with native CTA; explicit play available",
+        "save_data": "approved poster with native CTA; explicit play available"
+      },
+      "cta": {
+        "collection_path": "/collections/signature/#shop",
+        "product_resolver": "wc_get_product_id_by_sku",
+        "product_bindings": [
+          "sg-001",
+          "sg-005",
+          "sg-003",
+          "sg-002",
+          "sg-015"
+        ],
+        "product_url_source": "Published WC_Product::get_permalink()",
+        "animation_completion_required": false
+      }
+    },
+    "BR-COMMERCE-1": {
+      "scene_id": "BR-COMMERCE-1",
+      "collection": "black-rose",
+      "order": 1,
+      "label": "The Type Foundry",
+      "approval_status": "APPROVED FINAL — IMPLEMENT",
+      "source_reference": [
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--approval.json",
+          "sha256": "8d6b9010844806ede314436b45e06f2bbb6e56b23849e4996f966300ef879bfa"
+        },
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--receipt.json",
+          "sha256": "3eca9a38b78f736db2b659206a6716bcfbd43e888a979774206c695330ad7a8d"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/data/collection-scene-motion.json",
+          "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+        }
+      ],
+      "required_runtime_assets": [
+        {
+          "role": "poster",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-archive-4-poster.webp",
+          "classification": "SUPPORTING ASSET — REQUIRED",
+          "sha256": "b29c1c71c8754a2c716771dcf701ec880438f423e305f6fdb097d0765a8cdc51",
+          "bytes": 133642
+        },
+        {
+          "role": "desktop",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-motion-k1-1080p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "73bfaf40668147f22c4ee23cd5fa74ffb5e330c63a832095a937e508da0cc0b0",
+          "bytes": 1209097
+        },
+        {
+          "role": "mobile",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-motion-k1-720p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "bbc5efc1b70797b24cf69978f96febc14e123c382f22424bf07f0f738a065926",
+          "bytes": 567028
+        }
+      ],
+      "desktop_composition": {
+        "width": 960,
+        "height": 1707,
+        "fit": "contain",
+        "foreground_background": "Preserve baked approved composition; no additional model layers or candidate srcsets.",
+        "story_placement": "below-media"
+      },
+      "mobile_composition": {
+        "fit": "contain",
+        "story_placement": "below-media",
+        "cta_always_available": true,
+        "delivery": "720p motion; full reference composition retained; native product links stack below media"
+      },
+      "motion_controller": "assets/js/collection-scene-motion.js",
+      "motion_policy": {
+        "poster_first": true,
+        "preload": "none",
+        "one_active_scene": true,
+        "reduced_motion": "approved poster with native CTA; explicit play available",
+        "save_data": "approved poster with native CTA; explicit play available"
+      },
+      "cta": {
+        "collection_path": "/collections/black-rose/#shop",
+        "product_resolver": "wc_get_product_id_by_sku",
+        "product_bindings": [
+          "br-001",
+          "br-002"
+        ],
+        "product_url_source": "Published WC_Product::get_permalink()",
+        "animation_completion_required": false
+      }
+    },
+    "BR-COMMERCE-2": {
+      "scene_id": "BR-COMMERCE-2",
+      "collection": "black-rose",
+      "order": 2,
+      "label": "The Moonlit Waterfront",
+      "approval_status": "APPROVED FINAL — IMPLEMENT",
+      "source_reference": [
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--approval.json",
+          "sha256": "8d6b9010844806ede314436b45e06f2bbb6e56b23849e4996f966300ef879bfa"
+        },
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--receipt.json",
+          "sha256": "3eca9a38b78f736db2b659206a6716bcfbd43e888a979774206c695330ad7a8d"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/data/collection-scene-motion.json",
+          "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+        }
+      ],
+      "required_runtime_assets": [
+        {
+          "role": "poster",
+          "path": "assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp",
+          "classification": "SUPPORTING ASSET — REQUIRED",
+          "sha256": "33d013d846261c82b14a3e015f630f3e8ef9e54a9f5e0592ce50e289fa1da338",
+          "bytes": 289988
+        },
+        {
+          "role": "desktop",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/br-commerce-2-motion-k1-1080p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "2980516d74851407375dd9cfb0b64f4c4fdbff0ae1b35bf9d69109ae3d8824df",
+          "bytes": 3354874
+        },
+        {
+          "role": "mobile",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/br-commerce-2-motion-k1-720p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "80139065b953ebd1d9740ca9a940d127bfb6e250fc1dbd1d69fd3243b2757199",
+          "bytes": 1605812
+        }
+      ],
+      "desktop_composition": {
+        "width": 1672,
+        "height": 941,
+        "fit": "contain",
+        "foreground_background": "Preserve baked approved composition; no additional model layers or candidate srcsets.",
+        "story_placement": "below-media"
+      },
+      "mobile_composition": {
+        "fit": "contain",
+        "story_placement": "below-media",
+        "cta_always_available": true,
+        "delivery": "720p motion; full reference composition retained; native product links stack below media"
+      },
+      "motion_controller": "assets/js/collection-scene-motion.js",
+      "motion_policy": {
+        "poster_first": true,
+        "preload": "none",
+        "one_active_scene": true,
+        "reduced_motion": "approved poster with native CTA; explicit play available",
+        "save_data": "approved poster with native CTA; explicit play available"
+      },
+      "cta": {
+        "collection_path": "/collections/black-rose/#shop",
+        "product_resolver": "wc_get_product_id_by_sku",
+        "product_bindings": [
+          "br-005",
+          "br-007",
+          "br-004"
+        ],
+        "product_url_source": "Published WC_Product::get_permalink()",
+        "animation_completion_required": false
+      }
+    },
+    "BR-COMMERCE-3": {
+      "scene_id": "BR-COMMERCE-3",
+      "collection": "black-rose",
+      "order": 3,
+      "label": "The Town Line",
+      "approval_status": "APPROVED FINAL — IMPLEMENT",
+      "source_reference": [
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--approval.json",
+          "sha256": "8d6b9010844806ede314436b45e06f2bbb6e56b23849e4996f966300ef879bfa"
+        },
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--receipt.json",
+          "sha256": "3eca9a38b78f736db2b659206a6716bcfbd43e888a979774206c695330ad7a8d"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/data/collection-scene-motion.json",
+          "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+        }
+      ],
+      "required_runtime_assets": [
+        {
+          "role": "poster",
+          "path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+          "classification": "SUPPORTING ASSET — REQUIRED",
+          "sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+          "bytes": 2482505
+        },
+        {
+          "role": "desktop",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/br-commerce-3-motion-k1-1080p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "fcd14d4d99c4f11988abef6e239ffc75de0c784960d8a255eb0941df3bd8c836",
+          "bytes": 2997756
+        },
+        {
+          "role": "mobile",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/br-commerce-3-motion-k1-720p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "b98c417f912b340bec4ec6820ab85ab1dfdf0a9397102b69ec35f34712dcc730",
+          "bytes": 1456483
+        }
+      ],
+      "desktop_composition": {
+        "width": 1536,
+        "height": 1024,
+        "fit": "contain",
+        "foreground_background": "Preserve baked approved composition; no additional model layers or candidate srcsets.",
+        "story_placement": "below-media"
+      },
+      "mobile_composition": {
+        "fit": "contain",
+        "story_placement": "below-media",
+        "cta_always_available": true,
+        "delivery": "720p motion; full reference composition retained; native product links stack below media"
+      },
+      "motion_controller": "assets/js/collection-scene-motion.js",
+      "motion_policy": {
+        "poster_first": true,
+        "preload": "none",
+        "one_active_scene": true,
+        "reduced_motion": "approved poster with native CTA; explicit play available",
+        "save_data": "approved poster with native CTA; explicit play available"
+      },
+      "cta": {
+        "collection_path": "/collections/black-rose/#shop",
+        "product_resolver": "wc_get_product_id_by_sku",
+        "product_bindings": [
+          "br-008",
+          "br-009",
+          "br-010",
+          "br-011",
+          "br-012"
+        ],
+        "product_url_source": "Published WC_Product::get_permalink()",
+        "animation_completion_required": false
+      },
+      "responsive_posters": [
+        {
+          "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp",
+          "sha256": "fe92f8838cb20f911e95afc2f1ab75ad1bc94601d3a00b0db7bf9c9165abd1a4",
+          "source_path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+          "source_sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+          "width": 640,
+          "height": 427,
+          "bytes": 69660,
+          "classification": "SUPPORTING ASSET — REQUIRED"
+        },
+        {
+          "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp",
+          "sha256": "2cbf726ea73c1c0a3eead460228b302d07f6ea51ebd3e5a70c9380515e25b9d8",
+          "source_path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+          "source_sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+          "width": 1024,
+          "height": 683,
+          "bytes": 156866,
+          "classification": "SUPPORTING ASSET — REQUIRED"
+        }
+      ]
+    },
+    "LH-COMMERCE-1": {
+      "scene_id": "LH-COMMERCE-1",
+      "collection": "love-hurts",
+      "order": 1,
+      "label": "The Vow Aisle",
+      "approval_status": "APPROVED FINAL — IMPLEMENT",
+      "source_reference": [
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--approval.json",
+          "sha256": "8d6b9010844806ede314436b45e06f2bbb6e56b23849e4996f966300ef879bfa"
+        },
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--receipt.json",
+          "sha256": "3eca9a38b78f736db2b659206a6716bcfbd43e888a979774206c695330ad7a8d"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/data/collection-scene-motion.json",
+          "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+        }
+      ],
+      "required_runtime_assets": [
+        {
+          "role": "poster",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-archive-4-poster.webp",
+          "classification": "SUPPORTING ASSET — REQUIRED",
+          "sha256": "6a5fbe9d202f0e47492ded17b4ea381311b41412fc3625c949874da1392d3446",
+          "bytes": 113872
+        },
+        {
+          "role": "desktop",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-motion-k1-1080p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "921c060dbaca48f936a901a12a82f7c049bca121c4332270c008e99df1b2c19d",
+          "bytes": 3606213
+        },
+        {
+          "role": "mobile",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-motion-k1-720p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "808b59c958ac3df1acb5946d2ec07ee499c4d1216bef1d4a6995764d3453f30d",
+          "bytes": 1798799
+        }
+      ],
+      "desktop_composition": {
+        "width": 960,
+        "height": 540,
+        "fit": "contain",
+        "foreground_background": "Preserve baked approved composition; no additional model layers or candidate srcsets.",
+        "story_placement": "below-media"
+      },
+      "mobile_composition": {
+        "fit": "contain",
+        "story_placement": "below-media",
+        "cta_always_available": true,
+        "delivery": "720p motion; full reference composition retained; native product links stack below media"
+      },
+      "motion_controller": "assets/js/collection-scene-motion.js",
+      "motion_policy": {
+        "poster_first": true,
+        "preload": "none",
+        "one_active_scene": true,
+        "reduced_motion": "approved poster with native CTA; explicit play available",
+        "save_data": "approved poster with native CTA; explicit play available"
+      },
+      "cta": {
+        "collection_path": "/collections/love-hurts/#shop",
+        "product_resolver": "wc_get_product_id_by_sku",
+        "product_bindings": [
+          "lh-004",
+          "lh-002",
+          "lh-006"
+        ],
+        "product_url_source": "Published WC_Product::get_permalink()",
+        "animation_completion_required": false
+      }
+    },
+    "LH-COMMERCE-2": {
+      "scene_id": "LH-COMMERCE-2",
+      "collection": "love-hurts",
+      "order": 2,
+      "label": "The Rose Side Chapel",
+      "approval_status": "APPROVED FINAL — IMPLEMENT",
+      "source_reference": [
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--approval.json",
+          "sha256": "8d6b9010844806ede314436b45e06f2bbb6e56b23849e4996f966300ef879bfa"
+        },
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--receipt.json",
+          "sha256": "3eca9a38b78f736db2b659206a6716bcfbd43e888a979774206c695330ad7a8d"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/data/collection-scene-motion.json",
+          "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+        }
+      ],
+      "required_runtime_assets": [
+        {
+          "role": "poster",
+          "path": "assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+          "classification": "SUPPORTING ASSET — REQUIRED",
+          "sha256": "bf251eba7a2366a8d133e10a7bd548f3c6d89d2137da8263a418e761bfdefa54",
+          "bytes": 340456
+        },
+        {
+          "role": "desktop",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-2-motion-k1-1080p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "ceb7a2af1cf580601d227a75b72d8034b7bce7b16da619dfcf8a2d2b231dec50",
+          "bytes": 3473611
+        },
+        {
+          "role": "mobile",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-2-motion-k1-720p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "470d894b4f83c0c81cc3d2b27082ccdf6e0564ea7e82365b6888a77a984e38ec",
+          "bytes": 1671544
+        }
+      ],
+      "desktop_composition": {
+        "width": 1672,
+        "height": 941,
+        "fit": "contain",
+        "foreground_background": "Preserve baked approved composition; no additional model layers or candidate srcsets.",
+        "story_placement": "below-media"
+      },
+      "mobile_composition": {
+        "fit": "contain",
+        "story_placement": "below-media",
+        "cta_always_available": true,
+        "delivery": "720p motion; full reference composition retained; native product links stack below media"
+      },
+      "motion_controller": "assets/js/collection-scene-motion.js",
+      "motion_policy": {
+        "poster_first": true,
+        "preload": "none",
+        "one_active_scene": true,
+        "reduced_motion": "approved poster with native CTA; explicit play available",
+        "save_data": "approved poster with native CTA; explicit play available"
+      },
+      "cta": {
+        "collection_path": "/collections/love-hurts/#shop",
+        "product_resolver": "wc_get_product_id_by_sku",
+        "product_bindings": [
+          "lh-003"
+        ],
+        "product_url_source": "Published WC_Product::get_permalink()",
+        "animation_completion_required": false
+      }
+    },
+    "LH-COMMERCE-3": {
+      "scene_id": "LH-COMMERCE-3",
+      "collection": "love-hurts",
+      "order": 3,
+      "label": "The Rose Vitrine",
+      "approval_status": "APPROVED FINAL — IMPLEMENT",
+      "source_reference": [
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--approval.json",
+          "sha256": "8d6b9010844806ede314436b45e06f2bbb6e56b23849e4996f966300ef879bfa"
+        },
+        {
+          "path": "tasks/v2-source-certification-20260905/provenance/collection-motion-wiring-k1--receipt.json",
+          "sha256": "3eca9a38b78f736db2b659206a6716bcfbd43e888a979774206c695330ad7a8d"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/data/collection-scene-motion.json",
+          "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+        }
+      ],
+      "required_runtime_assets": [
+        {
+          "role": "poster",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-archive-4-poster.webp",
+          "classification": "SUPPORTING ASSET — REQUIRED",
+          "sha256": "ddff5431de7614583429a92d4c51ebab87dc0b174ff1292b997004aa7b8dfc5c",
+          "bytes": 87158
+        },
+        {
+          "role": "desktop",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-motion-k1-1080p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "0527231afba20ef7918f0d7d9f9a3730ade8ef82d5873e0af16b461a75f954b0",
+          "bytes": 1387412
+        },
+        {
+          "role": "mobile",
+          "path": "assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-motion-k1-720p.mp4",
+          "classification": "APPROVED FINAL — IMPLEMENT",
+          "sha256": "ee056f47484fbeea7c6e9db06f511985521a3e64b32a156ff6650583203ac108",
+          "bytes": 619697
+        }
+      ],
+      "desktop_composition": {
+        "width": 960,
+        "height": 1280,
+        "fit": "contain",
+        "foreground_background": "Preserve baked approved composition; no additional model layers or candidate srcsets.",
+        "story_placement": "below-media"
+      },
+      "mobile_composition": {
+        "fit": "contain",
+        "story_placement": "below-media",
+        "cta_always_available": true,
+        "delivery": "720p motion; full reference composition retained; native product links stack below media"
+      },
+      "motion_controller": "assets/js/collection-scene-motion.js",
+      "motion_policy": {
+        "poster_first": true,
+        "preload": "none",
+        "one_active_scene": true,
+        "reduced_motion": "approved poster with native CTA; explicit play available",
+        "save_data": "approved poster with native CTA; explicit play available"
+      },
+      "cta": {
+        "collection_path": "/collections/love-hurts/#shop",
+        "product_resolver": "wc_get_product_id_by_sku",
+        "product_bindings": [
+          "lh-005"
+        ],
+        "product_url_source": "Published WC_Product::get_permalink()",
+        "animation_completion_required": false
+      }
+    }
+  },
+  "poster_derivation": {
+    "tool": "cwebp",
+    "version": "1.6.0\nlibsharpyuv: 0.4.2",
+    "quality": 90,
+    "method": 6,
+    "resize": "width-preserve-aspect",
+    "scene_ids": [
+      "BR-COMMERCE-3"
+    ]
+  }
+}

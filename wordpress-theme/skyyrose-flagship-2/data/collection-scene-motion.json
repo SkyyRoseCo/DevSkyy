@@ -1,0 +1,245 @@
+{
+  "version": "collection-motion-k1",
+  "approval": {
+    "scope": "Existing approved motion scenes, local collection wiring only",
+    "user_request": "yeah get those all wired in the specified collections",
+    "production_deployment_authorized": false,
+    "independent_visual_qa": "NOT_RUN_IN_THIS_WIRING_PASS"
+  },
+  "scenes": {
+    "BR-COMMERCE-1": {
+      "collection": "black-rose",
+      "founder_approved_visual": true,
+      "local_wiring_authorized": true,
+      "poster": "motion/collection-scenes-k1/br-commerce-1-archive-4-poster.webp",
+      "desktop": "motion/collection-scenes-k1/br-commerce-1-motion-k1-1080p.mp4",
+      "mobile": "motion/collection-scenes-k1/br-commerce-1-motion-k1-720p.mp4",
+      "original_master_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/08d5239f-c31a-4a86-a623-c9ad974965ee.mp4",
+      "variants": [
+        {
+          "asset": "motion/collection-scenes-k1/br-commerce-1-motion-k1-1080p.mp4",
+          "tier": 1080,
+          "bytes": 1209097,
+          "sha256": "73bfaf40668147f22c4ee23cd5fa74ffb5e330c63a832095a937e508da0cc0b0"
+        },
+        {
+          "asset": "motion/collection-scenes-k1/br-commerce-1-motion-k1-720p.mp4",
+          "tier": 720,
+          "bytes": 567028,
+          "sha256": "bbc5efc1b70797b24cf69978f96febc14e123c382f22424bf07f0f738a065926"
+        }
+      ],
+      "loop": true,
+      "muted": true,
+      "full_frame": true
+    },
+    "BR-COMMERCE-2": {
+      "collection": "black-rose",
+      "founder_approved_visual": true,
+      "local_wiring_authorized": true,
+      "poster": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp",
+      "desktop": "motion/collection-scenes-k1/br-commerce-2-motion-k1-1080p.mp4",
+      "mobile": "motion/collection-scenes-k1/br-commerce-2-motion-k1-720p.mp4",
+      "original_master_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_030251_1baa140d-66cf-4787-a29b-c6000ac8d7ca.mp4",
+      "variants": [
+        {
+          "asset": "motion/collection-scenes-k1/br-commerce-2-motion-k1-1080p.mp4",
+          "tier": 1080,
+          "bytes": 3354874,
+          "sha256": "2980516d74851407375dd9cfb0b64f4c4fdbff0ae1b35bf9d69109ae3d8824df"
+        },
+        {
+          "asset": "motion/collection-scenes-k1/br-commerce-2-motion-k1-720p.mp4",
+          "tier": 720,
+          "bytes": 1605812,
+          "sha256": "80139065b953ebd1d9740ca9a940d127bfb6e250fc1dbd1d69fd3243b2757199"
+        }
+      ],
+      "loop": true,
+      "muted": true,
+      "full_frame": true
+    },
+    "BR-COMMERCE-3": {
+      "collection": "black-rose",
+      "founder_approved_visual": true,
+      "local_wiring_authorized": true,
+      "poster": "generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+      "desktop": "motion/collection-scenes-k1/br-commerce-3-motion-k1-1080p.mp4",
+      "mobile": "motion/collection-scenes-k1/br-commerce-3-motion-k1-720p.mp4",
+      "original_master_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_022733_e35c1d7a-887e-436f-8091-cc93fbd1561f.mp4",
+      "variants": [
+        {
+          "asset": "motion/collection-scenes-k1/br-commerce-3-motion-k1-1080p.mp4",
+          "tier": 1080,
+          "bytes": 2997756,
+          "sha256": "fcd14d4d99c4f11988abef6e239ffc75de0c784960d8a255eb0941df3bd8c836"
+        },
+        {
+          "asset": "motion/collection-scenes-k1/br-commerce-3-motion-k1-720p.mp4",
+          "tier": 720,
+          "bytes": 1456483,
+          "sha256": "b98c417f912b340bec4ec6820ab85ab1dfdf0a9397102b69ec35f34712dcc730"
+        }
+      ],
+      "loop": true,
+      "muted": true,
+      "full_frame": true
+    },
+    "LH-COMMERCE-1": {
+      "collection": "love-hurts",
+      "founder_approved_visual": true,
+      "local_wiring_authorized": true,
+      "poster": "motion/collection-scenes-k1/lh-commerce-1-archive-4-poster.webp",
+      "desktop": "motion/collection-scenes-k1/lh-commerce-1-motion-k1-1080p.mp4",
+      "mobile": "motion/collection-scenes-k1/lh-commerce-1-motion-k1-720p.mp4",
+      "original_master_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/c188e736-66bb-4a0a-996b-c905b4af6744.mp4",
+      "variants": [
+        {
+          "asset": "motion/collection-scenes-k1/lh-commerce-1-motion-k1-1080p.mp4",
+          "tier": 1080,
+          "bytes": 3606213,
+          "sha256": "921c060dbaca48f936a901a12a82f7c049bca121c4332270c008e99df1b2c19d"
+        },
+        {
+          "asset": "motion/collection-scenes-k1/lh-commerce-1-motion-k1-720p.mp4",
+          "tier": 720,
+          "bytes": 1798799,
+          "sha256": "808b59c958ac3df1acb5946d2ec07ee499c4d1216bef1d4a6995764d3453f30d"
+        }
+      ],
+      "loop": true,
+      "muted": true,
+      "full_frame": true
+    },
+    "LH-COMMERCE-2": {
+      "collection": "love-hurts",
+      "founder_approved_visual": true,
+      "local_wiring_authorized": true,
+      "poster": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+      "desktop": "motion/collection-scenes-k1/lh-commerce-2-motion-k1-1080p.mp4",
+      "mobile": "motion/collection-scenes-k1/lh-commerce-2-motion-k1-720p.mp4",
+      "original_master_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_032111_7468b917-dac5-4c73-b9cb-15083ed16a16.mp4",
+      "variants": [
+        {
+          "asset": "motion/collection-scenes-k1/lh-commerce-2-motion-k1-1080p.mp4",
+          "tier": 1080,
+          "bytes": 3473611,
+          "sha256": "ceb7a2af1cf580601d227a75b72d8034b7bce7b16da619dfcf8a2d2b231dec50"
+        },
+        {
+          "asset": "motion/collection-scenes-k1/lh-commerce-2-motion-k1-720p.mp4",
+          "tier": 720,
+          "bytes": 1671544,
+          "sha256": "470d894b4f83c0c81cc3d2b27082ccdf6e0564ea7e82365b6888a77a984e38ec"
+        }
+      ],
+      "loop": true,
+      "muted": true,
+      "full_frame": true
+    },
+    "LH-COMMERCE-3": {
+      "collection": "love-hurts",
+      "founder_approved_visual": true,
+      "local_wiring_authorized": true,
+      "poster": "motion/collection-scenes-k1/lh-commerce-3-archive-4-poster.webp",
+      "desktop": "motion/collection-scenes-k1/lh-commerce-3-motion-k1-1080p.mp4",
+      "mobile": "motion/collection-scenes-k1/lh-commerce-3-motion-k1-720p.mp4",
+      "original_master_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/01664703-844c-496e-8e6f-5e16ad38b719.mp4",
+      "variants": [
+        {
+          "asset": "motion/collection-scenes-k1/lh-commerce-3-motion-k1-1080p.mp4",
+          "tier": 1080,
+          "bytes": 1387412,
+          "sha256": "0527231afba20ef7918f0d7d9f9a3730ade8ef82d5873e0af16b461a75f954b0"
+        },
+        {
+          "asset": "motion/collection-scenes-k1/lh-commerce-3-motion-k1-720p.mp4",
+          "tier": 720,
+          "bytes": 619697,
+          "sha256": "ee056f47484fbeea7c6e9db06f511985521a3e64b32a156ff6650583203ac108"
+        }
+      ],
+      "loop": true,
+      "muted": true,
+      "full_frame": true
+    },
+    "SIG-COMMERCE-1": {
+      "collection": "signature",
+      "founder_approved_visual": true,
+      "local_wiring_authorized": true,
+      "poster": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp",
+      "desktop": "motion/collection-scenes-k1/sig-commerce-1-motion-k1-1080p.mp4",
+      "mobile": "motion/collection-scenes-k1/sig-commerce-1-motion-k1-720p.mp4",
+      "original_master_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_034711_8ec45b78-f59a-493b-b187-97ece73c2052.mp4",
+      "variants": [
+        {
+          "asset": "motion/collection-scenes-k1/sig-commerce-1-motion-k1-1080p.mp4",
+          "tier": 1080,
+          "bytes": 3033789,
+          "sha256": "72538af2cca074b3d8d8f5252e20793390936e3844c345184682b2b15e8b9de7"
+        },
+        {
+          "asset": "motion/collection-scenes-k1/sig-commerce-1-motion-k1-720p.mp4",
+          "tier": 720,
+          "bytes": 1222252,
+          "sha256": "aef4de2a77fc1c0e6be98398636e1b1f5cd6ed9b5e314eac60f87dd5cd2c3ef2"
+        }
+      ],
+      "loop": true,
+      "muted": true,
+      "full_frame": true
+    },
+    "SIG-COMMERCE-2": {
+      "collection": "signature",
+      "founder_approved_visual": true,
+      "local_wiring_authorized": true,
+      "poster": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp",
+      "desktop": "motion/collection-scenes-k1/sig-commerce-2-motion-k1-1080p.mp4",
+      "mobile": "motion/collection-scenes-k1/sig-commerce-2-motion-k1-720p.mp4",
+      "original_master_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_035528_eed537ce-ef4b-4800-b542-fba597c19e31.mp4",
+      "variants": [
+        {
+          "asset": "motion/collection-scenes-k1/sig-commerce-2-motion-k1-1080p.mp4",
+          "tier": 1080,
+          "bytes": 3529477,
+          "sha256": "da10d2d6f09594a8cdc1e0172878451a6a92c76242330a563e9ee22dab262eb7"
+        },
+        {
+          "asset": "motion/collection-scenes-k1/sig-commerce-2-motion-k1-720p.mp4",
+          "tier": 720,
+          "bytes": 1548209,
+          "sha256": "f9e6b2fb536d75d14fcc477bbcf8eedc406ec9222988a8e8c22895477d8b72ba"
+        }
+      ],
+      "loop": true,
+      "muted": true,
+      "full_frame": true
+    },
+    "SIG-COMMERCE-3": {
+      "collection": "signature",
+      "founder_approved_visual": true,
+      "local_wiring_authorized": true,
+      "poster": "motion/collection-scenes-k1/sig-commerce-3-motion-k1-poster.webp",
+      "desktop": "motion/collection-scenes-k1/sig-commerce-3-motion-k1-1080p.mp4",
+      "mobile": "motion/collection-scenes-k1/sig-commerce-3-motion-k1-720p.mp4",
+      "original_master_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_040419_2051b483-2e12-4b3d-bd83-fe60bcbe129c.mp4",
+      "variants": [
+        {
+          "asset": "motion/collection-scenes-k1/sig-commerce-3-motion-k1-1080p.mp4",
+          "tier": 1080,
+          "bytes": 3476074,
+          "sha256": "dcc1cea5b7606ee8ee66074d91da4829394ca5f76cb12d8524b6d4d73735bcbe"
+        },
+        {
+          "asset": "motion/collection-scenes-k1/sig-commerce-3-motion-k1-720p.mp4",
+          "tier": 720,
+          "bytes": 1589393,
+          "sha256": "80cba25c744d4bf823dffa2f2761a7de6d3d466703e12f6c066b2f4f4011f981"
+        }
+      ],
+      "loop": true,
+      "muted": true,
+      "full_frame": true
+    }
+  }
+}

@@ -13,8 +13,21 @@ from pathlib import Path
 
 import pytest
 
+from tests.scripts.deploy_shims import blocked_calls, install_shims, style_css
+
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SCRIPT_PATH = PROJECT_ROOT / "scripts" / "deploy-theme.sh"
+
+# The fake target: a staging-shaped host (so DEPLOY_TARGET=staging agrees) and
+# the V1 folder name. The curl shim answers its live style.css with the same
+# identity the fake theme carries, so check_theme_identity passes by default.
+# SSH_USER is the host's own WP.com account ("<first label>.wordpress.com") so
+# the SSH-destination gate agrees too.
+FAKE_PUBLIC_URL = "https://fake-staging.wpcomstaging.com/"
+FAKE_SSH_USER = "fake-staging.wordpress.com"
+FAKE_THEME_NAME = "Test"
+FAKE_TEXT_DOMAIN = "skyyrose-test"
+FAKE_LIVE_STYLE_PATH = "/wp-content/themes/skyyrose-flagship/style.css"
 
 
 @pytest.fixture
@@ -24,13 +37,14 @@ def fake_env(tmp_path):
     env_file.write_text(
         "SSH_HOST=ssh.wp.com\n"
         "SSH_PORT=22\n"
-        "SSH_USER=test.wordpress.com\n"
+        f"SSH_USER={FAKE_SSH_USER}\n"
         "SSH_PASS=fake-password\n"
         "WP_THEME_PATH=/htdocs/wp-content/themes/skyyrose-flagship\n"
         "SFTP_HOST=sftp.wp.com\n"
         "SFTP_PORT=22\n"
-        "SFTP_USER=test.wordpress.com\n"
+        f"SFTP_USER={FAKE_SSH_USER}\n"
         "SFTP_PASS=fake-password\n"
+        f"PUBLIC_URL={FAKE_PUBLIC_URL}\n"
     )
     theme_dir = tmp_path / "wordpress-theme" / "skyyrose-flagship"
     _make_deployable_theme(theme_dir, version="1.0.0")
@@ -48,7 +62,8 @@ def _make_deployable_theme(theme_dir: Path, *, version: str = "1.0.0") -> None:
     """
     theme_dir.mkdir(parents=True, exist_ok=True)
     (theme_dir / "style.css").write_text(
-        f"/*\nTheme Name: Test\nVersion:             {version}\n*/\n"
+        f"/*\nTheme Name: {FAKE_THEME_NAME}\nVersion:             {version}\n"
+        f"Text Domain:         {FAKE_TEXT_DOMAIN}\n*/\n"
     )
     (theme_dir / "functions.php").write_text(f"<?php\ndefine( 'SKYYROSE_VERSION', '{version}' );\n")
     (theme_dir / "readme.txt").write_text(f"Stable tag: {version}\n")
@@ -65,16 +80,45 @@ def _make_deployable_theme(theme_dir: Path, *, version: str = "1.0.0") -> None:
     (models / "skyy.glb").write_bytes(b"")
 
 
-def run_script(*args, env_overrides=None):
-    """Run deploy-theme.sh with given arguments."""
+INHERITED_KEYS = (
+    "DEPLOY_TARGET",
+    "ENV_FILE",
+    "THEME_DIR_OVERRIDE",
+    "PUBLIC_URL",
+    "WORDPRESS_URL",
+    "ALLOW_THEME_IDENTITY_CHANGE",
+    "ALLOW_NEW_THEME_FOLDER",
+    "PREFLIGHT_SKIP_COMPLETENESS",
+    "STRUCTURE_CHECK_STRICT",
+)
+
+
+def run_script(*args, tmp_path: Path, env_overrides=None, deploy_target="staging"):
+    """Run deploy-theme.sh with given arguments.
+
+    Every run gets the PATH shims from tests/scripts/deploy_shims.py: curl is
+    route-driven (the fake theme's live style.css answers with a matching
+    identity) and ssh/scp/sftp/sshpass/lftp/rsync fail loudly and are logged.
+    DEPLOY_TARGET defaults to staging because the engine refuses without one;
+    pass deploy_target=None to test that refusal. Every per-test path (lock,
+    log, shims) lives under tmp_path -- never a shared /tmp path (bug-231).
+    """
     env = os.environ.copy()
+    for key in INHERITED_KEYS:
+        env.pop(key, None)
     # Isolate from real deploys: the script's concurrency lock and log default
-    # to shared /tmp paths, so an in-flight production deploy fails these tests
-    # ("Another deploy is already running") and test runs pollute /tmp with
-    # skyyrose-deploy-*.log files.
-    pid = os.getpid()
-    env.setdefault("DEPLOY_LOCK_FILE", f"/tmp/skyyrose-deploy-test-{pid}.lock")
-    env.setdefault("DEPLOY_LOG_FILE", f"/tmp/skyyrose-deploy-test-{pid}.log")
+    # to shared /tmp paths, so an in-flight production deploy would otherwise
+    # fail these tests ("Another deploy is already running").
+    env["DEPLOY_LOCK_FILE"] = str(tmp_path / "skyyrose-deploy-test.lock")
+    env["DEPLOY_LOG_FILE"] = str(tmp_path / "skyyrose-deploy-test.log")
+    env.update(
+        install_shims(
+            tmp_path,
+            [(FAKE_LIVE_STYLE_PATH, "200", style_css(FAKE_THEME_NAME, FAKE_TEXT_DOMAIN), "")],
+        )
+    )
+    if deploy_target is not None:
+        env["DEPLOY_TARGET"] = deploy_target
     if env_overrides:
         env.update(env_overrides)
     result = subprocess.run(
@@ -84,6 +128,8 @@ def run_script(*args, env_overrides=None):
         env=env,
         timeout=30,
     )
+    assert "SHIM-BLOCKED" not in result.stderr, f"network tool invoked:\n{result.stderr}"
+    assert blocked_calls(env) == [], f"network tool invoked (stderr hidden):\n{blocked_calls(env)}"
     return result
 
 
@@ -98,8 +144,9 @@ class TestDryRun:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
-        assert result.returncode == 0, f"stderr: {result.stderr}"
+        assert result.returncode == 0, f"stderr: {result.stderr}\nstdout: {result.stdout}"
 
     def test_dry_run_prints_dry_run_label(self, fake_env):
         tmp_path, env_file, theme_dir = fake_env
@@ -109,6 +156,7 @@ class TestDryRun:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
         assert "[DRY RUN]" in result.stdout
 
@@ -120,6 +168,7 @@ class TestDryRun:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
         assert "maintenance" in result.stdout.lower()
 
@@ -131,6 +180,7 @@ class TestDryRun:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
         output = result.stdout.lower()
         assert "transfer" in output or "rsync" in output or "lftp" in output
@@ -143,6 +193,7 @@ class TestDryRun:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
         assert "cache flush" in result.stdout.lower()
 
@@ -150,12 +201,12 @@ class TestDryRun:
 class TestHelp:
     """Test 2: --help exits 0 and prints usage."""
 
-    def test_help_exits_zero(self):
-        result = run_script("--help")
+    def test_help_exits_zero(self, tmp_path):
+        result = run_script("--help", tmp_path=tmp_path)
         assert result.returncode == 0
 
-    def test_help_prints_usage(self):
-        result = run_script("--help")
+    def test_help_prints_usage(self, tmp_path):
+        result = run_script("--help", tmp_path=tmp_path)
         output = result.stdout.lower()
         assert "usage" in output or "deploy" in output
 
@@ -166,15 +217,17 @@ class TestMissingEnv:
     def test_missing_env_exits_nonzero(self, tmp_path):
         result = run_script(
             env_overrides={"ENV_FILE": str(tmp_path / "nonexistent.env")},
+            tmp_path=tmp_path,
         )
         assert result.returncode != 0
 
     def test_missing_env_prints_error(self, tmp_path):
         result = run_script(
             env_overrides={"ENV_FILE": str(tmp_path / "nonexistent.env")},
+            tmp_path=tmp_path,
         )
         output = (result.stdout + result.stderr).lower()
-        assert "credential" in output or "env" in output or "not found" in output
+        assert "credential file not found" in output
 
 
 class TestTrapCleanup:
@@ -214,6 +267,7 @@ class TestCommandOrdering:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
         output = result.stdout.lower()
         activate_pos = output.find("maintenance-mode activate")
@@ -248,6 +302,7 @@ class TestCommandOrdering:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
         output = result.stdout.lower()
         transfer_pos = min(
@@ -281,6 +336,7 @@ class TestCacheFlush:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
         output = result.stdout.lower()
         assert "cache flush" in output
@@ -293,6 +349,7 @@ class TestCacheFlush:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
         output = result.stdout.lower()
         assert "transient delete" in output
@@ -305,6 +362,7 @@ class TestCacheFlush:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
         output = result.stdout.lower()
         assert "rewrite flush" in output
@@ -317,6 +375,7 @@ class TestCacheFlush:
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
             },
+            tmp_path=tmp_path,
         )
         output = result.stdout.lower()
         transfer_pos = min(
@@ -430,6 +489,7 @@ class TestCompletenessGate:
         result = run_script(
             "--dry-run",
             env_overrides={"ENV_FILE": str(env_file), "THEME_DIR_OVERRIDE": str(theme_dir)},
+            tmp_path=tmp_path,
         )
         assert result.returncode != 0
         combined = result.stdout + result.stderr
@@ -445,6 +505,7 @@ class TestCompletenessGate:
         result = run_script(
             "--dry-run",
             env_overrides={"ENV_FILE": str(env_file), "THEME_DIR_OVERRIDE": str(theme_dir)},
+            tmp_path=tmp_path,
         )
         assert result.returncode != 0
         assert "DRIFT" in (result.stdout + result.stderr)
@@ -457,6 +518,7 @@ class TestCompletenessGate:
         result = run_script(
             "--dry-run",
             env_overrides={"ENV_FILE": str(env_file), "THEME_DIR_OVERRIDE": str(theme_dir)},
+            tmp_path=tmp_path,
         )
         assert result.returncode != 0
         assert "Critical-asset floor" in (result.stdout + result.stderr)
@@ -473,6 +535,7 @@ class TestCompletenessGate:
                 "THEME_DIR_OVERRIDE": str(theme_dir),
                 "PREFLIGHT_SKIP_COMPLETENESS": "1",
             },
+            tmp_path=tmp_path,
         )
         assert result.returncode == 0, f"skip override should pass; stderr: {result.stderr}"
         assert "SKIPPED" in result.stdout
@@ -492,6 +555,7 @@ class TestCompletenessGate:
         result = run_script(
             "--dry-run",
             env_overrides={"ENV_FILE": str(env_file), "THEME_DIR_OVERRIDE": str(theme_dir)},
+            tmp_path=tmp_path,
         )
         assert result.returncode != 0
         combined = result.stdout + result.stderr

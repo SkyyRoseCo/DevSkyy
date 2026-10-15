@@ -1,0 +1,19 @@
+{
+  "status": "ILLUSTRATIVE_PROMPT_COMPARISON_NOT_CREATIVE_APPROVAL",
+  "image_inputs": [],
+  "limitations": "Text-only enhancement test; no references uploaded or image/video rendered. Identity fidelity cannot be evaluated from prompt output.",
+  "requests": [
+    {
+      "id": "generic",
+      "mode": "lifestyle_scene",
+      "prompt": "Make a cinematic luxury Black Rose train campaign with a male model, the Skyy mascot, dramatic lighting and a big reveal."
+    },
+    {
+      "id": "directed",
+      "mode": "lifestyle_scene",
+      "prompt": "Storyboard still for a wordless Black Rose encounter: the actual man from the supplied video has paused at an interior train door. On the other side, the exact supplied illustrated Skyy has reached for its handle to let him through. Capture the instant he notices her matching bomber. Keep both jacket fronts legible, her hand clear of the chest, and their attention on one another. A single practical window light defines the black satin and sherpa. No posing toward camera.",
+      "brand_context": "SkyyRose. Use source-bound casting and wardrobe. The illustrated Skyy design stays unchanged across scenes. Real people remain photographic. No added captions, slogans or invented signage; preserve authentic garment lettering. No floating roses, thrones, presenter gestures or synchronized smiles.",
+      "product_context": "Black Rose br-006 is the exact sherpa bomber worn by the original video performer. Preserve source construction, closures, material, hood, panel shapes and marks. Canonical garment references control wardrobe. Mascot archive controls outfit reference only; supplied image.png controls her face, hair and proportions."
+    }
+  ]
+}

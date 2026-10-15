@@ -1,0 +1,20 @@
+{
+  "source_path": "/Users/theceo/Downloads/Video Apr 21 2024, 11 01 18 AM.mp4",
+  "source_sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+  "policy": "Use the actual performer from this source for new Black Rose shots. Never use the prior generated man. Preserve selected original video pixels; exclude audio.",
+  "local_frames": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/identity-correction/sources/actual-br-performer-01.png",
+      "frame_zero_based": 731,
+      "sha256": "95ac3e0cdaf61867a82e071b8123835e9b82a0948f945cf0554008ed84cc5ed0",
+      "fresh_source_decode_exact": true
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/identity-correction/sources/actual-br-performer-02.png",
+      "frame_zero_based": 1427,
+      "sha256": "71a903d49425d45151d02b7d3ec235cfed30a1f992e0b4ff1e8e7cb7f0a994ad",
+      "fresh_source_decode_exact": true
+    }
+  ],
+  "prior_remote_pngs": "Same intended source frames, but prior conversion differs by at most three channel levels; not pixel-identical to fresh ffmpeg RGB decode."
+}

@@ -1,4 +1,4 @@
-# Blog copy: "Luxury Grows from Concrete"
+# Blog copy: "Nothing Here Is a Theme"
 
 Status: draft copy, ready to publish once a blog surface exists (none is built
 yet — see Delivery note at bottom). Topic chosen by the writing agent in the
@@ -14,12 +14,12 @@ God / Palm Angels, never European luxury.
 
 ## Title
 
-Luxury Grows from Concrete
+Nothing Here Is a Theme
 
 ## Meta description (154 chars)
 
-SkyyRose doesn't come from a mood board. It comes from the Town. Here's what
-"Luxury Grows from Concrete" actually means — and why nothing here is a theme.
+SkyyRose doesn't come from a mood board. It comes from the Town. Here's why
+nothing here is a theme.
 
 ## Body
 
@@ -48,7 +48,7 @@ delay tactic — a refusal to launch a lie. That patience runs on Oakland Hills
 time, even when the rest of the industry runs on drop-day pressure. Both speeds
 live in the same house.
 
-Luxury Grows from Concrete isn't about overcoming where this started. It's about
+This brand isn't about overcoming where it started. It's about
 refusing to translate it into something more palatable. The Town doesn't get
 explained here. It just gets worn.
 
@@ -69,7 +69,7 @@ template entry). Publishing this requires either:
 This file is the copy artifact only. No SKU, price, drop date, or campaign name
 is referenced — nothing here needed catalog verification. The one open,
 human-decidable choice is the **topic**: this piece is the brand-story angle
-(tagline explainer). If the actual ask was collection-specific (Black Rose /
+(brand-story explainer). If the actual ask was collection-specific (Black Rose /
 Love Hurts / Signature / Kids Capsule) or product-specific, say which and it
 gets rewritten against the catalog CSV + that collection's own vocabulary
 instead.

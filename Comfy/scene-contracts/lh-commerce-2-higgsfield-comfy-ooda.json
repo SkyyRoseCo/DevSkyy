@@ -2,8 +2,8 @@
   "schema": "skyyrose.scene-ooda/1",
   "scene_id": "LH-COMMERCE-2",
   "collection": "love-hurts",
-  "status": "BLOCKED_PENDING_EXACT_ON_MODEL_GARMENT_AUTHORITY",
-  "purpose": "Create the final Love Hurts commerce scene only after current founder-approved on-model and protected-matte authority exists.",
+  "status": "BLOCKED_PENDING_APPROVED_VTO_FOREGROUND",
+  "purpose": "Build the final Love Hurts commerce scene around a separately approved, protected FASHN customer/product foreground without allowing the environment provider to redraw it.",
   "fashion_theme_team": {
     "plugin": "fashion-theme-team@personal",
     "team_contract": "Comfy/scene-contracts/scene-ooda-index.json",
@@ -11,7 +11,7 @@
     "attempt": 1,
     "accountable": "fashion-theme-lead",
     "current_owner": "product-fidelity-image-edits",
-    "next_authority": "separately authorized exact-garment recovery around founder-approved LH-MODEL-01, followed by protected garment matte and independent product review"
+    "next_authority": "separately authorized FASHN model plate and front-facing LH-003 VTO candidate, followed by independent product review and founder-bound FRONT_SCENE_INPUT_ALLOWED approval"
   },
   "catalog_snapshot": {
     "catalog_path": "skyyrose-catalog.csv",
@@ -111,35 +111,35 @@
       "role": "lh-003_physical_front",
       "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
       "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
-      "send_to_higgsfield": true,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "white perforated mesh, all-over rose field, wearer-left red Love Hurts treatment, directional black-mesh side insets, black waistband, and black/red/white angular leg binding"
     },
     {
       "role": "lh-003_physical_back",
       "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
       "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c",
-      "send_to_higgsfield": true,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "two black-trimmed zippered rear pockets, continuous all-over rose field, and large red-and-black wearer-left rear Love Hurts treatment"
     },
     {
       "role": "lh-003_physical_wearer_left",
       "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
       "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6",
-      "send_to_higgsfield": true,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "wearer-left zippered side pocket, large red Love Hurts script, and black-mesh inset with the smaller Love Hurts rose/heart emblem"
     },
     {
       "role": "lh-003_physical_wearer_right",
       "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
       "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a",
-      "send_to_higgsfield": true,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "wearer-right zippered side pocket and black-mesh inset with the embroidered red rose bouquet, green stems, and white-and-blue cloud"
     },
     {
       "role": "lh-003_physical_front_product_only_matte",
       "path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-front-product-matte-v1.png",
       "sha256": "5313b5aad0dc25222fc89c3036e50550d8c174b36d5374065a22d79caa3deacc",
-      "send_to_higgsfield": false,
+      "provider_use": "FASHN_PRIMARY_PRODUCT_INPUT",
       "preserve": "source RGB and front construction; product-only layout and mask-planning authority, never on-model authority",
       "receipt": "Comfy/receipts/lh-003-front-product-matte-v1.json",
       "receipt_sha256": "ece97ad4afb4b98ece38c73c16eeace62a82716aeab534586c14b2bc7feecfdf"
@@ -148,7 +148,7 @@
       "role": "lh-003_physical_back_product_only_matte",
       "path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-back-product-matte-v1.png",
       "sha256": "dc203cb54c77811fdcb34a46421fb9142b06e8d8ce4a684ebe02b5e9f07ad526",
-      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "source RGB, both rear pockets, both rear zippers, and back artwork; product-only authority",
       "receipt": "Comfy/receipts/lh-003-back-product-matte-v1.json",
       "receipt_sha256": "9c05da625bdae42cfb5a9b5cdcf45de84b72559774397ed887cedf992c97f7b3"
@@ -157,7 +157,7 @@
       "role": "lh-003_physical_wearer_left_product_only_matte",
       "path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-wearer-left-product-matte-v1.png",
       "sha256": "206153c049c96a11bc87da63040016a2c26495286648178ca2897fceff9ec5dc",
-      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "source RGB, wearer-left side pocket zipper, script, and side inset; product-only authority",
       "receipt": "Comfy/receipts/lh-003-wearer-left-product-matte-v1.json",
       "receipt_sha256": "c85b5bc54da05b3c89101f2df5d07d4011b6c79cc25563fe8d3d48efa0a45572"
@@ -166,7 +166,7 @@
       "role": "lh-003_physical_wearer_right_product_only_matte",
       "path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-wearer-right-product-matte-v1.png",
       "sha256": "d8d91b490fa7dba9b2c3dd77addd683c2368dce111f41bab979702f145c7a136",
-      "send_to_higgsfield": false,
+      "provider_use": "SOURCE_AUTHORITY_ONLY",
       "preserve": "source RGB, wearer-right side pocket zipper, rose bouquet, stems, and cloud; product-only authority",
       "receipt": "Comfy/receipts/lh-003-wearer-right-product-matte-v1.json",
       "receipt_sha256": "0f574b150604afb68331fa6fced0295c01123e0781ae56a83578f3474b8c9251"
@@ -175,37 +175,59 @@
       "role": "love_hurts_collection_world_reference",
       "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp",
       "sha256": "000ec8308a8d72daa691ca8712ef751d7d8e9b9805a4b08060ebc9a59a2bc3a3",
-      "send_to_higgsfield": true,
+      "provider_use": "RUNWAY_ENVIRONMENT_REFERENCE_ONLY",
       "preserve": "extract only the deep red urban-gothic rose-aisle architecture, wet black floor, central depth, reflection behavior, and physically weighted scale; do not copy the robed figure, empty tableau, Love Hurts word monument, star/heart monument, or any monument beyond the separately bound single protected enchanted-rose dome and plinth; never allow the environment to outrank the approved customer and exact LH-003 shorts"
     },
     {
       "role": "protected_enchanted_rose",
       "path": "skyyrose/assets/scenes/love-hurts/love-hurts-enchanted-rose-cathedral/love-hurts-enchanted-rose-cathedral-v2.png",
       "sha256": "4f3c937f958f9ee4f6e87ec2696a70ea67903ffe24b52b41f699bb50680c7b02",
-      "send_to_higgsfield": true,
+      "provider_use": "COMFY_PROTECTED_COMPOSITE_ONLY",
       "preserve": "exact rose-under-glass continuity authority"
     }
   ],
   "authority_dependencies": [],
-  "higgsfield": {
-    "mode": "hero_banner",
-    "aspect_ratio": "16:9",
-    "count": 1,
-    "resolution_request": "2k",
-    "resolution_note": "The installed CLI does not expose a resolution flag; verify returned dimensions before Comfy staging.",
-    "prompt": "Cinematic urban-grit Love Hurts campaign in The Fractured Chamber, inspired by the approved Love Hurts rose-aisle monument hero without copying its empty tableau: an urban-gothic aisle after midnight with pointed arches recast in fractured black civic stone and aged iron. One founder-approved customer in the exact LH-003 shorts dominates the left-center at product-readable scale; preserve exactly four zippered pockets, two side and two back, with a zipper on every pocket. The single allowed monument is the separately bound protected enchanted rose under glass, standing right on one weighted plinth. Wet black floor, deep red practical light, cold ambient spill, detailed shadows, restrained film grain, believable contact and occlusion. Professional 16:9 customer-and-product hierarchy; no copied Love Hurts word monument, copied star/heart monument, other monument, robed fantasy figure, castle, ballroom, Beast character, generic hearts, flower wall, velvet lounge, pasted edges, open pockets, zipperless pockets, extra pockets, or invented garment details.",
-    "brand_context": "Love Hurts is controlled romantic urban cinema: defiance inside fractured civic architecture, red emergency light, enchanted drama, customer dignity, and exact luxury streetwear product clarity.",
-    "product_context": "Preserve the exact LH-003 four-view construction without mirroring. The shorts use white perforated mesh with an all-over orange-red rose-bouquet-on-cloud field, a black ribbed waistband, and angular black leg binding traced by red and white stripes. Pocket topology is invariant: exactly four zippered pockets total, comprising two side hand pockets and two rear pockets; every pocket must visibly retain its zipper closure. The wearer-left front/side carries the large red Love Hurts script and a black-mesh inset with the smaller Love Hurts rose/heart emblem. The wearer-right black-mesh inset carries the embroidered red rose bouquet with green stems and a white-and-blue cloud. The back has two black-trimmed zippered rear pockets plus a large red-and-black wearer-left Love Hurts treatment. Do not render open welts, zipperless pockets, cargo pockets, patch pockets, or any extra pocket. The collection-world reference supplies architecture and lighting only; its word sculpture and star/heart monument are forbidden. Use no customer identity until founder-approved on-model authority and a protected garment matte are bound.",
-    "prompt_assertions": {
-      "required_phrases": [
-        "LH-003",
-        "Fractured Chamber",
-        "enchanted rose",
-        "rose-aisle monument hero",
-        "four zippered pockets",
-        "two side and two back"
+  "native_scene_workflow": {
+    "mode": "environment_rebuild_around_source",
+    "foreground": "Founder-approved front-facing LH-003 VTO candidate, protected as RGB plus BiRefNet alpha; rear pockets remain source-authority-only and not rendered-visible.",
+    "segmentation": {
+      "provider": "local_birefnet",
+      "workflow": "Comfy/workflows/lh-commerce-2-birefnet-segmentation-a1.api.json",
+      "workflow_sha256": "e156b611b8026b6a04e5aa40aa5120557185c53e2e97ca8e18cdf3d236b3b394",
+      "model": "birefnet.safetensors",
+      "model_sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154",
+      "coverage_authority": {
+        "path": "Comfy/scene-contracts/lh-commerce-2-foreground-coverage-authority.json",
+        "sha256": "7f466fe79f7f0d1e73cc92716833af4c8bd44541352fd7e67fd38e3e3d063961"
+      },
+      "rgb_rule": "Alpha-only segmentation; accepted foreground interior RGB must remain byte-identical.",
+      "verification_schema": "skyyrose.protected-rgb-verification/1",
+      "verification_required_before_composite": true
+    },
+    "background": {
+      "provider": "runway_gen4_via_comfy_partner_node",
+      "workflow": "Comfy/workflows/lh-commerce-2-runway-environment-a1.api.json",
+      "workflow_sha256": "bf918683bce4da5d357310d1f4dd5a4758e0833fa0063e9f2c9c3fbf18e38bb9",
+      "approval_contract": "Comfy/scene-contracts/lh-commerce-2-runway-environment-a1.json",
+      "approval_contract_sha256": "8de885776b6658e02c55163d5d0cde03e2d180a296d0d1db49c8aa678fb5ac0f",
+      "ratio": "1920:1080",
+      "count": 1,
+      "prompt": "Wide cinematic Fractured Chamber architecture with a deep ruined gothic cathedral volume, radial tracery window high in the rear wall, towering black stone arches, aged iron, restrained deep-red drape accents, cool moonlit volumetric shafts, low warm practical spill reserved for the right-side protected-object zone, and a cracked wet obsidian floor with physically plausible reflections. Preserve an open left-center customer zone, an open right monument zone, an unobstructed central depth corridor, and grounded floor contact space. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls."
+    },
+    "composite": {
+      "master_width": 2048,
+      "master_height": 1152,
+      "workflow_builder": "Comfy/scripts/native_scene_workflows.py",
+      "workflow_builder_sha256": "8df6e3dd07c49fa0f35b2a985abf284d0deb06ef021af7bd7f52b782f8ea1e3f",
+      "protected_objects": ["approved_lh003_customer", "enchanted_rose_dome"],
+      "operations": [
+        "placement and scaling",
+        "mask-derived contact shadows",
+        "mask-derived damp-floor reflections",
+        "occlusion and atmospheric depth behind protected subjects",
+        "edge-only spill treatment"
       ],
-      "forbidden_phrases": ["front graphic on the back", "generic red shorts"]
+      "protected_rgb_rule": "No global foreground regeneration. Any edge or light-mask operation requires before/after hashes and pixel-diff statistics, with zero changes in identity and LH-003 artwork, zipper, pocket, and waistband regions."
     }
   },
   "prompt_adherence": {
@@ -221,17 +243,19 @@
         "protected_enchanted_rose"
       ],
       "required_prompt_claims": [
-        "customer-and-product hierarchy",
-        "rose-aisle monument hero",
-        "four zippered pockets",
-        "two side and two back",
-        "single allowed monument"
+        "environment only",
+        "open left-center customer zone",
+        "open right monument zone",
+        "no people",
+        "no products",
+        "no sculptures",
+        "no monuments"
       ]
     },
     "post_capture": {
       "minimum_total_score": 90,
       "dimensions": [
-        { "id": "lh003_four_view_product_fidelity", "weight": 40 },
+        { "id": "lh003_front_candidate_product_fidelity", "weight": 40 },
         { "id": "customer_product_focal_hierarchy", "weight": 20 },
         { "id": "love_hurts_rose_aisle_world_match", "weight": 15 },
         { "id": "single_protected_rose_monument", "weight": 10 },
@@ -239,6 +263,7 @@
       ]
     },
     "hard_fail_invariants": [
+      "exactly four zippered pockets: two side and two back; zipperless pockets are forbidden",
       "pocket count, pocket location, zipper closure, directional artwork, or garment construction drift",
       "unapproved wearer identity or customer/product hierarchy below the first two focal levels",
       "copied Love Hurts word monument, copied star/heart monument, or any monument beyond the protected rose dome and plinth",
@@ -248,17 +273,11 @@
     "disposition_on_failure": "QUARANTINE_NO_AUTOMATIC_RETRY"
   },
   "provider_capability": {
-    "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
+    "fashn_role": "FRONT_FACING_VTO_CANDIDATE_ONLY",
+    "runway_role": "PRODUCT_FREE_ENVIRONMENT_CANDIDATE_ONLY",
+    "comfy_role": "HASH_BOUND_LOCAL_SEGMENTATION_AND_COMPOSITION",
     "exact_product_guarantee": false,
-    "adapter": "higgsfield_product_photoshoot",
-    "model_id": "gpt_image_2",
-    "operation": "scene_generation",
-    "registry_path": "Comfy/scene-contracts/higgsfield-product-photoshoot-model-registry-20260902.json",
-    "registry_sha256": "962bb756d42173a75d1f01aa068fb1ec852b747684969b7755295be2a30e5913",
-    "runtime_receipt": "Comfy/receipts/br-commerce-2-higgsfield-runtime-capability-20260902T123106Z.json",
-    "runtime_receipt_sha256": "93445948e0077b5e877213e098e07a0eb8bdd0450cf5725ac16d7c70b7346a24",
-    "estimated_credits": 8.5,
-    "rule": "Do not enhance or generate the final scene until approved wearer authority and a protected LH-003 matte are bound; provider success is never product approval, native-integration approval, or promotion."
+    "rule": "FASHN may create only the reviewed front-facing wearer candidate; Runway may create only the empty environment; Comfy preserves and integrates approved pixels. No provider success implies product approval, native-integration approval, promotion, wiring, or deployment."
   },
   "upstream_model_casting": {
     "task_id": "LH-003-MODEL-CASTING-20260902-A1",
@@ -292,40 +311,69 @@
     "eligible_as_scene_input": false,
     "automatic_retry_allowed": false
   },
+  "upstream_vto": {
+    "task_id": "LH-003-VTO-PILOT-INTEGRATION-20260902",
+    "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
+    "contract": "Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json",
+    "provider": "fashn",
+    "model_id": "tryon-max",
+    "model_lifecycle": "preview",
+    "status": "BLOCKED_PENDING_APPROVED_FULL_BODY_MODEL",
+    "role": "Create one exact on-model LH-003 candidate before environment generation; this route never owns product truth or scene promotion.",
+    "automatic_retry_allowed": false,
+    "candidate_only": true,
+    "scene_input_allowed_before_independent_review": false
+  },
   "comfy": {
     "routing": "local",
-    "server": "127.0.0.1:8188",
-    "role": "POST_CAPTURE_PROTECTED_CORRECTION_ONLY",
-    "workflow": "SELECT_AFTER_CANDIDATE_HASH_AND_DEFECT_CLASSIFICATION",
+    "server": "http://127.0.0.1:8189",
+    "role": "PROTECTED_SEGMENTATION_AND_NATIVE_COMPOSITION",
+    "runtime_adapter": "skyyrose/integrations/comfy_client.py",
     "allowed_operations": [
-      "background-only chamber atmosphere correction",
-      "mask-bounded relighting without garment redraw",
+      "BiRefNet alpha and edge-confidence extraction",
+      "product-free Runway background submission and retrieval",
       "contact shadow and damp-floor reflection integration",
       "edge-spill and grain matching",
-      "protected rose-dome placement",
-      "mask-bounded LH-003 correction from approved authority"
+      "protected rose-dome placement"
     ],
     "forbidden_operations": [
       "full-frame product redraw",
       "prompt-only product correction",
+      "Runway input containing the customer, garment, or protected sculpture",
       "unapproved customer invention",
       "rejected candidate as a new generation input",
       "automatic paid retry"
     ],
     "requires_candidate_hash": true,
     "requires_mask_for_product_pixels": true,
-    "requires_independent_review": true
+    "requires_independent_review": true,
+    "required_nodes": [
+      "RunwayTextToImageNode",
+      "LoadBackgroundRemovalModel",
+      "RemoveBackground",
+      "LoadImage",
+      "ImageScale",
+      "ResizeImageMaskNode",
+      "ImageCompositeMasked",
+      "JoinImageWithAlpha",
+      "MaskToImage",
+      "ImageToMask",
+      "GrowMask",
+      "ImageBlur",
+      "EmptyImage",
+      "SaveImage"
+    ]
   },
   "credit_control": {
-    "mode": "ONE_CANDIDATE_ONE_PAID_ATTEMPT",
+    "mode": "ONE_SEPARATELY_APPROVED_RUNWAY_BACKGROUND_CANDIDATE",
     "max_paid_generations": 1,
     "paid_generations_recorded": 0,
     "automatic_paid_retries": false,
-    "planned_candidate_id": "LH-COMMERCE-2-HF-PILOT-A1",
-    "max_estimated_credits": 8.5,
+    "planned_candidate_id": "LH-COMMERCE-2-RUNWAY-BG-A1",
+    "max_live_price_usd": 0.11,
     "require_current_observe_pass": true,
     "require_prompt_review_pass": true,
-    "prompt_sha256": "c7542b841a53a4c04c7e0b1bfee069b3d6abee90e7c95811d8c969953d8ed034",
+    "prompt_sha256": "e75003758f844e3578a07ab063abe8cab809b7e479b5b7fde212fb65b5a28aee",
     "prompt_review_receipt": null,
     "require_candidate_bound_approval": true,
     "approval_receipt": null,
@@ -338,24 +386,26 @@
       "confirm approved on-model target and garment matte exist"
     ],
     "orient": [
-      "use Higgsfield hero_banner only after cast authority is approved",
-      "treat outputs as candidate-only"
+      "select FASHN only for missing wearer authority, Runway only for the empty environment, and Comfy for protected local integration",
+      "treat every provider output as candidate-only"
     ],
     "decide": [
       "hard-fail wrong front/back graphic placement, any pocket-count or zipper-closure drift, generic rose, missing product, or unapproved identity"
     ],
     "act": [
-      "stage in Comfy",
-      "apply only mask-bounded corrections",
+      "segment the accepted VTO candidate with BiRefNet without changing interior RGB",
+      "generate one separately approved product-free Runway environment through Comfy",
+      "composite protected customer/product and rose pixels locally",
       "quarantine failures",
       "require independent and founder review"
     ]
   },
   "execute_blockers": [
     "LH-MODEL-01 identity is founder-approved, but LH-003-MODEL-CASTING-20260902-A1 remains rejected because directional artwork changed anatomical sides between front and rear views",
-    "approved exact-LH-003 on-model product target is still missing; identity approval alone does not authorize the rejected garment board",
-    "four source-faithful product-only mattes now exist, but an approved exact on-model LH-003 garment matte is still missing",
-    "candidate-bound preflight and paid Higgsfield generation approval not recorded"
+    "founder-approved full-body LH-MODEL-01 plate is not yet generated and bound",
+    "front-facing exact-LH-003 VTO candidate has not passed independent and founder review",
+    "candidate-bound Runway background approval is not recorded",
+    "no environment, segmentation, or final-scene execution may begin before the protected foreground hash is approved"
   ],
   "promotion_gate": "FOUNDER_APPROVED_VISUAL"
 }

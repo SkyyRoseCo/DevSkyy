@@ -3,8 +3,6 @@ Collection planning tools for SkyyRose Elite Studio.
 
 CollectionPlanner builds structured collection plans from brief inputs,
 using fashion intelligence and product catalog data.
-
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations
@@ -30,6 +28,17 @@ class CollectionPlan:
     launch_sequence: tuple[str, ...]  # ordered product launch order
     editorial_direction: str
     target_skus_count: int
+
+
+# Per-collection planning themes. The creative hub falls back to these when a
+# collection-plan request omits `theme`; no brand tagline is authorised
+# (founder 2026-10-06), so the fallback is never a slogan.
+DEFAULT_COLLECTION_THEMES: dict[str, str] = {
+    "black-rose": "Gothic luxury meets Oakland concrete. Darkness as elevation.",
+    "love-hurts": "Raw emotion as luxury. Vulnerability is the ultimate strength.",
+    "signature": "West Coast prestige. Daily elevation through refined essentials.",
+    "kids-capsule": "Little ones deserve luxury too. Next-gen SkyyRose.",
+}
 
 
 class CollectionPlanner:
@@ -178,12 +187,7 @@ class CollectionPlanner:
 
     def plan_all_collections(self, season: str = "FW26") -> list[CollectionPlan]:
         """Generate collection plans for all four SkyyRose collections."""
-        themes = {
-            "black-rose": "Gothic luxury meets Oakland concrete. Darkness as elevation.",
-            "love-hurts": "Raw emotion as luxury. Vulnerability is the ultimate strength.",
-            "signature": "West Coast prestige. Daily elevation through refined essentials.",
-            "kids-capsule": "Little ones deserve luxury too. Next-gen SkyyRose.",
-        }
         return [
-            self.plan_collection(collection, season, theme) for collection, theme in themes.items()
+            self.plan_collection(collection, season, theme)
+            for collection, theme in DEFAULT_COLLECTION_THEMES.items()
         ]

@@ -1,0 +1,27 @@
+{
+  "schema": "skyyrose.collection-film-authorization.v1",
+  "authority": "FOUNDER_CONFIRMED",
+  "decision_text": "wire them in. fix the imagery in production",
+  "target": "https://skyyrose.co",
+  "collection": "signature",
+  "provider_task": "f1ea652f-1341-4a49-ab54-00fa028509a1",
+  "source_master_sha256": "18ff879823aef1717717eba45712bdcefa3114ca73bd532e73535daed3304d25",
+  "poster_source_sha256": "4b25d41529eafa9fd673a9dbbf500ded60cc619bd677173e934431f1669edf70",
+  "assets": {
+    "assets/video/collection-heroes/approved/signature/cinema-20261008/hero.webm": {
+      "sha256": "9702e862b5cfe7cc6f8ff1c701d0e71ad51b433c70c3b69c6fbd13286d9d25ca",
+      "role": "collection_hero_video",
+      "source_sha256": "18ff879823aef1717717eba45712bdcefa3114ca73bd532e73535daed3304d25"
+    },
+    "assets/video/collection-heroes/approved/signature/cinema-20261008/poster.webp": {
+      "sha256": "9b16a49cf34cfd9768aa558b4ab310b25bc24e9e769eadaa8cc7a99887e6b492",
+      "role": "collection_hero_poster",
+      "source_sha256": "4b25d41529eafa9fd673a9dbbf500ded60cc619bd677173e934431f1669edf70"
+    },
+    "assets/video/collection-heroes/approved/signature/cinema-20261008/hero.mp4": {
+      "sha256": "a4c8a001185e2ea2c2d4407deca05cb72a3f0f05c28f072c5a898c2e60e0c132",
+      "role": "collection_hero_video",
+      "source_sha256": "18ff879823aef1717717eba45712bdcefa3114ca73bd532e73535daed3304d25"
+    }
+  }
+}

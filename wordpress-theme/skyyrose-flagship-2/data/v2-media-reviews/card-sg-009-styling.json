@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-targeted-lowerbody-styling-card-sg-009",
+  "asset_id": "card-sg-009",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "43f0175692b4a8d123e2aed28a6cfbcc6902521e86fb0ac4cd2cc64a9e99e005",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "sg-009"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-lowerbody-styling-repairs/card-sg-009-visual-review.json",
+    "sha256": "a45e2b9b1e5e7d9aa240710445496c7847a488d61748e42b8a1e6f61f1619449"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-009-styling-card-desktop.png",
+      "sha256": "980bb8d55f50d07a370bdd6b6b54527b78427e237611a9af45e2d7e490a44705"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-009-styling-card-mobile.png",
+      "sha256": "4f7f44697f51e0859537e9687d5eccbe131fb699b5432917614f6df0d164e970"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-009-styling-pdp-desktop.png",
+      "sha256": "bcc01a18b81aeefd9dccd472201e8d46430feb767818550778266a86dc3351f5"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-009-styling-pdp-mobile.png",
+      "sha256": "940492875b3746b2f7822af0ad5d3f9843353b4c5192420d388251b6c157c3a0"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native photograph and actual offline card/current product-page.css PDP media-only contexts at1440 desktop/390 mobile. Full commerce, theme interaction, motion, 768 layout and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: The smooth black zip-front jacket preserves its cream sherpa interior/stand collar, complete hem/sleeves/cuffs, visible wrists and pocket openings with both hands out. The wearer-left red three-rose/green stem/pale cloud cluster remains correctly integrated at physical chest scale. Natural hillside light, cloth folds and unmarked supporting styling belong to one outdoor fashion event.",
+    "pdp_on_model_front": "PASS: The same whole native master is contained without merchandise clipping in the actual desktop/mobile media-only context. The smooth black zip-front jacket preserves its cream sherpa interior/stand collar, complete hem/sleeves/cuffs, visible wrists and pocket openings with both hands out. The wearer-left red three-rose/green stem/pale cloud cluster remains correctly integrated at physical chest scale. Natural hillside light, cloth folds and unmarked supporting styling belong to one outdoor fashion event."
+  }
+}

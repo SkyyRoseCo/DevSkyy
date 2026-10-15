@@ -1,0 +1,54 @@
+{
+  "schema": "skyyrose.train-commercial.evidence.v1",
+  "status": "SOURCE_AND_PROMPT_REVIEW_COMPLETE_RENDERED_VALIDATION_PENDING",
+  "scope": "30-second wordless train commercial with real source models, archived matching mascot looks and source-derived collection hero elements",
+  "observed": [
+    "5 archived mascot looks visually inspected in Downloads/archive",
+    "4 selected current source model fronts verified by Fashion Theme Team",
+    "Kids-002 exact product-card-alt source located in main checkout, inspected and matched to hub verified entry",
+    "4 hero images visually inspected by lead",
+    "20 copied reference files hashed byte-for-byte against originals",
+    "Independent commercial review identified motion/casting conflicts; corrections integrated into contract, prompts and preview"
+  ],
+  "source_caveats": [
+    "Archive garment detail fidelity is imperfect; five normalization prompts prepared",
+    "Kids-002 primary remains demoted ghost; selected alternative has verified product-card-alt scope",
+    "Hero-derived carriage sets are new proposals, not existing canonical interiors",
+    "Canon Kids hero contains LH-outfit mascot; environment instructions explicitly exclude its person/clothing"
+  ],
+  "production": {
+    "duration_seconds": 30,
+    "shots": 9,
+    "mascot_pairs": 5,
+    "collections": 4,
+    "new_jobs": 0,
+    "new_spend": 0,
+    "existing_paid_authorization": "Recorded in conversation",
+    "final_creative_approval": "PENDING",
+    "campaign_activation": false
+  },
+  "visual_validation": {
+    "reference_images": "INSPECTED",
+    "new_commercial_frames": "NOT_GENERATED",
+    "local_html_browser": "BLOCKED_BY_BROWSER_URL_POLICY",
+    "policy_response": "No alternative browser, proxy, server or indirect rendering workaround attempted."
+  },
+  "reviewed_files": [
+    "contract.json",
+    "prompts.md",
+    "source-manifest.json",
+    "preview.html"
+  ],
+  "memory_use": "Registry used only to locate source-authority conventions; current SOT.md and actual files verified.",
+  "deterministic_validation": {
+    "result": "PASS",
+    "checks": [
+      "30-second contiguous timeline",
+      "9 shots and5pairs",
+      "20 source-copy SHA256 matches",
+      "All local HTML src/href targets exist",
+      "JSON parse",
+      "HTML/readable-prompt/contract shot parity"
+    ]
+  }
+}

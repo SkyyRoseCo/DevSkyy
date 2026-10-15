@@ -25,7 +25,6 @@ from __future__ import annotations
 
 import argparse
 import asyncio
-import csv
 import os
 import sys
 from pathlib import Path
@@ -36,14 +35,17 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 # fails (CLI run from an arbitrary cwd) so merely importing this module (tests)
 # leaves interpreter-wide import resolution untouched.
 try:
+    from skyyrose.core import paths  # noqa: E402
     from skyyrose.core.sot_images import resolve_image  # noqa: E402
 except ImportError:  # pragma: no cover — CLI invocation outside the repo root
     sys.path.insert(0, str(REPO_ROOT))
+    from skyyrose.core import paths  # noqa: E402
     from skyyrose.core.sot_images import resolve_image  # noqa: E402
 
-CATALOG_CSV = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
-THEME_ROOT = REPO_ROOT / "wordpress-theme/skyyrose-flagship"
-DOSSIER_DIR = THEME_ROOT / "data/dossiers"
+THEME_ROOT = paths.THEME_ROOT
+DOSSIER_DIR = paths.DOSSIERS_DIR
+# Products image folder relative to the theme, so tests that move THEME_ROOT follow.
+_PRODUCTS_SUBDIR = paths.WP_PRODUCTS_DIR.relative_to(paths.THEME_ROOT)
 OUTPUT_DIR = REPO_ROOT / "renders/output/tripo"
 CREDITS_PER_SKU = 10  # flux.1_kontext_pro + generate_multiview_image template
 
@@ -65,14 +67,16 @@ CREDITS_PER_SKU = 10  # flux.1_kontext_pro + generate_multiview_image template
 
 
 def load_catalog() -> list[dict[str, str]]:
-    with CATALOG_CSV.open(newline="", encoding="utf-8") as fh:
-        return list(csv.DictReader(fh))
+    """Catalog rows from get_product, in catalog (registry) order."""
+    from skyyrose.core.product import get_product, load_registry
+
+    return [dict(get_product(sku)["catalog"]) for sku in load_registry()["products"]]
 
 
 def resolve_source_image(row: dict[str, str]) -> Path:
     override = row.get("render_source_override", "").strip()
     if override and "/" not in override:
-        return THEME_ROOT / "assets/images/products" / override
+        return THEME_ROOT / _PRODUCTS_SUBDIR / override
     if override:
         return THEME_ROOT / override
     sku = row.get("sku", "")
@@ -80,7 +84,7 @@ def resolve_source_image(row: dict[str, str]) -> Path:
     if rel is None:
         raise SystemExit(
             f"SKU {sku!r} has no SOT packshot image — regenerate sot.json "
-            "(data/build-collection-sot.py) or set render_source_override in the catalog CSV."
+            "(data/build-collection-sot.py) or set render_source_override in the product registry."
         )
     return THEME_ROOT / rel
 

@@ -1,0 +1,29 @@
+{
+  "authority": "FOUNDER_CONFIRMED",
+  "authorization": {
+    "path": "data/v2-media-reviews/usage-authority-20261006.json",
+    "sha256": "fdaa18418417568dda82ce555855b9ab7f07fe3f039a1453bb132ea6bffdd462"
+  },
+  "collections": [
+    "black-rose"
+  ],
+  "context_review": "Carried separately in the task staging adoption; no new pixel-fidelity or generation claim.",
+  "evidence_class": "UNCHANGED_ACCEPTED_SOURCE_PLUS_CURRENT_OWNER_USAGE_AUTHORITY",
+  "roles": [
+    "collection_hero"
+  ],
+  "schema": "skyyrose.media-usage-adoption.v1",
+  "skus": [
+    "br-001"
+  ],
+  "source": {
+    "path": "assets/v2-original/products/br-001.png",
+    "review": {
+      "path": "data/v2-media-reviews/card-br-001-20261003.json",
+      "sha256": "cfdd6a87be8b0aa6b4b3b9048940ad59260ff078dfcfabe61bb9930f47c7f3e9"
+    },
+    "sha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60"
+  },
+  "status": "AUTHORIZED_REUSE",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+}

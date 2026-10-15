@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "version": "1.0.0",
-  "brand": {"id":"skyyrose","name":"SkyyRose","tagline":"Luxury Grows from Concrete."},
+  "brand": {"id":"skyyrose","name":"SkyyRose"},
   "visual_plan": "../v2/v2-page-plan.json",
   "required_global_states": ["loading", "empty", "error", "success", "unavailable", "long-content", "missing-optional-media", "keyboard", "reduced-motion", "mobile", "tablet", "desktop"],
   "pages": [

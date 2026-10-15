@@ -31,8 +31,12 @@ Allowed `logo_reference` values (one per dossier — the canonical brand logo
 used on this product):
   - data/brand-logos/three-rose-cluster.md
   - data/brand-logos/love-hurts-logo.md       (TBD)
-  - data/brand-logos/signature-logo.md        (TBD)
+  - data/brand-logos/rose-gold-rose.md       (Signature first rose; only when on the product)
   - data/brand-logos/kids-capsule-logo.md     (TBD)
+
+Product logo references must identify the marks actually used on that SKU.
+Register the logo identity and its placement from product evidence; collection
+membership alone never establishes a garment logo.
 
 Allowed `technique` values (controlled vocabulary — case-sensitive):
   - embossed         (raised relief into fabric, tonal)

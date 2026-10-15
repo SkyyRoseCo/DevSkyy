@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -29,6 +30,12 @@ def sha256_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
+def sha256_json_file(path: Path) -> str:
+    """Hash parsed JSON canonically so formatting changes do not invalidate execution."""
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return sha256_text(json.dumps(payload, sort_keys=True, separators=(",", ":")))
+
+
 def execution_fingerprint(manifest: dict[str, Any]) -> str:
     """Hash the executable contract without the receipt path that authorizes it."""
     normalized = json.loads(json.dumps(manifest))
@@ -45,7 +52,7 @@ def load_manifest(path: Path) -> dict[str, Any]:
     data = json.loads(path.read_text(encoding="utf-8"))
     if data.get("schema") != "skyyrose.scene-ooda/1":
         raise ValueError("unsupported or missing scene OODA schema")
-    for key in ("scene_id", "source_bindings", "higgsfield", "execute_blockers"):
+    for key in ("scene_id", "source_bindings", "provider_capability", "execute_blockers"):
         if key not in data:
             raise ValueError(f"manifest missing required key: {key}")
     return data
@@ -64,6 +71,80 @@ def verify_file(path: Path, expected_sha256: str | None) -> dict[str, Any]:
     else:
         result["status"] = "PRESENT_UNHASHED"
     return result
+
+
+def verify_native_workflow_dependencies(manifest: dict[str, Any]) -> list[dict[str, Any]]:
+    """Verify every executable native-scene dependency by immutable content hash."""
+    native = manifest.get("native_scene_workflow")
+    if not isinstance(native, dict):
+        return []
+
+    dependency_fields = (
+        ("segmentation", "workflow", "workflow_sha256"),
+        ("segmentation", "coverage_authority", "sha256"),
+        ("background", "workflow", "workflow_sha256"),
+        ("background", "approval_contract", "approval_contract_sha256"),
+        ("composite", "workflow_builder", "workflow_builder_sha256"),
+    )
+    results: list[dict[str, Any]] = []
+    for section_name, path_key, hash_key in dependency_fields:
+        section = native.get(section_name)
+        binding = section.get(path_key) if isinstance(section, dict) else None
+        if isinstance(binding, dict):
+            path_value = binding.get("path")
+            expected_sha256 = binding.get(hash_key)
+        else:
+            path_value = binding
+            expected_sha256 = section.get(hash_key) if isinstance(section, dict) else None
+        if not isinstance(path_value, str) or not path_value.strip():
+            results.append(
+                {
+                    "section": section_name,
+                    "field": path_key,
+                    "status": "MISSING_DEPENDENCY_PATH",
+                }
+            )
+            continue
+        if not isinstance(expected_sha256, str) or len(expected_sha256) != 64:
+            results.append(
+                {
+                    "section": section_name,
+                    "field": hash_key,
+                    "path": str(resolve_path(path_value)),
+                    "status": "MISSING_DEPENDENCY_HASH",
+                }
+            )
+            continue
+        dependency_path = resolve_path(path_value)
+        if path_key == "workflow" and dependency_path.is_file():
+            actual_sha256 = sha256_json_file(dependency_path)
+            result = {
+                "path": str(dependency_path),
+                "exists": True,
+                "actual_sha256": actual_sha256,
+                "expected_sha256": expected_sha256,
+                "hash_mode": "canonical_json",
+                "status": "PASS" if actual_sha256 == expected_sha256 else "HASH_MISMATCH",
+            }
+        else:
+            result = verify_file(dependency_path, expected_sha256)
+        result["section"] = section_name
+        result["field"] = path_key
+        results.append(result)
+    segmentation = native.get("segmentation")
+    rgb_verification_ok = (
+        isinstance(segmentation, dict)
+        and segmentation.get("verification_schema") == "skyyrose.protected-rgb-verification/1"
+        and segmentation.get("verification_required_before_composite") is True
+    )
+    results.append(
+        {
+            "section": "segmentation",
+            "field": "protected_rgb_verification",
+            "status": "PASS" if rgb_verification_ok else "MISSING_PROTECTED_RGB_VERIFICATION",
+        }
+    )
+    return results
 
 
 def verify_team_contract(manifest: dict[str, Any]) -> dict[str, Any]:
@@ -229,11 +310,57 @@ def verify_prompt_adherence(manifest: dict[str, Any]) -> dict[str, Any]:
         ):
             failures.append("required_source_roles must contain non-empty strings")
         else:
+            allowed_provider_uses = {
+                "SOURCE_AUTHORITY_ONLY",
+                "FASHN_PRIMARY_PRODUCT_INPUT",
+                "FASHN_PRIMARY_PRODUCT_INPUT_AFTER_SEPARATE_APPROVAL",
+                "RUNWAY_ENVIRONMENT_REFERENCE_ONLY",
+                "COMFY_PROTECTED_COMPOSITE_ONLY",
+                "LOCAL_CORRECTION_COMPOSITION_AUTHORITY_ONLY",
+                "LOCAL_CORRECTION_ENVIRONMENT_AUTHORITY_ONLY",
+                "COMFY_PROTECTED_CORRECTION_INPUT",
+            }
+            valid_provider_roles: list[str] = []
+            for binding in manifest.get("source_bindings", []):
+                if not isinstance(binding, dict) or "provider_use" not in binding:
+                    continue
+                role = binding.get("role")
+                provider_use = binding.get("provider_use")
+                if not isinstance(role, str) or not role.strip():
+                    failures.append("provider-routed source binding requires a non-empty role")
+                    continue
+                if not isinstance(provider_use, str) or provider_use not in allowed_provider_uses:
+                    failures.append(f"invalid provider_use for source role: {role}")
+                    continue
+                role_tokens = set(filter(None, re.split(r"[^a-z0-9]+", role.casefold())))
+                if provider_use == "RUNWAY_ENVIRONMENT_REFERENCE_ONLY":
+                    forbidden_runway_tokens = {
+                        "customer",
+                        "product",
+                        "garment",
+                        "identity",
+                        "sculpture",
+                        "monument",
+                        "cast",
+                        "look",
+                    }
+                    if not role_tokens.intersection(
+                        {"world", "environment"}
+                    ) or role_tokens.intersection(forbidden_runway_tokens):
+                        failures.append(
+                            f"Runway may receive only a world/environment source: {role}"
+                        )
+                        continue
+                if provider_use.startswith("FASHN_") and "product" not in role_tokens:
+                    failures.append(f"FASHN may receive only an explicit product source: {role}")
+                    continue
+                valid_provider_roles.append(role)
             routed_roles = [
                 binding.get("role")
                 for binding in manifest.get("source_bindings", [])
                 if isinstance(binding, dict) and binding.get("send_to_higgsfield") is True
             ]
+            routed_roles.extend(valid_provider_roles)
             missing_roles = sorted(set(required_roles) - set(routed_roles))
             if missing_roles:
                 failures.append(f"missing routed source roles: {', '.join(missing_roles)}")
@@ -254,10 +381,21 @@ def verify_prompt_adherence(manifest: dict[str, Any]) -> dict[str, Any]:
         ):
             failures.append("required_prompt_claims must contain non-empty strings")
         else:
-            prompt_packet = " ".join(
-                str(manifest.get("higgsfield", {}).get(key, ""))
-                for key in ("prompt", "brand_context", "product_context")
-            ).casefold()
+            if isinstance(manifest.get("native_scene_workflow"), dict):
+                native = manifest["native_scene_workflow"]
+                background = native.get("background", {})
+                prompt_packet = " ".join(
+                    str(value)
+                    for value in (
+                        background.get("prompt", "") if isinstance(background, dict) else "",
+                        native.get("foreground", ""),
+                    )
+                ).casefold()
+            else:
+                prompt_packet = " ".join(
+                    str(manifest.get("higgsfield", {}).get(key, ""))
+                    for key in ("prompt", "brand_context", "product_context")
+                ).casefold()
             missing_claims = [
                 claim for claim in required_claims if claim.casefold() not in prompt_packet
             ]
@@ -525,10 +663,13 @@ def verify_comfy_contract(manifest: dict[str, Any]) -> dict[str, Any]:
     failures: list[str] = []
     if not isinstance(comfy, dict):
         return {"status": "MISSING_COMFY_CONTRACT", "failures": ["comfy contract must not be null"]}
-    if comfy.get("routing") != "local" or comfy.get("server") != "127.0.0.1:8188":
-        failures.append("Comfy must route only to local 127.0.0.1:8188")
-    if comfy.get("role") != "POST_CAPTURE_PROTECTED_CORRECTION_ONLY":
-        failures.append("Comfy role must be POST_CAPTURE_PROTECTED_CORRECTION_ONLY")
+    if comfy.get("routing") != "local" or comfy.get("server") != "http://127.0.0.1:8189":
+        failures.append("Comfy must route only to the observed local Desktop API at 8189")
+    if comfy.get("role") not in {
+        "POST_CAPTURE_PROTECTED_CORRECTION_ONLY",
+        "PROTECTED_SEGMENTATION_AND_NATIVE_COMPOSITION",
+    }:
+        failures.append("Comfy role must remain protected-correction or native-composition only")
     for key in ("allowed_operations", "forbidden_operations"):
         if not isinstance(comfy.get(key), list) or not comfy[key]:
             failures.append(f"{key} must be a non-empty list")
@@ -552,6 +693,39 @@ def verify_provider_capability(manifest: dict[str, Any]) -> dict[str, Any]:
         return {
             "status": "MISSING_PROVIDER_CAPABILITY",
             "failures": ["missing provider_capability"],
+        }
+    route_contract = manifest.get("route_contract")
+    native_workflow = manifest.get("native_scene_workflow")
+    if isinstance(route_contract, dict) and capability.get("higgsfield_role") != (
+        "REFERENCE_GENERATION_CANDIDATE_ONLY"
+    ):
+        route_mode = route_contract.get("mode")
+        if not isinstance(route_mode, str) or not route_mode.strip() or not capability.get("rule"):
+            return {
+                "status": "INVALID_PROVIDER_CAPABILITY",
+                "failures": ["routed provider capability requires a mode and fail-closed rule"],
+            }
+        return {
+            "status": "PASS",
+            "failures": [],
+            "model": None,
+            "operation": route_mode,
+            "provider_route": "EVIDENCE_SELECTED",
+        }
+    if isinstance(native_workflow, dict):
+        required_roles = ("fashn_role", "runway_role", "comfy_role")
+        missing_roles = [role for role in required_roles if not capability.get(role)]
+        if missing_roles or native_workflow.get("mode") != "environment_rebuild_around_source":
+            return {
+                "status": "INVALID_PROVIDER_CAPABILITY",
+                "failures": ["native provider route is incomplete: " + ", ".join(missing_roles)],
+            }
+        return {
+            "status": "PASS",
+            "failures": [],
+            "model": None,
+            "operation": native_workflow["mode"],
+            "provider_route": "FASHN_RUNWAY_COMFY_PROTECTED",
         }
     required = (
         "registry_path",
@@ -640,7 +814,10 @@ def verify_authorization_receipt(
     if receipt.get("action") != expected_action:
         failures.append("receipt action does not match required action")
     payload = receipt.get("payload", {})
-    if expected_action == "higgsfield-enhance-review":
+    if expected_action in {
+        "higgsfield-enhance-review",
+        "runway-background-prompt-review",
+    }:
         if payload.get("inspection", {}).get("status") != "PASS":
             failures.append("enhanced prompt review did not pass")
         if payload.get("generation_submitted") is not False:
@@ -648,7 +825,10 @@ def verify_authorization_receipt(
         expected_prompt_sha256 = manifest.get("credit_control", {}).get("prompt_sha256")
         if expected_prompt_sha256 and payload.get("prompt_sha256") != expected_prompt_sha256:
             failures.append("prompt-review receipt is stale for the current prompt")
-    if expected_action == "paid-generation-approval":
+    if expected_action in {
+        "paid-generation-approval",
+        "runway-background-paid-approval",
+    }:
         if payload.get("allow_paid_attempts") != 1:
             failures.append("approval must authorize exactly one paid attempt")
         if payload.get("candidate_bound") is not True:
@@ -662,9 +842,11 @@ def verify_authorization_receipt(
             "planned_candidate_id"
         ):
             failures.append("approval planned candidate does not match the manifest")
-        if payload.get("maximum_estimated_credits") != manifest.get("credit_control", {}).get(
-            "max_estimated_credits"
-        ):
+        control = manifest.get("credit_control", {})
+        if control.get("mode") == "ONE_SEPARATELY_APPROVED_RUNWAY_BACKGROUND_CANDIDATE":
+            if payload.get("maximum_price_usd") != control.get("max_live_price_usd"):
+                failures.append("approval price ceiling does not match the manifest")
+        elif payload.get("maximum_estimated_credits") != control.get("max_estimated_credits"):
             failures.append("approval credit ceiling does not match the manifest")
         if payload.get("manifest_sha256") != execution_fingerprint(manifest):
             failures.append("approval is not bound to the current executable manifest")
@@ -686,8 +868,12 @@ def verify_credit_control(manifest: dict[str, Any]) -> dict[str, Any]:
             "paid_approval": {"status": "MISSING_RECEIPT"},
             "attempt_available": False,
         }
-    if control.get("mode") != "ONE_CANDIDATE_ONE_PAID_ATTEMPT":
-        failures.append("mode must be ONE_CANDIDATE_ONE_PAID_ATTEMPT")
+    mode = control.get("mode")
+    if mode not in {
+        "ONE_CANDIDATE_ONE_PAID_ATTEMPT",
+        "ONE_SEPARATELY_APPROVED_RUNWAY_BACKGROUND_CANDIDATE",
+    }:
+        failures.append("mode must be a supported one-candidate paid-attempt mode")
     if control.get("max_paid_generations") != 1:
         failures.append("max_paid_generations must equal 1")
     recorded = control.get("paid_generations_recorded")
@@ -700,13 +886,18 @@ def verify_credit_control(manifest: dict[str, Any]) -> dict[str, Any]:
         or not control["planned_candidate_id"].strip()
     ):
         failures.append("planned_candidate_id must be a non-empty string")
-    maximum_estimated_credits = control.get("max_estimated_credits")
+    ceiling_key = (
+        "max_live_price_usd"
+        if mode == "ONE_SEPARATELY_APPROVED_RUNWAY_BACKGROUND_CANDIDATE"
+        else "max_estimated_credits"
+    )
+    maximum_estimated_credits = control.get(ceiling_key)
     if (
         not isinstance(maximum_estimated_credits, (int, float))
         or isinstance(maximum_estimated_credits, bool)
         or maximum_estimated_credits <= 0
     ):
-        failures.append("max_estimated_credits must be a positive number")
+        failures.append(f"{ceiling_key} must be a positive number")
     provider_estimate = manifest.get("provider_capability", {}).get("estimated_credits")
     if (
         isinstance(maximum_estimated_credits, (int, float))
@@ -725,17 +916,28 @@ def verify_credit_control(manifest: dict[str, Any]) -> dict[str, Any]:
         failures.append("rejected_candidate_may_be_next_input must be false")
     if control.get("on_failure") != "OPEN_ISSUE_AND_STOP":
         failures.append("on_failure must be OPEN_ISSUE_AND_STOP")
-    if manifest.get("higgsfield", {}).get("count") != 1:
-        failures.append("Higgsfield count must equal 1")
-    current_prompt_sha256 = sha256_text(manifest.get("higgsfield", {}).get("prompt", ""))
+    if mode == "ONE_SEPARATELY_APPROVED_RUNWAY_BACKGROUND_CANDIDATE":
+        background = manifest.get("native_scene_workflow", {}).get("background", {})
+        if background.get("count") != 1:
+            failures.append("Runway background count must equal 1")
+        current_prompt = background.get("prompt", "")
+        prompt_review_action = "runway-background-prompt-review"
+        paid_approval_action = "runway-background-paid-approval"
+    else:
+        if manifest.get("higgsfield", {}).get("count") != 1:
+            failures.append("Higgsfield count must equal 1")
+        current_prompt = manifest.get("higgsfield", {}).get("prompt", "")
+        prompt_review_action = "higgsfield-enhance-review"
+        paid_approval_action = "paid-generation-approval"
+    current_prompt_sha256 = sha256_text(current_prompt)
     if control.get("prompt_sha256") != current_prompt_sha256:
         failures.append("prompt_sha256 does not match the current prompt")
 
     prompt_review = verify_authorization_receipt(
-        manifest, control.get("prompt_review_receipt"), "higgsfield-enhance-review"
+        manifest, control.get("prompt_review_receipt"), prompt_review_action
     )
     paid_approval = verify_authorization_receipt(
-        manifest, control.get("approval_receipt"), "paid-generation-approval"
+        manifest, control.get("approval_receipt"), paid_approval_action
     )
     return {
         "status": "PASS" if not failures else "INVALID_CREDIT_CONTROL",
@@ -764,6 +966,7 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
         verify_file(resolve_path(dependency["path"]), dependency.get("expected_sha256"))
         for dependency in manifest.get("authority_dependencies", [])
     ]
+    native_workflow_dependency_checks = verify_native_workflow_dependencies(manifest)
     forbidden_input_checks = [
         verify_file(resolve_path(binding["path"]), binding.get("sha256"))
         for binding in manifest.get("forbidden_inputs", [])
@@ -774,7 +977,7 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
     routed_paths = {
         str(resolve_path(binding["path"]))
         for binding in manifest["source_bindings"]
-        if binding.get("send_to_higgsfield")
+        if binding.get("send_to_higgsfield") or isinstance(binding.get("provider_use"), str)
     }
     forbidden_routing_clean = not forbidden_paths.intersection(routed_paths)
     team_contract_check = verify_team_contract(manifest)
@@ -785,15 +988,19 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
     provider_capability_check = verify_provider_capability(manifest)
     credit_control_check = verify_credit_control(manifest)
     source_ready = all(check["status"] == "PASS" for check in catalog_checks + source_checks)
-    dependencies_ready = all(check["status"] == "PASS" for check in dependency_checks)
+    dependencies_ready = all(
+        check["status"] == "PASS" for check in dependency_checks + native_workflow_dependency_checks
+    )
     configuration_ready = (
         source_ready
+        and dependencies_ready
         and forbidden_routing_clean
         and team_contract_check["status"] == "PASS"
         and creative_direction_check["status"] == "PASS"
         and optical_contract_check["status"] == "PASS"
         and prompt_adherence_check["status"] == "PASS"
         and comfy_contract_check["status"] == "PASS"
+        and provider_capability_check["status"] == "PASS"
         and credit_control_check["status"] == "PASS"
     )
     paid_authorized = (
@@ -809,6 +1016,7 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
         "catalog_checks": catalog_checks,
         "source_checks": source_checks,
         "dependency_checks": dependency_checks,
+        "native_workflow_dependency_checks": native_workflow_dependency_checks,
         "forbidden_input_checks": forbidden_input_checks,
         "forbidden_routing_clean": forbidden_routing_clean,
         "team_contract_check": team_contract_check,
@@ -834,6 +1042,10 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
 
 
 def higgsfield_command(manifest: dict[str, Any], enhance_only: bool) -> list[str]:
+    if manifest.get("provider_capability", {}).get("higgsfield_role") != (
+        "REFERENCE_GENERATION_CANDIDATE_ONLY"
+    ):
+        raise RuntimeError("this scene does not authorize a new Higgsfield generation route")
     config = manifest["higgsfield"]
     command = [
         "higgsfield",
@@ -924,12 +1136,24 @@ def require_cli(name: str) -> None:
 
 def action_validate(manifest: dict[str, Any]) -> int:
     report = observe(manifest)
-    report["higgsfield_command_preview"] = higgsfield_command(manifest, True)
+    if manifest.get("provider_capability", {}).get("higgsfield_role") == (
+        "REFERENCE_GENERATION_CANDIDATE_ONLY"
+    ):
+        report["higgsfield_command_preview"] = higgsfield_command(manifest, True)
+    else:
+        report["higgsfield_command_preview"] = None
+        report["selected_route"] = manifest.get("route_contract") or manifest.get(
+            "native_scene_workflow"
+        )
     print(json.dumps(report, indent=2))
     return 0 if report["configuration_ready"] else 2
 
 
 def action_enhance(manifest: dict[str, Any]) -> int:
+    if manifest.get("provider_capability", {}).get("higgsfield_role") != (
+        "REFERENCE_GENERATION_CANDIDATE_ONLY"
+    ):
+        raise RuntimeError("this scene does not authorize Higgsfield prompt enhancement")
     require_cli("higgsfield")
     report = observe(manifest)
     if not report["configuration_ready"]:
@@ -956,6 +1180,10 @@ def action_enhance(manifest: dict[str, Any]) -> int:
 def action_execute(manifest: dict[str, Any], allow_spend: bool) -> int:
     if not allow_spend:
         raise RuntimeError("paid generation requires the explicit --allow-spend flag")
+    if manifest.get("provider_capability", {}).get("higgsfield_role") != (
+        "REFERENCE_GENERATION_CANDIDATE_ONLY"
+    ):
+        raise RuntimeError("this scene does not authorize a new Higgsfield paid execution")
     require_cli("higgsfield")
     report = observe(manifest)
     if not report["paid_execution_ready"]:

@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-12",
+  "classification": "REPRODUCED_LOCAL",
+  "authentication": "NOT_APPLICABLE",
+  "skill_validator": "PASS: existing DevSkyy venv Python with PyYAML; system Python lacked PyYAML; no dependency installed",
+  "json_files_parsed": [
+    "/Users/theceo/.codex/skills/skyyrose-film-directing/references/shot-packet.json",
+    "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-workflow/independent-review.json",
+    "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-workflow/rehearsal-input.json",
+    "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-workflow/rehearsal-source-bindings.json",
+    "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-workflow/structural-validation.json",
+    "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/directing-workflow/task-ledger.json"
+  ],
+  "local_links_checked": 25,
+  "missing_links": [],
+  "skill_files": [
+    {
+      "path": "/Users/theceo/.codex/skills/skyyrose-film-directing/SKILL.md",
+      "sha256": "f806cb6c1d532b146e5c81e9e8a287376c3534ebc70dc15c1ed77d4c7e5432ee"
+    },
+    {
+      "path": "/Users/theceo/.codex/skills/skyyrose-film-directing/agents/openai.yaml",
+      "sha256": "3ddc3b9c88a826f5f775727542193fae24e45b42d47618707a1b155072a878fd"
+    },
+    {
+      "path": "/Users/theceo/.codex/skills/skyyrose-film-directing/references/directing-method.md",
+      "sha256": "650b6530c593c39e1d1b4fa5e362adf50b14d898d5e18dc21e7a70459decab6a"
+    },
+    {
+      "path": "/Users/theceo/.codex/skills/skyyrose-film-directing/references/shot-packet.json",
+      "sha256": "83c80e9d02b679c364af9f01184b5a4dca8798fde57c36b403745f9f83b74977"
+    },
+    {
+      "path": "/Users/theceo/.codex/skills/skyyrose-film-directing/references/verified-examples.md",
+      "sha256": "91396d9346d40e04262e631309affa82dac1b7b10abaf8eee1fe0f3ba6cb39a0"
+    }
+  ],
+  "rehearsal_report_sha256": "71f20a232c676dc16300d83c1e78e8e69e2a5cecd41211ba8888f66fbf51653c",
+  "limits": "Structural checks and independent offline written rehearsal only. No visual story, motion, authenticated provider or audience-performance certification.",
+  "independent_review": "PASS: three targeted documentation corrections"
+}

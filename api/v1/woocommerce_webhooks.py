@@ -7,9 +7,12 @@ All endpoints require a valid HMAC signature via the X-WC-Webhook-Signature head
 import json
 import logging
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, Header, HTTPException, status
+from sqlalchemy.ext.asyncio import AsyncSession
 
+from api.v1.analytics.ingest import capture_paid_order
 from api.v1.wordpress_integration import verify_webhook
+from database.db import get_db
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +22,8 @@ router = APIRouter(tags=["woocommerce-webhooks"], prefix="/woocommerce/webhooks"
 @router.post("/order", status_code=status.HTTP_200_OK, summary="Order webhook")
 async def handle_order_webhook(
     body: bytes = Depends(verify_webhook),
+    source_url: str | None = Header(default=None, alias="X-WC-Webhook-Source"),
+    db: AsyncSession = Depends(get_db),
 ):
     """Handle WooCommerce order webhooks.
 
@@ -32,11 +37,20 @@ async def handle_order_webhook(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Invalid JSON payload",
         ) from exc
+    if not isinstance(payload, dict):
+        raise HTTPException(status_code=400, detail="Order webhook requires an object")
     logger.info(
         "Order webhook received",
         extra={"order_id": payload.get("id"), "status": payload.get("status")},
     )
-    return {"status": "received"}
+    analytics = await capture_paid_order(db, payload, source_url)
+    if analytics["status"] not in {"accepted", "skipped"}:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail={"status": "retry_required", "analytics": analytics},
+            headers={"Retry-After": "60"},
+        )
+    return {"status": "received", "analytics": analytics}
 
 
 @router.post("/product", status_code=status.HTTP_200_OK, summary="Product webhook")

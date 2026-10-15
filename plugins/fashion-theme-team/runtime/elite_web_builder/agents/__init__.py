@@ -16,20 +16,20 @@ _EWB_ROOT = str(Path(__file__).resolve().parent.parent)
 if _EWB_ROOT not in sys.path:
     sys.path.insert(0, _EWB_ROOT)
 
-from agents.accessibility import ACCESSIBILITY_SPEC  # noqa: E402
-from agents.backend_dev import BACKEND_DEV_SPEC  # noqa: E402
-from agents.base import AgentCapability, AgentOutput, AgentRole, AgentSpec  # noqa: E402
-from agents.design_system import DESIGN_SYSTEM_SPEC  # noqa: E402
-from agents.frontend_dev import FRONTEND_DEV_SPEC  # noqa: E402
-from agents.performance import PERFORMANCE_SPEC  # noqa: E402
-from agents.provider_adapters import (  # noqa: E402
+from agents.accessibility import ACCESSIBILITY_SPEC
+from agents.backend_dev import BACKEND_DEV_SPEC
+from agents.base import AgentCapability, AgentOutput, AgentRole, AgentSpec
+from agents.design_system import DESIGN_SYSTEM_SPEC
+from agents.frontend_dev import FRONTEND_DEV_SPEC
+from agents.performance import PERFORMANCE_SPEC
+from agents.provider_adapters import (
     LLMMessage,
     LLMResponse,
     get_adapter,
 )
-from agents.qa import QA_SPEC  # noqa: E402
-from agents.runtime import AgentRuntime  # noqa: E402
-from agents.seo_content import SEO_CONTENT_SPEC  # noqa: E402
+from agents.qa import QA_SPEC
+from agents.runtime import AgentRuntime
+from agents.seo_content import SEO_CONTENT_SPEC
 
 ALL_SPECS: tuple[AgentSpec, ...] = (
     DESIGN_SYSTEM_SPEC,

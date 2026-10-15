@@ -1,7 +1,6 @@
 # SkyyRose Motion Prompt Pack Adaptation
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> **SKYYROSE LLC · FASHION THEME BRAIN**
 
 The original user-provided reference is saved at [`animated-website-prompt-pack-200.pdf`](animated-website-prompt-pack-200.pdf). It is a creative prompt library, not a source of truth for SkyyRose brand, product, commerce, accessibility, performance, or sales claims.
 

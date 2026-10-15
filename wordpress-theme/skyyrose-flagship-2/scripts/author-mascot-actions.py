@@ -108,7 +108,7 @@ def nearest_pair(value: float, centers: list[tuple[str, float]]) -> list[tuple[s
         return [(ordered[0][0], 1.0)]
     if value >= ordered[-1][1]:
         return [(ordered[-1][0], 1.0)]
-    for left, right in zip(ordered, ordered[1:], strict=False):
+    for left, right in zip(ordered[:-1], ordered[1:], strict=True):
         if left[1] <= value <= right[1]:
             span = right[1] - left[1]
             right_weight = (value - left[1]) / span

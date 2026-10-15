@@ -1,0 +1,15 @@
+{
+  "created_at": "2026-09-12T13:50:56.353971+00:00",
+  "files_sha256": {
+    "AUDIT.md": "72ba4dfe21c48fc895fc10e397bd7643497ea445b81ccd946aa67660c0e2ce47",
+    "EXAMPLES.md": "6ef7d457004536d27db87a7f4e8ac3d202a087fcc711aec83211708acac47e76",
+    "enhancer-inputs.json": "c34880da8ba9062e06ae5a80df44bb8d8795765a03c9ac2ceb197531fba51ca0",
+    "enhancer-generic.json": "1161e17880aa7816f0317a78a1f3ee98c959618b9222d3028f6d0f32888af254",
+    "enhancer-directed.json": "c27c2b7dd722a617655c917e22c7df8bca30cc92f19e4b67db7dd15832716a13",
+    "plugin-capabilities.json": "2eec21d4863c741898eeb7aa659965737e7ed20dc4205415161267cb660195a7",
+    "source-evidence.json": "4dbe3ddd496ce25a57c025eaf9c1b96bf098b2293baf2e41c1345ee0f1baf217",
+    "source-contract-check.json": "ec4d86bbedc327479bce2fe318aef5a473ed56303066ee806933d2cf9a150889",
+    "cinema-studio-contract.json": "16726605ca07b017fb01c0939aa2035b4a1b89ac98baa36b4166dc1c98323c97"
+  },
+  "scope": "Audit artifacts, not approved production media"
+}

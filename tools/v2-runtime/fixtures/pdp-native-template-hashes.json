@@ -1,0 +1,15 @@
+{
+  "schema": "skyyrose.pdp-native-template-hashes.v1",
+  "wordpress": "7.1",
+  "woocommerce": "11.1.0",
+  "purpose": "Read-only native gallery regression dependency pins. Supply V2_WP_FIXTURE; native files are not vendored.",
+  "files": {
+    "wp-includes/plugin.php": "0e50769b8e2a82aa9687e89852c1a51d5682a95636ff38ec80435fe956bb7236",
+    "wp-includes/class-wp-hook.php": "7d5f86b7d25073a821dc971ce85febedff554175f861c7e0e8ee3bb2dfb48b94",
+    "wp-includes/class-wp-filter-sentinel.php": "68c9c675d3805a343835728d98a0efedf0df9833cb904bebf909c7e0fda5c61c",
+    "wp-content/plugins/woocommerce/includes/wc-template-functions.php": "11e0d9538353785f938d99b5a4e41b5d5a4af57984acb45e17ab955d1d10f4ab",
+    "wp-content/plugins/woocommerce/templates/single-product/product-image.php": "8d82189691ccd1c6249be1f2abce96a0dc4cb5140038806fdf4cf4a33062d037",
+    "wp-content/plugins/woocommerce/templates/single-product/product-thumbnails.php": "4d8dc8582e83f2cd1b19348c8d16e1be975b22231a368430630f175a9d8cca90",
+    "wp-content/plugins/woocommerce/templates/single-product/add-to-cart/variable.php": "9a50a9ab1726fdac8215e4538100aaa4cbd294283f0f01287635878cb7ade52b"
+  }
+}

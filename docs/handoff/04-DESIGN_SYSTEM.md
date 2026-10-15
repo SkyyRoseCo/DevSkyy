@@ -7,7 +7,7 @@
 | Element | Value |
 |---------|-------|
 | Brand | SkyyRose |
-| Tagline | "Luxury Grows from Concrete." |
+| Tagline | None authorised (founder decision 2026-10-06) |
 | Aesthetic | Dark luxury, rose gold accents, glassmorphism |
 | Feel | Bold, premium, urban-elevated |
 

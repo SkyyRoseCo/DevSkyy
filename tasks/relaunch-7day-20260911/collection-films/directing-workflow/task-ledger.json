@@ -1,0 +1,171 @@
+{
+  "task": "SkyyRose film directing workflow",
+  "date": "2026-09-13",
+  "status": "THREE_COLLECTION_TREATMENTS_PREPARED_FOR_CREATIVE_REVIEW",
+  "owner": "/root",
+  "authorization": "User requested building the directing workflow after the skill audit. Create a reusable local skill, practical directing templates and a source-grounded offline rehearsal. Paid rendering permission remains recorded; replacement creative has not been accepted.",
+  "owned_paths": [
+    "/Users/theceo/.codex/skills/skyyrose-film-directing/",
+    "tasks/relaunch-7day-20260911/collection-films/directing-workflow/"
+  ],
+  "roster": [
+    {
+      "owner": "/root",
+      "scope": "Skill integration, reference handoff and validation"
+    },
+    {
+      "owner": "directing_design",
+      "scope": "Wordless narrative and directing workbook"
+    },
+    {
+      "owner": "directing_review",
+      "scope": "Independent critique of workflow and examples"
+    }
+  ],
+  "tools_profile": "Local source inspection, scoped document/schema writes, local validation, independent agents. No provider requests required for this workflow task.",
+  "exclusions": [
+    "provider generation",
+    "source media edits",
+    "canonical plugin source edits",
+    "campaign activation",
+    "approval inferred from successful workflow checks"
+  ],
+  "evidence": [
+    "START-HERE.md",
+    "independent-rehearsal.md",
+    "independent-review.json",
+    "rehearsal-source-bindings.json",
+    "structural-validation.json",
+    "NEXT-DIRECTING-SEQUENCE.md",
+    "RESEARCH-ADOPTION.md",
+    "FOUNDER-INTERVIEW-2026-09-13.md",
+    "LOVE-HURTS-TREATMENT.md",
+    "KIDS-TREATMENT.md",
+    "SIGNATURE-TREATMENT.md",
+    "THREE-COLLECTION-TREATMENTS.md"
+  ],
+  "gates": {
+    "workflow": "COMPLETE",
+    "offline_rehearsal": "COMPLETE_WRITTEN_EXERCISE_ONLY",
+    "independent_review": "PASS_TARGETED_DOCUMENTATION_CORRECTIONS",
+    "new_film_creative_approval": "LOVE_HURTS_STORY_DIRECTION_SELECTED_WRITTEN_AND_VISUAL_REVIEW_PENDING",
+    "visual_story_test": "INDEPENDENT_SCHEMATIC_REVIEW_ONLY",
+    "provider_execution": "NOT_PERFORMED"
+  },
+  "current_campaign_development": {
+    "user_direction": "Kids Capsule introduces Skyy first; user authorized timed board comparison and parallel collection development",
+    "artifact": "THREE-COLLECTION-TREATMENTS.md",
+    "status": "WRITTEN_TREATMENTS_DEVELOPED_VISUAL_REVIEW_PENDING",
+    "recommended_candidate": "Kids What He Made Possible and Signature After Hours are proposals; LH selected sequence retained",
+    "independent_story_review": "Contact sheets only; not an audience test or final creative acceptance",
+    "technical_validation": "kids-boards/qa/browser-and-export.json",
+    "source_verification": "kids-boards/sources.json",
+    "provider_execution": "NOT_PERFORMED",
+    "latest_founder_direction": "Build the other collections first. Black Rose meaning/garden recorded; no further garden plot selected.",
+    "narrative_authority": "COLLECTION-STORY-FOUNDATIONS.md: identity.json seeds, linked collection-stories.md, founder interview",
+    "next_question": "Review three written treatments; hold Black Rose questions until these are developed."
+  },
+  "research_integration": {
+    "status": "COMPLETE_DOCUMENT_INTEGRATION",
+    "authorization": "Founder requested implementing the proposed next directing sequence, adopting strong research contributions and correcting our plan by impact. New story choices follow brainstorming.",
+    "artifacts": [
+      "NEXT-DIRECTING-SEQUENCE.md",
+      "RESEARCH-ADOPTION.md"
+    ],
+    "changes": [
+      "Kids-first proof sequence corrected in traction plan and playbook",
+      "Asset map before shot planning",
+      "Brand/behavior and reveal records",
+      "Separate story, character, brand, product and desire review",
+      "Exact image/video route qualification and protected footage rules",
+      "Benchmark and schedule scope corrections"
+    ],
+    "remaining": [
+      "Select emotional effect and story mechanism with founder",
+      "Resolve documented source conflicts before reference-bound visual candidates",
+      "Review actual motion proof",
+      "Verify live commerce before release"
+    ],
+    "specialist": "fashion-design-system-engineer: read-only research adoption and three candidate mechanisms returned; none selected"
+  },
+  "brainstorming_tasks": [
+    {
+      "id": 1,
+      "task": "Explore project context, source constraints and research",
+      "status": "COMPLETE"
+    },
+    {
+      "id": 2,
+      "task": "Offer visual companion separately",
+      "status": "OFFERED_AWAITING_PREFERENCE",
+      "reason": "Requested brainstorming skill asks for a separate visual-companion offer before creative questions."
+    },
+    {
+      "id": 3,
+      "task": "Ask founder questions one at a time using brainstorming and grill-me",
+      "status": "IN_PROGRESS",
+      "skill": "/Users/theceo/.agents/skills/grill-me/SKILL.md"
+    },
+    {
+      "id": 4,
+      "task": "Propose two or three mechanisms with tradeoffs",
+      "status": "ALTERNATIVES_DOCUMENTED_FOR_KIDS_AND_SIGNATURE"
+    },
+    {
+      "id": 5,
+      "task": "Present design sections and obtain creative approval",
+      "status": "LOVE_HURTS_STORY_SELECTED_KIDS_SIGNATURE_REVIEW_PENDING"
+    },
+    {
+      "id": 6,
+      "task": "Write approved design document and scoped commit",
+      "status": "PENDING"
+    },
+    {
+      "id": 7,
+      "task": "Self-review specification",
+      "status": "PENDING"
+    },
+    {
+      "id": 8,
+      "task": "Founder review of written specification",
+      "status": "PENDING"
+    },
+    {
+      "id": 9,
+      "task": "Transition to writing-plans",
+      "status": "PENDING"
+    }
+  ],
+  "collection_decisions": {
+    "kids": {
+      "treatment": "KIDS-TREATMENT.md",
+      "status": "WRITTEN_PROPOSAL",
+      "new_cast": "Father-role proposal requires reference/casting decision; not assumed Corey",
+      "rough_seconds": 32
+    },
+    "signature": {
+      "treatment": "SIGNATURE-TREATMENT.md",
+      "status": "WRITTEN_PROPOSAL_WITH_FOUNDER_SELECTED_GRAPHIC",
+      "rough_seconds": 36,
+      "lead_graphic": "references/signature-first-rose-founder.png",
+      "graphic_authority": "FOUNDER_SELECTED_FIRST_ROSE_AND_SIGNATURE_LEAD"
+    },
+    "love_hurts": {
+      "treatment": "LOVE-HURTS-TREATMENT.md",
+      "story_direction": "FOUNDER_SELECTED",
+      "written_review": "PENDING",
+      "visual_board": "NOT_CREATED",
+      "render": "NOT_REQUESTED_THIS_TURN",
+      "continuity_review": "Read-only specialist review; constraints incorporated",
+      "rough_seconds": 36
+    },
+    "black_rose": {
+      "status": "HELD_BY_FOUNDER_DIRECTION",
+      "meaning": "Black is beautiful: strength, beauty, resilience, power",
+      "setting": "Nighttime black/white rose garden, metallic silver, wind",
+      "next_action": "Return after other collections developed",
+      "fixed_product": "br-006, actual source performer, unchanged silent original excerpts"
+    }
+  }
+}

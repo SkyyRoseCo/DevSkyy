@@ -883,7 +883,7 @@ This theme must be **complete enough to sell on a premium theme marketplace** (e
 ### Demo Content (All 28 Products)
 Every product must be populated with:
 - [ ] Canonical product name (from product mapper)
-- [ ] Full description + short description (from product-content.json)
+- [ ] Full description + short description (from the product registry: `python -m skyyrose.core.product <sku>` → `content`)
 - [ ] AI fashion model images (front + back views)
 - [ ] Flat-lay product photos (clean background, square 1:1 ratio) for grid display
 - [ ] Collection assignment

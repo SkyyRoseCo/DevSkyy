@@ -37,17 +37,16 @@ All generated images include a **SynthID watermark** per Google's responsible AI
 ```
 scripts/
 ├── nano-banana-run.py              # Entry point — calls cli.main()
-├── nano_banana/                    # Package
-│   ├── __init__.py
-│   ├── client.py                   # API client factories (Google, OpenAI, Together)
-│   ├── catalog.py                  # CSV loader, source image resolution
-│   ├── generate.py                 # Gemini, FLUX, GPT-Image generation functions
-│   ├── composite.py                # Logo compositing (real branding → AI shots)
-│   ├── qa.py                       # Vision QA with structured JSON output
-│   ├── prompts.py                  # All prompt templates + LOGO_TREATMENTS (single source of truth)
-│   ├── utils.py                    # Image preprocessing, quality gate, WebP conversion
-│   └── cli.py                      # Argparse CLI with subcommands
-└── nano-banana-vton.py             # Legacy script — imports LOGO_TREATMENTS from nano_banana.prompts
+└── nano_banana/                    # Package
+    ├── __init__.py
+    ├── client.py                   # API client factories (Google, OpenAI, Together)
+    ├── catalog.py                  # CSV loader, source image resolution
+    ├── generate.py                 # Gemini, FLUX, GPT-Image generation functions
+    ├── composite.py                # Logo compositing (real branding → AI shots)
+    ├── qa.py                       # Vision QA with structured JSON output
+    ├── prompts.py                  # All prompt templates + LOGO_TREATMENTS (single source of truth)
+    ├── utils.py                    # Image preprocessing, quality gate, WebP conversion
+    └── cli.py                      # Argparse CLI with subcommands
 ```
 
 Each file is under 300 lines. No circular imports. Clean separation.

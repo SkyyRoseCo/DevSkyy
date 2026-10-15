@@ -1,0 +1,48 @@
+{
+  "case_id": "BR-DIRECTING-REHEARSAL-01",
+  "purpose": "Offline directing workflow exercise. Prepare a directing decision and next useful work from the supplied material. No provider calls or media edits.",
+  "brief": {
+    "film": "Black Rose collection short, then integrated main commercial",
+    "core": "Cinematic wordless train encounter between actual male source performer and supplied illustrated Skyy. Feature actual br-006 bomber, retain collection hero references, build toward Kids reveal in main film.",
+    "source_policy": "Original source video may supply product-readable excerpts; exclude audio; retain its visuals unchanged.",
+    "paid_generation_permission": "Recorded in conversation; this exercise is offline.",
+    "creative_state": "Previous complete package rejected. No replacement treatment accepted."
+  },
+  "proposal": {
+    "title": "The reflection",
+    "beats": [
+      {
+        "seconds": "0\u20133",
+        "visible_action": "The actual male performer looks out of the train window."
+      },
+      {
+        "seconds": "3\u20136",
+        "visible_action": "Skyy appears in the glass reflection, wearing the matching bomber."
+      },
+      {
+        "seconds": "6\u201310",
+        "visible_action": "He turns toward her."
+      },
+      {
+        "seconds": "10\u201314",
+        "visible_action": "Skyy smiles and gestures toward the next carriage."
+      },
+      {
+        "seconds": "14\u201320",
+        "visible_action": "The camera widens to the collection hero landscape."
+      }
+    ],
+    "description": "Recognition, heritage and an unforgettable reveal.",
+    "product_goal": "Show both jacket fronts throughout a fast full camera orbit.",
+    "editorial_proposal": "Use the original video as a cinematic widescreen crop with a matching grade between the generated shots."
+  },
+  "source_records": {
+    "performer": "../identity-correction/black-rose-actor-references.json",
+    "mascot": "/Users/theceo/Downloads/image.png",
+    "supplied_video": "/Users/theceo/Downloads/Video Apr 21 2024, 11 01 18 AM.mp4",
+    "enhancement_result": "../skill-audit/enhancer-directed.json",
+    "hero_map": "../../train-commercial/source-manifest.json",
+    "current_black_rose_sources": "../build/source-map.json"
+  },
+  "requested_deliverable": "Assess the proposal as a complete standalone short and as part of the main film. Produce a usable revised development brief, necessary directing decisions and provider handoff disposition; distinguish what can be concluded without seeing rendered boards."
+}

@@ -26,7 +26,7 @@ $preorder    = home_url( '/pre-order/' );
 		<div class="sr-home__hero-wash" aria-hidden="true"></div>
 		<div class="sr-home__hero-content">
 			<p class="sr-home__eyebrow"><?php esc_html_e( 'Oakland, California · Est. 2020', 'skyyrose' ); ?></p>
-			<h1 id="sr-home-title" class="sr-home__title"><?php esc_html_e( 'Luxury Grows From Concrete.', 'skyyrose' ); ?></h1>
+			<h1 id="sr-home-title" class="sr-home__title"><?php esc_html_e( 'SkyyRose', 'skyyrose' ); ?></h1>
 			<p class="sr-home__lede"><?php esc_html_e( 'Limited-edition streetwear rooted in The Town. Built by a father. Named after a daughter.', 'skyyrose' ); ?></p>
 			<div class="sr-home__actions">
 				<a class="sr-home__button sr-home__button--solid" href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'Shop New Arrivals', 'skyyrose' ); ?></a>

@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-all-products-card-lh-004",
+  "asset_id": "card-lh-004",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "e3b22a5fbc315f1147d51a50ddc447fdc819c6f8366d8c4c0de8263bb47685a3",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "lh-004"
+  ],
+  "collections": [
+    "love-hurts"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/all-products/card-lh-004-visual-review.json",
+    "sha256": "5318f71838108520f999a3c08d2ceea318db4381fd5bc7e3572de8b82a2241cb"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-004-card-desktop.png",
+      "sha256": "5813d24e9b3b86f1798fe9e1b29778b77aee56670104216e8e2d04e9b410be71"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-004-card-mobile.png",
+      "sha256": "6d2eae8a07ca57231e731268eaf7b683ee1c3898739a7be918d554f4a6ac0925"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-004-pdp-desktop.png",
+      "sha256": "6fc56e492c3f73765c9b8139b64976ddc6e45b1db2f1b588cad2cd837eb91e83"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/lh-004-pdp-mobile.png",
+      "sha256": "05f6fcb6e73752091004836541ec969eea9f30b58ba91141723dee06630dddef"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native asset and actual offline card/current product-page.css PDP media-only contexts at 1440 desktop/390 mobile. Full commerce, theme states, 768, motion, accessibility and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: White satin bomber retains black raglan sleeves and hood, current split red Love/Hurts front embroidery, visible pale button closure, black welt pockets and complete striped cuffs/hem. Registered physical front source supports construction and the patterned hood lining; no front heart is invented. Saturated practical night light integrates naturally while preserving white/black material and embroidery readability.",
+    "pdp_on_model_front": "PASS: Current gallery containment preserves all native pixels; the same exact native identity/framing verdict applies."
+  }
+}

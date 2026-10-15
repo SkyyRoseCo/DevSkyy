@@ -19,7 +19,11 @@
       "scope": "Master brand",
       "status": "OWNER_RATIFIED",
       "decision_event": "A-001",
-      "evidence": ["E03", "E06", "E08"]
+      "evidence": [
+        "E03",
+        "E06",
+        "E08"
+      ]
     },
     {
       "id": "D.origin",
@@ -27,7 +31,11 @@
       "scope": "Master-brand origin",
       "status": "OWNER_RATIFIED",
       "decision_event": "D-001",
-      "evidence": ["E03", "E11", "E38"]
+      "evidence": [
+        "E03",
+        "E11",
+        "E38"
+      ]
     },
     {
       "id": "D.legacy",
@@ -35,7 +43,11 @@
       "scope": "Optional legacy storytelling",
       "status": "OWNER_RATIFIED",
       "decision_event": "D-001",
-      "evidence": ["E03", "E11", "E38"]
+      "evidence": [
+        "E03",
+        "E11",
+        "E38"
+      ]
     },
     {
       "id": "B",
@@ -1013,14 +1025,36 @@
     }
   ],
   "palette_domains": {
-    "product": ["P2-001", "F1"],
-    "protected_assets": ["P3-001"],
-    "interface": ["P6-001"],
-    "environment": ["P4-001", "P5-001"],
-    "photographic": ["P1-001", "P5-001"],
-    "campaign": ["P4-001", "P7-001"],
-    "lighting": ["P1-001", "P2-001", "P4-001"],
-    "natural_location": ["P5-001"]
+    "product": [
+      "P2-001",
+      "F1"
+    ],
+    "protected_assets": [
+      "P3-001"
+    ],
+    "interface": [
+      "P6-001"
+    ],
+    "environment": [
+      "P4-001",
+      "P5-001"
+    ],
+    "photographic": [
+      "P1-001",
+      "P5-001"
+    ],
+    "campaign": [
+      "P4-001",
+      "P7-001"
+    ],
+    "lighting": [
+      "P1-001",
+      "P2-001",
+      "P4-001"
+    ],
+    "natural_location": [
+      "P5-001"
+    ]
   },
   "product_authority": {
     "reader": "get_product(sku)",
@@ -1030,5 +1064,7 @@
   },
   "unresolved_constitutional_decisions": [],
   "runtime_implemented": false,
-  "palette_provenance_rule_ids": ["P8-001"]
+  "palette_provenance_rule_ids": [
+    "P8-001"
+  ]
 }

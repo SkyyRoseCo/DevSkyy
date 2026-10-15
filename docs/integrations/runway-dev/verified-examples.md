@@ -55,9 +55,9 @@ pool.
   authenticated generation behavior.
 - **Authentication:** VERIFIED_LIVE for the connected Runway Dev MCP
   account/project and router-management scope only; server-side Developer API
-  generation authentication is UNVERIFIED. Redacted environment: Developer
-  account ID 255723; project ID `149ffed4-…-b85e`; project `skyyrose.co`; no
-  email or API key recorded.
+  generation authentication is UNVERIFIED. Environment: Developer account ID
+  255723; project ID `149ffed4-…-b85e`; project `skyyrose.co`; no email or API
+  key recorded.
 - **Limits and refresh trigger:** This is a point-in-time catalog and balance
   observation. The empty router list means no policy snapshot can be qualified.
   Refresh project, router, model catalog, and balance before any later

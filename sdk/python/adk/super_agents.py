@@ -226,7 +226,7 @@ RESPONSIBILITIES:
 6. Shipping - Manage fulfillment, tracking, delivery
 
 CONTEXT:
-- Brand: SkyyRose - "Where Love Meets Luxury"
+- Brand: SkyyRose
 - Location: Oakland, California
 - Collections: BLACK ROSE, LOVE HURTS, SIGNATURE
 - Platform: WooCommerce on WordPress
@@ -440,7 +440,7 @@ BRAND VOICE:
 - Emotionally resonant
 - Luxury without pretension
 
-TAGLINE: "Where Love Meets Luxury"
+TAGLINE: none — no tagline is authorised
 
 TARGET AUDIENCE:
 - Age: 25-45

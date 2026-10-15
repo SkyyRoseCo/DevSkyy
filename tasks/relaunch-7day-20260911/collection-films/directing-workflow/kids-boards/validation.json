@@ -1,0 +1,108 @@
+{
+  "date": "2026-09-12",
+  "status": "COMPLETE_REQUESTED_ROUGH_BOARD_COMPARISON",
+  "version": "R2",
+  "recommended": "Route A for continued creative development",
+  "authorization": "User said do it to building timed Kids comparison boards and resolving collection arcs. Prior paid-render authority retained; no provider rendering required for schematic package.",
+  "evidence_scope": {
+    "source_images": "Nine eyes-on local references; eight inherited hashes matched by source reviewer",
+    "story": "First blind contact-sheet read A/B/C; same-reviewer R2 read recovered complete A initiative chain",
+    "technical": "Browser, export and scoped independent JS review passed",
+    "creative_acceptance": "NOT_INFERRED",
+    "final_likeness_product_performance": "NOT_PROVED_BY_SCHEMATICS",
+    "provider": "NOT_EXECUTED",
+    "campaign": "NOT_ACTIVATED"
+  },
+  "artifacts": [
+    {
+      "path": "preview.html",
+      "sha256": "181b4813050eeb657ece9e7ab93cce6a521350fc1ab270138042bbea3c106810",
+      "bytes": 4420
+    },
+    {
+      "path": "review.js",
+      "sha256": "4e90157fc9aeedf127c53fe36fb29e9ce02da793407b0e20a7b42bbd0653cb00",
+      "bytes": 10390
+    },
+    {
+      "path": "review.css",
+      "sha256": "97969669a4071efb061e35ca7317de924fa81bbdcd3ac32e6029160d35fa9ead",
+      "bytes": 7090
+    },
+    {
+      "path": "board-data.js",
+      "sha256": "155a54fb617e5c498de9821048137b09760351eec291da0923d8e89658044e4f",
+      "bytes": 7098
+    },
+    {
+      "path": "source-data.js",
+      "sha256": "f03a277690c5dc063165e3841315363467967e1762f2cc4045b78fc8b0530f8e",
+      "bytes": 9542
+    },
+    {
+      "path": "sources.json",
+      "sha256": "ec58ed37c3e7a0180a57561803d95a5b3b495f960ac7cd06b4ebabaa94970e33",
+      "bytes": 9446
+    },
+    {
+      "path": "SOURCE-REVIEW.md",
+      "sha256": "07fd3d7ba5eaab67e699a10fe5f568cb9e10be79be795d00e1eb625a54416f90",
+      "bytes": 7618
+    },
+    {
+      "path": "DIRECTOR-DECISION.md",
+      "sha256": "c71771be2abd0702cc77b5cdfc1da14b7c9050a3c1f6122881797f5ceee93a1e",
+      "bytes": 3952
+    },
+    {
+      "path": "KIDS-SHOT-PACKET.md",
+      "sha256": "a2e23ef4d30831b53a1a5db059c0cff044d25a724d0299b62f290501a64370e9",
+      "bytes": 8767
+    },
+    {
+      "path": "COLLECTION-BEATS.md",
+      "sha256": "6b2424f412148406829838043c34af35e09fb6443a049c3c63a87db79525794b",
+      "bytes": 16408
+    },
+    {
+      "path": "qa/story-review.md",
+      "sha256": "bc2beaabfda92d89b612542dadbf21ec15bf5b2078f05741c0e9de66bd772ef9",
+      "bytes": 2810
+    },
+    {
+      "path": "qa/browser-and-export.json",
+      "sha256": "2811a70cc81cdab00171a277c7990f3f67c7c2f9603838ffb08c2ffb530f2933",
+      "bytes": 1678
+    },
+    {
+      "path": "exports/Kids-Route-A-rough-board.mp4",
+      "sha256": "07bf63823ab7fc217f9950f9d2e3f5cf240444fef1dc375b47e16dd1a220670d",
+      "bytes": 209757
+    },
+    {
+      "path": "exports/Kids-Route-B-rough-board.mp4",
+      "sha256": "1474439a472dbb68aa1f0258ccaa46b27fc61a9a2f765eb89a56bcfa6db66814",
+      "bytes": 204797
+    },
+    {
+      "path": "exports/Kids-Route-C-rough-board.mp4",
+      "sha256": "1d878d7d7de79dfed8314b27194f6b7ba73237953edeb136f4bd6713c79377a1",
+      "bytes": 197217
+    },
+    {
+      "path": "exports/Sequence-A-contact.png",
+      "sha256": "1b59fa8fca6adf6864ea81126bfff33d481393939d7b627a4d860a1b2bef9d28",
+      "bytes": 204229
+    },
+    {
+      "path": "exports/Sequence-B-contact.png",
+      "sha256": "93bd9bf8cd8a705bdabe85a6f1a2e3ed0a2b751865eef1d4dad717ddb243f11c",
+      "bytes": 226865
+    },
+    {
+      "path": "exports/Sequence-C-contact.png",
+      "sha256": "def8875ebc08c0b81b37a7efd72d2909570c10889f0e75147eae5805fad9b996",
+      "bytes": 185458
+    }
+  ]
+}

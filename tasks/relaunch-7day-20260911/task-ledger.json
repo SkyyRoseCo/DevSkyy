@@ -1,0 +1,126 @@
+{
+  "task_id": "RELAUNCH-7DAY-20260911",
+  "manager": "Codex lead /root",
+  "state": "RENDERED_FOR_FOUNDER_REVIEW",
+  "scope": {
+    "candidate": "4da200886c73252c5271f5bf89de61c5c32ba062",
+    "worktree": "/Users/theceo/.codex/worktrees/dae3/DevSkyy",
+    "surface": "7-day campaign strategy, 23 still exports and 3 edited films",
+    "owned_paths": [
+      "tasks/relaunch-7day-20260911/",
+      "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-bomber-jacket.md",
+      "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-2-last-oakland-football.md"
+    ],
+    "exclusions": [
+      "provider generation before approval",
+      "ad publication",
+      "store changes",
+      "source asset edits"
+    ],
+    "related_worktree_edit": "/Users/theceo/DevSkyy/.claude/worktrees/v2-theme-ad-campaigns-22f799/tasks/v2-launch-ad-campaigns.html",
+    "authorization": "Founder explicitly approved paid Higgsfield rendering in current task; no campaign activation authorized."
+  },
+  "acceptance": [
+    "seven scheduled days with copy, CTA, audience, creative and measures",
+    "source-bound product and brand assets",
+    "template and SOT conflict decisions",
+    "timed storyboards and all dependencies",
+    "independent_review",
+    "responsive HTML and contract parity"
+  ],
+  "evidence_required": [
+    "source_manifest",
+    "local_browser",
+    "independent_review",
+    "manager_verification",
+    "founder_approval"
+  ],
+  "roster": [
+    {
+      "name": "/root",
+      "role": "project manager and integration",
+      "ownership": "campaign artifact and evidence"
+    },
+    {
+      "name": "brand_truth",
+      "role": "Fashion Theme Team brand systems researcher",
+      "ownership": "read-only provenance and canon review"
+    },
+    {
+      "name": "campaign_review",
+      "role": "Fashion Theme Team independent visual QA",
+      "ownership": "read-only final candidate review"
+    }
+  ],
+  "capability_routes": [
+    "fashion_strategy",
+    "visual_design",
+    "fit_imagery_returns"
+  ],
+  "loaded_packs": [
+    "knowledge/fashion-commerce-fundamentals.md"
+  ],
+  "tools_profile": "Fashion Theme Team strategy and review; Higgsfield paid image/video generation; native Higgsedit production and visual QA",
+  "gaps": [
+    "scripts/task_control.py absent at baseline; equivalent local ledger used",
+    "calendar date and media budget not supplied"
+  ],
+  "next_authority": "Final creative review, followed separately by publication readiness and activation authority.",
+  "candidate_id": "93d18e8a0c8326faf4caa0a867abc341f01e52ea60c26d1c78e7274460fc0304",
+  "evidence": [
+    "source-manifest.json",
+    "evidence/browser.json",
+    "evidence/invariants.json",
+    "evidence/independent-review.md",
+    "FIX-REPORT.md",
+    "rendered/render-ledger.json",
+    "rendered/index.html"
+  ],
+  "phases": [
+    {
+      "id": "discovery",
+      "state": "PASSED",
+      "owner": "brand_truth",
+      "evidence": "source-manifest.json"
+    },
+    {
+      "id": "plan",
+      "state": "PASSED",
+      "owner": "/root",
+      "evidence": "contract.json"
+    },
+    {
+      "id": "independent_review",
+      "state": "PASSED",
+      "owner": "campaign_review",
+      "evidence": "evidence/independent-review.md"
+    },
+    {
+      "id": "founder_review",
+      "state": "RENDERING_AUTHORIZED",
+      "owner": "founder",
+      "reason": "Current explicit paid rendering approval"
+    },
+    {
+      "id": "generation",
+      "state": "COMPLETED",
+      "owner": "/root",
+      "reason": "Six provider jobs completed, 45.75 credits"
+    },
+    {
+      "id": "publication",
+      "state": "BLOCKED",
+      "owner": "founder",
+      "reason": "No activation authority/live evidence/budget/date"
+    },
+    {
+      "id": "native_export",
+      "state": "COMPLETED",
+      "owner": "/root",
+      "evidence": "rendered/render-ledger.json",
+      "revision": 2
+    }
+  ],
+  "status": "RENDERED_FOR_FOUNDER_REVIEW",
+  "production_report": "rendered/PRODUCTION-REPORT.md"
+}

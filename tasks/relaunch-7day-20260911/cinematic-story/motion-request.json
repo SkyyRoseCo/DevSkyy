@@ -1,0 +1,31 @@
+{
+  "params": {
+    "model": "kling3_0",
+    "duration": 5,
+    "mode": "pro",
+    "sound": "on",
+    "aspect_ratio": "16:9",
+    "use_unlim": false,
+    "count": 1,
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "e04af071-4a84-4c48-98e0-7a1159d9af3d"
+      }
+    ],
+    "prompt": "Animate this exact first frame as one continuous five-second scene in a cinematic SkyyRose short. Keep the same adult Black Rose model and same stylized Skyy mascot, exact faces, hair, proportions and wardrobe. The adult remains photorealistic; Skyy remains stylized 3D. 0–1.5 seconds: Skyy looks up at the adult and gently curls her already extended hand inward once, clearly inviting him to follow. He lifts his eyes toward her, expression changing from uncertainty to recognition. 1.5–3.5 seconds: Skyy turns only her gaze toward the warm light she is indicating; the adult transfers weight into one small forward step while remaining three-quarter front. 3.5–5 seconds: he settles and they hold a shared sense of anticipation. Camera stays at its starting waist-height and glides half a meter right, with restrained concrete-pillar parallax. Preserve the entire silver botanical chest artwork, existing Love Hurts script and all costume boundaries without redraw or morph. Preserve mascot-to-adult size relationship. Natural cloth response, grounded wet footfall, rippling reflections, subtle practical light. Sound: distant rail rumble, water and one soft footfall; no dialogue or music. No cuts, spin, back view, extra people, lip-sync, outfit change, creature transformation, animated graphics, exaggerated gesture, lens flare blast or floating particles."
+  },
+  "job_id": "5535ea5f-05b9-45fa-b8c2-1f331e48a87d",
+  "estimated_credits": 12.5,
+  "status": "COMPLETED_REQUIRES_MOTION_CORRECTION",
+  "attempt": 1,
+  "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260911_160120_5535ea5f-05b9-45fa-b8c2-1f331e48a87d.mp4",
+  "technical_evidence": {
+    "duration_seconds": 5.042,
+    "width": 1912,
+    "height": 1080,
+    "video_codec": "h264",
+    "audio_codec": "aac"
+  },
+  "review": "Five sampled frames show gesture and stepping but undesired body rotation obscures chest graphics. Not approved for campaign."
+}

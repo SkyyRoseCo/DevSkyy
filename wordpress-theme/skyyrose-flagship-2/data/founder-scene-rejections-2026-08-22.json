@@ -1,0 +1,40 @@
+{
+  "schema": "skyyrose.v2.founder-scene-rejections.v1",
+  "decision_date": "2026-08-22",
+  "decision": "rejected",
+  "scope": "Four Scroll World statue scenes",
+  "reason": "They do not include the actual completed statues from the collection hero imagery.",
+  "rejected_scenes": [
+    {
+      "scene_id": "BR-1",
+      "collection": "black-rose",
+      "hero_aspect": "font",
+      "candidate": "assets/scroll-world/generated-candidates/black-rose/hero-aspect-remakes-v3/br-1-font-statue-br-001-protected-v3.png"
+    },
+    {
+      "scene_id": "BR-3",
+      "collection": "black-rose",
+      "hero_aspect": "graphic",
+      "candidate": "assets/scroll-world/generated-candidates/black-rose/hero-aspect-remakes-v3/br-3-star-graphic-br-001-protected-v3.png"
+    },
+    {
+      "scene_id": "SIG-1",
+      "collection": "signature",
+      "hero_aspect": "font",
+      "candidate": "assets/scroll-world/generated-candidates/signature/hero-aspect-remakes-v3/sig-1-founder-skyyrose-font-sg-015-protected-v3.png"
+    },
+    {
+      "scene_id": "SIG-3",
+      "collection": "signature",
+      "hero_aspect": "graphic",
+      "candidate": "assets/scroll-world/generated-candidates/signature/hero-aspect-remakes-v3/sig-3-founder-graphic-sg-005-protected-v3.png"
+    }
+  ],
+  "hard_stop": {
+    "regenerate_before_hero_lock": false,
+    "wire_rejected_candidates": false,
+    "promote_rejected_candidates": false,
+    "release_eligible": false,
+    "replacement_entry_gate": "First approve the completed font and graphic statues inside each collection hero. Then extract or reuse those completed statue pixels and treatments directly; no independently rebuilt logo, graphic, extrusion, mounting, pedestal, or lighting interpretation is allowed."
+  }
+}

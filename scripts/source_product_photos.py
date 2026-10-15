@@ -93,7 +93,7 @@ def _try_bria_matte(path: Path) -> str | None:
         else:
             img = result.convert("RGBA")
         alpha = img.split()[-1]
-        non_zero = sum(1 for px in alpha.getdata() if px > 8)
+        non_zero = sum(1 for px in alpha.get_flattened_data() if px > 8)
         ratio = non_zero / (img.size[0] * img.size[1])
         if ratio < 0.05:
             return (

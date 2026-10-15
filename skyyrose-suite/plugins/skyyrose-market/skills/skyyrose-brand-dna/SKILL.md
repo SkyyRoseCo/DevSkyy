@@ -201,20 +201,14 @@ This isn't fast fashion. This is armor.
 
 ---
 
-## Canonical Tagline
+## Tagline
 
-> **`Luxury Grows from Concrete.`**
-
-The period is part of the tagline. This is the **only** tagline. Never paraphrase:
-- "luxury from the streets" = WRONG
-- "grown from concrete" = WRONG
-- "Luxury grows from the concrete" (no period, no capital C) = WRONG
+No tagline is authorised (founder decision 2026-10-06). Any tagline use, in any form or variant, is a violation.
 
 ---
 
 ## Key Brand Messages
 
-- "Luxury Grows from Concrete." (only tagline — verbatim with period)
 - "Where fashion meets emotion"
 - "Redefine luxury fashion"
 - "Sustainably crafted, limited edition designs"
@@ -254,7 +248,7 @@ Product facts — name, collection, price, description, colorway — resolve thr
 
 1. **Catalog CSV:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (33 SKUs)
 2. **Per-SKU dossiers:** `skyyrose/elite_studio/assets/` per-product directories
-3. **Live agent (for social copy):** `SocialMediaAgent` → `skyyrose/assets/data/product-content.json`
+3. **Live agent (for social copy):** `SocialMediaAgent` → the product registry via `skyyrose.core.product.get_product(sku)`
 
 **Never invent a product, colorway, or detail.** If catalog data is absent, surface the gap — do not fill it with inference. (This rule traces to the lh-005 fanny-pack hallucination incident, 2026-05-27.)
 

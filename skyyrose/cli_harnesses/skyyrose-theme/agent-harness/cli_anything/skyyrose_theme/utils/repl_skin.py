@@ -66,7 +66,6 @@ class ReplSkin:
         """Print the startup banner."""
         ver_str = f"  v{version}" if version else ""
         title = f"SkyyRose Theme CLI{ver_str}"
-        tagline = "Luxury Grows from Concrete."
 
         print()
         print(f"  {_ROSE_GOLD}{_BOLD}{_TL}{self._hr()}{_TR}{_RESET}")
@@ -76,14 +75,6 @@ class ReplSkin:
             + " " * pad
             + f"{_BOLD}{_WHITE}{title}{_RESET}"
             + " " * (self._width - pad - len(title))
-            + f"{_ROSE_GOLD}{_V}{_RESET}"
-        )
-        pad2 = (self._width - len(tagline)) // 2
-        print(
-            f"  {_ROSE_GOLD}{_V}{_RESET}"
-            + " " * pad2
-            + f"{_DIM_WHITE}{_DIM}{tagline}{_RESET}"
-            + " " * (self._width - pad2 - len(tagline))
             + f"{_ROSE_GOLD}{_V}{_RESET}"
         )
         print(f"  {_ROSE_GOLD}{_BOLD}{_BL}{self._hr()}{_BR}{_RESET}")
@@ -156,4 +147,4 @@ class ReplSkin:
         print()
 
     def print_goodbye(self) -> None:
-        print(f"\n  {_DIM_WHITE}Goodbye. {_ROSE_GOLD}Luxury Grows from Concrete.{_RESET}\n")
+        print(f"\n  {_DIM_WHITE}Goodbye.{_RESET}\n")

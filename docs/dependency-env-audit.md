@@ -2,7 +2,8 @@
 
 ## Node dependency pinning
 
-Top-level packages now use exact versions for the drifted entries found by `npm ls`:
+Top-level packages now use exact versions for the drifted entries found by
+`npm ls`:
 
 - `graphql@17.0.2`
 - `jest@30.4.2`
@@ -10,7 +11,7 @@ Top-level packages now use exact versions for the drifted entries found by `npm 
 - `lucide-react@1.28.0`
 - `pica@10.0.2`
 - `rate-limiter-flexible@11.2.0`
-- `sharp@0.35.3`
+- `sharp@0.35.4` — security patch for GHSA-rgj7-g3m4-5g8c (2026-09-14)
 - `three@0.185.1`
 - `ts-jest@29.4.12`
 - `vite@8.2.0`
@@ -37,5 +38,6 @@ Keep app/runtime secrets in `.env`:
 ## Notes
 
 - `npm audit` still reports many advisories in transitive packages.
-- `composer audit` still reports advisories in `composer/composer` and `wp-coding-standards/wpcs`.
+- `composer audit` still reports advisories in `composer/composer` and
+  `wp-coding-standards/wpcs`.
 - Do not commit real secret values; only align example files and documentation.

@@ -20,8 +20,8 @@
 ## 1. The brand in one breath
 
 - **Brand:** SkyyRose (The Skyy Rose Collection) — luxury Oakland streetwear.
-- **Tagline (verbatim, the ONLY tagline):** `Luxury Grows from Concrete.`
-  Period included. Never paraphrase ("luxury from the streets", "grown from concrete" = WRONG).
+- **Tagline:** No tagline is authorised (founder decision 2026-10-06).
+  Never add or paraphrase one ("luxury from the streets", "grown from concrete" = WRONG).
 - **Founder:** Corey Foster. Oakland / Bay Area roots. Direct, earned, unhurried voice.
 - **Anchor:** Oakland, CA ("The Town"). "Bay Area" is acceptable; Oakland-first is preferred.
 - **Site:** skyyrose.co (WordPress store). The dashboard devskyy.app is internal — never market it.
@@ -114,7 +114,7 @@ Product facts — name, collection, price, description, colorway — resolve thr
 
 1. **Catalog CSV:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (33 SKUs)
 2. **Per-SKU dossiers:** `skyyrose/elite_studio/assets/` per-product directories
-3. **Live agent (for social copy):** `SocialMediaAgent` → `skyyrose/assets/data/product-content.json`
+3. **Live agent (for social copy):** `SocialMediaAgent` → the product registry via `skyyrose.core.product.get_product(sku)`
 
 **Never invent a product, colorway, or detail.** If data is absent, surface the gap; do not fill
 it with inference or memory. Every pipeline and agent that touches a product MUST resolve through

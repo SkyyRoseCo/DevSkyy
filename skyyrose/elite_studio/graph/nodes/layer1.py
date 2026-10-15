@@ -182,7 +182,7 @@ def generator_node(state: EliteStudioState) -> dict:
 
 
 def quality_node(state: EliteStudioState) -> dict:
-    """Dual-QC: ML classifier first, Claude Sonnet fallback on low confidence.
+    """Dual-QC: classifier can reject early; approval always needs both vision judges.
 
     Phase 16 Upgrade: Inspects audit_result from FLUX synthesis first. If
     blocking violations exist, fails immediately without calling ML/LLM.
@@ -259,9 +259,12 @@ def quality_node(state: EliteStudioState) -> dict:
 
     # --- Stage 2: LLM QC (only when classifier is uncertain) ---
     quality_result = None
-    if classifier_result.confidence >= _CLASSIFIER_CONFIDENCE_THRESHOLD:
+    if (
+        classifier_result.confidence >= _CLASSIFIER_CONFIDENCE_THRESHOLD
+        and classifier_result.score < 0.7
+    ):
         logger.info(
-            "[QC] High-confidence classifier result — skipping LLM QC (confidence=%.3f)",
+            "[QC] High-confidence classifier rejection — skipping LLM QC (confidence=%.3f)",
             classifier_result.confidence,
         )
         # Synthesise a QualityVerification from classifier result alone
@@ -283,7 +286,7 @@ def quality_node(state: EliteStudioState) -> dict:
         )
     else:
         logger.info(
-            "[QC] Low classifier confidence (%.3f) — running Claude Sonnet QC",
+            "[QC] Candidate requires dual-vision evidence (classifier confidence %.3f)",
             classifier_result.confidence,
         )
         llm_agent = _shim().QualityAgent()
@@ -291,6 +294,8 @@ def quality_node(state: EliteStudioState) -> dict:
             llm_agent.verify(
                 image_path=gen.output_path,
                 expected_spec=vision.unified_spec,
+                sku=state["sku"],
+                view=state.get("view", "front"),
             )
         )
 
@@ -522,7 +527,11 @@ def finalize_node(state: EliteStudioState) -> dict:
     """
     from ...telemetry import write_run_summary
 
-    final_status = "success" if state.get("status") != "error" else "error"
+    qc = state.get("quality_result")
+    approved = bool(
+        qc and qc.success and qc.overall_status == "pass" and qc.recommendation == "approve"
+    )
+    final_status = "success" if state.get("status") != "error" and approved else "error"
 
     budget = state.get("budget")
     budget_snap = budget.snapshot() if budget is not None and hasattr(budget, "snapshot") else None
@@ -540,8 +549,8 @@ def finalize_node(state: EliteStudioState) -> dict:
         "error": state.get("error", ""),
         "failed_step": state.get("failed_step", ""),
         "generation_engine": getattr(gen, "provider", None) or getattr(gen, "model", None),
-        "qa_score": getattr(qa, "score", None) if qa else None,
-        "qa_passed": getattr(qa, "passed", None) if qa else None,
+        "qa_score": qa.details.get("min_score") if qa else None,
+        "qa_passed": approved,
         "three_d_fidelity_score": three_d_score,
         "three_d_model_path": state.get("three_d_model_path", ""),
         "budget": budget_snap,
@@ -552,6 +561,8 @@ def finalize_node(state: EliteStudioState) -> dict:
     summary_path = write_run_summary(workflow_id, summary)
 
     out: dict = {"status": final_status}
+    if not approved and state.get("status") != "error":
+        out.update(error="Quality gate did not approve candidate", failed_step="quality")
     if summary_path is not None:
         out["run_summary_path"] = str(summary_path)
     return out

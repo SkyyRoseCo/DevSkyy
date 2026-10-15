@@ -104,6 +104,10 @@ def extract_video_url(result: dict[str, Any]) -> str:
         reason = FAILURE_REASONS.get(status, f"ended with unexpected status {status!r}")
         raise GenerationError(f"Generation {reason}.")
 
+    # Verified against the live API on 2026-09-21 (request
+    # aa81a322-483a-44aa-81a4-1043c3d44935): a completed seedance-2.5 response
+    # carries {"video": {"url": "https://...mp4"}}. The list branch stays because
+    # the docs only promise "returned in the video field".
     video = result.get("video")
     if isinstance(video, list) and video:
         video = video[0]

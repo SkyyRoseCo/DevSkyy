@@ -133,7 +133,7 @@ _CONSTRAINTS: dict[str, object] = {
     "no_mannequin_visible": True,
     "seamless_background_required": True,
     "garment_must_be_protagonist": True,
-    "brand": "SkyyRose — Luxury Grows from Concrete.",
+    "brand": "SkyyRose",
 }
 
 

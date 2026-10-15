@@ -35,16 +35,15 @@ curved stem, solid right leaf, open left leaf and original orientation. The
 registered JPEG is a rose-gold gradient rendition. The founder's supplied
 Photoroom PNG is a separate dimensional rendition of the same identity; do not
 claim byte equivalence between them or silently overwrite one with the other.
-The source artwork's finish does not establish a garment's manufacturing method.
-Do not substitute a three-rose cloud cluster, SR monogram, generic rose,
+The source artwork's finish does not establish a garment's manufacturing
+method. Do not substitute a three-rose cloud cluster, SR monogram, generic rose,
 yellow-gold flower or pink recolor. `recolor_allowed` remains false.
 
 ## Evidence and limits
 
 Founder statements recorded September 13, 2026:
 
-> “this was our first rose ever used as a graphic and will be the lead for the
-> signature collection”
+> “this was our first rose ever used as a graphic and will be the lead for the signature collection”
 >
 > “that is the logo on the windbreaker set but its also in the signature font”
 

@@ -41,7 +41,7 @@ $cookie_privacy_url = home_url( '/privacy-policy/' );
 			<?php
 			printf(
 				/* translators: %1$s and %2$s wrap the privacy policy link */
-				esc_html__( 'Stay to accept, or %1$sread how we handle your data%2$s.', 'skyyrose' ),
+				esc_html__( 'Choose whether to allow analytics and personalization, or %1$sread how we handle your data%2$s.', 'skyyrose' ),
 				'<a href="' . esc_url( $cookie_privacy_url ) . '" class="cookie-consent__link">',
 				'</a>'
 			);
@@ -60,7 +60,24 @@ $cookie_privacy_url = home_url( '/privacy-policy/' );
 
 <script>
 (function() {
-	if ( localStorage.getItem( 'skyyrose_cookie_consent' ) ) return;
+	function readConsent() {
+		try { return localStorage.getItem( 'skyyrose_cookie_consent' ); }
+		catch ( e ) { return null; }
+	}
+	function clearIdentifiers() {
+		[ 'skyy_vh', 'skyy_analytics_session' ].forEach( function( key ) {
+			try { localStorage.removeItem( key ); } catch ( e ) { /* Storage may be blocked. */ }
+		} );
+		document.cookie = 'skyy_visitor=; Max-Age=0; Path=/; SameSite=Lax';
+	}
+	function cookieConsent( value ) {
+		document.cookie = 'skyyrose_cookie_consent=' + value + '; Max-Age=7776000; Path=/; SameSite=Lax' + ( location.protocol === 'https:' ? '; Secure' : '' );
+	}
+	function announce( value ) {
+		var detail = { consent: value };
+		document.dispatchEvent( new CustomEvent( 'skyyrose:consent-' + value, { detail: detail } ) );
+		document.dispatchEvent( new CustomEvent( 'skyyrose:consent-changed', { detail: detail } ) );
+	}
 	var banner      = document.getElementById( 'skyyrose-cookie-consent' );
 	var accept      = document.getElementById( 'skyyrose-cookie-accept' );
 	var decline     = document.getElementById( 'skyyrose-cookie-decline' );
@@ -74,7 +91,10 @@ $cookie_privacy_url = home_url( '/privacy-policy/' );
 	// computes position:fixed once cookie-consent.css has applied. Dismiss
 	// paths re-hide via the CSS class so the slide-out transition still plays.
 	function reveal() {
+		returnFocus = document.activeElement || document.body;
 		banner.removeAttribute( 'hidden' );
+		banner.removeAttribute( 'aria-hidden' );
+		banner.inert = false;
 		banner.classList.remove( 'cookie-consent--hidden' );
 		// Clearance contract: while the banner is visible, <html> carries this
 		// class so fixed bottom widgets (mascot, recall pill) read
@@ -82,7 +102,9 @@ $cookie_privacy_url = home_url( '/privacy-policy/' );
 		// being covered by it (cookie-consent.css defines the var).
 		document.documentElement.classList.add( 'skyyrose-consent-open' );
 		// Move focus to accept button so keyboard users reach the dialog immediately.
-		setTimeout( function() { accept.focus( { preventScroll: true } ); }, 100 );
+		setTimeout( function() {
+			if ( ! banner.classList.contains( 'cookie-consent--hidden' ) ) accept.focus( { preventScroll: true } );
+		}, 100 );
 	}
 	function sheetLive() {
 		return 'fixed' === window.getComputedStyle( banner ).position;
@@ -113,20 +135,38 @@ $cookie_privacy_url = home_url( '/privacy-policy/' );
 		} )();
 	}
 	function idleStart() {
+		var pendingStart = function() {
+			var consent = readConsent();
+			if ( consent !== 'accepted' && consent !== 'declined' ) start();
+		};
 		if ( 'requestIdleCallback' in window ) {
-			requestIdleCallback( start, { timeout: 2000 } );
+			requestIdleCallback( pendingStart, { timeout: 2000 } );
 		} else {
-			setTimeout( start, 250 );
+			setTimeout( pendingStart, 250 );
 		}
 	}
-	if ( 'complete' === document.readyState ) {
+	var initial = readConsent();
+	if ( initial !== 'accepted' ) clearIdentifiers();
+	cookieConsent( initial === 'accepted' ? 'accepted' : 'declined' );
+	if ( initial !== 'accepted' && initial !== 'declined' && 'complete' === document.readyState ) {
 		idleStart();
-	} else {
+	} else if ( initial !== 'accepted' && initial !== 'declined' ) {
 		window.addEventListener( 'load', idleStart );
 	}
 	function dismiss( value ) {
-		localStorage.setItem( 'skyyrose_cookie_consent', value );
+		try {
+			localStorage.setItem( 'skyyrose_cookie_consent', value );
+			if ( readConsent() !== value ) value = 'declined';
+		} catch ( e ) {
+			value = 'declined';
+			try { localStorage.removeItem( 'skyyrose_cookie_consent' ); } catch ( ignored ) { /* Deny via cookie and event. */ }
+		}
+		cookieConsent( value );
+		if ( value !== 'accepted' ) clearIdentifiers();
+		announce( value );
 		banner.classList.add( 'cookie-consent--hidden' );
+		banner.setAttribute( 'aria-hidden', 'true' );
+		banner.inert = true;
 		document.documentElement.classList.remove( 'skyyrose-consent-open' );
 		// Return focus to where it was before the dialog appeared.
 		if ( returnFocus && typeof returnFocus.focus === 'function' ) {
@@ -135,8 +175,27 @@ $cookie_privacy_url = home_url( '/privacy-policy/' );
 	}
 	accept.addEventListener( 'click', function() { dismiss( 'accepted' ); } );
 	decline.addEventListener( 'click', function() { dismiss( 'declined' ); } );
-	// Escape key: treat as decline (hides banner without storing acceptance).
+	// Existing privacy/settings UI can reopen the choice or revoke directly.
+	document.addEventListener( 'skyyrose:consent-revoke', function() { dismiss( 'declined' ); } );
+	document.addEventListener( 'skyyrose:consent-open', start );
+	document.addEventListener( 'click', function( e ) {
+		if ( e.target && typeof e.target.closest === 'function' && e.target.closest( '[data-cookie-consent-settings]' ) ) {
+			e.preventDefault();
+			start();
+		}
+	} );
+	// Trap focus while this aria-modal dialog is visible; Escape declines.
 	document.addEventListener( 'keydown', function( e ) {
+		if ( e.key === 'Tab' && ! banner.classList.contains( 'cookie-consent--hidden' ) ) {
+			var controls = banner.querySelectorAll( 'a[href], button:not([disabled])' );
+			var first = controls[0];
+			var last = controls[controls.length - 1];
+			if ( e.shiftKey && ( document.activeElement === first || ! banner.contains( document.activeElement ) ) ) {
+				e.preventDefault(); last.focus();
+			} else if ( ! e.shiftKey && ( document.activeElement === last || ! banner.contains( document.activeElement ) ) ) {
+				e.preventDefault(); first.focus();
+			}
+		}
 		if ( e.key === 'Escape' && ! banner.classList.contains( 'cookie-consent--hidden' ) ) {
 			dismiss( 'declined' );
 		}

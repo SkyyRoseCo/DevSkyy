@@ -5,3 +5,16 @@ if (!threeMock.CanvasTexture) {
 }
 
 Object.assign(globalThis, { THREE: threeMock });
+
+// Node 26 exposes storage globals even without a backing file. Browser tests
+// must use their JSDOM window's storage, not the host Node process's storage.
+const browserWindow = (globalThis as typeof globalThis & { jsdom?: { window: Window } }).jsdom?.window;
+if (browserWindow) {
+  for (const name of ['localStorage', 'sessionStorage'] as const) {
+    Object.defineProperty(globalThis, name, {
+      configurable: true,
+      writable: true,
+      value: browserWindow[name],
+    });
+  }
+}

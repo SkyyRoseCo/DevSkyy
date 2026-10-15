@@ -37,7 +37,7 @@ unknown_text = "fail"
 [language.python]
 extensions = [".py"]
 formatter = "black"
-formatter_version = "26.1.0"
+formatter_version = "26.3.1"
 syntax = "ast.parse"
 imports_formatter = "isort"
 imports_formatter_version = "8.0.0"

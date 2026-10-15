@@ -1,0 +1,329 @@
+{
+  "schema": "skyyrose.collection-film-series.v1",
+  "status": "REJECTED_BY_FOUNDER_CREATIVE_REVISION_REQUIRED",
+  "title": "The Town Line \u2014 four collection stories",
+  "supersedes": "../train-commercial/contract.json",
+  "source_video": {
+    "path": "/Users/theceo/Downloads/Video Apr 21 2024, 11 01 18 AM.mp4",
+    "sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+    "duration_seconds": 65.107,
+    "width": 720,
+    "height": 1280,
+    "fps": "24000/1001",
+    "instruction": "Founder authorizes short clips from the supplied video, provided viewers clearly recognize the actual Black Rose Sherpa Bomber. Source audio stays excluded; selected footage retains its original appearance.",
+    "preservation": "Original file unchanged and SHA256 reverified. The separate complete silent master retains all 1561 frames. New short excerpts use authorized selections only; all 192 frames in the current excerpt reel match their corresponding source frames.",
+    "allowed_current_work": "Select and reorder short excerpts, preserving their original framing, colors, normal playback speed and garment details. Original file and complete silent derivative remain retained as source masters.",
+    "prohibited": [
+      "crop or digitally zoom source footage",
+      "grade or recolor source footage",
+      "retime source footage",
+      "inpaint or regenerate source footage",
+      "stabilize source footage",
+      "upscale source footage",
+      "overlay mascot or text on source footage"
+    ],
+    "media_id": "3e1c56a5-4b33-4e00-a7cd-da60febed983",
+    "silent_derivative": {
+      "media_id": "1e96ea08-7e0d-4bcc-a04e-7cc3786dc50c",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/1e96ea08-7e0d-4bcc-a04e-7cc3786dc50c.mp4",
+      "sha256": "2dad60dccc4b1e9af2594c03fb635e076ac6b51ccd54b7dd4880a61b67977ebe",
+      "evidence": "silent-video-receipt.json"
+    },
+    "encoding_policy": "Frame-accurate derivative clips may use lossless encoding. Match every selected decoded frame against its source frame. Do not claim stream-copy for losslessly encoded selections.",
+    "audio_policy": "Source audio excluded. The product-select reel is silent.",
+    "current_selects": {
+      "media_id": "1865a315-cd14-467b-8d6b-6022cee222e9",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/1865a315-cd14-467b-8d6b-6022cee222e9.mp4",
+      "sha256": "beeb0045d74edf3f7933422aca1ea9df6eed0832fc2d5217a42f88f78b5b3608",
+      "frames": 192,
+      "duration_seconds": 8.008,
+      "receipt": "product-selects-receipt.json",
+      "review_sheet_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/89723e5b-8a12-4e1f-96a8-1aae2b10b4d2.jpg"
+    }
+  },
+  "black_rose": {
+    "sku": "br-006",
+    "name": "The Bomber Sherpa",
+    "model": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/br-006-onmodel.webp",
+    "mascot": "/Users/theceo/Downloads/archive/hf_20260719_195809_4ed63ad5-5e66-49a2-bcfa-dda2f19cc610.png",
+    "model_sha256": "d474d97d9fac60eff864a14f30b6e07845ea71696ae0483a2c5f7108f22c815b",
+    "mascot_sha256": "9b7c6b09fca0ebbce42c4a307dd7a0f4b4878480b5338c23ee731cfa74eb8074",
+    "garment": "Black satin exterior, black sherpa lining, hood, zipper beneath snap/button storm flap, zipped side pockets, chest rose/cloud embroidery. Do not substitute sg-009 white lining or br-004 pullover.",
+    "identity": "Use the actual source-video performer as the sole Black Rose lead. Exact source frames731/1427 bind the reviewed paired scene; motion inherits that paired start frame. The earlier invented male is excluded.",
+    "source_review": "Founder confirms the actual garment in the footage. Current card/physical product and archive Skyy bomber have been visually inspected. Before generating new mascot scenes, reconcile emblem, placket and pocket details against this garment evidence. Archive background is not scene authority.",
+    "primary_garment_evidence": "Founder-supplied video depicts the actual Black Rose Sherpa Bomber (br-006), explicitly confirmed in this conversation. Use the footage for the actual garment's appearance and movement; retain product-card and physical-product references for construction details.",
+    "casting": "The source-video performer controls casting through reviewed reference-bound train keyframes. The canonical product-card model is garment/construction evidence only.",
+    "actor_reference_receipt": "identity-correction/black-rose-actor-references.json",
+    "excluded_identity_source": "Generated male in the earlier rejected Black Rose film and keyframes."
+  },
+  "global": {
+    "commercial_feel": "Hook, encounter, discovery and product payoff in every film; clear garments immediately, one large reveal that changes the scale or meaning of the scene.",
+    "train": "The train connects each collection story. Short, full-screen excerpts of the actual Black Rose garment interrupt and resolve the model/Skyy encounter while the train scenes establish narrative continuity.",
+    "wordless": "No dialogue, voiceover, captions, titles or added signage. Selected source footage is silent, with all selected frames visually unchanged.",
+    "hero": "One recognizable source-derived hero feature anchors each world; don't import source hero cast or change garment marks.",
+    "delivery": "Four 20.020-second standalones and one 40.040-second main, silent at 720\u00d71280 and 24000/1001 fps. Separate lossless masters and H.264 viewing copies.",
+    "ending": "Kids ends with shared recognition and Skyy offering a low open palm to the viewer beside the real red-outfit child. This supersedes the earlier child-led invitation reversal."
+  },
+  "films": [
+    {
+      "id": "SIG",
+      "title": "The First Light",
+      "duration_new_seconds": 20,
+      "sku": [
+        "sg-009"
+      ],
+      "story": "Matching white-lined black sherpas, shared recognition and a low invitation, then the monumental gold rose growing outside the train window.",
+      "reveal": "An intimate shared garment detail expands into the full gold hero sculpture seen from the train.",
+      "master_select": "Matching glance plus gold reveal from newly created shots.",
+      "status": "ON_HOLD_CURRENT_PACKAGE_REJECTED",
+      "viewing_url": "identity-correction/output/signature.mp4",
+      "duration_seconds": 20.02,
+      "beats_reference": "identity-correction/output/edit-manifest.json",
+      "proposed_beats_before_correction": [
+        {
+          "time": "0\u20133",
+          "action": "Open on the source model's red rose and white-lined black jacket, with his face already readable."
+        },
+        {
+          "time": "3\u20137",
+          "action": "A restrained reframing reveals Skyy beside the adjacent window wearing the corrected matching Sherpa."
+        },
+        {
+          "time": "7\u201312",
+          "action": "He opens a hand toward the window place; Skyy looks from the shared chest roses toward the glass."
+        },
+        {
+          "time": "12\u201317",
+          "action": "The last dark bridge beam slides past. The panoramic window reveals the monumental gold rose and source metallic curve at scale, with a believable distant landscape."
+        },
+        {
+          "time": "17\u201320",
+          "action": "Hold both matching jacket fronts in warm neutral light. Skyy and the model exchange a quiet nod."
+        }
+      ],
+      "master_path": "identity-correction/output/signature-lossless.mp4"
+    },
+    {
+      "id": "BR",
+      "title": "The Night Car",
+      "duration_new_seconds": 12.012,
+      "standalone_sequence_seconds": 20.02,
+      "sku": [
+        "br-006"
+      ],
+      "story": "Actual bomber footage intercuts with the source-performer-based train encounter and matching Skyy. End on the Bay Bridge and enlarging silver-edged rose/star.",
+      "reveal": "The actual garment's rose detail connects to Skyy's matching look and the source monument. Hold front views before and after the rear detail so the jacket remains unmistakable.",
+      "master_select": "Approximately 12-second main-film chapter: 6 seconds of actual garment excerpts and 6 seconds of new encounter/reveal footage. Full-source inclusion is no longer required.",
+      "duration_source_selected_seconds": 8.008,
+      "timeline_fps": "24000/1001",
+      "timeline_frames": 480,
+      "product_readability": {
+        "real_product_opens_standalone": true,
+        "front_source_seconds": 6.006,
+        "rear_source_seconds": 2.002,
+        "rule": "Every source insert shows the actual bomber at its existing full-frame scale. Keep the front and chest mark visible; rear graphic adds detail after the garment is established."
+      },
+      "status": "ON_HOLD_CURRENT_PACKAGE_REJECTED",
+      "viewing_url": "identity-correction/output/black-rose.mp4",
+      "duration_seconds": 20.02,
+      "beats_reference": "identity-correction/output/edit-manifest.json",
+      "proposed_beats_before_correction": [
+        {
+          "time": "0\u20132s",
+          "action": "Actual source front: establish the performer, black satin bomber, chest rose and construction before introducing the stylized world."
+        },
+        {
+          "time": "2\u20135s",
+          "action": "New train encounter: the same performer notices Skyy's matching bomber. Keep both fronts clear and the monument hidden."
+        },
+        {
+          "time": "5\u20138s",
+          "action": "Actual source inserts: one second of the remaining front selection, followed by two seconds of the rear rose and bomber shape."
+        },
+        {
+          "time": "8\u201311s",
+          "action": "New train reaction: their eye line connects; the final bridge rib still withholds the outside landmark."
+        },
+        {
+          "time": "11\u201314s",
+          "action": "Actual source front: hold the real garment and fabric movement for three seconds."
+        },
+        {
+          "time": "14\u201319s",
+          "action": "New large reveal: bridge structure clears the window, exposing the source black star and silver rose, with the matching bomber pair in the foreground."
+        },
+        {
+          "time": "19\u201320s",
+          "action": "New payoff: the man and Skyy exchange a small nod; garment fronts own the last image."
+        }
+      ],
+      "master_path": "identity-correction/output/black-rose-lossless.mp4"
+    },
+    {
+      "id": "LH",
+      "title": "The Seat Beside You",
+      "duration_new_seconds": 20,
+      "sku": [
+        "lh-004"
+      ],
+      "story": "Matching bomber fronts, a shared glance, then a wider frontal composition with repeated train arches and the red rose under glass.",
+      "reveal": "Depth through successive arches reveals the cloche rose; the empty place gains emotional meaning.",
+      "master_select": "Closing shared glance and wider arch-and-cloche product hold.",
+      "status": "ON_HOLD_CURRENT_PACKAGE_REJECTED",
+      "viewing_url": "identity-correction/output/love-hurts.mp4",
+      "duration_seconds": 20.02,
+      "beats_reference": "identity-correction/output/edit-manifest.json",
+      "proposed_beats_before_correction": [
+        {
+          "time": "0\u20134",
+          "action": "Readable white/black bomber front beside an empty window place; red surroundings do not tint the white garment."
+        },
+        {
+          "time": "4\u20138",
+          "action": "Skyy appears at the internal doorway; one accepting look, exact jacket details and separate identities."
+        },
+        {
+          "time": "8\u201312",
+          "action": "The model offers the seat with a single open hand. Cut rather than generate a complicated sit-down."
+        },
+        {
+          "time": "12\u201317",
+          "action": "Wider composition with the adult remaining seated reveals the hero's pointed arch and fixed cloche rose through aligned carriage doorways."
+        },
+        {
+          "time": "17\u201320",
+          "action": "Matching jacket fronts and exchanged glance hold the final product image."
+        }
+      ],
+      "master_path": "identity-correction/output/love-hurts-lossless.mp4"
+    },
+    {
+      "id": "KIDS",
+      "title": "Your Turn",
+      "duration_new_seconds": 20,
+      "sku": [
+        "kids-001",
+        "kids-002"
+      ],
+      "story": "A half-second closed-door cut introduces the red pair. Purple follows in the same carriage. Return to red for Skyy\u2019s low open-palm invitation and shared smile.",
+      "reveal": "Closed-door edit reveals the bright observation carriage and matching red pair; purple introduces the alternate colorway; Skyy ends with an invitation.",
+      "master_select": "Door reveal, both complete Kids colorways and invitation reversal; Kids ends the main commercial.",
+      "status": "ON_HOLD_CURRENT_PACKAGE_REJECTED",
+      "viewing_url": "identity-correction/output/kids-capsule.mp4",
+      "duration_seconds": 20.02,
+      "beats_reference": "identity-correction/output/edit-manifest.json",
+      "proposed_beats_before_correction": [
+        {
+          "time": "0\u20133.003",
+          "action": "Opaque doors open mechanically onto the red pair."
+        },
+        {
+          "time": "3.003\u201311.011",
+          "action": "Camera retreats to reveal throne; pair exchange looks and face the viewer."
+        },
+        {
+          "time": "11.011\u201316.016",
+          "action": "Separate purple pair, exact alternate child identity."
+        },
+        {
+          "time": "16.016\u201320.020",
+          "action": "Red pair returns; Skyy offers a low open palm toward the viewer beside the smiling child."
+        }
+      ],
+      "master_path": "identity-correction/output/kids-capsule-lossless.mp4"
+    }
+  ],
+  "main_commercial": {
+    "status": "ON_HOLD_CURRENT_PACKAGE_REJECTED",
+    "fps": "24000/1001",
+    "target_frames": 960,
+    "target_seconds": 40.04,
+    "principle": "Combine the collection stories through train continuity and matching garment recognition. Use 6.006 seconds of actual Black Rose footage within its 12.012-second chapter.",
+    "sections": [
+      {
+        "collection": "Signature",
+        "start_frame": 0,
+        "end_frame_exclusive": 192,
+        "duration_seconds": 8.008,
+        "story": "Matching rose, invitation and gold hero reveal."
+      },
+      {
+        "collection": "Black Rose",
+        "start_frame": 192,
+        "end_frame_exclusive": 480,
+        "duration_seconds": 12.012,
+        "story": "Actual bomber front, same performer meets Skyy, real garment inserts, silver-rose reveal."
+      },
+      {
+        "collection": "Love Hurts",
+        "start_frame": 480,
+        "end_frame_exclusive": 672,
+        "duration_seconds": 8.008,
+        "story": "Shared glance, paired garment fronts, arches and cloche rose."
+      },
+      {
+        "collection": "Kids",
+        "start_frame": 672,
+        "end_frame_exclusive": 960,
+        "duration_seconds": 12.012,
+        "story": "Closed-door cut, matching red and purple pairs, Skyy\u2019s invitation ending."
+      }
+    ],
+    "previous_96_second_proposal": "SUPERSEDED by founder authorization to use short excerpts.",
+    "assembly_note": "Corrected eight-motion-job edit with main SGB selection144:240; original source selections and counts preserved."
+  },
+  "evidence": {
+    "new_render_jobs": 8,
+    "new_video_derivatives": 5,
+    "original_hash_verified_after_latest_instruction": true,
+    "source_review_frames": "Full silent master verified previously. R2 selects: all 192 decoded frames match corresponding source frames. Source contact sheets and selected front/back/front keyframes visually inspected.",
+    "reviewed_sources": [
+      "Founder-confirmed actual br-006 garment in the supplied video",
+      "Current br-006 product-card front",
+      "br-006 physical product photograph",
+      "Archived Skyy wearing the bomber",
+      "Uploaded original SHA256 matches local source"
+    ],
+    "pending": [
+      "Develop and review a substantially different cinematic treatment",
+      "Founder review of revised visual direction"
+    ],
+    "silent_video_verified": true,
+    "current_source_selects_verified": true,
+    "first_selects_candidate_superseded": true,
+    "current_correction": "identity-correction/production-ledger.json",
+    "visual_review": "identity-correction/visual-review.json"
+  },
+  "executed_manifest": "identity-correction/output/edit-manifest.json",
+  "verification": "identity-correction/output/final-report.json",
+  "main_viewing_url": "identity-correction/output/town-line-main.mp4",
+  "main_duration_seconds": 40.04,
+  "founder_review": {
+    "feedback": "The girl is different in every clip and MUST stay the same.",
+    "interpretation": "Skyy is the recurring girl mascot across all collections. Her face, hair, age appearance, proportions and stylized design must stay consistent; wardrobe varies only by canonical collection product.",
+    "status": "LATEST_CORRECTED_PACKAGE_REJECTED",
+    "technical_verification": "All five exports passed source-frame, frame-count, cadence, duration and silence checks. Sampled visual reviews are recorded separately.",
+    "research": "build/IDENTITY-WORKFLOW-REVIEW.md",
+    "latest_feedback": [
+      "all of it. its generic as hell and doesnt seem story",
+      "its corny"
+    ],
+    "rejection_record": "identity-correction/founder-rejection.json",
+    "reason": "Overall concept and execution rejected as generic, corny and lacking story."
+  },
+  "identity_master": {
+    "reference": "identity-correction/sources/skyy-master.png",
+    "receipt": "identity-correction/setup-and-pilot.json",
+    "sha256": "a8a32b8097f6885300f537e50c942c445c09012269807b072b6854c7019b9973",
+    "authority": "Founder-selected; same Skyy face and body proportions for every collection."
+  },
+  "correction_provider": {
+    "provider": "Runway",
+    "motion_model": "kling-o3-pro",
+    "image_model": "gpt-image-2",
+    "instruction": "Founder explicitly selected Runway with Kling. No Seedance substitution.",
+    "status": "ALL_EIGHT_PRODUCTION_MOTION_JOBS_SUCCEEDED",
+    "receipt": "identity-correction/completed-jobs.json",
+    "workflow": "Reviewed paired source-reference stills, then image-to-video using short literal motion prompts; explicit start/end reveal targets for SG/BR."
+  }
+}

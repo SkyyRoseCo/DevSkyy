@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>SkyyRose Asset Hub + Product Cards — Handoff</title>
+<style>
+ body{font:15px/1.55 -apple-system,system-ui,sans-serif;max-width:1000px;margin:0 auto;padding:32px;color:#1a1a1a}
+ h1{border-bottom:3px solid #B76E79;padding-bottom:8px} h2{color:#B76E79;margin-top:34px;border-bottom:1px solid #ddd;padding-bottom:4px}
+ h3{margin-top:22px} code{background:#f4f4f4;padding:1px 5px;border-radius:3px;font-size:13px}
+ pre{background:#1a1a1a;color:#e8e8e8;padding:14px;border-radius:6px;overflow:auto;font-size:12.5px}
+ table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px} th,td{border:1px solid #ddd;padding:6px 9px;text-align:left;vertical-align:top}
+ th{background:#faf4f5} .ok{color:#197d19;font-weight:600} .bad{color:#c0392b;font-weight:600} .warn{color:#b8860b;font-weight:600}
+ .box{background:#fbf7f8;border-left:4px solid #B76E79;padding:10px 14px;margin:14px 0}
+ .crit{background:#fff4f4;border-left:4px solid #c0392b}
+</style></head><body>
+
+<h1>Asset Hub + Product Cards — Engineering Handoff</h1>
+<p><b>Date:</b> 2026-06-25 · <b>Branch:</b> fix/training-status-await-export · <b>Author:</b> prior session (Opus 4.8)<br>
+<b>Mission:</b> One verified asset hub = single source for ALL imagery (product renders + scene + web/site + ads + social), separated only by <b>collection</b> + <b>site</b>, usage-tagged, where <b>only verified renders serve</b>. Embed into 3 domains (elite-team / dashboard / WordPress). Immediate focus of THIS handoff: <b>finish the product cards</b> — correct verified front+back per SKU wired to the holo card.</p>
+
+<div class="box crit"><b>The triggering problem:</b> product cards were rendering WRONG garments. Founder rule, now LOCKED: <i>before any render / content / skyyrose.co edit, eyes-on verify every product image is the correct garment per SKU — pixels, not filename.</i> (CLAUDE.md Verification Protocol + <code>memory/feedback_verify_product_images_onsite.md</code>.) Engine-agnostic: a verified-correct render is usable whatever made it (OAI / Gemini / nano-banana); OAI-image-2 preferred for NEW renders.</div>
+
+<h2>1. What is already built (this session)</h2>
+<table>
+<tr><th>Artifact</th><th>Path</th><th>State</th></tr>
+<tr><td>Hub spec</td><td><code>assets/hub/HUB-SPEC.md</code></td><td>✅ taxonomy + manifest schema (incl provenance, campaign/ads tier, attribute-anchored verify)</td></tr>
+<tr><td>Industry research</td><td><code>assets/hub/RESEARCH-similar-brands.md</code></td><td>✅ ~30 cited sources; validates design</td></tr>
+<tr><td>Hub tree + manifest</td><td><code>assets/hub/manifest.json</code> + <code>assets/hub/collections/&hellip;</code></td><td>✅ 93 entries: 44 verified / 49 pending; 24 masters copied; 0 missing-on-disk</td></tr>
+<tr><td>Migrator</td><td><code>assets/hub/build_hub.py</code></td><td>✅ deterministic, idempotent — re-run to rebuild manifest</td></tr>
+<tr><td>Resolver (Python API)</td><td><code>skyyrose/core/asset_hub.py</code></td><td>✅ <code>resolve(sku,face)</code> · <code>by_usage(usage,scope)</code> · <code>pending()</code> · <code>verify_integrity()</code></td></tr>
+<tr><td>Resolver tests</td><td><code>tests/test_asset_hub.py</code></td><td>✅ <b>38/38 pass</b></td></tr>
+<tr><td>Verification contact sheet</td><td><code>assets/hub/_verify/contactsheet.html</code> (gen: <code>build_contactsheet.py</code>)</td><td>✅ interactive: per-image Use/Wrong/Halluc + usage tags (Card/Ad/Web/Scene) + comments; exports <code>skyyrose-verdicts.json</code></td></tr>
+<tr><td>Plan / todo</td><td><code>tasks/archive/2026-h1/asset-hub-build.md</code></td><td>✅ phases 1–4</td></tr>
+</table>
+<p class="warn">⚠ <code>assets/hub/</code>, <code>renders/</code>, <code>prototypes/</code> are <b>gitignored</b> → <code>git add -f</code> required to commit. The 33 OAI render gems under <code>renders/oai/_lookbook/onmodel/</code> were already <code>git add -f</code>'d (staged, not committed).</p>
+
+<h2>2. The product-card task (what "finish" means)</h2>
+<p>The holo card (<code>wordpress-theme/skyyrose-flagship/template-parts/product-card-holo.php</code>) resolves its image from the catalog <code>front_model_image</code>/<code>back_model_image</code> columns → per-collection <code>sot.json</code> → served theme <code>.webp</code>/<code>.avif</code>. "Finish" =</p>
+<ol>
+<li>Establish a <b>verified front + back master per SKU</b> in the hub (eyes-on or founder-approved).</li>
+<li>Generate served <code>webp</code>+<code>avif</code> derivatives (both required; srcset probes avif&gt;webp) into the theme products dir.</li>
+<li>Repoint catalog columns → rebuild <code>sot.json</code> + <code>sot-images.json</code>.</li>
+<li>Fix the 3 confirmed defects. Add the guard test. <code>pytest</code> green. (Deploy is separately gated.)</li>
+</ol>
+
+<h3>Confirmed verdicts this session (eyes-on 2026-06-25)</h3>
+<table>
+<tr><th>SKU</th><th>Front</th><th>Back</th><th>Note</th></tr>
+<tr><td>br-004</td><td class="ok">✓ theme onmodel</td><td class="ok">✓ theme back-model</td><td>black hoodie, rose chest</td></tr>
+<tr><td>br-010</td><td class="ok">✓ theme onmodel (B&amp;W tank)</td><td class="ok">✓ gemini-corrected back</td><td><b>DEFECT FIXED in hub:</b> old served back = wrong comet-G logo; replaced by verified gemini back (BLACK IS BEAUTIFUL + SR logo + gold roses). Still needs serving (Phase 2).</td></tr>
+<tr><td>lh-002</td><td class="ok">✓ theme onmodel (joggers)</td><td class="bad">✗ re-render</td><td>served back is the WHITE (lh-006) colorway — wrong. No verified black back exists.</td></tr>
+<tr><td>sg-001</td><td class="ok">✓ packshot</td><td class="ok">✓ packshot</td><td>Bay Bridge shorts; packshots (not on-model) but correct garment</td></tr>
+<tr><td>kids-001</td><td class="ok">✓ theme onmodel</td><td class="ok">✓ theme back-model</td><td>red/black colorblock set</td></tr>
+<tr><td>sg-002</td><td class="bad">✗ re-render</td><td class="bad">✗ re-render</td><td><b>DEFECT:</b> served front = cream tee w/ generic rose patch. Catalog = GOLD 'Stay Golden' shirt, rose w/ Golden Gate Bridge inside. Wrong colorway + wrong graphic + packshot-not-onmodel.</td></tr>
+</table>
+<p>Plus founder QC (<code>renders/oai/_review/review-state.json</code>, 2026-06-10) marked these OAI fronts OK and they wired: <code>br-003, br-006, br-007, br-011, br-012, sg-011, br-014, br-015</code>. Most QC-OK ghost-<i>backs</i> did NOT wire — the PNGs aren't at <code>renders/oai/&lt;slug&gt;/ghost-back.png</code>, so they're correctly left pending.</p>
+
+<h2 class="">3. Verification flow — how to ingest founder verdicts</h2>
+<p>The founder is marking <code>assets/hub/_verify/contactsheet.html</code> in-browser, then clicking Export → downloads <code>~/Downloads/skyyrose-verdicts.json</code>. Shape:</p>
+<pre>{ "items": { "&lt;sku&gt;|&lt;face&gt;|&lt;repo-relative-path&gt;": {"verdict":"use|wrong|hallucinated","usage":["product-card","ad-creative",...],"comment":"..."} },
+  "faces": { "&lt;sku&gt;|&lt;face&gt;": {"comment":"..."} } }</pre>
+<p><b>Next agent must write an ingester</b> (<code>assets/hub/ingest_verdicts.py</code>): read that JSON → for each <code>verdict:use</code>, copy that master into the hub + set the manifest entry <code>verdict:verified</code> with its <code>usage[]</code>; for <code>wrong</code>/<code>hallucinated</code> → keep pending + record reason → that's the Phase-4 re-render queue. Re-run nothing destructive; <code>build_hub.py</code> patterns show the copy/manifest idiom.</p>
+
+<h2>4. FULL image-location census — the candidate pool (founder confirmed "more renders exist")</h2>
+<p>Earlier inventory scanned only 4 trees. The repo actually holds many. <b>The next agent MUST widen candidate discovery to these before declaring any SKU "needs re-render"</b> — a verified-correct render may already exist here (saves paid renders):</p>
+<table>
+<tr><th>Tree</th><th>#</th><th>What</th></tr>
+<tr><td><code>wordpress-theme/.../assets/images/products/</code></td><td>491</td><td>served theme assets (current) — named-folder layout + flat files</td></tr>
+<tr><td><code>renders/oai/_lookbook/onmodel/</code></td><td>34</td><td><b>OAI on-model fronts</b> (the gems, git-staged). QC in <code>_review/review-state.json</code></td></tr>
+<tr><td><code>renders/oai/&lt;slug&gt;/</code>, <code>renders/oai/_rejected/</code></td><td>80</td><td>OAI per-slug renders + ghost/ghost-back + rejects</td></tr>
+<tr><td><code>skyyrose/assets/images/products/&lt;sku&gt;/*gemini*</code></td><td>122</td><td><b>Gemini</b> front+back upscaled-corrected (engine-agnostic OK if verified)</td></tr>
+<tr><td><code>renders/output/&lt;slug&gt;/&lt;sku&gt;-{front,back}/*stage*</code></td><td>289</td><td>FLUX pipeline stage attempts</td></tr>
+<tr><td><code>data/candidates/&lt;sku&gt;/front/</code></td><td>42 (br-003 only)</td><td>OAI gpt-image candidate pool + <code>_manifest.json</code> — pattern exists, only br-003 populated</td></tr>
+<tr><td><code>editorial-staging/&lt;collection&gt;/</code></td><td>105</td><td>editorial composites: <code>*-alpha.png</code> (cutouts), <code>*-comp-iter.png</code>, gemini-lookbook — for scene/ad compositing</td></tr>
+<tr><td><code>assets/products/source-photos/&lt;collection&gt;/</code></td><td>170</td><td><b>GROUND-TRUTH garment photos</b> — the verification anchor (what renders must replicate)</td></tr>
+<tr><td><code>assets/products/{masters,references,techflats}/</code></td><td>~200</td><td>masters / reference / techflat (split per collection)</td></tr>
+<tr><td><code>skyyrose/assets/images/source-products/&lt;collection&gt;/</code></td><td>163</td><td>source product photos (mirror of above?)</td></tr>
+<tr><td><code>skyyrose/assets/images/branding/optimized/&lt;collection&gt;/</code></td><td>77</td><td>brand graphics</td></tr>
+<tr><td><code>skyyrose/assets/images/avatar/poses/</code></td><td>63</td><td>mascot/avatar</td></tr>
+<tr><td><code>wordpress-theme/.../assets/images/lookbook/</code></td><td>20</td><td>lookbook</td></tr>
+</table>
+<p class="warn">Ignore: <code>assets/enhanced_products/all</code> + <code>assets/ai-models-with-products</code> — files are ~130-byte stubs (LFS pointers / broken), not real images. <code>skyyrose/elite_studio/assets/images/products/</code> is empty.</p>
+
+<h2>5. Hub architecture (the single authority)</h2>
+<pre>catalog CSV (front_model_image/back_model_image cols)
+  → data/build-collection-sot.py → wordpress-theme/.../data/collections/&lt;slug&gt;/sot.json
+  → skyyrose.core.sot_images (resolver, on-model-first) → data/sot-images.json   ← runtime contract (dashboard reads, PHP reads CSV directly)
+
+NEW:  assets/hub/manifest.json  ← THE verified authority (engine-agnostic masters + usage tags + provenance)
+      skyyrose.core.asset_hub   ← read API over it (resolve / by_usage / pending / verify_integrity)</pre>
+<p>Layout: <code>assets/hub/collections/&lt;collection&gt;/{products/&lt;sku&gt;/front|back|packshot, scenes/, brand/}</code> + <code>assets/hub/site/{chrome,backgrounds,ads}</code>. Masters live in hub; theme/frontend serve <b>derivatives</b>. Manifest is the only door. Guard: <code>tests/test_sot_no_adhoc_imagery.py</code> bans ad-hoc paths — extend it so served images must trace to a hub master.</p>
+
+<h2>6. 3-domain integration (mapped; NOT yet wired)</h2>
+<p>Founder intent (why all 3): agents self-serve correct assets · dashboard = human approval gate · kill scattered imagery · one approve→publish pipeline · feed ad-creative + social. Founder wants the design questions asked AFTER studying each domain (done — maps below). <b>These open questions still need founder answers before wiring.</b></p>
+
+<h3>Elite team (agents)</h3>
+<p>Seams: <code>scripts/oai_render/references.py:get_source_map()</code> (hardcoded sku→path → replace w/ <code>asset_hub.resolve</code>); <code>scripts/oai_render/pipeline.py:_accept_render()</code> (add <code>ingest()</code>); <code>skyyrose/elite_studio/coordinator.py</code> skip-check (use <code>has_render</code>). <code>agents/marketing_agent.py</code> + <code>creative_agent.py</code> take caller-supplied <code>image_path</code> — wrap with hub resolve. <b>Open Q:</b> do ad/social agents resolve images programmatically today or manual? Should hub hold collection-level editorial (hero/lifestyle) keyed by usage, not just per-SKU?</p>
+<h3>Dashboard (Next.js, frontend/)</h3>
+<p>Server-only disk modules pattern: <code>frontend/lib/sot-images.ts</code>, <code>lib/renders.ts</code>, <code>lib/catalog.ts</code> (<code>resolveRepoFile()</code> walks up to repo root). Build <code>frontend/lib/hub.ts</code> + routes <code>GET /api/hub/manifest</code>, <code>POST /api/hub/verdict</code>, <code>GET /api/hub/image</code> (mirror <code>app/api/renders/*</code>). Admin page <code>app/admin/hub/page.tsx</code> = productized contact sheet. <b>Gotchas:</b> auth gate is <code>frontend/proxy.ts</code> NOT middleware.ts (bug-162); use <code>await connection()</code> NOT <code>export const dynamic</code> (bug-161); <code>lib/collections.ts</code> is client-imported (can't call server-only); atomic <code>.tmp</code>→rename writes; EROFS guard for Vercel. <b>Open Q:</b> dashboard write verdicts only (CLI promotes) or dashboard promotes directly? Does hub supersede the Python <code>/api/v1/assets*</code> store?</p>
+<h3>WordPress (skyyrose.co)</h3>
+<p>Build-time sync only (no runtime rewire). New <code>scripts/sync-hub-to-theme.py</code> + Makefile <code>hub-sync:</code> target (parallel to <code>sot-manifest:</code> at <code>Makefile:213</code>): read verified hub masters → emit <code>front.webp</code>+<code>front-{480,600,750}w.{webp,avif}</code> (exact stem naming for <code>inc/image-placements.php:132</code> srcset probe) into theme products dir → repoint catalog 2 cols → <code>build-collection-sot.py</code> → <code>make sot-manifest</code> → commit → <code>deploy-theme.sh</code> ships it. <b>Gotchas:</b> avif+webp both required; theme must hold local copies (<code>get_theme_file_uri</code>); SKU→named-folder mapping needed (derive from CSV <code>image</code> path); CSV commit must precede deploy. <b>Open Q:</b> SKU→folder mapping in CSV or add <code>theme_folder</code> to manifest? Partial sync (verified-only, incremental) OK? Derivatives generated by sync script or pre-stored in hub?</p>
+
+<h2>7. Phase status</h2>
+<table>
+<tr><th>Phase</th><th>Status</th></tr>
+<tr><td>1 — hub skeleton + manifest + migrate verified</td><td class="ok">DONE (44 verified / 49 pending)</td></tr>
+<tr><td>2 — serve derivatives + repoint + guard + fix defects</td><td class="warn">NEXT — encoders confirmed (PIL webp+avif, cwebp, avifenc). br-010 back fix staged in hub, not yet served.</td></tr>
+<tr><td>3 — census + delete off-hub conflicts</td><td class="bad">GATED — STOP-AND-SHOW (deletion policy), 32/33 SKUs have ≥2 conflicting fronts</td></tr>
+<tr><td>4 — OAI-2 re-render the pending gaps</td><td class="bad">GATED — paid, STOP-AND-SHOW + cost + y. The 49 pending = the queue.</td></tr>
+</table>
+
+<h2>8. Exact next steps (for the finishing agent)</h2>
+<ol>
+<li><b>Widen candidate discovery</b> across all trees in §4 (esp. <code>data/candidates/</code>, <code>editorial-staging/</code>, <code>skyyrose/assets/.../source-products</code>, <code>assets/products/masters</code>) — regenerate the contact sheet to include them so the founder can approve existing renders before paying to re-render.</li>
+<li><b>Ingest founder verdicts</b> (<code>~/Downloads/skyyrose-verdicts.json</code>) → write <code>assets/hub/ingest_verdicts.py</code> → flip use→verified, wire usage tags.</li>
+<li><b>Phase 2</b>: write <code>scripts/sync-hub-to-theme.py</code> (webp+avif at 3 breakpoints, exact stem names) → fix br-010 back on disk → repoint catalog → <code>build-collection-sot.py</code> + <code>make sot-manifest</code> → extend guard test → <code>rtk proxy pytest</code>.</li>
+<li><b>Eyes-on every newly-served image</b> before any deploy (the fidelity gate). Deploy stays STOP-AND-SHOW.</li>
+<li><b>Get founder answers</b> to the 3-domain open questions (§6) before wiring elite-team/dashboard.</li>
+</ol>
+
+<div class="box"><b>Verification commands:</b> <code>python3 -m skyyrose.core.asset_hub</code> (counts + integrity) · <code>rtk proxy pytest tests/test_asset_hub.py -v</code> · <code>python3 assets/hub/build_hub.py</code> (rebuild manifest) · <code>python3 assets/hub/build_contactsheet.py &amp;&amp; open assets/hub/_verify/contactsheet.html</code>.</div>
+
+<h2>9. Hard rules (do not violate)</h2>
+<ul>
+<li><b>Fidelity gate:</b> eyes-on correct-garment per SKU before serving. Pixels &gt; filenames. (CLAUDE.md + <code>feedback_verify_product_images_onsite</code>.)</li>
+<li><b>Engine-agnostic</b> if verified; OAI-image-2 preferred for new. Don't delete verified-correct off-engine renders.</li>
+<li><b>STOP-AND-SHOW</b> before: paid render (OAI/Gemini/FASHN), WC/media write, skyyrose.co deploy, deletes/overwrites of real/paid assets.</li>
+<li><b>No-repeat image reads:</b> per-conversation vision batch quota — batch reads, never retry. Use the contact sheet / founder eyes for bulk verification.</li>
+<li><b>Catalog CSV + dossier = canonical product facts.</b> Memory rots; the CSV doesn't.</li>
+</ul>
+</body></html>

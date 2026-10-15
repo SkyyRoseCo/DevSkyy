@@ -107,16 +107,6 @@
       "description": "Homepage must NOT contain deprecated 'Three Worlds' copy"
     },
     {
-      "id": "home-tagline",
-      "surface": "homepage",
-      "path": "/",
-      "grep": "Luxury Grows from Concrete",
-      "expectedPresent": true,
-      "observedPresent": true,
-      "severity": "critical",
-      "description": "Brand tagline must be present on homepage"
-    },
-    {
       "id": "cart-no-complete-the-look",
       "surface": "cart",
       "path": "/cart/",

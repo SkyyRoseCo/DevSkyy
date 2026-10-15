@@ -193,7 +193,7 @@ class SkyyRoseImageryAgent(EnhancedSuperAgent):
 Your sole purpose: Generate on-brand placeholder imagery for the SkyyRose WordPress theme.
 You create AI model photos that wear and showcase brand assets, styled per collection identity.
 
-Brand: SkyyRose — "Luxury Grows from Concrete." — Oakland-inspired luxury fashion.
+Brand: SkyyRose — Oakland-inspired luxury fashion.
 
 Collections:
 - Signature: Gold luxury, regal, timeless. 18k gold accents.

@@ -107,7 +107,7 @@ const CATEGORY_TECHNIQUE_MAP: Record<string, PromptTechnique> = {
 };
 
 // SkyyRose brand context injected into role-based and RAG prompts
-const SKYYROSE_BRAND_CONTEXT = `SkyyRose is an Oakland-based luxury streetwear brand. Philosophy: "Luxury Grows from Concrete."
+const SKYYROSE_BRAND_CONTEXT = `SkyyRose is an Oakland-based luxury streetwear brand.
 Collections: BLACK ROSE (limited edition dark elegance), LOVE HURTS (emotional expression), SIGNATURE (foundation wardrobe essentials), Kids Capsule.
 Brand colors: #B76E79 rose gold, #0A0A0A obsidian, #D4AF37 gold, #DC143C crimson.
 Target: Discerning customers who appreciate elevated street style with cultural depth.
@@ -138,7 +138,7 @@ const SKYYROSE_FEW_SHOTS: Record<string, Array<{ input: string; output: string }
     {
       input: "Instagram caption for new hoodie drop",
       output:
-        "concrete taught us everything. ◆ BLACK ROSE Heavyweight Hoodie — 280gsm, double-stitched, limited to 200. link in bio before they're gone 🥀 #SkyyRose #LuxuryGrowsFromConcrete",
+        "concrete taught us everything. ◆ BLACK ROSE Heavyweight Hoodie — 280gsm, double-stitched, limited to 200. link in bio before they're gone 🥀 #SkyyRose",
     },
   ],
   Email: [
@@ -260,7 +260,7 @@ function applyConstitutional(task: string, principles?: string[]): string {
     "Respect exclusivity — never oversell or use desperate urgency tactics",
     "Be honest and accurate about product details",
     "Avoid clichés and overused marketing language",
-    "Embody 'Luxury Grows from Concrete' — aspirational yet grounded",
+    "Stay aspirational yet grounded",
   ];
 
   return `${task}
@@ -1330,7 +1330,7 @@ Use get-technique-stats to see which techniques perform best historically.
 
 After battles, analyze results and recommend optimizations for the auto-router.
 
-Brand: SkyyRose — "Luxury Grows from Concrete." — Oakland luxury streetwear.
+Brand: SkyyRose — Oakland luxury streetwear.
 Collections: Black Rose, Love Hurts, Signature, Kids Capsule.`,
         mcpServers: { roundtable: roundtableServer },
       },

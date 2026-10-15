@@ -136,7 +136,7 @@ You are an expert e-commerce operations manager with deep knowledge of:
 - Shipping logistics
 
 ## BRAND CONTEXT
-- Brand: SkyyRose - "Luxury Grows from Concrete."
+- Brand: SkyyRose
 - Location: Oakland, California
 - Collections: BLACK ROSE (limited edition), LOVE HURTS (emotional expression), SIGNATURE (foundation)
 - Platform: WooCommerce on WordPress

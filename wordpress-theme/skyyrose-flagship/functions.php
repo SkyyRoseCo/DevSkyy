@@ -58,7 +58,7 @@ $GLOBALS['concatenate_scripts'] = false;
  *--------------------------------------------------------------*/
 $skyyrose_core_includes = array(
 	// SoT constants generated from assets/brand/brand.yaml — load FIRST so every
-	// downstream include can reference SKYYROSE_BRAND_TAGLINE, SKYYROSE_COLOR_*,
+	// downstream include can reference SKYYROSE_COLOR_*,
 	// skyyrose_brand_collections(), skyyrose_json_ld_organization(), etc.
 	'/inc/brand.generated.php',
 	'/inc/redirects.php',

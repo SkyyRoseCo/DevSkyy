@@ -1,0 +1,20 @@
+{
+  "kind": "task_failed",
+  "taskId": "f1c5baf3-e8a5-4165-8416-3a52f955445c",
+  "taskType": "kling_o3_pro",
+  "status": "FAILED",
+  "progressPercent": 100,
+  "progressRatio": "1",
+  "queuedSeconds": 0,
+  "updatedAt": "2026-09-12T02:35:27.715Z",
+  "secondsSinceLastUpdate": 104,
+  "error": "Content did not pass content moderation.",
+  "errorInfo": {
+    "category": "content_moderation",
+    "title": "Content policy",
+    "hint": "Runway's input moderation flagged this generation (children). Suggest rephrasing the prompt or swapping reference media to avoid the flagged content. Do not blame the user — be matter-of-fact.",
+    "reason": "SAFETY.INPUT.MULTIMODAL",
+    "message": "Content did not pass content moderation.",
+    "moderationCategory": "CHILDREN"
+  }
+}

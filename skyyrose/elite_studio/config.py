@@ -255,12 +255,12 @@ def get_anthropic_client():
 
 
 def validate_catalog_readers(*, raise_on_mismatch: bool = False) -> dict[str, str]:
-    """Verify every catalog reader in the project resolves to the canonical CSV.
+    """Verify legacy catalog projection paths agree (not product authority).
 
-    Per MEMORY.md, four reader paths exist (Python: core.catalog_loader,
-    elite_studio.catalog, scripts.nano_banana.catalog; PHP: skyyrose_get_product_catalog).
-    All MUST resolve to wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv.
-    This function imports each Python reader and asserts they expose the same path.
+    Complete reads use core.product.get_product from the editable registry.
+    Python readers retain CSV path constants for compatibility; this check
+    compares those paths and the PHP projection consumer. Registry/export
+    content parity is separately enforced by sync_product_registry.py --check.
 
     Returns:
         Mapping reader_name -> resolved CSV path string. The PHP reader is

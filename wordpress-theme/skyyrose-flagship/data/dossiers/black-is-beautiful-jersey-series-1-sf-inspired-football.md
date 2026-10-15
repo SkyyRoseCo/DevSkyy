@@ -26,6 +26,20 @@ exists yet.
 Color: Red
 Available sizes: S | M | L | XL | 2XL | 3XL
 
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** The same fabric as an authentic professional football team jersey. (Corey, 2026-09-29, verbatim: "the jerseys are the same fabric as a professional teams jersey")
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**FOUNDER_CONFIRMED:** True to size, relaxed through the body. (Corey, 2026-09-21, verbatim: "all jerseys true to size, relaxed through the body")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
+**FOUNDER_CONFIRMED:** The jersey number 80 appears on both sides; greyscale rose artwork is inside the front 8 only, with no rose artwork on the back. (Corey, 2026-10-05, verbatim: "80 on both sides, eight roses on the front and none on the back")
+
+**FOUNDER_CONFIRMED:** greyscale and Vneck for both jerseys] (Corey, 2026-10-03, verbatim: "greyscale and Vneck for both jerseys]")
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:
@@ -47,7 +61,8 @@ Available sizes: S | M | L | XL | 2XL | 3XL
   neckband and the lower belly): The number **"80"** rendered as
   large athletic-block digits — each digit has a **white outline edge** with
   the canonical Black Rose three-rose-cluster art (in tonal greyscale)
-  filling the interior of both the "8" and the "0". The rose composition is
+  filling only the interior of the front "8". The front "0" has no rose
+  artwork. The rose composition is
   preserved (three roses + thorny vines + cloud at base) but rendered in
   black/white/grey only. **Technique:** sublimated. **Color:** white outline
   + greyscale rose-cluster fill on red ground.
@@ -65,10 +80,9 @@ Available sizes: S | M | L | XL | 2XL | 3XL
   Rendered in **black twill** on the red body. **Technique:** tackle-twill.
   **Color:** black twill letters on red ground (no contrast satin-stitch edge).
 - **back-center** (large, ~12in tall, vertically centered between the
-  upper-back wordmark and the lower hem): The number **"80"** rendered
-  identically to the front — white outline + greyscale rose-cluster fill.
-  **Technique:** sublimated. **Color:** white outline + greyscale
-  rose-cluster fill.
+  upper-back wordmark and the lower hem): The jersey number **"80"** remains
+  on the back; no rose artwork appears on either digit. Preserve the number
+  treatment in its approved product reference and add no rose artwork.
 
 ### Sleeves / Collar / Hem / Other
 - **collar / V-neck binding**: Black-and-white horizontal striped neckband
@@ -92,8 +106,9 @@ Available sizes: S | M | L | XL | 2XL | 3XL
 - NO multi-color rendering of the rose-cluster fill inside the "80" — it is
   greyscale only. NO red roses, NO kelly-green stems, NO white-and-blue
   cloud color.
-- NO solid-color "80" digits — the digits are NOT solid white; they have
-  a white outline edge with rose-cluster art FILLING the interior.
+- NO rose-cluster artwork inside the front "0" or anywhere on the back.
+  The jersey number remains "80" on both sides; greyscale rose artwork
+  appears only inside the front "8".
 - NO contrast satin-stitch edge around the "BLACK IS BEAUTIFUL" wordmark —
   it is clean black-twill-on-red.
 - NO buttons, NO placket, NO V-neck contrast piping other than the striped
@@ -104,9 +119,7 @@ Available sizes: S | M | L | XL | 2XL | 3XL
 - NO heat-transfer vinyl on the body.
 - NO SR monogram on the back-neck — this colorway has no separate back-neck
   embroidered mark.
-- NO standalone Black Rose rose-cluster on the back-center other than as
-  digit fill — the rose-cluster appears ONLY inside the "80" digits, not as
-  a separate composition.
+- NO Black Rose rose-cluster artwork anywhere on the back. The back number "80" has no rose fill; preserve the approved plain back-number treatment.
 - NO sleeve patches (no shoulder NFL patch, no league patch on the
   shoulders).
 - NO sublimated panels other than the rose-fill inside the digits and the
@@ -117,9 +130,8 @@ Available sizes: S | M | L | XL | 2XL | 3XL
 ## Scene direction
 
 - **Pose:** Front view straight-on (or three-quarter front-left) showing the
-  large rose-fill "80" front-chest, the striped neckband, the white-stripe
-  cuffs, and the lower-left NFL patch. For back: back view straight-on
-  showing the "BLACK IS BEAUTIFUL" tackle-twill arch and the matching
-  rose-fill "80".
+  front number "80" with greyscale rose artwork only inside the front "8" (the front "0" is plain), the striped neckband, the white-stripe
+  cuffs, and the lower-left NFL patch. If the back is visible, show the "BLACK IS BEAUTIFUL" tackle-twill arch
+  and number "80" with no rose artwork.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting
   from front-left, subtle natural drop shadow on the floor.

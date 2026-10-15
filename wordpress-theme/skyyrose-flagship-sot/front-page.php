@@ -9,7 +9,7 @@ get_header();
 <?php
 if ( $hero ) :
 	?>
-	<img src="<?php echo esc_url( skyyrosesot_asset_uri( $hero ) ); ?>" alt="" fetchpriority="high" width="1920" height="1080"><?php endif; ?><div><p><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-sot' ); ?></p><h1><?php esc_html_e( 'Luxury grows from concrete.', 'skyyrose-flagship-sot' ); ?></h1><a href="#collections"><?php esc_html_e( 'Enter worlds', 'skyyrose-flagship-sot' ); ?></a></div></section><section id="collections" class="srs-section"><header><p><?php esc_html_e( 'Collections', 'skyyrose-flagship-sot' ); ?></p><h2><?php esc_html_e( 'Four worlds. One house.', 'skyyrose-flagship-sot' ); ?></h2></header><div class="srs-rail" tabindex="0" aria-label="<?php esc_attr_e( 'Collection worlds. Scroll horizontally.', 'skyyrose-flagship-sot' ); ?>">
+	<img src="<?php echo esc_url( skyyrosesot_asset_uri( $hero ) ); ?>" alt="" fetchpriority="high" width="1920" height="1080"><?php endif; ?><div><h1><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-sot' ); ?></h1><a href="#collections"><?php esc_html_e( 'Enter worlds', 'skyyrose-flagship-sot' ); ?></a></div></section><section id="collections" class="srs-section"><header><p><?php esc_html_e( 'Collections', 'skyyrose-flagship-sot' ); ?></p><h2><?php esc_html_e( 'Four worlds. One house.', 'skyyrose-flagship-sot' ); ?></h2></header><div class="srs-rail" tabindex="0" aria-label="<?php esc_attr_e( 'Collection worlds. Scroll horizontally.', 'skyyrose-flagship-sot' ); ?>">
 	<?php
 	foreach ( $collections as $slug => $collection ) :
 		$image  = skyyrosesot_first_image( $collection );

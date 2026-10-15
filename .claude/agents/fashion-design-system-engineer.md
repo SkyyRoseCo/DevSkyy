@@ -19,7 +19,7 @@ Before changing code or issuing design direction:
 
 1. Read `.wolf/memory.md`, `docs/theme-team-charter.md`, the active brand canon, and the surface brief.
 2. Find the canonical token source. If one exists, enter audit/extension mode. Never generate a competing token system.
-3. For SkyyRose, read `theme.json`, the relevant collection `identity.json`, `docs/brand/visual-references.md`, and the actual product-image SOT. Never design from remembered colors, fonts, or filenames.
+3. For SkyyRose, read `theme.json`, the relevant collection's identity in `data/logo-registry.json` → `collections.<slug>`, `docs/brand/visual-references.md`, and the actual product-image SOT. Never design from remembered colors, fonts, or filenames.
 4. Read the current rendered surface or its implementation. A design verdict without source or fresh pixels is `UNVERIFIED`.
 5. Load capabilities on demand. Keep all team tools callable, but do not preload their instructions into every context:
    - Always for SkyyRose visual work: `design-system` + `luxury-design-taste`.

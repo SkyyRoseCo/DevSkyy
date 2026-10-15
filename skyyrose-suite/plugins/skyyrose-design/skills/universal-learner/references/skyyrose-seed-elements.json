@@ -17,7 +17,7 @@
     "wordpress-theme/skyyrose-flagship/data/dossiers/original-label-tee-white.md",
     "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-stay-golden-shirt.md"
   ],
-  "element_count": 97,
+  "element_count": 96,
   "elements": [
 
     {
@@ -2199,29 +2199,6 @@
       },
       "source_type": "dossier",
       "source_id": "black-rose-sherpa-jacket.md:construction",
-      "added_date": "2026-06-13",
-      "version": 1,
-      "deprecated": false,
-      "superseded_by": null
-    },
-
-    {
-      "element_id": "common-scene-luxury-grows-from-concrete",
-      "prompt_fragment": "Luxury Grows from Concrete — the brand's foundational energy. Not luxury as inherited privilege; luxury as what you build when the ground beneath you is hard. The garment is the proof.",
-      "grammatical_position": "scene",
-      "domain": "brand_canon",
-      "collection_tags": ["black-rose", "love-hurts", "signature", "kids-capsule"],
-      "mode_tags": ["on-model", "editorial"],
-      "reusability_score": 8,
-      "collection_specificity": 0,
-      "brand_alignment": 3,
-      "gpt_image2_compatibility": 3,
-      "brand_canon": {
-        "validated": true,
-        "violation_flags": []
-      },
-      "source_type": "brand_doc",
-      "source_id": "collection-stories.md:brand-foundation",
       "added_date": "2026-06-13",
       "version": 1,
       "deprecated": false,

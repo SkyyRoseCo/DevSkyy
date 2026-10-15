@@ -27,18 +27,25 @@ generated_at: "2026-04-17T00:00:00Z"
 # ── Tagline ──────────────────────────────────────────────────────────────────
 
 tagline:
-  # THE tagline. Every surface says this.
-  active: "Luxury Grows from Concrete."
+  # No tagline is authorised (founder decision 2026-10-06). Intentionally empty.
+  active: ""
 
-  # Historical taglines. Enforcement: a CI test asserts none of these appear
-  # in any wordpress/**/*.{php,py} or frontend/**/*.{ts,tsx,js,jsx} file.
+  # Historical taglines. Enforcement: skyyrose/elite_studio/tests/
+  # test_brand_enforcement.py asserts none of these appear (case-insensitive)
+  # as actual content in tracked source under the scanned directories.
   retired:
     - phrase: "Where Love Meets Luxury"
       retired_at: "2026-03"
       reason: |
-        Original marketing tagline. Replaced with "Luxury Grows from Concrete."
-        to align with the brand's Oakland/concrete-luxury positioning. Must
-        never reappear in generated content.
+        Original marketing tagline. Retired; must never reappear in generated
+        content. No replacement tagline is authorised.
+    - phrase: "Luxury Grows from Concrete"
+      retired_at: "2026-10"
+      reason: |
+        Brand tagline 2026-03 to 2026-10. Founder decision 2026-10-06:
+        "no tagline!" — no tagline is authorised anywhere. The words survive
+        only inside Corey's verbatim Signature founder-story quote and the
+        Kids Capsule insert-card copy (allow-listed in the enforcement test).
 
 
 # ── Brand identity ──────────────────────────────────────────────────────────
@@ -82,7 +89,7 @@ colors:
 collections:
   black-rose:
     display_name: "BLACK ROSE"
-    tagline: "Luxury Grows from Concrete."
+    tagline: ""
     description: "Gothic luxury — Oakland grit meets dark elegance. The brand's flagship collection: where streetwear toughness meets premium craftsmanship."
     theme: "gothic romance meets Oakland street luxury"
     mood: "dark, powerful, mysterious, luxurious"

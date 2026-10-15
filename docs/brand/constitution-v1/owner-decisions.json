@@ -89,31 +89,47 @@
     {
       "id": "CF1",
       "rule": "Founder product facts remain authoritative.",
-      "evidence": ["E01", "E02"],
+      "evidence": [
+        "E01",
+        "E02"
+      ],
       "status": "EXISTING_RESOLVED_NOT_NEW_RATIFICATION"
     },
     {
       "id": "CF2",
       "rule": "No active tagline; no invented replacement.",
-      "evidence": ["E04", "E05"],
+      "evidence": [
+        "E04",
+        "E05"
+      ],
       "status": "EXISTING_RESOLVED_NOT_NEW_RATIFICATION"
     },
     {
       "id": "CF3",
       "rule": "Preserve the recorded Signature origin decision.",
-      "evidence": ["E06"],
+      "evidence": [
+        "E06"
+      ],
       "status": "EXISTING_RESOLVED_NOT_NEW_RATIFICATION"
     },
     {
       "id": "CF4",
       "rule": "Resolve desired product facts through get_product(sku) and the unified registry. WooCommerce retains live session/variation purchasability and transaction state. Copy no product values into the Constitution.",
-      "evidence": ["E01", "E02", "E17", "E18"],
+      "evidence": [
+        "E01",
+        "E02",
+        "E17",
+        "E18"
+      ],
       "status": "EXISTING_RESOLVED_NOT_NEW_RATIFICATION"
     },
     {
       "id": "CF5",
       "rule": "Current website font-source ownership remains typography.json.",
-      "evidence": ["E02", "E10"],
+      "evidence": [
+        "E02",
+        "E10"
+      ],
       "status": "EXISTING_RESOLVED_NOT_NEW_RATIFICATION"
     }
   ],
@@ -129,7 +145,11 @@
       "approved_wording": "SkyyRose is authentically rooted in its Oakland origin, founder authorship and lived history. Future work must not fictionalize, erase, contradict or replace that origin.",
       "level": "L1",
       "scope": "Master brand",
-      "evidence": ["E03", "E06", "E08"],
+      "evidence": [
+        "E03",
+        "E06",
+        "E08"
+      ],
       "date": "2026-09-23",
       "recorded_at": "2026-09-23T21:04:12.874180-07:00",
       "exceptions": [],
@@ -152,7 +172,11 @@
       "approved_wording": null,
       "level": null,
       "scope": "Major collection identity",
-      "evidence": ["E03", "E06", "E07"],
+      "evidence": [
+        "E03",
+        "E06",
+        "E07"
+      ],
       "date": "2026-09-23",
       "recorded_at": "2026-09-23T21:04:12.874180-07:00",
       "exceptions": [],
@@ -181,7 +205,11 @@
         "L1": "Authentic founder-and-family origin",
         "L2": "Optional legacy storytelling across campaigns; no mandatory family imagery"
       },
-      "evidence": ["E03", "E11", "E38"],
+      "evidence": [
+        "E03",
+        "E11",
+        "E38"
+      ],
       "date": "2026-09-23",
       "recorded_at": "2026-09-23T21:05:07.447113-07:00",
       "exceptions": [],
@@ -204,11 +232,17 @@
       "proposed_revision": "SkyyRose tells and visualizes its brand story so buyers can relate both to the story and to what the creative work is expressing.",
       "level": null,
       "scope": "Buyer connection to brand story and its visualization; replacement versus addition to autobiography pending",
-      "evidence": ["E03", "E06", "E07"],
+      "evidence": [
+        "E03",
+        "E06",
+        "E07"
+      ],
       "date": "2026-09-23",
       "recorded_at": "2026-09-23T21:06:47.204839-07:00",
       "exceptions": [],
-      "supersedes": ["B-001"],
+      "supersedes": [
+        "B-001"
+      ],
       "source": {
         "kind": "EXPLICIT_OWNER_RESPONSE",
         "tool_call_id": "call_EqyZlkNC01jEWWtbIJwFWBX4",
@@ -384,7 +418,9 @@
             }
           ],
           "exceptions": [],
-          "supersedes": ["proposal:K"],
+          "supersedes": [
+            "proposal:K"
+          ],
           "decision_event": "FINAL-20260923",
           "interpretation_limits": []
         },
@@ -459,7 +495,11 @@
       "date": "2026-09-23",
       "recorded_at": "2026-09-23T22:03:53.262080-07:00",
       "exceptions": [],
-      "supersedes": ["FINAL-20260923:K1–K4", "proposal:P", "proposal:S"],
+      "supersedes": [
+        "FINAL-20260923:K1–K4",
+        "proposal:P",
+        "proposal:S"
+      ],
       "source": {
         "kind": "EXPLICIT_OWNER_FINAL_HANDOFF",
         "path": "OWNER-RATIFICATION-KPS-20260923.md",

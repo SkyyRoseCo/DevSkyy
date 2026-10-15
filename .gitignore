@@ -80,6 +80,7 @@ dmypy.json
 .env.*
 !.env.example
 !.env.wordpress.example
+!.env.wordpress.staging.example
 !.env.docker.example
 .env.secrets
 .env.secrets.*
@@ -179,6 +180,8 @@ data/user/
 *.min.css
 !wordpress-theme/skyyrose-flagship/assets/**/*.min.js
 !wordpress-theme/skyyrose-flagship/assets/**/*.min.css
+!wordpress-theme/skyyrose-flagship-2/assets/**/*.min.js
+!wordpress-theme/skyyrose-flagship-2/assets/**/*.min.css
 
 # --- Staging/deployment logs & backups ---
 keys/
@@ -440,6 +443,8 @@ skyyrose_clothing_barcodes.txt
 audit_reports/
 scraped_docs/
 data/sdk_sessions/
+# Creative OS render-budget ledger (skyyrose/elite_studio/creative/editorial.py); per-run state
+/.artifacts/
 
 # --- Broken tooling artifacts / dead symlinks / empty clone dirs ---
 --version/
@@ -533,3 +538,7 @@ dist/
 # wolf_memory_rotate.py runtime files
 .wolf/memory.md.rotate.lock
 .wolf/.memory.*.tmp
+wordpress-theme/skyyrose-flagship-2/data/v2-media-eligibility.json.lock
+
+# Required plugin reference captures are distribution assets, not QA output.
+!plugins/fashion-theme-team/skills/fashion-theme-team/brain/visuals/*.png

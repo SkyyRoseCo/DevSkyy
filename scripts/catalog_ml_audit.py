@@ -50,9 +50,10 @@ from sklearn.metrics import silhouette_score  # noqa: E402
 
 from skyyrose.core import clip_embedder  # noqa: E402
 from skyyrose.core.catalog_loader import read_catalog_rows  # noqa: E402
+from skyyrose.core.paths import THEME_ROOT, WP_PRODUCTS_DIR  # noqa: E402
 
-EMBEDDINGS_PATH = ROOT / "wordpress-theme/skyyrose-flagship/data/product-embeddings.json"
-PRODUCTS_DIR = ROOT / "wordpress-theme/skyyrose-flagship/assets/images/products"
+EMBEDDINGS_PATH = THEME_ROOT / "data" / "product-embeddings.json"
+PRODUCTS_DIR = WP_PRODUCTS_DIR
 
 
 def _load_embeddings_matrix() -> tuple[list[str], np.ndarray, dict[str, dict]]:

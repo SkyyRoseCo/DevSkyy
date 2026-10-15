@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import re
 import zlib
+from unittest.mock import MagicMock
 
 import numpy as np
 import pytest
@@ -69,7 +70,19 @@ def offline_embedder(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 @pytest.fixture
-async def round_table():
+def sentence_model(monkeypatch):
+    """Keep model loading offline while exercising real metric calculations."""
+    model = MagicMock()
+    model.encode.side_effect = lambda sentences: np.array(
+        [[0.0, 1.0] if sentence == "Second sentence" else [1.0, 0.0] for sentence in sentences]
+    )
+    factory = MagicMock(return_value=model)
+    monkeypatch.setattr("llm.evaluation_metrics.SentenceTransformer", factory)
+    return factory
+
+
+@pytest.fixture
+async def round_table(sentence_model):
     """Create test Round Table instance with in-memory database."""
     rt = LLMRoundTable(db_url="sqlite+aiosqlite:///:memory:")
     await rt.initialize()
@@ -100,7 +113,7 @@ async def round_table():
 
 
 @pytest.fixture
-def scorer():
+def scorer(sentence_model):
     """Create ResponseScorer instance."""
     return ResponseScorer()
 
@@ -166,6 +179,27 @@ async def test_round_table_scoring_without_tools(scorer):
     assert isinstance(scores, ResponseScores)
     assert scores.tool_usage_quality == 100.0  # Neutral when no tools
     assert scores.total > 0
+
+
+@pytest.mark.asyncio
+async def test_ml_scoring_uses_embeddings_and_initializes_once(scorer, sentence_model):
+    """Orthogonal embeddings yield zero coherence; shared embeddings yield 100."""
+    await scorer.initialize()
+    await scorer.initialize()
+    sentence_model.assert_called_once_with("all-MiniLM-L6-v2")
+    response = LLMResponse(
+        content="First sentence. Second sentence.",
+        provider=LLMProvider.CLAUDE,
+        latency_ms=1000,
+        cost_usd=0.001,
+    )
+    scores = await scorer.score_response(response, "Compare sentences")
+    sentence_model.return_value.encode.assert_called_with(["First sentence", "Second sentence"])
+    assert scores.coherence == pytest.approx(0.0)
+    response.content = "First sentence. First sentence."
+    scores = await scorer.score_response(response, "Compare sentences")
+    assert scores.coherence == pytest.approx(100.0)
+    assert scorer.enable_ml_scoring is True
 
 
 # =============================================================================

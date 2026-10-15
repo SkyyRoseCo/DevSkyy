@@ -147,7 +147,7 @@ These appeared in the old 686-line `template-about.php` (commit `3860e38cb`) and
 - ❌ "BLACK ROSE drops 2021 with limited pieces selling out within hours" — no source
 - ❌ "28+ Products" — actual catalog is 33 SKUs (`skyyrose-catalog.csv`)
 - ❌ "2500+ Happy Customers" — no source
-- ❌ "Where the sky meets the rose" — retired tagline (replaced by "Luxury Grows from Concrete.")
+- ❌ "Where the sky meets the rose" — retired tagline (no tagline is authorised, founder decision 2026-10-06)
 - ❌ "Born in Oakland, Built with Love" — retired tagline
 
 ## PHP shape (consumed by `template-parts/about/press-section.php`)

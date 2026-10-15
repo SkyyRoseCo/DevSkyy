@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-all-products-card-sg-006",
+  "asset_id": "card-sg-006",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "aab946a9757511cc9b7f258520972fc21de016006ca74f92d8e54da293cd869d",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "sg-006"
+  ],
+  "collections": [
+    "signature"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/all-products/card-sg-006-visual-review.json",
+    "sha256": "0020f113695c1162728ad0b02a9e5399a80321899f3a2e0e9ba09b04a3afc94e"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-006-card-desktop.png",
+      "sha256": "5aef99c4617246350e9d666cfc9f74a4d5ebddde9c0e4c14ec563805c9aea170"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-006-card-mobile.png",
+      "sha256": "1e9c1557ee09651a37e302ebb525683a04aa473e19e9aa171db6ad87a7de3c64"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-006-pdp-desktop.png",
+      "sha256": "c2a57bfdb4e39d30750eabdace7f8c9fe56a2f3de2d1fe869bb359cfdbc4c5b9"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/sg-006-pdp-mobile.png",
+      "sha256": "3455577205f799a273de5f4a28fe200c31a92c9f17c8e700a2c74464685b158c"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact native asset and actual offline card/current product-page.css PDP media-only contexts at 1440 desktop/390 mobile. Full commerce, theme states, 768, motion, accessibility and release remain UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: Mint pullover retains current purple cords and lavender rose cluster with grey-green stems and grey-white cloud. Complete hood, cuffs, hem and kangaroo opening remain visible. Hands in the kangaroo pocket do not conceal artwork or cuff outlines. Actual card and PDP contexts preserve the whole native master and garment readability.",
+    "pdp_on_model_front": "PASS: Current gallery containment preserves all native pixels; the same exact native identity/framing verdict applies."
+  }
+}

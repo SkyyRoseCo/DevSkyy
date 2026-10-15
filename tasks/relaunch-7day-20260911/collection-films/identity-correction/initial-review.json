@@ -1,0 +1,41 @@
+{
+  "status": "INITIAL_SCENE_EDIT_REJECTED_BEFORE_MOTION",
+  "signature_task": "41409ced-d252-4659-9840-b80f13e319ae",
+  "reason": "Independent comparison found tapered lower face, flatter cheeks, finer brows, hair swept back and older proportions relative to founder master.",
+  "next_method": "Frontal wardrobe-only edit preserving complete head and pose, followed by reference-based scene placement.",
+  "black_rose_identity": "Only actual male from supplied video. Generated male from earlier films excluded from identity inputs.",
+  "source_reference_check": {
+    "frames": [
+      731,
+      1427
+    ],
+    "local_frames_exact": true,
+    "prior_remote_frame_rgb_mean_error": [
+      0.9239,
+      0.92609
+    ],
+    "max_channel_error": 3,
+    "adjacent_frame_error_mean_range": [
+      5.27,
+      9.51
+    ],
+    "conclusion": "Same source frames with small conversion-rounding differences, not off-by-one frames. Not described as pixel-identical PNGs."
+  },
+  "motion_jobs_submitted": 2,
+  "black_rose_scene_review": {
+    "task_id": "077c02ac-a4f6-4fa5-b958-390f020064be",
+    "status": "REJECTED",
+    "reason": "Skyy lower face and head/body proportions drifted; not used as video input."
+  },
+  "wardrobe_review": {
+    "task_id": "4f08df8a-237b-4a2e-afb0-1b9bef5e0b48",
+    "status": "ACCEPT_FOR_MOTION_TEST_ONLY",
+    "reviewer": "campaign_review",
+    "character": "Frontal master face, broad curls and compact proportions closely preserved.",
+    "garment_gaps": [
+      "Lower-hem woven rose tag absent",
+      "Chest embroidery appears enlarged"
+    ],
+    "final_approved": false
+  }
+}

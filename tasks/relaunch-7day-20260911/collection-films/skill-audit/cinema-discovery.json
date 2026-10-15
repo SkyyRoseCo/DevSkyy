@@ -1,0 +1,12 @@
+{
+  "command": "higgsfield model list --json",
+  "exit_code": 0,
+  "matches": [
+    {
+      "display_name": "Soul Cinematic",
+      "job_type": "soul_cinematic",
+      "type": "image"
+    }
+  ],
+  "scope": "Read-only live catalog discovery; no generation test."
+}

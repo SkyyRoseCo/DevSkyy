@@ -41,6 +41,6 @@ A child in a dark red-black colorblock luxury hoodie stands at the edge of a raw
 
 ## After generation — drop-in procedure
 1. Save each master to `wordpress-theme/skyyrose-flagship/assets/branding/hero/<slug>-hero-2560w.webp` (+ avif) and the ladder `-640/-1024/-1536/-2048/-2560w`.
-2. Set `imagery.hero` in each `data/collections/<slug>/identity.json` to `branding/hero/<slug>-hero`.
+2. Set `imagery.hero` in each registry entry, `data/logo-registry.json` → `collections.<slug>`, to `branding/hero/<slug>-hero`.
 3. Re-run the SOT build + `verify-collection-sot.py` (the min-2560 gate passes once masters exist).
 4. The `experience-hero` placement auto-engages the srcset; re-render the hub. Each block now its own canon scene; the gold Signature lockup pops on the darker master.

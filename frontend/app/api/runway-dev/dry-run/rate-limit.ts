@@ -96,16 +96,27 @@ export async function consumeRunwayDryRunRateLimit(authenticatedEmail: string): 
   }
 
   const setIfAbsent: SetIfAbsent = async (key, ttlSeconds) => {
-    const client = await withTimeout(queue.client, REDIS_OPERATION_TIMEOUT_MS);
-    client.defineCommand(RATE_LIMIT_SET_NX_COMMAND, {
-      numberOfKeys: 1,
-      lua: RATE_LIMIT_SET_NX_SCRIPT,
-    });
-    const result: unknown = await withTimeout(
-      client.runCommand(RATE_LIMIT_SET_NX_COMMAND, [key, '1', String(ttlSeconds)]),
-      REDIS_OPERATION_TIMEOUT_MS
-    );
-    return result === 1 || result === '1';
+    try {
+      const client = await withTimeout(queue.client, REDIS_OPERATION_TIMEOUT_MS);
+      client.defineCommand(RATE_LIMIT_SET_NX_COMMAND, {
+        numberOfKeys: 1,
+        lua: RATE_LIMIT_SET_NX_SCRIPT,
+      });
+      const result: unknown = await withTimeout(
+        client.runCommand(RATE_LIMIT_SET_NX_COMMAND, [key, '1', String(ttlSeconds)]),
+        REDIS_OPERATION_TIMEOUT_MS
+      );
+      return result === 1 || result === '1';
+    } catch (error) {
+      // BullMQ caches its first connection attempt and this retryStrategy gives
+      // up after one retry, so a failed client never recovers. Drop it so the
+      // next request reconnects; this request still fails closed.
+      if (rateLimitQueue === queue) {
+        rateLimitQueue = undefined;
+      }
+      void queue.close().catch(() => undefined);
+      throw error;
+    }
   };
 
   return createRunwayDryRunRateLimiter(setIfAbsent, hmacSecret)(authenticatedEmail);

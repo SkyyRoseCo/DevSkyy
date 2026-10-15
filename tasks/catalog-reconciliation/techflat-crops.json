@@ -1,0 +1,312 @@
+{
+  "authority": "Derived extraction receipt; authoritative product bindings are in logo-registry.json render_sources.",
+  "crops": [
+    {
+      "sku": "kids-001",
+      "view": "front",
+      "source": "assets/products/techflats/kids-capsule/colorblock-red.jpeg",
+      "source_sha256": "b42f5c518d1eae04cc1bc0093e2560b76ff717267a61431debc9549bf328329c",
+      "box": [
+        0,
+        0,
+        543,
+        900
+      ],
+      "path": "assets/products/techflats/split/catalog/kids-001-techflat-front.png",
+      "sha256": "12df41482bd0c39a4c216b3058484eb34f2b78b3ca3a5c485bd8533a6dea13b2",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening, resampling or generative processing."
+    },
+    {
+      "sku": "kids-001",
+      "view": "back",
+      "source": "assets/products/techflats/kids-capsule/colorblock-red.jpeg",
+      "source_sha256": "b42f5c518d1eae04cc1bc0093e2560b76ff717267a61431debc9549bf328329c",
+      "box": [
+        543,
+        0,
+        1086,
+        900
+      ],
+      "path": "assets/products/techflats/split/catalog/kids-001-techflat-back.png",
+      "sha256": "85d62c4409ec6a9f747c3ef4781be97fe7cdd44b125f211d5a8201338c94a3b2",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening, resampling or generative processing."
+    },
+    {
+      "sku": "kids-002",
+      "view": "front",
+      "source": "assets/products/techflats/kids-capsule/colorblock-purple.jpeg",
+      "source_sha256": "85aeeded900df2df1415b7d220ca06a659025bd4cbfa6b9090f4ad2b343bd34e",
+      "box": [
+        0,
+        0,
+        450,
+        757
+      ],
+      "path": "assets/products/techflats/split/catalog/kids-002-techflat-front.png",
+      "sha256": "93ee08c36d52b99cae598aeb7e0082c2bc5ddcf7166c330c293c21c38d99edca",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening, resampling or generative processing."
+    },
+    {
+      "sku": "kids-002",
+      "view": "back",
+      "source": "assets/products/techflats/kids-capsule/colorblock-purple.jpeg",
+      "source_sha256": "85aeeded900df2df1415b7d220ca06a659025bd4cbfa6b9090f4ad2b343bd34e",
+      "box": [
+        450,
+        0,
+        900,
+        757
+      ],
+      "path": "assets/products/techflats/split/catalog/kids-002-techflat-back.png",
+      "sha256": "3d302b2ffbca315c502b4c716235bfe7fdc6aafacba56547fb7eb50133d20b93",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening, resampling or generative processing."
+    },
+    {
+      "sku": "sg-015",
+      "view": "front",
+      "source": "assets/products/references/sg-015-windbreaker-set-techflat.jpeg",
+      "source_sha256": "f05187dff58eaa626c68442636a0ef9648dc31d619609c927b79e2890dcf8db4",
+      "box": [
+        0,
+        0,
+        752,
+        2088
+      ],
+      "path": "assets/products/techflats/split/catalog/sg-015-techflat-front.png",
+      "sha256": "cb76c6e4dd3f6667cd24b89d4e4f1af4366cfd021a4d654a9657d95609f64435",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening, resampling or generative processing."
+    },
+    {
+      "sku": "sg-015",
+      "view": "back",
+      "source": "assets/products/references/sg-015-windbreaker-set-techflat.jpeg",
+      "source_sha256": "f05187dff58eaa626c68442636a0ef9648dc31d619609c927b79e2890dcf8db4",
+      "box": [
+        752,
+        0,
+        1504,
+        2088
+      ],
+      "path": "assets/products/techflats/split/catalog/sg-015-techflat-back.png",
+      "sha256": "e2efc6d90b6afabd9c55c0772864a41444e004f56f6b289355136dc615e7dfa6",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening, resampling or generative processing."
+    },
+    {
+      "sku": "lh-006",
+      "view": "front",
+      "source": "assets/products/techflats/love-hurts/joggers.jpeg",
+      "source_sha256": "04ff7535ec5205d8f3557e75f78644a0d5512245176da9b9854d5f405c6e6d05",
+      "box": [
+        0,
+        0,
+        640,
+        606
+      ],
+      "path": "assets/products/techflats/split/catalog/lh-006-techflat-front.png",
+      "sha256": "ff2358657c5337c2d5fd49100f6d77822218d6d0de89db14cb59d3cea41fba58",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening, resampling or generative processing."
+    },
+    {
+      "sku": "sg-005",
+      "view": "front",
+      "source": "assets/products/techflats/signature/unknown-12.jpeg",
+      "source_sha256": "e553a9174afae5da5dd3c466b94008637587f20085590a53a46121f43d624885",
+      "box": [
+        145,
+        65,
+        391,
+        353
+      ],
+      "path": "assets/products/techflats/split/catalog/sg-005-techflat-front.png",
+      "sha256": "61fda1be9b8c011ccc1e9a7da143f7f6712b355a16d7146dca275427a3eca635",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening, resampling or generative processing."
+    },
+    {
+      "sku": "sg-005",
+      "view": "back",
+      "source": "assets/products/techflats/signature/unknown-12.jpeg",
+      "source_sha256": "e553a9174afae5da5dd3c466b94008637587f20085590a53a46121f43d624885",
+      "box": [
+        393,
+        65,
+        636,
+        353
+      ],
+      "path": "assets/products/techflats/split/catalog/sg-005-techflat-back.png",
+      "sha256": "4295d12954710de181a9bb5b07541f6798ad32ae2d13b9587498255987b61c51",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening, resampling or generative processing."
+    },
+    {
+      "sku": "br-001",
+      "view": "front",
+      "source": "assets/products/techflats/black-rose/crewneck-and-joggers.jpeg",
+      "source_sha256": "80d459f8bb82315257dd9ee201f0b1d39afa327582fb85e9bf64133c6fb72895",
+      "box": [
+        245,
+        0,
+        450,
+        212
+      ],
+      "path": "assets/products/techflats/split/catalog/br-001-techflat-front.png",
+      "sha256": "137c6d0ac7d8238129c7bbb5d582d43ed27a77a1d7d881a68df37346cda935c6",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening or resampling."
+    },
+    {
+      "sku": "br-001",
+      "view": "back",
+      "source": "assets/products/techflats/black-rose/crewneck-and-joggers.jpeg",
+      "source_sha256": "80d459f8bb82315257dd9ee201f0b1d39afa327582fb85e9bf64133c6fb72895",
+      "box": [
+        450,
+        0,
+        655,
+        212
+      ],
+      "path": "assets/products/techflats/split/catalog/br-001-techflat-back.png",
+      "sha256": "2808fac0ee250c293c29dd44580a67dd0c43077adac29aec2151c76beefefc2f",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening or resampling."
+    },
+    {
+      "sku": "br-002",
+      "view": "front",
+      "source": "assets/products/techflats/black-rose/crewneck-and-joggers.jpeg",
+      "source_sha256": "80d459f8bb82315257dd9ee201f0b1d39afa327582fb85e9bf64133c6fb72895",
+      "box": [
+        265,
+        212,
+        435,
+        506
+      ],
+      "path": "assets/products/techflats/split/catalog/br-002-techflat-front.png",
+      "sha256": "fc42af49b147ddfd9bee9cb2e811d7cb6ca7e7b2908cf1e2a8f1637e441a712b",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening or resampling."
+    },
+    {
+      "sku": "br-002",
+      "view": "back",
+      "source": "assets/products/techflats/black-rose/crewneck-and-joggers.jpeg",
+      "source_sha256": "80d459f8bb82315257dd9ee201f0b1d39afa327582fb85e9bf64133c6fb72895",
+      "box": [
+        470,
+        212,
+        635,
+        506
+      ],
+      "path": "assets/products/techflats/split/catalog/br-002-techflat-back.png",
+      "sha256": "dc951797af794da9e55135d01c841f07dea01bcd7de273c7e35639673eee29c2",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening or resampling."
+    },
+    {
+      "sku": "sg-002",
+      "view": "front",
+      "source": "assets/products/techflats/signature/bridge-series-golden.jpeg",
+      "source_sha256": "6e0b31d1aaeb98417c306205aca2cecdf6fdb19a96277eccdbc458f5814b58ee",
+      "box": [
+        100,
+        145,
+        580,
+        704
+      ],
+      "path": "assets/products/techflats/split/catalog/sg-002-techflat-front.png",
+      "sha256": "135038503a7c698231f4acbfc71c74a81cea9ba2308cee663ae8bba5fc051bae",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening or resampling."
+    },
+    {
+      "sku": "sg-002",
+      "view": "back",
+      "source": "assets/products/techflats/signature/bridge-series-golden.jpeg",
+      "source_sha256": "6e0b31d1aaeb98417c306205aca2cecdf6fdb19a96277eccdbc458f5814b58ee",
+      "box": [
+        585,
+        145,
+        1050,
+        704
+      ],
+      "path": "assets/products/techflats/split/catalog/sg-002-techflat-back.png",
+      "sha256": "e11d941cd79afbf8c4163e10f5beb0cda5d7441db960984acf1808cab2233e79",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening or resampling."
+    },
+    {
+      "sku": "sg-013",
+      "view": "front",
+      "source": "assets/products/techflats/signature/mint-lavender-crewneck-sweats.jpeg",
+      "source_sha256": "68afdc1bd81757044b470e08f4837e25dbcc2314411884085976ee55e6c80ef8",
+      "box": [
+        90,
+        5,
+        403,
+        337
+      ],
+      "path": "assets/products/techflats/split/catalog/sg-013-techflat-front.png",
+      "sha256": "662b3edf5882fae9ef0dbeaf75662ffa203ec17aa1613f884eef0246efd9357e",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening or resampling."
+    },
+    {
+      "sku": "sg-013",
+      "view": "back",
+      "source": "assets/products/techflats/signature/mint-lavender-crewneck-sweats.jpeg",
+      "source_sha256": "68afdc1bd81757044b470e08f4837e25dbcc2314411884085976ee55e6c80ef8",
+      "box": [
+        404,
+        5,
+        715,
+        337
+      ],
+      "path": "assets/products/techflats/split/catalog/sg-013-techflat-back.png",
+      "sha256": "d273a505d3bd2a3892ecf0c84deedacc8d47ae7b0bf24b37400318086d49fa90",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening or resampling."
+    },
+    {
+      "sku": "lh-002",
+      "view": "front",
+      "source": "assets/products/techflats/love-hurts/joggers.jpeg",
+      "source_sha256": "04ff7535ec5205d8f3557e75f78644a0d5512245176da9b9854d5f405c6e6d05",
+      "box": [
+        640,
+        0,
+        1280,
+        606
+      ],
+      "path": "assets/products/techflats/split/catalog/lh-002-techflat-front.png",
+      "sha256": "b17f56eccca4ea869a39d6d900d1d0e15c1b80ddf1f86320f5797cc36b84ff52",
+      "pixel_verification": "Exact decoded source crop; no recoloring, sharpening or resampling."
+    }
+  ],
+  "mapped_skus": [
+    "br-001",
+    "br-002",
+    "br-003",
+    "br-007",
+    "br-008",
+    "br-009",
+    "br-010",
+    "br-011",
+    "br-012",
+    "br-014",
+    "br-015",
+    "kids-001",
+    "kids-002",
+    "lh-002",
+    "lh-003",
+    "lh-004",
+    "lh-005",
+    "lh-006",
+    "sg-001",
+    "sg-002",
+    "sg-003",
+    "sg-005",
+    "sg-006",
+    "sg-007",
+    "sg-013",
+    "sg-014",
+    "sg-015"
+  ],
+  "not_located": [
+    "br-004",
+    "br-005",
+    "br-006",
+    "sg-009",
+    "sg-011",
+    "sg-012"
+  ]
+}

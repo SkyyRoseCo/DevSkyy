@@ -4,7 +4,6 @@ Color palette and colorway advisor for SkyyRose Elite Studio.
 Provides per-collection palettes, colorway suggestions, and color fidelity
 validation for AI renders. All objects are frozen (immutable).
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations

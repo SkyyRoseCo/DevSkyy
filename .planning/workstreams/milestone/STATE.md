@@ -46,7 +46,7 @@ Progress: [███████░░░] 70% (7/10 phases — 9, 10, 11, 12, 1
 
 ## Accumulated Context
 
-- **Refinement:** Site uses a strict "Luxury Grows from Concrete" palette (no gradients, solid white/black, Rose Gold accents).
+- **Refinement:** Site uses a strict palette (no gradients, solid white/black, Rose Gold accents).
 - **Technical:** Product cards and details prioritize Techflats to establish the "Concrete" design foundation.
 - **Lock:** Frontend explicitly respects the `garment_type_lock` column in the catalog.
 - **Architecture:** Unified 1-menu header system, global grain/vignette layers.

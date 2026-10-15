@@ -1,0 +1,50 @@
+{
+  "schema": "skyyrose.v2.media-role-review.v1",
+  "production_id": "v2-reset-20261002-targeted-masked-garment-card-br-002",
+  "asset_id": "card-br-002",
+  "producer": "/root",
+  "reviewer": "/root/v2_prompt_precheck",
+  "verdict": "PASS",
+  "asset_sha256": "598a0be749d8b3951107f5b0bf39e51399ef8ae990f6c70f2c43a357d445a08d",
+  "roles": [
+    "card_front",
+    "pdp_on_model_front"
+  ],
+  "skus": [
+    "br-002"
+  ],
+  "collections": [
+    "black-rose"
+  ],
+  "v2_originality_pass": true,
+  "product_fidelity_pass": true,
+  "native_review": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-masked-garment-repairs/card-br-002-visual-review.json",
+    "sha256": "3c5171008e1aaa96d8a3b5f110b0e4ab2a710d1a7b4d46f1aca3d4f96fe7b99e"
+  },
+  "contexts": {
+    "card_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-002-masked-garment-card-desktop.png",
+      "sha256": "76e3881cacbb18fb495e57baed1f94f51e6e9cad20db0f3bdc343c5ea14603d7"
+    },
+    "card_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-002-masked-garment-card-mobile-corrected.png",
+      "sha256": "f0a24c49cdf93a5d87b4f4974213844da61e8d2339c759d97eccd55db66f671d"
+    },
+    "pdp_desktop": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-002-masked-garment-pdp-desktop.png",
+      "sha256": "a255113d6d850560b56737159b4da8e9f8fae69b594e1916947ff2c1ef4a6093"
+    },
+    "pdp_mobile": {
+      "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-002-masked-garment-pdp-mobile.png",
+      "sha256": "b1ad093bde941ebb0c9dc2f4e5c6459dc28328b1ce5518eaf8e50caeb980cc57"
+    }
+  },
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "scope": "Exact entire native shoe-edit photograph/parent/current original garment and art, plus actual offline card/current product-page.css PDP media-only desktop1440/mobile390 contexts. Whole-theme, 768 interactions, hosted commerce and release UNVERIFIED.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "role_findings": {
+    "card_front": "PASS: The exact black joggers remain complete from white waistband/WHITE cords through both complete white cuffs. Current full-color wearer-left silicone rose mark retains separate greyscale blooms, green stems and pale cloud at visible physical scale. Plain black laceless unmarked ankle boots replace the competing white shoes, with continuous grounded feet, credible contact shadows and margin. Entire natural civic-stair scene, garment construction/material/drape and product readability remain visually coherent; no broad garment/art degradation is observed relative to the parent. This is visual acceptance, not literal protected-pixel preservation.",
+    "pdp_on_model_front": "PASS: The full native master is contained in both actual desktop/mobile gallery media contexts without product-edge crop or visible overflow. The exact black joggers remain complete from white waistband/WHITE cords through both complete white cuffs. Current full-color wearer-left silicone rose mark retains separate greyscale blooms, green stems and pale cloud at visible physical scale. Plain black laceless unmarked ankle boots replace the competing white shoes, with continuous grounded feet, credible contact shadows and margin. Entire natural civic-stair scene, garment construction/material/drape and product readability remain visually coherent; no broad garment/art degradation is observed relative to the parent. This is visual acceptance, not literal protected-pixel preservation."
+  }
+}

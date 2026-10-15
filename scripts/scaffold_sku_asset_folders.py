@@ -1,5 +1,8 @@
 """Scaffold per-SKU asset bundles under skyyrose/elite_studio/assets/golden/.
 
+Compatibility bundle for existing render jobs. New product discovery starts at
+get_product(sku)["asset_library"], under assets/products/catalog/<collection>/<sku>.
+
 For every catalog SKU, ensures the per-SKU folder contains a structured
 bundle of inputs the render pipeline can consume directly:
 
@@ -9,8 +12,8 @@ bundle of inputs the render pipeline can consume directly:
     ├── reference.jpg            ← optional visual-regression baseline
     ├── flatlays/                ← empty stub — drop flat-laid photos here
     ├── techflat/
-    │   ├── front.<ext>          → symlink to product-references techflat
-    │   └── back.<ext>           → symlink to real-back photo (until true back-techflat exists)
+    │   ├── front.<ext>          → symlink to registry-bound technical front
+    │   └── back.<ext>           → symlink to registry-bound technical rear only
     ├── logos/
     │   └── <filename>           → symlinks to applied logos for this SKU
     ├── garment-source/         ← bound complete garments; never isolated logos
@@ -107,52 +110,26 @@ def _atomic_symlink(target: Path, link: Path, *, dry_run: bool) -> bool:
     return True
 
 
-def _find_techflat_source(sku: str) -> Path | None:
-    """Find the FRONT techflat file for a SKU under assets/products/references/.
+def _registered_techflat(sku: str, view: str) -> Path | None:
+    """Resolve an inspected technical view from the sole product registry."""
+    from skyyrose.core.product import get_product
 
-    Resolution order:
-        1. {sku}-techflat-front.*   (split output — preferred, view-accurate)
-        2. {sku}*-techflat.*        (combined/single techflat, not yet split)
-
-    Returns the first match (sorted for stability).
-    """
-    if not PRODUCT_REFERENCES_DIR.is_dir():
+    path = get_product(sku)["render_sources"].get(f"techflat_{view}")
+    if not path:
         return None
-    front = sorted(PRODUCT_REFERENCES_DIR.glob(f"{sku}-techflat-front.*"))
-    if front:
-        return front[0]
-    # Fall back to a combined/single techflat for SKUs not yet split.
-    # Exclude already-split -front/-back files (handled above / below).
-    candidates = [
-        p
-        for p in sorted(PRODUCT_REFERENCES_DIR.glob(f"{sku}*-techflat.*"))
-        if "-techflat-front" not in p.name and "-techflat-back" not in p.name
-    ]
-    return candidates[0] if candidates else None
+    candidate = _REPO_ROOT / path
+    if not candidate.resolve().is_relative_to(_REPO_ROOT.resolve()):
+        raise ValueError(f"Technical source escapes repository: {sku}")
+    return candidate if candidate.is_file() else None
+
+
+def _find_techflat_source(sku: str) -> Path | None:
+    return _registered_techflat(sku, "front")
 
 
 def _find_real_back_source(sku: str) -> Path | None:
-    """Find the BACK techflat for a SKU.
-
-    Resolution order:
-        1. {sku}-techflat-back.*    (split output — preferred)
-        2. {sku}*-real-back.*       (real back photo, stand-in)
-        3. {sku}*-back.*            (any back image)
-    """
-    if not PRODUCT_REFERENCES_DIR.is_dir():
-        return None
-    back = sorted(PRODUCT_REFERENCES_DIR.glob(f"{sku}-techflat-back.*"))
-    if back:
-        return back[0]
-    candidates = sorted(PRODUCT_REFERENCES_DIR.glob(f"{sku}*-real-back.*"))
-    if candidates:
-        return candidates[0]
-    candidates = [
-        p
-        for p in sorted(PRODUCT_REFERENCES_DIR.glob(f"{sku}*-back.*"))
-        if "-techflat-back" not in p.name
-    ]
-    return candidates[0] if candidates else None
+    # Historical function name retained for callers; photos are never techflats.
+    return _registered_techflat(sku, "back")
 
 
 def _find_logo_file(logo_id: str, registry: dict, sku: str) -> Path | None:
@@ -288,6 +265,12 @@ def _scaffold_garment_sources(
     for view in ("front", "back"):
         value = sources.get(view)
         source = front if view == "front" else (_REPO_ROOT / value).resolve() if value else None
+        if view == "back" and value and value == sources.get("techflat_back"):
+            # A technical drawing is useful, but is not a physical rear photo.
+            if not source.is_relative_to(_REPO_ROOT.resolve()) or not source.is_file():
+                raise ValueError(f"{sku}: invalid registered rear techflat")
+            desired[sku_dir / "techflat" / f"back{source.suffix}"] = source
+            source = None
         if source is None:
             result.missing.append(f"garment-source/{view}")
         elif not source.is_relative_to(_REPO_ROOT.resolve()) or not source.is_file():
@@ -297,6 +280,8 @@ def _scaffold_garment_sources(
         obsolete += [p for p in source_dir.glob(f"{view}.*") if p not in desired]
 
     for link in dict.fromkeys(obsolete):
+        if link in desired:
+            continue
         if link.is_symlink():
             if not dry_run:
                 link.unlink()

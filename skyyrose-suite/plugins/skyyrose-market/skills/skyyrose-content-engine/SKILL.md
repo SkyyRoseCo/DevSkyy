@@ -34,7 +34,7 @@ This hub is **social/content**. When the task is brand-definition (not brand-app
 
 ## Brand voice — at a glance
 
-- **Tagline (verbatim):** `Luxury Grows from Concrete.` — period included, never paraphrased.
+- **Tagline:** No tagline is authorised (founder decision 2026-10-06) — never use or invent one.
 - **Brand:** SkyyRose — luxury Oakland streetwear. Founder: Corey Foster. Site: skyyrose.co.
 - **Voice:** earned, unhurried, Oakland-direct. No hype-merchant tone, no fake urgency, no
   "complete the look" cross-sell. The garment is the protagonist. Reference products by NAME, not SKU.
@@ -80,7 +80,7 @@ through the canonical sources in order:**
 
 1. **Catalog CSV:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — 33 SKUs,
    columns: `sku, name, price, collection, description, sizes, color, edition_size, ...`
-2. **Per-SKU dossier:** `skyyrose/assets/data/product-content.json` + per-SKU dossier files
+2. **Per-SKU dossier:** `get_product(sku)` (the product registry) + per-SKU dossier projections
    (linked via `dossier_slug` column in the CSV).
 3. **Live agent:** `SocialMediaAgent.get_collection_context(collection)` for collection-level facts.
 

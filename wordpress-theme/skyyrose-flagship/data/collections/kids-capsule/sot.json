@@ -1,6 +1,6 @@
 {
-  "_generated_by": "data/build-collection-sot.py \u2014 DO NOT EDIT. Fix identity.json / the masters, then regenerate.",
-  "_authority": "Single Source of Truth view for Kids Capsule. Canon = identity.json.",
+  "_generated_by": "data/build-collection-sot.py \u2014 DO NOT EDIT. Fix logo-registry.json collections / the masters, then regenerate.",
+  "_authority": "Single Source of Truth view for Kids Capsule. Canon = logo-registry.json collections.kids-capsule.",
   "collection": "kids-capsule",
   "name": "Kids Capsule",
   "updated": "GENERATED",
@@ -35,8 +35,8 @@
     }
   },
   "masters": {
-    "identity": "data/collections/kids-capsule/identity.json",
-    "products": "data/skyyrose-catalog.csv",
+    "identity": "data/logo-registry.json#collections.kids-capsule",
+    "products": "data/logo-registry.json#products",
     "imagery": "data/visual-manifest.json",
     "logos": "data/logo-registry.json"
   },

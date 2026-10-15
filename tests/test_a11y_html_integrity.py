@@ -3,14 +3,16 @@
 Asserts that the accessibility fixes shipped in v1.1 (inc/accessibility-fix.php,
 assets/css/accessibility.css) remain intact across future deploys.
 
-All assertions run against static HTML fixtures captured from the live site.
-Zero network calls during pytest execution.
+Assertions run the current PHP output filter against unchanged historical HTML
+captures. This verifies local behavior, not the current deployed site.
+The PHP harness stubs only WordPress hooks and escaping; zero network calls.
 
 Run: python -m pytest tests/test_a11y_html_integrity.py -v
 """
 
 from __future__ import annotations
 
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -29,9 +31,21 @@ FIXTURES_DIR = Path(__file__).parent / "fixtures" / "a11y"
 
 def _load(filename: str) -> BeautifulSoup:
     path = FIXTURES_DIR / filename
-    if not path.exists():
-        pytest.skip(f"Fixture missing: {path}")
-    return BeautifulSoup(path.read_text(encoding="utf-8", errors="replace"), "html.parser")
+    assert path.is_file(), f"Fixture missing: {path}"
+    root = Path(__file__).resolve().parents[1]
+    rendered = subprocess.run(
+        [
+            "php",
+            str(root / "tests/php/render_accessibility.php"),
+            str(root / "wordpress-theme/skyyrose-flagship/inc/accessibility-fix.php"),
+            str(path),
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=10,
+    )
+    return BeautifulSoup(rendered.stdout, "html.parser")
 
 
 @pytest.fixture(scope="module")
@@ -121,15 +135,6 @@ def test_a11y_02_08_signature(signature: BeautifulSoup) -> None:
     _assert_unique_ids(signature, "signature")
 
 
-@pytest.mark.xfail(
-    strict=False,
-    reason=(
-        "shop page has duplicate id='primary' and id='main' — Phase 9 template regression "
-        "where WooCommerce shop template nests div#primary>main#main twice. "
-        "accessibility-fix.php deduplication did not process this cached fixture. "
-        "Track with Phase 9 regression fix."
-    ),
-)
 def test_a11y_02_08_shop(shop: BeautifulSoup) -> None:
     _assert_unique_ids(shop, "shop")
 
@@ -350,14 +355,6 @@ def test_a11y_06_signature(signature: BeautifulSoup) -> None:
     _assert_inputs_have_labels(signature, "signature")
 
 
-@pytest.mark.xfail(
-    strict=False,
-    reason=(
-        "shop search-overlay__input (type=search) lacks aria-label — "
-        "accessibility-fix.php Section 7 only fixes radio inputs, not search/text inputs. "
-        "Track for v1.3."
-    ),
-)
 def test_a11y_06_shop(shop: BeautifulSoup) -> None:
     _assert_inputs_have_labels(shop, "shop")
 
@@ -436,3 +433,45 @@ def test_a11y_09_image_loading(homepage: BeautifulSoup) -> None:
     assert not bad, f"A11Y-09: {len(bad)} non-hero img(s) missing loading='lazy':\n" + "\n".join(
         bad[:5]
     )
+
+
+def test_historical_shop_capture_reproduces_original_defects() -> None:
+    raw = BeautifulSoup((FIXTURES_DIR / "shop.html").read_text(encoding="utf-8"), "html.parser")
+    with pytest.raises(AssertionError, match="duplicate id"):
+        _assert_unique_ids(raw, "historical shop")
+    with pytest.raises(AssertionError, match="without accessible label"):
+        _assert_inputs_have_labels(raw, "historical shop")
+
+
+@pytest.mark.parametrize(
+    ("markup", "expected_label"),
+    [
+        ('<input type="search" class="search-overlay__input" />', "Search the collection"),
+        ('<input class="search-overlay__input" aria-label="Find pieces">', "Find pieces"),
+        ('<input class="search-overlay__input" aria-labelledby="label">', None),
+        ('<input id="search-overlay-input" class="search-overlay__input">', None),
+        ('<input type="search" class="other-search">', None),
+        ('<input data-class="search-overlay__input">', None),
+        ('<input class="search-overlay__input-extra">', None),
+        ('<input class="search-overlay__input" data-id="hint">', "Search the collection"),
+        ("<input data-hint=' class=\"search-overlay__input\"'>", None),
+        ("<input class='search-overlay__input' data-hint=\" id='hint'\">", "Search the collection"),
+        ("<input CLASS='search-overlay__input' ARIA-LABEL='Search here'>", "Search here"),
+        ('<input class="search-overlay__input" data-hint="a > b" aria-label="Keep me">', "Keep me"),
+    ],
+)
+def test_legacy_search_label_preserves_existing_authority(
+    tmp_path: Path, markup: str, expected_label: str | None
+) -> None:
+    capture = tmp_path / "overlay.html"
+    capture.write_text(
+        '<html><head></head><body><span id="label">Search</span>'
+        + markup
+        + "<!--"
+        + "padding" * 40
+        + "--></body></html>",
+        encoding="utf-8",
+    )
+    rendered = _load(str(capture))
+    assert rendered.input.get("class") == BeautifulSoup(markup, "html.parser").input.get("class")
+    assert rendered.input.get("aria-label") == expected_label

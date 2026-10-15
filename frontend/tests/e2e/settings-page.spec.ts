@@ -1,218 +1,104 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
-test.describe('Settings Page', () => {
+// The Operator Console replaced the editable settings form in c2d439d70.
+// These browser tests cover its read-only integration inventory. Only session
+// and unrelated navigation badges are fixtures; the page and server-rendered
+// connection states are real. This is not a live-provider connection test.
+test.describe('Settings integration inventory', () => {
   test.beforeEach(async ({ page }) => {
-    // Navigate to settings page (relative — uses baseURL: the CI-served build, not production)
+    await page.route('**/api/auth/session', route => route.fulfill({
+      json: {
+        user: { name: 'Test Operator', email: 'operator@example.test' },
+        expires: '2099-01-01T00:00:00.000Z',
+      },
+    }));
+    await page.route('**/api/console/orders-count', route => route.fulfill({ json: { count: 0 } }));
+    await page.route('**/api/v1/agents**', route => route.fulfill({
+      json: { timestamp: '2026-09-02T00:00:00.000Z', total_agents: 0, active_agents: 0, agents_by_category: {}, agents: [] },
+    }));
     await page.goto('/admin/settings');
-
-    // Wait for page to load
-    await page.waitForLoadState('networkidle');
+    await expect(page.getByRole('heading', { name: 'Settings', exact: true })).toBeVisible();
   });
 
-  test('should display settings page header and description', async ({ page }) => {
-    // Check page title
-    await expect(page.locator('h1')).toContainText('Settings');
-
-    // Check description
-    await expect(page.getByText('Configure your DevSkyy platform preferences')).toBeVisible();
+  test('explains how connection configuration is managed', async ({ page }) => {
+    await expect(page.getByText('Configure and Wire Up', { exact: true })).toBeVisible();
+    await expect(page.getByText(/Connection status reads real environment variables server-side/)).toBeVisible();
+    await expect(page.getByText('.env.example', { exact: true })).toBeVisible();
   });
 
-  test('should display all 5 settings tabs', async ({ page }) => {
-    // Verify all tabs are present
-    await expect(page.getByRole('tab', { name: /WordPress/i })).toBeVisible();
-    await expect(page.getByRole('tab', { name: /Vercel/i })).toBeVisible();
-    await expect(page.getByRole('tab', { name: /Autonomous/i })).toBeVisible();
-    await expect(page.getByRole('tab', { name: /UI Preferences/i })).toBeVisible();
-    await expect(page.getByRole('tab', { name: /System/i })).toBeVisible();
+  test('groups integrations by operational responsibility', async ({ page }) => {
+    for (const group of ['Storefront', 'Payments', 'Social', 'Automation and Infrastructure']) {
+      await expect(page.getByText(group, { exact: true })).toBeVisible();
+    }
+    await expect(page.locator('.dsh-card')).toHaveCount(12);
   });
 
-  test('should have Save All button', async ({ page }) => {
-    const saveButton = page.getByRole('button', { name: /Save All/i });
-    await expect(saveButton).toBeVisible();
-    await expect(saveButton).toBeEnabled();
-  });
+  const integrations = [
+    { name: 'WordPress', fields: ['Site URL (WP_BASE_URL)', 'Application password'] },
+    { name: 'WooCommerce', fields: ['Consumer key', 'Consumer secret'] },
+    { name: 'Stripe', fields: ['Secret key (STRIPE_SECRET_KEY)'] },
+    { name: 'Instagram', fields: ['INSTAGRAM_ACCESS_TOKEN', 'INSTAGRAM_BUSINESS_ACCOUNT_ID'] },
+    { name: 'TikTok', fields: ['TIKTOK_ACCESS_TOKEN'] },
+    { name: 'X', fields: ['TWITTER_API_KEY', 'TWITTER_API_SECRET'] },
+    { name: 'Facebook', fields: ['FACEBOOK_ACCESS_TOKEN', 'FACEBOOK_PAGE_ID'] },
+    { name: 'Pinterest', fields: ['Not wired in this build'] },
+    { name: 'YouTube', fields: ['Not wired in this build'] },
+    { name: 'Webhooks', fields: ['Signing secret (WP_WEBHOOK_SECRET)'] },
+    { name: 'Claude API', fields: ['API key (ANTHROPIC_API_KEY)'] },
+    { name: 'CDN / Media', fields: ['Not wired in this build'] },
+  ];
 
-  test('WordPress tab - should display connection settings', async ({ page }) => {
-    // Click WordPress tab (should be default)
-    const wpTab = page.getByRole('tab', { name: /WordPress/i });
-    await wpTab.click();
-
-    // Check for WordPress URL input
-    await expect(page.getByLabel(/WordPress URL/i)).toBeVisible();
-
-    // Check for Consumer Key input
-    await expect(page.getByLabel(/Consumer Key/i)).toBeVisible();
-
-    // Check for Consumer Secret input
-    await expect(page.getByLabel(/Consumer Secret/i)).toBeVisible();
-
-    // Check for Auto-Sync toggle
-    await expect(page.getByText(/Auto-Sync/i)).toBeVisible();
-    await expect(page.getByText(/Automatically sync Round Table results to WordPress/i)).toBeVisible();
-  });
-
-  test('WordPress tab - should have show/hide buttons for secrets', async ({ page }) => {
-    // Check that secret fields are password inputs by default
-    const consumerKeyInput = page.getByLabel(/Consumer Key/i);
-    await expect(consumerKeyInput).toHaveAttribute('type', 'password');
-
-    const consumerSecretInput = page.getByLabel(/Consumer Secret/i);
-    await expect(consumerSecretInput).toHaveAttribute('type', 'password');
-
-    // Verify there are show/hide toggle buttons next to the secret fields
-    // (These are the buttons with Eye/EyeOff icons)
-    const toggleButtons = page.locator('button').filter({
-      has: page.locator('svg')
-    }).filter({
-      hasNot: page.locator('text=/Save|Refresh/')
+  for (const { name, fields } of integrations) {
+    test(`${name} shows its configuration requirements and status`, async ({ page }) => {
+      const card = page.locator('.dsh-card').filter({ has: page.getByText(name, { exact: true }) });
+      await expect(card).toHaveCount(1);
+      await expect(card).toBeVisible();
+      await expect(card.getByText(/^(Connected|Action needed|Not connected)$/)).toBeVisible();
+      for (const field of fields) await expect(card.getByText(field, { exact: true })).toBeVisible();
+      // Status fields expose configuration presence, never credential values.
+      await expect(card.getByText(/^(Configured|Not configured)$/)).toHaveCount(fields.length);
     });
+  }
 
-    // Should have at least 2 toggle buttons (Consumer Key and Secret)
-    await expect(toggleButtons.first()).toBeVisible();
+  test('unwired services remain explicitly disconnected', async ({ page }) => {
+    for (const name of ['Pinterest', 'YouTube', 'CDN / Media']) {
+      const card = page.locator('.dsh-card').filter({ has: page.getByText(name, { exact: true }) });
+      await expect(card.getByText('Not connected', { exact: true })).toBeVisible();
+      await expect(card.getByText('Not configured', { exact: true })).toBeVisible();
+    }
   });
 
-  test('Vercel tab - should display integration settings', async ({ page }) => {
-    // Click Vercel tab
-    await page.getByRole('tab', { name: /Vercel/i }).click();
-
-    // Wait for tab content to load
-    await page.waitForTimeout(500);
-
-    // Check for Project ID input
-    await expect(page.getByLabel(/Project ID/i)).toBeVisible();
-
-    // Check for Organization ID input
-    await expect(page.getByLabel(/Organization ID/i)).toBeVisible();
-
-    // Check for API Token input
-    await expect(page.getByLabel(/API Token/i)).toBeVisible();
+  test('configuration inventory does not offer credential editing or simulated saving', async ({ page }) => {
+    await expect(page.locator('.dsh-card input, .dsh-card textarea')).toHaveCount(0);
+    await expect(page.getByRole('button', { name: /Save All|Saved/i })).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Sign out' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'New Drop' })).toHaveAttribute('href', '/admin/collections');
   });
 
-  test('Autonomous tab - should display agent configuration', async ({ page }) => {
-    // Click Autonomous tab
-    await page.getByRole('tab', { name: /Autonomous/i }).click();
-
-    // Wait for tab content
-    await page.waitForTimeout(500);
-
-    // Check for Enable toggle
-    await expect(page.getByText(/Enable Autonomous Operations/i)).toBeVisible();
-
-    // Check for Circuit Breaker Threshold
-    await expect(page.getByLabel(/Circuit Breaker Threshold/i)).toBeVisible();
-
-    // Check for Retry Attempts
-    await expect(page.getByLabel(/Retry Attempts/i)).toBeVisible();
-
-    // Check for Retry Delay
-    await expect(page.getByLabel(/Retry Delay/i)).toBeVisible();
+  test('retains the settings navigation destination', async ({ page }) => {
+    const link = page.getByRole('link', { name: 'Settings', exact: true });
+    await expect(link).toHaveAttribute('href', '/admin/settings');
+    await link.click();
+    await expect(page).toHaveURL(/\/admin\/settings$/);
+    await expect(page.getByRole('heading', { name: 'Settings', exact: true })).toBeVisible();
   });
 
-  test('UI Preferences tab - should display theme options', async ({ page }) => {
-    // Click UI Preferences tab
-    await page.getByRole('tab', { name: /UI Preferences/i }).click();
-
-    // Wait for tab content
-    await page.waitForTimeout(500);
-
-    // Check for Theme select
-    await expect(page.getByLabel(/Theme/i)).toBeVisible();
-
-    // Check for Typography select
-    await expect(page.getByLabel(/Typography/i)).toBeVisible();
-
-    // Check for Accent Color input
-    await expect(page.getByLabel(/Accent Color/i)).toBeVisible();
+  test('keeps the connection inventory within the viewport', async ({ page }, testInfo) => {
+    const dimensions = await page.evaluate(() => ({
+      content: document.documentElement.scrollWidth,
+      viewport: document.documentElement.clientWidth,
+    }));
+    expect(dimensions.content).toBeLessThanOrEqual(dimensions.viewport);
+    await page.screenshot({ path: testInfo.outputPath('settings-layout.png'), fullPage: true });
   });
 
-  test('System tab - should display system configuration', async ({ page }) => {
-    // Click System tab
-    await page.getByRole('tab', { name: /System/i }).click();
-
-    // Wait for tab content
-    await page.waitForTimeout(500);
-
-    // Check for API Timeout
-    await expect(page.getByLabel(/API Timeout/i)).toBeVisible();
-
-    // Check for Max Concurrent Requests
-    await expect(page.getByLabel(/Max Concurrent Requests/i)).toBeVisible();
-
-    // Check for Log Level
-    await expect(page.getByLabel(/Log Level/i)).toBeVisible();
-  });
-
-  test('should allow switching between tabs', async ({ page }) => {
-    // Start on WordPress tab
-    await expect(page.getByLabel(/WordPress URL/i)).toBeVisible();
-
-    // Switch to Vercel
-    await page.getByRole('tab', { name: /Vercel/i }).click();
-    await page.waitForTimeout(300);
-    await expect(page.getByLabel(/Project ID/i)).toBeVisible();
-
-    // Switch to Autonomous
-    await page.getByRole('tab', { name: /Autonomous/i }).click();
-    await page.waitForTimeout(300);
-    await expect(page.getByLabel(/Circuit Breaker Threshold/i)).toBeVisible();
-
-    // Switch to UI Preferences
-    await page.getByRole('tab', { name: /UI Preferences/i }).click();
-    await page.waitForTimeout(300);
-    await expect(page.getByLabel(/Theme/i)).toBeVisible();
-
-    // Switch to System
-    await page.getByRole('tab', { name: /System/i }).click();
-    await page.waitForTimeout(300);
-    await expect(page.getByLabel(/API Timeout/i)).toBeVisible();
-
-    // Switch back to WordPress
-    await page.getByRole('tab', { name: /WordPress/i }).click();
-    await page.waitForTimeout(300);
-    await expect(page.getByLabel(/WordPress URL/i)).toBeVisible();
-  });
-
-  test('should allow entering values in WordPress settings', async ({ page }) => {
-    // Enter WordPress URL
-    const wpUrlInput = page.getByLabel(/WordPress URL/i);
-    await wpUrlInput.fill('https://test.wordpress.com');
-    await expect(wpUrlInput).toHaveValue('https://test.wordpress.com');
-
-    // Enter Consumer Key
-    const keyInput = page.getByLabel(/Consumer Key/i);
-    await keyInput.fill('ck_test123456');
-    await expect(keyInput).toHaveValue('ck_test123456');
-
-    // Enter Consumer Secret
-    const secretInput = page.getByLabel(/Consumer Secret/i);
-    await secretInput.fill('cs_test123456');
-    await expect(secretInput).toHaveValue('cs_test123456');
-  });
-
-  test('should show success message after saving', async ({ page }) => {
-    // Enter some test data
-    const wpUrlInput = page.getByLabel(/WordPress URL/i);
-    await wpUrlInput.fill('https://test.wordpress.com');
-
-    // Click Save All button
-    const saveButton = page.getByRole('button', { name: /Save All/i });
-    await saveButton.click();
-
-    // Wait for save operation
-    await page.waitForTimeout(1000);
-
-    // Check for success indicator (button should show "Saved" or have success state)
-    await expect(page.getByRole('button', { name: /Saved/i })).toBeVisible();
-  });
-
-  test('should have proper page styling with luxury theme', async ({ page }) => {
-    // Check for luxury gradient in title
-    const title = page.locator('h1');
-    await expect(title).toHaveClass(/luxury-text-gradient/);
-
-    // Check for proper font classes (from layout.tsx)
-    const html = page.locator('html');
-    await expect(html).toHaveClass(/playfair_display/);
-    await expect(html).toHaveClass(/cormorant_garamond/);
+  test('navigation has a visible focus indicator', async ({ page, isMobile }) => {
+    const overview = page.getByRole('link', { name: 'Overview', exact: true });
+    // iOS WebKit emulation does not implement desktop Tab-to-link traversal.
+    // Exercise its focus styling directly; desktop also verifies Tab order.
+    if (isMobile) await overview.focus();
+    else await page.keyboard.press('Tab');
+    await expect(overview).toBeFocused();
+    await expect(overview).toHaveCSS('box-shadow', /rgb\(255, 255, 255\).*2px/);
   });
 });

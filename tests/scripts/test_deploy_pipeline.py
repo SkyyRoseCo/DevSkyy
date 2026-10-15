@@ -84,6 +84,30 @@ class TestScriptStructure:
         assert "npm run build" in source
 
 
+class TestTargetedEntryPoints:
+    """D7: the pipeline is a production script, so it must enter through the
+    production wrapper (which pins DEPLOY_TARGET) and hand verify-deploy.sh the
+    production env file -- a bare engine/verify call now always refuses."""
+
+    def test_deploy_step_enters_through_production_wrapper(self):
+        source = SCRIPT_PATH.read_text()
+        assert 'bash "$SCRIPT_DIR/deploy-production.sh" --dry-run' in source
+        assert 'bash "$SCRIPT_DIR/deploy-production.sh"\n' in source
+        # The engine is never invoked directly (it refuses without DEPLOY_TARGET).
+        assert 'bash "$SCRIPT_DIR/deploy-theme.sh"' not in source
+
+    def test_verify_step_passes_production_env_file(self):
+        source = SCRIPT_PATH.read_text()
+        assert (
+            'bash "$SCRIPT_DIR/verify-deploy.sh" --env-file "$PROJECT_ROOT/.env.wordpress"'
+            in source
+        )
+
+    def test_dependency_check_covers_wrapper(self):
+        source = SCRIPT_PATH.read_text()
+        assert '-f "$SCRIPT_DIR/deploy-production.sh"' in source
+
+
 class TestDryRun:
     """Tests 5-7: --dry-run exits 0, prints DRY RUN messages, skips verification."""
 

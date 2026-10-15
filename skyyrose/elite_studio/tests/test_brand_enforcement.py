@@ -1,10 +1,12 @@
 """Brand enforcement — retired taglines must never appear in generated content.
 
 This test reads retired taglines from `assets/brand/brand.yaml` and asserts
-they do not appear in any tracked source file EXCEPT:
+they do not appear (case-insensitively) in any tracked source file EXCEPT:
   - brand.yaml itself (the source of the list)
-  - this test file
+  - test files (they use the phrases as negative fixtures)
   - the brand loader (it reads the list to expose it)
+  - the founder's verbatim Signature story quote and the Kids Capsule
+    insert-card copy, retained by founder decision 2026-10-06
 
 Run: pytest skyyrose/elite_studio/tests/test_brand_enforcement.py -v
 
@@ -34,14 +36,41 @@ _ALLOWED_PATHS = frozenset(
         "skyyrose/elite_studio/tests/test_brand_enforcement.py",
         "skyyrose/elite_studio/tests/test_brand.py",
         "skyyrose/elite_studio/brand.py",
+        # Corey's verbatim Signature founder-story quote ("I said luxury grows
+        # from concrete — and I meant that literally") and its typographic
+        # split; FOUNDER-authored, retained on 2026-10-06.
+        "wordpress-theme/skyyrose-flagship/inc/collection-content.php",
+        "wordpress-theme/skyyrose-flagship/data/collections/signature/copy.md",
+        "wordpress-theme/skyyrose-flagship/data/collections/signature/index.html",
+        # Kids Capsule insert card: the printed card is a physical product
+        # fact, not generated copy.
+        "wordpress-theme/skyyrose-flagship/data/collections/kids-capsule/copy.md",
+        "wordpress-theme/skyyrose-flagship/data/collections/kids-capsule/index.html",
     }
 )
 
-# Directories to scan. Focused on customer-facing surfaces.
-_SCAN_DIRS = ("wordpress", "wordpress-theme", "frontend", "skyyrose", "scripts")
+# Directories to scan: every surface that renders copy or feeds a prompt.
+_SCAN_DIRS = (
+    "wordpress",
+    "wordpress-theme",
+    "frontend",
+    "skyyrose",
+    "scripts",
+    "agents",
+    "sdk",
+    "hf-spaces",
+    "orchestration",
+    "services",
+    "api",
+    "integrations",
+    "examples",
+    "evaluation",
+)
 
 # File extensions to scan.
-_SCAN_EXTS = frozenset({".py", ".php", ".ts", ".tsx", ".js", ".jsx", ".yaml", ".yml", ".md"})
+_SCAN_EXTS = frozenset(
+    {".py", ".php", ".ts", ".tsx", ".js", ".jsx", ".yaml", ".yml", ".md", ".html"}
+)
 
 
 def _git_tracked_files() -> list[Path]:
@@ -62,7 +91,11 @@ def _git_tracked_files() -> list[Path]:
         rel = line.strip()
         if not rel:
             continue
-        if Path(rel).suffix.lower() not in _SCAN_EXTS:
+        rel_path = Path(rel)
+        if rel_path.suffix.lower() not in _SCAN_EXTS:
+            continue
+        # Test files use retired phrases as negative fixtures.
+        if "tests" in rel_path.parts or rel_path.name.startswith("test_"):
             continue
         paths.append(_REPO_ROOT / rel)
     return paths
@@ -86,6 +119,8 @@ _ENFORCEMENT_KEYWORDS = (
     "assert ",
     "retired_tagline",
     "DEPRECATED",
+    "decommissioned",
+    "banned",
 )
 
 
@@ -101,6 +136,7 @@ def test_retired_taglines_do_not_appear_as_actual_usage() -> None:
         pytest.skip("No retired taglines declared in brand.yaml")
 
     violations: list[tuple[str, str, int, str]] = []  # (rel_path, phrase, line_no, line)
+    retired_folded = [(phrase, phrase.lower()) for phrase in retired]
 
     for path in _git_tracked_files():
         try:
@@ -113,11 +149,12 @@ def test_retired_taglines_do_not_appear_as_actual_usage() -> None:
             content = path.read_text(encoding="utf-8", errors="ignore")
         except OSError:
             continue
-        for phrase in retired:
-            if phrase not in content:
+        content_folded = content.lower()
+        for phrase, phrase_folded in retired_folded:
+            if phrase_folded not in content_folded:
                 continue
             for line_no, line in enumerate(content.splitlines(), start=1):
-                if phrase not in line:
+                if phrase_folded not in line.lower():
                     continue
                 if _is_enforcement_line(line):
                     continue  # enforcement mention — allowed

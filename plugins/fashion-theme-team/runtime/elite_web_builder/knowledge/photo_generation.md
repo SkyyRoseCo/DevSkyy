@@ -19,8 +19,7 @@ Every generated image must show a model wearing the **exact real product** — c
 
 ## Product Catalog
 
-- **File:** `skyyrose/assets/data/product-content.json` (28 products)
-- **Fields:** sku, name, collection, description, short_description, seo_meta, instagram, tiktok
+- **Single source of truth:** the product registry, `wordpress-theme/skyyrose-flagship/data/logo-registry.json`. Read a product with `from skyyrose.core.product import get_product` (or `python -m skyyrose.core.product <sku>`); absent facts are named in its `gaps` list.
 
 ### Canonical Product Name Mapping (USE THESE NAMES for WordPress)
 
@@ -123,15 +122,10 @@ node skyyrose/build/generate-fashion-models.js br-001 br-002 lh-001  # Multiple
 - **Output:** `skyyrose/assets/images/products/{sku}/{sku}-model-{view}.jpg`
 - **Views:** front, back (2 per product = 56 total)
 
-### Skyy Character Poses (For avatar/assistant system)
-```bash
-node skyyrose/build/generate-skyy-poses.js                  # All products
-node skyyrose/build/generate-skyy-poses.js br-001           # Single
-node skyyrose/build/generate-skyy-poses.js --collection black-rose  # By collection
-```
-- **Provider:** Gemini Flash Image + Imagen 4
-- **Output:** `skyyrose/assets/images/avatar/poses/skyy-{pose}-{sku}.png`
-- **Poses:** idle, point, walk (3 per product = 84 total)
+### Skyy Character Poses (retired)
+`skyyrose/build/generate-skyy-poses.js` was deleted 2026-09-18: it carried its own
+hard-coded 21-SKU product list instead of reading the product registry. New
+renders are gpt-image-2 via `scripts/oai_render` (paid — founder approval per call).
 
 ### Scene Backgrounds (For immersive 3D experiences)
 ```bash

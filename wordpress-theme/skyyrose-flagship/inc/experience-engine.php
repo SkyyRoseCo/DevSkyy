@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
  * Constants
  *--------------------------------------------------------------*/
 define( 'SKYYROSE_SEE_VERSION', '1.0.0' );
-define( 'SKYYROSE_SEE_DB_VERSION', '1.0.0' );
+define( 'SKYYROSE_SEE_DB_VERSION', '1.1.0' );
 
 /*
 --------------------------------------------------------------
@@ -252,16 +252,18 @@ function skyyrose_see_create_tables(): void {
 
 	$sql = "CREATE TABLE {$table} (
 		id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+		event_id CHAR(64) DEFAULT NULL,
 		event_date DATE NOT NULL,
 		event_type VARCHAR(50) NOT NULL,
 		event_target VARCHAR(255) NOT NULL DEFAULT '',
 		page_type VARCHAR(50) NOT NULL DEFAULT '',
-		collection_slug VARCHAR(50) NOT NULL DEFAULT '',
+		collection_slug VARCHAR(100) NOT NULL DEFAULT '',
 		event_count INT UNSIGNED NOT NULL DEFAULT 1,
 		event_value DECIMAL(10,2) NOT NULL DEFAULT 0.00,
 		visitor_hash VARCHAR(64) NOT NULL DEFAULT '',
 		created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		PRIMARY KEY (id),
+		UNIQUE KEY idx_event_id (event_id),
 		KEY idx_date_type (event_date, event_type),
 		KEY idx_collection (collection_slug, event_date),
 		KEY idx_visitor (visitor_hash, event_date)
@@ -270,6 +272,18 @@ function skyyrose_see_create_tables(): void {
 	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	dbDelta( $sql );
 
+	// Do not mark an incomplete schema update current: retries require uniqueness.
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+	$indexes = $wpdb->get_results( $wpdb->prepare( 'SHOW INDEX FROM %i WHERE Key_name = %s', $table, 'idx_event_id' ), ARRAY_A );
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Verify live schema after dbDelta; caching would hide partial migration failure.
+	$collection = $wpdb->get_row( $wpdb->prepare( 'SHOW COLUMNS FROM %i WHERE Field = %s', $table, 'collection_slug' ), ARRAY_A );
+	if ( ! is_array( $indexes ) || 1 !== count( $indexes ) ||
+		'0' !== (string) ( $indexes[0]['Non_unique'] ?? '' ) ||
+		'event_id' !== ( $indexes[0]['Column_name'] ?? '' ) ||
+		! array_key_exists( 'Sub_part', $indexes[0] ) || null !== $indexes[0]['Sub_part'] ||
+		'varchar(100)' !== strtolower( $collection['Type'] ?? '' ) ) {
+		return;
+	}
 	update_option( 'skyyrose_see_db_version', SKYYROSE_SEE_DB_VERSION );
 }
 

@@ -303,6 +303,11 @@ configuration as the authority; do not assume a root command checks all apps.
 - For UI changes, exercise affected flows on desktop and mobile and capture
   visual evidence. A fixture preview or HTTP 200 alone does not verify live
   commerce, accessibility, performance, or deployment.
+- For generated garment, character, or lettering assets, compare the full-size
+  output side by side with its authoritative visual source, detail for detail.
+  Without that comparison, do not mark the asset verified or advance it to
+  assembly, upscaling, or release. This checks our output, not the maker's
+  facts.
 - Report failed, skipped, or unavailable checks explicitly. Never claim a
   command passed merely because it exists or was started.
 
@@ -321,7 +326,8 @@ configuration as the authority; do not assume a root command checks all apps.
 ## Delivery and authorization
 
 - Use scoped Conventional Commit subjects, such as `fix(theme): ...` or
-  `docs: ...`. Stage only intended files; never reset or discard others' work.
+  `docs(agents): ...`. Stage only intended files; never reset or discard others'
+  work.
 - PRs describe the problem, final implementation, validation, related issue when
   one exists, and screenshots or recordings for UI changes. Include applicable
   migration, security, environment, and deployment implications.
@@ -333,14 +339,14 @@ configuration as the authority; do not assume a root command checks all apps.
 
 ## Skill quality
 
-When creating, revising, auditing, or adopting skills, read
-`/Users/theceo/.codex/skill-standards/verified-examples.md`. Require
-task-specific, identifiable evidence for at least one correct example and an
-incorrect example with its correction and reason. Label illustrative negatives;
-distinguish source verification, recorded observations, reproduced tests, and
-authenticated live execution. Record redacted account/environment/scope evidence
-for authenticated workflows; mark authentication not applicable for offline
-work.
+When creating, revising, auditing, or adopting skills, read the repository's
+[verified-examples standard](.github/skill-standards/verified-examples.md).
+Require task-specific, identifiable evidence for at least one correct example
+and an incorrect example with its correction and reason. Label illustrative
+negatives; distinguish source verification, recorded observations, reproduced
+tests, and authenticated live execution. Record redacted
+account/environment/scope evidence for authenticated workflows; mark
+authentication not applicable for offline work.
 
 Keep substantial examples in linked references and maintained canonical sources
 or overlays, never disposable plugin caches. Report missing evidence as a

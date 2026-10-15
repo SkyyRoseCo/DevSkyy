@@ -25,7 +25,7 @@ allowed-tools: Read Write Edit Glob
 
 - **Corey's register is the only register.** Reddit communities are allergic to brand voice. Corey — as a person, an Oakland founder, a Black designer — is the account identity. Never write as "SkyyRose the brand". Write as Corey.
 - **No hype-merchant tone.** "🔥 CHECK OUT OUR DROP 🔥" gets downvoted and banned instantly. Reddit's culture rewards specificity, honesty, and genuine contribution. Corey's earned, direct Oakland voice is exactly what Reddit responds to.
-- **Tagline is never the opener.** `Luxury Grows from Concrete.` belongs in Corey's profile bio, not in the first line of a subreddit comment. It's earned context, not an intro.
+- **No tagline.** None is authorised (founder decision 2026-10-06); never use or invent one in a bio or comment.
 - **Product naming if products come up:** Always by name. "BLACK Rose Crewneck" not "br-001". In community discussions, product names are natural; SKUs read like marketing copy.
 - **The 90/10 rule is SkyyRose canon.** 90% genuine value contribution. 10% — at most — content that links to SkyyRose. Violating this is a Reddit ban and a brand reputation hit.
 

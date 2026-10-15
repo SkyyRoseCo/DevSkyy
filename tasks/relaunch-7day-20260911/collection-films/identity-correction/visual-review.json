@@ -1,0 +1,93 @@
+{
+  "schema": "skyyrose.collection-film-visual-review.v1",
+  "status": "SAMPLED_PRODUCTION_REVIEW_PASS_FINAL_FOUNDER_ACCEPTANCE_PENDING",
+  "method": "Every fresh motion input reviewed in ten-sample contact sheets, with named native-pixel frame details and independent bounded reviews. All-frame motion continuity and real-person identity verification are not claimed.",
+  "source_of_truth": {
+    "Skyy": "sources/skyy-master.png",
+    "Skyy_sha256": "a8a32b8097f6885300f537e50c942c445c09012269807b072b6854c7019b9973",
+    "Black_Rose_actor": "black-rose-actor-references.json",
+    "garment_and_hero_sources": "../build/source-map.json"
+  },
+  "clips": {
+    "BRA": {
+      "sha256": "607d6fa0f80079996ee4ec8a98a775557757e376b723c8bdcd76b67c05b44d40",
+      "sheet": "qa/BRA-motion-sheet.jpg",
+      "finding": "NO_BLOCKING_DISCREPANCY_OBSERVED",
+      "observations": "Actual-video-derived performer anchor and supplied Skyy; black bomber fronts stay visible in sampled motion. First sample sheet and late shared glance reviewed."
+    },
+    "BRB": {
+      "sha256": "6c0134b713af7877ab3e9693b1646b17e232f74395003470bb3a78a4ad66085c",
+      "sheet": "qa/BRB-motion-sheet.jpg",
+      "finding": "NO_BLOCKING_DISCREPANCY_OBSERVED",
+      "observations": "Large silver-edged rose/star approaches through window. Sampled foreground cast and black bomber details remain stable."
+    },
+    "SGA": {
+      "sha256": "9363cb033c9e665820f31247f7c366513f8bb6b4e3d8a4a7f7ecf27a588f1b21",
+      "sheet": "qa/SGA-motion-sheet.jpg",
+      "finding": "NO_BLOCKING_DISCREPANCY_OBSERVED",
+      "observations": "Matching white-lined black sherpas, low adult invitation. Frame228 hand inspected; no confirmed extra/fused digit."
+    },
+    "SGB": {
+      "sha256": "b480420950ae03ba20b72c105f6f12a96b7a16264a19df2a2f7ba73bf9189608",
+      "sheet": "qa/SGB-motion-sheet.jpg",
+      "finding": "NO_BLOCKING_DISCREPANCY_OBSERVED",
+      "observations": "Golden rose enlarges through exterior parallax; garment fronts and illustrated Skyy remain coherent. Main uses final4 seconds144:240."
+    },
+    "LHA": {
+      "sha256": "00e8732e8b27bc0929442a80c92942c70a1c2036247b935f4cf3589e3324c7e3",
+      "sheet": "qa/LHA-motion-sheet.jpg",
+      "finding": "NO_BLOCKING_DISCREPANCY_OBSERVED",
+      "observations": "Shared glance at8\u201310 seconds. Native frame228 shows coherent illustrated upward profile; snaps, script and striped ribbing visible."
+    },
+    "LHB": {
+      "sha256": "f86d2ce29291a618503947ae9f6b98e8e03d0a2f1aa5f69dfb3c823dd9d8c2c2",
+      "sheet": "qa/LHB-motion-sheet.jpg",
+      "finding": "NO_BLOCKING_DISCREPANCY_OBSERVED",
+      "observations": "Wider arched corridor and rose cloche, frontal product closure. Enclosed lamps; no extra scene wording observed."
+    },
+    "KR": {
+      "sha256": "d585288de674d879fc93aa83710f03ba9f00f35068ef850dd3488a84500902f9",
+      "sheet": "qa/KR-motion-sheet.jpg",
+      "finding": "NO_BLOCKING_DISCREPANCY_OBSERVED",
+      "observations": "Red/black/white matching garments; low open palm at7\u201310seconds. Native frame228 has thumb+four fingers. Throne already visible; this is an encounter/payoff after a doorway cut."
+    },
+    "KP": {
+      "sha256": "60612f4ea9bb98313cb1ef464f7747a292f66d492d45e6d2f47cc5c6290480ab",
+      "sheet": "qa/KP-motion-sheet.jpg",
+      "finding": "NO_BLOCKING_DISCREPANCY_OBSERVED",
+      "observations": "Deep-purple hoods, lavender panels and visible white hoodie/jogger cords. Native frame144 upward glance reviewed; later frontal smile visible."
+    }
+  },
+  "independent_reviewers": [
+    "brand_truth: character/product samples",
+    "campaign_review: corrected stills and hero reveals",
+    "assembly_python_review: source-preserving assembler/tests"
+  ],
+  "limits": [
+    "Fine embroidery geometry and exact small sleeve-patch wording are not certified by contact-sheet review.",
+    "Film-level export proof is separate from generated visual acceptance.",
+    "Final founder creative review remains open; campaigns are inactive."
+  ],
+  "observed_corrections": [
+    "Removed invented background wording in Love Hurts and Purple Kids drafts before animation.",
+    "Corrected Purple Kids mascot hood color and visible jogger drawstrings.",
+    "Replaced Love Hurts background candles with enclosed train lamps.",
+    "Excluded previous invented Black Rose lead and all rejected character-bearing clips."
+  ],
+  "final_film_review": {
+    "status": "SAMPLED_FINAL_FILM_REVIEW_PASS_FOUNDER_ACCEPTANCE_PENDING",
+    "method": "Root inspected all five export contact sheets, including first/last frames and both sides of every cut. Independent review checked Kids and Black Rose boundaries. Full native browser playback was not performed because local file navigation was blocked by the browser URL policy. All files were fully decoded and frame-timing/pixel checks passed.",
+    "notes": [
+      "Kids uses an intentional closed-door hard cut, without visible opening motion.",
+      "Original Black Rose footage retains its green cast; train scenes have their separate neutral lighting.",
+      "Main retains the larger late Signature rose and ends on the red Kids invitation."
+    ],
+    "film_hashes": {
+      "signature": "9920eaae53d6d1dda711d819a28dbe6c45dbc45a1a1a4e03fb71e13abbc355c3",
+      "black-rose": "26ca30f55d346b38561a0fe70cb7d3dff46c515e6e2c88bef5f88043f0cff6b2",
+      "love-hurts": "210538ac91ef1fe48db726d6c14f7bae70af2cac79aa46fc418425f3fbf22072",
+      "kids-capsule": "f5323f1f80dba25af6b9cba80839e3f1567a4d08f2f9f0ff3f98735d536f879a",
+      "town-line-main": "4f0d6273e51ee0596cf656a373ba0e3995fda2634ab84452404114f827a85804"
+    }
+  }
+}

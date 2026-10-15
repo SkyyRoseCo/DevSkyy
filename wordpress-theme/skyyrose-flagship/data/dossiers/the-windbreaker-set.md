@@ -10,11 +10,15 @@ reference_image: assets/products/references/sg-015-windbreaker-set-techflat.jpeg
 
 # The Windbreaker Set
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Two-piece matching set sold as a single SKU — **lightweight nylon zip-front hooded windbreaker JACKET + matching nylon track-style PANTS**. Both pieces are constructed from smooth lightweight **nylon windbreaker fabric** (NOT cotton-fleece — this is the lighter water-resistant sibling of the Mint & Lavender Hoodie set). NOT cotton-fleece (this is the windbreaker variant, not the cousin sg-006 fleece hoodie + sg-014 fleece pants). NOT a fleece hoodie (different fabric, different weight, different construction).
-Features: Two-piece matching set sold as a single SKU — **lightweight nylon zip-front hooded windbreaker JACKET + matching nylon track-style PANTS**. Both pieces are constructed from smooth lightweight **nylon windbreaker fabric** (NOT cotton-fleece — this is the lighter water-resistant sibling of the Mint & Lavender Hoodie set). Solid **white** body on both pieces with a **multi-color V-shape rainbow chevron color-block detail** at the upper chest (jacket) and at each upper-thigh (pants), **PINK contrast hood** on the jacket, **multi-color rainbow stripe bands** at the jacket cuffs / hem and the pants waistband / ankle cuffs. The jacket has a full-length center-front zipper. The pants have a white drawstring waistband and slash hand pockets. NOT cotton-fleece (this is the windbreaker variant, not the cousin sg-006 fleece hoodie + sg-014 fleece pants). NOT a single-piece SKU — this is sold as the matching JACKET + PANTS set together. NOT a fleece hoodie (different fabric, different weight, different construction). NOT solid black — both the current catalog and tech flat specify a WHITE body; preserve the pink hood and rainbow chevrons shown in the reference.
-Color: White
-Available sizes: S | M | L | XL | 2XL | 3XL
+**Garment type lock:** Two-piece matching set sold as a single SKU — **zip-front hooded windbreaker JACKET + matching track-style PANTS**. Both pieces are constructed from **windbreaker fabric**. Solid **white** body on both pieces with a **multi-color V-shape rainbow chevron color-block detail** at the upper chest (jacket) and at each upper-thigh (pants), **PINK contrast hood** on the jacket, **multi-color rainbow stripe bands** at the jacket cuffs / hem and the pants waistband / ankle cuffs. The jacket has a full-length center-front zipper. The pants have a white drawstring waistband and slash hand pockets. NOT cotton-fleece (this is the windbreaker variant, not the cousin sg-006 fleece hoodie + sg-014 fleece pants). NOT a single-piece SKU — this is sold as the matching JACKET + PANTS set together. NOT a fleece hoodie (different fabric, different weight, different construction). NOT solid black — both the current catalog and tech flat specify a WHITE body; preserve the pink hood and rainbow chevrons shown in the reference.
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** Windbreaker fabric. (Corey, 2026-09-29, verbatim: "SG-015-windbreaker material and those as well are made out of the same materials authentic jersey in the specified sport comes in")
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 
@@ -30,37 +34,35 @@ This supersedes the earlier pink rose-cloud-cluster identification in this dossi
 > - Product placement reference: `assets/products/references/sg-015-windbreaker-set-techflat.jpeg`.
 > - The drawing was visually inspected September 13, 2026. It shows the first
 >   rose on the wearer-left chest and wearer-left thigh, and a small SR centered
->   below the hood at the back. It does not establish physical dimensions or
->   manufacturing technique. Existing embroidery specifications are retained;
->   they are not newly confirmed by the founder's logo statement.
+>   below the hood at the back.
 >
 > The white body, pink hood and rainbow panels are garment colors. They do not
 > authorize recoloring the first rose or substituting a pink rose cluster.
 > The catalog's current color is White; the former Black-color warning was stale.
 
 ### Front
-- **front-body-jacket** (entire white jacket field, between the hood seam and the bottom hem): Solid **white** nylon windbreaker shell fabric. **Technique:** stitched. **Color:** white.
+- **front-body-jacket** (entire white jacket field, between the hood seam and the bottom hem): Solid **white** windbreaker shell fabric. **Technique:** stitched. **Color:** white.
 - **front-chevron-jacket** (large V-shape, ~10in wide, fanning from the upper chest outward toward both shoulders and up to the hood opening): Multi-color **rainbow chevron stripe color-block panel** — alternating pink + green + lavender + yellow stripes (~5–8 stripes, each ~0.5–1in wide) arranged in a V/chevron formation that meets at the center-front upper-chest and fans up-and-out toward each shoulder. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow on white ground.
-- **front-left-chest-jacket** (wearer-left chest on the chevron panel, as shown in the tech flat): Canonical **first rose / rose-gold-rose** with stem and leaves. Preserve the registered artwork, orientation and relative scale. **Technique:** embroidered (existing registry specification; physical execution not established by the drawing). **Color:** rose gold.
+- **front-left-chest-jacket** (wearer-left chest on the chevron panel, as shown in the tech flat): Canonical **first rose / rose-gold-rose** with stem and leaves. Preserve the registered artwork, orientation and relative scale. **Technique:** embroidered. **Color:** rose gold.
 - **front-zipper-jacket** (vertical center-front, full body length from hood opening to waistband hem): Standard center-front zipper running the full length of the jacket body. **Technique:** patch. **Color:** body-tone hardware (white or near-white teeth).
 - **front-left-pocket-jacket** (vertical slash hand pocket at the lower-left jacket body, with **pink contrast piping** along the welt edge): Slash hand pocket. **Technique:** stitched. **Color:** white body with pink piping accent.
 - **front-right-pocket-jacket** (vertical slash hand pocket at the lower-right jacket body, mirror of left): Slash hand pocket with pink contrast piping. **Technique:** stitched. **Color:** white body with pink piping.
-- **front-body-pants** (entire white pants field, between the waistband and ankle cuffs): Solid **white** nylon windbreaker fabric. **Technique:** stitched. **Color:** white.
+- **front-body-pants** (entire white pants field, between the waistband and ankle cuffs): Solid **white** windbreaker fabric. **Technique:** stitched. **Color:** white.
 - **front-thigh-chevron-pants** (V-shape, ~6–7in wide, on each upper-thigh / hip area, mirroring across the center-front): Multi-color V-shape **rainbow chevron stripe color-block panel** on each upper thigh — alternating pink + green + lavender + yellow stripes arranged in V/chevron pattern. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow on white ground.
-- **front-left-thigh-logo-pants** (wearer-left thigh over the chevron, as shown in the tech flat): Canonical **first rose / rose-gold-rose**, same identity as the chest mark. **Technique:** embroidered (existing registry specification). **Color:** rose gold. Preserve source-relative scale; no cloud-cluster substitution.
+- **front-left-thigh-logo-pants** (wearer-left thigh over the chevron, as shown in the tech flat): Canonical **first rose / rose-gold-rose**, same identity as the chest mark. **Technique:** embroidered. **Color:** rose gold. Preserve source-relative scale; no cloud-cluster substitution.
 - **front-left-pocket-pants** (vertical slash hand pocket on wearer's left thigh, with **pink contrast piping** along the welt edge): Slash hand pocket. **Technique:** stitched. **Color:** white body with pink piping.
 - **front-right-pocket-pants** (vertical slash hand pocket on wearer's right thigh, mirror of left): Slash hand pocket with pink contrast piping. **Technique:** stitched. **Color:** white body with pink piping.
 - **drawstring-pants** (~24in long, threaded through the pants waistband): White flat drawstring. **Technique:** stitched. **Color:** white.
 
 ### Back
-- **back-neck-jacket** (centered immediately below the hood seam): Small **SR monogram**, scaled to the tech flat. Do not use the former unsupported 5–6in oversized specification. **Technique:** embroidered (retained specification). **Color:** dark appearance in the tech flat; do not infer metallic thread from the shared logo reference.
+- **back-neck-jacket** (centered immediately below the hood seam): Small **SR monogram**, scaled to the tech flat. Do not use the former unsupported 5–6in oversized specification. **Technique:** embroidered. **Color:** dark appearance in the tech flat; do not infer metallic thread from the shared logo reference.
 - **back-body-jacket** (entire white back field, below the SR monogram and above the waistband): Solid **white**, no other decoration. **Technique:** stitched. **Color:** white.
 - **back-body-pants** (entire white pants back field, between waistband and ankle cuffs): Solid **white**, no decoration. **Technique:** stitched. **Color:** white.
 
 ### Sleeves / Hood / Hem / Other
 - **hood-jacket** (full hood with drawstring, ~10in tall when laid flat): Solid **pink / light pink** contrast hood. **Technique:** stitched. **Color:** pink / light pink.
 - **hood-drawstring-jacket** (white flat drawstring threaded through the hood opening): White drawstring. **Technique:** stitched. **Color:** white.
-- **left-sleeve-jacket** (long nylon sleeve): Solid white nylon body with a small V-shape rainbow chevron stripe panel at the upper-cuff / forearm area mirroring the front-chevron color story. **Technique:** sublimated. **Color:** white body with chevron accent.
+- **left-sleeve-jacket** (long windbreaker sleeve): Solid white windbreaker body with a small V-shape rainbow chevron stripe panel at the upper-cuff / forearm area mirroring the front-chevron color story. **Technique:** sublimated. **Color:** white body with chevron accent.
 - **right-sleeve-jacket** (mirror of left-sleeve): Solid white with chevron accent at the upper-cuff. **Technique:** sublimated. **Color:** white body with chevron accent.
 - **left-cuff-jacket** (~1.5in tall ribbed cuff at wrist): Multi-color rainbow stripe band (alternating pink + green + lavender + yellow stripes wrapping the cuff). **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.
 - **right-cuff-jacket** (mirror of left-cuff-jacket): Multi-color rainbow stripe band. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.
@@ -73,7 +75,7 @@ This supersedes the earlier pink rose-cloud-cluster identification in this dossi
 
 ## Negative — what is NOT on this product (DO NOT render)
 
-- NO cotton-fleece — this is **NYLON WINDBREAKER fabric** (lightweight, smooth, water-resistant). The sg-006 hoodie + sg-014 sweatpants set is the cotton-fleece cousin; this set is the NYLON WINDBREAKER variant.
+- NO cotton-fleece — this is **WINDBREAKER fabric**. The sg-006 hoodie + sg-014 sweatpants set is the cotton-fleece cousin; this set is the WINDBREAKER variant.
 - NO solid black exterior — retain the White catalog color and the source tech flat’s white body, rainbow chevrons and pink hood.
 - NO solid hood matching body — the hood is **PINK** contrast against the white body.
 - NO single-color drawstring matching the hood — drawstring is WHITE on the pink hood.

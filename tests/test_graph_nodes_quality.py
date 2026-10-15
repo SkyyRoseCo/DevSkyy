@@ -125,7 +125,7 @@ class TestQualityNodeMissingInputs:
 
 
 class TestQualityNodeHighConfidence:
-    def test_classifier_pass_skips_llm(self, tmp_path):
+    def test_classifier_pass_requires_dual_vision(self, tmp_path):
         from skyyrose.elite_studio.graph.nodes import quality_node
 
         img = tmp_path / "gen.jpg"
@@ -141,17 +141,18 @@ class TestQualityNodeHighConfidence:
             ),
             patch(
                 "skyyrose.elite_studio.graph.nodes.QualityAgent.verify",
+                return_value=_passing_qc(),
             ) as mock_llm,
         ):
             result = quality_node(state)
 
-        # LLM should NOT have been called
-        mock_llm.assert_not_called()
+        # Classifier confidence cannot replace fidelity evidence.
+        mock_llm.assert_called_once()
 
         assert result["classifier_result"] is high_conf
         assert result["quality_result"] is not None
         qc: QualityVerification = result["quality_result"]
-        assert qc.provider == "clip"
+        assert qc == _passing_qc()
         assert qc.overall_status == "pass"
         assert qc.recommendation == "approve"
 
@@ -188,9 +189,14 @@ class TestQualityNodeHighConfidence:
         img.write_bytes(b"FAKE")
         state = _make_state(output_path=str(img))
 
-        with patch(
-            "skyyrose.elite_studio.graph.nodes.QualityClassifier.predict",
-            return_value=_high_confidence_classifier(),
+        with (
+            patch(
+                "skyyrose.elite_studio.graph.nodes.QualityAgent.verify", return_value=_passing_qc()
+            ),
+            patch(
+                "skyyrose.elite_studio.graph.nodes.QualityClassifier.predict",
+                return_value=_high_confidence_classifier(),
+            ),
         ):
             result = quality_node(state)
 

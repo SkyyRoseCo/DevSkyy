@@ -203,6 +203,7 @@ class TestOpenAIAdapter:
         mock_response = MagicMock()
         mock_response.choices = [MagicMock()]
         mock_response.choices[0].message.content = "SEO optimized content"
+        mock_response.choices[0].finish_reason = "stop"
         mock_response.usage.prompt_tokens = 150
         mock_response.usage.completion_tokens = 80
 
@@ -298,3 +299,72 @@ class TestGetAdapter:
     def test_unknown_raises(self):
         with pytest.raises(ValueError, match="Unknown provider"):
             get_adapter("deepseek")
+
+
+class TestOpenAIRequestContract:
+    @pytest.mark.asyncio
+    async def test_network_runs_off_event_loop_and_budget_forwarded(self):
+        import asyncio
+        import threading
+
+        adapter = OpenAIAdapter()
+        loop_thread = threading.get_ident()
+        network_threads = []
+        response = MagicMock()
+        response.choices[0].message.content = "ok"
+        response.choices[0].finish_reason = "stop"
+        response.usage.prompt_tokens = 1
+        response.usage.completion_tokens = 1
+        client = MagicMock()
+        entered = threading.Event()
+        release = threading.Event()
+
+        def create(**kwargs):
+            network_threads.append(threading.get_ident())
+            entered.set()
+            assert release.wait(2), "Event loop did not release worker"
+            return response
+
+        client.chat.completions.create.side_effect = create
+        with patch.object(adapter, "_get_client", return_value=client):
+            task = asyncio.create_task(
+                adapter.call(
+                    "gpt-4o",
+                    [LLMMessage("user", "meta title")],
+                    max_tokens=256,
+                    temperature=0.2,
+                    response_format={"type": "json_object"},
+                )
+            )
+            try:
+                await asyncio.wait_for(asyncio.to_thread(entered.wait, 1), timeout=1.5)
+                release.set()
+                result = await task
+            finally:
+                release.set()
+        assert result.text == "ok"
+        assert network_threads and network_threads[0] != loop_thread
+        assert client.chat.completions.create.call_args.kwargs["max_tokens"] == 256
+        assert client.chat.completions.create.call_args.kwargs["temperature"] == 0.2
+        assert client.chat.completions.create.call_args.kwargs["response_format"] == {
+            "type": "json_object"
+        }
+        client.close.assert_called_once()
+
+    @pytest.mark.asyncio
+    async def test_incompatible_settings_reject_before_client_creation(self):
+        adapter = OpenAIAdapter()
+        with patch.object(adapter, "_get_client") as factory:
+            with pytest.raises(ValueError):
+                await adapter.call("gpt-4o", [], reasoning_effort="high")
+            factory.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_incomplete_output_is_error(self):
+        adapter = OpenAIAdapter()
+        client = MagicMock()
+        client.chat.completions.create.return_value.choices[0].finish_reason = "length"
+        with patch.object(adapter, "_get_client", return_value=client):
+            with pytest.raises(ValueError, match="incomplete"):
+                await adapter.call("gpt-4o", [])
+        client.close.assert_called_once()

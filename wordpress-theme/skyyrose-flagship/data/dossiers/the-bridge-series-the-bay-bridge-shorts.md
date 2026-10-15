@@ -8,11 +8,15 @@ reference_image: assets/products/source-photos/signature/sg-001-bay-bridge-short
 
 # The Bridge Series 'The Bay Bridge' Shorts
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**.
-Features: Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**. The photo print shows the steel-cabled Bay Bridge crossing the water with the SF skyline visible in the background, blue sky overhead, and water reflections at the bottom hem. Standard basketball-shorts construction: blue elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT a basketball jersey. NOT the Stay Golden Shorts (that's sg-003 — Golden Gate Bridge night palette, separate SKU).
-Color: Blue
-Available sizes: S | M | L | XL | 2XL | 3XL
+**Garment type lock:** Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**. The photo print shows the steel-cabled Bay Bridge crossing the water with the SF skyline visible in the background, blue sky overhead, and water reflections at the bottom hem. Standard basketball-shorts construction: blue elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT a basketball jersey. NOT the Stay Golden Shorts (that's sg-003 — Golden Gate Bridge night palette, separate SKU).
+
+## Founder-confirmed correction
+
+**FOUNDER_CONFIRMED:** Mesh. (Corey, 2026-09-29, verbatim: "the shorts are mesh")
+
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
 
 ## Branding — exactly what IS on this product
 

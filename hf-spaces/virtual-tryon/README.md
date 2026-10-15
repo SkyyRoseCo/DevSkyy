@@ -12,7 +12,7 @@ license: mit
 
 # SkyyRose Virtual Try-On
 
-**Where Love Meets Luxury** - Try on SkyyRose merchandise using AI-powered virtual try-on.
+Try on SkyyRose merchandise using AI-powered virtual try-on.
 
 ## Features
 

@@ -12,7 +12,10 @@
   "2": {
     "class_type": "ResizeImageMaskNode",
     "inputs": {
-      "input": ["1", 0],
+      "input": [
+        "1",
+        0
+      ],
       "resize_type": {
         "resize_type": "scale dimensions",
         "width": 2048,
@@ -25,7 +28,10 @@
   "3": {
     "class_type": "SaveImage",
     "inputs": {
-      "images": ["2", 0],
+      "images": [
+        "2",
+        0
+      ],
       "filename_prefix": "SkyyRose/LH-COMMERCE-2/environment-a1"
     }
   }

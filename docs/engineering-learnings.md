@@ -179,3 +179,159 @@
   - **Still true (the one salvageable sub-claim):** the `try_lftp()` fallback's `mirror --reverse --delete` is unreachable on this host (hardcodes a nonexistent `~/.ssh/skyyrose-deploy` key). But that path is not the reason for deletion — the primary tar+swap path deletes by design.
 - **Junk does NOT self-clean via a normal deploy IF the deploy runs from the same dirty working tree that carries the junk** — but a clean-tree deploy (which the excludes now scrub) drops the ~40 exposed `CLAUDE.local.md`. Since the `tar_excludes`/`RSYNC_EXCLUDES` gap was closed 2026-07-13, any deploy now stops *shipping* them; existing exposed copies persist until a clean-tree deploy overwrites the live dir or they are removed server-side (`rm`, a STOP-AND-SHOW production write).
 - **CONFIRMED 2026-07-27 — the 3 still-untracked `*-v2-avatar.webp` riders are now 404 on production.** `[live]` cache-busted curl of all 17 documented riders: 14 return 200 (the 14 that got `git add -f` tracked in `1dc868199`), but `black-rose-rooftop-garden-v2-avatar.webp`, `love-hurts-cathedral-rose-chamber-v2-avatar.webp`, and `signature-golden-gate-showroom-v2-avatar.webp` all 404 — their `-lookbook.webp` siblings are still 200. `[repo]` confirms they are absent from `git ls-files` AND absent from the main checkout's disk entirely (`find` returns nothing) — exactly the bug-252 failure mode: a clean-tree/CI deploy since these were last live-verified wholesale-replaced the live dir with a source that never had them. They are NOT lost — `[repo]` found byte-identical copies still sitting in a different worktree, `.claude/worktrees/collections-scroll-world/wordpress-theme/skyyrose-flagship/assets/scenes/{black-rose,love-hurts,signature}/`. **Fix (not yet applied — needs a STOP-AND-SHOW production-write confirm):** copy the 3 files from that worktree into the main checkout and `git add -f` them, same treatment as the other 14, so the ls-files completeness gate protects them too; then redeploy. Full JS/CSS bundle content otherwise verified byte-identical between live and repo via SHA-256 (11 JS + 3 CSS enqueued files, all MATCH) — this is the one confirmed drift, not a broader pattern.
+
+## Formatter ownership — one registry, two checks (2026-09-20)
+
+**The failure mode.** A file whose bytes a program owns (a serializer, a
+generator, a minifier) plus a formatter that also rewrites it is two writers on
+one file: each "fixes" the other's output forever. Prettier rewrites 1,643 lines
+of `.wolf/buglog.json`, after which the wolf-memory MCP server's serializer
+writes it straight back on the next `bug_log`. The same shape broke `.min`
+assets (bug-332, twice) and desynchronizes byte-comparing gates
+(`sync_product_registry.py --check`, `check:assets`, `freshness-guard`) for
+reasons unrelated to the change under review.
+
+**Why it kept recurring.** The knowledge lived in two hand-maintained lists —
+`.prettierignore` and `lint-staged.config.mjs`'s `isByteStableOrManaged` — with
+nothing tying them together. A new generated file could land in one, the other,
+or (as with `.wolf/buglog.json` and `.wolf/anatomy.md`) neither. Nothing failed
+until someone staged the file.
+
+**The fix.** `data/machine-managed-files.json` is the one list: each entry names
+the `pattern`, real `samples`, the `owner` program and `why`. Two gates, chosen
+so neither depends on the other being runnable:
+
+| Gate | Needs | Catches |
+| --- | --- | --- |
+| `tests/test_machine_managed_files.py` | Python only — runs in the main CI pytest job (`ci.yml:153`) | Registry ↔ `.prettierignore` drift in both directions, a second hardcoded list in `lint-staged.config.mjs`, registry entries pointing at deleted files, a truncated registry |
+| `scripts/verify-formatter-ignores.mjs` (`npm run verify:formatter-ignores`) | node + root `node_modules` — pre-commit hook and the root TypeScript CI job | What prettier and lint-staged would ACTUALLY do, via prettier's own ignore resolution and the real task functions |
+
+**Adding a generated file:** add it to the registry, then to `.prettierignore`.
+The Python gate fails if you do one without the other, and lint-staged reads the
+registry directly, so there is no third place to update.
+
+**Two traps worth knowing.** (1) lint-staged reads the same registry, so its
+half of the node check would be tautological — the script therefore runs a
+positive control: an unowned file (`README.md`) must still be selected by at
+least one task, or the filter is inert and its verdict is worthless. (2) The
+pre-commit hook says out loud when it skips for want of `node_modules` rather
+than passing silently, and the node script reports an unloadable prettier as an
+explicit UNVERIFIED failure instead of aborting before the lint-staged half.
+
+### A parity check between two lists dies quietly when one list moves (bug-359)
+
+The gate this replaced derived the managed paths by regex-scraping
+`lint-staged.config.mjs`, then diffed them against `.prettierignore`. When the
+hardcoded regexes became a registry read, the scraper returned `[]` — and:
+
+```python
+missing = [p for p in patterns if not prettierignore_covers(p, lines)]
+assert not missing          # patterns == []  ->  missing == []  ->  PASSES
+```
+
+Two sibling tests failed loudly; **this one went green while testing nothing**.
+That is bug-230's fail-open inside the very gate meant to prevent churn, and it
+generalizes past formatters:
+
+> Any check shaped `violations = [x for x in DERIVED if bad(x)]; assert not
+> violations` passes when `DERIVED` is empty. If `DERIVED` comes from parsing
+> another file, a refactor of that file silently disarms the check.
+
+**The rule:** a gate that iterates a derived collection needs a **floor on the
+collection itself** — not merely non-empty, a count, so silent shrinkage fails
+too. `test_registry_is_not_empty` asserts `>= 22`. Verify the floor by mutation,
+not by inspection: truncate the input and confirm the gate goes red
+(`[empty] exit=1 … expected at least 14`, `[shrunk to 3] exit=1`). Prefer a
+declared registry over list-to-list parity for exactly this reason — the
+registry is still there to compare against after either consumer moves.
+
+## Worktree registry — a row whose folder is gone could never close (2026-10-09)
+
+`worktree_release` runs `git status` inside the folder and `worktree_prune`
+runs `git worktree remove` on it, so once a folder was deleted outside the
+registry (a manual `git worktree remove`, a disk cleanup) no tool could close
+its row. Six rows sat `active` / `ready_to_merge` for weeks pointing at
+directories that no longer existed, and one stale `purpose` field ("carries 8
+unpushed commits") stopped a cleanup that was by then safe — those commits had
+been pushed long before.
+
+`prune` now classifies a due row as an **orphan** when its folder is missing
+**and** `git worktree list` no longer shows it as live — absent, or flagged
+`prunable`, which is how git lists a folder deleted with `rm -rf` until
+`git worktree prune` runs — then deletes the row only when
+`branch_commits_off_remotes()` returns `[]` (or the row was already closed by
+release's clean-and-pushed gate). A branch that exists nowhere returns `None`,
+never `[]`: with nothing left to inspect, "no unpushed work" is unprovable, so
+the row is kept under `orphaned_unverifiable` with the reason. The TTL still
+applies, because `claim()` inserts the row before `git worktree add` runs — a
+fresh row legitimately has no folder yet.
+
+**The general rule:** a registry entry's free-text claims are a snapshot.
+Re-derive "is this safe to drop" from git at the moment you act
+(`git rev-list <branch> --not --remotes`), and when the branch is already gone,
+fall back to the PR record (merge time vs. last commit time).
+
+## CI wall-clock is runner queueing, not test time (2026-10-11)
+
+**Symptom:** PRs took 30-60 min to go green though no job ran longer than ~12 min.
+Per-job `created_at → started_at` from `gh api …/actions/runs/<id>/jobs` showed
+8-38 min of queueing. SkyyRoseCo is a public repo on the free org plan (20
+concurrent hosted jobs); one PR push started ~18 jobs, and two review bots held a
+runner for 15-35 min each, mostly waiting on CI (`gh pr checks --watch`).
+
+**Fixes (contract pinned by `tests/ci/test_ci_workflow_contract.py`):**
+
+- **Required checks match job `name` strings.** Never rename one, and never move a
+  required job into a reusable workflow: called jobs report as `caller / job`, a
+  name branch protection never sees. Dedupe setup with composite actions
+  (`.github/actions/setup-python-env`, `setup-node-env`) instead.
+- **Path-filtered required jobs must fail closed.** A job skipped by `if:` reports
+  "skipped", which satisfies a required check, so a broken detector would pass
+  every gate. Each filtered job runs when `needs.changes.result != 'success'` and
+  on every non-PR event, and uses `!cancelled()` so a skipped `needs` does not
+  cascade into a skip.
+- **Concurrency per PR, never per main commit:** group on
+  `pull_request.number || github.sha`; `cancel-in-progress` only for PRs. The old
+  per-ref group cancelled every main run when merges landed back to back.
+- **A rerun re-tests the original commit,** and pushes made with `GITHUB_TOKEN`
+  trigger no workflows. A bot that pushes a fix and then runs `gh run rerun` never
+  tests its fix — dispatch the workflows on the branch (`gh workflow run … --ref`).
+  The green loop now starts from `workflow_run` (CI completed with failure) and
+  dispatches `ci.yml` + `security-gate.yml` on its fix.
+- **Bot outages:** claude-code-action can exit in 0.5s at $0 during an upstream
+  outage. One delayed retry step (`continue-on-error` on the first attempt, the
+  retry decides) absorbs that without masking a real failure.
+- **`pip install -e ".[a,b]" || pip install -e .` is fail-open** (bug-230): it
+  silently tests a smaller environment. Install the exact extras; let it fail.
+
+**`cmd | tee file || status=$?` never sees `cmd` fail (2026-10-11).** Without
+`set -o pipefail` a pipeline's exit status is the LAST command's — `tee`, which is
+0. Main's `pip-audit --strict 2>&1 | tee pip-audit.txt` had been erroring on every
+run ("devskyy: Dependency not found on PyPI") and passing. Collapsing to one JSON
+pass made `--strict` real and turned Security Scan red; the fix is
+`--strict --skip-editable` (strict for every real dependency, not the local
+project). When de-duplicating a scan, check which invocation was actually gating.
+Follow-up: `--strict` also rejects `--skip-editable` ("distribution marked as
+editable"). Audit `uv pip freeze --exclude-editable` with
+`--strict --no-deps --disable-pip -r` instead.
+
+**A bot step that "succeeded" may not have run (2026-10-11).** claude-code-action
+ends `subtype: success, is_error: false` even when the CLI never reached the model:
+a revoked `CLAUDE_CODE_OAUTH_TOKEN` passed every review for weeks at 4 turns and
+`total_cost_usd: 0` (real reviews: 26-43 turns, $0.69-$1.01). Each bot now reads
+the succeeding attempt's `execution_file` and fails on a missing/corrupt file or a
+$0 run. Keep that guard inline: the workspace holds the PR's code, so a `./` action
+could be rewritten by the PR it gates. Related traps on the same retry path: the
+first attempt registers the plugin marketplace and `marketplace add` refuses a
+second add ("already installed") — reset `~/.claude/plugins` before retrying; both
+attempts write the same `$RUNNER_TEMP/claude-execution-output.json`, so read the
+file only from an attempt whose outcome is `success`.
+
+**Per-SHA main concurrency unmasks races (2026-10-11).** Once main runs stopped
+cancelling each other, two latent failures surfaced on back-to-back merges:
+`git fetch --depth=1 origin main:refs/remotes/origin/main` is rejected as
+non-fast-forward when main moves mid-run (shallow history cannot prove ancestry —
+use `+main:`), and pip-audit exits 1 for both findings and a crash, so a PyPI
+connection reset read as "FIXABLE vulnerabilities". Distinguish by the report:
+only findings write `--output`; retry a report-less run once and fail it as a
+tool error, never pass it.

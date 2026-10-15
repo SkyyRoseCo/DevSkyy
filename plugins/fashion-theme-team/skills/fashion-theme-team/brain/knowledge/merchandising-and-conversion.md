@@ -1,7 +1,6 @@
 # Merchandising and Conversion
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> **SKYYROSE LLC · FASHION THEME BRAIN**
 
 ## Governing principle
 

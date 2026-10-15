@@ -27,7 +27,7 @@ allowed-tools: Read Write Edit Glob
 - **Lockup images, never live type:** Collection names in any hero or title position are brand-script lockup assets — `assets/images/hero-overlays/` for Black Rose, Love Hurts, and Signature; `assets/images/logos/` for Kids Capsule. These are placed as image assets, never typed with Cinzel, Archivo, or any other font. Fonts apply only to body copy, captions, slide text, CTAs, and graphic subtext.
 - **Color tokens — use exactly:** Rose Gold `#B76E79` (global brand accent), Dark `#0A0A0A` (background default), Silver `#C0C0C0` (Black Rose accent), Crimson `#DC143C` (Love Hurts accent), Gold `#D4AF37` (Signature accent). No off-brand colors, no approximations.
 - **Per-collection design register (never cross-attribute):** Black Rose = dark, cool-dramatic, silver. Love Hurts = dark, crimson-warm, raw. Signature = warm, gold, West Coast elevated. Kids Capsule = bright, rose gold, playful-premium.
-- **Tagline (verbatim, only):** `Luxury Grows from Concrete.` — period included. Never paraphrase.
+- **Tagline:** No tagline is authorised (founder decision 2026-10-06). Never add or paraphrase one.
 - **One headline, one CTA per graphic.** SkyyRose graphics are not bulletpoint ads. Strong visual hierarchy, minimal text — the garment or the lockup carries the frame.
 - Full canon: `../skyyrose-content-engine/brand-guardrails.md`
 
@@ -267,7 +267,7 @@ Run before delivering any graphic set. Do not skip.
 - **Never cross-apply collection accents.** Gold on a Black Rose graphic is wrong. Crimson on a Signature graphic is wrong. Rose Gold on a Love Hurts graphic is wrong. Collection identity is carried by the accent token — mixing it is a brand identity failure.
 - **Never design each platform variant from scratch.** Hero first, adapt second. Building a Love Hurts Story from scratch while a Love Hurts IG 4:5 already exists creates visual inconsistency and wastes time.
 - **Never use more than one headline per graphic.** If there are two headlines, there are two graphics. Social graphics communicate one thing.
-- **Never paraphrase the tagline.** `Luxury Grows from Concrete.` — verbatim, period included. Not "luxury from the streets," not "grown from concrete," not "luxury starts at street level."
+- **Never add a tagline.** No tagline is authorised (founder decision 2026-10-06). Not "luxury from the streets," not "grown from concrete," not "luxury starts at street level."
 - **Never export as JPEG as the default.** PNG is the default for social graphics — lossless, preserves any transparency in the lockup asset. JPEG only when file size is a hard constraint confirmed by the user.
 - **Never skip the safe-zone check on Story and TikTok formats.** The top 14% and bottom 20% of a 9:16 canvas are obscured by platform UI. A CTA or lockup buried there is invisible at posting time.
 - **Never use more than 3 props or visual elements per graphic.** SkyyRose graphics are not busy. One anchor (lockup or photo), one headline, one CTA. Everything else is noise.

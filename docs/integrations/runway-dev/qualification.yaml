@@ -53,7 +53,7 @@ authenticated_read_only_evidence:
   local_sdk:
     package: runwayml
     version: 5.20.1
-    import_verified_from: /Users/theceo/DevSkyy/.venv
+    import_verified_from: .venv (repository root)
   effects:
     read_only: true
     generation_submitted: false

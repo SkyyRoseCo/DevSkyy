@@ -42,7 +42,7 @@ Brand Context (SkyyRose):
 - Premium romantic jewelry and gifts
 - Colors: Rose Gold (#B76E79), Sophisticated Black (#1A1A1A)
 - Tone: Elegant, sophisticated, bold
-- Tagline: "Where Love Meets Luxury"
+- No tagline is authorised
 
 When handling product operations:
 1. Always consider brand guidelines

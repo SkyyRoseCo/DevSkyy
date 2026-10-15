@@ -12,16 +12,15 @@ Classification rules:
   ends at the next ``.``/``;`` at parenthesis depth 0. Matching is case-insensitive so an
   over-strip can only produce an *unclassified* error, never a silent misclassification.
 * When several classes match, the exterior shell wins, in this precedence:
-  faux_leather > satin > nylon > jersey > fleece > knit > cotton.
+  faux_leather > satin > nylon > windbreaker > jersey > fleece > knit > cotton.
 * No match → ``UnclassifiedFabricError`` (fail closed; there is no default fabric).
 
 **Known limitation — precedence is keyword order, not sentence structure.** A lining or trim
 word can outrank the shell it is attached to: "cotton fleece hoodie with a mesh-lined hood"
-classifies as JERSEY because ``mesh`` precedes ``fleece``. Every one of the 33 registry SKUs
-was read against its prose and classifies correctly today (sg-009's "nylon-windbreaker-style
-exterior shell" beats its sherpa lining exactly as intended), and
-``test_golden_fabric_class_per_registry_sku`` pins each SKU to its verified class — so a
-reworded specification that flips a preset fails that test instead of shipping a wrong sheen.
+classifies as JERSEY because ``mesh`` precedes ``fleece``. The regression map pins each
+SKU to the rendering class selected from its current registry prose. Founder material
+corrections require reviewing that map. Windbreaker is its own rendering class and does
+not establish a nylon or polyester fiber composition.
 Sheen is applied to EVERY material and the web gate demands it on every material, which suits
 the single-atlas Meshy/Tripo output this pipeline consumes; a multi-material GLB with, say, a
 metal zipper material would need a per-material allowlist first.
@@ -33,6 +32,7 @@ class           color  roughness  rationale
 ==============  =====  =========  ===========================================================
 satin           0.15   0.30       tight weave, low pile → narrow, bright rim highlight
 nylon           0.10   0.40       smooth filament shell; subtle glancing sheen only
+windbreaker     0.10   0.40       generic shell rendering preset; no fiber composition inferred
 jersey          0.15   0.50       polyester/mesh athletic knits; moderate soft rim
 fleece          0.35   0.90       brushed/sherpa pile → broad, strong velvet-like rim
 knit            0.30   0.85       ribbed yarn knit; fibrous, diffuse rim
@@ -64,6 +64,7 @@ class FabricClass(StrEnum):
     FAUX_LEATHER = "faux_leather"
     SATIN = "satin"
     NYLON = "nylon"
+    WINDBREAKER = "windbreaker"
     JERSEY = "jersey"
     FLEECE = "fleece"
     KNIT = "knit"
@@ -124,6 +125,7 @@ SHEEN_PRESETS: Mapping[FabricClass, SheenPreset | None] = MappingProxyType(
         FabricClass.FAUX_LEATHER: None,
         FabricClass.SATIN: SheenPreset(0.15, 0.30),
         FabricClass.NYLON: SheenPreset(0.10, 0.40),
+        FabricClass.WINDBREAKER: SheenPreset(0.10, 0.40),
         FabricClass.JERSEY: SheenPreset(0.15, 0.50),
         FabricClass.FLEECE: SheenPreset(0.35, 0.90),
         FabricClass.KNIT: SheenPreset(0.30, 0.85),
@@ -137,6 +139,7 @@ _FABRIC_PATTERNS: Mapping[FabricClass, re.Pattern[str]] = MappingProxyType(
         FabricClass.FAUX_LEATHER: re.compile(r"faux[- ]leather|\bpu leather\b|\bvegan leather\b"),
         FabricClass.SATIN: re.compile(r"\bsat(?:in|een)\b"),
         FabricClass.NYLON: re.compile(r"\bnylon\b|\bripstop\b"),
+        FabricClass.WINDBREAKER: re.compile(r"\bwindbreaker\b"),
         FabricClass.JERSEY: re.compile(r"\bjersey\b|\bmesh\b|\bpolyester\b|\btank\b"),
         FabricClass.FLEECE: re.compile(r"\bfleece\b|\bsherpa\b|\bterry\b"),
         FabricClass.KNIT: re.compile(r"\bknit\b|\bbeanie\b|\bacrylic\b"),

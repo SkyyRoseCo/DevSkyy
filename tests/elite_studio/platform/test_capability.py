@@ -1,3 +1,7 @@
+from unittest.mock import patch
+
+import pytest
+
 from skyyrose.elite_studio.platform.capability import CapabilityMatrix, CapabilityStatus
 from skyyrose.elite_studio.platform.tenancy import TenantRegistry
 
@@ -7,11 +11,19 @@ def test_capability_status_is_immutable():
     assert s.ok and s.name == "engine"
 
 
-def test_probe_returns_all_capabilities_without_spend():
+@pytest.mark.parametrize("engine_ready", [True, False])
+def test_probe_returns_all_capabilities_without_spend(engine_ready):
     tenant = TenantRegistry.default().get("skyyrose")
-    matrix = CapabilityMatrix(tenant).probe()
+    with patch(
+        "agents.trellis_agent.TrellisAgent.is_available", return_value=engine_ready
+    ) as probe:
+        matrix = CapabilityMatrix(tenant).probe()
+    probe.assert_called_once_with()
     names = {c.name for c in matrix.statuses}
     assert {"catalog", "reference_store", "fidelity_scorer", "engine_local"} <= names
+    engine = next(c for c in matrix.statuses if c.name == "engine_local")
+    assert engine.ok is engine_ready
+    assert engine.detail == ("ready" if engine_ready else "env not ready")
 
 
 def test_required_ok_false_when_a_required_cap_red():

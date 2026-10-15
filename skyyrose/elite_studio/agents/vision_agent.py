@@ -17,6 +17,7 @@ VisionAgent is aliased to DualVisionGate for nodes.py backwards compatibility.
 from __future__ import annotations
 
 import base64
+import json
 import logging
 from pathlib import Path
 
@@ -30,40 +31,15 @@ logger = logging.getLogger(__name__)
 
 # Products images live under the canonical WP theme products dir.
 # Resolved absolutely via :mod:`skyyrose.core.paths` so the lookup is cwd-stable.
-from skyyrose.core.paths import WP_PRODUCTS_DIR as _PRODUCTS_DIR  # noqa: E402
+from skyyrose.core.product import get_product, render_reference  # noqa: E402
 
 from ..config import OPENAI_VISION_MODEL as _OPENAI_MODEL
 from ..config import VISION_GEMINI_MODEL as _GEMINI_VISION_MODEL
 
 
-def _reference_path(sku: str) -> str:
-    """Resolve the reference image path for a SKU.
-
-    Checks the catalog for 'render_source_override' first, then common extensions.
-    """
-    try:
-        from ..catalog import Catalog
-
-        cat = Catalog.load()
-        product = cat.get(sku)
-        if product and product.source_files:
-            p = _PRODUCTS_DIR / product.source_files[0]
-            if p.exists():
-                return str(p)
-    except Exception:
-        pass
-
-    for ext in ("jpg", "jpeg", "png", "webp"):
-        p = _PRODUCTS_DIR / f"{sku}.{ext}"
-        if p.exists():
-            return str(p)
-        # Also check without hyphen variants
-        slug = sku.replace("-", "_")
-        p2 = _PRODUCTS_DIR / f"{slug}.{ext}"
-        if p2.exists():
-            return str(p2)
-    # Return the jpg path anyway — caller handles missing file
-    return str(_PRODUCTS_DIR / f"{sku}.jpg")
+def _reference_path(sku: str, view: str = "front") -> str:
+    """Resolve the exact registry view; legacy callers default explicitly to front."""
+    return render_reference(get_product(sku), view)["path"]
 
 
 def _load_image_b64(path: str) -> str:
@@ -108,8 +84,16 @@ class DualVisionGate(BaseSuperAgent):
         image_path: str,
         sku: str,
         expected_garment: str,
+        view: str = "front",
     ) -> PreflightResult:
         """Both models must return YES. Either NO blocks the SKU. Capture Back Data."""
+        try:
+            product = get_product(sku)
+            evidence = render_reference(product, view)
+            if Path(image_path).resolve() != Path(evidence["path"]):
+                raise ValueError("Supplied reference does not match the SKU/view binding")
+        except (KeyError, ValueError, OSError) as exc:
+            return PreflightResult(False, sku, "BLOCKED", "BLOCKED", str(exc))
         # Trigger ADK for observability
         adk_prompt = f"PREFLIGHT TASK: SKU={sku}, Image={image_path}, Expected={expected_garment}"
         logger.info(f"Running Legendary Preflight for {sku} via ADK...")
@@ -137,6 +121,7 @@ class DualVisionGate(BaseSuperAgent):
             return PreflightResult(
                 passed=True,
                 sku=sku,
+                reference_evidence=evidence,
                 agent_a_verdict=a_text[:120],
                 agent_b_verdict=b_text[:120],
             )
@@ -157,28 +142,25 @@ class DualVisionGate(BaseSuperAgent):
 
     async def analyze(self, sku: str, view: str) -> SynthesizedVision:
         """Synthesize a generation spec from the reference image with Back Data."""
-        # Trigger ADK for observability
-        adk_prompt = f"VISION ANALYSIS TASK: SKU={sku}, VIEW={view}"
-        logger.info(f"Running Legendary Vision Analysis for {sku} via ADK...")
-        await self.execute(adk_prompt)
-
-        from ..catalog import Catalog
-
         try:
-            cat = Catalog.load()
-            product = cat.require(sku)
-            name = product.name
-            branding = product.branding_summary
-        except Exception as exc:
-            return SynthesizedVision(success=False, error=f"Catalog load failed: {exc}")
-
-        ref = _reference_path(sku)
-        if not Path(ref).exists():
-            return SynthesizedVision(
-                success=False, error=f"No reference image found for {sku} at {ref}"
-            )
+            product = get_product(sku)
+            evidence = render_reference(product, view)
+        except (KeyError, ValueError, OSError) as exc:
+            return SynthesizedVision(success=False, error=f"Reference blocked: {exc}")
+        ref = evidence["path"]
+        name = product["name"]
+        branding = product["dossier"]["branding_block"]
+        # Observability must never dispatch before SKU/view validation.
+        await self.execute(f"VISION ANALYSIS TASK: SKU={sku}, VIEW={view}")
 
         prompt = _VISION_SPEC_PROMPT.format(sku=sku, name=name, branding=branding)
+        prompt += (
+            "\nAUTHORITATIVE PRODUCT CONSTRAINTS (do not infer dimensions or fiber composition from pixels):\n"
+            + json.dumps(
+                {"dossier": product["dossier"], "corrections": product.get("corrections", [])},
+                ensure_ascii=False,
+            )
+        )
 
         try:
             a_text = await self._call_openai(ref, prompt)
@@ -221,6 +203,7 @@ class DualVisionGate(BaseSuperAgent):
         return SynthesizedVision(
             success=True,
             unified_spec=unified,
+            reference_evidence=evidence,
             providers_used=tuple(r.provider for r in (a_result, b_result) if r.success),
             individual_results=(a_result, b_result),
         )

@@ -2,8 +2,11 @@
 """
 SkyyRose Content Agent — Google ADK-powered catalog copywriter.
 
-Manages product-content.json: reads products, generates brand-voice copy,
-writes it back, and audits quality via multi-turn agentic tool-calling.
+Manages the copy fields of the product registry (the ONE product source of
+truth, read through ``skyyrose.core.product.get_product``): reads products,
+generates brand-voice copy, writes it back with ``AGENT_GENERATED`` authority
+so it can never be mistaken for the founder's words, and audits quality via
+multi-turn agentic tool-calling.
 
 Usage:
     python skyyrose_content_agent.py refresh-product br-001
@@ -15,11 +18,11 @@ Usage:
 """
 
 import argparse
-import json
 import os
 import sys
 import time
 import uuid
+from datetime import date
 from pathlib import Path
 
 # Load .env before ADK imports so GEMINI_API_KEY is set.
@@ -43,6 +46,8 @@ from google.adk.tools import FunctionTool
 from google.genai import types as genai_types
 
 from llm.model_ids import GEMINI_VISION_MODEL
+from skyyrose.core import product as product_sot
+from skyyrose.core.product_registry import load_registry, update_product_content
 
 # ---------------------------------------------------------------------------
 # Config
@@ -50,7 +55,11 @@ from llm.model_ids import GEMINI_VISION_MODEL
 
 APP_NAME = "skyyrose_content_agent"
 MODEL = os.getenv("SKYYROSE_MODEL", GEMINI_VISION_MODEL)
-PRODUCT_JSON_PATH = Path(__file__).parent / "assets" / "data" / "product-content.json"
+
+# Copy written by this agent is stamped with this authority + source in the
+# registry, so a reader can always tell agent copy from FOUNDER_AUTHORED copy.
+CONTENT_AUTHORITY = "AGENT_GENERATED"
+CONTENT_SOURCE = APP_NAME
 
 WRITABLE_FIELDS = {"description", "short_description", "seo_meta", "instagram", "tiktok"}
 READ_ONLY_FIELDS = {"name", "collection"}
@@ -220,48 +229,82 @@ BRAND_GUIDELINES = {
 # ---------------------------------------------------------------------------
 
 
+def _copywriter_view(record: dict) -> dict:
+    """The facts a copywriter needs from one ``get_product`` record.
+
+    Commerce fields and garment specs are the founder's; they are quoted, never
+    reworded. ``content`` carries the current copy per writable field as
+    ``{value, source, enriched, authority}`` (or ``None`` when nothing is
+    written), so the agent can see who wrote what it is about to replace.
+    """
+    catalog = record["catalog"]
+    garment = record["garment"]
+    return {
+        "sku": record["sku"],
+        "name": record["name"],
+        "collection": record["collection"],
+        "price": catalog.get("price"),
+        "sizes": list(garment.get("available_sizes") or []),
+        "color": garment.get("color"),
+        "is_preorder": catalog.get("is_preorder") == "1",
+        "catalog_description": catalog.get("description"),
+        "garment": {
+            spec: (garment.get(spec) or {}).get("specification")
+            for spec in ("fit", "materials", "features")
+        },
+        "content": {field: record["content"].get(field) for field in sorted(WRITABLE_FIELDS)},
+        "gaps": list(record["gaps"]),
+    }
+
+
+def _registry_collections() -> dict[str, str]:
+    """Collection slug -> display name, from the registry (never hard-coded)."""
+    return {slug: entry.get("name", slug) for slug, entry in load_registry()["collections"].items()}
+
+
 def get_product_catalog() -> dict:
-    """Return the full product catalog as a dict keyed by SKU."""
+    """Return every product in the registry as a dict keyed by SKU."""
     try:
-        data = json.loads(PRODUCT_JSON_PATH.read_text(encoding="utf-8"))
-        return {"status": "ok", "catalog": data, "count": len(data)}
+        catalog = {
+            sku: _copywriter_view(record) for sku, record in product_sot.get_all_products().items()
+        }
+        return {"status": "ok", "catalog": catalog, "count": len(catalog)}
     except Exception as exc:
         return {"status": "error", "error": str(exc)}
 
 
 def get_product(sku: str) -> dict:
-    """Return a single product by SKU; error if not found."""
+    """Return a single product from the registry by SKU; error if not found."""
+    sku = sku.strip().lower()
     try:
-        data = json.loads(PRODUCT_JSON_PATH.read_text(encoding="utf-8"))
-        sku = sku.strip().lower()
-        if sku not in data:
-            return {
-                "status": "error",
-                "error": f"SKU '{sku}' not found. Available: {sorted(data.keys())}",
-            }
-        return {"status": "ok", "sku": sku, "product": data[sku]}
+        record = product_sot.get_product(sku)
+    except KeyError as exc:
+        return {"status": "error", "error": str(exc.args[0])}
     except Exception as exc:
         return {"status": "error", "error": str(exc)}
+    return {"status": "ok", "sku": sku, "product": _copywriter_view(record)}
 
 
 def get_collection_products(collection: str) -> dict:
-    """Return all products in a collection (auto-normalizes to lowercase-hyphen)."""
+    """Return all products in a registry collection (auto-normalizes to lowercase-hyphen)."""
     try:
-        # Normalize: "Black Rose" → "black-rose"
+        # Normalize: "Black Rose" -> "black-rose"
         normalized = collection.strip().lower().replace(" ", "-")
-        valid = {"black-rose", "love-hurts", "signature"}
+        valid = _registry_collections()
         if normalized not in valid:
             return {
                 "status": "error",
                 "error": f"Unknown collection '{collection}'. Valid: {sorted(valid)}",
             }
-        data = json.loads(PRODUCT_JSON_PATH.read_text(encoding="utf-8"))
         filtered = {
-            sku: product for sku, product in data.items() if product.get("collection") == normalized
+            sku: _copywriter_view(record)
+            for sku, record in product_sot.get_all_products().items()
+            if record["collection"] == normalized
         }
         return {
             "status": "ok",
             "collection": normalized,
+            "collection_name": valid[normalized],
             "products": filtered,
             "count": len(filtered),
         }
@@ -275,7 +318,7 @@ def get_brand_guidelines() -> dict:
 
 
 def update_product_field(sku: str, field: str, content: str) -> dict:
-    """Atomically write one field of a product to product-content.json."""
+    """Write one copy field of a product into the registry, stamped AGENT_GENERATED."""
     sku = sku.strip().lower()
     field = field.strip().lower()
 
@@ -291,38 +334,37 @@ def update_product_field(sku: str, field: str, content: str) -> dict:
         }
 
     try:
-        data = json.loads(PRODUCT_JSON_PATH.read_text(encoding="utf-8"))
-        if sku not in data:
-            return {
-                "status": "error",
-                "error": f"SKU '{sku}' not found.",
-            }
-
-        old_value = data[sku].get(field, "")
-        data[sku][field] = content
-
-        # Atomic write: write to .tmp then rename
-        tmp_path = PRODUCT_JSON_PATH.with_suffix(".json.tmp")
-        tmp_path.write_text(
-            json.dumps(data, indent=2, ensure_ascii=False),
-            encoding="utf-8",
+        old_value = update_product_content(
+            sku,
+            field,
+            content,
+            authority=CONTENT_AUTHORITY,
+            source=CONTENT_SOURCE,
+            updated=date.today().isoformat(),
         )
-        tmp_path.replace(PRODUCT_JSON_PATH)
-
-        return {
-            "status": "ok",
-            "sku": sku,
-            "field": field,
-            "old_length": len(old_value),
-            "new_length": len(content),
-            "preview": content[:120] + ("..." if len(content) > 120 else ""),
-        }
+    except KeyError as exc:
+        return {"status": "error", "error": str(exc.args[0])}
     except Exception as exc:
         return {"status": "error", "error": str(exc)}
 
+    return {
+        "status": "ok",
+        "sku": sku,
+        "field": field,
+        "authority": CONTENT_AUTHORITY,
+        "old_length": len(old_value or ""),
+        "new_length": len(content),
+        "preview": content[:120] + ("..." if len(content) > 120 else ""),
+    }
+
 
 def list_products_needing_refresh(field: str) -> dict:
-    """Audit all products for a field; flag those with missing or short content."""
+    """Audit all products for a field; flag those with missing or short copy.
+
+    Only copy written into the registry's content layer counts. A description
+    that ``get_product`` fills from the catalog base line (``enriched: False``)
+    is the founder's spec, not finished copy, so it is reported as missing.
+    """
     field = field.strip().lower()
     if field not in WRITABLE_FIELDS:
         return {
@@ -331,18 +373,19 @@ def list_products_needing_refresh(field: str) -> dict:
         }
 
     try:
-        data = json.loads(PRODUCT_JSON_PATH.read_text(encoding="utf-8"))
         min_chars = FIELD_MIN_CHARS.get(field, 1)
         needs_refresh = []
         ok_products = []
 
-        for sku, product in sorted(data.items()):
-            value = product.get(field, "")
-            char_count = len(value)
+        for sku, record in sorted(product_sot.get_all_products().items()):
+            written = record["content"].get(field)
+            present = bool(written and written.get("enriched"))
+            char_count = len(written["value"]) if present else 0
             entry = {
                 "sku": sku,
-                "name": product.get("name", ""),
-                "collection": product.get("collection", ""),
+                "name": record["name"],
+                "collection": record["collection"],
+                "authority": written.get("authority") if present else None,
                 "char_count": char_count,
                 "min_required": min_chars,
             }
@@ -380,13 +423,14 @@ TOOL_FUNCTIONS = [
 
 SYSTEM_INSTRUCTION = """You are the SkyyRose Content Director — an AI copywriter embedded in the SkyyRose luxury fashion house, headquartered in the Bay Area / Oakland, California.
 
-Your sole mission is to create, refine, and maintain the product copy in the SkyyRose catalog (product-content.json). You have direct tool access to read products, write updated copy, and audit content quality.
+Your sole mission is to create, refine, and maintain the product copy in the SkyyRose product registry — the ONE source of truth for every product. You have direct tool access to read products, write updated copy, and audit content quality. Every copy field in the registry records who wrote it: copy you save is stamped AGENT_GENERATED; FOUNDER_AUTHORED copy is the founder's own words. Product facts (name, price, sizes, color, fit, materials, features) are the founder's specifications — quote them, never reword or invent them.
 
 ## Collections
 
 - **black-rose**: Gothic luxury. Dark romance. Ethereal, poetic, defiant. Vocabulary: twilight, shadows, embroidered, ethereal, thorns, bloom.
 - **love-hurts**: Raw street intensity. Gritty Oakland authenticity. Direct and emotionally honest. Vocabulary: streets, grit, fire, passion, Oakland, concrete.
 - **signature**: Elevated editorial. Couture prestige. Authoritative and aspirational. Vocabulary: opulent, couture, prestige, commanding, refined, bespoke.
+- **kids-capsule**: Kids Capsule. No dedicated voice bank in `get_brand_guidelines()` yet — write from the product's registry facts in the house voice.
 
 ## Tool Protocol
 
@@ -645,7 +689,8 @@ def main() -> None:
         "refresh-collection", help="Refresh all products in a collection"
     )
     p_collection.add_argument(
-        "collection", help="Collection name (black-rose | love-hurts | signature)"
+        "collection",
+        help="Collection slug (black-rose | love-hurts | signature | kids-capsule)",
     )
 
     # generate-social

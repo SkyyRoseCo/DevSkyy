@@ -1,0 +1,1315 @@
+{
+  "IsolatedSkyy": {
+    "Request": {
+      "model": "kling-o3-pro",
+      "duration": 5,
+      "ratio": "1:1",
+      "generateAudio": false,
+      "resolution": "1080p",
+      "startFrame": {
+        "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA"
+      },
+      "promptText": "A family-friendly animated character portrait on a plain white studio background. Skyy is the fictional stylized 3D child mascot shown in the supplied image, fully clothed in her reference jacket, trousers and sneakers. Preserve her exact illustrated face, round cheeks, large brown eyes, dark rounded curls and child proportions. The camera stays fixed. She breathes gently, blinks once and makes a tiny friendly smile. Her hands and body remain in their original pose. Preserve all clothing details. One continuous shot, no new objects, no other people, no speaking and no audio.",
+      "rationale": "Materially revised benign input following Runway troubleshooting guidance: isolated fictional child mascot on white background, no actual-man footage or contextual source references. Test whether the supplied character can animate while preserving her appearance; not a retry of the blocked adult/mascot encounter."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "d23b2686-2a49-4263-8424-53139f55183a",
+      "taskType": "kling_o3_pro",
+      "outputKind": "video",
+      "prompt": "A family-friendly animated character portrait on a plain white studio background. Skyy is the fictional stylized 3D child mascot shown in the supplied image, fully clothed in her reference jacket, trousers and sneakers. Preserve her exact illustrated face, round cheeks, large brown eyes, dark rounded curls and child proportions. The camera stays fixed. She breathes gently, blinks once and makes a tiny friendly smile. Her hands and body remain in their original pose. Preserve all clothing details. One continuous shot, no new objects, no other people, no speaking and no audio.",
+      "meta": {
+        "durationSeconds": 5
+      },
+      "_regenerate": {
+        "tool": "generate_video",
+        "arguments": {
+          "model": "kling-o3-pro",
+          "promptText": "A family-friendly animated character portrait on a plain white studio background. Skyy is the fictional stylized 3D child mascot shown in the supplied image, fully clothed in her reference jacket, trousers and sneakers. Preserve her exact illustrated face, round cheeks, large brown eyes, dark rounded curls and child proportions. The camera stays fixed. She breathes gently, blinks once and makes a tiny friendly smile. Her hands and body remain in their original pose. Preserve all clothing details. One continuous shot, no new objects, no other people, no speaking and no audio.",
+          "ratio": "1:1",
+          "duration": 5,
+          "startFrame": {
+            "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA"
+          },
+          "generateAudio": false,
+          "resolution": "1080p",
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1640
+    },
+    "Result": {
+      "kind": "video",
+      "url": "https://dnznrvs05pmza.cloudfront.net/kling-o3-pro/927613075547623511/A_family_friendly_animated_character_portrait_on_a_plain_white_studio_background__Skyy_is_the_fictio.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZTUxZDRkYmJkOWM5ODZiZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMxMDkwN30.Q0UTennH2EzGEEda5OquiwaV7EqtuIXmiuC948xhR7I",
+      "taskId": "d23b2686-2a49-4263-8424-53139f55183a",
+      "prompt": "A family-friendly animated character portrait on a plain white studio background. Skyy is the fictional stylized 3D child mascot shown in the supplied image, fully clothed in her reference jacket, trousers and sneakers. Preserve her exact illustrated face, round cheeks, large brown eyes, dark rounded curls and child proportions. The camera stays fixed. She breathes gently, blinks once and makes a tiny friendly smile. Her hands and body remain in their original pose. Preserve all clothing details. One continuous shot, no new objects, no other people, no speaking and no audio.",
+      "meta": {
+        "width": 1440,
+        "height": 1440,
+        "durationSeconds": 5.041,
+        "hasAudio": false
+      }
+    }
+  },
+  "BRPairR2": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+          "tag": "skyy"
+        },
+        {
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0e4f2dc8-d20c-4245-8e51-a37dcea29ea6.png",
+          "tag": "performer"
+        },
+        {
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0bd8bc95-0044-44b6-872b-8d6805de2fcb.png",
+          "tag": "performer_second"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/br-006-sherpa-jacket.jpeg",
+          "tag": "bomber"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+          "tag": "world"
+        }
+      ],
+      "promptText": "Create ONE new wordless cinematic fashion film frame, 9:16. Family-friendly model and fictional mascot encounter aboard a moving Black Rose train. CAST LOCK: use the actual photographic adult from @performer and @performer_second. Keep his source face, textured hair, piercings, facial hair, build and bomber. He sits at frame RIGHT facing slightly LEFT, the same orientation as his footage. Do not mirror his source image. His trousers are plain dark fabric with normal seams, absolutely no added pale graphic or appliques. Hands rest low on his thighs. Skyy stands frame LEFT: transplant the EXACT illustrated head, face, full round cheeks, wide smile, thick brows and broad shoulder-framing ringlets from @skyy, at the same frontal angle and expression. Do not reimagine or redraw her character into an older or slim girl. Her head occupies the same proportion of her compact body as in @skyy. Change her clothes only to a miniature of @bomber: black satin, black sherpa hood, hood down, zipper under snap storm flap, zipped pockets, exact silver rose/cloud embroidery, black ribs. Both fronts clearly visible. Camera lens50mm equivalent, eye level, medium two-shot, neutral soft face fill. Her face stays FRONT toward camera, chin level, not looking upward. Adult may glance slightly toward her without turning his body. ENVIRONMENT is an elegant all-black curved-metal night carriage with tactile black seats and thin silver window trim, not cream or gray plastic walls. Outside the broad panoramic window is the authentic Bay Bridge and source black star/silver rose monument at monumental scale from @world, use that reference only for environment and sculpture, never people/words. Natural contact shadows, luxurious satin highlights, restrained silver lighting. The sculpture is partially withheld by a foreground bridge rib, setting up a later reveal. This is a NEW scene: exclude the source video's corner mark/overlay, smoke, cigarettes and all hand props. Do not alter the source footage. No added lettering, logos outside verified garment embroidery, captions, borders or watermarks.",
+      "rationale": "Prepare a corrected, family-friendly Black Rose starting frame with the actual video performer and exact illustrated Skyy before motion. Fix prior trouser graphic, copied overlay, pale carriage and character-proportion drift while preserving source footage untouched."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "f7d178a4-17b0-4908-9c10-d00320553ad4",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "Create ONE new wordless cinematic fashion film frame, 9:16. Family-friendly model and fictional mascot encounter aboard a moving Black Rose train. CAST LOCK: use the actual photographic adult from @performer and @performer_second. Keep his source face, textured hair, piercings, facial hair, build and bomber. He sits at frame RIGHT facing slightly LEFT, the same orientation as his footage. Do not mirror his source image. His trousers are plain dark fabric with normal seams, absolutely no added pale graphic or appliques. Hands rest low on his thighs. Skyy stands frame LEFT: transplant the EXACT illustrated head, face, full round cheeks, wide smile, thick brows and broad shoulder-framing ringlets from @skyy, at the same frontal angle and expression. Do not reimagine or redraw her character into an older or slim girl. Her head occupies the same proportion of her compact body as in @skyy. Change her clothes only to a miniature of @bomber: black satin, black sherpa hood, hood down, zipper under snap storm flap, zipped pockets, exact silver rose/cloud embroidery, black ribs. Both fronts clearly visible. Camera lens50mm equivalent, eye level, medium two-shot, neutral soft face fill. Her face stays FRONT toward camera, chin level, not looking upward. Adult may glance slightly toward her without turning his body. ENVIRONMENT is an elegant all-black curved-metal night carriage with tactile black seats and thin silver window trim, not cream or gray plastic walls. Outside the broad panoramic window is the authentic Bay Bridge and source black star/silver rose monument at monumental scale from @world, use that reference only for environment and sculpture, never people/words. Natural contact shadows, luxurious satin highlights, restrained silver lighting. The sculpture is partially withheld by a foreground bridge rib, setting up a later reveal. This is a NEW scene: exclude the source video's corner mark/overlay, smoke, cigarettes and all hand props. Do not alter the source footage. No added lettering, logos outside verified garment embroidery, captions, borders or watermarks.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "Create ONE new wordless cinematic fashion film frame, 9:16. Family-friendly model and fictional mascot encounter aboard a moving Black Rose train. CAST LOCK: use the actual photographic adult from @performer and @performer_second. Keep his source face, textured hair, piercings, facial hair, build and bomber. He sits at frame RIGHT facing slightly LEFT, the same orientation as his footage. Do not mirror his source image. His trousers are plain dark fabric with normal seams, absolutely no added pale graphic or appliques. Hands rest low on his thighs. Skyy stands frame LEFT: transplant the EXACT illustrated head, face, full round cheeks, wide smile, thick brows and broad shoulder-framing ringlets from @skyy, at the same frontal angle and expression. Do not reimagine or redraw her character into an older or slim girl. Her head occupies the same proportion of her compact body as in @skyy. Change her clothes only to a miniature of @bomber: black satin, black sherpa hood, hood down, zipper under snap storm flap, zipped pockets, exact silver rose/cloud embroidery, black ribs. Both fronts clearly visible. Camera lens50mm equivalent, eye level, medium two-shot, neutral soft face fill. Her face stays FRONT toward camera, chin level, not looking upward. Adult may glance slightly toward her without turning his body. ENVIRONMENT is an elegant all-black curved-metal night carriage with tactile black seats and thin silver window trim, not cream or gray plastic walls. Outside the broad panoramic window is the authentic Bay Bridge and source black star/silver rose monument at monumental scale from @world, use that reference only for environment and sculpture, never people/words. Natural contact shadows, luxurious satin highlights, restrained silver lighting. The sculpture is partially withheld by a foreground bridge rib, setting up a later reveal. This is a NEW scene: exclude the source video's corner mark/overlay, smoke, cigarettes and all hand props. Do not alter the source footage. No added lettering, logos outside verified garment embroidery, captions, borders or watermarks.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+              "tag": "skyy"
+            },
+            {
+              "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0e4f2dc8-d20c-4245-8e51-a37dcea29ea6.png",
+              "tag": "performer"
+            },
+            {
+              "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0bd8bc95-0044-44b6-872b-8d6805de2fcb.png",
+              "tag": "performer_second"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/br-006-sherpa-jacket.jpeg",
+              "tag": "bomber"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+              "tag": "world"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1620
+    },
+    "Result": {
+      "kind": "task_failed",
+      "taskId": "f7d178a4-17b0-4908-9c10-d00320553ad4",
+      "taskType": "gpt_image_2",
+      "status": "FAILED",
+      "progressPercent": 100,
+      "progressRatio": "1",
+      "queuedSeconds": 0,
+      "updatedAt": "2026-09-12T04:52:28.708Z",
+      "secondsSinceLastUpdate": 22,
+      "error": "Text prompt did not pass moderation",
+      "errorInfo": {
+        "category": "content_moderation",
+        "title": "Content policy",
+        "hint": "Runway's input moderation flagged this generation (character). Suggest rephrasing the prompt or swapping reference media to avoid the flagged content. Do not blame the user — be matter-of-fact.",
+        "reason": "INPUT_PREPROCESSING.SAFETY.TEXT",
+        "message": "Text prompt did not pass moderation",
+        "moderationCategory": "CHARACTER"
+      }
+    }
+  },
+  "BRPairR3": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+          "tag": "skyy"
+        },
+        {
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0e4f2dc8-d20c-4245-8e51-a37dcea29ea6.png",
+          "tag": "performer"
+        },
+        {
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0bd8bc95-0044-44b6-872b-8d6805de2fcb.png",
+          "tag": "performer_second"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/br-006-sherpa-jacket.jpeg",
+          "tag": "bomber"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+          "tag": "world"
+        }
+      ],
+      "promptText": "A family-friendly cinematic fashion photograph inside a black night-train carriage. The adult performer pictured in @performer and @performer_second sits on the right, facing slightly left. He wears his pictured black bomber with plain dark trousers. Skyy, the fictional 3D child mascot pictured in @skyy, stands on the left facing the camera with her original round face, full curls, smile and compact proportions. She wears the matching bomber shown in @bomber. Their jacket fronts and rose embroidery are clearly visible. They share a quiet, friendly moment with relaxed hands. The black leather seating and curved black metal walls have thin silver trim. A panoramic window frames the Bay Bridge and monumental silver-edged black rose-star from @world, partly hidden behind one passing bridge beam. Medium two-shot,50mm lens, soft neutral face lighting, realistic satin and natural contact shadows. Use only the clothing, characters and scenery described here. The new photograph has clean corners, plain trousers and an unobstructed product view.",
+      "rationale": "Correct the image request's ambiguous editing language with a short literal description of the new benign fashion scene, following Runway's prompt-troubleshooting guidance. Keep original footage untouched."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "0af87b35-8615-4f22-8ae6-3c84f22fbb32",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "A family-friendly cinematic fashion photograph inside a black night-train carriage. The adult performer pictured in @performer and @performer_second sits on the right, facing slightly left. He wears his pictured black bomber with plain dark trousers. Skyy, the fictional 3D child mascot pictured in @skyy, stands on the left facing the camera with her original round face, full curls, smile and compact proportions. She wears the matching bomber shown in @bomber. Their jacket fronts and rose embroidery are clearly visible. They share a quiet, friendly moment with relaxed hands. The black leather seating and curved black metal walls have thin silver trim. A panoramic window frames the Bay Bridge and monumental silver-edged black rose-star from @world, partly hidden behind one passing bridge beam. Medium two-shot,50mm lens, soft neutral face lighting, realistic satin and natural contact shadows. Use only the clothing, characters and scenery described here. The new photograph has clean corners, plain trousers and an unobstructed product view.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "A family-friendly cinematic fashion photograph inside a black night-train carriage. The adult performer pictured in @performer and @performer_second sits on the right, facing slightly left. He wears his pictured black bomber with plain dark trousers. Skyy, the fictional 3D child mascot pictured in @skyy, stands on the left facing the camera with her original round face, full curls, smile and compact proportions. She wears the matching bomber shown in @bomber. Their jacket fronts and rose embroidery are clearly visible. They share a quiet, friendly moment with relaxed hands. The black leather seating and curved black metal walls have thin silver trim. A panoramic window frames the Bay Bridge and monumental silver-edged black rose-star from @world, partly hidden behind one passing bridge beam. Medium two-shot,50mm lens, soft neutral face lighting, realistic satin and natural contact shadows. Use only the clothing, characters and scenery described here. The new photograph has clean corners, plain trousers and an unobstructed product view.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+              "tag": "skyy"
+            },
+            {
+              "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0e4f2dc8-d20c-4245-8e51-a37dcea29ea6.png",
+              "tag": "performer"
+            },
+            {
+              "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0bd8bc95-0044-44b6-872b-8d6805de2fcb.png",
+              "tag": "performer_second"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/br-006-sherpa-jacket.jpeg",
+              "tag": "bomber"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+              "tag": "world"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1620
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/0af87b35-8615-4f22-8ae6-3c84f22fbb32/A_family_friendly_cinematic_fashion_photograph_inside_a_black_night_train_carriage__The_adult_perfor_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTMzYmIxMTVhMzdkMDQ1NyIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMDcwOX0.2xCC83eL5LIWTTCdj5U6KMGeiHTctNHXBXz1D9go6hA",
+      "taskId": "0af87b35-8615-4f22-8ae6-3c84f22fbb32",
+      "prompt": "A family-friendly cinematic fashion photograph inside a blac",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "SGAnchor": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+          "tag": "skyy"
+        },
+        {
+          "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/4f08df8a-237b-4a2e-afb0-1b9bef5e0b48/Edit_only_the_CLOTHING_in__skyy__Keep_her_entire_head__face__eyes__eyebrows__cheeks__mouth__ears__ne_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDZjNDUwMzk5Nzg3YTU0ZCIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTM0MzI4OX0.8yxe3fpvGN1AiyQPgBQSEvu_Xhv9fA5jeWRFCKlChPw",
+          "tag": "wardrobe"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-onmodel.webp",
+          "tag": "model"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg",
+          "tag": "jacket"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+          "tag": "world"
+        }
+      ],
+      "promptText": "A cinematic fashion photograph inside a moving golden-hour train. The photographed adult in @model sits camera-left in his Signature sherpa jacket. Skyy, the fictional 3D child mascot in @skyy, stands camera-right facing forward beside his seat. Her illustrated face, rounded cheeks, broad curls, smile and compact proportions match @skyy and @wardrobe. Her outfit follows @wardrobe, with the small chest embroidery scale and lower hem woven rose tags from @jacket. Matching jacket fronts are clearly visible, white fleece stays neutral. Their hands are relaxed below the chest; an empty window place beside them suggests an invitation. A sweeping gold metallic curve and monumental golden rose from @world rise outside the wide curved train window, with the Golden Gate Bridge far beyond. The large sculpture is partly obscured by a passing dark bridge column. Rich black seating, brushed gold trim, dimensional light on faces and fabric, realistic contact shadows. Portrait9:16,50mm lens, medium two-shot, frontal Skyy face, luxury commercial still. Garments carry only their pictured branding; the carriage and image corners are clean.",
+      "rationale": "Create the corrected Signature train starting frame with the reviewed Skyy character and exact product-card performer, using a clear literal shot description."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "2104905a-2890-4ba5-96d8-dbdf84982d52",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "A cinematic fashion photograph inside a moving golden-hour train. The photographed adult in @model sits camera-left in his Signature sherpa jacket. Skyy, the fictional 3D child mascot in @skyy, stands camera-right facing forward beside his seat. Her illustrated face, rounded cheeks, broad curls, smile and compact proportions match @skyy and @wardrobe. Her outfit follows @wardrobe, with the small chest embroidery scale and lower hem woven rose tags from @jacket. Matching jacket fronts are clearly visible, white fleece stays neutral. Their hands are relaxed below the chest; an empty window place beside them suggests an invitation. A sweeping gold metallic curve and monumental golden rose from @world rise outside the wide curved train window, with the Golden Gate Bridge far beyond. The large sculpture is partly obscured by a passing dark bridge column. Rich black seating, brushed gold trim, dimensional light on faces and fabric, realistic contact shadows. Portrait9:16,50mm lens, medium two-shot, frontal Skyy face, luxury commercial still. Garments carry only their pictured branding; the carriage and image corners are clean.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "A cinematic fashion photograph inside a moving golden-hour train. The photographed adult in @model sits camera-left in his Signature sherpa jacket. Skyy, the fictional 3D child mascot in @skyy, stands camera-right facing forward beside his seat. Her illustrated face, rounded cheeks, broad curls, smile and compact proportions match @skyy and @wardrobe. Her outfit follows @wardrobe, with the small chest embroidery scale and lower hem woven rose tags from @jacket. Matching jacket fronts are clearly visible, white fleece stays neutral. Their hands are relaxed below the chest; an empty window place beside them suggests an invitation. A sweeping gold metallic curve and monumental golden rose from @world rise outside the wide curved train window, with the Golden Gate Bridge far beyond. The large sculpture is partly obscured by a passing dark bridge column. Rich black seating, brushed gold trim, dimensional light on faces and fabric, realistic contact shadows. Portrait9:16,50mm lens, medium two-shot, frontal Skyy face, luxury commercial still. Garments carry only their pictured branding; the carriage and image corners are clean.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+              "tag": "skyy"
+            },
+            {
+              "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/4f08df8a-237b-4a2e-afb0-1b9bef5e0b48/Edit_only_the_CLOTHING_in__skyy__Keep_her_entire_head__face__eyes__eyebrows__cheeks__mouth__ears__ne_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDZjNDUwMzk5Nzg3YTU0ZCIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTM0MzI4OX0.8yxe3fpvGN1AiyQPgBQSEvu_Xhv9fA5jeWRFCKlChPw",
+              "tag": "wardrobe"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-onmodel.webp",
+              "tag": "model"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg",
+              "tag": "jacket"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+              "tag": "world"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1600
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2104905a-2890-4ba5-96d8-dbdf84982d52/A_cinematic_fashion_photograph_inside_a_moving_golden_hour_train__The_photographed_adult_in__model_s_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTRiOGM1NzhlNzc4NjRmNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzNTU0NH0.U1Xhcp1_zjcbuLKmdbUl4wxu5qRHkXGE2Ddyrsdlkd0",
+      "taskId": "2104905a-2890-4ba5-96d8-dbdf84982d52",
+      "prompt": "A cinematic fashion photograph inside a moving golden-hour t",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "LHAnchor": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+          "tag": "skyy"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-onmodel.webp",
+          "tag": "model"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-bomber.png",
+          "tag": "jacket"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp",
+          "tag": "world"
+        }
+      ],
+      "promptText": "A cinematic, family-friendly fashion photograph aboard a moving romantic night train. The photographed adult from @model sits camera-left, wearing his pictured white and black Love Hurts bomber and dark trousers. Skyy, the fictional 3D child mascot in @skyy, stands camera-right facing the camera. Keep her original illustrated face, full round cheeks, wide smile, broad dark curls and compact proportions. She wears the bomber in @jacket with its black hood exterior, rose-print lining, black drawstrings, white satin body, black sleeves, red script and red-black-white ribbed bands. Match the actual garment rather than the master mascot's previous outfit. Plain cream trousers and white sneakers. Their two bomber fronts are clearly readable. Beside the adult is an empty burgundy seat. Refined black and oxblood carriage, polished brass, a pointed arch from @world opens into a deep observation salon with the source glass-cloche rose far beyond. A large red star sculpture is glimpsed outside. Natural neutral face light keeps white satin white; dimensional skin, cloth and soft contact shadows. Medium frontal two-shot,50mm lens, portrait9:16. Quiet anticipation, low relaxed hands, clean corners, all text confined to the pictured garment branding.",
+      "rationale": "Create the Love Hurts train keyframe with canonical adult product-card model and the founder's same illustrated Skyy, correcting her outfit to the physical LH004 garment."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "9b662320-6b1f-4c80-8e47-ee52a8ea4412",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "A cinematic, family-friendly fashion photograph aboard a moving romantic night train. The photographed adult from @model sits camera-left, wearing his pictured white and black Love Hurts bomber and dark trousers. Skyy, the fictional 3D child mascot in @skyy, stands camera-right facing the camera. Keep her original illustrated face, full round cheeks, wide smile, broad dark curls and compact proportions. She wears the bomber in @jacket with its black hood exterior, rose-print lining, black drawstrings, white satin body, black sleeves, red script and red-black-white ribbed bands. Match the actual garment rather than the master mascot's previous outfit. Plain cream trousers and white sneakers. Their two bomber fronts are clearly readable. Beside the adult is an empty burgundy seat. Refined black and oxblood carriage, polished brass, a pointed arch from @world opens into a deep observation salon with the source glass-cloche rose far beyond. A large red star sculpture is glimpsed outside. Natural neutral face light keeps white satin white; dimensional skin, cloth and soft contact shadows. Medium frontal two-shot,50mm lens, portrait9:16. Quiet anticipation, low relaxed hands, clean corners, all text confined to the pictured garment branding.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "A cinematic, family-friendly fashion photograph aboard a moving romantic night train. The photographed adult from @model sits camera-left, wearing his pictured white and black Love Hurts bomber and dark trousers. Skyy, the fictional 3D child mascot in @skyy, stands camera-right facing the camera. Keep her original illustrated face, full round cheeks, wide smile, broad dark curls and compact proportions. She wears the bomber in @jacket with its black hood exterior, rose-print lining, black drawstrings, white satin body, black sleeves, red script and red-black-white ribbed bands. Match the actual garment rather than the master mascot's previous outfit. Plain cream trousers and white sneakers. Their two bomber fronts are clearly readable. Beside the adult is an empty burgundy seat. Refined black and oxblood carriage, polished brass, a pointed arch from @world opens into a deep observation salon with the source glass-cloche rose far beyond. A large red star sculpture is glimpsed outside. Natural neutral face light keeps white satin white; dimensional skin, cloth and soft contact shadows. Medium frontal two-shot,50mm lens, portrait9:16. Quiet anticipation, low relaxed hands, clean corners, all text confined to the pictured garment branding.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+              "tag": "skyy"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-onmodel.webp",
+              "tag": "model"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-bomber.png",
+              "tag": "jacket"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp",
+              "tag": "world"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1580
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/9b662320-6b1f-4c80-8e47-ee52a8ea4412/A_cinematic__family_friendly_fashion_photograph_aboard_a_moving_romantic_night_train__The_photograph_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYTI0Mjg4ODA5YWFmMTI2ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMyMjExMn0.Ml-DIlAP7Q8e8xMT7sLxyPGVxXy0HHcxiLjqkEmRNzw",
+      "taskId": "9b662320-6b1f-4c80-8e47-ee52a8ea4412",
+      "prompt": "A cinematic, family-friendly fashion photograph aboard a mov",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "KRAnchor": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+          "tag": "skyy"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-onmodel-v2.webp",
+          "tag": "model"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-red-set.jpeg",
+          "tag": "outfit"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+          "tag": "world"
+        }
+      ],
+      "promptText": "A warm, family-friendly cinematic fashion photograph inside the final observation carriage of a luxury train. The real child model from @model stands camera-left wearing the exact red, black and white matching outfit from @outfit. Skyy, the fictional 3D child mascot from @skyy, stands beside them camera-right facing the camera with her original rounded cheeks, broad curls, large brown eyes, wide smile and compact proportions. Keep the child model photographic and Skyy illustrated. Skyy wears a matching version of the same outfit: red hood and lower front, diagonal black and white chest panels, source sleeves and circular sleeve patch, correct rose/cloud chest and black jogger thigh emblems, black drawstrings as pictured. Both complete outfits and their sneakers are visible from the front, hands low and relaxed. Soft ivory and rose-gold carriage with an arched glass roof. The crown-backed throne from @world rises behind them, just partly visible between two near foreground door panels; a broad luminous horizon lies beyond the windows. This is a train observation carriage, with visible window framing, seating and overhead rail details. Natural daylight, soft dimensional shadows, elegant joy and anticipation, premium commercial cinematography. Portrait9:16,50mm lens, frontal faces, clean corners, lettering only where verified on garments.",
+      "rationale": "Build the Kids red-pair reveal starting frame with the actual product-card child and the same founder-supplied Skyy design. Canonical outfit and collection throne supply visual identity."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "2cce1194-9b1d-4cca-bdb9-8c32156963a4",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "A warm, family-friendly cinematic fashion photograph inside the final observation carriage of a luxury train. The real child model from @model stands camera-left wearing the exact red, black and white matching outfit from @outfit. Skyy, the fictional 3D child mascot from @skyy, stands beside them camera-right facing the camera with her original rounded cheeks, broad curls, large brown eyes, wide smile and compact proportions. Keep the child model photographic and Skyy illustrated. Skyy wears a matching version of the same outfit: red hood and lower front, diagonal black and white chest panels, source sleeves and circular sleeve patch, correct rose/cloud chest and black jogger thigh emblems, black drawstrings as pictured. Both complete outfits and their sneakers are visible from the front, hands low and relaxed. Soft ivory and rose-gold carriage with an arched glass roof. The crown-backed throne from @world rises behind them, just partly visible between two near foreground door panels; a broad luminous horizon lies beyond the windows. This is a train observation carriage, with visible window framing, seating and overhead rail details. Natural daylight, soft dimensional shadows, elegant joy and anticipation, premium commercial cinematography. Portrait9:16,50mm lens, frontal faces, clean corners, lettering only where verified on garments.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "A warm, family-friendly cinematic fashion photograph inside the final observation carriage of a luxury train. The real child model from @model stands camera-left wearing the exact red, black and white matching outfit from @outfit. Skyy, the fictional 3D child mascot from @skyy, stands beside them camera-right facing the camera with her original rounded cheeks, broad curls, large brown eyes, wide smile and compact proportions. Keep the child model photographic and Skyy illustrated. Skyy wears a matching version of the same outfit: red hood and lower front, diagonal black and white chest panels, source sleeves and circular sleeve patch, correct rose/cloud chest and black jogger thigh emblems, black drawstrings as pictured. Both complete outfits and their sneakers are visible from the front, hands low and relaxed. Soft ivory and rose-gold carriage with an arched glass roof. The crown-backed throne from @world rises behind them, just partly visible between two near foreground door panels; a broad luminous horizon lies beyond the windows. This is a train observation carriage, with visible window framing, seating and overhead rail details. Natural daylight, soft dimensional shadows, elegant joy and anticipation, premium commercial cinematography. Portrait9:16,50mm lens, frontal faces, clean corners, lettering only where verified on garments.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+              "tag": "skyy"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-onmodel-v2.webp",
+              "tag": "model"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-red-set.jpeg",
+              "tag": "outfit"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+              "tag": "world"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1560
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2cce1194-9b1d-4cca-bdb9-8c32156963a4/A_warm__family_friendly_cinematic_fashion_photograph_inside_the_final_observation_carriage_of_a_luxu_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTJhMTZhYTJiZjdhZTExNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3OTkwNn0.EOBkH3ms5B1HDD-mzKsG-Xe1rXPrMiBM-OhdiH2X270",
+      "taskId": "2cce1194-9b1d-4cca-bdb9-8c32156963a4",
+      "prompt": "A warm, family-friendly cinematic fashion photograph inside ",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "KPAnchor": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+          "tag": "skyy"
+        },
+        {
+          "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/5f9192c1-b95f-47e2-9639-8b78a726de6c.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiM2YxNTI5ODllZTFiMzVjOSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI5NTQ5N30.Fo_dptSLcNq97vw3ctxuzKmQaUu4dNc7XP7jgKgqO2U",
+          "tag": "model"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/kids-002-purple-set.jpeg",
+          "tag": "outfit"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+          "tag": "world"
+        }
+      ],
+      "promptText": "A warm, family-friendly cinematic fashion photograph in the final observation carriage of a luxury train. The real child model from @model stands camera-left, keeping the pictured face, hood-up hairstyle and complete purple outfit. Skyy, the fictional 3D child mascot from @skyy, stands beside them camera-right with her original full rounded cheeks, large brown eyes, wide smile, broad shoulder-framing curls and compact proportions, facing the camera. Skyy wears the matching outfit from @outfit: deep purple hood down and lower torso, asymmetric lavender/light mauve chest and sleeves, correct diagonal panel seams, white hoodie and trouser cords, exact rose/cloud chest and thigh motifs, source circular right-sleeve patch, purple joggers and plain white sneakers. Both complete outfits are visible, hands low and relaxed. Soft ivory and rose-gold train interior, arched glass roof, source black-and-gold crown-backed throne behind them from @world, wide rounded windows and a luminous landscape. This is the same premium observation-carriage concept as the red collection scene. Photo-realistic child beside the illustrated mascot, shared directional daylight and contact shadows,50mm lens, portrait9:16. Quiet shared joy and natural anticipation; clean corners, garment branding only.",
+      "rationale": "Create the Kids purple reveal keyframe using the verified alternate product-card child and the same Skyy reference, preserving exact purple panel layout and source throne."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "a2895ab4-dfe7-4e09-a443-a925873e70ca",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "A warm, family-friendly cinematic fashion photograph in the final observation carriage of a luxury train. The real child model from @model stands camera-left, keeping the pictured face, hood-up hairstyle and complete purple outfit. Skyy, the fictional 3D child mascot from @skyy, stands beside them camera-right with her original full rounded cheeks, large brown eyes, wide smile, broad shoulder-framing curls and compact proportions, facing the camera. Skyy wears the matching outfit from @outfit: deep purple hood down and lower torso, asymmetric lavender/light mauve chest and sleeves, correct diagonal panel seams, white hoodie and trouser cords, exact rose/cloud chest and thigh motifs, source circular right-sleeve patch, purple joggers and plain white sneakers. Both complete outfits are visible, hands low and relaxed. Soft ivory and rose-gold train interior, arched glass roof, source black-and-gold crown-backed throne behind them from @world, wide rounded windows and a luminous landscape. This is the same premium observation-carriage concept as the red collection scene. Photo-realistic child beside the illustrated mascot, shared directional daylight and contact shadows,50mm lens, portrait9:16. Quiet shared joy and natural anticipation; clean corners, garment branding only.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "A warm, family-friendly cinematic fashion photograph in the final observation carriage of a luxury train. The real child model from @model stands camera-left, keeping the pictured face, hood-up hairstyle and complete purple outfit. Skyy, the fictional 3D child mascot from @skyy, stands beside them camera-right with her original full rounded cheeks, large brown eyes, wide smile, broad shoulder-framing curls and compact proportions, facing the camera. Skyy wears the matching outfit from @outfit: deep purple hood down and lower torso, asymmetric lavender/light mauve chest and sleeves, correct diagonal panel seams, white hoodie and trouser cords, exact rose/cloud chest and thigh motifs, source circular right-sleeve patch, purple joggers and plain white sneakers. Both complete outfits are visible, hands low and relaxed. Soft ivory and rose-gold train interior, arched glass roof, source black-and-gold crown-backed throne behind them from @world, wide rounded windows and a luminous landscape. This is the same premium observation-carriage concept as the red collection scene. Photo-realistic child beside the illustrated mascot, shared directional daylight and contact shadows,50mm lens, portrait9:16. Quiet shared joy and natural anticipation; clean corners, garment branding only.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+              "tag": "skyy"
+            },
+            {
+              "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/5f9192c1-b95f-47e2-9639-8b78a726de6c.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiM2YxNTI5ODllZTFiMzVjOSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI5NTQ5N30.Fo_dptSLcNq97vw3ctxuzKmQaUu4dNc7XP7jgKgqO2U",
+              "tag": "model"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/kids-002-purple-set.jpeg",
+              "tag": "outfit"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+              "tag": "world"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1540
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/a2895ab4-dfe7-4e09-a443-a925873e70ca/A_warm__family_friendly_cinematic_fashion_photograph_in_the_final_observation_carriage_of_a_luxury_t_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYWU3MjQ1N2I0YWM0NmIyYSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTM1NDg3NX0.ZAwlkgWgz_t-SWYogu0dtCBvBw9PmJh8SGPYhMKFKbw",
+      "taskId": "a2895ab4-dfe7-4e09-a443-a925873e70ca",
+      "prompt": "A warm, family-friendly cinematic fashion photograph in the ",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "LHFixed": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/9b662320-6b1f-4c80-8e47-ee52a8ea4412/A_cinematic__family_friendly_fashion_photograph_aboard_a_moving_romantic_night_train__The_photograph_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYTI0Mjg4ODA5YWFmMTI2ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMyMjExMn0.Ml-DIlAP7Q8e8xMT7sLxyPGVxXy0HHcxiLjqkEmRNzw",
+          "tag": "frame"
+        }
+      ],
+      "promptText": "Edit only the outdoor view visible through the left train window in @frame. Replace the entire exterior star sculpture and its lettering with a quiet dark landscape and distant warm city lights. Keep every other pixel and composition as close as possible: both characters, their faces and hair, garment text and construction, poses, carriage interior, pointed arches, warm lighting and the glass-cloche rose deep in the corridor. This is a localized window-view edit. The only text remaining is the original garment branding. Keep all foreground details unchanged.",
+      "rationale": "Remove invented external lettering and noncanonical star arrangement from the new Love Hurts starting frame. The approved pointed-arch and cloche-rose hero elements remain, with characters and garments preserved."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "0554f104-7e7e-4560-b68f-c65d3f57fdc5",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "Edit only the outdoor view visible through the left train window in @frame. Replace the entire exterior star sculpture and its lettering with a quiet dark landscape and distant warm city lights. Keep every other pixel and composition as close as possible: both characters, their faces and hair, garment text and construction, poses, carriage interior, pointed arches, warm lighting and the glass-cloche rose deep in the corridor. This is a localized window-view edit. The only text remaining is the original garment branding. Keep all foreground details unchanged.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "Edit only the outdoor view visible through the left train window in @frame. Replace the entire exterior star sculpture and its lettering with a quiet dark landscape and distant warm city lights. Keep every other pixel and composition as close as possible: both characters, their faces and hair, garment text and construction, poses, carriage interior, pointed arches, warm lighting and the glass-cloche rose deep in the corridor. This is a localized window-view edit. The only text remaining is the original garment branding. Keep all foreground details unchanged.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/9b662320-6b1f-4c80-8e47-ee52a8ea4412/A_cinematic__family_friendly_fashion_photograph_aboard_a_moving_romantic_night_train__The_photograph_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYTI0Mjg4ODA5YWFmMTI2ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMyMjExMn0.Ml-DIlAP7Q8e8xMT7sLxyPGVxXy0HHcxiLjqkEmRNzw",
+              "tag": "frame"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1180
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/0554f104-7e7e-4560-b68f-c65d3f57fdc5/Edit_only_the_outdoor_view_visible_through_the_left_train_window_in__frame__Replace_the_entire_exter_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI5OGI5ZjM3OGRhNDQzZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMxNTE4N30.ieVNMx3c8ofrdEEzx2sIEHCANbgM8AU5b9ip3lNRU4o",
+      "taskId": "0554f104-7e7e-4560-b68f-c65d3f57fdc5",
+      "prompt": "Edit only the outdoor view visible through the left train wi",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "KPFixed": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2cce1194-9b1d-4cca-bdb9-8c32156963a4/A_warm__family_friendly_cinematic_fashion_photograph_inside_the_final_observation_carriage_of_a_luxu_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTJhMTZhYTJiZjdhZTExNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3OTkwNn0.EOBkH3ms5B1HDD-mzKsG-Xe1rXPrMiBM-OhdiH2X270",
+          "tag": "frame"
+        },
+        {
+          "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/5f9192c1-b95f-47e2-9639-8b78a726de6c.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiM2YxNTI5ODllZTFiMzVjOSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI5NTQ5N30.Fo_dptSLcNq97vw3ctxuzKmQaUu4dNc7XP7jgKgqO2U",
+          "tag": "purple_model"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/kids-002-purple-set.jpeg",
+          "tag": "outfit"
+        },
+        {
+          "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+          "tag": "skyy"
+        }
+      ],
+      "promptText": "Create the purple-outfit companion shot by editing @frame. Keep the exact same train carriage, camera, framing, crown-backed throne position and scale, ceiling, windows, seats, horizon and light. The photographic child at left is now the exact purple-outfit model pictured in @purple_model, wearing the source hood up and the complete source outfit. Skyy at right keeps her illustrated face, expression, broad curls, body proportions and pose unchanged from @frame and @skyy. Change only her clothing to the matching purple outfit from @outfit: deep purple hood down, lower front and joggers, lavender/mauve asymmetric upper panels and sleeves, white cords, exact chest/thigh rose-cloud marks and circular sleeve patch. Keep the source sleeves and diagonal panel seams. Plain white sneakers. Preserve the distinct photographic model and fictional illustrated child mascot. The carriage has no words or signs, matching the clean original frame.",
+      "rationale": "Correct Kids purple set continuity and remove invented throne lettering by editing the already reviewed red-carriage frame, with the canonical purple child and product as replacement wardrobe/casting references."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "5508414c-724b-4e80-afa8-aea3e9422216",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "Create the purple-outfit companion shot by editing @frame. Keep the exact same train carriage, camera, framing, crown-backed throne position and scale, ceiling, windows, seats, horizon and light. The photographic child at left is now the exact purple-outfit model pictured in @purple_model, wearing the source hood up and the complete source outfit. Skyy at right keeps her illustrated face, expression, broad curls, body proportions and pose unchanged from @frame and @skyy. Change only her clothing to the matching purple outfit from @outfit: deep purple hood down, lower front and joggers, lavender/mauve asymmetric upper panels and sleeves, white cords, exact chest/thigh rose-cloud marks and circular sleeve patch. Keep the source sleeves and diagonal panel seams. Plain white sneakers. Preserve the distinct photographic model and fictional illustrated child mascot. The carriage has no words or signs, matching the clean original frame.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "Create the purple-outfit companion shot by editing @frame. Keep the exact same train carriage, camera, framing, crown-backed throne position and scale, ceiling, windows, seats, horizon and light. The photographic child at left is now the exact purple-outfit model pictured in @purple_model, wearing the source hood up and the complete source outfit. Skyy at right keeps her illustrated face, expression, broad curls, body proportions and pose unchanged from @frame and @skyy. Change only her clothing to the matching purple outfit from @outfit: deep purple hood down, lower front and joggers, lavender/mauve asymmetric upper panels and sleeves, white cords, exact chest/thigh rose-cloud marks and circular sleeve patch. Keep the source sleeves and diagonal panel seams. Plain white sneakers. Preserve the distinct photographic model and fictional illustrated child mascot. The carriage has no words or signs, matching the clean original frame.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2cce1194-9b1d-4cca-bdb9-8c32156963a4/A_warm__family_friendly_cinematic_fashion_photograph_inside_the_final_observation_carriage_of_a_luxu_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTJhMTZhYTJiZjdhZTExNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3OTkwNn0.EOBkH3ms5B1HDD-mzKsG-Xe1rXPrMiBM-OhdiH2X270",
+              "tag": "frame"
+            },
+            {
+              "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/5f9192c1-b95f-47e2-9639-8b78a726de6c.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiM2YxNTI5ODllZTFiMzVjOSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI5NTQ5N30.Fo_dptSLcNq97vw3ctxuzKmQaUu4dNc7XP7jgKgqO2U",
+              "tag": "purple_model"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship/assets/images/products/kids-002-purple-set.jpeg",
+              "tag": "outfit"
+            },
+            {
+              "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA",
+              "tag": "skyy"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1160
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/5508414c-724b-4e80-afa8-aea3e9422216/Create_the_purple_outfit_companion_shot_by_editing__frame__Keep_the_exact_same_train_carriage__camer_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzgzYjliNWQ5M2FkYzhhMSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI4ODc5N30.Qj2KJZxwZpeLOrFxxan07y27GIAXkLnaLDQJGBcQ8Vc",
+      "taskId": "5508414c-724b-4e80-afa8-aea3e9422216",
+      "prompt": "Create the purple-outfit companion shot by editing @frame. K",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "SGReveal": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2104905a-2890-4ba5-96d8-dbdf84982d52/A_cinematic_fashion_photograph_inside_a_moving_golden_hour_train__The_photographed_adult_in__model_s_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTRiOGM1NzhlNzc4NjRmNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzNTU0NH0.U1Xhcp1_zjcbuLKmdbUl4wxu5qRHkXGE2Ddyrsdlkd0",
+          "tag": "frame"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+          "tag": "hero"
+        }
+      ],
+      "promptText": "Edit ONLY the view outside the train window in @frame to create the reveal ending. Keep the people, faces, hair, body proportions, poses, garments, entire train interior and camera composition unchanged. The nearby bridge column has now passed out of view. The metallic gold rose and its distinct curved lower stroke from @hero loom immediately beyond the window at immense physical scale, with the rose bloom taller than the window and its sculpted petals partly cropped by the upper window edge. Preserve the characteristic source rose/curl design; leave any monogram letters outside the picture. The Golden Gate Bridge is far behind, much smaller in perspective. Layered depth through clear window glass, warm sunset on metallic petals and water. Only the landscape/sculpture changes; the foreground pair remains exactly as in @frame.",
+      "rationale": "Create a precise large-scale Signature reveal target while keeping the reviewed cast and wardrobe fixed for start/end-frame animation."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "1891764f-eb27-415f-a557-bdf1c65d4d4f",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "Edit ONLY the view outside the train window in @frame to create the reveal ending. Keep the people, faces, hair, body proportions, poses, garments, entire train interior and camera composition unchanged. The nearby bridge column has now passed out of view. The metallic gold rose and its distinct curved lower stroke from @hero loom immediately beyond the window at immense physical scale, with the rose bloom taller than the window and its sculpted petals partly cropped by the upper window edge. Preserve the characteristic source rose/curl design; leave any monogram letters outside the picture. The Golden Gate Bridge is far behind, much smaller in perspective. Layered depth through clear window glass, warm sunset on metallic petals and water. Only the landscape/sculpture changes; the foreground pair remains exactly as in @frame.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "Edit ONLY the view outside the train window in @frame to create the reveal ending. Keep the people, faces, hair, body proportions, poses, garments, entire train interior and camera composition unchanged. The nearby bridge column has now passed out of view. The metallic gold rose and its distinct curved lower stroke from @hero loom immediately beyond the window at immense physical scale, with the rose bloom taller than the window and its sculpted petals partly cropped by the upper window edge. Preserve the characteristic source rose/curl design; leave any monogram letters outside the picture. The Golden Gate Bridge is far behind, much smaller in perspective. Layered depth through clear window glass, warm sunset on metallic petals and water. Only the landscape/sculpture changes; the foreground pair remains exactly as in @frame.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2104905a-2890-4ba5-96d8-dbdf84982d52/A_cinematic_fashion_photograph_inside_a_moving_golden_hour_train__The_photographed_adult_in__model_s_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTRiOGM1NzhlNzc4NjRmNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzNTU0NH0.U1Xhcp1_zjcbuLKmdbUl4wxu5qRHkXGE2Ddyrsdlkd0",
+              "tag": "frame"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+              "tag": "hero"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1140
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/1891764f-eb27-415f-a557-bdf1c65d4d4f/Edit_ONLY_the_view_outside_the_train_window_in__frame_to_create_the_reveal_ending__Keep_the_people___0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiODg3OWMzMDY4ZjdhZWFmMiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzODc1OH0.d5j-uohZL1iieoVYI0vx9s60uLqt8iK--OI2WV61nEw",
+      "taskId": "1891764f-eb27-415f-a557-bdf1c65d4d4f",
+      "prompt": "Edit ONLY the view outside the train window in @frame to cre",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "BRReveal": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/0af87b35-8615-4f22-8ae6-3c84f22fbb32/A_family_friendly_cinematic_fashion_photograph_inside_a_black_night_train_carriage__The_adult_perfor_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTMzYmIxMTVhMzdkMDQ1NyIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMDcwOX0.2xCC83eL5LIWTTCdj5U6KMGeiHTctNHXBXz1D9go6hA",
+          "tag": "frame"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+          "tag": "hero"
+        }
+      ],
+      "promptText": "Edit ONLY the outdoor scene through the train window of @frame. Preserve every foreground detail: both people, faces, curls, proportions, poses, bombers, trousers, shoes and the entire dark carriage remain unchanged. The train now approaches the monumental silver-edged black rose-star sculpture from @hero. Its rose bloom is taller than the window and fills the right half of the glass at enormous physical scale. The star and sculpted silver stem/leaves retain their source construction and remain clearly outside, beyond the glass, on their source plinth beside the water. The distant Bay Bridge is small behind it. Silver moonlight reveals black petal contours and water reflections. Keep the landscape free of lettering. This is a background-only edit for the final reveal frame, with exactly the same foreground pair.",
+      "rationale": "Create a precise monumental Black Rose ending frame without altering the source-performer-derived cast or the fixed Skyy and bomber details."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "928c1fa0-0ea6-4499-8150-a4332570d7ca",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "Edit ONLY the outdoor scene through the train window of @frame. Preserve every foreground detail: both people, faces, curls, proportions, poses, bombers, trousers, shoes and the entire dark carriage remain unchanged. The train now approaches the monumental silver-edged black rose-star sculpture from @hero. Its rose bloom is taller than the window and fills the right half of the glass at enormous physical scale. The star and sculpted silver stem/leaves retain their source construction and remain clearly outside, beyond the glass, on their source plinth beside the water. The distant Bay Bridge is small behind it. Silver moonlight reveals black petal contours and water reflections. Keep the landscape free of lettering. This is a background-only edit for the final reveal frame, with exactly the same foreground pair.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "Edit ONLY the outdoor scene through the train window of @frame. Preserve every foreground detail: both people, faces, curls, proportions, poses, bombers, trousers, shoes and the entire dark carriage remain unchanged. The train now approaches the monumental silver-edged black rose-star sculpture from @hero. Its rose bloom is taller than the window and fills the right half of the glass at enormous physical scale. The star and sculpted silver stem/leaves retain their source construction and remain clearly outside, beyond the glass, on their source plinth beside the water. The distant Bay Bridge is small behind it. Silver moonlight reveals black petal contours and water reflections. Keep the landscape free of lettering. This is a background-only edit for the final reveal frame, with exactly the same foreground pair.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/0af87b35-8615-4f22-8ae6-3c84f22fbb32/A_family_friendly_cinematic_fashion_photograph_inside_a_black_night_train_carriage__The_adult_perfor_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTMzYmIxMTVhMzdkMDQ1NyIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMDcwOX0.2xCC83eL5LIWTTCdj5U6KMGeiHTctNHXBXz1D9go6hA",
+              "tag": "frame"
+            },
+            {
+              "url": "https://raw.githubusercontent.com/SkyyRoseLLC/DevSkyy/4da200886c73252c5271f5bf89de61c5c32ba062/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+              "tag": "hero"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1120
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/928c1fa0-0ea6-4499-8150-a4332570d7ca/Edit_ONLY_the_outdoor_scene_through_the_train_window_of__frame__Preserve_every_foreground_detail__bo_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZTZjOWQxMTY4YThjMTQ5ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMxMzk0Mn0.1SZ7T4vd0X_cq8OWlJs2sJTyZ5k1Fy1oG5YfptTIPB4",
+      "taskId": "928c1fa0-0ea6-4499-8150-a4332570d7ca",
+      "prompt": "Edit ONLY the outdoor scene through the train window of @fra",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "KPFinal": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/5508414c-724b-4e80-afa8-aea3e9422216/Create_the_purple_outfit_companion_shot_by_editing__frame__Keep_the_exact_same_train_carriage__camer_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzgzYjliNWQ5M2FkYzhhMSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI4ODc5N30.Qj2KJZxwZpeLOrFxxan07y27GIAXkLnaLDQJGBcQ8Vc",
+          "tag": "frame"
+        }
+      ],
+      "promptText": "Make two small wardrobe corrections in @frame. On Skyy, the illustrated mascot at right, change only the hood fabric resting around her neck and shoulders from pale lavender to the same deep purple as the real model's hood at left. Retain the light lavender chest and sleeves exactly. Add the pictured outfit's simple white jogger drawstrings at the front waistband of both purple trousers, emerging naturally just below each hoodie hem. Preserve all faces, curls, bodies, poses, seams, chest/thigh emblems, shoes, train interior, lighting and framing. This is a precise clothing-detail edit; everything else stays unchanged.",
+      "rationale": "Fix the independently identified wrong mascot hood color and restore visible canonical jogger cords before Kids purple motion."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "1544c38c-bf8a-4104-9ef7-329c4af7d483",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "Make two small wardrobe corrections in @frame. On Skyy, the illustrated mascot at right, change only the hood fabric resting around her neck and shoulders from pale lavender to the same deep purple as the real model's hood at left. Retain the light lavender chest and sleeves exactly. Add the pictured outfit's simple white jogger drawstrings at the front waistband of both purple trousers, emerging naturally just below each hoodie hem. Preserve all faces, curls, bodies, poses, seams, chest/thigh emblems, shoes, train interior, lighting and framing. This is a precise clothing-detail edit; everything else stays unchanged.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "Make two small wardrobe corrections in @frame. On Skyy, the illustrated mascot at right, change only the hood fabric resting around her neck and shoulders from pale lavender to the same deep purple as the real model's hood at left. Retain the light lavender chest and sleeves exactly. Add the pictured outfit's simple white jogger drawstrings at the front waistband of both purple trousers, emerging naturally just below each hoodie hem. Preserve all faces, curls, bodies, poses, seams, chest/thigh emblems, shoes, train interior, lighting and framing. This is a precise clothing-detail edit; everything else stays unchanged.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/5508414c-724b-4e80-afa8-aea3e9422216/Create_the_purple_outfit_companion_shot_by_editing__frame__Keep_the_exact_same_train_carriage__camer_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzgzYjliNWQ5M2FkYzhhMSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI4ODc5N30.Qj2KJZxwZpeLOrFxxan07y27GIAXkLnaLDQJGBcQ8Vc",
+              "tag": "frame"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 930
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/1544c38c-bf8a-4104-9ef7-329c4af7d483/Make_two_small_wardrobe_corrections_in__frame__On_Skyy__the_illustrated_mascot_at_right__change_only_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDIwMTFiMDRiYjVmYjJiYSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTM2MTI4NH0.fS-f_BRwOZ94LMWH-Y-K8MT-b7sQHZo93MVZ3eJY2-U",
+      "taskId": "1544c38c-bf8a-4104-9ef7-329c4af7d483",
+      "prompt": "Make two small wardrobe corrections in @frame. On Skyy, the ",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "LHFinal": {
+    "Request": {
+      "model": "gpt-image-2",
+      "count": 1,
+      "ratio": "9:16",
+      "referenceImages": [
+        {
+          "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/0554f104-7e7e-4560-b68f-c65d3f57fdc5/Edit_only_the_outdoor_view_visible_through_the_left_train_window_in__frame__Replace_the_entire_exter_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI5OGI5ZjM3OGRhNDQzZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMxNTE4N30.ieVNMx3c8ofrdEEzx2sIEHCANbgM8AU5b9ip3lNRU4o",
+          "tag": "frame"
+        }
+      ],
+      "promptText": "Edit only the tiny light fixtures in the deep corridor behind the two characters. Replace the visible candles and flames surrounding the distant rose cloche with small enclosed warm electric lamps appropriate for a luxury train. Preserve the rose under glass, pointed arches, warm illumination and all other details. Keep both foreground characters, faces, hair, clothing, garment branding, poses and camera framing unchanged. There are no candles or open flames in the finished carriage.",
+      "rationale": "Resolve the train-set candle exclusion noted in independent review while preserving the same Love Hurts cast, product fronts and cloche-rose hero."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "495329d6-1f15-4bc1-906a-0962ff39dd92",
+      "taskType": "gpt_image_2",
+      "outputKind": "image",
+      "prompt": "Edit only the tiny light fixtures in the deep corridor behind the two characters. Replace the visible candles and flames surrounding the distant rose cloche with small enclosed warm electric lamps appropriate for a luxury train. Preserve the rose under glass, pointed arches, warm illumination and all other details. Keep both foreground characters, faces, hair, clothing, garment branding, poses and camera framing unchanged. There are no candles or open flames in the finished carriage.",
+      "meta": {
+        "aspectRatio": "9:16"
+      },
+      "_regenerate": {
+        "tool": "generate_image",
+        "arguments": {
+          "model": "gpt-image-2",
+          "promptText": "Edit only the tiny light fixtures in the deep corridor behind the two characters. Replace the visible candles and flames surrounding the distant rose cloche with small enclosed warm electric lamps appropriate for a luxury train. Preserve the rose under glass, pointed arches, warm illumination and all other details. Keep both foreground characters, faces, hair, clothing, garment branding, poses and camera framing unchanged. There are no candles or open flames in the finished carriage.",
+          "ratio": "9:16",
+          "count": 1,
+          "referenceImages": [
+            {
+              "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/0554f104-7e7e-4560-b68f-c65d3f57fdc5/Edit_only_the_outdoor_view_visible_through_the_left_train_window_in__frame__Replace_the_entire_exter_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI5OGI5ZjM3OGRhNDQzZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMxNTE4N30.ieVNMx3c8ofrdEEzx2sIEHCANbgM8AU5b9ip3lNRU4o",
+              "tag": "frame"
+            }
+          ],
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 910
+    },
+    "Result": {
+      "kind": "image",
+      "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/495329d6-1f15-4bc1-906a-0962ff39dd92/Edit_only_the_tiny_light_fixtures_in_the_deep_corridor_behind_the_two_characters__Replace_the_visibl_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzliYjM1MjhkMDk3NmY5ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMjc3Nn0.OX5mHUt4fOIGNBnSXSyNfWE4dcOf14LSgSR7CyjoCYQ",
+      "taskId": "495329d6-1f15-4bc1-906a-0962ff39dd92",
+      "prompt": "Edit only the tiny light fixtures in the deep corridor behin",
+      "meta": {
+        "aspectRatio": "9:16"
+      }
+    }
+  },
+  "BRAMotion": {
+    "Request": {
+      "model": "kling-o3-pro",
+      "ratio": "9:16",
+      "generateAudio": false,
+      "resolution": "1080p",
+      "duration": 10,
+      "startFrame": {
+        "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/0af87b35-8615-4f22-8ae6-3c84f22fbb32/A_family_friendly_cinematic_fashion_photograph_inside_a_black_night_train_carriage__The_adult_perfor_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTMzYmIxMTVhMzdkMDQ1NyIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMDcwOX0.2xCC83eL5LIWTTCdj5U6KMGeiHTctNHXBXz1D9go6hA"
+      },
+      "promptText": "One continuous ten-second fashion-film shot from this exact starting frame. Inside the moving Black Rose train, the adult man briefly looks at the small rose embroidery on Skyy's matching bomber, then returns a small smile. Skyy, the fictional illustrated child mascot, keeps her face nearly frontal and returns a subtle eye glance and smile. Preserve both characters' appearance, faces, curls, proportions and pictured outfits throughout. Gentle breathing and one natural blink, shoulders stay forward, hands stay low. The camera slowly pushes in about ten percent so both bomber fronts and faces stay visible. A nearby bridge support passes outside the window with believable parallax; silver lights trail across the distant water. The rose-star sculpture remains physically outside. Soft neutral light on black satin, stable embroidery and cloth construction. Grounded natural performance, no cuts, no speech, no added people, no lettering or audio.",
+      "rationale": "Animate the reviewed Black Rose paired keyframe through the verified image-to-video workflow. Its adult is derived from the original supplied performer references; original footage remains separate and untouched."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "43436302-8ca0-412e-befe-ebe3b5cbee80",
+      "taskType": "kling_o3_pro",
+      "outputKind": "video",
+      "prompt": "One continuous ten-second fashion-film shot from this exact starting frame. Inside the moving Black Rose train, the adult man briefly looks at the small rose embroidery on Skyy's matching bomber, then returns a small smile. Skyy, the fictional illustrated child mascot, keeps her face nearly frontal and returns a subtle eye glance and smile. Preserve both characters' appearance, faces, curls, proportions and pictured outfits throughout. Gentle breathing and one natural blink, shoulders stay forward, hands stay low. The camera slowly pushes in about ten percent so both bomber fronts and faces stay visible. A nearby bridge support passes outside the window with believable parallax; silver lights trail across the distant water. The rose-star sculpture remains physically outside. Soft neutral light on black satin, stable embroidery and cloth construction. Grounded natural performance, no cuts, no speech, no added people, no lettering or audio.",
+      "meta": {
+        "durationSeconds": 10
+      },
+      "_regenerate": {
+        "tool": "generate_video",
+        "arguments": {
+          "model": "kling-o3-pro",
+          "promptText": "One continuous ten-second fashion-film shot from this exact starting frame. Inside the moving Black Rose train, the adult man briefly looks at the small rose embroidery on Skyy's matching bomber, then returns a small smile. Skyy, the fictional illustrated child mascot, keeps her face nearly frontal and returns a subtle eye glance and smile. Preserve both characters' appearance, faces, curls, proportions and pictured outfits throughout. Gentle breathing and one natural blink, shoulders stay forward, hands stay low. The camera slowly pushes in about ten percent so both bomber fronts and faces stay visible. A nearby bridge support passes outside the window with believable parallax; silver lights trail across the distant water. The rose-star sculpture remains physically outside. Soft neutral light on black satin, stable embroidery and cloth construction. Grounded natural performance, no cuts, no speech, no added people, no lettering or audio.",
+          "ratio": "9:16",
+          "duration": 10,
+          "startFrame": {
+            "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/0af87b35-8615-4f22-8ae6-3c84f22fbb32/A_family_friendly_cinematic_fashion_photograph_inside_a_black_night_train_carriage__The_adult_perfor_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTMzYmIxMTVhMzdkMDQ1NyIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMDcwOX0.2xCC83eL5LIWTTCdj5U6KMGeiHTctNHXBXz1D9go6hA"
+          },
+          "generateAudio": false,
+          "resolution": "1080p",
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1370
+    },
+    "Result": {
+      "kind": "video",
+      "url": "https://dnznrvs05pmza.cloudfront.net/kling-o3-pro/927614539024834592/One_continuous_ten_second_fashion_film_shot_from_this_exact_starting_frame__Inside_the_moving_Black_.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMWUzMzU2YTA5MWEwOGM2ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI4ODk5Mn0.OBfXRhgPuyCPNsyWoYfI8mF5gOjbpNr184Ls1iOe54o",
+      "taskId": "43436302-8ca0-412e-befe-ebe3b5cbee80",
+      "prompt": "One continuous ten-second fashion-film shot from this exact starting frame. Inside the moving Black Rose train, the adult man briefly looks at the small rose embroidery on Skyy's matching bomber, then returns a small smile. Skyy, the fictional illustrated child mascot, keeps her face nearly frontal and returns a subtle eye glance and smile. Preserve both characters' appearance, faces, curls, proportions and pictured outfits throughout. Gentle breathing and one natural blink, shoulders stay forward, hands stay low. The camera slowly pushes in about ten percent so both bomber fronts and faces stay visible. A nearby bridge support passes outside the window with believable parallax; silver lights trail across the distant water. The rose-star sculpture remains physically outside. Soft neutral light on black satin, stable embroidery and cloth construction. Grounded natural performance, no cuts, no speech, no added people, no lettering or audio.",
+      "meta": {
+        "width": 1084,
+        "height": 1912,
+        "durationSeconds": 10.041,
+        "hasAudio": false
+      }
+    }
+  },
+  "SGAMotion": {
+    "Request": {
+      "model": "kling-o3-pro",
+      "duration": 10,
+      "ratio": "9:16",
+      "generateAudio": false,
+      "resolution": "1080p",
+      "startFrame": {
+        "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2104905a-2890-4ba5-96d8-dbdf84982d52/A_cinematic_fashion_photograph_inside_a_moving_golden_hour_train__The_photographed_adult_in__model_s_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTRiOGM1NzhlNzc4NjRmNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzNTU0NH0.U1Xhcp1_zjcbuLKmdbUl4wxu5qRHkXGE2Ddyrsdlkd0"
+      },
+      "promptText": "One continuous ten-second cinematic fashion shot from this exact frame. A warm train ride at golden hour. The adult quietly notices the small red rose on Skyy's matching sherpa, then raises his eyes and gives a slight approving nod. Skyy, the fictional illustrated child mascot, gives one small smile, keeping her face almost frontal, round cheeks and full curls unchanged. A natural blink and gentle breathing. He opens one low palm slightly toward the empty window place, keeping both jacket fronts unobstructed. She keeps her hands by her pockets. Camera very slowly pushes in ten percent toward the matching jacket fronts while retaining both faces. The bridge support outside slides past naturally with train parallax; golden light shifts across the black shell and white fleece. Keep source garments, faces, body proportions and embroidery stable; neutral white lining. One restrained emotional beat, no scene cut, speech, added people or added words. Silent.",
+      "rationale": "Animate the independently reviewed Signature frame with small controlled performance and matching garment recognition, preserving exact image-bound cast and wardrobe."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "0950f189-431c-4c95-a63d-f95583380364",
+      "taskType": "kling_o3_pro",
+      "outputKind": "video",
+      "prompt": "One continuous ten-second cinematic fashion shot from this exact frame. A warm train ride at golden hour. The adult quietly notices the small red rose on Skyy's matching sherpa, then raises his eyes and gives a slight approving nod. Skyy, the fictional illustrated child mascot, gives one small smile, keeping her face almost frontal, round cheeks and full curls unchanged. A natural blink and gentle breathing. He opens one low palm slightly toward the empty window place, keeping both jacket fronts unobstructed. She keeps her hands by her pockets. Camera very slowly pushes in ten percent toward the matching jacket fronts while retaining both faces. The bridge support outside slides past naturally with train parallax; golden light shifts across the black shell and white fleece. Keep source garments, faces, body proportions and embroidery stable; neutral white lining. One restrained emotional beat, no scene cut, speech, added people or added words. Silent.",
+      "meta": {
+        "durationSeconds": 10
+      },
+      "_regenerate": {
+        "tool": "generate_video",
+        "arguments": {
+          "model": "kling-o3-pro",
+          "promptText": "One continuous ten-second cinematic fashion shot from this exact frame. A warm train ride at golden hour. The adult quietly notices the small red rose on Skyy's matching sherpa, then raises his eyes and gives a slight approving nod. Skyy, the fictional illustrated child mascot, gives one small smile, keeping her face almost frontal, round cheeks and full curls unchanged. A natural blink and gentle breathing. He opens one low palm slightly toward the empty window place, keeping both jacket fronts unobstructed. She keeps her hands by her pockets. Camera very slowly pushes in ten percent toward the matching jacket fronts while retaining both faces. The bridge support outside slides past naturally with train parallax; golden light shifts across the black shell and white fleece. Keep source garments, faces, body proportions and embroidery stable; neutral white lining. One restrained emotional beat, no scene cut, speech, added people or added words. Silent.",
+          "ratio": "9:16",
+          "duration": 10,
+          "startFrame": {
+            "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2104905a-2890-4ba5-96d8-dbdf84982d52/A_cinematic_fashion_photograph_inside_a_moving_golden_hour_train__The_photographed_adult_in__model_s_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTRiOGM1NzhlNzc4NjRmNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzNTU0NH0.U1Xhcp1_zjcbuLKmdbUl4wxu5qRHkXGE2Ddyrsdlkd0"
+          },
+          "generateAudio": false,
+          "resolution": "1080p",
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 1200
+    },
+    "Result": {
+      "kind": "video",
+      "url": "https://dnznrvs05pmza.cloudfront.net/kling-o3-pro/927614626026622977/One_continuous_ten_second_cinematic_fashion_shot_from_this_exact_frame__A_warm_train_ride_at_golden_.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiY2JkYmQxNjY2ZGRiNzAyYSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI5NDQzOH0.XQBVffxs77ABMEp_VMZ0mcNw-8nzAR8fYDcWSw6FMYI",
+      "taskId": "0950f189-431c-4c95-a63d-f95583380364",
+      "prompt": "One continuous ten-second cinematic fashion shot from this exact frame. A warm train ride at golden hour. The adult quietly notices the small red rose on Skyy's matching sherpa, then raises his eyes and gives a slight approving nod. Skyy, the fictional illustrated child mascot, gives one small smile, keeping her face almost frontal, round cheeks and full curls unchanged. A natural blink and gentle breathing. He opens one low palm slightly toward the empty window place, keeping both jacket fronts unobstructed. She keeps her hands by her pockets. Camera very slowly pushes in ten percent toward the matching jacket fronts while retaining both faces. The bridge support outside slides past naturally with train parallax; golden light shifts across the black shell and white fleece. Keep source garments, faces, body proportions and embroidery stable; neutral white lining. One restrained emotional beat, no scene cut, speech, added people or added words. Silent.",
+      "meta": {
+        "width": 1084,
+        "height": 1912,
+        "durationSeconds": 10.041,
+        "hasAudio": false
+      }
+    }
+  },
+  "KRMotion": {
+    "Request": {
+      "model": "kling-o3-pro",
+      "duration": 10,
+      "ratio": "9:16",
+      "generateAudio": false,
+      "resolution": "1080p",
+      "startFrame": {
+        "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2cce1194-9b1d-4cca-bdb9-8c32156963a4/A_warm__family_friendly_cinematic_fashion_photograph_inside_the_final_observation_carriage_of_a_luxu_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTJhMTZhYTJiZjdhZTExNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3OTkwNn0.EOBkH3ms5B1HDD-mzKsG-Xe1rXPrMiBM-OhdiH2X270"
+      },
+      "promptText": "One continuous ten-second family-friendly fashion-film shot from this exact frame in the final observation carriage. Keep the photographic child and the fictional illustrated Skyy visually distinct, with their same faces, hair, proportions and red-black-white outfits throughout. During the first three seconds they exchange a tiny friendly eye glance while their faces remain nearly frontal. The camera gently retreats about fifteen percent, revealing more of the crown-backed throne, its carved arms and the glass-roof carriage around them. The train landscape slides slowly beyond the windows. Between seconds six and nine, Skyy moves one hand slowly from her pocket into a small low open-palm invitation toward the viewer; her chest emblem stays unobstructed. The real child gives a small smile. End with their outfit fronts fully readable and both faces nearly frontal. Natural blinking, breathing and grounded movement, stable diagonal panels, white cords and rose patches. No body spin, costume change, added people, speech, added writing or audio.",
+      "rationale": "Animate the canonical red Kids pair in the reviewed final-carriage frame, with one continuous performance supplying both reveal and ending invitation portions of the corrected film."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "f64619cf-0f47-4bbc-9507-0534a80bc2bb",
+      "taskType": "kling_o3_pro",
+      "outputKind": "video",
+      "prompt": "One continuous ten-second family-friendly fashion-film shot from this exact frame in the final observation carriage. Keep the photographic child and the fictional illustrated Skyy visually distinct, with their same faces, hair, proportions and red-black-white outfits throughout. During the first three seconds they exchange a tiny friendly eye glance while their faces remain nearly frontal. The camera gently retreats about fifteen percent, revealing more of the crown-backed throne, its carved arms and the glass-roof carriage around them. The train landscape slides slowly beyond the windows. Between seconds six and nine, Skyy moves one hand slowly from her pocket into a small low open-palm invitation toward the viewer; her chest emblem stays unobstructed. The real child gives a small smile. End with their outfit fronts fully readable and both faces nearly frontal. Natural blinking, breathing and grounded movement, stable diagonal panels, white cords and rose patches. No body spin, costume change, added people, speech, added writing or audio.",
+      "meta": {
+        "durationSeconds": 10
+      },
+      "_regenerate": {
+        "tool": "generate_video",
+        "arguments": {
+          "model": "kling-o3-pro",
+          "promptText": "One continuous ten-second family-friendly fashion-film shot from this exact frame in the final observation carriage. Keep the photographic child and the fictional illustrated Skyy visually distinct, with their same faces, hair, proportions and red-black-white outfits throughout. During the first three seconds they exchange a tiny friendly eye glance while their faces remain nearly frontal. The camera gently retreats about fifteen percent, revealing more of the crown-backed throne, its carved arms and the glass-roof carriage around them. The train landscape slides slowly beyond the windows. Between seconds six and nine, Skyy moves one hand slowly from her pocket into a small low open-palm invitation toward the viewer; her chest emblem stays unobstructed. The real child gives a small smile. End with their outfit fronts fully readable and both faces nearly frontal. Natural blinking, breathing and grounded movement, stable diagonal panels, white cords and rose patches. No body spin, costume change, added people, speech, added writing or audio.",
+          "ratio": "9:16",
+          "duration": 10,
+          "startFrame": {
+            "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2cce1194-9b1d-4cca-bdb9-8c32156963a4/A_warm__family_friendly_cinematic_fashion_photograph_inside_the_final_observation_carriage_of_a_luxu_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTJhMTZhYTJiZjdhZTExNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3OTkwNn0.EOBkH3ms5B1HDD-mzKsG-Xe1rXPrMiBM-OhdiH2X270"
+          },
+          "generateAudio": false,
+          "resolution": "1080p",
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 950
+    },
+    "Result": {
+      "kind": "video",
+      "url": "https://dnznrvs05pmza.cloudfront.net/kling-o3-pro/927615324588605530/One_continuous_ten_second_family_friendly_fashion_film_shot_from_this_exact_frame_in_the_final_obser.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZWY3ZDU5MTY4Y2I5YzM4MSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI4MTQzMH0.LuxgwJv7BOXd0Qz9cA3DuIZmx8UyDdotFVNv7k-r9ZE",
+      "taskId": "f64619cf-0f47-4bbc-9507-0534a80bc2bb",
+      "prompt": "One continuous ten-second family-friendly fashion-film shot from this exact frame in the final observation carriage. Keep the photographic child and the fictional illustrated Skyy visually distinct, with their same faces, hair, proportions and red-black-white outfits throughout. During the first three seconds they exchange a tiny friendly eye glance while their faces remain nearly frontal. The camera gently retreats about fifteen percent, revealing more of the crown-backed throne, its carved arms and the glass-roof carriage around them. The train landscape slides slowly beyond the windows. Between seconds six and nine, Skyy moves one hand slowly from her pocket into a small low open-palm invitation toward the viewer; her chest emblem stays unobstructed. The real child gives a small smile. End with their outfit fronts fully readable and both faces nearly frontal. Natural blinking, breathing and grounded movement, stable diagonal panels, white cords and rose patches. No body spin, costume change, added people, speech, added writing or audio.",
+      "meta": {
+        "width": 1084,
+        "height": 1912,
+        "durationSeconds": 10.041,
+        "hasAudio": false
+      }
+    }
+  },
+  "SGBMotion": {
+    "Request": {
+      "model": "kling-o3-pro",
+      "duration": 10,
+      "ratio": "9:16",
+      "generateAudio": false,
+      "resolution": "1080p",
+      "startFrame": {
+        "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2104905a-2890-4ba5-96d8-dbdf84982d52/A_cinematic_fashion_photograph_inside_a_moving_golden_hour_train__The_photographed_adult_in__model_s_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTRiOGM1NzhlNzc4NjRmNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzNTU0NH0.U1Xhcp1_zjcbuLKmdbUl4wxu5qRHkXGE2Ddyrsdlkd0"
+      },
+      "endFrame": {
+        "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/1891764f-eb27-415f-a557-bdf1c65d4d4f/Edit_ONLY_the_view_outside_the_train_window_in__frame_to_create_the_reveal_ending__Keep_the_people___0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiODg3OWMzMDY4ZjdhZWFmMiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzODc1OH0.d5j-uohZL1iieoVYI0vx9s60uLqt8iK--OI2WV61nEw"
+      },
+      "promptText": "One continuous cinematic train shot. Keep both seated characters, faces, hairstyles, clothing construction and patches exactly consistent with the first frame. The train glides gently toward the monumental golden rose outside, which grows in the window through natural forward travel and parallax until it fills the view as in the final frame. The adult and illustrated girl exchange a tiny pleased glance, then face forward with relaxed hands resting low. Camera remains steady at seated eye level; warm light passes softly over the black-and-white jackets. No scene cut. No additional text or objects. Preserve the girl's rounded face and full dark curls throughout.",
+      "rationale": "Finish the user-approved collection-film reveals with consistent source-referenced characters and product details."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "33b147bb-2646-439e-a9e7-603b0b44960c",
+      "taskType": "kling_o3_pro",
+      "outputKind": "video",
+      "prompt": "One continuous cinematic train shot. Keep both seated characters, faces, hairstyles, clothing construction and patches exactly consistent with the first frame. The train glides gently toward the monumental golden rose outside, which grows in the window through natural forward travel and parallax until it fills the view as in the final frame. The adult and illustrated girl exchange a tiny pleased glance, then face forward with relaxed hands resting low. Camera remains steady at seated eye level; warm light passes softly over the black-and-white jackets. No scene cut. No additional text or objects. Preserve the girl's rounded face and full dark curls throughout.",
+      "meta": {
+        "durationSeconds": 10
+      },
+      "_regenerate": {
+        "tool": "generate_video",
+        "arguments": {
+          "model": "kling-o3-pro",
+          "promptText": "One continuous cinematic train shot. Keep both seated characters, faces, hairstyles, clothing construction and patches exactly consistent with the first frame. The train glides gently toward the monumental golden rose outside, which grows in the window through natural forward travel and parallax until it fills the view as in the final frame. The adult and illustrated girl exchange a tiny pleased glance, then face forward with relaxed hands resting low. Camera remains steady at seated eye level; warm light passes softly over the black-and-white jackets. No scene cut. No additional text or objects. Preserve the girl's rounded face and full dark curls throughout.",
+          "ratio": "9:16",
+          "duration": 10,
+          "startFrame": {
+            "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/2104905a-2890-4ba5-96d8-dbdf84982d52/A_cinematic_fashion_photograph_inside_a_moving_golden_hour_train__The_photographed_adult_in__model_s_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTRiOGM1NzhlNzc4NjRmNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzNTU0NH0.U1Xhcp1_zjcbuLKmdbUl4wxu5qRHkXGE2Ddyrsdlkd0"
+          },
+          "endFrame": {
+            "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/1891764f-eb27-415f-a557-bdf1c65d4d4f/Edit_ONLY_the_view_outside_the_train_window_in__frame_to_create_the_reveal_ending__Keep_the_people___0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiODg3OWMzMDY4ZjdhZWFmMiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzODc1OH0.d5j-uohZL1iieoVYI0vx9s60uLqt8iK--OI2WV61nEw"
+          },
+          "generateAudio": false,
+          "resolution": "1080p",
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 740
+    },
+    "Result": {
+      "kind": "video",
+      "url": "https://dnznrvs05pmza.cloudfront.net/kling-o3-pro/927616585887121437/One_continuous_cinematic_train_shot__Keep_both_seated_characters__faces__hairstyles__clothing_constr.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYTQ0MTAyNWYzNmQ0ODI3NyIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzOTg3MX0.KDPIbThQ7sTYyxHsGu4RMIDjRwt-462oETLgwTXvz6U",
+      "taskId": "33b147bb-2646-439e-a9e7-603b0b44960c",
+      "prompt": "One continuous cinematic train shot. Keep both seated characters, faces, hairstyles, clothing construction and patches exactly consistent with the first frame. The train glides gently toward the monumental golden rose outside, which grows in the window through natural forward travel and parallax until it fills the view as in the final frame. The adult and illustrated girl exchange a tiny pleased glance, then face forward with relaxed hands resting low. Camera remains steady at seated eye level; warm light passes softly over the black-and-white jackets. No scene cut. No additional text or objects. Preserve the girl's rounded face and full dark curls throughout.",
+      "meta": {
+        "width": 1084,
+        "height": 1912,
+        "durationSeconds": 10.041,
+        "hasAudio": false
+      }
+    }
+  },
+  "BRBMotion": {
+    "Request": {
+      "model": "kling-o3-pro",
+      "duration": 5,
+      "ratio": "9:16",
+      "generateAudio": false,
+      "resolution": "1080p",
+      "startFrame": {
+        "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/0af87b35-8615-4f22-8ae6-3c84f22fbb32/A_family_friendly_cinematic_fashion_photograph_inside_a_black_night_train_carriage__The_adult_perfor_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTMzYmIxMTVhMzdkMDQ1NyIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMDcwOX0.2xCC83eL5LIWTTCdj5U6KMGeiHTctNHXBXz1D9go6hA"
+      },
+      "endFrame": {
+        "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/928c1fa0-0ea6-4499-8150-a4332570d7ca/Edit_ONLY_the_outdoor_scene_through_the_train_window_of__frame__Preserve_every_foreground_detail__bo_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZTZjOWQxMTY4YThjMTQ5ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMxMzk0Mn0.1SZ7T4vd0X_cq8OWlJs2sJTyZ5k1Fy1oG5YfptTIPB4"
+      },
+      "promptText": "One continuous cinematic night-train shot. Preserve both seated characters exactly, including the adult man's face, hair, tattoos, black sherpa bomber and the illustrated girl's full curls, rounded face and matching bomber. The train approaches the enormous silver rose within its black star outside the window, gradually bringing the monument close until it occupies the window as shown in the ending image; natural exterior parallax, subtle silver light passing across sherpa texture. Both remain seated, mostly frontal, with a small shared glance and quiet satisfied smile. Hands stay relaxed and low. Stable eye-level camera. No text, no cut, no new characters.",
+      "rationale": "Finish the user-approved collection-film reveals with consistent source-referenced characters and product details."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "134ca7d0-a4dc-4f87-b9b3-60408faa94bb",
+      "taskType": "kling_o3_pro",
+      "outputKind": "video",
+      "prompt": "One continuous cinematic night-train shot. Preserve both seated characters exactly, including the adult man's face, hair, tattoos, black sherpa bomber and the illustrated girl's full curls, rounded face and matching bomber. The train approaches the enormous silver rose within its black star outside the window, gradually bringing the monument close until it occupies the window as shown in the ending image; natural exterior parallax, subtle silver light passing across sherpa texture. Both remain seated, mostly frontal, with a small shared glance and quiet satisfied smile. Hands stay relaxed and low. Stable eye-level camera. No text, no cut, no new characters.",
+      "meta": {
+        "durationSeconds": 5
+      },
+      "_regenerate": {
+        "tool": "generate_video",
+        "arguments": {
+          "model": "kling-o3-pro",
+          "promptText": "One continuous cinematic night-train shot. Preserve both seated characters exactly, including the adult man's face, hair, tattoos, black sherpa bomber and the illustrated girl's full curls, rounded face and matching bomber. The train approaches the enormous silver rose within its black star outside the window, gradually bringing the monument close until it occupies the window as shown in the ending image; natural exterior parallax, subtle silver light passing across sherpa texture. Both remain seated, mostly frontal, with a small shared glance and quiet satisfied smile. Hands stay relaxed and low. Stable eye-level camera. No text, no cut, no new characters.",
+          "ratio": "9:16",
+          "duration": 5,
+          "startFrame": {
+            "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/0af87b35-8615-4f22-8ae6-3c84f22fbb32/A_family_friendly_cinematic_fashion_photograph_inside_a_black_night_train_carriage__The_adult_perfor_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTMzYmIxMTVhMzdkMDQ1NyIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMDcwOX0.2xCC83eL5LIWTTCdj5U6KMGeiHTctNHXBXz1D9go6hA"
+          },
+          "endFrame": {
+            "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/928c1fa0-0ea6-4499-8150-a4332570d7ca/Edit_ONLY_the_outdoor_scene_through_the_train_window_of__frame__Preserve_every_foreground_detail__bo_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZTZjOWQxMTY4YThjMTQ5ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMxMzk0Mn0.1SZ7T4vd0X_cq8OWlJs2sJTyZ5k1Fy1oG5YfptTIPB4"
+          },
+          "generateAudio": false,
+          "resolution": "1080p",
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 655
+    },
+    "Result": {
+      "kind": "video",
+      "url": "https://dnznrvs05pmza.cloudfront.net/kling-o3-pro/927616590261129228/One_continuous_cinematic_night_train_shot__Preserve_both_seated_characters_exactly__including_the_ad.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNDJkYzE4Yjk4N2FiNTQ5NCIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMzMwNX0.gsrPlzXFOTln75P6ddZs3HUzHZuQASvYIx1fEs34XVg",
+      "taskId": "134ca7d0-a4dc-4f87-b9b3-60408faa94bb",
+      "prompt": "One continuous cinematic night-train shot. Preserve both seated characters exactly, including the adult man's face, hair, tattoos, black sherpa bomber and the illustrated girl's full curls, rounded face and matching bomber. The train approaches the enormous silver rose within its black star outside the window, gradually bringing the monument close until it occupies the window as shown in the ending image; natural exterior parallax, subtle silver light passing across sherpa texture. Both remain seated, mostly frontal, with a small shared glance and quiet satisfied smile. Hands stay relaxed and low. Stable eye-level camera. No text, no cut, no new characters.",
+      "meta": {
+        "width": 1084,
+        "height": 1912,
+        "durationSeconds": 5.041,
+        "hasAudio": false
+      }
+    }
+  },
+  "LHAMotion": {
+    "Request": {
+      "model": "kling-o3-pro",
+      "duration": 10,
+      "ratio": "9:16",
+      "generateAudio": false,
+      "resolution": "1080p",
+      "startFrame": {
+        "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/495329d6-1f15-4bc1-906a-0962ff39dd92/Edit_only_the_tiny_light_fixtures_in_the_deep_corridor_behind_the_two_characters__Replace_the_visibl_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzliYjM1MjhkMDk3NmY5ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMjc3Nn0.OX5mHUt4fOIGNBnSXSyNfWE4dcOf14LSgSR7CyjoCYQ"
+      },
+      "promptText": "A single intimate cinematic train scene. The seated adult slowly shifts his eyes from the passing night view to the illustrated girl beside him, then gives a small warm smile. She looks briefly toward him and smiles back, with both hands staying inside her jacket pockets. Her rounded cheeks, enormous brown eyes and broad dark curls stay identical. Preserve the adult's face, braids, hood and exact jacket lettering, red-black-white ribbing, snaps and sleeve panels. Preserve both outfits exactly. Camera makes a very slow 10 percent push toward the pair while retaining the full jacket fronts. The red rose in its glass cloche remains visible deep in the arched corridor. Small enclosed train lamps glow steadily; subtle exterior parallax. No cuts, no added wording, no speech.",
+      "rationale": "Complete corrected collection short films using reviewed recurring character and canonical outfit frames, as authorized by user."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "ccc86a38-5be9-498b-957d-70b9260075aa",
+      "taskType": "kling_o3_pro",
+      "outputKind": "video",
+      "prompt": "A single intimate cinematic train scene. The seated adult slowly shifts his eyes from the passing night view to the illustrated girl beside him, then gives a small warm smile. She looks briefly toward him and smiles back, with both hands staying inside her jacket pockets. Her rounded cheeks, enormous brown eyes and broad dark curls stay identical. Preserve the adult's face, braids, hood and exact jacket lettering, red-black-white ribbing, snaps and sleeve panels. Preserve both outfits exactly. Camera makes a very slow 10 percent push toward the pair while retaining the full jacket fronts. The red rose in its glass cloche remains visible deep in the arched corridor. Small enclosed train lamps glow steadily; subtle exterior parallax. No cuts, no added wording, no speech.",
+      "meta": {
+        "durationSeconds": 10
+      },
+      "_regenerate": {
+        "tool": "generate_video",
+        "arguments": {
+          "model": "kling-o3-pro",
+          "promptText": "A single intimate cinematic train scene. The seated adult slowly shifts his eyes from the passing night view to the illustrated girl beside him, then gives a small warm smile. She looks briefly toward him and smiles back, with both hands staying inside her jacket pockets. Her rounded cheeks, enormous brown eyes and broad dark curls stay identical. Preserve the adult's face, braids, hood and exact jacket lettering, red-black-white ribbing, snaps and sleeve panels. Preserve both outfits exactly. Camera makes a very slow 10 percent push toward the pair while retaining the full jacket fronts. The red rose in its glass cloche remains visible deep in the arched corridor. Small enclosed train lamps glow steadily; subtle exterior parallax. No cuts, no added wording, no speech.",
+          "ratio": "9:16",
+          "duration": 10,
+          "startFrame": {
+            "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/495329d6-1f15-4bc1-906a-0962ff39dd92/Edit_only_the_tiny_light_fixtures_in_the_deep_corridor_behind_the_two_characters__Replace_the_visibl_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzliYjM1MjhkMDk3NmY5ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMjc3Nn0.OX5mHUt4fOIGNBnSXSyNfWE4dcOf14LSgSR7CyjoCYQ"
+          },
+          "generateAudio": false,
+          "resolution": "1080p",
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 485
+    },
+    "Result": {
+      "kind": "video",
+      "url": "https://dnznrvs05pmza.cloudfront.net/kling-o3-pro/927616730741604364/A_single_intimate_cinematic_train_scene__The_seated_adult_slowly_shifts_his_eyes_from_the_passing_ni.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTNmMGUwNmE3YmRlN2QxMCIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI4MTY0Mn0.-ffHEtNYQxRuw2MXMF4ELpXfwcf3ZMfUqLVFmdnLeXE",
+      "taskId": "ccc86a38-5be9-498b-957d-70b9260075aa",
+      "prompt": "A single intimate cinematic train scene. The seated adult slowly shifts his eyes from the passing night view to the illustrated girl beside him, then gives a small warm smile. She looks briefly toward him and smiles back, with both hands staying inside her jacket pockets. Her rounded cheeks, enormous brown eyes and broad dark curls stay identical. Preserve the adult's face, braids, hood and exact jacket lettering, red-black-white ribbing, snaps and sleeve panels. Preserve both outfits exactly. Camera makes a very slow 10 percent push toward the pair while retaining the full jacket fronts. The red rose in its glass cloche remains visible deep in the arched corridor. Small enclosed train lamps glow steadily; subtle exterior parallax. No cuts, no added wording, no speech.",
+      "meta": {
+        "width": 1084,
+        "height": 1912,
+        "durationSeconds": 10.041,
+        "hasAudio": false
+      }
+    }
+  },
+  "LHBMotion": {
+    "Request": {
+      "model": "kling-o3-pro",
+      "duration": 10,
+      "ratio": "9:16",
+      "generateAudio": false,
+      "resolution": "1080p",
+      "startFrame": {
+        "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/495329d6-1f15-4bc1-906a-0962ff39dd92/Edit_only_the_tiny_light_fixtures_in_the_deep_corridor_behind_the_two_characters__Replace_the_visibl_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzliYjM1MjhkMDk3NmY5ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMjc3Nn0.OX5mHUt4fOIGNBnSXSyNfWE4dcOf14LSgSR7CyjoCYQ"
+      },
+      "promptText": "One graceful continuous cinematic reveal inside the night train. The same seated adult and illustrated girl remain exactly as shown, with identical faces, hairstyles, body proportions and garments. Both look calmly forward with relaxed smiles and hands resting exactly where shown. Slowly dolly the camera back 15 percent and slightly right, revealing more of the repeating train arches and the single red rose beneath its glass cloche in the deep corridor. A narrow warm light travels gently along the brass arches and catches the red rose while the jacket fronts remain crisp and well lit. Keep the lettering and striped ribbing on the garments unchanged. No added wording, no new objects, no cut, no gestures or walking.",
+      "rationale": "Complete corrected collection short films using reviewed recurring character and canonical outfit frames, as authorized by user."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "444dcd5c-1391-413c-8395-cf01c4c10dca",
+      "taskType": "kling_o3_pro",
+      "outputKind": "video",
+      "prompt": "One graceful continuous cinematic reveal inside the night train. The same seated adult and illustrated girl remain exactly as shown, with identical faces, hairstyles, body proportions and garments. Both look calmly forward with relaxed smiles and hands resting exactly where shown. Slowly dolly the camera back 15 percent and slightly right, revealing more of the repeating train arches and the single red rose beneath its glass cloche in the deep corridor. A narrow warm light travels gently along the brass arches and catches the red rose while the jacket fronts remain crisp and well lit. Keep the lettering and striped ribbing on the garments unchanged. No added wording, no new objects, no cut, no gestures or walking.",
+      "meta": {
+        "durationSeconds": 10
+      },
+      "_regenerate": {
+        "tool": "generate_video",
+        "arguments": {
+          "model": "kling-o3-pro",
+          "promptText": "One graceful continuous cinematic reveal inside the night train. The same seated adult and illustrated girl remain exactly as shown, with identical faces, hairstyles, body proportions and garments. Both look calmly forward with relaxed smiles and hands resting exactly where shown. Slowly dolly the camera back 15 percent and slightly right, revealing more of the repeating train arches and the single red rose beneath its glass cloche in the deep corridor. A narrow warm light travels gently along the brass arches and catches the red rose while the jacket fronts remain crisp and well lit. Keep the lettering and striped ribbing on the garments unchanged. No added wording, no new objects, no cut, no gestures or walking.",
+          "ratio": "9:16",
+          "duration": 10,
+          "startFrame": {
+            "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/495329d6-1f15-4bc1-906a-0962ff39dd92/Edit_only_the_tiny_light_fixtures_in_the_deep_corridor_behind_the_two_characters__Replace_the_visibl_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzliYjM1MjhkMDk3NmY5ZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMjc3Nn0.OX5mHUt4fOIGNBnSXSyNfWE4dcOf14LSgSR7CyjoCYQ"
+          },
+          "generateAudio": false,
+          "resolution": "1080p",
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 315
+    },
+    "Result": {
+      "kind": "video",
+      "url": "https://dnznrvs05pmza.cloudfront.net/kling-o3-pro/927616736361979989/One_graceful_continuous_cinematic_reveal_inside_the_night_train__The_same_seated_adult_and_illustrat.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYjM2NGQ4ZTFiNjE5Mjc0YyIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMzMDc4NX0.MF8WH3rG9ra33FzySHcrEeQE377YTmogXb3JnbbPBE0",
+      "taskId": "444dcd5c-1391-413c-8395-cf01c4c10dca",
+      "prompt": "One graceful continuous cinematic reveal inside the night train. The same seated adult and illustrated girl remain exactly as shown, with identical faces, hairstyles, body proportions and garments. Both look calmly forward with relaxed smiles and hands resting exactly where shown. Slowly dolly the camera back 15 percent and slightly right, revealing more of the repeating train arches and the single red rose beneath its glass cloche in the deep corridor. A narrow warm light travels gently along the brass arches and catches the red rose while the jacket fronts remain crisp and well lit. Keep the lettering and striped ribbing on the garments unchanged. No added wording, no new objects, no cut, no gestures or walking.",
+      "meta": {
+        "width": 1084,
+        "height": 1912,
+        "durationSeconds": 10.041,
+        "hasAudio": false
+      }
+    }
+  },
+  "KPMotion": {
+    "Request": {
+      "model": "kling-o3-pro",
+      "duration": 10,
+      "ratio": "9:16",
+      "generateAudio": false,
+      "resolution": "1080p",
+      "startFrame": {
+        "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/1544c38c-bf8a-4104-9ef7-329c4af7d483/Make_two_small_wardrobe_corrections_in__frame__On_Skyy__the_illustrated_mascot_at_right__change_only_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDIwMTFiMDRiYjVmYjJiYSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTM2MTI4NH0.fS-f_BRwOZ94LMWH-Y-K8MT-b7sQHZo93MVZ3eJY2-U"
+      },
+      "promptText": "A single continuous bright cinematic fashion scene inside this moving cream-and-gold train. The real young model and the illustrated girl remain standing beside each other in the same positions, with identical faces, hair, body proportions and matching purple garments. The real model makes a small friendly glance toward her, she glances back with a pleased smile, then both face the camera. Hands remain tucked in the pockets. Preserve deep purple hoods, lavender panels, diagonal seams, black rose patches and white hoodie and jogger drawstrings precisely. Preserve the illustrated girl's full dark curls and round cheeks. Camera glides very slowly backward ten percent to reveal the golden throne and glass roof behind them; gentle passing landscape and warm sunlight. No new people, no wording, no cuts, no outfit changes.",
+      "rationale": "Complete corrected collection short films using reviewed recurring character and canonical outfit frames, as authorized by user."
+    },
+    "Submission": {
+      "kind": "task_pending",
+      "taskId": "1b20b84a-8312-4125-b478-8f4c213551ce",
+      "taskType": "kling_o3_pro",
+      "outputKind": "video",
+      "prompt": "A single continuous bright cinematic fashion scene inside this moving cream-and-gold train. The real young model and the illustrated girl remain standing beside each other in the same positions, with identical faces, hair, body proportions and matching purple garments. The real model makes a small friendly glance toward her, she glances back with a pleased smile, then both face the camera. Hands remain tucked in the pockets. Preserve deep purple hoods, lavender panels, diagonal seams, black rose patches and white hoodie and jogger drawstrings precisely. Preserve the illustrated girl's full dark curls and round cheeks. Camera glides very slowly backward ten percent to reveal the golden throne and glass roof behind them; gentle passing landscape and warm sunlight. No new people, no wording, no cuts, no outfit changes.",
+      "meta": {
+        "durationSeconds": 10
+      },
+      "_regenerate": {
+        "tool": "generate_video",
+        "arguments": {
+          "model": "kling-o3-pro",
+          "promptText": "A single continuous bright cinematic fashion scene inside this moving cream-and-gold train. The real young model and the illustrated girl remain standing beside each other in the same positions, with identical faces, hair, body proportions and matching purple garments. The real model makes a small friendly glance toward her, she glances back with a pleased smile, then both face the camera. Hands remain tucked in the pockets. Preserve deep purple hoods, lavender panels, diagonal seams, black rose patches and white hoodie and jogger drawstrings precisely. Preserve the illustrated girl's full dark curls and round cheeks. Camera glides very slowly backward ten percent to reveal the golden throne and glass roof behind them; gentle passing landscape and warm sunlight. No new people, no wording, no cuts, no outfit changes.",
+          "ratio": "9:16",
+          "duration": 10,
+          "startFrame": {
+            "url": "https://dnznrvs05pmza.cloudfront.net/gpt_image_2/1544c38c-bf8a-4104-9ef7-329c4af7d483/Make_two_small_wardrobe_corrections_in__frame__On_Skyy__the_illustrated_mascot_at_right__change_only_0.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDIwMTFiMDRiYjVmYjJiYSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTM2MTI4NH0.fS-f_BRwOZ94LMWH-Y-K8MT-b7sQHZo93MVZ3eJY2-U"
+          },
+          "generateAudio": false,
+          "resolution": "1080p",
+          "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+        }
+      },
+      "creditsRemaining": 145,
+      "lowCredits": true,
+      "topUpUrl": "https://app.runwayml.com/settings/billing?utm_source=mcp&utm_medium=tool_response&utm_campaign=low_credit_warning&utm_content=chatgpt-web&openBuyCredits=true"
+    },
+    "Result": {
+      "kind": "video",
+      "url": "https://dnznrvs05pmza.cloudfront.net/kling-o3-pro/927616741490954249/A_single_continuous_bright_cinematic_fashion_scene_inside_this_moving_cream_and_gold_train__The_real.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzY5ODFmNWI2YTI5Y2IyZSIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTMxOTM4N30.fMTZZ_J8Qhixib4qEqBYwSaWATYB6IZb63N7WkIrtMA",
+      "taskId": "1b20b84a-8312-4125-b478-8f4c213551ce",
+      "prompt": "A single continuous bright cinematic fashion scene inside this moving cream-and-gold train. The real young model and the illustrated girl remain standing beside each other in the same positions, with identical faces, hair, body proportions and matching purple garments. The real model makes a small friendly glance toward her, she glances back with a pleased smile, then both face the camera. Hands remain tucked in the pockets. Preserve deep purple hoods, lavender panels, diagonal seams, black rose patches and white hoodie and jogger drawstrings precisely. Preserve the illustrated girl's full dark curls and round cheeks. Camera glides very slowly backward ten percent to reveal the golden throne and glass roof behind them; gentle passing landscape and warm sunlight. No new people, no wording, no cuts, no outfit changes.",
+      "meta": {
+        "width": 1084,
+        "height": 1912,
+        "durationSeconds": 10.041,
+        "hasAudio": false
+      }
+    }
+  }
+}

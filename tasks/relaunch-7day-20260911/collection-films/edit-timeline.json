@@ -1,0 +1,165 @@
+{
+  "schema": "skyyrose.bomber-edit-selects.v1",
+  "fps": "24000/1001",
+  "source_original_sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+  "source_silent_sha256": "2dad60dccc4b1e9af2594c03fb635e076ac6b51ccd54b7dd4880a61b67977ebe",
+  "source_clips": [
+    {
+      "id": "BR-S1",
+      "source_start_frame": 695,
+      "source_end_frame_exclusive": 767,
+      "source_start_seconds": 28.987291666666668,
+      "source_end_seconds": 31.990291666666668,
+      "duration_seconds": 3.003,
+      "product_role": "FRONT / SILHOUETTE"
+    },
+    {
+      "id": "BR-S2",
+      "source_start_frame": 983,
+      "source_end_frame_exclusive": 1031,
+      "source_start_seconds": 40.999291666666664,
+      "source_end_seconds": 43.00129166666667,
+      "duration_seconds": 2.002,
+      "product_role": "REAR ROSE / CONSTRUCTION"
+    },
+    {
+      "id": "BR-S3",
+      "source_start_frame": 1391,
+      "source_end_frame_exclusive": 1463,
+      "source_start_seconds": 58.01629166666667,
+      "source_end_seconds": 61.01929166666667,
+      "duration_seconds": 3.003,
+      "product_role": "FRONT / FABRIC MOVEMENT"
+    }
+  ],
+  "standalone": {
+    "target_frames": 480,
+    "target_seconds": 20.02,
+    "segments": [
+      {
+        "id": "BR-01",
+        "kind": "source",
+        "start_frame": 0,
+        "end_frame_exclusive": 48,
+        "source_start_frame": 695,
+        "source_end_frame_exclusive": 743,
+        "role": "Actual front hook"
+      },
+      {
+        "id": "BR-02",
+        "kind": "new",
+        "start_frame": 48,
+        "end_frame_exclusive": 120,
+        "role": "Source performer meets matching Skyy"
+      },
+      {
+        "id": "BR-03",
+        "kind": "source",
+        "start_frame": 120,
+        "end_frame_exclusive": 144,
+        "source_start_frame": 743,
+        "source_end_frame_exclusive": 767,
+        "role": "Actual front detail"
+      },
+      {
+        "id": "BR-04",
+        "kind": "source",
+        "start_frame": 144,
+        "end_frame_exclusive": 192,
+        "source_start_frame": 983,
+        "source_end_frame_exclusive": 1031,
+        "role": "Actual rear rose"
+      },
+      {
+        "id": "BR-05",
+        "kind": "new",
+        "start_frame": 192,
+        "end_frame_exclusive": 264,
+        "role": "Reaction and withheld landmark"
+      },
+      {
+        "id": "BR-06",
+        "kind": "source",
+        "start_frame": 264,
+        "end_frame_exclusive": 336,
+        "source_start_frame": 1391,
+        "source_end_frame_exclusive": 1463,
+        "role": "Actual front and fabric movement"
+      },
+      {
+        "id": "BR-07",
+        "kind": "new",
+        "start_frame": 336,
+        "end_frame_exclusive": 456,
+        "role": "Monumental star and silver rose reveal"
+      },
+      {
+        "id": "BR-08",
+        "kind": "new",
+        "start_frame": 456,
+        "end_frame_exclusive": 480,
+        "role": "Shared nod and product hold"
+      }
+    ]
+  },
+  "main_black_rose_chapter": {
+    "target_frames": 288,
+    "target_seconds": 12.012,
+    "main_start_frame": 192,
+    "segments": [
+      {
+        "id": "BR-M1",
+        "kind": "source",
+        "start_frame": 0,
+        "end_frame_exclusive": 24,
+        "source_start_frame": 695,
+        "source_end_frame_exclusive": 719,
+        "role": "Actual front hook"
+      },
+      {
+        "id": "BR-M2",
+        "kind": "new",
+        "start_frame": 24,
+        "end_frame_exclusive": 72,
+        "role": "Matching bomber recognition"
+      },
+      {
+        "id": "BR-M3",
+        "kind": "source",
+        "start_frame": 72,
+        "end_frame_exclusive": 96,
+        "source_start_frame": 719,
+        "source_end_frame_exclusive": 743,
+        "role": "Actual front detail"
+      },
+      {
+        "id": "BR-M4",
+        "kind": "source",
+        "start_frame": 96,
+        "end_frame_exclusive": 144,
+        "source_start_frame": 983,
+        "source_end_frame_exclusive": 1031,
+        "role": "Actual rear rose"
+      },
+      {
+        "id": "BR-M5",
+        "kind": "source",
+        "start_frame": 144,
+        "end_frame_exclusive": 192,
+        "source_start_frame": 1391,
+        "source_end_frame_exclusive": 1439,
+        "role": "Actual front and fabric"
+      },
+      {
+        "id": "BR-M6",
+        "kind": "new",
+        "start_frame": 192,
+        "end_frame_exclusive": 288,
+        "role": "Big reveal and paired product hold"
+      }
+    ]
+  },
+  "status": "FILMS_BUILT_SOURCE_PIXELS_VERIFIED",
+  "executed_manifest": "build/edit-manifest.json",
+  "verification": "build/final-report.json"
+}

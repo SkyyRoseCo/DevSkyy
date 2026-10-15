@@ -8,7 +8,7 @@
 |---|---|---|
 | Catalog | `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (root symlink `skyyrose-catalog.csv`) | Single product manifest — SKU, price, collection, metadata. Never invent SKUs. |
 | Dossiers | `wordpress-theme/skyyrose-flagship/data/dossiers/*.md` | Per-SKU, founder-authored narrative (never ML-drafted); `_template.md` defines the schema |
-| Collection identity | `wordpress-theme/skyyrose-flagship/data/collections/<slug>/identity.json` | Canon seed (palette, fonts, story). `design-tokens.css` / `sot.json` / `index.html` are **generated from it** — edit `identity.json` only, never the generated files |
+| Collection identity | `wordpress-theme/skyyrose-flagship/data/logo-registry.json` → `collections.<slug>` | Canon seed (palette, fonts, story). `design-tokens.css` / `sot.json` / `index.html` are **generated from it** — edit the registry entry only, never the generated files |
 | Brand/logos | `wordpress-theme/skyyrose-flagship/data/{brand,brand-logos,product-references}/` | Supporting brand assets |
 
 ## Imagery resolution (SOT-only, front-first)
@@ -31,4 +31,4 @@ Never fork or introduce a second copy of a SOT source. Product imagery must reso
 
 ## Related codemaps
 
-[wordpress.md](wordpress.md) (theme consumer of catalog/identity.json) · [backend.md](backend.md) (`database/` wiring) · [architecture.md](architecture.md)
+[wordpress.md](wordpress.md) (theme consumer of the catalog and collection identity) · [backend.md](backend.md) (`database/` wiring) · [architecture.md](architecture.md)

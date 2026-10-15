@@ -1,0 +1,26 @@
+{
+  "kind": "task_pending",
+  "taskId": "d23b2686-2a49-4263-8424-53139f55183a",
+  "taskType": "kling_o3_pro",
+  "outputKind": "video",
+  "prompt": "A family-friendly animated character portrait on a plain white studio background. Skyy is the fictional stylized 3D child mascot shown in the supplied image, fully clothed in her reference jacket, trousers and sneakers. Preserve her exact illustrated face, round cheeks, large brown eyes, dark rounded curls and child proportions. The camera stays fixed. She breathes gently, blinks once and makes a tiny friendly smile. Her hands and body remain in their original pose. Preserve all clothing details. One continuous shot, no new objects, no other people, no speaking and no audio.",
+  "meta": {
+    "durationSeconds": 5
+  },
+  "_regenerate": {
+    "tool": "generate_video",
+    "arguments": {
+      "model": "kling-o3-pro",
+      "promptText": "A family-friendly animated character portrait on a plain white studio background. Skyy is the fictional stylized 3D child mascot shown in the supplied image, fully clothed in her reference jacket, trousers and sneakers. Preserve her exact illustrated face, round cheeks, large brown eyes, dark rounded curls and child proportions. The camera stays fixed. She breathes gently, blinks once and makes a tiny friendly smile. Her hands and body remain in their original pose. Preserve all clothing details. One continuous shot, no new objects, no other people, no speaking and no audio.",
+      "ratio": "1:1",
+      "duration": 5,
+      "startFrame": {
+        "url": "https://d2jqrm6oza8nb6.cloudfront.net/datasets/48b8d6a4-933e-4945-ac4f-03b71366401e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTI0N2E0MTI1YWIyN2MzNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTI3MTU3MH0.V6J1ap9HD__SILjTm6u9t3aRDBKtv7NcLcIum-r82cA"
+      },
+      "generateAudio": false,
+      "resolution": "1080p",
+      "rationale": "User clicked Re-generate in the inline viewer to create another variation with the same parameters."
+    }
+  },
+  "creditsRemaining": 1640
+}

@@ -23,7 +23,7 @@ The three skills listed in the frontmatter (`skyyrose-brand-dna`, `skyyrose-prod
 generating a single word of copy. Their roles:
 
 1. **`skyyrose-brand-dna`** (auto-loaded via frontmatter) — Canon foundation: founder story,
-   collection identities, tagline, palette, voice, The Five visual references, lockup rule,
+   collection identities, palette, voice, The Five visual references, lockup rule,
    STOP-AND-SHOW gates, canonical product source protocol. This is the parent. Every other
    skill inherits it. If any rule below conflicts with `skyyrose-brand-dna`, the brand-dna
    wins — fix the downstream rule, not the parent. The skyyrose-brand-dna skill is loaded —
@@ -88,8 +88,7 @@ SKUs appear only in technical fields (`sku`, delivery file names, WC REST payloa
 
 ## Brand Canon — Enforced in Every Output
 
-**Tagline:** `Luxury Grows from Concrete.` — verbatim, period included. Never paraphrased.
-Any variant ("luxury from the streets", "grown from concrete", "Luxury grows from the concrete")
+**Tagline:** none. No tagline is authorised (founder decision 2026-10-06). Any tagline or slogan
 is a canon violation. Reject it in your own output and flag it in existing copy under review.
 
 **Collections — never cross-attribute voices:**

@@ -3,4 +3,4 @@ version = 1
 name = "DevSkyy"
 
 [setup]
-script = ""
+script = "bash scripts/setup-codex-environment.sh"

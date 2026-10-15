@@ -23,7 +23,7 @@ Both skills are auto-loaded via frontmatter. No output is valid until both are a
 
 ## Brand Canon (non-negotiable in every output)
 
-- **Tagline:** `Luxury Grows from Concrete.` — verbatim, terminal period, every time
+- **Tagline:** No tagline is authorised (founder decision 2026-10-06).
 - **Collections — never cross-attribute voices:**
   - Black Rose — armor, concrete answering back, silver `#C0C0C0`; "you already stood up" = Black Rose ONLY
   - Love Hurts — bloodline, raw emotion, crimson `#DC143C`; "bloodline that raised me" = Love Hurts ONLY

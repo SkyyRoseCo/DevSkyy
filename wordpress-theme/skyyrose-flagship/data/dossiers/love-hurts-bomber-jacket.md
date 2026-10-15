@@ -10,16 +10,33 @@ reference_image: assets/products/references/lh-004-techflat-front.jpeg
 
 # Love Hurts Bomber Jacket
 
-**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
-Materials: Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. Satin appearance is required by the later founder review; fiber composition is not established here. NOT a sherpa jacket.
-Fit: The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down).
-Features: Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). Satin appearance is required by the later founder review; fiber composition is not established here. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).
-Color: White/Black
-Available sizes: S | M | L | XL | 2XL | 3XL
+**Garment type lock:** Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood construction and lining pattern match the founder-approved V2 front render at `wordpress-theme/skyyrose-flagship-2/assets/v2-original/products/lh-004.png` (visible when the hood is laid open or worn down). **FOUNDER_CONFIRMED:** Satin appearance is required. Fiber composition is unspecified. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).
 
-## Source correction — 2026-09-11
+## Founder-confirmed correction
 
-The earlier “NOT satin” and cotton-blend assertions are superseded by the recorded founder review at `renders/oai/_review/review-state.json`, entries `love-hurts-bomber/ghost.png` (2026-06-10T02:10:51.825Z) and `love-hurts-bomber/ghost-back.png` (2026-06-10T02:10:54.542Z): both flag that the render “doesn't look satin.” `data/render-corrections.json` preserves these comments and identifies their founder-review provenance. This establishes intended satin appearance, consistent with the catalog, not fiber composition or manufacturing certification. The flagged renders remain unapproved; this correction grants no media approval.
+**FOUNDER_CONFIRMED:** all products were created around a gender neutral relaxed fit; drying on low heat. (Corey, 2026-09-29, verbatim: "also work on filing out majority of the missing information in the CSV as we build this all products were created around a gender neutral relaxed fit we have heavy polyesters and this fabrics in some so basic washing instructions with drying on low heat")
+
+**Care guidance — agent-authored per founder request:** Wash cold on a gentle cycle with similar colors and mild detergent. Turn garments inside out where applicable. Do not bleach. Tumble dry on low heat. Do not iron directly over graphics, embroidery or patches.
+
+
+The earlier “NOT satin” and cotton-blend assertions are superseded by the recorded founder review at `renders/oai/_review/review-state.json`, entries `love-hurts-bomber/ghost.png` (2026-06-10T02:10:51.825Z) and `love-hurts-bomber/ghost-back.png` (2026-06-10T02:10:54.542Z): both flag that the render “doesn't look satin.” `data/render-corrections.json` preserves these comments and identifies their founder-review provenance. **FOUNDER_CONFIRMED:** Satin appearance is required; fiber composition is unspecified. The flagged renders remain unapproved; this correction grants no media approval.
+
+**FOUNDER_CONFIRMED:** this is the artwork for the love hurts joggers and the back of the love hurts bomber, and the Fannie (Corey, 2026-10-03, verbatim: "this is the artwork for the love hurts joggers and the back of the love hurts bomber, and the Fannie")
+
+
+**FOUNDER_CONFIRMED:** THIS IS THE ONLY RENDER THAT USED THE CORRECT HOOD OF THIS JACKET (Corey, 2026-10-06 America/Los_Angeles, verbatim: "THIS IS THE ONLY RENDER THAT USED THE CORRECT HOOD OF THIS JACKET")
+
+**Render implementation (agent-derived from the founder's visual correction):** Use wordpress-theme/skyyrose-flagship-2/assets/v2-original/products/lh-004.png (SHA-256 e3b22a5fbc315f1147d51a50ddc447fdc819c6f8366d8c4c0de8263bb47685a3) as the founder-confirmed hood reference for LH-004. Preserve the depicted hood construction and lining pattern; supersede conflicting older hood descriptions. This statement confirms the hood only and does not approve another render or the back artwork.
+
+
+**FOUNDER_CONFIRMED:** Thr front of that jacket is spot on too (Corey, 2026-10-06 America/Los_Angeles, verbatim: "Thr front of that jacket is spot on too")
+
+**Render implementation (agent-derived from the founder's visual correction):** Keep the front depiction of LH-004 in wordpress-theme/skyyrose-flagship-2/assets/v2-original/products/lh-004.png (SHA-256 e3b22a5fbc315f1147d51a50ddc447fdc819c6f8366d8c4c0de8263bb47685a3) as founder-approved. Preserve its front construction, hood, lining, chest artwork, closure, sleeves, pockets, cuffs and hem when carrying it into a V2 product card or editing another jacket scene. Front approval does not approve a back view or a different image.
+
+
+**FOUNDER_CONFIRMED:** the hood ediT must look have the red rose cluster inside of it no hallucinated rose images (Corey, 2026-10-06 America/Los_Angeles, verbatim: "the hood ediT must look have the red rose cluster inside of it no hallucinated rose images")
+
+**Render implementation (agent-derived from the founder's visual correction):** LH-004 inside hood uses the exact canonical red-roses-cloud-cluster artwork at wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg. Use the original artwork as an image reference; preserve its three red rose heads, green thorned stems and cloud base when mapping it onto the inner lining. Preserve the founder-approved V2 front and hood construction. Reject generic botanical roses or an invented floral pattern in a hood correction. This correction does not approve a new render or the back-center artwork.
 
 ## Branding — exactly what IS on this product
 
@@ -45,8 +62,8 @@ The earlier “NOT satin” and cotton-blend assertions are superseded by the re
 - **left-cuff** (ribbed-knit striped band at the left sleeve cuff, ~3–4 stripes): Ribbed-knit band with alternating white + red + black stripes. **Technique:** stitched (striped rib-knit). **Color:** alternating white + red + black.
 - **right-cuff** (ribbed-knit striped band at the right sleeve cuff, ~3–4 stripes): Ribbed-knit band with alternating white + red + black stripes. **Technique:** stitched (striped rib-knit). **Color:** alternating white + red + black.
 - **waistband** (ribbed-knit striped band at the bottom hem, ~3–4 stripes, matching the cuff accent): The bottom hem of the body has a **ribbed-knit waistband with the same white + red + black striped accent** as the cuffs. **Technique:** stitched. **Color:** alternating white + red + black.
-- **hood**: Solid **black** hood (matches the black raglan sleeves). **Technique:** stitched. **Color:** black.
-- **hood-lining** (inner hood lining, visible when hood is laid back or worn down): A **white-and-red rose-silhouette pattern** sublimated inside the hood lining — small red rose silhouettes scattered across the white inner-lining fabric. **Technique:** sublimated. **Color:** small red rose silhouettes on white inner-lining.
+- **hood**: Solid **black** hood; preserve the construction, edge shape and drawcords depicted in the founder-approved V2 front render at `wordpress-theme/skyyrose-flagship-2/assets/v2-original/products/lh-004.png`. **Technique:** stitched. **Color:** black.
+- **hood-lining** (inner hood lining, visible when hood is laid back or worn down): Match the pattern, colors, scale and arrangement depicted in the founder-approved V2 front render at `wordpress-theme/skyyrose-flagship-2/assets/v2-original/products/lh-004.png`. **Technique:** sublimated. No simplified replacement pattern.
 - **collar-tag** (~1.75in × 0.75in, sewn at the interior back collar): Branded woven size tag (universal SkyyRose product rule). **Technique:** woven-label. **Color:** white label, black lettering.
 
 ## Negative — what is NOT on this product (DO NOT render)
@@ -55,13 +72,13 @@ The earlier “NOT satin” and cotton-blend assertions are superseded by the re
 - NO greyscale rose rendering anywhere — all rose imagery is canonical Love Hurts multi-color (red + green + brown).
 - NO single-color body — the body is WHITE with BLACK raglan sleeves and BLACK hood (three-color contrast: white body + black sleeves + black hood).
 - NO non-raglan sleeve seam — the sleeves are RAGLAN cut (diagonal seam from underarm to neck), NOT set-in.
-- NO sherpa fabric. Preserve the satin appearance requested in the later founder review; do not infer cotton-blend or any fiber composition.
+- NO sherpa fabric. Preserve the founder-confirmed satin appearance; fiber composition is unspecified.
 - NO zipper-front closure — the front is BUTTON or SNAP placket, NOT a zipper.
 - NO solid-color cuffs/hem — the rib-knit cuffs and waistband have a STRIPED accent pattern (white + red + black), NOT solid black or solid white.
 - NO sublimated all-over body pattern — the body is solid white, NOT sublimated.
 - NO Love Hurts wordmark on the back — the back has the heart-and-thorns + roses graphic; the wordmark is on the front-chest only.
 - NO heart-and-thorns on the front — the front has the cursive "Love" + "Hurts" wordmark only; the heart graphic is on the back.
-- NO red drawstrings — there is no drawstring on this jacket (it's a button-front bomber, not a pullover hoodie).
+- NO red drawstrings — preserve the hood drawcords depicted in the founder-approved V2 front render.
 - NO white sleeves — sleeves are black.
 - NO contrast piping on the body or pockets.
 - NO Authentic Collection patch — that patch is reserved for the Black Rose jersey series.

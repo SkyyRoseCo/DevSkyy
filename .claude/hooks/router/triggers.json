@@ -4,7 +4,8 @@
   "patterns": [
     {
       "name": "wordpress",
-      "regex": "\\b(wordpress|wp-?theme|woocommerce|skyyrose-flagship|wp-?content|wp-?admin|php|elementor|divi|gutenberg)\\b",
+      "regex": "\\b(wordpress|wp-?theme|woocommerce|skyyrose-flagship(-2)?|flagship-?2|wp-?content|wp-?admin|php|elementor|divi|gutenberg)\\b",
+      "note": "Two themes: wordpress-theme/skyyrose-flagship (V1 'SkyyRose', text domain skyyrose, SKYYROSE_VERSION, builds via wordpress-theme/package.json) and wordpress-theme/skyyrose-flagship-2 ('SkyyRose Flagship 2', text domain skyyrose-flagship-2, SKYYROSE2_VERSION, its own package.json). Name which theme before editing; each has a scoped CLAUDE.md.",
       "skills": ["wp-block-themes", "wp-block-development", "wp-plugin-development", "wp-rest-api", "wp-performance", "wp-phpstan", "wp-playground", "wordpress-plugin-core", "wordpress-router", "wordpress-woocommerce-automation", "woocommerce", "woocommerce-backend-dev", "woocommerce-code-review", "woocommerce-webhooks", "deploy-wp", "wp-simplify"],
       "agents": ["deploy-and-verify", "wp-code-simplifier"],
       "plugins": [],
@@ -14,7 +15,7 @@
       "name": "frontend",
       "regex": "\\b(next\\.?js|react|tsx|jsx|tailwind|vercel|dashboard|frontend|component|shadcn|nextjs)\\b",
       "skills": ["nextjs-16-complete-guide", "nextjs-app-router-fundamentals", "nextjs-app-router-patterns", "nextjs-best-practices", "nextjs-performance", "nextjs-turbopack", "frontend-design", "frontend-patterns", "frontend-launchpad", "vercel-react-best-practices", "vercel-composition-patterns", "shadcn", "tdd-workflow"],
-      "agents": ["Frontend Developer", "UI Designer", "UX Architect"],
+      "agents": ["frontend-developer"],
       "plugins": [],
       "workflow": "skyyrose-dev-team"
     },
@@ -22,28 +23,30 @@
       "name": "python-backend",
       "regex": "\\b(fastapi|pytest|pydantic|sqlalchemy|alembic|asyncio|python|uvicorn|backend)\\b",
       "skills": ["fastapi-python", "fastapi-async-patterns", "python-patterns", "python-testing", "pytest-patterns", "sqlalchemy-alembic-expert-best-practices-code-review", "tdd", "building-pydantic-ai-agents", "django-patterns", "django-tdd"],
-      "agents": ["Backend Architect", "python-reviewer", "AI Engineer"],
+      "agents": ["Backend Architect", "python-reviewer"],
       "plugins": []
     },
     {
       "name": "imagery",
       "regex": "\\b(image|imagery|nano-?banana|fashn|flux|render|mockup|compositor|elite-?studio|gemini-?image|gpt-?image|nano2|tripo|meshy)\\b",
       "skills": ["banana-claude:banana", "ai-image-generation", "fal-ai-media", "image-taste-frontend", "high-end-visual-design"],
-      "agents": ["Image Prompt Engineer", "Inclusive Visuals Specialist", "Visual Storyteller"],
+      "agents": [],
       "plugins": ["banana-claude@banana-claude-marketplace"]
     },
     {
       "name": "catalog",
-      "regex": "\\b(catalog|sku|dossier|product-?(card|copy|catalog)|skyyrose-catalog|csv)\\b",
+      "regex": "\\b(catalog|sku|dossier|product-?(card|copy|catalog)|skyyrose-catalog|csv|logo-registry|get_product|product registry)\\b",
+      "note": "Product SOT = wordpress-theme/skyyrose-flagship/data/logo-registry.json (root symlink logo-registry.json), read via `from skyyrose.core.product import get_product` / `python -m skyyrose.core.product <sku>`. skyyrose-catalog.csv, dossiers, sot-images.json and collection sot.json are generated projections — never the source. Writes go through the registry update API, then `python scripts/sync_product_registry.py` (`--check` before handoff). Corey (founder) is authoritative on his products.",
       "skills": ["sync-catalog", "skyyrose-product-copy", "product-master", "skyyrose-brand-dna"],
-      "agents": ["Content Creator", "Brand Guardian"],
+      "agents": ["Content Creator"],
       "plugins": []
     },
     {
       "name": "deploy",
-      "regex": "\\b(deploy|ship|production|release|vercel-deploy|sftp|cdn)\\b",
-      "skills": ["deploy-wp", "ship-check", "preflight", "verify", "finishing-a-development-branch"],
-      "agents": ["DevOps Automator", "deploy-and-verify", "Incident Response Commander"],
+      "regex": "\\b(deploy|ship|production|release|staging|cutover|vercel-deploy|sftp|cdn)\\b",
+      "note": "WordPress deploys are STOP-AND-SHOW. Staging: `bash scripts/deploy-staging.sh [--dry-run]` (.env.wordpress.staging, theme skyyrose-flagship-2, https://staging-7e48-skyyrose.wpcomstaging.com). Production: `bash scripts/deploy-production.sh [--dry-run]` (.env.wordpress, skyyrose.co, theme skyyrose-flagship-2; refuses until WP_THEME_PATH names the -2 folder). scripts/deploy-theme.sh is the engine and refuses direct runs. The V1 theme wordpress-theme/skyyrose-flagship is not the deploy target. Cutover = deploy + `wp theme activate skyyrose-flagship-2`, each STOP-AND-SHOW. Dashboard: Vercel is current but retiring (devskyy.app 402 DEPLOYMENT_DISABLED, 2026-09-18); replacement host undecided.",
+      "skills": ["deploy-wp", "wp-deploy", "ship-check", "preflight", "verify", "finishing-a-development-branch"],
+      "agents": ["deploy-and-verify"],
       "plugins": []
     },
     {
@@ -57,7 +60,7 @@
       "name": "docs",
       "regex": "\\b(docs?|readme|api-?docs|documentation|markdown)\\b",
       "skills": ["documentation-lookup", "docs", "update-docs", "obsidian-markdown", "writing-skills"],
-      "agents": ["Technical Writer", "doc-updater"],
+      "agents": ["doc-updater"],
       "plugins": []
     },
     {

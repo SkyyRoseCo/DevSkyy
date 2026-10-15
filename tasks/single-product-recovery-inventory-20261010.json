@@ -1,0 +1,1335 @@
+{
+  "source_branch": "feat/single-product-entry-point",
+  "source_head": "1693beec2336ad1fc5a68c2b5fa7dee9aaad3fdf",
+  "main_baseline": "388f618e408fba59e2ce11a4575e6f88acf202d9",
+  "inventory_basis": "186 paths in the original investigation diff, retained even where current main has since absorbed a file",
+  "counts": {
+    "HOLD_UNQUALIFIED_AGENT_INTEGRATION": 9,
+    "RETAIN_CURRENT_GUIDANCE": 20,
+    "SCOPED_PR": 47,
+    "RETAIN_MAIN_COMPATIBILITY": 2,
+    "RETAIN_CURRENT_LOCAL_POLICY": 6,
+    "HOLD_CREATIVE_SOURCE_RECONCILIATION": 29,
+    "HOLD_RUNTIME_ACTIVATION": 3,
+    "SCOPED_DRAFT": 20,
+    "HOLD_DEDICATED_REVIEW": 3,
+    "OMIT_FORMATTING_CHURN": 10,
+    "HOLD_PINNED_DOCUMENT_REVIEW": 4,
+    "OMIT_UNUSED_TYPE_EXTRACTION": 1,
+    "REGENERATE_WITH_CREATIVE_SOURCES": 1,
+    "PRESERVE_MAIN_PRODUCT_PROJECTIONS": 3,
+    "PRESERVE_MAIN_DEPENDENCIES": 4,
+    "HOLD_CANONICAL_REFERENCE_REPAIR": 2,
+    "ALREADY_ON_MAIN": 4,
+    "HOLD_FORMATTER_GATE_CONSOLIDATION": 3,
+    "HOLD_CONSUMER_CONTRACT_REPAIR": 1,
+    "RETAIN_MAIN_TEST_ISOLATION": 2,
+    "HOLD_V1_PDP_3D_REVIEW": 12
+  },
+  "paths": [
+    {
+      "path": ".augment/agents/brand-experience-architect.md",
+      "source_diff_status": "A",
+      "disposition": "HOLD_UNQUALIFIED_AGENT_INTEGRATION",
+      "owning_pr": null,
+      "reason": "Preserved on source branch. Hook can allow malformed/paid events; context adapter indexes legacy fact sources. Requires separate contract/security tests before activation."
+    },
+    {
+      "path": ".augment/agents/catalog-sot-integrator.md",
+      "source_diff_status": "A",
+      "disposition": "HOLD_UNQUALIFIED_AGENT_INTEGRATION",
+      "owning_pr": null,
+      "reason": "Preserved on source branch. Hook can allow malformed/paid events; context adapter indexes legacy fact sources. Requires separate contract/security tests before activation."
+    },
+    {
+      "path": ".augment/agents/visual-commerce-qa.md",
+      "source_diff_status": "A",
+      "disposition": "HOLD_UNQUALIFIED_AGENT_INTEGRATION",
+      "owning_pr": null,
+      "reason": "Preserved on source branch. Hook can allow malformed/paid events; context adapter indexes legacy fact sources. Requires separate contract/security tests before activation."
+    },
+    {
+      "path": ".augment/settings.json",
+      "source_diff_status": "A",
+      "disposition": "HOLD_UNQUALIFIED_AGENT_INTEGRATION",
+      "owning_pr": null,
+      "reason": "Preserved on source branch. Hook can allow malformed/paid events; context adapter indexes legacy fact sources. Requires separate contract/security tests before activation."
+    },
+    {
+      "path": ".claude/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": ".claude/commands/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": ".claude/hooks/precision-cleanup.sh",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1053,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": ".claude/hooks/python-format-on-write.sh",
+      "source_diff_status": "D",
+      "disposition": "RETAIN_MAIN_COMPATIBILITY",
+      "owning_pr": 1053,
+      "reason": "Keep the legacy executable for existing callers; #1053 removes only its active Claude registration."
+    },
+    {
+      "path": ".claude/rules/agents.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": ".claude/rules/sequential-thinking.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": ".claude/rules/testing.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": ".claude/rules/workflow-orchestration.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": ".claude/settings.json",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1053,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": ".claude/skills/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": ".claude/skills/devskyy-patterns/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": ".claude/skills/devskyy-patterns/SKILL.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": ".claude/skills/frontend-design/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": ".codex/config.toml",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_LOCAL_POLICY",
+      "owning_pr": null,
+      "reason": "Do not replay historical memory, host-specific paths, or agent permissions. Source branch retains the history."
+    },
+    {
+      "path": ".github/workflows/catalog-validate.yml",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1058,
+      "reason": "Additional manifest-projection watch paths recovered separately; main job behavior remains intact."
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1051,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": ".gitignore",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1051,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": ".prettierignore",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1051,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": ".wolf/anatomy.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_LOCAL_POLICY",
+      "owning_pr": null,
+      "reason": "Do not replay historical memory, host-specific paths, or agent permissions. Source branch retains the history."
+    },
+    {
+      "path": ".wolf/buglog.json",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_LOCAL_POLICY",
+      "owning_pr": null,
+      "reason": "Do not replay historical memory, host-specific paths, or agent permissions. Source branch retains the history."
+    },
+    {
+      "path": ".wolf/cerebrum.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_LOCAL_POLICY",
+      "owning_pr": null,
+      "reason": "Do not replay historical memory, host-specific paths, or agent permissions. Source branch retains the history."
+    },
+    {
+      "path": ".wolf/hooks/memory-session-log.sh",
+      "source_diff_status": "A",
+      "disposition": "RETAIN_CURRENT_LOCAL_POLICY",
+      "owning_pr": null,
+      "reason": "Do not replay historical memory, host-specific paths, or agent permissions. Source branch retains the history."
+    },
+    {
+      "path": ".wolf/memory.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_LOCAL_POLICY",
+      "owning_pr": null,
+      "reason": "Do not replay historical memory, host-specific paths, or agent permissions. Source branch retains the history."
+    },
+    {
+      "path": "AGENTS.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": "CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": "Comfy/HARDENING.md",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/README.md",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/scene-contracts/scene-ooda-ledger.json",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/scene-contracts/sig-commerce-1-higgsfield-comfy-ooda.json",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/scene-contracts/sig-commerce-1-runway-environment-a1.json",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/scene-contracts/sig-commerce-2-higgsfield-comfy-ooda.json",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/scene-contracts/sig-commerce-2-runway-environment-a1.json",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/scene-contracts/sig-commerce-3-higgsfield-comfy-ooda.json",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/scripts/mps_model_guard.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/tests/test_scene_ooda.py",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "Comfy/workflows/lh-commerce-2-runway-environment-a1.api.json",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "README.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": "agents/claude_sdk/auggie_mixin.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_UNQUALIFIED_AGENT_INTEGRATION",
+      "owning_pr": null,
+      "reason": "Preserved on source branch. Hook can allow malformed/paid events; context adapter indexes legacy fact sources. Requires separate contract/security tests before activation."
+    },
+    {
+      "path": "api/v1/__init__.py",
+      "source_diff_status": "M",
+      "disposition": "HOLD_RUNTIME_ACTIVATION",
+      "owning_pr": 1054,
+      "reason": "Renderer source is draft #1054; app router and compose activation deliberately await runtime qualification."
+    },
+    {
+      "path": "api/v1/render_jobs/__init__.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "api/v1/render_jobs/router.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "api/v1/render_jobs/schemas.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "assets/products/manifest.json",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1051,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "assets/products/source-photos/brand-assets/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": "assets/products/source-photos/kids/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": "assets/products/source-photos/love-hurts/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": "assets/products/source-photos/pre-order/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": "assets/products/source-photos/signature/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": "data/machine-managed-files.json",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1051,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "deploy/blender_render/Dockerfile",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "docker-compose.yml",
+      "source_diff_status": "M",
+      "disposition": "HOLD_RUNTIME_ACTIVATION",
+      "owning_pr": 1054,
+      "reason": "Renderer source is draft #1054; app router and compose activation deliberately await runtime qualification."
+    },
+    {
+      "path": "docs/3d/clo3d-garment-pipeline-evaluation.html",
+      "source_diff_status": "A",
+      "disposition": "HOLD_DEDICATED_REVIEW",
+      "owning_pr": null,
+      "reason": "Retained on the source branch. Not promoted without a specific consumer, current-source reconciliation and appropriate verification."
+    },
+    {
+      "path": "docs/brand/constitution-v1/CONSTITUTION.md",
+      "source_diff_status": "M",
+      "disposition": "OMIT_FORMATTING_CHURN",
+      "owning_pr": null,
+      "reason": "Semantic JSON or whitespace-only equivalence verified; preserve pinned main bytes."
+    },
+    {
+      "path": "docs/brand/constitution-v1/CONTEXT-RESOLVER-CREATIVE-OS-SPEC.md",
+      "source_diff_status": "M",
+      "disposition": "HOLD_PINNED_DOCUMENT_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve current ratified main documents; remaining prose/reflow differences need a dedicated pinned-source review."
+    },
+    {
+      "path": "docs/brand/constitution-v1/RATIFICATION-CHANGES.md",
+      "source_diff_status": "M",
+      "disposition": "HOLD_PINNED_DOCUMENT_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve current ratified main documents; remaining prose/reflow differences need a dedicated pinned-source review."
+    },
+    {
+      "path": "docs/brand/constitution-v1/RATIFICATION.md",
+      "source_diff_status": "M",
+      "disposition": "HOLD_PINNED_DOCUMENT_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve current ratified main documents; remaining prose/reflow differences need a dedicated pinned-source review."
+    },
+    {
+      "path": "docs/brand/constitution-v1/README.md",
+      "source_diff_status": "M",
+      "disposition": "HOLD_PINNED_DOCUMENT_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve current ratified main documents; remaining prose/reflow differences need a dedicated pinned-source review."
+    },
+    {
+      "path": "docs/brand/constitution-v1/context-manifest.json",
+      "source_diff_status": "M",
+      "disposition": "OMIT_FORMATTING_CHURN",
+      "owning_pr": null,
+      "reason": "Semantic JSON or whitespace-only equivalence verified; preserve pinned main bytes."
+    },
+    {
+      "path": "docs/brand/constitution-v1/implementation-contracts.json",
+      "source_diff_status": "M",
+      "disposition": "OMIT_FORMATTING_CHURN",
+      "owning_pr": null,
+      "reason": "Semantic JSON or whitespace-only equivalence verified; preserve pinned main bytes."
+    },
+    {
+      "path": "docs/brand/constitution-v1/owner-decisions.json",
+      "source_diff_status": "M",
+      "disposition": "OMIT_FORMATTING_CHURN",
+      "owning_pr": null,
+      "reason": "Semantic JSON or whitespace-only equivalence verified; preserve pinned main bytes."
+    },
+    {
+      "path": "docs/brand/constitution-v1/proposals.json",
+      "source_diff_status": "M",
+      "disposition": "OMIT_FORMATTING_CHURN",
+      "owning_pr": null,
+      "reason": "Semantic JSON or whitespace-only equivalence verified; preserve pinned main bytes."
+    },
+    {
+      "path": "docs/context-resolver.md",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1031,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "docs/creative-job-workflow.md",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1031,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "docs/integrations/runway-dev/README.md",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "docs/integrations/runway-dev/qualification.yaml",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "docs/integrations/runway-dev/verified-examples.md",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "frontend/app/api/runway-dev/dry-run/contract.ts",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "frontend/app/api/runway-dev/dry-run/governor.ts",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "frontend/app/api/runway-dev/dry-run/qualification-gate.ts",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "frontend/app/api/runway-dev/dry-run/rate-limit.ts",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "frontend/app/api/runway-dev/dry-run/route.ts",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "frontend/app/api/v1/3d/jobs/store.ts",
+      "source_diff_status": "M",
+      "disposition": "OMIT_UNUSED_TYPE_EXTRACTION",
+      "owning_pr": null,
+      "reason": "ThreeDJob extraction has no consumers in the Runway scoped branch; runtime store semantics are unchanged."
+    },
+    {
+      "path": "frontend/data/scene-authority.json",
+      "source_diff_status": "M",
+      "disposition": "REGENERATE_WITH_CREATIVE_SOURCES",
+      "owning_pr": null,
+      "reason": "Derived file must be regenerated from reconciled current scene contracts; do not copy an older ready/approval status."
+    },
+    {
+      "path": "frontend/data/skyyrose-catalog.csv",
+      "source_diff_status": "M",
+      "disposition": "PRESERVE_MAIN_PRODUCT_PROJECTIONS",
+      "owning_pr": null,
+      "reason": "Preserve current founder corrections. CSV and dossiers are registry projections and must be regenerated from the final registry, never restored wholesale from the older omnibus branch."
+    },
+    {
+      "path": "frontend/tests/runway-dev-router-dry-run-fixture-route.test.ts",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "frontend/tests/runway-dev-router-dry-run-rate-limit.test.ts",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "frontend/tests/runway-dev-router-dry-run-route.test.ts",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "frontend/tests/runway-dev-router-dry-run.test.ts",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1029,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "integrations/openai_agents_api.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1056,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "main_enterprise.py",
+      "source_diff_status": "M",
+      "disposition": "HOLD_RUNTIME_ACTIVATION",
+      "owning_pr": 1054,
+      "reason": "Renderer source is draft #1054; app router and compose activation deliberately await runtime qualification."
+    },
+    {
+      "path": "package-lock.json",
+      "source_diff_status": "M",
+      "disposition": "PRESERVE_MAIN_DEPENDENCIES",
+      "owning_pr": null,
+      "reason": "Do not replay older dependency ranges or lockfiles. #1052 takes only the required HTML package-data addition."
+    },
+    {
+      "path": "package.json",
+      "source_diff_status": "M",
+      "disposition": "PRESERVE_MAIN_DEPENDENCIES",
+      "owning_pr": null,
+      "reason": "Do not replay older dependency ranges or lockfiles. #1052 takes only the required HTML package-data addition."
+    },
+    {
+      "path": "pipelines/blender_render/__init__.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "pipelines/blender_render/artifacts.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "pipelines/blender_render/models.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "pipelines/blender_render/oneshot.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "pipelines/blender_render/render_stills.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "pipelines/blender_render/store.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "pipelines/blender_render/worker.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "pyproject.toml",
+      "source_diff_status": "M",
+      "disposition": "PRESERVE_MAIN_DEPENDENCIES",
+      "owning_pr": 1052,
+      "reason": "Do not replay older dependency ranges or lockfiles. #1052 takes only the required HTML package-data addition."
+    },
+    {
+      "path": "renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/BLACK_Rose_Long_Hoodie.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-1/protected-input/sg-009-sg-007-sherpa-beanie-look-protected-v2.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-1/scene-authority/sig-1-font-statue-environment-plate-v3.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-2/protected-hero-element/signature-sr-rose-graphic-founder-supplied-v1.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-006-hoodie-look-protected-v1.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-013-sg-014-mint-set-look-protected-v2.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-2/scene-authority/sig-3-graphic-monument-environment-plate-v3.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg-005-sg-001-exact-blue-rose-protected-v2.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-verify-receipt-v1.json",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-002-sg-003-stay-golden-look-protected-v1.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-005-bay-bridge-look-protected-v1.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-015-windbreaker-look-protected-v1.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-commerce-3-departure-terrace-plate-v1.png",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "requirements-blender-render.txt",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "scripts/auggie_hooks/audit_log.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_UNQUALIFIED_AGENT_INTEGRATION",
+      "owning_pr": null,
+      "reason": "Preserved on source branch. Hook can allow malformed/paid events; context adapter indexes legacy fact sources. Requires separate contract/security tests before activation."
+    },
+    {
+      "path": "scripts/auggie_hooks/budget_gate.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_UNQUALIFIED_AGENT_INTEGRATION",
+      "owning_pr": null,
+      "reason": "Preserved on source branch. Hook can allow malformed/paid events; context adapter indexes legacy fact sources. Requires separate contract/security tests before activation."
+    },
+    {
+      "path": "scripts/auggie_hooks/pre_launch_gate.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_UNQUALIFIED_AGENT_INTEGRATION",
+      "owning_pr": null,
+      "reason": "Preserved on source branch. Hook can allow malformed/paid events; context adapter indexes legacy fact sources. Requires separate contract/security tests before activation."
+    },
+    {
+      "path": "scripts/bug322_sig_commerce_audit.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "scripts/build_glb_triage.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CANONICAL_REFERENCE_REPAIR",
+      "owning_pr": null,
+      "reason": "Filename-prefix reference selection is not canonical image binding. Replace it with explicit registry source bindings before using founder Keep/Reject controls."
+    },
+    {
+      "path": "scripts/build_web_glbs.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1055,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "scripts/check-public-release-permissions.py",
+      "source_diff_status": "A",
+      "disposition": "ALREADY_ON_MAIN",
+      "owning_pr": null,
+      "reason": "Exact file bytes match current main."
+    },
+    {
+      "path": "scripts/deploy-theme.sh",
+      "source_diff_status": "M",
+      "disposition": "ALREADY_ON_MAIN",
+      "owning_pr": null,
+      "reason": "Exact file bytes match current main."
+    },
+    {
+      "path": "scripts/freshness-guard.sh",
+      "source_diff_status": "M",
+      "disposition": "HOLD_FORMATTER_GATE_CONSOLIDATION",
+      "owning_pr": null,
+      "reason": "Useful direct-command ignore coverage overlaps existing main pre-commit ownership gate and #1031. Consolidate within a dedicated formatter scope, without reformatting pinned sources."
+    },
+    {
+      "path": "scripts/glb_qc_render.py",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1052,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "scripts/golden_uploader.py",
+      "source_diff_status": "M",
+      "disposition": "OMIT_FORMATTING_CHURN",
+      "owning_pr": null,
+      "reason": "Import-order or shell-formatting-only changes do not justify replaying these files."
+    },
+    {
+      "path": "scripts/install_gltfpack.sh",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1055,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "scripts/pr_automator/__main__.py",
+      "source_diff_status": "M",
+      "disposition": "OMIT_FORMATTING_CHURN",
+      "owning_pr": null,
+      "reason": "Import-order or shell-formatting-only changes do not justify replaying these files."
+    },
+    {
+      "path": "scripts/precision_cleanup.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1053,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "scripts/setup-codex-environment.sh",
+      "source_diff_status": "M",
+      "disposition": "OMIT_FORMATTING_CHURN",
+      "owning_pr": null,
+      "reason": "Import-order or shell-formatting-only changes do not justify replaying these files."
+    },
+    {
+      "path": "scripts/sync_product_registry.py",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1034,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "sdk/python/agent_sdk/context.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_UNQUALIFIED_AGENT_INTEGRATION",
+      "owning_pr": null,
+      "reason": "Preserved on source branch. Hook can allow malformed/paid events; context adapter indexes legacy fact sources. Requires separate contract/security tests before activation."
+    },
+    {
+      "path": "security/__init__.py",
+      "source_diff_status": "M",
+      "disposition": "OMIT_FORMATTING_CHURN",
+      "owning_pr": null,
+      "reason": "Import-order or shell-formatting-only changes do not justify replaying these files."
+    },
+    {
+      "path": "skyyrose/core/product.py",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1051,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "skyyrose/core/product_registry.py",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1051,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "skyyrose/elite_studio/config.py",
+      "source_diff_status": "M",
+      "disposition": "OMIT_FORMATTING_CHURN",
+      "owning_pr": null,
+      "reason": "Import-order or shell-formatting-only changes do not justify replaying these files."
+    },
+    {
+      "path": "skyyrose/elite_studio/pipeline3d/README.md",
+      "source_diff_status": "M",
+      "disposition": "HOLD_DEDICATED_REVIEW",
+      "owning_pr": null,
+      "reason": "Retained on the source branch. Not promoted without a specific consumer, current-source reconciliation and appropriate verification."
+    },
+    {
+      "path": "skyyrose/elite_studio/pipeline3d/templates/webgl_qc_harness.html",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1052,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "skyyrose/elite_studio/pipeline3d/webgl_qc.py",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1052,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "skyyrose/multi_agent/agents.py",
+      "source_diff_status": "M",
+      "disposition": "HOLD_CONSUMER_CONTRACT_REPAIR",
+      "owning_pr": null,
+      "reason": "Prompt-only adoption would overstate tool behavior: generate_product_copy still reads retired override files. Update the tool and its tests as one separate consumer change."
+    },
+    {
+      "path": "tasks/lessons.md",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1051,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "tasks/scoped-commit-pr-handoff-20260927.md",
+      "source_diff_status": "A",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": "tests/api/test_render_jobs.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/elite_studio/pipeline3d/test_webgl_qc.py",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1052,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/hooks/test_format_on_write.py",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_MAIN_COMPATIBILITY",
+      "owning_pr": 1053,
+      "reason": "Current tests remain valid because #1053 preserves the legacy executable. Omnibus tests expected its deletion and are intentionally superseded."
+    },
+    {
+      "path": "tests/integrations/test_openai_agents_api.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1056,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/pipelines/blender_render/__init__.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/pipelines/blender_render/glb_fixture.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/pipelines/blender_render/test_integration_blender.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/pipelines/blender_render/test_models.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/pipelines/blender_render/test_worker.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_DRAFT",
+      "owning_pr": 1054,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/scripts/test_bug322_sig_commerce_audit.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CREATIVE_SOURCE_RECONCILIATION",
+      "owning_pr": null,
+      "reason": "Preserve source assets and receipts in source history. Contract paths/hashes/scene-authority must be reconciled together; no new creative acceptance or promotion is inferred. MPS guard also reports malformed headers as safe and requires repair."
+    },
+    {
+      "path": "tests/scripts/test_build_web_glbs.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1055,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/scripts/test_freshness_guard_two_theme.py",
+      "source_diff_status": "M",
+      "disposition": "HOLD_FORMATTER_GATE_CONSOLIDATION",
+      "owning_pr": null,
+      "reason": "Useful direct-command ignore coverage overlaps existing main pre-commit ownership gate and #1031. Consolidate within a dedicated formatter scope, without reformatting pinned sources."
+    },
+    {
+      "path": "tests/scripts/test_glb_qc_render.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1052,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/scripts/test_public_release_permissions.py",
+      "source_diff_status": "A",
+      "disposition": "ALREADY_ON_MAIN",
+      "owning_pr": null,
+      "reason": "Exact file bytes match current main."
+    },
+    {
+      "path": "tests/test_build_glb_triage.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_CANONICAL_REFERENCE_REPAIR",
+      "owning_pr": null,
+      "reason": "Filename-prefix reference selection is not canonical image binding. Replace it with explicit registry source bindings before using founder Keep/Reject controls."
+    },
+    {
+      "path": "tests/test_content_intent.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1031,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/test_context_hardening.py",
+      "source_diff_status": "M",
+      "disposition": "ALREADY_ON_MAIN",
+      "owning_pr": null,
+      "reason": "Exact file bytes match current main."
+    },
+    {
+      "path": "tests/test_core_agents.py",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_MAIN_TEST_ISOLATION",
+      "owning_pr": null,
+      "reason": "Preserve current main fixture/offline isolation; avoid layering older duplicate test stubs."
+    },
+    {
+      "path": "tests/test_precision_cleanup.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1053,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections."
+    },
+    {
+      "path": "tests/test_product_consumer_contracts.py",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1034,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "tests/test_round_table.py",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_MAIN_TEST_ISOLATION",
+      "owning_pr": null,
+      "reason": "Preserve current main fixture/offline isolation; avoid layering older duplicate test stubs."
+    },
+    {
+      "path": "tests/test_sync_manifest_projection.py",
+      "source_diff_status": "A",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1034,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "tests/test_unified_product_registry.py",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1034,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "tools/v2-source-certification/build-inputs.json",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1034,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "tools/v2-source-certification/package-boundary.json",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1051,
+      "reason": "Owned by the current V2 port #1051; do not replay the older omnibus certificate. Founder-merge hold remains."
+    },
+    {
+      "path": "uv.lock",
+      "source_diff_status": "M",
+      "disposition": "PRESERVE_MAIN_DEPENDENCIES",
+      "owning_pr": null,
+      "reason": "Do not replay older dependency ranges or lockfiles. #1052 takes only the required HTML package-data addition."
+    },
+    {
+      "path": "wordpress-theme/package.json",
+      "source_diff_status": "M",
+      "disposition": "HOLD_FORMATTER_GATE_CONSOLIDATION",
+      "owning_pr": null,
+      "reason": "Useful direct-command ignore coverage overlaps existing main pre-commit ownership gate and #1031. Consolidate within a dedicated formatter scope, without reformatting pinned sources."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1034,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1034,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/scripts/verify-image-transparency.py",
+      "source_diff_status": "A",
+      "disposition": "HOLD_DEDICATED_REVIEW",
+      "owning_pr": null,
+      "reason": "Retained on the source branch. Not promoted without a specific consumer, current-source reconciliation and appropriate verification."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/CLAUDE.md",
+      "source_diff_status": "M",
+      "disposition": "RETAIN_CURRENT_GUIDANCE",
+      "owning_pr": null,
+      "reason": "Preserve current instructions and historical source branch; do not overwrite main guidance with older omnibus notes."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/css/single-product.css",
+      "source_diff_status": "M",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/css/single-product.min.css",
+      "source_diff_status": "M",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/data/build-collection-sot.py",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1034,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-x-love-hurts-basketball-shorts.md",
+      "source_diff_status": "M",
+      "disposition": "PRESERVE_MAIN_PRODUCT_PROJECTIONS",
+      "owning_pr": null,
+      "reason": "Preserve current founder corrections. CSV and dossiers are registry projections and must be regenerated from the final registry, never restored wholesale from the older omnibus branch."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1034,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json",
+      "source_diff_status": "M",
+      "disposition": "SCOPED_PR",
+      "owning_pr": 1034,
+      "reason": "Assigned to the existing or recovered scoped PR. Path overlap is routing, not proof of byte equivalence; that PR preserves main corrections. Founder-merge hold remains; synchronization grants no release authority."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+      "source_diff_status": "M",
+      "disposition": "PRESERVE_MAIN_PRODUCT_PROJECTIONS",
+      "owning_pr": null,
+      "reason": "Preserve current founder corrections. CSV and dossiers are registry projections and must be regenerated from the final registry, never restored wholesale from the older omnibus branch."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/functions.php",
+      "source_diff_status": "M",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/inc/enqueue-templates.php",
+      "source_diff_status": "M",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/inc/product-3d-model.php",
+      "source_diff_status": "A",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/inc/woocommerce.php",
+      "source_diff_status": "M",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/languages/skyyrose.pot",
+      "source_diff_status": "M",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/phpunit.xml.dist",
+      "source_diff_status": "M",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/tests/bootstrap.php",
+      "source_diff_status": "M",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/tests/stubs/wp-stubs.php",
+      "source_diff_status": "M",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/tests/unit/Product3dModelTest.php",
+      "source_diff_status": "A",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/woocommerce/single-product.php",
+      "source_diff_status": "M",
+      "disposition": "HOLD_V1_PDP_3D_REVIEW",
+      "owning_pr": null,
+      "reason": "Preserve V1 PDP URL/enqueue/gallery/CSS/test source together. Needs focused PHP, token/build, desktop/mobile viewer and commerce verification before a UI PR is ready; do not copy older whole-theme files over current main."
+    }
+  ],
+  "inventory_merge_base": "6e1ec9b9b768bfa45c0d09e9a4f8bad4dc2f9ddd",
+  "inventory_diff_mode": "three-dot merge-base to source head"
+}

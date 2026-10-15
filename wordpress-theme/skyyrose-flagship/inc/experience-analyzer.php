@@ -72,7 +72,7 @@ function skyyrose_see_store_events( array $events, string $visitor_hash = '' ): 
 				"UPDATE {$table}
 				 SET event_count = event_count + 1, event_value = event_value + %f
 				 WHERE event_date = %s AND event_type = %s AND event_target = %s
-				   AND page_type = %s AND collection_slug = %s",
+				   AND page_type = %s AND collection_slug = %s AND event_id IS NULL",
 				$value,
 				$today,
 				$event_type,
@@ -110,6 +110,50 @@ function skyyrose_see_store_events( array $events, string $visitor_hash = '' ): 
 		++$stored;
 	}
 
+	return $stored;
+}
+
+/**
+ * Project acknowledged events once, including remote duplicates after a retry.
+ *
+ * The nullable unique key leaves historical aggregate rows intact. Each new
+ * event is one atomic row; a partial local failure is safely repairable without
+ * a marker/counter transaction. The key hashes site, environment and event UUID;
+ * it is not a visitor identifier. Normal 90-day event retention still applies.
+ *
+ * @param array  $events Validated events with a full durable acknowledgement.
+ * @param string $site_id Server-bound site identity.
+ * @param string $environment Server-bound environment.
+ * @return int|null Newly projected count, or null on any storage failure.
+ */
+function skyyrose_see_project_acknowledged_events( array $events, string $site_id, string $environment ): ?int {
+	if ( ! defined( 'SKYYROSE_SEE_DB_VERSION' ) || get_option( 'skyyrose_see_db_version' ) !== SKYYROSE_SEE_DB_VERSION ) {
+		return null;
+	}
+	global $wpdb;
+	$table  = $wpdb->prefix . 'skyyrose_analytics';
+	$stored = 0;
+	foreach ( $events as $event ) {
+		$key = hash( 'sha256', $site_id . ':' . $environment . ':' . $event['event_id'] );
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$result = $wpdb->query(
+			$wpdb->prepare(
+				"INSERT INTO {$table} (event_id, event_date, event_type, event_target, page_type, collection_slug, event_count, event_value, visitor_hash)
+				 VALUES (%s, %s, %s, %s, %s, %s, 1, 0, '')
+				 ON DUPLICATE KEY UPDATE event_id = VALUES(event_id)",
+				$key,
+				substr( $event['occurred_at'], 0, 10 ),
+				'engagement_' . $event['event_type'],
+				$event['target'] ?? '',
+				$event['page_type'],
+				$event['collection'] ?? ''
+			)
+		);
+		if ( false === $result ) {
+			return null;
+		}
+		$stored += 1 === $result ? 1 : 0;
+	}
 	return $stored;
 }
 
@@ -197,25 +241,20 @@ function skyyrose_see_get_summary( int $days = 30 ): array {
 		ARRAY_A
 	);
 
-	// Unique visitors (approximate, by hash).
-	// phpcs:ignore WordPress.DB.DirectDatabaseQuery
-	$unique_visitors = (int) $wpdb->get_var(
-		$wpdb->prepare(
-			"SELECT COUNT(DISTINCT visitor_hash)
-			 FROM {$table}
-			 WHERE event_date >= %s AND visitor_hash != ''",
-			$since
-		)
-	);
+	// Consented session identity lives in the durable backend. This legacy
+	// engagement projection cannot measure distinct people, even with old hashes.
+	$unique_visitors = null;
 
 	return array(
-		'period'          => $days,
-		'total_events'    => $total,
-		'unique_visitors' => $unique_visitors,
-		'by_type'         => $by_type ?: array(),
-		'by_collection'   => $by_collection ?: array(),
-		'by_page'         => $by_page ?: array(),
-		'daily_trend'     => $daily ?: array(),
+		'period'                   => $days,
+		'total_events'             => $total,
+		'unique_visitors'          => $unique_visitors,
+		'unique_visitors_status'   => 'unavailable',
+		'unique_visitors_evidence' => 'Legacy engagement projection does not measure unique visitors.',
+		'by_type'                  => $by_type ?: array(),
+		'by_collection'            => $by_collection ?: array(),
+		'by_page'                  => $by_page ?: array(),
+		'daily_trend'              => $daily ?: array(),
 	);
 }
 

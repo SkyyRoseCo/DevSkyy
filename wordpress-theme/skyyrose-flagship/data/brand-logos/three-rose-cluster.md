@@ -24,23 +24,22 @@ vines wrapping around the stems:
   ink edges and soft tonal shading on the petals.
   - One **large rose bloom** dominant in the upper portion of the composition,
     fully open, viewed face-on.
-  - One **medium bloom** on the upper-left, three-quarter angle, slightly
-    smaller.
+  - One **medium bloom** on the upper-left, three-quarter angle, slightly smaller.
   - One **smaller bud or partially-open rose** lower in the cluster.
   - A few **leaves** behind / between the blooms.
 - **Petals are greyscale** in the base art — light grey at the highlights, dark
-  grey to near-black at the shadows, with bold ink outlines. NOT
-  photo-realistic. NOT solid black. NOT solid white.
+  grey to near-black at the shadows, with bold ink outlines. NOT photo-realistic.
+  NOT solid black. NOT solid white.
 - **Stems are bright kelly green** — saturated, slightly cartoony, with darker
   green shading on the underside of each stem.
 - **Thorny vines** wrap around the stems and twist between the blooms. Thorns
   are clearly visible — short, sharp, dark-green spikes along the stems.
 - **A small white-and-light-blue cumulus cloud** sits at the very base of the
-  cluster, like a pedestal under the stems. The cloud has soft pillowy lobes and
-  subtle pale-blue shading on the underside.
-- The composition is **roughly oval/teardrop overall** — wider near the top (the
-  rose blooms), narrower at the bottom (where stems meet the cloud), bottom
-  anchored by the cloud.
+  cluster, like a pedestal under the stems. The cloud has soft pillowy lobes
+  and subtle pale-blue shading on the underside.
+- The composition is **roughly oval/teardrop overall** — wider near the top
+  (the rose blooms), narrower at the bottom (where stems meet the cloud),
+  bottom anchored by the cloud.
 
 ## Per-collection / per-SKU colorways
 
@@ -52,18 +51,16 @@ specifies the recolor):
   silicone appliqué / screen-print).
 - **Signature 'Stay Golden' Shirt (sg-002)** — recolored to **purple**.
 - **Signature 'Bay Bridge' Shirt (sg-005)** — recolored to **blue/cyan**.
-- **Signature Beanie (sg-007)** — resolve the selected variant from its actual
-  product artwork. The registry records an open variant/technique conflict; do
-  not use greyscale as a universal default.
-- **Mint & Lavender (sg-006 hoodie, sg-013 crewneck, sg-014 sweatpants)** —
-  small **lavender** rose-cluster recolor (founder-confirmed 2026-06-11 from the
-  techflat; the earlier 'pink' note was stale — the real garment shows
-  lavender/purple roses).
+- **Signature Beanie (sg-007)** — resolve the selected variant from its actual product artwork. The registry records an open variant/technique conflict; do not use greyscale as a universal default.
+- **Mint & Lavender (sg-006 hoodie, sg-013 crewneck, sg-014 sweatpants)** — small **lavender**
+  rose-cluster recolor (founder-confirmed 2026-06-11 from the techflat; the
+  earlier 'pink' note was stale — the real garment shows lavender/purple roses).
 
-Colorway-correct render references (selective recolor of this base art, used as
-attached references so the image model copies the right rose color) live at
-`assets/products/logos/three-rose-cluster-{greyscale,lavender,pink,purple, blue-cyan}.png`
-and are wired per SKU in `scripts/oai_render/references.py`.
+
+Colorway-correct render references (selective recolor of this base art, used
+as attached references so the image model copies the right rose color) live
+at `assets/products/logos/three-rose-cluster-{greyscale,lavender,pink,purple,
+blue-cyan}.png` and are wired per SKU in `scripts/oai_render/references.py`.
 
 ## What this logo IS NOT
 
@@ -83,10 +80,10 @@ same; the texture/colorway changes per technique:
   fabric surface — visibly 3D and tactile, NOT debossed/sunken, NOT a flat
   print. Embossed colorway is a reduced 3-color palette: **BLACK** (rose
   blooms), **WHITE** (cumulus cloud at base), **GREY** (stems, leaves, thorny
-  vines). NO kelly-green stems and NO blue cloud shading on the embossed version
-  — those canonical colors only appear in techniques that preserve the full
-  palette. The full canonical art SHAPES are preserved (three roses + leaves +
-  stems + thorny vines + cumulus cloud); only the colorway is reduced.
+  vines). NO kelly-green stems and NO blue cloud shading on the embossed
+  version — those canonical colors only appear in techniques that preserve the
+  full palette. The full canonical art SHAPES are preserved (three roses +
+  leaves + stems + thorny vines + cumulus cloud); only the colorway is reduced.
 - **Silicone appliqué** (e.g., Black Rose Joggers): raised silicone patch with
   full multi-color art preserved.
 - **Embroidered**: thread version of the art. Colors approximated in thread.
@@ -97,6 +94,6 @@ same; the texture/colorway changes per technique:
 
 ## Reference Image
 
-Image file: `data/brand-logos/three-rose-cluster.jpeg`. Pipelines that build RAS
-prompts attach this image as a reference (after the 3D scaffold and the
+Image file: `data/brand-logos/three-rose-cluster.jpeg`. Pipelines that build
+RAS prompts attach this image as a reference (after the 3D scaffold and the
 techflat) when rendering any product whose dossier names this art.

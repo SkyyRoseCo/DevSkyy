@@ -180,11 +180,20 @@ def parse_dossier_markdown(text: str) -> Dossier:
 
 
 def project_registry_dossier(product: dict) -> Dossier:
-    """Project a registry record, honoring structured founder specifications.
+    """Project a registry record's dossier exactly as the founder authored it.
 
-    Source markdown remains preserved in the registry. The effective garment
-    paragraph is shared by readers and generated markdown mirrors; unrelated
-    branding/negative sections are preserved rather than heuristically rewritten.
+    The dossier is the founder's design specification. Its **Garment type lock**
+    prose is the authoritative garment description, and it is consumed verbatim
+    by render prompts (nano_banana spec builder, asset scaffolding, the asset
+    manifest). It is returned unchanged -- never rewritten, never prefixed.
+
+    The registry's structured ``garment`` fields (fit, materials, features) are
+    machine extractions from that same prose, not fields the founder stated
+    separately, and the split is imperfect in places. They must not override the
+    prose they were derived from, and they must not be injected into a
+    prompt-bearing field. Callers that want them read ``product["garment"]``
+    (or ``skyyrose.core.product.get_product(sku)["garment"]``), where their
+    ``source`` records that they are derived.
     """
     entry = product.get("dossier", {})
     content = entry.get("content")
@@ -194,34 +203,6 @@ def project_registry_dossier(product: dict) -> Dossier:
     dossier = parse_dossier_markdown(content)
     if not dossier.slug:
         dossier.slug = slug
-
-    garment = product.get("garment")
-    if not isinstance(garment, dict):
-        return dossier
-    specifications: dict[str, list[str]] = {}
-    for field_name in ("materials", "fit", "features"):
-        field_value = garment.get(field_name)
-        specification = field_value.get("specification") if isinstance(field_value, dict) else None
-        if isinstance(specification, str) and specification.strip():
-            specifications.setdefault(specification.strip(), []).append(field_name.title())
-    parts = [f"{' / '.join(labels)}: {value}" for value, labels in specifications.items()]
-    color = garment.get("color")
-    if isinstance(color, str) and color.strip():
-        parts.append(f"Color: {color.strip()}")
-    sizes = garment.get("available_sizes")
-    if isinstance(sizes, list) and sizes and all(isinstance(size, str) for size in sizes):
-        parts.append(f"Available sizes: {' | '.join(sizes)}")
-    if not parts:
-        return dossier
-    dossier.garment_type_lock = (
-        "FOUNDER_CONFIRMED structured specifications "
-        "(take precedence over legacy dossier prose):\n" + "\n".join(parts)
-    )
-    replacement = f"**Garment type lock:** {dossier.garment_type_lock}"
-    pattern = r"\*\*Garment type lock:\*\*\s*.+?(?=\n\n|\n##|\Z)"
-    dossier.raw, count = re.subn(pattern, lambda _: replacement, content, count=1, flags=re.DOTALL)
-    if not count:
-        dossier.raw = f"{content.rstrip()}\n\n{replacement}\n"
     return dossier
 
 

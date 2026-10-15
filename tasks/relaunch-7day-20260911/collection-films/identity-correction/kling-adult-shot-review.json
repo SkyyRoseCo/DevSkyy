@@ -1,0 +1,41 @@
+{
+  "task_id": "14616b11-3f52-44e0-889a-945f1227ffaa",
+  "status": "CORRECTION_REQUIRED_DO_NOT_ASSEMBLE",
+  "scope": "Garment, scene, playback and reference provenance; no real-person identity verification claim.",
+  "casting_inputs": "Actual source-video performer frames731 and1427; old generated male excluded.",
+  "observed": {
+    "duration_seconds": 5.041,
+    "resolution": "1080x1920",
+    "audio": false,
+    "browser_playback": "Opening and ending viewed; playback completed"
+  },
+  "findings": [
+    {
+      "severity": "required",
+      "item": "Unsupported pale trouser graphic",
+      "correction": "Preserve plain dark source trousers, seams and folds."
+    },
+    {
+      "severity": "required",
+      "item": "Source-video corner mark reproduced in new generated scene",
+      "correction": "Exclude overlays from NEW footage only. Retain original source footage and its mark unchanged."
+    },
+    {
+      "severity": "required",
+      "item": "Pale carriage panels replace specified black curved metal",
+      "correction": "Use dark carriage, with neutral fill on garment."
+    },
+    {
+      "severity": "required",
+      "item": "Monument moves out of view instead of delivering large reveal",
+      "correction": "Separate reveal shot must resolve at monumental scale."
+    },
+    {
+      "severity": "nuance",
+      "item": "Cuff gathering is source-supported",
+      "correction": "Keep gathered satin and black ribs; avoid exaggerating highlights into deliberate pale trim."
+    }
+  ],
+  "pending": "Precise embroidery stability across all motion; founder review of generated likeness; complete corrected shared mascot scene.",
+  "next_generation_submitted": false
+}

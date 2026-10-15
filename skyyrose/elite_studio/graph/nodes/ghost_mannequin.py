@@ -8,6 +8,7 @@ plus the collar-detection helper _is_collar_garment and its keyword set.
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 
 from ..state import EliteStudioState
 from ._shared import _THREE_D_EST_COST_USD, run_sync
@@ -73,7 +74,13 @@ def three_d_node(state: EliteStudioState) -> dict:
     sku = state["sku"]
 
     # Reference image: techflat from state or vision-agent lookup
-    ref_path = state.get("reference_path") or _reference_path(sku)
+    try:
+        ref_path = _reference_path(sku, "front")
+        supplied = state.get("reference_path")
+        if supplied and Path(supplied).resolve() != Path(ref_path):
+            raise ValueError("State reference does not match the registry front binding")
+    except (KeyError, ValueError, OSError) as exc:
+        return {"status": "error", "error": str(exc), "failed_step": "3d_generation"}
 
     # Budget guard — round-table tournament (Meshy + Tripo + TRELLIS local +
     # AniGen) can dispatch up to 4 providers in parallel; estimate the
@@ -121,7 +128,7 @@ def three_d_node(state: EliteStudioState) -> dict:
 
 
 def preflight_node(state: EliteStudioState) -> dict:
-    """Dual-vision pre-flight: verify reference image matches CSV spec.
+    """Dual-vision pre-flight: verify reference image matches registry spec.
 
     Only runs for ghost_mannequin style — flat_lay skips (returns empty dict).
     """
@@ -131,39 +138,15 @@ def preflight_node(state: EliteStudioState) -> dict:
     sku = state["sku"]
 
     try:
-        from ...catalog import Catalog
+        from skyyrose.core.product import get_product, render_reference
 
-        cat = Catalog.load()
-        product = cat.require(sku)
-        expected_garment = product.name
-        # Enrich with the dossier garment_type_lock so the dual-vision gate
-        # verifies against the actual construction rather than the product name
-        # alone. The name can mis-cue the gate: br-006 "Sherpa Jacket" is in fact
-        # a satin-exterior bomber with sherpa *lining*, so a name-only check
-        # false-blocks the correct (satin) source image for not looking "fuzzy".
-        try:
-            from ...catalog import get_product_with_dossier
-
-            _lock = get_product_with_dossier(sku)["dossier"].get("garment_type_lock", "")
-            if _lock:
-                expected_garment = f"{product.name} — {_lock}"
-        except Exception:  # dossier optional at this gate; name-only is an acceptable fallback
-            pass
-
-        # Use catalog-defined source image if available, else fallback to rigid SKU lookup
-        source_img = product.source_files[0] if product.source_files else ""
-        if source_img:
-            # Source images live in wordpress-theme/skyyrose-flagship/assets/images/products/
-            ref_path = str(
-                __import__(
-                    "skyyrose.elite_studio.agents.vision_agent", fromlist=["_PRODUCTS_DIR"]
-                )._PRODUCTS_DIR
-                / source_img
-            )
-        else:
-            ref_path = state.get("reference_path") or __import__(
-                "skyyrose.elite_studio.agents.vision_agent", fromlist=["_reference_path"]
-            )._reference_path(sku)
+        product = get_product(sku)
+        expected_garment = f"{product['name']} — {product['dossier']['garment_type_lock']}"
+        view = state.get("view", "front")
+        ref_path = render_reference(product, view)["path"]
+        supplied = state.get("reference_path")
+        if supplied and Path(supplied).resolve() != Path(ref_path):
+            raise ValueError("State reference does not match the registry SKU/view binding")
 
     except Exception as exc:
         return {
@@ -180,6 +163,7 @@ def preflight_node(state: EliteStudioState) -> dict:
             image_path=ref_path,
             sku=sku,
             expected_garment=expected_garment,
+            view=view,
         )
     )
 

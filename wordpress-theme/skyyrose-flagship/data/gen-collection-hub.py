@@ -2,7 +2,7 @@
 """Generate the per-collection designer hub: data/collections/<slug>/index.html.
 
 Renders FROM the canonical assets/ tree via relative ../../../assets/ paths — no image
-duplication (single-asset-tree lock). Reads identity.json + the generated sot.json +
+duplication (single-asset-tree lock). Reads the registry's collection identity + the generated sot.json +
 copy.md. All dynamic text is HTML-escaped. DO NOT hand-edit index.html.
 
 USAGE: python3 gen-collection-hub.py [--out-dir DIR]

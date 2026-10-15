@@ -36,7 +36,6 @@ defined( 'ABSPATH' ) || exit;
 		<p class="hp-close__eyebrow"><?php esc_html_e( 'Join the Movement', 'skyyrose' ); ?></p>
 		<h2 class="hp-close__statement" id="hp-close-h">
 			<?php esc_html_e( 'For The Real Ones', 'skyyrose' ); ?>
-			<span class="hp-close__script"><?php esc_html_e( 'Luxury grows from concrete.', 'skyyrose' ); ?></span>
 		</h2>
 		<p class="hp-close__desc"><?php esc_html_e( 'Early access to drops. Behind-the-scenes from Oakland. Stories that matter. No spam, just substance.', 'skyyrose' ); ?></p>
 

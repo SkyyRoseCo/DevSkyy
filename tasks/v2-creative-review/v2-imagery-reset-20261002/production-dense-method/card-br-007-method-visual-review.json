@@ -1,0 +1,36 @@
+{
+  "operation_id": "v2-reset-20261002-dense-method-card-br-007-method",
+  "job_digest": "0a8e6e1dbb8f624aa4e6dabacd3c8235cb6b5756e90309635dbc1c064ec1ea71",
+  "sources_digest": "2148b59e72bbb6907ed297ccde10d07c635191274b1353b812596e5875b231ca",
+  "candidate": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/production-dense-method/quarantine/card-br-007-method.png",
+    "sha256": "5dc9e70947183f159c5ad889aa441677907f5a5b8fe4d3f22b941f094bcf8c26"
+  },
+  "full_size_pixels": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/production-dense-method/quarantine/card-br-007-method.png",
+    "sha256": "5dc9e70947183f159c5ad889aa441677907f5a5b8fe4d3f22b941f094bcf8c26"
+  },
+  "desktop_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-007-card-desktop.png",
+    "sha256": "c8a2758e6b2dd9c93a281a326213199957cfab6595db7d3b25cf97e72f9a5cf3"
+  },
+  "mobile_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-007-card-mobile.png",
+    "sha256": "572b0af77a304fb4e6ca3cf33c00eda17939485ba0415512a1eb4549aa2f1366"
+  },
+  "reviewer": "/root/v2_prompt_precheck",
+  "status": "PASS",
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "checks": {
+    "artwork_fidelity": "PASS",
+    "cinematic_light": "PASS",
+    "collection_specific_storytelling": "PASS",
+    "credible_material_response": "PASS",
+    "editorial_composition": "PASS",
+    "fashion_commerce_intent": "PASS",
+    "garment_artwork_identity": "PASS",
+    "optical_integration": "PASS",
+    "product_fidelity": "PASS",
+    "product_readability": "PASS"
+  }
+}

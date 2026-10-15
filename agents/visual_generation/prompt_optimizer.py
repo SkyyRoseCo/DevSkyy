@@ -491,7 +491,7 @@ Search Context:
 - Product: SkyyRose {product_type}
 - Trends: {trends_str}
 - Location: {location_context}
-- Brand: Luxury streetwear, Luxury Grows from Concrete.
+- Brand: Luxury streetwear
 
 Search for:
 1. Current {trends_str} in premium streetwear photography

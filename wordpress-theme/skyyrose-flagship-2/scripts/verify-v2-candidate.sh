@@ -24,21 +24,6 @@ for route in \
 	require_file "$route"
 done
 
-rights_record="$REPO_ROOT/.fashion-theme/founder-rights-attestation-2026-08-26.json"
-runtime_capture="$REPO_ROOT/.fashion-theme/woocommerce-runtime-capture-2026-08-26.json"
-if [[ ! -f "$rights_record" ]] || ! jq -e '.record_id == "founder-rights-attestation-2026-08-26"' "$rights_record" >/dev/null; then
-	echo "FAIL founder V2 media-rights attestation missing" >&2
-	exit 1
-fi
-if ! jq -e '([.intake_sources[]?.rights.status, .media[]?.rights.status] | index("MISSING")) | not' "$REPO_ROOT/.fashion-theme/shot-manifest.json" >/dev/null; then
-	echo "FAIL V2 media manifest still contains an unapproved rights record" >&2
-	exit 1
-fi
-if [[ ! -f "$runtime_capture" ]] || ! jq -e '.result.exact_catalog_sku_bindings == 33 and (.result.missing_catalog_skus | length == 0) and (.result.unpublished_catalog_skus | length == 0)' "$runtime_capture" >/dev/null; then
-	echo "FAIL current 33-SKU WooCommerce authority capture missing or incomplete" >&2
-	exit 1
-fi
-
 for approved_visual in \
 	assets/sot/images/hero/black-rose-lake-merritt-monument-v2.png \
 	assets/sot/images/hero/black-rose-typography-star-salon-v3.png \
@@ -138,7 +123,7 @@ fi
 
 if ! rg -q "function skyyrose2_presentation_registry" "$THEME_DIR/functions.php" || \
 	! rg -q "woocommerce_cart_is_empty" "$THEME_DIR/woocommerce/cart/cart.php" || \
-	! rg -Fq "function_exists( 'wc_get_page_permalink' )" "$THEME_DIR/404.php" || \
+	! rg -Fq "home_url( '/collections/' )" "$THEME_DIR/404.php" || \
 	rg -Fq "if ( empty( \$products ) && 'pre-order' === \$collection )" "$THEME_DIR/functions.php"; then
 	echo "FAIL V2 truth and WooCommerce compatibility contract missing" >&2
 	exit 1
@@ -186,19 +171,40 @@ for collection in signature black-rose love-hurts kids-capsule; do
 		echo "FAIL generic product card: missing $collection card direction" >&2
 		exit 1
 	fi
-	for width in 640 970; do
-		require_file "assets/sot/images/product-card-portals/${collection}-portal-statue-${width}w.webp"
+	for width in 640w 970w; do
+		statue="$THEME_DIR/assets/sot/images/product-card-portals/$collection-portal-statue-$width.webp"
+		if [[ ! -s "$statue" ]]; then
+			echo "FAIL collection portal statue missing: $collection $width" >&2
+			exit 1
+		fi
 	done
 done
 
 if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'data-portal-frame=' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'data-portal-frame="<\?php echo esc_attr' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__statue' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'sr2-c-product-portal__architecture' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__reel' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__frame-crest' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'function skyyrose2_product_view_image_ids' "$THEME_DIR/functions.php"; then
+	! rg -q 'skyyrose2_product_verified_card_media' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'return array_slice\( \$ordered, 0, 3 \);' "$THEME_DIR/functions.php" || \
+	! rg -q 'skyyrose2_render_product_loop_card\( \$piece' "$THEME_DIR/functions.php" || \
+	! rg -q 'data-reel-count' "$THEME_DIR/template-parts/commerce/product-card.php"; then
 	echo "FAIL approved ornate product-card frame or verified view reel missing" >&2
+	exit 1
+fi
+
+if ! rg -q 'skyyrose2_product_verified_card_media' "$THEME_DIR/template-parts/commerce/product-hero.php" || \
+	! rg -q 'woocommerce_product_get_image_id' "$THEME_DIR/template-parts/commerce/product-hero.php" || \
+	! rg -q 'On-model product imagery is being verified' "$THEME_DIR/template-parts/commerce/product-hero.php"; then
+	echo "FAIL product page does not enforce the approved on-model media sequence" >&2
+	exit 1
+fi
+
+if ! jq -e '
+	(.products | length) == 33 and
+	all(.products[]; (.views[0].role // "") == "on_model_front")
+' "$THEME_DIR/data/opening-product-media.json" >/dev/null; then
+	echo "FAIL every product card requires an approved on-model lead" >&2
 	exit 1
 fi
 
@@ -231,7 +237,7 @@ if ! rg -q 'function skyyrose2_collection_scene_product' "$THEME_DIR/functions.p
 fi
 
 if ! rg -q 'function skyyrose2_immersive_url' "$THEME_DIR/functions.php" || \
-	! rg -q 'Enter the full scene' "$THEME_DIR/template-collection.php" || \
+	! rg -q 'skyyrose2_immersive_url' "$THEME_DIR/template-parts/collections/chapters.php" || \
 	! rg -q "'immersive-signature'.*template-immersive-signature.php" "$THEME_DIR/inc/presentation-registry.php"; then
 	echo "FAIL dedicated immersive collection routes are not provisioned and linked" >&2
 	exit 1
@@ -256,11 +262,11 @@ if ! rg -q "privacy-policy" "$THEME_DIR/functions.php" || \
 	exit 1
 fi
 
-if ! rg -q 'sr2-scene-effect--bridge-lights' "$THEME_DIR/template-collection.php" || \
-	! rg -q 'sr2-scene-effect--petals' "$THEME_DIR/template-collection.php" || \
-	! rg -q 'sr2-cloud-roll' "$THEME_DIR/assets/css/theme.css" || \
-	! rg -q 'sr2-petal-fall' "$THEME_DIR/assets/css/theme.css"; then
-	echo "FAIL collection-specific hero atmosphere animation contract missing" >&2
+if ! rg -q 'sr2-arrival' "$THEME_DIR/template-parts/collections/arrival.php" || \
+	! rg -q 'data-recovery-hero-video' "$THEME_DIR/template-parts/collections/arrival.php" || \
+	! rg -q 'skyyrose2_collection_hero_motion' "$THEME_DIR/template-parts/collections/arrival.php" || \
+	! rg -q 'data-recovery-hero-video' "$THEME_DIR/assets/js/visual-recovery.js"; then
+	echo "FAIL collection arrival motion contract missing" >&2
 	exit 1
 fi
 

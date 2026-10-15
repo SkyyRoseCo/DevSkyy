@@ -11,7 +11,7 @@ export const meta = {
     { title: 'Monitor',       detail: 'Agent runs S1/S2/S3 via cache-busted curl, S4 best-effort MCP; returns structured signals' },
     { title: 'Diagnose',      detail: 'Reads baseline + heal-knowledge.json; computes regressions; applies LEARN-FIRST (known signature → proven fix)' },
     { title: 'Heal+Improve',  detail: 'Per-surface heal-doctor agent in git worktree; code-review gate judging heal AND net-improvement (1 root-cause retry)' },
-    { title: 'Gate',          detail: 'php -l on touched PHP + phpcs --standard=.phpcs.xml (errors) + best-effort Playwright harness' },
+    { title: 'Gate',          detail: 'php -l on touched PHP + phpcs (V1 --standard=.phpcs.xml, V2 --standard=phpcs.xml; errors) + best-effort Playwright harness' },
     { title: 'Deploy',        detail: 'Hard-gated on args.autoDeploy===true AND gate green AND settings permission; else dry manifest' },
     { title: 'Learn-after',   detail: 'Upsert heal-knowledge.json, append heal-log.jsonl, surface escalations, update .wolf/memory.md' },
   ],
@@ -20,7 +20,16 @@ export const meta = {
 // ---------------------------------------------------------------- canonical paths
 
 const REPO      = '/Users/theceo/DevSkyy'
+// Two themes exist. THEME is the V1 source this loop was built against ("SkyyRose", text domain
+// skyyrose, SKYYROSE_VERSION). skyyrose.co serves the "SkyyRose Flagship 2" lineage (text domain
+// skyyrose-flagship-2, SKYYROSE2_VERSION), whose source is THEME_V2. Prompts name both so the heal
+// doctor states which theme it edits instead of assuming "the theme" is V1.
 const THEME     = `${REPO}/wordpress-theme/skyyrose-flagship`
+const THEME_V2  = `${REPO}/wordpress-theme/skyyrose-flagship-2`
+const THEME_NOTE =
+  'V1 "SkyyRose" (text domain skyyrose, SKYYROSE_VERSION). NOTE: skyyrose.co serves the "SkyyRose Flagship 2" ' +
+  'lineage (text domain skyyrose-flagship-2, SKYYROSE2_VERSION, own package.json; build: npm run build:assets) ' +
+  'whose source is Theme V2 below — read the live style.css Theme Name/Text Domain and state which theme you edit.'
 const BASELINE  = `${REPO}/.claude/state/theme-health-baseline.json`
 const KNOWLEDGE = `${REPO}/.claude/state/heal-knowledge.json`
 const HEAL_LOG  = `${REPO}/tasks/heal-log.jsonl`
@@ -364,7 +373,8 @@ ${JSON.stringify(reg, null, 2)}
 
 KEY PATHS:
   Repo  : ${REPO}
-  Theme : ${THEME}
+  Theme : ${THEME}  — ${THEME_NOTE}
+  Theme V2 : ${THEME_V2}
   Baseline : ${BASELINE}
   Knowledge: ${KNOWLEDGE}
 
@@ -487,7 +497,8 @@ Verify the heal changes are safe to deploy. Run ALL checks — report real outpu
 FILES CHANGED by heal:
 ${healedSurfaces.join('\n')}
 
-THEME ROOT: ${THEME}
+THEME ROOT: ${THEME}  — ${THEME_NOTE}
+THEME V2 ROOT: ${THEME_V2}  (use this root for the checks when the heal edited V2 files)
 
 CHECKS REQUIRED:
 
@@ -495,9 +506,11 @@ CHECKS REQUIRED:
    For each changed .php file: /opt/homebrew/bin/php -l <file>
    phpLintPass = all return "No syntax errors detected"
 
-2. PHPCS — errors only
-   cd ${THEME} && vendor/bin/phpcs --standard=.phpcs.xml -s --report=summary <changed php files>
+2. PHPCS — errors only (each theme has its own ruleset: V1 .phpcs.xml, V2 phpcs.xml; never apply one theme's standard to the other)
+   V1: cd ${THEME} && vendor/bin/phpcs --standard=.phpcs.xml -s --report=summary <changed php files>
    (Composer must be installed: ~/.local/bin/composer install if vendor/ missing)
+   V2: cd ${THEME_V2} && ${THEME}/vendor/bin/phpcs --standard=phpcs.xml -s --report=summary <changed php files>
+   (skyyrose-flagship-2 has no vendor/; the V1 theme's composer install supplies the binary)
    phpcsPass = zero errors (warnings ok)
 
 3. PLAYWRIGHT — best-effort

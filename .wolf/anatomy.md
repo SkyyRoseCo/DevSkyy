@@ -38,7 +38,6 @@
 - `IDEA.md` (~5 tok)
 - `init.sql` — DevSkyy Database Initialization (~198 tok)
 - `lint-staged.config.mjs` — Declares relPaths (~346 tok)
-- `main.py` — Higgsfield SDK example: Seedance 2.5 text-to-video via higgsfield_client.subscribe; HF_KEY from .env.local; fails closed on failed/nsfw/canceled (~1100 tok)
 - `main_enterprise.py` — API router (~5854 tok)
   - fn `_parse_sentry_sample_rate` L39-52 (~130 tok)
   - fn `_resolve_cors_origin_regex` L53-78 (~327 tok)
@@ -75,6 +74,9 @@
 - `skills-lock.json` (~3853 tok)
 - `SOT.md` — Source of Truth (SOT) Registry (~5533 tok)
 - `vercel.json` — /*.ts": { (~525 tok)
+- `main.py` — Higgsfield Seedance 2.5 text-to-video example — BILLABLE; fail-closed confirm_billable_run gate (manifest always, SKYYROSE_AUTO_CONFIRM read before .env.local loads, no TTY aborts, exit 5) (~1818 tok)
+- `wolf_memory_mcp.py` — stdio launcher for the wolf-memory MCP server (darwin fork-safety guard before imports) (~249 tok)
+- `worktree_fleet_mcp.py` — stdio launcher for the worktree-fleet MCP server (darwin fork-safety guard before imports) (~208 tok)
 
 ## .claude/
 
@@ -3999,6 +4001,7 @@
 - `README.md` — Project documentation (~1993 tok)
 - `render-fidelity-industry-standard-2026-06-15.html` — AI Product-Render Fidelity — Industry Standard & SkyyRose Reconciliation (2026-06-15) (~4363 tok)
 - `SYSTEM_ARCHITECTURE.md` — DevSkyy System Architecture (~3118 tok)
+- `mcp-worktree-fleet-and-wolf-memory.html` — Architecture of the two in-repo MCP servers: tools, stores, locking, failure modes (~6296 tok)
 
 ## docs/audits/
 
@@ -5542,7 +5545,7 @@
 - `api.ts` — TypeScript resolves `@/lib/api` to this file before the `api/` directory. (~62 tok)
 - `auth.d.ts` — NextAuth.js type augmentations for custom JWT fields (~146 tok)
 - `auth.ts` — NextAuth.js v4 Configuration (~798 tok)
-- `catalog-csv.ts` — Pure CSV transforms for the canonical SkyyRose catalog. (~2228 tok)
+- `catalog-csv.ts` — Pure READ-side CSV helpers for the registry's catalog projection: EDITABLE_COLUMNS, CatalogPatch, splitCsvRow, collapseNewlines. No row serialization/splicing (writes go through the registry). (~600 tok)
   - fn `splitCsvRow` L38-62 (~163 tok)
   - fn `escapeCsvCell` L63-69 (~44 tok)
   - fn `serializeCsvRow` L70-79 (~117 tok)
@@ -5551,7 +5554,7 @@
   - fn `applyPatch` L103-197 (~892 tok)
   - fn `parseDataRows` L198-255 (~342 tok)
 - `catalog-server.ts` — Exports getEnrichedCollection, getAllEnrichedCollections (~401 tok)
-- `catalog-write.ts` — Canonical catalog WRITE path (server-only). (~828 tok)
+- `catalog-write.ts` — Catalog WRITE path (server-only): spawns `python -m skyyrose.core.product_registry update <sku> --registry <path>` via execFile (args array, DEVSKYY_PYTHON, 30s timeout); never writes the CSV; CatalogWriteError kinds unavailable/rejected/not_found (503/400/404 in the route). Tests: frontend/tests/catalog-write.test.ts, catalog-put-api.test.ts. (~1900 tok)
   - section `UpdateResult` L26-35 (~75 tok)
   - fn `updateProductRow` L36-76 (~427 tok)
 - `catalog.ts` — Canonical product catalog reader (server-only). Exposes resolveRepoFile/resolveCsvPath/resetCatalogCache; reuses splitCsvRow from catalog-csv.ts. (~1494 tok)
@@ -6116,7 +6119,6 @@
 - `context_dev.py` — Server-side Context.dev structured web extraction. (~881 tok)
   - class `ContextDevConfigurationError` L18-21 (~38 tok)
   - fn `extract_structured_data` L22-83 (~711 tok)
-- `openai_agents_api.py` — Raw-httpx client for OpenAI Agents API beta (/v1/agents/sessions, OpenAI-Beta: agents=v1); dry-run-by-default paid create_session + STOP-AND-SHOW manifest, SSE terminal-state classifier, free check_access probe (~4288 tok)
 - `wordpress_client.py` — Pydantic: ProductData (50 fields) (~6631 tok)
   - class `APIType` L40-46 (~56 tok)
   - class `SkyyRoseCollection` L47-99 (~444 tok)
@@ -6315,6 +6317,19 @@
   - class `VerificationConfig` L74-134 (~570 tok)
   - class `LLMVerificationEngine` L135-345 (~2411 tok)
 
+## data/decisions/
+
+- `task-routing.labelled.jsonl` — DRAFT labelled set (75 cases, 5 per TaskCategory) for scripts/decision_calibrate.py; labels await founder correction (~9000 tok)
+
+## llm/decisions/
+
+- `__init__.py` — Public API of the in-house typed decision layer (Choice/Score/Noul, engine, gate, calibration) (~400 tok)
+- `types.py` — Choice/Score/Noul questions, typed answers, Route (SHARP/SPLIT), DecisionFailure always SPLIT (~1200 tok)
+- `gate.py` — GatePolicy thresholds + Noul deadband; build_answer() shapes a distribution into a routed answer (~650 tok)
+- `backend.py` — LogprobBackend: letter options, first-token top_logprobs, coverage refusal, order debias (~1100 tok)
+- `engine.py` — DecisionEngine.decide(): concurrent questions, per-question failure -> DecisionFailure (~650 tok)
+- `calibration.py` — LabelledCase, run_cases, ECE, recommend_threshold, calibration_report (~1300 tok)
+
 ## llm/providers/
 
 - `__init__.py` (~260 tok)
@@ -6342,6 +6357,26 @@
   - class `StabilityClient` L38-630 (~5050 tok)
 - `vertex_imagen.py` — VertexImagenClient: generate, generate_fast, edit, upscale + 1 more (~4680 tok)
   - class `VertexImagenClient` L47-501 (~4286 tok)
+
+## mcp_servers/
+
+- `__init__.py` — Package marker for the in-repo stdio MCP servers (~20 tok)
+- `_shared.py` — Shared by both servers: ResponseFormat/format_response, locked_transaction (cross-process SQLite write lock), apply_darwin_fork_safety (bug-263) (~1512 tok)
+
+## mcp_servers/wolf_memory/
+
+- `__init__.py` — Package marker (~22 tok)
+- `server.py` — FastMCP instance + paths; WOLF_BUGLOG_PATH / WOLF_CEREBRUM_PATH / WOLF_LOCK_DB_PATH override the .wolf/ defaults (~154 tok)
+- `store.py` — WolfMemoryStore: atomic bug-NNN allocation, near-duplicate bump, byte-stable _serialize, cerebrum_append; validate_cerebrum_entry refuses any line break or leading '#' (~3105 tok)
+- `tools.py` — MCP tools bug_next_id / bug_log / bug_bump / bug_search / cerebrum_append and their Pydantic inputs (~1570 tok)
+
+## mcp_servers/worktree_fleet/
+
+- `__init__.py` — Package marker (~19 tok)
+- `git_ops.py` — Real `git worktree` wrappers: _reject_option_like (no '-' refs/paths), local-branch-only adoption, push_status with PushState.UNKNOWN for an unresolvable base_ref (~1968 tok)
+- `server.py` — FastMCP instance + REPO_ROOT; FLEET_DB_PATH overrides .wolf/fleet.db (~109 tok)
+- `store.py` — WorktreeFleetStore ownership registry: claim (row under lock, git outside it, rollback on failure), owner-checked release with an allow-list push gate, heartbeat, prune that reports failures; paths resolved + containment-checked (~3644 tok)
+- `tools.py` — MCP tools worktree_claim / heartbeat / list / release / prune; maps store and git errors to structured responses (~1865 tok)
 
 ## mcp_tools/
 
@@ -8613,7 +8648,6 @@
 
 ## scripts/
 
-- `wolf_memory_rotate.py` — rotates .wolf/memory.md past 128KB: keeps newest ~64KB, moves older entries byte-exact to .wolf/memory-archive/; carries over concurrent appends; run at SessionStart by .wolf/hooks/memory-session-log.sh (~1500 tok)
 - `__init__.py` (~0 tok)
 - `3D_GENERATION_STATUS.md` — 3D Generation Status - READY (API Key Required) (~1003 tok)
 - `add_love_hurts_and_logos_to_lora.py` — luxury_post_process, upscale_with_lanczos, detect_garment_type, generate_training_caption + 2 more (~4004 tok)
@@ -8721,7 +8755,7 @@
   - fn `benchmark_semaphore_limiting` L290-348 (~580 tok)
   - fn `print_summary` L349-384 (~399 tok)
   - fn `main` L385-412 (~291 tok)
-- `bug322_sig_commerce_audit.py` — bug-322 follow-up: git-only sha256 audit of 21 stale SIG-COMMERCE contract bindings vs codex/final-scenes-e2e-20260830; --deep hashes every blob in .git (all refs/reflogs/unreachable) with provenance; gated (--fire, manifest, y) Agents API 3-subagent delegation (~6517 tok)
+- `asset_sot_census.py` — Asset SOT census: every in-scope media file must be referenced by a declared ledger (registry, visual-manifest, typography, projections, Flagship 2 media ledgers, review inventory) or be a byte copy of an owned file; `--check` (exit 1 orphans, 2 ledger error) / `--report` JSON. Wired into CI catalog-validate. (~4200 tok)
 - `build_asset_manifest.py` — Generate ``assets/products/manifest.json`` — the content-hashed SKU→asset map. (~2066 tok)
   - fn `_catalog_rows` L49-61 (~130 tok)
   - fn `_record` L62-68 (~82 tok)
@@ -8874,6 +8908,7 @@
   - fn `_write_manifest` L158-171 (~142 tok)
   - fn `_write_readme` L172-215 (~465 tok)
   - fn `main` L216-270 (~507 tok)
+- `decision_calibrate.py` — Calibrate llm/decisions on a labelled JSONL set; paid run refuses without --yes (~800 tok)
 - `demo_image_generation.py` — demo_replicate, demo_stability, compare_providers, main + 1 more (~3045 tok)
   - fn `demo_replicate` L23-121 (~905 tok)
   - fn `demo_stability` L122-243 (~1110 tok)
@@ -8893,6 +8928,9 @@
   - fn `build_matrix` L206-335 (~1426 tok)
   - fn `render_markdown` L336-395 (~793 tok)
   - fn `main` L396-434 (~476 tok)
+- `deploy-production.sh` — Production wrapper: pins .env.wordpress + skyyrose-flagship-2 source, validates host/SSH user/WP_THEME_PATH, execs deploy-theme.sh (~450 tok)
+- `deploy-staging.sh` — Staging wrapper: pins .env.wordpress.staging + skyyrose-flagship-2 source, validates *.wpcomstaging.com host, execs deploy-theme.sh (~400 tok)
+- `deploy-target-lib.sh` — Shared wrapper body: env-file validation without sourcing, inherited-var refusal, --allow-* one-shot flags (~2200 tok)
 - `deploy_elementor_templates.py` — ElementorDeployer: get_page_by_slug, deploy_template, deploy_all, main (~1786 tok)
   - class `ElementorDeployer` L14-147 (~1362 tok)
   - fn `main` L148-189 (~373 tok)
@@ -8910,7 +8948,7 @@
 - `deploy-holo-cards.sh` — scripts/deploy-holo-cards.sh -- Deploy Holo product card rollout to production (~3234 tok)
 - `deploy-mu-plugin.sh` — scripts/deploy-mu-plugin.sh -- SCP one MU-plugin (MU_SRC param, dest=basename) to wp-content/mu-plugins/ + nonce-endpoint verify; STOPSHOW_ACK-gated (~1048 tok)
 - `deploy-pipeline.sh` — scripts/deploy-pipeline.sh -- Single-command deploy pipeline for SkyyRose WordPress theme (~1847 tok)
-- `deploy-theme.sh` — scripts/deploy-theme.sh -- Production deploy script for SkyyRose WordPress theme (~13969 tok)
+- `deploy-theme.sh` — Deploy ENGINE for the WordPress theme; refuses direct runs (needs DEPLOY_TARGET from a wrapper), target-host + SSH-destination + live theme identity gates, V1-only until PR #918 (~17800 tok)
 - `designqc-playwright.mjs` — Captures desktop and mobile visual-QA evidence without OpenWolf's (~644 tok)
 - `diagnose_cli_raw.py` — Build the exact CLI command the SDK would use and run it via subprocess (~507 tok)
 - `diagnose_orchestrator.py` — Test ClaudeSDKClient (async context manager) with MCP server. (~665 tok)
@@ -9140,6 +9178,8 @@
   - fn `generate_model_with_product` L131-176 (~403 tok)
   - fn `main` L177-265 (~840 tok)
 
+- `verify_live_registries.py` — Page registries (V1 skyyrose / V2 skyyrose-flagship-2 routes + DOM assertions) for verify_live_structure.py (~3600 tok)
+- `verify_live_structure.py` — Post-deploy Scrapling DOM check; picks the registry from the LIVE theme's Text Domain, fails closed (~5000 tok)
 ## scripts/_lib/
 
 - `script-utils.js` — scripts/_lib/script-utils.js — shared utilities for the per-edit toolchain. (~543 tok)
@@ -9214,39 +9254,41 @@
   - fn `show_upload_stopandshow` L64-100 (~305 tok)
   - fn `upload_zip` L101-183 (~614 tok)
 
-## pipelines/blender_render/
+## ./docs/research/
 
-Headless-Blender render worker (2026-09-17). Consumes the `blender_render` Redis
-stream fed by `/api/v1/render-jobs`; two job types — `render_stills` (Cycles CPU
-turntable PNGs) and `optimize_web` (sheen patch + gltfpack + web gate). Fails
-CLOSED on every path.
+- `2026-09-12-brand-story-storyboard-line-introduction-workflows.md` — deep-research report: brand-story frameworks/tests, storyboard + AI pipeline, collection-launch/drop model, AI disclosure law, SkyyRose applied section; 130 cited sources (~17770 tok)
+- `2026-09-12-brand-story-ledgers/` — three exa agent reports with full URL ledgers backing the report above; provenance evidence, not prose to read (~34497 tok)
 
-- `models.py` — Pydantic v2 job models; key/SKU validation, `count·resolution²·samples ≤ 2e9` budget. (~1798 tok)
-- `worker.py` — queue consumer: get→execute→update→ack wrapped, infra errors NACK×3 then ACK, `reclaim_pending` janitor, child kill on cancel, `check_still` opaque-RGB uniformity gate. (~5248 tok)
-- `render_stills.py` — runs INSIDE Blender (bpy only): import glTF, frame camera to bbox, 3-light rig, transparent film, N stills. (~2560 tok)
-- `artifacts.py` — keyed artifact store (Local + S3-compatible), atomic tmp+rename put, delete for rollback. (~1783 tok)
-- `store.py` — job store; RedisJobStore subclass overriding only get/list. (~876 tok)
-- `oneshot.py` — in-process single-job runner used for local E2E without Redis. (~1003 tok)
+## tests/scripts/ (census)
 
-## api/v1/render_jobs/
+- `test_asset_sot_census.py` — tmp_path repo tests for scripts/asset_sot_census.py: reference kinds, byte copies, scope reasons, fail-closed ledgers, exit codes. (~1500 tok)
 
-- `router.py` — `/render-jobs` POST 202 + GET {job_id}/list/health. Mounted in `main_enterprise.py` (lazy `_IncludedRouter` — verify with TestClient, NOT `app.routes`; bug-330). 503 fail-closed when the artifact store is unconfigured. (~1850 tok)
-- `schemas.py` — request/response envelopes matching the clothing_3d convention. (~248 tok)
+## tests/mcp_servers/
 
-## skyyrose/elite_studio/pipeline3d/ — web-GLB modules (2026-09-17)
+- `__init__.py` — Package marker — without it this dir's conftest shadows the ROOT conftest for `import conftest` (bug-350) (~109 tok)
+- `conftest.py` — Points both servers' env path overrides at a throwaway dir at collection time (assigned, not setdefault) so tool imports never open the live .wolf stores (~322 tok)
+- `test_wolf_memory_cerebrum.py` — cerebrum_append: section targeting, heading-injection and every-line-break refusal, anchored heading match (~1955 tok)
+- `test_wolf_memory_store.py` — Bug store: id allocation, bump-not-duplicate, serializer stability, cross-process concurrency (~3472 tok)
+- `test_worktree_fleet_git_ops.py` — git_ops against real tmp repos: option injection, branch-kind rule, push states incl. UNKNOWN (~3456 tok)
+- `test_worktree_fleet_store.py` — Registry logic with git faked: claim conflicts, release ownership + allow-list gate, prune, path validation (~5737 tok)
+- `test_worktree_fleet_tools.py` — Tool layer error mapping: heartbeat on unregistered path, git failure text, prune failures (~932 tok)
+## wordpress-theme/skyyrose-flagship-2/assets/models/
 
-- `glb_container.py` — lossless GLB I/O: rewrites ONLY the JSON chunk, walks every chunk and fails closed on BIN overrun / trailing junk / unpadded length / duplicate BIN / NaN literals. (~1246 tok)
-- `glb_materials.py` — fabric classifier over founder prose (negation-stripping, exterior-shell precedence) + sheen presets per class; anisotropy opt-in only (AI atlases have no grain). (~2881 tok)
-- `glb_optimize.py` — gltfpack `-cc -tc` wrapper + web gate (≤3MB, meshopt in extensionsRequired AND on a real bufferView, basisu, sheen VALUES valid, KTX2-only images). (~1790 tok)
-- `webgl_qc.py` — renders a web GLB in the PRODUCTION three.js viewer (Playwright + loopback server over a temp serve root) and pixel-diffs variants; VIEWER_PARITY is parity-gated against product-3d-viewer.js; VOID (maxΔ=0) is distinct from "no visible difference". (~3900 tok)
-- `templates/webgl_qc_harness.html` — the deterministic render page; PARITY/ANGLES are injected at serve time, un-injected it refuses to render. (~1700 tok)
-- `tests/scripts/test_glb_qc_render.py` — CLI exit-code contract for scripts/glb_qc_render.py (0 ok / 1 failed / 2 VOID), --diff label validation, --overwrite plumbing. (~1100 tok)
+- `skyy-natural-desktop.glb` — Skyy natural-motion rig, desktop tier (110k tris, 30 joints, Draco + WebP; sha256 9b405468…, 2,143,292 B); clips Skyy_Idle/Walk/Talk/Joy/Exit/Wave; wired via SKYY_3D_CONFIG.modelUrl (binary)
+- `skyy-natural-mobile.glb` — Skyy natural-motion rig, mobile tier (Draco + WebP; sha256 7267133a…, 1,247,220 B); chosen by skyy-3d.js below 47.99em or deviceMemory ≤ 4 via SKYY_3D_CONFIG.mobileModelUrl (binary)
+- `skyy-mascot.glb` — Previous 5.8 MB paid rig, retained; no runtime reference after 2.5.0 — removal is a founder decision (binary)
 
-## .wolf/hooks/
+## wordpress-theme/skyyrose-flagship-2/template-parts/collections/
 
-- `handoff-gate.sh` — session handoff-log gate shared by Claude Code + Codex: PostToolUse marks repo edits unlogged, Stop blocks once with a pre-filled row then only reminds, UserPromptSubmit reminds the model; "logged" = newest `sid:<id8>` row fingerprint changed; fails open only on missing infra (~2000 tok)
+- `chapters.php` — The three `world` scenes as alternating `.sr2-chapter` bands (engraved index, chapter title, lede; last carries the quiet "Enter the full scene" link) (~900 tok)
+- `index.php` — Collections index for page.php: quiet head + four full-bleed `.sr2-chapter`s (lockup, founder line, "Enter the {name} collection"); no cards (~700 tok)
 
-## tests/
+## wordpress-theme/skyyrose-flagship-2/template-parts/home/
 
-- `tests/test_handoff_gate.py` — drives handoff-gate.sh with Claude/Codex hook JSON against a throwaway git repo + memory file (~3000 tok)
-- `tests/test_wolf_memory_rotate.py` — scripts/wolf_memory_rotate.py: 128KB threshold, newest ~64KB kept, byte-exact archive, concurrent-append carry-over (~1500 tok)
+- `editorial-film.php` — On-model film band: one founder-selected worn look per world in a `[data-home-model-loop]` strip (original + `data-loop-copy` duplicates, toggle in its own lane) (~600 tok)
+
+## wordpress-theme/skyyrose-flagship-2/template-parts/pages/
+
+- `contact.php` — Contact page composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
+- `journal-entry.php` — Single journal entry composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
+

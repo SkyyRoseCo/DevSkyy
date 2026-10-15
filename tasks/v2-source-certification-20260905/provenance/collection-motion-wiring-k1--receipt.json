@@ -1,0 +1,273 @@
+{
+  "receipt_id": "COLLECTION-MOTION-WIRING-K1",
+  "created_at": "2026-09-05T04:29:50.006Z",
+  "user_authorization": "yeah get those all wired in the specified collections",
+  "status": "LOCAL_WIRING_IMPLEMENTED_NOT_RUNTIME_VERIFIED",
+  "scenes": [
+    "BR-COMMERCE-1",
+    "BR-COMMERCE-2",
+    "BR-COMMERCE-3",
+    "LH-COMMERCE-1",
+    "LH-COMMERCE-2",
+    "LH-COMMERCE-3",
+    "SIG-COMMERCE-1",
+    "SIG-COMMERCE-2",
+    "SIG-COMMERCE-3"
+  ],
+  "collections": [
+    "black-rose",
+    "love-hurts",
+    "signature"
+  ],
+  "chapter_count_per_collection": 3,
+  "hero_assets_changed": false,
+  "product_bindings_changed": false,
+  "new_generation_submissions": 0,
+  "production_deployment_authorized": false,
+  "production_deployment_performed": false,
+  "tests_run": false,
+  "visual_or_browser_verification_run": false,
+  "original_source_urls": [
+    {
+      "id": "BR-COMMERCE-1",
+      "collection": "black-rose",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/08d5239f-c31a-4a86-a623-c9ad974965ee.mp4"
+    },
+    {
+      "id": "BR-COMMERCE-2",
+      "collection": "black-rose",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_030251_1baa140d-66cf-4787-a29b-c6000ac8d7ca.mp4"
+    },
+    {
+      "id": "BR-COMMERCE-3",
+      "collection": "black-rose",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_022733_e35c1d7a-887e-436f-8091-cc93fbd1561f.mp4"
+    },
+    {
+      "id": "LH-COMMERCE-1",
+      "collection": "love-hurts",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/c188e736-66bb-4a0a-996b-c905b4af6744.mp4"
+    },
+    {
+      "id": "LH-COMMERCE-2",
+      "collection": "love-hurts",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_032111_7468b917-dac5-4c73-b9cb-15083ed16a16.mp4"
+    },
+    {
+      "id": "LH-COMMERCE-3",
+      "collection": "love-hurts",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/01664703-844c-496e-8e6f-5e16ad38b719.mp4"
+    },
+    {
+      "id": "SIG-COMMERCE-1",
+      "collection": "signature",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_034711_8ec45b78-f59a-493b-b187-97ece73c2052.mp4"
+    },
+    {
+      "id": "SIG-COMMERCE-2",
+      "collection": "signature",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_035528_eed537ce-ef4b-4800-b542-fba597c19e31.mp4"
+    },
+    {
+      "id": "SIG-COMMERCE-3",
+      "collection": "signature",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_040419_2051b483-2e12-4b3d-bd83-fe60bcbe129c.mp4"
+    }
+  ],
+  "encoding": {
+    "container": "MP4 faststart",
+    "codec": "H.264",
+    "fps": 24,
+    "tiers": [
+      1080,
+      720
+    ],
+    "audio": false,
+    "duration": "Full source duration retained",
+    "sourceBytes": 116449312,
+    "desktopBytes": 26068303,
+    "mobileBytes": 12079217
+  },
+  "behavior": [
+    "Loop while visible",
+    "One active chapter film at a time",
+    "Pause offscreen and in hidden tabs",
+    "Lazy video source assignment",
+    "720p mobile and slow connections",
+    "Static poster by default with reduced motion or Save-Data",
+    "Explicit accessible play/pause control",
+    "Original full-frame composition preserved"
+  ],
+  "imports": [
+    {
+      "scene_id": "BR-COMMERCE-1",
+      "kind": "video",
+      "tier": 1080,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-motion-k1-1080p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0893d562-6d9c-49a3-b2e0-0a86183617e2.mp4",
+      "bytes": 1209097,
+      "sha256": "73bfaf40668147f22c4ee23cd5fa74ffb5e330c63a832095a937e508da0cc0b0"
+    },
+    {
+      "scene_id": "BR-COMMERCE-1",
+      "kind": "video",
+      "tier": 720,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-motion-k1-720p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/7941e933-d9a6-412f-ac6c-b773180c02ee.mp4",
+      "bytes": 567028,
+      "sha256": "bbc5efc1b70797b24cf69978f96febc14e123c382f22424bf07f0f738a065926"
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "kind": "video",
+      "tier": 1080,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/br-commerce-2-motion-k1-1080p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/eccfb36f-15c4-4bff-884c-9201030c41c6.mp4",
+      "bytes": 3354874,
+      "sha256": "2980516d74851407375dd9cfb0b64f4c4fdbff0ae1b35bf9d69109ae3d8824df"
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "kind": "video",
+      "tier": 720,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/br-commerce-2-motion-k1-720p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/90ef9ea4-c70f-486a-b42c-d7e39a471ebb.mp4",
+      "bytes": 1605812,
+      "sha256": "80139065b953ebd1d9740ca9a940d127bfb6e250fc1dbd1d69fd3243b2757199"
+    },
+    {
+      "scene_id": "BR-COMMERCE-3",
+      "kind": "video",
+      "tier": 1080,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/br-commerce-3-motion-k1-1080p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/c6c37e49-76b3-45aa-8a60-2fd96546ef23.mp4",
+      "bytes": 2997756,
+      "sha256": "fcd14d4d99c4f11988abef6e239ffc75de0c784960d8a255eb0941df3bd8c836"
+    },
+    {
+      "scene_id": "BR-COMMERCE-3",
+      "kind": "video",
+      "tier": 720,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/br-commerce-3-motion-k1-720p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/31e04412-bb9e-466f-9443-3a5a6541ba07.mp4",
+      "bytes": 1456483,
+      "sha256": "b98c417f912b340bec4ec6820ab85ab1dfdf0a9397102b69ec35f34712dcc730"
+    },
+    {
+      "scene_id": "LH-COMMERCE-1",
+      "kind": "video",
+      "tier": 1080,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-motion-k1-1080p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/e50e277e-ff75-430d-ba05-bafe0dbdcce7.mp4",
+      "bytes": 3606213,
+      "sha256": "921c060dbaca48f936a901a12a82f7c049bca121c4332270c008e99df1b2c19d"
+    },
+    {
+      "scene_id": "LH-COMMERCE-1",
+      "kind": "video",
+      "tier": 720,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/lh-commerce-1-motion-k1-720p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/9734b845-a9b2-428e-b9f0-fa4dbba66a5d.mp4",
+      "bytes": 1798799,
+      "sha256": "808b59c958ac3df1acb5946d2ec07ee499c4d1216bef1d4a6995764d3453f30d"
+    },
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "kind": "video",
+      "tier": 1080,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/lh-commerce-2-motion-k1-1080p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/e7f49186-6dc4-4c5e-b9b5-9f2f4e4176c8.mp4",
+      "bytes": 3473611,
+      "sha256": "ceb7a2af1cf580601d227a75b72d8034b7bce7b16da619dfcf8a2d2b231dec50"
+    },
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "kind": "video",
+      "tier": 720,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/lh-commerce-2-motion-k1-720p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/5084b67e-6504-461a-bfb8-d9d7bce0b5cc.mp4",
+      "bytes": 1671544,
+      "sha256": "470d894b4f83c0c81cc3d2b27082ccdf6e0564ea7e82365b6888a77a984e38ec"
+    },
+    {
+      "scene_id": "LH-COMMERCE-3",
+      "kind": "video",
+      "tier": 1080,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-motion-k1-1080p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/7f39f186-6f59-415c-b4ee-bfdbbe54d430.mp4",
+      "bytes": 1387412,
+      "sha256": "0527231afba20ef7918f0d7d9f9a3730ade8ef82d5873e0af16b461a75f954b0"
+    },
+    {
+      "scene_id": "LH-COMMERCE-3",
+      "kind": "video",
+      "tier": 720,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/lh-commerce-3-motion-k1-720p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/ab8a9062-980d-47ef-8b4c-19f3d57eb755.mp4",
+      "bytes": 619697,
+      "sha256": "ee056f47484fbeea7c6e9db06f511985521a3e64b32a156ff6650583203ac108"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "kind": "video",
+      "tier": 1080,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/sig-commerce-1-motion-k1-1080p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/6ef5a066-6a2c-469a-ba7b-7ee48df80f3b.mp4",
+      "bytes": 3033789,
+      "sha256": "72538af2cca074b3d8d8f5252e20793390936e3844c345184682b2b15e8b9de7"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "kind": "video",
+      "tier": 720,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/sig-commerce-1-motion-k1-720p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/3d38fa9b-d768-4d2c-8359-b26fc91ed356.mp4",
+      "bytes": 1222252,
+      "sha256": "aef4de2a77fc1c0e6be98398636e1b1f5cd6ed9b5e314eac60f87dd5cd2c3ef2"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "kind": "video",
+      "tier": 1080,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/sig-commerce-2-motion-k1-1080p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/464c99a9-f7bf-41b1-b0d5-6de410ea9e98.mp4",
+      "bytes": 3529477,
+      "sha256": "da10d2d6f09594a8cdc1e0172878451a6a92c76242330a563e9ee22dab262eb7"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "kind": "video",
+      "tier": 720,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/sig-commerce-2-motion-k1-720p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/6dac8579-2ecd-4f5f-a8fb-15263ab494d7.mp4",
+      "bytes": 1548209,
+      "sha256": "f9e6b2fb536d75d14fcc477bbcf8eedc406ec9222988a8e8c22895477d8b72ba"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-3",
+      "kind": "video",
+      "tier": 1080,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-1080p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/f709f9d6-2100-4ca7-bcc5-80bd860e035f.mp4",
+      "bytes": 3476074,
+      "sha256": "dcc1cea5b7606ee8ee66074d91da4829394ca5f76cb12d8524b6d4d73735bcbe"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-3",
+      "kind": "video",
+      "tier": 720,
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-720p.mp4",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/695cb283-04a0-4d57-a878-fcd9b8838781.mp4",
+      "bytes": 1589393,
+      "sha256": "80cba25c744d4bf823dffa2f2761a7de6d3d466703e12f6c066b2f4f4011f981"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-3",
+      "kind": "poster",
+      "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-poster.webp",
+      "source_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/423394a1-726f-4dc9-a370-559ed5368d75.webp",
+      "bytes": 263964,
+      "sha256": "eef20813c482773ff3217cd1f367c61bbd9c31734e45ff252ea1f510783bc452"
+    }
+  ]
+}

@@ -1,0 +1,1251 @@
+{
+  "assets/css/collection-scene-motion.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/collection-scene-motion.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/collection-world.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/collection-world.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/controls.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/controls.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/design-tokens.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/design-tokens.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/global-shell.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/global-shell.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/hero-commerce-scenes.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/hero-commerce-scenes.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/home-page.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/home-page.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/immersive.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/immersive.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/legacy-world-components.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/legacy-world-components.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/mascot.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/mascot.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/product-page.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/product-page.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/shop-page.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/shop-page.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/theme.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/theme.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-001-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-001-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-001-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-002-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-002-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-002-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-003-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-003-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-003-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-004-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-004-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-004-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-005-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-005-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-005-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-006-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-006-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-006-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-007-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-007-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-007-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-008-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-008-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-008-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-009-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-009-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-009-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-010-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-010-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-010-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-011-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-011-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-011-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-012-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-012-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-012-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-014-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-014-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-014-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-015-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-015-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/br-015-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/kids-001-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/kids-001-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/kids-001-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/kids-002-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/kids-002-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/kids-002-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-002-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-002-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-002-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-003-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-003-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-003-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-004-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-004-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-004-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-005-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-005-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-005-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-006-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-006-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/lh-006-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/manifest.json": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-001-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-001-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-001-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-002-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-002-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-002-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-003-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-003-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-003-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-005-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-005-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-005-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-006-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-006-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-006-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-007-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-007-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-007-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-009-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-009-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-009-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-011-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-011-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-011-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-012-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-012-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-012-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-013-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-013-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-013-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-014-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-014-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-014-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-015-320w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-015-480w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/derived/card-fronts/sg-015-768w.webp": {
+    "generator": "../../tools/v2-runtime/build-card-renditions.py",
+    "normalization": "Uncropped LANCZOS responsive copies, WebP quality90 method6; sorted manifest; exact accepted source hash",
+    "released": true,
+    "source": "data/approved-card-fronts.json",
+    "tool": "Python 3.12.12 / Pillow 12.3.0",
+    "tracked": true
+  },
+  "assets/js/collection-scene-motion.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/collection-scene-motion.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/house-of-roses-motion.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/house-of-roses-motion.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/immersive.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/immersive.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/kids-capsule-reveal.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/kids-capsule-reveal.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/mascot-loader.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/mascot-loader.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/mascot.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/mascot.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/skyy-3d.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/skyy-3d.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/theme.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/theme.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "data/product-presentation-registry.json": {
+    "generator": "scripts/build-product-presentation-registry.py",
+    "normalization": "Sorted JSON keys, indent 2, trailing LF",
+    "released": true,
+    "source": "tools/v2-source-certification/inputs/product-sot.json + canonical CSV garment_type_lock",
+    "tool": "Python 3.12.12 standard library",
+    "tracked": true
+  },
+  "languages/skyyrose-flagship-2.pot": {
+    "generator": "scripts/build-pot.py",
+    "normalization": "Lexically sorted messages/references, fixed header date, LF",
+    "released": true,
+    "source": "Runtime PHP; scripts/vendor/node_modules/tests/dist excluded",
+    "tool": "Python 3.12.12 standard library",
+    "tracked": true
+  },
+  "theme.json": {
+    "generator": "../../tools/v2-runtime/sync-token-contract.cjs",
+    "normalization": "Mapped settings only, JSON indentation 2, trailing newline",
+    "released": true,
+    "source": "assets/css/design-tokens.css",
+    "tool": "Node.js 22.23.2",
+    "tracked": true
+  },
+  "assets/css/visual-recovery.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/visual-recovery.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/visual-recovery.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/visual-recovery.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp": {
+    "generator": "../../tools/v2-runtime/build-scene-posters.cjs",
+    "normalization": "cwebp1.6.0 q90 m6 proportional width, libsharpyuv0.4.2",
+    "released": true,
+    "source": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+    "tool": "cwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp": {
+    "generator": "../../tools/v2-runtime/build-scene-posters.cjs",
+    "normalization": "cwebp1.6.0 q90 m6 proportional width, libsharpyuv0.4.2",
+    "released": true,
+    "source": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+    "tool": "cwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/css/content-page.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/content-page.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/search-preview.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/search-preview.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/search-preview.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/search-preview.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/css/quick-view-commerce.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/quick-view-commerce.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/quick-view-commerce.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/quick-view-commerce.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/css/scene-handoff.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/scene-handoff.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/scene-handoff.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/scene-handoff.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/css/premium-commerce.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/premium-commerce.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/premium-commerce.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/premium-commerce.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/derived/fonts/inter-fallback-latin.woff2": {
+    "generator": "fontTools.subset; exact command in data/font-fallback.json",
+    "normalization": "11 cmap codepoints absent from Hanken; preserve source glyph outlines, variable axis, hinting and all name metadata",
+    "released": false,
+    "source": "assets/sot/fonts/inter-latin.woff2",
+    "tool": "fontTools 4.59.2",
+    "tracked": false,
+    "candidate": "V2-READINESS-20260906"
+  },
+  "assets/css/about-archive.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/about-archive.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/critical/home.min.css": {
+    "generator": "scripts/build-critical-css.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/critical/home.contract.json + the contract's source sheets",
+    "tool": "postcss 8 + clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/about-archive.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/about-archive.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/derived/card-frames/black-rose-384w.webp": {
+    "generator": "tools/v2-runtime/build-frame-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+    "tool": "Pillow 12.3.0 / libwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/derived/card-frames/kids-capsule-384w.webp": {
+    "generator": "tools/v2-runtime/build-frame-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp",
+    "tool": "Pillow 12.3.0 / libwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/derived/card-frames/love-hurts-384w.webp": {
+    "generator": "tools/v2-runtime/build-frame-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp",
+    "tool": "Pillow 12.3.0 / libwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/derived/card-frames/manifest.json": {
+    "generator": "tools/v2-runtime/build-frame-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/images/product-card-portals",
+    "tool": "Pillow 12.3.0 / libwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/derived/card-frames/signature-384w.webp": {
+    "generator": "tools/v2-runtime/build-frame-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+    "tool": "Pillow 12.3.0 / libwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/derived/fonts/archivo-normal-width.woff2": {
+    "generator": "tools/v2-runtime/build-font-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/fonts/archivo-latin.woff2",
+    "tool": "fontTools 4.59.2 / Brotli 1.2.0",
+    "tracked": true
+  },
+  "assets/derived/fonts/manifest.json": {
+    "generator": "tools/v2-runtime/build-font-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/fonts/archivo-latin.woff2",
+    "tool": "fontTools 4.59.2 / Brotli 1.2.0",
+    "tracked": true
+  },
+  "assets/css/archive-theme.min.css": {
+    "generator": "tools/v2-runtime/build-archive-style-bundle.cjs",
+    "normalization": "PostCSS explicit route-owner projection; all selectors must qualify; retained order and shared rules preserved; original theme.css and full min untouched; manifest binds source, full min, output and classification",
+    "released": true,
+    "source": "assets/css/theme.css",
+    "tool": "postcss 8.5.28 / clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/archive-theme.json": {
+    "generator": "tools/v2-runtime/build-archive-style-bundle.cjs",
+    "normalization": "PostCSS explicit route-owner projection; all selectors must qualify; retained order and shared rules preserved; original theme.css and full min untouched; manifest binds source, full min, output and classification",
+    "released": true,
+    "source": "assets/css/theme.css",
+    "tool": "postcss 8.5.28 / clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/archive-style-inputs.json": {
+    "generator": "tools/v2-runtime/build-archive-style-bundle.cjs",
+    "normalization": "Input-only SHA-256 and byte-count receipt for tokens and five original component minified styles; no combined stylesheet produced",
+    "released": true,
+    "source": "assets/css/{design-tokens,shop-page,controls,global-shell,visual-recovery,mascot}.min.css",
+    "tool": "Node Buffer / SHA-256",
+    "tracked": true
+  },
+  "assets/derived/card-frames/signature-360w.webp": {
+    "generator": "tools/v2-runtime/build-frame-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+    "tool": "Pillow 12.3.0 / libwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/derived/card-frames/black-rose-360w.webp": {
+    "generator": "tools/v2-runtime/build-frame-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+    "tool": "Pillow 12.3.0 / libwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/derived/card-frames/love-hurts-360w.webp": {
+    "generator": "tools/v2-runtime/build-frame-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp",
+    "tool": "Pillow 12.3.0 / libwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/derived/card-frames/kids-capsule-360w.webp": {
+    "generator": "tools/v2-runtime/build-frame-delivery.py",
+    "normalization": "Pinned deterministic delivery derivative; original retained",
+    "released": true,
+    "source": "assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp",
+    "tool": "Pillow 12.3.0 / libwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/css/lookbook.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/lookbook.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  }
+}

@@ -9,6 +9,7 @@ behind an env flag and a separate live test.
 from __future__ import annotations
 
 from pathlib import Path
+from unittest.mock import patch
 
 import pytest
 
@@ -51,9 +52,23 @@ def test_is_available_returns_false_when_repo_missing(tmp_path: Path) -> None:
         conda_env="nonexistent_env_xyz_should_not_exist",
         trellis_repo_path=tmp_path / "does_not_exist",
     )
-    assert agent.is_available() is False
-    # Second call uses the cached result.
-    assert agent.is_available() is False
+    with patch.object(TrellisAgent, "_resolve_conda_python") as resolve:
+        assert agent.is_available() is False
+        # Second call uses the cached result; neither call may launch Conda.
+        assert agent.is_available() is False
+    resolve.assert_not_called()
+
+
+@pytest.mark.unit
+def test_is_available_resolves_existing_repo_once(tmp_path: Path) -> None:
+    agent = TrellisAgent(trellis_repo_path=tmp_path)
+    with patch.object(
+        TrellisAgent, "_resolve_conda_python", return_value="/test/python"
+    ) as resolve:
+        assert agent.is_available() is True
+        assert agent.is_available() is True
+    resolve.assert_called_once_with(agent.conda_env)
+    assert agent._python_path == "/test/python"
 
 
 @pytest.mark.unit

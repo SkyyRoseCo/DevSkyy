@@ -6,18 +6,18 @@ set -euo pipefail
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PROJECT_VENV="$PROJECT_ROOT/.venv"
 
-if ! command -v uv > /dev/null 2>&1; then
-  echo "error: uv is required to create the DevSkyy .venv" >&2
-  exit 1
+if ! command -v uv >/dev/null 2>&1; then
+	echo "error: uv is required to create the DevSkyy .venv" >&2
+	exit 1
 fi
 
 if [[ -x "$PROJECT_VENV/bin/python" ]] \
-  && [[ -x "$PROJECT_VENV/bin/pytest" ]] \
-  && [[ -x "$PROJECT_VENV/bin/ruff" ]] \
-  && [[ -x "$PROJECT_VENV/bin/black" ]] \
-  && "$PROJECT_VENV/bin/python" -c "from PIL import Image" > /dev/null 2>&1; then
-  echo "DevSkyy .venv already satisfies the Codex verification toolchain."
-  exit 0
+	&& [[ -x "$PROJECT_VENV/bin/pytest" ]] \
+	&& [[ -x "$PROJECT_VENV/bin/ruff" ]] \
+	&& [[ -x "$PROJECT_VENV/bin/black" ]] \
+	&& "$PROJECT_VENV/bin/python" -c "from PIL import Image" >/dev/null 2>&1; then
+	echo "DevSkyy .venv already satisfies the Codex verification toolchain."
+	exit 0
 fi
 
 cd "$PROJECT_ROOT"

@@ -1,0 +1,36 @@
+{
+  "operation_id": "v2-reset-20261002-targeted-masked-garment-card-br-002",
+  "job_digest": "41fbcf9a8d5f0a1b983d20d2115e86c7befafdc2b0bc30359da576ddba258524",
+  "sources_digest": "f7cfd1aa272c35ae9354a1783b3997db1ffe518b034298efa6c7896833619597",
+  "candidate": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-masked-garment-repairs/quarantine/card-br-002.png",
+    "sha256": "598a0be749d8b3951107f5b0bf39e51399ef8ae990f6c70f2c43a357d445a08d"
+  },
+  "full_size_pixels": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/targeted-masked-garment-repairs/quarantine/card-br-002.png",
+    "sha256": "598a0be749d8b3951107f5b0bf39e51399ef8ae990f6c70f2c43a357d445a08d"
+  },
+  "desktop_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-002-masked-garment-card-desktop.png",
+    "sha256": "76e3881cacbb18fb495e57baed1f94f51e6e9cad20db0f3bdc343c5ea14603d7"
+  },
+  "mobile_card": {
+    "path": "tasks/v2-creative-review/v2-imagery-reset-20261002/catalog-review/captures/br-002-masked-garment-card-mobile-corrected.png",
+    "sha256": "f0a24c49cdf93a5d87b4f4974213844da61e8d2339c759d97eccd55db66f671d"
+  },
+  "reviewer": "/root/v2_prompt_precheck",
+  "status": "PASS",
+  "method": "ACTUAL_PIXEL_INSPECTION",
+  "checks": {
+    "artwork_fidelity": "PASS",
+    "cinematic_light": "PASS",
+    "collection_specific_storytelling": "PASS",
+    "credible_material_response": "PASS",
+    "editorial_composition": "PASS",
+    "fashion_commerce_intent": "PASS",
+    "garment_artwork_identity": "PASS",
+    "optical_integration": "PASS",
+    "product_fidelity": "PASS",
+    "product_readability": "PASS"
+  }
+}

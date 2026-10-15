@@ -61,11 +61,12 @@ class SDKGarment3DAgent(SDKSubAgent):
             "You are the SkyyRose 3D Garment Generator — you create production-"
             "quality 3D clothing models for immersive shopping experiences.\n\n"
             "Pipeline:\n"
-            "1. Read product data from scripts/nano-banana-vton.py PRODUCT_CATALOG\n"
-            "2. Resolve existing renders via skyyrose.core.sot_images."
-            "resolve_image(sku, role) or read data/sot-images.json — never "
-            "assume a literal filename pattern, the actual render may be "
-            "named differently or be a hub-verified override.\n"
+            "1. Read product data from skyyrose.core.product.get_product(sku) — the ONE product lookup (CLI: python -m skyyrose.core.product <sku> | --all | --skus)\n"
+            "2. Resolve existing renders via get_product(sku)['images'][role] "
+            "(data/sot-images.json is a generated projection of the same "
+            "bindings, for non-Python consumers only) — never assume a "
+            "literal filename pattern, the actual render may be named "
+            "differently or be a hub-verified override.\n"
             "3. Build a brand-aware 3D prompt with collection aesthetics\n"
             "4. Call Tripo3D API via agents/tripo_agent.py patterns\n"
             "5. Export as GLB (web) + USDZ (Apple AR)\n"
@@ -96,10 +97,9 @@ class SDKGarment3DAgent(SDKSubAgent):
         if sku:
             base += (
                 f"\n\nTarget SKU: {sku}\n"
-                "Read PRODUCT_CATALOG for this SKU's details, then resolve "
-                "existing renders via skyyrose.core.sot_images.resolve_image"
-                "(sku, role) or data/sot-images.json for reference images — "
-                "never assume a literal filename pattern."
+                "Read get_product(sku) for this SKU's facts, then resolve "
+                "existing renders via get_product(sku)['images'][role] for "
+                "reference images — never assume a literal filename pattern."
             )
         if collection:
             base += f"\nCollection: {collection} — match the collection aesthetics.\n"
@@ -289,11 +289,11 @@ class SDKAvatarStylistAgent(SDKSubAgent):
             "- Categories: tops, bottoms, outerwear, full_body\n"
             "- Output: generated_assets/tryon/\n\n"
             "Workflow for outfit change:\n"
-            "1. Read product catalog for target SKU details\n"
-            "2. Get garment flat image via skyyrose.core.sot_images."
-            'resolve_image(sku, role="packshot") or data/sot-images.json — '
-            "never assume a literal filename pattern, the actual render may "
-            "be named differently or be a hub-verified override.\n"
+            "1. Read get_product(sku) for target SKU details\n"
+            "2. Get garment flat image via get_product(sku)['images']"
+            "['packshot'] — never assume a literal filename pattern, the "
+            "actual render may be named differently or be a hub-verified "
+            "override.\n"
             "3. Use avatar reference as model image\n"
             "4. Call FASHN try-on: garment + avatar → styled avatar\n"
             "5. Generate sprite sheet (all 7 poses) in the new outfit\n"
@@ -335,9 +335,10 @@ class SDKAvatarStylistAgent(SDKSubAgent):
                     model="haiku",
                     tools=["Read", "Glob", "Grep"],
                     prompt=(
-                        "Read the product catalog from "
-                        "scripts/nano-banana-vton.py and list all SKUs "
-                        "with their garment categories. Save to "
+                        "Read the product catalog with "
+                        "python -m skyyrose.core.product --all and list "
+                        "all SKUs with their garment categories "
+                        "(catalog.garment_type_lock). Save to "
                         "session_dir/catalog_items.json."
                     ),
                 ),

@@ -14,7 +14,6 @@ from dataclasses import dataclass
 # ---------------------------------------------------------------------------
 
 BRAND_NAME = "SkyyRose"
-BRAND_TAGLINE = "Luxury Grows from Concrete."
 BRAND_FOUNDER = "Corey Foster"
 BRAND_LOCATION = "Oakland, California"
 

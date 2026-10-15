@@ -62,12 +62,14 @@ export default async function CollectionsPage() {
                   <span className="font-mono text-[10px] tracking-[0.22em] uppercase" style={{ color: accent }}>
                     {brand.name}
                   </span>
-                  <p
-                    className="italic text-[20px] text-[#F0F0F0] leading-[1.35] mt-3.5 max-w-[32ch]"
-                    style={{ fontFamily: 'var(--font-playfair)' }}
-                  >
-                    {brand.tagline}
-                  </p>
+                  {brand.tagline ? (
+                    <p
+                      className="italic text-[20px] text-[#F0F0F0] leading-[1.35] mt-3.5 max-w-[32ch]"
+                      style={{ fontFamily: 'var(--font-playfair)' }}
+                    >
+                      {brand.tagline}
+                    </p>
+                  ) : null}
                   <div className="flex gap-[30px] mt-6">
                     <Stat label="Revenue" value={rev ? formatCurrency(rev.revenue) : '—'} />
                     <Stat label="Share" value={rev ? formatPercent(rev.share) : '—'} />

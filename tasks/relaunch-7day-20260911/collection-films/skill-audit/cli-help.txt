@@ -1,0 +1,24 @@
+Enhance prompt and generate brand images
+
+Usage:
+  higgsfield product-photoshoot create [flags]
+
+Examples:
+  higgsfield product-photoshoot create --mode product_shot --prompt "hero shot of fragrance" --image fragrance.jpg
+
+Flags:
+      --aspect_ratio string      override default aspect ratio for the mode
+      --brand_context string     extra brand description
+      --count int                number of variants (1-10) (default 1)
+      --enhance-only             return enhanced prompts without submitting generation jobs
+  -h, --help                     help for create
+      --image strings            reference image — file path or upload UUID; repeatable
+      --interval duration        poll interval (default 3s)
+      --mode string              product photoshoot mode (required)
+      --product_context string   extra product description
+      --prompt string            user intent (required)
+      --timeout duration         max wait per job (default 10m0s)
+
+Global Flags:
+      --json       print raw JSON responses
+      --no-color   disable color output

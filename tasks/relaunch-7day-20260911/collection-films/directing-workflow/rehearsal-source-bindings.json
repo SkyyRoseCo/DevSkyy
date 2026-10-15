@@ -1,0 +1,41 @@
+{
+  "classification": "REPRODUCED_LOCAL",
+  "authentication": "NOT_APPLICABLE",
+  "verified_date": "2026-09-12",
+  "sources": [
+    {
+      "id": "BR-PERFORMER-01",
+      "role": "actor_identity",
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/identity-correction/sources/actual-br-performer-01.png",
+      "expected_sha256": "95ac3e0cdaf61867a82e071b8123835e9b82a0948f945cf0554008ed84cc5ed0",
+      "actual_sha256": "95ac3e0cdaf61867a82e071b8123835e9b82a0948f945cf0554008ed84cc5ed0",
+      "match": true
+    },
+    {
+      "id": "BR-PERFORMER-02",
+      "role": "actor_identity",
+      "path": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/identity-correction/sources/actual-br-performer-02.png",
+      "expected_sha256": "71a903d49425d45151d02b7d3ec235cfed30a1f992e0b4ff1e8e7cb7f0a994ad",
+      "actual_sha256": "71a903d49425d45151d02b7d3ec235cfed30a1f992e0b4ff1e8e7cb7f0a994ad",
+      "match": true
+    },
+    {
+      "id": "BR-ORIGINAL",
+      "role": "protected_original_footage_and_physical_garment_source",
+      "path": "/Users/theceo/Downloads/Video Apr 21 2024, 11 01 18 AM.mp4",
+      "expected_sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+      "actual_sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+      "match": true
+    },
+    {
+      "id": "SKYY-IDENTITY",
+      "role": "mascot_identity",
+      "path": "/Users/theceo/Downloads/image.png",
+      "expected_sha256": "a8a32b8097f6885300f537e50c942c445c09012269807b072b6854c7019b9973",
+      "actual_sha256": "a8a32b8097f6885300f537e50c942c445c09012269807b072b6854c7019b9973",
+      "match": true
+    }
+  ],
+  "limits": "Byte comparison to recorded source identities only. No new visual product review or whole-video source-frame export test.",
+  "source_receipt": "/Users/theceo/.codex/worktrees/dae3/DevSkyy/tasks/relaunch-7day-20260911/collection-films/identity-correction/black-rose-actor-references.json"
+}

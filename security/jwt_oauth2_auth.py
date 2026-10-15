@@ -1303,7 +1303,10 @@ def _create_auth_router():
                 # Hash password and create user
                 hashed = password_manager.hash_password(user_data.password)
                 user_id = str(uuid.uuid4())
-                role = user_data.roles[0].value if user_data.roles else UserRole.API_USER.value
+                # Self-registration never grants elevated roles: a client-supplied
+                # `roles` would otherwise let anyone mint a SUPER_ADMIN account.
+                # Elevated accounts come from database/seed_admin.py only.
+                role = UserRole.API_USER.value
 
                 from database.db import User as UserModel
 

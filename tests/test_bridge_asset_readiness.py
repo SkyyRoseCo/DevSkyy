@@ -20,7 +20,14 @@ def test_bridge_bundle_uses_bound_garment_not_generic_logo(monkeypatch, tmp_path
     assert len(links) == 1
     assert links[0].resolve() == source.resolve()
     assert not list((bundle / "logos").iterdir())
-    assert not list((bundle / "techflat").iterdir())
+    technical = list((bundle / "techflat").iterdir())
+    assert len(technical) == 1
+    assert (
+        technical[0].resolve()
+        == (
+            scaffold._REPO_ROOT / registry._raw["products"][sku]["render_sources"]["techflat_back"]
+        ).resolve()
+    )
     assert scaffold._find_logo_file("black-roses-cloud-cluster", registry._raw, sku) is None
     brief = (bundle / "placement.md").read_text()
     assert "Role: complete physical garment, front view" in brief

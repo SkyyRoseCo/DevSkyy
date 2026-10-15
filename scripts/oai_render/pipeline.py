@@ -17,6 +17,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from skyyrose.core.dossier_loader import DossierMissingError
 from skyyrose.core.product_registry import load_registry
 from skyyrose.elite_studio.logo_registry import LogoRegistry, RegistryContractError
 
@@ -257,8 +258,17 @@ def resolve_targets(
     return []
 
 
+def _registry_keepers() -> list[dict[str, str]]:
+    """Every founder keep decision in the product registry, tagged with its SKU."""
+    return [
+        {"sku": sku, **keeper}
+        for sku, product in load_registry()["products"].items()
+        for keeper in (product.get("render_policy") or {}).get("keepers", [])
+    ]
+
+
 def _keeper_skips() -> dict[tuple[str, str, str], str]:
-    """(sku, style, view) -> founder note, from render-keepers.json. Empty when absent.
+    """(sku, style, view) -> founder note, from the registry's render_policy.keepers.
 
     A keeper only suppresses its render plan if the surviving asset it names
     still exists on disk. If the file was renamed or deleted, the keeper is
@@ -266,15 +276,9 @@ def _keeper_skips() -> dict[tuple[str, str, str], str]:
     keeper would silently block the re-render of a product whose "kept" image
     is gone.
     """
-    import json
-
-    try:
-        data = json.loads(config.KEEPERS_JSON.read_text(encoding="utf-8"))
-    except (OSError, ValueError):
-        return {}
     repo_root = config.PROJECT_ROOT
     out: dict[tuple[str, str, str], str] = {}
-    for k in data.get("keepers", []):
+    for k in _registry_keepers():
         sku, style = k.get("sku"), k.get("style")
         if not (sku and style):
             continue
@@ -361,7 +365,9 @@ def plan_sku(
             scene=scene,
             style_reference=use_style_ref,
         )
-    except (MissingReferenceError, SceneError, RegistryContractError, FileNotFoundError) as exc:
+    # A missing dossier is a per-SKU skip. A missing registry is not caught: it
+    # must abort the batch instead of marking every SKU "skipped" at $0 (bug-230).
+    except (MissingReferenceError, SceneError, RegistryContractError, DossierMissingError) as exc:
         return SkuPlan(
             sku=sku,
             name=name,
@@ -416,6 +422,7 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
                 {
                     "name": mname,
                     "sku": member,
+                    "product_sku": component["parent_sku"] if component else member,
                     "reference_labels": [r.label for r in refs],
                     "dossier_text": dossier_text,
                     "is_patch": references.requires_patch(member),
@@ -433,7 +440,7 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
         prompt = build_pair_prompt(
             pair_label=pair.label, collection=pair.collection, garments=garments
         )
-    except (MissingReferenceError, SceneError, RegistryContractError, FileNotFoundError) as exc:
+    except (MissingReferenceError, SceneError, RegistryContractError, DossierMissingError) as exc:
         return SkuPlan(
             sku=pair.skus[0],
             name=pair.label,
@@ -525,8 +532,12 @@ def _quarantine(
         "x_request_id": request_id,
         "output_sha256": _sha256_bytes(data),
     }
-    _atomic_write_json_no_clobber(img_path.with_suffix(".json"), meta)
     _atomic_write_no_clobber(img_path, data)
+    try:
+        _atomic_write_json_no_clobber(img_path.with_suffix(".json"), meta)
+    except (OSError, ValueError):
+        img_path.unlink(missing_ok=True)
+        raise
     return img_path
 
 
@@ -771,17 +782,21 @@ def _accept_render(
     try:
         out_dir = config.OUTPUT_DIR / plan.output_slug
         out_path = out_dir / _candidate_output_filename(plan, call_result.request_id)
-        receipt_path = _write_generation_receipt(
-            plan,
-            data,
-            attempt,
-            prompt,
-            call_result,
-            status="qc_passed_candidate",
-            output_path=out_path,
-            runlog=runlog,
-        )
         _atomic_write_no_clobber(out_path, data)
+        try:
+            receipt_path = _write_generation_receipt(
+                plan,
+                data,
+                attempt,
+                prompt,
+                call_result,
+                status="qc_passed_candidate",
+                output_path=out_path,
+                runlog=runlog,
+            )
+        except (OSError, ValueError):
+            out_path.unlink(missing_ok=True)
+            raise
     except (OSError, ValueError) as exc:  # fail closed after a paid call
         prefix = "disk" if isinstance(exc, OSError) else "evidence"
         log.error("Candidate publication failed for %s: %s", plan.sku, exc)
@@ -819,16 +834,6 @@ def _reject_render(
     receipt_path = None
     try:
         quarantine_path = _quarantine_path(plan, attempt, call_result.request_id)
-        receipt_path = _write_generation_receipt(
-            plan,
-            data,
-            attempt,
-            prompt,
-            call_result,
-            status="quarantined",
-            output_path=quarantine_path,
-            runlog=runlog,
-        )
         _quarantine(
             plan,
             data,
@@ -836,6 +841,21 @@ def _reject_render(
             verdict,
             request_id=call_result.request_id,
         )
+        try:
+            receipt_path = _write_generation_receipt(
+                plan,
+                data,
+                attempt,
+                prompt,
+                call_result,
+                status="quarantined",
+                output_path=quarantine_path,
+                runlog=runlog,
+            )
+        except (OSError, ValueError):
+            quarantine_path.unlink(missing_ok=True)
+            quarantine_path.with_suffix(".json").unlink(missing_ok=True)
+            raise
     except (OSError, ValueError) as exc:
         log.error("Quarantine write failed for %s: %s", plan.sku, exc)
         reason = f"evidence persistence failed: {type(exc).__name__}: {exc}"

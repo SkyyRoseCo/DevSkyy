@@ -159,7 +159,11 @@ def check_consistency(registry: dict[str, Any]) -> list[Finding]:
                 Finding("consistency", f"products.{sku}", f"catalog.sku is {catalog.get('sku')!r}")
             )
 
-        missing = columns - set(catalog) - {"fit", "materials", "features", "sizing_references"}
+        missing = (
+            columns
+            - set(catalog)
+            - {"fit", "materials", "features", "sizing_references", "care_instructions"}
+        )
         if missing:
             findings.append(
                 Finding(

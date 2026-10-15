@@ -91,7 +91,7 @@ $po_ver    = isset( $args['version'] ) ? (string) $args['version'] : SKYYROSE_VE
 			</picture>
 
 			<p class="po-hero__body">
-				<?php esc_html_e( 'Secure your pieces before they drop. Luxury Grows from Concrete.', 'skyyrose' ); ?>
+				<?php esc_html_e( 'Secure your pieces before they drop.', 'skyyrose' ); ?>
 			</p>
 
 			<div class="po-hero__actions">
@@ -118,7 +118,6 @@ $po_ver    = isset( $args['version'] ) ? (string) $args['version'] : SKYYROSE_VE
 			<?php
 			/* Items cloned by JS for seamless loop */
 			$po_marquee_items = array(
-				esc_html__( 'Luxury Grows from Concrete', 'skyyrose' ),
 				esc_html__( 'Limited Edition', 'skyyrose' ),
 				esc_html__( 'Reserve Now', 'skyyrose' ),
 				esc_html__( 'Skyy Rose', 'skyyrose' ),

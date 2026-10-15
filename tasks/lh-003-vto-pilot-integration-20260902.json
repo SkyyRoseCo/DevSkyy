@@ -22,32 +22,19 @@
     {
       "name": "fashion-theme-lead",
       "job_title": "VTO integration project manager",
-      "capabilities": [
-        "scope",
-        "source authority",
-        "credit control",
-        "handoff"
-      ],
+      "capabilities": ["scope", "source authority", "credit control", "handoff"],
       "deliverable": "Hash-bound candidate-only VTO route"
     },
     {
       "name": "product-fidelity-image-edits",
       "job_title": "VTO integration engineer",
-      "capabilities": [
-        "provider adapter",
-        "contract validation",
-        "receipt binding"
-      ],
+      "capabilities": ["provider adapter", "contract validation", "receipt binding"],
       "deliverable": "Try-On Max client, OODA runner, pilot contract, and tests"
     },
     {
       "name": "visual-commerce-qa",
       "job_title": "Independent product-fidelity reviewer",
-      "capabilities": [
-        "product construction",
-        "identity",
-        "optical integration"
-      ],
+      "capabilities": ["product construction", "identity", "optical integration"],
       "deliverable": "Candidate-bound independent verdict after an authorized pilot",
       "independent_from_project_manager": true,
       "may_edit_candidate": false

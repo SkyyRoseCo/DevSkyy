@@ -509,7 +509,7 @@ async def es_status(params: StatusInput) -> str:
     The reader audit cross-checks `skyyrose.core.catalog_loader` against
     `skyyrose.elite_studio.catalog` (via validate_dossier_readers). Drift
     means the two paths return different dossier data — silent correctness
-    bug. D8 extends this audit to include scripts/nano-banana-vton.py.
+    bug.
     """
     from skyyrose.elite_studio.utils import discover_all_skus
 

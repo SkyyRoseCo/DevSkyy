@@ -24,7 +24,7 @@ from tests.elite_studio.pipeline3d.glb_fixture import (
     triangle_document,
 )
 
-# Verbatim founder specifications (registry products[sku].garment.materials.specification).
+# Historical registry prose fixtures; current founder material responses are tested below.
 BR_006 = (
     "Black satin bomber-style hooded jacket — **lustrous black satin** exterior fabric, "
     "**plush black sherpa** interior lining (visible inside the body and inside the hood). "
@@ -33,7 +33,7 @@ BR_006 = (
     "buttoned/snapped storm flap overlaps the zipper line for a clean satin front (this is a "
     "two-layer placket). NOT a denim jacket. NOT a fleece hoodie. NOT a leather jacket."
 )
-SG_015 = (
+HISTORICAL_NYLON_WINDBREAKER = (
     "Two-piece matching set sold as a single SKU — **lightweight nylon zip-front hooded "
     "windbreaker JACKET + matching nylon track-style PANTS**. Both pieces are constructed from "
     "smooth lightweight **nylon windbreaker fabric** (NOT cotton-fleece — this is the lighter "
@@ -60,7 +60,7 @@ LH_005 = (
     ("spec", "expected"),
     [
         (BR_006, FabricClass.SATIN),
-        (SG_015, FabricClass.NYLON),
+        (HISTORICAL_NYLON_WINDBREAKER, FabricClass.NYLON),
         (SG_011, FabricClass.COTTON),
         (BR_011, FabricClass.JERSEY),
         (LH_005, FabricClass.FAUX_LEATHER),
@@ -192,12 +192,11 @@ def test_glb_without_materials_fails_closed():
         )
 
 
-# Founder-verified 2026-09-17: each class read against that product's
-# garment.materials.specification prose in the registry. This map is the guard the
-# "every SKU classifies" test cannot be — a reworded spec that flips a preset fails HERE.
+# Rendering-class expectations reviewed against current registry material prose.
+# Updated for Corey's 2026-09-29 response; these are renderer choices, not fiber facts.
 GOLDEN_FABRIC_CLASSES = {
     "br-001": FabricClass.FLEECE,
-    "br-002": FabricClass.FLEECE,
+    "br-002": FabricClass.JERSEY,
     "br-003": FabricClass.JERSEY,
     "br-004": FabricClass.FLEECE,
     "br-005": FabricClass.JERSEY,
@@ -210,25 +209,25 @@ GOLDEN_FABRIC_CLASSES = {
     "br-012": FabricClass.JERSEY,
     "br-014": FabricClass.JERSEY,
     "br-015": FabricClass.JERSEY,
-    "kids-001": FabricClass.FLEECE,
-    "kids-002": FabricClass.FLEECE,
-    "lh-002": FabricClass.FLEECE,
+    "kids-001": FabricClass.COTTON,
+    "kids-002": FabricClass.COTTON,
+    "lh-002": FabricClass.JERSEY,
     "lh-003": FabricClass.JERSEY,
     "lh-004": FabricClass.SATIN,
     "lh-005": FabricClass.FAUX_LEATHER,
-    "lh-006": FabricClass.FLEECE,
+    "lh-006": FabricClass.JERSEY,
     "sg-001": FabricClass.JERSEY,
     "sg-002": FabricClass.COTTON,
     "sg-003": FabricClass.JERSEY,
     "sg-005": FabricClass.COTTON,
-    "sg-006": FabricClass.FLEECE,
+    "sg-006": FabricClass.COTTON,
     "sg-007": FabricClass.KNIT,
     "sg-009": FabricClass.NYLON,
     "sg-011": FabricClass.COTTON,
     "sg-012": FabricClass.COTTON,
-    "sg-013": FabricClass.FLEECE,
-    "sg-014": FabricClass.FLEECE,
-    "sg-015": FabricClass.NYLON,
+    "sg-013": FabricClass.COTTON,
+    "sg-014": FabricClass.COTTON,
+    "sg-015": FabricClass.WINDBREAKER,
 }
 
 
@@ -294,3 +293,12 @@ def test_malformed_extension_containers_fail_closed(mutate, message):
     glb = pack_glb(document, b"\x00" * 12)
     with pytest.raises(MaterialPatchError, match=message):
         apply_fabric_extensions(glb, SHEEN_PRESETS[FabricClass.COTTON])
+
+
+def test_windbreaker_wording_does_not_infer_nylon():
+    match = classify_fabric("Windbreaker fabric.")
+    assert match.fabric_class is FabricClass.WINDBREAKER
+    assert match.keyword == "windbreaker"
+    assert classify_fabric("Nylon windbreaker fabric.").fabric_class is FabricClass.NYLON
+    with pytest.raises(UnclassifiedFabricError):
+        classify_fabric("NOT windbreaker fabric.")

@@ -43,11 +43,19 @@ def test_B_C_authority_over_stale_copy_real_product(monkeypatch):
 
     original = get_product
 
-    # The registry nulls stale copy once it is corrected, so the stale
-    # pre-order claim is injected rather than assumed to still be live data.
+    # Corrected registry copy must stay current, and the registry nulls stale
+    # copy once it is corrected. Inject the historical claims explicitly (the
+    # pre-order SEO line, the pre-correction "Embroidered" description -- the
+    # founder corrected br-001 to embossed -- and the superseded 10in width)
+    # so this regression does not depend on live stale product copy.
     def with_stale_copy(sku):
         record = original(sku)
-        record["content"]["seo_meta"] = {"value": "Gothic luxury. Pre-order now."}
+        record["content"]["seo_meta"] = {"value": "Embroidered front roses. Pre-order now."}
+        record["catalog"]["description"] = (
+            "Gothic luxury blooms in twilight. Embroidered with defiant elegance, "
+            "a dark romance woven in every thread."
+        )
+        record["catalog"]["branding_spec"] = "10 inches wide"
         return record
 
     monkeypatch.setattr(context_resolver, "get_product", with_stale_copy)
@@ -142,6 +150,21 @@ def test_dimension_number_conflict_and_required_axis_block():
     assert all("size_inches" not in p for p in result["execution"]["protected_placements"])
 
 
+def test_dimension_summary_accepts_additional_dossier_measurements():
+    """A summary of the same patch does not contradict separate back/trim sizes."""
+    raw = get_product("br-012")
+    result = project_product(raw, ["front"], ["color"])
+    assert not any(c["field"] == "decoration_dimensions" for c in result["conflicts"])
+
+
+def test_dimension_summary_still_rejects_a_different_axis():
+    raw = get_product("br-012")
+    raw["catalog"]["branding_spec"] = "Patch 3 inches wide and 4 inches tall."
+    raw["dossier"]["branding_block"] = "Patch 3 inches tall and 4 inches wide."
+    result = project_product(raw, ["front"], ["color"])
+    assert any(c["field"] == "decoration_dimensions" for c in result["conflicts"])
+
+
 def test_rule_selection_reasons_exclusions_and_intent_gate_profiles():
     data = payload()
     data["major_initiative"] = True
@@ -197,3 +220,73 @@ def test_compact_cli_defaults_to_execution_and_audit_is_explicit():
     assert "applicable_rules" not in compact_data and "applicable_rules" in audit_data
     assert compact_data["status"] == "PLANNING_READY"
     assert len(compact.stdout) < len(audit.stdout)
+
+
+@pytest.mark.parametrize("view", ["front", "packshot"])
+def test_front_projection_preserves_current_wrist_label_without_hip(view):
+    record = get_product("br-004")
+    result = project_product(record, [view], [])["execution"]
+    assert result["protected_placements"] == record["logos"]["placements"]
+    assert [p["position"] for p in result["protected_placements"]] == [
+        "front_chest_center",
+        "wrist_cuff",
+    ]
+    assert "when visible" in " ".join(result["negative_constraints"]).lower()
+
+
+def test_exterior_token_classification_excludes_rear_interior_and_false_substrings():
+    record = get_product("br-004")
+    positions = [
+        "right_chest",
+        "body_side_panel",
+        "left-wrist",
+        "front_chest",
+        "back_center",
+        "back_of_neck",
+        "back_number_80",
+        "inside_hood",
+        "back_wrist_cuff",
+        "interior_front_label",
+        "front_lining",
+        "cuff_lining",
+        "confrontation",
+        "frontage",
+    ]
+    record["logos"]["placements"] = [{"position": p, "logo_id": "test"} for p in positions]
+    result = project_product(record, ["front"], [])["execution"]
+    assert [p["position"] for p in result["protected_placements"]] == positions[:4]
+    assert project_product(record, ["back"], [])["execution"]["protected_placements"] == []
+
+
+def test_wrist_technique_does_not_change_front_treatment():
+    record = get_product("br-004")
+    record["logos"]["placements"] = [
+        {"position": "front_chest_center", "technique": "embroidered"},
+        {"position": "wrist_cuff", "technique": "silicone_patch"},
+    ]
+    result = project_product(record, ["front"], [])["execution"]
+    assert result["facts"]["front_treatment"]["value"] == "embroidered"
+    assert result["protected_placements"] == record["logos"]["placements"]
+
+
+def test_resolver_execution_preserves_actual_founder_wrist_label():
+    data = payload(exact=True)
+    data["products"] = [
+        {"sku": "br-004", "required_views": ["front"], "required_details": ["front_treatment"]}
+    ]
+    result = resolve_context(ResolutionRequest.model_validate(data))
+    assert (
+        result.execution_products[0]["protected_placements"]
+        == get_product("br-004")["logos"]["placements"]
+    )
+
+
+def test_dimension_conflict_strips_wrist_dimensions_without_dropping_location():
+    record = get_product("br-004")
+    record["catalog"]["branding_spec"] = "10 inches wide"
+    record["dossier"]["branding_block"] = "12 inches wide"
+    record["logos"]["placements"][1]["dimension_inches"] = {"width": 1, "height": 2}
+    result = project_product(record, ["front"], [])["execution"]
+    wrist = next(p for p in result["protected_placements"] if p["position"] == "wrist_cuff")
+    assert "dimension_inches" not in wrist
+    assert wrist["decoration_type"] == "label"

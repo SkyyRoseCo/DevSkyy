@@ -49,3 +49,38 @@ describe('Runway Dev dry-run distributed rate limiter', () => {
     expect(store).not.toHaveBeenCalled();
   });
 });
+
+describe('Runway Dev dry-run limiter store recovery', () => {
+  it('rebuilds the store connection after an outage instead of reusing a dead client', async () => {
+    vi.resetModules();
+    vi.stubEnv('REDIS_URL', 'redis://127.0.0.1:6379');
+    vi.stubEnv('NEXTAUTH_SECRET', 'test-hmac-secret');
+    const constructed: unknown[] = [];
+    vi.doMock('bullmq', () => ({
+      Queue: class {
+        client: Promise<unknown>;
+        constructor() {
+          // First connection never comes up; every later one is healthy.
+          this.client =
+            constructed.length === 0
+              ? Promise.reject(new Error('ECONNREFUSED'))
+              : Promise.resolve({ defineCommand: () => undefined, runCommand: async () => 1 });
+          this.client.catch(() => undefined);
+          constructed.push(this);
+        }
+        on() {
+          return this;
+        }
+        async close() {}
+      },
+    }));
+    const { consumeRunwayDryRunRateLimit } = await import('../app/api/runway-dev/dry-run/rate-limit');
+
+    expect(await consumeRunwayDryRunRateLimit('owner@example.test')).toBe('unavailable');
+    expect(await consumeRunwayDryRunRateLimit('owner@example.test')).toBe('allowed');
+    expect(constructed).toHaveLength(2);
+
+    vi.doUnmock('bullmq');
+    vi.unstubAllEnvs();
+  });
+});

@@ -151,7 +151,7 @@ function skyyrose_enqueue_phase3_experience_analyzer(): void {
 		'skyyrose-experience-analyzer',
 		$js_uri . '/' . $file,
 		array( 'skyyrose-performance-guardian' ),
-		SKYYROSE_VERSION,
+		(string) filemtime( $base_js_dir . '/' . $file ),
 		array(
 			'strategy'  => 'defer',
 			'in_footer' => true,
@@ -307,7 +307,7 @@ function skyyrose_enqueue_phase4_assets(): void {
 		'skyyrose-personalization',
 		SKYYROSE_ASSETS_URI . '/js/' . $pers_js,
 		array(),
-		SKYYROSE_VERSION,
+		(string) filemtime( $base_js_dir . '/' . $pers_js ),
 		array(
 			'strategy'  => 'defer',
 			'in_footer' => true,

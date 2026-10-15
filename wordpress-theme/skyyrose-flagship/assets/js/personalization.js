@@ -9,7 +9,7 @@
  * collection pages and after the summary on single product pages.
  *
  * Requires SkyyCurated global (localized by personalization.php):
- *   { visitorHash, collection, restBase, restNonce, limit }
+ *   { collection, restBase, restNonce, limit }; identity is read after consent
  *
  * Rendering flow:
  *   1. Find insertion point (after .product-grid__items or product summary)
@@ -24,7 +24,55 @@
   'use strict';
 
   var cfg = window.SkyyCurated;
-  if (!cfg || !cfg.visitorHash) return;
+  if (!cfg) return;
+  var activeSection = null;
+  var controller = null;
+  var generation = 0;
+
+  function consentAccepted() {
+    try {
+      return (
+        localStorage.getItem('skyyrose_cookie_consent') === 'accepted' &&
+        /(?:^|;\s*)skyyrose_cookie_consent=accepted(?:;|$)/.test(document.cookie)
+      );
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function visitorHash() {
+    if (!consentAccepted()) return '';
+    try {
+      var hash = localStorage.getItem('skyy_vh') || '';
+      if (/^[a-f0-9]{16,64}$/.test(hash)) return hash;
+      if (!window.crypto || !window.crypto.getRandomValues) return '';
+      var bytes = new Uint8Array(16);
+      window.crypto.getRandomValues(bytes);
+      hash = Array.from(bytes, function (b) {
+        return b.toString(16).padStart(2, '0');
+      }).join('');
+      localStorage.setItem('skyy_vh', hash);
+      return localStorage.getItem('skyy_vh') === hash ? hash : '';
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function stop() {
+    generation += 1;
+    if (controller) controller.abort();
+    controller = null;
+    if (activeSection) activeSection.remove();
+    activeSection = null;
+    ['skyy_vh', 'skyy_analytics_session'].forEach(function (key) {
+      try {
+        localStorage.removeItem(key);
+      } catch (e) {
+        /* Storage may be blocked. */
+      }
+    });
+    document.cookie = 'skyy_visitor=; Max-Age=0; Path=/; SameSite=Lax';
+  }
 
   // -------------------------------------------------------------------------
   // Helpers
@@ -189,8 +237,10 @@
   // Fetch and render
   // -------------------------------------------------------------------------
 
-  function fetchAndRender(gridEl) {
-    var url = cfg.restBase + '/personalization/' + cfg.visitorHash;
+  function fetchAndRender(gridEl, hash) {
+    var epoch = generation;
+    controller = typeof AbortController === 'function' ? new AbortController() : null;
+    var url = cfg.restBase + '/personalization/' + hash;
     var params = new URLSearchParams({
       collection: cfg.collection || '',
       limit: cfg.limit || 4,
@@ -200,11 +250,13 @@
       method: 'GET',
       headers: { 'X-WP-Nonce': cfg.restNonce || '' },
       credentials: 'same-origin',
+      signal: controller ? controller.signal : undefined,
     })
       .then(function (res) {
         return res.ok ? res.json() : Promise.reject(res.status);
       })
       .then(function (data) {
+        if (epoch !== generation || !consentAccepted()) return;
         var products = data.products || data.recommendations || data || [];
         if (!Array.isArray(products) || products.length === 0) {
           // No recommendations — hide the section.
@@ -213,7 +265,7 @@
           return;
         }
 
-        gridEl.innerHTML = '';
+        while (gridEl.firstChild) gridEl.removeChild(gridEl.firstChild);
         gridEl.setAttribute('aria-busy', 'false');
 
         products.forEach(function (product) {
@@ -221,6 +273,7 @@
         });
       })
       .catch(function () {
+        if (epoch !== generation) return;
         // Failed — hide section silently.
         var section = gridEl.closest('.skyy-curated');
         if (section) section.hidden = true;
@@ -231,15 +284,36 @@
   // Init
   // -------------------------------------------------------------------------
 
-  function init() {
+  function init(event) {
+    if (event && event.detail && event.detail.consent !== 'accepted') {
+      stop();
+      return;
+    }
+    if (!consentAccepted()) {
+      stop();
+      return;
+    }
+    if (activeSection) return;
+    var hash = visitorHash();
+    if (!hash) {
+      stop();
+      return;
+    }
     var point = findInsertionPoint();
     if (!point) return;
 
     var built = buildSection();
     point.parent.insertBefore(built.section, point.before);
 
-    fetchAndRender(built.grid);
+    activeSection = built.section;
+    fetchAndRender(built.grid, hash);
   }
+
+  document.addEventListener('skyyrose:consent-changed', init);
+  document.addEventListener('skyyrose:consent-declined', stop);
+  window.addEventListener('storage', function (e) {
+    if (e.key === 'skyyrose_cookie_consent' || e.key === null) init();
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

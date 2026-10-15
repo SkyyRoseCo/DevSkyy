@@ -13,6 +13,7 @@ Schema and consistency findings DO fail -- those are real defects.
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 
 import pytest
 
@@ -51,6 +52,44 @@ def test_registry_is_internally_consistent(registry: dict) -> None:
     assert not findings, "consistency violations:\n" + "\n".join(
         f"  [{f.kind}] {f.where}: {f.message}" for f in findings[:20]
     )
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("series_slug", "unknown-series"),
+        ("series_region", "unknown-city"),
+        ("series_order", True),
+        ("series_order", -1),
+        ("series_order", 0),
+        ("series_order", "1"),
+        ("unexpected", "extra"),
+    ],
+)
+def test_schema_rejects_invalid_merchandising(registry: dict, field: str, value: object) -> None:
+    candidate = deepcopy(registry)
+    product = candidate["products"]["br-001"]
+    product["merchandising"] = {
+        "series_slug": "jersey-series",
+        "series_region": "oakland",
+        "series_order": 1,
+        field: value,
+    }
+    assert check_schema(candidate)
+
+
+@pytest.mark.parametrize("field,value", [("source", " "), ("kind", "FOUNDER_CONFIRMED")])
+def test_schema_rejects_invalid_route_provenance(registry: dict, field: str, value: str) -> None:
+    candidate = deepcopy(registry)
+    candidate["products"]["br-001"]["merchandising_provenance"][field] = value
+    assert check_schema(candidate)
+
+
+@pytest.mark.parametrize("missing", ["merchandising", "merchandising_provenance"])
+def test_schema_requires_complete_route_record(registry: dict, missing: str) -> None:
+    candidate = deepcopy(registry)
+    del candidate["products"]["br-001"][missing]
+    assert check_schema(candidate)
 
 
 def test_reordering_is_lossless(registry: dict) -> None:

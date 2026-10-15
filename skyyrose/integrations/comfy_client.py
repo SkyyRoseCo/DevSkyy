@@ -233,9 +233,9 @@ def verify_protected_foreground_rgb(
             source = source_image.convert("RGB")
             protected = protected_image.convert("RGBA")
             mask = mask_image.convert("L")
-            source_pixels = list(source.getdata())
-            protected_pixels = list(protected.getdata())
-            mask_pixels = list(mask.getdata())
+            source_pixels = list(source.get_flattened_data())
+            protected_pixels = list(protected.get_flattened_data())
+            mask_pixels = list(mask.get_flattened_data())
     except (OSError, SyntaxError, UnidentifiedImageError) as exc:
         raise ComfyRuntimeError("protected foreground evidence contains an invalid image") from exc
     if source.size != protected.size or source.size != mask.size:
@@ -966,20 +966,11 @@ def _paid_node_price(class_info: Any) -> float:
 
 
 def runway_contract_sha256(contract: Mapping[str, Any]) -> str:
-    """Hash Runway intent without the self-referential approval file binding.
-
-    Must stay byte-identical to ``_contract_sha256`` in
-    ``Comfy/scripts/environment_plate_ooda.py`` (stdlib-only, cannot import
-    this module): the founder approval packet is hashed there and verified
-    here, so both exclude the same workflow-state fields.
-    """
+    """Hash execution inputs and gate state, excluding the approval binding."""
     normalized = json.loads(json.dumps(contract))
     control = normalized.setdefault("credit_control", {})
     control["approval_receipt"] = None
-    # The post-merge gate flips only after the approved branch lands on main.
-    # It is workflow state, not a provider request input, so it must not
-    # invalidate an already-issued approval.
-    normalized["post_merge_execution_gate"] = None
+    # Bind merge readiness exactly as preflight does; stale approvals cannot unlock it.
     return workflow_sha256(normalized)
 
 

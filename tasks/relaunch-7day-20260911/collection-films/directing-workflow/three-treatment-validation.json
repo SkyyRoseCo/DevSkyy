@@ -1,0 +1,38 @@
+{
+  "checked_utc": "2026-09-13T20:49:01.366668+00:00",
+  "scope": "Written treatment structure/local links only; no visual or audience validation",
+  "local_links": "PASS",
+  "coverage": {
+    "KIDS-TREATMENT.md": {
+      "shots": 8,
+      "rough_seconds": 32,
+      "timeline_contiguous": true
+    },
+    "SIGNATURE-TREATMENT.md": {
+      "shots": 8,
+      "rough_seconds": 36,
+      "timeline_contiguous": true
+    },
+    "LOVE-HURTS-TREATMENT.md": {
+      "shots": 7,
+      "rough_seconds": 36,
+      "timeline_contiguous": true
+    }
+  },
+  "files": {
+    "KIDS-TREATMENT.md": "e595d851bb0ef480b81a800a8427264cf153c0118956965392ba8c022a936d69",
+    "SIGNATURE-TREATMENT.md": "c17c78618ec529533ec95fb8661e115a56c7f9dcf1d4fc819004c9a57942e7b6",
+    "LOVE-HURTS-TREATMENT.md": "ab16cd38baa8156908b6c96d617a72469b8f2a3125b84d033654ff9ee5e518f0",
+    "THREE-COLLECTION-TREATMENTS.md": "759733b68bd1d89f01cfabea5599be64d82c7c33daa3217729e87bdfe99fe519",
+    "FOUNDER-INTERVIEW-2026-09-13.md": "84327dd3d06e9e22a133fd98decd843d1ebf6602a7871b28a7095257c1c491ee",
+    "START-HERE.md": "9e44b847ee6241a6ae148792587c6b2befbf0cc81717f91d9d94b6fb1a826257",
+    "NEXT-DIRECTING-SEQUENCE.md": "e8e886026f0d334cfb192f2d2ac69e59ab0f8c7831b2a69a2ee9b6e99b87d730"
+  },
+  "black_rose": "HELD_AT_FOUNDER_GARDEN_DIRECTION",
+  "generated_media": false,
+  "new_cast_approved": false,
+  "specialist_review": "Kids causal agency reviewed; Signature first-rose form, finish and garment authority reviewed",
+  "signature_source_sha256": "da3f74ef1d7acfcdc0b5cb363fdc3170bce7e5f246353b0eccf747a89f7612d8",
+  "signature_source_byte_identity": "PASS",
+  "post_validation_source_clarification": "Founder confirmed first rose on sg-015 and in Signature font; interview and treatment authority notes updated. Prior timing/link check scope retained."
+}

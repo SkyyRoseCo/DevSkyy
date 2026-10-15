@@ -7,6 +7,7 @@ import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import CleanCSS from 'clean-css';
+import postcss from 'postcss';
 import { minify } from 'terser';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
@@ -30,8 +31,15 @@ function verifyOrWrite(sourcePath, output) {
   return true;
 }
 
-function minifyCss(sourcePath) {
+function readCss(sourcePath) {
   const source = fs.readFileSync(sourcePath, 'utf8');
+  // CleanCSS may silently repair broken declarations into different selectors.
+  // The default PostCSS parser rejects malformed syntax with file/line evidence.
+  postcss.parse(source, { from: sourcePath });
+  return source;
+}
+
+function minifyCss(source) {
   const result = new CleanCSS({ level: { 1: { specialComments: 0 } } }).minify(source);
   if (result.errors.length > 0) {
     throw new Error(result.errors.join('; '));
@@ -55,9 +63,12 @@ async function minifyJs(sourcePath) {
 async function main() {
   const cssSources = sourceFiles(path.join(themeDir, 'assets', 'css'), '.css');
   const jsSources = sourceFiles(path.join(themeDir, 'assets', 'js'), '.js');
+  // Validate every CSS input before writing any asset; a later invalid file
+  // must not leave an earlier stylesheet rebuilt from a rejected source set.
+  const cssInputs = cssSources.map(sourcePath => ({ sourcePath, source: readCss(sourcePath) }));
   const stale = [];
-  for (const sourcePath of cssSources) {
-    if (!verifyOrWrite(sourcePath, minifyCss(sourcePath))) stale.push(path.relative(themeDir, sourcePath));
+  for (const { sourcePath, source } of cssInputs) {
+    if (!verifyOrWrite(sourcePath, minifyCss(source))) stale.push(path.relative(themeDir, sourcePath));
   }
   for (const sourcePath of jsSources) {
     if (!verifyOrWrite(sourcePath, await minifyJs(sourcePath))) stale.push(path.relative(themeDir, sourcePath));

@@ -46,7 +46,7 @@ require_text "Unknown V2 preview route" "$preview_file"
 require_text "Unknown V2 product fixture" "$preview_file"
 require_text "V2 product fixture media unavailable" "$preview_file"
 require_text "X-SkyyRose-Preview-Commit" "$preview_file"
-require_text "data-card-direction=\"ornate-frame\"" "$repo_dir/wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php"
+require_text "data-card-direction=\"living-archive\"" "$repo_dir/wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php"
 forbid_text "../wordpress-theme/skyyrose-flagship/" "$preview_file"
 forbid_text "?: preview_product_for_sku( 'sg-005' )" "$preview_file"
 

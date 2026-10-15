@@ -1,0 +1,440 @@
+{
+  "antecedent_scope": "Finish the 15 missing product-page front bindings and the 4 collection heroes, 4 collection story images, and 3 collection-specific pre-order merchandise scenes. Reuse existing approved V2 images where suitable; review the placements; then update staging.",
+  "assignments": {
+    "assets/v2-original/products/br-001.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "collection_hero"
+      ],
+      "skus": [
+        "br-001"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-001.png",
+        "review": {
+          "path": "data/v2-media-reviews/card-br-001-20261003.json",
+          "sha256": "cfdd6a87be8b0aa6b4b3b9048940ad59260ff078dfcfabe61bb9930f47c7f3e9"
+        },
+        "sha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60"
+      }
+    },
+    "assets/v2-original/products/br-003.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-003"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-003.png",
+        "review": {
+          "path": "data/v2-media-reviews/br-003-founder-card-20261006.json",
+          "sha256": "90726ca5a88478f8f0d40349548a164f84f99bc889ab2042a5bb7e5bd2969fff"
+        },
+        "sha256": "914f5fd17f85ef47f22047f24fa88f3d617fa1946231ef35094fb27b13aaf2c9"
+      }
+    },
+    "assets/v2-original/products/br-004.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "collection_story"
+      ],
+      "skus": [
+        "br-004"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-004.png",
+        "review": {
+          "path": "data/v2-media-reviews/card-br-004-cuff-repair-20261003.json",
+          "sha256": "d7352e27a97134a6bf79ab885dfea006c93cbf4e549ba7d76ccf0290633ff684"
+        },
+        "sha256": "c54a5bb33a862c02211ffedc6e377c5431a624dfba54f2c70c50648631dba0ac"
+      }
+    },
+    "assets/v2-original/products/br-006.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-006"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-006.png",
+        "review": {
+          "path": "data/v2-media-reviews/br-006-founder-card-20261006.json",
+          "sha256": "0b6720c7b08c90e63224f93c9c933ee0d0d626813dd39249e8748129d62f07c1"
+        },
+        "sha256": "06bcb9c83369d73a676741f3ae62fd309709ee83df07ff29f8b52969e0da963b"
+      }
+    },
+    "assets/v2-original/products/br-008.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-008"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-008.png",
+        "review": {
+          "path": "data/v2-media-reviews/br-008-founder-card-20261006.json",
+          "sha256": "265be2dd2178ce617de2956703efcad276c9a4dbec1acf398d058c4b7f3e0c9e"
+        },
+        "sha256": "62ffb9a3521e4026d5f1c588ecab999a1ed0631ccb7c2eea34be2bc59fe93121"
+      }
+    },
+    "assets/v2-original/products/br-009.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "pdp_on_model_front",
+        "merchandise_scene"
+      ],
+      "skus": [
+        "br-009"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-009.png",
+        "review": {
+          "path": "data/v2-media-reviews/br-009-native-card-r2-20261006.json",
+          "sha256": "c4f000b0a216121b1777e78f433398562b74f57c55a7af7fe5b4aead9f9b2372"
+        },
+        "sha256": "e3b7615167aa2c6b012ae959b68e82b4d239f22bd044f7c73a07d42e64cb355d"
+      }
+    },
+    "assets/v2-original/products/br-010.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-010"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-010.png",
+        "review": {
+          "path": "data/v2-media-reviews/br-010-founder-card-20261006.json",
+          "sha256": "7150ebc8e6f539363fd86bdc17ceee9d95b32a9e247e600c66b9f7dccde14ccc"
+        },
+        "sha256": "e0391d5fbc4a8c0f69179218231ecf2afd256b58d662367faedca01e274a2782"
+      }
+    },
+    "assets/v2-original/products/br-011.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-011"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-011.png",
+        "review": {
+          "path": "data/v2-media-reviews/br-011-founder-card-20261006.json",
+          "sha256": "f6d81ba83495f4f6d0f3fa2e9d52ec84c9dabff849bc9595c9e4131102a6eaec"
+        },
+        "sha256": "b84df3b69e7bb4bdeaee3e837d6189e3e171707f4e64b89b45739bcb04a3e580"
+      }
+    },
+    "assets/v2-original/products/br-012.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-012"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-012.png",
+        "review": {
+          "path": "data/v2-media-reviews/br-012-founder-card-20261006.json",
+          "sha256": "b7287f1c3df793121df1687ae98bfb5daa41a0053c833b15ec24fb9a0e0dd13c"
+        },
+        "sha256": "9cba8eb23ba1359871951f585e55fc898372b2ae493848be333c72d361684f2d"
+      }
+    },
+    "assets/v2-original/products/br-014.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-014"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-014.png",
+        "review": {
+          "path": "data/v2-media-reviews/br-014-founder-card-20261006.json",
+          "sha256": "12640b4a038f67facae4c0f29d429fb27f80100d2e6010300d713fb7408d28a1"
+        },
+        "sha256": "ab871a8035a2f7e0f6fbf65c44c0e2d940a5d9f323d436a8cdfff844c278d0c8"
+      }
+    },
+    "assets/v2-original/products/br-015.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "br-015"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/br-015.png",
+        "review": {
+          "path": "data/v2-media-reviews/br-015-founder-card-20261006.json",
+          "sha256": "987735f678bcbc3b59bde1d5a1ac15dec05ec82e2c509c73c833e2c7cdc21aa4"
+        },
+        "sha256": "935b4e584369cad2543860824b78c2163171052adc7fe8483b29409f70e9f681"
+      }
+    },
+    "assets/v2-original/products/kids-001.png": {
+      "collections": [
+        "kids-capsule"
+      ],
+      "roles": [
+        "collection_story"
+      ],
+      "skus": [
+        "kids-001"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/kids-001.png",
+        "review": {
+          "path": "data/v2-media-reviews/card-kids-001-styling.json",
+          "sha256": "1931bf385b5df47306ac48dee77a58a7a686e34d92f7b48869bcdaa9fe124f4c"
+        },
+        "sha256": "0da7f1158e80c738b457b42f132a5ab723c7cee739d588ca9dcea00b404c0f29"
+      }
+    },
+    "assets/v2-original/products/kids-002.png": {
+      "collections": [
+        "kids-capsule"
+      ],
+      "roles": [
+        "pdp_on_model_front",
+        "collection_hero"
+      ],
+      "skus": [
+        "kids-002"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/kids-002.png",
+        "review": {
+          "path": "data/v2-media-reviews/kids-002-native-card-r2-20261006.json",
+          "sha256": "d86d0cd2ed37c1cd165d562cbeb7a6c298a327644ad12b0a1e1142022e4cd07c"
+        },
+        "sha256": "d9a0ea0e8bfd7044714f22f04c12a92f7f2fb70ba05c3011d048a7b48e3339f0"
+      }
+    },
+    "assets/v2-original/products/lh-002.png": {
+      "collections": [
+        "love-hurts"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "lh-002"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/lh-002.png",
+        "review": {
+          "path": "data/v2-media-reviews/lh-002-founder-card-20261006.json",
+          "sha256": "8262e349e85cd654c57c25e4867848e77098f016ed72d27329efa906e8a81347"
+        },
+        "sha256": "8237df33b67dadaa443a32c06541c0d80ec8ad8dbdb6039fab2f75e1c4fa2ff4"
+      }
+    },
+    "assets/v2-original/products/lh-004.png": {
+      "collections": [
+        "love-hurts"
+      ],
+      "roles": [
+        "collection_hero"
+      ],
+      "skus": [
+        "lh-004"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/lh-004.png",
+        "review": {
+          "path": "data/v2-media-reviews/card-lh-004.json",
+          "sha256": "0c89600ff02bf12c7bc49bd102863293520757290c28ba459af2dc4cb1a47cc0"
+        },
+        "sha256": "e3b22a5fbc315f1147d51a50ddc447fdc819c6f8366d8c4c0de8263bb47685a3"
+      }
+    },
+    "assets/v2-original/products/lh-005.png": {
+      "collections": [
+        "love-hurts"
+      ],
+      "roles": [
+        "pdp_on_model_front",
+        "merchandise_scene"
+      ],
+      "skus": [
+        "lh-005"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/lh-005.png",
+        "review": {
+          "path": "data/v2-media-reviews/lh-005-founder-card-20261006.json",
+          "sha256": "056a4606e26aa2a8568668d1c265551f7c8f933d8de70f777b0772a9abdb8cd7"
+        },
+        "sha256": "016ffe57064fd7c6f49d1df4ff9f5d59ffdb239f807ecea31d10c3362ddde752"
+      }
+    },
+    "assets/v2-original/products/sg-001.png": {
+      "collections": [
+        "signature"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-001"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/sg-001.png",
+        "review": {
+          "path": "data/v2-media-reviews/sg-001-founder-card-20261006.json",
+          "sha256": "fffe16c4cb431974d46d50841188c6b13971ed54817678709f57ef3b1b50bcfb"
+        },
+        "sha256": "6a54cff3a90583c9d0e50bacf3cc6606dd70531976c19350e7799d89e105b8ba"
+      }
+    },
+    "assets/v2-original/products/sg-002.png": {
+      "collections": [
+        "signature"
+      ],
+      "roles": [
+        "pdp_on_model_front"
+      ],
+      "skus": [
+        "sg-002"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/sg-002.png",
+        "review": {
+          "path": "data/v2-media-reviews/sg-002-founder-card-20261006.json",
+          "sha256": "59091420157be062bacbdebcb4afdb87214df5ed28b99fe00599a988a1beed1c"
+        },
+        "sha256": "cb8b21742ce20ed778f5c8fccc44e60c08df6deade28c9cd525c61575a608931"
+      }
+    },
+    "assets/v2-original/products/sg-009.png": {
+      "collections": [
+        "signature"
+      ],
+      "roles": [
+        "collection_hero"
+      ],
+      "skus": [
+        "sg-009"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/sg-009.png",
+        "review": {
+          "path": "data/v2-media-reviews/card-sg-009-styling.json",
+          "sha256": "194f938addc29271a088779a78235a073070e142ad23b784c09161b53ab4500c"
+        },
+        "sha256": "43f0175692b4a8d123e2aed28a6cfbcc6902521e86fb0ac4cd2cc64a9e99e005"
+      }
+    },
+    "assets/v2-original/products/sg-013.png": {
+      "collections": [
+        "signature"
+      ],
+      "roles": [
+        "collection_story"
+      ],
+      "skus": [
+        "sg-013"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/sg-013.png",
+        "review": {
+          "path": "data/v2-media-reviews/card-sg-013.json",
+          "sha256": "f040c1de9322125779e130ebf79054cc3ab5c771ee2a186c005d5d3fb8dd46d4"
+        },
+        "sha256": "12cce820da6f783537847139bf8636fd0ee0627e45e577d5315e46bdd142bda9"
+      }
+    },
+    "assets/v2-original/products/sg-015.png": {
+      "collections": [
+        "signature"
+      ],
+      "roles": [
+        "pdp_on_model_front",
+        "merchandise_scene"
+      ],
+      "skus": [
+        "sg-015"
+      ],
+      "source": {
+        "path": "assets/v2-original/products/sg-015.png",
+        "review": {
+          "path": "data/v2-media-reviews/sg-015-native-card-r4-20261006.json",
+          "sha256": "cb5a467e9088c119d75dbc80b266d38f2c2d0b6bdea8c136591f6e5dc54f6abe"
+        },
+        "sha256": "ffe79d1d89422990ff4a1e9fcdefeacbefbd15d21d2d3cf758ce30cd9317488d"
+      }
+    },
+    "assets/v2-original/scenes/lh-004-back-hood-l2.webp": {
+      "collections": [
+        "love-hurts"
+      ],
+      "roles": [
+        "collection_story"
+      ],
+      "skus": [
+        "lh-004"
+      ],
+      "source": {
+        "path": "assets/v2-original/scenes/lh-004-back-hood-l2.webp",
+        "review": {
+          "path": "data/v2-media-reviews/lh-004-hood-l2-scene-20261006.json",
+          "sha256": "c3716902b81d50f6ff2b13c2f6161849f95515c10e5b41e117eb7e6380bca9e5"
+        },
+        "sha256": "c68052ec05a6408167fc96cc9050998090bd93300dec11153bdda65bce6bd457"
+      }
+    }
+  },
+  "authority": "FOUNDER_CONFIRMED",
+  "context_review": "Separate eyes-on page review; this owner use grant is not an independent visual PASS.",
+  "date": "2026-10-06",
+  "decision_text": "do it",
+  "evidence_class": "RECORDED_DIRECT_USER_AUTHORIZATION",
+  "mode": "REUSE_APPROVED_UNCHANGED_MEDIA",
+  "prior_instructions": [
+    "go by each sku. make sure its hashed to the correct item. make sure every collection has its available products wired to it. all pre order items only go to the pre order page. make sure all cards have the V2 look and feel . make sure all approved imagery for products is recorded in 1 specified location for easy finding and SOT",
+    "so update staging with these",
+    "make sure you update all staging files so no old reads slip in'"
+  ],
+  "schema": "skyyrose.media-usage-authority.v1",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+}

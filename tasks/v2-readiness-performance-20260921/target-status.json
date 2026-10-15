@@ -1,0 +1,162 @@
+{
+  "verified_at": "2026-09-22T06:29:31.306Z",
+  "classification": "VERIFIED_LIVE",
+  "authentication": {
+    "provider": "WordPress.com MCP",
+    "scope": "Read-only backup, monitor, site visibility status",
+    "sites": [
+      238510894,
+      256563697
+    ]
+  },
+  "results": {
+    "238510894:backup.rewind_status": {
+      "success": true,
+      "action": "rewind_status",
+      "blog_id": 238510894,
+      "site_url": "https://skyyrose.co",
+      "state": "active",
+      "state_reason": null,
+      "credentials": {
+        "has_main_credential": true,
+        "credential_type": "managed",
+        "can_autoconfigure": null
+      },
+      "restore_preflight_status": null,
+      "backups": {
+        "facts_available": true,
+        "last_backup_when": "2026-09-21 09:13:08",
+        "first_backup_when": "2025-07-18 21:48:39",
+        "number_of_backups": 447,
+        "attempts_available": true,
+        "last_attempt_when": "2026-09-21 09:13:14",
+        "last_attempt_status": "finished",
+        "last_attempt_failed": false,
+        "backup_in_progress": false,
+        "backup_in_progress_since": null
+      }
+    },
+    "238510894:backup.storage_status": {
+      "success": true,
+      "action": "storage_status",
+      "blog_id": 238510894,
+      "site_url": "https://skyyrose.co",
+      "backup_available": true,
+      "storage": {
+        "used_bytes": 940739823,
+        "used_gb": 0.88,
+        "limit_bytes": 0,
+        "limit_gb": 0,
+        "percentage": 0,
+        "status": "no_quota",
+        "last_backup_size_bytes": 940739823,
+        "last_backup_size_gb": 0.88
+      },
+      "retention": {
+        "retention_days": 0,
+        "saved_days": 0,
+        "min_allowed_days": 7
+      },
+      "backups_stopped": false,
+      "allowed_retention_days": [
+        2,
+        7,
+        30,
+        120,
+        365
+      ]
+    },
+    "238510894:monitor.status": {
+      "success": true,
+      "action": "status",
+      "blog_id": 238510894,
+      "site_url": "https://skyyrose.co",
+      "monitor_active": true,
+      "site_status": "up",
+      "last_status_change": "2026-05-20 23:39:42"
+    },
+    "238510894:manage-site.status": {
+      "success": true,
+      "action": "get_status",
+      "site_url": "https://skyyrose.co",
+      "launch_status": "launched",
+      "visibility": "public",
+      "has_active_subscribers": false,
+      "note": "Current launch and visibility state reported without any write."
+    },
+    "256563697:backup.rewind_status": {
+      "success": true,
+      "action": "rewind_status",
+      "blog_id": 256563697,
+      "site_url": "https://staging-7e48-skyyrose.wpcomstaging.com",
+      "state": "active",
+      "state_reason": null,
+      "credentials": {
+        "has_main_credential": true,
+        "credential_type": "managed",
+        "can_autoconfigure": null
+      },
+      "restore_preflight_status": null,
+      "backups": {
+        "facts_available": true,
+        "last_backup_when": "2026-09-21 09:52:48",
+        "first_backup_when": "2026-08-05 03:04:34",
+        "number_of_backups": 50,
+        "attempts_available": true,
+        "last_attempt_when": "2026-09-21 09:52:50",
+        "last_attempt_status": "finished",
+        "last_attempt_failed": false,
+        "backup_in_progress": false,
+        "backup_in_progress_since": null
+      }
+    },
+    "256563697:backup.storage_status": {
+      "success": true,
+      "action": "storage_status",
+      "blog_id": 256563697,
+      "site_url": "https://staging-7e48-skyyrose.wpcomstaging.com",
+      "backup_available": true,
+      "storage": {
+        "used_bytes": 4233198388,
+        "used_gb": 3.94,
+        "limit_bytes": 0,
+        "limit_gb": 0,
+        "percentage": 0,
+        "status": "no_quota",
+        "last_backup_size_bytes": 4233198388,
+        "last_backup_size_gb": 3.94
+      },
+      "retention": {
+        "retention_days": 0,
+        "saved_days": 0,
+        "min_allowed_days": 7
+      },
+      "backups_stopped": false,
+      "allowed_retention_days": [
+        2,
+        7,
+        30,
+        120,
+        365
+      ]
+    },
+    "256563697:monitor.status": {
+      "success": true,
+      "action": "status",
+      "blog_id": 256563697,
+      "site_url": "https://staging-7e48-skyyrose.wpcomstaging.com",
+      "monitor_active": true,
+      "site_status": "up",
+      "last_status_change": null
+    },
+    "256563697:manage-site.status": {
+      "success": true,
+      "action": "get_status",
+      "site_url": "https://staging-7e48-skyyrose.wpcomstaging.com",
+      "launch_status": "launched",
+      "visibility": "public",
+      "has_active_subscribers": false,
+      "note": "Current launch and visibility state reported without any write."
+    }
+  }
+}

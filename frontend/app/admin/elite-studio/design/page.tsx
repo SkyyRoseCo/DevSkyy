@@ -375,7 +375,7 @@ export default function DesignCoPilotPage() {
               <div>
                 <CardTitle className="text-white text-base">Design Studio</CardTitle>
                 <CardDescription className="text-gray-500 text-xs">
-                  Describe your vision. Luxury Grows from Concrete.
+                  Describe your vision.
                 </CardDescription>
               </div>
             </div>

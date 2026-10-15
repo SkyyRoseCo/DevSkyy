@@ -27,11 +27,14 @@ THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 REPO_ROOT="$(cd "$THEME_DIR/../.." && pwd)"
 cd "$REPO_ROOT"
 
-expected_branch="$(jq -r '.candidate.branch' .fashion-theme/codex-desktop-handoff.json)"
-branch="$(git branch --show-current)"
-if [[ "$branch" != "$expected_branch" && "$branch" != "main" ]]; then
-	echo "FAIL V2 reconnect guard: expected candidate branch $expected_branch or main, found ${branch:-detached}" >&2
+if ! expected_branch="$(jq -er '.candidate.branch | strings | select(length > 0)' .fashion-theme/codex-desktop-handoff.json)" || \
+	! git check-ref-format --branch "$expected_branch" >/dev/null; then
+	echo 'FAIL V2 reconnect guard: handoff candidate branch is missing or invalid.' >&2
 	exit 1
+fi
+branch="$(git branch --show-current)"
+if [[ "$branch" != "$expected_branch" ]]; then
+	report_candidate_drift "expected candidate branch $expected_branch, found ${branch:-detached}"
 fi
 
 for document in \

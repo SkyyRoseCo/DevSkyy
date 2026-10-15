@@ -10,7 +10,7 @@ Enterprise-grade multi-framework agent system integrating:
 - Agno (v2.3.11) - Ultra-fast lightweight agents
 - LangGraph (v1.0.4) - Graph-based workflows
 
-For SkyyRose: Where Love Meets Luxury
+For SkyyRose.
 
 Usage:
     from adk import CommerceAgent, SuperAgentOrchestrator

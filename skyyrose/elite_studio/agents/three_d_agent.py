@@ -96,14 +96,20 @@ class ThreeDAgent(CreativeAgent):
         the RAS prompt. The thin canonical-CSV ``branding_spec`` column is
         NOT a fallback.
         """
-        from skyyrose.core.dossier_loader import get_product_with_dossier
+        from skyyrose.core.product import get_product, render_reference
 
         # --- Stage 0: ADK Observer ---
         logger.info(f"Starting Legendary 3D-First Workflow for {sku}")
 
         # Load dossier — hard-fails (DossierMissingError) if absent (H1).
-        product = get_product_with_dossier(sku)
-        dossier = product["dossier"]
+        product = get_product(sku)
+        reference = render_reference(product, "front")
+        if Path(techflat_path).resolve() != Path(reference["path"]):
+            raise ValueError("Techflat must match the registry front binding")
+        techflat_path = reference["path"]
+        dossier = dict(product["dossier"])
+        dossier["product_corrections"] = product["corrections"]
+        dossier["product_provenance"] = product["provenance"]
 
         # Capture "Back Data" via ADK run (non-blocking, captures reasoning)
         try:
@@ -273,6 +279,7 @@ class ThreeDAgent(CreativeAgent):
             ),
             "provider": "flux",
             "adk_metadata": metadata,
+            "reference_evidence": reference,
         }
 
     def generate_result_bridge(

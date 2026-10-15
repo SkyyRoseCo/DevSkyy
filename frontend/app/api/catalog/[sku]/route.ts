@@ -2,15 +2,20 @@
  * Admin Catalog API — single-SKU UPDATE.
  *
  * PUT /api/catalog/:sku  — patch editable commerce fields on one SKU and write
- * back to the canonical CSV. Validated with Zod (strict: unknown keys rejected).
- * Image columns are intentionally NOT accepted here — they are SOT-governed.
+ * them THROUGH the product registry (`lib/catalog-write.ts` spawns the Python
+ * writer, which regenerates the CSV/dossier projections). Validated with Zod
+ * (strict: unknown keys rejected). Image columns are intentionally NOT accepted
+ * here — they are SOT-governed.
+ *
+ * Fails closed: on a runtime where the registry or Python is unreachable
+ * (serverless / read-only FS) the write answers 503 — there is no CSV fallback.
  */
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
 import { withAuth } from '@/lib/api-auth';
 import { getProduct } from '@/lib/catalog';
-import { updateProductRow } from '@/lib/catalog-write';
+import { CatalogWriteError, updateProductRow } from '@/lib/catalog-write';
 import { collapseNewlines, type CatalogPatch } from '@/lib/catalog-csv';
 
 const patchSchema = z
@@ -29,10 +34,10 @@ const patchSchema = z
 
 type PatchInput = z.infer<typeof patchSchema>;
 
-/** Convert the typed, validated input into raw CSV cell strings. */
+/** Convert the typed, validated input into raw catalog field strings. */
 function toCsvPatch(input: PatchInput): CatalogPatch {
-  // Collapse any CR/LF in free-text values so a pasted line break can't split a
-  // CSV row (the catalog is single-line-per-record by invariant).
+  // The editable catalog fields are single-line values: collapse any CR/LF a
+  // pasted value carries before it reaches the registry writer.
   const patch: CatalogPatch = {};
   if (input.name !== undefined) patch.name = collapseNewlines(input.name);
   if (input.price !== undefined) patch.price = String(input.price);
@@ -80,26 +85,32 @@ async function putHandler(
   }
 
   try {
-    const { product, changed } = updateProductRow(sku, patch);
+    const { product, changed } = await updateProductRow(sku, patch);
     return NextResponse.json({ success: true, data: { product, changed } });
   } catch (error) {
-    const fsErr = error instanceof Error && 'code' in error ? (error as NodeJS.ErrnoException) : null;
-    if (fsErr && (fsErr.code === 'EROFS' || fsErr.code === 'EACCES')) {
+    if (error instanceof CatalogWriteError) {
+      if (error.kind === 'unavailable') {
+        console.error('[api/catalog PUT] registry writer unavailable:', error.message);
+        return NextResponse.json(
+          {
+            success: false,
+            error:
+              'Catalog is read-only in this runtime. Registry writes require a filesystem-backed deployment with Python (local / self-hosted), not serverless.',
+          },
+          { status: 503 }
+        );
+      }
+      // SKU could be deleted between the existence check and the write (rare race).
+      if (error.kind === 'not_found') {
+        return NextResponse.json({ success: false, error: 'Product not found' }, { status: 404 });
+      }
+      // The registry writer refused the patch — Zod + collapseNewlines already
+      // guard the input, so this names a validation gap; surface the reason.
       return NextResponse.json(
-        {
-          success: false,
-          error:
-            'Catalog is read-only in this runtime. CSV writes require a filesystem-backed deployment (local / self-hosted), not serverless.',
-        },
-        { status: 503 }
+        { success: false, error: `Registry rejected the update: ${error.message}` },
+        { status: 400 }
       );
     }
-    // SKU could be deleted between the existence check and the write (rare race).
-    if (error instanceof Error && error.message.startsWith('SKU not found')) {
-      return NextResponse.json({ success: false, error: 'Product not found' }, { status: 404 });
-    }
-    // Anything else is an internal inconsistency (Zod + collapseNewlines already
-    // guard the input) — log detail, return a generic message.
     console.error('[api/catalog PUT] write error:', error);
     return NextResponse.json({ success: false, error: 'Catalog write failed' }, { status: 500 });
   }

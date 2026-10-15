@@ -20,13 +20,21 @@
     "M8": "MEASUREMENT_LEARNING",
     "M9": "ARCHIVE_PROVENANCE"
   },
-  "gate_results": ["PASS", "FAIL", "BLOCKED"],
+  "gate_results": [
+    "PASS",
+    "FAIL",
+    "BLOCKED"
+  ],
   "inapplicable_gate": {
     "applicable": false,
     "reason": "Required nonempty explanation",
     "result": null
   },
-  "resolution_states": ["READY", "READY_WITH_NONBLOCKING_GAPS", "BLOCKED"],
+  "resolution_states": [
+    "READY",
+    "READY_WITH_NONBLOCKING_GAPS",
+    "BLOCKED"
+  ],
   "contracts": {
     "resolution_request": {
       "required": [
@@ -44,7 +52,11 @@
         "decisions",
         "constraints"
       ],
-      "product_item_required": ["sku", "required_views", "required_details"]
+      "product_item_required": [
+        "sku",
+        "required_views",
+        "required_details"
+      ]
     },
     "resolved_context": {
       "required": [
