@@ -2,6 +2,15 @@
 
 All notable changes to SkyyRose Flagship 2 are documented here.
 
+## 2.5.5 — Homepage journal band no longer links to unpublished pages — 2026-10-14
+
+- The homepage "Read the journal" and "Explore the lookbook" links resolved to
+  the documented `/journal/` route, a 404 while the page is unpublished. 2.5.4
+  fixed the navigation but missed this band, which called the fallback form of
+  the page-URL helper directly. Each link now renders only when its page is
+  published (a draft lookbook is not linked either). Covered by the render
+  test in `scripts/test-dead-links.php`.
+
 ## 2.5.4 — Founder-approved collection imagery + content-hash media cache keys — 2026-10-14
 
 - Navigation and in-page links no longer point at pages that are not published.

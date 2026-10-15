@@ -3,7 +3,7 @@ Contributors: skyyrose
 Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 2.5.4
+Stable tag: 2.5.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: e-commerce, custom-menu, featured-images, rtl-language-support, accessibility-ready
@@ -45,6 +45,9 @@ Yes. It is idempotent and reuses exact existing pages and menus without replacin
 No. Motion is progressive enhancement. Purchase controls and route links remain available with JavaScript disabled or reduced motion enabled.
 
 == Changelog ==
+
+= 2.5.5 =
+* Homepage journal band: the "Read the journal" and "Explore the lookbook" links appear only when those pages are published, instead of linking to a 404.
 
 = 2.5.4 =
 * Navigation and in-page links no longer point at unpublished pages; Journal and Lookbook are hidden until published, and scene links use the live experience pages.
