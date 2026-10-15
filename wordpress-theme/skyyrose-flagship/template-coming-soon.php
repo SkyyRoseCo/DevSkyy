@@ -423,7 +423,7 @@ $skyyrose_ajax_url    = admin_url( 'admin-ajax.php' );
 						<?php esc_html_e( 'Submit', 'skyyrose' ); ?>
 					</button>
 				</form>
-				<p class="cs-form__message" id="cs-form-msg" role="status" aria-live="polite"></p>
+
 			</aside>
 
 		</main>

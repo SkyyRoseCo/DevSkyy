@@ -36,6 +36,23 @@ from services.three_d.provider_interface import (
 # =============================================================================
 
 
+@pytest.fixture(autouse=True)
+def offline_dns(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Keep the SSRF validator's DNS lookup off the network.
+
+    The providers validate every download URL, and the validator resolves the host
+    with a real socket.getaddrinfo. Three tests here mock both API clients but not
+    that lookup, so they passed or failed with the machine's DNS. Only resolution is
+    stubbed, with a public address: the scheme / private-range / metadata checks in
+    validate_url still run for real.
+    """
+    from security.ssrf_protection import SSRFProtection
+
+    monkeypatch.setattr(
+        SSRFProtection, "_resolve_hostname", lambda self, hostname: ["93.184.216.34"]
+    )
+
+
 @pytest.fixture
 def temp_output_dir():
     """Create a temporary output directory for tests."""

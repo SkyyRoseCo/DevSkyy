@@ -1,0 +1,18 @@
+{
+  "environment": "public WordPress staging",
+  "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+  "runtime_package_sha256": "b013b1155970287d20e0b19ada41c6d6c8a3d6a4c464e2510e3da895263fb39a",
+  "homepage_status": 200,
+  "homepage_sha256": "effc731f1398d97942d152194e476611e8e91e0faab088ed409d3b03422f2a3d",
+  "unique_href_src_checked": 88,
+  "href_src_status_counts": {"200": 88},
+  "account_route": {"url": "/my-account/", "status": 200, "redirect": false, "note": "route loads account surface; no login redirect observed in HTTP response"},
+  "commerce_chrome_observed": ["Shop", "Collections", "Journal", "About", "Search", "Bag", "Quick view"],
+  "product_assets": [
+    {"sku": "br-001", "url": "assets/approved-card-fronts/br-001-onmodel.webp", "status": 200, "dimensions": "1024x1536", "sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8"},
+    {"sku": "sg-005", "url": "assets/derived/card-fronts/sg-005-480w.webp", "status": 200, "dimensions": "480x720", "sha256": "b51821e4c054365f50386d93bb1256c611b4a6905eec4344f5c3474166c59a38"},
+    {"sku": "kids-001", "url": "assets/derived/card-fronts/kids-001-480w.webp", "status": 200, "dimensions": "480x720", "sha256": "9cfbadbf3aead10ba3d93a5e18e68e0d2310d6f18292e7037b7a664ac6d1498f"},
+    {"sku": "kids-002", "url": "assets/derived/card-fronts/kids-002-480w.webp", "status": 200, "dimensions": "480x720", "sha256": "9a73ccd654639c2965fc42facded9ee20c7395e12e4451dc3d20a21784520a6e"}
+  ],
+  "limitations": ["HTTP and source inspection only; no order, payment, cart mutation, or authenticated account action performed", "Browser click and viewport interaction require separate native browser E2E pass", "HTTP 200 does not establish product-fact fidelity; use current get_product SOT and prior red-team blockers"]
+}

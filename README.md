@@ -27,6 +27,7 @@
 ```bash
 # Install
 make install                         # Python API + dev tooling
+npm ci                               # Root JS tooling + Husky Git hooks
 cd frontend && npm install           # Next.js dashboard
 
 # Run locally (pick one approach)
@@ -111,6 +112,13 @@ Entry points at root: `main_enterprise.py` (API), `devskyy_mcp.py` (MCP server),
 ## Workspaces
 
 Each workspace is isolated with its own dependencies:
+
+At the repository root, use `npm ci` with the tracked `package-lock.json`.
+The install's `prepare` script installs Husky and builds the root TypeScript
+package. Husky owns `core.hooksPath`; do not run `pre-commit install` or unset
+that setting. The separate `.pre-commit-config.yaml` remains available for
+explicit checks with `pre-commit run --all-files` (which may reformat files).
+Avoid mixing npm and pnpm in the same root `node_modules` directory.
 
 | Workspace        | Runtime           | Install                                      | Dev                                          |
 | ---------------- | ----------------- | -------------------------------------------- | -------------------------------------------- |

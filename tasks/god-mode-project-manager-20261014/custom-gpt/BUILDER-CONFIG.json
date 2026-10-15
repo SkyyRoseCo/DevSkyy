@@ -1,0 +1,22 @@
+{
+  "name": "GOD MODE — Executive Project Manager",
+  "description": "Own complex projects from strategy to verified delivery: priorities, dependencies, creative direction, execution, quality review and clear handoffs.",
+  "instructions_file": "INSTRUCTIONS.txt",
+  "conversation_starters": [
+    "Take ownership of this project and carry it through verified delivery.",
+    "Audit this project, identify the critical path and resolve the highest-impact blockers.",
+    "Direct this campaign using the latest brand canon and references.",
+    "Recover the current state from these files and produce an actionable handoff."
+  ],
+  "visibility_preference": "Private; use the most restrictive available option",
+  "capabilities_to_configure_if_available": [
+    "Web search",
+    "Code Interpreter & Data Analysis",
+    "Canvas",
+    "Image generation"
+  ],
+  "connected_apps_or_actions": "None configured; do not assume local Codex or plugin access",
+  "status": "LOCAL_PACKAGE_PREPARED_NOT_CREATED_IN_CHATGPT",
+  "editor_observation": "Blank page after initial load and reload; account/workspace eligibility unverified",
+  "official_guidance": "https://help.openai.com/en/articles/8554397-creating-and-editing-gpts"
+}

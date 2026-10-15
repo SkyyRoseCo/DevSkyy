@@ -6609,5 +6609,663 @@
     "occurrences": 1,
     "last_seen": "2026-10-04T14:23:08.177106+00:00",
     "note": "Renumbered from bug-377 when merging feat/single-product-entry-point into main (2026-10-14): main had already published bug-377 for a different bug."
+  },
+  {
+    "id": "bug-354",
+    "timestamp": "2026-09-20T23:11:16.854151+00:00",
+    "error_message": "git recorded lint-staged.config.mjs as binary: `lint-staged.config.mjs | Bin 5778 -> 6796 bytes`, 0 insertions / 0 deletions. The config that decides which files a formatter may rewrite had no reviewable line diff in its own PR. `file` reported 'data' instead of JavaScript.",
+    "file": "lint-staged.config.mjs",
+    "root_cause": "patternToRegExp used a literal NUL byte (String.fromCharCode(0)) as the placeholder for a '**' path segment before substituting it into the regex source. Functionally correct — JS strings hold NUL fine, node loaded it, every gate passed — but 3 NUL bytes make git classify the blob as binary, which suppresses line diffs and code review on that file. It stayed invisible because editors and the Read tool render NUL as a space, so the source LOOKS like it uses ' ' as the placeholder; only `git show --stat` printing 'Bin' exposed it.",
+    "fix": "Rewrote patternToRegExp to decide while walking the path segments (source += last ? '.*' : '(?:.*/)?') instead of substituting a sentinel character, so no non-printable byte appears in the source. Proved equivalent before swapping: a harness compared regex .source AND .test() results for 14 registry + 13 synthetic patterns x 11 probe paths -> 0 differences. Added tests/test_machine_managed_files.py::TestLintStagedReadsTheRegistry::test_config_is_reviewable_text, which rejects any control byte (<9 or 13<b<32) in the config; mutation-proven: reintroducing the NUL gives exit=1 'contains control bytes [0]'. After the fix `file` reports UTF-8 text and the base..head diff renders as 50 insertions / 16 deletions.",
+    "tags": [
+      "git",
+      "binary-blob",
+      "code-review",
+      "lint-staged",
+      "formatter",
+      "invisible-defect",
+      "control-characters"
+    ],
+    "related_bugs": [
+      "bug-359",
+      "bug-332"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-20T23:11:16.854151+00:00"
+  },
+  {
+    "id": "bug-355",
+    "timestamp": "2026-09-20T23:15:22.086658+00:00",
+    "error_message": "CI Lint & Static Analysis failed on PR #953 with an isort finding in a file the PR never touched: skyyrose-suite/plugins/skyyrose-design/skills/woocommerce-webhooks/examples/fastapi/test_webhook.py (job 106163229755).",
+    "file": "skyyrose-suite/plugins/skyyrose-design/skills/woocommerce-webhooks/examples/fastapi/test_webhook.py",
+    "root_cause": "isort's first-party detection is PATH-RELATIVE: run from the repo root, it scans that directory for module names. The branch added a repo-root main.py, so the bare module `main` became first-party tree-wide, and every `from main import ...` anywhere in the repo suddenly needed its own import section. The example file imports its sibling examples/fastapi/main.py, so the classification is wrong for it but isort cannot tell the two apart by name. A top-level module file is therefore a repo-wide lint event, not a local one — adding main.py / test.py / config.py at the root silently reclassifies imports in files the change never touched.",
+    "fix": "Applied the one blank line isort's own diff asked for (correct grouping regardless). Attribution done the way CLAUDE.md prescribes rather than by guessing: `git archive origin/main | tar -x` into a scratch tree and run the SAME isort gate there — pristine origin/main passes, HEAD fails, so the regression belongs to the branch. Pushed as baf0c5d18 on feat/mcp-servers-and-gate-fixes. Separately: local isort 8.0.0 flags 4 extra files (skyyrose/elite_studio/config.py, security/__init__.py, scripts/golden_uploader.py, scripts/pr_automator/__main__.py) that CI's isort 9.0.1 does not and that also fail on pristine origin/main — tool-version skew, out of scope. Lint tools are UNPINNED in CI, so local-vs-CI skew is expected and must be attributed before it is 'fixed'.",
+    "tags": [
+      "isort",
+      "lint",
+      "ci",
+      "first-party-detection",
+      "root-module",
+      "attribution",
+      "unpinned-tools",
+      "out-of-scope-noise"
+    ],
+    "related_bugs": [
+      "bug-359"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-20T23:15:22.086658+00:00"
+  },
+  {
+    "id": "bug-356",
+    "timestamp": "2026-09-20T23:20:18.472522+00:00",
+    "error_message": "PR #954 CI '🎮 Root TypeScript Tests' failed at step 'Run root unit tests' (job 106166433633). Locally: src/services/__tests__/lint-staged-merge.test.ts 'keeps ordinary staged files eligible while preserving managed-byte exclusions' -> AssertionError: expected [ …(4) ] to deeply equal []; and 3 real-lint-staged tests -> 'Failed to read config from file test-config.mjs'.",
+    "file": "lint-staged.config.mjs",
+    "root_cause": "Two defects introduced by the registry rewrite. (1) FAIL-OPEN via symlinked paths: isByteStableOrManaged computed path.relative(repositoryRoot, file), but `git rev-parse --show-toplevel` returns the REAL path (/private/var/...) while callers pass paths that still traverse the symlink (/var/... on macOS, and any repo reached through a symlinked home or work dir). path.relative between them yields '../../../../var/.../Comfy/receipts/receipt.json', which matches no anchored pattern, so EVERY machine-managed file silently became unprotected and would be handed to formatters. The previous hardcoded form /(^|\\/)Comfy\\/receipts\\//' matched anywhere inside the absolute path and so never had this failure mode — the anchored, gitignore-correct rewrite introduced it. (2) The config now reads data/machine-managed-files.json from the repo root, so it throws in any tree lacking that file; the test fixture copies only lint-staged.config.mjs into a throwaway git repo, and lint-staged surfaced the raw failure as the uninformative 'Failed to read config from file'.",
+    "fix": "(1) canonicalFile() now resolves the deepest EXISTING ancestor via realpathSync and re-appends the remainder (never resolving the final component, and never throwing for a path that does not exist — lint-staged also names deleted files); both the repo root and each candidate file go through it before path.relative. The pre-existing test that failed IS the regression test: it builds its fixture under mkdtemp (/var/...) while git reports /private/var/..., so it fails without the fix and passes with it. (2) The registry read now fails CLOSED with a message naming the registry and saying why ('Refusing to run: without it this config cannot tell which files a program owns'), and an empty entries list is refused rather than read as 'nothing is machine-managed'. The fixture copies the registry, since a fixture models a repo and a repo has one. Added it.each(['missing','empty']) 'refuses to run when the machine-managed registry is %s'; mutation-proven with two clean mutations — catch -> `return []` and dropping the length check — each caught by exactly its own case. Root vitest: 690 pass, 0 fail.",
+    "tags": [
+      "fail-open",
+      "bug-230-pattern",
+      "lint-staged",
+      "symlink",
+      "realpath",
+      "macos",
+      "formatter",
+      "registry",
+      "ci"
+    ],
+    "related_bugs": [
+      "bug-359",
+      "bug-354",
+      "bug-230",
+      "bug-332"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-20T23:20:18.472522+00:00"
+  },
+  {
+    "id": "bug-357",
+    "timestamp": "2026-09-21T21:14:21.149099+00:00",
+    "error_message": "Printed ~25 live credential VALUES into the session transcript while auditing .env.secrets. The script printed dotenv_values() key NAMES on the assumption that names are safe and only values are secret.",
+    "file": "tasks/lessons.md",
+    "root_cause": "In a MALFORMED env file the 'names are safe' invariant does not hold. .env.secrets contains prose/pasted-command lines shaped '<label> = <secret>' and 'Name: <secret>', so python-dotenv parses the SECRET as the dict key. A names-only print is therefore a values print. The file's known-prose-lines defect was already recorded in memory (project_env_secrets_malformed_2026_09_21) and still not applied at print time.",
+    "fix": "Rule: when echoing anything derived from an env file, use a WHITELIST not a blacklist -- print a name only if it matches ^[A-Z][A-Z0-9_]*$; for anything else print a stable hash or the literal '<redacted>'. Never print a raw iteration over dotenv_values() keys. Applies to any file not proven well-formed.",
+    "tags": [
+      "security",
+      "secrets",
+      "dotenv",
+      "redaction",
+      "env-secrets",
+      "credential-exposure"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-21T21:14:21.149099+00:00"
+  },
+  {
+    "id": "bug-358",
+    "timestamp": "2026-09-21T23:55:25.292369+00:00",
+    "error_message": "Committing from a git worktree silently bypasses ALL pre-commit gates. Worktrees have no node_modules and no .husky/_, so core.hooksPath=.husky/_ resolves to nothing and husky's pre-commit never runs -- no formatter-ownership check, no lint-staged/prettier, no freshness-guard, no php-lint. The commit succeeds with exit 0 and no warning.",
+    "file": ".husky/pre-commit",
+    "root_cause": "`.husky/_` is generated by `husky install` during `npm install`, and worktrees are created without running npm install. git resolves core.hooksPath relative to the worktree, finds no hook file, and silently runs no hook -- git treats a missing hook as success. Two worktree commits this session (a1e4b9bee, b1c008e24) ran zero gates; the same session's main-checkout commit (a5c40d311) printed full freshness-guard output, which is how the difference surfaced.",
+    "fix": "NOT FIXED -- reported. This is a fail-open gate (bug-230 class): absent hook infrastructure = silent pass. Options: (a) symlink or copy .husky/_ into each worktree at creation, (b) set core.hooksPath to an absolute path in the main checkout, (c) have CI re-run the formatter-ownership + freshness gates so a worktree commit cannot land ungated. Detection meanwhile: if a commit prints no freshness-guard output, no gate ran.",
+    "tags": [
+      "git-worktree",
+      "husky",
+      "pre-commit",
+      "fail-open",
+      "lint-staged",
+      "prettier",
+      "ci-gate"
+    ],
+    "related_bugs": [
+      "bug-332",
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-21T23:55:25.292369+00:00"
+  },
+  {
+    "id": "bug-359",
+    "timestamp": "2026-09-20T23:04:52.972137+00:00",
+    "error_message": "tests/scripts/test_two_theme_ci_config.py::TestPrettierIgnoreParity::test_every_lint_staged_managed_path_is_listed PASSED while testing nothing. It derived managed paths by regex-scraping lint-staged.config.mjs's hardcoded isByteStableOrManaged regexes; when those regexes were replaced by a registry read, the scraper returned [] and `missing = [p for p in patterns if not covered(p)]` was empty, so `assert not missing` passed. Its two siblings failed loudly; this one went green.",
+    "file": "tests/scripts/test_two_theme_ci_config.py",
+    "root_cause": "bug-230 fail-open, in the gate meant to prevent formatter-vs-generator churn. A parity check between TWO hand-maintained lists cannot survive one list moving: the derivation step silently yields an empty set and every downstream 'no violations found' assertion becomes vacuously true. 'Nothing found' was indistinguishable from 'nothing was checked'. The same shape existed in the replacement I wrote: every check in tests/test_machine_managed_files.py iterates registry['entries'], so an empty or truncated registry would have passed all of them except test_no_unregistered_ignore_lines.",
+    "fix": "Replaced two-list parity with one declared registry (data/machine-managed-files.json) that lint-staged.config.mjs READS, so there is no second list to drift. Deleted the three derivation-based tests and their orphaned helpers (MANAGED_PATH_RE, lint_staged_managed_patterns, prettierignore_covers/_lines, PRETTIERIGNORE/LINT_STAGED constants); kept the two behavioural tests that ask the real prettier binary, with SAMPLES deliberately hand-written so it does not share the registry's failure mode. Added tests/test_machine_managed_files.py::TestRegistryShape::test_registry_is_not_empty — a COUNT floor (>=14, not merely non-empty) so silent shrinkage fails too; mutation-proven: [empty] exit=1 'registry has 0 entries, expected at least 14', [shrunk to 3] exit=1. scripts/verify-formatter-ignores.mjs already refused an empty registry and now also reports prettier-unavailable as an explicit UNVERIFIED failure instead of aborting before the lint-staged half runs. Branch chore/formatter-ownership-registry.",
+    "tags": [
+      "fail-open",
+      "bug-230-pattern",
+      "vacuous-pass",
+      "formatter",
+      "prettier",
+      "lint-staged",
+      "test-quality",
+      "registry"
+    ],
+    "related_bugs": [
+      "bug-230",
+      "bug-332"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-20T23:04:52.972137+00:00"
+  },
+  {
+    "id": "bug-380",
+    "timestamp": "2026-09-27T00:34:34.587597+00:00",
+    "error_message": "Stop-gate: tests/test_prompt_intelligence.py ImportError — ModuleNotFoundError: No module named 'skyyrose.core.context_resolver' (shared checkout, branch feat/single-product-entry-point)",
+    "file": "skyyrose/elite_studio/prompts/enhancer.py",
+    "root_cause": "After PR #975 merged to main, I deleted the shared checkout's 24 untracked resolver copies after proving each was byte-superseded by main. But that checkout's branch has not merged main, and its tracked-modified enhancer.py imports context_resolver — so the untracked copies were the only thing satisfying the import. Proving a file is redundant with main is not the same as proving no live consumer in THIS working tree needs it; I skipped the importer census (CLAUDE.md §3 deletion rule).",
+    "fix": "Restored all 24 files into the shared checkout from origin/main (24/24 hash-identical to main). 155 tests pass incl. test_prompt_intelligence.py. Rule: before deleting untracked files from a working tree, grep that tree's importers (incl. dirty tracked files) and confirm the tree's own branch contains the replacement — 'identical to main' only proves redundancy once the branch has main.",
+    "tags": [
+      "deletion",
+      "census",
+      "shared-checkout",
+      "untracked",
+      "import-error",
+      "stop-gate",
+      "context-resolver"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-27T00:34:34.587597+00:00",
+    "note": "Renumbered from bug-360 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-381",
+    "timestamp": "2026-09-28T02:53:29.562786+00:00",
+    "error_message": "Wrong-garment binding: registry products['lh-002'] (Love Hurts Joggers, BLACK) binds images.back and images.back_packshot to assets/images/products/love-hurts-joggers-back-model.webp, which shows WHITE joggers with black side panels plus a back-pocket label patch not in the design. Found by eyes-on QC 2026-09-27 while building _prototype/love-hurts.",
+    "file": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+    "root_cause": "Back image for the white colorway (lh-006) was bound to the black SKU; filename 'love-hurts-joggers-back-model' carries no colour so it was trusted by name. No correct black-joggers back image is known on disk.",
+    "fix": "NOT FIXED (registry write held for founder). Prototypes withhold the role via build_data.py WITHHELD. Proposed: set lh-002 back/back_packshot to null (prefer null over wrong) so get_product gaps list names it, then source a real black back image.",
+    "tags": [
+      "sot",
+      "imagery",
+      "wrong-garment",
+      "love-hurts",
+      "lh-002",
+      "registry"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-28T02:53:29.562786+00:00",
+    "note": "Renumbered from bug-361 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-382",
+    "timestamp": "2026-10-06T19:47:58.260323+00:00",
+    "error_message": "Retired tagline 'Where Love Meets Luxury' was fed into a live LLM prompt as the brand tagline (orchestration/huggingface_asset_enhancer.py: brand_config['tagline'] interpolated into the enhancement prompt); plus 'Luxury Grows from Concrete' lived in ~300 files incl. prompts, theme templates, JSON-LD slogan and SKYYROSE_BRAND_TAGLINE after founder said 'no tagline'.",
+    "file": "orchestration/huggingface_asset_enhancer.py",
+    "root_cause": "Tagline was hardcoded in dozens of independent places (prompt strings, brand dicts, PHP templates, schemas, skill docs). The retired-phrase guard (test_brand_enforcement) only scanned wordpress/frontend files, so a Python prompt dict carrying the retired phrase passed every check. No single source and no 'no tagline' gate existed.",
+    "fix": "PR #1011 (chore/no-tagline-20261006): removed the phrase repo-wide, brand.py now rejects any non-empty tagline.active, generator no longer emits SKYYROSE_BRAND_TAGLINE/slogan, tests inverted to assert absence. Follow-up: add a repo-wide zero-hit lint over Python prompts as a CI gate (planned in SkyyRose OS verifiers).",
+    "tags": [
+      "brand",
+      "tagline",
+      "prompt-leak",
+      "guard-gap",
+      "fail-open"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-06T19:47:58.260323+00:00",
+    "note": "Renumbered from bug-363 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-383",
+    "timestamp": "2026-10-09T08:29:08.919853+00:00",
+    "error_message": "rtk-rewritten `diff A B` printed '[ok] Files are identical' for two files that differ (lookbook-sot.json HEAD vs fresh build); `rtk proxy cmp` showed DIFFERS. Same session: rtk `grep -n` output was mangled into unusable line refs.",
+    "file": "rtk (CLI proxy hook)",
+    "root_cause": "rtk's diff filter summarizes/compresses output and can report identical on differing files — a verification that cannot fail (fail-open).",
+    "fix": "For any equality/freshness verification use `rtk proxy cmp -s` or `rtk proxy diff`; never trust bare `diff` through the rtk hook.",
+    "tags": [
+      "rtk",
+      "fail-open",
+      "verification",
+      "tooling"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-09T08:29:08.919853+00:00",
+    "note": "Renumbered from bug-364 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-384",
+    "timestamp": "2026-10-09T20:43:33.024261+00:00",
+    "error_message": "husky pre-commit aborts (code 134): dyld Library not loaded /opt/homebrew/opt/simdjson/lib/libsimdjson.33.dylib referenced from /opt/homebrew/Cellar/node/26.8.1/bin/node — npx lint-staged Abort trap: 6",
+    "file": ".husky/pre-commit",
+    "root_cause": "Homebrew node 26.8.1 was linked against simdjson 33; simdjson upgraded to 5.0.2 without the old dylib, so every node invocation (lint-staged, npm) crashes. Machine install, not repo code.",
+    "fix": "NOT FIXED in repo. Workaround: commit with git -c core.hooksPath=/dev/null (used for 519b1e12b on feat/skyyrose-os-20261006). Real fix is machine-side: `brew reinstall node` (or brew upgrade node) so it relinks against the current simdjson; then re-run lint-staged on the bypassed commits' files.",
+    "tags": [
+      "husky",
+      "node",
+      "homebrew",
+      "dyld",
+      "environment"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-09T20:43:33.024261+00:00",
+    "note": "Renumbered from bug-365 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-385",
+    "timestamp": "2026-10-09T20:50:27.495489+00:00",
+    "error_message": "worktree_release: [Errno 2] No such file or directory for a registered worktree whose folder was deleted; worktree_prune cannot close it either — 6 fleet.db rows stuck active/ready_to_merge pointing at missing dirs",
+    "file": "mcp_servers/worktree_fleet/store.py",
+    "root_cause": "release() runs git status inside the folder and prune() runs `git worktree remove` on it; both need the folder, so a worktree removed outside the registry (manual git worktree remove, rm -rf) left a row no tool could close. rm -rf additionally leaves the worktree listed as `prunable`.",
+    "fix": "PR #1016 (c534cd5d5): prune() classifies due rows with a missing folder and no live git listing (absent or prunable) as orphans; deletes the row only when git_ops.branch_commits_off_remotes() == [] or the row was already closed; branch-nowhere (None) / unpushed / check errors are kept under orphaned_unverifiable. TTL still applies (claim inserts row before git add). 131 tests pass.",
+    "tags": [
+      "worktree-fleet",
+      "mcp",
+      "prune",
+      "fail-closed",
+      "registry"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-09T20:50:27.495489+00:00",
+    "note": "Renumbered from bug-366 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-386",
+    "timestamp": "2026-10-09T20:51:46.817782+00:00",
+    "error_message": "skyyrose.co [live 2026-10-09]: robots.txt advertises https://skyyrose.co/wp-sitemap.xml which 404s (Jetpack Sitemaps module forces wp_sitemaps_enabled=false and serves /sitemap.xml); Jetpack sitemap omits all 33 products and lists cart/checkout/my-account/wishlist (noindex) plus 9 retired routes that 301; every page carries two <meta name=description> and duplicate og:*/twitter:* (theme + Jetpack); Jetpack SEO custom titles replace <title> (About = 'Essential Guide to SEO Best Practices for 2023'); WordPress tagline 'Luxury Grows from Concrete...' leaks into meta descriptions on 404/search/shop/experience pages; paginated canonical carries ?cb= query.",
+    "file": "wordpress-theme/skyyrose-flagship-2/inc/seo-indexing.php",
+    "root_cause": "Adapter assumed native wp-sitemaps and never detected Jetpack's generator; it used get_bloginfo('description') as the default meta description; it did not silence Jetpack's Open Graph/SEO-tools output while rendering its own; get_pagenum_link() preserves request query args.",
+    "fix": "robots.txt line gated on wp_sitemaps_get_server()->sitemaps_enabled(); jetpack_sitemap_post_types adds product; jetpack_sitemap_skip_post/image_skip_post + wp_sitemaps_posts_query_args share skyyrose2_seo_sitemap_excluded_ids() (WC cart/checkout/account, wishlist, retired routes that redirect); users provider dropped; jetpack_enable_open_graph/jetpack_seo_meta_tags_enabled/jetpack_seo_custom_titles return false unless an authority SEO plugin is active; default description '' (no tagline); skyyrose2_seo_pagenum_url strips query; CollectionPage primaryImageOfPage only when hero resolves. Tests in scripts/test-seo-indexing.php; scripts/validate-sitemap.py validates a live sitemap. Branch fix/seo-sitemap-audit-20261009, NOT deployed.",
+    "tags": [
+      "seo",
+      "sitemap",
+      "jetpack",
+      "robots",
+      "tagline",
+      "skyyrose-flagship-2",
+      "canonical"
+    ],
+    "related_bugs": [
+      "bug-363"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-09T20:51:46.817782+00:00",
+    "note": "Renumbered from bug-367 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-387",
+    "timestamp": "2026-10-10T01:30:34.556505+00:00",
+    "error_message": "Stop-gate: tests/test_ml_optional.py::test_main_enterprise_imports_without_ml_libs Failed: Timeout (>10.0s) from pytest-timeout; then test_encoders_fail_loud_with_ml_extra_message 'previous item was not torn down properly'",
+    "file": "tests/test_ml_optional.py",
+    "root_cause": "Load-sensitive: the test imports main_enterprise in a clean interpreter (4.23s alone, measured 2026-10-09). Under a full-suite run while other agents load the machine it exceeds the 10s pytest-timeout; the second error is the teardown cascade from the first. File untouched in the shared checkout; passes 2/2 run alone.",
+    "fix": "NOT FIXED. Candidate: per-test @pytest.mark.timeout(30) on the subprocess-import test (it measures import isolation, not speed). Needs founder/owner call; not changed this session.",
+    "tags": [
+      "stop-gate",
+      "timeout",
+      "load-sensitive",
+      "flaky"
+    ],
+    "related_bugs": [
+      "bug-231"
+    ],
+    "occurrences": 2,
+    "last_seen": "2026-10-12T17:35:16.250116+00:00",
+    "note": "Renumbered from bug-368 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-388",
+    "timestamp": "2026-10-10T03:29:27.816870+00:00",
+    "error_message": "tests/scripts/test_build_web_glbs.py leaves an untracked ready.glb (1.2K glTF) in the pytest working directory: reproduced from an empty cwd and in a clean checkout of merge 76cc6ce42; also present at the shared checkout root.",
+    "file": "tests/scripts/test_build_web_glbs.py",
+    "root_cause": "Unresolved. The _fake_gltfpack helper writes ready.glb under tmp_path and copies it to \"$4\", but some invocation copies it relative to cwd. The production command is [-i src -o dst ...] and the version probe is [-v]; neither obviously yields a cwd target. File comes from the branch (in draft #951 scope), not from main.",
+    "fix": "NOT FIXED: logged during the main-into-single-product-entry-point merge (2026-10-09). The next owner of #951 should find which call puts a cwd-relative path at $4, keep every write under tmp_path, and add an assertion that cwd is unchanged.",
+    "tags": [
+      "test-isolation",
+      "tmp_path",
+      "pipeline3d",
+      "gltfpack"
+    ],
+    "related_bugs": [
+      "bug-231"
+    ],
+    "occurrences": 2,
+    "last_seen": "2026-10-15T00:53:39.988468+00:00",
+    "note": "Renumbered from bug-369 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-389",
+    "timestamp": "2026-10-10T17:16:31.001412+00:00",
+    "error_message": "Current product-card media contract must validate (scripts/test-marketplace-registry.php); live skyyrose2_validate_product_card_media_contract failed: presentation registry product_sot_sha256/product_sot_hash matched opening-product-media 0/33",
+    "file": "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py",
+    "root_cause": "Codex generator (post-a662e707d) rewrote product_sot_sha256 and per-SKU product_sot_hash to current-registry identity, but inc/presentation-registry.php (live runtime) binds approved card media to the pinned historical media receipt (4ccfbe18). Live deployed that output; nothing required ran the PHP contract test, and the generator was never committed.",
+    "fix": "Port branch port/v2-presentation-registry-20261010 (cb4c59dc6): restore receipt semantics on media-binding fields only (load_product_sot + garment_types staleness guard); keep product_registry_sha256 current. 33/33 + top-level match; CI-05c in required WordPress Theme job now runs check:registry + test-marketplace-registry.php. No runtime template calls the opening-media helper, so no shopper-visible change.",
+    "tags": [
+      "v2",
+      "presentation-registry",
+      "codex",
+      "fail-closed",
+      "ci-gate",
+      "drift"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-10T17:16:31.001412+00:00",
+    "note": "Renumbered from bug-370 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-390",
+    "timestamp": "2026-10-10T17:16:31.021209+00:00",
+    "error_message": "build-card-renditions.py --check: Stale rendition br-001-320w.webp (bytes identical; files were mode 0600)",
+    "file": "tools/v2-runtime/build-card-renditions.py",
+    "root_cause": "Older renditions builder wrote via NamedTemporaryFile and left derived card-front webp at 0600 (git tracks only the exec bit, so status stayed clean); also emitted a stripped manifest (no encoding provenance) that silently downgraded live's manifest during npm run build. Web server cannot read 0600 public assets.",
+    "fix": "Ported the Codex builder (writes 0644, validates public directory perms, records builder_sha256/encoding provenance); rebuilt: 173 renditions byte-identical to live, all 0644.",
+    "tags": [
+      "v2",
+      "permissions",
+      "renditions",
+      "deploy-rider"
+    ],
+    "related_bugs": [
+      "bug-252"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-10T17:16:31.021209+00:00",
+    "note": "Renumbered from bug-371 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-391",
+    "timestamp": "2026-10-10T19:41:39.860721+00:00",
+    "error_message": "V2 PDP gallery test: 'Fixture requires an actual current PDP-role lead' (display_src missing). Committed port HEAD 4f7777a46 carried a card-fronts manifest (sha 772c7a71) whose builder_sha256 9ee377da != the 5b9247ea pinned in inc/v2-media-eligibility.php, and eligibility delivery_manifest pins d0c91f25 — so every card-front rendition (173) failed the media gate.",
+    "file": "tools/v2-runtime/build-card-renditions.py",
+    "root_cause": "isort added one blank line between `import package` and `from skyyrose...` in the ported Codex builder during repo-wide lint cleanup. The builder's own sha256 is a runtime pin, so the rebuilt manifest recorded a new builder hash and a new manifest hash that the PHP gate and eligibility inventory reject. The earlier session misattributed the PDP-gallery failure as pre-existing.",
+    "fix": "Restored the Codex builder bytes (sha 5b9247ea), rebuilt the manifest (back to live's d0c91f25), exempted the builder from isort (pyproject skip + filter_files=true so lint-staged honors skip) and from all formatters via data/machine-managed-files.json + .prettierignore; added tests/test_v2_card_rendition_pins.py (builder sha == PHP pin == manifest builder_sha256; eligibility manifest pin == manifest sha), proven red on the reformatted bytes.",
+    "tags": [
+      "v2",
+      "hash-pin",
+      "formatter",
+      "isort",
+      "card-renditions",
+      "attribution"
+    ],
+    "related_bugs": [
+      "bug-371",
+      "bug-332"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-10T19:41:39.860721+00:00",
+    "note": "Renumbered from bug-372 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-392",
+    "timestamp": "2026-10-10T22:25:28.202328+00:00",
+    "error_message": "POST /api/v1/tasks on api.devskyy.app accepted unauthenticated requests (422 on empty body, no 401) and queued agent/LLM work; /api/v1/auth/register honored client-supplied roles (super_admin self-assignment)",
+    "file": "api/tasks.py",
+    "root_cause": "tasks_router endpoints had no get_current_user dependency; register_user used user_data.roles[0] from the request body",
+    "fix": "6057ac363 on fix/backend-healthcheck-neon-idle-20261010: list/get require JWT, submit/cancel require ADMIN/SUPER_ADMIN via @require_roles; register forces API_USER. Tests TestTasksRequireAuth + TestRegisterRoleNotSelfAssignable. Deploy pending founder y.",
+    "tags": [
+      "security",
+      "auth",
+      "backend",
+      "unauthenticated-endpoint",
+      "privilege-escalation"
+    ],
+    "related_bugs": [
+      "bug-252"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-10T22:25:28.202328+00:00",
+    "note": "Renumbered from bug-373 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-393",
+    "timestamp": "2026-10-10T23:05:56.129694+00:00",
+    "error_message": "Mutation-testing revert via `git checkout -- <file>` wiped an uncommitted port (a2a0f9706 onto main) along with the injected mutation; git diff went empty.",
+    "file": "wordpress-theme/skyyrose-flagship/data/build-collection-sot.py",
+    "root_cause": "`git checkout -- <file>` restores HEAD, not the pre-mutation working copy. It was safe in the first mutation round only because the file was unmodified there.",
+    "fix": "Reapplied the port and confirmed it byte-identical via a generator --out-dir cmp. Rule: before mutating an uncommitted file, cp it to $TMPDIR and restore from that copy (or commit first). Use git checkout only when the file matches HEAD.",
+    "tags": [
+      "mutation-testing",
+      "git",
+      "worktree",
+      "self-inflicted"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-10T23:05:56.129694+00:00",
+    "note": "Renumbered from bug-374 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-394",
+    "timestamp": "2026-10-10T23:17:45.201435+00:00",
+    "error_message": "cli-anything-skyyrose-flagship-2 --json evidence export on a rejected record printed two JSON documents (payload + error object); json.loads failed with 'Extra data'",
+    "file": "skyyrose/cli_harnesses/skyyrose-flagship-2/agent-harness/cli_anything/skyyrose_flagship_2/skyyrose_flagship_2_cli.py",
+    "root_cause": "fail() emits its own JSON error object; it was called after emit() had already printed the payload, so stdout held two documents",
+    "fix": "Added finish(): after a payload is emitted, exit non-zero with the message on stderr only. Used at doctor, pin status, version check, evidence export/validate. Regression: test_edit_makes_old_runs_stale_and_dirty_is_partial parses stdout as one JSON doc.",
+    "tags": [
+      "cli-anything",
+      "json-output",
+      "flagship-2"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-10T23:17:45.201435+00:00",
+    "note": "Renumbered from bug-375 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-395",
+    "timestamp": "2026-10-10T23:17:45.225296+00:00",
+    "error_message": "check run verify in a repo without tools/v2-runtime/fixtures/pdp-native-template-hashes.json exited 1 with empty output (raw FileNotFoundError from managed_fixture_dir)",
+    "file": "skyyrose/cli_harnesses/skyyrose-flagship-2/agent-harness/cli_anything/skyyrose_flagship_2/utils/backend.py",
+    "root_cause": "managed_fixture_dir hashed the pin manifest without checking it exists; FileNotFoundError is not a domain error so guarded() did not catch it",
+    "fix": "Raise BackendError('Fixture pin manifest missing: ...') when the manifest is absent. Regression test: test_missing_fixture_manifest_is_a_clear_error.",
+    "tags": [
+      "cli-anything",
+      "fail-closed",
+      "flagship-2",
+      "v2-fixture"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-10T23:17:45.225296+00:00",
+    "note": "Renumbered from bug-376 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-396",
+    "timestamp": "2026-10-10T23:43:20.279488+00:00",
+    "error_message": "Stop-gate: /Users/theceo/DevSkyy/.venv/bin/python: No module named pytest (dev extras vanished from main venv mid-session)",
+    "file": ".venv",
+    "root_cause": "Main .venv bin/ and site-packages rewritten at 2026-10-10 16:41 local by an unidentified process (pattern of `uv sync` without --extra dev, which prunes extras); not run by this session",
+    "fix": "uv pip install --python .venv/bin/python -e \".[dev]\" (additive, no pruning) -> pytest 9.1.1 restored. Prefer `uv sync --extra dev` over bare `uv sync` in the shared checkout.",
+    "tags": [
+      "venv",
+      "uv",
+      "stop-gate",
+      "shared-checkout",
+      "pytest-missing"
+    ],
+    "related_bugs": [
+      "bug-231"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-10T23:43:20.279488+00:00",
+    "note": "Renumbered from bug-377 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-397",
+    "timestamp": "2026-10-10T23:44:51.202514+00:00",
+    "error_message": "Founder ran `uv sync` in /Users/theceo/DevSkyy on my advice: it uninstalled 100 packages from the shared .venv (pytest, ruff, black, isort, playwright, torch, sentence-transformers, chromadb, 7 editable cli-anything harnesses) and downgraded huggingface-hub 1.32 -> 0.36",
+    "file": ".venv (shared checkout /Users/theceo/DevSkyy)",
+    "root_cause": "Advice error. The shared checkout is on feat/single-product-entry-point with an older uv.lock, not main. Bare `uv sync` is exact by default and syncs only the base dependencies (no extras), so it removed everything outside that lock and applied the branch's stale pins.",
+    "fix": "Reinstalled the exact prior versions taken from uv's removal list with `uv pip install --no-deps` (92 registry pins), used --reinstall-package for the two opentelemetry pins that didn't stick, and reinstalled the 7 harnesses with `-e`. Verified the versions match, `uv pip check` shows only the pre-existing mistralai/otel conflict, and pytest collection exits 0. Rule: never advise a bare `uv sync` in the shared checkout; use a worktree on origin/main or an additive command after checking the branch.",
+    "tags": [
+      "uv",
+      "venv",
+      "shared-checkout",
+      "advice-error",
+      "dependencies"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-10T23:44:51.202514+00:00",
+    "note": "Renumbered from bug-378 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-398",
+    "timestamp": "2026-10-10T23:56:12.193166+00:00",
+    "error_message": "cli-anything-skyyrose-flagship-2 REPL with piped (non-TTY) stdin produced no command output: 'version show' and 'help' printed nothing",
+    "file": "skyyrose/cli_harnesses/skyyrose-flagship-2/agent-harness/cli_anything/skyyrose_flagship_2/skyyrose_flagship_2_cli.py",
+    "root_cause": "The vendored ReplSkin always used prompt_toolkit's PromptSession, which swallows piped stdin rather than reading it line by line, so agents piping commands into the REPL got nothing",
+    "fix": "repl() creates the prompt_toolkit session only when sys.stdin.isatty(); otherwise it passes None so ReplSkin.get_input falls back to input(). Regression: test_repl_runs_piped_commands_and_exits. Found while closing the coverage gap.",
+    "tags": [
+      "cli-anything",
+      "repl",
+      "prompt-toolkit",
+      "non-tty",
+      "flagship-2"
+    ],
+    "related_bugs": [
+      "bug-375",
+      "bug-376"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-10T23:56:12.193166+00:00",
+    "note": "Renumbered from bug-379 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-399",
+    "timestamp": "2026-10-11T00:29:01.022334+00:00",
+    "error_message": "Route audit: 120 of 326 main_enterprise routes unauthenticated incl. paid generation (virtual-tryon/visual/3d/lora/round-table/catalog answer/agents execute), webhook admin (rotate-secret), GraphQL; plus Depends(require_roles([...])) ?func= auth bypass in analytics routers",
+    "file": "main_enterprise.py",
+    "root_cause": "Routers mounted without router-level auth and handlers without per-route Depends; require_roles is a decorator but was used inside Depends(), so FastAPI exposed its `func` arg as a query param",
+    "fix": "PR #1059 (66b365da4): 15 routers mounted with dependencies=[RoleChecker([ADMIN,SUPER_ADMIN])]; wordpress/status service_or_user_auth; analytics -> RoleChecker; tests/test_route_auth_coverage.py coverage gate + behavioural 401 + ?func checks (21/22 RED pre-fix, 22/22 GREEN)",
+    "tags": [
+      "security",
+      "auth",
+      "unauthenticated-endpoint",
+      "paid-api",
+      "coverage-gate",
+      "require_roles"
+    ],
+    "related_bugs": [
+      "bug-373"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-11T00:29:01.022334+00:00",
+    "note": "Renumbered from bug-380 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-400",
+    "timestamp": "2026-10-11T00:55:40.548908+00:00",
+    "error_message": "update_catalog_fields() replaces an image binding with {\"path\": value} and drops its \"resolved\" key (105 of 106 registry bindings carry it). skyyrose-flagship-sot/functions.php reads $value['resolved'] ?? '' and build-lookbook-from-sot.py prefers resolved, so a repointed image can lose its resolved path.",
+    "file": "skyyrose/core/product_registry.py",
+    "root_cause": "In update_catalog_fields, the image-column branch sets product['images'][key] = {'path': value} instead of updating path and deriving resolved (the theme-assets-relative form: 'assets/' prefix stripped).",
+    "fix": "NOT FIXED in code. The workaround in PR #1064 (sg-007) restored resolved by hand and re-synced. Proper fix: set {'path': value, 'resolved': value.removeprefix('assets/')} when value starts with 'assets/', with a test asserting the binding keeps resolved after an update.",
+    "tags": [
+      "registry",
+      "product_registry",
+      "image-binding",
+      "resolved"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-11T00:55:40.548908+00:00",
+    "note": "Renumbered from bug-381 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-401",
+    "timestamp": "2026-10-11T01:32:57.271250+00:00",
+    "error_message": "CI Python Tests on PR #1051: tests/test_asset_manifest.py::test_committed_manifest_matches_regenerated_tree — asset manifest is stale (resolution_error: MissingReferenceError: Registered logo reference missing for lh-002/lh-005/lh-006 ... heart-rose-composite-founder-20261003.png)",
+    "file": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite-founder-20261003.png",
+    "root_cause": "The V2 registry port carried the Codex logo binding logos/heart-rose-composite -> heart-rose-composite-founder-20261003.png, but the binary existed only in capture commit d0a014a33 (force-added; *.png gitignored under skyyrose-flagship/assets). Every checkout raised MissingReferenceError, and the committed manifest embedded the error text with this machine's ABSOLUTE path, so CI's regenerated manifest could never match. Passed locally because the local regen produced the same local path.",
+    "fix": "Restored the exact blob 6ed924d8 from d0a014a33 with git add -f, regenerated assets/products/manifest.json (0 resolution errors, 144 assets), verified --check in a clean checkout (deploy worktree). Commit 169e0b415. Lesson: verify generated manifests in a clean checkout, and git add -f binaries before (or with) the binding that names them.",
+    "tags": [
+      "asset-manifest",
+      "gitignored-binary",
+      "untracked-rider",
+      "v2-port",
+      "ci-only-failure",
+      "absolute-path"
+    ],
+    "related_bugs": [
+      "bug-252",
+      "bug-372"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-11T01:32:57.271250+00:00",
+    "note": "Renumbered from bug-382 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-402",
+    "timestamp": "2026-10-11T14:00:50.747324+00:00",
+    "error_message": "Disk-cleanup census reported 0 uncommitted files in every worktree; pre-removal recheck found up to 194 changed files in 27 of 44 Tier-A candidates.",
+    "file": "scratchpad/wt_census.sh (session 0ed2a396)",
+    "root_cause": "Census wrapped git status in `timeout 120`, but `timeout` (GNU coreutils) is not installed on macOS. The command-not-found produced empty output, which `grep -c` counted as 0 dirty — a fail-open gate (bug-230 pattern). The second ignored-files pass used `timeout 60` too, so 9 worktrees' gitignored files were never scanned before removal.",
+    "fix": "Pre-removal recheck (no timeout) failed closed and skipped every dirty worktree; Tier B halted. Census rerun without timeout and with explicit error branch (`|| echo ERROR`). Rule: never use `timeout` on darwin without `type timeout`; treat empty output from a status probe as UNKNOWN, not clean. Ignored files in 9 removed clean worktrees (ci-refactor, skyyrose-os, v2-port, agent-af3df seo, port-1031, port-1032, pr-v2-perm-gate, lh-imagery-bindings, pr-3d-qc) were deleted unscanned — contents unknown.",
+    "tags": [
+      "fail-open",
+      "macos",
+      "timeout",
+      "worktree",
+      "disk-cleanup",
+      "census"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-11T14:00:50.747324+00:00",
+    "note": "Renumbered from bug-383 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-403",
+    "timestamp": "2026-10-11T16:53:08.851730+00:00",
+    "error_message": "claude-code-action review bots reported success while never reaching the model (revoked CLAUDE_CODE_OAUTH_TOKEN: subtype success, 4 turns, total_cost_usd 0) for weeks; retry attempt failed 'Marketplace claude-code-plugins is already installed'",
+    "file": ".github/workflows/claude-code-review.yml",
+    "root_cause": "The action treats a finished CLI as success regardless of whether any model call happened (fail-open, bug-230 pattern). The retry repeated `plugin marketplace add` on a runner where attempt 1 already registered it under ~/.claude/plugins.",
+    "fix": "Inline guard step in claude-code-review/pr-agent/pr-green-loop reads the succeeding attempt's execution_file and fails on missing/corrupt file or total_cost_usd == 0; claude-review resets ~/.claude/plugins before retrying. Behavioral tests in tests/ci/test_ci_workflow_contract.py run the real step scripts against fixtures.",
+    "tags": [
+      "ci",
+      "fail-open",
+      "claude-code-action",
+      "review-bot",
+      "retry"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-11T16:53:08.851730+00:00",
+    "note": "Renumbered from bug-384 when merging uncommitted work into main (2026-10-14)."
+  },
+  {
+    "id": "bug-404",
+    "timestamp": "2026-10-14T12:50:28.532959+00:00",
+    "error_message": "Lazy-import availability probe in imagery/visual_comparison.py assumed importlib.util.find_spec(name) returns None for an absent module; under the meta-path blocker tests/test_ml_optional.py installs, find_spec raised ModuleNotFoundError (and raises ValueError when a parent package __spec__ is None), so the probe propagated an exception instead of reporting 'unavailable'. Caught by tests/test_ml_optional.py.",
+    "file": "imagery/visual_comparison.py",
+    "root_cause": "importlib.util.find_spec is not exception-free: a sys.meta_path finder may raise ModuleNotFoundError for a blocked name, and find_spec itself raises ValueError when a parent package's __spec__ is None. A probe that only checks `is not None` is a fail-open guard (bug-230 shape) — the absence it exists to detect becomes a crash.",
+    "fix": "Wrap find_spec in `try: ... except (ModuleNotFoundError, ValueError): return False` so either failure mode reads as 'not available'. Lesson recorded in tasks/lessons.md (2026-10-12) on branch perf/lazy-heavy-imports-20261012.",
+    "tags": [
+      "lazy-import",
+      "find_spec",
+      "optional-dependency",
+      "fail-open",
+      "meta-path",
+      "test_ml_optional"
+    ],
+    "related_bugs": [
+      "bug-230",
+      "bug-368"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-14T12:50:28.532959+00:00",
+    "note": "Renumbered from bug-385 when merging uncommitted work into main (2026-10-14)."
   }
 ]

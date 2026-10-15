@@ -63,7 +63,7 @@ defined( 'ABSPATH' ) || exit;
 					required>
 				<button class="hp-close__go" type="submit" aria-label="<?php esc_attr_e( 'Join', 'skyyrose' ); ?>">&rarr;</button>
 			</div>
-			<p class="hp-close__status" role="status" aria-live="polite" data-status></p>
+
 			<p class="hp-close__note"><?php esc_html_e( 'Free to join · Unsubscribe anytime · Oakland love only', 'skyyrose' ); ?></p>
 		</form>
 

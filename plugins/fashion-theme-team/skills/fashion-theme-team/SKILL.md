@@ -67,15 +67,32 @@ Do not load all skills by default. A role may temporarily expand its tool profil
 only under `references/tool-budget-and-loading.md`, with the expansion recorded
 in the phase ledger. The scheduler permits four active roles maximum.
 
+Engineering mechanics for WordPress builds, WooCommerce PDP correctness, CSS,
+and three.js/immersive work live in the on-demand library at
+[references/engineering/index.md](references/engineering/index.md). Load only
+the single file the active phase needs.
+
 ## Inputs
 
 - Target repository and theme path.
 - Requested outcome, deadline, target marketplace, compatibility matrix, and surfaces in scope.
-- Brand, catalog, and imagery sources of truth.
+- Brand, catalog, and imagery sources of truth. For SkyyRose, product facts
+  come only from `logo-registry.json`; read
+  [references/product-registry-authority.md](references/product-registry-authority.md)
+  before any catalog, imagery, or product-spec work.
 - Existing design-system artifacts and ownership.
 - Allowed external services and approval boundaries.
 - Existing build, lint, test, browser, and packaging commands.
 - Fashion segment, audience, assortment/launch model, service promise, and measurement baseline.
+
+For a SkyyRose redesign, record the implementation target explicitly. The
+current V2 theme path is `wordpress-theme/skyyrose-flagship-2`; the V2 atlas and
+page plan are planning inputs, not proof of the runtime implementation. Current
+founder direction may intentionally override an older presentation heuristic,
+while founder-confirmed product facts, registry authority, accessibility,
+commerce behavior, and working features remain binding. Read
+[references/verified-examples.md](references/verified-examples.md) before using
+the redesign capabilities below.
 
 If an input is absent, discover it read-only. Classify facts as `OBSERVED`,
 `APPROVED`, `RECOMMENDED`, or `UNKNOWN`. Do not invent product data, commands,
@@ -97,7 +114,11 @@ and optional runtime tools remain lazy-loaded.
    without confusing optional-tool absence with plugin failure.
 2. Have the lead initialize the durable phase ledger from
    [references/autonomy-protocol.md](references/autonomy-protocol.md), capture an
-   immutable baseline, and obtain the required post-audit approval before edits.
+   immutable baseline, and confirm that the current-session authorization covers
+   the proposed edits. Do not request the same approval again while that scope
+   remains valid. Historical notes, receipts, or prior runs never grant current
+   permission; obtain additional approval only for a newly consequential action
+   or expanded scope.
    For every capability in scope, also load `fashion-e2e-task-execution` and
    issue a named project manager and create its task record before the first
    side effect. The E2E record binds scope, declared evidence, first-seen

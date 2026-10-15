@@ -1,0 +1,78 @@
+{
+  "_note": "Taxonomy of https://motion.dev/examples as read 2026-10-14. Slugs are exact; groups marked family expand to the listed variants. The page advertises 490+ examples; this catalog enumerates what the fetched text showed and is NOT exhaustive. Motion+ status is NOT tagged per example in the page text.",
+  "url_pattern": "https://motion.dev/examples/<slug>",
+  "frameworks": {
+    "javascript": {
+      "slug_prefix": "js-",
+      "theme_compatible": true,
+      "theme_note": "Only vanilla output can ship in the WordPress theme, and only if vendored self-hosted and added to the .min build",
+      "examples": [
+        "js-lenis-smooth-scroll",
+        "js-threejs-ocarina-watercolour",
+        "js-vgpu-majora-watercolour",
+        "js-three-shader-topography",
+        "js-three-tsl",
+        "js-three-materials",
+        "js-three-motion-values",
+        "js-three-orbit"
+      ],
+      "named_without_slug": [
+        "scramble text", "split text", "material design ripple", "lightbox", "page wipe",
+        "layout animation", "shared layout animation", "hover", "press", "gestures",
+        "accordion", "modal", "tilt card", "typewriter", "family-style dialog",
+        "notifications stack", "now playing", "add to basket", "spring follow cursor",
+        "scroll highlight", "physical stagger", "reorder items", "ios app store",
+        "image reveal slider", "bounce easing", "color interpolation", "loading", "curtains"
+      ]
+    },
+    "react": {
+      "slug_prefix": "react-",
+      "theme_compatible": false,
+      "surface": "frontend/ dashboard only",
+      "families": {
+        "gallery": {
+          "prefix": "react-gallery-",
+          "count": 27,
+          "motion_plus": "descriptions say they use the Motion+ Gallery component",
+          "variants": ["showcase","archive","backstage","barrel","cards","coverflow","detail","faces","film","fittings","fruit-drinks","grid","helix","ice-lollies","list","objects","odd-lights","odd-lights-coverflow","playground","presence","reveal","ring","ripple","runway","sphere","stack","tilt"]
+        },
+        "curtains": {
+          "prefix": "react-curtains-",
+          "variants": ["blinds","clip-wipe","doors","fade","iris","iris-from-click","mixed-effects","pixels","scope","shutter","stagger-wipe","wipe"]
+        },
+        "carousel": { "prefix": "react-carousel-", "count": 14, "variants_named": ["autoplay","coverflow","loop","vertical","rtl","lightbox"] },
+        "ticker": { "prefix": "react-ticker-", "variants_named": ["draggable","scroll","vertical-scrolling","cursor","text-hover-effect","rtl","overflow"] },
+        "loading": { "prefix": "react-loading-", "variants": ["circle-spinner","fill-text","jumping-dots","line-reveal","progress-bar","ripple","pulse-dots"] },
+        "radix": { "prefix": "react-radix-", "variants": ["accordion","checkbox","context-menu","dialog","dropdown","progress","radio-group","select","switch","tabs","toast","toggle-group","toolbar","tooltip"] },
+        "base_ui": { "prefix": "react-base-", "variants": ["accordion","checkbox","context-menu","dialog","dropdown-menu","progress","radio","select","switch","tabs","toast","toggle-group","tooltip"] },
+        "clerk": { "prefix": "react-clerk-", "variants": ["card-stack","conditional-field","sign-in","user-button"] }
+      },
+      "standalone": [
+        "react-parallax", "react-confetti", "react-typewriter", "react-lenis-smooth-scroll",
+        "react-threejs-ocarina-watercolour", "react-vgpu-majora-watercolour"
+      ]
+    },
+    "vue": {
+      "slug_prefix": "vue-",
+      "theme_compatible": false,
+      "surface": "none in this repo",
+      "examples": [
+        "vue-animate-view-app-store", "vue-animate-view-clip-path", "vue-animate-view-reorder",
+        "vue-animate-view-skeleton", "vue-animate-view-toggle", "vue-animate-view-types"
+      ]
+    },
+    "svelte": {
+      "slug_prefix": "svelte-",
+      "theme_compatible": false,
+      "surface": "none in this repo",
+      "examples": [
+        "svelte-animate", "svelte-animate-layout", "svelte-animate-view",
+        "svelte-hover", "svelte-press", "svelte-scroll"
+      ]
+    }
+  },
+  "highest_relevance": {
+    "reason": "Motion + three.js is the pairing src-001 and src-004 imply; all are vanilla and theme-compatible",
+    "slugs": ["js-three-motion-values", "js-three-materials", "js-three-orbit", "js-three-tsl", "js-three-shader-topography", "js-lenis-smooth-scroll"]
+  }
+}

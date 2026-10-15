@@ -46,9 +46,90 @@ Every in-scope media file (image, video, 3D, font, audio, asset PDF; tracked or 
 
 ## Brand canon
 
+### Current collection stories and campaign references (updated 2026-10-14)
+
+**Start here for collection storytelling, commercial briefs, prompts, and reviews.**
+Corey's latest explicit corrections control. Read the owner-ratified
+[Brand Constitution](docs/brand/constitution-v1/CONSTITUTION.md), its
+[owner ratification](docs/brand/constitution-v1/OWNER-RATIFICATION-20260923.md),
+and [Kids/Signature clarification](docs/brand/constitution-v1/OWNER-RATIFICATION-KPS-20260923.md).
+The collection `identity.json::story.seed` files below own the current story seeds.
+This table is a reading index, not a separate editable canon; re-read the linked
+source before producing creative work. The October 11 founder-confirmation record
+is in `/Users/theceo/.claude/projects/-Users-theceo-DevSkyy/memory/project_shop_v2_cinema_bands_pick.md`
+under “canon confirmed”; the source seeds were checked on October 14.
+
+| Collection | Current story seed | Authoritative identity |
+| --- | --- | --- |
+| Black Rose | Defining beauty through the color black. | [identity.json](wordpress-theme/skyyrose-flagship/data/collections/black-rose/identity.json) |
+| Signature | The beginning of it all — where it started from. | [identity.json](wordpress-theme/skyyrose-flagship/data/collections/signature/identity.json) |
+| Love Hurts | Beauty and the Beast told from the Beast's perspective, through luxury attire. | [identity.json](wordpress-theme/skyyrose-flagship/data/collections/love-hurts/identity.json) |
+| Kids Capsule | The Heir to the throne. | [identity.json](wordpress-theme/skyyrose-flagship/data/collections/kids-capsule/identity.json) |
+
+**Retired interpretations must not return:** Black Rose “armor/concrete,” Love
+Hurts “bloodline,” and Signature “foundation wardrobe” are not the current
+collection stories. Do not attribute old template-derived quotes to Corey or move
+stories between collections. No active tagline is authorized. Collection devices
+are optional; Signature's Oakland origin remains, and Kids means heir/next
+generation without requiring a literal throne. Creative interpretations must be
+labelled as proposals, not new founder canon.
+
+`docs/brand/collection-stories.md` and the four `blog-*.md` collection narratives
+are retired stubs. Their preserved originals under
+[retired/2026-10-12-collection-narratives](docs/brand/retired/2026-10-12-collection-narratives/README.md)
+are historical evidence only. An old `story.doc_ref`, skill, prompt, memory,
+template, or archived document pointing there does not make it current authority.
+If an older interview or derived document conflicts with a later explicit founder
+correction or ratification, use the later correction within its scope.
+
+**Current commercial reference index — source roles are distinct:**
+
+**Latest approved campaign (2026-10-14):** one three-chapter film: Black Rose /
+Before We Go → Signature / Our Own Image → Love Hurts / The Place Beside Me.
+The [approved voiceover](tasks/jersey-ensemble-20261012/three-chapter-film/APPROVED-VOICEOVER.md)
+is the exact recording script. Produce a founder-voiced master and a separate
+website export with zero audio streams; this supersedes the earlier all-silent
+rule. [Current edit plan](tasks/jersey-ensemble-20261012/three-chapter-film/EDIT-PLAN.md).
+Recording and replacement footage are not yet complete.
+
+**2026-10-14 founder casting correction:** Jersey Series uses separate Black male
+and Black female casts, including teens; other collections may retain diverse
+casts. Prior Jersey cuts are creatively rejected, with originals and technical
+receipts preserved. Read the [current campaign handoff](tasks/god-mode-project-manager-20261014/CAMPAIGN-HANDOFF.md)
+before resuming production.
+
+- Group/casting direction: founder-supplied
+  `/Users/theceo/Downloads/higgsfield-64da6221-7ce4-4e20-8559-ea20305af4b1.mp4`;
+  [extracted group reference](tasks/jersey-ensemble-20261012/group-reference-frame.jpg).
+  Use for ensemble composition and individual styling, not garment/logo truth.
+- Real Black Rose Sherpa footage: founder-supplied
+  `/Users/theceo/Downloads/Video Apr 21 2024, 11 01 18 AM.mp4`.
+  Preserve the original footage; silent exports are derivatives.
+- Product/artwork fidelity: `get_product(sku)` from `logo-registry.json::products`
+  and its bound image sources, including current V2 references where bound.
+  Campaign references and generated visuals never override those records.
+- Active campaign [manifest](tasks/jersey-ensemble-20261012/CAMPAIGN-MANIFEST.md),
+  [brief](tasks/jersey-ensemble-20261012/BRIEF.md) and
+  [status](tasks/jersey-ensemble-20261012/STATUS.json): separate all-male and
+  all-women Jersey ensemble commercials, including teens and distinct individual
+  looks; complete Signature and Love Hurts commercials. Website exports must
+  contain **zero audio streams**; the approved campaign master uses founder narration. Preserve existing films and original footage.
+  The manifest links current canon hashes, preserved source references, operation
+  status, independent reviews and silent deliveries. Read the linked status for
+  completion; a brief or provider capture alone is not final-film qualification
+  or founder approval.
+- Prompting rules: `/Users/theceo/.codex/creative-standards/imagery-prompting.md`.
+  Read before drafting or reviewing image/video prompts and cite in the brief.
+
+Local Downloads references are machine-local; verify availability before a job.
+If absent, report the missing reference rather than substituting an old asset.
+
+### Other brand sources
+
 - `knowledge-base/seed/from-interview.md` — founder-authored brand canon (visual
   references, anti-references, Oakland canon, engineering rules). When a derived
-  doc conflicts with the interview file, **the interview file wins.**
+  doc conflicts with the interview file, the interview file wins unless a later
+  explicit founder correction or owner ratification supersedes that point (see above).
 - `assets/brand/brand.yaml` — structured brand identity: tagline (active +
   retired history), legal_name / founder / origin / mission, semantic + neutral
   colors, social handles, prod/dashboard URLs. Generates
