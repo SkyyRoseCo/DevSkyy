@@ -228,10 +228,11 @@ you are actually editing — a worktree is its own project path.
 
 - **Serena answers "what does THIS repo do"; Context7 answers "what does the
   LIBRARY do."** Never use one for the other's question.
-- **Serena memories (`.serena/memories/`) are a historical snapshot** — several
-  predate 2026-07 and describe a retired architecture. Treat them as leads, not
-  facts; this file, `get_product()`, and the code outrank them (§2: a register
-  is not current state).
+- **Serena memories are pointers, not facts.** The live ones
+  (`.serena/memories/*.md`) locate the authoritative docs; the Dec 2025–Jan 2026
+  notes in `.serena/memories/_archive/` describe a retired architecture and are
+  hidden from `list_memories`. This file, `get_product()`, and the code outrank
+  all of them (§2: a register is not current state).
 - Serena's line numbers are **0-based**.
 - Product, registry, and imagery facts are not Serena's domain — use
   `get_product` and the manifests.

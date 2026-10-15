@@ -45,9 +45,10 @@ Use both when the client exposes them; tool names carry the client's MCP prefix.
   path). Line numbers are 0-based.
 - Serena answers what this repository does; Context7 answers what a library
   does. Do not use one for the other's question.
-- `.serena/memories/` is a historical snapshot, partly describing a retired
-  architecture. Treat it as a lead; `CLAUDE.md`, `get_product()`, and the code
-  outrank it.
+- Live Serena memories (`.serena/memories/*.md`) are pointers to the
+  authoritative docs; `.serena/memories/_archive/` is a retired-architecture
+  snapshot, hidden from `list_memories`. `CLAUDE.md`, `get_product()`, and the
+  code outrank all of them.
 - Product, registry, and imagery facts are read through `get_product`, not
   Serena. `activate_project` rewrites `.serena/project.yml` — do not commit it.
 - Both tools are read/navigation aids. Authorization, spending, deployment, and
