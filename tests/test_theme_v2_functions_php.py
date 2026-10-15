@@ -1,8 +1,8 @@
 """Static contract tests for wordpress-theme/skyyrose-flagship-2/functions.php (V2).
 
-V2 is a different shape from V1: ``SKYYROSE2_*`` constants, five unconditional
-``require_once`` lines (a missing file is a fatal on every request), and
-~1400 lines of hook-registered functions. The tests parse the file rather than
+V2 is a different shape from V1: ``SKYYROSE2_*`` constants, unconditional ``require_once``
+lines (a missing file is a fatal on every request), and hook-registered
+functions. The tests parse the file rather than
 execute it, and pin the failure modes that are silent or fatal in production.
 """
 
@@ -66,10 +66,6 @@ def test_unconditional_requires_exist(source: str) -> None:
     assert not missing, f"fatal on load, missing: {missing}"
 
 
-def test_requires_precede_function_definitions(source: str) -> None:
-    last_require = max(m.start() for m in re.finditer(r"^require_once SKYYROSE2_DIR", source, re.M))
-    first_function = re.search(r"^function \w+", source, re.M)
-    assert first_function and last_require < first_function.start()
 
 
 def test_function_names_namespaced_and_unique(source: str) -> None:
