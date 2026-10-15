@@ -29,6 +29,30 @@ system and developer constraints; historical notes do not grant authorization.
 - Distinguish observed facts, inferences, assumptions, and unverified outcomes.
   Report what changed, the checks actually run, and remaining limitations.
 
+## Code intelligence: Serena and Context7
+
+Use both when the client exposes them; tool names carry the client's MCP prefix.
+
+- **Context7** for any non-stdlib library or API: resolve the library ID, then
+  query docs, before writing code that touches it. Max 3 calls per question; a
+  `/org/project` ID can go straight to the query. Queries leave the machine —
+  never include secrets, env values, or proprietary code.
+- **Serena** for code structure: `get_symbols_overview` → `find_symbol` →
+  `find_referencing_symbols` before reading whole files or grepping. Use
+  `rename_symbol` / `safe_delete_symbol` for renames and removals instead of
+  text substitution. Call `initial_instructions` once per session and
+  `activate_project` on the checkout you are editing (a worktree is its own
+  path). Line numbers are 0-based.
+- Serena answers what this repository does; Context7 answers what a library
+  does. Do not use one for the other's question.
+- `.serena/memories/` is a historical snapshot, partly describing a retired
+  architecture. Treat it as a lead; `CLAUDE.md`, `get_product()`, and the code
+  outrank it.
+- Product, registry, and imagery facts are read through `get_product`, not
+  Serena. `activate_project` rewrites `.serena/project.yml` — do not commit it.
+- Both tools are read/navigation aids. Authorization, spending, deployment, and
+  shared-worktree rules in this file still govern every edit they make.
+
 ## GOD MODE X² — operating standard
 
 Apply the following principles as a work ethic and execution contract. The name
