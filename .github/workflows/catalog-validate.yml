@@ -168,7 +168,7 @@ jobs:
           # without pytest-asyncio pytest errors "Unknown config option").
           # No project/base install — `.[dev]` pulls the heavy provider stack, was
           # timing out, and silently fell back to a pytest-only env that failed.
-          pip install pytest pytest-asyncio pytest-timeout Pillow PyYAML jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
+          pip install pytest pytest-asyncio pytest-timeout Pillow PyYAML jsonschema cryptography PyJWT argon2-cffi passlib bcrypt email-validator fastapi python-multipart --quiet
 
       - name: Run catalog consistency validator
         run: |
