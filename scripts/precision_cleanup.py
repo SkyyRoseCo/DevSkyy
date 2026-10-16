@@ -103,7 +103,7 @@ def _isort_excluded(rel: str, root: Path) -> bool:
             if fnmatch.fnmatch(rel_posix, pattern) or fnmatch.fnmatch(name, pattern):
                 return True
         except Exception:
-            pass
+            pass  # malformed pyproject.toml glob pattern — skip rather than crash the hook
     return False
 
 
