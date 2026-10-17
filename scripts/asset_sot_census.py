@@ -188,21 +188,70 @@ def scope_reason(path: str) -> str | None:
     return None
 
 
-def _git_paths(root: Path, *args: str) -> list[str]:
+def _git_output(root: Path, *args: str, stdin: str = "") -> bytes:
     try:
         result = subprocess.run(
-            ["git", "-C", str(root), "ls-files", "-z", *args],
+            ["git", "-C", str(root), *args],
+            input=stdin.encode("utf-8"),
             capture_output=True,
             check=True,
-            text=True,
         )
     except (OSError, subprocess.CalledProcessError) as exc:
-        raise LedgerError(f"git ls-files failed in {root}: {exc}") from exc
-    return [p for p in result.stdout.split("\0") if p]
+        raise LedgerError(f"git {args[0]} failed in {root}: {exc}") from exc
+    return result.stdout
 
 
-def discover(root: Path) -> dict[str, list[str]]:
-    """Media paths grouped as ``tracked`` / ``untracked`` / ``ignored`` (present only)."""
+def _git_paths(root: Path, *args: str) -> list[str]:
+    output = _git_output(root, "ls-files", "-z", *args).decode("utf-8")
+    return [p for p in output.split("\0") if p]
+
+
+def tracked_symlinks(root: Path) -> dict[str, str]:
+    """Tracked media symlinks mapped to their in-repo target, read from Git, not the disk.
+
+    A native Windows clone (``core.symlinks=false``) writes each link as a text file
+    holding its target, so the filesystem cannot be trusted to expose the link. Targets
+    that leave the repository are omitted, which leaves the link to be judged on its bytes.
+    """
+    staged = _git_output(root, "ls-files", "-s", "-z").decode("utf-8")
+    entries = [line.split("\t", 1) for line in staged.split("\0") if line.startswith("120000 ")]
+    links = [(meta.split()[1], path) for meta, path in entries if is_media(path)]
+    if not links:
+        return {}
+    blobs = _git_output(root, "cat-file", "--batch", stdin="".join(f"{sha}\n" for sha, _ in links))
+    targets: dict[str, str] = {}
+    for _, path in links:
+        header, blobs = blobs.split(b"\n", 1)
+        fields = header.split()
+        if len(fields) != 3:
+            raise LedgerError(f"cannot read symlink target of {path}: {header.decode()}")
+        size = int(fields[2])
+        target, blobs = blobs[:size].decode("utf-8"), blobs[size + 1 :]
+        resolved = posixpath.normpath(posixpath.join(posixpath.dirname(path), target))
+        if not resolved.startswith("../") and resolved != ".." and not target.startswith("/"):
+            targets[path] = resolved
+    return {path: _follow(targets, path) for path in targets}
+
+
+def _follow(targets: dict[str, str], path: str) -> str:
+    """Final target of a chain of links; a cycle stops at the link where it closes."""
+    seen = {path}
+    current = targets[path]
+    while current in targets and current not in seen:
+        seen.add(current)
+        current = targets[current]
+    return current
+
+
+def discover(root: Path, links: dict[str, str]) -> dict[str, list[str]]:
+    """Media paths grouped as ``tracked`` / ``untracked`` / ``ignored`` (present only).
+
+    A tracked link is present only when its target is, on every platform.
+    """
+
+    def present(path: str) -> bool:
+        return (root / links.get(path, path)).is_file()
+
     tracked = [p for p in _git_paths(root) if is_media(p)]
     untracked = [p for p in _git_paths(root, "--others", "--exclude-standard") if is_media(p)]
     ignored = [
@@ -211,10 +260,8 @@ def discover(root: Path) -> dict[str, list[str]]:
         if is_media(p) and scope_reason(p) is None
     ]
     return {
-        "tracked": sorted(p for p in tracked if (root / p).is_file()),
-        "missing_tracked": sorted(
-            p for p in tracked if not (root / p).is_file() and scope_reason(p) is None
-        ),
+        "tracked": sorted(p for p in tracked if present(p)),
+        "missing_tracked": sorted(p for p in tracked if not present(p) and scope_reason(p) is None),
         "untracked": sorted(p for p in untracked if (root / p).is_file()),
         "ignored": sorted(p for p in ignored if (root / p).is_file()),
     }
@@ -319,17 +366,27 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def byte_copies(root: Path, orphans: Iterable[str], owned: Iterable[str]) -> dict[str, str]:
-    """Map each orphan whose bytes equal an owned file to that owned file's path."""
+def byte_copies(
+    root: Path, orphans: Iterable[str], owned: Iterable[str], links: dict[str, str]
+) -> dict[str, str]:
+    """Map each orphan whose bytes equal an owned file to that owned file's path.
+
+    A tracked symlink is read through its target (``links``), so a Windows text
+    placeholder carries the identity of the file it points at.
+    """
+
+    def content(path: str) -> Path:
+        return root / links.get(path, path)
+
     orphan_list = sorted(orphans)
-    sizes = {(root / p).stat().st_size for p in orphan_list}
+    sizes = {content(p).stat().st_size for p in orphan_list}
     by_hash: dict[str, str] = {}
     for path in sorted(owned):
-        if (root / path).stat().st_size in sizes:
-            by_hash.setdefault(sha256(root / path), path)
+        if content(path).stat().st_size in sizes:
+            by_hash.setdefault(sha256(content(path)), path)
     copies: dict[str, str] = {}
     for path in orphan_list:
-        original = by_hash.get(sha256(root / path))
+        original = by_hash.get(sha256(content(path)))
         if original is not None:
             copies[path] = original
     return copies
@@ -372,13 +429,14 @@ def _owners(
 def run_census(root: Path, ledgers: Iterable[Ledger] = DEFAULT_LEDGERS) -> dict:
     """Build the deterministic census report for ``root``."""
     root = root.resolve()
-    found = discover(root)
+    links = tracked_symlinks(root)
+    found = discover(root, links)
     present = sorted(set(found["tracked"]) | set(found["untracked"]))
     in_scope, excluded = _partition_scope(present)
     universe = set(in_scope)
     owners, ledger_summary = _owners(root, ledgers, universe)
     unowned = [p for p in in_scope if p not in owners]
-    copies = byte_copies(root, unowned, owners)
+    copies = byte_copies(root, unowned, owners, links)
     orphans = [p for p in unowned if p not in copies]
     untracked = set(found["untracked"])
     by_ledger: dict[str, int] = {}

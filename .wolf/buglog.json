@@ -7304,5 +7304,25 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-10-14T00:00:00+00:00"
+  },
+  {
+    "id": "bug-408",
+    "timestamp": "2026-10-15T00:00:00+00:00",
+    "error_message": "Codex review on #1089: on a native Windows checkout (core.symlinks=false) the 256 catalog originals/ symlinks are text files holding their target, so the census hashed the text and reported them as orphans; the documented census command failed on a valid checkout",
+    "file": "scripts/asset_sot_census.py",
+    "root_cause": "Link identity came from the filesystem (Path following a real symlink). With core.symlinks=false Git writes a placeholder text file, so presence and byte-copy identity were judged on the placeholder. Simulating it on the real tree failed with 325 orphans.",
+    "fix": "tracked_symlinks() reads mode-120000 entries from `git ls-files -s` and their targets via `git cat-file --batch` (chains followed, out-of-repo targets ignored, unreadable blobs fail closed). discover() counts a link as present only when its target is; byte_copies() hashes a link through its target. The full --report is byte-identical with real symlinks and with Windows-style placeholders on the real tree.",
+    "tags": [
+      "census",
+      "sot",
+      "symlink",
+      "windows",
+      "portability"
+    ],
+    "related_bugs": [
+      "bug-406"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-15T00:00:00+00:00"
   }
 ]

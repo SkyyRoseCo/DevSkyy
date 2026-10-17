@@ -197,6 +197,65 @@ def test_theme_ledger_prefers_the_manifest_folder_over_broader_bases(repo: Path)
     assert report["owners"].get("v2/assets/sot/dupe.png") == ["v2"]
 
 
+def _checkout_without_symlinks(repo: Path, rel: str) -> None:
+    """Re-check ``rel`` out as a native Windows clone does: a text file holding the target."""
+    (repo / rel).unlink()
+    _git(repo, "-c", "core.symlinks=false", "checkout", "--", rel)
+    assert not (repo / rel).is_symlink()
+
+
+def test_placeholder_link_is_owned_through_its_target(repo: Path) -> None:
+    _checkout_without_symlinks(repo, "catalog/x/orig/x.jpg")
+    report = _run(repo)
+    assert report["orphans"] == []
+    assert report["byte_copies"]["catalog/x/orig/x.jpg"] == "assets/products/a.png"
+
+
+@pytest.mark.parametrize("placeholder", [False, True])
+def test_link_to_an_unowned_file_is_an_orphan(repo: Path, placeholder: bool) -> None:
+    _write(repo, "loose/b.png", b"B")
+    (repo / "catalog/x/orig/b.jpg").symlink_to("../../../loose/b.png")
+    _git(repo, "add", "-A")
+    if placeholder:
+        _checkout_without_symlinks(repo, "catalog/x/orig/b.jpg")
+    orphans = [row["path"] for row in _run(repo)["orphans"]]
+    assert orphans == ["catalog/x/orig/b.jpg", "loose/b.png"]
+
+
+@pytest.mark.parametrize("placeholder", [False, True])
+def test_link_to_a_missing_file_is_missing_on_every_platform(repo: Path, placeholder: bool) -> None:
+    _write(repo, "loose/gone.png", b"G")
+    (repo / "catalog/x/orig/gone.jpg").symlink_to("../../../loose/gone.png")
+    _git(repo, "add", "-A")
+    _git(repo, "rm", "-q", "--cached", "loose/gone.png")
+    (repo / "loose/gone.png").unlink()
+    if placeholder:
+        _checkout_without_symlinks(repo, "catalog/x/orig/gone.jpg")
+    report = _run(repo)
+    assert report["tracked_missing_on_disk"] == ["catalog/x/orig/gone.jpg"]
+    assert report["orphans"] == []
+
+
+def test_chained_placeholder_links_resolve_to_the_final_file(repo: Path) -> None:
+    (repo / "catalog/x/orig/hop.jpg").symlink_to("x.jpg")
+    _git(repo, "add", "-A")
+    for rel in ("catalog/x/orig/x.jpg", "catalog/x/orig/hop.jpg"):
+        _checkout_without_symlinks(repo, rel)
+    report = _run(repo)
+    assert report["orphans"] == []
+    assert report["byte_copies"]["catalog/x/orig/hop.jpg"] == "assets/products/a.png"
+
+
+def test_link_leaving_the_repo_is_not_followed(repo: Path) -> None:
+    (repo / "catalog/x/orig/out.jpg").symlink_to("../../../../outside.png")
+    _git(repo, "add", "-A")
+    _checkout_without_symlinks(repo, "catalog/x/orig/out.jpg")
+    assert census.tracked_symlinks(repo) == {
+        "catalog/x/orig/x.jpg": "assets/products/a.png",
+    }
+    assert [row["path"] for row in _run(repo)["orphans"]] == ["catalog/x/orig/out.jpg"]
+
+
 WORKFLOW = census.REPO_ROOT / ".github/workflows/catalog-validate.yml"
 
 
