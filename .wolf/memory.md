@@ -3706,3 +3706,9 @@ User authorized "do it" for Kids-first timed boards and parallel collection arc 
 | Time  | Action | File(s) | Outcome | ~Tokens |
 | ----- | ------ | ------- | ------- | ------- |
 | auto  | PR-intel-agent @ main sid:011fimgg | Triaged 53 open PRs. No changes since 2026-10-16 14:48 run. Queue: 14 draft-skip, 3 actions-skip (#1090/#1091/#1092), 4 major-dep notes (#944/#943/#945/#1008), 5 needs-founder (#1085 env-blocked, #1077 dirty/conflict, #1096 P1 Codex findings unaddressed, #1075 HOLD, #1037 release). No merges — env-blocked (no venv/cryptography). Prior run's responses on #1096 stand. | .wolf/memory.md | done · no pushes · no merges · quiet | ~70k |
+
+## Session: 2026-10-17 PR Intel
+
+| Time  | Action | File(s) | Outcome | ~Tokens |
+| ----- | ------ | ------- | ------- | ------- |
+| 22:28 | PR intel triage run — 50 open PRs scanned, 3 deep-dived (#1096, #1085, #1077) | .wolf/memory.md | All threads on #1096 and #1077 already replied to by prior session. #1085 clean/merge-ready but local verification blocked (detached HEAD + shallow clone). 13 draft-skip, 3 actions-skip, several dep batching candidates noted. | ~15k |
