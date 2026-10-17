@@ -1,7 +1,7 @@
 {
   "scope": "Image inventory of worktree excluding dependency/cache folders; supplemental main checkout assets/renders/theme/golden/data. Same-path same-byte supplemental copies omitted. Includes non-product imagery pending classification. Filename candidates are not authoritative product bindings. Since 2026-10-14 also holds non-image media (video, 3D, fonts, PDF) that the asset SOT census (scripts/asset_sot_census.py) found referenced by no ledger.",
   "counts": {
-    "unassigned": 3034,
+    "unassigned": 3028,
     "unverified-candidate": 1620,
     "registry-associated-by-hash": 538
   },
@@ -11346,14 +11346,6 @@
       ]
     },
     {
-      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/colorblock-purple-set-real.webp",
-      "location": "worktree",
-      "sha256": "e5bccb8926d6827af5dc59bd1fa8fd297b0ba5b2a53847c19467aca9af7cf852",
-      "bytes": 8450,
-      "status": "unassigned",
-      "candidate_skus": []
-    },
-    {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/stay-golden-tee-techflat-v4.avif",
       "location": "worktree",
       "sha256": "4d092c8098ad987edd6e4276ad21c122ba0e8b1b6da074d81dd93a1f7bd5ddac",
@@ -11378,14 +11370,6 @@
       "candidate_skus": [
         "sg-002"
       ]
-    },
-    {
-      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/colorblock-red-set-real.avif",
-      "location": "worktree",
-      "sha256": "be83bba4504bb0634d34acf020d46ecc9b8d5c70c2620f75e55b3eda1fc0ddfd",
-      "bytes": 12948,
-      "status": "unassigned",
-      "candidate_skus": []
     },
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/love-hurts-basketball-shorts-back-model.avif",
@@ -12224,14 +12208,6 @@
       ]
     },
     {
-      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/colorblock-red-set-real.jpg",
-      "location": "worktree",
-      "sha256": "9478339b584678d6deb48b22bd7f52cb4ddf0d0448bec4a0f0393ea939f63033",
-      "bytes": 45419,
-      "status": "unassigned",
-      "candidate_skus": []
-    },
-    {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/the-bay-set-source.webp",
       "location": "worktree",
       "sha256": "03dcf7b9607187512fd410f545a1764845b5b2eb837de16a425f77d5c78ca911",
@@ -12594,14 +12570,6 @@
       ]
     },
     {
-      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/colorblock-red-set-real.webp",
-      "location": "worktree",
-      "sha256": "b43d0f8593034fe18bf52a236176074a85dbc5ee5714babb5fc74e3dedfd3e15",
-      "bytes": 12974,
-      "status": "unassigned",
-      "candidate_skus": []
-    },
-    {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-013-mint-lavender-crewneck.jpeg",
       "location": "worktree",
       "sha256": "ad26b94284690685af52307d8bdc72d7187e9177586282275279b577179396f5",
@@ -12644,14 +12612,6 @@
       "candidate_skus": [
         "sg-001"
       ]
-    },
-    {
-      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/colorblock-purple-set-real.avif",
-      "location": "worktree",
-      "sha256": "28ddad15509fc208cd7bc3a0c281c09b25dea5bcbbf47a37100b3d40e1d7a9d1",
-      "bytes": 9896,
-      "status": "unassigned",
-      "candidate_skus": []
     },
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/stay-golden-tee-techflat-v4.webp",
@@ -14016,14 +13976,6 @@
           "role": "front"
         }
       ]
-    },
-    {
-      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/colorblock-purple-set-real.jpg",
-      "location": "worktree",
-      "sha256": "bb846bea8499fb2a99c1a5d80c268b88b4e577ff700acaacac22a479fedb9d70",
-      "bytes": 46195,
-      "status": "unassigned",
-      "candidate_skus": []
     },
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-is-beautiful-jersey-techflat-giants.webp",
