@@ -3712,3 +3712,9 @@ User authorized "do it" for Kids-first timed boards and parallel collection arc 
 | Time  | Action | File(s) | Outcome | ~Tokens |
 | ----- | ------ | ------- | ------- | ------- |
 | 22:28 | PR intel triage run — 50 open PRs scanned, 3 deep-dived (#1096, #1085, #1077) | .wolf/memory.md | All threads on #1096 and #1077 already replied to by prior session. #1085 clean/merge-ready but local verification blocked (detached HEAD + shallow clone). 13 draft-skip, 3 actions-skip, several dep batching candidates noted. | ~15k |
+
+## Session: 2026-10-18 PR Intel
+
+| Time  | Action | File(s) | Outcome | ~Tokens |
+| ----- | ------ | ------- | ------- | ------- |
+| auto  | PR-intel-agent @ main sid:e9ce47e3 | Triaged 72 open PRs breadth-first. Deep-dived #1096 (needs-founder, 2 P1 threads SkyyRoseLLC marked "fix before merge"), #1077 (ready — all threads resolved, no CR), #1085 (code-reviewed clean — bcrypt 5.x fix + 5 test un-skips; changes already in HEAD; can't run pytest in cloud env, bcrypt not installed). #1037 production release PR still queued. 7 AI SDK major bumps (#939-944, #907) need batch-test. 14 draft-skip, 4 actions-dep-skip. Report in PushNotification. | .wolf/memory.md | done · no pushes · no merges | ~90k |
