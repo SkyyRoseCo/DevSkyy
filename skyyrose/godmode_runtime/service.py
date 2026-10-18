@@ -293,6 +293,13 @@ class Runtime:
                 "id": stage,
                 "status": "FAILED",
                 "error_code": str(exc),
+                "operator_action": (
+                    "Anthropic API usage limit reached. Account owner must clear the limit or wait for the provider reset; request a fresh exact-plan approval before retrying. Production remains disabled."
+                    if str(exc) == "provider_usage_limit_reached"
+                    or str(exc).startswith("provider_usage_limit_reached_")
+                    else "Inspect the recorded failure before authorizing another attempt."
+                ),
+                "diagnostic_markers": exc.markers,
                 "usage": "UNKNOWN_RESERVATION_RETAINED",
                 "production_authority": False,
                 "human_acceptance": "NOT_GRANTED",
@@ -632,6 +639,40 @@ class Runtime:
             "verification_scope": "SOURCE_STRUCTURE_ONLY",
         }
 
+    def _qualification_extension(
+        self, conn: sqlite3.Connection, row: sqlite3.Row, approval: dict[str, Any]
+    ) -> str | None:
+        """A trusted, run-specific new authorization; never a refund or browser claim."""
+        for event in conn.execute(
+            "SELECT actor,data FROM events WHERE run_id=? AND kind='ADDITIONAL_QUALIFICATION_AUTHORIZED' ORDER BY seq DESC",
+            (row["id"],),
+        ):
+            grant = json.loads(event["data"])
+            if (
+                event["actor"] != approval["actor"]
+                or grant.get("plan_hash") != row["plan_hash"]
+                or grant.get("expires_at", 0) < time.time()
+                or grant.get("max_runs") != 1
+                or grant.get("max_calls") != 2
+                or grant.get("claude_max_budget_usd") != 1.0
+                or grant.get("scope") != "BOUNDED_AGENT_ANALYSIS_NO_PRODUCTION"
+                or grant.get("contract_sha256")
+                != digest(canonical(json.loads(row["plan"])["agent_contract"]).encode())
+            ):
+                continue
+            grant_id = grant.get("grant_id")
+            if not isinstance(grant_id, str) or not re.fullmatch(r"[a-zA-Z0-9_-]{8,100}", grant_id):
+                continue
+            used = any(
+                json.loads(e[0]).get("grant_id") == grant_id
+                for e in conn.execute(
+                    "SELECT data FROM events WHERE kind='AGENT_ALLOWANCE_RESERVED'"
+                )
+            )
+            if not used:
+                return grant_id
+        return None
+
     def execute(self, run_id: str, plan_hash: str, actor: str) -> dict[str, Any]:
         self.recover()
         invalid = False
@@ -658,7 +699,10 @@ class Runtime:
                         "SELECT count(*) FROM events e WHERE e.kind='AGENT_ALLOWANCE_RESERVED' AND e.at>? AND NOT EXISTS (SELECT 1 FROM events z WHERE z.run_id=e.run_id AND z.kind='AGENT_NO_DISPATCH_CONFIRMED')",
                         (time.time() - 86400,),
                     ).fetchone()[0]
-                    if used >= 2:
+                    extension = (
+                        self._qualification_extension(conn, row, approval) if used >= 2 else None
+                    )
+                    if used >= 2 and extension is None:
                         raise RuntimeConflict(
                             "Daily two-run agent qualification allowance exhausted; reservations are not automatically refunded"
                         )
@@ -668,6 +712,7 @@ class Runtime:
                         "AGENT_ALLOWANCE_RESERVED",
                         actor,
                         {
+                            "grant_id": extension,
                             "claude_max_budget_usd": 1.0,
                             "codex_auth": "existing_chatgpt_allowance",
                             "max_calls": 2,

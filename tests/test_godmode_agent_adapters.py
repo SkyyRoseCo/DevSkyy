@@ -236,6 +236,7 @@ def test_contract_explicit_models_authpresence_and_source_binding(monkeypatch, t
     (tmp_path / "auth.json").write_text('{"auth_mode":"chatgpt"}')
     monkeypatch.setattr(a.subprocess, "check_output", lambda *x, **y: b"codex-cli fixture")
     monkeypatch.setattr(a.shutil, "which", lambda *x: "/codex")
+    monkeypatch.setattr(a, "_executable_digest", lambda path: "f" * 64)
     contract = a.adapter_contract()
     assert contract["available"] is True
     assert contract["claude_model"] == "claude-opus-5-5"
@@ -255,6 +256,7 @@ def test_auth_identity_change_invalidates_contract_before_dispatch(
     auth.write_text('{"auth_mode":"chatgpt","tokens":{"access_token":"SYNTHETIC-A"}}')
     monkeypatch.setattr(a.subprocess, "check_output", lambda *x, **y: b"codex-cli fixture")
     monkeypatch.setattr(a.shutil, "which", lambda *x: "/codex")
+    monkeypatch.setattr(a, "_executable_digest", lambda path: "f" * 64)
     contract = a.adapter_contract()
     assert contract == a.adapter_contract()
     assert "SYNTHETIC" not in json.dumps(contract)
@@ -272,6 +274,7 @@ def test_auth_json_format_does_not_change_identity(monkeypatch, tmp_path):
     monkeypatch.setenv("ANTHROPIC_API_KEY", "SYNTHETIC")
     monkeypatch.setattr(a.subprocess, "check_output", lambda *x, **y: b"codex-cli fixture")
     monkeypatch.setattr(a.shutil, "which", lambda *x: "/codex")
+    monkeypatch.setattr(a, "_executable_digest", lambda path: "f" * 64)
     auth = tmp_path / "auth.json"
     auth.write_text('{"auth_mode":"chatgpt","tokens":{}}')
     before = a.adapter_contract()
@@ -355,7 +358,7 @@ def test_streaming_prompt_is_one_exact_source_message():
 
 def test_claude_reasoning_and_output_are_bounded(tmp_path):
     options = a.claude_options("claude-opus-5-5", str(tmp_path))
-    assert options["thinking"] == {"type": "enabled", "budget_tokens": 1024}
+    assert options["thinking"] == {"type": "adaptive"}
     assert options["effort"] == "low"
     assert options["env"] == {"CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096"}
 
@@ -449,3 +452,161 @@ def test_nested_exception_groups_retain_only_whitelisted_causes(monkeypatch):
 def test_every_typed_failure_retains_fixed_last_phase(monkeypatch):
     monkeypatch.setattr(a, "_CURRENT_PHASE", "claude_response_received")
     assert a._safe_failure(TypeError("PRIVATE"))["phase"] == "claude_response_received"
+
+
+def test_opus55_cli_request_uses_adaptive_not_manual_budget(tmp_path):
+    from claude_agent_sdk import ClaudeAgentOptions
+    from claude_agent_sdk._internal.transport.subprocess_cli import SubprocessCLITransport
+
+    transport = SubprocessCLITransport(
+        prompt="not submitted",
+        options=ClaudeAgentOptions(**a.claude_options("claude-opus-5-5", str(tmp_path))),
+    )
+    transport._cli_path = "/offline/claude"
+    command = transport._build_command()
+    assert command[command.index("--thinking") + 1] == "adaptive"
+    assert "--max-thinking-tokens" not in command
+    assert (
+        a.claude_options("claude-opus-5-5", str(tmp_path))["env"]["CLAUDE_CODE_MAX_OUTPUT_TOKENS"]
+        == "4096"
+    )
+
+
+def test_specific_provider_error_survives_generic_sdk_cleanup(monkeypatch, tmp_path):
+    import asyncio
+
+    import claude_agent_sdk
+    from claude_agent_sdk import AssistantMessage, TextBlock
+
+    async def stream(**kwargs):
+        yield AssistantMessage(
+            content=[
+                TextBlock(text="thinking is not supported: synthetic-secret-should-not-escape")
+            ],
+            model="claude-opus-5-5",
+            error="invalid_request",
+        )
+        raise Exception("generic cleanup with synthetic-secret")
+
+    monkeypatch.setattr(claude_agent_sdk, "query", stream)
+    with pytest.raises(a.AdapterError, match="^provider_thinking_unsupported$") as failure:
+        asyncio.run(
+            a._claude(
+                {
+                    "contract": {"claude_model": "claude-opus-5-5"},
+                    "stage": "claude-worker",
+                    "packet": {},
+                    "worker": None,
+                },
+                str(tmp_path),
+            )
+        )
+    assert "synthetic-secret" not in str(failure.value)
+
+
+def test_actual_codex_configuration_includes_required_budget_fields(tmp_path):
+    import os
+    import shutil
+    import subprocess
+
+    executable = shutil.which("codex")
+    if not executable:
+        pytest.skip("Installed Codex CLI unavailable")
+    command = a.codex_command(
+        executable, "gpt-6.1-sol", str(tmp_path), str(tmp_path / "schema"), str(tmp_path / "out")
+    )
+    overrides = []
+    for index, value in enumerate(command):
+        if value == "-c":
+            overrides.extend(command[index : index + 2])
+    check = subprocess.run(
+        [executable, *overrides, "features", "list"],
+        capture_output=True,
+        text=True,
+        env={"PATH": os.environ["PATH"], "HOME": str(tmp_path), "CODEX_HOME": str(tmp_path)},
+        timeout=10,
+    )
+    assert check.returncode == 0, "Installed CLI rejected the adapter configuration"
+    assert "rollout_budget" in check.stdout
+    assert "features.rollout_budget.reminder_at_remaining_tokens=[2000]" in overrides
+
+
+def test_recorded_usage_limit_classified_without_provider_text(monkeypatch, tmp_path):
+    import claude_agent_sdk
+    from claude_agent_sdk import AssistantMessage, TextBlock
+
+    # Recorded rejection wording; trailing credential is an illustrative leak test.
+    text = (
+        "You have reached your specified API usage limits. "
+        "You will regain access on 2026-11-01 at 00:00 UTC. synthetic-secret-123"
+    )
+
+    async def stream(**kwargs):
+        yield AssistantMessage(
+            content=[TextBlock(text=text)], model="claude-opus-5-5", error="invalid_request"
+        )
+        raise Exception("SDK cleanup error")
+
+    monkeypatch.setattr(claude_agent_sdk, "query", stream)
+    with pytest.raises(a.AdapterError) as caught:
+        asyncio.run(
+            a._claude(
+                {
+                    "contract": {"claude_model": "claude-opus-5-5"},
+                    "stage": "claude-worker",
+                    "packet": {},
+                    "worker": None,
+                },
+                str(tmp_path),
+            )
+        )
+    failure = a._safe_failure(caught.value)
+    assert failure["error_code"] == "provider_usage_limit_reached"
+    assert failure["usage"] == {"known": False, "retry_safe": False}
+    assert "synthetic-secret" not in json.dumps(failure)
+    assert "2026-11-01" not in json.dumps(failure)
+    assert a._safe_failure(RuntimeError(text))["error_code"] == "provider_usage_limit_reached"
+
+
+def test_diagnostic_markers_are_strictly_allowlisted():
+    assert a.AdapterError("provider_error", ["usage", "secret-value", "api"]).markers == [
+        "usage",
+        "api",
+    ]
+
+
+def test_unreadable_cli_digest_is_unavailable(tmp_path):
+    assert a._executable_digest(str(tmp_path / "missing")) is None
+
+
+def test_successful_analysis_cannot_poison_provider_diagnosis(monkeypatch, tmp_path):
+    import claude_agent_sdk
+    from claude_agent_sdk import AssistantMessage, TextBlock
+
+    async def stream(**kwargs):
+        yield AssistantMessage(
+            content=[
+                TextBlock(
+                    text="A finding discusses specified API usage limits and thinking enabled."
+                )
+            ],
+            model="claude-opus-5-5",
+            error=None,
+        )
+        raise Exception("Unrelated cleanup failure")
+
+    monkeypatch.setattr(claude_agent_sdk, "query", stream)
+    with pytest.raises(Exception) as caught:
+        asyncio.run(
+            a._claude(
+                {
+                    "contract": {"claude_model": "claude-opus-5-5"},
+                    "stage": "claude-worker",
+                    "packet": {},
+                    "worker": None,
+                },
+                str(tmp_path),
+            )
+        )
+    assert not isinstance(caught.value, a.AdapterError)
+    assert a._safe_failure(caught.value)["error_code"] == "provider_error"

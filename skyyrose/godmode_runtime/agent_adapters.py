@@ -46,14 +46,103 @@ _CURRENT_PHASE = "supervisor_starting"
 _MODEL = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$")
 
 
+_DIAGNOSTIC_MARKERS = frozenset(
+    [
+        "thinking",
+        "enabled",
+        "disabled",
+        "adaptive",
+        "budget_tokens",
+        "temperature",
+        "top_p",
+        "top_k",
+        "tool_choice",
+        "tools",
+        "model",
+        "max_tokens",
+        "output_config",
+        "effort",
+        "messages",
+        "content",
+        "system",
+        "prompt",
+        "cache_control",
+        "cache",
+        "streaming",
+        "beta",
+        "betas",
+        "header",
+        "prefill",
+        "assistant",
+        "token",
+        "tokens",
+        "context",
+        "credit",
+        "balance",
+        "billing",
+        "account",
+        "verify",
+        "verification",
+        "organization",
+        "key",
+        "api",
+        "oauth",
+        "usage",
+        "not",
+        "supported",
+        "allowed",
+        "must",
+        "required",
+        "unknown",
+        "invalid",
+        "deprecated",
+        "removed",
+        "minimum",
+        "maximum",
+        "empty",
+        "too",
+        "long",
+        "insufficient",
+        "cannot",
+        "exceeds",
+        "exceeded",
+        "output",
+        "input",
+        "limit",
+        "request",
+        "client",
+        "version",
+        "attachment",
+    ]
+)
+
+
 class AdapterError(RuntimeError):
-    """Safe failure code; never includes provider diagnostics."""
+    """Fixed failure code and allowlisted structural words, never raw provider text."""
+
+    def __init__(self, code: str, markers: list[str] | None = None):
+        super().__init__(code)
+        self.markers = [
+            word
+            for word in (markers or [])
+            if isinstance(word, str) and word in _DIAGNOSTIC_MARKERS
+        ][:50]
 
 
 def digest(value: Any) -> str:
     return hashlib.sha256(
         json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
     ).hexdigest()
+
+
+def _executable_digest(path: str | None) -> str | None:
+    if path is None:
+        return None
+    try:
+        with open(path, "rb") as stream:
+            return hashlib.file_digest(stream, "sha256").hexdigest()
+    except OSError:
+        return None
 
 
 def adapter_contract() -> dict[str, Any]:
@@ -67,6 +156,19 @@ def adapter_contract() -> dict[str, Any]:
         "GOD_MODE_CODEX_MODEL": os.environ.get("GOD_MODE_CODEX_MODEL", "gpt-6.1-sol"),
     }
     codex = shutil.which("codex")
+    claude_cli = shutil.which("claude")
+    if claude_cli:
+        claude_cli = str(Path(claude_cli).resolve())
+    try:
+        claude_cli_version = (
+            subprocess.check_output([claude_cli, "--version"], timeout=5, stderr=subprocess.DEVNULL)
+            .decode()
+            .strip()
+            if claude_cli
+            else None
+        )
+    except (OSError, subprocess.SubprocessError):
+        claude_cli_version = None
     auth_path = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex"))) / "auth.json"
     try:
         codex_auth = json.loads(auth_path.read_text())
@@ -95,6 +197,7 @@ def adapter_contract() -> dict[str, Any]:
         and claude_auth_present
         and codex_auth_present
         and sdk is not None
+        and claude_cli_version is not None
         and codex is not None
         and codex_version is not None
         and all(_MODEL.fullmatch(v) for v in models.values())
@@ -109,6 +212,9 @@ def adapter_contract() -> dict[str, Any]:
         "available": ready,
         "qualification": "SOURCE_PACKET_ONLY_NOT_PRODUCTION",
         "claude_sdk_version": sdk,
+        "claude_cli_executable": claude_cli,
+        "claude_cli_version": claude_cli_version,
+        "claude_cli_sha256": _executable_digest(claude_cli),
         "claude_auth_present": claude_auth_present,
         "claude_auth_sha256": claude_auth_sha256,
         "codex_auth_sha256": codex_auth_sha256,
@@ -122,7 +228,7 @@ def adapter_contract() -> dict[str, Any]:
         "max_packet_bytes": MAX_PACKET_BYTES,
         "max_output_bytes": MAX_OUTPUT_BYTES,
         "claude_max_turns": 2,
-        "claude_thinking_tokens": 1024,
+        "claude_thinking_mode": "adaptive",
         "claude_effort": "low",
         "claude_max_output_tokens": 4096,
         "claude_max_budget_usd": 1.0,
@@ -200,7 +306,7 @@ def claude_options(model: str, cwd: str) -> dict[str, Any]:
         agents={},
         permission_mode="dontAsk",
         max_turns=2,
-        thinking={"type": "enabled", "budget_tokens": 1024},
+        thinking={"type": "adaptive"},
         effort="low",
         env={"CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096"},
         max_budget_usd=1.0,
@@ -246,6 +352,9 @@ def codex_command(executable: str, model: str, cwd: str, schema: str, output: st
         "model_reasoning_effort": '"low"',
         "features.rollout_budget.enabled": "true",
         "features.rollout_budget.limit_tokens": "8000",
+        "features.rollout_budget.reminder_at_remaining_tokens": "[2000]",
+        "features.rollout_budget.sampling_token_weight": "1.0",
+        "features.rollout_budget.prefill_token_weight": "0.1",
     }
     for feature in (
         "shell_tool",
@@ -370,9 +479,15 @@ def _supervised(payload: bytes, cancelled: Callable[[], bool], timeout: float) -
                         and failure["phase"] in _PHASES
                     ):
                         code = str(code) + "_" + failure["phase"]
-                    if not isinstance(code, str) or not re.fullmatch(r"[a-z_]{1,80}", code):
+                    if not isinstance(code, str) or not re.fullmatch(
+                        r"(?:[a-z_]{1,80}|provider_http_(?:400|401|403|404|408|413|429|500|502|503|529)(?:_[a-z_]+)?)",
+                        code,
+                    ):
                         code = "supervisor_failed"
-                    raise AdapterError(code)
+                    markers = (
+                        failure.get("diagnostic_markers", []) if isinstance(failure, dict) else []
+                    )
+                    raise AdapterError(code, markers if isinstance(markers, list) else [])
                 return output.splitlines()[-1] if output.splitlines() else output
             except subprocess.TimeoutExpired as exc:
                 observed = exc.output or b""
@@ -489,6 +604,34 @@ def _parse_claude_text(text: str, packet: dict[str, Any]) -> dict[str, Any]:
     return validate_artifact("claude-worker", artifact, packet)
 
 
+def _provider_diagnostic(text: str) -> str | None:
+    """Classify transient diagnostic text into fixed codes; never retain its bytes."""
+    lower = text.lower()
+    for words, code in (
+        (("specified api usage limits",), "provider_usage_limit_reached"),
+        (("thinking", "disabled"), "provider_thinking_disabled_rejected"),
+        (("thinking", "enabled"), "provider_manual_thinking_rejected"),
+        (("thinking", "budget_tokens"), "provider_manual_thinking_rejected"),
+        (("temperature",), "provider_sampling_unsupported"),
+        (("top_p",), "provider_sampling_unsupported"),
+        (("top_k",), "provider_sampling_unsupported"),
+        (("tool_choice",), "provider_tool_choice_invalid"),
+        (("thinking", "not supported"), "provider_thinking_unsupported"),
+        (("thinking", "invalid"), "provider_thinking_invalid"),
+        (("budget_tokens", "must"), "provider_thinking_invalid"),
+        (("effort", "invalid"), "provider_effort_invalid"),
+        (("unknown option",), "cli_unsupported_option"),
+        (("credit balance",), "provider_credit_unavailable"),
+        (("invalid api key",), "provider_auth_rejected"),
+        (("rate limit",), "provider_rate_limited"),
+        (("model", "not found"), "provider_model_unavailable"),
+        (("max_tokens", "must"), "provider_output_limit_invalid"),
+    ):
+        if all(word in lower for word in words):
+            return code
+    return None
+
+
 async def _claude(payload: dict[str, Any], directory: str) -> dict[str, Any]:
     from claude_agent_sdk import (
         AssistantMessage,
@@ -500,19 +643,75 @@ async def _claude(payload: dict[str, Any], directory: str) -> dict[str, Any]:
 
     _emit_phase("claude_sdk_starting")
     result = None
-    async for message in query(
-        prompt=_claude_prompt(payload),
-        options=ClaudeAgentOptions(
-            **claude_options(payload["contract"]["claude_model"], directory)
-        ),
-    ):
-        if isinstance(message, SystemMessage) and message.subtype == "init":
-            _emit_phase("claude_initialized")
-        if isinstance(message, AssistantMessage):
-            _emit_phase("claude_response_received")
-        if isinstance(message, ResultMessage):
-            _emit_phase("claude_result_received")
-            result = message
+    diagnostics: list[str] = []
+    markers: list[str] = []
+    pending_text: list[str] = []
+
+    def remember(text: str) -> None:
+        for word in re.findall(r"[a-z_]+", text.lower()):
+            if word in _DIAGNOSTIC_MARKERS and word not in markers:
+                markers.append(word)
+        code = _provider_diagnostic(text)
+        if code and code not in diagnostics:
+            diagnostics.insert(0, code)
+
+    options = claude_options(payload["contract"]["claude_model"], directory)
+    options["stderr"] = remember
+    options["cli_path"] = payload["contract"].get("claude_cli_executable")
+    try:
+        async for message in query(
+            prompt=_claude_prompt(payload), options=ClaudeAgentOptions(**options)
+        ):
+            if isinstance(message, SystemMessage) and message.subtype == "init":
+                _emit_phase("claude_initialized")
+            if isinstance(message, AssistantMessage):
+                _emit_phase("claude_response_received")
+                error_code = {
+                    "authentication_failed": "provider_auth_rejected",
+                    "billing_error": "provider_credit_unavailable",
+                    "rate_limit": "provider_rate_limited",
+                    "invalid_request": "provider_invalid_request",
+                    "server_error": "provider_server_error",
+                }.get(message.error or "")
+                if error_code:
+                    diagnostics.append(error_code)
+                for block in message.content:
+                    if hasattr(block, "text"):
+                        if message.error:
+                            remember(block.text)
+                        else:
+                            pending_text.append(block.text)
+            if isinstance(message, ResultMessage):
+                _emit_phase("claude_result_received")
+                result = message
+                if message.is_error:
+                    for text in pending_text:
+                        remember(text)
+                if message.is_error and message.result:
+                    remember(message.result)
+                for error in message.errors or []:
+                    remember(error)
+                if message.api_error_status in {
+                    400,
+                    401,
+                    403,
+                    404,
+                    408,
+                    413,
+                    429,
+                    500,
+                    502,
+                    503,
+                    529,
+                }:
+                    diagnostics.append("provider_http_" + str(message.api_error_status))
+    except Exception as exc:
+        remember(str(exc))
+        if diagnostics:
+            raise AdapterError(diagnostics[0], markers) from None
+        raise
+    if result is not None and result.is_error and diagnostics:
+        raise AdapterError(diagnostics[0], markers)
     if (
         result is None
         or result.is_error
@@ -613,6 +812,26 @@ def _safe_failure(exc: BaseException) -> dict[str, Any]:
         "claude_budget_exceeded",
         "output_limit",
         "codex_failed",
+        "provider_thinking_unsupported",
+        "provider_manual_thinking_rejected",
+        "provider_thinking_disabled_rejected",
+        "provider_sampling_unsupported",
+        "provider_tool_choice_invalid",
+        "provider_thinking_invalid",
+        "provider_effort_invalid",
+        "provider_output_limit_invalid",
+        "provider_credit_unavailable",
+        "provider_usage_limit_reached",
+        "provider_auth_rejected",
+        "provider_rate_limited",
+        "provider_model_unavailable",
+        "provider_invalid_request",
+        "provider_server_error",
+        "cli_unsupported_option",
+        *{
+            "provider_http_" + str(code)
+            for code in (400, 401, 403, 404, 408, 413, 429, 500, 502, 503, 529)
+        },
     }
     if isinstance(exc, AdapterError) and str(exc) in adapter_codes:
         code = str(exc)
@@ -628,6 +847,7 @@ def _safe_failure(exc: BaseException) -> dict[str, Any]:
             "ProcessError": "claude_cli_process_failed",
             "MessageParseError": "sdk_message_parse_failed",
             "CLIJSONDecodeError": "sdk_cli_json_decode_failed",
+            "SDKJSONDecodeError": "sdk_cli_json_decode_failed",
             "ResultError": "sdk_result_error",
             "ValueError": "adapter_value_error",
             "TimeoutError": "sdk_timeout",
@@ -638,6 +858,7 @@ def _safe_failure(exc: BaseException) -> dict[str, Any]:
         # Classify known messages without copying any part of them to evidence.
         diagnostic = str(exc).lower()
         for pattern, classified in (
+            ("specified api usage limits", "provider_usage_limit_reached"),
             ("unknown option", "cli_unsupported_option"),
             ("can_use_tool callback requires streaming mode", "sdk_prompt_mode_invalid"),
             ("unknown message type", "sdk_message_type_unsupported"),
@@ -671,6 +892,7 @@ def _safe_failure(exc: BaseException) -> dict[str, Any]:
         "status": "FAILED",
         "error_code": code,
         "error_categories": codes[:8],
+        "diagnostic_markers": exc.markers if isinstance(exc, AdapterError) else [],
         "phase": _CURRENT_PHASE,
         "usage": {"known": False, "retry_safe": False},
     }

@@ -1,0 +1,25 @@
+{
+  "model": "claude-opus-5-5",
+  "request_kind": "single direct Messages API tiny synthetic prompt; no beta headers",
+  "production": false,
+  "http_status": 400,
+  "status": "error",
+  "error_type": "invalid_request_error",
+  "error_message": "You have reached your specified API usage limits. You will regain access on 2026-11-01 at 00:00 UTC.",
+  "evidence_class": "AUTHENTICATED_LIVE_EXECUTION",
+  "execution_count": 1,
+  "authorization_scope": "Current-chat owner instruction, delegated by root: one tiny direct Messages diagnosis only; consumed",
+  "authentication_evidence": {
+    "provider": "Anthropic direct Messages API",
+    "credential_source": ".env ANTHROPIC_API_KEY; value withheld",
+    "account_identity": "Not returned by Messages error; no account identity inferred",
+    "scope": "One model request; no tools, no SDK extras, no beta headers"
+  },
+  "root_cause": "Configured Anthropic API account specified usage limit reached",
+  "classification": "provider_usage_limit_reached",
+  "access_resets_at": "2026-11-01T00:00:00Z",
+  "workflow_status": "BLOCKED_PROVIDER_USAGE_LIMIT",
+  "production_enabled": false,
+  "live_probe_disabled": true,
+  "limitations": "No successful Opus artifact, no Codex review, no account billing configuration read or changed; error proves rejection for configured credential only"
+}

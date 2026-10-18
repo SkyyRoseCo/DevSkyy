@@ -130,6 +130,31 @@ def test_review_receipt_cannot_grant_human_acceptance(configured, monkeypatch):
     assert result["human_acceptance"] == "NOT_GRANTED" and result["production_authority"] is False
 
 
+@pytest.mark.parametrize("suffix", ["", "_claude_result_received"])
+def test_usage_limit_stops_before_codex_and_preserves_governance(configured, monkeypatch, suffix):
+    from skyyrose.godmode_runtime import agent_adapters as adapters
+
+    r, _ = configured
+    calls = []
+
+    def rejected(stage, *args, **kwargs):
+        calls.append(stage)
+        raise adapters.AdapterError("provider_usage_limit_reached" + suffix, ["api", "usage"])
+
+    monkeypatch.setattr(adapters, "run_stage", rejected)
+    run = r.create("skyyrose", "fashion-skill-analysis", "usage-limit-gate", "operator")
+    r.approve(run["id"], run["plan_hash"], "owner")
+    result = r.execute(run["id"], run["plan_hash"], "operator")
+    assert result["status"] == "FAILED"
+    assert calls == ["claude-worker"]
+    step = result["steps"][0]
+    assert step["error_code"] == "provider_usage_limit_reached" + suffix
+    assert "Account owner" in step["operator_action"]
+    assert step["usage"] == "UNKNOWN_RESERVATION_RETAINED"
+    assert step["production_authority"] is False
+    assert step["human_acceptance"] == "NOT_GRANTED"
+
+
 def test_actual_canonical_packets_cover_every_preorder(tmp_path):
     from skyyrose.godmode_runtime.agent_packets import build_packet
     from skyyrose.godmode_runtime.service import Runtime
@@ -207,3 +232,81 @@ def test_pretransport_attestation_is_one_replacement_and_timeout_stays_reserved(
     assert sum(e["kind"] == "AGENT_ALLOWANCE_RESERVED" for e in events) == 1
     assert sum(e["kind"] == "AGENT_NO_DISPATCH_CONFIRMED" for e in events) == 1
     assert not any(e["kind"] == "AGENT_NO_DISPATCH_CONFIRMED" for e in r.get(ids[1])["events"])
+
+
+def _exhaust_agent_allowance(r, monkeypatch):
+    monkeypatch.setattr(
+        r, "_agent_step", lambda row, stage: {"id": stage, "status": "FAILED", "usage": "UNKNOWN"}
+    )
+    for i in range(2):
+        run = r.create("skyyrose", "fashion-skill-analysis", f"fresh-scope-old-{i}", "operator")
+        r.approve(run["id"], run["plan_hash"], "owner")
+        r.execute(run["id"], run["plan_hash"], "operator")
+
+
+def _extension(r, run, **overrides):
+    import time
+
+    from skyyrose.godmode_runtime.service import canonical, digest
+
+    grant = {
+        "grant_id": "new-current-request-grant",
+        "plan_hash": run["plan_hash"],
+        "expires_at": time.time() + 100,
+        "max_runs": 1,
+        "max_calls": 2,
+        "claude_max_budget_usd": 1.0,
+        "scope": "BOUNDED_AGENT_ANALYSIS_NO_PRODUCTION",
+        "contract_sha256": digest(canonical(run["plan"]["agent_contract"]).encode()),
+    }
+    grant.update(overrides)
+    with r.transaction() as conn:
+        r.event(conn, run["id"], "ADDITIONAL_QUALIFICATION_AUTHORIZED", "owner", grant)
+
+
+def test_new_authorization_is_exact_run_one_use_without_refunding_unknown(configured, monkeypatch):
+    r, _ = configured
+    _exhaust_agent_allowance(r, monkeypatch)
+    run = r.create("skyyrose", "fashion-skill-analysis", "fresh-authorization", "operator")
+    r.approve(run["id"], run["plan_hash"], "owner")
+    _extension(r, run)
+    assert r.execute(run["id"], run["plan_hash"], "operator")["status"] == "FAILED"
+    another = r.create("skyyrose", "fashion-skill-analysis", "reused-authorization", "operator")
+    r.approve(another["id"], another["plan_hash"], "owner")
+    _extension(r, another)
+    with pytest.raises(RuntimeConflict, match="allowance exhausted"):
+        r.execute(another["id"], another["plan_hash"], "operator")
+    with r.connect() as conn:
+        assert (
+            conn.execute(
+                "SELECT count(*) FROM events WHERE kind='AGENT_ALLOWANCE_RESERVED'"
+            ).fetchone()[0]
+            == 3
+        )
+        assert (
+            conn.execute(
+                "SELECT count(*) FROM events WHERE kind='AGENT_NO_DISPATCH_CONFIRMED'"
+            ).fetchone()[0]
+            == 0
+        )
+
+
+@pytest.mark.parametrize(
+    "override",
+    [
+        {"plan_hash": "0" * 64},
+        {"expires_at": 1},
+        {"max_runs": 2},
+        {"max_calls": 3},
+        {"claude_max_budget_usd": 2.0},
+        {"contract_sha256": "wrong"},
+    ],
+)
+def test_additional_grant_cannot_widen_or_expire(configured, monkeypatch, override):
+    r, _ = configured
+    _exhaust_agent_allowance(r, monkeypatch)
+    run = r.create("skyyrose", "fashion-skill-analysis", "invalid-new-scope", "operator")
+    r.approve(run["id"], run["plan_hash"], "owner")
+    _extension(r, run, **override)
+    with pytest.raises(RuntimeConflict, match="allowance exhausted"):
+        r.execute(run["id"], run["plan_hash"], "operator")

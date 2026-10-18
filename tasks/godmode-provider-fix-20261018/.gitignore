@@ -1,0 +1,8 @@
+# Full immutable source packets and raw run records remain in private GOD MODE state.
+adaptive-1-receipt.json
+verified-fix-2-receipt.json
+runtime-boundary-3-receipt.json
+__pycache__/
+# Historical live authorization harnesses remain disabled and local only.
+run-live.py
+direct-messages-probe.py
