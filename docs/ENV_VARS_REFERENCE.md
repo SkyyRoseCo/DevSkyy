@@ -359,9 +359,9 @@ redis://redis.example.com:6379/0    # Remote server
 | Variable | Purpose | Format | Required | Default |
 |----------|---------|--------|----------|---------|
 | `RATE_LIMIT_IP_PER_MINUTE` | API requests per minute per client IP (enforced on every request) | Integer > 0 | No | `100` |
-| `RATE_LIMIT_IP_PER_HOUR` / `RATE_LIMIT_IP_BURST` | Per-IP hourly value (advisory: only the per-minute window is enforced) / burst (blacklist threshold) | Integer > 0 | No | 60x / 2x per-minute |
-| `RATE_LIMIT_USER_PER_MINUTE` (+ `_PER_HOUR`, `_BURST`) | Per-user default rule (defined but not yet applied by `enforce_rate_limit`, which enforces only the per-IP rule) | Integer > 0 | No | `200` |
-| `RATE_LIMIT_API_KEY_PER_MINUTE` (+ `_PER_HOUR`, `_BURST`) | Per-API-key default rule (defined but not yet applied by `enforce_rate_limit`, which enforces only the per-IP rule) | Integer > 0 | No | `1000` |
+| `RATE_LIMIT_IP_PER_HOUR` / `RATE_LIMIT_IP_BURST` | Per-IP hourly value (advisory: only the per-minute window is enforced) / burst (blacklist threshold: more than 2x burst attempts, accepted plus rejected, in one minute blacklists the IP for 30 min) | Integer > 0 | No | 60x / 2x per-minute |
+| `RATE_LIMIT_USER_PER_MINUTE` (+ `_PER_HOUR`, `_BURST`) | Per-user rule, applied on top of the per-IP rule (per-minute window only) when the request carries a verified Bearer access token | Integer > 0 | No | `200` |
+| `RATE_LIMIT_API_KEY_PER_MINUTE` (+ `_PER_HOUR`, `_BURST`) | Per-API-key rule, applied on top of the per-IP rule (per-minute window only) when the request sends `X-API-Key`; keyed on the key's SHA-256 | Integer > 0 | No | `1000` |
 | `REQUESTS_PER_MINUTE` | MCP server rate limit | Integer | No | `30` |
 | `REQUESTS_PER_HOUR` | MCP server hourly limit | Integer | No | `500` |
 

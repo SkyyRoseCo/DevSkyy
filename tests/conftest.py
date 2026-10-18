@@ -37,6 +37,7 @@ def _reset_rate_limiter():
 
     rate_limiter.sliding_windows.clear()
     rate_limiter.token_buckets.clear()
+    rate_limiter.ip_blacklist.clear()
 
 
 @pytest.fixture(autouse=True)

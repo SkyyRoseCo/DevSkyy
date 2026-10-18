@@ -14,13 +14,18 @@ Comprehensive rate limiting system for DevSkyy Enterprise Platform:
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import logging
 import os
 import time
+from collections import deque
 from enum import StrEnum
 
 from fastapi import HTTPException, Request, status
+from jwt.exceptions import InvalidTokenError
 from pydantic import BaseModel
+
+from security.jwt_oauth2_auth import jwt_manager
 
 # Optional Redis import
 try:
@@ -167,6 +172,31 @@ def default_rule(limit_type: RateLimitType) -> RateLimitRule:
     )
 
 
+def authenticated_user_id(request: Request) -> str | None:
+    """User id for per-user limits, or None when the request carries no verified user.
+
+    Honours ``request.state.user_id`` from an upstream auth layer; otherwise verifies
+    a Bearer access token. Only a verified id is used: an unverified ``sub`` would let
+    anyone spend another user's quota.
+    """
+    user_id = getattr(request.state, "user_id", None)
+    if user_id:
+        return str(user_id)
+    auth_header = request.headers.get("authorization", "")
+    if not auth_header.startswith("Bearer "):
+        return None
+    try:
+        return jwt_manager.validate_token(auth_header[len("Bearer ") :].strip()).sub
+    except InvalidTokenError:
+        return None
+
+
+def api_key_digest(request: Request) -> str | None:
+    """SHA-256 of the X-API-Key header, so raw keys are never held as window keys."""
+    api_key = request.headers.get("X-API-Key", "")
+    return hashlib.sha256(api_key.encode()).hexdigest() if api_key else None
+
+
 class TokenBucket:
     """Token bucket for rate limiting"""
 
@@ -199,10 +229,14 @@ class TokenBucket:
 class SlidingWindowCounter:
     """Sliding window counter for rate limiting"""
 
-    def __init__(self, window_size: int, max_requests: int):
+    def __init__(self, window_size: int, max_requests: int, rejection_cap: int = 0):
         self.window_size = window_size  # seconds
         self.max_requests = max_requests
         self.requests: list[float] = []
+        # Rejected attempts, kept apart from ``requests`` so a client hammering past
+        # its limit stays visible to DDoS blacklisting. Capped: callers only ask
+        # whether recent attempts exceed a threshold, so a flood cannot grow it.
+        self.rejected: deque[float] = deque(maxlen=rejection_cap or max_requests)
 
     def is_allowed(self) -> bool:
         """Check if request is allowed"""
@@ -211,13 +245,20 @@ class SlidingWindowCounter:
         # Remove old requests outside window
         cutoff = now - self.window_size
         self.requests = [req_time for req_time in self.requests if req_time > cutoff]
+        while self.rejected and self.rejected[0] <= cutoff:
+            self.rejected.popleft()
 
         # Check if under limit
         if len(self.requests) < self.max_requests:
             self.requests.append(now)
             return True
 
+        self.rejected.append(now)
         return False
+
+    def attempts(self) -> int:
+        """Accepted plus rejected requests in the current window."""
+        return len(self.requests) + len(self.rejected)
 
     def get_reset_time(self) -> int:
         """Get time until rate limit resets"""
@@ -313,21 +354,20 @@ class AdvancedRateLimiter:
 
     def get_client_identifier(self, request: Request, limit_type: RateLimitType) -> str:
         """Get client identifier for rate limiting"""
+        ip = request.client.host if request.client else "unknown"
         if limit_type == RateLimitType.IP_BASED:
-            return f"ip:{request.client.host if request.client else 'unknown'}"
+            return f"ip:{ip}"
 
         elif limit_type == RateLimitType.USER_BASED:
-            # Extract user ID from JWT token or session
-            user_id = getattr(request.state, "user_id", None)
-            return f"user:{user_id}" if user_id else f"ip:{request.client.host}"
+            user_id = authenticated_user_id(request)
+            return f"user:{user_id}" if user_id else f"ip:{ip}"
 
         elif limit_type == RateLimitType.API_KEY_BASED:
-            api_key = request.headers.get("X-API-Key", "")
-            return f"api_key:{api_key}" if api_key else f"ip:{request.client.host}"
+            digest = api_key_digest(request)
+            return f"api_key:{digest}" if digest else f"ip:{ip}"
 
         elif limit_type == RateLimitType.ENDPOINT_BASED:
             endpoint = request.url.path
-            ip = request.client.host if request.client else "unknown"
             return f"endpoint:{endpoint}:ip:{ip}"
 
         else:  # GLOBAL
@@ -379,9 +419,15 @@ class AdvancedRateLimiter:
         # Use standard rate limit checking
         return self.check_rate_limit(request, rule)
 
-    def check_rate_limit(self, request: Request, rule: RateLimitRule) -> tuple[bool, dict]:
-        """Check if request is within rate limits"""
-        client_id = self.get_client_identifier(request, rule.limit_type)
+    def check_rate_limit(
+        self, request: Request, rule: RateLimitRule, client_id: str | None = None
+    ) -> tuple[bool, dict]:
+        """Check if request is within rate limits.
+
+        ``client_id`` overrides the identifier derived from ``rule.limit_type`` when
+        the caller has already resolved it.
+        """
+        client_id = client_id or self.get_client_identifier(request, rule.limit_type)
 
         # Check IP whitelist/blacklist first
         if rule.limit_type == RateLimitType.IP_BASED:
@@ -398,7 +444,9 @@ class AdvancedRateLimiter:
 
         if window_key not in self.sliding_windows:
             self.sliding_windows[window_key] = SlidingWindowCounter(
-                window_size=rule.window_size_seconds, max_requests=rule.requests_per_minute
+                window_size=rule.window_size_seconds,
+                max_requests=rule.requests_per_minute,
+                rejection_cap=rule.burst_limit * 2 + 1,  # enough to cross the DDoS threshold
             )
 
         window = self.sliding_windows[window_key]
@@ -412,64 +460,80 @@ class AdvancedRateLimiter:
             "retry_after": window.get_reset_time() if not is_allowed else 0,
         }
 
-        # Check for potential DDoS (excessive requests from single IP)
+        # Check for potential DDoS: attempts (accepted + rejected) in the window from
+        # a single IP beyond twice the burst limit.
         if not is_allowed and rule.limit_type == RateLimitType.IP_BASED:
             ip = request.client.host if request.client else ""
-            if len(window.requests) > rule.burst_limit * 2:
+            if window.attempts() > rule.burst_limit * 2:
                 self.blacklist_ip(ip, 30)  # 30 minute blacklist
                 rate_limit_info["blacklisted"] = True
 
         return is_allowed, rate_limit_info
 
     async def enforce_rate_limit(self, request: Request) -> dict:
-        """Enforce rate limits for request"""
+        """Enforce rate limits for request.
+
+        Checks are cumulative. The per-IP rule always applies, so rotating API keys
+        or tokens cannot escape it. A verified user or an X-API-Key header adds that
+        identity's own rule on top, capping one identity across many IPs.
+        """
         # Check endpoint-specific rules first
         endpoint = request.url.path
         if endpoint in self.endpoint_rules:
-            rule = self.endpoint_rules[endpoint]
-            is_allowed, info = self.check_rate_limit(request, rule)
-
-            if not is_allowed:
-                if info.get("blacklisted"):
-                    raise HTTPException(
-                        status_code=status.HTTP_403_FORBIDDEN,
-                        detail="IP address has been temporarily blacklisted due to excessive requests",
-                    )
-                else:
-                    raise HTTPException(
-                        status_code=status.HTTP_429_TOO_MANY_REQUESTS,
-                        detail=f"Rate limit exceeded for endpoint {endpoint}",
-                        headers={
-                            "X-RateLimit-Limit": str(info["limit"]),
-                            "X-RateLimit-Remaining": str(info["remaining"]),
-                            "X-RateLimit-Reset": str(info["reset"]),
-                            "Retry-After": str(info["retry_after"]),
-                        },
-                    )
+            is_allowed, info = self.check_rate_limit(request, self.endpoint_rules[endpoint])
+            _raise_if_limited(
+                is_allowed,
+                info,
+                f"Rate limit exceeded for endpoint {endpoint}",
+                "IP address has been temporarily blacklisted due to excessive requests",
+            )
 
         # Check general IP-based limits
         ip_rule = self.default_rules[RateLimitType.IP_BASED]
         is_allowed, info = self.check_rate_limit(request, ip_rule)
+        _raise_if_limited(is_allowed, info, "Rate limit exceeded")
 
-        if not is_allowed:
-            if info.get("blacklisted"):
-                raise HTTPException(
-                    status_code=status.HTTP_403_FORBIDDEN,
-                    detail="IP address has been temporarily blacklisted",
+        # Identity limits run after the IP check, so an IP flood never reaches token
+        # verification or creates identity windows.
+        identities = (
+            (RateLimitType.USER_BASED, authenticated_user_id(request), "user"),
+            (RateLimitType.API_KEY_BASED, api_key_digest(request), "API key"),
+        )
+        for limit_type, identity, label in identities:
+            if identity:
+                identity_allowed, identity_info = self.check_rate_limit(
+                    request,
+                    self.default_rules[limit_type],
+                    client_id=f"{limit_type.value}:{identity}",
                 )
-            else:
-                raise HTTPException(
-                    status_code=status.HTTP_429_TOO_MANY_REQUESTS,
-                    detail="Rate limit exceeded",
-                    headers={
-                        "X-RateLimit-Limit": str(info["limit"]),
-                        "X-RateLimit-Remaining": str(info["remaining"]),
-                        "X-RateLimit-Reset": str(info["reset"]),
-                        "Retry-After": str(info["retry_after"]),
-                    },
+                _raise_if_limited(
+                    identity_allowed, identity_info, f"Rate limit exceeded for {label}"
                 )
 
         return info
+
+
+def _raise_if_limited(
+    is_allowed: bool,
+    info: dict,
+    detail: str,
+    blacklisted_detail: str = "IP address has been temporarily blacklisted",
+) -> None:
+    """Raise 403 for a blacklisted IP or 429 with rate-limit headers when not allowed."""
+    if is_allowed:
+        return
+    if info.get("blacklisted"):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=blacklisted_detail)
+    raise HTTPException(
+        status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+        detail=detail,
+        headers={
+            "X-RateLimit-Limit": str(info["limit"]),
+            "X-RateLimit-Remaining": str(info["remaining"]),
+            "X-RateLimit-Reset": str(info["reset"]),
+            "Retry-After": str(info["retry_after"]),
+        },
+    )
 
 
 # Global instance
