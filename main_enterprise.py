@@ -321,6 +321,11 @@ app.include_router(visual_router, prefix="/api/v1")
 app.include_router(agents_router)
 app.include_router(admin_dashboard_router, prefix="/api/v1")
 
+# Durable, explicitly configured workstation execution; unavailable profiles fail closed.
+from api.v1.god_mode import router as god_mode_router
+
+app.include_router(god_mode_router, prefix="/api/v1")
+
 # WordPress & e-commerce
 from api.ar_sessions import ar_sessions_router
 from api.elementor_3d import elementor_3d_router

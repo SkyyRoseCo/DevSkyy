@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "node scripts/sync-scene-authority.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/sync-scene-authority.mjs",
+    "prebuild": "node scripts/sync-scene-authority.mjs && node scripts/sync-god-mode.mjs --check-build",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -25,7 +25,9 @@
     "vercel:inspect": "vercel inspect",
     "vercel:project": "vercel project ls",
     "sync:scene-authority": "node scripts/sync-scene-authority.mjs",
-    "check:scene-authority": "node scripts/sync-scene-authority.mjs --check"
+    "check:scene-authority": "node scripts/sync-scene-authority.mjs --check",
+    "sync:god-mode": "node scripts/sync-god-mode.mjs",
+    "check:god-mode": "node scripts/sync-god-mode.mjs --check"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.46",

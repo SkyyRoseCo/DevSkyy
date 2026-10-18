@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-18T15:51:53.251Z",
+  "generation": {
+    "command": "npm run sync:god-mode",
+    "sourceRevision": null,
+    "sourceHashes": {
+      "godModeManifest": "4849a931f60d599949c78870c410caac7b493a028f26b9cf313ede882d2f3597",
+      "fashionManifest": "861b03ce986ac299d599ca868fa91dcde3dca84d89174b5727b96949a2993a9a",
+      "migration": "364496d2902e4c28f8df6c233af8a4e803fc7e6256f35f0a0673c86ef20b6b6f",
+      "toolRegistry": "34452453cd0883395c82f2d155352ae9e144c2edf719182f85d22e22737347a1"
+    }
+  },
+  "orchestrator": {
+    "name": "GOD MODE",
+    "version": "2.4.0",
+    "status": "SOURCE_SNAPSHOT",
+    "skillCount": 13,
+    "mcpToolCount": 14,
+    "cliVersion": "1.1.0"
+  },
+  "team": {
+    "name": "Fashion Theme Team",
+    "version": "0.5.0+codex.20260917170335",
+    "controller": "GOD MODE",
+    "skillCount": 23
+  },
+  "skills": [
+    {
+      "id": "skyyrose-brand-dna",
+      "name": "skyyrose-brand-dna",
+      "description": "Resolve SkyyRose brand and collection decisions against current canon, founder voice and exact products; use before brand-facing copy or visuals, not as a replacement product registry.",
+      "category": "SkyyRose",
+      "source": "Fashion Theme Team / skills/skyyrose-brand-dna/SKILL.md",
+      "sha256": "c087d9d4235f0c9de2a20fa1dff5f1d4329464d1e75f328ff8c1eb143c76c3a1",
+      "status": "CANONICAL_TREE_COMPATIBILITY_SYMLINKS"
+    },
+    {
+      "id": "skyyrose-command-center",
+      "name": "skyyrose-command-center",
+      "description": "Turn a SkyyRose request into bounded domain assignments, outputs and review gates using installed skills; use for cross-channel or multi-component brand work.",
+      "category": "SkyyRose",
+      "source": "Fashion Theme Team / skills/skyyrose-command-center/SKILL.md",
+      "sha256": "b67bafcd3be5cb7ce004c038948c4462aaac2c0b28f1ad67b6e91300ee4f36ea",
+      "status": "CANONICAL_TREE_COMPATIBILITY_SYMLINKS"
+    },
+    {
+      "id": "skyyrose-3d-web-os",
+      "name": "skyyrose-3d-web-os",
+      "description": "Build or revise SkyyRose interactive spatial experiences with target-specific controllers, product fidelity, fallbacks and lifecycle verification; use for scene and 3D web work.",
+      "category": "SkyyRose",
+      "source": "Fashion Theme Team / skills/skyyrose-3d-web-os/SKILL.md",
+      "sha256": "63d38bc1442379843307f3b3038eeb87ffbf3abf70aa0eb6f76e355d6e3a1b87",
+      "status": "CANONICAL_TREE_COMPATIBILITY_SYMLINKS"
+    },
+    {
+      "id": "skyyrose-film-directing",
+      "name": "skyyrose-film-directing",
+      "description": "Direct SkyyRose collection films and combined commercials with full assortment coverage, exact source artwork, playable performance and independent temporal review.",
+      "category": "SkyyRose",
+      "source": "Fashion Theme Team / skills/skyyrose-film-directing/SKILL.md",
+      "sha256": "ee798f3ce40aa98e4f42a8b925f64836d457f84b5d086c0663e7e1762a3f1a58",
+      "status": "CANONICAL_TREE_COMPATIBILITY_SYMLINKS"
+    },
+    {
+      "id": "skyyrose-wp-platform",
+      "name": "skyyrose-wp-platform",
+      "description": "Implement SkyyRose WordPress changes against the selected original or V2 theme and exact commerce sources; use for templates, assets, integrations and platform QA.",
+      "category": "SkyyRose",
+      "source": "Fashion Theme Team / skills/skyyrose-wp-platform/SKILL.md",
+      "sha256": "31bda28cabc2bf021f81f914af3104caeb3b5a6f5482ea07f8a473ec831420d1",
+      "status": "CANONICAL_TREE_COMPATIBILITY_SYMLINKS"
+    },
+    {
+      "id": "skyyrose-campaign-ooda",
+      "name": "skyyrose-campaign-ooda",
+      "description": "Coordinate SkyyRose campaign components with current decisions, source-bound coverage, separate verifiers and auditable recovery through the project operational overlay.",
+      "category": "SkyyRose",
+      "source": "Fashion Theme Team / skills/skyyrose-campaign-ooda/SKILL.md",
+      "sha256": "62780b897324cc755df541d70e379db7ae753e24670f7d6ce612f792d5cf53d6",
+      "status": "CANONICAL_ROUTER_PROJECT_BOUND_OVERLAY"
+    },
+    {
+      "id": "artifact-template-skyyrose-house-of-roses-commerce",
+      "name": "artifact-template-skyyrose-house-of-roses-commerce",
+      "description": "Adapt the explicitly selected House of Roses reference layout into a source-bound SkyyRose commerce candidate; use only when selected, not as universal collection canon.",
+      "category": "SkyyRose",
+      "source": "Fashion Theme Team / skills/artifact-template-skyyrose-house-of-roses-commerce/SKILL.md",
+      "sha256": "3aab54171a4759355577c8896c7413389fe5b4b5ed9030b31d524494ebca3fb7",
+      "status": "CANONICAL_TREE_COMPATIBILITY_SYMLINKS"
+    },
+    {
+      "id": "wc-pdp-correctness",
+      "name": "wc-pdp-correctness",
+      "description": "Verify SkyyRose product selection, purchasability and add-to-cart state against current product truth and the selected classic or block-based cart surface.",
+      "category": "SkyyRose",
+      "source": "Fashion Theme Team / skills/wc-pdp-correctness/SKILL.md",
+      "sha256": "58be742aace1bddde1555240310b0cc40bc3f59d344f59a50d3a1a805a5fcbfa",
+      "status": "CANONICAL_TREE_COMPATIBILITY_SYMLINKS"
+    }
+  ],
+  "tools": [
+    {
+      "id": "repository_snapshot",
+      "name": "repository_snapshot",
+      "description": "Verify DevSkyy origin, HEAD and dirty state",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "pull_request",
+      "name": "pull_request",
+      "description": "Authenticated DevSkyy PR and check status",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "ci_run",
+      "name": "ci_run",
+      "description": "Authenticated CI run SHA, jobs and conclusion",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "completion_check",
+      "name": "completion_check",
+      "description": "Validate evidence consistency; does not authenticate claims",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "memory_put",
+      "name": "memory_put",
+      "description": "Persist sourced project memory JSON; never store secrets",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "memory_get",
+      "name": "memory_get",
+      "description": "Retrieve project memory; source revalidation required",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "capability_status",
+      "name": "capability_status",
+      "description": "Report selected tool Python, SDK versions and browser prerequisites",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "browser_inspect",
+      "name": "browser_inspect",
+      "description": "Inspect an approved page in desktop/mobile Chromium; save screenshot and evidence without form submission",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "registry_search",
+      "name": "registry_search",
+      "description": "Search verified local executors and host-only tool references",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "skill_inspect",
+      "name": "skill_inspect",
+      "description": "Read one exact bundled skill with source hash",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "knowledge_lookup",
+      "name": "knowledge_lookup",
+      "description": "Search bundled fashion, brand, finance and business references",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "workflow_contract_check",
+      "name": "workflow_contract_check",
+      "description": "Check local source hashes and stage DAG consistency; not release approval",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "unit_economics",
+      "name": "unit_economics",
+      "description": "Decimal unit contribution, margin, markup and break-even arithmetic from JSON",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "cashflow_forecast",
+      "name": "cashflow_forecast",
+      "description": "Decimal period cash balances from JSON; liabilities disclosed separately",
+      "kind": "LOCAL",
+      "scope": "Local workstation tool",
+      "status": "IMPLEMENTED_LOCAL; see test receipt for executed scope"
+    },
+    {
+      "id": "host.runway",
+      "name": "host.runway",
+      "description": "Video/image generation and editing in the connected host",
+      "kind": "HOST_ONLY",
+      "scope": "Host connection required",
+      "status": "NOT_QUALIFIED"
+    },
+    {
+      "id": "host.higgsfield",
+      "name": "host.higgsfield",
+      "description": "Media generation, cast references and creative workflows in the host",
+      "kind": "HOST_ONLY",
+      "scope": "Host connection required",
+      "status": "NOT_QUALIFIED"
+    },
+    {
+      "id": "host.descript",
+      "name": "host.descript",
+      "description": "Video editing and timeline export in the connected host",
+      "kind": "HOST_ONLY",
+      "scope": "Host connection required",
+      "status": "NOT_QUALIFIED"
+    },
+    {
+      "id": "host.comfy",
+      "name": "host.comfy",
+      "description": "Local or hosted graph execution requires explicit runtime qualification",
+      "kind": "HOST_ONLY",
+      "scope": "Host connection required",
+      "status": "NOT_QUALIFIED"
+    }
+  ],
+  "workflow": [
+    {
+      "id": "intake",
+      "label": "Mission and owner direction",
+      "owner": "GOD MODE",
+      "gate": "Scope and permissions"
+    },
+    {
+      "id": "route",
+      "label": "Assign the Fashion Theme Team",
+      "owner": "GOD MODE",
+      "gate": "Current project and canonical package"
+    },
+    {
+      "id": "source",
+      "label": "Resolve canon and exact products",
+      "owner": "Fashion Theme Team",
+      "gate": "SOT and get_product"
+    },
+    {
+      "id": "specialists",
+      "label": "Apply migrated specialist skills",
+      "owner": "Fashion Theme Team",
+      "gate": "Workflow before production"
+    },
+    {
+      "id": "review",
+      "label": "Independent review and evidence",
+      "owner": "Independent reviewer",
+      "gate": "Product, scene and technical checks"
+    },
+    {
+      "id": "acceptance",
+      "label": "Owner acceptance and release",
+      "owner": "Corey",
+      "gate": "Separate production and publication authority"
+    }
+  ],
+  "synchronization": [
+    {
+      "target": "GOD MODE · Codex",
+      "status": "DRIFT_OR_MISSING",
+      "checkedAt": null,
+      "detail": "55 selected skill/tool/manifest source files compared with the installed package; conversation reload is separate."
+    },
+    {
+      "target": "Fashion Theme Team · project",
+      "status": "MATCH",
+      "checkedAt": null,
+      "detail": "442 selected skill/manifest source files compared with the project distribution."
+    },
+    {
+      "target": "Fashion Theme Team · Codex",
+      "status": "MATCH",
+      "checkedAt": null,
+      "detail": "442 selected skill/manifest source files compared with the installed distribution."
+    }
+  ],
+  "limitations": [
+    "Live runtime connection and allowed actions are established only by the authenticated execution panel above; this catalog is a source snapshot.",
+    "The workstation runtime provides source-audit, campaign-readiness and fashion-verification. LLM specialist execution and creative-provider dispatch remain unqualified.",
+    "No generation, provider spending, publishing or deployment is authorized by this source snapshot.",
+    "Current film production holds and exact-artwork review requirements remain in force.",
+    "The campaign OODA operational overlay remains project-bound; its canonical entrypoint belongs to Fashion Theme Team.",
+    "Synchronization is a build-time file comparison, not proof of a running worker or refreshed host conversation."
+  ]
+}
