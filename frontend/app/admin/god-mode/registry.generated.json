@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-18T15:51:53.251Z",
+  "generatedAt": "2026-10-18T15:55:52.802Z",
   "generation": {
     "command": "npm run sync:god-mode",
     "sourceRevision": null,
     "sourceHashes": {
-      "godModeManifest": "4849a931f60d599949c78870c410caac7b493a028f26b9cf313ede882d2f3597",
+      "godModeManifest": "95243b44263b35c969918791a1d2ccd19b0075a394b19ccd96900279908bf5f1",
       "fashionManifest": "861b03ce986ac299d599ca868fa91dcde3dca84d89174b5727b96949a2993a9a",
       "migration": "364496d2902e4c28f8df6c233af8a4e803fc7e6256f35f0a0673c86ef20b6b6f",
-      "toolRegistry": "34452453cd0883395c82f2d155352ae9e144c2edf719182f85d22e22737347a1"
+      "toolRegistry": "007f2c4c65513a6e5f63aa833fc672f558fc15aefe57daf7ba508caf8f4c9d68"
     }
   },
   "orchestrator": {
     "name": "GOD MODE",
-    "version": "2.4.0",
+    "version": "2.4.1",
     "status": "SOURCE_SNAPSHOT",
     "skillCount": 13,
     "mcpToolCount": 14,
@@ -286,7 +286,7 @@
   "synchronization": [
     {
       "target": "GOD MODE · Codex",
-      "status": "DRIFT_OR_MISSING",
+      "status": "MATCH",
       "checkedAt": null,
       "detail": "55 selected skill/tool/manifest source files compared with the installed package; conversation reload is separate."
     },

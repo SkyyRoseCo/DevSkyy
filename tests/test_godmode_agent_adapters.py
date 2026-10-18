@@ -5,11 +5,11 @@ from __future__ import annotations
 import asyncio
 import json
 import os
-from pathlib import Path
 import subprocess
 import sys
 import threading
 import time
+from pathlib import Path
 
 import pytest
 
@@ -278,3 +278,174 @@ def test_auth_json_format_does_not_change_identity(monkeypatch, tmp_path):
     auth.write_text('{ "tokens": {}, "auth_mode": "chatgpt" }')
     assert a.adapter_contract() == before
     assert before["timeout_seconds"] == 100
+
+
+def test_supervisor_reports_safe_local_failure_without_network():
+    raw = json.dumps(
+        {
+            "stage": "claude-worker",
+            "packet": {},
+            "contract": {"claude_auth_sha256": "intentionally-wrong"},
+        }
+    ).encode()
+    with pytest.raises(a.AdapterError, match="claude_auth_changed_supervisor_starting"):
+        a._supervised(raw, lambda: False, 5)
+
+
+@pytest.mark.parametrize(
+    "exc,code",
+    [
+        (TypeError("SECRET_VALUE"), "adapter_type_error"),
+        (RuntimeError("unknown option --SECRET_VALUE"), "cli_unsupported_option"),
+        (a.AdapterError("SECRET_VALUE"), "provider_error"),
+    ],
+)
+def test_failure_diagnostics_do_not_echo_private_data(exc, code):
+    result = a._safe_failure(exc)
+    assert result["error_code"] == code
+    assert "SECRET_VALUE" not in json.dumps(result)
+    assert result["usage"] == {"known": False, "retry_safe": False}
+
+
+def test_actual_installed_sdk_accepts_streaming_with_deny_callback(monkeypatch, tmp_path):
+    import claude_agent_sdk
+
+    original_query = claude_agent_sdk.query
+
+    class ReachedTransport(Exception):
+        pass
+
+    class OfflineTransport:
+        async def connect(self):
+            raise ReachedTransport()
+
+    async def offline_query(*, prompt, options):
+        async for message in original_query(
+            prompt=prompt, options=options, transport=OfflineTransport()
+        ):
+            yield message
+
+    monkeypatch.setattr(claude_agent_sdk, "query", offline_query)
+    payload = {
+        "stage": "claude-worker",
+        "packet": {},
+        "worker": None,
+        "contract": {"claude_model": "claude-opus-5-5"},
+    }
+    with pytest.raises(ReachedTransport):
+        asyncio.run(a._claude(payload, str(tmp_path)))
+
+
+def test_streaming_prompt_is_one_exact_source_message():
+    payload = {
+        "stage": "claude-worker",
+        "packet": {"products": [{"sku": "BR-008"}]},
+        "worker": None,
+    }
+
+    async def collect():
+        return [message async for message in a._claude_prompt(payload)]
+
+    messages = asyncio.run(collect())
+    assert len(messages) == 1
+    assert messages[0]["message"]["content"] == a._prompt(payload)
+    assert messages[0]["message"]["role"] == "user"
+    assert messages[0]["session_id"] == ""
+
+
+def test_claude_reasoning_and_output_are_bounded(tmp_path):
+    options = a.claude_options("claude-opus-5-5", str(tmp_path))
+    assert options["thinking"] == {"type": "enabled", "budget_tokens": 1024}
+    assert options["effort"] == "low"
+    assert options["env"] == {"CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096"}
+
+
+def test_lifecycle_evidence_uses_only_fixed_phase_enums():
+    data = b'{"phase":"claude_initialized"}\n{"phase":"SECRET_PROVIDER_TEXT"}\ninvalid\n'
+    assert a._last_phase(data, "supervisor_starting") == "claude_initialized"
+
+
+def test_timeout_preserves_safe_last_lifecycle_phase(monkeypatch):
+    original = subprocess.Popen
+
+    def sleeping(*args, **kwargs):
+        args = (
+            [
+                sys.executable,
+                "-c",
+                "import time,json;print(json.dumps(dict(phase='claude_initialized')),flush=True);time.sleep(30)",
+            ],
+        )
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(a.subprocess, "Popen", sleeping)
+    with pytest.raises(a.AdapterError, match="timeout_claude_initialized"):
+        a._supervised(b"{}", lambda: False, 0.25)
+
+
+@pytest.mark.parametrize("mode", ["valid", "codefence", "malformed"])
+def test_claude_success_plaintext_is_strictly_locally_validated(monkeypatch, tmp_path, mode):
+    import claude_agent_sdk
+
+    packet = {"products": [{"sku": "BR-008"}]}
+    artifact = worker(packet)
+    text = json.dumps(artifact)
+    if mode == "codefence":
+        text = "```json\n" + text + "\n```"
+    elif mode == "malformed":
+        text = "{"
+
+    async def offline_query(*, prompt, options):
+        assert options.output_format is None
+        assert options.tools == [] and options.disallowed_tools == ["*"]
+        messages = [message async for message in prompt]
+        assert "ONLY one JSON object" in messages[0]["message"]["content"]
+        yield claude_agent_sdk.ResultMessage(
+            subtype="success",
+            duration_ms=1,
+            duration_api_ms=1,
+            is_error=False,
+            num_turns=1,
+            session_id="fixture",
+            total_cost_usd=0,
+            result=text,
+        )
+
+    monkeypatch.setattr(claude_agent_sdk, "query", offline_query)
+    payload = {
+        "stage": "claude-worker",
+        "packet": packet,
+        "worker": None,
+        "contract": {"claude_model": "claude-opus-5-5"},
+    }
+    if mode == "valid":
+        result = asyncio.run(a._claude(payload, str(tmp_path)))
+        assert result["artifact"] == artifact
+    else:
+        with pytest.raises(a.AdapterError, match="claude_invalid_json_text"):
+            asyncio.run(a._claude(payload, str(tmp_path)))
+
+
+def test_nested_exception_groups_retain_only_whitelisted_causes(monkeypatch):
+    class MessageParseError(Exception):
+        pass
+
+    group = ExceptionGroup(
+        "PRIVATE_OUTER",
+        [
+            RuntimeError("PRIVATE_A"),
+            ExceptionGroup("PRIVATE_INNER", [MessageParseError("PRIVATE_B")]),
+        ],
+    )
+    monkeypatch.setattr(a, "_CURRENT_PHASE", "claude_initialized")
+    result = a._safe_failure(group)
+    assert result["error_code"] == "sdk_message_parse_failed"
+    assert result["error_categories"] == ["provider_error", "sdk_message_parse_failed"]
+    assert result["phase"] == "claude_initialized"
+    assert "PRIVATE" not in json.dumps(result)
+    assert result["usage"] == {"known": False, "retry_safe": False}
+
+
+def test_every_typed_failure_retains_fixed_last_phase(monkeypatch):
+    monkeypatch.setattr(a, "_CURRENT_PHASE", "claude_response_received")
+    assert a._safe_failure(TypeError("PRIVATE"))["phase"] == "claude_response_received"

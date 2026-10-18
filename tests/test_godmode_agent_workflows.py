@@ -7,9 +7,9 @@ from pathlib import Path
 
 import pytest
 
-from tests.test_godmode_runtime import runtime  # noqa: F401
-from skyyrose.godmode_runtime.agent_packets import verify_coverage
 from skyyrose.godmode_runtime import RuntimeConflict
+from skyyrose.godmode_runtime.agent_packets import verify_coverage
+from tests.test_godmode_runtime import runtime  # noqa: F401
 
 
 @pytest.fixture
@@ -131,8 +131,8 @@ def test_review_receipt_cannot_grant_human_acceptance(configured, monkeypatch):
 
 
 def test_actual_canonical_packets_cover_every_preorder(tmp_path):
-    from skyyrose.godmode_runtime.service import Runtime
     from skyyrose.godmode_runtime.agent_packets import build_packet
+    from skyyrose.godmode_runtime.service import Runtime
 
     root = Path(__file__).resolve().parents[1]
     team = Path("/Users/theceo/plugins/fashion-theme-team")
@@ -160,3 +160,50 @@ def test_reservation_limit_retained_after_failed_run(configured, monkeypatch):
     r.approve(run["id"], run["plan_hash"], "owner")
     with pytest.raises(RuntimeConflict, match="allowance exhausted"):
         r.execute(run["id"], run["plan_hash"], "operator")
+
+
+def test_pretransport_attestation_is_one_replacement_and_timeout_stays_reserved(
+    configured, monkeypatch
+):
+    r, _ = configured
+    monkeypatch.setattr(
+        r,
+        "_agent_step",
+        lambda row, stage: {
+            "id": stage,
+            "status": "FAILED",
+            "error_code": "timeout",
+            "usage": "UNKNOWN",
+        },
+    )
+    ids = []
+    for index in range(2):
+        run = r.create("skyyrose", "fashion-skill-analysis", f"reconcile-{index}", "operator")
+        r.approve(run["id"], run["plan_hash"], "owner")
+        r.execute(run["id"], run["plan_hash"], "operator")
+        ids.append(run["id"])
+    # Trusted offline-harness attestation; no browser/API method can create it.
+    for _ in range(2):
+        with r.transaction() as conn:
+            if not conn.execute(
+                "SELECT 1 FROM events WHERE run_id=? AND kind='AGENT_NO_DISPATCH_CONFIRMED'",
+                (ids[0],),
+            ).fetchone():
+                r.event(
+                    conn,
+                    ids[0],
+                    "AGENT_NO_DISPATCH_CONFIRMED",
+                    "trusted-local-proof",
+                    {"branch": "installed_sdk_pretransport_validation"},
+                )
+    replacement = r.create("skyyrose", "fashion-skill-analysis", "replacement-one", "operator")
+    r.approve(replacement["id"], replacement["plan_hash"], "owner")
+    r.execute(replacement["id"], replacement["plan_hash"], "operator")
+    extra = r.create("skyyrose", "fashion-skill-analysis", "replacement-two", "operator")
+    r.approve(extra["id"], extra["plan_hash"], "owner")
+    with pytest.raises(RuntimeConflict, match="allowance exhausted"):
+        r.execute(extra["id"], extra["plan_hash"], "operator")
+    events = r.get(ids[0])["events"]
+    assert sum(e["kind"] == "AGENT_ALLOWANCE_RESERVED" for e in events) == 1
+    assert sum(e["kind"] == "AGENT_NO_DISPATCH_CONFIRMED" for e in events) == 1
+    assert not any(e["kind"] == "AGENT_NO_DISPATCH_CONFIRMED" for e in r.get(ids[1])["events"])

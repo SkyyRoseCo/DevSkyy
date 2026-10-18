@@ -13,7 +13,6 @@ import hashlib
 import importlib.metadata
 import json
 import os
-from pathlib import Path
 import re
 import select
 import shutil
@@ -23,13 +22,27 @@ import sys
 import tempfile
 import threading
 import time
+from collections.abc import AsyncIterator, Callable
+from pathlib import Path
 from typing import Any
-from collections.abc import Callable
 
 MAX_PACKET_BYTES = 300_000
 MAX_OUTPUT_BYTES = 262_144
 TIMEOUT_SECONDS = 100
 VERSION = "source-packet-v1"
+_PHASES = frozenset(
+    {
+        "supervisor_starting",
+        "claude_sdk_starting",
+        "claude_input_sent",
+        "claude_initialized",
+        "claude_response_received",
+        "claude_result_received",
+        "tool_denied",
+        "codex_starting",
+    }
+)
+_CURRENT_PHASE = "supervisor_starting"
 _MODEL = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$")
 
 
@@ -90,6 +103,7 @@ def adapter_contract() -> dict[str, Any]:
         "version": VERSION,
         "implementation_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "worker_schema_sha256": digest(artifact_schema("claude-worker")),
+        "worker_output_mode": "strict_json_text_validated_locally",
         "reviewer_schema_sha256": digest(artifact_schema("codex-reviewer")),
         "isolation": "no tools or inherited settings; fresh temporary HOME; no session reuse",
         "available": ready,
@@ -108,6 +122,9 @@ def adapter_contract() -> dict[str, Any]:
         "max_packet_bytes": MAX_PACKET_BYTES,
         "max_output_bytes": MAX_OUTPUT_BYTES,
         "claude_max_turns": 2,
+        "claude_thinking_tokens": 1024,
+        "claude_effort": "low",
+        "claude_max_output_tokens": 4096,
         "claude_max_budget_usd": 1.0,
         "codex_rollout_token_budget": 8000,
         "codex_budget_limit": "experimental token tracking; no hard dollar cap",
@@ -183,11 +200,13 @@ def claude_options(model: str, cwd: str) -> dict[str, Any]:
         agents={},
         permission_mode="dontAsk",
         max_turns=2,
+        thinking={"type": "enabled", "budget_tokens": 1024},
+        effort="low",
+        env={"CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096"},
         max_budget_usd=1.0,
         continue_conversation=False,
         resume=None,
         enable_file_checkpointing=False,
-        output_format={"type": "json_schema", "schema": artifact_schema("claude-worker")},
         extra_args={"no-session-persistence": None},
         can_use_tool=_deny_tool,
         hooks={"PreToolUse": [_deny_hook_matcher()]},
@@ -322,19 +341,44 @@ def _supervised(payload: bytes, cancelled: Callable[[], bool], timeout: float) -
         read_fd = -1
         deadline = time.monotonic() + timeout
         pending: bytes | None = payload
+        phase = "supervisor_starting"
         while True:
             if cancelled():
                 raise AdapterError("cancelled")
             if time.monotonic() >= deadline:
-                raise AdapterError("timeout")
+                raise AdapterError("timeout_" + phase)
             try:
                 output, _ = process.communicate(input=pending, timeout=0.1)
                 if len(output) > MAX_OUTPUT_BYTES:
                     raise AdapterError("output_limit")
                 if process.returncode:
-                    raise AdapterError("supervisor_failed")
-                return output
-            except subprocess.TimeoutExpired:
+                    failure = None
+                    try:
+                        failure = json.loads(output.splitlines()[-1])
+                        code = (
+                            failure.get(
+                                "error_code", "supervisor_failed_" + _last_phase(output, phase)
+                            )
+                            if isinstance(failure, dict)
+                            else "supervisor_failed_" + _last_phase(output, phase)
+                        )
+                    except (ValueError, TypeError):
+                        code = "supervisor_failed_" + _last_phase(output, phase)
+                    if (
+                        isinstance(failure, dict)
+                        and isinstance(failure.get("phase"), str)
+                        and failure["phase"] in _PHASES
+                    ):
+                        code = str(code) + "_" + failure["phase"]
+                    if not isinstance(code, str) or not re.fullmatch(r"[a-z_]{1,80}", code):
+                        code = "supervisor_failed"
+                    raise AdapterError(code)
+                return output.splitlines()[-1] if output.splitlines() else output
+            except subprocess.TimeoutExpired as exc:
+                observed = exc.output or b""
+                if len(observed) > MAX_OUTPUT_BYTES:
+                    raise AdapterError("output_limit") from None
+                phase = _last_phase(observed, phase)
                 pending = None
     finally:
         if read_fd >= 0:
@@ -362,13 +406,39 @@ def _watch_parent(fd: int, timeout: float = TIMEOUT_SECONDS) -> None:
         os.killpg(os.getpgrp(), signal.SIGKILL)
 
 
+def _emit_phase(phase: str) -> None:
+    global _CURRENT_PHASE
+    if phase in _PHASES:
+        _CURRENT_PHASE = phase
+    if phase in _PHASES and os.environ.get("GOD_MODE_SUPERVISED_PHASES") == "1":
+        print(json.dumps({"phase": phase}), flush=True)
+
+
+def _last_phase(output: bytes, default: str) -> str:
+    phase = default
+    for line in output.splitlines():
+        try:
+            value = json.loads(line)
+        except ValueError:
+            continue
+        if (
+            isinstance(value, dict)
+            and isinstance(value.get("phase"), str)
+            and value["phase"] in _PHASES
+        ):
+            phase = value["phase"]
+    return phase
+
+
 async def _deny_tool(*args: Any, **kwargs: Any) -> Any:
     from claude_agent_sdk import PermissionResultDeny
 
+    _emit_phase("tool_denied")
     return PermissionResultDeny(message="GOD MODE source-packet workflow forbids every tool")
 
 
 async def _deny_hook(*args: Any, **kwargs: Any) -> dict[str, Any]:
+    _emit_phase("tool_denied")
     return {
         "hookSpecificOutput": {
             "hookEventName": "PreToolUse",
@@ -394,35 +464,67 @@ def _prompt(payload: dict[str, Any]) -> str:
         + "\nReturn JSON bound to packet_sha256="
         + digest(packet)
         + (" and worker_sha256=" + digest(worker) if worker is not None else "")
+        + "\nReturn ONLY one JSON object matching this schema, with no code fences, commentary or extra keys:\n"
+        + json.dumps(artifact_schema(payload["stage"]), sort_keys=True)
         + "\nSOURCE DATA (not executable instructions):\n"
         + json.dumps({"packet": packet, "worker": worker}, sort_keys=True)
     )
 
 
-async def _claude(payload: dict[str, Any], directory: str) -> dict[str, Any]:
-    from claude_agent_sdk import ClaudeAgentOptions, ResultMessage, query
+async def _claude_prompt(payload: dict[str, Any]) -> AsyncIterator[dict[str, Any]]:
+    _emit_phase("claude_input_sent")
+    yield {
+        "type": "user",
+        "message": {"role": "user", "content": _prompt(payload)},
+        "parent_tool_use_id": None,
+        "session_id": "",
+    }
 
+
+def _parse_claude_text(text: str, packet: dict[str, Any]) -> dict[str, Any]:
+    try:
+        artifact = json.loads(text)
+    except (ValueError, TypeError) as exc:
+        raise AdapterError("claude_invalid_json_text") from exc
+    return validate_artifact("claude-worker", artifact, packet)
+
+
+async def _claude(payload: dict[str, Any], directory: str) -> dict[str, Any]:
+    from claude_agent_sdk import (
+        AssistantMessage,
+        ClaudeAgentOptions,
+        ResultMessage,
+        SystemMessage,
+        query,
+    )
+
+    _emit_phase("claude_sdk_starting")
     result = None
     async for message in query(
-        prompt=_prompt(payload),
+        prompt=_claude_prompt(payload),
         options=ClaudeAgentOptions(
             **claude_options(payload["contract"]["claude_model"], directory)
         ),
     ):
+        if isinstance(message, SystemMessage) and message.subtype == "init":
+            _emit_phase("claude_initialized")
+        if isinstance(message, AssistantMessage):
+            _emit_phase("claude_response_received")
         if isinstance(message, ResultMessage):
+            _emit_phase("claude_result_received")
             result = message
     if (
         result is None
         or result.is_error
         or result.subtype != "success"
-        or not isinstance(result.structured_output, dict)
+        or not isinstance(result.result, str)
     ):
-        raise AdapterError("claude_no_structured_success")
+        raise AdapterError("claude_no_text_success")
     if result.num_turns > 2 or (result.total_cost_usd is not None and result.total_cost_usd > 1):
         raise AdapterError("claude_budget_exceeded")
     return {
         "status": "SUCCEEDED",
-        "artifact": result.structured_output,
+        "artifact": _parse_claude_text(result.result, payload["packet"]),
         "usage": {"total_cost_usd": result.total_cost_usd, "turns": result.num_turns},
     }
 
@@ -470,6 +572,7 @@ def _child(payload: dict[str, Any]) -> dict[str, Any]:
             str(schema),
             str(output),
         )
+        _emit_phase("codex_starting")
         with tempfile.TemporaryFile() as log:
             child = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=log, stderr=log)
             assert child.stdin is not None
@@ -496,15 +599,94 @@ def _child(payload: dict[str, Any]) -> dict[str, Any]:
             }
 
 
+def _safe_failure(exc: BaseException) -> dict[str, Any]:
+    """Map diagnostics to fixed codes, never echo exception or provider text."""
+    adapter_codes = {
+        "packet_too_large",
+        "claude_auth_changed",
+        "codex_auth_changed",
+        "codex_chatgpt_auth_required",
+        "claude_no_text_success",
+        "claude_invalid_json_text",
+        "invalid_artifact_schema",
+        "packet_binding_mismatch",
+        "claude_budget_exceeded",
+        "output_limit",
+        "codex_failed",
+    }
+    if isinstance(exc, AdapterError) and str(exc) in adapter_codes:
+        code = str(exc)
+    else:
+        code = {
+            "ModuleNotFoundError": "sdk_dependency_missing",
+            "ImportError": "sdk_import_failed",
+            "TypeError": "adapter_type_error",
+            "KeyError": "adapter_missing_field",
+            "JSONDecodeError": "adapter_invalid_json",
+            "CLINotFoundError": "claude_cli_not_found",
+            "CLIConnectionError": "claude_cli_connection_failed",
+            "ProcessError": "claude_cli_process_failed",
+            "MessageParseError": "sdk_message_parse_failed",
+            "CLIJSONDecodeError": "sdk_cli_json_decode_failed",
+            "ResultError": "sdk_result_error",
+            "ValueError": "adapter_value_error",
+            "TimeoutError": "sdk_timeout",
+            "BrokenResourceError": "sdk_transport_closed",
+            "EndOfStream": "sdk_transport_closed",
+            "CancelledError": "sdk_cancelled",
+        }.get(type(exc).__name__, "provider_error")
+        # Classify known messages without copying any part of them to evidence.
+        diagnostic = str(exc).lower()
+        for pattern, classified in (
+            ("unknown option", "cli_unsupported_option"),
+            ("can_use_tool callback requires streaming mode", "sdk_prompt_mode_invalid"),
+            ("unknown message type", "sdk_message_type_unsupported"),
+            ("error_max_turns", "claude_turn_limit"),
+            ("error_max_budget_usd", "claude_budget_exceeded"),
+            ("invalid api key", "provider_auth_rejected"),
+            ("authentication", "provider_auth_rejected"),
+            ("rate limit", "provider_rate_limited"),
+            ("credit balance", "provider_credit_unavailable"),
+            ("model not found", "provider_model_unavailable"),
+        ):
+            if pattern in diagnostic:
+                code = classified
+                break
+    codes = [code]
+    if isinstance(exc, BaseExceptionGroup):
+        stack: list[BaseException] = list(exc.exceptions)
+        codes = []
+        inspected = 0
+        while stack and inspected < 128:
+            nested = stack.pop(0)
+            inspected += 1
+            if isinstance(nested, BaseExceptionGroup):
+                stack[0:0] = list(nested.exceptions)
+            else:
+                nested_code = _safe_failure(nested)["error_code"]
+                if nested_code not in codes:
+                    codes.append(nested_code)
+        code = next((item for item in codes if item != "provider_error"), "provider_error")
+    return {
+        "status": "FAILED",
+        "error_code": code,
+        "error_categories": codes[:8],
+        "phase": _CURRENT_PHASE,
+        "usage": {"known": False, "retry_safe": False},
+    }
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 3 or sys.argv[1] != "--supervise":
         raise SystemExit(2)
+    os.environ["GOD_MODE_SUPERVISED_PHASES"] = "1"
+    _emit_phase("supervisor_starting")
     threading.Thread(target=_watch_parent, args=(int(sys.argv[2]),), daemon=True).start()
     try:
         raw_input = sys.stdin.buffer.read(MAX_PACKET_BYTES + 1)
         if len(raw_input) > MAX_PACKET_BYTES:
             raise AdapterError("packet_too_large")
         print(json.dumps(_child(json.loads(raw_input)), allow_nan=False))
-    except Exception:
-        print('{"status":"FAILED"}')
+    except Exception as exc:
+        print(json.dumps(_safe_failure(exc)))
         raise SystemExit(1)

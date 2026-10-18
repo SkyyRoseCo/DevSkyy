@@ -1,0 +1,53 @@
+{
+  "agentWorkers": {
+    "main_worker": {
+      "engine": "Claude Agent SDK",
+      "model": "claude-opus-5-5",
+      "state": "CONFIGURED_NOT_LIVE_QUALIFIED",
+      "reason": "Exact-plan owner approval required; source-packet analysis only. No production qualification."
+    },
+    "independent_reviewer": {
+      "engine": "Codex exec CLI",
+      "model": "gpt-6.1-sol",
+      "state": "CONFIGURED_NOT_LIVE_QUALIFIED",
+      "reason": "Exact-plan owner approval required; source-packet analysis only. No production qualification."
+    },
+    "scope": "Source-packet Fashion analysis; no tools, source edits, media production or release",
+    "production_enabled": false
+  },
+  "evidence_class": "REPRODUCED_LOCAL",
+  "authentication": "SYNTHETIC_LOCAL_SESSION_AND_SIGNED_JWT_ONLY",
+  "scope": "Real browser\u2192NextAuth proxy\u2192loopback FastAPI\u2192actual fixed registry/campaign verifiers on fixture database; no real-account login or founder approval",
+  "anonymousStatus": 401,
+  "runtimeStatus": 200,
+  "runId": "b86727a9-c261-427b-97fd-923f48f13794",
+  "planHash": "950b44d0fac868e10a60a8f68125c38672cb2e90ddae6d1ed69b7779bec480b0",
+  "beforeApprovalStatus": 409,
+  "finalStatus": "SUCCEEDED",
+  "steps": [
+    {
+      "id": "team-assignment",
+      "status": "PASSED",
+      "artifact_sha256": "8548fd831a04a32c34695ac37a11b5daf83284e7d11e6747987f937aa6caa800"
+    },
+    {
+      "id": "product-registry",
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "dbbf0072969154a963cc8cb5575d1e3a7dff749cb27a8d6c97debe24c69854b8"
+    },
+    {
+      "id": "campaign-contract",
+      "status": "PASSED",
+      "exit_code": 0,
+      "output_sha256": "88f894bcb40f4184c80bf38a9a70c9288eea017a1ad3319dc88ac0dc707b7251"
+    }
+  ],
+  "approvalReplayStatus": 409,
+  "selfReviewStatus": 409,
+  "memoryId": "7e2e5d3c-9b6b-4b02-97b7-2c50d82e420f",
+  "ownerAcceptedMemorySnapshotCount": 1,
+  "desktopOverflow": false,
+  "mobileOverflow": false,
+  "pageErrors": []
+}

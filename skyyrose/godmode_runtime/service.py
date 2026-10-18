@@ -13,10 +13,10 @@ import sys
 import tempfile
 import time
 import uuid
+from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
-from collections.abc import Iterator
 
 PROJECT = "skyyrose"
 TERMINAL = {"SUCCEEDED", "FAILED", "CANCELLED", "INTERRUPTED", "INVALIDATED"}
@@ -655,7 +655,7 @@ class Runtime:
                     )
                 if row["workflow"] in AGENT_WORKFLOWS:
                     used = conn.execute(
-                        "SELECT count(*) FROM events WHERE kind='AGENT_ALLOWANCE_RESERVED' AND at>?",
+                        "SELECT count(*) FROM events e WHERE e.kind='AGENT_ALLOWANCE_RESERVED' AND e.at>? AND NOT EXISTS (SELECT 1 FROM events z WHERE z.run_id=e.run_id AND z.kind='AGENT_NO_DISPATCH_CONFIRMED')",
                         (time.time() - 86400,),
                     ).fetchone()[0]
                     if used >= 2:

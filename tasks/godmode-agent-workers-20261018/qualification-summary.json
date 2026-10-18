@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-18",
+  "scope": "Bounded source-packet Fashion workflow analysis; production disabled",
+  "models": {
+    "main_worker": "claude-opus-5-5",
+    "reviewer": "gpt-6.1-sol"
+  },
+  "transports": {
+    "worker": "Claude Agent SDK",
+    "reviewer": "Codex exec CLI"
+  },
+  "authentication": {
+    "metadata": "Anthropic model-list and token-count VERIFIED_LIVE; credential identity hash bound",
+    "sdk_handshake": "Passed without a prompt or completion",
+    "dashboard": "Synthetic fixture test only; actual owner browser login not verified"
+  },
+  "checks": {
+    "backend_adapter_workflows": 68,
+    "typescript": "PASS",
+    "frontend_build": "PASS",
+    "plugin_tests": "77 run, 8 skipped under system interpreter; missing optional MCP v2 uses documented bundled fallback",
+    "plugin_selected_file_parity": "55 files, zero drift on each of Codex and Claude mirrors",
+    "browser": "PASS synthetic local session; actual verifier subprocesses",
+    "desktop_mobile": "PASS no page errors or horizontal overflow"
+  },
+  "live_qualification": "FAILED_NOT_READY",
+  "production_enabled": false,
+  "automatic_retry": false,
+  "daily_allowance_raised": false,
+  "runs": [
+    {
+      "id": "5a8ad46c-960c-4e12-9234-f4a4697eedf1",
+      "workflow": "fashion-campaign-analysis",
+      "status": "FAILED",
+      "authorization_channel": "current_chat_service_layer",
+      "steps": [
+        {
+          "id": "claude-worker",
+          "status": "FAILED",
+          "error_code": "supervisor_failed",
+          "usage": "UNKNOWN_RESERVATION_RETAINED"
+        }
+      ],
+      "canonical_preorder_count": 15
+    },
+    {
+      "id": "c18d2259-3fde-43bf-b14e-0aab8072d74a",
+      "workflow": "fashion-skill-analysis",
+      "status": "FAILED",
+      "authorization_channel": "current_chat_service_layer",
+      "steps": [
+        {
+          "id": "claude-worker",
+          "status": "FAILED",
+          "error_code": "timeout",
+          "usage": "UNKNOWN_RESERVATION_RETAINED"
+        }
+      ],
+      "canonical_preorder_count": 15
+    },
+    {
+      "id": "960035e1-4026-4f56-b3dc-70b20d1ca933",
+      "workflow": "fashion-skill-analysis",
+      "status": "FAILED",
+      "authorization_channel": "current_chat_service_layer",
+      "steps": [
+        {
+          "id": "claude-worker",
+          "status": "FAILED",
+          "error_code": "provider_error",
+          "usage": "UNKNOWN_RESERVATION_RETAINED"
+        }
+      ],
+      "canonical_preorder_count": 15
+    }
+  ]
+}
