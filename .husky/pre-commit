@@ -11,7 +11,12 @@ fi
 
 # File-level formatting and checks. Sequential glob execution prevents races
 # where Prettier and a language-specific formatter touch the same staged file.
-npx lint-staged --concurrent false
+_backup_mode="$(node scripts/lint-staged-backup-mode.mjs)" || exit 1
+if [ "$_backup_mode" = "--no-stash" ]; then
+  npx lint-staged --concurrent false --no-stash || exit 1
+else
+  npx lint-staged --concurrent false || exit 1
+fi
 
 # Whole-project tools that can't run per-file via lint-staged
 
