@@ -20,9 +20,9 @@ prove the cause of every historical SDK failure.
 
 ## Implemented fixes
 
-- Use Opus 5.5 adaptive thinking and low effort with the existing bounded output
-  and dollar limits. Manual thinking configuration is a separate compatibility
-  defect, documented by Anthropic's Opus 5.5 migration guide.
+- Use Opus 5.5 adaptive thinking and medium effort with the existing bounded
+  output and dollar limits. Manual thinking configuration is a separate
+  compatibility defect, documented by Anthropic's Opus 5.5 migration guide.
 - Pin the installed Claude executable, version and binary hash in each immutable
   approval contract rather than silently choosing the SDK's older bundled CLI.
 - Preserve fixed provider-error codes through SDK cleanup and process
@@ -42,26 +42,48 @@ The offline wire fixture records actual outgoing configuration using a synthetic
 key and a localhost server. It proves request fields, not live provider success.
 Historical live harnesses now exit before credential lookup or network access.
 
-## Current gate and next action
+## Current gate — live qualification passed
 
-**BLOCKED_PROVIDER_USAGE_LIMIT. Production remains OFF.** No valid Claude
-artifact was produced and Codex has therefore not reviewed one in the live
-sequence. Existing failed runs, uncertain usage and reservations remain
-recorded. A separate `PROVIDER_DIAGNOSIS_RECORDED` event was appended to GOD
-MODE's durable audit log; no accepted memory or owner acceptance was written.
+**PASSED_BOUNDED_FASHION_SKILL_ANALYSIS_ONLY. Production remains OFF.**
 
-The owner has said they will raise the API limit. After confirmation it is
-applied, create a fresh exact-plan approved run, execute the full canonical
-packet (all 15 preorder products and eight migrated skill entrypoints), validate
-Claude coverage, then run independent Codex review bound to that artifact's
-hash. A metadata lookup, fixture result, or configuration check cannot
-substitute for that sequence. Production/release requires its separate owner
-authority even after analysis passes.
+After the owner confirmed the API limit increase, four separately authorized
+attempts were recorded. The first two produced valid worker artifacts and actual
+Codex FAIL reviews; their unsupported assertions were rejected. The third
+returned invalid JSON and was rejected before reviewer dispatch. No failed
+result was edited into success, no reservation was reset, and no reviewer
+criterion was weakened.
+
+The root cause of repeated content errors was a shared prompt that directed the
+skill-audit workflow into unsolicited campaign/product analysis. The fix routes
+by workflow, names all eight skill targets, and verifies one finding per skill,
+while retaining every preorder record and exact 15-SKU coverage. Medium effort
+and 8,192 output tokens retain the same $1 SDK budget. Output-token exhaustion
+now has an explicit failure classification. The third attempt's malformed JSON
+alone does not prove that it exhausted tokens.
+
+Run `6c938210-2fae-406c-a1e1-7352a1f65995` succeeded. Opus returned
+`claude-opus-5-5`, which the host checked against the approved model. Its
+schema, eight-skill findings and 15-SKU coverage passed. Independent Codex,
+selected as `gpt-6.1-sol` through the frozen CLI argument, returned PASS with no
+findings and a matching worker hash. Codex's selected argument is configuration
+evidence, not a separate returned-provider-model attestation.
+
+`LIVE-QUALIFICATION.json` preserves sanitized artifact evidence and the complete
+attempt-status trail. Full source packets, approvals and event history remain in
+GOD MODE's durable local SQLite state. Accepted memory remains unchanged and
+human acceptance remains NOT_GRANTED. The successful Claude attempt reports
+$0.4931913; this is not the total across all attempts. The malformed attempt's
+cost is unknown and its reservation remains retained. Codex used the existing
+ChatGPT allowance.
+
+This qualifies the bounded skill-analysis workflow only. It does not qualify all
+Fashion workflows, complete any film or garment-fidelity review, prove owner
+browser login, or authorize production/deployment. Those gates remain separate.
 
 ## Validation
 
-- 84 focused runtime, adapter and workflow tests passed.
-- Explicit mypy checks passed for both changed runtime modules.
+- 88 focused runtime, adapter and workflow tests passed.
+- Explicit mypy checks passed for all three changed runtime modules.
 - Ruff, Black and scoped diff checks passed.
 - Independent architect and Python reviews found no remaining material defect
   within the bounded fix. Live success remains unverified, rather than inferred.

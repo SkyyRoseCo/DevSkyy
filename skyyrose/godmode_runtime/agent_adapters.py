@@ -229,8 +229,8 @@ def adapter_contract() -> dict[str, Any]:
         "max_output_bytes": MAX_OUTPUT_BYTES,
         "claude_max_turns": 2,
         "claude_thinking_mode": "adaptive",
-        "claude_effort": "low",
-        "claude_max_output_tokens": 4096,
+        "claude_effort": "medium",
+        "claude_max_output_tokens": 8192,
         "claude_max_budget_usd": 1.0,
         "codex_rollout_token_budget": 8000,
         "codex_budget_limit": "experimental token tracking; no hard dollar cap",
@@ -307,8 +307,8 @@ def claude_options(model: str, cwd: str) -> dict[str, Any]:
         permission_mode="dontAsk",
         max_turns=2,
         thinking={"type": "adaptive"},
-        effort="low",
-        env={"CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096"},
+        effort="medium",
+        env={"CLAUDE_CODE_MAX_OUTPUT_TOKENS": "8192"},
         max_budget_usd=1.0,
         continue_conversation=False,
         resume=None,
@@ -571,7 +571,35 @@ def _deny_hook_matcher() -> Any:
 
 def _prompt(payload: dict[str, Any]) -> str:
     packet, worker = payload["packet"], payload["worker"]
-    instruction = "Analyze source completeness, collection/SKU coverage and workflow risks. Return covered_skus including every supplied product SKU."
+    instruction = (
+        "Analyze source completeness, collection/SKU coverage and workflow risks. "
+        "Return covered_skus including every supplied product SKU. "
+        "Use a small set of precise, source-located findings rather than speculative exhaustive lists. "
+        "For each product claim cite its SKU and exact field or gaps entry. Check every named SKU "
+        "before grouping it in a finding. Distinguish an absent field, an explicit null, and an "
+        "explicit gaps entry; never substitute one for another. Missing companion documents in this "
+        "packet mean UNVERIFIED here, not missing on disk or broken in production. Founder corrections "
+        "are authoritative requirements, not evidence that current output still fails them. Report "
+        "suspicious field contents without inventing their cause. No supplied pixel inspection means "
+        "fidelity UNVERIFIED; only name a BLOCKED step when a specific required dependency is absent. "
+        "Do not infer non-preorder catalog omissions from the explicitly preorder-only census. "
+        "Omit any assertion you cannot substantiate from supplied bytes."
+    )
+    if packet.get("workflow") == "fashion-skill-analysis":
+        instruction = (
+            "Audit the eight supplied migrated skill contracts against packet.objective. "
+            "Produce exactly one concise finding per required_skill_ids entry, starting with "
+            "[that exact skill ID], stating its source-backed scope/control, verifier and any "
+            "unverified companion evidence. Read each skill; do not invent successful execution. "
+            "The product records provide the mandatory preorder census for covered_skus; "
+            "this workflow does not request a separate catalog-field or garment-defect audit. "
+            "Preserve all 15 required_skus exactly once and all founder specifications. "
+            "Keep each finding atomic, source-located and under 65 words; keep the summary "
+            "under 120 words. Distinguish absent, explicit null "
+            "and omitted-from-packet evidence. Missing review evidence means UNVERIFIED, "
+            "not a failed product. Do not invent remediation status, causes, extra casting "
+            "requirements or new proof obligations for founder facts. No production authority."
+        )
     if payload["stage"] == "codex-reviewer":
         instruction = "Independently review the worker against the source packet. FAIL missing SKU coverage, unsupported claims or unsafe workflow recommendations. Do not trust worker claims as evidence. No tools or external actions."
     return (
@@ -646,6 +674,7 @@ async def _claude(payload: dict[str, Any], directory: str) -> dict[str, Any]:
     diagnostics: list[str] = []
     markers: list[str] = []
     pending_text: list[str] = []
+    returned_models: set[str] = set()
 
     def remember(text: str) -> None:
         for word in re.findall(r"[a-z_]+", text.lower()):
@@ -666,6 +695,8 @@ async def _claude(payload: dict[str, Any], directory: str) -> dict[str, Any]:
                 _emit_phase("claude_initialized")
             if isinstance(message, AssistantMessage):
                 _emit_phase("claude_response_received")
+                if not message.error:
+                    returned_models.add(message.model)
                 error_code = {
                     "authentication_failed": "provider_auth_rejected",
                     "billing_error": "provider_credit_unavailable",
@@ -721,10 +752,19 @@ async def _claude(payload: dict[str, Any], directory: str) -> dict[str, Any]:
         raise AdapterError("claude_no_text_success")
     if result.num_turns > 2 or (result.total_cost_usd is not None and result.total_cost_usd > 1):
         raise AdapterError("claude_budget_exceeded")
+    if returned_models != {payload["contract"]["claude_model"]}:
+        raise AdapterError("claude_returned_model_mismatch")
+    if result.stop_reason == "max_tokens":
+        raise AdapterError("claude_output_token_limit")
     return {
         "status": "SUCCEEDED",
         "artifact": _parse_claude_text(result.result, payload["packet"]),
-        "usage": {"total_cost_usd": result.total_cost_usd, "turns": result.num_turns},
+        "usage": {
+            "total_cost_usd": result.total_cost_usd,
+            "turns": result.num_turns,
+            "returned_models": sorted(returned_models),
+            "model_identity_evidence": "sdk_assistant_message_model_exact_match",
+        },
     }
 
 
@@ -794,6 +834,8 @@ def _child(payload: dict[str, Any]) -> dict[str, Any]:
                     "hard_dollar_cap": False,
                     "billing_mode": "existing_chatgpt_allowance",
                     "api_key_fallback": False,
+                    "selected_model": payload["contract"]["codex_model"],
+                    "model_identity_evidence": "frozen_cli_argument_not_returned_provider_attestation",
                 },
             }
 
@@ -810,6 +852,8 @@ def _safe_failure(exc: BaseException) -> dict[str, Any]:
         "invalid_artifact_schema",
         "packet_binding_mismatch",
         "claude_budget_exceeded",
+        "claude_returned_model_mismatch",
+        "claude_output_token_limit",
         "output_limit",
         "codex_failed",
         "provider_thinking_unsupported",

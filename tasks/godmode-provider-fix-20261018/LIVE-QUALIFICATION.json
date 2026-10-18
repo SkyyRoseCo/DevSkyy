@@ -1,0 +1,231 @@
+{
+  "recorded_date": "2026-10-18",
+  "qualification": "PASSED_BOUNDED_FASHION_SKILL_ANALYSIS_ONLY",
+  "production_enabled": false,
+  "owner_browser_login": "NOT_TESTED",
+  "human_acceptance": "NOT_GRANTED",
+  "accepted_memory_changed": false,
+  "authorization_channel": "fresh_current_chat_exact_plan_GOD_MODE_event",
+  "passed_run_id": "6c938210-2fae-406c-a1e1-7352a1f65995",
+  "passed_plan_hash": "168f1aafc35aaa59aa659cb85275b8f0a775378690d7bb03b97759ff44dfbf0c",
+  "source_packet_sha256": "cd967b77a558cbbfe4db575747b95356c33c604ef0685ca6abc3da6b7220e7de",
+  "required_skill_ids": [
+    "artifact-template-skyyrose-house-of-roses-commerce",
+    "skyyrose-3d-web-os",
+    "skyyrose-brand-dna",
+    "skyyrose-campaign-ooda",
+    "skyyrose-command-center",
+    "skyyrose-film-directing",
+    "skyyrose-wp-platform",
+    "wc-pdp-correctness"
+  ],
+  "required_skus": [
+    "br-003",
+    "br-006",
+    "br-008",
+    "br-009",
+    "br-010",
+    "br-011",
+    "br-012",
+    "br-014",
+    "br-015",
+    "lh-005",
+    "sg-001",
+    "sg-002",
+    "sg-003",
+    "sg-005",
+    "sg-015"
+  ],
+  "worker": {
+    "artifact": {
+      "covered_skus": [
+        "br-003",
+        "br-006",
+        "br-008",
+        "br-009",
+        "br-010",
+        "br-011",
+        "br-012",
+        "br-014",
+        "br-015",
+        "lh-005",
+        "sg-001",
+        "sg-002",
+        "sg-003",
+        "sg-005",
+        "sg-015"
+      ],
+      "findings": [
+        "[artifact-template-skyyrose-house-of-roses-commerce] Source artifact-template-skyyrose-house-of-roses-commerce (3aab5417): use only when selected; the reference layout is not product truth or generation approval. Verifier: verify-skyyrose-domain.py plus migration verification; no receipt supplied. artifact-template.json and enhancement-examples.md are hashed but omitted from the packet. The retained PNG and imagery-prompting.md are absent from source_hashes. Execution UNVERIFIED.",
+        "[skyyrose-3d-web-os] Source skyyrose-3d-web-os (63d38bc1): surface separation, lifecycle/dispose, reduced-motion and no-WebGL fallbacks, keyboard hotspots, GLB validation. Verifier: verify-skyyrose-domain.py; runtime examples stay PARTIAL until observed, and no receipt was supplied. current-execution.md, verified-examples.md and enhancement-examples.md are hashed but omitted from the packet. Execution UNVERIFIED.",
+        "[skyyrose-brand-dna] Source skyyrose-brand-dna (c087d9d4): authority map, re-read seeds, no active tagline, registry-owned logo dimensions; not a product registry. Its orientation matches the SOT.md and four identity.json story seeds. Verifier: verify-skyyrose-domain.py; no receipt. brand-guardrails.md and the verified, enhancement and campaign examples are hashed but omitted from the packet. Execution UNVERIFIED.",
+        "[skyyrose-campaign-ooda] Source skyyrose-campaign-ooda (62780b89): OODA component ledger, source-bound assortment census, independent reviewer, allowlisted executor only. Its required DevSkyy overlay SKILL.md is absent from source_hashes. production-workflows.json and workflow_guard.py are hashed but omitted from the packet. Verifier: verify-skyyrose-domain.py; no receipt. Execution UNVERIFIED.",
+        "[skyyrose-command-center] Source skyyrose-command-center (b67bafcd): decomposes requests, routes to the seven sibling skills, and marks the eight empty legacy specialist folders NOT_IMPLEMENTED. The fashion-branded-skills adapter it routes to is absent from the packet. It cites skyyrose-skill-migration.md, but only the .json is hashed, and its text is omitted. Verifier: verify-skyyrose-domain.py; no receipt. Execution UNVERIFIED.",
+        "[skyyrose-film-directing] Source skyyrose-film-directing (ee798f3c) and SOT.md 2026-10-17: every preorder SKU appears in its collection film and the main commercial, with separate Black Rose cast variants and zero-audio export. The census covers 15 products: 9 black-rose, lh-005 and 5 signature. No coverage matrix, edit ranges or export receipts were supplied. directing-method.md and shot-packet.json are omitted from the packet. Verifier: verify-skyyrose-domain.py. Execution UNVERIFIED.",
+        "[skyyrose-wp-platform] Source skyyrose-wp-platform (31bda28c): original/V2 targeting; escaping, nonce and capability controls; get_product as desired state versus live state; no silent sync-back. The build-and-templates, woocommerce-integration, threejs-immersive and quality-gates references are hashed but omitted from the packet. Verifier: verify-skyyrose-domain.py plus real lint; no command receipts. Execution UNVERIFIED.",
+        "[wc-pdp-correctness] Source wc-pdp-correctness (58be742a): classic versus Store API detection, trusted variation IDs, server-confirmed adds; preorder does not automatically mean non-purchasable. Product records supply sizes (lh-005 One Size; sg-002 XS\u20132XL; sg-005 S\u20132XL) but no variation IDs or live stock. No browser or cart receipts were supplied, and enhancement-examples.md is omitted from the packet. Verifier: verify-skyyrose-domain.py. Execution UNVERIFIED."
+      ],
+      "packet_sha256": "cd967b77a558cbbfe4db575747b95356c33c604ef0685ca6abc3da6b7220e7de",
+      "summary": "All eight SKILL.md contracts were read, and their hashes match source_hashes. Each shares GOD MODE routing, FOUNDER_CONFIRMED product facts, no production authority and the verifier verify-skyyrose-domain.py. That script and skyyrose-domain-contracts.json are absent from source_hashes. No verifier or execution receipts were supplied, so every skill is UNVERIFIED, not failed. Companion references are hashed but omitted from the packet. The census covers 15 preorder SKUs. Explicit gaps lists are empty for br-003, br-006 and sg-001; the others list image or content gaps. fit is explicit null except br-010. garment_size_chart is explicit null for all. decoration_sizing is {} for br-006, lh-005 and sg-001/002/003/005/015. SOT.md says generation is on hold. Founder corrections are requirements; their remediation is unverified."
+    },
+    "artifact_sha256": "af31f15bd296c29826ec6001c8264d99214d66667f2642f92380dd28732e25b4",
+    "usage": {
+      "model_identity_evidence": "sdk_assistant_message_model_exact_match",
+      "returned_models": ["claude-opus-5-5"],
+      "total_cost_usd": 0.4931913,
+      "turns": 1
+    }
+  },
+  "reviewer": {
+    "artifact": {
+      "findings": [],
+      "packet_sha256": "cd967b77a558cbbfe4db575747b95356c33c604ef0685ca6abc3da6b7220e7de",
+      "summary": "PASS. The worker covers all 15 required SKUs exactly once and audits all eight required skills. Its product-field summaries and identified evidence gaps agree with the supplied records. It preserves the production hold, separates missing review evidence from implementation failure, and claims no pixel fidelity, completed execution or release approval. No unsupported product claims or unsafe workflow recommendations were identified.",
+      "verdict": "PASS",
+      "worker_sha256": "af31f15bd296c29826ec6001c8264d99214d66667f2642f92380dd28732e25b4"
+    },
+    "artifact_sha256": "69b24aa8c6bc2521699d8c41145d65778dbd5b8ff2baed71bf56566f9ec006e5",
+    "usage": {
+      "api_key_fallback": false,
+      "billing_mode": "existing_chatgpt_allowance",
+      "cost_usd": null,
+      "hard_dollar_cap": false,
+      "model_identity_evidence": "frozen_cli_argument_not_returned_provider_attestation",
+      "selected_model": "gpt-6.1-sol"
+    }
+  },
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "run_id": "e55ec738-7a4e-43bf-bfb3-35a347adbd4d",
+      "status": "FAILED",
+      "plan_hash": "f555bded025437120dd9452690d6e0cd1251117fdbd2520a9b5b299c64fa623b",
+      "steps": [
+        {
+          "id": "claude-worker",
+          "status": "PASSED",
+          "error_code": null,
+          "artifact_sha256": "19f34f466cbaf95f14008f26ad00b8ea81c8431ea47540508149540cf18bb9d8",
+          "verdict": null,
+          "usage": {
+            "total_cost_usd": 0.4572037,
+            "turns": 1
+          }
+        },
+        {
+          "id": "codex-reviewer",
+          "status": "FAILED",
+          "error_code": null,
+          "artifact_sha256": "c39b5d6e7633f11b26c16f7e0fd21b532b5419fac5568df42010a07e0c664145",
+          "verdict": "FAIL",
+          "usage": {
+            "api_key_fallback": false,
+            "billing_mode": "existing_chatgpt_allowance",
+            "cost_usd": null,
+            "hard_dollar_cap": false
+          }
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "run_id": "9210f287-ca56-4eb4-b020-38cf4953a202",
+      "status": "FAILED",
+      "plan_hash": "7cd3fd2332dc16380868cfe3ae9417b1f38373918e6f2d09ad9bb6ffa8c15d5a",
+      "steps": [
+        {
+          "id": "claude-worker",
+          "status": "PASSED",
+          "error_code": null,
+          "artifact_sha256": "0a91a95e672f2f84cf643ad9d1df3c558b8783f35cdebf9a3b4a0516e0181497",
+          "verdict": null,
+          "usage": {
+            "model_identity_evidence": "sdk_assistant_message_model_exact_match",
+            "returned_models": ["claude-opus-5-5"],
+            "total_cost_usd": 0.4553783,
+            "turns": 1
+          }
+        },
+        {
+          "id": "codex-reviewer",
+          "status": "FAILED",
+          "error_code": null,
+          "artifact_sha256": "1007c9bd726749c8c14bcdf81125c1422478ee482432f849bff27a0c0e4b7d2e",
+          "verdict": "FAIL",
+          "usage": {
+            "api_key_fallback": false,
+            "billing_mode": "existing_chatgpt_allowance",
+            "cost_usd": null,
+            "hard_dollar_cap": false,
+            "model_identity_evidence": "frozen_cli_argument_not_returned_provider_attestation",
+            "selected_model": "gpt-6.1-sol"
+          }
+        }
+      ]
+    },
+    {
+      "attempt": 3,
+      "run_id": "3516c125-ea10-4c7a-92cf-ce9f2182abad",
+      "status": "FAILED",
+      "plan_hash": "2e5588be04740c19e01491fb3afa2fe0b1ce8999bb2bd4acb6585fd4defd613b",
+      "steps": [
+        {
+          "id": "claude-worker",
+          "status": "FAILED",
+          "error_code": "claude_invalid_json_text_claude_result_received",
+          "artifact_sha256": null,
+          "verdict": null,
+          "usage": "UNKNOWN_RESERVATION_RETAINED"
+        }
+      ]
+    },
+    {
+      "attempt": 4,
+      "run_id": "6c938210-2fae-406c-a1e1-7352a1f65995",
+      "status": "SUCCEEDED",
+      "plan_hash": "168f1aafc35aaa59aa659cb85275b8f0a775378690d7bb03b97759ff44dfbf0c",
+      "steps": [
+        {
+          "id": "claude-worker",
+          "status": "PASSED",
+          "error_code": null,
+          "artifact_sha256": "af31f15bd296c29826ec6001c8264d99214d66667f2642f92380dd28732e25b4",
+          "verdict": null,
+          "usage": {
+            "model_identity_evidence": "sdk_assistant_message_model_exact_match",
+            "returned_models": ["claude-opus-5-5"],
+            "total_cost_usd": 0.4931913,
+            "turns": 1
+          }
+        },
+        {
+          "id": "codex-reviewer",
+          "status": "PASSED",
+          "error_code": null,
+          "artifact_sha256": "69b24aa8c6bc2521699d8c41145d65778dbd5b8ff2baed71bf56566f9ec006e5",
+          "verdict": "PASS",
+          "usage": {
+            "api_key_fallback": false,
+            "billing_mode": "existing_chatgpt_allowance",
+            "cost_usd": null,
+            "hard_dollar_cap": false,
+            "model_identity_evidence": "frozen_cli_argument_not_returned_provider_attestation",
+            "selected_model": "gpt-6.1-sol"
+          }
+        }
+      ]
+    }
+  ],
+  "billing_limitations": "Third attempt cost is unknown and its reservation retained. Codex uses existing ChatGPT allowance; no dollar receipt or hard dollar cap. Do not infer total cost from successful attempt only.",
+  "checks": {
+    "focused_tests": 88,
+    "ruff": "PASS",
+    "black": "PASS",
+    "mypy_source_files": 3
+  },
+  "source_modules": {
+    "skyyrose/godmode_runtime/agent_adapters.py": "44b363bd12bbb311697cb09e537549df7ecb072a63130a70a6d68c6d54bc36ce",
+    "skyyrose/godmode_runtime/agent_packets.py": "0ace8982343972bb0a8caf27e782190cd7948070dbe64375312b9392040e4122",
+    "skyyrose/godmode_runtime/service.py": "3bb62e299db663719d15b2e6417f3f3b158a5d7e2244400b91d910bd78ab7c72"
+  }
+}

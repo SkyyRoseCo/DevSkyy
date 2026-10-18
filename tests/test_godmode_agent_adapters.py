@@ -359,8 +359,8 @@ def test_streaming_prompt_is_one_exact_source_message():
 def test_claude_reasoning_and_output_are_bounded(tmp_path):
     options = a.claude_options("claude-opus-5-5", str(tmp_path))
     assert options["thinking"] == {"type": "adaptive"}
-    assert options["effort"] == "low"
-    assert options["env"] == {"CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096"}
+    assert options["effort"] == "medium"
+    assert options["env"] == {"CLAUDE_CODE_MAX_OUTPUT_TOKENS": "8192"}
 
 
 def test_lifecycle_evidence_uses_only_fixed_phase_enums():
@@ -386,7 +386,7 @@ def test_timeout_preserves_safe_last_lifecycle_phase(monkeypatch):
         a._supervised(b"{}", lambda: False, 0.25)
 
 
-@pytest.mark.parametrize("mode", ["valid", "codefence", "malformed"])
+@pytest.mark.parametrize("mode", ["valid", "codefence", "malformed", "wrong-model", "token-limit"])
 def test_claude_success_plaintext_is_strictly_locally_validated(monkeypatch, tmp_path, mode):
     import claude_agent_sdk
 
@@ -403,6 +403,10 @@ def test_claude_success_plaintext_is_strictly_locally_validated(monkeypatch, tmp
         assert options.tools == [] and options.disallowed_tools == ["*"]
         messages = [message async for message in prompt]
         assert "ONLY one JSON object" in messages[0]["message"]["content"]
+        yield claude_agent_sdk.AssistantMessage(
+            content=[claude_agent_sdk.TextBlock(text=text)],
+            model="claude-sonnet-4-6" if mode == "wrong-model" else "claude-opus-5-5",
+        )
         yield claude_agent_sdk.ResultMessage(
             subtype="success",
             duration_ms=1,
@@ -412,6 +416,7 @@ def test_claude_success_plaintext_is_strictly_locally_validated(monkeypatch, tmp
             session_id="fixture",
             total_cost_usd=0,
             result=text,
+            stop_reason="max_tokens" if mode == "token-limit" else "end_turn",
         )
 
     monkeypatch.setattr(claude_agent_sdk, "query", offline_query)
@@ -424,6 +429,13 @@ def test_claude_success_plaintext_is_strictly_locally_validated(monkeypatch, tmp
     if mode == "valid":
         result = asyncio.run(a._claude(payload, str(tmp_path)))
         assert result["artifact"] == artifact
+        assert result["usage"]["returned_models"] == ["claude-opus-5-5"]
+    elif mode == "wrong-model":
+        with pytest.raises(a.AdapterError, match="claude_returned_model_mismatch"):
+            asyncio.run(a._claude(payload, str(tmp_path)))
+    elif mode == "token-limit":
+        with pytest.raises(a.AdapterError, match="claude_output_token_limit"):
+            asyncio.run(a._claude(payload, str(tmp_path)))
     else:
         with pytest.raises(a.AdapterError, match="claude_invalid_json_text"):
             asyncio.run(a._claude(payload, str(tmp_path)))
@@ -468,7 +480,7 @@ def test_opus55_cli_request_uses_adaptive_not_manual_budget(tmp_path):
     assert "--max-thinking-tokens" not in command
     assert (
         a.claude_options("claude-opus-5-5", str(tmp_path))["env"]["CLAUDE_CODE_MAX_OUTPUT_TOKENS"]
-        == "4096"
+        == "8192"
     )
 
 
@@ -610,3 +622,24 @@ def test_successful_analysis_cannot_poison_provider_diagnosis(monkeypatch, tmp_p
         )
     assert not isinstance(caught.value, a.AdapterError)
     assert a._safe_failure(caught.value)["error_code"] == "provider_error"
+
+
+def test_worker_instruction_routes_skill_audit_without_changing_reviewer():
+    def prompt(workflow, stage="claude-worker"):
+        return a._prompt({"stage": stage, "packet": {"workflow": workflow}, "worker": None}).split(
+            "\nSOURCE DATA"
+        )[0]
+
+    skill = prompt("fashion-skill-analysis")
+    campaign = prompt("fashion-campaign-analysis")
+    assert skill.startswith("Audit the eight supplied migrated skill contracts")
+    assert "required_skill_ids" in skill and "all 15 required_skus exactly once" in skill
+    assert campaign.startswith("Analyze source completeness, collection/SKU coverage")
+    assert (
+        prompt("fashion-skill-analysis", "codex-reviewer").splitlines()[0]
+        == prompt("fashion-campaign-analysis", "codex-reviewer").splitlines()[0]
+    )
+    assert (
+        "FAIL missing SKU coverage, unsupported claims or unsafe workflow recommendations"
+        in prompt("fashion-skill-analysis", "codex-reviewer")
+    )

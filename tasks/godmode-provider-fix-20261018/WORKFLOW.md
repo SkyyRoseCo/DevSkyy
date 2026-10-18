@@ -40,3 +40,39 @@ Authentication: actual model qualification uses current-chat service
 authorization and credential-bound adapters, not a forged owner login. Record
 actual provider results; model presence or metadata alone is not successful
 completion evidence.
+
+## Fresh owner continuation after limit update
+
+On 2026-10-18 the owner confirmed the API limit was updated and explicitly
+authorized completing the live Opus 5.5 to Codex test, retaining GOD MODE
+approvals/memory and production OFF. Create a new run with this instruction, a
+fresh expiring exact-plan grant and distinct idempotency key. Do not replay the
+disabled historical harness or old approval.
+
+### Actual first live review and correction
+
+The limit-cleared run produced a valid Opus artifact, but the independent Codex
+review returned FAIL for unsupported source claims. Preserve both artifacts.
+Tighten the worker's source-location and field-presence rules and explicitly
+bind the preorder-only census. Missing/null/explicit-gap distinctions, unknown
+current correction status, and unverified pixel evidence must not be conflated.
+Keep the reviewer unchanged and require a fresh plan/grant after these source
+changes.
+
+### Repeated-failure root cause
+
+Independent fixer/architect review identified a task-scoping bug: the generic
+worker instruction requested collection/product coverage even for a
+skill-workflow audit, leading to unsolicited inaccurate catalog claims. Use an
+explicit skill-audit instruction with one source-located finding for each
+required skill; retain the complete product census and exact SKU coverage. The
+packet names the eight targets and the host rejects omitted/duplicate skill
+findings. Increase reasoning effort to medium within the same 4,096-token/$1
+budget. Keep Codex's criteria unchanged.
+
+The medium-effort attempt did not return valid JSON; its cause is not
+established by the retained fixed error code. Add explicit
+stop_reason=max_tokens failure classification, request concise eight-skill
+findings, and permit 8,192 total output tokens within the unchanged $1 SDK
+budget. A fresh approval binds these settings. No malformed output is repaired
+into success and no reviewer result is bypassed.

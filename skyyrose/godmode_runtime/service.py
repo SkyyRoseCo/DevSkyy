@@ -308,9 +308,13 @@ class Runtime:
             if stage == "claude-worker":
                 try:
                     verify_coverage(plan["source_packet"], receipt["artifact"])
-                except ValueError:
+                except ValueError as exc:
                     receipt["status"] = "FAILED"
-                    receipt["error_code"] = "incomplete_preorder_coverage"
+                    receipt["error_code"] = (
+                        "incomplete_skill_coverage"
+                        if str(exc) == "Worker must audit every required skill exactly once"
+                        else "incomplete_preorder_coverage"
+                    )
             elif receipt["artifact"]["verdict"] != "PASS":
                 receipt["status"] = "FAILED"
         receipt["human_acceptance"] = "NOT_GRANTED"

@@ -169,6 +169,10 @@ def test_actual_canonical_packets_cover_every_preorder(tmp_path):
         assert len(p["products"]) == len(p["required_skus"]) > 0
         assert len({p["sku"] for p in p["products"]}) == len(p["required_skus"])
         assert p["memory_snapshot"] == []
+        if workflow == "fashion-skill-analysis":
+            assert len(p["required_skill_ids"]) == 8
+            assert set(p["required_skill_ids"]) <= {s["id"] for s in p["sources"]}
+            assert len(p["required_skus"]) == 15
         assert p == build_packet(root, team, workflow, r._sources(), [])
 
 
@@ -310,3 +314,19 @@ def test_additional_grant_cannot_widen_or_expire(configured, monkeypatch, overri
     _extension(r, run, **override)
     with pytest.raises(RuntimeConflict, match="allowance exhausted"):
         r.execute(run["id"], run["plan_hash"], "operator")
+
+
+def test_skill_workflow_requires_each_skill_finding_once():
+    packet = {
+        "workflow": "fashion-skill-analysis",
+        "required_skus": ["br-001"],
+        "required_skill_ids": ["skill-a", "skill-b"],
+    }
+    artifact = {
+        "covered_skus": ["br-001"],
+        "findings": ["[skill-a] Scope verified", "[skill-b] Verifier unverified"],
+    }
+    verify_coverage(packet, artifact)
+    for findings in [artifact["findings"][:1], ["[skill-a] One", "[skill-a] Duplicate"]]:
+        with pytest.raises(ValueError, match="every required skill"):
+            verify_coverage(packet, {**artifact, "findings": findings})
