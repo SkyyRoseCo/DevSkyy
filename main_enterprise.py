@@ -292,7 +292,14 @@ from security.rate_limiting import rate_limiter  # noqa: E402
 
 @app.middleware("http")
 async def rate_limit_middleware(request: Request, call_next):
-    await rate_limiter.enforce_rate_limit(request)
+    try:
+        await rate_limiter.enforce_rate_limit(request)
+    except HTTPException as exc:
+        # Raised outside the router, so the app's HTTPException handler never sees it;
+        # left to propagate it is served as a 500 with no Retry-After.
+        response = await http_exception_handler(request, exc)
+        response.headers.update(exc.headers or {})
+        return response
     return await call_next(request)
 
 

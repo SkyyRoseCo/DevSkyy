@@ -7304,5 +7304,46 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-10-14T00:00:00+00:00"
+  },
+  {
+    "id": "bug-407",
+    "timestamp": "2026-10-18T22:30:00+00:00",
+    "error_message": "security/rate_limiting.py: USER_BASED (200/min) and API_KEY_BASED (1000/min) default rules built but never enforced by enforce_rate_limit; DDoS blacklist check len(window.requests) > burst_limit*2 unreachable because SlidingWindowCounter never records rejected requests; API-key windows keyed on the raw X-API-Key value",
+    "file": "security/rate_limiting.py",
+    "root_cause": "enforce_rate_limit only checked endpoint rules and the IP rule; the blacklist counted accepted requests only (capped at requests_per_minute < 2x burst); nothing upstream sets request.state.user_id, so a state-only user identity would never fire",
+    "fix": "Cumulative checks: endpoint -> IP (always) -> per-user (verified Bearer access token via jwt_manager.validate_token, or upstream state.user_id) -> per-API-key (SHA-256 of X-API-Key). SlidingWindowCounter keeps a capped deque of rejected attempts; blacklist fires when accepted+rejected attempts exceed 2x burst. Tests: tests/test_rate_limit_identity.py (real TestClient, multi-IP clients, forged-token and rotating-key cases)",
+    "tags": [
+      "rate-limiting",
+      "security",
+      "ddos",
+      "fail-open",
+      "api-key",
+      "jwt"
+    ],
+    "related_bugs": [
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-18T22:30:00+00:00"
+  },
+  {
+    "id": "bug-408",
+    "timestamp": "2026-10-18T22:30:00+00:00",
+    "error_message": "main_enterprise.py rate_limit_middleware: HTTPException raised by enforce_rate_limit is served as 500 'Internal server error' (no Retry-After, logged as unhandled_exception) instead of 429/403 [repro on origin/main via git archive]",
+    "file": "main_enterprise.py",
+    "root_cause": "@app.middleware('http') runs outside the router's ExceptionMiddleware, so @app.exception_handler(HTTPException) never sees exceptions raised there; ServerErrorMiddleware hands them to the generic Exception handler (500)",
+    "fix": "Catch HTTPException in rate_limit_middleware, render via http_exception_handler and copy exc.headers (Retry-After, X-RateLimit-*). Test: test_main_app_serves_429_and_403_not_500",
+    "tags": [
+      "fastapi",
+      "middleware",
+      "exception-handler",
+      "rate-limiting",
+      "500"
+    ],
+    "related_bugs": [
+      "bug-407"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-18T22:30:00+00:00"
   }
 ]

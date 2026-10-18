@@ -98,8 +98,8 @@ python -c "import secrets, base64; print('ENCRYPTION_MASTER_KEY=' + base64.b64en
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `RATE_LIMIT_IP_PER_MINUTE` | API requests per minute per client IP | `100` |
-| `RATE_LIMIT_IP_PER_HOUR` / `RATE_LIMIT_IP_BURST` | Per-IP hourly value (advisory: only the per-minute window is enforced) / burst (blacklist threshold) | 60x / 2x per-minute |
-| `RATE_LIMIT_USER_*` / `RATE_LIMIT_API_KEY_*` | Same three settings for the per-user / per-API-key rules (defined but not yet applied by `enforce_rate_limit`, which enforces only the per-IP rule) | `200` / `1000` per minute |
+| `RATE_LIMIT_IP_PER_HOUR` / `RATE_LIMIT_IP_BURST` | Per-IP hourly value (advisory: only the per-minute window is enforced) / burst (blacklist threshold: more than 2x burst attempts, accepted plus rejected, in one minute blacklists the IP for 30 min) | 60x / 2x per-minute |
+| `RATE_LIMIT_USER_*` / `RATE_LIMIT_API_KEY_*` | Same three settings for the per-user / per-API-key rules (applied on top of the per-IP rule, per-minute window only: per-user when the request carries a verified Bearer access token, per-API-key, hashed, when it sends `X-API-Key`) | `200` / `1000` per minute |
 
 ### Render.yaml Example
 

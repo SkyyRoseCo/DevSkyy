@@ -9297,3 +9297,4 @@
 ## tests/ (rate limiting)
 
 - `test_rate_limit_env.py` — env-configurable default rate limits in security/rate_limiting.py (RATE_LIMIT_{IP,USER,API_KEY}_*), incl. real-HTTP enforcement via TestClient. (~1300 tok)
+- `test_rate_limit_identity.py` — per-user (verified JWT) / per-API-key (hashed) limits on top of the per-IP rule, DDoS blacklist via rejected-attempt counting, and main_enterprise 429/403 (not 500) over a real TestClient. (~2000 tok)
