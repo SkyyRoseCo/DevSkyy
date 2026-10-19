@@ -57,8 +57,10 @@ def canonical(value):
 
 def fields(line):
     parts = line.rstrip(b"\n").split(b":")
-    assert len(parts) == 4 and all(re.fullmatch(rb"V(?:[0-9A-F]{2})*", part) for part in parts)
-    return tuple(bytes.fromhex(part[1:].decode()) for part in parts)
+    assert len(parts) == 4 and all(
+        part == b"N" or re.fullmatch(rb"V(?:[0-9A-F]{2})*", part) for part in parts
+    )
+    return tuple(None if part == b"N" else bytes.fromhex(part[1:].decode()) for part in parts)
 
 
 def validate(before, after, native_before, native_after, receipt, site):
@@ -102,7 +104,7 @@ def validate(before, after, native_before, native_after, receipt, site):
         picked = {}
         for line in rows:
             row = fields(line)
-            if row[1] == target_bytes and row[2].decode() in KEYS:
+            if row[1] == target_bytes and row[2] is not None and row[2].decode() in KEYS:
                 key = row[2].decode()
                 assert key not in picked
                 picked[key] = (line, row)
@@ -123,6 +125,7 @@ def validate(before, after, native_before, native_after, receipt, site):
         assert new_id > max(int(fields(row)[0]) for row in old)
         delete, insert = queries[index], queries[index + 8]
         assert delete["sql"] == "DELETE FROM wp_postmeta WHERE meta_id IN( " + str(old_id) + " )"
+        assert prior[3] is not None
         value = prior[3].decode()
         assert re.fullmatch(r"[A-Za-z0-9_.-]+", value)
         assert (
@@ -219,6 +222,7 @@ def main():
         "extra-writer",
         "changed-native-field",
         "duplicate-new-meta-id",
+        "null-to-empty-string",
     ]:
         old, new = copy.deepcopy(snapshots)
         nb, na, value = (
@@ -245,6 +249,11 @@ def main():
             value["audit"]["queries"][0]["stack"] = []
         elif mutation == "extra-writer":
             value["audit"]["queries"].append(value["audit"]["queries"][0])
+        elif mutation == "null-to-empty-string":
+            index = next(
+                i for i, line in enumerate(new["wp_postmeta.txt"]) if line.endswith(b":N\n")
+            )
+            new["wp_postmeta.txt"][index] = new["wp_postmeta.txt"][index][:-3] + b":V\n"
         elif mutation == "duplicate-new-meta-id":
             selected = [
                 fields(line)
