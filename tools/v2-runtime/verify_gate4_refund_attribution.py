@@ -13,12 +13,11 @@ import subprocess
 import sys
 import time
 
-from gate4_refund_attribution import validate_attribution
+from gate4_refund_attribution import validate_attribution, validate_controls
 
 if not __debug__:
     raise RuntimeError("Optimized offline verification is unsupported")
 ROOT = Path(__file__).resolve().parents[2]
-NATIVE_SOURCE = "2cd09fd0cd19fa72790dd32d718026c8ac4ee7db"
 
 
 def pin(p):
@@ -48,7 +47,6 @@ def main():
         "status": "INCOMPLETE",
         "authentication": "NOT_APPLICABLE",
         "native_run": run,
-        "native_executed_source": NATIVE_SOURCE,
         "offline_validation_source": subprocess.check_output(
             ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
         ).strip(),
@@ -57,13 +55,17 @@ def main():
     try:
         report_path = raw / "results.json"
         report = json.loads(report_path.read_text())
-        assert report["source_head"] == NATIVE_SOURCE
+        native_source = report["source_head"]
+        assert re.fullmatch(r"[0-9a-f]{40}", native_source)
+        result["native_executed_source"] = native_source
         assert (
             report["status"]
             == "PASS_PRIVATE_POPULATED_SYNC_AND_HISTORICAL_PAYMENTS_WITH_EXPLICIT_STOCK_PATH_LIMIT"
         )
         assert report["owned_services_stopped"] and report["protected_originals_unchanged"]
         assert report["cleanup_errors"] == report["service_cleanup_errors"] == []
+        module_path = ROOT / "tools/v2-runtime/gate4_refund_attribution.py"
+        assert pin(module_path) == report["source_pins"][str(module_path.relative_to(ROOT))]
         rows = [
             s
             for s in report["steps"]
@@ -90,7 +92,7 @@ def main():
         assert pin(after_receipt) == {k: after_metadata[k] for k in ["sha256", "bytes"]}
         after = decode(after_receipt)["snapshot"]
         body = subprocess.check_output(
-            ["git", "show", NATIVE_SOURCE + ":tools/v2-runtime/test_gate4_populated.py"], cwd=ROOT
+            ["git", "show", native_source + ":tools/v2-runtime/test_gate4_populated.py"], cwd=ROOT
         )
         assert (
             hashlib.sha256(body).hexdigest()
@@ -107,7 +109,15 @@ def main():
             node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name in names
         ]
         assert len(selected) == len(names)
-        namespace = {"RUN": run, "json": json, "datetime": datetime, "math": math, "re": re}
+        namespace = {
+            "RUN": run,
+            "PRIVATE": private,
+            "json": json,
+            "datetime": datetime,
+            "math": math,
+            "re": re,
+            "validate_attribution": validate_attribution,
+        }
         exec(
             compile(ast.Module(body=selected, type_ignores=[]), str(native_copy), "exec"), namespace
         )
@@ -120,55 +130,9 @@ def main():
         assert pin(site_manifest) == report["site_code_at_start"]
         inventory = json.loads(site_manifest.read_text())
         attribution = validate_attribution(value["audit"], site, inventory)
-        controls = []
-        witness = attribution["timestamp_writers"][0]
-        for mutation in [
-            "wrong-class",
-            "wrong-file",
-            "reordered-chain",
-            "extra-unattributed-writer",
-            "foreign-or-target-scope",
-            "target-or-foreign-scope",
-        ]:
-            bad = json.loads(json.dumps(value["audit"]))
-            query = bad["queries"][witness["query_index"]]
-            positions = witness["required_frame_positions"]
-            if mutation == "wrong-class":
-                query["stack"][positions[3]]["class"] = "Wrong_Native_Class"
-            elif mutation == "wrong-file":
-                query["stack"][positions[3]]["file"] += ".wrong"
-            elif mutation == "reordered-chain":
-                a, b = positions[3:5]
-                query["stack"][a], query["stack"][b] = query["stack"][b], query["stack"][a]
-            elif mutation == "extra-unattributed-writer":
-                extra = json.loads(json.dumps(query))
-                extra["stack"] = []
-                bad["queries"].append(extra)
-            else:
-                extra = json.loads(json.dumps(query))
-                target = bad["id"]
-                first, second = (
-                    (target + 100000, target)
-                    if mutation == "foreign-or-target-scope"
-                    else (target, target + 100000)
-                )
-                extra["sql"] = re.sub(
-                    r"\bWHERE\b.*\Z",
-                    "WHERE `id` = " + str(first) + " OR `id` = " + str(second),
-                    extra["sql"],
-                    flags=re.I | re.S,
-                )
-                if mutation == "foreign-or-target-scope":
-                    extra["stack"] = []
-                bad["queries"].append(extra)
-            try:
-                validate_attribution(bad, site, inventory)
-            except AssertionError:
-                controls.append(
-                    {"mutation": mutation, "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"}
-                )
-            else:
-                raise AssertionError("Attribution accepted " + mutation)
+        controls = validate_controls(value["audit"], site, inventory)
+        assert len(controls) == 17
+        assert controls == rows[0]["attribution_negatives"]
         inputs = [
             report_path,
             meta_path,
