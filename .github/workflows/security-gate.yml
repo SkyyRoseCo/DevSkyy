@@ -55,8 +55,12 @@ jobs:
         run: gitleaks detect --source . --verbose --redact --config .gitleaks.toml
 
       - name: Install TruffleHog
+        # Pinned: an unpinned "latest" install 404'd when v3.99.3 was tagged before
+        # its release assets were uploaded. Bump TRUFFLEHOG_VERSION deliberately.
+        env:
+          TRUFFLEHOG_VERSION: v3.99.2
         run: |
-          curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sudo sh -s -- -b /usr/local/bin
+          curl -sSfL "https://raw.githubusercontent.com/trufflesecurity/trufflehog/${TRUFFLEHOG_VERSION}/scripts/install.sh" | sudo sh -s -- -b /usr/local/bin "${TRUFFLEHOG_VERSION}"
 
       - name: Run TruffleHog
         run: trufflehog git file://. --only-verified --no-update
