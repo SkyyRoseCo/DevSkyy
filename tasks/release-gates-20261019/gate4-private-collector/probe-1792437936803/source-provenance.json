@@ -1,0 +1,75 @@
+{
+  "schema": "skyyrose.capability-source-provenance.v1",
+  "scope": "Additive phase/source mapping; no runtime reclassification",
+  "clarification": "Original archive directory is a retention namespace and does not imply every contained file existed at its directory-named Git commit. Offline reviewer belongs to1adf308; protocol references are pinned installed files. Original frozen files remain unchanged.",
+  "sources": [
+    {
+      "source_path": "tools/v2-runtime/gate4-private-collector/review-capability.cjs",
+      "sha256": "f1e665cd5c86f4af7581fc7d4bf6af99e39483ac405ccb8eea1edf71347bf570",
+      "bytes": 12379,
+      "phase": "OFFLINE_STRUCTURAL_REVIEW",
+      "source_commit": "1adf308d7598e2f0ca9fd4c130bcab822daf4a6c",
+      "binding": "GIT_BODY_MATCH",
+      "legacy_retention_namespace": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tools/v2-runtime/gate4-private-collector/review-capability.cjs",
+      "phase_correct_archive": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/1adf308d7598e2f0ca9fd4c130bcab822daf4a6c/tools/v2-runtime/gate4-private-collector/review-capability.cjs"
+    },
+    {
+      "source_path": "tools/v2-runtime/gate4-private-collector/capability.cjs",
+      "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+      "bytes": 30064,
+      "phase": "CAPTURE_OR_REFERENCE",
+      "source_commit": "3859b5c8ddc4f9a0cb48f81ab1680ab82861f046",
+      "binding": "GIT_BODY_MATCH",
+      "legacy_retention_namespace": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tools/v2-runtime/gate4-private-collector/capability.cjs",
+      "phase_correct_archive": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tools/v2-runtime/gate4-private-collector/capability.cjs"
+    },
+    {
+      "source_path": "tools/v2-runtime/gate4-private-collector/pipe.cjs",
+      "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+      "bytes": 3245,
+      "phase": "CAPTURE_OR_REFERENCE",
+      "source_commit": "3859b5c8ddc4f9a0cb48f81ab1680ab82861f046",
+      "binding": "GIT_BODY_MATCH",
+      "legacy_retention_namespace": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tools/v2-runtime/gate4-private-collector/pipe.cjs",
+      "phase_correct_archive": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tools/v2-runtime/gate4-private-collector/pipe.cjs"
+    },
+    {
+      "source_path": "tools/v2-runtime/gate4-private-collector/test-controls.cjs",
+      "sha256": "f29a4fd16ed9cee86cd99c0f04c7113bae6e5f9362931c25aa50c33c4456e50f",
+      "bytes": 9203,
+      "phase": "CAPTURE_OR_REFERENCE",
+      "source_commit": "3859b5c8ddc4f9a0cb48f81ab1680ab82861f046",
+      "binding": "GIT_BODY_MATCH",
+      "legacy_retention_namespace": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tools/v2-runtime/gate4-private-collector/test-controls.cjs",
+      "phase_correct_archive": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tools/v2-runtime/gate4-private-collector/test-controls.cjs"
+    },
+    {
+      "source_path": "tools/v2-runtime/phase3b-browser/node_modules/playwright-core/types/protocol.d.ts",
+      "sha256": "0410ed82a9ac63269dc1471ed249b280e2d461249a3a331e71cdb54cdf10db33",
+      "bytes": 814210,
+      "phase": "CAPTURE_OR_REFERENCE",
+      "source_commit": null,
+      "binding": "PINNED_PROTOCOL_REFERENCE_NOT_GIT_TRACKED",
+      "legacy_retention_namespace": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tools/v2-runtime/phase3b-browser/node_modules/playwright-core/types/protocol.d.ts"
+    },
+    {
+      "source_path": "tools/v2-runtime/phase3b-browser/node_modules/playwright-core/package.json",
+      "sha256": "f061c58427e47e843e26d201f0a57076c734e57c734ecbbd87d4a23b7a20db9b",
+      "bytes": 876,
+      "phase": "CAPTURE_OR_REFERENCE",
+      "source_commit": null,
+      "binding": "PINNED_PROTOCOL_REFERENCE_NOT_GIT_TRACKED",
+      "legacy_retention_namespace": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tools/v2-runtime/phase3b-browser/node_modules/playwright-core/package.json"
+    },
+    {
+      "source_path": "tasks/release-gates-20261019/gate4-private-collector/PLAN.md",
+      "sha256": "3545aa393e221ac365640901263d24da1aefbd39a5efbc4cb48e151c185b6d12",
+      "bytes": 5586,
+      "phase": "CAPTURE_OR_REFERENCE",
+      "source_commit": "3859b5c8ddc4f9a0cb48f81ab1680ab82861f046",
+      "binding": "GIT_BODY_MATCH",
+      "legacy_retention_namespace": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tasks/release-gates-20261019/gate4-private-collector/PLAN.md",
+      "phase_correct_archive": ".artifacts/release-gates-20261019/gate4-private-collector/source-snapshots/3859b5c8ddc4f9a0cb48f81ab1680ab82861f046/tasks/release-gates-20261019/gate4-private-collector/PLAN.md"
+    }
+  ]
+}
