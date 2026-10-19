@@ -56,6 +56,7 @@ REPORT = {
         "Only two source-verified native address-search index exposures are partitioned; raw values/type/multiplicity and all other metadata remain strict",
         "Exact one-index-row requirement belongs to this native-created fixture, not arbitrary installed historical rows",
         "Only the attributed first HPOS-refund backfill modified timestamp may advance; all other fields/dates and converged/retry timestamps remain strict",
+        "Prior ae17 forced already-converged refund replay physically replaces eight CPT metadata IDs; physical NOOP here qualifies only freshly selected empty native batches",
     ],
 }
 
@@ -878,6 +879,8 @@ def main():
         ROOT / "tools/v2-runtime/gate4-populated-fixture.php",
         ROOT / "tools/v2-runtime/variation-migration-core-populated.php",
         Path(base.__file__),
+        ROOT / "tasks/release-gates-20261019/gate4-populated/RETRY-CONTRACT.md",
+        ROOT / "tasks/release-gates-20261019/gate4-populated/run-1792436377553439000/results.json",
         ROOT / "tools/v2-runtime/gate4_refund_attribution.py",
         ROOT / "logo-registry.json",
         ROOT / "skyyrose/core/product.py",
@@ -906,6 +909,22 @@ def main():
                 capture_output=True,
             ).returncode
             != 0
+        )
+        retained_path = (
+            ROOT
+            / "tasks/release-gates-20261019/gate4-populated/run-1792436377553439000/results.json"
+        )
+        retained = json.loads(retained_path.read_text())
+        assert retained["status"] == "FAIL_EXECUTION"
+        assert retained["source_head"] == "ae17d6eb5e9ba2726e448f276814dd0d3684a11d"
+        assert retained["owned_services_stopped"] and retained["protected_originals_unchanged"]
+        record(
+            "RETAINED_FORCED_CONVERGED_REFUND_PHYSICAL_REWRITE_LIMIT",
+            run=retained["run"],
+            source=retained["source_head"],
+            original_status=retained["status"],
+            receipt={"path": str(retained_path.relative_to(ROOT)), **pin(retained_path)},
+            limit="Forced supplied converged IDs are not physically idempotent; no raw metadata ID normalization. Selected-empty retry is a separate workflow assertion.",
         )
         containment()
         shutil.copytree(
@@ -1291,14 +1310,20 @@ def main():
                 assert set(AUDIT_TRANSITIONS) == {"financial_refund_hpos"}
                 retry_before = inspect()
                 retry_raw_before = scope()
-                retry = native("retry-refund")
+                selected = next_batch()
+                assert selected["pending"] == 0 and selected["batch"] == []
+                retry = native("batch")
                 retry_after = inspect()
-                assert retry["pending_after"] == 0 and retry["audit"]["refund_saves"] == []
+                assert (
+                    retry["pending_after"] == 0 and retry["batch"] == [] and retry["audit"] is None
+                )
                 assert same_orders(retry_before["orders"], retry_after["orders"]) and same(
                     retry_before["products"], retry_after["products"]
                 )
                 assert row_pins(retry_raw_before) == row_pins(scope())
-                record("CONVERGED_HPOS_REFUND_NATIVE_RETRY_NOOP", receipt=retry)
+                record(
+                    "CONVERGED_SELECTOR_DRIVEN_NATIVE_RETRY_NOOP", selection=selected, receipt=retry
+                )
             equivalence(direction + "-quiescent")
             switched = native("switch", target)
             assert not switched["refused"] and switched["authority"] == target
