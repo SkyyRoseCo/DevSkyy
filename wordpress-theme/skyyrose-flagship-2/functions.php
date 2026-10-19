@@ -385,6 +385,18 @@ function skyyrose2_asset_version( $relative_path ) {
 	return $versions[ $relative_path ];
 }
 
+/** Register core independently; registration alone makes no browser request. */
+function skyyrose2_three_core_handle() {
+	static $registered = false;
+	if ( ! $registered ) {
+		$script = '/assets/js/three-core-loader' . skyyrose2_asset_suffix() . '.js';
+		wp_register_script( 'skyyrose2-three-core', SKYYROSE2_URI . $script, array(), skyyrose2_asset_version( $script ), true );
+		wp_localize_script( 'skyyrose2-three-core', 'SKYYROSE_THREE_CORE', array( 'moduleBase' => SKYYROSE2_URI . '/assets/js/lib/three-r170/' ) );
+		$registered = true;
+	}
+	return 'skyyrose2-three-core';
+}
+
 function skyyrose2_assets() {
 	$suffix                  = skyyrose2_asset_suffix();
 	$collection_slug         = skyyrose2_collection_page_slug();
@@ -548,7 +560,7 @@ JS
 	}
 	if ( skyyrose2_mascot_enabled() && ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
 		wp_enqueue_style( 'skyyrose2-mascot', SKYYROSE2_URI . $mascot_style, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $mascot_style ) );
-		wp_enqueue_script( 'skyyrose2-mascot-loader', SKYYROSE2_URI . $loader_script, array(), skyyrose2_asset_version( $loader_script ), true );
+		wp_enqueue_script( 'skyyrose2-mascot-loader', SKYYROSE2_URI . $loader_script, array( skyyrose2_three_core_handle() ), skyyrose2_asset_version( $loader_script ), true );
 		wp_localize_script(
 			'skyyrose2-mascot-loader',
 			'SKYY_LOADER_CONFIG',

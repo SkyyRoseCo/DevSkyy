@@ -15,11 +15,13 @@ assert.equal(fixture.home, base);
 assert.equal(fixture.routes.length, 10);
 assert.equal(new Set(Object.values(fixture.products).map(p => p.url)).size, Object.keys(fixture.products).length, 'native product URLs must be unique');
 for (const product of Object.values(fixture.products)) assert.equal(new URL(product.url).origin, base);
-const out = path.join(root, 'tasks/release-gates-20261019/evidence', smoke ? 'browser-smoke' : 'browser-ten-routes');
+const run = process.env.SR_RELEASE_RUN || '';
+assert.match(run, /^(?:[a-z0-9-]+)?$/);
+const out = path.join(root, 'tasks/release-gates-20261019', run, 'evidence', smoke ? 'browser-smoke' : 'browser-ten-routes');
 fs.mkdirSync(out, { recursive: true });
 const sha = data => crypto.createHash('sha256').update(data).digest('hex');
 const theme = path.join(root, 'wordpress-theme/skyyrose-flagship-2');
-const sourcePins = Object.fromEntries(['assets/js/immersive.js', 'assets/js/immersive.min.js', 'template-parts/immersive/world.php', 'data/v2-media-eligibility.json'].map(p => [p, sha(fs.readFileSync(path.join(theme, p)))]));
+const sourcePins = Object.fromEntries(['assets/js/immersive.js', 'assets/js/immersive.min.js', 'assets/js/three-core-loader.js', 'assets/js/three-core-loader.min.js', 'assets/js/lib/three-r170/three.module.min.js', 'functions.php', 'template-parts/immersive/world.php', 'data/v2-media-eligibility.json'].map(p => [p, sha(fs.readFileSync(path.join(theme, p)))]));
 const profiles = smoke ? [{ name: 'desktop-reduced', width: 1440, height: 900, reducedMotion: 'reduce' }] : [
   { name: 'desktop-full', width: 1440, height: 900, reducedMotion: 'no-preference' },
   { name: 'desktop-reduced', width: 1440, height: 900, reducedMotion: 'reduce' },

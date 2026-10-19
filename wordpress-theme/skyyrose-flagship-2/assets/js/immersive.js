@@ -11,9 +11,10 @@
 
   const root = document.querySelector('.sr2-immersive');
 
-  if (!root) {
+  if (!root || root.dataset.immersiveRuntime) {
     return;
   }
+  root.dataset.immersiveRuntime = 'mounted';
 
   const canvas = root.querySelector('.sr2-immersive__canvas');
   const poster = root.querySelector('.sr2-immersive__poster img');
@@ -26,6 +27,8 @@
   const saveData = Boolean(navigator.connection && navigator.connection.saveData);
   let posterReady = Boolean(poster && poster.complete && poster.naturalWidth > 0);
   let config = {};
+  let cancelAtmosphere = () => {};
+  let atmosphereStarting = false;
 
   try {
     config = configNode ? JSON.parse(configNode.textContent) : {};
@@ -63,14 +66,16 @@
     if (status) {
       status.classList.remove('screen-reader-text');
     }
+    cancelAtmosphere();
     usePoster('poster-unavailable');
   }
 
   if (poster) {
     poster.addEventListener('load', () => {
       posterReady = poster.naturalWidth > 0;
+      poster.hidden = !posterReady;
       root.dataset.posterState = posterReady ? 'ready' : 'unavailable';
-      if (!root.classList.contains('is-motion-ready')) {
+      if (!atmosphereStarting && !root.classList.contains('is-motion-ready')) {
         usePoster(posterReady ? 'poster' : 'poster-unavailable');
       }
     });
@@ -151,8 +156,9 @@
   );
   updateProgress();
 
+  let chapterObserver;
   if ('IntersectionObserver' in window) {
-    const chapterObserver = new IntersectionObserver(
+    chapterObserver = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           entry.target.classList.toggle('is-active', entry.isIntersecting);
@@ -196,18 +202,87 @@
     return;
   }
 
+  if (root.dataset.posterState === 'unavailable') {
+    usePoster('poster-unavailable');
+    return;
+  }
+
   if (!canUseWebGL()) {
     usePoster('webgl-unavailable');
     return;
   }
 
   let booted = false;
+  let closed = false;
+  let suspended = false;
+  let rendered = false;
+  let startupTimer;
+  let pauseScene = () => {};
+  let resumeScene = () => {};
+  let disposeScene = () => {};
+
+  function failScene(reason) {
+    if (closed) return;
+    closed = true;
+    atmosphereStarting = false;
+    clearTimeout(startupTimer);
+    document.removeEventListener('three-ready', bootThree);
+    window.removeEventListener('three-ready', bootThree);
+    reducedMotion.removeEventListener?.('change', onMotionChange);
+    navigator.connection?.removeEventListener?.('change', onConnectionChange);
+    disposeScene();
+    usePoster(reason);
+  }
+  cancelAtmosphere = () => failScene('poster-unavailable');
+
+  function onMotionChange() {
+    if (reducedMotion.matches) failScene('reduced-motion');
+  }
+  function onConnectionChange() {
+    if (navigator.connection && navigator.connection.saveData) failScene('save-data');
+  }
+  function onPageHide(event) {
+    suspended = true;
+    clearTimeout(startupTimer);
+    pauseScene();
+    if (!event.persisted) {
+      closed = true;
+      disposeScene();
+      if (chapterObserver) chapterObserver.disconnect();
+      document.removeEventListener('three-ready', bootThree);
+      window.removeEventListener('three-ready', bootThree);
+      window.removeEventListener('pageshow', onPageShow);
+      window.removeEventListener('pagehide', onPageHide);
+      reducedMotion.removeEventListener?.('change', onMotionChange);
+      navigator.connection?.removeEventListener?.('change', onConnectionChange);
+      root.dataset.immersiveRuntime = 'disposed';
+    }
+  }
+  function onPageShow(event) {
+    if (!event.persisted || closed) return;
+    suspended = false;
+    if (reducedMotion.matches) { failScene('reduced-motion'); return; }
+    if (navigator.connection && navigator.connection.saveData) { failScene('save-data'); return; }
+    if (!rendered) armStartupTimer();
+    if (booted) resumeScene(); else bootThree();
+  }
+  function armStartupTimer() {
+    clearTimeout(startupTimer);
+    startupTimer = window.setTimeout(() => {
+      if (!rendered && !suspended) failScene('three-timeout');
+    }, 10000);
+  }
+  window.addEventListener('pagehide', onPageHide);
+  window.addEventListener('pageshow', onPageShow);
+  reducedMotion.addEventListener?.('change', onMotionChange);
+  navigator.connection?.addEventListener?.('change', onConnectionChange);
 
   function bootThree() {
-    if (booted || !window.THREE || !canvas) {
+    if (booted || closed || suspended || reducedMotion.matches || (navigator.connection && navigator.connection.saveData) || !window.THREE || !canvas) {
       return;
     }
     booted = true;
+    atmosphereStarting = true;
 
     try {
       const THREE = window.THREE;
@@ -219,13 +294,47 @@
         antialias: true,
         powerPreference: 'high-performance',
       });
-      const world = createWorld(THREE, scene, camera, config);
+      root.dataset.sceneBoots = String(Number(root.dataset.sceneBoots || 0) + 1);
+      let world;
       const clock = new THREE.Clock();
       const pointer = new THREE.Vector2();
       const entry = root.querySelector('.sr2-immersive__entry');
       let running = false;
       let frame = 0;
       let inView = true;
+      let sceneObserver;
+      let frameCount = 0;
+      let disposed = false;
+
+      function destroy() {
+        if (disposed) return;
+        disposed = true;
+        canvas.dataset.sceneDisposed = 'true';
+        stop();
+        if (sceneObserver) sceneObserver.disconnect();
+        window.removeEventListener('resize', resize);
+        window.removeEventListener('pointermove', onPointerMove);
+        document.removeEventListener('visibilitychange', onVisibilityChange);
+        canvas.removeEventListener('webglcontextlost', onContextLost);
+        if (world) world.dispose();
+        else scene.traverse(object => {
+          object.geometry?.dispose();
+          const materials = Array.isArray(object.material) ? object.material : [object.material];
+          materials.forEach(material => material?.dispose());
+        });
+        renderer.dispose();
+      }
+      disposeScene = destroy;
+      pauseScene = stop;
+      resumeScene = () => {
+        frameCount = 0;
+        canvas.skyyRoseRenderedFrames = 0;
+        canvas.dataset.renderedFrames = '0';
+        root.dataset.sceneResumes = String(Number(root.dataset.sceneResumes || 0) + 1);
+        resize();
+        start();
+      };
+      world = createWorld(THREE, scene, camera, config);
 
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
       renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -233,30 +342,53 @@
       renderer.toneMappingExposure = 0.88;
 
       function resize() {
-        const width = Math.max(1, canvas.clientWidth);
-        const height = Math.max(1, canvas.clientHeight);
+        // The canvas remains display:none until a successful frame. Measure its
+        // visible containing block so the first frame has the final resolution.
+        const width = Math.max(1, entry ? entry.clientWidth : canvas.parentElement.clientWidth);
+        const height = Math.max(1, entry ? entry.clientHeight : canvas.parentElement.clientHeight);
         const pixelWidth = Math.floor(width * renderer.getPixelRatio());
         const pixelHeight = Math.floor(height * renderer.getPixelRatio());
 
         if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
           renderer.setSize(width, height, false);
+        }
+        if (camera.aspect !== width / height) {
           camera.aspect = width / height;
           camera.updateProjectionMatrix();
         }
+        canvas.skyyRoseCameraAspect = camera.aspect;
       }
 
       function render() {
-        if (!running) {
+        if (!running || closed || suspended || disposed || reducedMotion.matches || (navigator.connection && navigator.connection.saveData)) {
+          stop();
           return;
         }
-        const elapsed = clock.getElapsedTime();
-        world.update(elapsed, pointer);
-        renderer.render(scene, camera);
+        try {
+          const elapsed = clock.getElapsedTime();
+          world.update(elapsed, pointer);
+          renderer.render(scene, camera);
+        } catch (error) {
+          failScene('scene-error');
+          return;
+        }
+        frameCount += 1;
+        canvas.skyyRoseRenderedFrames = frameCount;
+        if (frameCount <= 2) canvas.dataset.renderedFrames = String(frameCount);
+        if (!rendered) {
+          rendered = true;
+          atmosphereStarting = false;
+          clearTimeout(startupTimer);
+          canvas.hidden = false;
+          root.classList.add('is-motion-ready');
+          root.dataset.sceneState = 'three-ready';
+          announce('The optional atmospheric story layer is ready.');
+        }
         frame = window.requestAnimationFrame(render);
       }
 
       function start() {
-        if (running || document.hidden || !inView) {
+        if (running || closed || suspended || disposed || reducedMotion.matches || (navigator.connection && navigator.connection.saveData) || document.hidden || !inView) {
           return;
         }
         running = true;
@@ -285,23 +417,20 @@
         }
       }
 
-      function destroy() {
-        stop();
-        window.removeEventListener('resize', resize);
-        window.removeEventListener('pointermove', onPointerMove);
-        document.removeEventListener('visibilitychange', onVisibilityChange);
-        world.dispose();
-        renderer.dispose();
+      function onContextLost(event) {
+        event.preventDefault();
+        failScene('webgl-context-lost');
       }
 
       window.addEventListener('resize', resize, { passive: true });
       window.addEventListener('pointermove', onPointerMove, { passive: true });
       document.addEventListener('visibilitychange', onVisibilityChange);
-      window.addEventListener('pagehide', destroy, { once: true });
+      canvas.addEventListener('webglcontextlost', onContextLost);
 
       if ('IntersectionObserver' in window && entry) {
-        const sceneObserver = new IntersectionObserver(
+        sceneObserver = new IntersectionObserver(
           entries => {
+            if (closed || disposed) return;
             inView = entries.some(item => item.isIntersecting);
             if (inView) {
               start();
@@ -316,12 +445,10 @@
 
       resize();
       canvas.hidden = false;
-      root.classList.add('is-motion-ready');
-      root.dataset.sceneState = 'three-ready';
-      announce('The optional atmospheric story layer is ready.');
+      root.dataset.sceneState = 'three-rendering';
       start();
     } catch (error) {
-      usePoster('scene-error');
+      failScene('scene-error');
     }
   }
 
@@ -499,8 +626,9 @@
     };
   }
 
-  document.addEventListener('three-ready', bootThree, { once: true });
-  window.addEventListener('three-ready', bootThree, { once: true });
+  document.addEventListener('three-ready', bootThree);
+  window.addEventListener('three-ready', bootThree);
+  armStartupTimer();
 
   if (window.THREE) {
     bootThree();
@@ -510,16 +638,13 @@
       correlation_id: config.correlationId || root.dataset.correlationId || '',
       source: 'immersive-world',
     };
-    if (typeof window.skyyRoseLoadThree === 'function') {
-      window.skyyRoseLoadThree(() => bootThree());
+    if (window.skyyRoseThreeCore) {
+      window.skyyRoseThreeCore.load(() => bootThree()).catch(() => failScene('three-unavailable'));
+    } else if (typeof window.skyyRoseLoadThree === 'function') {
+      Promise.resolve(window.skyyRoseLoadThree(() => bootThree())).catch(() => failScene('three-unavailable'));
     } else {
       window.dispatchEvent(new CustomEvent('skyyrose:request-three', { detail }));
     }
   }
 
-  window.setTimeout(() => {
-    if (!booted) {
-      usePoster('three-timeout');
-    }
-  }, 12000);
 })();

@@ -1,5 +1,7 @@
 # Locally retained browser pixels/raw traces are indexed, not exported in Git.
 evidence/**/*.png
 evidence/**/*.zip
+successor-three/evidence/**/*.png
+successor-three/evidence/**/*.zip
 evidence/native-http-server.txt
 evidence/native-world-signature-initial.html

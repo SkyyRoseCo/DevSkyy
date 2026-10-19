@@ -283,7 +283,7 @@
           if (!base.endsWith('/')) throw new Error('Skyy moduleBase must be a directory');
           return limited(
             Promise.all([
-              import(base + 'three.module.min.js'),
+              window.skyyRoseThreeCore.load().then(function (loaded) { return loaded[0]; }),
               import(base + 'GLTFLoader.js'),
               import(base + 'DRACOLoader.js'),
             ]),
@@ -291,10 +291,8 @@
           );
         })
         .then(function (loaded) {
-          window.THREE = loaded[0];
           window.THREE_GLTFLoader = loaded[1].GLTFLoader;
           window.THREE_DRACOLoader = loaded[2].DRACOLoader;
-          document.dispatchEvent(new Event('three-ready'));
           return loaded;
         });
     var result = dependency.then(function (loaded) {
@@ -306,10 +304,6 @@
     result.catch(function () {});
     return result;
   }
-  window.skyyRoseLoadThree = loadThree;
-  window.addEventListener('skyyrose:request-three', function () {
-    loadThree();
-  });
   function lightMode() {
     return motion.matches || !!(connection && connection.saveData);
   }

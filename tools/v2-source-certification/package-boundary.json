@@ -1665,6 +1665,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/js/three-core-loader.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Lazy self-hosted Three core shared by world scenes; no mascot or model activation",
+      "release": true
+    },
+    "assets/js/three-core-loader.min.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Lazy self-hosted Three core shared by world scenes; no mascot or model activation",
+      "release": true
+    },
     "assets/js/visual-recovery.js": {
       "category": "RUNTIME SOURCE",
       "reason": "Approved mandatory visual system or pinned self-hosted dependency",

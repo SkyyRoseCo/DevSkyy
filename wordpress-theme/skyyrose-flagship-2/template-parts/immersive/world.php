@@ -62,7 +62,11 @@ $css_suffix = ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) && file_exists( $m
 $js_suffix  = ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) && file_exists( $min_js ) && filemtime( $min_js ) >= filemtime( $source_js ) ? '.min' : '';
 
 wp_enqueue_style( 'skyyrose2-immersive', SKYYROSE2_URI . '/assets/css/immersive' . $css_suffix . '.css', array( 'skyyrose2-tokens', 'skyyrose2-theme' ), SKYYROSE2_VERSION );
-wp_enqueue_script( 'skyyrose2-immersive', SKYYROSE2_URI . '/assets/js/immersive' . $js_suffix . '.js', array( 'skyyrose2-theme' ), SKYYROSE2_VERSION, true );
+$immersive_dependencies = array( 'skyyrose2-theme' );
+if ( ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
+	$immersive_dependencies[] = skyyrose2_three_core_handle();
+}
+wp_enqueue_script( 'skyyrose2-immersive', SKYYROSE2_URI . '/assets/js/immersive' . $js_suffix . '.js', $immersive_dependencies, SKYYROSE2_VERSION, true );
 
 // Resolve the existing canonical collection/placement binding. A generic media
 // URI, a card approval or a filename cannot grant a hero/story placement.

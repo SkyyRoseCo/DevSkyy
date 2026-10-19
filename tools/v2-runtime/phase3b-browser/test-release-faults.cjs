@@ -8,12 +8,14 @@ const crypto = require('node:crypto');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '../../..');
 const base = 'http://127.0.0.1:18362';
-const out = path.join(root, 'tasks/release-gates-20261019/evidence/browser-faults');
+const run = process.env.SR_RELEASE_RUN || '';
+assert.match(run, /^(?:[a-z0-9-]+)?$/);
+const out = path.join(root, 'tasks/release-gates-20261019', run, 'evidence/browser-faults');
 const fixture = JSON.parse(fs.readFileSync(path.join(root, 'tasks/release-gates-20261019/evidence/native-browser-fixture.json')));
 const worldPath = fixture.routes.find(r => r.kind === 'world' && r.collection === 'signature').path;
 fs.mkdirSync(out, { recursive: true });
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
-const report = { classification: 'REPRODUCED_LOCAL_NATIVE_WITH_SYNTHETIC_FAULTS', authentication: 'NOT_APPLICABLE', driver_sha256: sha(fs.readFileSync(__filename)), fixture_sha256: sha(fs.readFileSync(path.join(root, 'tasks/release-gates-20261019/evidence/native-browser-fixture.json'))), runtime: { wp: fixture.wp, woo: fixture.woocommerce }, source_pins: Object.fromEntries(['assets/css/immersive.css', 'assets/css/immersive.min.css', 'assets/js/immersive.js', 'assets/js/immersive.min.js', 'template-parts/immersive/world.php'].map(p => [p, sha(fs.readFileSync(path.join(root, 'wordpress-theme/skyyrose-flagship-2', p)))])), cases: [], creative_acceptance: 'NOT_GRANTED' };
+const report = { classification: 'REPRODUCED_LOCAL_NATIVE_WITH_SYNTHETIC_FAULTS', authentication: 'NOT_APPLICABLE', driver_sha256: sha(fs.readFileSync(__filename)), fixture_sha256: sha(fs.readFileSync(path.join(root, 'tasks/release-gates-20261019/evidence/native-browser-fixture.json'))), runtime: { wp: fixture.wp, woo: fixture.woocommerce }, source_pins: Object.fromEntries(['functions.php', 'assets/js/three-core-loader.js', 'assets/js/three-core-loader.min.js', 'assets/js/lib/three-r170/three.module.min.js', 'assets/css/immersive.css', 'assets/css/immersive.min.css', 'assets/js/immersive.js', 'assets/js/immersive.min.js', 'template-parts/immersive/world.php'].map(p => [p, sha(fs.readFileSync(path.join(root, 'wordpress-theme/skyyrose-flagship-2', p)))])), cases: [], creative_acceptance: 'NOT_GRANTED' };
 const controls = ['poster-error-before-script', 'poster-error-after-script', 'chapter-error-before-script', 'chapter-error-after-script', 'chapter-error-while-poster-loading', 'chapter-absent', 'delayed-poster-success', 'storage-denied', 'save-data', 'webgl-unavailable', 'renderer-error', 'javascript-disabled'];
 async function until(page, predicate) {
   await page.waitForFunction(predicate, undefined, { timeout: 15000 });
