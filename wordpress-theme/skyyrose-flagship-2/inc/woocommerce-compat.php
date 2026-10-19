@@ -10,6 +10,23 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/** Read the durable migration guard without trusting a persistent option cache. */
+function skyyrose2_preorder_migration_journal( $product_id ) {
+	global $wpdb;
+	$raw = $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name=%s", 'skyyrose_v2_phase2_variations_' . (int) $product_id ) );
+	if ( $wpdb->last_error ) {
+		throw new Exception( esc_html__( 'This product needs review before checkout. Please try again later.', 'skyyrose-flagship-2' ) );
+	}
+	if ( null === $raw ) {
+		return null;
+	}
+	$journal = maybe_unserialize( $raw );
+	if ( ! is_array( $journal ) || 'skyyrose.size-migration.v1' !== ( $journal['schema'] ?? '' ) || (int) $product_id !== ( $journal['parent_id'] ?? null ) || 'COMPLETE' !== ( $journal['state'] ?? '' ) || ! is_string( $journal['plan_sha256'] ?? null ) || ! preg_match( '/^[a-f0-9]{64}$/D', $journal['plan_sha256'] ) ) {
+		throw new Exception( esc_html__( 'This product is being updated. Review it again before checkout.', 'skyyrose-flagship-2' ) );
+	}
+	return $journal;
+}
+
 /**
  * Resolve product identity and inherited WooCommerce preorder metadata.
  *
@@ -19,11 +36,18 @@ defined( 'ABSPATH' ) || exit;
  * @throws Exception When the transaction fails validation.
  */
 function skyyrose2_preorder_config( $product_id, $variation_id = 0, $selection = array() ) {
+	skyyrose2_preorder_migration_journal( $product_id );
 	$product = wc_get_product( $product_id );
 	$chosen  = $variation_id ? wc_get_product( $variation_id ) : $product;
 	if ( ! $product || ! $chosen || ( $variation_id && ( ! $chosen->is_type( 'variation' ) || (int) $chosen->get_parent_id() !== (int) $product_id ) ) || ( ! $variation_id && ! $product->is_type( 'simple' ) ) ) {
 		throw new Exception( esc_html__( 'Choose a valid product and variation before adding it to your bag.', 'skyyrose-flagship-2' ) );
 	}
+	return skyyrose2_preorder_effective_config( $product, $chosen, $variation_id, $selection );
+}
+
+/** Resolve current metadata after identity/context validation; never writes history. */
+function skyyrose2_preorder_effective_config( $product, $chosen, $variation_id = 0, $selection = array(), $recorded_preorder = false ) {
+	$product_id = $product->get_id();
 	$values  = array();
 	$sources = array();
 	foreach ( array( '_is_preorder', '_preorder_edition_size', '_preorder_available', '_preorder_ship_date' ) as $key ) {
@@ -35,7 +59,7 @@ function skyyrose2_preorder_config( $product_id, $variation_id = 0, $selection =
 			}
 		}
 	}
-	$preorder = '1' === (string) ( $values['_is_preorder'] ?? '0' );
+	$preorder = $recorded_preorder || '1' === (string) ( $values['_is_preorder'] ?? '0' );
 	// A registry-derived preorder label must receive the same transaction protection.
 	if ( function_exists( 'skyyrose2_is_preorder_product' ) ) {
 		$preorder = $preorder || skyyrose2_is_preorder_product( $product );
@@ -279,15 +303,37 @@ add_action( 'woocommerce_checkout_create_order', 'skyyrose2_preorder_validate_ne
  */
 function skyyrose2_preorder_validate_order_payment( $order, $errors ) {
 	$pools = array();
-	foreach ( $order->get_items() as $item ) {
+	// Payment context must come from persisted native records, not unsaved edits
+	// on a caller's order/item object. New checkout has its separate cart guard.
+	if ( ! $order->get_id() || ! wc_get_order( $order->get_id() ) ) {
+		$errors->add( 'skyyrose_preorder_order', __( 'A saved order is required before payment.', 'skyyrose-flagship-2' ) );
+		return;
+	}
+	$persisted_order = new WC_Order( $order->get_id() );
+	$caller_items = $order->get_items();
+	if ( array_keys( $caller_items ) !== array_keys( $persisted_order->get_items() ) ) {
+		$errors->add( 'skyyrose_preorder_order', __( 'Save and review the order before payment.', 'skyyrose-flagship-2' ) );
+		return;
+	}
+	foreach ( $persisted_order->get_items() as $item ) {
+		$caller_item = $caller_items[ $item->get_id() ];
+		if ( $caller_item->get_product_id() !== $item->get_product_id() || $caller_item->get_variation_id() !== $item->get_variation_id() || $caller_item->get_quantity() !== $item->get_quantity() || $caller_item->get_meta( '_skyyrose_preorder_snapshot', true ) !== $item->get_meta( '_skyyrose_preorder_snapshot', true ) ) {
+			$errors->add( 'skyyrose_preorder_order', __( 'Save and review the order before payment.', 'skyyrose-flagship-2' ) );
+			continue;
+		}
+		try {
+			skyyrose2_preorder_migration_journal( $item->get_product_id() );
+		} catch ( Exception $error ) {
+			$errors->add( 'skyyrose_preorder_order', $error->getMessage() );
+			continue;
+		}
 		$record = skyyrose2_preorder_read_item( $item );
 		if ( 'recorded' !== $record['status'] || empty( $record['snapshot']['is_preorder'] ) ) {
 			// Unknown historical promises stay unknown; native Woo validates stock.
 			continue;
 		}
 		try {
-			$config                = skyyrose2_preorder_config( $item->get_product_id(), $item->get_variation_id() );
-			$config['is_preorder'] = true;
+			$config = skyyrose2_preorder_recorded_order_config( $persisted_order, $item, $record['snapshot'] );
 			$pool                  = $config['allocation_source_id'];
 			$pools[ $pool ]        = ( $pools[ $pool ] ?? 0 ) + $item->get_quantity();
 			skyyrose2_preorder_validate_quantity( $config, $pools[ $pool ], null );
@@ -297,6 +343,47 @@ function skyyrose2_preorder_validate_order_payment( $order, $errors ) {
 	}
 }
 add_action( 'woocommerce_checkout_validate_order_before_payment', 'skyyrose2_preorder_validate_order_payment', 10, 2 );
+
+/** Narrow persisted pre-conversion exception; new purchases still select a child. */
+function skyyrose2_preorder_recorded_order_config( $order, $item, $snapshot ) {
+	$fresh_order = $order->get_id() ? new WC_Order( $order->get_id() ) : null;
+	$fresh_item = $item->get_id() ? new WC_Order_Item_Product( $item->get_id() ) : null;
+	if ( ! $fresh_order || ! $fresh_item || (int) $fresh_item->get_order_id() !== (int) $fresh_order->get_id() || $fresh_item->get_product_id() !== $item->get_product_id() || $fresh_item->get_variation_id() !== $item->get_variation_id() || $fresh_item->get_quantity() !== $item->get_quantity() || $snapshot !== $fresh_item->get_meta( '_skyyrose_preorder_snapshot', true ) || ! $fresh_order->get_date_created() || ! $order->get_date_created() || $fresh_order->get_date_created()->getTimestamp() !== $order->get_date_created()->getTimestamp() ) {
+		throw new Exception( __( 'The saved order identity needs review before payment.', 'skyyrose-flagship-2' ) );
+	}
+	$order = $fresh_order;
+	$item = $fresh_item;
+	$product = wc_get_product( $item->get_product_id() );
+	$variation_id = (int) $item->get_variation_id();
+	if ( ! $product || ! $item->get_id() || (int) $item->get_order_id() !== (int) $order->get_id() ) {
+		throw new Exception( __( 'The saved product identity needs review before payment.', 'skyyrose-flagship-2' ) );
+	}
+	if ( ! $variation_id && $product->is_type( 'variable' ) ) {
+		$journal = skyyrose2_preorder_migration_journal( $product->get_id() );
+		$created = $order->get_date_created();
+		$cutoff = is_array( $journal ) ? ( $journal['cutoff_utc'] ?? '' ) : '';
+		if ( ! is_string( $cutoff ) ) {
+			throw new Exception( __( 'The saved migration date needs review before payment.', 'skyyrose-flagship-2' ) );
+		}
+		$cutoff_date = DateTimeImmutable::createFromFormat( '!Y-m-d\TH:i:s\Z', $cutoff, new DateTimeZone( 'UTC' ) );
+		// The original v1 producer (119146cef0) recorded native IDs and source
+		// IDs, but no SKU or selected-attribute fields. Never invent those fields.
+		$version = $snapshot['schema_version'] ?? null;
+		$identity_valid = 2 === $version
+			? array() === ( $snapshot['attributes'] ?? null ) && $product->get_sku() === ( $snapshot['sku'] ?? null )
+			: 1 === $version && $product->get_id() === ( $snapshot['configuration_source_id'] ?? null ) && $product->get_id() === ( $snapshot['allocation_source_id'] ?? null ) && ! array_key_exists( 'sku', $snapshot ) && ! array_key_exists( 'attributes', $snapshot );
+		if ( ! $journal || ! $created || ! $cutoff_date || $cutoff_date->format( 'Y-m-d\TH:i:s\Z' ) !== $cutoff || $created->getTimestamp() >= $cutoff_date->getTimestamp() || 'simple' !== ( $journal['before']['runtime_type'] ?? '' ) || $product->get_id() !== ( $journal['before']['id'] ?? null ) || $product->get_sku() !== ( $journal['sku'] ?? null ) || $product->get_sku() !== ( $journal['before']['sku'] ?? null ) || ! $identity_valid || 'skyyrose.preorder-commercial-promise' !== ( $snapshot['schema'] ?? '' ) || true !== ( $snapshot['is_preorder'] ?? null ) || $product->get_id() !== ( $snapshot['product_id'] ?? null ) || 0 !== ( $snapshot['variation_id'] ?? null ) ) {
+			throw new Exception( __( 'The saved product selection needs review before payment.', 'skyyrose-flagship-2' ) );
+		}
+		// The original simple line stays size-unknown. A completed migration is
+		// identity provenance, not a freeze on later native stock/price changes.
+		return skyyrose2_preorder_effective_config( $product, $product, 0, array(), true );
+	}
+	// Retain strict child identity checks outside the historical exception.
+	skyyrose2_preorder_config( $product->get_id(), $variation_id );
+	$chosen = $variation_id ? wc_get_product( $variation_id ) : $product;
+	return skyyrose2_preorder_effective_config( $product, $chosen, $variation_id, array(), true );
+}
 
 /**
  * Classic pay-for-order runs outside core's exception handler; emit notices.

@@ -10,8 +10,8 @@
 if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
 	throw new RuntimeException( 'Run through WP-CLI on the selected candidate.' );
 }
-if ( 'skyyrose-flagship-2' !== get_stylesheet() || ! defined( 'WC_VERSION' ) || '11.1.2' !== WC_VERSION ) {
-	WP_CLI::error( 'Requires active V2 and the reviewed WooCommerce 11.1.2 boundary.' );
+if ( 'skyyrose-flagship-2' !== get_stylesheet() || ! defined( 'WC_VERSION' ) || ! in_array( WC_VERSION, array( '11.1.2', '11.2.1' ), true ) ) {
+	WP_CLI::error( 'Requires active V2 and the explicit WooCommerce 11.1.2/11.2.1 boundary.' );
 }
 $expected = array(
 	'woocommerce_add_cart_item_data'                     => 'skyyrose2_preorder_add_cart_data',
@@ -46,7 +46,7 @@ foreach ( $expected as $tag => $function ) {
 	}
 }
 $module = get_stylesheet_directory() . '/inc/woocommerce-compat.php';
-if ( '98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1' !== hash_file( 'sha256', $module ) ) {
+if ( '3262d65f35d4e08b017a9b6be9105701813e37dc8b31212cfd8e725bcacd226e' !== hash_file( 'sha256', $module ) ) {
 	WP_CLI::error( 'Module differs from the reviewed dependency.' );
 }
 WP_CLI::success( 'V2 module hash and all 14 hook registrations match; behavior acceptance remains separate.' );

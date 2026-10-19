@@ -7,8 +7,8 @@
  * @package SkyyRoseFlagship2
  */
 
-if ( ! defined( 'WP_CLI' ) || ! WP_CLI || 'http://127.0.0.1:18362' !== get_option( 'home' ) || ! defined( 'WC_VERSION' ) || '11.1.2' !== WC_VERSION ) {
-	throw new RuntimeException( 'Only the isolated loopback WooCommerce 11.1.2 fixture is permitted.' );
+if ( ! defined( 'WP_CLI' ) || ! WP_CLI || 'http://127.0.0.1:18362' !== get_option( 'home' ) || ! defined( 'WC_VERSION' ) || ! in_array( WC_VERSION, array( '11.1.2', '11.2.1' ), true ) ) {
+	throw new RuntimeException( 'Only the isolated loopback WooCommerce 11.1.2/11.2.1 fixture is permitted.' );
 }
 function skyyrose2_bootstrap_assert( $condition, $label ) {
 	if ( ! $condition ) {

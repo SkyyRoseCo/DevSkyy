@@ -1,6 +1,6 @@
 <?php
 /** Actual V2 bootstrap/resolver; synthetic loopback fixture only, no asset approval. */
-if ( ! defined( 'WP_CLI' ) || ! WP_CLI || 'http://127.0.0.1:18362' !== get_option( 'home' ) || '11.1.2' !== WC_VERSION || 'skyyrose-flagship-2' !== get_stylesheet() ) {
+if ( ! defined( 'WP_CLI' ) || ! WP_CLI || 'http://127.0.0.1:18362' !== get_option( 'home' ) || ! in_array( WC_VERSION, array( '11.1.2', '11.2.1' ), true ) || 'skyyrose-flagship-2' !== get_stylesheet() ) {
 	throw new RuntimeException( 'Only the isolated active V2/WooCommerce fixture is permitted.' );
 }
 function integration_glb_assert( $condition, $label ) {

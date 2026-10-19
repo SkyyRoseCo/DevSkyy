@@ -2,13 +2,13 @@
 /**
  * Destructive synthetic-fixture integration tests, never run on an external site.
  * wp eval-file <this-file> --path=<isolated-local-WordPress>
- * Requires actual WooCommerce 11.1.2; no simulated WC classes or order storage.
+ * Requires actual WooCommerce 11.1.2 or 11.2.1; no simulated WC classes or order storage.
  *
  * @package SkyyRoseFlagship2
  */
 
-if ( ! defined( 'WP_CLI' ) || ! WP_CLI || 'http://127.0.0.1:18362' !== get_option( 'home' ) || '11.1.2' !== WC_VERSION ) {
-	throw new RuntimeException( 'Only the isolated loopback WooCommerce 11.1.2 fixture is permitted.' );
+if ( ! defined( 'WP_CLI' ) || ! WP_CLI || 'http://127.0.0.1:18362' !== get_option( 'home' ) || ! in_array( WC_VERSION, array( '11.1.2', '11.2.1' ), true ) ) {
+	throw new RuntimeException( 'Only the isolated loopback WooCommerce 11.1.2/11.2.1 fixture is permitted.' );
 }
 require_once dirname( __DIR__, 2 ) . '/inc/woocommerce-compat.php';
 // This file deliberately leaves fixture records for inspection; no real SKU facts.
@@ -534,4 +534,7 @@ try {
 	}
 }
 skyyrose2_fixture_assert( 10 === has_filter( 'woocommerce_add_cart_item_data', 'skyyrose2_preorder_add_cart_data' ), 'native control restores module callbacks' );
+if ( '1' === getenv( 'SKYYROSE_RELEASE_MIGRATION_TESTS' ) ) {
+	require __DIR__ . '/migration.php';
+}
 echo "LOCAL INTEGRATION COMPLETE; no external order/payment/provider calls\n";
