@@ -4038,7 +4038,7 @@
 
 ## docs/campaigns/
 
-- `2026-kids-capsule-report.html` — SkyyRose | Inheritance of Elegance Campaign Report (~1140 tok)
+- `2026-kids-capsule-report.html` — SkyyRoseInheritance of Elegance Campaign Report (~1140 tok)
 - `sot-lookbook.html` — SkyyRose Lookbook (wordpress-theme/skyyrose-flagship / lookbook · 4 collections) (~4514 tok)
 
 ## docs/database/
@@ -6316,6 +6316,19 @@
   - class `VerificationResult` L63-73 (~92 tok)
   - class `VerificationConfig` L74-134 (~570 tok)
   - class `LLMVerificationEngine` L135-345 (~2411 tok)
+
+## data/decisions/
+
+- `task-routing.labelled.jsonl` — DRAFT labelled set (75 cases, 5 per TaskCategory) for scripts/decision_calibrate.py; labels await founder correction (~9000 tok)
+
+## llm/decisions/
+
+- `__init__.py` — Public API of the in-house typed decision layer (Choice/Score/Noul, engine, gate, calibration) (~400 tok)
+- `types.py` — Choice/Score/Noul questions, typed answers, Route (SHARP/SPLIT), DecisionFailure always SPLIT (~1200 tok)
+- `gate.py` — GatePolicy thresholds + Noul deadband; build_answer() shapes a distribution into a routed answer (~650 tok)
+- `backend.py` — LogprobBackend: letter options, first-token top_logprobs, coverage refusal, order debias (~1100 tok)
+- `engine.py` — DecisionEngine.decide(): concurrent questions, per-question failure -> DecisionFailure (~650 tok)
+- `calibration.py` — LabelledCase, run_cases, ECE, recommend_threshold, calibration_report (~1300 tok)
 
 ## llm/providers/
 
@@ -8742,6 +8755,7 @@
   - fn `benchmark_semaphore_limiting` L290-348 (~580 tok)
   - fn `print_summary` L349-384 (~399 tok)
   - fn `main` L385-412 (~291 tok)
+- `asset_sot_census.py` — Asset SOT census: every in-scope media file must be referenced by a declared ledger (registry, visual-manifest, typography, projections, Flagship 2 media ledgers, review inventory) or be a byte copy of an owned file; `--check` (exit 1 orphans, 2 ledger error) / `--report` JSON. Wired into CI catalog-validate. (~4200 tok)
 - `build_asset_manifest.py` — Generate ``assets/products/manifest.json`` — the content-hashed SKU→asset map. (~2066 tok)
   - fn `_catalog_rows` L49-61 (~130 tok)
   - fn `_record` L62-68 (~82 tok)
@@ -8894,6 +8908,7 @@
   - fn `_write_manifest` L158-171 (~142 tok)
   - fn `_write_readme` L172-215 (~465 tok)
   - fn `main` L216-270 (~507 tok)
+- `decision_calibrate.py` — Calibrate llm/decisions on a labelled JSONL set; paid run refuses without --yes (~800 tok)
 - `demo_image_generation.py` — demo_replicate, demo_stability, compare_providers, main + 1 more (~3045 tok)
   - fn `demo_replicate` L23-121 (~905 tok)
   - fn `demo_stability` L122-243 (~1110 tok)
@@ -9243,6 +9258,10 @@
 
 - `2026-09-12-brand-story-storyboard-line-introduction-workflows.md` — deep-research report: brand-story frameworks/tests, storyboard + AI pipeline, collection-launch/drop model, AI disclosure law, SkyyRose applied section; 130 cited sources (~17770 tok)
 - `2026-09-12-brand-story-ledgers/` — three exa agent reports with full URL ledgers backing the report above; provenance evidence, not prose to read (~34497 tok)
+
+## tests/scripts/ (census)
+
+- `test_asset_sot_census.py` — tmp_path repo tests for scripts/asset_sot_census.py: reference kinds, byte copies, scope reasons, fail-closed ledgers, exit codes. (~1500 tok)
 
 ## tests/mcp_servers/
 

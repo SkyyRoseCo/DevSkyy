@@ -228,11 +228,7 @@ class TestRosieMascot:
         sheet = self.agent.create_skyyrose_rosie()
         elements_text = " ".join(sheet.spec.brand_elements)
         # Skyy wears Love Hurts collection — crimson accents + Oakland tagline
-        assert (
-            "love hurts" in elements_text.lower()
-            or "crimson" in elements_text.lower()
-            or "luxury grows" in elements_text.lower()
-        )
+        assert "love hurts" in elements_text.lower() or "crimson" in elements_text.lower()
 
     def test_rosie_wears_love_hurts_varsity(self):
         sheet = self.agent.create_skyyrose_rosie()

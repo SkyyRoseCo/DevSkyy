@@ -230,8 +230,7 @@ Your "Oakland to LA" fit transition reel was clean — the way you documented
 the difference in textures between the two cities is exactly the kind of visual
 storytelling that fits where SkyyRose lives.
 
-I'm Corey, founder of SkyyRose — luxury Oakland streetwear. "Luxury Grows from
-Concrete." We just dropped the Signature Crewneck: heavyweight fleece, tonal
+I'm Corey, founder of SkyyRose — luxury Oakland streetwear. "" We just dropped the Signature Crewneck: heavyweight fleece, tonal
 embroidery, built for the Bay and wearable anywhere. West Coast luxury, no
 European house required.
 

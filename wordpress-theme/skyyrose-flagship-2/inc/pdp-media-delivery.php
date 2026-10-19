@@ -65,7 +65,7 @@ function skyyrose2_pdp_gallery_sizes( $width, $height ) {
 function skyyrose2_pdp_approved_ghost_front( $attachment_id, $product ) {
 	if ( ! is_a( $product, 'WC_Product' ) || ! $attachment_id || (int) $attachment_id !== (int) $product->get_image_id() ) { return array(); }
 	$front = skyyrose2_approved_pdp_front( $product );
-	if ( ! $front || wp_get_attachment_url( $attachment_id ) !== $front['src'] ) { return array(); }
+	if ( ! $front || skyyrose2_media_url( wp_get_attachment_url( $attachment_id ) ) !== $front['src'] ) { return array(); }
 	$front['pdp_src'] = $front['card_src'] ?? $front['src'];
 	$front['pdp_width'] = $front['card_width'] ?? $front['width'];
 	$front['pdp_height'] = $front['card_height'] ?? $front['height'];
@@ -209,7 +209,7 @@ function skyyrose2_pdp_media_delivery( $product, $attachment_id ) {
 	$media = $context ? $context['media'] : skyyrose2_product_commerce_media( $product );
 	if ( ! in_array( (int) $attachment_id, array_map( 'intval', $media['ids'] ?? array() ), true ) ) { return array(); }
 	$front = skyyrose2_approved_pdp_front( $product );
-	if ( ! $front || wp_get_attachment_url( $attachment_id ) !== $front['src'] || skyyrose2_pdp_delivery_file_hash( get_attached_file( $attachment_id, true ) ) !== $front['sha256'] ) { return array(); }
+	if ( ! $front || skyyrose2_media_url( wp_get_attachment_url( $attachment_id ) ) !== $front['src'] || skyyrose2_pdp_delivery_file_hash( get_attached_file( $attachment_id, true ) ) !== $front['sha256'] ) { return array(); }
 	return array(
 		'src' => $front['card_src'] ?? $front['src'],
 		'width' => $front['card_width'] ?? $front['width'],

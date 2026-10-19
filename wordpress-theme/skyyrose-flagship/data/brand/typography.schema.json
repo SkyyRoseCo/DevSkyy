@@ -39,6 +39,11 @@
       "properties": {
         "family": { "type": "string" },
         "woff2":  { "type": ["string", "null"] },
+        "woff2_subsets": {
+          "type": "array",
+          "description": "Additional unicode-range subset files of the same family, relative to theme root",
+          "items": { "type": "string" }
+        },
         "note":   { "type": "string" }
       }
     },
@@ -63,7 +68,8 @@
       "properties": {
         "family": { "type": "string", "description": "Display name of the primary family" },
         "stack":  { "type": "string", "description": "Full CSS font-family stack value" },
-        "woff2":  { "type": ["string", "null"], "description": "Path relative to theme root; null for system fonts" }
+        "woff2":  { "type": ["string", "null"], "description": "Path relative to theme root; null for system fonts" },
+        "note":   { "type": "string", "description": "Usage guidance for hand-authored CSS; not emitted into tokens" }
       }
     }
   }

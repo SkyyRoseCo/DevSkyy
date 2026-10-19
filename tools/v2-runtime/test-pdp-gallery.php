@@ -129,11 +129,17 @@ foreach ($manifest['products'] as $sku => $record) {
     check_gallery($front && $front['sha256'] === $record['sha256'] && $front['path'] === $record['src'] && $front['status'] === $record['current_fidelity_status'], 'Exact current card bytes/review for ' . $sku);
     if (skyyrose2_approved_pdp_front($item)) { ++$pdp_count; }
 }
-check_gallery(18 === $pdp_count, 'Card approval retains the separate 18 current PDP-role grants.');
+// 18 independently reviewed PDP-role records plus the 15 founder usage grants
+// (data/v2-media-reviews/usage-*.json) that add pdp_on_model_front to an unchanged card original.
+$usage_pdp = 0;
+foreach (skyyrose2_media_inventory()['usage_adoptions'] as $relative => $binding) {
+    if (in_array('pdp_on_model_front', skyyrose2_media_usage_roles($relative, skyyrose2_media_inventory()['assets'][$relative]), true)) { ++$usage_pdp; }
+}
+check_gallery(15 === $usage_pdp && 18 + $usage_pdp === $pdp_count, 'PDP fronts = 18 reviewed PDP-role grants + 15 founder usage grants; card approval alone grants none.');
 $parent = new WC_Product(101, 'sg-005', 77, array(78));
 $GLOBALS['parents'][101] = $parent;
 $front = skyyrose2_approved_pdp_front($parent);
-check_gallery($front && str_ends_with($front['display_src'], 'sg-005-768w.webp'), 'Fixture requires an actual current PDP-role lead.');
+check_gallery($front && str_ends_with((string) parse_url($front['display_src'], PHP_URL_PATH), 'sg-005-768w.webp') && preg_match('/\?v=[a-f0-9]{64}$/D', $front['display_src']),'Fixture requires an actual current PDP-role lead.');
 $GLOBALS['files'][77] = SKYYROSE2_DIR . '/' . $front['path'];
 $GLOBALS['attachment_urls'][77] = $front['src'];
 $GLOBALS['product'] = 'previous-global';
@@ -177,10 +183,19 @@ check_gallery(!has_filter('woocommerce_gallery_image_html_attachment_image_param
 check_gallery(!has_filter('get_post_metadata') && !has_filter('woocommerce_product_get__wc_video_gallery'), 'Exceptions restore video metadata filters.');
 check_gallery(get_post_meta(101, '_wc_video_gallery', true)[0]['id'] === 999 && $GLOBALS['product'] === 'previous-global', 'Exceptions preserve native video data and global product.');
 
-$card_only = new WC_Product(102, 'br-003', 79, array(), 'rejected');
-$GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_capture_media_context($card_only);
-check_gallery(skyyrose2_approved_card_front($card_only) && !skyyrose2_approved_pdp_front($card_only), 'Fixture retains a card-only product.');
-check_gallery(!str_contains(wc_get_product_gallery_html($card_only), '<img') && str_contains(wc_get_product_gallery_html($card_only), 'currently unavailable'), 'Card-only acceptance cannot become PDP approval through rejected attachments.');
+// Since 2.5.3 every card original also carries a founder usage grant, so no real
+// card-only SKU remains. br-003's PDP role must come only from its exact grant,
+// never from its card receipt or from a rejected Woo attachment.
+$grant_only = new WC_Product(102, 'br-003', 79, array(), 'rejected');
+$grant_path = 'assets/v2-original/products/br-003.png';
+$grant_record = skyyrose2_media_inventory()['assets'][$grant_path];
+$GLOBALS['skyyrose2_pdp_media_context'] = skyyrose2_pdp_capture_media_context($grant_only);
+check_gallery(skyyrose2_approved_card_front($grant_only) && !in_array('pdp_on_model_front', $grant_record['roles'], true) && in_array('pdp_on_model_front', skyyrose2_media_usage_roles($grant_path, $grant_record), true), 'Fixture PDP role exists only through the exact founder usage grant.');
+$broken_grant = $grant_record; $broken_grant['skus'] = array('br-002');
+check_gallery(!skyyrose2_media_usage_roles($grant_path, $broken_grant) && !skyyrose2_media_record_allowed($grant_path, $grant_record, 'pdp_on_model_front', 'br-002'), 'A grant cannot be borrowed by another SKU.');
+$grant_front = skyyrose2_approved_pdp_front($grant_only);
+$grant_html = wc_get_product_gallery_html($grant_only);
+check_gallery($grant_front && $grant_path === $grant_front['path'] && !str_contains($grant_html, 'uploads.invalid/79'), 'Rejected attachments never enter the gallery; the lead is the granted original.');
 unset($GLOBALS['skyyrose2_pdp_media_context']);
 $GLOBALS['is_product'] = false;
 $GLOBALS['ajax'] = true;
@@ -204,5 +219,5 @@ unset($GLOBALS['variation_attributes']);
 check_gallery(!isset($GLOBALS['skyyrose2_pdp_media_context']) && $parent->get_image_id() === 77 && $GLOBALS['product'] === 'previous-global', 'Variation delivery does not leak context or native state.');
 $_REQUEST['wc-ajax'] = 'unrelated';
 check_gallery($data === skyyrose2_pdp_variation_delivery($data, $parent, $variation), 'Unrelated AJAX remains unchanged.');
-echo "PASS pinned native WP7.1/Woo11.1 gallery: 33 exact cards / 18 PDP grants, responsive originals/reset, candidate exclusion, scoped hooks, no video promotion, exception cleanup, complete variation families and native purchase truth (offline).\n";
+echo "PASS pinned native WP7.1/Woo11.1 gallery: 33 exact cards / 33 PDP fronts (18 reviewed + 15 founder grants), responsive originals/reset, candidate exclusion, scoped hooks, no video promotion, exception cleanup, complete variation families and native purchase truth (offline).\n";
 }

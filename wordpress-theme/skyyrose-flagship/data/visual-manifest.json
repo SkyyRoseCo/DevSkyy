@@ -181,6 +181,25 @@
     "kind": "brand-motion-transparent",
     "status": "verified",
     "notes": "Founder-provided TSRC GIF converted to transparent VP9-alpha hero motion plus poster on 2026-08-03. Original 1920x1080 GIF is 41MB; deploy derivative is 800x600 WebM with white matte removed."
+   },
+   {
+    "path": "video/home-hero",
+    "formats": [
+     "mp4",
+     "webm"
+    ],
+    "kind": "hero-video",
+    "status": "needs-founder-review",
+    "notes": "Registered by the 2026-10-14 asset SOT census after frame review (0.5s/5s/10s/14.5s of both encodings): 720x1280 portrait, 15s; model in a black satin bomber with white rose embroidery on the back, seated on a white perforated bench at night. A third-party watermark mark sits bottom-left in every sampled frame. Garment SKU not asserted. Read by template-parts/home/hero.php and home/origin.php. mp4 = h264, webm = vp9."
+   },
+   {
+    "path": "branding/tsrc-lockup-rotating@2x",
+    "formats": [
+     "webm"
+    ],
+    "kind": "brand-motion",
+    "status": "needs-founder-review",
+    "notes": "Registered by the 2026-10-14 asset SOT census after frame review (0.5s-12s): rotating 3D rose-gold SR monogram with rose and 'The Skyy Rose Collection' script on an opaque white background (vp9 yuv420p, no alpha), 198x144, 13s. Read by header.php."
    }
   ]
  },

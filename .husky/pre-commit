@@ -37,7 +37,13 @@ if git diff --cached --name-only --diff-filter=ACMR | grep -q '\.py$'; then
     # --exclude belt-and-suspenders: keeps git worktree duplicates AND the gitignored
     # autonomous-agent scratch dir (my_project/) out of the discovery scan even if
     # mypy.ini exclude filtering runs too late. gitignore is invisible to mypy's walk.
-    mypy . --ignore-missing-imports --exclude '(\.claude/|my_project/|prototypes/|skyyrose-suite/|devskyy-sdk-app/)'
+    # Scoped to the STAGED .py files (--follow-imports=silent: imported modules
+    # are read for types but their own errors are not reported). A whole-tree
+    # `mypy .` also walks untracked scratch files, so one session's WIP could
+    # block every other session's commit. CI still type-checks the whole tree.
+    git diff --cached --name-only -z --diff-filter=ACMR -- '*.py' \
+      | grep -zvE '^(\.claude/|my_project/|prototypes/|skyyrose-suite/|devskyy-sdk-app/)' \
+      | xargs -0 -r mypy --ignore-missing-imports --follow-imports=silent
   fi
 fi
 

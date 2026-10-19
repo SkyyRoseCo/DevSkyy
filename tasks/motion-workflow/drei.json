@@ -1,0 +1,96 @@
+{
+  "_note": "Scaffold of pmndrs/drei as read 2026-10-14 via gh + npm. Already installed in frontend/.",
+  "repo": "https://github.com/pmndrs/drei",
+  "license": "MIT",
+  "stars": 9951,
+  "latest_release": {
+    "tag": "v10.7.9",
+    "date": "2026-09-25"
+  },
+  "installed": {
+    "package": "@react-three/drei",
+    "version": "10.7.9",
+    "prior": "10.7.7",
+    "range_in_package_json": "^10.7.7"
+  },
+  "peers": {
+    "react": "^19",
+    "react-dom": "^19",
+    "three": ">=0.159",
+    "@react-three/fiber": "^9.0.0"
+  },
+  "peer_status": {
+    "three": "0.172.0 OK",
+    "@react-three/fiber": "9.5.0 OK"
+  },
+  "src_layout": {
+    "core": "123 entries (helpers, controls, cameras, loaders)",
+    "web": "17 entries (DOM-bound: Html, Loader, ScrollControls, etc.)",
+    "materials": "shader materials",
+    "helpers": "internal",
+    "native": "react-native entry"
+  },
+  "used_in_frontend": {
+    "imports": [
+      "Center",
+      "Environment",
+      "Float",
+      "Text3D"
+    ],
+    "files": [
+      "frontend/components/3d/LuxuryProductViewer.tsx",
+      "frontend/components/3d/RotatingCollectionLogo.tsx",
+      "frontend/components/three-viewer.tsx",
+      "frontend/components/collections/CollectionScene.tsx"
+    ]
+  },
+  "relevant_helpers_not_yet_used": {
+    "product_presentation": [
+      "ContactShadows",
+      "AccumulativeShadows",
+      "Lightformer",
+      "Bounds",
+      "Stage",
+      "Backdrop",
+      "Gltf",
+      "Decal",
+      "Outlines",
+      "Edges"
+    ],
+    "materials": [
+      "MeshReflectorMaterial",
+      "MeshTransmissionMaterial",
+      "MeshRefractionMaterial",
+      "MeshDistortMaterial",
+      "MeshWobbleMaterial"
+    ],
+    "interaction": [
+      "OrbitControls",
+      "CameraControls",
+      "ScrollControls",
+      "PresentationControls",
+      "MotionPathControls",
+      "Html"
+    ],
+    "performance": [
+      "AdaptiveDpr",
+      "AdaptiveEvents",
+      "PerformanceMonitor",
+      "Preload",
+      "Bvh",
+      "Instances",
+      "Ktx2"
+    ],
+    "verify_note": "Names seen in src/core listing (listing was truncated near 'Sha...'); confirm each export against Context7 before use"
+  },
+  "interplay": {
+    "with_motion": "motion-value-driven props can feed R3F via framer-motion-3d style patterns; js-three-motion-values is the vanilla reference",
+    "with_fabric": "RenderTexture / Image can take a Fabric canvas as a texture source (CanvasTexture); untested",
+    "constraint": "R3F is React-only: frontend/ yes, WordPress theme no (theme uses vanilla three.js)"
+  },
+  "gaps": [
+    "Context7 not queried for drei exports",
+    "Helper list from src/core truncated",
+    "No render QC performed"
+  ]
+}

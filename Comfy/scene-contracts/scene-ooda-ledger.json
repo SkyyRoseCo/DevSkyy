@@ -8,7 +8,7 @@
   },
   "team_index": {
     "path": "Comfy/scene-contracts/scene-ooda-index.json",
-    "sha256": "fbe7ccc8b037d0aa16ea3d0c353894c90ce76bb17ff9c95823d24c82c3effaa2"
+    "sha256": "dd0b8ff0cec304c78d72830e1056d0969750d69795e74f4ce1e8f2e559ccc0a5"
   },
   "approval_boundaries": {
     "higgsfield_enhancement_only": "AUTO_WITH_LOG",
@@ -27,7 +27,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "d72e8b77249961f588d8494b34c6d099fe09952b1841b91e9d6cd87c06dea964",
+      "contract_sha256": "77226296e2db02f06cc64dfde0b1b8a8acd5ed7b0cd44ea9c8fbc9b97f389cfc",
       "evidence": [
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T072421816848Z.json",
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T072503771026Z.json",
@@ -113,7 +113,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-1-higgsfield-comfy-ooda.json",
-      "contract_sha256": "7cb895e887f9e1c0c6bcce1ab032cff4c515ff042bde117f7bf0e4908f50a342",
+      "contract_sha256": "5ad5120a822dbb734113384ad0f51f08da9693d5a1466c22384539f725635648",
       "evidence": [
         "Comfy/LOG.md",
         "Comfy/receipts/sig-commerce-1-higgsfield-enhance-20260902T193504736502Z.json",
@@ -143,7 +143,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "e23d0f16d6e4376e550c031470e5ae470df0d0d2c06c16d26f8adfa3255d5fa1",
+      "contract_sha256": "878829abd993a94629b42514540e8adfdfee64d5e29f1df983ac5a841c0758f6",
       "evidence": ["Comfy/receipts/protected-alpha-audit-20260902.json"],
       "outputs": [
         "allowed male/products/environment/monument hashes PASS",
@@ -168,10 +168,10 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-3-higgsfield-comfy-ooda.json",
-      "contract_sha256": "2f83a35412b04307c6fb42907ba31f51d22d84b35f1f8c19aa2fe9827de214a2",
+      "contract_sha256": "180fc68c72f3a7928dbe0401b3301ca808602db46b23b6806e9ed9447e1775ff",
       "evidence": [
-        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
-        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-verify-receipt-v1.json"
+        "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
+        "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-verify-receipt-v1.json"
       ],
       "outputs": [
         "founder composition, three protected looks, and five physical product hashes PASS",

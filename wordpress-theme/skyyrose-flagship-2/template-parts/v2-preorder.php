@@ -41,25 +41,9 @@ $sr2_reserve_groups = array_filter( $sr2_reserve_groups );
 // The eligibility inventory owns delivery. Never infer a replacement from a
 // filename or fall back to a historical salon, hero, scene or Woo attachment.
 $sr2_reserve_media = static function ( $role, $collection, $pieces ) {
+	$scene      = skyyrose2_collection_media( $collection, $role );
 	$piece_skus = array_map( static fn( $piece ) => sanitize_key( $piece->get_sku() ), $pieces );
-	foreach ( (array) ( skyyrose2_media_inventory()['assets'] ?? array() ) as $path => $record ) {
-		if ( ! is_array( $record ) || 'photograph' !== ( $record['kind'] ?? '' ) || ! is_array( $record['roles'] ?? null ) || ! in_array( $role, $record['roles'], true ) ) {
-			continue;
-		}
-		$cast = $record['skus'] ?? array();
-		if ( ! is_array( $cast ) || ! array_is_list( $cast ) || ! $cast || count( array_filter( $cast, 'is_string' ) ) !== count( $cast ) || array_diff( $cast, $piece_skus ) || ( $collection && array( $collection ) !== ( $record['collections'] ?? array() ) ) ) {
-			continue;
-		}
-		$uri = skyyrose2_media_uri( $path, $role );
-		if ( ! $uri ) {
-			continue;
-		}
-		$size = getimagesize( SKYYROSE2_DIR . '/' . $path );
-		if ( $size && $size[0] > 0 && $size[1] > 0 ) {
-			return array( 'src' => $uri, 'width' => $size[0], 'height' => $size[1], 'skus' => $cast );
-		}
-	}
-	return array();
+	return $scene && ! array_diff( $scene['skus'], $piece_skus ) ? $scene : array();
 };
 ?>
 
@@ -114,6 +98,7 @@ $sr2_reserve_media = static function ( $role, $collection, $pieces ) {
 			$sr2_reserve_scene = $sr2_reserve_media( 'merchandise_scene', $sr2_reserve_slug, $sr2_reserve_pieces );
 			?>
 			<section id="reserve-<?php echo esc_attr( $sr2_reserve_slug ); ?>" class="sr2-reserve-edit<?php echo 1 === count( $sr2_reserve_pieces ) ? ' sr2-reserve-edit--single' : ''; ?>" data-preorder-collection="<?php echo esc_attr( $sr2_reserve_slug ); ?>" data-collection="<?php echo esc_attr( $sr2_reserve_slug ); ?>" aria-labelledby="reserve-<?php echo esc_attr( $sr2_reserve_slug ); ?>-title" tabindex="-1">
+				<div class="sr2-reserve-edit__intro<?php echo $sr2_reserve_scene ? ' sr2-reserve-edit__intro--scene' : ''; ?>">
 				<header class="sr2-reserve-edit__head">
 					<div>
 						<p class="sr2-eyebrow"><?php esc_html_e( 'The pre-order edit', 'skyyrose-flagship-2' ); ?></p>
@@ -124,7 +109,7 @@ $sr2_reserve_media = static function ( $role, $collection, $pieces ) {
 				</header>
 				<?php if ( $sr2_reserve_scene ) : ?>
 					<figure class="sr2-reserve-scene" data-media-role="merchandise_scene">
-						<img src="<?php echo esc_url( $sr2_reserve_scene['src'] ); ?>" alt="<?php echo esc_attr( sprintf( __( '%s pre-order pieces', 'skyyrose-flagship-2' ), $sr2_reserve_name ) ); ?>" width="<?php echo esc_attr( $sr2_reserve_scene['width'] ); ?>" height="<?php echo esc_attr( $sr2_reserve_scene['height'] ); ?>" loading="lazy" decoding="async">
+						<?php echo skyyrose2_collection_media_markup( $sr2_reserve_scene ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- skyyrose2_collection_media_markup() escapes every attribute. ?>
 						<figcaption class="sr2-reserve-scene__pieces">
 							<?php foreach ( $sr2_reserve_scene['skus'] as $sr2_reserve_scene_sku ) : ?>
 								<?php $sr2_reserve_scene_product = $sr2_reserve_by_sku[ $sr2_reserve_scene_sku ]; ?>
@@ -133,6 +118,7 @@ $sr2_reserve_media = static function ( $role, $collection, $pieces ) {
 						</figcaption>
 					</figure>
 				<?php endif; ?>
+				</div>
 				<div class="sr2-garment-grid">
 			<?php foreach ( $sr2_reserve_pieces as $sr2_reserve_index => $sr2_reserve_product ) : ?>
 				<?php

@@ -6,8 +6,9 @@
  * @package SkyyRoseFlagship2
  */
 defined( 'ABSPATH' ) || exit;
-$story      = $args['collection'];
-$story_slug = $args['slug'];
+$story       = $args['collection'];
+$story_slug  = $args['slug'];
+$story_image = skyyrose2_collection_media( $story_slug, 'collection_story' );
 ?>
 <section id="origin" class="sr2-chapter sr2-world-origin" data-collection="<?php echo esc_attr( $story_slug ); ?>" aria-labelledby="sr2-world-origin-title" tabindex="-1">
 	<div class="sr2-chapter__band">
@@ -21,12 +22,11 @@ $story_slug = $args['slug'];
 				<a class="sr2-editorial-link" href="#shop"><?php echo esc_html( $story['invitation_cta'] ); ?><span aria-hidden="true">→</span></a>
 			</div>
 		</div>
-		<figure class="sr2-chapter__aside sr2-world-origin__look sr2-image-reveal">
-			<picture>
-				<?php if ( ! empty( $story['lookbook_mobile'] ) ) : ?><source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $story['lookbook_mobile'] ) ); ?>"><?php endif; ?>
-				<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $story['lookbook'] ) ); ?>" alt="<?php echo esc_attr( $story['name'] . ' lookbook' ); ?>" width="960" height="1280" loading="lazy" decoding="async">
-			</picture>
-			<figcaption class="sr2-eyebrow sr2-eyebrow--engraved"><?php echo esc_html( $story['name'] ); ?> / <?php esc_html_e( 'Look 01', 'skyyrose-flagship-2' ); ?></figcaption>
+		<?php if ( $story_image ) : ?>
+		<figure class="sr2-chapter__aside sr2-world-origin__look sr2-world-origin__look--approved" data-media-role="collection_story">
+			<?php echo skyyrose2_collection_media_markup( $story_image ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- skyyrose2_collection_media_markup() escapes every attribute. ?>
+			<figcaption class="sr2-eyebrow sr2-eyebrow--engraved"><?php echo esc_html( $story_image['alt'] ); ?></figcaption>
 		</figure>
+		<?php endif; ?>
 	</div>
 </section>
