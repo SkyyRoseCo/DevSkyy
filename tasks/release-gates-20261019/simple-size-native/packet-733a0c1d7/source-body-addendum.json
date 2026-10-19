@@ -1,0 +1,27 @@
+{
+  "schema": "skyyrose.simple-size-source-body-addendum.v1",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "scope": "Reconstructed intermediate source bodies match exact previously executed hashes. These are post-execution reconstructions, not original-time archives. The later independently reviewed0ee0/d938source remains committed2782; producerfixtureed9 remains nativeUNRUN.",
+  "reconstructed_intermediates": {
+    "module4652": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/interim-4652-module.php",
+      "sha256": "4652c0855bbaba10692240fb1b3f5e86a65cd291a94786bdf7a07ce89141a1a4",
+      "bytes": 28510
+    },
+    "testc5": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/interim-c5-test.php",
+      "sha256": "c5e42dd15b44e3a79aa30070bffba4f8e9c4b1a0a4f55c721569129e1403af23",
+      "bytes": 8711
+    },
+    "module3a0fb": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/old-scan-header.php",
+      "sha256": "3a0fb75a73f258deb45467133cb223d5856446cafa21e710897dab71a7871843",
+      "bytes": 26913
+    }
+  },
+  "original_index_unchanged": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/simple-size-native/packet-733a0c1d7/evidence-index.json",
+    "sha256": "3d17da45ff78a263535de6933b6ba04f204db174e0bc9f20732cb8be7797ce29",
+    "bytes": 10674
+  }
+}

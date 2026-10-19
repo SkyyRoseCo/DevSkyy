@@ -1,0 +1,41 @@
+{
+  "schema": "skyyrose.simple-size-continuation-manifest.v1",
+  "status": "FROZEN_FOR_INDEPENDENT_ARTIFACT_REVIEW",
+  "source_head": "ed9ec5859b15e427887ffb14008ed83ab92c2ba9",
+  "files": {
+    "README.md": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/simple-size-native/packet-733a0c1d7/README.md",
+      "sha256": "e3f4cf7494df0d57d8e0adca15eceea97772b1426ee8568fb5067c297c0d0a47",
+      "bytes": 1456
+    },
+    "coverage.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/simple-size-native/packet-733a0c1d7/coverage.json",
+      "sha256": "f013860814ad90e1fcbdea3927c0edda1500c92086b8621d02bcfb96d362921e",
+      "bytes": 10995
+    },
+    "evidence-index.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/simple-size-native/packet-733a0c1d7/evidence-index.json",
+      "sha256": "3d17da45ff78a263535de6933b6ba04f204db174e0bc9f20732cb8be7797ce29",
+      "bytes": 10674
+    },
+    "existing-snapshot-extension.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/simple-size-native/packet-733a0c1d7/existing-snapshot-extension.json",
+      "sha256": "1bbad47bcac675535fb4d8a7a95ce38bf09fa0199ab4d024fabf5549c02a1b87",
+      "bytes": 3055
+    },
+    "source-bindings.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/simple-size-native/packet-733a0c1d7/source-bindings.json",
+      "sha256": "031853a0c44e775ef7c06fb1b64fa9fe6d2be569b03cf63ec01a7516e910cb2d",
+      "bytes": 11775
+    },
+    "source-body-addendum.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/simple-size-native/packet-733a0c1d7/source-body-addendum.json",
+      "sha256": "31209ff6b8b70441f34de9d3ca7468b3fe8cd8eaefb5122a06b81fda300e1966",
+      "bytes": 1631
+    }
+  },
+  "manifest_self_excluded": true,
+  "private_census_files": 76118,
+  "source_review": "Header repair and exact producer source reviewed; native successor execution remains unqualified.",
+  "hold": "LIVE_CONVERSION_DEPLOYMENT_AND_EXISTING_HOLDS_REMAIN"
+}

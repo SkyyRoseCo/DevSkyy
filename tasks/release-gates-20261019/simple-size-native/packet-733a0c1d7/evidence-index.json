@@ -1,0 +1,149 @@
+{
+  "schema": "skyyrose.simple-size-evidence-index.v1",
+  "authentication": "NOT_APPLICABLE_SYNTHETIC_LOCAL_AND_OFFLINE",
+  "refs": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/native-run-dispositions.json",
+      "sha256": "e32dab3d4046dd1dc80e93787e8b8cf6271874fc4b3efb1e702d69bf985b62c8",
+      "bytes": 8162
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/all-five-native-runs-census.json",
+      "sha256": "6fdbdbaa9cff1bb4096e5a00a6d32392c663a6fc656c8744bf17353f1950649b",
+      "bytes": 18813855
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792446953217165000/results.json",
+      "sha256": "542b14cd06ed513b975ce7cd269ba7acba3d1070c29093dc7f8dbc646f6882fc",
+      "bytes": 3200802
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792447040812213000/results.json",
+      "sha256": "5f8578777d1f78d85599660ab5604705a2cb33344913471b68d467064e655403",
+      "bytes": 3201573
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792447121589142000/results.json",
+      "sha256": "ac2a518c664b0b3cc29e78b2c21ce49ae76e4d789b4ec1a02e41a34bf8efb1ac",
+      "bytes": 3202657
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792447272177297000/results.json",
+      "sha256": "3c237b606ff703e8decacc19e7fd359eeb3ced161cea57e37959b11f23844629",
+      "bytes": 3203230
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792448535229444000/results.json",
+      "sha256": "4eca4d63517888e2cb883a46e955f92676a6194e9542da9da18b96e3be0fee19",
+      "bytes": 3205142
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/results.json",
+      "sha256": "ed6b832cc1ae0ea8b976ea52a256e90d46e7aaef8288f5e88b2e69386bf54078",
+      "bytes": 3867
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/results.json",
+      "sha256": "279d0e1d00fd7a8fcd7172aceda0b778de0dbccd80b9dc8e6baa3fc27ae7cc76",
+      "bytes": 3912
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/old-scan-header.php",
+      "sha256": "3a0fb75a73f258deb45467133cb223d5856446cafa21e710897dab71a7871843",
+      "bytes": 26913
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/build-toolchain/prepare.py",
+      "sha256": "003a5672744aa46555d5d15200d011b8def8e29c9121176d860fb0dabf1236f5",
+      "bytes": 2354
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/build-toolchain/receipt.json",
+      "sha256": "0bd33cce604e2925eb39e0f7fdb1874acc71e8bbe629cfbada661d9675a9a3dd",
+      "bytes": 32022
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/simple-size-native/packet-733a0c1d7/coverage.json",
+      "sha256": "f013860814ad90e1fcbdea3927c0edda1500c92086b8621d02bcfb96d362921e",
+      "bytes": 10995
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/simple-size-native/packet-733a0c1d7/source-bindings.json",
+      "sha256": "031853a0c44e775ef7c06fb1b64fa9fe6d2be569b03cf63ec01a7516e910cb2d",
+      "bytes": 11775
+    }
+  ],
+  "small_control_refs": {
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/command-0001.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/command-0001.json",
+      "sha256": "820ddd6d43681e1709645456bb3ce70722a2a6ad9e24a7efcaf163449623ebbd",
+      "bytes": 517
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/command-0001.txt": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/command-0001.txt",
+      "sha256": "4b38a13f9886c46772d70ff2005ca7449f3464770b4c60c89485ffa72905651d",
+      "bytes": 1218
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/command-0002.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/command-0002.json",
+      "sha256": "bed192f2e8a2f7937eaff904567b18c439610f8077864b32e5a73a8e383163e7",
+      "bytes": 563
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/command-0002.txt": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/command-0002.txt",
+      "sha256": "8a554630a26fdd1ee7530705434abec16e3adcebb5c1d35683134f24ffb0ee88",
+      "bytes": 1414
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/old-scan-driver.php": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/old-scan-driver.php",
+      "sha256": "ae0e4b9fcebd99272004fa390afdbbe1466b0af2d2a1bf48ede4ccd7af4cd728",
+      "bytes": 8780
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/results.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls/results.json",
+      "sha256": "ed6b832cc1ae0ea8b976ea52a256e90d46e7aaef8288f5e88b2e69386bf54078",
+      "bytes": 3867
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/command-0001.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/command-0001.json",
+      "sha256": "e660957100f18618a7a2af284a0429c96c7e333d04605aea9d7219cc046a9ce4",
+      "bytes": 517
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/command-0001.txt": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/command-0001.txt",
+      "sha256": "4b38a13f9886c46772d70ff2005ca7449f3464770b4c60c89485ffa72905651d",
+      "bytes": 1218
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/command-0002.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/command-0002.json",
+      "sha256": "fafba8e0c4818333a9933a1d95fc29f614bd1ee4fbc08267cfc3436b1d9ec65b",
+      "bytes": 566
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/command-0002.txt": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/command-0002.txt",
+      "sha256": "b276d09948c7e625c12b7b762bc2c72760d833fce475c836b4856dbe0f839ce9",
+      "bytes": 1432
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/old-scan-driver.php": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/old-scan-driver.php",
+      "sha256": "9fda8c8e48634aa274cda3d9db1667484d2af41e5c5e7f6d6807e740ad316a33",
+      "bytes": 9861
+    },
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/results.json": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/results.json",
+      "sha256": "279d0e1d00fd7a8fcd7172aceda0b778de0dbccd80b9dc8e6baa3fc27ae7cc76",
+      "bytes": 3912
+    }
+  },
+  "native_complete_file_census": {
+    "ref": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/all-five-native-runs-census.json",
+      "sha256": "6fdbdbaa9cff1bb4096e5a00a6d32392c663a6fc656c8744bf17353f1950649b",
+      "bytes": 18813855
+    },
+    "files": 76118,
+    "runs": 5
+  },
+  "runtime_and_dependencies": "Each raw result binds exact execution_inputs/runtime binary pins, original retained WP/plugin source census13855files and theme census (varying source phases); complete post-cleanup artifact census additionally binds all copied source/HTTP/CLI/log/receipt/synthetic DB files. No loaded-dynamic-library census or installed-runtime parity inferred.",
+  "status": "FROZEN_FOR_INDEPENDENT_ARTIFACT_REVIEW_NOT_ACCEPTANCE"
+}

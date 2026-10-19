@@ -1,0 +1,263 @@
+{
+  "schema": "skyyrose.simple-size-native-coverage.v1",
+  "authentication": "NOT_APPLICABLE_SYNTHETIC_LOCAL",
+  "status": "PARTIAL_NATIVE_EVIDENCE_FAILED_EXTENDED_RUN_REPAIR_UNQUALIFIED",
+  "initial_pass": {
+    "result": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792447272177297000/results.json",
+      "sha256": "3c237b606ff703e8decacc19e7fd359eeb3ced161cea57e37959b11f23844629",
+      "bytes": 3203230
+    },
+    "source_commit": "d75ed2a3eff8591165588bc3315e728db748f912",
+    "status": "PASS_BOUNDED_INITIAL_NATIVE_MATRIX_REMAINING_CASES_OPEN",
+    "steps_reached": [
+      "FRESH_CONTAINED_NATIVE_FIXTURE",
+      "CLASSIC_HTTP_SESSION_DISTINCT_SIZES_MERGE_AND_SHARED_PREORDER_POOL",
+      "NUMERIC_STRING_AND_ONE_SIZE_SESSION_ROUNDTRIP",
+      "PAIRED_NORMAL_CLASSIC_PERSISTED_SELECTION_REACHES_FAKE_PROCESSOR",
+      "CLASSIC_DROPPED_PERSISTENCE_REFUSED_SELECTED",
+      "CLASSIC_DROPPED_PERSISTENCE_REFUSED_GENERATION",
+      "CLASSIC_DROPPED_PERSISTENCE_REFUSED_BOTH",
+      "ACTUAL_STORE_API_INGRESS_HASHING_AND_TYPED_REFUSALS",
+      "ACTUAL_STORE_API_INVALID_SESSION_UPDATE_AND_TOPUP_NO_QUANTITY_MUTATION"
+    ],
+    "cleanup": [
+      {
+        "pid": 4231,
+        "terminal": true,
+        "group_absent": true,
+        "exit": -15
+      },
+      {
+        "pid": 4219,
+        "terminal": true,
+        "group_absent": true,
+        "exit": 0
+      },
+      {
+        "owned_socket_absent": true
+      },
+      {
+        "owned_listener_absent": true
+      }
+    ],
+    "preservation": "PASS_EXECUTION_INPUTS_ORIGINAL_CODE_THEME_HEAD_AND_INDEX",
+    "error": null
+  },
+  "extended_failure": {
+    "result": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792448535229444000/results.json",
+      "sha256": "4eca4d63517888e2cb883a46e955f92676a6194e9542da9da18b96e3be0fee19",
+      "bytes": 3205142
+    },
+    "source_commit": "733a0c1d75813508c796a7f726f85220a378d90a",
+    "status": "FAIL",
+    "steps_reached": [
+      "FRESH_CONTAINED_NATIVE_FIXTURE",
+      "CLASSIC_HTTP_SESSION_DISTINCT_SIZES_MERGE_AND_SHARED_PREORDER_POOL",
+      "NUMERIC_STRING_AND_ONE_SIZE_SESSION_ROUNDTRIP",
+      "PAIRED_NORMAL_CLASSIC_PERSISTED_SELECTION_REACHES_FAKE_PROCESSOR",
+      "CLASSIC_DROPPED_PERSISTENCE_REFUSED_SELECTED",
+      "CLASSIC_DROPPED_PERSISTENCE_REFUSED_GENERATION",
+      "CLASSIC_DROPPED_PERSISTENCE_REFUSED_BOTH",
+      "ACTUAL_STORE_API_INGRESS_HASHING_AND_TYPED_REFUSALS",
+      "ACTUAL_STORE_API_INVALID_SESSION_UPDATE_AND_TOPUP_NO_QUANTITY_MUTATION",
+      "CLASSIC_RESUME_REFUSES_BEFORE_DELETE_THEN_CREATES_DISTINCT_ORDER",
+      "FRESH_PERSISTED_METADATA_REFUSAL_BOTH",
+      "FRESH_PERSISTED_METADATA_REFUSAL_DUPLICATE",
+      "FRESH_PERSISTED_METADATA_REFUSAL_CONFLICT",
+      "FRESH_PERSISTED_METADATA_REFUSAL_QUANTITY",
+      "NEW_PURCHASE_REFUSED_SAVED_SELECTION_PAYABLE_PROJECTION_MISSING",
+      "NEW_PURCHASE_REFUSED_SAVED_SELECTION_PAYABLE_PROJECTION_STALE",
+      "NEW_PURCHASE_REFUSED_SAVED_SELECTION_PAYABLE_PROJECTION_REMOVED-SIZE",
+      "MISSING_TRUSTED_HISTORY_REFUSES_AND_EXACT_PREIMAGE_RESTORED",
+      "TWO_SIZE_SAVED_ORDER_REFUSES_EXHAUSTED_SHARED_PREORDER_POOL",
+      "TWO_SIZE_SHARED_PARENT_STOCK_ONCE_AND_PAID_RETRY_IMMUTABLE",
+      "SYNTHETIC_PRIOR_NATIVE_ORDER_EXPLICIT_FINGERPRINT_PAYABLE_SIZE_UNKNOWN",
+      "ACTUAL_STORE_API_CHECKOUT_PERSISTENCE_SAME_CART_GET_PATCH_AND_RETRY"
+    ],
+    "cleanup": [
+      {
+        "pid": 15772,
+        "terminal": true,
+        "group_absent": true,
+        "exit": -15
+      },
+      {
+        "pid": 15736,
+        "terminal": true,
+        "group_absent": true,
+        "exit": 0
+      },
+      {
+        "owned_socket_absent": true
+      },
+      {
+        "owned_listener_absent": true
+      }
+    ],
+    "preservation": "PASS_EXECUTION_INPUTS_ORIGINAL_CODE_THEME_HEAD_AND_INDEX",
+    "error": {
+      "type": "JSONDecodeError",
+      "message": "Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  "preserved_earlier_failures": [
+    {
+      "result": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792446953217165000/results.json",
+        "sha256": "542b14cd06ed513b975ce7cd269ba7acba3d1070c29093dc7f8dbc646f6882fc",
+        "bytes": 3200802
+      },
+      "source_commit": "ae32bc81584af4d9760aaef17be3925bfa79582c",
+      "status": "FAIL",
+      "steps_reached": [],
+      "cleanup": [
+        {
+          "pid": 3494,
+          "terminal": true,
+          "group_absent": true,
+          "exit": 65
+        },
+        {
+          "pid": 3447,
+          "terminal": true,
+          "group_absent": true,
+          "exit": 0
+        },
+        {
+          "owned_socket_absent": true
+        },
+        {
+          "owned_listener_absent": true
+        }
+      ],
+      "preservation": "PASS_EXECUTION_INPUTS_ORIGINAL_CODE_THEME_HEAD_AND_INDEX",
+      "error": {
+        "type": "RuntimeError",
+        "message": "Owned HTTP server failed to start"
+      }
+    },
+    {
+      "result": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792447040812213000/results.json",
+        "sha256": "5f8578777d1f78d85599660ab5604705a2cb33344913471b68d467064e655403",
+        "bytes": 3201573
+      },
+      "source_commit": "af7253083445a32a9495b09ca9d6bf704eefd859",
+      "status": "FAIL",
+      "steps_reached": [
+        "FRESH_CONTAINED_NATIVE_FIXTURE"
+      ],
+      "cleanup": [
+        {
+          "pid": 3703,
+          "terminal": true,
+          "group_absent": true,
+          "exit": -15
+        },
+        {
+          "pid": 3679,
+          "terminal": true,
+          "group_absent": true,
+          "exit": 0
+        },
+        {
+          "owned_socket_absent": true
+        },
+        {
+          "owned_listener_absent": true
+        }
+      ],
+      "preservation": "PASS_EXECUTION_INPUTS_ORIGINAL_CODE_THEME_HEAD_AND_INDEX",
+      "error": {
+        "type": "JSONDecodeError",
+        "message": "Expecting value: line 1 column 1 (char 0)"
+      }
+    },
+    {
+      "result": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792447121589142000/results.json",
+        "sha256": "ac2a518c664b0b3cc29e78b2c21ce49ae76e4d789b4ec1a02e41a34bf8efb1ac",
+        "bytes": 3202657
+      },
+      "source_commit": "0ec03e0f1c2a596d33b0a1f22d1e9e24e73faa8b",
+      "status": "FAIL",
+      "steps_reached": [
+        "FRESH_CONTAINED_NATIVE_FIXTURE",
+        "CLASSIC_HTTP_SESSION_DISTINCT_SIZES_MERGE_AND_SHARED_PREORDER_POOL",
+        "NUMERIC_STRING_AND_ONE_SIZE_SESSION_ROUNDTRIP",
+        "PAIRED_NORMAL_CLASSIC_PERSISTED_SELECTION_REACHES_FAKE_PROCESSOR",
+        "CLASSIC_DROPPED_PERSISTENCE_REFUSED_SELECTED",
+        "CLASSIC_DROPPED_PERSISTENCE_REFUSED_GENERATION",
+        "CLASSIC_DROPPED_PERSISTENCE_REFUSED_BOTH"
+      ],
+      "cleanup": [
+        {
+          "pid": 3946,
+          "terminal": true,
+          "group_absent": true,
+          "exit": -15
+        },
+        {
+          "pid": 3923,
+          "terminal": true,
+          "group_absent": true,
+          "exit": 0
+        },
+        {
+          "owned_socket_absent": true
+        },
+        {
+          "owned_listener_absent": true
+        }
+      ],
+      "preservation": "PASS_EXECUTION_INPUTS_ORIGINAL_CODE_THEME_HEAD_AND_INDEX",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    }
+  ],
+  "failed_case": {
+    "name": "Actual Store API corrupted checkout-draft GET",
+    "raw_http": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792448535229444000/http-0209.json",
+      "sha256": "7f28ffc5eadb2a76ff11f04b76bad4295fabe3c05f5517feddde6006cc2a7a17",
+      "bytes": 5588
+    },
+    "observed": "HTTP200 with retained fatal HTML; strict JSON parsing raised JSONDecodeError. Native guard threw again in response-header cart_hash outside its handler. No post-refusal order-read assertion was reached for this case."
+  },
+  "unrun_after_failure": [
+    "Corrupt checkout-draft GET successful JSON409 and saved-order postimage",
+    "Corrupt checkout-draft PATCH JSON409 and saved-order postimage",
+    "Changed-cart checkout-draft preservation/detachment/distinct successor",
+    "Changed pending order native distinct successor",
+    "Variable-only draft editing and mixed variable membership mutation refusals",
+    "Native admin/email/REST readback and actual order-again reselection"
+  ],
+  "repair_source": {
+    "header_boundary_commit": "2782ac4c97ce49af8bf09bddbd8ca4529e526e51",
+    "module_sha256": "0ee0f08b8598e689d0e0da9735335e389bfd7a80db1de7e0b62076bee875d7a8",
+    "offline_controls": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-evidence-freeze/header-controls-v2/results.json",
+      "sha256": "279d0e1d00fd7a8fcd7172aceda0b778de0dbccd80b9dc8e6baa3fc27ae7cc76",
+      "bytes": 3912
+    },
+    "scope": "Native header formatting exemption only nearest exact native caller; native callback implementation/source binding, own409 boundary only. Pinned native method bodies with explicitly illustrative dependencies; no actual REST/DB closure."
+  },
+  "producer_successor_source": {
+    "commit": "ed9ec5859b15e427887ffb14008ed83ab92c2ba9",
+    "runner_sha256": "48f335943799340601902bad8059233470be5a5f0d89921cb21ef0ef6f5195a4",
+    "original_blob_sha256": "34b8c9826741becf3d86a4eae1de0209faf8778d213a5bb7abe3271c17331ff8",
+    "wrapper_sha256": "b7dd7bc02c3167803f986d05e13975e40e064cd4ddeb23ea6081b4192e34a42a",
+    "scope": "Exact historical function isolated with nativeabsint and synthetic config before nativeorder persistence/trustedfingerprint. New failure/retry/duplicate/stock/history assertions are SOURCE_ONLY_UNRUN. Earlier hand-built promise results stay labelled accordingly."
+  },
+  "evidence_limits": [
+    "Reached labels in FAILED runs are bounded subresults, not aggregate or successor PASS. Raw remaining arrays retain old scope; this additive record reconciles later coverage without editing raw reports.",
+    "Local PHP8.5.6/MariaDB13.0.2 differ from installed PHP8.4.26/MariaDB11.8.9. Seven-plugin fixture is not full installed33plugin/MU/drop-in parity.",
+    "Full CPT qualification, full build/package/preview/adoption, installed configuration/runtime/fullrestore and privacy/release gates remain open.",
+    "Historical private synthetic parent1290/child1292 insertion ownership remains NOT_ESTABLISHED; originaldatadir untouched; no live orphan inference."
+  ],
+  "holds": "LIVE_CONVERSION_DEPLOYMENT_AND_ALL_EXISTING_OPERATIONAL_PROVIDER_HOLDS_REMAIN"
+}
