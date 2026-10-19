@@ -1,0 +1,48 @@
+{
+  "classification": "RECORDED_INDEPENDENT_READ_ONLY_REVIEW",
+  "migration": {
+    "reviewer": "release_reconciliation_architect",
+    "verdict": "PASS_BOUNDED_FINAL_DELTA",
+    "source_commit": "a3ca682041e5d3b469ed4d814547089a4b9e5b69",
+    "core_sha256": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7",
+    "compat_sha256": "3262d65f35d4e08b017a9b6be9105701813e37dc8b31212cfd8e725bcacd226e",
+    "execution": "Reviewer inspected source/hashes/receipts, did not rerun tests",
+    "scope": "Durable guard/fencing/canonical bindings/v1-v2 history/completed retry result"
+  },
+  "immersive": {
+    "reviewers": [
+      "01a0f769-1e1a-76e1-aa99-1c4bd2dc6149",
+      "01a0f644-1a78-7a03-8d31-1e0864390f6a"
+    ],
+    "verdict": "PASS_BOUNDED_LOCAL_FALLBACK_READINESS",
+    "source_commit": "42ec774c9a528c3d7f42bd70c05b80a8b9290374",
+    "pins": {
+      "template-parts/immersive/world.php": "e75e77d34129b1429376629b43260b00adbc8e8f779d84aef6d136114f1006e5",
+      "assets/js/immersive.js": "7c83c7b08d24d7202297eefe920a9e5db77dfbdde4b91941fd6f59d210302952",
+      "assets/js/immersive.min.js": "f8c44722c2fe9fa02fdd42a6d0b4209c7a7800f05d0c253c2a080fff99656bbe",
+      "assets/css/immersive.css": "c5f2dfdea2da0aae6d34554f691b27f517bae4bbee2c56221698e1bbf3064042",
+      "assets/css/immersive.min.css": "b0442b6b72fe7caf522e095407a421f2c6f7a06b8422b6a192358e488993e73c"
+    },
+    "remaining": "Full creative experience, positive original-scene placement, broader physical-GPU/installed-runtime acceptance remain outside PASS",
+    "execution_packet_verified": {
+      "primary_sha256": "70ca10c5ddc5b5540ad9500ad8e43366648d9b623fe2210a4502bd2f4d3d8e06",
+      "fault_sha256": "b1d76d4b6ff708ad9329b1346b8911488b7efefa71a6b948af0d3093a5a013d3",
+      "destinations_sha256": "0fc3398fe16381993d8a928e955c7fd3efb07bfabbde03a7f3770f5d579e3f5a"
+    }
+  },
+  "offline_privacy": {
+    "reviewer": "release_reconciliation_architect",
+    "verdict": "PASS_BOUNDED_OFFLINE_SUCCESSOR",
+    "remaining": "Original collector missing and original checkpoint remains FAIL; no general sanitizer/live collector acceptance"
+  },
+  "certification": {
+    "reviewer": "01a0f644-1a78-7a03-8d31-1e0864390f6a",
+    "verdict": "PASS_BOUNDED_SOURCE_CERTIFICATION",
+    "source_commit": "887b6bfe0405d9601dd1b743542ba75e1cc5d6e2",
+    "input_pins": 106,
+    "runtime_php_pins": 85,
+    "theme_census": 911,
+    "release_entries": 773,
+    "scope": "Read-only source/hash/log inspection; no reviewer test reruns and no live or creative authority"
+  }
+}

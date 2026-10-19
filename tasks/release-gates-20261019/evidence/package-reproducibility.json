@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.package-reproducibility.v1",
+  "classification": "REPRODUCED_CLEAN_GIT_TREE_EXPORT",
+  "source_commit": "887b6bfe0405d9601dd1b743542ba75e1cc5d6e2",
+  "source_tree": "8b07bced15408fdb9ef960c9df00d81247ff3cc6",
+  "exported_source_blobs_checked_after_build": 12320,
+  "source_blob_drift": [],
+  "install": "npm ci from committed shrinkwrap; declared Python requirements",
+  "owning_command": "npm run package:theme",
+  "independent_full_builds": 2,
+  "first_log": "evidence/owning-package-r5.txt",
+  "clean_log": "evidence/clean-owning-package.txt",
+  "member_count": 773,
+  "all_member_names_and_bytes_identical": true,
+  "artifact_bytes": 293644246,
+  "artifact_sha256": "954b25b952733b51c592acb2819bdcdb9140d8d607a38507543f5329819a637a",
+  "artifact_path": "wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip",
+  "clean_artifact_path": ".artifacts/release-gates-20261019/clean-export/wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip",
+  "deployment_authorized": false
+}

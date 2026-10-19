@@ -1,0 +1,120 @@
+(node:69518) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# (node:69552) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: valid card images keep their error label hidden in delivered CSS
+ok 1 - valid card images keep their error label hidden in delivered CSS
+  ---
+  duration_ms: 0.899042
+  type: 'test'
+  ...
+# Subtest: immersive recovery hides failed editorial media without borrowing product or hero roles
+ok 2 - immersive recovery hides failed editorial media without borrowing product or hero roles
+  ---
+  duration_ms: 1.387375
+  type: 'test'
+  ...
+# Subtest: immersive shell has the shared skip target and immediate native commerce
+ok 3 - immersive shell has the shared skip target and immediate native commerce
+  ---
+  duration_ms: 0.212791
+  type: 'test'
+  ...
+# Subtest: collection arrivals link to merchandise and retain the editorial story
+ok 4 - collection arrivals link to merchandise and retain the editorial story
+  ---
+  duration_ms: 1.207083
+  type: 'test'
+  ...
+# (node:69554) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: immersive.js: cached and later poster failures recover identically {"reduced":true}
+ok 5 - immersive.js: cached and later poster failures recover identically {"reduced":true}
+  ---
+  duration_ms: 123.105167
+  type: 'test'
+  ...
+# Subtest: immersive.js: cached and later poster failures recover identically {"reduced":false}
+ok 6 - immersive.js: cached and later poster failures recover identically {"reduced":false}
+  ---
+  duration_ms: 24.716167
+  type: 'test'
+  ...
+# Subtest: immersive.js: cached and later poster failures recover identically {"reduced":false,"saveData":true}
+ok 7 - immersive.js: cached and later poster failures recover identically {"reduced":false,"saveData":true}
+  ---
+  duration_ms: 24.261958
+  type: 'test'
+  ...
+# Subtest: immersive.js: ready requires a loaded positive-size poster; absent remains unavailable
+ok 8 - immersive.js: ready requires a loaded positive-size poster; absent remains unavailable
+  ---
+  duration_ms: 25.676042
+  type: 'test'
+  ...
+# Subtest: immersive.js: failed chapter stays accessible without borrowing the hero role
+ok 9 - immersive.js: failed chapter stays accessible without borrowing the hero role
+  ---
+  duration_ms: 41.755542
+  type: 'test'
+  ...
+# Subtest: immersive.js: cached failed chapter recovers before any later image event
+ok 10 - immersive.js: cached failed chapter recovers before any later image event
+  ---
+  duration_ms: 15.945542
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: cached and later poster failures recover identically {"reduced":true}
+ok 11 - immersive.min.js: cached and later poster failures recover identically {"reduced":true}
+  ---
+  duration_ms: 24.092333
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: cached and later poster failures recover identically {"reduced":false}
+ok 12 - immersive.min.js: cached and later poster failures recover identically {"reduced":false}
+  ---
+  duration_ms: 20.479166
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: cached and later poster failures recover identically {"reduced":false,"saveData":true}
+ok 13 - immersive.min.js: cached and later poster failures recover identically {"reduced":false,"saveData":true}
+  ---
+  duration_ms: 24.64125
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: ready requires a loaded positive-size poster; absent remains unavailable
+ok 14 - immersive.min.js: ready requires a loaded positive-size poster; absent remains unavailable
+  ---
+  duration_ms: 19.921542
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: failed chapter stays accessible without borrowing the hero role
+ok 15 - immersive.min.js: failed chapter stays accessible without borrowing the hero role
+  ---
+  duration_ms: 38.096625
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: cached failed chapter recovers before any later image event
+ok 16 - immersive.min.js: cached failed chapter recovers before any later image event
+  ---
+  duration_ms: 23.84725
+  type: 'test'
+  ...
+# (node:69555) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: native Woo switches exact SKU, removes denied variation photo, permits size-only and resets safely
+ok 17 - native Woo switches exact SKU, removes denied variation photo, permits size-only and resets safely
+  ---
+  duration_ms: 514.349708
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1339.960333

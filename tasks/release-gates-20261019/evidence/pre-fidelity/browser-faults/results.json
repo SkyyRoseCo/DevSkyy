@@ -1,0 +1,89 @@
+{
+  "classification": "REPRODUCED_LOCAL_NATIVE_WITH_SYNTHETIC_FAULTS",
+  "authentication": "NOT_APPLICABLE",
+  "source_pins": {
+    "assets/js/immersive.js": "3fae53d92bfbe9ba2a187f89e2118417f2167c9b71d32f64a065769d8a11632c",
+    "assets/js/immersive.min.js": "96f43a8e054c7ed3915341837fb6b6b2655c5cad1e73d74e69a47c5854fd97f6",
+    "template-parts/immersive/world.php": "9a9b4b472bbfc24979a8c6bd0f9410c25c507281497cad4a6d90ff5c4dc88f19"
+  },
+  "cases": [
+    {
+      "control": "poster-error-before-script",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "failure_completed_before_script": true,
+      "scene_state": "reduced-motion",
+      "poster_state": "unavailable"
+    },
+    {
+      "control": "poster-error-after-script",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "poster-unavailable",
+      "poster_state": "unavailable"
+    },
+    {
+      "control": "chapter-error-while-poster-loading",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "chapter_failed_before_poster_ready": true,
+      "scene_state": "poster",
+      "poster_state": "ready"
+    },
+    {
+      "control": "delayed-poster-success",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "no_false_ready_before_image": true,
+      "scene_state": "poster",
+      "poster_state": "ready"
+    },
+    {
+      "control": "storage-denied",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "reduced-motion",
+      "poster_state": "ready"
+    },
+    {
+      "control": "save-data",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "save-data",
+      "poster_state": "ready"
+    },
+    {
+      "control": "webgl-unavailable",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "webgl-unavailable",
+      "poster_state": "ready"
+    },
+    {
+      "control": "renderer-error",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "scene-error",
+      "poster_state": "ready"
+    },
+    {
+      "control": "javascript-disabled",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "poster-loading",
+      "poster_state": "loading"
+    }
+  ],
+  "creative_acceptance": "NOT_GRANTED",
+  "browser": "145.0.7632.6",
+  "status": "PASS"
+}

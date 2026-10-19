@@ -1,0 +1,86 @@
+
+> skyyrose-flagship-2-theme@2.5.5 package:theme
+> bash scripts/package-theme.sh
+
+
+> skyyrose-flagship-2-theme@2.5.5 build
+> npm run check:source-integrity && npm run build:scene-posters && npm run check:approved-scenes && npm run build:tokens && npm run build:registry && npm run build:card-renditions && npm run build:font-delivery && npm run build:frame-delivery && npm run build:assets && npm run build:archive-theme && npm run build:i18n
+
+
+> skyyrose-flagship-2-theme@2.5.5 check:source-integrity
+> python3 ../../tools/v2-source-certification/check-integrity.py
+
+PASS 33 front hashes/dimensions; media states 16/9/5/3; 18 motion variant hashes
+
+> skyyrose-flagship-2-theme@2.5.5 build:scene-posters
+> node ../../tools/v2-runtime/build-scene-posters.cjs --write
+
+{
+  "status": "BUILT_SCENE_POSTERS",
+  "tool_version": "1.6.0\nlibsharpyuv: 0.4.2",
+  "outputs": [
+    {
+      "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp",
+      "bytes": 69660,
+      "sha256": "fe92f8838cb20f911e95afc2f1ab75ad1bc94601d3a00b0db7bf9c9165abd1a4"
+    },
+    {
+      "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp",
+      "bytes": 156866,
+      "sha256": "2cbf726ea73c1c0a3eead460228b302d07f6ea51ebd3e5a70c9380515e25b9d8"
+    }
+  ]
+}
+(node:59632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.5 check:approved-scenes
+> node ../../tools/v2-runtime/check-approved-scroll-world-scenes.cjs
+
+{
+  "status": "PASS_APPROVED_SCENE_SELECTION",
+  "scenes": 9,
+  "runtime_media_assets": 27,
+  "media_bytes": 42425297,
+  "supporting_derivatives": 2,
+  "supporting_derivative_bytes": 226526,
+  "resolved_selection_checked": false,
+  "browser_visual_qa": "NOT_PERFORMED_BY_THIS_GUARD"
+}
+(node:59776) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.5 build:tokens
+> node ../../tools/v2-runtime/sync-token-contract.cjs --write
+
+PASS runtime/editor colors, layout, type roles, spacing, controls, focus, motion and layer contract
+(node:59821) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.5 build:registry
+> python3 scripts/build-product-presentation-registry.py
+
+Traceback (most recent call last):
+  File "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py", line 320, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py", line 316, in main
+    return main_locked()
+           ^^^^^^^^^^^^^
+  File "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py", line 239, in main_locked
+    artifact = build_registry()
+               ^^^^^^^^^^^^^^^^
+  File "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py", line 88, in build_registry
+    artifact = build_locked_registry(before)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py", line 179, in build_locked_registry
+    record["garment_highlight"] = validate_annotation(sku, annotation)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/skyyrose/core/card_annotations.py", line 158, in validate_annotation
+    record = _reviewed_card_records(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/skyyrose/core/product_registry.py", line 393, in _reviewed_card_records
+    from skyyrose.core.native_review import REVIEW_CHECKS, NativeVisualReceipt
+  File "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/skyyrose/core/native_review.py", line 13, in <module>
+    from pydantic import BaseModel, ConfigDict, Field, model_validator
+ModuleNotFoundError: No module named 'pydantic'

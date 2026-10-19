@@ -1,0 +1,117 @@
+{
+  "schema": "skyyrose.remaining-release-gates.v1",
+  "release_disposition": "HOLD",
+  "execution_authority_granted_by_this_packet": false,
+  "gates": [
+    {
+      "gate": "full_immersive_experience",
+      "owner": "Corey with V2/3D and independent immersive reviewer",
+      "requested_action": "Resolve and review the full world-rendering dependency, then review the frozen ten-destination experience and explicitly accept or return creative changes.",
+      "preconditions": [
+        "Review exact frozen source/package and complete 40/12/22 local packet",
+        "Keep technical recovery separate from full immersive creative acceptance",
+        "Preserve existing media usage target limits and zero accepted product GLBs",
+        "Four native software-WebGL probes reached three-timeout; current Three loader is coupled to the hard-disabled mascot. Resolve that dependency deliberately without inferring mascot activation or full creative approval."
+      ],
+      "evidence": [
+        "evidence/browser-ten-routes/results.json",
+        "evidence/browser-faults/results.json",
+        "evidence/browser-destinations/results.json",
+        "evidence/immersive-fidelity-readback.json",
+        "evidence/three-positive-control.json"
+      ],
+      "current_limit": "Bounded fallback/readiness passes; successful Three rendering, positive original-scene hotspots, full reinitialization and full creative acceptance remain open.",
+      "root_cause_source": [
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/functions.php",
+          "lines": "15-16, 548-570",
+          "observation": "Mascot always disabled; shared Three loader enqueue/configuration lives inside that gate"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+          "lines": "4-7, 275-310",
+          "observation": "Missing mascot canvas/stage returns before loadThree is exported"
+        }
+      ],
+      "proposed_bounded_fix": "Separate the self-hosted Three dependency loader for world routes from mascot DOM/model lifecycle. Keep mascot disabled, preserve reduced-motion/Save Data/WebGL fallback, current media authority and all live holds. This is a proposed successor change, not implemented or enabled by candidate887b6bfe.",
+      "closure_proof": [
+        "Four native world routes reach three-ready with visible canvas and observed rendered frames using exact successor source/min/vendor/package hashes",
+        "Verify no optional Three load under reduced motion/Save Data and recovery after loader/renderer failure",
+        "Recheck reload/back-forward reinitialization, single listeners/animation loop and exact canonical product destinations",
+        "Repeat affected desktop/mobile route/recovery checks, clean package reproducibility and independent review",
+        "Obtain full immersive creative acceptance separately; do not infer it from atmospheric rendering"
+      ],
+      "probe_driver_sha256": "c8893fcf4710a2e8f76188e76c792c22c30597958ddb349dc54da19f9b206bc1"
+    },
+    {
+      "gate": "v1_and_global_privacy",
+      "owner": "Integration and independent overall assurance; Corey controls any renewed live attempt",
+      "requested_action": "Recover the original consumed collector/full failure packet or formally review a complete successor collector; only then decide whether a fresh tightly scoped live checkpoint is authorized.",
+      "preconditions": [
+        "Original checkpoint remains FAIL and prior one-shot is consumed",
+        "Eight retained unsupported rows remain UNKNOWN",
+        "Qualify all persisted traces/logs, not returned HTML alone",
+        "Test missing/ambiguous/truncated evidence fail closed",
+        "Review actual installed tracking/plugin applicability without inferring traffic from plugin status"
+      ],
+      "evidence": [
+        "offline-v1/provenance.json",
+        "offline-v1/capture-replay.json",
+        "evidence/v1-offline-successor/results.json"
+      ],
+      "current_limit": "No full legacy collector repair, live capture or new attempt authority."
+    },
+    {
+      "gate": "live_size_conversion",
+      "owner": "Integration and preorder owner; Corey controls conversion authority",
+      "requested_action": "Keep conversion held until the exact installed stack, recoverable preimage, guarded rollout and in-flight-commerce quiescence are qualified and scoped conversion is expressly authorized.",
+      "preconditions": [
+        "Use registry/reader-bound native product plan and exact preimage",
+        "Drain writes already past payment validation before conversion",
+        "Keep HPOS authority unchanged unless native synchronization is complete and a switch is separately authorized",
+        "Qualify installed PHP/database/plugin differences and any custom DB drop-in",
+        "Reconcile partial/orphan children manually; never infer ownership or delete automatically"
+      ],
+      "evidence": [
+        "evidence/migration-subset.json",
+        "evidence/authenticated-native-storage.json"
+      ],
+      "current_limit": "Local synthetic qualification only; no live orders/payments, synchronization or conversion."
+    },
+    {
+      "gate": "recoverable_installed_baseline",
+      "owner": "Integration and site recovery owner",
+      "requested_action": "Obtain a complete authorized code/data/configuration backup and prove an isolated restore with outbound traffic, mail, webhooks and scheduled jobs disabled.",
+      "preconditions": [
+        "Verify target identity and backup point-in-time coverage",
+        "Cover active/inactive themes/plugins, MU plugins, drop-ins, uploads, database and required secret bindings without exposing secrets",
+        "Resolve symlink/unreadable-directory inventory coverage",
+        "Restore only into a disposable private environment with synthetic payment endpoints",
+        "Verify native content/product/order storage integrity and a rollback rehearsal that preserves orders created after the backup",
+        "Prefer code rollback when possible; never overwrite a live database and discard newer orders"
+      ],
+      "evidence": [
+        "evidence/authenticated-installed-baseline.json",
+        "evidence/authenticated-native-storage.json",
+        "evidence/authenticated-backup-metadata.json"
+      ],
+      "current_limit": "Backup service metadata and 14,792 hashes are not a recoverable backup or successful restore."
+    },
+    {
+      "gate": "release_and_publication",
+      "owner": "Corey and release owner",
+      "requested_action": "Consider deployment/publication only after the preceding evidence and acceptance gates close against the exact final artifact.",
+      "preconditions": [
+        "Independent final combined-candidate review",
+        "Current complete recovery proof",
+        "Production media usage authority where needed",
+        "Explicit deployment/publication/cutover authority"
+      ],
+      "evidence": [
+        "adoption-manifest.json",
+        "evidence/package-reproducibility.json"
+      ],
+      "current_limit": "No push, merge, deployment, activation, publication, provider generation or paid calls authorized by this packet."
+    }
+  ]
+}

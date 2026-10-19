@@ -1,0 +1,582 @@
+{
+  "classification": "REPRODUCED_LOCAL_NATIVE",
+  "authentication": "NOT_APPLICABLE",
+  "primary_sha256": "be527d9648eaf16c66cff44630a77de439c03ed9a57ba9ed83884c85f76c90b0",
+  "expected_unique_destinations": 22,
+  "cases": [
+    {
+      "sku": "sg-009",
+      "product": {
+        "id": 450,
+        "url": "http://127.0.0.1:18362/product/sg-009/",
+        "collection": "signature",
+        "children": {
+          "S": 451,
+          "M": 452,
+          "L": 453,
+          "XL": 454,
+          "2XL": 455,
+          "3XL": 456
+        }
+      },
+      "source_route": "/collections/signature/",
+      "href": "http://127.0.0.1:18362/product/sg-009/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/sg-009/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 451
+      },
+      "native_id": 450
+    },
+    {
+      "sku": "sg-007",
+      "product": {
+        "id": 449,
+        "url": "http://127.0.0.1:18362/product/sg-007/",
+        "collection": "signature",
+        "children": []
+      },
+      "source_route": "/collections/signature/",
+      "href": "http://127.0.0.1:18362/product/sg-007/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/sg-007/",
+      "native_id": 449
+    },
+    {
+      "sku": "sg-011",
+      "product": {
+        "id": 457,
+        "url": "http://127.0.0.1:18362/product/sg-011/",
+        "collection": "signature",
+        "children": {
+          "S": 458,
+          "M": 459,
+          "L": 460,
+          "XL": 461,
+          "2XL": 462,
+          "3XL": 463
+        }
+      },
+      "source_route": "/collections/signature/",
+      "href": "http://127.0.0.1:18362/product/sg-011/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/sg-011/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 458
+      },
+      "native_id": 457
+    },
+    {
+      "sku": "sg-012",
+      "product": {
+        "id": 464,
+        "url": "http://127.0.0.1:18362/product/sg-012/",
+        "collection": "signature",
+        "children": {
+          "S": 465,
+          "M": 466,
+          "L": 467,
+          "XL": 468,
+          "2XL": 469,
+          "3XL": 470
+        }
+      },
+      "source_route": "/collections/signature/",
+      "href": "http://127.0.0.1:18362/product/sg-012/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/sg-012/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 465
+      },
+      "native_id": 464
+    },
+    {
+      "sku": "sg-013",
+      "product": {
+        "id": 471,
+        "url": "http://127.0.0.1:18362/product/sg-013/",
+        "collection": "signature",
+        "children": {
+          "S": 472,
+          "M": 473,
+          "L": 474,
+          "XL": 475,
+          "2XL": 476,
+          "3XL": 477
+        }
+      },
+      "source_route": "/collections/signature/",
+      "href": "http://127.0.0.1:18362/product/sg-013/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/sg-013/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 472
+      },
+      "native_id": 471
+    },
+    {
+      "sku": "sg-014",
+      "product": {
+        "id": 478,
+        "url": "http://127.0.0.1:18362/product/sg-014/",
+        "collection": "signature",
+        "children": {
+          "S": 479,
+          "M": 480,
+          "L": 481,
+          "XL": 482,
+          "2XL": 483,
+          "3XL": 484
+        }
+      },
+      "source_route": "/collections/signature/",
+      "href": "http://127.0.0.1:18362/product/sg-014/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/sg-014/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 479
+      },
+      "native_id": 478
+    },
+    {
+      "sku": "sg-006",
+      "product": {
+        "id": 442,
+        "url": "http://127.0.0.1:18362/product/sg-006/",
+        "collection": "signature",
+        "children": {
+          "S": 443,
+          "M": 444,
+          "L": 445,
+          "XL": 446,
+          "2XL": 447,
+          "3XL": 448
+        }
+      },
+      "source_route": "/collections/signature/",
+      "href": "http://127.0.0.1:18362/product/sg-006/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/sg-006/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 443
+      },
+      "native_id": 442
+    },
+    {
+      "sku": "sg-005",
+      "product": {
+        "id": 436,
+        "url": "http://127.0.0.1:18362/product/sg-005/",
+        "collection": "signature",
+        "children": {
+          "S": 437,
+          "M": 438,
+          "L": 439,
+          "XL": 440,
+          "2XL": 441
+        }
+      },
+      "source_route": "/worlds/signature/",
+      "href": "http://127.0.0.1:18362/product/sg-005/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/sg-005/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 437
+      },
+      "native_id": 436
+    },
+    {
+      "sku": "sg-001",
+      "product": {
+        "id": 415,
+        "url": "http://127.0.0.1:18362/product/sg-001/",
+        "collection": "signature",
+        "children": {
+          "S": 416,
+          "M": 417,
+          "L": 418,
+          "XL": 419,
+          "2XL": 420,
+          "3XL": 421
+        }
+      },
+      "source_route": "/worlds/signature/",
+      "href": "http://127.0.0.1:18362/product/sg-001/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/sg-001/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 416
+      },
+      "native_id": 415
+    },
+    {
+      "sku": "br-001",
+      "product": {
+        "id": 274,
+        "url": "http://127.0.0.1:18362/product/br-001/",
+        "collection": "black-rose",
+        "children": {
+          "S": 275,
+          "M": 276,
+          "L": 277,
+          "XL": 278,
+          "2XL": 279,
+          "3XL": 280
+        }
+      },
+      "source_route": "/collections/black-rose/",
+      "href": "http://127.0.0.1:18362/product/br-001/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/br-001/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 275
+      },
+      "native_id": 274
+    },
+    {
+      "sku": "br-002",
+      "product": {
+        "id": 281,
+        "url": "http://127.0.0.1:18362/product/br-002/",
+        "collection": "black-rose",
+        "children": {
+          "S": 282,
+          "M": 283,
+          "L": 284,
+          "XL": 285,
+          "2XL": 286,
+          "3XL": 287
+        }
+      },
+      "source_route": "/collections/black-rose/",
+      "href": "http://127.0.0.1:18362/product/br-002/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/br-002/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 282
+      },
+      "native_id": 281
+    },
+    {
+      "sku": "br-004",
+      "product": {
+        "id": 295,
+        "url": "http://127.0.0.1:18362/product/br-004/",
+        "collection": "black-rose",
+        "children": {
+          "S": 296,
+          "M": 297,
+          "L": 298,
+          "XL": 299,
+          "2XL": 300,
+          "3XL": 301
+        }
+      },
+      "source_route": "/collections/black-rose/",
+      "href": "http://127.0.0.1:18362/product/br-004/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/br-004/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 296
+      },
+      "native_id": 295
+    },
+    {
+      "sku": "br-005",
+      "product": {
+        "id": 302,
+        "url": "http://127.0.0.1:18362/product/br-005/",
+        "collection": "black-rose",
+        "children": {
+          "S": 303,
+          "M": 304,
+          "L": 305,
+          "XL": 306,
+          "2XL": 307,
+          "3XL": 308
+        }
+      },
+      "source_route": "/collections/black-rose/",
+      "href": "http://127.0.0.1:18362/product/br-005/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/br-005/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 303
+      },
+      "native_id": 302
+    },
+    {
+      "sku": "br-007",
+      "product": {
+        "id": 316,
+        "url": "http://127.0.0.1:18362/product/br-007/",
+        "collection": "black-rose",
+        "children": {
+          "S": 317,
+          "M": 318,
+          "L": 319,
+          "XL": 320,
+          "2XL": 321,
+          "3XL": 322
+        }
+      },
+      "source_route": "/collections/black-rose/",
+      "href": "http://127.0.0.1:18362/product/br-007/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/br-007/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 317
+      },
+      "native_id": 316
+    },
+    {
+      "sku": "br-006",
+      "product": {
+        "id": 309,
+        "url": "http://127.0.0.1:18362/product/br-006/",
+        "collection": "black-rose",
+        "children": {
+          "S": 310,
+          "M": 311,
+          "L": 312,
+          "XL": 313,
+          "2XL": 314,
+          "3XL": 315
+        }
+      },
+      "source_route": "/worlds/black-rose/",
+      "href": "http://127.0.0.1:18362/product/br-006/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/br-006/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 310
+      },
+      "native_id": 309
+    },
+    {
+      "sku": "lh-004",
+      "product": {
+        "id": 400,
+        "url": "http://127.0.0.1:18362/product/lh-004/",
+        "collection": "love-hurts",
+        "children": {
+          "S": 401,
+          "M": 402,
+          "L": 403,
+          "XL": 404,
+          "2XL": 405,
+          "3XL": 406
+        }
+      },
+      "source_route": "/collections/love-hurts/",
+      "href": "http://127.0.0.1:18362/product/lh-004/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/lh-004/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 401
+      },
+      "native_id": 400
+    },
+    {
+      "sku": "lh-002",
+      "product": {
+        "id": 386,
+        "url": "http://127.0.0.1:18362/product/lh-002/",
+        "collection": "love-hurts",
+        "children": {
+          "S": 387,
+          "M": 388,
+          "L": 389,
+          "XL": 390,
+          "2XL": 391,
+          "3XL": 392
+        }
+      },
+      "source_route": "/collections/love-hurts/",
+      "href": "http://127.0.0.1:18362/product/lh-002/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/lh-002/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 387
+      },
+      "native_id": 386
+    },
+    {
+      "sku": "lh-003",
+      "product": {
+        "id": 393,
+        "url": "http://127.0.0.1:18362/product/lh-003/",
+        "collection": "love-hurts",
+        "children": {
+          "S": 394,
+          "M": 395,
+          "L": 396,
+          "XL": 397,
+          "2XL": 398,
+          "3XL": 399
+        }
+      },
+      "source_route": "/collections/love-hurts/",
+      "href": "http://127.0.0.1:18362/product/lh-003/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/lh-003/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 394
+      },
+      "native_id": 393
+    },
+    {
+      "sku": "lh-006",
+      "product": {
+        "id": 408,
+        "url": "http://127.0.0.1:18362/product/lh-006/",
+        "collection": "love-hurts",
+        "children": {
+          "S": 409,
+          "M": 410,
+          "L": 411,
+          "XL": 412,
+          "2XL": 413,
+          "3XL": 414
+        }
+      },
+      "source_route": "/collections/love-hurts/",
+      "href": "http://127.0.0.1:18362/product/lh-006/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/lh-006/",
+      "selected_native_child": {
+        "size": "S",
+        "id": 409
+      },
+      "native_id": 408
+    },
+    {
+      "sku": "lh-005",
+      "product": {
+        "id": 407,
+        "url": "http://127.0.0.1:18362/product/lh-005/",
+        "collection": "love-hurts",
+        "children": []
+      },
+      "source_route": "/worlds/love-hurts/",
+      "href": "http://127.0.0.1:18362/product/lh-005/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/lh-005/",
+      "native_id": 407
+    },
+    {
+      "sku": "kids-001",
+      "product": {
+        "id": 372,
+        "url": "http://127.0.0.1:18362/product/kids-001/",
+        "collection": "kids-capsule",
+        "children": {
+          "5": 376,
+          "6": 377,
+          "7": 378,
+          "2T": 373,
+          "3T": 374,
+          "4T": 375
+        }
+      },
+      "source_route": "/collections/kids-capsule/",
+      "href": "http://127.0.0.1:18362/product/kids-001/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/kids-001/",
+      "selected_native_child": {
+        "size": "5",
+        "id": 376
+      },
+      "native_id": 372
+    },
+    {
+      "sku": "kids-002",
+      "product": {
+        "id": 379,
+        "url": "http://127.0.0.1:18362/product/kids-002/",
+        "collection": "kids-capsule",
+        "children": {
+          "5": 383,
+          "6": 384,
+          "7": 385,
+          "2T": 380,
+          "3T": 381,
+          "4T": 382
+        }
+      },
+      "source_route": "/collections/kids-capsule/",
+      "href": "http://127.0.0.1:18362/product/kids-002/",
+      "status": "PASS",
+      "navigation_response_status": null,
+      "destination_http_status": 200,
+      "effective_url": "http://127.0.0.1:18362/product/kids-002/",
+      "selected_native_child": {
+        "size": "5",
+        "id": 383
+      },
+      "native_id": 379
+    }
+  ],
+  "mutations": "NONE; read-only product pages and native option selection",
+  "browser": "145.0.7632.6",
+  "status": "PASS"
+}

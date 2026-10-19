@@ -1,0 +1,195 @@
+{
+  "classification": "REPRODUCED_LOCAL_NATIVE",
+  "authentication": "NOT_APPLICABLE",
+  "scope": "Synthetic isolated core + WooCommerce; no production, creative, or third-party plugin acceptance",
+  "started_utc": "2026-10-19T09:24:12.404Z",
+  "commit": "cebe98935a5fd22169b58d3504783eef00016e66",
+  "dirty_diff_sha256": "3b86b2dd35465ac78a5d3886a48521bd7212142a7524d5231bbea70e8d0055aa",
+  "source_pins": {
+    "assets/js/immersive.js": "3fae53d92bfbe9ba2a187f89e2118417f2167c9b71d32f64a065769d8a11632c",
+    "assets/js/immersive.min.js": "96f43a8e054c7ed3915341837fb6b6b2655c5cad1e73d74e69a47c5854fd97f6",
+    "template-parts/immersive/world.php": "9a9b4b472bbfc24979a8c6bd0f9410c25c507281497cad4a6d90ff5c4dc88f19",
+    "data/v2-media-eligibility.json": "b245f5113336ff00993ea36d931652f808c33f8afd27e94d2097c39d5f00ac4e"
+  },
+  "fixture_sha256": "94d4a6fdde2be9a518203a882b28ebdd378d6d60d410f56a3e0df7734bb9247b",
+  "cases": [
+    {
+      "label": "desktop-reduced-signature",
+      "route": {
+        "logical_key": "signature",
+        "path": "/collections/signature/",
+        "id": 494,
+        "template": "template-collection.php",
+        "collection": "signature",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/signature/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        }
+      ]
+    },
+    {
+      "label": "desktop-reduced-immersive-signature",
+      "route": {
+        "logical_key": "immersive-signature",
+        "path": "/worlds/signature/",
+        "id": 495,
+        "template": "template-immersive-signature.php",
+        "collection": "signature",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/worlds/signature/",
+      "template": "template-immersive-signature.php",
+      "hero": {
+        "sku": "sg-009",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/sg-009-768w.webp?v=feb08c5a37d90fca93709b0638791e42b8ae581db225d4f1d3eae0f0567e47ca",
+        "loaded": true
+      },
+      "scene_state": "reduced-motion",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/sg-005/",
+          "sku": "sg-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-001/",
+          "sku": "sg-001"
+        }
+      ]
+    }
+  ],
+  "faults": [],
+  "browser": "145.0.7632.6",
+  "blocked_external_origins": [],
+  "finished_utc": "2026-10-19T09:24:21.643Z",
+  "status": "PASS_PRIMARY_TECHNICAL_CASES",
+  "creative_acceptance": "NOT_GRANTED"
+}

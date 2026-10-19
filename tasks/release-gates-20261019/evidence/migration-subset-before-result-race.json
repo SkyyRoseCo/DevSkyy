@@ -1,0 +1,146 @@
+{
+  "schema": "skyyrose.migration-subset.v1",
+  "state": "REVIEWED_FROZEN_WORKING_FILE_PINS_NOT_COMMITTED",
+  "base_commit": "cebe98935a5fd22169b58d3504783eef00016e66",
+  "source_hashes": {
+    "tools/v2-runtime/variation-migration.php": "72e19a7b076ce6d53f915672d7e81eac6b956e7de0783bf020e73ff5e971397b",
+    "tools/v2-runtime/variation-migration-core.php": "41cb57880dcc69ab48ff5ea7064f39a0c69564475c337ee19957c35a97d34a34",
+    "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "3262d65f35d4e08b017a9b6be9105701813e37dc8b31212cfd8e725bcacd226e",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/migration.php": "8a71fbb28378b7012e36943e177ff7ca1cc33bc06473f978db292bf6f04a5d48",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/migration-process.php": "b65c79972f55c467ad4c8c732b9f30dca6393067b35b74ef28a356664888c23b",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/preorder.php": "44e14e24f686d6fcafa0500f817c81c465dd59ea443e05f449f5b59568408cd7",
+    "wordpress-theme/skyyrose-flagship-2/tests/commerce/run-local-matrix.sh": "dd6c961ba604b358826095c95b033e539c19d6749d9b38938ec1a019ba2f2d81",
+    "tools/v2-runtime/phase3b-browser/test-release-migration-process.cjs": "dcceabb9f1d67ffca3f8bfa28e90c2a4d0c83f98bb679b1236329af6b5dbae74"
+  },
+  "registry_sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+  "reader_sha256": "65b3f2e01b756676661d3964b19d7dad7db3359973fa1b7738819796d17bf55b",
+  "runtime": {
+    "wordpress": "7.1.2",
+    "woocommerce": "11.2.1",
+    "fixture_home": "http://127.0.0.1:18362",
+    "authentication": "NOT_APPLICABLE"
+  },
+  "matrix": {
+    "cpt-off": {
+      "pass_assertions": 146,
+      "complete": true,
+      "storage": {
+        "hpos_authoritative": false,
+        "sync": "no",
+        "native_order_data_store": "WC_Order_Data_Store_CPT"
+      }
+    },
+    "hpos-off": {
+      "pass_assertions": 146,
+      "complete": true,
+      "storage": {
+        "hpos_authoritative": true,
+        "sync": "no",
+        "native_order_data_store": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore"
+      }
+    },
+    "cpt-on": {
+      "pass_assertions": 146,
+      "complete": true,
+      "storage": {
+        "hpos_authoritative": false,
+        "sync": "yes",
+        "native_order_data_store": "WC_Order_Data_Store_CPT"
+      }
+    },
+    "hpos-on": {
+      "pass_assertions": 146,
+      "complete": true,
+      "storage": {
+        "hpos_authoritative": true,
+        "sync": "yes",
+        "native_order_data_store": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore"
+      }
+    }
+  },
+  "sync_controls": 2,
+  "process_controls": [
+    {
+      "case": "process-kill",
+      "status": "PASS",
+      "loser_denied": true,
+      "fresh_incomplete_guard": true,
+      "unknown_history_payment_blocked": true,
+      "successor_children": 6,
+      "stale_writer_no_further_mutation": true,
+      "old_writer_exit": {
+        "code": null,
+        "signal": "SIGKILL"
+      }
+    },
+    {
+      "case": "connection-loss",
+      "status": "PASS",
+      "loser_denied": true,
+      "fresh_incomplete_guard": true,
+      "unknown_history_payment_blocked": true,
+      "successor_children": 6,
+      "stale_writer_no_further_mutation": true,
+      "old_writer_exit": {
+        "code": 1,
+        "signal": null
+      }
+    },
+    {
+      "case": "inside-child-save",
+      "status": "PASS_FAIL_CLOSED_MANUAL_REPAIR_REQUIRED",
+      "guard_retained": true,
+      "orphan_not_adopted_or_deleted": true
+    }
+  ],
+  "evidence_hashes": {
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/cpt-off-storage.json": "f86b990bb9f69a9872642b8bffc943b70524ed24176bc03ed323425625504433",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/cpt-off.txt": "ed96254acaa7b6c15d6ed2753fe032812a22e2f042bb088b3e9b72bb65316a40",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/cpt-on-storage.json": "e953e81680bc43139f9f249372ce0cfdf0a13adc5f246fae55dd7d13a1a2a844",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/cpt-on.txt": "ed96254acaa7b6c15d6ed2753fe032812a22e2f042bb088b3e9b72bb65316a40",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/hpos-off-storage.json": "9c8708f4742a6bf4e67382680485e6d938c364b50bb5f66c504658be41e34a95",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/hpos-off.txt": "5fe2a8493a16875f4d38e1b3ecd8968af8da37a7170b1e5a514ecd3acbe3cdfb",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/hpos-on-storage.json": "fbfa761de1d9df81028773ad5ab57c5ae19218e544fc91b956bde24915076f4e",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/hpos-on.txt": "5fe2a8493a16875f4d38e1b3ecd8968af8da37a7170b1e5a514ecd3acbe3cdfb",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/incomplete-sync-recovery.txt": "4d6766a0d20534f39f1a4dd2ec797b15fca53b92998176af19f2b36a28947bfb",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/incomplete-sync.txt": "1a99ff58613da3d15368db8b9a1115575abe6cf190f20191166d507c6520dd5d",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/local-environment.json": "abb0a87b5bd3a30505642c0f8f91d5a3237e9a599016e30e9dd9c92b65c78630",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/sync-cpt-off.txt": "800aeb908d85426c9241a78238a4de3d64c8fd8106f919d2af55bfe85c217089",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/sync-cpt-on.txt": "b517dc124ad193243c3e3db421c1345df2f146da11dc6c55c12aa6a93c54ec77",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/sync-hpos-off.txt": "b517dc124ad193243c3e3db421c1345df2f146da11dc6c55c12aa6a93c54ec77",
+    "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/sync-hpos-on.txt": "aa7c491fdabf0e8c5dc82e4a41aa91f7464ba693ee4ea0034db3c3ba8c9eaf50",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402494115-process-kill.json-apply.txt": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402494115-process-kill.json-old-writer.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402494115-process-kill.json-prepare.txt": "30d6d29ccc7080f44f98167d2e6b07209029cdd5383c7f747e94fe04de21ed93",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402494115-process-kill.json-probe.txt": "15586da5f7538836a0fe2f1b4a5786fd9e02034f9fe20447ac8f886875730637",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402494115-process-kill.json-resume.txt": "148daa12919ff9d57181f377e7e34eb9c174247fd381f1edb961de1ea4de1aea",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402500553-connection-loss.json-apply.txt": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402500553-connection-loss.json-old-writer.txt": "0eb098b85e334ac402359c817f0adc643f8e5396c92594f9454ab3fa23098d3e",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402500553-connection-loss.json-prepare.txt": "810410dcce9aff290df86d9a1b7aecc0ffa0bf55323563ab351515e8249bc263",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402500553-connection-loss.json-probe.txt": "99fb20c6873097ba25db2bde797a148ba8beb1d984be6429f6d79cd57ca1b72c",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402500553-connection-loss.json-resume.txt": "9ee7ee2045c3e38de2038fd114d814d5a5508b823c052f411d17790b0d6b5718",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402506081-inside-child-save.json-orphan.txt": "b6c7a95ca035398118a430998e7bad151e56161e65e57246ca155491a0ff1965",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402506081-inside-child-save.json-prepare.txt": "f37ba8f038e0668d105ff31b37b7fbd617e4b67c31abbdd8102477524652ae24",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402506081-inside-child-save.json-probe.txt": "4672b8d8e5f886ba3a574bfc2e494311f863cc092de32c29910a4ee3ea2434a5",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792402506081-inside-child-save.json-resume.txt": "f539a30d6082d7982b5658f27060cf1031e25c72f5f72fc3ddcbb0f54be70e82",
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/results.json": "fb40611a2c16e9135e38b1930a4ecf353e008465d3c4cdeb2f441b55cd6f95cd"
+  },
+  "independent_review": {
+    "reviewer": "release_reconciliation_architect",
+    "verdict": "PASS_BOUNDED_SOURCE_REVIEW",
+    "prior_findings_closed": [
+      "Final fresh parent size attributes",
+      "Current registry and canonical reader binding",
+      "Persisted exact historical v1 schema compatibility"
+    ]
+  },
+  "remaining_holds": [
+    "No live conversion",
+    "No real orders/payments",
+    "No push/deploy/publication",
+    "Quiesce commerce writes including in-flight payments before future migration",
+    "Custom DB drop-ins require separate fencing qualification",
+    "Malformed orphan child requires manual reconciliation; no auto-deletion",
+    "Current live plugin stack and backup restore not qualified"
+  ]
+}

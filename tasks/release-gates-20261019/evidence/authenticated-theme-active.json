@@ -1,0 +1,20 @@
+{
+  "observed_utc": "2026-10-19T08:36:18.041479+00:00",
+  "classification": "VERIFIED_LIVE_READ_ONLY",
+  "authentication": "VERIFIED_LIVE",
+  "site_id": 238510894,
+  "site_url": "https://skyyrose.co",
+  "provider": "WordPress.com authenticated connector",
+  "operation": "site_editor_context theme.active",
+  "observed": {
+    "stylesheet": "skyyrose-flagship-2",
+    "name": "SkyyRose Flagship 2"
+  },
+  "limits": [
+    "No installed file hashes obtained",
+    "No plugin/MU/drop-in inventory obtained",
+    "No data backup or restore obtained",
+    "Does not establish deployment source or release acceptance"
+  ],
+  "writes": false
+}

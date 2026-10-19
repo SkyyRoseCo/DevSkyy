@@ -1,0 +1,26 @@
+{
+  "classification": "AUTHENTICATED_LIVE_READ_ONLY_METADATA",
+  "observed_utc": "2026-10-19 09:37:38 UTC",
+  "site": {
+    "id": 238510894,
+    "url": "https://skyyrose.co"
+  },
+  "state": "active",
+  "backups": {
+    "facts_available": true,
+    "last_backup_when": "2026-10-18 08:34:22",
+    "first_backup_when": "2025-07-18 21:48:39",
+    "number_of_backups": 476,
+    "attempts_available": true,
+    "last_attempt_when": "2026-10-18 08:34:29",
+    "last_attempt_status": "finished",
+    "last_attempt_failed": false,
+    "backup_in_progress": false,
+    "backup_in_progress_since": null
+  },
+  "restore_preflight_status": null,
+  "complete_backup_bytes_verified": false,
+  "disposable_restore_tested": false,
+  "new_order_preserving_rollback_tested": false,
+  "scope": "Metadata read only; no backup creation, restore or site mutation performed."
+}

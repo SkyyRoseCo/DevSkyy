@@ -1,0 +1,114 @@
+{
+  "classification": "REPRODUCED_LOCAL_NATIVE_WITH_SYNTHETIC_FAULTS",
+  "authentication": "NOT_APPLICABLE",
+  "source_pins": {
+    "assets/js/immersive.js": "7c83c7b08d24d7202297eefe920a9e5db77dfbdde4b91941fd6f59d210302952",
+    "assets/js/immersive.min.js": "f8c44722c2fe9fa02fdd42a6d0b4209c7a7800f05d0c253c2a080fff99656bbe",
+    "template-parts/immersive/world.php": "e75e77d34129b1429376629b43260b00adbc8e8f779d84aef6d136114f1006e5"
+  },
+  "cases": [
+    {
+      "control": "poster-error-before-script",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "failure_completed_before_script": true,
+      "scene_state": "reduced-motion",
+      "poster_state": "unavailable"
+    },
+    {
+      "control": "poster-error-after-script",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "poster-unavailable",
+      "poster_state": "unavailable"
+    },
+    {
+      "control": "chapter-error-before-script",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "failure_completed_before_script": true,
+      "scene_state": "reduced-motion",
+      "poster_state": "ready"
+    },
+    {
+      "control": "chapter-error-after-script",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "reduced-motion",
+      "poster_state": "ready"
+    },
+    {
+      "control": "chapter-error-while-poster-loading",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "chapter_failed_before_poster_ready": true,
+      "scene_state": "poster",
+      "poster_state": "ready"
+    },
+    {
+      "control": "chapter-absent",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "reduced-motion",
+      "poster_state": "ready"
+    },
+    {
+      "control": "delayed-poster-success",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "no_false_ready_before_image": true,
+      "scene_state": "poster",
+      "poster_state": "ready"
+    },
+    {
+      "control": "storage-denied",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "reduced-motion",
+      "poster_state": "ready"
+    },
+    {
+      "control": "save-data",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "save-data",
+      "poster_state": "ready"
+    },
+    {
+      "control": "webgl-unavailable",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "webgl-unavailable",
+      "poster_state": "ready"
+    },
+    {
+      "control": "renderer-error",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "scene-error",
+      "poster_state": "ready"
+    },
+    {
+      "control": "javascript-disabled",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "scene_state": "poster-loading",
+      "poster_state": "loading"
+    }
+  ],
+  "creative_acceptance": "NOT_GRANTED",
+  "browser": "145.0.7632.6",
+  "status": "PASS"
+}

@@ -1,0 +1,105 @@
+{
+  "classification": "RECORDED_NATIVE_BROWSER_OBSERVATIONS",
+  "report_sha256": "70ca10c5ddc5b5540ad9500ad8e43366648d9b623fe2210a4502bd2f4d3d8e06",
+  "all_40_primary_cases_pass": true,
+  "different_sku_fallback_controls": [
+    {
+      "case": "desktop-full-immersive-signature",
+      "fallback_sku": "sg-013",
+      "related_sku": "sg-005",
+      "related_href": "http://127.0.0.1:18362/product/sg-005/"
+    },
+    {
+      "case": "desktop-full-immersive-signature",
+      "fallback_sku": "sg-013",
+      "related_sku": "sg-001",
+      "related_href": "http://127.0.0.1:18362/product/sg-001/"
+    },
+    {
+      "case": "desktop-full-immersive-black-rose",
+      "fallback_sku": "br-004",
+      "related_sku": "br-006",
+      "related_href": "http://127.0.0.1:18362/product/br-006/"
+    },
+    {
+      "case": "desktop-full-immersive-love-hurts",
+      "fallback_sku": "lh-004",
+      "related_sku": "lh-005",
+      "related_href": "http://127.0.0.1:18362/product/lh-005/"
+    },
+    {
+      "case": "desktop-reduced-immersive-signature",
+      "fallback_sku": "sg-013",
+      "related_sku": "sg-005",
+      "related_href": "http://127.0.0.1:18362/product/sg-005/"
+    },
+    {
+      "case": "desktop-reduced-immersive-signature",
+      "fallback_sku": "sg-013",
+      "related_sku": "sg-001",
+      "related_href": "http://127.0.0.1:18362/product/sg-001/"
+    },
+    {
+      "case": "desktop-reduced-immersive-black-rose",
+      "fallback_sku": "br-004",
+      "related_sku": "br-006",
+      "related_href": "http://127.0.0.1:18362/product/br-006/"
+    },
+    {
+      "case": "desktop-reduced-immersive-love-hurts",
+      "fallback_sku": "lh-004",
+      "related_sku": "lh-005",
+      "related_href": "http://127.0.0.1:18362/product/lh-005/"
+    },
+    {
+      "case": "mobile-full-immersive-signature",
+      "fallback_sku": "sg-013",
+      "related_sku": "sg-005",
+      "related_href": "http://127.0.0.1:18362/product/sg-005/"
+    },
+    {
+      "case": "mobile-full-immersive-signature",
+      "fallback_sku": "sg-013",
+      "related_sku": "sg-001",
+      "related_href": "http://127.0.0.1:18362/product/sg-001/"
+    },
+    {
+      "case": "mobile-full-immersive-black-rose",
+      "fallback_sku": "br-004",
+      "related_sku": "br-006",
+      "related_href": "http://127.0.0.1:18362/product/br-006/"
+    },
+    {
+      "case": "mobile-full-immersive-love-hurts",
+      "fallback_sku": "lh-004",
+      "related_sku": "lh-005",
+      "related_href": "http://127.0.0.1:18362/product/lh-005/"
+    },
+    {
+      "case": "mobile-reduced-immersive-signature",
+      "fallback_sku": "sg-013",
+      "related_sku": "sg-005",
+      "related_href": "http://127.0.0.1:18362/product/sg-005/"
+    },
+    {
+      "case": "mobile-reduced-immersive-signature",
+      "fallback_sku": "sg-013",
+      "related_sku": "sg-001",
+      "related_href": "http://127.0.0.1:18362/product/sg-001/"
+    },
+    {
+      "case": "mobile-reduced-immersive-black-rose",
+      "fallback_sku": "br-004",
+      "related_sku": "br-006",
+      "related_href": "http://127.0.0.1:18362/product/br-006/"
+    },
+    {
+      "case": "mobile-reduced-immersive-love-hurts",
+      "fallback_sku": "lh-004",
+      "related_sku": "lh-005",
+      "related_href": "http://127.0.0.1:18362/product/lh-005/"
+    }
+  ],
+  "fidelity_claim": "Fallback image does not confer depicted-product identity; related links have no scene coordinates or depiction wording",
+  "creative_acceptance": false
+}

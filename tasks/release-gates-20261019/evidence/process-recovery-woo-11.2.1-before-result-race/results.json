@@ -1,0 +1,39 @@
+{
+  "classification": "REPRODUCED_LOCAL_NATIVE",
+  "authentication": "NOT_APPLICABLE",
+  "status": "PASS",
+  "results": [
+    {
+      "case": "process-kill",
+      "status": "PASS",
+      "loser_denied": true,
+      "fresh_incomplete_guard": true,
+      "unknown_history_payment_blocked": true,
+      "successor_children": 6,
+      "stale_writer_no_further_mutation": true,
+      "old_writer_exit": {
+        "code": null,
+        "signal": "SIGKILL"
+      }
+    },
+    {
+      "case": "connection-loss",
+      "status": "PASS",
+      "loser_denied": true,
+      "fresh_incomplete_guard": true,
+      "unknown_history_payment_blocked": true,
+      "successor_children": 6,
+      "stale_writer_no_further_mutation": true,
+      "old_writer_exit": {
+        "code": 1,
+        "signal": null
+      }
+    },
+    {
+      "case": "inside-child-save",
+      "status": "PASS_FAIL_CLOSED_MANUAL_REPAIR_REQUIRED",
+      "guard_retained": true,
+      "orphan_not_adopted_or_deleted": true
+    }
+  ]
+}

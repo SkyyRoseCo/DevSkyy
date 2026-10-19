@@ -1,0 +1,346 @@
+{
+  "schema": "skyyrose.installed-baseline.v1",
+  "classification": "AUTHENTICATED_LIVE_READ_ONLY",
+  "observed_utc": "2026-10-19T09:41:37+00:00",
+  "site": "https://skyyrose.co",
+  "wp_version": "7.1.3",
+  "php_version": "8.4.26",
+  "db_version": "11.8.9",
+  "stylesheet": "skyyrose-flagship-2",
+  "template": "skyyrose-flagship-2",
+  "storage_options": {
+    "woocommerce_custom_orders_table_enabled": "yes",
+    "woocommerce_custom_orders_table_data_sync_enabled": null,
+    "permalink_structure": "/%postname%/",
+    "blog_public": "1"
+  },
+  "plugins": {
+    "akismet/akismet.php": {
+      "version": "5.7.2",
+      "active": true
+    },
+    "classic-editor/classic-editor.php": {
+      "version": "1.7.0",
+      "active": false
+    },
+    "commercegurus-commercekit/commercegurus-commercekit.php": {
+      "version": "2.4.3",
+      "active": true
+    },
+    "csp-manager/csp-manager.php": {
+      "version": "1.2.1",
+      "active": false
+    },
+    "elementor/elementor.php": {
+      "version": "4.3.5",
+      "active": true
+    },
+    "elementor-pro/elementor-pro.php": {
+      "version": "4.3.2",
+      "active": true
+    },
+    "site-mailer/site-mailer.php": {
+      "version": "1.4.7",
+      "active": true
+    },
+    "google-listings-and-ads/google-listings-and-ads.php": {
+      "version": "3.9.6",
+      "active": false
+    },
+    "gravatar-enhanced/gravatar-enhanced.php": {
+      "version": "0.14.0",
+      "active": false
+    },
+    "gutenberg/gutenberg.php": {
+      "version": "24.2.0",
+      "active": true
+    },
+    "image-optimization/image-optimization.php": {
+      "version": "1.7.7",
+      "active": true
+    },
+    "jetpack/jetpack.php": {
+      "version": "16.4-a.1",
+      "active": true
+    },
+    "jetpack-boost/jetpack-boost.php": {
+      "version": "4.8.1",
+      "active": true
+    },
+    "zero-bs-crm/ZeroBSCRM.php": {
+      "version": "6.8.5",
+      "active": true
+    },
+    "jwt-authentication-for-wp-rest-api/jwt-auth.php": {
+      "version": "1.5.0",
+      "active": true
+    },
+    "kirki/kirki.php": {
+      "version": "6.4.0",
+      "active": true
+    },
+    "klaviyo/klaviyo.php": {
+      "version": "3.8.3",
+      "active": true
+    },
+    "layout-grid/index.php": {
+      "version": "1.8.5",
+      "active": true
+    },
+    "litespeed-cache/litespeed-cache.php": {
+      "version": "7.9.1",
+      "active": true
+    },
+    "mailpoet/mailpoet.php": {
+      "version": "5.42.0",
+      "active": true
+    },
+    "one-click-demo-import/one-click-demo-import.php": {
+      "version": "3.4.1",
+      "active": true
+    },
+    "page-optimize/page-optimize.php": {
+      "version": "0.6.3",
+      "active": true
+    },
+    "pinterest-for-woocommerce/pinterest-for-woocommerce.php": {
+      "version": "1.5.4",
+      "active": true
+    },
+    "skyyrose-accessibility-fix/skyyrose-accessibility-fix.php": {
+      "version": "1.0.0",
+      "active": false
+    },
+    "skyyrose-immersive/skyyrose-immersive.php": {
+      "version": "1.0.0",
+      "active": true
+    },
+    "skyyrose-scene-installer/skyyrose-scene-installer.php": {
+      "version": "1.0.0",
+      "active": true
+    },
+    "stripe-tax-for-woocommerce/stripe-tax-for-woocommerce.php": {
+      "version": "2.2.0",
+      "active": true
+    },
+    "tiktok-for-business/tiktok-for-woocommerce.php": {
+      "version": "1.4.2",
+      "active": true
+    },
+    "pojo-accessibility/pojo-accessibility.php": {
+      "version": "4.1.4",
+      "active": false
+    },
+    "woocommerce/woocommerce.php": {
+      "version": "11.2.1",
+      "active": true
+    },
+    "woo-update-manager/woo-update-manager.php": {
+      "version": "1.0.3",
+      "active": true
+    },
+    "woocommerce-paypal-payments/woocommerce-paypal-payments.php": {
+      "version": "4.1.3",
+      "active": true
+    },
+    "woocommerce-shipping/woocommerce-shipping.php": {
+      "version": "2.4.3",
+      "active": true
+    },
+    "woocommerce-gateway-stripe/woocommerce-gateway-stripe.php": {
+      "version": "11.1.1",
+      "active": true
+    },
+    "woocommerce-services/woocommerce-services.php": {
+      "version": "3.7.3",
+      "active": true
+    },
+    "woocommerce-payments/woocommerce-payments.php": {
+      "version": "11.2.0",
+      "active": true
+    },
+    "big-sky/big-sky.php": {
+      "version": "7.9.22",
+      "active": true
+    },
+    "wordpress-importer/wordpress-importer.php": {
+      "version": "0.9.6",
+      "active": true
+    },
+    "oauth2-provider/wp-oauth-server.php": {
+      "version": "4.5.2",
+      "active": true
+    }
+  },
+  "mu_plugins": {
+    "skyyrose-search-tracking-privacy.php": {
+      "version": ""
+    },
+    "skyyrose-ally-ajax-guard.php": {
+      "version": "1.0.0"
+    },
+    "skyyrose-anon-cache-guard.php": {
+      "version": "1.0.0"
+    },
+    "woocommerce-fraud-protection-loader.php": {
+      "version": ""
+    },
+    "wpcomsh-loader.php": {
+      "version": ""
+    }
+  },
+  "drop_ins": {
+    "advanced-cache.php": {
+      "version": ""
+    },
+    "object-cache.php": {
+      "version": ""
+    }
+  },
+  "routes": {
+    "collections/signature": {
+      "id": 10427,
+      "status": "publish",
+      "template": "template-collection.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/collections/signature/"
+    },
+    "collections/black-rose": {
+      "id": 10428,
+      "status": "publish",
+      "template": "template-collection.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/collections/black-rose/"
+    },
+    "collections/love-hurts": {
+      "id": 10429,
+      "status": "publish",
+      "template": "template-collection.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/collections/love-hurts/"
+    },
+    "collections/kids-capsule": {
+      "id": 10430,
+      "status": "publish",
+      "template": "template-collection.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/collections/kids-capsule/"
+    },
+    "worlds": {
+      "id": 10431,
+      "status": "draft",
+      "template": "default",
+      "content_sha256": "2a62b0f0f49633e63dd37c40d5075d9a54047b5c9c63c0c438e72cad194d5ab5",
+      "url": "https://skyyrose.co/?page_id=10431"
+    },
+    "experiences": {
+      "id": 10247,
+      "status": "publish",
+      "template": "template-experiences.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/experiences/"
+    },
+    "size-guide": {
+      "id": 10436,
+      "status": "publish",
+      "template": "default",
+      "content_sha256": "62fa2ac6eda70f5d8119753ae2a62c3b1353c9ec01619741f03215d147d1dd4f",
+      "url": "https://skyyrose.co/size-guide/"
+    },
+    "worlds/signature": {
+      "id": 10432,
+      "status": "draft",
+      "template": "template-immersive-signature.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/?page_id=10432"
+    },
+    "worlds/black-rose": {
+      "id": 10433,
+      "status": "draft",
+      "template": "template-immersive-black-rose.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/?page_id=10433"
+    },
+    "worlds/love-hurts": {
+      "id": 10434,
+      "status": "draft",
+      "template": "template-immersive-love-hurts.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/?page_id=10434"
+    },
+    "worlds/kids-capsule": {
+      "id": 10435,
+      "status": "draft",
+      "template": "template-immersive-kids-capsule.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/?page_id=10435"
+    },
+    "experience-signature": {
+      "id": 10,
+      "status": "publish",
+      "template": "template-immersive-signature.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/experience-signature/"
+    },
+    "experience-black-rose": {
+      "id": 12,
+      "status": "publish",
+      "template": "template-immersive-black-rose.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/experience-black-rose/"
+    },
+    "experience-love-hurts": {
+      "id": 11,
+      "status": "publish",
+      "template": "template-immersive-love-hurts.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/experience-love-hurts/"
+    },
+    "experience-kids-capsule": {
+      "id": 10095,
+      "status": "publish",
+      "template": "template-immersive-kids-capsule.php",
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://skyyrose.co/experience-kids-capsule/"
+    }
+  },
+  "limits": [
+    "No order/customer rows or secrets exported",
+    "Managed platform files outside readable directories may be inaccessible",
+    "Code hashes and selected options are not a recoverable code/data backup",
+    "No restore or site mutation performed"
+  ],
+  "full_inventory_path": ".artifacts/release-gates-20261019/installed-baseline-raw-r2.json",
+  "full_inventory_sha256": "f2379c9d4fef40a53552279b26b2fea6a1c34110d09aee174de6b1531de5258e",
+  "file_hash_count": 14792,
+  "hash_counts_by_tree": {
+    "active-theme": 810,
+    "drop-ins": 2,
+    "mu-plugins": 9,
+    "plugins": 13971
+  },
+  "candidate_differing_installed_theme_files": [
+    "active-theme/CHANGELOG.md",
+    "active-theme/assets/css/immersive.css",
+    "active-theme/assets/css/immersive.min.css",
+    "active-theme/assets/js/immersive.js",
+    "active-theme/assets/js/immersive.min.js",
+    "active-theme/assets/scroll-world/video/black-rose/br-006/poster/br-006-hero-origin-poster.jpg",
+    "active-theme/assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4",
+    "active-theme/assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.mp4",
+    "active-theme/assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.webm",
+    "active-theme/assets/sot/images/immersive/scene-love-hurts-cathedral.webp",
+    "active-theme/functions.php",
+    "active-theme/inc/woocommerce-compat.php",
+    "active-theme/languages/skyyrose-flagship-2.pot",
+    "active-theme/npm-shrinkwrap.json",
+    "active-theme/package.json",
+    "active-theme/readme.txt",
+    "active-theme/style.css",
+    "active-theme/template-parts/home/editorial-journal.php",
+    "active-theme/template-parts/immersive/world.php"
+  ],
+  "installed_code_completeness": "PARTIAL_UNQUALIFIED_SYMLINK_DIRECTORY_COVERAGE",
+  "recoverable_backup": false,
+  "disposable_restore_tested": false
+}

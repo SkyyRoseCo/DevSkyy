@@ -1,0 +1,11 @@
+(node:56577) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS poster-error-before-script 
+PASS poster-error-after-script 
+PASS chapter-error-while-poster-loading 
+PASS delayed-poster-success 
+PASS storage-denied 
+PASS save-data 
+PASS webgl-unavailable 
+PASS renderer-error 
+PASS javascript-disabled 

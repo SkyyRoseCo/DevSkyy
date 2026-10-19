@@ -1,0 +1,14 @@
+{
+  "site": "https://skyyrose.co",
+  "wp": "7.1.3",
+  "woo": "11.2.1",
+  "php": "8.4.26",
+  "wpdb_class": "wpdb",
+  "hpos_authority": true,
+  "native_order_store": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore",
+  "orders_pending_sync": true,
+  "classification": "AUTHENTICATED_LIVE_READ_ONLY",
+  "observed_utc": "2026-10-19T09:49:14.432121+00:00",
+  "scope": "Loaded native storage identity and sync-pending boolean; no order/customer rows exported",
+  "writes_performed": false
+}

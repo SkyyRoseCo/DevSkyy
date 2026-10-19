@@ -1,0 +1,28 @@
+Requirement already satisfied: Pillow==12.3.0 in ./.venv-release/lib/python3.12/site-packages (from -r tools/v2-source-certification/requirements.txt (line 1)) (12.3.0)
+Collecting fonttools==4.59.2 (from -r tools/v2-source-certification/requirements.txt (line 2))
+  Using cached fonttools-4.59.2-cp312-cp312-macosx_10_13_universal2.whl.metadata (109 kB)
+Collecting brotli==1.2.0 (from -r tools/v2-source-certification/requirements.txt (line 3))
+  Using cached brotli-1.2.0-cp312-cp312-macosx_10_13_universal2.whl.metadata (6.1 kB)
+Collecting pydantic==2.14.0 (from -r tools/v2-source-certification/requirements.txt (line 4))
+  Using cached pydantic-2.14.0-py3-none-any.whl.metadata (131 kB)
+Requirement already satisfied: annotated-types>=0.6.0 in ./.venv-release/lib/python3.12/site-packages (from pydantic==2.14.0->-r tools/v2-source-certification/requirements.txt (line 4)) (0.8.0)
+Collecting pydantic-core==2.50.0 (from pydantic==2.14.0->-r tools/v2-source-certification/requirements.txt (line 4))
+  Using cached pydantic_core-2.50.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (6.5 kB)
+Requirement already satisfied: typing-extensions>=4.16.0 in ./.venv-release/lib/python3.12/site-packages (from pydantic==2.14.0->-r tools/v2-source-certification/requirements.txt (line 4)) (4.16.0)
+Requirement already satisfied: typing-inspection>=0.4.4 in ./.venv-release/lib/python3.12/site-packages (from pydantic==2.14.0->-r tools/v2-source-certification/requirements.txt (line 4)) (0.4.4)
+Using cached fonttools-4.59.2-cp312-cp312-macosx_10_13_universal2.whl (2.8 MB)
+Using cached brotli-1.2.0-cp312-cp312-macosx_10_13_universal2.whl (861 kB)
+Using cached pydantic-2.14.0-py3-none-any.whl (487 kB)
+Using cached pydantic_core-2.50.0-cp312-cp312-macosx_11_0_arm64.whl (2.0 MB)
+Installing collected packages: brotli, pydantic-core, fonttools, pydantic
+  Attempting uninstall: pydantic-core
+    Found existing installation: pydantic_core 2.41.4
+    Uninstalling pydantic_core-2.41.4:
+      Successfully uninstalled pydantic_core-2.41.4
+  Attempting uninstall: pydantic
+    Found existing installation: pydantic 2.12.3
+    Uninstalling pydantic-2.12.3:
+      Successfully uninstalled pydantic-2.12.3
+
+
+Successfully installed brotli-1.2.0 fonttools-4.59.2 pydantic-2.14.0 pydantic-core-2.50.0

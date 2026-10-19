@@ -1,0 +1,32 @@
+{
+  "runtime": [
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php",
+      "old": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1",
+      "new": "3262d65f35d4e08b017a9b6be9105701813e37dc8b31212cfd8e725bcacd226e"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/template-parts/immersive/world.php",
+      "old": "a31678d34908422706fc6402de72795baa4fd9cec3b552202fbe68fb1e5bed91",
+      "new": "9a9b4b472bbfc24979a8c6bd0f9410c25c507281497cad4a6d90ff5c4dc88f19"
+    }
+  ],
+  "input_pins": [
+    {
+      "path": "tools/v2-source-certification/runtime-php-baseline.json",
+      "old": "6b4b1f5ad2632ec9f8dea89d7a1b1d0385a59cf539ccc96dd5bccac151a42ee3",
+      "new": "516067c7c29de776bd5b0959ee09478137d95c2bd5e493a6f80ebda0254d96ad"
+    },
+    {
+      "path": "tools/v2-source-certification/package-boundary.json",
+      "old": "57aea800f1e857551f929edcadbdfa6b5637ddff715e11ef832155d579024e25",
+      "new": "c6d300e805a417d5d6f43bd45854fc9f961c4d5b45b8ce8adef3e03e095a855e"
+    }
+  ],
+  "new_nonrelease_paths": [
+    "tests/commerce/migration.php",
+    "tests/commerce/migration-process.php"
+  ],
+  "new_asset_acceptance": false,
+  "grants_changed": false
+}

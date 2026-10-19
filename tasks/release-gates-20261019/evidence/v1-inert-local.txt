@@ -1,0 +1,26 @@
+(node:58870) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# (node:58879) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: repeated inert snapshots retain privacy and cause no requests, errors, upgrades or live mutations
+ok 1 - repeated inert snapshots retain privacy and cause no requests, errors, upgrades or live mutations
+  ---
+  duration_ms: 649.015875
+  type: 'test'
+  ...
+# Subtest: retained legacy sanitizer reproduces HANDLER observer errors on an isolated image fixture
+ok 2 - retained legacy sanitizer reproduces HANDLER observer errors on an isolated image fixture
+  ---
+  duration_ms: 295.315792
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1237.602083

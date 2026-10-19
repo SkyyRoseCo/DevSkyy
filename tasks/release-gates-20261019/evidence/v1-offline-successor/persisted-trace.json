@@ -1,0 +1,14 @@
+{
+  "schema": "skyyrose.redacted-network-evidence.v1",
+  "raw_headers_retained": false,
+  "raw_log_text_retained": false,
+  "screenshot_resources_retained": false,
+  "error_count": 1,
+  "rows": [
+    {
+      "disposition": "CAPTURED_REQUEST_HEADERS",
+      "cookie_presence": "PRESENT",
+      "cookie_count": 1
+    }
+  ]
+}

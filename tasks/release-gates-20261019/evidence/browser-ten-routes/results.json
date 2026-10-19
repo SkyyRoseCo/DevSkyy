@@ -1,0 +1,2904 @@
+{
+  "classification": "REPRODUCED_LOCAL_NATIVE",
+  "authentication": "NOT_APPLICABLE",
+  "scope": "Synthetic isolated core + WooCommerce; no production, creative, or third-party plugin acceptance",
+  "started_utc": "2026-10-19T09:46:13.879Z",
+  "commit": "cebe98935a5fd22169b58d3504783eef00016e66",
+  "dirty_diff_sha256": "bab914d8a8498be2f72b254b70d6d9e3dfb3ae7d9726192a9e8c983d01b8351a",
+  "source_pins": {
+    "assets/js/immersive.js": "7c83c7b08d24d7202297eefe920a9e5db77dfbdde4b91941fd6f59d210302952",
+    "assets/js/immersive.min.js": "f8c44722c2fe9fa02fdd42a6d0b4209c7a7800f05d0c253c2a080fff99656bbe",
+    "template-parts/immersive/world.php": "e75e77d34129b1429376629b43260b00adbc8e8f779d84aef6d136114f1006e5",
+    "data/v2-media-eligibility.json": "b245f5113336ff00993ea36d931652f808c33f8afd27e94d2097c39d5f00ac4e"
+  },
+  "fixture_sha256": "21a71613f207399455f8b3f46f16d02545f6aa07d13658a598d46a9c9f3b29f7",
+  "cases": [
+    {
+      "label": "desktop-full-signature",
+      "route": {
+        "logical_key": "signature",
+        "path": "/collections/signature/",
+        "id": 494,
+        "template": "template-collection.php",
+        "collection": "signature",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "desktop-full",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "no-preference"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/signature/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        }
+      ]
+    },
+    {
+      "label": "desktop-full-immersive-signature",
+      "route": {
+        "logical_key": "immersive-signature",
+        "path": "/experience-signature/",
+        "id": 989,
+        "template": "template-immersive-signature.php",
+        "collection": "signature",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "desktop-full",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "no-preference"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-signature/",
+      "template": "template-immersive-signature.php",
+      "hero": {
+        "sku": "sg-009",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/sg-009-768w.webp?v=feb08c5a37d90fca93709b0638791e42b8ae581db225d4f1d3eae0f0567e47ca",
+        "loaded": true
+      },
+      "scene_state": "webgl-unavailable",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "sg-005",
+              "href": "http://127.0.0.1:18362/product/sg-005/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bridge Series 'The Bay Bridge' ShirtView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "sg-001",
+              "href": "http://127.0.0.1:18362/product/sg-001/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bridge Series 'The Bay Bridge' ShortsView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": []
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/sg-005/",
+          "sku": "sg-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-001/",
+          "sku": "sg-001"
+        }
+      ]
+    },
+    {
+      "label": "desktop-full-black-rose",
+      "route": {
+        "logical_key": "black-rose",
+        "path": "/collections/black-rose/",
+        "id": 496,
+        "template": "template-collection.php",
+        "collection": "black-rose",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "desktop-full",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "no-preference"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/black-rose/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        }
+      ]
+    },
+    {
+      "label": "desktop-full-immersive-black-rose",
+      "route": {
+        "logical_key": "immersive-black-rose",
+        "path": "/experience-black-rose/",
+        "id": 991,
+        "template": "template-immersive-black-rose.php",
+        "collection": "black-rose",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "desktop-full",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "no-preference"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-black-rose/",
+      "template": "template-immersive-black-rose.php",
+      "hero": {
+        "sku": "br-001",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-768w.webp?v=3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003",
+        "loaded": true
+      },
+      "scene_state": "webgl-unavailable",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "br-004",
+              "href": "http://127.0.0.1:18362/product/br-004/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceBLACK Rose HoodieView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "br-006",
+              "href": "http://127.0.0.1:18362/product/br-006/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bomber SherpaView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-006/",
+          "sku": "br-006"
+        }
+      ]
+    },
+    {
+      "label": "desktop-full-love-hurts",
+      "route": {
+        "logical_key": "love-hurts",
+        "path": "/collections/love-hurts/",
+        "id": 498,
+        "template": "template-collection.php",
+        "collection": "love-hurts",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "desktop-full",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "no-preference"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/love-hurts/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        }
+      ]
+    },
+    {
+      "label": "desktop-full-immersive-love-hurts",
+      "route": {
+        "logical_key": "immersive-love-hurts",
+        "path": "/experience-love-hurts/",
+        "id": 993,
+        "template": "template-immersive-love-hurts.php",
+        "collection": "love-hurts",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "desktop-full",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "no-preference"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-love-hurts/",
+      "template": "template-immersive-love-hurts.php",
+      "hero": {
+        "sku": "lh-004",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/lh-004-768w.webp?v=a334f8bcefa10d3f3a978a65c634117d4a69b3248efc9adfcd340fa4af085519",
+        "loaded": true
+      },
+      "scene_state": "webgl-unavailable",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "lh-004",
+              "href": "http://127.0.0.1:18362/product/lh-004/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceLove Hurts Bomber JacketView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "lh-005",
+              "href": "http://127.0.0.1:18362/product/lh-005/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe FannieView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-005/",
+          "sku": "lh-005"
+        }
+      ]
+    },
+    {
+      "label": "desktop-full-kids-capsule",
+      "route": {
+        "logical_key": "kids-capsule",
+        "path": "/collections/kids-capsule/",
+        "id": 500,
+        "template": "template-collection.php",
+        "collection": "kids-capsule",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "desktop-full",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "no-preference"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/kids-capsule/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        }
+      ]
+    },
+    {
+      "label": "desktop-full-immersive-kids-capsule",
+      "route": {
+        "logical_key": "immersive-kids-capsule",
+        "path": "/experience-kids-capsule/",
+        "id": 995,
+        "template": "template-immersive-kids-capsule.php",
+        "collection": "kids-capsule",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "desktop-full",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "no-preference"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-kids-capsule/",
+      "template": "template-immersive-kids-capsule.php",
+      "hero": {
+        "sku": "kids-002",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "loaded": true
+      },
+      "scene_state": "webgl-unavailable",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "kids-001",
+              "href": "http://127.0.0.1:18362/product/kids-001/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceKids Colorblock Hoodie Set — Red/BlackView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        }
+      ]
+    },
+    {
+      "label": "desktop-full-worlds",
+      "route": {
+        "logical_key": "worlds",
+        "path": "/experiences/",
+        "id": 997,
+        "template": "default",
+        "kind": "directory"
+      },
+      "profile": {
+        "name": "desktop-full",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "no-preference"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experiences/",
+      "template": "page.php",
+      "native_product_links": []
+    },
+    {
+      "label": "desktop-full-size-guide",
+      "route": {
+        "logical_key": "size-guide",
+        "path": "/size-guide/",
+        "id": 503,
+        "template": "default",
+        "kind": "guide"
+      },
+      "profile": {
+        "name": "desktop-full",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "no-preference"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/size-guide/",
+      "template": "page.php",
+      "native_product_links": []
+    },
+    {
+      "label": "desktop-reduced-signature",
+      "route": {
+        "logical_key": "signature",
+        "path": "/collections/signature/",
+        "id": 494,
+        "template": "template-collection.php",
+        "collection": "signature",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/signature/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        }
+      ]
+    },
+    {
+      "label": "desktop-reduced-immersive-signature",
+      "route": {
+        "logical_key": "immersive-signature",
+        "path": "/experience-signature/",
+        "id": 989,
+        "template": "template-immersive-signature.php",
+        "collection": "signature",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-signature/",
+      "template": "template-immersive-signature.php",
+      "hero": {
+        "sku": "sg-009",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/sg-009-768w.webp?v=feb08c5a37d90fca93709b0638791e42b8ae581db225d4f1d3eae0f0567e47ca",
+        "loaded": true
+      },
+      "scene_state": "reduced-motion",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "sg-005",
+              "href": "http://127.0.0.1:18362/product/sg-005/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bridge Series 'The Bay Bridge' ShirtView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "sg-001",
+              "href": "http://127.0.0.1:18362/product/sg-001/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bridge Series 'The Bay Bridge' ShortsView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": []
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/sg-005/",
+          "sku": "sg-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-001/",
+          "sku": "sg-001"
+        }
+      ]
+    },
+    {
+      "label": "desktop-reduced-black-rose",
+      "route": {
+        "logical_key": "black-rose",
+        "path": "/collections/black-rose/",
+        "id": 496,
+        "template": "template-collection.php",
+        "collection": "black-rose",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/black-rose/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        }
+      ]
+    },
+    {
+      "label": "desktop-reduced-immersive-black-rose",
+      "route": {
+        "logical_key": "immersive-black-rose",
+        "path": "/experience-black-rose/",
+        "id": 991,
+        "template": "template-immersive-black-rose.php",
+        "collection": "black-rose",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-black-rose/",
+      "template": "template-immersive-black-rose.php",
+      "hero": {
+        "sku": "br-001",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-768w.webp?v=3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003",
+        "loaded": true
+      },
+      "scene_state": "reduced-motion",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "br-004",
+              "href": "http://127.0.0.1:18362/product/br-004/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceBLACK Rose HoodieView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "br-006",
+              "href": "http://127.0.0.1:18362/product/br-006/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bomber SherpaView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-006/",
+          "sku": "br-006"
+        }
+      ]
+    },
+    {
+      "label": "desktop-reduced-love-hurts",
+      "route": {
+        "logical_key": "love-hurts",
+        "path": "/collections/love-hurts/",
+        "id": 498,
+        "template": "template-collection.php",
+        "collection": "love-hurts",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/love-hurts/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        }
+      ]
+    },
+    {
+      "label": "desktop-reduced-immersive-love-hurts",
+      "route": {
+        "logical_key": "immersive-love-hurts",
+        "path": "/experience-love-hurts/",
+        "id": 993,
+        "template": "template-immersive-love-hurts.php",
+        "collection": "love-hurts",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-love-hurts/",
+      "template": "template-immersive-love-hurts.php",
+      "hero": {
+        "sku": "lh-004",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/lh-004-768w.webp?v=a334f8bcefa10d3f3a978a65c634117d4a69b3248efc9adfcd340fa4af085519",
+        "loaded": true
+      },
+      "scene_state": "reduced-motion",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "lh-004",
+              "href": "http://127.0.0.1:18362/product/lh-004/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceLove Hurts Bomber JacketView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "lh-005",
+              "href": "http://127.0.0.1:18362/product/lh-005/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe FannieView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-005/",
+          "sku": "lh-005"
+        }
+      ]
+    },
+    {
+      "label": "desktop-reduced-kids-capsule",
+      "route": {
+        "logical_key": "kids-capsule",
+        "path": "/collections/kids-capsule/",
+        "id": 500,
+        "template": "template-collection.php",
+        "collection": "kids-capsule",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/kids-capsule/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        }
+      ]
+    },
+    {
+      "label": "desktop-reduced-immersive-kids-capsule",
+      "route": {
+        "logical_key": "immersive-kids-capsule",
+        "path": "/experience-kids-capsule/",
+        "id": 995,
+        "template": "template-immersive-kids-capsule.php",
+        "collection": "kids-capsule",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-kids-capsule/",
+      "template": "template-immersive-kids-capsule.php",
+      "hero": {
+        "sku": "kids-002",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "loaded": true
+      },
+      "scene_state": "reduced-motion",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "kids-001",
+              "href": "http://127.0.0.1:18362/product/kids-001/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceKids Colorblock Hoodie Set — Red/BlackView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        }
+      ]
+    },
+    {
+      "label": "desktop-reduced-worlds",
+      "route": {
+        "logical_key": "worlds",
+        "path": "/experiences/",
+        "id": 997,
+        "template": "default",
+        "kind": "directory"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experiences/",
+      "template": "page.php",
+      "native_product_links": []
+    },
+    {
+      "label": "desktop-reduced-size-guide",
+      "route": {
+        "logical_key": "size-guide",
+        "path": "/size-guide/",
+        "id": 503,
+        "template": "default",
+        "kind": "guide"
+      },
+      "profile": {
+        "name": "desktop-reduced",
+        "width": 1440,
+        "height": 900,
+        "reducedMotion": "reduce"
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/size-guide/",
+      "template": "page.php",
+      "native_product_links": []
+    },
+    {
+      "label": "mobile-full-signature",
+      "route": {
+        "logical_key": "signature",
+        "path": "/collections/signature/",
+        "id": 494,
+        "template": "template-collection.php",
+        "collection": "signature",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "mobile-full",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "no-preference",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/signature/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        }
+      ]
+    },
+    {
+      "label": "mobile-full-immersive-signature",
+      "route": {
+        "logical_key": "immersive-signature",
+        "path": "/experience-signature/",
+        "id": 989,
+        "template": "template-immersive-signature.php",
+        "collection": "signature",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "mobile-full",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "no-preference",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-signature/",
+      "template": "template-immersive-signature.php",
+      "hero": {
+        "sku": "sg-009",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/sg-009-768w.webp?v=feb08c5a37d90fca93709b0638791e42b8ae581db225d4f1d3eae0f0567e47ca",
+        "loaded": true
+      },
+      "scene_state": "webgl-unavailable",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "sg-005",
+              "href": "http://127.0.0.1:18362/product/sg-005/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bridge Series 'The Bay Bridge' ShirtView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "sg-001",
+              "href": "http://127.0.0.1:18362/product/sg-001/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bridge Series 'The Bay Bridge' ShortsView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": []
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/sg-005/",
+          "sku": "sg-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-001/",
+          "sku": "sg-001"
+        }
+      ]
+    },
+    {
+      "label": "mobile-full-black-rose",
+      "route": {
+        "logical_key": "black-rose",
+        "path": "/collections/black-rose/",
+        "id": 496,
+        "template": "template-collection.php",
+        "collection": "black-rose",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "mobile-full",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "no-preference",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/black-rose/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        }
+      ]
+    },
+    {
+      "label": "mobile-full-immersive-black-rose",
+      "route": {
+        "logical_key": "immersive-black-rose",
+        "path": "/experience-black-rose/",
+        "id": 991,
+        "template": "template-immersive-black-rose.php",
+        "collection": "black-rose",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "mobile-full",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "no-preference",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-black-rose/",
+      "template": "template-immersive-black-rose.php",
+      "hero": {
+        "sku": "br-001",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-768w.webp?v=3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003",
+        "loaded": true
+      },
+      "scene_state": "webgl-unavailable",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "br-004",
+              "href": "http://127.0.0.1:18362/product/br-004/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceBLACK Rose HoodieView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "br-006",
+              "href": "http://127.0.0.1:18362/product/br-006/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bomber SherpaView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-006/",
+          "sku": "br-006"
+        }
+      ]
+    },
+    {
+      "label": "mobile-full-love-hurts",
+      "route": {
+        "logical_key": "love-hurts",
+        "path": "/collections/love-hurts/",
+        "id": 498,
+        "template": "template-collection.php",
+        "collection": "love-hurts",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "mobile-full",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "no-preference",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/love-hurts/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        }
+      ]
+    },
+    {
+      "label": "mobile-full-immersive-love-hurts",
+      "route": {
+        "logical_key": "immersive-love-hurts",
+        "path": "/experience-love-hurts/",
+        "id": 993,
+        "template": "template-immersive-love-hurts.php",
+        "collection": "love-hurts",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "mobile-full",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "no-preference",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-love-hurts/",
+      "template": "template-immersive-love-hurts.php",
+      "hero": {
+        "sku": "lh-004",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/lh-004-768w.webp?v=a334f8bcefa10d3f3a978a65c634117d4a69b3248efc9adfcd340fa4af085519",
+        "loaded": true
+      },
+      "scene_state": "webgl-unavailable",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "lh-004",
+              "href": "http://127.0.0.1:18362/product/lh-004/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceLove Hurts Bomber JacketView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "lh-005",
+              "href": "http://127.0.0.1:18362/product/lh-005/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe FannieView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-005/",
+          "sku": "lh-005"
+        }
+      ]
+    },
+    {
+      "label": "mobile-full-kids-capsule",
+      "route": {
+        "logical_key": "kids-capsule",
+        "path": "/collections/kids-capsule/",
+        "id": 500,
+        "template": "template-collection.php",
+        "collection": "kids-capsule",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "mobile-full",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "no-preference",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/kids-capsule/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        }
+      ]
+    },
+    {
+      "label": "mobile-full-immersive-kids-capsule",
+      "route": {
+        "logical_key": "immersive-kids-capsule",
+        "path": "/experience-kids-capsule/",
+        "id": 995,
+        "template": "template-immersive-kids-capsule.php",
+        "collection": "kids-capsule",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "mobile-full",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "no-preference",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-kids-capsule/",
+      "template": "template-immersive-kids-capsule.php",
+      "hero": {
+        "sku": "kids-002",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "loaded": true
+      },
+      "scene_state": "webgl-unavailable",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "kids-001",
+              "href": "http://127.0.0.1:18362/product/kids-001/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceKids Colorblock Hoodie Set — Red/BlackView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        }
+      ]
+    },
+    {
+      "label": "mobile-full-worlds",
+      "route": {
+        "logical_key": "worlds",
+        "path": "/experiences/",
+        "id": 997,
+        "template": "default",
+        "kind": "directory"
+      },
+      "profile": {
+        "name": "mobile-full",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "no-preference",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experiences/",
+      "template": "page.php",
+      "native_product_links": []
+    },
+    {
+      "label": "mobile-full-size-guide",
+      "route": {
+        "logical_key": "size-guide",
+        "path": "/size-guide/",
+        "id": 503,
+        "template": "default",
+        "kind": "guide"
+      },
+      "profile": {
+        "name": "mobile-full",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "no-preference",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/size-guide/",
+      "template": "page.php",
+      "native_product_links": []
+    },
+    {
+      "label": "mobile-reduced-signature",
+      "route": {
+        "logical_key": "signature",
+        "path": "/collections/signature/",
+        "id": 494,
+        "template": "template-collection.php",
+        "collection": "signature",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "mobile-reduced",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "reduce",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/signature/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-007/",
+          "sku": "sg-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-009/",
+          "sku": "sg-009"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-011/",
+          "sku": "sg-011"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-012/",
+          "sku": "sg-012"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-013/",
+          "sku": "sg-013"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-014/",
+          "sku": "sg-014"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-006/",
+          "sku": "sg-006"
+        }
+      ]
+    },
+    {
+      "label": "mobile-reduced-immersive-signature",
+      "route": {
+        "logical_key": "immersive-signature",
+        "path": "/experience-signature/",
+        "id": 989,
+        "template": "template-immersive-signature.php",
+        "collection": "signature",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "mobile-reduced",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "reduce",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-signature/",
+      "template": "template-immersive-signature.php",
+      "hero": {
+        "sku": "sg-009",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/sg-009-768w.webp?v=feb08c5a37d90fca93709b0638791e42b8ae581db225d4f1d3eae0f0567e47ca",
+        "loaded": true
+      },
+      "scene_state": "reduced-motion",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "sg-005",
+              "href": "http://127.0.0.1:18362/product/sg-005/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bridge Series 'The Bay Bridge' ShirtView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "sg-001",
+              "href": "http://127.0.0.1:18362/product/sg-001/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bridge Series 'The Bay Bridge' ShortsView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "sg-013",
+          "scene_claims": [],
+          "related": []
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/sg-005/",
+          "sku": "sg-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/sg-001/",
+          "sku": "sg-001"
+        }
+      ]
+    },
+    {
+      "label": "mobile-reduced-black-rose",
+      "route": {
+        "logical_key": "black-rose",
+        "path": "/collections/black-rose/",
+        "id": 496,
+        "template": "template-collection.php",
+        "collection": "black-rose",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "mobile-reduced",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "reduce",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/black-rose/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-001/",
+          "sku": "br-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-002/",
+          "sku": "br-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-005/",
+          "sku": "br-005"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-007/",
+          "sku": "br-007"
+        }
+      ]
+    },
+    {
+      "label": "mobile-reduced-immersive-black-rose",
+      "route": {
+        "logical_key": "immersive-black-rose",
+        "path": "/experience-black-rose/",
+        "id": 991,
+        "template": "template-immersive-black-rose.php",
+        "collection": "black-rose",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "mobile-reduced",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "reduce",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-black-rose/",
+      "template": "template-immersive-black-rose.php",
+      "hero": {
+        "sku": "br-001",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-768w.webp?v=3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003",
+        "loaded": true
+      },
+      "scene_state": "reduced-motion",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "br-004",
+              "href": "http://127.0.0.1:18362/product/br-004/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceBLACK Rose HoodieView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "br-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "br-006",
+              "href": "http://127.0.0.1:18362/product/br-006/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe Bomber SherpaView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/br-004/",
+          "sku": "br-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/br-006/",
+          "sku": "br-006"
+        }
+      ]
+    },
+    {
+      "label": "mobile-reduced-love-hurts",
+      "route": {
+        "logical_key": "love-hurts",
+        "path": "/collections/love-hurts/",
+        "id": 498,
+        "template": "template-collection.php",
+        "collection": "love-hurts",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "mobile-reduced",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "reduce",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/love-hurts/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": null
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-002/",
+          "sku": "lh-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-003/",
+          "sku": "lh-003"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-006/",
+          "sku": "lh-006"
+        }
+      ]
+    },
+    {
+      "label": "mobile-reduced-immersive-love-hurts",
+      "route": {
+        "logical_key": "immersive-love-hurts",
+        "path": "/experience-love-hurts/",
+        "id": 993,
+        "template": "template-immersive-love-hurts.php",
+        "collection": "love-hurts",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "mobile-reduced",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "reduce",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-love-hurts/",
+      "template": "template-immersive-love-hurts.php",
+      "hero": {
+        "sku": "lh-004",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/lh-004-768w.webp?v=a334f8bcefa10d3f3a978a65c634117d4a69b3248efc9adfcd340fa4af085519",
+        "loaded": true
+      },
+      "scene_state": "reduced-motion",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "lh-004",
+              "href": "http://127.0.0.1:18362/product/lh-004/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceLove Hurts Bomber JacketView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "lh-004",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "lh-005",
+              "href": "http://127.0.0.1:18362/product/lh-005/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceThe FannieView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/lh-004/",
+          "sku": "lh-004"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/lh-005/",
+          "sku": "lh-005"
+        }
+      ]
+    },
+    {
+      "label": "mobile-reduced-kids-capsule",
+      "route": {
+        "logical_key": "kids-capsule",
+        "path": "/collections/kids-capsule/",
+        "id": 500,
+        "template": "template-collection.php",
+        "collection": "kids-capsule",
+        "kind": "collection"
+      },
+      "profile": {
+        "name": "mobile-reduced",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "reduce",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/collections/kids-capsule/",
+      "template": "template-collection.php",
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        },
+        {
+          "href": "http://127.0.0.1:18362/product/kids-002/",
+          "sku": "kids-002"
+        }
+      ]
+    },
+    {
+      "label": "mobile-reduced-immersive-kids-capsule",
+      "route": {
+        "logical_key": "immersive-kids-capsule",
+        "path": "/experience-kids-capsule/",
+        "id": 995,
+        "template": "template-immersive-kids-capsule.php",
+        "collection": "kids-capsule",
+        "kind": "world"
+      },
+      "profile": {
+        "name": "mobile-reduced",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "reduce",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experience-kids-capsule/",
+      "template": "template-immersive-kids-capsule.php",
+      "hero": {
+        "sku": "kids-002",
+        "src": "http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "loaded": true
+      },
+      "scene_state": "reduced-motion",
+      "chapter_fidelity": [
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": [
+            {
+              "sku": "kids-001",
+              "href": "http://127.0.0.1:18362/product/kids-001/",
+              "style": null,
+              "text": "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tExplore collection pieceKids Colorblock Hoodie Set — Red/BlackView the product →\n\t\t\t\t\t\t"
+            }
+          ]
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        },
+        {
+          "original_available": "false",
+          "image_sku": "kids-001",
+          "scene_claims": [],
+          "related": []
+        }
+      ],
+      "native_product_links": [
+        {
+          "href": "http://127.0.0.1:18362/product/kids-001/",
+          "sku": "kids-001"
+        }
+      ]
+    },
+    {
+      "label": "mobile-reduced-worlds",
+      "route": {
+        "logical_key": "worlds",
+        "path": "/experiences/",
+        "id": 997,
+        "template": "default",
+        "kind": "directory"
+      },
+      "profile": {
+        "name": "mobile-reduced",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "reduce",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/experiences/",
+      "template": "page.php",
+      "native_product_links": []
+    },
+    {
+      "label": "mobile-reduced-size-guide",
+      "route": {
+        "logical_key": "size-guide",
+        "path": "/size-guide/",
+        "id": 503,
+        "template": "default",
+        "kind": "guide"
+      },
+      "profile": {
+        "name": "mobile-reduced",
+        "width": 390,
+        "height": 844,
+        "reducedMotion": "reduce",
+        "mobile": true
+      },
+      "status": "PASS",
+      "page_errors": [],
+      "effective_url": "http://127.0.0.1:18362/size-guide/",
+      "template": "page.php",
+      "native_product_links": []
+    }
+  ],
+  "faults": [],
+  "runtime": {
+    "wp": "7.1.3",
+    "woo": "11.2.1"
+  },
+  "driver_sha256": "668f1674034c7550b9cace3ca426bb9be1c81cca45fc61c39ace3d22a971d962",
+  "fixture_driver_hashes": {
+    "tools/v2-runtime/seed-release-fixture.php": "bc0874b33da591b19572d397a84de44b093b5a2c4b51e57fa7ad4375d4cad746",
+    "tools/v2-runtime/refresh-release-fixture.php": "7e2f2b30e2b0926727d52983f49d67eeebe2614d35201aab05f7e6d4eda89d03"
+  },
+  "browser": "145.0.7632.6",
+  "blocked_external_origins": [],
+  "finished_utc": "2026-10-19T09:48:34.467Z",
+  "status": "PASS_PRIMARY_TECHNICAL_CASES",
+  "creative_acceptance": "NOT_GRANTED"
+}

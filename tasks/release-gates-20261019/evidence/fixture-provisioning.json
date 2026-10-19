@@ -1,0 +1,20 @@
+[
+  {
+    "step": 0,
+    "exit_code": 0,
+    "stdout": "Success: WordPress installed successfully.\n",
+    "stderr": ""
+  },
+  {
+    "step": 1,
+    "exit_code": 0,
+    "stdout": "Plugin 'woocommerce' activated.\nSuccess: Activated 1 of 1 plugins.\n",
+    "stderr": ""
+  },
+  {
+    "step": 2,
+    "exit_code": 0,
+    "stdout": "11.1.2",
+    "stderr": ""
+  }
+]

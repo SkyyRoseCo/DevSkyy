@@ -1,0 +1,512 @@
+{
+    "schema": "skyyrose.synthetic-native-release-fixture.v1",
+    "home": "http://127.0.0.1:18362",
+    "authentication": "NOT_APPLICABLE",
+    "wp": "7.1.2",
+    "woocommerce": "11.1.2",
+    "registry_sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+    "reader_sha256": "65b3f2e01b756676661d3964b19d7dad7db3359973fa1b7738819796d17bf55b",
+    "products": {
+        "br-001": {
+            "id": 274,
+            "url": "http://127.0.0.1:18362/product/br-001/",
+            "collection": "black-rose",
+            "children": {
+                "S": 275,
+                "M": 276,
+                "L": 277,
+                "XL": 278,
+                "2XL": 279,
+                "3XL": 280
+            }
+        },
+        "br-002": {
+            "id": 281,
+            "url": "http://127.0.0.1:18362/product/br-002/",
+            "collection": "black-rose",
+            "children": {
+                "S": 282,
+                "M": 283,
+                "L": 284,
+                "XL": 285,
+                "2XL": 286,
+                "3XL": 287
+            }
+        },
+        "br-003": {
+            "id": 288,
+            "url": "http://127.0.0.1:18362/product/br-003/",
+            "collection": "black-rose",
+            "children": {
+                "S": 289,
+                "M": 290,
+                "L": 291,
+                "XL": 292,
+                "2XL": 293,
+                "3XL": 294
+            }
+        },
+        "br-004": {
+            "id": 295,
+            "url": "http://127.0.0.1:18362/product/br-004/",
+            "collection": "black-rose",
+            "children": {
+                "S": 296,
+                "M": 297,
+                "L": 298,
+                "XL": 299,
+                "2XL": 300,
+                "3XL": 301
+            }
+        },
+        "br-005": {
+            "id": 302,
+            "url": "http://127.0.0.1:18362/product/br-005/",
+            "collection": "black-rose",
+            "children": {
+                "S": 303,
+                "M": 304,
+                "L": 305,
+                "XL": 306,
+                "2XL": 307,
+                "3XL": 308
+            }
+        },
+        "br-006": {
+            "id": 309,
+            "url": "http://127.0.0.1:18362/product/br-006/",
+            "collection": "black-rose",
+            "children": {
+                "S": 310,
+                "M": 311,
+                "L": 312,
+                "XL": 313,
+                "2XL": 314,
+                "3XL": 315
+            }
+        },
+        "br-007": {
+            "id": 316,
+            "url": "http://127.0.0.1:18362/product/br-007/",
+            "collection": "black-rose",
+            "children": {
+                "S": 317,
+                "M": 318,
+                "L": 319,
+                "XL": 320,
+                "2XL": 321,
+                "3XL": 322
+            }
+        },
+        "br-008": {
+            "id": 323,
+            "url": "http://127.0.0.1:18362/product/br-008/",
+            "collection": "black-rose",
+            "children": {
+                "S": 324,
+                "M": 325,
+                "L": 326,
+                "XL": 327,
+                "2XL": 328,
+                "3XL": 329
+            }
+        },
+        "br-009": {
+            "id": 330,
+            "url": "http://127.0.0.1:18362/product/br-009/",
+            "collection": "black-rose",
+            "children": {
+                "S": 331,
+                "M": 332,
+                "L": 333,
+                "XL": 334,
+                "2XL": 335,
+                "3XL": 336
+            }
+        },
+        "br-010": {
+            "id": 337,
+            "url": "http://127.0.0.1:18362/product/br-010/",
+            "collection": "black-rose",
+            "children": {
+                "S": 338,
+                "M": 339,
+                "L": 340,
+                "XL": 341,
+                "2XL": 342,
+                "3XL": 343
+            }
+        },
+        "br-011": {
+            "id": 344,
+            "url": "http://127.0.0.1:18362/product/br-011/",
+            "collection": "black-rose",
+            "children": {
+                "S": 345,
+                "M": 346,
+                "L": 347,
+                "XL": 348,
+                "2XL": 349,
+                "3XL": 350
+            }
+        },
+        "br-012": {
+            "id": 351,
+            "url": "http://127.0.0.1:18362/product/br-012/",
+            "collection": "black-rose",
+            "children": {
+                "S": 352,
+                "M": 353,
+                "L": 354,
+                "XL": 355,
+                "2XL": 356,
+                "3XL": 357
+            }
+        },
+        "br-014": {
+            "id": 358,
+            "url": "http://127.0.0.1:18362/product/br-014/",
+            "collection": "black-rose",
+            "children": {
+                "S": 359,
+                "M": 360,
+                "L": 361,
+                "XL": 362,
+                "2XL": 363,
+                "3XL": 364
+            }
+        },
+        "br-015": {
+            "id": 365,
+            "url": "http://127.0.0.1:18362/product/br-015/",
+            "collection": "black-rose",
+            "children": {
+                "S": 366,
+                "M": 367,
+                "L": 368,
+                "XL": 369,
+                "2XL": 370,
+                "3XL": 371
+            }
+        },
+        "kids-001": {
+            "id": 372,
+            "url": "http://127.0.0.1:18362/product/kids-001/",
+            "collection": "kids-capsule",
+            "children": {
+                "2T": 373,
+                "3T": 374,
+                "4T": 375,
+                "5": 376,
+                "6": 377,
+                "7": 378
+            }
+        },
+        "kids-002": {
+            "id": 379,
+            "url": "http://127.0.0.1:18362/product/kids-002/",
+            "collection": "kids-capsule",
+            "children": {
+                "2T": 380,
+                "3T": 381,
+                "4T": 382,
+                "5": 383,
+                "6": 384,
+                "7": 385
+            }
+        },
+        "lh-002": {
+            "id": 386,
+            "url": "http://127.0.0.1:18362/product/lh-002/",
+            "collection": "love-hurts",
+            "children": {
+                "S": 387,
+                "M": 388,
+                "L": 389,
+                "XL": 390,
+                "2XL": 391,
+                "3XL": 392
+            }
+        },
+        "lh-003": {
+            "id": 393,
+            "url": "http://127.0.0.1:18362/product/lh-003/",
+            "collection": "love-hurts",
+            "children": {
+                "S": 394,
+                "M": 395,
+                "L": 396,
+                "XL": 397,
+                "2XL": 398,
+                "3XL": 399
+            }
+        },
+        "lh-004": {
+            "id": 400,
+            "url": "http://127.0.0.1:18362/product/lh-004/",
+            "collection": "love-hurts",
+            "children": {
+                "S": 401,
+                "M": 402,
+                "L": 403,
+                "XL": 404,
+                "2XL": 405,
+                "3XL": 406
+            }
+        },
+        "lh-005": {
+            "id": 407,
+            "url": "http://127.0.0.1:18362/product/lh-005/",
+            "collection": "love-hurts",
+            "children": []
+        },
+        "lh-006": {
+            "id": 408,
+            "url": "http://127.0.0.1:18362/product/lh-006/",
+            "collection": "love-hurts",
+            "children": {
+                "S": 409,
+                "M": 410,
+                "L": 411,
+                "XL": 412,
+                "2XL": 413,
+                "3XL": 414
+            }
+        },
+        "sg-001": {
+            "id": 415,
+            "url": "http://127.0.0.1:18362/product/sg-001/",
+            "collection": "signature",
+            "children": {
+                "S": 416,
+                "M": 417,
+                "L": 418,
+                "XL": 419,
+                "2XL": 420,
+                "3XL": 421
+            }
+        },
+        "sg-002": {
+            "id": 422,
+            "url": "http://127.0.0.1:18362/product/sg-002/",
+            "collection": "signature",
+            "children": {
+                "XS": 423,
+                "S": 424,
+                "M": 425,
+                "L": 426,
+                "XL": 427,
+                "2XL": 428
+            }
+        },
+        "sg-003": {
+            "id": 429,
+            "url": "http://127.0.0.1:18362/product/sg-003/",
+            "collection": "signature",
+            "children": {
+                "S": 430,
+                "M": 431,
+                "L": 432,
+                "XL": 433,
+                "2XL": 434,
+                "3XL": 435
+            }
+        },
+        "sg-005": {
+            "id": 436,
+            "url": "http://127.0.0.1:18362/product/sg-005/",
+            "collection": "signature",
+            "children": {
+                "S": 437,
+                "M": 438,
+                "L": 439,
+                "XL": 440,
+                "2XL": 441
+            }
+        },
+        "sg-006": {
+            "id": 442,
+            "url": "http://127.0.0.1:18362/product/sg-006/",
+            "collection": "signature",
+            "children": {
+                "S": 443,
+                "M": 444,
+                "L": 445,
+                "XL": 446,
+                "2XL": 447,
+                "3XL": 448
+            }
+        },
+        "sg-007": {
+            "id": 449,
+            "url": "http://127.0.0.1:18362/product/sg-007/",
+            "collection": "signature",
+            "children": []
+        },
+        "sg-009": {
+            "id": 450,
+            "url": "http://127.0.0.1:18362/product/sg-009/",
+            "collection": "signature",
+            "children": {
+                "S": 451,
+                "M": 452,
+                "L": 453,
+                "XL": 454,
+                "2XL": 455,
+                "3XL": 456
+            }
+        },
+        "sg-011": {
+            "id": 457,
+            "url": "http://127.0.0.1:18362/product/sg-011/",
+            "collection": "signature",
+            "children": {
+                "S": 458,
+                "M": 459,
+                "L": 460,
+                "XL": 461,
+                "2XL": 462,
+                "3XL": 463
+            }
+        },
+        "sg-012": {
+            "id": 464,
+            "url": "http://127.0.0.1:18362/product/sg-012/",
+            "collection": "signature",
+            "children": {
+                "S": 465,
+                "M": 466,
+                "L": 467,
+                "XL": 468,
+                "2XL": 469,
+                "3XL": 470
+            }
+        },
+        "sg-013": {
+            "id": 471,
+            "url": "http://127.0.0.1:18362/product/sg-013/",
+            "collection": "signature",
+            "children": {
+                "S": 472,
+                "M": 473,
+                "L": 474,
+                "XL": 475,
+                "2XL": 476,
+                "3XL": 477
+            }
+        },
+        "sg-014": {
+            "id": 478,
+            "url": "http://127.0.0.1:18362/product/sg-014/",
+            "collection": "signature",
+            "children": {
+                "S": 479,
+                "M": 480,
+                "L": 481,
+                "XL": 482,
+                "2XL": 483,
+                "3XL": 484
+            }
+        },
+        "sg-015": {
+            "id": 485,
+            "url": "http://127.0.0.1:18362/product/sg-015/",
+            "collection": "signature",
+            "children": {
+                "S": 486,
+                "M": 487,
+                "L": 488,
+                "XL": 489,
+                "2XL": 490,
+                "3XL": 491
+            }
+        }
+    },
+    "routes": [
+        {
+            "logical_key": "signature",
+            "path": "/collections/signature/",
+            "id": 494,
+            "template": "template-collection.php",
+            "collection": "signature",
+            "kind": "collection"
+        },
+        {
+            "logical_key": "immersive-signature",
+            "path": "/worlds/signature/",
+            "id": 495,
+            "template": "template-immersive-signature.php",
+            "collection": "signature",
+            "kind": "world"
+        },
+        {
+            "logical_key": "black-rose",
+            "path": "/collections/black-rose/",
+            "id": 496,
+            "template": "template-collection.php",
+            "collection": "black-rose",
+            "kind": "collection"
+        },
+        {
+            "logical_key": "immersive-black-rose",
+            "path": "/worlds/black-rose/",
+            "id": 497,
+            "template": "template-immersive-black-rose.php",
+            "collection": "black-rose",
+            "kind": "world"
+        },
+        {
+            "logical_key": "love-hurts",
+            "path": "/collections/love-hurts/",
+            "id": 498,
+            "template": "template-collection.php",
+            "collection": "love-hurts",
+            "kind": "collection"
+        },
+        {
+            "logical_key": "immersive-love-hurts",
+            "path": "/worlds/love-hurts/",
+            "id": 499,
+            "template": "template-immersive-love-hurts.php",
+            "collection": "love-hurts",
+            "kind": "world"
+        },
+        {
+            "logical_key": "kids-capsule",
+            "path": "/collections/kids-capsule/",
+            "id": 500,
+            "template": "template-collection.php",
+            "collection": "kids-capsule",
+            "kind": "collection"
+        },
+        {
+            "logical_key": "immersive-kids-capsule",
+            "path": "/worlds/kids-capsule/",
+            "id": 501,
+            "template": "template-immersive-kids-capsule.php",
+            "collection": "kids-capsule",
+            "kind": "world"
+        },
+        {
+            "logical_key": "worlds",
+            "path": "/worlds/",
+            "id": 493,
+            "template": "default",
+            "kind": "directory"
+        },
+        {
+            "logical_key": "size-guide",
+            "path": "/size-guide/",
+            "id": 503,
+            "template": "default",
+            "kind": "guide"
+        }
+    ],
+    "limits": [
+        "Synthetic unmanaged availability only",
+        "No live product/order state copied",
+        "No new asset acceptance",
+        "Local pages do not establish published production routes"
+    ],
+    "url_readback_utc": "2026-10-19T09:24:11+00:00"
+}

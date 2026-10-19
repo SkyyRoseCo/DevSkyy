@@ -1,0 +1,123 @@
+PASS: direct core add positive simple product
+PASS: server replaces tampered snapshot and excludes price
+PASS: direct core add rejects insufficient pool without fatal
+PASS: failed direct add preserves stored quantity
+PASS: quantity update excludes old line
+PASS: quantity update rejects over allocation
+PASS: native quantity edit stores validated replacement
+PASS: direct core rejects fractional quantity
+PASS: native zero add rejected
+PASS: invalid request quantity -1
+PASS: invalid request quantity 0.5
+PASS: invalid request quantity tampered
+PASS: invalid request quantity INF
+PASS: zero quantity permits removal
+PASS: prior permission denial preserved
+PASS: valid cart has no promise/allocation errors
+PASS: native checkout display includes recorded promise
+PASS: session restore preserves exact recorded promise
+PASS: native session serialization stores exact snapshot
+PASS: native session restoration retains exact snapshot
+PASS: product promise edit blocks checkout
+PASS: promise change never rewrites stored cart history
+PASS: Store API returns structured stale promise error
+PASS: legacy cart requires explicit product review
+PASS: native price change updates totals without descriptive promise drift
+PASS: actual active order data store WC_Order_Data_Store_CPT
+PASS: real order storage no promise and native total
+PASS: post-order edits and repeated hook preserve snapshot no
+PASS: failure/cancellation does not decrement or restore custom allocation no
+PASS: local non-payment refund preserves custom allocation no
+PASS: native order/email display uses order history no
+PASS: historical no-snapshot order remains unknown
+PASS: v1 historical schema readable without current product
+PASS: future order schema retained without fabrication
+PASS: persisted historical item is never backfilled
+PASS: variation inherits parent preorder/allocation
+PASS: sibling variations share parent allocation pool
+PASS: variation order stores stable selected identity
+PASS: explicit variation zero blocks addition
+PASS: unrelated variation rejected
+PASS: wildcard variation captures resolved selected size
+PASS: repeated wildcard add checks shared allocation before merge
+PASS: wildcard selection remains valid at checkout
+PASS: absent legacy allocation remains uncapped
+PASS: malformed allocation fails closed
+PASS: real Store API order builder persists promise
+PASS: existing Store API order revalidates availability with empty cart
+PASS: classic pay-for-order emits handled allocation error
+PASS: existing-order payment isolates unrelated invalid cart
+PASS: native coupon applies to snapshot cart
+PASS: native discount remains authoritative in stored order total
+PASS: real cart coupon survives through order attribution
+PASS: CRUD referral attribution stored without email
+PASS: repeated lifecycle event retains referral identity
+PASS: self referral receives no attribution
+PASS: ownership gap reproduced: independent carts do not reserve custom allocation
+PASS: tax/shipping enabled resolves variation and native coupon
+PASS: tax/shipping enabled native selected attribute
+PASS: tax/shipping snapshot identity and absent promise null preserved
+PASS: tax/shipping enabled native package matches fixture zone and rate
+PASS: tax/shipping enabled stored native rate and customer tax destination
+Native money enabled: {"cart":{"subtotal":150,"discount":15,"merchandise":135,"shipping":10,"item_tax":13.5,"shipping_tax":1,"total":159.5},"order":{"subtotal":150,"discount":15,"merchandise":135,"shipping":10,"item_tax":13.5,"shipping_tax":1,"total":159.5}}
+PASS: tax/shipping enabled native cart and stored order subtotal
+PASS: tax/shipping enabled native cart and stored order discount
+PASS: tax/shipping enabled native cart and stored order merchandise
+PASS: tax/shipping enabled native cart and stored order shipping
+PASS: tax/shipping enabled native cart and stored order item_tax
+PASS: tax/shipping enabled native cart and stored order shipping_tax
+PASS: tax/shipping enabled native cart and stored order total
+PASS: tax/shipping enabled stored snapshot boundary
+PASS: tax/shipping enabled persisted parent/variation and selected size
+PASS: tax/shipping control resolves variation and native coupon
+PASS: tax/shipping control native selected attribute
+PASS: native control contains no module snapshot
+PASS: tax/shipping control native package matches fixture zone and rate
+PASS: tax/shipping control stored native rate and customer tax destination
+Native money control: {"cart":{"subtotal":150,"discount":15,"merchandise":135,"shipping":10,"item_tax":13.5,"shipping_tax":1,"total":159.5},"order":{"subtotal":150,"discount":15,"merchandise":135,"shipping":10,"item_tax":13.5,"shipping_tax":1,"total":159.5}}
+PASS: tax/shipping control native cart and stored order subtotal
+PASS: tax/shipping control native cart and stored order discount
+PASS: tax/shipping control native cart and stored order merchandise
+PASS: tax/shipping control native cart and stored order shipping
+PASS: tax/shipping control native cart and stored order item_tax
+PASS: tax/shipping control native cart and stored order shipping_tax
+PASS: tax/shipping control native cart and stored order total
+PASS: tax/shipping control stored snapshot boundary
+PASS: tax/shipping control persisted parent/variation and selected size
+PASS: module enabled and native control preserve identical money values
+PASS: native control restores module callbacks
+PASS: migration dry-run reads no orders and changes no products
+PASS: unreviewed native preimage rejected
+PASS: durable completed marker follows exact six-child readback
+PASS: completed retry is idempotent with exact child inventory
+PASS: native child keeps blank own SKU and inherits parent identity
+PASS: native child keeps blank own SKU and inherits parent identity
+PASS: native child keeps blank own SKU and inherits parent identity
+PASS: native child keeps blank own SKU and inherits parent identity
+PASS: native child keeps blank own SKU and inherits parent identity
+PASS: native child keeps blank own SKU and inherits parent identity
+PASS: Kids numeric-looking size strings survive strict mapping roundtrip
+PASS: pre-conversion order identities snapshot and money remain byte-for-byte unchanged
+PASS: persisted pre-cutoff simple preorder passes completed-migration payment context
+PHP Fatal error:  Uncaught Automattic\WooCommerce\StoreApi\Exceptions\RouteException: There was a problem with the provided shipping address: First name is required, Last name is required, Street address is required in /Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/runtime-official/wordpress/wp-content/plugins/woocommerce/src/StoreApi/Utilities/OrderController.php:436
+Stack trace:
+#0 /Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/runtime-official/wordpress/wp-content/plugins/woocommerce/src/StoreApi/Utilities/OrderController.php(171): Automattic\WooCommerce\StoreApi\Utilities\OrderController->validate_addresses(Object(WC_Order), true)
+#1 /Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/tests/commerce/migration.php(71): Automattic\WooCommerce\StoreApi\Utilities\OrderController->validate_existing_order_before_payment(Object(WC_Order))
+#2 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/eval-command/src/EvalFile_Command.php(85) : eval()'d code(538): require('/Users/theceo/....')
+#3 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/eval-command/src/EvalFile_Command.php(85): eval()
+#4 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/eval-command/src/EvalFile_Command.php(59): EvalFile_Command::execute_eval('/Users/theceo/....', Array, false)
+#5 [internal function]: EvalFile_Command->__invoke(Array, Array)
+#6 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Dispatcher/CommandFactory.php(100): call_user_func(Array, Array, Array)
+#7 [internal function]: WP_CLI\Dispatcher\CommandFactory::{closure:WP_CLI\Dispatcher\CommandFactory::create_subcommand():97}(Array, Array)
+#8 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Dispatcher/Subcommand.php(497): call_user_func(Object(Closure), Array, Array)
+#9 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(470): WP_CLI\Dispatcher\Subcommand->invoke(Array, Array, Array)
+#10 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(493): WP_CLI\Runner->run_command(Array, Array)
+#11 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(136): WP_CLI\Runner->run_command_and_exit()
+#12 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Runner.php(1228): WP_CLI\Runner->do_early_invoke('before_wp_load')
+#13 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/wp-cli/php/WP_CLI/Bootstrap/LaunchRunner.php(28): WP_CLI\Runner->start()
+#14 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/wp-cli/php/bootstrap.php(84): WP_CLI\Bootstrap\LaunchRunner->process(Object(WP_CLI\Bootstrap\BootstrapState))
+#15 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/vendor/wp-cli/wp-cli/php/wp-cli.php(35): WP_CLI\bootstrap()
+#16 phar:///opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp/php/boot-phar.php(20): include('phar:///opt/hom...')
+#17 /opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp(4): include('phar:///opt/hom...')
+#18 {main}
+  thrown in /Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/runtime-official/wordpress/wp-content/plugins/woocommerce/src/StoreApi/Utilities/OrderController.php on line 436

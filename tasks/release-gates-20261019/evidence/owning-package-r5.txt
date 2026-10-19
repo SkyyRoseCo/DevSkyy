@@ -1,0 +1,1321 @@
+
+> skyyrose-flagship-2-theme@2.5.5 package:theme
+> bash scripts/package-theme.sh
+
+
+> skyyrose-flagship-2-theme@2.5.5 build
+> npm run check:source-integrity && npm run build:scene-posters && npm run check:approved-scenes && npm run build:tokens && npm run build:registry && npm run build:card-renditions && npm run build:font-delivery && npm run build:frame-delivery && npm run build:assets && npm run build:archive-theme && npm run build:i18n
+
+
+> skyyrose-flagship-2-theme@2.5.5 check:source-integrity
+> python3 ../../tools/v2-source-certification/check-integrity.py
+
+PASS 33 front hashes/dimensions; media states 16/9/5/3; 18 motion variant hashes
+
+> skyyrose-flagship-2-theme@2.5.5 build:scene-posters
+> node ../../tools/v2-runtime/build-scene-posters.cjs --write
+
+{
+  "status": "BUILT_SCENE_POSTERS",
+  "tool_version": "1.6.0\nlibsharpyuv: 0.4.2",
+  "outputs": [
+    {
+      "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp",
+      "bytes": 69660,
+      "sha256": "fe92f8838cb20f911e95afc2f1ab75ad1bc94601d3a00b0db7bf9c9165abd1a4"
+    },
+    {
+      "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp",
+      "bytes": 156866,
+      "sha256": "2cbf726ea73c1c0a3eead460228b302d07f6ea51ebd3e5a70c9380515e25b9d8"
+    }
+  ]
+}
+(node:72020) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.5 check:approved-scenes
+> node ../../tools/v2-runtime/check-approved-scroll-world-scenes.cjs
+
+{
+  "status": "PASS_APPROVED_SCENE_SELECTION",
+  "scenes": 9,
+  "runtime_media_assets": 27,
+  "media_bytes": 42425297,
+  "supporting_derivatives": 2,
+  "supporting_derivative_bytes": 226526,
+  "resolved_selection_checked": false,
+  "browser_visual_qa": "NOT_PERFORMED_BY_THIS_GUARD"
+}
+(node:72167) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.5 build:tokens
+> node ../../tools/v2-runtime/sync-token-contract.cjs --write
+
+PASS runtime/editor colors, layout, type roles, spacing, controls, focus, motion and layer contract
+(node:72212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.5 build:registry
+> python3 scripts/build-product-presentation-registry.py
+
+Wrote /Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json (33 SKUs).
+
+> skyyrose-flagship-2-theme@2.5.5 build:card-renditions
+> python3 ../../tools/v2-runtime/build-card-renditions.py
+
+Built responsive copies of 33 approved card fronts; originals unchanged
+
+> skyyrose-flagship-2-theme@2.5.5 build:font-delivery
+> python3 ../../tools/v2-runtime/build-font-delivery.py
+
+Built Archivo default-width delivery; full weights and source preserved
+
+> skyyrose-flagship-2-theme@2.5.5 build:frame-delivery
+> python3 ../../tools/v2-runtime/build-frame-delivery.py
+
+Built 4 frame copies; originals unchanged
+
+> skyyrose-flagship-2-theme@2.5.5 build:assets
+> node scripts/build-assets.mjs && node scripts/build-critical-css.mjs
+
+Built 25 CSS and 17 JS assets.
+Built assets/css/critical/home.min.css: 13580 bytes (budget 16384).
+
+> skyyrose-flagship-2-theme@2.5.5 build:archive-theme
+> node ../../tools/v2-runtime/build-archive-style-bundle.cjs
+
+archive-style-bundle: Shop inline total 99059 B is within 941 B of the 100000 B allowance
+{
+  file: [32m'archive-theme.min.css'[39m,
+  sha256: [32m'ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a'[39m,
+  bytes: [33m26637[39m
+}
+(node:72614) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.5 build:i18n
+> python3 scripts/build-pot.py
+
+Wrote /Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/languages/skyyrose-flagship-2.pot (661 singular messages, 1 plural records).
+
+> skyyrose-flagship-2-theme@2.5.5 verify
+> npm run check:source-integrity && npm run check:archive-theme && php ../../tools/v2-runtime/test-archive-style-bundle.php && npm run check:scene-posters && npm run check:approved-scenes && npm run check:commerce-scenes && bash scripts/verify-marketplace.sh && php scripts/test-performance.php && php scripts/test-critical-rendering.php && php scripts/test-global-shell-contract.php && php scripts/test-dead-links.php && php scripts/test-seo-indexing.php && php scripts/test-page-service-template.php && node --test ../../tools/v2-runtime/test-*.cjs && php ../../tools/v2-runtime/test-commerce-page-assets.php && php ../../tools/v2-runtime/test-launch-readiness.php && php ../../tools/v2-runtime/test-product-media.php && php ../../tools/v2-runtime/test-checkout-truth.php && php ../../tools/v2-runtime/test-cart-contract.php && php ../../tools/v2-runtime/test-quick-view-dependencies.php && php ../../tools/v2-runtime/test-search.php && npm run check:tokens && npm run check:card-renditions && python3 ../../tools/v2-runtime/test-card-renditions.py && php ../../tools/v2-runtime/test-product-card.php && php ../../tools/v2-runtime/test-card-garment-highlight.php && php ../../tools/v2-runtime/test-native-card-priority.php && php ../../tools/v2-runtime/test-shop-archive.php && php ../../tools/v2-runtime/test-archive-preload.php && php ../../tools/v2-runtime/test-pdp-summary.php && php ../../tools/v2-runtime/test-collection-image-preservation.php && php ../../tools/v2-runtime/test-collection-routes.php && php ../../tools/v2-runtime/test-home-labels.php && php ../../tools/v2-runtime/test-homepage-hero-gate.php && php ../../tools/v2-runtime/test-pdp-delivery.php && php ../../tools/v2-runtime/test-pdp-gallery.php && php ../../tools/v2-runtime/test-pdp-approved-fronts.php && php ../../tools/v2-runtime/test-v2-media-eligibility.php && php ../../tools/v2-runtime/test-v2-delivery-derivatives.php && php ../../tools/v2-runtime/test-media-usage.php && php ../../tools/v2-runtime/test-collection-imagery.php && php ../../tools/v2-runtime/test-preorder-collections.php && npm run check:font-delivery && python3 ../../tools/v2-runtime/test-font-delivery.py && npm run check:frame-delivery && python3 ../../tools/v2-runtime/test-frame-delivery.py && for mode in valid ineligible current-eligibility missing source derived schema path dimensions malformed symlink ancestor narrow-ineligible narrow-missing narrow-derived narrow-path narrow-dimensions narrow-symlink; do php ../../tools/v2-runtime/test-frame-delivery.php "$mode" || exit 1; done && php scripts/test-prelaunch-safety.php
+
+
+> skyyrose-flagship-2-theme@2.5.5 check:source-integrity
+> python3 ../../tools/v2-source-certification/check-integrity.py
+
+PASS 33 front hashes/dimensions; media states 16/9/5/3; 18 motion variant hashes
+
+> skyyrose-flagship-2-theme@2.5.5 check:archive-theme
+> node ../../tools/v2-runtime/build-archive-style-bundle.cjs --check
+
+archive-style-bundle: Shop inline total 99059 B is within 941 B of the 100000 B allowance
+{
+  file: [32m'archive-theme.min.css'[39m,
+  sha256: [32m'ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a'[39m,
+  bytes: [33m26637[39m
+}
+(node:72789) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS archive projection, bounded native inline eligibility, input authority and late extension preservation
+
+> skyyrose-flagship-2-theme@2.5.5 check:scene-posters
+> node ../../tools/v2-runtime/build-scene-posters.cjs --check
+
+{
+  "status": "PASS_REPRODUCIBLE_SCENE_POSTERS",
+  "tool_version": "1.6.0\nlibsharpyuv: 0.4.2",
+  "outputs": [
+    {
+      "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp",
+      "bytes": 69660,
+      "sha256": "fe92f8838cb20f911e95afc2f1ab75ad1bc94601d3a00b0db7bf9c9165abd1a4"
+    },
+    {
+      "path": "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp",
+      "bytes": 156866,
+      "sha256": "2cbf726ea73c1c0a3eead460228b302d07f6ea51ebd3e5a70c9380515e25b9d8"
+    }
+  ]
+}
+(node:72836) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.5 check:approved-scenes
+> node ../../tools/v2-runtime/check-approved-scroll-world-scenes.cjs
+
+{
+  "status": "PASS_APPROVED_SCENE_SELECTION",
+  "scenes": 9,
+  "runtime_media_assets": 27,
+  "media_bytes": 42425297,
+  "supporting_derivatives": 2,
+  "supporting_derivative_bytes": 226526,
+  "resolved_selection_checked": false,
+  "browser_visual_qa": "NOT_PERFORMED_BY_THIS_GUARD"
+}
+(node:72980) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.5 check:commerce-scenes
+> python3 ../../tools/v2-source-certification/check-current-scenes.py
+
+PASS current K1 scenes, posters, SKU casts, SOT binding and hash-bound runtime PHP
+Product presentation registry is current (33 SKUs).
+PASS: /Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/../../tools/v2-source-certification/inputs/woocommerce-product-sync.json matches the pinned historical projection
+Opening product media is hash-bound to 33 products and 3 approved SKU asset sets.
+Collection hero motion valid: 1 exact-pixel treatments, 3 founder-authorized films, 4 founder-approved AI motion plates.
+....................
+----------------------------------------------------------------------
+Ran 20 tests in 0.064s
+
+OK
+Translation catalog is current (661 singular messages, 1 plural records).
+Marketplace registry structure passed.
+Verified 25 CSS and 17 JS assets.
+Verified assets/css/critical/home.min.css: 13580 bytes (budget 16384).
+SkyyRose Flagship 2 marketplace verification passed.
+PASS performance contract
+critical-rendering: OK
+Global shell contract passed.
+Dead-link contract passed.
+PASS SEO/indexing contract: preview fail-closed, public sitemap/indexing, transactional/search/attachment noindex, legacy hook replacement, and Woo Product ownership.
+PASS offline exact-URL imagery gate: registered V2 social and Article JSON-LD retained; assigned V1, unregistered V2 and filtered legacy URLs withheld by active and compatibility emitters.
+PASS: generic/service/account page template rendering contract preserved.
+(node:75686) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# (node:75687) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: existing explicit approval evidence binds exactly nine final selections and 27 file hashes
+ok 1 - existing explicit approval evidence binds exactly nine final selections and 27 file hashes
+  ---
+  duration_ms: 57.586875
+  type: 'test'
+  ...
+# Subtest: every non-final classification fails closed
+ok 2 - every non-final classification fails closed
+  ---
+  duration_ms: 3.583417
+  type: 'test'
+  ...
+# Subtest: missing, duplicate-by-ID and tenth historical scenes cannot enter canonical selection
+ok 3 - missing, duplicate-by-ID and tenth historical scenes cannot enter canonical selection
+  ---
+  duration_ms: 1.212125
+  type: 'test'
+  ...
+# Subtest: changing scene order or collection is rejected
+ok 4 - changing scene order or collection is rejected
+  ---
+  duration_ms: 0.442542
+  type: 'test'
+  ...
+# Subtest: approval evidence and media hashes cannot silently drift
+ok 5 - approval evidence and media hashes cannot silently drift
+  ---
+  duration_ms: 4.548167
+  type: 'test'
+  ...
+# Subtest: a required scene asset cannot escape the local theme
+ok 6 - a required scene asset cannot escape the local theme
+  ---
+  duration_ms: 0.651666
+  type: 'test'
+  ...
+# Subtest: historical candidate layers and extra delivery variants are rejected
+ok 7 - historical candidate layers and extra delivery variants are rejected
+  ---
+  duration_ms: 5.155334
+  type: 'test'
+  ...
+# Subtest: legacy motion selection requires both explicit visual approval and local wiring authorization
+ok 8 - legacy motion selection requires both explicit visual approval and local wiring authorization
+  ---
+  duration_ms: 0.413833
+  type: 'test'
+  ...
+# Subtest: a historical tenth selection in the legacy motion manifest is blocked
+ok 9 - a historical tenth selection in the legacy motion manifest is blocked
+  ---
+  duration_ms: 0.766084
+  type: 'test'
+  ...
+# Subtest: non-native CTA destinations cannot be smuggled into a scene contract
+ok 10 - non-native CTA destinations cannot be smuggled into a scene contract
+  ---
+  duration_ms: 13.562417
+  type: 'test'
+  ...
+# Subtest: resolved nine-scene selection is accepted with zero invented Kids chapters
+ok 11 - resolved nine-scene selection is accepted with zero invented Kids chapters
+  ---
+  duration_ms: 1.332166
+  type: 'test'
+  ...
+# Subtest: actual resolver cannot add an undeclared poster, video, overlay, srcset or placeholder
+ok 12 - actual resolver cannot add an undeclared poster, video, overlay, srcset or placeholder
+  ---
+  duration_ms: 1.018833
+  type: 'test'
+  ...
+# Subtest: resolved missing, extra and reordered chapters are rejected
+ok 13 - resolved missing, extra and reordered chapters are rejected
+  ---
+  duration_ms: 0.382125
+  type: 'test'
+  ...
+# Subtest: resolved commerce identities remain bound to approved real SKU selection
+ok 14 - resolved commerce identities remain bound to approved real SKU selection
+  ---
+  duration_ms: 0.147542
+  type: 'test'
+  ...
+# Subtest: supporting BR3 derivatives reproduce exactly with pinned cwebp and preserve parent hash
+ok 15 - supporting BR3 derivatives reproduce exactly with pinned cwebp and preserve parent hash
+  ---
+  duration_ms: 497.616375
+  type: 'test'
+  ...
+# Subtest: foreign responsive poster parents, hashes, dimensions and delivery paths are rejected
+ok 16 - foreign responsive poster parents, hashes, dimensions and delivery paths are rejected
+  ---
+  duration_ms: 135.362625
+  type: 'test'
+  ...
+# Subtest: the BR3 engineering derivative scope cannot expand to other scenes or widths
+ok 17 - the BR3 engineering derivative scope cannot expand to other scenes or widths
+  ---
+  duration_ms: 35.521041
+  type: 'test'
+  ...
+# Subtest: resolver cannot add an unapproved responsive poster delivery
+ok 18 - resolver cannot add an unapproved responsive poster delivery
+  ---
+  duration_ms: 0.392084
+  type: 'test'
+  ...
+# Subtest: corrupt and truncated WebP containers are rejected
+ok 19 - corrupt and truncated WebP containers are rejected
+  ---
+  duration_ms: 0.31025
+  type: 'test'
+  ...
+# (node:75688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: only positive explicit route owners classify; broad/shared/negative selectors remain
+ok 20 - only positive explicit route owners classify; broad/shared/negative selectors remain
+  ---
+  duration_ms: 1.048292
+  type: 'test'
+  ...
+# Subtest: mixed selector rules, relative URLs, wrappers and all keyframes survive unchanged in order
+ok 21 - mixed selector rules, relative URLs, wrappers and all keyframes survive unchanged in order
+  ---
+  duration_ms: 24.020875
+  type: 'test'
+  ...
+# Subtest: deterministic manifest, complete classification, untouched originals, check never writes
+ok 22 - deterministic manifest, complete classification, untouched originals, check never writes
+  ---
+  duration_ms: 13.494958
+  type: 'test'
+  ...
+# Subtest: missing/stale output check fails without creating or repairing files
+ok 23 - missing/stale output check fails without creating or repairing files
+  ---
+  duration_ms: 9.040083
+  type: 'test'
+  ...
+# Subtest: reject source/output symlinks, traversal and malformed CSS
+ok 24 - reject source/output symlinks, traversal and malformed CSS
+  ---
+  duration_ms: 5.59925
+  type: 'test'
+  ...
+# Subtest: input-only receipt binds six exact originals and never generates companion CSS
+ok 25 - input-only receipt binds six exact originals and never generates companion CSS
+  ---
+  duration_ms: 9.144333
+  type: 'test'
+  ...
+# Subtest: input receipt rejects missing or symlinked token authority without writing
+ok 26 - input receipt rejects missing or symlinked token authority without writing
+  ---
+  duration_ms: 3.740625
+  type: 'test'
+  ...
+# Subtest: Shop inline allowance: seven-sheet total above 100,000 B fails the build
+ok 27 - Shop inline allowance: seven-sheet total above 100,000 B fails the build
+  ---
+  duration_ms: 3.392875
+  type: 'test'
+  ...
+# Subtest: every theme.css class the Shop templates render survives in the committed projection
+ok 28 - every theme.css class the Shop templates render survives in the committed projection
+  ---
+  duration_ms: 6.873208
+  type: 'test'
+  ...
+# (node:75689) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: valid card images keep their error label hidden in delivered CSS
+ok 29 - valid card images keep their error label hidden in delivered CSS
+  ---
+  duration_ms: 1.430791
+  type: 'test'
+  ...
+# Subtest: immersive recovery hides failed editorial media without borrowing product or hero roles
+ok 30 - immersive recovery hides failed editorial media without borrowing product or hero roles
+  ---
+  duration_ms: 2.238833
+  type: 'test'
+  ...
+# Subtest: immersive shell has the shared skip target and immediate native commerce
+ok 31 - immersive shell has the shared skip target and immediate native commerce
+  ---
+  duration_ms: 0.146042
+  type: 'test'
+  ...
+# Subtest: collection arrivals link to merchandise and retain the editorial story
+ok 32 - collection arrivals link to merchandise and retain the editorial story
+  ---
+  duration_ms: 0.938291
+  type: 'test'
+  ...
+# (node:75690) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: native Woo HTML interpolates with dynamic compilation disabled
+ok 33 - native Woo HTML interpolates with dynamic compilation disabled
+  ---
+  duration_ms: 2.316417
+  type: 'test'
+  ...
+# Subtest: escaped tokens are HTML escaped and localized unavailable markup survives
+ok 34 - escaped tokens are HTML escaped and localized unavailable markup survives
+  ---
+  duration_ms: 0.582917
+  type: 'test'
+  ...
+# Subtest: arbitrary expressions and unapproved fields fail closed
+ok 35 - arbitrary expressions and unapproved fields fail closed
+  ---
+  duration_ms: 1.926125
+  type: 'test'
+  ...
+# (node:75691) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: actual CSS builder rejects a swallowed-selector declaration before any writes (build)
+ok 36 - actual CSS builder rejects a swallowed-selector declaration before any writes (build)
+  ---
+  duration_ms: 226.461417
+  type: 'test'
+  ...
+# Subtest: actual CSS builder rejects a swallowed-selector declaration before any writes (check)
+ok 37 - actual CSS builder rejects a swallowed-selector declaration before any writes (check)
+  ---
+  duration_ms: 182.205875
+  type: 'test'
+  ...
+# Subtest: actual CSS builder preserves separate valid neighboring rules and verifies deterministic output
+ok 38 - actual CSS builder preserves separate valid neighboring rules and verifies deterministic output
+  ---
+  duration_ms: 521.367666
+  type: 'test'
+  ...
+# Subtest: actual CSS builder rejects an unclosed rule with source location
+ok 39 - actual CSS builder rejects an unclosed rule with source location
+  ---
+  duration_ms: 131.0835
+  type: 'test'
+  ...
+# (node:75692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: delayed guide exit returns guide focus
+ok 40 - delayed guide exit returns guide focus
+  ---
+  duration_ms: 4.416542
+  type: 'test'
+  ...
+# Subtest: delayed guide exit does not steal changed focus
+ok 41 - delayed guide exit does not steal changed focus
+  ---
+  duration_ms: 0.857458
+  type: 'test'
+  ...
+# Subtest: size-guide ordinary and keyboard-generated primary click opens the coordinated dialog
+ok 42 - size-guide ordinary and keyboard-generated primary click opens the coordinated dialog
+  ---
+  duration_ms: 2.005417
+  type: 'test'
+  ...
+# Subtest: size-guide modified and nonprimary navigation keeps the native anchor behavior
+ok 43 - size-guide modified and nonprimary navigation keeps the native anchor behavior
+  ---
+  duration_ms: 2.969667
+  type: 'test'
+  ...
+# Subtest: size-guide unsupported or failed modal leaves the native link available
+ok 44 - size-guide unsupported or failed modal leaves the native link available
+  ---
+  duration_ms: 0.870667
+  type: 'test'
+  ...
+# (node:75693) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Homepage film behavior: PASS
+# Subtest: ../../tools/v2-runtime/test-home-experience.cjs
+ok 7 - ../../tools/v2-runtime/test-home-experience.cjs
+  ---
+  duration_ms: 934.587875
+  type: 'test'
+  ...
+# (node:75694) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: immersive.js: cached and later poster failures recover identically {"reduced":true}
+ok 46 - immersive.js: cached and later poster failures recover identically {"reduced":true}
+  ---
+  duration_ms: 111.428916
+  type: 'test'
+  ...
+# Subtest: immersive.js: cached and later poster failures recover identically {"reduced":false}
+ok 47 - immersive.js: cached and later poster failures recover identically {"reduced":false}
+  ---
+  duration_ms: 25.165583
+  type: 'test'
+  ...
+# Subtest: immersive.js: cached and later poster failures recover identically {"reduced":false,"saveData":true}
+ok 48 - immersive.js: cached and later poster failures recover identically {"reduced":false,"saveData":true}
+  ---
+  duration_ms: 20.14725
+  type: 'test'
+  ...
+# Subtest: immersive.js: ready requires a loaded positive-size poster; absent remains unavailable
+ok 49 - immersive.js: ready requires a loaded positive-size poster; absent remains unavailable
+  ---
+  duration_ms: 20.719
+  type: 'test'
+  ...
+# Subtest: immersive.js: failed chapter stays accessible without borrowing the hero role
+ok 50 - immersive.js: failed chapter stays accessible without borrowing the hero role
+  ---
+  duration_ms: 32.218458
+  type: 'test'
+  ...
+# Subtest: immersive.js: cached failed chapter recovers before any later image event
+ok 51 - immersive.js: cached failed chapter recovers before any later image event
+  ---
+  duration_ms: 13.118666
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: cached and later poster failures recover identically {"reduced":true}
+ok 52 - immersive.min.js: cached and later poster failures recover identically {"reduced":true}
+  ---
+  duration_ms: 17.591583
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: cached and later poster failures recover identically {"reduced":false}
+ok 53 - immersive.min.js: cached and later poster failures recover identically {"reduced":false}
+  ---
+  duration_ms: 16.163542
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: cached and later poster failures recover identically {"reduced":false,"saveData":true}
+ok 54 - immersive.min.js: cached and later poster failures recover identically {"reduced":false,"saveData":true}
+  ---
+  duration_ms: 19.10225
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: ready requires a loaded positive-size poster; absent remains unavailable
+ok 55 - immersive.min.js: ready requires a loaded positive-size poster; absent remains unavailable
+  ---
+  duration_ms: 14.845459
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: failed chapter stays accessible without borrowing the hero role
+ok 56 - immersive.min.js: failed chapter stays accessible without borrowing the hero role
+  ---
+  duration_ms: 21.030125
+  type: 'test'
+  ...
+# Subtest: immersive.min.js: cached failed chapter recovers before any later image event
+ok 57 - immersive.min.js: cached failed chapter recovers before any later image event
+  ---
+  duration_ms: 9.003708
+  type: 'test'
+  ...
+# (node:75695) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: native Woo switches exact SKU, removes denied variation photo, permits size-only and resets safely
+ok 58 - native Woo switches exact SKU, removes denied variation photo, permits size-only and resets safely
+  ---
+  duration_ms: 387.428209
+  type: 'test'
+  ...
+# (node:75697) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: premium-commerce.js: a missing preview image keeps navigation usable
+ok 59 - premium-commerce.js: a missing preview image keeps navigation usable
+  ---
+  duration_ms: 112.162667
+  type: 'test'
+  ...
+# Subtest: premium-commerce.min.js: a missing preview image keeps navigation usable
+ok 60 - premium-commerce.min.js: a missing preview image keeps navigation usable
+  ---
+  duration_ms: 36.77125
+  type: 'test'
+  ...
+# (node:75698) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: menu owns focus, preserves prior inert state and restores Escape focus
+ok 61 - menu owns focus, preserves prior inert state and restores Escape focus
+  ---
+  duration_ms: 6.10925
+  type: 'test'
+  ...
+# Subtest: opening a native dialog closes menu and other dialog without patching native APIs
+ok 62 - opening a native dialog closes menu and other dialog without patching native APIs
+  ---
+  duration_ms: 0.983
+  type: 'test'
+  ...
+# (node:75699) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: found event alone never promises a completed native selection
+ok 63 - found event alone never promises a completed native selection
+  ---
+  duration_ms: 1.876584
+  type: 'test'
+  ...
+# Subtest: shown variation must match the real hidden native ID
+ok 64 - shown variation must match the real hidden native ID
+  ---
+  duration_ms: 0.388417
+  type: 'test'
+  ...
+# Subtest: zero-ID and repeated submits are blocked without generating an ID
+ok 65 - zero-ID and repeated submits are blocked without generating an ID
+  ---
+  duration_ms: 1.199917
+  type: 'test'
+  ...
+# (node:75714) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: navigation isolates background, traps Tab, and restores original inert on Escape
+ok 66 - navigation isolates background, traps Tab, and restores original inert on Escape
+  ---
+  duration_ms: 5.197625
+  type: 'test'
+  ...
+# Subtest: desktop compensation and mobile body locking restore exact styles and scroll
+ok 67 - desktop compensation and mobile body locking restore exact styles and scroll
+  ---
+  duration_ms: 2.65125
+  type: 'test'
+  ...
+# Subtest: external native dialog replaces menu, then nested dialog keeps its ancestors usable
+ok 68 - external native dialog replaces menu, then nested dialog keeps its ancestors usable
+  ---
+  duration_ms: 3.712708
+  type: 'test'
+  ...
+# Subtest: rapid close/reopen ignores delayed native close event
+ok 69 - rapid close/reopen ignores delayed native close event
+  ---
+  duration_ms: 1.192916
+  type: 'test'
+  ...
+# Subtest: resize preserves lock and pagehide/pageshow clear all stale state
+ok 70 - resize preserves lock and pagehide/pageshow clear all stale state
+  ---
+  duration_ms: 1.434417
+  type: 'test'
+  ...
+# Subtest: fragment removal repairs detached focus without stealing valid dialog field focus
+ok 71 - fragment removal repairs detached focus without stealing valid dialog field focus
+  ---
+  duration_ms: 0.673875
+  type: 'test'
+  ...
+# Subtest: topmost Escape is consumed before restored focus reaches guide handlers
+ok 72 - topmost Escape is consumed before restored focus reaches guide handlers
+  ---
+  duration_ms: 0.644042
+  type: 'test'
+  ...
+# Subtest: bag announcement relays only native confirmed removal message for its own control
+ok 73 - bag announcement relays only native confirmed removal message for its own control
+  ---
+  duration_ms: 0.776375
+  type: 'test'
+  ...
+# Subtest: visible opener returns immediately and an unavailable opener uses the safe fallback
+ok 74 - visible opener returns immediately and an unavailable opener uses the safe fallback
+  ---
+  duration_ms: 2.418375
+  type: 'test'
+  ...
+# Subtest: unsupported or failing native modal retains navigation fallback and releases state
+ok 75 - unsupported or failing native modal retains navigation fallback and releases state
+  ---
+  duration_ms: 1.116958
+  type: 'test'
+  ...
+# (node:75724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: native dialog opens on invitation, closes and returns focus; modified links remain native
+ok 76 - native dialog opens on invitation, closes and returns focus; modified links remain native
+  ---
+  duration_ms: 4.434625
+  type: 'test'
+  ...
+# Subtest: real SKU discovery supplies exact native URL; phrase boundaries avoid hi matching shipping
+ok 77 - real SKU discovery supplies exact native URL; phrase boundaries avoid hi matching shipping
+  ---
+  duration_ms: 3.267
+  type: 'test'
+  ...
+# Subtest: answer text cannot become markup and external links are excluded; transcript is bounded
+ok 78 - answer text cannot become markup and external links are excluded; transcript is bounded
+  ---
+  duration_ms: 2.78725
+  type: 'test'
+  ...
+# Subtest: loader waits for invitation, deduplicates requests, and failure preserves contact fallback
+ok 79 - loader waits for invitation, deduplicates requests, and failure preserves contact fallback
+  ---
+  duration_ms: 7.674917
+  type: 'test'
+  ...
+# Subtest: Save-Data and reduced motion keep the canonical fallback without requesting 3D
+ok 80 - Save-Data and reduced motion keep the canonical fallback without requesting 3D
+  ---
+  duration_ms: 1.761833
+  type: 'test'
+  ...
+# Subtest: unavailable WebGL returns a static character without fetching the model or throwing
+ok 81 - unavailable WebGL returns a static character without fetching the model or throwing
+  ---
+  duration_ms: 2.933667
+  type: 'test'
+  ...
+# Subtest: canonical GLB contains the current embedded materials, skin and six populated action clips
+ok 82 - canonical GLB contains the current embedded materials, skin and six populated action clips
+  ---
+  duration_ms: 2.341458
+  type: 'test'
+  ...
+# Subtest: ordinary greeting, product discovery and close invoke wave, joy and exit from actual controls
+ok 83 - ordinary greeting, product discovery and close invoke wave, joy and exit from actual controls
+  ---
+  duration_ms: 2.054583
+  type: 'test'
+  ...
+# Subtest: a resumed renderer restores its visible Pause control after a lightweight fallback
+ok 84 - a resumed renderer restores its visible Pause control after a lightweight fallback
+  ---
+  duration_ms: 2.276792
+  type: 'test'
+  ...
+# Subtest: delayed guide completion does not steal focus after the visitor moves elsewhere
+ok 85 - delayed guide completion does not steal focus after the visitor moves elsewhere
+  ---
+  duration_ms: 4.770875
+  type: 'test'
+  ...
+# Subtest: a late 3D script cannot start after its loader timed out
+ok 86 - a late 3D script cannot start after its loader timed out
+  ---
+  duration_ms: 4.128666
+  type: 'test'
+  ...
+# Subtest: Home mounts the same static stage immediately, then defers preparation while offscreen
+ok 87 - Home mounts the same static stage immediately, then defers preparation while offscreen
+  ---
+  duration_ms: 2.090791
+  type: 'test'
+  ...
+# Subtest: Home stage is reparented into conversation and restored without duplicating the character
+ok 88 - Home stage is reparented into conversation and restored without duplicating the character
+  ---
+  duration_ms: 1.045959
+  type: 'test'
+  ...
+# Subtest: dock dismissal stops the renderer, persists for the session and reveals the recall; a recall clears it, opens the dialog and returns her to the dock
+ok 89 - dock dismissal stops the renderer, persists for the session and reveals the recall; a recall clears it, opens the dialog and returns her to the dock
+  ---
+  duration_ms: 1.773125
+  type: 'test'
+  ...
+# Subtest: a session dismissal survives reload: the stage stays hidden, the recall shows, and no preparation runs
+ok 90 - a session dismissal survives reload: the stage stays hidden, the recall shows, and no preparation runs
+  ---
+  duration_ms: 1.342959
+  type: 'test'
+  ...
+# Subtest: an open house overlay (menu, scrim or another dialog) covers her and blocks the conversation
+ok 91 - an open house overlay (menu, scrim or another dialog) covers her and blocks the conversation
+  ---
+  duration_ms: 0.857041
+  type: 'test'
+  ...
+# (node:75724) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/package.json.
+# Subtest: a throwing sessionStorage (private mode) never breaks dismissal, recall or the walk-in timer
+ok 92 - a throwing sessionStorage (private mode) never breaks dismissal, recall or the walk-in timer
+  ---
+  duration_ms: 5.3305
+  type: 'test'
+  ...
+# Subtest: reduced-motion and Save-Data Home retain static portrait without requesting automatic 3D
+ok 93 - reduced-motion and Save-Data Home retain static portrait without requesting automatic 3D
+  ---
+  duration_ms: 1.492959
+  type: 'test'
+  ...
+# Subtest: hero conversation opener is restored after its stage leaves the closed dialog
+ok 94 - hero conversation opener is restored after its stage leaves the closed dialog
+  ---
+  duration_ms: 0.841958
+  type: 'test'
+  ...
+# Subtest: held canonical clips receive real quaternion motion on the same rig without altering source tracks
+ok 95 - held canonical clips receive real quaternion motion on the same rig without altering source tracks
+  ---
+  duration_ms: 77.173666
+  type: 'test'
+  ...
+# Subtest: gestures play once and hand back to idle on the mixer finished event; a repeated request keeps the running phase; the walk hands to the wave
+ok 96 - gestures play once and hand back to idle on the mixer finished event; a repeated request keeps the running phase; the walk hands to the wave
+  ---
+  duration_ms: 1.934
+  type: 'test'
+  ...
+# Subtest: the first failure owns its reason; a later fallback cannot overwrite it, and the load budget is 20 s
+ok 97 - the first failure owns its reason; a later fallback cannot overwrite it, and the load budget is 20 s
+  ---
+  duration_ms: 0.669333
+  type: 'test'
+  ...
+# Subtest: WebGL fallback teardown clears rig references and motion diagnostics return null
+ok 98 - WebGL fallback teardown clears rig references and motion diagnostics return null
+  ---
+  duration_ms: 0.670125
+  type: 'test'
+  ...
+# Subtest: presence hands the same portrait to the canvas once, with a paint boundary and no repeated fade on pause
+ok 99 - presence hands the same portrait to the canvas once, with a paint boundary and no repeated fade on pause
+  ---
+  duration_ms: 0.809375
+  type: 'test'
+  ...
+# Subtest: fallback cancels a pending reveal and does not become an endless loading state
+ok 100 - fallback cancels a pending reveal and does not become an endless loading state
+  ---
+  duration_ms: 0.544291
+  type: 'test'
+  ...
+# Subtest: reduced and data-saving presence remain truthful and cannot reveal a late canvas
+ok 101 - reduced and data-saving presence remain truthful and cannot reveal a late canvas
+  ---
+  duration_ms: 2.356375
+  type: 'test'
+  ...
+# Subtest: offscreen departure cancels a pending presence handoff and a later visible event can resume it
+ok 102 - offscreen departure cancels a pending presence handoff and a later visible event can resume it
+  ---
+  duration_ms: 2.17525
+  type: 'test'
+  ...
+# Subtest: failed guide uses translated template labels for its native Contact fallback
+ok 103 - failed guide uses translated template labels for its native Contact fallback
+  ---
+  duration_ms: 3.621958
+  type: 'test'
+  ...
+# Subtest: conversation exposes listening, synchronous thinking and truthful catalog failure states
+ok 104 - conversation exposes listening, synchronous thinking and truthful catalog failure states
+  ---
+  duration_ms: 1.681792
+  type: 'test'
+  ...
+# Subtest: native conversation records closed and document hidden independently of motion
+ok 105 - native conversation records closed and document hidden independently of motion
+  ---
+  duration_ms: 0.6645
+  type: 'test'
+  ...
+# Subtest: minimize retains conversation and header recall opens the same stage and transcript
+ok 106 - minimize retains conversation and header recall opens the same stage and transcript
+  ---
+  duration_ms: 0.722166
+  type: 'test'
+  ...
+# Subtest: quantized 60Hz timestamps sustain the intended active and idle cadence instead of falling to 20fps
+ok 107 - quantized 60Hz timestamps sustain the intended active and idle cadence instead of falling to 20fps
+  ---
+  duration_ms: 2.464541
+  type: 'test'
+  ...
+# Subtest: initial greeting starts at its beginning; subsequent answers follow the latest message
+ok 108 - initial greeting starts at its beginning; subsequent answers follow the latest message
+  ---
+  duration_ms: 0.701333
+  type: 'test'
+  ...
+# Subtest: Home load completion keeps the static guide until character pointer intent; repeated intent loads once
+ok 109 - Home load completion keeps the static guide until character pointer intent; repeated intent loads once
+  ---
+  duration_ms: 2.009667
+  type: 'test'
+  ...
+# Subtest: the dock walk-in is armed 4.5 s after load, counts a session entry, and stops after three unprompted entries
+ok 110 - the dock walk-in is armed 4.5 s after load, counts a session entry, and stops after three unprompted entries
+  ---
+  duration_ms: 2.215292
+  type: 'test'
+  ...
+# Subtest: the unprompted walk-in yields to reduced motion, Save-Data, a session dismissal, an open overlay and a hidden tab
+ok 111 - the unprompted walk-in yields to reduced motion, Save-Data, a session dismissal, an open overlay and a hidden tab
+  ---
+  duration_ms: 4.174125
+  type: 'test'
+  ...
+# Subtest: a failed guide script on a dock page converts the hidden recall into a visible contact link
+ok 112 - a failed guide script on a dock page converts the hidden recall into a visible contact link
+  ---
+  duration_ms: 0.935208
+  type: 'test'
+  ...
+# Subtest: rig tier follows the viewport and device memory before any model request
+ok 113 - rig tier follows the viewport and device memory before any model request
+  ---
+  duration_ms: 5.140959
+  type: 'test'
+  ...
+# Subtest: natural-motion GLB tiers match the ledger, require Draco + WebP, carry the 30-joint skin and six baked clips
+ok 114 - natural-motion GLB tiers match the ledger, require Draco + WebP, carry the 30-joint skin and six baked clips
+  ---
+  duration_ms: 25.055208
+  type: 'test'
+  ...
+# Subtest: the runtime preserves expressive natural-motion clips and relaxes only neutral locomotion elbows
+ok 115 - the runtime preserves expressive natural-motion clips and relaxes only neutral locomotion elbows
+  ---
+  duration_ms: 13.039959
+  type: 'test'
+  ...
+# Subtest: Home keyboard intent prepares only the Ask action after guide readiness and honors lightweight modes
+ok 116 - Home keyboard intent prepares only the Ask action after guide readiness and honors lightweight modes
+  ---
+  duration_ms: 2.841542
+  type: 'test'
+  ...
+# Subtest: cooperative skinned bounds exactly match Three and yield without publishing a partial box
+ok 117 - cooperative skinned bounds exactly match Three and yield without publishing a partial box
+  ---
+  duration_ms: 33.942833
+  type: 'test'
+  ...
+# Subtest: shader warmup owns cancellation and avoids r170 material polls after disposal
+ok 118 - shader warmup owns cancellation and avoids r170 material polls after disposal
+  ---
+  duration_ms: 4.497917
+  type: 'test'
+  ...
+# (node:75748) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: editor projection is stable and preserves unrelated extension settings
+ok 119 - editor projection is stable and preserves unrelated extension settings
+  ---
+  duration_ms: 7.501916
+  type: 'test'
+  ...
+# Subtest: runtime neutral/layout and semantic role changes reach the editor
+ok 120 - runtime neutral/layout and semantic role changes reach the editor
+  ---
+  duration_ms: 0.657292
+  type: 'test'
+  ...
+# Subtest: missing and cyclic token graphs fail rather than silently generating broken editor CSS
+ok 121 - missing and cyclic token graphs fail rather than silently generating broken editor CSS
+  ---
+  duration_ms: 1.010208
+  type: 'test'
+  ...
+# Subtest: house and collection action fills preserve normal-size label contrast
+ok 122 - house and collection action fills preserve normal-size label contrast
+  ---
+  duration_ms: 0.495875
+  type: 'test'
+  ...
+# Subtest: focus distinguishes light and dark surfaces and the layer order is strict
+ok 123 - focus distinguishes light and dark surfaces and the layer order is strict
+  ---
+  duration_ms: 0.152125
+  type: 'test'
+  ...
+# Subtest: collection action and legacy focus resolve from the local collection rather than inherited house rose
+ok 124 - collection action and legacy focus resolve from the local collection rather than inherited house rose
+  ---
+  duration_ms: 2.661959
+  type: 'test'
+  ...
+# Subtest: light context maintains text and disabled-control contrast on every declared surface
+ok 125 - light context maintains text and disabled-control contrast on every declared surface
+  ---
+  duration_ms: 1.299583
+  type: 'test'
+  ...
+# Subtest: every source spacing reference resolves so route padding cannot become invalid at computed-value time
+ok 126 - every source spacing reference resolves so route padding cannot become invalid at computed-value time
+  ---
+  duration_ms: 5.221208
+  type: 'test'
+  ...
+# (node:75749) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: visible hero defers video source assignment/load/play until actual responsive decode settles
+ok 127 - visible hero defers video source assignment/load/play until actual responsive decode settles
+  ---
+  duration_ms: 9.950291
+  type: 'test'
+  ...
+# Subtest: decoded but offscreen hero waits for viewport visibility without a fixed delay
+ok 128 - decoded but offscreen hero waits for viewport visibility without a fixed delay
+  ---
+  duration_ms: 3.489333
+  type: 'test'
+  ...
+# Subtest: reduced motion and Save-Data prevent media loads both initially and while decode is pending
+ok 129 - reduced motion and Save-Data prevent media loads both initially and while decode is pending
+  ---
+  duration_ms: 4.257041
+  type: 'test'
+  ...
+# Subtest: decode completion during pagehide cannot fetch or play; pageshow restores observer and motion
+ok 130 - decode completion during pagehide cannot fetch or play; pageshow restores observer and motion
+  ---
+  duration_ms: 1.049209
+  type: 'test'
+  ...
+# Subtest: failed or unsupported image decode does not permanently disable otherwise available hero motion
+ok 131 - failed or unsupported image decode does not permanently disable otherwise available hero motion
+  ---
+  duration_ms: 1.505708
+  type: 'test'
+  ...
+# Subtest: user pause while decode is pending prevents loading and late play cannot revive a hidden hero
+ok 132 - user pause while decode is pending prevents loading and late play cannot revive a hidden hero
+  ---
+  duration_ms: 1.000833
+  type: 'test'
+  ...
+# Subtest: selected native poster is published before decode without fetching offscreen motion
+ok 133 - selected native poster is published before decode without fetching offscreen motion
+  ---
+  duration_ms: 0.85425
+  type: 'test'
+  ...
+# Subtest: broken poster never covers the image fallback and video failure clears both layers
+ok 134 - broken poster never covers the image fallback and video failure clears both layers
+  ---
+  duration_ms: 2.006875
+  type: 'test'
+  ...
+# Subtest: missing selected source never fetches desktop fallback; image load publishes before decode
+ok 135 - missing selected source never fetches desktop fallback; image load publishes before decode
+  ---
+  duration_ms: 1.027667
+  type: 'test'
+  ...
+# Subtest: pending image bytes and image error keep picture fallback; video can still recover motion
+ok 136 - pending image bytes and image error keep picture fallback; video can still recover motion
+  ---
+  duration_ms: 0.866625
+  type: 'test'
+  ...
+# Subtest: missing image never selects an invented poster and retains native video availability
+ok 137 - missing image never selects an invented poster and retains native video availability
+  ---
+  duration_ms: 0.576958
+  type: 'test'
+  ...
+# Subtest: autoplay rejection keeps the early poster and offers a user-driven retry
+ok 138 - autoplay rejection keeps the early poster and offers a user-driven retry
+  ---
+  duration_ms: 0.98175
+  type: 'test'
+  ...
+# Subtest: first activated source error preserves native fallback and subsequent playing
+ok 139 - first activated source error preserves native fallback and subsequent playing
+  ---
+  duration_ms: 0.824167
+  type: 'test'
+  ...
+# Subtest: all activated source errors clean up a pending play without a video-level error
+ok 140 - all activated source errors clean up a pending play without a video-level error
+  ---
+  duration_ms: 1.103125
+  type: 'test'
+  ...
+# Subtest: hero reveals only a stable frame and rejects a late frame after suspension
+ok 141 - hero reveals only a stable frame and rejects a late frame after suspension
+  ---
+  duration_ms: 0.866041
+  type: 'test'
+  ...
+# Subtest: repeated hero bootstrap does not register a second controller
+ok 142 - repeated hero bootstrap does not register a second controller
+  ---
+  duration_ms: 0.713
+  type: 'test'
+  ...
+1..142
+# tests 142
+# suites 0
+# pass 142
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1213.012125
+PASS: custom collection and pre-order enqueue WooCommerce card actions outside is_woocommerce().
+PASS Known wrong privacy assignment resolves to published policy
+PASS Custom privacy assignment is preserved
+PASS Draft policy is never exposed
+PASS Password-protected policy is never exposed
+PASS Only stock sample is excluded; previous exclusions preserved
+PASS Product queries remain untouched
+PASS Admin queries remain untouched
+PASS Every retired V2 page route has one canonical destination
+PASS Retired internal menu links resolve to their canonical collection
+PASS Draft canonical targets leave legacy internal links untouched
+PASS Footer restores the canonical Kids Capsule collection link
+PASS Retired aliases preserve UTM attribution on staging redirects
+PASS Draft canonical targets fail closed without a redirect
+PASS all 33 card/PDP/thumbnail SKU bindings, exact-role review, duplicates, variations, schema and Store API isolation (offline contract only)
+PASS seven order states, native gateway hooks once, no duplicate details or charge assurance
+PASS cart totals, price/quantity/remove extensions, sold-individually bounds, backorder states, native lifecycle and nonce
+PASS native notice escaping, data, list semantics and live announcements
+PASS: Quick View sole ownership defers
+PASS: Direct native enqueue preserves execution
+PASS: Transitive extension dependency preserves execution
+PASS: Extension consuming Quick View dependency preserves execution
+PASS: Multiple dependency paths are inspected
+PASS: Unrelated dependency cycles terminate and allow deferral
+PASS: Cycle reaching native runtime preserves execution
+PASS: Absent Quick View owner preserves execution
+PASS: Owner without native dependency preserves execution
+PASS: Extension opt-out preserves execution
+PASS: PDP always preserves native execution
+PASS: Native after-code preserves eager execution
+PASS: CDN host preserves eager execution
+PASS: Foreign port preserves eager execution
+PASS: Foreign scheme preserves eager execution
+PASS: Relative same-origin script can defer
+PASS: Absolute same-origin default port can defer
+PASS: Protocol-relative same-origin script can defer
+PASS: Protocol-relative CDN preserves eager execution
+PASS exclusive groups and native search boundary
+
+> skyyrose-flagship-2-theme@2.5.5 check:tokens
+> node ../../tools/v2-runtime/sync-token-contract.cjs --check
+
+PASS runtime/editor colors, layout, type roles, spacing, controls, focus, motion and layer contract
+(node:75852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> skyyrose-flagship-2-theme@2.5.5 check:card-renditions
+> python3 ../../tools/v2-runtime/build-card-renditions.py --check
+
+Verified responsive copies of 33 approved card fronts; originals unchanged
+..................
+----------------------------------------------------------------------
+Ran 18 tests in 0.083s
+
+OK
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+Verified responsive copies of 1 approved card fronts; originals unchanged
+Built responsive copies of 1 approved card fronts; originals unchanged
+PASS canonical card responsive authority, native commerce, lazy defaults, priority boundaries, escaping and exception restoration
+PASS premium card simple/sale/preorder state derivation and dialog semantics
+PASS reviewed garment source/SKU/hash/dimensions, simple polygons and holes, fail-closed fallback, exact identity and native commerce preservation
+PASS native first-card priority and secondary-loop isolation
+PASS Shop native query boundaries, hostile inputs, inactive Woo, URL state, empty categories, stock AND grouping and no-JS sorting
+PASS native archive garment-front preload order, nonmutation, deduplication and 15 exclusion cases
+PASS native PDP excerpt once-only placement, disabled callback, extension order and exception restoration
+PASS actual four collection compositions: zero atmosphere chapters; adult editorial/shopping/edit preserved; Kids shop anchor/no invented editorial or rail; source assets retained
+PASS Kids and immersive source consumers: exact-SKU approved fronts, zero assigned-media fallback
+PASS shared collection routes, explicit assignments, automatic child routes and unrelated route isolation
+PASS omitted/partial collection labels and explicit escaped names
+PASS [real]: Restoration receipt exists in the theme
+PASS [real]: Hero bytes are the founder-ruled still
+PASS [real]: editorial-hero.php call (no role) renders the hero
+PASS [real]: homepage_hero role renders the hero
+PASS [real]: Registered housemark still admitted under the new pin
+PASS [real]: Registered font still admitted under the new pin
+PASS [fixture-baseline]: Restoration receipt exists in the theme
+PASS [fixture-baseline]: Hero bytes are the founder-ruled still
+PASS [fixture-baseline]: editorial-hero.php call (no role) renders the hero
+PASS [fixture-baseline]: homepage_hero role renders the hero
+PASS [fixture-baseline]: Registered housemark still admitted under the new pin
+PASS [fixture-baseline]: Registered font still admitted under the new pin
+PASS [receipt-bytes]: Tampered hero authority fails closed
+PASS [receipt-bytes]: Tampered hero authority fails closed for its role
+PASS [receipt-missing]: Tampered hero authority fails closed
+PASS [receipt-missing]: Tampered hero authority fails closed for its role
+PASS [receipt-symlink]: Tampered hero authority fails closed
+PASS [receipt-symlink]: Tampered hero authority fails closed for its role
+PASS [binding-sha]: Tampered hero authority fails closed
+PASS [binding-sha]: Tampered hero authority fails closed for its role
+PASS [receipt-content]: Tampered hero authority fails closed
+PASS [receipt-content]: Tampered hero authority fails closed for its role
+PASS [hero-drift]: Tampered hero authority fails closed
+PASS [hero-drift]: Tampered hero authority fails closed for its role
+PASS [canonical-byte]: Changed canonical inventory blocks the hero
+PASS [canonical-byte]: Changed canonical inventory blocks every canonical asset
+PASS [wrong-role]: Hero cannot become a product card
+PASS [wrong-role]: Hero cannot become a collection hero
+PASS [claims-sku]: Hero cannot claim a SKU
+PASS [claims-sku]: Hero cannot claim a SKU without a role
+PASS [roles-extended]: Tampered hero authority fails closed
+PASS [roles-extended]: Tampered hero authority fails closed for its role
+HERO GATE: PASS (12 modes)
+PASS all 33 card/PDP/thumbnail SKU bindings, exact-role review, duplicates, variations, schema and Store API isolation (offline contract only)
+PASS pinned native WP7.1/Woo11.1 gallery: 33 exact cards / 33 PDP fronts (18 reviewed + 15 founder grants), responsive originals/reset, candidate exclusion, scoped hooks, no video promotion, exception cleanup, complete variation families and native purchase truth (offline).
+PASS all 33 exact-SKU card fronts and historical approval isolation; separate PDP fronts: 33 (local inventory only)
+PASS: New independently reviewed exact SKU and role allowed
+PASS: Public image cache key is bound to the verified bytes
+PASS: Stale cache versions normalize to current verified bytes
+PASS: Cache normalization is idempotent
+PASS: Native attachment source normalizes cache identity and retains dimensions
+PASS: Accepted CSS backgrounds carry the exact byte cache identity
+PASS: Wrong SKU blocked
+PASS: Wrong view role blocked
+PASS: Historical approval cannot reopen retired media
+PASS: External Woo attachment fallback blocked
+PASS: Exact inventoried housemark allowed
+PASS: Exact unchanged V2 homepage art restored under separate authority
+PASS: Homepage art cannot become a product card
+PASS: Homepage art cannot claim a SKU
+PASS: Changed homepage restoration authority blocked
+PASS: Changed homepage art pixels blocked
+PASS: Unregistered canonical label cannot exempt imagery
+PASS: Legacy hash blocked even when relabelled housemark
+PASS: Reject hash
+PASS: Reject review
+PASS: Reject producer
+PASS: Reject origin
+PASS: Reject path
+PASS: Independent receipt rejects altered roles
+PASS: Independent receipt rejects altered skus
+PASS: Independent receipt rejects altered collections
+PASS: Independent receipt rejects altered production_id
+PASS: Independent receipt rejects altered producer
+PASS: Scalar binding fails closed
+PASS: Object binding fails closed for roles
+PASS: Object binding fails closed for skus
+PASS: Object binding fails closed for collections
+PASS: Raw image, srcset, poster, source and CSS background blocked
+PASS: Reviewed media and scripts retained
+PASS: Variation full image cannot reopen attachment
+PASS: Live bytes drift blocks display
+PASS 173 actual delivery copies: original review inheritance, source/encoding/manifest/byte/dimension bounds; final real card/PDP/variation/preload responsive families; malformed/cross-SKU negatives (offline only)
+{
+    "status": "PASS",
+    "additional_roles": {
+        "pdp_on_model_front": 15,
+        "collection_hero": 4,
+        "collection_story": 4,
+        "merchandise_scene": 3
+    },
+    "current_pdp_fronts": 33,
+    "negative_cases": 148
+}
+PASS: Registry carries the 11 collection slots and no Kids merchandise slot
+PASS: Every black-rose media URL is keyed ?v=<sha256 of served bytes>
+PASS: Every collections media URL is keyed ?v=<sha256 of served bytes>
+PASS: Every home media URL is keyed ?v=<sha256 of served bytes>
+PASS: /collections/black-rose/ origin story renders the br-004 collection_story binding
+PASS: Black Rose story srcset is the keyed br-004 rendition family
+PASS: Retired lookbook caption is gone
+PASS: /collections/ chapters render the four collection_hero bindings in order
+PASS: Only the first index chapter is eager/high priority
+PASS: Index srcset family is keyed and single-SKU for sg-009
+PASS: Index srcset family is keyed and single-SKU for br-001
+PASS: Index srcset family is keyed and single-SKU for lh-004
+PASS: Index srcset family is keyed and single-SKU for kids-002
+PASS: Index chapter titles keep the collection lockup image (template source; the gate decides delivery)
+PASS: Index preload href is byte-identical to the eager image src
+PASS: Index preload imagesrcset/imagesizes equal the eager image srcset/sizes
+PASS: Homepage worlds rail renders Signature/Black Rose heroes and the Love Hurts story
+PASS: Worlds rail renders one approved still per world
+PASS: Homepage chapters keep their destination-hero motion binding
+PASS: Homepage preload href equals the keyed house-art src
+PASS all collection-imagery render contracts
+PASS offline pre-order render: complete fifteen-item assortment, membership variation, distinct groups, native identities/terms, role/cast/collection eligibility, malformed media and zero legacy fallback
+
+> skyyrose-flagship-2-theme@2.5.5 check:font-delivery
+> python3 ../../tools/v2-runtime/build-font-delivery.py --check
+
+Verified Archivo default-width delivery; full weights and source preserved
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 6.410s
+
+OK
+Built Archivo default-width delivery; full weights and source preserved
+Built Archivo default-width delivery; full weights and source preserved
+Verified Archivo default-width delivery; full weights and source preserved
+Built Archivo default-width delivery; full weights and source preserved
+Built Archivo default-width delivery; full weights and source preserved
+Built Archivo default-width delivery; full weights and source preserved
+Built Archivo default-width delivery; full weights and source preserved
+Built Archivo default-width delivery; full weights and source preserved
+
+> skyyrose-flagship-2-theme@2.5.5 check:frame-delivery
+> python3 ../../tools/v2-runtime/build-frame-delivery.py --check
+
+Verified 4 frame copies; originals unchanged
+.............
+----------------------------------------------------------------------
+Ran 13 tests in 10.761s
+
+OK
+PASS frame delivery valid
+PASS frame delivery ineligible
+PASS frame delivery current-eligibility
+PASS frame delivery missing
+PASS frame delivery source
+PASS frame delivery derived
+PASS frame delivery schema
+PASS frame delivery path
+PASS frame delivery dimensions
+PASS frame delivery malformed
+PASS frame delivery symlink
+PASS frame delivery ancestor
+PASS frame delivery narrow-ineligible
+PASS frame delivery narrow-missing
+PASS frame delivery narrow-derived
+PASS frame delivery narrow-path
+PASS frame delivery narrow-dimensions
+PASS frame delivery narrow-symlink
+PASS merchant-template preservation, idempotency, and header-independent contact throttle
+Validated 773 runtime package entries; SHA-256 954b25b952733b51c592acb2819bdcdb9140d8d607a38507543f5329819a637a
