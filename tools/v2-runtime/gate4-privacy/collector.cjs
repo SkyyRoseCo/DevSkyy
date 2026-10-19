@@ -38,7 +38,7 @@ function reduce(journal) {
     const finished = get('loadingFinished'); const failed = get('loadingFailed');
     const info = response[0]?.response;
     const responseValid = info && typeof info === 'object' && !Array.isArray(info) && typeof info.url === 'string' && Number.isInteger(info.status) && typeof info.mimeType === 'string' && ['fromDiskCache','fromPrefetchCache','fromServiceWorker'].every(key => !(key in info) || typeof info[key] === 'boolean');
-    const metadata = responseValid ? info : {}; 
+    const metadata = responseValid ? info : {};
     const row = { schema: 'skyyrose.network-row.v1', capture_complete: journal.closed === true && violations.length === 0 && Boolean(responseValid), truncated: journal.truncated, redirects_complete: request.length === 1 && !request[0].redirectResponse, request_count: request.length, finished_count: finished.length, failed_count: failed.length, response_count: response.length, request_extra_count: extra.length, response_extra_count: rextra.length, has_response_extra: response[0]?.hasExtraInfo, from_disk_cache: metadata.fromDiskCache === true, from_prefetch_cache: metadata.fromPrefetchCache === true, from_service_worker: metadata.fromServiceWorker === true, router_present: Boolean(metadata.serviceWorkerRouterInfo), request_headers: extra[0]?.headers };
     const classified = classifyRow(row);
     const headers = rextra[0]?.headers;
