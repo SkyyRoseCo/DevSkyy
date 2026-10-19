@@ -1,0 +1,29 @@
+{
+  "schema": "skyyrose.private-hpos-v1-continuation.v1",
+  "status": "PASS_PRIVATE_HPOS_V1_EXECUTION_FINAL_REVIEW_PENDING",
+  "authentication": "NOT_APPLICABLE_SYNTHETIC_OFFLINE_FIXTURE",
+  "executed_source_commit": "7632a0798eb60ffdd5e652b88e5fa099d4712b72",
+  "run": "1792441452292547000",
+  "evidence_index": {
+    "sha256": "be4946b9865963b784c986316c53eb0bd122839b9cf3f55eaa5e3891eeb2e4a9",
+    "bytes": 96210
+  },
+  "qualified_retained_files": 35651,
+  "prior_qualified_files_verified_unchanged": 37031,
+  "unchanged_executable_php_files": 20878,
+  "prior_cpt_packet": "tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/continuation-manifest.json",
+  "private_synthetic_orphan_ownership": "NOT_ESTABLISHED_UNTOUCHED_NO_LIVE_ORPHAN_INFERENCE",
+  "holds": [
+    "Live conversion/sync/config/credentials/orders/payments/backup/restore",
+    "Push/merge/deploy/activation/publication/cutover",
+    "Paid/provider/media generation/GLB promotion"
+  ],
+  "limits": [
+    "Seven-plugin PHP8.5.6/MariaDB13 fresh synthetic HPOS-native orders only",
+    "Historical producer exact function; no real historical order or installed33-plugin parity",
+    "Native PHP existing-order fakegateway only; no HTTP/browser/session or real gateway qualification",
+    "Stock render/StoreAPI/fakeprocessor and bare-handler probe remain separate",
+    "No populated synchronization lifecycle rerun or prior packet reclassification",
+    "Three named notice refusals admit only attributed native gateway/date saves; customer-state writes retained, not physical NOOP"
+  ]
+}

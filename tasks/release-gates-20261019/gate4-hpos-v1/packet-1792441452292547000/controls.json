@@ -1,0 +1,372 @@
+{
+  "historical-payload-controls.json": {
+    "status": "PASS_RETAINED_PAYLOAD_COPY_CONTROLS",
+    "controls": [
+      {
+        "mutation": "bool-to-int",
+        "status": "PASS_REFUSED_HISTORY_CHANGE"
+      },
+      {
+        "mutation": "duplicate-removed",
+        "status": "PASS_REFUSED_HISTORY_CHANGE"
+      },
+      {
+        "mutation": "order-metadata-added",
+        "status": "PASS_REFUSED_HISTORY_CHANGE"
+      },
+      {
+        "mutation": "stock-row-added",
+        "status": "PASS_REFUSED_HISTORY_CHANGE"
+      }
+    ]
+  },
+  "typed-comparison-controls.json": {
+    "status": "PASS_NATIVE_PERSISTENCE_ENCODING_DECODING_TYPED_COMPARISON",
+    "controls": [
+      {
+        "mutation": "bool-to-int",
+        "status": "PASS_REFUSED_TYPED_NATIVE_ROUNDTRIP"
+      },
+      {
+        "mutation": "float-to-int",
+        "status": "PASS_REFUSED_TYPED_NATIVE_ROUNDTRIP"
+      }
+    ],
+    "negative_multiplicity_refused": true
+  },
+  "address-index-negative-controls.json": {
+    "status": "PASS_PAYLOAD_VALIDATOR_CONTROLS",
+    "authentication": "NOT_APPLICABLE",
+    "controls": [
+      {
+        "mutation": "changed-value",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD"
+      },
+      {
+        "mutation": "duplicate-value",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD"
+      },
+      {
+        "mutation": "missing-row",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD"
+      },
+      {
+        "mutation": "changed-public-value",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD"
+      },
+      {
+        "mutation": "duplicate-public-key",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD"
+      }
+    ],
+    "scope": "Modified copies of actual native fresh-read payload; no new native database corruption controls"
+  },
+  "native-gateway-selection": {
+    "v1-missing-id": {
+      "attribution": {
+        "status": "PASS_NAMED_REFUSAL_NATIVE_GATEWAY_SELECTION",
+        "label": "v1-missing-id",
+        "order_id": 13,
+        "writers": [
+          {
+            "query_index": 0,
+            "positions": [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ]
+          }
+        ],
+        "physical_noop": false,
+        "scope": "Exact named refusal prevents processor/payment/stock changes; native gateway/date save and customer-state side effects remain explicit"
+      },
+      "controls": [
+        {
+          "mutation": "wrong-id",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "out-of-window",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "unexpected-order-dml",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "wrong-native-caller",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "paid-status",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "product-stock",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "processor-entry",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "missing-save",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "changed-source-pin",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "legacy-order-post-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "legacy-product-meta-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "unknown-table-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "missing-handler-frame",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "missing-order-save-frame",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "reordered-save-chain",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "unprefixed-cross-table-customer-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "magic-call-substitution",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "changed-gateway-column-omitted",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        }
+      ],
+      "execution_bound_audit": {
+        "path": ".artifacts/release-gates-20261019/gate4-populated/run-1792441452292547000/gateway-selection-v1-missing-id.json",
+        "sha256": "cabe583c194531c0ecbc7895b5e5c8bee146829de5f12811c17bb9203e1330fe",
+        "bytes": 40633
+      }
+    },
+    "v1-ambiguous-sku": {
+      "attribution": {
+        "status": "PASS_NAMED_REFUSAL_NATIVE_GATEWAY_SELECTION",
+        "label": "v1-ambiguous-sku",
+        "order_id": 13,
+        "writers": [
+          {
+            "query_index": 0,
+            "positions": [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ]
+          }
+        ],
+        "physical_noop": false,
+        "scope": "Exact named refusal prevents processor/payment/stock changes; native gateway/date save and customer-state side effects remain explicit"
+      },
+      "controls": [
+        {
+          "mutation": "wrong-id",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "out-of-window",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "unexpected-order-dml",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "wrong-native-caller",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "paid-status",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "product-stock",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "processor-entry",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "missing-save",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "changed-source-pin",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "legacy-order-post-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "legacy-product-meta-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "unknown-table-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "missing-handler-frame",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "missing-order-save-frame",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "reordered-save-chain",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "unprefixed-cross-table-customer-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "magic-call-substitution",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "changed-gateway-column-omitted",
+          "status": "NOT_APPLICABLE_ALREADY_SELECTED_GATEWAY"
+        }
+      ],
+      "execution_bound_audit": {
+        "path": ".artifacts/release-gates-20261019/gate4-populated/run-1792441452292547000/gateway-selection-v1-ambiguous-sku.json",
+        "sha256": "905ba8f181d404d15aa1bcf4725f734d438fcd6aa0d33fb6f9787a92baa24e72",
+        "bytes": 40478
+      }
+    },
+    "active-journal": {
+      "attribution": {
+        "status": "PASS_NAMED_REFUSAL_NATIVE_GATEWAY_SELECTION",
+        "label": "active-journal",
+        "order_id": 14,
+        "writers": [
+          {
+            "query_index": 0,
+            "positions": [
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ]
+          }
+        ],
+        "physical_noop": false,
+        "scope": "Exact named refusal prevents processor/payment/stock changes; native gateway/date save and customer-state side effects remain explicit"
+      },
+      "controls": [
+        {
+          "mutation": "wrong-id",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "out-of-window",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "unexpected-order-dml",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "wrong-native-caller",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "paid-status",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "product-stock",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "processor-entry",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "missing-save",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "changed-source-pin",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "legacy-order-post-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "legacy-product-meta-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "unknown-table-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "missing-handler-frame",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "missing-order-save-frame",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "reordered-save-chain",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "unprefixed-cross-table-customer-write",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "magic-call-substitution",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        },
+        {
+          "mutation": "changed-gateway-column-omitted",
+          "status": "PASS_REFUSED_MODIFIED_RETAINED_GATEWAY_AUDIT"
+        }
+      ],
+      "execution_bound_audit": {
+        "path": ".artifacts/release-gates-20261019/gate4-populated/run-1792441452292547000/gateway-selection-active-journal.json",
+        "sha256": "a18d379b2f9a3edece6db873b3c6ae33f58c62665d8ef980ecc8354daaf9c7fb",
+        "bytes": 40641
+      }
+    }
+  }
+}

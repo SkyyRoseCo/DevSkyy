@@ -1,0 +1,13 @@
+# Additive HPOS-native V1 payment evidence
+
+Actual synthetic native execution passed at source `7632a0798eb60ffdd5e652b88e5fa099d4712b72`, run `1792441452292547000`. Independent final review is recorded separately after freezing.
+
+Seven native orders were created directly under HPOS before synthetic product conversion. Twelve V1 request observations cover success/duplicate, failure/retry, bad nonce/key, malformed identity, ambiguous SKU, active journal, stock refusal/replenishment/retry and the separate bare-handler stock probe. Fresh native objects and matching raw HPOS rows were checked before conversion and at completion; every request verified actual HPOS authority/datastore before and after.
+
+Three named refusals (missing identity, ambiguous SKU and active journal) retain the native handler's gateway/title/date save before notice rejection. Exact raw rows, SQL values, save-window, pinned native call ancestry and all other order/product/history state are checked; customer/session/options writes are retained and these cases are not physical NOOPs. Each has 18 modified-audit controls: 18 refused, 17 refused plus one explicitly not applicable because the gateway was already selected, and 18 refused respectively. These controls mutate retained evidence and are not 54 live database attacks.
+
+Strict historical item/order metadata, typed values, duplicate multiplicity, promise identity and native payment/stock assertions passed. Four modified-payload history controls, two actual typed persistence controls and five modified address-index payload controls retain their separate scope. Prior 37031 qualified files remained unchanged; 20878 executable PHP files match pretest bytes/size/mode. Owned services stopped and cleanup errors are empty.
+
+The prior CPT V1 packet and this separate HPOS V1 packet provide the two local native storage combinations. This addition does not rerun or reclassify the populated synchronization lifecycle. It uses seven plugins/PHP8.5.6/MariaDB13, not the installed33-plugin/PHP8.4.26/MariaDB11.8.9 environment. No real historical-order, browser/HTTP/session, installed parity or real-gateway qualification follows. The stock render, StoreAPI, fake-gateway check and bare-handler observation remain distinct.
+
+Installed package/config/runtime recovery gaps and private synthetic orphan insertion ownership remain open. The private1290/1292 gap is not evidence of a live orphan or proof an unchanged-catalog launch requires conversion. All live conversion, configuration, payment, provider, deployment and publication holds remain. Authentication is not applicable to this synthetic offline fixture.

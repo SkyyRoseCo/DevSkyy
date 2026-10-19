@@ -1,0 +1,22 @@
+{
+  "runtime": {
+    "path": ".artifacts/release-gates-20261019/gate4-hpos-v1/resolved-runtime-1792441452292547000.json",
+    "sha256": "55a5c615253cfd70d51d07eda56e794eb31c6d03a96dcdbc6722debbd77ffe1d",
+    "bytes": 2868
+  },
+  "native_proofs": {
+    "seed-pre-conversion": {
+      "path": "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/hpos-object-proof-seed-pre-conversion.json",
+      "sha256": "115c7561751010e33d47d90437abb63e2989d38ba46bcd224bc09b9bca07e03a",
+      "bytes": 68901
+    },
+    "final-paid-and-refused": {
+      "path": "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/hpos-object-proof-final-paid-and-refused.json",
+      "sha256": "85bd6026b66143be364f29b1489a07b0b01136fa3772e1e5a11e1471c3066d89",
+      "bytes": 70576
+    }
+  },
+  "payment_requests": 12,
+  "prior_qualified_files_verified_unchanged": 37031,
+  "unchanged_executable_php_files": 20878
+}

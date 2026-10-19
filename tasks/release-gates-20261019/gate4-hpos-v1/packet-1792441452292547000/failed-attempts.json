@@ -1,0 +1,49 @@
+{
+  "attempts": [
+    {
+      "run": "1792438938861157000",
+      "status": "FAIL_EXECUTION",
+      "reason": "PHP_EMPTY_ARRAY_ENCODING_ASSUMPTION",
+      "results": {
+        "path": "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/results.json",
+        "sha256": "1e22a9cd3ac4d6a6e3bedabdb99331d54669d0c4f41ab7dbb85dee3ed2b114fd",
+        "bytes": 4039
+      }
+    },
+    {
+      "run": "1792439139391354000",
+      "status": "FAIL_EXECUTION",
+      "reason": "NATIVE_GATEWAY_SELECTION_IS_NOT_PHYSICAL_NOOP",
+      "results": {
+        "path": "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/results.json",
+        "sha256": "f8cf9c8efc4fb90e70eda4ac1a12959bf9e2a0806906605ca1251274c59c8600",
+        "bytes": 78475
+      }
+    },
+    {
+      "run": "1792440249562506000",
+      "status": "FAIL_EXECUTION",
+      "reason": "CODE_COPY_ENOSPC_BEFORE_DATABASE",
+      "results": {
+        "path": "tasks/release-gates-20261019/gate4-populated/run-1792440249562506000/results.json",
+        "sha256": "3d2113a7e56a3a686d9f86d941a5ddad61a7b4ab107a4d38f4231f76eaf14989",
+        "bytes": 5824
+      }
+    },
+    {
+      "run": "1792440746936585000",
+      "status": "FAIL_EXECUTION",
+      "reason": "OFFLINE_VALIDATOR_ASSUMED_MAGIC_CALL_INSTEAD_OF_NATIVE_EXPLICIT_UPDATE",
+      "results": {
+        "path": "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/results.json",
+        "sha256": "d91dbe4200713ab2e4746cbfeef56dc43eeaedc0ba8e405dd8b658ec014f0062",
+        "bytes": 79341
+      }
+    }
+  ],
+  "retention": {
+    "path": ".artifacts/release-gates-20261019/gate4-hpos-v1/development-retention-1792441452292547000.json",
+    "sha256": "2479e5079b7929593f8e1a56739dd24bd2b518118f2fb238fc1e7be27c86f545",
+    "bytes": 26719
+  }
+}

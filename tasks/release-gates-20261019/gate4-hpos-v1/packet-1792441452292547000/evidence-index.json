@@ -1,0 +1,1798 @@
+{
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/freeze_packet.py": {
+    "sha256": "d5ed408d7c952bb205f78113f0e06611f093736d038189e6816aae26e8eefbc4",
+    "bytes": 19642
+  },
+  "tasks/release-gates-20261019/gate4-hpos-v1/PLAN.md": {
+    "sha256": "69f4d1a9275da335fc64bd3d05fefb11fc6139fdf6094e14fd863ab44aa625f9",
+    "bytes": 6683
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/qualified-retention-1792441452292547000.json": {
+    "sha256": "6e01027177a604f82d5919ceae760d89f745ed9d6637a3706ea1e739b94e3a66",
+    "bytes": 10915570
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-provenance-1792441452292547000.json": {
+    "sha256": "757ce4e30844cc763e062243410c72a5539341761fe2c8973e62d49f5cc68c0e",
+    "bytes": 8023
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/development-retention-1792441452292547000.json": {
+    "sha256": "2479e5079b7929593f8e1a56739dd24bd2b518118f2fb238fc1e7be27c86f545",
+    "bytes": 26719
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/resolved-runtime-1792441452292547000.json": {
+    "sha256": "55a5c615253cfd70d51d07eda56e794eb31c6d03a96dcdbc6722debbd77ffe1d",
+    "bytes": 2868
+  },
+  ".artifacts/release-gates-20261019/gate4-populated/qualified-retention-1792437370289798000.json": {
+    "sha256": "34b5b67bb5df19f1e4b27e228e20add50a69a85833f0024af52a3bfb74eee93d",
+    "bytes": 11286087
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/offline-attribution-1792440746936585000-1792441436020564000.json": {
+    "sha256": "159927393c4332bd8a0279e23aac3727a8ad2d678ea7c99054859ac54b2c8d54",
+    "bytes": 4588
+  },
+  "tasks/release-gates-20261019/gate4-hpos-v1/packet-1792441452292547000/failed-attempts.json": {
+    "sha256": "b7aa164a0eab1b63ebe33f580e5921f3099371d17baf0b44dddf9400dceb5ea3",
+    "bytes": 1796
+  },
+  "tasks/release-gates-20261019/gate4-hpos-v1/packet-1792441452292547000/controls.json": {
+    "sha256": "bd3aa5af5325fe1afe36318576613b0f7a6ed5c12e1c3906f511619a27ddbf88",
+    "bytes": 11868
+  },
+  "tasks/release-gates-20261019/gate4-hpos-v1/packet-1792441452292547000/results.json": {
+    "sha256": "7936fc12e5d3bf0e943bfa2b4cc6a67e794c5e96703033699417ef16ebdaca95",
+    "bytes": 176212
+  },
+  "tasks/release-gates-20261019/gate4-hpos-v1/packet-1792441452292547000/runtime-and-native-proofs.json": {
+    "sha256": "af6a49a4ca6a40d1d43edf82ed23abc9648e927080980b1566a564e488ca1dce",
+    "bytes": 921
+  },
+  "tasks/release-gates-20261019/gate4-hpos-v1/packet-1792441452292547000/README.md": {
+    "sha256": "06beca47637e357e60b99e4793d9c2483f05a35e8bfae73a670860c1b955f5f8",
+    "bytes": 2651
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tools/v2-runtime/test_gate4_hpos_v1.py": {
+    "sha256": "75bbe6c2e88c1e380883adb5f0d37e9bc8684d2af99c64fbf129dffcf7893728",
+    "bytes": 27384
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tools/v2-runtime/test_gate4_populated.py": {
+    "sha256": "ffa6ab297081a03ff5a03824294d46c0931e9a1893e9a6ac074c9b5f9f8287ae",
+    "bytes": 54558
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/continuation-manifest.json": {
+    "sha256": "decc5b48f8edf93fcf54ecda1bd8609dea73d9b1eb59004653072214f69a17f8",
+    "bytes": 1661
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/evidence-index.json": {
+    "sha256": "62d25b07d8e6aaa847962b20724123a2f120b9c489e245dc46adef0ac1de0fbc",
+    "bytes": 992688
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tools/v2-runtime/gate4_restore_local.py": {
+    "sha256": "cbf07a5f180acd340f6a7dd482999d2137b67207b47db9d81cdf71a9e4391663",
+    "bytes": 30024
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tools/v2-runtime/gate4-hpos-v1-proof.php": {
+    "sha256": "03e684a27501e23e64cda08f83eb5512911878e0dfda5c27cd47a6c1e3b5ea81",
+    "bytes": 2199
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tools/v2-runtime/gate4-hpos-v1-pay-observer.php": {
+    "sha256": "495c5f8b8192f48a109e15c3c48c7c72fcfe2a1af05e781bf5572a0a06584822",
+    "bytes": 5045
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tools/v2-runtime/gate4_gateway_selection.py": {
+    "sha256": "a34b88cbd533b9fb17253e31dce34f3782a7341429f1d9d8009f1c2d78ab3dea",
+    "bytes": 16263
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tools/v2-runtime/gate4-populated-fixture.php": {
+    "sha256": "1dbd652be99e2190029f8a952ff47a979d2f6c04e98709c3197f8becf9b85eaa",
+    "bytes": 39402
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tools/v2-runtime/gate4_refund_attribution.py": {
+    "sha256": "3f8e704d50ad72121fb4c53cf13a6e83a6ee30c688df43ae01b27db41886838c",
+    "bytes": 11441
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tools/v2-runtime/variation-migration-core-populated.php": {
+    "sha256": "58693ec3a80fb530ccdf14ab090e41c88ddcba9e9f1febb2b10eabdfca46bd02",
+    "bytes": 27450
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/logo-registry.json": {
+    "sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+    "bytes": 905116
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/skyyrose/core/product.py": {
+    "sha256": "65b3f2e01b756676661d3964b19d7dad7db3359973fa1b7738819796d17bf55b",
+    "bytes": 20189
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/.artifacts/release-gates-20261019/gate4-populated/historical-producer-function.php": {
+    "sha256": "b7dd7bc02c3167803f986d05e13975e40e064cd4ddeb23ea6081b4192e34a42a",
+    "bytes": 827
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/.artifacts/release-gates-20261019/gate4-populated/historical-producer-blob.php": {
+    "sha256": "34b8c9826741becf3d86a4eae1de0209faf8778d213a5bb7abe3271c17331ff8",
+    "bytes": 23230
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/.artifacts/release-gates-20261019/gate4-populated/historical-producer-provenance.json": {
+    "sha256": "6edd944ed61a9356e735a1afce9f26001e37c6695b234967d5817141d3217a12",
+    "bytes": 438
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/7632a0798eb60ffdd5e652b88e5fa099d4712b72/tasks/release-gates-20261019/gate4-hpos-v1/PLAN.md": {
+    "sha256": "69f4d1a9275da335fc64bd3d05fefb11fc6139fdf6094e14fd863ab44aa625f9",
+    "bytes": 6683
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/tools/v2-runtime/test_gate4_hpos_v1.py": {
+    "sha256": "6ba2a93fb5e4375b55841f6c8d8e663747703062bdb5af977b5252354cabee59",
+    "bytes": 21523
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/tools/v2-runtime/test_gate4_populated.py": {
+    "sha256": "ffa6ab297081a03ff5a03824294d46c0931e9a1893e9a6ac074c9b5f9f8287ae",
+    "bytes": 54558
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/continuation-manifest.json": {
+    "sha256": "decc5b48f8edf93fcf54ecda1bd8609dea73d9b1eb59004653072214f69a17f8",
+    "bytes": 1661
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/evidence-index.json": {
+    "sha256": "62d25b07d8e6aaa847962b20724123a2f120b9c489e245dc46adef0ac1de0fbc",
+    "bytes": 992688
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/tools/v2-runtime/gate4_restore_local.py": {
+    "sha256": "cbf07a5f180acd340f6a7dd482999d2137b67207b47db9d81cdf71a9e4391663",
+    "bytes": 30024
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/tools/v2-runtime/gate4-hpos-v1-proof.php": {
+    "sha256": "03e684a27501e23e64cda08f83eb5512911878e0dfda5c27cd47a6c1e3b5ea81",
+    "bytes": 2199
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/tools/v2-runtime/gate4-populated-fixture.php": {
+    "sha256": "1dbd652be99e2190029f8a952ff47a979d2f6c04e98709c3197f8becf9b85eaa",
+    "bytes": 39402
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/tools/v2-runtime/gate4_refund_attribution.py": {
+    "sha256": "3f8e704d50ad72121fb4c53cf13a6e83a6ee30c688df43ae01b27db41886838c",
+    "bytes": 11441
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/tools/v2-runtime/variation-migration-core-populated.php": {
+    "sha256": "58693ec3a80fb530ccdf14ab090e41c88ddcba9e9f1febb2b10eabdfca46bd02",
+    "bytes": 27450
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/logo-registry.json": {
+    "sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+    "bytes": 905116
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/skyyrose/core/product.py": {
+    "sha256": "65b3f2e01b756676661d3964b19d7dad7db3359973fa1b7738819796d17bf55b",
+    "bytes": 20189
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/.artifacts/release-gates-20261019/gate4-populated/historical-producer-function.php": {
+    "sha256": "b7dd7bc02c3167803f986d05e13975e40e064cd4ddeb23ea6081b4192e34a42a",
+    "bytes": 827
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/.artifacts/release-gates-20261019/gate4-populated/historical-producer-blob.php": {
+    "sha256": "34b8c9826741becf3d86a4eae1de0209faf8778d213a5bb7abe3271c17331ff8",
+    "bytes": 23230
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/.artifacts/release-gates-20261019/gate4-populated/historical-producer-provenance.json": {
+    "sha256": "6edd944ed61a9356e735a1afce9f26001e37c6695b234967d5817141d3217a12",
+    "bytes": 438
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/9e9a1c4d88d1c8211b1576f0d4c2ea8237d7f621/tasks/release-gates-20261019/gate4-hpos-v1/PLAN.md": {
+    "sha256": "ec3487668fd9eb6048dde7cdf7df91a0f555a309631dcac0495c9279d2205390",
+    "bytes": 2925
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/tools/v2-runtime/test_gate4_hpos_v1.py": {
+    "sha256": "24fdbcb15eacf3aec744ec3780a699173f5d921ebbcad5429f5d3bb4c6d430f5",
+    "bytes": 21614
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/tools/v2-runtime/test_gate4_populated.py": {
+    "sha256": "ffa6ab297081a03ff5a03824294d46c0931e9a1893e9a6ac074c9b5f9f8287ae",
+    "bytes": 54558
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/continuation-manifest.json": {
+    "sha256": "decc5b48f8edf93fcf54ecda1bd8609dea73d9b1eb59004653072214f69a17f8",
+    "bytes": 1661
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/evidence-index.json": {
+    "sha256": "62d25b07d8e6aaa847962b20724123a2f120b9c489e245dc46adef0ac1de0fbc",
+    "bytes": 992688
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/tools/v2-runtime/gate4_restore_local.py": {
+    "sha256": "cbf07a5f180acd340f6a7dd482999d2137b67207b47db9d81cdf71a9e4391663",
+    "bytes": 30024
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/tools/v2-runtime/gate4-hpos-v1-proof.php": {
+    "sha256": "03e684a27501e23e64cda08f83eb5512911878e0dfda5c27cd47a6c1e3b5ea81",
+    "bytes": 2199
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/tools/v2-runtime/gate4-populated-fixture.php": {
+    "sha256": "1dbd652be99e2190029f8a952ff47a979d2f6c04e98709c3197f8becf9b85eaa",
+    "bytes": 39402
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/tools/v2-runtime/gate4_refund_attribution.py": {
+    "sha256": "3f8e704d50ad72121fb4c53cf13a6e83a6ee30c688df43ae01b27db41886838c",
+    "bytes": 11441
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/tools/v2-runtime/variation-migration-core-populated.php": {
+    "sha256": "58693ec3a80fb530ccdf14ab090e41c88ddcba9e9f1febb2b10eabdfca46bd02",
+    "bytes": 27450
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/logo-registry.json": {
+    "sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+    "bytes": 905116
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/skyyrose/core/product.py": {
+    "sha256": "65b3f2e01b756676661d3964b19d7dad7db3359973fa1b7738819796d17bf55b",
+    "bytes": 20189
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/.artifacts/release-gates-20261019/gate4-populated/historical-producer-function.php": {
+    "sha256": "b7dd7bc02c3167803f986d05e13975e40e064cd4ddeb23ea6081b4192e34a42a",
+    "bytes": 827
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/.artifacts/release-gates-20261019/gate4-populated/historical-producer-blob.php": {
+    "sha256": "34b8c9826741becf3d86a4eae1de0209faf8778d213a5bb7abe3271c17331ff8",
+    "bytes": 23230
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/.artifacts/release-gates-20261019/gate4-populated/historical-producer-provenance.json": {
+    "sha256": "6edd944ed61a9356e735a1afce9f26001e37c6695b234967d5817141d3217a12",
+    "bytes": 438
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/8b15deccdc8db3126f9a118260388364f37e326f/tasks/release-gates-20261019/gate4-hpos-v1/PLAN.md": {
+    "sha256": "ec3487668fd9eb6048dde7cdf7df91a0f555a309631dcac0495c9279d2205390",
+    "bytes": 2925
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tools/v2-runtime/test_gate4_hpos_v1.py": {
+    "sha256": "83ab7bcf076f583c8e3056f767e0983dedc9a62e7f1e891a27065abbac970eca",
+    "bytes": 23521
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tools/v2-runtime/test_gate4_populated.py": {
+    "sha256": "ffa6ab297081a03ff5a03824294d46c0931e9a1893e9a6ac074c9b5f9f8287ae",
+    "bytes": 54558
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/continuation-manifest.json": {
+    "sha256": "decc5b48f8edf93fcf54ecda1bd8609dea73d9b1eb59004653072214f69a17f8",
+    "bytes": 1661
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/evidence-index.json": {
+    "sha256": "62d25b07d8e6aaa847962b20724123a2f120b9c489e245dc46adef0ac1de0fbc",
+    "bytes": 992688
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tools/v2-runtime/gate4_restore_local.py": {
+    "sha256": "cbf07a5f180acd340f6a7dd482999d2137b67207b47db9d81cdf71a9e4391663",
+    "bytes": 30024
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tools/v2-runtime/gate4-hpos-v1-proof.php": {
+    "sha256": "03e684a27501e23e64cda08f83eb5512911878e0dfda5c27cd47a6c1e3b5ea81",
+    "bytes": 2199
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tools/v2-runtime/gate4-hpos-v1-pay-observer.php": {
+    "sha256": "495c5f8b8192f48a109e15c3c48c7c72fcfe2a1af05e781bf5572a0a06584822",
+    "bytes": 5045
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tools/v2-runtime/gate4_gateway_selection.py": {
+    "sha256": "887edd9ce39205fa04a8a8d4c5b4f17f3684ae375791e1d2ff742b5fdeea0d42",
+    "bytes": 15680
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tools/v2-runtime/gate4-populated-fixture.php": {
+    "sha256": "1dbd652be99e2190029f8a952ff47a979d2f6c04e98709c3197f8becf9b85eaa",
+    "bytes": 39402
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tools/v2-runtime/gate4_refund_attribution.py": {
+    "sha256": "3f8e704d50ad72121fb4c53cf13a6e83a6ee30c688df43ae01b27db41886838c",
+    "bytes": 11441
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tools/v2-runtime/variation-migration-core-populated.php": {
+    "sha256": "58693ec3a80fb530ccdf14ab090e41c88ddcba9e9f1febb2b10eabdfca46bd02",
+    "bytes": 27450
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/logo-registry.json": {
+    "sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+    "bytes": 905116
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/skyyrose/core/product.py": {
+    "sha256": "65b3f2e01b756676661d3964b19d7dad7db3359973fa1b7738819796d17bf55b",
+    "bytes": 20189
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/.artifacts/release-gates-20261019/gate4-populated/historical-producer-function.php": {
+    "sha256": "b7dd7bc02c3167803f986d05e13975e40e064cd4ddeb23ea6081b4192e34a42a",
+    "bytes": 827
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/.artifacts/release-gates-20261019/gate4-populated/historical-producer-blob.php": {
+    "sha256": "34b8c9826741becf3d86a4eae1de0209faf8778d213a5bb7abe3271c17331ff8",
+    "bytes": 23230
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/.artifacts/release-gates-20261019/gate4-populated/historical-producer-provenance.json": {
+    "sha256": "6edd944ed61a9356e735a1afce9f26001e37c6695b234967d5817141d3217a12",
+    "bytes": 438
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/c575d57f595691d36f332272693815790f2ad8c3/tasks/release-gates-20261019/gate4-hpos-v1/PLAN.md": {
+    "sha256": "0916f6cacc31a5e332958e879156dda1982bbd15662dbd2bf45591b78e305008",
+    "bytes": 4950
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tools/v2-runtime/test_gate4_hpos_v1.py": {
+    "sha256": "75bbe6c2e88c1e380883adb5f0d37e9bc8684d2af99c64fbf129dffcf7893728",
+    "bytes": 27384
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tools/v2-runtime/test_gate4_populated.py": {
+    "sha256": "ffa6ab297081a03ff5a03824294d46c0931e9a1893e9a6ac074c9b5f9f8287ae",
+    "bytes": 54558
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/continuation-manifest.json": {
+    "sha256": "decc5b48f8edf93fcf54ecda1bd8609dea73d9b1eb59004653072214f69a17f8",
+    "bytes": 1661
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tasks/release-gates-20261019/gate4-populated/packet-1792437370289798000/evidence-index.json": {
+    "sha256": "62d25b07d8e6aaa847962b20724123a2f120b9c489e245dc46adef0ac1de0fbc",
+    "bytes": 992688
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tools/v2-runtime/gate4_restore_local.py": {
+    "sha256": "cbf07a5f180acd340f6a7dd482999d2137b67207b47db9d81cdf71a9e4391663",
+    "bytes": 30024
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tools/v2-runtime/gate4-hpos-v1-proof.php": {
+    "sha256": "03e684a27501e23e64cda08f83eb5512911878e0dfda5c27cd47a6c1e3b5ea81",
+    "bytes": 2199
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tools/v2-runtime/gate4-hpos-v1-pay-observer.php": {
+    "sha256": "495c5f8b8192f48a109e15c3c48c7c72fcfe2a1af05e781bf5572a0a06584822",
+    "bytes": 5045
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tools/v2-runtime/gate4_gateway_selection.py": {
+    "sha256": "887edd9ce39205fa04a8a8d4c5b4f17f3684ae375791e1d2ff742b5fdeea0d42",
+    "bytes": 15680
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tools/v2-runtime/gate4-populated-fixture.php": {
+    "sha256": "1dbd652be99e2190029f8a952ff47a979d2f6c04e98709c3197f8becf9b85eaa",
+    "bytes": 39402
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tools/v2-runtime/gate4_refund_attribution.py": {
+    "sha256": "3f8e704d50ad72121fb4c53cf13a6e83a6ee30c688df43ae01b27db41886838c",
+    "bytes": 11441
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tools/v2-runtime/variation-migration-core-populated.php": {
+    "sha256": "58693ec3a80fb530ccdf14ab090e41c88ddcba9e9f1febb2b10eabdfca46bd02",
+    "bytes": 27450
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/logo-registry.json": {
+    "sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+    "bytes": 905116
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/skyyrose/core/product.py": {
+    "sha256": "65b3f2e01b756676661d3964b19d7dad7db3359973fa1b7738819796d17bf55b",
+    "bytes": 20189
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/.artifacts/release-gates-20261019/gate4-populated/historical-producer-function.php": {
+    "sha256": "b7dd7bc02c3167803f986d05e13975e40e064cd4ddeb23ea6081b4192e34a42a",
+    "bytes": 827
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/.artifacts/release-gates-20261019/gate4-populated/historical-producer-blob.php": {
+    "sha256": "34b8c9826741becf3d86a4eae1de0209faf8778d213a5bb7abe3271c17331ff8",
+    "bytes": 23230
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/.artifacts/release-gates-20261019/gate4-populated/historical-producer-provenance.json": {
+    "sha256": "6edd944ed61a9356e735a1afce9f26001e37c6695b234967d5817141d3217a12",
+    "bytes": 438
+  },
+  ".artifacts/release-gates-20261019/gate4-hpos-v1/source-snapshots/a38e4a55e485905a9990ae052686e9eb11f778b0/tasks/release-gates-20261019/gate4-hpos-v1/PLAN.md": {
+    "sha256": "c50d7e4db5f7b3bc04e5dce306cb3bf472c28dd5cb7b06f9c3a0fed715c9e015",
+    "bytes": 5968
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00045.txt": {
+    "sha256": "9c0803309d1384e86c5ee9fabed69cfef36764c362c17bf5a1a7d1f1e37c372f",
+    "bytes": 40072
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00051.txt": {
+    "sha256": "3028c33f13d9f6cbf691cf93d1db674c21683ef711a31d07569732fd48fe1145",
+    "bytes": 40208
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00039.json": {
+    "sha256": "5cf3486747bd5c2e33b305073ed97ed8af642a475b378b4abad103229ff05990",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00042.json": {
+    "sha256": "bef7d508e787449e720b38c1178ba229c758707354483c707b675fb49e7b81ab",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00015.json": {
+    "sha256": "d195b0bac73c3c9fff4580b51e31ef131580d66322d0eb5b19d823bd44899e21",
+    "bytes": 1099
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00003.json": {
+    "sha256": "67effe71d5985b7bb58f5e04d67bc4a5dca7891f5f6430c600920498c20c1766",
+    "bytes": 518
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00050.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00044.txt": {
+    "sha256": "1af5f8c02819a3f91fbfe7a9250ec227897c49375230695029776216b3b648d4",
+    "bytes": 42500
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00054.json": {
+    "sha256": "2ec9b7e4838775a095a9a11ce8c3e7593019dba97c51200c2583b34175f06fc9",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00023.json": {
+    "sha256": "dce704f5787c142f262820d1aa287eda35cfbf06c2b2a91b48552df546d8995e",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00052.txt": {
+    "sha256": "3028c33f13d9f6cbf691cf93d1db674c21683ef711a31d07569732fd48fe1145",
+    "bytes": 40208
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00046.txt": {
+    "sha256": "9c0803309d1384e86c5ee9fabed69cfef36764c362c17bf5a1a7d1f1e37c372f",
+    "bytes": 40072
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00062.json": {
+    "sha256": "90aefb51599c8f4ab157825c448b97db11670ba1e76df95300a1d9f4c7f47134",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00035.json": {
+    "sha256": "681149122a6d897432b4e57633be3619b258f6acb52e80c5c83c9cb4cde58f04",
+    "bytes": 1092
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-v1-retry.json": {
+    "sha256": "5ac764429c7568f2480cac0b6725c379b598b732dc67b9f00930b7446d934463",
+    "bytes": 127862
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00019.json": {
+    "sha256": "ec4bc8ff7b411abb620e73e7c6712049c14d41f46eb04b7c8a96b587d738a18f",
+    "bytes": 1100
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00047.txt": {
+    "sha256": "9d3d1da4d01c0b3a7a2aee6487c5a4aee82b31ed244af175e483861f4d5764d3",
+    "bytes": 3211
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00053.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00058.json": {
+    "sha256": "c3aee53fcf840f1fd859158d3e3c98b59f8a7138c53f30f4b6ee55290617be47",
+    "bytes": 1094
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/restore-1792441452292547000-command-3.txt": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00059.json": {
+    "sha256": "78123745a3ed5940be89f621f981f2097ee8be5d29651d78c6eddb831aa76efa",
+    "bytes": 1077
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00057.txt": {
+    "sha256": "050aa788154633cc41f1b627bdd3e86335dddaeb15b66a6c358cb7f413d073c1",
+    "bytes": 40344
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00043.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-bare-handler-probe.json": {
+    "sha256": "6a7dcc6b89a440394a09e2877c4b56ce2d63285e392d1b78b2af91531cbc8921",
+    "bytes": 129027
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00018.json": {
+    "sha256": "288d602ad0d9c8b61ffcb2dc907b43fea25f9c2b6c74fcd869b67cd29825b681",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00034.json": {
+    "sha256": "0a11ccf187a62e4fa17248778db616de7496deacac415251e281da2266be310b",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00063.json": {
+    "sha256": "1f9bd089c96458169737bb98a11b58b9040e0f907f8ea8c1421e8978c3209b56",
+    "bytes": 1081
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-active-journal.json": {
+    "sha256": "65c4a9089eef035a77b2a3d67160070bba9ae67d9c39a97979e357b3ed0c4546",
+    "bytes": 126533
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00042.txt": {
+    "sha256": "1d0f5d91f61a382165e03c060f3f786288efb0a63d8ec4f069a1a02a2ba00fd7",
+    "bytes": 42472
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00056.txt": {
+    "sha256": "9d3d1da4d01c0b3a7a2aee6487c5a4aee82b31ed244af175e483861f4d5764d3",
+    "bytes": 3211
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00022.json": {
+    "sha256": "b2def37f1a6e80aae90dbde80aa04b7a6b058695201515ef4fe4c0ec6d7a51fd",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/restore-1792441452292547000-command-2.txt": {
+    "sha256": "62a685ecb757521f405ba58f51c3e9c8f39967738e962541463fc4e4bddc72c4",
+    "bytes": 176
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00055.json": {
+    "sha256": "4779e24f8639999a23a3671cdb133f1d135a336474dbf74081bf68839bbda830",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00002.json": {
+    "sha256": "98535e71450145da391c98e98676d68e13fa71c132652da5e71a78bbd3ab31fa",
+    "bytes": 572
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-v1-success.json": {
+    "sha256": "9e2adfd173fd72b2d5048ab165ab034dd36e5740f95957f738e8d879fc0abcc8",
+    "bytes": 127299
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00068.txt": {
+    "sha256": "8527d1213c7218d3cf0a50f39902c5dae11e6100d8c8b8b65755f1c3b1944dce",
+    "bytes": 40481
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00040.txt": {
+    "sha256": "5fed3b30a80af7ebe6769bc1b34fad5d4cbfa7d3eaf658815881398cafb427a8",
+    "bytes": 40044
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00054.txt": {
+    "sha256": "f05f330edec23d0a75110c88e89935a1e2dad537b61e82576878dbda635f3c42",
+    "bytes": 40235
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00014.json": {
+    "sha256": "c31030c992136295c05131ef3a4f330ee1fbfa15c1f7fcabaef32c0f05b15dc2",
+    "bytes": 1056
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00043.json": {
+    "sha256": "43c8cd5d7b5a9617eb1a2f6a9edc3294df29f14542366aa2e3a06f3b088e7708",
+    "bytes": 1137
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00038.json": {
+    "sha256": "9ff79679f7fe8370ea47e17a5ff5c180a430ed9345d691a740281d4efa20df2b",
+    "bytes": 1143
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00055.txt": {
+    "sha256": "f05f330edec23d0a75110c88e89935a1e2dad537b61e82576878dbda635f3c42",
+    "bytes": 40235
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00041.txt": {
+    "sha256": "1d0f5d91f61a382165e03c060f3f786288efb0a63d8ec4f069a1a02a2ba00fd7",
+    "bytes": 42472
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00069.txt": {
+    "sha256": "9d3d1da4d01c0b3a7a2aee6487c5a4aee82b31ed244af175e483861f4d5764d3",
+    "bytes": 3211
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/restore-1792441452292547000-command-1.txt": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-bad-key.json": {
+    "sha256": "52c9c7894271399a29106e0ea366f21a6c305ac4338f2a0f02dcd56c57d275c2",
+    "bytes": 126126
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00025.json": {
+    "sha256": "44b74060b95b868eb3e57aef37b754ba945925c38504faeddc3c74d176b1b246",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00026.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00032.txt": {
+    "sha256": "c5ba8c51c54f80984bd702b3561dab76d84a4b40f6d720c176195b8221afd895",
+    "bytes": 39900
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00072.json": {
+    "sha256": "0b138d62b7f46bd288a279ab5343061beb72a4c1081156943a1ced142bb8c66e",
+    "bytes": 1056
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-v1-missing-id.json": {
+    "sha256": "b7780495899fef139ba9310d673bbccb55e6f591efea21d5fcfcf653c21f57d6",
+    "bytes": 126085
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00064.json": {
+    "sha256": "a0584b5084b3fd1de19cb276c6f389e57a848dedf69a4fc6b2a8aa92f1e2f963",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00033.json": {
+    "sha256": "1c6359c09a2f5b123fe775b8b6bb020c867f4bfc53e58c8ddbceaa0b4f5682f0",
+    "bytes": 1140
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00048.json": {
+    "sha256": "65be8fbb401c7aa3d7ecb09a31ee62caafe10396579e6881e82b363a93877c27",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00009.json": {
+    "sha256": "621b51b63ae4f525caf73570536e2c4acaf82b53b6fadcf61f5e7a258a9d5517",
+    "bytes": 1082
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/historical-payload-controls.json": {
+    "sha256": "2dd755ff6ff5f7746944ef6d4ef223da8a121e2909ef060838947f9789d2dd27",
+    "bytes": 461
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00033.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00027.txt": {
+    "sha256": "4e7aa943c343eb7385442a708a95678ab966dc73d0dc0669cf0848a4c2f3e69d",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00029.json": {
+    "sha256": "d7c17cbd3fdb2d9361939dbe64caf75a1765a264f74028ca54edb63a7d1938d6",
+    "bytes": 1131
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00031.txt": {
+    "sha256": "c5ba8c51c54f80984bd702b3561dab76d84a4b40f6d720c176195b8221afd895",
+    "bytes": 39900
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00025.txt": {
+    "sha256": "4e7aa943c343eb7385442a708a95678ab966dc73d0dc0669cf0848a4c2f3e69d",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00019.txt": {
+    "sha256": "af0905a578e496ff731975a127bc3ae34659da59923bdfac90e00821674068d3",
+    "bytes": 39961
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00068.json": {
+    "sha256": "46470dad48c92bd3bba2c8c34360a9c43d3103dc3e6b0d17a7ed7ab586e8ace7",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00044.json": {
+    "sha256": "85728134a531da3719446076e507925cfa648bd35492957648758a9dbd68a4ce",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00013.json": {
+    "sha256": "be29b3c05566473784f2a726d7aea36b12fc5714219cf8964fb3262d3c9389a4",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/results.json": {
+    "sha256": "7936fc12e5d3bf0e943bfa2b4cc6a67e794c5e96703033699417ef16ebdaca95",
+    "bytes": 176212
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00018.txt": {
+    "sha256": "97dc3f95eb5c383ab40395efcb27f4966dd7a217b560c90dea202ebee98e9195",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00005.json": {
+    "sha256": "ac557b073cd2efd9551410ab6dc6b6e89e62f2d994bc102bbbaf9b7cf86405e5",
+    "bytes": 1163
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00024.txt": {
+    "sha256": "4e7aa943c343eb7385442a708a95678ab966dc73d0dc0669cf0848a4c2f3e69d",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00030.txt": {
+    "sha256": "4e7aa943c343eb7385442a708a95678ab966dc73d0dc0669cf0848a4c2f3e69d",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00052.json": {
+    "sha256": "d569a06d92b69477e7d0b2dd9b47c0d13366109416f2268215e00c6eed4b2028",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00053.json": {
+    "sha256": "3308bd5b496a247dee8d6dc8077d7ed5384e5047ddb344a1306bdafc25681d3d",
+    "bytes": 1130
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00008.txt": {
+    "sha256": "2232d0ce413e0df8f40d4f5cbda0d942da680ac2b8e3755b796eb31b8d446894",
+    "bytes": 768
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00004.json": {
+    "sha256": "a8b8c3663f5c1432f8069c744359fb24b826f57fe5c29e195ba7ee8b507d598f",
+    "bytes": 1198
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00034.txt": {
+    "sha256": "1867ce38870f2b22558fd094f6c9b624322e8cd3da74a00c91c62472351d5b51",
+    "bytes": 39928
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00020.txt": {
+    "sha256": "af0905a578e496ff731975a127bc3ae34659da59923bdfac90e00821674068d3",
+    "bytes": 39961
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-v1-ambiguous-sku.json": {
+    "sha256": "179543f023dbc9e566da04838613dbae5cf5d09d7fd880f04b649c25aad71d60",
+    "bytes": 126957
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00012.json": {
+    "sha256": "bda00b42b374833534f61e09c5cfdf807aef148834423e1e2e9f6a95196308ac",
+    "bytes": 1072
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00045.json": {
+    "sha256": "68fe307339565443b5c962c73b6d2dbec112b0157025e724158aad450a55686a",
+    "bytes": 1098
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-v1-stock-retry.json": {
+    "sha256": "ebc62d80ccf3a57e2cd633785b0a9c1b71f87b15878a06d956aaee6d7041adbb",
+    "bytes": 128456
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00069.json": {
+    "sha256": "b0403f1f177a5f3f674f501867a651f2d064bfde91b7922d7caedb807c801a22",
+    "bytes": 1154
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00021.txt": {
+    "sha256": "97dc3f95eb5c383ab40395efcb27f4966dd7a217b560c90dea202ebee98e9195",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00035.txt": {
+    "sha256": "aa447f14b6b748917a3c30ebce34a10fc59c1ef5c767bfed87377d581dda0417",
+    "bytes": 40044
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00009.txt": {
+    "sha256": "5b97f064556da4fa7e22ec9a2cbf229ae8e30bf9fc44dbdc99166c4533ee69ea",
+    "bytes": 81
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00028.json": {
+    "sha256": "a4745730c8c075bc98721b9087f75d5212f345e803186f47c0928d3f2e25de2a",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00023.txt": {
+    "sha256": "4e7aa943c343eb7385442a708a95678ab966dc73d0dc0669cf0848a4c2f3e69d",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00037.txt": {
+    "sha256": "2bcee99f888964bffbf527d41ac93ecb3808c2212a231a559dc88a2e690e4dc8",
+    "bytes": 40184
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00008.json": {
+    "sha256": "a28b9ec61127abfb8d91efd887fc3e56acec1f0f67513f57e19da14a6b893831",
+    "bytes": 1087
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00049.json": {
+    "sha256": "8a5a72a6068e85482c5a81ddeb07ae01e7f7eb64dad3d5276750264f4419993d",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00032.json": {
+    "sha256": "4c2cd4fad7c8576cdd4cf45118b6effe3339c89491009a16181013b769ce2aa6",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00065.json": {
+    "sha256": "973c2800bdc6bfaaed859a6fe07b0ca38668eb329b6f86cad7956cf2e6444752",
+    "bytes": 1136
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00036.txt": {
+    "sha256": "2bcee99f888964bffbf527d41ac93ecb3808c2212a231a559dc88a2e690e4dc8",
+    "bytes": 40184
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00022.txt": {
+    "sha256": "97dc3f95eb5c383ab40395efcb27f4966dd7a217b560c90dea202ebee98e9195",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00024.json": {
+    "sha256": "8c610bd9f4c933907029ffe47f7f0bbad034ed82a6347d6bf221612959949c3f",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00007.txt": {
+    "sha256": "f62622cf9cc01dc5c814b986b16ed0f16ad82c0a50521515d05a94914f49a246",
+    "bytes": 38
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00013.txt": {
+    "sha256": "97dc3f95eb5c383ab40395efcb27f4966dd7a217b560c90dea202ebee98e9195",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00031.json": {
+    "sha256": "d0b83226082f7556a0fd97ab8070e8dcf0ad407bfba8fb9155fd93f67ae70a3a",
+    "bytes": 1095
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00066.json": {
+    "sha256": "0e29c2f461515d495d17e567e71f7f9e8a8fdc73cfc46894ee000ef5ef22d307",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00070.json": {
+    "sha256": "03c4d94888f281d6ccaa2dc25932a216334bc17726655eb3aae9d0071ce61848",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00012.txt": {
+    "sha256": "97dc3f95eb5c383ab40395efcb27f4966dd7a217b560c90dea202ebee98e9195",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00006.txt": {
+    "sha256": "214766dad5e8ab5d249999b7ac72cbe9dc287889fa11d1e5e7be0a2792a59111",
+    "bytes": 50
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00027.json": {
+    "sha256": "c0e9dac36a21473bfd2ab480c9073bb4fc1af82492ff4e9848aac3fae4cfbdd1",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-v1-duplicate.json": {
+    "sha256": "7c9918524f2b67cd83b4b2084f3a27aaef1867e9f3e3803bf18553ae3def9f2a",
+    "bytes": 126798
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00050.json": {
+    "sha256": "17c11e3fde80c1aecc6765d7f64a848a1f2e32437d4d755036b18d0e13100c2e",
+    "bytes": 1134
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00010.txt": {
+    "sha256": "e96861565d6d1ec0fa58ec6e4820bff248ced01673bbc019cec450ce44b102e0",
+    "bytes": 820
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00004.txt": {
+    "sha256": "58ea03a28e26fa5bca9f005daf06f6f1ad3115500f21af5c867cd339233c5e25",
+    "bytes": 43
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00007.json": {
+    "sha256": "36d5e2a416e14af9159b91da40d237964cb62c09b125d7ffbe1797cfb62b4beb",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00038.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00011.json": {
+    "sha256": "c3a2de383c56b0044f0ebead69da7aec9b3b43940cd917ab0c307292a5c8faf8",
+    "bytes": 1085
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00046.json": {
+    "sha256": "74183d4c5093143630fa1d29d1032c6f17655e9a1374630919bb8378c25dfb37",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00039.txt": {
+    "sha256": "cd5ec06dd16de4025867b00282f2754ccb7bd8cdf60a6bfcc5a165586f680aeb",
+    "bytes": 40184
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00005.txt": {
+    "sha256": "27f721573d105932303292e2566447b9ed1b3726617ef6e0561ba4a17c4d91ee",
+    "bytes": 332
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00011.txt": {
+    "sha256": "6c730aa13b05353826a6d95c0fa8ed86b0f6f56a10f4aa1a3fa6809415ab11e1",
+    "bytes": 821
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00029.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00015.txt": {
+    "sha256": "1dd2c2277cc02e9323e30605cf8fe49262a79e0385554154e512d42bce25b820",
+    "bytes": 39959
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00001.txt": {
+    "sha256": "6b52bb421406fb01d99b858e266bc6a0024c1fa99efa9b7710a1f3be86e65652",
+    "bytes": 34
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00047.json": {
+    "sha256": "fdef5b9428200b2dc82bc7b7c0193bb228491e88c23a621e1214a713979a562c",
+    "bytes": 1134
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00010.json": {
+    "sha256": "93b94fda623cbffcebbbf8faf325b97f05ba0a0ffd018672c7700eaee28fa08b",
+    "bytes": 1073
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00014.txt": {
+    "sha256": "07e52a7b879b80b1950cb48b9b68a8adf4e42e93ebd86405776792268fd2ef63",
+    "bytes": 37478
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00006.json": {
+    "sha256": "9f4d00a1814fe5180304a0218442550bec49b7026d0d352c0954ac1b46475312",
+    "bytes": 982
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00028.txt": {
+    "sha256": "4e7aa943c343eb7385442a708a95678ab966dc73d0dc0669cf0848a4c2f3e69d",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00051.json": {
+    "sha256": "40061cd15de14649eeeb49d1dc44f3a3e78ffb17934cb6934aac6755a88e1f24",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00026.json": {
+    "sha256": "e1af4e9f5d9032730d8d375d8430a69c356c1acb59ccd68fd56cb0b162ec51c3",
+    "bytes": 1135
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00071.json": {
+    "sha256": "2993025748e092996479e1a9bbd62542b95730eb7a397b9a899beb187c802929",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00002.txt": {
+    "sha256": "6d8f93cb5ab6053446f892b4a069b436d926a09e44bdc85768cc7294c8833bf7",
+    "bytes": 1824
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00016.txt": {
+    "sha256": "1dd2c2277cc02e9323e30605cf8fe49262a79e0385554154e512d42bce25b820",
+    "bytes": 39959
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00067.json": {
+    "sha256": "0d1881b31b28adce7d109464c5e20cb8395cab88f52cd929f3837daa1d89494a",
+    "bytes": 1094
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-bad-nonce.json": {
+    "sha256": "f72d85848cdcefc16a3c8f619398f10692dfa77912772c042567ad37531d96d1",
+    "bytes": 126132
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00030.json": {
+    "sha256": "088f06a5be0063d2e6918d5739725dd44a004e3ea67e7a94ecca992b17b94e11",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00017.txt": {
+    "sha256": "97dc3f95eb5c383ab40395efcb27f4966dd7a217b560c90dea202ebee98e9195",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00003.txt": {
+    "sha256": "c8e769ea003301aa08985aebb0916f4ed5de3ce1c0c7aa2ddf0fa54c3f82f617",
+    "bytes": 48
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00056.json": {
+    "sha256": "15fd4c7c35d67a3381f6e714e8e1e48ce5f79cde48ce52c90c7fe33750872280",
+    "bytes": 1130
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00064.txt": {
+    "sha256": "a58bab2d5c15505ea31d6a5843fcc4fcc2bc926c2afdc2cfc9eb70a8d2a78f8f",
+    "bytes": 40371
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00070.txt": {
+    "sha256": "14ff174d3d03c2756fcb0ebb7f757747c6991a4ef99514049a7a7ee9a104c741",
+    "bytes": 40619
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00058.txt": {
+    "sha256": "0683e82c325c67ca3f4f39c9dd73b036e5a439ae69810c50c4dcf6ebc0b730e6",
+    "bytes": 40345
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00001.json": {
+    "sha256": "5cc8595a6a85bebc3e9ef72dad64e8c11e58bd15f994445d67cfef0afb85e371",
+    "bytes": 1811
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00017.json": {
+    "sha256": "45f57bab225256441d3dfba0f1d259c998d771d4ad92db93a5fbc32f4a7f8a1e",
+    "bytes": 1095
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00040.json": {
+    "sha256": "baaba58ebac7ded3b92d5b52b49839089be71d7a8c77e63ca33561dc8d188eb6",
+    "bytes": 1092
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/containment.json": {
+    "sha256": "3e237ec7a99fc74d51cc523a2f7337d4e42cc6a622386706382b4cb0b2b908b4",
+    "bytes": 328
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00059.txt": {
+    "sha256": "b30ada2ccfcbedc168d6b3c1ea4fba52b5a8e620266d6afbcc4e45396925a9eb",
+    "bytes": 310
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00071.txt": {
+    "sha256": "14ff174d3d03c2756fcb0ebb7f757747c6991a4ef99514049a7a7ee9a104c741",
+    "bytes": 40619
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00065.txt": {
+    "sha256": "9d3d1da4d01c0b3a7a2aee6487c5a4aee82b31ed244af175e483861f4d5764d3",
+    "bytes": 3211
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00067.txt": {
+    "sha256": "8527d1213c7218d3cf0a50f39902c5dae11e6100d8c8b8b65755f1c3b1944dce",
+    "bytes": 40481
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00037.json": {
+    "sha256": "46d2a4f82198ce402acac3cc63b41bb1f31c682b2784fc0d669fe43e36966eb9",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/hpos-object-proof-seed-pre-conversion.json": {
+    "sha256": "115c7561751010e33d47d90437abb63e2989d38ba46bcd224bc09b9bca07e03a",
+    "bytes": 68901
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00060.json": {
+    "sha256": "8684cda59360ef4b4e57223ad977b2b6ac38aede0be923c38d6f6a22e3c4a950",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00066.txt": {
+    "sha256": "1b902b0db6a489563ea97e0950873653d267ad7e0eaeb951888f86a3cb92a7f2",
+    "bytes": 40480
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00072.txt": {
+    "sha256": "180ce474875dbc313dbcb21e6351cf28224bcc03eb23b39c3d7632b4453e47d3",
+    "bytes": 38368
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-v1-failure.json": {
+    "sha256": "6e4400c3518a8f568ef18e822a59f3847aec25689e1f6fb9281117dc674c442b",
+    "bytes": 127436
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00021.json": {
+    "sha256": "e7b78fecd2987b7b98f815e3f9010b56a6dd5bfedc8cb91e9559574bb4217b0b",
+    "bytes": 1095
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/hpos-object-proof-final-paid-and-refused.json": {
+    "sha256": "85bd6026b66143be364f29b1489a07b0b01136fa3772e1e5a11e1471c3066d89",
+    "bytes": 70576
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00020.json": {
+    "sha256": "6db5629f5a016e6d5e64bc3d88250598048dee44884a601dfec857fb336fa469",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/address-index-negative-controls.json": {
+    "sha256": "c531086433cefe5c3ea971a9b2c8bd4914ffb068cfcf126b5c2065e0a5e6cdac",
+    "bytes": 792
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00062.txt": {
+    "sha256": "6de7b70302b12c8262df456952f06141f286d16193c229ea544ed89d4b45dd32",
+    "bytes": 40373
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00061.json": {
+    "sha256": "6d1cf1161a8827f54b984fadb9040410ef3e3eb96c10c8bb0a6eb1badff54ad1",
+    "bytes": 1136
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/typed-comparison-controls.json": {
+    "sha256": "1dda7e44c13ec737f59e7cb57e841dba0f13570e2b2fe582f8e970c0d163e389",
+    "bytes": 339
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00036.json": {
+    "sha256": "5cfbce014ca4a509d1590b6365a595b480ff8b87b038f985249c82daf584d763",
+    "bytes": 1098
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00063.txt": {
+    "sha256": "a58bab2d5c15505ea31d6a5843fcc4fcc2bc926c2afdc2cfc9eb70a8d2a78f8f",
+    "bytes": 40371
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00049.txt": {
+    "sha256": "3028c33f13d9f6cbf691cf93d1db674c21683ef711a31d07569732fd48fe1145",
+    "bytes": 40208
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00061.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00041.json": {
+    "sha256": "b81fc644feaafc8af6359365846da5dbdc6fa5d9ed1b2028d3ae68550c345a40",
+    "bytes": 1097
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00016.json": {
+    "sha256": "3b00945aa0d5bdd51880e0638d36be487d71da0f5a655db930c7918917ad24bb",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00060.txt": {
+    "sha256": "0683e82c325c67ca3f4f39c9dd73b036e5a439ae69810c50c4dcf6ebc0b730e6",
+    "bytes": 40345
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00048.txt": {
+    "sha256": "3028c33f13d9f6cbf691cf93d1db674c21683ef711a31d07569732fd48fe1145",
+    "bytes": 40208
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/payment-v1-stock-refusal.json": {
+    "sha256": "e41b9617b56cb8ac68ebfbb68256d7112d03923ea5b88bea151a9e0c51f19925",
+    "bytes": 128040
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/command-00057.json": {
+    "sha256": "330d0832c9ccee2d99924381542f7a78c2c8162f3ec9d0f27d967e4a589923cc",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00003.json": {
+    "sha256": "851e8b4511452277449e3b1491ea00a786ee772cefbcea4b49c748d0112c499d",
+    "bytes": 518
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00002.json": {
+    "sha256": "4a61541169dbb39a110d223241bfacb58b94f74672b102b3d42d135a6652780d",
+    "bytes": 572
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00009.json": {
+    "sha256": "4658c4dd986fabbb3947791f40d7ca2f16187918e112821ca237917d6d56ffbd",
+    "bytes": 1082
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/results.json": {
+    "sha256": "1e22a9cd3ac4d6a6e3bedabdb99331d54669d0c4f41ab7dbb85dee3ed2b114fd",
+    "bytes": 4039
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00005.json": {
+    "sha256": "0020531b95f793f1b252dfe67b45fc526baa914fd8102943921aae1781634c2d",
+    "bytes": 1163
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00008.txt": {
+    "sha256": "aae789a632dff54b300b0f1fe2adda5560a4a7d351d5f03feb55a5a0e3e7571d",
+    "bytes": 768
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00004.json": {
+    "sha256": "e9c00329d80e0fc261f97358d612690a99d106edf82fd82f38a00a797ed84d4b",
+    "bytes": 1198
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00009.txt": {
+    "sha256": "5b97f064556da4fa7e22ec9a2cbf229ae8e30bf9fc44dbdc99166c4533ee69ea",
+    "bytes": 81
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00008.json": {
+    "sha256": "5cb0eb5ad14f9bdae80a23750facd49620b6cc536bf4afbfa9917eb5247e2fba",
+    "bytes": 1087
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00007.txt": {
+    "sha256": "f62622cf9cc01dc5c814b986b16ed0f16ad82c0a50521515d05a94914f49a246",
+    "bytes": 38
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00006.txt": {
+    "sha256": "214766dad5e8ab5d249999b7ac72cbe9dc287889fa11d1e5e7be0a2792a59111",
+    "bytes": 50
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00010.txt": {
+    "sha256": "c7f1658e5d019492f66d5bd062b152fc45aee007a77dcd0f2dc86a1583ae71d4",
+    "bytes": 820
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00004.txt": {
+    "sha256": "58ea03a28e26fa5bca9f005daf06f6f1ad3115500f21af5c867cd339233c5e25",
+    "bytes": 43
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00007.json": {
+    "sha256": "4f6b448709071073cd3b738e4907cb81c7c187b0d4fe29c69b195a69e60c6ea0",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00005.txt": {
+    "sha256": "27f721573d105932303292e2566447b9ed1b3726617ef6e0561ba4a17c4d91ee",
+    "bytes": 332
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00001.txt": {
+    "sha256": "6b52bb421406fb01d99b858e266bc6a0024c1fa99efa9b7710a1f3be86e65652",
+    "bytes": 34
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00010.json": {
+    "sha256": "fbc0f0126b78f585c5be34942c44f37e1c7b2b543b966aef745fd5ea28492839",
+    "bytes": 1073
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00006.json": {
+    "sha256": "08d51244ef1f1faa0e3b4b324a528c74292c1b42973bbda1057627e04b8f3cb1",
+    "bytes": 982
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00002.txt": {
+    "sha256": "3fa2bb9e55f7fef24a4f921a140b81c7b34ad9cbcf827b7dd7f10f4e83cf330b",
+    "bytes": 1824
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00003.txt": {
+    "sha256": "23342a63450c637f081f20b71fcc6d0717ba80bc656495708e581ad602fddba4",
+    "bytes": 48
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/restore-1792438938861157000-command-3.txt": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/command-00001.json": {
+    "sha256": "c8e775d95e948100c2e7288a311d9aeb8967b8388dcab4b2590e76fc3acd7199",
+    "bytes": 1811
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/containment.json": {
+    "sha256": "ede6448415a29879f9e0aff3289820d18e738afa38c3de5d9664e97e42df243c",
+    "bytes": 328
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/restore-1792438938861157000-command-2.txt": {
+    "sha256": "629d5b3a172531a83545dd3714969026f7c1d0d4cd812274f37ecb7854b95fef",
+    "bytes": 176
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792438938861157000/restore-1792438938861157000-command-1.txt": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00015.json": {
+    "sha256": "8ab2fa6f35b2ea5108f9f8bf600521fe9b9868b6a79f9d041bb5587d80a89ab6",
+    "bytes": 1099
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00003.json": {
+    "sha256": "067706606c816841b985537635ca30f99eb456f5fb98a075043c6e4d380f643e",
+    "bytes": 518
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00023.json": {
+    "sha256": "018f8a2f4f40589fc36cff0f954f0778663f1c340aafa03a3362a4a38b95951c",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00019.json": {
+    "sha256": "b2ed3e9f0097a5ba0971e50247d146543a5fc05cdf6ae2de06a3eb6becf37afa",
+    "bytes": 1100
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00018.json": {
+    "sha256": "bda2dcb14edad6e03e60a518b7fb1cdee4bd0168ac913ba15b790d3b6b813495",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00034.json": {
+    "sha256": "0c7a2d04e99b5b756d9e4489589e74cfda29e2547bd755ca83f923800e1c8a0c",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00022.json": {
+    "sha256": "e1b6cb6a1f07731f38fbeffed36305b48b55e22381710204d9d9e3a49226766c",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00002.json": {
+    "sha256": "67b45c7a706e9a08b8c5c2b28d101a67c69b4a5a59ebf41a67c4e95de9fbfb84",
+    "bytes": 572
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00014.json": {
+    "sha256": "75c89f155d6ab165b464f97493a52eab49eb2500df9c9a17d16d673878c9a192",
+    "bytes": 1056
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/payment-bad-key.json": {
+    "sha256": "674cd9d2154f1ddf6eeb71a90567bc1f74a826d24e4e2b31bbf836f50df13875",
+    "bytes": 126124
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00025.json": {
+    "sha256": "9f45c0eeba01481ee6c71f6111f198fa27f2a49364c128401cb8d49e7fcb690c",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00026.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00032.txt": {
+    "sha256": "8bb28baf0cec5e89df412c38ba364879ac4ea473c97d6486012016787dcea01c",
+    "bytes": 39900
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/payment-v1-missing-id.json": {
+    "sha256": "8d0397a0bc258206dd3686c2ccc01a8a97348f97bb1c8dbb53dd43d57f18b402",
+    "bytes": 126079
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00033.json": {
+    "sha256": "683c0779fef4ffbc02001b2803dfefaf7a348d09808ee237768e9cf3896a5ec8",
+    "bytes": 1137
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00009.json": {
+    "sha256": "282fd60380fe9aca7f9efe2e8e1d24d9e201f50c8cdda44b4279081611336663",
+    "bytes": 1082
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/historical-payload-controls.json": {
+    "sha256": "2dd755ff6ff5f7746944ef6d4ef223da8a121e2909ef060838947f9789d2dd27",
+    "bytes": 461
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00033.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00027.txt": {
+    "sha256": "c1ed0d8e26b4395f37a35e207d1e9126e9ff88e7388579914ea1d8a633b89ccf",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00029.json": {
+    "sha256": "c4dcb96f50d0a926aefc8ce4fb970fecebd04d0e2140aa4b539fd8fd59845bef",
+    "bytes": 1131
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00031.txt": {
+    "sha256": "8bb28baf0cec5e89df412c38ba364879ac4ea473c97d6486012016787dcea01c",
+    "bytes": 39900
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00025.txt": {
+    "sha256": "c1ed0d8e26b4395f37a35e207d1e9126e9ff88e7388579914ea1d8a633b89ccf",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00019.txt": {
+    "sha256": "1acc913761c609916f011c376fba93077ecfa6d24fe4e8180faa7714aff8330e",
+    "bytes": 39961
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00013.json": {
+    "sha256": "3e46a339c327330bf6d6e7537180efb5c0066001b4c5b08dfca939c9539665c4",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/results.json": {
+    "sha256": "f8cf9c8efc4fb90e70eda4ac1a12959bf9e2a0806906605ca1251274c59c8600",
+    "bytes": 78475
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00018.txt": {
+    "sha256": "ea4a15455fed726f5cc81b0ebcb1a0fb9c809173febb87fcfaa90f802d26d77d",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00005.json": {
+    "sha256": "c90225cec712a2f3dd0c3941154c2acab78a20bda87b5845021cf9811b0d8510",
+    "bytes": 1163
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00024.txt": {
+    "sha256": "c1ed0d8e26b4395f37a35e207d1e9126e9ff88e7388579914ea1d8a633b89ccf",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00030.txt": {
+    "sha256": "c1ed0d8e26b4395f37a35e207d1e9126e9ff88e7388579914ea1d8a633b89ccf",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00008.txt": {
+    "sha256": "bea53b3e44b7f9d000fd1eb24fe775e14f71d7a3e7581634e6d35ff87136a74d",
+    "bytes": 768
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00004.json": {
+    "sha256": "c596634ba034edeacf5bbc855c6a1d5aa70508d832ea935907bf6edfa31797dc",
+    "bytes": 1198
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00034.txt": {
+    "sha256": "0c6fece8d2bc041f205d79453687ff8d7e861359a8cf21da78a289d555d8f36a",
+    "bytes": 39928
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00020.txt": {
+    "sha256": "1acc913761c609916f011c376fba93077ecfa6d24fe4e8180faa7714aff8330e",
+    "bytes": 39961
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00012.json": {
+    "sha256": "a93a814052af93e18f285e2937933251b85da76e2784dc0aa60f466de6205c2d",
+    "bytes": 1072
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00021.txt": {
+    "sha256": "ea4a15455fed726f5cc81b0ebcb1a0fb9c809173febb87fcfaa90f802d26d77d",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00009.txt": {
+    "sha256": "5b97f064556da4fa7e22ec9a2cbf229ae8e30bf9fc44dbdc99166c4533ee69ea",
+    "bytes": 81
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00028.json": {
+    "sha256": "5159fa4257401625f4afb3b2dd3d3b449bcc153a0d7c5b73be583471c28413e7",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00023.txt": {
+    "sha256": "c1ed0d8e26b4395f37a35e207d1e9126e9ff88e7388579914ea1d8a633b89ccf",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00008.json": {
+    "sha256": "a0601ba07bd94886fc4d2057094e778acb333fe5abb1257f15992a464b0cbf8b",
+    "bytes": 1087
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00032.json": {
+    "sha256": "daada0b04cfd11af214e21a90dd1b6c6d0b3e4df2b9a6bd62b03397d27b73b83",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00022.txt": {
+    "sha256": "ea4a15455fed726f5cc81b0ebcb1a0fb9c809173febb87fcfaa90f802d26d77d",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00024.json": {
+    "sha256": "85180b5bf64705cd77d61d38ab78bc4f74fb2d20f0c08c03ec9b12f6646db00b",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00007.txt": {
+    "sha256": "f62622cf9cc01dc5c814b986b16ed0f16ad82c0a50521515d05a94914f49a246",
+    "bytes": 38
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00013.txt": {
+    "sha256": "ea4a15455fed726f5cc81b0ebcb1a0fb9c809173febb87fcfaa90f802d26d77d",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00031.json": {
+    "sha256": "04bc13ec550a5e0eb11cb6fe272e3ed33167d40c6d4cca57bbe6b682551cc385",
+    "bytes": 1095
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00012.txt": {
+    "sha256": "ea4a15455fed726f5cc81b0ebcb1a0fb9c809173febb87fcfaa90f802d26d77d",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00006.txt": {
+    "sha256": "214766dad5e8ab5d249999b7ac72cbe9dc287889fa11d1e5e7be0a2792a59111",
+    "bytes": 50
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00027.json": {
+    "sha256": "ee57355a4035dd598b342e790fc3f74064f4d3f3c8bde941c7dbfc7757513129",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00010.txt": {
+    "sha256": "908e82e902454c66ce2883a4ee8f860acc4c0a2010859579a736eb2e05df43c0",
+    "bytes": 820
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00004.txt": {
+    "sha256": "58ea03a28e26fa5bca9f005daf06f6f1ad3115500f21af5c867cd339233c5e25",
+    "bytes": 43
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00007.json": {
+    "sha256": "eae802eaaa5473a8b429a1c29432d06cf0a86edc01272992d4fedcb744cb098d",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00011.json": {
+    "sha256": "9f37445a9f6d903560a07e8fe16093ae8c22354059fe9c112bf3d84e8a08869d",
+    "bytes": 1085
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00005.txt": {
+    "sha256": "27f721573d105932303292e2566447b9ed1b3726617ef6e0561ba4a17c4d91ee",
+    "bytes": 332
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00011.txt": {
+    "sha256": "79c982dd662285e6bd051d5ab8bec8910b60e9554eed1259f116e36885efa21a",
+    "bytes": 821
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00029.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00015.txt": {
+    "sha256": "bbb89753c2c78ced5cc7d11d75b1e2d458d93d6d43e96debf00cfe7b32487c3c",
+    "bytes": 39959
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00001.txt": {
+    "sha256": "6b52bb421406fb01d99b858e266bc6a0024c1fa99efa9b7710a1f3be86e65652",
+    "bytes": 34
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00010.json": {
+    "sha256": "3940150f50dfcf50e81e952633cab8dbff3bcc8dc0e50f45fb4e14bb8acdaa5e",
+    "bytes": 1073
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00014.txt": {
+    "sha256": "902c2b0f1037f2114b5ff08e37080b6e95770f75f726cc40132a9c22c6783c51",
+    "bytes": 37478
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00006.json": {
+    "sha256": "e4d7adf17c7ebca6a3239a238f5df4ac1e878b02d1dcbb5068236533fbc08888",
+    "bytes": 982
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00028.txt": {
+    "sha256": "c1ed0d8e26b4395f37a35e207d1e9126e9ff88e7388579914ea1d8a633b89ccf",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00026.json": {
+    "sha256": "e3e7beb471885bcb441aafa72e94946ce4149d5282110c5768698dcc477a489b",
+    "bytes": 1135
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00002.txt": {
+    "sha256": "2f822d6e217d080410e7a184d40bbe09d7ceba1eb8195d448d60d914d743b1c1",
+    "bytes": 1824
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00016.txt": {
+    "sha256": "bbb89753c2c78ced5cc7d11d75b1e2d458d93d6d43e96debf00cfe7b32487c3c",
+    "bytes": 39959
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/payment-bad-nonce.json": {
+    "sha256": "3407264deeca329d1861395843c620839eb566e7af2e199322be705d1af4e3a5",
+    "bytes": 126130
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00030.json": {
+    "sha256": "41f15fb5a461ee9f23317b974a7b2efa0bdb086a9087da44307ec3bdaa123e88",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00017.txt": {
+    "sha256": "ea4a15455fed726f5cc81b0ebcb1a0fb9c809173febb87fcfaa90f802d26d77d",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00003.txt": {
+    "sha256": "a4426ba3aa74c59fefdaa5598e5cbc6ded9a6d38c9d8fa662cb99c80b5d80d2f",
+    "bytes": 48
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00001.json": {
+    "sha256": "be82be69b0c14930e5797d5b05e168db9246c6f0deeeafa4f3d99e5592dd7a89",
+    "bytes": 1811
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00017.json": {
+    "sha256": "39cc73c87d6575d84048adc6e9b15902b0dbe5a658d5ca1b0963a43e1ef1b91c",
+    "bytes": 1095
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/containment.json": {
+    "sha256": "0d2209729d4a43e7dbbf919a948d0b6622958aa9c243494ccbd1480584385ea1",
+    "bytes": 328
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/hpos-object-proof-seed-pre-conversion.json": {
+    "sha256": "a2109d7149effddaa25c1357918d855f5f87382a1378e4180889df73df7a7206",
+    "bytes": 68901
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00021.json": {
+    "sha256": "7e68bdb9435c71102e328be60f8cb63dc9fba8b7badfad76386eaf138854b41e",
+    "bytes": 1095
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00020.json": {
+    "sha256": "2c8c01cc3f33d29a0d580eb7d8601071e4a804fe15f4361361670a036c445535",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/address-index-negative-controls.json": {
+    "sha256": "c531086433cefe5c3ea971a9b2c8bd4914ffb068cfcf126b5c2065e0a5e6cdac",
+    "bytes": 792
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/restore-1792439139391354000-command-3.txt": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/typed-comparison-controls.json": {
+    "sha256": "1dda7e44c13ec737f59e7cb57e841dba0f13570e2b2fe582f8e970c0d163e389",
+    "bytes": 339
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/restore-1792439139391354000-command-2.txt": {
+    "sha256": "c09d7e3acd3980fb5993637d0b1ac237e29c9b8aba5e48940820e5f711fef4b9",
+    "bytes": 176
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/command-00016.json": {
+    "sha256": "9d3d5eb9a7d98c533bb2db15c2b5350ab6201274d1188b4772d61efe56681693",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792439139391354000/restore-1792439139391354000-command-1.txt": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440249562506000/results.json": {
+    "sha256": "3d2113a7e56a3a686d9f86d941a5ddad61a7b4ab107a4d38f4231f76eaf14989",
+    "bytes": 5824
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440249562506000/command-00001.txt": {
+    "sha256": "6b52bb421406fb01d99b858e266bc6a0024c1fa99efa9b7710a1f3be86e65652",
+    "bytes": 34
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440249562506000/command-00001.json": {
+    "sha256": "4abd5a48bb7d10cff386d21f3e0dac18e26167038d84534836e83db1d153f2a2",
+    "bytes": 1811
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440249562506000/containment.json": {
+    "sha256": "a8e704bff10bcfe5d5a5302e9955825c104b32205daff4002be0833917822060",
+    "bytes": 328
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/restore-1792440746936585000-command-1.txt": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00015.json": {
+    "sha256": "d3e5a85a22518b88e002cfadbdbf8d82c68e4122f4bcdc40bd895a5b4051c00d",
+    "bytes": 1099
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00003.json": {
+    "sha256": "faacba19385b781a3a970a19e82be847cd9a0eaf9f144688299d6f3ad636a2f2",
+    "bytes": 518
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00023.json": {
+    "sha256": "5e51cbfbbe3c1d16041a9331a84a27a1f7d713fe1278da7c383cd7ed373f34e9",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/restore-1792440746936585000-command-2.txt": {
+    "sha256": "e62e3f11686e86f9af306b93dc8fa6e10b1e2a8c8320aa40792d741942bb5add",
+    "bytes": 176
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/restore-1792440746936585000-command-3.txt": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00019.json": {
+    "sha256": "110d453d83911c29e30441ffa9eb3006760a5e1b9365733787e24aefea85a473",
+    "bytes": 1100
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00018.json": {
+    "sha256": "a1a0f93b8cb2275a0457660fccc8876c5974bc3ebc63d0dc30660e0e1547aac4",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00034.json": {
+    "sha256": "a34a8673dbd1df51c9ace721dfde93fc5fb84c762754ead29812ea5d54c53f38",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00022.json": {
+    "sha256": "e7cd171557ea9244813cb5172bb8d84f52d742575536422d0bea58eade6c2f97",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00002.json": {
+    "sha256": "87571e4bd2924074b28d82c94b2a441778cbd65d0fde4bc01cc759461efe41d9",
+    "bytes": 572
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00014.json": {
+    "sha256": "d3cf7c2da18d5eb43aaaa1ce49b9dc9fe271807b5fa7d426930aa31ffaf95378",
+    "bytes": 1056
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/payment-bad-key.json": {
+    "sha256": "0cb8ba11107d9a9fac5f6c2beeb050df69fcdd0ef198ac0db51acc6380a974b9",
+    "bytes": 126126
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00025.json": {
+    "sha256": "2eced822f6301dc5174b392824b7dd9c6f399aad3ea7848ec5b56d654718590d",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00026.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00032.txt": {
+    "sha256": "4e13e31fd9d2c90c6bda66a4b780c3a705efd7f3fe46365f96ff91fa0c283951",
+    "bytes": 39900
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/payment-v1-missing-id.json": {
+    "sha256": "d7df2c220a2caca6c3e2ae63f2a7dc2f8a2674634bfe3841b10a37cae437657c",
+    "bytes": 126085
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00033.json": {
+    "sha256": "2d9b03dfe5cb6b45f6fa1067078de8f7f6ff0e847d187dd5bf0f2959dfd055c9",
+    "bytes": 1140
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00009.json": {
+    "sha256": "90f996450556689c04989fe933712ba81f62012c2ed9b272ec930e533b26c9eb",
+    "bytes": 1082
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/historical-payload-controls.json": {
+    "sha256": "2dd755ff6ff5f7746944ef6d4ef223da8a121e2909ef060838947f9789d2dd27",
+    "bytes": 461
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00033.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00027.txt": {
+    "sha256": "76d5560abd1b9a5879209d518e7e4bc1c896985b5f8ebe828682bdab4575583f",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00029.json": {
+    "sha256": "f9f6fe201f8f53bc315458534f7b8b351e26046ef1f680050f77386008005259",
+    "bytes": 1131
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00031.txt": {
+    "sha256": "4e13e31fd9d2c90c6bda66a4b780c3a705efd7f3fe46365f96ff91fa0c283951",
+    "bytes": 39900
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00025.txt": {
+    "sha256": "76d5560abd1b9a5879209d518e7e4bc1c896985b5f8ebe828682bdab4575583f",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00019.txt": {
+    "sha256": "1e5735a91a3a709f6d97650fc0dbd7dff82963e6bb0203688d370d32e57b386a",
+    "bytes": 39961
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00013.json": {
+    "sha256": "4c52d65aa9b42c3bcd064411970260266571f8e5d60a681fa702c345012cf6f3",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/results.json": {
+    "sha256": "d91dbe4200713ab2e4746cbfeef56dc43eeaedc0ba8e405dd8b658ec014f0062",
+    "bytes": 79341
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00018.txt": {
+    "sha256": "6e5acf5a0794610743e3a49b1d850f9be51120fdd6526abe33347b213008dd1c",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00005.json": {
+    "sha256": "da9b7a213e24b28965e110a2ec7c306b5169b19d1c284f20697b14c100708144",
+    "bytes": 1163
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00024.txt": {
+    "sha256": "76d5560abd1b9a5879209d518e7e4bc1c896985b5f8ebe828682bdab4575583f",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00030.txt": {
+    "sha256": "76d5560abd1b9a5879209d518e7e4bc1c896985b5f8ebe828682bdab4575583f",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00008.txt": {
+    "sha256": "1bc63b539dbe65da5a38391997c8537c0149d98fcb4dd3626bbd1d25e0c5dbf2",
+    "bytes": 768
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00004.json": {
+    "sha256": "c8f7d607bcdd78cb1ab8cc01186c809dfbc7cb8c09bfe25ed2d7e7bcb706a776",
+    "bytes": 1198
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00034.txt": {
+    "sha256": "81478971d071574a552fd7a57ba61d74af196c9f2cb667560183480a02ee9f91",
+    "bytes": 39928
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00020.txt": {
+    "sha256": "1e5735a91a3a709f6d97650fc0dbd7dff82963e6bb0203688d370d32e57b386a",
+    "bytes": 39961
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00012.json": {
+    "sha256": "dda69fbee209c233bfd2e2bfefd85af836271473690b0b6f7ebccd0fe89f9906",
+    "bytes": 1072
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00021.txt": {
+    "sha256": "6e5acf5a0794610743e3a49b1d850f9be51120fdd6526abe33347b213008dd1c",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00009.txt": {
+    "sha256": "5b97f064556da4fa7e22ec9a2cbf229ae8e30bf9fc44dbdc99166c4533ee69ea",
+    "bytes": 81
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00028.json": {
+    "sha256": "614b092610494e7d6931754f97ad324b7935760bdbb32666e8434fe8d4458274",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00023.txt": {
+    "sha256": "76d5560abd1b9a5879209d518e7e4bc1c896985b5f8ebe828682bdab4575583f",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00008.json": {
+    "sha256": "8e1831662a8c51d62445dcfdadbb586f09adab3b7337a2f11b79718cfa278ed9",
+    "bytes": 1087
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00032.json": {
+    "sha256": "6e7ac7e9c03188bf47739f36048ce0f20f1e859fc89163f0abc6dbec2018ab5a",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00022.txt": {
+    "sha256": "6e5acf5a0794610743e3a49b1d850f9be51120fdd6526abe33347b213008dd1c",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00024.json": {
+    "sha256": "f5ecb690b3c786bbc3e1c07dbf54cc35e52ddb9399a1a1dfe470c7f55169fc1a",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00007.txt": {
+    "sha256": "f62622cf9cc01dc5c814b986b16ed0f16ad82c0a50521515d05a94914f49a246",
+    "bytes": 38
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00013.txt": {
+    "sha256": "6e5acf5a0794610743e3a49b1d850f9be51120fdd6526abe33347b213008dd1c",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00031.json": {
+    "sha256": "38b0cee879720a352df4c9ad4c07baa9ecc5d25baff4934b3ab51321e489653a",
+    "bytes": 1095
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00012.txt": {
+    "sha256": "6e5acf5a0794610743e3a49b1d850f9be51120fdd6526abe33347b213008dd1c",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00006.txt": {
+    "sha256": "214766dad5e8ab5d249999b7ac72cbe9dc287889fa11d1e5e7be0a2792a59111",
+    "bytes": 50
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00027.json": {
+    "sha256": "12b4bc59e932abdbda805f522632df492b5b7f3c7fd012544f85405ae378db43",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00010.txt": {
+    "sha256": "7ad11c2060c51d4b7a024b9cd012fc6b7deb7bf54b98a40382fec7579a5a1abc",
+    "bytes": 820
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00004.txt": {
+    "sha256": "58ea03a28e26fa5bca9f005daf06f6f1ad3115500f21af5c867cd339233c5e25",
+    "bytes": 43
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00007.json": {
+    "sha256": "e3c844010edf3d02a464c451970e85a66845f87e84f9d5cca3d286026cc2defe",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00011.json": {
+    "sha256": "e11ab9634f7b066108e514df2df8966bf438361b5ed77473ce124d56958fe368",
+    "bytes": 1085
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00005.txt": {
+    "sha256": "27f721573d105932303292e2566447b9ed1b3726617ef6e0561ba4a17c4d91ee",
+    "bytes": 332
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00011.txt": {
+    "sha256": "3d37e27238cd63ca0ff4c3dad76366102aef0fbe74c88fc872cbca697db96a49",
+    "bytes": 821
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00029.txt": {
+    "sha256": "d25fa9cc349943e4646efbaca80d360a7caff6eaca2925dc7de5435c3ef13102",
+    "bytes": 37
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00015.txt": {
+    "sha256": "1945be8ea99080de87ea474723df7b15a3bc005320e75a80cc277e2c0f3ce145",
+    "bytes": 39959
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00001.txt": {
+    "sha256": "6b52bb421406fb01d99b858e266bc6a0024c1fa99efa9b7710a1f3be86e65652",
+    "bytes": 34
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00010.json": {
+    "sha256": "8464bec2069b0311b7bf11f5756330f8c08ef62240d0e73c4fccaf68877590eb",
+    "bytes": 1073
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00014.txt": {
+    "sha256": "ec557a3b922c1b2a9483b759f84dca51ec36c73849dfde454388dec8d0903608",
+    "bytes": 37478
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00006.json": {
+    "sha256": "763de404ec8d2ec895daf362125cdc9caac37e60cdd8085c6f514713a186a254",
+    "bytes": 982
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00028.txt": {
+    "sha256": "76d5560abd1b9a5879209d518e7e4bc1c896985b5f8ebe828682bdab4575583f",
+    "bytes": 40016
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00026.json": {
+    "sha256": "de105a94470447c4c728b2d275ce4b4425eec5e584e14717ba6b8afc6edbb9ab",
+    "bytes": 1135
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00002.txt": {
+    "sha256": "cfee504cf6e7f2ed6961568ff8857985bf3644c6754663d46347b63d142a744b",
+    "bytes": 1824
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00016.txt": {
+    "sha256": "1945be8ea99080de87ea474723df7b15a3bc005320e75a80cc277e2c0f3ce145",
+    "bytes": 39959
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/payment-bad-nonce.json": {
+    "sha256": "1e0d97d02db9bac3f54d8d07ccd2e399fc3e33015d7964a1e4822bda254a79c9",
+    "bytes": 126132
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00030.json": {
+    "sha256": "6dec2c8db24c2a77db798ff9f3b0b3d876d7b8a0cfa7f0d68efcfd40f2c3fe05",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00017.txt": {
+    "sha256": "6e5acf5a0794610743e3a49b1d850f9be51120fdd6526abe33347b213008dd1c",
+    "bytes": 39965
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00003.txt": {
+    "sha256": "62d4c02f22f167bc961c3c084453344789e02ce180a2444180b592b96c3e003c",
+    "bytes": 48
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00001.json": {
+    "sha256": "213383898c1c662be7ad9181c2bd6034408df45480d25265fdc237ad15647787",
+    "bytes": 1811
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00017.json": {
+    "sha256": "d969af2f5d66fdee0c008e84792c93d299c8dfa93274460af0c6edadb29aba5a",
+    "bytes": 1095
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/containment.json": {
+    "sha256": "9954a36e8080aba75b22b0b0b10e9dbc268616c7c1243b74c4e009ff654d17cd",
+    "bytes": 328
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/hpos-object-proof-seed-pre-conversion.json": {
+    "sha256": "f34194cd996656e0a6f04540f022a4c66d3da89919de1f38534d47214cfe1673",
+    "bytes": 68901
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00021.json": {
+    "sha256": "a63136241c7e21ba30247b43fb3c6cbe1b7f67658be4aa0b6aab465e95ce5220",
+    "bytes": 1095
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00020.json": {
+    "sha256": "533a3f4eb69401c67b0e0f6d702295536b0fea0d113b2b2b77fc4a75966abca5",
+    "bytes": 1075
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/address-index-negative-controls.json": {
+    "sha256": "c531086433cefe5c3ea971a9b2c8bd4914ffb068cfcf126b5c2065e0a5e6cdac",
+    "bytes": 792
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/typed-comparison-controls.json": {
+    "sha256": "1dda7e44c13ec737f59e7cb57e841dba0f13570e2b2fe582f8e970c0d163e389",
+    "bytes": 339
+  },
+  "tasks/release-gates-20261019/gate4-populated/run-1792440746936585000/command-00016.json": {
+    "sha256": "af6af789be8ac2442fad6139d7dc6f2e9a5760e377a5eb2a8a0144a19d69db39",
+    "bytes": 1075
+  }
+}
