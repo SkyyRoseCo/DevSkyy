@@ -31,7 +31,7 @@ except ImportError:
     print("⚠️  rembg not found — background removal disabled")
 
 try:
-    from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageOps
+    from PIL import Image, ImageEnhance, ImageFilter
 
     PIL_OK = True
 except ImportError:

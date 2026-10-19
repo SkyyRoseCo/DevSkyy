@@ -37,6 +37,13 @@ function get_permalink( $post ) {
 function __( $v ) {
 	return $v;
 }
+function esc_html_e( $v ) {
+	echo htmlspecialchars( (string) $v );
+}
+function esc_url( $v ) {
+	return htmlspecialchars( (string) $v );
+}
+function get_template_part() {}
 function skyyrose2_marketplace_pages() {
 	return array(
 		'journal'                => array( 'path' => 'journal' ),
@@ -125,6 +132,24 @@ sr2_assert( isset( $house['Lookbook'] ) && 'https://t.test/?p=21' === $house['Lo
 // 6. No two nav entries share a URL.
 $urls = array_values( skyyrose2_house_links() );
 sr2_assert( count( $urls ) === count( array_unique( $urls ) ), 'house nav has no duplicate destinations' );
+
+// 7. Homepage journal band: no CTA to an unpublished journal/lookbook; links return once published.
+function sr2_render_journal_band() {
+	ob_start();
+	include dirname( __DIR__ ) . '/template-parts/home/editorial-journal.php';
+	return (string) ob_get_clean();
+}
+unset( $GLOBALS['sr2_pages']['journal'], $GLOBALS['sr2_pages']['lookbook'] );
+$band = sr2_render_journal_band();
+sr2_assert( false === strpos( $band, 'Read the journal' ) && false === strpos( $band, 'Explore the lookbook' ), 'homepage journal band must not render CTAs to unpublished pages' );
+sr2_assert( false === strpos( $band, 'href="https://t.test/journal/"' ), 'homepage journal band must never emit the documented-route fallback' );
+sr2_assert( false !== strpos( $band, 'Ideas in motion.' ), 'journal band content still renders without the CTAs' );
+$GLOBALS['sr2_pages']['journal']  = new WP_Post( 20, 'publish' );
+$GLOBALS['sr2_pages']['lookbook'] = new WP_Post( 21, 'publish' );
+$band = sr2_render_journal_band();
+sr2_assert( false !== strpos( $band, 'href="https://t.test/?p=20"' ) && false !== strpos( $band, 'href="https://t.test/?p=21"' ), 'published journal/lookbook CTAs return' );
+$GLOBALS['sr2_pages']['lookbook'] = new WP_Post( 21, 'draft' );
+sr2_assert( false === strpos( sr2_render_journal_band(), 'Explore the lookbook' ), 'a draft lookbook is not linked' );
 
 if ( $fail ) {
 	exit( 1 );

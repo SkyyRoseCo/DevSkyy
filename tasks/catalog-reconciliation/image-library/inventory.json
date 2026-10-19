@@ -1,7 +1,7 @@
 {
   "scope": "Image inventory of worktree excluding dependency/cache folders; supplemental main checkout assets/renders/theme/golden/data. Same-path same-byte supplemental copies omitted. Includes non-product imagery pending classification. Filename candidates are not authoritative product bindings. Since 2026-10-14 also holds non-image media (video, 3D, fonts, PDF) that the asset SOT census (scripts/asset_sot_census.py) found referenced by no ledger.",
   "counts": {
-    "unassigned": 3030,
+    "unassigned": 3034,
     "unverified-candidate": 1620,
     "registry-associated-by-hash": 538
   },
@@ -6040,8 +6040,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/poster/br-006-hero-origin-poster.jpg",
       "location": "worktree",
-      "sha256": "b3f037953b5d377f44cd19ba14a8d4ac5f1043695e46e7b42d48d773b3456d8f",
-      "bytes": 34971,
+      "sha256": "6f0246ba7084a32600781b9eb7c1c0c43ab63461a145ede3efe2f6f063cbe236",
+      "bytes": 45036,
       "status": "unverified-candidate",
       "candidate_skus": [
         "br-006"
@@ -8574,8 +8574,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-love-hurts-cathedral.webp",
       "location": "worktree",
-      "sha256": "c8b2aeb4876ae2bb493bd92e5a80d38f2923014feca1391f38e048178e609604",
-      "bytes": 183050,
+      "sha256": "9bc96f5b33b5bcf2498d619c8dc85caa5edf2478dd5c827b5426783cbdbc2313",
+      "bytes": 214390,
       "status": "unassigned",
       "candidate_skus": []
     },
@@ -9378,8 +9378,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/branding/collection-logo-black-rose.jpg",
       "location": "worktree",
-      "sha256": "e4d794d5c5fd1647bb0225a51eaee04c1ed2311c6cc50485484c6555dcf7e3d7",
-      "bytes": 58347,
+      "sha256": "6ba2ea2a6f07f1e4503676944a4c2a59074877c9c5c9c388307372e42f9223f1",
+      "bytes": 63086,
       "status": "unassigned",
       "candidate_skus": []
     },
@@ -9794,8 +9794,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/preorder-hero-poster.jpg",
       "location": "worktree",
-      "sha256": "7a09dbc33620d2c5bc03182bc1098996fdd23d1cd361c187c09bb0b1df35a233",
-      "bytes": 106969,
+      "sha256": "17800c6bb4192d20a78ecc9c6f2b5738816b46f5488d19fccf29cfff15d7739b",
+      "bytes": 95071,
       "status": "unassigned",
       "candidate_skus": []
     },
@@ -9842,8 +9842,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/preorder-hero-poster.webp",
       "location": "worktree",
-      "sha256": "3336cbaf653a841e1a2882cd081f0abc03ee5b74b7ff46093e8ac8440cd59ee3",
-      "bytes": 53134,
+      "sha256": "0d17d5f3a26b155a521f2c5b068ba2b71d4dfef142887710d3358f3f13eda05f",
+      "bytes": 48778,
       "status": "unassigned",
       "candidate_skus": []
     },
@@ -11348,8 +11348,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/colorblock-purple-set-real.webp",
       "location": "worktree",
-      "sha256": "e063bdeee1247965202827d75f30f153d6171b054b7f34c06cb1b7c841f6fd69",
-      "bytes": 7886,
+      "sha256": "e5bccb8926d6827af5dc59bd1fa8fd297b0ba5b2a53847c19467aca9af7cf852",
+      "bytes": 8450,
       "status": "unassigned",
       "candidate_skus": []
     },
@@ -12648,8 +12648,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/colorblock-purple-set-real.avif",
       "location": "worktree",
-      "sha256": "5f2485bde7a34535878a7097e4425364966f43f0e87efb0327a4b63a550b969f",
-      "bytes": 8370,
+      "sha256": "28ddad15509fc208cd7bc3a0c281c09b25dea5bcbbf47a37100b3d40e1d7a9d1",
+      "bytes": 9896,
       "status": "unassigned",
       "candidate_skus": []
     },
@@ -14020,8 +14020,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/colorblock-purple-set-real.jpg",
       "location": "worktree",
-      "sha256": "3056eaea3a73c881e6b5804fb70a70207a9f3091e4dc44413d4cbd20a9b5f1ee",
-      "bytes": 31841,
+      "sha256": "bb846bea8499fb2a99c1a5d80c268b88b4e577ff700acaacac22a479fedb9d70",
+      "bytes": 46195,
       "status": "unassigned",
       "candidate_skus": []
     },
@@ -20685,8 +20685,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/immersive/scene-love-hurts-cathedral.avif",
       "location": "worktree",
-      "sha256": "3e665e3a568caa2833893d32469ebb4f45f4b570a5a63b99d0f35f3b8a687072",
-      "bytes": 129570,
+      "sha256": "12940ec723456fad642a31fdc6e7ba3eb438b214a20b0401fe5823c1ab37c59f",
+      "bytes": 164405,
       "status": "unassigned",
       "candidate_skus": []
     },
@@ -20717,8 +20717,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/immersive/scene-love-hurts-cathedral.webp",
       "location": "worktree",
-      "sha256": "c8b2aeb4876ae2bb493bd92e5a80d38f2923014feca1391f38e048178e609604",
-      "bytes": 183050,
+      "sha256": "9bc96f5b33b5bcf2498d619c8dc85caa5edf2478dd5c827b5426783cbdbc2313",
+      "bytes": 214390,
       "status": "unassigned",
       "candidate_skus": []
     },
@@ -20757,56 +20757,56 @@
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/hero/preorder-video-poster-480w.jpg",
       "location": "worktree",
-      "sha256": "83af990202c0724716ce6b1088b4784965afb224fae1f5443a4d2a2f35b2d9b7",
-      "bytes": 20921,
+      "sha256": "2e96fac37a42dee8600f1928a3d7353a4337acea2611b4ffdba36bdf4958f156",
+      "bytes": 22088,
       "status": "unassigned",
       "candidate_skus": []
     },
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/hero/preorder-video-poster-720w.jpg",
       "location": "worktree",
-      "sha256": "ae6066b049b452060d217d00a0eeacb93f61d10e5698e025a3742c67860852ed",
-      "bytes": 35844,
+      "sha256": "0ef85187c50ce4df1f249962e2c7d81e054b0a070cc259ddf40aff561c9c3854",
+      "bytes": 38415,
       "status": "unassigned",
       "candidate_skus": []
     },
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/hero/home-hero-poster-720w.jpg",
       "location": "worktree",
-      "sha256": "06dc50a175fe02b6a764d9fa0c7d4f842ef06e58830f6332da181d52d2cec784",
-      "bytes": 27033,
+      "sha256": "177952626f9eeb61d1924c63e3b6699def439efe5268986cbe9bae0b636b156a",
+      "bytes": 37785,
       "status": "unassigned",
       "candidate_skus": []
     },
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/hero/home-hero-poster-480w.webp",
       "location": "worktree",
-      "sha256": "2a7d8e60e066e4f2ab9eccd3ebdd083611a9b024816ecee6f32d9568de0c22ba",
-      "bytes": 11184,
+      "sha256": "cb729d0700a8d1b2be90b9e2e4dcd3ab896174c10154f8dc7e4ba80d2613e377",
+      "bytes": 10532,
       "status": "unassigned",
       "candidate_skus": []
     },
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/hero/home-hero-poster-720w.webp",
       "location": "worktree",
-      "sha256": "3edca713c63f9555b55e9e0c6a190f700196987b6f63bb25ca8727a31875f8a1",
-      "bytes": 18604,
+      "sha256": "c1259484396440828b303d20c8dab0b7df91d11bada7a285ecb92c6f8ed3e351",
+      "bytes": 17412,
       "status": "unassigned",
       "candidate_skus": []
     },
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/hero/preorder-video-poster-720w.webp",
       "location": "worktree",
-      "sha256": "76e7474e1cae67586c5621b6a23bcb213dc88c8d3dc2ad33494f1a0cc265af9c",
-      "bytes": 21136,
+      "sha256": "03abf4cf82b4d423edcf6c124bf28af9af292ac440b45698112d135e6d1e7394",
+      "bytes": 18070,
       "status": "unassigned",
       "candidate_skus": []
     },
     {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/hero/preorder-video-poster-480w.webp",
       "location": "worktree",
-      "sha256": "1649d071ef57fbbf2942564f95ddc4acd7b4d31faee613001ddb402e32ac7878",
-      "bytes": 12622,
+      "sha256": "d27776e890ac1046877c0bd06f5ac396e65f984d3827863cd704aa62a3064f4f",
+      "bytes": 10676,
       "status": "unassigned",
       "candidate_skus": []
     },
@@ -48795,8 +48795,8 @@
     {
       "path": "assets/3d-models/black-rose/Video Apr 21 2024, 11 01 18 AM.mov",
       "location": "worktree",
-      "sha256": "b406a108d1e04d311367d78eb7c79cf4108914ebf80761bcd91b658f4ea0cf2a",
-      "bytes": 18514110,
+      "sha256": "278579dac972e6d45c64fb22623dcfde930e1cf3b2aac8a3536eff365ebb0f63",
+      "bytes": 18563179,
       "status": "unassigned",
       "candidate_skus": [],
       "review_category": "source-footage",
@@ -49065,8 +49065,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4",
       "location": "worktree",
-      "sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
-      "bytes": 20973139,
+      "sha256": "79bb57589b5d4ac3a0d10e144a63cd3b6c47b1f20796d53646f491529d505653",
+      "bytes": 20916230,
       "status": "unassigned",
       "candidate_skus": [],
       "review_category": "theme-media-unregistered",
@@ -49075,8 +49075,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.mp4",
       "location": "worktree",
-      "sha256": "405321e50b8544917aa5075e817ad22ad58e51b90afd19bc7d0192b69e5f038b",
-      "bytes": 4365405,
+      "sha256": "401f8c48c0aaddae222d3516c666705bf733176275e7370b961f1f338c2adaec",
+      "bytes": 4316767,
       "status": "unassigned",
       "candidate_skus": [],
       "review_category": "theme-media-unregistered",
@@ -49085,8 +49085,8 @@
     {
       "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.webm",
       "location": "worktree",
-      "sha256": "19e965a65f63b0768166849a1d7e800f6349bc5c8ba77cf42aac5fcebce0576d",
-      "bytes": 2859993,
+      "sha256": "89e219883e100b1d723f082bc7e61a93cc99f0de6253f6f5205c3c4513b65825",
+      "bytes": 2961751,
       "status": "unassigned",
       "candidate_skus": [],
       "review_category": "theme-media-unregistered",
@@ -49283,26 +49283,6 @@
       "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme media file absent from every Flagship 2 media ledger (v2-canonical-media, v2-media-eligibility, collection-hero-motion, etc.). Parked for founder decision; no identity or binding is asserted."
     },
     {
-      "path": "wordpress-theme/skyyrose-flagship/assets/fonts/kaushan-script-latin.woff2",
-      "location": "worktree",
-      "sha256": "d6ca8ff38a71629475ec11665a9929ed6228975146de972e7034db008bf11836",
-      "bytes": 32644,
-      "status": "unassigned",
-      "candidate_skus": [],
-      "review_category": "retired-font",
-      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Legacy script face superseded by the bespoke Black Rose / Love Hurts scripts (not canon per design-system sync-theme-assets.mjs) yet still declared in V1 assets/css/fonts.css. Parked for founder decision; no identity or binding is asserted."
-    },
-    {
-      "path": "wordpress-theme/skyyrose-flagship/assets/fonts/pacifico-latin.woff2",
-      "location": "worktree",
-      "sha256": "1a47a54e53bbfd3cfb4673636eac5edc98a7ecbf36c41340f48086a4f4796b18",
-      "bytes": 22296,
-      "status": "unassigned",
-      "candidate_skus": [],
-      "review_category": "retired-font",
-      "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Legacy script face superseded by the bespoke Black Rose / Love Hurts scripts (not canon per design-system sync-theme-assets.mjs) yet still declared in V1 assets/css/fonts.css. Parked for founder decision; no identity or binding is asserted."
-    },
-    {
       "path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-joggers/black-rose-joggers-front-model.pdf",
       "location": "worktree",
       "sha256": "442242852cc2d54eee4b2113ae9213de3aadfb3537b98dd7282c01bd3300c213",
@@ -49341,6 +49321,46 @@
       "candidate_skus": [],
       "review_category": "theme-3d-model",
       "review_basis": "Asset SOT census 2026-10-14: tracked in Git, referenced by no ledger. Theme mascot model; 3D content not pixel-verifiable here (runtime reference exists in theme code where noted by CLAUDE.md). Parked for founder decision; no identity or binding is asserted."
+    },
+    {
+      "path": "tasks/jersey-direction-reset-20261014/red-team/men-blind.jpg",
+      "location": "worktree",
+      "sha256": "8d8a62d70d9f9741d992c2be39b3b204fe032ff5ad6caf0b4653732509adf0a5",
+      "bytes": 87300,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "task-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: red-team comparison renders from the jersey direction reset task, landed with the shared checkout's uncommitted work. Generated review evidence, not product photography; no identity or binding is asserted. Parked for founder decision."
+    },
+    {
+      "path": "tasks/jersey-direction-reset-20261014/red-team/men-native-2.5.jpg",
+      "location": "worktree",
+      "sha256": "91ff384aa92228939e86ac03925eba5a60bc9a4a687623fb82d021b21356d13e",
+      "bytes": 96147,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "task-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: red-team comparison renders from the jersey direction reset task, landed with the shared checkout's uncommitted work. Generated review evidence, not product photography; no identity or binding is asserted. Parked for founder decision."
+    },
+    {
+      "path": "tasks/jersey-direction-reset-20261014/red-team/women-blind.jpg",
+      "location": "worktree",
+      "sha256": "3114c6944ad86ae79c30567b4687e0a5b12f208d1ab2d2e92d0d2dae6b0ac16a",
+      "bytes": 137285,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "task-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: red-team comparison renders from the jersey direction reset task, landed with the shared checkout's uncommitted work. Generated review evidence, not product photography; no identity or binding is asserted. Parked for founder decision."
+    },
+    {
+      "path": "tasks/jersey-direction-reset-20261014/red-team/women-native-4.jpg",
+      "location": "worktree",
+      "sha256": "d7f581a225766c717b3490d0fde229ee564d45e0dc36e17272843b13174373c9",
+      "bytes": 93925,
+      "status": "unassigned",
+      "candidate_skus": [],
+      "review_category": "task-evidence",
+      "review_basis": "Asset SOT census 2026-10-14: red-team comparison renders from the jersey direction reset task, landed with the shared checkout's uncommitted work. Generated review evidence, not product photography; no identity or binding is asserted. Parked for founder decision."
     }
   ]
 }

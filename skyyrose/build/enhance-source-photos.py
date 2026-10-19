@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 try:
-    from rembg import new_session, remove
+    from rembg import new_session, remove  # noqa: F401  (availability probe only)
 
     REMBG_OK = True
 except ImportError:
@@ -16,7 +16,7 @@ except ImportError:
     print("⚠️  rembg not found — background removal disabled")
 
 try:
-    from PIL import Image, ImageEnhance, ImageFilter, ImageOps
+    from PIL import Image, ImageEnhance, ImageFilter
 except ImportError:
     print("❌ Pillow required: pip3 install Pillow")
     sys.exit(1)

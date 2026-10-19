@@ -4,7 +4,7 @@ Tags: woocommerce, elementor, full-site-editing, fashion, ecommerce, luxury, acc
 Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 2.2.4
+Stable tag: 2.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,12 @@ Typography, header layout, footer layout, and collection palette overrides are c
 10. Mobile responsive layout
 
 == Changelog ==
+
+= 2.2.6 =
+* Media: removed burned-in third-party watermarks — the Lens Eye camera logo from the home-hero and preorder-hero videos and their posters (cropped out of the frame), the Gemini sparkle from the Black Rose collection logo, and the corner text on the Love Hurts cathedral scene; version bump refreshes cached media URLs
+
+= 2.2.5 =
+* Fonts: removed the retired Pacifico and Kaushan Script faces (@font-face declarations, woff2 files and credits); the bespoke SkyyRose Black Rose Script and Love Hurts Graffiti replaced them on 2026-07-11
 
 = 2.2.3 =
 * Architecture: split enqueue, SEO, and preorder rendering into focused modules while preserving hook order and public interfaces
@@ -348,8 +354,6 @@ All typefaces are self-hosted in /assets/fonts/ for GDPR compliance and performa
 
 Collection script accent fonts (per-collection interior headings, self-hosted):
 
-* Pacifico — https://fonts.google.com/specimen/Pacifico (SIL Open Font License 1.1) — Black Rose accent
-* Kaushan Script — https://fonts.google.com/specimen/Kaushan+Script (SIL Open Font License 1.1) — Love Hurts accent
 * Pinyon Script — https://fonts.google.com/specimen/Pinyon+Script (SIL Open Font License 1.1) — Signature accent
 * Grand Hotel — https://fonts.google.com/specimen/Grand+Hotel (SIL Open Font License 1.1) — Kids Capsule accent
 

@@ -50,6 +50,11 @@ def guard_repo(tmp_path: Path) -> Path:
     git(repo, "config", "user.email", "guard@test")
     git(repo, "config", "user.name", "guard")
     (repo / "scripts" / "freshness-guard.sh").write_bytes(GUARD.read_bytes())
+    # Check 6 (formatter-ignore coverage) fails closed by design (bug-332) and needs the
+    # repo's real verifier plus prettier. These cases exercise the version triple and
+    # .min checks, so the verifier is stubbed to pass; test_formatter_check_fails_closed
+    # proves the guard still refuses when the verifier is absent.
+    (repo / "scripts" / "verify-formatter-ignores.mjs").write_text("process.exit(0);\n")
     for theme, (_, version) in THEMES.items():
         write_triple(repo, theme, version)
         css = repo / "wordpress-theme" / theme / "assets" / "css"
@@ -216,3 +221,14 @@ class TestFlagship2PinnedToolchain:
         assert "/tmp/fg_min2.log" not in guard
         assert "/tmp/fg_fix_min2.log" not in guard
         assert "mktemp -d" in guard
+
+
+def test_formatter_check_fails_closed_without_its_verifier(guard_repo: Path) -> None:
+    (guard_repo / "scripts" / "verify-formatter-ignores.mjs").unlink()
+    git(guard_repo, "add", "-A")
+    git(guard_repo, "commit", "-qm", "drop verifier")
+    result = subprocess.run(
+        ["bash", "scripts/freshness-guard.sh"], cwd=guard_repo, capture_output=True, text=True
+    )
+    assert result.returncode == 1
+    assert "derived or pinned file is formattable" in result.stdout

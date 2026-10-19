@@ -38,6 +38,28 @@ and this authority rule to every delegated agent and workflow.
 Follow `.wolf/OPENWOLF.md` every session. Check `.wolf/cerebrum.md` before
 generating code, `.wolf/anatomy.md` before reading files.
 
+**Session handoff log — required, every session, every agent.** Multiple agents
+(Claude Code, Codex, Ralph loops) work this repo at once; `.wolf/memory.md` is
+how each one knows where the others left off.
+
+- **Before starting:** read the last ~20 rows. Do not redo work marked done, and
+  do not touch files another agent marked in-progress — pick other work or ask.
+- **Before ending:** append one row to `.wolf/memory.md` in the **main
+  checkout** (first path in `git worktree list`), never a worktree's copy —
+  other agents can't see it until merge:
+  `| YYYY-MM-DD HH:MM | <agent> @ <branch> sid:<id8> | what you did | files / PRs | done · in-progress · blocked + next step | ~tokens |`
+  (`<id8>` = first 8 chars of your session id.)
+- Append only. Never edit or delete another agent's rows.
+- **Enforced.** `.wolf/hooks/handoff-gate.sh` (Claude Code + Codex) blocks the
+  first turn that changes the repo without a new `sid:<id8>` row — once per
+  session, handing you the pre-filled row — then reminds (user via Stop, model
+  via the next prompt) until you log. `.husky/pre-push` refuses to push a branch
+  with no `@ <branch>` row dated today/yesterday — the backstop for agents
+  without hooks. Bypass a push once with `WOLF_HANDOFF_SKIP=1`.
+- **Rotated.** Past 128KB the log keeps its newest ~64KB; older entries move
+  byte-for-byte to `.wolf/memory-archive/` (`scripts/wolf_memory_rotate.py`, run
+  at SessionStart). Search the archive for older history.
+
 **Source of Truth:** canonical product / imagery / brand / memory sources are
 registered in **`SOT.md`** (root symlinks: `skyyrose-catalog.csv`,
 `sot-images.json`, `cerebrum.md`, `anatomy.md`). Read `SOT.md` before caching
@@ -144,7 +166,7 @@ guess with a citation.
 | Visual / UI / live rendering       | **Chrome DevTools** or **Playwright MCP**, mobile **and** desktop              | Eyes-on, not an HTTP code                                                 |
 | Live HTML / JSON-LD / OG / headers | `curl -s "URL?cb=$(date +%s)" \| grep`                                         | **NEVER WebFetch** — strips `<script>`. Cache-bust: Batcache serves stale |
 | Codebase facts                     | **Read / Grep / Glob**, quote `file:line`                                      | `anatomy.md` first; code may have moved                                   |
-| Product facts (SKU, price, name)   | **catalog CSV** + per-SKU **dossier**                                          | Canonical only (`SOT.md`). Memory rots; the CSV doesn't                   |
+| Product facts (SKU, price, name)   | **`get_product(sku)`** → `logo-registry.json::products`                        | CSV + dossiers are generated projections — never verify against them      |
 | Imagery ownership                  | product → `sot-images.json` (`make sot-manifest`); else `visual-manifest.json` | **Filenames are not identity** — the manifest is                          |
 | What a render shows                | **Read the image** (vision); `identify` for metadata                           | One-shot batch quota — batch, never retry                                 |
 | Prior work                         | **mem-search** / `get_observations([IDs])`                                     | Check before re-deriving; cite obs IDs                                    |
@@ -320,11 +342,7 @@ check.
 - Files < 800 lines · functions < 50 lines
 - Immutability: `{...obj, key}`, never `obj.key = val`
 - No hardcoded secrets — env only (`.env`, `.env.wordpress`, `.env.secrets`)
-- Validate at boundaries: Zod (frontend) / Pydantic (backend)
-- Generic errors to clients; detailed logs server-side
-- Error handling on every external call
 - No `TODO` / `FIXME` / `pass` / `raise NotImplementedError` in delivered code
-- Python line length 100 (black + ruff + isort)
 - **npm, not pnpm, for Vercel deploys** — `ERR_INVALID_THIS` on Node 22+
 - Commits: `<type>: <description>` — feat, fix, refactor, docs, test, chore
 - **Fix everything in one batch, test all pages, deploy ONCE.** No drip-deploys.
@@ -420,8 +438,7 @@ acceptable before showing it.
 
 ## 5. Architecture
 
-AI-driven luxury fashion e-commerce (SkyyRose). Python 3.11+ · FastAPI · Next.js
-· WordPress/WooCommerce · Three.js.
+AI-driven luxury fashion e-commerce (SkyyRose).
 
 | Surface             | Host                                                                                                                   |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -575,6 +592,19 @@ per-file content hash). Shipping changed CSS/JS without bumping that theme's
 triple (`functions.php`, `style.css`, `readme.txt`) leaves returning visitors on
 stale cached assets.
 
+### Theme deploy gotchas (full procedure, inputs, verification: `/wp-deploy` skill)
+
+- **Atomic hot-swap**: production loses any file the source lacks (bug-252).
+  Rider manifest + census method → `docs/engineering-learnings.md`
+  "Deploy-source completeness". `preflight_completeness()`
+  (`scripts/deploy-theme.sh:313`) checks **git-tracked** files only; the 3
+  untracked `*-v2-avatar.webp` scene riders pass silently (`git add -f` puts a
+  rider under the gate).
+- **Version bump is deploy-correctness**: `SKYYROSE_VERSION` is the cache-bust
+  param on ~52 enqueue calls; ship changed CSS/JS without bumping the triple
+  (`functions.php`, `style.css`, `readme.txt`) and returning visitors get stale
+  assets.
+
 ---
 
 ## 8. Learnings
@@ -591,49 +621,24 @@ Grep before re-deriving a fix. Engineering → **`docs/engineering-learnings.md`
 - Keep `MEMORY.md` one line per entry; merge/prune stale entries.
 - `/efficient-production` discipline: terse, no padding, verifiable.
 
+<!-- prettier-ignore-start -->
 <!-- wolf:recurring:start -->
 
 ### Recurring issues (synced from `.wolf/buglog.json` — regenerate via `python scripts/wolf_recurring_sync.py`, do not hand-edit)
-
-- **bug-096** (×30, 2026-05-08): Tripo generate_multiview_image hallucinated
-  brand canon on 30 SKUs (120 renders… → fix: scripts/tripo_dispatch.py — added
-  classify_skus() function that blocks at the d…
-- **bug-172** (×24, 2026-06-30): OpenAI gpt-image-2 images.edit() call returns
-  400 'The model gpt-image-2 does n… → fix: FIXED 2026-06-30: config.py defines
-  INPUT_FIDELITY_SUPPORTED_MODELS = {gpt-imag…
-- **bug-263** (×8, 2026-07-31): SIGSEGV (EXC_BAD_ACCESS) 'crashed on child side
-  of fork pre-exec' — 12+ Python… → fix: conftest.py + scripts/ci-local.sh: on
-  darwin set no_proxy='_'/NO_PROXY='_' (set…
-- **bug-230** (×7, 2026-08-01): PATTERN: fail-open guards / silent fallbacks —
-  gates that pass when their input… → fix: Rule: every gate fails CLOSED —
-  absent manifest/config/token = block, exception…
-- **bug-231** (×6, 2026-09-18): PATTERN: test isolation / shared-state pollution
-  — tests failing only in full-s… → fix: Rule: per-test tmp_path (never
-  hardcoded /tmp), monkeypatch.setenv/delenv (neve…
-- **bug-098** (×4, 2026-05-12): DATA-01: /collection-black-rose/,
-  /collection-love-hurts/, /collection-signatur… → fix: Bumped
-  SKYYROSE_SETUP_VERSION constant from '4.0.0' to '4.1.0' in inc/theme-act…
-- **bug-177** (×2, 2026-09-19): paid-api-stopgate blocked read-only commands
-  (head/grep of deploy-theme.sh) and… → fix: deploy rules now require execution
-  context (interpreter invocation or command-p…
-- **bug-257** (×2, 2026-07-13): Stop-gate:
-  tests/test_asset_manifest.py::test_manifest_exists_and_loads fails i… → fix:
-  Centralized guard in tests/sparse_guard.py: requires_tree(rel) skips ONLY
-  when…
-- **bug-287** (×2, 2026-07-24): Reported a stale repo-side style.min.css as 'a
-  real production stale-serve defe… → fix: Evidence-scope rule in
-  tasks/lessons.md: tag load-bearing claims inline ([repo]…
-- **bug-327** (×2, 2026-09-17): wolf-memory (CONNECTION_CLOSED) and
-  worktree-fleet (CONNECTION_CLOSED) MCP serv… → fix: Changed the `command` for
-  wolf-memory and worktree-fleet in .mcp.json from `pyt…
-- **bug-332** (×2, 2026-09-18): Pre-commit lint-staged/prettier reformatted
-  derived and vendored assets, and th… → fix: Added `**/*.min.js`,
-  `**/*.min.css` and `wordpress-theme/skyyrose-flagship/asse…
-- **bug-333** (×2, 2026-09-18): Stop-gate blocked:
-  tests/api/test_brand_assets.py::TestBulkIngestion::test_bulk… → fix: NOT FIXED
-  -- pre-existing and unrelated to the session's product-SOT work (the…
-- **bug-377** (×2, 2026-10-14): Review of new llm/decisions layer:
-  NaN/inf/bool/positive logprobs accepted as p… → fix: _checked_logprob rejects
-  non-finite, bool and >0 logprobs (DecisionBackendError…
-
+- **bug-096** (×30, 2026-05-08): Tripo generate_multiview_image hallucinated brand canon on 30 SKUs (120 renders… → fix: scripts/tripo_dispatch.py — added classify_skus() function that blocks at the d…
+- **bug-172** (×24, 2026-06-30): OpenAI gpt-image-2 images.edit() call returns 400 'The model gpt-image-2 does n… → fix: FIXED 2026-06-30: config.py defines INPUT_FIDELITY_SUPPORTED_MODELS = {gpt-imag…
+- **bug-263** (×8, 2026-07-31): SIGSEGV (EXC_BAD_ACCESS) 'crashed on child side of fork pre-exec' — 12+ Python… → fix: conftest.py + scripts/ci-local.sh: on darwin set no_proxy='*'/NO_PROXY='*' (set…
+- **bug-230** (×7, 2026-08-01): PATTERN: fail-open guards / silent fallbacks — gates that pass when their input… → fix: Rule: every gate fails CLOSED — absent manifest/config/token = block, exception…
+- **bug-231** (×6, 2026-09-18): PATTERN: test isolation / shared-state pollution — tests failing only in full-s… → fix: Rule: per-test tmp_path (never hardcoded /tmp), monkeypatch.setenv/delenv (neve…
+- **bug-098** (×4, 2026-05-12): DATA-01: /collection-black-rose/, /collection-love-hurts/, /collection-signatur… → fix: Bumped SKYYROSE_SETUP_VERSION constant from '4.0.0' to '4.1.0' in inc/theme-act…
+- **bug-177** (×2, 2026-09-19): paid-api-stopgate blocked read-only commands (head/grep of deploy-theme.sh) and… → fix: deploy rules now require execution context (interpreter invocation or command-p…
+- **bug-257** (×2, 2026-07-13): Stop-gate: tests/test_asset_manifest.py::test_manifest_exists_and_loads fails i… → fix: Centralized guard in tests/sparse_guard.py: requires_tree(rel) skips ONLY when…
+- **bug-287** (×2, 2026-07-24): Reported a stale repo-side style.min.css as 'a real production stale-serve defe… → fix: Evidence-scope rule in tasks/lessons.md: tag load-bearing claims inline ([repo]…
+- **bug-327** (×2, 2026-09-17): wolf-memory (CONNECTION_CLOSED) and worktree-fleet (CONNECTION_CLOSED) MCP serv… → fix: Changed the `command` for wolf-memory and worktree-fleet in .mcp.json from `pyt…
+- **bug-332** (×2, 2026-09-18): Pre-commit lint-staged/prettier reformatted derived and vendored assets, and th… → fix: Added `**/*.min.js`, `**/*.min.css` and `wordpress-theme/skyyrose-flagship/asse…
+- **bug-333** (×2, 2026-09-18): Stop-gate blocked: tests/api/test_brand_assets.py::TestBulkIngestion::test_bulk… → fix: NOT FIXED -- pre-existing and unrelated to the session's product-SOT work (the…
+- **bug-377** (×2, 2026-10-14): Review of new llm/decisions layer: NaN/inf/bool/positive logprobs accepted as p… → fix: _checked_logprob rejects non-finite, bool and >0 logprobs (DecisionBackendError…
+- **bug-387** (×2, 2026-10-12): Stop-gate: tests/test_ml_optional.py::test_main_enterprise_imports_without_ml_l… → fix: NOT FIXED. Candidate: per-test @pytest.mark.timeout(30) on the subprocess-impor…
+- **bug-388** (×2, 2026-10-15): tests/scripts/test_build_web_glbs.py leaves an untracked ready.glb (1.2K glTF)… → fix: NOT FIXED: logged during the main-into-single-product-entry-point merge (2026-1…
 <!-- wolf:recurring:end -->
+<!-- prettier-ignore-end -->

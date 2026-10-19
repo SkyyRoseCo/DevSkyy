@@ -175,7 +175,7 @@ Per Corey's request — investigate before fixing to check for common root cause
 **Root cause:** Not duplicate header. WordPress primary navigation menu items have **bloated marketing labels**:
 
 ```html
-<li><a href="/">SkyyRose | Luxury Streetwear Born From Struggle</a></li>
+<li><a href="/">SkyyRoseLuxury Streetwear Born From Struggle</a></li>
 <li><a href="/collection-signature/">SIGNATURE COLLECTION | SKYYROSE</a></li>
 <li><a href="/collection-love-hurts/">LOVE HURTS COLLECTION | SKYYROSE</a></li>
 <li><a href="/collection-black-rose/">BLACK ROSE COLLECTION | SKYYROSE</a></li>
@@ -187,7 +187,7 @@ These long labels wrap onto multiple lines in the nav container, making it LOOK 
 **Evidence:** `header.php` is clean (verified by reading the file) — single nav with `wp_nav_menu(theme_location => 'primary')`. The labels above came from the LIVE HTML curled from `/collection-black-rose/`.
 
 **Fix surface:** WordPress admin — `Appearance → Menus → Primary Menu`. Rename each menu item label:
-- `SkyyRose | Luxury Streetwear Born From Struggle` → `Home` (or remove — the centered SKYY ROSE wordmark already handles home)
+- `SkyyRoseLuxury Streetwear Born From Struggle` → `Home` (or remove — the centered SKYY ROSE wordmark already handles home)
 - `SIGNATURE COLLECTION | SKYYROSE` → `Signature`
 - `LOVE HURTS COLLECTION | SKYYROSE` → `Love Hurts`
 - `BLACK ROSE COLLECTION | SKYYROSE` → `Black Rose`

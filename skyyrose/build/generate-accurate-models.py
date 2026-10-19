@@ -314,9 +314,6 @@ def run(product_ids: list[str] | None = None):
             continue
         ref_b64, ref_mime = ref
 
-        # Load second reference if available
-        ref2 = load_image_b64(product["ref2"]) if product.get("ref2") else None
-
         # Step 1: Visual learning
         visual_desc = analyze_product(product, ref_b64, ref_mime)
 

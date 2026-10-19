@@ -1,0 +1,101 @@
+{
+  "_note": "Scaffold of visgl/deck.gl as read 2026-10-14 via gh + npm + Context7. Nothing installed.",
+  "repo": "https://github.com/visgl/deck.gl",
+  "license": "MIT",
+  "default_branch": "master",
+  "stars": 14668,
+  "description": "WebGL2 powered visualization framework (Context7 DeepWiki entry also mentions WebGPU)",
+  "latest_release": {
+    "tag": "v9.4.0",
+    "date": "2026-09-05"
+  },
+  "npm": {
+    "deck.gl": "9.4.0",
+    "@deck.gl/core": "9.4.0",
+    "umbrella_peers": {
+      "@arcgis/core": "^4.0.0",
+      "maplibre-gl": "^4.5.1 || ^5.0.0 || ^6.0.0",
+      "react": ">=16.3.0",
+      "react-dom": ">=16.3.0"
+    },
+    "install_note": "Prefer scoped modules (@deck.gl/core, @deck.gl/layers, @deck.gl/react, ...) over the umbrella `deck.gl` package to avoid pulling arcgis/maplibre peers"
+  },
+  "context7": {
+    "primary": "/visgl/deck.gl",
+    "snippets": 4748,
+    "reputation": "High",
+    "benchmark": 84.53,
+    "also": [
+      "/visgl/deck.gl-community",
+      "/websites/deepwiki_visgl_deck_gl"
+    ]
+  },
+  "modules": {
+    "core": "@deck.gl/core",
+    "layers": "@deck.gl/layers",
+    "react": "@deck.gl/react",
+    "aggregation-layers": "heatmap, hexagon, grid, contour",
+    "geo-layers": "tile, trips, H3, S2, MVT",
+    "mesh-layers": "SimpleMesh, ScenegraphLayer (glTF/GLB)",
+    "extensions": "brushing, data-filter, collision, mask, path-style",
+    "widgets": "zoom, compass, fullscreen controls",
+    "basemap_bindings": [
+      "mapbox",
+      "maplibre",
+      "google-maps",
+      "arcgis",
+      "carto"
+    ],
+    "other": [
+      "json",
+      "jupyter-widget",
+      "deck-arrow-layers",
+      "deck-gpu-layers",
+      "test-utils",
+      "main"
+    ]
+  },
+  "core_layers": [
+    "ArcLayer",
+    "BitmapLayer",
+    "ColumnLayer",
+    "GeoJsonLayer",
+    "IconLayer",
+    "LineLayer",
+    "PathLayer",
+    "PointCloudLayer",
+    "PolygonLayer",
+    "ScatterplotLayer",
+    "SolidPolygonLayer",
+    "TextLayer"
+  ],
+  "examples_dir": [
+    "get-started",
+    "gallery",
+    "layer-browser",
+    "playground",
+    "showcase",
+    "basemap-browser",
+    "arrow",
+    "experimental",
+    "pydeck",
+    "website"
+  ],
+  "skyyrose_fit": {
+    "surface": "frontend/ (devskyy.app) only; theme not applicable (no bundler, heavy)",
+    "plausible_uses": [
+      "Admin: order/customer geography (ScatterplotLayer, HexagonLayer, HeatmapLayer) from WooCommerce data",
+      "ScenegraphLayer renders GLB, so existing garment GLBs could appear in a spatial view"
+    ],
+    "caveats": [
+      "Geospatial/data-viz framework; no storefront or product-imagery role",
+      "Same WebGL context competition with three.js on one page; keep on separate routes",
+      "frontend/ already pins three 0.172 and deck.gl 9.x tracks luma.gl, not three"
+    ]
+  },
+  "gaps": [
+    "No example source read",
+    "Bundle size not measured",
+    "Whether the workflow wants maps at all is unconfirmed"
+  ]
+}

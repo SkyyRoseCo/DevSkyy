@@ -40,7 +40,7 @@ Fit and care are stored in each registry product's dossier and derived garment f
 
 ## Asset ownership census
 
-Every in-scope media file (image, video, 3D, font, audio, asset PDF; tracked or untracked-present) must be referenced by an existing ledger: the registry, `visual-manifest.json`, `typography.json`, a registry projection (`sot-images.json`, `assets/products/manifest.json`, `assets/products/catalog/**/index.json`, `assets/hub/manifest.json`), a Flagship 2 media ledger (`skyyrose-flagship-2/data/*.json`, its `assets/**/manifest.json`), or the review-area inventory `tasks/catalog-reconciliation/image-library/inventory.json`. A byte-identical copy of an owned file is owned. Out-of-scope classes (dependencies, `tests/`, QA captures, `docs/`, agent tooling, regenerated derivatives) are declared in the script with reasons. Gate: `python scripts/asset_sot_census.py --check` (CI `catalog-validate`); `--report` prints the full ownership JSON. A new asset enters a ledger in the same commit; if its identity is not pixel-verified it goes into the review inventory, never into an authority. The census never creates a ledger.
+Every in-scope media file (image, video, 3D, font, audio, asset PDF; tracked or untracked-present) must be referenced by an existing ledger: the registry, `visual-manifest.json`, `typography.json`, a Flagship 2 media ledger (`skyyrose-flagship-2/data/*.json`, its `assets/**/manifest.json`, paths resolved from the theme root, its `assets/`, the repo root, or the manifest's own folder), or the review-area inventory `tasks/catalog-reconciliation/image-library/inventory.json`. Registry projections (`sot-images.json`, `assets/products/manifest.json`, `assets/products/catalog/**/index.json`, `assets/hub/manifest.json`) are reported for consistency but never own a file: a stale projection must not keep an asset the registry dropped. A byte-identical copy of an owned file, or a symlink to one (such as `catalog/**/originals/*`), is owned. Out-of-scope classes (dependencies, `tests/`, QA captures, `docs/`, agent tooling, regenerated derivatives) are declared in the script with reasons. Gate: `python scripts/asset_sot_census.py --check` (CI `catalog-validate`); `--report` prints the full ownership JSON. A new asset enters a ledger in the same commit; if its identity is not pixel-verified it goes into the review inventory, never into an authority. The census never creates a ledger.
 
 ## Data SOT
 
@@ -51,16 +51,97 @@ Every in-scope media file (image, video, 3D, font, audio, asset PDF; tracked or 
 | `hub-manifest.json` | `assets/hub/manifest.json` | Image review and founder-verdict provenance. | Product bindings are owned by the registry. The collection builder reads registry bindings; this manifest does not independently override them. |
 | `sot-images.json` | `data/sot-images.json` | Generated per-SKU storefront image roles. | GENERATED. Run `python -m skyyrose.core.sot_images` after registry edits; do not edit or treat this projection as a separate authority. |
 | `visual-manifest.json`                                                     | `wordpress-theme/skyyrose-flagship/data/visual-manifest.json`                                                     | ALL non-product imagery ownership. Filenames are NOT identity — the manifest is.                                                                                                                                                                                                                                                                             | New imagery enters the manifest in the same commit. Verify pixels if in doubt.                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `logo-registry.json` | `wordpress-theme/skyyrose-flagship/data/logo-registry.json` | THE editable product SOT: all33 complete products, color, sizing references, fit, materials, features, full design specifications, image bindings, logos, placements and decoration dimensions. Also owns render corrections (`products[sku].corrections`), render keep decisions (`products[sku].render_policy.keepers`), and per-collection identity (`collections`), folded in from the retired side stores 2026-09-18. | Founder authority. Consumers read this record; compatibility files never override it. |
+| `logo-registry.json` | `wordpress-theme/skyyrose-flagship/data/logo-registry.json` | THE editable product SOT: all 33 complete products, color, sizing references, fit, materials, features, full design specifications, image bindings, logos, placements and decoration dimensions. Also owns render corrections (`products[sku].corrections`), render keep decisions (`products[sku].render_policy.keepers`), and per-collection identity (`collections`), folded in from the retired side stores 2026-09-18. | Founder authority. Consumers read this record; compatibility files never override it. |
 | `typography.json`                                                          | `wordpress-theme/skyyrose-flagship/data/brand/typography.json` (+ `typography.schema.json`)                       | **THE brand typography SOT** — universal font roles (display **Archivo**, body **Hanken Grotesk**, ui **Anton**, mono, caps **Cinzel**, system **Inter**) + the 4 per-collection name-scripts (Black Rose Script / Pinyon Script / Grand Hotel / Love Hurts Graffiti). Per-collection palette + script/caps live in `logo-registry.json` → `collections.<slug>`. | **GENERATES** the `--skyyrose-font-*` `:root` + `[data-collection]` tokens in `assets/css/design-tokens.css` via `data/gen-design-tokens.py` (writes ONLY between `GENERATED:*` markers; a verifier asserts the live CSS matches a fresh generation). Retired fonts (Playfair Display / Cormorant Garamond / Bebas Neue / Yellowtail — cut 2026-07-10) must never reappear. Rebuild `.min` after regen (theme serves `.min`).                                                                           |
 | _no symlink_ → `logo-registry.json` → `collections` | `wordpress-theme/skyyrose-flagship/data/logo-registry.json` → `collections.{black-rose,love-hurts,signature,kids-capsule}` | **THE per-collection identity SOT** — palette, name-script/caps fonts, story seed, lockup ref, hero imagery (`status:"verified"`). Folded in from the retired `data/collections/<slug>/identity.json` files 2026-09-18. | SOURCE. Each entry validated against `data/collections/identity.schema.json` by `sot_common.load_identity()`; drift-gated by `data/verify-collection-sot.py` + CI (`catalog-validate`, `catalog-drift-guard`, `freshness-guard`). Feeds `sot.json` (row below) and the `[data-collection]` tokens via `gen-design-tokens.py`. Collection metadata resolves here — not `brand.yaml`/`config/collections.py` (downstream mirrors). |
 | _no symlink (×4, GENERATED)_ → `data/collections/<slug>/sot.json`          | `wordpress-theme/skyyrose-flagship/data/collections/{black-rose,love-hurts,signature,kids-capsule}/sot.json`      | Assembled per-collection view the WP theme reads (identity + catalog + imagery + logos + palette + fonts, resolved).                                                                                                                                                                                                                                         | **GENERATED — DO NOT EDIT.** `data/build-collection-sot.py` (canon = registry `collections` + `products`); verified by `data/verify-collection-sot.py`; byte-compare drift-guarded by `scripts/validate_catalog_consistency.py` (`collection_sot_current`); read via `inc/collection-sot-reader.php`; feeds `sot-images.json`. A test/pipeline that regenerates it in-tree must not commit the rewrite.                                                                                                                       |
 
 ## Brand canon
 
+### Current collection stories and campaign references (updated 2026-10-14)
+
+**Start here for collection storytelling, commercial briefs, prompts, and reviews.**
+Corey's latest explicit corrections control. Read the owner-ratified
+[Brand Constitution](docs/brand/constitution-v1/CONSTITUTION.md), its
+[owner ratification](docs/brand/constitution-v1/OWNER-RATIFICATION-20260923.md),
+and [Kids/Signature clarification](docs/brand/constitution-v1/OWNER-RATIFICATION-KPS-20260923.md).
+The collection `identity.json::story.seed` files below own the current story seeds.
+This table is a reading index, not a separate editable canon; re-read the linked
+source before producing creative work. The October 11 founder-confirmation record
+is in `/Users/theceo/.claude/projects/-Users-theceo-DevSkyy/memory/project_shop_v2_cinema_bands_pick.md`
+under “canon confirmed”; the source seeds were checked on October 14.
+
+| Collection | Current story seed | Authoritative identity |
+| --- | --- | --- |
+| Black Rose | Defining beauty through the color black. | [identity.json](wordpress-theme/skyyrose-flagship/data/collections/black-rose/identity.json) |
+| Signature | The beginning of it all — where it started from. | [identity.json](wordpress-theme/skyyrose-flagship/data/collections/signature/identity.json) |
+| Love Hurts | Beauty and the Beast told from the Beast's perspective, through luxury attire. | [identity.json](wordpress-theme/skyyrose-flagship/data/collections/love-hurts/identity.json) |
+| Kids Capsule | The Heir to the throne. | [identity.json](wordpress-theme/skyyrose-flagship/data/collections/kids-capsule/identity.json) |
+
+**Retired interpretations must not return:** Black Rose “armor/concrete,” Love
+Hurts “bloodline,” and Signature “foundation wardrobe” are not the current
+collection stories. Do not attribute old template-derived quotes to Corey or move
+stories between collections. No active tagline is authorized. Collection devices
+are optional; Signature's Oakland origin remains, and Kids means heir/next
+generation without requiring a literal throne. Creative interpretations must be
+labelled as proposals, not new founder canon.
+
+`docs/brand/collection-stories.md` and the four `blog-*.md` collection narratives
+are retired stubs. Their preserved originals under
+[retired/2026-10-12-collection-narratives](docs/brand/retired/2026-10-12-collection-narratives/README.md)
+are historical evidence only. An old `story.doc_ref`, skill, prompt, memory,
+template, or archived document pointing there does not make it current authority.
+If an older interview or derived document conflicts with a later explicit founder
+correction or ratification, use the later correction within its scope.
+
+**Current commercial reference index — source roles are distinct:**
+
+**Latest approved campaign (2026-10-14):** one three-chapter film: Black Rose /
+Before We Go → Signature / Our Own Image → Love Hurts / The Place Beside Me.
+The [approved voiceover](tasks/jersey-ensemble-20261012/three-chapter-film/APPROVED-VOICEOVER.md)
+is the exact recording script. Produce a founder-voiced master and a separate
+website export with zero audio streams; this supersedes the earlier all-silent
+rule. [Current edit plan](tasks/jersey-ensemble-20261012/three-chapter-film/EDIT-PLAN.md).
+Recording and replacement footage are not yet complete.
+
+**2026-10-14 founder casting correction:** Jersey Series uses separate Black male
+and Black female casts, including teens; other collections may retain diverse
+casts. Prior Jersey cuts are creatively rejected, with originals and technical
+receipts preserved. Read the [current campaign handoff](tasks/god-mode-project-manager-20261014/CAMPAIGN-HANDOFF.md)
+before resuming production.
+
+- Group/casting direction: founder-supplied
+  `/Users/theceo/Downloads/higgsfield-64da6221-7ce4-4e20-8559-ea20305af4b1.mp4`;
+  [extracted group reference](tasks/jersey-ensemble-20261012/group-reference-frame.jpg).
+  Use for ensemble composition and individual styling, not garment/logo truth.
+- Real Black Rose Sherpa footage: founder-supplied
+  `/Users/theceo/Downloads/Video Apr 21 2024, 11 01 18 AM.mp4`.
+  Preserve the original footage; silent exports are derivatives.
+- Product/artwork fidelity: `get_product(sku)` from `logo-registry.json::products`
+  and its bound image sources, including current V2 references where bound.
+  Campaign references and generated visuals never override those records.
+- Active campaign [manifest](tasks/jersey-ensemble-20261012/CAMPAIGN-MANIFEST.md),
+  [brief](tasks/jersey-ensemble-20261012/BRIEF.md) and
+  [status](tasks/jersey-ensemble-20261012/STATUS.json): separate all-male and
+  all-women Jersey ensemble commercials, including teens and distinct individual
+  looks; complete Signature and Love Hurts commercials. Website exports must
+  contain **zero audio streams**; the approved campaign master uses founder narration. Preserve existing films and original footage.
+  The manifest links current canon hashes, preserved source references, operation
+  status, independent reviews and silent deliveries. Read the linked status for
+  completion; a brief or provider capture alone is not final-film qualification
+  or founder approval.
+- Prompting rules: `/Users/theceo/.codex/creative-standards/imagery-prompting.md`.
+  Read before drafting or reviewing image/video prompts and cite in the brief.
+
+Local Downloads references are machine-local; verify availability before a job.
+If absent, report the missing reference rather than substituting an old asset.
+
+### Other brand sources
+
 - `knowledge-base/seed/from-interview.md` — founder-authored brand canon (visual
   references, anti-references, Oakland canon, engineering rules). When a derived
-  doc conflicts with the interview file, **the interview file wins.**
+  doc conflicts with the interview file, the interview file wins unless a later
+  explicit founder correction or owner ratification supersedes that point (see above).
 - `assets/brand/brand.yaml` — structured brand identity: tagline (active +
   retired history), legal_name / founder / origin / mission, semantic + neutral
   colors, social handles, prod/dashboard URLs. Generates
@@ -73,12 +154,12 @@ Every in-scope media file (image, video, 3D, font, audio, asset PDF; tracked or 
 
 ## OpenWolf memory (cross-session)
 
-| Root symlink                  | Canonical path      | Owns                                                                                                        |
-| ----------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `cerebrum.md`                 | `.wolf/cerebrum.md` | Learnings, User Preferences, Do-Not-Repeat, Decision Log, Project Conventions. Read before generating code. |
-| `anatomy.md`                  | `.wolf/anatomy.md`  | Per-file 2–3 line descriptions + token estimates. Read before reading files.                                |
-| `buglog.json`                 | `.wolf/buglog.json` | Known bugs + fixes. Read before fixing; append after fixing.                                                |
-| — (gitignored, not symlinked) | `.wolf/memory.md`   | Per-action session log.                                                                                     |
+| Root symlink               | Canonical path      | Owns                                                                                                        |
+| -------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `cerebrum.md`              | `.wolf/cerebrum.md` | Learnings, User Preferences, Do-Not-Repeat, Decision Log, Project Conventions. Read before generating code. |
+| `anatomy.md`               | `.wolf/anatomy.md`  | Per-file 2–3 line descriptions + token estimates. Read before reading files.                                |
+| `buglog.json`              | `.wolf/buglog.json` | Known bugs + fixes. Read before fixing; append after fixing.                                                |
+| — (tracked, not symlinked) | `.wolf/memory.md`   | Cross-agent session handoff log (main checkout's copy). Older rows rotate to `.wolf/memory-archive/`.       |
 
 ## Domain configuration map (current-state, token-cheap)
 

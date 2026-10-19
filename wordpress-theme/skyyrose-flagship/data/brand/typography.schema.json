@@ -68,7 +68,8 @@
       "properties": {
         "family": { "type": "string", "description": "Display name of the primary family" },
         "stack":  { "type": "string", "description": "Full CSS font-family stack value" },
-        "woff2":  { "type": ["string", "null"], "description": "Path relative to theme root; null for system fonts" }
+        "woff2":  { "type": ["string", "null"], "description": "Path relative to theme root; null for system fonts" },
+        "note":   { "type": "string", "description": "Usage guidance for hand-authored CSS; not emitted into tokens" }
       }
     }
   }

@@ -1,3 +1,14 @@
+## Current collection canon — required before creative work
+
+Read [SOT.md — Brand canon](SOT.md#brand-canon) before any collection story,
+commercial brief, image/video prompt, or creative review. It indexes the current
+owner-ratified Constitution, collection identity seeds, and newer campaign
+references. Pass that source requirement to delegated agents. Old
+armor/bloodline/ foundation-wardrobe narratives and retired
+collection-story/blog documents must not override those sources or Corey's
+latest explicit corrections. Use `get_product(sku)` for product facts; campaign
+references do not replace the registry.
+
 ## Single product registry — required for SkyyRose work
 
 `logo-registry.json` at the repository root is a symlink to
@@ -26,10 +37,64 @@ the registry update API for catalog writes. Run
 if CSV/dossier projections drift. Actual image binaries retain their existing
 asset paths; the registry owns the references.
 
+**How to record a founder statement — dossier first, never the field directly.**
+`tests/test_dossier_founder_prose.py` pins every
+`garment.{fit,materials,features}.source` to `derived_from_dossier`, which is a
+test-enforced assertion that nothing in those fields is founder-authored. So
+when he states a garment fact: add a `**FOUNDER_CONFIRMED:** <his words>`
+paragraph to that SKU's dossier (its `## Founder-confirmed correction` section,
+placed before `## Branding`), keep a parenthetical quoting him verbatim with the
+date, then derive the field from it. That makes the existing label honest
+instead of widening the assertion, and never relabels a field to claim founder
+authorship. Gate every write on the written text being a verbatim substring of
+that SKU's own dossier, and fail closed on a half-applied set. If a check or
+reviewer disputes the product fact itself rather than the code, stop and report
+— do not "fix" it.
+
+**Prefer `null` over wrong in product fields.** A field holding the wrong kind
+of sentence passes every completeness check and is invisible to the gap queries
+built to find it. A null is discoverable; a plausible-but-wrong value is not.
+
+**Redacting env data is a whitelist, never "names only."** On a malformed env
+file the KEY side can be the secret — a credentials notebook contains lines
+shaped `<label> = <secret>` and `Name: <secret>`, so `dotenv_values()` returns
+the secret as the dict key. Print a name only if it matches `^[A-Z][A-Z0-9_]*$`,
+otherwise a `sha256[:8]`; compare values by hash and never print them.
+Containment after a leak is rotation, not deletion.
+
 When operating in another checkout, verify it has the unified `products` schema
 and current founder corrections before execution. Never substitute an old
 checkout's CSV/dossiers when its registry is stale. Pass the registry location
 and this authority rule to every delegated agent and workflow.
+
+## SkyyRose founder and maker authority — required for all agents
+
+Corey is the founder and maker of the SkyyRose items. His product
+specifications, founder-authored dossiers, supplied artwork identifications, and
+direct corrections are authoritative for those products.
+
+- Accept his statements about his own designs, dimensions, materials, graphics,
+  placements, and collection identities. Record direct confirmation as
+  `FOUNDER_CONFIRMED`.
+- When an older registry, dossier, generated record, or agent assumption
+  conflicts with his latest explicit correction, update the conflicting record
+  within the task scope. Do not require him to prove the correction again or
+  favor stale documentation over his statement.
+- Do not impose additional manufacturer, third-party, photographic, or
+  independent verification requirements on product facts he has supplied. Do not
+  downgrade his specifications to `NOT_MANUFACTURING_VERIFIED` or similar
+  statuses.
+- Preserve his exact dimensions, ranges, artwork, and wording. A documented
+  range or approximate notation is part of his specification, not a reason to
+  question his authority.
+- Verify that agent output and saved records match his instructions. Do not
+  confuse checking our execution with re-verifying the maker's knowledge of his
+  own products.
+- Ask only for a genuinely missing detail needed to carry out the work; do not
+  ask for reconfirmation of a fact he already supplied. Never invent an unstated
+  measurement or alter unrelated product details.
+- Include this instruction in delegated briefs and handoffs for SkyyRose
+  product, catalog, design, rendering, and review work.
 
 # DevSkyy Agent Guidelines
 
@@ -41,11 +106,30 @@ system and developer constraints; historical notes do not grant authorization.
 
 - Before editing, confirm the checkout, branch or detached HEAD, and staged,
   unstaged, and untracked changes. Preserve unrelated work and working features.
-- Check `.wolf/memory.md` for current notes. If absent, check the main checkout
-  identified by `git worktree list`; treat its notes as context, not this
-  worktree's verified state. If unavailable, report the gap and continue with
-  repository evidence. Follow `.wolf/OPENWOLF.md` for repository session-log
-  entries; do not update persistent cross-session agent memory unless requested.
+- **Session handoff log — required, every session, every agent.** Multiple
+  agents (Claude Code, Codex, Ralph loops) work this repo at once;
+  `.wolf/memory.md` in the **main checkout** (first path in `git worktree list`)
+  is how each one knows where the others left off. Treat its rows as context,
+  not this worktree's verified state.
+  - Before starting: read the last ~20 rows. Do not redo work marked done, and
+    do not touch files another agent marked in-progress — pick other work or
+    ask.
+  - Before ending: append one row to the main checkout's `.wolf/memory.md`,
+    never a worktree's copy (other agents can't see it until merge):
+    `| YYYY-MM-DD HH:MM | <agent> @ <branch> sid:<id8> | what you did | files / PRs | done · in-progress · blocked + next step | ~tokens |`
+    (`<id8>` = first 8 chars of your session id; if your tool exposes none, use
+    any stable 8-char tag for the session.)
+  - Append only. Never edit or delete another agent's rows. If the file is
+    unavailable, report the gap and continue with repository evidence.
+  - Enforced: `.wolf/hooks/handoff-gate.sh` (wired in `.codex/hooks.json` /
+    `.claude/settings.json`) blocks the first turn that changes the repo without
+    a new `sid:<id8>` row — once per session — then reminds until you log.
+    `.husky/pre-push` refuses to push a branch with no `@ <branch>` row dated
+    today or yesterday — the backstop for agents without hooks. Bypass a push
+    once with `WOLF_HANDOFF_SKIP=1`.
+  - Rotated: past 128KB the log keeps its newest ~64KB and moves older entries
+    byte-for-byte to `.wolf/memory-archive/` (`scripts/wolf_memory_rotate.py`).
+    Search the archive for older history.
 - Inspect the existing implementation and source of truth before changing it.
   Make the smallest coherent change that completes the task. Diagnose failures
   from evidence, fix their cause, and verify the result.
@@ -103,6 +187,19 @@ directly; use deeper analysis when complexity or consequences justify it.
   the memory authorization rule above for persistent memory changes.
 - Choose the relevant working emphasis: STRIKE for direct execution, ARCHITECT
   for systems, FORGE for implementation, ORACLE for research, QUANTUM for
+- A training cutoff is not evidence of nonexistence. When the user states that a
+  library, API, model, or tool exists and it is unfamiliar or contradicts an
+  internal knowledge cutoff, do not conclude it does not exist from a single
+  check — a live probe can fail for reasons other than "doesn't exist" (missing
+  account/org access, wrong endpoint, wrong ID format), and an indexed
+  documentation source can simply be stale relative to a recent release. Two
+  empty or failing checks from tools that both depend on an index or a cutoff
+  are correlated, not independent, evidence. Before reporting something does not
+  exist or asking the user to resolve the uncertainty, escalate to a live web
+  search — this is mandatory whenever the claim concerns anything plausibly
+  released after the assistant's own knowledge cutoff. Report exactly what was
+  checked, what each check returned, and which check (if any) is still
+  unresolved; do not hand back an unresolved absence as a claim of nonexistence.
   quantitative work, EMPIRE for business, ATELIER for design, CINEMA for visual
   storytelling, RED TEAM for critique, GENESIS for invention, and OMNIVERSE for
   combined work. These labels select methods, not new permissions or tools;
@@ -230,7 +327,10 @@ corrections are authoritative.
 - Verify that our output matches his instructions. Ask only for genuinely
   missing details, and leave unrelated product facts unchanged.
 - Consult `SOT.md` for canonical product and media sources. Do not substitute
-  generated assets or assumptions for approved source material.
+  generated assets or assumptions for approved source material. Verify product
+  facts against `get_product(sku)` (`logo-registry.json::products`), never
+  against `skyyrose-catalog.csv` or `dossiers/` — those are generated
+  projections of the registry.
 - Include these founder-authority requirements in delegated briefs and handoffs
   involving SkyyRose products, catalogs, design, rendering, or review.
 
