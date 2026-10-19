@@ -14,7 +14,7 @@ const BASE = path.join(ROOT, '.artifacts/release-gates-20261019/gate4-private-co
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 function save(file, data) { fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n', { flag: 'wx', mode: 0o600 }); }
 async function until(test, ms = 5000) { const end = Date.now() + ms; while (Date.now() < end) { if (test()) return; await pause(10); } throw Error('Control deadline'); }
-const targetCode = String.raw`const fs=require('fs'),cp=require('child_process');const f=process.env.SR_CONTEXT_FOLDER;const identity=fd=>{const s=fs.fstatSync(fd,{bigint:true});return {device:BigInt.asIntN(64,s.dev).toString(),raw_device_unsigned:s.dev.toString(),inode:s.ino.toString(),type:Number(s.mode&61440n)}};fs.writeSync(3,JSON.stringify({kind:'synthetic-ready',pid:process.pid,pipes:{3:identity(3),4:identity(4)}})+'\n');const input=fs.readFileSync(4,'utf8');let child=null;if(process.env.SR_CONTROL_LEADER_EXIT==='yes'){const c=cp.spawn(process.execPath,['-e','setInterval(()=>{},1000)'],{detached:false,stdio:'ignore',env:{PATH:'/usr/bin:/bin'}});child=c.pid;c.unref()}fs.writeFileSync(f+'/target-proof.json',JSON.stringify({pid:process.pid,input,child}),{flag:'wx',mode:384});process.exit(child?41:0)`;
+const targetCode = String.raw`const fs=require('fs'),cp=require('child_process');const f=process.env.SR_CONTEXT_FOLDER;const identity=fd=>{const s=fs.fstatSync(fd,{bigint:true});return {device:BigInt.asIntN(32,s.dev).toString(),raw_device_signed:s.dev.toString(),inode:s.ino.toString(),type:Number(s.mode&61440n)}};fs.writeSync(3,JSON.stringify({kind:'synthetic-ready',pid:process.pid,pipes:{3:identity(3),4:identity(4)}})+'\n');const input=fs.readFileSync(4,'utf8');let child=null;if(process.env.SR_CONTROL_LEADER_EXIT==='yes'){const c=cp.spawn(process.execPath,['-e','setInterval(()=>{},1000)'],{detached:false,stdio:'ignore',env:{PATH:'/usr/bin:/bin'}});child=c.pid;c.unref()}fs.writeFileSync(f+'/target-proof.json',JSON.stringify({pid:process.pid,input,child}),{flag:'wx',mode:384});process.exit(child?41:0)`;
 const brokerRunner = String.raw`import pathlib,sys,types,hashlib,json,os,traceback
 p=pathlib.Path(sys.argv[1]); body=p.read_bytes(); source_sha=hashlib.sha256(body).hexdigest()
 if source_sha != sys.argv[6]: raise ValueError('Broker source pin mismatch')
@@ -32,9 +32,11 @@ except Exception as error:
 function preservedPipes(record, frame) {
   assert.equal(frame.pid, record.pid); assert.deepEqual(Object.keys(frame.pipes).sort(), ['3', '4']);
   for (const fd of ['3', '4']) {
-    const { inheritable, ...expected } = record.pipes[fd]; const { raw_device_unsigned, ...actual } = frame.pipes[fd];
-    assert.equal(inheritable, true); assert.match(raw_device_unsigned, /^(?:0|[1-9][0-9]*)$/); assert.ok(BigInt(raw_device_unsigned) < (1n << 64n));
-    assert.equal(raw_device_unsigned, BigInt.asUintN(64, BigInt(expected.device)).toString()); assert.deepEqual(actual, expected);
+    const { inheritable, ...expected } = record.pipes[fd]; const { raw_device_signed, ...actual } = frame.pipes[fd];
+    assert.equal(inheritable, true); assert.match(raw_device_signed, /^-?(?:0|[1-9][0-9]*)$/);
+    assert.equal(BigInt(raw_device_signed).toString(), raw_device_signed); assert.ok(BigInt(raw_device_signed) >= -(1n << 63n) && BigInt(raw_device_signed) < (1n << 63n));
+    assert.match(expected.device, /^-?(?:0|[1-9][0-9]*)$/); assert.equal(BigInt(expected.device).toString(), expected.device); assert.ok(BigInt(expected.device) >= -(1n << 31n) && BigInt(expected.device) < (1n << 31n));
+    assert.equal(raw_device_signed, expected.device); assert.deepEqual(actual, expected);
   }
 }
 async function main() {
@@ -43,7 +45,10 @@ async function main() {
   const report = { status: 'INCOMPLETE', authentication: 'NOT_APPLICABLE', no_browser_or_network: true, source_start: sources(), runtime_start: { node: pin(NODE), python: pin(PYTHON), pythonImage: pin(PYTHON_IMAGE) }, controls: [], cleanup: [] }; const owned = [];
   assert.equal(report.runtime_start.node.sha256, '18e387c90ab8a8400183e8bdd396376e1e875b91b4c874b894dcade7b35bf572'); assert.equal(report.runtime_start.python.sha256, PYTHON_SHA); assert.equal(report.runtime_start.pythonImage.sha256, PYTHON_IMAGE_SHA);
   report.abi_inputs = Object.fromEntries(['/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h', path.join(ROOT, '.artifacts/release-gates-20261019/toolchain/node-v22.23.2-darwin-arm64/include/node/uv.h')].map(file => [file, pin(file)]));
-  report.abi = { darwin_dev_t: 'SIGNED_INT32', libuv_st_dev_and_st_ino: 'UNSIGNED_INT64', representation: 'DECIMAL_STRINGS_WITH_EXPLICIT_INT32_TO_UINT64_SIGN_EXTENSION' };
+  report.abi = { darwin_dev_t: 'SIGNED_INT32', libuv_st_dev_and_st_ino: 'UNSIGNED_INT64', node_stats_bigint_backing: 'SIGNED_INT64', representation: 'CANONICAL_SIGNED_DECIMAL_RAW_NODE_EQUALS_PYTHON_DEVICE_BEFORE_NORMALIZATION', inode_limit: 'EXACT_OBSERVED_NONNEGATIVE_NODE_SIGNED64_RANGE_ONLY' };
+  const nodeSources = { 'node_file.h': '4d61c44826f0d6d25068b9f5006f2566bef6f0c72a21fcb24633e74e354ff99b', 'node_file-inl.h': '156324a5920721a29576e2a4fa72db791652e64f5cbf1f93b83f907aaeb3cb24' };
+  report.abi_source_urls = {};
+  for (const [name, expected] of Object.entries(nodeSources)) { const file = path.join(ROOT, '.artifacts/release-gates-20261019/node-stat-source/v22.23.2', name); report.abi_inputs[file] = pin(file); assert.equal(report.abi_inputs[file].sha256, expected); report.abi_source_urls[name] = 'https://raw.githubusercontent.com/nodejs/node/v22.23.2/src/' + name; }
   const begin = async (label, options = {}) => {
     const folder = path.join(root, label); fs.mkdirSync(folder, { mode: 0o700 }); fs.mkdirSync(path.join(folder, 'tmp'), { mode: 0o700 }); const profile = path.join(folder, 'tmp', 'profile'); fs.mkdirSync(profile, { mode: 0o700 });
     const nonce = crypto.randomUUID(); const target = options.target || NODE; const targetSHA = pin(target).sha256; const args = ['-e', targetCode, '--', '--user-data-dir=' + profile, '--remote-debugging-pipe'];
@@ -76,7 +81,7 @@ async function main() {
     const positive = await begin('pipe-preservation'); const record = register(positive); positive.released = true; acknowledge(record, positive.folder); positive.takeover = await takeover(record); await until(() => positive.frames.includes('\n'));
     const frame = JSON.parse(positive.frames.trim()); preservedPipes(record, frame);
     positive.child.stdio[4].end('synthetic-cdp-pipe-preserved'); assert.equal((await positive.done).code, 0); const proof = JSON.parse(fs.readFileSync(path.join(positive.folder, 'target-proof.json'))); assert.equal(proof.input, 'synthetic-cdp-pipe-preserved'); assert.equal(proof.pid, record.pid); const positiveClosed = await closeRegistered(record, positive.folder); assert.ok(positiveClosed.stopped && !positiveClosed.errors.length); positive.cleaned = true; report.controls.push({ label: 'actual-same-pid-group-image-and-fd3-fd4-exec-preservation', status: 'PASS_HARMLESS_NODE_EXEC_ONLY', record, takeover: positive.takeover, proof });
-    for (const mutation of ['inode', 'type', 'raw-device', 'canonical-device', 'rounded-device-number']) { const altered = structuredClone(frame); const pipe = altered.pipes['3']; if (mutation === 'inode') pipe.inode = (BigInt(pipe.inode) + 1n).toString(); if (mutation === 'type') pipe.type = 0; if (mutation === 'raw-device') pipe.raw_device_unsigned = (BigInt(pipe.raw_device_unsigned) ^ 1n).toString(); if (mutation === 'canonical-device') pipe.device = (BigInt(pipe.device) + 1n).toString(); if (mutation === 'rounded-device-number') pipe.device = Number(pipe.raw_device_unsigned); assert.throws(() => preservedPipes(record, altered)); report.controls.push({ label: 'modified-preserved-pipe-' + mutation, status: 'PASS_REFUSED_MODIFIED_RETAINED_PIPE_FRAME_ONLY' }); }
+    for (const mutation of ['inode', 'type', 'raw-device', 'canonical-device', 'rounded-device-number']) { const altered = structuredClone(frame); const pipe = altered.pipes['3']; if (mutation === 'inode') pipe.inode = (BigInt(pipe.inode) + 1n).toString(); if (mutation === 'type') pipe.type = 0; if (mutation === 'raw-device') pipe.raw_device_signed = (BigInt(pipe.raw_device_signed) ^ 1n).toString(); if (mutation === 'canonical-device') pipe.device = (BigInt(pipe.device) + 1n).toString(); if (mutation === 'rounded-device-number') pipe.device = Number(BigInt.asUintN(64, BigInt(pipe.raw_device_signed))); assert.throws(() => preservedPipes(record, altered)); report.controls.push({ label: 'modified-preserved-pipe-' + mutation, status: 'PASS_REFUSED_MODIFIED_RETAINED_PIPE_FRAME_ONLY' }); }
     await rejectCase('missing-ack', null);
     await rejectCase('stale-ack', null, { stale: true });
     await rejectCase('wrong-nonce', entry => save(path.join(entry.folder, 'broker-ack.json'), { ...ackValue(entry), nonce: crypto.randomUUID() }));
