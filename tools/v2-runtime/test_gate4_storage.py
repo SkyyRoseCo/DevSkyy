@@ -239,6 +239,10 @@ def main():
             )
             wp("plugin", "activate", *PLUGINS)
             wp("theme", "activate", "skyyrose-flagship-2")
+            initialized = mode("initialize")
+            assert len(initialized["initialized_empty_tables"]) == 6 and set(
+                initialized["initialized_empty_tables"].values()
+            ) == {0}
             emptiness = (
                 fixture.sql(
                     SOCKET,
@@ -297,6 +301,8 @@ def main():
                     "authority": authority,
                     "sync": sync,
                     "native_store_class": expected,
+                    "native_schema_initialized_empty": initialized["initialized_empty_tables"],
+                    "observed_runtime": observed,
                     "active_plugins": active,
                     "parent_id": seed["case"]["parent_id"],
                     "baseline_orders": seed["case"]["orders"],
