@@ -1,0 +1,50 @@
+{
+  "skipped_plugins": [
+    "akismet",
+    "elementor",
+    "site-mailer",
+    "gutenberg",
+    "image-optimization",
+    "jetpack",
+    "jetpack-boost",
+    "zero-bs-crm",
+    "jwt-authentication-for-wp-rest-api",
+    "kirki",
+    "klaviyo",
+    "litespeed-cache",
+    "mailpoet",
+    "one-click-demo-import",
+    "page-optimize",
+    "pinterest-for-woocommerce",
+    "tiktok-for-business",
+    "wordpress-importer",
+    "oauth2-provider"
+  ],
+  "components": [
+    {
+      "plugin": "woocommerce-gateway-stripe",
+      "exit": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "plugin": "woocommerce-services",
+      "exit": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "plugin": "woocommerce-payments",
+      "exit": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "plugin": "wordpress-importer",
+      "exit": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "plugin": "oauth2-provider",
+      "exit": 0,
+      "status": "ACTIVE"
+    }
+  ]
+}

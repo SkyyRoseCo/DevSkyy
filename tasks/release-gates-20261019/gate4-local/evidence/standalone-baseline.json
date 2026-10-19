@@ -1,0 +1,366 @@
+{
+  "classification": "REPRODUCED_PRIVATE_NATIVE_BASELINE",
+  "source_commit": "6c7e5d07db5279dc8469adaa2253775fedc6f5dc",
+  "core_sha256": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7",
+  "cases": [
+    {
+      "name": "baseline-apply",
+      "return": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "493960a8b8ca8dd9470dd7558f1bb45058933194a92b30b0b205ca719292cce7",
+        "raw_sha256": "7ebabc21cd7667cad5dadbdf5aa69fed324f03be5bfa32b7340934e8ceb4d722",
+        "queued_parents": [
+          1618,
+          1618,
+          1618,
+          1618,
+          1618,
+          1618
+        ],
+        "lock_owned_after_return": false
+      },
+      "post_process": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "493960a8b8ca8dd9470dd7558f1bb45058933194a92b30b0b205ca719292cce7",
+        "recorded_after": "493960a8b8ca8dd9470dd7558f1bb45058933194a92b30b0b205ca719292cce7",
+        "raw_sha256": "be64799fc6533b8efc76e4b186a84c29626d99417bfd8074f30acb703553cec0",
+        "children": [
+          1619,
+          1620,
+          1621,
+          1622,
+          1623,
+          1624
+        ]
+      },
+      "writes_after_lock_release": [
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "1c0e41e1c928fd43c8e6031a873bec67678bd1243db65e435635fc45c997ab2e",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "3934212946eb9c71578313df624044c8fa55289d09a0bde303cf09fb95066be2",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "623b3febe46109b4f77f54f13de6a9fed183fd67ee6299b673b5f50461b2c0b8",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "dee3750f1f7b896d1df720be34bd7c3037523a04e9038d94312683d998c73391",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "162231cb3cc186bc25d754a897d70a726192d0a85b8ec4eb3eb829c54d09a7ef",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "923df79c74697139a5984450eb3be5273c9467125dd650fca3d1c53e12060396",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "a9eedb565b7990040fc82e22137dcaa1dbe0df5e293e2bc3aa8e22a487adb5f4",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "b4b7ce8092475672a8f11d0398f54c6bac42e3b640df96ef6a46b8b26f156f13",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "c0ef36a8858f4cf5f89363ee51a60691f3330794f51ccee76e5ff6327b69ef1b",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        }
+      ],
+      "audit_sha256": "678bb4bef97a1c1c5af79c9eb8a64124b0fbdab752f14d11a1ad5242a7a7df96"
+    },
+    {
+      "name": "baseline-failure",
+      "return": {
+        "ok": false,
+        "error": "Synthetic standalone after-child interruption.",
+        "queued_parents": [
+          1625
+        ]
+      },
+      "post_process": {
+        "ok": true,
+        "state": "FAILED",
+        "digest": "64fc1ad523369128f38ed246fdf30c34f9eb025fdc2cc16b2d32aa50b17d96ab",
+        "recorded_after": null,
+        "raw_sha256": "76d09abedf9560454f8c01ff5e3eac8d056ce9dc78a09c5ae90da83c13d89360",
+        "children": [
+          1626
+        ]
+      },
+      "writes_after_lock_release": [
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "d94ed2e4b108e013c7ba5caf085b52171d36ec9bac5c21e3a75c1ff25a8a7592",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "6fe3ec725a4d78ad0f937f16edae5dff6027a558cc5f6a7fd7e7e5f488e26572",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "8872ddf755fdd4bf28d619c3471a1fff237849f18edc6e184f5af93162a25234",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "5b17e6f70ed1757a8fa5f212ccd79e2f619f9ebc4f82c28be43b83568390b838",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "9b1ca09d6cabbe30ccf3f7b3d1420cfd6f79e0c7ac89caff6ec3e5a6f6faac60",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "3886d0f31ad5c3a52e619e46759d28f82ad837bccdcb74061abb7e71db04715c",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "571509285e6856922c18155c7f252dd10ec7b442405f63187dfec08c8ab71772",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "4055609af33802e97effab98f244431aab71db113f1071edd9984352a650407a",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "61570adc6843098a2eacafbf531ba544f75b72098934f24329b9c1aeebc8e16d",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "72b6971b3bcbdc531b3dbef455f08762fcc7ec780b90f547177b673eb06e2e36",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "2555acdaa27bec1fe57eaaad733318e47070d35aa5694dc237c030fbc15fce09",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "b706e4a9a1dc6249c632b00eacc61869227623d2b133c1dfd4cc99965046ed21",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "49f72de962562e9ba7c95891a43ee3fc8bce73e5eb506ba13ab32d4fd872abea",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "REPLACE",
+          "sql_sha256": "a66ba562a44a17e5e7ffbb2810a36422173c3f7501d463516ce612e3a08c8ec0",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "577d2efbdae7bc7098b29d8d45b00a6bdf4e48c7e82c962b5882f2d406eb9018",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "a9684462e736fe126926f8e30d20ec11437abc9620ac7300cc954e59ec45f7fe",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "5cdf94728ad2efcedf30953f666271a1457e35e088b0b2dcd34a0a56fabaecc8",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "8338805ed08d9fc449633715ed5c288ee2337c0be1d2ab20b59476b36aa41492",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "c6a3b2a25c520c998f78bf04788c4bb1b710ea5e99c17c5b58362e5925106c64",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "8a1981bed9bcf276f5b006fd56a3af5a0b2b7ea5410932013d37e5bcabbe6e68",
+          "lock_owned": false,
+          "state_before_query": "FAILED"
+        }
+      ],
+      "audit_sha256": "460554a29372e416e28646b521bebd150c6f848cabab6d5808e55bc4f9e5b035"
+    },
+    {
+      "name": "baseline-resume",
+      "return": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "cc94689acdc99def1d27ee081c7e203459390eacade549a11cbd2154f3997789",
+        "raw_sha256": "239afe93e5eb8d46e28fd7fb38af0ad6f8ac63f6a4e7ab2feffecc9f282268ff",
+        "queued_parents": [
+          1625,
+          1625,
+          1625,
+          1625,
+          1625
+        ],
+        "lock_owned_after_return": false
+      },
+      "post_process": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "cc94689acdc99def1d27ee081c7e203459390eacade549a11cbd2154f3997789",
+        "recorded_after": "cc94689acdc99def1d27ee081c7e203459390eacade549a11cbd2154f3997789",
+        "raw_sha256": "59422b548b2509d89be9ee3c8be79faa7ba75912109f4184c2e1bd037564676a",
+        "children": [
+          1626,
+          1627,
+          1628,
+          1629,
+          1630,
+          1631
+        ]
+      },
+      "writes_after_lock_release": [
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "307f06b313a99f0b438e1a9b53e7b1208bcfb61246d175ef80c13ae3cb4bb858",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "232e89821615cb81ed6641a02ef37e7cd08d93ba840aad58eac9d031b6cc4b91",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "fa98302a8f21d4a7e4162fbf856959cd120203079e070ed6e16c9ffd07edb9e6",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "sql_sha256": "9b1ca09d6cabbe30ccf3f7b3d1420cfd6f79e0c7ac89caff6ec3e5a6f6faac60",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "3249c658b86a75c4897f8ba42d17d866da66ab5125b4fe3162ed9abbb2c24b46",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "577d2efbdae7bc7098b29d8d45b00a6bdf4e48c7e82c962b5882f2d406eb9018",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "sql_sha256": "a9684462e736fe126926f8e30d20ec11437abc9620ac7300cc954e59ec45f7fe",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "7343eafc2fb27f158eb483689f75adc1ebe0cb403eb8a0d1fb74ee2fd9e924da",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        },
+        {
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "sql_sha256": "745684e8a404174789d5036e22f28d16443484bb8c2a9b060e54608df461a9b9",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "status": "INCOMPLETE",
+  "authentication": "NOT_APPLICABLE",
+  "run_id": "1792419056435237000",
+  "source_pins": {
+    "tools/v2-runtime/test_gate4_local.py": "c8e1c4bf9b9fee13f341c56632f82f355ac103095a8b756cc2bb93a64a9ec8f1",
+    "tools/v2-runtime/gate4-fixture.php": "1707a831d94ba4a0d01cfb1db70a04c85766d3238511486422902014ab345f85",
+    "tools/v2-runtime/variation-migration-core-next.php": "065c5d62086c15d1816f0714f32abaa53889b0c4540a83636d25697629d18aab",
+    "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7"
+  },
+  "cases": [
+    {
+      "case": "apply",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "a08ce78943732376407a0bc16ecffdad40de2edf7d900eaaabd41dad2be70dfd",
+        "recorded_after": "a08ce78943732376407a0bc16ecffdad40de2edf7d900eaaabd41dad2be70dfd",
+        "raw_sha256": "366b652ecc0c288b2aea59d919ad41386c8d84fa0804e7cdc58b7215f97f38a2",
+        "children": [
+          1749,
+          1750,
+          1751,
+          1752,
+          1753,
+          1754
+        ],
+        "foreign_raw_sha256": "2569cf74494da2d2bb954f37f67b58714fb111959beb53b70015d4f979fe6bf9"
+      },
+      "fenced_raw": "366b652ecc0c288b2aea59d919ad41386c8d84fa0804e7cdc58b7215f97f38a2"
+    },
+    {
+      "case": "completed-retry",
+      "status": "PASS"
+    },
+    {
+      "case": "after-child-failure",
+      "status": "PASS_GUARD_RETAINED",
+      "native": {
+        "ok": true,
+        "state": "FAILED",
+        "digest": "2c537610a4d71d6d275e4cc510dcfefc6254d41387bab795da004a0c8535ffa6",
+        "recorded_after": null,
+        "raw_sha256": "835a434b290839bf5dd12967fe8696667e33733abcc057d5d200788098e3693f",
+        "children": [
+          1757
+        ],
+        "foreign_raw_sha256": "8470e2b3c67b27fb726541531d290dd6dae42fddf8efcfecfd31ce60427b6b4e"
+      }
+    },
+    {
+      "case": "explicit-resume",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "adc8838d5ad70c8b930e836dcf8ea75dba2a700b7a2a6d3e362d787b5503a892",
+        "recorded_after": "adc8838d5ad70c8b930e836dcf8ea75dba2a700b7a2a6d3e362d787b5503a892",
+        "raw_sha256": "6c8cfdc27759b3c706b8f2eb209b4e90e9cf1b029472b13e63755e525ff4efe6",
+        "children": [
+          1757,
+          1758,
+          1759,
+          1760,
+          1761,
+          1762
+        ],
+        "foreign_raw_sha256": "8470e2b3c67b27fb726541531d290dd6dae42fddf8efcfecfd31ce60427b6b4e"
+      }
+    },
+    {
+      "case": "initial-same",
+      "status": "PASS_REFUSED",
+      "reason": "Pre-existing deferred work is outside this one-parent process.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "initial-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Pre-existing deferred work is outside this one-parent process.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reentrant-same",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-reentrant-same",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "7628f7fcac55cf07a0c2b4af320647e4353d54737112113498800788d12add01",
+        "recorded_after": "7628f7fcac55cf07a0c2b4af320647e4353d54737112113498800788d12add01",
+        "raw_sha256": "ef7a0c1fbfdd07a80126fe2a0173de44e7cb54f4fbd616ebe7e2716e4f610591",
+        "children": [
+          1769,
+          1770,
+          1771,
+          1772,
+          1773,
+          1774
+        ],
+        "foreign_raw_sha256": "db52e2bfae489dc9c69d1348321174f3496523187e58cef72d3fa4a6f172b7e0"
+      }
+    },
+    {
+      "case": "reentrant-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-reentrant-foreign",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "a67df49e18e2b8a0c95c7e418de580c9ba8e99d3e2fbcfd4b313e91a343caa44",
+        "recorded_after": "a67df49e18e2b8a0c95c7e418de580c9ba8e99d3e2fbcfd4b313e91a343caa44",
+        "raw_sha256": "79e2436c5300fe5de5395055e977bf1d00fda8521c19859f6e7fafaa3143c4a7",
+        "children": [
+          1777,
+          1778,
+          1779,
+          1780,
+          1781,
+          1782
+        ],
+        "foreign_raw_sha256": "20410a38bf0d488d99ee1fa79f7852d75943c07d7de6f308fa8147ede3dc202f"
+      }
+    },
+    {
+      "case": "save-same",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-save-same",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "64c6781a83804826ab8a5f2ca913a8cf6dc213138c263ec8559d3b202589779a",
+        "recorded_after": "64c6781a83804826ab8a5f2ca913a8cf6dc213138c263ec8559d3b202589779a",
+        "raw_sha256": "1a3e99a35dc50db3861333d27efca8ffc39bc041d8f4de4dfe707b18220323f5",
+        "children": [
+          1785,
+          1786,
+          1787,
+          1788,
+          1789,
+          1790
+        ],
+        "foreign_raw_sha256": "6ae88e44775f3863565c55cab813822166388b11f3d3849583f5f59c87f31ed6"
+      }
+    },
+    {
+      "case": "save-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-save-foreign",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "c0a27f6cc8d33608a04c22db0fb8df95dec857306b8926e679d2a6b06ea4e1f0",
+        "recorded_after": "c0a27f6cc8d33608a04c22db0fb8df95dec857306b8926e679d2a6b06ea4e1f0",
+        "raw_sha256": "1d65669ee4b5a0d49f9a0967eaca23a150ae990f385c72bf0408c7423cade06a",
+        "children": [
+          1793,
+          1794,
+          1795,
+          1796,
+          1797,
+          1798
+        ],
+        "foreign_raw_sha256": "753506de719dedae6cbb03d4785c2cf06c71aebeb9efc5938384e8ba8428de6d"
+      }
+    }
+  ],
+  "limits": [
+    "Prospective pinned private fixture only; frozen core/CLI unchanged and unqualified for deferred shutdown fencing",
+    "Query filter records pre-execution attempts; full raw/native after-exit readback is separate evidence",
+    "Lost-fence failure snapshots are observations, not fenced afterimages",
+    "Explicit fresh resume envelopes are simulated review inputs; historical orphan never adopted"
+  ]
+}

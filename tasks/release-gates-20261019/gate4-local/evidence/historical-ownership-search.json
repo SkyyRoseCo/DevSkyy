@@ -1,0 +1,66 @@
+{
+  "status": "EXACT_INSERTION_OWNERSHIP_NOT_FOUND_IN_BOUNDED_RETAINED_SEARCH",
+  "authentication": "NOT_APPLICABLE_PRIVATE_SYNTHETIC_HISTORY",
+  "parent_id": 1290,
+  "child_id": 1292,
+  "original_writer_token": "e3b8f598a65010d00fa9edd307c25d7f4561e523ac51d293",
+  "sources": {
+    ".artifacts/release-gates-20261019/runtime-official/mysql/mysql/general_log.CSV": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    ".artifacts/release-gates-20261019/runtime-official/mysql/mysql/slow_log.CSV": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    ".artifacts/release-gates-20261019/runtime-official/mysql/ib_logfile0": {
+      "sha256": "b1e32435d8ebc26f01b5c6839e30cffbd86c92ab961276433d84e9d21d081b83",
+      "bytes": 100663296
+    },
+    ".artifacts/release-gates-20261019/runtime-official/pre-woo-11.2.1.sql": {
+      "sha256": "2dc59cc86328823b6236a924d7c2fea9e13c150ff58b9cae7a3c0862d533a5b3",
+      "bytes": 1235656
+    },
+    ".artifacts/release-gates-20261019/runtime-official/process/1792403363423-inside-child-save.json": {
+      "sha256": "47ac3bbb489fbda35f2ed585d50b03a0fdcf0ec9ed507a73cd02d7600f3a5746",
+      "bytes": 357
+    },
+    "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403363423-inside-child-save.json-orphan.txt": {
+      "sha256": "b6c7a95ca035398118a430998e7bad151e56161e65e57246ca155491a0ff1965",
+      "bytes": 70
+    }
+  },
+  "transcript_path": "/Users/theceo/.codex/sessions/2026/10/01/rollout-2026-10-01T05-19-52-01a0f768-2383-7262-b88c-7efe97126979.jsonl",
+  "transcript_relevant_historical_records": [
+    {
+      "line": 14026,
+      "timestamp": "2026-10-19T10:02:07.098Z",
+      "record_type": "event_msg",
+      "sha256": "eedc017d7e1e752c4e6272e30f45bb444ba53ed637f9453aec1b31d8a2af0cb9",
+      "classification": "Commit/file inventory or later reconciliation; no contemporaneous insert-ID return binding"
+    },
+    {
+      "line": 14965,
+      "timestamp": "2026-10-19T10:38:19.500Z",
+      "record_type": "event_msg",
+      "sha256": "91f7009a319cf5e0f55bd0cf93c5ee1431372fc0547a387d409b79b369cc3fbb",
+      "classification": "Commit/file inventory or later reconciliation; no contemporaneous insert-ID return binding"
+    }
+  ],
+  "native_clone_observation": {
+    "log_bin": false,
+    "general_log": false,
+    "slow_query_log": false,
+    "show_binary_logs": "ERROR1381 not using binary logging"
+  },
+  "findings": [
+    "Original failure output records synthetic exception without inserted child ID or insertion/update flag",
+    "Case file binds parent/plan/order, not native child insertion ID",
+    "Original probe records child1292 and journal token after failure; this is observed state, not insert provenance",
+    "Original general/slow log CSVs empty; no binlog filenames in preserved datadir",
+    "Pre-upgrade SQL predates final case; redo bytes retained but no qualified reconstruction ties exact insertion to operation/connection",
+    "No receipt is manufactured from a fresh probe, matching parent/time, approval or later database recovery"
+  ],
+  "remaining_lead": "Preserved physical redo may be investigated by a separately qualified forensic procedure; no ownership conclusion established",
+  "disposition": "Historical orphan remains FAILED/payment blocked; no adoption/deletion. Missing provenance is evidence gap, not owner product decision."
+}

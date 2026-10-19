@@ -1,0 +1,2059 @@
+{
+  "classification": "PRIVATE_LOCAL_RECEIPT_INDEX_NOT_UPLOAD_BUNDLE",
+  "final_run_id": "1792420631379986000",
+  "limits": [
+    "Per-case raw-return/raw-inspect files retain latest snapshots; earlier command receipts preserve earlier readback hashes, not every full row-image version",
+    "Killed stale worker audit is partial without shutdown-end marker; stale-worker claim uses nonzero exit plus post-exit raw/native equality",
+    "Query observations are pre-execution write attempts; separate raw/native snapshots prove mutations/stability"
+  ],
+  "files": {
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-apply.json": {
+      "sha256": "9dc548277c0b4e22c22414562f8944fe20c55b2e262636cb77de8aec80140616",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-apply.json.audit-apply-2.jsonl": {
+      "sha256": "357ea70630624f5bab1d14e57da8fd5960449970f3077afaca1c9f86d005a887",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-apply.json.audit-apply-4.jsonl": {
+      "sha256": "f4fbd216e62c456958a3919e99b9f756686051a80c0342605c2fed957d9ca5e8",
+      "bytes": 684
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-apply.json.raw-inspect.json": {
+      "sha256": "2cecb53f46474805b750b7d86a37546112f5625bf954e5347c044c20078d0e37",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-apply.json.raw-return.json": {
+      "sha256": "2cecb53f46474805b750b7d86a37546112f5625bf954e5347c044c20078d0e37",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-completed-first-read.json": {
+      "sha256": "9b61455dcd1b55c1a228cccc73e08dd8aa4f3264acee33008167791818bdd6e8",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-completed-first-read.json.audit-apply-18.jsonl": {
+      "sha256": "e2eae383395c99571c7f9a58030385ec32f69f07e73e556440cd3cbce894f798",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-completed-first-read.json.audit-apply-19.jsonl": {
+      "sha256": "3bf2dac33d90d918c98b276c1986e7159d97bc037d950e2913c46215da14aacc",
+      "bytes": 684
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-completed-first-read.json.raw-inspect.json": {
+      "sha256": "2e9e2606ce8af13dd146672fae710e45e21769031d296e99fe953e9766149d30",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-completed-first-read.json.raw-return.json": {
+      "sha256": "2e9e2606ce8af13dd146672fae710e45e21769031d296e99fe953e9766149d30",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-completed-second-read.json": {
+      "sha256": "05d2443fbc8ee1d489adbebfb866c3c3be4c2137c412bbc54aa84b2ea62e7142",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-completed-second-read.json.audit-apply-22.jsonl": {
+      "sha256": "0c1e2d9c7f02f1a719d9c1fba26a992046fa6dd46d0b355d13c1a744d2cacc76",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-completed-second-read.json.audit-apply-23.jsonl": {
+      "sha256": "b9ff40db57ccdfd01f98a9cc420a6753c810ff736ec52a7ff883dccf0ac20507",
+      "bytes": 684
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-completed-second-read.json.raw-inspect.json": {
+      "sha256": "cdbd336e431bf74298a2895a5b79336801238cc79f611dffd573b74cdae1cd80",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-completed-second-read.json.raw-return.json": {
+      "sha256": "cdbd336e431bf74298a2895a5b79336801238cc79f611dffd573b74cdae1cd80",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-connection.json": {
+      "sha256": "285ccd2e7ac4ad49c1ef9bd1899b86ad07b1614ecd9498c157f2acda81352e5a",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-connection.json.audit-apply-103.jsonl": {
+      "sha256": "8c136f6e1ad23cff3412eece1fb7ebc8cc7640ca23ee5a868528276aab207bf5",
+      "bytes": 127
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-connection.json.audit-apply-development.jsonl": {
+      "sha256": "d355c213e90a4dda405225038710b3d5520261aecac170c54137047d44bba26c",
+      "bytes": 15895
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-connection.json.audit-resume-104.jsonl": {
+      "sha256": "bf56132b3457a1f5b04e362bd908310d02b9f99fef48b1e15e2eedd439b539e7",
+      "bytes": 70444
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-connection.json.hold": {
+      "sha256": "2d8a84326ad4c1b05cc303c40354a297e9d4c7600fe4f961d9c7068ad6e0b665",
+      "bytes": 33
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-connection.json.raw-inspect.json": {
+      "sha256": "7a88ee980aa7b3424cbbd133ed82f3dabf3d0ec8cf2582363885e7dec8a5693d",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-connection.json.raw-return.json": {
+      "sha256": "7a88ee980aa7b3424cbbd133ed82f3dabf3d0ec8cf2582363885e7dec8a5693d",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-connection.json.release": {
+      "sha256": "a4d451ec23463726f72c43d64c710968f6b602cd653b4de8adee1b556240a829",
+      "bytes": 7
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-failure.json": {
+      "sha256": "97f388e844ee0cdbdf85875f21e8c592d0f4a294976805b485b717fb8c4e3307",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-failure.json.audit-apply-48.jsonl": {
+      "sha256": "4e3437b72bcd6ab0e850e81e1a96f1b96c17ab218c8a174604f2eaa505e59bed",
+      "bytes": 16252
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-failure.json.audit-resume-50.jsonl": {
+      "sha256": "ce28debf48fa32250d9adcb2e0ebc802534122d0536d36b16c0391b8768ca116",
+      "bytes": 70439
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-failure.json.raw-inspect.json": {
+      "sha256": "1caa03061676ddf919c2c67f052a33b2e967ee0c4d57b402e2738e7bea7e11a7",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-failure.json.raw-return.json": {
+      "sha256": "1caa03061676ddf919c2c67f052a33b2e967ee0c4d57b402e2738e7bea7e11a7",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-initial-foreign.json": {
+      "sha256": "eccbd2ff7852a362b4be3e491d233a78d53e2b2f17439145743f7fe02148ca4b",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-initial-foreign.json.audit-apply-58.jsonl": {
+      "sha256": "30b1f1bcdb7d551907c51532e02610a14054314a5c44b5e1f137182666ec12e3",
+      "bytes": 127
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-initial-foreign.json.raw-inspect.json": {
+      "sha256": "ccdf9c8ad845ac4e381240658055d17a23114586c39f71bcfe309d542645ac8a",
+      "bytes": 3086
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-initial-foreign.json.raw-return.json": {
+      "sha256": "ccdf9c8ad845ac4e381240658055d17a23114586c39f71bcfe309d542645ac8a",
+      "bytes": 3086
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-initial-same.json": {
+      "sha256": "db28461194f375dcd68423472f4f047c7078de0dd9140cbcdbad65f05230485d",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-initial-same.json.audit-apply-54.jsonl": {
+      "sha256": "3e2c3a2a2ea4fa3032f5f196f3f3d1b4182d48fb7f34dc6f1b559e06aeaee1a3",
+      "bytes": 127
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-initial-same.json.raw-inspect.json": {
+      "sha256": "62fa17c58796b45f939e521195aefd620eef750925d64b7567ff00ee3098d12e",
+      "bytes": 3086
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-initial-same.json.raw-return.json": {
+      "sha256": "62fa17c58796b45f939e521195aefd620eef750925d64b7567ff00ee3098d12e",
+      "bytes": 3086
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-foreign.json": {
+      "sha256": "fa70fa86a286348a49e7811c672b8e5ce3923f50d7cbfef9af59556e87a4f412",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-foreign.json.audit-apply-92.jsonl": {
+      "sha256": "c0dc1b52382b60fd533956009fa8bb507897716256c4031bac65e70960ad564a",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-foreign.json.audit-resume-94.jsonl": {
+      "sha256": "3d2708f1e0e5a88031453c712c045b5577a1c71c41eccd68257fd6d5a4d6b67e",
+      "bytes": 3789
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-foreign.json.raw-inspect.json": {
+      "sha256": "99772e305f3d1657fc0de8b7a8d32354b7311e0c9e930cee5b52e3120c59ba13",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-foreign.json.raw-return.json": {
+      "sha256": "99772e305f3d1657fc0de8b7a8d32354b7311e0c9e930cee5b52e3120c59ba13",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-same.json": {
+      "sha256": "a480adf91811b3ecc9163d71c36244f4f01400d9a6354ad53bcee9007d50e5f9",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-same.json.audit-apply-86.jsonl": {
+      "sha256": "c05ecdc979b543e9a61eaa7922553611eea9edf3f605d07bf30612f756fbd946",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-same.json.audit-resume-88.jsonl": {
+      "sha256": "d7567e0cc90d59dba22ec9f51074cc16b53553449b6a7e18d967d935a2a803cc",
+      "bytes": 3789
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-same.json.raw-inspect.json": {
+      "sha256": "974a57de0ee23a038720cf9fcaa68fc9fe0857f208f8ad6a01b46bad6c727650",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-same.json.raw-return.json": {
+      "sha256": "974a57de0ee23a038720cf9fcaa68fc9fe0857f208f8ad6a01b46bad6c727650",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-missing-raw.json": {
+      "sha256": "a6eda4bf0a02936165720298f6e94ec60f770ddeb21ba179969b25f251aeffaa",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-missing-raw.json.audit-apply-26.jsonl": {
+      "sha256": "b5acaa8ed5c838641611efcec4771536f76a0a74d93d4a965b2bed258b189d96",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-missing-raw.json.audit-apply-28.jsonl": {
+      "sha256": "341085fab50ac770a4ac601d9e6beaf546454bae9f29c2d42cf9935bad50bdd6",
+      "bytes": 684
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-missing-raw.json.raw-inspect.json": {
+      "sha256": "7f4eaf9210ed4fde961d6732b025bc387deb8cde50497e70738d2885011258d0",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-missing-raw.json.raw-return.json": {
+      "sha256": "7f4eaf9210ed4fde961d6732b025bc387deb8cde50497e70738d2885011258d0",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-old-complete.json": {
+      "sha256": "33e3947f25c06d380de8faa05d63edaa6ac5c23f1166962a402bdf75b38e0007",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-old-complete.json.audit-apply-36.jsonl": {
+      "sha256": "b028e879442dd884a7e1c9f33d34a88fcf75a47f110fee8a2315cb22e64463e8",
+      "bytes": 75612
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-old-complete.json.audit-apply-37.jsonl": {
+      "sha256": "c05a23bbff8815119a8a3d9296acbc4f770e41c435c4145e054ad077a633c463",
+      "bytes": 127
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-old-complete.json.raw-inspect.json": {
+      "sha256": "6d59b1882e41aa88362278926807da74e60807286fa5cd42edd8ffb6c560e0cd",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-old-complete.json.raw-return.json": {
+      "sha256": "6d59b1882e41aa88362278926807da74e60807286fa5cd42edd8ffb6c560e0cd",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-ownership.json": {
+      "sha256": "43b04ce9f03b14a3eba0dbfcd2b17f8772894285b6fdb8f93dea03358aac799e",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-ownership.json.audit-apply-44.jsonl": {
+      "sha256": "dee6e88c6cf0cd2c65c15b74cf16ae5f25f2e74011a470ae4849eafe32d39085",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-ownership.json.audit-apply-45.jsonl": {
+      "sha256": "5dd03a2e2d2d09dd22e7a012245f8d6e672c81821269fdd4cfa9a56e65544be1",
+      "bytes": 684
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-ownership.json.raw-inspect.json": {
+      "sha256": "3c0f71ef90e2d53482da7ae79978c3c4eea8612622adb3676e698e8e8288305a",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-ownership.json.raw-return.json": {
+      "sha256": "3c0f71ef90e2d53482da7ae79978c3c4eea8612622adb3676e698e8e8288305a",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-parent-drift.json": {
+      "sha256": "1c07d61c72f90d2e508f263446b04280af2bc4258b2a9979eb698c94c9908bc9",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-parent-drift.json.audit-apply-12.jsonl": {
+      "sha256": "69121122c37381ba36b0d8db8b5c0ee6e71fb34f9127b2b9151c08b4be7b60d8",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-parent-drift.json.audit-apply-14.jsonl": {
+      "sha256": "610f3c0bd242055a676a4930367daad6f93531e6775044cab95a097ae372fe85",
+      "bytes": 684
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-parent-drift.json.audit-resume-16.jsonl": {
+      "sha256": "a2af24d1fc9770516466360145d205955e8eba53adc4037906e5532dc68e1215",
+      "bytes": 127
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-parent-drift.json.raw-return.json": {
+      "sha256": "3971b32753cd41b8dff5c40fcb64d9d86afb0293b59eb44f0f452d139ce881a3",
+      "bytes": 19421
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-drift.json": {
+      "sha256": "ab86a492e1fd2eae69c9bd684be2c49e6843c35af3955133aca20db1f4077b10",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-drift.json.audit-apply-31.jsonl": {
+      "sha256": "eb3dda17ee52d224c82300d84aa8aa50054f688382a6d5919967daeae4df6115",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-drift.json.audit-apply-33.jsonl": {
+      "sha256": "e2cf62c9073b47a3f5d96a90e88ef006e9224d66451a9c785499b321ab735d0f",
+      "bytes": 684
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-drift.json.raw-inspect.json": {
+      "sha256": "1e7875d2046d6a5afe13b999ca0b5b82a01714fc0e597eabd532c6247e00a4ea",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-drift.json.raw-return.json": {
+      "sha256": "1e7875d2046d6a5afe13b999ca0b5b82a01714fc0e597eabd532c6247e00a4ea",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-read-same.json": {
+      "sha256": "fec86deba6eb4f6762169277451ce8f785e46d69bb4552e5b96ccf699276f099",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-read-same.json.audit-apply-98.jsonl": {
+      "sha256": "b5121b87d010284aaf9eb334e7bc6e7c9116e9589a201284b36712ceebea2d27",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-read-same.json.audit-resume-100.jsonl": {
+      "sha256": "431d6577270398585311ff7bc0d91288b95f2e1a8a811caa5fbb414eb8b00124",
+      "bytes": 3789
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-read-same.json.raw-inspect.json": {
+      "sha256": "a4093b5a4d7c10439c21b25744c472480974ecf7823117e3b8e38152e6c377f7",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-read-same.json.raw-return.json": {
+      "sha256": "a4093b5a4d7c10439c21b25744c472480974ecf7823117e3b8e38152e6c377f7",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-foreign.json": {
+      "sha256": "e5c9e08be5b08b4516b181f7b7cf03695b0e412136b87a5a63a1cc38596e62c2",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-foreign.json.audit-apply-68.jsonl": {
+      "sha256": "c5c169825e29dd942cb927841b7afa46915f42a157a9c8520373916a7fe3590f",
+      "bytes": 21936
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-foreign.json.audit-resume-70.jsonl": {
+      "sha256": "a21bd0265c0b76e73f36eb2d3d6e8c3d7f738948f154750c382ba0d677c1a063",
+      "bytes": 67284
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-foreign.json.raw-inspect.json": {
+      "sha256": "e474ea9db6cdfe54ff2a3889b911cd3e67280a1caf370c02b0f7376444f4e459",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-foreign.json.raw-return.json": {
+      "sha256": "e474ea9db6cdfe54ff2a3889b911cd3e67280a1caf370c02b0f7376444f4e459",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-same.json": {
+      "sha256": "66349ab0be8a7e93073c9fa99f6b304c5be505c3dd6372d197cbb1710ac1a59a",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-same.json.audit-apply-62.jsonl": {
+      "sha256": "0ec3290c76dd68e180226b9e5629ef6c427f281d029ef5c7c601de523c73304a",
+      "bytes": 21936
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-same.json.audit-resume-64.jsonl": {
+      "sha256": "1e5123cb2c8870cc56d8adaf2dc8ae3030ac1fafc24aa437e854a1e0a298fa4b",
+      "bytes": 67284
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-same.json.raw-inspect.json": {
+      "sha256": "b1906455276716352e676340d8c5f55e95dc00aa91be697bfe389f64bc4baa26",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-same.json.raw-return.json": {
+      "sha256": "b1906455276716352e676340d8c5f55e95dc00aa91be697bfe389f64bc4baa26",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-release.json": {
+      "sha256": "a38c83e598a0fc1d187f8fd27844b1009cd138bc7b86e4b4c01d9d5ee79da34d",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-release.json.audit-apply-40.jsonl": {
+      "sha256": "732f729f048b7b2f496d05b6209320311ad55dfb373d35d697dbd924e5b330a9",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-release.json.audit-apply-41.jsonl": {
+      "sha256": "9aca47086e6d5902b0c3e2769ffdf45e8aa7e58354cc487f136cee2a2cc196ef",
+      "bytes": 684
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-release.json.raw-inspect.json": {
+      "sha256": "bff888104f4c4229ef3915f62e43213469af7eecef23cafc6df6f008ef5182dd",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-release.json.raw-return.json": {
+      "sha256": "bff888104f4c4229ef3915f62e43213469af7eecef23cafc6df6f008ef5182dd",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-foreign.json": {
+      "sha256": "9191d86f945ac28e50e086ba4c2b7a71b811b2c19a10102e79d55fada007f2b5",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-foreign.json.audit-apply-80.jsonl": {
+      "sha256": "bf8c4c25c6d0132562fdf534c3d8f97417c199a8359186a1e7c11017d1ae75e7",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-foreign.json.audit-resume-82.jsonl": {
+      "sha256": "7ad988301f26d459808110cf54697401fcc2afa2616be1b107df0cf2085474b1",
+      "bytes": 3789
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-foreign.json.raw-inspect.json": {
+      "sha256": "fd81287d8189d3e071ff961bba1e101583c87908012631a5d15f19431e2c458c",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-foreign.json.raw-return.json": {
+      "sha256": "fd81287d8189d3e071ff961bba1e101583c87908012631a5d15f19431e2c458c",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-same.json": {
+      "sha256": "7c8072acf919b6de8bff10730c03bb402dae008dd57f77f98caf5fdaa90321b7",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-same.json.audit-apply-74.jsonl": {
+      "sha256": "c937e88aee028e2e5cb561358039a2480459daa96d005774d7b7faed2b07026a",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-same.json.audit-resume-76.jsonl": {
+      "sha256": "608223a2ddaeffff87d4c072dd334bd95dbe18ecc4f4dda4f3002adc8aaadbb6",
+      "bytes": 3789
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-same.json.raw-inspect.json": {
+      "sha256": "6736b95f115e68b9707c34d69ffa611089afad37e48cefd236d808113a493da4",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-same.json.raw-return.json": {
+      "sha256": "6736b95f115e68b9707c34d69ffa611089afad37e48cefd236d808113a493da4",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-snapshot-read.json": {
+      "sha256": "67a2e7290b6a0eae35c85294a792044ca400a77f3c156e912ce52342c024bc4f",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-snapshot-read.json.audit-apply-7.jsonl": {
+      "sha256": "e839fcf567d21b84655a22f9521d70a5bd4d98c26b6e93b3d6c76fe52f2d1209",
+      "bytes": 88240
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-snapshot-read.json.audit-apply-8.jsonl": {
+      "sha256": "6e6627e43d53afff5e579e2aab9baae6622072c13bd075acf3263c26c993a8ea",
+      "bytes": 684
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-snapshot-read.json.audit-resume-10.jsonl": {
+      "sha256": "dde4258f7601018e70137691fce00dd5823a9e3d92e06e22786472e0331d9bb9",
+      "bytes": 128
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-snapshot-read.json.raw-return.json": {
+      "sha256": "23294cbed6ea95fc6f0c7b83e8cda4d5b7b24f0f1ae01dd4dddea08240811ac9",
+      "bytes": 19440
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-apply-apply-0.txt": {
+      "sha256": "38e0cf00e5ff9ca9aaad5adc2b1f50b0360c90ec617d6f6d1ee0a023a45d379c",
+      "bytes": 266
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-apply-apply-1.txt": {
+      "sha256": "38e0cf00e5ff9ca9aaad5adc2b1f50b0360c90ec617d6f6d1ee0a023a45d379c",
+      "bytes": 266
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-apply-inspect-0.txt": {
+      "sha256": "a8c856e99db32b1660b2256c515ec771cd2ed3909a44d75158b49386c1ee9764",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-apply-inspect-1.txt": {
+      "sha256": "a8c856e99db32b1660b2256c515ec771cd2ed3909a44d75158b49386c1ee9764",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-apply-prepare-0.txt": {
+      "sha256": "b4a39582805d9dc65750ebd2d6ee16d9c1ca833f429c982a9572a823217c9b33",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-failure-apply-2.txt": {
+      "sha256": "51ed4ad46922a8010cc14e8a31371a9a6f9fe7a801192f76accc339c3a4482f4",
+      "bytes": 89
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-failure-inspect-2.txt": {
+      "sha256": "65b10c6bdbfba0967746458432f1e33170925aafeb02e7fce97a0f8ce10c9ff7",
+      "bytes": 312
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-failure-inspect-3.txt": {
+      "sha256": "1880884ef6a71118d9388f5c424069c77909111a95e7a132424e662b0d045771",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-failure-prepare-2.txt": {
+      "sha256": "cf34cd73aaa657ca4bd28fa3a472eb195e848f1dc145e5531771987b05000dbb",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-failure-resume-3.txt": {
+      "sha256": "6452166830cc859e4adc2728c1105191ff8b3ade241e10c5e5633a0d3bbb60c7",
+      "bytes": 266
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-initial-foreign-apply-5.txt": {
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-initial-foreign-inspect-5.txt": {
+      "sha256": "c779105990a35d559707fd0902af3a7c2ee55542259d764a0ea0584e3ef0dda8",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-initial-foreign-prepare-5.txt": {
+      "sha256": "977854932b0174cec487e098593de0b2faa3be66a2d57b4f180577a7f3591715",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-initial-same-apply-4.txt": {
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-initial-same-inspect-4.txt": {
+      "sha256": "ba3291c4ee3561cb985fd538e1797c1bc5aa265cc72989fb8f4608a83a61f274",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-initial-same-prepare-4.txt": {
+      "sha256": "1cdaf0624cfe13c81c4bc04fd79357df5a0b56c22b83d8337712b20e26b28a5e",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-reentrant-same-apply-6.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-reentrant-same-inspect-6.txt": {
+      "sha256": "e08737cabc2f305d0f9413577f59feffebfa8ed2ab03c873b17b43f44ee83c7c",
+      "bytes": 312
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418737-reentrant-same-prepare-6.txt": {
+      "sha256": "1bbad70d0c989b6b963399e2286990d6f5d6351802d1e56c8e6c2d346f252541",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-apply-1-prepare.txt": {
+      "sha256": "9c521702b9a1404ad08df8d7bfbc7e193bb027ed554d96abbc52bdbd2b85f2b1",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-apply-2-apply.txt": {
+      "sha256": "b766827566b8cc760756bfe787bebbd152293806c70783e5ccb4cebb7ae6f35b",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-apply-3-inspect.txt": {
+      "sha256": "b70efc5050c17848ecf193fa072b48a47118afc837705bcff3fdae62022e43ef",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-apply-4-apply.txt": {
+      "sha256": "b766827566b8cc760756bfe787bebbd152293806c70783e5ccb4cebb7ae6f35b",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-apply-5-inspect.txt": {
+      "sha256": "b70efc5050c17848ecf193fa072b48a47118afc837705bcff3fdae62022e43ef",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-connection-61-prepare.txt": {
+      "sha256": "ca7060a711f41e0f2526d7a1a9e7baf82ff97505942693aff5ab2b417fcf373d",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-connection-62-apply.txt": {
+      "sha256": "497f4f07fb2abc8eceb9afe1db400b9968db56c7f516eea2fffc6ce4e48c5a10",
+      "bytes": 76
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-connection-63-resume.txt": {
+      "sha256": "b88cc5296c86a25c52ab30656a9c87b2375c3dfd2840af16681d695f6775fd07",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-connection-64-inspect.txt": {
+      "sha256": "72ee9f7f9ffda160d70375aded916bce828691a8532941f12113602abc9909a9",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-connection-65-inspect.txt": {
+      "sha256": "72ee9f7f9ffda160d70375aded916bce828691a8532941f12113602abc9909a9",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-failure-10-inspect.txt": {
+      "sha256": "96798c41420a4c8696efbc3ae52e44753fba9b8eecc45eee1057b4d48302d802",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-failure-6-prepare.txt": {
+      "sha256": "df98dab61ec62731916d52fb218d4b5e4ac1e23138a769c5dcb548f5cec48242",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-failure-7-apply.txt": {
+      "sha256": "51ed4ad46922a8010cc14e8a31371a9a6f9fe7a801192f76accc339c3a4482f4",
+      "bytes": 89
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-failure-8-inspect.txt": {
+      "sha256": "7485f1cd4a2c88f43728a56cfef5555e2b836ea9ea903f94de3ea52f1f3c8d96",
+      "bytes": 312
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-failure-9-resume.txt": {
+      "sha256": "4b9aeb36fb290f783a1a4d0c167a642c8a8a587002176a2f5a690c82b805926a",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-initial-foreign-15-prepare.txt": {
+      "sha256": "19a4d02b5aef36367f398e18c728e778ae465dacb517d89ad939c1b322e85cd1",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-initial-foreign-16-inspect.txt": {
+      "sha256": "4aae99fcd797b1aba41a62b26747d39f43fa4cd56b3ee18c4e5b6c419de8dde6",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-initial-foreign-17-apply.txt": {
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-initial-foreign-18-inspect.txt": {
+      "sha256": "4aae99fcd797b1aba41a62b26747d39f43fa4cd56b3ee18c4e5b6c419de8dde6",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-initial-same-11-prepare.txt": {
+      "sha256": "9784693db291ce62cb62312a075f575aa307dea822767e0f0f165f766a370b8f",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-initial-same-12-inspect.txt": {
+      "sha256": "b0626531b3bbc19d4c29398b6ceef4c6a5087e6e8283eae1cf3cb420e434b5d0",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-initial-same-13-apply.txt": {
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-initial-same-14-inspect.txt": {
+      "sha256": "b0626531b3bbc19d4c29398b6ceef4c6a5087e6e8283eae1cf3cb420e434b5d0",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-foreign-49-prepare.txt": {
+      "sha256": "b98c7be54c58c38f3621a875c1e7a6e18a05f1d99ce734dbfc5b9601c94be78f",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-foreign-50-inspect.txt": {
+      "sha256": "fbd060265b4a37888a7699db9cb996830035dfed9b87302fa1c75d459d0a2abd",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-foreign-51-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-foreign-52-inspect.txt": {
+      "sha256": "a54e68c5c5964edc2ca9d0313217189b7e8b23705d6335293115882f50c0f29c",
+      "bytes": 337
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-foreign-53-resume.txt": {
+      "sha256": "c45596c6a71e8733ce979d524101e7e371c8db87eb810310d0812797b672c264",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-foreign-54-inspect.txt": {
+      "sha256": "500ea69d5b6d3ab5fce22df3f2acac24c8382cd7c296431c232642f14891e938",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-same-43-prepare.txt": {
+      "sha256": "19ebf5de862bef3841e69d83124745531c465106d29d504844765ddb60c487da",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-same-44-inspect.txt": {
+      "sha256": "94efbc8ab022b60bef2398d4d0069c78d823df9296f970ea2211b3288b70c3d0",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-same-45-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-same-46-inspect.txt": {
+      "sha256": "32e9f9cf6c62a83d9e87a9e73dc446fedb4eb1b189ec97f357879b8e4a57e5ef",
+      "bytes": 337
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-same-47-resume.txt": {
+      "sha256": "1949ec07d42d210371c5cd2875202e60ce982aa7ac3e1ee5c7a6ca1053ed12a9",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-legacy-same-48-inspect.txt": {
+      "sha256": "56a5ef60266024ff01ef27b67cc15866fa8ecfd4bbc2902d638b7aebc2949485",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-raw-read-same-55-prepare.txt": {
+      "sha256": "b3ba9dade515ea966c2e4f0fffdb883a475db4c4e260af59e96746ce91b919cd",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-raw-read-same-56-inspect.txt": {
+      "sha256": "58ffb81c62630eba16010e8bce7a7fd2430c5ba76eafb3f0cd482d4bfa61ee68",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-raw-read-same-57-apply.txt": {
+      "sha256": "a5631ef6c8774d8d8a1db703372a7af52fad60acb74888ebeec05e5e467ef0d6",
+      "bytes": 81
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-raw-read-same-58-inspect.txt": {
+      "sha256": "9e9d3c834e196f23873af6fc8b404ba31180dc0accfe915a2c4c2d84f8be7e26",
+      "bytes": 337
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-raw-read-same-59-resume.txt": {
+      "sha256": "2cf8142b1cbc3b248aeaf9666a227c5a35b6c61d9151925033c8c98e94588ffc",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-raw-read-same-60-inspect.txt": {
+      "sha256": "1c008bdc0fc7fd865795bce63b62cc6ee8612a886b5efa496e465ca05c6d7b1d",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-foreign-25-prepare.txt": {
+      "sha256": "e1b5a043c538a7880d30d6adab6d147e246384da2c7acf1568c26ca25c2e26e3",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-foreign-26-inspect.txt": {
+      "sha256": "09fdb24bb12c0fa3fab96d12064a535ff6567c6e064f45fa929552be2b33e78e",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-foreign-27-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-foreign-28-inspect.txt": {
+      "sha256": "455fdce5d6f884067cd7494050e38040dd858dd9bad89716e89b3f332f9f609c",
+      "bytes": 312
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-foreign-29-resume.txt": {
+      "sha256": "76c24898d8d64ebfc79c949cf60e47ee763649e686f92fec1bc709482c4e17a6",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-foreign-30-inspect.txt": {
+      "sha256": "2265a8c666f13615de6aa14ba8e08e476598e11e01bdc7d2e8c878898c602faf",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-same-19-prepare.txt": {
+      "sha256": "a6b0e863c42e293e8722c18b226f9055c94930bc80db755c3aa4e25cd9f759b1",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-same-20-inspect.txt": {
+      "sha256": "8025602873620a8e0606f07a181771b0d0f4a9edf75068c9a3f59626e4ba2d99",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-same-21-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-same-22-inspect.txt": {
+      "sha256": "6094a13ab58f1717e12cb6ce6f6b163b2b736028cca76ff90d1b27727b227153",
+      "bytes": 312
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-same-23-resume.txt": {
+      "sha256": "093327722dd3b3205946b4cf5dfa2005566abab057af2734713a937ee2ba50e0",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-reentrant-same-24-inspect.txt": {
+      "sha256": "eb53e029af9c9591b1a02e4334d6fbb91c16cfc0b94ba7cc5b917e94a0136247",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-foreign-37-prepare.txt": {
+      "sha256": "f2af3d6bb5db283bd10e25038e77b4adb908b4b3c7fc1c437188c90de13fbaaa",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-foreign-38-inspect.txt": {
+      "sha256": "78cff7d640b026b657423381574c1d80339919a314b188c56396d75afd5c9746",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-foreign-39-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-foreign-40-inspect.txt": {
+      "sha256": "f73d3386fec1be71c25646b22e348bd880d7c1758f3d8c7241e1eb3a4e056c25",
+      "bytes": 337
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-foreign-41-resume.txt": {
+      "sha256": "12119202e8b103ee00d185b46da56167f2a5655cf0cbcc6afdfede0352d63b79",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-foreign-42-inspect.txt": {
+      "sha256": "9f0329e322172e8b9a2c72fa6b5cc8f6f66587636baa0398f85acc0c4fb4a1a6",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-same-31-prepare.txt": {
+      "sha256": "c9a1e14373761b976975a9e9d1ffac1482e19bd76329c9168a4db4f9c871c7f3",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-same-32-inspect.txt": {
+      "sha256": "e37c4ebb12983011aa34d9f77cf021332c3f5f116172f5999b1b82da3f180168",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-same-33-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-same-34-inspect.txt": {
+      "sha256": "f10125646eea7e48d6753efbe8cc70a4c2c33f4e6386b868d00aace4f41b90df",
+      "bytes": 337
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-same-35-resume.txt": {
+      "sha256": "be79c1709374b199a9483725f850fd36a69e7d74f9f0838c062815a528cc8bbe",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792418868046939000-save-same-36-inspect.txt": {
+      "sha256": "893f96a9533c8b09687c764f4e4b3f583f09990423886a0b49113c34964d1f09",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-apply-1-prepare.txt": {
+      "sha256": "6577f81334925f1e06409292e8839791024db49311befa7af1b185e9a486e58b",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-apply-2-apply.txt": {
+      "sha256": "75d1dfe5a8f8d1f99377acb1b77385a88d169250123f3611c8ae336f9beaeed4",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-apply-3-inspect.txt": {
+      "sha256": "0a4ca6cbcb2665ead2dac3350df5571cbe3191d45ce95f1b98730dcbb7a9dccf",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-apply-4-apply.txt": {
+      "sha256": "75d1dfe5a8f8d1f99377acb1b77385a88d169250123f3611c8ae336f9beaeed4",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-apply-5-inspect.txt": {
+      "sha256": "0a4ca6cbcb2665ead2dac3350df5571cbe3191d45ce95f1b98730dcbb7a9dccf",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-failure-10-inspect.txt": {
+      "sha256": "d3076c263670f7f980bb9f0b89ac1f66cfa17bee19b9437b6585dc7287b23051",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-failure-6-prepare.txt": {
+      "sha256": "ba8a2cf3b061681c6a9da81a8551330ba6dbcaf815b65f37285284cc276fda8c",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-failure-7-apply.txt": {
+      "sha256": "51ed4ad46922a8010cc14e8a31371a9a6f9fe7a801192f76accc339c3a4482f4",
+      "bytes": 89
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-failure-8-inspect.txt": {
+      "sha256": "4595913d9e32f7cac6af3cbd92455d9161dba786efd800ef2338a85c00ba6c0a",
+      "bytes": 312
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-failure-9-resume.txt": {
+      "sha256": "45986c56c3efad2002bf831388d68693e0e1b07c7175f0f35404bd7b0588bc0f",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-initial-foreign-15-prepare.txt": {
+      "sha256": "ad5558143c77f754568600e51cd8cebd087584df8fe484c69f2998b9346254cc",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-initial-foreign-16-inspect.txt": {
+      "sha256": "52510f5e438fd0b5486649cd7ee86c8a90735a753f0e7c0d87ccb003633de8d5",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-initial-foreign-17-apply.txt": {
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-initial-foreign-18-inspect.txt": {
+      "sha256": "52510f5e438fd0b5486649cd7ee86c8a90735a753f0e7c0d87ccb003633de8d5",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-initial-same-11-prepare.txt": {
+      "sha256": "f0683ba04a32fb3497c2fe98ad3b4f6d1de98dfb8231b731df1fe37699227730",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-initial-same-12-inspect.txt": {
+      "sha256": "a8bbd4020c3d8d6ef66045114311c13cc798b076a1285be5d2316031e719e1ec",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-initial-same-13-apply.txt": {
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-initial-same-14-inspect.txt": {
+      "sha256": "a8bbd4020c3d8d6ef66045114311c13cc798b076a1285be5d2316031e719e1ec",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-legacy-same-43-prepare.txt": {
+      "sha256": "1d3af90118ab8cf6b4cee67e98bf4581919eee4213bcf8d69429aa9d8ac69555",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-legacy-same-44-inspect.txt": {
+      "sha256": "e4deed9935b3838be831107d94665befae1b250ebf44ffed1296f28b1954864f",
+      "bytes": 752
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-foreign-25-prepare.txt": {
+      "sha256": "8afe98d4eca69cee6264586c663e1304203448f375a04cb5b63355ff3d3ad181",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-foreign-26-inspect.txt": {
+      "sha256": "a2e257a6bf273c03c8a3352d2e2d935a8b86864c0efb027cdd5232ba85aa54a1",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-foreign-27-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-foreign-28-inspect.txt": {
+      "sha256": "a5512262224605d6b61587d58d64a60b55e0f2f7292e2944a921ba0498417870",
+      "bytes": 312
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-foreign-29-resume.txt": {
+      "sha256": "21b2248a6e2eb00680f45505c97e549907c4e8a22649f8c7922d8ee04ffb7aa2",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-foreign-30-inspect.txt": {
+      "sha256": "b257a3cd240b1968555ef3b6c38756e00755bef39dd1499d266708233e124781",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-same-19-prepare.txt": {
+      "sha256": "96be153008717ebde868bca35ef80f9001619f2d65d209a48975c240d0c945f8",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-same-20-inspect.txt": {
+      "sha256": "66d0201aef9e570f61da71c7d94d15f4e6e5bb7e4d62c9465ed70954312da4e4",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-same-21-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-same-22-inspect.txt": {
+      "sha256": "b04f2d97effda96ceb6e5555fd545f58a5ab6e595f5681ae3e8a31fed8674f5b",
+      "bytes": 312
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-same-23-resume.txt": {
+      "sha256": "45d61c50cdc661b80c22fb57d2c72cb9d5c14e2b0cf5cdd4902fbdf0231bd75b",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-reentrant-same-24-inspect.txt": {
+      "sha256": "6ff6189438f57b76efcbe8c6d4e1f4eb035c93e15b46d1365b21ea6d04f44bdf",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-foreign-37-prepare.txt": {
+      "sha256": "30b00803029ae43adcf083ac4c2246c7a356047957fef94d7c72a788e53927c6",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-foreign-38-inspect.txt": {
+      "sha256": "aa2e6104bea7874746f0c59af993113ea04e5e12c1d9fe2930e0e1de30b4ab93",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-foreign-39-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-foreign-40-inspect.txt": {
+      "sha256": "2b05923658d036cc55e022c34bc13f77e341cb6f53e6d6a9ee9305500b558433",
+      "bytes": 337
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-foreign-41-resume.txt": {
+      "sha256": "5caa812389e5b47c4f68d56924dc76b9ff5a44b60ae8d2332c53973c9bee0653",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-foreign-42-inspect.txt": {
+      "sha256": "9da2d14190aa79118533e366214217a420d46a94a45a25e539f20f1453bf0c35",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-same-31-prepare.txt": {
+      "sha256": "81bb5690c7d9269c7a058cf3669c1af28e7c47671d612c0a67f227b10a3bbfe1",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-same-32-inspect.txt": {
+      "sha256": "e7b0f0a9b1f1e3eb40cbd02c1b708d40e77a14c309f3e387c1bc1edb395f4a5d",
+      "bytes": 304
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-same-33-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-same-34-inspect.txt": {
+      "sha256": "b8b9230c4f47fe23fa68cac36c518ef3074ea06f0c6acf715083c95da4f52327",
+      "bytes": 337
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-same-35-resume.txt": {
+      "sha256": "1e8710f20a9a40cbad72ad541d9281b6e79490ec6b546009193938de768e1b16",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792419056435237000-save-same-36-inspect.txt": {
+      "sha256": "83812647b4b08474395e41d0cc3d109f1afc0827b7ef75f975c76bd846450579",
+      "bytes": 401
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-apply-1-prepare.txt": {
+      "sha256": "c087489c36c4f6f64001fa054812bdfb6f4e4e3bdd74dd9aca703d2491e4ce96",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-apply-2-apply.txt": {
+      "sha256": "7bb5491f49b059fb78cc914fe883fbb7bf3aeb2c69b869168bd50b401178c5b9",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-apply-3-inspect.txt": {
+      "sha256": "2e62bd3e52fade6760ad1496f05a8131db6ef58080bc4b256457380dbf46f3d9",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-apply-4-apply.txt": {
+      "sha256": "7bb5491f49b059fb78cc914fe883fbb7bf3aeb2c69b869168bd50b401178c5b9",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-apply-5-inspect.txt": {
+      "sha256": "2e62bd3e52fade6760ad1496f05a8131db6ef58080bc4b256457380dbf46f3d9",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-completed-first-read-6-prepare.txt": {
+      "sha256": "6812b03afc4cb3fc3acd54b6091153c58e7191e9efceb75956b390dc8dc687aa",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-completed-first-read-7-apply.txt": {
+      "sha256": "2e1e3b56c8d71903f9fd4cb950234a68ecf2ae9ff0e3d32591141c76baded8a1",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-completed-first-read-8-apply.txt": {
+      "sha256": "0c03ef0ef9d959c40e49f1da644b5a21e6657bbfe7204fd32e510dc846cfaf90",
+      "bytes": 80
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-completed-first-read-9-inspect.txt": {
+      "sha256": "f0bcbe2667792f2982b9f72d858d474bc89fe9fb848458d71388d0325d2c7e14",
+      "bytes": 429
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-completed-second-read-10-prepare.txt": {
+      "sha256": "da72d05ba3e9f70ca4e7f4a8d08f5a4c182edef315ad06d91c09d24fa3b1ef8b",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-completed-second-read-11-apply.txt": {
+      "sha256": "874abfe96f791b1c42a918df3b9cd5e12c03b00baa47e38b93ba366e644e6a8b",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-completed-second-read-12-apply.txt": {
+      "sha256": "68f5ed2b36d202f18cc10bca1ed01bb34a8420136f4b488a374b928c25cb3547",
+      "bytes": 79
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-completed-second-read-13-inspect.txt": {
+      "sha256": "f97923fec1dbde21ec54f02800bf2d113d2f73cb2e30c863e65e89f8d5b2a472",
+      "bytes": 429
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-connection-92-prepare.txt": {
+      "sha256": "0c5a306d80d3dbefe23b36fb41a8349ddf547007c54863cf4c195a71104566bb",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-connection-93-apply.txt": {
+      "sha256": "b2b706d9ec251123bf81785c05e399953d9b9a50af333ead3fd775dae81bff2e",
+      "bytes": 83
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-failure-37-prepare.txt": {
+      "sha256": "eedda8e55b092cc02f8548075416a495a0994c6c17dd588982fdb12afb8ae1fd",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-failure-38-apply.txt": {
+      "sha256": "51ed4ad46922a8010cc14e8a31371a9a6f9fe7a801192f76accc339c3a4482f4",
+      "bytes": 89
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-failure-39-inspect.txt": {
+      "sha256": "ada60dfe54a78d72f23fa63df366d11e2688b3ac7c863d62dd4d8d097dd2a299",
+      "bytes": 342
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-failure-40-resume.txt": {
+      "sha256": "5dad545eded03b2b130f3b92f2d4f919c38a98db0f020897039569f8dfa5bfcf",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-failure-41-inspect.txt": {
+      "sha256": "ef7fc48c18a7ed5b5e0272fa83d046ac0c87f8b5415d6dbb7f198a8862e81733",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-initial-foreign-46-prepare.txt": {
+      "sha256": "c0b7fe598a94c900dbdb78acbb8edd4d8d9ceab4cdf50acdbf462664b6d017cb",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-initial-foreign-47-inspect.txt": {
+      "sha256": "cff3ec8fa99e41b08b9fa7e846a8dee575881f65a6872b88f29872adf84f2424",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-initial-foreign-48-apply.txt": {
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-initial-foreign-49-inspect.txt": {
+      "sha256": "cff3ec8fa99e41b08b9fa7e846a8dee575881f65a6872b88f29872adf84f2424",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-initial-same-42-prepare.txt": {
+      "sha256": "f3b4477c501260ae59f5cdf5ff5d47cc312a8536c2f6561fa3c473ecf596e05b",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-initial-same-43-inspect.txt": {
+      "sha256": "a6604e945952cc442ae619854dfea6d7b90577f687acc6029aa3dd3111643e8c",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-initial-same-44-apply.txt": {
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-initial-same-45-inspect.txt": {
+      "sha256": "a6604e945952cc442ae619854dfea6d7b90577f687acc6029aa3dd3111643e8c",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-foreign-80-prepare.txt": {
+      "sha256": "aec0ef8286f82b394c36c85cdeba12905f1f16ceb7314268a239269c575019ff",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-foreign-81-inspect.txt": {
+      "sha256": "020e4d00ed96fe1bd706ef02fd8ec4d7847a185975486fbcf0266c7d1cd20f24",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-foreign-82-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-foreign-83-inspect.txt": {
+      "sha256": "5c379c4becf55c9a54614e4b428a211119933686f07e1ce9b651d54abd9cb579",
+      "bytes": 367
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-foreign-84-resume.txt": {
+      "sha256": "542c682f878d49a8fbb5d82c41a7c83d8e380d15f22049caa4185c61c2bf2eff",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-foreign-85-inspect.txt": {
+      "sha256": "fd61cfe2e7992b7a31f00b6bf05c6960cc971a649aa901696b0b46c70d9c489e",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-same-74-prepare.txt": {
+      "sha256": "99f945ace1eba8b7031fb7a272dfe1741ed809d081586741714fae6cb70ed450",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-same-75-inspect.txt": {
+      "sha256": "6ce7f25cf759fc1439b4a7a4138cf7e4a34b3bbeedeea667dbad1c39df1c829a",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-same-76-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-same-77-inspect.txt": {
+      "sha256": "f61cd8fb049d125a02180901ea9f393ad4a2924198fbb4f5f01077a5c46c9e4d",
+      "bytes": 367
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-same-78-resume.txt": {
+      "sha256": "681eaa85e885776e391d5d31469280648c76fb52d539c09ebc228d7bad36c4a7",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-legacy-same-79-inspect.txt": {
+      "sha256": "695eb243c89b155eb862d7ab3a09b50e4f8d722a2e04b3a68bbb59841460774d",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-missing-raw-14-prepare.txt": {
+      "sha256": "c1e987151dfc265d2426484f113d15591a9d73dc6146fc9f68499efc461ccdb3",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-missing-raw-15-apply.txt": {
+      "sha256": "00761bfa1736c3e64aebf8b7995ea2fc24f1804bc90c5accce685ffcf2faca22",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-missing-raw-16-control-missing-raw.txt": {
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-missing-raw-17-apply.txt": {
+      "sha256": "5794b801beecb7556c4da175da330373296e45e37b2996baea2955771eb52c5f",
+      "bytes": 128
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-missing-raw-18-inspect.txt": {
+      "sha256": "abb85fe84eedfa545dace7475288c60a994661fcf588ddc9ad7381f3a8c051e9",
+      "bytes": 429
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-old-complete-24-prepare.txt": {
+      "sha256": "07a7eb7dd1b465a89a953f504c02717988caa085db53dca71a7fbcc0b14bc702",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-old-complete-25-apply.txt": {
+      "sha256": "64da62783deefaa22fcce2a492fc1316e243002aba2977808155470d8e2811ce",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-old-complete-26-control-old-complete.txt": {
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-old-complete-27-apply.txt": {
+      "sha256": "62d2daa25a8ae171d4d9bd6fefeaa56dad7844923c493212e3245f6fa2abf5cb",
+      "bytes": 123
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-old-complete-28-inspect.txt": {
+      "sha256": "5ccb191861c7f9b23f6d6aa49b3da06e07718f426fbd7a0612a426cf7f14cd94",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-ownership-33-prepare.txt": {
+      "sha256": "e2e443acb34afc723ff2feef542d7f61cf09bd8e1602c3a5fa15b55254b89c23",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-ownership-34-apply.txt": {
+      "sha256": "915b4965f23b8cac6fcd74a99b7751b8f91749ea70107bacaeb6506b8fdfbed0",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-ownership-35-apply.txt": {
+      "sha256": "184cba0bed1f8f4957b2de19f024d12be4e12956cd4506346ef488fa57e8d2ae",
+      "bytes": 118
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-ownership-36-inspect.txt": {
+      "sha256": "0d205856f83d2283a17822b386c9bb96b5cc1669f47fa70faa794e4652e3eba8",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-drift-19-prepare.txt": {
+      "sha256": "0139fc82c4746d802fbf6203881e711de8ec2fade564bb8ef1ac88119d78c220",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-drift-20-apply.txt": {
+      "sha256": "6bf9e7c4bafbfefc07e1386fb3e73b1f99251e6e68350134680e8e8e28a8d175",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-drift-21-control-raw-drift.txt": {
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-drift-22-apply.txt": {
+      "sha256": "5794b801beecb7556c4da175da330373296e45e37b2996baea2955771eb52c5f",
+      "bytes": 128
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-drift-23-inspect.txt": {
+      "sha256": "7ec1b82c9266c9cb54e12228c8aecc6e7e37d7c7ee3f1c0438785edbec456db6",
+      "bytes": 429
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-read-same-86-prepare.txt": {
+      "sha256": "ba6e966a55c27f17ed0bfc139add1e53c691b46d41af618d3c4b6a049a4cd577",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-read-same-87-inspect.txt": {
+      "sha256": "8b8c6ac8e4f4af94cb056972840ad2fde7d3cba239a2d6590a583c08f203d188",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-read-same-88-apply.txt": {
+      "sha256": "0c03ef0ef9d959c40e49f1da644b5a21e6657bbfe7204fd32e510dc846cfaf90",
+      "bytes": 80
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-read-same-89-inspect.txt": {
+      "sha256": "3fea2551dfe2fe0d03e70e798d6d0e84d40ff0e172e48bc2eddcd1dc1d8b8b8a",
+      "bytes": 367
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-read-same-90-resume.txt": {
+      "sha256": "5f47ac876693b85af038a3a9249af300e985057d188d8bd73d9fd1bb713fa83a",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-raw-read-same-91-inspect.txt": {
+      "sha256": "f7d393527ffed822c1796776d99860a5e772fdb30aeefb5952e5842832a441a8",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-foreign-56-prepare.txt": {
+      "sha256": "2a86661e7fa1e88ebd7c5cc9b098090a75acea705a4b879bd8442feb3bf9e1aa",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-foreign-57-inspect.txt": {
+      "sha256": "9fbff0476034b4b87b74e6d5a5d39748cba8e3f28213339fe8bf831dfa4ce264",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-foreign-58-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-foreign-59-inspect.txt": {
+      "sha256": "43afbfea6c6a88c503a7f7d6e71a20832ca5236ce020a886967da97c9511f613",
+      "bytes": 342
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-foreign-60-resume.txt": {
+      "sha256": "568074539acdcad3f688185709fbbf12a174767507552f8f6b186fa5477c76be",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-foreign-61-inspect.txt": {
+      "sha256": "40f9778e5741cd2703d533ad05569092478be7d6d29b203af6b7190090f8cd40",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-same-50-prepare.txt": {
+      "sha256": "f40c32d8162c1e4ba753bc52cb3f411cfdf25b5d42ec22d0472bbe1b1363ab8c",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-same-51-inspect.txt": {
+      "sha256": "12947e6c2fa047ac4d5dfb40ac30ed4b4a3cbbb4da6c20ff8fb4630d2b150d01",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-same-52-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-same-53-inspect.txt": {
+      "sha256": "ec4d672b4314a9e893fc6ad3e7fa30ae028eccbc0da4e428888ee8f99f32185e",
+      "bytes": 342
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-same-54-resume.txt": {
+      "sha256": "3fec161e4c8db8801f4431d2b51106543af552034e30e5dfcc3368e02a1b0d0e",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-reentrant-same-55-inspect.txt": {
+      "sha256": "fda5250de2bf2d0a109f12666a650c74bf44031eab7742f7cd2084d8f5ce0af3",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-release-29-prepare.txt": {
+      "sha256": "4e010d5ea14f7999881887b0e6aeb8fb9934b7d6bfbfa5eeb1891b838de3a4a8",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-release-30-apply.txt": {
+      "sha256": "5fb6744675f0ad50b40e13a271883dbb137ee716cb427008489cc47aa5fafa13",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-release-31-apply.txt": {
+      "sha256": "184cba0bed1f8f4957b2de19f024d12be4e12956cd4506346ef488fa57e8d2ae",
+      "bytes": 118
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-release-32-inspect.txt": {
+      "sha256": "1e19681d42b3bbb8136ff942aece2a23b17e8f41683392940b07c73b9e70ea75",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-foreign-68-prepare.txt": {
+      "sha256": "97ac0a6859892f26d98cc05ca0d1108a11b80525ae5e289dfb5141927f65079b",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-foreign-69-inspect.txt": {
+      "sha256": "a3d9955e013a6ed9c234f36376f5df83e6b4e1297cb04ecde9e96c5da022f6c2",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-foreign-70-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-foreign-71-inspect.txt": {
+      "sha256": "485acf52a4dfe75ee285d02caa32f8ca36ddab3dd0aa3fd710fc956d3bbd601b",
+      "bytes": 367
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-foreign-72-resume.txt": {
+      "sha256": "9d899e64be7d1712b5db79bfec1d674ec5721bcd83c6c5191d173c0c8c222626",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-foreign-73-inspect.txt": {
+      "sha256": "aa38b96bf283d22bdc01a28136072afaa86d176ea372624d8c47ecf7955ae44d",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-same-62-prepare.txt": {
+      "sha256": "79cbf7a946557b9d7ccc6f2aaa0894ea64a9fba5c4729404639fd3ed178a9b3d",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-same-63-inspect.txt": {
+      "sha256": "ed74b97d315a5fc610554d254ec63faeaed1c182289b0b1280071214dd0585b8",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-same-64-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-same-65-inspect.txt": {
+      "sha256": "89dec8b7f1c0f971a8e0a262bd50f4c5e055df61d3c73d0704bd64b87f59afee",
+      "bytes": 367
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-same-66-resume.txt": {
+      "sha256": "7622477afebc7052ead0b6e5305b5d785b641f5b65a184b64859545084c63f21",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420017266637000-save-same-67-inspect.txt": {
+      "sha256": "62b5442c6690f27afc260aaf34408f158a6b2c70fe00d5d44e997e9670212abd",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-apply-1-prepare.txt": {
+      "sha256": "1e9bbae2d468d40c2917b37e4667488c37eba25f14380f66209034853346acbb",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-apply-2-apply.txt": {
+      "sha256": "893b31faa48a22a27dcea253d7932bf087d6294aa4195068ae113b38eff571ab",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-apply-3-inspect.txt": {
+      "sha256": "7135dc6f322b7a09b8cc67e1c6d3523d4ab5d5bf261c3300a1ed02f3b65faf6c",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-apply-4-apply.txt": {
+      "sha256": "893b31faa48a22a27dcea253d7932bf087d6294aa4195068ae113b38eff571ab",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-apply-5-inspect.txt": {
+      "sha256": "7135dc6f322b7a09b8cc67e1c6d3523d4ab5d5bf261c3300a1ed02f3b65faf6c",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-completed-first-read-17-prepare.txt": {
+      "sha256": "58247e8f246282fa4f973c480045892a0943ce98a4eb479d1e12b0974a8ad9e5",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-completed-first-read-18-apply.txt": {
+      "sha256": "f1a4af9b53977be21b2940c6205c2b1cac4e36e7e7910b9ee8a88e034d67fdc2",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-completed-first-read-19-apply.txt": {
+      "sha256": "0c03ef0ef9d959c40e49f1da644b5a21e6657bbfe7204fd32e510dc846cfaf90",
+      "bytes": 80
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-completed-first-read-20-inspect.txt": {
+      "sha256": "77509aa723cf661decf8ad66cc9a66e2f67d4570d8d70544acfc8fb688418a30",
+      "bytes": 429
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-completed-second-read-21-prepare.txt": {
+      "sha256": "73f8903592bbd8cb6b4e984a34672731c09ea7f6c95697d7b43f4cb5173ab44d",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-completed-second-read-22-apply.txt": {
+      "sha256": "bc7673947943d676b67271bbfada0d6c24e0c0f11dbda07ea5c3e05a322d080e",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-completed-second-read-23-apply.txt": {
+      "sha256": "68f5ed2b36d202f18cc10bca1ed01bb34a8420136f4b488a374b928c25cb3547",
+      "bytes": 79
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-completed-second-read-24-inspect.txt": {
+      "sha256": "453c1947e7477d72a63deda4a8c17f2138347343ab1785de7755b994be11cf32",
+      "bytes": 429
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-connection-102-prepare.txt": {
+      "sha256": "75d90c824254d597d707823f67d644de82031789b3ebb51863a7edd2dca4718c",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-connection-103-apply.txt": {
+      "sha256": "b2b706d9ec251123bf81785c05e399953d9b9a50af333ead3fd775dae81bff2e",
+      "bytes": 83
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-connection-104-resume.txt": {
+      "sha256": "e8e50d9a3f91c5dc329ea68df212d8b8e4696e59f96efe27a7a3f17072bd7753",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-connection-105-inspect.txt": {
+      "sha256": "84b285b0d62ddcb3e55853cc8be96f499f03236d9c11eddf6bd6fd0bbab26f96",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-connection-106-inspect.txt": {
+      "sha256": "84b285b0d62ddcb3e55853cc8be96f499f03236d9c11eddf6bd6fd0bbab26f96",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-failure-47-prepare.txt": {
+      "sha256": "f707fc6e8fe98c0c877d532763b22700b6b93407dbda22a235ce624f6e930948",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-failure-48-apply.txt": {
+      "sha256": "51ed4ad46922a8010cc14e8a31371a9a6f9fe7a801192f76accc339c3a4482f4",
+      "bytes": 89
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-failure-49-inspect.txt": {
+      "sha256": "2ca45383b4e457a12c3a7eb9071c50256ad767e0aceb8500f740e8c46aa71c14",
+      "bytes": 342
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-failure-50-resume.txt": {
+      "sha256": "023ff69d059f63c00cae931f0ebcd0ecfb52d1097c0538000db999806ca15147",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-failure-51-inspect.txt": {
+      "sha256": "5869f384a594bd84d98aabdabae97ed1ae0f0d01f958986ba15627a15dd2fa81",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-initial-foreign-56-prepare.txt": {
+      "sha256": "10001ffed78d2162efbf2f79bd859d4bc351047071ae0ce54f90df17928a320e",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-initial-foreign-57-inspect.txt": {
+      "sha256": "ff877ddf40ae137529e36f55f4c784695ec28ebc69884fa8eea5db8ed3214e19",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-initial-foreign-58-apply.txt": {
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-initial-foreign-59-inspect.txt": {
+      "sha256": "ff877ddf40ae137529e36f55f4c784695ec28ebc69884fa8eea5db8ed3214e19",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-initial-same-52-prepare.txt": {
+      "sha256": "dc03b43bcb673bd6c190115f7d44fed835a903b407470b93b3932321cd77cb2a",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-initial-same-53-inspect.txt": {
+      "sha256": "7619c8ce08b87e2bcac0c9194ecdfeb7bcc22c1894433f350cbfe88ccbad8833",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-initial-same-54-apply.txt": {
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-initial-same-55-inspect.txt": {
+      "sha256": "7619c8ce08b87e2bcac0c9194ecdfeb7bcc22c1894433f350cbfe88ccbad8833",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-foreign-90-prepare.txt": {
+      "sha256": "6ba467257b11e519f2b175834e3fc35ecdd58cb4f3d4d474a615d97422a2585d",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-foreign-91-inspect.txt": {
+      "sha256": "7c14475cacb9a22808dfe5a61851629e7282d62d86aa762b01b6c4a339b36720",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-foreign-92-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-foreign-93-inspect.txt": {
+      "sha256": "27349b0c39fb48c101fdeb5c0ab51cce482b42f6b2d0ad4f9211a5c2ab133241",
+      "bytes": 367
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-foreign-94-resume.txt": {
+      "sha256": "26ebb1671f4f6dc3f086295c5dc58610085af3c0e6bd2e64886184fade38890b",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-foreign-95-inspect.txt": {
+      "sha256": "711b6a3f697e2027296086e7ce5cf55d48d090994486cdefdf51c99cf244613d",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-same-84-prepare.txt": {
+      "sha256": "d6084851dd3aa059ad10fc6c9f3665bc06b7a087ed3e47525963b8ccc43e7f41",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-same-85-inspect.txt": {
+      "sha256": "037f39bdc4f43977366cb2f585e894a6fa28ebe49796c0f991c6ff975dbb1202",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-same-86-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-same-87-inspect.txt": {
+      "sha256": "75f5f41e289b3a9c64b2ba5ed2bd5dff47f465259762276f677ec9c582d68180",
+      "bytes": 367
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-same-88-resume.txt": {
+      "sha256": "95523b5877502d51d591ddf9b7705fd582439ed66439d686b6e3e494f52143dc",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-legacy-same-89-inspect.txt": {
+      "sha256": "80d2612dec432f50f09dba0f1e784dd26df6410471d7e99a1dee2186ce63b80c",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-missing-raw-25-prepare.txt": {
+      "sha256": "159fe2f4575c9ab9b5843a2fc67bb7a54311bbae3652d22d857afce6c89b43f2",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-missing-raw-26-apply.txt": {
+      "sha256": "46469f1b7fd1b495fdbf610260fa60b4c64fd628d2cf39a757a3f37a65aec1ad",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-missing-raw-27-control-missing-raw.txt": {
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-missing-raw-28-apply.txt": {
+      "sha256": "5794b801beecb7556c4da175da330373296e45e37b2996baea2955771eb52c5f",
+      "bytes": 128
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-missing-raw-29-inspect.txt": {
+      "sha256": "519a9545c1a54680a455f086b6996b0d7a67811df6c39c4e1413e464e5bd49d0",
+      "bytes": 429
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-old-complete-35-prepare.txt": {
+      "sha256": "07c0b404e90ff49003d82f05f5380f304e46fb6f6821028dba3fec114a7b941d",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-old-complete-36-apply.txt": {
+      "sha256": "f7906eb5aa565de69cd52c29cff3e1736949858542e8c9226fdc835e6cfd83e5",
+      "bytes": 321
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-old-complete-37-apply.txt": {
+      "sha256": "62d2daa25a8ae171d4d9bd6fefeaa56dad7844923c493212e3245f6fa2abf5cb",
+      "bytes": 123
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-old-complete-38-inspect.txt": {
+      "sha256": "f0dec1fcf998a836184b9fb328ba66b2f2d54d95ab43940032fea70b041c01e1",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-ownership-43-prepare.txt": {
+      "sha256": "db9f3612ecf29f84067d566f4932169780aab51c4f3cb6230c61ea88ee01854d",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-ownership-44-apply.txt": {
+      "sha256": "4ae1a82a2aba23573da06fbc68ac3f1e3a4d50480c20bf7696249ec33ff94baa",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-ownership-45-apply.txt": {
+      "sha256": "184cba0bed1f8f4957b2de19f024d12be4e12956cd4506346ef488fa57e8d2ae",
+      "bytes": 118
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-ownership-46-inspect.txt": {
+      "sha256": "551c9976bcdbdf42afb7034457843f3112e9772905215dc788f73d61de6011f4",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-parent-drift-11-prepare.txt": {
+      "sha256": "e050a36c22786f9a978002ff54a672aabbdb3b6d1427098b75070b1893f7588d",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-parent-drift-12-apply.txt": {
+      "sha256": "25c72e6e8a9cfc328534bd0718f5719616d8abc107a046b5d8e73bce852cdd25",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-parent-drift-13-control-parent-drift.txt": {
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-parent-drift-14-apply.txt": {
+      "sha256": "5e2701027c2ac9a078d0c3b42a6c03430403a6637aebf5ffbcc8b8be2526b7fe",
+      "bytes": 75
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-parent-drift-15-inspect-guard.txt": {
+      "sha256": "7f62c19efda01729e6ad9b291519e30adfac785a2178940b27a04facc2faa56a",
+      "bytes": 157
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-parent-drift-16-resume.txt": {
+      "sha256": "5e2701027c2ac9a078d0c3b42a6c03430403a6637aebf5ffbcc8b8be2526b7fe",
+      "bytes": 75
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-drift-30-prepare.txt": {
+      "sha256": "3a8978ef0ed5cf2c0944bed092dc562895740aac6d6ee8aa53defa029ea5cb4d",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-drift-31-apply.txt": {
+      "sha256": "187e710f0a14406cbce5cd7738b15fad9a1d589b187366b6d62b91ee7c83bc24",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-drift-32-control-raw-drift.txt": {
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-drift-33-apply.txt": {
+      "sha256": "5794b801beecb7556c4da175da330373296e45e37b2996baea2955771eb52c5f",
+      "bytes": 128
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-drift-34-inspect.txt": {
+      "sha256": "63b6ebea19f7f2bb083bdae09cee9cee8474feaa8b6b24f299e198d6869a0140",
+      "bytes": 429
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-read-same-100-resume.txt": {
+      "sha256": "8412574e4ca9b6b22d4f3d802234cebcd483dac1fa8c550ad329f39851f71a0d",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-read-same-101-inspect.txt": {
+      "sha256": "85a0f4d5eb2b905397519cbb047824c3d0498410040bab86e626b9bb2dcc9683",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-read-same-96-prepare.txt": {
+      "sha256": "e066d558a29fea9ce2690c6b15c460f8625d92184bea7ffbd37dc4091b3eaf18",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-read-same-97-inspect.txt": {
+      "sha256": "61034602bf934422e5334c6b6038cc0a91d84eac6611d72334758f27f35271cf",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-read-same-98-apply.txt": {
+      "sha256": "0c03ef0ef9d959c40e49f1da644b5a21e6657bbfe7204fd32e510dc846cfaf90",
+      "bytes": 80
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-raw-read-same-99-inspect.txt": {
+      "sha256": "5d629ebadc14dd370cbb390ce38571f95ea014b74b61e66a089101fcf836d0f1",
+      "bytes": 367
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-foreign-66-prepare.txt": {
+      "sha256": "7c6dd499c1522d7a53e42aeb2a43697ab879381fc5da94ce818ddacc72e8d10d",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-foreign-67-inspect.txt": {
+      "sha256": "47cd3c5798847636bf95a70d689fa4aff752fe7f70bb54bdfd5b892fd1cd0de1",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-foreign-68-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-foreign-69-inspect.txt": {
+      "sha256": "91355f45b423ee8fdd30ed6fadc9f1189d6026c33219b9c339bc2d0f3d647ca4",
+      "bytes": 342
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-foreign-70-resume.txt": {
+      "sha256": "047c114b4fc21d11291ae74aea9cc6a3ade477b4aea15d96fb73a759b582a446",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-foreign-71-inspect.txt": {
+      "sha256": "81f81168428d4c09ecf794e1022e3f0e83f04f2c80782d8345931ddecdfefea7",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-same-60-prepare.txt": {
+      "sha256": "5fd272fcb3f751d2418ada10a30f836dce7c07c48e6a5dde64b9f21424b5f98b",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-same-61-inspect.txt": {
+      "sha256": "ca5cba2f366ab2dfbd615946cf4d1eebdcb6c7a5d068e0504ab003eea5c1879e",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-same-62-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-same-63-inspect.txt": {
+      "sha256": "31306cd11a84c6ffae5bfcf53e01b90975892e2d4df4704e658c64458624b403",
+      "bytes": 342
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-same-64-resume.txt": {
+      "sha256": "39ed1ab973381d0a36317276394b31ed5a2bf5a6b35d7459315351854796b90d",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-reentrant-same-65-inspect.txt": {
+      "sha256": "d8201cebd1652e11b129c710c35e2b2498d43f80bef56fd041ba49108ea9cb87",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-release-39-prepare.txt": {
+      "sha256": "a5427cd1b2cdddcdc5baad8f342d04be40f23108efbd446c808ef3ce150060ff",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-release-40-apply.txt": {
+      "sha256": "8ca777febc382ed12d6dc3a4df37895e140e8f8de04586f70e83a5331232c701",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-release-41-apply.txt": {
+      "sha256": "184cba0bed1f8f4957b2de19f024d12be4e12956cd4506346ef488fa57e8d2ae",
+      "bytes": 118
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-release-42-inspect.txt": {
+      "sha256": "e44c0b18460f0b29bbcdd013bc018214245fa1945282b49d2dc3593c13d0e369",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-foreign-78-prepare.txt": {
+      "sha256": "86c7a5396fbddca3276e59a000e404a2ca3458c443a8f3d38c724d1d08f9e524",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-foreign-79-inspect.txt": {
+      "sha256": "592ac76d8ca5bc25bc5cf9e182b34e721bc269119474de15446a5ca6dc3fbd1a",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-foreign-80-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-foreign-81-inspect.txt": {
+      "sha256": "b38c1ffb4803357c2e9b7568268cb9fcc1bf0c6fabc96e360896317f2fed24eb",
+      "bytes": 367
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-foreign-82-resume.txt": {
+      "sha256": "53e27f962fb14a6a0cb7cdb230c20d95f79e25ee7849b991125b5792e7fd9e4c",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-foreign-83-inspect.txt": {
+      "sha256": "18814e364205fdd9c9137b20f57cc2bfdf36c3d73cee7b7208c1e4a30e38ebb9",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-same-72-prepare.txt": {
+      "sha256": "6a64b560c7fbe7d696acecb95505b63d8b5a005128ac5903af97574cf53d2b7d",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-same-73-inspect.txt": {
+      "sha256": "c7030338837a9d6073f48ba13fc30423ab98d04eaf5f4f4b2889e0f8aabdb70d",
+      "bytes": 335
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-same-74-apply.txt": {
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-same-75-inspect.txt": {
+      "sha256": "fe81b49f862a21d9cfae175f3d15c2893775104577c39212dcce1ab6580884f5",
+      "bytes": 367
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-same-76-resume.txt": {
+      "sha256": "c897de416db0f9b85dac657ac5c4ffbcb5a6d43a2b88ce57d5b638eb9b9f6806",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-save-same-77-inspect.txt": {
+      "sha256": "07f9196521a5b66eb47171447824c746ab69c432e7ae5d1ab61adc39f238c54b",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-snapshot-read-10-resume.txt": {
+      "sha256": "14c72274f6ed9943c37a78ad601f8f4a1a3d4fdeed1d24aa6093e68d2add7126",
+      "bytes": 136
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-snapshot-read-6-prepare.txt": {
+      "sha256": "d5ed1746f008b08f596dadfe6fba5a1e2ea9679000a6ef8dfdd1104a4b700330",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-snapshot-read-7-apply.txt": {
+      "sha256": "1562400d7875881a72bfddd51817f4504c0b38b04e1c16e676a5008eb71f9ec2",
+      "bytes": 353
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-snapshot-read-8-apply.txt": {
+      "sha256": "d512cb292cb7dbfba4a9ba67355d1665e850f26d5af5d0baecb3cf71875b98cd",
+      "bytes": 86
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-1792420631379986000-snapshot-read-9-inspect-guard.txt": {
+      "sha256": "29340e43e2f731e2ffb974eae028b9a160066e4c20f979a51ac46501a019e385",
+      "bytes": 157
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-baseline-apply-apply.txt": {
+      "sha256": "fe3f68c4dca811f291c7222567648875c19a1baf298e324130c98a2d1fd66ccd",
+      "bytes": 267
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-baseline-apply-inspect.txt": {
+      "sha256": "af449fc9161112a2bb3858fe06eedb7b4bfaf65e23774e49b858dd5622165c4f",
+      "bytes": 313
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-baseline-apply-prepare.txt": {
+      "sha256": "2b1988bc900f66f8832c2d33e215a0535ad36541bc78969359f4fa604823ce42",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-baseline-failure-apply-failure.txt": {
+      "sha256": "bd77e695bc791bf3649c208bb8264d0c418ec21cdaf47a374a7c3476caae3986",
+      "bytes": 93
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-baseline-failure-inspect.txt": {
+      "sha256": "f9b204f281d00349b1db518b847a1d338b5c1b2c7bbb68eb14cfdcb743f3099c",
+      "bytes": 313
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-baseline-failure-prepare.txt": {
+      "sha256": "887779d622c49495883fd3982c73391dc7ee9492f7b3b0ee83baee2ef06ae206",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-baseline-failure-resume.txt": {
+      "sha256": "86e89d0f7557ba0991b22d8de31534e0fcd0b28e32f129f2a1ccd70f4df53be3",
+      "bytes": 262
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-refined-1792420437802694000-apply-apply-2.txt": {
+      "sha256": "f3c14b9813babce1dd72f500433e439227df78a43512d729fe62a301b8476df8",
+      "bytes": 321
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-refined-1792420437802694000-apply-inspect-3.txt": {
+      "sha256": "c8955048a290980e55ccdbbcca468d04b120403f309c2f7881fe6b0c549d9be0",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-refined-1792420437802694000-apply-prepare-1.txt": {
+      "sha256": "0e0ec33a74774da4edc9c4456031bc1a85f9693d196b1042d98221c22567bbe3",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-refined-1792420437802694000-failure-apply-5.txt": {
+      "sha256": "ddf204d823c7dcb38f6f1413518cffffacc1e93df034fea5af8920e941491739",
+      "bytes": 93
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-refined-1792420437802694000-failure-inspect-6.txt": {
+      "sha256": "529ea1a0956b6cbc2e96995a8696cd7deaea060e6526494e934ff16ecbaf47b8",
+      "bytes": 342
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-refined-1792420437802694000-failure-inspect-8.txt": {
+      "sha256": "260b02c7c922183efc19df7b2451e50a0de3f3a36cf65032eb19d3256d2ab6b3",
+      "bytes": 432
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-refined-1792420437802694000-failure-prepare-4.txt": {
+      "sha256": "98024b172640eecce8e1962e224c018c96c8462716b5e463fb017e6454c30de2",
+      "bytes": 21
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/case-refined-1792420437802694000-failure-resume-7.txt": {
+      "sha256": "148d9e824498c335c91bd6242870c194d0e10b535d96b264b71926dec5b92271",
+      "bytes": 316
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/commerce-activate-oauth2-provider.txt": {
+      "sha256": "82423e8f1f3e109d7504c310df1124b4076f1951b6a5f49f11f4dfc4374d5f99",
+      "bytes": 71
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/commerce-activate-woocommerce-gateway-stripe.txt": {
+      "sha256": "1e81d1516e969576e4899ceecf74b6bbad6f755283df80b6d7c46e1e5e9ab235",
+      "bytes": 82
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/commerce-activate-woocommerce-payments.txt": {
+      "sha256": "df3de6671cba2eb564fd323428ba4c7d7bb624abf81f6667092c5f00be9683d8",
+      "bytes": 76
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/commerce-activate-woocommerce-services.txt": {
+      "sha256": "4dbe7aebe722b28fad55bde66b75e6743db3265d737738759f28e44ea3bed920",
+      "bytes": 76
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/commerce-activate-wordpress-importer.txt": {
+      "sha256": "346e1a378eadc326295bfcb775e0a806c626f632ed2c57daf3001350e40c87e0",
+      "bytes": 74
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/containment-actual-probe.txt": {
+      "sha256": "9bb87e79a9bf382b3ec067a2bb3307779b6c8c8ffa7132d8533d9ebbb1b5dcc6",
+      "bytes": 377
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/held-1792418868046939000.txt": {
+      "sha256": "0eb098b85e334ac402359c817f0adc643f8e5396c92594f9454ab3fa23098d3e",
+      "bytes": 98
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/held-1792420017266637000.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/held-1792420631379986000.txt": {
+      "sha256": "0eb098b85e334ac402359c817f0adc643f8e5396c92594f9454ab3fa23098d3e",
+      "bytes": 98
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-akismet.txt": {
+      "sha256": "1bda3b2cf7ea51f792f3e4eb7df1c6950dc7c4a7c70b183cb37b508f310aabf0",
+      "bytes": 63
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-elementor.txt": {
+      "sha256": "e5f796db085aa1cb2f786c6e93b672e5179257d220387f7e7a53f50bc946b58d",
+      "bytes": 65
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-gutenberg.txt": {
+      "sha256": "223629c0c5e0ad5597c642f93ee5b56b2d0a293f0257fb38a50c5cde361f8cb5",
+      "bytes": 65
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-image-optimization.txt": {
+      "sha256": "94dbd3caf8c0298a8f9b5e0f85eea30d4f9ca752fba529f20c52f7d716308f90",
+      "bytes": 74
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-jetpack-boost.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-jetpack.txt": {
+      "sha256": "ef3d70a13a8cd828cb0b0db5a89eb12f0c29a95c70ca554d606cedcb3be794fa",
+      "bytes": 63
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-jwt-authentication-for-wp-rest-api.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-kirki.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-klaviyo.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-litespeed-cache.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-mailpoet.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-oauth2-provider.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-one-click-demo-import.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-page-optimize.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-pinterest-for-woocommerce.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-akismet.txt": {
+      "sha256": "55e395064ceea355bd2580478f5400f471e47ef35ada90ace3b705d7910e8a0d",
+      "bytes": 80
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-elementor.txt": {
+      "sha256": "8fcda60d95abf300cda3ca81c1fe97181f90e6374ab263186c92263870af2fa8",
+      "bytes": 82
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-gutenberg.txt": {
+      "sha256": "ca2f6996f062e28db5cc351f77dd576371f82731f11cb78a356d092422281522",
+      "bytes": 82
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-image-optimization.txt": {
+      "sha256": "47479a0fde425c6a5b64594bcd333e3e0ceef211c95584f388382ddbb22a3136",
+      "bytes": 91
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-jetpack-boost.txt": {
+      "sha256": "29205d7fb4b1a2a8d1f32d67862aef02978419b51455dc6fe91f319a69d9048b",
+      "bytes": 69
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-jetpack.txt": {
+      "sha256": "917055b1470c291279a1a0d7b2b45ae3e70b9407f113e9051282c38d80e96387",
+      "bytes": 80
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-jwt-authentication-for-wp-rest-api.txt": {
+      "sha256": "612334152067ab409a2a6befa971a38f37002c7e40b4792eb42b032206232ecc",
+      "bytes": 90
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-kirki.txt": {
+      "sha256": "7f05dc24a4e53e4378d8fd26e93d7fdca99b7f011394987cacc94b7ca33a0ccd",
+      "bytes": 61
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-klaviyo.txt": {
+      "sha256": "7d6ae9a70a7aacb246c7454d2846bbee3896d7feb34e38d903275b64baee10f3",
+      "bytes": 63
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-litespeed-cache.txt": {
+      "sha256": "597a5efba72faf870dda7b5673a47689df4a9fd7b7b5f869a117c6a68f5776c8",
+      "bytes": 150
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-mailpoet.txt": {
+      "sha256": "56385189ea843400d87cab3ada1ca59330cd0b67230e5db34215501801ada61d",
+      "bytes": 105
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-one-click-demo-import.txt": {
+      "sha256": "bcbd4d95cc799f05073d003ea8fb961efc26429fe6a91e76d00c6d51852e877c",
+      "bytes": 118
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-page-optimize.txt": {
+      "sha256": "a87912ce534a16bfbf6ae9d5fe4d90e7e80ad9fcf1c4ea3a4eba24f5ccbadf30",
+      "bytes": 110
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-pinterest-for-woocommerce.txt": {
+      "sha256": "cf8fd9b0d2d5727107e1bf60289d0a7014887a95ad5f94a02704610beb469268",
+      "bytes": 122
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-site-mailer.txt": {
+      "sha256": "f5a582c7c2f0247ea58c542de0fad190c035ae85a47cb83da0e905ca5ef66c75",
+      "bytes": 84
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-stripe-tax-for-woocommerce.txt": {
+      "sha256": "02d1ac71341ed65422c20b993d0c57ea50af9a944c8d33f56223045f8803ac29",
+      "bytes": 123
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-tiktok-for-business.txt": {
+      "sha256": "44692b2e237c831646ec89611ba3b43ab351ed1b849567f3f45301a33a70d010",
+      "bytes": 116
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-woocommerce-paypal-payments.txt": {
+      "sha256": "43ae6e39923fc74772e932455935e00ca72bcda9131984d2efc3324cd9fac76e",
+      "bytes": 124
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-woocommerce-shipping.txt": {
+      "sha256": "058adec497d62cb5d5268c053b1912e346324099b4809bba743c148ada9befb6",
+      "bytes": 117
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-r2-zero-bs-crm.txt": {
+      "sha256": "e3ec03659f76d01a17ace80668dc9986e66f05316b468e5b4b74178dd4ade242",
+      "bytes": 67
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-site-mailer.txt": {
+      "sha256": "0cefff0b049ababb97e8bf46e9afbb28db8850695bc616f0b82932676b5cd358",
+      "bytes": 67
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-stripe-tax-for-woocommerce.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-tiktok-for-business.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-woocommerce-gateway-stripe.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-woocommerce-payments.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-woocommerce-paypal-payments.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-woocommerce-services.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-woocommerce-shipping.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-wordpress-importer.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/plugin-activate-zero-bs-crm.txt": {
+      "sha256": "6a3be9dcebc5b875c03147d67197e8ab14c90ae5c7970d42d5e1bcb9863c1bf3",
+      "bytes": 4999
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-apply.json.raw-return.json": {
+      "sha256": "decaa532981bf12b7c02879e988471100913fb33c4be8c3ba039e08c91392458",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-apply.json.raw-inspect.json": {
+      "sha256": "4d5a10886f1a0c991397b82e761c92fa0c7ad6192bd6f03bd62cd06a645556e2",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-failure.json.audit-apply-5.jsonl": {
+      "sha256": "1fb45119db15c769780170d1d5f645ae4041700ea22351f1f5b3b66ae85156c9",
+      "bytes": 21935
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-failure.json": {
+      "sha256": "6faa06eb1940d1953ffcb325d3da30eeb1efd119e8ca877c2440c6230dc7bc8c",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-apply.json": {
+      "sha256": "0bec886f606dd0aacfc44fe4d3e8d6893bb3e4b7a4caaa3924da982ffd1dfa56",
+      "bytes": 364
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-failure.json.raw-return.json": {
+      "sha256": "a7f2fd4216663dbc782044f60d4fa1e0296aad3ab218efeb87864cc37cf8538f",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-apply.json.audit-apply-2.jsonl": {
+      "sha256": "a69c8b83d1dc7d8d7099c6291a6c97e01f779274fa0eb8123cfb785e41457eb5",
+      "bytes": 75612
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-failure.json.audit-resume-7.jsonl": {
+      "sha256": "4a7e413bc50081296e7936a3353f42b2cf7298d33d849a7690cd0cf26f2c1764",
+      "bytes": 57185
+    },
+    ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-failure.json.raw-inspect.json": {
+      "sha256": "c0c81f6a058bb502e0964c5a6e36f9c0c2807cba19fd72ecefe3672fa2f054d1",
+      "bytes": 19440
+    },
+    ".artifacts/release-gates-20261019/gate4-local/containment-probe.php": {
+      "sha256": "ba835d1ccd1f940803c0c53ed2d74d566db530e75694517959534c50f026de92",
+      "bytes": 1667
+    }
+  }
+}

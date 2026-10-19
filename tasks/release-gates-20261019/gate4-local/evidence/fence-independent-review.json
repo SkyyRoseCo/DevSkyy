@@ -1,0 +1,25 @@
+{
+  "classification": "RECORDED_INDEPENDENT_READ_ONLY_SOURCE_AND_EVIDENCE_REVIEWS",
+  "architect_verdict": "PASS_PROSPECTIVE_PRIVATE_FENCING_SUBSET",
+  "bounded_astra_verdict": "PASS_PROSPECTIVE_PRIVATE_FENCING_SOURCE_AND_RECORDED31_COVERAGE",
+  "python_verdict": "APPROVED_BOUNDED_DRIVER_CLAIMS",
+  "report_sha256": "5598dc691b6123bcdb46a03c0a53d84ad0f92210c07c81fef98cd9124e7093f1",
+  "source_pins": {
+    "tools/v2-runtime/test_gate4_local.py": "630f6bc9696b1235717a94d0de99d84702b6e5797269bce960abf4bc889738a2",
+    "tools/v2-runtime/gate4-fixture.php": "c5523ec3b5c499529fb4ead6faebb48f8cee26e78f6006083270352cd1ed6c4d",
+    "tools/v2-runtime/variation-migration-core-next.php": "6fed2167b9606924dd2c61c8e6227feb2184ff20bab9bfa99a06ff410332905e",
+    "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7"
+  },
+  "review_scope": [
+    "All4sourcepins/runtimeprofile/126referencedreceipthashes verified",
+    "Quarantine/raw/snapshot/parentdrift/nativepaymentguard and concurrency/lostconnection reviewed",
+    "Driver unique failed-run/timeout/error receipts and optimized-mode refusal reviewed"
+  ],
+  "limits": [
+    "Some controls assert native state/refusal without full inspect_after lifecycle checks; not all31assert every audit invariant",
+    "Killed worker audit has no shutdown-end marker",
+    "Oldprotocol/refusedreleaseack may leave COMPLETE; not every rejected invocation blocks payment",
+    "No installed/fullrestore/privacy/live/frozenCLI adoption acceptance"
+  ],
+  "reviewer_execution": "No independent reruns or writes"
+}

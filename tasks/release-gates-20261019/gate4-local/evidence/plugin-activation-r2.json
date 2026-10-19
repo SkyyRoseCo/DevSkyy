@@ -1,0 +1,122 @@
+[
+  {
+    "component": "akismet/akismet.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "elementor/elementor.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "site-mailer/site-mailer.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "gutenberg/gutenberg.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "image-optimization/image-optimization.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "jetpack/jetpack.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "jetpack-boost/jetpack-boost.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "zero-bs-crm/ZeroBSCRM.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "jwt-authentication-for-wp-rest-api/jwt-auth.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "kirki/kirki.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "klaviyo/klaviyo.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "litespeed-cache/litespeed-cache.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "mailpoet/mailpoet.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "one-click-demo-import/one-click-demo-import.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "page-optimize/page-optimize.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "pinterest-for-woocommerce/pinterest-for-woocommerce.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "stripe-tax-for-woocommerce/stripe-tax-for-woocommerce.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "tiktok-for-business/tiktok-for-woocommerce.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "woocommerce-paypal-payments/woocommerce-paypal-payments.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  },
+  {
+    "component": "woocommerce-shipping/woocommerce-shipping.php",
+    "exit": 0,
+    "activated_cli": true,
+    "memory_limit": "1G"
+  }
+]

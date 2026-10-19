@@ -1,0 +1,31 @@
+{
+  "php_prefix": [
+    "-d",
+    "memory_limit=1G",
+    "-d",
+    "error_reporting=24575"
+  ],
+  "wp_skip_plugins": [
+    "akismet",
+    "elementor",
+    "site-mailer",
+    "gutenberg",
+    "image-optimization",
+    "jetpack",
+    "jetpack-boost",
+    "zero-bs-crm",
+    "jwt-authentication-for-wp-rest-api",
+    "kirki",
+    "klaviyo",
+    "litespeed-cache",
+    "mailpoet",
+    "one-click-demo-import",
+    "page-optimize",
+    "pinterest-for-woocommerce",
+    "tiktok-for-business",
+    "wordpress-importer",
+    "oauth2-provider"
+  ],
+  "profile": "(version 1)(allow default)(deny network*)(allow network-outbound (remote unix-socket (literal \"/private/tmp/sr-gate4-01a0f768.sock\")))",
+  "qualification": "AVAILABLE_COMMERCE_SUBSET_NOT_COMPLETE_INSTALLED_STACK"
+}

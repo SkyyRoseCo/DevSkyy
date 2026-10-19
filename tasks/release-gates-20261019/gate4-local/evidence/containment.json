@@ -1,0 +1,39 @@
+{
+  "status": "PASS_EXECUTED_OS_AND_APPLICATION_CONTAINMENT_CANARIES",
+  "authentication": "NOT_APPLICABLE",
+  "profile": "(version 1)(allow default)(deny network*)(allow network-outbound (remote unix-socket (literal \"/private/tmp/sr-gate4-01a0f768.sock\")))",
+  "profile_sha256": "844d0917a12e9f04d7edeb2d19c12da746cf655f182fb5d76f1d9a31536a00aa",
+  "probe_path": ".artifacts/release-gates-20261019/gate4-local/containment-probe.php",
+  "probe_sha256": "ba835d1ccd1f940803c0c53ed2d74d566db530e75694517959534c50f026de92",
+  "raw_receipt_sha256": "9bb87e79a9bf382b3ec067a2bb3307779b6c8c8ffa7132d8533d9ebbb1b5dcc6",
+  "observed": {
+    "tcp": {
+      "connected": false,
+      "errno": 1
+    },
+    "udp": {
+      "connected": false,
+      "errno": 1
+    },
+    "inherited_child": {
+      "connected": false,
+      "errno": 1
+    },
+    "child_exit": 0,
+    "required_unix_sql_success": true,
+    "wp_http_blocked": true,
+    "wp_mail_intercepted": true,
+    "webhooks_disabled": true,
+    "async_scheduler_disabled": true,
+    "cron_disabled": true,
+    "external_gateways": [],
+    "php": "8.5.6",
+    "memory_limit": "-1",
+    "peak_bytes": 193789952
+  },
+  "limits": [
+    "Private commerce CLI only; native fake payment tests call Woo APIs directly without gateway/provider",
+    "Database daemon separately started under OS network-deny Unix inbound profile and skip_networking; restore daemon startup will be recorded separately",
+    "Not installed/runtime or live privacy acceptance"
+  ]
+}

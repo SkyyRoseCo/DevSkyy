@@ -1,0 +1,1148 @@
+{
+  "status": "PASS_PROSPECTIVE_FENCE_PRIVATE_FIXTURE",
+  "authentication": "NOT_APPLICABLE",
+  "run_id": "1792420631379986000",
+  "runtime_profile_sha256": "4324b507358d8d9392fca0d83adefa279b4d0edba1d0c5f36903ff18e800e04a",
+  "runtime_qualification": "AVAILABLE_COMMERCE_SUBSET_NOT_COMPLETE_INSTALLED_STACK",
+  "skipped_plugins": [
+    "akismet",
+    "elementor",
+    "site-mailer",
+    "gutenberg",
+    "image-optimization",
+    "jetpack",
+    "jetpack-boost",
+    "zero-bs-crm",
+    "jwt-authentication-for-wp-rest-api",
+    "kirki",
+    "klaviyo",
+    "litespeed-cache",
+    "mailpoet",
+    "one-click-demo-import",
+    "page-optimize",
+    "pinterest-for-woocommerce",
+    "tiktok-for-business",
+    "wordpress-importer",
+    "oauth2-provider"
+  ],
+  "source_pins": {
+    "tools/v2-runtime/test_gate4_local.py": "630f6bc9696b1235717a94d0de99d84702b6e5797269bce960abf4bc889738a2",
+    "tools/v2-runtime/gate4-fixture.php": "c5523ec3b5c499529fb4ead6faebb48f8cee26e78f6006083270352cd1ed6c4d",
+    "tools/v2-runtime/variation-migration-core-next.php": "6fed2167b9606924dd2c61c8e6227feb2184ff20bab9bfa99a06ff410332905e",
+    "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7"
+  },
+  "cases": [
+    {
+      "case": "apply",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "8b21e48e35f96e3e52a91ba6c171aa89c80df146a7c304a1dc7e68e0da7f60e6",
+        "recorded_after": "8b21e48e35f96e3e52a91ba6c171aa89c80df146a7c304a1dc7e68e0da7f60e6",
+        "raw_sha256": "de33a91f63542afcf7177adfb750d3fa583780d0c8f3409a982acd172d1c9855",
+        "children": [
+          1981,
+          1982,
+          1983,
+          1984,
+          1985,
+          1986
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "41880357df891d7173da4fce6f7c346ed55a7e2c5dcd4426695f260eaa44e9e3"
+      },
+      "fenced_raw": "de33a91f63542afcf7177adfb750d3fa583780d0c8f3409a982acd172d1c9855"
+    },
+    {
+      "case": "completed-retry",
+      "status": "PASS"
+    },
+    {
+      "case": "snapshot-read",
+      "status": "PASS_QUARANTINED",
+      "native": {
+        "ok": true,
+        "state": "FAILED",
+        "quarantined": true,
+        "native_payment_blocked": true,
+        "raw_sha256": "673f35b518262f8266934147b5b13a6f8382a178f901b33d4948fec535caac3c"
+      },
+      "reason": "Cannot verify the complete child inventory."
+    },
+    {
+      "case": "parent-drift",
+      "status": "PASS_QUARANTINED",
+      "native": {
+        "ok": true,
+        "state": "FAILED",
+        "quarantined": true,
+        "native_payment_blocked": true,
+        "raw_sha256": "26499eac8e0d3ee697836def2873c345aff2714e17d7f93392531db6f9f1fbec"
+      },
+      "reason": "Native parent identity mismatch."
+    },
+    {
+      "case": "completed-first-read",
+      "status": "PASS_REFUSED",
+      "reason": "Raw native surface read failed: posts",
+      "native_state": "FAILED",
+      "limit": null
+    },
+    {
+      "case": "completed-second-read",
+      "status": "PASS_REFUSED",
+      "reason": "Raw native surface read failed: meta",
+      "native_state": "FAILED",
+      "limit": null
+    },
+    {
+      "case": "missing-raw",
+      "status": "PASS_REFUSED",
+      "reason": "Completed raw receipt missing or native state drifted; quarantined for investigation.",
+      "native_state": "FAILED",
+      "limit": null
+    },
+    {
+      "case": "raw-drift",
+      "status": "PASS_REFUSED",
+      "reason": "Completed raw receipt missing or native state drifted; quarantined for investigation.",
+      "native_state": "FAILED",
+      "limit": null
+    },
+    {
+      "case": "old-complete",
+      "status": "PASS_REFUSED",
+      "reason": "Older COMPLETE journal has no successor qualification; inspect without adoption.",
+      "native_state": "COMPLETE",
+      "limit": null
+    },
+    {
+      "case": "release",
+      "status": "PASS_REFUSED",
+      "reason": "Native lock release could not be verified; no successful execution receipt.",
+      "native_state": "COMPLETE",
+      "limit": "Release-ack failure denies successful execution receipt; pre-release verified data may remain COMPLETE"
+    },
+    {
+      "case": "ownership",
+      "status": "PASS_REFUSED",
+      "reason": "Native lock release could not be verified; no successful execution receipt.",
+      "native_state": "COMPLETE",
+      "limit": "Release-ack failure denies successful execution receipt; pre-release verified data may remain COMPLETE"
+    },
+    {
+      "case": "after-child-failure",
+      "status": "PASS_GUARD_RETAINED",
+      "native": {
+        "ok": true,
+        "state": "FAILED",
+        "digest": "4064688cc1fc06c34f9bf56ae2eb253d217c85977336c5146f8473620b2afb04",
+        "recorded_after": null,
+        "raw_sha256": "1813fa652c31474572f81d35c2a8324bdd7a94a9c57c7ad9e9abc7237948d214",
+        "children": [
+          2071
+        ],
+        "native_payment_blocked": true,
+        "foreign_raw_sha256": "01fddfc5949a63563619bd6d6001239efef8690d62c65d6b376c84d1e4e8975f"
+      }
+    },
+    {
+      "case": "explicit-resume",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "2062c45aff72b09a20cf85db85c2439b65cfc897c1142a0d05f6b09fd414315e",
+        "recorded_after": "2062c45aff72b09a20cf85db85c2439b65cfc897c1142a0d05f6b09fd414315e",
+        "raw_sha256": "31f503889fd6a7ae48e6af3531ab29f437973bfa105e2d5fa63065591bad46f9",
+        "children": [
+          2071,
+          2072,
+          2073,
+          2074,
+          2075,
+          2076
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "01fddfc5949a63563619bd6d6001239efef8690d62c65d6b376c84d1e4e8975f"
+      }
+    },
+    {
+      "case": "initial-same",
+      "status": "PASS_REFUSED",
+      "reason": "Pre-existing deferred work is outside this one-parent process.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "initial-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Pre-existing deferred work is outside this one-parent process.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reentrant-same",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-reentrant-same",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "3ab224ac0da08b954eeccf43fbea9479d457ff7ff7250c79472062b9bbaef4d6",
+        "recorded_after": "3ab224ac0da08b954eeccf43fbea9479d457ff7ff7250c79472062b9bbaef4d6",
+        "raw_sha256": "61b183a0f71379ed0789d40207f775e54a0beb86014e5bdb7d52b5a28c0174f8",
+        "children": [
+          2086,
+          2087,
+          2088,
+          2089,
+          2090,
+          2091
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "012ee1b6a02e0080c614a7cadfbc7b61340e186953c5a53afe79afaf020feb0c"
+      }
+    },
+    {
+      "case": "reentrant-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-reentrant-foreign",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "df3aff4c4db1bb796af1332be039fb80fa661f5649288d299d1177b1c07863de",
+        "recorded_after": "df3aff4c4db1bb796af1332be039fb80fa661f5649288d299d1177b1c07863de",
+        "raw_sha256": "0c288ad60247e26977b55737923bac782f3c31344a9f0122aba4165237ee94b0",
+        "children": [
+          2095,
+          2096,
+          2097,
+          2098,
+          2099,
+          2100
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "7bde9f953339e59d04254b7cdc9e119c1860d71251cb46619877d99dd7c9a4be"
+      }
+    },
+    {
+      "case": "save-same",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-save-same",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "822e4d3a21a61ad26b750f3d8def956d0ec26b8f5f1af0d0dd5411a55793c4cf",
+        "recorded_after": "822e4d3a21a61ad26b750f3d8def956d0ec26b8f5f1af0d0dd5411a55793c4cf",
+        "raw_sha256": "3958a6b10c8e424397b627577756d3ce0bb3bf540690642d9c60fe12e29f1ba2",
+        "children": [
+          2104,
+          2105,
+          2106,
+          2107,
+          2108,
+          2109
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "b62a470405c460610f09b63e1071ca57f01d3814525c94e521623e316c1cb03f"
+      }
+    },
+    {
+      "case": "save-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-save-foreign",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "d306369ff84a371e2a9248b5ceb4affebea4e72b9d1e942f319213179f0803af",
+        "recorded_after": "d306369ff84a371e2a9248b5ceb4affebea4e72b9d1e942f319213179f0803af",
+        "raw_sha256": "eb7fe5a5687a9b8a4990a080cabfb898f4d9ff26a87a7f09c9eca71215c4f6b0",
+        "children": [
+          2113,
+          2114,
+          2115,
+          2116,
+          2117,
+          2118
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "6020135fad378fba90612ea511e824fead61988f1d54512ead6be3be0cf7f533"
+      }
+    },
+    {
+      "case": "legacy-same",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-legacy-same",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "3c6f6f5654adc35d1afd9438f361cc1d6dc4c546314f5e266b13a10b951ca16b",
+        "recorded_after": "3c6f6f5654adc35d1afd9438f361cc1d6dc4c546314f5e266b13a10b951ca16b",
+        "raw_sha256": "caef3d5fc134d4a9c2e87db2ea44d7827cc7d0535090cdf57ff12127bc2b0d05",
+        "children": [
+          2122,
+          2123,
+          2124,
+          2125,
+          2126,
+          2127
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "a2cc0ac2058a047ad88a7dce33969f067552adfbd2be2e4696b8ddb4c334f7f1"
+      }
+    },
+    {
+      "case": "legacy-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-legacy-foreign",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "ba560b7f9be5b04493a9c4e624bee911b8086924c8da5c118522e5c9733c28c8",
+        "recorded_after": "ba560b7f9be5b04493a9c4e624bee911b8086924c8da5c118522e5c9733c28c8",
+        "raw_sha256": "b83a75ab175bcf5910616e01ad80ebc8323cbf2a09def8a09afcdcd57a0425c1",
+        "children": [
+          2131,
+          2132,
+          2133,
+          2134,
+          2135,
+          2136
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "7040e64e46d5ddb4819caa3116fe998db99b1edbcaa9d9973644e950d74a4565"
+      }
+    },
+    {
+      "case": "raw-read-same",
+      "status": "PASS_REFUSED",
+      "reason": "Raw native surface read failed: posts",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-raw-read-same",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "19668d62324d4a2f86a3748785c262fc0a5b505f6448a2d63e075ffbe614f066",
+        "recorded_after": "19668d62324d4a2f86a3748785c262fc0a5b505f6448a2d63e075ffbe614f066",
+        "raw_sha256": "c584121077f631524bc5e45fe90395fa770fbba04722d27f8962525faa68ffa9",
+        "children": [
+          2140,
+          2141,
+          2142,
+          2143,
+          2144,
+          2145
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "4ee4ceb61cdfe848a9e60691af98476757f276294fbe507bcfb36a55c12c0186"
+      }
+    },
+    {
+      "case": "competing-writer",
+      "status": "PASS_REFUSED"
+    },
+    {
+      "case": "connection-loss-stale-writer",
+      "status": "PASS",
+      "stale_exit": 1,
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "e3e1adaf429eac7993a19aa6bef77bfb6de9b2013b56de8b5f5a9a8bd5df92fe",
+        "recorded_after": "e3e1adaf429eac7993a19aa6bef77bfb6de9b2013b56de8b5f5a9a8bd5df92fe",
+        "raw_sha256": "3c73e932f3490357256af80ac5be4b15e8e8bf514fa89ffb942a33d8db0ce5ac",
+        "children": [
+          2149,
+          2150,
+          2151,
+          2152,
+          2153,
+          2154
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "a681236fe92b74f9b257e7b758ccb1c8902c71d8a6a2c4475697ed6b8904f133"
+      }
+    }
+  ],
+  "receipts": [
+    {
+      "path": "case-1792420631379986000-apply-1-prepare.txt",
+      "sha256": "1e9bbae2d468d40c2917b37e4667488c37eba25f14380f66209034853346acbb",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-apply-2-apply.txt",
+      "sha256": "893b31faa48a22a27dcea253d7932bf087d6294aa4195068ae113b38eff571ab",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-apply-3-inspect.txt",
+      "sha256": "7135dc6f322b7a09b8cc67e1c6d3523d4ab5d5bf261c3300a1ed02f3b65faf6c",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-apply.json.audit-apply-2.jsonl",
+      "sha256": "357ea70630624f5bab1d14e57da8fd5960449970f3077afaca1c9f86d005a887",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420631379986000-apply-4-apply.txt",
+      "sha256": "893b31faa48a22a27dcea253d7932bf087d6294aa4195068ae113b38eff571ab",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-apply-5-inspect.txt",
+      "sha256": "7135dc6f322b7a09b8cc67e1c6d3523d4ab5d5bf261c3300a1ed02f3b65faf6c",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-apply.json.audit-apply-4.jsonl",
+      "sha256": "f4fbd216e62c456958a3919e99b9f756686051a80c0342605c2fed957d9ca5e8",
+      "bytes": 684
+    },
+    {
+      "path": "case-1792420631379986000-snapshot-read-6-prepare.txt",
+      "sha256": "d5ed1746f008b08f596dadfe6fba5a1e2ea9679000a6ef8dfdd1104a4b700330",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-snapshot-read-7-apply.txt",
+      "sha256": "1562400d7875881a72bfddd51817f4504c0b38b04e1c16e676a5008eb71f9ec2",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-snapshot-read-8-apply.txt",
+      "sha256": "d512cb292cb7dbfba4a9ba67355d1665e850f26d5af5d0baecb3cf71875b98cd",
+      "bytes": 86,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-snapshot-read-9-inspect-guard.txt",
+      "sha256": "29340e43e2f731e2ffb974eae028b9a160066e4c20f979a51ac46501a019e385",
+      "bytes": 157,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-snapshot-read-10-resume.txt",
+      "sha256": "14c72274f6ed9943c37a78ad601f8f4a1a3d4fdeed1d24aa6093e68d2add7126",
+      "bytes": 136,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-parent-drift-11-prepare.txt",
+      "sha256": "e050a36c22786f9a978002ff54a672aabbdb3b6d1427098b75070b1893f7588d",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-parent-drift-12-apply.txt",
+      "sha256": "25c72e6e8a9cfc328534bd0718f5719616d8abc107a046b5d8e73bce852cdd25",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-parent-drift-13-control-parent-drift.txt",
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-parent-drift-14-apply.txt",
+      "sha256": "5e2701027c2ac9a078d0c3b42a6c03430403a6637aebf5ffbcc8b8be2526b7fe",
+      "bytes": 75,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-parent-drift-15-inspect-guard.txt",
+      "sha256": "7f62c19efda01729e6ad9b291519e30adfac785a2178940b27a04facc2faa56a",
+      "bytes": 157,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-parent-drift-16-resume.txt",
+      "sha256": "5e2701027c2ac9a078d0c3b42a6c03430403a6637aebf5ffbcc8b8be2526b7fe",
+      "bytes": 75,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-completed-first-read-17-prepare.txt",
+      "sha256": "58247e8f246282fa4f973c480045892a0943ce98a4eb479d1e12b0974a8ad9e5",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-completed-first-read-18-apply.txt",
+      "sha256": "f1a4af9b53977be21b2940c6205c2b1cac4e36e7e7910b9ee8a88e034d67fdc2",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-completed-first-read-19-apply.txt",
+      "sha256": "0c03ef0ef9d959c40e49f1da644b5a21e6657bbfe7204fd32e510dc846cfaf90",
+      "bytes": 80,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-completed-first-read-20-inspect.txt",
+      "sha256": "77509aa723cf661decf8ad66cc9a66e2f67d4570d8d70544acfc8fb688418a30",
+      "bytes": 429,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-completed-second-read-21-prepare.txt",
+      "sha256": "73f8903592bbd8cb6b4e984a34672731c09ea7f6c95697d7b43f4cb5173ab44d",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-completed-second-read-22-apply.txt",
+      "sha256": "bc7673947943d676b67271bbfada0d6c24e0c0f11dbda07ea5c3e05a322d080e",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-completed-second-read-23-apply.txt",
+      "sha256": "68f5ed2b36d202f18cc10bca1ed01bb34a8420136f4b488a374b928c25cb3547",
+      "bytes": 79,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-completed-second-read-24-inspect.txt",
+      "sha256": "453c1947e7477d72a63deda4a8c17f2138347343ab1785de7755b994be11cf32",
+      "bytes": 429,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-missing-raw-25-prepare.txt",
+      "sha256": "159fe2f4575c9ab9b5843a2fc67bb7a54311bbae3652d22d857afce6c89b43f2",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-missing-raw-26-apply.txt",
+      "sha256": "46469f1b7fd1b495fdbf610260fa60b4c64fd628d2cf39a757a3f37a65aec1ad",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-missing-raw-27-control-missing-raw.txt",
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-missing-raw-28-apply.txt",
+      "sha256": "5794b801beecb7556c4da175da330373296e45e37b2996baea2955771eb52c5f",
+      "bytes": 128,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-missing-raw-29-inspect.txt",
+      "sha256": "519a9545c1a54680a455f086b6996b0d7a67811df6c39c4e1413e464e5bd49d0",
+      "bytes": 429,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-raw-drift-30-prepare.txt",
+      "sha256": "3a8978ef0ed5cf2c0944bed092dc562895740aac6d6ee8aa53defa029ea5cb4d",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-raw-drift-31-apply.txt",
+      "sha256": "187e710f0a14406cbce5cd7738b15fad9a1d589b187366b6d62b91ee7c83bc24",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-raw-drift-32-control-raw-drift.txt",
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-raw-drift-33-apply.txt",
+      "sha256": "5794b801beecb7556c4da175da330373296e45e37b2996baea2955771eb52c5f",
+      "bytes": 128,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-raw-drift-34-inspect.txt",
+      "sha256": "63b6ebea19f7f2bb083bdae09cee9cee8474feaa8b6b24f299e198d6869a0140",
+      "bytes": 429,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-old-complete-35-prepare.txt",
+      "sha256": "07c0b404e90ff49003d82f05f5380f304e46fb6f6821028dba3fec114a7b941d",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-old-complete-36-apply.txt",
+      "sha256": "f7906eb5aa565de69cd52c29cff3e1736949858542e8c9226fdc835e6cfd83e5",
+      "bytes": 321,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-old-complete-37-apply.txt",
+      "sha256": "62d2daa25a8ae171d4d9bd6fefeaa56dad7844923c493212e3245f6fa2abf5cb",
+      "bytes": 123,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-old-complete-38-inspect.txt",
+      "sha256": "f0dec1fcf998a836184b9fb328ba66b2f2d54d95ab43940032fea70b041c01e1",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-release-39-prepare.txt",
+      "sha256": "a5427cd1b2cdddcdc5baad8f342d04be40f23108efbd446c808ef3ce150060ff",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-release-40-apply.txt",
+      "sha256": "8ca777febc382ed12d6dc3a4df37895e140e8f8de04586f70e83a5331232c701",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-release-41-apply.txt",
+      "sha256": "184cba0bed1f8f4957b2de19f024d12be4e12956cd4506346ef488fa57e8d2ae",
+      "bytes": 118,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-release-42-inspect.txt",
+      "sha256": "e44c0b18460f0b29bbcdd013bc018214245fa1945282b49d2dc3593c13d0e369",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-ownership-43-prepare.txt",
+      "sha256": "db9f3612ecf29f84067d566f4932169780aab51c4f3cb6230c61ea88ee01854d",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-ownership-44-apply.txt",
+      "sha256": "4ae1a82a2aba23573da06fbc68ac3f1e3a4d50480c20bf7696249ec33ff94baa",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-ownership-45-apply.txt",
+      "sha256": "184cba0bed1f8f4957b2de19f024d12be4e12956cd4506346ef488fa57e8d2ae",
+      "bytes": 118,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-ownership-46-inspect.txt",
+      "sha256": "551c9976bcdbdf42afb7034457843f3112e9772905215dc788f73d61de6011f4",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-failure-47-prepare.txt",
+      "sha256": "f707fc6e8fe98c0c877d532763b22700b6b93407dbda22a235ce624f6e930948",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-failure-48-apply.txt",
+      "sha256": "51ed4ad46922a8010cc14e8a31371a9a6f9fe7a801192f76accc339c3a4482f4",
+      "bytes": 89,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-failure-49-inspect.txt",
+      "sha256": "2ca45383b4e457a12c3a7eb9071c50256ad767e0aceb8500f740e8c46aa71c14",
+      "bytes": 342,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-failure.json.audit-apply-48.jsonl",
+      "sha256": "4e3437b72bcd6ab0e850e81e1a96f1b96c17ab218c8a174604f2eaa505e59bed",
+      "bytes": 16252
+    },
+    {
+      "path": "case-1792420631379986000-failure-50-resume.txt",
+      "sha256": "023ff69d059f63c00cae931f0ebcd0ecfb52d1097c0538000db999806ca15147",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-failure-51-inspect.txt",
+      "sha256": "5869f384a594bd84d98aabdabae97ed1ae0f0d01f958986ba15627a15dd2fa81",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-failure.json.audit-resume-50.jsonl",
+      "sha256": "ce28debf48fa32250d9adcb2e0ebc802534122d0536d36b16c0391b8768ca116",
+      "bytes": 70439
+    },
+    {
+      "path": "case-1792420631379986000-initial-same-52-prepare.txt",
+      "sha256": "dc03b43bcb673bd6c190115f7d44fed835a903b407470b93b3932321cd77cb2a",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-initial-same-53-inspect.txt",
+      "sha256": "7619c8ce08b87e2bcac0c9194ecdfeb7bcc22c1894433f350cbfe88ccbad8833",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-initial-same-54-apply.txt",
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-initial-same-55-inspect.txt",
+      "sha256": "7619c8ce08b87e2bcac0c9194ecdfeb7bcc22c1894433f350cbfe88ccbad8833",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-initial-same.json.audit-apply-54.jsonl",
+      "sha256": "3e2c3a2a2ea4fa3032f5f196f3f3d1b4182d48fb7f34dc6f1b559e06aeaee1a3",
+      "bytes": 127
+    },
+    {
+      "path": "case-1792420631379986000-initial-foreign-56-prepare.txt",
+      "sha256": "10001ffed78d2162efbf2f79bd859d4bc351047071ae0ce54f90df17928a320e",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-initial-foreign-57-inspect.txt",
+      "sha256": "ff877ddf40ae137529e36f55f4c784695ec28ebc69884fa8eea5db8ed3214e19",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-initial-foreign-58-apply.txt",
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-initial-foreign-59-inspect.txt",
+      "sha256": "ff877ddf40ae137529e36f55f4c784695ec28ebc69884fa8eea5db8ed3214e19",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-initial-foreign.json.audit-apply-58.jsonl",
+      "sha256": "30b1f1bcdb7d551907c51532e02610a14054314a5c44b5e1f137182666ec12e3",
+      "bytes": 127
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-same-60-prepare.txt",
+      "sha256": "5fd272fcb3f751d2418ada10a30f836dce7c07c48e6a5dde64b9f21424b5f98b",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-same-61-inspect.txt",
+      "sha256": "ca5cba2f366ab2dfbd615946cf4d1eebdcb6c7a5d068e0504ab003eea5c1879e",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-same-62-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-same-63-inspect.txt",
+      "sha256": "31306cd11a84c6ffae5bfcf53e01b90975892e2d4df4704e658c64458624b403",
+      "bytes": 342,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-same.json.audit-apply-62.jsonl",
+      "sha256": "0ec3290c76dd68e180226b9e5629ef6c427f281d029ef5c7c601de523c73304a",
+      "bytes": 21936
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-same-64-resume.txt",
+      "sha256": "39ed1ab973381d0a36317276394b31ed5a2bf5a6b35d7459315351854796b90d",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-same-65-inspect.txt",
+      "sha256": "d8201cebd1652e11b129c710c35e2b2498d43f80bef56fd041ba49108ea9cb87",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-same.json.audit-resume-64.jsonl",
+      "sha256": "1e5123cb2c8870cc56d8adaf2dc8ae3030ac1fafc24aa437e854a1e0a298fa4b",
+      "bytes": 67284
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-foreign-66-prepare.txt",
+      "sha256": "7c6dd499c1522d7a53e42aeb2a43697ab879381fc5da94ce818ddacc72e8d10d",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-foreign-67-inspect.txt",
+      "sha256": "47cd3c5798847636bf95a70d689fa4aff752fe7f70bb54bdfd5b892fd1cd0de1",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-foreign-68-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-foreign-69-inspect.txt",
+      "sha256": "91355f45b423ee8fdd30ed6fadc9f1189d6026c33219b9c339bc2d0f3d647ca4",
+      "bytes": 342,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-foreign.json.audit-apply-68.jsonl",
+      "sha256": "c5c169825e29dd942cb927841b7afa46915f42a157a9c8520373916a7fe3590f",
+      "bytes": 21936
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-foreign-70-resume.txt",
+      "sha256": "047c114b4fc21d11291ae74aea9cc6a3ade477b4aea15d96fb73a759b582a446",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-reentrant-foreign-71-inspect.txt",
+      "sha256": "81f81168428d4c09ecf794e1022e3f0e83f04f2c80782d8345931ddecdfefea7",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-reentrant-foreign.json.audit-resume-70.jsonl",
+      "sha256": "a21bd0265c0b76e73f36eb2d3d6e8c3d7f738948f154750c382ba0d677c1a063",
+      "bytes": 67284
+    },
+    {
+      "path": "case-1792420631379986000-save-same-72-prepare.txt",
+      "sha256": "6a64b560c7fbe7d696acecb95505b63d8b5a005128ac5903af97574cf53d2b7d",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-save-same-73-inspect.txt",
+      "sha256": "c7030338837a9d6073f48ba13fc30423ab98d04eaf5f4f4b2889e0f8aabdb70d",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-save-same-74-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-save-same-75-inspect.txt",
+      "sha256": "fe81b49f862a21d9cfae175f3d15c2893775104577c39212dcce1ab6580884f5",
+      "bytes": 367,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-same.json.audit-apply-74.jsonl",
+      "sha256": "c937e88aee028e2e5cb561358039a2480459daa96d005774d7b7faed2b07026a",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420631379986000-save-same-76-resume.txt",
+      "sha256": "c897de416db0f9b85dac657ac5c4ffbcb5a6d43a2b88ce57d5b638eb9b9f6806",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-save-same-77-inspect.txt",
+      "sha256": "07f9196521a5b66eb47171447824c746ab69c432e7ae5d1ab61adc39f238c54b",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-same.json.audit-resume-76.jsonl",
+      "sha256": "608223a2ddaeffff87d4c072dd334bd95dbe18ecc4f4dda4f3002adc8aaadbb6",
+      "bytes": 3789
+    },
+    {
+      "path": "case-1792420631379986000-save-foreign-78-prepare.txt",
+      "sha256": "86c7a5396fbddca3276e59a000e404a2ca3458c443a8f3d38c724d1d08f9e524",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-save-foreign-79-inspect.txt",
+      "sha256": "592ac76d8ca5bc25bc5cf9e182b34e721bc269119474de15446a5ca6dc3fbd1a",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-save-foreign-80-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-save-foreign-81-inspect.txt",
+      "sha256": "b38c1ffb4803357c2e9b7568268cb9fcc1bf0c6fabc96e360896317f2fed24eb",
+      "bytes": 367,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-foreign.json.audit-apply-80.jsonl",
+      "sha256": "bf8c4c25c6d0132562fdf534c3d8f97417c199a8359186a1e7c11017d1ae75e7",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420631379986000-save-foreign-82-resume.txt",
+      "sha256": "53e27f962fb14a6a0cb7cdb230c20d95f79e25ee7849b991125b5792e7fd9e4c",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-save-foreign-83-inspect.txt",
+      "sha256": "18814e364205fdd9c9137b20f57cc2bfdf36c3d73cee7b7208c1e4a30e38ebb9",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-save-foreign.json.audit-resume-82.jsonl",
+      "sha256": "7ad988301f26d459808110cf54697401fcc2afa2616be1b107df0cf2085474b1",
+      "bytes": 3789
+    },
+    {
+      "path": "case-1792420631379986000-legacy-same-84-prepare.txt",
+      "sha256": "d6084851dd3aa059ad10fc6c9f3665bc06b7a087ed3e47525963b8ccc43e7f41",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-legacy-same-85-inspect.txt",
+      "sha256": "037f39bdc4f43977366cb2f585e894a6fa28ebe49796c0f991c6ff975dbb1202",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-legacy-same-86-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-legacy-same-87-inspect.txt",
+      "sha256": "75f5f41e289b3a9c64b2ba5ed2bd5dff47f465259762276f677ec9c582d68180",
+      "bytes": 367,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-same.json.audit-apply-86.jsonl",
+      "sha256": "c05ecdc979b543e9a61eaa7922553611eea9edf3f605d07bf30612f756fbd946",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420631379986000-legacy-same-88-resume.txt",
+      "sha256": "95523b5877502d51d591ddf9b7705fd582439ed66439d686b6e3e494f52143dc",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-legacy-same-89-inspect.txt",
+      "sha256": "80d2612dec432f50f09dba0f1e784dd26df6410471d7e99a1dee2186ce63b80c",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-same.json.audit-resume-88.jsonl",
+      "sha256": "d7567e0cc90d59dba22ec9f51074cc16b53553449b6a7e18d967d935a2a803cc",
+      "bytes": 3789
+    },
+    {
+      "path": "case-1792420631379986000-legacy-foreign-90-prepare.txt",
+      "sha256": "6ba467257b11e519f2b175834e3fc35ecdd58cb4f3d4d474a615d97422a2585d",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-legacy-foreign-91-inspect.txt",
+      "sha256": "7c14475cacb9a22808dfe5a61851629e7282d62d86aa762b01b6c4a339b36720",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-legacy-foreign-92-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-legacy-foreign-93-inspect.txt",
+      "sha256": "27349b0c39fb48c101fdeb5c0ab51cce482b42f6b2d0ad4f9211a5c2ab133241",
+      "bytes": 367,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-foreign.json.audit-apply-92.jsonl",
+      "sha256": "c0dc1b52382b60fd533956009fa8bb507897716256c4031bac65e70960ad564a",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420631379986000-legacy-foreign-94-resume.txt",
+      "sha256": "26ebb1671f4f6dc3f086295c5dc58610085af3c0e6bd2e64886184fade38890b",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-legacy-foreign-95-inspect.txt",
+      "sha256": "711b6a3f697e2027296086e7ce5cf55d48d090994486cdefdf51c99cf244613d",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-legacy-foreign.json.audit-resume-94.jsonl",
+      "sha256": "3d2708f1e0e5a88031453c712c045b5577a1c71c41eccd68257fd6d5a4d6b67e",
+      "bytes": 3789
+    },
+    {
+      "path": "case-1792420631379986000-raw-read-same-96-prepare.txt",
+      "sha256": "e066d558a29fea9ce2690c6b15c460f8625d92184bea7ffbd37dc4091b3eaf18",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-raw-read-same-97-inspect.txt",
+      "sha256": "61034602bf934422e5334c6b6038cc0a91d84eac6611d72334758f27f35271cf",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-raw-read-same-98-apply.txt",
+      "sha256": "0c03ef0ef9d959c40e49f1da644b5a21e6657bbfe7204fd32e510dc846cfaf90",
+      "bytes": 80,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-raw-read-same-99-inspect.txt",
+      "sha256": "5d629ebadc14dd370cbb390ce38571f95ea014b74b61e66a089101fcf836d0f1",
+      "bytes": 367,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-read-same.json.audit-apply-98.jsonl",
+      "sha256": "b5121b87d010284aaf9eb334e7bc6e7c9116e9589a201284b36712ceebea2d27",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420631379986000-raw-read-same-100-resume.txt",
+      "sha256": "8412574e4ca9b6b22d4f3d802234cebcd483dac1fa8c550ad329f39851f71a0d",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-raw-read-same-101-inspect.txt",
+      "sha256": "85a0f4d5eb2b905397519cbb047824c3d0498410040bab86e626b9bb2dcc9683",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420631379986000-raw-read-same.json.audit-resume-100.jsonl",
+      "sha256": "431d6577270398585311ff7bc0d91288b95f2e1a8a811caa5fbb414eb8b00124",
+      "bytes": 3789
+    },
+    {
+      "path": "case-1792420631379986000-connection-102-prepare.txt",
+      "sha256": "75d90c824254d597d707823f67d644de82031789b3ebb51863a7edd2dca4718c",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-connection-103-apply.txt",
+      "sha256": "b2b706d9ec251123bf81785c05e399953d9b9a50af333ead3fd775dae81bff2e",
+      "bytes": 83,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420631379986000-connection-104-resume.txt",
+      "sha256": "e8e50d9a3f91c5dc329ea68df212d8b8e4696e59f96efe27a7a3f17072bd7753",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-connection-105-inspect.txt",
+      "sha256": "84b285b0d62ddcb3e55853cc8be96f499f03236d9c11eddf6bd6fd0bbab26f96",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420631379986000-connection-106-inspect.txt",
+      "sha256": "84b285b0d62ddcb3e55853cc8be96f499f03236d9c11eddf6bd6fd0bbab26f96",
+      "bytes": 432,
+      "exit": 0
+    }
+  ],
+  "limits": [
+    "Prospective pinned private fixture only; frozen core/CLI unchanged and unqualified for deferred shutdown fencing",
+    "Query filter records pre-execution attempts; full raw/native after-exit readback is separate evidence",
+    "Lost-fence failure snapshots are observations, not fenced afterimages",
+    "Explicit fresh resume envelopes are simulated review inputs; historical orphan never adopted"
+  ],
+  "current_operation": {
+    "case": "case-1792420631379986000-connection.json",
+    "mode": "inspect",
+    "receipt": "case-1792420631379986000-connection-106-inspect.txt"
+  }
+}

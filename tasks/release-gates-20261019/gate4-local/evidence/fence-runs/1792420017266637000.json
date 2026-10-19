@@ -1,0 +1,1024 @@
+{
+  "status": "INCOMPLETE",
+  "authentication": "NOT_APPLICABLE",
+  "run_id": "1792420017266637000",
+  "runtime_profile_sha256": "4324b507358d8d9392fca0d83adefa279b4d0edba1d0c5f36903ff18e800e04a",
+  "runtime_qualification": "AVAILABLE_COMMERCE_SUBSET_NOT_COMPLETE_INSTALLED_STACK",
+  "skipped_plugins": [
+    "akismet",
+    "elementor",
+    "site-mailer",
+    "gutenberg",
+    "image-optimization",
+    "jetpack",
+    "jetpack-boost",
+    "zero-bs-crm",
+    "jwt-authentication-for-wp-rest-api",
+    "kirki",
+    "klaviyo",
+    "litespeed-cache",
+    "mailpoet",
+    "one-click-demo-import",
+    "page-optimize",
+    "pinterest-for-woocommerce",
+    "tiktok-for-business",
+    "wordpress-importer",
+    "oauth2-provider"
+  ],
+  "source_pins": {
+    "tools/v2-runtime/test_gate4_local.py": "e5d1c8533faf0d953346a7bd0bfb34c21626b527dd084d66789521618e261ab7",
+    "tools/v2-runtime/gate4-fixture.php": "a26893df668aa6741586d8d32746316178a824038cf6c4280db3c6bbea616c9c",
+    "tools/v2-runtime/variation-migration-core-next.php": "3b2de8a72c8e4cc1f6441a9a5a7bd14374ea4f20221d351c72942dc258044a6c",
+    "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7"
+  },
+  "cases": [
+    {
+      "case": "apply",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "182db527c824acd1e49af082c623e212b8d89b07d7419cd24679ba8684da1930",
+        "recorded_after": "182db527c824acd1e49af082c623e212b8d89b07d7419cd24679ba8684da1930",
+        "raw_sha256": "5d0fbb68ed8b2ad785a1990287d2f32e23dcc9187fddb078ab1441f0a919016c",
+        "children": [
+          1809,
+          1810,
+          1811,
+          1812,
+          1813,
+          1814
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "bf4bba059b0863efddcc624b4b80873290a35c1f21576640be96e290455ed24e"
+      },
+      "fenced_raw": "5d0fbb68ed8b2ad785a1990287d2f32e23dcc9187fddb078ab1441f0a919016c"
+    },
+    {
+      "case": "completed-retry",
+      "status": "PASS"
+    },
+    {
+      "case": "completed-first-read",
+      "status": "PASS_REFUSED",
+      "reason": "Raw native surface read failed: posts",
+      "native_state": "FAILED",
+      "limit": null
+    },
+    {
+      "case": "completed-second-read",
+      "status": "PASS_REFUSED",
+      "reason": "Raw native surface read failed: meta",
+      "native_state": "FAILED",
+      "limit": null
+    },
+    {
+      "case": "missing-raw",
+      "status": "PASS_REFUSED",
+      "reason": "Completed raw receipt missing or native state drifted; quarantined for investigation.",
+      "native_state": "FAILED",
+      "limit": null
+    },
+    {
+      "case": "raw-drift",
+      "status": "PASS_REFUSED",
+      "reason": "Completed raw receipt missing or native state drifted; quarantined for investigation.",
+      "native_state": "FAILED",
+      "limit": null
+    },
+    {
+      "case": "old-complete",
+      "status": "PASS_REFUSED",
+      "reason": "Older COMPLETE journal has no successor qualification; inspect without adoption.",
+      "native_state": "COMPLETE",
+      "limit": null
+    },
+    {
+      "case": "release",
+      "status": "PASS_REFUSED",
+      "reason": "Native lock release could not be verified; no successful execution receipt.",
+      "native_state": "COMPLETE",
+      "limit": "Release-ack failure denies successful execution receipt; pre-release verified data may remain COMPLETE"
+    },
+    {
+      "case": "ownership",
+      "status": "PASS_REFUSED",
+      "reason": "Native lock release could not be verified; no successful execution receipt.",
+      "native_state": "COMPLETE",
+      "limit": "Release-ack failure denies successful execution receipt; pre-release verified data may remain COMPLETE"
+    },
+    {
+      "case": "after-child-failure",
+      "status": "PASS_GUARD_RETAINED",
+      "native": {
+        "ok": true,
+        "state": "FAILED",
+        "digest": "7728c9101042be9566908d0d6ef6640f817696702dd46488601151e10edf3116",
+        "recorded_after": null,
+        "raw_sha256": "b69d88e528439ff708793c2d784888e67358548fdc5aef48e012a7e91cab73cb",
+        "children": [
+          1881
+        ],
+        "native_payment_blocked": true,
+        "foreign_raw_sha256": "e7369732594103e6a78f4697b696ba2f4f3d022761c8543644e2b6c72302e948"
+      }
+    },
+    {
+      "case": "explicit-resume",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "b4d63d30899ae5feb5edadb13bf9cef6388d5c71ac756a592bfb7e4c5366020c",
+        "recorded_after": "b4d63d30899ae5feb5edadb13bf9cef6388d5c71ac756a592bfb7e4c5366020c",
+        "raw_sha256": "c72e16dd9f4eb7760b3905a94fb19eaded19724ee24022ee11e4509aa9ad4eb0",
+        "children": [
+          1881,
+          1882,
+          1883,
+          1884,
+          1885,
+          1886
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "e7369732594103e6a78f4697b696ba2f4f3d022761c8543644e2b6c72302e948"
+      }
+    },
+    {
+      "case": "initial-same",
+      "status": "PASS_REFUSED",
+      "reason": "Pre-existing deferred work is outside this one-parent process.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "initial-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Pre-existing deferred work is outside this one-parent process.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reentrant-same",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-reentrant-same",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "553f19c52162c60c9944681bf1f11ea91b78ec0d243359a83ccecb8f98a0ac2a",
+        "recorded_after": "553f19c52162c60c9944681bf1f11ea91b78ec0d243359a83ccecb8f98a0ac2a",
+        "raw_sha256": "d595cab4f01128c13c6767465aa8920f609d6ccb3c8af2c30be471ef29b53702",
+        "children": [
+          1896,
+          1897,
+          1898,
+          1899,
+          1900,
+          1901
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "76cdb72edfa49f44fa72197ef5900009f94434d678a2d4d3538dfde7e07f8e28"
+      }
+    },
+    {
+      "case": "reentrant-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-reentrant-foreign",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "fb327c23a4b4fbb53b188fc8fdb2a6a3eef1bf1b64befd5501462a9d71901324",
+        "recorded_after": "fb327c23a4b4fbb53b188fc8fdb2a6a3eef1bf1b64befd5501462a9d71901324",
+        "raw_sha256": "43d716f07c699597985d1622f95bf47978e60cfe4eecf62680382a3052e5549d",
+        "children": [
+          1905,
+          1906,
+          1907,
+          1908,
+          1909,
+          1910
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "55e0b2355d2f98c014181fd805d18f2a5f28e345922124d45c828723a6c41edd"
+      }
+    },
+    {
+      "case": "save-same",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-save-same",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "ee0d7d3f8d4f1e7a77c275b3e3ce7e400c90839c92455a47305c9241b346a2e5",
+        "recorded_after": "ee0d7d3f8d4f1e7a77c275b3e3ce7e400c90839c92455a47305c9241b346a2e5",
+        "raw_sha256": "8076d488e7ecbe990b06f14012cc11f83dcd79903bc2ce94eb9c3ebe62e93155",
+        "children": [
+          1914,
+          1915,
+          1916,
+          1917,
+          1918,
+          1919
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "c41e9b56755dfdb3587f0b6b83d7d4c7f6f24b7bee5311ca3d9500bca079304c"
+      }
+    },
+    {
+      "case": "save-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-save-foreign",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "ad934243b3544ebc3a439628c27c0790ece4354a18adce2910c5b8d5abe5de8f",
+        "recorded_after": "ad934243b3544ebc3a439628c27c0790ece4354a18adce2910c5b8d5abe5de8f",
+        "raw_sha256": "f3787fdd6d1f1df86cae041637e8d1cdcfa4b5ffcb3c2fb7883857256cce4038",
+        "children": [
+          1923,
+          1924,
+          1925,
+          1926,
+          1927,
+          1928
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "8b7435ebab8088f40d2b6839d592f130c28654d12ed4790374c0766169dc6387"
+      }
+    },
+    {
+      "case": "legacy-same",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-legacy-same",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "ae75b77c58c147f03b223a7027ddc0e418f226ca6173e53b7639c78d3d3bac55",
+        "recorded_after": "ae75b77c58c147f03b223a7027ddc0e418f226ca6173e53b7639c78d3d3bac55",
+        "raw_sha256": "a5a04e8d6b84640876feebbecc62a4895a8ab9f59258974ddbf192d65c8e9718",
+        "children": [
+          1932,
+          1933,
+          1934,
+          1935,
+          1936,
+          1937
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "95a8eee8b0a9f6af3f98160e82008fb5b5e6d3a1e595c215100b2cf367c16996"
+      }
+    },
+    {
+      "case": "legacy-foreign",
+      "status": "PASS_REFUSED",
+      "reason": "Late native sync queue refused before COMPLETE.",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-legacy-foreign",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "f1fd80519da1a6769d7046d6b447d01155dd5b9cd5be3320ddea6eeee5ed82b0",
+        "recorded_after": "f1fd80519da1a6769d7046d6b447d01155dd5b9cd5be3320ddea6eeee5ed82b0",
+        "raw_sha256": "70da831128ca73c578614f35506271dd6f21ec812d0baa04050f9ee5338c6094",
+        "children": [
+          1941,
+          1942,
+          1943,
+          1944,
+          1945,
+          1946
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "2643a5454dcef47dd5017e9d5e1321dc54a3318cb80c562a12ac3647f7f4f3cb"
+      }
+    },
+    {
+      "case": "raw-read-same",
+      "status": "PASS_REFUSED",
+      "reason": "Raw native surface read failed: posts",
+      "foreign_unchanged": true
+    },
+    {
+      "case": "reviewed-resume-raw-read-same",
+      "status": "PASS",
+      "native": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "921e064518d4066e8821b8c8a5cba09aefbb52f91ad58e44a8699acbd829bce0",
+        "recorded_after": "921e064518d4066e8821b8c8a5cba09aefbb52f91ad58e44a8699acbd829bce0",
+        "raw_sha256": "731daa7fe648e653fea7637a0009b4670f1a07716b39cedebbd5bc3b38c5f2b9",
+        "children": [
+          1950,
+          1951,
+          1952,
+          1953,
+          1954,
+          1955
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "cfe6493ac83443d1f276c1a56328a5384cf89740007438db7d4847056d7a9d7e"
+      }
+    }
+  ],
+  "receipts": [
+    {
+      "path": "case-1792420017266637000-apply-1-prepare.txt",
+      "sha256": "c087489c36c4f6f64001fa054812bdfb6f4e4e3bdd74dd9aca703d2491e4ce96",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-apply-2-apply.txt",
+      "sha256": "7bb5491f49b059fb78cc914fe883fbb7bf3aeb2c69b869168bd50b401178c5b9",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-apply-3-inspect.txt",
+      "sha256": "2e62bd3e52fade6760ad1496f05a8131db6ef58080bc4b256457380dbf46f3d9",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-apply.json.audit-apply-2.jsonl",
+      "sha256": "e69004e76f388c74ed1a80c85ca49784939bff194196905e02df9c2275d75fa4",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420017266637000-apply-4-apply.txt",
+      "sha256": "7bb5491f49b059fb78cc914fe883fbb7bf3aeb2c69b869168bd50b401178c5b9",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-apply-5-inspect.txt",
+      "sha256": "2e62bd3e52fade6760ad1496f05a8131db6ef58080bc4b256457380dbf46f3d9",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-apply.json.audit-apply-4.jsonl",
+      "sha256": "359034b6d08a500a6553a06307ed682636ce2d861eda2a763184ee7fb16b9b27",
+      "bytes": 684
+    },
+    {
+      "path": "case-1792420017266637000-completed-first-read-6-prepare.txt",
+      "sha256": "6812b03afc4cb3fc3acd54b6091153c58e7191e9efceb75956b390dc8dc687aa",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-completed-first-read-7-apply.txt",
+      "sha256": "2e1e3b56c8d71903f9fd4cb950234a68ecf2ae9ff0e3d32591141c76baded8a1",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-completed-first-read-8-apply.txt",
+      "sha256": "0c03ef0ef9d959c40e49f1da644b5a21e6657bbfe7204fd32e510dc846cfaf90",
+      "bytes": 80,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-completed-first-read-9-inspect.txt",
+      "sha256": "f0bcbe2667792f2982b9f72d858d474bc89fe9fb848458d71388d0325d2c7e14",
+      "bytes": 429,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-completed-second-read-10-prepare.txt",
+      "sha256": "da72d05ba3e9f70ca4e7f4a8d08f5a4c182edef315ad06d91c09d24fa3b1ef8b",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-completed-second-read-11-apply.txt",
+      "sha256": "874abfe96f791b1c42a918df3b9cd5e12c03b00baa47e38b93ba366e644e6a8b",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-completed-second-read-12-apply.txt",
+      "sha256": "68f5ed2b36d202f18cc10bca1ed01bb34a8420136f4b488a374b928c25cb3547",
+      "bytes": 79,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-completed-second-read-13-inspect.txt",
+      "sha256": "f97923fec1dbde21ec54f02800bf2d113d2f73cb2e30c863e65e89f8d5b2a472",
+      "bytes": 429,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-missing-raw-14-prepare.txt",
+      "sha256": "c1e987151dfc265d2426484f113d15591a9d73dc6146fc9f68499efc461ccdb3",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-missing-raw-15-apply.txt",
+      "sha256": "00761bfa1736c3e64aebf8b7995ea2fc24f1804bc90c5accce685ffcf2faca22",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-missing-raw-16-control-missing-raw.txt",
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-missing-raw-17-apply.txt",
+      "sha256": "5794b801beecb7556c4da175da330373296e45e37b2996baea2955771eb52c5f",
+      "bytes": 128,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-missing-raw-18-inspect.txt",
+      "sha256": "abb85fe84eedfa545dace7475288c60a994661fcf588ddc9ad7381f3a8c051e9",
+      "bytes": 429,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-raw-drift-19-prepare.txt",
+      "sha256": "0139fc82c4746d802fbf6203881e711de8ec2fade564bb8ef1ac88119d78c220",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-raw-drift-20-apply.txt",
+      "sha256": "6bf9e7c4bafbfefc07e1386fb3e73b1f99251e6e68350134680e8e8e28a8d175",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-raw-drift-21-control-raw-drift.txt",
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-raw-drift-22-apply.txt",
+      "sha256": "5794b801beecb7556c4da175da330373296e45e37b2996baea2955771eb52c5f",
+      "bytes": 128,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-raw-drift-23-inspect.txt",
+      "sha256": "7ec1b82c9266c9cb54e12228c8aecc6e7e37d7c7ee3f1c0438785edbec456db6",
+      "bytes": 429,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-old-complete-24-prepare.txt",
+      "sha256": "07a7eb7dd1b465a89a953f504c02717988caa085db53dca71a7fbcc0b14bc702",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-old-complete-25-apply.txt",
+      "sha256": "64da62783deefaa22fcce2a492fc1316e243002aba2977808155470d8e2811ce",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-old-complete-26-control-old-complete.txt",
+      "sha256": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+      "bytes": 11,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-old-complete-27-apply.txt",
+      "sha256": "62d2daa25a8ae171d4d9bd6fefeaa56dad7844923c493212e3245f6fa2abf5cb",
+      "bytes": 123,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-old-complete-28-inspect.txt",
+      "sha256": "5ccb191861c7f9b23f6d6aa49b3da06e07718f426fbd7a0612a426cf7f14cd94",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-release-29-prepare.txt",
+      "sha256": "4e010d5ea14f7999881887b0e6aeb8fb9934b7d6bfbfa5eeb1891b838de3a4a8",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-release-30-apply.txt",
+      "sha256": "5fb6744675f0ad50b40e13a271883dbb137ee716cb427008489cc47aa5fafa13",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-release-31-apply.txt",
+      "sha256": "184cba0bed1f8f4957b2de19f024d12be4e12956cd4506346ef488fa57e8d2ae",
+      "bytes": 118,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-release-32-inspect.txt",
+      "sha256": "1e19681d42b3bbb8136ff942aece2a23b17e8f41683392940b07c73b9e70ea75",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-ownership-33-prepare.txt",
+      "sha256": "e2e443acb34afc723ff2feef542d7f61cf09bd8e1602c3a5fa15b55254b89c23",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-ownership-34-apply.txt",
+      "sha256": "915b4965f23b8cac6fcd74a99b7751b8f91749ea70107bacaeb6506b8fdfbed0",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-ownership-35-apply.txt",
+      "sha256": "184cba0bed1f8f4957b2de19f024d12be4e12956cd4506346ef488fa57e8d2ae",
+      "bytes": 118,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-ownership-36-inspect.txt",
+      "sha256": "0d205856f83d2283a17822b386c9bb96b5cc1669f47fa70faa794e4652e3eba8",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-failure-37-prepare.txt",
+      "sha256": "eedda8e55b092cc02f8548075416a495a0994c6c17dd588982fdb12afb8ae1fd",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-failure-38-apply.txt",
+      "sha256": "51ed4ad46922a8010cc14e8a31371a9a6f9fe7a801192f76accc339c3a4482f4",
+      "bytes": 89,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-failure-39-inspect.txt",
+      "sha256": "ada60dfe54a78d72f23fa63df366d11e2688b3ac7c863d62dd4d8d097dd2a299",
+      "bytes": 342,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-failure.json.audit-apply-38.jsonl",
+      "sha256": "aab31d8a1b150884b1de5584edb155123fececf20b2b3e7a812cbe5af0e8c405",
+      "bytes": 16252
+    },
+    {
+      "path": "case-1792420017266637000-failure-40-resume.txt",
+      "sha256": "5dad545eded03b2b130f3b92f2d4f919c38a98db0f020897039569f8dfa5bfcf",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-failure-41-inspect.txt",
+      "sha256": "ef7fc48c18a7ed5b5e0272fa83d046ac0c87f8b5415d6dbb7f198a8862e81733",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-failure.json.audit-resume-40.jsonl",
+      "sha256": "9af48a20fa5b5552630598fe9473190c305586e7aaa2b0d0a6a7cfbb43088803",
+      "bytes": 70439
+    },
+    {
+      "path": "case-1792420017266637000-initial-same-42-prepare.txt",
+      "sha256": "f3b4477c501260ae59f5cdf5ff5d47cc312a8536c2f6561fa3c473ecf596e05b",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-initial-same-43-inspect.txt",
+      "sha256": "a6604e945952cc442ae619854dfea6d7b90577f687acc6029aa3dd3111643e8c",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-initial-same-44-apply.txt",
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-initial-same-45-inspect.txt",
+      "sha256": "a6604e945952cc442ae619854dfea6d7b90577f687acc6029aa3dd3111643e8c",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-initial-same.json.audit-apply-44.jsonl",
+      "sha256": "07ec5aa4f66937b49aa203268e416b243c4ede59dca90b81c81e61fe92951fb7",
+      "bytes": 127
+    },
+    {
+      "path": "case-1792420017266637000-initial-foreign-46-prepare.txt",
+      "sha256": "c0b7fe598a94c900dbdb78acbb8edd4d8d9ceab4cdf50acdbf462664b6d017cb",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-initial-foreign-47-inspect.txt",
+      "sha256": "cff3ec8fa99e41b08b9fa7e846a8dee575881f65a6872b88f29872adf84f2424",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-initial-foreign-48-apply.txt",
+      "sha256": "ad6aa8dfc21fcb9f1f31fb75d1b531691e1ec7ba3ba9cceba4a17e08cf4458e0",
+      "bytes": 105,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-initial-foreign-49-inspect.txt",
+      "sha256": "cff3ec8fa99e41b08b9fa7e846a8dee575881f65a6872b88f29872adf84f2424",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-initial-foreign.json.audit-apply-48.jsonl",
+      "sha256": "a311471987840c73aca98e1b7083893784f030c98b4e0c1aeabbe33898f4e371",
+      "bytes": 127
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-same-50-prepare.txt",
+      "sha256": "f40c32d8162c1e4ba753bc52cb3f411cfdf25b5d42ec22d0472bbe1b1363ab8c",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-same-51-inspect.txt",
+      "sha256": "12947e6c2fa047ac4d5dfb40ac30ed4b4a3cbbb4da6c20ff8fb4630d2b150d01",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-same-52-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-same-53-inspect.txt",
+      "sha256": "ec4d672b4314a9e893fc6ad3e7fa30ae028eccbc0da4e428888ee8f99f32185e",
+      "bytes": 342,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-reentrant-same.json.audit-apply-52.jsonl",
+      "sha256": "c78e22c67b2186caa2a64bd36ab5556e03f698128fa7e1cb8882fceeb5cb666e",
+      "bytes": 21936
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-same-54-resume.txt",
+      "sha256": "3fec161e4c8db8801f4431d2b51106543af552034e30e5dfcc3368e02a1b0d0e",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-same-55-inspect.txt",
+      "sha256": "fda5250de2bf2d0a109f12666a650c74bf44031eab7742f7cd2084d8f5ce0af3",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-reentrant-same.json.audit-resume-54.jsonl",
+      "sha256": "c86aa46e03be4e715a3ac66c54b36f91b5c2ea61197535e3fb9c470170be2827",
+      "bytes": 67284
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-foreign-56-prepare.txt",
+      "sha256": "2a86661e7fa1e88ebd7c5cc9b098090a75acea705a4b879bd8442feb3bf9e1aa",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-foreign-57-inspect.txt",
+      "sha256": "9fbff0476034b4b87b74e6d5a5d39748cba8e3f28213339fe8bf831dfa4ce264",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-foreign-58-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-foreign-59-inspect.txt",
+      "sha256": "43afbfea6c6a88c503a7f7d6e71a20832ca5236ce020a886967da97c9511f613",
+      "bytes": 342,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-reentrant-foreign.json.audit-apply-58.jsonl",
+      "sha256": "eae6d15dffb07a9a425f0f6c72f9617e4d60b9783f104aaeb6b9f8cdced28799",
+      "bytes": 21936
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-foreign-60-resume.txt",
+      "sha256": "568074539acdcad3f688185709fbbf12a174767507552f8f6b186fa5477c76be",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-reentrant-foreign-61-inspect.txt",
+      "sha256": "40f9778e5741cd2703d533ad05569092478be7d6d29b203af6b7190090f8cd40",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-reentrant-foreign.json.audit-resume-60.jsonl",
+      "sha256": "288d6c31a140d8673d0d32e80f845931e55378c1806d475c0680519272cd21ae",
+      "bytes": 67284
+    },
+    {
+      "path": "case-1792420017266637000-save-same-62-prepare.txt",
+      "sha256": "79cbf7a946557b9d7ccc6f2aaa0894ea64a9fba5c4729404639fd3ed178a9b3d",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-save-same-63-inspect.txt",
+      "sha256": "ed74b97d315a5fc610554d254ec63faeaed1c182289b0b1280071214dd0585b8",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-save-same-64-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-save-same-65-inspect.txt",
+      "sha256": "89dec8b7f1c0f971a8e0a262bd50f4c5e055df61d3c73d0704bd64b87f59afee",
+      "bytes": 367,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-save-same.json.audit-apply-64.jsonl",
+      "sha256": "116cd34c513db1ce71593e334a11ed6163a8b8d5ecde828d39d3cdb80890919e",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420017266637000-save-same-66-resume.txt",
+      "sha256": "7622477afebc7052ead0b6e5305b5d785b641f5b65a184b64859545084c63f21",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-save-same-67-inspect.txt",
+      "sha256": "62b5442c6690f27afc260aaf34408f158a6b2c70fe00d5d44e997e9670212abd",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-save-same.json.audit-resume-66.jsonl",
+      "sha256": "43db07f48b1607c5ae2608471c8e20cfb170afe6eb7c8143ed9f97c09fe43a38",
+      "bytes": 3789
+    },
+    {
+      "path": "case-1792420017266637000-save-foreign-68-prepare.txt",
+      "sha256": "97ac0a6859892f26d98cc05ca0d1108a11b80525ae5e289dfb5141927f65079b",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-save-foreign-69-inspect.txt",
+      "sha256": "a3d9955e013a6ed9c234f36376f5df83e6b4e1297cb04ecde9e96c5da022f6c2",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-save-foreign-70-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-save-foreign-71-inspect.txt",
+      "sha256": "485acf52a4dfe75ee285d02caa32f8ca36ddab3dd0aa3fd710fc956d3bbd601b",
+      "bytes": 367,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-save-foreign.json.audit-apply-70.jsonl",
+      "sha256": "994781bdb729e38a19e1e4801d027d61ec4b2cccf4bee253b1780a3c9b1f6753",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420017266637000-save-foreign-72-resume.txt",
+      "sha256": "9d899e64be7d1712b5db79bfec1d674ec5721bcd83c6c5191d173c0c8c222626",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-save-foreign-73-inspect.txt",
+      "sha256": "aa38b96bf283d22bdc01a28136072afaa86d176ea372624d8c47ecf7955ae44d",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-save-foreign.json.audit-resume-72.jsonl",
+      "sha256": "3dde61f6ee0e0941c3fa69b1dca38cfae4baa36aea0f28245227ad10060f58a8",
+      "bytes": 3789
+    },
+    {
+      "path": "case-1792420017266637000-legacy-same-74-prepare.txt",
+      "sha256": "99f945ace1eba8b7031fb7a272dfe1741ed809d081586741714fae6cb70ed450",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-legacy-same-75-inspect.txt",
+      "sha256": "6ce7f25cf759fc1439b4a7a4138cf7e4a34b3bbeedeea667dbad1c39df1c829a",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-legacy-same-76-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-legacy-same-77-inspect.txt",
+      "sha256": "f61cd8fb049d125a02180901ea9f393ad4a2924198fbb4f5f01077a5c46c9e4d",
+      "bytes": 367,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-legacy-same.json.audit-apply-76.jsonl",
+      "sha256": "8d36c3f98bb439ebc0e81985642591aba2d817342331dcbe9b4408093f56aeea",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420017266637000-legacy-same-78-resume.txt",
+      "sha256": "681eaa85e885776e391d5d31469280648c76fb52d539c09ebc228d7bad36c4a7",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-legacy-same-79-inspect.txt",
+      "sha256": "695eb243c89b155eb862d7ab3a09b50e4f8d722a2e04b3a68bbb59841460774d",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-legacy-same.json.audit-resume-78.jsonl",
+      "sha256": "f02559b3ac7bc65670bd35247abc441b331f52bb76d00cf1724ba0e5c8872488",
+      "bytes": 3789
+    },
+    {
+      "path": "case-1792420017266637000-legacy-foreign-80-prepare.txt",
+      "sha256": "aec0ef8286f82b394c36c85cdeba12905f1f16ceb7314268a239269c575019ff",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-legacy-foreign-81-inspect.txt",
+      "sha256": "020e4d00ed96fe1bd706ef02fd8ec4d7847a185975486fbcf0266c7d1cd20f24",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-legacy-foreign-82-apply.txt",
+      "sha256": "71fa017414085a932221f78305298fdc6b260cf3c090f17544a7b1f3c0ab5d66",
+      "bytes": 90,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-legacy-foreign-83-inspect.txt",
+      "sha256": "5c379c4becf55c9a54614e4b428a211119933686f07e1ce9b651d54abd9cb579",
+      "bytes": 367,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-legacy-foreign.json.audit-apply-82.jsonl",
+      "sha256": "de0a1877811985c7ab5a8e5d23a04432bfadee6d8b56b4bd542213c19b22dd07",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420017266637000-legacy-foreign-84-resume.txt",
+      "sha256": "542c682f878d49a8fbb5d82c41a7c83d8e380d15f22049caa4185c61c2bf2eff",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-legacy-foreign-85-inspect.txt",
+      "sha256": "fd61cfe2e7992b7a31f00b6bf05c6960cc971a649aa901696b0b46c70d9c489e",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-legacy-foreign.json.audit-resume-84.jsonl",
+      "sha256": "6ca0c9a889a7fa2ae954e88619eaa39f106787589f5484f6670bd35c751122dc",
+      "bytes": 3789
+    },
+    {
+      "path": "case-1792420017266637000-raw-read-same-86-prepare.txt",
+      "sha256": "ba6e966a55c27f17ed0bfc139add1e53c691b46d41af618d3c4b6a049a4cd577",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-raw-read-same-87-inspect.txt",
+      "sha256": "8b8c6ac8e4f4af94cb056972840ad2fde7d3cba239a2d6590a583c08f203d188",
+      "bytes": 335,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-raw-read-same-88-apply.txt",
+      "sha256": "0c03ef0ef9d959c40e49f1da644b5a21e6657bbfe7204fd32e510dc846cfaf90",
+      "bytes": 80,
+      "exit": 3
+    },
+    {
+      "path": "case-1792420017266637000-raw-read-same-89-inspect.txt",
+      "sha256": "3fea2551dfe2fe0d03e70e798d6d0e84d40ff0e172e48bc2eddcd1dc1d8b8b8a",
+      "bytes": 367,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-raw-read-same.json.audit-apply-88.jsonl",
+      "sha256": "6c5f5c3b4835cdecef85e3697f6896fa6f7af70c3852bc3cf63e8feb9f85476e",
+      "bytes": 88240
+    },
+    {
+      "path": "case-1792420017266637000-raw-read-same-90-resume.txt",
+      "sha256": "5f47ac876693b85af038a3a9249af300e985057d188d8bd73d9fd1bb713fa83a",
+      "bytes": 353,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-raw-read-same-91-inspect.txt",
+      "sha256": "f7d393527ffed822c1796776d99860a5e772fdb30aeefb5952e5842832a441a8",
+      "bytes": 432,
+      "exit": 0
+    },
+    {
+      "path": ".artifacts/release-gates-20261019/gate4-local/case-1792420017266637000-raw-read-same.json.audit-resume-90.jsonl",
+      "sha256": "6e9833cd274942f7034d2d01d96bbc2001f8616cc9004d7ac134edbd223443d7",
+      "bytes": 3789
+    },
+    {
+      "path": "case-1792420017266637000-connection-92-prepare.txt",
+      "sha256": "0c5a306d80d3dbefe23b36fb41a8349ddf547007c54863cf4c195a71104566bb",
+      "bytes": 21,
+      "exit": 0
+    },
+    {
+      "path": "case-1792420017266637000-connection-93-apply.txt",
+      "sha256": "b2b706d9ec251123bf81785c05e399953d9b9a50af333ead3fd775dae81bff2e",
+      "bytes": 83,
+      "exit": 3
+    }
+  ],
+  "limits": [
+    "Prospective pinned private fixture only; frozen core/CLI unchanged and unqualified for deferred shutdown fencing",
+    "Query filter records pre-execution attempts; full raw/native after-exit readback is separate evidence",
+    "Lost-fence failure snapshots are observations, not fenced afterimages",
+    "Explicit fresh resume envelopes are simulated review inputs; historical orphan never adopted"
+  ],
+  "current_operation": {
+    "case": "case-1792420017266637000-connection.json",
+    "mode": "apply",
+    "receipt": "case-1792420017266637000-connection-93-apply.txt"
+  },
+  "failure": {
+    "type": "AssertionError",
+    "message": ""
+  }
+}

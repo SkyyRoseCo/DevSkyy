@@ -1,0 +1,92 @@
+{
+  "schema": "skyyrose.prospective-private-fencing-subset.v1",
+  "status": "PASS_LOCAL_FENCING_ONLY_RELEASE_HOLD",
+  "qualification_source_commit": "499ebb4b04eb21ea11fa7876d9675f203f7ea126",
+  "execution_provenance": "Launched before qualification commit with exact source pins; Git499ebb source bytes correspond retrospectively, not a clean-commit launch claim",
+  "runtime_source_pins": {
+    "tools/v2-runtime/test_gate4_local.py": "630f6bc9696b1235717a94d0de99d84702b6e5797269bce960abf4bc889738a2",
+    "tools/v2-runtime/gate4-fixture.php": "c5523ec3b5c499529fb4ead6faebb48f8cee26e78f6006083270352cd1ed6c4d",
+    "tools/v2-runtime/variation-migration-core-next.php": "6fed2167b9606924dd2c61c8e6227feb2184ff20bab9bfa99a06ff410332905e",
+    "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7"
+  },
+  "cases": 31,
+  "referenced_receipts": 126,
+  "evidence": {
+    "fence-results.json": {
+      "sha256": "5598dc691b6123bcdb46a03c0a53d84ad0f92210c07c81fef98cd9124e7093f1",
+      "bytes": 39991
+    },
+    "fence-independent-review.json": {
+      "sha256": "2f7e596188aa40099d4bd805154087ca0d9cfd6b761386e0f68a1b72aec0e466",
+      "bytes": 1608
+    },
+    "fence-raw-local-index.json": {
+      "sha256": "e0ec4319cc5e7d58c0f5f05f8dfcb24ad103b4d7ab46329166ffea9a8d6648b5",
+      "bytes": 112953
+    },
+    "standalone-baseline.json": {
+      "sha256": "7f78b9dc70a2535cb0e886bb0824f4e27ad2b9c8ead4a1464fd5b5510b815336",
+      "bytes": 12284
+    },
+    "standalone-baseline-refined.json": {
+      "sha256": "91fe39dc0ee38ab6eb02cccc54af425ba29a5953498c00bd58844cfae1416195",
+      "bytes": 20942
+    },
+    "historical-ownership-search.json": {
+      "sha256": "3fdf4cb5e9ba8fd896dbee2d8c0315e5803820d77c83997ec34ebe2bcd8c399d",
+      "bytes": 3465
+    },
+    "containment.json": {
+      "sha256": "8de96052ac556d0639e329880064362c41c9e0399b99983912744ed00b107915",
+      "bytes": 1498
+    },
+    "runtime-profile.json": {
+      "sha256": "4324b507358d8d9392fca0d83adefa279b4d0edba1d0c5f36903ff18e800e04a",
+      "bytes": 771
+    },
+    "installed-component-coverage.json": {
+      "sha256": "204cb7566809a09f65f79a35ce61a562ecfe95bb4176ea1fc2bae6ac411c834d",
+      "bytes": 14123
+    },
+    "plugin-acquisition.json": {
+      "sha256": "25b7334d806d9c24b09d9022ee2510b657d9606d12067528a348f8fa28eeb4bb",
+      "bytes": 13144
+    },
+    "plugin-activation.json": {
+      "sha256": "61f3a2277241ec9e26ef1d2efb027c21f9b39b05571b9cbf53243a8903af58b9",
+      "bytes": 2705
+    },
+    "plugin-activation-r2.json": {
+      "sha256": "bd76f2e097ad476029da32c8128f0c3f16329ad643f70e1c023aba0df42428ce",
+      "bytes": 2628
+    },
+    "commerce-activation.json": {
+      "sha256": "422e11ea4cb6f782edbeb3c401c542af713894863e21c9acc98211c127fd91fb",
+      "bytes": 943
+    },
+    "custom-mu-byte-coverage.json": {
+      "sha256": "ad80062f124262ce5bb845c9392fdae608b6ecc479b7ea8dbfbbee8f308925d4",
+      "bytes": 571
+    }
+  },
+  "frozen_storefront": {
+    "source": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+    "evidence": "aa0652dc4269e3c79b86d939e7b630783a63a148",
+    "zip_sha256": "d9f24f5e35728ab693675727c7da009406979f468aa7dd54a09122e6ccd84dd6",
+    "unchanged": true
+  },
+  "completed_prospective_repair_baseline": {
+    "source": "7c2fe093ab988b1b52429d3e76628361d3af7940",
+    "evidence": "6c7e5d07db5279dc8469adaa2253775fedc6f5dc",
+    "source_and_evidence_preserved": true
+  },
+  "historical_orphan": "Exact contemporaneous insertion ownership not found; originaldatadirneverstarted; child1292 remains unadopted/undeleted",
+  "scope": "Nextcore private fixture path only; frozen standalone CLI remains unqualified for deferred shutdown fencing. No automatic adoption into delivered package.",
+  "open": [
+    "Complete installed stack/runtime/configuration and managed/plugin/drop-in byte parity",
+    "Complete private backup/restore/newer-order reconciliation execution (draft only)",
+    "Full local privacy collector engineering and live checkpoint acceptance",
+    "Production conversion/recovery/release authority and full creative acceptance"
+  ],
+  "effective_memory_note": "CLIprefix requests1G; actual contained post-bootstrap probe reportsmemory_limit=-1, peak193789952. This is a fixture/runtime gap, not installed memory parity."
+}

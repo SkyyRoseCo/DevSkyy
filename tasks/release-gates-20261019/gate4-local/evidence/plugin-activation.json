@@ -1,0 +1,127 @@
+[
+  {
+    "component": "akismet/akismet.php",
+    "exit": 0,
+    "activated_cli": true
+  },
+  {
+    "component": "elementor/elementor.php",
+    "exit": 0,
+    "activated_cli": true
+  },
+  {
+    "component": "site-mailer/site-mailer.php",
+    "exit": 0,
+    "activated_cli": true
+  },
+  {
+    "component": "gutenberg/gutenberg.php",
+    "exit": 0,
+    "activated_cli": true
+  },
+  {
+    "component": "image-optimization/image-optimization.php",
+    "exit": 0,
+    "activated_cli": true
+  },
+  {
+    "component": "jetpack/jetpack.php",
+    "exit": 0,
+    "activated_cli": true
+  },
+  {
+    "component": "jetpack-boost/jetpack-boost.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "zero-bs-crm/ZeroBSCRM.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "jwt-authentication-for-wp-rest-api/jwt-auth.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "kirki/kirki.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "klaviyo/klaviyo.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "litespeed-cache/litespeed-cache.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "mailpoet/mailpoet.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "one-click-demo-import/one-click-demo-import.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "page-optimize/page-optimize.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "pinterest-for-woocommerce/pinterest-for-woocommerce.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "stripe-tax-for-woocommerce/stripe-tax-for-woocommerce.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "tiktok-for-business/tiktok-for-woocommerce.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "woocommerce-paypal-payments/woocommerce-paypal-payments.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "woocommerce-shipping/woocommerce-shipping.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "woocommerce-gateway-stripe/woocommerce-gateway-stripe.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "woocommerce-services/woocommerce-services.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "woocommerce-payments/woocommerce-payments.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "wordpress-importer/wordpress-importer.php",
+    "exit": 1,
+    "activated_cli": false
+  },
+  {
+    "component": "oauth2-provider/wp-oauth-server.php",
+    "exit": 1,
+    "activated_cli": false
+  }
+]

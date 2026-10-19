@@ -1,0 +1,579 @@
+{
+  "status": "CONFIRMED_FROZEN_CORE_RAW_POST_RETURN_MUTATION",
+  "profile": {
+    "php_prefix": [
+      "-d",
+      "memory_limit=1G",
+      "-d",
+      "error_reporting=24575"
+    ],
+    "wp_skip_plugins": [
+      "akismet",
+      "elementor",
+      "site-mailer",
+      "gutenberg",
+      "image-optimization",
+      "jetpack",
+      "jetpack-boost",
+      "zero-bs-crm",
+      "jwt-authentication-for-wp-rest-api",
+      "kirki",
+      "klaviyo",
+      "litespeed-cache",
+      "mailpoet",
+      "one-click-demo-import",
+      "page-optimize",
+      "pinterest-for-woocommerce",
+      "tiktok-for-business",
+      "wordpress-importer",
+      "oauth2-provider"
+    ],
+    "profile": "(version 1)(allow default)(deny network*)(allow network-outbound (remote unix-socket (literal \"/private/tmp/sr-gate4-01a0f768.sock\")))",
+    "qualification": "AVAILABLE_COMMERCE_SUBSET_NOT_COMPLETE_INSTALLED_STACK"
+  },
+  "cases": [
+    {
+      "case": "apply",
+      "return": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "4256877670532b66df58afdf0b7c29796d76ecd2ef5e4cda9dac9794cdee84f0",
+        "raw_sha256": "ce3276a94175cba0cd0255f1ec33cb5db609a4e411237878f7c6cd2bba027ef6",
+        "queued_parents": [
+          1960,
+          1960,
+          1960,
+          1960,
+          1960,
+          1960
+        ],
+        "lock_owned_after_return": false,
+        "outer_fence_verified": false,
+        "fenced_raw_sha256": null
+      },
+      "post": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "4256877670532b66df58afdf0b7c29796d76ecd2ef5e4cda9dac9794cdee84f0",
+        "recorded_after": "4256877670532b66df58afdf0b7c29796d76ecd2ef5e4cda9dac9794cdee84f0",
+        "raw_sha256": "d6766faf01d87d39c68ee346d7fb1b3ba4c3a63721f4a7b456cc0ddbd9083984",
+        "children": [
+          1963,
+          1964,
+          1965,
+          1966,
+          1967,
+          1968
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "067cd93f0b253e62fc055205ec4c85c193c56fe27527f46b04a7aa222ac60532"
+      },
+      "changed_raw_surfaces": [
+        "meta"
+      ],
+      "write_attempts_after_release": [
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "e164dd8af57e358331dbfa7699b1beac4032eedd7b994eff71290d01074f2391",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "00629f3f74ad253d91d1b966d0cab386a6e87de753e40254513c7ffd55547714",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_postmeta",
+          "migration_journal": false,
+          "sql_sha256": "41b60d2a72f9124865a6c479fd675d901dd22f972d7635daa107e068c187672c",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_postmeta",
+          "migration_journal": false,
+          "sql_sha256": "0e1e2add3f7fd315a31e4d54099444c2c7e2e9efd51d7a5142fbda174c1dfb1a",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_posts",
+          "migration_journal": false,
+          "sql_sha256": "f59e7806279acc42e66a1c0b4bddf098eae30269496297908c0cbd1ff0d59b3b",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "36b489f6c8d42214125e29b3a70941ca0a655b554f3410757fac280859ec13be",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "4f14168f4fea3663a7228088522bb1a2b8e6a5c48cc4742887b1820a6a2d094c",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "281b303e3423c247f654a5dda14b330d843c07c29c1d1dab514ac298e4695d45",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "47532e01a406caeb55c514bf13d1f8795fcc035b977f97d2c706ec26dc436e23",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        }
+      ],
+      "audit_sha256": "a69c8b83d1dc7d8d7099c6291a6c97e01f779274fa0eb8123cfb785e41457eb5",
+      "audit_path": ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-apply.json.audit-apply-2.jsonl"
+    },
+    {
+      "case": "failure",
+      "return": {
+        "ok": false,
+        "error": "Synthetic standalone after-child interruption.",
+        "queued_parents": [
+          1969
+        ]
+      },
+      "post": {
+        "ok": true,
+        "state": "FAILED",
+        "digest": "4d6c433af8f316abf2503d41768fbd58d36fdc1fdfb0c01f3a7f464ad755558d",
+        "recorded_after": null,
+        "raw_sha256": "4ab585adab4691983b256d0771bd1e33f0da3599a7a054ac50fb896978380e57",
+        "children": [
+          1972
+        ],
+        "native_payment_blocked": true,
+        "foreign_raw_sha256": "0b6925689b4c5aa8a3180cadb4f3b426b8e1e31b47cccca9b6e720f733dc997e"
+      },
+      "changed_raw_surfaces": [
+        "meta",
+        "lookup",
+        "relationships",
+        "taxonomies",
+        "terms"
+      ],
+      "write_attempts_after_release": [
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "f13edf96b836fa4e7ce41b9e50ea561284437ffa36f9d55abdaa6f3a434ebf73",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "b7f7bf1ad840b57a89e6c9de63bc7ab47b27c8133c52f1b2a940c47a318d1f5f",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_postmeta",
+          "migration_journal": false,
+          "sql_sha256": "24916df909a926d36990b0d26be2e81f0744fdfe12bc8c34e3d7bbe78db4b9b3",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_postmeta",
+          "migration_journal": false,
+          "sql_sha256": "98f7967b136d64ca5166c644b0a6491d21d8dabe97c192966a02bb028f2c7c9d",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_postmeta",
+          "migration_journal": false,
+          "sql_sha256": "4bc011ef50bbc492495e912739afe1eaade6b270c9b4d49da9f22cded11c7d48",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_posts",
+          "migration_journal": false,
+          "sql_sha256": "662f567db5f47fde5507f663123ddcbe198ec22d5afa9f125a8db3d9db598327",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_postmeta",
+          "migration_journal": false,
+          "sql_sha256": "8d441ab3ed11468ddbd53c497752f5c4cd384ce7303e758df8c2eab102d5bce4",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_term_relationships",
+          "migration_journal": false,
+          "sql_sha256": "80907a11fbe9766b2ab0d6250b66a6ac029abb21778826f245dd9b62adb3e7fd",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "1021a15d85fa8d7ca6447011fd8954666199625117b9009ab43cfeb91bea8a63",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_term_taxonomy",
+          "migration_journal": false,
+          "sql_sha256": "b25867ec3545e31dae1c3d53f8ca9b87d631b13eaf9104f01b94d7e5194d81a7",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "5c83c118865e4e994a2a60d716fd2442169e9a281b04fe50051a064bcb695099",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "69565ffd90305682a36b6e75485152cc030308f6f483841cb6b0c20f568f5b2f",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "ce39f45c9e57cd6e35db7466095b3404634e362c5d22b92b64b1cc22449c8e08",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "REPLACE",
+          "table": "wp_wc_product_meta_lookup",
+          "migration_journal": false,
+          "sql_sha256": "26ac6b4a68249aebe4d97fef1a1d4f86f2402efdadcd09871123fb032341b9da",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "4559fb15d27dbd7352d85ca4a4c64d923cc2ae4e5c4acdb1c70d173b8006b5d1",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "15c61d972b51b9272b269b7713280b0a911b18286370241d4890afca934b9529",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "2e17b78bae1b793312fcac49c31c56ddcf30437d2d331d9634228d525b2d80b3",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "2f15fca241e34495cdb3e558652c23c57d011c83f469b19655141db96c46a6fe",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_actionscheduler_actions",
+          "migration_journal": false,
+          "sql_sha256": "63e20bcc603fc0520c7bdb89d5904a979fb97693016a525facb264dc7016fb2a",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_actionscheduler_logs",
+          "migration_journal": false,
+          "sql_sha256": "7570397929bb4749403ba6f99350f3fb92968cbd1be8fea849a83552660e5d17",
+          "lock_owned": false,
+          "state_before_query": "FAILED",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        }
+      ],
+      "audit_sha256": "1fb45119db15c769780170d1d5f645ae4041700ea22351f1f5b3b66ae85156c9",
+      "audit_path": ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-failure.json.audit-apply-5.jsonl"
+    },
+    {
+      "case": "resume",
+      "return": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "3bd7346e9d0c6dc803dfec7a62f946be5e4ee50e50b26f39399d730da788ad25",
+        "raw_sha256": "490a2aedda81ea1294101f60450017d2beb3c538cd26546ebfb4b282b7a55b5a",
+        "queued_parents": [
+          1969,
+          1969,
+          1969,
+          1969,
+          1969
+        ],
+        "lock_owned_after_return": false,
+        "outer_fence_verified": false,
+        "fenced_raw_sha256": null
+      },
+      "post": {
+        "ok": true,
+        "state": "COMPLETE",
+        "digest": "3bd7346e9d0c6dc803dfec7a62f946be5e4ee50e50b26f39399d730da788ad25",
+        "recorded_after": "3bd7346e9d0c6dc803dfec7a62f946be5e4ee50e50b26f39399d730da788ad25",
+        "raw_sha256": "e09b0e3bf2e63d73636c94e5d58f2caf355705d1b63081ee063326de2fc45d58",
+        "children": [
+          1972,
+          1973,
+          1974,
+          1975,
+          1976,
+          1977
+        ],
+        "native_payment_blocked": false,
+        "foreign_raw_sha256": "0b6925689b4c5aa8a3180cadb4f3b426b8e1e31b47cccca9b6e720f733dc997e"
+      },
+      "changed_raw_surfaces": [
+        "meta"
+      ],
+      "write_attempts_after_release": [
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "472b58b1fbd98d5c3f0eaebf543a210892c432a0f08f3db5c3fff8f0c2de7fcf",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "5391db554f9e1f7f9e7265c049b76d7ce90d046535d3ac34371fa1790f9063ba",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_postmeta",
+          "migration_journal": false,
+          "sql_sha256": "1820aa09b503684d897013380076ec383bb79b937271841f79c71eabc9d8adc7",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "INSERT",
+          "table": "wp_postmeta",
+          "migration_journal": false,
+          "sql_sha256": "4bc011ef50bbc492495e912739afe1eaade6b270c9b4d49da9f22cded11c7d48",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_posts",
+          "migration_journal": false,
+          "sql_sha256": "9a30b3bb5863cd34bec93252213a07f136bb3523eb0be1f744113cc9eb3d6449",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "4559fb15d27dbd7352d85ca4a4c64d923cc2ae4e5c4acdb1c70d173b8006b5d1",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "DELETE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "15c61d972b51b9272b269b7713280b0a911b18286370241d4890afca934b9529",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "eecc7dd0090cc9ef177aec09401f88ca2f4f62ac8259e03c9a644d327c27fdcf",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        },
+        {
+          "event": "WRITE_ATTEMPT",
+          "phase": "shutdown",
+          "verb": "UPDATE",
+          "table": "wp_options",
+          "migration_journal": false,
+          "sql_sha256": "45de0ddbaec3fcf3f58b02bcfcd89a590f9195e7c60dfcfa707e480072103b2b",
+          "lock_owned": false,
+          "state_before_query": "COMPLETE",
+          "observation": "PRE_EXECUTION_WRITE_ATTEMPT"
+        }
+      ],
+      "audit_sha256": "4a7e413bc50081296e7936a3353f42b2cf7298d33d849a7690cd0cf26f2c1764",
+      "audit_path": ".artifacts/release-gates-20261019/gate4-local/case-refined-1792420437802694000-failure.json.audit-resume-7.jsonl"
+    }
+  ],
+  "source_pins": {
+    "tools/v2-runtime/gate4-fixture.php": "c5523ec3b5c499529fb4ead6faebb48f8cee26e78f6006083270352cd1ed6c4d",
+    "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7"
+  },
+  "limits": "Observer records PRE_EXECUTION_WRITE_ATTEMPTS; separate full raw readback proves mutation. No order corruption inferred. Original9/20/9 Woo-only baseline unchanged."
+}

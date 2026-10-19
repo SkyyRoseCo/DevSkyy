@@ -1,0 +1,313 @@
+{
+  "classification": "PUBLIC_DISTRIBUTION_AVAILABILITY_NOT_INSTALLED_BYTE_OR_RUNTIME_PARITY",
+  "observed_utc": "2026-10-19T14:01:02.213545+00:00",
+  "baseline_observed_utc": "2026-10-19T09:41:37+00:00",
+  "components": [
+    {
+      "plugin": "akismet/akismet.php",
+      "version": "5.7.2",
+      "source_url": "https://downloads.wordpress.org/plugin/akismet.5.7.2.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "e76d9ad61b95fb36c99b580e23c23e16a2cf9fd8483baa16d756d47f1994126d",
+      "bytes": 133795
+    },
+    {
+      "plugin": "commercegurus-commercekit/commercegurus-commercekit.php",
+      "version": "2.4.3",
+      "source_url": "https://downloads.wordpress.org/plugin/commercegurus-commercekit.2.4.3.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "status": "UNAVAILABLE_UNQUALIFIED",
+      "reason": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "plugin": "elementor/elementor.php",
+      "version": "4.3.5",
+      "source_url": "https://downloads.wordpress.org/plugin/elementor.4.3.5.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "8f025581b9e425dbe0a64adbcaae955d90b23bbfc8584d90495df4fc75eae239",
+      "bytes": 23617122
+    },
+    {
+      "plugin": "elementor-pro/elementor-pro.php",
+      "version": "4.3.2",
+      "source_url": "https://downloads.wordpress.org/plugin/elementor-pro.4.3.2.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "status": "UNAVAILABLE_UNQUALIFIED",
+      "reason": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "plugin": "site-mailer/site-mailer.php",
+      "version": "1.4.7",
+      "source_url": "https://downloads.wordpress.org/plugin/site-mailer.1.4.7.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "f586d08beed1dd8b42f5a02f6ce0071ab346777ea6945dcfd10bc54ce67d35ce",
+      "bytes": 5017488
+    },
+    {
+      "plugin": "gutenberg/gutenberg.php",
+      "version": "24.2.0",
+      "source_url": "https://downloads.wordpress.org/plugin/gutenberg.24.2.0.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "da92e01b41a592361e7adeef469eecbbb5ba05dae22db2f3c9a7b354af324fe4",
+      "bytes": 50295819
+    },
+    {
+      "plugin": "image-optimization/image-optimization.php",
+      "version": "1.7.7",
+      "source_url": "https://downloads.wordpress.org/plugin/image-optimization.1.7.7.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "62b6348a215e4c3b68d75abed68031055dc10ef6b4032d5bde94ae81007ddf85",
+      "bytes": 5028189
+    },
+    {
+      "plugin": "jetpack/jetpack.php",
+      "version": "16.4-a.1",
+      "source_url": "https://downloads.wordpress.org/plugin/jetpack.16.4-a.1.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "1849611c7ea7990e8e864f1846aaeadcfb485df31e7cb1bbe6c057c6a5c16d86",
+      "bytes": 30460490
+    },
+    {
+      "plugin": "jetpack-boost/jetpack-boost.php",
+      "version": "4.8.1",
+      "source_url": "https://downloads.wordpress.org/plugin/jetpack-boost.4.8.1.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "2453ea9ea338b5f6fd7739e4cfbefbf0132aa921c7270343348513d8ca39ea59",
+      "bytes": 5693692
+    },
+    {
+      "plugin": "zero-bs-crm/ZeroBSCRM.php",
+      "version": "6.8.5",
+      "source_url": "https://downloads.wordpress.org/plugin/zero-bs-crm.6.8.5.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "f5f4b6a73fe4cce821f044df144b2b09788475b3060a4bf17441558da8fb145d",
+      "bytes": 11714473
+    },
+    {
+      "plugin": "jwt-authentication-for-wp-rest-api/jwt-auth.php",
+      "version": "1.5.0",
+      "source_url": "https://downloads.wordpress.org/plugin/jwt-authentication-for-wp-rest-api.1.5.0.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "97c21033394de71c60acee8fe307c3ce89dae9227fad5fbee9569bc323202498",
+      "bytes": 519223
+    },
+    {
+      "plugin": "kirki/kirki.php",
+      "version": "6.4.0",
+      "source_url": "https://downloads.wordpress.org/plugin/kirki.6.4.0.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "f8f799d8148b2b32c1b9aae150d1c5f35d302de656a90a5517544543b337cbfe",
+      "bytes": 3658907
+    },
+    {
+      "plugin": "klaviyo/klaviyo.php",
+      "version": "3.8.3",
+      "source_url": "https://downloads.wordpress.org/plugin/klaviyo.3.8.3.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "6aa2491a3e7d7a267d9a97132d58c3d697558b318df31f8d1593b6ec193043c8",
+      "bytes": 70907
+    },
+    {
+      "plugin": "layout-grid/index.php",
+      "version": "1.8.5",
+      "source_url": "https://downloads.wordpress.org/plugin/layout-grid.1.8.5.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "status": "UNAVAILABLE_UNQUALIFIED",
+      "reason": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "plugin": "litespeed-cache/litespeed-cache.php",
+      "version": "7.9.1",
+      "source_url": "https://downloads.wordpress.org/plugin/litespeed-cache.7.9.1.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "03ee3e4904dda9b8326fbedb89297fbd03a6c3a3bc77af4e0a94fad03e7a7556",
+      "bytes": 1083163
+    },
+    {
+      "plugin": "mailpoet/mailpoet.php",
+      "version": "5.42.0",
+      "source_url": "https://downloads.wordpress.org/plugin/mailpoet.5.42.0.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "ff47b95abdf86fce2a3735062884ffe19ff17bce66eb6516732fb50c93bbb4b2",
+      "bytes": 10957573
+    },
+    {
+      "plugin": "one-click-demo-import/one-click-demo-import.php",
+      "version": "3.4.1",
+      "source_url": "https://downloads.wordpress.org/plugin/one-click-demo-import.3.4.1.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "7351e275d18c31af4df25f391081185bd5ba60f9f71a7c41ef485071b3a1519c",
+      "bytes": 151300
+    },
+    {
+      "plugin": "page-optimize/page-optimize.php",
+      "version": "0.6.3",
+      "source_url": "https://downloads.wordpress.org/plugin/page-optimize.0.6.3.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "e052a1cf2f86a3fa97c991b16da2da185c0e7551ab428d1a3bdbc18c71703d97",
+      "bytes": 48119
+    },
+    {
+      "plugin": "pinterest-for-woocommerce/pinterest-for-woocommerce.php",
+      "version": "1.5.4",
+      "source_url": "https://downloads.wordpress.org/plugin/pinterest-for-woocommerce.1.5.4.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "4bac6b6e52af459ff97c9f7c8b0f5c8c5724c3e7d0f19d7dc0b02f4a1eda5e7e",
+      "bytes": 963852
+    },
+    {
+      "plugin": "skyyrose-immersive/skyyrose-immersive.php",
+      "version": "1.0.0",
+      "source_url": "https://downloads.wordpress.org/plugin/skyyrose-immersive.1.0.0.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "status": "UNAVAILABLE_UNQUALIFIED",
+      "reason": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "plugin": "skyyrose-scene-installer/skyyrose-scene-installer.php",
+      "version": "1.0.0",
+      "source_url": "https://downloads.wordpress.org/plugin/skyyrose-scene-installer.1.0.0.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "status": "UNAVAILABLE_UNQUALIFIED",
+      "reason": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "plugin": "stripe-tax-for-woocommerce/stripe-tax-for-woocommerce.php",
+      "version": "2.2.0",
+      "source_url": "https://downloads.wordpress.org/plugin/stripe-tax-for-woocommerce.2.2.0.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "c583ec6841cc91e8992425852f5c08d957922b7e20755d58014fbe005b45c508",
+      "bytes": 722939
+    },
+    {
+      "plugin": "tiktok-for-business/tiktok-for-woocommerce.php",
+      "version": "1.4.2",
+      "source_url": "https://downloads.wordpress.org/plugin/tiktok-for-business.1.4.2.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "13eac000f0c06a0e4058344155bab538c36183b5daee8838a905ee523030d689",
+      "bytes": 72300
+    },
+    {
+      "plugin": "woo-update-manager/woo-update-manager.php",
+      "version": "1.0.3",
+      "source_url": "https://downloads.wordpress.org/plugin/woo-update-manager.1.0.3.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "status": "UNAVAILABLE_UNQUALIFIED",
+      "reason": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "plugin": "woocommerce-paypal-payments/woocommerce-paypal-payments.php",
+      "version": "4.1.3",
+      "source_url": "https://downloads.wordpress.org/plugin/woocommerce-paypal-payments.4.1.3.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "179e6fa9ede40fb2b05a3ac06c08a47710536e554c171db6e4d1b777d94abb97",
+      "bytes": 3309347
+    },
+    {
+      "plugin": "woocommerce-shipping/woocommerce-shipping.php",
+      "version": "2.4.3",
+      "source_url": "https://downloads.wordpress.org/plugin/woocommerce-shipping.2.4.3.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "79661b9d5cf637375852944849522068ff9dd64515fd1652d025123d32245824",
+      "bytes": 6844400
+    },
+    {
+      "plugin": "woocommerce-gateway-stripe/woocommerce-gateway-stripe.php",
+      "version": "11.1.1",
+      "source_url": "https://downloads.wordpress.org/plugin/woocommerce-gateway-stripe.11.1.1.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "420621d736a74d7a785f80b69aeed0cbe07f1a4810c013a2b86205423ebb994e",
+      "bytes": 1568769
+    },
+    {
+      "plugin": "woocommerce-services/woocommerce-services.php",
+      "version": "3.7.3",
+      "source_url": "https://downloads.wordpress.org/plugin/woocommerce-services.3.7.3.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "7b19ffb9dd987c3ee479b1d4dea1111524aab2c3081e8896649feedc788b0b60",
+      "bytes": 2504509
+    },
+    {
+      "plugin": "woocommerce-payments/woocommerce-payments.php",
+      "version": "11.2.0",
+      "source_url": "https://downloads.wordpress.org/plugin/woocommerce-payments.11.2.0.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "c6a812b40c56cade1f9ec5be825888ec8f4822173118bece003cf6cc2e90a73d",
+      "bytes": 6372219
+    },
+    {
+      "plugin": "big-sky/big-sky.php",
+      "version": "7.9.22",
+      "source_url": "https://downloads.wordpress.org/plugin/big-sky.7.9.22.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "status": "UNAVAILABLE_UNQUALIFIED",
+      "reason": "HTTPError: HTTP Error 404: Not Found"
+    },
+    {
+      "plugin": "wordpress-importer/wordpress-importer.php",
+      "version": "0.9.6",
+      "source_url": "https://downloads.wordpress.org/plugin/wordpress-importer.0.9.6.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "85cfad65e24eb3b25ed536f52ce52c3971bd42a852d6f2c6a5bea8c5c429c323",
+      "bytes": 500132
+    },
+    {
+      "plugin": "oauth2-provider/wp-oauth-server.php",
+      "version": "4.5.2",
+      "source_url": "https://downloads.wordpress.org/plugin/oauth2-provider.4.5.2.zip",
+      "authentication": "NOT_APPLICABLE_PUBLIC_DISTRIBUTION",
+      "http_status": 200,
+      "status": "AVAILABLE_UNEXECUTED",
+      "sha256": "e853942172f1c2b99c62d570b6f4c1e3544515a2bbb6889df132cfb68d4c4e76",
+      "bytes": 314655
+    }
+  ]
+}
