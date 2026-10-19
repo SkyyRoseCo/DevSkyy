@@ -128,7 +128,7 @@ def validate(audit, before, after, role, label, events, receipt, site, inventory
         ("persist_order_to_db", HPOS, HPOS_FILE),
         ("persist_updates", HPOS, HPOS_FILE),
         ("update", HPOS, WC + "includes/class-wc-data-store.php"),
-        ("__call", "WC_Data_Store", WC + "includes/abstracts/abstract-wc-order.php"),
+        ("update", "WC_Data_Store", WC + "includes/abstracts/abstract-wc-order.php"),
         *save_chain,
     ]
     assert [row["phase"] for row in audit["saves"]] == ["before", "after"]
@@ -227,6 +227,7 @@ def controls(audit, before, after, role, label, events, receipt, site, inventory
         "missing-order-save-frame",
         "reordered-save-chain",
         "unprefixed-cross-table-customer-write",
+        "magic-call-substitution",
     ]:
         a, b, c, e = copy.deepcopy((audit, before, after, events))
         if mutation == "wrong-id":
@@ -297,6 +298,18 @@ def controls(audit, before, after, role, label, events, receipt, site, inventory
                     "stack": [],
                 }
             )
+        elif mutation == "magic-call-substitution":
+            changed = False
+            for row in a["queries"]:
+                for frame in row["stack"]:
+                    if frame.get("function") == "update" and frame.get("class") == "WC_Data_Store":
+                        frame["function"] = "__call"
+                        changed = True
+            if not changed:
+                result.append(
+                    {"mutation": mutation, "status": "NOT_APPLICABLE_NO_NATIVE_ORDER_WRITER"}
+                )
+                continue
         try:
             validate(a, b, c, role, label, e, receipt, site, inventory, run)
         except AssertionError:
