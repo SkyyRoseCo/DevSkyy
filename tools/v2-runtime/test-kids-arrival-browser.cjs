@@ -8,7 +8,10 @@ const { execFileSync } = require('node:child_process');
 const { createRequire } = require('node:module');
 
 const root = path.resolve(__dirname, '../..');
-const git = (...args) => execFileSync('/usr/bin/git', args, { cwd: root, encoding: 'utf8' }).trim();
+const git = (...args) => execFileSync('/usr/bin/git', ['-c', 'core.hooksPath=/dev/null', '-c', 'core.fsmonitor=false', '-c', 'submodule.recurse=false', '-C', root, ...args], {
+  encoding: 'utf8',
+  env: { PATH: '/usr/bin:/bin', LANG: 'C', LC_ALL: 'C', GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_GLOBAL: '/dev/null', GIT_TERMINAL_PROMPT: '0' },
+}).trim();
 assert.equal(git('status', '--porcelain', '--ignore-submodules=all'), '', 'Commit source/build/test candidate before browser execution');
 const theme = path.join(root, 'wordpress-theme/skyyrose-flagship-2');
 const fixtureRoot = fs.realpathSync(process.env.KIDS_FIXTURE_ROOT);
