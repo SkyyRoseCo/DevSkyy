@@ -94,8 +94,8 @@ def run(target, expected_sha, folder, nonce, args, deadline=10):
             raise ValueError("Invalid CDP pipe descriptor")
         os.set_inheritable(descriptor, True)
         pipes[str(descriptor)] = {
-            "device": value.st_dev,
-            "inode": value.st_ino,
+            "device": str(value.st_dev),
+            "inode": str(value.st_ino),
             "type": stat.S_IFMT(value.st_mode),
             "inheritable": os.get_inheritable(descriptor),
         }

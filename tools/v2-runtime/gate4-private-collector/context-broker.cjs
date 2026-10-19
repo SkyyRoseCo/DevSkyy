@@ -48,7 +48,7 @@ function inspectBroker(folder, launcher, target, targetSHA, parentPid, nonce, sp
   assert.equal(fs.realpathSync(row.profile), row.profile); assert.ok(row.profile.startsWith(fs.realpathSync(path.join(folder, 'tmp')) + path.sep));
   assert.deepEqual(row.args.filter(arg => arg.startsWith('--user-data-dir=')), ['--user-data-dir=' + row.profile]); assert.ok(row.args.includes('--remote-debugging-pipe'));
   assert.deepEqual(Object.keys(row.pipes).sort(), ['3', '4']);
-  for (const pipe of Object.values(row.pipes)) { assert.deepEqual(Object.keys(pipe).sort(), ['device', 'inheritable', 'inode', 'type']); assert.ok(pipe.inheritable && [4096, 49152].includes(pipe.type) && Number.isSafeInteger(pipe.device) && Number.isSafeInteger(pipe.inode)); }
+  for (const pipe of Object.values(row.pipes)) { assert.deepEqual(Object.keys(pipe).sort(), ['device', 'inheritable', 'inode', 'type']); assert.equal(pipe.inheritable, true); assert.ok([4096, 49152].includes(pipe.type)); assert.match(pipe.device, /^-?(?:0|[1-9][0-9]*)$/); assert.match(pipe.inode, /^(?:0|[1-9][0-9]*)$/); assert.equal(BigInt(pipe.device).toString(), pipe.device); assert.ok(BigInt(pipe.device) >= -(1n << 31n) && BigInt(pipe.device) < (1n << 31n)); assert.ok(BigInt(pipe.inode) <= (1n << 64n) - 1n); }
   assert.ok(spawned && spawned.kind === 'browser-spawn' && spawned.token === nonce && spawned.pid === row.pid && spawned.executable === launcher && spawned.profile === row.profile); assert.deepEqual(spawned.args, row.args);
   const current = processes().find(item => item.pid === row.pid);
   assert.ok(current && current.group === row.pid && current.parent === parentPid && current.command.includes(launcher) && current.command.includes(row.profile));
