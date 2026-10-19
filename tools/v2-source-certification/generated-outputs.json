@@ -1080,13 +1080,13 @@
     "tracked": true
   },
   "assets/derived/fonts/inter-fallback-latin.woff2": {
+    "candidate": "V2-READINESS-20260906",
     "generator": "fontTools.subset; exact command in data/font-fallback.json",
     "normalization": "11 cmap codepoints absent from Hanken; preserve source glyph outlines, variable axis, hinting and all name metadata",
     "released": false,
     "source": "assets/sot/fonts/inter-latin.woff2",
     "tool": "fontTools 4.59.2",
-    "tracked": false,
-    "candidate": "V2-READINESS-20260906"
+    "tracked": false
   },
   "assets/derived/fonts/manifest.json": {
     "generator": "tools/v2-runtime/build-font-delivery.py",
@@ -1238,6 +1238,14 @@
     "released": true,
     "source": "tools/v2-source-certification/inputs/product-sot.json + canonical CSV garment_type_lock",
     "tool": "Python 3.12.12 standard library",
+    "tracked": true
+  },
+  "data/simple-product-sizes.json": {
+    "generator": "scripts/build_simple_product_sizes.py",
+    "normalization": "Exact canonical garment.available_sizes strings and order, UTF-8 JSON indentation 2, trailing newline; current registry and reader digests; compact products digest",
+    "released": true,
+    "source": "skyyrose.core.product.get_product#garment.available_sizes",
+    "tool": "Python standard library",
     "tracked": true
   },
   "languages/skyyrose-flagship-2.pot": {

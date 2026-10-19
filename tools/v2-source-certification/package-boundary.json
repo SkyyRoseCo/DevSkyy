@@ -3391,6 +3391,11 @@
       "reason": "Authoring/verification manifest; no PHP runtime reader",
       "release": false
     },
+    "data/simple-product-sizes.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Canonical get_product garment size projection bundled for independent V2 runtime",
+      "release": true
+    },
     "data/v2-canonical-media.json": {
       "category": "RUNTIME SOURCE",
       "reason": "Present in the live skyyrose.co deployment captured 2026-10-10 (3d19bd48f); runtime reads it, so it ships.",
@@ -3896,6 +3901,11 @@
       "reason": "Phase3B reviewed page implementation",
       "release": true
     },
+    "inc/simple-product-sizes.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Canonical simple-size selection, saved-history and native commerce guards",
+      "release": true
+    },
     "inc/starter-content.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -4274,6 +4284,11 @@
     "template-immersive-signature.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/collections/arrival-product.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Kids governed product arrival; bounded component qualification in packet-85a1bda20",
       "release": true
     },
     "template-parts/collections/arrival.php": {

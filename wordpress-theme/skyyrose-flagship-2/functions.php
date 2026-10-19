@@ -37,6 +37,7 @@ require_once SKYYROSE2_DIR . '/inc/quick-view-commerce.php';
 require_once SKYYROSE2_DIR . '/inc/critical-rendering.php';
 require_once SKYYROSE2_DIR . '/inc/analytics.php';
 require_once SKYYROSE2_DIR . '/inc/woocommerce-compat.php';
+require_once SKYYROSE2_DIR . '/inc/simple-product-sizes.php';
 require_once SKYYROSE2_DIR . '/inc/product-glb-links.php';
 require_once SKYYROSE2_DIR . '/inc/product-glb.php';
 

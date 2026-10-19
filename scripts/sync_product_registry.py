@@ -10,7 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts import build_asset_manifest as manifest_builder  # noqa: E402
-from skyyrose.core import asset_manifest, product_registry  # noqa: E402
+from skyyrose.core import asset_manifest, product_registry, simple_product_sizes  # noqa: E402
 from skyyrose.core.product_registry import export_compatibility, orphan_dossiers  # noqa: E402
 
 
@@ -53,13 +53,14 @@ def main() -> int:
     # registry or retire them deliberately, so they fail both modes.
     orphans = {str(path) for path in orphan_dossiers()}
     drift.extend(_reconcile_asset_manifest(args.check))
+    drift.extend(simple_product_sizes.reconcile(args.check))
     for path in drift:
         if path in orphans:
             print(f"ORPHAN {path}  (dossier not owned by any registry product)")
         else:
             print(("STALE " if args.check else "UPDATED ") + path)
     if not drift:
-        print("PASS: CSV, all product dossiers and the asset manifest match the registry")
+        print("PASS: CSV, all product dossiers, asset manifest and V2 sizes match the registry")
     return int(bool(orphans) or (args.check and bool(drift)))
 
 
