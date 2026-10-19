@@ -1,0 +1,277 @@
+{
+  "schema": "skyyrose.offline-installed-evidence.v1",
+  "status": "RECOVERED_RECORDED_CODE_COVERAGE_ONLY",
+  "authentication": "NOT_APPLICABLE_OFFLINE_COMPARISON; historical authenticated snapshot retained, no fresh sign-in",
+  "source_head": "12d38fe82482ac5b60de18134e562afa8e8637b6",
+  "source_pin": {
+    "sha256": "30d1c53748338c7db2e8ece69f949d346f5d250087a2438a2883fb120046cf54",
+    "bytes": 14385
+  },
+  "prior_accepted_packet": "481b1406b376ca302f270f17663d641d10ada04d",
+  "baseline": {
+    "site": "https://skyyrose.co",
+    "observed_utc": "2026-10-19T09:41:37+00:00",
+    "classification": "AUTHENTICATED_LIVE_READ_ONLY",
+    "wp_version": "7.1.3",
+    "php_version": "8.4.26",
+    "db_version": "11.8.9",
+    "storage_options": {
+      "woocommerce_custom_orders_table_enabled": "yes",
+      "woocommerce_custom_orders_table_data_sync_enabled": null,
+      "permalink_structure": "/%postname%/",
+      "blog_public": "1"
+    }
+  },
+  "native_storage_receipt": {
+    "site": "https://skyyrose.co",
+    "wp": "7.1.3",
+    "woo": "11.2.1",
+    "php": "8.4.26",
+    "wpdb_class": "wpdb",
+    "hpos_authority": true,
+    "native_order_store": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore",
+    "orders_pending_sync": true
+  },
+  "native_storage_note": "pending orders is a native runtime backlog observation, not the data-sync option; null option and pending=true remain distinct",
+  "recovered_plugins": [
+    {
+      "component": "skyyrose-immersive",
+      "archive": "/Users/theceo/Downloads/skyyrose-immersive-1.0.0.zip",
+      "recorded_files": 21,
+      "candidate_files": 21,
+      "missing": [],
+      "different": [],
+      "unrecorded_extra": [],
+      "exact_recorded_census_match": true,
+      "files": {
+        "readme.txt": {
+          "sha256": "a0922917c15ef660edf98cf2dd07312f0fc74b9a882ab9a5dc6e380dec1f3782",
+          "bytes": 3167
+        },
+        "skyyrose-immersive.php": {
+          "sha256": "e96deae739500f04b9ec167ffa7d07976da9001c9c109fb8eaabc540523753ef",
+          "bytes": 3475
+        },
+        "assets/css/immersive.css": {
+          "sha256": "556f295460f9bfd02e6eceb95ec4c3994e3c23f058306c8f685e6b6d897fb23c",
+          "bytes": 10648
+        },
+        "assets/js/immersive-loader.js": {
+          "sha256": "da5baa0bf08f71929f83632644ab749dc5672f56328b10745a77fe1f0d1c6d5a",
+          "bytes": 6374
+        },
+        "assets/js/product-loader.js": {
+          "sha256": "a5a02c1005624fe143574f000874208e9d61c006e99f50461c867ca245830617",
+          "bytes": 2493
+        },
+        "assets/js/scenes/preorder-gateway-scene.js": {
+          "sha256": "c52c19561aeabcfe12ff4ba810b0f1b79ec56cc3bbd340b47d0e353ad35e6390",
+          "bytes": 9189
+        },
+        "assets/js/scenes/love-hurts-scene.js": {
+          "sha256": "38a55bb5de3ad0c6f0e9dd9651f9a16ff0933e5e7cc2736acf1a63fa2f2c96ae",
+          "bytes": 11908
+        },
+        "assets/js/scenes/black-rose-scene.js": {
+          "sha256": "2a2077507b24f30363b93227f8b1117184010813232e63a917419fe6c5ae82b0",
+          "bytes": 12091
+        },
+        "assets/js/scenes/signature-scene.js": {
+          "sha256": "b011494fdfdd81e3671f0b662c10d6887e9fa583493c96a73cb6dfb51429f7b0",
+          "bytes": 9682
+        },
+        "assets/js/scene-manager.js": {
+          "sha256": "b3323741b2e801b13d4d93c985d750d21ed2bacdfe0d02b165ab4604fd8492a4",
+          "bytes": 1431
+        },
+        "assets/js/base-scene.js": {
+          "sha256": "4f009dda532326a1dc5d165286edbec18ad1b458806a696eaa892e7976acdf1a",
+          "bytes": 11357
+        },
+        "assets/js/hotspot-system.js": {
+          "sha256": "ed910380c29631cda6c4f37b622c9fbcc834de2efa04e34ad851224046c7213a",
+          "bytes": 5877
+        },
+        "assets/js/modal.js": {
+          "sha256": "a7bf712e6dc25939c73c38cd2787e76ac79f5ac4ccee3e1f3003aa79423918ec",
+          "bytes": 5939
+        },
+        "README.md": {
+          "sha256": "5c8c92b39b608e2555c7b7cbea46afdc22ebb8f6cf1577c661ab62189ee34c64",
+          "bytes": 9387
+        },
+        "uninstall.php": {
+          "sha256": "81b71008b7f4b607dacfa1579137ec3e923a83e346f99bc1d50eb08cf8d70c74",
+          "bytes": 638
+        },
+        "tests/test-rest.php": {
+          "sha256": "4a82e516826723b891688d97b8d7b41f7c0258fb8d27fe1f8bc735523b731f75",
+          "bytes": 2673
+        },
+        "inc/class-elementor-widget.php": {
+          "sha256": "7ff42e34590cc41fc095153870cdf5d136f12d468e2b7318d59329077ece4ef5",
+          "bytes": 3601
+        },
+        "inc/class-shortcode.php": {
+          "sha256": "22465f489d50fd3931888ebd77c228433db87c650f64c916e5fdb92f71317192",
+          "bytes": 6661
+        },
+        "inc/class-assets.php": {
+          "sha256": "1612e098d446df356f0a0a1055b283caa2a4a7794edd47f9c2b4169e229f1045",
+          "bytes": 6496
+        },
+        "inc/class-plugin.php": {
+          "sha256": "5c2a50cea4b3a99a9606c67be49873814b660763b2a4bc989ae71db6c0380149",
+          "bytes": 4398
+        },
+        "inc/class-rest.php": {
+          "sha256": "a2bd099953ce07400f5ffd3c53ca1069a3a0b27b9430641f0bf89d3b5d04d250",
+          "bytes": 9145
+        }
+      },
+      "scope": "Exact recorded census only; installed collector managed/symlink exclusions remain"
+    },
+    {
+      "component": "skyyrose-scene-installer",
+      "archive": "/Users/theceo/Downloads/skyyrose-scene-installer.zip",
+      "recorded_files": 7,
+      "candidate_files": 7,
+      "missing": [],
+      "different": [],
+      "unrecorded_extra": [],
+      "exact_recorded_census_match": true,
+      "files": {
+        "skyyrose-scene-installer.php": {
+          "sha256": "0ca9ba258e5cfa9a0d750322f6e778f7609545f5441790d7ced3fa8ec8fb09c1",
+          "bytes": 1229
+        },
+        "scenes/signature/signature-golden-gate-showroom.png": {
+          "sha256": "4522cb7e26fbb4908a40ef31b073a7bcbafd25b80e6d4e0c2f19f078e321de00",
+          "bytes": 1327354
+        },
+        "scenes/signature/signature-waterfront-runway.png": {
+          "sha256": "8431a3cef881877726c8c07367c0749f98c11fe4c59064f7a06d82fb0a16f12c",
+          "bytes": 1149656
+        },
+        "scenes/love-hurts/love-hurts-gothic-ballroom.png": {
+          "sha256": "bced90d388c50dc269adac370e1b0928c8ed8432ea3940233388d86871f69d44",
+          "bytes": 1663356
+        },
+        "scenes/love-hurts/love-hurts-cathedral-rose-chamber.png": {
+          "sha256": "70d58e60ddac5ad12f1733091324c2e239bd6d70ce3cd23c12a1188e4a5c9e0e",
+          "bytes": 1819759
+        },
+        "scenes/black-rose/black-rose-moonlit-courtyard.jpg": {
+          "sha256": "841fd0f4e27c60f13ba266c0c61d9299089f28b2a396b820045ef1f62e63253f",
+          "bytes": 294531
+        },
+        "scenes/black-rose/black-rose-iron-gazebo-garden.png": {
+          "sha256": "c00e67e9617aba0080e030ca293657037196403a4d7de3832e065f518bff77a1",
+          "bytes": 2035605
+        }
+      },
+      "scope": "Exact recorded census only; installed collector managed/symlink exclusions remain"
+    }
+  ],
+  "recovered_ajax_guard": {
+    "component": "skyyrose-ally-ajax-guard.php",
+    "git_commit": "ef683c7941ff5a88b8a48ede1d24fba7335139ed",
+    "git_path": "wordpress/mu-plugins/skyyrose-ally-ajax-guard.php",
+    "sha256": "61cd70e57edb7a1d040ed1c6f3961ef4cbc4dbd1cd6fcad5d10d196ac21379b9",
+    "bytes": 1566,
+    "status": "EXACT_RECORDED_FILE_RECOVERED_CURRENT_SOURCE_UNCHANGED"
+  },
+  "historical_receipts": {
+    "studio": {
+      "site": "http://skyyroseco.wp.local",
+      "php_version": "8.3",
+      "wp_version": "6.8.2",
+      "status": "OLDER_LOCAL_SITE_NOT_INSTALLED_RUNTIME_EVIDENCE",
+      "configuration_values_or_sql_read": false
+    },
+    "cache": {
+      "reported_site": "https://skyyrose.co",
+      "retained_task_date": "2026-10-02",
+      "functions": [
+        "wp_cli\\utils\\wp_clear_object_cache",
+        "__clear_multi_author_cache",
+        "_clear_modified_cache_on_transition_comment_status",
+        "safe\\mysqlnd_qc_clear_cache",
+        "wpcomsh_blaze_purge_transient_cache",
+        "clear_advanced_post_cache",
+        "do_clear_advanced_post_cache",
+        "dont_clear_advanced_post_cache",
+        "commercekit_as_clear_all_cache",
+        "commercekit_ajs_clear_all_cache",
+        "wc_clear_template_cache",
+        "wc_clear_system_status_theme_info_cache",
+        "woocommerce_clear_product_count_cache",
+        "woocommerce_clear_review_count_cache"
+      ],
+      "active_plugin_count": 33,
+      "status": "DATED_RECORDED_CAPABILITY_ONLY_NOT_CACHE_SERVICE_CONFIGURATION_OR_EXECUTION",
+      "authentication": "NOT_REAUTHENTICATED_OFFLINE_RECEIPT"
+    }
+  },
+  "inputs": {
+    ".artifacts/release-gates-20261019/installed-baseline-raw-r2.json": {
+      "sha256": "f2379c9d4fef40a53552279b26b2fea6a1c34110d09aee174de6b1531de5258e",
+      "bytes": 3651265
+    },
+    "/Users/theceo/Downloads/skyyrose-immersive-1.0.0.zip": {
+      "sha256": "237497c9725f15b9903328b77732fea2cc4bd8e9e798f5de5b3bd8b8fbf88d3e",
+      "bytes": 51576
+    },
+    "/Users/theceo/Downloads/skyyrose-scene-installer.zip": {
+      "sha256": "11cce390b496620e3d7c099833064557ebc1d9b9aeac55be0f55c3230de0c6bc",
+      "bytes": 8280010
+    },
+    "/Users/theceo/Documents/studio-backup-skyyroseco-2025-07-15-15-14-27 3/meta.json": {
+      "sha256": "215259ec3b2c54479371944fd68adcaecfb9899d2abedb099f60f2896ba9ac81",
+      "bytes": 607
+    },
+    "/Users/theceo/Documents/Codex/2026-10-02/task/cache-capability-readonly.json": {
+      "sha256": "68cce9da671e43b1a0481b6c923e2a4b494535284bb686990d5a1ba3df9c5c1d",
+      "bytes": 4262
+    },
+    ".artifacts/release-gates-20261019/installed-native-storage-readonly.txt": {
+      "sha256": "326c04ef435006e507b0b9890fb18f5f5f5d7756eb1221203d45c2a1a3e76ad1",
+      "bytes": 264
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/installed-component-coverage.json": {
+      "sha256": "204cb7566809a09f65f79a35ce61a562ecfe95bb4176ea1fc2bae6ac411c834d",
+      "bytes": 14123
+    },
+    ".artifacts/release-gates-20261019/installed-evidence/discovery.json": {
+      "sha256": "591a52c32e919c78c933dda03615618ea23d4cbf2862d38e1e59ed7c86a93d31",
+      "bytes": 93399
+    },
+    ".artifacts/release-gates-20261019/installed-evidence/secondary-discovery.json": {
+      "sha256": "865cce52dea0418bb48313e796d403a61209509d839f73e1c82dd9728f4e419b",
+      "bytes": 1596
+    },
+    ".artifacts/release-gates-20261019/installed-evidence/archive-target-search.json": {
+      "sha256": "cd23950ad9a8e7aa3dac146c0d3a6f6e0d9957ae0f81dd3d2b4fa153946de5ae",
+      "bytes": 113357
+    },
+    ".artifacts/release-gates-20261019/installed-evidence/archive-source-index.json": {
+      "sha256": "abec88b331853d03484bfd6c3de3329acc4f85ff63282d37e3ddbd4d1c990aad",
+      "bytes": 163794
+    },
+    ".artifacts/release-gates-20261019/installed-evidence/ajax-git-history-search.json": {
+      "sha256": "2d53fa514a840b0637437115f51b55e8f110137e78728b1bcfe2100d2f0118f9",
+      "bytes": 798
+    },
+    ".artifacts/release-gates-20261019/installed-evidence/search-coverage-limits.json": {
+      "sha256": "33ac569508920b3255b07ed09d2126c6aa13c05fd0782c0c8c34e5b79d531c06",
+      "bytes": 639
+    }
+  },
+  "limits": [
+    "No plugin/bootstrap/service/DB execution, fresh authentication, live query or secret/customer/order-data read",
+    "Exact component-relative file matches cover the recorded census only; managed/symlink/global completeness exclusions remain",
+    "Matching candidates from separate local/Git sources do not prove coexistence, activation, configuration or operational behavior",
+    "Existing closed fixture profiles were not modified or rerun; recovered bytes are inert private candidates",
+    "Broad content search was incomplete on inaccessible offline snapshot files; no universal absence claim"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "skyyrose.offline-installed-audit-controls.v1",
+  "status": "PASS_SYNTHETIC_OFFLINE_CONTROLS",
+  "authentication": "NOT_APPLICABLE",
+  "source_pins": {
+    "tools/v2-runtime/audit_gate4_installed.py": {
+      "sha256": "30d1c53748338c7db2e8ece69f949d346f5d250087a2438a2883fb120046cf54",
+      "bytes": 14385
+    },
+    "tools/v2-runtime/test_gate4_installed.py": {
+      "sha256": "f89ebc390642e394bd3e6ae3d5dbeeabd491b056d6eb33834400a95f8c829e6b",
+      "bytes": 4244
+    }
+  },
+  "controls": [
+    {
+      "name": "exact-recorded-census",
+      "result": "PASS"
+    },
+    {
+      "name": "duplicate",
+      "result": "PASS_REFUSED"
+    },
+    {
+      "name": "traversal",
+      "result": "PASS_REFUSED"
+    },
+    {
+      "name": "normalized-alias",
+      "result": "PASS_REFUSED"
+    },
+    {
+      "name": "absolute",
+      "result": "PASS_REFUSED"
+    },
+    {
+      "name": "member-bound",
+      "result": "PASS_REFUSED"
+    },
+    {
+      "name": "symlink-member",
+      "result": "PASS_REFUSED"
+    },
+    {
+      "name": "symlink-ancestor",
+      "result": "PASS_REFUSED_NO_WRITE"
+    },
+    {
+      "name": "missing-file",
+      "result": "PASS_NONMATCH"
+    },
+    {
+      "name": "unrecorded-extra",
+      "result": "PASS_NONMATCH"
+    },
+    {
+      "name": "changed-bytes",
+      "result": "PASS_NONMATCH"
+    }
+  ],
+  "scope": "Synthetic archive/path/comparison controls only; no plugin/bootstrap/runtime parity claim"
+}

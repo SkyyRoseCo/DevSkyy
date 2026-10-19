@@ -1,0 +1,33 @@
+{
+  "schema": "skyyrose.installed-snapshot-evidence-successor.v1",
+  "status": "OFFLINE_RECORDED_CODE_GAPS_REDUCED_INSTALLED_AND_RELEASE_HELD",
+  "executed_source_commit": "12d38fe82482ac5b60de18134e562afa8e8637b6",
+  "prior_accepted_packet": "481b1406b376ca302f270f17663d641d10ada04d",
+  "prior_continuation_sha256": "2ca544037de63007db74d537597a0c9a18d9a8f7d6252f92b02c3877abc7d749",
+  "evidence_index": {
+    "sha256": "a59da68170ab04eed2395d1dadb073ec61f15fa2ac59a5711700920a30d745f7",
+    "bytes": 10902
+  },
+  "recovered": {
+    "previously_missing_plugins": 2,
+    "exact_recorded_plugin_files": 28,
+    "exact_historical_ajax_guard_bytes": 1566
+  },
+  "remaining_unavailable_components": [
+    "commercegurus-commercekit/commercegurus-commercekit.php",
+    "elementor-pro/elementor-pro.php",
+    "layout-grid/index.php",
+    "woo-update-manager/woo-update-manager.php",
+    "big-sky/big-sky.php"
+  ],
+  "authentication": "NOT_APPLICABLE_OFFLINE_SEARCH_AND_COMPARISON; no fresh live authentication",
+  "evidence_scope": "Dated authenticated snapshot comparisons; candidates never executed; no installed/fullcomponent/configuration/runtime/coexistence/activation equivalence claim",
+  "source_scope": "New audit/control tooling and metadata only; no prior accepted source or evidence modified",
+  "frozen_zip_sha256": "d9f24f5e35728ab693675727c7da009406979f468aa7dd54a09122e6ccd84dd6",
+  "owner_decision_needed_now": false,
+  "holds": [
+    "Live conversion/sync/config/credentials/orders/payments/backup/restore",
+    "Push/merge/deploy/activation/publication/cutover",
+    "Paid/provider/media generation/GLB promotion"
+  ]
+}
