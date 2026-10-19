@@ -7,6 +7,8 @@ import shutil
 import subprocess
 import sys
 import test_gate4_populated as g4
+from gate4_gateway_selection import validate as validate_gateway_selection
+from gate4_gateway_selection import controls as gateway_selection_controls
 from test_gate4_populated import (
     ROOT,
     PRIVATE,
@@ -47,12 +49,30 @@ REPORT.update(
             "Native PHP existing-order fakegateway only; no HTTP/browser/session or real gateway qualification",
             "Stock render/StoreAPI/fakeprocessor and bare-handler probe remain separate",
             "No populated synchronization lifecycle rerun or prior packet reclassification",
+            "Three named notice refusals admit only attributed native gateway/date saves; customer-state writes retained, not physical NOOP",
         ],
     }
 )
 HPOS = "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore"
 if not __debug__:
     raise RuntimeError("Assertions required")
+ORIGINAL_NATIVE = g4.native
+NAMED_REFUSALS = {"v1-missing-id", "v1-ambiguous-sku", "active-journal"}
+
+
+def observed_native(mode, *args, expected=(0,), payment=False):
+    if payment and mode == "pay" and args[-1] in NAMED_REFUSALS:
+        return wp(
+            "eval-file",
+            str(ROOT / "tools/v2-runtime/gate4-hpos-v1-pay-observer.php"),
+            mode,
+            *map(str, args),
+            expected=expected,
+        ).returncode
+    return ORIGINAL_NATIVE(mode, *args, expected=expected, payment=payment)
+
+
+g4.native = observed_native
 
 
 def assert_hpos(snapshot):
@@ -132,10 +152,34 @@ def pay(role, outcome, label, kind="valid"):
     assert same(historical_payload(before), historical_payload(after)), label
     assert set(before["orders"]) == set(after["orders"])
     for other in before["orders"]:
-        if other != role or not has(rows, "processor_entered"):
+        if other != role or (not has(rows, "processor_entered") and label not in NAMED_REFUSALS):
             assert same_order(before["orders"][other], after["orders"][other]), label
     if not has(rows, "processor_entered"):
         assert same(before["products"], after["products"]), label
+    if label in NAMED_REFUSALS:
+        audit_file = PRIVATE / ("gateway-selection-" + label + ".json")
+        audit = json.loads(audit_file.read_text())
+        receipt = json.loads((PRIVATE / ("request-" + label + ".json")).read_text())
+        arguments = (
+            audit,
+            before,
+            after,
+            role,
+            label,
+            rows,
+            receipt,
+            PRIVATE / "wordpress",
+            json.loads((PRIVATE / "site-at-start.json").read_text()),
+            RUN,
+        )
+        validated = validate_gateway_selection(*arguments)
+        controls = gateway_selection_controls(*arguments)
+        record(
+            "ATTRIBUTED_NATIVE_GATEWAY_SAVE_BEFORE_REFUSAL_" + label,
+            attribution=validated,
+            controls=controls,
+            audit_receipt={"path": str(audit_file.relative_to(ROOT)), **pin(audit_file)},
+        )
     return before, after, rows
 
 
@@ -467,6 +511,8 @@ def main():
         prior_index,
         Path(base.__file__),
         ROOT / "tools/v2-runtime/gate4-hpos-v1-proof.php",
+        ROOT / "tools/v2-runtime/gate4-hpos-v1-pay-observer.php",
+        ROOT / "tools/v2-runtime/gate4_gateway_selection.py",
         ROOT / "tools/v2-runtime/gate4-populated-fixture.php",
         ROOT / "tools/v2-runtime/gate4_refund_attribution.py",
         ROOT / "tools/v2-runtime/variation-migration-core-populated.php",
