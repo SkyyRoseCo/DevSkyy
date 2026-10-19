@@ -18,6 +18,13 @@ const HTTP = 'http://127.0.0.1:18484';
 const HTTPS = 'https://127.0.0.1:18486';
 const MARKER = 'SYNTHETIC_PRIVATE_CAPABILITY_MARKER';
 function pin(file) { const bytes = fs.readFileSync(file); return { sha256: crypto.createHash('sha256').update(bytes).digest('hex'), bytes: bytes.length }; }
+function sourceClosure() {
+  return Object.fromEntries([
+    path.join(__dirname, 'capability.cjs'), path.join(__dirname, 'pipe.cjs'), path.join(__dirname, 'test-controls.cjs'),
+    path.join(ROOT, 'tools/v2-runtime/phase3b-browser/node_modules/playwright-core/types/protocol.d.ts'),
+    path.join(ROOT, 'tasks/release-gates-20261019/gate4-private-collector/PLAN.md'),
+  ].map(file => [path.relative(ROOT, file), pin(file)]));
+}
 function save(file, value) { fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n', { flag: 'wx', mode: 0o600 }); }
 function checked(exe, args, options = {}) { const result = spawnSync(exe, args, { ...options, maxBuffer: 1024 * 1024, timeout: 10000 }); assert.equal(result.status, 0, exe + ' failed'); return result.stdout; }
 async function denial() {
@@ -57,6 +64,8 @@ async function worker(folder, spki) {
   let child; let transport; let exited = false; let exitSignal;
   const attempt = async (label, method, params, session) => { try { const value = await transport.send(method, params, session); operations.push({ label, method, session, status: 'METHOD_SUCCEEDED', value }); return value; } catch (error) { operations.push({ label, method, session, status: 'UNKNOWN_METHOD_FAILED', error: error.message }); return null; } };
   try {
+    result.source_start = sourceClosure();
+    assert.deepEqual(result.source_start, JSON.parse(fs.readFileSync(path.join(folder, 'source-at-parent-start.json'))));
     result.denial = await denial();
     assert.equal(pin(process.execPath).sha256, '18e387c90ab8a8400183e8bdd396376e1e875b91b4c874b894dcade7b35bf572');
     assert.equal(pin(CHROME).sha256, 'a0bfe7b4da4787b66058477d696cd1d09065d25f06a548947722b9af77ee8282');
@@ -70,17 +79,26 @@ async function worker(folder, spki) {
     result.version = await transport.send('Browser.getVersion');
     result.startup_targets = await transport.send('Target.getTargets');
     assert.equal(result.startup_targets.targetInfos.length, 0, 'Unexpected startup target');
-    const sessions = new Map(); const pendingAttach = new Set();
+    const sessions = new Map(); const targetOwners = new Map(); const pendingAttach = new Set(); let attachmentFailure = null;
     transport.on('event', event => {
       if (event.method !== 'Target.attachedToTarget') return;
       const info = event.params; const row = { session: info.sessionId, parentSession: event.sessionId || null, info: info.targetInfo, paused: info.waitingForDebugger, attachedAtSequence: journal.length, enabled: false, resumed: false }; targets.push(row); sessions.set(info.sessionId, row);
+      if (targetOwners.has(info.targetInfo.targetId)) { row.verdict = 'UNKNOWN_DUPLICATE_TARGET_OWNERSHIP_NOT_RESUMED'; attachmentFailure ||= Error('Duplicate target ownership'); result.attachment_error = attachmentFailure.message; return; }
+      targetOwners.set(info.targetInfo.targetId, info.sessionId);
       const task = (async () => {
-        row.recursive = Boolean(await attempt('recursive-autoattach', 'Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true }, info.sessionId));
-        row.network = Boolean(await attempt('before-resume-network', 'Network.enable', {}, info.sessionId));
-        row.runtime = Boolean(await attempt('before-resume-runtime', 'Runtime.enable', {}, info.sessionId));
-        row.enabled = row.network && row.runtime;
+        const filter = [{ type: 'browser', exclude: true }, { type: 'tab', exclude: true }, { type: 'service_worker', exclude: true }, { type: 'shared_worker', exclude: true }, {}];
+        row.recursive = Boolean(await attempt('recursive-autoattach', 'Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true, filter }, info.sessionId));
+        const [runtime, network] = await Promise.all([
+          attempt('before-resume-runtime', 'Runtime.enable', {}, info.sessionId),
+          attempt('before-resume-network', 'Network.enable', {}, info.sessionId),
+        ]);
+        row.network = network !== null; row.runtime = runtime !== null;
+        row.page = !['page', 'iframe'].includes(info.targetInfo.type) || Boolean(await attempt('before-resume-page', 'Page.enable', {}, info.sessionId));
+        row.enabled = row.recursive && row.network && row.runtime && row.page;
+        if (!row.enabled) { row.verdict = 'UNKNOWN_REQUIRED_SETUP_FAILED_NOT_RESUMED'; throw Error('Required target setup failed: ' + info.targetInfo.type); }
         row.resumeResult = await attempt('explicit-resume', 'Runtime.runIfWaitingForDebugger', {}, info.sessionId); row.resumed = row.resumeResult !== null; row.resumedAtSequence = journal.length;
-      })(); pendingAttach.add(task); task.finally(() => pendingAttach.delete(task)).catch(error => { result.attachment_error = error.message; });
+        if (!row.resumed) throw Error('Target resume failed');
+      })(); pendingAttach.add(task); task.finally(() => pendingAttach.delete(task)).catch(error => { attachmentFailure ||= error; result.attachment_error = error.message; });
     });
     await transport.send('Target.setDiscoverTargets', { discover: true });
     await transport.send('Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true });
@@ -88,12 +106,13 @@ async function worker(folder, spki) {
     result.cookies_before = await transport.send('Storage.getCookies', { browserContextId: context.browserContextId }); assert.equal(result.cookies_before.cookies.length, 0);
     const created = await transport.send('Target.createTarget', { url: 'about:blank', browserContextId: context.browserContextId });
     const deadline = Date.now() + 30000;
-    while (!targets.some(t => t.info.targetId === created.targetId && t.resumed)) { if (transport.failure) throw transport.failure; assert.ok(Date.now() < deadline, 'Initial target attachment deadline'); await new Promise(resolve => setTimeout(resolve, 20)); }
+    while (!targets.some(t => t.info.targetId === created.targetId && t.resumed)) { if (transport.failure) throw transport.failure; if (attachmentFailure) throw attachmentFailure; assert.ok(Date.now() < deadline, 'Initial target attachment deadline'); await new Promise(resolve => setTimeout(resolve, 20)); }
     const main = targets.find(t => t.info.targetId === created.targetId);
     await transport.send('Page.enable', {}, main.session);
     result.navigation = await transport.send('Page.navigate', { url: HTTP + '/probe' }, main.session);
     while (true) {
       if (transport.failure) throw transport.failure;
+      if (attachmentFailure) throw attachmentFailure;
       const state = await transport.send('Runtime.evaluate', { expression: 'JSON.stringify(window.fixtureState||{})', returnByValue: true }, main.session);
       const value = JSON.parse(state.result.value || '{}'); if (value.error) throw Error(value.error); if (value.ready) break;
       assert.ok(Date.now() < deadline, 'Fixture ready deadline'); await new Promise(resolve => setTimeout(resolve, 50));
@@ -118,7 +137,10 @@ async function worker(folder, spki) {
     }
     result.final_targets = await transport.send('Target.getTargets');
     result.target_types = [...new Set(targets.map(t => t.info.type))].sort();
-    result.expected_target_types = ['page', 'iframe', 'worker', 'shared_worker', 'service_worker'];
+    result.expected_target_types = ['page', 'worker', 'shared_worker', 'service_worker'];
+    result.frame_observations = journal.filter(event => event.kind === 'received' && event.message?.method === 'Page.frameNavigated').map(event => ({ session: event.message.sessionId, frame: event.message.params.frame }));
+    result.cross_origin_frame = result.frame_observations.some(event => event.frame.url === HTTPS + '/frame') ? 'OBSERVED_FRAME_NAVIGATION_ONLY_STORAGE_EXECUTION_UNQUALIFIED' : 'UNKNOWN_FRAME_NOT_OBSERVED';
+    result.out_of_process_frame = result.target_types.includes('iframe') ? 'OBSERVED_TARGET_ONLY_NOT_FULL_QUALIFICATION' : 'UNKNOWN_NOT_EXERCISED';
     result.target_coverage = result.expected_target_types.every(t => result.target_types.includes(t)) && targets.every(t => t.paused && t.recursive && t.enabled && t.resumed) ? 'OBSERVED_REQUIRED_TYPES_EARLY_ENABLED' : 'UNKNOWN_UNSUPPORTED_OR_MISSING_TARGET';
     result.status = 'PASS_PRIVATE_CAPABILITY_EXECUTION_ONLY';
     assert.equal(transport.failure, null);
@@ -128,10 +150,12 @@ async function worker(folder, spki) {
     result.cleanup_errors = [];
     if (transport && !exited) { try { transport.expectClose(); await transport.send('Browser.close'); } catch (error) { result.cleanup_errors.push(error.message); } }
     const end = Date.now() + 5000; while (child && !exited && Date.now() < end) await new Promise(resolve => setTimeout(resolve, 25));
-    if (child && !exited) { child.kill('SIGKILL'); result.cleanup_errors.push('Owned browser required SIGKILL'); }
+    if (child && !exited) { try { child.kill('SIGKILL'); } catch (error) { result.cleanup_errors.push(error.message); } result.cleanup_errors.push('Owned browser required SIGKILL'); const killedEnd = Date.now() + 3000; while (!exited && Date.now() < killedEnd) await new Promise(resolve => setTimeout(resolve, 25)); }
     result.browser_exit = exitSignal || null; result.owned_browser_stopped = !child || exited;
     if (!result.owned_browser_stopped || result.cleanup_errors.length) { result.status = 'FAIL_CAPABILITY_CLEANUP'; process.exitCode = 1; }
-    if (transport?.failure) { result.status = 'FAIL_CAPABILITY_EXECUTION'; result.transport_failure = transport.failure.message; process.exitCode = 1; }
+    if (transport?.failure) { result.status = result.cleanup_errors.length ? 'FAIL_CAPABILITY_CLEANUP' : 'FAIL_CAPABILITY_EXECUTION'; result.transport_failure = transport.failure.message; process.exitCode = 1; }
+    try { result.source_end = sourceClosure(); assert.deepEqual(result.source_end, result.source_start); } catch (error) { result.status = 'FAIL_SOURCE_IDENTITY'; result.source_identity_failure = error.message; process.exitCode = 1; }
+    result.cleanup_status = result.owned_browser_stopped && !result.cleanup_errors.length ? 'OBSERVED_LEADER_STOPPED_PARENT_GROUP_VERIFICATION_REQUIRED' : 'FAIL_CLEANUP';
     save(path.join(folder, 'raw-capabilities.json'), raw); save(path.join(folder, 'worker-results.json'), result);
   }
 }
@@ -175,7 +199,9 @@ async function main(control = null) {
   const ledger = []; const servers = []; const sockets = new Set(); let child;
   try {
     if (control === 'synthetic-preflight-failure') throw Error('Synthetic certificate preflight failure');
-    summary.source = { 'capability.cjs': pin(__filename), 'pipe.cjs': pin(path.join(__dirname, 'pipe.cjs')) };
+    summary.source = sourceClosure();
+    summary.source_commit = checked('/usr/bin/git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8' }).trim();
+    save(path.join(folder, 'source-at-parent-start.json'), summary.source);
     checked('/usr/bin/openssl', ['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-keyout', key, '-out', cert, '-days', '1', '-subj', '/CN=localhost', '-addext', 'subjectAltName=IP:127.0.0.1,DNS:localhost']); fs.chmodSync(key, 0o600);
     const pub = checked('/usr/bin/openssl', ['x509', '-in', cert, '-pubkey', '-noout']); const der = checked('/usr/bin/openssl', ['pkey', '-pubin', '-outform', 'DER'], { input: pub }); const spki = crypto.createHash('sha256').update(der).digest('base64');
     summary.certificate = pin(cert); summary.certificate_spki = spki;
@@ -195,7 +221,8 @@ async function main(control = null) {
   } catch (error) { summary.status = 'FAIL_PRIVATE_CAPABILITY'; summary.failure = error.message; process.exitCode = 1; }
   finally {
     summary.group_cleanup = child ? await cleanGroup(child, folder) : { stopped: true, errors: [], observations: [] };
-    if (!summary.group_cleanup.stopped || summary.group_cleanup.errors.length) { summary.status = 'FAIL_PRIVATE_CAPABILITY_CLEANUP'; process.exitCode = 1; }
+    if (summary.source) { try { summary.source_end = sourceClosure(); assert.deepEqual(summary.source_end, summary.source); if (summary.worker) { assert.deepEqual(summary.worker.source_start, summary.source); assert.deepEqual(summary.worker.source_end, summary.source); } } catch (error) { summary.status = 'FAIL_SOURCE_IDENTITY'; summary.source_identity_failure = error.message; process.exitCode = 1; } }
+    if (!summary.group_cleanup.stopped || summary.group_cleanup.errors.length || summary.worker?.cleanup_status === 'FAIL_CLEANUP') { summary.status = 'FAIL_PRIVATE_CAPABILITY_CLEANUP'; process.exitCode = 1; }
     for (const socket of sockets) socket.destroy();
     await Promise.all(servers.map(server => new Promise(resolve => server.listening ? server.close(resolve) : resolve())));
     save(path.join(folder, 'server-requests.json'), ledger); save(path.join(folder, 'results.json'), summary); console.log(JSON.stringify({ status: summary.status, folder }));
