@@ -1,5 +1,7 @@
 <?php
 /** New run-owned synthetic fixture; no browser, provider or installed-runtime claim. */
+// WP-CLI eval-file executes in a method scope; helpers must share the exact run context.
+global $root, $run, $private, $mode, $state_file, $case;
 $root = dirname( __DIR__, 2 );
 $run = getenv( 'SR_POPULATED_RUN' );
 if ( ! is_string( $run ) || ! preg_match( '/^[0-9]{19}$/D', $run ) ) { throw new RuntimeException( 'Exact run identity required.' ); }
@@ -184,4 +186,4 @@ try {
         $parent = wc_get_product( $case['products']['main'] ); $child = wc_get_product( $parent->get_children()[0] ); $promise = skyyrose2_preorder_snapshot( skyyrose2_preorder_config( $parent->get_id(), $child->get_id(), array( 'attribute_size' => '2T' ) ) ); g4p_new_order( 'newer-' . $suffix, $child, $promise ); $old = g4p_owned( $case['orders']['v2_pending'] ); $old->set_customer_note( 'Synthetic newer update ' . $suffix ); $old->update_meta_data( '_g4_newer', $suffix ); $old->save();
     } elseif ( $mode !== 'inspect' ) { throw new RuntimeException( 'Unknown bounded fixture operation.' ); }
     echo 'SR_G4_POP=' . g4p_json( array( 'ok' => true, 'snapshot' => g4p_snapshot(), 'case' => $case ) );
-} catch ( Throwable $error ) { echo 'SR_G4_POP=' . g4p_json( array( 'ok' => false, 'type' => get_class( $error ), 'error' => $error->getMessage() ) ); exit( 3 ); }
+} catch ( Throwable $error ) { file_put_contents( $private . '/failure-' . $mode . '-' . getmypid() . '.json', g4p_json( array( 'run' => $run, 'mode' => $mode, 'type' => get_class( $error ), 'error' => $error->getMessage(), 'trace' => $error->getTraceAsString() ) ) ); echo 'SR_G4_POP=' . g4p_json( array( 'ok' => false, 'type' => get_class( $error ), 'error' => $error->getMessage() ) ); exit( 3 ); }
