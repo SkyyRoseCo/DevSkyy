@@ -60,7 +60,7 @@ async function worker(folder, spki) {
     result.denial = await denial();
     assert.equal(pin(process.execPath).sha256, '18e387c90ab8a8400183e8bdd396376e1e875b91b4c874b894dcade7b35bf572');
     assert.equal(pin(CHROME).sha256, 'a0bfe7b4da4787b66058477d696cd1d09065d25f06a548947722b9af77ee8282');
-    const args = ['--headless', '--remote-debugging-pipe', '--no-startup-window', '--no-first-run', '--disable-background-networking', '--disable-component-update', '--disable-sync', '--disable-default-apps', '--no-default-browser-check', '--disable-popup-blocking', '--user-data-dir=' + path.join(folder, 'profile'), '--ignore-certificate-errors-spki-list=' + spki];
+    const args = ['--headless', '--no-sandbox', '--remote-debugging-pipe', '--no-startup-window', '--no-first-run', '--disable-background-networking', '--disable-component-update', '--disable-sync', '--disable-default-apps', '--no-default-browser-check', '--disable-popup-blocking', '--user-data-dir=' + path.join(folder, 'profile'), '--ignore-certificate-errors-spki-list=' + spki];
     result.launch = { executable: CHROME, args, node: { path: process.execPath, version: process.version, ...pin(process.execPath) }, browser_pin: pin(CHROME) };
     const log = fs.openSync(path.join(folder, 'browser-stderr.txt'), 'wx', 0o600);
     child = spawn(CHROME, args, { stdio: ['ignore', 'ignore', log, 'pipe', 'pipe'] }); fs.closeSync(log);
@@ -88,11 +88,12 @@ async function worker(folder, spki) {
     result.cookies_before = await transport.send('Storage.getCookies', { browserContextId: context.browserContextId }); assert.equal(result.cookies_before.cookies.length, 0);
     const created = await transport.send('Target.createTarget', { url: 'about:blank', browserContextId: context.browserContextId });
     const deadline = Date.now() + 30000;
-    while (!targets.some(t => t.info.targetId === created.targetId && t.resumed)) { assert.ok(Date.now() < deadline, 'Initial target attachment deadline'); await new Promise(resolve => setTimeout(resolve, 20)); }
+    while (!targets.some(t => t.info.targetId === created.targetId && t.resumed)) { if (transport.failure) throw transport.failure; assert.ok(Date.now() < deadline, 'Initial target attachment deadline'); await new Promise(resolve => setTimeout(resolve, 20)); }
     const main = targets.find(t => t.info.targetId === created.targetId);
     await transport.send('Page.enable', {}, main.session);
     result.navigation = await transport.send('Page.navigate', { url: HTTP + '/probe' }, main.session);
     while (true) {
+      if (transport.failure) throw transport.failure;
       const state = await transport.send('Runtime.evaluate', { expression: 'JSON.stringify(window.fixtureState||{})', returnByValue: true }, main.session);
       const value = JSON.parse(state.result.value || '{}'); if (value.error) throw Error(value.error); if (value.ready) break;
       assert.ok(Date.now() < deadline, 'Fixture ready deadline'); await new Promise(resolve => setTimeout(resolve, 50));
