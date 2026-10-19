@@ -1,0 +1,22 @@
+{
+  "schema": "skyyrose.offline-installed-astra-additive-acceptance.v1",
+  "status": "ACCEPTED_BOUNDED_OFFLINE_ADDENDUM",
+  "reviewer_thread": "01a0f769-1e1a-76e1-aa99-1c4bd2dc6149",
+  "evidence": "Direct received review message in Integration chat; offline file/hash verification, no live action",
+  "accepted_manifest_sha256": "8e03c13f11b527fcc2c62c954693c80cbe450132ddd94627e00dab3037dd70df",
+  "source_commit": "2bcfe90d28a536fa299a6463a0938b44cd3660b2",
+  "source_sha256": "443cdca9188ab6a16687506f8bcf57ec2453412e7afb1b6762d946efa218e2f3",
+  "verified_manifest_files": 3,
+  "verified_evidence_index_entries": 12,
+  "mismatches": 0,
+  "recovered_body_bytes": 2181,
+  "recovered_body_mode": "0600",
+  "recovered_body_sha256": "afc2f6d8a4ae6280de28b6c1306564cc86053acc713c52e5ab0b5717b3ef58f2",
+  "modified_copy_controls_read": 3,
+  "next_recovery_disposition_separate_sha256": "16682f54967b85b394d7a232205125113eb2a0052b17694e1229edbb07858afd",
+  "limits": [
+    "Source recovery only, PHP neverexecuted",
+    "Fiveplugin/service/config/runtime/restoregaps remain",
+    "No liveconversion/deployment/releaseauthority"
+  ]
+}
