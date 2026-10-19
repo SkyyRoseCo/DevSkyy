@@ -30,7 +30,25 @@ function g4p_immutable( $order ) {
     $items = array(); foreach ( $order->get_items( array( 'line_item', 'fee', 'shipping', 'tax', 'coupon' ) ) as $item ) { $data = $item->get_data(); unset( $data['meta_data'] ); $data['promise'] = $item->get_meta( '_skyyrose_preorder_snapshot', true ); $data['promise_rows'] = array_values( array_map( static fn( $meta ) => g4p_normalize( $meta->get_data()['value'] ), array_filter( $item->get_meta_data(), static fn( $meta ) => $meta->get_data()['key'] === '_skyyrose_preorder_snapshot' ) ) ); $items[ $item->get_id() ] = g4p_normalize( $data ); }
     return array( 'id' => $order->get_id(), 'parent_id' => $order->get_parent_id(), 'created' => $order->get_date_created()->getTimestamp(), 'currency' => $order->get_currency(), 'total' => $order->get_total(), 'tax' => $order->get_total_tax(), 'items' => $items );
 }
-function g4p_order_data( $order ) { $items = array(); foreach ( $order->get_items( array( 'line_item', 'fee', 'shipping', 'tax', 'coupon' ) ) as $item ) { $items[ $item->get_id() ] = g4p_normalize( $item->get_data() ); } return array( 'items' => $items, 'data' => g4p_normalize( $order->get_data() ), 'stock_reduced' => $order instanceof WC_Order_Refund ? null : (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() ), 'immutable' => g4p_immutable( $order ) ); }
+function g4p_order_data( $order ) {
+    global $wpdb;
+    $items = array(); foreach ( $order->get_items( array( 'line_item', 'fee', 'shipping', 'tax', 'coupon' ) ) as $item ) { $items[ $item->get_id() ] = g4p_normalize( $item->get_data() ); }
+    $data = $order->get_data(); $indexes = array(); $expected_indexes = array();
+    if ( $order instanceof WC_Order ) {
+        $hpos = is_a( $order->get_data_store()->get_current_class_name(), Automattic\WooCommerce\Internal\DataStores\Orders\OrdersTableDataStore::class, true );
+        $table = $hpos ? $wpdb->prefix . 'wc_orders_meta' : $wpdb->postmeta; $id_column = $hpos ? 'order_id' : 'post_id'; $meta_id = $hpos ? 'id' : 'meta_id';
+        foreach ( array( 'billing', 'shipping' ) as $address_type ) {
+            $key = '_' . $address_type . '_address_index';
+            // Native construction order and whitespace must precede normalized JSON sorting.
+            $expected_indexes[ $key ] = implode( ' ', $order->get_address( $address_type ) );
+            $indexes[ $key ] = $wpdb->get_col( $wpdb->prepare( "SELECT meta_value FROM {$table} WHERE {$id_column}=%d AND meta_key=%s ORDER BY {$meta_id}", $order->get_id(), $key ) );
+            if ( $wpdb->last_error || $indexes[ $key ] !== array( $expected_indexes[ $key ] ) ) { throw new RuntimeException( 'Native-created fixture address index value/type/multiplicity mismatch.' ); }
+            $exposed = array_values( array_filter( $data['meta_data'], static fn( $meta ) => $meta->get_data()['key'] === $key ) );
+            if ( count( $exposed ) !== ( $hpos ? 1 : 0 ) || ( $exposed && $exposed[0]->get_data()['value'] !== $expected_indexes[ $key ] ) ) { throw new RuntimeException( 'Native representation address-index exposure changed.' ); }
+        }
+    }
+    return array( 'items' => $items, 'data' => g4p_normalize( $data ), 'address_indexes' => $indexes, 'address_index_expectations' => $expected_indexes, 'stock_reduced' => $order instanceof WC_Order_Refund ? null : (bool) $order->get_data_store()->get_stock_reduced( $order->get_id() ), 'immutable' => g4p_immutable( $order ) );
+}
 function g4p_snapshot() {
     global $case; $result = array( 'orders' => array(), 'products' => array(), 'pending' => g4p_sync()->get_current_orders_pending_sync_count(), 'hpos' => Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled(), 'authority' => get_option( 'woocommerce_custom_orders_table_enabled' ), 'sync_option' => get_option( 'woocommerce_custom_orders_table_data_sync_enabled' ), 'runtime' => array( 'php' => PHP_VERSION, 'wordpress' => get_bloginfo( 'version' ), 'woocommerce' => WC_VERSION, 'database' => $GLOBALS['wpdb']->get_var( 'SELECT VERSION()' ), 'memory_limit' => ini_get( 'memory_limit' ), 'active_plugins' => get_option( 'active_plugins' ), 'datastore' => WC_Data_Store::load( 'order' )->get_current_class_name() ) );
     foreach ( $case['orders'] as $role => $id ) { if ( isset( $case['deleted'][ $id ] ) ) { continue; } $result['orders'][ $role ] = g4p_order_data( g4p_owned( $id ) ); }
@@ -74,15 +92,17 @@ function g4p_batch_preflight( $batch ) {
     foreach ( $batch as $id ) {
         if ( isset( $case['deleted'][ $id ] ) ) { if ( $case['deleted'][ $id ]['run'] !== $run ) { throw new RuntimeException( 'Foreign tombstone refused.' ); } $order = null; }
         else { $order = g4p_owned( $id ); }
+        $expected_type = $order ? $order->get_type() : $case['deleted'][ $id ]['type'];
+        if ( ! in_array( $expected_type, array( 'shop_order', 'shop_order_refund' ), true ) ) { throw new RuntimeException( 'Owned source order type required.' ); }
         if ( $hpos ) {
             $type = $wpdb->get_var( $wpdb->prepare( "SELECT post_type FROM {$wpdb->posts} WHERE ID=%d", $id ) ); if ( $wpdb->last_error ) { throw new RuntimeException( 'Unreadable CPT destination refused.' ); }
             if ( $type && $type !== 'shop_order_placehold' ) {
                 $owners = $wpdb->get_col( $wpdb->prepare( "SELECT meta_value FROM {$wpdb->postmeta} WHERE post_id=%d AND meta_key='_g4_owner'", $id ) );
-                if ( ! in_array( $type, array( 'shop_order', 'shop_order_refund' ), true ) || $owners !== array( $run ) ) { throw new RuntimeException( 'Caller collision guard refused foreign CPT destination.' ); }
+                if ( $type !== $expected_type || $owners !== array( $run ) || $wpdb->last_error ) { throw new RuntimeException( 'Caller collision guard refused foreign CPT destination.' ); }
             }
         } else {
             $exists = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM {$wpdb->prefix}wc_orders WHERE id=%d", $id ) ); if ( $wpdb->last_error ) { throw new RuntimeException( 'Unreadable HPOS destination refused.' ); }
-            if ( $exists ) { $owners = $wpdb->get_col( $wpdb->prepare( "SELECT meta_value FROM {$wpdb->prefix}wc_orders_meta WHERE order_id=%d AND meta_key='_g4_owner'", $id ) ); if ( $owners !== array( $run ) ) { throw new RuntimeException( 'Caller collision guard refused foreign HPOS destination.' ); } }
+            if ( $exists ) { $destination_type = $wpdb->get_var( $wpdb->prepare( "SELECT type FROM {$wpdb->prefix}wc_orders WHERE id=%d", $id ) ); if ( $wpdb->last_error || $destination_type !== $expected_type ) { throw new RuntimeException( 'Caller collision guard refused wrong HPOS destination type.' ); } $owners = $wpdb->get_col( $wpdb->prepare( "SELECT meta_value FROM {$wpdb->prefix}wc_orders_meta WHERE order_id=%d AND meta_key='_g4_owner'", $id ) ); if ( $owners !== array( $run ) || $wpdb->last_error ) { throw new RuntimeException( 'Caller collision guard refused foreign HPOS destination.' ); } }
         }
         if ( $order && $order->get_parent_id() && ! in_array( $order->get_parent_id(), array_values( $case['orders'] ), true ) ) { throw new RuntimeException( 'Foreign refund relationship refused.' ); }
     }
@@ -139,9 +159,10 @@ try {
         $shipping = new WC_Order_Item_Shipping(); $shipping->set_method_title( 'Synthetic shipping' ); $shipping->set_method_id( 'g4p_offline' ); $shipping->set_total( 5 ); $order->add_item( $shipping );
         $order->calculate_taxes(); $order->calculate_totals(); $order->save(); if ( (float) $order->get_total_tax() <= 0 || count( $order->get_items( 'tax' ) ) !== 1 ) { throw new RuntimeException( 'Actual native financial/tax items required.' ); }
     } elseif ( $mode === 'refund' ) {
-        if ( isset( $case['orders']['financial_refund'] ) ) { throw new RuntimeException( 'One native refund only.' ); } g4p_gateway_setup(); $order = g4p_owned( $case['orders']['v2_financial'] ); if ( ! $order->is_paid() ) { throw new RuntimeException( 'Paid financial order required.' ); } $item = current( $order->get_items() ); $taxes = $item->get_taxes(); $refund_taxes = array_map( static fn( $value ) => (float) $value / 2, $taxes['total'] );
-        $refund = wc_create_refund( array( 'order_id' => $order->get_id(), 'amount' => (float) $item->get_total() / 2 + array_sum( $refund_taxes ), 'reason' => 'Synthetic native partial refund', 'refund_payment' => true, 'restock_items' => true, 'line_items' => array( $item->get_id() => array( 'qty' => 1, 'refund_total' => (float) $item->get_total() / 2, 'refund_tax' => $refund_taxes ) ) ) );
-        if ( is_wp_error( $refund ) ) { throw new RuntimeException( 'Native refund failed.' ); } $refund->update_meta_data( '_g4_owner', $run ); $refund->update_meta_data( '_g4_role', 'financial_refund' ); foreach ( array( 'repeat', 'repeat', 'different' ) as $value ) { $refund->add_meta_data( '_g4_duplicate', $value, false ); } $refund->save(); $case['orders']['financial_refund'] = $refund->get_id(); g4p_save();
+        $refund_suffix = $args[1] ?? ''; if ( ! in_array( $refund_suffix, array( '', 'hpos' ), true ) || ( $refund_suffix === 'hpos' && ! Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) ) { throw new RuntimeException( 'Bounded native refund authority required.' ); } $refund_role = 'financial_refund' . ( $refund_suffix ? '_hpos' : '' );
+        if ( isset( $case['orders'][ $refund_role ] ) ) { throw new RuntimeException( 'One native refund only.' ); } g4p_gateway_setup(); $order = g4p_owned( $case['orders']['v2_financial'] ); if ( ! $order->is_paid() ) { throw new RuntimeException( 'Paid financial order required.' ); } $item = current( $order->get_items() ); $taxes = $item->get_taxes(); $refund_taxes = array_map( static fn( $value ) => (float) $value / 2, $taxes['total'] );
+        $refund = wc_create_refund( array( 'order_id' => $order->get_id(), 'amount' => (float) $item->get_total() / 2 + array_sum( $refund_taxes ), 'reason' => 'Synthetic native partial refund ' . $refund_suffix, 'refund_payment' => true, 'restock_items' => true, 'line_items' => array( $item->get_id() => array( 'qty' => 1, 'refund_total' => (float) $item->get_total() / 2, 'refund_tax' => $refund_taxes ) ) ) );
+        if ( is_wp_error( $refund ) ) { throw new RuntimeException( 'Native refund failed.' ); } $refund->update_meta_data( '_g4_owner', $run ); $refund->update_meta_data( '_g4_role', $refund_role ); foreach ( array( 'repeat', 'repeat', 'different' ) as $value ) { $refund->add_meta_data( '_g4_duplicate', $value, false ); } $refund->save(); $case['orders'][ $refund_role ] = $refund->get_id(); g4p_save();
     } elseif ( $mode === 'make-delete' ) {
         $suffix = $args[1] ?? ''; if ( ! preg_match( '/^[a-z0-9-]+$/D', $suffix ) ) { throw new RuntimeException( 'Owned deletion-role label required.' ); } $parent = wc_get_product( $case['products']['main'] ); $child = wc_get_product( $parent->get_children()[0] ); $promise = skyyrose2_preorder_snapshot( skyyrose2_preorder_config( $parent->get_id(), $child->get_id(), array( 'attribute_size' => '2T' ) ) ); g4p_new_order( 'delete-' . $suffix, $child, $promise );
     } elseif ( $mode === 'delete' ) {

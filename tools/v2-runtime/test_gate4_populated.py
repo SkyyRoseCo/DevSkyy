@@ -48,6 +48,8 @@ REPORT = {
         "Bare classic handler and fakegateway native stock checks are separate",
         "First-table CHECK failure is not transaction-wide rollback proof",
         "Guard-only core derivative has no inherited31-case execution acceptance",
+        "Only two source-verified native address-search index exposures are partitioned; raw values/type/multiplicity and all other metadata remain strict",
+        "Exact one-index-row requirement belongs to this native-created fixture, not arbitrary installed historical rows",
     ],
 }
 
@@ -186,7 +188,11 @@ def pay(role, outcome, label, kind="valid"):
                 "redirect",
             ]
         )
-        assert has(rows, "handler_returned") == 0 and after["orders"][role]["data"]["date_paid"]
+        paid = after["orders"][role]
+        assert has(rows, "handler_returned") == 0 and paid["data"]["date_paid"]
+        assert paid["data"]["status"] in ["processing", "completed"]
+        assert paid["data"]["transaction_id"] == "g4p-offline-" + str(paid["data"]["id"])
+        assert paid["stock_reduced"] is True
     else:
         assert has(rows, "native_payment_complete_hook") == has(rows, "redirect") == 0
         assert has(rows, "handler_returned") == 1
@@ -213,6 +219,39 @@ def canonical(value):
 
 def same(left, right):
     return canonical(left) == canonical(right)
+
+
+def semantic_orders(orders):
+    # Retain the unmodified native payload in receipts. Partition only the two
+    # source-verified native search indexes; their physical values remain checked.
+    result = json.loads(canonical(orders))
+    keys = {"_billing_address_index", "_shipping_address_index"}
+    for value in result.values():
+        expected = value["address_index_expectations"]
+        indexes = value["address_indexes"]
+        rows = value["data"]["meta_data"]
+        if "billing" in value["data"]:
+            assert set(expected) == keys and set(indexes) == keys
+            for key in keys:
+                assert type(expected[key]) is str
+                assert same(indexes[key], [expected[key]])
+                exposed = [row for row in rows if row["key"] == key]
+                assert len(exposed) <= 1
+                if exposed:
+                    assert type(exposed[0]["value"]) is str and exposed[0]["value"] == expected[key]
+        else:
+            assert not expected and not indexes
+            assert not any(row["key"] in keys for row in rows), "Refund index exemption prohibited"
+        value["data"]["meta_data"] = [row for row in rows if row["key"] not in keys]
+    return result
+
+
+def same_orders(left, right):
+    return same(semantic_orders(left), semantic_orders(right))
+
+
+def same_order(left, right):
+    return same_orders({"order": left}, {"order": right})
 
 
 def scope(exclude_order=None, exclude_items=None):
@@ -417,6 +456,90 @@ def collision_control(label):
     )
 
 
+def wrong_type_control(label, order_id):
+    hpos = next_batch()["hpos"]
+    source_table, source_field = ("wp_wc_orders", "type") if hpos else ("wp_posts", "post_type")
+    target_table, target_field = ("wp_posts", "post_type") if hpos else ("wp_wc_orders", "type")
+    native("preflight", order_id)
+    expected = (
+        sql(
+            "SELECT "
+            + source_field
+            + " FROM "
+            + source_table
+            + " WHERE "
+            + ("id" if hpos else "ID")
+            + "="
+            + str(order_id)
+            + ";"
+        )
+        .decode()
+        .strip()
+    )
+    assert expected in ["shop_order", "shop_order_refund"]
+    actual = (
+        sql("SELECT " + target_field + " FROM " + target_table + " WHERE id=" + str(order_id) + ";")
+        .decode()
+        .strip()
+    )
+    assert actual == expected
+    wrong = "shop_order_refund" if expected == "shop_order" else "shop_order"
+    before = scope()
+    assert (
+        sql(
+            "UPDATE "
+            + target_table
+            + " SET "
+            + target_field
+            + "='"
+            + wrong
+            + "' WHERE id="
+            + str(order_id)
+            + " AND "
+            + target_field
+            + "='"
+            + expected
+            + "'; SELECT ROW_COUNT();"
+        ).strip()
+        == b"1"
+    )
+    held = scope()
+    refusal = native("preflight", order_id, expected=(3,))
+    assert not refusal["ok"] and "Caller collision guard" in refusal["error"]
+    assert row_pins(held) == row_pins(scope())
+    assert (
+        sql(
+            "UPDATE "
+            + target_table
+            + " SET "
+            + target_field
+            + "='"
+            + expected
+            + "' WHERE id="
+            + str(order_id)
+            + " AND "
+            + target_field
+            + "='"
+            + wrong
+            + "'; SELECT ROW_COUNT();"
+        ).strip()
+        == b"1"
+    )
+    after = scope()
+    assert row_pins(before) == row_pins(after)
+    record(
+        "CALLER_OWNED_WRONG_TYPE_REFUSED_" + label,
+        order_id=order_id,
+        expected=expected,
+        wrong=wrong,
+        refusal=refusal,
+        before=before,
+        held=held,
+        after=after,
+        limits="Caller preflight control, not native ownership/type protection",
+    )
+
+
 def drain(label):
     batches = []
     for _ in range(100):
@@ -443,7 +566,7 @@ def equivalence(label):
     assert (
         row_pins(before) == row_pins(middle) == row_pins(after)
     ), "Representation reads wrote order data"
-    assert same(left, right), "Native cross-store semantic mismatch: " + label
+    assert same_orders(left, right), "Native cross-store semantic mismatch: " + label
     return left
 
 
@@ -710,6 +833,50 @@ def main():
         }
         native("seed")
         seed = inspect()
+        index_controls = []
+        for mutation in [
+            "changed-value",
+            "duplicate-value",
+            "missing-row",
+            "changed-public-value",
+            "duplicate-public-key",
+        ]:
+            bad = json.loads(canonical(seed["orders"]))
+            order = bad["v1_malformed"]
+            key = "_billing_address_index"
+            if mutation == "changed-value":
+                order["address_indexes"][key][0] += "changed"
+            elif mutation == "duplicate-value":
+                order["address_indexes"][key] *= 2
+            elif mutation == "missing-row":
+                order["address_indexes"][key] = []
+            elif mutation == "changed-public-value":
+                order["data"]["meta_data"].append({"key": key, "value": "changed"})
+            else:
+                order["data"]["meta_data"].extend(
+                    [{"key": key, "value": order["address_index_expectations"][key]}] * 2
+                )
+            try:
+                semantic_orders(bad)
+            except AssertionError:
+                index_controls.append(
+                    {
+                        "mutation": mutation,
+                        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD",
+                    }
+                )
+            else:
+                raise AssertionError("Address index validator accepted " + mutation)
+        semantic_orders(seed["orders"])
+        write(
+            OUT / "address-index-negative-controls.json",
+            {
+                "status": "PASS_PAYLOAD_VALIDATOR_CONTROLS",
+                "authentication": "NOT_APPLICABLE",
+                "controls": index_controls,
+                "scope": "Modified copies of actual native fresh-read payload; no new native database corruption controls",
+            },
+        )
         type_controls = []
         for mutation in ["bool-to-int", "float-to-int"]:
             native("type-control", mutation)
@@ -747,7 +914,7 @@ def main():
             ("v1_success", "bad-key", "bad-key"),
         ]:
             before, after, rows = pay(role, "success", label, kind)
-            assert has(rows, "processor_entered") == 0 and same(
+            assert has(rows, "processor_entered") == 0 and same_order(
                 before["orders"][role], after["orders"][role]
             )
             record("REQUEST_REFUSED_" + label, events=rows)
@@ -783,7 +950,7 @@ def main():
         before, after, rows = pay("v1_success", "success", "v1-duplicate")
         assert (
             has(rows, "processor_entered") == 0
-            and same(after["orders"]["v1_success"], paid)
+            and same_order(after["orders"]["v1_success"], paid)
             and same(after["products"], before["products"])
         )
         record("ACTUAL_V1_PAYMENT_DUPLICATE_NATIVE_STOCK", events=rows, paid=paid)
@@ -832,7 +999,7 @@ def main():
             before_stock=before["products"]["probe"]["stock"],
             after_stock=after["products"]["probe"]["stock"],
             paid=bool(after["orders"]["v1_probe"]["data"]["date_paid"]),
-            meaning="No native-handler stock enforcement inferred; intentionally unguarded fake processor, not real gateway behavior",
+            meaning="Fake processor bypasses only the failed-stock check and retains existing-order validation; no native-handler stock enforcement or real gateway behavior inferred",
         )
         native("financial")
         before, after, rows = pay("v2_financial", "success", "v2-financial")
@@ -847,6 +1014,27 @@ def main():
         cold("before-populated-sync")
         for direction, target in [("cpt-to-hpos", "yes"), ("hpos-to-cpt", "no")]:
             native("writers", "open")
+            if direction == "hpos-to-cpt":
+                before_refund = inspect()
+                assert before_refund["hpos"]
+                after_refund = native("refund", "hpos")["snapshot"]
+                assert (
+                    after_refund["products"]["main"]["stock"]
+                    == before_refund["products"]["main"]["stock"] + 1
+                )
+                assert (
+                    after_refund["orders"]["financial_refund_hpos"]["data"]["parent_id"]
+                    == before_refund["orders"]["v2_financial"]["data"]["id"]
+                )
+                assert same(
+                    before_refund["orders"]["v2_financial"]["immutable"],
+                    after_refund["orders"]["v2_financial"]["immutable"],
+                )
+                assert (
+                    after_refund["orders"]["v2_financial"]["data"]["transaction_id"]
+                    == before_refund["orders"]["v2_financial"]["data"]["transaction_id"]
+                )
+                record("ACTUAL_HPOS_ORIGIN_NATIVE_PARTIAL_REFUND_RESTOCK", snapshot=after_refund)
 
             for suffix in ["initial-a", "initial-b", "initial-c"]:
                 native("newer", direction + "-" + suffix)
@@ -856,7 +1044,7 @@ def main():
             before_first = inspect()
             first = batch()
             after_first = inspect()
-            assert same(before_first["orders"], after_first["orders"]) and same(
+            assert same_orders(before_first["orders"], after_first["orders"]) and same(
                 before_first["products"], after_first["products"]
             ), "First native batch changed authoritative business invariants"
             remaining = next_batch()
@@ -864,11 +1052,12 @@ def main():
                 remaining["pending"] > 0 and remaining["batch"]
             ), "Interruption needs real work remaining"
             record("INTERRUPTED_BETWEEN_BATCHES_" + direction, first=first, remaining=remaining)
+            wrong_type_control(direction, int(first["batch"][0]))
             time.sleep(1.1)
             native("newer", direction + "-paused")
             newer = inspect()
             collision_control(direction)
-            assert same(newer["orders"], inspect()["orders"]) and same(
+            assert same_orders(newer["orders"], inspect()["orders"]) and same(
                 newer["products"], inspect()["products"]
             )
             if direction == "cpt-to-hpos":
@@ -904,14 +1093,14 @@ def main():
                 )
             drain(direction)
             surviving = inspect()
-            assert same(newer["orders"], surviving["orders"]) and same(
+            assert same_orders(newer["orders"], surviving["orders"]) and same(
                 newer["products"], surviving["products"]
             ), "Synchronization changed authoritative business invariants"
             equivalence(direction)
             native("make-delete", direction)
             expected_delete = inspect()
             drain(direction + "-pre-delete")
-            assert same(expected_delete["orders"], inspect()["orders"]) and same(
+            assert same_orders(expected_delete["orders"], inspect()["orders"]) and same(
                 expected_delete["products"], inspect()["products"]
             )
             delete_role = "delete-" + direction
@@ -932,7 +1121,7 @@ def main():
             expected_delete["orders"].pop(delete_role)
             drain(direction + "-native-delete")
             verify_deleted(direction, delete_id, item_ids, unrelated_before)
-            assert same(expected_delete["orders"], inspect()["orders"]) and same(
+            assert same_orders(expected_delete["orders"], inspect()["orders"]) and same(
                 expected_delete["products"], inspect()["products"]
             )
             equivalence(direction + "-after-delete")
@@ -952,7 +1141,7 @@ def main():
             assert not switched["refused"] and switched["authority"] == target
             fresh = inspect()
             assert fresh["hpos"] == (target == "yes")
-            assert same(current["orders"], fresh["orders"]) and same(
+            assert same_orders(current["orders"], fresh["orders"]) and same(
                 current["products"], fresh["products"]
             ), "Authority switch/rollback changed payments/history/refunds/items/stock"
 
@@ -977,7 +1166,11 @@ def main():
         REPORT["failure"] = {"type": type(error).__name__, "message": str(error)[:1500]}
         raise
     finally:
-        cleanup.extend(cleanup_owned())
+        service_errors = cleanup_owned()
+        REPORT["service_cleanup_errors"] = service_errors
+        REPORT["owned_services_stopped"] = not service_errors
+        cleanup.extend(service_errors)
+        REPORT["protected_originals_unchanged"] = False
         try:
             assert protected == {name: base.inventory(ORIGINAL / name) for name in protected}
             assert original_pins == base.inventory(original_cold)
@@ -985,7 +1178,6 @@ def main():
         except BaseException as error:
             cleanup.append({"step": "protected-inventories", "error": type(error).__name__})
         REPORT["cleanup_errors"] = cleanup
-        REPORT["owned_services_stopped"] = not cleanup
         REPORT["status"] = "FAIL_CLEANUP" if cleanup else "FAIL_EXECUTION"
         if complete and not cleanup:
             REPORT["status"] = (

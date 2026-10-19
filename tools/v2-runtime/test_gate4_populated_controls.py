@@ -24,7 +24,7 @@ def functions(*names):
     )
 
 
-def child(output):
+def child(output, kind="service-failure"):
     path = Path(output)
     path.mkdir()
     calls = []
@@ -56,12 +56,16 @@ def child(output):
 
     def inventory(target):
         calls.append(["inventory", str(target)])
+        if kind == "inventory-failure":
+            raise RuntimeError("controlled inventory failure")
         return {"preserved": True}
 
     data = {"status": "INCOMPLETE"}
     namespace = {
         "base": SimpleNamespace(
-            PROCESSES=[Process(1, True), Process(2, False)], stop=stop, inventory=inventory
+            PROCESSES=[Process(1, kind == "service-failure"), Process(2, False)],
+            stop=stop,
+            inventory=inventory,
         ),
         "subprocess": SimpleNamespace(run=lambda *a, **kw: SimpleNamespace(returncode=1)),
         "SOCKET": "mock-only-no-socket",
@@ -110,6 +114,30 @@ def main():
         "child-kill",
         "owned-child-survived",
     }
+    inventory_result = subprocess.run(
+        [
+            sys.executable,
+            str(Path(__file__)),
+            "--child",
+            str(folder / "inventory-terminal"),
+            "inventory-failure",
+        ],
+        capture_output=True,
+        timeout=20,
+    )
+    (folder / "inventory-terminal.txt").write_bytes(
+        inventory_result.stdout + inventory_result.stderr
+    )
+    inventory_report = json.loads((folder / "inventory-terminal/results.json").read_text())
+    assert inventory_result.returncode != 0 and inventory_report["status"] == "FAIL_CLEANUP"
+    assert (
+        inventory_report["owned_services_stopped"]
+        and not inventory_report["protected_originals_unchanged"]
+    )
+    assert inventory_report["service_cleanup_errors"] == []
+    assert inventory_report["cleanup_errors"] == [
+        {"step": "protected-inventories", "error": "RuntimeError"}
+    ]
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary).resolve()
         namespace = {
@@ -141,6 +169,7 @@ def main():
         "control_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "controls": [
             "cleanup_failures_preserve_reporting_and_nonzero_exit",
+            "inventory_failure_distinct_from_successful_service_stop",
             "all_children_attempted_despite_fallback_errors",
             "protected_inventory_checks_after_cleanup_failure",
             "unique_exclusive_sql_preimages_and_pins",
@@ -156,6 +185,6 @@ def main():
 
 if __name__ == "__main__":
     if sys.argv[1:2] == ["--child"]:
-        child(sys.argv[2])
+        child(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "service-failure")
     else:
         main()
