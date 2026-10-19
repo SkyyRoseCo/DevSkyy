@@ -9,6 +9,10 @@ from pathlib import Path
 import shutil
 import subprocess
 import time
+import datetime
+import math
+import re
+import sys
 import gate4_restore_local as base
 
 if not __debug__:
@@ -36,6 +40,7 @@ PLUGINS = [
 SEQUENCE = 0
 SNAPSHOT = 0
 RAW_PINS = {}
+AUDIT_TRANSITIONS = {}
 REPORT = {
     "schema": "skyyrose.private-populated-native.v1",
     "run": RUN,
@@ -50,6 +55,7 @@ REPORT = {
         "Guard-only core derivative has no inherited31-case execution acceptance",
         "Only two source-verified native address-search index exposures are partitioned; raw values/type/multiplicity and all other metadata remain strict",
         "Exact one-index-row requirement belongs to this native-created fixture, not arbitrary installed historical rows",
+        "Only the attributed first HPOS-refund backfill modified timestamp may advance; all other fields/dates and converged/retry timestamps remain strict",
     ],
 }
 
@@ -326,11 +332,147 @@ def next_batch():
     return native("next")
 
 
+def validate_refund_audit(before, after, value):
+    audit = value["audit"]
+    role = "financial_refund_hpos"
+    old, new = before["orders"][role], after["orders"][role]
+    order_id = old["data"]["id"]
+    assert (
+        before["hpos"] and after["hpos"] and audit["id"] == order_id and order_id in value["batch"]
+    )
+    assert audit["run"] == RUN and audit["ledger"] == {
+        "run": RUN,
+        "role": role,
+        "type": "shop_order_refund",
+        "parent_id": old["data"]["parent_id"],
+    }
+    assert (
+        audit["cpt_type_before"] == "shop_order_placehold" and audit["cpt_refund_meta_before"] == []
+    )
+    start, end = audit["start_epoch"], audit["end_epoch"]
+    old_date, new_date = old["data"]["date_modified"], new["data"]["date_modified"]
+    stamp = datetime.datetime.fromisoformat(new_date).timestamp()
+    assert old_date < new_date and math.floor(start) <= stamp <= math.ceil(end)
+
+    def frames(row):
+        return {frame.get("function") for frame in row["stack"]}
+
+    required = {
+        "backfill_post_record",
+        "update_order_meta_from_object",
+        "update_order_meta",
+        "update_meta",
+        "after_meta_change",
+        "save",
+    }
+    queries = [
+        row
+        for row in audit["queries"]
+        if re.search(r"^\s*UPDATE\s+`?wp_wc_orders`?\s", row["sql"], re.I)
+        and "date_updated_gmt" in row["sql"]
+        and re.search(r"WHERE\s+`?id`?\s*=\s*['\"]?" + str(order_id) + r"\b", row["sql"], re.I)
+        and required <= frames(row)
+    ]
+    assert queries and all(start <= row["epoch"] <= end for row in queries)
+    assert audit["refund_saves"] and all(
+        row["id"] == order_id
+        and row["modified"] == new_date
+        and start <= row["epoch"] <= end
+        and required <= frames(row)
+        for row in audit["refund_saves"]
+    )
+    assert audit["source_row_before"]["date_updated_gmt"] == datetime.datetime.fromisoformat(
+        old_date
+    ).strftime("%Y-%m-%d %H:%M:%S")
+    assert audit["source_row_after"]["date_updated_gmt"] == datetime.datetime.fromisoformat(
+        new_date
+    ).strftime("%Y-%m-%d %H:%M:%S")
+    source_old = dict(audit["source_row_before"])
+    source_old["date_updated_gmt"] = audit["source_row_after"]["date_updated_gmt"]
+    assert same(
+        source_old, audit["source_row_after"]
+    ), "Other source row changes during native refund audit transition"
+    assert {row["meta_key"]: row["meta_value"] for row in audit["cpt_refund_meta_after"]} == audit[
+        "expected_cpt_refund_meta"
+    ]
+    assert len(audit["cpt_refund_meta_after"]) == 4
+    expected = json.loads(canonical(before["orders"]))
+    expected[role]["data"]["date_modified"] = new_date
+    assert same_orders(expected, after["orders"]) and same(before["products"], after["products"])
+    return {"role": role, "id": order_id, "before": old_date, "after": new_date, "proof": audit}
+
+
+def preserved_orders(left, right):
+    expected = json.loads(canonical(left))
+    for role, transition in AUDIT_TRANSITIONS.items():
+        if role in expected and expected[role]["data"]["date_modified"] == transition["before"]:
+            assert expected[role]["data"]["id"] == transition["id"]
+            expected[role]["data"]["date_modified"] = transition["after"]
+    return same_orders(expected, right)
+
+
+def admit_audit_transition(transition):
+    assert (
+        transition["role"] not in AUDIT_TRANSITIONS
+    ), "Repeated native refund timestamp transition"
+    AUDIT_TRANSITIONS[transition["role"]] = transition
+
+
 def batch():
     before = next_batch()
     assert before["pending"] > 0 and before["batch"], before
     value = native("batch")
     assert value["batch"] == before["batch"]
+    if value["audit"] is not None:
+        after = inspect()
+        transition = validate_refund_audit(value["audit"]["before_snapshot"], after, value)
+        assert (
+            transition["role"] not in AUDIT_TRANSITIONS
+        ), "Repeated native refund timestamp transition"
+        for mutation in [
+            "other-order",
+            "other-field",
+            "out-of-window",
+            "wrong-id",
+            "wrong-direction",
+        ]:
+            bad_after, bad_value = json.loads(canonical(after)), json.loads(canonical(value))
+            if mutation == "other-order":
+                bad_after["orders"]["v1_success"]["data"]["date_modified"] = transition["after"]
+            elif mutation == "other-field":
+                bad_after["orders"][transition["role"]]["data"]["reason"] = "invalid changed reason"
+            elif mutation == "out-of-window":
+                bad_value["audit"]["start_epoch"] = bad_value["audit"]["end_epoch"] + 60
+            elif mutation == "wrong-id":
+                bad_value["audit"]["id"] += 1
+            else:
+                bad_value["audit"]["before_snapshot"]["hpos"] = False
+            try:
+                validate_refund_audit(bad_value["audit"]["before_snapshot"], bad_after, bad_value)
+            except AssertionError:
+                pass
+            else:
+                raise AssertionError("Refund audit validator accepted " + mutation)
+        admit_audit_transition(transition)
+        try:
+            admit_audit_transition(transition)
+        except AssertionError:
+            pass
+        else:
+            raise AssertionError("Repeated audit transition admitted")
+        record(
+            "NATIVE_HPOS_REFUND_FIRST_BACKFILL_AUDIT_TRANSITION",
+            transition=transition,
+            validator_negatives=[
+                "other-order",
+                "other-field",
+                "out-of-window",
+                "wrong-id",
+                "wrong-direction",
+                "repeated-transition",
+            ],
+            limits="Native writer reproduced with attempted SQL/argument-free stacks and separate readbacks; only this exact first-backfill modified timestamp admitted; no date stripping",
+        )
     return value
 
 
@@ -833,8 +975,19 @@ def main():
         write(PRIVATE / "site-at-start.json", base.inventory(PRIVATE / "wordpress"))
         REPORT["site_code_at_start"] = pin(PRIVATE / "site-at-start.json")
         REPORT["toolchain"] = {
-            name: pin(Path(shutil.which(name)).resolve())
+            name: {
+                "resolved_path": str(Path(shutil.which(name)).resolve()),
+                **pin(Path(shutil.which(name)).resolve()),
+            }
             for name in ["php", "mariadb", "mariadbd", "wp", "python3"]
+        }
+        assert Path(base.DAEMON).resolve() == Path(REPORT["toolchain"]["mariadbd"]["resolved_path"])
+        assert pin(Path(sys.executable).resolve()) == {
+            k: v for k, v in REPORT["toolchain"]["python3"].items() if k != "resolved_path"
+        }
+        REPORT["executing_python"] = {
+            "resolved_path": str(Path(sys.executable).resolve()),
+            "version": sys.version,
         }
         native("seed")
         seed = inspect()
@@ -1049,7 +1202,7 @@ def main():
             before_first = inspect()
             first = batch()
             after_first = inspect()
-            assert same_orders(before_first["orders"], after_first["orders"]) and same(
+            assert preserved_orders(before_first["orders"], after_first["orders"]) and same(
                 before_first["products"], after_first["products"]
             ), "First native batch changed authoritative business invariants"
             remaining = next_batch()
@@ -1063,7 +1216,7 @@ def main():
             native("newer", direction + "-paused")
             newer = inspect()
             collision_control(direction)
-            assert same_orders(newer["orders"], inspect()["orders"]) and same(
+            assert preserved_orders(newer["orders"], inspect()["orders"]) and same(
                 newer["products"], inspect()["products"]
             )
             if direction == "cpt-to-hpos":
@@ -1099,14 +1252,14 @@ def main():
                 )
             drain(direction)
             surviving = inspect()
-            assert same_orders(newer["orders"], surviving["orders"]) and same(
+            assert preserved_orders(newer["orders"], surviving["orders"]) and same(
                 newer["products"], surviving["products"]
             ), "Synchronization changed authoritative business invariants"
             equivalence(direction)
             native("make-delete", direction)
             expected_delete = inspect()
             drain(direction + "-pre-delete")
-            assert same_orders(expected_delete["orders"], inspect()["orders"]) and same(
+            assert preserved_orders(expected_delete["orders"], inspect()["orders"]) and same(
                 expected_delete["products"], inspect()["products"]
             )
             delete_role = "delete-" + direction
@@ -1127,7 +1280,7 @@ def main():
             expected_delete["orders"].pop(delete_role)
             drain(direction + "-native-delete")
             verify_deleted(direction, delete_id, item_ids, unrelated_before)
-            assert same_orders(expected_delete["orders"], inspect()["orders"]) and same(
+            assert preserved_orders(expected_delete["orders"], inspect()["orders"]) and same(
                 expected_delete["products"], inspect()["products"]
             )
             equivalence(direction + "-after-delete")
@@ -1142,12 +1295,24 @@ def main():
             )
             native("writers", "closed")
             assert not next_batch()["batch"]
+            if direction == "hpos-to-cpt":
+                assert set(AUDIT_TRANSITIONS) == {"financial_refund_hpos"}
+                retry_before = inspect()
+                retry_raw_before = scope()
+                retry = native("retry-refund")
+                retry_after = inspect()
+                assert retry["pending_after"] == 0 and retry["audit"]["refund_saves"] == []
+                assert same_orders(retry_before["orders"], retry_after["orders"]) and same(
+                    retry_before["products"], retry_after["products"]
+                )
+                assert row_pins(retry_raw_before) == row_pins(scope())
+                record("CONVERGED_HPOS_REFUND_NATIVE_RETRY_NOOP", receipt=retry)
             equivalence(direction + "-quiescent")
             switched = native("switch", target)
             assert not switched["refused"] and switched["authority"] == target
             fresh = inspect()
             assert fresh["hpos"] == (target == "yes")
-            assert same_orders(current["orders"], fresh["orders"]) and same(
+            assert preserved_orders(current["orders"], fresh["orders"]) and same(
                 current["products"], fresh["products"]
             ), "Authority switch/rollback changed payments/history/refunds/items/stock"
 
